@@ -223,6 +223,14 @@ export function useWebSocket() {
         break;
       }
 
+      case 'token_balance': {
+        const balance = p.balance as number;
+        if (typeof balance === 'number') {
+          s.setArinovaTokenBalance(balance);
+        }
+        break;
+      }
+
       case 'pong':
         break;
 
@@ -306,8 +314,8 @@ export function useWebSocket() {
   }, []);
 
   const login = useCallback(
-    (userId: string, characterId?: string) => {
-      send({ type: 'login', payload: { userId, characterId } });
+    (userId: string, characterId?: string, accessToken?: string) => {
+      send({ type: 'login', payload: { userId, characterId, accessToken } });
     },
     [send],
   );

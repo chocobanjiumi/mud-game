@@ -20,7 +20,7 @@ export type ServerMessageType =
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'skill_learned' | 'class_change' | 'trade'
-  | 'quest' | 'leaderboard' | 'map';
+  | 'quest' | 'leaderboard' | 'map' | 'token_balance';
 
 export interface ServerMessage {
   type: ServerMessageType;

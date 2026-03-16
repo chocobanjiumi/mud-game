@@ -10,6 +10,7 @@ import {
 import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
 import { world } from '../game/state.js';
+import { validateToken, getAuthSession, createGuestSession, isGuestUser } from '../auth/arinova.js';
 
 /** 處理收到的 WebSocket 訊息 */
 export function handleMessage(session: WsSession, raw: string): void {
@@ -28,7 +29,10 @@ export function handleMessage(session: WsSession, raw: string): void {
       break;
 
     case 'login':
-      handleLogin(session, message.payload);
+      handleLogin(session, message.payload).catch((err) => {
+        console.error(`[WS] 登入處理錯誤 (${session.sessionId}):`, err);
+        sendError(session.sessionId, '登入處理失敗，請稍後再試。');
+      });
       break;
 
     case 'create_character':
@@ -51,15 +55,46 @@ function handlePing(session: WsSession): void {
 }
 
 /** 處理登入 */
-function handleLogin(
+async function handleLogin(
   session: WsSession,
   payload: { userId: string; characterId?: string; accessToken?: string },
-): void {
-  const { userId, characterId } = payload;
+): Promise<void> {
+  const { characterId, accessToken } = payload;
 
-  if (!userId) {
-    sendError(session.sessionId, '缺少 userId。');
-    return;
+  // 決定 verifiedUserId：已驗證 session > token 驗證 > guest
+  let verifiedUserId: string;
+
+  if (session.userId) {
+    // Session 已有驗證過的身分（例如第一步 token 驗證通過後選角色），直接沿用
+    verifiedUserId = session.userId;
+  } else if (accessToken) {
+    // 首次登入帶 token，驗證後綁定到 session
+    const arinovaUser = await validateToken(accessToken);
+    if (!arinovaUser) {
+      sendError(session.sessionId, 'Arinova 認證失敗，請重新登入。');
+      return;
+    }
+
+    verifiedUserId = arinovaUser.id;
+    session.userId = verifiedUserId;
+    console.log(`[Auth] Token 驗證成功: ${arinovaUser.name} (${arinovaUser.id})`);
+
+    // Send token balance to client if available
+    try {
+      const { Arinova } = await import('@arinova-ai/spaces-sdk');
+      const result = await Arinova.economy.balance(accessToken);
+      if (result && typeof result.balance === 'number') {
+        sendToSession(session.sessionId, 'token_balance', { balance: result.balance });
+      }
+    } catch {
+      // Token balance fetch failed — non-critical
+    }
+  } else {
+    // 無 token 且無已驗證 session — 進入 guest mode
+    const guestSession = createGuestSession();
+    verifiedUserId = guestSession.userId;
+    session.userId = verifiedUserId;
+    console.log(`[Auth] 無 token，進入訪客模式: ${verifiedUserId}`);
   }
 
   // 如果指定了角色 ID，直接載入
@@ -69,12 +104,12 @@ function handleLogin(
       sendError(session.sessionId, '角色不存在。');
       return;
     }
-    if (character.userId !== userId) {
+    if (character.userId !== verifiedUserId) {
       sendError(session.sessionId, '該角色不屬於此帳號。');
       return;
     }
 
-    bindCharacter(session.sessionId, character.id, userId);
+    bindCharacter(session.sessionId, character.id, verifiedUserId);
     world.placePlayer(character.id, character.roomId);
     sendToSession(session.sessionId, 'login_success', {
       character,
@@ -87,11 +122,11 @@ function handleLogin(
   }
 
   // 先用 userId 查，找不到再用角色名稱查
-  const characters = getCharactersByUserId(userId);
+  const characters = getCharactersByUserId(verifiedUserId);
 
   if (characters.length === 0) {
     // 嘗試用名稱查找（登入畫面送的是角色名稱）
-    const charByName = getCharacterByName(userId);
+    const charByName = getCharacterByName(verifiedUserId);
     if (charByName) {
       bindCharacter(session.sessionId, charByName.id, charByName.userId);
       world.placePlayer(charByName.id, charByName.roomId);
@@ -107,7 +142,7 @@ function handleLogin(
   if (characters.length === 1) {
     // 只有一個角色，直接登入
     const character = characters[0];
-    bindCharacter(session.sessionId, character.id, userId);
+    bindCharacter(session.sessionId, character.id, verifiedUserId);
     world.placePlayer(character.id, character.roomId);
     sendToSession(session.sessionId, 'login_success', {
       character,
@@ -116,8 +151,6 @@ function handleLogin(
     handleCommand(session, 'look');
     return;
   }
-
-  session.userId = userId;
 
   sendToSession(session.sessionId, 'character_list', {
     characters,
@@ -132,10 +165,17 @@ function handleCreateCharacter(
   session: WsSession,
   payload: { name: string; userId: string },
 ): void {
-  const { name, userId } = payload;
+  const { name } = payload;
 
-  if (!name || !userId) {
-    sendError(session.sessionId, '缺少角色名稱或 userId。');
+  // 永遠使用 server 端驗證過的 userId，不信任 client 傳的值
+  const userId = session.userId;
+  if (!userId) {
+    sendError(session.sessionId, '請先登入後再建立角色。');
+    return;
+  }
+
+  if (!name) {
+    sendError(session.sessionId, '缺少角色名稱。');
     return;
   }
 

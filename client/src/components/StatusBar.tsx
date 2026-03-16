@@ -50,6 +50,31 @@ function ProgressBar({
   );
 }
 
+function ArinovaTokenBadge() {
+  const balance = useGameStore((s) => s.arinovaTokenBalance);
+
+  if (balance === null) return null;
+
+  const handleClick = () => {
+    // Open Arinova shop/token page
+    window.open('https://arinova.ai/shop', '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      className="flex items-center gap-1 px-2 py-0.5 rounded border border-yellow-600/40 bg-yellow-900/20 hover:bg-yellow-900/40 transition-colors cursor-pointer"
+      title="Arinova Tokens - 點擊開啟商店"
+    >
+      <span className="text-xs">🪙</span>
+      <span className="text-xs font-bold tabular-nums" style={{ color: '#f5c542' }}>
+        {balance.toLocaleString()} AT
+      </span>
+    </button>
+  );
+}
+
 export default function StatusBar() {
   const character = useGameStore((s) => s.character);
   const expToNext = useGameStore((s) => s.expToNext);
@@ -61,7 +86,7 @@ export default function StatusBar() {
 
   return (
     <div className="bg-bg-secondary border-b border-border-dim px-3 py-2 space-y-1">
-      {/* Top row: name, class, level */}
+      {/* Top row: name, class, level + Arinova Token balance */}
       <div className="flex items-center justify-between text-xs">
         <div className="flex items-center gap-2">
           <span className="text-text-terminal font-bold text-glow-subtle">
@@ -72,26 +97,31 @@ export default function StatusBar() {
           </span>
         </div>
 
-        {/* Active effects */}
-        {activeEffects.length > 0 && (
-          <div className="flex items-center gap-1">
-            {activeEffects.map((effect, i) => {
-              const isBuff = effect.type.includes('up') || effect.type === 'regen' ||
-                effect.type === 'mana_regen' || effect.type === 'shield';
-              return (
-                <span
-                  key={`${effect.type}-${i}`}
-                  className={`px-1 rounded text-[10px] ${
-                    isBuff ? 'bg-combat-buff/20 text-combat-buff' : 'bg-combat-debuff/20 text-combat-debuff'
-                  }`}
-                  title={`${effect.type} (${effect.remainingDuration}回合)`}
-                >
-                  {effect.type.replace(/_/g, ' ')}
-                </span>
-              );
-            })}
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {/* Active effects */}
+          {activeEffects.length > 0 && (
+            <div className="flex items-center gap-1">
+              {activeEffects.map((effect, i) => {
+                const isBuff = effect.type.includes('up') || effect.type === 'regen' ||
+                  effect.type === 'mana_regen' || effect.type === 'shield';
+                return (
+                  <span
+                    key={`${effect.type}-${i}`}
+                    className={`px-1 rounded text-[10px] ${
+                      isBuff ? 'bg-combat-buff/20 text-combat-buff' : 'bg-combat-debuff/20 text-combat-debuff'
+                    }`}
+                    title={`${effect.type} (${effect.remainingDuration}回合)`}
+                  >
+                    {effect.type.replace(/_/g, ' ')}
+                  </span>
+                );
+              })}
+            </div>
+          )}
+
+          {/* Arinova Token balance */}
+          <ArinovaTokenBadge />
+        </div>
       </div>
 
       {/* Bars */}

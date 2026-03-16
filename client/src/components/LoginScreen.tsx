@@ -1,23 +1,59 @@
-import { useState, type FormEvent } from 'react';
+import { useState, useEffect, type FormEvent } from 'react';
+import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from '../stores/gameStore';
 
 interface LoginScreenProps {
-  onLogin: (userId: string) => void;
+  onLogin: (userId: string, accessToken?: string) => void;
   onCreateCharacter: (name: string, userId: string) => void;
 }
 
 export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenProps) {
   const [characterName, setCharacterName] = useState('');
   const [isCreating, setIsCreating] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
-  const handleSubmit = (e: FormEvent) => {
+  // Handle OAuth callback if redirected back with ?code=
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (!code) return;
+
+    // Clean URL so we don't re-process on re-render
+    window.history.replaceState({}, '', window.location.pathname);
+
+    setIsLoggingIn(true);
+    Arinova.handleCallback({
+      code,
+      clientId: import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game',
+      clientSecret: import.meta.env.VITE_ARINOVA_CLIENT_SECRET || '',
+      redirectUri: window.location.origin + window.location.pathname,
+    })
+      .then((result) => {
+        if (result && result.user) {
+          useGameStore.getState().setArinovaUser(result.user);
+          onLogin(result.user.id, result.accessToken);
+        }
+      })
+      .catch((err) => {
+        console.error('[Arinova] OAuth callback 失敗:', err);
+        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試或使用訪客模式。', 'error');
+      })
+      .finally(() => setIsLoggingIn(false));
+  }, [onLogin]);
+
+  const handleArinovaLogin = () => {
+    if (isLoggingIn) return;
+    // Redirect to Arinova OAuth login page
+    Arinova.login({ scope: ['profile', 'agents', 'economy'] });
+  };
+
+  const handleGuestSubmit = (e: FormEvent) => {
     e.preventDefault();
     const name = characterName.trim();
     if (!name) return;
 
     if (isCreating) {
-      // Guest mode: use character name as userId
       const guestId = `guest_${name}_${Date.now()}`;
       onCreateCharacter(name, guestId);
     } else {
@@ -53,8 +89,35 @@ export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenP
           </span>
         </div>
 
-        {/* Login form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Primary CTA: Login with Arinova */}
+        <div className="mb-4">
+          <button
+            type="button"
+            onClick={handleArinovaLogin}
+            disabled={!isConnected || isLoggingIn}
+            className={`
+              w-full py-3 rounded border text-sm font-bold tracking-wider cursor-pointer
+              transition-all duration-200
+              ${
+                isConnected && !isLoggingIn
+                  ? 'border-border-glow bg-border-glow/10 text-text-terminal hover:bg-border-glow/20 text-glow-subtle'
+                  : 'border-border-dim bg-bg-secondary text-text-dim cursor-not-allowed'
+              }
+            `}
+          >
+            {isLoggingIn ? '登入中...' : 'Login with Arinova'}
+          </button>
+        </div>
+
+        {/* Divider */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 border-t border-border-dim" />
+          <span className="text-text-dim text-xs">或以訪客身分遊玩</span>
+          <div className="flex-1 border-t border-border-dim" />
+        </div>
+
+        {/* Guest login form */}
+        <form onSubmit={handleGuestSubmit} className="space-y-4">
           <div className="bg-bg-secondary border border-border-dim rounded p-4 border-glow">
             <label className="block text-xs text-text-dim mb-2">
               {isCreating ? '建立角色名稱' : '角色名稱'}
@@ -78,12 +141,12 @@ export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenP
               transition-all duration-200
               ${
                 characterName.trim() && isConnected
-                  ? 'border-border-glow bg-border-glow/10 text-text-terminal hover:bg-border-glow/20 text-glow-subtle'
-                  : 'border-border-dim bg-bg-secondary text-text-dim cursor-not-allowed'
+                  ? 'border-border-dim bg-bg-secondary text-text-dim hover:bg-bg-tertiary hover:text-text-bright hover:border-border-glow/40'
+                  : 'border-border-dim bg-bg-secondary text-text-dim cursor-not-allowed opacity-50'
               }
             `}
           >
-            {isCreating ? '建立角色並開始冒險' : '開始冒險'}
+            {isCreating ? '以訪客身分建立角色' : '以訪客身分開始'}
           </button>
         </form>
 

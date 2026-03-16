@@ -168,6 +168,12 @@ export interface GameState {
   toggleInventory: () => void;
   showParty: boolean;
   toggleParty: () => void;
+
+  // Arinova
+  arinovaUser: { id: string; name: string } | null;
+  setArinovaUser: (user: { id: string; name: string } | null) => void;
+  arinovaTokenBalance: number | null;
+  setArinovaTokenBalance: (balance: number | null) => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -253,4 +259,10 @@ export const useGameStore = create<GameState>((set) => ({
   toggleInventory: () => set((state) => ({ showInventory: !state.showInventory })),
   showParty: false,
   toggleParty: () => set((state) => ({ showParty: !state.showParty })),
+
+  // Arinova
+  arinovaUser: null,
+  setArinovaUser: (arinovaUser) => set({ arinovaUser }),
+  arinovaTokenBalance: null,
+  setArinovaTokenBalance: (arinovaTokenBalance) => set({ arinovaTokenBalance }),
 }));
