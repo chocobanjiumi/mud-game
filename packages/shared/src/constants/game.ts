@@ -59,7 +59,7 @@ export const DEATH_GOLD_LOSS_PERCENT = 10;
 export const RESPAWN_ROOM = 'town_square';
 export const CLASS_CHANGE_COST = 500;
 export const SECOND_CLASS_CHANGE_COST = 5000;
-export const MAX_LEVEL = 50;
+export const MAX_LEVEL = 60;
 
 // ─── 衍生屬性計算函式 ───
 
