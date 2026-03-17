@@ -3,8 +3,9 @@
 
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import type { Character, CombatantState, CombatState } from '@game/shared';
-import { buildExplorePrompt, buildCombatPrompt } from './prompt.js';
+import { buildExplorePrompt, buildCombatPrompt, buildGuardianSystemPrompt } from './prompt.js';
 import { parseAiResponse } from './parser.js';
+import { guardianMgr } from '../game/state.js';
 
 // ============================================================
 //  型別
@@ -257,11 +258,20 @@ export class AgentController {
 
       const partyMembers = this.deps.getPartyMembers(agent.characterId);
 
-      prompt = buildExplorePrompt(character, roomInfo, partyMembers);
+      // 守護靈感知提示（如果角色有守護靈）
+      let guardianHint: string | null = null;
+      if (character.guardianId) {
+        guardianHint = guardianMgr.activeGuardianSense('', character);
+      }
+
+      prompt = buildExplorePrompt(character, roomInfo, partyMembers, guardianHint);
     }
 
+    // 建構守護靈系統 prompt（如果有的話）
+    const guardianSystemPrompt = buildGuardianSystemPrompt(character);
+
     // 呼叫 Arinova Agent API
-    const response = await this.callAgentApi(agent, prompt);
+    const response = await this.callAgentApi(agent, prompt, guardianSystemPrompt);
 
     // 解析回應為遊戲指令
     const parsed = parseAiResponse(response, inCombat);
@@ -295,12 +305,21 @@ export class AgentController {
   //  Arinova API 呼叫
   // ──────────────────────────────────────────────────────────
 
-  private async callAgentApi(agent: AgentEntry, prompt: string): Promise<string> {
+  private async callAgentApi(
+    agent: AgentEntry,
+    prompt: string,
+    guardianSystemPrompt?: string | null,
+  ): Promise<string> {
     try {
+      // 如果有守護靈系統 prompt，附加到基礎系統 prompt 後面
+      const fullSystemPrompt = guardianSystemPrompt
+        ? `${SYSTEM_PROMPT}\n\n${guardianSystemPrompt}`
+        : SYSTEM_PROMPT;
+
       const { response } = await Arinova.agent.chat({
         agentId: agent.agentId,
         prompt,
-        systemPrompt: SYSTEM_PROMPT,
+        systemPrompt: fullSystemPrompt,
         accessToken: agent.accessToken,
       });
       return response;

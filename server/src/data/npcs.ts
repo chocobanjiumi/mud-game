@@ -53,6 +53,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '祝你冒險順利，勇敢的冒險者！如果遇到什麼困難，隨時回來找我。',
       },
     ],
+    guardianHints: {
+      creature: '村長身邊似乎有一隻隱形的守護精靈在暗中保護他。',
+      treasure: '村長的辦公桌抽屜裡鎖著一份古老的藏寶圖。',
+      spirit: '村長年輕時曾是一名強大的冒險者，他隱藏了很多關於這片大陸的秘密。',
+    },
   },
 
   adventure_mentor: {
@@ -95,6 +100,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '加油練習，別偷懶啊！等你變強了，再來跟我切磋！',
       },
     ],
+    guardianHints: {
+      creature: '導師的實力遠超表面——他的殺氣偶爾會讓附近的小怪物不敢靠近。',
+      treasure: '公會的地下室裡存放著歷代冒險者留下的傳奇裝備。',
+      spirit: '導師背負著一個遺憾——他曾有一個搭檔，在暗影森林中失蹤了。',
+    },
   },
 
   blacksmith: {
@@ -140,6 +150,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '有空再來，下次我可能會有更好的貨色！',
       },
     ],
+    guardianHints: {
+      creature: '鐵匠養了一隻火蜥蜴幫忙維持爐火，牠藏在爐底很少現身。',
+      treasure: '鐵匠有一把祖傳的寶劍，從不展示——據說是矮人王打造的。',
+      spirit: '鐵匠的鍛造技術來自矮人王國的殘卷，他一直在嘗試復原失傳的鍛造法。',
+    },
   },
 
   herbalist: {
@@ -185,6 +200,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '保重身體！受傷了記得回來買藥哦。',
       },
     ],
+    guardianHints: {
+      creature: '藥師店裡的某些瓶子裡裝著活的魔法蟲，用來提取毒素。',
+      treasure: '藥典中記載了一種能永久提升屬性的秘藥配方，但材料極為稀有。',
+      spirit: '藥師曾是精靈族的學徒，她的草藥知識遠超人類的理解範圍。',
+    },
   },
 
   // ─── 湖畔城鎮 NPC（轉職導師） ──────────────────────────
@@ -240,6 +260,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '劍在手中，路在腳下。無論你選擇什麼，都要堅定地走下去。',
       },
     ],
+    guardianHints: {
+      creature: '劍術教官的劍氣偶爾會引來好鬥的元素精靈在大廳中飛舞。',
+      treasure: '教官的佩劍並非凡物——那是從暗影狼王身上奪來的魔劍。',
+      spirit: '劍術教官曾是王國的禁衛軍統領，他因某個秘密退隱至此。',
+    },
   },
 
   magic_instructor: {
@@ -293,6 +318,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '知識就是力量。願魔法之光照亮你前行的道路。',
       },
     ],
+    guardianHints: {
+      creature: '魔法導師周圍的空氣偶爾扭曲——那是她召喚物在另一個維度中巡邏。',
+      treasure: '導師的魔法書中夾著一張世界地圖，標記著幾處未知的魔力節點。',
+      spirit: '魔法導師能感應到時間之流的異常，她似乎知道一些關於未來的事。',
+    },
   },
 
   ranger_instructor: {
@@ -346,6 +376,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '風是自由的，遊俠也是。保持敏銳，保持冷靜。',
       },
     ],
+    guardianHints: {
+      creature: '遊俠教練的鷹眼比你想像的更敏銳——他已經注意到遠處潛伏的危險。',
+      treasure: '教練的箭筒裡有一支箭頭發光的特殊箭矢，那不是普通的箭。',
+      spirit: '遊俠教練曾在暗影森林中獨自生活了十年，他與森林的精靈有著不為人知的約定。',
+    },
   },
 
   temple_priest: {
@@ -399,6 +434,11 @@ export const NPCS: Record<string, NpcDef> = {
         text: '願聖光永遠照耀你的前路。無論選擇什麼道路，都要心存善念。',
       },
     ],
+    guardianHints: {
+      creature: '祭司的聖光結界能驅逐黑暗生物——在她身旁，暗屬性怪物會變得虛弱。',
+      treasure: '神殿的祭壇下藏著一件聖物，只有真正的信徒才能觸碰。',
+      spirit: '祭司能看見死者的靈魂，這座大廳裡徘徊著許多迷失的英靈。',
+    },
   },
 };
 

@@ -34,6 +34,8 @@ export type ClassId =
 
 export type ClassTier = 0 | 1 | 2;
 
+export type ResourceType = 'mp' | 'rage' | 'energy' | 'faith';
+
 export interface ClassDef {
   id: ClassId;
   name: string; // 中文名
@@ -42,6 +44,9 @@ export interface ClassDef {
   baseStatBonus: BaseStats;
   parentClass?: ClassId;
   advancedClasses?: ClassId[];
+  resourceType: ResourceType;
+  initialResource: number;
+  maxResource: number;
 }
 
 export interface EquipmentSlots {
@@ -64,6 +69,9 @@ export interface Character {
   mp: number;
   maxHp: number;
   maxMp: number;
+  resource: number;
+  maxResource: number;
+  resourceType: ResourceType;
   stats: BaseStats;
   freePoints: number;
   gold: number;
@@ -73,6 +81,10 @@ export interface Character {
   equipment: EquipmentSlots;
   createdAt: number;
   lastLogin: number;
+  // 守護靈系統
+  guardianId?: string;
+  guardianRoute?: GuardianRoute;
+  guardianAffinity?: number; // 0-100
 }
 
 export interface PlayerSession {
@@ -80,4 +92,35 @@ export interface PlayerSession {
   character: Character;
   isOnline: boolean;
   lastActivity: number;
+}
+
+// ─── 守護靈系統 ───
+
+/** 守護靈感知路線 */
+export type GuardianRoute = 'creature' | 'treasure' | 'spirit';
+
+/** 守護靈提示類型（與路線對應） */
+export type GuardianHintType = 'creature' | 'treasure' | 'spirit';
+
+/** 守護靈定義 */
+export interface GuardianDef {
+  id: string;
+  name: string;         // 中文名稱
+  route: GuardianRoute;
+  description: string;  // 守護靈的性格與背景描述
+  personality: string;  // 說話風格
+}
+
+/** 守護靈提示結構（附加在 Room / Monster / NPC 上） */
+export interface GuardianHints {
+  creature?: string;
+  treasure?: string;
+  spirit?: string;
+}
+
+/** 玩家的守護靈狀態 */
+export interface PlayerGuardianState {
+  guardianId: string;
+  guardianRoute: GuardianRoute;
+  guardianAffinity: number; // 0-100
 }

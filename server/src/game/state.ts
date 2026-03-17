@@ -10,6 +10,7 @@ import { DungeonManager } from './dungeon.js';
 import { QuestManager } from './quest.js';
 import { PvPManager } from './pvp.js';
 import { LeaderboardManager } from './leaderboard.js';
+import { GuardianManager } from './guardian.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
@@ -30,6 +31,7 @@ export const dungeonMgr = new DungeonManager();
 export const questMgr = new QuestManager();
 export const pvpMgr = new PvPManager();
 export const leaderboardMgr = new LeaderboardManager();
+export const guardianMgr = new GuardianManager();
 
 // ============================================================
 //  初始化 — 在 index.ts 呼叫

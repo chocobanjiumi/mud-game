@@ -65,6 +65,9 @@ function rowToCharacter(row: any): Character {
     mp: row.mp,
     maxHp: row.max_hp,
     maxMp: row.max_mp,
+    resource: row.resource ?? 30,
+    maxResource: row.max_resource ?? 30,
+    resourceType: row.resource_type ?? 'mp',
     stats: { str: row.str, int: row.int_, dex: row.dex, vit: row.vit, luk: row.luk },
     freePoints: row.free_points,
     gold: row.gold,
@@ -102,6 +105,7 @@ export function saveCharacter(char: Character): void {
     UPDATE characters SET
       level = ?, exp = ?, class_id = ?,
       hp = ?, mp = ?, max_hp = ?, max_mp = ?,
+      resource = ?, max_resource = ?, resource_type = ?,
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
       free_points = ?, gold = ?, room_id = ?,
       last_login = ?
@@ -109,6 +113,7 @@ export function saveCharacter(char: Character): void {
   `).run(
     char.level, char.exp, char.classId,
     char.hp, char.mp, char.maxHp, char.maxMp,
+    char.resource, char.maxResource, char.resourceType,
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
     char.freePoints, char.gold, char.roomId,
     Math.floor(Date.now() / 1000),

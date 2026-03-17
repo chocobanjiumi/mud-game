@@ -16,6 +16,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '尚未選擇職業的初心者。',
     baseStatBonus: { str: 0, int: 0, dex: 0, vit: 0, luk: 0 },
     advancedClasses: ['swordsman', 'mage', 'ranger', 'priest'],
+    resourceType: 'mp',
+    initialResource: 30,
+    maxResource: 30,
   },
 
   // Tier 1 — 一轉
@@ -27,6 +30,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 5, int: 0, dex: 2, vit: 5, luk: 0 },
     parentClass: 'adventurer',
     advancedClasses: ['knight', 'berserker', 'sword_saint'],
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   mage: {
     id: 'mage',
@@ -36,6 +42,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 0, int: 8, dex: 1, vit: 2, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['archmage', 'warlock', 'chronomancer'],
+    resourceType: 'mp',
+    initialResource: 50,
+    maxResource: 50,
   },
   ranger: {
     id: 'ranger',
@@ -45,6 +54,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 1, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['marksman', 'assassin', 'beast_master'],
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   priest: {
     id: 'priest',
@@ -54,6 +66,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 0, int: 5, dex: 1, vit: 3, luk: 3 },
     parentClass: 'adventurer',
     advancedClasses: ['high_priest', 'druid', 'inquisitor'],
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
 
   // Tier 2 — 二轉（劍士系）
@@ -64,6 +79,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '重裝坦克，保護隊伍。',
     baseStatBonus: { str: 3, int: 0, dex: 1, vit: 8, luk: 0 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   berserker: {
     id: 'berserker',
@@ -72,6 +90,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '暴力輸出，以血換傷害。',
     baseStatBonus: { str: 10, int: 0, dex: 2, vit: 0, luk: 0 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   sword_saint: {
     id: 'sword_saint',
@@ -80,6 +101,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '技巧型劍士，高連擊高迴避。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 1, luk: 1 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
 
   // Tier 2 — 二轉（法師系）
@@ -90,6 +114,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '元素大師，範圍毀滅。',
     baseStatBonus: { str: 0, int: 10, dex: 0, vit: 1, luk: 1 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 80,
+    maxResource: 80,
   },
   warlock: {
     id: 'warlock',
@@ -98,6 +125,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: 'DoT + 控制，持續壓制。',
     baseStatBonus: { str: 0, int: 8, dex: 1, vit: 2, luk: 1 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 70,
+    maxResource: 70,
   },
   chronomancer: {
     id: 'chronomancer',
@@ -106,6 +136,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '時間魔法，控場與輔助。',
     baseStatBonus: { str: 0, int: 6, dex: 3, vit: 1, luk: 2 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 75,
+    maxResource: 75,
   },
 
   // Tier 2 — 二轉（遊俠系）
@@ -116,6 +149,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '遠程爆發，精準狙殺。',
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 0, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   assassin: {
     id: 'assassin',
@@ -124,6 +160,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '潛行暗殺，單體爆發。',
     baseStatBonus: { str: 3, int: 0, dex: 7, vit: 0, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   beast_master: {
     id: 'beast_master',
@@ -132,6 +171,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '召喚夥伴，人寵協同作戰。',
     baseStatBonus: { str: 2, int: 2, dex: 4, vit: 2, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
 
   // Tier 2 — 二轉（祭司系）
@@ -142,6 +184,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '純治療，團隊奶媽。',
     baseStatBonus: { str: 0, int: 6, dex: 0, vit: 4, luk: 2 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
   druid: {
     id: 'druid',
@@ -150,6 +195,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '混合型，能奶能打能控。',
     baseStatBonus: { str: 2, int: 4, dex: 2, vit: 2, luk: 2 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
   inquisitor: {
     id: 'inquisitor',
@@ -158,6 +206,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '攻擊型祭司，神聖制裁。',
     baseStatBonus: { str: 3, int: 5, dex: 2, vit: 1, luk: 1 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
 };
 
@@ -309,6 +360,11 @@ export class ClassChangeManager {
     this.recalculateMaxHpMp(char);
     char.hp = char.maxHp;
     char.mp = char.maxMp;
+
+    // 更新資源系統為新職業的資源類型
+    char.resourceType = targetDef.resourceType;
+    char.maxResource = targetDef.maxResource;
+    char.resource = targetDef.initialResource;
 
     const tierLabel = targetDef.tier === 1 ? '一轉' : '二轉';
     return {

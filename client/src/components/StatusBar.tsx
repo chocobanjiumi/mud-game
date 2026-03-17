@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import type { ResourceType } from '@game/shared';
 
 const CLASS_NAMES: Record<string, string> = {
   adventurer: '冒險者',
@@ -18,6 +19,14 @@ const CLASS_NAMES: Record<string, string> = {
   high_priest: '大祭司',
   druid: '德魯伊',
   inquisitor: '審判者',
+};
+
+/** 資源類型對應的顯示設定 */
+const RESOURCE_CONFIG: Record<ResourceType, { label: string; color: string; bgColor: string }> = {
+  mp: { label: 'MP', color: '#4488ff', bgColor: 'rgba(68, 136, 255, 0.15)' },
+  rage: { label: '怒氣', color: '#ff4444', bgColor: 'rgba(255, 68, 68, 0.15)' },
+  energy: { label: '能量', color: '#ffcc00', bgColor: 'rgba(255, 204, 0, 0.15)' },
+  faith: { label: '信仰', color: '#ccddff', bgColor: 'rgba(204, 221, 255, 0.15)' },
 };
 
 function ProgressBar({
@@ -41,6 +50,43 @@ function ProgressBar({
         <div
           className={`h-full bar-transition rounded-sm ${barColor}`}
           style={{ width: `${pct}%` }}
+        />
+      </div>
+      <span className="w-20 text-right text-text-bright tabular-nums shrink-0">
+        {current}/{max}
+      </span>
+    </div>
+  );
+}
+
+/** 資源條 - 使用 inline style 顏色以支援職業特定色彩 */
+function ResourceBar({
+  current,
+  max,
+  resourceType,
+}: {
+  current: number;
+  max: number;
+  resourceType: ResourceType;
+}) {
+  const config = RESOURCE_CONFIG[resourceType] ?? RESOURCE_CONFIG.mp;
+  const pct = max > 0 ? Math.max(0, Math.min(100, (current / max) * 100)) : 0;
+
+  return (
+    <div className="flex items-center gap-2 text-xs">
+      <span
+        className="w-8 text-right shrink-0 font-medium"
+        style={{ color: config.color }}
+      >
+        {config.label}
+      </span>
+      <div
+        className="flex-1 h-3 rounded-sm overflow-hidden"
+        style={{ backgroundColor: config.bgColor }}
+      >
+        <div
+          className="h-full bar-transition rounded-sm"
+          style={{ width: `${pct}%`, backgroundColor: config.color }}
         />
       </div>
       <span className="w-20 text-right text-text-bright tabular-nums shrink-0">
@@ -130,12 +176,10 @@ export default function StatusBar() {
         bgColor="bg-hp-bg"
         label="HP"
       />
-      <ProgressBar
-        current={character.mp}
-        max={character.maxMp}
-        barColor="bg-mp-bar"
-        bgColor="bg-mp-bg"
-        label="MP"
+      <ResourceBar
+        current={character.resource}
+        max={character.maxResource}
+        resourceType={character.resourceType}
       />
       <ProgressBar
         current={character.exp}

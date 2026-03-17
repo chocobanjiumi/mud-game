@@ -28,6 +28,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'passive',
     description: '一團果凍般的半透明生物，在地上緩慢地蠕動。看起來人畜無害，是新手冒險者的最佳練習對象。',
     isBoss: false,
+    guardianHints: {
+      creature: '這隻史萊姆的核心偏右，從側面攻擊更容易命中要害。',
+      treasure: '半透明的身體裡似乎消化了一些閃亮的東西。',
+      spirit: '史萊姆是魔力汙染的產物，據說最初的史萊姆來自一次失敗的煉金實驗。',
+    },
   },
 
   small_bat: {
@@ -52,6 +57,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '從暗處飛出的小蝙蝠，雖然體型不大，但尖銳的叫聲足以讓人頭疼。靈活的飛行讓它不太容易被擊中。',
     isBoss: false,
+    guardianHints: {
+      creature: '蝙蝠的超聲波有盲區——在牠發出叫聲的瞬間是攻擊的最佳時機。',
+      treasure: '蝙蝠的巢穴中經常堆積著被牠們叼回的閃亮物品。',
+      spirit: '這種蝙蝠被黑暗元素輕微汙染，牠們原本只是普通的蝙蝠。',
+    },
   },
 
   wild_rabbit: {
@@ -76,6 +86,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'passive',
     description: '看似可愛的野兔，但被逼急了也會用強壯的後腿踢人。它的速度非常快，想抓住可不容易。',
     isBoss: false,
+    guardianHints: {
+      creature: '野兔在衝刺前會有短暫的蓄力動作，抓住那個瞬間就能截斷牠的逃跑。',
+      treasure: '野兔的毛皮品質上乘，如果完整剝下可以賣個好價錢。',
+      spirit: '這片平原的野兔是精靈族放養的信使後代，牠們天生帶有微弱的魔力。',
+    },
   },
 
   // ─── 翠綠平原 (Lv 5-10) ─────────────────────────────────
@@ -103,6 +118,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '灰色毛皮的野狼，目光銳利地注視著獵物。它們通常成群出沒，用嚎叫聲召喚同伴。落單時依然是危險的對手。',
     isBoss: false,
+    guardianHints: {
+      creature: '野狼嚎叫時會召喚附近的同伴，優先阻止牠嚎叫是明智之舉。',
+      treasure: '狼群的領地中心通常藏著牠們叼回的獵物和掉落的旅人財物。',
+      spirit: '這些野狼似乎受到暗影森林魔力的影響，比普通野狼更加兇猛。',
+    },
   },
 
   bandit: {
@@ -128,6 +148,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '蒙面的盜賊，手持匕首藏在路旁的草叢中。他們專門劫掠落單的旅人，動作迅速且狡猾。',
     isBoss: false,
+    guardianHints: {
+      creature: '盜賊習慣從背後偷襲——保持背靠牆壁可以避免他的暗算。',
+      treasure: '盜賊身上藏著從旅人手中搶來的錢袋，擊敗後可能有額外收穫。',
+      spirit: '這些盜賊原本是農民，是戰亂讓他們走上了這條路。',
+    },
   },
 
   poison_snake: {
@@ -153,6 +178,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '身披翠綠鱗片的毒蛇，吐著鮮紅的信子。它的毒牙能注入令人痛苦的毒素，被咬到後毒液會緩慢侵蝕身體。',
     isBoss: false,
+    guardianHints: {
+      creature: '毒蛇在攻擊前會將身體盤成S形——那就是閃避的信號。',
+      treasure: '蛇蛻中有時會留下凝固的毒液結晶，是珍貴的煉金材料。',
+      spirit: '這種毒蛇是古代毒師培育的品種，牠們的毒液配方已經失傳。',
+    },
   },
 
   // ─── 暗影森林 (Lv 10-20) ────────────────────────────────
@@ -180,6 +210,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '暗影森林中的恐怖獵食者，漆黑的毛皮讓它能完美融入黑暗。它的攻擊帶有暗影之力，被咬到會感到一陣刺骨的寒冷。',
     isBoss: false,
+    guardianHints: {
+      creature: '暗影狼在隱身時會散發微弱的寒氣，感受到溫度驟降就要提高警覺。',
+      treasure: '暗影狼的毛皮可以製成隱匿斗篷，在黑市上價值不菲。',
+      spirit: '暗影狼是被暗影之力扭曲的森林守護獸，牠們的眼中偶爾會閃過悲傷。',
+    },
   },
 
   giant_spider: {
@@ -205,6 +240,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '體型如牛犢般巨大的蜘蛛，八隻眼睛在黑暗中閃爍著詭異的光芒。它會織出大片毒網來困住獵物，然後慢慢享用。',
     isBoss: false,
+    guardianHints: {
+      creature: '蜘蛛會在腳下設置陷阱網——注意地面上異常反光的絲線。',
+      treasure: '蜘蛛巢穴中被絲線裹住的繭裡，有些包裹的是旅人的遺物。',
+      spirit: '巨型蜘蛛是森林黑暗面的化身，牠們與暗影之力有著深層的連結。',
+    },
   },
 
   treant: {
@@ -230,6 +270,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'defensive',
     description: '被森林魔力喚醒的古樹，粗壯的枝幹就是它的武器。它行動遲緩但防禦極高，根部能束縛住靠近的敵人。',
     isBoss: false,
+    guardianHints: {
+      creature: '樹精的弱點在根部——斬斷地面的主根就能大幅削弱牠的力量。',
+      treasure: '樹精的體內有一顆自然水晶核心，是強力的魔法材料。',
+      spirit: '樹精是森林意志的具現化，傷害牠會影響整片森林的魔力平衡。',
+    },
   },
 
   shadow_wolf_alpha: {
@@ -262,6 +307,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
       '暗影森林的霸主，體型比普通暗影狼大上一倍。全身散發著濃烈的暗影之力，' +
       '血紅的雙眼令人膽寒。它能召喚暗影風暴吞噬一切，是森林中最危險的存在。',
     isBoss: true,
+    guardianHints: {
+      creature: '狼王在發動暗影風暴前會仰天長嘯——那是全力防禦的最後機會。',
+      treasure: '狼王的領地深處藏著牠收集的所有戰利品，包括傳說中的暗影之刃。',
+      spirit: '狼王曾是精靈族的坐騎，被暗影侵蝕後墮落成了這副模樣。如果能淨化牠……',
+    },
   },
 
   // ─── 水晶洞窟 (Lv 20-30) ────────────────────────────────
@@ -289,6 +339,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '全身覆蓋著水晶鱗片的大型蜥蜴，在洞窟中反射出璀璨的光芒。它能發射尖銳的水晶碎片進行遠程攻擊。',
     isBoss: false,
+    guardianHints: {
+      creature: '水晶蜥蜴的鱗片會折射攻擊——瞄準牠腹部未結晶的軟肉。',
+      treasure: '牠的水晶鱗片如果完整取下，可以鑲嵌在裝備上獲得冰屬性加成。',
+      spirit: '水晶蜥蜴是洞窟原始生態的一部分，牠們吸收水晶的能量進化了千年。',
+    },
   },
 
   cave_bat: {
@@ -314,6 +369,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'aggressive',
     description: '比普通蝙蝠大上數倍的洞窟蝙蝠，能發出強力的超聲波攻擊。在黑暗的洞窟中，它是完美的掠食者。',
     isBoss: false,
+    guardianHints: {
+      creature: '洞窟蝙蝠害怕強光——用火焰魔法可以讓牠暫時失去方向感。',
+      treasure: '蝙蝠棲息的洞頂經常有被牠們忽略的水晶簇。',
+      spirit: '這些蝙蝠吸收了洞窟中的暗元素能量，牠們的超聲波帶有魔力共振。',
+    },
   },
 
   gargoyle: {
@@ -339,6 +399,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'defensive',
     description: '看似普通的石像，實則是被魔法賦予生命的守衛。堅硬的石質身體讓普通攻擊難以奏效，石化凝視更是令人聞風喪膽。',
     isBoss: false,
+    guardianHints: {
+      creature: '石像鬼的關節處是石質最薄弱的地方，集中攻擊可以讓牠碎裂。',
+      treasure: '石像鬼的心臟處有一顆魔法核心，是強化裝備的稀有素材。',
+      spirit: '石像鬼原本是地底神殿的守衛，失去主人後仍忠實地執行著守護的職責。',
+    },
   },
 
   crystal_guardian: {
@@ -372,6 +437,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
       '它的身體折射著令人目眩的光芒，能召喚冰風暴凍結整個戰場。' +
       '據說擊敗它才能獲得洞窟深處的寶藏。',
     isBoss: true,
+    guardianHints: {
+      creature: '水晶守衛在施放冰風暴時核心會暴露——那是致命一擊的唯一機會。',
+      treasure: '守衛的水晶之軀碎裂後，核心會凝聚成傳說中的守護者水晶。',
+      spirit: '水晶守衛是地底種族最後的傑作，牠承載著整個文明的遺志。',
+    },
   },
 
   // ─── 競技場 (Lv 30+) ────────────────────────────────────
@@ -395,6 +465,11 @@ export const MONSTERS: Record<string, MonsterDef> = {
     aiType: 'passive',
     description: '競技場內的練習用假人，外表是稻草編織的人偶。無論怎麼打都不會倒下，是測試傷害輸出的最佳工具。',
     isBoss: false,
+    guardianHints: {
+      creature: '假人的關節處有特殊機關，用特定角度攻擊可以觸發隱藏的連擊訓練模式。試試瞄準接縫處。',
+      treasure: '假人底座的木板有些鬆動，看起來像是被人刻意留下的暗格。或許值得翻找一下。',
+      spirit: '這具假人承受了無數冒險者的攻擊，累積的鬥氣在體內形成了微弱的意識殘影——它記得每一個曾在這裡訓練過的人。',
+    },
   },
 };
 

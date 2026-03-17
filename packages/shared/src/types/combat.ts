@@ -1,6 +1,7 @@
 // 戰鬥型別定義
 
 import type { ElementType, StatusEffect } from './skill.js';
+import type { GuardianHints, ResourceType } from './player.js';
 
 export type CombatPhase = 'encounter' | 'action_select' | 'resolve' | 'end';
 export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item';
@@ -37,6 +38,9 @@ export interface CombatantState {
   maxHp: number;
   mp: number;
   maxMp: number;
+  resource: number;
+  maxResource: number;
+  resourceType: ResourceType;
   level: number;
   classId: string;
   activeEffects: ActiveStatusEffect[];
@@ -87,6 +91,7 @@ export interface MonsterDef {
   aiType: MonsterAiType;
   description: string;
   isBoss: boolean;
+  guardianHints?: GuardianHints;
 }
 
 export type MonsterAiType = 'aggressive' | 'defensive' | 'healer' | 'boss' | 'passive';

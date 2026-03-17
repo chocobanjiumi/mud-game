@@ -21,9 +21,10 @@ import {
 import type { Character, ClassId } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
-  dungeonMgr, questMgr, pvpMgr, leaderboardMgr,
+  dungeonMgr, questMgr, pvpMgr, leaderboardMgr, guardianMgr,
   isInCombat, getPlayerCombatId, findCharacterByName,
 } from './state.js';
+import { GUARDIAN_DEFS } from './guardian.js';
 
 // ─── 指令路由 ───
 
@@ -84,6 +85,9 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'dungeon': cmdDungeon(session, args); break;
     case 'leaderboard': case 'rank': cmdLeaderboard(session, args); break;
     case 'classchange': case 'job': cmdClassChange(session, argStr); break;
+    // 守護靈系統
+    case 'ask': cmdAsk(session, argStr); break;
+    case 'guardian': cmdGuardian(session, args); break;
     case 'help': cmdHelp(session); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
@@ -159,6 +163,9 @@ function cmdGo(session: WsSession, direction: string): void {
   saveCharacter(char);
   sendNarrative(session.sessionId, `你往 ${directionChinese(direction)} 移動了。`);
   cmdLook(session);
+
+  // 守護靈感知：進入新房間時自動觸發
+  guardianMgr.processGuardianSense(session.sessionId, char);
 }
 
 function cmdStatus(session: WsSession): void {
@@ -216,7 +223,7 @@ function cmdSkills(session: WsSession): void {
   for (const ls of learned) {
     const def = SKILL_DEFS[ls.skillId];
     if (!def) continue;
-    const typeStr = def.type === 'passive' ? '[被動]' : `[主動 MP:${def.mpCost}]`;
+    const typeStr = def.type === 'passive' ? '[被動]' : `[主動 消耗:${def.resourceCost}]`;
     sendSystem(session.sessionId, `  ${def.name}（${def.englishName}）${typeStr} - ${def.description}`);
   }
 }
@@ -302,8 +309,8 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 
   const skillDef = SKILL_DEFS[matchedSkill.skillId];
-  if (skillDef && skillDef.mpCost > char.mp) {
-    sendError(session.sessionId, `MP 不足！${skillDef.name}需要 ${skillDef.mpCost} MP。`);
+  if (skillDef && skillDef.resourceCost > char.resource) {
+    sendError(session.sessionId, `資源不足！${skillDef.name}需要 ${skillDef.resourceCost} 點。`);
     return;
   }
 
@@ -394,13 +401,21 @@ function cmdUse(session: WsSession, itemName: string): void {
     char.hp = Math.min(char.maxHp, char.hp + effect.value);
     message += ` 回復了 ${healed} HP。`;
   } else if (effect.type === 'heal_mp') {
-    const healed = Math.min(effect.value, char.maxMp - char.mp);
-    char.mp = Math.min(char.maxMp, char.mp + effect.value);
-    message += ` 回復了 ${healed} MP。`;
+    // heal_mp 現在恢復 resource（而非舊的 mp）
+    if (char.resourceType === 'rage') {
+      message += ` 但怒氣無法透過藥水恢復。`;
+    } else {
+      const healed = Math.min(effect.value, char.maxResource - char.resource);
+      char.resource = Math.min(char.maxResource, char.resource + effect.value);
+      const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+      message += ` 回復了 ${healed} ${resourceLabel}。`;
+    }
   } else if (effect.type === 'heal_both') {
     char.hp = Math.min(char.maxHp, char.hp + effect.value);
-    char.mp = Math.min(char.maxMp, char.mp + (effect.value2 ?? 0));
-    message += ` 回復了 HP 和 MP。`;
+    if (char.resourceType !== 'rage') {
+      char.resource = Math.min(char.maxResource, char.resource + (effect.value2 ?? 0));
+    }
+    message += ` 回復了 HP 和資源。`;
   }
 
   saveCharacter(char);
@@ -498,13 +513,21 @@ function cmdRest(session: WsSession): void {
   if (!char) return;
   if (isInCombat(char.id)) { sendError(session.sessionId, '戰鬥中無法休息！'); return; }
 
-  // 恢復 30% HP/MP
+  // 恢復 30% HP + 資源
   const hpRecover = Math.floor(char.maxHp * 0.3);
-  const mpRecover = Math.floor(char.maxMp * 0.3);
   char.hp = Math.min(char.maxHp, char.hp + hpRecover);
-  char.mp = Math.min(char.maxMp, char.mp + mpRecover);
+
+  // 資源恢復：怒氣不靠休息恢復，其他回復 30%
+  let resourceMsg = '';
+  if (char.resourceType !== 'rage') {
+    const resRecover = Math.floor(char.maxResource * 0.3);
+    char.resource = Math.min(char.maxResource, char.resource + resRecover);
+    const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+    resourceMsg = ` 和 ${resRecover} ${resourceLabel}`;
+  }
+
   saveCharacter(char);
-  sendNarrative(session.sessionId, `你稍作休息，恢復了 ${hpRecover} HP 和 ${mpRecover} MP。`);
+  sendNarrative(session.sessionId, `你稍作休息，恢復了 ${hpRecover} HP${resourceMsg}。`);
 }
 
 // ─── 組隊系統 ───
@@ -843,6 +866,95 @@ function cmdClassChange(session: WsSession, targetClass: string): void {
   sendSystem(session.sessionId, result.message);
 }
 
+// ─── 守護靈系統 ───
+
+function cmdAsk(session: WsSession, argStr: string): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  // "ask" 或 "ask guardian" — 請求守護靈給予建議
+  const target = argStr.toLowerCase().trim();
+  if (!target || target === 'guardian') {
+    const advice = guardianMgr.getGuardianAdvice(char);
+    saveCharacter(char);
+    sendNarrative(session.sessionId, advice);
+    return;
+  }
+
+  sendError(session.sessionId, `用法：ask 或 ask guardian — 向守護靈詢問建議`);
+}
+
+function cmdGuardian(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'sense': {
+      // 主動感知
+      const result = guardianMgr.activeGuardianSense(session.sessionId, char);
+      saveCharacter(char);
+      if (result) {
+        sendNarrative(session.sessionId, result);
+      }
+      break;
+    }
+    case 'advice': {
+      // 策略建議
+      const advice = guardianMgr.getGuardianAdvice(char);
+      saveCharacter(char);
+      sendNarrative(session.sessionId, advice);
+      break;
+    }
+    case 'select': case 'choose': {
+      // 選擇守護靈
+      const guardianId = args[1];
+      if (!guardianId) {
+        sendSystem(session.sessionId, '用法：guardian select <守護靈ID>');
+        sendSystem(session.sessionId, '可用的守護靈：');
+        sendSystem(session.sessionId, '  hunters_eye    — 獵人之眼（生物感知路線）');
+        sendSystem(session.sessionId, '  treasure_instinct — 尋寶直覺（寶藏感知路線）');
+        sendSystem(session.sessionId, '  soul_resonance — 靈魂共鳴（靈魂感知路線）');
+        return;
+      }
+      const result = guardianMgr.selectGuardian(char, guardianId);
+      saveCharacter(char);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'info': case 'status': {
+      // 查看守護靈狀態
+      if (!char.guardianId) {
+        sendSystem(session.sessionId, '你還沒有守護靈。使用 guardian select <ID> 來選擇。');
+        return;
+      }
+      const def = GUARDIAN_DEFS[char.guardianId];
+      if (!def) {
+        sendSystem(session.sessionId, '守護靈資料異常。');
+        return;
+      }
+      sendSystem(session.sessionId, `── 守護靈資訊 ──`);
+      sendSystem(session.sessionId, `  名稱：${def.name}`);
+      sendSystem(session.sessionId, `  路線：${routeNameChinese(def.route)}`);
+      sendSystem(session.sessionId, `  親密度：${char.guardianAffinity ?? 0} / 100`);
+      sendSystem(session.sessionId, `  ${def.description}`);
+      break;
+    }
+    default:
+      sendSystem(session.sessionId, '守護靈指令：guardian select <ID>/sense/advice/info');
+  }
+}
+
+function routeNameChinese(route: string): string {
+  const map: Record<string, string> = {
+    creature: '獵人之眼（生物感知）',
+    treasure: '尋寶直覺（寶藏感知）',
+    spirit: '靈魂共鳴（靈魂感知）',
+  };
+  return map[route] ?? route;
+}
+
 // ─── 幫助 ───
 
 function cmdHelp(session: WsSession): void {
@@ -852,7 +964,7 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  look (l)            查看周圍環境');
   sendSystem(session.sessionId, '  go <方向> (n/s/e/w)  移動');
   sendSystem(session.sessionId, '  map                 顯示地圖');
-  sendSystem(session.sessionId, '  rest                原地休息，恢復 HP/MP');
+  sendSystem(session.sessionId, '  rest                原地休息，恢復 HP 與資源');
   sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '── 角色資訊 ──');
   sendSystem(session.sessionId, '  status (stat)       查看角色狀態');
@@ -882,6 +994,13 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  dungeon              副本系統');
   sendSystem(session.sessionId, '  leaderboard (lb)     排行榜');
   sendSystem(session.sessionId, '  classchange (job)    轉職');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 守護靈 ──');
+  sendSystem(session.sessionId, '  ask                  向守護靈詢問建議');
+  sendSystem(session.sessionId, '  guardian sense       主動感知環境');
+  sendSystem(session.sessionId, '  guardian advice      請求策略建議');
+  sendSystem(session.sessionId, '  guardian select <ID> 選擇守護靈');
+  sendSystem(session.sessionId, '  guardian info        查看守護靈狀態');
 }
 
 // ─── 工具函式 ───

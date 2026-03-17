@@ -143,6 +143,48 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_leaderboard_type_score ON leaderboard(type, score DESC);
   `);
 
+  // ── Migration: 新增 resource 欄位 ──
+  // 檢查 characters 表是否已有 resource 欄位
+  const columns = db.prepare("PRAGMA table_info(characters)").all() as { name: string }[];
+  const columnNames = new Set(columns.map(c => c.name));
+
+  if (!columnNames.has('resource')) {
+    db.exec(`
+      ALTER TABLE characters ADD COLUMN resource INTEGER DEFAULT 30;
+      ALTER TABLE characters ADD COLUMN max_resource INTEGER DEFAULT 30;
+      ALTER TABLE characters ADD COLUMN resource_type TEXT DEFAULT 'mp';
+    `);
+
+    // 根據 class_id 設定正確的 resourceType / resource / maxResource
+    // 劍士系 → rage, 0, 100
+    db.exec(`
+      UPDATE characters SET resource_type = 'rage', resource = 0, max_resource = 100
+      WHERE class_id IN ('swordsman', 'knight', 'berserker', 'sword_saint');
+    `);
+    // 法師系 → mp, 使用既有 max_mp, max_mp
+    db.exec(`
+      UPDATE characters SET resource_type = 'mp', resource = max_mp, max_resource = max_mp
+      WHERE class_id IN ('mage', 'archmage', 'warlock', 'chronomancer');
+    `);
+    // 遊俠系 → energy, 100, 100
+    db.exec(`
+      UPDATE characters SET resource_type = 'energy', resource = 100, max_resource = 100
+      WHERE class_id IN ('ranger', 'marksman', 'assassin', 'beast_master');
+    `);
+    // 祭司系 → faith, 50, 100
+    db.exec(`
+      UPDATE characters SET resource_type = 'faith', resource = 50, max_resource = 100
+      WHERE class_id IN ('priest', 'high_priest', 'druid', 'inquisitor');
+    `);
+    // 冒險者（預設） → mp, 30, 30
+    db.exec(`
+      UPDATE characters SET resource_type = 'mp', resource = 30, max_resource = 30
+      WHERE class_id = 'adventurer';
+    `);
+
+    console.log('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
+  }
+
   console.log('[DB] 資料庫初始化完成:', DB_PATH);
   return db;
 }

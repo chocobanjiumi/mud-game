@@ -3,9 +3,10 @@
 import type {
   CombatState, CombatAction, CombatActionType, CombatResult,
   CombatantState, DamageResult, CombatLoot, ActiveStatusEffect,
-  MonsterDef, Character, SkillDef, ElementType,
+  MonsterDef, Character, SkillDef, ElementType, ResourceType,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
+import { SKILL_DEFS } from '@game/shared';
 import {
   calculateDamage, calculateDerived, baseStatsToCombat, derivedWithDexLuk,
 } from './damage.js';
@@ -89,6 +90,9 @@ export class CombatEngine {
       maxHp: p.maxHp,
       mp: p.mp,
       maxMp: p.maxMp,
+      resource: p.resource,
+      maxResource: p.maxResource,
+      resourceType: p.resourceType,
       level: p.level,
       classId: p.classId,
       activeEffects: [],
@@ -105,6 +109,9 @@ export class CombatEngine {
       maxHp: m.maxHp,
       mp: m.mp,
       maxMp: m.maxMp,
+      resource: m.mp,
+      maxResource: m.maxMp,
+      resourceType: 'mp' as ResourceType,
       level: m.def.level,
       classId: 'monster',
       activeEffects: [],
@@ -307,6 +314,9 @@ export class CombatEngine {
     // 回合結束：處理狀態效果 tick
     this.processEffectTicks(session, roundLog);
 
+    // 回合結束：處理每回合資源回復
+    this.processResourceRegen(session, roundLog);
+
     // 冷卻遞減
     // (由外部 PlayerManager 處理)
 
@@ -371,6 +381,11 @@ export class CombatEngine {
 
     results.push(dmgResult);
     this.applyDamageResult(session, dmgResult, actor, target, log);
+
+    // 資源系統：劍士系攻擊獲得怒氣
+    if (!dmgResult.isMiss && !dmgResult.isDodged) {
+      this.gainResourceOnAttack(actor, dmgResult, log);
+    }
   }
 
   private executeSkill(
@@ -380,8 +395,9 @@ export class CombatEngine {
     log: string[],
     results: DamageResult[],
   ): void {
-    // 技能的具體效果需要技能定義，這裡做通用處理
-    // 當沒有技能定義時，退化為普通攻擊
+    // 查找技能定義
+    const skillDef = action.skillId ? SKILL_DEFS[action.skillId] : null;
+
     const target = action.targetId
       ? this.findCombatant(session, action.targetId)
       : this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
@@ -391,33 +407,39 @@ export class CombatEngine {
       return;
     }
 
-    // MP 消耗（簡化處理，具體技能定義在未來 skill data 中完善）
-    const mpCost = 5; // 預設消耗
-    if (actor.mp < mpCost) {
-      log.push(`${actor.name}的魔力不足，改為普通攻擊！`);
+    // 資源消耗（使用技能定義的 resourceCost）
+    const resourceCost = skillDef?.resourceCost ?? 5;
+    if (actor.resource < resourceCost) {
+      const resourceLabel = this.getResourceLabel(actor.resourceType);
+      log.push(`${actor.name}的${resourceLabel}不足，改為普通攻擊！`);
       this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
       return;
     }
-    actor.mp -= mpCost;
+    actor.resource -= resourceCost;
 
     const attackerStats = this.getCombatStats(session, actor);
     const targetStats = this.getCombatStats(session, target);
     const targetElement = this.getCombatantElement(session, target.id);
 
+    // 使用技能定義的 damageType、element、multiplier
+    const damageType = skillDef?.damageType ?? 'magical';
+    const element = skillDef?.element ?? 'none';
+    const multiplier = skillDef?.multiplier ?? 1.5;
+
     const dmgResult = calculateDamage({
       attackerId: actor.id,
       targetId: target.id,
-      damageType: 'magical',
-      element: 'none',
+      damageType,
+      element,
       targetElement,
-      multiplier: 1.5, // 技能預設 150% 倍率
+      multiplier,
       attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
 
     results.push(dmgResult);
 
-    const skillName = action.skillId ?? '技能';
+    const skillName = skillDef?.name ?? action.skillId ?? '技能';
     if (dmgResult.isMiss) {
       log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
     } else if (dmgResult.isDodged) {
@@ -428,6 +450,15 @@ export class CombatEngine {
         `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
       );
       this.applyDamageToTarget(session, target, dmgResult.damage, log);
+    }
+
+    // 祭司系：治療/淨化技能觸發信仰增益
+    if (skillDef && actor.resourceType === 'faith') {
+      const isHealSkill = skillDef.special?.isHeal || skillDef.id === 'heal' || skillDef.id === 'mass_heal';
+      const isPurifySkill = skillDef.special?.removeDebuffs || skillDef.id === 'purify';
+      if (isHealSkill || isPurifySkill) {
+        this.gainResourceOnHeal(actor, skillDef.id, log);
+      }
     }
   }
 
@@ -513,6 +544,9 @@ export class CombatEngine {
     );
 
     this.applyDamageToTarget(session, target, result.damage, log);
+
+    // 資源系統：劍士系被擊中獲得怒氣
+    this.gainResourceOnHit(target, log);
 
     // 套用附帶效果
     for (const eff of result.effects) {
@@ -734,12 +768,18 @@ export class CombatEngine {
 
   /** 同步戰鬥結果回原始角色/怪物 */
   private syncBackToEntities(session: CombatSession): void {
-    // 同步玩家 HP/MP
+    // 同步玩家 HP/MP/Resource
     for (const pc of session.state.playerTeam) {
       const char = session.playerCharacters.get(pc.id);
       if (char) {
         char.hp = pc.hp;
         char.mp = pc.mp;
+        char.resource = pc.resource;
+
+        // 戰鬥結束：劍士系怒氣歸零
+        if (char.resourceType === 'rage') {
+          char.resource = 0;
+        }
       }
     }
 
@@ -779,6 +819,83 @@ export class CombatEngine {
       },
       timestamp: Date.now(),
     });
+  }
+
+  // ──────────────────────────────────────────────────────────
+  //  資源系統
+  // ──────────────────────────────────────────────────────────
+
+  /** 攻擊命中時的資源增益（劍士系：怒氣 +10，暴擊 +15） */
+  private gainResourceOnAttack(actor: CombatantState, dmgResult: DamageResult, log: string[]): void {
+    if (actor.resourceType === 'rage') {
+      const gain = dmgResult.isCrit ? 15 : 10;
+      const before = actor.resource;
+      actor.resource = Math.min(actor.maxResource, actor.resource + gain);
+      const actual = actor.resource - before;
+      if (actual > 0) {
+        log.push(`  ${actor.name}獲得了 ${actual} 點怒氣。`);
+      }
+    }
+  }
+
+  /** 被擊中時的資源增益（劍士系：怒氣 +5） */
+  private gainResourceOnHit(target: CombatantState, log: string[]): void {
+    if (target.resourceType === 'rage' && !target.isDead) {
+      const before = target.resource;
+      target.resource = Math.min(target.maxResource, target.resource + 5);
+      const actual = target.resource - before;
+      if (actual > 0) {
+        log.push(`  ${target.name}因受擊獲得了 ${actual} 點怒氣。`);
+      }
+    }
+  }
+
+  /** 治療/淨化時的資源增益（祭司系：信仰） */
+  gainResourceOnHeal(actor: CombatantState, skillId: string, log: string[]): void {
+    if (actor.resourceType === 'faith') {
+      // 淨化 +8，治療 +10
+      const isPurify = skillId === 'purify';
+      const gain = isPurify ? 8 : 10;
+      const before = actor.resource;
+      actor.resource = Math.min(actor.maxResource, actor.resource + gain);
+      const actual = actor.resource - before;
+      if (actual > 0) {
+        log.push(`  ${actor.name}獲得了 ${actual} 點信仰。`);
+      }
+    }
+  }
+
+  /** 每回合資源回復（遊俠系：能量 +15） */
+  private processResourceRegen(session: CombatSession, log: string[]): void {
+    const allCombatants = [
+      ...session.state.playerTeam,
+      ...session.state.enemyTeam,
+    ];
+
+    for (const c of allCombatants) {
+      if (c.isDead) continue;
+
+      // 遊俠系：每回合能量 +15
+      if (c.resourceType === 'energy') {
+        const before = c.resource;
+        c.resource = Math.min(c.maxResource, c.resource + 15);
+        const actual = c.resource - before;
+        if (actual > 0) {
+          log.push(`${c.name}恢復了 ${actual} 點能量。`);
+        }
+      }
+    }
+  }
+
+  /** 取得資源中文名稱 */
+  private getResourceLabel(resourceType: ResourceType): string {
+    const labels: Record<ResourceType, string> = {
+      mp: 'MP',
+      rage: '怒氣',
+      energy: '能量',
+      faith: '信仰',
+    };
+    return labels[resourceType] ?? 'MP';
   }
 
   // ──────────────────────────────────────────────────────────

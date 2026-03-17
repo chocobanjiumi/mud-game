@@ -1,5 +1,7 @@
 // 世界型別定義
 
+import type { GuardianHints } from './player.js';
+
 export type Direction = 'north' | 'south' | 'east' | 'west' | 'up' | 'down';
 
 export interface RoomExit {
@@ -24,6 +26,7 @@ export interface RoomDef {
   mapSymbol: string;
   mapX: number;
   mapY: number;
+  guardianHints?: GuardianHints;
 }
 
 export interface SpawnPoint {
@@ -49,6 +52,7 @@ export interface NpcDef {
   dialogue: DialogueNode[];
   shopItems?: string[];
   classToTeach?: string;
+  guardianHints?: GuardianHints;
 }
 
 export type NpcType = 'merchant' | 'class_trainer' | 'quest' | 'innkeeper' | 'general';

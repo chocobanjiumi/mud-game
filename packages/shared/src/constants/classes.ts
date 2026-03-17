@@ -1,6 +1,6 @@
 // 職業定義
 
-import type { ClassDef, ClassId } from '../types/player.js';
+import type { ClassDef, ClassId, ResourceType } from '../types/player.js';
 
 /** 所有職業定義 */
 export const CLASS_DEFS: Record<ClassId, ClassDef> = {
@@ -12,6 +12,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '初出茅廬的冒險者，尚未選擇職業方向。',
     baseStatBonus: { str: 0, int: 0, dex: 0, vit: 0, luk: 0 },
     advancedClasses: ['swordsman', 'mage', 'ranger', 'priest'],
+    resourceType: 'mp',
+    initialResource: 30,
+    maxResource: 30,
   },
 
   // ─── Tier 1：一轉職業 ───
@@ -23,6 +26,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 5, int: 0, dex: 2, vit: 5, luk: 0 },
     parentClass: 'adventurer',
     advancedClasses: ['knight', 'berserker', 'sword_saint'],
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   mage: {
     id: 'mage',
@@ -32,6 +38,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 0, int: 8, dex: 1, vit: 2, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['archmage', 'warlock', 'chronomancer'],
+    resourceType: 'mp',
+    initialResource: 50,
+    maxResource: 50,
   },
   ranger: {
     id: 'ranger',
@@ -41,6 +50,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 1, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['marksman', 'assassin', 'beast_master'],
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   priest: {
     id: 'priest',
@@ -50,6 +62,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 0, int: 5, dex: 1, vit: 3, luk: 3 },
     parentClass: 'adventurer',
     advancedClasses: ['high_priest', 'druid', 'inquisitor'],
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
 
   // ─── Tier 2：二轉職業 - 劍士系 ───
@@ -60,6 +75,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '重裝坦克，以堅固的防禦保護隊伍。',
     baseStatBonus: { str: 3, int: 0, dex: 0, vit: 8, luk: 0 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   berserker: {
     id: 'berserker',
@@ -68,6 +86,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '暴力輸出型戰士，以生命為代價換取極致傷害。',
     baseStatBonus: { str: 10, int: 0, dex: 2, vit: 0, luk: 0 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
   sword_saint: {
     id: 'sword_saint',
@@ -76,6 +97,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '技巧型劍士，以速制敵，連擊與迴避兼備。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 0, luk: 2 },
     parentClass: 'swordsman',
+    resourceType: 'rage',
+    initialResource: 0,
+    maxResource: 100,
   },
 
   // ─── Tier 2：二轉職業 - 法師系 ───
@@ -86,6 +110,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '元素大師，擅長範圍毀滅性魔法。',
     baseStatBonus: { str: 0, int: 12, dex: 0, vit: 0, luk: 0 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 80,
+    maxResource: 80,
   },
   warlock: {
     id: 'warlock',
@@ -94,6 +121,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '暗系法師，擅長持續傷害與控制。',
     baseStatBonus: { str: 0, int: 8, dex: 0, vit: 2, luk: 2 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 70,
+    maxResource: 70,
   },
   chronomancer: {
     id: 'chronomancer',
@@ -102,6 +132,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '時間魔法師，操控戰場節奏，強力控場與輔助。',
     baseStatBonus: { str: 0, int: 6, dex: 4, vit: 0, luk: 2 },
     parentClass: 'mage',
+    resourceType: 'mp',
+    initialResource: 75,
+    maxResource: 75,
   },
 
   // ─── Tier 2：二轉職業 - 遊俠系 ───
@@ -112,6 +145,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '遠程狙擊專家，以精準射擊消滅敵人。',
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 0, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   assassin: {
     id: 'assassin',
@@ -120,6 +156,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '暗影殺手，潛行暗殺，單體爆發極高。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 0, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
   beast_master: {
     id: 'beast_master',
@@ -128,6 +167,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '與野獸為伴的遊俠，召喚夥伴協同作戰。',
     baseStatBonus: { str: 2, int: 2, dex: 4, vit: 2, luk: 2 },
     parentClass: 'ranger',
+    resourceType: 'energy',
+    initialResource: 100,
+    maxResource: 100,
   },
 
   // ─── Tier 2：二轉職業 - 祭司系 ───
@@ -138,6 +180,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '純治療專精，團隊的生命守護者。',
     baseStatBonus: { str: 0, int: 8, dex: 0, vit: 2, luk: 2 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
   druid: {
     id: 'druid',
@@ -146,6 +191,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '自然之力的使者，能攻能守能治癒。',
     baseStatBonus: { str: 2, int: 4, dex: 2, vit: 2, luk: 2 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
   inquisitor: {
     id: 'inquisitor',
@@ -154,6 +202,9 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '攻擊型祭司，以神聖之光制裁邪惡。',
     baseStatBonus: { str: 3, int: 5, dex: 2, vit: 0, luk: 2 },
     parentClass: 'priest',
+    resourceType: 'faith',
+    initialResource: 50,
+    maxResource: 100,
   },
 };
 
@@ -179,6 +230,24 @@ export function getAdvancedClasses(classId: ClassId): ClassDef[] {
   return classDef.advancedClasses
     .map((id) => CLASS_DEFS[id])
     .filter((c): c is ClassDef => c !== undefined);
+}
+
+/** 取得職業的資源類型（含繼承） */
+export function getClassResourceType(classId: ClassId): ResourceType {
+  const classDef = CLASS_DEFS[classId];
+  if (classDef) return classDef.resourceType;
+  return 'mp'; // fallback
+}
+
+/** 判斷職業是否屬於指定職業系（沿 parentClass 向上追溯） */
+export function isClassFamily(classId: ClassId, familyClassId: ClassId): boolean {
+  let current: ClassId | undefined = classId;
+  while (current) {
+    if (current === familyClassId) return true;
+    const def: ClassDef | undefined = CLASS_DEFS[current];
+    current = def?.parentClass;
+  }
+  return false;
 }
 
 /** 一轉所需等級 */

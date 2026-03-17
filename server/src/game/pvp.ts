@@ -383,11 +383,22 @@ export class PvPManager {
       winnerChar.gold += goldTransfer;
     }
 
-    // PvP 不扣死亡懲罰：恢復雙方 HP/MP
+    // PvP 不扣死亡懲罰：恢復雙方 HP/MP/Resource
     winnerChar.hp = winnerChar.maxHp;
     winnerChar.mp = winnerChar.maxMp;
+    // 資源回復：怒氣歸零，其他回滿
+    if (winnerChar.resourceType === 'rage') {
+      winnerChar.resource = 0;
+    } else {
+      winnerChar.resource = winnerChar.maxResource;
+    }
     loserChar.hp = Math.floor(loserChar.maxHp * 0.8);
     loserChar.mp = Math.floor(loserChar.maxMp * 0.8);
+    if (loserChar.resourceType === 'rage') {
+      loserChar.resource = 0;
+    } else {
+      loserChar.resource = Math.floor(loserChar.maxResource * 0.8);
+    }
 
     // 記錄到資料庫
     try {

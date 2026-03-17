@@ -67,6 +67,7 @@ export function saveCharacter(char: Character): void {
     UPDATE characters SET
       level = ?, exp = ?, class_id = ?,
       hp = ?, mp = ?, max_hp = ?, max_mp = ?,
+      resource = ?, max_resource = ?, resource_type = ?,
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
       free_points = ?, gold = ?, room_id = ?,
       last_login = ?
@@ -74,6 +75,7 @@ export function saveCharacter(char: Character): void {
   `).run(
     char.level, char.exp, char.classId,
     char.hp, char.mp, char.maxHp, char.maxMp,
+    char.resource, char.maxResource, char.resourceType,
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
     char.freePoints, char.gold, char.roomId,
     Math.floor(Date.now() / 1000),
@@ -217,6 +219,9 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     mp: row.mp as number,
     maxHp: row.max_hp as number,
     maxMp: row.max_mp as number,
+    resource: (row.resource as number) ?? 30,
+    maxResource: (row.max_resource as number) ?? 30,
+    resourceType: (row.resource_type as string as import('@game/shared').ResourceType) ?? 'mp',
     stats: {
       str: row.str as number,
       int: row.int_ as number,

@@ -34,7 +34,7 @@ export interface SkillDef {
   learnLevel: number;
   type: SkillType;
   targetType: SkillTargetType;
-  mpCost: number;
+  resourceCost: number;
   cooldown: number;
   damageType: DamageType;
   element: ElementType;

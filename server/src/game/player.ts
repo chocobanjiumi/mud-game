@@ -4,6 +4,7 @@ import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
   EquipmentSlots, SkillDef,
 } from '@game/shared';
+import { CLASS_DEFS } from '@game/shared';
 import { randomUUID } from 'crypto';
 
 // ============================================================
@@ -72,6 +73,7 @@ export class PlayerManager {
     const id = randomUUID();
     const now = Date.now();
 
+    const classDef = CLASS_DEFS['adventurer'];
     const character: Character = {
       id,
       userId,
@@ -83,6 +85,9 @@ export class PlayerManager {
       mp: 30,
       maxHp: 100,
       maxMp: 30,
+      resource: classDef.initialResource,
+      maxResource: classDef.maxResource,
+      resourceType: classDef.resourceType,
       stats: { ...DEFAULT_STATS },
       freePoints: 0,
       gold: 100,
@@ -327,7 +332,7 @@ export class PlayerManager {
     return this.learnedSkills.get(characterId) ?? [];
   }
 
-  /** 取得可用（冷卻完畢 + MP 足夠）的技能 */
+  /** 取得可用（冷卻完畢 + 資源足夠）的技能 */
   getAvailableSkills(characterId: string, allSkillDefs: Map<string, SkillDef>): SkillDef[] {
     const char = this.characters.get(characterId);
     if (!char) return [];
@@ -339,7 +344,7 @@ export class PlayerManager {
       if (ls.currentCooldown > 0) continue;
       const def = allSkillDefs.get(ls.skillId);
       if (!def) continue;
-      if (char.mp < def.mpCost) continue;
+      if (char.resource < def.resourceCost) continue;
       available.push(def);
     }
 
@@ -416,6 +421,12 @@ export class PlayerManager {
     if (!char) return;
     char.hp = char.maxHp;
     char.mp = char.maxMp;
+    // 資源回復：怒氣歸零，其他回滿
+    if (char.resourceType === 'rage') {
+      char.resource = 0;
+    } else {
+      char.resource = char.maxResource;
+    }
   }
 
   // ──────────────────────────────────────────────────────────
@@ -454,6 +465,9 @@ export class PlayerManager {
     char.gold -= goldLost;
     char.hp = Math.floor(char.maxHp * 0.5); // 復活 50% HP
     char.mp = Math.floor(char.maxMp * 0.5); // 復活 50% MP
+    // 資源重置：怒氣歸零，其他回到初始值
+    const classDef = CLASS_DEFS[char.classId];
+    char.resource = classDef ? classDef.initialResource : 0;
     char.roomId = 'village_square'; // 回到新手村廣場
 
     return {

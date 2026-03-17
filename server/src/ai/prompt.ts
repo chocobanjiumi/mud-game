@@ -1,8 +1,9 @@
 // AI Prompt 建構器 — 為 AI Agent 建構遊戲情境 prompt
 // 所有 prompt 內容使用繁體中文
 
-import type { Character, CombatantState, CombatState } from '@game/shared';
+import type { Character, CombatantState, CombatState, GuardianDef } from '@game/shared';
 import { CLASS_DEFS, SKILL_DEFS } from '@game/shared';
+import { GUARDIAN_DEFS } from '../game/guardian.js';
 
 // ============================================================
 //  探索模式 Prompt
@@ -24,6 +25,7 @@ export function buildExplorePrompt(
     items: { id: string; name: string }[];
   },
   partyMemberIds: string[] = [],
+  guardianHint?: string | null,
 ): string {
   const className = CLASS_DEFS[character.classId]?.name ?? '冒險者';
 
@@ -32,6 +34,17 @@ export function buildExplorePrompt(
   // ── 角色基本資訊 ──
   lines.push(`你是「${character.name}」，一名 Lv${character.level} 的${className}。`);
   lines.push(`你的個性：勇敢但謹慎，喜歡探索未知。`);
+
+  // ── 守護靈資訊 ──
+  if (character.guardianId) {
+    const guardianDef = GUARDIAN_DEFS[character.guardianId];
+    if (guardianDef) {
+      lines.push(`你的守護靈是「${guardianDef.name}」，親密度：${character.guardianAffinity ?? 0}/100。`);
+      lines.push(`守護靈性格：${guardianDef.personality}`);
+      lines.push(`請以守護靈的口吻偶爾提供建議，根據其路線（${guardianDef.route}）給出相關提示。`);
+    }
+  }
+
   lines.push('');
 
   // ── 當前位置 ──
@@ -40,7 +53,8 @@ export function buildExplorePrompt(
   lines.push('');
 
   // ── 角色狀態 ──
-  lines.push(`【你的狀態】HP: ${character.hp}/${character.maxHp}  MP: ${character.mp}/${character.maxMp}`);
+  const resourceLabel = getResourceLabelForPrompt(character.resourceType);
+  lines.push(`【你的狀態】HP: ${character.hp}/${character.maxHp}  ${resourceLabel}: ${character.resource}/${character.maxResource}`);
   lines.push(`【金幣】${character.gold}`);
   lines.push('');
 
@@ -83,6 +97,13 @@ export function buildExplorePrompt(
     lines.push(`【隊伍】你目前在 ${partyMemberIds.length} 人的隊伍中。`);
   }
 
+  // ── 守護靈提示 ──
+  // 不將具體的隱藏事件結果放入 prompt，僅傳遞氛圍性暗示
+  if (guardianHint) {
+    lines.push('');
+    lines.push(`【守護靈感知】你的守護靈似乎感覺到了什麼不尋常的氣息……它建議你仔細探索這個區域。`);
+  }
+
   lines.push('');
 
   // ── 可用指令 ──
@@ -121,7 +142,8 @@ export function buildCombatPrompt(
     const isMe = p.id === character.id ? ' [你]' : '';
     const status = p.isDead ? '（已陣亡）' : '';
     const hpBar = buildHpBar(p.hp, p.maxHp);
-    lines.push(`  ${p.name}${isMe} ${hpBar} HP: ${p.hp}/${p.maxHp}  MP: ${p.mp}/${p.maxMp} ${status}`);
+    const pResLabel = getResourceLabelForPrompt(p.resourceType);
+    lines.push(`  ${p.name}${isMe} ${hpBar} HP: ${p.hp}/${p.maxHp}  ${pResLabel}: ${p.resource}/${p.maxResource} ${status}`);
 
     if (p.activeEffects.length > 0) {
       const effects = p.activeEffects.map(e => effectTypeToChinese(e.type));
@@ -144,7 +166,8 @@ export function buildCombatPrompt(
   lines.push('');
 
   // ── 自身狀態 ──
-  lines.push(`【你的狀態】HP: ${character.hp}/${character.maxHp}  MP: ${character.mp}/${character.maxMp}`);
+  const combatResourceLabel = getResourceLabelForPrompt(character.resourceType);
+  lines.push(`【你的狀態】HP: ${character.hp}/${character.maxHp}  ${combatResourceLabel}: ${character.resource}/${character.maxResource}`);
 
   // ── 隊伍資訊 ──
   if (partyMemberIds.length > 1) {
@@ -157,8 +180,8 @@ export function buildCombatPrompt(
     lines.push('');
     lines.push('【可用技能】');
     for (const skill of availableSkills) {
-      const mpNote = skill.mpCost > character.mp ? '（MP不足）' : '';
-      lines.push(`  ${skill.name}（MP: ${skill.mpCost}）— ${skill.description}${mpNote}`);
+      const resourceNote = skill.resourceCost > character.resource ? '（資源不足）' : '';
+      lines.push(`  ${skill.name}（消耗: ${skill.resourceCost}）— ${skill.description}${resourceNote}`);
     }
   }
 
@@ -245,8 +268,8 @@ function buildHpBar(hp: number, maxHp: number): string {
 /** 取得角色可用的技能（供 prompt 使用） */
 function getAvailableSkillsForPrompt(
   character: Character,
-): { name: string; mpCost: number; description: string }[] {
-  const skills: { name: string; mpCost: number; description: string }[] = [];
+): { name: string; resourceCost: number; description: string }[] {
+  const skills: { name: string; resourceCost: number; description: string }[] = [];
 
   for (const [_skillId, skillDef] of Object.entries(SKILL_DEFS)) {
     if (skillDef.type !== 'active') continue;
@@ -259,10 +282,71 @@ function getAvailableSkillsForPrompt(
 
     skills.push({
       name: skillDef.name,
-      mpCost: skillDef.mpCost,
+      resourceCost: skillDef.resourceCost,
       description: skillDef.description,
     });
   }
 
   return skills;
+}
+
+// ============================================================
+//  守護靈系統 Prompt
+// ============================================================
+
+/**
+ * 建構包含守護靈的系統 prompt
+ * 當玩家有守護靈時，AI 會以守護靈的身份提供額外的角色扮演
+ */
+export function buildGuardianSystemPrompt(character: Character): string | null {
+  if (!character.guardianId) return null;
+
+  const guardianDef = GUARDIAN_DEFS[character.guardianId];
+  if (!guardianDef) return null;
+
+  const affinity = character.guardianAffinity ?? 0;
+
+  const lines: string[] = [];
+  lines.push(`你同時扮演玩家的守護靈「${guardianDef.name}」。`);
+  lines.push(`守護靈的身份：${guardianDef.description}`);
+  lines.push(`守護靈的說話風格：${guardianDef.personality}`);
+  lines.push(`感知路線：${guardianDef.route}（${routeDescription(guardianDef.route)}）`);
+  lines.push(`當前親密度：${affinity}/100`);
+  lines.push('');
+  lines.push('守護靈行為準則：');
+  lines.push('- 在場景描述後，偶爾以守護靈的口吻補充感知到的資訊');
+  lines.push('- 根據感知路線提供對應類型的提示（生物/寶藏/靈魂）');
+  lines.push('- 親密度越高，給出的提示越詳細和有用');
+  lines.push('- 保持角色扮演的沉浸感，不要打破第四面牆');
+
+  if (affinity < 30) {
+    lines.push('- 目前親密度較低，守護靈的態度比較冷淡，提示較為簡略');
+  } else if (affinity < 70) {
+    lines.push('- 守護靈已經開始信任玩家，會給出更多建議');
+  } else {
+    lines.push('- 守護靈與玩家羈絆深厚，會主動分享更多秘密和詳細提示');
+  }
+
+  return lines.join('\n');
+}
+
+/** 資源類型對應的顯示名稱 */
+function getResourceLabelForPrompt(resourceType?: string): string {
+  const map: Record<string, string> = {
+    mp: 'MP',
+    rage: '怒氣',
+    energy: '能量',
+    faith: '信仰',
+  };
+  return map[resourceType ?? 'mp'] ?? 'MP';
+}
+
+/** 路線說明 */
+function routeDescription(route: string): string {
+  const map: Record<string, string> = {
+    creature: '能感知隱藏的生物、陷阱與伏擊',
+    treasure: '能感知隱藏的物品、寶箱與秘密通道',
+    spirit: '能感知NPC的秘密、幽靈NPC與被遺忘的知識',
+  };
+  return map[route] ?? route;
 }
