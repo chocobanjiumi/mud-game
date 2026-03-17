@@ -368,6 +368,16 @@ export function initDb(): Database.Database {
     console.log('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
   }
 
+  // ── Migration: 新增 marked_location 欄位（傳送石標記） ──
+  {
+    const charColumns = db.prepare("PRAGMA table_info(characters)").all() as { name: string }[];
+    const charColumnNames = new Set(charColumns.map(c => c.name));
+    if (!charColumnNames.has('marked_location')) {
+      db.exec(`ALTER TABLE characters ADD COLUMN marked_location TEXT`);
+      console.log('[DB] Migration: 已新增 marked_location 欄位至 characters 表');
+    }
+  }
+
   console.log('[DB] 資料庫初始化完成:', DB_PATH);
   return db;
 }

@@ -57,7 +57,12 @@ export interface ItemStats {
 }
 
 export interface ItemUseEffect {
-  type: 'heal_hp' | 'heal_mp' | 'heal_both' | 'buff' | 'teleport';
+  type: 'heal_hp' | 'heal_mp' | 'heal_both' | 'buff' | 'teleport'
+    | 'buff_atk' | 'buff_matk' | 'buff_dodge' | 'buff_def' | 'buff_crit' | 'buff_all'
+    | 'teleport_home' | 'teleport_mark' | 'mark_location'
+    | 'food_hp' | 'food_hp_resource' | 'food_atk' | 'food_matk' | 'food_restore' | 'food_feast'
+    | 'combat_escape' | 'combat_blind' | 'combat_stun' | 'combat_damage'
+    | 'open_chest_bronze' | 'open_chest_silver' | 'open_chest_gold';
   value: number;
   value2?: number;
   duration?: number;

@@ -440,6 +440,233 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '祭司能看見死者的靈魂，這座大廳裡徘徊著許多迷失的英靈。',
     },
   },
+  // ─── 翠綠平原 NPC ───────────────────────────────────────
+
+  old_hunter: {
+    id: 'old_hunter',
+    name: '老獵人',
+    title: '資深獵手',
+    roomId: 'hunter_lodge',
+    type: 'merchant',
+    shopItems: [
+      'short_bow', 'hunting_bow', 'antidote',
+      'small_hp_potion', 'medium_hp_potion',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '嗯？有客人啊。我是這片平原的老獵人，在這山林裡打獵四十多年了。' +
+          '你要是需要獵具或者想知道附近的獸群情報，問我就對了。',
+        options: [
+          { text: '我想看看你的獵具。', nextId: 'shop' },
+          { text: '能教我追蹤獵物嗎？', nextId: 'tracking' },
+          { text: '附近有什麼危險的獵物？', nextId: 'dangerous_prey' },
+          { text: '告辭了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '來看看吧，都是我精心挑選的好東西。弓弦是用雪狼筋製的，結實耐用。' +
+          '出門打獵前記得帶足藥水和解毒劑——平原上的毒蛇可不講道理。',
+        action: { type: 'shop', data: { shopType: 'hunting' } },
+        options: [
+          { text: '謝謝。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'tracking',
+        text: '追蹤獵物的訣竅在於觀察。看地上的腳印、折斷的樹枝、還有空氣中的氣味。' +
+          '野狼會在樹上留下爪痕標記領地，看到那種痕跡就要提高警覺。' +
+          '記住——在森林裡，你不是唯一的獵人。',
+        options: [
+          { text: '受教了。', nextId: 'farewell' },
+          { text: '附近有什麼危險的獵物？', nextId: 'dangerous_prey' },
+        ],
+      },
+      {
+        id: 'dangerous_prey',
+        text: '向日葵田那邊有田鼠和烏鴉，不算危險。但再往北的森林裡，我曾見過一頭銀白色的狼王……' +
+          '那傢伙不是普通獵人能對付的。還有那些哥布林，最近越來越囂張了，你要小心。',
+        options: [
+          { text: '我會注意的。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '去吧，記得風向——順風接近獵物，逆風觀察敵情。老獵人的忠告。',
+      },
+    ],
+    guardianHints: {
+      creature: '老獵人的獵犬看似懶散，實則警覺性極高——牠能嗅到方圓百公尺內的危險。',
+      treasure: '壁爐上方那把看似老舊的獵弓，實際上是傳說中的「風語者」——能聽見風中的獵物氣息。',
+      spirit: '老獵人眼中偶爾閃過深沉的哀傷，據說他的搭檔在多年前的一次狩獵中失蹤在暗影森林深處。',
+    },
+  },
+
+  // ─── 湖畔城鎮擴充 NPC ─────────────────────────────────
+
+  bartender: {
+    id: 'bartender',
+    name: '酒保',
+    title: '酒館老闆',
+    roomId: 'tavern',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion', 'medium_hp_potion',
+      'small_mp_potion', 'medium_mp_potion',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '歡迎光臨「醉龍亭」！我是這兒的酒保。來一杯解解乏？' +
+          '或者你想聽聽最近的消息？在這酒館裡，什麼情報都能打聽到。',
+        options: [
+          { text: '來點吃的喝的。', nextId: 'shop' },
+          { text: '有什麼有趣的消息嗎？', nextId: 'rumors' },
+          { text: '不用了，就坐坐。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '這是今天的菜單。我們的麥酒可是用湖畔最好的麥子釀的，冒險者們的最愛。' +
+          '另外也有一些藥水，出門冒險前補給一下總沒壞處。',
+        action: { type: 'shop', data: { shopType: 'tavern' } },
+        options: [
+          { text: '謝了老闆。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rumors',
+        text: '最近的消息嘛……聽說水晶洞窟深處出現了一條水晶龍，好幾支冒險隊進去就沒回來。' +
+          '還有，北邊的冰封雪原似乎有異動，雪狼群開始南移了——可能有什麼東西把牠們趕了出來。' +
+          '對了，角落那桌的傢伙說他在湖底看到了古代遺跡的入口……不過他喝了不少，真假難辨。',
+        options: [
+          { text: '有意思，來杯酒聽更多。', nextId: 'shop' },
+          { text: '謝謝情報。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '慢走啊！下次路過記得來坐坐，好故事配好酒，人生一大樂事。',
+      },
+    ],
+    guardianHints: {
+      creature: '角落裡那位沉默的飲客散發著不尋常的氣息——他可能是一位隱退的傳奇冒險者。',
+      treasure: '吧台下方有一排落了灰的酒桶，據說其中一桶裡藏著某位海盜船長的寶藏線索。',
+      spirit: '酒保看似普通，但他的眼神偶爾會變得銳利如刀——這個人有不為人知的過去。',
+    },
+  },
+
+  librarian: {
+    id: 'librarian',
+    name: '圖書館員',
+    title: '知識守護者',
+    roomId: 'town_library',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '噓……這裡是圖書館，請保持安靜。我是這裡的管理員。' +
+          '如果你對這片大陸的歷史或怪物的弱點有興趣，我可以幫你找到相關的書籍。' +
+          '知識就是力量——這句話在冒險中尤為適用。',
+        options: [
+          { text: '我想了解這片大陸的歷史。', nextId: 'lore' },
+          { text: '有關於怪物弱點的書嗎？', nextId: 'monster_lore' },
+          { text: '你有什麼推薦的書？', nextId: 'recommend' },
+          { text: '打擾了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'lore',
+        text: '這片大陸曾經被一個強大的地底種族統治，他們在水晶洞窟中建造了輝煌的文明。' +
+          '後來一場被稱為「暗影浩劫」的災難席捲了大陸，地底種族為了封印深淵中的邪惡而犧牲了自己。' +
+          '如今，暗影森林中殘留的暗影之力就是那場浩劫的遺痕。' +
+          '閱讀這些記載的冒險者將獲得寶貴的經驗。',
+        options: [
+          { text: '還有更多的記載嗎？', nextId: 'recommend' },
+          { text: '感謝你的講解。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'monster_lore',
+        text: '怪物圖鑑在第三排書架。讓我給你總結一些要點——' +
+          '暗影系的怪物怕光屬性攻擊，冰系怪物用火系魔法最有效。' +
+          '而Boss級別的怪物通常有特殊的行為模式，仔細觀察牠們的動作是勝利的關鍵。' +
+          '多學多看，戰鬥起來會輕鬆許多。',
+        options: [
+          { text: '非常有用，謝謝！', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'recommend',
+        text: '我推薦這幾本：《地底種族年鑑》記載了水晶洞窟的秘密，' +
+          '《暗影之力研究》解釋了暗影森林的異變原因，' +
+          '《元素親和手冊》能幫助你理解元素相剋的原理。' +
+          '好好閱讀，你會發現冒險中許多問題的答案其實就藏在書中。',
+        options: [
+          { text: '我會好好研讀的。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '知識之門永遠為求知者敞開。有任何疑問都可以再來找我。',
+      },
+    ],
+    guardianHints: {
+      creature: '禁區書架上的某些書籍被魔法鎖鏈束縛——裡面封印著以知識為食的危險生物。',
+      treasure: '圖書館員正在研究的那份泛黃地圖上，標記著一處從未被探索過的上古遺跡。',
+      spirit: '圖書館員的銀髮暗示著她並非普通人類——她可能是長壽種族的後裔，親歷了書中記載的許多事件。',
+    },
+  },
+
+  prison_guard: {
+    id: 'prison_guard',
+    name: '獄卒',
+    title: '監獄看守',
+    roomId: 'prison',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '站住！這裡是監獄，閒人勿入。……嗯？你是冒險者？' +
+          '那就不同了。最近王國的治安不太好，要是你在外面抓到了通緝犯，可以帶到這裡來。' +
+          '會有相應的賞金。',
+        options: [
+          { text: '有什麼通緝犯的情報嗎？', nextId: 'wanted' },
+          { text: '監獄裡關了什麼人？', nextId: 'prisoners' },
+          { text: '沒事，我走了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'wanted',
+        text: '目前的通緝名單上有幾個重要的傢伙：海盜船長——在東方海岸橫行霸道；' +
+          '暗影森林的盜賊團頭目——專門劫掠旅人；還有一個自稱「暗黑法師」的傢伙在湖畔附近出沒。' +
+          '擊敗他們或者找到他們的據點情報都有賞金。',
+        options: [
+          { text: '我會留意的。', nextId: 'farewell' },
+          { text: '監獄裡關了什麼人？', nextId: 'prisoners' },
+        ],
+      },
+      {
+        id: 'prisoners',
+        text: '大多數是小偷和酒鬼，不值一提。但最深處的牢房裡……那個我不能說。' +
+          '你只需要知道那扇門上的封印紋章不是擺著好看的就行了。' +
+          '王國的某些秘密，知道得越少越安全。',
+        options: [
+          { text: '我明白了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '記住——在這座城鎮裡，王國的法律高於一切。別惹麻煩。',
+      },
+    ],
+    guardianHints: {
+      creature: '最深處牢房的封印紋章偶爾會閃爍——裡面關押的絕非普通犯人，可能是某種被捕獲的強大生物。',
+      treasure: '獄卒輪班交接時，走廊盡頭的儲物間門會短暫開啟，裡面存放著從犯人身上沒收的違禁品和贓物。',
+      spirit: '獄卒看似粗獷，但他對每個囚犯都記得清清楚楚。他的記憶力和觀察力遠超常人——曾經是王國情報部門的成員。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

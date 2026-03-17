@@ -70,6 +70,7 @@ export function saveCharacter(char: Character): void {
       resource = ?, max_resource = ?, resource_type = ?,
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
       free_points = ?, gold = ?, room_id = ?,
+      marked_location = ?,
       last_login = ?
     WHERE id = ?
   `).run(
@@ -78,6 +79,7 @@ export function saveCharacter(char: Character): void {
     char.resource, char.maxResource, char.resourceType,
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
     char.freePoints, char.gold, char.roomId,
+    char.markedLocation ?? null,
     Math.floor(Date.now() / 1000),
     char.id,
   );
@@ -234,6 +236,7 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     roomId: row.room_id as string,
     isAi: (row.is_ai as number) === 1,
     agentId: row.agent_id as string | undefined,
+    markedLocation: (row.marked_location as string) ?? undefined,
     equipment,
     createdAt: row.created_at as number,
     lastLogin: row.last_login as number,

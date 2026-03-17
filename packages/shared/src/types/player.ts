@@ -30,7 +30,9 @@ export type ClassId =
   // 二轉 - 遊俠系
   | 'marksman' | 'assassin' | 'beast_master'
   // 二轉 - 祭司系
-  | 'high_priest' | 'druid' | 'inquisitor';
+  | 'high_priest' | 'druid' | 'inquisitor'
+  // 怪物專用
+  | 'monster';
 
 export type ClassTier = 0 | 1 | 2;
 
@@ -81,6 +83,8 @@ export interface Character {
   equipment: EquipmentSlots;
   createdAt: number;
   lastLogin: number;
+  // 傳送石標記位置
+  markedLocation?: string;
   // 守護靈系統
   guardianId?: string;
   guardianRoute?: GuardianRoute;

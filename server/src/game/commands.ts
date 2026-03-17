@@ -19,7 +19,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId } from '@game/shared';
+import type { Character, ClassId, StatusEffectType } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -521,34 +521,431 @@ function cmdUse(session: WsSession, itemName: string): void {
   const def = ITEM_DEFS[match.itemId];
   if (!def?.useEffect) { sendError(session.sessionId, `「${def?.name ?? itemName}」無法使用。`); return; }
 
-  removeInventoryItem(char.id, match.itemId, 1);
   const effect = def.useEffect;
-  let message = `你使用了「${def.name}」。`;
+  const inCombat = isInCombat(char.id);
+  const combatId = getPlayerCombatId(char.id);
 
+  // ─── 基礎回復藥水（保留原有邏輯） ───
   if (effect.type === 'heal_hp') {
+    removeInventoryItem(char.id, match.itemId, 1);
     const healed = Math.min(effect.value, char.maxHp - char.hp);
     char.hp = Math.min(char.maxHp, char.hp + effect.value);
-    message += ` 回復了 ${healed} HP。`;
-  } else if (effect.type === 'heal_mp') {
-    // heal_mp 現在恢復 resource（而非舊的 mp）
+    saveCharacter(char);
+    sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} HP。`);
+    return;
+  }
+
+  if (effect.type === 'heal_mp') {
+    removeInventoryItem(char.id, match.itemId, 1);
     if (char.resourceType === 'rage') {
-      message += ` 但怒氣無法透過藥水恢復。`;
+      sendSystem(session.sessionId, `你使用了「${def.name}」，但怒氣無法透過藥水恢復。`);
     } else {
       const healed = Math.min(effect.value, char.maxResource - char.resource);
       char.resource = Math.min(char.maxResource, char.resource + effect.value);
       const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
-      message += ` 回復了 ${healed} ${resourceLabel}。`;
+      saveCharacter(char);
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} ${resourceLabel}。`);
     }
-  } else if (effect.type === 'heal_both') {
+    return;
+  }
+
+  if (effect.type === 'heal_both') {
+    removeInventoryItem(char.id, match.itemId, 1);
     char.hp = Math.min(char.maxHp, char.hp + effect.value);
     if (char.resourceType !== 'rage') {
       char.resource = Math.min(char.maxResource, char.resource + (effect.value2 ?? 0));
     }
-    message += ` 回復了 HP 和資源。`;
+    saveCharacter(char);
+    sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 HP 和資源。`);
+    return;
   }
 
-  saveCharacter(char);
-  sendSystem(session.sessionId, message);
+  // ─── 增益藥水 ───
+  if (effect.type === 'buff_atk' || effect.type === 'buff_matk' || effect.type === 'buff_dodge'
+    || effect.type === 'buff_def' || effect.type === 'buff_crit' || effect.type === 'buff_all') {
+    if (!inCombat || !combatId) {
+      sendError(session.sessionId, '增益藥水只能在戰鬥中使用！');
+      return;
+    }
+    const combatState = combat.getCombatState(combatId);
+    if (!combatState) { sendError(session.sessionId, '戰鬥狀態異常。'); return; }
+    const playerCombatant = combatState.playerTeam.find(p => p.id === char.id);
+    if (!playerCombatant) { sendError(session.sessionId, '找不到你的戰鬥資料。'); return; }
+
+    removeInventoryItem(char.id, match.itemId, 1);
+    const duration = effect.duration ?? 5;
+    const value = effect.value;
+
+    const buffMapping: Record<string, { effectType: StatusEffectType; desc: string }> = {
+      buff_atk:   { effectType: 'atk_up',   desc: `攻擊力提升${value}%` },
+      buff_matk:  { effectType: 'matk_up',   desc: `魔法攻擊力提升${value}%` },
+      buff_dodge: { effectType: 'dodge_up',  desc: `閃避率提升${value}%` },
+      buff_def:   { effectType: 'def_up',    desc: `防禦力提升${value}%` },
+      buff_crit:  { effectType: 'crit_up',   desc: `暴擊率提升${value}%` },
+      buff_all:   { effectType: 'atk_up',    desc: `全能力提升${value}%` },
+    };
+
+    const info = buffMapping[effect.type];
+
+    // Determine which buff effect types will be applied
+    const buffTypesToApply: StatusEffectType[] = effect.type === 'buff_all'
+      ? ['atk_up', 'matk_up', 'def_up', 'mdef_up', 'dodge_up', 'crit_up']
+      : [info.effectType];
+
+    // Check for existing buffs of the same type and remove them (no stacking)
+    let replaced = false;
+    for (const bt of buffTypesToApply) {
+      const existingIdx = playerCombatant.activeEffects.findIndex(e => e.type === bt && e.source === 'potion');
+      if (existingIdx !== -1) {
+        playerCombatant.activeEffects.splice(existingIdx, 1);
+        replaced = true;
+      }
+    }
+
+    // Apply new buffs
+    for (const bt of buffTypesToApply) {
+      playerCombatant.activeEffects.push({
+        type: bt, value, duration, source: 'potion',
+        remainingDuration: duration,
+      });
+    }
+
+    if (replaced) {
+      sendSystem(session.sessionId, `你使用了「${def.name}」，新的${info.desc}效果覆蓋了舊的效果，持續${duration}回合！`);
+    } else {
+      sendSystem(session.sessionId, `你使用了「${def.name}」，${info.desc}，持續${duration}回合！`);
+    }
+    return;
+  }
+
+  // ─── 傳送道具 ───
+  if (effect.type === 'teleport_home') {
+    if (inCombat) { sendError(session.sessionId, '戰鬥中無法使用傳送道具！'); return; }
+    removeInventoryItem(char.id, match.itemId, 1);
+    const prevRoom = char.roomId;
+    char.roomId = 'village_square';
+    saveCharacter(char);
+    sendSystem(session.sessionId, `你使用了「${def.name}」，一陣光芒閃過，你被傳送回了村莊廣場！`);
+    return;
+  }
+
+  if (effect.type === 'teleport_mark') {
+    if (inCombat) { sendError(session.sessionId, '戰鬥中無法使用傳送道具！'); return; }
+    if (!char.markedLocation) {
+      sendError(session.sessionId, '你還沒有標記任何位置！請先使用記憶水晶標記一個位置。');
+      return;
+    }
+    removeInventoryItem(char.id, match.itemId, 1);
+    const targetRoom = world.getRoomInfo(char.markedLocation);
+    const roomName = targetRoom?.room.name ?? char.markedLocation;
+    char.roomId = char.markedLocation;
+    saveCharacter(char);
+    sendSystem(session.sessionId, `你使用了「${def.name}」，一陣光芒閃過，你被傳送到了「${roomName}」！`);
+    return;
+  }
+
+  if (effect.type === 'mark_location') {
+    if (inCombat) { sendError(session.sessionId, '戰鬥中無法使用傳送道具！'); return; }
+    removeInventoryItem(char.id, match.itemId, 1);
+    char.markedLocation = char.roomId;
+    saveCharacter(char);
+    const currentRoom = world.getRoomInfo(char.roomId);
+    const roomName = currentRoom?.room.name ?? char.roomId;
+    sendSystem(session.sessionId, `你使用了「${def.name}」，將當前位置「${roomName}」記錄了下來。可以使用傳送石傳送至此。`);
+    return;
+  }
+
+  // ─── 食物/料理 ───
+  if (effect.type === 'food_hp' || effect.type === 'food_hp_resource' || effect.type === 'food_atk'
+    || effect.type === 'food_matk' || effect.type === 'food_restore' || effect.type === 'food_feast') {
+
+    // 食物buff需要戰鬥中使用（除了 food_restore 立即回復可在非戰鬥使用）
+    if (effect.type === 'food_restore') {
+      removeInventoryItem(char.id, match.itemId, 1);
+      const hpRestore = Math.floor(char.maxHp * 0.3);
+      const resRestore = Math.floor(char.maxResource * 0.3);
+      char.hp = Math.min(char.maxHp, char.hp + hpRestore);
+      if (char.resourceType !== 'rage') {
+        char.resource = Math.min(char.maxResource, char.resource + resRestore);
+      }
+      saveCharacter(char);
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${hpRestore} HP 和 ${resRestore} 資源！`);
+      return;
+    }
+
+    // 其他食物buff需要戰鬥中使用
+    if (!inCombat || !combatId) {
+      // 非戰鬥中也允許使用食物，但效果存到角色狀態（下次戰鬥時生效）
+      // 簡化處理：非戰鬥中直接給予即時效果
+      if (effect.type === 'food_hp') {
+        removeInventoryItem(char.id, match.itemId, 1);
+        const totalHeal = Math.floor(char.maxHp * (effect.value / 100) * (effect.duration ?? 3));
+        char.hp = Math.min(char.maxHp, char.hp + totalHeal);
+        saveCharacter(char);
+        sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${totalHeal} HP！`);
+        return;
+      }
+      if (effect.type === 'food_hp_resource') {
+        removeInventoryItem(char.id, match.itemId, 1);
+        const totalHpHeal = Math.floor(char.maxHp * (effect.value / 100) * (effect.duration ?? 3));
+        const totalResHeal = Math.floor(char.maxResource * (effect.value / 100) * (effect.duration ?? 3));
+        char.hp = Math.min(char.maxHp, char.hp + totalHpHeal);
+        if (char.resourceType !== 'rage') {
+          char.resource = Math.min(char.maxResource, char.resource + totalResHeal);
+        }
+        saveCharacter(char);
+        sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${totalHpHeal} HP 和 ${totalResHeal} 資源！`);
+        return;
+      }
+      // food_atk, food_matk, food_feast 非戰鬥中只給回復效果
+      removeInventoryItem(char.id, match.itemId, 1);
+      if (effect.type === 'food_atk') {
+        const hpHeal = Math.floor(char.maxHp * 0.2);
+        char.hp = Math.min(char.maxHp, char.hp + hpHeal);
+        saveCharacter(char);
+        sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${hpHeal} HP！（攻擊力提升效果需在戰鬥中生效）`);
+      } else if (effect.type === 'food_matk') {
+        const resHeal = Math.floor(char.maxResource * 0.2);
+        if (char.resourceType !== 'rage') {
+          char.resource = Math.min(char.maxResource, char.resource + resHeal);
+        }
+        saveCharacter(char);
+        sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${resHeal} 資源！（魔攻提升效果需在戰鬥中生效）`);
+      } else {
+        saveCharacter(char);
+        sendSystem(session.sessionId, `你使用了「${def.name}」，感覺精神奕奕！（全能力提升效果需在戰鬥中生效）`);
+      }
+      return;
+    }
+
+    // 戰鬥中使用食物
+    const combatState = combat.getCombatState(combatId);
+    if (!combatState) { sendError(session.sessionId, '戰鬥狀態異常。'); return; }
+    const playerCombatant = combatState.playerTeam.find(p => p.id === char.id);
+    if (!playerCombatant) { sendError(session.sessionId, '找不到你的戰鬥資料。'); return; }
+
+    // 檢查食物buff疊加：同一時間只能有一個食物效果
+    const foodSource = 'food';
+    const hasFoodBuff = playerCombatant.activeEffects.some(e => e.source === foodSource);
+    if (hasFoodBuff) {
+      sendError(session.sessionId, '你已經有食物效果了，同一時間只能使用一種食物！');
+      return;
+    }
+
+    removeInventoryItem(char.id, match.itemId, 1);
+    const duration = effect.duration ?? 3;
+
+    if (effect.type === 'food_hp') {
+      // HoT: 每回合回復 15% HP
+      const tickHeal = Math.floor(char.maxHp * (effect.value / 100));
+      playerCombatant.activeEffects.push({
+        type: 'regen', value: tickHeal, duration, source: foodSource,
+        remainingDuration: duration, tickHealing: tickHeal,
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，每回合回復 ${tickHeal} HP，持續${duration}回合！`);
+    } else if (effect.type === 'food_hp_resource') {
+      const tickHpHeal = Math.floor(char.maxHp * (effect.value / 100));
+      const tickResHeal = Math.floor(char.maxResource * (effect.value / 100));
+      playerCombatant.activeEffects.push({
+        type: 'regen', value: tickHpHeal, duration, source: foodSource,
+        remainingDuration: duration, tickHealing: tickHpHeal,
+      });
+      playerCombatant.activeEffects.push({
+        type: 'mana_regen', value: tickResHeal, duration, source: foodSource,
+        remainingDuration: duration, tickHealing: tickResHeal,
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，每回合回復 ${tickHpHeal} HP 和 ${tickResHeal} 資源，持續${duration}回合！`);
+    } else if (effect.type === 'food_atk') {
+      // 回復 20% HP + ATK +3%
+      const hpHeal = Math.floor(char.maxHp * 0.2);
+      playerCombatant.hp = Math.min(playerCombatant.maxHp, playerCombatant.hp + hpHeal);
+      playerCombatant.activeEffects.push({
+        type: 'atk_up', value: effect.value, duration, source: foodSource,
+        remainingDuration: duration,
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${hpHeal} HP，攻擊力提升${effect.value}%，持續${duration}回合！`);
+    } else if (effect.type === 'food_matk') {
+      // 回復 20% resource + MATK +3%
+      const resHeal = Math.floor(char.maxResource * 0.2);
+      if (playerCombatant.resourceType !== 'rage') {
+        playerCombatant.resource = Math.min(playerCombatant.maxResource, playerCombatant.resource + resHeal);
+      }
+      playerCombatant.activeEffects.push({
+        type: 'matk_up', value: effect.value, duration, source: foodSource,
+        remainingDuration: duration,
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${resHeal} 資源，魔攻提升${effect.value}%，持續${duration}回合！`);
+    } else if (effect.type === 'food_feast') {
+      // 全屬性 +3%
+      const allBuffTypes: StatusEffectType[] = ['atk_up', 'matk_up', 'def_up', 'mdef_up', 'dodge_up', 'crit_up'];
+      for (const bt of allBuffTypes) {
+        playerCombatant.activeEffects.push({
+          type: bt, value: effect.value, duration, source: foodSource,
+          remainingDuration: duration,
+        });
+      }
+      sendSystem(session.sessionId, `你使用了「${def.name}」，全能力提升${effect.value}%，持續${duration}回合！`);
+    }
+    return;
+  }
+
+  // ─── 戰鬥道具 ───
+  if (effect.type === 'combat_escape' || effect.type === 'combat_blind'
+    || effect.type === 'combat_stun' || effect.type === 'combat_damage') {
+    if (!inCombat || !combatId) {
+      sendError(session.sessionId, '戰鬥道具只能在戰鬥中使用！');
+      return;
+    }
+
+    if (effect.type === 'combat_escape') {
+      removeInventoryItem(char.id, match.itemId, 1);
+      combat.setGuaranteedFlee(combatId);
+      sendSystem(session.sessionId, `你使用了「${def.name}」，煙霧瀰漫中成功逃離了戰鬥！`);
+      return;
+    }
+
+    const enemy = combat.getFirstAliveEnemy(combatId);
+    if (!enemy) { sendError(session.sessionId, '沒有可攻擊的敵人。'); return; }
+
+    removeInventoryItem(char.id, match.itemId, 1);
+
+    if (effect.type === 'combat_blind') {
+      combat.applyEffectToEnemy(combatId, enemy.id, {
+        type: 'slow', // slow reduces accuracy conceptually
+        value: effect.value,
+        duration: effect.duration ?? 1,
+        source: 'item_blind',
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，${enemy.name}被閃光致盲，命中率降低${effect.value}%！`);
+    } else if (effect.type === 'combat_stun') {
+      combat.applyEffectToEnemy(combatId, enemy.id, {
+        type: 'stun',
+        value: 1,
+        duration: effect.duration ?? 1,
+        source: 'item_stun',
+      });
+      sendSystem(session.sessionId, `你使用了「${def.name}」，${enemy.name}被困住了，下回合無法行動！`);
+    } else if (effect.type === 'combat_damage') {
+      const result = combat.dealDamageToEnemy(combatId, enemy.id, effect.value);
+      if (result) {
+        let msg = `你使用了「${def.name}」，對${enemy.name}造成了 ${result.dealt} 點傷害！`;
+        if (result.killed) msg += ` ${enemy.name}被擊敗了！`;
+        sendSystem(session.sessionId, msg);
+      }
+    }
+    return;
+  }
+
+  // ─── 寶箱開啟 ───
+  if (effect.type === 'open_chest_bronze' || effect.type === 'open_chest_silver' || effect.type === 'open_chest_gold') {
+    const chestTier = effect.type === 'open_chest_bronze' ? 'bronze'
+      : effect.type === 'open_chest_silver' ? 'silver' : 'gold';
+    const keyId = `${chestTier}_key`;
+    const keyDef = ITEM_DEFS[keyId];
+    const keyName = keyDef?.name ?? `${chestTier}鑰匙`;
+
+    // 檢查是否有對應鑰匙
+    const hasKey = inv.some(i => i.itemId === keyId && i.quantity >= 1);
+    if (!hasKey) {
+      sendError(session.sessionId, `你需要「${keyName}」才能打開這個寶箱！`);
+      return;
+    }
+
+    // 消耗寶箱和鑰匙
+    removeInventoryItem(char.id, match.itemId, 1);
+    removeInventoryItem(char.id, keyId, 1);
+
+    // 隨機掉落
+    const lootTable = getChestLootTable(chestTier);
+    const numItems = chestTier === 'bronze' ? 1 + Math.floor(Math.random() * 2)
+      : chestTier === 'silver' ? 2 + Math.floor(Math.random() * 2)
+      : 2 + Math.floor(Math.random() * 3);
+
+    const obtainedItems: string[] = [];
+    let goldReward = 0;
+
+    for (let i = 0; i < numItems; i++) {
+      const roll = Math.random();
+      // 有一定機率掉金幣
+      if (roll < 0.3) {
+        const goldAmount = chestTier === 'bronze' ? 20 + Math.floor(Math.random() * 80)
+          : chestTier === 'silver' ? 100 + Math.floor(Math.random() * 300)
+          : 500 + Math.floor(Math.random() * 1000);
+        goldReward += goldAmount;
+      } else {
+        const lootItem = lootTable[Math.floor(Math.random() * lootTable.length)];
+        addInventoryItem(char.id, lootItem, 1);
+        const lootDef = ITEM_DEFS[lootItem];
+        obtainedItems.push(lootDef?.name ?? lootItem);
+      }
+    }
+
+    if (goldReward > 0) {
+      char.gold += goldReward;
+      saveCharacter(char);
+    }
+
+    let msg = `你使用「${keyName}」打開了「${def.name}」！\n獲得了：`;
+    if (obtainedItems.length > 0) msg += `\n  ${obtainedItems.join('、')}`;
+    if (goldReward > 0) msg += `\n  ${goldReward} 金幣`;
+    if (obtainedItems.length === 0 && goldReward === 0) msg += '\n  （空的寶箱…）';
+
+    sendSystem(session.sessionId, msg);
+    return;
+  }
+
+  // ─── 舊的 buff/teleport 相容（fallback） ───
+  if (effect.type === 'buff') {
+    removeInventoryItem(char.id, match.itemId, 1);
+    sendSystem(session.sessionId, `你使用了「${def.name}」。`);
+    return;
+  }
+
+  if (effect.type === 'teleport') {
+    removeInventoryItem(char.id, match.itemId, 1);
+    sendSystem(session.sessionId, `你使用了「${def.name}」。`);
+    return;
+  }
+
+  // 未知效果
+  sendError(session.sessionId, `「${def.name}」的效果類型不明。`);
+}
+
+/** 寶箱掉落表 */
+function getChestLootTable(tier: 'bronze' | 'silver' | 'gold'): string[] {
+  if (tier === 'bronze') {
+    return [
+      'small_hp_potion', 'small_mp_potion', 'antidote',
+      'iron_ore', 'beast_hide', 'slime_jelly',
+      'grilled_meat', 'spider_silk_cloth',
+    ];
+  }
+  if (tier === 'silver') {
+    return [
+      'medium_hp_potion', 'medium_mp_potion',
+      'strength_potion', 'wisdom_potion', 'agility_potion', 'fortitude_potion', 'luck_potion',
+      'mithril_ore', 'elf_wood', 'magic_crystal',
+      'stew', 'adventure_bento', 'magic_dessert',
+    ];
+  }
+  // gold — epic/legendary items only
+  return [
+    // Unique weapons (with attackDescriptions)
+    'faded_grimoire', 'lava_warhammer', 'crystal_elestaff', 'frost_greataxe',
+    'sandstorm_crossbow', 'frozen_hourglass_staff', 'crimson_grimoire',
+    'guardian_warhammer', 'spirit_whip',
+    'dwarven_masterwork_spear', 'twilight_katana',
+    'eternal_holy_tome', 'world_tree_staff',
+    // Set equipment pieces
+    'sword_saint_armor', 'sword_saint_ring',
+    'archmage_set_robe', 'archmage_set_ring',
+    'shadow_hunter_armor', 'shadow_hunter_ring',
+    'holy_guardian_armor', 'holy_guardian_ring',
+    // High-value materials
+    'dragon_scale', 'magic_crystal', 'ancient_fragment',
+    // Advanced enhancement items
+    'advanced_enhance_stone', 'blessing_scroll',
+  ];
 }
 
 function cmdTake(session: WsSession, itemName: string): void {

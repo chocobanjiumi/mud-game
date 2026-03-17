@@ -1503,6 +1503,296 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 20,
     equipSlot: 'accessory', stats: { int: 5, mp: 20, matk: 5 },
   },
+
+  // ============ 增益藥水 ============
+  strength_potion: {
+    id: 'strength_potion', name: '力量藥水', type: 'consumable',
+    description: '飲用後攻擊力提升10%，持續5回合。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'buff_atk', value: 10, duration: 5 },
+  },
+  wisdom_potion: {
+    id: 'wisdom_potion', name: '智慧藥水', type: 'consumable',
+    description: '飲用後魔法攻擊力提升10%，持續5回合。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'buff_matk', value: 10, duration: 5 },
+  },
+  agility_potion: {
+    id: 'agility_potion', name: '敏捷藥水', type: 'consumable',
+    description: '飲用後迴避率提升15%，持續5回合。', buyPrice: 100, sellPrice: 50,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'buff_dodge', value: 15, duration: 5 },
+  },
+  fortitude_potion: {
+    id: 'fortitude_potion', name: '堅韌藥水', type: 'consumable',
+    description: '飲用後防禦力提升10%，持續5回合。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'buff_def', value: 10, duration: 5 },
+  },
+  luck_potion: {
+    id: 'luck_potion', name: '幸運藥水', type: 'consumable',
+    description: '飲用後暴擊率提升10%，持續5回合。', buyPrice: 100, sellPrice: 50,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'buff_crit', value: 10, duration: 5 },
+  },
+  allstat_potion: {
+    id: 'allstat_potion', name: '全能藥水', type: 'consumable',
+    description: '飲用後全能力提升5%，持續5回合。', buyPrice: 200, sellPrice: 100,
+    stackable: true, maxStack: 99, levelReq: 10,
+    useEffect: { type: 'buff_all', value: 5, duration: 5 },
+  },
+
+  // ============ 傳送道具 ============
+  return_scroll: {
+    id: 'return_scroll', name: '回城卷軸', type: 'consumable',
+    description: '使用後傳送回新手村。', buyPrice: 50, sellPrice: 25,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'teleport_home', value: 0 },
+  },
+  teleport_stone: {
+    id: 'teleport_stone', name: '傳送石', type: 'consumable',
+    description: '傳送至已標記的地點。', buyPrice: 150, sellPrice: 75,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'teleport_mark', value: 0 },
+  },
+  memory_crystal: {
+    id: 'memory_crystal', name: '記憶水晶', type: 'consumable',
+    description: '記錄當前位置，配合傳送石使用。', buyPrice: 200, sellPrice: 100,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'mark_location', value: 0 },
+  },
+
+  // ============ 食物/料理 ============
+  grilled_meat: {
+    id: 'grilled_meat', name: '烤肉', type: 'consumable',
+    description: '香噴噴的烤肉，持續回復HP3回合。', buyPrice: 30, sellPrice: 15,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'food_hp', value: 15, duration: 3 },
+  },
+  stew: {
+    id: 'stew', name: '燉湯', type: 'consumable',
+    description: '營養豐富的燉湯，持續回復HP與資源3回合。', buyPrice: 60, sellPrice: 30,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'food_hp_resource', value: 10, duration: 3 },
+  },
+  adventure_bento: {
+    id: 'adventure_bento', name: '冒險者便當', type: 'consumable',
+    description: '冒險者特製便當，回復HP並提升攻擊力3%。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'food_atk', value: 3, duration: 5 },
+  },
+  magic_dessert: {
+    id: 'magic_dessert', name: '魔法甜點', type: 'consumable',
+    description: '蘊含魔力的甜點，回復資源並提升魔攻3%。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'food_matk', value: 3, duration: 5 },
+  },
+  elf_bread: {
+    id: 'elf_bread', name: '精靈麵包', type: 'consumable',
+    description: '精靈族秘製的麵包，回復30%HP和30%資源。', buyPrice: 120, sellPrice: 60,
+    stackable: true, maxStack: 99, levelReq: 10,
+    useEffect: { type: 'food_restore', value: 30 },
+  },
+  feast: {
+    id: 'feast', name: '宴會大餐', type: 'consumable',
+    description: '豪華的宴會大餐，全能力提升3%持續10回合。', buyPrice: 300, sellPrice: 150,
+    stackable: true, maxStack: 99, levelReq: 15,
+    useEffect: { type: 'food_feast', value: 3, duration: 10 },
+  },
+
+  // ============ 強化素材 ============
+  normal_enhance_stone: {
+    id: 'normal_enhance_stone', name: '普通強化石', type: 'material',
+    description: '用於裝備強化+1~+10的基礎強化石。', buyPrice: 100, sellPrice: 50,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  advanced_enhance_stone: {
+    id: 'advanced_enhance_stone', name: '高級強化石', type: 'material',
+    description: '用於裝備強化+11~+15的高級強化石。', buyPrice: 500, sellPrice: 250,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  blessing_scroll: {
+    id: 'blessing_scroll', name: '祝福卷軸', type: 'material',
+    description: '強化失敗時防止裝備被破壞。', buyPrice: 300, sellPrice: 150,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  enhance_lucky_charm: {
+    id: 'enhance_lucky_charm', name: '幸運符', type: 'material',
+    description: '提升強化成功率10%。', buyPrice: 200, sellPrice: 100,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+
+  // ============ 寶箱與鑰匙 ============
+  bronze_chest: {
+    id: 'bronze_chest', name: '銅寶箱', type: 'consumable',
+    description: '可能包含普通或罕見物品的銅寶箱。', buyPrice: 200, sellPrice: 100,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'open_chest_bronze', value: 0 },
+  },
+  bronze_key: {
+    id: 'bronze_key', name: '銅鑰匙', type: 'material',
+    description: '開啟銅寶箱的鑰匙。', buyPrice: 50, sellPrice: 25,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  silver_chest: {
+    id: 'silver_chest', name: '銀寶箱', type: 'consumable',
+    description: '可能包含稀有物品的銀寶箱。', buyPrice: 500, sellPrice: 250,
+    stackable: true, maxStack: 99, levelReq: 10,
+    useEffect: { type: 'open_chest_silver', value: 0 },
+  },
+  silver_key: {
+    id: 'silver_key', name: '銀鑰匙', type: 'material',
+    description: '開啟銀寶箱的鑰匙。', buyPrice: 150, sellPrice: 75,
+    stackable: true, maxStack: 99, levelReq: 10,
+  },
+  gold_chest: {
+    id: 'gold_chest', name: '金寶箱', type: 'consumable',
+    description: '可能包含史詩或傳說物品的金寶箱。', buyPrice: 1500, sellPrice: 750,
+    stackable: true, maxStack: 99, levelReq: 20,
+    useEffect: { type: 'open_chest_gold', value: 0 },
+  },
+  gold_key: {
+    id: 'gold_key', name: '金鑰匙', type: 'material',
+    description: '開啟金寶箱的鑰匙。', buyPrice: 500, sellPrice: 250,
+    stackable: true, maxStack: 99, levelReq: 20,
+  },
+
+  // ============ 製作素材 ============
+  iron_ore: {
+    id: 'iron_ore', name: '鐵礦', type: 'material',
+    description: '基礎金屬礦石，用於鍛造裝備。', buyPrice: 20, sellPrice: 10,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  mithril_ore: {
+    id: 'mithril_ore', name: '秘銀礦', type: 'material',
+    description: '稀有的秘銀礦石，高級鍛造材料。', buyPrice: 200, sellPrice: 100,
+    stackable: true, maxStack: 99, levelReq: 15,
+  },
+  elf_wood: {
+    id: 'elf_wood', name: '精靈木', type: 'material',
+    description: '蘊含魔力的精靈族木材。', buyPrice: 150, sellPrice: 75,
+    stackable: true, maxStack: 99, levelReq: 10,
+  },
+  spider_silk_cloth: {
+    id: 'spider_silk_cloth', name: '蜘蛛絲布', type: 'material',
+    description: '用蜘蛛絲織成的輕薄布料。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 5,
+  },
+  dragon_scale: {
+    id: 'dragon_scale', name: '龍鱗片', type: 'material',
+    description: '龍族掉落的堅硬鱗片，頂級鍛造材料。', buyPrice: 500, sellPrice: 250,
+    stackable: true, maxStack: 99, levelReq: 25,
+  },
+  magic_crystal: {
+    id: 'magic_crystal', name: '魔力結晶', type: 'material',
+    description: '凝聚的純淨魔力結晶，魔法道具材料。', buyPrice: 120, sellPrice: 60,
+    stackable: true, maxStack: 99, levelReq: 10,
+  },
+  beast_hide: {
+    id: 'beast_hide', name: '獸皮', type: 'material',
+    description: '野獸的厚實皮革，皮甲製作材料。', buyPrice: 30, sellPrice: 15,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  ancient_fragment: {
+    id: 'ancient_fragment', name: '古代碎片', type: 'material',
+    description: '來自古代遺跡的神秘碎片。', buyPrice: 300, sellPrice: 150,
+    stackable: true, maxStack: 99, levelReq: 20,
+  },
+
+  // ============ 戰鬥道具 ============
+  smoke_bomb: {
+    id: 'smoke_bomb', name: '煙霧彈', type: 'consumable',
+    description: '施放煙霧，逃跑成功率提升50%。', buyPrice: 40, sellPrice: 20,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'combat_escape', value: 50 },
+  },
+  flash_bomb: {
+    id: 'flash_bomb', name: '閃光彈', type: 'consumable',
+    description: '閃光致盲敵人，下回合命中率降低30%。', buyPrice: 60, sellPrice: 30,
+    stackable: true, maxStack: 99, levelReq: 5,
+    useEffect: { type: 'combat_blind', value: 30, duration: 1 },
+  },
+  trap_item: {
+    id: 'trap_item', name: '陷阱', type: 'consumable',
+    description: '設置陷阱，使敵人下回合無法行動。', buyPrice: 80, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 10,
+    useEffect: { type: 'combat_stun', value: 1, duration: 1 },
+  },
+  throwing_knife: {
+    id: 'throwing_knife', name: '投擲短刀', type: 'consumable',
+    description: '投擲短刀，造成50點固定傷害。', buyPrice: 25, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'combat_damage', value: 50 },
+  },
+
+  // ============ 收藏品 ============
+  ancient_coin: {
+    id: 'ancient_coin', name: '古代硬幣', type: 'material',
+    description: '刻有古代文字的硬幣，可高價賣出。', buyPrice: 0, sellPrice: 500,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  rare_fossil: {
+    id: 'rare_fossil', name: '稀有化石', type: 'material',
+    description: '珍貴的遠古生物化石，收藏家高價收購。', buyPrice: 0, sellPrice: 800,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  elf_feather: {
+    id: 'elf_feather', name: '精靈羽毛', type: 'material',
+    description: '精靈族的羽毛，散發淡淡光芒。', buyPrice: 0, sellPrice: 1200,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  dragon_dust: {
+    id: 'dragon_dust', name: '龍之鱗粉', type: 'material',
+    description: '龍族鱗片磨成的粉末，極為珍貴。', buyPrice: 0, sellPrice: 2000,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  ancient_runestone: {
+    id: 'ancient_runestone', name: '遠古符文石', type: 'material',
+    description: '刻有遠古符文的石頭，蘊含神秘力量。', buyPrice: 0, sellPrice: 3000,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+
+  // ============ 怪物掉落素材 ============
+  crab_shell: {
+    id: 'crab_shell', name: '海蟹殼', type: 'material',
+    description: '堅硬的海蟹甲殼，可用於防具製作。', buyPrice: 0, sellPrice: 8,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  salamander_tail: {
+    id: 'salamander_tail', name: '火蜥蜴尾', type: 'material',
+    description: '火蜥蜴的尾巴，蘊含火焰之力。', buyPrice: 0, sellPrice: 20,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  ice_core: {
+    id: 'ice_core', name: '冰元素核心', type: 'material',
+    description: '冰元素生物的核心，寒氣逼人。', buyPrice: 0, sellPrice: 35,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  rock_fragment: {
+    id: 'rock_fragment', name: '岩石碎片', type: 'material',
+    description: '岩石怪物碎裂的石片。', buyPrice: 0, sellPrice: 6,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  fishman_fin: {
+    id: 'fishman_fin', name: '魚人鰭', type: 'material',
+    description: '魚人族的鰭，煉金材料。', buyPrice: 0, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  spider_venom_sac: {
+    id: 'spider_venom_sac', name: '蜘蛛毒囊', type: 'material',
+    description: '巨型蜘蛛的毒囊，可提煉毒藥。', buyPrice: 0, sellPrice: 18,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  snowwolf_fur: {
+    id: 'snowwolf_fur', name: '雪狼毛', type: 'material',
+    description: '雪狼的白色皮毛，保暖性極佳。', buyPrice: 0, sellPrice: 22,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  lava_fragment: {
+    id: 'lava_fragment', name: '熔岩碎片', type: 'material',
+    description: '熔岩怪物留下的灼熱碎片。', buyPrice: 0, sellPrice: 28,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
 };
 
 /** 新手初始裝備（創建角色時給予） */

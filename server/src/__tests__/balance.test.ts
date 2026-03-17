@@ -15,7 +15,8 @@ import {
 import { EffectEngine } from '../game/effects.js';
 import { LootCalculator } from '../game/loot.js';
 import { expRequiredForLevel } from '../game/player.js';
-import { MONSTER_DEFS, ITEM_DEFS, SKILL_DEFS } from '@game/shared';
+import { ITEM_DEFS, SKILL_DEFS } from '@game/shared';
+import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================

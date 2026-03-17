@@ -206,6 +206,18 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     initialResource: 50,
     maxResource: 100,
   },
+
+  // ─── 怪物專用（不可選擇） ───
+  monster: {
+    id: 'monster',
+    name: '怪物',
+    tier: 0,
+    description: '怪物專用職業，不可被玩家選擇。',
+    baseStatBonus: { str: 0, int: 0, dex: 0, vit: 0, luk: 0 },
+    resourceType: 'mp',
+    initialResource: 0,
+    maxResource: 0,
+  },
 };
 
 /** 根據 ClassId 取得職業定義 */

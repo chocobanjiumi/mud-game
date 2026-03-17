@@ -2,7 +2,7 @@
 
 import type {
   CombatState, CombatAction, CombatActionType, CombatResult,
-  CombatantState, DamageResult, CombatLoot, ActiveStatusEffect,
+  CombatantState, DamageResult, CombatLoot, ActiveStatusEffect, StatusEffect,
   MonsterDef, Character, SkillDef, ElementType, ResourceType,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
@@ -1064,6 +1064,31 @@ export class CombatEngine {
       if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
       if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
 
+      // Apply active buff effects from potions/food/skills
+      for (const eff of combatant.activeEffects) {
+        if (eff.remainingDuration <= 0) continue;
+        switch (eff.type) {
+          case 'atk_up':
+            derived.atk = Math.floor(derived.atk * (1 + eff.value / 100));
+            break;
+          case 'matk_up':
+            derived.matk = Math.floor(derived.matk * (1 + eff.value / 100));
+            break;
+          case 'def_up':
+            derived.def = Math.floor(derived.def * (1 + eff.value / 100));
+            break;
+          case 'mdef_up':
+            derived.mdef = Math.floor(derived.mdef * (1 + eff.value / 100));
+            break;
+          case 'dodge_up':
+            derived.dodgeRate += eff.value;
+            break;
+          case 'crit_up':
+            derived.critRate += eff.value;
+            break;
+        }
+      }
+
       return derived;
     }
 
@@ -1103,6 +1128,52 @@ export class CombatEngine {
   /** 取得活躍戰鬥數量 */
   getActiveCombatCount(): number {
     return this.sessions.size;
+  }
+
+  /** 取得戰鬥中第一個存活的敵人（供戰鬥道具使用） */
+  getFirstAliveEnemy(combatId: string): CombatantState | undefined {
+    const session = this.sessions.get(combatId);
+    if (!session) return undefined;
+    return session.state.enemyTeam.find(e => !e.isDead);
+  }
+
+  /** 對戰鬥中的敵人施加效果（供戰鬥道具使用） */
+  applyEffectToEnemy(combatId: string, enemyId: string, effect: StatusEffect): string | undefined {
+    const session = this.sessions.get(combatId);
+    if (!session) return undefined;
+    const enemy = session.state.enemyTeam.find(e => e.id === enemyId);
+    if (!enemy || enemy.isDead) return undefined;
+    return this.effectEngine.applyEffect(enemy.activeEffects, effect);
+  }
+
+  /** 對戰鬥中的敵人造成固定傷害（供戰鬥道具使用） */
+  dealDamageToEnemy(combatId: string, enemyId: string, damage: number): { dealt: number; killed: boolean } | undefined {
+    const session = this.sessions.get(combatId);
+    if (!session) return undefined;
+    const enemy = session.state.enemyTeam.find(e => e.id === enemyId);
+    if (!enemy || enemy.isDead) return undefined;
+    const before = enemy.hp;
+    enemy.hp = Math.max(0, enemy.hp - damage);
+    const dealt = before - enemy.hp;
+    if (enemy.hp <= 0) {
+      enemy.isDead = true;
+      // 檢查戰鬥是否結束
+      if (this.checkBattleEnd(session)) {
+        this.endCombat(session);
+      }
+      return { dealt, killed: true };
+    }
+    return { dealt, killed: false };
+  }
+
+  /** 設定逃跑保證成功（供煙霧彈使用） */
+  setGuaranteedFlee(combatId: string): boolean {
+    const session = this.sessions.get(combatId);
+    if (!session) return false;
+    // 直接設定 result 為 fled
+    session.state.result = 'fled';
+    this.endCombat(session);
+    return true;
   }
 
   /** 強制結束戰鬥（管理用） */
