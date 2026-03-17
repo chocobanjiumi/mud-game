@@ -12,6 +12,8 @@ import type {
   TransactionRecord,
   AgentInfo,
   AgentMessage,
+  ItemRarity,
+  ItemStats,
 } from '@game/shared';
 
 // --- Terminal line ---
@@ -36,13 +38,50 @@ export interface PartyMember {
 
 // --- Chat message ---
 
+export type ChatChannel = 'room' | 'party' | 'global' | 'kingdom';
+
 export interface ChatMessage {
   id: number;
   senderId: string;
   senderName: string;
   message: string;
-  channel: 'room' | 'party' | 'global';
+  channel: ChatChannel;
   timestamp: number;
+}
+
+// --- Quest ---
+
+export type QuestCategory = 'main' | 'side' | 'daily' | 'weekly';
+export type QuestStatus = 'active' | 'completed' | 'failed';
+
+export interface QuestStep {
+  description: string;
+  current: number;
+  target: number;
+}
+
+export interface Quest {
+  id: string;
+  name: string;
+  description: string;
+  category: QuestCategory;
+  status: QuestStatus;
+  steps: QuestStep[];
+  currentStep: number;
+}
+
+// --- Tooltip item ---
+
+export interface TooltipItemData {
+  id: string;
+  name: string;
+  description: string;
+  rarity: ItemRarity;
+  levelReq: number;
+  stats?: ItemStats;
+  setName?: string;
+  equipSlot?: string;
+  type?: string;
 }
 
 // --- Room info ---
@@ -198,6 +237,35 @@ export interface GameState {
   accessToken: string | null;
   setAccessToken: (token: string | null) => void;
   clearAgentState: () => void;
+
+  // Quest Log
+  questLogOpen: boolean;
+  setQuestLogOpen: (open: boolean) => void;
+  toggleQuestLog: () => void;
+  activeQuests: Quest[];
+  setActiveQuests: (quests: Quest[]) => void;
+
+  // Character Sheet
+  characterSheetOpen: boolean;
+  setCharacterSheetOpen: (open: boolean) => void;
+  toggleCharacterSheet: () => void;
+
+  // Item Tooltip
+  tooltipItem: TooltipItemData | null;
+  setTooltipItem: (item: TooltipItemData | null) => void;
+  tooltipPosition: { x: number; y: number };
+  setTooltipPosition: (pos: { x: number; y: number }) => void;
+
+  // Chat Panel
+  chatChannel: ChatChannel;
+  setChatChannel: (channel: ChatChannel) => void;
+  chatMessagesByChannel: Record<ChatChannel, ChatMessage[]>;
+  addChatMessageToChannel: (msg: Omit<ChatMessage, 'id' | 'timestamp'>) => void;
+  chatUnreadCounts: Record<ChatChannel, number>;
+  resetChatUnread: (channel: ChatChannel) => void;
+  chatPanelOpen: boolean;
+  setChatPanelOpen: (open: boolean) => void;
+  toggleChatPanel: () => void;
 
   // Shop
   shopOpen: boolean;
@@ -359,6 +427,50 @@ export const useGameStore = create<GameState>((set) => ({
       agentUnreadCount: 0,
       showAgentSelect: false,
     }),
+
+  // Quest Log
+  questLogOpen: false,
+  setQuestLogOpen: (questLogOpen) => set({ questLogOpen }),
+  toggleQuestLog: () => set((state) => ({ questLogOpen: !state.questLogOpen })),
+  activeQuests: [],
+  setActiveQuests: (activeQuests) => set({ activeQuests }),
+
+  // Character Sheet
+  characterSheetOpen: false,
+  setCharacterSheetOpen: (characterSheetOpen) => set({ characterSheetOpen }),
+  toggleCharacterSheet: () => set((state) => ({ characterSheetOpen: !state.characterSheetOpen })),
+
+  // Item Tooltip
+  tooltipItem: null,
+  setTooltipItem: (tooltipItem) => set({ tooltipItem }),
+  tooltipPosition: { x: 0, y: 0 },
+  setTooltipPosition: (tooltipPosition) => set({ tooltipPosition }),
+
+  // Chat Panel
+  chatChannel: 'room',
+  setChatChannel: (chatChannel) => set({ chatChannel }),
+  chatMessagesByChannel: { room: [], party: [], global: [], kingdom: [] },
+  addChatMessageToChannel: (msg) =>
+    set((state) => {
+      const ch = msg.channel;
+      const newMsg: ChatMessage = { ...msg, id: ++_chatIdCounter, timestamp: Date.now() };
+      const channelMsgs = [...(state.chatMessagesByChannel[ch] ?? []).slice(-199), newMsg];
+      const isCurrentChannel = state.chatChannel === ch;
+      return {
+        chatMessagesByChannel: { ...state.chatMessagesByChannel, [ch]: channelMsgs },
+        chatUnreadCounts: isCurrentChannel
+          ? state.chatUnreadCounts
+          : { ...state.chatUnreadCounts, [ch]: (state.chatUnreadCounts[ch] ?? 0) + 1 },
+      };
+    }),
+  chatUnreadCounts: { room: 0, party: 0, global: 0, kingdom: 0 },
+  resetChatUnread: (channel) =>
+    set((state) => ({
+      chatUnreadCounts: { ...state.chatUnreadCounts, [channel]: 0 },
+    })),
+  chatPanelOpen: false,
+  setChatPanelOpen: (chatPanelOpen) => set({ chatPanelOpen }),
+  toggleChatPanel: () => set((state) => ({ chatPanelOpen: !state.chatPanelOpen })),
 
   // Shop
   shopOpen: false,

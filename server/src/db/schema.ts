@@ -97,6 +97,14 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, quest_id)
     );
 
+    -- 每日任務完成紀錄
+    CREATE TABLE IF NOT EXISTS daily_quests (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      quest_id TEXT NOT NULL,
+      completed_date TEXT NOT NULL,
+      PRIMARY KEY (character_id, quest_id, completed_date)
+    );
+
     -- 排行榜
     CREATE TABLE IF NOT EXISTS leaderboard (
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
@@ -282,6 +290,15 @@ export function initDb(): Database.Database {
       sent_at INTEGER DEFAULT (unixepoch())
     );
 
+    -- 製作等級
+    CREATE TABLE IF NOT EXISTS crafting_levels (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      category TEXT NOT NULL,
+      level INTEGER DEFAULT 1,
+      exp INTEGER DEFAULT 0,
+      PRIMARY KEY (character_id, category)
+    );
+
     -- 轉職任務進度
     CREATE TABLE IF NOT EXISTS class_quests (
       character_id TEXT PRIMARY KEY REFERENCES characters(id) ON DELETE CASCADE,
@@ -314,6 +331,8 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_alliance_proposals_to ON kingdom_alliance_proposals(to_kingdom_id, status);
     CREATE INDEX IF NOT EXISTS idx_trade_proposals_to ON kingdom_trade_proposals(to_kingdom_id, status);
     CREATE INDEX IF NOT EXISTS idx_diplo_messages_to ON kingdom_diplomatic_messages(to_kingdom_id);
+    CREATE INDEX IF NOT EXISTS idx_daily_quests_character ON daily_quests(character_id);
+    CREATE INDEX IF NOT EXISTS idx_quest_progress_character ON quest_progress(character_id, status);
   `);
 
   // ── Migration: 新增 enhancement_level 欄位 ──

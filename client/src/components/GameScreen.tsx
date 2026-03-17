@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useGameStore } from '../stores/gameStore';
+import type { ChatChannel } from '../stores/gameStore';
 import Terminal from './Terminal';
 import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
@@ -11,15 +12,20 @@ import ShopModal from './ShopModal';
 import AgentPanel from './AgentPanel';
 import AgentMiniBadge from './AgentMiniBadge';
 import AgentSelectModal from './AgentSelectModal';
+import QuestLog from './QuestLog';
+import CharacterSheet from './CharacterSheet';
+import ItemTooltip from './ItemTooltip';
+import ChatPanel from './ChatPanel';
 
 interface GameScreenProps {
   onCommand: (command: string) => void;
   onOpenShop: () => void;
   onPurchase: (itemId: string) => void;
   onGetTransactions: () => void;
+  onSendChat: (channel: ChatChannel, message: string) => void;
 }
 
-export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTransactions }: GameScreenProps) {
+export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTransactions, onSendChat }: GameScreenProps) {
   const connection = useGameStore((s) => s.connection);
   const showInventory = useGameStore((s) => s.showInventory);
   const showParty = useGameStore((s) => s.showParty);
@@ -32,6 +38,12 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const toggleAgentPanel = useGameStore((s) => s.toggleAgentPanel);
   const setShowAgentSelect = useGameStore((s) => s.setShowAgentSelect);
   const accessToken = useGameStore((s) => s.accessToken);
+  const toggleQuestLog = useGameStore((s) => s.toggleQuestLog);
+  const questLogOpen = useGameStore((s) => s.questLogOpen);
+  const toggleCharacterSheet = useGameStore((s) => s.toggleCharacterSheet);
+  const characterSheetOpen = useGameStore((s) => s.characterSheetOpen);
+  const toggleChatPanel = useGameStore((s) => s.toggleChatPanel);
+  const chatPanelOpen = useGameStore((s) => s.chatPanelOpen);
 
   // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
   useEffect(() => {
@@ -50,6 +62,12 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           setShowAgentSelect(true);
         }
       }
+      if (e.key === 'q' || e.key === 'Q') {
+        toggleQuestLog();
+      }
+      if (e.key === 'c' || e.key === 'C') {
+        toggleCharacterSheet();
+      }
     };
     const handleOpenShopEvent = () => {
       if (!shopOpen) onOpenShop();
@@ -60,7 +78,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-shop', handleOpenShopEvent);
     };
-  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect]);
+  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
@@ -88,6 +106,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
             <QuickButton label="背包" shortcut="I" active={showInventory} onClick={toggleInventory} />
             <QuickButton label="隊伍" shortcut="P" active={showParty} onClick={toggleParty} />
+            <QuickButton label="任務" shortcut="Q" active={questLogOpen} onClick={toggleQuestLog} />
+            <QuickButton label="角色" shortcut="C" active={characterSheetOpen} onClick={toggleCharacterSheet} />
+            <QuickButton label="聊天" active={chatPanelOpen} onClick={toggleChatPanel} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
             {selectedAgent ? (
               <QuickButton label="AI夥伴" shortcut="A" active={agentPanelOpen} onClick={toggleAgentPanel} />
@@ -133,17 +154,19 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           <AgentMiniBadge />
         </div>
 
-        {/* Right sidebar: Inventory / Party / Agent panels (mutually displayed) */}
+        {/* Right sidebar: Inventory / Party / Chat / Agent panels */}
         {!agentPanelOpen && <Inventory />}
         {!agentPanelOpen && <PartyPanel />}
+        {!agentPanelOpen && <ChatPanel onSendChat={onSendChat} />}
         <AgentPanel />
       </div>
 
-      {/* Shop modal */}
+      {/* Modals / Overlays */}
       <ShopModal onPurchase={onPurchase} onGetTransactions={onGetTransactions} />
-
-      {/* Agent select modal */}
       <AgentSelectModal />
+      <QuestLog />
+      <CharacterSheet />
+      <ItemTooltip />
     </div>
   );
 }

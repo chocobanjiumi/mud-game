@@ -2,10 +2,14 @@
 
 import { randomUUID } from 'crypto';
 import type { Character, MonsterDef } from '@game/shared';
+import { ITEM_DEFS } from '@game/shared';
 import type { MonsterInstance } from './world.js';
 import { sendToCharacter } from '../ws/handler.js';
 import { recordPvp, updateLeaderboard } from '../db/database.js';
 import { getDb } from '../db/schema.js';
+import { getInventory, removeInventoryItem, addInventoryItem } from '../db/queries.js';
+import { expRequiredForLevel } from './player.js';
+import { questMgr } from './state.js';
 
 // ============================================================
 //  型別定義
@@ -376,28 +380,50 @@ export class PvPManager {
     this.setElo(winnerId, winnerElo + winnerChange);
     this.setElo(loserId, Math.max(0, loserElo + loserChange));
 
-    // 金幣轉移（PvP 不扣死亡懲罰，只是輸家給贏家一些金幣）
-    const goldTransfer = Math.floor(loserChar.gold * GOLD_LOSS_PERCENT);
+    // PvP 死亡懲罰：5% EXP + 10% 金幣
+    const expLost = Math.floor(loserChar.exp * 0.05);
+    const minExp = expRequiredForLevel(loserChar.level);
+    loserChar.exp = Math.max(minExp, loserChar.exp - expLost);
+
+    const goldLost = Math.floor(loserChar.gold * 0.1);
+    loserChar.gold -= goldLost;
+
+    // 金幣轉移（額外 5% 給贏家）
+    const goldTransfer = Math.floor((loserChar.gold + goldLost) * GOLD_LOSS_PERCENT);
     if (goldTransfer > 0) {
-      loserChar.gold -= goldTransfer;
       winnerChar.gold += goldTransfer;
     }
 
-    // PvP 不扣死亡懲罰：恢復雙方 HP/MP/Resource
+    // PvP 額外懲罰：掉落 1 個隨機未裝備物品
+    let droppedItemName: string | null = null;
+    try {
+      const loserInv = getInventory(loserId);
+      const nonEquipped = loserInv.filter(item => !item.equipped);
+      if (nonEquipped.length > 0) {
+        const randomItem = nonEquipped[Math.floor(Math.random() * nonEquipped.length)];
+        removeInventoryItem(loserId, randomItem.itemId, 1);
+        addInventoryItem(winnerId, randomItem.itemId, 1);
+        const itemDef = ITEM_DEFS[randomItem.itemId];
+        droppedItemName = itemDef?.name ?? randomItem.itemId;
+      }
+    } catch {
+      // 物品轉移失敗不影響遊戲
+    }
+
+    // 恢復雙方 HP/MP/Resource
     winnerChar.hp = winnerChar.maxHp;
     winnerChar.mp = winnerChar.maxMp;
-    // 資源回復：怒氣歸零，其他回滿
     if (winnerChar.resourceType === 'rage') {
       winnerChar.resource = 0;
     } else {
       winnerChar.resource = winnerChar.maxResource;
     }
-    loserChar.hp = Math.floor(loserChar.maxHp * 0.8);
-    loserChar.mp = Math.floor(loserChar.maxMp * 0.8);
+    loserChar.hp = Math.floor(loserChar.maxHp * 0.5);
+    loserChar.mp = Math.floor(loserChar.maxMp * 0.5);
     if (loserChar.resourceType === 'rage') {
       loserChar.resource = 0;
     } else {
-      loserChar.resource = Math.floor(loserChar.maxResource * 0.8);
+      loserChar.resource = Math.floor(loserChar.maxResource * 0.5);
     }
 
     // 記錄到資料庫
@@ -415,6 +441,13 @@ export class PvPManager {
       // 忽略
     }
 
+    // 任務進度：PvP 勝利
+    try {
+      questMgr.updateProgress(winnerId, 'kill', 'pvp_win');
+    } catch {
+      // 忽略
+    }
+
     // 通知雙方
     const typeText = type === 'duel' ? '決鬥' : '競技場';
 
@@ -422,15 +455,17 @@ export class PvPManager {
       text:
         `${typeText}勝利！\n` +
         `ELO：${winnerElo} → ${winnerElo + winnerChange}（+${winnerChange}）\n` +
-        (goldTransfer > 0 ? `獲得 ${goldTransfer} 金幣。` : ''),
+        (goldTransfer > 0 ? `獲得 ${goldTransfer} 金幣。` : '') +
+        (droppedItemName ? `\n奪取了對方的「${droppedItemName}」！` : ''),
     });
 
-    sendToCharacter(loserId, 'system', {
-      text:
-        `${typeText}失敗。\n` +
-        `ELO：${loserElo} → ${loserElo + loserChange}（${loserChange}）\n` +
-        (goldTransfer > 0 ? `損失 ${goldTransfer} 金幣。` : ''),
-    });
+    const loserMsg =
+      `你在決鬥中落敗！` +
+      (droppedItemName ? `${droppedItemName}被對方奪走了。` : '') +
+      `\n失去了 ${expLost} 經驗值和 ${goldLost} 金幣。` +
+      `\nELO：${loserElo} → ${loserElo + loserChange}（${loserChange}）`;
+
+    sendToCharacter(loserId, 'system', { text: loserMsg });
   }
 
   // ──────────────────────────────────────────────────────────

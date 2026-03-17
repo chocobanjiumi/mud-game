@@ -18,6 +18,15 @@ import { BuildingManager } from './kingdom-building.js';
 import { WarManager } from './kingdom-war.js';
 import { TreasuryManager } from './kingdom-treasury.js';
 import { DiplomacyManager } from './kingdom-diplomacy.js';
+import { CraftingManager } from './crafting.js';
+import { AuctionManager } from './auction.js';
+import { FishingManager } from './fishing.js';
+import { AchievementManager } from './achievement.js';
+import { PetManager } from './pet.js';
+import { WorldEventManager } from './world-event.js';
+import { WeatherManager } from './weather.js';
+import { MailManager } from './mail.js';
+import { FriendManager } from './friends.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
@@ -45,6 +54,15 @@ export const buildingMgr = new BuildingManager(kingdomMgr);
 export const warMgr = new WarManager();
 export const treasuryMgr = new TreasuryManager();
 export const diplomacyMgr = new DiplomacyManager();
+export const craftingMgr = new CraftingManager();
+export const auctionMgr = new AuctionManager();
+export const fishingMgr = new FishingManager();
+export const achievementMgr = new AchievementManager();
+export const petMgr = new PetManager();
+export const worldEventMgr = new WorldEventManager();
+export const weatherMgr = new WeatherManager();
+export const mailMgr = new MailManager();
+export const friendMgr = new FriendManager();
 
 // ============================================================
 //  初始化 — 在 index.ts 呼叫
@@ -90,6 +108,9 @@ export function initGameSystems(): void {
   // ClassQuestManager：注入 ClassChangeManager
   classQuestMgr.setClassChangeManager(classChange);
 
+  // DungeonManager：載入首通紀錄
+  dungeonMgr.init();
+
   // BuildingManager：從資料庫載入王國房間
   buildingMgr.loadFromDb();
 
@@ -100,6 +121,40 @@ export function initGameSystems(): void {
 
   // 強化系統：確保 DB 欄位存在
   ensureEnhancementColumn();
+
+  // 拍賣系統
+  auctionMgr.init();
+
+  // 釣魚系統
+  fishingMgr.init();
+
+  // 成就系統
+  achievementMgr.ensureTables();
+
+  // 寵物系統
+  petMgr.ensureTables();
+
+  // 世界事件系統
+  worldEventMgr.init();
+
+  // 天氣/日夜系統
+  weatherMgr.init();
+
+  // 郵件系統
+  mailMgr.ensureTables();
+
+  // 好友系統
+  friendMgr.ensureTables();
+
+  // 拍賣過期處理（每 60 秒）
+  setInterval(() => {
+    auctionMgr.processExpiredAuctions();
+  }, 60_000);
+
+  // 寵物幸福度衰減（每小時）
+  setInterval(() => {
+    petMgr.decayHappiness();
+  }, 3_600_000);
 
   console.log('[Game] 所有遊戲子系統初始化完成');
 }
@@ -138,4 +193,6 @@ export function shutdownGameSystems(): void {
   partyMgr.destroy();
   tradeMgr.destroy();
   dungeonMgr.shutdown();
+  worldEventMgr.shutdown();
+  weatherMgr.shutdown();
 }

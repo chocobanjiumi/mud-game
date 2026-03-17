@@ -23,7 +23,7 @@ export type ServerMessageType =
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'skill_learned' | 'class_change' | 'trade'
-  | 'quest' | 'leaderboard' | 'map' | 'token_balance'
+  | 'quest' | 'quest_update' | 'leaderboard' | 'map' | 'token_balance'
   | 'shop_items' | 'purchase_result' | 'transaction_history' | 'balance_update';
 
 export interface ServerMessage {
@@ -104,7 +104,7 @@ export interface ChatPayload {
   senderId: string;
   senderName: string;
   message: string;
-  channel: 'room' | 'party' | 'global';
+  channel: 'room' | 'party' | 'global' | 'kingdom';
 }
 
 export interface MapPayload {

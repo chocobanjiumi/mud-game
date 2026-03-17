@@ -40,8 +40,79 @@ function releasePurchaseLock(userId: string, itemId: string): void {
   }
 }
 
+// ─── 速率限制 ───
+
+interface RateLimitState {
+  timestamps: number[];
+  blockedUntil: number;
+  warned: boolean;
+}
+
+const rateLimitMap = new Map<string, RateLimitState>();
+const RATE_LIMIT_WINDOW = 1000; // 1 秒
+const RATE_LIMIT_MAX = 5; // 每秒最多 5 個指令
+const RATE_LIMIT_BLOCK_THRESHOLD = 10; // 超過 10/秒就封鎖
+const RATE_LIMIT_BLOCK_DURATION = 5000; // 封鎖 5 秒
+
+/** 檢查速率限制，回傳 true 表示允許通過 */
+function checkRateLimit(sessionId: string): 'allow' | 'warn' | 'block' {
+  const now = Date.now();
+  let state = rateLimitMap.get(sessionId);
+
+  if (!state) {
+    state = { timestamps: [], blockedUntil: 0, warned: false };
+    rateLimitMap.set(sessionId, state);
+  }
+
+  // 檢查是否在封鎖期間
+  if (state.blockedUntil > now) {
+    return 'block';
+  }
+
+  // 清理過期的時間戳
+  state.timestamps = state.timestamps.filter(t => now - t < RATE_LIMIT_WINDOW);
+  state.timestamps.push(now);
+
+  const count = state.timestamps.length;
+
+  if (count > RATE_LIMIT_BLOCK_THRESHOLD) {
+    state.blockedUntil = now + RATE_LIMIT_BLOCK_DURATION;
+    state.warned = false;
+    return 'block';
+  }
+
+  if (count > RATE_LIMIT_MAX) {
+    if (!state.warned) {
+      state.warned = true;
+      return 'warn';
+    }
+    return 'block';
+  }
+
+  state.warned = false;
+  return 'allow';
+}
+
+/** 清理離線連線的速率限制狀態 */
+export function cleanupRateLimit(sessionId: string): void {
+  rateLimitMap.delete(sessionId);
+}
+
 /** 處理收到的 WebSocket 訊息 */
 export function handleMessage(session: WsSession, raw: string): void {
+  // 速率限制（ping 不算）
+  let parsedRaw: { type?: string } | null = null;
+  try { parsedRaw = JSON.parse(raw); } catch { /* handled below */ }
+  if (parsedRaw?.type !== 'ping') {
+    const rateLimitResult = checkRateLimit(session.sessionId);
+    if (rateLimitResult === 'warn') {
+      sendError(session.sessionId, '指令過於頻繁，請稍後再試');
+    }
+    if (rateLimitResult === 'block') {
+      return; // 靜默丟棄
+    }
+  }
+
   let message: ClientMessage;
 
   try {

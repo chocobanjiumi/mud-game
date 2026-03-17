@@ -1,8 +1,9 @@
 // Combat engine integration tests
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest';
 import { CombatEngine } from '../game/combat.js';
 import type { Character, MonsterDef, CombatAction } from '@game/shared';
 import type { MonsterInstance } from '../game/world.js';
+import { initDb, closeDb } from '../db/schema.js';
 
 // ============================================================
 //  Helpers
@@ -77,6 +78,14 @@ function makeMonsterInstance(overrides: Partial<MonsterDef> = {}): MonsterInstan
 
 describe('CombatEngine', () => {
   let engine: CombatEngine;
+
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
 
   beforeEach(() => {
     engine = new CombatEngine();

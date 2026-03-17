@@ -6,6 +6,7 @@ import type {
 } from '@game/shared';
 import { CLASS_DEFS } from '@game/shared';
 import { randomUUID } from 'crypto';
+import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 
 // ============================================================
 //  常數
@@ -279,8 +280,9 @@ export class PlayerManager {
       return { atk: 0, matk: 0, def: 0, mdef: 0, hitRate: 0, dodgeRate: 0, critRate: 0, critDamage: 0 };
     }
 
-    // Import dynamically to avoid circular deps at module level
-    const { getEquipmentStats, baseStatsToCombat, calculateDerived } = require('./damage.js');
+    const getEquipmentStats = _getEquipmentStats;
+    const baseStatsToCombat = _baseStatsToCombat;
+    const calculateDerived = _calculateDerived;
     const eqStats = getEquipmentStats(char);
 
     const mergedStats = {
@@ -477,16 +479,26 @@ export class PlayerManager {
   //  死亡處理
   // ──────────────────────────────────────────────────────────
 
-  /** 角色死亡 → 回到重生點、損失金幣 */
+  /**
+   * 角色死亡（PvE）→ 損失 5% EXP、10% 金幣，回到重生點
+   */
   handleDeath(characterId: string): {
     respawnRoom: string;
     goldLost: number;
+    expLost: number;
   } {
     const char = this.characters.get(characterId);
-    if (!char) return { respawnRoom: 'village_square', goldLost: 0 };
+    if (!char) return { respawnRoom: 'village_square', goldLost: 0, expLost: 0 };
 
-    const goldLost = Math.floor(char.gold * 0.1); // 損失 10% 金幣
+    // 損失 5% 經驗（不低於當前等級所需的累積經驗，即不會降級）
+    const expLost = Math.floor(char.exp * 0.05);
+    const minExp = expRequiredForLevel(char.level);
+    char.exp = Math.max(minExp, char.exp - expLost);
+
+    // 損失 10% 金幣
+    const goldLost = Math.floor(char.gold * 0.1);
     char.gold -= goldLost;
+
     char.hp = Math.floor(char.maxHp * 0.5); // 復活 50% HP
     char.mp = Math.floor(char.maxMp * 0.5); // 復活 50% MP
     // 資源重置：怒氣歸零，其他回到初始值
@@ -497,6 +509,27 @@ export class PlayerManager {
     return {
       respawnRoom: 'village_square',
       goldLost,
+      expLost,
+    };
+  }
+
+  /**
+   * 角色死亡（PvP）→ 同 PvE 懲罰 + 掉落 1 個隨機未裝備物品
+   * @returns droppedItem 掉落的物品 ID（若有）
+   */
+  handlePvpDeath(characterId: string, killerInventoryItems: { itemId: string; quantity: number; equipped: boolean }[]): {
+    respawnRoom: string;
+    goldLost: number;
+    expLost: number;
+    droppedItemId: string | null;
+  } {
+    const result = this.handleDeath(characterId);
+
+    // 額外掉落 1 個隨機未裝備物品（由呼叫方提供 inventory）
+    // 注意：inventory 操作在呼叫端處理
+    return {
+      ...result,
+      droppedItemId: null, // 由呼叫端決定
     };
   }
 

@@ -64,7 +64,7 @@ export const ZONES: Record<string, ZoneDef> = {
     levelRange: [1, 8],
     rooms: [
       'village_backhill', 'village_creek', 'village_farmland', 'village_orchard',
-      'graveyard_entrance', 'abandoned_cottage', 'village_outskirts', 'watchtower',
+      'graveyard_entrance', 'graveyard_depths', 'abandoned_cottage', 'village_outskirts', 'watchtower',
     ],
   },
   eastern_coast: {
@@ -98,6 +98,50 @@ export const ZONES: Record<string, ZoneDef> = {
       'snowfield_entrance', 'blizzard_path', 'glacier', 'frozen_lake',
       'mountain_camp', 'crystal_ice_cave', 'aurora_field',
       'wolf_den', 'ice_castle_gate', 'ice_throne',
+    ],
+  },
+  demon_territory: {
+    id: 'demon_territory' as ZoneDef['id'],
+    name: '魔族領地',
+    description: '位於冰封雪原彼端的荒蕪之地，空氣中瀰漫著硫磺與鮮血的氣息。魔族在此建立了黑暗要塞，統治著這片被詛咒的土地。',
+    levelRange: [30, 40],
+    rooms: [
+      'demon_border', 'scorched_plains', 'demon_village', 'blood_river',
+      'dark_fortress_gate', 'torture_chamber', 'demon_barracks',
+      'summoning_circle', 'demon_throne', 'demon_treasury',
+    ],
+  },
+  dragon_valley: {
+    id: 'dragon_valley' as ZoneDef['id'],
+    name: '龍谷',
+    description: '傳說中龍族棲息的神秘山谷，雲霧繚繞的峰巒之間迴盪著遠古巨獸的咆哮。只有最強大的冒險者才敢踏入這片禁地。',
+    levelRange: [40, 50],
+    rooms: [
+      'dragon_valley_entrance', 'dragon_nest_path', 'wyvern_cliff',
+      'dragon_bone_field', 'ancient_dragon_lair', 'dragon_hoard',
+      'sky_bridge', 'storm_peak', 'elder_dragon_sanctum', 'dragon_egg_chamber',
+    ],
+  },
+  abyss_rift: {
+    id: 'abyss_rift' as ZoneDef['id'],
+    name: '深淵裂隙',
+    description: '大地上的一道深不見底的裂縫，通往異次元的虛空。時間和空間在此扭曲，混沌的力量不斷從裂隙中湧出。',
+    levelRange: [50, 55],
+    rooms: [
+      'abyss_entrance', 'void_corridor', 'shadow_realm',
+      'chaos_bridge', 'nightmare_garden', 'abyss_core',
+      'time_distortion', 'abyss_lord_chamber',
+    ],
+  },
+  celestial_ruins: {
+    id: 'celestial_ruins' as ZoneDef['id'],
+    name: '天界遺跡',
+    description: '遠古諸神殞落後遺留在凡間的天界殘骸，星光與神聖之力交織其中。傳說戰神沉睡於最深處，等待著最強勇者的挑戰。',
+    levelRange: [55, 60],
+    rooms: [
+      'celestial_gate', 'starlight_path', 'angel_garden',
+      'divine_library', 'judgment_hall', 'celestial_throne_room',
+      'eternal_sanctuary', 'god_chamber',
     ],
   },
 };
@@ -925,6 +969,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'village_outskirts', description: '沿著小路回到村外' },
       { direction: 'east', targetRoomId: 'watchtower', description: '遠處有一座瞭望台' },
+      { direction: 'south', targetRoomId: 'graveyard_depths', description: '鏽蝕的鐵門後方是更深處的墓地', locked: true, keyItemId: 'bronze_key' },
     ],
     monsters: [
       { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 40 },
@@ -937,6 +982,31 @@ export const ROOMS: Record<string, RoomDef> = {
       creature: '某些墓碑前的泥土有被翻動的痕跡，骷髏兵隨時可能從地下爬出。一股不尋常的威壓從墓地深處傳來。',
       treasure: '墓地管理人的小屋裡鎖著一本名冊，記載著埋葬者生前的寶物清單。',
       spirit: '墓地中飄蕩著不安的靈魂，他們渴望有人完成他們未竟的遺願。',
+    },
+  },
+
+  graveyard_depths: {
+    id: 'graveyard_depths',
+    name: '墓地深處',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '穿過鏽蝕的鐵門，你來到了墓地最深處。這裡的墓碑更加古老，刻著早已被遺忘的文字。' +
+      '地面上散落著碎裂的骨骸和褪色的花環，空氣中彌漫著死亡的氣息。' +
+      '一座巨大的石棺矗立在中央，封印的符文依然微微發光。',
+    exits: [
+      { direction: 'north', targetRoomId: 'graveyard_entrance', description: '回到墓地入口' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 35 },
+      { monsterId: 'skeleton_general', maxCount: 2, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[墓]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '石棺中的封印正在逐漸衰弱，某些夜晚能聽到棺內傳來的敲擊聲。',
+      treasure: '古老墓碑的底座有一個暗格，裡面可能藏著往生者的遺物。',
+      spirit: '這裡埋葬著遠古時期一位強大的死靈法師，他的力量至今仍在影響著這片土地。',
     },
   },
 
@@ -953,6 +1023,9 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+    ],
+    groundItems: [
+      { itemId: 'small_hp_potion', description: '地上散落著一瓶藥水' },
     ],
     mapSymbol: '[屋]',
     mapX: 1,
@@ -975,7 +1048,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'village_farmland', description: '通往農田' },
       { direction: 'south', targetRoomId: 'graveyard_entrance', description: '遠處隱約可見鐵門' },
-      { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
+      { direction: 'east', targetRoomId: 'village_gate', description: '回到村口' },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
@@ -1211,6 +1284,9 @@ export const ROOMS: Record<string, RoomDef> = {
       { monsterId: 'pirate', maxCount: 2, respawnSeconds: 50 },
       { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 60 },
     ],
+    groundItems: [
+      { itemId: 'ancient_coin', description: '殘骸中閃爍著金色光芒' },
+    ],
     mapSymbol: '[船]',
     mapX: 5,
     mapY: 8,
@@ -1415,6 +1491,9 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 3, respawnSeconds: 45 },
     ],
+    groundItems: [
+      { itemId: 'lava_fragment', description: '火山口邊有一塊冷卻的熔岩' },
+    ],
     mapSymbol: '[火]',
     mapX: 1,
     mapY: 10,
@@ -1541,6 +1620,9 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'dwarf_mine', description: '回到礦坑' },
     ],
     npcs: ['dwarf_blacksmith'],
+    groundItems: [
+      { itemId: 'iron_ore', description: '地上堆著幾塊鐵礦' },
+    ],
     mapSymbol: '[鍛]',
     mapX: 3,
     mapY: 7,
@@ -1588,9 +1670,9 @@ export const ROOMS: Record<string, RoomDef> = {
       '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
       '入口處立著一塊石碑，上面的文字被冰霜覆蓋。',
     exits: [
-      { direction: 'south', targetRoomId: 'forest_entrance', description: '穿過冰雪小路回到暗影森林入口' },
+      { direction: 'east', targetRoomId: 'forest_entrance', description: '穿過冰雪小路回到暗影森林入口' },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '踏入暴風雪中' },
-      { direction: 'east', targetRoomId: 'mountain_camp', description: '東方有營火的光芒' },
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '南方有營火的光芒' },
     ],
     mapSymbol: '[雪]',
     mapX: 2,
@@ -1688,8 +1770,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '篝火仍在燃燒，溫暖的光芒驅散了周圍的寒意。' +
       '營地裡存放著一些補給品和取暖用具，是雪原中難得的安全地帶。',
     exits: [
-      { direction: 'west', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
-      { direction: 'north', targetRoomId: 'wolf_den', description: '營地北方傳來狼嚎' },
+      { direction: 'north', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '營地東方傳來狼嚎' },
     ],
     mapSymbol: '[營]',
     mapX: 3,
@@ -1742,6 +1824,9 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
     ],
+    groundItems: [
+      { itemId: 'ice_crystal', description: '極光下有一顆閃爍的冰晶' },
+    ],
     mapSymbol: '[光]',
     mapX: 2,
     mapY: 16,
@@ -1761,7 +1846,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '空氣中瀰漫著野獸的腥臭味，多隻雪狼在洞內警覺地注視著入侵者。' +
       '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。',
     exits: [
-      { direction: 'south', targetRoomId: 'mountain_camp', description: '逃回雪山營地' },
+      { direction: 'west', targetRoomId: 'mountain_camp', description: '逃回雪山營地' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 4, respawnSeconds: 35 },
@@ -1787,7 +1872,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴' },
       { direction: 'west', targetRoomId: 'aurora_field', description: '回到極光之地' },
-      { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡' },
+      { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡', locked: true, keyItemId: 'gold_key' },
     ],
     monsters: [
       { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 65 },
@@ -1814,6 +1899,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '這裡是冰封雪原的終極挑戰。',
     exits: [
       { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門' },
+      { direction: 'north', targetRoomId: 'demon_border', description: '王座背後的裂縫通往一片燃燒的荒地' },
     ],
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 600 },

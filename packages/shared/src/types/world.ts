@@ -14,6 +14,11 @@ export interface RoomExit {
 
 export type ZoneId = 'starter_village' | 'plains' | 'dark_forest' | 'crystal_cave' | 'lakeside_town';
 
+export interface GroundItem {
+  itemId: string;
+  description: string;
+}
+
 export interface RoomDef {
   id: string;
   name: string; // 中文名
@@ -23,6 +28,7 @@ export interface RoomDef {
   monsters?: SpawnPoint[];
   npcs?: string[];
   items?: string[];
+  groundItems?: GroundItem[];
   mapSymbol: string;
   mapX: number;
   mapY: number;

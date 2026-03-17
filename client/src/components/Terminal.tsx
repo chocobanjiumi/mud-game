@@ -35,6 +35,7 @@ const colorClassMap: Record<string, string> = {
   'chat-room': 'text-chat-room',
   'chat-party': 'text-chat-party',
   'chat-global': 'text-chat-global',
+  'chat-kingdom': 'text-chat-kingdom',
 
   // Agent
   'agent': 'text-agent-cyan',

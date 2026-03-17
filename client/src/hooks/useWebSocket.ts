@@ -23,6 +23,7 @@ const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.ho
 
 const RECONNECT_BASE_DELAY = 1000;
 const RECONNECT_MAX_DELAY = 30000;
+const MAX_RECONNECT_ATTEMPTS = 10;
 const PING_INTERVAL = 25000;
 const PURCHASE_TIMEOUT = 10000; // 10 seconds
 
@@ -33,6 +34,8 @@ export function useWebSocket() {
   const pingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const purchaseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mountedRef = useRef(true);
+  const isReconnectingRef = useRef(false);
+  const storedCredentialsRef = useRef<{ userId: string; characterId?: string; accessToken?: string } | null>(null);
 
   const store = useGameStore;
 
@@ -106,7 +109,10 @@ export function useWebSocket() {
       case 'character_list': {
         const chars = p.characters as { id: string; name: string }[] | undefined;
         if (chars && chars.length > 0) {
-          // 自動登入第一個角色
+          // 自動登入第一個角色，並更新儲存的憑證
+          if (storedCredentialsRef.current) {
+            storedCredentialsRef.current.characterId = chars[0].id;
+          }
           send({ type: 'login', payload: { userId: chars[0].name, characterId: chars[0].id } });
         } else {
           s.addTerminalLine('[系統] 找不到此角色，請建立新角色。', 'error');
@@ -189,19 +195,36 @@ export function useWebSocket() {
 
       case 'chat': {
         const data = p as unknown as ChatPayload;
+        const channel = data.channel as 'room' | 'party' | 'global' | 'kingdom';
         s.addChatMessage({
           senderId: data.senderId,
           senderName: data.senderName,
           message: data.message,
-          channel: data.channel,
+          channel,
+        });
+        s.addChatMessageToChannel({
+          senderId: data.senderId,
+          senderName: data.senderName,
+          message: data.message,
+          channel,
         });
         const prefix =
-          data.channel === 'global'
+          channel === 'global'
             ? '[全域]'
-            : data.channel === 'party'
+            : channel === 'party'
               ? '[隊伍]'
-              : '[區域]';
+              : channel === 'kingdom'
+                ? '[王國]'
+                : '[區域]';
         s.addTerminalLine(`${prefix} ${data.senderName}: ${data.message}`, `chat-${data.channel}`);
+        break;
+      }
+
+      case 'quest_update': {
+        const quests = p.quests as typeof s.activeQuests | undefined;
+        if (quests) {
+          s.setActiveQuests(quests);
+        }
         break;
       }
 
@@ -313,9 +336,21 @@ export function useWebSocket() {
 
     ws.onopen = () => {
       if (!mountedRef.current) { ws.close(); return; }
+      const wasReconnecting = isReconnectingRef.current;
       reconnectAttemptRef.current = 0;
+      isReconnectingRef.current = false;
       store.getState().setConnection('connected');
-      store.getState().addTerminalLine('[系統] 已連線至伺服器', 'system');
+
+      if (wasReconnecting) {
+        store.getState().addTerminalLine('[系統] 重新連線成功！', 'system');
+        // 自動重新登入
+        const creds = storedCredentialsRef.current;
+        if (creds) {
+          send({ type: 'login', payload: { userId: creds.userId, characterId: creds.characterId, accessToken: creds.accessToken } });
+        }
+      } else {
+        store.getState().addTerminalLine('[系統] 已連線至伺服器', 'system');
+      }
 
       // Start ping
       if (pingTimerRef.current) clearInterval(pingTimerRef.current);
@@ -347,10 +382,16 @@ export function useWebSocket() {
 
       if (!mountedRef.current) return;
 
-      // Auto-reconnect with exponential backoff
+      // Auto-reconnect with exponential backoff (max 10 attempts)
       const attempt = reconnectAttemptRef.current++;
+      if (attempt >= MAX_RECONNECT_ATTEMPTS) {
+        store.getState().addTerminalLine('[系統] 重新連線失敗次數過多，請手動重新整理頁面。', 'error');
+        isReconnectingRef.current = false;
+        return;
+      }
+      isReconnectingRef.current = true;
       const delay = Math.min(RECONNECT_BASE_DELAY * 2 ** attempt, RECONNECT_MAX_DELAY);
-      store.getState().addTerminalLine(`[系統] 連線中斷，${Math.round(delay / 1000)} 秒後重新連線...`, 'error');
+      store.getState().addTerminalLine(`[系統] 連線中斷，${Math.round(delay / 1000)} 秒後重新連線...（第 ${attempt + 1}/${MAX_RECONNECT_ATTEMPTS} 次）`, 'error');
       reconnectTimerRef.current = setTimeout(connect, delay);
     };
 
@@ -369,6 +410,8 @@ export function useWebSocket() {
 
   const login = useCallback(
     (userId: string, characterId?: string, accessToken?: string) => {
+      // 儲存登入憑證以供斷線重連使用
+      storedCredentialsRef.current = { userId, characterId, accessToken };
       send({ type: 'login', payload: { userId, characterId, accessToken } });
     },
     [send],
@@ -410,6 +453,17 @@ export function useWebSocket() {
     send({ type: 'get_transactions' });
   }, [send]);
 
+  const sendQuestList = useCallback(() => {
+    send({ type: 'command', payload: 'quests' });
+  }, [send]);
+
+  const sendChat = useCallback(
+    (channel: string, message: string) => {
+      send({ type: 'command', payload: `chat ${channel} ${message}` });
+    },
+    [send],
+  );
+
   // Auto-connect on mount, cleanup on unmount
   useEffect(() => {
     mountedRef.current = true;
@@ -420,5 +474,5 @@ export function useWebSocket() {
     };
   }, [connect, disconnect]);
 
-  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions };
+  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat };
 }

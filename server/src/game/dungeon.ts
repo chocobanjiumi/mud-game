@@ -13,6 +13,7 @@ import {
   updateLeaderboard,
   addItemToInventory,
 } from '../db/database.js';
+import { getDb } from '../db/schema.js';
 
 // ============================================================
 //  型別定義
@@ -46,8 +47,8 @@ export class DungeonManager {
   private instances: Map<string, DungeonInstance> = new Map();
   /** playerId -> instanceId */
   private playerInstanceMap: Map<string, string> = new Map();
-  /** 記錄哪些 partyId 已首次通關哪些副本 */
-  private firstClearRecords: Set<string> = new Set(); // "partyId:dungeonId"
+  /** 首通紀錄（DB 持久化） */
+  private firstClearCache: Set<string> = new Set(); // "partyId:dungeonId" 快取
 
   /** 戰鬥建立回呼 */
   private startCombatFn:
@@ -66,6 +67,35 @@ export class DungeonManager {
   // ──────────────────────────────────────────────────────────
   //  初始化
   // ──────────────────────────────────────────────────────────
+
+  init(): void {
+    const db = getDb();
+    db.exec(`CREATE TABLE IF NOT EXISTS dungeon_first_clears (
+      party_id TEXT NOT NULL,
+      dungeon_id TEXT NOT NULL,
+      cleared_at INTEGER NOT NULL,
+      PRIMARY KEY (party_id, dungeon_id)
+    )`);
+    // 載入已有紀錄到快取
+    const rows = db.prepare('SELECT party_id, dungeon_id FROM dungeon_first_clears').all() as { party_id: string; dungeon_id: string }[];
+    for (const r of rows) {
+      this.firstClearCache.add(`${r.party_id}:${r.dungeon_id}`);
+    }
+  }
+
+  private hasFirstClear(clearKey: string): boolean {
+    return this.firstClearCache.has(clearKey);
+  }
+
+  private recordFirstClear(clearKey: string): void {
+    if (this.firstClearCache.has(clearKey)) return;
+    this.firstClearCache.add(clearKey);
+    const [partyId, dungeonId] = clearKey.split(':');
+    try {
+      const db = getDb();
+      db.prepare('INSERT OR IGNORE INTO dungeon_first_clears (party_id, dungeon_id, cleared_at) VALUES (?, ?, ?)').run(partyId, dungeonId, Math.floor(Date.now() / 1000));
+    } catch { /* ignore */ }
+  }
 
   /** 註冊戰鬥建立函式 */
   setStartCombatFunction(
@@ -152,7 +182,7 @@ export class DungeonManager {
 
     // 判定是否首次通關
     const clearKey = `${partyId}:${dungeonId}`;
-    const isFirstClear = !this.firstClearRecords.has(clearKey);
+    const isFirstClear = !this.hasFirstClear(clearKey);
 
     const playerCharacters = new Map<string, Character>();
     for (const p of players) {
@@ -328,9 +358,9 @@ export class DungeonManager {
 
     // 判定首次通關
     const clearKey = `${instance.partyId}:${instance.dungeonId}`;
-    const isFirstClear = !this.firstClearRecords.has(clearKey);
+    const isFirstClear = !this.hasFirstClear(clearKey);
     if (isFirstClear) {
-      this.firstClearRecords.add(clearKey);
+      this.recordFirstClear(clearKey);
     }
 
     // 計算獎勵
@@ -446,6 +476,35 @@ export class DungeonManager {
 
     // 移除實例
     this.instances.delete(instance.id);
+  }
+
+  // ──────────────────────────────────────────────────────────
+  //  主動離開副本
+  // ──────────────────────────────────────────────────────────
+
+  leaveDungeon(playerId: string): string {
+    const instance = this.getPlayerInstance(playerId);
+    if (!instance) return '你目前不在任何副本中。';
+
+    const def = DUNGEON_DEFS[instance.dungeonId];
+    const dungeonName = def?.name ?? '未知副本';
+    const entranceRoom = def?.entranceRoomId ?? 'village_square';
+
+    // 傳送回入口
+    if (this.teleportFn) {
+      this.teleportFn(playerId, entranceRoom);
+    }
+
+    // 從副本中移除此玩家
+    instance.playerIds = instance.playerIds.filter(id => id !== playerId);
+    this.playerInstanceMap.delete(playerId);
+
+    // 如果副本中沒有其他玩家了，清理整個實例
+    if (instance.playerIds.length === 0) {
+      this.cleanupInstance(instance);
+    }
+
+    return `你離開了副本「${dungeonName}」，已傳送回入口。`;
   }
 
   // ──────────────────────────────────────────────────────────

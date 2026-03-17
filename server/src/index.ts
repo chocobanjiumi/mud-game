@@ -5,7 +5,7 @@ import fastifyCors from '@fastify/cors';
 import fastifyWebsocket from '@fastify/websocket';
 import { initDb, closeDb } from './db/schema.js';
 import { createSession, removeSession, cleanupStale, getOnlineCount, sendToCharacter } from './ws/handler.js';
-import { handleMessage } from './ws/protocol.js';
+import { handleMessage, cleanupRateLimit } from './ws/protocol.js';
 import { initGameSystems, shutdownGameSystems, combat, dungeonMgr, pvpMgr, world } from './game/state.js';
 import { AgentController } from './ai/agent.js';
 import { getCharacterById, saveCharacter } from './db/queries.js';
@@ -154,11 +154,13 @@ async function main(): Promise<void> {
             world.removePlayer(session.characterId);
           }
         }
+        cleanupRateLimit(session.sessionId);
         removeSession(session.sessionId);
       });
 
       socket.on('error', (err) => {
         console.error(`[WS] 連線錯誤 (${session.sessionId}):`, err);
+        cleanupRateLimit(session.sessionId);
         removeSession(session.sessionId);
       });
     });

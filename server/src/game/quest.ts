@@ -4,12 +4,13 @@ import type { Character } from '@game/shared';
 import { sendToCharacter } from '../ws/handler.js';
 import { getDb } from '../db/schema.js';
 import { addItemToInventory } from '../db/database.js';
+import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
 
 // ============================================================
 //  型別定義
 // ============================================================
 
-export type QuestType = 'main' | 'class_change' | 'daily' | 'side';
+export type QuestType = 'main' | 'class_change' | 'daily' | 'weekly' | 'side';
 
 export interface QuestObjective {
   type: 'kill' | 'collect' | 'visit' | 'talk';
@@ -205,6 +206,9 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     dialogueComplete: '辛苦了！今日的日常任務已完成，明天記得再來接取。',
     repeatable: true,
   },
+
+  // ─── 擴展任務（從 quest-system.ts 合併） ──────────────────
+  ...EXPANDED_QUEST_DEFS,
 };
 
 // ============================================================
@@ -240,6 +244,20 @@ export class QuestManager {
     // 職業檢查
     if (def.classReq && character.classId !== def.classReq) {
       return { success: false, message: '你的職業無法接取這個任務。' };
+    }
+
+    // 主線任務前置檢查
+    const prereq = getMainQuestPrerequisite(questId);
+    if (prereq) {
+      const prereqProgress = this.getQuestProgressFromDb(characterId, prereq);
+      if (!prereqProgress || prereqProgress.status !== 'completed') {
+        const prereqDef = QUEST_DEFS[prereq];
+        const prereqName = prereqDef ? prereqDef.name : prereq;
+        return {
+          success: false,
+          message: `需要先完成主線任務「${prereqName}」才能接取此任務。`,
+        };
+      }
     }
 
     // 檢查現有進度
@@ -308,7 +326,8 @@ export class QuestManager {
         if (obj.type !== eventType) continue;
 
         // 支援萬用字元目標（如每日任務的「任意怪物」）
-        if (obj.targetId === '*' || obj.targetId === targetId) {
+        const isWildcard = obj.targetId === '*';
+        if (isWildcard || obj.targetId === targetId) {
           const key = `${obj.type}_${obj.targetId}`;
           const current = progress[key] ?? 0;
           if (current < obj.required) {
@@ -471,6 +490,13 @@ export class QuestManager {
       // 已在進行中
       if (activeIds.has(def.id)) return false;
 
+      // 主線任務前置檢查
+      const prereq = getMainQuestPrerequisite(def.id);
+      if (prereq) {
+        const prereqProgress = this.getQuestProgressFromDb(character.id, prereq);
+        if (!prereqProgress || prereqProgress.status !== 'completed') return false;
+      }
+
       // 檢查是否已完成
       const progress = this.getQuestProgressFromDb(character.id, def.id);
       if (progress && progress.status === 'completed') {
@@ -480,6 +506,13 @@ export class QuestManager {
           const completedDate = new Date(progress.completed_at * 1000).toDateString();
           const today = new Date().toDateString();
           if (completedDate === today) return false;
+        }
+        // 每週任務：本週已完成
+        if (def.type === 'weekly' && progress.completed_at) {
+          const completed = new Date(progress.completed_at * 1000);
+          const now = new Date();
+          const getMonday = (d: Date) => { const day = d.getDay(); const diff = d.getDate() - day + (day === 0 ? -6 : 1); return new Date(d.getFullYear(), d.getMonth(), diff).toDateString(); };
+          if (getMonday(completed) === getMonday(now)) return false;
         }
       }
 
@@ -541,6 +574,7 @@ export class QuestManager {
         main: '主線',
         class_change: '轉職',
         daily: '每日',
+        weekly: '每週',
         side: '支線',
       };
       text += `【${def.name}】（${typeNames[def.type]}）Lv.${def.levelReq}+\n`;
@@ -551,6 +585,105 @@ export class QuestManager {
         rewardText += ' + 道具';
       }
       text += `  獎勵：${rewardText}\n\n`;
+    }
+
+    return text;
+  }
+
+  // ──────────────────────────────────────────────────────────
+  //  放棄任務
+  // ──────────────────────────────────────────────────────────
+
+  /**
+   * 放棄進行中的任務
+   */
+  abandonQuest(
+    characterId: string,
+    questId: string,
+  ): { success: boolean; message: string } {
+    const def = QUEST_DEFS[questId];
+    if (!def) {
+      return { success: false, message: '任務不存在。' };
+    }
+
+    const row = this.getQuestProgressFromDb(characterId, questId);
+    if (!row || row.status !== 'active') {
+      return { success: false, message: '你沒有在進行這個任務。' };
+    }
+
+    // 主線任務不可放棄
+    if (def.type === 'main') {
+      return { success: false, message: '主線任務無法放棄。' };
+    }
+
+    this.deleteQuestProgress(characterId, questId);
+
+    sendToCharacter(characterId, 'quest', {
+      action: 'abandoned',
+      questId,
+      name: def.name,
+    });
+
+    return {
+      success: true,
+      message: `已放棄任務「${def.name}」。`,
+    };
+  }
+
+  // ──────────────────────────────────────────────────────────
+  //  任務詳情
+  // ──────────────────────────────────────────────────────────
+
+  /**
+   * 取得任務詳細資訊
+   */
+  getQuestInfo(characterId: string, questId: string): string {
+    const def = QUEST_DEFS[questId];
+    if (!def) {
+      return '任務不存在。';
+    }
+
+    const typeNames: Record<QuestType, string> = {
+      main: '主線',
+      class_change: '轉職',
+      daily: '每日',
+      weekly: '每週',
+      side: '支線',
+    };
+
+    let text = `【${def.name}】\n`;
+    text += `類型：${typeNames[def.type]}　等級需求：Lv.${def.levelReq}+\n`;
+    text += `─`.repeat(40) + '\n';
+    text += `${def.description}\n\n`;
+
+    // 目標列表
+    text += '任務目標：\n';
+    const row = this.getQuestProgressFromDb(characterId, questId);
+    const progress: Record<string, number> = row ? JSON.parse(row.progress || '{}') : {};
+
+    for (const obj of def.objectives) {
+      const key = `${obj.type}_${obj.targetId}`;
+      const current = progress[key] ?? 0;
+      const typeLabel = obj.type === 'kill' ? '擊殺' :
+                        obj.type === 'collect' ? '收集' :
+                        obj.type === 'visit' ? '前往' : '交談';
+      const done = row && row.status === 'active' && current >= obj.required ? ' [完成]' : '';
+      text += `  ${typeLabel} ${obj.targetName}：${row?.status === 'active' ? `${current}/${obj.required}${done}` : `0/${obj.required}`}\n`;
+    }
+
+    // 獎勵
+    text += '\n獎勵：';
+    let rewardText = `${def.rewards.exp} EXP、${def.rewards.gold} 金幣`;
+    if (def.rewards.items && def.rewards.items.length > 0) {
+      rewardText += ' + 道具';
+    }
+    text += rewardText + '\n';
+
+    // 狀態
+    if (row) {
+      text += `\n狀態：${row.status === 'active' ? '進行中' : '已完成'}`;
+    } else {
+      text += '\n狀態：未接取';
     }
 
     return text;
@@ -620,6 +753,16 @@ export class QuestManager {
         .prepare(
           "UPDATE quest_progress SET status = 'completed', completed_at = unixepoch() WHERE character_id = ? AND quest_id = ?",
         )
+        .run(characterId, questId);
+    } catch {
+      // 忽略
+    }
+  }
+
+  private deleteQuestProgress(characterId: string, questId: string): void {
+    try {
+      getDb()
+        .prepare('DELETE FROM quest_progress WHERE character_id = ? AND quest_id = ?')
         .run(characterId, questId);
     } catch {
       // 忽略

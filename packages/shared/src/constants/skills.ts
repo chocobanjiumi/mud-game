@@ -1122,6 +1122,21 @@ export const SKILL_DEFS: Record<string, SkillDef> = {
     description: '召喚虛靈之力形成護盾，吸收一定量的傷害。',
     effects: [{ type: 'shield', value: 150, duration: 3 }],
   },
+  charm: {
+    id: 'charm', name: '魅惑', englishName: 'Charm',
+    classId: 'monster', learnLevel: 1, type: 'active',
+    targetType: 'single_enemy', resourceCost: 0, cooldown: 5,
+    damageType: 'magical', element: 'dark', multiplier: 0.3,
+    description: '以魔力操控目標心智，使其陷入混亂無法正常行動。',
+    effects: [{ type: 'stun', value: 1, duration: 2 }],
+  },
+  fire_bolt: {
+    id: 'fire_bolt', name: '火焰彈', englishName: 'Fire Bolt',
+    classId: 'monster', learnLevel: 1, type: 'active',
+    targetType: 'single_enemy', resourceCost: 0, cooldown: 1,
+    damageType: 'magical', element: 'fire', multiplier: 1.3,
+    description: '凝聚火焰能量射出一枚灼熱的火彈，造成火屬性傷害。',
+  },
 };
 
 // ─── 工具函式 ───

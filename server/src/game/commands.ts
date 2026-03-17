@@ -23,14 +23,49 @@ import type { Character, ClassId, StatusEffectType } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
-  kingdomMgr, buildingMgr, warMgr, treasuryMgr, diplomacyMgr,
+  kingdomMgr, buildingMgr, warMgr, treasuryMgr, diplomacyMgr, craftingMgr,
+  auctionMgr, fishingMgr,
+  achievementMgr, petMgr, worldEventMgr,
+  weatherMgr, mailMgr, friendMgr,
   isInCombat, getPlayerCombatId, findCharacterByName,
 } from './state.js';
+import { ACHIEVEMENT_DEFS } from './achievement.js';
+import { PET_DEFS } from './pet.js';
+import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
+import { findNpcByName } from '../data/npcs.js';
+import { getRoom } from '../data/rooms.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
-import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot } from '@game/shared';
+import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
+
+// ─── 地上物品撿取追蹤 ───
+
+/** 記錄已被撿走的地上物品，key = `${roomId}:${itemId}`, value = 重生時間 */
+const pickedUpItems = new Map<string, number>();
+const GROUND_ITEM_RESPAWN_MS = 10 * 60 * 1000; // 10 分鐘
+
+/** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
+function getAvailableGroundItems(roomId: string): GroundItem[] {
+  const room = getRoom(roomId);
+  if (!room?.groundItems) return [];
+
+  const now = Date.now();
+  return room.groundItems.filter(gi => {
+    const key = `${roomId}:${gi.itemId}`;
+    const respawnAt = pickedUpItems.get(key);
+    if (respawnAt && now < respawnAt) return false;
+    if (respawnAt && now >= respawnAt) pickedUpItems.delete(key);
+    return true;
+  });
+}
+
+/** 標記地上物品已被撿走 */
+function markGroundItemPicked(roomId: string, itemId: string): void {
+  const key = `${roomId}:${itemId}`;
+  pickedUpItems.set(key, Date.now() + GROUND_ITEM_RESPAWN_MS);
+}
 
 // ─── 指令路由 ───
 
@@ -76,7 +111,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'equip': cmdEquip(session, argStr); break;
     case 'unequip': cmdUnequip(session, argStr); break;
     case 'use': cmdUse(session, argStr); break;
-    case 'take': case 'pick': cmdTake(session, argStr); break;
+    case 'take': case 'pick': case 'pickup': case 'get': cmdTake(session, argStr); break;
     case 'drop': cmdDrop(session, argStr); break;
     case 'say': cmdSay(session, argStr); break;
     case 'talk': cmdTalk(session, argStr); break;
@@ -111,6 +146,28 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'diplomacy': cmdDiplomacy(session, args); break;
     // 強化系統
     case 'upgrade': case 'enhance': cmdUpgrade(session, argStr); break;
+    // 製作系統
+    case 'craft': cmdCraft(session, args); break;
+    // 拍賣系統
+    case 'auction': case 'ah': cmdAuction(session, args); break;
+    // 釣魚系統
+    case 'fish': cmdFish(session, args); break;
+    // 成就/稱號系統
+    case 'achievement': case 'ach': cmdAchievement(session, args); break;
+    case 'title': cmdTitle(session); break;
+    // 寵物系統
+    case 'pet': cmdPet(session, args); break;
+    case 'tame': cmdTame(session); break;
+    // 世界事件系統
+    case 'event': cmdEvent(session, args); break;
+    // 天氣系統
+    case 'weather': cmdWeather(session); break;
+    // 郵件系統
+    case 'mail': cmdMail(session, args); break;
+    // 表情系統
+    case 'emote': cmdEmote(session, argStr); break;
+    // 好友系統
+    case 'friend': case 'friends': cmdFriend(session, args); break;
     case 'help': cmdHelp(session); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
@@ -158,6 +215,15 @@ function cmdLook(session: WsSession): void {
     monsters,
   });
 
+  // 顯示地上物品
+  const groundItems = getAvailableGroundItems(char.roomId);
+  for (const gi of groundItems) {
+    const def = ITEM_DEFS[gi.itemId];
+    if (def) {
+      sendNarrative(session.sessionId, `${gi.description}（${def.name}）`, 'item');
+    }
+  }
+
   // 觸發任務進度（拜訪地點）
   questMgr.updateProgress(char.id, 'visit', char.roomId);
 }
@@ -174,6 +240,28 @@ function cmdGo(session: WsSession, direction: string): void {
   if (isInCombat(char.id)) {
     sendError(session.sessionId, '戰鬥中無法移動！');
     return;
+  }
+
+  // 檢查鎖門
+  const currentRoom = getRoom(char.roomId);
+  if (currentRoom) {
+    const exit = currentRoom.exits.find(e => e.direction === direction);
+    if (exit && exit.locked && exit.keyItemId) {
+      const inv = getInventory(char.id);
+      const hasKey = inv.some(item => item.itemId === exit.keyItemId);
+      if (!hasKey) {
+        const keyDef = ITEM_DEFS[exit.keyItemId];
+        const keyName = keyDef?.name ?? exit.keyItemId;
+        sendError(session.sessionId, `這扇門被鎖住了。你需要${keyName}才能通過。`);
+        return;
+      }
+      // 消耗鑰匙並解鎖
+      removeInventoryItem(char.id, exit.keyItemId, 1);
+      exit.locked = false;
+      const keyDef = ITEM_DEFS[exit.keyItemId];
+      const keyName = keyDef?.name ?? exit.keyItemId;
+      sendNarrative(session.sessionId, `你使用了${keyName}打開了門鎖。`);
+    }
   }
 
   const result = world.handleMove(char.id, direction as any);
@@ -296,6 +384,11 @@ function cmdAttack(session: WsSession, target: string): void {
       // 觸發任務進度
       questMgr.updateProgress(char.id, 'kill', monster.monsterId);
 
+      // BOSS 擊殺額外觸發（用於每日/每週 BOSS 任務）
+      if (monster.def.isBoss) {
+        questMgr.updateProgress(char.id, 'kill', 'boss');
+      }
+
       // 轉職任務：怪物擊殺鉤子 — 取得最後一次使用的技能類型
       const lastAction = lastPlayerActions.get(char.id);
       const usedSkillType: 'physical' | 'magical' | undefined =
@@ -316,6 +409,27 @@ function cmdAttack(session: WsSession, target: string): void {
       }
 
       world.killMonster(char.roomId, monster.instanceId);
+    }
+
+    // PvE 死亡懲罰
+    if (result === 'defeat') {
+      const expLost = Math.floor(char.exp * 0.05);
+      const minExpForLevel = getExpForLevel(char.level);
+      char.exp = Math.max(minExpForLevel, char.exp - expLost);
+
+      const goldLost = Math.floor(char.gold * 0.1);
+      char.gold = Math.max(0, char.gold - goldLost);
+
+      char.hp = Math.floor(char.maxHp * 0.5);
+      char.mp = Math.floor(char.maxMp * 0.5);
+      char.roomId = 'village_square';
+      world.placePlayer(char.id, 'village_square');
+      saveCharacter(char);
+
+      const playerSession = getSessionByCharacterId(char.id);
+      if (playerSession) {
+        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣。`, 'error');
+      }
     }
 
     // 轉職任務：戰鬥結束鉤子
@@ -951,7 +1065,29 @@ function getChestLootTable(tier: 'bronze' | 'silver' | 'gold'): string[] {
 function cmdTake(session: WsSession, itemName: string): void {
   const char = getChar(session);
   if (!char) return;
-  sendSystem(session.sessionId, `這裡沒有可以撿取的「${itemName || '物品'}」。`);
+
+  if (!itemName) {
+    sendError(session.sessionId, '用法：take <物品名稱>');
+    return;
+  }
+
+  // 嘗試撿取地上物品
+  const groundItems = getAvailableGroundItems(char.roomId);
+  const target = itemName.toLowerCase();
+  const match = groundItems.find(gi => {
+    const def = ITEM_DEFS[gi.itemId];
+    return def && (def.name === itemName || gi.itemId === target || def.name.toLowerCase().includes(target));
+  });
+
+  if (match) {
+    const def = ITEM_DEFS[match.itemId];
+    addInventoryItem(char.id, match.itemId, 1);
+    markGroundItemPicked(char.roomId, match.itemId);
+    sendNarrative(session.sessionId, `你撿起了${def?.name ?? match.itemId}。`);
+    return;
+  }
+
+  sendSystem(session.sessionId, `這裡沒有可以撿取的「${itemName}」。`);
 }
 
 function cmdDrop(session: WsSession, itemName: string): void {
@@ -985,7 +1121,31 @@ function cmdTalk(session: WsSession, npcName: string): void {
   const char = getChar(session);
   if (!char) return;
   if (!npcName) { sendError(session.sessionId, '用法：talk <NPC名稱>'); return; }
-  sendSystem(session.sessionId, `這裡沒有名為「${npcName}」的 NPC。`);
+
+  // 在當前房間中搜尋 NPC
+  const npc = findNpcByName(npcName, char.roomId);
+  if (!npc) {
+    sendSystem(session.sessionId, `這裡沒有名為「${npcName}」的 NPC。`);
+    return;
+  }
+
+  // 顯示 NPC 的第一段對話
+  const greeting = npc.dialogue?.[0];
+  if (greeting) {
+    let dialogueText = `【${npc.name}】：${greeting.text}`;
+    if (greeting.options && greeting.options.length > 0) {
+      dialogueText += '\n';
+      for (let i = 0; i < greeting.options.length; i++) {
+        dialogueText += `\n  ${i + 1}. ${greeting.options[i].text}`;
+      }
+    }
+    sendNarrative(session.sessionId, dialogueText);
+  } else {
+    sendSystem(session.sessionId, `${npc.name}向你點了點頭，但沒有說話。`);
+  }
+
+  // 觸發任務進度（交談）
+  questMgr.updateProgress(char.id, 'talk', npc.id);
 }
 
 function cmdAllocate(session: WsSession, args: string[]): void {
@@ -1222,8 +1382,30 @@ function cmdQuest(session: WsSession, args: string[]): void {
       }
       break;
     }
+    case 'abandon': case 'drop': {
+      const questId = args[1];
+      if (!questId) { sendError(session.sessionId, '用法：quest abandon <任務ID>'); return; }
+      const result = questMgr.abandonQuest(char.id, questId);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'info': case 'detail': {
+      const questId = args[1];
+      if (!questId) { sendError(session.sessionId, '用法：quest info <任務ID>'); return; }
+      const text = questMgr.getQuestInfo(char.id, questId);
+      sendSystem(session.sessionId, text);
+      break;
+    }
     default:
-      sendSystem(session.sessionId, '任務指令：quest list/active/accept <ID>/complete <ID>');
+      sendSystem(session.sessionId,
+        '任務指令：\n' +
+        '  quest list — 可接取的任務\n' +
+        '  quest active — 進行中的任務\n' +
+        '  quest accept <ID> — 接取任務\n' +
+        '  quest complete <ID> — 完成任務\n' +
+        '  quest abandon <ID> — 放棄任務\n' +
+        '  quest info <ID> — 任務詳情',
+      );
   }
 }
 
@@ -1325,8 +1507,43 @@ function cmdDungeon(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       break;
     }
+    case 'status': {
+      const instance = dungeonMgr.getPlayerInstance(char.id);
+      if (!instance) {
+        sendSystem(session.sessionId, '你目前不在任何副本中。');
+        return;
+      }
+      const def = dungeonMgr.getDungeonDef(instance.dungeonId);
+      if (!def) {
+        sendSystem(session.sessionId, '副本資料錯誤。');
+        return;
+      }
+      const remaining = dungeonMgr.getRemainingTime(instance.id);
+      const minutes = Math.floor(remaining / 60);
+      const seconds = remaining % 60;
+      const currentRoom = def.rooms[instance.currentRoomIndex];
+      sendSystem(session.sessionId,
+        `── 副本進度 ──\n` +
+        `副本：${def.name}\n` +
+        `目前房間：${currentRoom?.name ?? '未知'}（${instance.currentRoomIndex + 1}/${def.rooms.length}）\n` +
+        `剩餘時間：${minutes} 分 ${seconds} 秒\n` +
+        `狀態：${instance.cleared ? '已通關' : '進行中'}`,
+      );
+      break;
+    }
+    case 'leave': {
+      const leaveMsg = dungeonMgr.leaveDungeon(char.id);
+      sendSystem(session.sessionId, leaveMsg);
+      break;
+    }
     default:
-      sendSystem(session.sessionId, '副本指令：dungeon list/enter <副本ID>');
+      sendSystem(session.sessionId,
+        '副本指令：\n' +
+        '  dungeon list           — 查看可用副本\n' +
+        '  dungeon enter <副本ID> — 進入副本\n' +
+        '  dungeon status         — 查看副本進度\n' +
+        '  dungeon leave          — 離開副本（放棄）',
+      );
   }
 }
 
@@ -2351,6 +2568,198 @@ function cmdUpgrade(session: WsSession, argStr: string): void {
   }
 }
 
+// ─── 製作系統 ───
+
+function cmdCraft(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法製作！');
+    return;
+  }
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'list': {
+      const category = args[1]?.toLowerCase();
+      if (category === 'forge' || category === '鍛造') {
+        sendSystem(session.sessionId, craftingMgr.formatRecipeList('forge', char.id));
+      } else if (category === 'alchemy' || category === '煉金') {
+        sendSystem(session.sessionId, craftingMgr.formatRecipeList('alchemy', char.id));
+      } else if (category === 'cooking' || category === '烹飪') {
+        sendSystem(session.sessionId, craftingMgr.formatRecipeList('cooking', char.id));
+      } else {
+        sendSystem(session.sessionId,
+          '製作類別：\n' +
+          '  craft list forge    — 鍛造配方\n' +
+          '  craft list alchemy  — 煉金配方\n' +
+          '  craft list cooking  — 烹飪配方',
+        );
+      }
+      break;
+    }
+    case 'forge': {
+      const recipeId = args[1];
+      if (!recipeId) { sendError(session.sessionId, '用法：craft forge <配方ID>'); return; }
+      const result = craftingMgr.craft(char.id, recipeId);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'alchemy': {
+      const recipeId = args[1];
+      if (!recipeId) { sendError(session.sessionId, '用法：craft alchemy <配方ID>'); return; }
+      const result = craftingMgr.craft(char.id, recipeId);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'cook': {
+      const recipeId = args[1];
+      if (!recipeId) { sendError(session.sessionId, '用法：craft cook <配方ID>'); return; }
+      const result = craftingMgr.craft(char.id, recipeId);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'info': {
+      const recipeId = args[1];
+      if (!recipeId) { sendError(session.sessionId, '用法：craft info <配方ID>'); return; }
+      sendSystem(session.sessionId, craftingMgr.formatRecipeInfo(recipeId, char.id));
+      break;
+    }
+    case 'level': case 'levels': {
+      sendSystem(session.sessionId, craftingMgr.formatCraftingLevels(char.id));
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '製作系統指令：\n' +
+        '  craft list [forge|alchemy|cooking] — 查看配方\n' +
+        '  craft forge <配方ID>    — 鍛造裝備\n' +
+        '  craft alchemy <配方ID>  — 煉金製藥\n' +
+        '  craft cook <配方ID>     — 烹飪料理\n' +
+        '  craft info <配方ID>     — 查看配方詳情\n' +
+        '  craft level             — 查看製作等級',
+      );
+  }
+}
+
+// ─── 拍賣系統 ───
+
+function cmdAuction(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法使用拍賣系統！');
+    return;
+  }
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'sell': {
+      // auction sell <itemName> <minPrice> [buyoutPrice] [hours]
+      const itemName = args[1];
+      if (!itemName) { sendError(session.sessionId, '用法：auction sell <物品ID> <最低價> [直購價] [時長]'); return; }
+
+      // Find item by ID or name
+      let itemId = itemName;
+      if (!ITEM_DEFS[itemId]) {
+        const found = Object.values(ITEM_DEFS).find(d => d.name === itemName);
+        if (found) itemId = found.id;
+        else { sendError(session.sessionId, `找不到物品：${itemName}`); return; }
+      }
+
+      const minPrice = parseInt(args[2]);
+      if (!minPrice || minPrice < 1) { sendError(session.sessionId, '請輸入有效的最低出價。'); return; }
+
+      const buyoutPrice = args[3] ? parseInt(args[3]) : undefined;
+      const hours = args[4] ? parseInt(args[4]) : 24;
+
+      const result = auctionMgr.listItem(char.id, itemId, 1, minPrice, buyoutPrice, hours);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'search': {
+      const keyword = args.slice(1).join(' ') || undefined;
+      sendSystem(session.sessionId, auctionMgr.searchAuctions(keyword));
+      break;
+    }
+    case 'bid': {
+      const auctionId = args[1];
+      const amount = parseInt(args[2]);
+      if (!auctionId || !amount) { sendError(session.sessionId, '用法：auction bid <拍賣ID> <金額>'); return; }
+      const result = auctionMgr.placeBid(auctionId, char.id, amount);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'buyout': {
+      const auctionId = args[1];
+      if (!auctionId) { sendError(session.sessionId, '用法：auction buyout <拍賣ID>'); return; }
+      const result = auctionMgr.buyout(auctionId, char.id);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'my': {
+      sendSystem(session.sessionId, auctionMgr.getMyAuctions(char.id));
+      break;
+    }
+    case 'cancel': {
+      const auctionId = args[1];
+      if (!auctionId) { sendError(session.sessionId, '用法：auction cancel <拍賣ID>'); return; }
+      const result = auctionMgr.cancelAuction(auctionId, char.id);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'info': {
+      const auctionId = args[1];
+      if (!auctionId) { sendError(session.sessionId, '用法：auction info <拍賣ID>'); return; }
+      sendSystem(session.sessionId, auctionMgr.getAuctionInfo(auctionId));
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '拍賣系統指令：\n' +
+        '  auction sell <物品ID> <最低價> [直購價] [時長]  — 上架物品\n' +
+        '  auction search [關鍵字]                         — 搜尋拍賣品\n' +
+        '  auction bid <拍賣ID> <金額>                     — 出價競標\n' +
+        '  auction buyout <拍賣ID>                         — 直接購買\n' +
+        '  auction my                                       — 我的拍賣/出價\n' +
+        '  auction cancel <拍賣ID>                         — 取消拍賣\n' +
+        '  auction info <拍賣ID>                           — 查看詳情',
+      );
+  }
+}
+
+// ─── 釣魚系統 ───
+
+function cmdFish(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法釣魚！');
+    return;
+  }
+
+  const sub = args[0]?.toLowerCase();
+
+  if (sub === 'level' || sub === 'info' || sub === 'stats') {
+    sendSystem(session.sessionId, fishingMgr.formatFishingLevel(char.id));
+    return;
+  }
+
+  // Default: fish
+  const result = fishingMgr.fish(char.id, char.roomId);
+  if (result.ok) sendSystem(session.sessionId, result.message);
+  else sendError(session.sessionId, result.message);
+}
+
 // ─── 幫助 ───
 
 function cmdHelp(session: WsSession): void {
@@ -2384,14 +2793,26 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  say <訊息>           說話');
   sendSystem(session.sessionId, '  party                組隊系統');
   sendSystem(session.sessionId, '  trade                交易系統');
+  sendSystem(session.sessionId, '  emote <動作>         表情動作（bow/wave/laugh/cry/dance等）');
+  sendSystem(session.sessionId, '  friend add/remove/list/online 好友系統');
+  sendSystem(session.sessionId, '  mail list/read/send/delete   郵件系統');
+  sendSystem(session.sessionId, '  weather              查看天氣與時段');
   sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '── 進階系統 ──');
-  sendSystem(session.sessionId, '  quest                任務系統');
+  sendSystem(session.sessionId, '  quest                任務系統（list/active/accept/complete/abandon/info）');
   sendSystem(session.sessionId, '  duel <玩家>          PvP 決鬥');
   sendSystem(session.sessionId, '  arena                競技場');
-  sendSystem(session.sessionId, '  dungeon              副本系統');
+  sendSystem(session.sessionId, '  dungeon              副本系統（list/enter/status/leave）');
   sendSystem(session.sessionId, '  leaderboard (lb)     排行榜');
   sendSystem(session.sessionId, '  classchange (job)    轉職');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 製作系統 ──');
+  sendSystem(session.sessionId, '  craft list [forge|alchemy|cooking] 查看配方');
+  sendSystem(session.sessionId, '  craft forge <配方ID>   鍛造裝備');
+  sendSystem(session.sessionId, '  craft alchemy <配方ID> 煉金製藥');
+  sendSystem(session.sessionId, '  craft cook <配方ID>    烹飪料理');
+  sendSystem(session.sessionId, '  craft info <配方ID>    查看配方詳情');
+  sendSystem(session.sessionId, '  craft level            查看製作等級');
   sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '── 守護靈 ──');
   sendSystem(session.sessionId, '  ask                  向守護靈詢問建議');
@@ -2442,6 +2863,19 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  treasury log         交易紀錄');
   sendSystem(session.sessionId, '  treasury tax <率>    設定稅率');
   sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 拍賣系統 ──');
+  sendSystem(session.sessionId, '  auction sell <物品> <最低價> [直購價] [時長] 上架物品');
+  sendSystem(session.sessionId, '  auction search [關鍵字]     搜尋拍賣品');
+  sendSystem(session.sessionId, '  auction bid <ID> <金額>     出價競標');
+  sendSystem(session.sessionId, '  auction buyout <ID>         直接購買');
+  sendSystem(session.sessionId, '  auction my                  我的拍賣/出價');
+  sendSystem(session.sessionId, '  auction cancel <ID>         取消拍賣');
+  sendSystem(session.sessionId, '  auction info <ID>           查看拍賣詳情');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 釣魚系統 ──');
+  sendSystem(session.sessionId, '  fish                        在水邊釣魚');
+  sendSystem(session.sessionId, '  fish level                  查看釣魚等級/統計');
+  sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '── 外交系統 ──');
   sendSystem(session.sessionId, '  diplomacy ally <王國>   提議結盟');
   sendSystem(session.sessionId, '  diplomacy unally <王國> 解除聯盟');
@@ -2449,6 +2883,558 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  diplomacy message <王國> <訊息> 外交訊息');
   sendSystem(session.sessionId, '  diplomacy trade <王國> <條款>   貿易提議');
   sendSystem(session.sessionId, '  diplomacy embargo/lift <王國>   禁運管理');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 成就/稱號 ──');
+  sendSystem(session.sessionId, '  achievement (ach)    查看所有成就');
+  sendSystem(session.sessionId, '  achievement equip <ID> 裝備稱號');
+  sendSystem(session.sessionId, '  title                查看當前稱號');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 寵物系統 ──');
+  sendSystem(session.sessionId, '  pet list             查看所有寵物');
+  sendSystem(session.sessionId, '  pet info <petId>     寵物詳情');
+  sendSystem(session.sessionId, '  pet summon <petId>   召喚寵物');
+  sendSystem(session.sessionId, '  pet dismiss          解散寵物');
+  sendSystem(session.sessionId, '  pet feed <petId> <itemId> 餵食寵物');
+  sendSystem(session.sessionId, '  pet rename <petId> <name> 重命名');
+  sendSystem(session.sessionId, '  tame                 馴服野生寵物（馴獸師專用）');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 世界事件 ──');
+  sendSystem(session.sessionId, '  event info           查看當前/下次世界事件');
+  sendSystem(session.sessionId, '  event join           加入當前世界事件');
+  sendSystem(session.sessionId, '  event ranking        當前事件傷害排名');
+}
+
+// ─── 成就/稱號指令 ───
+
+function cmdAchievement(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  if (sub === 'equip') {
+    const achId = args[1];
+    if (!achId) {
+      sendError(session.sessionId, '用法：achievement equip <成就ID>');
+      return;
+    }
+    const result = achievementMgr.equipTitle(char.id, achId);
+    if (result.ok) {
+      sendSystem(session.sessionId, result.message);
+    } else {
+      sendError(session.sessionId, result.message);
+    }
+    return;
+  }
+
+  // 預設：列出所有成就
+  const achievements = achievementMgr.getAchievements(char.id);
+  const completed = achievements.filter(a => a.completedAt !== null);
+
+  sendSystem(session.sessionId, `═══ 成就列表 （${completed.length}/${achievements.length} 完成）═══`);
+
+  const categories: Record<string, string> = {
+    combat: '戰鬥', exploration: '探索', social: '社交',
+    collection: '收集', crafting: '製作',
+  };
+
+  for (const [catId, catName] of Object.entries(categories)) {
+    const catAchs = achievements.filter(a => a.category === catId);
+    const catDone = catAchs.filter(a => a.completedAt !== null).length;
+    sendSystem(session.sessionId, '');
+    sendSystem(session.sessionId, `── ${catName} (${catDone}/${catAchs.length}) ──`);
+    for (const a of catAchs) {
+      const status = a.completedAt ? '✓' : `${a.progress}/${a.requiredProgress}`;
+      const titleText = a.completedAt ? ` → 「${a.title}」` : '';
+      sendSystem(session.sessionId, `  [${status}] ${a.name}（${a.description}）${titleText}`);
+    }
+  }
+}
+
+function cmdTitle(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const title = achievementMgr.getEquippedTitle(char.id);
+  if (title) {
+    sendSystem(session.sessionId, `你當前的稱號：「${title}」`);
+  } else {
+    sendSystem(session.sessionId, '你尚未裝備任何稱號。使用 achievement equip <成就ID> 來裝備。');
+  }
+}
+
+// ─── 寵物指令 ───
+
+function cmdPet(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'list': {
+      const pets = petMgr.getPlayerPets(char.id);
+      if (pets.length === 0) {
+        sendSystem(session.sessionId, '你還沒有任何寵物。馴獸師可使用 tame 馴服，其他職業可使用寵物蛋。');
+        return;
+      }
+      sendSystem(session.sessionId, `═══ 我的寵物 (${pets.length}) ═══`);
+      for (const p of pets) {
+        const summonMark = p.isSummoned ? ' [已召喚]' : '';
+        const def = PET_DEFS[p.petType];
+        sendSystem(session.sessionId,
+          `  ${p.name}（${def?.name ?? p.petType}）Lv${p.level} HP:${p.hp}/${p.maxHp} ATK:${p.atk} DEF:${p.def} 幸福:${p.happiness}/100${summonMark}`
+        );
+        sendSystem(session.sessionId, `    ID: ${p.id}`);
+      }
+      break;
+    }
+    case 'info': {
+      const petId = args[1];
+      if (!petId) { sendError(session.sessionId, '用法：pet info <petId>'); return; }
+      const pet = petMgr.getPetInfo(char.id, petId);
+      if (!pet) { sendError(session.sessionId, '找不到這隻寵物。'); return; }
+      const def = PET_DEFS[pet.petType];
+      sendSystem(session.sessionId, `═══ ${pet.name} ═══`);
+      sendSystem(session.sessionId, `  類型：${def?.name ?? pet.petType}（${def?.description ?? ''}）`);
+      sendSystem(session.sessionId, `  等級：Lv${pet.level}  EXP：${pet.exp}/${pet.level * 50 + pet.level * pet.level * 10}`);
+      sendSystem(session.sessionId, `  HP：${pet.hp}/${pet.maxHp}  ATK：${pet.atk}  DEF：${pet.def}`);
+      sendSystem(session.sessionId, `  幸福度：${pet.happiness}/100`);
+      sendSystem(session.sessionId, `  狀態：${pet.isSummoned ? '已召喚' : '休息中'}`);
+      break;
+    }
+    case 'summon': {
+      const petId = args[1];
+      if (!petId) { sendError(session.sessionId, '用法：pet summon <petId>'); return; }
+      const result = petMgr.summonPet(char.id, petId);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'dismiss': {
+      const result = petMgr.dismissPet(char.id);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'feed': {
+      const petId = args[1];
+      const itemId = args[2];
+      if (!petId || !itemId) { sendError(session.sessionId, '用法：pet feed <petId> <itemId>'); return; }
+      // 檢查是否持有該物品
+      const inv = getInventory(char.id);
+      const hasItem = inv.find(i => i.itemId === itemId && i.quantity > 0);
+      if (!hasItem) { sendError(session.sessionId, `你沒有物品 ${itemId}。`); return; }
+      // 消耗物品
+      removeInventoryItem(char.id, itemId, 1);
+      const result = petMgr.feedPet(char.id, petId, itemId);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else {
+        // 退還物品
+        addInventoryItem(char.id, itemId, 1);
+        sendError(session.sessionId, result.message);
+      }
+      break;
+    }
+    case 'rename': {
+      const petId = args[1];
+      const newName = args.slice(2).join(' ');
+      if (!petId || !newName) { sendError(session.sessionId, '用法：pet rename <petId> <name>'); return; }
+      const result = petMgr.renamePet(char.id, petId, newName);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    default:
+      // 無子命令，顯示簡略列表
+      cmdPet(session, ['list']);
+      break;
+  }
+}
+
+function cmdTame(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法馴服寵物！');
+    return;
+  }
+
+  // 找到當前房間可馴服的寵物類型
+  const availablePets = Object.values(PET_DEFS).filter(d => d.tameZones.includes(char.roomId));
+  if (availablePets.length === 0) {
+    sendError(session.sessionId, '這個區域沒有可馴服的野生寵物。');
+    return;
+  }
+
+  // 隨機選一個可馴服的寵物
+  const targetPet = availablePets[Math.floor(Math.random() * availablePets.length)];
+  const result = petMgr.tamePet(char.id, targetPet.id, char.roomId, char.level, char.classId);
+
+  if (result.ok) {
+    sendSystem(session.sessionId, result.message);
+  } else {
+    sendError(session.sessionId, result.message);
+  }
+}
+
+// ─── 世界事件指令 ───
+
+function cmdEvent(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'info': {
+      const current = worldEventMgr.getCurrentEvent();
+      if (current && current.bossId) {
+        const boss = WORLD_BOSS_DEFS[current.bossId];
+        const info = worldEventMgr.getEventInfo(current.id);
+        sendSystem(session.sessionId, `═══ 世界事件：${boss?.name ?? '未知'} ═══`);
+        sendSystem(session.sessionId, `  等級：Lv${boss?.level ?? '?'}`);
+        sendSystem(session.sessionId, `  HP：${boss?.hp ?? '?'}`);
+        sendSystem(session.sessionId, `  出現地點：${boss?.spawnRoom ?? '?'}`);
+        sendSystem(session.sessionId, `  狀態：${current.status}`);
+        sendSystem(session.sessionId, `  參與人數：${info?.rankings.length ?? current.participants.length}`);
+        sendSystem(session.sessionId, `  說明：${boss?.description ?? ''}`);
+      } else {
+        sendSystem(session.sessionId, '目前沒有進行中的世界事件。');
+        sendSystem(session.sessionId, '世界BOSS每 4 小時刷新一次，輪流出現：');
+        for (const [id, def] of Object.entries(WORLD_BOSS_DEFS)) {
+          sendSystem(session.sessionId, `  Lv${def.level} ${def.name} — ${def.spawnRoom}`);
+        }
+      }
+      break;
+    }
+    case 'join': {
+      const current = worldEventMgr.getCurrentEvent();
+      if (!current) {
+        sendError(session.sessionId, '目前沒有進行中的世界事件。');
+        return;
+      }
+      const boss = current.bossId ? WORLD_BOSS_DEFS[current.bossId] : null;
+      if (boss && char.roomId !== boss.spawnRoom) {
+        sendError(session.sessionId, `你必須在 ${boss.spawnRoom} 才能參加此事件。`);
+        return;
+      }
+      const result = worldEventMgr.joinEvent(char.id, current.id);
+      if (result.ok) sendSystem(session.sessionId, result.message);
+      else sendError(session.sessionId, result.message);
+      break;
+    }
+    case 'ranking': {
+      const current = worldEventMgr.getCurrentEvent();
+      if (!current) {
+        sendError(session.sessionId, '目前沒有進行中的世界事件。');
+        return;
+      }
+      const rankings = worldEventMgr.getEventDamageRanking(current.id);
+      if (rankings.length === 0) {
+        sendSystem(session.sessionId, '尚無傷害紀錄。');
+        return;
+      }
+      sendSystem(session.sessionId, '═══ 世界事件傷害排名 ═══');
+      for (let i = 0; i < Math.min(rankings.length, 20); i++) {
+        const r = rankings[i];
+        const ch = getCharacterById(r.characterId);
+        sendSystem(session.sessionId, `  #${i + 1} ${ch?.name ?? r.characterId} — ${r.damage} 傷害`);
+      }
+      break;
+    }
+    default:
+      cmdEvent(session, ['info']);
+      break;
+  }
+}
+
+// ─── 天氣指令 ───
+
+function cmdWeather(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  sendSystem(session.sessionId, weatherMgr.getStatusReport());
+}
+
+// ─── 郵件指令 ───
+
+function cmdMail(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'list': case undefined: {
+      const inbox = mailMgr.getInbox(char.id);
+      if (inbox.length === 0) {
+        sendSystem(session.sessionId, '你的信箱是空的。');
+        return;
+      }
+      sendSystem(session.sessionId, '═══ 收件箱 ═══');
+      for (const m of inbox) {
+        const readMark = m.isRead ? '  ' : '★ ';
+        const attach = (m.attachedItemId || m.attachedGold > 0) ? ' [附件]' : '';
+        const date = new Date(m.createdAt * 1000).toLocaleDateString('zh-TW');
+        sendSystem(session.sessionId, `${readMark}[${m.id.slice(0, 8)}] ${m.senderName} - ${m.subject || '(無主題)'}${attach} (${date})`);
+      }
+      sendSystem(session.sessionId, `共 ${inbox.length} 封郵件。使用 mail read <id> 閱讀。`);
+      break;
+    }
+
+    case 'read': {
+      const mailId = args[1];
+      if (!mailId) {
+        sendError(session.sessionId, '請指定郵件 ID。用法：mail read <id>');
+        return;
+      }
+      // 支援短 ID 匹配
+      const inbox = mailMgr.getInbox(char.id);
+      const matched = inbox.find(m => m.id.startsWith(mailId));
+      if (!matched) {
+        sendError(session.sessionId, '找不到該郵件。');
+        return;
+      }
+      const result = mailMgr.readMail(char.id, matched.id);
+      if (!result.ok) {
+        sendError(session.sessionId, result.error);
+        return;
+      }
+      const m = result.mail;
+      sendSystem(session.sessionId, '═══ 郵件內容 ═══');
+      sendSystem(session.sessionId, `寄件人：${m.senderName}`);
+      sendSystem(session.sessionId, `主題：${m.subject || '(無主題)'}`);
+      sendSystem(session.sessionId, `日期：${new Date(m.createdAt * 1000).toLocaleString('zh-TW')}`);
+      sendSystem(session.sessionId, '');
+      sendSystem(session.sessionId, m.body || '(無內容)');
+      if (result.claimed.length > 0) {
+        sendSystem(session.sessionId, '');
+        sendSystem(session.sessionId, '── 領取附件 ──');
+        for (const c of result.claimed) {
+          sendSystem(session.sessionId, `  ${c}`);
+        }
+      }
+      break;
+    }
+
+    case 'send': {
+      // mail send <player> <subject> <body> [-item <itemName>] [-gold <amount>]
+      if (args.length < 4) {
+        sendError(session.sessionId, '用法：mail send <玩家名> <主題> <內容> [-item <物品ID> [-count <數量>]] [-gold <金額>]');
+        return;
+      }
+
+      const recipientName = args[1];
+      // Parse flags
+      let subject = '';
+      let body = '';
+      let attachItemId: string | undefined;
+      let attachCount = 1;
+      let attachGold = 0;
+
+      // Find flag positions
+      const flagArgs = args.slice(2);
+      const itemFlagIdx = flagArgs.indexOf('-item');
+      const goldFlagIdx = flagArgs.indexOf('-gold');
+      const countFlagIdx = flagArgs.indexOf('-count');
+
+      // Determine end of body text
+      let bodyEndIdx = flagArgs.length;
+      if (itemFlagIdx >= 0 && itemFlagIdx < bodyEndIdx) bodyEndIdx = itemFlagIdx;
+      if (goldFlagIdx >= 0 && goldFlagIdx < bodyEndIdx) bodyEndIdx = goldFlagIdx;
+
+      // First word after player name is subject, rest is body
+      if (bodyEndIdx > 0) {
+        subject = flagArgs[0];
+        body = flagArgs.slice(1, bodyEndIdx).join(' ');
+      }
+
+      // Parse flags
+      if (itemFlagIdx >= 0 && itemFlagIdx + 1 < flagArgs.length) {
+        attachItemId = flagArgs[itemFlagIdx + 1];
+      }
+      if (countFlagIdx >= 0 && countFlagIdx + 1 < flagArgs.length) {
+        attachCount = parseInt(flagArgs[countFlagIdx + 1], 10) || 1;
+      }
+      if (goldFlagIdx >= 0 && goldFlagIdx + 1 < flagArgs.length) {
+        attachGold = parseInt(flagArgs[goldFlagIdx + 1], 10) || 0;
+      }
+
+      const sendResult = mailMgr.sendMail(char.id, recipientName, subject, body, attachItemId, attachCount, attachGold);
+      if (!sendResult.ok) {
+        sendError(session.sessionId, sendResult.error);
+        return;
+      }
+      sendSystem(session.sessionId, `郵件已成功寄送給「${recipientName}」！`);
+
+      // 通知收件人（如果在線）
+      const recipient = getCharacterByName(recipientName);
+      if (recipient) {
+        const recipientSession = getSessionByCharacterId(recipient.id);
+        if (recipientSession) {
+          sendSystem(recipientSession.sessionId, `你收到了來自「${char.name}」的新郵件！`);
+        }
+      }
+      break;
+    }
+
+    case 'delete': {
+      const mailId = args[1];
+      if (!mailId) {
+        sendError(session.sessionId, '請指定郵件 ID。用法：mail delete <id>');
+        return;
+      }
+      const inbox = mailMgr.getInbox(char.id);
+      const matched = inbox.find(m => m.id.startsWith(mailId));
+      if (!matched) {
+        sendError(session.sessionId, '找不到該郵件。');
+        return;
+      }
+      const delResult = mailMgr.deleteMail(char.id, matched.id);
+      if (!delResult.ok) {
+        sendError(session.sessionId, delResult.error!);
+        return;
+      }
+      sendSystem(session.sessionId, '郵件已刪除。');
+      break;
+    }
+
+    default:
+      sendError(session.sessionId, '用法：mail list | mail read <id> | mail send <玩家> <主題> <內容> | mail delete <id>');
+  }
+}
+
+// ─── 表情指令 ───
+
+const EMOTE_MAP: Record<string, string> = {
+  bow:       '恭敬地鞠了一躬。',
+  wave:      '揮手打招呼。',
+  laugh:     '開懷大笑。',
+  cry:       '傷心地哭泣。',
+  dance:     '翩翩起舞。',
+  shrug:     '聳了聳肩。',
+  nod:       '點了點頭。',
+  clap:      '鼓掌叫好。',
+  flex:      '秀出結實的肌肉。',
+  think:     '陷入沉思。',
+  salute:    '敬了一個禮。',
+  facepalm:  '無奈地捂臉。',
+  cheer:     '歡呼雀躍！',
+  meditate:  '盤腿冥想。',
+  yawn:      '打了個大哈欠。',
+};
+
+function cmdEmote(session: WsSession, emoteStr: string): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const emoteName = emoteStr.trim().toLowerCase();
+
+  if (!emoteName) {
+    sendSystem(session.sessionId, '可用表情：' + Object.keys(EMOTE_MAP).join('、'));
+    return;
+  }
+
+  const emoteText = EMOTE_MAP[emoteName];
+  if (!emoteText) {
+    sendError(session.sessionId, `未知的表情：${emoteName}。可用表情：${Object.keys(EMOTE_MAP).join('、')}`);
+    return;
+  }
+
+  const message = `${char.name} ${emoteText}`;
+
+  // 顯示給自己
+  sendNarrative(session.sessionId, message);
+
+  // 廣播給同房間的其他玩家
+  const playersInRoom = world.getPlayersInRoom(char.roomId).filter(id => id !== char.id);
+  for (const pid of playersInRoom) {
+    const targetSession = getSessionByCharacterId(pid);
+    if (targetSession) {
+      sendNarrative(targetSession.sessionId, message);
+    }
+  }
+}
+
+// ─── 好友指令 ───
+
+function cmdFriend(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'add': {
+      const name = args[1];
+      if (!name) {
+        sendError(session.sessionId, '用法：friend add <玩家名>');
+        return;
+      }
+      const result = friendMgr.addFriend(char.id, name);
+      if (!result.ok) {
+        sendError(session.sessionId, result.error!);
+        return;
+      }
+      const f = result.friendInfo!;
+      const status = f.isOnline ? '在線' : '離線';
+      sendSystem(session.sessionId, `已將「${f.name}」(Lv.${f.level}) 加為好友！[${status}]`);
+
+      // 通知對方
+      const friendSession = getSessionByCharacterId(f.id);
+      if (friendSession) {
+        sendSystem(friendSession.sessionId, `「${char.name}」將你加為好友了！`);
+      }
+      break;
+    }
+
+    case 'remove': {
+      const name = args[1];
+      if (!name) {
+        sendError(session.sessionId, '用法：friend remove <玩家名>');
+        return;
+      }
+      const result = friendMgr.removeFriend(char.id, name);
+      if (!result.ok) {
+        sendError(session.sessionId, result.error!);
+        return;
+      }
+      sendSystem(session.sessionId, `已將「${name}」從好友列表移除。`);
+      break;
+    }
+
+    case 'online': {
+      const friends = friendMgr.getOnlineFriends(char.id);
+      if (friends.length === 0) {
+        sendSystem(session.sessionId, '目前沒有在線的好友。');
+        return;
+      }
+      sendSystem(session.sessionId, '═══ 在線好友 ═══');
+      for (const f of friends) {
+        sendSystem(session.sessionId, `  ${f.name} (Lv.${f.level} ${f.classId})`);
+      }
+      sendSystem(session.sessionId, `共 ${friends.length} 位在線。`);
+      break;
+    }
+
+    case 'list': default: {
+      const friends = friendMgr.getFriendList(char.id);
+      if (friends.length === 0) {
+        sendSystem(session.sessionId, '你還沒有好友。使用 friend add <玩家名> 來新增好友。');
+        return;
+      }
+      sendSystem(session.sessionId, '═══ 好友列表 ═══');
+      for (const f of friends) {
+        const status = f.isOnline ? '●在線' : '○離線';
+        sendSystem(session.sessionId, `  ${status} ${f.name} (Lv.${f.level} ${f.classId})`);
+      }
+      sendSystem(session.sessionId, `共 ${friends.length} 位好友。`);
+      break;
+    }
+  }
 }
 
 // ─── 工具函式 ───

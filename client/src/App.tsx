@@ -11,7 +11,7 @@ Arinova.init({ appId: ARINOVA_APP_ID });
 
 export default function App() {
   const screen = useGameStore((s) => s.screen);
-  const { sendCommand, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions } = useWebSocket();
+  const { sendCommand, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
@@ -55,6 +55,7 @@ export default function App() {
       onOpenShop={sendShopOpen}
       onPurchase={sendPurchase}
       onGetTransactions={sendGetTransactions}
+      onSendChat={sendChat}
     />
   );
 }

@@ -1,6 +1,7 @@
 // Player/character management tests
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel } from '../game/player.js';
+import { initDb, closeDb } from '../db/schema.js';
 
 // ============================================================
 //  Tests
@@ -38,6 +39,14 @@ describe('expToNextLevel', () => {
 
 describe('PlayerManager', () => {
   let pm: PlayerManager;
+
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
 
   beforeEach(() => {
     pm = new PlayerManager();

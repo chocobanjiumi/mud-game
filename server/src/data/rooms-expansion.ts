@@ -373,6 +373,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
     ],
+    groundItems: [
+      { itemId: 'crystal_core', description: '瀑布旁的水晶散發微光' },
+    ],
     mapSymbol: '[V]',
     mapX: 0,
     mapY: 10,
@@ -400,6 +403,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 80 },
       { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 70 },
     ],
+    groundItems: [
+      { itemId: 'ancient_fragment', description: '祭壇上放著一塊古代碎片' },
+    ],
     mapSymbol: '[#]',
     mapX: 0,
     mapY: 11,
@@ -422,7 +428,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '角落裡的吟遊詩人正撥動琴弦，唱著一首關於龍族寶藏的古老歌謠。',
     exits: [
       { direction: 'south', targetRoomId: 'market_street', description: '回到商業街' },
-      { direction: 'east', targetRoomId: 'auction_house', description: '酒館後門通往拍賣場' },
+      { direction: 'north', targetRoomId: 'auction_house', description: '酒館後門通往拍賣場' },
     ],
     monsters: [],
     npcs: ['bartender'],
@@ -445,8 +451,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '周圍環繞著階梯式的觀眾席。牆壁上的展示櫃裡陳列著等待拍賣的珍稀物品。' +
       '拍賣官清亮的嗓音在大廳中迴盪，競價聲此起彼落。',
     exits: [
-      { direction: 'west', targetRoomId: 'tavern', description: '從後門回到酒館' },
-      { direction: 'south', targetRoomId: 'town_plaza', description: '正門通往城鎮廣場' },
+      { direction: 'west', targetRoomId: 'town_plaza', description: '正門通往城鎮廣場' },
+      { direction: 'south', targetRoomId: 'tavern', description: '從後門回到酒館' },
     ],
     monsters: [],
     mapSymbol: '[$]',
@@ -526,6 +532,969 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       creature: '最深處的牢房門上刻著封印紋章——裡面關押的並非普通犯人。',
       treasure: '獄卒輪班交接時，走廊盡頭的儲物間門會短暫開啟，裡面存放著沒收的違禁品。',
       spirit: '牢房牆壁上刻滿了囚犯的塗鴉，其中一段文字記載著越獄隧道的入口位置。',
+    },
+  },
+
+  // ─── Area 9: 魔族領地 (Lv 30-40) ──────────────────────────
+
+  demon_border: {
+    id: 'demon_border',
+    name: '魔族邊境',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '冰封雪原的盡頭，大地突然斷裂成一道巨大的裂谷。裂谷對面是一片焦黑的荒原，' +
+      '空氣中瀰漫著硫磺的刺鼻氣味，遠方的天空被永恆的紅色火焰映照。' +
+      '一座搖搖欲墜的石橋橫跨裂谷，這是通往魔族領地的唯一通路。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ice_throne', description: '退回冰封王座' },
+      { direction: 'north', targetRoomId: 'scorched_plains', description: '踏上焦黑的荒原' },
+    ],
+    monsters: [
+      { monsterId: 'imp', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'demon_soldier', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[邊]',
+    mapX: 3,
+    mapY: 17,
+    guardianHints: {
+      creature: '裂谷中偶爾飛出的小惡魔會從背後偷襲——注意腳下的陰影。',
+      treasure: '石橋的橋墩裡嵌著一塊暗紅色的寶石，似乎是魔族用來維持橋樑的動力源。',
+      spirit: '這座裂谷是遠古大戰中諸神之力撕裂大地所形成的，至今仍殘留著神魔交戰的餘波。',
+    },
+  },
+
+  scorched_plains: {
+    id: 'scorched_plains',
+    name: '焦土平原',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '一望無際的焦黑平原，大地龜裂如蛛網，裂縫中不時竄出赤紅色的火焰。' +
+      '枯萎的樹木如同黑色的骨架矗立其間，天空永遠籠罩在灰紅色的煙塵之下。' +
+      '遠處傳來低沉的戰鼓聲，那是魔族巡邏隊的信號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'demon_border', description: '退回邊境裂谷' },
+      { direction: 'north', targetRoomId: 'demon_village', description: '隱約可見魔族的營帳' },
+      { direction: 'east', targetRoomId: 'blood_river', description: '一條殷紅的河流在東方流淌' },
+    ],
+    monsters: [
+      { monsterId: 'imp', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[焦]',
+    mapX: 3,
+    mapY: 18,
+    guardianHints: {
+      creature: '地獄犬會成對出現，一隻正面牽制，另一隻從側面撲咬——優先擊倒側面的那隻。',
+      treasure: '大地裂縫深處有一層凝固的熔岩，其中混雜著高純度的魔力結晶。',
+      spirit: '這片平原曾是繁花盛開的草原，千年前的魔族入侵將一切化為焦土。大地仍記得綠色的夢。',
+    },
+  },
+
+  demon_village: {
+    id: 'demon_village',
+    name: '魔族村落',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '由黑色岩石和獸骨搭建的簡陋村落，低矮的帳篷和骨架棚屋散佈其間。' +
+      '魔族士兵在村中巡邏，鍛造爐裡的火焰徹夜不熄，空氣中充斥著金屬和鮮血的氣味。' +
+      '村落中央的圖騰柱上掛滿了冒險者的裝備殘骸，作為對入侵者的警告。',
+    exits: [
+      { direction: 'south', targetRoomId: 'scorched_plains', description: '回到焦土平原' },
+      { direction: 'north', targetRoomId: 'dark_fortress_gate', description: '村落北方矗立著黑暗要塞' },
+      { direction: 'west', targetRoomId: 'demon_treasury', description: '村落深處有一間上鎖的石屋', locked: true, keyItemId: 'silver_key' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'imp', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[村]',
+    mapX: 3,
+    mapY: 19,
+    guardianHints: {
+      creature: '魔族士兵換崗時防備最為鬆懈——觀察巡邏路線找出空檔。',
+      treasure: '圖騰柱上掛著的裝備殘骸中有幾件看起來品質不錯，或許還能修復。',
+      spirit: '這些低階魔族並非天生邪惡——他們只是在魔王的暴政下求生的可憐生物。',
+    },
+  },
+
+  blood_river: {
+    id: 'blood_river',
+    name: '血河',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '一條殷紅如血的河流在焦土中蜿蜒流淌，河面冒著騰騰的熱氣。' +
+      '河水並非真正的血液，而是被地底深處的魔力礦脈污染的熔岩水。' +
+      '河岸邊散落著被腐蝕的骨骸和扭曲的金屬殘片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'scorched_plains', description: '沿河岸回到焦土平原' },
+      { direction: 'south', targetRoomId: 'dark_fortress_gate', description: '河流上游通往要塞' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[血]',
+    mapX: 4,
+    mapY: 18,
+    guardianHints: {
+      creature: '魅魔會偽裝成迷路的旅人來誘惑冒險者——不要被外表所騙。',
+      treasure: '河床中沉積著被魔力結晶化的礦石，是鍛造魔族武器的稀有材料。',
+      spirit: '血河的源頭據說是遠古魔神的傷口，至今仍在流淌著神之血液。',
+    },
+  },
+
+  dark_fortress_gate: {
+    id: 'dark_fortress_gate',
+    name: '黑暗要塞大門',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '高聳入雲的黑色城牆擋在前方，由巨大的暗黑岩石砌成，表面刻滿了魔族的詛咒符文。' +
+      '城門由兩扇十公尺高的鑄鐵大門構成，門上釘著巨大的惡魔頭顱裝飾。' +
+      '門前的廣場上，魔族將軍正在操練一隊魔族士兵。',
+    exits: [
+      { direction: 'south', targetRoomId: 'demon_village', description: '退回魔族村落' },
+      { direction: 'north', targetRoomId: 'blood_river', description: '沿著血河撤退' },
+      { direction: 'east', targetRoomId: 'torture_chamber', description: '穿過城門進入要塞', locked: true, keyItemId: 'silver_key' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 3,
+    mapY: 20,
+    guardianHints: {
+      creature: '魔族將軍的指揮能讓士兵獲得增益——優先擊倒將軍可以瓦解敵陣。',
+      treasure: '城門上的詛咒符文實際上是一道魔法鎖——破解它可以繞過守衛直接進入要塞。',
+      spirit: '這座要塞建在一座遠古神殿的遺址上，黑暗力量是從地底深處滲透出來的。',
+    },
+  },
+
+  torture_chamber: {
+    id: 'torture_chamber',
+    name: '拷問室',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '要塞內部陰暗潮濕的石室，牆壁上掛滿了生鏽的鐵鏈和刑具。' +
+      '空氣中瀰漫著令人作嘔的血腥氣味，角落裡堆放著破碎的籠子和骨骸。' +
+      '偶爾能聽到從更深處傳來的淒厲慘叫聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'dark_fortress_gate', description: '退回要塞大門' },
+      { direction: 'north', targetRoomId: 'demon_barracks', description: '通道通往魔族兵營' },
+      { direction: 'east', targetRoomId: 'summoning_circle', description: '暗紅的光芒從東方透出' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[刑]',
+    mapX: 3,
+    mapY: 21,
+    guardianHints: {
+      creature: '魅魔在此處會使用精神攻擊——保持意志堅定是生存的關鍵。',
+      treasure: '刑具架後方的暗格中藏著一把鑰匙，可以打開通往寶庫的密道。',
+      spirit: '被囚禁在此的靈魂仍在徘徊，幫助他們解脫或許能獲得意想不到的祝福。',
+    },
+  },
+
+  demon_barracks: {
+    id: 'demon_barracks',
+    name: '魔族兵營',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '寬闊的地下營房中排列著數百張由獸骨和獸皮製成的簡陋床鋪。' +
+      '武器架上陳列著各式各樣的魔族武器，牆壁上掛著作戰地圖和戰旗。' +
+      '空氣中充斥著魔族特有的刺鼻體味，偶爾能聽到士兵們的粗獷笑聲。',
+    exits: [
+      { direction: 'south', targetRoomId: 'torture_chamber', description: '回到拷問室' },
+      { direction: 'west', targetRoomId: 'summoning_circle', description: '兵營深處有一道暗紅的門' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 4,
+    mapY: 21,
+    guardianHints: {
+      creature: '兵營中的魔族士兵會互相支援——試著把他們引到狹窄的通道中各個擊破。',
+      treasure: '武器架上有一把品質異常精良的魔族劍，或許是將軍的備用武器。',
+      spirit: '牆上的作戰地圖標示著魔族的進攻計劃——帶回去交給冒險者公會可能會有重賞。',
+    },
+  },
+
+  summoning_circle: {
+    id: 'summoning_circle',
+    name: '召喚陣',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '一間圓形的巨大石室，地面刻著複雜的魔法陣，暗紅色的能量脈動從符文中湧出。' +
+      '空氣中充滿了灼熱的魔力，呼吸都變得困難。四根黑色石柱上燃燒著不滅的鬼火，' +
+      '將整個空間映照成地獄般的景象。這裡是魔王從深淵召喚惡魔的場所。',
+    exits: [
+      { direction: 'west', targetRoomId: 'torture_chamber', description: '退回拷問室' },
+      { direction: 'east', targetRoomId: 'demon_barracks', description: '退回兵營' },
+      { direction: 'north', targetRoomId: 'demon_throne', description: '召喚陣背後是魔王殿的入口' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[陣]',
+    mapX: 3,
+    mapY: 22,
+    guardianHints: {
+      creature: '召喚陣啟動時會持續召喚小惡魔——破壞四根石柱上的鬼火可以中斷召喚。',
+      treasure: '魔法陣的核心處嵌著一顆魔力水晶，蘊含著強大的暗黑能量。',
+      spirit: '這個召喚陣連接著深淵——如果不阻止魔王，更強大的惡魔將會降臨。',
+    },
+  },
+
+  demon_throne: {
+    id: 'demon_throne',
+    name: '魔王殿',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '黑暗要塞的最深處，一座由無數骨骸堆砌而成的王座矗立在大殿中央。' +
+      '魔王端坐其上，渾身散發著令人窒息的威壓。殿堂四壁鑲嵌著燃燒的魔力結晶，' +
+      '映照出魔王那雙如烈焰般的瞳孔。這裡是魔族領地的心臟，也是最危險的戰場。',
+    exits: [
+      { direction: 'south', targetRoomId: 'summoning_circle', description: '退回召喚陣' },
+      { direction: 'north', targetRoomId: 'dragon_valley_entrance', description: '魔王殿背後的秘密通道通向一片未知的山谷' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[魔]',
+    mapX: 3,
+    mapY: 23,
+    guardianHints: {
+      creature: '魔王會在HP低於一半時暴走，攻擊力和速度大幅提升——準備好防禦和恢復道具。',
+      treasure: '魔王的骨座下方藏著一把傳說中的魔劍，是歷代魔王力量的結晶。',
+      spirit: '現任魔王並非最初的統治者——他是通過弒殺前任魔王奪得王位的。或許可以利用這段歷史。',
+    },
+  },
+
+  demon_treasury: {
+    id: 'demon_treasury',
+    name: '魔族寶庫',
+    zone: 'demon_territory' as RoomDef['zone'],
+    description:
+      '一間由魔法結界守護的石室，四壁鑲嵌著發光的紅色寶石。' +
+      '室內堆放著從各地掠奪來的金幣、寶石和魔法物品，散發著誘人的光芒。' +
+      '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。',
+    exits: [
+      { direction: 'east', targetRoomId: 'demon_village', description: '回到魔族村落' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 75 },
+    ],
+    groundItems: [
+      { itemId: 'rare_fossil', description: '寶庫角落有一塊奇特的化石' },
+    ],
+    mapSymbol: '[寶]',
+    mapX: 2,
+    mapY: 19,
+    guardianHints: {
+      creature: '寶庫的守衛比外面的巡邏兵更加精銳——他們是魔王親衛隊的成員。',
+      treasure: '寶庫最深處的箱子裡藏著魔族的遠古聖物，據說能大幅提升暗屬性魔法的威力。',
+      spirit: '這些寶物中有許多來自被魔族毀滅的王國，歸還它們或許能解開某些古老的詛咒。',
+    },
+  },
+
+  // ─── Area 10: 龍谷 (Lv 40-50) ─────────────────────────────
+
+  dragon_valley_entrance: {
+    id: 'dragon_valley_entrance',
+    name: '龍谷入口',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '穿過魔王殿背後的秘密通道，眼前豁然開朗。兩座巍峨的山峰如同巨龍的翅膀展開，' +
+      '中間的峽谷被雲霧繚繞，空氣中瀰漫著古老而神秘的氣息。' +
+      '入口處的岩壁上刻著龍族的古老文字，警告著所有膽敢踏入的生命。',
+    exits: [
+      { direction: 'south', targetRoomId: 'demon_throne', description: '退回魔王殿' },
+      { direction: 'north', targetRoomId: 'dragon_nest_path', description: '踏入雲霧繚繞的峽谷' },
+      { direction: 'east', targetRoomId: 'dragon_bone_field', description: '東方散落著巨大的白骨' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[龍]',
+    mapX: 3,
+    mapY: 24,
+    guardianHints: {
+      creature: '幼龍的火焰吐息有固定的冷卻時間——在牠噴完火後的五秒內是最佳攻擊時機。',
+      treasure: '岩壁上的龍族文字實際上是一張藏寶圖，記載著龍之寶庫的位置。',
+      spirit: '龍谷是龍族最後的聖地——在遠古戰爭中倖存的龍族後裔在此繁衍生息。',
+    },
+  },
+
+  dragon_nest_path: {
+    id: 'dragon_nest_path',
+    name: '龍巢小徑',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '一條蜿蜒在峭壁之間的狹窄小徑，兩側的岩壁上佈滿了龍爪留下的深深抓痕。' +
+      '不時有巨大的影子掠過頭頂——那是在天空中盤旋的飛龍。' +
+      '小徑上散落著巨大的鱗片，每一片都比人的手掌還大。',
+    exits: [
+      { direction: 'south', targetRoomId: 'dragon_valley_entrance', description: '退回龍谷入口' },
+      { direction: 'north', targetRoomId: 'wyvern_cliff', description: '小徑通向一處懸崖' },
+      { direction: 'west', targetRoomId: 'dragon_egg_chamber', description: '岩壁中有一個隱蔽的洞口' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[徑]',
+    mapX: 3,
+    mapY: 25,
+    guardianHints: {
+      creature: '龍騎士是駕馭飛龍的精銳戰士——先擊落他的坐騎可以大幅削弱戰力。',
+      treasure: '散落的龍鱗中有幾片品質極高的古龍鱗，是鍛造龍鱗甲的頂級材料。',
+      spirit: '這條小徑是幼龍學習飛翔的訓練場——岩壁上的抓痕記錄著牠們成長的軌跡。',
+    },
+  },
+
+  wyvern_cliff: {
+    id: 'wyvern_cliff',
+    name: '飛龍崖',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '一處突出於山壁的巨大平台，三面臨崖，下方是萬丈深淵。' +
+      '強勁的山風在崖頂呼嘯，雲層就在腳下翻湧。數隻飛龍在崖邊的巢穴中棲息，' +
+      '牠們銳利的目光警惕地注視著每一個靠近的生物。',
+    exits: [
+      { direction: 'south', targetRoomId: 'dragon_nest_path', description: '退回龍巢小徑' },
+      { direction: 'north', targetRoomId: 'sky_bridge', description: '崖邊有一座雲中石橋' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 3, respawnSeconds: 60 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[崖]',
+    mapX: 3,
+    mapY: 26,
+    guardianHints: {
+      creature: '飛龍會利用強風進行俯衝攻擊——背靠岩壁可以限制牠們的攻擊角度。',
+      treasure: '飛龍巢穴中混雜著從各地叼回的寶物，其中不乏稀有的魔法道具。',
+      spirit: '飛龍是龍族中最自由的一支——牠們拒絕了古龍的統治，選擇在風中翱翔。',
+    },
+  },
+
+  dragon_bone_field: {
+    id: 'dragon_bone_field',
+    name: '龍骨原野',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '一片被巨大龍骨散佈的荒野，有些骨骸的肋骨如同拱門般高聳，頭骨比房屋還要巨大。' +
+      '這裡是遠古巨龍的安息之地，空氣中殘留著龍族亡魂的低語。' +
+      '腐朽的骨骼中滲出暗綠色的毒液——古龍蛇在骨海中遊蕩。',
+    exits: [
+      { direction: 'west', targetRoomId: 'dragon_valley_entrance', description: '回到龍谷入口' },
+      { direction: 'north', targetRoomId: 'ancient_dragon_lair', description: '最大的龍骨指向一個洞穴' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+    ],
+    groundItems: [
+      { itemId: 'dragon_scale', description: '龍骨旁散落著閃亮的鱗片' },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 4,
+    mapY: 24,
+    guardianHints: {
+      creature: '古龍蛇會從龍骨的縫隙中突然竄出——在龍骨密集的區域要格外小心。',
+      treasure: '古龍的骨髓中仍殘留著強大的魔力，是煉製頂級藥水的極品材料。',
+      spirit: '每一具龍骨都曾是一位偉大的龍族戰士——在這裡能感受到牠們最後的驕傲與不甘。',
+    },
+  },
+
+  ancient_dragon_lair: {
+    id: 'ancient_dragon_lair',
+    name: '古龍巢穴',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '一個巨大的天然洞穴，穹頂高達數十公尺，足以容納一條成年巨龍。' +
+      '洞壁上覆蓋著閃爍的龍鱗結晶，地面散佈著碎裂的蛋殼和龍牙。' +
+      '洞穴深處傳來沉重的呼吸聲，一股令人顫慄的古老力量在此沉睡。',
+    exits: [
+      { direction: 'south', targetRoomId: 'dragon_bone_field', description: '退回龍骨原野' },
+      { direction: 'east', targetRoomId: 'dragon_hoard', description: '洞穴側面有一條通道', locked: true, keyItemId: 'gold_key' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[巢]',
+    mapX: 4,
+    mapY: 25,
+    guardianHints: {
+      creature: '洞穴中的回音會暴露你的位置——輕手輕腳移動可以避免驚動沉睡的巨獸。',
+      treasure: '龍鱗結晶是天然形成的魔法礦物，其價值遠超普通寶石。',
+      spirit: '這個巢穴的主人是一條活了數千年的古龍——牠見證了這個世界的興衰更迭。',
+    },
+  },
+
+  dragon_hoard: {
+    id: 'dragon_hoard',
+    name: '龍之寶庫',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '令人窒息的財富堆積如山——金幣、寶石、魔法武器、王冠和聖物混雜在一起，' +
+      '形成一座閃閃發光的小丘。這是龍族數千年來從各個王國掠奪並收藏的寶藏。' +
+      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_dragon_lair', description: '回到古龍巢穴' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[寶]',
+    mapX: 5,
+    mapY: 25,
+    guardianHints: {
+      creature: '守護寶庫的風暴巨龍會用雷電攻擊——裝備抗雷裝備能大幅降低傷害。',
+      treasure: '寶山頂部有一件散發著金色光芒的武器——那是某位古代英雄的遺物。',
+      spirit: '龍族收藏寶物並非出於貪婪——每一件寶物都承載著一段被牠們守護的歷史。',
+    },
+  },
+
+  sky_bridge: {
+    id: 'sky_bridge',
+    name: '天空之橋',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '一座由雲霧凝結而成的半透明石橋，橫跨在兩座山峰之間。' +
+      '橋下是萬丈深淵，橋面上不時有強風呼嘯而過。' +
+      '遠方的山巔上閃爍著風暴的雷光，那是龍谷最高峰——風暴之巔。',
+    exits: [
+      { direction: 'south', targetRoomId: 'wyvern_cliff', description: '退回飛龍崖' },
+      { direction: 'north', targetRoomId: 'storm_peak', description: '穿越風暴前往山巔' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 3,
+    mapY: 27,
+    guardianHints: {
+      creature: '在橋上戰鬥要小心被風暴巨龍的氣流推落——靠近橋的中心線較為安全。',
+      treasure: '橋體本身就是一種稀有的雲石結晶，如果能取下一塊帶回去會價值連城。',
+      spirit: '這座橋是遠古龍族的建築傑作——牠們用風之魔法凝固了雲層。',
+    },
+  },
+
+  storm_peak: {
+    id: 'storm_peak',
+    name: '風暴之巔',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '龍谷最高的山峰，終年被雷暴雲層籠罩。閃電不斷在雲間穿梭，' +
+      '雷鳴聲震耳欲聾。山頂的平台上矗立著一座古老的龍族祭壇，' +
+      '祭壇上的雷球不停地旋轉閃爍，散發著令人敬畏的力量。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sky_bridge', description: '退回天空之橋' },
+      { direction: 'north', targetRoomId: 'elder_dragon_sanctum', description: '祭壇背後有一道通往聖殿的門' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[巔]',
+    mapX: 3,
+    mapY: 28,
+    guardianHints: {
+      creature: '風暴巨龍在暴風雨中戰力倍增——如果能驅散雲層就能削弱牠。',
+      treasure: '祭壇上的雷球蘊含著純粹的雷電之力，是附魔雷屬性武器的最佳材料。',
+      spirit: '龍族祭壇是龍族祭祀天空之神的場所——在此祈禱可能獲得風暴的祝福。',
+    },
+  },
+
+  elder_dragon_sanctum: {
+    id: 'elder_dragon_sanctum',
+    name: '古龍聖殿',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '隱藏在風暴之巔背後的神聖殿堂，由巨大的龍骨和水晶構成。' +
+      '殿堂中央盤踞著一條體型驚人的古龍，牠的鱗片如同星空般閃耀。' +
+      '空氣中充滿了遠古的威壓，連呼吸都變得沉重。這是龍谷最強大的存在。',
+    exits: [
+      { direction: 'south', targetRoomId: 'storm_peak', description: '退回風暴之巔' },
+      { direction: 'down', targetRoomId: 'abyss_entrance', description: '聖殿地板上有一道通往深淵的裂縫' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[聖]',
+    mapX: 3,
+    mapY: 29,
+    guardianHints: {
+      creature: '古龍擁有預知能力，普通的攻擊模式會被輕易看穿——只有隨機的戰術才能出其不意。',
+      treasure: '古龍的牙齒蘊含著數千年的龍之力量，是鑄造神器級武器的終極素材。',
+      spirit: '古龍是龍族的始祖之一——牠記得世界創生時的模樣，也預見了終焉的到來。',
+    },
+  },
+
+  dragon_egg_chamber: {
+    id: 'dragon_egg_chamber',
+    name: '龍蛋室',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    description:
+      '隱蔽在岩壁深處的溫暖洞穴，地熱從地底湧出，維持著恆定的溫度。' +
+      '數顆巨大的龍蛋安靜地排列在柔軟的火山灰床上，蛋殼上的紋路隱隱發光。' +
+      '這是龍族孕育下一代的聖地，任何威脅都會招致所有龍族的瘋狂報復。',
+    exits: [
+      { direction: 'east', targetRoomId: 'dragon_nest_path', description: '小心地退回龍巢小徑' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[蛋]',
+    mapX: 2,
+    mapY: 25,
+    guardianHints: {
+      creature: '在龍蛋室中戰鬥要格外小心——傷害龍蛋會引來整個龍谷的龍族報復。',
+      treasure: '已經不會孵化的化石龍蛋是極為珍貴的收藏品和煉金材料。',
+      spirit: '每一顆龍蛋中都沉睡著一個嶄新的龍族靈魂——牠們的夢境構成了龍谷的魔力場。',
+    },
+  },
+
+  // ─── Area 11: 深淵裂隙 (Lv 50-55) ────────────────────────
+
+  abyss_entrance: {
+    id: 'abyss_entrance',
+    name: '深淵入口',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。' +
+      '空間在此處開始扭曲，牆壁上的岩石呈現出不可能的幾何形狀。' +
+      '耳邊傳來低沉的嗡鳴聲，那是維度壁壘被侵蝕的聲音。',
+    exits: [
+      { direction: 'up', targetRoomId: 'elder_dragon_sanctum', description: '回到古龍聖殿' },
+      { direction: 'north', targetRoomId: 'void_corridor', description: '踏入扭曲的虛空' },
+      { direction: 'east', targetRoomId: 'nightmare_garden', description: '一條小徑通往奇異的花園' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[淵]',
+    mapX: 3,
+    mapY: 30,
+    guardianHints: {
+      creature: '虛空行者會瞬間移動到你身後——保持背靠牆壁可以限制牠的移動。',
+      treasure: '裂縫邊緣凝結著時空碎片，是製造維度魔法道具的核心材料。',
+      spirit: '這道裂縫是遠古封印被侵蝕的結果——深淵的力量正在緩慢地滲透到現實世界。',
+    },
+  },
+
+  void_corridor: {
+    id: 'void_corridor',
+    name: '虛空迴廊',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。' +
+      '走廊的地板時而凝固時而透明，能透過腳下看到星辰般閃爍的深淵。' +
+      '偶爾有扭曲的光芒從虛空中射出，照亮走廊上蠕動的暗影生物。',
+    exits: [
+      { direction: 'south', targetRoomId: 'abyss_entrance', description: '退回深淵入口' },
+      { direction: 'north', targetRoomId: 'shadow_realm', description: '走廊延伸入更深的黑暗' },
+      { direction: 'east', targetRoomId: 'time_distortion', description: '空間在此分裂出另一條路' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[廊]',
+    mapX: 3,
+    mapY: 31,
+    guardianHints: {
+      creature: '虛空中的暗影生物會從走廊邊緣湧出——不要站在邊緣附近。',
+      treasure: '虛空中偶爾會飄過來自其他維度的物品——有些可能極為珍貴。',
+      spirit: '走廊是古代術士建造的維度通道，原本是連接不同世界的橋樑。',
+    },
+  },
+
+  shadow_realm: {
+    id: 'shadow_realm',
+    name: '暗影領域',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。' +
+      '只有暗影生物的眼睛在黑暗中如同幽靈般閃爍。地面是一層流動的暗影，' +
+      '每一步都會激起漣漪般的黑色波紋。在這裡，連自己的身體都開始變得模糊。',
+    exits: [
+      { direction: 'south', targetRoomId: 'void_corridor', description: '退回虛空迴廊' },
+      { direction: 'north', targetRoomId: 'chaos_bridge', description: '黑暗中有一道混沌的光芒' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[影]',
+    mapX: 3,
+    mapY: 32,
+    guardianHints: {
+      creature: '暗影惡魔在完全黑暗中幾乎無敵——使用光明魔法或照明道具可以削弱牠們。',
+      treasure: '暗影領域的核心處有一顆凝聚了純粹黑暗的暗影之心，是暗屬性魔法的終極素材。',
+      spirit: '暗影領域是深淵滲透到現實的第一個據點——如果不阻止擴張，整個世界都會被吞噬。',
+    },
+  },
+
+  chaos_bridge: {
+    id: 'chaos_bridge',
+    name: '混沌之橋',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而是虛無。' +
+      '橋的兩側翻湧著不同顏色的能量——火、冰、雷、光、暗交替閃爍。' +
+      '踏上橋面的瞬間，現實的法則就不再適用。',
+    exits: [
+      { direction: 'south', targetRoomId: 'shadow_realm', description: '退回暗影領域' },
+      { direction: 'north', targetRoomId: 'abyss_core', description: '橋的盡頭是深淵的核心' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 3, respawnSeconds: 60 },
+      { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[混]',
+    mapX: 3,
+    mapY: 33,
+    guardianHints: {
+      creature: '混沌之子的屬性會隨機變化——觀察牠的顏色來判斷當前的弱點屬性。',
+      treasure: '混沌物質會偶爾凝結成穩定的形態——如果能收集到就是無價之寶。',
+      spirit: '混沌之橋是兩個維度碰撞的產物——它的存在本身就是一個不應該發生的奇蹟。',
+    },
+  },
+
+  nightmare_garden: {
+    id: 'nightmare_garden',
+    name: '噩夢花園',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '一座詭異的花園漂浮在虛空之中，花朵是由凝固的噩夢結晶而成。' +
+      '每一朵花都在無聲地綻放與凋零，散發著令人昏沉的幽香。' +
+      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。',
+    exits: [
+      { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
+      { direction: 'north', targetRoomId: 'time_distortion', description: '花園邊緣的空間在扭曲' },
+    ],
+    monsters: [
+      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[夢]',
+    mapX: 4,
+    mapY: 30,
+    guardianHints: {
+      creature: '噩夢體會入侵你的精神——堅定的意志和抗精神控制的道具是必需品。',
+      treasure: '噩夢結晶花雖然危險，但是製作精神魔法道具的頂級材料。',
+      spirit: '花園中的人影是真實的冒險者——找到方法喚醒他們也許能獲得盟友。',
+    },
+  },
+
+  abyss_core: {
+    id: 'abyss_core',
+    name: '深淵核心',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。' +
+      '這是深淵的核心——所有混沌和暗影力量的源頭。' +
+      '核心周圍的空間已經完全崩壞，重力、時間、光線都失去了意義。',
+    exits: [
+      { direction: 'south', targetRoomId: 'chaos_bridge', description: '退回混沌之橋' },
+      { direction: 'east', targetRoomId: 'abyss_lord_chamber', description: '核心背後是深淵領主的居所' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 3,
+    mapY: 34,
+    guardianHints: {
+      creature: '核心的脈動會週期性地增強所有深淵生物——在脈動間隙攻擊效率最高。',
+      treasure: '如果能從核心中取出一塊碎片，就能獲得操控維度的力量。',
+      spirit: '深淵核心是另一個維度試圖入侵此世界的錨點——摧毀它可以暫時關閉裂隙。',
+    },
+  },
+
+  time_distortion: {
+    id: 'time_distortion',
+    name: '時空扭曲區',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起。' +
+      '你能同時看到這個地方千年前的繁華和千年後的廢墟。' +
+      '時間之流在此分岔又匯合，一步之差可能跨越百年。',
+    exits: [
+      { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
+      { direction: 'south', targetRoomId: 'nightmare_garden', description: '回到噩夢花園' },
+      { direction: 'north', targetRoomId: 'abyss_lord_chamber', description: '時空的盡頭指向領主之間' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[時]',
+    mapX: 4,
+    mapY: 31,
+    guardianHints: {
+      creature: '時空扭曲中的敵人可能會出現在不同的時間點——注意「已經消滅」的敵人再次出現。',
+      treasure: '時空碎片中封存著其他時間線的珍貴物品，但取出它們需要極高的魔法造詣。',
+      spirit: '時空扭曲是深淵力量對現實法則的最大破壞——修復這裡就能穩定整個裂隙。',
+    },
+  },
+
+  abyss_lord_chamber: {
+    id: 'abyss_lord_chamber',
+    name: '深淵領主之間',
+    zone: 'abyss_rift' as RoomDef['zone'],
+    description:
+      '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。' +
+      '平台中央矗立著一座由暗影和虛空編織而成的王座，深淵領主端坐其上，' +
+      '多隻眼睛同時注視著來訪者。牠的存在本身就在扭曲周圍的現實，空間在牠身邊不停裂開又癒合。',
+    exits: [
+      { direction: 'west', targetRoomId: 'abyss_core', description: '退回深淵核心' },
+      { direction: 'south', targetRoomId: 'time_distortion', description: '退回時空扭曲區' },
+      { direction: 'up', targetRoomId: 'celestial_gate', description: '擊敗深淵領主後，一道通往天界的光柱出現' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[主]',
+    mapX: 4,
+    mapY: 34,
+    guardianHints: {
+      creature: '深淵領主能同時使用多種屬性攻擊——切換抗性裝備是生存的關鍵。',
+      treasure: '深淵領主的權杖中封存著操控時空的力量——這是傳說中的深淵之眼。',
+      spirit: '深淵領主並非天生的怪物——牠曾是一位試圖征服維度的大魔導士，被自己的力量吞噬後墮落為此。',
+    },
+  },
+
+  // ─── Area 12: 天界遺跡 (Lv 55-60) ────────────────────────
+
+  celestial_gate: {
+    id: 'celestial_gate',
+    name: '天界之門',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一道由純白光芒構成的巨大拱門矗立在虛空之上，門框上刻著失傳已久的神聖文字。' +
+      '穿過光門的瞬間，世界從混沌的深淵轉變為金色的光輝。' +
+      '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。',
+    exits: [
+      { direction: 'down', targetRoomId: 'abyss_lord_chamber', description: '回到深淵領主之間' },
+      { direction: 'north', targetRoomId: 'starlight_path', description: '沿著星光之路前進' },
+      { direction: 'east', targetRoomId: 'divine_library', description: '光門旁有一座宏偉的建築' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 3,
+    mapY: 35,
+    guardianHints: {
+      creature: '墮天使會同時使用光明和黑暗魔法——純粹的單屬性防禦在這裡不夠用。',
+      treasure: '神聖文字中隱藏著開啟天界寶藏的密碼——但需要極高的智力才能解讀。',
+      spirit: '天界之門是諸神離開凡間時留下的最後通道——通過它就意味著踏入了神的領域。',
+    },
+  },
+
+  starlight_path: {
+    id: 'starlight_path',
+    name: '星光走廊',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。' +
+      '走廊兩側是破碎的天界建築殘骸，曾經宏偉的殿堂如今只剩下斷壁殘垣。' +
+      '但即便是廢墟，這裡的每一塊石頭都散發著令人敬畏的神聖之力。',
+    exits: [
+      { direction: 'south', targetRoomId: 'celestial_gate', description: '退回天界之門' },
+      { direction: 'north', targetRoomId: 'angel_garden', description: '前方出現一片翠綠的花園' },
+      { direction: 'east', targetRoomId: 'judgment_hall', description: '走廊盡頭是一座莊嚴的大廳' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[星]',
+    mapX: 3,
+    mapY: 36,
+    guardianHints: {
+      creature: '天界守衛的護盾幾乎堅不可摧——但它們需要消耗魔力維持，持久戰可以耗盡它們。',
+      treasure: '星辰碎片本身就是極為珍貴的魔法材料，但強行採集會觸怒守衛。',
+      spirit: '天界的廢墟記載著諸神之戰的歷史——每一面斷牆都是一個章節。',
+    },
+  },
+
+  angel_garden: {
+    id: 'angel_garden',
+    name: '天使花園',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。' +
+      '花園中央的噴泉仍在流淌著發光的聖水，空氣中充滿了治癒和安寧的氣息。' +
+      '幾位熾天使在花園中巡遊，牠們的翅膀散發出溫暖的金色光芒。',
+    exits: [
+      { direction: 'south', targetRoomId: 'starlight_path', description: '退回星光走廊' },
+      { direction: 'north', targetRoomId: 'celestial_throne_room', description: '花園盡頭是天界王座' },
+      { direction: 'west', targetRoomId: 'eternal_sanctuary', description: '花園側面有一座寧靜的聖所' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[花]',
+    mapX: 3,
+    mapY: 37,
+    guardianHints: {
+      creature: '熾天使能治癒同伴——必須優先擊倒牠們，否則戰鬥會無限延長。',
+      treasure: '聖水噴泉有恢復全部HP和MP的效果——但在花園中戰鬥會中斷治療。',
+      spirit: '花園是諸神為凡人留下的最後禮物——只要它還存在，天界就不會完全消亡。',
+    },
+  },
+
+  divine_library: {
+    id: 'divine_library',
+    name: '神之圖書館',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。' +
+      '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
+      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。',
+    exits: [
+      { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
+    ],
+    mapSymbol: '[書]',
+    mapX: 4,
+    mapY: 35,
+    guardianHints: {
+      creature: '神造兵器有極高的物理防禦——使用魔法攻擊或尋找它們的核心弱點更有效。',
+      treasure: '某些光之書冊中記載著失傳的神聖技能——閱讀它們可能習得強大的新能力。',
+      spirit: '圖書館記載著從創世到末日的所有知識——包括戰勝戰神的方法。',
+    },
+  },
+
+  judgment_hall: {
+    id: 'judgment_hall',
+    name: '審判大廳',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一座莊嚴肅穆的大廳，穹頂上繪著諸神審判的壁畫。' +
+      '大廳中央的天秤仍在緩慢擺動，衡量著每一個進入者的善惡。' +
+      '兩排由光線構成的陪審席上坐著沉默的天使虛影，注視著到來的冒險者。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starlight_path', description: '退回星光走廊' },
+      { direction: 'east', targetRoomId: 'celestial_throne_room', description: '大廳盡頭通往天界王座' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[判]',
+    mapX: 4,
+    mapY: 36,
+    guardianHints: {
+      creature: '天秤會根據戰鬥方式影響你的狀態——正大光明的戰鬥會獲得增益，卑鄙手段會遭受懲罰。',
+      treasure: '天秤的底座中封存著審判之劍的碎片——集齊所有碎片可以重鑄神器。',
+      spirit: '審判大廳曾是諸神裁決凡人命運的場所——在這裡做出的選擇會影響最終戰鬥。',
+    },
+  },
+
+  celestial_throne_room: {
+    id: 'celestial_throne_room',
+    name: '天界王座',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '天界最宏偉的殿堂，穹頂由純淨的光線構成，無數星辰在其中旋轉。' +
+      '一座由永恆白金鑄造的王座矗立在殿堂最高處，王座上空無一人，' +
+      '但王座本身散發的神聖威壓足以讓凡人跪地臣服。通往最終之間的道路就在王座背後。',
+    exits: [
+      { direction: 'south', targetRoomId: 'angel_garden', description: '退回天使花園' },
+      { direction: 'west', targetRoomId: 'judgment_hall', description: '回到審判大廳' },
+      { direction: 'north', targetRoomId: 'god_chamber', description: '王座背後的光門通往神之間' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 90 },
+    ],
+    groundItems: [
+      { itemId: 'celestial_fragment', description: '王座旁散落著天界碎片' },
+    ],
+    mapSymbol: '[座]',
+    mapX: 3,
+    mapY: 38,
+    guardianHints: {
+      creature: '王座的威壓會隨著距離增加——在王座附近戰鬥會受到持續傷害。',
+      treasure: '王座上曾放置著諸神之王的權杖——現在權杖不知所蹤，但印記仍在。',
+      spirit: '坐上這座王座的人將承受諸神的記憶——只有心智最堅強的人才能承受。',
+    },
+  },
+
+  eternal_sanctuary: {
+    id: 'eternal_sanctuary',
+    name: '永恆聖所',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '一座被時間遺忘的小型聖堂，穹頂上的壁畫描繪著世界創生的場景。' +
+      '聖堂中央的永恆之火仍在燃燒，散發出溫暖而安詳的光芒。' +
+      '這裡是天界最後的寧靜之地，據說在此祈禱可以恢復所有傷勢。',
+    exits: [
+      { direction: 'east', targetRoomId: 'angel_garden', description: '回到天使花園' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[聖]',
+    mapX: 2,
+    mapY: 37,
+    guardianHints: {
+      creature: '聖所中的墮天使比其他地方的更加強大——牠們曾是聖所的守護者。',
+      treasure: '永恆之火可以淨化任何被詛咒的物品——將被污染的裝備帶來這裡試試。',
+      spirit: '聖所是諸神最初祈禱的地方——在這裡虔誠祈禱可能觸發隱藏的祝福事件。',
+    },
+  },
+
+  god_chamber: {
+    id: 'god_chamber',
+    name: '神之間',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    description:
+      '天界遺跡的最深處，一個完美的圓形空間。牆壁、地面和天頂都由純粹的光構成。' +
+      '空間正中央懸浮著一位身著金色戰甲的神祇——戰神，沉睡中的他仍散發著毀天滅地的威壓。' +
+      '當冒險者踏入這片領域的瞬間，戰神的雙眼猛然睜開，億萬年的寂靜在此刻被打破。' +
+      '這是這個世界最強大的存在，也是最終的挑戰。',
+    exits: [
+      { direction: 'south', targetRoomId: 'celestial_throne_room', description: '退回天界王座' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[神]',
+    mapX: 3,
+    mapY: 39,
+    guardianHints: {
+      creature: '戰神會隨著戰鬥進程切換三個階段——每個階段的攻擊模式和弱點完全不同。',
+      treasure: '戰神的神槍是這個世界上最強大的武器——只有擊敗他才能獲得。',
+      spirit: '戰神並非邪惡——他在此等待一位值得繼承神力的勇者。這場戰鬥是最終的考驗。',
     },
   },
 };
