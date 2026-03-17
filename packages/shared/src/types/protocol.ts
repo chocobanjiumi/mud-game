@@ -11,7 +11,10 @@ export type ClientMessage =
   | { type: 'command'; payload: string }
   | { type: 'login'; payload: { userId: string; characterId?: string; accessToken?: string } }
   | { type: 'create_character'; payload: { name: string; userId: string } }
-  | { type: 'ping' };
+  | { type: 'ping' }
+  | { type: 'open_shop' }
+  | { type: 'purchase'; payload: { itemId: string } }
+  | { type: 'get_transactions' };
 
 // Server → Client
 export type ServerMessageType =
@@ -20,7 +23,8 @@ export type ServerMessageType =
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'skill_learned' | 'class_change' | 'trade'
-  | 'quest' | 'leaderboard' | 'map' | 'token_balance';
+  | 'quest' | 'leaderboard' | 'map' | 'token_balance'
+  | 'shop_items' | 'purchase_result' | 'transaction_history' | 'balance_update';
 
 export interface ServerMessage {
   type: ServerMessageType;
@@ -107,4 +111,64 @@ export interface MapPayload {
   ascii: string;
   currentRoom: string;
   zone: string;
+}
+
+// Shop-related payloads
+
+export type ShopItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+export type ShopCategory = 'weapon' | 'armor' | 'consumable';
+
+export interface ShopItem {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: ShopCategory;
+  rarity: ShopItemRarity;
+  levelReq: number;
+  stats?: Record<string, number>;
+}
+
+export interface ShopItemsPayload {
+  items: ShopItem[];
+  balance: number;
+}
+
+export interface PurchaseResultPayload {
+  success: boolean;
+  message: string;
+  itemId?: string;
+  itemName?: string;
+  newBalance?: number;
+}
+
+export interface TransactionRecord {
+  id: string;
+  itemName: string;
+  amount: number;
+  type: 'purchase' | 'reward';
+  timestamp: number;
+}
+
+export interface TransactionHistoryPayload {
+  transactions: TransactionRecord[];
+}
+
+export interface BalanceUpdatePayload {
+  balance: number;
+}
+
+// Agent-related types
+
+export interface AgentInfo {
+  id: string;
+  name: string;
+  avatar?: string;
+  description?: string;
+}
+
+export interface AgentMessage {
+  role: 'user' | 'agent';
+  content: string;
+  timestamp: number;
 }

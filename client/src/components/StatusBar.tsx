@@ -55,17 +55,15 @@ function ArinovaTokenBadge() {
 
   if (balance === null) return null;
 
-  const handleClick = () => {
-    // Open Arinova shop/token page
-    window.open('https://arinova.ai/shop', '_blank', 'noopener,noreferrer');
-  };
-
   return (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={() => {
+        // Dispatch a custom event to trigger shop open via WebSocket
+        window.dispatchEvent(new CustomEvent('open-shop'));
+      }}
       className="flex items-center gap-1 px-2 py-0.5 rounded border border-yellow-600/40 bg-yellow-900/20 hover:bg-yellow-900/40 transition-colors cursor-pointer"
-      title="Arinova Tokens - 點擊開啟商店"
+      title="Arinova Tokens - 點擊開啟商店 (B)"
     >
       <span className="text-xs">🪙</span>
       <span className="text-xs font-bold tabular-nums" style={{ color: '#f5c542' }}>

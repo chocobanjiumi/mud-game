@@ -115,7 +115,27 @@ export function initDb(): Database.Database {
       created_at INTEGER DEFAULT (unixepoch())
     );
 
+    -- User-level premium 商品權益（per-user，跨角色共用）
+    CREATE TABLE IF NOT EXISTS user_entitlements (
+      user_id TEXT NOT NULL,
+      item_id TEXT NOT NULL,
+      purchased_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (user_id, item_id)
+    );
+
+    -- 交易紀錄
+    CREATE TABLE IF NOT EXISTS transactions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      transaction_id TEXT NOT NULL,
+      user_id TEXT NOT NULL,
+      amount INTEGER NOT NULL,
+      type TEXT NOT NULL,
+      description TEXT DEFAULT '',
+      timestamp INTEGER NOT NULL
+    );
+
     -- 索引
+    CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id);
     CREATE INDEX IF NOT EXISTS idx_characters_user_id ON characters(user_id);
     CREATE INDEX IF NOT EXISTS idx_inventory_character_id ON inventory(character_id);
     CREATE INDEX IF NOT EXISTS idx_learned_skills_character_id ON learned_skills(character_id);

@@ -13,6 +13,10 @@ import type {
   PartyPayload,
   ChatPayload,
   MapPayload,
+  ShopItemsPayload,
+  PurchaseResultPayload,
+  TransactionHistoryPayload,
+  BalanceUpdatePayload,
 } from '@game/shared';
 
 const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
@@ -20,12 +24,14 @@ const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.ho
 const RECONNECT_BASE_DELAY = 1000;
 const RECONNECT_MAX_DELAY = 30000;
 const PING_INTERVAL = 25000;
+const PURCHASE_TIMEOUT = 10000; // 10 seconds
 
 export function useWebSocket() {
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectAttemptRef = useRef(0);
   const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pingTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const purchaseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const mountedRef = useRef(true);
 
   const store = useGameStore;
@@ -231,6 +237,45 @@ export function useWebSocket() {
         break;
       }
 
+      case 'shop_items': {
+        const data = p as unknown as ShopItemsPayload;
+        s.setShopItems(data.items);
+        s.setArinovaTokenBalance(data.balance);
+        s.setShopOpen(true);
+        break;
+      }
+
+      case 'purchase_result': {
+        const data = p as unknown as PurchaseResultPayload;
+        // Issue 2: 清除購買超時計時器
+        if (purchaseTimeoutRef.current) {
+          clearTimeout(purchaseTimeoutRef.current);
+          purchaseTimeoutRef.current = null;
+        }
+        s.setPurchaseLoading(false);
+        if (data.success) {
+          s.addTerminalLine(`[商店] ${data.message}`, 'system');
+          if (data.newBalance !== undefined) {
+            s.setArinovaTokenBalance(data.newBalance);
+          }
+        } else {
+          s.addTerminalLine(`[商店] ${data.message}`, 'error');
+        }
+        break;
+      }
+
+      case 'transaction_history': {
+        const data = p as unknown as TransactionHistoryPayload;
+        s.setTransactionHistory(data.transactions);
+        break;
+      }
+
+      case 'balance_update': {
+        const data = p as unknown as BalanceUpdatePayload;
+        s.setArinovaTokenBalance(data.balance);
+        break;
+      }
+
       case 'pong':
         break;
 
@@ -290,7 +335,15 @@ export function useWebSocket() {
 
     ws.onclose = () => {
       if (pingTimerRef.current) { clearInterval(pingTimerRef.current); pingTimerRef.current = null; }
+      // Issue 2: 斷線時重置購買狀態
+      if (purchaseTimeoutRef.current) { clearTimeout(purchaseTimeoutRef.current); purchaseTimeoutRef.current = null; }
+      const currentState = store.getState();
+      if (currentState.purchaseLoading) {
+        currentState.setPurchaseLoading(false);
+        currentState.addTerminalLine('[商店] 連線中斷，購買操作已取消。', 'error');
+      }
       store.getState().setConnection('disconnected');
+      store.getState().clearAgentState();
 
       if (!mountedRef.current) return;
 
@@ -309,6 +362,7 @@ export function useWebSocket() {
   const disconnect = useCallback(() => {
     if (reconnectTimerRef.current) { clearTimeout(reconnectTimerRef.current); reconnectTimerRef.current = null; }
     if (pingTimerRef.current) { clearInterval(pingTimerRef.current); pingTimerRef.current = null; }
+    if (purchaseTimeoutRef.current) { clearTimeout(purchaseTimeoutRef.current); purchaseTimeoutRef.current = null; }
     wsRef.current?.close();
     wsRef.current = null;
   }, []);
@@ -327,6 +381,35 @@ export function useWebSocket() {
     [send],
   );
 
+  const sendShopOpen = useCallback(() => {
+    send({ type: 'open_shop' });
+  }, [send]);
+
+  const sendPurchase = useCallback(
+    (itemId: string) => {
+      store.getState().setPurchaseLoading(true);
+      send({ type: 'purchase', payload: { itemId } });
+
+      // Issue 2: 設定購買超時 — 若 10 秒內未收到回應則重置
+      if (purchaseTimeoutRef.current) {
+        clearTimeout(purchaseTimeoutRef.current);
+      }
+      purchaseTimeoutRef.current = setTimeout(() => {
+        purchaseTimeoutRef.current = null;
+        const s = store.getState();
+        if (s.purchaseLoading) {
+          s.setPurchaseLoading(false);
+          s.addTerminalLine('[商店] 購買請求逾時，請稍後再試。', 'error');
+        }
+      }, PURCHASE_TIMEOUT);
+    },
+    [send, store],
+  );
+
+  const sendGetTransactions = useCallback(() => {
+    send({ type: 'get_transactions' });
+  }, [send]);
+
   // Auto-connect on mount, cleanup on unmount
   useEffect(() => {
     mountedRef.current = true;
@@ -337,5 +420,5 @@ export function useWebSocket() {
     };
   }, [connect, disconnect]);
 
-  return { send, sendCommand, connect, disconnect, login, createCharacter };
+  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions };
 }

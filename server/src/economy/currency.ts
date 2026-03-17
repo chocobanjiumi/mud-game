@@ -4,6 +4,7 @@
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import { isGuestUser, getCachedToken } from '../auth/arinova.js';
 import { sendToCharacter } from '../ws/handler.js';
+import { insertTransaction } from '../db/queries.js';
 
 // ============================================================
 //  型別
@@ -17,16 +18,6 @@ export interface PremiumItem {
   price: number; // Arinova 代幣
   type: 'cosmetic' | 'revive' | 'dungeon_pass' | 'exp_boost';
   data?: Record<string, unknown>;
-}
-
-/** 交易紀錄 */
-interface TransactionRecord {
-  transactionId: string;
-  userId: string;
-  amount: number;
-  type: 'charge' | 'award';
-  description: string;
-  timestamp: number;
 }
 
 // ============================================================
@@ -91,9 +82,6 @@ export class CurrencyManager {
   private clientId: string;
   private clientSecret: string;
 
-  /** 交易紀錄（記憶體中快取，可接 DB） */
-  private transactionLog: TransactionRecord[] = [];
-
   /** userId -> 餘額快取 */
   private balanceCache: Map<string, { balance: number; cachedAt: number }> = new Map();
 
@@ -150,15 +138,12 @@ export class CurrencyManager {
         cachedAt: Date.now(),
       });
 
-      // 記錄交易
-      this.transactionLog.push({
-        transactionId: result.transactionId,
-        userId,
-        amount,
-        type: 'charge',
-        description,
-        timestamp: Date.now(),
-      });
+      // 記錄交易到 DB
+      try {
+        insertTransaction(result.transactionId, userId, amount, 'charge', description);
+      } catch (dbErr) {
+        console.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
+      }
 
       console.log(`[Economy] 扣款成功: ${userId} -${amount} (${description})`);
       return { success: true, newBalance: result.newBalance };
@@ -208,15 +193,12 @@ export class CurrencyManager {
         cachedAt: Date.now(),
       });
 
-      // 記錄交易
-      this.transactionLog.push({
-        transactionId: result.transactionId,
-        userId,
-        amount,
-        type: 'award',
-        description,
-        timestamp: Date.now(),
-      });
+      // 記錄交易到 DB
+      try {
+        insertTransaction(result.transactionId, userId, amount, 'award', description);
+      } catch (dbErr) {
+        console.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
+      }
 
       console.log(`[Economy] 獎勵成功: ${userId} +${amount} (${description})`);
       return { success: true, newBalance: result.newBalance };
@@ -377,13 +359,6 @@ export class CurrencyManager {
   /** 取得 Premium 商品列表 */
   getPremiumItems(): PremiumItem[] {
     return Object.values(PREMIUM_ITEMS);
-  }
-
-  /** 取得使用者的交易紀錄 */
-  getTransactionHistory(userId: string, limit: number = 20): TransactionRecord[] {
-    return this.transactionLog
-      .filter(t => t.userId === userId)
-      .slice(-limit);
   }
 
   /** 清除餘額快取 */

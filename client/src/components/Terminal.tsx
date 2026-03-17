@@ -35,6 +35,9 @@ const colorClassMap: Record<string, string> = {
   'chat-room': 'text-chat-room',
   'chat-party': 'text-chat-party',
   'chat-global': 'text-chat-global',
+
+  // Agent
+  'agent': 'text-agent-cyan',
 };
 
 export default function Terminal() {

@@ -1,16 +1,44 @@
 // WebSocket 訊息解析與路由
 
 import type { WebSocket } from 'ws';
-import type { ClientMessage } from '@game/shared';
+import type { ClientMessage, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
 import type { WsSession } from './handler.js';
 import {
   sendToSession, sendError, sendSystem, updatePing,
   bindCharacter, getSession,
 } from './handler.js';
-import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId } from '../db/queries.js';
+import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
 import { world } from '../game/state.js';
-import { validateToken, getAuthSession, createGuestSession, isGuestUser } from '../auth/arinova.js';
+import { validateToken, getAuthSession, createGuestSession, isGuestUser, getCachedToken } from '../auth/arinova.js';
+import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
+import { ITEM_DEFS } from '@game/shared';
+import { Arinova } from '@arinova-ai/spaces-sdk';
+
+/** Shared CurrencyManager instance */
+const currencyManager = new CurrencyManager();
+
+/** Per-user per-item purchase lock to prevent concurrent duplicate purchases */
+const purchaseLocks = new Map<string, Set<string>>();
+
+function acquirePurchaseLock(userId: string, itemId: string): boolean {
+  let userLocks = purchaseLocks.get(userId);
+  if (!userLocks) {
+    userLocks = new Set();
+    purchaseLocks.set(userId, userLocks);
+  }
+  if (userLocks.has(itemId)) return false;
+  userLocks.add(itemId);
+  return true;
+}
+
+function releasePurchaseLock(userId: string, itemId: string): void {
+  const userLocks = purchaseLocks.get(userId);
+  if (userLocks) {
+    userLocks.delete(itemId);
+    if (userLocks.size === 0) purchaseLocks.delete(userId);
+  }
+}
 
 /** 處理收到的 WebSocket 訊息 */
 export function handleMessage(session: WsSession, raw: string): void {
@@ -41,6 +69,27 @@ export function handleMessage(session: WsSession, raw: string): void {
 
     case 'command':
       handlePlayerCommand(session, message.payload);
+      break;
+
+    case 'open_shop':
+      handleOpenShop(session).catch((err) => {
+        console.error(`[WS] 開啟商店錯誤 (${session.sessionId}):`, err);
+        sendError(session.sessionId, '無法開啟商店。');
+      });
+      break;
+
+    case 'purchase':
+      handlePurchase(session, message.payload).catch((err) => {
+        console.error(`[WS] 購買錯誤 (${session.sessionId}):`, err);
+        sendToSession(session.sessionId, 'purchase_result', {
+          success: false,
+          message: '購買處理失敗，請稍後再試。',
+        });
+      });
+      break;
+
+    case 'get_transactions':
+      handleGetTransactions(session);
       break;
 
     default:
@@ -222,6 +271,240 @@ function handlePlayerCommand(session: WsSession, payload: string): void {
   }
 
   handleCommand(session, command);
+}
+
+// ──────────────────────────────────────────────────────────
+//  商店相關
+// ──────────────────────────────────────────────────────────
+
+/** 根據物品屬性推斷稀有度 */
+function inferRarity(buyPrice: number): ShopItemRarity {
+  if (buyPrice >= 2500) return 'legendary';
+  if (buyPrice >= 1000) return 'epic';
+  if (buyPrice >= 300) return 'rare';
+  if (buyPrice >= 100) return 'uncommon';
+  return 'common';
+}
+
+/** 將 ItemDef type 映射到 ShopCategory */
+function mapCategory(type: string): ShopCategory | null {
+  if (type === 'weapon') return 'weapon';
+  if (type === 'armor' || type === 'accessory') return 'armor';
+  if (type === 'consumable') return 'consumable';
+  return null;
+}
+
+/** 建立商店物品列表 */
+function buildShopItems(): ShopItem[] {
+  const items: ShopItem[] = [];
+
+  for (const def of Object.values(ITEM_DEFS)) {
+    if (def.buyPrice <= 0) continue; // 不可購買的物品
+    const category = mapCategory(def.type);
+    if (!category) continue;
+
+    items.push({
+      id: def.id,
+      name: def.name,
+      description: def.description,
+      price: def.buyPrice,
+      category,
+      rarity: inferRarity(def.buyPrice),
+      levelReq: def.levelReq,
+      stats: def.stats as Record<string, number> | undefined,
+    });
+  }
+
+  // 加入 Premium 商品作為消耗品
+  for (const premItem of Object.values(PREMIUM_ITEMS)) {
+    items.push({
+      id: premItem.id,
+      name: premItem.name,
+      description: premItem.description,
+      price: premItem.price,
+      category: 'consumable',
+      rarity: 'epic',
+      levelReq: 1,
+    });
+  }
+
+  return items;
+}
+
+/** 處理開啟商店 */
+async function handleOpenShop(session: WsSession): Promise<void> {
+  if (!session.userId) {
+    sendError(session.sessionId, '請先登入。');
+    return;
+  }
+
+  const items = buildShopItems();
+
+  // 取得餘額
+  let balance = 0;
+  const token = getCachedToken(session.userId);
+  if (token) {
+    try {
+      const result = await Arinova.economy.balance(token);
+      if (result && typeof result.balance === 'number') {
+        balance = result.balance;
+      }
+    } catch {
+      // 餘額查詢失敗，使用 0
+    }
+  }
+
+  sendToSession(session.sessionId, 'shop_items', { items, balance });
+}
+
+/** 處理購買 */
+async function handlePurchase(
+  session: WsSession,
+  payload: { itemId: string },
+): Promise<void> {
+  if (!session.userId || !session.characterId) {
+    sendError(session.sessionId, '請先登入並選擇角色。');
+    return;
+  }
+
+  const { itemId } = payload;
+
+  // 並發鎖：同一 user 同一 item 不能同時處理兩個購買請求
+  if (!acquirePurchaseLock(session.userId, itemId)) {
+    sendToSession(session.sessionId, 'purchase_result', {
+      success: false,
+      message: '該商品正在購買處理中，請稍候。',
+      itemId,
+    });
+    return;
+  }
+
+  try {
+  // 先檢查是否為 Premium 商品
+  const premItem = PREMIUM_ITEMS[itemId];
+  if (premItem) {
+    // 檢查 user-level entitlement（跨角色，per-user）
+    if (hasUserEntitlement(session.userId, itemId)) {
+      sendToSession(session.sessionId, 'purchase_result', {
+        success: false,
+        message: `你已經擁有「${premItem.name}」，無法重複購買。`,
+        itemId,
+        itemName: premItem.name,
+      });
+      return;
+    }
+
+    const result = await currencyManager.purchasePremiumItem(
+      session.userId,
+      session.characterId,
+      itemId,
+    );
+
+    // 取得更新後的餘額
+    let newBalance: number | undefined;
+    const token = getCachedToken(session.userId);
+    if (token) {
+      try {
+        const balResult = await Arinova.economy.balance(token);
+        if (balResult && typeof balResult.balance === 'number') {
+          newBalance = balResult.balance;
+        }
+      } catch {
+        // 非關鍵錯誤
+      }
+    }
+
+    // 購買成功後：記錄 user-level entitlement + 加入角色背包
+    if (result.success) {
+      addUserEntitlement(session.userId, itemId);
+      addInventoryItem(session.characterId, itemId, 1);
+    }
+
+    sendToSession(session.sessionId, 'purchase_result', {
+      success: result.success,
+      message: result.message,
+      itemId,
+      itemName: premItem.name,
+      newBalance,
+    });
+
+    if (newBalance !== undefined) {
+      sendToSession(session.sessionId, 'balance_update', { balance: newBalance });
+    }
+
+    // 購買成功後重新發送商店列表，讓 client 更新已購標記
+    if (result.success) {
+      const items = buildShopItems();
+      sendToSession(session.sessionId, 'shop_items', { items, balance: newBalance ?? 0 });
+    }
+    return;
+  }
+
+  // 一般物品：使用 Arinova 代幣購買
+  const itemDef = ITEM_DEFS[itemId];
+  if (!itemDef || itemDef.buyPrice <= 0) {
+    sendToSession(session.sessionId, 'purchase_result', {
+      success: false,
+      message: '商品不存在或無法購買。',
+    });
+    return;
+  }
+
+  const chargeResult = await currencyManager.chargeTokens(
+    session.userId,
+    itemDef.buyPrice,
+    `購買「${itemDef.name}」`,
+  );
+
+  if (!chargeResult.success) {
+    sendToSession(session.sessionId, 'purchase_result', {
+      success: false,
+      message: `購買失敗：${chargeResult.error ?? '餘額不足'}`,
+      itemId,
+      itemName: itemDef.name,
+    });
+    return;
+  }
+
+  // Blocker 1: 將物品加入玩家背包
+  addInventoryItem(session.characterId, itemId, 1);
+
+  sendToSession(session.sessionId, 'purchase_result', {
+    success: true,
+    message: `成功購買「${itemDef.name}」！`,
+    itemId,
+    itemName: itemDef.name,
+    newBalance: chargeResult.newBalance,
+  });
+
+  if (chargeResult.newBalance !== undefined) {
+    sendToSession(session.sessionId, 'balance_update', { balance: chargeResult.newBalance });
+  }
+
+  sendSystem(session.sessionId, `成功購買「${itemDef.name}」！剩餘 AT：${chargeResult.newBalance}`);
+  } finally {
+    releasePurchaseLock(session.userId, itemId);
+  }
+}
+
+/** 處理取得交易紀錄 */
+function handleGetTransactions(session: WsSession): void {
+  if (!session.userId) {
+    sendError(session.sessionId, '請先登入。');
+    return;
+  }
+
+  // Issue 1: 從資料庫讀取交易紀錄
+  const dbRecords = getTransactions(session.userId, 50);
+  const transactions = dbRecords.map((r) => ({
+    id: r.transaction_id,
+    itemName: r.description,
+    amount: r.amount,
+    type: r.type === 'charge' ? 'purchase' as const : 'reward' as const,
+    timestamp: r.timestamp,
+  }));
+
+  sendToSession(session.sessionId, 'transaction_history', { transactions });
 }
 
 /** 新角色歡迎訊息 */

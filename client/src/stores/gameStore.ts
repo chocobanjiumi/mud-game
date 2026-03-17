@@ -7,6 +7,11 @@ import type {
   LearnedSkill,
   ActiveStatusEffect,
   RoomExit,
+  ShopItem,
+  ShopCategory,
+  TransactionRecord,
+  AgentInfo,
+  AgentMessage,
 } from '@game/shared';
 
 // --- Terminal line ---
@@ -174,6 +179,39 @@ export interface GameState {
   setArinovaUser: (user: { id: string; name: string } | null) => void;
   arinovaTokenBalance: number | null;
   setArinovaTokenBalance: (balance: number | null) => void;
+
+  // Agent
+  selectedAgent: AgentInfo | null;
+  setSelectedAgent: (agent: AgentInfo | null) => void;
+  agentMessagesByAgent: Record<string, AgentMessage[]>;
+  agentMessages: AgentMessage[];
+  addAgentMessage: (msg: Omit<AgentMessage, 'timestamp'>) => void;
+  removeLastAgentMessage: () => void;
+  agentPanelOpen: boolean;
+  setAgentPanelOpen: (open: boolean) => void;
+  toggleAgentPanel: () => void;
+  agentUnreadCount: number;
+  setAgentUnreadCount: (count: number) => void;
+  incrementAgentUnread: () => void;
+  showAgentSelect: boolean;
+  setShowAgentSelect: (show: boolean) => void;
+  accessToken: string | null;
+  setAccessToken: (token: string | null) => void;
+  clearAgentState: () => void;
+
+  // Shop
+  shopOpen: boolean;
+  setShopOpen: (open: boolean) => void;
+  shopItems: ShopItem[];
+  setShopItems: (items: ShopItem[]) => void;
+  selectedItem: ShopItem | null;
+  setSelectedItem: (item: ShopItem | null) => void;
+  shopCategory: ShopCategory;
+  setShopCategory: (category: ShopCategory) => void;
+  transactionHistory: TransactionRecord[];
+  setTransactionHistory: (history: TransactionRecord[]) => void;
+  purchaseLoading: boolean;
+  setPurchaseLoading: (loading: boolean) => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -265,4 +303,74 @@ export const useGameStore = create<GameState>((set) => ({
   setArinovaUser: (arinovaUser) => set({ arinovaUser }),
   arinovaTokenBalance: null,
   setArinovaTokenBalance: (arinovaTokenBalance) => set({ arinovaTokenBalance }),
+
+  // Agent
+  selectedAgent: null,
+  setSelectedAgent: (selectedAgent) =>
+    set((state) => ({
+      selectedAgent,
+      agentMessages: selectedAgent
+        ? (state.agentMessagesByAgent[selectedAgent.id] ?? [])
+        : [],
+    })),
+  agentMessagesByAgent: {},
+  agentMessages: [],
+  addAgentMessage: (msg) =>
+    set((state) => {
+      const agentId = state.selectedAgent?.id;
+      if (!agentId) return {};
+      const newMsg: AgentMessage = { ...msg, timestamp: Date.now() };
+      const current = state.agentMessagesByAgent[agentId] ?? [];
+      const updated = [...current, newMsg];
+      return {
+        agentMessagesByAgent: { ...state.agentMessagesByAgent, [agentId]: updated },
+        agentMessages: updated,
+      };
+    }),
+  removeLastAgentMessage: () =>
+    set((state) => {
+      const agentId = state.selectedAgent?.id;
+      if (!agentId) return {};
+      const current = state.agentMessagesByAgent[agentId] ?? [];
+      if (current.length === 0) return {};
+      const updated = current.slice(0, -1);
+      return {
+        agentMessagesByAgent: { ...state.agentMessagesByAgent, [agentId]: updated },
+        agentMessages: updated,
+      };
+    }),
+  agentPanelOpen: false,
+  setAgentPanelOpen: (agentPanelOpen) => set({ agentPanelOpen }),
+  toggleAgentPanel: () => set((state) => ({ agentPanelOpen: !state.agentPanelOpen })),
+  agentUnreadCount: 0,
+  setAgentUnreadCount: (agentUnreadCount) => set({ agentUnreadCount }),
+  incrementAgentUnread: () => set((state) => ({ agentUnreadCount: state.agentUnreadCount + 1 })),
+  showAgentSelect: false,
+  setShowAgentSelect: (showAgentSelect) => set({ showAgentSelect }),
+  accessToken: null,
+  setAccessToken: (accessToken) => set({ accessToken }),
+  clearAgentState: () =>
+    set({
+      accessToken: null,
+      selectedAgent: null,
+      agentMessages: [],
+      agentMessagesByAgent: {},
+      agentPanelOpen: false,
+      agentUnreadCount: 0,
+      showAgentSelect: false,
+    }),
+
+  // Shop
+  shopOpen: false,
+  setShopOpen: (shopOpen) => set({ shopOpen }),
+  shopItems: [],
+  setShopItems: (shopItems) => set({ shopItems }),
+  selectedItem: null,
+  setSelectedItem: (selectedItem) => set({ selectedItem }),
+  shopCategory: 'weapon',
+  setShopCategory: (shopCategory) => set({ shopCategory }),
+  transactionHistory: [],
+  setTransactionHistory: (transactionHistory) => set({ transactionHistory }),
+  purchaseLoading: false,
+  setPurchaseLoading: (purchaseLoading) => set({ purchaseLoading }),
 }));

@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import Terminal from './Terminal';
 import CommandInput from './CommandInput';
@@ -7,18 +7,60 @@ import MiniMap from './MiniMap';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
 import SkillBar from './SkillBar';
+import ShopModal from './ShopModal';
+import AgentPanel from './AgentPanel';
+import AgentMiniBadge from './AgentMiniBadge';
+import AgentSelectModal from './AgentSelectModal';
 
 interface GameScreenProps {
   onCommand: (command: string) => void;
+  onOpenShop: () => void;
+  onPurchase: (itemId: string) => void;
+  onGetTransactions: () => void;
 }
 
-export default function GameScreen({ onCommand }: GameScreenProps) {
+export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTransactions }: GameScreenProps) {
   const connection = useGameStore((s) => s.connection);
   const showInventory = useGameStore((s) => s.showInventory);
   const showParty = useGameStore((s) => s.showParty);
   const toggleInventory = useGameStore((s) => s.toggleInventory);
   const toggleParty = useGameStore((s) => s.toggleParty);
   const inCombat = useGameStore((s) => s.inCombat);
+  const shopOpen = useGameStore((s) => s.shopOpen);
+  const selectedAgent = useGameStore((s) => s.selectedAgent);
+  const agentPanelOpen = useGameStore((s) => s.agentPanelOpen);
+  const toggleAgentPanel = useGameStore((s) => s.toggleAgentPanel);
+  const setShowAgentSelect = useGameStore((s) => s.setShowAgentSelect);
+  const accessToken = useGameStore((s) => s.accessToken);
+
+  // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't trigger when typing in inputs
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === 'b' || e.key === 'B') {
+        if (!shopOpen) {
+          onOpenShop();
+        }
+      }
+      if (e.key === 'a' || e.key === 'A') {
+        if (selectedAgent) {
+          toggleAgentPanel();
+        } else if (accessToken) {
+          setShowAgentSelect(true);
+        }
+      }
+    };
+    const handleOpenShopEvent = () => {
+      if (!shopOpen) onOpenShop();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('open-shop', handleOpenShopEvent);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('open-shop', handleOpenShopEvent);
+    };
+  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
@@ -46,6 +88,12 @@ export default function GameScreen({ onCommand }: GameScreenProps) {
 
             <QuickButton label="背包" shortcut="I" active={showInventory} onClick={toggleInventory} />
             <QuickButton label="隊伍" shortcut="P" active={showParty} onClick={toggleParty} />
+            <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
+            {selectedAgent ? (
+              <QuickButton label="AI夥伴" shortcut="A" active={agentPanelOpen} onClick={toggleAgentPanel} />
+            ) : accessToken ? (
+              <QuickButton label="AI夥伴" shortcut="A" onClick={() => setShowAgentSelect(true)} />
+            ) : null}
             <QuickButton label="查看" onClick={() => onCommand('look')} />
             <QuickButton label="狀態" onClick={() => onCommand('status')} />
             <QuickButton label="地圖" onClick={() => onCommand('map')} />
@@ -78,16 +126,24 @@ export default function GameScreen({ onCommand }: GameScreenProps) {
         </div>
 
         {/* Center: Terminal */}
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 relative">
           <Terminal />
           <SkillBar onUseSkill={handleUseSkill} />
           <CommandInput onSubmit={onCommand} />
+          <AgentMiniBadge />
         </div>
 
-        {/* Right sidebar: Inventory / Party panels */}
-        <Inventory />
-        <PartyPanel />
+        {/* Right sidebar: Inventory / Party / Agent panels (mutually displayed) */}
+        {!agentPanelOpen && <Inventory />}
+        {!agentPanelOpen && <PartyPanel />}
+        <AgentPanel />
       </div>
+
+      {/* Shop modal */}
+      <ShopModal onPurchase={onPurchase} onGetTransactions={onGetTransactions} />
+
+      {/* Agent select modal */}
+      <AgentSelectModal />
     </div>
   );
 }

@@ -235,6 +235,50 @@ function rowToCharacter(row: Record<string, unknown>): Character {
   };
 }
 
+// ─── Transactions CRUD ───
+
+/** 新增交易紀錄 */
+export function insertTransaction(
+  transactionId: string,
+  userId: string,
+  amount: number,
+  type: string,
+  description: string,
+): void {
+  getDb().prepare(
+    'INSERT INTO transactions (transaction_id, user_id, amount, type, description, timestamp) VALUES (?, ?, ?, ?, ?, ?)',
+  ).run(transactionId, userId, amount, type, description, Date.now());
+}
+
+/** 取得使用者的交易紀錄 */
+export function getTransactions(
+  userId: string,
+  limit: number = 20,
+): { transaction_id: string; user_id: string; amount: number; type: string; description: string; timestamp: number }[] {
+  return getDb().prepare(
+    'SELECT transaction_id, user_id, amount, type, description, timestamp FROM transactions WHERE user_id = ? ORDER BY timestamp DESC LIMIT ?',
+  ).all(userId, limit) as { transaction_id: string; user_id: string; amount: number; type: string; description: string; timestamp: number }[];
+}
+
+// ─── User Entitlements CRUD ───
+
+/** 檢查 user 是否已擁有某 premium 商品 */
+export function hasUserEntitlement(userId: string, itemId: string): boolean {
+  const row = getDb().prepare(
+    'SELECT 1 FROM user_entitlements WHERE user_id = ? AND item_id = ?',
+  ).get(userId, itemId);
+  return !!row;
+}
+
+/** 新增 user-level premium 商品權益 */
+export function addUserEntitlement(userId: string, itemId: string): void {
+  getDb().prepare(
+    'INSERT OR IGNORE INTO user_entitlements (user_id, item_id) VALUES (?, ?)',
+  ).run(userId, itemId);
+}
+
+// ─── Helpers ───
+
 /** 簡易推斷裝備欄位（根據物品 ID 中的關鍵字） */
 function guessEquipSlot(itemId: string): string | null {
   if (itemId.includes('sword') || itemId.includes('staff') || itemId.includes('bow') ||
