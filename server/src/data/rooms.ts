@@ -57,6 +57,49 @@ export const ZONES: Record<string, ZoneDef> = {
       'class_change_hall', 'arena_entrance',
     ],
   },
+  starter_village_ext: {
+    id: 'starter_village_ext' as ZoneDef['id'],
+    name: '新手村外圍',
+    description: '新手村周邊的鄉野地帶，有後山、農田和小溪。雖然怪物不強，但對初出茅廬的冒險者來說仍需小心。',
+    levelRange: [1, 8],
+    rooms: [
+      'village_backhill', 'village_creek', 'village_farmland', 'village_orchard',
+      'graveyard_entrance', 'abandoned_cottage', 'village_outskirts', 'watchtower',
+    ],
+  },
+  eastern_coast: {
+    id: 'eastern_coast' as ZoneDef['id'],
+    name: '東方海岸',
+    description: '位於大陸東側的綿長海岸線，海風鹹溼，浪花拍打礁石。漁村、燈塔和海盜營地散落其間。',
+    levelRange: [8, 15],
+    rooms: [
+      'coastal_boardwalk', 'sandy_beach', 'tidal_zone', 'sea_cave',
+      'fishing_dock', 'lighthouse', 'coral_shallows', 'shipwreck',
+      'cliff_path', 'pirate_camp', 'dark_reef', 'underwater_cave',
+    ],
+  },
+  volcano_zone: {
+    id: 'volcano_zone' as ZoneDef['id'],
+    name: '火山地帶',
+    description: '大陸西南方的活火山區域，空氣中充滿硫磺的刺鼻氣味。岩漿河流淌其間，矮人族在此建立了鍛造重鎮。',
+    levelRange: [15, 22],
+    rooms: [
+      'volcano_base', 'lava_trail', 'sulfur_valley', 'volcano_crater',
+      'magma_river', 'obsidian_cave', 'fire_temple_entrance',
+      'dwarf_mine', 'forge_hall', 'volcano_summit',
+    ],
+  },
+  frozen_wastes: {
+    id: 'frozen_wastes' as ZoneDef['id'],
+    name: '冰封雪原',
+    description: '大陸北方的極寒之地，終年風雪不止。傳說在雪原的盡頭，有一座被冰封的古老城堡，冰龍在其中沉睡。',
+    levelRange: [22, 30],
+    rooms: [
+      'snowfield_entrance', 'blizzard_path', 'glacier', 'frozen_lake',
+      'mountain_camp', 'crystal_ice_cave', 'aurora_field',
+      'wolf_den', 'ice_castle_gate', 'ice_throne',
+    ],
+  },
 };
 
 // ============================================================
@@ -79,6 +122,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'weapon_shop', description: '傳來鐵匠打鐵的聲響' },
       { direction: 'west', targetRoomId: 'potion_shop', description: '空氣中飄著草藥的香氣' },
       { direction: 'south', targetRoomId: 'village_gate', description: '通往村口的道路' },
+      { direction: 'up', targetRoomId: 'village_backhill', description: '一條小路蜿蜒通往村莊後山' },
     ],
     npcs: ['village_chief'],
     mapSymbol: '[ ]',
@@ -169,6 +213,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'village_square', description: '回到廣場' },
       { direction: 'east', targetRoomId: 'training_ground', description: '訓練場在東邊' },
       { direction: 'south', targetRoomId: 'plains_entrance', description: '踏出村口，前往翠綠平原' },
+      { direction: 'west', targetRoomId: 'village_outskirts', description: '一條小路通往村莊外圍' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 2, respawnSeconds: 30 },
@@ -222,6 +267,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'village_gate', description: '回到新手村村口' },
       { direction: 'south', targetRoomId: 'grass_path', description: '沿著草原小徑前進' },
       { direction: 'east', targetRoomId: 'windmill_farm', description: '通往風車農場的叉路' },
+      { direction: 'west', targetRoomId: 'sunflower_field', description: '西邊的花田在陽光下閃耀' },
     ],
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 3, respawnSeconds: 25 },
@@ -273,6 +319,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '這裡看起來很平靜，但農夫們抱怨最近常有盜賊出沒。',
     exits: [
       { direction: 'west', targetRoomId: 'plains_entrance', description: '回到平原入口' },
+      { direction: 'south', targetRoomId: 'windmill_interior', description: '走進風車內部' },
+      { direction: 'east', targetRoomId: 'abandoned_minecart', description: '農場東邊有廢棄的礦車道' },
     ],
     monsters: [
       { monsterId: 'bandit', maxCount: 2, respawnSeconds: 60 },
@@ -354,6 +402,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'crossroads', description: '回到十字路口' },
       { direction: 'south', targetRoomId: 'dense_trail', description: '深入密林小道' },
       { direction: 'east', targetRoomId: 'ancient_treehouse', description: '一條岔路通往高處' },
+      { direction: 'west', targetRoomId: 'snowfield_entrance', description: '一條被霜雪覆蓋的小路通往北方雪原' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -380,6 +429,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'forest_entrance', description: '退回森林入口' },
       { direction: 'west', targetRoomId: 'mushroom_swamp', description: '空氣中飄來沼澤的氣味' },
       { direction: 'south', targetRoomId: 'deep_forest', description: '更深的黑暗在前方等待' },
+      { direction: 'east', targetRoomId: 'firefly_trail', description: '林間閃爍著微弱的螢光' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -405,6 +455,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '沼澤深處傳來低沉的咕嚕聲——最好不要靠得太近。',
     exits: [
       { direction: 'east', targetRoomId: 'dense_trail', description: '回到密林小道' },
+      { direction: 'west', targetRoomId: 'deep_poison_swamp', description: '沼澤向西延伸，毒霧越來越濃' },
     ],
     monsters: [
       { monsterId: 'giant_spider', maxCount: 3, respawnSeconds: 45 },
@@ -430,6 +481,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '樹屋裡殘留著一些古老的書籍和魔法道具。',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
+      { direction: 'east', targetRoomId: 'hunter_lodge', description: '林間小路通往一間獵人小屋' },
     ],
     monsters: [
       { monsterId: 'treant', maxCount: 2, respawnSeconds: 70 },
@@ -455,6 +507,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'dense_trail', description: '退回密林小道' },
       { direction: 'south', targetRoomId: 'elf_ruins', description: '一道微弱的光從南方透出' },
+      { direction: 'west', targetRoomId: 'withered_forest', description: '西方的樹木似乎都失去了生機' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 40 },
@@ -480,6 +533,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '遺跡中央的祭壇上放著一顆發著淡藍色光芒的水晶。',
     exits: [
       { direction: 'north', targetRoomId: 'deep_forest', description: '返回森林深處' },
+      { direction: 'south', targetRoomId: 'volcano_base', description: '遺跡南方的空氣越來越灼熱，通往火山地帶' },
     ],
     monsters: [
       { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 50 },
@@ -508,6 +562,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'up', targetRoomId: 'old_well', description: '攀回古井' },
       { direction: 'south', targetRoomId: 'luminous_tunnel', description: '沿著發光的隧道前進' },
+      { direction: 'north', targetRoomId: 'abandoned_minecart', description: '一條廢棄的礦車道通往地面' },
     ],
     monsters: [
       { monsterId: 'cave_bat', maxCount: 3, respawnSeconds: 40 },
@@ -534,6 +589,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'cave_entrance', description: '回到洞窟入口' },
       { direction: 'south', targetRoomId: 'crystal_hall', description: '隧道盡頭透出耀眼的光芒' },
       { direction: 'east', targetRoomId: 'underground_river', description: '水聲從東方傳來' },
+      { direction: 'west', targetRoomId: 'amethyst_corridor', description: '西側的隧道泛著紫色光芒' },
     ],
     monsters: [
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
@@ -585,6 +641,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '水面偶爾泛起漣漪，似乎有什麼東西在水下游動。',
     exits: [
       { direction: 'west', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
+      { direction: 'east', targetRoomId: 'underground_waterfall', description: '河水向東方流去，傳來瀑布的轟鳴' },
     ],
     monsters: [
       { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 45 },
@@ -609,6 +666,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '空氣變得沉重而壓抑，強大的存在感從深處傳來。',
     exits: [
       { direction: 'north', targetRoomId: 'crystal_hall', description: '返回水晶大廳' },
+      { direction: 'east', targetRoomId: 'ancient_altar', description: '礦脈深處有通往古代祭壇的階梯' },
     ],
     monsters: [
       { monsterId: 'gargoyle', maxCount: 3, respawnSeconds: 55 },
@@ -637,6 +695,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'crossroads', description: '離開城鎮，回到十字路口' },
       { direction: 'east', targetRoomId: 'market_street', description: '進入商業街' },
+      { direction: 'south', targetRoomId: 'coastal_boardwalk', description: '城門外的棧道通往東方海岸' },
     ],
     mapSymbol: '[=]',
     mapX: 3,
@@ -659,6 +718,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'town_gate', description: '回到城門口' },
       { direction: 'east', targetRoomId: 'town_plaza', description: '前往城鎮廣場' },
+      { direction: 'north', targetRoomId: 'tavern', description: '北邊傳來酒香和歡笑聲' },
     ],
     mapSymbol: '[$]',
     mapX: 4,
@@ -682,6 +742,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'market_street', description: '回到商業街' },
       { direction: 'north', targetRoomId: 'class_change_hall', description: '轉職大廳的宏偉大門' },
       { direction: 'south', targetRoomId: 'arena_entrance', description: '競技場的入口' },
+      { direction: 'east', targetRoomId: 'auction_house', description: '東邊是氣派的拍賣場' },
     ],
     mapSymbol: '[ ]',
     mapX: 5,
@@ -703,6 +764,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '大廳中央的魔法陣散發著柔和的光芒，那是轉職儀式的核心。',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
+      { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳' },
     ],
     npcs: [
       'sword_instructor',
@@ -743,7 +805,1027 @@ export const ROOMS: Record<string, RoomDef> = {
       spirit: '競技場的觀眾席上有無數戰魂在觀戰，他們的歡呼能激發鬥志。',
     },
   },
+
+  // ─── 新手村外圍 (starter_village_ext) ──────────────────
+
+  village_backhill: {
+    id: 'village_backhill',
+    name: '村莊後山',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '村莊背後的小山丘，長滿了野草和灌木。山坡上散落著幾塊長滿苔蘚的巨石，' +
+      '偶爾能看到綠色的半透明生物在草叢間蠕動。' +
+      '從山頂可以俯瞰整個新手村，視野開闊。',
+    exits: [
+      { direction: 'down', targetRoomId: 'village_square', description: '下山回到村莊廣場' },
+      { direction: 'east', targetRoomId: 'village_creek', description: '一條小路通往溪邊' },
+      { direction: 'west', targetRoomId: 'abandoned_cottage', description: '山坡上有一間破舊的小屋' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[M]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '巨石下方的陰暗處是史萊姆最愛的藏身地，搬開石頭會驚動牠們。',
+      treasure: '山頂最大的巨石下似乎埋著什麼，泥土的顏色與周圍不同。',
+      spirit: '這座小山是村莊的龍脈所在，據說建村的先祖將護村符印埋在了山頂。',
+    },
+  },
+
+  village_creek: {
+    id: 'village_creek',
+    name: '小溪邊',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響。溪邊的鵝卵石被水流打磨得光滑圓潤，' +
+      '水草在溪底輕輕搖擺。幾隻綠史萊姆在溪邊吸收水氣。' +
+      '這裡是村民洗衣和取水的地方。',
+    exits: [
+      { direction: 'west', targetRoomId: 'village_backhill', description: '沿小路回到後山' },
+      { direction: 'south', targetRoomId: 'village_farmland', description: '溪水流向農田方向' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[~]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '溪底有異常大的水泡冒出，可能有史萊姆潛伏在水中。',
+      treasure: '溪水沖刷的鵝卵石中，混著一顆不尋常的半透明石頭。',
+      spirit: '小溪的水源來自山中的靈泉，飲用後據說能暫時恢復少量體力。',
+    },
+  },
+
+  village_farmland: {
+    id: 'village_farmland',
+    name: '農田',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '整齊的田壟間種滿了小麥和蔬菜，金黃的穗子在微風中搖曳。' +
+      '農夫們抱怨田鼠猖獗，辛苦種下的作物經常被啃食殆盡。' +
+      '田埂上偶爾能看到灰色的小影子飛速竄過。',
+    exits: [
+      { direction: 'north', targetRoomId: 'village_creek', description: '往溪邊走去' },
+      { direction: 'east', targetRoomId: 'village_orchard', description: '旁邊就是果園' },
+      { direction: 'south', targetRoomId: 'village_outskirts', description: '通往村外小路' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[田]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '田壟間的小洞是田鼠的巢穴入口，堵住出口就能甕中捉鱉。',
+      treasure: '農夫的工具棚裡有一把品質異常好的鋤頭，看起來不像普通農具。',
+      spirit: '這片農田受到豐收女神的微弱祝福，每年第一批收成都會特別甜美。',
+    },
+  },
+
+  village_orchard: {
+    id: 'village_orchard',
+    name: '果園',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子。' +
+      '但烏鴉群經常光顧這裡，偷食成熟的果實，牠們刺耳的叫聲令果農不勝其煩。' +
+      '田鼠也會來撿拾掉落的果實。',
+    exits: [
+      { direction: 'west', targetRoomId: 'village_farmland', description: '回到農田' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[果]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '果樹頂端的烏鴉巢裡有好幾隻幼鳥，母鴉會拼命保護牠們。',
+      treasure: '最老的那棵果樹的樹洞裡，塞著一個布袋，裡面似乎有東西。',
+      spirit: '果園的第一棵樹是精靈旅人種下的，它的果實有輕微的魔力回復效果。',
+    },
+  },
+
+  graveyard_entrance: {
+    id: 'graveyard_entrance',
+    name: '墓地入口',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '一道鏽蝕的鐵門半開著，門後是一片荒涼的墓地。歪斜的墓碑在月光下投射出長長的陰影，' +
+      '地面上散落著枯萎的花束。空氣中瀰漫著陰冷的氣息，' +
+      '隱約可以聽到骨頭碰撞的聲響。',
+    exits: [
+      { direction: 'north', targetRoomId: 'village_outskirts', description: '沿著小路回到村外' },
+      { direction: 'east', targetRoomId: 'watchtower', description: '遠處有一座瞭望台' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[†]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '某些墓碑前的泥土有被翻動的痕跡，骷髏兵隨時可能從地下爬出。',
+      treasure: '墓地管理人的小屋裡鎖著一本名冊，記載著埋葬者生前的寶物清單。',
+      spirit: '墓地中飄蕩著不安的靈魂，他們渴望有人完成他們未竟的遺願。',
+    },
+  },
+
+  abandoned_cottage: {
+    id: 'abandoned_cottage',
+    name: '廢棄小屋',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '一間被藤蔓纏繞的破舊木屋，屋頂塌了一半，窗戶早已破碎。' +
+      '屋內堆滿了落葉和碎木，角落裡有動物築巢的痕跡。' +
+      '據村民說，這裡曾住著一位古怪的老巫師。',
+    exits: [
+      { direction: 'east', targetRoomId: 'village_backhill', description: '回到後山' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[屋]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '屋樑上棲息著一群烏鴉，走進去會驚動牠們。',
+      treasure: '壁爐的暗格裡還殘留著老巫師的東西——一本半焦的筆記和幾瓶藥水。',
+      spirit: '老巫師的魔力殘留仍在保護著這間小屋，牆壁上的符文在夜晚會微微發光。',
+    },
+  },
+
+  village_outskirts: {
+    id: 'village_outskirts',
+    name: '村外小路',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '一條蜿蜒的泥土小路連接著村莊和外圍區域，路旁的野花隨風搖曳。' +
+      '路面上有大小不一的腳印，看得出來常有野生動物經過。' +
+      '這裡是前往墓地和瞭望台的必經之路。',
+    exits: [
+      { direction: 'north', targetRoomId: 'village_farmland', description: '通往農田' },
+      { direction: 'south', targetRoomId: 'graveyard_entrance', description: '遠處隱約可見鐵門' },
+      { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: ' . ',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '路邊的草叢在無風的情況下搖動，裡面藏著覓食的田鼠。',
+      treasure: '小路拐彎處的大樹下，有人用石頭堆了一個小標記，下面埋著東西。',
+      spirit: '這條小路是古代商道的一部分，行走其上偶爾能感受到旅人的足跡殘影。',
+    },
+  },
+
+  watchtower: {
+    id: 'watchtower',
+    name: '瞭望台',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    description:
+      '一座半廢棄的石造瞭望台聳立在小丘上，登頂可以遠眺四方。' +
+      '塔頂的旗幟早已破爛不堪，但殘存的守衛設施顯示這裡曾是重要的防禦據點。' +
+      '烏鴉和骷髏兵出沒其間，讓這裡充滿危險。',
+    exits: [
+      { direction: 'west', targetRoomId: 'graveyard_entrance', description: '下坡回到墓地入口' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[塔]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '塔頂是烏鴉的棲息地，而骷髏兵在塔內的樓梯間巡邏。',
+      treasure: '瞭望台頂層的箱子裡還留著昔日守衛的裝備和物資。',
+      spirit: '瞭望台最後一任守衛的靈魂仍在值守，他會在危險逼近時發出警告的光芒。',
+    },
+  },
+
+  // ─── 東方海岸 (eastern_coast) ──────────────────────────
+
+  coastal_boardwalk: {
+    id: 'coastal_boardwalk',
+    name: '海邊棧道',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '木製棧道沿著海岸線延伸，腳下的木板在海風中吱嘎作響。' +
+      '鹹濕的海風撲面而來，遠處的海面波光粼粼。' +
+      '棧道入口立著一塊告示牌，提醒冒險者注意潮汐和海盜出沒。',
+    exits: [
+      { direction: 'north', targetRoomId: 'town_gate', description: '沿棧道回到城門口' },
+      { direction: 'south', targetRoomId: 'sandy_beach', description: '沙灘在前方延伸' },
+      { direction: 'east', targetRoomId: 'fishing_dock', description: '遠處可以看到漁村碼頭' },
+    ],
+    mapSymbol: '[棧]',
+    mapX: 4,
+    mapY: 5,
+    guardianHints: {
+      creature: '棧道下方的海水中偶爾能看到陰影掠過，海中生物在此巡遊。',
+      treasure: '棧道的木板之間卡著幾枚被海水侵蝕的古老硬幣。',
+      spirit: '這條棧道是古代海上貿易的起點，殘留著水手們啟航時的期盼。',
+    },
+  },
+
+  sandy_beach: {
+    id: 'sandy_beach',
+    name: '沙灘',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '細軟的白沙在陽光下閃耀，海浪一波又一波地拍打著海岸。' +
+      '沙灘上散落著貝殼和海藻，幾隻巨大的海蟹橫行其間。' +
+      '遠處的水面偶爾有魚群跳躍。',
+    exits: [
+      { direction: 'north', targetRoomId: 'coastal_boardwalk', description: '回到棧道' },
+      { direction: 'south', targetRoomId: 'tidal_zone', description: '沿海岸往潮間帶走' },
+      { direction: 'east', targetRoomId: 'cliff_path', description: '一條小路通往海崖' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 30 },
+    ],
+    mapSymbol: ' . ',
+    mapX: 4,
+    mapY: 6,
+    guardianHints: {
+      creature: '沙灘上的小洞是海蟹的巢穴，踩到洞口會驚動裡面的大蟹。',
+      treasure: '退潮後的沙灘上偶爾會露出被海水沖上來的寶物。',
+      spirit: '沙灘上的貝殼裡封存著海之歌，靠近耳邊能聽到遠古的旋律。',
+    },
+  },
+
+  tidal_zone: {
+    id: 'tidal_zone',
+    name: '潮間帶',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，' +
+      '半透明的水母在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sandy_beach', description: '回到沙灘' },
+      { direction: 'south', targetRoomId: 'sea_cave', description: '岩壁上有一個黑暗的洞口' },
+      { direction: 'east', targetRoomId: 'coral_shallows', description: '淺水區延伸向珊瑚淺灘' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[潮]',
+    mapX: 4,
+    mapY: 7,
+    guardianHints: {
+      creature: '漲潮時水母會大量湧入，退潮時則是海蟹的天下。',
+      treasure: '潮間帶的岩縫中卡著一些被海水打磨的半寶石。',
+      spirit: '潮汐的規律蘊含著月神的意志，在滿月之夜此處的魔力最為強大。',
+    },
+  },
+
+  sea_cave: {
+    id: 'sea_cave',
+    name: '海蝕洞',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '海浪長年侵蝕形成的巨大洞穴，洞壁上附著發光的海藻。' +
+      '海水在洞內迴蕩，發出空洞的轟鳴聲。深處的水池中有蛇形的影子在游動。' +
+      '漲潮時洞口會被海水淹沒，需要把握時機。',
+    exits: [
+      { direction: 'north', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
+      { direction: 'down', targetRoomId: 'underwater_cave', description: '水池下方似乎有通道' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 40 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[洞]',
+    mapX: 4,
+    mapY: 8,
+    guardianHints: {
+      creature: '洞壁上的刮痕是海蛇留下的——牠們在洞頂盤繞等待獵物。',
+      treasure: '發光海藻的根部附近，岩壁中嵌著一顆海藍色的寶石。',
+      spirit: '這個洞穴在上古時代是海之精靈的居所，牆壁上隱約可見精靈文字。',
+    },
+  },
+
+  fishing_dock: {
+    id: 'fishing_dock',
+    name: '漁村碼頭',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '簡樸的木製碼頭延伸入海，幾艘漁船停泊在岸邊隨波搖晃。' +
+      '漁網曬在架子上，空氣中瀰漫著魚腥味。' +
+      '幾位漁民正在修補漁網，他們對冒險者的到來習以為常。',
+    exits: [
+      { direction: 'west', targetRoomId: 'coastal_boardwalk', description: '回到海邊棧道' },
+      { direction: 'south', targetRoomId: 'lighthouse', description: '沿海岸走向燈塔' },
+    ],
+    mapSymbol: '[碼]',
+    mapX: 5,
+    mapY: 5,
+    guardianHints: {
+      creature: '碼頭下方的木樁上附著大量海蟹，牠們在夜間會爬上甲板。',
+      treasure: '老漁夫說他年輕時曾在附近海域撈起過一把古劍，但被他藏了起來。',
+      spirit: '碼頭的第一根木樁是用聖木製成的，保護著漁村免受海難。',
+    },
+  },
+
+  lighthouse: {
+    id: 'lighthouse',
+    name: '燈塔',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '矗立在海角的白色燈塔，高聳入雲。塔頂的燈火在夜晚為航行者指引方向。' +
+      '塔身被海風侵蝕得斑駁，螺旋樓梯盤旋而上。' +
+      '烏鴉經常在塔頂盤旋，海蟹則在塔基的礁石上出沒。',
+    exits: [
+      { direction: 'north', targetRoomId: 'fishing_dock', description: '回到漁村碼頭' },
+      { direction: 'south', targetRoomId: 'coral_shallows', description: '沿海岸走向珊瑚淺灘' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'sea_crab', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[燈]',
+    mapX: 5,
+    mapY: 6,
+    guardianHints: {
+      creature: '燈塔頂部的烏鴉巢裡藏著閃亮的物品，牠們會攻擊靠近的人。',
+      treasure: '燈塔守衛者的日誌中記載著海底寶藏的位置——如果能找到那本日誌的話。',
+      spirit: '燈塔的光芒不僅僅是火焰，其中蘊含著守護精靈的力量。',
+    },
+  },
+
+  coral_shallows: {
+    id: 'coral_shallows',
+    name: '珊瑚淺灘',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底。' +
+      '各種海洋生物在珊瑚叢中穿梭，水母在水中優雅地漂浮。' +
+      '更深的水域中能看到蛇形的影子游動。',
+    exits: [
+      { direction: 'north', targetRoomId: 'lighthouse', description: '回到燈塔' },
+      { direction: 'west', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
+      { direction: 'south', targetRoomId: 'shipwreck', description: '遠處海面上露出船的殘骸' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[珊]',
+    mapX: 5,
+    mapY: 7,
+    guardianHints: {
+      creature: '珊瑚叢中有海蛇偽裝成海帶——注意辨別「海帶」的粗細和動靜。',
+      treasure: '最大的珊瑚礁中心有一顆巨大的珍珠，但被海蛇守護著。',
+      spirit: '珊瑚群落是海之精靈的花園，每一株珊瑚都承載著精靈的祝福。',
+    },
+  },
+
+  shipwreck: {
+    id: 'shipwreck',
+    name: '沉船殘骸',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '一艘巨大的帆船擱淺在暗礁上，船身傾斜，桅杆斷裂。' +
+      '船體佈滿了藤壺和海藻，甲板上散落著腐爛的繩索和碎木板。' +
+      '海盜和深海魚人將這裡當作據點，在殘骸間出沒。',
+    exits: [
+      { direction: 'north', targetRoomId: 'coral_shallows', description: '游回珊瑚淺灘' },
+      { direction: 'south', targetRoomId: 'dark_reef', description: '沉船後方是暗礁區' },
+      { direction: 'east', targetRoomId: 'pirate_camp', description: '海盜在岸邊設了營地' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[船]',
+    mapX: 5,
+    mapY: 8,
+    guardianHints: {
+      creature: '沉船的船艙裡躲著海盜和魚人，牠們在黑暗中有地利之便。',
+      treasure: '船長室的保險箱雖然生鏽，但仍然鎖著——裡面可能有航海圖和寶藏。',
+      spirit: '沉船上殘留著遇難水手的怨念，他們的靈魂在暴風雨之夜會重現最後的航行。',
+    },
+  },
+
+  cliff_path: {
+    id: 'cliff_path',
+    name: '海崖步道',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是陡峭的崖壁，另一側是萬丈深淵。' +
+      '海風在這裡格外強勁，站不穩就有被吹落懸崖的危險。' +
+      '崖壁上的洞穴中棲息著海蟹。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sandy_beach', description: '下崖回到沙灘' },
+      { direction: 'south', targetRoomId: 'pirate_camp', description: '步道盡頭通往海盜營地' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[崖]',
+    mapX: 5,
+    mapY: 6,
+    guardianHints: {
+      creature: '崖壁的洞穴裡塞滿了海蟹，牠們會用螯鉗攻擊經過洞口的人。',
+      treasure: '崖壁的一處岩縫中卡著一把被風化的古劍，品質似乎還不錯。',
+      spirit: '海崖曾是古代燈塔的所在地，守望者的精神仍在指引迷途的旅人。',
+    },
+  },
+
+  pirate_camp: {
+    id: 'pirate_camp',
+    name: '海盜營地',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '隱蔽在海灣中的海盜營地，帳篷和篝火散落在岩石之間。' +
+      '到處堆放著搶來的貨物和空酒桶，海盜旗在風中獵獵作響。' +
+      '武裝的海盜在營地中巡邏，對入侵者毫不留情。',
+    exits: [
+      { direction: 'west', targetRoomId: 'shipwreck', description: '回到沉船殘骸' },
+      { direction: 'north', targetRoomId: 'cliff_path', description: '沿步道離開' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 3, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[盜]',
+    mapX: 6,
+    mapY: 8,
+    guardianHints: {
+      creature: '營地的海盜比其他地方的更訓練有素，他們會互相配合作戰。',
+      treasure: '營地中央的大帳篷裡藏著海盜團的寶箱，但有重重機關。',
+      spirit: '海盜團的創始人是一位被冤枉的海軍將領，他的復仇之心驅使著整個團夥。',
+    },
+  },
+
+  dark_reef: {
+    id: 'dark_reef',
+    name: '暗礁',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '危險的暗礁區域，尖銳的岩石在海面下若隱若現。' +
+      '海流在這裡變得湍急而複雜，許多船隻在此觸礁沉沒。' +
+      '深海魚人和海蛇將此處作為狩獵場。',
+    exits: [
+      { direction: 'north', targetRoomId: 'shipwreck', description: '回到沉船殘骸' },
+      { direction: 'south', targetRoomId: 'underwater_cave', description: '水下有一條通道' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[礁]',
+    mapX: 5,
+    mapY: 9,
+    guardianHints: {
+      creature: '暗礁的水下洞穴是魚人的集結地——牠們會從四面八方湧出。',
+      treasure: '無數觸礁沉船的遺物散落在暗礁之間，有些至今仍在發光。',
+      spirit: '暗礁是海神設下的試煉，只有通過考驗的人才能進入海底的秘境。',
+    },
+  },
+
+  underwater_cave: {
+    id: 'underwater_cave',
+    name: '海底洞穴',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    description:
+      '深入海底的神秘洞穴，被魔法氣泡維持著可呼吸的空間。' +
+      '洞壁上鑲嵌著發光的深海珊瑚，照亮了這片幽暗的領域。' +
+      '這裡是深海魚人首領的巢穴，充滿了危險和寶藏。',
+    exits: [
+      { direction: 'up', targetRoomId: 'sea_cave', description: '游向上方的海蝕洞' },
+      { direction: 'north', targetRoomId: 'dark_reef', description: '游回暗礁區' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 3, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[深]',
+    mapX: 4,
+    mapY: 9,
+    guardianHints: {
+      creature: '洞穴深處有一隻異常巨大的魚人首領，牠的三叉戟散發著藍色的光芒。',
+      treasure: '魚人的祭壇上擺放著從沉船中收集的珍貴寶物和深海寶珠。',
+      spirit: '這個洞穴是古代海之神殿的入口，魚人在此守護著神殿的最後秘密。',
+    },
+  },
+
+  // ─── 火山地帶 (volcano_zone) ──────────────────────────
+
+  volcano_base: {
+    id: 'volcano_base',
+    name: '火山山腳',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '火山的山腳下，地面覆蓋著一層黑色的火山灰。空氣中瀰漫著硫磺的刺鼻氣味，' +
+      '遠處的火山口冒著縷縷白煙。地面的溫度比平常高出許多，' +
+      '偶爾能感受到腳下輕微的震動。',
+    exits: [
+      { direction: 'north', targetRoomId: 'elf_ruins', description: '穿過灼熱的荒野回到精靈遺跡' },
+      { direction: 'south', targetRoomId: 'lava_trail', description: '一條小徑通往火山上方' },
+      { direction: 'east', targetRoomId: 'dwarf_mine', description: '山腳旁有一個礦坑入口' },
+    ],
+    mapSymbol: '[▲]',
+    mapX: 1,
+    mapY: 7,
+    guardianHints: {
+      creature: '火山灰覆蓋的地面上有蜥蜴的爪印，火蜥蜴在附近活動。',
+      treasure: '火山灰下偶爾會露出被噴發帶出的礦石，有些相當值錢。',
+      spirit: '火山的低沉轟鳴中蘊含著大地之靈的嘆息，牠在守護著地底的秘密。',
+    },
+  },
+
+  lava_trail: {
+    id: 'lava_trail',
+    name: '熔岩小徑',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '一條蜿蜒在凝固熔岩上的狹窄小路，兩側的岩石仍散發著灼熱的紅光。' +
+      '空氣因高溫而扭曲，每一步都要小心避開仍在流動的岩漿細流。' +
+      '火蜥蜴在溫暖的岩石上悠然自得。',
+    exits: [
+      { direction: 'north', targetRoomId: 'volcano_base', description: '下山回到山腳' },
+      { direction: 'south', targetRoomId: 'sulfur_valley', description: '小徑延伸向硫磺谷' },
+      { direction: 'east', targetRoomId: 'magma_river', description: '遠處傳來岩漿流動的聲響' },
+    ],
+    monsters: [
+      { monsterId: 'fire_salamander', maxCount: 3, respawnSeconds: 35 },
+    ],
+    mapSymbol: ' . ',
+    mapX: 1,
+    mapY: 8,
+    guardianHints: {
+      creature: '凝固熔岩的裂縫中有火蜥蜴在取暖，靠近時牠們會噴火攻擊。',
+      treasure: '熔岩冷卻時包裹住的氣泡中，偶爾會形成罕見的火成玻璃。',
+      spirit: '這條小徑是古代矮人的巡邏路線，他們在岩壁上刻下了方向標記。',
+    },
+  },
+
+  sulfur_valley: {
+    id: 'sulfur_valley',
+    name: '硫磺谷',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '濃烈的硫磺氣味充斥著整個山谷，地面上冒著滾燙的蒸汽。' +
+      '黃色的硫磺結晶覆蓋在岩石表面，熱泉在低窪處沸騰冒泡。' +
+      '火蜥蜴和熔岩蟲在這種極端環境中如魚得水。',
+    exits: [
+      { direction: 'north', targetRoomId: 'lava_trail', description: '回到熔岩小徑' },
+      { direction: 'south', targetRoomId: 'volcano_crater', description: '繼續向火山口攀登' },
+    ],
+    monsters: [
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[硫]',
+    mapX: 1,
+    mapY: 9,
+    guardianHints: {
+      creature: '地面突然冒出的蒸汽柱可能是熔岩蟲即將鑽出的徵兆。',
+      treasure: '硫磺結晶中偶爾混著珍貴的火成寶石，但需要小心取下。',
+      spirit: '硫磺谷是火山的排氣口，地底深處的火焰之靈在此吐息。',
+    },
+  },
+
+  volcano_crater: {
+    id: 'volcano_crater',
+    name: '火山口',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '攀登至火山口的邊緣，腳下是翻騰的岩漿湖。灼熱的氣浪撲面而來，' +
+      '火焰精靈在岩漿上方翩翩起舞，牠們的身影在熱浪中若隱若現。' +
+      '這裡的溫度高得驚人，普通人無法久留。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sulfur_valley', description: '退回硫磺谷' },
+      { direction: 'east', targetRoomId: 'fire_temple_entrance', description: '岩壁上有一道石門' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 3, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[火]',
+    mapX: 1,
+    mapY: 10,
+    guardianHints: {
+      creature: '火焰精靈在岩漿上方最活躍——用冰屬性攻擊可以讓牠們暫時凝固。',
+      treasure: '岩漿湖中央有一座小島，上面似乎放著發光的東西。',
+      spirit: '火山口是通往地心的窗口，這裡的火焰蘊含著世界誕生時的原初之力。',
+    },
+  },
+
+  magma_river: {
+    id: 'magma_river',
+    name: '岩漿河',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '一條滾燙的岩漿河從火山側面流出，橘紅色的岩漿緩慢而致命地流淌。' +
+      '河岸的岩石被高溫炙烤得通紅，空氣中的熱浪扭曲了視線。' +
+      '熔岩蟲在岩漿河中自在穿行，火蜥蜴則在河岸捕食。',
+    exits: [
+      { direction: 'west', targetRoomId: 'lava_trail', description: '回到熔岩小徑' },
+      { direction: 'south', targetRoomId: 'obsidian_cave', description: '河岸邊有一個漆黑的洞口' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[漿]',
+    mapX: 2,
+    mapY: 8,
+    guardianHints: {
+      creature: '岩漿河面上的氣泡破裂前，熔岩蟲會從河中突然竄出。',
+      treasure: '河岸的冷卻岩漿中凝結著稀有的火成礦石，需要工具才能敲下。',
+      spirit: '岩漿河是火山的血脈，牠的流向隱含著地底能量場的走勢。',
+    },
+  },
+
+  obsidian_cave: {
+    id: 'obsidian_cave',
+    name: '黑曜石洞',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '洞壁由純黑的黑曜石構成，表面如鏡子般光滑，映照出扭曲的倒影。' +
+      '洞內的溫度意外地比外面低一些，但空氣中仍帶著焦灼的味道。' +
+      '岩石巨人和熔岩蟲在這裡守護著地底的礦脈。',
+    exits: [
+      { direction: 'north', targetRoomId: 'magma_river', description: '回到岩漿河' },
+      { direction: 'south', targetRoomId: 'fire_temple_entrance', description: '深處有微弱的火光' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[黑]',
+    mapX: 2,
+    mapY: 9,
+    guardianHints: {
+      creature: '黑曜石的倒影中有時會出現不屬於你的身影——岩石巨人正從背後接近。',
+      treasure: '洞壁深處的黑曜石品質極高，是鍛造暗屬性武器的頂級材料。',
+      spirit: '黑曜石洞是古代矮人的聖地，他們相信黑曜石能封印邪惡的力量。',
+    },
+  },
+
+  fire_temple_entrance: {
+    id: 'fire_temple_entrance',
+    name: '火焰神殿入口',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '巨大的石門上雕刻著火焰的紋飾，門框兩側的火盆燃燒著永不熄滅的火焰。' +
+      '門上的古代文字似乎是矮人語，記載著神殿的歷史和警告。' +
+      '門內傳來低沉的轟鳴聲和熱氣。',
+    exits: [
+      { direction: 'west', targetRoomId: 'volcano_crater', description: '回到火山口' },
+      { direction: 'north', targetRoomId: 'obsidian_cave', description: '回到黑曜石洞' },
+      { direction: 'south', targetRoomId: 'volcano_summit', description: '通往火山頂的內部通道' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[殿]',
+    mapX: 2,
+    mapY: 10,
+    guardianHints: {
+      creature: '火盆的火焰偶爾會凝聚成精靈的形態——牠們是神殿的守護者。',
+      treasure: '石門上的文字中隱含著打開內部寶庫的密碼。',
+      spirit: '火焰神殿是矮人王國的精神中心，他們在此祭祀火焰之神並鍛造神兵。',
+    },
+  },
+
+  dwarf_mine: {
+    id: 'dwarf_mine',
+    name: '矮人礦坑',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '寬闊的礦坑中迴盪著鐵錘敲擊岩石的聲響，礦車軌道延伸向黑暗的深處。' +
+      '矮人守衛警覺地巡邏著，他們不歡迎不速之客。' +
+      '礦壁上閃爍著各種礦石的光澤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'volcano_base', description: '回到火山山腳' },
+      { direction: 'south', targetRoomId: 'forge_hall', description: '礦道深處通往鍛造大廳' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[礦]',
+    mapX: 2,
+    mapY: 7,
+    guardianHints: {
+      creature: '矮人守衛的換班時間有規律——觀察巡邏模式可以找到空檔。',
+      treasure: '礦壁上某處的礦石異常耀眼，那是稀有的秘銀礦脈。',
+      spirit: '礦坑的每一塊石頭都記錄著矮人族數百年的勞動，他們的執著令人敬佩。',
+    },
+  },
+
+  forge_hall: {
+    id: 'forge_hall',
+    name: '鍛造大廳',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '宏偉的鍛造大廳中央是一座巨大的熔爐，火焰熊熊燃燒。' +
+      '四周的工作台上擺滿了鐵錘、鉗子和各種鍛造工具。' +
+      '一位技藝精湛的矮人鐵匠正在這裡工作，他願意為有價值的客人打造裝備。',
+    exits: [
+      { direction: 'north', targetRoomId: 'dwarf_mine', description: '回到礦坑' },
+    ],
+    npcs: ['dwarf_blacksmith'],
+    mapSymbol: '[鍛]',
+    mapX: 3,
+    mapY: 7,
+    guardianHints: {
+      creature: '熔爐下方的通氣口偶爾會鑽出小型的火元素生物。',
+      treasure: '大廳牆上的展示架上放著矮人鐵匠最得意的作品——傳說級的武器。',
+      spirit: '鍛造大廳中瀰漫著千年的鍛造之魂，每一件在此打造的武器都帶著矮人的祝福。',
+    },
+  },
+
+  volcano_summit: {
+    id: 'volcano_summit',
+    name: '火山頂',
+    zone: 'volcano_zone' as RoomDef['zone'],
+    description:
+      '火山的最高點，腳下是翻騰的岩漿和蒸騰的熱氣。' +
+      '強風在這裡呼嘯而過，視野卻無比開闊——整個大陸盡收眼底。' +
+      '岩石巨人和火焰精靈在此守護著火山的核心力量。',
+    exits: [
+      { direction: 'north', targetRoomId: 'fire_temple_entrance', description: '回到火焰神殿入口' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[頂]',
+    mapX: 2,
+    mapY: 11,
+    guardianHints: {
+      creature: '火山頂的守護者比其他地方的更加強大，牠們被火山核心的能量強化了。',
+      treasure: '火山核心深處蘊藏著傳說中的炎之心——據說能打造最強的火屬性武器。',
+      spirit: '站在火山頂，能感受到大地心臟的跳動。這裡是世界能量的匯聚點之一。',
+    },
+  },
+
+  // ─── 冰封雪原 (frozen_wastes) ─────────────────────────
+
+  snowfield_entrance: {
+    id: 'snowfield_entrance',
+    name: '雪原入口',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '踏入北方的那一刻，溫度驟然下降。皚皚白雪覆蓋著一切，寒風如刀割般刺骨。' +
+      '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
+      '入口處立著一塊石碑，上面的文字被冰霜覆蓋。',
+    exits: [
+      { direction: 'south', targetRoomId: 'forest_entrance', description: '穿過冰雪小路回到暗影森林入口' },
+      { direction: 'north', targetRoomId: 'blizzard_path', description: '踏入暴風雪中' },
+      { direction: 'east', targetRoomId: 'mountain_camp', description: '東方有營火的光芒' },
+    ],
+    mapSymbol: '[雪]',
+    mapX: 2,
+    mapY: 12,
+    guardianHints: {
+      creature: '雪地上有新鮮的狼蹄印，雪狼群可能就在附近潛伏。',
+      treasure: '石碑上的冰霜如果能融化，或許能讀到重要的指引。',
+      spirit: '石碑記載著冰封雪原的歷史——這裡曾是一個繁榮文明的家園。',
+    },
+  },
+
+  blizzard_path: {
+    id: 'blizzard_path',
+    name: '暴風雪路',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '呼嘯的暴風雪讓視線降到幾乎為零，每走一步都像是在與風暴搏鬥。' +
+      '冰雪打在臉上如同針刺，體溫在急速流失。' +
+      '隱約能聽到狼群的嚎叫聲在風中迴盪。',
+    exits: [
+      { direction: 'south', targetRoomId: 'snowfield_entrance', description: '退回雪原入口' },
+      { direction: 'north', targetRoomId: 'glacier', description: '風暴的另一端是冰河' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[暴]',
+    mapX: 2,
+    mapY: 13,
+    guardianHints: {
+      creature: '暴風雪是雪狼最愛的狩獵時機——在風聲中辨別狼嚎就能提前防範。',
+      treasure: '暴風雪偶爾會露出被冰雪掩埋的古代遺物。',
+      spirit: '暴風雪並非自然現象——它是冰之精靈憤怒的表現。',
+    },
+  },
+
+  glacier: {
+    id: 'glacier',
+    name: '冰河',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '巨大的冰河緩慢地向低處移動，冰面上裂開了深不見底的冰縫。' +
+      '冰層中封凍著古代的植物和動物殘骸，宛如天然的博物館。' +
+      '雪狼和冰元素在冰河上遊蕩，對入侵者虎視眈眈。',
+    exits: [
+      { direction: 'south', targetRoomId: 'blizzard_path', description: '回到暴風雪路' },
+      { direction: 'north', targetRoomId: 'frozen_lake', description: '冰河延伸至凍湖' },
+      { direction: 'east', targetRoomId: 'crystal_ice_cave', description: '冰壁上有一個洞口' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 40 },
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[河]',
+    mapX: 2,
+    mapY: 14,
+    guardianHints: {
+      creature: '冰縫深處有冰元素在凝聚——牠們會從裂縫中突然浮出。',
+      treasure: '冰層中封凍的物品中，有些是古代文明的遺寶。',
+      spirit: '冰河承載著千萬年的歷史，每一層冰都記錄著不同時代的故事。',
+    },
+  },
+
+  frozen_lake: {
+    id: 'frozen_lake',
+    name: '凍湖',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '一片廣闊的湖泊被厚厚的冰層封凍，冰面如鏡子般平滑。' +
+      '冰下隱約可見魚群游動的影子，湖面上飄蕩著冰霧。' +
+      '冰元素在湖面上緩緩遊蕩，守護著這片凍結的領域。',
+    exits: [
+      { direction: 'south', targetRoomId: 'glacier', description: '回到冰河' },
+      { direction: 'north', targetRoomId: 'aurora_field', description: '湖的北岸有奇異的光芒' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[湖]',
+    mapX: 2,
+    mapY: 15,
+    guardianHints: {
+      creature: '冰面某些地方特別薄——冰元素會利用這一點從下方發動突擊。',
+      treasure: '湖底沉睡著一座古代城市的遺跡，凍湖就是天然的保護層。',
+      spirit: '凍湖的冰面在月光下會反射出古代城市的幻象——那是被時間凍結的記憶。',
+    },
+  },
+
+  mountain_camp: {
+    id: 'mountain_camp',
+    name: '雪山營地',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '一個被岩壁遮擋的避風處，前人在此搭建了簡易的營地。' +
+      '篝火仍在燃燒，溫暖的光芒驅散了周圍的寒意。' +
+      '營地裡存放著一些補給品和取暖用具，是雪原中難得的安全地帶。',
+    exits: [
+      { direction: 'west', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
+      { direction: 'north', targetRoomId: 'wolf_den', description: '營地北方傳來狼嚎' },
+    ],
+    mapSymbol: '[營]',
+    mapX: 3,
+    mapY: 12,
+    guardianHints: {
+      creature: '營地周圍的雪地上有各種動物的腳印，但目前看來是安全的。',
+      treasure: '前一位旅人在營地留下了一本日記，記載著雪原深處的秘密。',
+      spirit: '篝火中蘊含著前人的祝福之力，在此休息可以恢復體力和精神。',
+    },
+  },
+
+  crystal_ice_cave: {
+    id: 'crystal_ice_cave',
+    name: '冰晶洞穴',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。' +
+      '洞穴深處的溫度極低，呼出的氣息瞬間凝結成冰霜。' +
+      '冰元素和霜巨人守護著這處天然的冰晶寶庫。',
+    exits: [
+      { direction: 'west', targetRoomId: 'glacier', description: '回到冰河' },
+      { direction: 'north', targetRoomId: 'ice_castle_gate', description: '洞穴深處通向一座冰封城堡' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[晶]',
+    mapX: 3,
+    mapY: 14,
+    guardianHints: {
+      creature: '洞壁的冰晶中有時會映出巨人的倒影——那不是幻象，牠就在你身後。',
+      treasure: '洞穴最深處的冰晶純度極高，是製造冰屬性裝備的頂級素材。',
+      spirit: '冰晶洞穴是大地之力與冰之力交匯的聖地，蘊含著純粹的元素能量。',
+    },
+  },
+
+  aurora_field: {
+    id: 'aurora_field',
+    name: '極光之地',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。' +
+      '雪地被極光映照得如夢似幻，空氣中充滿了微弱的魔力波動。' +
+      '巨大的雪人在極光下遊蕩，似乎被這裡的魔力吸引。',
+    exits: [
+      { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖' },
+      { direction: 'east', targetRoomId: 'ice_castle_gate', description: '極光指引的方向有一座城堡' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[光]',
+    mapX: 2,
+    mapY: 16,
+    guardianHints: {
+      creature: '雪人在極光下會進入狂暴狀態——月隱之時牠們相對平靜。',
+      treasure: '極光的能量偶爾會在地面凝聚成「極光石」，是極為稀有的魔法材料。',
+      spirit: '極光是冰封大陸上古守護神的顯現，凝視極光太久會看到過去和未來的幻象。',
+    },
+  },
+
+  wolf_den: {
+    id: 'wolf_den',
+    name: '雪狼巢穴',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '一個被雪狼群佔據的巨大岩洞，洞口散落著獵物的殘骸和啃碎的骨頭。' +
+      '空氣中瀰漫著野獸的腥臭味，多隻雪狼在洞內警覺地注視著入侵者。' +
+      '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。',
+    exits: [
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '逃回雪山營地' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 4, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[狼]',
+    mapX: 3,
+    mapY: 13,
+    guardianHints: {
+      creature: '狼群有嚴格的階級——擊倒最大的那隻，其餘的就會暫時退卻。',
+      treasure: '狼群的巢穴深處堆積著從旅人身上搶來的裝備和物品。',
+      spirit: '雪狼群的首領擁有與冰之精靈溝通的能力，牠守護著通往精靈領域的入口。',
+    },
+  },
+
+  ice_castle_gate: {
+    id: 'ice_castle_gate',
+    name: '冰封城堡大門',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '一座宏偉的冰封城堡聳立在風雪之中，巨大的冰門上雕刻著龍的紋飾。' +
+      '城門前的石階被冰雪覆蓋，兩尊霜巨人雕像守在門口。' +
+      '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。',
+    exits: [
+      { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴' },
+      { direction: 'west', targetRoomId: 'aurora_field', description: '回到極光之地' },
+      { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡' },
+    ],
+    monsters: [
+      { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 3,
+    mapY: 15,
+    guardianHints: {
+      creature: '門口的「雕像」可能隨時活過來——不要背對著牠們。',
+      treasure: '冰門上的龍紋在特定的魔法咒語下會開啟隱藏的寶庫。',
+      spirit: '這座城堡是冰之王朝最後的堡壘，千年前的戰爭痕跡仍清晰可見。',
+    },
+  },
+
+  ice_throne: {
+    id: 'ice_throne',
+    name: '冰封王座',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    description:
+      '城堡的最深處是一座宏偉的王座大廳，穹頂高聳入雲。' +
+      '冰之王座上沉睡著一隻幼年冰龍，牠的呼吸在空氣中凝結成冰霜。' +
+      '大廳四壁鑲嵌著無數冰晶，映照出冰龍威嚴的身影。' +
+      '這裡是冰封雪原的終極挑戰。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門' },
+    ],
+    monsters: [
+      { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[龍]',
+    mapX: 3,
+    mapY: 16,
+    guardianHints: {
+      creature: '冰龍在睡夢中也會本能地攻擊靠近的生物——不要試圖偷襲。',
+      treasure: '王座背後的密室裡藏著冰之王朝的王冠和權杖——傳說級的裝備。',
+      spirit: '冰龍幼崽的母親長眠在雪原深處——牠在等待母親甦醒的那一天。',
+    },
+  },
 };
+
+// 合併擴充房間
+import { EXPANSION_ROOMS } from './rooms-expansion.js';
+Object.assign(ROOMS, EXPANSION_ROOMS);
 
 /** 取得房間定義 */
 export function getRoom(roomId: string): RoomDef | undefined {

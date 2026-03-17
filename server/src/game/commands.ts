@@ -21,7 +21,7 @@ import {
 import type { Character, ClassId } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
-  dungeonMgr, questMgr, pvpMgr, leaderboardMgr, guardianMgr,
+  dungeonMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
   kingdomMgr, buildingMgr, warMgr, treasuryMgr, diplomacyMgr,
   isInCombat, getPlayerCombatId, findCharacterByName,
 } from './state.js';
@@ -54,6 +54,7 @@ export function handleCommand(session: WsSession, input: string): void {
     sk: 'skills',
     help: 'help', '?': 'help',
     lb: 'leaderboard',
+    cq: 'classquest',
   };
 
   if (aliasMap[trimmed.toLowerCase()]) {
@@ -89,6 +90,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'dungeon': cmdDungeon(session, args); break;
     case 'leaderboard': case 'rank': cmdLeaderboard(session, args); break;
     case 'classchange': case 'job': cmdClassChange(session, argStr); break;
+    case 'classquest': case 'cq': cmdClassQuest(session, args); break;
     // 守護靈系統
     case 'ask': cmdAsk(session, argStr); break;
     case 'guardian': cmdGuardian(session, args); break;
@@ -183,6 +185,9 @@ function cmdGo(session: WsSession, direction: string): void {
 
   // 守護靈感知：進入新房間時自動觸發
   guardianMgr.processGuardianSense(session.sessionId, char);
+
+  // 轉職任務：房間進入鉤子
+  classQuestMgr.onRoomEnter(char.id, char.roomId);
 }
 
 function cmdStatus(session: WsSession): void {
@@ -250,9 +255,9 @@ function cmdAttack(session: WsSession, target: string): void {
   if (!char) return;
 
   // 如果已在戰鬥中，提交普攻行動
-  const combatId = getPlayerCombatId(char.id);
-  if (combatId) {
-    combat.submitAction(combatId, {
+  const existingCombatId = getPlayerCombatId(char.id);
+  if (existingCombatId) {
+    combat.submitAction(existingCombatId, {
       actorId: char.id,
       type: 'attack',
     });
@@ -281,12 +286,71 @@ function cmdAttack(session: WsSession, target: string): void {
   if (players.length === 0) players.push(char);
 
   // 開始戰鬥
-  combat.startCombat(players, [monster], (result, loot) => {
+  const combatId = combat.startCombat(players, [monster], (result, loot) => {
     // 戰鬥結束後的處理
     if (result === 'victory') {
       // 觸發任務進度
       questMgr.updateProgress(char.id, 'kill', monster.monsterId);
+
+      // 轉職任務：怪物擊殺鉤子 — 取得最後一次使用的技能類型
+      const lastAction = lastPlayerActions.get(char.id);
+      const usedSkillType: 'physical' | 'magical' | undefined =
+        lastAction?.type === 'skill'
+          ? (SKILL_DEFS[lastAction.skillId ?? '']?.damageType === 'magical' ? 'magical' : 'physical')
+          : lastAction?.type === 'attack' ? 'physical' : undefined;
+
+      classQuestMgr.onMonsterKill(char.id, monster.monsterId, {
+        usedSkillType,
+        round: lastRound,
+      });
+
+      // 轉職任務：物品掉落鉤子（水晶碎片等）
+      if (loot?.items) {
+        for (const item of loot.items) {
+          classQuestMgr.onItemCollected(char.id, item.itemId);
+        }
+      }
+
       world.killMonster(char.roomId, monster.instanceId);
+    }
+
+    // 轉職任務：戰鬥結束鉤子
+    if (result === 'victory' || result === 'defeat' || result === 'fled') {
+      const hpPercent = char.maxHp > 0 ? Math.floor((char.hp / char.maxHp) * 100) : 0;
+      classQuestMgr.onCombatEnd(char.id, char.roomId, result, hpPercent);
+    }
+  });
+
+  // 追蹤玩家行動（用於轉職任務鉤子）
+  let lastRound = 1;
+  const lastPlayerActions = new Map<string, { type: string; skillId?: string }>();
+
+  combat.setRoundEndCallback(combatId, (roundInfo) => {
+    lastRound = roundInfo.round;
+
+    for (const [playerId, action] of roundInfo.playerActions) {
+      // 只追蹤玩家行動
+      const playerChar = getCharacterById(playerId);
+      if (!playerChar) continue;
+
+      lastPlayerActions.set(playerId, { type: action.type, skillId: action.skillId });
+
+      // 轉職任務：戰鬥回合鉤子
+      const didAttack = action.type === 'attack' || action.type === 'skill';
+      const hpPct = playerChar.maxHp > 0 ? Math.floor((playerChar.hp / playerChar.maxHp) * 100) : 0;
+      classQuestMgr.onCombatRound(playerId, roundInfo.round, hpPct, didAttack);
+
+      // 轉職任務：戰鬥中治療鉤子
+      if (action.type === 'skill' && action.skillId) {
+        const sDef = SKILL_DEFS[action.skillId];
+        if (sDef && (sDef.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal')) {
+          if (action.targetId) {
+            classQuestMgr.onHealPerformed(playerId, action.targetId);
+          }
+        }
+        // 轉職任務：戰鬥中技能使用鉤子
+        classQuestMgr.onSkillUse(playerId, action.skillId, playerChar.roomId);
+      }
     }
   });
 }
@@ -332,6 +396,19 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 
   sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
+
+  // 轉職任務：技能使用鉤子（非戰鬥中使用技能）
+  classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId);
+
+  // 轉職任務：治療鉤子（非戰鬥中治療其他玩家）
+  if (skillDef && (skillDef.id === 'heal' || skillDef.id === 'mass_heal' || skillDef.special?.isHeal)) {
+    if (target) {
+      const targetChar = findCharacterByName(target);
+      if (targetChar) {
+        classQuestMgr.onHealPerformed(char.id, targetChar.id);
+      }
+    }
+  }
 }
 
 function cmdDefend(session: WsSession): void {
@@ -881,6 +958,68 @@ function cmdClassChange(session: WsSession, targetClass: string): void {
     });
   }
   sendSystem(session.sessionId, result.message);
+}
+
+// ─── 轉職任務系統 ───
+
+function cmdClassQuest(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'start': {
+      if (!args[1]) {
+        // 顯示可用轉職任務
+        const text = classQuestMgr.formatAvailableQuests(char);
+        sendSystem(session.sessionId, text);
+        return;
+      }
+      const questId = args[1];
+      const result = classQuestMgr.startQuest(char.id, questId, char);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'status': {
+      const text = classQuestMgr.formatQuestStatus(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'abandon': {
+      const result = classQuestMgr.abandonQuest(char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'complete': {
+      const result = classQuestMgr.completeQuest(char.id, char);
+      sendSystem(session.sessionId, result.message);
+      if (result.success) {
+        saveCharacter(char);
+      }
+      break;
+    }
+    case 'answer': {
+      const answer = args.slice(1).join(' ');
+      if (!answer) {
+        sendError(session.sessionId, '用法：classquest answer <答案>');
+        return;
+      }
+      const result = classQuestMgr.answerRiddle(char.id, answer);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '轉職任務指令：\n' +
+        '  classquest start [任務ID] — 查看/開始轉職任務\n' +
+        '  classquest status — 查看進度\n' +
+        '  classquest abandon — 放棄任務\n' +
+        '  classquest complete — 完成轉職（需在轉職大廳）\n' +
+        '  classquest answer <答案> — 回答謎語（法師任務）\n' +
+        '  別名：cq',
+      );
+  }
 }
 
 // ─── 守護靈系統 ───

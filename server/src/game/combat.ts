@@ -37,6 +37,8 @@ export interface CombatSession {
   turnStartTime: number;
   /** 戰鬥結束回呼 */
   onEnd: ((result: CombatResult, loot?: CombatLoot) => void) | null;
+  /** 回合結束回呼 */
+  onRoundEnd: ((roundInfo: { round: number; playerActions: Map<string, CombatAction> }) => void) | null;
 }
 
 // ============================================================
@@ -150,6 +152,7 @@ export class CombatEngine {
       turnTimerHandle: null,
       turnStartTime: Date.now(),
       onEnd: onEnd ?? null,
+      onRoundEnd: null,
     };
 
     this.sessions.set(combatId, session);
@@ -322,6 +325,14 @@ export class CombatEngine {
 
     // 更新日誌
     session.state.actionLog.push(...roundLog);
+
+    // 觸發回合結束回呼
+    if (session.onRoundEnd) {
+      session.onRoundEnd({
+        round: session.state.round,
+        playerActions: new Map(session.state.pendingActions),
+      });
+    }
 
     // 清除 pending
     session.state.pendingActions.clear();
@@ -963,6 +974,17 @@ export class CombatEngine {
 
     // fallback
     return { atk: 10, matk: 10, def: 5, mdef: 5, critRate: 5, critDamage: 150, dodgeRate: 5, hitRate: 95 };
+  }
+
+  /** 設定回合結束回呼 */
+  setRoundEndCallback(
+    combatId: string,
+    callback: (roundInfo: { round: number; playerActions: Map<string, CombatAction> }) => void,
+  ): void {
+    const session = this.sessions.get(combatId);
+    if (session) {
+      session.onRoundEnd = callback;
+    }
   }
 
   /** 設定戰利品（由 LootCalculator 呼叫） */

@@ -282,6 +282,16 @@ export function initDb(): Database.Database {
       sent_at INTEGER DEFAULT (unixepoch())
     );
 
+    -- 轉職任務進度
+    CREATE TABLE IF NOT EXISTS class_quests (
+      character_id TEXT PRIMARY KEY REFERENCES characters(id) ON DELETE CASCADE,
+      quest_id TEXT NOT NULL,
+      step INTEGER DEFAULT 0,
+      progress TEXT DEFAULT '{}',
+      started_at INTEGER,
+      completed_at INTEGER
+    );
+
     -- 索引
     CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id);
     CREATE INDEX IF NOT EXISTS idx_characters_user_id ON characters(user_id);

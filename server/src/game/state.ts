@@ -8,6 +8,7 @@ import { PartyManager } from './party.js';
 import { TradeManager } from './trade.js';
 import { DungeonManager } from './dungeon.js';
 import { QuestManager } from './quest.js';
+import { ClassQuestManager } from './class-quest.js';
 import { PvPManager } from './pvp.js';
 import { LeaderboardManager } from './leaderboard.js';
 import { GuardianManager } from './guardian.js';
@@ -34,6 +35,7 @@ export const partyMgr = new PartyManager();
 export const tradeMgr = new TradeManager();
 export const dungeonMgr = new DungeonManager();
 export const questMgr = new QuestManager();
+export const classQuestMgr = new ClassQuestManager();
 export const pvpMgr = new PvPManager();
 export const leaderboardMgr = new LeaderboardManager();
 export const guardianMgr = new GuardianManager();
@@ -83,6 +85,9 @@ export function initGameSystems(): void {
       return true;
     },
   });
+
+  // ClassQuestManager：注入 ClassChangeManager
+  classQuestMgr.setClassChangeManager(classChange);
 
   // BuildingManager：從資料庫載入王國房間
   buildingMgr.loadFromDb();
