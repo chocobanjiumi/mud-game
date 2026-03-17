@@ -1,4 +1,4 @@
-// Arinova OAuth 整合 — 登入、回呼、Token 管理、訪客模式
+// Arinova OAuth 整合 — 登入、回呼、Token 管理
 
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import type { ArinovaUser, AgentInfo } from '@arinova-ai/spaces-sdk';
@@ -21,7 +21,6 @@ export interface AuthSession {
   accessToken: string | null;
   user: ArinovaUser | null;
   agents: AgentInfo[];
-  isGuest: boolean;
   expiresAt: number;
   createdAt: number;
 }
@@ -138,7 +137,6 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
       accessToken,
       user,
       agents,
-      isGuest: false,
       expiresAt: Date.now() + 3_600_000, // 1 小時
       createdAt: Date.now(),
     };
@@ -152,41 +150,6 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
     console.error('[Auth] OAuth 回呼失敗:', message);
     return { success: false, error: message };
   }
-}
-
-// ============================================================
-//  訪客模式
-// ============================================================
-
-/**
- * 產生臨時訪客身分（無需 OAuth）
- * 訪客使用隨機 UUID 作為 userId，無 access token
- */
-export function createGuestSession(): AuthSession {
-  const guestId = `guest_${randomUUID()}`;
-
-  const session: AuthSession = {
-    userId: guestId,
-    accessToken: null,
-    user: null,
-    agents: [],
-    isGuest: true,
-    expiresAt: Date.now() + 86_400_000, // 24 小時
-    createdAt: Date.now(),
-  };
-
-  sessions.set(guestId, session);
-  console.log(`[Auth] 訪客登入: ${guestId}`);
-
-  return session;
-}
-
-/** 產生訪客名稱 */
-export function createGuestUser(guestId: string): { userId: string; name: string } {
-  return {
-    userId: `guest_${guestId}`,
-    name: `訪客_${guestId.slice(0, 6)}`,
-  };
 }
 
 // ============================================================
@@ -284,7 +247,7 @@ export async function getUserAgents(userId: string): Promise<AgentInfo[]> {
 
 /**
  * 註冊 Auth 相關的 HTTP 路由
- * 路由：GET /auth/login, GET /auth/callback, GET /auth/guest
+ * 路由：GET /auth/login, GET /auth/callback
  */
 export function registerAuthRoutes(app: {
   get: (path: string, handler: (req: any, res: any) => void | Promise<void>) => void;
@@ -313,21 +276,12 @@ export function registerAuthRoutes(app: {
         userId: result.session.userId,
         userName: result.session.user?.name,
         agents: result.session.agents.map(a => ({ id: a.id, name: a.name })),
-        isGuest: false,
       });
     } else {
       res.status(401).json({ error: result.error ?? '登入失敗' });
     }
   });
 
-  // GET /auth/guest — 訪客登入
-  app.get('/auth/guest', (_req: any, res: any) => {
-    const session = createGuestSession();
-    res.json({
-      userId: session.userId,
-      isGuest: true,
-    });
-  });
 }
 
 // ============================================================

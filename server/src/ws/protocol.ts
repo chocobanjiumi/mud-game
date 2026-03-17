@@ -10,7 +10,7 @@ import {
 import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
 import { world } from '../game/state.js';
-import { validateToken, getAuthSession, createGuestSession, isGuestUser, getCachedToken } from '../auth/arinova.js';
+import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
 import { ITEM_DEFS } from '@game/shared';
 import { Arinova } from '@arinova-ai/spaces-sdk';
@@ -110,7 +110,7 @@ async function handleLogin(
 ): Promise<void> {
   const { characterId, accessToken } = payload;
 
-  // 決定 verifiedUserId：已驗證 session > token 驗證 > guest
+  // 決定 verifiedUserId：已驗證 session > token 驗證
   let verifiedUserId: string;
 
   if (session.userId) {
@@ -139,11 +139,9 @@ async function handleLogin(
       // Token balance fetch failed — non-critical
     }
   } else {
-    // 無 token 且無已驗證 session — 進入 guest mode
-    const guestSession = createGuestSession();
-    verifiedUserId = guestSession.userId;
-    session.userId = verifiedUserId;
-    console.log(`[Auth] 無 token，進入訪客模式: ${verifiedUserId}`);
+    // 無 token 且無已驗證 session — 拒絕連線
+    sendError(session.sessionId, '請使用 Arinova 帳號登入');
+    return;
   }
 
   // 如果指定了角色 ID，直接載入

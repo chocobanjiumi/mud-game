@@ -24,13 +24,6 @@ export default function App() {
     [login],
   );
 
-  const handleCreateCharacter = useCallback(
-    (name: string, userId: string) => {
-      createCharacter(name, userId);
-    },
-    [createCharacter],
-  );
-
   const handleCommand = useCallback(
     (command: string) => {
       // Add the command to terminal as echo
@@ -53,7 +46,7 @@ export default function App() {
   }, [screen]);
 
   if (screen === 'login') {
-    return <LoginScreen onLogin={handleLogin} onCreateCharacter={handleCreateCharacter} />;
+    return <LoginScreen onLogin={handleLogin} />;
   }
 
   return (

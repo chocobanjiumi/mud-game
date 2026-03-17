@@ -1,15 +1,12 @@
-import { useState, useEffect, type FormEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from '../stores/gameStore';
 
 interface LoginScreenProps {
   onLogin: (userId: string, accessToken?: string) => void;
-  onCreateCharacter: (name: string, userId: string) => void;
 }
 
-export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenProps) {
-  const [characterName, setCharacterName] = useState('');
-  const [isCreating, setIsCreating] = useState(false);
+export default function LoginScreen({ onLogin }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
@@ -37,7 +34,7 @@ export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenP
       })
       .catch((err) => {
         console.error('[Arinova] OAuth callback 失敗:', err);
-        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試或使用訪客模式。', 'error');
+        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
       })
       .finally(() => setIsLoggingIn(false));
   }, [onLogin]);
@@ -46,19 +43,6 @@ export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenP
     if (isLoggingIn) return;
     // Redirect to Arinova OAuth login page
     Arinova.login({ scope: ['profile', 'agents', 'economy'] });
-  };
-
-  const handleGuestSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const name = characterName.trim();
-    if (!name) return;
-
-    if (isCreating) {
-      const guestId = `guest_${name}_${Date.now()}`;
-      onCreateCharacter(name, guestId);
-    } else {
-      onLogin(name);
-    }
   };
 
   const isConnected = connection === 'connected';
@@ -106,58 +90,6 @@ export default function LoginScreen({ onLogin, onCreateCharacter }: LoginScreenP
             `}
           >
             {isLoggingIn ? '登入中...' : 'Login with Arinova'}
-          </button>
-        </div>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex-1 border-t border-border-dim" />
-          <span className="text-text-dim text-xs">或以訪客身分遊玩</span>
-          <div className="flex-1 border-t border-border-dim" />
-        </div>
-
-        {/* Guest login form */}
-        <form onSubmit={handleGuestSubmit} className="space-y-4">
-          <div className="bg-bg-secondary border border-border-dim rounded p-4 border-glow">
-            <label className="block text-xs text-text-dim mb-2">
-              {isCreating ? '建立角色名稱' : '角色名稱'}
-            </label>
-            <input
-              type="text"
-              value={characterName}
-              onChange={(e) => setCharacterName(e.target.value)}
-              placeholder="輸入你的角色名稱..."
-              maxLength={20}
-              autoFocus
-              className="w-full bg-bg-primary border border-border-dim rounded px-3 py-2 text-text-terminal text-sm outline-none focus:border-border-glow transition-colors"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={!characterName.trim() || !isConnected}
-            className={`
-              w-full py-2.5 rounded border text-sm font-bold tracking-wider cursor-pointer
-              transition-all duration-200
-              ${
-                characterName.trim() && isConnected
-                  ? 'border-border-dim bg-bg-secondary text-text-dim hover:bg-bg-tertiary hover:text-text-bright hover:border-border-glow/40'
-                  : 'border-border-dim bg-bg-secondary text-text-dim cursor-not-allowed opacity-50'
-              }
-            `}
-          >
-            {isCreating ? '以訪客身分建立角色' : '以訪客身分開始'}
-          </button>
-        </form>
-
-        {/* Toggle create/login */}
-        <div className="text-center mt-4">
-          <button
-            type="button"
-            onClick={() => setIsCreating(!isCreating)}
-            className="text-xs text-text-dim hover:text-text-terminal transition-colors cursor-pointer"
-          >
-            {isCreating ? '已有角色？直接登入' : '新玩家？建立角色'}
           </button>
         </div>
 
