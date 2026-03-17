@@ -202,6 +202,16 @@ export class ClassQuestManager {
       return { success: false, message: '只有冒險者才能接取轉職任務。你已經轉職過了。' };
     }
 
+    // 地點檢查：必須在轉職大廳
+    if (character.roomId !== 'class_change_hall') {
+      return { success: false, message: '必須在轉職大廳才能接受轉職任務' };
+    }
+
+    // 金幣檢查：至少 500 金（此時不扣除，僅驗證）
+    if (character.gold < 500) {
+      return { success: false, message: '需要至少 500 金幣才能接受轉職任務' };
+    }
+
     // 檢查是否有進行中的轉職任務
     const existing = this.getQuestRow(characterId);
     if (existing) {
@@ -654,13 +664,13 @@ export class ClassQuestManager {
   //  事件鉤子 — 使用技能
   // ──────────────────────────────────────────────────────────
 
-  onSkillUse(characterId: string, skillId: string, roomId: string): void {
+  onSkillUse(characterId: string, skillId: string, roomId: string, inCombat: boolean = false): void {
     const row = this.getQuestRow(characterId);
     if (!row || row.completed_at) return;
 
     const progress = JSON.parse(row.progress || '{}');
 
-    // ─── 祭司 Step 0：在精靈遺跡使用淨化 3 次 ───
+    // ─── 祭司 Step 0：在精靈遺跡使用淨化 3 次（可在戰鬥外使用） ───
     if (row.quest_id === 'priest_trial' && row.step === 0) {
       if (skillId === 'purify' && roomId === 'elf_ruins') {
         const count = ((progress.purify_count as number) ?? 0) + 1;

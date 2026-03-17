@@ -1,6 +1,6 @@
 // 物品資料
 
-import type { ItemDef } from '../types/item.js';
+import type { ItemDef, ItemRarity } from '../types/item.js';
 
 export const ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
@@ -202,6 +202,570 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     description: '增幅智力的護身符。', buyPrice: 500, sellPrice: 250,
     stackable: false, maxStack: 1, levelReq: 10,
     equipSlot: 'accessory', stats: { int: 3, mp: 20 },
+  },
+
+  // ============ 長槍 (Spear) - 劍士/騎士 ============
+  spear_basic: {
+    id: 'spear_basic', name: '木槍', type: 'weapon',
+    description: '簡樸的木製長槍，新手訓練用。', buyPrice: 60, sellPrice: 30,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 6 },
+    rarity: 'common', weaponType: 'spear',
+  },
+  spear_iron: {
+    id: 'spear_iron', name: '鐵槍', type: 'weapon',
+    description: '鐵製槍頭的長槍，穿刺力不俗。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['swordsman', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 15 },
+    rarity: 'uncommon', weaponType: 'spear',
+  },
+  spear_steel: {
+    id: 'spear_steel', name: '鋼槍', type: 'weapon',
+    description: '精鋼鍛造的長槍，銳不可當。', buyPrice: 800, sellPrice: 400,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['swordsman', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 25, dex: 2 },
+    rarity: 'rare', weaponType: 'spear',
+  },
+  spear_mithril: {
+    id: 'spear_mithril', name: '秘銀槍', type: 'weapon',
+    description: '秘銀打造的長槍，輕盈而致命。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['swordsman', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 38, dex: 4, str: 3 },
+    rarity: 'epic', weaponType: 'spear', setId: 'sword_saint_set',
+  },
+  spear_dragon: {
+    id: 'spear_dragon', name: '龍牙槍', type: 'weapon',
+    description: '以龍牙為槍尖的傳說長槍，貫穿萬物。', buyPrice: 6000, sellPrice: 3000,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['swordsman', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 55, dex: 6, str: 5 },
+    rarity: 'legendary', weaponType: 'spear', setId: 'sword_saint_set',
+  },
+
+  // ============ 巨斧 (Greataxe) - 狂戰士/劍聖 ============
+  greataxe_basic: {
+    id: 'greataxe_basic', name: '木柄斧', type: 'weapon',
+    description: '粗糙的木柄大斧，沉重但威力不小。', buyPrice: 65, sellPrice: 32,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 8 },
+    rarity: 'common', weaponType: 'greataxe',
+  },
+  greataxe_iron: {
+    id: 'greataxe_iron', name: '鐵巨斧', type: 'weapon',
+    description: '鐵製巨斧，一斧劈裂大地。', buyPrice: 320, sellPrice: 160,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['berserker', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 18 },
+    rarity: 'uncommon', weaponType: 'greataxe',
+  },
+  greataxe_steel: {
+    id: 'greataxe_steel', name: '鋼巨斧', type: 'weapon',
+    description: '精鋼鍛造的巨斧，破甲之力驚人。', buyPrice: 850, sellPrice: 425,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['berserker', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 30, str: 3 },
+    rarity: 'rare', weaponType: 'greataxe',
+  },
+  greataxe_mithril: {
+    id: 'greataxe_mithril', name: '秘銀巨斧', type: 'weapon',
+    description: '秘銀打造的巨斧，揮舞如風。', buyPrice: 2600, sellPrice: 1300,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['berserker', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 45, str: 6 },
+    rarity: 'epic', weaponType: 'greataxe', setId: 'sword_saint_set',
+  },
+  greataxe_dragon: {
+    id: 'greataxe_dragon', name: '屠龍巨斧', type: 'weapon',
+    description: '傳說中斬殺巨龍的神器巨斧。', buyPrice: 6500, sellPrice: 3250,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['berserker', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 65, str: 8, critRate: 3 },
+    rarity: 'legendary', weaponType: 'greataxe', setId: 'sword_saint_set',
+  },
+
+  // ============ 太刀 (Katana) - 劍士/劍聖 ============
+  katana_basic: {
+    id: 'katana_basic', name: '竹刀', type: 'weapon',
+    description: '竹製練習刀，居合入門之器。', buyPrice: 55, sellPrice: 27,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 5, dex: 1 },
+    rarity: 'common', weaponType: 'katana',
+  },
+  katana_iron: {
+    id: 'katana_iron', name: '鐵太刀', type: 'weapon',
+    description: '鐵製太刀，斬擊迅捷。', buyPrice: 310, sellPrice: 155,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['swordsman', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 14, dex: 2 },
+    rarity: 'uncommon', weaponType: 'katana',
+  },
+  katana_steel: {
+    id: 'katana_steel', name: '鋼太刀', type: 'weapon',
+    description: '精鋼鍛造的太刀，刀氣如虹。', buyPrice: 820, sellPrice: 410,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['swordsman', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 24, dex: 4, critRate: 2 },
+    rarity: 'rare', weaponType: 'katana',
+  },
+  katana_mithril: {
+    id: 'katana_mithril', name: '秘銀太刀', type: 'weapon',
+    description: '秘銀打造的太刀，出鞘即斬。', buyPrice: 2400, sellPrice: 1200,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['swordsman', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 36, dex: 6, critRate: 4 },
+    rarity: 'epic', weaponType: 'katana', setId: 'sword_saint_set',
+  },
+  katana_dragon: {
+    id: 'katana_dragon', name: '龍紋太刀', type: 'weapon',
+    description: '刻有龍紋的傳說太刀，一閃千刀。', buyPrice: 5800, sellPrice: 2900,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['swordsman', 'sword_saint'],
+    equipSlot: 'weapon', stats: { atk: 52, dex: 8, critRate: 6 },
+    rarity: 'legendary', weaponType: 'katana', setId: 'sword_saint_set',
+  },
+
+  // ============ 元素杖 (Elemental Staff) - 法師/大法師 ============
+  elestaff_basic: {
+    id: 'elestaff_basic', name: '元素樹枝', type: 'weapon',
+    description: '蘊含微弱元素力量的樹枝。', buyPrice: 55, sellPrice: 27,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { matk: 7, mp: 5 },
+    rarity: 'common', weaponType: 'elemental_staff',
+  },
+  elestaff_iron: {
+    id: 'elestaff_iron', name: '元素鐵杖', type: 'weapon',
+    description: '以元素水晶強化的鐵杖。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['mage', 'archmage'],
+    equipSlot: 'weapon', stats: { matk: 16, mp: 15 },
+    rarity: 'uncommon', weaponType: 'elemental_staff',
+  },
+  elestaff_crystal: {
+    id: 'elestaff_crystal', name: '元素水晶杖', type: 'weapon',
+    description: '鑲嵌多種元素水晶的法杖，威力強大。', buyPrice: 850, sellPrice: 425,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['mage', 'archmage'],
+    equipSlot: 'weapon', stats: { matk: 28, mp: 25, int: 3 },
+    rarity: 'rare', weaponType: 'elemental_staff',
+  },
+  elestaff_mithril: {
+    id: 'elestaff_mithril', name: '秘銀元素杖', type: 'weapon',
+    description: '秘銀與元素核心融合的法杖。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['mage', 'archmage'],
+    equipSlot: 'weapon', stats: { matk: 42, mp: 40, int: 5 },
+    rarity: 'epic', weaponType: 'elemental_staff', setId: 'archmage_set',
+  },
+  elestaff_dragon: {
+    id: 'elestaff_dragon', name: '龍息元素杖', type: 'weapon',
+    description: '注入龍之元素的至高法杖，毀天滅地。', buyPrice: 6200, sellPrice: 3100,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['mage', 'archmage'],
+    equipSlot: 'weapon', stats: { matk: 60, mp: 60, int: 8 },
+    rarity: 'legendary', weaponType: 'elemental_staff', setId: 'archmage_set',
+  },
+
+  // ============ 魔典 (Grimoire) - 暗黑術士 ============
+  grimoire_basic: {
+    id: 'grimoire_basic', name: '破舊魔典', type: 'weapon',
+    description: '字跡模糊的舊魔典，仍殘留暗黑力量。', buyPrice: 60, sellPrice: 30,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { matk: 6, int: 1 },
+    rarity: 'common', weaponType: 'grimoire',
+  },
+  grimoire_iron: {
+    id: 'grimoire_iron', name: '鐵封魔典', type: 'weapon',
+    description: '鐵皮封裝的魔典，記載暗黑咒語。', buyPrice: 310, sellPrice: 155,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['warlock'],
+    equipSlot: 'weapon', stats: { matk: 14, int: 3 },
+    rarity: 'uncommon', weaponType: 'grimoire',
+  },
+  grimoire_crystal: {
+    id: 'grimoire_crystal', name: '水晶魔典', type: 'weapon',
+    description: '暗色水晶裝飾的魔典，蘊含深淵之力。', buyPrice: 830, sellPrice: 415,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['warlock'],
+    equipSlot: 'weapon', stats: { matk: 26, int: 5, mp: 20 },
+    rarity: 'rare', weaponType: 'grimoire',
+  },
+  grimoire_mithril: {
+    id: 'grimoire_mithril', name: '秘銀魔典', type: 'weapon',
+    description: '秘銀書頁的禁忌魔典，暗影纏身。', buyPrice: 2400, sellPrice: 1200,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['warlock'],
+    equipSlot: 'weapon', stats: { matk: 40, int: 7, mp: 35 },
+    rarity: 'epic', weaponType: 'grimoire', setId: 'archmage_set',
+  },
+  grimoire_dragon: {
+    id: 'grimoire_dragon', name: '龍血魔典', type: 'weapon',
+    description: '以龍血書寫的魔典，召喚深淵之力。', buyPrice: 6000, sellPrice: 3000,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['warlock'],
+    equipSlot: 'weapon', stats: { matk: 58, int: 10, mp: 50 },
+    rarity: 'legendary', weaponType: 'grimoire', setId: 'archmage_set',
+  },
+
+  // ============ 沙漏杖 (Hourglass Staff) - 時空術士 ============
+  hourglass_basic: {
+    id: 'hourglass_basic', name: '沙漏枝杖', type: 'weapon',
+    description: '頂端鑲嵌小沙漏的樹枝，時光微動。', buyPrice: 55, sellPrice: 27,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { matk: 5, dex: 1, mp: 5 },
+    rarity: 'common', weaponType: 'hourglass_staff',
+  },
+  hourglass_iron: {
+    id: 'hourglass_iron', name: '鐵沙漏杖', type: 'weapon',
+    description: '鐵製框架的沙漏杖，時間流速可控。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['chronomancer'],
+    equipSlot: 'weapon', stats: { matk: 13, dex: 2, mp: 15 },
+    rarity: 'uncommon', weaponType: 'hourglass_staff',
+  },
+  hourglass_crystal: {
+    id: 'hourglass_crystal', name: '水晶沙漏杖', type: 'weapon',
+    description: '水晶沙漏散發時光之力。', buyPrice: 820, sellPrice: 410,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['chronomancer'],
+    equipSlot: 'weapon', stats: { matk: 24, dex: 4, int: 3, mp: 25 },
+    rarity: 'rare', weaponType: 'hourglass_staff',
+  },
+  hourglass_mithril: {
+    id: 'hourglass_mithril', name: '秘銀沙漏杖', type: 'weapon',
+    description: '秘銀沙漏杖，掌控時間長河。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['chronomancer'],
+    equipSlot: 'weapon', stats: { matk: 38, dex: 6, int: 5, mp: 40 },
+    rarity: 'epic', weaponType: 'hourglass_staff', setId: 'archmage_set',
+  },
+  hourglass_dragon: {
+    id: 'hourglass_dragon', name: '龍時沙漏杖', type: 'weapon',
+    description: '封印龍之時間的傳說沙漏杖，可逆轉因果。', buyPrice: 6000, sellPrice: 3000,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['chronomancer'],
+    equipSlot: 'weapon', stats: { matk: 55, dex: 8, int: 7, mp: 60 },
+    rarity: 'legendary', weaponType: 'hourglass_staff', setId: 'archmage_set',
+  },
+
+  // ============ 十字弓 (Crossbow) - 遊俠/神射手 ============
+  crossbow_basic: {
+    id: 'crossbow_basic', name: '簡易十字弓', type: 'weapon',
+    description: '簡易的十字弓，射程有限。', buyPrice: 60, sellPrice: 30,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 7, dex: 1 },
+    rarity: 'common', weaponType: 'crossbow',
+  },
+  crossbow_iron: {
+    id: 'crossbow_iron', name: '鐵十字弓', type: 'weapon',
+    description: '鐵製十字弓，穿透力強。', buyPrice: 320, sellPrice: 160,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['ranger', 'marksman'],
+    equipSlot: 'weapon', stats: { atk: 16, dex: 3 },
+    rarity: 'uncommon', weaponType: 'crossbow',
+  },
+  crossbow_steel: {
+    id: 'crossbow_steel', name: '鋼十字弓', type: 'weapon',
+    description: '精鋼打造的十字弓，精準致命。', buyPrice: 840, sellPrice: 420,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['ranger', 'marksman'],
+    equipSlot: 'weapon', stats: { atk: 26, dex: 5, critRate: 3 },
+    rarity: 'rare', weaponType: 'crossbow',
+  },
+  crossbow_mithril: {
+    id: 'crossbow_mithril', name: '秘銀十字弓', type: 'weapon',
+    description: '秘銀製十字弓，箭矢疾如閃電。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['ranger', 'marksman'],
+    equipSlot: 'weapon', stats: { atk: 40, dex: 7, critRate: 5 },
+    rarity: 'epic', weaponType: 'crossbow', setId: 'shadow_hunter_set',
+  },
+  crossbow_dragon: {
+    id: 'crossbow_dragon', name: '龍牙十字弓', type: 'weapon',
+    description: '龍牙為弦的傳說十字弓，一箭貫穿蒼穹。', buyPrice: 6200, sellPrice: 3100,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['ranger', 'marksman'],
+    equipSlot: 'weapon', stats: { atk: 58, dex: 10, critRate: 7 },
+    rarity: 'legendary', weaponType: 'crossbow', setId: 'shadow_hunter_set',
+  },
+
+  // ============ 匕首 (Dagger) - 刺客 ============
+  dagger_basic: {
+    id: 'dagger_basic', name: '小匕首', type: 'weapon',
+    description: '小巧的匕首，適合暗殺。', buyPrice: 50, sellPrice: 25,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 5, dex: 2 },
+    rarity: 'common', weaponType: 'dagger',
+  },
+  dagger_iron: {
+    id: 'dagger_iron', name: '鐵匕首', type: 'weapon',
+    description: '鐵製匕首，暗夜中閃爍寒光。', buyPrice: 290, sellPrice: 145,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['assassin'],
+    equipSlot: 'weapon', stats: { atk: 12, dex: 4, critRate: 2 },
+    rarity: 'uncommon', weaponType: 'dagger',
+  },
+  dagger_steel: {
+    id: 'dagger_steel', name: '鋼匕首', type: 'weapon',
+    description: '精鋼匕首，刺入無聲。', buyPrice: 800, sellPrice: 400,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['assassin'],
+    equipSlot: 'weapon', stats: { atk: 22, dex: 6, critRate: 4 },
+    rarity: 'rare', weaponType: 'dagger',
+  },
+  dagger_mithril: {
+    id: 'dagger_mithril', name: '秘銀匕首', type: 'weapon',
+    description: '秘銀打造的匕首，輕若無物。', buyPrice: 2300, sellPrice: 1150,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['assassin'],
+    equipSlot: 'weapon', stats: { atk: 35, dex: 8, critRate: 6 },
+    rarity: 'epic', weaponType: 'dagger', setId: 'shadow_hunter_set',
+  },
+  dagger_dragon: {
+    id: 'dagger_dragon', name: '龍鱗匕首', type: 'weapon',
+    description: '龍鱗鍛造的傳說匕首，一擊必殺。', buyPrice: 5800, sellPrice: 2900,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['assassin'],
+    equipSlot: 'weapon', stats: { atk: 50, dex: 10, critRate: 8 },
+    rarity: 'legendary', weaponType: 'dagger', setId: 'shadow_hunter_set',
+  },
+
+  // ============ 鞭 (Whip) - 馴獸師 ============
+  whip_basic: {
+    id: 'whip_basic', name: '皮鞭', type: 'weapon',
+    description: '牧場用的皮鞭，威嚇野獸。', buyPrice: 50, sellPrice: 25,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 5, dex: 1 },
+    rarity: 'common', weaponType: 'whip',
+  },
+  whip_iron: {
+    id: 'whip_iron', name: '鐵鏈鞭', type: 'weapon',
+    description: '鐵鏈編織的鞭，馴服強獸。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['beast_master'],
+    equipSlot: 'weapon', stats: { atk: 13, dex: 3 },
+    rarity: 'uncommon', weaponType: 'whip',
+  },
+  whip_steel: {
+    id: 'whip_steel', name: '鋼鞭', type: 'weapon',
+    description: '精鋼鞭身，揮舞如蛇。', buyPrice: 810, sellPrice: 405,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['beast_master'],
+    equipSlot: 'weapon', stats: { atk: 23, dex: 5, str: 2 },
+    rarity: 'rare', weaponType: 'whip',
+  },
+  whip_mithril: {
+    id: 'whip_mithril', name: '秘銀鞭', type: 'weapon',
+    description: '秘銀編織的鞭，靈動致命。', buyPrice: 2400, sellPrice: 1200,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['beast_master'],
+    equipSlot: 'weapon', stats: { atk: 37, dex: 7, str: 4 },
+    rarity: 'epic', weaponType: 'whip', setId: 'shadow_hunter_set',
+  },
+  whip_dragon: {
+    id: 'whip_dragon', name: '龍筋鞭', type: 'weapon',
+    description: '龍筋製成的傳說鞭，可馴服龍族。', buyPrice: 5900, sellPrice: 2950,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['beast_master'],
+    equipSlot: 'weapon', stats: { atk: 52, dex: 9, str: 6 },
+    rarity: 'legendary', weaponType: 'whip', setId: 'shadow_hunter_set',
+  },
+
+  // ============ 聖典 (Holy Tome) - 祭司/神官 ============
+  holytome_basic: {
+    id: 'holytome_basic', name: '祈禱書', type: 'weapon',
+    description: '記載基礎祈禱文的書籍。', buyPrice: 55, sellPrice: 27,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { matk: 6, vit: 1 },
+    rarity: 'common', weaponType: 'holy_tome',
+  },
+  holytome_iron: {
+    id: 'holytome_iron', name: '鐵釦聖典', type: 'weapon',
+    description: '鐵釦裝飾的聖典，蘊含聖光。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['priest', 'high_priest'],
+    equipSlot: 'weapon', stats: { matk: 14, vit: 2, mp: 10 },
+    rarity: 'uncommon', weaponType: 'holy_tome',
+  },
+  holytome_crystal: {
+    id: 'holytome_crystal', name: '水晶聖典', type: 'weapon',
+    description: '聖光水晶鑲嵌的聖典，治癒之力強大。', buyPrice: 830, sellPrice: 415,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['priest', 'high_priest'],
+    equipSlot: 'weapon', stats: { matk: 25, vit: 4, int: 3, mp: 25 },
+    rarity: 'rare', weaponType: 'holy_tome',
+  },
+  holytome_mithril: {
+    id: 'holytome_mithril', name: '秘銀聖典', type: 'weapon',
+    description: '秘銀書頁的聖典，神聖護佑。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['priest', 'high_priest'],
+    equipSlot: 'weapon', stats: { matk: 38, vit: 6, int: 5, mp: 40 },
+    rarity: 'epic', weaponType: 'holy_tome', setId: 'holy_guardian_set',
+  },
+  holytome_dragon: {
+    id: 'holytome_dragon', name: '龍聖典', type: 'weapon',
+    description: '記載龍神祝福的傳說聖典，奇蹟降臨。', buyPrice: 6000, sellPrice: 3000,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['priest', 'high_priest'],
+    equipSlot: 'weapon', stats: { matk: 55, vit: 8, int: 7, mp: 60 },
+    rarity: 'legendary', weaponType: 'holy_tome', setId: 'holy_guardian_set',
+  },
+
+  // ============ 自然杖 (Nature Staff) - 德魯伊 ============
+  naturestaff_basic: {
+    id: 'naturestaff_basic', name: '樹苗杖', type: 'weapon',
+    description: '以活樹苗製成的法杖，生命之力微弱。', buyPrice: 55, sellPrice: 27,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { matk: 5, vit: 1, hp: 10 },
+    rarity: 'common', weaponType: 'nature_staff',
+  },
+  naturestaff_iron: {
+    id: 'naturestaff_iron', name: '鐵環自然杖', type: 'weapon',
+    description: '鐵環固定的自然杖，大地之力流轉。', buyPrice: 300, sellPrice: 150,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['druid'],
+    equipSlot: 'weapon', stats: { matk: 13, vit: 2, int: 2, hp: 20 },
+    rarity: 'uncommon', weaponType: 'nature_staff',
+  },
+  naturestaff_crystal: {
+    id: 'naturestaff_crystal', name: '翡翠自然杖', type: 'weapon',
+    description: '鑲嵌翡翠的自然杖，萬物生長。', buyPrice: 820, sellPrice: 410,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['druid'],
+    equipSlot: 'weapon', stats: { matk: 24, vit: 4, int: 3, hp: 40 },
+    rarity: 'rare', weaponType: 'nature_staff',
+  },
+  naturestaff_mithril: {
+    id: 'naturestaff_mithril', name: '秘銀自然杖', type: 'weapon',
+    description: '秘銀與古樹融合的自然杖，生命脈動。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['druid'],
+    equipSlot: 'weapon', stats: { matk: 38, vit: 6, int: 5, hp: 60 },
+    rarity: 'epic', weaponType: 'nature_staff', setId: 'holy_guardian_set',
+  },
+  naturestaff_dragon: {
+    id: 'naturestaff_dragon', name: '龍樹自然杖', type: 'weapon',
+    description: '世界樹與龍力交織的傳說自然杖。', buyPrice: 6000, sellPrice: 3000,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['druid'],
+    equipSlot: 'weapon', stats: { matk: 55, vit: 8, int: 7, hp: 100 },
+    rarity: 'legendary', weaponType: 'nature_staff', setId: 'holy_guardian_set',
+  },
+
+  // ============ 戰錘 (Warhammer) - 審判者/騎士 ============
+  warhammer_basic: {
+    id: 'warhammer_basic', name: '木槌', type: 'weapon',
+    description: '粗糙的木頭錘子，聊勝於無。', buyPrice: 60, sellPrice: 30,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'weapon', stats: { atk: 7, def: 1 },
+    rarity: 'common', weaponType: 'warhammer',
+  },
+  warhammer_iron: {
+    id: 'warhammer_iron', name: '鐵戰錘', type: 'weapon',
+    description: '沉重的鐵製戰錘，粉碎敵人。', buyPrice: 320, sellPrice: 160,
+    stackable: false, maxStack: 1, levelReq: 10,
+    classReq: ['inquisitor', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 16, def: 3, str: 2 },
+    rarity: 'uncommon', weaponType: 'warhammer',
+  },
+  warhammer_steel: {
+    id: 'warhammer_steel', name: '鋼戰錘', type: 'weapon',
+    description: '精鋼鍛造的戰錘，制裁邪惡。', buyPrice: 840, sellPrice: 420,
+    stackable: false, maxStack: 1, levelReq: 20,
+    classReq: ['inquisitor', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 28, def: 5, str: 3, matk: 5 },
+    rarity: 'rare', weaponType: 'warhammer',
+  },
+  warhammer_mithril: {
+    id: 'warhammer_mithril', name: '秘銀戰錘', type: 'weapon',
+    description: '秘銀鍛造的戰錘，神聖審判。', buyPrice: 2600, sellPrice: 1300,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['inquisitor', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 42, def: 7, str: 5, matk: 8 },
+    rarity: 'epic', weaponType: 'warhammer', setId: 'holy_guardian_set',
+  },
+  warhammer_dragon: {
+    id: 'warhammer_dragon', name: '龍骨戰錘', type: 'weapon',
+    description: '龍骨鍛造的傳說戰錘，審判降臨。', buyPrice: 6500, sellPrice: 3250,
+    stackable: false, maxStack: 1, levelReq: 40,
+    classReq: ['inquisitor', 'knight'],
+    equipSlot: 'weapon', stats: { atk: 60, def: 10, str: 7, matk: 12 },
+    rarity: 'legendary', weaponType: 'warhammer', setId: 'holy_guardian_set',
+  },
+
+  // ============ 套裝部件 - 劍聖之裝 ============
+  sword_saint_armor: {
+    id: 'sword_saint_armor', name: '劍聖鎧甲', type: 'armor',
+    description: '劍聖之裝套裝的鎧甲，刻有劍聖紋章。', buyPrice: 4000, sellPrice: 2000,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['swordsman', 'knight', 'berserker', 'sword_saint'],
+    equipSlot: 'body', stats: { def: 30, str: 5, dex: 3 },
+    rarity: 'epic', setId: 'sword_saint_set',
+  },
+  sword_saint_ring: {
+    id: 'sword_saint_ring', name: '劍聖戒指', type: 'accessory',
+    description: '劍聖之裝套裝的戒指，戰氣凝聚。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['swordsman', 'knight', 'berserker', 'sword_saint'],
+    equipSlot: 'accessory', stats: { atk: 8, str: 4, critRate: 3 },
+    rarity: 'epic', setId: 'sword_saint_set',
+  },
+
+  // ============ 套裝部件 - 大法師之裝 ============
+  archmage_set_robe: {
+    id: 'archmage_set_robe', name: '大法師法袍', type: 'armor',
+    description: '大法師之裝套裝的法袍，魔紋閃爍。', buyPrice: 4000, sellPrice: 2000,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['mage', 'archmage', 'warlock', 'chronomancer'],
+    equipSlot: 'body', stats: { mdef: 25, int: 6, mp: 50 },
+    rarity: 'epic', setId: 'archmage_set',
+  },
+  archmage_set_ring: {
+    id: 'archmage_set_ring', name: '大法師魔戒', type: 'accessory',
+    description: '大法師之裝套裝的魔戒，魔力澎湃。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['mage', 'archmage', 'warlock', 'chronomancer'],
+    equipSlot: 'accessory', stats: { matk: 10, int: 5, mp: 30 },
+    rarity: 'epic', setId: 'archmage_set',
+  },
+
+  // ============ 套裝部件 - 暗影獵手之裝 ============
+  shadow_hunter_armor: {
+    id: 'shadow_hunter_armor', name: '暗影獵手輕甲', type: 'armor',
+    description: '暗影獵手之裝套裝的輕甲，暗影籠罩。', buyPrice: 4000, sellPrice: 2000,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['ranger', 'marksman', 'assassin', 'beast_master'],
+    equipSlot: 'body', stats: { def: 20, dex: 6, dodgeRate: 5 },
+    rarity: 'epic', setId: 'shadow_hunter_set',
+  },
+  shadow_hunter_ring: {
+    id: 'shadow_hunter_ring', name: '暗影獵手戒指', type: 'accessory',
+    description: '暗影獵手之裝套裝的戒指，暗影之力。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['ranger', 'marksman', 'assassin', 'beast_master'],
+    equipSlot: 'accessory', stats: { dex: 5, critRate: 4, dodgeRate: 3 },
+    rarity: 'epic', setId: 'shadow_hunter_set',
+  },
+
+  // ============ 套裝部件 - 聖光守護之裝 ============
+  holy_guardian_armor: {
+    id: 'holy_guardian_armor', name: '聖光守護鎧甲', type: 'armor',
+    description: '聖光守護之裝套裝的鎧甲，聖光護體。', buyPrice: 4000, sellPrice: 2000,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['priest', 'high_priest', 'druid', 'inquisitor'],
+    equipSlot: 'body', stats: { def: 25, mdef: 15, vit: 5, mp: 40 },
+    rarity: 'epic', setId: 'holy_guardian_set',
+  },
+  holy_guardian_ring: {
+    id: 'holy_guardian_ring', name: '聖光守護戒指', type: 'accessory',
+    description: '聖光守護之裝套裝的戒指，信仰之光。', buyPrice: 2500, sellPrice: 1250,
+    stackable: false, maxStack: 1, levelReq: 30,
+    classReq: ['priest', 'high_priest', 'druid', 'inquisitor'],
+    equipSlot: 'accessory', stats: { int: 4, vit: 4, mp: 30 },
+    rarity: 'epic', setId: 'holy_guardian_set',
   },
 
   // ============ 消耗品 ============
@@ -446,4 +1010,169 @@ export function getEquipmentForLevel(minLevel: number, maxLevel: number): ItemDe
       item.levelReq >= minLevel &&
       item.levelReq <= maxLevel,
   );
+}
+
+// ============================================================
+//  裝備套裝系統
+// ============================================================
+
+export interface SetBonusTier {
+  /** 需要的套裝件數 */
+  pieces: number;
+  /** 描述（中文） */
+  description: string;
+  /** 屬性加成（百分比的用 pct 後綴） */
+  bonusStats?: Partial<import('../types/item.js').ItemStats>;
+  /** 百分比加成 */
+  bonusPct?: {
+    atk?: number;
+    matk?: number;
+    def?: number;
+    mdef?: number;
+    int?: number;
+    dex?: number;
+    vit?: number;
+    str?: number;
+    critRate?: number;
+    dodgeRate?: number;
+    healPower?: number;
+    spellPower?: number;
+    critDamage?: number;
+    mpCostReduction?: number;
+    faithRegen?: number;
+  };
+}
+
+export interface EquipmentSetDef {
+  id: string;
+  name: string;
+  description: string;
+  /** 套裝中的物品 ID 列表（武器需要玩家自選對應 weaponType 且 setId 匹配） */
+  itemIds: string[];
+  /** 可作為套裝武器的 weaponType 列表 */
+  weaponTypes?: import('../types/item.js').WeaponType[];
+  bonuses: SetBonusTier[];
+}
+
+/** 套裝武器：劍聖之裝的武器包含 katana_mithril 和 katana_dragon */
+// 在 ITEM_DEFS 中已經用 setId 標記了套裝部件
+
+export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
+  sword_saint_set: {
+    id: 'sword_saint_set',
+    name: '劍聖之裝',
+    description: '為戰士職業打造的傳說套裝，揮劍如虹。',
+    itemIds: ['katana_mithril', 'katana_dragon', 'spear_mithril', 'spear_dragon', 'greataxe_mithril', 'greataxe_dragon', 'sword_saint_armor', 'sword_saint_ring'],
+    bonuses: [
+      {
+        pieces: 2,
+        description: 'ATK +10%',
+        bonusPct: { atk: 10 },
+      },
+      {
+        pieces: 3,
+        description: '暴擊率 +15%，STR +20',
+        bonusPct: { critRate: 15 },
+        bonusStats: { str: 20 },
+      },
+    ],
+  },
+  archmage_set: {
+    id: 'archmage_set',
+    name: '大法師之裝',
+    description: '為法師職業打造的傳說套裝，魔力洪流。',
+    itemIds: ['elestaff_mithril', 'elestaff_dragon', 'grimoire_mithril', 'grimoire_dragon', 'hourglass_mithril', 'hourglass_dragon', 'archmage_set_robe', 'archmage_set_ring'],
+    bonuses: [
+      {
+        pieces: 2,
+        description: 'INT +15%',
+        bonusPct: { int: 15 },
+      },
+      {
+        pieces: 3,
+        description: '法術威力 +20%，MP 消耗 -10%',
+        bonusPct: { spellPower: 20, mpCostReduction: 10 },
+      },
+    ],
+  },
+  shadow_hunter_set: {
+    id: 'shadow_hunter_set',
+    name: '暗影獵手之裝',
+    description: '為遊俠職業打造的傳說套裝，暗影無蹤。',
+    itemIds: ['crossbow_mithril', 'crossbow_dragon', 'dagger_mithril', 'dagger_dragon', 'whip_mithril', 'whip_dragon', 'shadow_hunter_armor', 'shadow_hunter_ring'],
+    bonuses: [
+      {
+        pieces: 2,
+        description: 'DEX +10%',
+        bonusPct: { dex: 10 },
+      },
+      {
+        pieces: 3,
+        description: '迴避率 +15%，暴擊傷害 +25%',
+        bonusPct: { dodgeRate: 15, critDamage: 25 },
+      },
+    ],
+  },
+  holy_guardian_set: {
+    id: 'holy_guardian_set',
+    name: '聖光守護之裝',
+    description: '為祭司職業打造的傳說套裝，聖光庇護。',
+    itemIds: ['holytome_mithril', 'holytome_dragon', 'naturestaff_mithril', 'naturestaff_dragon', 'warhammer_mithril', 'warhammer_dragon', 'holy_guardian_armor', 'holy_guardian_ring'],
+    bonuses: [
+      {
+        pieces: 2,
+        description: '治癒力量 +15%',
+        bonusPct: { healPower: 15 },
+      },
+      {
+        pieces: 3,
+        description: 'VIT +20，信仰回復 +5/回合',
+        bonusStats: { vit: 20 },
+        bonusPct: { faithRegen: 5 },
+      },
+    ],
+  },
+};
+
+/** 計算角色的套裝加成 */
+export function calculateSetBonuses(equippedItemIds: string[]): {
+  activeSetNames: string[];
+  bonusStats: Partial<import('../types/item.js').ItemStats>;
+  bonusPct: Record<string, number>;
+} {
+  const bonusStats: Record<string, number> = {};
+  const bonusPct: Record<string, number> = {};
+  const activeSetNames: string[] = [];
+
+  for (const set of Object.values(EQUIPMENT_SETS)) {
+    // Count how many items from this set are equipped
+    const count = equippedItemIds.filter(id => {
+      const def = ITEM_DEFS[id];
+      return def?.setId === set.id || set.itemIds.includes(id);
+    }).length;
+
+    for (const tier of set.bonuses) {
+      if (count >= tier.pieces) {
+        if (!activeSetNames.includes(`${set.name}(${tier.pieces})`)) {
+          activeSetNames.push(`${set.name}(${tier.pieces})`);
+        }
+        if (tier.bonusStats) {
+          for (const [k, v] of Object.entries(tier.bonusStats)) {
+            if (v !== undefined) bonusStats[k] = (bonusStats[k] ?? 0) + v;
+          }
+        }
+        if (tier.bonusPct) {
+          for (const [k, v] of Object.entries(tier.bonusPct)) {
+            if (v !== undefined) bonusPct[k] = (bonusPct[k] ?? 0) + v;
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    activeSetNames,
+    bonusStats: bonusStats as Partial<import('../types/item.js').ItemStats>,
+    bonusPct,
+  };
 }

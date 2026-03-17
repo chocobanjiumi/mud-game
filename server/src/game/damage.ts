@@ -2,7 +2,11 @@
 
 import type {
   BaseStats, DerivedStats, DamageType, ElementType, DamageResult, StatusEffect,
+  Character, ItemRarity,
 } from '@game/shared';
+import { ITEM_DEFS, calculateSetBonuses } from '@game/shared';
+import { getEquippedItems } from '../db/queries.js';
+import { getEnhancementLevel, getEnhancedStats } from './upgrade.js';
 
 // ============================================================
 //  屬性計算
@@ -202,6 +206,128 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
   // ── 最終傷害 ──────────────────────────────────────────
   result.damage = Math.max(1, Math.floor(baseDmg));
   result.effects = [...effects];
+
+  return result;
+}
+
+// ============================================================
+//  裝備屬性計算
+// ============================================================
+
+/** 稀有度對武器傷害的加成倍率 */
+const RARITY_MULTIPLIER: Record<ItemRarity, number> = {
+  common: 1.0,
+  uncommon: 1.05,
+  rare: 1.1,
+  epic: 1.2,
+  legendary: 1.35,
+  mythic: 1.5,
+};
+
+export interface EquipmentBonusStats {
+  str: number;
+  int: number;
+  dex: number;
+  vit: number;
+  luk: number;
+  weaponAtk: number;
+  weaponMatk: number;
+  armorDef: number;
+  armorMdef: number;
+  bonusCritRate: number;
+  bonusCritDamage: number;
+  bonusDodgeRate: number;
+  bonusHitRate: number;
+  bonusHp: number;
+  bonusMp: number;
+  /** Set bonus percentage modifiers */
+  setBonusPct: Record<string, number>;
+  /** Active set names for display */
+  activeSetNames: string[];
+}
+
+/**
+ * Calculate total bonus stats from all equipped items (including enhancement bonuses and set bonuses).
+ */
+export function getEquipmentStats(character: Character): EquipmentBonusStats {
+  const result: EquipmentBonusStats = {
+    str: 0, int: 0, dex: 0, vit: 0, luk: 0,
+    weaponAtk: 0, weaponMatk: 0, armorDef: 0, armorMdef: 0,
+    bonusCritRate: 0, bonusCritDamage: 0, bonusDodgeRate: 0, bonusHitRate: 0,
+    bonusHp: 0, bonusMp: 0,
+    setBonusPct: {},
+    activeSetNames: [],
+  };
+
+  const equippedItems = getEquippedItems(character.id);
+  const equippedItemIds: string[] = [];
+
+  for (const item of equippedItems) {
+    const def = ITEM_DEFS[item.itemId];
+    if (!def) continue;
+
+    equippedItemIds.push(item.itemId);
+
+    if (!def.stats) continue;
+
+    // Base item stats
+    const baseStats = def.stats;
+
+    // Enhancement bonus: each +level adds 3% of the item's base stats
+    const enhLevel = getEnhancementLevel(character.id, item.itemId);
+    const enhBonus = getEnhancedStats(item.itemId, enhLevel);
+
+    // Rarity multiplier (only for weapon atk/matk)
+    const rarityMult = def.rarity ? (RARITY_MULTIPLIER[def.rarity] ?? 1.0) : 1.0;
+    const isWeapon = def.type === 'weapon';
+
+    // Accumulate stats
+    if (baseStats.atk) {
+      const total = baseStats.atk + (enhBonus.atk ?? 0);
+      result.weaponAtk += isWeapon ? Math.floor(total * rarityMult) : total;
+    }
+    if (baseStats.matk) {
+      const total = baseStats.matk + (enhBonus.matk ?? 0);
+      result.weaponMatk += isWeapon ? Math.floor(total * rarityMult) : total;
+    }
+    if (baseStats.def) {
+      result.armorDef += baseStats.def + (enhBonus.def ?? 0);
+    }
+    if (baseStats.mdef) {
+      result.armorMdef += baseStats.mdef + (enhBonus.mdef ?? 0);
+    }
+    if (baseStats.str) result.str += baseStats.str + (enhBonus.str ?? 0);
+    if (baseStats.int) result.int += baseStats.int + (enhBonus.int ?? 0);
+    if (baseStats.dex) result.dex += baseStats.dex + (enhBonus.dex ?? 0);
+    if (baseStats.vit) result.vit += baseStats.vit + (enhBonus.vit ?? 0);
+    if (baseStats.luk) result.luk += baseStats.luk + (enhBonus.luk ?? 0);
+    if (baseStats.hp) result.bonusHp += baseStats.hp + (enhBonus.hp ?? 0);
+    if (baseStats.mp) result.bonusMp += baseStats.mp + (enhBonus.mp ?? 0);
+    if (baseStats.critRate) result.bonusCritRate += baseStats.critRate + (enhBonus.critRate ?? 0);
+    if (baseStats.dodgeRate) result.bonusDodgeRate += baseStats.dodgeRate + (enhBonus.dodgeRate ?? 0);
+  }
+
+  // Calculate set bonuses
+  if (equippedItemIds.length > 0) {
+    const setResult = calculateSetBonuses(equippedItemIds);
+    result.activeSetNames = setResult.activeSetNames;
+    result.setBonusPct = setResult.bonusPct;
+
+    // Apply flat set bonus stats
+    if (setResult.bonusStats.str) result.str += setResult.bonusStats.str;
+    if (setResult.bonusStats.int) result.int += setResult.bonusStats.int;
+    if (setResult.bonusStats.dex) result.dex += setResult.bonusStats.dex;
+    if (setResult.bonusStats.vit) result.vit += setResult.bonusStats.vit;
+    if (setResult.bonusStats.luk) result.luk += setResult.bonusStats.luk;
+    if (setResult.bonusStats.atk) result.weaponAtk += setResult.bonusStats.atk;
+    if (setResult.bonusStats.matk) result.weaponMatk += setResult.bonusStats.matk;
+    if (setResult.bonusStats.def) result.armorDef += setResult.bonusStats.def;
+    if (setResult.bonusStats.mdef) result.armorMdef += setResult.bonusStats.mdef;
+    if (setResult.bonusStats.critRate) result.bonusCritRate += setResult.bonusStats.critRate;
+    if (setResult.bonusStats.dodgeRate) result.bonusDodgeRate += setResult.bonusStats.dodgeRate;
+    if (setResult.bonusStats.hp) result.bonusHp += setResult.bonusStats.hp;
+    if (setResult.bonusStats.mp) result.bonusMp += setResult.bonusStats.mp;
+  }
 
   return result;
 }

@@ -7,6 +7,10 @@ export type ItemType = 'weapon' | 'armor' | 'accessory' | 'consumable' | 'materi
 export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet';
 export type EquipSlot = 'weapon' | 'head' | 'body' | 'hands' | 'feet' | 'accessory';
 
+export type WeaponType = 'spear' | 'greataxe' | 'katana' | 'elemental_staff' | 'grimoire' | 'hourglass_staff' | 'crossbow' | 'dagger' | 'whip' | 'holy_tome' | 'nature_staff' | 'warhammer';
+
+export type ItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
+
 export interface ItemDef {
   id: string;
   name: string; // 中文名
@@ -22,6 +26,12 @@ export interface ItemDef {
   stats?: ItemStats;
   useEffect?: ItemUseEffect;
   element?: ElementType;
+  // Enhancement system fields
+  requiredLevel?: number;
+  requiredClass?: string[];  // class IDs that can equip
+  rarity?: ItemRarity;
+  setId?: string;  // equipment set identifier
+  weaponType?: WeaponType;
 }
 
 export interface ItemStats {

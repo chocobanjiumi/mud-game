@@ -9,6 +9,7 @@ import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
   addInventoryItem, removeInventoryItem, setEquipped,
+  getEquippedItems,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -28,7 +29,8 @@ import {
 import { GUARDIAN_DEFS } from './guardian.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
-import type { KingdomRank, BuildingType, KingdomNpcType, Direction } from '@game/shared';
+import { upgradeItem, getUpgradeInfo } from './upgrade.js';
+import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot } from '@game/shared';
 
 // ─── 指令路由 ───
 
@@ -107,6 +109,8 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'bounty': cmdBounty(session, args); break;
     case 'treasury': cmdTreasury(session, args); break;
     case 'diplomacy': cmdDiplomacy(session, args); break;
+    // 強化系統
+    case 'upgrade': case 'enhance': cmdUpgrade(session, argStr); break;
     case 'help': cmdHelp(session); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
@@ -336,7 +340,22 @@ function cmdAttack(session: WsSession, target: string): void {
       lastPlayerActions.set(playerId, { type: action.type, skillId: action.skillId });
 
       // 轉職任務：戰鬥回合鉤子
-      const didAttack = action.type === 'attack' || action.type === 'skill';
+      // 只有 attack/kill 才算「攻擊」，heal/defend/support 技能不算
+      let didAttack = action.type === 'attack';
+      if (action.type === 'skill' && action.skillId) {
+        const skillDef = SKILL_DEFS[action.skillId];
+        // 治療、淨化、buff 等非攻擊技能不算攻擊
+        const isHealOrSupport = skillDef && (
+          skillDef.special?.isHeal ||
+          skillDef.special?.removeDebuffs ||
+          skillDef.targetType === 'self' ||
+          skillDef.targetType === 'single_ally' ||
+          skillDef.targetType === 'all_allies'
+        );
+        if (!isHealOrSupport) {
+          didAttack = true;
+        }
+      }
       const hpPct = playerChar.maxHp > 0 ? Math.floor((playerChar.hp / playerChar.maxHp) * 100) : 0;
       classQuestMgr.onCombatRound(playerId, roundInfo.round, hpPct, didAttack);
 
@@ -349,7 +368,7 @@ function cmdAttack(session: WsSession, target: string): void {
           }
         }
         // 轉職任務：戰鬥中技能使用鉤子
-        classQuestMgr.onSkillUse(playerId, action.skillId, playerChar.roomId);
+        classQuestMgr.onSkillUse(playerId, action.skillId, playerChar.roomId, true);
       }
     }
   });
@@ -398,7 +417,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
   sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
 
   // 轉職任務：技能使用鉤子（非戰鬥中使用技能）
-  classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId);
+  classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
 
   // 轉職任務：治療鉤子（非戰鬥中治療其他玩家）
   if (skillDef && (skillDef.id === 'heal' || skillDef.id === 'mass_heal' || skillDef.special?.isHeal)) {
@@ -447,7 +466,23 @@ function cmdEquip(session: WsSession, itemName: string): void {
 
   const def = ITEM_DEFS[match.itemId];
   if (!def?.equipSlot) { sendError(session.sessionId, `「${def?.name ?? itemName}」無法裝備。`); return; }
-  if (def.levelReq > char.level) { sendError(session.sessionId, `等級不足！需要 Lv ${def.levelReq}。`); return; }
+  if (def.levelReq > char.level) { sendError(session.sessionId, `等級不足，需要 Lv${def.levelReq}`); return; }
+  // 職業限制檢查
+  if (def.classReq && def.classReq.length > 0 && !def.classReq.includes(char.classId)) {
+    sendError(session.sessionId, '你的職業無法裝備此物品');
+    return;
+  }
+
+  // Unequip existing item in the same slot before equipping the new one
+  const targetSlot: EquipSlot = def.equipSlot;
+  const equipped = getEquippedItems(char.id);
+  for (const eq of equipped) {
+    const eqDef = ITEM_DEFS[eq.itemId];
+    if (eqDef?.equipSlot === targetSlot && eq.itemId !== match.itemId) {
+      setEquipped(char.id, eq.itemId, false);
+      sendSystem(session.sessionId, `你卸下了「${eqDef.name}」。`);
+    }
+  }
 
   setEquipped(char.id, match.itemId, true);
   sendSystem(session.sessionId, `你裝備了「${def.name}」。`);
@@ -1880,6 +1915,45 @@ function cmdDiplomacy(session: WsSession, args: string[]): void {
   }
 }
 
+// ─── 強化系統 ───
+
+function cmdUpgrade(session: WsSession, argStr: string): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法強化裝備！');
+    return;
+  }
+
+  // 解析目標欄位
+  const slotArg = argStr.trim().toLowerCase();
+  let slot: EquipSlot = 'weapon';
+  if (slotArg === 'armor' || slotArg === 'body' || slotArg === '身體' || slotArg === '鎧甲') {
+    slot = 'body';
+  } else if (slotArg === 'head' || slotArg === '頭部') {
+    slot = 'head';
+  } else if (slotArg === 'hands' || slotArg === '手部') {
+    slot = 'hands';
+  } else if (slotArg === 'feet' || slotArg === '腳部') {
+    slot = 'feet';
+  } else if (slotArg === 'accessory' || slotArg === '飾品') {
+    slot = 'accessory';
+  } else if (slotArg === 'info' || slotArg === '資訊') {
+    // 顯示強化資訊
+    const info = getUpgradeInfo(char.id, 'weapon');
+    sendSystem(session.sessionId, info);
+    return;
+  }
+
+  const result = upgradeItem(char.id, slot);
+  if (result.success) {
+    sendSystem(session.sessionId, result.message);
+  } else {
+    sendError(session.sessionId, result.message);
+  }
+}
+
 // ─── 幫助 ───
 
 function cmdHelp(session: WsSession): void {
@@ -1901,6 +1975,8 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  equip/unequip <物品> 裝備/卸下');
   sendSystem(session.sessionId, '  use <物品>           使用物品');
   sendSystem(session.sessionId, '  drop <物品>          丟棄物品');
+  sendSystem(session.sessionId, '  upgrade / enhance    強化當前武器');
+  sendSystem(session.sessionId, '  upgrade armor        強化身體裝備');
   sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '── 戰鬥指令 ──');
   sendSystem(session.sessionId, '  attack <目標>        攻擊');

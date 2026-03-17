@@ -9,6 +9,7 @@ import { randomUUID } from 'crypto';
 import { SKILL_DEFS } from '@game/shared';
 import {
   calculateDamage, calculateDerived, baseStatsToCombat, derivedWithDexLuk,
+  getEquipmentStats,
 } from './damage.js';
 import { EffectEngine } from './effects.js';
 import type { MonsterInstance } from './world.js';
@@ -928,7 +929,10 @@ export class CombatEngine {
 
   private getCombatantDex(session: CombatSession, id: string): number {
     const char = session.playerCharacters.get(id);
-    if (char) return char.stats.dex;
+    if (char) {
+      const eqStats = getEquipmentStats(char);
+      return char.stats.dex + eqStats.dex;
+    }
 
     const monster = session.monsterInstances.get(id);
     if (monster) return monster.def.dex;
@@ -938,7 +942,10 @@ export class CombatEngine {
 
   private getCombatantLuk(session: CombatSession, id: string): number {
     const char = session.playerCharacters.get(id);
-    if (char) return char.stats.luk;
+    if (char) {
+      const eqStats = getEquipmentStats(char);
+      return char.stats.luk + eqStats.luk;
+    }
 
     const monster = session.monsterInstances.get(id);
     if (monster) return monster.def.luk;
@@ -958,8 +965,47 @@ export class CombatEngine {
   ): { atk: number; matk: number; def: number; mdef: number; critRate: number; critDamage: number; dodgeRate: number; hitRate: number } {
     const char = session.playerCharacters.get(combatant.id);
     if (char) {
-      const cs = baseStatsToCombat(char.stats, char.level);
-      return calculateDerived(cs);
+      // Get equipment bonuses (including enhancement and set bonuses)
+      const eqStats = getEquipmentStats(char);
+
+      // Merge base stats with equipment stat bonuses
+      const mergedStats = {
+        str: char.stats.str + eqStats.str,
+        int: char.stats.int + eqStats.int,
+        dex: char.stats.dex + eqStats.dex,
+        vit: char.stats.vit + eqStats.vit,
+        luk: char.stats.luk + eqStats.luk,
+      };
+
+      const cs = baseStatsToCombat(
+        mergedStats,
+        char.level,
+        eqStats.weaponAtk,
+        eqStats.weaponMatk,
+        eqStats.armorDef,
+        eqStats.armorMdef,
+      );
+      cs.bonusCritRate = eqStats.bonusCritRate;
+      cs.bonusCritDamage = eqStats.bonusCritDamage;
+      cs.bonusDodgeRate = eqStats.bonusDodgeRate;
+      cs.bonusHitRate = eqStats.bonusHitRate;
+
+      let derived = calculateDerived(cs);
+
+      // Apply set bonus percentage modifiers
+      const pct = eqStats.setBonusPct;
+      if (pct.atk) derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
+      if (pct.int) derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+      if (pct.dex) {
+        derived.dodgeRate = Math.floor(derived.dodgeRate * (1 + pct.dex / 100));
+        derived.hitRate = Math.floor(derived.hitRate * (1 + pct.dex / 100));
+      }
+      if (pct.critRate) derived.critRate += pct.critRate;
+      if (pct.critDamage) derived.critDamage += pct.critDamage;
+      if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
+      if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+
+      return derived;
     }
 
     const monster = session.monsterInstances.get(combatant.id);

@@ -279,23 +279,47 @@ export class PlayerManager {
       return { atk: 0, matk: 0, def: 0, mdef: 0, hitRate: 0, dodgeRate: 0, critRate: 0, critDamage: 0 };
     }
 
-    const s = char.stats;
-    // TODO: 加上裝備屬性
-    const weaponAtk = 0;
-    const weaponMatk = 0;
-    const armorDef = 0;
-    const armorMdef = 0;
+    // Import dynamically to avoid circular deps at module level
+    const { getEquipmentStats, baseStatsToCombat, calculateDerived } = require('./damage.js');
+    const eqStats = getEquipmentStats(char);
 
-    const atk = s.str * 2 + weaponAtk;
-    const matk = s.int * 2 + weaponMatk;
-    const def = Math.floor(s.vit * 1.5) + armorDef;
-    const mdef = Math.floor(s.int * 0.5 + s.vit * 0.5) + armorMdef;
-    const critRate = s.dex * 0.3 + s.luk * 0.2;
-    const critDamage = 150; // 基礎 150%
-    const dodgeRate = s.dex * 0.4 + s.luk * 0.1;
-    const hitRate = 95; // 基礎命中率
+    const mergedStats = {
+      str: char.stats.str + eqStats.str,
+      int: char.stats.int + eqStats.int,
+      dex: char.stats.dex + eqStats.dex,
+      vit: char.stats.vit + eqStats.vit,
+      luk: char.stats.luk + eqStats.luk,
+    };
 
-    return { atk, matk, def, mdef, hitRate, dodgeRate, critRate, critDamage };
+    const cs = baseStatsToCombat(
+      mergedStats,
+      char.level,
+      eqStats.weaponAtk,
+      eqStats.weaponMatk,
+      eqStats.armorDef,
+      eqStats.armorMdef,
+    );
+    cs.bonusCritRate = eqStats.bonusCritRate;
+    cs.bonusCritDamage = eqStats.bonusCritDamage;
+    cs.bonusDodgeRate = eqStats.bonusDodgeRate;
+    cs.bonusHitRate = eqStats.bonusHitRate;
+
+    let derived = calculateDerived(cs);
+
+    // Apply set bonus percentage modifiers
+    const pct = eqStats.setBonusPct;
+    if (pct.atk) derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
+    if (pct.int) derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+    if (pct.dex) {
+      derived.dodgeRate = Math.floor(derived.dodgeRate * (1 + pct.dex / 100));
+      derived.hitRate = Math.floor(derived.hitRate * (1 + pct.dex / 100));
+    }
+    if (pct.critRate) derived.critRate += pct.critRate;
+    if (pct.critDamage) derived.critDamage += pct.critDamage;
+    if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
+    if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+
+    return derived;
   }
 
   // ──────────────────────────────────────────────────────────

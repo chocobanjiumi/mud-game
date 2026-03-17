@@ -316,6 +316,16 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_diplo_messages_to ON kingdom_diplomatic_messages(to_kingdom_id);
   `);
 
+  // ── Migration: 新增 enhancement_level 欄位 ──
+  {
+    const invColumns = db.prepare("PRAGMA table_info(inventory)").all() as { name: string }[];
+    const invColumnNames = new Set(invColumns.map(c => c.name));
+    if (!invColumnNames.has('enhancement_level')) {
+      db.exec(`ALTER TABLE inventory ADD COLUMN enhancement_level INTEGER DEFAULT 0`);
+      console.log('[DB] Migration: 已新增 enhancement_level 欄位至 inventory 表');
+    }
+  }
+
   // ── Migration: 新增 resource 欄位 ──
   // 檢查 characters 表是否已有 resource 欄位
   const columns = db.prepare("PRAGMA table_info(characters)").all() as { name: string }[];

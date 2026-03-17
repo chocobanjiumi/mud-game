@@ -12,6 +12,7 @@ import { ClassQuestManager } from './class-quest.js';
 import { PvPManager } from './pvp.js';
 import { LeaderboardManager } from './leaderboard.js';
 import { GuardianManager } from './guardian.js';
+import { ensureEnhancementColumn } from './upgrade.js';
 import { KingdomManager } from './kingdom.js';
 import { BuildingManager } from './kingdom-building.js';
 import { WarManager } from './kingdom-war.js';
@@ -96,6 +97,9 @@ export function initGameSystems(): void {
   warMgr.init();
   treasuryMgr.init();
   diplomacyMgr.init();
+
+  // 強化系統：確保 DB 欄位存在
+  ensureEnhancementColumn();
 
   console.log('[Game] 所有遊戲子系統初始化完成');
 }

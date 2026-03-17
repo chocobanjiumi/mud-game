@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { Character, ClassId, BaseStats, EquipmentSlots } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -528,11 +528,19 @@ export function getKingdomDiplomacies(kingdomId: string): {
 
 // ─── Helpers ───
 
-/** 簡易推斷裝備欄位（根據物品 ID 中的關鍵字） */
+/** 簡易推斷裝備欄位（根據物品 ID 中的關鍵字，或查 ITEM_DEFS） */
 function guessEquipSlot(itemId: string): string | null {
+  // 優先從 ITEM_DEFS 查詢
+  const def = ITEM_DEFS[itemId];
+  if (def?.equipSlot) return def.equipSlot;
+
   if (itemId.includes('sword') || itemId.includes('staff') || itemId.includes('bow') ||
       itemId.includes('wand') || itemId.includes('scepter') || itemId.includes('blade') ||
-      itemId.includes('mace') || itemId.includes('rod')) {
+      itemId.includes('mace') || itemId.includes('rod') ||
+      itemId.includes('spear') || itemId.includes('greataxe') || itemId.includes('katana') ||
+      itemId.includes('elestaff') || itemId.includes('grimoire') || itemId.includes('hourglass') ||
+      itemId.includes('crossbow') || itemId.includes('dagger') || itemId.includes('whip') ||
+      itemId.includes('holytome') || itemId.includes('naturestaff') || itemId.includes('warhammer')) {
     return 'weapon';
   }
   if (itemId.includes('helm') || itemId.includes('hat') || itemId.includes('cap')) return 'head';
