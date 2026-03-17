@@ -94,7 +94,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'bat_wing', chance: 0.5, minQty: 2, maxQty: 4 },
       { itemId: 'echo_crystal', chance: 0.2, minQty: 1, maxQty: 1 },
-      { itemId: 'hp_potion_m', chance: 0.15, minQty: 1, maxQty: 1 },
+      { itemId: 'medium_hp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description:
@@ -165,7 +165,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'spectral_essence', chance: 0.35, minQty: 1, maxQty: 1 },
       { itemId: 'knight_sigil', chance: 0.2, minQty: 1, maxQty: 1 },
       { itemId: 'phantom_blade', chance: 0.08, minQty: 1, maxQty: 1 },
-      { itemId: 'hp_potion_l', chance: 0.15, minQty: 1, maxQty: 1 },
+      { itemId: 'large_hp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description:

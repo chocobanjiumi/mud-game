@@ -164,8 +164,8 @@ export const NPCS: Record<string, NpcDef> = {
     roomId: 'potion_shop',
     type: 'merchant',
     shopItems: [
-      'hp_potion_s', 'hp_potion_m',
-      'mp_potion_s', 'mp_potion_m',
+      'small_hp_potion', 'medium_hp_potion',
+      'small_mp_potion', 'medium_mp_potion',
       'antidote', 'status_cure',
     ],
     dialogue: [

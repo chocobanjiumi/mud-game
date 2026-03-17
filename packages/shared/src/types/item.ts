@@ -32,6 +32,12 @@ export interface ItemDef {
   rarity?: ItemRarity;
   setId?: string;  // equipment set identifier
   weaponType?: WeaponType;
+  attackDescriptions?: {
+    normal: string;   // normal attack text
+    critical: string; // critical hit text
+    miss: string;     // miss text
+    kill: string;     // killing blow text
+  };
 }
 
 export interface ItemStats {

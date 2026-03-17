@@ -298,12 +298,13 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 25 },
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: ' . ',
     mapX: 2,
     mapY: 5,
     guardianHints: {
-      creature: '草叢中有狼的腳印，數量不止一組……牠們可能在附近埋伏。',
+      creature: '草叢中有狼的腳印，數量不止一組……其中一組異常巨大，狼王就在附近。',
       treasure: '小徑旁的野花叢中，有一株罕見的藥草在微微發光。',
       spirit: '這條小徑曾是商隊的必經之路，殘留著他們歡笑的回音。',
     },
@@ -512,6 +513,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 40 },
       { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[!]',
     mapX: 2,
@@ -620,6 +622,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 60 },
       { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'crystal_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[H]',
     mapX: 1,
@@ -925,12 +928,13 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[†]',
     mapX: 3,
     mapY: 3,
     guardianHints: {
-      creature: '某些墓碑前的泥土有被翻動的痕跡，骷髏兵隨時可能從地下爬出。',
+      creature: '某些墓碑前的泥土有被翻動的痕跡，骷髏兵隨時可能從地下爬出。一股不尋常的威壓從墓地深處傳來。',
       treasure: '墓地管理人的小屋裡鎖著一本名冊，記載著埋葬者生前的寶物清單。',
       spirit: '墓地中飄蕩著不安的靈魂，他們渴望有人完成他們未竟的遺願。',
     },
@@ -1256,12 +1260,13 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'pirate', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[盜]',
     mapX: 6,
     mapY: 8,
     guardianHints: {
-      creature: '營地的海盜比其他地方的更訓練有素，他們會互相配合作戰。',
+      creature: '營地的海盜比其他地方的更訓練有素，他們的船長就在大帳篷中坐鎮。',
       treasure: '營地中央的大帳篷裡藏著海盜團的寶箱，但有重重機關。',
       spirit: '海盜團的創始人是一位被冤枉的海軍將領，他的復仇之心驅使著整個團夥。',
     },
@@ -1560,6 +1565,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 65 },
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[頂]',
     mapX: 2,
@@ -1811,6 +1817,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[龍]',
     mapX: 3,

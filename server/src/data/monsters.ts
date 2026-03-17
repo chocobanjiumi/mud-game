@@ -23,7 +23,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [2, 5],
     drops: [
       { itemId: 'slime_gel', chance: 0.5, minQty: 1, maxQty: 2 },
-      { itemId: 'hp_potion_s', chance: 0.1, minQty: 1, maxQty: 1 },
+      { itemId: 'small_hp_potion', chance: 0.1, minQty: 1, maxQty: 1 },
     ],
     aiType: 'passive',
     description: '一團果凍般的半透明生物，在地上緩慢地蠕動。看起來人畜無害，是新手冒險者的最佳練習對象。',
@@ -52,7 +52,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [3, 7],
     drops: [
       { itemId: 'bat_wing', chance: 0.4, minQty: 1, maxQty: 2 },
-      { itemId: 'mp_potion_s', chance: 0.08, minQty: 1, maxQty: 1 },
+      { itemId: 'small_mp_potion', chance: 0.08, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description: '從暗處飛出的小蝙蝠，雖然體型不大，但尖銳的叫聲足以讓人頭疼。靈活的飛行讓它不太容易被擊中。',
@@ -113,7 +113,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'wolf_pelt', chance: 0.4, minQty: 1, maxQty: 1 },
       { itemId: 'wolf_fang', chance: 0.25, minQty: 1, maxQty: 2 },
-      { itemId: 'hp_potion_s', chance: 0.15, minQty: 1, maxQty: 1 },
+      { itemId: 'small_hp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description: '灰色毛皮的野狼，目光銳利地注視著獵物。它們通常成群出沒，用嚎叫聲召喚同伴。落單時依然是危險的對手。',
@@ -143,7 +143,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'bandit_dagger', chance: 0.1, minQty: 1, maxQty: 1 },
       { itemId: 'stolen_pouch', chance: 0.3, minQty: 1, maxQty: 1 },
-      { itemId: 'hp_potion_m', chance: 0.1, minQty: 1, maxQty: 1 },
+      { itemId: 'medium_hp_potion', chance: 0.1, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description: '蒙面的盜賊，手持匕首藏在路旁的草叢中。他們專門劫掠落單的旅人，動作迅速且狡猾。',
@@ -205,7 +205,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'shadow_pelt', chance: 0.35, minQty: 1, maxQty: 1 },
       { itemId: 'shadow_essence', chance: 0.15, minQty: 1, maxQty: 1 },
-      { itemId: 'hp_potion_m', chance: 0.2, minQty: 1, maxQty: 1 },
+      { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description: '暗影森林中的恐怖獵食者，漆黑的毛皮讓它能完美融入黑暗。它的攻擊帶有暗影之力，被咬到會感到一陣刺骨的寒冷。',
@@ -364,7 +364,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'bat_wing', chance: 0.45, minQty: 1, maxQty: 2 },
       { itemId: 'echo_crystal', chance: 0.15, minQty: 1, maxQty: 1 },
-      { itemId: 'hp_potion_m', chance: 0.2, minQty: 1, maxQty: 1 },
+      { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
     description: '比普通蝙蝠大上數倍的洞窟蝙蝠，能發出強力的超聲波攻擊。在黑暗的洞窟中，它是完美的掠食者。',
@@ -1026,6 +1026,254 @@ export const MONSTERS: Record<string, MonsterDef> = {
       creature: '冰龍在施放吐息前會深深吸氣——那短暫的間隙是攻擊喉部弱點的唯一機會。',
       treasure: '冰龍的鱗片和核心是製造傳說級裝備的終極材料，一片鱗足以抵得上一座城池。',
       spirit: '這隻冰龍幼崽的母親長眠在雪原深處——牠在等待母親甦醒的那一天。',
+    },
+  },
+
+  // ─── 精英怪物 (Elite Monsters) ──────────────────────────
+
+  skeleton_general: {
+    id: 'skeleton_general',
+    name: '骷髏將軍',
+    level: 8,
+    hp: 195,       // ~65 base * 3x
+    mp: 30,
+    str: 18,       // ~12 base * 1.5x
+    int: 6,
+    dex: 10,
+    vit: 14,
+    luk: 5,
+    element: 'dark',
+    skills: ['basic_attack', 'bone_strike', 'howl', 'backstab'],
+    expReward: 120,
+    goldReward: [30, 60],
+    drops: [
+      { itemId: 'rusty_hero_sword', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'goblin_ear', chance: 0.8, minQty: 2, maxQty: 3 },
+      { itemId: 'medium_hp_potion', chance: 0.5, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '身著殘破鎧甲的骷髏將軍，手持一把斑駁的古劍。空洞的眼窩中燃燒著熾烈的鬼火，' +
+      '牠曾是一位偉大的勇者，死後被黑暗之力喚醒，如今統率著墓地中所有的亡靈士兵。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '將軍在召喚亡靈援軍前會舉劍長嘯——打斷牠的嘯叫就能阻止增援。',
+      treasure: '將軍手中的古劍雖然鏽蝕，但劍身上的符文暗示它曾是一把傳說中的勇者之劍。',
+      spirit: '這位將軍生前是守護村莊的英雄，他的靈魂在痛苦中掙扎——或許淨化能讓他安息。',
+    },
+  },
+
+  wolf_king: {
+    id: 'wolf_king',
+    name: '狼王',
+    level: 12,
+    hp: 450,       // ~150 base * 3x
+    mp: 40,
+    str: 30,       // ~20 base * 1.5x
+    int: 12,
+    dex: 27,
+    vit: 21,
+    luk: 10,
+    element: 'none',
+    skills: ['basic_attack', 'bite', 'howl', 'shadow_dash', 'alpha_roar'],
+    expReward: 200,
+    goldReward: [50, 100],
+    drops: [
+      { itemId: 'wolf_fang_dagger', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'wolf_pelt', chance: 1.0, minQty: 2, maxQty: 3 },
+      { itemId: 'wolf_fang', chance: 0.8, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '草原狼群的霸主，體型比普通野狼大上一倍有餘。銀白色的毛皮在陽光下閃閃發光，' +
+      '琥珀色的雙眼充滿威嚴與智慧。牠的嚎叫能召喚方圓數里的狼群前來支援。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '狼王在發動衝鋒前會低伏身體——那是側閃的最佳時機。',
+      treasure: '狼王的巢穴中藏著一把以狼牙製成的匕首，據說能讓持有者獲得狼的速度。',
+      spirit: '狼王是草原精靈的守護獸，牠守護著這片土地數百年，直到黑暗降臨。',
+    },
+  },
+
+  pirate_captain: {
+    id: 'pirate_captain',
+    name: '海盜船長',
+    level: 15,
+    hp: 540,       // ~180 base * 3x
+    mp: 45,
+    str: 33,       // ~22 base * 1.5x
+    int: 12,
+    dex: 24,
+    vit: 21,
+    luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'backstab', 'steal', 'howl', 'quick_dash'],
+    expReward: 260,
+    goldReward: [80, 160],
+    drops: [
+      { itemId: 'pirate_crossbow', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'stolen_pouch', chance: 1.0, minQty: 2, maxQty: 3 },
+      { itemId: 'medium_hp_potion', chance: 0.6, minQty: 2, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description:
+      '惡名昭彰的海盜船長，身穿華麗的海軍外套，頭戴羽飾三角帽。' +
+      '腰間掛著一把精巧的短銃弩和一把彎刀，臉上的刀疤訴說著無數場戰鬥的經歷。' +
+      '傳說他曾是皇家海軍的將領，因冤屈而走上了海盜之路。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '船長習慣用左手彎刀佯攻，右手短銃弩才是真正的殺招——注意他右手的動作。',
+      treasure: '船長的藏寶圖就縫在他外套的夾層裡，裡面記載了沉船寶藏的位置。',
+      spirit: '船長至今仍保留著皇家海軍的徽章——他的復仇之路或許有可以和解的一天。',
+    },
+  },
+
+  shadow_treant: {
+    id: 'shadow_treant',
+    name: '暗影樹靈',
+    level: 20,
+    hp: 750,       // ~250 base * 3x
+    mp: 60,
+    str: 33,       // ~22 base * 1.5x
+    int: 22,
+    dex: 12,
+    vit: 38,
+    luk: 8,
+    element: 'dark',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain', 'shadow_storm'],
+    expReward: 350,
+    goldReward: [100, 200],
+    drops: [
+      { itemId: 'faded_grimoire', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'ancient_bark', chance: 1.0, minQty: 2, maxQty: 4 },
+      { itemId: 'nature_crystal', chance: 0.5, minQty: 1, maxQty: 2 },
+      { itemId: 'shadow_essence', chance: 0.6, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '一棵被暗影之力徹底侵蝕的千年古樹，漆黑的枝幹上流淌著紫色的魔力脈絡。' +
+      '牠的根系深入地底數百公尺，能操控整片森林的植物進行攻擊。' +
+      '在牠的樹洞中藏著一本褪色的咒語書，散發著古老而危險的魔力。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '暗影樹靈的弱點在樹幹上的暗影之眼——用光明魔法攻擊那裡可以造成巨大傷害。',
+      treasure: '樹洞深處藏著一本遠古咒語書，據說記載了失傳已久的禁忌魔法。',
+      spirit: '這棵古樹原本是森林的守護者，是暗影之力讓牠墮落——或許還有救贖的可能。',
+    },
+  },
+
+  lava_colossus: {
+    id: 'lava_colossus',
+    name: '熔岩巨像',
+    level: 22,
+    hp: 900,       // ~300 base * 3x
+    mp: 45,
+    str: 45,       // ~30 base * 1.5x
+    int: 15,
+    dex: 12,
+    vit: 42,
+    luk: 5,
+    element: 'fire',
+    skills: ['basic_attack', 'stone_slam', 'stone_skin', 'fire_breath', 'root_bind'],
+    expReward: 420,
+    goldReward: [120, 240],
+    drops: [
+      { itemId: 'lava_warhammer', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'gargoyle_stone', chance: 1.0, minQty: 2, maxQty: 3 },
+      { itemId: 'stone_heart', chance: 0.5, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'boss',
+    description:
+      '由凝固的岩漿與火山岩構成的巨大人形雕像，身高超過五公尺。' +
+      '牠的身體裂縫中不斷滲出炙熱的岩漿，每一步都在地面上留下燃燒的腳印。' +
+      '手中握著一把由純粹熔岩凝聚而成的戰錘，一擊足以碎裂山石。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '巨像的胸口有一顆脈動的火焰核心——用冰屬性攻擊可以讓牠暫時凝固。',
+      treasure: '擊碎巨像後，牠的戰錘會冷卻成一把蘊含火山之力的神器。',
+      spirit: '熔岩巨像是矮人族古代鍛造師的傑作，牠守護著通往火山核心的道路已逾千年。',
+    },
+  },
+
+  crystal_dragon: {
+    id: 'crystal_dragon',
+    name: '水晶龍',
+    level: 26,
+    hp: 1200,      // ~400 base * 3x
+    mp: 100,
+    str: 42,       // ~28 base * 1.5x
+    int: 30,
+    dex: 22,
+    vit: 38,
+    luk: 10,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_shard', 'ice_storm', 'diamond_skin', 'petrifying_gaze', 'crystal_prison'],
+    expReward: 600,
+    goldReward: [180, 360],
+    drops: [
+      { itemId: 'crystal_elestaff', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'crystal_scale', chance: 1.0, minQty: 3, maxQty: 5 },
+      { itemId: 'crystal_core', chance: 0.5, minQty: 1, maxQty: 1 },
+      { itemId: 'ice_crystal', chance: 0.7, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '棲息在水晶洞窟深處的遠古巨龍，全身覆蓋著璀璨的水晶鱗片。' +
+      '牠的翅膀展開時如同一面巨大的稜鏡，折射出令人目眩的七彩光芒。' +
+      '牠的吐息能將一切化為水晶，是洞窟中僅次於水晶守衛的最強存在。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '水晶龍在張開翅膀時腹部會暴露——那是水晶鱗片最薄弱的區域。',
+      treasure: '龍的巢穴中有一根由純淨水晶凝聚而成的法杖，蘊含著元素之力。',
+      spirit: '水晶龍是洞窟創世時誕生的原初生命，牠的存在維繫著洞窟的水晶生態。',
+    },
+  },
+
+  frost_giant_king: {
+    id: 'frost_giant_king',
+    name: '霜巨人王',
+    level: 30,
+    hp: 1500,      // ~500 base * 3x
+    mp: 120,
+    str: 63,       // ~42 base * 1.5x
+    int: 22,
+    dex: 18,
+    vit: 57,
+    luk: 8,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'ice_armor', 'howl', 'ice_storm', 'shatter'],
+    expReward: 800,
+    goldReward: [250, 500],
+    drops: [
+      { itemId: 'frost_greataxe', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'ice_crystal', chance: 1.0, minQty: 2, maxQty: 4 },
+      { itemId: 'gargoyle_stone', chance: 0.8, minQty: 2, maxQty: 3 },
+      { itemId: 'crystal_core', chance: 0.3, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'boss',
+    description:
+      '霜巨人部族的王者，身高超過七公尺，頭戴永凍冰製成的王冠。' +
+      '牠的皮膚如冰川般蔚藍而堅硬，手持一把由千年寒冰鑄就的巨大戰斧。' +
+      '每一聲怒吼都能引發暴風雪，是冰封雪原中僅次於冰龍的最強存在。',
+    isBoss: false,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '巨人王揮斧時重心會偏移——在牠揮空的瞬間衝向側面攻擊膝蓋。',
+      treasure: '巨人王的戰斧蘊含著永凍之力，據說能凍結一切觸碰到的事物。',
+      spirit: '霜巨人王是冰之泰坦最後的直系後裔，牠的血脈中流淌著上古的力量。',
     },
   },
 

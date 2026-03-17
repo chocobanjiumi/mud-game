@@ -12,6 +12,8 @@ import {
   getEquipmentStats,
 } from './damage.js';
 import { EffectEngine } from './effects.js';
+import { getAttackDescription } from './attack-descriptions.js';
+import type { AttackResultType } from './attack-descriptions.js';
 import type { MonsterInstance } from './world.js';
 
 // ============================================================
@@ -392,7 +394,10 @@ export class CombatEngine {
     });
 
     results.push(dmgResult);
-    this.applyDamageResult(session, dmgResult, actor, target, log);
+
+    // 取得攻擊者的武器 ID（玩家從裝備欄取得，怪物為 null）
+    const weaponItemId = this.getEquippedWeaponId(session, actor.id);
+    this.applyDamageResult(session, dmgResult, actor, target, log, weaponItemId);
 
     // 資源系統：劍士系攻擊獲得怒氣
     if (!dmgResult.isMiss && !dmgResult.isDodged) {
@@ -533,17 +538,34 @@ export class CombatEngine {
     actor: CombatantState,
     target: CombatantState,
     log: string[],
+    weaponItemId: string | null = null,
   ): void {
     if (result.isMiss) {
-      log.push(`${actor.name}攻擊了${target.name}，但沒有命中！`);
+      const desc = getAttackDescription(actor.name, target.name, weaponItemId, 'miss');
+      log.push(desc);
       return;
     }
     if (result.isDodged) {
-      log.push(`${actor.name}攻擊了${target.name}，但被閃避了！`);
+      // 閃避仍使用 miss 描述（武器揮空的情境）
+      const desc = getAttackDescription(actor.name, target.name, weaponItemId, 'miss');
+      log.push(`${desc}（被閃避）`);
       return;
     }
 
-    const critText = result.isCrit ? '暴擊！' : '';
+    // 先計算目標是否會被擊殺（預判）
+    const willKill = this.willDamageKill(session, target, result.damage);
+
+    // 選擇攻擊結果類型
+    let resultType: AttackResultType = 'normal';
+    if (willKill) {
+      resultType = 'kill';
+    } else if (result.isCrit) {
+      resultType = 'critical';
+    }
+
+    const desc = getAttackDescription(actor.name, target.name, weaponItemId, resultType);
+
+    // 附加傷害數值與屬性資訊
     let elemText = '';
     if (result.elementBonus > 0) {
       elemText = '（屬性剋制！）';
@@ -551,9 +573,7 @@ export class CombatEngine {
       elemText = '（屬性抵抗）';
     }
 
-    log.push(
-      `${actor.name}攻擊了${target.name}，造成 ${result.damage} 點傷害！${critText}${elemText}`,
-    );
+    log.push(`${desc}造成 ${result.damage} 點傷害！${elemText}`);
 
     this.applyDamageToTarget(session, target, result.damage, log);
 
@@ -951,6 +971,45 @@ export class CombatEngine {
     if (monster) return monster.def.luk;
 
     return 5;
+  }
+
+  /** 取得戰鬥者裝備的武器 ID（怪物返回 null） */
+  private getEquippedWeaponId(session: CombatSession, id: string): string | null {
+    const char = session.playerCharacters.get(id);
+    if (char) {
+      return char.equipment.weapon ?? null;
+    }
+    return null;
+  }
+
+  /**
+   * 預判傷害是否會擊殺目標（粗略估計，不修改狀態）
+   * 考慮減傷和無敵，但不消耗護盾值
+   */
+  private willDamageKill(_session: CombatSession, target: CombatantState, rawDamage: number): boolean {
+    // 無敵判定
+    if (this.effectEngine.isInvincible(target.activeEffects)) {
+      return false;
+    }
+
+    let damage = rawDamage;
+
+    // 傷害減免
+    const reduction = this.effectEngine.getDamageReduction(target.activeEffects);
+    if (reduction > 0) {
+      damage = Math.max(1, Math.floor(damage * (1 - reduction / 100)));
+    }
+
+    // 粗略估計護盾吸收（只讀取護盾總值，不修改）
+    let totalShield = 0;
+    for (const eff of target.activeEffects) {
+      if (eff.type === 'shield') {
+        totalShield += eff.value;
+      }
+    }
+    damage = Math.max(0, damage - totalShield);
+
+    return target.hp - damage <= 0;
   }
 
   private getCombatantElement(session: CombatSession, id: string): ElementType {

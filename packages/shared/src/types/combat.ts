@@ -91,6 +91,8 @@ export interface MonsterDef {
   aiType: MonsterAiType;
   description: string;
   isBoss: boolean;
+  isElite?: boolean;
+  respawnTime?: number; // seconds
   guardianHints?: GuardianHints;
 }
 
