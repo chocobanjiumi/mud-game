@@ -11,6 +11,11 @@ import { QuestManager } from './quest.js';
 import { PvPManager } from './pvp.js';
 import { LeaderboardManager } from './leaderboard.js';
 import { GuardianManager } from './guardian.js';
+import { KingdomManager } from './kingdom.js';
+import { BuildingManager } from './kingdom-building.js';
+import { WarManager } from './kingdom-war.js';
+import { TreasuryManager } from './kingdom-treasury.js';
+import { DiplomacyManager } from './kingdom-diplomacy.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
@@ -32,6 +37,11 @@ export const questMgr = new QuestManager();
 export const pvpMgr = new PvPManager();
 export const leaderboardMgr = new LeaderboardManager();
 export const guardianMgr = new GuardianManager();
+export const kingdomMgr = new KingdomManager();
+export const buildingMgr = new BuildingManager(kingdomMgr);
+export const warMgr = new WarManager();
+export const treasuryMgr = new TreasuryManager();
+export const diplomacyMgr = new DiplomacyManager();
 
 // ============================================================
 //  初始化 — 在 index.ts 呼叫
@@ -73,6 +83,14 @@ export function initGameSystems(): void {
       return true;
     },
   });
+
+  // BuildingManager：從資料庫載入王國房間
+  buildingMgr.loadFromDb();
+
+  // WarManager / TreasuryManager / DiplomacyManager
+  warMgr.init();
+  treasuryMgr.init();
+  diplomacyMgr.init();
 
   console.log('[Game] 所有遊戲子系統初始化完成');
 }

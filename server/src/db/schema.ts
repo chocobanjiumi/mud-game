@@ -134,6 +134,154 @@ export function initDb(): Database.Database {
       timestamp INTEGER NOT NULL
     );
 
+    -- 王國
+    CREATE TABLE IF NOT EXISTS kingdoms (
+      id TEXT PRIMARY KEY,
+      name TEXT UNIQUE NOT NULL,
+      description TEXT DEFAULT '',
+      king_id TEXT NOT NULL REFERENCES characters(id),
+      created_at INTEGER DEFAULT (unixepoch()),
+      treasury_gold INTEGER DEFAULT 0,
+      tax_rate INTEGER DEFAULT 5,
+      motto TEXT DEFAULT ''
+    );
+
+    -- 王國成員
+    CREATE TABLE IF NOT EXISTS kingdom_members (
+      kingdom_id TEXT NOT NULL REFERENCES kingdoms(id) ON DELETE CASCADE,
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      rank TEXT DEFAULT 'citizen',
+      joined_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (kingdom_id, character_id)
+    );
+
+    -- 王國房間
+    CREATE TABLE IF NOT EXISTS kingdom_rooms (
+      kingdom_id TEXT NOT NULL REFERENCES kingdoms(id) ON DELETE CASCADE,
+      room_id TEXT NOT NULL,
+      room_type TEXT DEFAULT 'empty',
+      built_by TEXT NOT NULL REFERENCES characters(id),
+      built_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (kingdom_id, room_id)
+    );
+
+    -- 國庫交易紀錄
+    CREATE TABLE IF NOT EXISTS kingdom_treasury (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      kingdom_id TEXT NOT NULL REFERENCES kingdoms(id) ON DELETE CASCADE,
+      amount INTEGER NOT NULL,
+      type TEXT NOT NULL,
+      description TEXT DEFAULT '',
+      character_id TEXT NOT NULL REFERENCES characters(id),
+      created_at INTEGER DEFAULT (unixepoch())
+    );
+
+    -- 王國懸賞
+    CREATE TABLE IF NOT EXISTS kingdom_bounties (
+      id TEXT PRIMARY KEY,
+      kingdom_id TEXT NOT NULL REFERENCES kingdoms(id) ON DELETE CASCADE,
+      target_id TEXT NOT NULL REFERENCES characters(id),
+      reward INTEGER NOT NULL,
+      reason TEXT DEFAULT '',
+      placed_by TEXT NOT NULL REFERENCES characters(id),
+      status TEXT DEFAULT 'active',
+      claimed_by TEXT,
+      claimed_at INTEGER,
+      created_at INTEGER DEFAULT (unixepoch())
+    );
+
+    -- 王國戰爭
+    CREATE TABLE IF NOT EXISTS kingdom_wars (
+      id TEXT PRIMARY KEY,
+      attacker_id TEXT NOT NULL REFERENCES kingdoms(id),
+      defender_id TEXT NOT NULL REFERENCES kingdoms(id),
+      status TEXT DEFAULT 'active',
+      started_at INTEGER DEFAULT (unixepoch()),
+      ended_at INTEGER,
+      gate_hp INTEGER DEFAULT 1000,
+      wall_hp INTEGER DEFAULT 2000,
+      palace_hp INTEGER DEFAULT 3000,
+      winner_id TEXT,
+      peace_proposed_by TEXT
+    );
+
+    -- 王國外交
+    CREATE TABLE IF NOT EXISTS kingdom_diplomacy (
+      kingdom_a_id TEXT NOT NULL REFERENCES kingdoms(id),
+      kingdom_b_id TEXT NOT NULL REFERENCES kingdoms(id),
+      relation_type TEXT DEFAULT 'neutral',
+      established_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (kingdom_a_id, kingdom_b_id)
+    );
+
+    -- 王國士兵
+    CREATE TABLE IF NOT EXISTS kingdom_soldiers (
+      kingdom_id TEXT NOT NULL,
+      total_count INTEGER DEFAULT 0,
+      PRIMARY KEY (kingdom_id)
+    );
+
+    -- 王國士兵部署
+    CREATE TABLE IF NOT EXISTS kingdom_soldier_deployments (
+      kingdom_id TEXT NOT NULL,
+      room_id TEXT NOT NULL,
+      count INTEGER DEFAULT 0,
+      PRIMARY KEY (kingdom_id, room_id)
+    );
+
+    -- 攻城參與者
+    CREATE TABLE IF NOT EXISTS kingdom_siege_participants (
+      war_id TEXT NOT NULL,
+      character_id TEXT NOT NULL,
+      side TEXT NOT NULL,
+      joined_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (war_id, character_id)
+    );
+
+    -- 國庫交易紀錄（詳細日誌）
+    CREATE TABLE IF NOT EXISTS kingdom_treasury_log (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      kingdom_id TEXT NOT NULL,
+      amount INTEGER NOT NULL,
+      type TEXT NOT NULL,
+      description TEXT DEFAULT '',
+      character_id TEXT,
+      created_at INTEGER DEFAULT (unixepoch())
+    );
+
+    -- 聯盟提案
+    CREATE TABLE IF NOT EXISTS kingdom_alliance_proposals (
+      id TEXT PRIMARY KEY,
+      from_kingdom_id TEXT NOT NULL,
+      to_kingdom_id TEXT NOT NULL,
+      proposed_by TEXT NOT NULL,
+      proposed_at INTEGER DEFAULT (unixepoch()),
+      status TEXT DEFAULT 'pending',
+      responded_at INTEGER
+    );
+
+    -- 貿易提案
+    CREATE TABLE IF NOT EXISTS kingdom_trade_proposals (
+      id TEXT PRIMARY KEY,
+      from_kingdom_id TEXT NOT NULL,
+      to_kingdom_id TEXT NOT NULL,
+      terms TEXT NOT NULL,
+      proposed_by TEXT NOT NULL,
+      proposed_at INTEGER DEFAULT (unixepoch()),
+      status TEXT DEFAULT 'pending',
+      responded_at INTEGER
+    );
+
+    -- 外交訊息
+    CREATE TABLE IF NOT EXISTS kingdom_diplomatic_messages (
+      id TEXT PRIMARY KEY,
+      from_kingdom_id TEXT NOT NULL,
+      to_kingdom_id TEXT NOT NULL,
+      message TEXT NOT NULL,
+      sent_by TEXT NOT NULL,
+      sent_at INTEGER DEFAULT (unixepoch())
+    );
+
     -- 索引
     CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id);
     CREATE INDEX IF NOT EXISTS idx_characters_user_id ON characters(user_id);
@@ -141,6 +289,21 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_learned_skills_character_id ON learned_skills(character_id);
     CREATE INDEX IF NOT EXISTS idx_party_members_character_id ON party_members(character_id);
     CREATE INDEX IF NOT EXISTS idx_leaderboard_type_score ON leaderboard(type, score DESC);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_members_character_id ON kingdom_members(character_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_rooms_kingdom_id ON kingdom_rooms(kingdom_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_treasury_kingdom_id ON kingdom_treasury(kingdom_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_bounties_kingdom_id ON kingdom_bounties(kingdom_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_wars_attacker_id ON kingdom_wars(attacker_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_wars_defender_id ON kingdom_wars(defender_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_diplomacy_a ON kingdom_diplomacy(kingdom_a_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_diplomacy_b ON kingdom_diplomacy(kingdom_b_id);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_wars_status ON kingdom_wars(status);
+    CREATE INDEX IF NOT EXISTS idx_kingdom_bounties_target ON kingdom_bounties(target_id);
+    CREATE INDEX IF NOT EXISTS idx_treasury_log_kingdom ON kingdom_treasury_log(kingdom_id);
+    CREATE INDEX IF NOT EXISTS idx_treasury_log_created ON kingdom_treasury_log(kingdom_id, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_alliance_proposals_to ON kingdom_alliance_proposals(to_kingdom_id, status);
+    CREATE INDEX IF NOT EXISTS idx_trade_proposals_to ON kingdom_trade_proposals(to_kingdom_id, status);
+    CREATE INDEX IF NOT EXISTS idx_diplo_messages_to ON kingdom_diplomatic_messages(to_kingdom_id);
   `);
 
   // ── Migration: 新增 resource 欄位 ──

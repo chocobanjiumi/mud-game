@@ -282,6 +282,250 @@ export function addUserEntitlement(userId: string, itemId: string): void {
   ).run(userId, itemId);
 }
 
+// ─── Kingdom CRUD ───
+
+/** 建立王國 */
+export function createKingdom(id: string, name: string, description: string, kingId: string): void {
+  getDb().prepare(`
+    INSERT INTO kingdoms (id, name, description, king_id)
+    VALUES (?, ?, ?, ?)
+  `).run(id, name, description, kingId);
+}
+
+/** 根據 ID 取得王國 */
+export function getKingdomById(id: string): {
+  id: string; name: string; description: string; king_id: string;
+  created_at: number; treasury_gold: number; tax_rate: number; motto: string;
+} | undefined {
+  return getDb().prepare('SELECT * FROM kingdoms WHERE id = ?').get(id) as any;
+}
+
+/** 根據名稱取得王國 */
+export function getKingdomByName(name: string): {
+  id: string; name: string; description: string; king_id: string;
+  created_at: number; treasury_gold: number; tax_rate: number; motto: string;
+} | undefined {
+  return getDb().prepare('SELECT * FROM kingdoms WHERE name = ?').get(name) as any;
+}
+
+/** 取得所有王國列表 */
+export function getAllKingdoms(): {
+  id: string; name: string; description: string; king_id: string;
+  created_at: number; treasury_gold: number; tax_rate: number; motto: string;
+}[] {
+  return getDb().prepare('SELECT * FROM kingdoms ORDER BY created_at DESC').all() as any[];
+}
+
+/** 更新王國資訊 */
+export function updateKingdom(id: string, fields: {
+  name?: string; description?: string; king_id?: string;
+  treasury_gold?: number; tax_rate?: number; motto?: string;
+}): void {
+  const sets: string[] = [];
+  const values: unknown[] = [];
+  if (fields.name !== undefined) { sets.push('name = ?'); values.push(fields.name); }
+  if (fields.description !== undefined) { sets.push('description = ?'); values.push(fields.description); }
+  if (fields.king_id !== undefined) { sets.push('king_id = ?'); values.push(fields.king_id); }
+  if (fields.treasury_gold !== undefined) { sets.push('treasury_gold = ?'); values.push(fields.treasury_gold); }
+  if (fields.tax_rate !== undefined) { sets.push('tax_rate = ?'); values.push(fields.tax_rate); }
+  if (fields.motto !== undefined) { sets.push('motto = ?'); values.push(fields.motto); }
+  if (sets.length === 0) return;
+  values.push(id);
+  getDb().prepare(`UPDATE kingdoms SET ${sets.join(', ')} WHERE id = ?`).run(...values);
+}
+
+/** 刪除王國 */
+export function deleteKingdom(id: string): void {
+  getDb().prepare('DELETE FROM kingdoms WHERE id = ?').run(id);
+}
+
+/** 新增王國成員 */
+export function addKingdomMember(kingdomId: string, characterId: string, rank: string = 'citizen'): void {
+  getDb().prepare(`
+    INSERT INTO kingdom_members (kingdom_id, character_id, rank)
+    VALUES (?, ?, ?)
+  `).run(kingdomId, characterId, rank);
+}
+
+/** 移除王國成員 */
+export function removeKingdomMember(kingdomId: string, characterId: string): void {
+  getDb().prepare('DELETE FROM kingdom_members WHERE kingdom_id = ? AND character_id = ?').run(kingdomId, characterId);
+}
+
+/** 更新成員官職 */
+export function updateKingdomMemberRank(kingdomId: string, characterId: string, rank: string): void {
+  getDb().prepare('UPDATE kingdom_members SET rank = ? WHERE kingdom_id = ? AND character_id = ?').run(rank, kingdomId, characterId);
+}
+
+/** 取得王國所有成員 */
+export function getKingdomMembers(kingdomId: string): {
+  kingdom_id: string; character_id: string; rank: string; joined_at: number;
+}[] {
+  return getDb().prepare('SELECT * FROM kingdom_members WHERE kingdom_id = ?').all(kingdomId) as any[];
+}
+
+/** 取得角色所屬王國 */
+export function getMemberKingdom(characterId: string): {
+  kingdom_id: string; character_id: string; rank: string; joined_at: number;
+} | undefined {
+  return getDb().prepare('SELECT * FROM kingdom_members WHERE character_id = ?').get(characterId) as any;
+}
+
+/** 取得王國成員的官職 */
+export function getKingdomMemberRank(kingdomId: string, characterId: string): string | undefined {
+  const row = getDb().prepare(
+    'SELECT rank FROM kingdom_members WHERE kingdom_id = ? AND character_id = ?'
+  ).get(kingdomId, characterId) as { rank: string } | undefined;
+  return row?.rank;
+}
+
+// ─── Kingdom Rooms CRUD ───
+
+/** 新增王國房間 */
+export function addKingdomRoom(kingdomId: string, roomId: string, roomType: string, builtBy: string): void {
+  getDb().prepare(`
+    INSERT INTO kingdom_rooms (kingdom_id, room_id, room_type, built_by)
+    VALUES (?, ?, ?, ?)
+  `).run(kingdomId, roomId, roomType, builtBy);
+}
+
+/** 移除王國房間 */
+export function removeKingdomRoom(kingdomId: string, roomId: string): void {
+  getDb().prepare('DELETE FROM kingdom_rooms WHERE kingdom_id = ? AND room_id = ?').run(kingdomId, roomId);
+}
+
+/** 更新王國房間類型 */
+export function updateKingdomRoomType(kingdomId: string, roomId: string, roomType: string): void {
+  getDb().prepare('UPDATE kingdom_rooms SET room_type = ? WHERE kingdom_id = ? AND room_id = ?').run(roomType, kingdomId, roomId);
+}
+
+/** 取得王國所有房間 */
+export function getKingdomRooms(kingdomId: string): {
+  kingdom_id: string; room_id: string; room_type: string; built_by: string; built_at: number;
+}[] {
+  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE kingdom_id = ?').all(kingdomId) as any[];
+}
+
+/** 取得房間所屬的王國 */
+export function getKingdomByRoomId(roomId: string): {
+  kingdom_id: string; room_id: string; room_type: string; built_by: string; built_at: number;
+} | undefined {
+  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE room_id = ?').get(roomId) as any;
+}
+
+// ─── Kingdom Treasury CRUD ───
+
+/** 新增國庫交易紀錄 */
+export function addTreasuryRecord(kingdomId: string, amount: number, type: string, description: string, characterId: string): void {
+  getDb().prepare(`
+    INSERT INTO kingdom_treasury (kingdom_id, amount, type, description, character_id)
+    VALUES (?, ?, ?, ?, ?)
+  `).run(kingdomId, amount, type, description, characterId);
+}
+
+/** 取得國庫交易紀錄 */
+export function getTreasuryRecords(kingdomId: string, limit: number = 20): {
+  id: number; kingdom_id: string; amount: number; type: string;
+  description: string; character_id: string; created_at: number;
+}[] {
+  return getDb().prepare(
+    'SELECT * FROM kingdom_treasury WHERE kingdom_id = ? ORDER BY created_at DESC LIMIT ?'
+  ).all(kingdomId, limit) as any[];
+}
+
+// ─── Kingdom Bounties CRUD ───
+
+/** 新增懸賞 */
+export function addKingdomBounty(id: string, kingdomId: string, targetId: string, reward: number, reason: string, placedBy: string): void {
+  getDb().prepare(`
+    INSERT INTO kingdom_bounties (id, kingdom_id, target_id, reward, reason, placed_by)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `).run(id, kingdomId, targetId, reward, reason, placedBy);
+}
+
+/** 取得王國懸賞列表 */
+export function getKingdomBounties(kingdomId: string, status: string = 'active'): {
+  id: string; kingdom_id: string; target_id: string; reward: number;
+  reason: string; placed_by: string; status: string; claimed_by: string | null;
+  claimed_at: number | null; created_at: number;
+}[] {
+  return getDb().prepare(
+    'SELECT * FROM kingdom_bounties WHERE kingdom_id = ? AND status = ? ORDER BY created_at DESC'
+  ).all(kingdomId, status) as any[];
+}
+
+/** 更新懸賞狀態 */
+export function updateBountyStatus(bountyId: string, status: string): void {
+  getDb().prepare('UPDATE kingdom_bounties SET status = ? WHERE id = ?').run(status, bountyId);
+}
+
+// ─── Kingdom Wars CRUD ───
+
+/** 新增戰爭 */
+export function createKingdomWar(id: string, attackerId: string, defenderId: string): void {
+  getDb().prepare(`
+    INSERT INTO kingdom_wars (id, attacker_id, defender_id)
+    VALUES (?, ?, ?)
+  `).run(id, attackerId, defenderId);
+}
+
+/** 取得進行中的戰爭 */
+export function getActiveWars(kingdomId: string): {
+  id: string; attacker_id: string; defender_id: string; status: string;
+  started_at: number; ended_at: number | null;
+  gate_hp: number; wall_hp: number; palace_hp: number;
+  winner_id: string | null;
+}[] {
+  return getDb().prepare(
+    "SELECT * FROM kingdom_wars WHERE (attacker_id = ? OR defender_id = ?) AND status = 'active'"
+  ).all(kingdomId, kingdomId) as any[];
+}
+
+/** 更新戰爭狀態 */
+export function updateWarStatus(warId: string, status: string): void {
+  const endedAt = status !== 'active' ? Math.floor(Date.now() / 1000) : null;
+  getDb().prepare('UPDATE kingdom_wars SET status = ?, ended_at = ? WHERE id = ?').run(status, endedAt, warId);
+}
+
+/** 更新戰爭建築 HP */
+export function updateWarBuildingHp(warId: string, gateHp: number, wallHp: number, palaceHp: number): void {
+  getDb().prepare('UPDATE kingdom_wars SET gate_hp = ?, wall_hp = ?, palace_hp = ? WHERE id = ?').run(gateHp, wallHp, palaceHp, warId);
+}
+
+// ─── Kingdom Diplomacy CRUD ───
+
+/** 建立外交關係 */
+export function setDiplomacy(kingdomAId: string, kingdomBId: string, relationType: string): void {
+  // 先刪除既有關係
+  getDb().prepare(
+    'DELETE FROM kingdom_diplomacy WHERE (kingdom_a_id = ? AND kingdom_b_id = ?) OR (kingdom_a_id = ? AND kingdom_b_id = ?)'
+  ).run(kingdomAId, kingdomBId, kingdomBId, kingdomAId);
+  getDb().prepare(`
+    INSERT INTO kingdom_diplomacy (kingdom_a_id, kingdom_b_id, relation_type)
+    VALUES (?, ?, ?)
+  `).run(kingdomAId, kingdomBId, relationType);
+}
+
+/** 取得兩國外交關係 */
+export function getDiplomacy(kingdomAId: string, kingdomBId: string): {
+  kingdom_a_id: string; kingdom_b_id: string;
+  relation_type: string; established_at: number;
+} | undefined {
+  return getDb().prepare(
+    'SELECT * FROM kingdom_diplomacy WHERE (kingdom_a_id = ? AND kingdom_b_id = ?) OR (kingdom_a_id = ? AND kingdom_b_id = ?)'
+  ).get(kingdomAId, kingdomBId, kingdomBId, kingdomAId) as any;
+}
+
+/** 取得王國的所有外交關係 */
+export function getKingdomDiplomacies(kingdomId: string): {
+  kingdom_a_id: string; kingdom_b_id: string;
+  relation_type: string; established_at: number;
+}[] {
+  return getDb().prepare(
+    'SELECT * FROM kingdom_diplomacy WHERE kingdom_a_id = ? OR kingdom_b_id = ?'
+  ).all(kingdomId, kingdomId) as any[];
+}
+
 // ─── Helpers ───
 
 /** 簡易推斷裝備欄位（根據物品 ID 中的關鍵字） */
