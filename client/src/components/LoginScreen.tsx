@@ -23,7 +23,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     Arinova.handleCallback({
       code,
       clientId: import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game',
-      clientSecret: import.meta.env.VITE_ARINOVA_CLIENT_SECRET || '',
+      clientSecret: import.meta.env.VITE_ARINOVA_CLIENT_SECRET || 'mud-game-secret-staging',
       redirectUri: window.location.origin + window.location.pathname,
     })
       .then((result) => {
