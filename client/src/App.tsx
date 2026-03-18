@@ -12,7 +12,7 @@ export const arinova = new Arinova({
   appId: ARINOVA_APP_ID,
   endpoint: ARINOVA_ENDPOINT,
   scope: 'profile agents economy',
-  redirectUri: window.location.origin + '/callback.html',
+  redirectUri: window.location.origin + '/mud/',
 });
 
 export default function App() {
