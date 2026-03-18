@@ -36,23 +36,13 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
   const handleArinovaLogin = () => {
     if (isLoggingIn) return;
-    // Use login() which tries popup first, falls back to redirect
-    setIsLoggingIn(true);
-    arinova.login()
-      .then((result) => {
-        if (result && result.user) {
-          useGameStore.getState().setArinovaUser(result.user);
-          onLogin(result.user.id, result.access_token);
-        }
-      })
-      .catch((err) => {
-        // If popup was blocked and redirect happened, the page will reload
-        // handleCallback in useEffect will handle it
-        if (err.message?.includes('Popup blocked')) return;
-        console.error('[Arinova] Login 失敗:', err);
-        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
-      })
-      .finally(() => setIsLoggingIn(false));
+    // Pure redirect mode — no popup, just redirect to authorize
+    // login() will try popup first; if blocked, falls back to redirect
+    // Either way, handleCallback() in useEffect handles the return
+    arinova.login().catch(() => {
+      // Popup blocked or redirect happened — page will reload with ?code=
+      // useEffect handleCallback will process it
+    });
   };
 
   const isConnected = connection === 'connected';
