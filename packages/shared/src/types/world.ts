@@ -54,6 +54,7 @@ export interface NpcDef {
   name: string;
   alias: string; // 英文短名 e.g. 'elder', 'smith'
   title: string;
+  description: string; // 外觀描述（用於 look 指令）
   roomId: string;
   type: NpcType;
   dialogue: DialogueNode[];
