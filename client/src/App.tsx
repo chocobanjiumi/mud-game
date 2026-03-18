@@ -21,12 +21,27 @@ export default function App() {
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
-      console.log('[MUD] handleLogin called:', userId, 'hasToken:', !!accessToken, 'wsConnection:', useGameStore.getState().connection);
-      // Store the access token for agent API calls
       if (accessToken) {
         useGameStore.getState().setAccessToken(accessToken);
       }
-      login(userId, undefined, accessToken);
+      // Wait for WS to be connected before sending login
+      const tryLogin = () => {
+        const conn = useGameStore.getState().connection;
+        if (conn === 'connected') {
+          login(userId, undefined, accessToken);
+        } else {
+          // Retry every 500ms until connected (max 30 seconds)
+          const unsub = useGameStore.subscribe((state) => {
+            if (state.connection === 'connected') {
+              unsub();
+              login(userId, undefined, accessToken);
+            }
+          });
+          // Fallback timeout
+          setTimeout(() => unsub(), 30000);
+        }
+      };
+      tryLogin();
     },
     [login],
   );
