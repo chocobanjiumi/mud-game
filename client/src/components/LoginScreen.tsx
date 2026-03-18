@@ -10,33 +10,49 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
-  // Handle OAuth PKCE callback if redirected back with ?code=
+  // Auto-connect on mount — iframe postMessage may arrive before user clicks
+  // Also handle OAuth PKCE callback if redirected back with ?code=
   useEffect(() => {
+    // Check for PKCE callback first
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
-    if (!code) return;
+    if (code) {
+      setIsLoggingIn(true);
+      arinova.handleCallback()
+        .then((result) => {
+          window.history.replaceState({}, '', window.location.pathname);
+          if (result && result.user) {
+            useGameStore.getState().setArinovaUser(result.user);
+            onLogin(result.user.id, result.access_token);
+          }
+        })
+        .catch((err) => {
+          console.error('[Arinova] OAuth callback 失敗:', err);
+          window.history.replaceState({}, '', window.location.pathname);
+        })
+        .finally(() => setIsLoggingIn(false));
+      return;
+    }
 
+    // Try connect() immediately — catches iframe postMessage from parent
     setIsLoggingIn(true);
-    arinova.handleCallback()
+    arinova.connect({ timeout: 15000 })
       .then((result) => {
-        window.history.replaceState({}, '', window.location.pathname);
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
-          onLogin(result.user.id, result.access_token);
+          onLogin(result.user.id, result.accessToken);
         }
       })
-      .catch((err) => {
-        console.error('[Arinova] OAuth callback 失敗:', err);
-        window.history.replaceState({}, '', window.location.pathname);
-        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
-      })
-      .finally(() => setIsLoggingIn(false));
+      .catch(() => {
+        // Timeout or not in iframe — user will click Login manually
+        setIsLoggingIn(false);
+      });
   }, [onLogin]);
 
   const handleArinovaLogin = () => {
     if (isLoggingIn) return;
     setIsLoggingIn(true);
-    // Use connect() — auto-detects iframe (postMessage) vs standalone (PKCE popup)
+    // Manual login — connect() for iframe, PKCE popup for standalone
     arinova.connect({ timeout: 10000 })
       .then((result) => {
         if (result && result.user) {
