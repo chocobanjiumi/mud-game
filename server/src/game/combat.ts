@@ -433,7 +433,14 @@ export class CombatEngine {
     }
 
     // 資源消耗（使用技能定義的 resourceCost）
-    const resourceCost = skillDef?.resourceCost ?? 5;
+    let resourceCost = skillDef?.resourceCost ?? 5;
+    // 套裝加成：MP 消耗減免
+    if (actor.resourceType === 'mp') {
+      const pct = this.getPlayerSetBonusPct(session, actor.id);
+      if (pct.mpCostReduction) {
+        resourceCost = Math.max(1, Math.floor(resourceCost * (1 - pct.mpCostReduction / 100)));
+      }
+    }
     if (actor.resource < resourceCost) {
       const resourceLabel = this.getResourceLabel(actor.resourceType);
       log.push(`${actor.name}的${resourceLabel}不足，改為普通攻擊！`);
@@ -464,17 +471,34 @@ export class CombatEngine {
 
     results.push(dmgResult);
 
-    const skillName = skillDef?.name ?? action.skillId ?? '技能';
-    if (dmgResult.isMiss) {
-      log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
-    } else if (dmgResult.isDodged) {
-      log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+    // 治癒技能特殊處理
+    const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
+    if (isHealSkill) {
+      const healBase = attackerStats.matk * multiplier;
+      let healAmount = Math.max(1, Math.floor(healBase));
+      // 套裝加成：治癒力量
+      const pct = this.getPlayerSetBonusPct(session, actor.id);
+      if (pct.healPower) {
+        healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
+      }
+      const before = target.hp;
+      target.hp = Math.min(target.maxHp, target.hp + healAmount);
+      const actual = target.hp - before;
+      const skillName = skillDef?.name ?? '治癒';
+      log.push(`${actor.name}使用了${skillName}，為${target.name}回復了 ${actual} HP！`);
     } else {
-      const critText = dmgResult.isCrit ? '暴擊！' : '';
-      log.push(
-        `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
-      );
-      this.applyDamageToTarget(session, target, dmgResult.damage, log);
+      const skillName = skillDef?.name ?? action.skillId ?? '技能';
+      if (dmgResult.isMiss) {
+        log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
+      } else if (dmgResult.isDodged) {
+        log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+      } else {
+        const critText = dmgResult.isCrit ? '暴擊！' : '';
+        log.push(
+          `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
+        );
+        this.applyDamageToTarget(session, target, dmgResult.damage, log);
+      }
     }
 
     // 祭司系：治療/淨化技能觸發信仰增益
@@ -924,6 +948,19 @@ export class CombatEngine {
           log.push(`${c.name}恢復了 ${actual} 點能量。`);
         }
       }
+
+      // 祭司系：套裝加成 faithRegen（每回合額外回復信仰）
+      if (c.resourceType === 'faith' && c.isPlayer) {
+        const pct = this.getPlayerSetBonusPct(session, c.id);
+        if (pct.faithRegen && pct.faithRegen > 0) {
+          const before = c.resource;
+          c.resource = Math.min(c.maxResource, c.resource + pct.faithRegen);
+          const actual = c.resource - before;
+          if (actual > 0) {
+            log.push(`${c.name}因套裝效果恢復了 ${actual} 點信仰。`);
+          }
+        }
+      }
     }
   }
 
@@ -1018,6 +1055,13 @@ export class CombatEngine {
     damage = Math.max(0, damage - totalShield);
 
     return target.hp - damage <= 0;
+  }
+
+  /** 取得玩家的套裝百分比加成（怪物返回空物件） */
+  private getPlayerSetBonusPct(session: CombatSession, id: string): Record<string, number> {
+    const char = session.playerCharacters.get(id);
+    if (!char) return {};
+    return getEquipmentStats(char).setBonusPct;
   }
 
   private getCombatantElement(session: CombatSession, id: string): ElementType {

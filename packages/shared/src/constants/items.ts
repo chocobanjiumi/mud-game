@@ -1226,6 +1226,18 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 150,
     stackable: true, maxStack: 99, levelReq: 1,
   },
+  dark_crystal: {
+    id: 'dark_crystal', name: '暗影結晶', type: 'material',
+    description: '暗影哨兵體內凝結的黑色結晶，表面不斷流轉著幽暗的光紋。是鍛造暗屬性裝備的稀有素材。',
+    buyPrice: 0, sellPrice: 80,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  golem_core: {
+    id: 'golem_core', name: '守衛核心', type: 'material',
+    description: '水晶守衛的動力核心，蘊含著古老的魔力迴路。可用於製作高階防具或強化石。',
+    buyPrice: 0, sellPrice: 120,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
 
   // ============ 消耗品 ============
   small_hp_potion: {
