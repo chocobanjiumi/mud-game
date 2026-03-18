@@ -57,16 +57,15 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't trigger when typing in inputs
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      // WASD movement
+      if (e.key === 'w' || e.key === 'W') { onCommand('go north'); return; }
+      if (e.key === 'a' || e.key === 'A') { onCommand('go west'); return; }
+      if (e.key === 's' || e.key === 'S') { onCommand('go south'); return; }
+      if (e.key === 'd' || e.key === 'D') { onCommand('go east'); return; }
+      // UI panels
       if (e.key === 'b' || e.key === 'B') {
         if (!shopOpen) {
           onOpenShop();
-        }
-      }
-      if (e.key === 'a' || e.key === 'A') {
-        if (selectedAgent) {
-          toggleAgentPanel();
-        } else if (accessToken) {
-          setShowAgentSelect(true);
         }
       }
       if (e.key === 'q' || e.key === 'Q') {
@@ -80,6 +79,13 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       }
       if (e.key === 'm' || e.key === 'M') {
         toggleWorldMap();
+      }
+      if (e.key === 'j' || e.key === 'J') {
+        if (selectedAgent) {
+          toggleAgentPanel();
+        } else if (accessToken) {
+          setShowAgentSelect(true);
+        }
       }
     };
     const handleOpenShopEvent = () => {
@@ -132,9 +138,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={toggleWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
             {selectedAgent ? (
-              <QuickButton label="AI夥伴" shortcut="A" active={agentPanelOpen} onClick={toggleAgentPanel} />
+              <QuickButton label="AI夥伴" shortcut="J" active={agentPanelOpen} onClick={toggleAgentPanel} />
             ) : accessToken ? (
-              <QuickButton label="AI夥伴" shortcut="A" onClick={() => setShowAgentSelect(true)} />
+              <QuickButton label="AI夥伴" shortcut="J" onClick={() => setShowAgentSelect(true)} />
             ) : null}
             <QuickButton label="查看" onClick={() => onCommand('look')} />
             <QuickButton label="狀態" onClick={() => onCommand('status')} />
