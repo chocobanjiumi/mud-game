@@ -1332,7 +1332,7 @@ function showDialogueNode(session: WsSession, npc: { id: string; name: string; d
         case 'quest_start': {
           const questId = node.action.data?.questId as string;
           if (questId) {
-            const result = questMgr.acceptQuest(char.id, questId);
+            const result = questMgr.startQuest(char.id, questId, char);
             sendSystem(session.sessionId, result.message);
           }
           break;
