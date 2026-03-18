@@ -98,8 +98,10 @@ export function handleCommand(session: WsSession, input: string): void {
     st: 'skilltree',
   };
 
-  if (aliasMap[trimmed.toLowerCase()]) {
-    return handleCommand(session, aliasMap[trimmed.toLowerCase()]);
+  if (aliasMap[cmd]) {
+    const expanded = aliasMap[cmd];
+    const rest = argStr ? ` ${argStr}` : '';
+    return handleCommand(session, `${expanded}${rest}`);
   }
 
   // 數字輸入 → 對話選項回覆
