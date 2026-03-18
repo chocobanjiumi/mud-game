@@ -127,7 +127,9 @@ export function useWebSocket() {
           }
           send({ type: 'login', payload: { userId: chars[0].name, characterId: chars[0].id } });
         } else {
-          s.addTerminalLine('[系統] 找不到此角色，請建立新角色。', 'error');
+          // No characters — transition to game screen for character creation
+          s.setScreen('game');
+          s.addTerminalLine('[系統] 尚未建立角色，請使用 create <角色名稱> 來建立新角色。', 'system');
         }
         break;
       }
