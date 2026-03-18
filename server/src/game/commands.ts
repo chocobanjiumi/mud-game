@@ -22,11 +22,13 @@ import {
 import type { Character, ClassId, StatusEffectType } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
-  dungeonMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
+  dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
   kingdomMgr, buildingMgr, warMgr, treasuryMgr, diplomacyMgr, craftingMgr,
   auctionMgr, fishingMgr,
   achievementMgr, petMgr, worldEventMgr,
   weatherMgr, mailMgr, friendMgr,
+  tutorialMgr, autoBattleMgr,
+  classQuest2Mgr, skillTreeMgr, marketMgr, guildMgr, dailyRewardMgr,
   isInCombat, getPlayerCombatId, findCharacterByName,
 } from './state.js';
 import { ACHIEVEMENT_DEFS } from './achievement.js';
@@ -92,6 +94,8 @@ export function handleCommand(session: WsSession, input: string): void {
     help: 'help', '?': 'help',
     lb: 'leaderboard',
     cq: 'classquest',
+    cq2: 'classquest2',
+    st: 'skilltree',
   };
 
   if (aliasMap[trimmed.toLowerCase()]) {
@@ -168,6 +172,20 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'emote': cmdEmote(session, argStr); break;
     // 好友系統
     case 'friend': case 'friends': cmdFriend(session, args); break;
+    // 教學系統
+    case 'tutorial': cmdTutorial(session, args); break;
+    // 自動戰鬥系統
+    case 'auto': cmdAuto(session, args); break;
+    // 二轉任務系統
+    case 'classquest2': case 'cq2': cmdClassQuest2(session, args); break;
+    // 技能樹系統
+    case 'skilltree': case 'st': cmdSkillTree(session, args); break;
+    // 交易所系統
+    case 'market': cmdMarket(session, args); break;
+    // 公會系統
+    case 'guild': case 'g': cmdGuild(session, args); break;
+    // 每日簽到
+    case 'signin': case 'checkin': cmdSignin(session); break;
     case 'help': cmdHelp(session); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
@@ -280,6 +298,12 @@ function cmdGo(session: WsSession, direction: string): void {
 
   // 轉職任務：房間進入鉤子
   classQuestMgr.onRoomEnter(char.id, char.roomId);
+
+  // 二轉任務：房間進入鉤子（造訪所有區域/森林）
+  classQuest2Mgr.onRoomEnter(char.id, char.roomId, false, false);
+
+  // 教學系統：移動鉤子
+  tutorialMgr.advanceStep(char.id, 'move');
 }
 
 function cmdStatus(session: WsSession): void {
@@ -389,6 +413,14 @@ function cmdAttack(session: WsSession, target: string): void {
         questMgr.updateProgress(char.id, 'kill', 'boss');
       }
 
+      // 菁英怪擊殺：公會經驗 +30
+      if (monster.def.isElite || monster.def.isBoss) {
+        const guildId = guildMgr.getCharacterGuildId(char.id);
+        if (guildId) {
+          guildMgr.addGuildExp(guildId, 30);
+        }
+      }
+
       // 轉職任務：怪物擊殺鉤子 — 取得最後一次使用的技能類型
       const lastAction = lastPlayerActions.get(char.id);
       const usedSkillType: 'physical' | 'magical' | undefined =
@@ -401,6 +433,18 @@ function cmdAttack(session: WsSession, target: string): void {
         round: lastRound,
       });
 
+      // 二轉任務：怪物擊殺鉤子
+      classQuest2Mgr.onMonsterKill(char.id, monster.monsterId, {
+        isCrit: false,
+        isFirstRound: lastRound <= 1,
+        isElite: !!monster.def.isElite,
+        isBoss: !!monster.def.isBoss,
+        isSolo: players.length === 1,
+        usedMagicOnly: usedSkillType === 'magical',
+        isDark: monster.def.element === 'dark',
+        isUndead: monster.def.element === 'dark',
+      });
+
       // 轉職任務：物品掉落鉤子（水晶碎片等）
       if (loot?.items) {
         for (const item of loot.items) {
@@ -409,6 +453,12 @@ function cmdAttack(session: WsSession, target: string): void {
       }
 
       world.killMonster(char.roomId, monster.instanceId);
+
+      // 教學系統：擊殺鉤子
+      tutorialMgr.advanceStep(char.id, 'kill');
+
+      // 自動戰鬥：戰鬥結束後排程下一次攻擊
+      autoBattleMgr.processAutoAction(char.id);
     }
 
     // PvE 死亡懲罰
@@ -473,6 +523,9 @@ function cmdAttack(session: WsSession, target: string): void {
       const hpPct = playerChar.maxHp > 0 ? Math.floor((playerChar.hp / playerChar.maxHp) * 100) : 0;
       classQuestMgr.onCombatRound(playerId, roundInfo.round, hpPct, didAttack);
 
+      // 二轉任務：戰鬥回合鉤子（存活/不攻擊）
+      classQuest2Mgr.onCombatRound(playerId, hpPct, didAttack);
+
       // 轉職任務：戰鬥中治療鉤子
       if (action.type === 'skill' && action.skillId) {
         const sDef = SKILL_DEFS[action.skillId];
@@ -480,10 +533,15 @@ function cmdAttack(session: WsSession, target: string): void {
           if (action.targetId) {
             classQuestMgr.onHealPerformed(playerId, action.targetId);
           }
+          // 二轉任務：治療鉤子
+          classQuest2Mgr.onHealPerformed(playerId);
         }
         // 轉職任務：戰鬥中技能使用鉤子
         classQuestMgr.onSkillUse(playerId, action.skillId, playerChar.roomId, true);
       }
+
+      // 自動戰鬥：戰鬥回合中檢查自動藥水/逃跑
+      autoBattleMgr.checkCombatAutoActions(playerId, hpPct);
     }
   });
 }
@@ -519,6 +577,8 @@ function cmdSkill(session: WsSession, args: string[]): void {
       type: 'skill',
       skillId: matchedSkill.skillId,
     });
+    // 教學系統：技能使用鉤子
+    tutorialMgr.advanceStep(char.id, 'skill');
     return;
   }
 
@@ -532,6 +592,9 @@ function cmdSkill(session: WsSession, args: string[]): void {
 
   // 轉職任務：技能使用鉤子（非戰鬥中使用技能）
   classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
+
+  // 教學系統：技能使用鉤子
+  tutorialMgr.advanceStep(char.id, 'skill');
 
   // 轉職任務：治療鉤子（非戰鬥中治療其他玩家）
   if (skillDef && (skillDef.id === 'heal' || skillDef.id === 'mass_heal' || skillDef.special?.isHeal)) {
@@ -600,6 +663,9 @@ function cmdEquip(session: WsSession, itemName: string): void {
 
   setEquipped(char.id, match.itemId, true);
   sendSystem(session.sessionId, `你裝備了「${def.name}」。`);
+
+  // 教學系統：裝備鉤子
+  tutorialMgr.advanceStep(char.id, 'equip');
 }
 
 function cmdUnequip(session: WsSession, itemName: string): void {
@@ -1146,6 +1212,9 @@ function cmdTalk(session: WsSession, npcName: string): void {
 
   // 觸發任務進度（交談）
   questMgr.updateProgress(char.id, 'talk', npc.id);
+
+  // 教學系統：對話鉤子
+  tutorialMgr.advanceStep(char.id, 'talk');
 }
 
 function cmdAllocate(session: WsSession, args: string[]): void {
@@ -1370,6 +1439,10 @@ function cmdQuest(session: WsSession, args: string[]): void {
       if (!questId) { sendError(session.sessionId, '用法：quest accept <任務ID>'); return; }
       const result = questMgr.startQuest(char.id, questId, char);
       sendSystem(session.sessionId, result.message);
+      // 教學系統：任務接取鉤子
+      if (result.success) {
+        tutorialMgr.advanceStep(char.id, 'quest');
+      }
       break;
     }
     case 'complete': case 'turn-in': {
@@ -1536,11 +1609,36 @@ function cmdDungeon(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, leaveMsg);
       break;
     }
+    case 'queue': {
+      const queueSub = args[1]?.toLowerCase();
+      if (queueSub === 'cancel') {
+        const msg = dungeonMatchMgr.leaveQueue(char.id);
+        sendSystem(session.sessionId, msg);
+      } else if (queueSub === 'status') {
+        const msg = dungeonMatchMgr.getQueueStatus(char.id);
+        sendSystem(session.sessionId, msg);
+      } else if (queueSub) {
+        // dungeon queue <dungeonId>
+        const msg = dungeonMatchMgr.joinQueue(char.id, queueSub);
+        sendSystem(session.sessionId, msg);
+      } else {
+        sendSystem(session.sessionId,
+          '副本排隊指令：\n' +
+          '  dungeon queue <副本ID>  — 加入匹配排隊\n' +
+          '  dungeon queue cancel   — 取消排隊\n' +
+          '  dungeon queue status   — 查看排隊狀態',
+        );
+      }
+      break;
+    }
     default:
       sendSystem(session.sessionId,
         '副本指令：\n' +
         '  dungeon list           — 查看可用副本\n' +
-        '  dungeon enter <副本ID> — 進入副本\n' +
+        '  dungeon enter <副本ID> — 進入副本（手動組隊）\n' +
+        '  dungeon queue <副本ID> — 自動匹配排隊\n' +
+        '  dungeon queue cancel   — 取消排隊\n' +
+        '  dungeon queue status   — 查看排隊狀態\n' +
         '  dungeon status         — 查看副本進度\n' +
         '  dungeon leave          — 離開副本（放棄）',
       );
@@ -1575,6 +1673,9 @@ function cmdLeaderboard(session: WsSession, args: string[]): void {
 
   const text = leaderboardMgr.formatLeaderboard(category);
   sendSystem(session.sessionId, text);
+
+  // Also send structured data for the UI panel
+  leaderboardMgr.sendLeaderboard(char.id, category);
 }
 
 // ─── 轉職 ───
@@ -2563,6 +2664,10 @@ function cmdUpgrade(session: WsSession, argStr: string): void {
   const result = upgradeItem(char.id, slot);
   if (result.success) {
     sendSystem(session.sessionId, result.message);
+    // 二轉任務：武器強化鉤子
+    if (slot === 'weapon' && result.newLevel) {
+      classQuest2Mgr.onWeaponEnhanced(char.id, result.newLevel);
+    }
   } else {
     sendError(session.sessionId, result.message);
   }
@@ -2605,6 +2710,10 @@ function cmdCraft(session: WsSession, args: string[]): void {
       if (!recipeId) { sendError(session.sessionId, '用法：craft forge <配方ID>'); return; }
       const result = craftingMgr.craft(char.id, recipeId);
       sendSystem(session.sessionId, result.message);
+      if (result.crafted) {
+        const recipe = craftingMgr.getRecipeInfo(recipeId);
+        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'forge');
+      }
       break;
     }
     case 'alchemy': {
@@ -2612,6 +2721,11 @@ function cmdCraft(session: WsSession, args: string[]): void {
       if (!recipeId) { sendError(session.sessionId, '用法：craft alchemy <配方ID>'); return; }
       const result = craftingMgr.craft(char.id, recipeId);
       sendSystem(session.sessionId, result.message);
+      if (result.crafted) {
+        const recipe = craftingMgr.getRecipeInfo(recipeId);
+        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'alchemy');
+        classQuest2Mgr.onLifeSkillLevel(char.id, 'alchemy', craftingMgr.getCraftingLevel(char.id, 'alchemy').level);
+      }
       break;
     }
     case 'cook': {
@@ -2619,6 +2733,11 @@ function cmdCraft(session: WsSession, args: string[]): void {
       if (!recipeId) { sendError(session.sessionId, '用法：craft cook <配方ID>'); return; }
       const result = craftingMgr.craft(char.id, recipeId);
       sendSystem(session.sessionId, result.message);
+      if (result.crafted) {
+        const recipe = craftingMgr.getRecipeInfo(recipeId);
+        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'cooking');
+        classQuest2Mgr.onLifeSkillLevel(char.id, 'cooking', craftingMgr.getCraftingLevel(char.id, 'cooking').level);
+      }
       break;
     }
     case 'info': {
@@ -2756,8 +2875,13 @@ function cmdFish(session: WsSession, args: string[]): void {
 
   // Default: fish
   const result = fishingMgr.fish(char.id, char.roomId);
-  if (result.ok) sendSystem(session.sessionId, result.message);
-  else sendError(session.sessionId, result.message);
+  if (result.ok) {
+    sendSystem(session.sessionId, result.message);
+    // 二轉任務：釣魚等級鉤子
+    classQuest2Mgr.onLifeSkillLevel(char.id, 'fishing', fishingMgr.getFishingLevel(char.id).level);
+  } else {
+    sendError(session.sessionId, result.message);
+  }
 }
 
 // ─── 幫助 ───
@@ -2802,7 +2926,7 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  quest                任務系統（list/active/accept/complete/abandon/info）');
   sendSystem(session.sessionId, '  duel <玩家>          PvP 決鬥');
   sendSystem(session.sessionId, '  arena                競技場');
-  sendSystem(session.sessionId, '  dungeon              副本系統（list/enter/status/leave）');
+  sendSystem(session.sessionId, '  dungeon              副本系統（list/enter/queue/status/leave）');
   sendSystem(session.sessionId, '  leaderboard (lb)     排行榜');
   sendSystem(session.sessionId, '  classchange (job)    轉職');
   sendSystem(session.sessionId, '');
@@ -2902,6 +3026,18 @@ function cmdHelp(session: WsSession): void {
   sendSystem(session.sessionId, '  event info           查看當前/下次世界事件');
   sendSystem(session.sessionId, '  event join           加入當前世界事件');
   sendSystem(session.sessionId, '  event ranking        當前事件傷害排名');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 教學系統 ──');
+  sendSystem(session.sessionId, '  tutorial             查看當前教學步驟');
+  sendSystem(session.sessionId, '  tutorial skip        跳過教學');
+  sendSystem(session.sessionId, '');
+  sendSystem(session.sessionId, '── 自動戰鬥 ──');
+  sendSystem(session.sessionId, '  auto / auto on       啟用自動戰鬥');
+  sendSystem(session.sessionId, '  auto off             停用自動戰鬥');
+  sendSystem(session.sessionId, '  auto status          查看自動戰鬥設定');
+  sendSystem(session.sessionId, '  auto config flee <百分比>   逃跑 HP 閾值');
+  sendSystem(session.sessionId, '  auto config potion <on/off> 自動使用藥水');
+  sendSystem(session.sessionId, '  auto config loot <on/off>   自動拾取');
 }
 
 // ─── 成就/稱號指令 ───
@@ -3074,6 +3210,8 @@ function cmdTame(session: WsSession): void {
 
   if (result.ok) {
     sendSystem(session.sessionId, result.message);
+    // 二轉任務：馴服寵物鉤子
+    classQuest2Mgr.onPetTamed(char.id);
   } else {
     sendError(session.sessionId, result.message);
   }
@@ -3435,6 +3573,404 @@ function cmdFriend(session: WsSession, args: string[]): void {
       break;
     }
   }
+}
+
+// ─── 教學系統指令 ───
+
+function cmdTutorial(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  if (sub === 'skip') {
+    if (!tutorialMgr.isInTutorial(char.id)) {
+      sendSystem(session.sessionId, '你不在教學中，或已完成教學。');
+      return;
+    }
+    tutorialMgr.skipTutorial(char.id);
+    return;
+  }
+
+  // 預設：顯示當前教學狀態
+  const text = tutorialMgr.formatTutorialStatus(char.id);
+  sendSystem(session.sessionId, text);
+}
+
+// ─── 自動戰鬥指令 ───
+
+function cmdAuto(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'off': case 'stop': case 'disable': {
+      const msg = autoBattleMgr.disable(char.id);
+      sendSystem(session.sessionId, msg);
+      break;
+    }
+    case 'config': case 'set': {
+      const key = args[1]?.toLowerCase();
+      const value = args[2]?.toLowerCase();
+
+      if (!key || !value) {
+        sendSystem(session.sessionId,
+          '自動戰鬥設定：\n' +
+          '  auto config flee <百分比>  — 逃跑 HP 閾值\n' +
+          '  auto config potion <on/off> — 自動使用藥水\n' +
+          '  auto config loot <on/off>   — 自動拾取\n' +
+          '  auto config attack <on/off> — 自動攻擊',
+        );
+        return;
+      }
+
+      if (key === 'flee') {
+        const percent = parseInt(value, 10);
+        if (isNaN(percent)) { sendError(session.sessionId, '請輸入有效的百分比數字。'); return; }
+        const result = autoBattleMgr.setConfig(char.id, 'fleeHpPercent', percent);
+        sendSystem(session.sessionId, result.message);
+      } else if (key === 'potion') {
+        const result = autoBattleMgr.setConfig(char.id, 'autoUsePotion', value === 'on' || value === 'true');
+        sendSystem(session.sessionId, result.message);
+      } else if (key === 'loot') {
+        const result = autoBattleMgr.setConfig(char.id, 'autoLoot', value === 'on' || value === 'true');
+        sendSystem(session.sessionId, result.message);
+      } else if (key === 'attack') {
+        const result = autoBattleMgr.setConfig(char.id, 'autoAttack', value === 'on' || value === 'true');
+        sendSystem(session.sessionId, result.message);
+      } else {
+        sendError(session.sessionId, `未知設定項：${key}`);
+      }
+      break;
+    }
+    case 'status': case 'info': {
+      const text = autoBattleMgr.formatStatus(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'on': case 'start': case 'enable':
+    default: {
+      // "auto" or "auto on" enables
+      const msg = autoBattleMgr.enable(char.id);
+      sendSystem(session.sessionId, msg);
+      break;
+    }
+  }
+}
+
+// ─── 二轉任務系統 ───
+
+function cmdClassQuest2(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'start': {
+      if (!args[1]) {
+        const text = classQuest2Mgr.formatAvailableQuests(char);
+        sendSystem(session.sessionId, text);
+        return;
+      }
+      const questId = args[1];
+      const result = classQuest2Mgr.startQuest2(char.id, questId, char);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'status': {
+      const text = classQuest2Mgr.formatQuest2Status(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'abandon': {
+      const result = classQuest2Mgr.abandonQuest2(char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'complete': {
+      const result = classQuest2Mgr.completeQuest2(char.id, char);
+      sendSystem(session.sessionId, result.message);
+      if (result.success) {
+        saveCharacter(char);
+      }
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '二轉任務指令：\n' +
+        '  classquest2 start [任務ID] — 查看/開始二轉任務\n' +
+        '  classquest2 status — 查看進度\n' +
+        '  classquest2 abandon — 放棄任務\n' +
+        '  classquest2 complete — 完成二轉（需在轉職大廳）\n' +
+        '  別名：cq2',
+      );
+  }
+}
+
+// ─── 技能樹系統 ───
+
+function cmdSkillTree(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'add': {
+      const branch = args[1]?.toLowerCase();
+      if (branch !== 'attack' && branch !== 'defense' && branch !== 'support') {
+        sendError(session.sessionId, '用法：skilltree add <attack|defense|support>');
+        return;
+      }
+      const result = skillTreeMgr.addPoint(char.id, branch, char);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'reset': {
+      const result = skillTreeMgr.resetTree(char.id, char);
+      sendSystem(session.sessionId, result.message);
+      if (result.success) {
+        saveCharacter(char);
+      }
+      break;
+    }
+    case 'info':
+    default: {
+      const text = skillTreeMgr.formatSkillTree(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+  }
+}
+
+// ─── 交易所系統 ───
+
+function cmdMarket(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'sell': {
+      const itemId = args[1];
+      const count = parseInt(args[2]) || 1;
+      const price = parseInt(args[3]) || 0;
+      if (!itemId || price <= 0) {
+        sendError(session.sessionId, '用法：market sell <物品ID> <數量> <單價>');
+        return;
+      }
+      const result = marketMgr.placeSellOrder(char.id, itemId, count, price);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'buy': {
+      // 如果第一個參數看起來是訂單 ID（短 ID），則成交該訂單
+      if (args[1] && !ITEM_DEFS[args[1]]) {
+        const result = marketMgr.fillOrder(args[1], char.id);
+        sendSystem(session.sessionId, result.message);
+        return;
+      }
+      const itemId = args[1];
+      const count = parseInt(args[2]) || 1;
+      const price = parseInt(args[3]) || 0;
+      if (!itemId || price <= 0) {
+        sendError(session.sessionId, '用法：market buy <物品ID> <數量> <單價>  或  market buy <訂單ID>');
+        return;
+      }
+      const result = marketMgr.placeBuyOrder(char.id, itemId, count, price);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'list': {
+      const keyword = args[1];
+      const orders = marketMgr.searchOrders(keyword);
+      const text = marketMgr.formatOrderList(orders);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'my': {
+      const orders = marketMgr.getMyOrders(char.id);
+      if (orders.length === 0) {
+        sendSystem(session.sessionId, '你沒有任何掛單。');
+      } else {
+        const text = marketMgr.formatOrderList(orders);
+        sendSystem(session.sessionId, text);
+      }
+      break;
+    }
+    case 'cancel': {
+      if (!args[1]) {
+        sendError(session.sessionId, '用法：market cancel <訂單ID>');
+        return;
+      }
+      const result = marketMgr.cancelOrder(args[1], char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'history': case 'price': {
+      if (!args[1]) {
+        sendError(session.sessionId, '用法：market history <物品ID>');
+        return;
+      }
+      const text = marketMgr.formatPriceHistory(args[1]);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '交易所指令：\n' +
+        '  market sell <物品ID> <數量> <單價> — 掛賣物品\n' +
+        '  market buy <物品ID> <數量> <單價> — 掛單求購\n' +
+        '  market buy <訂單ID> — 購買賣單\n' +
+        '  market list [關鍵字] — 瀏覽掛單\n' +
+        '  market my — 我的掛單\n' +
+        '  market cancel <訂單ID> — 取消掛單\n' +
+        '  market history <物品ID> — 價格歷史',
+      );
+  }
+}
+
+// ─── 公會系統 ───
+
+function cmdGuild(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+
+  switch (sub) {
+    case 'create': {
+      const name = args[1];
+      if (!name) {
+        sendError(session.sessionId, '用法：guild create <公會名稱>');
+        return;
+      }
+      const desc = args.slice(2).join(' ');
+      const result = guildMgr.createGuild(char, name, desc);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'join': {
+      const name = args[1];
+      if (!name) {
+        sendError(session.sessionId, '用法：guild join <公會名稱>');
+        return;
+      }
+      const result = guildMgr.joinGuild(char.id, name);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'leave': {
+      const result = guildMgr.leaveGuild(char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'dissolve': {
+      const result = guildMgr.dissolveGuild(char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'info': {
+      const text = guildMgr.formatGuildInfo(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'members': {
+      const text = guildMgr.formatGuildMembers(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'chat': {
+      const message = args.slice(1).join(' ');
+      if (!message) {
+        sendError(session.sessionId, '用法：guild chat <訊息>');
+        return;
+      }
+      const result = guildMgr.guildChat(char.id, message);
+      if (!result.success) {
+        sendError(session.sessionId, result.message);
+      }
+      break;
+    }
+    case 'storage': {
+      const text = guildMgr.formatGuildStorage(char.id);
+      sendSystem(session.sessionId, text);
+      break;
+    }
+    case 'deposit': {
+      const itemId = args[1];
+      const count = parseInt(args[2]) || 1;
+      if (!itemId) {
+        sendError(session.sessionId, '用法：guild deposit <物品ID> [數量]');
+        return;
+      }
+      const result = guildMgr.depositItem(char.id, itemId, count);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'withdraw': {
+      const itemId = args[1];
+      const count = parseInt(args[2]) || 1;
+      if (!itemId) {
+        sendError(session.sessionId, '用法：guild withdraw <物品ID> [數量]');
+        return;
+      }
+      const result = guildMgr.withdrawItem(char.id, itemId, count);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'promote': {
+      const targetName = args[1];
+      if (!targetName) {
+        sendError(session.sessionId, '用法：guild promote <玩家名稱>');
+        return;
+      }
+      const result = guildMgr.promoteMembers(char.id, targetName);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'kick': {
+      const targetName = args[1];
+      if (!targetName) {
+        sendError(session.sessionId, '用法：guild kick <玩家名稱>');
+        return;
+      }
+      const result = guildMgr.kickMember(char.id, targetName);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    default:
+      sendSystem(session.sessionId,
+        '公會指令：\n' +
+        '  guild create <名稱> — 建立公會（5000G）\n' +
+        '  guild join <名稱> — 加入公會\n' +
+        '  guild leave — 離開公會\n' +
+        '  guild dissolve — 解散公會（會長）\n' +
+        '  guild info — 公會資訊\n' +
+        '  guild members — 成員列表\n' +
+        '  guild chat <訊息> — 公會聊天\n' +
+        '  guild storage — 公會倉庫\n' +
+        '  guild deposit <物品> [數量] — 存入倉庫\n' +
+        '  guild withdraw <物品> [數量] — 取出倉庫\n' +
+        '  guild promote <玩家> — 晉升成員\n' +
+        '  guild kick <玩家> — 踢出成員\n' +
+        '  別名：g',
+      );
+  }
+}
+
+// ─── 每日簽到 ───
+
+function cmdSignin(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const result = dailyRewardMgr.signin(char.id, char);
+  sendSystem(session.sessionId, result.message);
 }
 
 // ─── 工具函式 ───

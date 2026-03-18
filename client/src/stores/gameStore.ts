@@ -14,7 +14,10 @@ import type {
   AgentMessage,
   ItemRarity,
   ItemStats,
+  LeaderboardEntry,
 } from '@game/shared';
+
+import type { SoundCategory } from '../audio/AudioManager';
 
 // --- Terminal line ---
 
@@ -69,6 +72,12 @@ export interface Quest {
   steps: QuestStep[];
   currentStep: number;
 }
+
+// --- Leaderboard ---
+
+export type LeaderboardTab = 'level' | 'pvp' | 'dungeon_speed';
+
+export type LeaderboardData = Record<LeaderboardTab, LeaderboardEntry[]>;
 
 // --- Tooltip item ---
 
@@ -266,6 +275,30 @@ export interface GameState {
   chatPanelOpen: boolean;
   setChatPanelOpen: (open: boolean) => void;
   toggleChatPanel: () => void;
+
+  // Leaderboard
+  leaderboardOpen: boolean;
+  setLeaderboardOpen: (open: boolean) => void;
+  toggleLeaderboard: () => void;
+  leaderboardData: LeaderboardData;
+  setLeaderboardData: (category: LeaderboardTab, entries: LeaderboardEntry[]) => void;
+  leaderboardTab: LeaderboardTab;
+  setLeaderboardTab: (tab: LeaderboardTab) => void;
+
+  // World Map
+  worldMapOpen: boolean;
+  setWorldMapOpen: (open: boolean) => void;
+  toggleWorldMap: () => void;
+  exploredRooms: Set<string>;
+  addExploredRoom: (roomId: string) => void;
+
+  // Audio
+  audioEnabled: boolean;
+  setAudioEnabled: (enabled: boolean) => void;
+  audioVolumes: Record<SoundCategory, number>;
+  setAudioVolumes: (volumes: Record<SoundCategory, number>) => void;
+  audioSettingsOpen: boolean;
+  setAudioSettingsOpen: (open: boolean) => void;
 
   // Shop
   shopOpen: boolean;
@@ -471,6 +504,38 @@ export const useGameStore = create<GameState>((set) => ({
   chatPanelOpen: false,
   setChatPanelOpen: (chatPanelOpen) => set({ chatPanelOpen }),
   toggleChatPanel: () => set((state) => ({ chatPanelOpen: !state.chatPanelOpen })),
+
+  // Leaderboard
+  leaderboardOpen: false,
+  setLeaderboardOpen: (leaderboardOpen) => set({ leaderboardOpen }),
+  toggleLeaderboard: () => set((state) => ({ leaderboardOpen: !state.leaderboardOpen })),
+  leaderboardData: { level: [], pvp: [], dungeon_speed: [] },
+  setLeaderboardData: (category, entries) =>
+    set((state) => ({
+      leaderboardData: { ...state.leaderboardData, [category]: entries },
+    })),
+  leaderboardTab: 'level',
+  setLeaderboardTab: (leaderboardTab) => set({ leaderboardTab }),
+
+  // World Map
+  worldMapOpen: false,
+  setWorldMapOpen: (worldMapOpen) => set({ worldMapOpen }),
+  toggleWorldMap: () => set((state) => ({ worldMapOpen: !state.worldMapOpen })),
+  exploredRooms: new Set<string>(),
+  addExploredRoom: (roomId) =>
+    set((state) => {
+      const newSet = new Set(state.exploredRooms);
+      newSet.add(roomId);
+      return { exploredRooms: newSet };
+    }),
+
+  // Audio
+  audioEnabled: true,
+  setAudioEnabled: (audioEnabled) => set({ audioEnabled }),
+  audioVolumes: { bgm: 0.3, sfx: 0.7, ui: 0.5 },
+  setAudioVolumes: (audioVolumes) => set({ audioVolumes }),
+  audioSettingsOpen: false,
+  setAudioSettingsOpen: (audioSettingsOpen) => set({ audioSettingsOpen }),
 
   // Shop
   shopOpen: false,

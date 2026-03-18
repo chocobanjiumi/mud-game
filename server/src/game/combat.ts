@@ -13,6 +13,7 @@ import {
 } from './damage.js';
 import { EffectEngine } from './effects.js';
 import { getAttackDescription } from './attack-descriptions.js';
+import { SkillTreeManager } from './skill-tree.js';
 import type { AttackResultType } from './attack-descriptions.js';
 import type { MonsterInstance } from './world.js';
 
@@ -55,6 +56,13 @@ export class CombatEngine {
   private playerCombatMap: Map<string, string> = new Map();
   /** 效果引擎 */
   private effectEngine = new EffectEngine();
+  /** 技能樹管理器（用於計算加成） */
+  private skillTreeMgr: SkillTreeManager | null = null;
+
+  setSkillTreeManager(mgr: SkillTreeManager): void {
+    this.skillTreeMgr = mgr;
+  }
+
   /** 廣播回呼：通知參戰者 */
   private broadcastFn:
     | ((combatId: string, playerIds: string[], message: unknown) => void)
@@ -1063,6 +1071,17 @@ export class CombatEngine {
       if (pct.critDamage) derived.critDamage += pct.critDamage;
       if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
       if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+
+      // Apply skill tree bonuses
+      if (this.skillTreeMgr) {
+        const stb = this.skillTreeMgr.getBranchBonuses(combatant.id);
+        if (stb.atkPercent > 0) derived.atk = Math.floor(derived.atk * (1 + stb.atkPercent / 100));
+        if (stb.defPercent > 0) derived.def = Math.floor(derived.def * (1 + stb.defPercent / 100));
+        derived.critRate += stb.critRateBonus;
+        derived.dodgeRate += stb.dodgeRateBonus;
+        derived.hitRate += stb.hitRateBonus;
+        derived.critDamage += stb.critDamageBonus;
+      }
 
       // Apply active buff effects from potions/food/skills
       for (const eff of combatant.activeEffects) {

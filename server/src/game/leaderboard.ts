@@ -189,7 +189,7 @@ export class LeaderboardManager {
    */
   sendLeaderboard(characterId: string, category: LeaderboardCategory): void {
     const entries = this.getLeaderboard(category);
-    sendToCharacter(characterId, 'leaderboard', {
+    sendToCharacter(characterId, 'leaderboard_data', {
       category,
       entries,
     });

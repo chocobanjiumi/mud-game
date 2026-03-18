@@ -1110,3 +1110,321 @@ input::placeholder {
 .text-chat-kingdom {
   color: var(--color-text-amber);
 }
+
+/* ============================= */
+/*  Leaderboard Panel            */
+/* ============================= */
+
+.leaderboard-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+}
+
+.leaderboard-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(520px, 90vw);
+  max-height: 80vh;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dim);
+  border-radius: 8px;
+  z-index: 910;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.05), 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: shopFadeIn 0.15s ease-out;
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border-dim);
+}
+
+.leaderboard-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-dim);
+}
+
+.leaderboard-tab {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 12px;
+  text-align: center;
+  color: var(--color-text-dim);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.leaderboard-tab:hover {
+  color: var(--color-text-bright);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.leaderboard-tab-active {
+  color: var(--color-text-terminal);
+  border-bottom-color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.leaderboard-body {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  max-height: 55vh;
+}
+
+.leaderboard-table-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 10px;
+  color: var(--color-text-dim);
+  border-bottom: 1px solid rgba(26, 58, 92, 0.4);
+  background: rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 12px;
+  border-bottom: 1px solid rgba(26, 58, 92, 0.3);
+  transition: background 0.1s;
+}
+
+.leaderboard-row:hover {
+  background: rgba(0, 255, 136, 0.03);
+}
+
+.leaderboard-row-current {
+  background: rgba(0, 255, 136, 0.08) !important;
+  border-left: 2px solid var(--color-text-terminal);
+}
+
+.leaderboard-col-rank {
+  width: 36px;
+  text-align: center;
+  font-weight: bold;
+  flex-shrink: 0;
+  color: var(--color-text-dim);
+}
+
+.leaderboard-col-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-col-value {
+  width: 80px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.leaderboard-col-class {
+  width: 32px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.leaderboard-rank-gold {
+  color: #ffd700 !important;
+}
+
+.leaderboard-rank-silver {
+  color: #c0c0c0 !important;
+}
+
+.leaderboard-rank-bronze {
+  color: #cd7f32 !important;
+}
+
+.leaderboard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-top: 1px solid var(--color-border-dim);
+}
+
+/* ============================= */
+/*  World Map                    */
+/* ============================= */
+
+.worldmap-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 900;
+}
+
+.worldmap-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(900px, 95vw);
+  max-height: 90vh;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dim);
+  border-radius: 8px;
+  z-index: 910;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.05), 0 8px 32px rgba(0, 0, 0, 0.5);
+  animation: shopFadeIn 0.15s ease-out;
+}
+
+.worldmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border-dim);
+}
+
+.worldmap-body {
+  flex: 1;
+  overflow: auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.worldmap-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.worldmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--color-border-dim);
+  font-size: 11px;
+  color: var(--color-text-dim);
+}
+
+.worldmap-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.worldmap-legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.worldmap-legend-current {
+  background: rgba(255, 184, 0, 0.15);
+  border-color: #ffb800;
+}
+
+.worldmap-legend-explored {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: #00ff88;
+}
+
+.worldmap-legend-unexplored {
+  background: rgba(90, 106, 138, 0.08);
+  border-color: #1a3a5c;
+}
+
+/* ============================= */
+/*  Audio Settings               */
+/* ============================= */
+
+.audio-settings-panel {
+  position: fixed;
+  top: 48px;
+  right: 16px;
+  width: 240px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dim);
+  border-radius: 8px;
+  z-index: 950;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  animation: tooltipFadeIn 0.1s ease-out;
+}
+
+.audio-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border-dim);
+}
+
+.audio-settings-body {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.audio-settings-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.audio-settings-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.audio-slider {
+  flex: 1;
+  height: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--color-border-dim);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.audio-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-text-terminal);
+  cursor: pointer;
+}
+
+.audio-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-text-terminal);
+  cursor: pointer;
+  border: none;
+}
+
+.audio-checkbox {
+  accent-color: var(--color-text-terminal);
+  cursor: pointer;
+}

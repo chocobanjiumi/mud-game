@@ -1,5 +1,6 @@
 import { useRef, useCallback, useEffect } from 'react';
 import { useGameStore } from '../stores/gameStore';
+import AudioManager from '../audio/AudioManager';
 import type {
   ClientMessage,
   ServerMessage,
@@ -17,6 +18,7 @@ import type {
   PurchaseResultPayload,
   TransactionHistoryPayload,
   BalanceUpdatePayload,
+  LeaderboardDataPayload,
 } from '@game/shared';
 
 const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
@@ -65,6 +67,7 @@ export function useWebSocket() {
       case 'room': {
         const room = p as unknown as RoomPayload;
         s.setRoom(room);
+        s.addExploredRoom(room.id);
         s.addTerminalLine('');
         s.addTerminalLine(`═══ ${room.name} ═══`, 'room-title');
         s.addTerminalLine(room.description, 'room-desc');
@@ -87,6 +90,15 @@ export function useWebSocket() {
         if (room.items.length > 0) {
           const names = room.items.map((i) => i.name).join(', ');
           s.addTerminalLine(`物品: ${names}`, 'item');
+        }
+        // Audio: zone-based BGM (only when not in combat)
+        if (!s.inCombat) {
+          const rid = room.id;
+          if (rid.startsWith('dungeon') || rid.includes('cave') || rid.includes('mine')) {
+            AudioManager.getInstance().play('bgm_dungeon');
+          } else {
+            AudioManager.getInstance().play('bgm_village');
+          }
         }
         break;
       }
@@ -135,6 +147,7 @@ export function useWebSocket() {
         s.addTerminalLine('═══ 戰鬥開始！ ═══', 'combat');
         const enemies = data.enemyTeam.map((e) => `${e.name} Lv.${e.level}`).join(', ');
         s.addTerminalLine(`敵人: ${enemies}`, 'combat');
+        AudioManager.getInstance().play('bgm_combat');
         break;
       }
 
@@ -153,6 +166,12 @@ export function useWebSocket() {
         for (const line of data.log) {
           s.addTerminalLine(line, 'combat');
         }
+        // Audio: detect hit/miss/crit from log text
+        const audio = AudioManager.getInstance();
+        const logText = data.log.join(' ');
+        if (logText.includes('暴擊')) audio.play('critical_hit');
+        else if (logText.includes('閃避') || logText.includes('未命中')) audio.play('attack_miss');
+        else if (logText.includes('造成') || logText.includes('傷害')) audio.play('attack_hit');
         break;
       }
 
@@ -172,6 +191,11 @@ export function useWebSocket() {
           if (data.loot.exp > 0) s.addTerminalLine(`獲得經驗: ${data.loot.exp}`, 'exp');
           if (data.loot.gold > 0) s.addTerminalLine(`獲得金幣: ${data.loot.gold}`, 'gold');
         }
+        // Audio: victory = monster_die, defeat = player_hurt
+        if (data.result === 'victory') AudioManager.getInstance().play('monster_die');
+        else if (data.result === 'defeat') AudioManager.getInstance().play('player_hurt');
+        // Resume village BGM after combat
+        AudioManager.getInstance().play('bgm_village');
         // Clear combat state after a short delay
         setTimeout(() => store.getState().setCombat(null), 3000);
         break;
@@ -183,6 +207,7 @@ export function useWebSocket() {
         s.setEquipment(data.equipment);
         s.setInventoryCapacity(data.capacity);
         s.setGold(data.gold);
+        AudioManager.getInstance().play('item_pickup');
         break;
       }
 
@@ -225,6 +250,10 @@ export function useWebSocket() {
         if (quests) {
           s.setActiveQuests(quests);
         }
+        // Quest complete sound if action is 'completed'
+        if (p.action === 'completed') {
+          AudioManager.getInstance().play('quest_complete');
+        }
         break;
       }
 
@@ -237,6 +266,7 @@ export function useWebSocket() {
       case 'level_up': {
         const level = p.level as number;
         s.addTerminalLine(`★ 升級了！目前等級: ${level} ★`, 'level-up');
+        AudioManager.getInstance().play('level_up');
         break;
       }
 
@@ -265,6 +295,7 @@ export function useWebSocket() {
         s.setShopItems(data.items);
         s.setArinovaTokenBalance(data.balance);
         s.setShopOpen(true);
+        AudioManager.getInstance().play('menu_open');
         break;
       }
 
@@ -296,6 +327,12 @@ export function useWebSocket() {
       case 'balance_update': {
         const data = p as unknown as BalanceUpdatePayload;
         s.setArinovaTokenBalance(data.balance);
+        break;
+      }
+
+      case 'leaderboard_data': {
+        const data = p as unknown as LeaderboardDataPayload;
+        s.setLeaderboardData(data.category, data.entries);
         break;
       }
 
@@ -464,6 +501,13 @@ export function useWebSocket() {
     [send],
   );
 
+  const sendLeaderboardRequest = useCallback(
+    (category: string) => {
+      send({ type: 'command', payload: `leaderboard ${category}` });
+    },
+    [send],
+  );
+
   // Auto-connect on mount, cleanup on unmount
   useEffect(() => {
     mountedRef.current = true;
@@ -474,5 +518,17 @@ export function useWebSocket() {
     };
   }, [connect, disconnect]);
 
-  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat };
+  // Listen for leaderboard request events from LeaderboardPanel
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail as { category: string } | undefined;
+      if (detail?.category) {
+        sendLeaderboardRequest(detail.category);
+      }
+    };
+    window.addEventListener('leaderboard-request', handler);
+    return () => window.removeEventListener('leaderboard-request', handler);
+  }, [sendLeaderboardRequest]);
+
+  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
 }

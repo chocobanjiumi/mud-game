@@ -216,6 +216,13 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
 // ============================================================
 
 export class QuestManager {
+  /** 任務完成回呼（用於公會經驗等外部系統） */
+  private onQuestCompleteFn: ((characterId: string) => void) | null = null;
+
+  setOnQuestComplete(fn: (characterId: string) => void): void {
+    this.onQuestCompleteFn = fn;
+  }
+
   // ──────────────────────────────────────────────────────────
   //  接取任務
   // ──────────────────────────────────────────────────────────
@@ -444,6 +451,11 @@ export class QuestManager {
       rewards: def.rewards,
       text: `任務「${def.name}」完成！獲得：${rewardText}`,
     });
+
+    // 外部回呼（公會經驗等）
+    if (this.onQuestCompleteFn) {
+      this.onQuestCompleteFn(characterId);
+    }
 
     return {
       success: true,

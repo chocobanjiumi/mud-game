@@ -59,6 +59,13 @@ export class DungeonManager {
       ) => void)
     | null = null;
 
+  /** 副本通關回呼（公會經驗、二轉任務等） */
+  private onClearFn: ((playerIds: string[], dungeonId: string, isSolo: boolean) => void) | null = null;
+
+  setOnClearFn(fn: (playerIds: string[], dungeonId: string, isSolo: boolean) => void): void {
+    this.onClearFn = fn;
+  }
+
   /** 傳送玩家回世界的回呼 */
   private teleportFn:
     | ((playerId: string, roomId: string) => void)
@@ -398,6 +405,11 @@ export class DungeonManager {
 
       // 更新排行榜（副本速通紀錄）
       updateLeaderboard(id, 'dungeon_speed', clearTime);
+    }
+
+    // 公會經驗、二轉任務等外部回呼
+    if (this.onClearFn) {
+      this.onClearFn(instance.playerIds, instance.dungeonId, instance.playerIds.length === 1);
     }
 
     // 傳送回副本入口房間

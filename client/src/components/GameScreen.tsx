@@ -16,6 +16,9 @@ import QuestLog from './QuestLog';
 import CharacterSheet from './CharacterSheet';
 import ItemTooltip from './ItemTooltip';
 import ChatPanel from './ChatPanel';
+import LeaderboardPanel from './LeaderboardPanel';
+import WorldMap from './WorldMap';
+import AudioSettings from './AudioSettings';
 
 interface GameScreenProps {
   onCommand: (command: string) => void;
@@ -44,6 +47,10 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const characterSheetOpen = useGameStore((s) => s.characterSheetOpen);
   const toggleChatPanel = useGameStore((s) => s.toggleChatPanel);
   const chatPanelOpen = useGameStore((s) => s.chatPanelOpen);
+  const toggleLeaderboard = useGameStore((s) => s.toggleLeaderboard);
+  const leaderboardOpen = useGameStore((s) => s.leaderboardOpen);
+  const toggleWorldMap = useGameStore((s) => s.toggleWorldMap);
+  const worldMapOpen = useGameStore((s) => s.worldMapOpen);
 
   // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
   useEffect(() => {
@@ -68,6 +75,12 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (e.key === 'c' || e.key === 'C') {
         toggleCharacterSheet();
       }
+      if (e.key === 'l' || e.key === 'L') {
+        toggleLeaderboard();
+      }
+      if (e.key === 'm' || e.key === 'M') {
+        toggleWorldMap();
+      }
     };
     const handleOpenShopEvent = () => {
       if (!shopOpen) onOpenShop();
@@ -78,7 +91,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-shop', handleOpenShopEvent);
     };
-  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet]);
+  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
@@ -109,6 +122,8 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="任務" shortcut="Q" active={questLogOpen} onClick={toggleQuestLog} />
             <QuickButton label="角色" shortcut="C" active={characterSheetOpen} onClick={toggleCharacterSheet} />
             <QuickButton label="聊天" active={chatPanelOpen} onClick={toggleChatPanel} />
+            <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
+            <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={toggleWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
             {selectedAgent ? (
               <QuickButton label="AI夥伴" shortcut="A" active={agentPanelOpen} onClick={toggleAgentPanel} />
@@ -166,6 +181,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       <AgentSelectModal />
       <QuestLog />
       <CharacterSheet />
+      <LeaderboardPanel />
+      <WorldMap />
+      <AudioSettings />
       <ItemTooltip />
     </div>
   );

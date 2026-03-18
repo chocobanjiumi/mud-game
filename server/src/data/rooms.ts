@@ -277,9 +277,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '訓練場',
     zone: 'starter_village',
     description:
-      '一片被夯實的空地上擺放著稻草人和木製練習靶。幾位新手冒險者正揮汗如雨地練習著。' +
-      '場邊的武器架上放著各種練習用的鈍器。' +
-      '這裡是磨練基礎技巧的最佳場所。',
+      '一片被夯實的空地上擺放著稻草人和木製練習靶，幾位新手冒險者正揮汗如雨地練習著基本的劈砍動作。' +
+      '場邊的武器架上放著各種練習用的鈍器，木劍碰撞聲和教官的喝斥聲此起彼落。' +
+      '地面上散落著被劈爛的稻草和斷裂的練習箭矢，空氣中瀰漫著汗水和泥土的氣味。' +
+      '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
     ],
@@ -887,9 +888,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '小溪邊',
     zone: 'starter_village_ext' as RoomDef['zone'],
     description:
-      '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響。溪邊的鵝卵石被水流打磨得光滑圓潤，' +
-      '水草在溪底輕輕搖擺。幾隻綠史萊姆在溪邊吸收水氣。' +
-      '這裡是村民洗衣和取水的地方。',
+      '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響，陽光在水面碎成萬千金色的碎片。' +
+      '溪邊的鵝卵石被水流打磨得光滑圓潤，水草在溪底輕輕搖擺，魚苗在石縫間穿梭。' +
+      '幾隻綠史萊姆在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
+      '微風送來泥土和青草的清新氣息，偶爾傳來村婦在上游洗衣的捶打聲。',
     exits: [
       { direction: 'west', targetRoomId: 'village_backhill', description: '沿小路回到後山' },
       { direction: 'south', targetRoomId: 'village_farmland', description: '溪水流向農田方向' },
@@ -938,9 +940,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '果園',
     zone: 'starter_village_ext' as RoomDef['zone'],
     description:
-      '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子。' +
-      '但烏鴉群經常光顧這裡，偷食成熟的果實，牠們刺耳的叫聲令果農不勝其煩。' +
-      '田鼠也會來撿拾掉落的果實。',
+      '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子，空氣中瀰漫著成熟水果的甜香。' +
+      '烏鴉群經常光顧這裡偷食果實，牠們刺耳的嘎嘎叫聲迴盪在樹梢間，令果農不勝其煩。' +
+      '地面上散落著被啄食過的果核和半腐爛的落果，田鼠在果樹根部的落葉堆中窸窣竄動。' +
+      '陽光透過茂密的枝葉灑下斑駁的光影，這片果園雖然豐饒，卻也是小型害獸的樂園。',
     exits: [
       { direction: 'west', targetRoomId: 'village_farmland', description: '回到農田' },
     ],
@@ -1096,9 +1099,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '海邊棧道',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '木製棧道沿著海岸線延伸，腳下的木板在海風中吱嘎作響。' +
-      '鹹濕的海風撲面而來，遠處的海面波光粼粼。' +
-      '棧道入口立著一塊告示牌，提醒冒險者注意潮汐和海盜出沒。',
+      '木製棧道沿著海岸線延伸，腳下被鹽分侵蝕的木板在每一步踩踏下吱嘎作響。' +
+      '鹹濕的海風撲面而來夾帶著海藻和魚腥的氣味，遠處的海面波光粼粼，海鷗在浪尖上低掠而過。' +
+      '棧道入口立著一塊被風雨侵蝕的告示牌，上面的紅字警告冒險者注意潮汐變化和近海的海盜活動。' +
+      '棧道欄杆上掛著漁網和曬乾的海星，為這條通往未知海域的道路增添了幾分冒險的氣息。',
     exits: [
       { direction: 'north', targetRoomId: 'town_gate', description: '沿棧道回到城門口' },
       { direction: 'south', targetRoomId: 'sandy_beach', description: '沙灘在前方延伸' },
@@ -1119,9 +1123,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '沙灘',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '細軟的白沙在陽光下閃耀，海浪一波又一波地拍打著海岸。' +
-      '沙灘上散落著貝殼和海藻，幾隻巨大的海蟹橫行其間。' +
-      '遠處的水面偶爾有魚群跳躍。',
+      '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。' +
+      '海浪一波又一波地拍打著海岸，留下白色的泡沫和五彩斑斕的貝殼。' +
+      '幾隻巨大的海蟹揮舞著螯鉗在沙灘上橫行，牠們警覺地注視著四周的動靜。' +
+      '遠處的水面偶爾有魚群躍出水面，在陽光下閃過銀色的弧線。',
     exits: [
       { direction: 'north', targetRoomId: 'coastal_boardwalk', description: '回到棧道' },
       { direction: 'south', targetRoomId: 'tidal_zone', description: '沿海岸往潮間帶走' },
@@ -1197,9 +1202,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '漁村碼頭',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '簡樸的木製碼頭延伸入海，幾艘漁船停泊在岸邊隨波搖晃。' +
-      '漁網曬在架子上，空氣中瀰漫著魚腥味。' +
-      '幾位漁民正在修補漁網，他們對冒險者的到來習以為常。',
+      '簡樸的木製碼頭延伸入蔚藍的海面，幾艘漁船停泊在岸邊隨波搖晃，桅杆上的風向標嘎嘎轉動。' +
+      '漁網曬在木架上散發著陽光和海鹽的氣味，空氣中瀰漫著濃郁的魚腥味和焦油的刺鼻氣息。' +
+      '幾位飽經風霜的漁民蹲在碼頭邊修補漁網，粗糙的手指在繩結間靈活穿梭。' +
+      '海鷗在碼頭上空盤旋鳴叫，偶爾俯衝搶奪漁簍中的小魚。',
     exits: [
       { direction: 'west', targetRoomId: 'coastal_boardwalk', description: '回到海邊棧道' },
       { direction: 'south', targetRoomId: 'lighthouse', description: '沿海岸走向燈塔' },
@@ -1219,9 +1225,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '燈塔',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '矗立在海角的白色燈塔，高聳入雲。塔頂的燈火在夜晚為航行者指引方向。' +
-      '塔身被海風侵蝕得斑駁，螺旋樓梯盤旋而上。' +
-      '烏鴉經常在塔頂盤旋，海蟹則在塔基的礁石上出沒。',
+      '矗立在海角的白色燈塔高聳入雲，塔身被數十年的海風侵蝕得斑駁蒼老，卻依然屹立不搖。' +
+      '塔頂的燈火在夜晚劃破海上的黑暗，為遠方的航行者指引歸途。' +
+      '生鏽的螺旋樓梯沿著塔壁盤旋而上，每一階都發出令人不安的吱嘎聲。' +
+      '烏鴉群在塔頂的殘破圍欄上築巢棲息，海蟹則佔據了塔基周圍被潮水沖刷的礁石。',
     exits: [
       { direction: 'north', targetRoomId: 'fishing_dock', description: '回到漁村碼頭' },
       { direction: 'south', targetRoomId: 'coral_shallows', description: '沿海岸走向珊瑚淺灘' },
@@ -1245,9 +1252,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '珊瑚淺灘',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底。' +
-      '各種海洋生物在珊瑚叢中穿梭，水母在水中優雅地漂浮。' +
-      '更深的水域中能看到蛇形的影子游動。',
+      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底，陽光在水底投射出流動的光網。' +
+      '各種色彩斑斕的海洋生物在珊瑚叢中穿梭嬉戲，半透明的水母拖著長長的觸手優雅地漂浮。' +
+      '更深的水域中能看到蛇形的影子游動，偶爾掀起一陣令人不安的水流。' +
+      '珊瑚散發出微弱的螢光，為這片海底花園披上了一層夢幻的色彩。',
     exits: [
       { direction: 'north', targetRoomId: 'lighthouse', description: '回到燈塔' },
       { direction: 'west', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
@@ -1302,9 +1310,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '海崖步道',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是陡峭的崖壁，另一側是萬丈深淵。' +
-      '海風在這裡格外強勁，站不穩就有被吹落懸崖的危險。' +
-      '崖壁上的洞穴中棲息著海蟹。',
+      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。' +
+      '海風在這裡格外強勁，呼嘯著穿過岩石的縫隙發出尖銳的嘯聲，站不穩就有被吹落懸崖的危險。' +
+      '崖壁上密佈著大大小小的洞穴，巨蟹在洞口揮舞著螯鉗威嚇經過的行人。' +
+      '往下望去，白色的浪花在礁石上炸開，濺起的水霧瀰漫在半空中。',
     exits: [
       { direction: 'west', targetRoomId: 'sandy_beach', description: '下崖回到沙灘' },
       { direction: 'south', targetRoomId: 'pirate_camp', description: '步道盡頭通往海盜營地' },
@@ -1353,9 +1362,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '暗礁',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '危險的暗礁區域，尖銳的岩石在海面下若隱若現。' +
-      '海流在這裡變得湍急而複雜，許多船隻在此觸礁沉沒。' +
-      '深海魚人和海蛇將此處作為狩獵場。',
+      '危險的暗礁區域，尖銳如刀刃的黑色岩石在海面下若隱若現，浪花拍打其上碎成白色的泡沫。' +
+      '海流在這裡變得湍急而詭譎，漩渦在岩石之間不斷形成又消散，無數船隻在此粉身碎骨。' +
+      '深海魚人和海蛇將這片死亡水域作為狩獵場，牠們在暗礁的陰影中耐心等待著獵物。' +
+      '水下不時閃過詭異的綠色光芒——那是魚人眼睛反射的光。',
     exits: [
       { direction: 'north', targetRoomId: 'shipwreck', description: '回到沉船殘骸' },
       { direction: 'south', targetRoomId: 'underwater_cave', description: '水下有一條通道' },
@@ -1379,9 +1389,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '海底洞穴',
     zone: 'eastern_coast' as RoomDef['zone'],
     description:
-      '深入海底的神秘洞穴，被魔法氣泡維持著可呼吸的空間。' +
-      '洞壁上鑲嵌著發光的深海珊瑚，照亮了這片幽暗的領域。' +
-      '這裡是深海魚人首領的巢穴，充滿了危險和寶藏。',
+      '深入海底的神秘洞穴，一層閃爍的魔法氣泡包裹著整個空間，維持著勉強可以呼吸的空氣。' +
+      '洞壁上鑲嵌著發出幽藍光芒的深海珊瑚，將這片海底領域映照得如同異世界的殿堂。' +
+      '四處散落著魚人用骨頭和貝殼堆砌的祭壇和圖騰，散發著令人不安的腥臭氣味。' +
+      '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。',
     exits: [
       { direction: 'up', targetRoomId: 'sea_cave', description: '游向上方的海蝕洞' },
       { direction: 'north', targetRoomId: 'dark_reef', description: '游回暗礁區' },
@@ -1588,9 +1599,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '矮人礦坑',
     zone: 'volcano_zone' as RoomDef['zone'],
     description:
-      '寬闊的礦坑中迴盪著鐵錘敲擊岩石的聲響，礦車軌道延伸向黑暗的深處。' +
-      '矮人守衛警覺地巡邏著，他們不歡迎不速之客。' +
-      '礦壁上閃爍著各種礦石的光澤。',
+      '寬闊的礦坑中迴盪著鐵錘敲擊岩石的沉悶聲響，火把的光芒在粗糙的岩壁上跳動。' +
+      '礦車軌道沿著支撐木架延伸向黑暗的深處，空氣中混雜著鐵鏽、汗水和地底礦物的氣味。' +
+      '身材矮壯的矮人守衛全副武裝地巡邏著，鏽鐵色的鬍鬚上沾著礦粉，銳利的眼神審視著每一個闖入者。' +
+      '礦壁上閃爍著銀、銅和秘銀的光澤，這些珍貴的礦脈是矮人一族賴以生存的根基。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_base', description: '回到火山山腳' },
       { direction: 'south', targetRoomId: 'forge_hall', description: '礦道深處通往鍛造大廳' },
@@ -1613,9 +1625,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '鍛造大廳',
     zone: 'volcano_zone' as RoomDef['zone'],
     description:
-      '宏偉的鍛造大廳中央是一座巨大的熔爐，火焰熊熊燃燒。' +
-      '四周的工作台上擺滿了鐵錘、鉗子和各種鍛造工具。' +
-      '一位技藝精湛的矮人鐵匠正在這裡工作，他願意為有價值的客人打造裝備。',
+      '宏偉的鍛造大廳中央矗立著一座巨大的熔爐，赤紅的火焰熊熊燃燒，將整個大廳映照成橘紅色。' +
+      '四周的工作台上擺滿了鐵錘、鉗子和各種鍛造工具，金屬碰撞的鏗鏘聲不絕於耳。' +
+      '空氣中充斥著灼熱的金屬氣味和淬火時蒸騰的白色蒸汽，令人彷彿置身於火焰的心臟。' +
+      '一位肌肉虯結的矮人鐵匠正揮舞著比他手臂還粗的戰錘鍛打一塊通紅的鋼胚，他的技藝堪稱傳奇。',
     exits: [
       { direction: 'north', targetRoomId: 'dwarf_mine', description: '回到礦坑' },
     ],
@@ -1638,9 +1651,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '火山頂',
     zone: 'volcano_zone' as RoomDef['zone'],
     description:
-      '火山的最高點，腳下是翻騰的岩漿和蒸騰的熱氣。' +
-      '強風在這裡呼嘯而過，視野卻無比開闊——整個大陸盡收眼底。' +
-      '岩石巨人和火焰精靈在此守護著火山的核心力量。',
+      '火山的最高點，腳下是翻騰的岩漿和蒸騰而起的灼熱氣浪，空氣中瀰漫著濃烈的硫磺味。' +
+      '強風在裸露的山巔呼嘯而過，卻無法冷卻這裡灼人的溫度。登頂後視野無比開闘——' +
+      '從冰封雪原到暗影森林，整個大陸的輪廓盡收眼底。' +
+      '岩石巨人如同山峰的延伸般矗立不動，火焰精靈則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
     exits: [
       { direction: 'north', targetRoomId: 'fire_temple_entrance', description: '回到火焰神殿入口' },
     ],
@@ -1766,9 +1780,10 @@ export const ROOMS: Record<string, RoomDef> = {
     name: '雪山營地',
     zone: 'frozen_wastes' as RoomDef['zone'],
     description:
-      '一個被岩壁遮擋的避風處，前人在此搭建了簡易的營地。' +
-      '篝火仍在燃燒，溫暖的光芒驅散了周圍的寒意。' +
-      '營地裡存放著一些補給品和取暖用具，是雪原中難得的安全地帶。',
+      '一個被巨大岩壁遮擋的避風處，前人在此搭建了由獸皮和木樁構成的簡易營地。' +
+      '篝火仍在燃燒，噼啪作響的火焰散發出溫暖的橘光，驅散了四周徹骨的寒意。' +
+      '營地裡的木箱中存放著乾肉、藥草和取暖用的毛皮毯子，是雪原中難得的庇護所。' +
+      '岩壁上刻著前人留下的警告和路線標記，記錄著通往雪原深處的危險與機遇。',
     exits: [
       { direction: 'north', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '營地東方傳來狼嚎' },

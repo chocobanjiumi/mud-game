@@ -27,12 +27,26 @@ import { WorldEventManager } from './world-event.js';
 import { WeatherManager } from './weather.js';
 import { MailManager } from './mail.js';
 import { FriendManager } from './friends.js';
+import { DungeonMatchManager } from './dungeon-match.js';
+import { TutorialManager } from './tutorial.js';
+import { AutoBattleManager } from './auto-battle.js';
+import { ClassQuest2Manager } from './class-quest-2.js';
+import { SkillTreeManager } from './skill-tree.js';
+import { MarketManager } from './market.js';
+import { GuildManager } from './guild.js';
+import { DailyRewardManager } from './daily-reward.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
   addInventoryItem, removeInventoryItem,
 } from '../db/queries.js';
 import type { Character } from '@game/shared';
+import { ITEM_DEFS, getExpForLevel } from '@game/shared';
+import { sendToCharacter } from '../ws/handler.js';
+import { getRoom } from '../data/rooms.js';
+import { LootCalculator } from './loot.js';
+
+const lootCalc = new LootCalculator();
 
 // ============================================================
 //  子系統單例
@@ -63,6 +77,14 @@ export const worldEventMgr = new WorldEventManager();
 export const weatherMgr = new WeatherManager();
 export const mailMgr = new MailManager();
 export const friendMgr = new FriendManager();
+export const dungeonMatchMgr = new DungeonMatchManager();
+export const tutorialMgr = new TutorialManager();
+export const autoBattleMgr = new AutoBattleManager();
+export const classQuest2Mgr = new ClassQuest2Manager();
+export const skillTreeMgr = new SkillTreeManager();
+export const marketMgr = new MarketManager();
+export const guildMgr = new GuildManager();
+export const dailyRewardMgr = new DailyRewardManager();
 
 // ============================================================
 //  初始化 — 在 index.ts 呼叫
@@ -108,8 +130,49 @@ export function initGameSystems(): void {
   // ClassQuestManager：注入 ClassChangeManager
   classQuestMgr.setClassChangeManager(classChange);
 
+  // ClassQuest2Manager：注入 ClassChangeManager + 建表
+  classQuest2Mgr.setClassChangeManager(classChange);
+  classQuest2Mgr.ensureTables();
+
+  // 技能樹系統
+  skillTreeMgr.ensureTables();
+
+  // 交易所系統
+  marketMgr.ensureTables();
+
+  // 公會系統
+  guildMgr.ensureTables();
+
+  // 每日簽到系統
+  dailyRewardMgr.ensureTables();
+
   // DungeonManager：載入首通紀錄
   dungeonMgr.init();
+
+  // 副本通關 → 公會經驗 +50 + 二轉任務鉤子
+  dungeonMgr.setOnClearFn((playerIds, dungeonId, isSolo) => {
+    let guildGranted = false;
+    for (const pid of playerIds) {
+      // 二轉任務：副本通關
+      classQuest2Mgr.onDungeonClear(pid, dungeonId ?? '', isSolo ?? playerIds.length === 1);
+      // 公會經驗（同公會只加一次）
+      if (!guildGranted) {
+        const gid = guildMgr.getCharacterGuildId(pid);
+        if (gid) {
+          guildMgr.addGuildExp(gid, 50);
+          guildGranted = true;
+        }
+      }
+    }
+  });
+
+  // 任務完成 → 公會經驗 +20
+  questMgr.setOnQuestComplete((characterId) => {
+    const gid = guildMgr.getCharacterGuildId(characterId);
+    if (gid) {
+      guildMgr.addGuildExp(gid, 20);
+    }
+  });
 
   // BuildingManager：從資料庫載入王國房間
   buildingMgr.loadFromDb();
@@ -146,6 +209,16 @@ export function initGameSystems(): void {
   // 好友系統
   friendMgr.ensureTables();
 
+  // 教學系統
+  tutorialMgr.ensureTables();
+
+  // 副本匹配系統
+  dungeonMatchMgr.setCharacterLookup((id) => getCharacterById(id) ?? undefined);
+  dungeonMatchMgr.setCreateInstanceFn((partyId, dungeonId, players) =>
+    dungeonMgr.createInstance(partyId, dungeonId, players),
+  );
+  dungeonMatchMgr.init();
+
   // 拍賣過期處理（每 60 秒）
   setInterval(() => {
     auctionMgr.processExpiredAuctions();
@@ -155,6 +228,127 @@ export function initGameSystems(): void {
   setInterval(() => {
     petMgr.decayHappiness();
   }, 3_600_000);
+
+  // 自動戰鬥系統：設定回呼
+  autoBattleMgr.setCallbacks({
+    autoAttack: (characterId) => {
+      const char = getCharacterById(characterId);
+      if (!char) return;
+      if (combat.isInCombat(characterId)) return;
+      // 尋找房間內的怪物並自動攻擊
+      const monster = world.getAliveMonsters(char.roomId)[0];
+      if (!monster) return;
+      // 透過事件通知 commands 層處理攻擊（避免循環依賴）
+      // 簡化方式：直接發起戰鬥
+      const combatId = combat.startCombat([char], [monster], (result) => {
+        if (result === 'victory') {
+          questMgr.updateProgress(char.id, 'kill', monster.monsterId);
+          world.killMonster(char.roomId, monster.instanceId);
+
+          // 計算並發放戰利品
+          const freshChar = getCharacterById(characterId);
+          if (freshChar) {
+            const drops = lootCalc.calculateDrops(monster.def, freshChar.stats.luk);
+            // 經驗值
+            if (drops.exp > 0) {
+              freshChar.exp += drops.exp;
+              // 升級檢查
+              let leveled = false;
+              while (freshChar.exp >= getExpForLevel(freshChar.level + 1)) {
+                freshChar.level++;
+                freshChar.freePoints += 5;
+                freshChar.maxHp += 10 + freshChar.stats.vit * 2;
+                freshChar.hp = freshChar.maxHp;
+                freshChar.maxMp += 5 + freshChar.stats.int;
+                freshChar.mp = freshChar.maxMp;
+                leveled = true;
+              }
+              if (leveled) {
+                skillTreeMgr.grantPoint(characterId, freshChar);
+                sendToCharacter(characterId, 'system', {
+                  text: `【自動戰鬥】升級了！目前等級 Lv.${freshChar.level}`,
+                });
+              }
+            }
+            // 金幣
+            if (drops.gold > 0) {
+              freshChar.gold += drops.gold;
+            }
+            saveCharacter(freshChar);
+            // 物品掉落
+            for (const item of drops.items) {
+              addInventoryItem(characterId, item.itemId, item.quantity);
+            }
+            // 通知
+            const itemNames = drops.items.map(i => {
+              const def = ITEM_DEFS[i.itemId];
+              return `${def?.name ?? i.itemId} x${i.quantity}`;
+            });
+            const parts: string[] = [];
+            if (drops.exp > 0) parts.push(`經驗 +${drops.exp}`);
+            if (drops.gold > 0) parts.push(`金幣 +${drops.gold}`);
+            parts.push(...itemNames);
+            if (parts.length > 0) {
+              sendToCharacter(characterId, 'system', {
+                text: `【自動戰鬥】戰利品：${parts.join('、')}`,
+              });
+            }
+          }
+
+          // 繼續自動戰鬥
+          autoBattleMgr.processAutoAction(characterId);
+        }
+      });
+      if (combatId) {
+        sendToCharacter(characterId, 'system', { text: `【自動戰鬥】向${monster.def.name}發起攻擊！` });
+      }
+    },
+    autoUsePotion: (characterId) => {
+      const char = getCharacterById(characterId);
+      if (!char) return;
+      // 尋找背包中的 HP 藥水
+      const inv = getInventory(characterId);
+      const potionPriority = ['large_hp_potion', 'medium_hp_potion', 'small_hp_potion', 'hp_potion'];
+      for (const potionId of potionPriority) {
+        const found = inv.find(i => i.itemId === potionId && i.quantity > 0);
+        if (found) {
+          const def = ITEM_DEFS[potionId];
+          if (def?.useEffect?.type === 'heal_hp') {
+            removeInventoryItem(characterId, potionId, 1);
+            const healed = Math.min(def.useEffect.value, char.maxHp - char.hp);
+            char.hp = Math.min(char.maxHp, char.hp + def.useEffect.value);
+            saveCharacter(char);
+            sendToCharacter(characterId, 'system', { text: `【自動戰鬥】使用了「${def.name}」，回復 ${healed} HP。` });
+          }
+          break;
+        }
+      }
+    },
+    autoFlee: (characterId) => {
+      const combatId = combat.getPlayerCombatId(characterId);
+      if (!combatId) return;
+      combat.submitAction(combatId, { actorId: characterId, type: 'flee' });
+      sendToCharacter(characterId, 'system', { text: '【自動戰鬥】HP 過低，嘗試逃跑！' });
+    },
+    autoLoot: (characterId) => {
+      const char = getCharacterById(characterId);
+      if (!char) return;
+
+      // 撿取房間中所有可用的地上物品
+      const room = getRoom(char.roomId);
+      if (!room?.groundItems) return;
+
+      for (const gi of room.groundItems) {
+        const def = ITEM_DEFS[gi.itemId];
+        if (def) {
+          addInventoryItem(characterId, gi.itemId, 1);
+          sendToCharacter(characterId, 'system', {
+            text: `【自動拾取】撿起了「${def.name}」。`,
+          });
+        }
+      }
+    },
+  });
 
   console.log('[Game] 所有遊戲子系統初始化完成');
 }
@@ -193,6 +387,7 @@ export function shutdownGameSystems(): void {
   partyMgr.destroy();
   tradeMgr.destroy();
   dungeonMgr.shutdown();
+  dungeonMatchMgr.shutdown();
   worldEventMgr.shutdown();
   weatherMgr.shutdown();
 }

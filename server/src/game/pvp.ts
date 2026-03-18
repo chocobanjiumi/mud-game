@@ -9,7 +9,7 @@ import { recordPvp, updateLeaderboard } from '../db/database.js';
 import { getDb } from '../db/schema.js';
 import { getInventory, removeInventoryItem, addInventoryItem } from '../db/queries.js';
 import { expRequiredForLevel } from './player.js';
-import { questMgr } from './state.js';
+import { questMgr, classQuest2Mgr } from './state.js';
 
 // ============================================================
 //  型別定義
@@ -447,6 +447,9 @@ export class PvPManager {
     } catch {
       // 忽略
     }
+
+    // 二轉任務：PvP 勝利鉤子
+    classQuest2Mgr.onPvPWin(winnerId);
 
     // 通知雙方
     const typeText = type === 'duel' ? '決鬥' : '競技場';

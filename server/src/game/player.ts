@@ -174,6 +174,13 @@ export class PlayerManager {
     return levelsGained;
   }
 
+  /** 升級時的外部回呼（用於技能樹等系統） */
+  private onLevelUpFn: ((characterId: string, character: Character) => void) | null = null;
+
+  setOnLevelUp(fn: (characterId: string, character: Character) => void): void {
+    this.onLevelUpFn = fn;
+  }
+
   /** 執行一次升級 */
   private performLevelUp(char: Character): void {
     char.level++;
@@ -188,6 +195,11 @@ export class PlayerManager {
     const mpGrowth = Math.floor(5 + char.stats.int * 1.5);
     char.maxMp += mpGrowth;
     char.mp = char.maxMp; // 升級時回滿
+
+    // 外部回呼（技能樹給點等）
+    if (this.onLevelUpFn) {
+      this.onLevelUpFn(char.id, char);
+    }
   }
 
   /** 取得距離下一級還需要多少經驗 */

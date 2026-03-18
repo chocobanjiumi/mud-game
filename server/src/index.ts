@@ -6,7 +6,7 @@ import fastifyWebsocket from '@fastify/websocket';
 import { initDb, closeDb } from './db/schema.js';
 import { createSession, removeSession, cleanupStale, getOnlineCount, sendToCharacter } from './ws/handler.js';
 import { handleMessage, cleanupRateLimit } from './ws/protocol.js';
-import { initGameSystems, shutdownGameSystems, combat, dungeonMgr, pvpMgr, world } from './game/state.js';
+import { initGameSystems, shutdownGameSystems, combat, dungeonMgr, pvpMgr, world, autoBattleMgr, dungeonMatchMgr, skillTreeMgr } from './game/state.js';
 import { AgentController } from './ai/agent.js';
 import { getCharacterById, saveCharacter } from './db/queries.js';
 import { handleCommand } from './game/commands.js';
@@ -25,6 +25,9 @@ async function main(): Promise<void> {
   // 初始化遊戲子系統
   console.log('[Server] 正在初始化遊戲子系統...');
   initGameSystems();
+
+  // 設定技能樹管理器
+  combat.setSkillTreeManager(skillTreeMgr);
 
   // 設定戰鬥引擎的廣播函式
   combat.setBroadcastFunction((_combatId, playerIds, message) => {
@@ -147,8 +150,12 @@ async function main(): Promise<void> {
       });
 
       socket.on('close', () => {
-        // 移除世界中的玩家追蹤
         if (session.characterId) {
+          // 清除自動戰鬥計時器
+          autoBattleMgr.cleanup(session.characterId);
+          // 移除副本排隊
+          dungeonMatchMgr.leaveQueue(session.characterId);
+          // 移除世界中的玩家追蹤
           const char = getCharacterById(session.characterId);
           if (char) {
             world.removePlayer(session.characterId);
@@ -160,6 +167,10 @@ async function main(): Promise<void> {
 
       socket.on('error', (err) => {
         console.error(`[WS] 連線錯誤 (${session.sessionId}):`, err);
+        if (session.characterId) {
+          autoBattleMgr.cleanup(session.characterId);
+          dungeonMatchMgr.leaveQueue(session.characterId);
+        }
         cleanupRateLimit(session.sessionId);
         removeSession(session.sessionId);
       });

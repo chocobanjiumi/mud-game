@@ -96,6 +96,23 @@ function ResourceBar({
   );
 }
 
+function AudioSettingsButton() {
+  const audioSettingsOpen = useGameStore((s) => s.audioSettingsOpen);
+  const setAudioSettingsOpen = useGameStore((s) => s.setAudioSettingsOpen);
+  const audioEnabled = useGameStore((s) => s.audioEnabled);
+
+  return (
+    <button
+      type="button"
+      onClick={() => setAudioSettingsOpen(!audioSettingsOpen)}
+      className="flex items-center gap-1 px-1.5 py-0.5 rounded border border-border-dim/50 bg-bg-primary/30 hover:bg-bg-tertiary transition-colors cursor-pointer"
+      title="音效設定"
+    >
+      <span className="text-xs">{audioEnabled ? '🔊' : '🔇'}</span>
+    </button>
+  );
+}
+
 function ArinovaTokenBadge() {
   const balance = useGameStore((s) => s.arinovaTokenBalance);
 
@@ -162,6 +179,9 @@ export default function StatusBar() {
               })}
             </div>
           )}
+
+          {/* Audio settings */}
+          <AudioSettingsButton />
 
           {/* Arinova Token balance */}
           <ArinovaTokenBadge />

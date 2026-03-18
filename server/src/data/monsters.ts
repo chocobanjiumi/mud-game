@@ -1299,7 +1299,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'small_mp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'passive',
-    description: '帶有冰屬性的史萊姆，觸感冰涼。比普通史萊姆稍強，偶爾會凍住靠近的草叢。',
+    description: '帶有冰屬性的史萊姆，半透明的身軀中隱約可見冰藍色的結晶核心，觸感冰涼刺骨。牠滑過的地面會留下一層薄霜，比普通史萊姆稍強，偶爾會凍住靠近的草叢和小蟲。',
     isBoss: false,
     guardianHints: {
       creature: '藍色史萊姆在低溫時活動力更強——在炎熱的午後牠會變得遲鈍。',
@@ -1329,7 +1329,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'small_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '哥布林部落的偵察兵，身材矮小但動作靈活，擅長遠程騷擾和偵察地形。',
+    description: '哥布林部落的偵察兵，身材矮小但動作靈活，綠色的皮膚上塗抹著泥土作為偽裝。牠手持簡陋的短弓，擅長遠程騷擾和偵察地形，一旦發現獵物就會吹響骨笛召喚同伴。',
     isBoss: false,
     guardianHints: {
       creature: '斥候總是有同伴在附近——看到一個意味著周圍至少還有兩個。',
@@ -1359,7 +1359,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'leather_armor', chance: 0.05, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '裝備簡陋武器的哥布林戰士，好鬥且兇殘，會用利齒撕咬敵人。',
+    description: '裝備簡陋武器的哥布林戰士，好鬥且兇殘，渾身散發著刺鼻的惡臭。牠會用鏽蝕的短刀和鋒利的獠牙撕咬敵人，戰鬥時發出刺耳的嘶吼，在部落中以殘忍聞名。',
     isBoss: false,
     guardianHints: {
       creature: '哥布林戰士會在武器上塗抹泥土——雖然不是毒素但可能會感染傷口。',
@@ -1388,7 +1388,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'leather_gloves', chance: 0.06, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '脾氣暴躁的大型野豬，一旦被激怒就會猛力衝撞。厚實的皮革和強壯的體格讓牠非常難對付。',
+    description: '脾氣暴躁的大型野豬，褐色的粗糙毛皮下是結實如鐵的肌肉。一旦被激怒，牠會低下頭露出鋒利的獠牙猛力衝撞，厚實的皮革和強壯的體格讓牠非常難對付，連樹幹都能被牠撞斷。',
     isBoss: false,
     guardianHints: {
       creature: '野豬衝鋒時無法轉向——側步閃開就能讓牠撞上後方的障礙物。',
@@ -1417,7 +1417,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'swift_boots', chance: 0.04, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '翱翔在平原上空的猛禽，速度極快。牠的尖嘯能讓獵物瞬間喪失方向感。',
+    description: '翱翔在平原上空的猛禽，翠綠色的羽翼裹挾著風之魔力，俯衝時速度快得肉眼幾乎無法捕捉。牠的尖嘯帶有自然元素的共鳴，能讓獵物瞬間喪失方向感，在暈眩中被利爪擒住。',
     isBoss: false,
     guardianHints: {
       creature: '風之鷹在俯衝時有固定的角度——觀察牠起飛的方向就能預判攻擊路線。',
@@ -1448,7 +1448,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'lucky_charm', chance: 0.05, minQty: 1, maxQty: 1 },
     ],
     aiType: 'boss',
-    description: '統率哥布林部落的首領，體型比一般哥布林大上許多。手持粗糙但威力驚人的戰斧，一聲嘶吼就能召集數十名部下。',
+    description: '統率哥布林部落的首領，體型比一般哥布林大上許多，渾身佈滿戰鬥留下的傷疤。手持粗糙但威力驚人的戰斧，頭戴用敵人骨頭製成的王冠，一聲嘶吼就能召集數十名部下衝鋒陷陣。',
     isBoss: true,
     guardianHints: {
       creature: '首領在戰鬥中會召喚部下——先解決小兵再集中對付首領是上策。',
@@ -1479,7 +1479,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'antidote', chance: 0.25, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
-    description: '在森林中結網的巨型蜘蛛，會噴射毒液纏住獵物。牠的蛛絲強韌無比，被纏住就很難掙脫。',
+    description: '在森林中結網的巨型蜘蛛，翠綠色的甲殼與樹葉融為一體，八隻長腿在枝幹間靈活穿梭。牠會噴射帶有自然毒素的蛛絲纏住獵物，那蛛絲強韌無比，連鐵劍都難以割斷，被纏住就只能等待被緩慢吞噬。',
     isBoss: false,
     guardianHints: {
       creature: '森林蜘蛛的蛛網在陽光下會反光——注意觀察樹枝間的異常光澤。',
@@ -1509,7 +1509,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '在森林深處潛伏的暗精靈，箭術精湛。牠們身手敏捷，擅長利用樹蔭進行伏擊。',
+    description: '在森林深處潛伏的暗精靈，灰紫色的皮膚和漆黑的長髮讓牠完美融入陰影之中。牠們箭術精湛，能在百步之外射穿鎧甲的縫隙，身手敏捷如鬼魅，擅長利用樹蔭進行致命的伏擊。',
     isBoss: false,
     guardianHints: {
       creature: '暗精靈弓手在射擊前會有微弱的弓弦振動聲——豎起耳朵就能提前閃避。',
@@ -1539,7 +1539,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'medium_mp_potion', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'healer',
-    description: '隱居在森林深處的女巫，精通自然魔法。她的根藤束縛和樹皮護盾讓她難以接近。',
+    description: '隱居在森林深處的女巫，披著由藤蔓和苔蘚編織的長袍，手持纏繞著發光蘑菇的木杖。她精通自然魔法，能召喚地底的根藤束縛入侵者，並以樹皮護盾抵禦攻擊，是森林中最狡猾的魔法使用者。',
     isBoss: false,
     guardianHints: {
       creature: '女巫的魔力來自腳下的大地——將她引到岩石地面上會削弱她的法術。',
@@ -1570,7 +1570,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'flame_sword', chance: 0.03, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '在洞窟深處遊蕩的火焰精靈，由純粹的火焰凝聚而成，觸碰任何東西都會燃燒。',
+    description: '在洞窟深處遊蕩的火焰精靈，由純粹的火焰魔力凝聚而成，不定形的身體不斷變幻著橙紅與金黃的色彩。牠飄過之處空氣都在扭曲，觸碰任何東西都會瞬間燃燒，物理攻擊如同劈砍烈火般徒勞無功。',
     isBoss: false,
     guardianHints: {
       creature: '火焰元素在潮濕環境中會縮小——用水系攻擊能有效削弱牠。',
@@ -1601,7 +1601,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'divine_scepter', chance: 0.05, minQty: 1, maxQty: 1 },
     ],
     aiType: 'boss',
-    description: '盤踞在水晶洞窟最深處的幼龍，雖然年幼但實力不容小覷。牠的鱗片堅硬如鐵，火焰吐息能融化岩石。',
+    description: '盤踞在水晶洞窟最深處的幼龍，赤金色的鱗片在火光下閃爍著危險的光芒，雖然年幼但實力不容小覷。牠的鱗片堅硬如鐵，火焰吐息能融化岩石，盤踞在金幣和寶石堆成的巢穴中，對任何接近者都充滿敵意。',
     isBoss: true,
     guardianHints: {
       creature: '幼龍的腹部鱗片尚未完全硬化——瞄準那裡能造成額外傷害。',
@@ -1632,7 +1632,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '棲息在湖畔的大蛇，擅長水中突襲。牠能以閃電般的速度纏繞獵物，注入致命毒液。',
+    description: '棲息在湖畔淺灘的大蛇，墨綠色的鱗片在水面下若隱若現，與水草難以分辨。牠擅長水中突襲，能以閃電般的速度從水下竄出纏繞獵物，再將致命毒液注入傷口，讓獵物在痛苦中失去反抗之力。',
     isBoss: false,
     guardianHints: {
       creature: '湖蛇在水中速度驚人，但爬上岸後會變得遲鈍——把牠引到岸上戰鬥。',
@@ -1661,7 +1661,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'iron_gauntlets', chance: 0.06, minQty: 1, maxQty: 1 },
     ],
     aiType: 'defensive',
-    description: '由冰霜凝聚而成的魔像，堅硬如鋼，行動緩慢。牠的每一拳都帶著刺骨的寒氣。',
+    description: '由冰霜凝聚而成的魔像，通體散發著白藍色的寒光，身高超過兩公尺，表面覆蓋著永不融化的冰層。牠行動緩慢但堅硬如鋼，每一拳都帶著刺骨的寒氣，被擊中的部位會迅速結冰麻痺。',
     isBoss: false,
     guardianHints: {
       creature: '冰霜魔像轉身極慢——繞到牠背後攻擊可以避開正面的寒氣反擊。',
@@ -1691,7 +1691,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'medium_mp_potion', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
-    description: '墮落的法師，操控暗影魔法，極度危險。他的暗影之力能吞噬光明與生命。',
+    description: '墮落的法師，身披破爛的黑色法袍，眼窩中閃爍著紫色的幽光，周身纏繞著扭曲的暗影氣息。他操控的暗影魔法極度危險，能吞噬光明與生命，站在他面前就能感受到靈魂被拉扯的恐懼。',
     isBoss: false,
     guardianHints: {
       creature: '暗黑法師施法時需要集中精神——在牠詠唱時發動攻擊可以打斷法術。',
@@ -1720,7 +1720,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'plate_armor', chance: 0.04, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '被黑暗力量復活的騎士，仍保留著生前精湛的劍術。空洞的眼窩中燃燒著不滅的怨念之火。',
+    description: '被黑暗力量復活的騎士，鏽蝕的鎧甲下是枯朽的骸骨，卻仍保留著生前精湛的劍術和戰鬥本能。空洞的眼窩中燃燒著不滅的怨念之火，手中的闊劍依然揮舞得虎虎生風，在古城廢墟中永恆地巡邏。',
     isBoss: false,
     guardianHints: {
       creature: '亡靈騎士的動作帶有生前的戰鬥記憶——觀察牠的架勢可以預判下一步行動。',
@@ -1749,7 +1749,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'crystal_shard', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
-    description: '身披雷電的巨鷹，每次俯衝都帶著閃電之力。牠的翅膀拍動時電弧四射。',
+    description: '身披雷電的巨鷹，翼展超過三公尺，金藍色的羽毛間不時竄出細小的電弧。牠在雷雲中翱翔如魚得水，每次俯衝都伴隨著轟鳴的雷聲和刺目的閃光，利爪劃過之處留下灼焦的痕跡。',
     isBoss: false,
     guardianHints: {
       creature: '雷鷹在暴風雨中力量倍增——選擇晴天戰鬥對冒險者更有利。',
@@ -1779,7 +1779,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_mp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'healer',
-    description: '曾經的神職人員，墮入黑暗後扭曲了神聖之力。如今他以吸取生命和致盲為樂。',
+    description: '曾經的神職人員，身穿被暗影侵蝕得發黑的祭袍，胸前的聖徽已扭曲成邪惡的符文。墮入黑暗後他扭曲了神聖之力，乾枯的雙手能釋放吞噬生命的黑霧，如今他以吸取生命和致盲為樂。',
     isBoss: false,
     guardianHints: {
       creature: '詛咒祭司的暗影之力來自胸口的腐朽聖物——破壞它就能大幅削弱他。',
@@ -1809,7 +1809,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_hp_potion', chance: 0.5, minQty: 2, maxQty: 3 },
     ],
     aiType: 'boss',
-    description: '盤踞在深湖中的傳說級怪物，九個蛇頭同時攻擊，極為致命。每砍斷一個頭就會長出兩個。',
+    description: '盤踞在深湖中的傳說級怪物，龐大的身軀盤踞在湖底，九個蛇頭從水面探出時如同九根死亡之柱。每個頭顱都能獨立思考和攻擊，毒牙和水之魔法讓牠極為致命，最恐怖的是每砍斷一個頭就會長出兩個。',
     isBoss: true,
     guardianHints: {
       creature: '九頭蛇的心臟在中央蛇頭的喉部——用火焰灼燒斷頭處可以阻止再生。',
@@ -1840,7 +1840,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'composite_bow', chance: 0.06, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
-    description: '暗影中的殺手，身法詭譎，出手必中要害。牠的暗影步能讓牠瞬間出現在目標身後。',
+    description: '暗影中的殺手，全身裹著漆黑的斗篷，面容隱藏在深不見底的兜帽之下。牠的身法詭譎莫測，暗影步能讓牠瞬間出現在目標身後，淬毒的匕首出手必中要害，在你感到後頸一涼時一切已經太遲。',
     isBoss: false,
     guardianHints: {
       creature: '暗影刺客在攻擊前會短暫現身——抓住那個瞬間反擊。',
@@ -1869,7 +1869,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_hp_potion', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
-    description: '騎乘火龍的精銳騎士，全身散發灼人的熱浪。騎士與龍的配合讓他們成為戰場上的噩夢。',
+    description: '騎乘火龍的精銳騎士，身穿被龍焰鍛煉過的黑鐵甲冑，全身散發著灼人的熱浪。他與坐騎之間有著超越語言的默契，騎士衝鋒時火龍同時噴吐烈焰，人龍合一的攻勢讓他們成為戰場上令人絕望的噩夢。',
     isBoss: false,
     guardianHints: {
       creature: '騎士和龍是一體的——攻擊龍的翅膀可以限制他們的機動性。',
@@ -1898,7 +1898,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_hp_potion', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'defensive',
-    description: '千年樹人，守護著森林最深處的祕境。牠的根系延伸數百公尺，能感知踏入領地的一切生物。',
+    description: '千年樹人，身軀粗壯如塔樓，枝葉間棲息著無數飛鳥和小獸，宛如一座移動的森林。牠守護著森林最深處的祕境，根系延伸數百公尺，能感知踏入領地的一切生物，緩慢而不可阻擋地碾碎任何入侵者。',
     isBoss: false,
     guardianHints: {
       creature: '遠古樹人的弱點在樹幹深處的年輪核心——需要先斬斷外層的保護根系。',
@@ -1928,7 +1928,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_mp_potion', chance: 0.4, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
-    description: '不死族的魔法使，操控著死亡與腐朽的力量。牠的暗影風暴能吞噬一切生命。',
+    description: '不死族的魔法使，枯槁的身軀裹在華麗的腐朽法袍中，骨指間跳躍著幽綠色的鬼火。牠操控著死亡與腐朽的力量，周身瀰漫著令人窒息的屍臭，暗影風暴一旦釋放便能吞噬方圓數十公尺內的一切生命。',
     isBoss: false,
     guardianHints: {
       creature: '巫妖的生命力寄宿在隱藏的命匣中——找到並摧毀它才能真正消滅巫妖。',
@@ -1957,7 +1957,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'shadow_essence', chance: 0.4, minQty: 2, maxQty: 4 },
     ],
     aiType: 'aggressive',
-    description: '來自魔界的戰士，渾身燃燒著暗紅色的火焰。牠的力量足以徒手撕裂鐵甲。',
+    description: '來自魔界的戰士，身高超過兩公尺，猩紅的皮膚上佈滿岩漿般的裂紋，渾身燃燒著暗紅色的火焰。牠手持烈焰大劍，力量足以徒手撕裂鐵甲，每一次揮劍都伴隨著灼熱的氣浪和地獄般的咆哮。',
     isBoss: false,
     guardianHints: {
       creature: '魔族戰士在燃燒狀態下防禦會降低——用冰屬性攻擊滅掉他的火焰。',
@@ -1991,7 +1991,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'large_mp_potion', chance: 0.8, minQty: 3, maxQty: 5 },
     ],
     aiType: 'boss',
-    description: '魔界的統治者之一，恐怖的存在，需要整支隊伍才有可能擊敗。牠的暗影力量能扭曲現實本身。',
+    description: '魔界的統治者之一，身形巨大如山丘，漆黑的雙角直插天際，渾身散發著令人窒息的暗黑威壓。牠的暗影力量能扭曲現實本身，所到之處大地龜裂、天空昏暗，是需要整支精銳隊伍才有可能撼動的恐怖存在。',
     isBoss: true,
     guardianHints: {
       creature: '大惡魔有三個戰鬥階段——每階段弱點不同，觀察牠的姿態變化是關鍵。',

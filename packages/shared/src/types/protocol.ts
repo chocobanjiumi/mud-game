@@ -23,7 +23,7 @@ export type ServerMessageType =
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'skill_learned' | 'class_change' | 'trade'
-  | 'quest' | 'quest_update' | 'leaderboard' | 'map' | 'token_balance'
+  | 'quest' | 'quest_update' | 'leaderboard' | 'leaderboard_data' | 'map' | 'token_balance'
   | 'shop_items' | 'purchase_result' | 'transaction_history' | 'balance_update';
 
 export interface ServerMessage {
@@ -156,6 +156,20 @@ export interface TransactionHistoryPayload {
 
 export interface BalanceUpdatePayload {
   balance: number;
+}
+
+// Leaderboard-related types
+
+export interface LeaderboardEntry {
+  characterId: string;
+  name: string;
+  classId: string;
+  score: number;
+}
+
+export interface LeaderboardDataPayload {
+  category: 'level' | 'pvp' | 'dungeon_speed';
+  entries: LeaderboardEntry[];
 }
 
 // Agent-related types
