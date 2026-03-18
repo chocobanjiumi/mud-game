@@ -103,7 +103,7 @@ export function handleCommand(session: WsSession, input: string): void {
   }
 
   switch (cmd) {
-    case 'look': cmdLook(session); break;
+    case 'look': cmdLook(session, argStr); break;
     case 'go': case 'move': cmdGo(session, argStr); break;
     case 'status': cmdStatus(session); break;
     case 'inventory': cmdInventory(session); break;
@@ -194,9 +194,47 @@ export function handleCommand(session: WsSession, input: string): void {
 
 // ─── 基本指令 ───
 
-function cmdLook(session: WsSession): void {
+function cmdLook(session: WsSession, target?: string): void {
   const char = getChar(session);
   if (!char) return;
+
+  // look <target> — 查看 NPC、怪物或玩家
+  if (target) {
+    // 先找 NPC
+    const npc = findNpcByName(target, char.roomId);
+    if (npc) {
+      sendSystem(session.sessionId, `═══ ${npc.name}（${npc.title}）═══`);
+      sendSystem(session.sessionId, `類型：${npc.type === 'merchant' ? '商人' : npc.type === 'class_trainer' ? '職業導師' : npc.type === 'quest' ? '任務' : npc.type === 'innkeeper' ? '旅店老闆' : 'NPC'}`);
+      if (npc.dialogue?.length > 0) {
+        sendSystem(session.sessionId, `輸入 talk ${npc.name} 與其對話`);
+      }
+      if (npc.shopItems?.length) {
+        sendSystem(session.sessionId, `此 NPC 可交易，輸入 talk ${npc.name} 開啟商店`);
+      }
+      return;
+    }
+    // 找怪物
+    const monsters = world.getAliveMonsters(char.roomId);
+    const monster = monsters.find(m => m.def.name.includes(target));
+    if (monster) {
+      sendSystem(session.sessionId, `═══ ${monster.def.name} ═══`);
+      sendSystem(session.sessionId, `等級：${monster.def.level}  HP：${monster.hp}/${monster.maxHp}`);
+      sendSystem(session.sessionId, `輸入 attack ${monster.def.name} 攻擊`);
+      return;
+    }
+    // 找玩家
+    const playersInRoom = world.getPlayersInRoom(char.roomId).filter(id => id !== char.id);
+    for (const pid of playersInRoom) {
+      const p = getCharacterById(pid);
+      if (p && p.name.includes(target)) {
+        sendSystem(session.sessionId, `═══ ${p.name} ═══`);
+        sendSystem(session.sessionId, `等級 ${p.level} ${p.classId}`);
+        return;
+      }
+    }
+    sendSystem(session.sessionId, `找不到「${target}」。`);
+    return;
+  }
 
   const roomInfo = world.getRoomInfo(char.roomId);
   if (!roomInfo) {
