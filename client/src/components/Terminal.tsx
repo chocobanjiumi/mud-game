@@ -50,7 +50,7 @@ function getActionsForEntity(entity: TerminalEntity): { label: string; command: 
       { label: '對話', command: `talk ${entity.cmdName}` },
     ];
     if (entity.npcType === 'merchant') {
-      actions.push({ label: '交易', command: `talk ${entity.cmdName}` });
+      actions.push({ label: '交易', command: `shop ${entity.cmdName}` });
     }
     return actions;
   }
@@ -185,7 +185,7 @@ export default function Terminal() {
       {popup && (
         <div
           className="fixed z-50 bg-bg-secondary border border-border-dim rounded shadow-lg py-1 min-w-[100px]"
-          style={{ left: popup.x, top: popup.y }}
+          style={{ left: popup.x, bottom: window.innerHeight - popup.y }}
           onClick={(e) => e.stopPropagation()}
         >
           <div className="px-3 py-1 text-xs text-text-dim border-b border-border-dim">
