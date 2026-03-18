@@ -10,6 +10,15 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
+  // Debug: log ALL postMessages to see what format parent sends
+  useEffect(() => {
+    const debugHandler = (event: MessageEvent) => {
+      console.log('[MUD-DEBUG] postMessage received:', JSON.stringify(event.data));
+    };
+    window.addEventListener('message', debugHandler);
+    return () => window.removeEventListener('message', debugHandler);
+  }, []);
+
   // Auto-connect on mount — iframe postMessage may arrive before user clicks
   // Also handle OAuth PKCE callback if redirected back with ?code=
   useEffect(() => {
