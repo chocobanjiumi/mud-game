@@ -240,6 +240,7 @@ async function handleLogin(
 
   // 先用 userId 查，找不到再用角色名稱查
   const characters = getCharactersByUserId(verifiedUserId);
+  console.log(`[WS] login: found ${characters.length} characters for userId ${verifiedUserId}`);
 
   if (characters.length === 0) {
     // 嘗試用名稱查找（登入畫面送的是角色名稱）
