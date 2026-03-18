@@ -35,7 +35,7 @@ import { ACHIEVEMENT_DEFS } from './achievement.js';
 import { PET_DEFS } from './pet.js';
 import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
-import { findNpcByName } from '../data/npcs.js';
+import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom } from '../data/rooms.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
@@ -100,6 +100,27 @@ export function handleCommand(session: WsSession, input: string): void {
 
   if (aliasMap[trimmed.toLowerCase()]) {
     return handleCommand(session, aliasMap[trimmed.toLowerCase()]);
+  }
+
+  // 數字輸入 → 對話選項回覆
+  const numChoice = parseInt(cmd, 10);
+  if (!isNaN(numChoice) && args.length === 0) {
+    const active = activeDialogues.get(session.sessionId);
+    if (active) {
+      const char = getChar(session);
+      if (char) {
+        const npc = getNpcsByRoom(char.roomId).find(n => n.id === active.npcId);
+        if (npc) {
+          const currentNode = npc.dialogue.find(d => d.id === active.nodeId);
+          if (currentNode?.options && numChoice >= 1 && numChoice <= currentNode.options.length) {
+            const chosen = currentNode.options[numChoice - 1];
+            showDialogueNode(session, npc, chosen.nextId);
+            questMgr.updateProgress(char.id, 'talk', npc.id);
+            return;
+          }
+        }
+      }
+    }
   }
 
   switch (cmd) {
@@ -1222,29 +1243,99 @@ function cmdSay(session: WsSession, message: string): void {
   });
 }
 
+// 追蹤玩家目前的 NPC 對話狀態
+const activeDialogues = new Map<string, { npcId: string; nodeId: string }>();
+
+function showDialogueNode(session: WsSession, npc: { id: string; name: string; dialogue: { id: string; text: string; options?: { text: string; nextId: string }[]; action?: { type: string; data?: Record<string, unknown> } }[] }, nodeId: string): void {
+  const node = npc.dialogue.find(d => d.id === nodeId);
+  if (!node) {
+    sendSystem(session.sessionId, `${npc.name}沉默了。`);
+    activeDialogues.delete(session.sessionId);
+    return;
+  }
+
+  // 執行 action
+  if (node.action) {
+    const char = getChar(session);
+    if (char) {
+      switch (node.action.type) {
+        case 'shop':
+          sendSystem(session.sessionId, `${npc.name}展示了商品。輸入 buy <物品> 購買。`);
+          break;
+        case 'heal':
+          char.hp = char.maxHp;
+          char.mp = char.maxMp;
+          saveCharacter(char);
+          sendSystem(session.sessionId, `${npc.name}為你治療了傷勢。HP 和 MP 已完全恢復！`);
+          break;
+        case 'quest_start': {
+          const questId = node.action.data?.questId as string;
+          if (questId) {
+            const result = questMgr.acceptQuest(char.id, questId);
+            sendSystem(session.sessionId, result.message);
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  let dialogueText = `【${npc.name}】：${node.text}`;
+  if (node.options && node.options.length > 0) {
+    dialogueText += '\n';
+    for (let i = 0; i < node.options.length; i++) {
+      dialogueText += `\n  ${i + 1}. ${node.options[i].text}`;
+    }
+    // 記錄對話狀態
+    activeDialogues.set(session.sessionId, { npcId: npc.id, nodeId });
+  } else {
+    // 沒有選項，對話結束
+    activeDialogues.delete(session.sessionId);
+  }
+  sendNarrative(session.sessionId, dialogueText);
+}
+
 function cmdTalk(session: WsSession, npcName: string): void {
   const char = getChar(session);
   if (!char) return;
-  if (!npcName) { sendError(session.sessionId, '用法：talk <NPC名稱>'); return; }
+  if (!npcName) { sendError(session.sessionId, '用法：talk <NPC名稱> 或 talk <NPC> <選項編號>'); return; }
+
+  // 解析 "talk elder 1" 格式
+  const parts = npcName.split(/\s+/);
+  const name = parts[0];
+  const choiceNum = parts.length > 1 ? parseInt(parts[parts.length - 1], 10) : NaN;
+
+  // 如果有數字且有進行中的對話，嘗試選擇選項
+  if (!isNaN(choiceNum)) {
+    const active = activeDialogues.get(session.sessionId);
+    if (active) {
+      const npc = findNpcByName(name, char.roomId);
+      if (npc && npc.id === active.npcId) {
+        const currentNode = npc.dialogue.find(d => d.id === active.nodeId);
+        if (currentNode?.options && choiceNum >= 1 && choiceNum <= currentNode.options.length) {
+          const chosen = currentNode.options[choiceNum - 1];
+          showDialogueNode(session, npc, chosen.nextId);
+          questMgr.updateProgress(char.id, 'talk', npc.id);
+          return;
+        } else {
+          sendError(session.sessionId, `請輸入 1-${currentNode?.options?.length ?? 0} 的選項。`);
+          return;
+        }
+      }
+    }
+  }
 
   // 在當前房間中搜尋 NPC
-  const npc = findNpcByName(npcName, char.roomId);
+  const npc = findNpcByName(name, char.roomId);
   if (!npc) {
-    sendSystem(session.sessionId, `這裡沒有名為「${npcName}」的 NPC。`);
+    sendSystem(session.sessionId, `這裡沒有名為「${name}」的 NPC。`);
     return;
   }
 
   // 顯示 NPC 的第一段對話
   const greeting = npc.dialogue?.[0];
   if (greeting) {
-    let dialogueText = `【${npc.name}】：${greeting.text}`;
-    if (greeting.options && greeting.options.length > 0) {
-      dialogueText += '\n';
-      for (let i = 0; i < greeting.options.length; i++) {
-        dialogueText += `\n  ${i + 1}. ${greeting.options[i].text}`;
-      }
-    }
-    sendNarrative(session.sessionId, dialogueText);
+    showDialogueNode(session, npc, greeting.id);
   } else {
     sendSystem(session.sessionId, `${npc.name}向你點了點頭，但沒有說話。`);
   }
