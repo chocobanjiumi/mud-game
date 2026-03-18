@@ -75,6 +75,7 @@ export interface CombatLoot {
 export interface MonsterDef {
   id: string;
   name: string; // 中文名
+  alias: string; // 英文短名 e.g. 'slime', 'wolf'
   level: number;
   hp: number;
   mp: number;

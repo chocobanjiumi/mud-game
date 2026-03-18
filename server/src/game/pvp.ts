@@ -304,6 +304,7 @@ export class PvPManager {
     const fakeMonsterDef: MonsterDef = {
       id: `pvp_${player2Id}`,
       name: player2Char.name,
+      alias: player2Char.name,
       level: player2Char.level,
       hp: player2Char.maxHp,
       mp: player2Char.maxMp,

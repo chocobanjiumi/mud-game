@@ -172,7 +172,7 @@ export class WorldManager {
     room: RoomDef;
     players: string[];
     monsters: MonsterInstance[];
-    npcs: { id: string; name: string; title: string }[];
+    npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   } | null {
     const room = getRoom(roomId);
     if (!room) return null;
@@ -182,7 +182,9 @@ export class WorldManager {
     const npcs = getNpcsByRoom(roomId).map(n => ({
       id: n.id,
       name: n.name,
+      alias: n.alias,
       title: n.title,
+      type: n.type,
     }));
 
     return { room, players, monsters, npcs };
@@ -242,13 +244,16 @@ export class WorldManager {
   /** 根據名稱或 ID 模糊查找房間內的怪物 */
   findMonsterInRoom(roomId: string, query: string): MonsterInstance | undefined {
     const alive = this.getAliveMonsters(roomId);
+    const q = query.toLowerCase();
     return alive.find(
       m =>
         m.def.name === query ||
         m.def.name.includes(query) ||
         m.monsterId === query ||
         m.monsterId.includes(query) ||
-        m.instanceId === query,
+        m.instanceId === query ||
+        m.def.alias.toLowerCase() === q ||
+        m.def.alias.toLowerCase().includes(q),
     );
   }
 

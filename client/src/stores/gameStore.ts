@@ -21,11 +21,22 @@ import type { SoundCategory } from '../audio/AudioManager';
 
 // --- Terminal line ---
 
+export type EntityType = 'npc' | 'monster' | 'player';
+
+export interface TerminalEntity {
+  name: string;       // 顯示名稱（含 alias）
+  entityType: EntityType;
+  alias?: string;     // 英文簡稱
+  npcType?: string;   // NPC 子類型 (merchant, etc.)
+  cmdName: string;    // 用於指令的名稱（中文名）
+}
+
 export interface TerminalLine {
   id: number;
   text: string;
   color?: string;
   timestamp: number;
+  entities?: TerminalEntity[];
 }
 
 // --- Party member ---
@@ -209,7 +220,7 @@ export interface GameState {
 
   // Terminal
   terminalLines: TerminalLine[];
-  addTerminalLine: (text: string, color?: string) => void;
+  addTerminalLine: (text: string, color?: string, entities?: TerminalEntity[]) => void;
   clearTerminal: () => void;
 
   // Map
@@ -376,13 +387,14 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Terminal
   terminalLines: [],
-  addTerminalLine: (text, color) =>
+  addTerminalLine: (text, color, entities) =>
     set((state) => {
       const newLine: TerminalLine = {
         id: ++_lineIdCounter,
         text,
         color,
         timestamp: Date.now(),
+        entities,
       };
       const lines = [...state.terminalLines, newLine];
       return { terminalLines: lines.slice(-MAX_TERMINAL_LINES) };

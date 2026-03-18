@@ -76,16 +76,34 @@ export function useWebSocket() {
           s.addTerminalLine(`出口: ${dirs}`, 'exits');
         }
         if (room.npcs.length > 0) {
-          const names = room.npcs.map((n) => `${n.name}(${n.title})`).join(', ');
-          s.addTerminalLine(`NPC: ${names}`, 'npc');
+          const names = room.npcs.map((n) => `${n.name}/${n.alias}(${n.title})`).join(', ');
+          const npcEntities = room.npcs.map((n) => ({
+            name: `${n.name}/${n.alias}(${n.title})`,
+            entityType: 'npc' as const,
+            alias: n.alias,
+            npcType: (n as any).type as string | undefined,
+            cmdName: n.name,
+          }));
+          s.addTerminalLine(`NPC: ${names}`, 'npc', npcEntities);
         }
         if (room.monsters.length > 0) {
-          const names = room.monsters.map((m) => `${m.name} Lv.${m.level}`).join(', ');
-          s.addTerminalLine(`怪物: ${names}`, 'monster');
+          const names = room.monsters.map((m) => `${m.name}/${m.alias} Lv.${m.level}`).join(', ');
+          const monsterEntities = room.monsters.map((m) => ({
+            name: `${m.name}/${m.alias} Lv.${m.level}`,
+            entityType: 'monster' as const,
+            alias: m.alias,
+            cmdName: m.name,
+          }));
+          s.addTerminalLine(`怪物: ${names}`, 'monster', monsterEntities);
         }
         if (room.players.length > 0) {
           const names = room.players.map((pl) => pl.name).join(', ');
-          s.addTerminalLine(`玩家: ${names}`, 'player');
+          const playerEntities = room.players.map((pl) => ({
+            name: pl.name,
+            entityType: 'player' as const,
+            cmdName: pl.name,
+          }));
+          s.addTerminalLine(`玩家: ${names}`, 'player', playerEntities);
         }
         if (room.items.length > 0) {
           const names = room.items.map((i) => i.name).join(', ');

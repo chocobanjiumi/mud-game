@@ -9,6 +9,7 @@ export const NPCS: Record<string, NpcDef> = {
   village_chief: {
     id: 'village_chief',
     name: '村長',
+    alias: 'elder',
     title: '新手村村長',
     roomId: 'village_square',
     type: 'quest',
@@ -63,6 +64,7 @@ export const NPCS: Record<string, NpcDef> = {
   adventure_mentor: {
     id: 'adventure_mentor',
     name: '冒險者導師',
+    alias: 'mentor',
     title: '資深冒險者',
     roomId: 'adventurer_guild',
     type: 'class_trainer',
@@ -110,6 +112,7 @@ export const NPCS: Record<string, NpcDef> = {
   blacksmith: {
     id: 'blacksmith',
     name: '鐵匠',
+    alias: 'smith',
     title: '武器鍛造師',
     roomId: 'weapon_shop',
     type: 'merchant',
@@ -160,6 +163,7 @@ export const NPCS: Record<string, NpcDef> = {
   herbalist: {
     id: 'herbalist',
     name: '藥師',
+    alias: 'alchemist',
     title: '草藥專家',
     roomId: 'potion_shop',
     type: 'merchant',
@@ -212,6 +216,7 @@ export const NPCS: Record<string, NpcDef> = {
   sword_instructor: {
     id: 'sword_instructor',
     name: '劍術教官',
+    alias: 'swordmaster',
     title: '劍士導師',
     roomId: 'class_change_hall',
     type: 'class_trainer',
@@ -270,6 +275,7 @@ export const NPCS: Record<string, NpcDef> = {
   magic_instructor: {
     id: 'magic_instructor',
     name: '魔法導師',
+    alias: 'mage',
     title: '法師導師',
     roomId: 'class_change_hall',
     type: 'class_trainer',
@@ -328,6 +334,7 @@ export const NPCS: Record<string, NpcDef> = {
   ranger_instructor: {
     id: 'ranger_instructor',
     name: '遊俠教練',
+    alias: 'ranger',
     title: '遊俠導師',
     roomId: 'class_change_hall',
     type: 'class_trainer',
@@ -386,6 +393,7 @@ export const NPCS: Record<string, NpcDef> = {
   temple_priest: {
     id: 'temple_priest',
     name: '神殿祭司',
+    alias: 'priest',
     title: '祭司導師',
     roomId: 'class_change_hall',
     type: 'class_trainer',
@@ -445,6 +453,7 @@ export const NPCS: Record<string, NpcDef> = {
   old_hunter: {
     id: 'old_hunter',
     name: '老獵人',
+    alias: 'hunter',
     title: '資深獵手',
     roomId: 'hunter_lodge',
     type: 'merchant',
@@ -508,6 +517,7 @@ export const NPCS: Record<string, NpcDef> = {
   bartender: {
     id: 'bartender',
     name: '酒保',
+    alias: 'bartender',
     title: '酒館老闆',
     roomId: 'tavern',
     type: 'merchant',
@@ -560,6 +570,7 @@ export const NPCS: Record<string, NpcDef> = {
   librarian: {
     id: 'librarian',
     name: '圖書館員',
+    alias: 'librarian',
     title: '知識守護者',
     roomId: 'town_library',
     type: 'quest',
@@ -622,6 +633,7 @@ export const NPCS: Record<string, NpcDef> = {
   prison_guard: {
     id: 'prison_guard',
     name: '獄卒',
+    alias: 'guard',
     title: '監獄看守',
     roomId: 'prison',
     type: 'general',
@@ -673,6 +685,7 @@ export const NPCS: Record<string, NpcDef> = {
   traveling_merchant: {
     id: 'traveling_merchant',
     name: '旅行商人',
+    alias: 'trader',
     title: '各地行商',
     roomId: 'sunflower_field',
     type: 'merchant',
@@ -735,6 +748,7 @@ export const NPCS: Record<string, NpcDef> = {
   farmer: {
     id: 'farmer',
     name: '農夫',
+    alias: 'farmer',
     title: '平原農家',
     roomId: 'village_farmland',
     type: 'general',
@@ -798,6 +812,7 @@ export const NPCS: Record<string, NpcDef> = {
   wandering_bard: {
     id: 'wandering_bard',
     name: '流浪吟遊詩人',
+    alias: 'bard',
     title: '吟遊詩人',
     roomId: 'windmill_interior',
     type: 'general',
@@ -868,6 +883,7 @@ export const NPCS: Record<string, NpcDef> = {
   fisherman: {
     id: 'fisherman',
     name: '漁夫',
+    alias: 'fisherman',
     title: '老漁民',
     roomId: 'fishing_dock',
     type: 'general',
@@ -935,6 +951,7 @@ export const NPCS: Record<string, NpcDef> = {
   ship_captain: {
     id: 'ship_captain',
     name: '船長',
+    alias: 'captain',
     title: '遠航船長',
     roomId: 'coastal_boardwalk',
     type: 'quest',
@@ -1002,6 +1019,7 @@ export const NPCS: Record<string, NpcDef> = {
   seafood_merchant: {
     id: 'seafood_merchant',
     name: '海鮮商人',
+    alias: 'fishmonger',
     title: '碼頭魚販',
     roomId: 'fishing_dock',
     type: 'merchant',
@@ -1053,6 +1071,7 @@ export const NPCS: Record<string, NpcDef> = {
   shipwright: {
     id: 'shipwright',
     name: '造船匠',
+    alias: 'shipwright',
     title: '資深造船師',
     roomId: 'coastal_boardwalk',
     type: 'general',
@@ -1111,6 +1130,7 @@ export const NPCS: Record<string, NpcDef> = {
   forest_ranger: {
     id: 'forest_ranger',
     name: '巡林者',
+    alias: 'forester',
     title: '森林巡守',
     roomId: 'firefly_trail',
     type: 'quest',
@@ -1178,6 +1198,7 @@ export const NPCS: Record<string, NpcDef> = {
   elf_scholar: {
     id: 'elf_scholar',
     name: '精靈學者',
+    alias: 'scholar',
     title: '遠古知識守護者',
     roomId: 'elf_altar',
     type: 'general',
@@ -1254,6 +1275,7 @@ export const NPCS: Record<string, NpcDef> = {
   herb_gatherer: {
     id: 'herb_gatherer',
     name: '藥草採集者',
+    alias: 'herbalist',
     title: '森林藥師',
     roomId: 'deep_poison_swamp',
     type: 'merchant',
@@ -1309,6 +1331,7 @@ export const NPCS: Record<string, NpcDef> = {
   dwarf_blacksmith: {
     id: 'dwarf_blacksmith',
     name: '矮人鍛造師',
+    alias: 'dwarfsmith',
     title: '傳奇鍛造大師',
     roomId: 'forge_hall',
     type: 'merchant',
@@ -1380,6 +1403,7 @@ export const NPCS: Record<string, NpcDef> = {
   mine_foreman: {
     id: 'mine_foreman',
     name: '礦工頭目',
+    alias: 'foreman',
     title: '礦場監工',
     roomId: 'dwarf_mine',
     type: 'quest',
@@ -1439,6 +1463,7 @@ export const NPCS: Record<string, NpcDef> = {
   flame_priest: {
     id: 'flame_priest',
     name: '火焰祭司',
+    alias: 'flamepriest',
     title: '火神侍者',
     roomId: 'fire_temple_entrance',
     type: 'general',
@@ -1519,6 +1544,7 @@ export const NPCS: Record<string, NpcDef> = {
   crystal_scholar: {
     id: 'crystal_scholar',
     name: '水晶學者',
+    alias: 'crystalist',
     title: '地底研究員',
     roomId: 'amethyst_corridor',
     type: 'general',
@@ -1586,6 +1612,7 @@ export const NPCS: Record<string, NpcDef> = {
   gem_merchant: {
     id: 'gem_merchant',
     name: '寶石商人',
+    alias: 'jeweler',
     title: '地底珠寶商',
     roomId: 'diamond_chamber',
     type: 'merchant',
@@ -1639,6 +1666,7 @@ export const NPCS: Record<string, NpcDef> = {
   dead_adventurer: {
     id: 'dead_adventurer',
     name: '冒險者殘骸',
+    alias: 'remains',
     title: '迷失的靈魂',
     roomId: 'underground_waterfall',
     type: 'general',
@@ -1707,6 +1735,7 @@ export const NPCS: Record<string, NpcDef> = {
   snow_guide: {
     id: 'snow_guide',
     name: '雪地嚮導',
+    alias: 'guide',
     title: '極地生存專家',
     roomId: 'snowfield_entrance',
     type: 'quest',
@@ -1784,6 +1813,7 @@ export const NPCS: Record<string, NpcDef> = {
   fur_merchant: {
     id: 'fur_merchant',
     name: '毛皮商人',
+    alias: 'furrier',
     title: '極地皮貨商',
     roomId: 'mountain_camp',
     type: 'merchant',
@@ -1838,6 +1868,7 @@ export const NPCS: Record<string, NpcDef> = {
   ice_castle_guard: {
     id: 'ice_castle_guard',
     name: '冰封城堡看守',
+    alias: 'iceguard',
     title: '永恆守衛',
     roomId: 'ice_castle_gate',
     type: 'general',
@@ -1936,6 +1967,7 @@ export const NPCS: Record<string, NpcDef> = {
   innkeeper: {
     id: 'innkeeper',
     name: '旅館老闆',
+    alias: 'innkeeper',
     title: '醉龍亭東家',
     roomId: 'tavern',
     type: 'merchant',
@@ -1999,6 +2031,7 @@ export const NPCS: Record<string, NpcDef> = {
   town_banker: {
     id: 'town_banker',
     name: '銀行家',
+    alias: 'banker',
     title: '王國財務官',
     roomId: 'auction_house',
     type: 'general',
@@ -2046,6 +2079,7 @@ export const NPCS: Record<string, NpcDef> = {
   auctioneer: {
     id: 'auctioneer',
     name: '拍賣師',
+    alias: 'auctioneer',
     title: '首席拍賣官',
     roomId: 'auction_house',
     type: 'general',
@@ -2094,6 +2128,7 @@ export const NPCS: Record<string, NpcDef> = {
   appraiser: {
     id: 'appraiser',
     name: '裝備鑑定師',
+    alias: 'appraiser',
     title: '物品鑑定專家',
     roomId: 'guild_hall',
     type: 'general',
@@ -2166,7 +2201,8 @@ export function findNpcByName(name: string, roomId?: string): NpcDef | undefined
   const candidates = roomId
     ? Object.values(NPCS).filter(npc => npc.roomId === roomId)
     : Object.values(NPCS);
+  const q = name.toLowerCase();
   return candidates.find(
-    npc => npc.name === name || npc.name.includes(name) || npc.id.includes(name),
+    npc => npc.name === name || npc.name.includes(name) || npc.id.includes(name) || npc.alias.toLowerCase() === q || npc.alias.toLowerCase().includes(q),
   );
 }

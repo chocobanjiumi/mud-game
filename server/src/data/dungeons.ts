@@ -57,6 +57,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
 
   shadow_wolf_minion: {
     id: 'shadow_wolf_minion',
+    alias: 'dminion',
     name: '暗影狼僕從',
     level: 15,
     hp: 180,
@@ -81,6 +82,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
 
   shadow_sentinel: {
     id: 'shadow_sentinel',
+    alias: 'dsentinel',
     name: '暗影哨兵',
     level: 16,
     hp: 220,
@@ -106,6 +108,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   shadow_wolf_alpha_dungeon: {
     id: 'shadow_wolf_alpha_dungeon',
     name: '暗影狼王（副本）',
+    alias: 'dalpha',
     level: 20,
     hp: 800,
     mp: 100,
@@ -139,6 +142,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
 
   crystal_golem: {
     id: 'crystal_golem',
+    alias: 'dgolem',
     name: '水晶魔像',
     level: 25,
     hp: 350,
@@ -163,6 +167,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
 
   crystal_sentinel: {
     id: 'crystal_sentinel',
+    alias: 'dcsentinel',
     name: '水晶守衛兵',
     level: 26,
     hp: 380,
@@ -188,6 +193,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   crystal_guardian_dungeon: {
     id: 'crystal_guardian_dungeon',
     name: '水晶守衛（副本）',
+    alias: 'dguardian',
     level: 30,
     hp: 1500,
     mp: 200,
@@ -222,6 +228,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   pirate_dungeon: {
     id: 'pirate_dungeon',
     name: '海盜水手',
+    alias: 'dpirate',
     level: 10,
     hp: 120,
     mp: 15,
@@ -245,6 +252,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   sea_serpent_dungeon: {
     id: 'sea_serpent_dungeon',
     name: '海蛇（副本）',
+    alias: 'dserpent',
     level: 11,
     hp: 140,
     mp: 20,
@@ -268,6 +276,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   pirate_captain_dungeon: {
     id: 'pirate_captain_dungeon',
     name: '海盜船長（副本）',
+    alias: 'dcaptain',
     level: 15,
     hp: 700,
     mp: 60,
@@ -295,6 +304,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   fire_salamander_dungeon: {
     id: 'fire_salamander_dungeon',
     name: '火蜥蜴（副本）',
+    alias: 'dsalamander',
     level: 30,
     hp: 400,
     mp: 50,
@@ -318,6 +328,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   flame_spirit_dungeon: {
     id: 'flame_spirit_dungeon',
     name: '火焰精靈（副本）',
+    alias: 'dflamespirit',
     level: 31,
     hp: 350,
     mp: 80,
@@ -341,6 +352,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   rock_giant_dungeon: {
     id: 'rock_giant_dungeon',
     name: '岩石巨人（副本）',
+    alias: 'drockgiant',
     level: 32,
     hp: 500,
     mp: 30,
@@ -365,6 +377,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   lava_colossus_dungeon: {
     id: 'lava_colossus_dungeon',
     name: '熔岩巨像（副本）',
+    alias: 'dcolossus',
     level: 35,
     hp: 2000,
     mp: 100,
@@ -394,6 +407,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   imp_dungeon: {
     id: 'imp_dungeon',
     name: '小惡魔（副本）',
+    alias: 'dimp',
     level: 35,
     hp: 350,
     mp: 60,
@@ -417,6 +431,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   demon_soldier_dungeon: {
     id: 'demon_soldier_dungeon',
     name: '魔族士兵（副本）',
+    alias: 'ddsoldier',
     level: 37,
     hp: 450,
     mp: 50,
@@ -440,6 +455,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   succubus_dungeon: {
     id: 'succubus_dungeon',
     name: '魅魔（副本）',
+    alias: 'dsuccubus',
     level: 36,
     hp: 380,
     mp: 100,
@@ -463,6 +479,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   hellhound_dungeon: {
     id: 'hellhound_dungeon',
     name: '地獄犬（副本）',
+    alias: 'dhellhound',
     level: 36,
     hp: 420,
     mp: 30,
@@ -486,6 +503,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   demon_lord_dungeon: {
     id: 'demon_lord_dungeon',
     name: '魔王（副本）',
+    alias: 'ddemonlord',
     level: 40,
     hp: 3000,
     mp: 200,
@@ -518,6 +536,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   young_dragon_dungeon: {
     id: 'young_dragon_dungeon',
     name: '幼龍（副本）',
+    alias: 'ddrake',
     level: 42,
     hp: 550,
     mp: 80,
@@ -541,6 +560,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   wyvern_dungeon: {
     id: 'wyvern_dungeon',
     name: '翼龍（副本）',
+    alias: 'dwyvern',
     level: 43,
     hp: 500,
     mp: 60,
@@ -564,6 +584,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   dragon_knight_dungeon: {
     id: 'dragon_knight_dungeon',
     name: '龍騎士（副本）',
+    alias: 'ddknight',
     level: 44,
     hp: 600,
     mp: 70,
@@ -588,6 +609,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   elder_dragon_dungeon: {
     id: 'elder_dragon_dungeon',
     name: '古龍（副本）',
+    alias: 'delderdragon',
     level: 48,
     hp: 4500,
     mp: 300,
@@ -620,6 +642,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   void_walker_dungeon: {
     id: 'void_walker_dungeon',
     name: '虛空行者（副本）',
+    alias: 'dvoidwalker',
     level: 49,
     hp: 600,
     mp: 100,
@@ -643,6 +666,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   shadow_demon_dungeon: {
     id: 'shadow_demon_dungeon',
     name: '暗影惡魔（副本）',
+    alias: 'dshadowdemon',
     level: 50,
     hp: 650,
     mp: 120,
@@ -667,6 +691,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   chaos_spawn_dungeon: {
     id: 'chaos_spawn_dungeon',
     name: '混沌之子（副本）',
+    alias: 'dchaos',
     level: 51,
     hp: 700,
     mp: 80,
@@ -690,6 +715,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   abyss_lord_dungeon: {
     id: 'abyss_lord_dungeon',
     name: '深淵領主（副本）',
+    alias: 'dabysslord',
     level: 55,
     hp: 6000,
     mp: 400,
@@ -722,6 +748,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   fallen_angel_dungeon: {
     id: 'fallen_angel_dungeon',
     name: '墮天使（副本）',
+    alias: 'dfallen',
     level: 55,
     hp: 700,
     mp: 120,
@@ -745,6 +772,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   celestial_guardian_dungeon: {
     id: 'celestial_guardian_dungeon',
     name: '天界守衛（副本）',
+    alias: 'dcelestial',
     level: 56,
     hp: 750,
     mp: 100,
@@ -768,6 +796,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   seraph_dungeon: {
     id: 'seraph_dungeon',
     name: '熾天使（副本）',
+    alias: 'dseraph',
     level: 57,
     hp: 680,
     mp: 150,
@@ -792,6 +821,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   divine_construct_dungeon: {
     id: 'divine_construct_dungeon',
     name: '神造機兵（副本）',
+    alias: 'dconstruct',
     level: 56,
     hp: 800,
     mp: 60,
@@ -815,6 +845,7 @@ export const DUNGEON_MONSTERS: Record<string, MonsterDef> = {
   god_of_war_dungeon: {
     id: 'god_of_war_dungeon',
     name: '戰神（副本）',
+    alias: 'dwargod',
     level: 60,
     hp: 8000,
     mp: 500,
