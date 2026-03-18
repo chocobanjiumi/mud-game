@@ -131,12 +131,22 @@ export default function AgentPanel() {
             {selectedAgent.name}
           </span>
         </div>
-        <button
-          onClick={toggleAgentPanel}
-          className="text-text-dim hover:text-text-bright text-xs cursor-pointer shrink-0"
-        >
-          [關閉]
-        </button>
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={() => {
+              useGameStore.getState().setShowAgentSelect(true);
+            }}
+            className="text-text-dim hover:text-agent-cyan text-xs cursor-pointer"
+          >
+            [換夥伴]
+          </button>
+          <button
+            onClick={toggleAgentPanel}
+            className="text-text-dim hover:text-text-bright text-xs cursor-pointer"
+          >
+            [關閉]
+          </button>
+        </div>
       </div>
 
       {/* Messages */}
