@@ -91,7 +91,7 @@ export function handleCommand(session: WsSession, input: string): void {
     flee: 'escape', run: 'escape',
     eq: 'equip', uneq: 'unequip',
     sk: 'skills',
-    help: 'help', '?': 'help',
+    '?': 'help',
     lb: 'leaderboard',
     cq: 'classquest',
     cq2: 'classquest2',
@@ -2712,7 +2712,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'forge');
+        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'forge');
       }
       break;
     }
@@ -2723,7 +2723,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'alchemy');
+        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'alchemy');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'alchemy', craftingMgr.getCraftingLevel(char.id, 'alchemy').level);
       }
       break;
@@ -2735,7 +2735,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.resultItemId ?? recipeId, 'cooking');
+        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'cooking');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'cooking', craftingMgr.getCraftingLevel(char.id, 'cooking').level);
       }
       break;
