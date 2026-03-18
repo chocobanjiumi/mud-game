@@ -76,9 +76,16 @@ export default function App() {
     (command: string) => {
       // Add the command to terminal as echo
       useGameStore.getState().addTerminalLine(`> ${command}`, 'command');
+      // Intercept "create <name>" to use create_character message type
+      const createMatch = command.match(/^create\s+(.+)$/i);
+      if (createMatch) {
+        const userId = useGameStore.getState().arinovaUser?.id ?? '';
+        createCharacter(createMatch[1].trim(), userId);
+        return;
+      }
       sendCommand(command);
     },
-    [sendCommand],
+    [sendCommand, createCharacter],
   );
 
   // Show agent select modal after login success for authenticated users
