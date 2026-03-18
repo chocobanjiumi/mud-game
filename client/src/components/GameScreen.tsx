@@ -5,6 +5,7 @@ import Terminal from './Terminal';
 import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
 import MiniMap from './MiniMap';
+import RoomImage from './RoomImage';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
 import SkillBar from './SkillBar';
@@ -122,6 +123,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         {/* Left sidebar: minimap */}
         <div className="w-44 shrink-0 flex flex-col gap-2 p-2 border-r border-border-dim overflow-y-auto">
           <MiniMap />
+
+          {/* Room image */}
+          <RoomImage />
 
           {/* Quick action buttons */}
           <div className="space-y-1">
