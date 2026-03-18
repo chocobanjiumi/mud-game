@@ -83,7 +83,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (e.key === 'j' || e.key === 'J') {
         if (selectedAgent) {
           toggleAgentPanel();
-        } else if (accessToken) {
+        } else {
           setShowAgentSelect(true);
         }
       }
@@ -137,11 +137,18 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
             <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={toggleWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
-            {selectedAgent ? (
-              <QuickButton label="AI夥伴" shortcut="J" active={agentPanelOpen} onClick={toggleAgentPanel} />
-            ) : accessToken ? (
-              <QuickButton label="AI夥伴" shortcut="J" onClick={() => setShowAgentSelect(true)} />
-            ) : null}
+            <QuickButton
+              label="AI夥伴"
+              shortcut="J"
+              active={agentPanelOpen}
+              onClick={() => {
+                if (selectedAgent) {
+                  toggleAgentPanel();
+                } else {
+                  setShowAgentSelect(true);
+                }
+              }}
+            />
             <QuickButton label="查看" onClick={() => onCommand('look')} />
             <QuickButton label="狀態" onClick={() => onCommand('status')} />
             <QuickButton label="地圖" onClick={() => onCommand('map')} />
