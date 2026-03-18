@@ -40,6 +40,8 @@ import { getRoom } from '../data/rooms.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
+import { LootCalculator } from './loot.js';
+const lootCalc = new LootCalculator();
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 
 // ─── 地上物品撿取追蹤 ───
@@ -142,6 +144,8 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'drop': cmdDrop(session, argStr); break;
     case 'say': cmdSay(session, argStr); break;
     case 'talk': cmdTalk(session, argStr); break;
+    case 'shop': cmdShop(session, argStr); break;
+    case 'buy': cmdBuy(session, argStr); break;
     case 'allocate': case 'alloc': cmdAllocate(session, args); break;
     case 'map': cmdMap(session); break;
     case 'rest': cmdRest(session); break;
@@ -226,13 +230,17 @@ function cmdLook(session: WsSession, target?: string): void {
     // 先找 NPC
     const npc = findNpcByName(target, char.roomId);
     if (npc) {
-      sendSystem(session.sessionId, `═══ ${npc.name}（${npc.title}）═══`);
-      sendSystem(session.sessionId, `類型：${npc.type === 'merchant' ? '商人' : npc.type === 'class_trainer' ? '職業導師' : npc.type === 'quest' ? '任務' : npc.type === 'innkeeper' ? '旅店老闆' : 'NPC'}`);
+      sendNarrative(session.sessionId, `═══ ${npc.name}/${npc.alias}（${npc.title}）═══`, 'npc');
+      if (npc.description) {
+        sendNarrative(session.sessionId, npc.description);
+      }
+      const typeLabel = npc.type === 'merchant' ? '商人' : npc.type === 'class_trainer' ? '職業導師' : npc.type === 'quest' ? '任務' : npc.type === 'innkeeper' ? '旅店老闆' : 'NPC';
+      sendSystem(session.sessionId, `類型：${typeLabel}`);
       if (npc.dialogue?.length > 0) {
         sendSystem(session.sessionId, `輸入 talk ${npc.name} 與其對話`);
       }
       if (npc.shopItems?.length) {
-        sendSystem(session.sessionId, `此 NPC 可交易，輸入 talk ${npc.name} 開啟商店`);
+        sendSystem(session.sessionId, `此 NPC 可交易，輸入 shop ${npc.name} 開啟商店`);
       }
       return;
     }
@@ -515,6 +523,52 @@ function cmdAttack(session: WsSession, target: string): void {
       }
 
       world.killMonster(char.roomId, monster.instanceId);
+
+      // 計算並發放經驗值和金幣
+      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk);
+      for (const p of players) {
+        const freshChar = getCharacterById(p.id);
+        if (!freshChar) continue;
+
+        // 經驗值（隊伍分配）
+        const expShare = Math.max(1, Math.floor(drops.exp / players.length));
+        if (expShare > 0) {
+          freshChar.exp += expShare;
+          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expShare}`);
+
+          // 升級檢查
+          let leveled = false;
+          while (freshChar.exp >= getExpForLevel(freshChar.level + 1)) {
+            freshChar.level++;
+            freshChar.freePoints += 5;
+            freshChar.maxHp += 10 + freshChar.stats.vit * 2;
+            freshChar.hp = freshChar.maxHp;
+            freshChar.maxMp += 5 + freshChar.stats.int;
+            freshChar.mp = freshChar.maxMp;
+            leveled = true;
+          }
+          if (leveled) {
+            skillTreeMgr.grantPoint(freshChar.id, freshChar);
+            sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `升級了！目前等級 Lv.${freshChar.level}`);
+          }
+        }
+
+        // 金幣
+        const goldShare = Math.max(1, Math.floor(drops.gold / players.length));
+        if (goldShare > 0) {
+          freshChar.gold += goldShare;
+          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得金幣 +${goldShare}`);
+        }
+
+        saveCharacter(freshChar);
+
+        // 物品掉落
+        for (const item of drops.items) {
+          addInventoryItem(freshChar.id, item.itemId, item.quantity);
+          const def = ITEM_DEFS[item.itemId];
+          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+        }
+      }
 
       // 教學系統：擊殺鉤子
       tutorialMgr.advanceStep(char.id, 'kill');
@@ -1295,6 +1349,75 @@ function showDialogueNode(session: WsSession, npc: { id: string; name: string; d
     activeDialogues.delete(session.sessionId);
   }
   sendNarrative(session.sessionId, dialogueText);
+}
+
+/** shop <NPC> — 直接開啟商人 NPC 的商店（跳到 shop 對話節點） */
+function cmdShop(session: WsSession, npcName: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!npcName) { sendError(session.sessionId, '用法：shop <NPC名稱>'); return; }
+
+  const npc = findNpcByName(npcName.split(/\s+/)[0], char.roomId);
+  if (!npc) {
+    sendError(session.sessionId, `這裡沒有名為「${npcName}」的 NPC。`);
+    return;
+  }
+  if (npc.type !== 'merchant' || !npc.shopItems?.length) {
+    sendError(session.sessionId, `${npc.name}不是商人。`);
+    return;
+  }
+
+  // 找到 shop 對話節點並直接顯示
+  const shopNode = npc.dialogue.find(d => d.action?.type === 'shop');
+  if (shopNode) {
+    showDialogueNode(session, npc, shopNode.id);
+  } else {
+    // 沒有 shop 節點，顯示商品列表
+    const itemNames = npc.shopItems
+      .map(id => ITEM_DEFS[id]?.name ?? id)
+      .join(', ');
+    sendSystem(session.sessionId, `【${npc.name}的商品】：${itemNames}`);
+    sendSystem(session.sessionId, `輸入 buy <物品> 購買。`);
+  }
+}
+
+/** buy <物品名稱> — 從當前房間的商人 NPC 購買物品 */
+function cmdBuy(session: WsSession, itemName: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!itemName) { sendError(session.sessionId, '用法：buy <物品名稱>'); return; }
+
+  // 找到房間中的商人 NPC
+  const npcsInRoom = getNpcsByRoom(char.roomId);
+  const merchant = npcsInRoom.find(n => n.type === 'merchant' && n.shopItems?.length);
+  if (!merchant) {
+    sendError(session.sessionId, '附近沒有商人可以交易。');
+    return;
+  }
+
+  // 搜尋物品（支援名稱和 ID）
+  const query = itemName.toLowerCase();
+  const matchId = merchant.shopItems!.find(id => {
+    const def = ITEM_DEFS[id];
+    return id === itemName || def?.name === itemName || def?.name.includes(itemName) || id.includes(query);
+  });
+  if (!matchId) {
+    sendError(session.sessionId, `${merchant.name}沒有販售「${itemName}」。`);
+    return;
+  }
+
+  const def = ITEM_DEFS[matchId];
+  if (!def) { sendError(session.sessionId, '物品資料異常。'); return; }
+
+  if (char.gold < def.buyPrice) {
+    sendError(session.sessionId, `金幣不足！「${def.name}」需要 ${def.buyPrice} 金幣，你只有 ${char.gold} 金幣。`);
+    return;
+  }
+
+  char.gold -= def.buyPrice;
+  saveCharacter(char);
+  addInventoryItem(char.id, matchId, 1);
+  sendSystem(session.sessionId, `購買了「${def.name}」，花費 ${def.buyPrice} 金幣。（剩餘：${char.gold}）`);
 }
 
 function cmdTalk(session: WsSession, npcName: string): void {
