@@ -33,7 +33,12 @@ export default function AgentSelectModal() {
     // v0.1.3: use apiFetch instead of Arinova.user.agents()
     arinova.apiFetch('/api/v1/user/agents')
       .then((data) => {
-        const sdkAgents = data as { id: string; name: string; avatarUrl?: string; description?: string }[];
+        // API may return array directly or { agents: [...] }
+        const arr = Array.isArray(data) ? data : (data as { agents?: unknown[] })?.agents;
+        if (!Array.isArray(arr)) {
+          throw new Error('invalid_agents_response');
+        }
+        const sdkAgents = arr as { id: string; name: string; avatarUrl?: string; description?: string }[];
         setAgents(sdkAgents.map(toGameAgent));
       })
       .catch((err: unknown) => {
