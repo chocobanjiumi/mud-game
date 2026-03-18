@@ -34,8 +34,8 @@ importers:
   client:
     dependencies:
       '@arinova-ai/spaces-sdk':
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.3
+        version: 0.1.3
       '@game/shared':
         specifier: workspace:*
         version: link:../packages/shared
@@ -82,9 +82,6 @@ importers:
 
   server:
     dependencies:
-      '@arinova-ai/spaces-sdk':
-        specifier: ^0.1.0
-        version: 0.1.0
       '@fastify/cors':
         specifier: ^10.0.0
         version: 10.1.0
@@ -136,6 +133,9 @@ packages:
 
   '@arinova-ai/spaces-sdk@0.1.0':
     resolution: {integrity: sha512-5czAwDNp4RP2RAFglEVPLatul5XqGu4/3EwUekHKvZ6s3aG6DTRMSFOrs16mzPxLWnR8uzcx1AdE4YKFPECZ5w==}
+
+  '@arinova-ai/spaces-sdk@0.1.3':
+    resolution: {integrity: sha512-jvJOa+xpYI12zE1Uac92vZj5RwBI2icAYza1NpZ+3QR328OGZvKlcZSIXlV33HKZD2aXh7azJ6PLzoHhXFCNJg==}
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
@@ -2278,6 +2278,8 @@ packages:
 snapshots:
 
   '@arinova-ai/spaces-sdk@0.1.0': {}
+
+  '@arinova-ai/spaces-sdk@0.1.3': {}
 
   '@babel/code-frame@7.29.0':
     dependencies:
