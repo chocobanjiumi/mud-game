@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
-import { Arinova } from '@arinova-ai/spaces-sdk';
+import { arinova } from '../App';
 import { useGameStore } from '../stores/gameStore';
 
 export default function AgentPanel() {
@@ -8,21 +8,19 @@ export default function AgentPanel() {
   const selectedAgent = useGameStore((s) => s.selectedAgent);
   const agentMessages = useGameStore((s) => s.agentMessages);
   const addAgentMessage = useGameStore((s) => s.addAgentMessage);
-  const removeLastAgentMessage = useGameStore((s) => s.removeLastAgentMessage);
   const setAgentUnreadCount = useGameStore((s) => s.setAgentUnreadCount);
   const accessToken = useGameStore((s) => s.accessToken);
   const addTerminalLine = useGameStore((s) => s.addTerminalLine);
 
   const [inputValue, setInputValue] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
-  const [streamingContent, setStreamingContent] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [agentMessages, streamingContent]);
+  }, [agentMessages]);
 
   // Reset unread count when panel opens
   useEffect(() => {
@@ -49,29 +47,24 @@ export default function AgentPanel() {
       // Add user message
       addAgentMessage({ role: 'user', content: prompt });
 
-      // Start streaming
       setIsStreaming(true);
-      setStreamingContent('');
-
-      let fullResponse = '';
 
       try {
-        await Arinova.agent.chatStream({
-          agentId: selectedAgent.id,
-          prompt,
-          accessToken,
-          onChunk: (chunk: string) => {
-            fullResponse += chunk;
-            setStreamingContent(fullResponse);
-          },
+        // v0.1.3: use apiFetch instead of Arinova.agent.chatStream
+        const res = await arinova.apiFetch('/api/v1/agent/chat', {
+          method: 'POST',
+          body: JSON.stringify({ agentId: selectedAgent.id, prompt }),
         });
 
-        // Add completed agent message
-        addAgentMessage({ role: 'agent', content: fullResponse });
+        const data = res as { response?: string };
+        const response = data.response ?? '';
 
-        // Show suggestion in terminal if it looks like game advice
-        if (fullResponse.length > 0 && fullResponse.length < 200) {
-          addTerminalLine(`[${selectedAgent.name}] ${fullResponse}`, 'agent');
+        // Add agent message
+        addAgentMessage({ role: 'agent', content: response });
+
+        // Show suggestion in terminal if short
+        if (response.length > 0 && response.length < 200) {
+          addTerminalLine(`[${selectedAgent.name}] ${response}`, 'agent');
         }
 
         // Increment unread if panel is closed
@@ -79,42 +72,16 @@ export default function AgentPanel() {
           useGameStore.getState().incrementAgentUnread();
         }
       } catch (err) {
-        console.error('[Agent] Chat stream error:', err);
-
-        // Clear partial streaming content so fallback starts clean.
-        // The streaming content is only in local state, but if a partial agent
-        // message was somehow committed to the store, remove it.
-        const msgs = useGameStore.getState().agentMessages;
-        const lastMsg = msgs[msgs.length - 1];
-        if (lastMsg && lastMsg.role === 'agent' && fullResponse.length > 0 && lastMsg.content === fullResponse) {
-          removeLastAgentMessage();
-        }
-
-        // Fallback to sync chat
-        try {
-          const result = await Arinova.agent.chat({
-            agentId: selectedAgent.id,
-            prompt,
-            accessToken,
-          });
-          addAgentMessage({ role: 'agent', content: result.response });
-
-          if (!useGameStore.getState().agentPanelOpen) {
-            useGameStore.getState().incrementAgentUnread();
-          }
-        } catch (syncErr) {
-          console.error('[Agent] Sync chat fallback error:', syncErr);
-          addAgentMessage({
-            role: 'agent',
-            content: '抱歉，我暫時無法回應，請稍後再試。',
-          });
-        }
+        console.error('[Agent] Chat error:', err);
+        addAgentMessage({
+          role: 'agent',
+          content: '抱歉，我暫時無法回應，請稍後再試。',
+        });
       } finally {
         setIsStreaming(false);
-        setStreamingContent('');
       }
     },
-    [inputValue, isStreaming, selectedAgent, accessToken, addAgentMessage, removeLastAgentMessage, addTerminalLine],
+    [inputValue, isStreaming, selectedAgent, accessToken, addAgentMessage, addTerminalLine],
   );
 
   if (!agentPanelOpen || !selectedAgent) return null;
@@ -188,14 +155,12 @@ export default function AgentPanel() {
             <div className="text-[10px] text-agent-cyan mb-0.5 font-bold">
               {selectedAgent.name}
             </div>
-            <div className="text-xs whitespace-pre-wrap break-words">
-              {streamingContent || (
-                <span className="agent-typing-indicator">
-                  <span className="agent-typing-dot" />
-                  <span className="agent-typing-dot" />
-                  <span className="agent-typing-dot" />
-                </span>
-              )}
+            <div className="text-xs">
+              <span className="agent-typing-indicator">
+                <span className="agent-typing-dot" />
+                <span className="agent-typing-dot" />
+                <span className="agent-typing-dot" />
+              </span>
             </div>
           </div>
         )}

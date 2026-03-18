@@ -1,7 +1,6 @@
 // AI Agent 控制器 — AgentController 類別
 // 管理 AI 角色的遊戲循環：偵測狀態 → 建立 prompt → 呼叫 Arinova API → 解析回應 → 執行指令
 
-import { Arinova } from '@arinova-ai/spaces-sdk';
 import type { Character, CombatantState, CombatState } from '@game/shared';
 import { buildExplorePrompt, buildCombatPrompt, buildGuardianSystemPrompt } from './prompt.js';
 import { parseAiResponse } from './parser.js';
@@ -87,18 +86,16 @@ export class AgentController {
   //  初始化
   // ──────────────────────────────────────────────────────────
 
-  /** 初始化 Arinova SDK（僅需呼叫一次） */
+  /** 初始化 Arinova API endpoint（v0.1.3: 不使用 SDK） */
   initSdk(appId: string, baseUrl?: string): void {
     if (this.sdkInitialized) return;
 
-    Arinova.init({
-      appId,
-      baseUrl: baseUrl || 'https://api.arinova.ai',
-    });
-
+    this.apiEndpoint = baseUrl || 'https://api.chat-staging.arinova.ai';
     this.sdkInitialized = true;
-    console.log('[AI] Arinova SDK 初始化完成');
+    console.log('[AI] Arinova Agent API 初始化完成');
   }
+
+  private apiEndpoint = 'https://api.chat-staging.arinova.ai';
 
   /** 設定外部依賴回呼 */
   setDependencies(deps: AgentDependencies): void {
@@ -316,13 +313,26 @@ export class AgentController {
         ? `${SYSTEM_PROMPT}\n\n${guardianSystemPrompt}`
         : SYSTEM_PROMPT;
 
-      const { response } = await Arinova.agent.chat({
-        agentId: agent.agentId,
-        prompt,
-        systemPrompt: fullSystemPrompt,
-        accessToken: agent.accessToken,
+      // v0.1.3: 直接 REST 呼叫，不使用 SDK
+      const res = await fetch(`${this.apiEndpoint}/api/v1/agent/chat`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${agent.accessToken}`,
+        },
+        body: JSON.stringify({
+          agentId: agent.agentId,
+          prompt,
+          systemPrompt: fullSystemPrompt,
+        }),
       });
-      return response;
+
+      if (!res.ok) {
+        throw new Error(`Agent API ${res.status}`);
+      }
+
+      const data = await res.json() as { response: string };
+      return data.response;
     } catch (err) {
       console.error(`[AI] Arinova API 呼叫失敗 (${agent.characterId}):`, err);
       throw err;

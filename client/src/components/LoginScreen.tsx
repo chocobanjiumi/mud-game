@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Arinova } from '@arinova-ai/spaces-sdk';
+import { arinova } from '../App';
 import { useGameStore } from '../stores/gameStore';
 
 interface LoginScreenProps {
@@ -20,16 +20,11 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     window.history.replaceState({}, '', window.location.pathname);
 
     setIsLoggingIn(true);
-    Arinova.handleCallback({
-      code,
-      clientId: import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game-671a1dd6',
-      clientSecret: '',
-      redirectUri: window.location.origin + window.location.pathname,
-    })
+    arinova.handleCallback()
       .then((result) => {
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
-          onLogin(result.user.id, result.accessToken);
+          onLogin(result.user.id, result.access_token);
         }
       })
       .catch((err) => {
@@ -41,8 +36,20 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
   const handleArinovaLogin = () => {
     if (isLoggingIn) return;
-    // Redirect to Arinova OAuth login page
-    Arinova.login({ scope: ['profile', 'agents', 'economy'] });
+    // Popup mode login (v0.1.3)
+    setIsLoggingIn(true);
+    arinova.login()
+      .then((result) => {
+        if (result && result.user) {
+          useGameStore.getState().setArinovaUser(result.user);
+          onLogin(result.user.id, result.access_token);
+        }
+      })
+      .catch((err) => {
+        console.error('[Arinova] Login 失敗:', err);
+        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
+      })
+      .finally(() => setIsLoggingIn(false));
   };
 
   const isConnected = connection === 'connected';

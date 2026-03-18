@@ -1,7 +1,7 @@
 // Arinova 代幣經濟系統 — CurrencyManager
 // 管理 Arinova 代幣的扣款、獎勵、查詢、以及 Premium 功能
+// v0.1.3: 使用直接 REST API 呼叫，不依賴 SDK
 
-import { Arinova } from '@arinova-ai/spaces-sdk';
 import { isGuestUser, getCachedToken } from '../auth/arinova.js';
 import { sendToCharacter } from '../ws/handler.js';
 import { insertTransaction } from '../db/queries.js';
@@ -81,6 +81,7 @@ export class CurrencyManager {
   /** Arinova app 認證資訊 */
   private clientId: string;
   private clientSecret: string;
+  private baseUrl: string;
 
   /** userId -> 餘額快取 */
   private balanceCache: Map<string, { balance: number; cachedAt: number }> = new Map();
@@ -91,6 +92,7 @@ export class CurrencyManager {
   constructor(clientId?: string, clientSecret?: string) {
     this.clientId = clientId ?? process.env.ARINOVA_APP_ID ?? '';
     this.clientSecret = clientSecret ?? process.env.ARINOVA_CLIENT_SECRET ?? '';
+    this.baseUrl = process.env.ARINOVA_BASE_URL ?? 'https://api.chat-staging.arinova.ai';
   }
 
   /** 設定認證資訊 */
@@ -99,17 +101,35 @@ export class CurrencyManager {
     this.clientSecret = clientSecret;
   }
 
+  /** REST API helper */
+  private async apiRequest<T>(path: string, opts: {
+    method?: string;
+    body?: Record<string, unknown>;
+    accessToken?: string;
+  } = {}): Promise<T> {
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (opts.accessToken) {
+      headers['Authorization'] = `Bearer ${opts.accessToken}`;
+    }
+
+    const res = await fetch(`${this.baseUrl}${path}`, {
+      method: opts.method ?? 'GET',
+      headers,
+      body: opts.body ? JSON.stringify(opts.body) : undefined,
+    });
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => '');
+      throw new Error(`API error ${res.status}: ${text}`);
+    }
+
+    return res.json() as Promise<T>;
+  }
+
   // ──────────────────────────────────────────────────────────
   //  扣款
   // ──────────────────────────────────────────────────────────
 
-  /**
-   * 扣除使用者的 Arinova 代幣
-   * @param userId Arinova 使用者 ID
-   * @param amount 扣款金額
-   * @param description 扣款說明
-   * @returns 扣款結果
-   */
   async chargeTokens(
     userId: string,
     amount: number,
@@ -124,21 +144,16 @@ export class CurrencyManager {
     }
 
     try {
-      const result = await Arinova.economy.charge({
-        userId,
-        amount,
-        description,
-        clientId: this.clientId,
-        clientSecret: this.clientSecret,
-      });
+      const result = await this.apiRequest<{ transactionId: string; newBalance: number }>(
+        '/api/v1/economy/charge',
+        {
+          method: 'POST',
+          body: { userId, amount, description, clientId: this.clientId, clientSecret: this.clientSecret },
+        },
+      );
 
-      // 更新快取
-      this.balanceCache.set(userId, {
-        balance: result.newBalance,
-        cachedAt: Date.now(),
-      });
+      this.balanceCache.set(userId, { balance: result.newBalance, cachedAt: Date.now() });
 
-      // 記錄交易到 DB
       try {
         insertTransaction(result.transactionId, userId, amount, 'charge', description);
       } catch (dbErr) {
@@ -158,13 +173,6 @@ export class CurrencyManager {
   //  獎勵
   // ──────────────────────────────────────────────────────────
 
-  /**
-   * 獎勵使用者 Arinova 代幣
-   * @param userId Arinova 使用者 ID
-   * @param amount 獎勵金額
-   * @param description 獎勵說明
-   * @returns 獎勵結果
-   */
   async awardTokens(
     userId: string,
     amount: number,
@@ -179,21 +187,16 @@ export class CurrencyManager {
     }
 
     try {
-      const result = await Arinova.economy.award({
-        userId,
-        amount,
-        description,
-        clientId: this.clientId,
-        clientSecret: this.clientSecret,
-      });
+      const result = await this.apiRequest<{ transactionId: string; newBalance: number }>(
+        '/api/v1/economy/award',
+        {
+          method: 'POST',
+          body: { userId, amount, description, clientId: this.clientId, clientSecret: this.clientSecret },
+        },
+      );
 
-      // 更新快取
-      this.balanceCache.set(userId, {
-        balance: result.newBalance,
-        cachedAt: Date.now(),
-      });
+      this.balanceCache.set(userId, { balance: result.newBalance, cachedAt: Date.now() });
 
-      // 記錄交易到 DB
       try {
         insertTransaction(result.transactionId, userId, amount, 'award', description);
       } catch (dbErr) {
@@ -213,27 +216,22 @@ export class CurrencyManager {
   //  餘額查詢
   // ──────────────────────────────────────────────────────────
 
-  /**
-   * 查詢使用者的 Arinova 代幣餘額
-   * @param accessToken 使用者的 OAuth access token
-   */
   async getBalance(accessToken: string): Promise<number | null> {
     try {
-      const { balance } = await Arinova.economy.balance(accessToken);
-      return balance;
+      const data = await this.apiRequest<{ balance: number }>(
+        '/api/v1/economy/balance',
+        { accessToken },
+      );
+      return data.balance;
     } catch (err) {
       console.error('[Economy] 查詢餘額失敗:', err);
       return null;
     }
   }
 
-  /**
-   * 查詢使用者的 Arinova 代幣餘額（透過 userId，使用快取 token）
-   */
   async getBalanceByUserId(userId: string): Promise<number | null> {
     if (isGuestUser(userId)) return null;
 
-    // 先檢查快取
     const cached = this.balanceCache.get(userId);
     if (cached && Date.now() - cached.cachedAt < this.BALANCE_CACHE_TTL) {
       return cached.balance;
@@ -253,10 +251,6 @@ export class CurrencyManager {
   //  Premium 功能
   // ──────────────────────────────────────────────────────────
 
-  /**
-   * 購買 Premium 商品
-   * Premium 功能：復活不損失金幣、特殊稱號等
-   */
   async purchasePremiumItem(
     userId: string,
     characterId: string,
@@ -269,13 +263,9 @@ export class CurrencyManager {
 
     const chargeResult = await this.chargeTokens(userId, item.price, `購買「${item.name}」`);
     if (!chargeResult.success) {
-      return {
-        success: false,
-        message: `購買失敗：${chargeResult.error ?? '餘額不足'}`,
-      };
+      return { success: false, message: `購買失敗：${chargeResult.error ?? '餘額不足'}` };
     }
 
-    // 通知玩家
     sendToCharacter(characterId, 'system', {
       text: `成功購買「${item.name}」！剩餘 Arinova 代幣：${chargeResult.newBalance}`,
     });
@@ -284,10 +274,6 @@ export class CurrencyManager {
     return { success: true, message: `成功購買「${item.name}」`, item };
   }
 
-  /**
-   * 無損復活（Premium 功能）
-   * 死亡時不損失金幣
-   */
   async reviveWithoutPenalty(
     userId: string,
     characterId: string,
@@ -296,10 +282,7 @@ export class CurrencyManager {
 
     const chargeResult = await this.chargeTokens(userId, cost, '無痛復活');
     if (!chargeResult.success) {
-      return {
-        success: false,
-        message: `復活失敗：${chargeResult.error ?? '代幣不足'}`,
-      };
+      return { success: false, message: `復活失敗：${chargeResult.error ?? '代幣不足'}` };
     }
 
     sendToCharacter(characterId, 'system', {
@@ -313,7 +296,6 @@ export class CurrencyManager {
   //  遊戲獎勵整合
   // ──────────────────────────────────────────────────────────
 
-  /** 擊敗 Boss 時獎勵代幣 */
   async rewardBossKill(userId: string, characterId: string, bossName: string, amount: number): Promise<void> {
     if (isGuestUser(userId)) return;
 
@@ -325,7 +307,6 @@ export class CurrencyManager {
     }
   }
 
-  /** 完成成就時獎勵代幣 */
   async rewardAchievement(userId: string, characterId: string, achievementName: string, amount: number): Promise<void> {
     if (isGuestUser(userId)) return;
 
@@ -341,13 +322,11 @@ export class CurrencyManager {
   //  PvP 賭注
   // ──────────────────────────────────────────────────────────
 
-  /** 下注（扣款） */
   async placeBet(userId: string, amount: number): Promise<boolean> {
     const result = await this.chargeTokens(userId, amount, 'PvP 賭注');
     return result.success;
   }
 
-  /** 賭注獎金發放 */
   async payoutBet(userId: string, amount: number): Promise<void> {
     await this.awardTokens(userId, amount, 'PvP 賭注獎金');
   }
@@ -356,12 +335,10 @@ export class CurrencyManager {
   //  查詢 / 統計
   // ──────────────────────────────────────────────────────────
 
-  /** 取得 Premium 商品列表 */
   getPremiumItems(): PremiumItem[] {
     return Object.values(PREMIUM_ITEMS);
   }
 
-  /** 清除餘額快取 */
   clearBalanceCache(userId?: string): void {
     if (userId) {
       this.balanceCache.delete(userId);

@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Arinova } from '@arinova-ai/spaces-sdk';
-import type { AgentInfo as SdkAgentInfo } from '@arinova-ai/spaces-sdk';
+import { arinova } from '../App';
 import { useGameStore } from '../stores/gameStore';
 import type { AgentInfo } from '@game/shared';
 
 /** Map SDK agent shape to our game's AgentInfo */
-function toGameAgent(sdk: SdkAgentInfo): AgentInfo {
+function toGameAgent(sdk: { id: string; name: string; avatarUrl?: string; description?: string }): AgentInfo {
   return {
     id: sdk.id,
     name: sdk.name,
@@ -31,8 +30,10 @@ export default function AgentSelectModal() {
     setLoading(true);
     setError(null);
 
-    Arinova.user.agents(accessToken)
-      .then((sdkAgents) => {
+    // v0.1.3: use apiFetch instead of Arinova.user.agents()
+    arinova.apiFetch('/api/v1/user/agents')
+      .then((data) => {
+        const sdkAgents = data as { id: string; name: string; avatarUrl?: string; description?: string }[];
         setAgents(sdkAgents.map(toGameAgent));
       })
       .catch((err: unknown) => {
