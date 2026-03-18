@@ -21,49 +21,36 @@ export default function App() {
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
-      console.log('[MUD] handleLogin called:', { userId, accessToken: accessToken ? '***' : 'none', wsConnection: useGameStore.getState().connection });
       if (accessToken) {
         useGameStore.getState().setAccessToken(accessToken);
       }
       // Wait for WS to be connected before sending login
       const doLogin = () => {
-        console.log('[MUD] doLogin — sending login command now');
         login(userId, undefined, accessToken);
       };
 
       const conn = useGameStore.getState().connection;
       if (conn === 'connected') {
-        console.log('[MUD] WS already connected, sending login immediately');
         doLogin();
       } else {
-        console.log('[MUD] WS not connected yet (state:', conn, '), setting up subscribe + polling');
-        // Use both subscribe AND polling for reliability
         let resolved = false;
         const unsub = useGameStore.subscribe((state) => {
           if (!resolved && state.connection === 'connected') {
             resolved = true;
             unsub();
-            console.log('[MUD] WS connected (via subscribe), sending login');
             doLogin();
           }
         });
-        // Also poll every 500ms as fallback
+        // Poll as fallback
         const pollInterval = setInterval(() => {
-          const s = useGameStore.getState().connection;
-          console.log('[MUD] polling WS state:', s);
-          if (!resolved && s === 'connected') {
+          if (!resolved && useGameStore.getState().connection === 'connected') {
             resolved = true;
             unsub();
             clearInterval(pollInterval);
-            console.log('[MUD] WS connected (via poll), sending login');
             doLogin();
           }
         }, 500);
-        // Cleanup after 30 seconds
         setTimeout(() => {
-          if (!resolved) {
-            console.error('[MUD] WS never connected after 30s, giving up');
-          }
           unsub();
           clearInterval(pollInterval);
         }, 30000);

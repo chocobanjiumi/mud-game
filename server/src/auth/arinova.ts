@@ -231,7 +231,6 @@ export function clearTokenCache(userId: string): void {
 
 export async function validateToken(accessToken: string): Promise<ArinovaUser | null> {
   const baseUrl = getBaseUrl();
-  console.log(`[Auth] validateToken called, token length: ${accessToken?.length}, prefix: ${accessToken?.substring(0, 20)}...`);
 
   // Try 1: Bearer token to /api/v1/user/profile (OAuth access_token)
   try {
@@ -240,29 +239,25 @@ export async function validateToken(accessToken: string): Promise<ArinovaUser | 
     });
     if (res1.ok) {
       const user = await res1.json() as ArinovaUser;
-      console.log(`[Auth] validateToken success (Bearer):`, user);
       return user;
     }
-    console.log(`[Auth] Bearer auth failed: ${res1.status}`);
-  } catch (err) {
-    console.error(`[Auth] Bearer auth error:`, err instanceof Error ? err.message : err);
+  } catch {
+    // Bearer auth failed
   }
 
-  // Try 2: Session token as cookie (better-auth session token from PiP overlay)
+  // Try 2: Session token as cookie (better-auth session token fallback)
   try {
     const res2 = await fetch(`${baseUrl}/api/auth/get-session`, {
       headers: { Cookie: `better-auth.session_token=${accessToken}` },
     });
     if (res2.ok) {
       const sessionData = await res2.json() as { user?: ArinovaUser; session?: { userId: string } };
-      console.log(`[Auth] validateToken success (session cookie):`, JSON.stringify(sessionData));
       if (sessionData?.user) {
         return sessionData.user;
       }
     }
-    console.log(`[Auth] Session cookie auth failed: ${res2.status}`);
-  } catch (err) {
-    console.error(`[Auth] Session cookie error:`, err instanceof Error ? err.message : err);
+  } catch {
+    // Session cookie auth failed
   }
 
   // Try 3: Session token via Authorization header to get-session
@@ -272,13 +267,11 @@ export async function validateToken(accessToken: string): Promise<ArinovaUser | 
     });
     if (res3.ok) {
       const sessionData = await res3.json() as { user?: ArinovaUser; session?: { userId: string } };
-      console.log(`[Auth] validateToken success (session bearer):`, JSON.stringify(sessionData));
       if (sessionData?.user) {
         return sessionData.user;
       }
     }
-    console.log(`[Auth] Session bearer auth failed: ${res3.status}`);
-  } catch (err) {
+  } catch {
     console.error(`[Auth] Session bearer error:`, err instanceof Error ? err.message : err);
   }
 
