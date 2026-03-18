@@ -1,7 +1,6 @@
 // Arinova OAuth 整合 — 登入、回呼、Token 管理
+// v0.1.3: 使用直接 REST API 呼叫，不依賴 SDK
 
-import { Arinova } from '@arinova-ai/spaces-sdk';
-import type { ArinovaUser, AgentInfo } from '@arinova-ai/spaces-sdk';
 import { randomUUID } from 'crypto';
 
 // ============================================================
@@ -14,6 +13,20 @@ export interface ArinovaAuthConfig {
   clientSecret: string;
   baseUrl?: string;
   redirectUri: string;
+}
+
+export interface ArinovaUser {
+  id: string;
+  name: string;
+  email?: string;
+  avatarUrl?: string;
+}
+
+export interface AgentInfo {
+  id: string;
+  name: string;
+  avatarUrl?: string;
+  description?: string;
 }
 
 export interface AuthSession {
@@ -38,21 +51,39 @@ const sessions = new Map<string, AuthSession>();
 const pendingStates = new Map<string, number>();
 
 // ============================================================
+//  REST helper
+// ============================================================
+
+function getBaseUrl(): string {
+  return authConfig?.baseUrl || 'https://api.chat-staging.arinova.ai';
+}
+
+async function apiGet<T>(path: string, accessToken: string): Promise<T> {
+  const res = await fetch(`${getBaseUrl()}${path}`, {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+async function apiPost<T>(path: string, body: Record<string, unknown>): Promise<T> {
+  const res = await fetch(`${getBaseUrl()}${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) throw new Error(`API ${res.status}`);
+  return res.json() as Promise<T>;
+}
+
+// ============================================================
 //  初始化
 // ============================================================
 
-/** 初始化 Arinova SDK 與 Auth 配置 */
+/** 初始化 Auth 配置（v0.1.3: 不再呼叫 Arinova.init） */
 export function initArinovaAuth(config: ArinovaAuthConfig): void {
   authConfig = config;
-
-  Arinova.init({
-    appId: config.appId,
-    baseUrl: config.baseUrl,
-    clientId: config.clientId,
-    clientSecret: config.clientSecret,
-  });
-
-  console.log('[Auth] Arinova SDK 已初始化');
+  console.log('[Auth] Arinova Auth 已初始化（REST mode）');
 }
 
 /** 取得 auth 配置（供其他模組使用） */
@@ -64,10 +95,6 @@ export function getAuthConfig(): ArinovaAuthConfig | null {
 //  HTTP 路由處理器
 // ============================================================
 
-/**
- * GET /auth/login
- * 產生 Arinova OAuth 授權 URL，供客戶端跳轉
- */
 export function handleLoginRequest(): { redirectUrl: string; state: string } {
   if (!authConfig) {
     throw new Error('Arinova Auth 尚未初始化');
@@ -84,16 +111,10 @@ export function handleLoginRequest(): { redirectUrl: string; state: string } {
     response_type: 'code',
   });
 
-  const baseUrl = authConfig.baseUrl || 'https://api.arinova.ai';
-  const redirectUrl = `${baseUrl}/oauth/authorize?${params.toString()}`;
-
+  const redirectUrl = `${getBaseUrl()}/oauth/authorize?${params.toString()}`;
   return { redirectUrl, state };
 }
 
-/**
- * GET /auth/callback?code=xxx&state=xxx
- * 處理 OAuth 回呼，交換 access token 並快取
- */
 export async function handleOAuthCallback(code: string, state: string): Promise<{
   success: boolean;
   session?: AuthSession;
@@ -103,31 +124,35 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
     return { success: false, error: 'Arinova Auth 尚未初始化' };
   }
 
-  // 驗證 state（防 CSRF）
   const stateTs = pendingStates.get(state);
   if (!stateTs) {
     return { success: false, error: '無效的 state 參數' };
   }
   pendingStates.delete(state);
 
-  // state 5 分鐘內有效
   if (Date.now() - stateTs > 300_000) {
     return { success: false, error: 'OAuth state 已過期' };
   }
 
   try {
-    // 交換 code 取得 token
-    const { user, accessToken } = await Arinova.handleCallback({
-      code,
-      clientId: authConfig.clientId,
-      clientSecret: authConfig.clientSecret,
-      redirectUri: authConfig.redirectUri,
-    });
+    // Exchange code for token via REST
+    const tokenResult = await apiPost<{ access_token: string; user: ArinovaUser }>(
+      '/oauth/token',
+      {
+        code,
+        client_id: authConfig.clientId,
+        client_secret: authConfig.clientSecret,
+        redirect_uri: authConfig.redirectUri,
+        grant_type: 'authorization_code',
+      },
+    );
 
-    // 取得使用者的 Agent 列表
+    const { user, access_token: accessToken } = tokenResult;
+
+    // Fetch user's agents
     let agents: AgentInfo[] = [];
     try {
-      agents = await Arinova.user.agents(accessToken);
+      agents = await apiGet<AgentInfo[]>('/api/v1/user/agents', accessToken);
     } catch (err) {
       console.error('[Auth] 取得 Agent 列表失敗:', err);
     }
@@ -137,7 +162,7 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
       accessToken,
       user,
       agents,
-      expiresAt: Date.now() + 3_600_000, // 1 小時
+      expiresAt: Date.now() + 3_600_000,
       createdAt: Date.now(),
     };
 
@@ -156,12 +181,10 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
 //  Token 管理
 // ============================================================
 
-/** 取得使用者的 auth session */
 export function getAuthSession(userId: string): AuthSession | undefined {
   const session = sessions.get(userId);
   if (!session) return undefined;
 
-  // 檢查是否過期
   if (Date.now() > session.expiresAt) {
     sessions.delete(userId);
     return undefined;
@@ -170,40 +193,34 @@ export function getAuthSession(userId: string): AuthSession | undefined {
   return session;
 }
 
-/** 取得快取的 access token */
 export function getCachedToken(userId: string): string | null {
   const session = getAuthSession(userId);
   return session?.accessToken ?? null;
 }
 
-/** 取得快取的使用者資訊 */
 export function getCachedUser(userId: string): ArinovaUser | null {
   const session = getAuthSession(userId);
   return session?.user ?? null;
 }
 
-/** 取得快取的 Agent 列表 */
 export function getCachedAgents(userId: string): AgentInfo[] {
   const session = getAuthSession(userId);
   return session?.agents ?? [];
 }
 
-/** 更新 access token */
 export function updateAccessToken(userId: string, newToken: string): boolean {
   const session = sessions.get(userId);
   if (!session) return false;
   session.accessToken = newToken;
-  session.expiresAt = Date.now() + 3_600_000; // 續期 1 小時
+  session.expiresAt = Date.now() + 3_600_000;
   return true;
 }
 
-/** 移除 session（登出） */
 export function removeAuthSession(userId: string): void {
   sessions.delete(userId);
   console.log(`[Auth] Session 移除: ${userId}`);
 }
 
-/** 清除 token 快取 */
 export function clearTokenCache(userId: string): void {
   sessions.delete(userId);
 }
@@ -212,32 +229,29 @@ export function clearTokenCache(userId: string): void {
 //  驗證
 // ============================================================
 
-/** 驗證 access token 是否有效 */
 export async function validateToken(accessToken: string): Promise<ArinovaUser | null> {
   try {
-    const user = await Arinova.user.profile(accessToken);
+    const user = await apiGet<ArinovaUser>('/api/v1/user/profile', accessToken);
     return user;
   } catch {
     return null;
   }
 }
 
-/** 檢查 userId 是否為訪客 */
 export function isGuestUser(userId: string): boolean {
   return userId.startsWith('guest_');
 }
 
-/** 取得使用者的 AI Agent 列表（含 API 刷新） */
 export async function getUserAgents(userId: string): Promise<AgentInfo[]> {
   const session = sessions.get(userId);
   if (!session?.accessToken) return [];
 
   try {
-    const agents = await Arinova.user.agents(session.accessToken);
-    session.agents = agents; // 更新快取
+    const agents = await apiGet<AgentInfo[]>('/api/v1/user/agents', session.accessToken);
+    session.agents = agents;
     return agents;
   } catch {
-    return session.agents; // 回傳快取
+    return session.agents;
   }
 }
 
@@ -245,14 +259,9 @@ export async function getUserAgents(userId: string): Promise<AgentInfo[]> {
 //  Express 路由整合
 // ============================================================
 
-/**
- * 註冊 Auth 相關的 HTTP 路由
- * 路由：GET /auth/login, GET /auth/callback
- */
 export function registerAuthRoutes(app: {
   get: (path: string, handler: (req: any, res: any) => void | Promise<void>) => void;
 }): void {
-  // GET /auth/login — 跳轉到 Arinova OAuth
   app.get('/auth/login', (_req: any, res: any) => {
     try {
       const { redirectUrl } = handleLoginRequest();
@@ -262,7 +271,6 @@ export function registerAuthRoutes(app: {
     }
   });
 
-  // GET /auth/callback — 處理 OAuth 回呼
   app.get('/auth/callback', async (req: any, res: any) => {
     const { code, state } = req.query;
     if (!code) {
@@ -281,14 +289,12 @@ export function registerAuthRoutes(app: {
       res.status(401).json({ error: result.error ?? '登入失敗' });
     }
   });
-
 }
 
 // ============================================================
 //  清理
 // ============================================================
 
-/** 清理過期的 session 和 state */
 export function cleanupExpiredSessions(): void {
   const now = Date.now();
 
@@ -305,5 +311,4 @@ export function cleanupExpiredSessions(): void {
   }
 }
 
-// 每 5 分鐘清理一次
 setInterval(cleanupExpiredSessions, 300_000);

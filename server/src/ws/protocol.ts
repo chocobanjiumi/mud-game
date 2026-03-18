@@ -13,7 +13,6 @@ import { world } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
 import { ITEM_DEFS } from '@game/shared';
-import { Arinova } from '@arinova-ai/spaces-sdk';
 
 /** Shared CurrencyManager instance */
 const currencyManager = new CurrencyManager();
@@ -201,10 +200,9 @@ async function handleLogin(
 
     // Send token balance to client if available
     try {
-      const { Arinova } = await import('@arinova-ai/spaces-sdk');
-      const result = await Arinova.economy.balance(accessToken);
-      if (result && typeof result.balance === 'number') {
-        sendToSession(session.sessionId, 'token_balance', { balance: result.balance });
+      const balance = await currencyManager.getBalance(accessToken);
+      if (balance !== null) {
+        sendToSession(session.sessionId, 'token_balance', { balance });
       }
     } catch {
       // Token balance fetch failed — non-critical
@@ -414,9 +412,9 @@ async function handleOpenShop(session: WsSession): Promise<void> {
   const token = getCachedToken(session.userId);
   if (token) {
     try {
-      const result = await Arinova.economy.balance(token);
-      if (result && typeof result.balance === 'number') {
-        balance = result.balance;
+      const result = await currencyManager.getBalance(token);
+      if (result !== null) {
+        balance = result;
       }
     } catch {
       // 餘額查詢失敗，使用 0
@@ -474,9 +472,9 @@ async function handlePurchase(
     const token = getCachedToken(session.userId);
     if (token) {
       try {
-        const balResult = await Arinova.economy.balance(token);
-        if (balResult && typeof balResult.balance === 'number') {
-          newBalance = balResult.balance;
+        const bal = await currencyManager.getBalance(token);
+        if (bal !== null) {
+          newBalance = bal;
         }
       } catch {
         // 非關鍵錯誤
