@@ -10,17 +10,8 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
-  // Debug: log ALL postMessages to see what format parent sends
-  useEffect(() => {
-    const debugHandler = (event: MessageEvent) => {
-      console.log('[MUD-DEBUG] postMessage received:', JSON.stringify(event.data));
-    };
-    window.addEventListener('message', debugHandler);
-    return () => window.removeEventListener('message', debugHandler);
-  }, []);
-
-  // Auto-connect on mount — iframe postMessage may arrive before user clicks
-  // Also handle OAuth PKCE callback if redirected back with ?code=
+  // Direct postMessage listener — bypass SDK connect() to avoid timing issues
+  // Also handle OAuth PKCE callback
   useEffect(() => {
     // Check for PKCE callback first
     const params = new URLSearchParams(window.location.search);
@@ -43,22 +34,34 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
       return;
     }
 
-    // Try connect() immediately — catches iframe postMessage from parent
-    setIsLoggingIn(true);
-    arinova.connect({ timeout: 15000 })
-      .then((result) => {
-        console.log('[MUD-AUTH] connect() resolved:', JSON.stringify({ user: result?.user?.name, hasToken: !!result?.accessToken }));
-        if (result && result.user) {
-          useGameStore.getState().setArinovaUser(result.user);
-          // accessToken may be empty from iframe postMessage — login anyway
-          onLogin(result.user.id, result.accessToken || undefined);
+    // Listen for arinova:auth postMessage directly (not through SDK)
+    const inIframe = window.self !== window.top;
+    if (inIframe) {
+      setIsLoggingIn(true);
+      const handler = (event: MessageEvent) => {
+        if (event.data?.type !== 'arinova:auth') return;
+        const { user, accessToken, agents } = event.data.payload;
+        console.log('[MUD-AUTH] postMessage auth received! user:', user?.name);
+        window.removeEventListener('message', handler);
+        if (user) {
+          useGameStore.getState().setArinovaUser(user);
+          arinova.accessToken = accessToken || '';
+          onLogin(user.id, accessToken || undefined);
         }
-      })
-      .catch((err) => {
-        console.log('[MUD-AUTH] connect() rejected:', err.message);
-        // Timeout or not in iframe — user will click Login manually
+      };
+      window.addEventListener('message', handler);
+
+      // Timeout after 15 seconds
+      const timer = setTimeout(() => {
+        window.removeEventListener('message', handler);
         setIsLoggingIn(false);
-      });
+      }, 15000);
+
+      return () => {
+        window.removeEventListener('message', handler);
+        clearTimeout(timer);
+      };
+    }
   }, [onLogin]);
 
   const handleArinovaLogin = () => {
