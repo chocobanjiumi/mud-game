@@ -21,6 +21,7 @@ export default function App() {
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
+      console.log('[MUD] handleLogin called:', userId, 'hasToken:', !!accessToken, 'wsConnection:', useGameStore.getState().connection);
       // Store the access token for agent API calls
       if (accessToken) {
         useGameStore.getState().setAccessToken(accessToken);
