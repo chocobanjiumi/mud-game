@@ -4030,6 +4030,10 @@ function cmdAuto(session: WsSession, args: string[]): void {
       // "auto" or "auto on" enables
       const msg = autoBattleMgr.enable(char.id);
       sendSystem(session.sessionId, msg);
+      // 立刻觸發第一次自動攻擊（如果不在戰鬥中）
+      if (!isInCombat(char.id)) {
+        autoBattleMgr.processAutoAction(char.id);
+      }
       break;
     }
   }
