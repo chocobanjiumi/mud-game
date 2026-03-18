@@ -10,18 +10,17 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const connection = useGameStore((s) => s.connection);
 
-  // Handle OAuth callback if redirected back with ?code=
+  // Handle OAuth PKCE callback if redirected back with ?code=
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (!code) return;
 
-    // Clean URL so we don't re-process on re-render
-    window.history.replaceState({}, '', window.location.pathname);
-
     setIsLoggingIn(true);
     arinova.handleCallback()
       .then((result) => {
+        // Clean URL after successful callback
+        window.history.replaceState({}, '', window.location.pathname);
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
           onLogin(result.user.id, result.access_token);
@@ -29,6 +28,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
       })
       .catch((err) => {
         console.error('[Arinova] OAuth callback 失敗:', err);
+        window.history.replaceState({}, '', window.location.pathname);
         useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
       })
       .finally(() => setIsLoggingIn(false));
@@ -36,7 +36,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
   const handleArinovaLogin = () => {
     if (isLoggingIn) return;
-    // Popup mode login (v0.1.3)
+    // Use login() which tries popup first, falls back to redirect
     setIsLoggingIn(true);
     arinova.login()
       .then((result) => {
@@ -46,6 +46,9 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         }
       })
       .catch((err) => {
+        // If popup was blocked and redirect happened, the page will reload
+        // handleCallback in useEffect will handle it
+        if (err.message?.includes('Popup blocked')) return;
         console.error('[Arinova] Login 失敗:', err);
         useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
       })
