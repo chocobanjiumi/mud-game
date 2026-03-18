@@ -19,7 +19,6 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     setIsLoggingIn(true);
     arinova.handleCallback()
       .then((result) => {
-        // Clean URL after successful callback
         window.history.replaceState({}, '', window.location.pathname);
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
@@ -36,13 +35,20 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
   const handleArinovaLogin = () => {
     if (isLoggingIn) return;
-    // Pure redirect mode — no popup, just redirect to authorize
-    // login() will try popup first; if blocked, falls back to redirect
-    // Either way, handleCallback() in useEffect handles the return
-    arinova.login().catch(() => {
-      // Popup blocked or redirect happened — page will reload with ?code=
-      // useEffect handleCallback will process it
-    });
+    setIsLoggingIn(true);
+    // Use connect() — auto-detects iframe (postMessage) vs standalone (PKCE popup)
+    arinova.connect({ timeout: 10000 })
+      .then((result) => {
+        if (result && result.user) {
+          useGameStore.getState().setArinovaUser(result.user);
+          onLogin(result.user.id, result.accessToken);
+        }
+      })
+      .catch((err) => {
+        console.error('[Arinova] Connect 失敗:', err);
+        useGameStore.getState().addTerminalLine('[系統] Arinova 登入失敗，請稍後再試。', 'error');
+      })
+      .finally(() => setIsLoggingIn(false));
   };
 
   const isConnected = connection === 'connected';
