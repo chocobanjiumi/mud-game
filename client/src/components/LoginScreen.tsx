@@ -47,12 +47,15 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     setIsLoggingIn(true);
     arinova.connect({ timeout: 15000 })
       .then((result) => {
+        console.log('[MUD-AUTH] connect() resolved:', JSON.stringify({ user: result?.user?.name, hasToken: !!result?.accessToken }));
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
-          onLogin(result.user.id, result.accessToken);
+          // accessToken may be empty from iframe postMessage — login anyway
+          onLogin(result.user.id, result.accessToken || undefined);
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log('[MUD-AUTH] connect() rejected:', err.message);
         // Timeout or not in iframe — user will click Login manually
         setIsLoggingIn(false);
       });
