@@ -34,8 +34,8 @@ importers:
   client:
     dependencies:
       '@arinova-ai/spaces-sdk':
-        specifier: ^0.1.4
-        version: 0.1.4
+        specifier: ^0.1.5
+        version: 0.1.5
       '@game/shared':
         specifier: workspace:*
         version: link:../packages/shared
@@ -134,8 +134,8 @@ packages:
   '@arinova-ai/spaces-sdk@0.1.0':
     resolution: {integrity: sha512-5czAwDNp4RP2RAFglEVPLatul5XqGu4/3EwUekHKvZ6s3aG6DTRMSFOrs16mzPxLWnR8uzcx1AdE4YKFPECZ5w==}
 
-  '@arinova-ai/spaces-sdk@0.1.4':
-    resolution: {integrity: sha512-xos934ViMktFR+g2WijLslUBaS8wQXTcxqkXkIxzlbeD45r/AQtOCqbAE+Zn4149VM4sulSGgyKiapm9ACx1HA==}
+  '@arinova-ai/spaces-sdk@0.1.5':
+    resolution: {integrity: sha512-V8iiBV1Z3CmTN6jEwMyPuI8RJjLwtzo3FDEpa0RxHQwrfKUo+FzGgGxxobjQjj8BHzfoiWXssUb8ml119U/bVQ==}
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
@@ -2279,7 +2279,7 @@ snapshots:
 
   '@arinova-ai/spaces-sdk@0.1.0': {}
 
-  '@arinova-ai/spaces-sdk@0.1.4': {}
+  '@arinova-ai/spaces-sdk@0.1.5': {}
 
   '@babel/code-frame@7.29.0':
     dependencies:
