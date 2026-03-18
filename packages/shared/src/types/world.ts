@@ -52,6 +52,7 @@ export interface ZoneDef {
 export interface NpcDef {
   id: string;
   name: string;
+  alias: string; // 英文短名 e.g. 'elder', 'smith'
   title: string;
   roomId: string;
   type: NpcType;

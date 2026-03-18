@@ -85,13 +85,19 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
     const handleOpenShopEvent = () => {
       if (!shopOpen) onOpenShop();
     };
+    const handleTerminalCommand = (e: Event) => {
+      const cmd = (e as CustomEvent).detail as string;
+      if (cmd) onCommand(cmd);
+    };
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('open-shop', handleOpenShopEvent);
+    window.addEventListener('terminal-command', handleTerminalCommand);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('open-shop', handleOpenShopEvent);
+      window.removeEventListener('terminal-command', handleTerminalCommand);
     };
-  }, [shopOpen, onOpenShop, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
+  }, [shopOpen, onOpenShop, onCommand, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {

@@ -9,6 +9,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   slime: {
     id: 'slime',
     name: '史萊姆',
+    alias: 'slime',
     level: 1,
     hp: 30,
     mp: 0,
@@ -38,6 +39,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   small_bat: {
     id: 'small_bat',
     name: '小蝙蝠',
+    alias: 'bat',
     level: 2,
     hp: 25,
     mp: 5,
@@ -67,6 +69,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   wild_rabbit: {
     id: 'wild_rabbit',
     name: '野兔',
+    alias: 'rabbit',
     level: 3,
     hp: 35,
     mp: 0,
@@ -98,6 +101,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   wild_wolf: {
     id: 'wild_wolf',
     name: '野狼',
+    alias: 'wolf',
     level: 6,
     hp: 80,
     mp: 10,
@@ -128,6 +132,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   bandit: {
     id: 'bandit',
     name: '盜賊',
+    alias: 'bandit',
     level: 7,
     hp: 90,
     mp: 15,
@@ -158,6 +163,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   poison_snake: {
     id: 'poison_snake',
     name: '毒蛇',
+    alias: 'snake',
     level: 8,
     hp: 65,
     mp: 20,
@@ -190,6 +196,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   shadow_wolf: {
     id: 'shadow_wolf',
     name: '暗影狼',
+    alias: 'shadowwolf',
     level: 12,
     hp: 150,
     mp: 25,
@@ -220,6 +227,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   giant_spider: {
     id: 'giant_spider',
     name: '巨型蜘蛛',
+    alias: 'spider',
     level: 14,
     hp: 180,
     mp: 30,
@@ -250,6 +258,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   treant: {
     id: 'treant',
     name: '樹精',
+    alias: 'treant',
     level: 16,
     hp: 250,
     mp: 40,
@@ -280,6 +289,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   shadow_wolf_alpha: {
     id: 'shadow_wolf_alpha',
     name: '暗影狼王',
+    alias: 'alphaWolf',
     level: 20,
     hp: 600,
     mp: 80,
@@ -319,6 +329,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   crystal_lizard: {
     id: 'crystal_lizard',
     name: '水晶蜥蜴',
+    alias: 'lizard',
     level: 22,
     hp: 280,
     mp: 50,
@@ -349,6 +360,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   cave_bat: {
     id: 'cave_bat',
     name: '洞窟蝙蝠',
+    alias: 'cavebat',
     level: 21,
     hp: 200,
     mp: 40,
@@ -379,6 +391,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   gargoyle: {
     id: 'gargoyle',
     name: '石像鬼',
+    alias: 'gargoyle',
     level: 25,
     hp: 400,
     mp: 60,
@@ -409,6 +422,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   crystal_guardian: {
     id: 'crystal_guardian',
     name: '水晶守衛',
+    alias: 'guardian',
     level: 30,
     hp: 1200,
     mp: 150,
@@ -449,6 +463,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   green_slime: {
     id: 'green_slime',
     name: '綠史萊姆',
+    alias: 'gslime',
     level: 1,
     hp: 25,
     mp: 0,
@@ -478,6 +493,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   field_rat: {
     id: 'field_rat',
     name: '田鼠',
+    alias: 'rat',
     level: 2,
     hp: 20,
     mp: 0,
@@ -507,6 +523,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   dark_crow: {
     id: 'dark_crow',
     name: '烏鴉',
+    alias: 'crow',
     level: 3,
     hp: 28,
     mp: 5,
@@ -536,6 +553,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   skeleton_soldier: {
     id: 'skeleton_soldier',
     name: '骷髏兵',
+    alias: 'skeleton',
     level: 5,
     hp: 60,
     mp: 10,
@@ -568,6 +586,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   sea_crab: {
     id: 'sea_crab',
     name: '海蟹',
+    alias: 'crab',
     level: 8,
     hp: 100,
     mp: 5,
@@ -597,6 +616,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   jellyfish: {
     id: 'jellyfish',
     name: '水母',
+    alias: 'jellyfish',
     level: 9,
     hp: 55,
     mp: 25,
@@ -626,6 +646,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   pirate: {
     id: 'pirate',
     name: '海盜',
+    alias: 'pirate',
     level: 11,
     hp: 130,
     mp: 15,
@@ -656,6 +677,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   sea_serpent: {
     id: 'sea_serpent',
     name: '海蛇',
+    alias: 'serpent',
     level: 12,
     hp: 140,
     mp: 30,
@@ -686,6 +708,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   deep_fishman: {
     id: 'deep_fishman',
     name: '深海魚人',
+    alias: 'fishman',
     level: 14,
     hp: 220,
     mp: 40,
@@ -720,6 +743,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   fire_salamander: {
     id: 'fire_salamander',
     name: '火蜥蜴',
+    alias: 'salamander',
     level: 15,
     hp: 180,
     mp: 30,
@@ -750,6 +774,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   rock_giant: {
     id: 'rock_giant',
     name: '岩石巨人',
+    alias: 'rockgiant',
     level: 17,
     hp: 350,
     mp: 15,
@@ -780,6 +805,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   flame_spirit: {
     id: 'flame_spirit',
     name: '火焰精靈',
+    alias: 'flamespirit',
     level: 19,
     hp: 150,
     mp: 80,
@@ -810,6 +836,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   lava_worm: {
     id: 'lava_worm',
     name: '熔岩蟲',
+    alias: 'lavaworm',
     level: 20,
     hp: 260,
     mp: 20,
@@ -840,6 +867,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   dwarf_guard: {
     id: 'dwarf_guard',
     name: '矮人守衛',
+    alias: 'dwarfguard',
     level: 22,
     hp: 300,
     mp: 30,
@@ -872,6 +900,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   snow_wolf: {
     id: 'snow_wolf',
     name: '雪狼',
+    alias: 'snowwolf',
     level: 22,
     hp: 270,
     mp: 20,
@@ -902,6 +931,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   ice_elemental: {
     id: 'ice_elemental',
     name: '冰元素',
+    alias: 'iceelem',
     level: 24,
     hp: 250,
     mp: 80,
@@ -932,6 +962,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   frost_giant: {
     id: 'frost_giant',
     name: '霜巨人',
+    alias: 'frostgiant',
     level: 26,
     hp: 500,
     mp: 40,
@@ -964,6 +995,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   yeti: {
     id: 'yeti',
     name: '雪人',
+    alias: 'yeti',
     level: 27,
     hp: 450,
     mp: 30,
@@ -994,6 +1026,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   ice_dragon_whelp: {
     id: 'ice_dragon_whelp',
     name: '冰龍幼崽',
+    alias: 'whelp',
     level: 30,
     hp: 1500,
     mp: 200,
@@ -1034,6 +1067,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   skeleton_general: {
     id: 'skeleton_general',
     name: '骷髏將軍',
+    alias: 'general',
     level: 8,
     hp: 195,       // ~65 base * 3x
     mp: 30,
@@ -1068,6 +1102,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   wolf_king: {
     id: 'wolf_king',
     name: '狼王',
+    alias: 'wolfking',
     level: 12,
     hp: 450,       // ~150 base * 3x
     mp: 40,
@@ -1102,6 +1137,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   pirate_captain: {
     id: 'pirate_captain',
     name: '海盜船長',
+    alias: 'piratecaptain',
     level: 15,
     hp: 540,       // ~180 base * 3x
     mp: 45,
@@ -1137,6 +1173,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   shadow_treant: {
     id: 'shadow_treant',
     name: '暗影樹靈',
+    alias: 'shadowtreant',
     level: 20,
     hp: 750,       // ~250 base * 3x
     mp: 60,
@@ -1173,6 +1210,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   lava_colossus: {
     id: 'lava_colossus',
     name: '熔岩巨像',
+    alias: 'colossus',
     level: 22,
     hp: 900,       // ~300 base * 3x
     mp: 45,
@@ -1208,6 +1246,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   crystal_dragon: {
     id: 'crystal_dragon',
     name: '水晶龍',
+    alias: 'crystaldragon',
     level: 26,
     hp: 1200,      // ~400 base * 3x
     mp: 100,
@@ -1244,6 +1283,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   frost_giant_king: {
     id: 'frost_giant_king',
     name: '霜巨人王',
+    alias: 'frostking',
     level: 30,
     hp: 1500,      // ~500 base * 3x
     mp: 120,
@@ -1282,6 +1322,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   blue_slime: {
     id: 'blue_slime',
     name: '藍色史萊姆',
+    alias: 'bslime',
     level: 2,
     hp: 45,
     mp: 10,
@@ -1311,6 +1352,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   goblin_scout: {
     id: 'goblin_scout',
     name: '哥布林斥候',
+    alias: 'scout',
     level: 3,
     hp: 55,
     mp: 0,
@@ -1341,6 +1383,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   goblin_warrior: {
     id: 'goblin_warrior',
     name: '哥布林戰士',
+    alias: 'goblin',
     level: 4,
     hp: 75,
     mp: 0,
@@ -1371,6 +1414,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   prairie_boar: {
     id: 'prairie_boar',
     name: '平原野豬',
+    alias: 'boar',
     level: 7,
     hp: 140,
     mp: 0,
@@ -1400,6 +1444,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   wind_hawk: {
     id: 'wind_hawk',
     name: '風之鷹',
+    alias: 'hawk',
     level: 8,
     hp: 80,
     mp: 15,
@@ -1429,6 +1474,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   goblin_chief: {
     id: 'goblin_chief',
     name: '哥布林首領',
+    alias: 'goblinchief',
     level: 10,
     hp: 300,
     mp: 30,
@@ -1462,6 +1508,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   forest_spider: {
     id: 'forest_spider',
     name: '森林蜘蛛',
+    alias: 'fspider',
     level: 10,
     hp: 150,
     mp: 10,
@@ -1491,6 +1538,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   dark_elf_archer: {
     id: 'dark_elf_archer',
     name: '暗精靈弓手',
+    alias: 'darkarcher',
     level: 14,
     hp: 160,
     mp: 30,
@@ -1521,6 +1569,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   forest_witch: {
     id: 'forest_witch',
     name: '森林女巫',
+    alias: 'witch',
     level: 18,
     hp: 200,
     mp: 80,
@@ -1553,6 +1602,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   fire_elemental: {
     id: 'fire_elemental',
     name: '火焰元素',
+    alias: 'fireelem',
     level: 17,
     hp: 220,
     mp: 60,
@@ -1582,6 +1632,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   cave_dragon: {
     id: 'cave_dragon',
     name: '洞窟幼龍',
+    alias: 'cavedragon',
     level: 20,
     hp: 800,
     mp: 60,
@@ -1615,6 +1666,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   lake_serpent: {
     id: 'lake_serpent',
     name: '湖蛇',
+    alias: 'lakeserpent',
     level: 20,
     hp: 280,
     mp: 20,
@@ -1644,6 +1696,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   frost_golem: {
     id: 'frost_golem',
     name: '冰霜魔像',
+    alias: 'golem',
     level: 22,
     hp: 500,
     mp: 30,
@@ -1673,6 +1726,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   dark_mage: {
     id: 'dark_mage',
     name: '暗黑法師',
+    alias: 'darkmage',
     level: 24,
     hp: 260,
     mp: 120,
@@ -1703,6 +1757,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   undead_knight: {
     id: 'undead_knight',
     name: '亡靈騎士',
+    alias: 'undead',
     level: 25,
     hp: 420,
     mp: 20,
@@ -1732,6 +1787,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   thunder_eagle: {
     id: 'thunder_eagle',
     name: '雷鷹',
+    alias: 'eagle',
     level: 26,
     hp: 300,
     mp: 50,
@@ -1761,6 +1817,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   cursed_priest: {
     id: 'cursed_priest',
     name: '被詛咒的祭司',
+    alias: 'cursed',
     level: 27,
     hp: 320,
     mp: 100,
@@ -1791,6 +1848,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   lake_hydra: {
     id: 'lake_hydra',
     name: '湖中九頭蛇',
+    alias: 'hydra',
     level: 30,
     hp: 1200,
     mp: 80,
@@ -1823,6 +1881,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   shadow_assassin: {
     id: 'shadow_assassin',
     name: '暗影刺客',
+    alias: 'assassin',
     level: 30,
     hp: 380,
     mp: 40,
@@ -1852,6 +1911,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   flame_dragon_knight: {
     id: 'flame_dragon_knight',
     name: '炎龍騎士',
+    alias: 'flameknight',
     level: 32,
     hp: 550,
     mp: 40,
@@ -1881,6 +1941,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   elder_treant: {
     id: 'elder_treant',
     name: '遠古樹人',
+    alias: 'eldertreant',
     level: 34,
     hp: 800,
     mp: 60,
@@ -1910,6 +1971,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   lich: {
     id: 'lich',
     name: '巫妖',
+    alias: 'lich',
     level: 35,
     hp: 500,
     mp: 200,
@@ -1940,6 +2002,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   demon_warrior: {
     id: 'demon_warrior',
     name: '魔族戰士',
+    alias: 'demon',
     level: 37,
     hp: 650,
     mp: 50,
@@ -1969,6 +2032,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   arch_demon: {
     id: 'arch_demon',
     name: '大惡魔',
+    alias: 'archdemon',
     level: 40,
     hp: 2000,
     mp: 150,
@@ -2005,6 +2069,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
   training_dummy: {
     id: 'training_dummy',
     name: '練習假人',
+    alias: 'dummy',
     level: 1,
     hp: 9999,
     mp: 0,

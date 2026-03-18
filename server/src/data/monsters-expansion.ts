@@ -10,6 +10,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   poison_toad: {
     id: 'poison_toad',
     name: '毒蛙',
+    alias: 'toad',
     level: 14,
     hp: 160,
     mp: 35,
@@ -43,6 +44,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   dark_treant: {
     id: 'dark_treant',
     name: '暗黑樹人',
+    alias: 'darktreant',
     level: 18,
     hp: 320,
     mp: 50,
@@ -79,6 +81,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   cave_bat_swarm: {
     id: 'cave_bat_swarm',
     name: '洞窟蝙蝠群',
+    alias: 'batswarm',
     level: 16,
     hp: 200,
     mp: 30,
@@ -112,6 +115,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   crystal_golem: {
     id: 'crystal_golem',
     name: '水晶魔像',
+    alias: 'cgolem',
     level: 20,
     hp: 350,
     mp: 60,
@@ -146,6 +150,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   spectral_knight: {
     id: 'spectral_knight',
     name: '幽靈騎士',
+    alias: 'specter',
     level: 25,
     hp: 500,
     mp: 80,
@@ -185,6 +190,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   imp: {
     id: 'imp',
     name: '小惡魔',
+    alias: 'imp',
     level: 30,
     hp: 450,
     mp: 80,
@@ -218,6 +224,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   demon_soldier: {
     id: 'demon_soldier',
     name: '魔族士兵',
+    alias: 'dsoldier',
     level: 33,
     hp: 650,
     mp: 50,
@@ -251,6 +258,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   succubus: {
     id: 'succubus',
     name: '魅魔',
+    alias: 'succubus',
     level: 35,
     hp: 580,
     mp: 200,
@@ -284,6 +292,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   hellhound: {
     id: 'hellhound',
     name: '地獄犬',
+    alias: 'hellhound',
     level: 37,
     hp: 720,
     mp: 60,
@@ -317,6 +326,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   demon_general: {
     id: 'demon_general',
     name: '魔族將軍',
+    alias: 'dgeneral',
     level: 40,
     hp: 1200,
     mp: 120,
@@ -352,6 +362,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   demon_lord: {
     id: 'demon_lord',
     name: '魔王',
+    alias: 'demonlord',
     level: 40,
     hp: 4800,     // 40*40*3
     mp: 400,
@@ -391,6 +402,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   young_dragon: {
     id: 'young_dragon',
     name: '幼龍',
+    alias: 'drake',
     level: 40,
     hp: 900,
     mp: 120,
@@ -423,6 +435,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   wyvern: {
     id: 'wyvern',
     name: '飛龍',
+    alias: 'wyvern',
     level: 43,
     hp: 950,
     mp: 100,
@@ -456,6 +469,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   dragon_knight: {
     id: 'dragon_knight',
     name: '龍騎士',
+    alias: 'dknight',
     level: 45,
     hp: 1100,
     mp: 80,
@@ -489,6 +503,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   ancient_wyrm: {
     id: 'ancient_wyrm',
     name: '古龍蛇',
+    alias: 'wyrm',
     level: 47,
     hp: 1200,
     mp: 150,
@@ -522,6 +537,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   storm_dragon: {
     id: 'storm_dragon',
     name: '風暴巨龍',
+    alias: 'stormdragon',
     level: 50,
     hp: 1800,
     mp: 250,
@@ -557,6 +573,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   elder_dragon: {
     id: 'elder_dragon',
     name: '古龍',
+    alias: 'elderdragon',
     level: 50,
     hp: 7500,     // 50*50*3
     mp: 500,
@@ -599,6 +616,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   void_walker: {
     id: 'void_walker',
     name: '虛空行者',
+    alias: 'voidwalker',
     level: 50,
     hp: 1500,
     mp: 200,
@@ -632,6 +650,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   shadow_demon: {
     id: 'shadow_demon',
     name: '暗影惡魔',
+    alias: 'shadowdemon',
     level: 52,
     hp: 1650,
     mp: 250,
@@ -665,6 +684,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   chaos_spawn: {
     id: 'chaos_spawn',
     name: '混沌之子',
+    alias: 'chaos',
     level: 53,
     hp: 1550,
     mp: 180,
@@ -698,6 +718,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   nightmare: {
     id: 'nightmare',
     name: '噩夢體',
+    alias: 'nightmare',
     level: 55,
     hp: 1800,
     mp: 300,
@@ -733,6 +754,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   abyss_lord: {
     id: 'abyss_lord',
     name: '深淵領主',
+    alias: 'abysslord',
     level: 55,
     hp: 9075,     // 55*55*3
     mp: 600,
@@ -775,6 +797,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   fallen_angel: {
     id: 'fallen_angel',
     name: '墮天使',
+    alias: 'fallen',
     level: 55,
     hp: 1700,
     mp: 280,
@@ -808,6 +831,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   celestial_guardian: {
     id: 'celestial_guardian',
     name: '天界守衛',
+    alias: 'celestial',
     level: 57,
     hp: 2000,
     mp: 180,
@@ -841,6 +865,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   seraph: {
     id: 'seraph',
     name: '熾天使',
+    alias: 'seraph',
     level: 58,
     hp: 1600,
     mp: 350,
@@ -874,6 +899,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   divine_construct: {
     id: 'divine_construct',
     name: '神造兵器',
+    alias: 'construct',
     level: 60,
     hp: 2500,
     mp: 100,
@@ -909,6 +935,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
   god_of_war: {
     id: 'god_of_war',
     name: '戰神',
+    alias: 'wargod',
     level: 60,
     hp: 10800,    // 60*60*3
     mp: 800,

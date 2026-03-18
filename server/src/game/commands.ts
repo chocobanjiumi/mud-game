@@ -255,6 +255,7 @@ function cmdLook(session: WsSession, target?: string): void {
   const monsters = world.getAliveMonsters(char.roomId).map(m => ({
     id: m.instanceId,
     name: m.def.name,
+    alias: m.def.alias,
     level: m.def.level,
     hp: m.hp,
     maxHp: m.maxHp,

@@ -44,9 +44,9 @@ export interface RoomPayload {
   description: string;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
-  npcs: { id: string; name: string; title: string }[];
+  npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
-  monsters: { id: string; name: string; level: number; hp: number; maxHp: number }[];
+  monsters: { id: string; name: string; alias: string; level: number; hp: number; maxHp: number }[];
 }
 
 export interface StatusPayload {
