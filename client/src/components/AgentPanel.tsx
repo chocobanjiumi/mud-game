@@ -54,28 +54,52 @@ export default function AgentPanel() {
         const state = useGameStore.getState();
         const char = state.character;
         const room = state.room;
-        const contextParts: string[] = [];
-        contextParts.push('=== 遊戲狀態 ===');
-        contextParts.push('你現在是「MUD 冒險世界」裡的冒險夥伴，你和玩家正在一起冒險。你必須以遊戲角色的身份回應，不要跳出遊戲世界觀。');
+
+        // systemPrompt — 遊戲場景設定
+        const systemPrompt = [
+          '你是「MUD 冒險世界」裡玩家的冒險夥伴。你和玩家正在一起冒險。',
+          '你必須始終以遊戲角色的身份回應，不要跳出遊戲世界觀。',
+          '你可以建議玩家接下來做什麼（例如跟 NPC 對話、去哪個方向探索、打怪、接任務等）。',
+          '回應要簡短有趣，像真正的冒險夥伴一樣說話。',
+        ].join('\n');
+
+        // context — 遊戲狀態
+        const gameContext: Record<string, unknown> = {};
         if (char) {
-          contextParts.push(`\n你的同伴：${char.name}（等級 ${char.level}，職業 ${char.classId}，HP ${char.hp}/${char.maxHp}）`);
+          gameContext.player = {
+            name: char.name,
+            level: char.level,
+            class: char.classId,
+            hp: char.hp,
+            maxHp: char.maxHp,
+          };
         }
         if (room) {
-          contextParts.push(`\n【當前位置】${room.name}`);
-          contextParts.push(`${room.description}`);
-          if (room.npcs?.length) contextParts.push(`這裡有 NPC：${room.npcs.map((n: { name: string; title: string }) => `${n.name}(${n.title})`).join('、')}`);
-          if (room.monsters?.length) contextParts.push(`這裡有怪物：${room.monsters.map((m: { name: string; level: number }) => `${m.name}(Lv.${m.level})`).join('、')}`);
-          if (room.exits?.length) contextParts.push(`可前往的方向：${room.exits.map((e: { direction: string }) => e.direction).join(', ')}`);
+          gameContext.location = {
+            name: room.name,
+            description: room.description,
+            npcs: room.npcs?.map((n: { name: string; title: string }) => `${n.name}(${n.title})`) ?? [],
+            monsters: room.monsters?.map((m: { name: string; level: number }) => `${m.name}(Lv.${m.level})`) ?? [],
+            exits: room.exits?.map((e: { direction: string }) => e.direction) ?? [],
+          };
         }
-        contextParts.push('\n請用遊戲世界觀的語氣回應，像是真的在遊戲世界裡陪伴玩家冒險。可以建議玩家接下來做什麼（例如跟 NPC 對話、去哪個方向探索、打怪等）。');
-        contextParts.push('=== 遊戲狀態結束 ===');
-        const contextStr = contextParts.join('\n');
-        const fullPrompt = `${contextStr}\n\n${prompt}`;
 
-        // v0.1.3: use apiFetch instead of Arinova.agent.chatStream
+        // messages — 對話歷史（多輪）
+        const messages = agentMessages.map((m) => ({
+          role: m.role === 'user' ? 'user' as const : 'assistant' as const,
+          content: m.content,
+        }));
+        messages.push({ role: 'user', content: prompt });
+
         const res = await arinova.apiFetch('/api/v1/agent/chat', {
           method: 'POST',
-          body: JSON.stringify({ agentId: selectedAgent.id, prompt: fullPrompt }),
+          body: JSON.stringify({
+            agentId: selectedAgent.id,
+            prompt,
+            systemPrompt,
+            messages,
+            context: gameContext,
+          }),
         });
 
         const data = res as { response?: string };
