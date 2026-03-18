@@ -231,9 +231,12 @@ export function clearTokenCache(userId: string): void {
 
 export async function validateToken(accessToken: string): Promise<ArinovaUser | null> {
   try {
+    console.log(`[Auth] validateToken called, token prefix: ${accessToken?.substring(0, 20)}...`);
     const user = await apiGet<ArinovaUser>('/api/v1/user/profile', accessToken);
+    console.log(`[Auth] validateToken success:`, user);
     return user;
-  } catch {
+  } catch (err) {
+    console.error(`[Auth] validateToken FAILED:`, err instanceof Error ? err.message : err);
     return null;
   }
 }
