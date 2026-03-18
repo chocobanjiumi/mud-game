@@ -37,7 +37,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     setIsLoggingIn(true);
     arinova.connect({ timeout: 15000 })
       .then((result) => {
-        console.log('[MUD] connect result:', JSON.stringify(result, null, 2));
+        console.log('[MUD] connect result:', JSON.stringify(result, null, 2), 'token length:', result?.accessToken?.length);
         if (result && result.user) {
           useGameStore.getState().setArinovaUser(result.user);
           onLogin(result.user.id, result.accessToken || undefined);
