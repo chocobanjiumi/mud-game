@@ -244,13 +244,18 @@ function cmdLook(session: WsSession, target?: string): void {
       }
       return;
     }
-    // 找怪物
+    // 找怪物（支援中文名和英文 alias）
     const monsters = world.getAliveMonsters(char.roomId);
-    const monster = monsters.find(m => m.def.name.includes(target));
+    const monster = monsters.find(m => m.def.name.includes(target) || (m.def.alias && m.def.alias.toLowerCase().includes(target.toLowerCase())));
     if (monster) {
-      sendSystem(session.sessionId, `═══ ${monster.def.name} ═══`);
-      sendSystem(session.sessionId, `等級：${monster.def.level}  HP：${monster.hp}/${monster.maxHp}`);
-      sendSystem(session.sessionId, `輸入 attack ${monster.def.name} 攻擊`);
+      sendSystem(session.sessionId, `═══ ${monster.def.name} (Lv.${monster.def.level}) ═══`);
+      if (monster.def.description) {
+        sendNarrative(session.sessionId, monster.def.description);
+      }
+      sendSystem(session.sessionId, `HP：${monster.hp}/${monster.maxHp}  屬性：${monster.def.element || '無'}`);
+      if (monster.def.isBoss) sendSystem(session.sessionId, '⚠ BOSS 怪物');
+      if (monster.def.isElite) sendSystem(session.sessionId, '★ 菁英怪物');
+      sendSystem(session.sessionId, `輸入 attack ${monster.def.alias || monster.def.name} 攻擊`);
       return;
     }
     // 找玩家
