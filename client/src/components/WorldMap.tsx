@@ -11,33 +11,39 @@ interface ZoneInfo {
 }
 
 const ZONES: ZoneInfo[] = [
-  { id: 'ice_plains', name: '冰封雪原', levelRange: '25-30', totalRooms: 12, col: 3, row: 0 },
-  { id: 'starter_village', name: '新手村', levelRange: '1-5', totalRooms: 8, col: 0, row: 1 },
+  // Main north-south path (col 1)
+  { id: 'starter_village', name: '新手村', levelRange: '1-5', totalRooms: 8, col: 1, row: 0 },
   { id: 'green_plains', name: '翠綠平原', levelRange: '5-10', totalRooms: 15, col: 1, row: 1 },
-  { id: 'dark_forest', name: '暗影森林', levelRange: '10-15', totalRooms: 14, col: 3, row: 1 },
-  { id: 'crystal_cave', name: '水晶洞窟', levelRange: '15-20', totalRooms: 10, col: 5, row: 1 },
-  { id: 'lakeside_town', name: '湖畔城鎮', levelRange: '5-8', totalRooms: 10, col: 0, row: 2 },
-  { id: 'east_coast', name: '東方海岸', levelRange: '8-12', totalRooms: 11, col: 1, row: 2 },
-  { id: 'volcano', name: '火山地帶', levelRange: '20-25', totalRooms: 9, col: 5, row: 2 },
-  { id: 'demon_territory', name: '魔族領地', levelRange: '30-35', totalRooms: 13, col: 5, row: 3 },
-  { id: 'dragon_valley', name: '龍谷', levelRange: '35-40', totalRooms: 8, col: 5, row: 4 },
-  { id: 'abyss_rift', name: '深淵裂隙', levelRange: '40-45', totalRooms: 7, col: 5, row: 5 },
-  { id: 'celestial_ruins', name: '天界遺跡', levelRange: '45-50', totalRooms: 10, col: 5, row: 6 },
+  { id: 'dark_forest', name: '暗影森林', levelRange: '10-15', totalRooms: 14, col: 1, row: 2 },
+  { id: 'volcano', name: '火山地帶', levelRange: '20-25', totalRooms: 9, col: 1, row: 3 },
+  { id: 'demon_territory', name: '魔族領地', levelRange: '30-35', totalRooms: 13, col: 1, row: 4 },
+  { id: 'dragon_valley', name: '龍谷', levelRange: '35-40', totalRooms: 8, col: 1, row: 5 },
+  { id: 'abyss_rift', name: '深淵裂隙', levelRange: '40-45', totalRooms: 7, col: 1, row: 6 },
+  { id: 'celestial_ruins', name: '天界遺跡', levelRange: '45-50', totalRooms: 10, col: 1, row: 7 },
+  // East branches
+  { id: 'lakeside_town', name: '湖畔城鎮', levelRange: '5-8', totalRooms: 10, col: 3, row: 1 },
+  { id: 'east_coast', name: '東方海岸', levelRange: '8-12', totalRooms: 11, col: 3, row: 2 },
+  { id: 'crystal_cave', name: '水晶洞窟', levelRange: '15-20', totalRooms: 10, col: 3, row: 3 },
+  // West branch
+  { id: 'ice_plains', name: '冰封雪原', levelRange: '25-30', totalRooms: 12, col: 0, row: 2 },
 ];
 
 // Connections between zones: [fromId, toId]
 const CONNECTIONS: [string, string][] = [
-  ['ice_plains', 'dark_forest'],
+  // Main path (north to south)
   ['starter_village', 'green_plains'],
   ['green_plains', 'dark_forest'],
-  ['dark_forest', 'crystal_cave'],
-  ['starter_village', 'lakeside_town'],
-  ['green_plains', 'east_coast'],
-  ['crystal_cave', 'volcano'],
+  ['dark_forest', 'volcano'],
   ['volcano', 'demon_territory'],
   ['demon_territory', 'dragon_valley'],
   ['dragon_valley', 'abyss_rift'],
   ['abyss_rift', 'celestial_ruins'],
+  // East branches
+  ['green_plains', 'lakeside_town'],
+  ['lakeside_town', 'east_coast'],
+  ['dark_forest', 'crystal_cave'],
+  // West branch
+  ['dark_forest', 'ice_plains'],
 ];
 
 const COL_WIDTH = 130;
@@ -76,8 +82,8 @@ export default function WorldMap() {
 
   const isCurrentZone = (zoneId: string) => currentRoomId.startsWith(zoneId);
 
-  const svgWidth = PAD_X * 2 + 6 * COL_WIDTH;
-  const svgHeight = PAD_Y * 2 + 7 * ROW_HEIGHT;
+  const svgWidth = PAD_X * 2 + 4 * COL_WIDTH;
+  const svgHeight = PAD_Y * 2 + 8 * ROW_HEIGHT;
 
   return (
     <>
