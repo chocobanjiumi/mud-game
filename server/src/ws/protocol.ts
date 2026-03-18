@@ -127,7 +127,6 @@ export function handleMessage(session: WsSession, raw: string): void {
       break;
 
     case 'login':
-      console.log(`[WS] login message received:`, { sessionId: session.sessionId, userId: message.payload?.userId, hasToken: !!message.payload?.accessToken });
       handleLogin(session, message.payload).catch((err) => {
         console.error(`[WS] 登入處理錯誤 (${session.sessionId}):`, err);
         sendError(session.sessionId, '登入處理失敗，請稍後再試。');
@@ -240,7 +239,6 @@ async function handleLogin(
 
   // 先用 userId 查，找不到再用角色名稱查
   const characters = getCharactersByUserId(verifiedUserId);
-  console.log(`[WS] login: found ${characters.length} characters for userId ${verifiedUserId}`);
 
   if (characters.length === 0) {
     // 嘗試用名稱查找（登入畫面送的是角色名稱）
