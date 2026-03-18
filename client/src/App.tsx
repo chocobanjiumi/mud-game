@@ -6,7 +6,7 @@ import LoginScreen from './components/LoginScreen';
 import GameScreen from './components/GameScreen';
 
 // Initialize Arinova SDK on app load
-const ARINOVA_APP_ID = import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game';
+const ARINOVA_APP_ID = import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game-671a1dd6';
 const ARINOVA_BASE_URL = import.meta.env.VITE_ARINOVA_BASE_URL || 'https://api.chat-staging.arinova.ai';
 Arinova.init({ appId: ARINOVA_APP_ID, baseUrl: ARINOVA_BASE_URL });
 

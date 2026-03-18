@@ -22,8 +22,8 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     setIsLoggingIn(true);
     Arinova.handleCallback({
       code,
-      clientId: import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game',
-      clientSecret: import.meta.env.VITE_ARINOVA_CLIENT_SECRET || 'mud-game-secret-staging',
+      clientId: import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game-671a1dd6',
+      clientSecret: '',
       redirectUri: window.location.origin + window.location.pathname,
     })
       .then((result) => {
