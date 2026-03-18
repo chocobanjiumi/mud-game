@@ -50,10 +50,29 @@ export default function AgentPanel() {
       setIsStreaming(true);
 
       try {
+        // Build game context for the AI
+        const state = useGameStore.getState();
+        const char = state.character;
+        const room = state.room;
+        const contextParts: string[] = [
+          '【你是 MUD 冒險世界的 AI 夥伴，正在陪伴玩家一起冒險。請根據遊戲狀態回應。】',
+        ];
+        if (char) {
+          contextParts.push(`玩家：${char.name}（Lv.${char.level} ${char.classId}）HP: ${char.hp}/${char.maxHp}`);
+        }
+        if (room) {
+          contextParts.push(`位置：${room.name} — ${room.description}`);
+          if (room.npcs?.length) contextParts.push(`NPC：${room.npcs.map((n: { name: string; title: string }) => `${n.name}(${n.title})`).join('、')}`);
+          if (room.monsters?.length) contextParts.push(`怪物：${room.monsters.map((m: { name: string; level: number }) => `${m.name}(Lv.${m.level})`).join('、')}`);
+          if (room.exits?.length) contextParts.push(`出口：${room.exits.map((e: { direction: string }) => e.direction).join(', ')}`);
+        }
+        const contextStr = contextParts.join('\n');
+        const fullPrompt = `${contextStr}\n\n玩家說：${prompt}`;
+
         // v0.1.3: use apiFetch instead of Arinova.agent.chatStream
         const res = await arinova.apiFetch('/api/v1/agent/chat', {
           method: 'POST',
-          body: JSON.stringify({ agentId: selectedAgent.id, prompt }),
+          body: JSON.stringify({ agentId: selectedAgent.id, prompt: fullPrompt }),
         });
 
         const data = res as { response?: string };
