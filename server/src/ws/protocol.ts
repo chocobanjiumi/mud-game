@@ -127,6 +127,7 @@ export function handleMessage(session: WsSession, raw: string): void {
       break;
 
     case 'login':
+      console.log(`[WS] login message received:`, { sessionId: session.sessionId, userId: message.payload?.userId, hasToken: !!message.payload?.accessToken });
       handleLogin(session, message.payload).catch((err) => {
         console.error(`[WS] 登入處理錯誤 (${session.sessionId}):`, err);
         sendError(session.sessionId, '登入處理失敗，請稍後再試。');

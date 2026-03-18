@@ -21,27 +21,53 @@ export default function App() {
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
+      console.log('[MUD] handleLogin called:', { userId, accessToken: accessToken ? '***' : 'none', wsConnection: useGameStore.getState().connection });
       if (accessToken) {
         useGameStore.getState().setAccessToken(accessToken);
       }
       // Wait for WS to be connected before sending login
-      const tryLogin = () => {
-        const conn = useGameStore.getState().connection;
-        if (conn === 'connected') {
-          login(userId, undefined, accessToken);
-        } else {
-          // Retry every 500ms until connected (max 30 seconds)
-          const unsub = useGameStore.subscribe((state) => {
-            if (state.connection === 'connected') {
-              unsub();
-              login(userId, undefined, accessToken);
-            }
-          });
-          // Fallback timeout
-          setTimeout(() => unsub(), 30000);
-        }
+      const doLogin = () => {
+        console.log('[MUD] doLogin — sending login command now');
+        login(userId, undefined, accessToken);
       };
-      tryLogin();
+
+      const conn = useGameStore.getState().connection;
+      if (conn === 'connected') {
+        console.log('[MUD] WS already connected, sending login immediately');
+        doLogin();
+      } else {
+        console.log('[MUD] WS not connected yet (state:', conn, '), setting up subscribe + polling');
+        // Use both subscribe AND polling for reliability
+        let resolved = false;
+        const unsub = useGameStore.subscribe((state) => {
+          if (!resolved && state.connection === 'connected') {
+            resolved = true;
+            unsub();
+            console.log('[MUD] WS connected (via subscribe), sending login');
+            doLogin();
+          }
+        });
+        // Also poll every 500ms as fallback
+        const pollInterval = setInterval(() => {
+          const s = useGameStore.getState().connection;
+          console.log('[MUD] polling WS state:', s);
+          if (!resolved && s === 'connected') {
+            resolved = true;
+            unsub();
+            clearInterval(pollInterval);
+            console.log('[MUD] WS connected (via poll), sending login');
+            doLogin();
+          }
+        }, 500);
+        // Cleanup after 30 seconds
+        setTimeout(() => {
+          if (!resolved) {
+            console.error('[MUD] WS never connected after 30s, giving up');
+          }
+          unsub();
+          clearInterval(pollInterval);
+        }, 30000);
+      }
     },
     [login],
   );

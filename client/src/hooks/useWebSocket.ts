@@ -351,7 +351,14 @@ export function useWebSocket() {
   const send = useCallback((msg: ClientMessage) => {
     const ws = wsRef.current;
     if (ws && ws.readyState === WebSocket.OPEN) {
+      if (msg.type === 'login') {
+        console.log('[MUD] WS send login:', { type: msg.type, readyState: ws.readyState });
+      }
       ws.send(JSON.stringify(msg));
+    } else {
+      if (msg.type === 'login') {
+        console.error('[MUD] WS send FAILED — not open:', { hasWs: !!ws, readyState: ws?.readyState });
+      }
     }
   }, []);
 
