@@ -50,55 +50,34 @@ export default function AgentPanel() {
       setIsStreaming(true);
 
       try {
-        // Build game context for the AI
+        // Build systemPrompt with game context (API only supports agentId, prompt, systemPrompt)
         const state = useGameStore.getState();
         const char = state.character;
         const room = state.room;
 
-        // systemPrompt — 遊戲場景設定
-        const systemPrompt = [
+        const systemParts: string[] = [
           '你是「MUD 冒險世界」裡玩家的冒險夥伴。你和玩家正在一起冒險。',
           '你必須始終以遊戲角色的身份回應，不要跳出遊戲世界觀。',
-          '你可以建議玩家接下來做什麼（例如跟 NPC 對話、去哪個方向探索、打怪、接任務等）。',
           '回應要簡短有趣，像真正的冒險夥伴一樣說話。',
-        ].join('\n');
-
-        // context — 遊戲狀態
-        const gameContext: Record<string, unknown> = {};
+        ];
         if (char) {
-          gameContext.player = {
-            name: char.name,
-            level: char.level,
-            class: char.classId,
-            hp: char.hp,
-            maxHp: char.maxHp,
-          };
+          systemParts.push(`\n你的同伴是 ${char.name}，等級 ${char.level}，職業 ${char.classId}，HP ${char.hp}/${char.maxHp}。`);
         }
         if (room) {
-          gameContext.location = {
-            name: room.name,
-            description: room.description,
-            npcs: room.npcs?.map((n: { name: string; title: string }) => `${n.name}(${n.title})`) ?? [],
-            monsters: room.monsters?.map((m: { name: string; level: number }) => `${m.name}(Lv.${m.level})`) ?? [],
-            exits: room.exits?.map((e: { direction: string }) => e.direction) ?? [],
-          };
+          systemParts.push(`\n你們現在在「${room.name}」。`);
+          systemParts.push(room.description);
+          if (room.npcs?.length) systemParts.push(`這裡有 NPC：${room.npcs.map((n: { name: string; title: string }) => `${n.name}(${n.title})`).join('、')}。`);
+          if (room.monsters?.length) systemParts.push(`這裡有怪物：${room.monsters.map((m: { name: string; level: number }) => `${m.name}(Lv.${m.level})`).join('、')}。`);
+          if (room.exits?.length) systemParts.push(`可前往的方向：${room.exits.map((e: { direction: string }) => e.direction).join(', ')}。`);
         }
-
-        // messages — 對話歷史（多輪）
-        const messages = agentMessages.map((m) => ({
-          role: m.role === 'user' ? 'user' as const : 'assistant' as const,
-          content: m.content,
-        }));
-        messages.push({ role: 'user', content: prompt });
+        systemParts.push('\n根據以上遊戲狀態回應玩家，可以建議接下來做什麼。');
 
         const res = await arinova.apiFetch('/api/v1/agent/chat', {
           method: 'POST',
           body: JSON.stringify({
             agentId: selectedAgent.id,
             prompt,
-            systemPrompt,
-            messages,
-            context: gameContext,
+            systemPrompt: systemParts.join('\n'),
           }),
         });
 
