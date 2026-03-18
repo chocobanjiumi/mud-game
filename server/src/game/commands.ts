@@ -186,7 +186,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'guild': case 'g': cmdGuild(session, args); break;
     // 每日簽到
     case 'signin': case 'checkin': cmdSignin(session); break;
-    case 'help': cmdHelp(session); break;
+    case 'help': cmdHelp(session, argStr); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
   }
@@ -2886,158 +2886,273 @@ function cmdFish(session: WsSession, args: string[]): void {
 
 // ─── 幫助 ───
 
-function cmdHelp(session: WsSession): void {
+function cmdHelp(session: WsSession, topic?: string): void {
+  const categories: Record<string, { title: string; lines: string[] }> = {
+    explore: {
+      title: '移動與探索',
+      lines: [
+        'look (l)            查看周圍環境',
+        'go <方向> (n/s/e/w)  移動',
+        'map                 顯示地圖',
+        'rest                原地休息，恢復 HP 與資源',
+      ],
+    },
+    character: {
+      title: '角色資訊',
+      lines: [
+        'status (stat)       查看角色狀態',
+        'inventory (i)       查看背包',
+        'skills (sk)         查看技能列表',
+        'allocate <屬性> <點> 分配屬性點',
+      ],
+    },
+    item: {
+      title: '物品操作',
+      lines: [
+        'equip/unequip <物品> 裝備/卸下',
+        'use <物品>           使用物品',
+        'drop <物品>          丟棄物品',
+        'upgrade / enhance    強化當前武器',
+        'upgrade armor        強化身體裝備',
+      ],
+    },
+    combat: {
+      title: '戰鬥指令',
+      lines: [
+        'attack <目標>        攻擊',
+        'skill <技能> [目標]   使用技能',
+        'defend / flee        防禦 / 逃跑',
+      ],
+    },
+    social: {
+      title: '社交',
+      lines: [
+        'say <訊息>           說話',
+        'party                組隊系統（help party）',
+        'trade                交易系統',
+        'emote <動作>         表情動作（bow/wave/laugh/cry/dance等）',
+        'friend add/remove/list/online 好友系統',
+        'mail list/read/send/delete   郵件系統',
+        'weather              查看天氣與時段',
+      ],
+    },
+    quest: {
+      title: '任務系統',
+      lines: [
+        'quest list           所有可接任務',
+        'quest active         進行中的任務',
+        'quest accept <ID>    接受任務',
+        'quest complete <ID>  完成任務',
+        'quest abandon <ID>   放棄任務',
+        'quest info <ID>      任務詳情',
+        'classquest (cq)      職業任務',
+        'classquest2 (cq2)    進階職業任務',
+      ],
+    },
+    dungeon: {
+      title: '副本與競技',
+      lines: [
+        'dungeon list         副本列表',
+        'dungeon enter <ID>   進入副本',
+        'dungeon queue <ID>   排隊副本',
+        'dungeon status       副本狀態',
+        'dungeon leave        離開副本',
+        'duel <玩家>          PvP 決鬥',
+        'arena                競技場',
+        'leaderboard (lb)     排行榜',
+      ],
+    },
+    craft: {
+      title: '製作系統',
+      lines: [
+        'craft list [forge|alchemy|cooking] 查看配方',
+        'craft forge <配方ID>   鍛造裝備',
+        'craft alchemy <配方ID> 煉金製藥',
+        'craft cook <配方ID>    烹飪料理',
+        'craft info <配方ID>    查看配方詳情',
+        'craft level            查看製作等級',
+      ],
+    },
+    guardian: {
+      title: '守護靈',
+      lines: [
+        'ask                  向守護靈詢問建議',
+        'guardian sense       主動感知環境',
+        'guardian advice      請求策略建議',
+        'guardian select <ID> 選擇守護靈',
+        'guardian info        查看守護靈狀態',
+      ],
+    },
+    kingdom: {
+      title: '王國系統',
+      lines: [
+        'kingdom create <名>  建立王國（需 10000 金幣）',
+        'kingdom dissolve     解散王國',
+        'kingdom info [名]    查看王國資訊',
+        'kingdom members      成員列表',
+        'kingdom join <名>    加入王國',
+        'kingdom leave        離開王國',
+        'kingdom chat <訊息>  王國頻道聊天',
+        'kingdom map          王國領地地圖',
+        'kingdom rank/list    排名/列表',
+        'kingdom motto <文字> 設定王國格言',
+        'appoint/demote/kick  管理成員',
+      ],
+    },
+    build: {
+      title: '建設系統',
+      lines: [
+        'build room <方向> <名> 建造房間',
+        'build destroy        拆除當前房間',
+        'build desc <描述>    設定房間描述',
+        'build type <類型>    設定房間類型',
+        'build lock/unlock <方向> 鎖定/解鎖出口',
+        'mob spawn/remove <ID> 管理怪物生成點',
+        'npc place/remove/config 管理 NPC',
+      ],
+    },
+    war: {
+      title: '軍事系統',
+      lines: [
+        'war declare <王國>   宣戰',
+        'war peace <王國>     提議和平',
+        'war status           戰爭狀態',
+        'war siege <王國>     發動攻城',
+        'war defend/rally     防守/集結',
+        'army recruit/deploy/dismiss/list 軍隊管理',
+        'bounty set/remove/list 懸賞系統',
+      ],
+    },
+    treasury: {
+      title: '國庫系統',
+      lines: [
+        'treasury balance     查看國庫',
+        'treasury deposit <額> 存入',
+        'treasury withdraw <額> 提取',
+        'treasury log         交易紀錄',
+        'treasury tax <率>    設定稅率',
+      ],
+    },
+    auction: {
+      title: '拍賣系統',
+      lines: [
+        'auction sell <物品> <最低價> [直購價] [時長] 上架',
+        'auction search [關鍵字]     搜尋',
+        'auction bid <ID> <金額>     出價',
+        'auction buyout <ID>         直購',
+        'auction my                  我的拍賣',
+        'auction cancel <ID>         取消',
+        'auction info <ID>           詳情',
+      ],
+    },
+    fish: {
+      title: '釣魚系統',
+      lines: [
+        'fish                        在水邊釣魚',
+        'fish level                  查看釣魚等級/統計',
+      ],
+    },
+    diplomacy: {
+      title: '外交系統',
+      lines: [
+        'diplomacy ally/unally <王國>  結盟/解盟',
+        'diplomacy status     外交狀態',
+        'diplomacy message <王國> <訊息> 外交訊息',
+        'diplomacy trade <王國> <條款>   貿易提議',
+        'diplomacy embargo/lift <王國>   禁運管理',
+      ],
+    },
+    achievement: {
+      title: '成就/稱號',
+      lines: [
+        'achievement (ach)    查看所有成就',
+        'achievement equip <ID> 裝備稱號',
+        'title                查看當前稱號',
+      ],
+    },
+    pet: {
+      title: '寵物系統',
+      lines: [
+        'pet list             查看所有寵物',
+        'pet info <petId>     寵物詳情',
+        'pet summon <petId>   召喚寵物',
+        'pet dismiss          解散寵物',
+        'pet feed <petId> <itemId> 餵食',
+        'pet rename <petId> <name> 重命名',
+        'tame                 馴服野生寵物（馴獸師專用）',
+      ],
+    },
+    event: {
+      title: '世界事件',
+      lines: [
+        'event info           查看當前/下次世界事件',
+        'event join           加入當前世界事件',
+        'event ranking        當前事件傷害排名',
+      ],
+    },
+    auto: {
+      title: '自動戰鬥',
+      lines: [
+        'auto / auto on       啟用自動戰鬥',
+        'auto off             停用自動戰鬥',
+        'auto status          查看自動戰鬥設定',
+        'auto config flee <百分比>   逃跑 HP 閾值',
+        'auto config potion <on/off> 自動使用藥水',
+        'auto config loot <on/off>   自動拾取',
+      ],
+    },
+    other: {
+      title: '其他',
+      lines: [
+        'classchange (job)    轉職',
+        'tutorial             教學系統',
+        'tutorial skip        跳過教學',
+        'signin / checkin     每日簽到',
+      ],
+    },
+  };
+
+  const t = topic?.toLowerCase();
+
+  // help <topic> — show specific category
+  if (t) {
+    const cat = categories[t];
+    if (cat) {
+      sendSystem(session.sessionId, `═══ ${cat.title} ═══`);
+      for (const line of cat.lines) {
+        sendSystem(session.sessionId, `  ${line}`);
+      }
+      return;
+    }
+    // fuzzy match: search all categories for matching commands
+    const matches: string[] = [];
+    for (const [key, cat2] of Object.entries(categories)) {
+      if (cat2.title.includes(t) || key.includes(t)) {
+        matches.push(key);
+      }
+    }
+    if (matches.length > 0) {
+      for (const key of matches) {
+        const c = categories[key];
+        sendSystem(session.sessionId, `═══ ${c.title} ═══`);
+        for (const line of c.lines) {
+          sendSystem(session.sessionId, `  ${line}`);
+        }
+        sendSystem(session.sessionId, '');
+      }
+      return;
+    }
+    sendSystem(session.sessionId, `找不到「${t}」相關的說明。輸入 help 查看所有分類。`);
+    return;
+  }
+
+  // help — show category index
   sendSystem(session.sessionId, '═══ 指令說明 ═══');
+  sendSystem(session.sessionId, '輸入 help <分類> 查看詳細指令');
   sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 移動與探索 ──');
-  sendSystem(session.sessionId, '  look (l)            查看周圍環境');
-  sendSystem(session.sessionId, '  go <方向> (n/s/e/w)  移動');
-  sendSystem(session.sessionId, '  map                 顯示地圖');
-  sendSystem(session.sessionId, '  rest                原地休息，恢復 HP 與資源');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 角色資訊 ──');
-  sendSystem(session.sessionId, '  status (stat)       查看角色狀態');
-  sendSystem(session.sessionId, '  inventory (i)       查看背包');
-  sendSystem(session.sessionId, '  skills (sk)         查看技能列表');
-  sendSystem(session.sessionId, '  allocate <屬性> <點> 分配屬性點');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 物品操作 ──');
-  sendSystem(session.sessionId, '  equip/unequip <物品> 裝備/卸下');
-  sendSystem(session.sessionId, '  use <物品>           使用物品');
-  sendSystem(session.sessionId, '  drop <物品>          丟棄物品');
-  sendSystem(session.sessionId, '  upgrade / enhance    強化當前武器');
-  sendSystem(session.sessionId, '  upgrade armor        強化身體裝備');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 戰鬥指令 ──');
-  sendSystem(session.sessionId, '  attack <目標>        攻擊');
-  sendSystem(session.sessionId, '  skill <技能> [目標]   使用技能');
-  sendSystem(session.sessionId, '  defend / flee        防禦 / 逃跑');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 社交 ──');
-  sendSystem(session.sessionId, '  say <訊息>           說話');
-  sendSystem(session.sessionId, '  party                組隊系統');
-  sendSystem(session.sessionId, '  trade                交易系統');
-  sendSystem(session.sessionId, '  emote <動作>         表情動作（bow/wave/laugh/cry/dance等）');
-  sendSystem(session.sessionId, '  friend add/remove/list/online 好友系統');
-  sendSystem(session.sessionId, '  mail list/read/send/delete   郵件系統');
-  sendSystem(session.sessionId, '  weather              查看天氣與時段');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 進階系統 ──');
-  sendSystem(session.sessionId, '  quest                任務系統（list/active/accept/complete/abandon/info）');
-  sendSystem(session.sessionId, '  duel <玩家>          PvP 決鬥');
-  sendSystem(session.sessionId, '  arena                競技場');
-  sendSystem(session.sessionId, '  dungeon              副本系統（list/enter/queue/status/leave）');
-  sendSystem(session.sessionId, '  leaderboard (lb)     排行榜');
-  sendSystem(session.sessionId, '  classchange (job)    轉職');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 製作系統 ──');
-  sendSystem(session.sessionId, '  craft list [forge|alchemy|cooking] 查看配方');
-  sendSystem(session.sessionId, '  craft forge <配方ID>   鍛造裝備');
-  sendSystem(session.sessionId, '  craft alchemy <配方ID> 煉金製藥');
-  sendSystem(session.sessionId, '  craft cook <配方ID>    烹飪料理');
-  sendSystem(session.sessionId, '  craft info <配方ID>    查看配方詳情');
-  sendSystem(session.sessionId, '  craft level            查看製作等級');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 守護靈 ──');
-  sendSystem(session.sessionId, '  ask                  向守護靈詢問建議');
-  sendSystem(session.sessionId, '  guardian sense       主動感知環境');
-  sendSystem(session.sessionId, '  guardian advice      請求策略建議');
-  sendSystem(session.sessionId, '  guardian select <ID> 選擇守護靈');
-  sendSystem(session.sessionId, '  guardian info        查看守護靈狀態');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 王國系統 ──');
-  sendSystem(session.sessionId, '  kingdom create <名>  建立王國（需 10000 金幣）');
-  sendSystem(session.sessionId, '  kingdom dissolve     解散王國');
-  sendSystem(session.sessionId, '  kingdom info [名]    查看王國資訊');
-  sendSystem(session.sessionId, '  kingdom members      成員列表');
-  sendSystem(session.sessionId, '  kingdom join <名>    加入王國');
-  sendSystem(session.sessionId, '  kingdom leave        離開王國');
-  sendSystem(session.sessionId, '  kingdom chat <訊息>  王國頻道聊天');
-  sendSystem(session.sessionId, '  kingdom map          王國領地地圖');
-  sendSystem(session.sessionId, '  kingdom rank         查看排名');
-  sendSystem(session.sessionId, '  kingdom list         列出所有王國');
-  sendSystem(session.sessionId, '  kingdom motto <文字> 設定王國格言');
-  sendSystem(session.sessionId, '  appoint <玩家> <職>  任命官職');
-  sendSystem(session.sessionId, '  demote <玩家>        降為國民');
-  sendSystem(session.sessionId, '  kick <玩家>          驅逐成員');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 建設系統 ──');
-  sendSystem(session.sessionId, '  build room <方向> <名> 建造房間');
-  sendSystem(session.sessionId, '  build destroy        拆除當前房間');
-  sendSystem(session.sessionId, '  build desc <描述>    設定房間描述');
-  sendSystem(session.sessionId, '  build type <類型>    設定房間類型');
-  sendSystem(session.sessionId, '  build lock/unlock <方向> 鎖定/解鎖出口');
-  sendSystem(session.sessionId, '  mob spawn/remove <ID> 管理怪物生成點');
-  sendSystem(session.sessionId, '  npc place/remove/config 管理 NPC');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 軍事系統 ──');
-  sendSystem(session.sessionId, '  war declare <王國>   宣戰');
-  sendSystem(session.sessionId, '  war peace <王國>     提議和平');
-  sendSystem(session.sessionId, '  war status           戰爭狀態');
-  sendSystem(session.sessionId, '  war siege <王國>     發動攻城');
-  sendSystem(session.sessionId, '  war defend           加入防守');
-  sendSystem(session.sessionId, '  war rally            集結號令');
-  sendSystem(session.sessionId, '  army recruit/deploy/dismiss/list 軍隊管理');
-  sendSystem(session.sessionId, '  bounty set/remove/list 懸賞系統');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 國庫系統 ──');
-  sendSystem(session.sessionId, '  treasury balance     查看國庫');
-  sendSystem(session.sessionId, '  treasury deposit <額> 存入');
-  sendSystem(session.sessionId, '  treasury withdraw <額> 提取');
-  sendSystem(session.sessionId, '  treasury log         交易紀錄');
-  sendSystem(session.sessionId, '  treasury tax <率>    設定稅率');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 拍賣系統 ──');
-  sendSystem(session.sessionId, '  auction sell <物品> <最低價> [直購價] [時長] 上架物品');
-  sendSystem(session.sessionId, '  auction search [關鍵字]     搜尋拍賣品');
-  sendSystem(session.sessionId, '  auction bid <ID> <金額>     出價競標');
-  sendSystem(session.sessionId, '  auction buyout <ID>         直接購買');
-  sendSystem(session.sessionId, '  auction my                  我的拍賣/出價');
-  sendSystem(session.sessionId, '  auction cancel <ID>         取消拍賣');
-  sendSystem(session.sessionId, '  auction info <ID>           查看拍賣詳情');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 釣魚系統 ──');
-  sendSystem(session.sessionId, '  fish                        在水邊釣魚');
-  sendSystem(session.sessionId, '  fish level                  查看釣魚等級/統計');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 外交系統 ──');
-  sendSystem(session.sessionId, '  diplomacy ally <王國>   提議結盟');
-  sendSystem(session.sessionId, '  diplomacy unally <王國> 解除聯盟');
-  sendSystem(session.sessionId, '  diplomacy status     外交狀態');
-  sendSystem(session.sessionId, '  diplomacy message <王國> <訊息> 外交訊息');
-  sendSystem(session.sessionId, '  diplomacy trade <王國> <條款>   貿易提議');
-  sendSystem(session.sessionId, '  diplomacy embargo/lift <王國>   禁運管理');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 成就/稱號 ──');
-  sendSystem(session.sessionId, '  achievement (ach)    查看所有成就');
-  sendSystem(session.sessionId, '  achievement equip <ID> 裝備稱號');
-  sendSystem(session.sessionId, '  title                查看當前稱號');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 寵物系統 ──');
-  sendSystem(session.sessionId, '  pet list             查看所有寵物');
-  sendSystem(session.sessionId, '  pet info <petId>     寵物詳情');
-  sendSystem(session.sessionId, '  pet summon <petId>   召喚寵物');
-  sendSystem(session.sessionId, '  pet dismiss          解散寵物');
-  sendSystem(session.sessionId, '  pet feed <petId> <itemId> 餵食寵物');
-  sendSystem(session.sessionId, '  pet rename <petId> <name> 重命名');
-  sendSystem(session.sessionId, '  tame                 馴服野生寵物（馴獸師專用）');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 世界事件 ──');
-  sendSystem(session.sessionId, '  event info           查看當前/下次世界事件');
-  sendSystem(session.sessionId, '  event join           加入當前世界事件');
-  sendSystem(session.sessionId, '  event ranking        當前事件傷害排名');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 教學系統 ──');
-  sendSystem(session.sessionId, '  tutorial             查看當前教學步驟');
-  sendSystem(session.sessionId, '  tutorial skip        跳過教學');
-  sendSystem(session.sessionId, '');
-  sendSystem(session.sessionId, '── 自動戰鬥 ──');
-  sendSystem(session.sessionId, '  auto / auto on       啟用自動戰鬥');
-  sendSystem(session.sessionId, '  auto off             停用自動戰鬥');
-  sendSystem(session.sessionId, '  auto status          查看自動戰鬥設定');
-  sendSystem(session.sessionId, '  auto config flee <百分比>   逃跑 HP 閾值');
-  sendSystem(session.sessionId, '  auto config potion <on/off> 自動使用藥水');
-  sendSystem(session.sessionId, '  auto config loot <on/off>   自動拾取');
+  for (const [key, cat] of Object.entries(categories)) {
+    sendSystem(session.sessionId, `  help ${key.padEnd(14)} ${cat.title}`);
+  }
 }
 
 // ─── 成就/稱號指令 ───
