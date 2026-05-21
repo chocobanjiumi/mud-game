@@ -30,6 +30,7 @@ import {
   SKILL_DEFS,
   CLASS_DEFS,
   getLearnableSkills,
+  getAllAvailableSkills,
 } from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
@@ -630,6 +631,17 @@ describe('Balance: Skill metadata', () => {
       const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
       expect(skills.length, classId).toBeGreaterThanOrEqual(8);
       expect(skills.length, classId).toBeLessThanOrEqual(10);
+    }
+  });
+
+  it('gives every player class at least four available passive skills', () => {
+    const playerClassIds = Object.values(CLASS_DEFS)
+      .filter(classDef => classDef.id !== 'monster')
+      .map(classDef => classDef.id);
+
+    for (const classId of playerClassIds) {
+      const passiveSkills = getAllAvailableSkills(classId).filter(skill => skill.type === 'passive');
+      expect(passiveSkills.length, classId).toBeGreaterThanOrEqual(4);
     }
   });
 
