@@ -16,6 +16,7 @@ const RARITY_COLORS: Record<string, string> = {
   rare: '#4488ff',
   epic: '#aa44ff',
   legendary: '#ff8800',
+  mythic: '#ff4444',
 };
 
 const RARITY_LABELS: Record<string, string> = {
@@ -24,6 +25,7 @@ const RARITY_LABELS: Record<string, string> = {
   rare: '稀有',
   epic: '史詩',
   legendary: '傳說',
+  mythic: '神話',
 };
 
 interface ShopModalProps {

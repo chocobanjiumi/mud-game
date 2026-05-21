@@ -363,6 +363,7 @@ function handlePlayerCommand(session: WsSession, payload: string): void {
 
 /** 根據物品屬性推斷稀有度 */
 function inferRarity(buyPrice: number): ShopItemRarity {
+  if (buyPrice >= 10000) return 'mythic';
   if (buyPrice >= 2500) return 'legendary';
   if (buyPrice >= 1000) return 'epic';
   if (buyPrice >= 300) return 'rare';

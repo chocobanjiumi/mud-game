@@ -125,7 +125,7 @@ export interface MapPayload {
 
 // Shop-related payloads
 
-export type ShopItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary';
+export type ShopItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
 export type ShopCategory = 'weapon' | 'armor' | 'consumable';
 
 export interface ShopItem {
