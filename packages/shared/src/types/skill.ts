@@ -6,6 +6,13 @@ export type SkillTargetType = 'single_enemy' | 'all_enemies' | 'self' | 'single_
 export type SkillType = 'active' | 'passive';
 export type DamageType = 'physical' | 'magical' | 'pure';
 export type ElementType = 'fire' | 'ice' | 'lightning' | 'light' | 'dark' | 'nature' | 'none';
+export type SkillTag =
+  | 'damage' | 'aoe' | 'single_target' | 'heal' | 'support' | 'defense'
+  | 'control' | 'interrupt' | 'dispel' | 'buff' | 'debuff' | 'mobility'
+  | 'summon' | 'burst' | 'resource' | 'passive'
+  | DamageType
+  | ElementType;
+export type SkillScalingStat = 'atk' | 'matk' | 'def' | 'mdef' | 'hp' | 'resource' | 'none';
 
 export type StatusEffectType =
   | 'poison' | 'burn' | 'slow' | 'stun' | 'fear'
@@ -39,9 +46,22 @@ export interface SkillDef {
   damageType: DamageType;
   element: ElementType;
   multiplier: number; // 技能倍率
+  tags: SkillTag[];
+  scaling: SkillScaling;
+  questUnlock?: SkillQuestUnlock;
   description: string; // 中文描述
   effects?: StatusEffect[];
   special?: SkillSpecial;
+}
+
+export interface SkillScaling {
+  stat: SkillScalingStat;
+  coefficient: number;
+}
+
+export interface SkillQuestUnlock {
+  questId: string;
+  requiredStatus: 'active' | 'completed';
 }
 
 export interface SkillSpecial {

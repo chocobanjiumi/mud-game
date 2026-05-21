@@ -28,6 +28,7 @@ import {
   toBaseEquipmentDef,
   ITEM_DEFS,
   SKILL_DEFS,
+  getLearnableSkills,
 } from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import type { CombatStats } from '../game/damage.js';
@@ -576,6 +577,35 @@ describe('Balance: Item instance generation', () => {
     expect(drop).not.toBeNull();
     expect(drop?.equipSlot).toBe('head');
     expect(drop?.level).toBeLessThanOrEqual(10);
+  });
+});
+
+describe('Balance: Skill metadata', () => {
+  it('normalizes every skill with tags and scaling metadata', () => {
+    for (const skill of Object.values(SKILL_DEFS)) {
+      expect(skill.tags.length, skill.id).toBeGreaterThan(0);
+      expect(skill.scaling, skill.id).toEqual(expect.objectContaining({
+        stat: expect.any(String),
+        coefficient: expect.any(Number),
+      }));
+      expect(skill.resourceCost, skill.id).toBeGreaterThanOrEqual(0);
+      expect(skill.cooldown, skill.id).toBeGreaterThanOrEqual(0);
+      expect(skill.learnLevel, skill.id).toBeGreaterThanOrEqual(1);
+    }
+  });
+
+  it('keeps quest unlock filtering available for learnable skill queries', () => {
+    const questLockedSkill = Object.values(SKILL_DEFS).find(skill => skill.questUnlock);
+    if (!questLockedSkill) {
+      expect(getLearnableSkills('adventurer', 1)).toEqual(expect.any(Array));
+      return;
+    }
+
+    const withoutQuest = getLearnableSkills(questLockedSkill.classId, questLockedSkill.learnLevel);
+    const withQuest = getLearnableSkills(questLockedSkill.classId, questLockedSkill.learnLevel, [questLockedSkill.questUnlock!.questId]);
+
+    expect(withoutQuest.some(skill => skill.id === questLockedSkill.id)).toBe(false);
+    expect(withQuest.some(skill => skill.id === questLockedSkill.id)).toBe(true);
   });
 });
 

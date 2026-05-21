@@ -1,11 +1,13 @@
 // 技能定義 - 所有職業的技能資料
 
 import type { ClassId } from '../types/player.js';
-import type { SkillDef } from '../types/skill.js';
+import type { SkillDef, SkillScaling, SkillTag } from '../types/skill.js';
 import { CLASS_DEFS } from './classes.js';
 
+type RawSkillDef = Omit<SkillDef, 'tags' | 'scaling'> & Partial<Pick<SkillDef, 'tags' | 'scaling'>>;
+
 /** 所有技能定義 */
-export const SKILL_DEFS: Record<string, SkillDef> = {
+const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   // ════════════════════════════════════════════
   //  冒險者 (Lv 1-9)
   // ════════════════════════════════════════════
@@ -1141,6 +1143,50 @@ export const SKILL_DEFS: Record<string, SkillDef> = {
   },
 };
 
+export const SKILL_DEFS: Record<string, SkillDef> = normalizeSkillDefs(RAW_SKILL_DEFS);
+
+function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, SkillDef> {
+  return Object.fromEntries(
+    Object.entries(defs).map(([id, def]) => [id, {
+      ...def,
+      tags: def.tags ?? inferSkillTags(def),
+      scaling: def.scaling ?? inferSkillScaling(def),
+    }]),
+  );
+}
+
+function inferSkillScaling(def: RawSkillDef): SkillScaling {
+  if (def.special?.isHeal) return { stat: 'matk', coefficient: def.multiplier };
+  if (def.damageType === 'physical') return { stat: 'atk', coefficient: def.multiplier };
+  if (def.damageType === 'magical') return { stat: 'matk', coefficient: def.multiplier };
+  if (def.effects?.some(effect => effect.type === 'shield' || effect.type === 'damage_reduction')) {
+    return { stat: 'def', coefficient: Math.max(1, def.multiplier) };
+  }
+  return { stat: 'none', coefficient: def.multiplier };
+}
+
+function inferSkillTags(def: RawSkillDef): SkillTag[] {
+  const tags = new Set<SkillTag>();
+  tags.add(def.type === 'passive' ? 'passive' : def.damageType);
+  if (def.element !== 'none') tags.add(def.element);
+  if (def.multiplier > 0 || def.damageType !== 'pure') tags.add('damage');
+  if (def.targetType === 'all_enemies' || def.targetType === 'all_allies') tags.add('aoe');
+  if (def.targetType === 'single_enemy' || def.targetType === 'single_ally') tags.add('single_target');
+  if (def.special?.isHeal) tags.add('heal');
+  if (def.targetType === 'self' || def.targetType === 'single_ally' || def.targetType === 'all_allies') tags.add('support');
+  if (def.effects?.some(effect => effect.type.endsWith('_up'))) tags.add('buff');
+  if (def.effects?.some(effect => effect.type.endsWith('_down') || effect.type === 'mark' || effect.type === 'poison' || effect.type === 'burn' || effect.type === 'bleed')) tags.add('debuff');
+  if (def.effects?.some(effect => effect.type === 'stun' || effect.type === 'slow' || effect.type === 'freeze' || effect.type === 'fear' || effect.type === 'taunt' || effect.type === 'silence')) tags.add('control');
+  if (def.effects?.some(effect => effect.type === 'shield' || effect.type === 'damage_reduction' || effect.type === 'counter' || effect.type === 'invincible' || effect.type === 'unyielding')) tags.add('defense');
+  if (def.special?.interrupt) tags.add('interrupt');
+  if (def.special?.dispelShield || def.special?.removeDebuffs) tags.add('dispel');
+  if (def.special?.summon || def.id.includes('summon')) tags.add('summon');
+  if (def.cooldown >= 5 || def.multiplier >= 2) tags.add('burst');
+  if (def.resourceCost > 0) tags.add('resource');
+  if (def.id.includes('step') || def.id.includes('dash') || def.id.includes('charge')) tags.add('mobility');
+  return [...tags];
+}
+
 // ─── 工具函式 ───
 
 /** 按職業取得可學技能 */
@@ -1161,8 +1207,11 @@ export function getAllAvailableSkills(classId: ClassId): SkillDef[] {
 }
 
 /** 取得角色在指定等級可學的技能 */
-export function getLearnableSkills(classId: ClassId, level: number): SkillDef[] {
-  return getAllAvailableSkills(classId).filter((s) => s.learnLevel <= level);
+export function getLearnableSkills(classId: ClassId, level: number, completedQuestIds: string[] = []): SkillDef[] {
+  const completed = new Set(completedQuestIds);
+  return getAllAvailableSkills(classId).filter((s) =>
+    s.learnLevel <= level && (!s.questUnlock || s.questUnlock.requiredStatus !== 'completed' || completed.has(s.questUnlock.questId)),
+  );
 }
 
 /** 根據 ID 取得技能定義 */
