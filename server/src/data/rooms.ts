@@ -294,6 +294,10 @@ export const ZONES: Record<string, ZoneDef> = {
       'abyss_entrance', 'void_corridor', 'shadow_realm',
       'chaos_bridge', 'nightmare_garden', 'abyss_core',
       'time_distortion', 'abyss_lord_chamber',
+      'abyss_anchor_steps', 'void_mirror_lake', 'shadow_archive',
+      'chaos_observatory', 'nightmare_orchard', 'time_splinter_vault',
+      'gravity_well', 'memory_maze', 'rift_forge', 'echo_court',
+      'abyssal_beacon', 'sealbreak_spire',
     ],
   },
   celestial_ruins: {
