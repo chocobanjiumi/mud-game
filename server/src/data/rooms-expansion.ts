@@ -6256,4 +6256,548 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '防波堤端是霧港最後一塊仍相信陸地的石頭。',
     },
   },
+  ancient_ruins_sunken_entrance: {
+    id: 'ancient_ruins_sunken_entrance',
+    name: '沉降入口',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_sunken_entrance.png',
+    imagePrompt: '沉降入口 in ancient_ruins, half-buried ancient stone entrance, cracked steps, vines, dust beams and worn runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古代遺跡的入口半沉在乾裂荒土裡，巨石門楣傾斜下陷，只剩一段刻滿磨損符文的階梯露出地面。風把細沙吹進門縫，露出曾被探險隊清理過的痕跡，也露出幾具被陷阱拖回陰影裡的骸骨。這裡是遺跡的入口與回程錨點，玩家可整理隊伍、確認繩索與火把，並從石階裂紋判斷內部結構仍在緩慢崩塌。入口旁的臨時路標標著安全撤退方向，但最新刻痕被人刮掉，像是不希望後來者找到正確路線。',
+    exits: [
+      { direction: 'east', targetRoomId: 'ancient_ruins_broken_causeway', description: '斷裂石道延入遺跡' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_survey_camp', description: '營火痕跡通向測繪營地' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'giant_spider', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '入口階梯若落下細沙，附近牆縫可能藏著骷髏巡衛。',
+      treasure: '刮掉的路標背面還留著舊探險隊的撤退記號。',
+      spirit: '沉降入口像遺跡露出的一道傷口，邀請也警告所有靠近者。',
+    },
+  },
+
+  ancient_ruins_broken_causeway: {
+    id: 'ancient_ruins_broken_causeway',
+    name: '斷裂石道',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_broken_causeway.png',
+    imagePrompt: '斷裂石道 in ancient_ruins, broken elevated stone causeway over buried ruins, missing slabs, vines, dust and sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉降入口後方是一條架在塌陷廳堂上的石道，許多石板已經斷裂，只剩窄窄邊緣可供通行。下方黑暗中能看見倒塌柱頭、沙堆與被藤蔓纏住的雕像碎片。石道兩側刻有行列整齊的古文字，但中段被重物砸毀，導致整條通道像被切斷的句子。玩家需要在這裡選擇前往銘文庭、測繪營地或馬賽克大廳，也會遭遇最基礎的骷髏與蛛群阻攔。若踩錯鬆動石板，聲音會沿著下方空洞傳到更深處，讓後續房間的守衛提早甦醒，也讓撤退路線變得更加危險。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_sunken_entrance', description: '石道回到沉降入口' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_inscription_court', description: '銘文庭在前方開闊處' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_mosaic_hall', description: '破階下到馬賽克大廳' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_survey_camp', description: '臨時木橋連回測繪營地' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[道]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '鬆動石板會吸引下層骷髏抬頭巡視。',
+      treasure: '斷裂石板下卡著一枚古代青銅扣。',
+      spirit: '斷裂石道讓整座遺跡像一本被撕開的書。',
+    },
+  },
+
+  ancient_ruins_inscription_court: {
+    id: 'ancient_ruins_inscription_court',
+    name: '銘文庭',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_inscription_court.png',
+    imagePrompt: '銘文庭 in ancient_ruins, open court of rune-covered slabs, broken columns, sand, vines and pale light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斷裂石道盡頭是一座露天石庭，地面鋪著多塊刻字石板，每塊石板都用不同年代的文字記錄祭祀、工程與戰爭。陽光從塌開的穹頂灑下，讓部分字跡清楚可見，另一些則被藤根與沙塵遮住。這裡是探索與任務目標房，玩家可拓印銘文、解讀遺跡年代，或比對石板順序來打開更深處的月門。庭院四周有幾尊失去頭顱的守衛像，當玩家念錯銘文時，石像基座會發出低沉震動，提醒隊伍這裡仍有古代防護機制在運作。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_broken_causeway', description: '石道回到入口方向' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_statue_gallery', description: '雕像廊從東側展開' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_cracked_obelisk', description: '庭外可見裂痕方尖碑' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[銘]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '銘文順序念錯時，無頭石像會先轉向聲音來源。',
+      treasure: '最老的祭祀石板下藏著一小片金箔拓本。',
+      spirit: '銘文庭把文明的名字留給懂得閱讀的人。',
+    },
+  },
+
+  ancient_ruins_mosaic_hall: {
+    id: 'ancient_ruins_mosaic_hall',
+    name: '馬賽克大廳',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_mosaic_hall.png',
+    imagePrompt: '馬賽克大廳 in ancient_ruins, grand hall with cracked mosaic floor, fallen pillars, dust, colored tile patterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '破階下方的馬賽克大廳仍保留著大片彩石地面，圖案描繪日月、河流、城市與一座被光包圍的聖所。許多彩石已經鬆脫，露出底下空腔與細小機關槽。這裡是遺跡主路的第一個大型室內房，玩家可觀察地面圖案推斷安全路線，也能採集彩石碎片作為研究材料。大廳四角躺著破碎盾牌和石像手臂，暗示前幾批探險者曾在此觸發守衛。當腳步踩過錯誤顏色，牆內會響起齒輪聲，骷髏與石像會從倒柱後方逼近，並迫使隊伍在圖案、陷阱與敵人之間快速判斷。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ancient_ruins_broken_causeway', description: '破階回到斷裂石道' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_trap_corridor', description: '彩石圖案指向機關走廊' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_dust_archive', description: '塵封門洞通往資料庫' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[彩]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '彩石地面若亮起白線，牆內守衛即將啟動。',
+      treasure: '完整藍色彩石可作為銘文解讀的材料。',
+      spirit: '馬賽克大廳讓崩壞遺跡仍短暫呈現昔日城市的秩序。',
+    },
+  },
+
+  ancient_ruins_statue_gallery: {
+    id: 'ancient_ruins_statue_gallery',
+    name: '石像長廊',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_statue_gallery.png',
+    imagePrompt: '石像長廊 in ancient_ruins, long gallery of ancient statues, cracked faces, vines, shafts of light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銘文庭東側的長廊排列著二十餘尊人物石像，從祭司、工匠、戰士到不知名的雙翼守護者皆有。石像臉部大多被刻意磨平，只有胸前徽記仍清楚可辨。長廊地面鋪著細沙，沙上保存著繞開特定石像的腳印，顯示前人已經知道某些雕像會甦醒。這裡是精英前置與解謎房，玩家可對照徽記、修復缺失石手，或避開錯誤視線前往守衛基座。若直接穿越中央軸線，石像眼窩會亮起冷光，整條長廊都像活過來一樣沉重轉動。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_inscription_court', description: '長廊回到銘文庭' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_guardian_plinth', description: '盡頭是守衛基座' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_trap_corridor', description: '側門通往機關走廊' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '胸前徽記完整的石像通常還能活動。',
+      treasure: '缺失石手內側藏著一枚儀式戒環。',
+      spirit: '石像長廊像一條被命令永久注視入侵者的歷史。',
+    },
+  },
+
+  ancient_ruins_trap_corridor: {
+    id: 'ancient_ruins_trap_corridor',
+    name: '機關走廊',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_trap_corridor.png',
+    imagePrompt: '機關走廊 in ancient_ruins, narrow trap corridor with pressure plates, arrow slits, dust, bronze mechanisms, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '馬賽克大廳東側的走廊狹窄筆直，地面由大小不一的石板組成，牆上則布滿細小箭孔與青銅轉輪。許多機關早已失靈，但仍有部分壓力板能推動暗槍、落石或封門。這裡是高風險通道房，玩家可拆除機關、回收青銅零件，或用銘文庭取得的符號判斷安全步序。走廊盡頭連接塵封資料庫與石像長廊，因此常被骷髏巡衛當作防線。若隊伍太急，老舊機關反而會被連鎖啟動，把安全路徑切成數段，甚至封住剛剛才確認過的退路。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。並能揭露更多古代防線細節。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_mosaic_hall', description: '彩石地面在西側' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_statue_gallery', description: '側門連向石像長廊' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_dust_archive', description: '機關門通往塵封資料庫' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_construct_bay', description: '青銅軌道延向構裝間' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[關]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '壓力板若先下陷後回彈，第二波機關通常更危險。',
+      treasure: '青銅轉輪裡可拆出完整機關齒片。',
+      spirit: '機關走廊證明古代人寧願讓通道殺人，也不願秘密外流。',
+    },
+  },
+
+  ancient_ruins_dust_archive: {
+    id: 'ancient_ruins_dust_archive',
+    name: '塵封資料庫',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_dust_archive.png',
+    imagePrompt: '塵封資料庫 in ancient_ruins, ruined archive with stone shelves, clay tablets, dust, broken skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '資料庫裡沒有紙書，只有一排排石架與陶板匣。許多匣子摔在地上，露出刻滿細字的泥板、封蠟和被蟲蛀空的繩索標籤。天窗破洞讓光柱照進塵埃中，能看見細粉像星雲般慢慢旋轉。這裡是知識與資源房，玩家可整理陶板、尋找失落語法、交付拓印任務，也能發現遺跡曾是一座觀測聖所而非單純墓穴。資料庫深處有被藤根推開的暗格，藏著通往遺物藏室的索引。骷髏學士仍徘徊在書架間，像在守護已無人能完整閱讀的紀錄；牠們會把整理陶板的玩家視作偷竊知識的入侵者。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ancient_ruins_mosaic_hall', description: '塵封門洞回到馬賽克大廳' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_trap_corridor', description: '機關門回到走廊' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_relic_cache', description: '暗格索引指向遺物藏室' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[庫]',
+    mapX: 1,
+    mapY: -2,
+    guardianHints: {
+      creature: '陶板架若自己滑開，骷髏學士正在附近翻找。',
+      treasure: '索引暗格中藏有完整星象陶板。',
+      spirit: '塵封資料庫把遺跡真正用途藏在破碎文字中。',
+    },
+  },
+
+  ancient_ruins_relic_cache: {
+    id: 'ancient_ruins_relic_cache',
+    name: '遺物藏室',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_relic_cache.png',
+    imagePrompt: '遺物藏室 in ancient_ruins, hidden relic cache with sealed urns, bronze tools, glowing dust, cracked alcoves, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '資料庫暗格後方藏著一間低矮石室，四壁鑿出小龕，擺放青銅工具、封口陶罐、碎裂儀器和用布包住的石片。許多遺物看似普通，卻都標有精確年代與使用場合，說明這裡是古代學者整理樣本的儲藏地。這裡是資源與事件點，玩家可採集研究材料、尋找任務遺物，或辨認哪件器具能修復日晷露台的機關。藏室地面有新近撬痕，表示已有人搶先取走核心物件。若玩家開啟錯誤陶罐，沉睡灰塵會驚動守護石像，讓原本安靜的藏室立刻變成狹窄戰場。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ancient_ruins_dust_archive', description: '暗格回到塵封資料庫' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_reflection_pool', description: '低門通向倒影水池' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[藏]',
+    mapX: 1,
+    mapY: -3,
+    guardianHints: {
+      creature: '錯誤陶罐開封時，龕內石像會先落下灰塵。',
+      treasure: '標有日紋的青銅尺可修復日晷露台。',
+      spirit: '遺物藏室讓破碎文明以樣本方式繼續被研究。',
+    },
+  },
+
+  ancient_ruins_cracked_obelisk: {
+    id: 'ancient_ruins_cracked_obelisk',
+    name: '裂痕方尖碑',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_cracked_obelisk.png',
+    imagePrompt: '裂痕方尖碑 in ancient_ruins, cracked obelisk with light runes, buried courtyard, vines, sand and sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銘文庭北面立著一座裂開的方尖碑，碑身原本應該光滑筆直，如今卻被一道由頂到底的裂縫分成兩半。裂縫內側有微弱金光，像某種古老能量仍被困在石中。碑基周圍堆著測繪旗、碎繩與被燒黑的拓印紙，顯示近期探險隊試圖啟動它但失敗。這裡是探索與精英前置房，玩家可校準碑影、收集光塵，並得知月門與內聖所需要日月兩組符號才能開啟。當方尖碑被觸碰時，附近晶化蜥蜴會從石縫爬出，像被光喚醒的守衛；若能記下光線閃爍節奏，後續月門解謎會更清楚。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ancient_ruins_inscription_court', description: '石階回到銘文庭' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_guardian_plinth', description: '碑影指向守衛基座' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_sun_dial_patio', description: '斷柱路通往日晷露台' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[碑]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '裂縫金光忽明忽暗時，晶化蜥蜴正在碑基下活動。',
+      treasure: '碑影落點可收集少量古代光塵。',
+      spirit: '裂痕方尖碑像仍在呼吸的古代儀器。',
+    },
+  },
+
+  ancient_ruins_guardian_plinth: {
+    id: 'ancient_ruins_guardian_plinth',
+    name: '守衛基座',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_guardian_plinth.png',
+    imagePrompt: '守衛基座 in ancient_ruins, massive guardian plinth with empty statue feet, crystal sockets, dust and runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '石像長廊盡頭是一座巨大的圓形基座，基座上只剩兩只石足，原本的守衛主體不知被移往何處。周圍地面刻滿放射狀符文，幾個水晶插槽仍殘留淡淡熱度。這裡是精英事件點，玩家可插入從方尖碑或倒影水池取得的符號碎片，重建守衛路徑，或判斷哪尊石像曾經守住內聖所。若符文順序錯誤，基座會召來石像與水晶生物進行測試。基座後方隱約可見通往月門與構裝間的軌道，說明守衛不只是雕像，而是整座遺跡防禦系統的一部分。玩家若修復插槽，也可能短暫改寫守衛巡邏方向。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_statue_gallery', description: '長廊回到石像群' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_moon_gate', description: '符文軌道通向月門' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_construct_bay', description: '沉重軌道下到構裝間' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_cracked_obelisk', description: '碑影路回到方尖碑' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[座]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '符文順序錯誤時，基座會先召回最近的石像守衛。',
+      treasure: '空石足內嵌著一枚守衛路徑核心。',
+      spirit: '守衛基座證明遺跡的防線曾經精密如活物。',
+    },
+  },
+
+  ancient_ruins_reflection_pool: {
+    id: 'ancient_ruins_reflection_pool',
+    name: '倒影水池',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_reflection_pool.png',
+    imagePrompt: '倒影水池 in ancient_ruins, still reflection pool in ruined chamber, moonlight, cracked tiles, vines and pale runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '遺物藏室東側的低門通向一座安靜水池，池水清澈得不合常理，倒映出的卻不是破碎穹頂，而是一輪完整明月。池邊瓷磚刻著月相與數字，部分被藤根撐裂，露出下方排水機關。這裡是解謎與資源房，玩家可用水面讀取月門符號、採集發光藻泥，或把日晷露台取得的光影結果與倒影對照。水池中央沉著幾枚青銅片，只能在正確月相倒影出現時看清。若玩家攪亂池水，附近沉睡的骨骸會像被打斷觀測般重新站起。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_relic_cache', description: '低門回到遺物藏室' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_vine_choked_cloister', description: '濕滑通道通向藤蔓迴廊' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_moon_gate', description: '月相石階通向月門' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 2,
+    mapY: -3,
+    guardianHints: {
+      creature: '池水被攪動後，倒影中的骸骨會比現實先站起。',
+      treasure: '正確月相下可撈起月門青銅片。',
+      spirit: '倒影水池保存著遺跡仍未破碎時的天空。',
+    },
+  },
+
+  ancient_ruins_vine_choked_cloister: {
+    id: 'ancient_ruins_vine_choked_cloister',
+    name: '藤蔓迴廊',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_vine_choked_cloister.png',
+    imagePrompt: '藤蔓迴廊 in ancient_ruins, cloister choked by roots and vines, broken arches, moss, hidden carvings, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '倒影水池東側的迴廊被粗大藤蔓塞滿，拱門與柱廊只能在葉影間斷續看見。潮濕泥土覆蓋了原本石面，卻也保護了幾處未被風沙磨掉的壁雕。這裡是資源與探索房，玩家可採集藤根、尋找被植物遮住的銘文，也能發現遺跡崩塌後自然如何一點點接管古代空間。藤蔓中結著透明小果，會吸引蜘蛛和晶化蜥蜴。若清理得太快，失去支撐的拱門可能坍落；若順著藤根走，則能找到通往封印階梯的隱蔽路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_reflection_pool', description: '濕路回到倒影水池' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_sealed_stair', description: '藤根指向封印階梯' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_sun_dial_patio', description: '破拱門通往日晷露台' },
+    ],
+    monsters: [
+      { monsterId: 'giant_spider', maxCount: 3, respawnSeconds: 60 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[藤]',
+    mapX: 3,
+    mapY: -3,
+    guardianHints: {
+      creature: '透明小果晃動時，蜘蛛多半已經藏在葉背。',
+      treasure: '藤根保護下的壁雕拓片保存最完整。',
+      spirit: '藤蔓迴廊讓遺跡和荒野重新長在一起。',
+    },
+  },
+
+  ancient_ruins_survey_camp: {
+    id: 'ancient_ruins_survey_camp',
+    name: '測繪營地',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_survey_camp.png',
+    imagePrompt: '測繪營地 in ancient_ruins, archaeologist survey camp beside ruins, canvas tents, map table, lanterns, dust, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '入口北側搭著一處半廢棄測繪營地，帆布帳篷被沙塵打得褪色，木桌上釘著遺跡平面圖、繩尺、角度盤與幾枚紅色警示釘。營火已冷，但灰中還有最近翻動痕跡。這裡是補給、任務與交通房，玩家可取得初步地圖、交付拓印成果、修理探險工具，或調查上一支測繪隊為何突然撤離。營地箱子裡有各房間的暫定編號，能幫助隊伍在複雜遺跡中保持方向。若夜裡返回，帳篷影子會被遺跡內部的光映得很長。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ancient_ruins_sunken_entrance', description: '坡路回到沉降入口' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_broken_causeway', description: '木橋接上斷裂石道' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_sun_dial_patio', description: '測量線延向日晷露台' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'giant_spider', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '營地安全度較高，但冷灰被翻動代表有人剛離開。',
+      treasure: '紅色警示釘可標出尚未觸發的陷阱區。',
+      spirit: '測繪營地是現代人試圖替古代迷宮重新命名的地方。',
+    },
+  },
+
+  ancient_ruins_sealed_stair: {
+    id: 'ancient_ruins_sealed_stair',
+    name: '封印階梯',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_sealed_stair.png',
+    imagePrompt: '封印階梯 in ancient_ruins, sealed descending stair with stone locks, glowing dust, vines and ancient door, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藤蔓迴廊東側藏著一段向下階梯，階梯口被三道石鎖封住，每道石鎖都刻著不同日月符號。鎖縫裡有細微光塵滲出，說明下層仍保存著某種運轉中的核心。這裡是遺跡中段的門檻房，玩家需要從方尖碑、倒影水池與日晷露台取得線索，才能依序打開石鎖。階梯旁堆著幾件破碎裝備，顯示有人曾試圖強行破門但失敗。若解鎖順序錯誤，石階會縮回牆內，並放出守衛巡邏整條藤蔓迴廊，迫使隊伍重新回收日月線索確認答案。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。並能揭露更多古代防線細節。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_vine_choked_cloister', description: '藤路回到迴廊' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_moon_gate', description: '月符階梯通往月門' },
+      { direction: 'down', targetRoomId: 'ancient_ruins_oracle_chamber', description: '開鎖後可下到神諭室' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 4,
+    mapY: -3,
+    guardianHints: {
+      creature: '石鎖順序錯誤時，守衛會先從藤蔓迴廊方向出現。',
+      treasure: '破碎裝備中有一枚刻著月符的護腕。',
+      spirit: '封印階梯讓遺跡像在要求探索者先理解，再深入。',
+    },
+  },
+
+  ancient_ruins_sun_dial_patio: {
+    id: 'ancient_ruins_sun_dial_patio',
+    name: '日晷露台',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_sun_dial_patio.png',
+    imagePrompt: '日晷露台 in ancient_ruins, ruined sun dial patio with golden light, broken columns, engraved floor and desert wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '測繪營地北面是一座暴露在天空下的露台，中央日晷只剩半根指針，地面卻完整刻著十二道光影槽。露台邊緣能俯瞰整片遺跡，塌牆與柱影在午後排列成奇異幾何。這裡是解謎與大型路線房，玩家可用遺物藏室取得的青銅尺修復日晷，記錄特定時刻的影子，並把結果帶往月門或封印階梯。若站在錯誤光槽上，地底會傳來沉悶齒輪聲，晶化生物會從熱裂縫中爬出。露台同時也是觀察內聖所位置的最佳地點；當光影穿過正確槽線時，遠處聖所上方會短暫浮出白色光環。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ancient_ruins_survey_camp', description: '測量線回到營地' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_cracked_obelisk', description: '斷柱路回到方尖碑' },
+      { direction: 'west', targetRoomId: 'ancient_ruins_vine_choked_cloister', description: '破拱門通向藤蔓迴廊' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_moon_gate', description: '光影槽指向月門' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[日]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '光槽亮起時，熱裂縫中的晶化生物會被喚醒。',
+      treasure: '日晷半指針下藏著一枚黃金校準釘。',
+      spirit: '日晷露台證明遺跡曾用天空來鎖住地下秘密。',
+    },
+  },
+
+  ancient_ruins_moon_gate: {
+    id: 'ancient_ruins_moon_gate',
+    name: '月門',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_moon_gate.png',
+    imagePrompt: '月門 in ancient_ruins, ancient moon gate with crescent runes, stone arch, pale light, dust and vines, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月門是一座完整石拱，拱內沒有門板，只有一層像夜空般深藍的薄光。拱柱左右刻著月相符號，符號會隨倒影水池與日晷露台的解謎進度逐一亮起。這裡是通往遺跡深部的交通節點與任務門檻，玩家可提交日月兩組線索、校正拱門方向，或選擇暫時返回外層補給。月門前地面沒有灰塵，像有東西經常從門內外通過。若玩家未取得正確符號便靠近，薄光會反射出隊伍身後的守衛影像，下一刻石像就會從基座方向醒來。門前沒有戰利品，只有是否理解遺跡規則的考驗。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_guardian_plinth', description: '符文軌道回到守衛基座' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_reflection_pool', description: '月相石階回到倒影水池' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_sealed_stair', description: '月符階梯通向封印階梯' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_sun_dial_patio', description: '光影槽回到日晷露台' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[月]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '月門反射出守衛影像時，真正的石像即將靠近。',
+      treasure: '拱柱背面有一片可取下的月相石。',
+      spirit: '月門讓古代遺跡的外層與深層像白晝與夜晚般分開。',
+    },
+  },
+
+  ancient_ruins_echoing_crypt: {
+    id: 'ancient_ruins_echoing_crypt',
+    name: '回音墓室',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_echoing_crypt.png',
+    imagePrompt: '回音墓室 in ancient_ruins, echoing crypt with stone sarcophagi, pale dust, broken seals and shadowed alcoves, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '構裝間下方側門通向一座低矮墓室，兩排石棺沿牆排列，棺蓋上刻著與資料庫陶板相同的星象符號。墓室聲音異常清晰，哪怕只是衣角掃過石面，也會在拱頂下反覆回響。這裡是戰鬥與敘事房，玩家可調查誰被安葬在遺跡核心旁，收集墓銘拓片，或尋找開啟神諭室側門的葬儀詞。許多棺蓋已有從內部推開的裂痕，代表守墓者並未真正安息。若玩家念錯葬儀詞，所有回音都會變成同一句警告，並把沉睡骷髏的腳步聲從每一具石棺後方放大。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ancient_ruins_construct_bay', description: '側門回到構裝間' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_oracle_chamber', description: '墓道通向神諭室' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 70 },
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[墓]',
+    mapX: 3,
+    mapY: -2,
+    guardianHints: {
+      creature: '回音變成同一句警告時，石棺內的守墓者正在醒來。',
+      treasure: '主棺足端藏著一枚星象葬儀印。',
+      spirit: '回音墓室讓遺跡的死者仍參與守護核心。',
+    },
+  },
+
+  ancient_ruins_construct_bay: {
+    id: 'ancient_ruins_construct_bay',
+    name: '構裝間',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_construct_bay.png',
+    imagePrompt: '構裝間 in ancient_ruins, ancient construct bay with bronze rails, stone frames, crystal cores and broken machinery, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '機關走廊東側開成一間高大的維修間，地上嵌著青銅軌道，牆邊停放著半完成的石質構裝體。它們胸口有空洞插槽，周圍堆滿破裂水晶、齒輪、石臂和刻滿編號的維修板。這裡是精英戰鬥與資源房，玩家可回收構裝零件、修復守衛基座資訊，或啟動一台失控構裝來打開神諭室路線。維修間天花板垂下許多斷鏈，風一吹便像鐘聲。若玩家碰觸核心架，沉睡構裝會依照古代指令辨認入侵者，並測試隊伍是否有資格進入內聖所。成功通過後，神諭室門上的部分符文會短暫鬆動。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_trap_corridor', description: '青銅軌道回到機關走廊' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_guardian_plinth', description: '沉重軌道上到守衛基座' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_echoing_crypt', description: '側門下到回音墓室' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_oracle_chamber', description: '維修通道通向神諭室' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[構]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '核心架亮起時，構裝體會先掃描最近的玩家。',
+      treasure: '維修板上記錄著守衛基座的啟動序列。',
+      spirit: '構裝間顯示古代文明曾把石頭訓練成士兵。',
+    },
+  },
+
+  ancient_ruins_oracle_chamber: {
+    id: 'ancient_ruins_oracle_chamber',
+    name: '神諭室',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_oracle_chamber.png',
+    imagePrompt: '神諭室 in ancient_ruins, oracle chamber with suspended crystal, circular runes, broken seats and sacred light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '封印階梯下方的神諭室呈圓形，中央懸著一枚裂開的水晶，水晶下方刻著多層同心符文。周圍石座面向中央，像昔日祭司或學者曾在這裡聆聽某種來自天象的答案。這裡是大型事件前置房，玩家可把日月線索、星象陶板與構裝序列組合起來，詢問內聖所真正封印的是什麼。水晶會用斷續影像回應，顯示城市被光吞沒、守衛轉向居民、以及最後一名祭司關閉聖所的畫面。若玩家強行取下水晶碎片，房間會召回構裝與骷髏進行最後警告，也會讓內聖所核心提前進入不穩定狀態。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
+    exits: [
+      { direction: 'up', targetRoomId: 'ancient_ruins_sealed_stair', description: '階梯回到封印門口' },
+      { direction: 'west', targetRoomId: 'ancient_ruins_construct_bay', description: '維修通道回到構裝間' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_echoing_crypt', description: '墓道回到回音墓室' },
+      { direction: 'east', targetRoomId: 'ancient_ruins_inner_sanctum', description: '符文門通向內聖所' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[諭]',
+    mapX: 4,
+    mapY: -2,
+    guardianHints: {
+      creature: '水晶影像開始倒轉時，房間會召回全部守衛。',
+      treasure: '裂晶邊緣可取得神諭碎片，但會觸發警戒。',
+      spirit: '神諭室保存的不是答案，而是古代人最後一次提問。',
+    },
+  },
+
+  ancient_ruins_inner_sanctum: {
+    id: 'ancient_ruins_inner_sanctum',
+    name: '內聖所',
+    zone: 'ancient_ruins' as RoomDef['zone'],
+    image: 'ancient_ruins_inner_sanctum.png',
+    imagePrompt: '內聖所 in ancient_ruins, inner sanctum with radiant sealed core, ancient pillars, floating dust, broken guardian statues, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神諭室東側的符文門後，是整座古代遺跡最深的內聖所。高柱圍成圓環，中央地面封著一枚發白光的核心，光芒被多道斷裂石環壓住，仍然讓空氣像熱浪般扭曲。四周倒著破碎守衛像、祭司面具與大量尚未腐朽的白色花瓣，彷彿封印完成後時間在此停住。這裡是區域大型事件鉤子與 Boss 級地標，玩家可選擇加固封印、取走核心碎片，或把神諭室得到的真相帶回測繪營地。任何選擇都會改變遺跡守衛的反應。若隊伍貪取太多光核，內聖所會啟動最終防衛，讓構裝、石像與水晶守衛同時甦醒，並把整座遺跡推向重新封閉。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ancient_ruins_oracle_chamber', description: '符文門回到神諭室' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[聖]',
+    mapX: 5,
+    mapY: -2,
+    guardianHints: {
+      creature: '白光核心脈動三次後，最終守衛會按序醒來。',
+      treasure: '核心外圍可取得光核碎片，但會改變封印狀態。',
+      spirit: '內聖所是古代文明選擇把自己的錯誤關起來的地方。',
+    },
+  },
 };
