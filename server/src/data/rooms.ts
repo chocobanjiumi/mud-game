@@ -317,6 +317,12 @@ export const ZONES: Record<string, ZoneDef> = {
       'celestial_gate', 'starlight_path', 'angel_garden',
       'divine_library', 'judgment_hall', 'celestial_throne_room',
       'eternal_sanctuary', 'god_chamber',
+      'celestial_starfall_plaza', 'celestial_broken_colonnade',
+      'celestial_scriptorium', 'celestial_lumen_archive',
+      'celestial_fountain_of_oaths', 'celestial_seraph_roost',
+      'celestial_penitent_steps', 'celestial_reliquary',
+      'celestial_sundial_court', 'celestial_armory_of_dawn',
+      'celestial_astral_observatory', 'celestial_final_seal',
     ],
   },
   old_farmland: {

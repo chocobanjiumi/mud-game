@@ -3070,14 +3070,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'celestial_gate',
     name: '天界之門',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_gate.png',
+    imagePrompt: '天界之門 in celestial_ruins, vast white light arch above void, sacred lost glyphs, starstone floor, golden celestial ruins in distance, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一道由純白光芒構成的巨大拱門矗立在虛空之上，門框上刻著失傳已久的神聖文字。' +
       '穿過光門的瞬間，世界從混沌的深淵轉變為金色的光輝。' +
-      '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。',
+      '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。門後仍能看見深淵裂口的黑紫殘影，像一道尚未癒合的傷口貼在純白光幕上。破碎聖階兩側倒伏著天界守衛的旗杆與被燒焦的羽翼印記，提示深淵曾經衝擊到這裡。玩家踏入此處時，門框文字會逐行亮起，判斷來者是入侵者、朝聖者，還是被迫接受最終試煉的挑戰者。門前光塵會記錄第一次踏入者的名字。',
     exits: [
       { direction: 'down', targetRoomId: 'abyss_lord_chamber', description: '回到深淵領主之間' },
       { direction: 'north', targetRoomId: 'starlight_path', description: '沿著星光之路前進' },
       { direction: 'east', targetRoomId: 'divine_library', description: '光門旁有一座宏偉的建築' },
+      { direction: 'west', targetRoomId: 'celestial_starfall_plaza', description: '西側廣場鋪滿墜星碎片' },
     ],
     monsters: [
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
@@ -3097,6 +3100,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'starlight_path',
     name: '星光走廊',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'starlight_path.png',
+    imagePrompt: '星光走廊 in celestial_ruins, corridor paved with solid star fragments, broken celestial halls, holy dust and guardian silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。' +
       '走廊兩側是破碎的天界建築殘骸，曾經宏偉的殿堂如今只剩下斷壁殘垣。' +
@@ -3105,6 +3110,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'celestial_gate', description: '退回天界之門' },
       { direction: 'north', targetRoomId: 'angel_garden', description: '前方出現一片翠綠的花園' },
       { direction: 'east', targetRoomId: 'judgment_hall', description: '走廊盡頭是一座莊嚴的大廳' },
+      { direction: 'west', targetRoomId: 'celestial_broken_colonnade', description: '西側柱廊只剩斷裂光柱' },
     ],
     monsters: [
       { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
@@ -3124,6 +3130,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'angel_garden',
     name: '天使花園',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'angel_garden.png',
+    imagePrompt: '天使花園 in celestial_ruins, miraculous golden white garden amid ruins, glowing holy fountain, seraph patrols and eternal blossoms, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。' +
       '花園中央的噴泉仍在流淌著發光的聖水，空氣中充滿了治癒和安寧的氣息。' +
@@ -3131,6 +3139,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'starlight_path', description: '退回星光走廊' },
       { direction: 'north', targetRoomId: 'celestial_throne_room', description: '花園盡頭是天界王座' },
+      { direction: 'east', targetRoomId: 'celestial_fountain_of_oaths', description: '噴泉支流流向誓約之泉' },
       { direction: 'west', targetRoomId: 'eternal_sanctuary', description: '花園側面有一座寧靜的聖所' },
     ],
     monsters: [
@@ -3151,12 +3160,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'divine_library',
     name: '神之圖書館',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'divine_library.png',
+    imagePrompt: '神之圖書館 in celestial_ruins, enormous divine library with shelves of light, glowing books, automaton guardians and endless height, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。' +
       '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
       '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
+      { direction: 'north', targetRoomId: 'celestial_scriptorium', description: '書架後方是抄寫室' },
+      { direction: 'east', targetRoomId: 'celestial_lumen_archive', description: '光頁階梯通向流明檔案庫' },
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
@@ -3176,13 +3189,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'judgment_hall',
     name: '審判大廳',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'judgment_hall.png',
+    imagePrompt: '審判大廳 in celestial_ruins, solemn hall with divine judgment murals, glowing scales, angel juror silhouettes and white gold pillars, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座莊嚴肅穆的大廳，穹頂上繪著諸神審判的壁畫。' +
       '大廳中央的天秤仍在緩慢擺動，衡量著每一個進入者的善惡。' +
-      '兩排由光線構成的陪審席上坐著沉默的天使虛影，注視著到來的冒險者。',
+      '兩排由光線構成的陪審席上坐著沉默的天使虛影，注視著到來的冒險者。每當武器出鞘，穹頂壁畫就會改變內容，把進入者過去的選擇投射成金白與黑灰兩色。大廳地面刻著數百條審判法則，其中有些已被深淵裂痕污染，導致神聖裁決不再完全公正。玩家若想通往天界王座，必須理解天秤偏移的原因，而不是單純擊倒守衛。審判席後方還有通往懺悔階的窄門，只有承認錯誤的人才會看見門縫中的白光。',
     exits: [
       { direction: 'west', targetRoomId: 'starlight_path', description: '退回星光走廊' },
       { direction: 'east', targetRoomId: 'celestial_throne_room', description: '大廳盡頭通往天界王座' },
+      { direction: 'north', targetRoomId: 'celestial_penitent_steps', description: '審判席後有懺悔階' },
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
@@ -3202,13 +3218,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'celestial_throne_room',
     name: '天界王座',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_throne_room.png',
+    imagePrompt: '天界王座 in celestial_ruins, grand celestial throne hall of pure light, white platinum throne, rotating stars in ceiling, divine pressure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '天界最宏偉的殿堂，穹頂由純淨的光線構成，無數星辰在其中旋轉。' +
       '一座由永恆白金鑄造的王座矗立在殿堂最高處，王座上空無一人，' +
-      '但王座本身散發的神聖威壓足以讓凡人跪地臣服。通往最終之間的道路就在王座背後。',
+      '但王座本身散發的神聖威壓足以讓凡人跪地臣服。通往最終之間的道路就在王座背後。王座階梯兩側排列著破碎冠冕與戰旗，記錄曾經挑戰神權的王國與英雄。深淵裂隙造成的黑色細紋已爬上白金扶手，讓空置王座看起來像正在等待新的審判者。只有理解審判、聖所與軍械庫留下的線索，才能判斷最終光門究竟是祝福還是試煉。王座側面的黎明武庫仍傳來機械啟動聲，表示最終防線尚未完全沉默。',
     exits: [
       { direction: 'south', targetRoomId: 'angel_garden', description: '退回天使花園' },
       { direction: 'west', targetRoomId: 'judgment_hall', description: '回到審判大廳' },
+      { direction: 'east', targetRoomId: 'celestial_armory_of_dawn', description: '王座側門通往黎明武庫' },
       { direction: 'north', targetRoomId: 'god_chamber', description: '王座背後的光門通往神之間' },
     ],
     monsters: [
@@ -3232,12 +3251,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'eternal_sanctuary',
     name: '永恆聖所',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'eternal_sanctuary.png',
+    imagePrompt: '永恆聖所 in celestial_ruins, small forgotten chapel with creation mural, eternal fire, warm holy light and fallen angel shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座被時間遺忘的小型聖堂，穹頂上的壁畫描繪著世界創生的場景。' +
       '聖堂中央的永恆之火仍在燃燒，散發出溫暖而安詳的光芒。' +
-      '這裡是天界最後的寧靜之地，據說在此祈禱可以恢復所有傷勢。',
+      '這裡是天界最後的寧靜之地，據說在此祈禱可以恢復所有傷勢。聖堂長椅上覆著薄薄星塵，幾件破裂羽甲整齊擺放，像守衛臨走前仍保持儀式。永恆之火的外焰呈金色，內焰卻帶著微弱黑影，暗示深淵污染已經觸碰到最神聖的地方。玩家可在此獲得喘息，也可能面對曾守護聖所的墮天使試煉。聖火後方的暗門通往聖物庫，裡面保存著淨化污染與修復封印所需的關鍵材料。',
     exits: [
       { direction: 'east', targetRoomId: 'angel_garden', description: '回到天使花園' },
+      { direction: 'north', targetRoomId: 'celestial_reliquary', description: '聖火後方藏著聖物庫' },
+      { direction: 'south', targetRoomId: 'celestial_broken_colonnade', description: '側門回到破碎柱廊' },
     ],
     monsters: [
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 80 },
@@ -3257,13 +3280,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'god_chamber',
     name: '神之間',
     zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'god_chamber.png',
+    imagePrompt: '神之間 in celestial_ruins, perfect circular chamber of pure light, sleeping war god in golden armor floating at center, final trial, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '天界遺跡的最深處，一個完美的圓形空間。牆壁、地面和天頂都由純粹的光構成。' +
       '空間正中央懸浮著一位身著金色戰甲的神祇——戰神，沉睡中的他仍散發著毀天滅地的威壓。' +
       '當冒險者踏入這片領域的瞬間，戰神的雙眼猛然睜開，億萬年的寂靜在此刻被打破。' +
-      '這是這個世界最強大的存在，也是最終的挑戰。',
+      '這是這個世界最強大的存在，也是最終的挑戰。圓形空間外圍漂浮著十二面戰旗，每一面都記錄一場曾由戰神親自終結的遠古戰爭。旗影在地面形成不同武器圖案，預告戰神甦醒後可能切換的攻擊姿態。西側星軌門與東側封印裂縫同時發光，表示這場戰鬥不只決定勝負，也會決定天界遺跡是否繼續封鎖深淵。',
     exits: [
       { direction: 'south', targetRoomId: 'celestial_throne_room', description: '退回天界王座' },
+      { direction: 'east', targetRoomId: 'celestial_final_seal', description: '神光裂縫通向最終封印' },
+      { direction: 'west', targetRoomId: 'celestial_astral_observatory', description: '星軌門連到天象觀測所' },
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
@@ -3276,6 +3303,329 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       creature: '戰神會隨著戰鬥進程切換三個階段——每個階段的攻擊模式和弱點完全不同。',
       treasure: '戰神的神槍是這個世界上最強大的武器——只有擊敗他才能獲得。',
       spirit: '戰神並非邪惡——他在此等待一位值得繼承神力的勇者。這場戰鬥是最終的考驗。',
+    },
+  },
+
+  celestial_starfall_plaza: {
+    id: 'celestial_starfall_plaza',
+    name: '墜星廣場',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_starfall_plaza.png',
+    imagePrompt: '墜星廣場 in celestial_ruins, white gold plaza covered in fallen star shards, broken angel statues, abyss scar at gate edge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天界之門西側是一片廣場，地面由白金石板鋪成，卻被無數墜星碎片砸出細密裂坑。破碎天使像倒在四周，石翼仍反射著微弱星光。廣場中央有一圈尚未熄滅的防禦法陣，陣線一端連著天界之門，另一端指向破碎柱廊。這裡曾是抵禦深淵入侵的第一道防線，現在則成為玩家辨認天界戰況與收集星辰材料的入口支線。若修復法陣缺口，廣場會短暫投影出深淵攻城時的路線，揭露哪些守衛在戰前失蹤。廣場外緣還有幾座半毀傳送台，台面符號與凡間多處遺跡相同，暗示天界曾直接監看世界各地。',
+    exits: [
+      { direction: 'east', targetRoomId: 'celestial_gate', description: '回到天界之門' },
+      { direction: 'north', targetRoomId: 'celestial_broken_colonnade', description: '裂痕道路通向破碎柱廊' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[墜]',
+    mapX: 2,
+    mapY: 35,
+    guardianHints: {
+      creature: '墮天使會利用倒塌雕像遮蔽施法，先移動到廣場中央較易觀察。',
+      treasure: '墜星碎片可作為神聖與星光屬性的高階材料。',
+      spirit: '廣場上的防禦法陣證明天界曾主動抵抗深淵，而非單純衰敗。',
+    },
+  },
+
+  celestial_broken_colonnade: {
+    id: 'celestial_broken_colonnade',
+    name: '破碎柱廊',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_broken_colonnade.png',
+    imagePrompt: '破碎柱廊 in celestial_ruins, collapsed colonnade of glowing white pillars, star dust, torn banners and guardian patrols, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '星光走廊西側的柱廊曾由七十二根光柱撐起，如今只剩半數仍在斷續發亮。每根殘柱都刻著一段諸神戰爭紀錄，有些字句被深淵黑痕抹去，只留下焦黑空白。柱廊南端連向墜星廣場，北端通往永恆聖所，是玩家在主線外觀察天界歷史的安全但不平靜路線。巡邏守衛會在光柱亮起時重整隊形。斷柱之間還掛著沒有風也會飄動的戰旗，旗面上逐漸浮現玩家經過的足跡，讓守軍能追蹤入侵者動向。柱廊地面偶爾會投出完整神殿的昔日幻象，玩家可藉此找到隱藏聖所側門。殘柱陰影裡還藏著被撕下的審判符。',
+    exits: [
+      { direction: 'east', targetRoomId: 'starlight_path', description: '回到星光走廊' },
+      { direction: 'south', targetRoomId: 'celestial_starfall_plaza', description: '沿斷柱回到墜星廣場' },
+      { direction: 'north', targetRoomId: 'eternal_sanctuary', description: '聖所鐘聲從北方傳來' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[柱]',
+    mapX: 2,
+    mapY: 36,
+    guardianHints: {
+      creature: '守衛會在光柱間傳送短距離，等光柱轉暗再交戰較穩。',
+      treasure: '殘柱上的星塵可收集為修復聖物的材料。',
+      spirit: '柱廊記錄的戰爭史與深淵裂隙的入侵時間互相呼應。',
+    },
+  },
+
+  celestial_scriptorium: {
+    id: 'celestial_scriptorium',
+    name: '聖文抄寫室',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_scriptorium.png',
+    imagePrompt: '聖文抄寫室 in celestial_ruins, quiet scriptorium with floating quills of light, unfinished holy scrolls, automaton scribes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神之圖書館北側是一排安靜抄寫桌，羽筆由光構成，仍在無人指引下把失傳神語寫到透明卷軸上。桌面上壓著未完成的末日預言，墨跡在金色與黑色之間反覆變化，似乎無法決定世界結局。幾台神造抄寫機械在桌間巡行，會修正任何被污染的文字，也會攻擊試圖偷走卷軸的人。這裡可承接知識、解謎與任務目標。',
+    exits: [
+      { direction: 'south', targetRoomId: 'divine_library', description: '書架階梯回到神之圖書館' },
+      { direction: 'east', targetRoomId: 'celestial_lumen_archive', description: '抄寫卷軸送往流明檔案庫' },
+      { direction: 'north', targetRoomId: 'judgment_hall', description: '成文律法通向審判大廳' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
+    ],
+    mapSymbol: '[抄]',
+    mapX: 5,
+    mapY: 35,
+    guardianHints: {
+      creature: '抄寫機械會修復同伴護盾，先打斷羽筆光束。',
+      treasure: '未完成預言卷軸可作為後續主線線索。',
+      spirit: '抄寫室仍在書寫末日，表示天界命運尚未固定。',
+    },
+  },
+
+  celestial_lumen_archive: {
+    id: 'celestial_lumen_archive',
+    name: '流明檔案庫',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_lumen_archive.png',
+    imagePrompt: '流明檔案庫 in celestial_ruins, archive of suspended light pages and golden memory crystals, divine constructs guarding knowledge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '流明檔案庫不是普通房間，而是一座由懸浮光頁組成的立體迷宮。每片光頁都記錄一段神祇、天使或凡人英雄的記憶，靠近時會把畫面直接投進腦海。檔案庫中央封著數枚金色記憶晶，記載戰神沉睡前最後下達的命令。深淵污染已在部分光頁邊緣形成黑斑，若不整理檔案，審判大廳的法則會繼續失準。檔案庫東側的光頁偶爾會翻到空白頁，等待玩家把本次試煉的見聞寫入天界記錄。若錯誤觸碰污染光頁，整座檔案庫會把玩家過去的任務選擇重播成審判證據。中央記憶晶也會短暫鎖住出口。',
+    exits: [
+      { direction: 'west', targetRoomId: 'divine_library', description: '光頁階梯回到神之圖書館' },
+      { direction: 'north', targetRoomId: 'judgment_hall', description: '律法檔案指向審判大廳' },
+      { direction: 'south', targetRoomId: 'celestial_scriptorium', description: '檔案回流到聖文抄寫室' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[檔]',
+    mapX: 5,
+    mapY: 36,
+    guardianHints: {
+      creature: '檔案守衛會依照光頁記錄預判動作，改變攻擊節奏可打亂它。',
+      treasure: '金色記憶晶可能保存戰神弱點或天界密令。',
+      spirit: '檔案庫若被污染，天界的審判與歷史都會被改寫。',
+    },
+  },
+
+  celestial_fountain_of_oaths: {
+    id: 'celestial_fountain_of_oaths',
+    name: '誓約之泉',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_fountain_of_oaths.png',
+    imagePrompt: '誓約之泉 in celestial_ruins, sacred fountain of glowing oath water beside angel garden, floating vow ribbons, white flowers, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天使花園東側的泉池更小也更莊嚴，水面漂浮著由光織成的誓約緞帶，每一條都寫著曾守護天界者的名字。泉水會映出來者最想守護的事物，也會照見未履行的承諾。許多緞帶已被黑色細線纏住，代表有人在深淵入侵時背棄誓言。這裡可作為治療、任務與事件點，但任何虛假的誓言都會喚醒守泉熾天使。',
+    exits: [
+      { direction: 'west', targetRoomId: 'angel_garden', description: '泉水回流到天使花園' },
+      { direction: 'north', targetRoomId: 'celestial_seraph_roost', description: '泉畔白階通往熾天使棲台' },
+      { direction: 'east', targetRoomId: 'celestial_sundial_court', description: '水光指向日晷庭' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[誓]',
+    mapX: 4,
+    mapY: 37,
+    guardianHints: {
+      creature: '熾天使會保護誓約緞帶，避免在泉邊使用範圍攻擊。',
+      treasure: '未污染的誓約緞帶可作為淨化任務道具。',
+      spirit: '泉水反映承諾，說明天界力量建立在誓約而非單純光明上。',
+    },
+  },
+
+  celestial_seraph_roost: {
+    id: 'celestial_seraph_roost',
+    name: '熾天使棲台',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_seraph_roost.png',
+    imagePrompt: '熾天使棲台 in celestial_ruins, high white roost with layered golden wings, radiant perches, clouds and seraph sentries, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '誓約之泉北方的高台由層層白石羽翼托起，熾天使會在此休整、療傷與監視王座殿。棲台四周漂浮著金色羽片，每一片都能記錄一次守護行動。部分羽片變得灰暗，顯示天使內部也有人在深淵戰爭中墮落。這裡視野極好，能看見天使花園、王座側門與黎明武庫的光線交會，因此守軍反應極快。高台邊緣有幾處空巢，裡面只剩折斷羽軸與黑色灰燼，提示墮落並非個別事件。若收集灰暗羽片並帶回誓約之泉，或許能追查第一位墮落者的行蹤。棲台鐘聲也會召回巡邏中的熾天使，讓戰鬥逐漸升級。',
+    exits: [
+      { direction: 'south', targetRoomId: 'celestial_fountain_of_oaths', description: '白階下到誓約之泉' },
+      { direction: 'west', targetRoomId: 'celestial_throne_room', description: '羽橋連向天界王座側廊' },
+      { direction: 'east', targetRoomId: 'celestial_sundial_court', description: '晨光落向日晷庭' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 3, respawnSeconds: 85 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[熾]',
+    mapX: 4,
+    mapY: 38,
+    guardianHints: {
+      creature: '熾天使會在高台間換位治療，利用柱影可切斷視線。',
+      treasure: '灰暗羽片可能記錄墮天使的名字與背叛原因。',
+      spirit: '棲台呈現天使守護與墮落並存的狀態。',
+    },
+  },
+
+  celestial_penitent_steps: {
+    id: 'celestial_penitent_steps',
+    name: '懺悔階',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_penitent_steps.png',
+    imagePrompt: '懺悔階 in celestial_ruins, long stair of white stone behind judgment hall, kneeling angel statues, golden dust and dark cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '審判大廳北方有一段長階，每一階都刻著不同的罪名與救贖誓句。階梯兩側跪著無臉天使像，掌心托著空白石牌，等待來者寫下自己的懺悔。越往上走，天界王座的威壓越明顯，越往下看，深淵裂隙留下的黑色脈絡也越清楚。這裡是審判線與王座線之間的過渡房，適合放置道德選擇、任務交付或精英伏擊。每當有人說謊，石牌會自行裂開並召出執行裁決的神造機械。長階最高處還有一塊沒有刻字的石板，似乎等待玩家親手定義新的天界法則。階梯下方則回響著被赦免者的腳步聲與鎖鏈聲。',
+    exits: [
+      { direction: 'south', targetRoomId: 'judgment_hall', description: '長階回到審判大廳' },
+      { direction: 'north', targetRoomId: 'celestial_reliquary', description: '階梯盡頭是聖物庫' },
+      { direction: 'east', targetRoomId: 'celestial_throne_room', description: '側門通向天界王座' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[懺]',
+    mapX: 2,
+    mapY: 38,
+    guardianHints: {
+      creature: '墮天使會嘲弄懺悔石牌，當石牌轉黑時牠們攻勢最強。',
+      treasure: '空白石牌可記錄玩家選擇，成為後續審判任務道具。',
+      spirit: '懺悔階表示天界審判並非只有懲罰，也保留救贖路徑。',
+    },
+  },
+
+  celestial_reliquary: {
+    id: 'celestial_reliquary',
+    name: '天界聖物庫',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_reliquary.png',
+    imagePrompt: '天界聖物庫 in celestial_ruins, reliquary vault of holy relics, glass cases, broken halos, eternal flame reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '永恆聖所北方的聖物庫被多層金白結界保護，玻璃龕中放著破碎光環、聖釘、祈禱鐘與曾屬於諸神侍者的羽甲。部分龕位已經空了，只留下被強行撬開的痕跡，說明深淵入侵時有人偷走或轉移了關鍵聖物。聖物庫中央有一座小型祭台，能把永恆之火的光引向懺悔階與王座殿，是支線任務與裝備淨化的核心地點。若把受污染裝備放上祭台，結界會顯示需要補齊哪些失落聖物。玻璃龕背面還刻著聖物最後保管者的名字，可延伸成追查遺失聖物的任務。庫房深處有一道只對淨化光芒開啟的門。',
+    exits: [
+      { direction: 'south', targetRoomId: 'eternal_sanctuary', description: '聖火通道回到永恆聖所' },
+      { direction: 'west', targetRoomId: 'celestial_penitent_steps', description: '結界門通向懺悔階' },
+      { direction: 'east', targetRoomId: 'celestial_armory_of_dawn', description: '聖物運送門連到黎明武庫' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[物]',
+    mapX: 2,
+    mapY: 39,
+    guardianHints: {
+      creature: '聖物庫機械會啟動玻璃龕反射光束，站在空龕旁可避開連線。',
+      treasure: '破碎光環與聖釘可用於淨化或重鑄神器。',
+      spirit: '空龕暗示天界內部可能在戰前已經失序。',
+    },
+  },
+
+  celestial_sundial_court: {
+    id: 'celestial_sundial_court',
+    name: '日晷庭',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_sundial_court.png',
+    imagePrompt: '日晷庭 in celestial_ruins, open courtyard with giant golden sundial, moving beams of holy light, white marble and star shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '誓約之泉東側是一座開闊日晷庭，巨大的金色指針懸浮在半空，投下的影子不是時間，而是天界曾經的戰役順序。白石地面被分成十二個光區，每個光區會在不同時刻啟動守護法陣。深淵污染讓其中兩個光區變成黑影，導致巡邏路線出現危險空窗。這裡能作為事件點、定時戰鬥點，也能讓玩家理解天界防線如何運作。',
+    exits: [
+      { direction: 'west', targetRoomId: 'celestial_fountain_of_oaths', description: '水光小徑回到誓約之泉' },
+      { direction: 'north', targetRoomId: 'celestial_armory_of_dawn', description: '晨光指向黎明武庫' },
+      { direction: 'south', targetRoomId: 'celestial_lumen_archive', description: '影子階梯連向流明檔案庫' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
+    ],
+    mapSymbol: '[晷]',
+    mapX: 5,
+    mapY: 37,
+    guardianHints: {
+      creature: '日晷光區會改變守衛抗性，觀察影子位置再選元素。',
+      treasure: '金色指針脫落的細片可用於時間或光屬性裝備。',
+      spirit: '日晷庭把戰役順序當作時間，顯示天界以使命衡量日夜。',
+    },
+  },
+
+  celestial_armory_of_dawn: {
+    id: 'celestial_armory_of_dawn',
+    name: '黎明武庫',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_armory_of_dawn.png',
+    imagePrompt: '黎明武庫 in celestial_ruins, divine armory of dawn spears, radiant shields, white gold racks and sleeping constructs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天界王座東側的武庫保存著黎明長槍、光盾與諸神戰車的殘件，所有兵器都被擺放在白金架上，像等待最後一次出征。武庫深處有幾台尚未啟動的神造兵器，胸口核心隨日晷庭光線一明一暗。部分武器架空缺，旁邊留下墮天使羽毛與深淵灼痕。這裡是精英戰鬥與裝備線核心，也能解釋戰神神槍的來源。武庫地面刻著武器借用誓約，若沒有完成審判或聖所任務，任何兵器都會化成灼熱光束反擊。最深處的空架標著戰神之槍，仍殘留足以壓迫整座房間的戰意。牆上還標示通往觀測所的軍用星軌。',
+    exits: [
+      { direction: 'west', targetRoomId: 'celestial_throne_room', description: '武庫門回到天界王座' },
+      { direction: 'south', targetRoomId: 'celestial_sundial_court', description: '晨光坡道下到日晷庭' },
+      { direction: 'north', targetRoomId: 'celestial_astral_observatory', description: '武庫後門通往天象觀測所' },
+      { direction: 'east', targetRoomId: 'celestial_reliquary', description: '聖物運送門回到聖物庫' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 3, respawnSeconds: 600 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[武]',
+    mapX: 5,
+    mapY: 38,
+    guardianHints: {
+      creature: '神造兵器會依照武器架啟動，先破壞空缺架旁的黑痕。',
+      treasure: '黎明長槍殘件可作為神器重鑄素材。',
+      spirit: '武庫顯示戰神曾為最終戰役留下大量準備。',
+    },
+  },
+
+  celestial_astral_observatory: {
+    id: 'celestial_astral_observatory',
+    name: '天象觀測所',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_astral_observatory.png',
+    imagePrompt: '天象觀測所 in celestial_ruins, celestial observatory of golden astrolabes, star maps, open dome and divine constellations, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神之間西側的星軌門通向天象觀測所，穹頂整片敞開，能看見不屬於凡間夜空的神聖星座。金色星盤層層旋轉，把深淵裂隙、龍谷墜星坑與天界王座的位置連成一條明亮弧線。觀測所內散落著戰神沉睡前的星圖批註，提到只有當凡人、龍族與天界試煉全部交會時，最終封印才會鬆動。觀測台下方還有一張被燒焦的星圖，標出深淵信標曾試圖對準的天界薄弱點。若調整星盤角度，玩家能短暫看見其他 zone 的危機投影與未來任務線。星盤核心也記錄著戰神甦醒的倒數，並標出封印失敗後的墜落軌道。',
+    exits: [
+      { direction: 'east', targetRoomId: 'god_chamber', description: '星軌門回到神之間' },
+      { direction: 'south', targetRoomId: 'celestial_armory_of_dawn', description: '觀測台階回到黎明武庫' },
+      { direction: 'north', targetRoomId: 'celestial_final_seal', description: '星圖終點指向最終封印' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[象]',
+    mapX: 2,
+    mapY: 40,
+    guardianHints: {
+      creature: '觀測所熾天使會借星盤轉移位置，注意地面光弧。',
+      treasure: '星圖批註能揭示最終封印開啟條件。',
+      spirit: '觀測所把前面區域全部串成一條命運線。',
+    },
+  },
+
+  celestial_final_seal: {
+    id: 'celestial_final_seal',
+    name: '最終封印',
+    zone: 'celestial_ruins' as RoomDef['zone'],
+    image: 'celestial_final_seal.png',
+    imagePrompt: '最終封印 in celestial_ruins, final divine seal of radiant rings and black abyss cracks, war god light, floating relics, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神之間東側的光裂縫後方懸著最終封印，數十道金白圓環互相咬合，把一枚黑色裂核鎖在中央。封印周圍漂浮著來自聖所、審判大廳、武庫與觀測所的象徵物，每件都代表解開或加固封印的一種條件。戰神的氣息從南方傳來，與裂核深處的深淵低鳴互相衝撞。這裡是天界遺跡的大型事件鉤子，可承接最終戰後的世界狀態選擇。圓環每轉動一次，凡間、龍谷與深淵的幻象便會輪流浮現，提醒玩家封印結果會影響所有區域。封印中心還有一個空白插槽，大小正好能放入戰神神槍或被淨化的聖物核心。',
+    exits: [
+      { direction: 'west', targetRoomId: 'god_chamber', description: '光裂縫回到神之間' },
+      { direction: 'south', targetRoomId: 'celestial_astral_observatory', description: '星軌下行到天象觀測所' },
+    ],
+    monsters: [
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[封]',
+    mapX: 4,
+    mapY: 40,
+    guardianHints: {
+      creature: '封印守衛會在圓環轉動時獲得護盾，等待裂核脈動後再攻擊。',
+      treasure: '封印圓環碎屑可作為最高階神聖材料。',
+      spirit: '最終封印不是單純關門，而是決定深淵、天界與凡間如何重新平衡。',
     },
   },
 };
