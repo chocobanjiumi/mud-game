@@ -1,6 +1,6 @@
 // Loot calculation tests
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { CorpseManager, LootCalculator } from '../game/loot.js';
+import { CorpseManager, LootCalculator, getLootAnnouncementScope } from '../game/loot.js';
 import type { MonsterDef, Character } from '@game/shared';
 import type { MonsterInstance } from '../game/world.js';
 
@@ -482,6 +482,19 @@ describe('LootCalculator', () => {
 
       expect(formatted).toContain('無');
     });
+  });
+});
+
+describe('getLootAnnouncementScope', () => {
+  it('announces rare equipment to room, epic to zone, and legendary or above to world', () => {
+    expect(getLootAnnouncementScope('spear_steel')).toBe('room');
+    expect(getLootAnnouncementScope('spear_mithril')).toBe('zone');
+    expect(getLootAnnouncementScope('spear_dragon')).toBe('world');
+    expect(getLootAnnouncementScope('abyss_eye_staff')).toBe('world');
+  });
+
+  it('does not announce non-equipment items', () => {
+    expect(getLootAnnouncementScope('slime_jelly')).toBeNull();
   });
 });
 

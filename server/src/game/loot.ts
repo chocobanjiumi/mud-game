@@ -17,6 +17,8 @@ export type MonsterLootCategory =
   | 'set_piece'
   | 'special_equipment';
 
+export type LootAnnouncementScope = 'room' | 'zone' | 'world';
+
 export interface MonsterLootEntry extends DropEntry {
   category: MonsterLootCategory;
 }
@@ -48,6 +50,21 @@ const REGIONAL_SPECIAL_DROP_IDS = new Set([
   'dragon_dust',
   'ancient_runestone',
 ]);
+
+export function getLootAnnouncementScope(itemId: string): LootAnnouncementScope | null {
+  const def = ITEM_DEFS[itemId];
+  if (!def || (def.type !== 'weapon' && def.type !== 'armor' && def.type !== 'accessory')) {
+    return null;
+  }
+
+  switch (def.rarity) {
+    case 'rare': return 'room';
+    case 'epic': return 'zone';
+    case 'legendary':
+    case 'mythic': return 'world';
+    default: return null;
+  }
+}
 
 // ============================================================
 //  LootCalculator

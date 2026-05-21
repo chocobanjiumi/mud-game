@@ -3,7 +3,7 @@
 import type { WsSession } from '../ws/handler.js';
 import {
   sendNarrative, sendSystem, sendError, sendToSession,
-  getSessionByCharacterId,
+  getSessionByCharacterId, getAllSessions, broadcast, broadcastToRoom,
 } from '../ws/handler.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
@@ -45,7 +45,7 @@ import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
-import { CorpseManager, LootCalculator } from './loot.js';
+import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
 import type { LootDistributionMode } from './party.js';
@@ -1564,6 +1564,7 @@ function cmdLoot(session: WsSession, target: string): void {
       questMgr.updateProgress(recipient.id, 'collect_item', item.itemId);
       const def = ITEM_DEFS[item.itemId];
       sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+      announceLootItem(recipient, item.itemId, result.corpse?.roomId ?? char.roomId);
     }
 
     questMgr.updateProgress(recipient.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
@@ -1576,6 +1577,7 @@ function cmdLoot(session: WsSession, target: string): void {
     questMgr.updateProgress(char.id, 'collect_item', item.itemId);
     const def = ITEM_DEFS[item.itemId];
     sendSystem(session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+    announceLootItem(char, item.itemId, result.corpse?.roomId ?? char.roomId);
   }
 
   if (personalQuestItems.length > 0 && !distribution.assignments.has(char.id)) {
@@ -1585,6 +1587,35 @@ function cmdLoot(session: WsSession, target: string): void {
   saveCharacter(char);
   if (distribution.assignments.size > 0) sendSystem(session.sessionId, distribution.message);
   sendSystem(session.sessionId, result.message);
+}
+
+function announceLootItem(recipient: Character, itemId: string, roomId: string): void {
+  const scope = getLootAnnouncementScope(itemId);
+  if (!scope) return;
+
+  const itemName = ITEM_DEFS[itemId]?.name ?? itemId;
+  const text = `【戰利品】${recipient.name} 獲得了 ${itemName}。`;
+
+  if (scope === 'room') {
+    broadcastToRoom(roomId, 'system', { text }, characterId => getCharacterById(characterId)?.roomId ?? null);
+    return;
+  }
+
+  if (scope === 'world') {
+    broadcast('system', { text });
+    return;
+  }
+
+  const sourceZoneId = getRoom(roomId)?.zone;
+  if (!sourceZoneId) return;
+  for (const onlineSession of getAllSessions()) {
+    if (!onlineSession.characterId) continue;
+    const onlineChar = getCharacterById(onlineSession.characterId);
+    const onlineZoneId = onlineChar ? getRoom(onlineChar.roomId)?.zone : undefined;
+    if (onlineZoneId === sourceZoneId) {
+      sendToSession(onlineSession.sessionId, 'system', { text });
+    }
+  }
 }
 
 function cmdDrop(session: WsSession, itemName: string): void {
