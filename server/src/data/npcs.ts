@@ -372,8 +372,8 @@ export const NPCS: Record<string, NpcDef> = {
     type: 'merchant',
     shopItems: [
       'wooden_sword', 'bronze_sword', 'iron_sword',
-      'wooden_staff', 'apprentice_staff',
-      'short_bow', 'hunting_bow',
+      'wooden_wand', 'apprentice_staff',
+      'short_bow', 'long_bow',
       'wooden_shield', 'iron_shield',
     ],
     dialogue: [
@@ -1236,7 +1236,7 @@ export const NPCS: Record<string, NpcDef> = {
     roomId: 'hunter_lodge',
     type: 'merchant',
     shopItems: [
-      'short_bow', 'hunting_bow', 'antidote',
+      'short_bow', 'long_bow', 'antidote',
       'small_hp_potion', 'medium_hp_potion',
     ],
     dialogue: [

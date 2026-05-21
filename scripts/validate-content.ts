@@ -232,7 +232,7 @@ function validateQuests(): void {
       if (objective.type === 'visit' && !isWildcard && !ROOMS[objective.targetId]) {
         add('error', `quest:${quest.id}`, `visit objective references missing room: ${objective.targetId}`);
       }
-      if (objective.type === 'talk' && !NPCS[objective.targetId]) {
+      if (objective.type === 'talk' && !isWildcard && !NPCS[objective.targetId]) {
         add('error', `quest:${quest.id}`, `talk objective references missing NPC: ${objective.targetId}`);
       }
     }
