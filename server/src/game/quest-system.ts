@@ -779,9 +779,9 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
     repeatable: true,
   },
 
-  daily_gather: {
-    id: 'daily_gather',
-    name: '每日採集',
+  daily_explorer: {
+    id: 'daily_explorer',
+    name: '每日探勘',
     description: '探索 5 個不同的地點，完成今日的探勘任務。',
     type: 'daily',
     levelReq: 1,
@@ -791,6 +791,51 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
     rewards: { exp: 400, gold: 150 },
     dialogueStart: '今日的探勘任務：造訪 5 個不同的地點！',
     dialogueComplete: '每日探勘任務完成！你的足跡遍佈大地。',
+    repeatable: true,
+  },
+
+  daily_gather: {
+    id: 'daily_gather',
+    name: '每日採集',
+    description: '採集 3 份任意資源，補充今日的職業材料。',
+    type: 'daily',
+    levelReq: 1,
+    objectives: [
+      { type: 'gather_resource', targetId: '*', targetName: '任意資源', required: 3 },
+    ],
+    rewards: { exp: 400, gold: 150 },
+    dialogueStart: '今日的採集委託：帶回 3 份可用材料。',
+    dialogueComplete: '每日採集任務完成！這些材料會成為可靠的補給。',
+    repeatable: true,
+  },
+
+  daily_social: {
+    id: 'daily_social',
+    name: '每日問候',
+    description: '與任意 NPC 交談 1 次，確認今日可接取的消息。',
+    type: 'daily',
+    levelReq: 1,
+    objectives: [
+      { type: 'talk', targetId: '*', targetName: '任意 NPC', required: 1 },
+    ],
+    rewards: { exp: 200, gold: 80 },
+    dialogueStart: '公會希望冒險者每天都和據點保持聯絡，先找一位 NPC 打聽消息吧。',
+    dialogueComplete: '每日社交任務完成！情報往往比刀劍更早救命。',
+    repeatable: true,
+  },
+
+  daily_support_profession: {
+    id: 'daily_support_profession',
+    name: '每日支援演練',
+    description: '使用 1 次治療或支援技能，維持隊伍支援手感。',
+    type: 'daily',
+    levelReq: 1,
+    objectives: [
+      { type: 'use_support_skill', targetId: '*', targetName: '治療或支援技能', required: 1 },
+    ],
+    rewards: { exp: 250, gold: 100 },
+    dialogueStart: '今日的支援演練：使用一次治療、增益或防護類技能。',
+    dialogueComplete: '每日支援演練完成！穩定的後勤是隊伍活下來的原因。',
     repeatable: true,
   },
 
@@ -810,8 +855,83 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
   },
 
   // ═══════════════════════════════════════════════════════════
-  //  每週任務 (2)
+  //  每週任務
   // ═══════════════════════════════════════════════════════════
+
+  weekly_dungeon_first_clear: {
+    id: 'weekly_dungeon_first_clear',
+    name: '每週副本首通',
+    description: '本週完成 1 次隊伍或單人副本首通。',
+    type: 'weekly',
+    levelReq: 10,
+    objectives: [
+      { type: 'first_clear_dungeon', targetId: '*', targetName: '任意副本首通', required: 1 },
+    ],
+    rewards: { exp: 2500, gold: 1200 },
+    dialogueStart: '每週副本首通挑戰：找一座尚未首通的副本完成突破。',
+    dialogueComplete: '每週副本首通完成！新的路線已被你的隊伍打開。',
+    repeatable: true,
+  },
+
+  weekly_world_boss_participation: {
+    id: 'weekly_world_boss_participation',
+    name: '每週世界 Boss 參戰',
+    description: '本週參與 1 次世界 Boss 事件。',
+    type: 'weekly',
+    levelReq: 20,
+    objectives: [
+      { type: 'participate_world_boss', targetId: '*', targetName: '世界 Boss 事件', required: 1 },
+    ],
+    rewards: { exp: 3500, gold: 1600 },
+    dialogueStart: '世界 Boss 的警報本週至少會響一次，記得抵達現場參戰。',
+    dialogueComplete: '每週世界 Boss 參戰完成！你的名字已記入本週戰報。',
+    repeatable: true,
+  },
+
+  weekly_guild_goal: {
+    id: 'weekly_guild_goal',
+    name: '每週公會目標',
+    description: '本週完成 3 次公會貢獻行動。',
+    type: 'weekly',
+    levelReq: 5,
+    objectives: [
+      { type: 'contribute_guild', targetId: '*', targetName: '公會貢獻', required: 3 },
+    ],
+    rewards: { exp: 1800, gold: 900 },
+    dialogueStart: '每週公會目標：完成任務、捐物、擴建或其他公會貢獻。',
+    dialogueComplete: '每週公會目標完成！公會因你的投入更穩固了。',
+    repeatable: true,
+  },
+
+  weekly_kingdom_resource_war: {
+    id: 'weekly_kingdom_resource_war',
+    name: '每週王國資源戰',
+    description: '本週參與 2 次王國軍務或資源戰行動。',
+    type: 'weekly',
+    levelReq: 20,
+    objectives: [
+      { type: 'participate_kingdom_war', targetId: '*', targetName: '王國軍務行動', required: 2 },
+    ],
+    rewards: { exp: 3200, gold: 1400 },
+    dialogueStart: '每週王國資源戰：集結、防守、招募或部署都會推進本週軍務。',
+    dialogueComplete: '每週王國資源戰完成！王國邊境因此多撐住了一段時間。',
+    repeatable: true,
+  },
+
+  weekly_leaderboard_settlement: {
+    id: 'weekly_leaderboard_settlement',
+    name: '每週榜單結算',
+    description: '本週取得 1 次排行榜紀錄，等待結算時列入統計。',
+    type: 'weekly',
+    levelReq: 10,
+    objectives: [
+      { type: 'leaderboard_score', targetId: '*', targetName: '排行榜紀錄', required: 1 },
+    ],
+    rewards: { exp: 2200, gold: 1000 },
+    dialogueStart: '每週榜單結算：取得 PvP、等級或副本速通榜上的有效紀錄。',
+    dialogueComplete: '每週榜單結算完成！你的本週紀錄已納入榜單。',
+    repeatable: true,
+  },
 
   weekly_elite: {
     id: 'weekly_elite',

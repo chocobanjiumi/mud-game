@@ -60,9 +60,9 @@ export class DungeonManager {
     | null = null;
 
   /** 副本通關回呼（公會經驗、二轉任務等） */
-  private onClearFn: ((playerIds: string[], dungeonId: string, isSolo: boolean) => void) | null = null;
+  private onClearFn: ((playerIds: string[], dungeonId: string, isSolo: boolean, isFirstClear: boolean) => void) | null = null;
 
-  setOnClearFn(fn: (playerIds: string[], dungeonId: string, isSolo: boolean) => void): void {
+  setOnClearFn(fn: (playerIds: string[], dungeonId: string, isSolo: boolean, isFirstClear: boolean) => void): void {
     this.onClearFn = fn;
   }
 
@@ -409,7 +409,7 @@ export class DungeonManager {
 
     // 公會經驗、二轉任務等外部回呼
     if (this.onClearFn) {
-      this.onClearFn(instance.playerIds, instance.dungeonId, instance.playerIds.length === 1);
+      this.onClearFn(instance.playerIds, instance.dungeonId, instance.playerIds.length === 1, isFirstClear);
     }
 
     // 傳送回副本入口房間

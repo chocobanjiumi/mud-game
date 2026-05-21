@@ -156,16 +156,23 @@ export function initGameSystems(): void {
   dungeonMgr.init();
 
   // 副本通關 → 公會經驗 +50 + 二轉任務鉤子
-  dungeonMgr.setOnClearFn((playerIds, dungeonId, isSolo) => {
+  dungeonMgr.setOnClearFn((playerIds, dungeonId, isSolo, isFirstClear) => {
     let guildGranted = false;
     for (const pid of playerIds) {
       // 二轉任務：副本通關
       classQuest2Mgr.onDungeonClear(pid, dungeonId ?? '', isSolo ?? playerIds.length === 1);
+      // 長期/每週任務：副本通關、首通、排行榜紀錄
+      questMgr.updateProgress(pid, 'clear_dungeon', dungeonId ?? 'dungeon');
+      questMgr.updateProgress(pid, 'leaderboard_score', 'dungeon_speed');
+      if (isFirstClear) {
+        questMgr.updateProgress(pid, 'first_clear_dungeon', dungeonId ?? 'dungeon');
+      }
       // 公會經驗（同公會只加一次）
       if (!guildGranted) {
         const gid = guildMgr.getCharacterGuildId(pid);
         if (gid) {
           guildMgr.addGuildExp(gid, 50);
+          questMgr.updateProgress(pid, 'contribute_guild', 'dungeon_clear');
           guildGranted = true;
         }
       }
@@ -177,6 +184,7 @@ export function initGameSystems(): void {
     const gid = guildMgr.getCharacterGuildId(characterId);
     if (gid) {
       guildMgr.addGuildExp(gid, 20);
+      questMgr.updateProgress(characterId, 'contribute_guild', 'quest_complete');
     }
   });
 

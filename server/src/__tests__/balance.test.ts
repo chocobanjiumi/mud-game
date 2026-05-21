@@ -754,6 +754,30 @@ describe('Balance: Skill metadata', () => {
     )).toBe(true);
   });
 
+  it('provides daily retention quests for hunting, exploration, gathering, social, and support play', () => {
+    const dailyObjectives = Object.values(QUEST_DEFS)
+      .filter(quest => quest.type === 'daily')
+      .flatMap(quest => quest.objectives.map(objective => objective.type));
+
+    expect(dailyObjectives).toContain('kill');
+    expect(dailyObjectives).toContain('visit');
+    expect(dailyObjectives).toContain('gather_resource');
+    expect(dailyObjectives).toContain('talk');
+    expect(dailyObjectives).toContain('use_support_skill');
+  });
+
+  it('provides weekly retention quests for dungeons, world bosses, guilds, kingdom wars, and leaderboards', () => {
+    const weeklyObjectives = Object.values(QUEST_DEFS)
+      .filter(quest => quest.type === 'weekly')
+      .flatMap(quest => quest.objectives.map(objective => objective.type));
+
+    expect(weeklyObjectives).toContain('first_clear_dungeon');
+    expect(weeklyObjectives).toContain('participate_world_boss');
+    expect(weeklyObjectives).toContain('contribute_guild');
+    expect(weeklyObjectives).toContain('participate_kingdom_war');
+    expect(weeklyObjectives).toContain('leaderboard_score');
+  });
+
   it('gives every player class at least one class quest unlocked skill', () => {
     const playerClassIds = Object.values(CLASS_DEFS)
       .filter(classDef => classDef.id !== 'monster')

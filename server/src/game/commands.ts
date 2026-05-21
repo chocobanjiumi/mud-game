@@ -909,6 +909,9 @@ function cmdAttack(session: WsSession, target: string): void {
           // 二轉任務：治療鉤子
           classQuest2Mgr.onHealPerformed(playerId);
         }
+        if (sDef && isQuestSupportSkill(sDef)) {
+          questMgr.updateProgress(playerId, 'use_support_skill', action.skillId);
+        }
         // 轉職任務：戰鬥中技能使用鉤子
         classQuestMgr.onSkillUse(playerId, action.skillId, playerChar.roomId, true);
       }
@@ -965,6 +968,9 @@ function cmdSkill(session: WsSession, args: string[]): void {
 
   // 轉職任務：技能使用鉤子（非戰鬥中使用技能）
   classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
+  if (skillDef && isQuestSupportSkill(skillDef)) {
+    questMgr.updateProgress(char.id, 'use_support_skill', matchedSkill.skillId);
+  }
 
   // 教學系統：技能使用鉤子
   tutorialMgr.advanceStep(char.id, 'skill');
@@ -978,6 +984,17 @@ function cmdSkill(session: WsSession, args: string[]): void {
       }
     }
   }
+}
+
+function isQuestSupportSkill(skillDef: typeof SKILL_DEFS[string]): boolean {
+  return Boolean(
+    skillDef.special?.isHeal
+    || skillDef.special?.removeDebuffs
+    || skillDef.tags.includes('heal')
+    || skillDef.tags.includes('support')
+    || skillDef.targetType === 'single_ally'
+    || skillDef.targetType === 'all_allies',
+  );
 }
 
 function cmdDefend(session: WsSession): void {
@@ -3169,6 +3186,7 @@ function cmdWar(session: WsSession, args: string[]): void {
       const war = wars.find(w => (w.attackerId === member.kingdomId && w.defenderId === target.id));
       if (!war) { sendError(session.sessionId, '找不到與該王國的進行中戰爭，或你不是攻方。'); return; }
       const result = warMgr.startSiege(war.id as string, char.id);
+      if (result.success) questMgr.updateProgress(char.id, 'participate_kingdom_war', 'siege');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -3178,12 +3196,14 @@ function cmdWar(session: WsSession, args: string[]): void {
       const siegeWar = wars.find(w => w.status === 'siege' && w.defenderId === member.kingdomId);
       if (!siegeWar) { sendError(session.sessionId, '目前沒有需要防守的攻城戰。'); return; }
       const result = warMgr.defendSiege(siegeWar.id as string, char.id);
+      if (result.success) questMgr.updateProgress(char.id, 'participate_kingdom_war', 'defend');
       sendSystem(session.sessionId, result.message);
       break;
     }
     case 'rally': {
       if (!member) { sendError(session.sessionId, '你不屬於任何王國。'); return; }
       const result = warMgr.rallyTroops(member.kingdomId, char.id);
+      if (result.success) questMgr.updateProgress(char.id, 'participate_kingdom_war', 'rally');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -3205,6 +3225,7 @@ function cmdArmy(session: WsSession, args: string[]): void {
       const count = parseInt(args[1] || '0', 10);
       if (count <= 0) { sendError(session.sessionId, '用法：army recruit <數量>'); return; }
       const result = warMgr.recruitSoldiers(member.kingdomId, count, char.id);
+      if (result.success) questMgr.updateProgress(char.id, 'participate_kingdom_war', 'recruit');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -3213,6 +3234,7 @@ function cmdArmy(session: WsSession, args: string[]): void {
       const count = parseInt(args[2] || '0', 10);
       if (!roomId || count <= 0) { sendError(session.sessionId, '用法：army deploy <房間ID> <數量>'); return; }
       const result = warMgr.deploySoldiers(member.kingdomId, roomId, count, char.id);
+      if (result.success) questMgr.updateProgress(char.id, 'participate_kingdom_war', 'deploy');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -4417,8 +4439,12 @@ function cmdEvent(session: WsSession, args: string[]): void {
         return;
       }
       const result = worldEventMgr.joinEvent(char.id, current.id);
-      if (result.ok) sendSystem(session.sessionId, result.message);
-      else sendError(session.sessionId, result.message);
+      if (result.ok) {
+        questMgr.updateProgress(char.id, 'participate_world_boss', current.bossId ?? current.id);
+        sendSystem(session.sessionId, result.message);
+      } else {
+        sendError(session.sessionId, result.message);
+      }
       break;
     }
     case 'ranking': {
@@ -5021,6 +5047,7 @@ function cmdGuild(session: WsSession, args: string[]): void {
       }
       const desc = args.slice(2).join(' ');
       const result = guildMgr.createGuild(char, name, desc);
+      if (result.success) questMgr.updateProgress(char.id, 'contribute_guild', 'create');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -5031,6 +5058,7 @@ function cmdGuild(session: WsSession, args: string[]): void {
         return;
       }
       const result = guildMgr.joinGuild(char.id, name);
+      if (result.success) questMgr.updateProgress(char.id, 'contribute_guild', 'join');
       sendSystem(session.sessionId, result.message);
       break;
     }
@@ -5069,6 +5097,7 @@ function cmdGuild(session: WsSession, args: string[]): void {
     case 'storage': {
       if (args[1]?.toLowerCase() === 'expand') {
         const result = guildMgr.expandStorage(char.id);
+        if (result.success) questMgr.updateProgress(char.id, 'contribute_guild', 'storage_expand');
         sendSystem(session.sessionId, result.message);
         break;
       }
@@ -5084,6 +5113,7 @@ function cmdGuild(session: WsSession, args: string[]): void {
         return;
       }
       const result = guildMgr.depositItem(char.id, itemId, count);
+      if (result.success) questMgr.updateProgress(char.id, 'contribute_guild', 'deposit');
       sendSystem(session.sessionId, result.message);
       break;
     }

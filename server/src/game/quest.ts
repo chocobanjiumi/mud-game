@@ -25,7 +25,14 @@ export type QuestObjectiveType =
   | 'inspect_object'
   | 'gather_resource'
   | 'craft_item'
-  | 'defeat_boss';
+  | 'defeat_boss'
+  | 'use_support_skill'
+  | 'first_clear_dungeon'
+  | 'clear_dungeon'
+  | 'participate_world_boss'
+  | 'contribute_guild'
+  | 'participate_kingdom_war'
+  | 'leaderboard_score';
 
 export interface QuestObjective {
   type: QuestObjectiveType;
@@ -352,9 +359,7 @@ export class QuestManager {
       for (const obj of def.objectives) {
         if (!objectiveMatchesEvent(obj.type, eventType)) continue;
 
-        // 支援萬用字元目標（如每日任務的「任意怪物」）
-        const isWildcard = obj.targetId === '*';
-        if (isWildcard || obj.targetId === targetId) {
+        if (questTargetMatches(obj.targetId, targetId)) {
           const key = questObjectiveKey(obj);
           const current = progress[key] ?? 0;
           if (current < obj.required) {
@@ -875,6 +880,18 @@ function objectiveMatchesEvent(objectiveType: QuestObjectiveType, eventType: Que
   return canonicalQuestObjectiveType(objectiveType) === canonicalQuestObjectiveType(eventType);
 }
 
+function questTargetMatches(objectiveTargetId: string, eventTargetId: string): boolean {
+  if (objectiveTargetId === '*') return true;
+  if (objectiveTargetId === eventTargetId) return true;
+  if (!objectiveTargetId.includes('*')) return false;
+
+  const escaped = objectiveTargetId
+    .split('*')
+    .map(part => part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .join('.*');
+  return new RegExp(`^${escaped}$`).test(eventTargetId);
+}
+
 function questObjectiveTypeLabel(type: QuestObjectiveType): string {
   const labels: Record<QuestObjectiveType, string> = {
     kill: '擊殺',
@@ -889,6 +906,13 @@ function questObjectiveTypeLabel(type: QuestObjectiveType): string {
     gather_resource: '採集',
     craft_item: '製作',
     defeat_boss: '擊敗 Boss',
+    use_support_skill: '支援',
+    first_clear_dungeon: '副本首通',
+    clear_dungeon: '副本通關',
+    participate_world_boss: '世界 Boss 參與',
+    contribute_guild: '公會貢獻',
+    participate_kingdom_war: '王國資源戰',
+    leaderboard_score: '排行榜紀錄',
   };
   return labels[type];
 }

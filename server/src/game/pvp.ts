@@ -445,6 +445,7 @@ export class PvPManager {
     // 任務進度：PvP 勝利
     try {
       questMgr.updateProgress(winnerId, 'kill', 'pvp_win');
+      questMgr.updateProgress(winnerId, 'leaderboard_score', 'pvp');
     } catch {
       // 忽略
     }
