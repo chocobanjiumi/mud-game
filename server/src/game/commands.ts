@@ -23,7 +23,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId, MonsterDef, RoomDef, RoomExit, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, MonsterDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -46,7 +46,7 @@ import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
-import { CRAFTING_CATEGORIES, type CraftingCategory } from './crafting.js';
+import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -3611,7 +3611,8 @@ function cmdCraft(session: WsSession, args: string[]): void {
     case 'forge': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft forge <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
+      const craftOptions = parseCraftOptions(args.slice(2));
+      const result = craftingMgr.craft(char.id, recipeId, craftOptions.slot, craftOptions);
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
@@ -3622,7 +3623,8 @@ function cmdCraft(session: WsSession, args: string[]): void {
     case 'alchemy': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft alchemy <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
+      const craftOptions = parseCraftOptions(args.slice(2));
+      const result = craftingMgr.craft(char.id, recipeId, craftOptions.slot, craftOptions);
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
@@ -3634,7 +3636,8 @@ function cmdCraft(session: WsSession, args: string[]): void {
     case 'cook': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft cook <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
+      const craftOptions = parseCraftOptions(args.slice(2));
+      const result = craftingMgr.craft(char.id, recipeId, craftOptions.slot, craftOptions);
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
@@ -3650,7 +3653,8 @@ function cmdCraft(session: WsSession, args: string[]): void {
       const category = resolveCraftingCategory(sub);
       const recipeId = args[1];
       if (!category || !recipeId) { sendError(session.sessionId, '用法：craft <類別> <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
+      const craftOptions = parseCraftOptions(args.slice(2));
+      const result = craftingMgr.craft(char.id, recipeId, craftOptions.slot, craftOptions);
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
@@ -3671,7 +3675,8 @@ function cmdCraft(session: WsSession, args: string[]): void {
     default: {
       if (sub) {
         const recipeId = args[0];
-        const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(1)));
+        const craftOptions = parseCraftOptions(args.slice(1));
+        const result = craftingMgr.craft(char.id, recipeId, craftOptions.slot, craftOptions);
         if (result.success) {
           sendSystem(session.sessionId, result.message);
           if (result.crafted) {
@@ -3690,7 +3695,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId,
         '製作系統指令：\n' +
         '  craft list [forge|tailoring|leather|jewel|alchemy|enchant|cooking] — 查看配方\n' +
-        '  craft <配方ID> [slot:<slot>] — 直接製作配方\n' +
+        '  craft <配方ID> [slot:<slot>] [affix:<tag>] — 直接製作配方\n' +
         '  craft forge <配方ID>    — 鍛造裝備\n' +
         '  craft tailoring <配方ID> — 裁縫裝備\n' +
         '  craft leather <配方ID>  — 皮革裝備\n' +
@@ -3705,9 +3710,13 @@ function cmdCraft(session: WsSession, args: string[]): void {
   }
 }
 
-function parseCraftSlot(args: string[]): EquipSlot | undefined {
+function parseCraftOptions(args: string[]): CraftingOptions & { slot?: EquipSlot } {
   const token = args.find(arg => arg.toLowerCase().startsWith('slot:'));
-  return token?.slice('slot:'.length) as EquipSlot | undefined;
+  const affixToken = args.find(arg => arg.toLowerCase().startsWith('affix:'));
+  return {
+    slot: token?.slice('slot:'.length) as EquipSlot | undefined,
+    preferredAffixTag: affixToken?.slice('affix:'.length) as SkillTag | undefined,
+  };
 }
 
 function resolveCraftingCategory(input?: string): CraftingCategory | undefined {
@@ -3993,6 +4002,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
       title: '製作系統',
       lines: [
         'craft list [forge|tailoring|leather|jewel|alchemy|enchant|cooking] 查看配方',
+        'craft <配方ID> slot:<slot> affix:<tag> 指定裝備欄與詞綴傾向',
         'craft forge <配方ID>   鍛造裝備',
         'craft tailoring <配方ID> 裁縫裝備',
         'craft leather <配方ID>  皮革裝備',

@@ -12,6 +12,7 @@ import { addInventoryItem } from '../db/queries.js';
 
 const GATHERING_COOLDOWN_MS = 5_000;
 const gatheringCooldowns = new Map<string, number>();
+const materialQualityLedger = new Map<string, Partial<Record<GatheringMaterialQuality, number>>>();
 
 const QUALITY_LABELS: Record<GatheringMaterialQuality, string> = {
   rough: '粗糙',
@@ -85,6 +86,7 @@ export class GatheringManager {
     const yieldDef = rollYield(node, random);
     const quantity = rollQuantity(yieldDef.minQty, yieldDef.maxQty, random);
     addInventoryItem(characterId, yieldDef.itemId, quantity);
+    recordMaterialQuality(characterId, yieldDef.itemId, yieldDef.quality, quantity);
 
     const itemName = ITEM_DEFS[yieldDef.itemId]?.name ?? yieldDef.itemId;
     return {
@@ -102,6 +104,44 @@ export class GatheringManager {
   resetCooldown(characterId: string): void {
     gatheringCooldowns.delete(characterId);
   }
+}
+
+export function consumeGatheredMaterialQualities(
+  characterId: string,
+  materials: { itemId: string; count: number }[],
+): GatheringMaterialQuality[] {
+  const consumed: GatheringMaterialQuality[] = [];
+  for (const material of materials) {
+    let remaining = material.count;
+    for (const quality of ['perfect', 'rare', 'fine', 'normal', 'rough'] as GatheringMaterialQuality[]) {
+      if (remaining <= 0) break;
+      const key = materialQualityKey(characterId, material.itemId);
+      const ledger = materialQualityLedger.get(key);
+      const available = ledger?.[quality] ?? 0;
+      if (available <= 0) continue;
+      const used = Math.min(available, remaining);
+      ledger![quality] = available - used;
+      consumed.push(...Array<GatheringMaterialQuality>(used).fill(quality));
+      remaining -= used;
+    }
+  }
+  return consumed;
+}
+
+function recordMaterialQuality(
+  characterId: string,
+  itemId: string,
+  quality: GatheringMaterialQuality,
+  quantity: number,
+): void {
+  const key = materialQualityKey(characterId, itemId);
+  const ledger = materialQualityLedger.get(key) ?? {};
+  ledger[quality] = (ledger[quality] ?? 0) + quantity;
+  materialQualityLedger.set(key, ledger);
+}
+
+function materialQualityKey(characterId: string, itemId: string): string {
+  return `${characterId}:${itemId}`;
 }
 
 function rollYield(node: GatheringNodeDef, random: () => number): GatheringNodeDef['yields'][number] {

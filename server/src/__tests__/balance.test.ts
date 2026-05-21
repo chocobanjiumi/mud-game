@@ -39,7 +39,13 @@ import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
 import { GatheringManager } from '../game/gathering.js';
 import { ROOMS, ZONES } from '../data/rooms.js';
-import { CRAFTING_CATEGORIES, RECIPES, getRecipeResult } from '../game/crafting.js';
+import {
+  CRAFTING_CATEGORIES,
+  RECIPES,
+  calculateCriticalCraftRate,
+  calculateMaterialQualityBonus,
+  getRecipeResult,
+} from '../game/crafting.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================
@@ -524,6 +530,26 @@ describe('Balance: Item instance generation', () => {
     expect(rollItemQuality(0, ['world_boss'], () => 0)).toBe('mythic');
   });
 
+  it('lets crafting quality bonuses improve item quality rolls', () => {
+    expect(rollItemQuality(0, [], () => 0.53)).toBe('normal');
+    expect(rollItemQuality(0, [], () => 0.53, 0.1)).toBe('fine');
+  });
+
+  it('weights crafted affixes toward requested skill tags', () => {
+    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const instance = generateEquipmentInstance(base, {
+      qualityBonus: 0.1,
+      preferredAffixTags: ['burst'],
+      preferredAffixWeight: 100,
+      random: vi.fn()
+        .mockReturnValueOnce(0.53)
+        .mockReturnValue(0.99),
+    });
+
+    expect(instance.quality).toBe('fine');
+    expect(instance.affixes.some(affix => affix.skillTags?.includes('burst'))).toBe(true);
+  });
+
   it('rerolls one affix without duplicating retained affixes', () => {
     const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
     const currentAffixes = [
@@ -879,6 +905,15 @@ describe('Balance: Crafting definitions', () => {
     expect(getRecipeResult(recipe, 'weapon')?.itemId).toBe('iron_sword');
     expect(getRecipeResult(recipe, 'belt')?.itemId).toBe('adventurer_belt');
     expect(getRecipeResult(recipe, 'accessory')).toBeUndefined();
+  });
+
+  it('converts high-quality gathered materials into crafting quality and critical bonuses', () => {
+    const normalBonus = calculateMaterialQualityBonus(['normal', 'rough']);
+    const highBonus = calculateMaterialQualityBonus(['fine', 'rare', 'perfect']);
+
+    expect(normalBonus).toBe(0);
+    expect(highBonus).toBeGreaterThan(normalBonus);
+    expect(calculateCriticalCraftRate(10, 10, highBonus)).toBeGreaterThan(calculateCriticalCraftRate(10, 10, normalBonus));
   });
 });
 

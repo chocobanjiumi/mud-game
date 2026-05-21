@@ -1,8 +1,16 @@
 // 製作系統 — CraftingManager
 
 import { getDb } from '../db/schema.js';
-import { getInventory, addInventoryItem, removeInventoryItem } from '../db/queries.js';
-import { ITEM_DEFS, type EquipSlot } from '@game/shared';
+import { getCharacterById, getInventory, addInventoryItem, removeInventoryItem } from '../db/queries.js';
+import {
+  generateEquipmentInstance,
+  ITEM_DEFS,
+  toBaseEquipmentDef,
+  type EquipSlot,
+  type GatheringMaterialQuality,
+  type SkillTag,
+} from '@game/shared';
+import { consumeGatheredMaterialQualities } from './gathering.js';
 
 // ============================================================
 //  型別定義
@@ -44,6 +52,11 @@ export interface CraftingLevelInfo {
   level: number;
   exp: number;
   expToNext: number;
+}
+
+export interface CraftingOptions {
+  preferredAffixTag?: SkillTag;
+  random?: () => number;
 }
 
 // ============================================================
@@ -629,7 +642,8 @@ export class CraftingManager {
     characterId: string,
     recipeId: string,
     slot?: EquipSlot,
-  ): { success: boolean; message: string; crafted?: boolean; resultItemId?: string } {
+    options: CraftingOptions = {},
+  ): { success: boolean; message: string; crafted?: boolean; resultItemId?: string; itemInstanceId?: string; criticalSuccess?: boolean } {
     const recipe = RECIPES[recipeId];
     if (!recipe) {
       return { success: false, message: '配方不存在。' };
@@ -671,16 +685,25 @@ export class CraftingManager {
         };
       }
     }
+    if (options.preferredAffixTag) {
+      const requiredEssence = (recipe.materials.find(mat => mat.itemId === 'affix_essence')?.count ?? 0) + 1;
+      const haveEssence = invMap.get('affix_essence') ?? 0;
+      if (haveEssence < requiredEssence) {
+        return { success: false, message: '需要額外的詞綴精華才能指定 affix tag 權重。' };
+      }
+    }
 
     // 消耗材料
     for (const mat of recipe.materials) {
       removeInventoryItem(characterId, mat.itemId, mat.count);
     }
+    const consumedQualities = consumeGatheredMaterialQualities(characterId, recipe.materials);
 
     // 計算成功率：base + (craftingLevel - recipeLevel) * 2，最高 100
     const bonus = Math.max(0, (levelInfo.level - recipe.level) * 2);
     const finalRate = Math.min(100, recipe.successRate + bonus);
-    const roll = Math.random() * 100;
+    const random = options.random ?? Math.random;
+    const roll = random() * 100;
     const craftSuccess = roll < finalRate;
 
     // 給予經驗（無論成敗）
@@ -696,19 +719,60 @@ export class CraftingManager {
       };
     }
 
+    const materialQualityBonus = calculateMaterialQualityBonus(consumedQualities);
+    const criticalRate = calculateCriticalCraftRate(levelInfo.level, recipe.level, materialQualityBonus);
+    const criticalSuccess = random() < criticalRate;
+    const outputCount = criticalSuccess && !toBaseEquipmentDef(ITEM_DEFS[result.itemId])
+      ? result.count + 1
+      : result.count;
+    const affixTags = options.preferredAffixTag ? [options.preferredAffixTag] : [];
+    if (options.preferredAffixTag) {
+      removeInventoryItem(characterId, 'affix_essence', 1);
+    }
+
     // 給予成品
-    addInventoryItem(characterId, result.itemId, result.count);
+    const baseEquipment = toBaseEquipmentDef(ITEM_DEFS[result.itemId]);
+    let itemInstanceId: string | undefined;
+    if (baseEquipment) {
+      const char = getCharacterById(characterId);
+      const instance = generateEquipmentInstance(baseEquipment, {
+        classId: char?.classId,
+        luk: char?.stats.luk,
+        sourceTags: ['crafted', recipe.category, ...(criticalSuccess ? ['critical_success'] : [])],
+        qualityBonus: materialQualityBonus + (criticalSuccess ? 0.1 : 0),
+        preferredAffixTags: affixTags,
+        preferredAffixWeight: 8,
+        random,
+      });
+      itemInstanceId = instance.itemInstanceId;
+      addInventoryItem(characterId, result.itemId, 1, false, instance);
+    } else {
+      addInventoryItem(characterId, result.itemId, outputCount);
+    }
 
     const resultName = ITEM_DEFS[result.itemId]?.name ?? result.itemId;
-    const countText = result.count > 1 ? ` x${result.count}` : '';
+    const countText = outputCount > 1 ? ` x${outputCount}` : '';
+    const criticalText = criticalSuccess ? '大成功！' : '製作成功！';
+    const qualityText = materialQualityBonus > 0
+      ? `\n高品質材料提升了製作品質機率（+${Math.round(materialQualityBonus * 100)}%）。`
+      : '';
+    const affixText = options.preferredAffixTag
+      ? `\n詞綴精華已提高 ${options.preferredAffixTag} 詞綴權重。`
+      : '';
+    const instanceText = itemInstanceId ? `\n裝備實例：${itemInstanceId}` : '';
 
     return {
       success: true,
       crafted: true,
       resultItemId: result.itemId,
+      itemInstanceId,
+      criticalSuccess,
       message:
-        `製作成功！獲得：${resultName}${countText}（成功率 ${finalRate}%）\n` +
-        `獲得 ${recipe.exp} ${CATEGORY_NAMES[recipe.category]}經驗。`,
+        `${criticalText}獲得：${resultName}${countText}（成功率 ${finalRate}%）` +
+        qualityText +
+        affixText +
+        instanceText +
+        `\n獲得 ${recipe.exp} ${CATEGORY_NAMES[recipe.category]}經驗。`,
     };
   }
 
@@ -812,4 +876,20 @@ export class CraftingManager {
     }
     return text;
   }
+}
+
+export function calculateMaterialQualityBonus(qualities: GatheringMaterialQuality[]): number {
+  const weights: Record<GatheringMaterialQuality, number> = {
+    rough: 0,
+    normal: 0,
+    fine: 0.025,
+    rare: 0.06,
+    perfect: 0.12,
+  };
+  return Math.min(0.25, qualities.reduce((sum, quality) => sum + weights[quality], 0));
+}
+
+export function calculateCriticalCraftRate(craftingLevel: number, recipeLevel: number, materialQualityBonus = 0): number {
+  const levelBonus = Math.max(0, craftingLevel - recipeLevel) * 0.002;
+  return Math.min(0.25, 0.05 + levelBonus + materialQualityBonus * 0.5);
 }

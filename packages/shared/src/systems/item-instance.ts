@@ -39,6 +39,9 @@ export interface GenerateEquipmentInstanceOptions {
   luk?: number;
   classId?: string;
   sourceTags?: string[];
+  qualityBonus?: number;
+  preferredAffixTags?: SkillTag[];
+  preferredAffixWeight?: number;
   random?: () => number;
 }
 
@@ -101,8 +104,8 @@ export function generateEquipmentInstance(
   options: GenerateEquipmentInstanceOptions = {},
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
-  const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random);
+  const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
+  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -121,8 +124,8 @@ export function reforgeEquipmentInstanceQuality(
   options: ReforgeQualityOptions = {},
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
-  const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random);
+  const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
+  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -159,16 +162,18 @@ export function rollItemQuality(
   luk = 0,
   sourceTags: string[] = [],
   random: () => number = Math.random,
+  qualityBonus = 0,
 ): ItemQuality {
   const lukBonus = Math.min(0.05, Math.max(0, luk) * 0.0005);
+  const materialBonus = Math.min(0.25, Math.max(0, qualityBonus));
   const canRollMythic = sourceTags.some(tag => tag === 'world_boss' || tag === 'season' || tag === 'endgame');
   const roll = random();
   const thresholds: [ItemQuality, number][] = [
-    ['mythic', canRollMythic ? 0.002 + lukBonus * 0.1 : 0],
-    ['legendary', 0.01 + lukBonus * 0.2],
-    ['epic', 0.04 + lukBonus * 0.4],
-    ['rare', 0.12 + lukBonus],
-    ['fine', 0.35 + lukBonus],
+    ['mythic', canRollMythic ? 0.002 + lukBonus * 0.1 + materialBonus * 0.02 : 0],
+    ['legendary', 0.01 + lukBonus * 0.2 + materialBonus * 0.05],
+    ['epic', 0.04 + lukBonus * 0.4 + materialBonus * 0.15],
+    ['rare', 0.12 + lukBonus + materialBonus * 0.35],
+    ['fine', 0.35 + lukBonus + materialBonus * 0.45],
   ];
 
   let cumulative = 0;
@@ -221,6 +226,8 @@ function rollAffixes(
   quality: ItemQuality,
   classId: string | undefined,
   random: () => number,
+  preferredAffixTags: SkillTag[] = [],
+  preferredAffixWeight = 4,
 ): AffixDef[] {
   const rule = QUALITY_RULES[quality];
   const [min, max] = rule.affixCount;
@@ -230,7 +237,7 @@ function rollAffixes(
   const pool = [...getEligibleAffixes(baseItem, quality, classId)];
   const selected: AffixDef[] = [];
   while (selected.length < count && pool.length > 0) {
-    const index = Math.floor(random() * pool.length);
+    const index = pickWeightedAffixIndex(pool, preferredAffixTags, preferredAffixWeight, random);
     const [candidate] = pool.splice(index, 1);
     selected.push(candidate);
   }
@@ -241,6 +248,28 @@ function rollAffixes(
   }
 
   return selected;
+}
+
+function pickWeightedAffixIndex(
+  pool: AffixDef[],
+  preferredAffixTags: SkillTag[],
+  preferredAffixWeight: number,
+  random: () => number,
+): number {
+  if (preferredAffixTags.length === 0) return Math.floor(random() * pool.length);
+  const preferred = new Set(preferredAffixTags);
+  const weights = pool.map(affix =>
+    (affix.skillTags ?? []).some(tag => preferred.has(tag))
+      ? Math.max(1, preferredAffixWeight)
+      : 1,
+  );
+  const total = weights.reduce((sum, weight) => sum + weight, 0);
+  let roll = random() * total;
+  for (let i = 0; i < weights.length; i++) {
+    roll -= weights[i];
+    if (roll <= 0) return i;
+  }
+  return pool.length - 1;
 }
 
 function tagsMatch(candidateTags: string[], requiredTags?: string[]): boolean {
