@@ -38,6 +38,7 @@ import { GuildManager } from './guild.js';
 import { DailyRewardManager } from './daily-reward.js';
 import { ensureEconomyStatsTables, recordGoldProduced } from './economy-stats.js';
 import { ensureCollectionLogTables } from './collection-log.js';
+import { ensureAppearanceTables } from './appearance.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
@@ -153,6 +154,7 @@ export function initGameSystems(): void {
   dailyRewardMgr.ensureTables();
   ensureEconomyStatsTables();
   ensureCollectionLogTables();
+  ensureAppearanceTables();
 
   // DungeonManager：載入首通紀錄
   dungeonMgr.init();

@@ -35,6 +35,13 @@ import {
   recordFishCodexCatch,
   recordMonsterCodexKill,
 } from '../game/collection-log.js';
+import {
+  ensureAppearanceTables,
+  equipAppearance,
+  getAppearanceCollection,
+  getEquippedAppearance,
+  unlockAppearance,
+} from '../game/appearance.js';
 
 // ============================================================
 //  Tests
@@ -984,6 +991,7 @@ describe('long-term collection logs', () => {
   beforeAll(() => {
     initDb();
     ensureCollectionLogTables();
+    ensureAppearanceTables();
   });
 
   afterAll(() => {
@@ -1017,6 +1025,18 @@ describe('long-term collection logs', () => {
     const fish = getFishCodex(characterId);
     expect(fish).toHaveLength(2);
     expect(fish.find(entry => entry.fishId === 'small_fish')?.catchCount).toBe(2);
+  });
+
+  it('tracks unlockable appearances and equips them by slot', () => {
+    const characterId = 'appearance-test';
+    insertTestCharacter(characterId, 'AppearanceTest', 0);
+    getDb().prepare('DELETE FROM character_appearances WHERE character_id = ?').run(characterId);
+    getDb().prepare('DELETE FROM character_appearance_loadout WHERE character_id = ?').run(characterId);
+
+    expect(getAppearanceCollection(characterId).find(entry => entry.id === 'portrait_adventurer')?.unlocked).toBe(true);
+    expect(unlockAppearance(characterId, 'aura_boss_slayer')).toBe(true);
+    expect(equipAppearance(characterId, 'aura_boss_slayer').ok).toBe(true);
+    expect(getEquippedAppearance(characterId).aura).toBe('aura_boss_slayer');
   });
 });
 

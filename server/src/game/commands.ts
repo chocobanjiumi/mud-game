@@ -51,6 +51,11 @@ import {
   getMonsterCodex,
   recordMonsterCodexKill,
 } from './collection-log.js';
+import {
+  equipAppearance,
+  getAppearanceCollection,
+  unlockAppearance,
+} from './appearance.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
@@ -219,6 +224,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'achievement': case 'ach': cmdAchievement(session, args); break;
     case 'title': cmdTitle(session); break;
     case 'codex': cmdCodex(session, args); break;
+    case 'appearance': case 'cosmetic': cmdAppearance(session, args); break;
     // 寵物系統
     case 'pet': cmdPet(session, args); break;
     case 'tame': cmdTame(session); break;
@@ -437,6 +443,7 @@ function updateExplorationAchievements(characterId: string, zoneId: string, room
     const zoneRoomCount = getRoomsByZone(zoneId).length;
     if (zoneRoomCount > 0 && zoneVisited >= zoneRoomCount) {
       achievementMgr.onZoneFullyExplored(characterId);
+      unlockAppearance(characterId, 'title_frame_cartographer');
     }
   } catch {
     // 探索成就失敗不影響房間顯示
@@ -766,6 +773,7 @@ function cmdAttack(session: WsSession, target: string): void {
       if (monster.def.isBoss) {
         questMgr.updateProgress(char.id, 'kill', 'boss');
         questMgr.updateProgress(char.id, 'defeat_boss', monster.monsterId);
+        unlockAppearance(char.id, 'aura_boss_slayer');
       }
 
       // 菁英怪擊殺：公會經驗 +30
@@ -4169,6 +4177,8 @@ function cmdHelp(session: WsSession, topic?: string): void {
         'codex monster        查看怪物圖鑑',
         'codex fish           查看釣魚圖鑑',
         'codex boss           查看 Boss 擊殺次數',
+        'appearance list      查看外觀收藏',
+        'appearance equip <ID> 裝備外觀',
       ],
     },
     pet: {
@@ -4352,6 +4362,32 @@ function cmdCodex(session: WsSession, args: string[]): void {
   }
 }
 
+function cmdAppearance(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase() ?? 'list';
+  if (sub === 'equip') {
+    const appearanceId = args[1];
+    if (!appearanceId) {
+      sendError(session.sessionId, '用法：appearance equip <外觀ID>');
+      return;
+    }
+    const result = equipAppearance(char.id, appearanceId);
+    if (result.ok) sendSystem(session.sessionId, result.message);
+    else sendError(session.sessionId, result.message);
+    return;
+  }
+
+  const entries = getAppearanceCollection(char.id);
+  const unlockedCount = entries.filter(entry => entry.unlocked).length;
+  sendSystem(session.sessionId, `═══ 外觀收藏 (${unlockedCount}/${entries.length}) ═══`);
+  for (const entry of entries) {
+    const status = entry.unlocked ? (entry.equipped ? '已裝備' : '已解鎖') : `未解鎖：${entry.source}`;
+    sendSystem(session.sessionId, `  [${status}] ${entry.id} — ${entry.name}（${entry.slot}）`);
+  }
+}
+
 // ─── 寵物指令 ───
 
 function cmdPet(session: WsSession, args: string[]): void {
@@ -4463,6 +4499,7 @@ function cmdTame(session: WsSession): void {
 
   if (result.ok) {
     sendSystem(session.sessionId, result.message);
+    unlockAppearance(char.id, 'portrait_pet_keeper');
     // 二轉任務：馴服寵物鉤子
     classQuest2Mgr.onPetTamed(char.id);
   } else {
@@ -4514,6 +4551,7 @@ function cmdEvent(session: WsSession, args: string[]): void {
       const result = worldEventMgr.joinEvent(char.id, current.id);
       if (result.ok) {
         questMgr.updateProgress(char.id, 'participate_world_boss', current.bossId ?? current.id);
+        unlockAppearance(char.id, 'aura_world_boss');
         sendSystem(session.sessionId, result.message);
       } else {
         sendError(session.sessionId, result.message);
