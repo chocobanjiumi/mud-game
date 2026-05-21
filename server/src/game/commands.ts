@@ -28,7 +28,7 @@ import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
   kingdomMgr, buildingMgr, warMgr, treasuryMgr, diplomacyMgr, craftingMgr,
-  auctionMgr, fishingMgr,
+  gatheringMgr, auctionMgr, fishingMgr,
   achievementMgr, petMgr, worldEventMgr,
   weatherMgr, mailMgr, friendMgr,
   tutorialMgr, autoBattleMgr,
@@ -200,6 +200,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'disassemble': cmdDisassemble(session, args); break;
     // 製作系統
     case 'craft': cmdCraft(session, args); break;
+    case 'gather': cmdGather(session, args); break;
     // 拍賣系統
     case 'auction': case 'ah': cmdAuction(session, args); break;
     // 釣魚系統
@@ -3664,6 +3665,41 @@ function cmdCraft(session: WsSession, args: string[]): void {
         '  craft info <配方ID>     — 查看配方詳情\n' +
         '  craft level             — 查看製作等級',
       );
+  }
+}
+
+// ─── 採集系統 ───
+
+function cmdGather(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法採集！');
+    return;
+  }
+
+  const room = getRoom(char.roomId);
+  if (!room) {
+    sendError(session.sessionId, '目前位置不存在。');
+    return;
+  }
+
+  const zone = getZone(room.zone);
+  const nodeId = args[0];
+  const result = gatheringMgr.gather(char.id, room, zone, nodeId, char.level);
+  if (result.ok) {
+    sendSystem(session.sessionId, result.message);
+    if (result.gathered) {
+      questMgr.updateProgress(char.id, 'gather_resource', result.gathered.itemId);
+    }
+  } else {
+    const available = gatheringMgr.getAvailableNodes(room, zone, char.level);
+    if (available.length > 0) {
+      sendError(session.sessionId, `${result.message}\n可用：${available.map(node => node.id).join(', ')}`);
+    } else {
+      sendError(session.sessionId, result.message);
+    }
   }
 }
 

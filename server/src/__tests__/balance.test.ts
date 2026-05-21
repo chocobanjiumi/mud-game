@@ -37,6 +37,8 @@ import {
 } from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
+import { GatheringManager } from '../game/gathering.js';
+import { ROOMS, ZONES } from '../data/rooms.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================
@@ -801,6 +803,25 @@ describe('Balance: Gathering definitions', () => {
         expect(nodes[i].levelMin, `${skill}:${nodes[i].id}`).toBe(nodes[i - 1].levelMax + 1);
       }
     }
+  });
+
+  it('makes every gathering skill available through room and zone tags', () => {
+    const gathering = new GatheringManager();
+    const availableSkills = new Set(
+      Object.values(ROOMS).flatMap(room => {
+        const zone = ZONES[room.zone];
+        return gathering.getAvailableNodes(room, zone, 60).map(node => node.skill);
+      }),
+    );
+
+    expect(availableSkills).toEqual(new Set([
+      'mining',
+      'herbalism',
+      'logging',
+      'skinning',
+      'fishing',
+      'archaeology',
+    ]));
   });
 });
 
