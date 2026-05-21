@@ -74,6 +74,27 @@ export interface ZonePortal {
   unlockByDefault?: boolean;
 }
 
+export type TravelNodeKind = 'zone_entrance' | 'deep_shortcut' | 'kingdom_route' | 'danger_evac';
+export type TravelNodeCost =
+  | { type: 'gold'; amount?: number; multiplier?: number }
+  | { type: 'kingdom_treasury'; amount: number }
+  | { type: 'item'; itemId: string; quantity: number };
+
+export interface TravelNodeDef {
+  id: string;
+  name: string;
+  zoneId: ZoneId;
+  roomId: string;
+  kind: TravelNodeKind;
+  network: 'public' | 'kingdom' | 'dungeon' | 'pvp_evac';
+  unlockByDefault?: boolean;
+  unlock?: ZoneUnlock;
+  cost: TravelNodeCost;
+  cooldownSeconds: number;
+  requiresActivation?: boolean;
+  activateRoomId?: string;
+}
+
 export interface GroundItem {
   itemId: string;
   description: string;

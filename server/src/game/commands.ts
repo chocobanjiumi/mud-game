@@ -13,6 +13,7 @@ import {
   getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
   isZoneUnlocked, unlockPortal, unlockZone,
   getDiscoveryCount, hasDiscovery, recordDiscovery,
+  getMemberKingdom, getKingdomById, updateKingdom,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -22,7 +23,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId, RoomDef, RoomExit, StatusEffectType, ZoneDef } from '@game/shared';
+import type { Character, ClassId, RoomDef, RoomExit, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -40,6 +41,7 @@ import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom, getRoomsByZone, getZone, ZONES } from '../data/rooms.js';
+import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
@@ -52,6 +54,7 @@ import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, G
 /** 記錄已被撿走的地上物品，key = `${roomId}:${itemId}`, value = 重生時間 */
 const pickedUpItems = new Map<string, number>();
 const GROUND_ITEM_RESPAWN_MS = 10 * 60 * 1000; // 10 分鐘
+const travelCooldowns = new Map<string, number>();
 
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
 function getAvailableGroundItems(roomId: string): GroundItem[] {
@@ -1748,7 +1751,25 @@ function cmdActivate(session: WsSession, args: string[]): void {
 
   const room = getRoom(char.roomId);
   const zone = room ? getZone(room.zone) : undefined;
-  if (!room || !zone?.portal) {
+  if (!room || !zone) {
+    sendError(session.sessionId, '這裡沒有可啟用的傳送陣。');
+    return;
+  }
+
+  const localNode = getTravelNodesByActivationRoom(room.id)[0];
+  if (localNode) {
+    const access = canAccessTravelNode(char, localNode, true);
+    if (!access.ok) {
+      sendError(session.sessionId, access.message);
+      return;
+    }
+    unlockZone(char.id, localNode.zoneId, 'travel_node');
+    unlockPortal(char.id, localNode.id, localNode.zoneId);
+    sendSystem(session.sessionId, `已啟用 ${localNode.name}。之後可用 travel ${localNode.id} 傳送。`);
+    return;
+  }
+
+  if (!zone.portal) {
     sendError(session.sessionId, '這裡沒有可啟用的傳送陣。');
     return;
   }
@@ -1771,13 +1792,14 @@ function cmdPortals(session: WsSession): void {
   const unlocked = new Map(getUnlockedPortals(char.id).map(portal => [portal.portalId, portal.zoneId]));
   const lines: string[] = [];
 
-  for (const zone of Object.values(ZONES)) {
-    if (!zone.portal) continue;
-    const isUnlocked = zone.portal.unlockByDefault || unlocked.has(zone.portal.id) || isPortalUnlocked(char.id, zone.portal.id);
-    const access = canAccessZone(char, zone.id, false);
+  for (const node of getTravelNodes()) {
+    const zone = getZone(node.zoneId);
+    if (!zone) continue;
+    const isUnlocked = node.unlockByDefault || unlocked.has(node.id) || isPortalUnlocked(char.id, node.id);
+    const access = canAccessTravelNode(char, node, false);
     const state = isUnlocked ? '已解鎖' : access.ok ? '可啟用' : '未解鎖';
-    const cost = getPortalCost(char, zone);
-    lines.push(`${state} ${zone.name} (${zone.id}) - ${zone.portal.name}，費用 ${cost} 金幣，網路 ${zone.portal.network}`);
+    const cost = formatTravelCost(char, node);
+    lines.push(`${state} ${zone.name} (${node.id}) - ${node.name}，費用 ${cost}，冷卻 ${node.cooldownSeconds} 秒，網路 ${node.network}`);
   }
 
   if (lines.length === 0) {
@@ -1801,43 +1823,55 @@ function cmdTravel(session: WsSession, target: string): void {
     return;
   }
 
-  const zone = findPortalZone(target);
-  if (!zone?.portal) {
+  const node = findTravelNode(target);
+  if (!node) {
     sendError(session.sessionId, `找不到傳送點「${target}」。可用 portals 查看列表。`);
     return;
   }
 
-  const access = canAccessZone(char, zone.id);
+  const access = canAccessTravelNode(char, node);
   if (!access.ok) {
     sendError(session.sessionId, access.message);
     return;
   }
 
-  const unlocked = zone.portal.unlockByDefault || isPortalUnlocked(char.id, zone.portal.id);
+  const unlocked = node.unlockByDefault || isPortalUnlocked(char.id, node.id);
   if (!unlocked) {
-    sendError(session.sessionId, `${zone.portal.name} 尚未啟用。請先到當地使用 activate portal。`);
+    sendError(session.sessionId, `${node.name} 尚未啟用。請先到當地使用 activate portal。`);
     return;
   }
 
-  const cost = getPortalCost(char, zone);
-  if (char.gold < cost) {
-    sendError(session.sessionId, `金幣不足。傳送到 ${zone.name} 需要 ${cost} 金幣。`);
+  const cooldown = getTravelCooldownRemaining(char.id);
+  if (cooldown > 0) {
+    sendError(session.sessionId, `傳送冷卻中，還需 ${cooldown} 秒。`);
     return;
   }
 
-  const destination = zone.rooms.map(roomId => getRoom(roomId)).find(Boolean);
+  const originCheck = canTravelFromCurrentRoom(char, node);
+  if (!originCheck.ok) {
+    sendError(session.sessionId, originCheck.message);
+    return;
+  }
+
+  const costResult = payTravelCost(char, node);
+  if (!costResult.ok) {
+    sendError(session.sessionId, costResult.message);
+    return;
+  }
+
+  const destination = getRoom(node.roomId);
   if (!destination) {
-    sendError(session.sessionId, `${zone.name} 尚未設定可傳送的入口房間。`);
+    sendError(session.sessionId, `${node.name} 尚未設定可傳送的目的房間。`);
     return;
   }
 
   const previousRoom = char.roomId;
-  char.gold -= cost;
   char.roomId = destination.id;
-  unlockZone(char.id, zone.id, 'travel');
+  unlockZone(char.id, node.zoneId, 'travel');
   world.placePlayer(char.id, destination.id);
+  setTravelCooldown(char.id, node.cooldownSeconds);
   saveCharacter(char);
-  sendNarrative(session.sessionId, `你啟動 ${zone.portal.name}，從 ${previousRoom} 傳送到 ${destination.name}。花費 ${cost} 金幣。`);
+  sendNarrative(session.sessionId, `你啟動 ${node.name}，從 ${previousRoom} 傳送到 ${destination.name}。${costResult.message}`);
   cmdLook(session);
 }
 
@@ -4726,10 +4760,146 @@ function findPortalZone(query: string): ZoneDef | undefined {
 }
 
 function getPortalCost(char: Character, zone: ZoneDef): number {
-  if (!zone.portal) return 0;
+  if (!zone.portal) return 10 + zone.levelRange[0] * 3;
   if (zone.portal.cost === 0) return 0;
   if (char.level <= 10 && zone.levelRange[0] <= 10) return Math.min(zone.portal.cost, 5);
-  return zone.portal.cost;
+  return 10 + zone.levelRange[0] * 3;
+}
+
+function findTravelNode(query: string): TravelNodeDef | undefined {
+  const normalized = normalizeCommandTarget(query);
+  return getTravelNodes().find(node => {
+    const zone = getZone(node.zoneId);
+    return node.id.toLowerCase() === normalized
+      || node.name.toLowerCase() === normalized
+      || zone?.id.toLowerCase() === normalized
+      || zone?.name.toLowerCase() === normalized;
+  });
+}
+
+function getTravelNodesByActivationRoom(roomId: string): TravelNodeDef[] {
+  return getTravelNodes().filter(node => node.requiresActivation && node.activateRoomId === roomId);
+}
+
+function canAccessTravelNode(
+  char: Character,
+  node: TravelNodeDef,
+  grantWhenRequirementsMet = true,
+): { ok: true } | { ok: false; message: string } {
+  const zoneAccess = canAccessZone(char, node.zoneId, grantWhenRequirementsMet);
+  if (!zoneAccess.ok) return zoneAccess;
+
+  if (node.unlock?.requiredLevel && char.level < node.unlock.requiredLevel) {
+    return { ok: false, message: `${node.name} 需要等級 ${node.unlock.requiredLevel} 才能使用。` };
+  }
+  if (node.unlock?.requiredQuestId && !isQuestCompleted(char.id, node.unlock.requiredQuestId)) {
+    return { ok: false, message: `${node.name} 需要先完成任務 ${node.unlock.requiredQuestId}。` };
+  }
+  if (node.unlock?.requiredItemId && !getInventory(char.id).some(item => item.itemId === node.unlock?.requiredItemId && item.quantity > 0)) {
+    const itemName = ITEM_DEFS[node.unlock.requiredItemId]?.name ?? node.unlock.requiredItemId;
+    return { ok: false, message: `${node.name} 需要持有 ${itemName}。` };
+  }
+
+  return { ok: true };
+}
+
+function getTravelCostAmount(char: Character, node: TravelNodeDef): number {
+  const zone = getZone(node.zoneId);
+  if (!zone) return 0;
+  const base = getPortalCost(char, zone);
+  if (node.cost.type === 'gold') {
+    if (node.cost.amount !== undefined) {
+      if (char.level <= 10 && zone.levelRange[0] <= 10) return Math.min(node.cost.amount, 5);
+      return node.kind === 'zone_entrance' ? 10 + zone.levelRange[0] * 3 : node.cost.amount;
+    }
+    return Math.ceil(base * (node.cost.multiplier ?? 1));
+  }
+  if (node.cost.type === 'kingdom_treasury') return node.cost.amount;
+  if (node.cost.type === 'item') return node.cost.quantity;
+  return base;
+}
+
+function formatTravelCost(char: Character, node: TravelNodeDef): string {
+  const amount = getTravelCostAmount(char, node);
+  if (node.cost.type === 'kingdom_treasury') return `${amount} 王國國庫金幣`;
+  if (node.cost.type === 'item') {
+    const itemName = ITEM_DEFS[node.cost.itemId]?.name ?? node.cost.itemId;
+    return `${amount} 個 ${itemName}`;
+  }
+  return `${amount} 金幣`;
+}
+
+function payTravelCost(char: Character, node: TravelNodeDef): { ok: true; message: string } | { ok: false; message: string } {
+  const amount = getTravelCostAmount(char, node);
+  if (amount <= 0) return { ok: true, message: '未花費金幣。' };
+
+  if (node.cost.type === 'kingdom_treasury') {
+    const member = getMemberKingdom(char.id);
+    if (!member) return { ok: false, message: '你不是王國成員，無法使用王國交通。' };
+    const kingdom = getKingdomById(member.kingdom_id);
+    if (!kingdom || kingdom.treasury_gold < amount) {
+      return { ok: false, message: `王國國庫不足。需要 ${amount} 金幣。` };
+    }
+    updateKingdom(member.kingdom_id, { treasury_gold: kingdom.treasury_gold - amount });
+    return { ok: true, message: `消耗王國國庫 ${amount} 金幣。` };
+  }
+
+  if (node.cost.type === 'item') {
+    const itemCost = node.cost;
+    const hasItem = getInventory(char.id).some(item => item.itemId === itemCost.itemId && item.quantity >= amount);
+    if (!hasItem) {
+      const itemName = ITEM_DEFS[itemCost.itemId]?.name ?? itemCost.itemId;
+      return { ok: false, message: `缺少 ${amount} 個 ${itemName}。` };
+    }
+    removeInventoryItem(char.id, itemCost.itemId, amount);
+    const itemName = ITEM_DEFS[itemCost.itemId]?.name ?? itemCost.itemId;
+    return { ok: true, message: `消耗 ${amount} 個 ${itemName}。` };
+  }
+
+  if (char.gold < amount) {
+    return { ok: false, message: `金幣不足。需要 ${amount} 金幣。` };
+  }
+  char.gold -= amount;
+  return { ok: true, message: `花費 ${amount} 金幣。` };
+}
+
+function canTravelFromCurrentRoom(char: Character, node: TravelNodeDef): { ok: true } | { ok: false; message: string } {
+  const room = getRoom(char.roomId);
+  const zone = room ? getZone(room.zone) : undefined;
+  if (!room || !zone) return { ok: true };
+
+  const isPvpDangerZone = zone.pvpMode === 'open' || zone.pvpMode === 'faction' || zone.pvpMode === 'kingdom_war';
+  if (!isPvpDangerZone) return { ok: true };
+
+  const safeEntryRoom = zone.rooms[0];
+  const safeExit = room.id === safeEntryRoom || node.kind === 'danger_evac';
+  if (safeExit) return { ok: true };
+
+  const contestedRoom = zone.tags.includes('resource_war')
+    || zone.tags.includes('world_boss')
+    || !!room.monsters?.length
+    || !!room.groundItems?.length;
+  if (contestedRoom) {
+    return { ok: false, message: 'PvP 爭奪、資源或 Boss 區域不能直接傳送離開。請撤回安全入口或使用危險撤離點。' };
+  }
+
+  return { ok: true };
+}
+
+function getTravelCooldownRemaining(characterId: string): number {
+  const readyAt = travelCooldowns.get(characterId);
+  if (!readyAt) return 0;
+  const remainingMs = readyAt - Date.now();
+  if (remainingMs <= 0) {
+    travelCooldowns.delete(characterId);
+    return 0;
+  }
+  return Math.ceil(remainingMs / 1000);
+}
+
+function setTravelCooldown(characterId: string, cooldownSeconds: number): void {
+  if (cooldownSeconds <= 0) return;
+  travelCooldowns.set(characterId, Date.now() + cooldownSeconds * 1000);
 }
 
 function normalizeCommandTarget(target: string): string {
