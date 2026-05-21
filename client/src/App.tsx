@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback } from 'react';
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from './stores/gameStore';
 import { useWebSocket } from './hooks/useWebSocket';
@@ -23,6 +23,9 @@ export default function App() {
     (userId: string, accessToken?: string) => {
       if (accessToken) {
         useGameStore.getState().setAccessToken(accessToken);
+      } else {
+        useGameStore.getState().setAccessToken(null);
+        useGameStore.getState().setArinovaUser({ id: userId, name: userId });
       }
       // Wait for WS to be connected before sending login
       const doLogin = () => {
@@ -74,18 +77,6 @@ export default function App() {
     },
     [sendCommand, createCharacter],
   );
-
-  // Show agent select modal after login success for authenticated users
-  const prevScreenRef = useRef(screen);
-  useEffect(() => {
-    if (prevScreenRef.current === 'login' && screen === 'game') {
-      const state = useGameStore.getState();
-      if (state.accessToken && !state.selectedAgent) {
-        state.setShowAgentSelect(true);
-      }
-    }
-    prevScreenRef.current = screen;
-  }, [screen]);
 
   if (screen === 'login') {
     return <LoginScreen onLogin={handleLogin} />;

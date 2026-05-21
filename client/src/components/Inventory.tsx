@@ -24,7 +24,7 @@ export default function Inventory() {
     : [];
 
   return (
-    <div className="bg-bg-secondary border-l border-border-dim w-56 flex flex-col panel-enter">
+    <div className="bg-bg-secondary border-b border-border-dim w-full flex flex-col panel-enter">
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-dim">
         <span className="text-xs font-bold text-text-terminal">背包</span>

@@ -19,6 +19,7 @@ import type {
   TransactionHistoryPayload,
   BalanceUpdatePayload,
   LeaderboardDataPayload,
+  Character,
 } from '@game/shared';
 
 const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
@@ -131,6 +132,10 @@ export function useWebSocket() {
       }
 
       case 'login_success': {
+        const character = p.character as unknown as Character | undefined;
+        if (character) {
+          s.setCharacter(character);
+        }
         s.addTerminalLine('登入成功！歡迎來到冒險世界。', 'system');
         s.setScreen('game');
         break;

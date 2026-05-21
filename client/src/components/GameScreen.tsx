@@ -10,9 +10,6 @@ import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
 import SkillBar from './SkillBar';
 import ShopModal from './ShopModal';
-import AgentPanel from './AgentPanel';
-import AgentMiniBadge from './AgentMiniBadge';
-import AgentSelectModal from './AgentSelectModal';
 import QuestLog from './QuestLog';
 import CharacterSheet from './CharacterSheet';
 import ItemTooltip from './ItemTooltip';
@@ -37,11 +34,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const toggleParty = useGameStore((s) => s.toggleParty);
   const inCombat = useGameStore((s) => s.inCombat);
   const shopOpen = useGameStore((s) => s.shopOpen);
-  const selectedAgent = useGameStore((s) => s.selectedAgent);
-  const agentPanelOpen = useGameStore((s) => s.agentPanelOpen);
-  const toggleAgentPanel = useGameStore((s) => s.toggleAgentPanel);
-  const setShowAgentSelect = useGameStore((s) => s.setShowAgentSelect);
-  const accessToken = useGameStore((s) => s.accessToken);
   const toggleQuestLog = useGameStore((s) => s.toggleQuestLog);
   const questLogOpen = useGameStore((s) => s.questLogOpen);
   const toggleCharacterSheet = useGameStore((s) => s.toggleCharacterSheet);
@@ -81,13 +73,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (e.key === 'm' || e.key === 'M') {
         toggleWorldMap();
       }
-      if (e.key === 'j' || e.key === 'J') {
-        if (selectedAgent) {
-          toggleAgentPanel();
-        } else {
-          setShowAgentSelect(true);
-        }
-      }
     };
     const handleOpenShopEvent = () => {
       if (!shopOpen) onOpenShop();
@@ -104,7 +89,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       window.removeEventListener('open-shop', handleOpenShopEvent);
       window.removeEventListener('terminal-command', handleTerminalCommand);
     };
-  }, [shopOpen, onOpenShop, onCommand, selectedAgent, toggleAgentPanel, accessToken, setShowAgentSelect, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
+  }, [shopOpen, onOpenShop, onCommand, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
@@ -124,9 +109,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         <div className="w-44 shrink-0 flex flex-col gap-2 p-2 border-r border-border-dim overflow-y-auto">
           <MiniMap />
 
-          {/* Room image */}
-          <RoomImage />
-
           {/* Quick action buttons */}
           <div className="space-y-1">
             <div className="text-[10px] text-text-dim uppercase tracking-wider px-1">
@@ -141,18 +123,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
             <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={toggleWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
-            <QuickButton
-              label="AI夥伴"
-              shortcut="J"
-              active={agentPanelOpen}
-              onClick={() => {
-                if (selectedAgent) {
-                  toggleAgentPanel();
-                } else {
-                  setShowAgentSelect(true);
-                }
-              }}
-            />
             <QuickButton label="查看" onClick={() => onCommand('look')} />
             <QuickButton label="狀態" onClick={() => onCommand('status')} />
             <QuickButton label="地圖" onClick={() => onCommand('map')} />
@@ -189,19 +159,21 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           <Terminal />
           <SkillBar onUseSkill={handleUseSkill} />
           <CommandInput onSubmit={onCommand} />
-          <AgentMiniBadge />
         </div>
 
-        {/* Right sidebar: Inventory / Party / Chat / Agent panels */}
-        {!agentPanelOpen && <Inventory />}
-        {!agentPanelOpen && <PartyPanel />}
-        {!agentPanelOpen && <ChatPanel onSendChat={onSendChat} />}
-        <AgentPanel />
+        {/* Right sidebar: large room image + secondary panels */}
+        <div className="w-[360px] xl:w-[420px] shrink-0 flex flex-col bg-bg-secondary border-l border-border-dim min-h-0">
+          <RoomImage />
+          <div className="flex-1 min-h-0 overflow-y-auto">
+            <Inventory />
+            <PartyPanel />
+            <ChatPanel onSendChat={onSendChat} />
+          </div>
+        </div>
       </div>
 
       {/* Modals / Overlays */}
       <ShopModal onPurchase={onPurchase} onGetTransactions={onGetTransactions} />
-      <AgentSelectModal />
       <QuestLog />
       <CharacterSheet />
       <LeaderboardPanel />

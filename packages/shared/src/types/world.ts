@@ -1,6 +1,7 @@
 // 世界型別定義
 
 import type { GuardianHints } from './player.js';
+import type { ElementType } from './skill.js';
 
 export type Direction = 'north' | 'south' | 'east' | 'west' | 'up' | 'down';
 
@@ -12,7 +13,66 @@ export interface RoomExit {
   keyItemId?: string;
 }
 
-export type ZoneId = 'starter_village' | 'plains' | 'dark_forest' | 'crystal_cave' | 'lakeside_town';
+export type ZoneId = string;
+
+export type ZoneType =
+  | 'town'
+  | 'wilds'
+  | 'dungeon_entrance'
+  | 'resource'
+  | 'pvp'
+  | 'kingdom'
+  | 'endgame';
+
+export type WorldRegion =
+  | 'central'
+  | 'east'
+  | 'west'
+  | 'north'
+  | 'south'
+  | 'underground'
+  | 'abyss'
+  | 'celestial';
+
+export type ZoneTag =
+  | 'safe'
+  | 'newbie'
+  | 'high_density_spawns'
+  | 'elite_patrols'
+  | 'world_boss'
+  | 'gathering'
+  | 'fishing'
+  | 'mining'
+  | 'quest_hub'
+  | 'trade_hub'
+  | 'portal_hub'
+  | 'crafting_hub'
+  | 'class_hub'
+  | 'dungeon_hub'
+  | 'pvp'
+  | 'kingdom_war'
+  | 'resource_war'
+  | 'solo'
+  | 'party'
+  | 'endgame';
+
+export type PvpMode = 'safe' | 'duel_only' | 'open' | 'faction' | 'kingdom_war';
+export type DeathPenalty = 'none' | 'durability' | 'gold' | 'loot';
+
+export interface ZoneUnlock {
+  requiredLevel?: number;
+  requiredQuestId?: string;
+  requiredItemId?: string;
+  requiredZoneId?: ZoneId;
+}
+
+export interface ZonePortal {
+  id: string;
+  name: string;
+  cost: number;
+  network: 'public' | 'kingdom' | 'dungeon';
+  unlockByDefault?: boolean;
+}
 
 export interface GroundItem {
   itemId: string;
@@ -24,6 +84,8 @@ export interface RoomDef {
   name: string; // 中文名
   zone: ZoneId;
   description: string; // 中文描述
+  image?: string;
+  imagePrompt?: string;
   exits: RoomExit[];
   monsters?: SpawnPoint[];
   npcs?: string[];
@@ -47,6 +109,16 @@ export interface ZoneDef {
   description: string;
   levelRange: [number, number];
   rooms: string[];
+  type: ZoneType;
+  region: WorldRegion;
+  tags: ZoneTag[];
+  pvpMode: PvpMode;
+  deathPenalty: DeathPenalty;
+  dangerLevel: number;
+  recommendedPartySize: [number, number];
+  primaryElements: ElementType[];
+  unlock?: ZoneUnlock;
+  portal?: ZonePortal;
 }
 
 export interface NpcDef {

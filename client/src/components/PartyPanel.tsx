@@ -29,7 +29,7 @@ export default function PartyPanel() {
   if (!showParty) return null;
 
   return (
-    <div className="bg-bg-secondary border-l border-border-dim w-52 flex flex-col panel-enter">
+    <div className="bg-bg-secondary border-b border-border-dim w-full flex flex-col panel-enter">
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-dim">
         <span className="text-xs font-bold text-text-terminal">隊伍</span>

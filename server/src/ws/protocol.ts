@@ -208,9 +208,26 @@ async function handleLogin(
       // Token balance fetch failed — non-critical
     }
   } else {
-    // 無 token 且無已驗證 session — 拒絕連線
-    sendError(session.sessionId, '請使用 Arinova 帳號登入');
-    return;
+    // 本地測試登入：未帶 Arinova token 時，使用 client 傳入的帳號建立隔離的 local user id。
+    const rawUserId = typeof payload.userId === 'string' ? payload.userId.trim() : '';
+    if (!rawUserId) {
+      sendError(session.sessionId, '請輸入帳號。');
+      return;
+    }
+
+    const normalizedUserId = rawUserId
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}_-]/gu, '_')
+      .slice(0, 64);
+
+    if (normalizedUserId.length < 2) {
+      sendError(session.sessionId, '帳號至少需要 2 個有效字元。');
+      return;
+    }
+
+    verifiedUserId = `local:${normalizedUserId}`;
+    session.userId = verifiedUserId;
+    console.log(`[Auth] 本地測試登入: ${rawUserId} -> ${verifiedUserId}`);
   }
 
   // 如果指定了角色 ID，直接載入
