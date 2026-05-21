@@ -40,6 +40,10 @@ export interface GenerateEquipmentInstanceOptions {
   random?: () => number;
 }
 
+export interface ReforgeQualityOptions extends GenerateEquipmentInstanceOptions {
+  itemInstanceId?: string;
+}
+
 export interface EquipmentDropRule {
   source: string;
   levelMin: number;
@@ -103,6 +107,26 @@ export function generateEquipmentInstance(
 
   return {
     itemInstanceId: `${baseItem.id}_${quality}_${Math.floor(random() * 1_000_000).toString(36)}`,
+    baseItemId: baseItem.id,
+    quality,
+    affixes,
+    fixedEffects,
+  };
+}
+
+export function reforgeEquipmentInstanceQuality(
+  baseItem: BaseEquipmentDef,
+  options: ReforgeQualityOptions = {},
+): EquipmentItemInstance {
+  const random = options.random ?? Math.random;
+  const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random);
+  const affixes = rollAffixes(baseItem, quality, options.classId, random);
+  const fixedEffects = quality === 'legendary' || quality === 'mythic'
+    ? [`${quality}_core_${baseItem.equipSlot}`]
+    : [];
+
+  return {
+    itemInstanceId: options.itemInstanceId ?? `${baseItem.id}_${quality}_${Math.floor(random() * 1_000_000).toString(36)}`,
     baseItemId: baseItem.id,
     quality,
     affixes,

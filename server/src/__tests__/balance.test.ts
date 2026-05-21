@@ -20,6 +20,7 @@ import {
   QUALITY_RULES,
   generateEquipmentInstance,
   getEligibleAffixes,
+  reforgeEquipmentInstanceQuality,
   rerollAffix,
   rollEquipmentDrop,
   rollItemQuality,
@@ -526,6 +527,23 @@ describe('Balance: Item instance generation', () => {
     expect(rerolled[1].id).toBe('combat_atk_t1');
     expect(rerolled[0].id).not.toBe('numeric_str_t1');
     expect(new Set(rerolled.map(affix => affix.id)).size).toBe(2);
+  });
+
+  it('reforges quality while keeping the same item instance id', () => {
+    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const reforged = reforgeEquipmentInstanceQuality(base, {
+      itemInstanceId: 'test_reforge_instance',
+      classId: 'swordsman',
+      sourceTags: ['world_boss'],
+      random: vi.fn()
+        .mockReturnValueOnce(0.005)
+        .mockReturnValue(0),
+    });
+
+    expect(reforged.itemInstanceId).toBe('test_reforge_instance');
+    expect(reforged.quality).toBe('legendary');
+    expect(reforged.affixes.length).toBeGreaterThanOrEqual(3);
+    expect(reforged.fixedEffects).toEqual(['legendary_core_weapon']);
   });
 
   it('selects equipment drops by source, level, slot, source tags, and zone tags', () => {

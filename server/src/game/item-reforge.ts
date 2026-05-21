@@ -2,6 +2,7 @@
 
 import {
   ITEM_DEFS,
+  reforgeEquipmentInstanceQuality,
   rerollAffix,
   toBaseEquipmentDef,
 } from '@game/shared';
@@ -13,6 +14,11 @@ export interface RerollAffixResult {
 }
 
 export interface LockAffixResult {
+  success: boolean;
+  message: string;
+}
+
+export interface ReforgeQualityResult {
   success: boolean;
   message: string;
 }
@@ -93,5 +99,41 @@ export function lockItemAffix(characterId: string, itemInstanceId: string, affix
   return {
     success: true,
     message: `已鎖定「${itemName}」第 ${affixNumber} 條詞綴：${affixes[affixIndex].name}。`,
+  };
+}
+
+export function reforgeItemQuality(characterId: string, itemInstanceId: string): ReforgeQualityResult {
+  const char = getCharacterById(characterId);
+  if (!char) return { success: false, message: '角色不存在。' };
+
+  const inventoryItem = getInventory(characterId).find(item => item.itemInstanceId === itemInstanceId);
+  if (!inventoryItem) return { success: false, message: '背包中找不到此 item instance。' };
+
+  const instance = getStoredItemInstance(itemInstanceId);
+  if (!instance) return { success: false, message: '找不到此裝備實例資料。' };
+
+  const baseItem = toBaseEquipmentDef(ITEM_DEFS[instance.baseItemId]);
+  if (!baseItem) return { success: false, message: '此 item instance 不是可重鑄品質的裝備。' };
+
+  const reforged = reforgeEquipmentInstanceQuality(baseItem, {
+    itemInstanceId,
+    classId: char.classId,
+    luk: char.stats.luk,
+    sourceTags: baseItem.sourceTags,
+  });
+
+  upsertItemInstance({
+    itemInstanceId,
+    baseItemId: instance.baseItemId,
+    quality: reforged.quality,
+    affixes: reforged.affixes,
+    fixedEffects: reforged.fixedEffects,
+    lockedAffixIndexes: [],
+  });
+
+  const itemName = ITEM_DEFS[instance.baseItemId]?.name ?? instance.baseItemId;
+  return {
+    success: true,
+    message: `已重鑄「${itemName}」品質：${instance.quality} → ${reforged.quality}。`,
   };
 }

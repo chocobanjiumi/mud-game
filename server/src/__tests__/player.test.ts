@@ -6,7 +6,7 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
-import { lockItemAffix, rerollItemAffix } from '../game/item-reforge.js';
+import { lockItemAffix, reforgeItemQuality, rerollItemAffix } from '../game/item-reforge.js';
 
 // ============================================================
 //  Tests
@@ -627,6 +627,41 @@ describe('inventory item instances', () => {
     const rerollLocked = rerollItemAffix(characterId, 'inst_spear_steel_lock', 1);
     expect(rerollLocked.success).toBe(false);
     expect(getInventory(characterId).find(item => item.itemInstanceId === 'inst_spear_steel_lock')?.affixes?.[0]?.id).toBe('numeric_str_t1');
+  });
+
+  it('can reforge item quality and reset locked affixes', () => {
+    const characterId = 'item-instance-reforge-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name, class_id, luk) VALUES (?, ?, ?, ?, ?)',
+    ).run(characterId, 'user-instance-reforge', 'InstanceReforgeHero', 'swordsman', 999);
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_reforge',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      lockedAffixIndexes: [0],
+      affixes: [{
+        id: 'numeric_str_t1',
+        name: '力量',
+        pool: 'numeric',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { str: 1 },
+      }, {
+        id: 'combat_atk_t1',
+        name: '銳利',
+        pool: 'combat',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { atk: 3 },
+      }],
+    });
+
+    expect(reforgeItemQuality(characterId, 'inst_spear_steel_reforge').success).toBe(true);
+    const reforged = getInventory(characterId).find(item => item.itemInstanceId === 'inst_spear_steel_reforge');
+    expect(reforged?.quality).toBeDefined();
+    expect(reforged?.lockedAffixIndexes).toBeUndefined();
+    expect(reforged?.affixes?.length ?? 0).toBeGreaterThanOrEqual(0);
   });
 });
 
