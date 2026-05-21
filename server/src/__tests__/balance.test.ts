@@ -15,7 +15,16 @@ import {
 import { EffectEngine } from '../game/effects.js';
 import { LootCalculator } from '../game/loot.js';
 import { expRequiredForLevel } from '../game/player.js';
-import { ITEM_DEFS, SKILL_DEFS } from '@game/shared';
+import {
+  AFFIX_POOLS,
+  QUALITY_RULES,
+  generateEquipmentInstance,
+  getEligibleAffixes,
+  rollItemQuality,
+  toBaseEquipmentDef,
+  ITEM_DEFS,
+  SKILL_DEFS,
+} from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import type { CombatStats } from '../game/damage.js';
 
@@ -448,6 +457,57 @@ describe('Balance: Gold economy', () => {
     const slots = new Set(equipment.map(item => item.equipSlot));
 
     expect(slots.size).toBeGreaterThanOrEqual(4);
+  });
+});
+
+describe('Balance: Item instance generation', () => {
+  it('defines quality rules for every quality tier', () => {
+    expect(QUALITY_RULES.normal.affixCount).toEqual([0, 0]);
+    expect(QUALITY_RULES.fine.affixCount).toEqual([1, 1]);
+    expect(QUALITY_RULES.rare.affixCount).toEqual([2, 2]);
+    expect(QUALITY_RULES.epic.affixCount).toEqual([3, 3]);
+    expect(QUALITY_RULES.legendary.affixCount).toEqual([3, 4]);
+    expect(QUALITY_RULES.mythic.affixCount).toEqual([4, 4]);
+  });
+
+  it('defines T1-T5 affixes across numeric, combat, behavior, and class pools', () => {
+    expect(Object.keys(AFFIX_POOLS).sort()).toEqual(['behavior', 'class', 'combat', 'numeric']);
+    const tiers = new Set(Object.values(AFFIX_POOLS).flat().map(affix => affix.tier));
+
+    expect(tiers).toEqual(new Set(['T1', 'T2', 'T3', 'T4', 'T5']));
+  });
+
+  it('generates quality-specific affix counts and legendary fixed effects', () => {
+    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const instance = generateEquipmentInstance(base, {
+      classId: 'swordsman',
+      sourceTags: ['world_boss'],
+      random: vi.fn()
+        .mockReturnValueOnce(0.005)
+        .mockReturnValue(0),
+    });
+
+    expect(instance.quality).toBe('legendary');
+    expect(instance.affixes.length).toBeGreaterThanOrEqual(3);
+    expect(instance.affixes.length).toBeLessThanOrEqual(4);
+    expect(instance.fixedEffects).toEqual(['legendary_core_weapon']);
+  });
+
+  it('keeps class affixes behind rare-or-better class matching rules', () => {
+    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const fineAffixes = getEligibleAffixes(base, 'fine', 'swordsman');
+    const rareAffixes = getEligibleAffixes(base, 'rare', 'swordsman');
+
+    expect(fineAffixes.some(affix => affix.pool === 'class')).toBe(false);
+    expect(rareAffixes.some(affix => affix.pool === 'class')).toBe(true);
+    expect(rareAffixes.filter(affix => affix.pool === 'class').every(affix => affix.classTags?.includes('swordsman'))).toBe(true);
+  });
+
+  it('allows LUK to improve quality rolls without opening mythic outside endgame sources', () => {
+    expect(rollItemQuality(0, [], () => 0.2)).toBe('fine');
+    expect(rollItemQuality(100, [], () => 0.2)).toBe('rare');
+    expect(rollItemQuality(999, [], () => 0)).toBe('legendary');
+    expect(rollItemQuality(0, ['world_boss'], () => 0)).toBe('mythic');
   });
 });
 
