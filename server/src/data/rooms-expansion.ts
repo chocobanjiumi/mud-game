@@ -5795,4 +5795,465 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '舊路切口讓丘陵仍保有一條通向人煙的脈絡。',
     },
   },
+  mist_harbor_fog_gate: {
+    id: 'mist_harbor_fog_gate',
+    name: '霧港城門',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_fog_gate.png',
+    imagePrompt: '霧港城門 in mist_harbor, harbor town stone gate in heavy sea fog, wet cobbles, lanterns, gull silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霧港城門不是高牆要塞，而是一座跨在濕滑石路上的拱門，門頂掛著被海鹽腐蝕的銅鐘。霧從港灣一路推進城內，讓旅人只能看見近處燈火與地上閃亮水痕。守門人會在這裡檢查船票、旅店名牌與貨運封條，也提醒新來者別在退潮前靠近外防波堤。這裡是霧港的入口與回程錨點，玩家可接到尋船、護送與失物任務，並從路牌判斷市集、傳送燈塔與舊海門方向。城門旁的公告板每天都會被潮氣弄皺，卻仍貼滿急件；若公告被撕下，通常代表某艘船的消息被人刻意封住。門洞下方還留著昨夜車輪壓出的深痕。',
+    exits: [
+      { direction: 'east', targetRoomId: 'mist_harbor_tide_plaza', description: '濕石路通向潮汐廣場' },
+      { direction: 'south', targetRoomId: 'mist_harbor_sea_gate', description: '城牆坡道通往舊海門' },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '霧港城門雖安全，但可疑腳印常從公告板旁消失。',
+      treasure: '公告板背後夾著幾張未領取的貨運憑單。',
+      spirit: '城門把陸路旅人交給海霧，也把霧港的規矩交給旅人。',
+    },
+  },
+
+  mist_harbor_tide_plaza: {
+    id: 'mist_harbor_tide_plaza',
+    name: '潮汐廣場',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_tide_plaza.png',
+    imagePrompt: '潮汐廣場 in mist_harbor, wet harbor town plaza with tide clock, lantern poles, misty market arches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮汐廣場鋪著深灰石板，中央立著一座以浮標、齒輪和月相盤組成的潮鐘。每當潮位改變，鐘內銅錘便敲出低沉聲響，提醒商人調整船期，也提醒漁民避開暗流。廣場四周連著魚市、海關、旅店與傳送燈塔，是霧港最常被任務、交易與找人流程使用的核心房。街邊攤販用油布蓋住貨箱，霧中能聞到鹽、焦糖、魚腥與濕繩混合的味道。玩家可在此確認城市路線、等待 NPC 會合，或從潮鐘記錄推斷某艘船是否在夜裡偷偷進港。廣場石縫裡積著退潮留下的白鹽，像一圈圈未完成的航線。每次鐘響都會讓霧裡的人群短暫停步。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_fog_gate', description: '濕路回到城門' },
+      { direction: 'north', targetRoomId: 'mist_harbor_portal_lantern', description: '藍燈指向傳送燈塔' },
+      { direction: 'east', targetRoomId: 'mist_harbor_fish_market', description: '魚腥與叫賣聲來自魚市' },
+      { direction: 'south', targetRoomId: 'mist_harbor_customs_house', description: '石階通往海關廳' },
+    ],
+    mapSymbol: '[廣]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '廣場安全，但潮鐘異常會引出港務任務。',
+      treasure: '潮鐘底座藏著被人刮花的船名清單。',
+      spirit: '潮汐廣場是霧港的節拍器，所有行程都跟著它呼吸。',
+    },
+  },
+
+  mist_harbor_portal_lantern: {
+    id: 'mist_harbor_portal_lantern',
+    name: '傳送燈塔',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_portal_lantern.png',
+    imagePrompt: '傳送燈塔 in mist_harbor, blue portal lantern tower in harbor fog, rune mirrors, wet steps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮汐廣場北側矗立著一座短塔，塔頂不是火焰，而是一盞被符文鏡片包住的藍色傳送燈。燈光穿過海霧後像水波一樣擴散，能與公共傳送網路對齊，讓旅人從遠方城市抵達霧港。塔內石階總是潮濕，牆上掛滿各地港印與傳送費率牌。這裡是霧港的主要傳送節點，玩家可使用公共傳送、設定回城位置、查詢船運目的地，也能接到修復鏡片與追查錯誤傳送記錄的任務。若燈色偏綠，代表霧港外海正在出現異常魔潮；守塔人會立刻封存當日名冊，等待可靠冒險者核對。塔底水槽會收集傳送後落下的鹽霧結晶。',
+    exits: [
+      { direction: 'south', targetRoomId: 'mist_harbor_tide_plaza', description: '石階回到潮汐廣場' },
+      { direction: 'east', targetRoomId: 'mist_harbor_chart_archive', description: '塔後小門通向海圖檔案室' },
+      { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈塔橋連往燈室階梯' },
+    ],
+    mapSymbol: '[傳]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '傳送燈塔沒有怪物，但燈色異常意味著外海副本開啟。',
+      treasure: '費率牌背後壓著一枚過期港印。',
+      spirit: '傳送燈把霧港從偏遠港鎮變成東海交通節點。',
+    },
+  },
+
+  mist_harbor_customs_house: {
+    id: 'mist_harbor_customs_house',
+    name: '海關廳',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_customs_house.png',
+    imagePrompt: '海關廳 in mist_harbor, harbor customs hall with ledgers, wet crates, brass scales, foggy windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海關廳是一棟低矮石屋，窗戶常被霧水糊成乳白色，屋內卻點著明亮油燈。長桌上攤著貨運簿、關稅印章、銅秤與未拆封的潮濕木箱，港務員在此核對每一批進出霧港的船貨。這裡是服務與任務房，玩家可登記貿易貨物、查詢船名、繳納港稅，也能接到追查走私印章或尋找失蹤貨箱的委託。牆上掛著近三十日的進港表，其中幾行被墨水暈開，像有人刻意在霧夜改過紀錄。通往倉庫與船長辦公室的門永遠有人盯著。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_tide_plaza', description: '台階回到潮汐廣場' },
+      { direction: 'east', targetRoomId: 'mist_harbor_warehouse_nine', description: '封條門通往九號倉' },
+      { direction: 'south', targetRoomId: 'mist_harbor_captains_office', description: '內廊通向船長辦公室' },
+    ],
+    mapSymbol: '[關]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '海關廳安全，但錯誤帳頁會引出走私線索。',
+      treasure: '銅秤底座刻著一串倉庫暗號。',
+      spirit: '海關廳把霧港的混亂壓進表格與印章裡。',
+    },
+  },
+
+  mist_harbor_fish_market: {
+    id: 'mist_harbor_fish_market',
+    name: '晨霧魚市',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_fish_market.png',
+    imagePrompt: '晨霧魚市 in mist_harbor, misty fish market with wet stalls, lanterns, silver fish, shouting vendors, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '晨霧魚市從天未亮就開始吵鬧，濕木桌上堆著銀鱗魚、黑殼蟹、海草籃和仍在滴水的網袋。攤販用鐵鉤敲桶喊價，廚師、藥師與水手在霧裡互相討價還價。這裡是交易與採集交付房，玩家可購買食材、交付釣魚成果、尋找海怪目擊者，也能從異常魚獲判斷外海副本狀況。魚市後方有一條滑膩小巷通往走私者活動區，地上常混著魚血與看不清來源的黑色油跡。若某天魚市突然安靜，通常代表霧裡出了大事。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_tide_plaza', description: '叫賣聲回到廣場' },
+      { direction: 'east', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆布棚連向帆匠街' },
+      { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '濕滑窄巷通往走私巷' },
+    ],
+    mapSymbol: '[魚]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '魚市安全，但異常魚獲會觸發外海調查。',
+      treasure: '最大魚桶底部有被海水泡脹的走私便條。',
+      spirit: '晨霧魚市是霧港醒來的第一聲。',
+    },
+  },
+
+  mist_harbor_sailmakers_row: {
+    id: 'mist_harbor_sailmakers_row',
+    name: '帆匠街',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_sailmakers_row.png',
+    imagePrompt: '帆匠街 in mist_harbor, narrow sailmaker street with hanging canvas, ropes, needles, fog and harbor lamps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '帆匠街兩側掛滿正在晾乾的帆布，厚重布面吸飽海霧，像一排排低垂白牆。工匠坐在棚下補縫破洞、測試防水蠟，也替冒險者修補背包、斗篷與船用繩索。這裡是城鎮服務房，玩家可購買繩索、修理航海裝備、委託製作帆布包，或從老帆匠口中聽到風向與失事船的傳聞。街道盡頭接著船匠塢，腳下排水溝則會把細碎布條沖向走私巷。霧重時，垂帆之間的人影很難分辨，適合秘密會面，也適合偷換貨籤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_fish_market', description: '帆布棚回到魚市' },
+      { direction: 'east', targetRoomId: 'mist_harbor_shipwright_yard', description: '木槌聲來自船匠塢' },
+      { direction: 'south', targetRoomId: 'mist_harbor_guild_quay', description: '繩梯下到公會碼頭' },
+    ],
+    mapSymbol: '[帆]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '帆匠街安全，但霧中人影可能是任務接頭人。',
+      treasure: '防水蠟桶旁有一卷品質極好的備用帆線。',
+      spirit: '帆匠街修補的不只是船帆，也是霧港每天出海的信心。',
+    },
+  },
+
+  mist_harbor_shipwright_yard: {
+    id: 'mist_harbor_shipwright_yard',
+    name: '船匠塢',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_shipwright_yard.png',
+    imagePrompt: '船匠塢 in mist_harbor, harbor shipwright yard with half-built boats, tar pots, cranes, foggy slips, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '船匠塢靠著內港斜坡，半修好的小船被木架支起，船腹刷著新鮮焦油，旁邊堆滿橡木板、鉚釘、桅杆和滑輪。工頭用粉筆在船殼上標出裂縫，學徒則在霧裡推動沉重吊臂。這裡是修理與交通準備房，玩家可修補船隻、委託打造渡船零件、學習外海航線需求，也能接到尋找失竊龍骨木或測試新船的任務。塢邊水面經常漂來來歷不明的碎板，若板上還有新鮮爪痕，代表某條近海航線剛剛出事。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆匠街在西側' },
+      { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '滑道下到渡船棧橋' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '外側木道通往防波堤' },
+    ],
+    mapSymbol: '[匠]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '船匠塢安全，但碎板爪痕會開啟海獸事件。',
+      treasure: '焦油桶後有一批被藏起來的龍骨木樣本。',
+      spirit: '船匠塢讓霧港即使被霧困住，也仍能相信下一次出航。',
+    },
+  },
+
+  mist_harbor_anchor_inn: {
+    id: 'mist_harbor_anchor_inn',
+    name: '沉錨旅店',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_anchor_inn.png',
+    imagePrompt: '沉錨旅店 in mist_harbor, cozy harbor inn with anchor sign, wet cloaks, hearth, sailors in fogged windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉錨旅店的招牌是一只真正的舊鐵錨，吊在門樑下隨海風輕晃。屋內爐火溫暖，牆上掛滿濕斗篷、船旗與各地酒杯，水手們圍著長桌交換航線消息。這裡是休息、存點與社交服務房，玩家可租房恢復、查看留言、接受護送船員或尋人委託，也能從吟遊者口中聽到霧港外海的副本傳說。櫃台後有一本厚厚住客簿，最近幾頁的名字被人撕掉，留下的紙屑帶著海關封蠟味。旅店後門通往鹽診所，方便受傷水手夜裡求醫。',
+    exits: [
+      { direction: 'east', targetRoomId: 'mist_harbor_clinic_of_salt', description: '後廊通往鹽診所' },
+      { direction: 'south', targetRoomId: 'mist_harbor_guild_quay', description: '木階下到公會碼頭' },
+      { direction: 'west', targetRoomId: 'mist_harbor_tide_plaza', description: '雨棚路回到潮汐廣場' },
+    ],
+    mapSymbol: '[宿]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '旅店安全，但住客簿缺頁會牽出尋人任務。',
+      treasure: '舊鐵錨背面刻著一條被遺忘的航線。',
+      spirit: '沉錨旅店讓每個漂泊者暫時承認自己需要靠岸。',
+    },
+  },
+
+  mist_harbor_clinic_of_salt: {
+    id: 'mist_harbor_clinic_of_salt',
+    name: '鹽診所',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_clinic_of_salt.png',
+    imagePrompt: '鹽診所 in mist_harbor, small harbor clinic with salt jars, bandages, sea herbs, fogged glass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹽診所聞起來像海鹽、藥草和燒熱金屬。白牆上掛著繃帶、魚骨夾板、止血鉗與一排排標有潮汐日期的鹽罐，醫師相信不同潮位採來的鹽能處理不同傷口。這裡是治療與藥品服務房，玩家可購買補給、處理中毒或凍傷、交付海草藥材，也能接到尋找失蹤病患或調查奇怪海霧病的任務。診所窗台放著幾瓶發藍的霧水樣本，偶爾會自行凝結成薄冰。若玩家從外海副本回來，醫師會要求先在此檢查，避免把未知病症帶進城裡。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_anchor_inn', description: '後廊回到沉錨旅店' },
+      { direction: 'east', targetRoomId: 'mist_harbor_guild_quay', description: '藥箱路通向公會碼頭' },
+      { direction: 'north', targetRoomId: 'mist_harbor_chart_archive', description: '窄梯通向海圖檔案室' },
+    ],
+    mapSymbol: '[診]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '診所安全，但霧水樣本會提示外海異常。',
+      treasure: '最上層鹽罐裡藏著一枚醫師用的急救徽章。',
+      spirit: '鹽診所把海帶來的傷口，一個個縫回岸上的生活。',
+    },
+  },
+
+  mist_harbor_guild_quay: {
+    id: 'mist_harbor_guild_quay',
+    name: '冒險者碼頭',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_guild_quay.png',
+    imagePrompt: '冒險者碼頭 in mist_harbor, adventurers guild quay with notice boards, moored skiffs, lanterns and fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冒險者碼頭是一段專供委託船停靠的木棧道，柱子上綁滿任務牌、失物畫像、海怪懸賞與臨時招募紙。公會書記坐在防潮棚下登記隊伍，旁邊小船隨霧潮起伏，船頭掛著不同顏色的任務燈。這裡是霧港最重要的任務服務房，玩家可接取外海副本、護航、搜救、釣魚與走私調查委託，也能組隊前往渡船棧橋。碼頭下方有水聲敲擊空木箱，偶爾會浮出不屬於任何登記船隻的繩結，暗示有人借公會名義私下出海。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_sailmakers_row', description: '繩梯回到帆匠街' },
+      { direction: 'west', targetRoomId: 'mist_harbor_anchor_inn', description: '木階上到沉錨旅店' },
+      { direction: 'east', targetRoomId: 'mist_harbor_ferry_pier', description: '棧道連向渡船棧橋' },
+      { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '陰影小路滑向走私巷' },
+    ],
+    mapSymbol: '[會]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '碼頭安全，但未登記繩結會牽出私航事件。',
+      treasure: '任務牌背面常有隊伍留下的補充線索。',
+      spirit: '冒險者碼頭把霧港的不安轉換成一張張可以承接的委託。',
+    },
+  },
+
+  mist_harbor_smugglers_alley: {
+    id: 'mist_harbor_smugglers_alley',
+    name: '走私巷',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_smugglers_alley.png',
+    imagePrompt: '走私巷 in mist_harbor, narrow wet smuggler alley behind fish market, crates, shadowed doors, fog lamps, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '魚市後方的走私巷狹窄潮濕，兩側堆滿標籤被刮掉的木箱、破網和空酒桶。霧在屋檐下盤旋，讓每扇半掩的門都像藏著耳朵。這裡不是公開服務點，卻是許多任務線的灰色交會處，玩家可追查假港印、打聽黑市船票、尋找失蹤貨物，也可能遇到不願在廣場露面的 NPC。巷底水溝連到九號倉，退潮時能看見刻在石壁上的暗號。雖然城內禁止械鬥，走私者仍會用價格、情報與沉默威脅旅人。若帶著海關封條進巷，幾盞窗燈會同時熄滅。牆面潮痕旁還刻著只有夜航人看得懂的數字，暗門後傳來壓低的笑聲。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_fish_market', description: '魚腥路回到魚市' },
+      { direction: 'east', targetRoomId: 'mist_harbor_warehouse_nine', description: '暗號水溝通向九號倉' },
+      { direction: 'west', targetRoomId: 'mist_harbor_guild_quay', description: '陰影路回到公會碼頭' },
+    ],
+    mapSymbol: '[私]',
+    mapX: 2,
+    mapY: -2,
+    guardianHints: {
+      creature: '走私巷沒有公開敵人，但錯誤回答會關閉交易窗口。',
+      treasure: '刮標木箱內側留著下一次私航時間。',
+      spirit: '走私巷是霧港不寫進港務簿的另一張地圖。',
+    },
+  },
+
+  mist_harbor_captains_office: {
+    id: 'mist_harbor_captains_office',
+    name: '船長辦公室',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_captains_office.png',
+    imagePrompt: '船長辦公室 in mist_harbor, harbor captains office with maps, ship bells, ledgers, misted windows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '船長辦公室位在海關廳後方，牆上掛滿航線圖、舊船鐘、風暴記錄和幾把失去主人的船鑰匙。值班船長在此核准出航、調停碼頭爭議，也替冒險者安排可靠船員。這裡是 NPC 與交通任務房，玩家可申請外海通行、查詢失事船、簽署護航契約，或追問某艘沒有進港記錄卻出現在潮鐘上的船。辦公桌抽屜裡有一疊被海水泡皺的求救信，日期全都落在同一場大霧之夜。若玩家完成港務線，這裡會成為解鎖遠洋路線的關鍵地點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_customs_house', description: '內廊回到海關廳' },
+      { direction: 'east', targetRoomId: 'mist_harbor_chart_archive', description: '書架門通向海圖檔案室' },
+      { direction: 'south', targetRoomId: 'mist_harbor_sea_gate', description: '港務坡道通往舊海門' },
+    ],
+    mapSymbol: '[長]',
+    mapX: 1,
+    mapY: -2,
+    guardianHints: {
+      creature: '辦公室安全，但船鐘無故響起時代表有幽霧船線索。',
+      treasure: '失主船鑰匙中有一把能打開九號倉側門。',
+      spirit: '船長辦公室決定誰能把霧港拋在身後，也決定誰必須留下。',
+    },
+  },
+
+  mist_harbor_lighthouse_stairs: {
+    id: 'mist_harbor_lighthouse_stairs',
+    name: '燈室階梯',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_lighthouse_stairs.png',
+    imagePrompt: '燈室階梯 in mist_harbor, spiral lighthouse stairs with wet stone, brass rail, fog light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '傳送燈塔北面的石橋接上一段螺旋階梯，階梯沿著老燈塔內壁向上盤繞，扶手被鹽霧磨得發亮。牆面每隔幾步就嵌著小窗，能看見霧港屋頂、內港船桅與遠處防波堤在白霧中若隱若現。這裡是交通與探索房，玩家可前往霧望燈室，也能在階梯牆上找到歷代守燈人刻下的潮汐備忘。階梯間回音很重，適合觸發回憶、偵查或找人任務。若外海有異常，窗縫會吹進帶冰味的霧，讓牆上銅釘結霜。守燈人的腳印常停在某扇小窗前，似乎那裡能看見官方不願承認的航線。階梯越往上，海浪聲就越像低語。',
+    exits: [
+      { direction: 'south', targetRoomId: 'mist_harbor_portal_lantern', description: '石橋回到傳送燈塔' },
+      { direction: 'up', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '旋梯上到霧望燈室' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '維修門通往防波堤端' },
+    ],
+    mapSymbol: '[梯]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '階梯安全，但窗縫結霜代表冰霧潮正在逼近。',
+      treasure: '扶手底部藏著守燈人留下的備用火石。',
+      spirit: '燈室階梯把港鎮的喧鬧一步步留在下方。',
+    },
+  },
+
+  mist_harbor_fogwatch_lantern: {
+    id: 'mist_harbor_fogwatch_lantern',
+    name: '霧望燈室',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_fogwatch_lantern.png',
+    imagePrompt: '霧望燈室 in mist_harbor, lighthouse lantern room above foggy harbor, huge lens, beacon flame, sea mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霧望燈室位在老燈塔頂端，巨大的玻璃透鏡被銅架固定，中心燃著帶藍邊的港燈。守燈人用它穿透濃霧，替返航船隻標出內港安全水道，也觀測外海是否有幽霧船、冰潮或海怪陰影。這裡是地標與大型事件觀測房，玩家可校準燈光、解讀遠方燈號，或在夜裡尋找失蹤船隊的回應。燈室地板刻著一圈方位線，某些刻度被反覆磨損，表示有人常把燈光轉向官方航線以外的黑暗海面。完成霧港主線時，這裡會成為選擇公開真相或掩護私航的關鍵場景，也決定哪些船能穿過霧回家。透鏡背面還殘留舊日撞擊裂紋。',
+    exits: [
+      { direction: 'down', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '旋梯下回燈室階梯' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '外梯連到防波堤端' },
+    ],
+    mapSymbol: '[燈]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '燈室安全，但遠方錯誤燈號可能召喚海上事件。',
+      treasure: '透鏡底座有一枚被藏起來的私航方位片。',
+      spirit: '霧望燈室決定霧港願意照亮哪一片海。',
+    },
+  },
+
+  mist_harbor_ferry_pier: {
+    id: 'mist_harbor_ferry_pier',
+    name: '渡船棧橋',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_ferry_pier.png',
+    imagePrompt: '渡船棧橋 in mist_harbor, ferry pier with small boats, rope posts, fog, lantern reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '渡船棧橋伸入內港水面，小船依照目的地排成幾列，船頭掛著紅、藍、白不同顏色的航燈。船夫靠在繩樁邊等潮位，腳下木板被海水泡得發黑，縫隙間能看見細碎銀魚游過。這裡是交通服務房，玩家可搭乘短程渡船前往外島、海上副本入口或對岸倉區，也能護送 NPC、運送藥箱與追查未登記船票。渡船時刻受潮鐘控制，若霧太重，船夫會要求額外燈油或可靠護衛。棧橋末端有一只空船總是無人認領，船底卻常保持乾淨。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_shipwright_yard', description: '滑道上到船匠塢' },
+      { direction: 'west', targetRoomId: 'mist_harbor_guild_quay', description: '棧道回到冒險者碼頭' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '外棧道通向防波堤端' },
+    ],
+    mapSymbol: '[渡]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '渡船安全，但無人認領的小船常牽出失蹤線。',
+      treasure: '繩樁下方塞著一張被撕半的船票。',
+      spirit: '渡船棧橋讓霧港的日常與冒險只隔一塊木板。',
+    },
+  },
+
+  mist_harbor_warehouse_nine: {
+    id: 'mist_harbor_warehouse_nine',
+    name: '九號倉',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_warehouse_nine.png',
+    imagePrompt: '九號倉 in mist_harbor, sealed harbor warehouse with stacked crates, wet rope, lantern shadows, fogged skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '九號倉的門上貼滿海關封條，但封條邊緣總有新鮮割痕。倉內高高堆著木箱、油布包、鹽袋與等候驗放的遠方貨物，霧氣從天窗滲下，讓每一道箱影都像可疑人形。這裡是倉儲服務與走私任務房，玩家可存放大宗貨物、查找遺失箱號、協助盤點，也能沿著暗號追查假封條來源。地板上有幾條拖痕通往走私巷水溝，旁邊散著不該出現在官方倉庫的黑市船票。若港務線推進，九號倉會成為揭露私航網路的重要證據點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_customs_house', description: '封條門回到海關廳' },
+      { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '水溝暗門通向走私巷' },
+      { direction: 'east', targetRoomId: 'mist_harbor_sea_gate', description: '貨道通往舊海門' },
+    ],
+    mapSymbol: '[倉]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '九號倉安全，但錯誤箱號會引來海關盤問。',
+      treasure: '鹽袋堆後有一箱未登記的航海羅盤。',
+      spirit: '九號倉保存著霧港願意承認與不願承認的貨物。',
+    },
+  },
+
+  mist_harbor_tidepool_shrine: {
+    id: 'mist_harbor_tidepool_shrine',
+    name: '潮池小祠',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_tidepool_shrine.png',
+    imagePrompt: '潮池小祠 in mist_harbor, small tidepool shrine with shells, candles, sea glass, fog and moonlit water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊海門旁的岩地凹出一座天然潮池，池邊立著小小石祠，供奉無名海路守護靈。漁民會在出航前放下貝殼、海玻璃、魚骨和一小撮鹽，祈求霧中看得見回家的燈。潮池水面平靜時像鏡子，偶爾會映出不屬於當下天空的星點。這裡是任務與信仰房，玩家可替失蹤水手獻祭、解讀潮池異象，或收集特殊貝殼完成居民委託。若從霧望燈室取得方位片，再來此比對倒影，能發現某條被隱藏的夜航路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_sea_gate', description: '石階回到舊海門' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '潮濕岩路通向防波堤端' },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 3,
+    mapY: -3,
+    guardianHints: {
+      creature: '潮池小祠安全，但倒影異常代表夜航任務可推進。',
+      treasure: '第三層貝殼下藏著一枚海玻璃護符。',
+      spirit: '潮池小祠保存著水手不敢寫進航海日誌的願望。',
+    },
+  },
+
+  mist_harbor_chart_archive: {
+    id: 'mist_harbor_chart_archive',
+    name: '海圖檔案室',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_chart_archive.png',
+    imagePrompt: '海圖檔案室 in mist_harbor, archive of sea charts, map tubes, brass dividers, fogged skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海圖檔案室夾在傳送燈塔、診所與船長辦公室之間，屋內用防潮木櫃保存各年代航線圖。長桌上擺著黃銅分規、潮汐尺、乾燥沙盤和許多被鉛筆反覆修正的霧區邊界。這裡是知識與任務房，玩家可查詢副本入口、比對失蹤船位、解鎖遠洋路線，也能幫檔案員修補被霧水侵蝕的古海圖。某些圖管沒有登記號，卻被放在最容易取用的位置，內容指向官方航線以外的私航港灣。若與傳送燈塔記錄交叉檢查，能找出誰在霧夜改變過燈塔方位。檔案員會要求玩家保密，因為錯誤海圖足以毀掉整個港鎮的信用。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_portal_lantern', description: '小門回到傳送燈塔' },
+      { direction: 'south', targetRoomId: 'mist_harbor_clinic_of_salt', description: '窄梯下到鹽診所' },
+      { direction: 'east', targetRoomId: 'mist_harbor_captains_office', description: '書架門通往船長辦公室' },
+    ],
+    mapSymbol: '[圖]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '檔案室安全，但未登記圖管會開啟私航線索。',
+      treasure: '沙盤底層藏著一張被折小的暗礁圖。',
+      spirit: '海圖檔案室讓霧港承認，迷霧也能被一點點描出邊界。',
+    },
+  },
+
+  mist_harbor_sea_gate: {
+    id: 'mist_harbor_sea_gate',
+    name: '舊海門',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_sea_gate.png',
+    imagePrompt: '舊海門 in mist_harbor, old sea gate with iron chains, wet stone arch, harbor fog and tide marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊海門是內港最老的防潮門，兩扇厚木閘板被鐵鏈吊著，表面滿是潮痕、貝殼和修補鐵片。漲潮時門外海水會拍上石階，退潮時則露出通往潮池與防波堤的濕滑岩路。這裡是交通與港務房，玩家可協助升降閘門、護送貨車通過、查看近海潮位，也能追查某些貨物為何不經海關而從舊門進城。門洞上方掛著一排退役船鈴，只在濃霧中無風自響。若鈴聲與潮鐘不一致，代表外海有船正在使用錯誤航道靠近。守門員會把此事記在潮濕小冊裡，等待有人願意查下去。閘鏈深處還卡著新鮮黑帆纖維與碎木。',
+    exits: [
+      { direction: 'north', targetRoomId: 'mist_harbor_fog_gate', description: '坡道回到霧港城門' },
+      { direction: 'west', targetRoomId: 'mist_harbor_captains_office', description: '港務坡道通往船長辦公室' },
+      { direction: 'east', targetRoomId: 'mist_harbor_warehouse_nine', description: '貨道通往九號倉' },
+      { direction: 'south', targetRoomId: 'mist_harbor_tidepool_shrine', description: '石階下到潮池小祠' },
+    ],
+    mapSymbol: '[海]',
+    mapX: 2,
+    mapY: -3,
+    guardianHints: {
+      creature: '舊海門安全，但船鈴亂響代表有錯航事件。',
+      treasure: '閘板鐵片後藏著一枚舊港務徽章。',
+      spirit: '舊海門記得霧港還沒有傳送燈以前的每一次進出。',
+    },
+  },
+
+  mist_harbor_breakwater_end: {
+    id: 'mist_harbor_breakwater_end',
+    name: '防波堤端',
+    zone: 'mist_harbor' as RoomDef['zone'],
+    image: 'mist_harbor_breakwater_end.png',
+    imagePrompt: '防波堤端 in mist_harbor, end of stone breakwater in thick fog, crashing waves, beacon posts, distant lighthouse, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '防波堤端伸向白霧最深處，黑色礁石和人工石塊交錯堆疊，浪花不斷越過邊緣，把地面打得濕亮。這裡遠離市集喧鬧，只聽得見海浪、霧角與偶爾從燈塔傳來的金屬回音。維修工在石柱上掛著小信標，船夫則把這裡當作判斷外海能否出航的最後觀察點。這裡是交通邊界與大型事件鉤子，玩家可前往外海副本、調查漂來殘骸，或在霧望燈室指引下等待失蹤船影出現。若霧突然退開，遠處可能露出不在任何海圖上的黑帆。',
+    exits: [
+      { direction: 'west', targetRoomId: 'mist_harbor_shipwright_yard', description: '木道回到船匠塢' },
+      { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '外棧道回到渡船棧橋' },
+      { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '維修門通向燈室階梯' },
+      { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '外梯連到霧望燈室' },
+      { direction: 'south', targetRoomId: 'mist_harbor_tidepool_shrine', description: '潮濕岩路回到潮池小祠' },
+    ],
+    mapSymbol: '[堤]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '防波堤端安全，但黑帆出現會開啟外海事件。',
+      treasure: '信標柱底部夾著一片刻有私航標記的船板。',
+      spirit: '防波堤端是霧港最後一塊仍相信陸地的石頭。',
+    },
+  },
 };
