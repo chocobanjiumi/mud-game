@@ -128,7 +128,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'windmill_farm', description: '從側門走向風車農場' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 20 },
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
       { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 40 },
     ],
     mapSymbol: '[W]',
@@ -399,7 +399,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'mine_depths', description: '祭壇側面有通往礦脈深處的階梯' },
     ],
     monsters: [
-      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 80 },
       { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 70 },
     ],
@@ -658,7 +658,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 50 },
-      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[門]',
     mapX: 3,
@@ -738,7 +738,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'succubus', maxCount: 2, respawnSeconds: 70 },
-      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[陣]',
     mapX: 3,
@@ -763,7 +763,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'dragon_valley_entrance', description: '魔王殿背後的秘密通道通向一片未知的山谷' },
     ],
     monsters: [
-      { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 1800 },
       { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[魔]',
@@ -953,7 +953,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'ancient_dragon_lair', description: '回到古龍巢穴' },
     ],
     monsters: [
-      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
     ],
     mapSymbol: '[寶]',
@@ -980,7 +980,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
-      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[橋]',
     mapX: 3,
@@ -1005,7 +1005,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'elder_dragon_sanctum', description: '祭壇背後有一道通往聖殿的門' },
     ],
     monsters: [
-      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 1800 },
       { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
     ],
     mapSymbol: '[巔]',
@@ -1031,7 +1031,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'down', targetRoomId: 'abyss_entrance', description: '聖殿地板上有一道通往深淵的裂縫' },
     ],
     monsters: [
-      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 1800 },
       { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[聖]',
@@ -1139,7 +1139,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'shadow_demon', maxCount: 3, respawnSeconds: 65 },
-      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[影]',
     mapX: 3,
@@ -1190,7 +1190,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'time_distortion', description: '花園邊緣的空間在扭曲' },
     ],
     monsters: [
-      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 1800 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
     ],
     mapSymbol: '[夢]',
@@ -1217,7 +1217,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
-      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'nightmare', maxCount: 2, respawnSeconds: 1800 },
     ],
     mapSymbol: '[核]',
     mapX: 3,
@@ -1378,7 +1378,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
     ],
     monsters: [
-      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
       { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
     ],
     mapSymbol: '[書]',
@@ -1404,7 +1404,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'celestial_throne_room', description: '大廳盡頭通往天界王座' },
     ],
     monsters: [
-      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
       { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
     ],
     mapSymbol: '[判]',
@@ -1432,7 +1432,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
-      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
     ],
     groundItems: [
       { itemId: 'celestial_fragment', description: '王座旁散落著天界碎片' },
@@ -1485,7 +1485,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'celestial_throne_room', description: '退回天界王座' },
     ],
     monsters: [
-      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 100 },
+      { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
       { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[神]',

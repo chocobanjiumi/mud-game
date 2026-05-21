@@ -268,12 +268,37 @@ export class WorldManager {
     monster.isDead = true;
     monster.hp = 0;
 
-    // 從房間定義取得重生時間
     const room = getRoom(roomId);
     const spawnPoint = room?.monsters?.find(sp => sp.monsterId === monster.monsterId);
-    const respawnSeconds = spawnPoint?.respawnSeconds ?? 60;
+    const respawnSeconds = this.getEffectiveRespawnSeconds(roomId, monster, spawnPoint);
 
     monster.respawnAt = Date.now() + respawnSeconds * 1000;
+  }
+
+  private getEffectiveRespawnSeconds(
+    roomId: string,
+    monster: MonsterInstance,
+    spawnPoint?: SpawnPoint,
+  ): number {
+    const baseSeconds = spawnPoint?.respawnSeconds ?? monster.def.respawnTime ?? 60;
+
+    if (monster.def.isBoss) {
+      return Math.max(baseSeconds, 1800);
+    }
+
+    if (monster.def.isElite) {
+      return Math.min(1800, Math.max(baseSeconds, 600));
+    }
+
+    const playersInRoom = this.getPlayersInRoom(roomId).length;
+    let adjustedSeconds = baseSeconds;
+    if (playersInRoom >= 4) {
+      adjustedSeconds = Math.floor(baseSeconds * 0.65);
+    } else if (playersInRoom >= 2) {
+      adjustedSeconds = Math.floor(baseSeconds * 0.8);
+    }
+
+    return Math.min(90, Math.max(25, adjustedSeconds));
   }
 
   /** 重生計時器 tick */

@@ -1101,7 +1101,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
     ],
     monsters: [
-      { monsterId: 'slime', maxCount: 3, respawnSeconds: 20 },
+      { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
       { monsterId: 'small_bat', maxCount: 2, respawnSeconds: 25 },
     ],
     mapSymbol: '[T]',
@@ -1373,7 +1373,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 40 },
-      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[!]',
@@ -1482,7 +1482,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 60 },
-      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'crystal_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[H]',
@@ -1658,7 +1658,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
     ],
     monsters: [
-      { monsterId: 'training_dummy', maxCount: 3, respawnSeconds: 10 },
+      { monsterId: 'training_dummy', maxCount: 3, respawnSeconds: 25 },
     ],
     mapSymbol: '[A]',
     mapX: 5,
@@ -2733,7 +2733,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'demon_border', description: '王座背後的裂縫通往一片燃燒的荒地' },
     ],
     monsters: [
-      { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[龍]',

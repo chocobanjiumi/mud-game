@@ -178,6 +178,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       '他生前是地底王國騎士團的團長，死後化為不滅的守護者，' +
       '誓言守護古代祭壇直到永恆。任何膽敢踏入祭壇的入侵者都將面對他無情的劍鋒。',
     isBoss: false,
+    isElite: true,
     guardianHints: {
       creature: '幽靈騎士在發動衝鋒前會舉劍致敬——那是他生前騎士精神的殘留，也是你唯一的防禦準備時間。',
       treasure: '騎士的幽靈盾牌上刻著地底王國的紋章，擊敗他後紋章會凝結成實體徽章。',
@@ -923,6 +924,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       '全身由無數精密的齒輪和光之迴路構成，外層覆蓋著不可摧毀的神聖護甲。' +
       '神造兵器是天界遺跡中防禦力最高的存在，要突破它需要強大的魔法攻擊或找到核心弱點。',
     isBoss: false,
+    isElite: true,
     guardianHints: {
       creature: '神造兵器的背部有維護用的面板——繞到身後攻擊面板可以直接破壞核心。',
       treasure: '神造兵器的零件每一個都是失傳的神聖鍛造技術的結晶。',
