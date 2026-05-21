@@ -1938,14 +1938,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dragon_valley_entrance',
     name: '龍谷入口',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_valley_entrance.png',
+    imagePrompt: '龍谷入口 in dragon_valley, secret passage opening into misty dragon valley between winglike mountains, ancient draconic runes, warm wind and distant wings, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '穿過魔王殿背後的秘密通道，眼前豁然開朗。兩座巍峨的山峰如同巨龍的翅膀展開，' +
       '中間的峽谷被雲霧繚繞，空氣中瀰漫著古老而神秘的氣息。' +
-      '入口處的岩壁上刻著龍族的古老文字，警告著所有膽敢踏入的生命。',
+      '入口處的岩壁上刻著龍族的古老文字，警告著所有膽敢踏入的生命。石縫中吹出的熱風帶著硫磺與雨水氣味，和魔王殿的陰冷截然不同。遠處山脊有巨大的影子滑過雲層，地面則散落著新鮮龍鱗與被火焰熔化的黑鐵碎片，說明魔族也曾試圖闖入卻被擊退。這裡是龍谷的安全錨點，也是判斷天候、龍群活動與前進路線的第一處觀察點。岩刻旁還有古老供台，提醒來者必須以敬意通行。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_throne', description: '退回魔王殿' },
       { direction: 'north', targetRoomId: 'dragon_nest_path', description: '踏入雲霧繚繞的峽谷' },
       { direction: 'east', targetRoomId: 'dragon_bone_field', description: '東方散落著巨大的白骨' },
+      { direction: 'west', targetRoomId: 'dragon_wind_roost', description: '西側岩棚傳來拍翼聲' },
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 60 },
@@ -1965,14 +1968,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dragon_nest_path',
     name: '龍巢小徑',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_nest_path.png',
+    imagePrompt: '龍巢小徑 in dragon_valley, narrow cliff trail with deep dragon claw marks, huge scales, misty walls and flying shadows overhead, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條蜿蜒在峭壁之間的狹窄小徑，兩側的岩壁上佈滿了龍爪留下的深深抓痕。' +
       '不時有巨大的影子掠過頭頂——那是在天空中盤旋的飛龍。' +
-      '小徑上散落著巨大的鱗片，每一片都比人的手掌還大。',
+      '小徑上散落著巨大的鱗片，每一片都比人的手掌還大。岩壁縫隙裡有幼龍磨爪留下的粉末，風吹過時會像金色霧氣一樣飄起。道路時寬時窄，有些地方只能貼著岩面前進，若沒有留意頭頂的影子，很容易被巡弋的龍騎士堵在轉角。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_valley_entrance', description: '退回龍谷入口' },
       { direction: 'north', targetRoomId: 'wyvern_cliff', description: '小徑通向一處懸崖' },
       { direction: 'west', targetRoomId: 'dragon_egg_chamber', description: '岩壁中有一個隱蔽的洞口' },
+      { direction: 'east', targetRoomId: 'dragon_scale_spring', description: '石階通往鱗光泉' },
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
@@ -1992,13 +1998,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'wyvern_cliff',
     name: '飛龍崖',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'wyvern_cliff.png',
+    imagePrompt: '飛龍崖 in dragon_valley, high cliff platform with wyvern nests, rolling clouds below, fierce wind, eggshells and watchful winged beasts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一處突出於山壁的巨大平台，三面臨崖，下方是萬丈深淵。' +
       '強勁的山風在崖頂呼嘯，雲層就在腳下翻湧。數隻飛龍在崖邊的巢穴中棲息，' +
-      '牠們銳利的目光警惕地注視著每一個靠近的生物。',
+      '牠們銳利的目光警惕地注視著每一個靠近的生物。崖面上有被爪子固定的舊旗幟與破碎鞍具，顯示龍騎士會在此訓練坐騎起降。風勢會突然改變方向，把細石與蛋殼碎片捲向空中；玩家若想通往天空之橋，必須抓準飛龍換巢與風向短暫平穩的時機。平台邊緣刻有龍族風向符，符文閃白時代表即將出現下沉氣流，任何站位錯誤都可能被迫退回小徑。崖底回聲也會暴露行蹤。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_nest_path', description: '退回龍巢小徑' },
       { direction: 'north', targetRoomId: 'sky_bridge', description: '崖邊有一座雲中石橋' },
+      { direction: 'west', targetRoomId: 'dragon_claw_pass', description: '崖壁裂縫通向龍爪隘口' },
     ],
     monsters: [
       { monsterId: 'wyvern', maxCount: 3, respawnSeconds: 60 },
@@ -2018,6 +2027,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dragon_bone_field',
     name: '龍骨原野',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_bone_field.png',
+    imagePrompt: '龍骨原野 in dragon_valley, vast field of colossal dragon skeletons, rib arches, green venom seepage, mist and ancient spirits, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一片被巨大龍骨散佈的荒野，有些骨骸的肋骨如同拱門般高聳，頭骨比房屋還要巨大。' +
       '這裡是遠古巨龍的安息之地，空氣中殘留著龍族亡魂的低語。' +
@@ -2047,13 +2058,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'ancient_dragon_lair',
     name: '古龍巢穴',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'ancient_dragon_lair.png',
+    imagePrompt: '古龍巢穴 in dragon_valley, enormous cavern for an ancient dragon, scale crystals on walls, cracked eggshells, dragon teeth and sleeping power, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一個巨大的天然洞穴，穹頂高達數十公尺，足以容納一條成年巨龍。' +
       '洞壁上覆蓋著閃爍的龍鱗結晶，地面散佈著碎裂的蛋殼和龍牙。' +
-      '洞穴深處傳來沉重的呼吸聲，一股令人顫慄的古老力量在此沉睡。',
+      '洞穴深處傳來沉重的呼吸聲，一股令人顫慄的古老力量在此沉睡。洞穴中央的石台被無數爪痕磨得光滑，四周堆著來自不同年代的獻禮：風化的王冠、破裂的魔法盾與刻著龍語誓約的石板。每次呼吸聲響起，牆上的鱗晶便會依序亮起，像是在回應巢穴主人的夢境。巢穴後壁有新近破開的裂痕，露出通往鍛台的龍牙階梯，也暗示古龍並未完全封閉自己的聖域。洞頂還滴落溫熱霧珠。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_bone_field', description: '退回龍骨原野' },
       { direction: 'east', targetRoomId: 'dragon_hoard', description: '洞穴側面有一條通道', locked: true, keyItemId: 'gold_key' },
+      { direction: 'north', targetRoomId: 'dragon_scale_forge', description: '龍牙石階通往鱗鍛台' },
     ],
     monsters: [
       { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
@@ -2073,12 +2087,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dragon_hoard',
     name: '龍之寶庫',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_hoard.png',
+    imagePrompt: '龍之寶庫 in dragon_valley, mountain of gold coins, gems, crowns and magic weapons under dragon marked wards, dazzling guarded cavern, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '令人窒息的財富堆積如山——金幣、寶石、魔法武器、王冠和聖物混雜在一起，' +
       '形成一座閃閃發光的小丘。這是龍族數千年來從各個王國掠奪並收藏的寶藏。' +
-      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。',
+      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。寶庫頂端並非單純堆放財物，而是依照年代與王國紋章分層排列，像一座由戰利品寫成的歷史塔。牆面有風暴巨龍留下的焦黑爪痕，地板則埋著感應重量的龍語符文，只要光線折射角度改變，守衛就會立刻察覺。寶山後方的石門散發鍛火藍光，顯示部分寶物會被重新鑄造成聖殿防具。',
     exits: [
       { direction: 'west', targetRoomId: 'ancient_dragon_lair', description: '回到古龍巢穴' },
+      { direction: 'north', targetRoomId: 'dragon_scale_forge', description: '寶山後方有鑄鱗石門' },
     ],
     monsters: [
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
@@ -2098,13 +2115,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'sky_bridge',
     name: '天空之橋',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'sky_bridge.png',
+    imagePrompt: '天空之橋 in dragon_valley, translucent cloudstone bridge between peaks over abyss, violent winds, storm light in distance, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座由雲霧凝結而成的半透明石橋，橫跨在兩座山峰之間。' +
       '橋下是萬丈深淵，橋面上不時有強風呼嘯而過。' +
-      '遠方的山巔上閃爍著風暴的雷光，那是龍谷最高峰——風暴之巔。',
+      '遠方的山巔上閃爍著風暴的雷光，那是龍谷最高峰——風暴之巔。橋身內部流動著白銀色氣旋，腳步落下時會浮現短暫的龍語符號，彷彿橋本身正在判斷來者是否有資格通行。左右兩側各有殘破護欄與龍騎士的舊哨位，任何戰鬥都可能被強風推向危險邊緣。',
     exits: [
       { direction: 'south', targetRoomId: 'wyvern_cliff', description: '退回飛龍崖' },
       { direction: 'north', targetRoomId: 'storm_peak', description: '穿越風暴前往山巔' },
+      { direction: 'east', targetRoomId: 'dragon_fireglass_terrace', description: '橋東側有一片火玻璃平台' },
+      { direction: 'west', targetRoomId: 'dragon_thunder_nest', description: '雷鳴從西側巢穴傳來' },
     ],
     monsters: [
       { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
@@ -2124,13 +2145,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'storm_peak',
     name: '風暴之巔',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'storm_peak.png',
+    imagePrompt: '風暴之巔 in dragon_valley, highest mountain summit under thunderclouds, ancient dragon altar, spinning lightning orb and storm dragons, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '龍谷最高的山峰，終年被雷暴雲層籠罩。閃電不斷在雲間穿梭，' +
       '雷鳴聲震耳欲聾。山頂的平台上矗立著一座古老的龍族祭壇，' +
-      '祭壇上的雷球不停地旋轉閃爍，散發著令人敬畏的力量。',
+      '祭壇上的雷球不停地旋轉閃爍，散發著令人敬畏的力量。山頂岩面被雷擊燒成黑色玻璃，雨水還未落地就被上升熱流蒸乾。龍族祭司曾在此觀測天空，平台邊緣仍保留著星盤刻度與風向柱。每當雷球轉到北方，通往古龍聖殿的門便會短暫顯形。東西兩側分別能看見觀星棲台與熔火高巢，火光、雷光與星光在峰頂交會，使此處成為龍谷元素力量的核心。錯過時機便只能等待下一輪雷暴。',
     exits: [
       { direction: 'south', targetRoomId: 'sky_bridge', description: '退回天空之橋' },
       { direction: 'north', targetRoomId: 'elder_dragon_sanctum', description: '祭壇背後有一道通往聖殿的門' },
+      { direction: 'east', targetRoomId: 'dragon_oracle_perch', description: '東側觀星台仍有微光' },
+      { direction: 'west', targetRoomId: 'dragon_molten_aerie', description: '西側熱風通往熔火高巢' },
     ],
     monsters: [
       { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 1800 },
@@ -2150,12 +2175,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'elder_dragon_sanctum',
     name: '古龍聖殿',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'elder_dragon_sanctum.png',
+    imagePrompt: '古龍聖殿 in dragon_valley, sacred hall of dragon bones and crystal, star scaled elder dragon coiled in center, ancient pressure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '隱藏在風暴之巔背後的神聖殿堂，由巨大的龍骨和水晶構成。' +
       '殿堂中央盤踞著一條體型驚人的古龍，牠的鱗片如同星空般閃耀。' +
-      '空氣中充滿了遠古的威壓，連呼吸都變得沉重。這是龍谷最強大的存在。',
+      '空氣中充滿了遠古的威壓，連呼吸都變得沉重。這是龍谷最強大的存在。聖殿柱廊由歷代古龍的脫落角骨堆疊而成，水晶地面下能看見雲海、星光與更深處的紫黑裂隙。古龍並未立刻攻擊，而是用低沉目光審視來者，彷彿牠早已知道魔族、龍谷與深淵之間的下一場災難。四周側殿分別通往鍛台、天衛營地與墜星坑，每一條路都代表龍族仍在維持的古老職責。殿門會隨古龍呼吸緩慢開合。',
     exits: [
       { direction: 'south', targetRoomId: 'storm_peak', description: '退回風暴之巔' },
+      { direction: 'east', targetRoomId: 'dragon_scale_forge', description: '側殿通往龍鱗鍛台' },
+      { direction: 'west', targetRoomId: 'dragon_skywarden_camp', description: '西廊連到天衛營地' },
+      { direction: 'north', targetRoomId: 'dragon_starfall_crater', description: '北門外有墜星坑' },
       { direction: 'down', targetRoomId: 'abyss_entrance', description: '聖殿地板上有一道通往深淵的裂縫' },
     ],
     monsters: [
@@ -2176,12 +2206,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dragon_egg_chamber',
     name: '龍蛋室',
     zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_egg_chamber.png',
+    imagePrompt: '龍蛋室 in dragon_valley, warm hidden cavern with giant glowing dragon eggs on volcanic ash beds, geothermal steam and vigilant young dragons, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '隱蔽在岩壁深處的溫暖洞穴，地熱從地底湧出，維持著恆定的溫度。' +
       '數顆巨大的龍蛋安靜地排列在柔軟的火山灰床上，蛋殼上的紋路隱隱發光。' +
-      '這是龍族孕育下一代的聖地，任何威脅都會招致所有龍族的瘋狂報復。',
+      '這是龍族孕育下一代的聖地，任何威脅都會招致所有龍族的瘋狂報復。洞穴上方有許多細小通風孔，能把風暴之巔的雷鳴轉成低沉搖籃聲。灰床旁擺著由鱗片、草藥與晶砂編成的護巢圈，說明幼龍的孵化需要火、風與星光共同維持平衡。後方隘口由護巢龍爪親自開鑿，只允許守衛在緊急時快速抵達飛龍崖。牆上還掛著破損鞍布與幼龍初次飛行的紀念鱗片，讓這裡兼具危險與神聖意味。',
     exits: [
       { direction: 'east', targetRoomId: 'dragon_nest_path', description: '小心地退回龍巢小徑' },
+      { direction: 'north', targetRoomId: 'dragon_claw_pass', description: '孵化室後方有龍爪隘口' },
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 3, respawnSeconds: 50 },
@@ -2194,6 +2227,278 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       creature: '在龍蛋室中戰鬥要格外小心——傷害龍蛋會引來整個龍谷的龍族報復。',
       treasure: '已經不會孵化的化石龍蛋是極為珍貴的收藏品和煉金材料。',
       spirit: '每一顆龍蛋中都沉睡著一個嶄新的龍族靈魂——牠們的夢境構成了龍谷的魔力場。',
+    },
+  },
+
+  dragon_wind_roost: {
+    id: 'dragon_wind_roost',
+    name: '風棲岩棚',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_wind_roost.png',
+    imagePrompt: '風棲岩棚 in dragon_valley, western ledge full of wind-carved nests, feathered banners, warm updrafts and young dragons resting, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '龍谷入口西側的岩棚被長年上升氣流切成弧形，岩壁上掛滿被風磨亮的龍巢與舊布旗。幼龍會在此練習短距離滑翔，牠們用爪子抓住岩脊，等待熱風將身體托起。棚底有幾處天然凹槽，積著雨水、白羽與細碎龍鱗，可供玩家觀察風向或尋找可用材料。這裡雖靠近入口，卻能很快引來巡空飛龍。',
+    exits: [
+      { direction: 'east', targetRoomId: 'dragon_valley_entrance', description: '沿岩棚回到龍谷入口' },
+      { direction: 'north', targetRoomId: 'dragon_egg_chamber', description: '窄洞通往龍蛋室外壁' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[風]',
+    mapX: 2,
+    mapY: 24,
+    guardianHints: {
+      creature: '幼龍起飛前會先低伏身體，抓準此時後退可避開第一波火息。',
+      treasure: '岩棚凹槽中的完整龍鱗可作為高階護甲材料。',
+      spirit: '風棲岩棚是龍族孩童般的練習場，留下許多稚嫩爪痕。',
+    },
+  },
+
+  dragon_scale_spring: {
+    id: 'dragon_scale_spring',
+    name: '鱗光泉',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_scale_spring.png',
+    imagePrompt: '鱗光泉 in dragon_valley, clear mountain spring reflecting dragon scales, blue mist, healing mineral pools and claw-carved stones, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '龍巢小徑東側藏著一眼清澈泉池，泉水從佈滿龍鱗結晶的石縫湧出，在池面折射出金、藍與紫色光斑。受傷的飛龍會在此舔舐礦物水，龍騎士也會把裂開的鞍具浸入泉中修補符文。池畔石碑刻著古龍律法，要求任何飲用泉水者都必須留下等價記憶。這裡可作為資源點，也暗示龍谷並非只有戰鬥與掠奪。',
+    exits: [
+      { direction: 'west', targetRoomId: 'dragon_nest_path', description: '石階回到龍巢小徑' },
+      { direction: 'north', targetRoomId: 'dragon_fireglass_terrace', description: '泉水溝渠流向火玻璃台' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
+    ],
+    groundItems: [
+      { itemId: 'dragon_scale', description: '泉邊有一片被礦物光包覆的龍鱗' },
+    ],
+    mapSymbol: '[泉]',
+    mapX: 4,
+    mapY: 26,
+    guardianHints: {
+      creature: '守泉龍騎士會優先保護受傷幼龍，分散火力可以破壞防線。',
+      treasure: '泉底沉著透明鱗片，能強化抗火與抗雷裝備。',
+      spirit: '龍族把記憶視為泉水的交換品，這可能與牠們漫長壽命有關。',
+    },
+  },
+
+  dragon_claw_pass: {
+    id: 'dragon_claw_pass',
+    name: '龍爪隘口',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_claw_pass.png',
+    imagePrompt: '龍爪隘口 in dragon_valley, narrow pass carved by huge dragon claws, broken stone teeth, egg chamber back route and cliff winds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '龍蛋室北方的隘口像被巨爪撕開，兩側岩壁留下平行深痕，足以讓成年人整個人藏進爪溝。地面散著像牙齒般尖銳的白石，踩錯位置會發出刺耳回聲，驚動飛龍崖上的巢群。這條路是龍族護巢時使用的側道，能在龍蛋室與飛龍崖之間快速移動，也讓玩家看見龍谷防衛網的內層結構。',
+    exits: [
+      { direction: 'south', targetRoomId: 'dragon_egg_chamber', description: '回到溫暖的龍蛋室' },
+      { direction: 'east', targetRoomId: 'wyvern_cliff', description: '爪痕石階通往飛龍崖' },
+      { direction: 'north', targetRoomId: 'dragon_thunder_nest', description: '雷聲沿隘口向北滾動' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[爪]',
+    mapX: 2,
+    mapY: 26,
+    guardianHints: {
+      creature: '飛龍會利用爪溝藏身突襲，留意牆面落塵可預判位置。',
+      treasure: '深爪痕中卡著被磨亮的龍牙碎片。',
+      spirit: '隘口不是天然裂縫，而是某條古龍為保護巢穴親手開出的道路。',
+    },
+  },
+
+  dragon_fireglass_terrace: {
+    id: 'dragon_fireglass_terrace',
+    name: '火玻璃台',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_fireglass_terrace.png',
+    imagePrompt: '火玻璃台 in dragon_valley, terrace of black volcanic glass reflecting fire and clouds, dragon scorch marks, glowing cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天空之橋東側延伸出一片黑亮平台，地面像被龍息燒熔後重新凝固的玻璃，能倒映雲層與飛龍影子。平台下方有細小火脈游走，每隔片刻便在裂縫中閃出金紅色光線。龍騎士會在此測試坐騎的火焰吐息，也會把破裂的龍鱗放在玻璃台上重新燒合。這裡視野開闊，卻沒有遮蔽物，任何接近者都暴露在空中巡邏之下。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_bridge', description: '回到天空之橋' },
+      { direction: 'south', targetRoomId: 'dragon_scale_spring', description: '沿水汽回到鱗光泉' },
+      { direction: 'north', targetRoomId: 'dragon_oracle_perch', description: '火光指向觀星棲台' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[璃]',
+    mapX: 4,
+    mapY: 27,
+    guardianHints: {
+      creature: '火玻璃會反射龍息，站在裂縫間的暗色石帶上較安全。',
+      treasure: '平台邊緣有天然火玻璃，可用於附魔武器。',
+      spirit: '這裡記錄了龍族把破壞轉化為工藝的方式。',
+    },
+  },
+
+  dragon_thunder_nest: {
+    id: 'dragon_thunder_nest',
+    name: '雷巢',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_thunder_nest.png',
+    imagePrompt: '雷巢 in dragon_valley, storm-charged dragon nest of black branches and lightning rods, blue sparks, cloud abyss below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天空之橋西側的巢穴由黑色枝幹、龍骨碎片與天然避雷石編成，巢底不斷跳動藍白電弧。風暴巨龍會在此磨亮犄角，牠們用雷電淬鍊鱗片，使整座巢穴像活物一樣發出低鳴。巢外有幾根斷裂的龍騎長槍，槍尖仍殘留焦黑煙痕。玩家若想穿越此處，必須避開週期性落雷，也可觀察雷光流向判斷風暴之巔的祭壇狀態。巢壁深處還有半埋的雲石蛋殼，代表這裡曾孵化過掌控雷雲的古老血脈。每次雷鳴後，巢口會短暫露出通往熔火高巢的安全落腳點。若停留太久，避雷石會逐漸充能並吸引更多飛龍回巢。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sky_bridge', description: '回到天空之橋' },
+      { direction: 'south', targetRoomId: 'dragon_claw_pass', description: '下坡回到龍爪隘口' },
+      { direction: 'north', targetRoomId: 'dragon_molten_aerie', description: '雷雲後方連向熔火高巢' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[雷]',
+    mapX: 2,
+    mapY: 27,
+    guardianHints: {
+      creature: '風暴巨龍起飛前巢底電弧會集中，提前離開中心區。',
+      treasure: '避雷石上凝著雷晶，可強化雷屬性抗性。',
+      spirit: '雷巢是龍族成年試煉的一部分，能承受落雷才被准許上風暴之巔。',
+    },
+  },
+
+  dragon_oracle_perch: {
+    id: 'dragon_oracle_perch',
+    name: '龍諭棲台',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_oracle_perch.png',
+    imagePrompt: '龍諭棲台 in dragon_valley, high oracle perch with star maps, hanging crystal lenses, storm-lit clouds and ancient dragon runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴之巔東側的棲台懸在雲海之上，周圍吊著數十片水晶透鏡，會隨風轉動並投射星圖。龍族祭司曾在此聆聽古龍夢境，把預言刻在弧形石座後方。許多刻痕已被雷火熔成模糊光帶，但仍能辨認出魔族要塞、深淵裂隙與一顆墜落星辰的圖案。這裡是任務線索與大型事件鉤子的理想節點，也會吸引守護預言的龍騎士。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_peak', description: '回到風暴之巔' },
+      { direction: 'south', targetRoomId: 'dragon_fireglass_terrace', description: '星光階梯下到火玻璃台' },
+      { direction: 'north', targetRoomId: 'dragon_starfall_crater', description: '預言圖案指向墜星坑' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[諭]',
+    mapX: 4,
+    mapY: 28,
+    guardianHints: {
+      creature: '龍騎士會守住預言石座，使用遠程攻擊可迫使他們離開高位。',
+      treasure: '破裂透鏡中仍保有星光，可作為占星法器材料。',
+      spirit: '預言把魔族與深淵連在一起，說明龍谷早已察覺外界危機。',
+    },
+  },
+
+  dragon_molten_aerie: {
+    id: 'dragon_molten_aerie',
+    name: '熔火高巢',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_molten_aerie.png',
+    imagePrompt: '熔火高巢 in dragon_valley, high volcanic dragon aerie with lava vents, ember nests, red updrafts and molten rock ledges, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴之巔西側的山腹裂開，露出一座由熔岩熱流支撐的高巢。巢壁赤紅，岩石像剛從爐中取出的鐵塊，卻被龍爪雕出規整平台。火焰幼龍與風暴飛龍在此共用上升熱流，牠們的鱗片被熱風吹得發亮。這裡連接雷巢與風暴之巔，代表龍谷的火與雷力量在此交會；若破壞熱流節點，天空巡邏可能短暫失去高度優勢。',
+    exits: [
+      { direction: 'east', targetRoomId: 'storm_peak', description: '熱風階梯回到風暴之巔' },
+      { direction: 'south', targetRoomId: 'dragon_thunder_nest', description: '雷雲縫隙回到雷巢' },
+      { direction: 'north', targetRoomId: 'dragon_skywarden_camp', description: '高巢後方通向天衛營地' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[熔]',
+    mapX: 2,
+    mapY: 28,
+    guardianHints: {
+      creature: '熔火高巢的熱流會讓飛行敵人快速回位，先逼牠們離開熱流柱。',
+      treasure: '熔岩冷卻邊緣有紅色龍晶，可用於火屬性附魔。',
+      spirit: '火與雷在此共存，顯示龍族元素傳承並非彼此孤立。',
+    },
+  },
+
+  dragon_scale_forge: {
+    id: 'dragon_scale_forge',
+    name: '龍鱗鍛台',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_scale_forge.png',
+    imagePrompt: '龍鱗鍛台 in dragon_valley, sacred forge built from dragon bones and crystal anvils, scale armor pieces, blue fire and hoard gate, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古龍巢穴北側的石階通往龍鱗鍛台，這裡沒有普通鐵匠爐，只有嵌在龍骨中的藍色火焰與水晶砧。龍族會把自然脫落的鱗片、斷角與星砂放在砧上，鍛造成守護聖殿的甲片與符刃。牆面掛著半成品龍鱗甲，每一片都記錄著原主的元素氣息。鍛台同時連著寶庫與古龍聖殿，是資源、裝備與任務獎勵的交會點。砧台下方有古龍親自留下的鍛造誓言，要求使用者不得以屠龍所得換取力量。水晶砧旁還保存著多份未完成配方，可延伸後續裝備任務。藍火會辨認材料來源，讓貪婪者只得到一團冷灰。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ancient_dragon_lair', description: '龍牙階梯回到古龍巢穴' },
+      { direction: 'east', targetRoomId: 'dragon_hoard', description: '鑄鱗石門通往龍之寶庫' },
+      { direction: 'west', targetRoomId: 'elder_dragon_sanctum', description: '側殿回到古龍聖殿' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 75 },
+    ],
+    groundItems: [
+      { itemId: 'dragon_scale', description: '水晶砧旁放著一片等待鍛造的古龍鱗' },
+    ],
+    mapSymbol: '[鍛]',
+    mapX: 4,
+    mapY: 29,
+    guardianHints: {
+      creature: '守鍛龍騎士會利用砧台反彈攻擊，繞到側面較容易突破。',
+      treasure: '未完成的龍鱗甲片可作為高階裝備配方線索。',
+      spirit: '龍族鍛造只使用自然脫落材料，象徵力量必須被允許而非掠奪。',
+    },
+  },
+
+  dragon_skywarden_camp: {
+    id: 'dragon_skywarden_camp',
+    name: '天衛營地',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_skywarden_camp.png',
+    imagePrompt: '天衛營地 in dragon_valley, elite dragon knight camp on high ridge, banners, saddle racks, maps of sky patrols and cloud fires, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古龍聖殿西廊外是一處守衛營地，石平台上排列著龍騎士鞍具、長槍架與記錄天空巡邏線的皮革地圖。營火不是木柴燃起，而是由小型風暴晶核維持，火焰會隨天候改變顏色。天衛負責攔截從魔族領地、山外航路與深淵裂縫靠近的威脅，因此此處保留大量戰報。玩家若能突破守衛，便能取得關於龍谷防線與下一區裂隙的清楚線索。',
+    exits: [
+      { direction: 'east', targetRoomId: 'elder_dragon_sanctum', description: '西廊回到古龍聖殿' },
+      { direction: 'south', targetRoomId: 'dragon_molten_aerie', description: '斜坡下到熔火高巢' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[衛]',
+    mapX: 2,
+    mapY: 29,
+    guardianHints: {
+      creature: '天衛會以長槍控制距離，利用營帳柱子可切斷衝鋒線。',
+      treasure: '巡邏地圖上標出深淵入口異常擴大的日期。',
+      spirit: '龍族並非避世不問外界，天衛長年監控所有重大威脅。',
+    },
+  },
+
+  dragon_starfall_crater: {
+    id: 'dragon_starfall_crater',
+    name: '墜星坑',
+    zone: 'dragon_valley' as RoomDef['zone'],
+    image: 'dragon_starfall_crater.png',
+    imagePrompt: '墜星坑 in dragon_valley, glowing meteor crater north of elder dragon sanctum, star metal shards, dragon runes, purple abyss cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古龍聖殿北門外的山脊被一顆遠古星辰砸出圓形巨坑，坑底仍散發銀藍色微光。星鐵碎片嵌在岩層中，周圍刻滿龍族封印符號，防止天外力量滲入地脈。近年封印邊緣開始出現紫黑裂紋，與聖殿地板下通往深淵的裂隙互相呼應。這裡是龍谷的大型事件鉤子，能把古龍預言、星界材料與深淵危機串在一起。',
+    exits: [
+      { direction: 'south', targetRoomId: 'elder_dragon_sanctum', description: '沿封印石階回到古龍聖殿' },
+      { direction: 'west', targetRoomId: 'dragon_oracle_perch', description: '星圖小徑折向龍諭棲台' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[星]',
+    mapX: 4,
+    mapY: 30,
+    guardianHints: {
+      creature: '墜星坑中的古龍蛇會沿裂紋游動，牠們出現前星鐵會先震動。',
+      treasure: '坑底星鐵是鍛造神器與封印道具的核心材料。',
+      spirit: '墜星坑證明深淵裂隙並非單純地下災害，而是與星界衝擊有關。',
     },
   },
 

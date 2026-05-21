@@ -271,6 +271,10 @@ export const ZONES: Record<string, ZoneDef> = {
       'dragon_valley_entrance', 'dragon_nest_path', 'wyvern_cliff',
       'dragon_bone_field', 'ancient_dragon_lair', 'dragon_hoard',
       'sky_bridge', 'storm_peak', 'elder_dragon_sanctum', 'dragon_egg_chamber',
+      'dragon_wind_roost', 'dragon_scale_spring', 'dragon_claw_pass',
+      'dragon_fireglass_terrace', 'dragon_thunder_nest', 'dragon_oracle_perch',
+      'dragon_molten_aerie', 'dragon_scale_forge', 'dragon_skywarden_camp',
+      'dragon_starfall_crater',
     ],
   },
   abyss_rift: {
