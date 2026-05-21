@@ -1,5 +1,4 @@
 // 製作系統 — CraftingManager
-// 支援三種類別：鍛造 (forge)、煉金 (alchemy)、烹飪 (cooking)
 
 import { getDb } from '../db/schema.js';
 import { getInventory, addInventoryItem, removeInventoryItem } from '../db/queries.js';
@@ -9,7 +8,24 @@ import { ITEM_DEFS, type EquipSlot } from '@game/shared';
 //  型別定義
 // ============================================================
 
-export type CraftingCategory = 'forge' | 'alchemy' | 'cooking';
+export type CraftingCategory =
+  | 'forge'
+  | 'tailoring'
+  | 'leatherworking'
+  | 'jewelcrafting'
+  | 'alchemy'
+  | 'enchanting'
+  | 'cooking';
+
+export const CRAFTING_CATEGORIES: CraftingCategory[] = [
+  'forge',
+  'tailoring',
+  'leatherworking',
+  'jewelcrafting',
+  'alchemy',
+  'enchanting',
+  'cooking',
+];
 
 export interface RecipeDef {
   id: string;
@@ -98,7 +114,7 @@ export const RECIPES: Record<string, RecipeDef> = {
   craft_beast_leather_armor: {
     id: 'craft_beast_leather_armor',
     name: '獸皮甲',
-    category: 'forge',
+    category: 'leatherworking',
     level: 5,
     materials: [{ itemId: 'beast_hide', count: 3 }],
     result: { itemId: 'beast_leather_armor', count: 1 },
@@ -108,7 +124,7 @@ export const RECIPES: Record<string, RecipeDef> = {
   craft_spider_silk_robe: {
     id: 'craft_spider_silk_robe',
     name: '蜘蛛絲袍',
-    category: 'forge',
+    category: 'tailoring',
     level: 10,
     materials: [{ itemId: 'spider_silk_cloth', count: 4 }],
     result: { itemId: 'spider_silk_robe', count: 1 },
@@ -176,6 +192,74 @@ export const RECIPES: Record<string, RecipeDef> = {
     result: { itemId: 'ancient_relic', count: 1 },
     successRate: 40,
     exp: 100,
+  },
+
+  // ─── 裁縫 (Tailoring) ──────────────────────────────────────
+
+  craft_mage_earring: {
+    id: 'craft_mage_earring',
+    name: '魔導耳環',
+    category: 'tailoring',
+    level: 12,
+    materials: [
+      { itemId: 'spider_silk_cloth', count: 2 },
+      { itemId: 'magic_crystal', count: 1 },
+    ],
+    result: { itemId: 'mage_earring', count: 1 },
+    successRate: 72,
+    exp: 42,
+  },
+
+  // ─── 皮革 (Leatherworking) ─────────────────────────────────
+
+  craft_leather_cap: {
+    id: 'craft_leather_cap',
+    name: '皮帽',
+    category: 'leatherworking',
+    level: 1,
+    materials: [{ itemId: 'beast_hide', count: 2 }],
+    result: { itemId: 'leather_cap', count: 1 },
+    successRate: 90,
+    exp: 12,
+  },
+  craft_leather_boots: {
+    id: 'craft_leather_boots',
+    name: '皮靴',
+    category: 'leatherworking',
+    level: 3,
+    materials: [{ itemId: 'beast_hide', count: 2 }],
+    result: { itemId: 'leather_boots', count: 1 },
+    successRate: 88,
+    exp: 16,
+  },
+
+  // ─── 珠寶 (Jewelcrafting) ──────────────────────────────────
+
+  craft_wooden_ring: {
+    id: 'craft_wooden_ring',
+    name: '木戒指',
+    category: 'jewelcrafting',
+    level: 1,
+    materials: [
+      { itemId: 'elf_wood', count: 1 },
+      { itemId: 'magic_crystal', count: 1 },
+    ],
+    result: { itemId: 'wooden_ring', count: 1 },
+    successRate: 88,
+    exp: 14,
+  },
+  craft_lucky_necklace: {
+    id: 'craft_lucky_necklace',
+    name: '幸運護符',
+    category: 'jewelcrafting',
+    level: 8,
+    materials: [
+      { itemId: 'magic_crystal', count: 2 },
+      { itemId: 'ancient_fragment', count: 1 },
+    ],
+    result: { itemId: 'lucky_charm', count: 1 },
+    successRate: 75,
+    exp: 34,
   },
 
   // ─── 煉金 (Alchemy) ─────────────────────────────────────────
@@ -307,6 +391,35 @@ export const RECIPES: Record<string, RecipeDef> = {
     result: { itemId: 'advanced_enhance_stone', count: 1 },
     successRate: 45,
     exp: 80,
+  },
+
+  // ─── 附魔 (Enchanting) ─────────────────────────────────────
+
+  craft_enchanted_blessing_scroll: {
+    id: 'craft_enchanted_blessing_scroll',
+    name: '祝福卷軸',
+    category: 'enchanting',
+    level: 1,
+    materials: [
+      { itemId: 'magic_crystal', count: 1 },
+      { itemId: 'affix_essence', count: 1 },
+    ],
+    result: { itemId: 'blessing_scroll', count: 1 },
+    successRate: 85,
+    exp: 18,
+  },
+  craft_enchanting_focus: {
+    id: 'craft_enchanting_focus',
+    name: '詞綴精華',
+    category: 'enchanting',
+    level: 6,
+    materials: [
+      { itemId: 'magic_crystal', count: 2 },
+      { itemId: 'ancient_fragment', count: 1 },
+    ],
+    result: { itemId: 'affix_essence', count: 2 },
+    successRate: 78,
+    exp: 28,
   },
 
   // ─── 烹飪 (Cooking) ─────────────────────────────────────────
@@ -444,7 +557,11 @@ export const RECIPES: Record<string, RecipeDef> = {
 
 const CATEGORY_NAMES: Record<CraftingCategory, string> = {
   forge: '鍛造',
+  tailoring: '裁縫',
+  leatherworking: '皮革',
+  jewelcrafting: '珠寶',
   alchemy: '煉金',
+  enchanting: '附魔',
   cooking: '烹飪',
 };
 
@@ -482,8 +599,7 @@ export class CraftingManager {
 
   /** 取得角色所有製作等級 */
   getAllCraftingLevels(characterId: string): CraftingLevelInfo[] {
-    const categories: CraftingCategory[] = ['forge', 'alchemy', 'cooking'];
-    return categories.map(c => this.getCraftingLevel(characterId, c));
+    return CRAFTING_CATEGORIES.map(c => this.getCraftingLevel(characterId, c));
   }
 
   // ──────────────────────────────────────────────────────────

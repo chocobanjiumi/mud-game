@@ -46,6 +46,7 @@ import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
+import { CRAFTING_CATEGORIES, type CraftingCategory } from './crafting.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -3590,18 +3591,18 @@ function cmdCraft(session: WsSession, args: string[]): void {
 
   switch (sub) {
     case 'list': {
-      const category = args[1]?.toLowerCase();
-      if (category === 'forge' || category === '鍛造') {
-        sendSystem(session.sessionId, craftingMgr.formatRecipeList('forge', char.id));
-      } else if (category === 'alchemy' || category === '煉金') {
-        sendSystem(session.sessionId, craftingMgr.formatRecipeList('alchemy', char.id));
-      } else if (category === 'cooking' || category === '烹飪') {
-        sendSystem(session.sessionId, craftingMgr.formatRecipeList('cooking', char.id));
+      const category = resolveCraftingCategory(args[1]);
+      if (category) {
+        sendSystem(session.sessionId, craftingMgr.formatRecipeList(category, char.id));
       } else {
         sendSystem(session.sessionId,
           '製作類別：\n' +
           '  craft list forge    — 鍛造配方\n' +
+          '  craft list tailoring — 裁縫配方\n' +
+          '  craft list leather   — 皮革配方\n' +
+          '  craft list jewel     — 珠寶配方\n' +
           '  craft list alchemy  — 煉金配方\n' +
+          '  craft list enchant  — 附魔配方\n' +
           '  craft list cooking  — 烹飪配方',
         );
       }
@@ -3642,6 +3643,21 @@ function cmdCraft(session: WsSession, args: string[]): void {
       }
       break;
     }
+    case 'tailoring': case 'tailor': case '裁縫':
+    case 'leatherworking': case 'leather': case '皮革':
+    case 'jewelcrafting': case 'jewel': case 'jewelry': case '珠寶':
+    case 'enchanting': case 'enchant': case '附魔': {
+      const category = resolveCraftingCategory(sub);
+      const recipeId = args[1];
+      if (!category || !recipeId) { sendError(session.sessionId, '用法：craft <類別> <配方ID>'); return; }
+      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
+      sendSystem(session.sessionId, result.message);
+      if (result.crafted) {
+        questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
+        classQuest2Mgr.onCraft(char.id, result.resultItemId ?? recipeId, category);
+      }
+      break;
+    }
     case 'info': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft info <配方ID>'); return; }
@@ -3673,10 +3689,14 @@ function cmdCraft(session: WsSession, args: string[]): void {
       }
       sendSystem(session.sessionId,
         '製作系統指令：\n' +
-        '  craft list [forge|alchemy|cooking] — 查看配方\n' +
+        '  craft list [forge|tailoring|leather|jewel|alchemy|enchant|cooking] — 查看配方\n' +
         '  craft <配方ID> [slot:<slot>] — 直接製作配方\n' +
         '  craft forge <配方ID>    — 鍛造裝備\n' +
+        '  craft tailoring <配方ID> — 裁縫裝備\n' +
+        '  craft leather <配方ID>  — 皮革裝備\n' +
+        '  craft jewel <配方ID>    — 珠寶飾品\n' +
         '  craft alchemy <配方ID>  — 煉金製藥\n' +
+        '  craft enchant <配方ID>  — 附魔媒材\n' +
         '  craft cook <配方ID>     — 烹飪料理\n' +
         '  craft info <配方ID>     — 查看配方詳情\n' +
         '  craft level             — 查看製作等級',
@@ -3688,6 +3708,34 @@ function cmdCraft(session: WsSession, args: string[]): void {
 function parseCraftSlot(args: string[]): EquipSlot | undefined {
   const token = args.find(arg => arg.toLowerCase().startsWith('slot:'));
   return token?.slice('slot:'.length) as EquipSlot | undefined;
+}
+
+function resolveCraftingCategory(input?: string): CraftingCategory | undefined {
+  const normalized = input?.toLowerCase();
+  if (!normalized) return undefined;
+  const aliases: Record<string, CraftingCategory> = {
+    forge: 'forge',
+    '鍛造': 'forge',
+    tailoring: 'tailoring',
+    tailor: 'tailoring',
+    '裁縫': 'tailoring',
+    leatherworking: 'leatherworking',
+    leather: 'leatherworking',
+    '皮革': 'leatherworking',
+    jewelcrafting: 'jewelcrafting',
+    jewel: 'jewelcrafting',
+    jewelry: 'jewelcrafting',
+    '珠寶': 'jewelcrafting',
+    alchemy: 'alchemy',
+    '煉金': 'alchemy',
+    enchanting: 'enchanting',
+    enchant: 'enchanting',
+    '附魔': 'enchanting',
+    cooking: 'cooking',
+    cook: 'cooking',
+    '烹飪': 'cooking',
+  };
+  return aliases[normalized] ?? CRAFTING_CATEGORIES.find(category => category === normalized);
 }
 
 // ─── 採集系統 ───
@@ -3944,9 +3992,13 @@ function cmdHelp(session: WsSession, topic?: string): void {
     craft: {
       title: '製作系統',
       lines: [
-        'craft list [forge|alchemy|cooking] 查看配方',
+        'craft list [forge|tailoring|leather|jewel|alchemy|enchant|cooking] 查看配方',
         'craft forge <配方ID>   鍛造裝備',
+        'craft tailoring <配方ID> 裁縫裝備',
+        'craft leather <配方ID>  皮革裝備',
+        'craft jewel <配方ID>    珠寶飾品',
         'craft alchemy <配方ID> 煉金製藥',
+        'craft enchant <配方ID> 附魔媒材',
         'craft cook <配方ID>    烹飪料理',
         'craft info <配方ID>    查看配方詳情',
         'craft level            查看製作等級',

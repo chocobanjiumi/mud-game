@@ -39,7 +39,7 @@ import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
 import { GatheringManager } from '../game/gathering.js';
 import { ROOMS, ZONES } from '../data/rooms.js';
-import { RECIPES, getRecipeResult } from '../game/crafting.js';
+import { CRAFTING_CATEGORIES, RECIPES, getRecipeResult } from '../game/crafting.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================
@@ -827,6 +827,26 @@ describe('Balance: Gathering definitions', () => {
 });
 
 describe('Balance: Crafting definitions', () => {
+  it('has implemented recipes for every crafting category', () => {
+    for (const category of CRAFTING_CATEGORIES) {
+      const recipes = Object.values(RECIPES).filter(recipe => recipe.category === category);
+      expect(recipes.length, category).toBeGreaterThan(0);
+    }
+  });
+
+  it('only references existing materials and result items', () => {
+    for (const recipe of Object.values(RECIPES)) {
+      expect(ITEM_DEFS[recipe.result.itemId], `${recipe.id}:result`).toBeDefined();
+      for (const material of recipe.materials) {
+        expect(ITEM_DEFS[material.itemId], `${recipe.id}:material:${material.itemId}`).toBeDefined();
+      }
+      for (const [slot, result] of Object.entries(recipe.slotResults ?? {})) {
+        expect(ITEM_DEFS[result.itemId], `${recipe.id}:slot:${slot}`).toBeDefined();
+        expect(ITEM_DEFS[result.itemId]?.equipSlot, `${recipe.id}:slot:${slot}`).toBe(slot);
+      }
+    }
+  });
+
   it('has at least one crafting route for every equipment slot', () => {
     const slots = ['weapon', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'] as const;
 
