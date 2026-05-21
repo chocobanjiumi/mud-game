@@ -701,6 +701,9 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     description: '張開雙臂向蒼穹呼喚神明最猛烈的怒火，天空中裂開一道金色的縫隙。灼熱的神聖之光如瀑布般從天際傾瀉而下，焚燒戰場上一切不潔之物。那些已被標記為異端的目標會在神怒之中承受雙倍的懲罰，化為灰燼是他們唯一的歸宿。',
     special: { markedMultiplier: 2 },
   },
+
+  ...createSecondJobSkillExpansionDefs(),
+
   // ════════════════════════════════════════════
   //  怪物技能 (Monster Skills)
   // ════════════════════════════════════════════
@@ -1144,6 +1147,173 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
 };
 
 export const SKILL_DEFS: Record<string, SkillDef> = normalizeSkillDefs(RAW_SKILL_DEFS);
+
+interface SecondJobSkillExpansion {
+  classId: ClassId;
+  resource: readonly [string, string, string, string];
+  burst: readonly [string, string, string, string];
+  survival: readonly [string, string, string, string];
+  answer: readonly [string, string, string, string];
+  damageType: 'physical' | 'magical';
+  element: 'none' | 'fire' | 'light' | 'dark' | 'nature';
+  scaling: 'atk' | 'matk';
+}
+
+function createSecondJobSkillExpansionDefs(): Record<string, RawSkillDef> {
+  const expansions = [
+    {
+      classId: 'knight',
+      resource: ['steel_guard', '鋼鐵守勢', 'Steel Guard', '舉盾穩住陣線，將承受的壓力轉為怒氣與防禦節奏。'],
+      burst: ['radiant_charge', '聖光衝鋒', 'Radiant Charge', '以聖光包覆全身衝向目標，在爆發窗口內打出沉重制裁。'],
+      survival: ['last_bastion', '最後堡壘', 'Last Bastion', '把盾牌插入地面展開防線，短時間內大幅降低受到的傷害。'],
+      answer: ['shield_breaker', '破陣盾擊', 'Shield Breaker', '以盾緣打斷敵人的關鍵動作，震碎其防護與護盾。'],
+      damageType: 'physical', element: 'light', scaling: 'atk',
+    },
+    {
+      classId: 'berserker',
+      resource: ['blood_heat', '血熱', 'Blood Heat', '讓傷痛轉為戰意，攻勢越激烈越能維持怒氣循環。'],
+      burst: ['ruin_cleave', '毀滅劈斬', 'Ruin Cleave', '壓榨全身力量斬出巨大的裂地一擊。'],
+      survival: ['pain_anchor', '痛覺錨定', 'Pain Anchor', '以痛楚固定意識，在低血量時硬扛致命傷勢。'],
+      answer: ['savage_interrupt', '野蠻截斷', 'Savage Interrupt', '用毫無章法的暴力打斷詠唱，撕開敵人的防護。'],
+      damageType: 'physical', element: 'none', scaling: 'atk',
+    },
+    {
+      classId: 'sword_saint',
+      resource: ['flowing_stance', '流水架式', 'Flowing Stance', '以呼吸和步伐累積劍勢，讓連斬循環更加穩定。'],
+      burst: ['heaven_splitter', '天斷', 'Heaven Splitter', '將全部劍勢凝於一線，斬出足以撕裂防線的奧義。'],
+      survival: ['empty_step', '空步', 'Empty Step', '在攻擊落下前撤入空隙，提高閃避並保留反擊位置。'],
+      answer: ['mind_cut', '心斬', 'Mind Cut', '斬向敵人意圖本身，中斷蓄勢並破除護身術。'],
+      damageType: 'physical', element: 'none', scaling: 'atk',
+    },
+    {
+      classId: 'archmage',
+      resource: ['mana_weave', '魔力編織', 'Mana Weave', '重新排列元素脈流，使下一輪施法維持穩定魔力循環。'],
+      burst: ['elemental_cascade', '元素奔流', 'Elemental Cascade', '讓多重元素連鎖爆發，短時間傾瀉壓倒性的魔法火力。'],
+      survival: ['arcane_ward', '奧術結界', 'Arcane Ward', '張開高密度魔力屏障，吸收即將到來的傷害。'],
+      answer: ['spell_sunder', '破法震盪', 'Spell Sunder', '以反向術式震碎敵方護盾並中斷施法。'],
+      damageType: 'magical', element: 'fire', scaling: 'matk',
+    },
+    {
+      classId: 'warlock',
+      resource: ['soul_siphon', '靈魂虹吸', 'Soul Siphon', '從詛咒縫隙中抽取靈魂碎片，轉為暗影施法資源。'],
+      burst: ['abyssal_edict', '深淵敕令', 'Abyssal Edict', '命令深淵回應契約，在詛咒目標身上爆開黑暗能量。'],
+      survival: ['dark_bargain', '黑暗交易', 'Dark Bargain', '以部分魔力換取護身暗幕，降低短時間內受到的傷害。'],
+      answer: ['curse_unravel', '解咒反噬', 'Curse Unravel', '拆解敵人的守護術式，讓其詠唱在反噬中崩潰。'],
+      damageType: 'magical', element: 'dark', scaling: 'matk',
+    },
+    {
+      classId: 'chronomancer',
+      resource: ['tempo_loop', '節拍循環', 'Tempo Loop', '校準自身時間節拍，使冷卻與魔力消耗進入可控循環。'],
+      burst: ['paradox_burst', '悖論爆發', 'Paradox Burst', '把數個可能瞬間壓縮到同一時間點，引發時序爆裂。'],
+      survival: ['borrowed_moment', '借來的一瞬', 'Borrowed Moment', '從未來借取一瞬反應時間，避開本應命中的危險。'],
+      answer: ['timeline_sever', '時間線切斷', 'Timeline Sever', '切斷敵人正在完成的行動，並解除其維持中的護盾。'],
+      damageType: 'magical', element: 'none', scaling: 'matk',
+    },
+    {
+      classId: 'marksman',
+      resource: ['steady_breath', '穩定呼吸', 'Steady Breath', '壓低呼吸與心跳，讓能量回到可持續射擊的節奏。'],
+      burst: ['kill_zone', '絕殺領域', 'Kill Zone', '鎖定一片死亡角度，對露出破綻的目標射出爆發箭。'],
+      survival: ['evasive_roll', '翻滾撤離', 'Evasive Roll', '在敵人逼近時迅速翻滾，拉開距離並提高閃避。'],
+      answer: ['pinning_shot', '釘足射擊', 'Pinning Shot', '以精準箭矢釘住敵人動作，中斷技能並破壞護盾。'],
+      damageType: 'physical', element: 'none', scaling: 'atk',
+    },
+    {
+      classId: 'assassin',
+      resource: ['shadow_rhythm', '影步節奏', 'Shadow Rhythm', '在明暗之間切換步伐，回收能量並準備下一次暗殺。'],
+      burst: ['execution_mark', '處刑印記', 'Execution Mark', '將目標標記為處刑對象，隨後刺出高倍率致命一擊。'],
+      survival: ['smoke_escape', '煙幕脫離', 'Smoke Escape', '引爆煙幕遮蔽身形，獲得閃避並重新進入有利位置。'],
+      answer: ['garrote', '絞喉', 'Garrote', '從死角勒住目標咽喉，沉默詠唱並撕開護體效果。'],
+      damageType: 'physical', element: 'dark', scaling: 'atk',
+    },
+    {
+      classId: 'beast_master',
+      resource: ['pack_signal', '群獵信號', 'Pack Signal', '以短促口令同步夥伴行動，讓能量循環回到狩獵節奏。'],
+      burst: ['alpha_pounce', '首領撲擊', 'Alpha Pounce', '與夥伴同時撲向獵物，在爆發窗口內完成合擊。'],
+      survival: ['shared_instinct', '共享本能', 'Shared Instinct', '借助夥伴感官避開危險，提升閃避與防禦反應。'],
+      answer: ['commanding_roar', '命令咆哮', 'Commanding Roar', '以首領咆哮壓制敵人，打斷動作並震碎護盾。'],
+      damageType: 'physical', element: 'nature', scaling: 'atk',
+    },
+    {
+      classId: 'high_priest',
+      resource: ['prayer_cycle', '祈禱循環', 'Prayer Cycle', '以短禱穩定信仰流向，為下一次治療或護盾儲備力量。'],
+      burst: ['miracle_window', '奇蹟時刻', 'Miracle Window', '短時間打開聖光通道，讓治療與守護效果集中爆發。'],
+      survival: ['seraph_guard', '熾天守護', 'Seraph Guard', '召來高階聖光守護，使隊友在危急時獲得堅固護盾。'],
+      answer: ['purging_bell', '淨化鐘聲', 'Purging Bell', '敲響淨化鐘聲，中斷邪術並驅散護盾與詛咒。'],
+      damageType: 'magical', element: 'light', scaling: 'matk',
+    },
+    {
+      classId: 'druid',
+      resource: ['wild_cycle', '野性循環', 'Wild Cycle', '在生命與自然法術之間轉換節奏，維持信仰與自然能量。'],
+      burst: ['verdant_surge', '翠綠奔湧', 'Verdant Surge', '讓地脈生命力一口氣湧出，化為攻守兼具的爆發。'],
+      survival: ['barkskin', '樹皮護體', 'Barkskin', '使皮膚覆上堅韌樹皮，降低受到的物理與魔法傷害。'],
+      answer: ['root_snare', '盤根束縛', 'Root Snare', '以根鬚纏住目標，打斷其機制並扯碎外層護盾。'],
+      damageType: 'magical', element: 'nature', scaling: 'matk',
+    },
+    {
+      classId: 'inquisitor',
+      resource: ['zeal_cycle', '熱忱循環', 'Zeal Cycle', '以審判祈詞累積熱忱，使信仰資源轉為穩定攻勢。'],
+      burst: ['verdict_hour', '宣判時刻', 'Verdict Hour', '在罪證最明確的一瞬宣判，打出神聖爆發傷害。'],
+      survival: ['martyr_aegis', '殉道聖盾', 'Martyr Aegis', '以殉道誓言承受痛苦，短時間獲得傷害減免。'],
+      answer: ['edict_of_silence', '沉默敕令', 'Edict of Silence', '以聖典敕令封住敵人咒語，並驅散其防護。'],
+      damageType: 'magical', element: 'light', scaling: 'matk',
+    },
+  ] as const satisfies readonly SecondJobSkillExpansion[];
+  const defs: Record<string, RawSkillDef> = {};
+
+  for (const entry of expansions) {
+    const [resourceId, resourceName, resourceEnglishName, resourceDescription] = entry.resource;
+    defs[resourceId] = {
+      id: resourceId, name: resourceName, englishName: resourceEnglishName,
+      classId: entry.classId, learnLevel: 42, type: 'active',
+      targetType: 'self', resourceCost: 0, cooldown: 4,
+      damageType: 'pure', element: 'none', multiplier: 0,
+      tags: ['support', 'resource', 'buff'],
+      scaling: { stat: 'resource', coefficient: 1 },
+      description: resourceDescription,
+      effects: [{ type: entry.scaling === 'atk' ? 'atk_up' : 'matk_up', value: 20, duration: 3 }],
+      special: { resourceGain: 18 },
+    };
+
+    const [burstId, burstName, burstEnglishName, burstDescription] = entry.burst;
+    defs[burstId] = {
+      id: burstId, name: burstName, englishName: burstEnglishName,
+      classId: entry.classId, learnLevel: 45, type: 'active',
+      targetType: 'single_enemy', resourceCost: 32, cooldown: 7,
+      damageType: entry.damageType, element: entry.element, multiplier: 2.4,
+      tags: ['damage', 'single_target', 'burst', 'resource', entry.damageType, entry.element],
+      scaling: { stat: entry.scaling, coefficient: 2.4 },
+      description: burstDescription,
+      special: { burstWindow: true },
+    };
+
+    const [survivalId, survivalName, survivalEnglishName, survivalDescription] = entry.survival;
+    defs[survivalId] = {
+      id: survivalId, name: survivalName, englishName: survivalEnglishName,
+      classId: entry.classId, learnLevel: 48, type: 'active',
+      targetType: 'self', resourceCost: 24, cooldown: 6,
+      damageType: 'pure', element: 'none', multiplier: 0,
+      tags: ['support', 'defense', 'resource', 'buff'],
+      scaling: { stat: entry.scaling === 'atk' ? 'def' : 'mdef', coefficient: 1 },
+      description: survivalDescription,
+      effects: [{ type: 'damage_reduction', value: 30, duration: 2 }],
+    };
+
+    const [answerId, answerName, answerEnglishName, answerDescription] = entry.answer;
+    defs[answerId] = {
+      id: answerId, name: answerName, englishName: answerEnglishName,
+      classId: entry.classId, learnLevel: 50, type: 'active',
+      targetType: 'single_enemy', resourceCost: 26, cooldown: 5,
+      damageType: entry.damageType, element: entry.element, multiplier: 1.2,
+      tags: ['damage', 'single_target', 'control', 'interrupt', 'dispel', 'resource', entry.damageType, entry.element],
+      scaling: { stat: entry.scaling, coefficient: 1.2 },
+      description: answerDescription,
+      effects: [{ type: 'stun', value: 1, duration: 1 }],
+      special: { interrupt: true, dispelShield: true },
+    };
+  }
+
+  return defs;
+}
 
 function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, SkillDef> {
   return Object.fromEntries(

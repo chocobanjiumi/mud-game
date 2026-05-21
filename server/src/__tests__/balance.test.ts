@@ -610,6 +610,27 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('gives each second-job class eight to ten class skills', () => {
+    for (const classId of [
+      'knight',
+      'berserker',
+      'sword_saint',
+      'archmage',
+      'warlock',
+      'chronomancer',
+      'marksman',
+      'assassin',
+      'beast_master',
+      'high_priest',
+      'druid',
+      'inquisitor',
+    ] as const) {
+      const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
+      expect(skills.length, classId).toBeGreaterThanOrEqual(8);
+      expect(skills.length, classId).toBeLessThanOrEqual(10);
+    }
+  });
+
   it('keeps quest unlock filtering available for learnable skill queries', () => {
     const questLockedSkill = Object.values(SKILL_DEFS).find(skill => skill.questUnlock);
     if (!questLockedSkill) {
