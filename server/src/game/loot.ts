@@ -203,3 +203,168 @@ export class LootCalculator {
     return lines.join('\n');
   }
 }
+
+// ============================================================
+//  Corpse containers
+// ============================================================
+
+export interface CorpseContainer {
+  id: string;
+  roomId: string;
+  monsterId: string;
+  monsterName: string;
+  killerId: string;
+  participantIds: string[];
+  createdAt: number;
+  expiresAt: number;
+  protectedUntil: number;
+  gold: number;
+  items: { itemId: string; quantity: number }[];
+  isBoss: boolean;
+  isElite: boolean;
+}
+
+export interface CreateCorpseInput {
+  roomId: string;
+  monster: MonsterInstance;
+  killerId: string;
+  participantIds: string[];
+  loot: CombatLoot;
+  now?: number;
+}
+
+export interface LootCorpseResult {
+  ok: boolean;
+  message: string;
+  corpse?: CorpseContainer;
+  loot?: Pick<CombatLoot, 'gold' | 'items'>;
+}
+
+export class CorpseManager {
+  private corpsesByRoom = new Map<string, CorpseContainer[]>();
+  private counter = 0;
+
+  createCorpse(input: CreateCorpseInput): CorpseContainer {
+    const now = input.now ?? Date.now();
+    const isBoss = input.monster.def.isBoss;
+    const isElite = !!input.monster.def.isElite;
+    const protectionMs = this.getProtectionMs(isBoss, isElite);
+    const lifetimeMs = this.getLifetimeMs(isBoss, isElite);
+    const corpse: CorpseContainer = {
+      id: `${input.monster.monsterId}_corpse_${++this.counter}`,
+      roomId: input.roomId,
+      monsterId: input.monster.monsterId,
+      monsterName: input.monster.def.name,
+      killerId: input.killerId,
+      participantIds: Array.from(new Set([input.killerId, ...input.participantIds])),
+      createdAt: now,
+      expiresAt: now + lifetimeMs,
+      protectedUntil: now + protectionMs,
+      gold: input.loot.gold,
+      items: input.loot.items.map(item => ({ ...item })),
+      isBoss,
+      isElite,
+    };
+
+    const corpses = this.corpsesByRoom.get(input.roomId) ?? [];
+    corpses.push(corpse);
+    this.corpsesByRoom.set(input.roomId, corpses);
+    return corpse;
+  }
+
+  getCorpses(roomId: string, now = Date.now()): CorpseContainer[] {
+    this.cleanup(roomId, now);
+    return [...(this.corpsesByRoom.get(roomId) ?? [])];
+  }
+
+  findCorpse(roomId: string, query?: string, now = Date.now()): CorpseContainer | undefined {
+    const corpses = this.getCorpses(roomId, now);
+    if (!query || query.trim().length === 0 || query === 'corpse' || query === '屍體') {
+      return corpses[0];
+    }
+
+    const lower = query.trim().toLowerCase();
+    return corpses.find(corpse =>
+      corpse.id.toLowerCase() === lower
+      || corpse.monsterId.toLowerCase() === lower
+      || corpse.monsterId.toLowerCase().includes(lower)
+      || corpse.monsterName.toLowerCase().includes(lower)
+      || `${corpse.monsterName}屍體`.toLowerCase().includes(lower),
+    );
+  }
+
+  searchCorpse(roomId: string, query?: string, now = Date.now()): LootCorpseResult {
+    const corpse = this.findCorpse(roomId, query, now);
+    if (!corpse) {
+      return { ok: false, message: '這裡沒有可搜尋的屍體。' };
+    }
+
+    const itemCount = corpse.items.reduce((sum, item) => sum + item.quantity, 0);
+    if (corpse.gold <= 0 && itemCount <= 0) {
+      return { ok: true, corpse, message: `${corpse.monsterName}的屍體已被搜刮一空。` };
+    }
+
+    const protectedText = now < corpse.protectedUntil
+      ? `保護剩餘 ${Math.ceil((corpse.protectedUntil - now) / 1000)} 秒。`
+      : '保護已解除。';
+    return {
+      ok: true,
+      corpse,
+      message: `${corpse.monsterName}的屍體內有 ${corpse.gold} 金幣與 ${itemCount} 件物品。${protectedText}`,
+    };
+  }
+
+  lootCorpse(roomId: string, characterId: string, query?: string, now = Date.now()): LootCorpseResult {
+    const corpse = this.findCorpse(roomId, query, now);
+    if (!corpse) {
+      return { ok: false, message: '這裡沒有可搜刮的屍體。' };
+    }
+
+    if (now < corpse.protectedUntil && !corpse.participantIds.includes(characterId)) {
+      return {
+        ok: false,
+        corpse,
+        message: `${corpse.monsterName}的屍體仍受擊殺隊伍保護，剩餘 ${Math.ceil((corpse.protectedUntil - now) / 1000)} 秒。`,
+      };
+    }
+
+    if (corpse.gold <= 0 && corpse.items.length === 0) {
+      return { ok: true, corpse, loot: { gold: 0, items: [] }, message: `${corpse.monsterName}的屍體已被搜刮一空。` };
+    }
+
+    const loot = {
+      gold: corpse.gold,
+      items: corpse.items.map(item => ({ ...item })),
+    };
+    corpse.gold = 0;
+    corpse.items = [];
+
+    return { ok: true, corpse, loot, message: `你搜刮了${corpse.monsterName}的屍體。` };
+  }
+
+  clear(): void {
+    this.corpsesByRoom.clear();
+    this.counter = 0;
+  }
+
+  private cleanup(roomId: string, now: number): void {
+    const corpses = this.corpsesByRoom.get(roomId);
+    if (!corpses) return;
+    const active = corpses.filter(corpse => corpse.expiresAt > now);
+    if (active.length > 0) {
+      this.corpsesByRoom.set(roomId, active);
+    } else {
+      this.corpsesByRoom.delete(roomId);
+    }
+  }
+
+  private getProtectionMs(isBoss: boolean, isElite: boolean): number {
+    if (isBoss) return 180_000;
+    if (isElite) return 120_000;
+    return 60_000;
+  }
+
+  private getLifetimeMs(isBoss: boolean, isElite: boolean): number {
+    return isBoss || isElite ? 10 * 60_000 : 5 * 60_000;
+  }
+}

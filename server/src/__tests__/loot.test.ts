@@ -1,7 +1,8 @@
 // Loot calculation tests
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { LootCalculator } from '../game/loot.js';
+import { CorpseManager, LootCalculator } from '../game/loot.js';
 import type { MonsterDef, Character } from '@game/shared';
+import type { MonsterInstance } from '../game/world.js';
 
 // ============================================================
 //  Helpers
@@ -55,6 +56,21 @@ function makeCharacter(overrides: Partial<Character> = {}): Character {
     createdAt: Date.now(),
     lastLogin: Date.now(),
     ...overrides,
+  };
+}
+
+function makeMonsterInstance(overrides: Partial<MonsterDef> = {}): MonsterInstance {
+  const def = makeMonsterDef(overrides);
+  return {
+    instanceId: `${def.id}_1`,
+    monsterId: def.id,
+    def,
+    hp: def.hp,
+    maxHp: def.hp,
+    mp: def.mp,
+    maxMp: def.mp,
+    isDead: false,
+    respawnAt: null,
   };
 }
 
@@ -323,5 +339,88 @@ describe('LootCalculator', () => {
 
       expect(formatted).toContain('無');
     });
+  });
+});
+
+describe('CorpseManager', () => {
+  const now = new Date('2026-05-22T00:00:00.000Z').getTime();
+
+  it('creates corpse containers with gold and items after combat rewards are rolled', () => {
+    const corpses = new CorpseManager();
+    const monster = makeMonsterInstance();
+
+    const corpse = corpses.createCorpse({
+      roomId: 'plains',
+      monster,
+      killerId: 'player-1',
+      participantIds: ['player-1', 'player-2'],
+      loot: { exp: 10, gold: 7, items: [{ itemId: 'slime_jelly', quantity: 2 }] },
+      now,
+    });
+
+    expect(corpse.gold).toBe(7);
+    expect(corpse.items).toEqual([{ itemId: 'slime_jelly', quantity: 2 }]);
+    expect(corpses.getCorpses('plains', now)).toHaveLength(1);
+  });
+
+  it('protects normal corpses for 60 seconds and keeps them for 5 minutes', () => {
+    const corpses = new CorpseManager();
+    const monster = makeMonsterInstance();
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster,
+      killerId: 'killer',
+      participantIds: ['killer'],
+      loot: { exp: 10, gold: 7, items: [] },
+      now,
+    });
+
+    const denied = corpses.lootCorpse('plains', 'outsider', 'corpse', now + 30_000);
+    expect(denied.ok).toBe(false);
+    expect(denied.message).toContain('保護');
+
+    const allowed = corpses.lootCorpse('plains', 'outsider', 'corpse', now + 61_000);
+    expect(allowed.ok).toBe(true);
+    expect(allowed.loot?.gold).toBe(7);
+
+    expect(corpses.getCorpses('plains', now + 5 * 60_000 + 1)).toHaveLength(0);
+  });
+
+  it('uses longer protection and retention for boss or elite corpses', () => {
+    const corpses = new CorpseManager();
+    const monster = makeMonsterInstance({ isBoss: true, aiType: 'boss' });
+    corpses.createCorpse({
+      roomId: 'deep_forest',
+      monster,
+      killerId: 'killer',
+      participantIds: ['killer'],
+      loot: { exp: 100, gold: 100, items: [] },
+      now,
+    });
+
+    const denied = corpses.lootCorpse('deep_forest', 'outsider', 'corpse', now + 179_000);
+    expect(denied.ok).toBe(false);
+
+    const allowed = corpses.lootCorpse('deep_forest', 'outsider', 'corpse', now + 181_000);
+    expect(allowed.ok).toBe(true);
+    expect(corpses.getCorpses('deep_forest', now + 10 * 60_000 - 1)).toHaveLength(1);
+    expect(corpses.getCorpses('deep_forest', now + 10 * 60_000 + 1)).toHaveLength(0);
+  });
+
+  it('keeps empty corpses visible until cleanup', () => {
+    const corpses = new CorpseManager();
+    const monster = makeMonsterInstance();
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster,
+      killerId: 'killer',
+      participantIds: ['killer'],
+      loot: { exp: 10, gold: 0, items: [] },
+      now,
+    });
+
+    const result = corpses.searchCorpse('plains', 'corpse', now);
+    expect(result.ok).toBe(true);
+    expect(result.message).toContain('搜刮一空');
   });
 });

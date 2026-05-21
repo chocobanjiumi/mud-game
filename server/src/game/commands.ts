@@ -45,8 +45,9 @@ import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
-import { LootCalculator } from './loot.js';
+import { CorpseManager, LootCalculator } from './loot.js';
 const lootCalc = new LootCalculator();
+const corpseMgr = new CorpseManager();
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 
 // ─── 地上物品撿取追蹤 ───
@@ -150,6 +151,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'unequip': cmdUnequip(session, argStr); break;
     case 'use': cmdUse(session, argStr); break;
     case 'take': case 'pick': case 'pickup': case 'get': cmdTake(session, argStr); break;
+    case 'loot': cmdLoot(session, argStr); break;
     case 'drop': cmdDrop(session, argStr); break;
     case 'say': cmdSay(session, argStr); break;
     case 'talk': cmdTalk(session, argStr); break;
@@ -331,6 +333,16 @@ function cmdLook(session: WsSession, target?: string): void {
     }
   }
 
+  const corpses = corpseMgr.getCorpses(char.roomId);
+  for (const corpse of corpses) {
+    const empty = corpse.gold <= 0 && corpse.items.length === 0;
+    sendNarrative(
+      session.sessionId,
+      `${corpse.monsterName}的屍體倒在這裡${empty ? '，已被搜刮一空' : '。可用 loot corpse 搜刮' }。`,
+      'item',
+    );
+  }
+
   // 觸發任務進度（拜訪地點）
   questMgr.updateProgress(char.id, 'visit', char.roomId);
 }
@@ -351,6 +363,13 @@ function cmdSearch(session: WsSession, target?: string): void {
 
   if (normalizedTarget) {
     const lower = normalizeCommandTarget(normalizedTarget);
+    if (lower === 'corpse' || lower === '屍體' || lower.includes('corpse')) {
+      const result = corpseMgr.searchCorpse(room.id, normalizedTarget);
+      sendSystem(session.sessionId, result.message);
+      if (result.ok) questMgr.updateProgress(char.id, 'inspect_object', 'corpse');
+      return;
+    }
+
     if (lower === 'room' || lower === 'area' || room.name.includes(normalizedTarget) || room.id === lower) {
       sendNarrative(session.sessionId, room.description);
       sendSearchSummary(session, room);
@@ -665,7 +684,7 @@ function cmdAttack(session: WsSession, target: string): void {
   if (players.length === 0) players.push(char);
 
   // 開始戰鬥
-  const combatId = combat.startCombat(players, [monster], (result, loot) => {
+  const combatId = combat.startCombat(players, [monster], (result) => {
     // 戰鬥結束後的處理
     if (result === 'victory') {
       // 觸發任務進度
@@ -709,24 +728,17 @@ function cmdAttack(session: WsSession, target: string): void {
         isUndead: monster.def.element === 'dark',
       });
 
-      // 轉職任務：物品掉落鉤子（水晶碎片等）
-      if (loot?.items) {
-        for (const item of loot.items) {
-          classQuestMgr.onItemCollected(char.id, item.itemId);
-        }
-      }
-
       world.killMonster(char.roomId, monster.instanceId);
 
-      // 計算並發放經驗值和金幣
+      // 經驗立即結算；金幣與物品留在屍體中等待搜刮。
       const drops = lootCalc.calculateDrops(monster.def, char.stats.luk);
       for (const p of players) {
         const freshChar = getCharacterById(p.id);
         if (!freshChar) continue;
 
         // 經驗值（隊伍分配）
-        const expShare = Math.max(1, Math.floor(drops.exp / players.length));
-        if (expShare > 0) {
+        if (drops.exp > 0) {
+          const expShare = Math.max(1, Math.floor(drops.exp / players.length));
           freshChar.exp += expShare;
           sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expShare}`);
 
@@ -747,22 +759,21 @@ function cmdAttack(session: WsSession, target: string): void {
           }
         }
 
-        // 金幣
-        const goldShare = Math.max(1, Math.floor(drops.gold / players.length));
-        if (goldShare > 0) {
-          freshChar.gold += goldShare;
-          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得金幣 +${goldShare}`);
-        }
-
         saveCharacter(freshChar);
+      }
 
-        // 物品掉落
-        for (const item of drops.items) {
-          addInventoryItem(freshChar.id, item.itemId, item.quantity);
-          questMgr.updateProgress(freshChar.id, 'collect_item', item.itemId);
-          const def = ITEM_DEFS[item.itemId];
-          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
-        }
+      const corpse = corpseMgr.createCorpse({
+        roomId: char.roomId,
+        monster,
+        killerId: char.id,
+        participantIds: players.map(player => player.id),
+        loot: drops,
+      });
+      for (const p of players) {
+        sendSystem(
+          getSessionByCharacterId(p.id)?.sessionId ?? '',
+          `${monster.def.name}留下了屍體（${corpse.gold} 金幣、${corpse.items.length} 種物品）。輸入 loot corpse 搜刮。`,
+        );
       }
 
       // 教學系統：擊殺鉤子
@@ -1466,6 +1477,41 @@ function cmdTake(session: WsSession, itemName: string): void {
   }
 
   sendSystem(session.sessionId, `這裡沒有可以撿取的「${itemName}」。`);
+}
+
+function cmdLoot(session: WsSession, target: string): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const query = target?.trim() || 'corpse';
+  const result = corpseMgr.lootCorpse(char.roomId, char.id, query);
+  if (!result.ok) {
+    sendError(session.sessionId, result.message);
+    return;
+  }
+
+  const loot = result.loot;
+  if (!loot || (loot.gold <= 0 && loot.items.length === 0)) {
+    sendSystem(session.sessionId, result.message);
+    return;
+  }
+
+  if (loot.gold > 0) {
+    char.gold += loot.gold;
+    sendSystem(session.sessionId, `獲得金幣 +${loot.gold}`);
+  }
+
+  for (const item of loot.items) {
+    addInventoryItem(char.id, item.itemId, item.quantity);
+    questMgr.updateProgress(char.id, 'collect_item', item.itemId);
+    const def = ITEM_DEFS[item.itemId];
+    sendSystem(session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+  }
+
+  questMgr.updateProgress(char.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
+  questMgr.updateProgress(char.id, 'loot_corpse', 'corpse');
+  saveCharacter(char);
+  sendSystem(session.sessionId, result.message);
 }
 
 function cmdDrop(session: WsSession, itemName: string): void {
@@ -4965,6 +5011,11 @@ function sendSearchSummary(session: WsSession, room: RoomDef): void {
 
   const monsters = world.getAliveMonsters(room.id);
   if (monsters.length > 0) lines.push(`怪物：${monsters.map(monster => monster.def.name).join('、')}`);
+
+  const corpses = corpseMgr.getCorpses(room.id);
+  if (corpses.length > 0) {
+    lines.push(`屍體：${corpses.map(corpse => `${corpse.monsterName}${corpse.gold <= 0 && corpse.items.length === 0 ? '(空)' : ''}`).join('、')}`);
+  }
 
   if (lines.length === 0) {
     sendSystem(session.sessionId, '你仔細搜尋四周，暫時沒有找到可互動的物件。');
