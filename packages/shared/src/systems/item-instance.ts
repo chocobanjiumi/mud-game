@@ -163,6 +163,33 @@ export function getEligibleAffixes(baseItem: BaseEquipmentDef, quality: ItemQual
     .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId)));
 }
 
+export function rerollAffix(
+  baseItem: BaseEquipmentDef,
+  quality: ItemQuality,
+  currentAffixes: AffixDef[],
+  affixIndex: number,
+  classId?: string,
+  random: () => number = Math.random,
+): AffixDef[] {
+  if (affixIndex < 0 || affixIndex >= currentAffixes.length) return currentAffixes;
+
+  const rule = QUALITY_RULES[quality];
+  const retained = currentAffixes.filter((_, index) => index !== affixIndex);
+  const retainedIds = new Set(retained.map(affix => affix.id));
+  const needsHighTier = !!rule.requiresHighTier
+    && !retained.some(affix => TIER_ORDER.indexOf(affix.tier) >= TIER_ORDER.indexOf(rule.minTier));
+
+  const candidates = getEligibleAffixes(baseItem, quality, classId)
+    .filter(affix => !retainedIds.has(affix.id))
+    .filter(affix => affix.id !== currentAffixes[affixIndex]?.id)
+    .filter(affix => !needsHighTier || TIER_ORDER.indexOf(affix.tier) >= TIER_ORDER.indexOf(rule.minTier));
+
+  if (candidates.length === 0) return currentAffixes;
+  const next = [...currentAffixes];
+  next[affixIndex] = candidates[Math.floor(random() * candidates.length)];
+  return next;
+}
+
 function rollAffixes(
   baseItem: BaseEquipmentDef,
   quality: ItemQuality,

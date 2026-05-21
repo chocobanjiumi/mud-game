@@ -20,6 +20,7 @@ import {
   QUALITY_RULES,
   generateEquipmentInstance,
   getEligibleAffixes,
+  rerollAffix,
   rollEquipmentDrop,
   rollItemQuality,
   selectEquipmentDropCandidates,
@@ -510,6 +511,21 @@ describe('Balance: Item instance generation', () => {
     expect(rollItemQuality(100, [], () => 0.2)).toBe('rare');
     expect(rollItemQuality(999, [], () => 0)).toBe('legendary');
     expect(rollItemQuality(0, ['world_boss'], () => 0)).toBe('mythic');
+  });
+
+  it('rerolls one affix without duplicating retained affixes', () => {
+    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const currentAffixes = [
+      AFFIX_POOLS.numeric.find(affix => affix.id === 'numeric_str_t1')!,
+      AFFIX_POOLS.combat.find(affix => affix.id === 'combat_atk_t1')!,
+    ];
+
+    const rerolled = rerollAffix(base, 'rare', currentAffixes, 0, 'swordsman', () => 0);
+
+    expect(rerolled).toHaveLength(2);
+    expect(rerolled[1].id).toBe('combat_atk_t1');
+    expect(rerolled[0].id).not.toBe('numeric_str_t1');
+    expect(new Set(rerolled.map(affix => affix.id)).size).toBe(2);
   });
 
   it('selects equipment drops by source, level, slot, source tags, and zone tags', () => {
