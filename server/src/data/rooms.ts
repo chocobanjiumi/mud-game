@@ -155,6 +155,10 @@ export const ZONES: Record<string, ZoneDef> = {
     rooms: [
       'village_backhill', 'village_creek', 'village_farmland', 'village_orchard',
       'graveyard_entrance', 'graveyard_depths', 'abandoned_cottage', 'village_outskirts', 'watchtower',
+      'starter_ext_old_mill_path', 'starter_ext_beehive_grove', 'starter_ext_herb_garden',
+      'starter_ext_frog_pond', 'starter_ext_training_clearing', 'starter_ext_bandit_footpath',
+      'starter_ext_willow_shrine', 'starter_ext_root_cellar', 'starter_ext_charcoal_kiln',
+      'starter_ext_ruined_bridge', 'starter_ext_hollow_stump',
     ],
   },
   eastern_coast: {
@@ -2024,10 +2028,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_backhill',
     name: '村莊後山',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'village_backhill.png',
+    imagePrompt: '村莊後山 in starter_village_ext, entrance combat hillside room with mossy boulders, wild grass, village view and morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '村莊背後的小山丘，長滿了野草和灌木。山坡上散落著幾塊長滿苔蘚的巨石，' +
       '偶爾能看到綠色的半透明生物在草叢間蠕動。' +
-      '從山頂可以俯瞰整個新手村，視野開闊。',
+      '從山頂可以俯瞰整個新手村，視野開闊。下坡能回村莊廣場，東側小路通往溪邊，西側則有破舊木屋；玩家可在巨石下 search 找到先祖符印或驚動史萊姆。山風會把村口鐘聲和溪水聲一起送上坡頂，讓新手能判斷安全退路與下一個練級方向。草叢裡的腳印分成田鼠與史萊姆拖痕，提示玩家先清理小怪再調查石縫寶物。坡頂木牌還標出村莊、溪流、磨坊與墓地方向，是外圍區域的第一個導航點與任務提示點。',
     exits: [
       { direction: 'down', targetRoomId: 'village_square', description: '下山回到村莊廣場' },
       { direction: 'east', targetRoomId: 'village_creek', description: '一條小路通往溪邊' },
@@ -2051,6 +2057,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_creek',
     name: '小溪邊',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'village_creek.png',
+    imagePrompt: '小溪邊 in starter_village_ext, resource combat creek room with clear water, smooth stones, reeds, slime bubbles and golden sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響，陽光在水面碎成萬千金色的碎片。' +
       '溪邊的鵝卵石被水流打磨得光滑圓潤，水草在溪底輕輕搖擺，魚苗在石縫間穿梭。' +
@@ -2077,10 +2085,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_farmland',
     name: '農田',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'village_farmland.png',
+    imagePrompt: '農田 in starter_village_ext, resource combat farmland room with wheat rows, vegetable beds, rat holes and warm wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '整齊的田壟間種滿了小麥和蔬菜，金黃的穗子在微風中搖曳。' +
       '農夫們抱怨田鼠猖獗，辛苦種下的作物經常被啃食殆盡。' +
-      '田埂上偶爾能看到灰色的小影子飛速竄過。',
+      '田埂上偶爾能看到灰色的小影子飛速竄過。北面溪水灌入水渠，東側果園飄來甜香，南方小路通往墓地前的村外；玩家可堵住田鼠洞、採集作物或調查工具棚。',
     exits: [
       { direction: 'north', targetRoomId: 'village_creek', description: '往溪邊走去' },
       { direction: 'east', targetRoomId: 'village_orchard', description: '旁邊就是果園' },
@@ -2103,6 +2113,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_orchard',
     name: '果園',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'village_orchard.png',
+    imagePrompt: '果園 in starter_village_ext, combat resource orchard with apple trees, fallen fruit, crow nests and dappled afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子，空氣中瀰漫著成熟水果的甜香。' +
       '烏鴉群經常光顧這裡偷食果實，牠們刺耳的嘎嘎叫聲迴盪在樹梢間，令果農不勝其煩。' +
@@ -2129,10 +2141,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'graveyard_entrance',
     name: '墓地入口',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'graveyard_entrance.png',
+    imagePrompt: '墓地入口 in starter_village_ext, elite combat graveyard gate with rusted iron, crooked tombstones, dead flowers and cold moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一道鏽蝕的鐵門半開著，門後是一片荒涼的墓地。歪斜的墓碑在月光下投射出長長的陰影，' +
       '地面上散落著枯萎的花束。空氣中瀰漫著陰冷的氣息，' +
-      '隱約可以聽到骨頭碰撞的聲響。',
+      '隱約可以聽到骨頭碰撞的聲響。北面可退回村外小路，東側瞭望台仍有微光，南方鎖住的鐵門提示需要鑰匙。',
     exits: [
       { direction: 'north', targetRoomId: 'village_outskirts', description: '沿著小路回到村外' },
       { direction: 'east', targetRoomId: 'watchtower', description: '遠處有一座瞭望台' },
@@ -2156,6 +2170,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'graveyard_depths',
     name: '墓地深處',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'graveyard_depths.png',
+    imagePrompt: '墓地深處 in starter_village_ext, boss event graveyard room with ancient sarcophagus, broken bones, glowing seals and oppressive blue moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '穿過鏽蝕的鐵門，你來到了墓地最深處。這裡的墓碑更加古老，刻著早已被遺忘的文字。' +
       '地面上散落著碎裂的骨骸和褪色的花環，空氣中彌漫著死亡的氣息。' +
@@ -2181,10 +2197,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'abandoned_cottage',
     name: '廢棄小屋',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'abandoned_cottage.png',
+    imagePrompt: '廢棄小屋 in starter_village_ext, hidden exploration cottage with collapsed roof, vines, broken window and dusty lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一間被藤蔓纏繞的破舊木屋，屋頂塌了一半，窗戶早已破碎。' +
       '屋內堆滿了落葉和碎木，角落裡有動物築巢的痕跡。' +
-      '據村民說，這裡曾住著一位古怪的老巫師。',
+      '據村民說，這裡曾住著一位古怪的老巫師。東面回後山，地板裂縫下似乎藏著地窖入口；玩家可 search 壁爐暗格取得藥水，也要小心屋樑上的烏鴉群。',
     exits: [
       { direction: 'east', targetRoomId: 'village_backhill', description: '回到後山' },
     ],
@@ -2208,10 +2226,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_outskirts',
     name: '村外小路',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'village_outskirts.png',
+    imagePrompt: '村外小路 in starter_village_ext, main route combat room with dirt road, wildflowers, animal tracks and soft cloudy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條蜿蜒的泥土小路連接著村莊和外圍區域，路旁的野花隨風搖曳。' +
       '路面上有大小不一的腳印，看得出來常有野生動物經過。' +
-      '這裡是前往墓地和瞭望台的必經之路。',
+      '這裡是前往墓地和瞭望台的必經之路。北面回農田，南方鐵門通向墓地，東邊可回村口；玩家可 inspect 大樹下的石堆，追蹤田鼠、烏鴉與可疑腳印。',
     exits: [
       { direction: 'north', targetRoomId: 'village_farmland', description: '通往農田' },
       { direction: 'south', targetRoomId: 'graveyard_entrance', description: '遠處隱約可見鐵門' },
@@ -2235,10 +2255,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'watchtower',
     name: '瞭望台',
     zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'watchtower.png',
+    imagePrompt: '瞭望台 in starter_village_ext, elite exploration watchtower with broken stone stairs, torn banner, crow perches and pale dawn horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座半廢棄的石造瞭望台聳立在小丘上，登頂可以遠眺四方。' +
       '塔頂的旗幟早已破爛不堪，但殘存的守衛設施顯示這裡曾是重要的防禦據點。' +
-      '烏鴉和骷髏兵出沒其間，讓這裡充滿危險。',
+      '烏鴉和骷髏兵出沒其間，讓這裡充滿危險。西側下坡回墓地入口，玩家可 inspect 破旗和警鐘，判斷亡者從哪條路靠近村莊。',
     exits: [
       { direction: 'west', targetRoomId: 'graveyard_entrance', description: '下坡回到墓地入口' },
     ],
@@ -2254,6 +2276,248 @@ export const ROOMS: Record<string, RoomDef> = {
       treasure: '瞭望台頂層的箱子裡還留著昔日守衛的裝備和物資。',
       spirit: '瞭望台最後一任守衛的靈魂仍在值守，他會在危險逼近時發出警告的光芒。',
     },
+  },
+
+  starter_ext_old_mill_path: {
+    id: 'starter_ext_old_mill_path',
+    name: '舊磨坊小徑',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_old_mill_path.png',
+    imagePrompt: '舊磨坊小徑 in starter_village_ext, main route room with abandoned mill wheel, muddy track, grain sacks and slanting morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一條泥濘小徑沿著農田灌渠延伸到舊磨坊，半塌的水車仍被溪水推得吱呀作響，空氣裡有潮木和舊麥粉味。西側回農田，東面可到蛙鳴池，南邊灰煙指向炭窯。路旁散落破麻袋與田鼠腳印，玩家可 search 水車底部尋找丟失麥袋，也可能驚動躲在糧袋裡的田鼠。',
+    exits: [
+      { direction: 'west', targetRoomId: 'village_farmland', description: '田壟通回農田' },
+      { direction: 'east', targetRoomId: 'starter_ext_frog_pond', description: '溪聲通往蛙鳴池' },
+      { direction: 'south', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰煙來自南邊炭窯' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[m]',
+    mapX: 2,
+    mapY: 1,
+  },
+
+  starter_ext_beehive_grove: {
+    id: 'starter_ext_beehive_grove',
+    name: '蜂巢樹叢',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_beehive_grove.png',
+    imagePrompt: '蜂巢樹叢 in starter_village_ext, resource exploration grove with hanging beehives, wildflowers, buzzing insects and warm amber light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '果園東側的低矮樹叢掛著數個野蜂巢，金色蜂蠟在枝葉間發亮，花香與蜂鳴讓空氣微微震動。西邊回果園，南側有一片整理過的藥草圃。落果和蜂蜜吸引田鼠與烏鴉徘徊，玩家可採集蜂蠟、inspect 樹幹抓痕判斷害獸路線，也要避開搖晃蜂巢造成的額外危險。',
+    exits: [
+      { direction: 'west', targetRoomId: 'village_orchard', description: '樹影通回果園' },
+      { direction: 'south', targetRoomId: 'starter_ext_herb_garden', description: '藥草香從南側飄來' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[蜂]',
+    mapX: 5,
+    mapY: 1,
+  },
+
+  starter_ext_herb_garden: {
+    id: 'starter_ext_herb_garden',
+    name: '藥草圃',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_herb_garden.png',
+    imagePrompt: '藥草圃 in starter_village_ext, resource room with raised herb beds, dew, clay markers and soft green morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，玩家可 gather 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_ext_beehive_grove', description: '回到蜂巢樹叢' },
+      { direction: 'south', targetRoomId: 'village_outskirts', description: '小籬門通往村外小路' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 5,
+    mapY: 2,
+  },
+
+  starter_ext_frog_pond: {
+    id: 'starter_ext_frog_pond',
+    name: '蛙鳴池',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_frog_pond.png',
+    imagePrompt: '蛙鳴池 in starter_village_ext, resource combat pond with reeds, lily pads, slime bubbles and cool blue reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。玩家可釣魚、採集濕地材料，或 inspect 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starter_ext_old_mill_path', description: '泥徑回到舊磨坊' },
+      { direction: 'north', targetRoomId: 'village_creek', description: '沿溪線回到小溪邊' },
+      { direction: 'south', targetRoomId: 'starter_ext_ruined_bridge', description: '水面下可見斷橋木樁' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 2,
+    mapY: 2,
+  },
+
+  starter_ext_training_clearing: {
+    id: 'starter_ext_training_clearing',
+    name: '練習空地',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_training_clearing.png',
+    imagePrompt: '練習空地 in starter_village_ext, combat training clearing with straw dummies, trampled grass, weapon rack and clear daylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '村外林線前有一塊被踩平的練習空地，草地中央立著稻草靶與舊木盾，旁邊武器架上掛著鈍劍和練習弓。北面可回村口，西側小路接村外小路，東邊有可疑腳印通往盜匪踩出的支線。玩家可在此安全練習攻擊節奏、inspect 靶心箭痕，也能追蹤偷走補給的田鼠。',
+    exits: [
+      { direction: 'north', targetRoomId: 'village_gate', description: '回到村口' },
+      { direction: 'west', targetRoomId: 'village_outskirts', description: '草路通往村外小路' },
+      { direction: 'east', targetRoomId: 'starter_ext_bandit_footpath', description: '可疑腳印往東延伸' },
+    ],
+    monsters: [
+      { monsterId: 'training_dummy', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[訓]',
+    mapX: 4,
+    mapY: 2,
+  },
+
+  starter_ext_bandit_footpath: {
+    id: 'starter_ext_bandit_footpath',
+    name: '盜匪足跡',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_bandit_footpath.png',
+    imagePrompt: '盜匪足跡 in starter_village_ext, hidden combat footpath with snapped twigs, boot prints, thorn shadows and muted dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一條被硬靴踩出的窄路藏在荊棘後，斷枝、布條和偷來的麻繩沿路散落，夕光被樹影切得很碎。西面回練習空地，南側通往空心樹樁，東面隱約能看見柳樹神龕。這裡提示村外已不只有小怪，玩家可 search 足跡找盜匪藏物，也要準備面對落單盜賊或被驚動的烏鴉。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '回到練習空地' },
+      { direction: 'south', targetRoomId: 'starter_ext_hollow_stump', description: '足跡繞向空心樹樁' },
+      { direction: 'east', targetRoomId: 'starter_ext_willow_shrine', description: '柳枝後有一座小神龕' },
+    ],
+    monsters: [
+      { monsterId: 'bandit', maxCount: 1, respawnSeconds: 60 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[跡]',
+    mapX: 5,
+    mapY: 3,
+  },
+
+  starter_ext_willow_shrine: {
+    id: 'starter_ext_willow_shrine',
+    name: '柳樹神龕',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_willow_shrine.png',
+    imagePrompt: '柳樹神龕 in starter_village_ext, landmark exploration shrine under willow tree, hanging charms, small stone altar and silver dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古老柳樹垂下長長枝條，枝間掛著村民祈願木牌，石製小神龕被銀色暮光照亮，空氣裡有濕葉與香灰味。西側藏著盜匪足跡，南邊坡道通往墓地入口，東面有繞回瞭望台的窄路。神龕前的供盤被移動過，玩家可 inspect 木牌找出失蹤孩童的願望，也能 search 祭壇底座取得一次性祝福或任務線索。柳枝上有烏鴉羽毛與被扯斷的紅線，暗示盜匪曾在這裡觀察村民動向。若玩家先清理周圍小怪，再調查供盤灰痕，就能把墓地、瞭望台與村外支線串在一起。神龕背面刻著舊巡邏記號，提示安全返回村口的路線標示。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starter_ext_bandit_footpath', description: '荊棘路回到盜匪足跡' },
+      { direction: 'south', targetRoomId: 'graveyard_entrance', description: '坡道通往墓地入口' },
+      { direction: 'east', targetRoomId: 'watchtower', description: '窄路繞向瞭望台' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 40 },
+    ],
+    groundItems: [
+      { itemId: 'small_mp_potion', description: '神龕供盤旁放著一瓶微光藥水' },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 5,
+    mapY: 4,
+  },
+
+  starter_ext_root_cellar: {
+    id: 'starter_ext_root_cellar',
+    name: '根窖',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_root_cellar.png',
+    imagePrompt: '根窖 in starter_village_ext, hidden resource cellar with root shelves, clay jars, dangling herbs and single lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '廢棄小屋地板下藏著低矮根窖，粗樹根穿過土牆，陶罐、乾草藥與破布袋散發潮土氣味，唯一的提燈把木架影子拉長。東側梯子回小屋，南面狹洞通向空心樹樁。玩家可 search 陶罐取得補給或配方碎片，也可能撞見偷藏糧食的田鼠，是早期資源與隱藏探索節點。',
+    exits: [
+      { direction: 'east', targetRoomId: 'abandoned_cottage', description: '木梯回到廢棄小屋' },
+      { direction: 'south', targetRoomId: 'starter_ext_hollow_stump', description: '狹洞通向空心樹樁' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 30 },
+    ],
+    groundItems: [
+      { itemId: 'small_hp_potion', description: '陶罐旁藏著一瓶未開封的紅色藥水' },
+    ],
+    mapSymbol: '[窖]',
+    mapX: 1,
+    mapY: 1,
+  },
+
+  starter_ext_charcoal_kiln: {
+    id: 'starter_ext_charcoal_kiln',
+    name: '炭窯',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_charcoal_kiln.png',
+    imagePrompt: '炭窯 in starter_village_ext, resource combat kiln room with smoking charcoal mound, chopped logs, ash footprints and orange ember light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。玩家可採集木炭材料、inspect 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '回到舊磨坊小徑' },
+      { direction: 'east', targetRoomId: 'starter_ext_ruined_bridge', description: '灰路通向斷橋' },
+      { direction: 'south', targetRoomId: 'graveyard_entrance', description: '林邊小路繞向墓地' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[炭]',
+    mapX: 2,
+    mapY: 3,
+  },
+
+  starter_ext_ruined_bridge: {
+    id: 'starter_ext_ruined_bridge',
+    name: '斷橋',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_ruined_bridge.png',
+    imagePrompt: '斷橋 in starter_village_ext, event route room with broken wooden bridge, shallow ravine, mossy posts and cloudy side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，玩家可 inspect 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '水聲通回蛙鳴池' },
+      { direction: 'west', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰路回到炭窯' },
+      { direction: 'east', targetRoomId: 'village_outskirts', description: '繞過斷橋回村外小路' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 1,
+    mapY: 2,
+  },
+
+  starter_ext_hollow_stump: {
+    id: 'starter_ext_hollow_stump',
+    name: '空心樹樁',
+    zone: 'starter_village_ext' as RoomDef['zone'],
+    image: 'starter_ext_hollow_stump.png',
+    imagePrompt: '空心樹樁 in starter_village_ext, hidden elite event room with giant hollow stump, root tunnels, stolen trinkets and green shaft light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊狹洞連根窖，南面小坡可回墓地深處外牆。玩家可 search 樹洞取得一次性藏物，inspect 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若從根窖繞進來，可以避開北側埋伏並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_ext_bandit_footpath', description: '回到盜匪足跡' },
+      { direction: 'west', targetRoomId: 'starter_ext_root_cellar', description: '根道連到小屋地窖' },
+      { direction: 'south', targetRoomId: 'graveyard_depths', description: '小坡接近墓地深處外牆' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 4, respawnSeconds: 25 },
+      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+    ],
+    groundItems: [
+      { itemId: 'rare_fossil', description: '樹洞深處塞著一塊像骨片的奇特化石' },
+    ],
+    mapSymbol: '[樁]',
+    mapX: 4,
+    mapY: 4,
   },
 
   // ─── 東方海岸 (eastern_coast) ──────────────────────────
