@@ -646,6 +646,20 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('gives every player class at least one burst window skill', () => {
+    const playerClassIds = Object.values(CLASS_DEFS)
+      .filter(classDef => classDef.id !== 'monster')
+      .map(classDef => classDef.id);
+
+    for (const classId of playerClassIds) {
+      const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
+      expect(
+        skills.some(skill => skill.tags.includes('burst') || Boolean(skill.special?.burstWindow)),
+        classId,
+      ).toBe(true);
+    }
+  });
+
   it('keeps quest unlock filtering available for learnable skill queries', () => {
     const questLockedSkill = Object.values(SKILL_DEFS).find(skill => skill.questUnlock);
     if (!questLockedSkill) {

@@ -49,6 +49,14 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     description: '當生命垂危之際，身體深處沉睡的本能被喚醒，感官變得異常敏銳。瀕死的恐懼反而化為求生的動力，讓你能以匪夷所思的反應速度閃過致命的攻擊。這是刻在冒險者骨子裡的生存法則——只要還有一口氣在，就絕不倒下。',
     special: { hpThreshold: 20, dodgeBonus: 15 },
   },
+  desperate_strike: {
+    id: 'desperate_strike', name: '孤注一擊', englishName: 'Desperate Strike',
+    classId: 'adventurer', learnLevel: 10, type: 'active',
+    targetType: 'single_enemy', resourceCost: 15, cooldown: 6,
+    damageType: 'physical', element: 'none', multiplier: 2.0,
+    description: '在退無可退的瞬間將全部力量壓進一次攻擊，放棄後續餘裕換取短暫而猛烈的爆發。這不是成熟職業的奧義，而是冒險者在生死邊緣逼出的決心。',
+    tags: ['damage', 'single_target', 'burst', 'resource', 'physical'],
+  },
 
   // ════════════════════════════════════════════
   //  劍士 (Lv 10-29)
@@ -202,6 +210,14 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     damageType: 'physical', element: 'none', multiplier: 0.6,
     description: '以驚人的手速連續從箭袋中抽出三支箭矢，弓弦來不及完全回彈便再次被拉滿。三道箭影幾乎同時射出，密集的箭矢如暴雨般傾瀉在目標身上，讓敵人在連續的衝擊中無法喘息。旁觀者甚至分不清這是三箭還是一箭。',
     special: { hitCount: 3 },
+  },
+  focused_volley: {
+    id: 'focused_volley', name: '專注齊射', englishName: 'Focused Volley',
+    classId: 'ranger', learnLevel: 29, type: 'active',
+    targetType: 'single_enemy', resourceCost: 25, cooldown: 6,
+    damageType: 'physical', element: 'none', multiplier: 2.1,
+    description: '短暫停下腳步校準呼吸與視線，將數次射擊壓縮成一輪精準齊射。箭矢接連命中同一破綻，形成遊俠在轉職前最可靠的爆發窗口。',
+    tags: ['damage', 'single_target', 'burst', 'resource', 'physical'],
   },
 
   // ════════════════════════════════════════════
