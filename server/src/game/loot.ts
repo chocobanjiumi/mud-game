@@ -31,6 +31,7 @@ export interface MonsterLootTable {
 
 export interface CalculateDropsOptions {
   activeQuestItemIds?: Iterable<string>;
+  partySize?: number;
 }
 
 const REGIONAL_SPECIAL_DROP_IDS = new Set([
@@ -85,7 +86,7 @@ export class LootCalculator {
     });
 
     if (tier === 'boss') {
-      this.ensureBossEquipmentGuarantee(entries, monster);
+      this.ensureBossEquipmentGuarantee(entries, monster, options.partySize);
     }
 
     return {
@@ -314,20 +315,27 @@ export class LootCalculator {
     return 'material';
   }
 
-  private ensureBossEquipmentGuarantee(entries: MonsterLootEntry[], monster: MonsterDef): void {
+  private ensureBossEquipmentGuarantee(entries: MonsterLootEntry[], monster: MonsterDef, partySize = 1): void {
+    const guaranteedCount = this.getBossGuaranteedEquipmentCount(partySize);
     const equipment = entries.find(entry => entry.category === 'equipment');
     if (equipment) {
       equipment.chance = 1.0;
+      equipment.minQty = Math.max(equipment.minQty, guaranteedCount);
+      equipment.maxQty = Math.max(equipment.maxQty, guaranteedCount);
       return;
     }
 
     entries.unshift({
       itemId: this.getFallbackBossEquipment(monster.level),
       chance: 1.0,
-      minQty: 1,
-      maxQty: 1,
+      minQty: guaranteedCount,
+      maxQty: guaranteedCount,
       category: 'equipment',
     });
+  }
+
+  private getBossGuaranteedEquipmentCount(partySize: number): number {
+    return Math.max(1, 1 + Math.floor((Math.max(1, partySize) - 1) / 2));
   }
 
   private getFallbackBossEquipment(level: number): string {

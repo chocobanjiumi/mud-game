@@ -761,7 +761,10 @@ function cmdAttack(session: WsSession, target: string): void {
       world.killMonster(char.roomId, monster.instanceId);
 
       // 經驗立即結算；金幣與物品留在屍體中等待搜刮。
-      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk, { activeQuestItemIds: [] });
+      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk, {
+        activeQuestItemIds: [],
+        partySize: players.length,
+      });
       const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
       for (const p of players) {
         const freshChar = getCharacterById(p.id);

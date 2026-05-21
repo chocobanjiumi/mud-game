@@ -292,6 +292,23 @@ describe('LootCalculator', () => {
       expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeLessThanOrEqual(0.15);
     });
 
+    it('should increase guaranteed boss equipment quantity for larger parties', () => {
+      const monster = makeMonsterDef({
+        isBoss: true,
+        aiType: 'boss',
+        drops: [
+          { itemId: 'steel_sword', chance: 0.05, minQty: 1, maxQty: 1 },
+        ],
+      });
+
+      const table = loot.buildMonsterLootTable(monster, { partySize: 5 });
+      const equipment = table.entries.find(e => e.itemId === 'steel_sword');
+
+      expect(equipment?.chance).toBe(1);
+      expect(equipment?.minQty).toBe(3);
+      expect(equipment?.maxQty).toBe(3);
+    });
+
     it('should only enable quest item drops for active quest item ids', () => {
       const monster = makeMonsterDef({
         drops: [
