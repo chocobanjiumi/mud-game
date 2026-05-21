@@ -54,6 +54,65 @@ function inferZoneTags(itemId: string, def: ItemDef): string[] {
   return Array.from(tags);
 }
 
+const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<EquipSlot, number> = {
+  weapon: 13,
+  head: 26,
+  body: 23,
+  hands: 26,
+  feet: 26,
+  ring: 25,
+  earring: 24,
+  belt: 25,
+  necklace: 20,
+  accessory: 0,
+};
+
+const SUPPLEMENTAL_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, { name: string; stat: keyof NonNullable<ItemDef['stats']> }> = {
+  weapon: { name: '戰備武器', stat: 'atk' },
+  head: { name: '戰備頭盔', stat: 'def' },
+  body: { name: '戰備護甲', stat: 'def' },
+  hands: { name: '戰備護手', stat: 'atk' },
+  feet: { name: '戰備戰靴', stat: 'dodgeRate' },
+  ring: { name: '戰備戒指', stat: 'luk' },
+  earring: { name: '戰備耳環', stat: 'int' },
+  belt: { name: '戰備腰帶', stat: 'vit' },
+  necklace: { name: '戰備項鍊', stat: 'str' },
+};
+
+function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
+  const result: Record<string, ItemDef> = {};
+  const levels = [1, 5, 10, 15, 20, 25, 30];
+
+  for (const [slot, count] of Object.entries(SUPPLEMENTAL_EQUIPMENT_TARGETS) as [EquipSlot, number][]) {
+    if (slot === 'accessory') continue;
+    const slotInfo = SUPPLEMENTAL_SLOT_NAMES[slot];
+    for (let i = 0; i < count; i++) {
+      const levelReq = levels[i % levels.length];
+      const tier = Math.floor(i / levels.length) + 1;
+      const id = `supplemental_${slot}_${String(i + 1).padStart(2, '0')}`;
+      const statValue = Math.max(1, Math.floor(levelReq / 3) + tier);
+      result[id] = {
+        id,
+        name: `${slotInfo.name}${i + 1}`,
+        type: slot === 'weapon' ? 'weapon' : slot === 'head' || slot === 'body' || slot === 'hands' || slot === 'feet' ? 'armor' : 'accessory',
+        description: `${slotInfo.name}${i + 1} 是第一階段冒險者常見的標準化補給裝備，用於補齊 ${slot} 欄位在不同等級帶的自然替換。`,
+        buyPrice: 80 + levelReq * 35 + tier * 20,
+        sellPrice: 40 + levelReq * 17 + tier * 10,
+        stackable: false,
+        maxStack: 1,
+        levelReq,
+        equipSlot: slot,
+        stats: { [slotInfo.stat]: statValue },
+        rarity: levelReq >= 25 ? 'rare' : levelReq >= 15 ? 'uncommon' : 'common',
+        sourceTags: ['shop', 'drop', 'starter_progression'],
+        zoneTags: ['starter_village', 'plains', 'global'],
+      };
+    }
+  }
+
+  return result;
+}
+
 const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
   wooden_sword: {
@@ -1994,6 +2053,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     equipSlot: 'necklace', stats: { str: 5, int: 5, dex: 5, vit: 5, luk: 5, hp: 100, mp: 50 },
     rarity: 'legendary',
   },
+  ...createSupplementalEquipmentDefs(),
 
   // ============ 製作系統食物成品 ============
   hp_steak: {

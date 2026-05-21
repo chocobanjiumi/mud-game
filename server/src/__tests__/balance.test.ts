@@ -368,6 +368,27 @@ describe('Balance: Gold economy', () => {
       expect(item.zoneTags, item.id).toEqual(expect.arrayContaining([expect.any(String)]));
     }
   });
+
+  it('should meet first-stage equipment count targets by slot', () => {
+    const equipment = Object.values(ITEM_DEFS).filter(item =>
+      item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory',
+    );
+    const bySlot = equipment.reduce<Record<string, number>>((acc, item) => {
+      acc[item.equipSlot ?? 'missing'] = (acc[item.equipSlot ?? 'missing'] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    expect(equipment.length).toBeGreaterThanOrEqual(350);
+    expect(bySlot.weapon).toBeGreaterThanOrEqual(120);
+    expect(bySlot.head).toBeGreaterThanOrEqual(30);
+    expect(bySlot.body).toBeGreaterThanOrEqual(40);
+    expect(bySlot.hands).toBeGreaterThanOrEqual(30);
+    expect(bySlot.feet).toBeGreaterThanOrEqual(30);
+    expect(bySlot.ring).toBeGreaterThanOrEqual(30);
+    expect(bySlot.earring).toBeGreaterThanOrEqual(25);
+    expect(bySlot.belt).toBeGreaterThanOrEqual(25);
+    expect(bySlot.necklace).toBeGreaterThanOrEqual(25);
+  });
 });
 
 describe('Balance: Stat scaling', () => {
