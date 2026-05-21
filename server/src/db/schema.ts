@@ -126,6 +126,23 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, discovery_type, target_id)
     );
 
+    -- 區域聲望
+    CREATE TABLE IF NOT EXISTS character_zone_reputation (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      zone_id TEXT NOT NULL,
+      reputation INTEGER DEFAULT 0,
+      updated_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (character_id, zone_id)
+    );
+
+    -- 已學會製作配方
+    CREATE TABLE IF NOT EXISTS learned_recipes (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      recipe_id TEXT NOT NULL,
+      learned_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (character_id, recipe_id)
+    );
+
     -- 每日任務完成紀錄
     CREATE TABLE IF NOT EXISTS daily_quests (
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
@@ -365,6 +382,8 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_zone_unlocks_character ON character_zone_unlocks(character_id);
     CREATE INDEX IF NOT EXISTS idx_portal_unlocks_character ON character_portal_unlocks(character_id);
     CREATE INDEX IF NOT EXISTS idx_discoveries_character_zone ON character_discoveries(character_id, zone_id);
+    CREATE INDEX IF NOT EXISTS idx_zone_reputation_character ON character_zone_reputation(character_id);
+    CREATE INDEX IF NOT EXISTS idx_learned_recipes_character ON learned_recipes(character_id);
   `);
 
   // ── Migration: 新增 enhancement_level 欄位 ──

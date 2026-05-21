@@ -4,16 +4,31 @@ import type { Character } from '@game/shared';
 import { sendToCharacter } from '../ws/handler.js';
 import { getDb } from '../db/schema.js';
 import { addItemToInventory } from '../db/database.js';
+import { ITEM_DEFS } from '@game/shared';
+import { unlockPortal, unlockZone } from '../db/queries.js';
 import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
 
 // ============================================================
 //  型別定義
 // ============================================================
 
-export type QuestType = 'main' | 'class_change' | 'daily' | 'weekly' | 'side';
+export type QuestType = 'main' | 'class_change' | 'daily' | 'weekly' | 'side' | 'exploration' | 'boss' | 'crafting' | 'faction';
+export type QuestObjectiveType =
+  | 'kill'
+  | 'collect'
+  | 'visit'
+  | 'talk'
+  | 'visit_room'
+  | 'kill_monster'
+  | 'loot_corpse'
+  | 'collect_item'
+  | 'inspect_object'
+  | 'gather_resource'
+  | 'craft_item'
+  | 'defeat_boss';
 
 export interface QuestObjective {
-  type: 'kill' | 'collect' | 'visit' | 'talk';
+  type: QuestObjectiveType;
   targetId: string;
   targetName: string;
   required: number;
@@ -23,6 +38,10 @@ export interface QuestReward {
   exp: number;
   gold: number;
   items?: { itemId: string; quantity: number }[];
+  portalUnlocks?: { portalId: string; zoneId: string }[];
+  zoneReputation?: { zoneId: string; amount: number }[];
+  recipes?: string[];
+  equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
 }
 
 export interface QuestDef {
@@ -317,7 +336,7 @@ export class QuestManager {
    */
   updateProgress(
     characterId: string,
-    eventType: 'kill' | 'collect' | 'visit' | 'talk',
+    eventType: QuestObjectiveType,
     targetId: string,
   ): void {
     const activeQuests = this.getActiveQuestsFromDb(characterId);
@@ -330,12 +349,12 @@ export class QuestManager {
       let updated = false;
 
       for (const obj of def.objectives) {
-        if (obj.type !== eventType) continue;
+        if (!objectiveMatchesEvent(obj.type, eventType)) continue;
 
         // 支援萬用字元目標（如每日任務的「任意怪物」）
         const isWildcard = obj.targetId === '*';
         if (isWildcard || obj.targetId === targetId) {
-          const key = `${obj.type}_${obj.targetId}`;
+          const key = questObjectiveKey(obj);
           const current = progress[key] ?? 0;
           if (current < obj.required) {
             progress[key] = current + 1;
@@ -351,7 +370,7 @@ export class QuestManager {
 
       // 檢查是否所有目標都達成
       const allComplete = def.objectives.every(obj => {
-        const key = `${obj.type}_${obj.targetId}`;
+        const key = questObjectiveKey(obj);
         return (progress[key] ?? 0) >= obj.required;
       });
 
@@ -366,7 +385,7 @@ export class QuestManager {
         // 顯示進度通知
         const progressTexts: string[] = [];
         for (const obj of def.objectives) {
-          const key = `${obj.type}_${obj.targetId}`;
+          const key = questObjectiveKey(obj);
           const current = progress[key] ?? 0;
           progressTexts.push(`${obj.targetName}：${current}/${obj.required}`);
         }
@@ -405,7 +424,7 @@ export class QuestManager {
     // 檢查是否所有目標都達成
     const progress: Record<string, number> = JSON.parse(row.progress || '{}');
     const allComplete = def.objectives.every(obj => {
-      const key = `${obj.type}_${obj.targetId}`;
+      const key = questObjectiveKey(obj);
       return (progress[key] ?? 0) >= obj.required;
     });
 
@@ -413,7 +432,7 @@ export class QuestManager {
       // 顯示未完成項目
       const incomplete: string[] = [];
       for (const obj of def.objectives) {
-        const key = `${obj.type}_${obj.targetId}`;
+        const key = questObjectiveKey(obj);
         const current = progress[key] ?? 0;
         if (current < obj.required) {
           incomplete.push(`${obj.targetName}：${current}/${obj.required}`);
@@ -438,11 +457,14 @@ export class QuestManager {
       }
     }
 
+    this.applyStructuredRewards(characterId, def.rewards);
+
     // 通知玩家
     let rewardText = `${def.rewards.exp} EXP、${def.rewards.gold} 金幣`;
     if (def.rewards.items && def.rewards.items.length > 0) {
       rewardText += '，以及道具獎勵';
     }
+    rewardText += formatStructuredRewardSuffix(def.rewards);
 
     sendToCharacter(characterId, 'quest', {
       action: 'completed',
@@ -551,7 +573,7 @@ export class QuestManager {
 
       const progressTexts: string[] = [];
       for (const obj of def.objectives) {
-        const key = `${obj.type}_${obj.targetId}`;
+        const key = questObjectiveKey(obj);
         const current = progress[key] ?? 0;
         const done = current >= obj.required ? ' [完成]' : '';
         progressTexts.push(`${obj.targetName} ${current}/${obj.required}${done}`);
@@ -563,6 +585,7 @@ export class QuestManager {
       if (def.rewards.items && def.rewards.items.length > 0) {
         rewardText += ' + 道具';
       }
+      rewardText += formatStructuredRewardSuffix(def.rewards);
       text += `  獎勵：${rewardText}\n\n`;
     }
 
@@ -588,6 +611,10 @@ export class QuestManager {
         daily: '每日',
         weekly: '每週',
         side: '支線',
+        exploration: '探索',
+        boss: 'Boss',
+        crafting: '製作',
+        faction: '陣營',
       };
       text += `【${def.name}】（${typeNames[def.type]}）Lv.${def.levelReq}+\n`;
       text += `  ${def.description}\n`;
@@ -596,6 +623,7 @@ export class QuestManager {
       if (def.rewards.items && def.rewards.items.length > 0) {
         rewardText += ' + 道具';
       }
+      rewardText += formatStructuredRewardSuffix(def.rewards);
       text += `  獎勵：${rewardText}\n\n`;
     }
 
@@ -661,6 +689,10 @@ export class QuestManager {
       daily: '每日',
       weekly: '每週',
       side: '支線',
+      exploration: '探索',
+      boss: 'Boss',
+      crafting: '製作',
+      faction: '陣營',
     };
 
     let text = `【${def.name}】\n`;
@@ -674,11 +706,9 @@ export class QuestManager {
     const progress: Record<string, number> = row ? JSON.parse(row.progress || '{}') : {};
 
     for (const obj of def.objectives) {
-      const key = `${obj.type}_${obj.targetId}`;
+      const key = questObjectiveKey(obj);
       const current = progress[key] ?? 0;
-      const typeLabel = obj.type === 'kill' ? '擊殺' :
-                        obj.type === 'collect' ? '收集' :
-                        obj.type === 'visit' ? '前往' : '交談';
+      const typeLabel = questObjectiveTypeLabel(obj.type);
       const done = row && row.status === 'active' && current >= obj.required ? ' [完成]' : '';
       text += `  ${typeLabel} ${obj.targetName}：${row?.status === 'active' ? `${current}/${obj.required}${done}` : `0/${obj.required}`}\n`;
     }
@@ -689,6 +719,7 @@ export class QuestManager {
     if (def.rewards.items && def.rewards.items.length > 0) {
       rewardText += ' + 道具';
     }
+    rewardText += formatStructuredRewardSuffix(def.rewards);
     text += rewardText + '\n';
 
     // 狀態
@@ -771,6 +802,49 @@ export class QuestManager {
     }
   }
 
+  private applyStructuredRewards(characterId: string, rewards: QuestReward): void {
+    if (rewards.portalUnlocks) {
+      for (const portal of rewards.portalUnlocks) {
+        unlockZone(characterId, portal.zoneId, 'quest_reward');
+        unlockPortal(characterId, portal.portalId, portal.zoneId);
+      }
+    }
+
+    if (rewards.zoneReputation) {
+      for (const reputation of rewards.zoneReputation) {
+        getDb().prepare(`
+          INSERT INTO character_zone_reputation (character_id, zone_id, reputation, updated_at)
+          VALUES (?, ?, ?, unixepoch())
+          ON CONFLICT(character_id, zone_id) DO UPDATE SET
+            reputation = reputation + excluded.reputation,
+            updated_at = unixepoch()
+        `).run(characterId, reputation.zoneId, reputation.amount);
+      }
+    }
+
+    if (rewards.recipes) {
+      for (const recipeId of rewards.recipes) {
+        getDb().prepare(`
+          INSERT OR IGNORE INTO learned_recipes (character_id, recipe_id)
+          VALUES (?, ?)
+        `).run(characterId, recipeId);
+      }
+    }
+
+    if (rewards.equipmentSlotRewards) {
+      for (const reward of rewards.equipmentSlotRewards) {
+        const item = Object.values(ITEM_DEFS).find(def =>
+          def.equipSlot === reward.slot
+          && (!reward.levelMax || def.levelReq <= reward.levelMax)
+          && (!reward.sourceTags || reward.sourceTags.some(tag => def.id.includes(tag))),
+        );
+        if (item) {
+          addItemToInventory(characterId, item.id, 1);
+        }
+      }
+    }
+  }
+
   private deleteQuestProgress(characterId: string, questId: string): void {
     try {
       getDb()
@@ -780,4 +854,49 @@ export class QuestManager {
       // 忽略
     }
   }
+}
+
+function questObjectiveKey(obj: QuestObjective): string {
+  return `${canonicalQuestObjectiveType(obj.type)}_${obj.targetId}`;
+}
+
+function canonicalQuestObjectiveType(type: QuestObjectiveType): QuestObjectiveType {
+  const aliases: Partial<Record<QuestObjectiveType, QuestObjectiveType>> = {
+    visit_room: 'visit',
+    kill_monster: 'kill',
+    collect_item: 'collect',
+    defeat_boss: 'kill',
+  };
+  return aliases[type] ?? type;
+}
+
+function objectiveMatchesEvent(objectiveType: QuestObjectiveType, eventType: QuestObjectiveType): boolean {
+  return canonicalQuestObjectiveType(objectiveType) === canonicalQuestObjectiveType(eventType);
+}
+
+function questObjectiveTypeLabel(type: QuestObjectiveType): string {
+  const labels: Record<QuestObjectiveType, string> = {
+    kill: '擊殺',
+    collect: '收集',
+    visit: '前往',
+    talk: '交談',
+    visit_room: '前往',
+    kill_monster: '擊殺',
+    loot_corpse: '搜刮屍體',
+    collect_item: '收集',
+    inspect_object: '檢查',
+    gather_resource: '採集',
+    craft_item: '製作',
+    defeat_boss: '擊敗 Boss',
+  };
+  return labels[type];
+}
+
+function formatStructuredRewardSuffix(rewards: QuestReward): string {
+  const parts: string[] = [];
+  if (rewards.portalUnlocks?.length) parts.push('傳送點解鎖');
+  if (rewards.zoneReputation?.length) parts.push('區域聲望');
+  if (rewards.recipes?.length) parts.push('配方');
+  if (rewards.equipmentSlotRewards?.length) parts.push('裝備補給');
+  return parts.length > 0 ? `，以及${parts.join('、')}` : '';
 }

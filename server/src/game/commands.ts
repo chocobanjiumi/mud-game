@@ -405,6 +405,7 @@ function cmdInspect(session: WsSession, target: string): void {
   }
 
   recordDiscovery(char.id, room.zone, room.id, 'inspect', `${room.id}:${normalizeCommandTarget(target)}`);
+  questMgr.updateProgress(char.id, 'inspect_object', normalizeCommandTarget(target));
 
   const ground = findGroundItem(room.id, target);
   if (ground) {
@@ -673,6 +674,7 @@ function cmdAttack(session: WsSession, target: string): void {
       // BOSS 擊殺額外觸發（用於每日/每週 BOSS 任務）
       if (monster.def.isBoss) {
         questMgr.updateProgress(char.id, 'kill', 'boss');
+        questMgr.updateProgress(char.id, 'defeat_boss', monster.monsterId);
       }
 
       // 菁英怪擊殺：公會經驗 +30
@@ -757,6 +759,7 @@ function cmdAttack(session: WsSession, target: string): void {
         // 物品掉落
         for (const item of drops.items) {
           addInventoryItem(freshChar.id, item.itemId, item.quantity);
+          questMgr.updateProgress(freshChar.id, 'collect_item', item.itemId);
           const def = ITEM_DEFS[item.itemId];
           sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
         }
@@ -1457,6 +1460,7 @@ function cmdTake(session: WsSession, itemName: string): void {
     const def = ITEM_DEFS[match.itemId];
     addInventoryItem(char.id, match.itemId, 1);
     markGroundItemPicked(char.roomId, match.itemId);
+    questMgr.updateProgress(char.id, 'collect_item', match.itemId);
     sendNarrative(session.sessionId, `你撿起了${def?.name ?? match.itemId}。`);
     return;
   }
@@ -1775,6 +1779,7 @@ function cmdActivate(session: WsSession, args: string[]): void {
     }
     unlockZone(char.id, localNode.zoneId, 'travel_node');
     unlockPortal(char.id, localNode.id, localNode.zoneId);
+    questMgr.updateProgress(char.id, 'inspect_object', localNode.id);
     sendSystem(session.sessionId, `已啟用 ${localNode.name}。之後可用 travel ${localNode.id} 傳送。`);
     return;
   }
@@ -1792,6 +1797,7 @@ function cmdActivate(session: WsSession, args: string[]): void {
 
   unlockZone(char.id, zone.id, 'portal');
   unlockPortal(char.id, zone.portal.id, zone.id);
+  questMgr.updateProgress(char.id, 'inspect_object', zone.portal.id);
   sendSystem(session.sessionId, `已啟用 ${zone.portal.name}。之後可用 travel ${zone.id} 或 travel ${zone.portal.id} 傳送。`);
 }
 
@@ -3341,6 +3347,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
+        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
         classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'forge');
       }
       break;
@@ -3352,6 +3359,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
+        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
         classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'alchemy');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'alchemy', craftingMgr.getCraftingLevel(char.id, 'alchemy').level);
       }
@@ -3364,6 +3372,7 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
         const recipe = craftingMgr.getRecipeInfo(recipeId);
+        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
         classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'cooking');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'cooking', craftingMgr.getCraftingLevel(char.id, 'cooking').level);
       }
