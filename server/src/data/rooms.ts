@@ -178,6 +178,10 @@ export const ZONES: Record<string, ZoneDef> = {
       'coastal_boardwalk', 'sandy_beach', 'tidal_zone', 'sea_cave',
       'fishing_dock', 'lighthouse', 'coral_shallows', 'shipwreck',
       'cliff_path', 'pirate_camp', 'dark_reef', 'underwater_cave',
+      'eastern_coast_tidepool_grotto', 'eastern_coast_seaweed_flats',
+      'eastern_coast_smugglers_cove', 'eastern_coast_broken_pier',
+      'eastern_coast_stormwatch_ledge', 'eastern_coast_pearl_bed',
+      'eastern_coast_pirate_cache', 'eastern_coast_serpent_nest',
     ],
   },
   volcano_zone: {
@@ -2526,6 +2530,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'coastal_boardwalk',
     name: '海邊棧道',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'coastal_boardwalk.png',
+    imagePrompt: '海邊棧道 in eastern_coast, entrance route room with salt-worn wooden boardwalk, fishing nets, gulls and bright sea wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '木製棧道沿著海岸線延伸，腳下被鹽分侵蝕的木板在每一步踩踏下吱嘎作響。' +
       '鹹濕的海風撲面而來夾帶著海藻和魚腥的氣味，遠處的海面波光粼粼，海鷗在浪尖上低掠而過。' +
@@ -2550,6 +2556,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'sandy_beach',
     name: '沙灘',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'sandy_beach.png',
+    imagePrompt: '沙灘 in eastern_coast, combat beach room with white sand, crab holes, shells, surf foam and hard noon sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。' +
       '海浪一波又一波地拍打著海岸，留下白色的泡沫和五彩斑斕的貝殼。' +
@@ -2577,9 +2585,11 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'tidal_zone',
     name: '潮間帶',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'tidal_zone.png',
+    imagePrompt: '潮間帶 in eastern_coast, resource combat tidepool room with wet rocks, kelp, barnacles, jellyfish pools and silver tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，' +
-      '半透明的水母在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。',
+      '半透明的水母在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。北面回沙灘，南側黑洞通往海蝕洞，東面水道連到珊瑚淺灘；玩家可採集貝殼和半寶石，也要看潮位避開水母群。',
     exits: [
       { direction: 'north', targetRoomId: 'sandy_beach', description: '回到沙灘' },
       { direction: 'south', targetRoomId: 'sea_cave', description: '岩壁上有一個黑暗的洞口' },
@@ -2603,10 +2613,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'sea_cave',
     name: '海蝕洞',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'sea_cave.png',
+    imagePrompt: '海蝕洞 in eastern_coast, combat cave room with glowing seaweed, echoing surf, tide pool entrance and blue-green cavern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '海浪長年侵蝕形成的巨大洞穴，洞壁上附著發光的海藻。' +
       '海水在洞內迴蕩，發出空洞的轟鳴聲。深處的水池中有蛇形的影子在游動。' +
-      '漲潮時洞口會被海水淹沒，需要把握時機。',
+      '漲潮時洞口會被海水淹沒，需要把握時機。北面退回潮間帶，水池下方可潛入海底洞穴；玩家可 inspect 潮痕判斷安全時間，也能 search 發光海藻根部。',
     exits: [
       { direction: 'north', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
       { direction: 'down', targetRoomId: 'underwater_cave', description: '水池下方似乎有通道' },
@@ -2629,6 +2641,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'fishing_dock',
     name: '漁村碼頭',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'fishing_dock.png',
+    imagePrompt: '漁村碼頭 in eastern_coast, town service fishing dock with moored boats, drying nets, tar barrels and gull-filled sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '簡樸的木製碼頭延伸入蔚藍的海面，幾艘漁船停泊在岸邊隨波搖晃，桅杆上的風向標嘎嘎轉動。' +
       '漁網曬在木架上散發著陽光和海鹽的氣味，空氣中瀰漫著濃郁的魚腥味和焦油的刺鼻氣息。' +
@@ -2652,6 +2666,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'lighthouse',
     name: '燈塔',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'lighthouse.png',
+    imagePrompt: '燈塔 in eastern_coast, landmark combat lighthouse with white tower, rusted spiral stair, crow nests and sweeping beacon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '矗立在海角的白色燈塔高聳入雲，塔身被數十年的海風侵蝕得斑駁蒼老，卻依然屹立不搖。' +
       '塔頂的燈火在夜晚劃破海上的黑暗，為遠方的航行者指引歸途。' +
@@ -2679,6 +2695,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'coral_shallows',
     name: '珊瑚淺灘',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'coral_shallows.png',
+    imagePrompt: '珊瑚淺灘 in eastern_coast, resource combat shallows with colorful coral, clear water, drifting jellyfish and rippled sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底，陽光在水底投射出流動的光網。' +
       '各種色彩斑斕的海洋生物在珊瑚叢中穿梭嬉戲，半透明的水母拖著長長的觸手優雅地漂浮。' +
@@ -2707,10 +2725,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'shipwreck',
     name: '沉船殘骸',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'shipwreck.png',
+    imagePrompt: '沉船殘骸 in eastern_coast, elite combat shipwreck room with tilted hull, broken mast, barnacles, pirate shadows and stormy sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一艘巨大的帆船擱淺在暗礁上，船身傾斜，桅杆斷裂。' +
       '船體佈滿了藤壺和海藻，甲板上散落著腐爛的繩索和碎木板。' +
-      '海盜和深海魚人將這裡當作據點，在殘骸間出沒。',
+      '海盜和深海魚人將這裡當作據點，在殘骸間出沒。北面可游回珊瑚淺灘，南側是暗礁，東面有海盜營火；玩家可 search 船艙保險箱和甲板貨箱。',
     exits: [
       { direction: 'north', targetRoomId: 'coral_shallows', description: '游回珊瑚淺灘' },
       { direction: 'south', targetRoomId: 'dark_reef', description: '沉船後方是暗礁區' },
@@ -2737,6 +2757,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'cliff_path',
     name: '海崖步道',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'cliff_path.png',
+    imagePrompt: '海崖步道 in eastern_coast, dangerous route cliff path with mossy rock wall, crab holes, strong wind and crashing waves below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。' +
       '海風在這裡格外強勁，呼嘯著穿過岩石的縫隙發出尖銳的嘯聲，站不穩就有被吹落懸崖的危險。' +
@@ -2750,7 +2772,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
     ],
     mapSymbol: '[崖]',
-    mapX: 5,
+    mapX: 6,
     mapY: 6,
     guardianHints: {
       creature: '崖壁的洞穴裡塞滿了海蟹，牠們會用螯鉗攻擊經過洞口的人。',
@@ -2763,10 +2785,12 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'pirate_camp',
     name: '海盜營地',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'pirate_camp.png',
+    imagePrompt: '海盜營地 in eastern_coast, boss combat pirate camp with tents, campfire, stolen crates, black flag and red dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '隱蔽在海灣中的海盜營地，帳篷和篝火散落在岩石之間。' +
       '到處堆放著搶來的貨物和空酒桶，海盜旗在風中獵獵作響。' +
-      '武裝的海盜在營地中巡邏，對入侵者毫不留情。',
+      '武裝的海盜在營地中巡邏，對入侵者毫不留情。西面回沉船殘骸，北側步道通海崖；玩家可 inspect 大帳篷和酒桶，找到海盜船長的藏寶線索。',
     exits: [
       { direction: 'west', targetRoomId: 'shipwreck', description: '回到沉船殘骸' },
       { direction: 'north', targetRoomId: 'cliff_path', description: '沿步道離開' },
@@ -2789,6 +2813,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'dark_reef',
     name: '暗礁',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'dark_reef.png',
+    imagePrompt: '暗礁 in eastern_coast, elite combat reef room with black blade rocks, whirlpools, green fishman eyes and violent foam light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '危險的暗礁區域，尖銳如刀刃的黑色岩石在海面下若隱若現，浪花拍打其上碎成白色的泡沫。' +
       '海流在這裡變得湍急而詭譎，漩渦在岩石之間不斷形成又消散，無數船隻在此粉身碎骨。' +
@@ -2816,11 +2842,13 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'underwater_cave',
     name: '海底洞穴',
     zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'underwater_cave.png',
+    imagePrompt: '海底洞穴 in eastern_coast, boss event underwater cave with magic air bubble, blue coral, fishman bone altars and deep ocean glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '深入海底的神秘洞穴，一層閃爍的魔法氣泡包裹著整個空間，維持著勉強可以呼吸的空氣。' +
       '洞壁上鑲嵌著發出幽藍光芒的深海珊瑚，將這片海底領域映照得如同異世界的殿堂。' +
       '四處散落著魚人用骨頭和貝殼堆砌的祭壇和圖騰，散發著令人不安的腥臭氣味。' +
-      '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。',
+      '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。上方通回海蝕洞，北面水道接暗礁區；玩家可 inspect 祭壇符號判斷召喚階段，search 貝殼圖騰取得深海寶珠線索，也要確認撤退路。氣泡邊緣偶爾震動，提醒玩家戰鬥拖太久可能失去安全呼吸空間。',
     exits: [
       { direction: 'up', targetRoomId: 'sea_cave', description: '游向上方的海蝕洞' },
       { direction: 'north', targetRoomId: 'dark_reef', description: '游回暗礁區' },
@@ -2836,6 +2864,180 @@ export const ROOMS: Record<string, RoomDef> = {
       treasure: '魚人的祭壇上擺放著從沉船中收集的珍貴寶物和深海寶珠。',
       spirit: '這個洞穴是古代海之神殿的入口，魚人在此守護著神殿的最後秘密。',
     },
+  },
+
+  eastern_coast_tidepool_grotto: {
+    id: 'eastern_coast_tidepool_grotto',
+    name: '潮池岩穴',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_tidepool_grotto.png',
+    imagePrompt: '潮池岩穴 in eastern_coast, hidden exploration tidepool grotto with mirror pools, shell marks, blue cave light and crab shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。玩家可 search 潮池底部找半寶石和古幣，也能 inspect 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。',
+    exits: [
+      { direction: 'east', targetRoomId: 'tidal_zone', description: '濕滑石路回到潮間帶' },
+      { direction: 'south', targetRoomId: 'sea_cave', description: '裂縫通向海蝕洞' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 3,
+    mapY: 7,
+  },
+
+  eastern_coast_seaweed_flats: {
+    id: 'eastern_coast_seaweed_flats',
+    name: '海藻灘',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_seaweed_flats.png',
+    imagePrompt: '海藻灘 in eastern_coast, resource combat flats with thick kelp mats, driftwood, jellyfish pools and pale green tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。玩家可 gather 海藻材料、search 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sandy_beach', description: '沙地回到沙灘' },
+      { direction: 'east', targetRoomId: 'coral_shallows', description: '水線通往珊瑚淺灘' },
+      { direction: 'south', targetRoomId: 'eastern_coast_tidepool_grotto', description: '礁石後有潮池岩穴' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'sea_crab', maxCount: 1, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[藻]',
+    mapX: 3,
+    mapY: 6,
+  },
+
+  eastern_coast_smugglers_cove: {
+    id: 'eastern_coast_smugglers_cove',
+    name: '走私者海灣',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_smugglers_cove.png',
+    imagePrompt: '走私者海灣 in eastern_coast, hidden combat cove with narrow inlet, covered crates, lantern signals and purple dusk surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。玩家可 inspect 提燈節奏找走私暗號，search 貨箱取得任務證物，但會引來海盜巡邏。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cliff_path', description: '沿崖壁回到海崖步道' },
+      { direction: 'south', targetRoomId: 'eastern_coast_pirate_cache', description: '貨箱痕跡通往藏貨處' },
+      { direction: 'east', targetRoomId: 'eastern_coast_stormwatch_ledge', description: '小徑攀向瞭望崖' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[灣]',
+    mapX: 7,
+    mapY: 6,
+  },
+
+  eastern_coast_broken_pier: {
+    id: 'eastern_coast_broken_pier',
+    name: '斷裂棧橋',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_broken_pier.png',
+    imagePrompt: '斷裂棧橋 in eastern_coast, event route room with shattered pier posts, loose planks, crab nests and cloudy harbor light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。玩家可 inspect 斷樁判斷是否被海盜破壞，search 漁網找修橋材料，也要處理爬上木板的海蟹。',
+    exits: [
+      { direction: 'north', targetRoomId: 'fishing_dock', description: '回到漁村碼頭' },
+      { direction: 'south', targetRoomId: 'lighthouse', description: '沿岸前往燈塔' },
+      { direction: 'east', targetRoomId: 'eastern_coast_pearl_bed', description: '潮溝通往珍珠床' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[桟]',
+    mapX: 6,
+    mapY: 5,
+  },
+
+  eastern_coast_stormwatch_ledge: {
+    id: 'eastern_coast_stormwatch_ledge',
+    name: '觀潮斷崖',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_stormwatch_ledge.png',
+    imagePrompt: '觀潮斷崖 in eastern_coast, elite exploration cliff ledge with storm clouds, warning cairns, gull bones and lightning sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡通向海蛇巢。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。',
+    exits: [
+      { direction: 'west', targetRoomId: 'eastern_coast_smugglers_cove', description: '小徑回走私者海灣' },
+      { direction: 'south', targetRoomId: 'pirate_camp', description: '陡坡下方是海盜營地' },
+      { direction: 'east', targetRoomId: 'eastern_coast_serpent_nest', description: '碎石坡通向海蛇巢' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[崖]',
+    mapX: 8,
+    mapY: 6,
+  },
+
+  eastern_coast_pearl_bed: {
+    id: 'eastern_coast_pearl_bed',
+    name: '珍珠床',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_pearl_bed.png',
+    imagePrompt: '珍珠床 in eastern_coast, resource underwater shallows with oyster beds, pale pearls, filtered sunlight and jellyfish drift, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。玩家可 gather 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'eastern_coast_broken_pier', description: '潮溝回斷裂棧橋' },
+      { direction: 'south', targetRoomId: 'coral_shallows', description: '水色變深通往珊瑚淺灘' },
+      { direction: 'east', targetRoomId: 'eastern_coast_serpent_nest', description: '暗流通向海蛇巢' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[珠]',
+    mapX: 6,
+    mapY: 7,
+  },
+
+  eastern_coast_pirate_cache: {
+    id: 'eastern_coast_pirate_cache',
+    name: '海盜藏貨處',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_pirate_cache.png',
+    imagePrompt: '海盜藏貨處 in eastern_coast, hidden elite cache with buried crates, torn black flag, rum barrels and red campfire glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海盜營地後方的岩縫裡藏著半埋貨箱，破黑旗蓋住火藥桶與酒桶，紅色營火把濕石照得像血。北面通走私者海灣，西側可回海盜營地，南面有窄路接沉船殘骸。這裡是精英藏寶點，玩家可 search 貨箱取得一次性寶物或任務證物，inspect 酒桶標記確認海盜船長補給線，但會引來強化巡邏。',
+    exits: [
+      { direction: 'north', targetRoomId: 'eastern_coast_smugglers_cove', description: '貨痕回到走私者海灣' },
+      { direction: 'west', targetRoomId: 'pirate_camp', description: '岩縫回到海盜營地' },
+      { direction: 'south', targetRoomId: 'shipwreck', description: '窄路通往沉船殘骸' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    groundItems: [
+      { itemId: 'ancient_coin', description: '半開貨箱裡露出幾枚被海水侵蝕的古幣' },
+    ],
+    mapSymbol: '[箱]',
+    mapX: 7,
+    mapY: 8,
+  },
+
+  eastern_coast_serpent_nest: {
+    id: 'eastern_coast_serpent_nest',
+    name: '海蛇巢',
+    zone: 'eastern_coast' as RoomDef['zone'],
+    image: 'eastern_coast_serpent_nest.png',
+    imagePrompt: '海蛇巢 in eastern_coast, boss event sea serpent nest with coiled bones, green water light, egg clutches and jagged reef walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側碎石坡回觀潮斷崖，南面可潛入暗礁深處。這裡是大型事件鉤子，玩家可 inspect 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援。',
+    exits: [
+      { direction: 'west', targetRoomId: 'eastern_coast_pearl_bed', description: '暗流回珍珠床' },
+      { direction: 'north', targetRoomId: 'eastern_coast_stormwatch_ledge', description: '碎石坡回觀潮斷崖' },
+      { direction: 'south', targetRoomId: 'dark_reef', description: '裂谷深入暗礁區' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[蛇]',
+    mapX: 7,
+    mapY: 7,
   },
 
   // ─── 火山地帶 (volcano_zone) ──────────────────────────
