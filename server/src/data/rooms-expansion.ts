@@ -1376,6 +1376,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'demon_border',
     name: '魔族邊境',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_border.png',
+    imagePrompt: '魔族邊境 in demon_territory, cracked chasm bridge from frozen wasteland into burning black plains, sulfur haze, red firelit sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '冰封雪原的盡頭，大地突然斷裂成一道巨大的裂谷。裂谷對面是一片焦黑的荒原，' +
       '空氣中瀰漫著硫磺的刺鼻氣味，遠方的天空被永恆的紅色火焰映照。' +
@@ -1383,6 +1385,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'ice_throne', description: '退回冰封王座' },
       { direction: 'north', targetRoomId: 'scorched_plains', description: '踏上焦黑的荒原' },
+      { direction: 'west', targetRoomId: 'demon_ash_watch', description: '裂谷西側有一座灰燼哨塔' },
     ],
     monsters: [
       { monsterId: 'imp', maxCount: 3, respawnSeconds: 40 },
@@ -1402,6 +1405,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'scorched_plains',
     name: '焦土平原',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'scorched_plains.png',
+    imagePrompt: '焦土平原 in demon_territory, endless cracked black plain with red flames in fissures, dead trees like bone frames, war drum smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一望無際的焦黑平原，大地龜裂如蛛網，裂縫中不時竄出赤紅色的火焰。' +
       '枯萎的樹木如同黑色的骨架矗立其間，天空永遠籠罩在灰紅色的煙塵之下。' +
@@ -1410,6 +1415,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'demon_border', description: '退回邊境裂谷' },
       { direction: 'north', targetRoomId: 'demon_village', description: '隱約可見魔族的營帳' },
       { direction: 'east', targetRoomId: 'blood_river', description: '一條殷紅的河流在東方流淌' },
+      { direction: 'west', targetRoomId: 'demon_bone_pits', description: '西方低地堆滿白骨與灰燼' },
     ],
     monsters: [
       { monsterId: 'imp', maxCount: 3, respawnSeconds: 35 },
@@ -1429,6 +1435,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'demon_village',
     name: '魔族村落',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_village.png',
+    imagePrompt: '魔族村落 in demon_territory, black stone and bone tents, forge glow, patrol shadows, trophy pole with broken adventurer gear, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '由黑色岩石和獸骨搭建的簡陋村落，低矮的帳篷和骨架棚屋散佈其間。' +
       '魔族士兵在村中巡邏，鍛造爐裡的火焰徹夜不熄，空氣中充斥著金屬和鮮血的氣味。' +
@@ -1436,6 +1444,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'scorched_plains', description: '回到焦土平原' },
       { direction: 'north', targetRoomId: 'dark_fortress_gate', description: '村落北方矗立著黑暗要塞' },
+      { direction: 'east', targetRoomId: 'demon_shadow_market', description: '黑布棚下傳來低聲交易' },
       { direction: 'west', targetRoomId: 'demon_treasury', description: '村落深處有一間上鎖的石屋', locked: true, keyItemId: 'silver_key' },
     ],
     monsters: [
@@ -1456,13 +1465,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'blood_river',
     name: '血河',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'blood_river.png',
+    imagePrompt: '血河 in demon_territory, crimson lava river steaming through scorched earth, corroded bones and twisted metal on banks, infernal red mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一條殷紅如血的河流在焦土中蜿蜒流淌，河面冒著騰騰的熱氣。' +
       '河水並非真正的血液，而是被地底深處的魔力礦脈污染的熔岩水。' +
-      '河岸邊散落著被腐蝕的骨骸和扭曲的金屬殘片。',
+      '河岸邊散落著被腐蝕的骨骸和扭曲的金屬殘片。每當熱浪翻湧，河底便浮出暗紅色符文，彷彿整條河仍在向要塞輸送魔力。',
     exits: [
       { direction: 'west', targetRoomId: 'scorched_plains', description: '沿河岸回到焦土平原' },
       { direction: 'south', targetRoomId: 'dark_fortress_gate', description: '河流上游通往要塞' },
+      { direction: 'east', targetRoomId: 'demon_lava_sewer', description: '破裂排水渠通往熔岩下水道' },
     ],
     monsters: [
       { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
@@ -1482,14 +1494,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dark_fortress_gate',
     name: '黑暗要塞大門',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'dark_fortress_gate.png',
+    imagePrompt: '黑暗要塞大門 in demon_territory, towering black fortress wall, iron gates, cursed runes, demon general drilling soldiers in red smoky plaza, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '高聳入雲的黑色城牆擋在前方，由巨大的暗黑岩石砌成，表面刻滿了魔族的詛咒符文。' +
       '城門由兩扇十公尺高的鑄鐵大門構成，門上釘著巨大的惡魔頭顱裝飾。' +
-      '門前的廣場上，魔族將軍正在操練一隊魔族士兵。',
+      '門前的廣場上，魔族將軍正在操練一隊魔族士兵。廣場四角各立著一根燃燒的黑曜石柱，柱頂火焰會隨守軍口令忽明忽暗。城牆縫隙中傳來機關齒輪的沉重轉聲，說明這裡不只是入口，也是整座要塞的防禦樞紐。玩家若停留觀察，能看出巡邏隊每隔數分鐘才會短暫分散。門縫下方還有新鮮車轍，表示軍械正由西側熔爐送入城內，守軍補給仍然頻繁。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_village', description: '退回魔族村落' },
       { direction: 'north', targetRoomId: 'blood_river', description: '沿著血河撤退' },
       { direction: 'east', targetRoomId: 'torture_chamber', description: '穿過城門進入要塞', locked: true, keyItemId: 'silver_key' },
+      { direction: 'west', targetRoomId: 'demon_sigil_tower', description: '西側高塔閃著符印光芒' },
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 50 },
@@ -1509,14 +1524,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'torture_chamber',
     name: '拷問室',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'torture_chamber.png',
+    imagePrompt: '拷問室 in demon_territory, damp fortress stone chamber with rusted chains, broken cages, red furnace light, restrained dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '要塞內部陰暗潮濕的石室，牆壁上掛滿了生鏽的鐵鏈和刑具。' +
       '空氣中瀰漫著令人作嘔的血腥氣味，角落裡堆放著破碎的籠子和骨骸。' +
-      '偶爾能聽到從更深處傳來的淒厲慘叫聲。',
+      '偶爾能聽到從更深處傳來的淒厲慘叫聲。地面排水溝裡流著被稀釋的紅黑色污水，牆角卻放著幾只尚未熄滅的治療藥瓶，暗示曾有俘虜在此反抗。石門內側刻著潦草的逃生記號，有些箭頭指向兵營，有些則指向南方的鎖鏈庭院，讓這裡成為要塞內部路線的危險節點。若仔細聆聽，東側牆後還會傳來召喚陣低沉脈動，南側鐵門則不斷滲出冷風與鐵鏽味，顯示另有押送路線尚未封閉。',
     exits: [
       { direction: 'west', targetRoomId: 'dark_fortress_gate', description: '退回要塞大門' },
       { direction: 'north', targetRoomId: 'demon_barracks', description: '通道通往魔族兵營' },
       { direction: 'east', targetRoomId: 'summoning_circle', description: '暗紅的光芒從東方透出' },
+      { direction: 'south', targetRoomId: 'demon_chain_yard', description: '潮濕階梯通往鎖鏈庭院' },
     ],
     monsters: [
       { monsterId: 'succubus', maxCount: 2, respawnSeconds: 65 },
@@ -1536,6 +1554,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'demon_barracks',
     name: '魔族兵營',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_barracks.png',
+    imagePrompt: '魔族兵營 in demon_territory, underground barracks with bone bunks, weapon racks, war maps, red lantern smoke and armored demon patrols, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '寬闊的地下營房中排列著數百張由獸骨和獸皮製成的簡陋床鋪。' +
       '武器架上陳列著各式各樣的魔族武器，牆壁上掛著作戰地圖和戰旗。' +
@@ -1543,6 +1563,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'torture_chamber', description: '回到拷問室' },
       { direction: 'west', targetRoomId: 'summoning_circle', description: '兵營深處有一道暗紅的門' },
+      { direction: 'east', targetRoomId: 'demon_hellhound_kennel', description: '鐵柵後傳來地獄犬低吼' },
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
@@ -1562,14 +1583,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'summoning_circle',
     name: '召喚陣',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'summoning_circle.png',
+    imagePrompt: '召喚陣 in demon_territory, vast circular stone chamber with pulsing red magic circle, four black pillars with ghostfire, abyss portal glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一間圓形的巨大石室，地面刻著複雜的魔法陣，暗紅色的能量脈動從符文中湧出。' +
       '空氣中充滿了灼熱的魔力，呼吸都變得困難。四根黑色石柱上燃燒著不滅的鬼火，' +
-      '將整個空間映照成地獄般的景象。這裡是魔王從深淵召喚惡魔的場所。',
+      '將整個空間映照成地獄般的景象。這裡是魔王從深淵召喚惡魔的場所。石室穹頂吊著數十枚倒置的金屬鈴，當符文脈動時會發出低沉共鳴，使玩家的方向感逐漸混亂。地面外圈有新近刻下的副陣，能把兵營與詛咒神龕的力量匯入主陣，若不破壞這些節點，守軍會源源不絕地回防。北側石門上的符號與魔王殿王座完全相同，暗示兩者共享同一個深淵核心。',
     exits: [
       { direction: 'west', targetRoomId: 'torture_chamber', description: '退回拷問室' },
       { direction: 'east', targetRoomId: 'demon_barracks', description: '退回兵營' },
       { direction: 'north', targetRoomId: 'demon_throne', description: '召喚陣背後是魔王殿的入口' },
+      { direction: 'south', targetRoomId: 'demon_cursed_shrine', description: '副陣延伸到南方詛咒神龕' },
     ],
     monsters: [
       { monsterId: 'succubus', maxCount: 2, respawnSeconds: 70 },
@@ -1589,13 +1613,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'demon_throne',
     name: '魔王殿',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_throne.png',
+    imagePrompt: '魔王殿 in demon_territory, deepest fortress throne hall with bone throne, burning red crystals, demon lord silhouette, oppressive infernal light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '黑暗要塞的最深處，一座由無數骨骸堆砌而成的王座矗立在大殿中央。' +
       '魔王端坐其上，渾身散發著令人窒息的威壓。殿堂四壁鑲嵌著燃燒的魔力結晶，' +
-      '映照出魔王那雙如烈焰般的瞳孔。這裡是魔族領地的心臟，也是最危險的戰場。',
+      '映照出魔王那雙如烈焰般的瞳孔。這裡是魔族領地的心臟，也是最危險的戰場。大殿地面鋪著破碎王國的旗幟，四周高台上站著沉默的親衛與祭司，等待魔王一個手勢便會啟動防禦結界。王座後方並非單純牆面，而是一面被黑鐵封住的巨大門扉，門縫裡吹出龍谷的乾燥熱風，提示魔族正在監視更古老的力量。側廳的親衛也隨時準備支援，王座陰影中還藏著多道未啟動的黑色鎖鏈。',
     exits: [
       { direction: 'south', targetRoomId: 'summoning_circle', description: '退回召喚陣' },
       { direction: 'north', targetRoomId: 'dragon_valley_entrance', description: '魔王殿背後的秘密通道通向一片未知的山谷' },
+      { direction: 'east', targetRoomId: 'demon_lord_antechamber', description: '側門通往魔王親衛前廳' },
     ],
     monsters: [
       { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 1800 },
@@ -1615,12 +1642,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'demon_treasury',
     name: '魔族寶庫',
     zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_treasury.png',
+    imagePrompt: '魔族寶庫 in demon_territory, warded black stone treasury with red gems, piles of coins and cursed relics, trap runes glowing, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一間由魔法結界守護的石室，四壁鑲嵌著發光的紅色寶石。' +
       '室內堆放著從各地掠奪來的金幣、寶石和魔法物品，散發著誘人的光芒。' +
       '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。',
     exits: [
       { direction: 'east', targetRoomId: 'demon_village', description: '回到魔族村落' },
+      { direction: 'south', targetRoomId: 'demon_shadow_market', description: '狹窄貨梯通往影市後門' },
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 60 },
@@ -1636,6 +1666,269 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       creature: '寶庫的守衛比外面的巡邏兵更加精銳——他們是魔王親衛隊的成員。',
       treasure: '寶庫最深處的箱子裡藏著魔族的遠古聖物，據說能大幅提升暗屬性魔法的威力。',
       spirit: '這些寶物中有許多來自被魔族毀滅的王國，歸還它們或許能解開某些古老的詛咒。',
+    },
+  },
+
+  demon_ash_watch: {
+    id: 'demon_ash_watch',
+    name: '灰燼哨塔',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_ash_watch.png',
+    imagePrompt: '灰燼哨塔 in demon_territory, leaning ash-covered watchtower beside a fiery chasm, black banners, sulfur wind and demon scouts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '裂谷西側的高地上立著一座被灰燼覆蓋的哨塔，塔身由黑木、鐵箍與巨獸肋骨拼接而成。風從冰原方向吹來時，塔頂的火盆會短暫變成藍白色，暴露出巡邏小惡魔的剪影。這裡能俯瞰石橋與焦土平原，是魔族監視北境來客的前哨，也藏著一條繞過正面巡邏的窄階梯。',
+    exits: [
+      { direction: 'east', targetRoomId: 'demon_border', description: '沿高地回到魔族邊境' },
+      { direction: 'north', targetRoomId: 'demon_bone_pits', description: '灰燼斜坡滑向骨坑低地' },
+    ],
+    monsters: [
+      { monsterId: 'imp', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'demon_soldier', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 2,
+    mapY: 17,
+    guardianHints: {
+      creature: '塔頂哨兵會用火盆傳信，先破壞火盆可延遲附近巡邏隊支援。',
+      treasure: '哨塔下層的補給箱中夾著北境地圖，標記了幾條魔族偵察路線。',
+      spirit: '灰燼中有冰原符文的碎片，說明這裡曾被北境守軍短暫奪回。',
+    },
+  },
+
+  demon_bone_pits: {
+    id: 'demon_bone_pits',
+    name: '白骨坑地',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_bone_pits.png',
+    imagePrompt: '白骨坑地 in demon_territory, scorched lowland with bone piles, ash dunes, cracked shields, red fissure light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '焦土平原西側陷落成一片灰白色坑地，碎骨、破盾與凝固熔渣層層堆疊，踩下去會發出乾脆的碎裂聲。坑壁有許多粗糙的拖痕，通往更深處的黑暗洞穴，偶爾還能聽見地獄犬在遠方嗅聞。這裡是魔族處理戰場殘骸的地方，也是拾荒者冒死尋找遺物的危險區域。',
+    exits: [
+      { direction: 'east', targetRoomId: 'scorched_plains', description: '爬上斜坡回到焦土平原' },
+      { direction: 'south', targetRoomId: 'demon_ash_watch', description: '灰燼小徑回到哨塔' },
+      { direction: 'north', targetRoomId: 'demon_treasury', description: '一條運骨車道通向寶庫外牆' },
+    ],
+    monsters: [
+      { monsterId: 'imp', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 2,
+    mapY: 18,
+    guardianHints: {
+      creature: '地獄犬會循著聲音撲向坑底，慢步移動可降低被圍攻的機率。',
+      treasure: '白骨堆中偶爾可見未被熔渣吞沒的戒指與徽章。',
+      spirit: '坑地裡混雜著多個王國的遺骨，戰爭痕跡遠比魔族村落宣稱的更久遠。',
+    },
+  },
+
+  demon_shadow_market: {
+    id: 'demon_shadow_market',
+    name: '影市',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_shadow_market.png',
+    imagePrompt: '影市 in demon_territory, hidden demon black market under dark cloth awnings, red lanterns, cages, cursed wares, smoky alleys, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '村落東側的黑布棚一層接一層，遮住了天空也遮住了交易者的臉。攤位上擺著破碎法器、帶詛咒的寶石、無主的武器與寫滿契約文字的羊皮紙，紅燈籠下的影子比真人更忙碌。這裡不完全受軍隊管轄，低階魔族、走私商與背叛者都會用壓低的聲音交換消息，玩家也能從混亂貨流中窺見要塞內部的補給路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'demon_village', description: '掀開黑布回到魔族村落' },
+      { direction: 'north', targetRoomId: 'demon_war_forge', description: '鐵軌推車通往戰爭熔爐' },
+      { direction: 'south', targetRoomId: 'demon_treasury', description: '後巷貨梯通向寶庫暗門' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 4,
+    mapY: 19,
+    guardianHints: {
+      creature: '影市守衛會混在人群中，先辨認甲片反光可避免被突襲。',
+      treasure: '某個攤位底下藏著來自人類王國的密封文書。',
+      spirit: '契約羊皮紙上有許多名字被劃掉，代表魔族社會內部也存在殘酷債務。',
+    },
+  },
+
+  demon_lava_sewer: {
+    id: 'demon_lava_sewer',
+    name: '熔岩下水道',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_lava_sewer.png',
+    imagePrompt: '熔岩下水道 in demon_territory, cracked stone sewer channels carrying red lava runoff, iron grates, steam vents, demon maintenance tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '血河東岸的破裂排水口通向要塞下方的熔岩下水道。半圓形石渠裡流動著暗紅熱流，鐵柵被高溫烤得發亮，牆面則結著黑色鹽晶與魔力殘渣。每隔一段距離就有維修平台與沉重閘門，證明魔族把河流、鍛爐與召喚陣的廢熱全部導入此處。蒸汽會遮蔽視線，也會把腳步聲傳得很遠。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blood_river', description: '排水口回到血河岸邊' },
+      { direction: 'south', targetRoomId: 'demon_war_forge', description: '灼熱管線通往戰爭熔爐' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'imp', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[渠]',
+    mapX: 5,
+    mapY: 18,
+    guardianHints: {
+      creature: '蒸汽噴口會遮住地獄犬衝鋒路線，聽低吼比看影子可靠。',
+      treasure: '沉積池底有被魔力染紅的礦渣，可作為鍛造材料。',
+      spirit: '下水道的設計極為古老，可能早於現任魔王與黑暗要塞。',
+    },
+  },
+
+  demon_sigil_tower: {
+    id: 'demon_sigil_tower',
+    name: '符印塔',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_sigil_tower.png',
+    imagePrompt: '符印塔 in demon_territory, narrow black tower covered in glowing red sigils, fortress wall side, chained crystal focus, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑暗要塞西側的高塔細長而扭曲，外牆布滿發亮的惡魔符印，像一條條燒紅的鎖鏈纏住塔身。塔內沒有普通樓梯，只有沿牆旋轉上升的符文平台，每一步都會抽走些許體溫。中央懸著一顆被黑鐵鎖住的水晶，將城門、召喚陣與魔王殿的結界連成一體。若能讀懂符印排列，便能看出要塞防線的弱點。塔窗外可見血河與熔爐煙柱同時閃爍，說明所有防線都由同一套魔力管路供能。牆角散落著被燒焦的羊皮卷，上面記錄著結界換班時間與幾個尚未封死的維修孔。塔頂每次鐘響都會讓城牆符文重新排列，表示玩家若想削弱大門防線，必須在短暫間隔內完成行動。',
+    exits: [
+      { direction: 'east', targetRoomId: 'dark_fortress_gate', description: '塔門通回黑暗要塞大門' },
+      { direction: 'north', targetRoomId: 'demon_chain_yard', description: '符文橋通向鎖鏈庭院' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[符]',
+    mapX: 2,
+    mapY: 20,
+    guardianHints: {
+      creature: '守塔將領會借用符印護盾，等水晶光芒轉暗時攻擊較有效。',
+      treasure: '水晶底座下有一枚可拆卸的符印碎片，能干擾城門結界。',
+      spirit: '符印排列記錄了要塞多次改建的痕跡，最底層文字不是魔族語。',
+    },
+  },
+
+  demon_chain_yard: {
+    id: 'demon_chain_yard',
+    name: '鎖鏈庭院',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_chain_yard.png',
+    imagePrompt: '鎖鏈庭院 in demon_territory, open fortress courtyard of hanging iron chains, wet black stones, red storm sky, guarded prison route, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '拷問室南方是一座沒有屋頂的內庭，數百條粗重鐵鏈從四周高牆垂下，在熱風中互相撞擊，發出沉悶回聲。庭院地面刻有排水槽與符文鎖孔，雨水、灰燼和魔力殘液都被導向中央的黑井。這裡曾用來押送俘虜，如今則成為守軍測試新武器與新咒術的場地。牆邊有一扇通往符印塔的窄門，經常被巡邏隊忽略。',
+    exits: [
+      { direction: 'north', targetRoomId: 'torture_chamber', description: '鐵門回到拷問室' },
+      { direction: 'south', targetRoomId: 'demon_sigil_tower', description: '狹門連到符印塔下層' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[鏈]',
+    mapX: 2,
+    mapY: 21,
+    guardianHints: {
+      creature: '庭院守軍會利用垂鏈阻擋路線，貼著牆走能減少被包夾。',
+      treasure: '中央黑井旁有未完成的符文鎖，可能對應寶庫或符印塔。',
+      spirit: '一些鎖鏈上刻著名字，顯示俘虜曾在此留下最後的求救訊息。',
+    },
+  },
+
+  demon_war_forge: {
+    id: 'demon_war_forge',
+    name: '戰爭熔爐',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_war_forge.png',
+    imagePrompt: '戰爭熔爐 in demon_territory, huge infernal forge with molten channels, black anvils, weapon racks, demon smith shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '影市北方的鐵軌一路伸進戰爭熔爐，巨大的黑鐵砧台圍著熔池排列，火光把穹頂照成滾動的深紅色。魔族工匠把血河礦渣、戰場廢鐵與詛咒符文一起投入爐中，鍛造成供前線使用的長矛、鎖甲與攻城鉤。熔爐西側能聽見要塞大門的號令聲，東側管線則連向熔岩下水道。只要破壞風箱，整座工坊的節奏就會停頓。',
+    exits: [
+      { direction: 'south', targetRoomId: 'demon_shadow_market', description: '推車軌道回到影市' },
+      { direction: 'north', targetRoomId: 'demon_lava_sewer', description: '熱管線通往熔岩下水道' },
+      { direction: 'west', targetRoomId: 'dark_fortress_gate', description: '軍械門回到要塞大門廣場' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[爐]',
+    mapX: 5,
+    mapY: 20,
+    guardianHints: {
+      creature: '熔爐守將會把士兵推向火線，站在砧台後可阻斷衝鋒。',
+      treasure: '冷卻槽裡有一把剛成形的魔族長刃，尚未完成詛咒儀式。',
+      spirit: '爐壁內層鑄著古代神殿石材，魔族把舊聖所改造成了兵工廠。',
+    },
+  },
+
+  demon_hellhound_kennel: {
+    id: 'demon_hellhound_kennel',
+    name: '地獄犬欄',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_hellhound_kennel.png',
+    imagePrompt: '地獄犬欄 in demon_territory, iron kennel corridor with ember-eyed hellhounds, scorched chains, feeding troughs and red torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '兵營東側的鐵柵走廊悶熱而刺鼻，一排排犬欄用粗鏈鎖住，欄內地獄犬的眼睛像餘燼一樣在黑暗中閃爍。地面布滿爪痕與燒焦的腳印，餵食槽旁堆著半熔化的護甲碎片。馴犬兵會用骨笛下令，讓地獄犬在狹窄通道中輪番衝撞。走廊盡頭的排氣孔連著戰爭熔爐，使這裡永遠充滿灼熱風聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'demon_barracks', description: '推開鐵柵回到魔族兵營' },
+      { direction: 'south', targetRoomId: 'demon_war_forge', description: '排氣孔外是戰爭熔爐側廊' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'demon_soldier', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[犬]',
+    mapX: 5,
+    mapY: 21,
+    guardianHints: {
+      creature: '地獄犬聽到骨笛會集體衝鋒，先擊倒馴犬兵可打亂牠們。',
+      treasure: '犬欄牆上掛著幾副耐火護腕，是馴犬兵進入熔爐時使用的裝備。',
+      spirit: '部分地獄犬項圈刻有舊王國徽記，說明牠們可能由戰獸改造而來。',
+    },
+  },
+
+  demon_cursed_shrine: {
+    id: 'demon_cursed_shrine',
+    name: '詛咒神龕',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_cursed_shrine.png',
+    imagePrompt: '詛咒神龕 in demon_territory, ruined underground shrine feeding a demon summoning circle, black candles, red sigils, cracked sacred statues, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '召喚陣南方的副通道通往一座被改造的古老神龕。原本潔白的神像被黑蠟覆蓋，臉部遭符文鐵片封住，神龕前的石盆裡燃著不會照亮周圍的紅火。牆上仍能看到舊日聖徽，但每一道刻痕都被魔族咒文覆寫，使此處同時散發神聖殘響與深淵低語。副陣的能量從地板裂縫流向北方，支撐著主召喚陣的持續運作。',
+    exits: [
+      { direction: 'north', targetRoomId: 'summoning_circle', description: '副陣回到召喚陣大廳' },
+      { direction: 'east', targetRoomId: 'demon_lord_antechamber', description: '被黑蠟封住的側廊通向親衛前廳' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[龕]',
+    mapX: 4,
+    mapY: 22,
+    guardianHints: {
+      creature: '神龕祭司會借用舊聖徽治療守軍，熄滅黑蠟可削弱法術。',
+      treasure: '破碎神像背後藏著一片未被污染的聖徽碎片。',
+      spirit: '這裡證明黑暗要塞建在舊神殿遺址上，仍有殘存意志抗拒魔族。',
+    },
+  },
+
+  demon_lord_antechamber: {
+    id: 'demon_lord_antechamber',
+    name: '魔王親衛前廳',
+    zone: 'demon_territory' as RoomDef['zone'],
+    image: 'demon_lord_antechamber.png',
+    imagePrompt: '魔王親衛前廳 in demon_territory, elite guard antechamber beside demon throne, black marble floor, red banners, sealed dragon door heat, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '魔王殿東側的親衛前廳比主殿更安靜，黑色大理石地面被擦得像鏡子，能映出牆上燃燒旗幟的倒影。兩排重甲親衛站在門柱旁，身後是通往龍谷密門的控制機關與數枚暗紅水晶。這裡不是接見臣民的地方，而是魔王在決戰前調度親衛、封鎖後路與觀察召喚陣狀態的戰術室。空氣中混著深淵寒意和龍谷熱風，表示兩股力量在門後互相拉扯。桌上攤開的軍令還標著各處哨塔與熔爐編號，若能帶走，足以揭露魔族下一階段的遠征計畫。前廳天花板垂下多面黑鐵鏡，能把主殿與召喚陣的動靜投到牆上，因此親衛幾乎不會被偷襲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'demon_throne', description: '黑石側門回到魔王殿' },
+      { direction: 'south', targetRoomId: 'demon_cursed_shrine', description: '暗紅側廊回到詛咒神龕' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 1800 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[衛]',
+    mapX: 4,
+    mapY: 23,
+    guardianHints: {
+      creature: '親衛會保護魔王撤退路線，分散站位可避免被同時壓制。',
+      treasure: '戰術桌上有龍谷密門的控制水晶，表面溫度異常灼熱。',
+      spirit: '前廳記錄著魔王對龍谷的恐懼，說明下一片區域並非魔族完全掌控。',
     },
   },
 

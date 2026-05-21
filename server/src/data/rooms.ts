@@ -248,6 +248,10 @@ export const ZONES: Record<string, ZoneDef> = {
       'demon_border', 'scorched_plains', 'demon_village', 'blood_river',
       'dark_fortress_gate', 'torture_chamber', 'demon_barracks',
       'summoning_circle', 'demon_throne', 'demon_treasury',
+      'demon_ash_watch', 'demon_bone_pits', 'demon_shadow_market',
+      'demon_lava_sewer', 'demon_sigil_tower', 'demon_chain_yard',
+      'demon_war_forge', 'demon_hellhound_kennel', 'demon_cursed_shrine',
+      'demon_lord_antechamber',
     ],
   },
   dragon_valley: {
