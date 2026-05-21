@@ -23,7 +23,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId, RoomDef, RoomExit, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, MonsterDef, RoomDef, RoomExit, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -364,7 +364,7 @@ function cmdSearch(session: WsSession, target?: string): void {
   if (normalizedTarget) {
     const lower = normalizeCommandTarget(normalizedTarget);
     if (lower === 'corpse' || lower === '屍體' || lower.includes('corpse')) {
-      const result = corpseMgr.searchCorpse(room.id, normalizedTarget);
+      const result = corpseMgr.searchCorpse(room.id, normalizedTarget, Date.now(), char.id);
       sendSystem(session.sessionId, result.message);
       if (result.ok) questMgr.updateProgress(char.id, 'inspect_object', 'corpse');
       return;
@@ -648,6 +648,36 @@ function cmdSkills(session: WsSession): void {
   }
 }
 
+function getActiveQuestDropIds(characterId: string, monster: MonsterDef): Set<string> {
+  const monsterQuestDrops = new Set(
+    monster.drops
+      .filter(drop => ITEM_DEFS[drop.itemId]?.type === 'quest')
+      .map(drop => drop.itemId),
+  );
+  if (monsterQuestDrops.size === 0) return new Set();
+
+  const activeDropIds = new Set<string>();
+  for (const { def, progress } of questMgr.getActiveQuests(characterId)) {
+    const questTargetsThisMonster = def.objectives.some(obj =>
+      (obj.type === 'kill' || obj.type === 'kill_monster' || obj.type === 'loot_corpse' || obj.type === 'defeat_boss')
+      && (obj.targetId === monster.id || obj.targetId === '*'),
+    );
+
+    for (const obj of def.objectives) {
+      if (obj.type !== 'collect' && obj.type !== 'collect_item') continue;
+      if (!monsterQuestDrops.has(obj.targetId)) continue;
+
+      const progressKey = `collect_${obj.targetId}`;
+      if ((progress[progressKey] ?? 0) >= obj.required) continue;
+      if (questTargetsThisMonster || monster.drops.some(drop => drop.itemId === obj.targetId)) {
+        activeDropIds.add(obj.targetId);
+      }
+    }
+  }
+
+  return activeDropIds;
+}
+
 function cmdAttack(session: WsSession, target: string): void {
   const char = getChar(session);
   if (!char) return;
@@ -731,10 +761,18 @@ function cmdAttack(session: WsSession, target: string): void {
       world.killMonster(char.roomId, monster.instanceId);
 
       // 經驗立即結算；金幣與物品留在屍體中等待搜刮。
-      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk);
+      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk, { activeQuestItemIds: [] });
+      const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
       for (const p of players) {
         const freshChar = getCharacterById(p.id);
         if (!freshChar) continue;
+
+        const activeQuestItemIds = getActiveQuestDropIds(freshChar.id, monster.def);
+        personalItems[freshChar.id] = lootCalc.calculatePersonalQuestDrops(
+          monster.def,
+          freshChar.stats.luk,
+          activeQuestItemIds,
+        );
 
         // 經驗值（隊伍分配）
         if (drops.exp > 0) {
@@ -768,6 +806,7 @@ function cmdAttack(session: WsSession, target: string): void {
         killerId: char.id,
         participantIds: players.map(player => player.id),
         loot: drops,
+        personalItems,
       });
       for (const p of players) {
         sendSystem(

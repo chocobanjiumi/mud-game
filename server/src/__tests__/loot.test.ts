@@ -291,6 +291,36 @@ describe('LootCalculator', () => {
       expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeGreaterThanOrEqual(0.05);
       expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeLessThanOrEqual(0.15);
     });
+
+    it('should only enable quest item drops for active quest item ids', () => {
+      const monster = makeMonsterDef({
+        drops: [
+          { itemId: 'class_change_scroll_swordsman', chance: 0.01, minQty: 1, maxQty: 1 },
+        ],
+      });
+
+      const inactiveTable = loot.buildMonsterLootTable(monster, { activeQuestItemIds: [] });
+      const activeTable = loot.buildMonsterLootTable(monster, { activeQuestItemIds: ['class_change_scroll_swordsman'] });
+
+      expect(inactiveTable.entries[0].category).toBe('quest');
+      expect(inactiveTable.entries[0].chance).toBe(0);
+      expect(activeTable.entries[0].chance).toBeGreaterThanOrEqual(0.4);
+      expect(activeTable.entries[0].chance).toBeLessThanOrEqual(1);
+    });
+
+    it('should roll personal quest drops for active quest items only', () => {
+      const monster = makeMonsterDef({
+        drops: [
+          { itemId: 'class_change_scroll_swordsman', chance: 0.01, minQty: 1, maxQty: 1 },
+          { itemId: 'class_change_scroll_mage', chance: 1, minQty: 1, maxQty: 1 },
+        ],
+      });
+      vi.spyOn(Math, 'random').mockReturnValue(0.2);
+
+      const result = loot.calculatePersonalQuestDrops(monster, 0, ['class_change_scroll_swordsman']);
+
+      expect(result).toEqual([{ itemId: 'class_change_scroll_swordsman', quantity: 1 }]);
+    });
   });
 
   // ── Exp distribution for solo player ──
@@ -518,5 +548,28 @@ describe('CorpseManager', () => {
     const result = corpses.searchCorpse('plains', 'corpse', now);
     expect(result.ok).toBe(true);
     expect(result.message).toContain('搜刮一空');
+  });
+
+  it('keeps personal quest items separate for each looter', () => {
+    const corpses = new CorpseManager();
+    const monster = makeMonsterInstance();
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster,
+      killerId: 'player-1',
+      participantIds: ['player-1', 'player-2'],
+      loot: { exp: 10, gold: 0, items: [] },
+      personalItems: {
+        'player-1': [{ itemId: 'class_change_scroll_swordsman', quantity: 1 }],
+        'player-2': [{ itemId: 'class_change_scroll_swordsman', quantity: 1 }],
+      },
+      now,
+    });
+
+    const first = corpses.lootCorpse('plains', 'player-1', 'corpse', now);
+    const second = corpses.lootCorpse('plains', 'player-2', 'corpse', now);
+
+    expect(first.loot?.items).toEqual([{ itemId: 'class_change_scroll_swordsman', quantity: 1 }]);
+    expect(second.loot?.items).toEqual([{ itemId: 'class_change_scroll_swordsman', quantity: 1 }]);
   });
 });

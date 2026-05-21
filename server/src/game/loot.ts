@@ -29,6 +29,10 @@ export interface MonsterLootTable {
   entries: MonsterLootEntry[];
 }
 
+export interface CalculateDropsOptions {
+  activeQuestItemIds?: Iterable<string>;
+}
+
 const REGIONAL_SPECIAL_DROP_IDS = new Set([
   'alpha_fang',
   'guardian_crystal',
@@ -56,8 +60,8 @@ export class LootCalculator {
    * @param playerLuk 擊殺玩家（或隊長）的幸運值
    * @returns 掉落結果
    */
-  calculateDrops(monster: MonsterDef, playerLuk: number): CombatLoot {
-    const lootTable = this.buildMonsterLootTable(monster);
+  calculateDrops(monster: MonsterDef, playerLuk: number, options: CalculateDropsOptions = {}): CombatLoot {
+    const lootTable = this.buildMonsterLootTable(monster, options);
     const exp = monster.expReward;
     const gold = Math.random() < lootTable.goldChance
       ? this.rollGold(lootTable.goldReward[0], lootTable.goldReward[1])
@@ -67,9 +71,18 @@ export class LootCalculator {
     return { exp, gold, items };
   }
 
-  buildMonsterLootTable(monster: MonsterDef): MonsterLootTable {
+  buildMonsterLootTable(monster: MonsterDef, options: CalculateDropsOptions = {}): MonsterLootTable {
     const tier: MonsterLootTier = monster.isBoss ? 'boss' : monster.isElite ? 'elite' : 'normal';
-    const entries = monster.drops.map(drop => this.normalizeDropEntry(drop, tier));
+    const activeQuestItemIds = options.activeQuestItemIds
+      ? new Set(options.activeQuestItemIds)
+      : null;
+    const entries = monster.drops.map(drop => {
+      const entry = this.normalizeDropEntry(drop, tier);
+      if (activeQuestItemIds && entry.category === 'quest' && !activeQuestItemIds.has(entry.itemId)) {
+        return { ...entry, chance: 0 };
+      }
+      return entry;
+    });
 
     if (tier === 'boss') {
       this.ensureBossEquipmentGuarantee(entries, monster);
@@ -82,6 +95,21 @@ export class LootCalculator {
       goldReward: monster.goldReward,
       entries,
     };
+  }
+
+  calculatePersonalQuestDrops(
+    monster: MonsterDef,
+    playerLuk: number,
+    activeQuestItemIds: Iterable<string>,
+  ): { itemId: string; quantity: number }[] {
+    const activeIds = new Set(activeQuestItemIds);
+    if (activeIds.size === 0) return [];
+
+    const questEntries = this.buildMonsterLootTable(monster, { activeQuestItemIds: activeIds })
+      .entries
+      .filter(entry => entry.category === 'quest' && entry.chance > 0);
+
+    return this.rollDrops(questEntries, playerLuk);
   }
 
   /**
@@ -389,6 +417,7 @@ export interface CorpseContainer {
   protectedUntil: number;
   gold: number;
   items: { itemId: string; quantity: number }[];
+  personalItems: Record<string, { itemId: string; quantity: number }[]>;
   isBoss: boolean;
   isElite: boolean;
 }
@@ -399,6 +428,7 @@ export interface CreateCorpseInput {
   killerId: string;
   participantIds: string[];
   loot: CombatLoot;
+  personalItems?: Record<string, { itemId: string; quantity: number }[]>;
   now?: number;
 }
 
@@ -431,6 +461,7 @@ export class CorpseManager {
       protectedUntil: now + protectionMs,
       gold: input.loot.gold,
       items: input.loot.items.map(item => ({ ...item })),
+      personalItems: this.clonePersonalItems(input.personalItems ?? {}),
       isBoss,
       isElite,
     };
@@ -462,13 +493,13 @@ export class CorpseManager {
     );
   }
 
-  searchCorpse(roomId: string, query?: string, now = Date.now()): LootCorpseResult {
+  searchCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): LootCorpseResult {
     const corpse = this.findCorpse(roomId, query, now);
     if (!corpse) {
       return { ok: false, message: '這裡沒有可搜尋的屍體。' };
     }
 
-    const itemCount = corpse.items.reduce((sum, item) => sum + item.quantity, 0);
+    const itemCount = this.countLootableItems(corpse, characterId);
     if (corpse.gold <= 0 && itemCount <= 0) {
       return { ok: true, corpse, message: `${corpse.monsterName}的屍體已被搜刮一空。` };
     }
@@ -497,16 +528,21 @@ export class CorpseManager {
       };
     }
 
-    if (corpse.gold <= 0 && corpse.items.length === 0) {
+    const personalItems = corpse.personalItems[characterId] ?? [];
+    if (corpse.gold <= 0 && corpse.items.length === 0 && personalItems.length === 0) {
       return { ok: true, corpse, loot: { gold: 0, items: [] }, message: `${corpse.monsterName}的屍體已被搜刮一空。` };
     }
 
     const loot = {
       gold: corpse.gold,
-      items: corpse.items.map(item => ({ ...item })),
+      items: this.mergeItems([
+        ...corpse.items.map(item => ({ ...item })),
+        ...personalItems.map(item => ({ ...item })),
+      ]),
     };
     corpse.gold = 0;
     corpse.items = [];
+    delete corpse.personalItems[characterId];
 
     return { ok: true, corpse, loot, message: `你搜刮了${corpse.monsterName}的屍體。` };
   }
@@ -535,5 +571,33 @@ export class CorpseManager {
 
   private getLifetimeMs(isBoss: boolean, isElite: boolean): number {
     return isBoss || isElite ? 10 * 60_000 : 5 * 60_000;
+  }
+
+  private countLootableItems(corpse: CorpseContainer, characterId?: string): number {
+    const sharedCount = corpse.items.reduce((sum, item) => sum + item.quantity, 0);
+    if (!characterId) return sharedCount;
+    const personalCount = (corpse.personalItems[characterId] ?? [])
+      .reduce((sum, item) => sum + item.quantity, 0);
+    return sharedCount + personalCount;
+  }
+
+  private clonePersonalItems(
+    personalItems: Record<string, { itemId: string; quantity: number }[]>,
+  ): Record<string, { itemId: string; quantity: number }[]> {
+    return Object.fromEntries(
+      Object.entries(personalItems)
+        .filter(([, items]) => items.length > 0)
+        .map(([characterId, items]) => [characterId, items.map(item => ({ ...item }))]),
+    );
+  }
+
+  private mergeItems(
+    items: { itemId: string; quantity: number }[],
+  ): { itemId: string; quantity: number }[] {
+    const merged = new Map<string, number>();
+    for (const item of items) {
+      merged.set(item.itemId, (merged.get(item.itemId) ?? 0) + item.quantity);
+    }
+    return Array.from(merged.entries()).map(([itemId, quantity]) => ({ itemId, quantity }));
   }
 }
