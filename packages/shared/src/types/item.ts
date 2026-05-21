@@ -2,6 +2,7 @@
 
 import type { ClassId } from './player.js';
 import type { ElementType } from './skill.js';
+import type { AffixDef, ItemQuality } from '../systems/item-instance.js';
 
 export type ItemType = 'weapon' | 'armor' | 'accessory' | 'consumable' | 'material' | 'quest';
 export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet';
@@ -99,4 +100,8 @@ export interface InventoryItem {
   itemId: string;
   quantity: number;
   equipped: boolean;
+  itemInstanceId?: string;
+  quality?: ItemQuality;
+  affixes?: AffixDef[];
+  fixedEffects?: string[];
 }

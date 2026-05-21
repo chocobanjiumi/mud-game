@@ -12,6 +12,8 @@ import type {
   TransactionRecord,
   AgentInfo,
   AgentMessage,
+  AffixDef,
+  ItemQuality,
   ItemRarity,
   ItemStats,
   LeaderboardEntry,
@@ -100,6 +102,9 @@ export interface TooltipItemData {
   name: string;
   description: string;
   rarity: ItemRarity;
+  quality?: ItemQuality;
+  affixes?: AffixDef[];
+  fixedEffects?: string[];
   levelReq: number;
   stats?: ItemStats;
   setName?: string;

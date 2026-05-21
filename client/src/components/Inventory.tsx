@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import { ITEM_DEFS } from '@game/shared';
 
 const EQUIP_SLOT_LABELS: Record<string, string> = {
   weapon: '武器',
@@ -6,7 +7,11 @@ const EQUIP_SLOT_LABELS: Record<string, string> = {
   body: '身體',
   hands: '手部',
   feet: '足部',
-  accessory: '飾品',
+  ring: '戒指',
+  earring: '耳環',
+  belt: '腰帶',
+  necklace: '項鍊',
+  accessory: '舊飾品',
 };
 
 export default function Inventory() {
@@ -16,6 +21,8 @@ export default function Inventory() {
   const equipment = useGameStore((s) => s.equipment);
   const inventoryCapacity = useGameStore((s) => s.inventoryCapacity);
   const gold = useGameStore((s) => s.gold);
+  const setTooltipItem = useGameStore((s) => s.setTooltipItem);
+  const setTooltipPosition = useGameStore((s) => s.setTooltipPosition);
 
   if (!showInventory) return null;
 
@@ -78,6 +85,26 @@ export default function Inventory() {
                   key={`${item.itemId}-${i}`}
                   className="flex items-center justify-between text-xs hover:bg-bg-tertiary px-1 py-0.5 rounded cursor-default group"
                   title={`${item.itemId} x${item.quantity}`}
+                  onMouseEnter={(event) => {
+                    const def = ITEM_DEFS[item.itemId];
+                    if (!def) return;
+                    setTooltipPosition({ x: event.clientX, y: event.clientY });
+                    setTooltipItem({
+                      id: def.id,
+                      name: def.name,
+                      description: def.description,
+                      rarity: def.rarity ?? 'common',
+                      quality: item.quality,
+                      affixes: item.affixes,
+                      fixedEffects: item.fixedEffects,
+                      levelReq: def.levelReq,
+                      stats: def.stats,
+                      equipSlot: def.equipSlot,
+                      type: def.type,
+                    });
+                  }}
+                  onMouseMove={(event) => setTooltipPosition({ x: event.clientX, y: event.clientY })}
+                  onMouseLeave={() => setTooltipItem(null)}
                 >
                   <span className="text-text-bright group-hover:text-text-terminal truncate">
                     {item.itemId}

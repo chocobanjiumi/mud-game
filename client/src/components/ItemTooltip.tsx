@@ -20,6 +20,15 @@ const RARITY_LABELS: Record<ItemRarity, string> = {
   mythic: '神話',
 };
 
+const QUALITY_LABELS: Record<string, string> = {
+  normal: '普通品質',
+  fine: '優良品質',
+  rare: '稀有品質',
+  epic: '史詩品質',
+  legendary: '傳說品質',
+  mythic: '神話品質',
+};
+
 const STAT_DISPLAY_NAMES: Record<string, string> = {
   atk: '攻擊力',
   matk: '魔攻力',
@@ -97,6 +106,9 @@ export default function ItemTooltip() {
         {tooltipItem.type && (
           <span className="text-text-dim">{tooltipItem.type}</span>
         )}
+        {tooltipItem.quality && (
+          <span style={{ color: rarityColor }}>{QUALITY_LABELS[tooltipItem.quality] ?? tooltipItem.quality}</span>
+        )}
       </div>
 
       {/* Stats */}
@@ -133,6 +145,25 @@ export default function ItemTooltip() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {/* Instance affixes */}
+      {tooltipItem.affixes && tooltipItem.affixes.length > 0 && (
+        <div className="item-tooltip-stats">
+          <div className="text-[10px] text-text-dim mb-0.5">詞綴</div>
+          {tooltipItem.affixes.map((affix) => (
+            <div key={affix.id} className="item-tooltip-stat-line">
+              <span className="text-text-bright">{affix.name}</span>
+              <span className="text-text-dim">{affix.tier}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {tooltipItem.fixedEffects && tooltipItem.fixedEffects.length > 0 && (
+        <div className="item-tooltip-set">
+          {tooltipItem.fixedEffects.join('、')}
         </div>
       )}
 
