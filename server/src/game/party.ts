@@ -2,7 +2,7 @@
 
 import { randomUUID } from 'crypto';
 import { MAX_PARTY_SIZE } from '@game/shared';
-import type { Character } from '@game/shared';
+import type { Character, CombatLoot } from '@game/shared';
 import {
   sendToCharacter, sendToSession,
 } from '../ws/handler.js';
@@ -16,6 +16,16 @@ export interface Party {
   leaderId: string;
   memberIds: string[];
   createdAt: number;
+  lootMode: LootDistributionMode;
+  lootRoundRobinIndex: number;
+}
+
+export type LootDistributionMode = 'free' | 'round_robin' | 'need_greed' | 'leader';
+
+export interface LootDistributionResult {
+  success: boolean;
+  message: string;
+  assignments: Map<string, Pick<CombatLoot, 'gold' | 'items'>>;
 }
 
 interface PartyInvite {
@@ -76,6 +86,8 @@ export class PartyManager {
       leaderId,
       memberIds: [leaderId],
       createdAt: Date.now(),
+      lootMode: 'free',
+      lootRoundRobinIndex: 0,
     };
 
     this.parties.set(partyId, party);
@@ -414,6 +426,65 @@ export class PartyManager {
     return distribution;
   }
 
+  setLootMode(leaderId: string, mode: LootDistributionMode): { success: boolean; message: string } {
+    const party = this.getParty(leaderId);
+    if (!party) {
+      return { success: false, message: '你不在任何隊伍中。' };
+    }
+    if (party.leaderId !== leaderId) {
+      return { success: false, message: '只有隊長可以變更戰利品分配模式。' };
+    }
+
+    party.lootMode = mode;
+    party.lootRoundRobinIndex = 0;
+    this.broadcastPartyUpdate(party.id);
+    return { success: true, message: `隊伍戰利品分配模式已改為 ${mode}。` };
+  }
+
+  distributeLoot(
+    looterId: string,
+    participantIds: string[],
+    loot: Pick<CombatLoot, 'gold' | 'items'>,
+  ): LootDistributionResult {
+    const emptyAssignments = new Map<string, Pick<CombatLoot, 'gold' | 'items'>>();
+    if (loot.gold <= 0 && loot.items.length === 0) {
+      return { success: true, message: '沒有可分配的戰利品。', assignments: emptyAssignments };
+    }
+
+    const party = this.getParty(looterId);
+    if (!party) {
+      emptyAssignments.set(looterId, this.cloneLoot(loot));
+      return { success: true, message: '戰利品已自由分配。', assignments: emptyAssignments };
+    }
+
+    const eligibleIds = party.memberIds.filter(id => participantIds.includes(id));
+    const candidates = eligibleIds.length > 0 ? eligibleIds : [looterId];
+    switch (party.lootMode) {
+      case 'leader': {
+        const recipientId = candidates.includes(party.leaderId) ? party.leaderId : looterId;
+        emptyAssignments.set(recipientId, this.cloneLoot(loot));
+        return { success: true, message: '戰利品已分配給隊長。', assignments: emptyAssignments };
+      }
+      case 'round_robin': {
+        const recipientId = candidates[party.lootRoundRobinIndex % candidates.length];
+        party.lootRoundRobinIndex = (party.lootRoundRobinIndex + 1) % candidates.length;
+        emptyAssignments.set(recipientId, this.cloneLoot(loot));
+        return { success: true, message: '戰利品已依輪流分配。', assignments: emptyAssignments };
+      }
+      case 'need_greed': {
+        return {
+          success: true,
+          message: '戰利品已依需求/貪婪分配。',
+          assignments: this.distributeNeedGreedLoot(party, candidates, loot),
+        };
+      }
+      case 'free':
+      default:
+        emptyAssignments.set(looterId, this.cloneLoot(loot));
+        return { success: true, message: '戰利品已自由分配。', assignments: emptyAssignments };
+    }
+  }
+
   // ──────────────────────────────────────────────────────────
   //  查詢
   // ──────────────────────────────────────────────────────────
@@ -475,6 +546,42 @@ export class PartyManager {
         members,
       });
     }
+  }
+
+  private distributeNeedGreedLoot(
+    party: Party,
+    candidates: string[],
+    loot: Pick<CombatLoot, 'gold' | 'items'>,
+  ): Map<string, Pick<CombatLoot, 'gold' | 'items'>> {
+    const assignments = new Map<string, Pick<CombatLoot, 'gold' | 'items'>>();
+    const grant = (characterId: string, gold: number, items: { itemId: string; quantity: number }[]) => {
+      const existing = assignments.get(characterId) ?? { gold: 0, items: [] };
+      existing.gold += gold;
+      existing.items.push(...items.map(item => ({ ...item })));
+      assignments.set(characterId, existing);
+    };
+
+    const goldPerMember = Math.floor(loot.gold / candidates.length);
+    let remainder = loot.gold - goldPerMember * candidates.length;
+    for (const id of candidates) {
+      grant(id, goldPerMember + (remainder > 0 ? 1 : 0), []);
+      if (remainder > 0) remainder--;
+    }
+
+    for (const item of loot.items) {
+      const recipientId = candidates[party.lootRoundRobinIndex % candidates.length];
+      party.lootRoundRobinIndex = (party.lootRoundRobinIndex + 1) % candidates.length;
+      grant(recipientId, 0, [item]);
+    }
+
+    return assignments;
+  }
+
+  private cloneLoot(loot: Pick<CombatLoot, 'gold' | 'items'>): Pick<CombatLoot, 'gold' | 'items'> {
+    return {
+      gold: loot.gold,
+      items: loot.items.map(item => ({ ...item })),
+    };
   }
 
   /** 清理過期邀請 */

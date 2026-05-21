@@ -1,13 +1,71 @@
 // Integration tests for game subsystems:
 // Party, Trade, Quest, PvP, Dungeon, Leaderboard, ClassChange
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { PartyManager } from '../game/party.js';
+import type { Character } from '@game/shared';
 
 // ============================================================
 //  Party System Logic Tests
 // ============================================================
 
 describe('PartyManager logic', () => {
+  let partyMgr: PartyManager;
+
+  const characters: Record<string, Character> = {
+    leader: {
+      id: 'leader',
+      userId: 'user-leader',
+      name: 'Leader',
+      level: 10,
+      exp: 0,
+      classId: 'swordsman',
+      hp: 100,
+      mp: 50,
+      maxHp: 100,
+      maxMp: 50,
+      stats: { str: 10, int: 5, dex: 5, vit: 5, luk: 5 },
+      freePoints: 0,
+      gold: 0,
+      roomId: 'plains',
+      isAi: false,
+      equipment: { weapon: null, head: null, body: null, hands: null, feet: null, accessory: null },
+      createdAt: Date.now(),
+      lastLogin: Date.now(),
+    },
+    member: {
+      id: 'member',
+      userId: 'user-member',
+      name: 'Member',
+      level: 10,
+      exp: 0,
+      classId: 'mage',
+      hp: 100,
+      mp: 50,
+      maxHp: 100,
+      maxMp: 50,
+      stats: { str: 5, int: 10, dex: 5, vit: 5, luk: 5 },
+      freePoints: 0,
+      gold: 0,
+      roomId: 'plains',
+      isAi: false,
+      equipment: { weapon: null, head: null, body: null, hands: null, feet: null, accessory: null },
+      createdAt: Date.now(),
+      lastLogin: Date.now(),
+    },
+  };
+
+  beforeEach(() => {
+    partyMgr = new PartyManager();
+    partyMgr.setCharacterLookup(id => characters[id]);
+    partyMgr.invitePlayer('leader', 'member');
+    partyMgr.acceptInvite('member');
+  });
+
+  afterEach(() => {
+    partyMgr.destroy();
+  });
+
   // Test party exp distribution formula
   const distributeExp = (memberCount: number, totalExp: number): Map<string, number> => {
     const distribution = new Map<string, number>();
@@ -59,6 +117,69 @@ describe('PartyManager logic', () => {
     expect(distributeGold(3, 100)).toBe(33);
     expect(distributeGold(2, 100)).toBe(50);
     expect(distributeGold(1, 100)).toBe(100);
+  });
+
+  it('supports free loot distribution', () => {
+    partyMgr.setLootMode('leader', 'free');
+    const result = partyMgr.distributeLoot('member', ['leader', 'member'], {
+      gold: 10,
+      items: [{ itemId: 'iron_sword', quantity: 1 }],
+    });
+
+    expect(result.assignments.get('member')).toEqual({
+      gold: 10,
+      items: [{ itemId: 'iron_sword', quantity: 1 }],
+    });
+  });
+
+  it('supports round_robin loot distribution', () => {
+    partyMgr.setLootMode('leader', 'round_robin');
+
+    const first = partyMgr.distributeLoot('leader', ['leader', 'member'], {
+      gold: 10,
+      items: [],
+    });
+    const second = partyMgr.distributeLoot('leader', ['leader', 'member'], {
+      gold: 20,
+      items: [],
+    });
+
+    expect(first.assignments.get('leader')?.gold).toBe(10);
+    expect(second.assignments.get('member')?.gold).toBe(20);
+  });
+
+  it('supports need_greed loot distribution', () => {
+    partyMgr.setLootMode('leader', 'need_greed');
+
+    const result = partyMgr.distributeLoot('leader', ['leader', 'member'], {
+      gold: 11,
+      items: [
+        { itemId: 'iron_sword', quantity: 1 },
+        { itemId: 'crystal_staff', quantity: 1 },
+      ],
+    });
+
+    expect(result.assignments.get('leader')).toEqual({
+      gold: 6,
+      items: [{ itemId: 'iron_sword', quantity: 1 }],
+    });
+    expect(result.assignments.get('member')).toEqual({
+      gold: 5,
+      items: [{ itemId: 'crystal_staff', quantity: 1 }],
+    });
+  });
+
+  it('supports leader loot distribution', () => {
+    partyMgr.setLootMode('leader', 'leader');
+    const result = partyMgr.distributeLoot('member', ['leader', 'member'], {
+      gold: 10,
+      items: [{ itemId: 'iron_sword', quantity: 1 }],
+    });
+
+    expect(result.assignments.get('leader')).toEqual({
+      gold: 10,
+      items: [{ itemId: 'iron_sword', quantity: 1 }],
+    });
   });
 });
 

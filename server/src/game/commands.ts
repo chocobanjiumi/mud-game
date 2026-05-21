@@ -48,6 +48,7 @@ import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { CorpseManager, LootCalculator } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
+import type { LootDistributionMode } from './party.js';
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 
 // ─── 地上物品撿取追蹤 ───
@@ -1538,21 +1539,51 @@ function cmdLoot(session: WsSession, target: string): void {
     return;
   }
 
-  if (loot.gold > 0) {
-    char.gold += loot.gold;
-    sendSystem(session.sessionId, `獲得金幣 +${loot.gold}`);
+  const personalQuestItems = loot.items.filter(item => ITEM_DEFS[item.itemId]?.type === 'quest');
+  const sharedLoot = {
+    gold: loot.gold,
+    items: loot.items.filter(item => ITEM_DEFS[item.itemId]?.type !== 'quest'),
+  };
+  const distribution = partyMgr.distributeLoot(
+    char.id,
+    result.corpse?.participantIds ?? [char.id],
+    sharedLoot,
+  );
+
+  for (const [recipientId, assignedLoot] of distribution.assignments) {
+    const recipient = getCharacterById(recipientId);
+    if (!recipient) continue;
+
+    if (assignedLoot.gold > 0) {
+      recipient.gold += assignedLoot.gold;
+      sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得金幣 +${assignedLoot.gold}`);
+    }
+
+    for (const item of assignedLoot.items) {
+      addInventoryItem(recipient.id, item.itemId, item.quantity);
+      questMgr.updateProgress(recipient.id, 'collect_item', item.itemId);
+      const def = ITEM_DEFS[item.itemId];
+      sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+    }
+
+    questMgr.updateProgress(recipient.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
+    questMgr.updateProgress(recipient.id, 'loot_corpse', 'corpse');
+    saveCharacter(recipient);
   }
 
-  for (const item of loot.items) {
+  for (const item of personalQuestItems) {
     addInventoryItem(char.id, item.itemId, item.quantity);
     questMgr.updateProgress(char.id, 'collect_item', item.itemId);
     const def = ITEM_DEFS[item.itemId];
     sendSystem(session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
   }
 
-  questMgr.updateProgress(char.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
-  questMgr.updateProgress(char.id, 'loot_corpse', 'corpse');
+  if (personalQuestItems.length > 0 && !distribution.assignments.has(char.id)) {
+    questMgr.updateProgress(char.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
+    questMgr.updateProgress(char.id, 'loot_corpse', 'corpse');
+  }
   saveCharacter(char);
+  if (distribution.assignments.size > 0) sendSystem(session.sessionId, distribution.message);
   sendSystem(session.sessionId, result.message);
 }
 
@@ -2055,10 +2086,21 @@ function cmdParty(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       break;
     }
+    case 'loot': {
+      const mode = args[1] as LootDistributionMode | undefined;
+      if (!mode || !['free', 'round_robin', 'need_greed', 'leader'].includes(mode)) {
+        sendError(session.sessionId, '用法：party loot <free|round_robin|need_greed|leader>');
+        return;
+      }
+      const result = partyMgr.setLootMode(char.id, mode);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
     case 'info': case 'status': {
       const party = partyMgr.getParty(char.id);
       if (!party) { sendSystem(session.sessionId, '你不在任何隊伍中。'); return; }
       sendSystem(session.sessionId, `── 隊伍資訊 ──`);
+      sendSystem(session.sessionId, `戰利品分配：${party.lootMode}`);
       for (const memberId of party.memberIds) {
         const member = getCharacterById(memberId);
         if (!member) continue;
@@ -2068,7 +2110,7 @@ function cmdParty(session: WsSession, args: string[]): void {
       break;
     }
     default:
-      sendSystem(session.sessionId, '組隊指令：party create/invite <名>/accept/decline/leave/kick <名>/info');
+      sendSystem(session.sessionId, '組隊指令：party create/invite <名>/accept/decline/leave/kick <名>/loot <模式>/info');
   }
 }
 
