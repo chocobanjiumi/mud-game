@@ -874,6 +874,7 @@ describe('economy statistics', () => {
 
   it('tracks daily gold production, spending, auction averages, and material consumption', () => {
     const date = '2099-01-01';
+    getDb().prepare('DELETE FROM economy_daily_stats WHERE date = ?').run(date);
 
     recordGoldProduced(125, date);
     recordGoldSpent(45, date);

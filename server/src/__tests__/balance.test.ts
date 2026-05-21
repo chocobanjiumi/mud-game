@@ -936,6 +936,19 @@ describe('Balance: Crafting definitions', () => {
   });
 });
 
+describe('Balance: Economy sinks', () => {
+  it('keeps shop sell prices below buy prices to prevent vendor arbitrage', () => {
+    const tradeableItems = Object.values(ITEM_DEFS).filter(item =>
+      (item.buyPrice ?? 0) > 0 && (item.sellPrice ?? 0) > 0,
+    );
+
+    expect(tradeableItems.length).toBeGreaterThan(0);
+    for (const item of tradeableItems) {
+      expect(item.sellPrice, item.id).toBeLessThan(item.buyPrice);
+    }
+  });
+});
+
 describe('Balance: Stat scaling', () => {
   it('physical damage should scale linearly with STR', () => {
     const dmg10 = calculateDerived(makePlayerStats({ str: 10 })).atk;
