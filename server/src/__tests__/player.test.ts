@@ -27,6 +27,14 @@ import {
   recordGoldSpent,
   recordReforgeMaterialConsumed,
 } from '../game/economy-stats.js';
+import {
+  ensureCollectionLogTables,
+  getBossKillCount,
+  getFishCodex,
+  getMonsterCodex,
+  recordFishCodexCatch,
+  recordMonsterCodexKill,
+} from '../game/collection-log.js';
 
 // ============================================================
 //  Tests
@@ -969,6 +977,46 @@ describe('guild construction economy', () => {
     const after = guildMgr.getGuildInfo(char.id)!;
     expect(after.storageSlots).toBe(before.storageSlots + 10);
     expect(getCharacterById(char.id)?.gold).toBe(8000 - 5000 - cost);
+  });
+});
+
+describe('long-term collection logs', () => {
+  beforeAll(() => {
+    initDb();
+    ensureCollectionLogTables();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('tracks monster codex entries and boss kill counts', () => {
+    const characterId = 'codex-monster-test';
+    insertTestCharacter(characterId, 'CodexMonsterTest', 0);
+    getDb().prepare('DELETE FROM character_monster_codex WHERE character_id = ?').run(characterId);
+
+    recordMonsterCodexKill(characterId, 'slime', false);
+    recordMonsterCodexKill(characterId, 'goblin_chief', true);
+    recordMonsterCodexKill(characterId, 'goblin_chief', true);
+
+    const codex = getMonsterCodex(characterId);
+    expect(codex.find(entry => entry.monsterId === 'slime')?.killCount).toBe(1);
+    expect(codex.find(entry => entry.monsterId === 'goblin_chief')?.killCount).toBe(2);
+    expect(getBossKillCount(characterId)).toBe(2);
+  });
+
+  it('tracks unique fish in the fishing codex separately from catch counts', () => {
+    const characterId = 'codex-fish-test';
+    insertTestCharacter(characterId, 'CodexFishTest', 0);
+    getDb().prepare('DELETE FROM character_fish_codex WHERE character_id = ?').run(characterId);
+
+    expect(recordFishCodexCatch(characterId, 'small_fish')).toBe(1);
+    expect(recordFishCodexCatch(characterId, 'small_fish')).toBe(1);
+    expect(recordFishCodexCatch(characterId, 'river_carp')).toBe(2);
+
+    const fish = getFishCodex(characterId);
+    expect(fish).toHaveLength(2);
+    expect(fish.find(entry => entry.fishId === 'small_fish')?.catchCount).toBe(2);
   });
 });
 

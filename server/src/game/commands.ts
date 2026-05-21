@@ -12,7 +12,7 @@ import {
   getEquippedItems,
   getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
   isZoneUnlocked, unlockPortal, unlockZone,
-  getDiscoveryCount, hasDiscovery, recordDiscovery,
+  getDiscoveryCount, getDiscoveryTotalCount, hasDiscovery, recordDiscovery,
   getMemberKingdom, getKingdomById, updateKingdom,
 } from '../db/queries.js';
 import {
@@ -41,8 +41,16 @@ import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom, getRoomsByZone, getZone, ZONES } from '../data/rooms.js';
+import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
+import { FISH_TABLE } from './fishing.js';
+import {
+  getBossKillCount,
+  getFishCodex,
+  getMonsterCodex,
+  recordMonsterCodexKill,
+} from './collection-log.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
@@ -210,6 +218,7 @@ export function handleCommand(session: WsSession, input: string): void {
     // 成就/稱號系統
     case 'achievement': case 'ach': cmdAchievement(session, args); break;
     case 'title': cmdTitle(session); break;
+    case 'codex': cmdCodex(session, args); break;
     // 寵物系統
     case 'pet': cmdPet(session, args); break;
     case 'tame': cmdTame(session); break;
@@ -302,6 +311,7 @@ function cmdLook(session: WsSession, target?: string): void {
     return;
   }
   recordDiscovery(char.id, roomInfo.room.zone, roomInfo.room.id, 'visit_room', roomInfo.room.id);
+  updateExplorationAchievements(char.id, roomInfo.room.zone, roomInfo.room.id);
 
   // 取得同房間的其他玩家
   const playersInRoom = world.getPlayersInRoom(char.roomId)
@@ -416,6 +426,21 @@ function cmdSearch(session: WsSession, target?: string): void {
   }
 
   sendSearchSummary(session, room);
+}
+
+function updateExplorationAchievements(characterId: string, zoneId: string, roomId: string): void {
+  try {
+    const totalVisited = getDiscoveryTotalCount(characterId, 'visit_room');
+    achievementMgr.onRoomVisit(characterId, roomId, totalVisited);
+
+    const zoneVisited = getDiscoveryCount(characterId, zoneId, 'visit_room');
+    const zoneRoomCount = getRoomsByZone(zoneId).length;
+    if (zoneRoomCount > 0 && zoneVisited >= zoneRoomCount) {
+      achievementMgr.onZoneFullyExplored(characterId);
+    }
+  } catch {
+    // 探索成就失敗不影響房間顯示
+  }
 }
 
 function cmdInspect(session: WsSession, target: string): void {
@@ -728,6 +753,14 @@ function cmdAttack(session: WsSession, target: string): void {
     if (result === 'victory') {
       // 觸發任務進度
       questMgr.updateProgress(char.id, 'kill', monster.monsterId);
+      recordMonsterCodexKill(char.id, monster.monsterId, Boolean(monster.def.isBoss || monster.def.aiType === 'boss'));
+      achievementMgr.onMonsterKill(
+        char.id,
+        monster.monsterId,
+        Boolean(monster.def.isBoss || monster.def.aiType === 'boss'),
+        Boolean(monster.def.isElite),
+        monster.def.element,
+      );
 
       // BOSS 擊殺額外觸發（用於每日/每週 BOSS 任務）
       if (monster.def.isBoss) {
@@ -4128,11 +4161,14 @@ function cmdHelp(session: WsSession, topic?: string): void {
       ],
     },
     achievement: {
-      title: '成就/稱號',
+      title: '成就/稱號/圖鑑',
       lines: [
         'achievement (ach)    查看所有成就',
         'achievement equip <ID> 裝備稱號',
         'title                查看當前稱號',
+        'codex monster        查看怪物圖鑑',
+        'codex fish           查看釣魚圖鑑',
+        'codex boss           查看 Boss 擊殺次數',
       ],
     },
     pet: {
@@ -4276,6 +4312,43 @@ function cmdTitle(session: WsSession): void {
     sendSystem(session.sessionId, `你當前的稱號：「${title}」`);
   } else {
     sendSystem(session.sessionId, '你尚未裝備任何稱號。使用 achievement equip <成就ID> 來裝備。');
+  }
+}
+
+function cmdCodex(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase() ?? 'monster';
+  if (sub === 'fish' || sub === 'fishing') {
+    const entries = getFishCodex(char.id);
+    sendSystem(session.sessionId, `═══ 釣魚圖鑑 (${entries.length}/${FISH_TABLE.length}) ═══`);
+    if (entries.length === 0) {
+      sendSystem(session.sessionId, '尚未捕獲任何魚類。');
+      return;
+    }
+    for (const entry of entries.slice(0, 20)) {
+      const def = FISH_TABLE.find(fish => fish.id === entry.fishId);
+      sendSystem(session.sessionId, `  ${def?.name ?? entry.fishId} x${entry.catchCount}`);
+    }
+    return;
+  }
+
+  if (sub === 'boss') {
+    sendSystem(session.sessionId, `Boss 擊殺次數：${getBossKillCount(char.id)}`);
+    return;
+  }
+
+  const entries = getMonsterCodex(char.id);
+  sendSystem(session.sessionId, `═══ 怪物圖鑑 (${entries.length}) ═══`);
+  if (entries.length === 0) {
+    sendSystem(session.sessionId, '尚未擊殺任何怪物。');
+    return;
+  }
+  for (const entry of entries.slice(0, 20)) {
+    const def = MONSTERS[entry.monsterId];
+    const bossTag = entry.isBoss ? ' BOSS' : '';
+    sendSystem(session.sessionId, `  ${def?.name ?? entry.monsterId}${bossTag} x${entry.killCount}`);
   }
 }
 

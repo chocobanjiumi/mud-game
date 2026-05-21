@@ -176,6 +176,10 @@ export const ACHIEVEMENT_DEFS: Record<string, AchievementDef> = {
     id: 'fish_collector', name: '魚類收藏家', category: 'collection',
     description: '捕獲 10 種不同魚類', title: '釣魚愛好者', requiredProgress: 10,
   },
+  pet_collector: {
+    id: 'pet_collector', name: '寵物收藏家', category: 'collection',
+    description: '收集 5 種不同寵物', title: '獸群之友', requiredProgress: 5,
+  },
   material_hoarder: {
     id: 'material_hoarder', name: '材料囤積者', category: 'collection',
     description: '收集 100 份材料', title: '材料大師', requiredProgress: 100,
@@ -586,6 +590,11 @@ export class AchievementManager {
   /** 魚類收集更新時呼叫 */
   onFishCollectionUpdate(characterId: string, fishCount: number): AchievementDef | null {
     return this.setProgress(characterId, 'fish_collector', fishCount);
+  }
+
+  /** 寵物收集更新時呼叫 */
+  onPetCollectionUpdate(characterId: string, petTypeCount: number): AchievementDef | null {
+    return this.setProgress(characterId, 'pet_collector', petTypeCount);
   }
 
   /** 材料收集更新時呼叫 */

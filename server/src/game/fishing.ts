@@ -4,6 +4,7 @@ import { getDb } from '../db/schema.js';
 import { addInventoryItem } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import { achievementMgr } from './state.js';
+import { ensureCollectionLogTables, recordFishCodexCatch } from './collection-log.js';
 
 const FISHING_COOLDOWN_MS = 10_000; // 10 秒冷卻
 const fishingCooldowns: Map<string, number> = new Map();
@@ -41,7 +42,7 @@ interface FishDef {
   value: number;
 }
 
-const FISH_TABLE: FishDef[] = [
+export const FISH_TABLE: FishDef[] = [
   // Common (Lv 1-5)
   { id: 'small_fish', name: '小魚', minLevel: 1, maxLevel: 5, rarity: 'common', exp: 10, value: 10 },
   { id: 'river_carp', name: '河鯉', minLevel: 1, maxLevel: 5, rarity: 'common', exp: 12, value: 15 },
@@ -94,6 +95,7 @@ export class FishingManager {
         total_caught INTEGER DEFAULT 0
       );
     `);
+    ensureCollectionLogTables();
   }
 
   /** 是否可以在此房間釣魚 */
@@ -201,9 +203,10 @@ export class FishingManager {
       ).run(characterId, newLevel, newExp, newCaught);
     }
 
-    // 成就 hook：魚類收藏家
+    // 圖鑑與成就 hook：不同魚種收藏
     try {
-      achievementMgr.checkAndUnlock(characterId, 'fish_collector', 1);
+      const uniqueFishCount = recordFishCodexCatch(characterId, caught.id);
+      achievementMgr.onFishCollectionUpdate(characterId, uniqueFishCount);
     } catch { /* ignore */ }
 
     // Build result message

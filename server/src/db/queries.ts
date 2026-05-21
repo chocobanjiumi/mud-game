@@ -373,6 +373,24 @@ export function getDiscoveryCount(characterId: string, zoneId: string, discovery
   return row.count;
 }
 
+export function getDiscoveryTotalCount(characterId: string, discoveryType?: string): number {
+  if (discoveryType) {
+    const row = getDb().prepare(`
+      SELECT COUNT(*) AS count
+      FROM character_discoveries
+      WHERE character_id = ? AND discovery_type = ?
+    `).get(characterId, discoveryType) as { count: number };
+    return row.count;
+  }
+
+  const row = getDb().prepare(`
+    SELECT COUNT(*) AS count
+    FROM character_discoveries
+    WHERE character_id = ?
+  `).get(characterId) as { count: number };
+  return row.count;
+}
+
 export function hasDiscovery(characterId: string, discoveryType: string, targetId: string): boolean {
   const row = getDb().prepare(
     'SELECT 1 FROM character_discoveries WHERE character_id = ? AND discovery_type = ? AND target_id = ?',

@@ -3,6 +3,7 @@
 
 import { getDb } from '../db/schema.js';
 import { randomUUID } from 'crypto';
+import { achievementMgr } from './state.js';
 
 // ============================================================
 //  型別定義
@@ -212,6 +213,14 @@ export class PetManager {
       INSERT INTO pets (id, character_id, pet_type, name, level, exp, hp, max_hp, atk, def, happiness, is_summoned, created_at)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).run(id, characterId, petType, pet.name, pet.level, pet.exp, pet.hp, pet.maxHp, pet.atk, pet.def, pet.happiness, 0, now);
+
+    try {
+      const row = db.prepare('SELECT COUNT(DISTINCT pet_type) AS count FROM pets WHERE character_id = ?')
+        .get(characterId) as { count: number };
+      achievementMgr.onPetCollectionUpdate(characterId, row.count);
+    } catch {
+      // 寵物取得不應被成就寫入失敗阻斷
+    }
 
     return pet;
   }
