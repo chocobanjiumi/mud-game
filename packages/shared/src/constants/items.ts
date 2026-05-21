@@ -183,25 +183,25 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     id: 'wooden_ring', name: '木戒指', type: 'accessory',
     description: '用橡木雕刻的素樸戒指，表面打磨得光滑溫潤。雖然沒有華麗的裝飾，但佩戴時總覺得好運會降臨。或許只是心理作用也說不定。', buyPrice: 20, sellPrice: 10,
     stackable: false, maxStack: 1, levelReq: 1,
-    equipSlot: 'accessory', stats: { luk: 1 },
+    equipSlot: 'ring', stats: { luk: 1 },
   },
   lucky_charm: {
     id: 'lucky_charm', name: '幸運護符', type: 'accessory',
     description: '一枚古老的護符，以四葉草形狀的翡翠為主體，周圍鑲嵌著細碎的星光石。據說它曾庇護過一位傳奇冒險者度過無數劫難，散發著令人安心的淡綠色光芒。', buyPrice: 500, sellPrice: 250,
     stackable: false, maxStack: 1, levelReq: 10,
-    equipSlot: 'accessory', stats: { luk: 5, critRate: 2 },
+    equipSlot: 'necklace', stats: { luk: 5, critRate: 2 },
   },
   power_amulet: {
     id: 'power_amulet', name: '力量護身符', type: 'accessory',
     description: '蘊含力量的護身符。', buyPrice: 500, sellPrice: 250,
     stackable: false, maxStack: 1, levelReq: 10,
-    equipSlot: 'accessory', stats: { str: 3, atk: 5 },
+    equipSlot: 'necklace', stats: { str: 3, atk: 5 },
   },
   wisdom_amulet: {
     id: 'wisdom_amulet', name: '智慧護身符', type: 'accessory',
     description: '增幅智力的護身符。', buyPrice: 500, sellPrice: 250,
     stackable: false, maxStack: 1, levelReq: 10,
-    equipSlot: 'accessory', stats: { int: 3, mp: 20 },
+    equipSlot: 'necklace', stats: { int: 3, mp: 20 },
   },
 
   // ============ 長槍 (Spear) - 劍士/騎士 ============
@@ -710,7 +710,7 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     description: '劍聖之裝套裝的戒指，戰氣凝聚。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['swordsman', 'knight', 'berserker', 'sword_saint'],
-    equipSlot: 'accessory', stats: { atk: 8, str: 4, critRate: 3 },
+    equipSlot: 'ring', stats: { atk: 8, str: 4, critRate: 3 },
     rarity: 'epic', setId: 'sword_saint_set',
   },
 
@@ -728,7 +728,7 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     description: '大法師之裝套裝的魔戒，魔力澎湃。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['mage', 'archmage', 'warlock', 'chronomancer'],
-    equipSlot: 'accessory', stats: { matk: 10, int: 5, mp: 30 },
+    equipSlot: 'ring', stats: { matk: 10, int: 5, mp: 30 },
     rarity: 'epic', setId: 'archmage_set',
   },
 
@@ -746,7 +746,7 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     description: '暗影獵手之裝套裝的戒指，暗影之力。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['ranger', 'marksman', 'assassin', 'beast_master'],
-    equipSlot: 'accessory', stats: { dex: 5, critRate: 4, dodgeRate: 3 },
+    equipSlot: 'ring', stats: { dex: 5, critRate: 4, dodgeRate: 3 },
     rarity: 'epic', setId: 'shadow_hunter_set',
   },
 
@@ -764,7 +764,7 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     description: '聖光守護之裝套裝的戒指，信仰之光。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['priest', 'high_priest', 'druid', 'inquisitor'],
-    equipSlot: 'accessory', stats: { int: 4, vit: 4, mp: 30 },
+    equipSlot: 'ring', stats: { int: 4, vit: 4, mp: 30 },
     rarity: 'epic', setId: 'holy_guardian_set',
   },
 
@@ -1606,13 +1606,13 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     id: 'warriors_pendant', name: '戰士之墜', type: 'accessory',
     description: '刻有古老戰紋的墜飾，激發戰鬥本能。', buyPrice: 800, sellPrice: 260,
     stackable: false, maxStack: 1, levelReq: 20,
-    equipSlot: 'accessory', stats: { str: 4, vit: 3, atk: 5 },
+    equipSlot: 'necklace', stats: { str: 4, vit: 3, atk: 5 },
   },
   mage_earring: {
     id: 'mage_earring', name: '魔導耳環', type: 'accessory',
     description: '增幅魔力的神秘耳環。', buyPrice: 800, sellPrice: 260,
     stackable: false, maxStack: 1, levelReq: 20,
-    equipSlot: 'accessory', stats: { int: 5, mp: 20, matk: 5 },
+    equipSlot: 'earring', stats: { int: 5, mp: 20, matk: 5 },
   },
 
   // ============ 增益藥水 ============
@@ -1939,7 +1939,7 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     id: 'ancient_relic', name: '古代遺物', type: 'accessory',
     description: '由古代碎片與魔力結晶鍛造的傳說飾品，蘊含遠古的力量。', buyPrice: 15000, sellPrice: 7500,
     stackable: false, maxStack: 1, levelReq: 40,
-    equipSlot: 'accessory', stats: { str: 5, int: 5, dex: 5, vit: 5, luk: 5, hp: 100, mp: 50 },
+    equipSlot: 'necklace', stats: { str: 5, int: 5, dex: 5, vit: 5, luk: 5, hp: 100, mp: 50 },
     rarity: 'legendary',
   },
 

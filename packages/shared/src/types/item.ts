@@ -5,7 +5,7 @@ import type { ElementType } from './skill.js';
 
 export type ItemType = 'weapon' | 'armor' | 'accessory' | 'consumable' | 'material' | 'quest';
 export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet';
-export type EquipSlot = 'weapon' | 'head' | 'body' | 'hands' | 'feet' | 'accessory';
+export type EquipSlot = 'weapon' | 'head' | 'body' | 'hands' | 'feet' | 'ring' | 'earring' | 'belt' | 'necklace' | 'accessory';
 
 export type WeaponType = 'spear' | 'greataxe' | 'katana' | 'elemental_staff' | 'grimoire' | 'hourglass_staff' | 'crossbow' | 'dagger' | 'whip' | 'holy_tome' | 'nature_staff' | 'warhammer';
 

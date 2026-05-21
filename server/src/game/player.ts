@@ -4,7 +4,7 @@ import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
   EquipmentSlots, SkillDef,
 } from '@game/shared';
-import { CLASS_DEFS } from '@game/shared';
+import { CLASS_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 
@@ -34,12 +34,7 @@ const DEFAULT_STATS: BaseStats = {
 
 /** 初始裝備槽（全空） */
 const EMPTY_EQUIPMENT: EquipmentSlots = {
-  weapon: null,
-  head: null,
-  body: null,
-  hands: null,
-  feet: null,
-  accessory: null,
+  ...createEmptyEquipmentSlots(),
 };
 
 // ============================================================

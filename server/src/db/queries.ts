@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { Character, ClassId, BaseStats, EquipmentSlots } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -287,9 +287,7 @@ export function hasDiscovery(characterId: string, discoveryType: string, targetI
 function rowToCharacter(row: Record<string, unknown>): Character {
   // 取得裝備
   const equipped = getEquippedItems(row.id as string);
-  const equipment: EquipmentSlots = {
-    weapon: null, head: null, body: null, hands: null, feet: null, accessory: null,
-  };
+  const equipment: EquipmentSlots = createEmptyEquipmentSlots();
 
   // 這裡簡化處理：根據物品 ID 設定裝備欄位
   // 實際應從 ITEM_DEFS 取得 equipSlot
@@ -643,9 +641,9 @@ function guessEquipSlot(itemId: string): string | null {
   }
   if (itemId.includes('glove') || itemId.includes('gauntlet')) return 'hands';
   if (itemId.includes('boot') || itemId.includes('greave') || itemId.includes('sandal')) return 'feet';
-  if (itemId.includes('ring') || itemId.includes('charm') || itemId.includes('pendant') ||
-      itemId.includes('amulet') || itemId.includes('earring')) {
-    return 'accessory';
-  }
+  if (itemId.includes('ring')) return 'ring';
+  if (itemId.includes('earring')) return 'earring';
+  if (itemId.includes('belt')) return 'belt';
+  if (itemId.includes('necklace') || itemId.includes('pendant') || itemId.includes('amulet') || itemId.includes('charm')) return 'necklace';
   return null;
 }

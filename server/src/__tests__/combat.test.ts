@@ -26,7 +26,7 @@ function makeCharacter(overrides: Partial<Character> = {}): Character {
     gold: 500,
     roomId: 'plains',
     isAi: false,
-    equipment: { weapon: null, head: null, body: null, hands: null, feet: null, accessory: null },
+    equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
     createdAt: Date.now(),
     lastLogin: Date.now(),
     ...overrides,

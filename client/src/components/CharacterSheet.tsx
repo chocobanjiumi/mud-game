@@ -34,7 +34,10 @@ const EQUIP_SLOTS: { key: string; label: string; icon: string }[] = [
   { key: 'body', label: '身體', icon: '[甲]' },
   { key: 'hands', label: '手部', icon: '[手]' },
   { key: 'feet', label: '足部', icon: '[靴]' },
-  { key: 'accessory', label: '飾品', icon: '[飾]' },
+  { key: 'ring', label: '戒指', icon: '[戒]' },
+  { key: 'earring', label: '耳環', icon: '[耳]' },
+  { key: 'belt', label: '腰帶', icon: '[帶]' },
+  { key: 'necklace', label: '項鍊', icon: '[鍊]' },
 ];
 
 const DERIVED_STAT_LABELS: { key: string; label: string }[] = [
@@ -59,6 +62,9 @@ export default function CharacterSheet() {
   if (!characterSheetOpen || !character) return null;
 
   const className = CLASS_NAMES[character.classId] ?? character.classId;
+  const visibleEquipSlots = equipment?.accessory
+    ? [...EQUIP_SLOTS, { key: 'accessory', label: '舊飾品', icon: '[飾]' }]
+    : EQUIP_SLOTS;
 
   return (
     <div className="charsheet-overlay" onClick={() => setCharacterSheetOpen(false)}>
@@ -148,7 +154,7 @@ export default function CharacterSheet() {
           <div className="charsheet-equip-col">
             <div className="text-[10px] text-text-dim uppercase tracking-wider mb-2">裝備欄位</div>
             <div className="charsheet-equip-layout">
-              {EQUIP_SLOTS.map((slot) => {
+              {visibleEquipSlots.map((slot) => {
                 const equipped = equipment?.[slot.key as keyof typeof equipment] ?? null;
                 return (
                   <div

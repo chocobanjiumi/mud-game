@@ -1,7 +1,7 @@
 // 資料庫 CRUD 操作
 
 import { getDb } from './schema.js';
-import { ITEM_DEFS } from '@game/shared';
+import { ITEM_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 import type { Character, EquipmentSlots, InventoryItem, LearnedSkill } from '@game/shared';
 
 // ============================================================
@@ -85,10 +85,7 @@ function loadEquipment(characterId: string): EquipmentSlots {
     'SELECT item_id FROM inventory WHERE character_id = ? AND equipped = 1'
   ).all(characterId) as any[];
 
-  const slots: EquipmentSlots = {
-    weapon: null, head: null, body: null,
-    hands: null, feet: null, accessory: null,
-  };
+  const slots: EquipmentSlots = createEmptyEquipmentSlots();
 
   for (const row of equipped) {
     const def = ITEM_DEFS[row.item_id];

@@ -57,7 +57,46 @@ export interface EquipmentSlots {
   body: string | null;
   hands: string | null;
   feet: string | null;
+  ring: string | null;
+  earring: string | null;
+  belt: string | null;
+  necklace: string | null;
   accessory: string | null;
+}
+
+export const EQUIPMENT_SLOT_KEYS = [
+  'weapon',
+  'head',
+  'body',
+  'hands',
+  'feet',
+  'ring',
+  'earring',
+  'belt',
+  'necklace',
+  'accessory',
+] as const satisfies readonly (keyof EquipmentSlots)[];
+
+export function createEmptyEquipmentSlots(): EquipmentSlots {
+  return {
+    weapon: null,
+    head: null,
+    body: null,
+    hands: null,
+    feet: null,
+    ring: null,
+    earring: null,
+    belt: null,
+    necklace: null,
+    accessory: null,
+  };
+}
+
+export function normalizeEquipmentSlots(equipment: Partial<EquipmentSlots> | null | undefined): EquipmentSlots {
+  return {
+    ...createEmptyEquipmentSlots(),
+    ...(equipment ?? {}),
+  };
 }
 
 export interface Character {
