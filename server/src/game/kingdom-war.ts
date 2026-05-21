@@ -4,6 +4,7 @@ import { randomUUID } from 'crypto';
 import { getDb } from '../db/schema.js';
 import { getCharacterById, saveCharacter } from '../db/queries.js';
 import { sendToCharacter } from '../ws/handler.js';
+import { recordGoldSpent } from './economy-stats.js';
 import type {
   KingdomRank, WarStatus, BountyStatus, KingdomWar,
   KingdomBounty, KingdomMember,
@@ -457,6 +458,7 @@ export class WarManager {
     const db = getDb();
     db.prepare('UPDATE kingdoms SET treasury_gold = treasury_gold - ? WHERE id = ?').run(cost, war.defenderId);
     this.logTreasuryTransaction(war.defenderId, -cost, 'maintenance', `修復${info.name}`, characterId);
+    recordGoldSpent(cost);
 
     const newHp = info.currentHp + repairAmount;
     db.prepare(`UPDATE kingdom_wars SET ${info.field} = ? WHERE id = ?`).run(newHp, warId);
