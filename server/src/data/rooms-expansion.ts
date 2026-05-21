@@ -7909,4 +7909,547 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '猩紅火口是赤岩荒地所有貪婪、流亡與戰鬥最後匯聚的地方。',
     },
   },
+
+  sunken_catacombs_tide_stair: {
+    id: 'sunken_catacombs_tide_stair',
+    name: '潮汐階梯',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_tide_stair.png',
+    imagePrompt: '潮汐階梯 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '入口石階被黑水反覆淹沒，牆上潮痕像年輪一樣層層堆疊。這裡是沉沒墓窟入口與回程錨點，玩家可確認水位、點亮防潮燈，並從刻在階梯側面的名字判斷哪些探險隊曾經進入後沒有回來。水聲會掩蓋骷髏腳步，黑水裡偶爾還有蛇影掠過。若潮痕突然上升，代表墓窟深處的排水機關正在反向運轉，隊伍應先標記退路再深入。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '潮濕石階通向淹沒前廳' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '潮汐階梯的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '潮汐階梯附近常有被黑水沖出的墓窟線索。',
+      spirit: '潮汐階梯保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_flooded_narthex: {
+    id: 'sunken_catacombs_flooded_narthex',
+    name: '淹沒前廳',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_flooded_narthex.png',
+    imagePrompt: '淹沒前廳 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮汐階梯下方是半淹前廳，倒塌拱頂讓冷光落在水面，漂著破燈、腐木和碎骨。前廳四面通向骨堂、黑水渠與燈龕，是墓窟外層最重要的交通節點。玩家可在這裡判斷水流方向、尋找失蹤隊伍留下的防水記號，也會遭遇第一批真正守墓者。水面倒映出的拱門比現實完整，容易誤導隊伍走向封死通道。若前廳中央渦流變黑，附近亡靈會一同醒來。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_tide_stair', description: '階梯回到入口' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_ossuary_walk', description: '骨牆長廊在東側' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '黑水渠在南側' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_lantern_niche', description: '藍火燈龕在北側' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[廳]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '淹沒前廳的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '淹沒前廳附近常有被黑水沖出的墓窟線索。',
+      spirit: '淹沒前廳保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_ossuary_walk: {
+    id: 'sunken_catacombs_ossuary_walk',
+    name: '骨牆長廊',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_ossuary_walk.png',
+    imagePrompt: '骨牆長廊 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '前廳東側的長廊兩壁砌滿頭骨與腿骨，許多骨骼被潮水泡得發灰，仍按照古老家族紋章排列。每當水流穿過骨縫，長廊會發出像低聲合唱的回音。這裡是戰鬥與探索房，玩家可拓印紋章、尋找被錯置的遺骨，也能從骨牆缺口前往漂棺室或哀悼墓室。骷髏士兵會從骨牆中抽身而出，巨蛛則在潮濕頂部結網。若玩家亂動骨序，整條長廊會短暫封死。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '長廊回到淹沒前廳' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_floating_coffins', description: '水聲通向漂棺室' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_mourner_crypt', description: '哭者墓室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 70 },
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '骨牆長廊的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '骨牆長廊附近常有被黑水沖出的墓窟線索。',
+      spirit: '骨牆長廊保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_blackwater_channel: {
+    id: 'sunken_catacombs_blackwater_channel',
+    name: '黑水渠',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_blackwater_channel.png',
+    imagePrompt: '黑水渠 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '前廳南側開出一條低矮水渠，黑水沿著石槽緩慢流動，水面漂著蠟封、腐布與沒入一半的墓牌。這裡是水路通道與資源房，玩家可採集黑水沉泥、尋找排水閘位置，也能避開骨牆長廊直接前往水閘控制室。水渠狹窄，戰鬥時很難展開陣形，湖蛇與史萊姆會利用水深從側面靠近。若玩家帶著錯誤光源，黑水會反射出不存在的出口，引導隊伍走入蛇形排水道。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '水渠回到前廳' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_sluice_control', description: '水流通向水閘控制室' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_bone_silt_basin', description: '沉泥坡通向骨泥盆地' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_serpent_drain', description: '狹窄水道通向蛇形排水道' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 110 },
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[渠]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '黑水渠的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '黑水渠附近常有被黑水沖出的墓窟線索。',
+      spirit: '黑水渠保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_floating_coffins: {
+    id: 'sunken_catacombs_floating_coffins',
+    name: '漂棺室',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_floating_coffins.png',
+    imagePrompt: '漂棺室 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨牆長廊後方是一間被水淹到腰深的墓室，數十具石棺漂在水面，彼此碰撞時發出沉悶聲響。棺蓋上刻著不同潮汐符號，部分石棺卻被從內部頂開。這裡是高密度戰鬥與任務房，玩家可辨認正確棺序、尋找任務遺骸，或用漂棺搭成臨時路線。石棺移動會改變出口位置，也會讓守墓骷髏和亡靈騎士更容易靠近。若水位突然下降，原本漂浮的棺材會變成阻擋退路的石牆。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_ossuary_walk', description: '骨牆路回到長廊' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_mourner_crypt', description: '漂棺靠向哭者墓室' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_sluice_control', description: '棺列間水路通向水閘室' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 70 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[棺]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '漂棺室的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '漂棺室附近常有被黑水沖出的墓窟線索。',
+      spirit: '漂棺室保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_mourner_crypt: {
+    id: 'sunken_catacombs_mourner_crypt',
+    name: '哭者墓室',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_mourner_crypt.png',
+    imagePrompt: '哭者墓室 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '漂棺室北面有一座乾燥些的墓室，牆上浮雕刻著披面哭者，她們的臉被潮氣侵蝕，只剩空洞眼眶。地面放著許多破陶碗，像曾有人定期供水或供淚。這裡是敘事與精英前置房，玩家可解讀哭者浮雕、收集葬儀碗碎片，並找到通往嘆息禮拜堂的祈詞。若玩家靠近主墓龕，哭者浮雕會滲出黑水，召來骷髏與石像守衛。墓室聲音異常清楚，任何低語都像被死者聽見。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunken_catacombs_floating_coffins', description: '墓階回到漂棺室' },
+      { direction: 'west', targetRoomId: 'sunken_catacombs_ossuary_walk', description: '骨牆支路回到長廊' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_chapel_of_sighs', description: '祈詞通向嘆息禮拜堂' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[哭]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '哭者墓室的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '哭者墓室附近常有被黑水沖出的墓窟線索。',
+      spirit: '哭者墓室保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_sluice_control: {
+    id: 'sunken_catacombs_sluice_control',
+    name: '水閘控制室',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_sluice_control.png',
+    imagePrompt: '水閘控制室 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑水渠深處有一間青銅水閘室，牆上排列著三只生鏽輪盤，分別控制外層水渠、漂棺室與深潮井水位。輪盤旁刻著古代潮汐表，但後人加上的標記已被泡爛。這裡是機關與交通房，玩家可調整水位、打開鏈橋捷徑，也可能因錯誤操作讓墓窟局部淹沒。水閘室地面滑膩，史萊姆會貼著齒輪藏身，湖蛇則從排水口突襲。若三只輪盤同時震動，代表深處黑水核心正在反推機關。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '水渠回到西側' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_floating_coffins', description: '水位門通向漂棺室' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_bone_silt_basin', description: '排水坡通向骨泥盆地' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_serpent_drain', description: '排水口通向蛇形水道' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[閘]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '水閘控制室的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '水閘控制室附近常有被黑水沖出的墓窟線索。',
+      spirit: '水閘控制室保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_bone_silt_basin: {
+    id: 'sunken_catacombs_bone_silt_basin',
+    name: '骨泥盆地',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_bone_silt_basin.png',
+    imagePrompt: '骨泥盆地 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '水閘室南側的低地沉積著厚厚骨泥，碎骨、泥沙與腐布混成灰白色淤積物。每一步都會陷入膝蓋，拔腳聲像有人在泥下拉扯。這裡是資源與危險地形房，玩家可採集骨泥、尋找被水沖下來的墓牌，也能從淤積方向推斷深潮井位置。骨泥中藏著許多未完全甦醒的骷髏，史萊姆則吸附在骨片上偽裝成泥塊。若隊伍行動太慢，骨泥會逐漸封住剛踏出的路。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sunken_catacombs_sluice_control', description: '淤泥坡回到水閘室' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_deep_tidewell', description: '沉泥流向深潮井' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'green_slime', maxCount: 4, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[泥]',
+    mapX: 2,
+    mapY: -2,
+    guardianHints: {
+      creature: '骨泥盆地的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '骨泥盆地附近常有被黑水沖出的墓窟線索。',
+      spirit: '骨泥盆地保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_lantern_niche: {
+    id: 'sunken_catacombs_lantern_niche',
+    name: '長明燈龕',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_lantern_niche.png',
+    imagePrompt: '長明燈龕 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '淹沒前廳西側的牆面鑿出一排燈龕，多數油燈早已熄滅，只有中間一盞在潮濕空氣裡發出藍白小火。燈龕下方刻著回程祈文，字跡被無數濕手摸得發亮。這裡是探索與安全節點房，玩家可重新點亮長明燈，降低外層迷路風險，並取得前往嘆息禮拜堂的光源線索。燈火會吸引亡靈，也會驅散部分黑水幻象。若玩家吹熄唯一燃燈，整個前廳出口會在短時間內變得難以辨認。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '燈光回到前廳' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_chapel_of_sighs', description: '祈文路通向嘆息禮拜堂' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[燈]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '長明燈龕的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '長明燈龕附近常有被黑水沖出的墓窟線索。',
+      spirit: '長明燈龕保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_serpent_drain: {
+    id: 'sunken_catacombs_serpent_drain',
+    name: '蛇形排水道',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_serpent_drain.png',
+    imagePrompt: '蛇形排水道 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑水渠東端分出一條蛇形排水道，通道窄到只能側身前進，牆面佈滿被鱗片磨出的弧形刮痕。水流在轉角處形成小漩渦，常把碎骨與蠟封捲到牆角。這裡是高風險通道房，玩家可追蹤湖蛇巢穴、取得排水機關的下層鑰記，也能繞往溺水祭壇。湖蛇會利用轉角連續突襲，史萊姆則封住低處排水口。若聽見前方水流突然消失，代表有蛇身堵住通道等待獵物靠近。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。不要貿然分散。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_sluice_control', description: '排水道回到水閘室' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_drowned_altar', description: '低水道通向溺水祭壇' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '側渠回到黑水渠' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 4, respawnSeconds: 110 },
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[蛇]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '蛇形排水道的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '蛇形排水道附近常有被黑水沖出的墓窟線索。',
+      spirit: '蛇形排水道保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_drowned_altar: {
+    id: 'sunken_catacombs_drowned_altar',
+    name: '溺水祭壇',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_drowned_altar.png',
+    imagePrompt: '溺水祭壇 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蛇形排水道盡頭開成一座半圓祭壇，祭壇上方供著無臉石像，石像胸口以下全浸在黑水裡。水面漂著供花、破骨杯與被水泡白的布條。這裡是任務與精英事件房，玩家可調查墓窟為何被水淹沒，收集祭壇水樣，或用長明燈火照出石像真正面孔。若玩家取走供杯，水下會伸出骷髏手臂，亡靈騎士也會從後方水道現身。祭壇旁的階梯通向石像鎖門，是進入深層墓窟的重要門檻。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_serpent_drain', description: '水道回到蛇形排水道' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_gargoyle_lock', description: '祭壇階梯通向石像鎖門' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '溺水祭壇的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '溺水祭壇附近常有被黑水沖出的墓窟線索。',
+      spirit: '溺水祭壇保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_gargoyle_lock: {
+    id: 'sunken_catacombs_gargoyle_lock',
+    name: '石像鎖門',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_gargoyle_lock.png',
+    imagePrompt: '石像鎖門 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '溺水祭壇後方立著一扇厚重石門，門上雕著兩尊蹲伏石像，牠們的嘴裡含著青銅鎖舌。門縫不斷滲出冷水，像另一側水位更高。這裡是精英守門與機關房，玩家需要用祭壇水樣、長明燈火和水閘控制室的水位變化解除鎖舌。若順序錯誤，石像會甦醒，並把走廊重新灌水。石門兩側刻著墓窟建成時的誓詞，提到深潮井下封著不該再浮出的王冠。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。不要貿然分散。保持隊形。前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_drowned_altar', description: '石門回到溺水祭壇' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_chain_bridge', description: '開鎖後通向鏽鏈橋' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[鎖]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '石像鎖門的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '石像鎖門附近常有被黑水沖出的墓窟線索。',
+      spirit: '石像鎖門保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_chapel_of_sighs: {
+    id: 'sunken_catacombs_chapel_of_sighs',
+    name: '嘆息禮拜堂',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_chapel_of_sighs.png',
+    imagePrompt: '嘆息禮拜堂 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '哭者墓室上方通向一座小禮拜堂，穹頂破裂，水滴從裂縫落下，打在長椅與淺水上，形成像嘆息般的節奏。牆上壁畫描繪送葬隊伍走入地下，但最後幾幅被黑水覆蓋。這裡是敘事與交通房，玩家可解讀祈詞、安撫被困亡靈，並打開通往鏈橋與回音停屍間的路。禮拜堂看似安靜，實際上每排長椅下都有骷髏巡衛殘留的武器。若水滴節奏突然停止，代表亡靈騎士正在禮拜堂門外等待。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_mourner_crypt', description: '墓室回到哭者墓室' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_lantern_niche', description: '燈龕路在西南側' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_chain_bridge', description: '禮拜堂門通向鏽鏈橋' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[堂]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '嘆息禮拜堂的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '嘆息禮拜堂附近常有被黑水沖出的墓窟線索。',
+      spirit: '嘆息禮拜堂保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_chain_bridge: {
+    id: 'sunken_catacombs_chain_bridge',
+    name: '鏽鏈橋',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_chain_bridge.png',
+    imagePrompt: '鏽鏈橋 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '嘆息禮拜堂東側有一座以粗鐵鏈吊起的窄橋，橋下是看不見底的黑水井道。每次有人踏上去，鐵鏈都會發出刺耳哀鳴，聲音沿井壁傳到深處。這裡是深層交通與危險通道房，玩家可穿越到騎士墓庫，也能用水閘機關降低井道水位建立回程捷徑。橋面濕滑，骷髏會從對岸逼近，石像則可能在橋中央攔截。若橋下黑水泛起白泡，湖蛇或更深處的東西正在上升。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_chapel_of_sighs', description: '鏈橋回到禮拜堂' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_gargoyle_lock', description: '鐵鏈下到石像鎖門' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_knight_vault', description: '對岸是騎士墓庫' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '鏽鏈橋的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '鏽鏈橋附近常有被黑水沖出的墓窟線索。',
+      spirit: '鏽鏈橋保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_knight_vault: {
+    id: 'sunken_catacombs_knight_vault',
+    name: '騎士墓庫',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_knight_vault.png',
+    imagePrompt: '騎士墓庫 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏽鏈橋後方是騎士墓庫，牆邊排列著浸水鎧甲與長劍，中央石棺上刻著被黑水泡糊的家族紋章。亡靈騎士在此巡邏，像仍在守護早已失去主人的誓言。這裡是精英戰鬥房，玩家可挑戰亡靈騎士、尋找淨化信物，或取得打開王冠墓室的古老徽章。墓庫地面有許多水下裂縫，會限制站位並讓湖蛇從側面加入戰鬥。若玩家帶著正確祈詞進入，騎士會短暫停手，露出可對話或淨化的窗口。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_chain_bridge', description: '鏈橋回到西側' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_crown_crypt', description: '家族徽章指向王冠墓室' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[騎]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '騎士墓庫的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '騎士墓庫附近常有被黑水沖出的墓窟線索。',
+      spirit: '騎士墓庫保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_deep_tidewell: {
+    id: 'sunken_catacombs_deep_tidewell',
+    name: '深潮井',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_deep_tidewell.png',
+    imagePrompt: '深潮井 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨泥盆地深處裂開一口巨大的圓井，井壁全是潮濕墓磚，黑水在下方緩慢旋轉。井口邊緣釘著舊測深繩，繩尾早已被腐蝕斷裂。這裡是大型事件前置與水位核心房，玩家可測量深潮、投下燈火觀察黑水反應，並得知墓窟不是被外水淹沒，而是井底某物持續向上吐水。深潮井會影響所有外層房間水位，錯誤操作會讓漂棺室、鏈橋與祭壇同時變危險。井壁上偶爾浮出王冠形狀的暗影。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_bone_silt_basin', description: '沉泥回到骨泥盆地' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_sarcophagus_fleet', description: '水流推向石棺漂流帶' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 110 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 3,
+    mapY: -3,
+    guardianHints: {
+      creature: '深潮井的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '深潮井附近常有被黑水沖出的墓窟線索。',
+      spirit: '深潮井保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_sarcophagus_fleet: {
+    id: 'sunken_catacombs_sarcophagus_fleet',
+    name: '石棺漂流帶',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_sarcophagus_fleet.png',
+    imagePrompt: '石棺漂流帶 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深潮井東側水流把數十具石棺推成一列，像一支緩慢漂行的艦隊。每具石棺都以銅鏈連著下一具，鏈條撞擊水面時發出規律聲響。這裡是戰鬥與解謎房，玩家可調整石棺順序搭出路線，尋找被水流帶走的墓印，並通往回音停屍間或王冠墓室。若切斷錯誤銅鏈，整列石棺會撞向牆面，喚醒更多不死者。湖蛇也會藏在棺列陰影下，等待隊伍跳棺時失衡。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。不要貿然分散。保持隊形。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_deep_tidewell', description: '棺列回到深潮井' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_echo_mortuary', description: '石棺靠向回音停屍間' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_abyssal_cistern', description: '水流通向深淵蓄水池' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 70 },
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 110 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[漂]',
+    mapX: 4,
+    mapY: -3,
+    guardianHints: {
+      creature: '石棺漂流帶的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '石棺漂流帶附近常有被黑水沖出的墓窟線索。',
+      spirit: '石棺漂流帶保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_echo_mortuary: {
+    id: 'sunken_catacombs_echo_mortuary',
+    name: '回音停屍間',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_echo_mortuary.png',
+    imagePrompt: '回音停屍間 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '石棺漂流帶北側是一間停屍間，石台排列整齊，台面上只剩水痕與被沖散的裹屍布。天花板很低，任何聲音都會貼著水面反彈，讓人分不清前後。這裡是恐怖探索與任務房，玩家可尋找指定屍布、收集死亡名冊碎片，也能找到通往王冠墓室的低門。停屍間的回音會模仿隊友聲音，誘使玩家靠近錯誤石台。若玩家點亮長明燈龕取得的藍火，真正出口會在水面倒影裡短暫顯示。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunken_catacombs_sarcophagus_fleet', description: '低門回到漂流帶' },
+      { direction: 'east', targetRoomId: 'sunken_catacombs_crown_crypt', description: '暗門通向王冠墓室' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_chain_bridge', description: '維修梯通向鏈橋' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 70 },
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[停]',
+    mapX: 5,
+    mapY: -2,
+    guardianHints: {
+      creature: '回音停屍間的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '回音停屍間附近常有被黑水沖出的墓窟線索。',
+      spirit: '回音停屍間保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_crown_crypt: {
+    id: 'sunken_catacombs_crown_crypt',
+    name: '王冠墓室',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_crown_crypt.png',
+    imagePrompt: '王冠墓室 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '回音停屍間與騎士墓庫之間藏著一座王冠墓室，中央石棺半浸在黑水中，棺蓋上雕著一頂被鎖鏈纏住的王冠。牆上記錄這位死者並非國王，而是第一個試圖控制深潮井的人。這裡是 Boss 級地標與任務決策房，玩家可用騎士徽章、死亡名冊與深潮井水樣拼出真相，選擇封印王冠或取走它作為證據。若貪取王冠碎片，亡靈騎士與骷髏將軍會同時甦醒，墓室水位也會迅速上升。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。務必謹慎前進。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_echo_mortuary', description: '暗門回到停屍間' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_knight_vault', description: '墓階回到騎士墓庫' },
+      { direction: 'south', targetRoomId: 'sunken_catacombs_abyssal_cistern', description: '黑水階梯通向深淵蓄水池' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[冠]',
+    mapX: 6,
+    mapY: -2,
+    guardianHints: {
+      creature: '王冠墓室的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '王冠墓室附近常有被黑水沖出的墓窟線索。',
+      spirit: '王冠墓室保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
+
+  sunken_catacombs_abyssal_cistern: {
+    id: 'sunken_catacombs_abyssal_cistern',
+    name: '深淵蓄水池',
+    zone: 'sunken_catacombs' as RoomDef['zone'],
+    image: 'sunken_catacombs_abyssal_cistern.png',
+    imagePrompt: '深淵蓄水池 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉沒墓窟最深處是一座巨大蓄水池，黑水從四面石渠匯入中央深坑，水面平滑到幾乎看不見流動。池壁鑲著破碎碑文、鐵鏈與倒掛石棺，所有水聲最後都被這裡吞掉。這裡是區域大型事件鉤子與最終地標，玩家可嘗試關閉深潮、淨化黑水，或追查王冠墓室的封印為何失效。任何操作都會改變整座墓窟水位，並引來骷髏將軍、亡靈騎士與水下生物共同反應。若黑水中央浮出王冠倒影，代表深處意志正在等待選擇。這裡的選擇會影響後續水位、回程安全與不死者巡邏路線，隊伍最好先記錄潮痕和可用出口，再推進主要事件。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunken_catacombs_sarcophagus_fleet', description: '水流回到石棺漂流帶' },
+      { direction: 'north', targetRoomId: 'sunken_catacombs_crown_crypt', description: '黑水階梯回到王冠墓室' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 110 },
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[淵]',
+    mapX: 5,
+    mapY: -3,
+    guardianHints: {
+      creature: '深淵蓄水池的水聲改變時，附近敵人通常已經開始移動。',
+      treasure: '深淵蓄水池附近常有被黑水沖出的墓窟線索。',
+      spirit: '深淵蓄水池保留著沉沒墓窟被潮水吞噬前後的記憶。',
+    },
+  },
 };
