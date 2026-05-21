@@ -479,6 +479,21 @@ export function initDb(): Database.Database {
     `);
   }
 
+  // ── Migration: market and auction item instance support ──
+  {
+    const auctionColumns = db.prepare("PRAGMA table_info(auctions)").all() as { name: string }[];
+    if (auctionColumns.length > 0 && !new Set(auctionColumns.map(c => c.name)).has('item_instance_id')) {
+      db.exec(`ALTER TABLE auctions ADD COLUMN item_instance_id TEXT`);
+      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 auctions 表');
+    }
+
+    const marketColumns = db.prepare("PRAGMA table_info(market_orders)").all() as { name: string }[];
+    if (marketColumns.length > 0 && !new Set(marketColumns.map(c => c.name)).has('item_instance_id')) {
+      db.exec(`ALTER TABLE market_orders ADD COLUMN item_instance_id TEXT`);
+      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 market_orders 表');
+    }
+  }
+
   console.log('[DB] 資料庫初始化完成:', DB_PATH);
   return db;
 }

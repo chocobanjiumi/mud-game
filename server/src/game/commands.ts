@@ -3583,10 +3583,16 @@ function cmdAuction(session: WsSession, args: string[]): void {
 
       // Find item by ID or name
       let itemId = itemName;
+      let itemInstanceId: string | undefined;
       if (!ITEM_DEFS[itemId]) {
         const found = Object.values(ITEM_DEFS).find(d => d.name === itemName);
         if (found) itemId = found.id;
-        else { sendError(session.sessionId, `找不到物品：${itemName}`); return; }
+        else {
+          const instance = getInventory(char.id).find(i => i.itemInstanceId === itemName && !i.equipped);
+          if (!instance) { sendError(session.sessionId, `找不到物品：${itemName}`); return; }
+          itemId = instance.itemId;
+          itemInstanceId = instance.itemInstanceId;
+        }
       }
 
       const minPrice = parseInt(args[2]);
@@ -3595,7 +3601,7 @@ function cmdAuction(session: WsSession, args: string[]): void {
       const buyoutPrice = args[3] ? parseInt(args[3]) : undefined;
       const hours = args[4] ? parseInt(args[4]) : 24;
 
-      const result = auctionMgr.listItem(char.id, itemId, 1, minPrice, buyoutPrice, hours);
+      const result = auctionMgr.listItem(char.id, itemId, 1, minPrice, buyoutPrice, hours, itemInstanceId);
       if (result.ok) sendSystem(session.sessionId, result.message);
       else sendError(session.sessionId, result.message);
       break;
@@ -4681,14 +4687,22 @@ function cmdMarket(session: WsSession, args: string[]): void {
 
   switch (sub) {
     case 'sell': {
-      const itemId = args[1];
+      let itemId = args[1];
+      let itemInstanceId: string | undefined;
       const count = parseInt(args[2]) || 1;
       const price = parseInt(args[3]) || 0;
       if (!itemId || price <= 0) {
         sendError(session.sessionId, '用法：market sell <物品ID> <數量> <單價>');
         return;
       }
-      const result = marketMgr.placeSellOrder(char.id, itemId, count, price);
+      if (!ITEM_DEFS[itemId]) {
+        const instance = getInventory(char.id).find(i => i.itemInstanceId === itemId && !i.equipped);
+        if (instance) {
+          itemInstanceId = instance.itemInstanceId;
+          itemId = instance.itemId;
+        }
+      }
+      const result = marketMgr.placeSellOrder(char.id, itemId, count, price, itemInstanceId);
       sendSystem(session.sessionId, result.message);
       break;
     }

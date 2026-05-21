@@ -38,7 +38,7 @@ import { DailyRewardManager } from './daily-reward.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
-  addInventoryItem, removeInventoryItem,
+  addInventoryItem, removeInventoryItem, getStoredItemInstance,
 } from '../db/queries.js';
 import type { Character } from '@game/shared';
 import { ITEM_DEFS, getExpForLevel } from '@game/shared';
@@ -107,12 +107,14 @@ export function initGameSystems(): void {
       return getInventory(characterId).map(i => ({
         itemId: i.itemId,
         quantity: i.quantity,
+        itemInstanceId: i.itemInstanceId,
+        equipped: i.equipped,
       }));
     },
-    transferItem: (fromId, toId, itemId, quantity) => {
-      const ok = removeInventoryItem(fromId, itemId, quantity);
+    transferItem: (fromId, toId, itemId, quantity, itemInstanceId) => {
+      const ok = removeInventoryItem(fromId, itemId, quantity, itemInstanceId);
       if (!ok) return false;
-      addInventoryItem(toId, itemId, quantity);
+      addInventoryItem(toId, itemId, quantity, false, itemInstanceId ? getStoredItemInstance(itemInstanceId) : undefined);
       return true;
     },
     transferGold: (fromId, toId, amount) => {

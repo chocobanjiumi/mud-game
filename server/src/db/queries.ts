@@ -216,6 +216,27 @@ export function upsertItemInstance(instance: StoredItemInstance): void {
   );
 }
 
+export function getStoredItemInstance(itemInstanceId: string): StoredItemInstance | undefined {
+  const row = getDb().prepare(
+    'SELECT id, base_item_id, quality, affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
+  ).get(itemInstanceId) as {
+    id: string;
+    base_item_id: string;
+    quality: ItemQuality;
+    affixes_json: string | null;
+    fixed_effects_json: string | null;
+  } | undefined;
+
+  if (!row) return undefined;
+  return {
+    itemInstanceId: row.id,
+    baseItemId: row.base_item_id,
+    quality: row.quality,
+    affixes: parseJsonArray<AffixDef>(row.affixes_json),
+    fixedEffects: parseJsonArray<string>(row.fixed_effects_json),
+  };
+}
+
 function parseJsonArray<T>(value: string | null): T[] | undefined {
   if (!value) return undefined;
   try {

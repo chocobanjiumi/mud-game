@@ -2,7 +2,10 @@
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel } from '../game/player.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
-import { addInventoryItem, getEquippedItems, getInventory, setEquipped } from '../db/queries.js';
+import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
+import { AuctionManager } from '../game/auction.js';
+import { MarketManager } from '../game/market.js';
+import { TradeManager } from '../game/trade.js';
 
 // ============================================================
 //  Tests
@@ -555,3 +558,125 @@ describe('inventory item instances', () => {
     ]);
   });
 });
+
+describe('item instances in player economies', () => {
+  beforeAll(() => {
+    initDb();
+    new AuctionManager().init();
+    new MarketManager().ensureTables();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('preserves item instance id through auction buyout', () => {
+    insertTestCharacter('auction-instance-seller', 'AuctionSeller', 100);
+    insertTestCharacter('auction-instance-buyer', 'AuctionBuyer', 1000);
+    addInventoryItem('auction-instance-seller', 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_auction_spear',
+      baseItemId: 'spear_steel',
+      quality: 'epic',
+      affixes: [{
+        id: 'numeric_dex_t2',
+        name: '敏捷',
+        pool: 'numeric',
+        tier: 'T2',
+        appliesTo: ['weapon'],
+        stats: { dex: 2 },
+      }],
+    });
+
+    const auction = new AuctionManager();
+    auction.init();
+    const listed = auction.listItem('auction-instance-seller', 'spear_steel', 1, 10, 25, 12, 'inst_auction_spear');
+    expect(listed.ok).toBe(true);
+    const row = getDb().prepare("SELECT id, item_instance_id FROM auctions WHERE seller_id = ? AND status = 'active'")
+      .get('auction-instance-seller') as { id: string; item_instance_id: string };
+    expect(row.item_instance_id).toBe('inst_auction_spear');
+
+    expect(auction.buyout(row.id, 'auction-instance-buyer').ok).toBe(true);
+    const bought = getInventory('auction-instance-buyer').find(item => item.itemInstanceId === 'inst_auction_spear');
+    expect(bought?.quality).toBe('epic');
+    expect(bought?.affixes?.[0]?.id).toBe('numeric_dex_t2');
+  });
+
+  it('preserves item instance id through market sell orders', () => {
+    insertTestCharacter('market-instance-seller', 'MarketSeller', 100);
+    insertTestCharacter('market-instance-buyer', 'MarketBuyer', 1000);
+    addInventoryItem('market-instance-seller', 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_market_spear',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [{
+        id: 'combat_crit_t1',
+        name: '精準',
+        pool: 'combat',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { critRate: 1 },
+      }],
+    });
+
+    const market = new MarketManager();
+    market.ensureTables();
+    const listed = market.placeSellOrder('market-instance-seller', 'spear_steel', 1, 30, 'inst_market_spear');
+    expect(listed.success).toBe(true);
+    const row = getDb().prepare("SELECT item_instance_id FROM market_orders WHERE id = ?")
+      .get(listed.orderId) as { item_instance_id: string };
+    expect(row.item_instance_id).toBe('inst_market_spear');
+
+    expect(market.fillOrder(listed.orderId!, 'market-instance-buyer').success).toBe(true);
+    const bought = getInventory('market-instance-buyer').find(item => item.itemInstanceId === 'inst_market_spear');
+    expect(bought?.quality).toBe('rare');
+    expect(bought?.affixes?.[0]?.id).toBe('combat_crit_t1');
+  });
+
+  it('preserves item instance id through direct player trades', () => {
+    insertTestCharacter('trade-instance-from', 'TradeFrom', 100);
+    insertTestCharacter('trade-instance-to', 'TradeTo', 100);
+    addInventoryItem('trade-instance-from', 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_trade_spear',
+      baseItemId: 'spear_steel',
+      quality: 'fine',
+      affixes: [{
+        id: 'numeric_str_t1',
+        name: '力量',
+        pool: 'numeric',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { str: 1 },
+      }],
+    });
+
+    const trade = new TradeManager();
+    trade.setDependencies({
+      getCharacter: (id) => getCharacterById(id) ?? undefined,
+      getInventory: (characterId) => getInventory(characterId),
+      transferItem: (fromId, toId, itemId, quantity, itemInstanceId) => {
+        const removed = removeInventoryItem(fromId, itemId, quantity, itemInstanceId);
+        if (!removed) return false;
+        addInventoryItem(toId, itemId, quantity, false, itemInstanceId ? getStoredItemInstance(itemInstanceId) : undefined);
+        return true;
+      },
+      transferGold: () => true,
+    });
+
+    expect(trade.initiateTrade('trade-instance-from', 'trade-instance-to').success).toBe(true);
+    expect(trade.acceptTrade('trade-instance-to').success).toBe(true);
+    expect(trade.addItem('trade-instance-from', 'inst_trade_spear').success).toBe(true);
+    expect(trade.confirm('trade-instance-from').success).toBe(true);
+    expect(trade.confirm('trade-instance-to').success).toBe(true);
+    trade.destroy();
+
+    const received = getInventory('trade-instance-to').find(item => item.itemInstanceId === 'inst_trade_spear');
+    expect(received?.quality).toBe('fine');
+    expect(received?.affixes?.[0]?.id).toBe('numeric_str_t1');
+  });
+});
+
+function insertTestCharacter(id: string, name: string, gold: number): void {
+  getDb().prepare(
+    'INSERT OR REPLACE INTO characters (id, user_id, name, gold) VALUES (?, ?, ?, ?)',
+  ).run(id, `${id}-user`, name, gold);
+}

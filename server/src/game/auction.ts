@@ -3,7 +3,8 @@
 import { getDb } from '../db/schema.js';
 import {
   getCharacterById, saveCharacter,
-  addInventoryItem, removeInventoryItem, getInventory,
+  addInventoryItem, removeInventoryItem, getInventory, getStoredItemInstance,
+  type StoredItemInstance,
 } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import { nanoid } from 'nanoid';
@@ -16,6 +17,7 @@ export interface AuctionRecord {
   id: string;
   seller_id: string;
   item_id: string;
+  item_instance_id: string | null;
   item_count: number;
   min_price: number;
   buyout_price: number | null;
@@ -41,6 +43,7 @@ export class AuctionManager {
         id TEXT PRIMARY KEY,
         seller_id TEXT NOT NULL,
         item_id TEXT NOT NULL,
+        item_instance_id TEXT,
         item_count INTEGER DEFAULT 1,
         min_price INTEGER NOT NULL,
         buyout_price INTEGER,
@@ -56,6 +59,11 @@ export class AuctionManager {
       CREATE INDEX IF NOT EXISTS idx_auctions_bidder ON auctions(current_bidder_id);
       CREATE INDEX IF NOT EXISTS idx_auctions_expires ON auctions(expires_at);
     `);
+
+    const columns = db.prepare("PRAGMA table_info(auctions)").all() as { name: string }[];
+    if (!new Set(columns.map(c => c.name)).has('item_instance_id')) {
+      db.exec('ALTER TABLE auctions ADD COLUMN item_instance_id TEXT');
+    }
   }
 
   // ─── 上架物品 ───
@@ -67,6 +75,7 @@ export class AuctionManager {
     minPrice: number,
     buyoutPrice: number | undefined,
     durationHours: number,
+    itemInstanceId?: string,
   ): { ok: boolean; message: string } {
     const seller = getCharacterById(sellerId);
     if (!seller) return { ok: false, message: '找不到角色資料。' };
@@ -86,9 +95,14 @@ export class AuctionManager {
 
     // Check inventory
     const inv = getInventory(sellerId);
-    const slot = inv.find(i => i.itemId === itemId && !i.equipped);
+    const slot = itemInstanceId
+      ? inv.find(i => i.itemId === itemId && i.itemInstanceId === itemInstanceId && !i.equipped)
+      : inv.find(i => i.itemId === itemId && !i.equipped);
     if (!slot || slot.quantity < count) {
       return { ok: false, message: `背包中沒有足夠的「${def.name}」（需要 ${count}，擁有 ${slot?.quantity ?? 0}）。` };
+    }
+    if (slot.itemInstanceId && count !== 1) {
+      return { ok: false, message: '有品質或詞綴的裝備實例一次只能上架 1 件。' };
     }
 
     // Listing fee: 5% of min_price
@@ -100,17 +114,17 @@ export class AuctionManager {
     // Deduct fee and item
     seller.gold -= listingFee;
     saveCharacter(seller);
-    removeInventoryItem(sellerId, itemId, count);
+    removeInventoryItem(sellerId, itemId, count, slot.itemInstanceId);
 
     const now = Math.floor(Date.now() / 1000);
     const durationSeconds = durationHours * 3600;
     const id = nanoid(10);
 
     getDb().prepare(`
-      INSERT INTO auctions (id, seller_id, item_id, item_count, min_price, buyout_price,
+      INSERT INTO auctions (id, seller_id, item_id, item_instance_id, item_count, min_price, buyout_price,
         current_bid, current_bidder_id, duration, created_at, expires_at, status)
-      VALUES (?, ?, ?, ?, ?, ?, 0, NULL, ?, ?, ?, 'active')
-    `).run(id, sellerId, itemId, count, minPrice, buyoutPrice ?? null, durationSeconds, now, now + durationSeconds);
+      VALUES (?, ?, ?, ?, ?, ?, ?, 0, NULL, ?, ?, ?, 'active')
+    `).run(id, sellerId, itemId, slot.itemInstanceId ?? null, count, minPrice, buyoutPrice ?? null, durationSeconds, now, now + durationSeconds);
 
     return {
       ok: true,
@@ -273,7 +287,7 @@ export class AuctionManager {
       }
 
       // Transfer item to buyer
-      addInventoryItem(buyerId, auction.item_id, auction.item_count);
+      addAuctionItemToInventory(buyerId, auction);
 
       const def = ITEM_DEFS[auction.item_id];
       return {
@@ -335,7 +349,7 @@ export class AuctionManager {
     if (auction.current_bidder_id) return { ok: false, message: '已有人出價，無法取消拍賣。' };
 
     // Return item to seller
-    addInventoryItem(sellerId, auction.item_id, auction.item_count);
+    addAuctionItemToInventory(sellerId, auction);
     db.prepare("UPDATE auctions SET status = 'cancelled' WHERE id = ?").run(auctionId);
 
     const def = ITEM_DEFS[auction.item_id];
@@ -390,7 +404,7 @@ export class AuctionManager {
     for (const auction of expired) {
       if (auction.current_bidder_id && auction.current_bid > 0) {
         // Has bids: transfer item to highest bidder, gold to seller
-        addInventoryItem(auction.current_bidder_id, auction.item_id, auction.item_count);
+        addAuctionItemToInventory(auction.current_bidder_id, auction);
 
         const seller = getCharacterById(auction.seller_id);
         if (seller) {
@@ -401,9 +415,28 @@ export class AuctionManager {
         db.prepare("UPDATE auctions SET status = 'sold' WHERE id = ?").run(auction.id);
       } else {
         // No bids: return item to seller
-        addInventoryItem(auction.seller_id, auction.item_id, auction.item_count);
+        addAuctionItemToInventory(auction.seller_id, auction);
         db.prepare("UPDATE auctions SET status = 'expired' WHERE id = ?").run(auction.id);
       }
     }
   }
+}
+
+function addAuctionItemToInventory(characterId: string, auction: AuctionRecord): void {
+  addInventoryItem(
+    characterId,
+    auction.item_id,
+    auction.item_count,
+    false,
+    storedInstanceFor(auction.item_id, auction.item_instance_id),
+  );
+}
+
+function storedInstanceFor(itemId: string, itemInstanceId: string | null): StoredItemInstance | undefined {
+  if (!itemInstanceId) return undefined;
+  return getStoredItemInstance(itemInstanceId) ?? {
+    itemInstanceId,
+    baseItemId: itemId,
+    quality: 'normal',
+  };
 }

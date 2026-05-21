@@ -9,9 +9,15 @@ import { sendToCharacter } from '../ws/handler.js';
 // ============================================================
 
 export interface TradeOffer {
-  items: { itemId: string; quantity: number }[];
+  items: TradeOfferItem[];
   gold: number;
   confirmed: boolean;
+}
+
+export interface TradeOfferItem {
+  itemId: string;
+  quantity: number;
+  itemInstanceId?: string;
 }
 
 export interface TradeSession {
@@ -31,6 +37,8 @@ interface TradeRequest {
   expiresAt: number;
 }
 
+type TradeInventoryItem = { itemId: string; quantity: number; itemInstanceId?: string; equipped?: boolean };
+
 // ============================================================
 //  TradeManager
 // ============================================================
@@ -47,11 +55,11 @@ export class TradeManager {
   private getCharacterFn: ((id: string) => Character | undefined) | null = null;
   /** 背包查詢 */
   private getInventoryFn:
-    | ((characterId: string) => { itemId: string; quantity: number }[])
+    | ((characterId: string) => TradeInventoryItem[])
     | null = null;
   /** 轉移物品回呼 */
   private transferItemFn:
-    | ((fromId: string, toId: string, itemId: string, quantity: number) => boolean)
+    | ((fromId: string, toId: string, itemId: string, quantity: number, itemInstanceId?: string) => boolean)
     | null = null;
   /** 轉移金幣回呼 */
   private transferGoldFn:
@@ -68,8 +76,8 @@ export class TradeManager {
   /** 設定外部依賴 */
   setDependencies(opts: {
     getCharacter: (id: string) => Character | undefined;
-    getInventory: (characterId: string) => { itemId: string; quantity: number }[];
-    transferItem: (fromId: string, toId: string, itemId: string, quantity: number) => boolean;
+    getInventory: (characterId: string) => TradeInventoryItem[];
+    transferItem: (fromId: string, toId: string, itemId: string, quantity: number, itemInstanceId?: string) => boolean;
     transferGold: (fromId: string, toId: string, amount: number) => boolean;
   }): void {
     this.getCharacterFn = opts.getCharacter;
@@ -213,11 +221,15 @@ export class TradeManager {
     }
 
     // 檢查背包中是否有足夠物品
+    let selected: TradeInventoryItem | undefined;
     if (this.getInventoryFn) {
       const inv = this.getInventoryFn(playerId);
-      const slot = inv.find(i => i.itemId === itemId);
-      if (!slot || slot.quantity < quantity) {
+      selected = this.findInventoryItem(inv, itemId);
+      if (!selected || selected.quantity < quantity) {
         return { success: false, message: '背包中物品不足。' };
+      }
+      if (selected.itemInstanceId && quantity !== 1) {
+        return { success: false, message: '有品質或詞綴的裝備實例一次只能交易 1 件。' };
       }
     }
 
@@ -226,11 +238,15 @@ export class TradeManager {
     trade.offer2.confirmed = false;
 
     const offer = this.getPlayerOffer(trade, playerId);
-    const existing = offer.items.find(i => i.itemId === itemId);
+    const offerItem = {
+      itemId: selected?.itemId ?? itemId,
+      itemInstanceId: selected?.itemInstanceId,
+    };
+    const existing = offer.items.find(i => isSameOfferItem(i, offerItem));
     if (existing) {
       existing.quantity += quantity;
     } else {
-      offer.items.push({ itemId, quantity });
+      offer.items.push({ ...offerItem, quantity });
     }
 
     this.notifyTradeUpdate(trade);
@@ -249,7 +265,7 @@ export class TradeManager {
     trade.offer2.confirmed = false;
 
     const offer = this.getPlayerOffer(trade, playerId);
-    const existing = offer.items.find(i => i.itemId === itemId);
+    const existing = offer.items.find(i => i.itemInstanceId === itemId || i.itemId === itemId);
     if (!existing) {
       return { success: false, message: '交易欄中沒有這個物品。' };
     }
@@ -350,7 +366,7 @@ export class TradeManager {
       // 驗證 Player 1
       const inv1 = this.getInventoryFn(trade.player1Id);
       for (const item of trade.offer1.items) {
-        const slot = inv1.find(i => i.itemId === item.itemId);
+        const slot = this.findInventoryItem(inv1, item.itemInstanceId ?? item.itemId);
         if (!slot || slot.quantity < item.quantity) {
           this.cancelTrade(trade, '物品不足，交易取消。');
           return { success: false, message: '交易失敗：你的物品不足。' };
@@ -365,7 +381,7 @@ export class TradeManager {
       // 驗證 Player 2
       const inv2 = this.getInventoryFn(trade.player2Id);
       for (const item of trade.offer2.items) {
-        const slot = inv2.find(i => i.itemId === item.itemId);
+        const slot = this.findInventoryItem(inv2, item.itemInstanceId ?? item.itemId);
         if (!slot || slot.quantity < item.quantity) {
           this.cancelTrade(trade, '物品不足，交易取消。');
           return { success: false, message: '交易失敗：對方物品不足。' };
@@ -381,7 +397,7 @@ export class TradeManager {
     // 執行物品轉移：Player 1 → Player 2
     if (this.transferItemFn) {
       for (const item of trade.offer1.items) {
-        if (!this.transferItemFn(trade.player1Id, trade.player2Id, item.itemId, item.quantity)) {
+        if (!this.transferItemFn(trade.player1Id, trade.player2Id, item.itemId, item.quantity, item.itemInstanceId)) {
           this.cancelTrade(trade, '物品轉移失敗，交易取消。');
           return { success: false, message: '交易失敗：物品轉移出錯。' };
         }
@@ -389,7 +405,7 @@ export class TradeManager {
 
       // 執行物品轉移：Player 2 → Player 1
       for (const item of trade.offer2.items) {
-        if (!this.transferItemFn(trade.player2Id, trade.player1Id, item.itemId, item.quantity)) {
+        if (!this.transferItemFn(trade.player2Id, trade.player1Id, item.itemId, item.quantity, item.itemInstanceId)) {
           this.cancelTrade(trade, '物品轉移失敗，交易取消。');
           return { success: false, message: '交易失敗：物品轉移出錯。' };
         }
@@ -441,6 +457,11 @@ export class TradeManager {
 
   private getPlayerOffer(trade: TradeSession, playerId: string): TradeOffer {
     return playerId === trade.player1Id ? trade.offer1 : trade.offer2;
+  }
+
+  private findInventoryItem(inventory: TradeInventoryItem[], itemKey: string): TradeInventoryItem | undefined {
+    return inventory.find(i => i.itemInstanceId === itemKey && !i.equipped)
+      ?? inventory.find(i => i.itemId === itemKey && !i.itemInstanceId && !i.equipped);
   }
 
   private cancelTrade(trade: TradeSession, reason: string): void {
@@ -495,4 +516,9 @@ export class TradeManager {
       }
     }
   }
+}
+
+function isSameOfferItem(a: Pick<TradeOfferItem, 'itemId' | 'itemInstanceId'>, b: Pick<TradeOfferItem, 'itemId' | 'itemInstanceId'>): boolean {
+  if (a.itemInstanceId || b.itemInstanceId) return a.itemInstanceId === b.itemInstanceId;
+  return a.itemId === b.itemId;
 }

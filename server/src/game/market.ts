@@ -6,7 +6,8 @@ import { getDb } from '../db/schema.js';
 import { sendToCharacter } from '../ws/handler.js';
 import {
   getCharacterById, saveCharacter,
-  addInventoryItem, removeInventoryItem, getInventory,
+  addInventoryItem, removeInventoryItem, getInventory, getStoredItemInstance,
+  type StoredItemInstance,
 } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import type { Character } from '@game/shared';
@@ -22,6 +23,7 @@ export interface MarketOrder {
   id: string;
   sellerId: string;
   itemId: string;
+  itemInstanceId?: string;
   count: number;
   pricePerUnit: number;
   orderType: OrderType;
@@ -34,6 +36,7 @@ interface MarketOrderRow {
   id: string;
   seller_id: string;
   item_id: string;
+  item_instance_id: string | null;
   count: number;
   price_per_unit: number;
   order_type: string;
@@ -55,6 +58,7 @@ export class MarketManager {
           id TEXT PRIMARY KEY,
           seller_id TEXT NOT NULL,
           item_id TEXT NOT NULL,
+          item_instance_id TEXT,
           count INTEGER DEFAULT 1,
           price_per_unit INTEGER NOT NULL,
           order_type TEXT DEFAULT 'sell',
@@ -65,6 +69,10 @@ export class MarketManager {
         CREATE INDEX IF NOT EXISTS idx_market_orders_item ON market_orders(item_id, status);
         CREATE INDEX IF NOT EXISTS idx_market_orders_seller ON market_orders(seller_id, status);
       `);
+      const columns = getDb().prepare("PRAGMA table_info(market_orders)").all() as { name: string }[];
+      if (!new Set(columns.map(c => c.name)).has('item_instance_id')) {
+        getDb().exec('ALTER TABLE market_orders ADD COLUMN item_instance_id TEXT');
+      }
     } catch { /* tables may already exist */ }
   }
 
@@ -77,6 +85,7 @@ export class MarketManager {
     itemId: string,
     count: number,
     pricePerUnit: number,
+    itemInstanceId?: string,
   ): { success: boolean; message: string; orderId?: string } {
     if (count <= 0 || pricePerUnit <= 0) {
       return { success: false, message: '數量與價格必須大於 0。' };
@@ -89,13 +98,18 @@ export class MarketManager {
 
     // 檢查背包是否有足夠物品
     const inv = getInventory(sellerId);
-    const owned = inv.find(i => i.itemId === itemId && !i.equipped);
+    const owned = itemInstanceId
+      ? inv.find(i => i.itemId === itemId && i.itemInstanceId === itemInstanceId && !i.equipped)
+      : inv.find(i => i.itemId === itemId && !i.equipped);
     if (!owned || owned.quantity < count) {
       return { success: false, message: `背包中的「${itemDef.name}」數量不足。需要 ${count}，擁有 ${owned?.quantity ?? 0}。` };
     }
+    if (owned.itemInstanceId && count !== 1) {
+      return { success: false, message: '有品質或詞綴的裝備實例一次只能上架 1 件。' };
+    }
 
     // 從背包移除物品
-    const removed = removeInventoryItem(sellerId, itemId, count);
+    const removed = removeInventoryItem(sellerId, itemId, count, owned.itemInstanceId);
     if (!removed) {
       return { success: false, message: '移除物品失敗。' };
     }
@@ -105,11 +119,11 @@ export class MarketManager {
 
     try {
       getDb().prepare(
-        'INSERT INTO market_orders (id, seller_id, item_id, count, price_per_unit, order_type, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-      ).run(orderId, sellerId, itemId, count, pricePerUnit, 'sell', 'active', now);
+        'INSERT INTO market_orders (id, seller_id, item_id, item_instance_id, count, price_per_unit, order_type, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      ).run(orderId, sellerId, itemId, owned.itemInstanceId ?? null, count, pricePerUnit, 'sell', 'active', now);
     } catch {
       // 回退：歸還物品
-      addInventoryItem(sellerId, itemId, count);
+      addMarketItemToInventory(sellerId, itemId, owned.itemInstanceId, count);
       return { success: false, message: '建立掛單失敗。' };
     }
 
@@ -218,7 +232,7 @@ export class MarketManager {
       saveCharacter(buyer);
 
       // 給予買家物品
-      addInventoryItem(buyerId, order.itemId, order.count);
+      addMarketItemToInventory(buyerId, order.itemId, order.itemInstanceId, order.count);
 
       // 給予賣家金幣
       const seller = getCharacterById(order.sellerId);
@@ -251,7 +265,7 @@ export class MarketManager {
 
     // 賣家需要有物品
     const inv = getInventory(sellerId);
-    const owned = inv.find(i => i.itemId === order.itemId && !i.equipped);
+    const owned = inv.find(i => i.itemId === order.itemId && !i.equipped && !i.itemInstanceId);
     if (!owned || owned.quantity < order.count) {
       return { success: false, message: '你沒有足夠的物品來成交此訂單。' };
     }
@@ -319,7 +333,7 @@ export class MarketManager {
 
     // 退回物品或金幣
     if (order.orderType === 'sell') {
-      addInventoryItem(characterId, order.itemId, order.count);
+      addMarketItemToInventory(characterId, order.itemId, order.itemInstanceId, order.count);
     } else {
       const totalCost = order.count * order.pricePerUnit;
       const char = getCharacterById(characterId);
@@ -468,6 +482,7 @@ export class MarketManager {
       id: row.id,
       sellerId: row.seller_id,
       itemId: row.item_id,
+      itemInstanceId: row.item_instance_id ?? undefined,
       count: row.count,
       pricePerUnit: row.price_per_unit,
       orderType: row.order_type as OrderType,
@@ -476,4 +491,17 @@ export class MarketManager {
       filledAt: row.filled_at,
     };
   }
+}
+
+function addMarketItemToInventory(characterId: string, itemId: string, itemInstanceId: string | undefined, count: number): void {
+  addInventoryItem(characterId, itemId, count, false, storedInstanceFor(itemId, itemInstanceId));
+}
+
+function storedInstanceFor(itemId: string, itemInstanceId: string | undefined): StoredItemInstance | undefined {
+  if (!itemInstanceId) return undefined;
+  return getStoredItemInstance(itemInstanceId) ?? {
+    itemInstanceId,
+    baseItemId: itemId,
+    quality: 'normal',
+  };
 }
