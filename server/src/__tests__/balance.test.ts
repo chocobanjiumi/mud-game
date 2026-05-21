@@ -894,6 +894,17 @@ describe('Balance: Crafting definitions', () => {
     expect(getRecipeGoldCost(RECIPES.craft_small_hp_potion)).toBeLessThanOrEqual(15);
   });
 
+  it('has lossy material upgrade recipes from lower-tier materials', () => {
+    const upgrades = Object.values(RECIPES).filter(recipe => recipe.materialUpgrade);
+    expect(upgrades.length).toBeGreaterThan(0);
+
+    for (const recipe of upgrades) {
+      const inputUnits = recipe.materials.reduce((sum, material) => sum + material.count, 0);
+      expect(inputUnits, recipe.id).toBeGreaterThan(recipe.result.count);
+      expect(ITEM_DEFS[recipe.result.itemId]?.type, recipe.id).toBe('material');
+    }
+  });
+
   it('has at least one crafting route for every equipment slot', () => {
     const slots = ['weapon', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'] as const;
 

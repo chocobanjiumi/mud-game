@@ -43,6 +43,7 @@ export interface RecipeDef {
   materials: { itemId: string; count: number }[];
   result: { itemId: string; count: number };
   slotResults?: Partial<Record<EquipSlot, { itemId: string; count: number }>>;
+  materialUpgrade?: boolean;
   successRate: number; // 0-100 base success rate
   exp: number;         // crafting exp gained
 }
@@ -205,6 +206,17 @@ export const RECIPES: Record<string, RecipeDef> = {
     result: { itemId: 'ancient_relic', count: 1 },
     successRate: 40,
     exp: 100,
+  },
+  craft_mithril_ore_from_iron: {
+    id: 'craft_mithril_ore_from_iron',
+    name: '秘銀礦提煉',
+    category: 'forge',
+    level: 12,
+    materials: [{ itemId: 'iron_ore', count: 8 }],
+    result: { itemId: 'mithril_ore', count: 1 },
+    materialUpgrade: true,
+    successRate: 80,
+    exp: 30,
   },
 
   // ─── 裁縫 (Tailoring) ──────────────────────────────────────
@@ -433,6 +445,20 @@ export const RECIPES: Record<string, RecipeDef> = {
     result: { itemId: 'affix_essence', count: 2 },
     successRate: 78,
     exp: 28,
+  },
+  craft_ancient_fragment_from_essence: {
+    id: 'craft_ancient_fragment_from_essence',
+    name: '古代碎片凝聚',
+    category: 'enchanting',
+    level: 14,
+    materials: [
+      { itemId: 'magic_crystal', count: 5 },
+      { itemId: 'affix_essence', count: 2 },
+    ],
+    result: { itemId: 'ancient_fragment', count: 1 },
+    materialUpgrade: true,
+    successRate: 70,
+    exp: 45,
   },
 
   // ─── 烹飪 (Cooking) ─────────────────────────────────────────
