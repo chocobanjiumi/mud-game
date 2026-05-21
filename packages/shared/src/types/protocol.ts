@@ -1,6 +1,7 @@
 // WebSocket 訊息協議
 
 import type { Character, EquipmentSlots } from './player.js';
+import type { LearnedSkill } from './skill.js';
 import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { InventoryItem } from './item.js';
 import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
@@ -40,13 +41,19 @@ export interface NarrativePayload {
 
 export interface RoomPayload {
   id: string;
+  zone: string;
   name: string;
   description: string;
+  image?: string;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; alias: string; level: number; hp: number; maxHp: number }[];
+  corpses?: { id: string; monsterName: string; empty: boolean; protected: boolean }[];
+  gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
+  travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
+  inspectHints?: { label: string; command: string }[];
 }
 
 export interface StatusPayload {
@@ -63,6 +70,7 @@ export interface StatusPayload {
   };
   expToNext: number;
   effects: ActiveStatusEffect[];
+  skills?: LearnedSkill[];
 }
 
 export interface CombatStartPayload {
@@ -121,6 +129,7 @@ export interface MapPayload {
     totalRooms: number;
     percent: number;
   };
+  travelNodes?: { id: string; name: string; roomId: string; kind: string; unlocked: boolean }[];
 }
 
 // Shop-related payloads

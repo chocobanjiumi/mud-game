@@ -128,6 +128,7 @@ export function useWebSocket() {
         s.setDerivedStats(status.derived);
         s.setExpToNext(status.expToNext);
         s.setActiveEffects(status.effects);
+        if (status.skills) s.setSkills(status.skills);
         break;
       }
 
@@ -172,6 +173,14 @@ export function useWebSocket() {
         s.addTerminalLine('═══ 戰鬥開始！ ═══', 'combat');
         const enemies = data.enemyTeam.map((e) => `${e.name} Lv.${e.level}`).join(', ');
         s.addTerminalLine(`敵人: ${enemies}`, 'combat');
+        for (const enemy of data.enemyTeam) {
+          if (enemy.monsterPhases?.length) {
+            s.addTerminalLine(`${enemy.name} Boss 階段：目前 P${enemy.currentMonsterPhase ?? 1}/${Math.max(...enemy.monsterPhases.map((p) => p.phase))}`, 'combat');
+          }
+          if (enemy.pendingTelegraph) {
+            s.addTerminalLine(`${enemy.name} 預兆：${enemy.pendingTelegraph.skillId}`, 'combat');
+          }
+        }
         AudioManager.getInstance().play('bgm_combat');
         break;
       }
@@ -190,6 +199,14 @@ export function useWebSocket() {
         }
         for (const line of data.log) {
           s.addTerminalLine(line, 'combat');
+        }
+        for (const enemy of data.enemyTeam) {
+          if (enemy.monsterPhases?.length) {
+            s.addTerminalLine(`${enemy.name} Boss 階段：P${enemy.currentMonsterPhase ?? 1}`, 'combat');
+          }
+          if (enemy.pendingTelegraph) {
+            s.addTerminalLine(`${enemy.name} 預兆：${enemy.pendingTelegraph.skillId}`, 'combat');
+          }
         }
         // Audio: detect hit/miss/crit from log text
         const audio = AudioManager.getInstance();

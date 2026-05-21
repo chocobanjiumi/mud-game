@@ -6,6 +6,9 @@ const TABS: { key: QuestCategory; label: string }[] = [
   { key: 'main', label: '主線' },
   { key: 'side', label: '支線' },
   { key: 'daily', label: '每日' },
+  { key: 'exploration', label: '探索' },
+  { key: 'boss', label: 'Boss' },
+  { key: 'crafting', label: '製作' },
   { key: 'weekly', label: '每週' },
 ];
 

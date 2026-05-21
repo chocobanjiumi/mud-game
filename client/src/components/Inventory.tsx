@@ -101,6 +101,8 @@ export default function Inventory() {
                       stats: def.stats,
                       equipSlot: def.equipSlot,
                       type: def.type,
+                      sourceTags: def.sourceTags,
+                      bound: false,
                     });
                   }}
                   onMouseMove={(event) => setTooltipPosition({ x: event.clientX, y: event.clientY })}

@@ -70,7 +70,7 @@ export interface ChatMessage {
 
 // --- Quest ---
 
-export type QuestCategory = 'main' | 'side' | 'daily' | 'weekly';
+export type QuestCategory = 'main' | 'side' | 'daily' | 'weekly' | 'exploration' | 'boss' | 'crafting';
 export type QuestStatus = 'active' | 'completed' | 'failed';
 
 export interface QuestStep {
@@ -110,19 +110,27 @@ export interface TooltipItemData {
   setName?: string;
   equipSlot?: string;
   type?: string;
+  sourceTags?: string[];
+  bound?: boolean;
 }
 
 // --- Room info ---
 
 export interface RoomInfo {
   id: string;
+  zone: string;
   name: string;
   description: string;
+  image?: string;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
   npcs: { id: string; name: string; title: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; level: number; hp: number; maxHp: number }[];
+  corpses?: { id: string; monsterName: string; empty: boolean; protected: boolean }[];
+  gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
+  travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
+  inspectHints?: { label: string; command: string }[];
 }
 
 // --- Combat state ---
@@ -166,6 +174,7 @@ export interface MapData {
     totalRooms: number;
     percent: number;
   };
+  travelNodes?: { id: string; name: string; roomId: string; kind: string; unlocked: boolean }[];
 }
 
 // --- Connection state ---

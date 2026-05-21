@@ -27,9 +27,22 @@ export default function MiniMap() {
       )}
 
       {mapData?.ascii ? (
-        <pre className="text-[10px] leading-tight text-text-terminal font-mono whitespace-pre select-none">
-          {mapData.ascii}
-        </pre>
+        <>
+          <pre className="text-[10px] leading-tight text-text-terminal font-mono whitespace-pre select-none">
+            {mapData.ascii}
+          </pre>
+          {mapData.travelNodes && mapData.travelNodes.length > 0 && (
+            <div className="mt-2 border-t border-border-dim pt-2 space-y-1">
+              <div className="text-[10px] text-text-dim">交通點</div>
+              {mapData.travelNodes.slice(0, 4).map((node) => (
+                <div key={node.id} className="flex justify-between gap-2 text-[10px]">
+                  <span className={node.unlocked ? 'text-chat-party truncate' : 'text-text-dim truncate'}>{node.name}</span>
+                  <span className="text-text-dim shrink-0">{node.unlocked ? '已啟用' : node.kind}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       ) : room ? (
         <div className="text-center py-2 space-y-1">
           {/* Simple ASCII representation based on exits */}

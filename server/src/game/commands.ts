@@ -337,16 +337,44 @@ function cmdLook(session: WsSession, target?: string): void {
     hp: m.hp,
     maxHp: m.maxHp,
   }));
+  const zone = getZone(roomInfo.room.zone);
+  const roomCorpses = corpseMgr.getCorpses(char.roomId).map(corpse => ({
+    id: corpse.id,
+    monsterName: corpse.monsterName,
+    empty: corpse.gold <= 0 && corpse.items.length === 0,
+    protected: Date.now() < corpse.protectedUntil,
+  }));
+  const gatheringNodes = gatheringMgr.getAvailableNodes(roomInfo.room, zone, char.level).map(node => ({
+    id: node.id,
+    name: node.name,
+    skill: node.skill,
+    levelMin: node.levelMin,
+  }));
+  const roomTravelNodes = getTravelNodes()
+    .filter(node => node.roomId === char.roomId || node.activateRoomId === char.roomId)
+    .map(node => ({
+      id: node.id,
+      name: node.name,
+      kind: node.kind,
+      unlocked: node.unlockByDefault || isPortalUnlocked(char.id, node.id),
+    }));
+  const inspectHints = buildRoomInspectHints(roomInfo.room, roomCorpses.length > 0, gatheringNodes.length > 0, roomTravelNodes.length > 0);
 
   sendToSession(session.sessionId, 'room', {
     id: char.roomId,
+    zone: roomInfo.room.zone,
     name: roomInfo.room.name,
     description: roomInfo.room.description,
+    image: roomInfo.room.image,
     exits: roomInfo.room.exits,
     players: playersInRoom,
     npcs: roomInfo.npcs || [],
     items: [],
     monsters,
+    corpses: roomCorpses,
+    gatheringNodes,
+    travelNodes: roomTravelNodes,
+    inspectHints,
   });
 
   // 顯示地上物品
@@ -432,6 +460,25 @@ function cmdSearch(session: WsSession, target?: string): void {
   }
 
   sendSearchSummary(session, room);
+}
+
+function buildRoomInspectHints(
+  room: RoomDef,
+  hasCorpses: boolean,
+  hasGatheringNodes: boolean,
+  hasTravelNodes: boolean,
+): { label: string; command: string }[] {
+  const hints: { label: string; command: string }[] = [
+    { label: '搜尋房間', command: 'search room' },
+    { label: '檢查地點', command: `inspect ${room.name}` },
+  ];
+  if (room.exits.length > 0) {
+    hints.push({ label: '檢查出口', command: `inspect ${room.exits[0].direction}` });
+  }
+  if (hasCorpses) hints.push({ label: '搜尋屍體', command: 'search corpse' });
+  if (hasGatheringNodes) hints.push({ label: '採集資源', command: 'gather' });
+  if (hasTravelNodes) hints.push({ label: '啟用交通點', command: 'activate portal' });
+  return hints;
 }
 
 function updateExplorationAchievements(characterId: string, zoneId: string, roomId: string): void {
@@ -650,6 +697,7 @@ function cmdStatus(session: WsSession): void {
     },
     expToNext: Math.max(0, nextExp - char.exp),
     effects: [],
+    skills: getLearnedSkills(char.id),
   });
 }
 
@@ -1943,6 +1991,15 @@ function cmdMap(session: WsSession): void {
       totalRooms,
       percent,
     } : undefined,
+    travelNodes: room ? getTravelNodes()
+      .filter(node => node.zoneId === room.zone)
+      .map(node => ({
+        id: node.id,
+        name: node.name,
+        roomId: node.roomId,
+        kind: node.kind,
+        unlocked: node.unlockByDefault || isPortalUnlocked(char.id, node.id),
+      })) : undefined,
   });
   if (room && zone) {
     sendSystem(session.sessionId, `探索度：${zone.name} ${visitedRooms}/${totalRooms} (${percent}%)；類型 ${zone.type}，危險度 ${zone.dangerLevel}，PvP ${zone.pvpMode}，死亡懲罰 ${zone.deathPenalty}`);

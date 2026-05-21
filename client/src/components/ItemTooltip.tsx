@@ -167,6 +167,13 @@ export default function ItemTooltip() {
         </div>
       )}
 
+      <div className="item-tooltip-meta">
+        <span className="text-text-dim">來源: {tooltipItem.sourceTags?.length ? tooltipItem.sourceTags.join(', ') : '未知'}</span>
+        <span className={tooltipItem.bound ? 'text-text-amber' : 'text-text-dim'}>
+          {tooltipItem.bound ? '已綁定' : '未綁定'}
+        </span>
+      </div>
+
       {/* Description */}
       {tooltipItem.description && (
         <div className="item-tooltip-desc">{tooltipItem.description}</div>

@@ -7,13 +7,16 @@ interface SkillBarProps {
 export default function SkillBar({ onUseSkill }: SkillBarProps) {
   const skills = useGameStore((s) => s.skills);
   const inCombat = useGameStore((s) => s.inCombat);
+  const character = useGameStore((s) => s.character);
 
   if (skills.length === 0) return null;
 
   return (
     <div className="bg-bg-secondary border-t border-border-dim px-3 py-1.5">
       <div className="flex items-center gap-1 overflow-x-auto">
-        <span className="text-[10px] text-text-dim mr-1 shrink-0">技能:</span>
+        <span className="text-[10px] text-text-dim mr-1 shrink-0">
+          技能 {character ? `${character.resource}/${character.maxResource}` : ''}
+        </span>
         {skills.map((skill, index) => {
           const onCooldown = skill.currentCooldown > 0;
           const hotkey = index < 9 ? `${index + 1}` : null;
