@@ -45,7 +45,7 @@ import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
-import { lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
+import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -197,6 +197,7 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'reroll': cmdReroll(session, args); break;
     case 'lock': cmdLock(session, args); break;
     case 'reforge': cmdReforge(session, args); break;
+    case 'disassemble': cmdDisassemble(session, args); break;
     // 製作系統
     case 'craft': cmdCraft(session, args); break;
     // 拍賣系統
@@ -3553,6 +3554,26 @@ function cmdReforge(session: WsSession, args: string[]): void {
   else sendError(session.sessionId, result.message);
 }
 
+function cmdDisassemble(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法分解裝備！');
+    return;
+  }
+
+  const itemKey = args[0];
+  if (!itemKey) {
+    sendError(session.sessionId, '用法：disassemble <item_id|item_instance_id>');
+    return;
+  }
+
+  const result = disassembleEquipment(char.id, itemKey);
+  if (result.success) sendSystem(session.sessionId, result.message);
+  else sendError(session.sessionId, result.message);
+}
+
 // ─── 製作系統 ───
 
 function cmdCraft(session: WsSession, args: string[]): void {
@@ -3813,6 +3834,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
         'reroll affix <instance> <序號> 重骰裝備詞綴',
         'lock affix <instance> <序號> 鎖定裝備詞綴',
         'reforge quality <instance> 重鑄裝備品質',
+        'disassemble <物品|instance> 分解裝備取得重鑄材料',
       ],
     },
     combat: {

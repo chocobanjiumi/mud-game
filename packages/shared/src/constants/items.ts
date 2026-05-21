@@ -1901,6 +1901,16 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '提升強化成功率10%。', buyPrice: 200, sellPrice: 100,
     stackable: true, maxStack: 99, levelReq: 1,
   },
+  affix_essence: {
+    id: 'affix_essence', name: '詞綴精華', type: 'material',
+    description: '從帶有品質或詞綴的裝備中分解出的流動魔力，可在重骰裝備詞綴時作為穩定媒介。', buyPrice: 0, sellPrice: 80,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
+  reforge_crystal: {
+    id: 'reforge_crystal', name: '重鑄水晶', type: 'material',
+    description: '由裝備核心結晶化而成的材料，能承受品質重鑄時的魔力回流，是重新塑造裝備潛力的必要媒材。', buyPrice: 0, sellPrice: 120,
+    stackable: true, maxStack: 99, levelReq: 1,
+  },
 
   // ============ 寶箱與鑰匙 ============
   bronze_chest: {

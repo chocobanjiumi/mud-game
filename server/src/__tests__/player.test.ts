@@ -6,7 +6,7 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
-import { lockItemAffix, reforgeItemQuality, rerollItemAffix } from '../game/item-reforge.js';
+import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from '../game/item-reforge.js';
 
 // ============================================================
 //  Tests
@@ -585,6 +585,7 @@ describe('inventory item instances', () => {
         stats: { atk: 3 },
       }],
     });
+    addInventoryItem(characterId, 'affix_essence', 1);
 
     const result = rerollItemAffix(characterId, 'inst_spear_steel_reroll', 1);
     expect(result.success).toBe(true);
@@ -656,12 +657,48 @@ describe('inventory item instances', () => {
         stats: { atk: 3 },
       }],
     });
+    addInventoryItem(characterId, 'reforge_crystal', 1);
 
     expect(reforgeItemQuality(characterId, 'inst_spear_steel_reforge').success).toBe(true);
     const reforged = getInventory(characterId).find(item => item.itemInstanceId === 'inst_spear_steel_reforge');
     expect(reforged?.quality).toBeDefined();
     expect(reforged?.lockedAffixIndexes).toBeUndefined();
     expect(reforged?.affixes?.length ?? 0).toBeGreaterThanOrEqual(0);
+  });
+
+  it('can disassemble equipment into reforge materials', () => {
+    const characterId = 'item-instance-disassemble-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
+    ).run(characterId, 'user-instance-disassemble', 'InstanceDisassembleHero', 'swordsman');
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_disassemble',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [{
+        id: 'numeric_str_t1',
+        name: '力量',
+        pool: 'numeric',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { str: 1 },
+      }, {
+        id: 'combat_atk_t1',
+        name: '銳利',
+        pool: 'combat',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { atk: 3 },
+      }],
+    });
+
+    const result = disassembleEquipment(characterId, 'inst_spear_steel_disassemble');
+    expect(result.success).toBe(true);
+    const inventory = getInventory(characterId);
+    expect(inventory.some(item => item.itemInstanceId === 'inst_spear_steel_disassemble')).toBe(false);
+    expect(inventory.find(item => item.itemId === 'reforge_crystal')?.quantity).toBeGreaterThanOrEqual(2);
+    expect(inventory.find(item => item.itemId === 'affix_essence')?.quantity).toBeGreaterThanOrEqual(2);
   });
 });
 
