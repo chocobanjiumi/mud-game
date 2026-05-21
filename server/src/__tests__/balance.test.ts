@@ -594,6 +594,22 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('gives the base adventurer at least four level 1-10 skills', () => {
+    const skills = Object.values(SKILL_DEFS).filter(skill =>
+      skill.classId === 'adventurer' && skill.learnLevel >= 1 && skill.learnLevel <= 10,
+    );
+
+    expect(skills.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('gives each first-job class six to eight class skills', () => {
+    for (const classId of ['swordsman', 'mage', 'ranger', 'priest'] as const) {
+      const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
+      expect(skills.length, classId).toBeGreaterThanOrEqual(6);
+      expect(skills.length, classId).toBeLessThanOrEqual(8);
+    }
+  });
+
   it('keeps quest unlock filtering available for learnable skill queries', () => {
     const questLockedSkill = Object.values(SKILL_DEFS).find(skill => skill.questUnlock);
     if (!questLockedSkill) {
