@@ -1346,8 +1346,33 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
       ...def,
       tags: def.tags ?? inferSkillTags(def),
       scaling: def.scaling ?? inferSkillScaling(def),
+      questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
     }]),
   );
+}
+
+function getClassQuestSkillUnlock(skillId: string): SkillDef['questUnlock'] | undefined {
+  const questIdBySkillId: Record<string, string> = {
+    dirty_trick: 'beginner_first_steps',
+    war_cry: 'class_swordsman_path',
+    meditation: 'class_mage_path',
+    focused_volley: 'class_ranger_path',
+    divine_grace: 'class_priest_path',
+    shield_breaker: 'swordsman_to_knight',
+    savage_interrupt: 'swordsman_to_berserker',
+    mind_cut: 'swordsman_to_sword_saint',
+    spell_sunder: 'mage_to_archmage',
+    curse_unravel: 'mage_to_warlock',
+    timeline_sever: 'mage_to_chronomancer',
+    pinning_shot: 'ranger_to_marksman',
+    garrote: 'ranger_to_assassin',
+    commanding_roar: 'ranger_to_beast_master',
+    purging_bell: 'priest_to_high_priest',
+    root_snare: 'priest_to_druid',
+    edict_of_silence: 'priest_to_inquisitor',
+  };
+  const questId = questIdBySkillId[skillId];
+  return questId ? { questId, requiredStatus: 'completed' } : undefined;
 }
 
 function inferSkillScaling(def: RawSkillDef): SkillScaling {

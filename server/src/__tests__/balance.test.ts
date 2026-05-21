@@ -709,6 +709,17 @@ describe('Balance: Skill metadata', () => {
     )).toBe(true);
   });
 
+  it('gives every player class at least one class quest unlocked skill', () => {
+    const playerClassIds = Object.values(CLASS_DEFS)
+      .filter(classDef => classDef.id !== 'monster')
+      .map(classDef => classDef.id);
+
+    for (const classId of playerClassIds) {
+      const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
+      expect(skills.some(skill => skill.questUnlock), classId).toBe(true);
+    }
+  });
+
   it('keeps quest unlock filtering available for learnable skill queries', () => {
     const questLockedSkill = Object.values(SKILL_DEFS).find(skill => skill.questUnlock);
     if (!questLockedSkill) {
