@@ -699,17 +699,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'amethyst_corridor',
     name: '紫水晶走廊',
     zone: 'crystal_cave',
+    image: 'amethyst_corridor.png',
+    imagePrompt: '紫水晶走廊 in crystal_cave, main route room made of amethyst pillars, violet arches, dizzying magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '洞窟的這一段完全由紫水晶構成，六角形的晶柱從地面和天頂同時生長，' +
-      '在中央匯聚成一道壯觀的水晶拱門。淡紫色的光芒瀰漫在空氣中，' +
-      '令人感到一陣莫名的眩暈——紫水晶的魔力正在影響意識。',
+      '這段洞窟幾乎完全由紫水晶構成，六角晶柱從地面與天頂同時生長，在中央匯聚成拱門，淡紫光像薄霧般貼著皮膚。東邊回螢光隧道，南方可聽見翡翠池水滴聲，牆面折射會讓方向感短暫錯亂。規則過頭的晶柱像在呼吸，提示玩家可能遭遇水晶守衛，也可採集高純度紫晶材料。',
     exits: [
       { direction: 'east', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
       { direction: 'south', targetRoomId: 'jade_pool', description: '走廊盡頭傳來清脆的水滴聲' },
     ],
     monsters: [
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
-      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 900 },
     ],
     mapSymbol: '[A]',
     mapX: 0,
@@ -725,10 +725,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'jade_pool',
     name: '翡翠池',
     zone: 'crystal_cave',
+    image: 'jade_pool.png',
+    imagePrompt: '翡翠池 in crystal_cave, resource room with emerald pool, mirror water, green crystal bed and healing mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一汪碧綠如翡翠的池水佔據了洞窟的中央，水面如鏡面般平靜，倒映著四周的水晶光芒。' +
-      '池底鋪滿了翠綠色的水晶碎片，讓池水呈現出寶石般的色澤。' +
-      '空氣中瀰漫著清新的薄荷般香氣，據說翡翠池的水有治癒的功效。',
+      '碧綠如翡翠的池水佔據洞窟中央，水面平靜得像鏡子，倒映四周水晶光芒與低矮穹頂。北面回紫水晶走廊，東側裂縫透出鑽石白光，南方水流跌向地底瀑布。空氣帶著薄荷般清香，池底水晶碎片閃動，提示玩家可採集治癒材料，但水面漣漪也可能暴露潛伏蜥蜴。',
     exits: [
       { direction: 'north', targetRoomId: 'amethyst_corridor', description: '回到紫水晶走廊' },
       { direction: 'east', targetRoomId: 'diamond_chamber', description: '池畔的裂縫透出刺眼的白光' },
@@ -752,19 +752,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'diamond_chamber',
     name: '鑽石密室',
     zone: 'crystal_cave',
+    image: 'diamond_chamber.png',
+    imagePrompt: '鑽石密室 in crystal_cave, hidden boss room with diamond walls, sealed ancient book, blinding prismatic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '穿過狹窄的裂縫後，眼前是一間不大但極為壯觀的密室。四壁、天頂和地面都嵌滿了' +
-      '閃耀著七彩光芒的鑽石結晶，光線在無數切面之間反覆折射，如同置身於一顆巨大的寶石內部。' +
-      '密室中央的石台上放著一本被水晶封印的古書。',
+      '穿過池畔狹縫後，眼前是不大卻極壯觀的鑽石密室，四壁、天頂與地面嵌滿切面銳利的結晶，光線反覆折射到近乎刺眼。西側裂縫回翡翠池，中央石台封著一本古書，旁邊刻有四元素水晶凹槽。這裡是隱藏、任務與精英戰鬥房，玩家若 inspect 封印或嘗試取書，會喚醒古代守衛。' +
+      '密室每個切面都映出不同年代的地底王國影像，能提供祭壇謎題與棱鏡門線索。地面沒有多餘出口，戰鬥前要確認撤回裂縫的位置，否則容易被守衛逼到石台旁，並被強光干擾方向與視線。石台下方還有可調查的封印裂縫與暗格。',
     exits: [
       { direction: 'west', targetRoomId: 'jade_pool', description: '從裂縫回到翡翠池' },
     ],
     monsters: [
-      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1200 },
       { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 70 },
     ],
     mapSymbol: '[*]',
-    mapX: 1,
+    mapX: 3,
     mapY: 9,
     guardianHints: {
       creature: '密室中的水晶魔像是古代工匠製造的永恆守衛——牠們不會疲倦，也不會憐憫。',
@@ -777,17 +778,18 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'underground_waterfall',
     name: '地底瀑布',
     zone: 'crystal_cave',
+    image: 'underground_waterfall.png',
+    imagePrompt: '地底瀑布 in crystal_cave, landmark room with tall underground waterfall, crystal-lit water curtain, deep pool and roaring mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '翡翠池的水流在此處傾瀉而下，形成一道高達三十公尺的地底瀑布。' +
-      '瀑布的水幕在水晶光芒的映照下如同流動的寶石，轟隆的水聲在洞窟中迴盪。' +
-      '瀑布底部的深潭中隱約可見巨大的影子在移動。',
+      '翡翠池水在此傾瀉而下，形成高達數十公尺的地底瀑布，水幕被晶光照得像流動寶石，轟隆聲震動整座洞窟。北面可逆流回翡翠池，西側深潭接地下河，南方瀑布後方有隱蔽密道。霧氣中偶爾浮現巨大影子，水幕後也露出凹洞，提示玩家可採集水晶核心、調查密道或準備面對洞窟精英。' +
+      '瀑布邊緣有被水流磨圓的石階，能作為通往祭壇和龍棲台裂縫的方向標。轟鳴聲會掩蓋蝙蝠群靠近，玩家需要觀察水霧擾動而不是只靠聽覺，並留心深潭邊的濕滑落腳點與退路。水下亮點也可能是寶物或伏兵。',
     exits: [
       { direction: 'north', targetRoomId: 'jade_pool', description: '沿著水流逆行回到翡翠池' },
       { direction: 'south', targetRoomId: 'ancient_altar', description: '瀑布後方似乎有一條隱蔽的通道' },
       { direction: 'west', targetRoomId: 'underground_river', description: '深潭連接著地下河' },
     ],
     monsters: [
-      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 85 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 900 },
       { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
     ],
@@ -808,17 +810,18 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'ancient_altar',
     name: '古代祭壇',
     zone: 'crystal_cave',
+    image: 'ancient_altar.png',
+    imagePrompt: '古代祭壇 in crystal_cave, boss landmark room with star-shaped stone pillars, blue rune altar, pure magic energy, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '瀑布後方的密道通往一座被遺忘了千年的祭壇。巨大的石柱排列成星形，' +
-      '中央的祭台上刻著複雜的符文陣，至今仍散發著幽藍色的能量脈動。' +
-      '空氣中充滿了純粹的魔力，呼吸都能感受到力量在體內流轉。',
+      '瀑布後方密道通往被遺忘千年的古代祭壇，巨大石柱排列成星形，中央祭台刻著複雜符文陣，幽藍能量像心跳般脈動。北方密道回地底瀑布，西側階梯連向礦脈深處，祭壇周圍散落古代碎片與破損騎士徽記。這裡是 Boss、劇情與傳送封印節點，玩家可 inspect 符文、回收碎片，也要準備面對水晶守衛與石像鬼。' +
+      '石柱影子會按照星形順序移動，指出棱鏡門與水晶龍棲台的封印關係。祭台旁的碎片可作任務證物，但拿起它也可能啟動守衛與地底王國的記憶幻象，讓整個房間進入戰鬥狀態與封鎖。符文亮度會提示啟動順序。',
     exits: [
       { direction: 'north', targetRoomId: 'underground_waterfall', description: '穿過密道回到地底瀑布' },
       { direction: 'west', targetRoomId: 'mine_depths', description: '祭壇側面有通往礦脈深處的階梯' },
     ],
     monsters: [
-      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 600 },
-      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 900 },
       { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 70 },
     ],
     groundItems: [
@@ -832,6 +835,232 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       treasure: '符文陣的核心處封印著地底種族的王權之器，啟動它需要獻上四種元素的精華。',
       spirit: '祭壇記載著地底種族滅亡的真相——他們並非被外敵消滅，而是為了封印某個來自深淵的存在而犧牲了自己。',
     },
+  },
+
+  crystal_cave_echo_chasm: {
+    id: 'crystal_cave_echo_chasm',
+    name: '回音裂谷',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_echo_chasm.png',
+    imagePrompt: '回音裂谷 in crystal_cave, main route room with deep chasm, crystal ledges, echoing darkness and blue side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '螢光隧道南東側裂開一道深不見底的裂谷，兩側水晶平台像階梯般懸在黑暗中，回音會把腳步聲放大成怪物低吼。西北可回水晶大廳，東側有細窄玻璃橋跨過裂隙，南方蜥蜴巢穴傳來碎石滑落聲。裂谷邊緣有斷繩與礦工記號，提示玩家這裡是危險主路與撤退考驗，戰鬥中位置選擇很重要。' +
+      '深處偶爾飛起蝙蝠群，水晶碎片也會隨回音震動掉落，暴露隱藏平台。若要前往玻晶橋或蜥蜴巢穴，最好先確認北側退路和補給狀態，避免在裂谷邊被包圍或擊退。回音方向還能暴露側路與落腳點標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'crystal_hall', description: '回到水晶大廳' },
+      { direction: 'east', targetRoomId: 'crystal_cave_glass_bridge', description: '玻璃般的晶橋橫跨裂谷' },
+      { direction: 'south', targetRoomId: 'crystal_cave_lizard_nest', description: '碎石聲來自南方巢穴' },
+    ],
+    monsters: [
+      { monsterId: 'cave_bat', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[ ]',
+    mapX: 2,
+    mapY: 9,
+  },
+
+  crystal_cave_miner_camp: {
+    id: 'crystal_cave_miner_camp',
+    name: '廢礦工營地',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_miner_camp.png',
+    imagePrompt: '廢礦工營地 in crystal_cave, quest room with abandoned tents, broken winch, ore crates and lantern crystal light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '廢棄礦工營地卡在礦脈深處西側平台上，破布帳篷、斷裂滑輪和半滿礦石箱散落一地，乾涸油燈反射水晶冷光。東面可回礦脈深處，南側鏡晶迷宮入口被木牌標記，西邊有通往沉沒寶庫的潮濕階梯。營地桌上留著事故記錄與採礦圖，提示玩家可接調查任務、尋找失蹤礦工證物，或補充採集路線情報。',
+    exits: [
+      { direction: 'east', targetRoomId: 'mine_depths', description: '回到礦脈深處' },
+      { direction: 'south', targetRoomId: 'crystal_cave_mirror_maze', description: '鏡晶迷宮入口閃著冷光' },
+      { direction: 'west', targetRoomId: 'crystal_cave_submerged_vault', description: '潮濕階梯通往沉沒寶庫' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 80 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[C]',
+    mapX: 0,
+    mapY: 12,
+  },
+
+  crystal_cave_singing_crystals: {
+    id: 'crystal_cave_singing_crystals',
+    name: '鳴晶廊',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_singing_crystals.png',
+    imagePrompt: '鳴晶廊 in crystal_cave, exploration room with resonating crystal organ columns, musical light waves, violet-blue glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '這條支廊的晶柱會隨水滴震動發出長音，數十種音高交疊成像管風琴般的旋律，空氣也跟著微微震顫。北面接回紫水晶走廊，東側可繞向鏡晶迷宮，南方棱鏡門偶爾閃出彩色光帶。牆上有地底文明的音階符號，提示玩家可 inspect 聲音順序解謎，也能利用共鳴削弱某些水晶守衛。',
+    exits: [
+      { direction: 'north', targetRoomId: 'amethyst_corridor', description: '回到紫水晶走廊' },
+      { direction: 'east', targetRoomId: 'crystal_cave_mirror_maze', description: '回聲指向鏡晶迷宮' },
+      { direction: 'south', targetRoomId: 'crystal_cave_prism_gate', description: '彩光從南方棱鏡門透出' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'cave_bat', maxCount: 2, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[~]',
+    mapX: 0,
+    mapY: 7,
+  },
+
+  crystal_cave_glass_bridge: {
+    id: 'crystal_cave_glass_bridge',
+    name: '玻晶橋',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_glass_bridge.png',
+    imagePrompt: '玻晶橋 in crystal_cave, dangerous route room with transparent crystal bridge over abyss, refraction, distant waterfall mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '透明晶橋橫跨回音裂谷，橋面薄得能看見腳下黑暗與遠處瀑布水霧，走動時會發出細小裂響。西側回裂谷平台，東邊接到地下河上游，南方可繞到蜥蜴巢穴後方。橋面沒有欄杆，水晶蜥蜴常伏在透明邊緣等待獵物滑倒，提示玩家這裡是高風險通道與撤退捷徑。' +
+      '橋下晶刺像倒掛長矛，任何掉落的石子都要很久才聽見回聲。玩家若在這裡戰鬥，應留意位置、擊退效果與東西兩端出口，不要被逼到橋中央，也不要忽略南側繞路和腳下裂痕。橋面反光能提示隱形裂縫與敵影位置細節變化及巡邏節奏。',
+    exits: [
+      { direction: 'west', targetRoomId: 'crystal_cave_echo_chasm', description: '回到回音裂谷' },
+      { direction: 'east', targetRoomId: 'underground_river', description: '橋尾連向地下河' },
+      { direction: 'south', targetRoomId: 'crystal_cave_lizard_nest', description: '橋下小徑通往蜥蜴巢穴' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[=]',
+    mapX: 3,
+    mapY: 8,
+  },
+
+  crystal_cave_lizard_nest: {
+    id: 'crystal_cave_lizard_nest',
+    name: '水晶蜥蜴巢',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_lizard_nest.png',
+    imagePrompt: '水晶蜥蜴巢 in crystal_cave, combat room with crystal eggs, clawed stone nests, blue mineral dust and lizard tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '洞壁被爪痕刮得發亮，數個石窩裡躺著半透明晶蛋，地面覆著細碎藍色晶粉與蜥蜴尾巴掃出的弧線。北面通回回音裂谷，東側可繞到玻晶橋下方，南方有裂縫通向棱鏡門背面。這裡是密集戰鬥房，玩家可收集晶鱗與蛋殼材料，但靠近巢穴中央會引來成群水晶蜥蜴。' +
+      '晶蛋會映出入侵者的熱影，讓蜥蜴更快定位獵物。巢穴角落有被拖來的礦工工具與破碎燈盞，提示可找到任務證物，也能循裂縫前往深層門扉或回玻晶橋撤離與重整。蛋殼碎片可作採集材料與任務證物來源點之一處，仍有餘溫。',
+    exits: [
+      { direction: 'north', targetRoomId: 'crystal_cave_echo_chasm', description: '回到回音裂谷' },
+      { direction: 'east', targetRoomId: 'crystal_cave_glass_bridge', description: '繞上玻晶橋' },
+      { direction: 'south', targetRoomId: 'crystal_cave_prism_gate', description: '裂縫通向棱鏡門背後' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 4, respawnSeconds: 40 },
+      { monsterId: 'cave_bat', maxCount: 1, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[n]',
+    mapX: 3,
+    mapY: 10,
+  },
+
+  crystal_cave_mirror_maze: {
+    id: 'crystal_cave_mirror_maze',
+    name: '鏡晶迷宮',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_mirror_maze.png',
+    imagePrompt: '鏡晶迷宮 in crystal_cave, hidden exploration room of mirrored crystal walls, repeated reflections and cold maze light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏡面水晶牆把通道切成無數相似角度，玩家的倒影被拉長、重疊，連火光都會分裂成多個方向。北邊可回廢礦工營地，西側鳴晶廊聲音能作為定位，南方鍛造間傳來金屬摩擦聲。牆面上偶爾出現不屬於自己的影子，提示玩家需要依靠聲音與地標判路，並可 inspect 倒影找到隱藏出口。' +
+      '迷宮地面有礦工用粉筆留下的短箭頭，但部分被水晶折射成假方向。若走錯路會遭遇石像鬼巡邏，正確路線則能連到鍛造間與深層機關，也能回收失蹤礦工線索與標記。倒影異常處往往藏有出口與寶箱線索痕跡點位。',
+    exits: [
+      { direction: 'north', targetRoomId: 'crystal_cave_miner_camp', description: '依照礦工記號回到營地' },
+      { direction: 'west', targetRoomId: 'crystal_cave_singing_crystals', description: '鳴晶聲從西側傳來' },
+      { direction: 'south', targetRoomId: 'crystal_cave_golem_forge', description: '金屬摩擦聲來自南方' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[M]',
+    mapX: 1,
+    mapY: 12,
+  },
+
+  crystal_cave_golem_forge: {
+    id: 'crystal_cave_golem_forge',
+    name: '魔像鍛造間',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_golem_forge.png',
+    imagePrompt: '魔像鍛造間 in crystal_cave, elite room with ancient golem forge, crystal molds, blue furnace and stone guardians, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古代鍛造間的地面刻著巨大圓形軌道，水晶模具與石質肢體散落在藍焰爐旁，空氣裡有熱石與金屬粉塵味。北方回鏡晶迷宮，東側棱鏡門可被啟動，西側潮濕通道通往沉沒寶庫。半成品魔像胸口仍有微光，提示玩家這裡是精英事件與製作線索房，可調查守衛如何被喚醒。',
+    exits: [
+      { direction: 'north', targetRoomId: 'crystal_cave_mirror_maze', description: '回到鏡晶迷宮' },
+      { direction: 'east', targetRoomId: 'crystal_cave_prism_gate', description: '棱鏡門在東側發亮' },
+      { direction: 'west', targetRoomId: 'crystal_cave_submerged_vault', description: '潮濕通道通往沉沒寶庫' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1200 },
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[G]',
+    mapX: 1,
+    mapY: 13,
+  },
+
+  crystal_cave_submerged_vault: {
+    id: 'crystal_cave_submerged_vault',
+    name: '沉沒寶庫',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_submerged_vault.png',
+    imagePrompt: '沉沒寶庫 in crystal_cave, hidden treasure room half flooded, crystal chests, submerged stairs and blue-green water light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '半淹沒的石室藏在礦工營地下方，水線淹過古代寶箱底部，藍綠光在水面與牆面間晃動。東邊可回廢礦工營地，南側潮濕走道連到魔像鍛造間，水下階梯似乎還往更深處延伸。寶箱封條被水晶包住，旁邊有氣泡與爪痕，提示玩家可搜尋一次性寶物，也要提防水下蜥蜴或守衛甦醒。',
+    exits: [
+      { direction: 'east', targetRoomId: 'crystal_cave_miner_camp', description: '濕階梯回到礦工營地' },
+      { direction: 'south', targetRoomId: 'crystal_cave_golem_forge', description: '潮濕走道通向鍛造間' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 90 },
+    ],
+    groundItems: [
+      { itemId: 'crystal_shard', description: '半淹沒寶箱旁散落著水晶碎片' },
+    ],
+    mapSymbol: '[T]',
+    mapX: 0,
+    mapY: 13,
+  },
+
+  crystal_cave_prism_gate: {
+    id: 'crystal_cave_prism_gate',
+    name: '棱鏡門',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_prism_gate.png',
+    imagePrompt: '棱鏡門 in crystal_cave, portal event room with triangular prism gate, rainbow beams, rune locks and crystal stairs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '三角棱鏡組成的巨門立在洞窟深層，彩色光束在門框間來回折射，符文鎖像眼睛般逐一亮起。北邊連蜥蜴巢穴，西側是魔像鍛造間，東方可通往水晶龍棲台。門前地面刻著需要調整光線的謎題，提示玩家可啟用深層捷徑或事件傳送，但錯誤觸發會喚來守衛。' +
+      '門框下方有四個晶核插槽，分別對應紫晶、翡翠、鑽石與古代祭壇能量。玩家可從周邊房間收集線索再啟動棱鏡門，避免被傳送到 Boss 前哨時毫無準備，並確認西側撤退路和補給。光束顏色會暴露錯誤順序與守衛動向變化節奏細節線索與警示。',
+    exits: [
+      { direction: 'north', targetRoomId: 'crystal_cave_lizard_nest', description: '裂縫回到蜥蜴巢穴' },
+      { direction: 'west', targetRoomId: 'crystal_cave_golem_forge', description: '回到魔像鍛造間' },
+      { direction: 'east', targetRoomId: 'crystal_cave_dragon_roost', description: '棱鏡門後是龍棲台' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1500 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[P]',
+    mapX: 2,
+    mapY: 13,
+  },
+
+  crystal_cave_dragon_roost: {
+    id: 'crystal_cave_dragon_roost',
+    name: '水晶龍棲台',
+    zone: 'crystal_cave',
+    image: 'crystal_cave_dragon_roost.png',
+    imagePrompt: '水晶龍棲台 in crystal_cave, boss room with high crystal roost, clawed ledges, dragon scales, blinding white-blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '洞窟最深處的高台被白藍水晶包圍，巨爪在平台邊緣留下深痕，破碎鱗片像玻璃刀片散落滿地。西側棱鏡門是唯一穩定入口，北方有狹窄裂縫回望地底瀑布水霧，四周穹頂高得看不見盡頭。這裡是水晶洞窟大型 Boss 與區域事件終點，玩家需要完成棱鏡門與祭壇線索、整備隊伍後再挑戰水晶龍。' +
+      '高台中央有被龍爪壓碎的古代王冠與發光鱗片，提示擊敗首領後可取得區域推進證物。水晶柱會反射龍息路徑，熟悉出口與遮蔽物能提高生存機會，也能判斷何時撤回棱鏡門避險。地面裂光會預告落晶攻擊。',
+    exits: [
+      { direction: 'west', targetRoomId: 'crystal_cave_prism_gate', description: '穿過棱鏡門撤回深層通道' },
+      { direction: 'north', targetRoomId: 'underground_waterfall', description: '狹窄裂縫可繞回瀑布霧氣後方' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1500 },
+    ],
+    mapSymbol: '[B]',
+    mapX: 3,
+    mapY: 13,
   },
 
   // ─── Area 8: 湖畔城鎮擴充 (Non-combat) ──────────────────
