@@ -103,5 +103,6 @@ export interface InventoryItem {
   itemInstanceId?: string;
   quality?: ItemQuality;
   affixes?: AffixDef[];
+  lockedAffixIndexes?: number[];
   fixedEffects?: string[];
 }

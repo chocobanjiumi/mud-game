@@ -45,7 +45,7 @@ import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
-import { rerollItemAffix } from './item-reforge.js';
+import { lockItemAffix, rerollItemAffix } from './item-reforge.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -195,6 +195,7 @@ export function handleCommand(session: WsSession, input: string): void {
     // 強化系統
     case 'upgrade': case 'enhance': cmdUpgrade(session, argStr); break;
     case 'reroll': cmdReroll(session, args); break;
+    case 'lock': cmdLock(session, args); break;
     // 製作系統
     case 'craft': cmdCraft(session, args); break;
     // 拍賣系統
@@ -3498,6 +3499,33 @@ function cmdReroll(session: WsSession, args: string[]): void {
   else sendError(session.sessionId, result.message);
 }
 
+function cmdLock(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法鎖定詞綴！');
+    return;
+  }
+
+  const sub = args[0]?.toLowerCase();
+  if (sub !== 'affix') {
+    sendError(session.sessionId, '用法：lock affix <item_instance_id> <詞綴序號>');
+    return;
+  }
+
+  const itemInstanceId = args[1];
+  const affixNumber = parseInt(args[2] ?? '1', 10);
+  if (!itemInstanceId) {
+    sendError(session.sessionId, '用法：lock affix <item_instance_id> <詞綴序號>');
+    return;
+  }
+
+  const result = lockItemAffix(char.id, itemInstanceId, affixNumber);
+  if (result.success) sendSystem(session.sessionId, result.message);
+  else sendError(session.sessionId, result.message);
+}
+
 // ─── 製作系統 ───
 
 function cmdCraft(session: WsSession, args: string[]): void {
@@ -3756,6 +3784,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
         'upgrade / enhance    強化當前武器',
         'upgrade armor        強化身體裝備',
         'reroll affix <instance> <序號> 重骰裝備詞綴',
+        'lock affix <instance> <序號> 鎖定裝備詞綴',
       ],
     },
     combat: {

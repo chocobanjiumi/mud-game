@@ -6,7 +6,7 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
-import { rerollItemAffix } from '../game/item-reforge.js';
+import { lockItemAffix, rerollItemAffix } from '../game/item-reforge.js';
 
 // ============================================================
 //  Tests
@@ -592,6 +592,41 @@ describe('inventory item instances', () => {
     expect(rerolled?.affixes).toHaveLength(2);
     expect(rerolled?.affixes?.[0]?.id).not.toBe('numeric_str_t1');
     expect(rerolled?.affixes?.[1]?.id).toBe('combat_atk_t1');
+  });
+
+  it('can lock a stored item instance affix against rerolls', () => {
+    const characterId = 'item-instance-lock-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
+    ).run(characterId, 'user-instance-lock', 'InstanceLockHero', 'swordsman');
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_lock',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [{
+        id: 'numeric_str_t1',
+        name: '力量',
+        pool: 'numeric',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { str: 1 },
+      }, {
+        id: 'combat_atk_t1',
+        name: '銳利',
+        pool: 'combat',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { atk: 3 },
+      }],
+    });
+
+    expect(lockItemAffix(characterId, 'inst_spear_steel_lock', 1).success).toBe(true);
+    const locked = getInventory(characterId).find(item => item.itemInstanceId === 'inst_spear_steel_lock');
+    expect(locked?.lockedAffixIndexes).toEqual([0]);
+    const rerollLocked = rerollItemAffix(characterId, 'inst_spear_steel_lock', 1);
+    expect(rerollLocked.success).toBe(false);
+    expect(getInventory(characterId).find(item => item.itemInstanceId === 'inst_spear_steel_lock')?.affixes?.[0]?.id).toBe('numeric_str_t1');
   });
 });
 

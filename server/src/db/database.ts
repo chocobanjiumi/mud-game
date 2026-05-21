@@ -125,7 +125,7 @@ export function saveCharacter(char: Character): void {
 export function loadInventory(characterId: string): InventoryItem[] {
   const rows = getDb().prepare(
     `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
-      inst.quality, inst.affixes_json, inst.fixed_effects_json
+      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ?`
@@ -137,6 +137,7 @@ export function loadInventory(characterId: string): InventoryItem[] {
     equipped: !!r.equipped,
     quality: r.quality ?? undefined,
     affixes: parseJsonArray(r.affixes_json),
+    lockedAffixIndexes: parseJsonArray(r.locked_affixes_json),
     fixedEffects: parseJsonArray(r.fixed_effects_json),
   }));
 }

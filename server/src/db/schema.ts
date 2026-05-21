@@ -71,6 +71,7 @@ export function initDb(): Database.Database {
       base_item_id TEXT NOT NULL,
       quality TEXT NOT NULL,
       affixes_json TEXT DEFAULT '[]',
+      locked_affixes_json TEXT DEFAULT '[]',
       fixed_effects_json TEXT DEFAULT '[]',
       created_at INTEGER DEFAULT (unixepoch())
     );
@@ -472,11 +473,17 @@ export function initDb(): Database.Database {
         base_item_id TEXT NOT NULL,
         quality TEXT NOT NULL,
         affixes_json TEXT DEFAULT '[]',
+        locked_affixes_json TEXT DEFAULT '[]',
         fixed_effects_json TEXT DEFAULT '[]',
         created_at INTEGER DEFAULT (unixepoch())
       );
       CREATE INDEX IF NOT EXISTS idx_inventory_item_instance ON inventory(item_instance_id);
     `);
+    const instanceColumns = db.prepare("PRAGMA table_info(item_instances)").all() as { name: string }[];
+    if (!new Set(instanceColumns.map(c => c.name)).has('locked_affixes_json')) {
+      db.exec(`ALTER TABLE item_instances ADD COLUMN locked_affixes_json TEXT DEFAULT '[]'`);
+      console.log('[DB] Migration: 已新增 locked_affixes_json 欄位至 item_instances 表');
+    }
   }
 
   // ── Migration: market and auction item instance support ──

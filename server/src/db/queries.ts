@@ -98,6 +98,7 @@ export interface StoredItemInstance {
   baseItemId: string;
   quality: ItemQuality;
   affixes?: AffixDef[];
+  lockedAffixIndexes?: number[];
   fixedEffects?: string[];
 }
 
@@ -156,7 +157,7 @@ export function getInventory(characterId: string): InventoryItem[] {
   const db = getDb();
   const rows = db.prepare(
     `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
-      inst.quality, inst.affixes_json, inst.fixed_effects_json
+      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ?`,
@@ -167,6 +168,7 @@ export function getInventory(characterId: string): InventoryItem[] {
     equipped: number;
     quality: ItemQuality | null;
     affixes_json: string | null;
+    locked_affixes_json: string | null;
     fixed_effects_json: string | null;
   }[];
 
@@ -177,6 +179,7 @@ export function getInventory(characterId: string): InventoryItem[] {
     equipped: r.equipped === 1,
     quality: r.quality ?? undefined,
     affixes: parseJsonArray<AffixDef>(r.affixes_json),
+    lockedAffixIndexes: parseJsonArray<number>(r.locked_affixes_json),
     fixedEffects: parseJsonArray<string>(r.fixed_effects_json),
   }));
 }
@@ -205,25 +208,27 @@ export function getEquippedItems(characterId: string): { itemId: string; itemIns
 export function upsertItemInstance(instance: StoredItemInstance): void {
   getDb().prepare(
     `INSERT OR REPLACE INTO item_instances
-      (id, base_item_id, quality, affixes_json, fixed_effects_json)
-     VALUES (?, ?, ?, ?, ?)`,
+      (id, base_item_id, quality, affixes_json, locked_affixes_json, fixed_effects_json)
+     VALUES (?, ?, ?, ?, ?, ?)`,
   ).run(
     instance.itemInstanceId,
     instance.baseItemId,
     instance.quality,
     JSON.stringify(instance.affixes ?? []),
+    JSON.stringify(normalizeLockedAffixes(instance.lockedAffixIndexes)),
     JSON.stringify(instance.fixedEffects ?? []),
   );
 }
 
 export function getStoredItemInstance(itemInstanceId: string): StoredItemInstance | undefined {
   const row = getDb().prepare(
-    'SELECT id, base_item_id, quality, affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
+    'SELECT id, base_item_id, quality, affixes_json, locked_affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
   ).get(itemInstanceId) as {
     id: string;
     base_item_id: string;
     quality: ItemQuality;
     affixes_json: string | null;
+    locked_affixes_json: string | null;
     fixed_effects_json: string | null;
   } | undefined;
 
@@ -233,8 +238,16 @@ export function getStoredItemInstance(itemInstanceId: string): StoredItemInstanc
     baseItemId: row.base_item_id,
     quality: row.quality,
     affixes: parseJsonArray<AffixDef>(row.affixes_json),
+    lockedAffixIndexes: parseJsonArray<number>(row.locked_affixes_json),
     fixedEffects: parseJsonArray<string>(row.fixed_effects_json),
   };
+}
+
+function normalizeLockedAffixes(indexes: number[] | undefined): number[] {
+  if (!indexes) return [];
+  return [...new Set(indexes)]
+    .filter(index => Number.isInteger(index) && index >= 0)
+    .sort((a, b) => a - b);
 }
 
 function parseJsonArray<T>(value: string | null): T[] | undefined {
