@@ -1,7 +1,8 @@
 // Player/character management tests
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel } from '../game/player.js';
-import { initDb, closeDb } from '../db/schema.js';
+import { initDb, closeDb, getDb } from '../db/schema.js';
+import { addInventoryItem, getEquippedItems, getInventory, setEquipped } from '../db/queries.js';
 
 // ============================================================
 //  Tests
@@ -489,5 +490,68 @@ describe('PlayerManager', () => {
       const all = pm.getAllCharacters();
       expect(all).toHaveLength(2);
     });
+  });
+});
+
+describe('inventory item instances', () => {
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('stores item instance metadata and returns it through inventory queries', () => {
+    const characterId = 'item-instance-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance', 'InstanceHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_1',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [{
+        id: 'numeric_str_t1',
+        name: '力量',
+        pool: 'numeric',
+        tier: 'T1',
+        appliesTo: ['weapon'],
+        stats: { str: 1 },
+      }],
+      fixedEffects: ['rare_test_effect'],
+    });
+
+    const inventory = getInventory(characterId);
+    expect(inventory).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        itemId: 'spear_steel',
+        itemInstanceId: 'inst_spear_steel_1',
+        quality: 'rare',
+        fixedEffects: ['rare_test_effect'],
+      }),
+    ]));
+    expect(inventory.find(item => item.itemInstanceId === 'inst_spear_steel_1')?.affixes?.[0]?.id).toBe('numeric_str_t1');
+  });
+
+  it('can equip a specific item instance id', () => {
+    const characterId = 'item-instance-equip-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-equip', 'InstanceEquipHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_equip',
+      baseItemId: 'spear_steel',
+      quality: 'fine',
+      affixes: [],
+      fixedEffects: [],
+    });
+
+    expect(setEquipped(characterId, 'spear_steel', true, 'inst_spear_steel_equip')).toBe(true);
+    expect(getEquippedItems(characterId)).toEqual([
+      { itemId: 'spear_steel', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 },
+    ]);
   });
 });

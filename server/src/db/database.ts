@@ -124,12 +124,20 @@ export function saveCharacter(char: Character): void {
 
 export function loadInventory(characterId: string): InventoryItem[] {
   const rows = getDb().prepare(
-    'SELECT item_id, quantity, equipped FROM inventory WHERE character_id = ?'
+    `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
+      inst.quality, inst.affixes_json, inst.fixed_effects_json
+     FROM inventory i
+     LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
+     WHERE i.character_id = ?`
   ).all(characterId) as any[];
   return rows.map(r => ({
     itemId: r.item_id,
+    itemInstanceId: r.item_instance_id ?? undefined,
     quantity: r.quantity,
     equipped: !!r.equipped,
+    quality: r.quality ?? undefined,
+    affixes: parseJsonArray(r.affixes_json),
+    fixedEffects: parseJsonArray(r.fixed_effects_json),
   }));
 }
 
@@ -191,6 +199,16 @@ export function unequipItem(characterId: string, itemId: string): boolean {
     'UPDATE inventory SET equipped = 0 WHERE character_id = ? AND item_id = ? AND equipped = 1'
   ).run(characterId, itemId);
   return result.changes > 0;
+}
+
+function parseJsonArray(value: string | null): any[] | undefined {
+  if (!value) return undefined;
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 // ============================================================

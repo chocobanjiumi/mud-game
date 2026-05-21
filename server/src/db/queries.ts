@@ -2,7 +2,7 @@
 
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
-import type { Character, ClassId, BaseStats, EquipmentSlots } from '@game/shared';
+import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality } from '@game/shared';
 import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 
 // ─── Character CRUD ───
@@ -93,13 +93,34 @@ export function deleteCharacter(id: string): void {
 
 // ─── Inventory CRUD ───
 
+export interface StoredItemInstance {
+  itemInstanceId: string;
+  baseItemId: string;
+  quality: ItemQuality;
+  affixes?: AffixDef[];
+  fixedEffects?: string[];
+}
+
 /** 新增物品到背包 */
-export function addInventoryItem(characterId: string, itemId: string, quantity: number, equipped = false): void {
+export function addInventoryItem(
+  characterId: string,
+  itemId: string,
+  quantity: number,
+  equipped = false,
+  itemInstance?: StoredItemInstance,
+): void {
   const db = getDb();
+  if (itemInstance) {
+    upsertItemInstance(itemInstance);
+    db.prepare(
+      'INSERT INTO inventory (character_id, item_id, item_instance_id, quantity, equipped) VALUES (?, ?, ?, ?, ?)',
+    ).run(characterId, itemId, itemInstance.itemInstanceId, quantity, equipped ? 1 : 0);
+    return;
+  }
 
   // 檢查是否已有此物品（可堆疊）
   const existing = db.prepare(
-    'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0',
+    'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0 AND item_instance_id IS NULL',
   ).get(characterId, itemId) as { id: number; quantity: number } | undefined;
 
   if (existing) {
@@ -112,11 +133,13 @@ export function addInventoryItem(characterId: string, itemId: string, quantity: 
 }
 
 /** 移除背包物品 */
-export function removeInventoryItem(characterId: string, itemId: string, quantity: number): boolean {
+export function removeInventoryItem(characterId: string, itemId: string, quantity: number, itemInstanceId?: string): boolean {
   const db = getDb();
   const existing = db.prepare(
-    'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0',
-  ).get(characterId, itemId) as { id: number; quantity: number } | undefined;
+    itemInstanceId
+      ? 'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND item_instance_id = ? AND equipped = 0'
+      : 'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0 AND item_instance_id IS NULL',
+  ).get(...(itemInstanceId ? [characterId, itemId, itemInstanceId] : [characterId, itemId])) as { id: number; quantity: number } | undefined;
 
   if (!existing || existing.quantity < quantity) return false;
 
@@ -129,36 +152,78 @@ export function removeInventoryItem(characterId: string, itemId: string, quantit
 }
 
 /** 取得角色所有背包物品 */
-export function getInventory(characterId: string): { itemId: string; quantity: number; equipped: boolean }[] {
+export function getInventory(characterId: string): InventoryItem[] {
   const db = getDb();
   const rows = db.prepare(
-    'SELECT item_id, quantity, equipped FROM inventory WHERE character_id = ?',
-  ).all(characterId) as { item_id: string; quantity: number; equipped: number }[];
+    `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
+      inst.quality, inst.affixes_json, inst.fixed_effects_json
+     FROM inventory i
+     LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
+     WHERE i.character_id = ?`,
+  ).all(characterId) as {
+    item_id: string;
+    item_instance_id: string | null;
+    quantity: number;
+    equipped: number;
+    quality: ItemQuality | null;
+    affixes_json: string | null;
+    fixed_effects_json: string | null;
+  }[];
 
   return rows.map((r) => ({
     itemId: r.item_id,
+    itemInstanceId: r.item_instance_id ?? undefined,
     quantity: r.quantity,
     equipped: r.equipped === 1,
+    quality: r.quality ?? undefined,
+    affixes: parseJsonArray<AffixDef>(r.affixes_json),
+    fixedEffects: parseJsonArray<string>(r.fixed_effects_json),
   }));
 }
 
 /** 裝備/卸下物品 */
-export function setEquipped(characterId: string, itemId: string, equipped: boolean): boolean {
+export function setEquipped(characterId: string, itemId: string, equipped: boolean, itemInstanceId?: string): boolean {
   const db = getDb();
   const result = db.prepare(
-    'UPDATE inventory SET equipped = ? WHERE character_id = ? AND item_id = ?',
-  ).run(equipped ? 1 : 0, characterId, itemId);
+    itemInstanceId
+      ? 'UPDATE inventory SET equipped = ? WHERE character_id = ? AND item_id = ? AND item_instance_id = ?'
+      : 'UPDATE inventory SET equipped = ? WHERE character_id = ? AND item_id = ?',
+  ).run(...(itemInstanceId ? [equipped ? 1 : 0, characterId, itemId, itemInstanceId] : [equipped ? 1 : 0, characterId, itemId]));
   return result.changes > 0;
 }
 
 /** 取得角色已裝備的物品 */
-export function getEquippedItems(characterId: string): { itemId: string; quantity: number }[] {
+export function getEquippedItems(characterId: string): { itemId: string; itemInstanceId?: string; quantity: number }[] {
   const db = getDb();
   const rows = db.prepare(
-    'SELECT item_id, quantity FROM inventory WHERE character_id = ? AND equipped = 1',
-  ).all(characterId) as { item_id: string; quantity: number }[];
+    'SELECT item_id, item_instance_id, quantity FROM inventory WHERE character_id = ? AND equipped = 1',
+  ).all(characterId) as { item_id: string; item_instance_id: string | null; quantity: number }[];
 
-  return rows.map((r) => ({ itemId: r.item_id, quantity: r.quantity }));
+  return rows.map((r) => ({ itemId: r.item_id, itemInstanceId: r.item_instance_id ?? undefined, quantity: r.quantity }));
+}
+
+export function upsertItemInstance(instance: StoredItemInstance): void {
+  getDb().prepare(
+    `INSERT OR REPLACE INTO item_instances
+      (id, base_item_id, quality, affixes_json, fixed_effects_json)
+     VALUES (?, ?, ?, ?, ?)`,
+  ).run(
+    instance.itemInstanceId,
+    instance.baseItemId,
+    instance.quality,
+    JSON.stringify(instance.affixes ?? []),
+    JSON.stringify(instance.fixedEffects ?? []),
+  );
+}
+
+function parseJsonArray<T>(value: string | null): T[] | undefined {
+  if (!value) return undefined;
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed as T[] : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 // ─── Skills CRUD ───

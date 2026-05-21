@@ -61,8 +61,18 @@ export function initDb(): Database.Database {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
       item_id TEXT NOT NULL,
+      item_instance_id TEXT,
       quantity INTEGER DEFAULT 1,
       equipped INTEGER DEFAULT 0
+    );
+
+    CREATE TABLE IF NOT EXISTS item_instances (
+      id TEXT PRIMARY KEY,
+      base_item_id TEXT NOT NULL,
+      quality TEXT NOT NULL,
+      affixes_json TEXT DEFAULT '[]',
+      fixed_effects_json TEXT DEFAULT '[]',
+      created_at INTEGER DEFAULT (unixepoch())
     );
 
     -- 技能學習紀錄
@@ -446,6 +456,27 @@ export function initDb(): Database.Database {
       db.exec(`ALTER TABLE characters ADD COLUMN marked_location TEXT`);
       console.log('[DB] Migration: 已新增 marked_location 欄位至 characters 表');
     }
+  }
+
+  // ── Migration: item instance support ──
+  {
+    const invColumns = db.prepare("PRAGMA table_info(inventory)").all() as { name: string }[];
+    const invColumnNames = new Set(invColumns.map(c => c.name));
+    if (!invColumnNames.has('item_instance_id')) {
+      db.exec(`ALTER TABLE inventory ADD COLUMN item_instance_id TEXT`);
+      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 inventory 表');
+    }
+    db.exec(`
+      CREATE TABLE IF NOT EXISTS item_instances (
+        id TEXT PRIMARY KEY,
+        base_item_id TEXT NOT NULL,
+        quality TEXT NOT NULL,
+        affixes_json TEXT DEFAULT '[]',
+        fixed_effects_json TEXT DEFAULT '[]',
+        created_at INTEGER DEFAULT (unixepoch())
+      );
+      CREATE INDEX IF NOT EXISTS idx_inventory_item_instance ON inventory(item_instance_id);
+    `);
   }
 
   console.log('[DB] 資料庫初始化完成:', DB_PATH);
