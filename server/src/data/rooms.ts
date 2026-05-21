@@ -2,6 +2,20 @@
 
 import type { RoomDef, ZoneDef } from '@game/shared';
 
+const RESOURCE_NODE_ROOM_COUNT = 6;
+const RESOURCE_NODE_ROOM_SUFFIXES = [
+  'entry_claim',
+  'vein_path',
+  'herb_shelf',
+  'water_pocket',
+  'beast_scrape',
+  'relic_pit',
+];
+
+function resourceNodeRoomIds(zoneId: string): string[] {
+  return RESOURCE_NODE_ROOM_SUFFIXES.map(suffix => `${zoneId}_${suffix}`);
+}
+
 // ============================================================
 //  區域定義
 // ============================================================
@@ -293,7 +307,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 3,
     recommendedPartySize: [1, 3],
     primaryElements: ['none', 'dark'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('abandoned_mines'),
   },
   wildgrass_hills: {
     id: 'wildgrass_hills',
@@ -414,7 +428,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['fire', 'light'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('glass_dunes'),
   },
   underground_city: {
     id: 'underground_city',
@@ -535,7 +549,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 9,
     recommendedPartySize: [3, 4],
     primaryElements: ['fire', 'dark'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('obsidian_depths'),
   },
   starfall_crater: {
     id: 'starfall_crater',
@@ -550,7 +564,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 9,
     recommendedPartySize: [3, 4],
     primaryElements: ['light', 'lightning'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('starfall_crater'),
   },
   time_ruins: {
     id: 'time_ruins',
@@ -656,7 +670,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 5,
     recommendedPartySize: [2, 4],
     primaryElements: ['nature', 'fire'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('amber_forest'),
   },
   silverpine_range: {
     id: 'silverpine_range',
@@ -671,7 +685,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['ice', 'nature'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('silverpine_range'),
   },
   saltwind_flats: {
     id: 'saltwind_flats',
@@ -746,7 +760,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 2,
     recommendedPartySize: [1, 2],
     primaryElements: ['ice', 'nature'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('sapphire_lake'),
   },
   kingsroad_market: {
     id: 'kingsroad_market',
@@ -882,7 +896,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [2, 4],
     primaryElements: ['lightning', 'none'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('machine_graveyard'),
   },
   bloodsalt_coast: {
     id: 'bloodsalt_coast',
@@ -927,7 +941,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [2, 4],
     primaryElements: ['none', 'ice', 'lightning'],
-    rooms: [],
+    rooms: resourceNodeRoomIds('hollow_mountain'),
   },
   serpent_delta: {
     id: 'serpent_delta',
@@ -966,7 +980,47 @@ export const ZONES: Record<string, ZoneDef> = {
 //  房間定義
 // ============================================================
 
+function createResourceNodeRooms(): Record<string, RoomDef> {
+  const rooms: Record<string, RoomDef> = {};
+  for (const zone of Object.values(ZONES).filter(candidate => candidate.type === 'resource')) {
+    if (zone.rooms.length !== RESOURCE_NODE_ROOM_COUNT || !zone.rooms.every(roomId => roomId.startsWith(`${zone.id}_`))) {
+      continue;
+    }
+
+    zone.rooms.forEach((roomId, index) => {
+      const previous = zone.rooms[index - 1];
+      const next = zone.rooms[index + 1];
+      const exits = [
+        previous ? { direction: 'west' as const, targetRoomId: previous, description: '沿著標記繩回到上一處採集點' } : undefined,
+        next ? { direction: 'east' as const, targetRoomId: next, description: '順著資源痕跡前往下一處採集點' } : undefined,
+      ].filter((exit): exit is NonNullable<typeof exit> => !!exit);
+
+      rooms[roomId] = {
+        id: roomId,
+        name: `${zone.name}資源點 ${index + 1}`,
+        zone: zone.id,
+        description:
+          `${zone.name}的資源帶在這裡展開，地面、岩壁或水邊留下清楚的採集痕跡。` +
+          `潮濕空氣裡混著礦粉、草木、獸皮或古物土腥味，遠處仍能聽見怪物巡行與工具敲擊聲。` +
+          `道路以繩標和碎石堆標出方向，玩家可在此使用 gather 搜尋可用節點，也要留意高階區域的危險。`,
+        exits,
+        mapSymbol: '[R]',
+        mapX: index % 3,
+        mapY: Math.floor(index / 3),
+        guardianHints: {
+          creature: '採集痕跡旁有新鮮足印，附近可能有被資源氣味吸引的魔物。',
+          treasure: '碎石與草根之間偶爾閃過微光，像是尚未採完的材料層。',
+          spirit: '這片資源帶殘留著長年採集者的路標與低語，提醒旅人不要貪採過深。',
+        },
+      };
+    });
+  }
+  return rooms;
+}
+
 export const ROOMS: Record<string, RoomDef> = {
+
+  ...createResourceNodeRooms(),
 
   // ─── 新手村 (starter_village) ───────────────────────────
 

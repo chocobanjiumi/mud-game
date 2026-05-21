@@ -824,6 +824,19 @@ describe('Balance: Gathering definitions', () => {
       'archaeology',
     ]));
   });
+
+  it('gives every resource zone at least six gathering node rooms', () => {
+    const gathering = new GatheringManager();
+    const resourceZones = Object.values(ZONES).filter(zone => zone.type === 'resource');
+
+    for (const zone of resourceZones) {
+      const nodeRooms = Object.values(ROOMS).filter(room =>
+        room.zone === zone.id && gathering.getAvailableNodes(room, zone, 60).length > 0,
+      );
+
+      expect(nodeRooms.length, zone.id).toBeGreaterThanOrEqual(6);
+    }
+  });
 });
 
 describe('Balance: Crafting definitions', () => {
