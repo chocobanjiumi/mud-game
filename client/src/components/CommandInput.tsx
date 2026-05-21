@@ -7,6 +7,8 @@ const COMMON_COMMANDS = [
   'say', 'shout', 'whisper', 'help',
   'buy', 'sell', 'talk', 'quest',
   'rest', 'pickup', 'drop',
+  'search', 'inspect', 'open',
+  'activate', 'portals', 'travel', 'recall',
 ];
 
 interface CommandInputProps {

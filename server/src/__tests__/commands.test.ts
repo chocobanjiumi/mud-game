@@ -29,6 +29,7 @@ const aliasMap: Record<string, string> = {
 /** Valid commands matching the switch statement in commands.ts */
 const validCommands = new Set([
   'look', 'go', 'move', 'status', 'inventory', 'skills',
+  'search', 'inspect', 'open',
   'attack', 'skill', 'defend', 'escape',
   'equip', 'unequip', 'use', 'take', 'pick', 'drop',
   'say', 'talk', 'allocate', 'alloc', 'map', 'help',

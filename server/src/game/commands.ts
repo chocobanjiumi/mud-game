@@ -12,6 +12,7 @@ import {
   getEquippedItems,
   getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
   isZoneUnlocked, unlockPortal, unlockZone,
+  getDiscoveryCount, hasDiscovery, recordDiscovery,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -21,7 +22,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId, StatusEffectType, ZoneDef } from '@game/shared';
+import type { Character, ClassId, RoomDef, RoomExit, StatusEffectType, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -38,7 +39,7 @@ import { PET_DEFS } from './pet.js';
 import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
-import { getRoom, getZone, ZONES } from '../data/rooms.js';
+import { getRoom, getRoomsByZone, getZone, ZONES } from '../data/rooms.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
@@ -131,6 +132,9 @@ export function handleCommand(session: WsSession, input: string): void {
 
   switch (cmd) {
     case 'look': cmdLook(session, argStr); break;
+    case 'search': cmdSearch(session, argStr); break;
+    case 'inspect': cmdInspect(session, argStr); break;
+    case 'open': cmdOpen(session, argStr); break;
     case 'go': case 'move': cmdGo(session, argStr); break;
     case 'status': cmdStatus(session); break;
     case 'inventory': cmdInventory(session); break;
@@ -283,6 +287,7 @@ function cmdLook(session: WsSession, target?: string): void {
     sendNarrative(session.sessionId, '你身處一個未知的地方。');
     return;
   }
+  recordDiscovery(char.id, roomInfo.room.zone, roomInfo.room.id, 'visit_room', roomInfo.room.id);
 
   // 取得同房間的其他玩家
   const playersInRoom = world.getPlayersInRoom(char.roomId)
@@ -325,6 +330,167 @@ function cmdLook(session: WsSession, target?: string): void {
 
   // 觸發任務進度（拜訪地點）
   questMgr.updateProgress(char.id, 'visit', char.roomId);
+}
+
+function cmdSearch(session: WsSession, target?: string): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const room = getRoom(char.roomId);
+  if (!room) {
+    sendError(session.sessionId, '你找不到任何可搜尋的環境線索。');
+    return;
+  }
+
+  const normalizedTarget = target?.trim();
+  const discoveryTarget = normalizedTarget ? `${room.id}:${normalizeCommandTarget(normalizedTarget)}` : room.id;
+  recordDiscovery(char.id, room.zone, room.id, 'search', discoveryTarget);
+
+  if (normalizedTarget) {
+    const lower = normalizeCommandTarget(normalizedTarget);
+    if (lower === 'room' || lower === 'area' || room.name.includes(normalizedTarget) || room.id === lower) {
+      sendNarrative(session.sessionId, room.description);
+      sendSearchSummary(session, room);
+      return;
+    }
+
+    const ground = findGroundItem(room.id, normalizedTarget);
+    if (ground) {
+      const def = ITEM_DEFS[ground.itemId];
+      sendNarrative(session.sessionId, `你仔細搜尋「${def?.name ?? ground.itemId}」附近。${ground.description}`);
+      sendSystem(session.sessionId, `可用 take ${def?.name ?? ground.itemId} 撿取。`);
+      return;
+    }
+
+    if (findExit(room, normalizedTarget)) {
+      const exit = findExit(room, normalizedTarget)!;
+      sendSystem(session.sessionId, `你檢查${directionChinese(exit.direction)}側通路。${exit.description ?? '通路可通行，但仍需留意另一側的危險。'}`);
+      return;
+    }
+
+    const monster = world.findMonsterInRoom(room.id, normalizedTarget);
+    if (monster) {
+      sendSystem(session.sessionId, `你觀察到 ${monster.def.name} 正在附近活動。HP ${monster.hp}/${monster.maxHp}，等級 ${monster.def.level}。`);
+      return;
+    }
+
+    const npc = findNpcByName(normalizedTarget, room.id);
+    if (npc) {
+      sendNarrative(session.sessionId, `你在附近找到 ${npc.name}。${npc.description}`);
+      return;
+    }
+
+    sendSystem(session.sessionId, `你搜尋「${normalizedTarget}」，沒有發現明確線索。`);
+    return;
+  }
+
+  sendSearchSummary(session, room);
+}
+
+function cmdInspect(session: WsSession, target: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!target) {
+    sendError(session.sessionId, '用法：inspect <目標>');
+    return;
+  }
+
+  const room = getRoom(char.roomId);
+  if (!room) {
+    sendError(session.sessionId, '你身處未知地點，無法檢查目標。');
+    return;
+  }
+
+  recordDiscovery(char.id, room.zone, room.id, 'inspect', `${room.id}:${normalizeCommandTarget(target)}`);
+
+  const ground = findGroundItem(room.id, target);
+  if (ground) {
+    const def = ITEM_DEFS[ground.itemId];
+    sendSystem(session.sessionId, `── ${def?.name ?? ground.itemId} ──`);
+    sendNarrative(session.sessionId, def?.description ?? ground.description, 'item');
+    sendSystem(session.sessionId, `位置線索：${ground.description}`);
+    if (def?.useEffect?.type.startsWith('open_chest_')) {
+      sendSystem(session.sessionId, `這是可開啟的寶箱。先 take ${def.name}，再 open ${def.name}。`);
+    }
+    return;
+  }
+
+  const exit = findExit(room, target);
+  if (exit) {
+    sendSystem(session.sessionId, `── ${directionChinese(exit.direction)}側出口 ──`);
+    sendNarrative(session.sessionId, exit.description ?? '這條通路連往另一處房間，地面留下近期通行的痕跡。');
+    sendSystem(session.sessionId, `狀態：${exit.locked ? '上鎖' : '可通行'}；目標房間：${exit.targetRoomId}`);
+    return;
+  }
+
+  const lower = normalizeCommandTarget(target);
+  const inventoryItem = getInventory(char.id).find(item => {
+    const def = ITEM_DEFS[item.itemId];
+    return item.itemId === lower || def?.name === target || !!def?.name.toLowerCase().includes(lower);
+  });
+  if (inventoryItem) {
+    const def = ITEM_DEFS[inventoryItem.itemId];
+    sendSystem(session.sessionId, `── ${def?.name ?? inventoryItem.itemId} ──`);
+    sendNarrative(session.sessionId, def?.description ?? '背包中的物品。', 'item');
+    sendSystem(session.sessionId, `數量：${inventoryItem.quantity}；類型：${def?.type ?? 'unknown'}`);
+    return;
+  }
+
+  cmdLook(session, target);
+}
+
+function cmdOpen(session: WsSession, target: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!target) {
+    sendError(session.sessionId, '用法：open <目標>');
+    return;
+  }
+
+  const room = getRoom(char.roomId);
+  if (!room) {
+    sendError(session.sessionId, '你身處未知地點，無法開啟目標。');
+    return;
+  }
+
+  recordDiscovery(char.id, room.zone, room.id, 'open', `${room.id}:${normalizeCommandTarget(target)}`);
+
+  const exit = findExit(room, target);
+  if (exit) {
+    if (exit.locked) {
+      sendError(session.sessionId, exit.keyItemId ? `這個出口上鎖，需要特定鑰匙才能開啟。` : '這個出口上鎖，暫時無法開啟。');
+      return;
+    }
+    sendSystem(session.sessionId, `${directionChinese(exit.direction)}側出口已經打開。可用 go ${exit.direction} 通過。`);
+    return;
+  }
+
+  const inventoryItem = getInventory(char.id).find(item => {
+    const def = ITEM_DEFS[item.itemId];
+    return item.itemId === normalizeCommandTarget(target) || def?.name === target || !!def?.name.toLowerCase().includes(normalizeCommandTarget(target));
+  });
+  if (inventoryItem) {
+    const def = ITEM_DEFS[inventoryItem.itemId];
+    if (def?.useEffect?.type.startsWith('open_chest_')) {
+      cmdUse(session, def.name);
+      return;
+    }
+    sendError(session.sessionId, `「${def?.name ?? target}」不是可開啟的物品。`);
+    return;
+  }
+
+  const ground = findGroundItem(room.id, target);
+  if (ground) {
+    const def = ITEM_DEFS[ground.itemId];
+    if (def?.useEffect?.type.startsWith('open_chest_')) {
+      sendSystem(session.sessionId, `你需要先 take ${def.name}，再 open ${def.name}。`);
+      return;
+    }
+    sendError(session.sessionId, `「${def?.name ?? target}」無法直接開啟。`);
+    return;
+  }
+
+  sendError(session.sessionId, `找不到可開啟的「${target}」。`);
 }
 
 function cmdGo(session: WsSession, direction: string): void {
@@ -1533,12 +1699,20 @@ function cmdAllocate(session: WsSession, args: string[]): void {
 function cmdMap(session: WsSession): void {
   const char = getChar(session);
   if (!char) return;
+  const room = getRoom(char.roomId);
+  const zone = room ? getZone(room.zone) : undefined;
   const miniMap = world.generateMiniMap(char.roomId);
+  const visitedRooms = room ? getDiscoveryCount(char.id, room.zone, 'visit_room') : 0;
+  const totalRooms = room ? getRoomsByZone(room.zone).length : 0;
+  const percent = totalRooms > 0 ? Math.floor((visitedRooms / totalRooms) * 100) : 0;
   sendToSession(session.sessionId, 'map', {
     ascii: miniMap,
     currentRoom: char.roomId,
-    zone: 'world',
+    zone: room?.zone ?? 'world',
   });
+  if (room && zone) {
+    sendSystem(session.sessionId, `探索度：${zone.name} ${visitedRooms}/${totalRooms} (${percent}%)；類型 ${zone.type}，危險度 ${zone.dangerLevel}，PvP ${zone.pvpMode}，死亡懲罰 ${zone.deathPenalty}`);
+  }
 }
 
 function cmdRest(session: WsSession): void {
@@ -3303,6 +3477,9 @@ function cmdHelp(session: WsSession, topic?: string): void {
       title: '移動與探索',
       lines: [
         'look (l)            查看周圍環境',
+        'search [目標]        搜尋房間線索',
+        'inspect <目標>       檢查物件、出口或生物',
+        'open <目標>          開啟出口或寶箱',
         'go <方向> (n/s/e/w)  移動',
         'map                 顯示地圖',
         'activate portal     啟用目前區域傳送陣',
@@ -4553,6 +4730,61 @@ function getPortalCost(char: Character, zone: ZoneDef): number {
   if (zone.portal.cost === 0) return 0;
   if (char.level <= 10 && zone.levelRange[0] <= 10) return Math.min(zone.portal.cost, 5);
   return zone.portal.cost;
+}
+
+function normalizeCommandTarget(target: string): string {
+  return target.trim().toLowerCase();
+}
+
+function findGroundItem(roomId: string, target: string): GroundItem | undefined {
+  const lower = normalizeCommandTarget(target);
+  return getAvailableGroundItems(roomId).find(groundItem => {
+    const def = ITEM_DEFS[groundItem.itemId];
+    return groundItem.itemId.toLowerCase() === lower
+      || def?.name === target
+      || !!def?.name.toLowerCase().includes(lower);
+  });
+}
+
+function findExit(room: RoomDef, target: string): RoomExit | undefined {
+  const lower = normalizeCommandTarget(target);
+  const directionByChinese: Record<string, string> = {
+    北: 'north', 南: 'south', 東: 'east', 西: 'west', 上: 'up', 下: 'down',
+    north: 'north', south: 'south', east: 'east', west: 'west', up: 'up', down: 'down',
+  };
+  const direction = directionByChinese[target] ?? directionByChinese[lower];
+  return room.exits.find(exit => {
+    if (direction && exit.direction === direction) return true;
+    return exit.targetRoomId.toLowerCase() === lower
+      || !!exit.description?.toLowerCase().includes(lower);
+  });
+}
+
+function sendSearchSummary(session: WsSession, room: RoomDef): void {
+  const lines: string[] = [];
+  const exits = room.exits.map(exit => `${directionChinese(exit.direction)}${exit.locked ? '(鎖)' : ''}`);
+  if (exits.length > 0) lines.push(`出口：${exits.join('、')}`);
+
+  const groundItems = getAvailableGroundItems(room.id);
+  if (groundItems.length > 0) {
+    const itemNames = groundItems.map(groundItem => ITEM_DEFS[groundItem.itemId]?.name ?? groundItem.itemId);
+    lines.push(`可撿取物：${itemNames.join('、')}`);
+  }
+
+  const npcs = getNpcsByRoom(room.id);
+  if (npcs.length > 0) lines.push(`NPC：${npcs.map(npc => npc.name).join('、')}`);
+
+  const monsters = world.getAliveMonsters(room.id);
+  if (monsters.length > 0) lines.push(`怪物：${monsters.map(monster => monster.def.name).join('、')}`);
+
+  if (lines.length === 0) {
+    sendSystem(session.sessionId, '你仔細搜尋四周，暫時沒有找到可互動的物件。');
+    return;
+  }
+
+  sendSystem(session.sessionId, '── 搜尋結果 ──');
+  for (const line of lines) sendSystem(session.sessionId, line);
+  sendSystem(session.sessionId, '可用 inspect <目標> 查看細節，或 open <目標> 嘗試開啟。');
 }
 
 function getChar(session: WsSession): Character | null {

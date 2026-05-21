@@ -115,6 +115,17 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, portal_id)
     );
 
+    -- 探索紀錄：房間拜訪、搜尋、檢查、開啟等互動
+    CREATE TABLE IF NOT EXISTS character_discoveries (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      zone_id TEXT NOT NULL,
+      room_id TEXT NOT NULL,
+      discovery_type TEXT NOT NULL,
+      target_id TEXT NOT NULL,
+      discovered_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (character_id, discovery_type, target_id)
+    );
+
     -- 每日任務完成紀錄
     CREATE TABLE IF NOT EXISTS daily_quests (
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
@@ -353,6 +364,7 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_quest_progress_character ON quest_progress(character_id, status);
     CREATE INDEX IF NOT EXISTS idx_zone_unlocks_character ON character_zone_unlocks(character_id);
     CREATE INDEX IF NOT EXISTS idx_portal_unlocks_character ON character_portal_unlocks(character_id);
+    CREATE INDEX IF NOT EXISTS idx_discoveries_character_zone ON character_discoveries(character_id, zone_id);
   `);
 
   // ── Migration: 新增 enhancement_level 欄位 ──

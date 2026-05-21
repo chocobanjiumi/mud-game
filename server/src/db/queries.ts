@@ -242,6 +242,45 @@ export function isQuestCompleted(characterId: string, questId: string): boolean 
   return !!row;
 }
 
+export function recordDiscovery(
+  characterId: string,
+  zoneId: string,
+  roomId: string,
+  discoveryType: string,
+  targetId: string,
+): void {
+  getDb().prepare(`
+    INSERT OR IGNORE INTO character_discoveries
+      (character_id, zone_id, room_id, discovery_type, target_id)
+    VALUES (?, ?, ?, ?, ?)
+  `).run(characterId, zoneId, roomId, discoveryType, targetId);
+}
+
+export function getDiscoveryCount(characterId: string, zoneId: string, discoveryType?: string): number {
+  if (discoveryType) {
+    const row = getDb().prepare(`
+      SELECT COUNT(*) AS count
+      FROM character_discoveries
+      WHERE character_id = ? AND zone_id = ? AND discovery_type = ?
+    `).get(characterId, zoneId, discoveryType) as { count: number };
+    return row.count;
+  }
+
+  const row = getDb().prepare(`
+    SELECT COUNT(*) AS count
+    FROM character_discoveries
+    WHERE character_id = ? AND zone_id = ?
+  `).get(characterId, zoneId) as { count: number };
+  return row.count;
+}
+
+export function hasDiscovery(characterId: string, discoveryType: string, targetId: string): boolean {
+  const row = getDb().prepare(
+    'SELECT 1 FROM character_discoveries WHERE character_id = ? AND discovery_type = ? AND target_id = ?',
+  ).get(characterId, discoveryType, targetId);
+  return !!row;
+}
+
 // ─── Helpers ───
 
 /** 將資料庫列轉為 Character 物件 */
