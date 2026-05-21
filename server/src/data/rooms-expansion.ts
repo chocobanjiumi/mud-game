@@ -3628,4 +3628,546 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '最終封印不是單純關門，而是決定深淵、天界與凡間如何重新平衡。',
     },
   },
+
+  // ─── Area 13: 老舊農場 (Lv 3-8) ─────────────────────────
+
+  old_farmland_crossroads: {
+    id: 'old_farmland_crossroads',
+    name: '舊農路口',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_crossroads.png',
+    imagePrompt: '舊農路口 in old_farmland, entrance traffic node with muddy cart road, leaning signpost, wheat stubble, village path and soft cloudy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '村外舊農路在此分成數條泥濘小徑，歪斜木牌上還能辨認出穀倉、農舍和舊井的方向。田壟長滿雜草，乾裂車轍裡積著昨夜雨水，遠處傳來田鼠啃咬木板的細碎聲。這裡是老舊農場的入口與安全錨點，玩家可以從路口判斷各支線位置，也能沿西側小路回到新手村外圍農田。',
+    exits: [
+      { direction: 'west', targetRoomId: 'village_farmland', description: '沿小路回到新手村外圍農田' },
+      { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生' },
+      { direction: 'east', targetRoomId: 'old_farmland_rat_ditch', description: '東邊水溝傳來窸窣聲' },
+      { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[路]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '田鼠會從車轍旁的小洞鑽出，先清理洞口可減少伏擊。',
+      treasure: '路口木牌背面夾著一張被雨水泡軟的農場分區圖。',
+      spirit: '這裡曾是農夫每日集合分工的地方，木牌上的刻痕記錄著幾十年的收成。',
+    },
+  },
+
+  old_farmland_overgrown_field: {
+    id: 'old_farmland_overgrown_field',
+    name: '荒草麥田',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_overgrown_field.png',
+    imagePrompt: '荒草麥田 in old_farmland, overgrown wheat rows, tall weeds, rat holes, broken irrigation stakes and grey morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，玩家能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口' },
+      { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人' },
+      { direction: 'east', targetRoomId: 'old_farmland_collapsed_barn', description: '東方可見塌陷穀倉' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[麥]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '草浪異常晃動處通常藏著田鼠群。',
+      treasure: '灌溉樁下壓著一把生鏽但仍可用的鐮刀。',
+      spirit: '荒草沒有完全吞沒麥穗，似乎仍有微弱豐收祝福殘留。',
+    },
+  },
+
+  old_farmland_rat_ditch: {
+    id: 'old_farmland_rat_ditch',
+    name: '鼠患水溝',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_rat_ditch.png',
+    imagePrompt: '鼠患水溝 in old_farmland, muddy drainage ditch with rat tunnels, broken boards, weeds and dull water reflections, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農路東側的排水溝已被泥沙堵住，淺水散發潮濕腐味，兩岸木板被啃出許多缺口。田鼠沿著水溝築巢，把掉落穀粒和破布拖進洞中，讓整段溝渠像一條會蠕動的灰色帶子。玩家可清理堵塞處恢復灌溉，也能在漂浮雜物裡找到小型材料，但必須留意水面下的史萊姆泡泡。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_crossroads', description: '跨過木板回到路口' },
+      { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁' },
+      { direction: 'east', targetRoomId: 'old_farmland_irrigation_channel', description: '堵塞水流通往灌溉渠' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[溝]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '水面冒出綠色泡泡時通常代表史萊姆正在靠近。',
+      treasure: '堵塞木板後方卡著一只被泥包住的小錢袋。',
+      spirit: '排水溝若被清通，整片老農場會短暫恢復過去的水聲。',
+    },
+  },
+
+  old_farmland_scarecrow_watch: {
+    id: 'old_farmland_scarecrow_watch',
+    name: '稻草人看守地',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_scarecrow_watch.png',
+    imagePrompt: '稻草人看守地 in old_farmland, eerie scarecrow in tall wheat, crow feathers, patched coat, dusk field and hidden rat holes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人腳下有許多被啄開的田鼠洞和亮晶晶的小物，玩家若搜索可找到作物種子，也可能驚動盤旋的黑鴉群。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田' },
+      { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影' },
+      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '黑鴉會在稻草人影子變長時集體俯衝。',
+      treasure: '稻草人口袋裡藏著一包仍可發芽的老種子。',
+      spirit: '稻草人像是在執行最後命令，守護已經荒廢的收成。',
+    },
+  },
+
+  old_farmland_collapsed_barn: {
+    id: 'old_farmland_collapsed_barn',
+    name: '塌陷穀倉',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_collapsed_barn.png',
+    imagePrompt: '塌陷穀倉 in old_farmland, collapsed wooden barn with hay piles, broken beams, rat nests and shafts of dusty light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '穀倉屋頂塌了一半，陽光從破洞照進堆滿霉味的乾草與碎木樑。牆邊舊穀袋被咬破，穀粒灑了一地，引來田鼠、黑鴉和偶爾鑽入的野狼。穀倉後門通往南瓜地，東側有一條去舊井的小徑。玩家可在乾草堆裡找材料或任務物品，但不穩的木樑會在戰鬥中掉落。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_overgrown_field', description: '回到荒草麥田' },
+      { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過' },
+      { direction: 'east', targetRoomId: 'old_farmland_well', description: '舊井在穀倉東側' },
+      { direction: 'north', targetRoomId: 'old_farmland_pumpkin_patch', description: '後門外是南瓜地' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[倉]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '野狼會從倒塌後門進入，留意乾草堆後方的低吼。',
+      treasure: '最高的乾草堆裡可能藏著農夫留下的鑰匙圈。',
+      spirit: '穀倉仍保留豐收季的標記，只是歡慶聲已被鼠鳴取代。',
+    },
+  },
+
+  old_farmland_well: {
+    id: 'old_farmland_well',
+    name: '舊井',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_well.png',
+    imagePrompt: '舊井 in old_farmland, mossy stone well beside fields, cracked bucket, dark water, weeds and pale afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '田邊舊井的石圈長滿青苔，吊桶繩索已經斷裂，只剩半截泡在黑水裡。靠近井口能聽見水滴聲和微弱回音，像有人在井底敲擊石壁。井旁泥地有野獸腳印和孩子刻下的舊塗鴉，顯示這裡曾是農場居民取水與閒聊的地方。如今井水被魔化作物根鬚污染，偶爾會冒出綠色史萊姆。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_collapsed_barn', description: '小徑回到塌陷穀倉' },
+      { direction: 'south', targetRoomId: 'old_farmland_irrigation_channel', description: '井水流入灌溉渠' },
+      { direction: 'north', targetRoomId: 'old_farmland_mildew_orchard', description: '北方是霉斑果園' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '井水變綠時史萊姆會從井壁滑出。',
+      treasure: '斷裂吊桶底部卡著一枚舊銅戒。',
+      spirit: '井底敲擊聲可能來自被根鬚困住的舊水脈。',
+    },
+  },
+
+  old_farmland_pumpkin_patch: {
+    id: 'old_farmland_pumpkin_patch',
+    name: '膨脹南瓜地',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_pumpkin_patch.png',
+    imagePrompt: '膨脹南瓜地 in old_farmland, oversized pumpkins among vines, gnawed gourds, crow shadows and damp orange light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '穀倉後方的南瓜地長得異常茂盛，藤蔓爬過田埂，幾顆南瓜大得像小木桶。表皮有被啃咬和抓裂的痕跡，裂縫裡散出甜膩又帶霉味的氣息，引來田鼠和黑鴉爭食。南瓜地可作為採集點，玩家能取得食材或任務種子，但過度膨脹的南瓜受到魔力刺激，碰撞時可能噴出刺激性孢子。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_collapsed_barn', description: '穿過後門回到穀倉' },
+      { direction: 'east', targetRoomId: 'old_farmland_mildew_orchard', description: '藤蔓延向果園' },
+      { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[瓜]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '膨脹南瓜破裂會驚動附近田鼠。',
+      treasure: '最大南瓜底下壓著一只生鏽小盒。',
+      spirit: '南瓜藤像在守住地下入口，似乎被舊農場意志引導。',
+    },
+  },
+
+  old_farmland_mildew_orchard: {
+    id: 'old_farmland_mildew_orchard',
+    name: '霉斑果園',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_mildew_orchard.png',
+    imagePrompt: '霉斑果園 in old_farmland, old orchard with spotted fruit, bent apple trees, crow nests and green mildew haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊果園的蘋果樹和梨樹彎得很低，枝頭掛滿帶霉斑的果實，地上腐果吸引黑鴉與田鼠。樹幹上有農夫刻下的採收記號，旁邊卻長出不自然的綠色菌膜，顯示井水污染已蔓延到根部。玩家可在果園採集尚未腐壞的果子或藥用樹皮，也能找到通往蜂箱行列與舊井的小路。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_pumpkin_patch', description: '藤蔓小路回到南瓜地' },
+      { direction: 'south', targetRoomId: 'old_farmland_well', description: '樹根坡道下到舊井' },
+      { direction: 'east', targetRoomId: 'old_farmland_beehive_rows', description: '果樹間傳來蜂群嗡鳴' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[果]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '黑鴉會從高枝俯衝，站在樹幹旁可限制角度。',
+      treasure: '仍保持金色的果實可能帶有舊祝福。',
+      spirit: '果園霉斑沿著水脈擴散，源頭可能不只舊井。',
+    },
+  },
+
+  old_farmland_granary: {
+    id: 'old_farmland_granary',
+    name: '小糧倉',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_granary.png',
+    imagePrompt: '小糧倉 in old_farmland, small grain storage hut with sacks, cracked floor, rat nests and dusty sunbeam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '水渠旁的小糧倉比主穀倉完整，但木門已被啃出洞，地板下傳來密集奔跑聲。牆邊堆著幾袋發霉穀物，最上方的袋子被人重新縫過，像是有人最近翻找過。糧倉可作為任務與資源點，玩家能回收穀袋、種子或老農具；若踩到鬆動地板，藏在底下的田鼠群會立刻湧出。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_irrigation_channel', description: '木梯回到灌溉渠旁' },
+      { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍' },
+      { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '東側有一間工具棚' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 4, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[糧]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '地板下聲音越密集，代表田鼠越接近出口。',
+      treasure: '重新縫過的穀袋裡可能藏著老農夫的帳本。',
+      spirit: '小糧倉記錄著歉收年份，最近一頁卻被撕掉了。',
+    },
+  },
+
+  old_farmland_irrigation_channel: {
+    id: 'old_farmland_irrigation_channel',
+    name: '乾涸灌溉渠',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_irrigation_channel.png',
+    imagePrompt: '乾涸灌溉渠 in old_farmland, cracked irrigation channel with weeds, slime puddles, wooden sluice and muddy banks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的拖痕，表示史萊姆和田鼠都把這裡當成安全通道。玩家若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_rat_ditch', description: '水溝堵塞處在西邊' },
+      { direction: 'north', targetRoomId: 'old_farmland_well', description: '水渠源頭連到舊井' },
+      { direction: 'east', targetRoomId: 'old_farmland_granary', description: '水渠旁有小糧倉' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[渠]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '史萊姆會藏在最綠的水窪中。',
+      treasure: '木閘旁有被水沖出的銅製水位牌。',
+      spirit: '水渠修復後，農場短暫像重新活過來一樣發出水聲。',
+    },
+  },
+
+  old_farmland_abandoned_farmhouse: {
+    id: 'old_farmland_abandoned_farmhouse',
+    name: '荒廢農舍',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_abandoned_farmhouse.png',
+    imagePrompt: '荒廢農舍 in old_farmland, abandoned farmhouse with sagging porch, dusty table, broken windows and creeping vines, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉' },
+      { direction: 'down', targetRoomId: 'old_farmland_root_cellar', description: '地板下有一座根窖' },
+      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[舍]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '地板下的抓聲通常是田鼠，但偶爾會有史萊姆黏在樑柱上。',
+      treasure: '全家畫像後方藏著農舍鑰匙和半張地契。',
+      spirit: '餐桌擺設保持離家當晚的樣子，暗示一家人走得非常匆忙。',
+    },
+  },
+
+  old_farmland_beehive_rows: {
+    id: 'old_farmland_beehive_rows',
+    name: '蜂箱行列',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_beehive_rows.png',
+    imagePrompt: '蜂箱行列 in old_farmland, rows of old beehives under fruit trees, buzzing insects, wax frames and golden haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。玩家可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_mildew_orchard', description: '果樹小路回到霉斑果園' },
+      { direction: 'south', targetRoomId: 'old_farmland_chicken_coop', description: '蜂箱盡頭是破雞舍' },
+      { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[蜂]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '黑鴉會啄破蜂箱引發混亂，先趕走牠們較安全。',
+      treasure: '最舊蜂箱底部有一塊凝固金色蜂蠟。',
+      spirit: '蜂箱仍按古老節氣排列，可能與豐收儀式有關。',
+    },
+  },
+
+  old_farmland_toolshed: {
+    id: 'old_farmland_toolshed',
+    name: '破工具棚',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_toolshed.png',
+    imagePrompt: '破工具棚 in old_farmland, broken toolshed with rusty hoes, saws, seed boxes, cracked lantern and dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。這裡適合放置修理、採集與任務道具，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_granary', description: '回到小糧倉' },
+      { direction: 'north', targetRoomId: 'old_farmland_chicken_coop', description: '工具棚後方是雞舍' },
+      { direction: 'east', targetRoomId: 'old_farmland_cart_shortcut', description: '舊車道從棚外繞過' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '工具箱裡有史萊姆黏液痕，打開前先聽聲音。',
+      treasure: '年份最早的種子盒裡有保存良好的古老種子。',
+      spirit: '工具棚記錄農夫日常，修好它等於修復農場的第一步。',
+    },
+  },
+
+  old_farmland_moonlit_pasture: {
+    id: 'old_farmland_moonlit_pasture',
+    name: '月光牧草地',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_moonlit_pasture.png',
+    imagePrompt: '月光牧草地 in old_farmland, quiet pasture with broken fence, silver grass, wolf tracks and pale moonlit clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農場東北角是一片被破柵欄圍住的牧草地，草葉在白天也泛著微弱銀光，像記住了長年照落的月色。地上有羊蹄印、野狼腳印和拖曳乾草的痕跡，顯示過去圈養的牲畜早已不在。這裡視野開闊，適合低等精英遭遇；玩家可沿牧草地通往防風樹列或收成儀式圈。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_windbreak_trees', description: '草坡回到防風樹列' },
+      { direction: 'south', targetRoomId: 'old_farmland_chicken_coop', description: '破柵欄通往雞舍' },
+      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '牧草盡頭有石界碑' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[牧]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '野狼會沿破柵欄繞側，背靠水槽可避免被包夾。',
+      treasure: '銀色草叢裡有被遺落的牧鈴。',
+      spirit: '牧草地像被固定在某個月夜，可能與北方石界碑有關。',
+    },
+  },
+
+  old_farmland_root_cellar: {
+    id: 'old_farmland_root_cellar',
+    name: '地下根窖',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_root_cellar.png',
+    imagePrompt: '地下根窖 in old_farmland, underground root cellar with shelves, turnips, creeping roots, damp lantern light and slime puddles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
+    exits: [
+      { direction: 'up', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '木梯回到荒廢農舍' },
+      { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
+    ],
+    monsters: [
+      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[窖]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '水窪沒有倒影時通常藏著史萊姆。',
+      treasure: '密封箱裡可能保存農夫一家最後的求救信。',
+      spirit: '根鬚向著收成儀式圈生長，像在吸取那裡的力量。',
+    },
+  },
+
+  old_farmland_chicken_coop: {
+    id: 'old_farmland_chicken_coop',
+    name: '破雞舍',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_chicken_coop.png',
+    imagePrompt: '破雞舍 in old_farmland, ruined chicken coop with straw nests, broken wire, feathers, rats and cloudy farmyard light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚、蜂箱行列和牧草地，是農場東側動線的交會點。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。',
+    exits: [
+      { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
+      { direction: 'south', targetRoomId: 'old_farmland_toolshed', description: '破網通往工具棚' },
+      { direction: 'north', targetRoomId: 'old_farmland_beehive_rows', description: '蜂箱行列在北側' },
+      { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '破柵欄後是牧草地' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[雞]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '黑鴉會從屋樑投下碎木，先清理高處較安全。',
+      treasure: '最深巢箱裡藏著一枚被羽毛包住的舊徽章。',
+      spirit: '雞舍仍留有每天清晨開門的刮痕，顯示農場曾非常規律。',
+    },
+  },
+
+  old_farmland_windbreak_trees: {
+    id: 'old_farmland_windbreak_trees',
+    name: '防風樹列',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_windbreak_trees.png',
+    imagePrompt: '防風樹列 in old_farmland, row of old windbreak trees, tangled roots, crow nests, fence shadows and green field haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農場北側種著一排老防風樹，樹幹被歲月吹得向同一方向傾斜，根部盤住石界碑與蜂箱小路。鳥巢、乾草和舊繩子掛在枝間，黑鴉會利用樹影遮蔽行蹤。這裡能阻擋平原強風，也把農場和更北方荒野分隔開來。玩家可調查根部裂縫，找到石界碑與牧草地之間的隱藏路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列' },
+      { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '樹影外是月光牧草地' },
+      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '樹根纏住一座石界碑' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 45 },
+    ],
+    mapSymbol: '[樹]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '黑鴉會在樹影最密處伏擊。',
+      treasure: '樹根下埋著一串生鏽風鈴。',
+      spirit: '防風樹列像一堵活牆，守住農場最後邊界。',
+    },
+  },
+
+  old_farmland_stone_marker: {
+    id: 'old_farmland_stone_marker',
+    name: '舊石界碑',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_stone_marker.png',
+    imagePrompt: '舊石界碑 in old_farmland, ancient boundary stone wrapped in roots, faded harvest runes, pasture wind and crow shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。界碑周圍的牧草呈環形倒伏，像有什麼在夜裡繞著它巡行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列' },
+      { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '界碑旁草坡通向牧草地' },
+      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '倒伏草痕指向收成圓陣' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+    ],
+    mapSymbol: '[碑]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '野狼會沿倒伏草圈奔跑，預判牠們會回到界碑旁。',
+      treasure: '苔蘚下刻著一段舊農場地契密語。',
+      spirit: '界碑曾用來界定土地，如今像在界定某種封印範圍。',
+    },
+  },
+
+  old_farmland_harvest_circle: {
+    id: 'old_farmland_harvest_circle',
+    name: '收成圓陣',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_harvest_circle.png',
+    imagePrompt: '收成圓陣 in old_farmland, eerie crop circle of wheat and pumpkins, old harvest runes, scarecrow shadows and moonlit soil, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
+    exits: [
+      { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地' },
+      { direction: 'east', targetRoomId: 'old_farmland_stone_marker', description: '倒伏草痕回到石界碑' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+    ],
+    mapSymbol: '[陣]',
+    mapX: 1,
+    mapY: 4,
+    guardianHints: {
+      creature: '圓陣中心的鐮刀反光時，附近怪物會一起被吸引過來。',
+      treasure: '生鏽鐮刀可能是啟動或關閉豐收祝福的關鍵道具。',
+      spirit: '收成圓陣像一場沒有完成的儀式，等待有人決定祝福要延續還是停止。',
+    },
+  },
+
+  old_farmland_cart_shortcut: {
+    id: 'old_farmland_cart_shortcut',
+    name: '舊車道捷徑',
+    zone: 'old_farmland' as RoomDef['zone'],
+    image: 'old_farmland_cart_shortcut.png',
+    imagePrompt: '舊車道捷徑 in old_farmland, shortcut cart track with broken wagon, muddy ruts, low fences and village road light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口、工具棚和村外小路，也能作為低等玩家撤退時的安全路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口' },
+      { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '車輪印通向破工具棚' },
+      { direction: 'west', targetRoomId: 'village_outskirts', description: '舊車道繞回村外小路' },
+    ],
+    monsters: [
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[捷]',
+    mapX: 0,
+    mapY: -1,
+    guardianHints: {
+      creature: '木車底下常有田鼠躲藏，推車前先敲擊木板。',
+      treasure: '破木箱裡可能還有未送出的作物訂單。',
+      spirit: '捷徑保留農場與村莊的連結，清理它能讓老路重新被人使用。',
+    },
+  },
 };
