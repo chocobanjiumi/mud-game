@@ -8,6 +8,7 @@ import {
 } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import { nanoid } from 'nanoid';
+import { recordAuctionSale, recordGoldSpent } from './economy-stats.js';
 
 const AUCTION_LISTING_FEE_RATE = 0.05;
 const AUCTION_SALE_TAX_RATE = 0.08;
@@ -124,6 +125,7 @@ export class AuctionManager {
     // Deduct fee and item
     seller.gold -= listingFee;
     saveCharacter(seller);
+    recordGoldSpent(listingFee);
     removeInventoryItem(sellerId, itemId, count, slot.itemInstanceId);
 
     const now = Math.floor(Date.now() / 1000);
@@ -293,6 +295,8 @@ export class AuctionManager {
       const seller = getCharacterById(auction.seller_id);
       const saleTax = getAuctionSaleTax(auction.buyout_price);
       const sellerProceeds = auction.buyout_price - saleTax;
+      recordGoldSpent(saleTax);
+      recordAuctionSale(auction.buyout_price);
       if (seller) {
         seller.gold += sellerProceeds;
         saveCharacter(seller);
@@ -420,6 +424,8 @@ export class AuctionManager {
 
         const seller = getCharacterById(auction.seller_id);
         const saleTax = getAuctionSaleTax(auction.current_bid);
+        recordGoldSpent(saleTax);
+        recordAuctionSale(auction.current_bid);
         if (seller) {
           seller.gold += auction.current_bid - saleTax;
           saveCharacter(seller);

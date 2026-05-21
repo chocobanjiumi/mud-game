@@ -11,6 +11,7 @@ import {
   type SkillTag,
 } from '@game/shared';
 import { consumeGatheredMaterialQualities } from './gathering.js';
+import { recordGoldSpent } from './economy-stats.js';
 
 // ============================================================
 //  型別定義
@@ -735,6 +736,7 @@ export class CraftingManager {
     // 消耗材料
     char.gold -= goldCost;
     saveCharacter(char);
+    recordGoldSpent(goldCost);
     for (const mat of recipe.materials) {
       removeInventoryItem(characterId, mat.itemId, mat.count);
     }

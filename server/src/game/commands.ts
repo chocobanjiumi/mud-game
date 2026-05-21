@@ -47,6 +47,7 @@ import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
+import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -1563,6 +1564,7 @@ function cmdLoot(session: WsSession, target: string): void {
 
     if (assignedLoot.gold > 0) {
       recipient.gold += assignedLoot.gold;
+      recordGoldProduced(assignedLoot.gold);
       sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得金幣 +${assignedLoot.gold}`);
     }
 
@@ -5283,6 +5285,7 @@ function payTravelCost(char: Character, node: TravelNodeDef): { ok: true; messag
     return { ok: false, message: `金幣不足。需要 ${amount} 金幣。` };
   }
   char.gold -= amount;
+  recordGoldSpent(amount);
   return { ok: true, message: `花費 ${amount} 金幣。` };
 }
 

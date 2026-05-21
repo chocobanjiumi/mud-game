@@ -8,6 +8,7 @@ import {
 } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import type { Character, EquipSlot } from '@game/shared';
+import { recordEnhanceMaterialConsumed, recordGoldSpent } from './economy-stats.js';
 
 // ============================================================
 //  常數
@@ -156,6 +157,7 @@ export function upgradeItem(characterId: string, slot: EquipSlot = 'weapon'): Up
   // 扣除金幣
   char.gold -= cost;
   saveCharacter(char);
+  recordGoldSpent(cost);
 
   // 消耗強化石
   if (nextLevel <= 10) {
@@ -163,6 +165,7 @@ export function upgradeItem(characterId: string, slot: EquipSlot = 'weapon'): Up
   } else {
     removeInventoryItem(characterId, 'advanced_enhance_stone', 1);
   }
+  recordEnhanceMaterialConsumed(1);
 
   // 消耗幸運符（如果有）
   if (hasLuckyCharm) {

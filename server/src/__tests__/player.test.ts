@@ -14,6 +14,18 @@ import {
   reforgeItemQuality,
   rerollItemAffix,
 } from '../game/item-reforge.js';
+import {
+  ensureEconomyStatsTables,
+  getAverageAuctionSalePrice,
+  getAveragePlayerGold,
+  getDailyEconomyStats,
+  getHighQualityEquipmentCirculation,
+  recordAuctionSale,
+  recordEnhanceMaterialConsumed,
+  recordGoldProduced,
+  recordGoldSpent,
+  recordReforgeMaterialConsumed,
+} from '../game/economy-stats.js';
 
 // ============================================================
 //  Tests
@@ -847,6 +859,51 @@ describe('item instances in player economies', () => {
     const received = getInventory('trade-instance-to').find(item => item.itemInstanceId === 'inst_trade_spear');
     expect(received?.quality).toBe('fine');
     expect(received?.affixes?.[0]?.id).toBe('numeric_str_t1');
+  });
+});
+
+describe('economy statistics', () => {
+  beforeAll(() => {
+    initDb();
+    ensureEconomyStatsTables();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('tracks daily gold production, spending, auction averages, and material consumption', () => {
+    const date = '2099-01-01';
+
+    recordGoldProduced(125, date);
+    recordGoldSpent(45, date);
+    recordAuctionSale(100, date);
+    recordAuctionSale(300, date);
+    recordEnhanceMaterialConsumed(2, date);
+    recordReforgeMaterialConsumed(3, date);
+
+    const stats = getDailyEconomyStats(date);
+    expect(stats.goldProduced).toBe(125);
+    expect(stats.goldSpent).toBe(45);
+    expect(stats.auctionSalesTotal).toBe(400);
+    expect(stats.auctionSalesCount).toBe(2);
+    expect(stats.enhanceMaterialsConsumed).toBe(2);
+    expect(stats.reforgeMaterialsConsumed).toBe(3);
+    expect(getAverageAuctionSalePrice(date)).toBe(200);
+  });
+
+  it('reports average player gold and high-quality equipment circulation', () => {
+    insertTestCharacter('economy-average-a', 'EconomyAverageA', 100);
+    insertTestCharacter('economy-average-b', 'EconomyAverageB', 300);
+    addInventoryItem('economy-average-a', 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_economy_rare_spear',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [],
+    });
+
+    expect(getAveragePlayerGold()).toBeGreaterThan(0);
+    expect(getHighQualityEquipmentCirculation()).toBeGreaterThan(0);
   });
 });
 

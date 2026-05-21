@@ -15,6 +15,7 @@ import {
   saveCharacter,
   upsertItemInstance,
 } from '../db/queries.js';
+import { recordGoldSpent, recordReforgeMaterialConsumed } from './economy-stats.js';
 
 const AFFIX_REROLL_COST_ITEM = 'affix_essence';
 const QUALITY_REFORGE_COST_ITEM = 'reforge_crystal';
@@ -186,8 +187,10 @@ export function reforgeItemQuality(characterId: string, itemInstanceId: string):
   }
   char.gold -= goldCost;
   saveCharacter(char);
+  recordGoldSpent(goldCost);
   for (const material of requiredMaterials) {
     consumeMaterial(characterId, material.itemId, material.count);
+    recordReforgeMaterialConsumed(material.count);
   }
 
   const reforged = reforgeEquipmentInstanceQuality(baseItem, {

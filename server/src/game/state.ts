@@ -36,6 +36,7 @@ import { SkillTreeManager } from './skill-tree.js';
 import { MarketManager } from './market.js';
 import { GuildManager } from './guild.js';
 import { DailyRewardManager } from './daily-reward.js';
+import { ensureEconomyStatsTables, recordGoldProduced } from './economy-stats.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills,
@@ -149,6 +150,7 @@ export function initGameSystems(): void {
 
   // 每日簽到系統
   dailyRewardMgr.ensureTables();
+  ensureEconomyStatsTables();
 
   // DungeonManager：載入首通紀錄
   dungeonMgr.init();
@@ -277,6 +279,7 @@ export function initGameSystems(): void {
             // 金幣
             if (drops.gold > 0) {
               freshChar.gold += drops.gold;
+              recordGoldProduced(drops.gold);
             }
             saveCharacter(freshChar);
             // 物品掉落
