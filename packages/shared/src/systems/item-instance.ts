@@ -1,6 +1,7 @@
 import { ITEM_DEFS } from '../constants/items.js';
 import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats } from '../types/item.js';
 import { toBaseEquipmentDef } from '../types/item.js';
+import type { SkillTag } from '../types/skill.js';
 
 export type ItemQuality = 'normal' | 'fine' | 'rare' | 'epic' | 'legendary' | 'mythic';
 export type AffixTier = 'T1' | 'T2' | 'T3' | 'T4' | 'T5';
@@ -13,6 +14,7 @@ export interface AffixDef {
   tier: AffixTier;
   appliesTo: EquipSlot[];
   classTags?: string[];
+  skillTags?: SkillTag[];
   stats?: Partial<ItemStats>;
   behavior?: string;
 }
@@ -80,11 +82,11 @@ export const AFFIX_POOLS: Record<AffixPool, AffixDef[]> = {
     { id: 'combat_overpower_t5', name: '破滅', pool: 'combat', tier: 'T5', appliesTo: ['weapon', 'ring'], stats: { atk: 12 } },
   ],
   behavior: [
-    { id: 'behavior_guard_t1', name: '護持', pool: 'behavior', tier: 'T1', appliesTo: ['body', 'belt'], behavior: 'reduce_first_hit' },
-    { id: 'behavior_focus_t2', name: '專注', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], behavior: 'reduce_resource_cost' },
-    { id: 'behavior_swift_t3', name: '疾行', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], behavior: 'bonus_after_dodge' },
-    { id: 'behavior_counter_t4', name: '反擊', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], behavior: 'counter_on_block' },
-    { id: 'behavior_execute_t5', name: '處決', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], behavior: 'execute_low_hp' },
+    { id: 'behavior_guard_t1', name: '護持', pool: 'behavior', tier: 'T1', appliesTo: ['body', 'belt'], skillTags: ['defense'], behavior: 'reduce_first_hit' },
+    { id: 'behavior_focus_t2', name: '專注', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], skillTags: ['resource'], behavior: 'reduce_resource_cost' },
+    { id: 'behavior_swift_t3', name: '疾行', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], skillTags: ['mobility'], behavior: 'bonus_after_dodge' },
+    { id: 'behavior_counter_t4', name: '反擊', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], skillTags: ['control'], behavior: 'counter_on_block' },
+    { id: 'behavior_execute_t5', name: '處決', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], skillTags: ['burst'], behavior: 'execute_low_hp' },
   ],
   class: [
     { id: 'class_swordsman_t2', name: '劍士節奏', pool: 'class', tier: 'T2', appliesTo: ['weapon', 'ring'], classTags: ['swordsman', 'knight', 'berserker', 'sword_saint'], stats: { atk: 5 } },

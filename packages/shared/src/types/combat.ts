@@ -1,6 +1,6 @@
 // 戰鬥型別定義
 
-import type { ElementType, StatusEffect } from './skill.js';
+import type { ElementType, SkillTag, StatusEffect } from './skill.js';
 import type { GuardianHints, ResourceType } from './player.js';
 
 export type CombatPhase = 'encounter' | 'action_select' | 'resolve' | 'end';
@@ -97,6 +97,7 @@ export interface MonsterDef {
   behaviorType?: MonsterBehaviorType;
   phaseRules?: MonsterPhaseRule[];
   telegraphActions?: MonsterTelegraphAction[];
+  mechanicSkillTags?: SkillTag[];
   description: string;
   isBoss: boolean;
   isElite?: boolean;

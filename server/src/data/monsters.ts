@@ -57,6 +57,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'small_mp_potion', chance: 0.08, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
+    mechanicSkillTags: ['control', 'interrupt'],
     description: '從暗處飛出的小蝙蝠，雖然體型不大，但尖銳的叫聲足以讓人頭疼。靈活的飛行讓它不太容易被擊中。',
     isBoss: false,
     guardianHints: {
@@ -120,6 +121,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'small_hp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
+    mechanicSkillTags: ['interrupt', 'dispel'],
     description: '灰色毛皮的野狼，目光銳利地注視著獵物。它們通常成群出沒，用嚎叫聲召喚同伴。落單時依然是危險的對手。',
     isBoss: false,
     guardianHints: {
@@ -182,6 +184,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'antidote', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
+    mechanicSkillTags: ['control', 'defense'],
     description: '身披翠綠鱗片的毒蛇，吐著鮮紅的信子。它的毒牙能注入令人痛苦的毒素，被咬到後毒液會緩慢侵蝕身體。',
     isBoss: false,
     guardianHints: {

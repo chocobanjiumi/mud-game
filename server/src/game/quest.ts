@@ -1,6 +1,6 @@
 // 任務系統 — QuestManager
 
-import type { Character } from '@game/shared';
+import type { Character, SkillTag } from '@game/shared';
 import { sendToCharacter } from '../ws/handler.js';
 import { getDb } from '../db/schema.js';
 import { addItemToInventory } from '../db/database.js';
@@ -32,6 +32,7 @@ export interface QuestObjective {
   targetId: string;
   targetName: string;
   required: number;
+  requiredSkillTags?: SkillTag[];
 }
 
 export interface QuestReward {
@@ -134,7 +135,7 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     type: 'class_change',
     levelReq: 10,
     objectives: [
-      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1 },
+      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['physical', 'single_target'] },
     ],
     rewards: {
       exp: 300,
@@ -155,7 +156,7 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     type: 'class_change',
     levelReq: 10,
     objectives: [
-      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1 },
+      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['magical', 'aoe'] },
     ],
     rewards: {
       exp: 300,
@@ -176,7 +177,7 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     type: 'class_change',
     levelReq: 10,
     objectives: [
-      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1 },
+      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['physical', 'single_target'] },
     ],
     rewards: {
       exp: 300,
@@ -197,7 +198,7 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     type: 'class_change',
     levelReq: 10,
     objectives: [
-      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1 },
+      { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['heal', 'support'] },
     ],
     rewards: {
       exp: 300,

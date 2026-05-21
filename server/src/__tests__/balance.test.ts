@@ -32,6 +32,7 @@ import {
   getLearnableSkills,
 } from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
+import { QUEST_DEFS } from '../game/quest.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================
@@ -689,6 +690,23 @@ describe('Balance: Skill metadata', () => {
         classId,
       ).toBe(true);
     }
+  });
+
+  it('allows skill tags to be referenced by monsters, affixes, and quest objectives', () => {
+    const knownSkillTags = new Set(Object.values(SKILL_DEFS).flatMap(skill => skill.tags));
+    const referencedTags = [
+      ...Object.values(MONSTER_DEFS).flatMap(monster => monster.mechanicSkillTags ?? []),
+      ...Object.values(AFFIX_POOLS).flatMap(pool => pool.flatMap(affix => affix.skillTags ?? [])),
+      ...Object.values(QUEST_DEFS).flatMap(quest => quest.objectives.flatMap(objective => objective.requiredSkillTags ?? [])),
+    ];
+
+    expect(referencedTags.length).toBeGreaterThan(0);
+    expect(referencedTags.every(tag => knownSkillTags.has(tag)), referencedTags.join(',')).toBe(true);
+    expect(Object.values(MONSTER_DEFS).some(monster => (monster.mechanicSkillTags?.length ?? 0) > 0)).toBe(true);
+    expect(Object.values(AFFIX_POOLS).some(pool => pool.some(affix => (affix.skillTags?.length ?? 0) > 0))).toBe(true);
+    expect(Object.values(QUEST_DEFS).some(quest =>
+      quest.objectives.some(objective => (objective.requiredSkillTags?.length ?? 0) > 0),
+    )).toBe(true);
   });
 
   it('keeps quest unlock filtering available for learnable skill queries', () => {
