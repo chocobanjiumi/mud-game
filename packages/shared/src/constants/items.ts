@@ -372,6 +372,13 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 10,
     equipSlot: 'necklace', stats: { int: 3, mp: 20 },
   },
+  adventurer_belt: {
+    id: 'adventurer_belt', name: '冒險者腰帶', type: 'accessory',
+    description: '結實耐用的工具腰帶，掛扣能固定藥瓶、短刀與採集工具。雖然樸素，卻能讓冒險者在旅途中更從容地整理裝備。',
+    buyPrice: 80, sellPrice: 40,
+    stackable: false, maxStack: 1, levelReq: 1,
+    equipSlot: 'belt', stats: { hp: 10, vit: 1 },
+  },
 
   // ============ 長槍 (Spear) - 劍士/騎士 ============
   spear_basic: {

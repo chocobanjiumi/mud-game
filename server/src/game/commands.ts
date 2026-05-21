@@ -3610,24 +3610,22 @@ function cmdCraft(session: WsSession, args: string[]): void {
     case 'forge': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft forge <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId);
+      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
-        const recipe = craftingMgr.getRecipeInfo(recipeId);
-        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'forge');
+        questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
+        classQuest2Mgr.onCraft(char.id, result.resultItemId ?? recipeId, 'forge');
       }
       break;
     }
     case 'alchemy': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft alchemy <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId);
+      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
-        const recipe = craftingMgr.getRecipeInfo(recipeId);
-        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'alchemy');
+        questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
+        classQuest2Mgr.onCraft(char.id, result.resultItemId ?? recipeId, 'alchemy');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'alchemy', craftingMgr.getCraftingLevel(char.id, 'alchemy').level);
       }
       break;
@@ -3635,12 +3633,11 @@ function cmdCraft(session: WsSession, args: string[]): void {
     case 'cook': {
       const recipeId = args[1];
       if (!recipeId) { sendError(session.sessionId, '用法：craft cook <配方ID>'); return; }
-      const result = craftingMgr.craft(char.id, recipeId);
+      const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(2)));
       sendSystem(session.sessionId, result.message);
       if (result.crafted) {
-        const recipe = craftingMgr.getRecipeInfo(recipeId);
-        questMgr.updateProgress(char.id, 'craft_item', recipe?.result?.itemId ?? recipeId);
-        classQuest2Mgr.onCraft(char.id, recipe?.result?.itemId ?? recipeId, 'cooking');
+        questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
+        classQuest2Mgr.onCraft(char.id, result.resultItemId ?? recipeId, 'cooking');
         classQuest2Mgr.onLifeSkillLevel(char.id, 'cooking', craftingMgr.getCraftingLevel(char.id, 'cooking').level);
       }
       break;
@@ -3655,17 +3652,42 @@ function cmdCraft(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, craftingMgr.formatCraftingLevels(char.id));
       break;
     }
-    default:
+    default: {
+      if (sub) {
+        const recipeId = args[0];
+        const result = craftingMgr.craft(char.id, recipeId, parseCraftSlot(args.slice(1)));
+        if (result.success) {
+          sendSystem(session.sessionId, result.message);
+          if (result.crafted) {
+            const recipe = craftingMgr.getRecipeInfo(recipeId);
+            questMgr.updateProgress(char.id, 'craft_item', result.resultItemId ?? recipeId);
+            classQuest2Mgr.onCraft(char.id, result.resultItemId ?? recipeId, recipe?.category ?? 'forge');
+            if (recipe?.category === 'alchemy') {
+              classQuest2Mgr.onLifeSkillLevel(char.id, 'alchemy', craftingMgr.getCraftingLevel(char.id, 'alchemy').level);
+            } else if (recipe?.category === 'cooking') {
+              classQuest2Mgr.onLifeSkillLevel(char.id, 'cooking', craftingMgr.getCraftingLevel(char.id, 'cooking').level);
+            }
+          }
+          break;
+        }
+      }
       sendSystem(session.sessionId,
         '製作系統指令：\n' +
         '  craft list [forge|alchemy|cooking] — 查看配方\n' +
+        '  craft <配方ID> [slot:<slot>] — 直接製作配方\n' +
         '  craft forge <配方ID>    — 鍛造裝備\n' +
         '  craft alchemy <配方ID>  — 煉金製藥\n' +
         '  craft cook <配方ID>     — 烹飪料理\n' +
         '  craft info <配方ID>     — 查看配方詳情\n' +
         '  craft level             — 查看製作等級',
       );
+    }
   }
+}
+
+function parseCraftSlot(args: string[]): EquipSlot | undefined {
+  const token = args.find(arg => arg.toLowerCase().startsWith('slot:'));
+  return token?.slice('slot:'.length) as EquipSlot | undefined;
 }
 
 // ─── 採集系統 ───

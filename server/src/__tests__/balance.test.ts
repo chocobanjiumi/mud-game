@@ -39,6 +39,7 @@ import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
 import { GatheringManager } from '../game/gathering.js';
 import { ROOMS, ZONES } from '../data/rooms.js';
+import { RECIPES, getRecipeResult } from '../game/crafting.js';
 import type { CombatStats } from '../game/damage.js';
 
 // ============================================================
@@ -822,6 +823,29 @@ describe('Balance: Gathering definitions', () => {
       'fishing',
       'archaeology',
     ]));
+  });
+});
+
+describe('Balance: Crafting definitions', () => {
+  it('has at least one crafting route for every equipment slot', () => {
+    const slots = ['weapon', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'] as const;
+
+    for (const slot of slots) {
+      const route = Object.values(RECIPES).find(recipe => {
+        const result = getRecipeResult(recipe, slot);
+        return result && ITEM_DEFS[result.itemId]?.equipSlot === slot;
+      });
+
+      expect(route, slot).toBeDefined();
+    }
+  });
+
+  it('supports slot-specific crafting results', () => {
+    const recipe = RECIPES.craft_adventurer_gear;
+
+    expect(getRecipeResult(recipe, 'weapon')?.itemId).toBe('iron_sword');
+    expect(getRecipeResult(recipe, 'belt')?.itemId).toBe('adventurer_belt');
+    expect(getRecipeResult(recipe, 'accessory')).toBeUndefined();
   });
 });
 

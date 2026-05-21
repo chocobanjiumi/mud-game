@@ -3,7 +3,7 @@
 
 import { getDb } from '../db/schema.js';
 import { getInventory, addInventoryItem, removeInventoryItem } from '../db/queries.js';
-import { ITEM_DEFS } from '@game/shared';
+import { ITEM_DEFS, type EquipSlot } from '@game/shared';
 
 // ============================================================
 //  型別定義
@@ -18,6 +18,7 @@ export interface RecipeDef {
   level: number;       // crafting level required
   materials: { itemId: string; count: number }[];
   result: { itemId: string; count: number };
+  slotResults?: Partial<Record<EquipSlot, { itemId: string; count: number }>>;
   successRate: number; // 0-100 base success rate
   exp: number;         // crafting exp gained
 }
@@ -44,6 +45,30 @@ export const RECIPES: Record<string, RecipeDef> = {
     level: 1,
     materials: [{ itemId: 'iron_ore', count: 3 }],
     result: { itemId: 'iron_sword', count: 1 },
+    successRate: 90,
+    exp: 15,
+  },
+  craft_adventurer_gear: {
+    id: 'craft_adventurer_gear',
+    name: '冒險者指定裝備',
+    category: 'forge',
+    level: 1,
+    materials: [
+      { itemId: 'iron_ore', count: 2 },
+      { itemId: 'beast_hide', count: 1 },
+    ],
+    result: { itemId: 'iron_sword', count: 1 },
+    slotResults: {
+      weapon: { itemId: 'iron_sword', count: 1 },
+      head: { itemId: 'leather_cap', count: 1 },
+      body: { itemId: 'cloth_armor', count: 1 },
+      hands: { itemId: 'leather_gloves', count: 1 },
+      feet: { itemId: 'leather_boots', count: 1 },
+      ring: { itemId: 'wooden_ring', count: 1 },
+      earring: { itemId: 'mage_earring', count: 1 },
+      belt: { itemId: 'adventurer_belt', count: 1 },
+      necklace: { itemId: 'lucky_charm', count: 1 },
+    },
     successRate: 90,
     exp: 15,
   },
@@ -423,6 +448,11 @@ const CATEGORY_NAMES: Record<CraftingCategory, string> = {
   cooking: '烹飪',
 };
 
+export function getRecipeResult(recipe: RecipeDef, slot?: EquipSlot): { itemId: string; count: number } | undefined {
+  if (!slot) return recipe.result;
+  return recipe.slotResults?.[slot];
+}
+
 // ============================================================
 //  CraftingManager
 // ============================================================
@@ -482,10 +512,21 @@ export class CraftingManager {
   craft(
     characterId: string,
     recipeId: string,
-  ): { success: boolean; message: string; crafted?: boolean } {
+    slot?: EquipSlot,
+  ): { success: boolean; message: string; crafted?: boolean; resultItemId?: string } {
     const recipe = RECIPES[recipeId];
     if (!recipe) {
       return { success: false, message: '配方不存在。' };
+    }
+    const result = getRecipeResult(recipe, slot);
+    if (!result) {
+      const slots = Object.keys(recipe.slotResults ?? {}).join(', ');
+      return {
+        success: false,
+        message: slots
+          ? `此配方不支援 slot:${slot}。可指定：${slots}。`
+          : '此配方不支援指定 slot。',
+      };
     }
 
     // 檢查製作等級
@@ -540,14 +581,15 @@ export class CraftingManager {
     }
 
     // 給予成品
-    addInventoryItem(characterId, recipe.result.itemId, recipe.result.count);
+    addInventoryItem(characterId, result.itemId, result.count);
 
-    const resultName = ITEM_DEFS[recipe.result.itemId]?.name ?? recipe.result.itemId;
-    const countText = recipe.result.count > 1 ? ` x${recipe.result.count}` : '';
+    const resultName = ITEM_DEFS[result.itemId]?.name ?? result.itemId;
+    const countText = result.count > 1 ? ` x${result.count}` : '';
 
     return {
       success: true,
       crafted: true,
+      resultItemId: result.itemId,
       message:
         `製作成功！獲得：${resultName}${countText}（成功率 ${finalRate}%）\n` +
         `獲得 ${recipe.exp} ${CATEGORY_NAMES[recipe.category]}經驗。`,
