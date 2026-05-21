@@ -5255,4 +5255,544 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '逃生側洞證明礦難發生時仍有人差點逃出生天。',
     },
   },
+
+  wildgrass_hills_windbreak_gate: {
+    id: 'wildgrass_hills_windbreak_gate',
+    name: '防風柵門',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_windbreak_gate.png',
+    imagePrompt: '防風柵門 in wildgrass_hills, windbreak fence gate at yellow grass hills, leaning posts, road marker, sweeping clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '西境舊路在這裡穿過一排傾斜防風柵，正式進入荒草丘陵。枯黃高草被強風吹成同一方向，路牌上用焦黑字跡警告旅人不要在夜裡離開石道。柵門旁有避風凹槽、舊補給箱和被半獸人斥候削尖的木樁，是進出丘陵時最安全的錨點。玩家能在這裡整理路線、觀察風向，也能從草浪間辨認野豬踐踏痕與哥布林巡邏腳印。柵門柱上刻著近月失蹤商隊的記號，旁邊繫著還未完全褪色的求救布條，表示危險已經逼近入口。若回頭沿舊路撤離，這裡也是最快的交通節點，適合護送任務重新集合出發。',
+    exits: [
+      { direction: 'east', targetRoomId: 'wildgrass_hills_lower_slope', description: '石道爬向低坡' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_old_road_cut', description: '舊路切口可快速離開丘陵' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_scout', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'prairie_boar', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '草浪逆風擺動時，斥候正從柵門外側靠近。',
+      treasure: '補給箱底部有旅人留下的乾糧和磨刀石。',
+      spirit: '防風柵門像一條界線，把平原秩序留在身後。',
+    },
+  },
+
+  wildgrass_hills_lower_slope: {
+    id: 'wildgrass_hills_lower_slope',
+    name: '低風坡',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_lower_slope.png',
+    imagePrompt: '低風坡 in wildgrass_hills, rolling lower slope of yellow grass, gust trails, exposed stones and distant watchfires, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '防風柵後的低坡看似開闊，實際上到處藏著半人高的草溝。風從西面壓過丘線，把草葉刮出像水面一樣的波紋，偶爾露出白石、斷箭和小型獸骨。這裡是丘陵主路的第一段，能通往高草徑、彎橡樹與舊柵門。玩家可在坡頂觀察遠方煙火，判斷哥布林營地位置，也會被野豬與巡邏斥候測試實力。坡面沒有真正遮蔽，一旦交戰，風聲會把動靜傳得很遠。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '石道回到防風柵門' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '草浪形成狹長通道' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_bent_oak', description: '坡上有一棵彎橡樹' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'goblin_scout', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[坡]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '野豬會順著坡面衝鋒，側向閃避比後退安全。',
+      treasure: '白石堆下壓著舊巡路人的銅扣。',
+      spirit: '低風坡讓旅人明白，這片丘陵沒有真正安靜的時刻。',
+    },
+  },
+
+  wildgrass_hills_tallgrass_lane: {
+    id: 'wildgrass_hills_tallgrass_lane',
+    name: '高草徑',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_tallgrass_lane.png',
+    imagePrompt: '高草徑 in wildgrass_hills, narrow lane through towering dry grass, hidden tracks, wind ribbons and amber light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一條被腳步和獸蹄壓出的細徑穿過高草，兩側草葉高過肩頭，人在其中幾乎看不見十步外的同伴。風穿過草莖時發出像耳語的摩擦聲，掩蓋了哥布林斥候拉弓與野豬低吼。地面散著被折斷的標記枝，顯示這條路被多支巡邏隊反覆使用。玩家可沿路追蹤草籽、獸皮和箭羽材料，也能轉往野豬泥窪、斥候岩臺或溪切溝。這裡是典型伏擊走廊，任何火把都會在風中搖晃暴露位置。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_lower_slope', description: '草徑回到低風坡' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥味通往野豬泥窪' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_scout_ledge', description: '草坡上方有斥候岩臺' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_stream_cut', description: '低處傳來溪水聲' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_scout', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '草尖突然分開時，斥候箭矢通常已經搭上弦。',
+      treasure: '倒伏草叢中能收集乾草籽與箭羽。',
+      spirit: '高草徑把開闊丘陵變成一座會移動的迷宮。',
+    },
+  },
+
+  wildgrass_hills_boar_wallow: {
+    id: 'wildgrass_hills_boar_wallow',
+    name: '野豬泥窪',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_boar_wallow.png',
+    imagePrompt: '野豬泥窪 in wildgrass_hills, muddy wallow among dry grass, tusk marks, trampled reeds and storm clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高草徑東側的低洼地被野豬翻成一片爛泥，泥面插著斷草、白骨和被撞碎的木盾。濕泥保存了清楚足跡，有小豬、成年巨豬，也有哥布林試圖繞行後被追撞的痕跡。這裡是丘陵最早能感受到高密度怪物活動的戰鬥房，玩家可收集草根、硬皮與帶礦物味的泥塊。泥窪周圍視野低，野豬會從草牆後突然衝出；若能引牠撞上石塊，反而能打開通向果園廢址的短路。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '乾草徑在西側' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '泥痕延向果園廢址' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_hawk_perch', description: '上方石柱有猛禽盤旋' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 4, respawnSeconds: 70 },
+      { monsterId: 'goblin_scout', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[泥]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '泥面冒泡時，野豬正在草牆後繞圈蓄勢。',
+      treasure: '撞碎木盾下方有還能用的皮革扣環。',
+      spirit: '泥窪記錄著丘陵生物每天為水源爭鬥的痕跡。',
+    },
+  },
+
+  wildgrass_hills_scout_ledge: {
+    id: 'wildgrass_hills_scout_ledge',
+    name: '斥候岩臺',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_scout_ledge.png',
+    imagePrompt: '斥候岩臺 in wildgrass_hills, rocky scout ledge above grassland, crude signal flags, bows, wind and long view, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高草徑北面露出一片平整岩臺，能俯瞰低坡、泥窪和遠方煙火。哥布林斥候在石縫插著破布旗，用不同顏色標示旅人隊伍、商車和巡獵野獸。岩臺邊緣留有磨平的腳印與弓弦蠟，說明這裡長期被當作監視點。玩家可奪下旗號，短暫干擾丘陵巡邏，也能從望向北方的視角找到石環與雷丘位置。這裡的戰鬥容易被高低差影響，若不先清掉弓手，往下撤退會一直受到追射。',
+    exits: [
+      { direction: 'south', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '下坡回到高草徑' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_hawk_perch', description: '岩脊延向鷹棲柱' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_stone_ring', description: '北面可見石環' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_scout', maxCount: 4, respawnSeconds: 55 },
+      { monsterId: 'wind_hawk', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[臺]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '斥候會優先吹旗號求援，先打斷牠能降低壓力。',
+      treasure: '旗桿底座藏著幾支品質較好的箭頭。',
+      spirit: '岩臺讓哥布林把風與高度變成自己的眼睛。',
+    },
+  },
+
+  wildgrass_hills_bent_oak: {
+    id: 'wildgrass_hills_bent_oak',
+    name: '彎橡樹',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_bent_oak.png',
+    imagePrompt: '彎橡樹 in wildgrass_hills, wind-bent lone oak on grassy hill, hanging charms, roots, amber sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '低風坡北側有一棵被長年強風吹彎的橡樹，樹冠幾乎貼著地面，根部卻牢牢抓住岩層。枝條上掛著旅人留下的布條、獸牙和小鈴，風一吹便發出細碎聲響。這裡比周圍安靜，適合短暫避風與整理採集品，也藏著通往種籽溝和隱泉的自然線索。玩家能辨認哪些布條是求平安，哪些是哥布林用來標記獵物的暗號。若夜裡停留，樹影會像低伏巨獸，容易引來巡邏狼群與斥候。',
+    exits: [
+      { direction: 'south', targetRoomId: 'wildgrass_hills_lower_slope', description: '坡路回到低風坡' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_seed_gully', description: '樹根旁有種籽溝' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_hidden_spring', description: '濕草痕跡通向隱泉' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'goblin_scout', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[橡]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '鈴聲無風自響時，狼群已經繞到樹根後方。',
+      treasure: '最舊的布條內側縫著一枚小銀幣。',
+      spirit: '彎橡樹證明丘陵可以被風折彎，卻不一定會被折斷。',
+    },
+  },
+
+  wildgrass_hills_stream_cut: {
+    id: 'wildgrass_hills_stream_cut',
+    name: '溪切溝',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_stream_cut.png',
+    imagePrompt: '溪切溝 in wildgrass_hills, narrow stream cut through grass hill, eroded banks, stepping stones, reeds and wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，玩家可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕和哥布林挖出的藏物洞，代表這條溪同時是生存水源與偷運路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '爬回高草徑' },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_old_road_cut', description: '溪溝轉向舊路切口' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_hidden_spring', description: '水流來自隱泉' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[溪]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '溪水突然變濁時，上游可能有野獸涉水。',
+      treasure: '沖刷土壁裡露出古老陶片與草藥根。',
+      spirit: '溪切溝是風景下方的另一條路，安靜卻不安全。',
+    },
+  },
+
+  wildgrass_hills_hawk_perch: {
+    id: 'wildgrass_hills_hawk_perch',
+    name: '鷹棲柱',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_hawk_perch.png',
+    imagePrompt: '鷹棲柱 in wildgrass_hills, tall stone perch with wind hawks, nests, feathers and sweeping hill view, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '泥窪北側的石柱從草地裡孤立聳起，頂端築著幾座用枯枝、布片和細骨堆成的鷹巢。風之鷹沿著上升氣流盤旋，會在獵物露出破綻時從背光處俯衝。柱腳有許多被摔碎的甲片和閃亮小物，是猛禽從戰場或商路叼回的戰利品。玩家可攀爬石縫採集羽毛、尋找被偷走的任務物，也能從高處看見看火營與雷丘。這裡視野開闊但缺少掩體，遠程敵人與空中敵人會同時施壓。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_scout_ledge', description: '岩脊回到斥候岩臺' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_boar_wallow', description: '下方是野豬泥窪' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火來自看火營' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 4, respawnSeconds: 80 },
+      { monsterId: 'goblin_scout', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[鷹]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '鷹影消失在太陽旁時，下一次俯衝通常最危險。',
+      treasure: '巢裡常有被叼回的戒指、扣環與羽毛材料。',
+      spirit: '鷹棲柱讓荒草丘陵的天空也成為戰場。',
+    },
+  },
+  wildgrass_hills_stone_ring: {
+    id: 'wildgrass_hills_stone_ring',
+    name: '風刻石環',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_stone_ring.png',
+    imagePrompt: '風刻石環 in wildgrass_hills, ancient stone ring carved by wind, grass, runes, storm light and open hilltop, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斥候岩臺北面有一圈古老立石，石面被風砂磨得圓滑，只剩幾道像閃電與草籽交纏的符號。高草在石環內倒伏成螺旋，中央堆著乾草、獸骨和焦黑祭灰。哥布林不敢長久停留，只會把偷來的護符丟進環中換取風向庇護。這裡是探索與任務線索房，玩家可解讀符號，得知雷丘並非自然形成，而是舊祭儀引來的風暴焦點。石環偶爾會讓聲音失真，使怪物從錯誤方向靠近。',
+    exits: [
+      { direction: 'south', targetRoomId: 'wildgrass_hills_scout_ledge', description: '下坡回到斥候岩臺' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_thunder_mound', description: '石環缺口指向雷丘' },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_seed_gully', description: '草籽溝在西側' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'goblin_warrior', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[環]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '石環內的回聲會誤導方向，注意草葉真正倒伏處。',
+      treasure: '祭灰底下埋著幾枚被風磨亮的護符。',
+      spirit: '風刻石環保存著丘陵比哥布林更古老的記憶。',
+    },
+  },
+
+  wildgrass_hills_orchard_ruin: {
+    id: 'wildgrass_hills_orchard_ruin',
+    name: '果園廢址',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_orchard_ruin.png',
+    imagePrompt: '果園廢址 in wildgrass_hills, abandoned hill orchard, dead fruit trees, broken fence, yellow grass and goblin tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '泥窪東面仍能看見一片舊果園的輪廓，矮牆倒塌，乾枯果樹被高草吞沒，只剩幾顆酸澀野果掛在扭曲枝頭。樹幹上刻著農戶撤離前留下的數字，旁邊卻被哥布林加上粗糙塗鴉，標記可藏箭、可埋伏和可燒毀的位置。這裡是資源與敘事房，玩家能採集野果、乾木與舊農具，也能追查荒草丘陵從農地變成戰場的過程。果園視線被樹影切碎，野豬會從破籬後衝出，哥布林則躲在倒木後投石。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥路回到野豬泥窪' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_goblin_blind', description: '樹後有哥布林伏棚' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙味從北面傳來' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'goblin_warrior', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[園]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '倒木後的草葉抖動時，哥布林戰士正在換位。',
+      treasure: '空心果樹裡藏著農戶沒帶走的銅幣袋。',
+      spirit: '果園廢址提醒旅人，這裡曾經不是荒地。',
+    },
+  },
+
+  wildgrass_hills_goblin_blind: {
+    id: 'wildgrass_hills_goblin_blind',
+    name: '哥布林伏棚',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_goblin_blind.png',
+    imagePrompt: '哥布林伏棚 in wildgrass_hills, crude goblin hunting blind hidden in grass and orchard debris, bows, traps, smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。這是哥布林斥候和戰士混合出沒的伏擊房，玩家若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '回到果園廢址' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '伏棚通向看火營' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_windmill_shell', description: '草徑延向風車空殼' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_scout', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'goblin_warrior', maxCount: 3, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[伏]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '骨笛響起時，附近伏棚會一起現身射擊。',
+      treasure: '棚底地圖可標出一條繞往酋長脊的支路。',
+      spirit: '伏棚顯示哥布林已把丘陵當作自己的獵場經營。',
+    },
+  },
+
+  wildgrass_hills_thunder_mound: {
+    id: 'wildgrass_hills_thunder_mound',
+    name: '雷擊丘',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_thunder_mound.png',
+    imagePrompt: '雷擊丘 in wildgrass_hills, storm-struck mound, blackened grass, cracked stones, lightning scars and windy sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風刻石環東側隆起一座焦黑小丘，草根像被雷火燒成細炭，石縫仍殘留淡淡藍光。每逢雲影掠過，丘頂便傳來低沉轟鳴，讓金屬裝備微微發麻。哥布林把這裡當成試膽地點，會把俘虜綁在焦木旁等待風暴裁決。這裡是大型事件前置房，玩家可收集雷痕石、調查祭儀殘留，並理解荒草丘陵的風暴力量為何逐漸失控。若在雷鳴時戰鬥，風之鷹與哥布林會變得更躁動，整個戰場也更難掌控。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_stone_ring', description: '焦草路回到石環' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_chief_ridge', description: '雷痕延向酋長脊' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '坡下是看火營' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'goblin_warrior', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[雷]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '雷鳴後短暫靜默時，敵人通常會一起衝鋒。',
+      treasure: '焦黑石縫裡能挖出帶電的雷痕石。',
+      spirit: '雷擊丘像天空反覆敲在地面上的警告。',
+    },
+  },
+
+  wildgrass_hills_seed_gully: {
+    id: 'wildgrass_hills_seed_gully',
+    name: '種籽溝',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_seed_gully.png',
+    imagePrompt: '種籽溝 in wildgrass_hills, sheltered gully full of grass seeds, seed heads, bent oak roots and warm wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物與野豬都會來翻找食物，也吸引哥布林收集乾籽製作引火包。玩家可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_bent_oak', description: '樹根路回到彎橡樹' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_stone_ring', description: '舊腳印通向石環' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_broken_totem', description: '溝尾立著斷圖騰' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[籽]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '草籽突然大片飛起時，野獸正在溝底奔跑。',
+      treasure: '最乾燥的籽穗可作為火種與藥材基底。',
+      spirit: '種籽溝保留著荒地重新生長的能力。',
+    },
+  },
+
+  wildgrass_hills_watchfire_camp: {
+    id: 'wildgrass_hills_watchfire_camp',
+    name: '看火營',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_watchfire_camp.png',
+    imagePrompt: '看火營 in wildgrass_hills, goblin watchfire camp on hill saddle, smoke, hide tents, weapon racks and dry grass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鷹棲柱與雷擊丘之間的鞍部搭著一座哥布林看火營，幾堆煙火用濕草悶燒，能把信號送到酋長脊和伏棚。營地用獸皮、破帆布和果園木板搭成，武器架上掛滿短矛、投石袋與偷來的銅鍋。這裡是丘陵中段的高密度戰鬥與任務房，玩家可以破壞煙火、奪取巡邏令牌，或解救被綁在木柱旁的旅人。營地四周沒有城牆，卻被高草與陷坑保護；若沒有先觀察煙向，很容易從錯誤入口闖進包圍圈。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_hawk_perch', description: '石柱在西側' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '坡下是果園廢址' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_windmill_shell', description: '破路通向風車空殼' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_thunder_mound', description: '焦草坡通向雷擊丘' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_scout', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'goblin_warrior', maxCount: 4, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[火]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '先熄掉煙火可降低附近哥布林增援速度。',
+      treasure: '巡邏令牌掛在最大帳篷的骨釘上。',
+      spirit: '看火營是哥布林掌控丘陵節奏的鼓點。',
+    },
+  },
+
+  wildgrass_hills_windmill_shell: {
+    id: 'wildgrass_hills_windmill_shell',
+    name: '風車空殼',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_windmill_shell.png',
+    imagePrompt: '風車空殼 in wildgrass_hills, ruined hill windmill shell, broken sails, gears, dry grass and goblin marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，玩家能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林戰士會利用樓梯轉角逼近，風之鷹則從破窗撲入。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火營在西側' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_chief_ridge', description: '塔後繩梯通向酋長脊' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_warrior', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[車]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '齒輪聲突然停住時，塔內敵人正在等你轉角。',
+      treasure: '石塔二層藏著舊倉庫鑰匙和農具零件。',
+      spirit: '風車空殼讓人看見丘陵被放棄以前的生活。',
+    },
+  },
+
+  wildgrass_hills_hidden_spring: {
+    id: 'wildgrass_hills_hidden_spring',
+    name: '隱泉',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_hidden_spring.png',
+    imagePrompt: '隱泉 in wildgrass_hills, hidden spring under bent grass and stones, clear water, reeds, animal tracks, soft light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '彎橡樹北面的濕草一路引到一處被石塊遮住的泉眼，清水從岩縫滲出，形成小小水潭。潭邊有野豬、狼、鷹和哥布林混雜的足跡，代表所有生物都知道這是丘陵最穩定的水源。泉水清甜，卻在雷雨前會泛出細小氣泡，像地下也在回應雷擊丘。這裡是補給與事件房，玩家可取水、採集水草，或發現被藏在石後的求救布條。若在此休息太久，爭水的野獸會陸續靠近。',
+    exits: [
+      { direction: 'south', targetRoomId: 'wildgrass_hills_bent_oak', description: '濕草路回到彎橡樹' },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_stream_cut', description: '泉水流入溪切溝' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_broken_totem', description: '石後小徑通向斷圖騰' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[泉]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '水面連續冒泡時，附近生物都會變得不安。',
+      treasure: '石後布條指向一名失蹤旅人的藏身處。',
+      spirit: '隱泉是荒草丘陵少數還願意給予的地方。',
+    },
+  },
+
+  wildgrass_hills_broken_totem: {
+    id: 'wildgrass_hills_broken_totem',
+    name: '斷圖騰',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_broken_totem.png',
+    imagePrompt: '斷圖騰 in wildgrass_hills, broken wooden totem on windy hill, charms, skulls, grass seeds and storm signs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。這裡是精英前置與任務線索房，玩家能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '草脊通向風暴草冠' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_warrior', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[騰]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '骨牌被風吹成圓圈時，巡邏隊快到了。',
+      treasure: '圖騰空腔中藏著守風誓詞。',
+      spirit: '斷圖騰顯示守護信仰已被部落戰旗取代。',
+    },
+  },
+
+  wildgrass_hills_chief_ridge: {
+    id: 'wildgrass_hills_chief_ridge',
+    name: '酋長脊',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_chief_ridge.png',
+    imagePrompt: '酋長脊 in wildgrass_hills, ridge camp of goblin chief, banners, bone throne, storm clouds and dry grass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷擊丘東側的長脊被哥布林改造成首領營地，骨旗沿著稜線排列，中央有一張用野豬獠牙和舊車輪拼成的粗糙王座。從這裡可以俯瞰看火營、風車和大片高草，任何闖入者都很難避開巡邏目光。酋長會在風最大時召集戰士，讓吼聲順著山脊傳遍丘陵。王座旁堆著從旅人身上搶來的路牌、鍋具和破甲，像一座炫耀戰利品的小山。這裡是精英戰鬥房，玩家可挑戰哥布林首領、奪取部落號角，或破壞控制巡邏的旗令。若未先削弱看火營與伏棚，這場戰鬥會持續召來支援，直到旗號全被奪下為止才會停止。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_thunder_mound', description: '焦草脊回到雷擊丘' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_windmill_shell', description: '繩梯下到風車空殼' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '最高草冠在東側' },
+    ],
+    monsters: [
+      { monsterId: 'goblin_chief', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'goblin_warrior', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'goblin_scout', maxCount: 2, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[酋]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '酋長吹響號角前打斷，可避免額外戰士加入。',
+      treasure: '骨座後方掛著控制巡邏旗令的繩結。',
+      spirit: '酋長脊是哥布林把恐懼變成統治的地方。',
+    },
+  },
+
+  wildgrass_hills_stormgrass_crown: {
+    id: 'wildgrass_hills_stormgrass_crown',
+    name: '風暴草冠',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_stormgrass_crown.png',
+    imagePrompt: '風暴草冠 in wildgrass_hills, highest crown of storm-tossed grass, lightning sky, ancient marker stones, wild banners, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '酋長脊東端升到荒草丘陵最高處，整片草冠被狂風壓成巨大旋渦，像一頂不停轉動的金色王冠。中央立著幾塊古老界石，石縫間有雷痕、草籽和被綁住的部落旗。當雲層低垂時，風會在草冠中心形成肉眼可見的漏斗，將聲音、灰燼與羽毛全捲向天空。界石底部還有被草根纏住的舊祭盤，盤面刻著安撫風暴的步驟，只是關鍵符號被哥布林刀痕刮壞。這裡是荒草丘陵的大型事件鉤子與最終地標，玩家可用守風誓詞安撫風暴，也可擊敗首領後拆除旗幟，讓丘陵巡邏失去統一指揮。若選擇強行採集雷草，整片草冠會引來猛禽與殘餘戰士。',
+    exits: [
+      { direction: 'west', targetRoomId: 'wildgrass_hills_chief_ridge', description: '山脊回到酋長營地' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_broken_totem', description: '草脊回到斷圖騰' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'goblin_chief', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'goblin_warrior', maxCount: 2, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[冠]',
+    mapX: 5,
+    mapY: 3,
+    guardianHints: {
+      creature: '草冠中央形成漏斗時，空中敵人會連續俯衝。',
+      treasure: '雷草只在界石陰影內保持完整形態。',
+      spirit: '風暴草冠是整片丘陵的怒氣與生命力交會處。',
+    },
+  },
+
+  wildgrass_hills_old_road_cut: {
+    id: 'wildgrass_hills_old_road_cut',
+    name: '舊路切口',
+    zone: 'wildgrass_hills' as RoomDef['zone'],
+    image: 'wildgrass_hills_old_road_cut.png',
+    imagePrompt: '舊路切口 in wildgrass_hills, eroded old road cut below grass hills, milestone, wagon ruts, dusk wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '防風柵門南側有一段被溪水和車輪切出的舊路，路面低於草坡，兩側土壁露出層層壓實的輪轍。半倒里程碑標著通往西境村落的方向，旁邊還有商隊臨時修車留下的鐵釘與木楔。這裡是荒草丘陵的撤離與捷徑交通房，玩家可從溪切溝繞回入口，也能在完成酋長脊事件後護送旅人離開。雖然比主坡安全，舊路仍會被流竄野獸利用；若忽視土壁上的新爪痕，回程也可能遭遇伏擊。',
+    exits: [
+      { direction: 'north', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '坡上是防風柵門' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_stream_cut', description: '溪溝連向高草徑下方' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'goblin_scout', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[路]',
+    mapX: 0,
+    mapY: -1,
+    guardianHints: {
+      creature: '土壁上出現新爪痕時，回程路線已被盯上。',
+      treasure: '里程碑背面嵌著商隊留下的緊急路費。',
+      spirit: '舊路切口讓丘陵仍保有一條通向人煙的脈絡。',
+    },
+  },
 };
