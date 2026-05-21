@@ -49,6 +49,15 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     description: '當生命垂危之際，身體深處沉睡的本能被喚醒，感官變得異常敏銳。瀕死的恐懼反而化為求生的動力，讓你能以匪夷所思的反應速度閃過致命的攻擊。這是刻在冒險者骨子裡的生存法則——只要還有一口氣在，就絕不倒下。',
     special: { hpThreshold: 20, dodgeBonus: 15 },
   },
+  dirty_trick: {
+    id: 'dirty_trick', name: '干擾手段', englishName: 'Dirty Trick',
+    classId: 'adventurer', learnLevel: 9, type: 'active',
+    targetType: 'single_enemy', resourceCost: 8, cooldown: 4,
+    damageType: 'pure', element: 'none', multiplier: 0,
+    description: '抓起沙土、碎石或隨手可得的小物擲向敵人視線，打亂對方正在蓄勢的動作。這種手段稱不上光彩，卻常常能在怪物準備危險攻擊時爭取到活命的空隙。',
+    effects: [{ type: 'slow', value: 30, duration: 1 }],
+    special: { interrupt: true },
+  },
   desperate_strike: {
     id: 'desperate_strike', name: '孤注一擊', englishName: 'Desperate Strike',
     classId: 'adventurer', learnLevel: 10, type: 'active',
