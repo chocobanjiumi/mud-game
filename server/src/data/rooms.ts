@@ -224,6 +224,11 @@ export const ZONES: Record<string, ZoneDef> = {
       'snowfield_entrance', 'blizzard_path', 'glacier', 'frozen_lake',
       'mountain_camp', 'crystal_ice_cave', 'aurora_field',
       'wolf_den', 'ice_castle_gate', 'ice_throne',
+      'frozen_wastes_snowdrift_pass', 'frozen_wastes_ice_fishing_hole',
+      'frozen_wastes_frostpine_grove', 'frozen_wastes_abandoned_sledge',
+      'frozen_wastes_glacier_crevasse', 'frozen_wastes_runestone_circle',
+      'frozen_wastes_yeti_cairn', 'frozen_wastes_frozen_watchpost',
+      'frozen_wastes_crystal_spire', 'frozen_wastes_dragon_breath_rift',
     ],
   },
   demon_territory: {
@@ -3566,14 +3571,20 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'snowfield_entrance',
     name: '雪原入口',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'snowfield_entrance.png',
+    imagePrompt: '雪原入口 in frozen_wastes, entrance combat snowfield room with frost-covered stone marker, white plain, knife wind and pale blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '踏入北方的那一刻，溫度驟然下降。皚皚白雪覆蓋著一切，寒風如刀割般刺骨。' +
       '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
-      '入口處立著一塊石碑，上面的文字被冰霜覆蓋。',
+      '入口處立著一塊石碑，上面的文字被冰霜覆蓋。東面可回暗影森林，北方風雪路徑更深，南邊營火指向雪山營地；玩家可 inspect 石碑霜字確認安全路線。',
     exits: [
       { direction: 'east', targetRoomId: 'forest_entrance', description: '穿過冰雪小路回到暗影森林入口' },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '踏入暴風雪中' },
       { direction: 'south', targetRoomId: 'mountain_camp', description: '南方有營火的光芒' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪堆間有一條西行通道' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 40 },
     ],
     mapSymbol: '[雪]',
     mapX: 2,
@@ -3589,13 +3600,16 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'blizzard_path',
     name: '暴風雪路',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'blizzard_path.png',
+    imagePrompt: '暴風雪路 in frozen_wastes, main route combat room with whiteout blizzard, buried stakes, wolf tracks and cold gray light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '呼嘯的暴風雪讓視線降到幾乎為零，每走一步都像是在與風暴搏鬥。' +
       '冰雪打在臉上如同針刺，體溫在急速流失。' +
-      '隱約能聽到狼群的嚎叫聲在風中迴盪。',
+      '隱約能聽到狼群的嚎叫聲在風中迴盪。南面可退回雪原入口，北方冰河裂縫若隱若現，西側雪牆後藏著冰釣洞；玩家可 search 旗桿找補給標記。',
     exits: [
       { direction: 'south', targetRoomId: 'snowfield_entrance', description: '退回雪原入口' },
       { direction: 'north', targetRoomId: 'glacier', description: '風暴的另一端是冰河' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_ice_fishing_hole', description: '雪牆後有結冰釣洞' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
@@ -3614,14 +3628,17 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'glacier',
     name: '冰河',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'glacier.png',
+    imagePrompt: '冰河 in frozen_wastes, resource combat glacier room with blue ice crevasses, frozen fossils, wolf tracks and sharp arctic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '巨大的冰河緩慢地向低處移動，冰面上裂開了深不見底的冰縫。' +
       '冰層中封凍著古代的植物和動物殘骸，宛如天然的博物館。' +
-      '雪狼和冰元素在冰河上遊蕩，對入侵者虎視眈眈。',
+      '雪狼和冰元素在冰河上遊蕩，對入侵者虎視眈眈。南面回暴風雪路，北方冰面延伸到凍湖，東側冰壁洞口通向冰晶洞穴；玩家可 inspect 冰縫避開薄冰。',
     exits: [
       { direction: 'south', targetRoomId: 'blizzard_path', description: '回到暴風雪路' },
       { direction: 'north', targetRoomId: 'frozen_lake', description: '冰河延伸至凍湖' },
       { direction: 'east', targetRoomId: 'crystal_ice_cave', description: '冰壁上有一個洞口' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_glacier_crevasse', description: '西側裂縫能深入冰河底層' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 40 },
@@ -3641,13 +3658,16 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'frozen_lake',
     name: '凍湖',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_lake.png',
+    imagePrompt: '凍湖 in frozen_wastes, resource combat frozen lake room with mirror ice, fish shadows, drifting frost mist and moon-blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一片廣闊的湖泊被厚厚的冰層封凍，冰面如鏡子般平滑。' +
       '冰下隱約可見魚群游動的影子，湖面上飄蕩著冰霧。' +
-      '冰元素在湖面上緩緩遊蕩，守護著這片凍結的領域。',
+      '冰元素在湖面上緩緩遊蕩，守護著這片凍結的領域。南面接冰河，北岸有極光之地，西側冰孔可供採集與釣魚；玩家可 search 冰面裂紋找湖底遺跡線索。',
     exits: [
       { direction: 'south', targetRoomId: 'glacier', description: '回到冰河' },
       { direction: 'north', targetRoomId: 'aurora_field', description: '湖的北岸有奇異的光芒' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_ice_fishing_hole', description: '冰孔在湖西側發出水聲' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 45 },
@@ -3666,6 +3686,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'mountain_camp',
     name: '雪山營地',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'mountain_camp.png',
+    imagePrompt: '雪山營地 in frozen_wastes, safe service camp with hide tents, orange fire, supply crates, rock shelter and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一個被巨大岩壁遮擋的避風處，前人在此搭建了由獸皮和木樁構成的簡易營地。' +
       '篝火仍在燃燒，噼啪作響的火焰散發出溫暖的橘光，驅散了四周徹骨的寒意。' +
@@ -3674,6 +3696,10 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '營地東方傳來狼嚎' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '西側雪地有廢棄雪橇' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[營]',
     mapX: 3,
@@ -3689,13 +3715,16 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'crystal_ice_cave',
     name: '冰晶洞穴',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'crystal_ice_cave.png',
+    imagePrompt: '冰晶洞穴 in frozen_wastes, resource combat ice cave with rainbow ice crystals, frozen breath, giant shadows and cold prism light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。' +
       '洞穴深處的溫度極低，呼出的氣息瞬間凝結成冰霜。' +
-      '冰元素和霜巨人守護著這處天然的冰晶寶庫。',
+      '冰元素和霜巨人守護著這處天然的冰晶寶庫。西面回冰河，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫可通往高聳冰晶尖塔。',
     exits: [
       { direction: 'west', targetRoomId: 'glacier', description: '回到冰河' },
       { direction: 'north', targetRoomId: 'ice_castle_gate', description: '洞穴深處通向一座冰封城堡' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_crystal_spire', description: '晶柱裂縫通向冰晶尖塔' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
@@ -3715,13 +3744,16 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'aurora_field',
     name: '極光之地',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'aurora_field.png',
+    imagePrompt: '極光之地 in frozen_wastes, landmark combat aurora field with green purple lights, glittering snow, magic waves and yeti silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。' +
       '雪地被極光映照得如夢似幻，空氣中充滿了微弱的魔力波動。' +
-      '巨大的雪人在極光下遊蕩，似乎被這裡的魔力吸引。',
+      '巨大的雪人在極光下遊蕩，似乎被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
     exits: [
       { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖' },
       { direction: 'east', targetRoomId: 'ice_castle_gate', description: '極光指引的方向有一座城堡' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_runestone_circle', description: '符石環在極光下發亮' },
     ],
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
@@ -3743,12 +3775,15 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'wolf_den',
     name: '雪狼巢穴',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'wolf_den.png',
+    imagePrompt: '雪狼巢穴 in frozen_wastes, elite combat wolf den with bone piles, green eyes, frosted cave mouth and cold blue darkness, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一個被雪狼群佔據的巨大岩洞，洞口散落著獵物的殘骸和啃碎的骨頭。' +
       '空氣中瀰漫著野獸的腥臭味，多隻雪狼在洞內警覺地注視著入侵者。' +
-      '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。',
+      '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。西面可逃回雪山營地，北側窄洞通往雪人石堆，東面有被拖入深處的獵物痕跡。這裡是低溫區域的精英戰鬥房，玩家可 inspect 骨堆判斷狼群首領位置，search 旅人背包取得一次性補給，但若沒有先清理入口雪狼，撤退路會被堵住。洞頂冰柱會把腳步聲放大，讓狼群更快包圍入侵者；牆邊抓痕也提示可以用火光逼退部分雪狼，爭取重整隊伍的時間。',
     exits: [
       { direction: 'west', targetRoomId: 'mountain_camp', description: '逃回雪山營地' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_yeti_cairn', description: '窄洞通向雪人石堆' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 4, respawnSeconds: 35 },
@@ -3767,14 +3802,17 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'ice_castle_gate',
     name: '冰封城堡大門',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'ice_castle_gate.png',
+    imagePrompt: '冰封城堡大門 in frozen_wastes, landmark combat ice castle gate with dragon carvings, frost giant statues, blue door light and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一座宏偉的冰封城堡聳立在風雪之中，巨大的冰門上雕刻著龍的紋飾。' +
       '城門前的石階被冰雪覆蓋，兩尊霜巨人雕像守在門口。' +
-      '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。',
+      '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。南面退回冰晶洞穴，西側極光之地提供繞行視野，北面鎖住的大門通往冰封王座。玩家可 inspect 龍紋確認開門條件，search 石階找到霜巨人巡邏痕跡，也要小心雕像突然甦醒。這裡是通往 Boss 區的地標門檻，描述清楚提示鑰匙、隊伍與寒冷準備。城牆上的冰燈會依守衛警戒改變亮度，哨塔方向也提供撤退或繞行路線，避免隊伍直接卡在封門前。',
     exits: [
       { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴' },
       { direction: 'west', targetRoomId: 'aurora_field', description: '回到極光之地' },
       { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡', locked: true, keyItemId: 'gold_key' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '城牆旁有結冰哨塔' },
     ],
     monsters: [
       { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 65 },
@@ -3794,14 +3832,17 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'ice_throne',
     name: '冰封王座',
     zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'ice_throne.png',
+    imagePrompt: '冰封王座 in frozen_wastes, boss room with towering ice throne, sleeping ice dragon whelp, crystal walls and royal blue frost light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '城堡的最深處是一座宏偉的王座大廳，穹頂高聳入雲。' +
       '冰之王座上沉睡著一隻幼年冰龍，牠的呼吸在空氣中凝結成冰霜。' +
       '大廳四壁鑲嵌著無數冰晶，映照出冰龍威嚴的身影。' +
-      '這裡是冰封雪原的終極挑戰。',
+      '這裡是冰封雪原的終極挑戰。南面退回城堡大門，北側王座背後的裂縫通向燃燒荒地，東側冰霧中可感到龍息裂谷震動。玩家可 inspect 王座符文確認冰龍階段，search 霜巨人王的戰旗尋找王冠密室線索，也要準備面對 Boss 與守衛的連續戰鬥。大廳地面有會逐步蔓延的霜紋，提示戰鬥拖延會壓縮站位；牆上冰晶反射出的龍影則能預告下一次吐息方向。',
     exits: [
       { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門' },
       { direction: 'north', targetRoomId: 'demon_border', description: '王座背後的裂縫通往一片燃燒的荒地' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_dragon_breath_rift', description: '冰霧裂谷傳來龍息' },
     ],
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
@@ -3815,6 +3856,227 @@ export const ROOMS: Record<string, RoomDef> = {
       treasure: '王座背後的密室裡藏著冰之王朝的王冠和權杖——傳說級的裝備。',
       spirit: '冰龍幼崽的母親長眠在雪原深處——牠在等待母親甦醒的那一天。',
     },
+  },
+
+  frozen_wastes_snowdrift_pass: {
+    id: 'frozen_wastes_snowdrift_pass',
+    name: '積雪隘口',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_snowdrift_pass.png',
+    imagePrompt: '積雪隘口 in frozen_wastes, main route combat pass with high snowdrifts, buried trail stakes, wolf tracks and cold overcast light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。玩家可 inspect 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。',
+    exits: [
+      { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
+      { direction: 'north', targetRoomId: 'blizzard_path', description: '風雪聲通往暴風雪路' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '雪橇殘骸在南側' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[隘]',
+    mapX: 1,
+    mapY: 12,
+  },
+
+  frozen_wastes_ice_fishing_hole: {
+    id: 'frozen_wastes_ice_fishing_hole',
+    name: '冰釣洞',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_ice_fishing_hole.png',
+    imagePrompt: '冰釣洞 in frozen_wastes, resource room with cut ice hole, fishing line, frost buckets, fish shadows and blue lake light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可接暴風雪路，西側冰面裂縫通往冰河深處。玩家可 gather 魚材或 search 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。',
+    exits: [
+      { direction: 'east', targetRoomId: 'frozen_lake', description: '回到凍湖冰面' },
+      { direction: 'south', targetRoomId: 'blizzard_path', description: '風雪路在南側' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_glacier_crevasse', description: '冰裂延伸向冰河裂縫' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[釣]',
+    mapX: 1,
+    mapY: 15,
+  },
+
+  frozen_wastes_frostpine_grove: {
+    id: 'frozen_wastes_frostpine_grove',
+    name: '霜松林',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_frostpine_grove.png',
+    imagePrompt: '霜松林 in frozen_wastes, resource combat grove with snow-bent pines, blue needles, wolf tracks and green aurora light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面回雪山營地，東側接雪狼巢穴，北面能通向符石環。玩家可 gather 霜松木與樹脂，inspect 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若玩家沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源。',
+    exits: [
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '下坡回到雪山營地' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '狼嚎來自東側洞穴' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_runestone_circle', description: '符石微光在北側林間' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[松]',
+    mapX: 4,
+    mapY: 13,
+  },
+
+  frozen_wastes_abandoned_sledge: {
+    id: 'frozen_wastes_abandoned_sledge',
+    name: '廢棄雪橇',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_abandoned_sledge.png',
+    imagePrompt: '廢棄雪橇 in frozen_wastes, hidden exploration wrecked sledge with broken runners, scattered crates, frozen blood and low campfire light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。玩家可 search 箱子找一次性補給，inspect 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。',
+    exits: [
+      { direction: 'north', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪坡回到積雪隘口' },
+      { direction: 'east', targetRoomId: 'mountain_camp', description: '營火光在東側閃動' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_yeti_cairn', description: '巨大腳印通往雪人石堆' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 75 },
+    ],
+    groundItems: [
+      { itemId: 'small_hp_potion', description: '破箱底部凍著一瓶紅色藥水' },
+    ],
+    mapSymbol: '[橇]',
+    mapX: 1,
+    mapY: 13,
+  },
+
+  frozen_wastes_glacier_crevasse: {
+    id: 'frozen_wastes_glacier_crevasse',
+    name: '冰河裂縫',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_glacier_crevasse.png',
+    imagePrompt: '冰河裂縫 in frozen_wastes, hidden combat crevasse with blue ice walls, rope ladder, frozen fossils and deep shadow light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側冰釣洞水聲微弱，南面能通往積雪隘口暗道。玩家可 inspect 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。',
+    exits: [
+      { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_ice_fishing_hole', description: '冰洞水聲在北側' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '暗道回積雪隘口' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[裂]',
+    mapX: 1,
+    mapY: 14,
+  },
+
+  frozen_wastes_runestone_circle: {
+    id: 'frozen_wastes_runestone_circle',
+    name: '符石環',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_runestone_circle.png',
+    imagePrompt: '符石環 in frozen_wastes, landmark exploration room with ancient rune stones, aurora beams, snow altar and blue violet magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '極光之地西側立著一圈古老符石，冰雪祭壇位於中央，綠紫光柱在符文間緩慢移動，空氣中有細小靜電聲。東面回極光之地，南側霜松林可作撤退路，北面雪坡通向結冰哨塔。玩家可 inspect 符文順序解讀冰之王朝歷史，search 祭壇底座取得任務線索，也會吸引雪人和冰元素靠近。每塊符石都刻著不同方向記號，能把凍湖、城堡與哨塔路線串起來；若玩家在極光最亮時調查，還能看到王朝滅亡前的幻象片段。祭壇旁的凍裂刻痕提示需要冰晶材料啟動，適合作為探索任務與傳送解鎖線索和支線入口處之一。',
+    exits: [
+      { direction: 'east', targetRoomId: 'aurora_field', description: '極光路回到極光之地' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '霜松林在南側' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '雪坡通向結冰哨塔' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 50 },
+    ],
+    groundItems: [
+      { itemId: 'ice_crystal', description: '祭壇邊有一顆被極光照亮的冰晶' },
+    ],
+    mapSymbol: '[符]',
+    mapX: 1,
+    mapY: 16,
+  },
+
+  frozen_wastes_yeti_cairn: {
+    id: 'frozen_wastes_yeti_cairn',
+    name: '雪人石堆',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_yeti_cairn.png',
+    imagePrompt: '雪人石堆 in frozen_wastes, elite combat room with giant cairns, broken bones, huge footprints and aurora snow haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通廢棄雪橇，東側窄洞接雪狼巢穴，西面可繞回霜松林。這裡是精英事件房，玩家可 inspect 石堆判斷雪人祭祀路線，search 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡。',
+    exits: [
+      { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '巨大腳印回到廢棄雪橇' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '窄洞通往雪狼巢穴' },
+      { direction: 'west', targetRoomId: 'frozen_wastes_frostpine_grove', description: '雪坡繞回霜松林' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[堆]',
+    mapX: 4,
+    mapY: 14,
+  },
+
+  frozen_wastes_frozen_watchpost: {
+    id: 'frozen_wastes_frozen_watchpost',
+    name: '結冰哨塔',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_frozen_watchpost.png',
+    imagePrompt: '結冰哨塔 in frozen_wastes, elite route watchpost with frozen battlements, cracked horn, frost giant tracks and cold castle light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通符石環，東側冰晶尖塔在藍光裡閃爍。玩家可 inspect 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助玩家選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '雪坡通往符石環' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_crystal_spire', description: '冰晶尖塔在東側發光' },
+    ],
+    monsters: [
+      { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 4,
+    mapY: 15,
+  },
+
+  frozen_wastes_crystal_spire: {
+    id: 'frozen_wastes_crystal_spire',
+    name: '冰晶尖塔',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_crystal_spire.png',
+    imagePrompt: '冰晶尖塔 in frozen_wastes, resource elite spire with towering blue crystals, prism stairs, frost mist and bright cold light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰晶洞穴，北側結冰哨塔可作外部路線，東面裂谷中傳來冰龍呼吸。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。',
+    exits: [
+      { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '外部冰橋通向結冰哨塔' },
+      { direction: 'east', targetRoomId: 'frozen_wastes_dragon_breath_rift', description: '寒霧裂谷傳來龍息' },
+    ],
+    monsters: [
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 75 },
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+    ],
+    mapSymbol: '[尖]',
+    mapX: 4,
+    mapY: 16,
+  },
+
+  frozen_wastes_dragon_breath_rift: {
+    id: 'frozen_wastes_dragon_breath_rift',
+    name: '龍息裂谷',
+    zone: 'frozen_wastes' as RoomDef['zone'],
+    image: 'frozen_wastes_dragon_breath_rift.png',
+    imagePrompt: '龍息裂谷 in frozen_wastes, boss event rift with frozen breath clouds, blue fissure, dragon claw marks and royal ice light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰封王座東側裂開一道深谷，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面回冰封王座，南側晶光通往冰晶尖塔，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，玩家可 inspect 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_crystal_spire', description: '晶光路通向冰晶尖塔' },
+      { direction: 'north', targetRoomId: 'demon_border', description: '寒霧裂口通往魔族邊境' },
+    ],
+    monsters: [
+      { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[息]',
+    mapX: 4,
+    mapY: 17,
   },
 };
 
