@@ -30,6 +30,8 @@ import {
   SKILL_DEFS,
   CLASS_BUILD_DEFS,
   CLASS_DEFS,
+  GATHERING_MATERIAL_QUALITIES,
+  GATHERING_NODE_DEFS,
   getLearnableSkills,
   getAllAvailableSkills,
 } from '@game/shared';
@@ -768,6 +770,37 @@ describe('Balance: Skill metadata', () => {
 
     expect(withoutQuest.some(skill => skill.id === questLockedSkill.id)).toBe(false);
     expect(withQuest.some(skill => skill.id === questLockedSkill.id)).toBe(true);
+  });
+});
+
+describe('Balance: Gathering definitions', () => {
+  it('defines gathering nodes with all material qualities', () => {
+    expect(Object.keys(GATHERING_NODE_DEFS).length).toBeGreaterThan(0);
+
+    for (const node of Object.values(GATHERING_NODE_DEFS)) {
+      expect(node.levelMin, node.id).toBeGreaterThanOrEqual(1);
+      expect(node.levelMax, node.id).toBeLessThanOrEqual(60);
+      expect(node.levelMax, node.id).toBeGreaterThanOrEqual(node.levelMin);
+      expect(node.roomTags.length, node.id).toBeGreaterThan(0);
+      expect(node.yields.map(yieldDef => yieldDef.quality).sort(), node.id)
+        .toEqual([...GATHERING_MATERIAL_QUALITIES].sort());
+      expect(node.yields.every(yieldDef => ITEM_DEFS[yieldDef.itemId]?.type === 'material'), node.id).toBe(true);
+    }
+  });
+
+  it('covers level 1-60 material tiers for every gathering skill', () => {
+    for (const skill of ['mining', 'herbalism', 'logging', 'skinning', 'fishing', 'archaeology'] as const) {
+      const nodes = Object.values(GATHERING_NODE_DEFS)
+        .filter(node => node.skill === skill)
+        .sort((a, b) => a.levelMin - b.levelMin);
+
+      expect(nodes.length, skill).toBeGreaterThan(0);
+      expect(nodes[0].levelMin, skill).toBe(1);
+      expect(nodes[nodes.length - 1].levelMax, skill).toBe(60);
+      for (let i = 1; i < nodes.length; i++) {
+        expect(nodes[i].levelMin, `${skill}:${nodes[i].id}`).toBe(nodes[i - 1].levelMax + 1);
+      }
+    }
   });
 });
 

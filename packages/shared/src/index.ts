@@ -6,6 +6,7 @@ export * from './types/skill.js';
 export * from './types/combat.js';
 export * from './types/world.js';
 export * from './types/item.js';
+export * from './types/gathering.js';
 export * from './types/protocol.js';
 export * from './types/kingdom.js';
 export * from './systems/item-instance.js';
