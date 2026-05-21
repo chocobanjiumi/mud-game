@@ -191,6 +191,57 @@ export function upgradeSkill(characterId: string, skillId: string): boolean {
   return result.changes > 0;
 }
 
+// ─── World Unlocks CRUD ───
+
+export function unlockZone(characterId: string, zoneId: string, source = 'system'): void {
+  getDb().prepare(`
+    INSERT OR IGNORE INTO character_zone_unlocks (character_id, zone_id, source)
+    VALUES (?, ?, ?)
+  `).run(characterId, zoneId, source);
+}
+
+export function isZoneUnlocked(characterId: string, zoneId: string): boolean {
+  const row = getDb().prepare(
+    'SELECT 1 FROM character_zone_unlocks WHERE character_id = ? AND zone_id = ?',
+  ).get(characterId, zoneId);
+  return !!row;
+}
+
+export function getUnlockedZones(characterId: string): string[] {
+  const rows = getDb().prepare(
+    'SELECT zone_id FROM character_zone_unlocks WHERE character_id = ? ORDER BY unlocked_at ASC',
+  ).all(characterId) as { zone_id: string }[];
+  return rows.map(row => row.zone_id);
+}
+
+export function unlockPortal(characterId: string, portalId: string, zoneId: string): void {
+  getDb().prepare(`
+    INSERT OR IGNORE INTO character_portal_unlocks (character_id, portal_id, zone_id)
+    VALUES (?, ?, ?)
+  `).run(characterId, portalId, zoneId);
+}
+
+export function isPortalUnlocked(characterId: string, portalId: string): boolean {
+  const row = getDb().prepare(
+    'SELECT 1 FROM character_portal_unlocks WHERE character_id = ? AND portal_id = ?',
+  ).get(characterId, portalId);
+  return !!row;
+}
+
+export function getUnlockedPortals(characterId: string): { portalId: string; zoneId: string }[] {
+  const rows = getDb().prepare(
+    'SELECT portal_id, zone_id FROM character_portal_unlocks WHERE character_id = ? ORDER BY unlocked_at ASC',
+  ).all(characterId) as { portal_id: string; zone_id: string }[];
+  return rows.map(row => ({ portalId: row.portal_id, zoneId: row.zone_id }));
+}
+
+export function isQuestCompleted(characterId: string, questId: string): boolean {
+  const row = getDb().prepare(
+    "SELECT 1 FROM quest_progress WHERE character_id = ? AND quest_id = ? AND status = 'completed'",
+  ).get(characterId, questId);
+  return !!row;
+}
+
 // ─── Helpers ───
 
 /** 將資料庫列轉為 Character 物件 */

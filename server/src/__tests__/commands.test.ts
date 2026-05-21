@@ -32,6 +32,7 @@ const validCommands = new Set([
   'attack', 'skill', 'defend', 'escape',
   'equip', 'unequip', 'use', 'take', 'pick', 'drop',
   'say', 'talk', 'allocate', 'alloc', 'map', 'help',
+  'rest', 'activate', 'portals', 'travel', 'recall',
 ]);
 
 interface ParsedCommand {

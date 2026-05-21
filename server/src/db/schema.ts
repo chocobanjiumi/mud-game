@@ -97,6 +97,24 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, quest_id)
     );
 
+    -- 已解鎖區域（由探索、任務或管理工具授予）
+    CREATE TABLE IF NOT EXISTS character_zone_unlocks (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      zone_id TEXT NOT NULL,
+      unlocked_at INTEGER DEFAULT (unixepoch()),
+      source TEXT DEFAULT 'system',
+      PRIMARY KEY (character_id, zone_id)
+    );
+
+    -- 已啟用傳送點
+    CREATE TABLE IF NOT EXISTS character_portal_unlocks (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      portal_id TEXT NOT NULL,
+      zone_id TEXT NOT NULL,
+      unlocked_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (character_id, portal_id)
+    );
+
     -- 每日任務完成紀錄
     CREATE TABLE IF NOT EXISTS daily_quests (
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
@@ -333,6 +351,8 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_diplo_messages_to ON kingdom_diplomatic_messages(to_kingdom_id);
     CREATE INDEX IF NOT EXISTS idx_daily_quests_character ON daily_quests(character_id);
     CREATE INDEX IF NOT EXISTS idx_quest_progress_character ON quest_progress(character_id, status);
+    CREATE INDEX IF NOT EXISTS idx_zone_unlocks_character ON character_zone_unlocks(character_id);
+    CREATE INDEX IF NOT EXISTS idx_portal_unlocks_character ON character_portal_unlocks(character_id);
   `);
 
   // ── Migration: 新增 enhancement_level 欄位 ──

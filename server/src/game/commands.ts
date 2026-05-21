@@ -10,6 +10,8 @@ import {
   getInventory, getLearnedSkills,
   addInventoryItem, removeInventoryItem, setEquipped,
   getEquippedItems,
+  getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
+  isZoneUnlocked, unlockPortal, unlockZone,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -19,7 +21,7 @@ import {
   calculateCritDamage,
   getExpForLevel,
 } from '@game/shared';
-import type { Character, ClassId, StatusEffectType } from '@game/shared';
+import type { Character, ClassId, StatusEffectType, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -36,7 +38,7 @@ import { PET_DEFS } from './pet.js';
 import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
-import { getRoom } from '../data/rooms.js';
+import { getRoom, getZone, ZONES } from '../data/rooms.js';
 import { RANK_NAMES } from './kingdom.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
@@ -149,6 +151,10 @@ export function handleCommand(session: WsSession, input: string): void {
     case 'allocate': case 'alloc': cmdAllocate(session, args); break;
     case 'map': cmdMap(session); break;
     case 'rest': cmdRest(session); break;
+    case 'activate': cmdActivate(session, args); break;
+    case 'portals': cmdPortals(session); break;
+    case 'travel': cmdTravel(session, argStr); break;
+    case 'recall': cmdRecall(session); break;
     // 新系統指令
     case 'party': cmdParty(session, args); break;
     case 'trade': cmdTrade(session, args); break;
@@ -355,6 +361,17 @@ function cmdGo(session: WsSession, direction: string): void {
       const keyName = keyDef?.name ?? exit.keyItemId;
       sendNarrative(session.sessionId, `你使用了${keyName}打開了門鎖。`);
     }
+
+    if (exit) {
+      const targetRoom = getRoom(exit.targetRoomId);
+      if (targetRoom && targetRoom.zone !== currentRoom.zone) {
+        const access = canAccessZone(char, targetRoom.zone);
+        if (!access.ok) {
+          sendError(session.sessionId, access.message);
+          return;
+        }
+      }
+    }
   }
 
   const result = world.handleMove(char.id, direction as any);
@@ -364,6 +381,7 @@ function cmdGo(session: WsSession, direction: string): void {
   }
 
   char.roomId = result.room.id;
+  unlockZone(char.id, result.room.zone, 'enter');
   saveCharacter(char);
   sendNarrative(session.sessionId, `你往 ${directionChinese(direction)} 移動了。`);
   cmdLook(session);
@@ -1543,6 +1561,139 @@ function cmdRest(session: WsSession): void {
 
   saveCharacter(char);
   sendNarrative(session.sessionId, `你稍作休息，恢復了 ${hpRecover} HP${resourceMsg}。`);
+}
+
+function cmdActivate(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+  const target = args.join(' ').toLowerCase();
+  if (target && target !== 'portal' && target !== '傳送陣') {
+    sendError(session.sessionId, '用法：activate portal');
+    return;
+  }
+
+  const room = getRoom(char.roomId);
+  const zone = room ? getZone(room.zone) : undefined;
+  if (!room || !zone?.portal) {
+    sendError(session.sessionId, '這裡沒有可啟用的傳送陣。');
+    return;
+  }
+
+  const access = canAccessZone(char, zone.id);
+  if (!access.ok) {
+    sendError(session.sessionId, access.message);
+    return;
+  }
+
+  unlockZone(char.id, zone.id, 'portal');
+  unlockPortal(char.id, zone.portal.id, zone.id);
+  sendSystem(session.sessionId, `已啟用 ${zone.portal.name}。之後可用 travel ${zone.id} 或 travel ${zone.portal.id} 傳送。`);
+}
+
+function cmdPortals(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const unlocked = new Map(getUnlockedPortals(char.id).map(portal => [portal.portalId, portal.zoneId]));
+  const lines: string[] = [];
+
+  for (const zone of Object.values(ZONES)) {
+    if (!zone.portal) continue;
+    const isUnlocked = zone.portal.unlockByDefault || unlocked.has(zone.portal.id) || isPortalUnlocked(char.id, zone.portal.id);
+    const access = canAccessZone(char, zone.id, false);
+    const state = isUnlocked ? '已解鎖' : access.ok ? '可啟用' : '未解鎖';
+    const cost = getPortalCost(char, zone);
+    lines.push(`${state} ${zone.name} (${zone.id}) - ${zone.portal.name}，費用 ${cost} 金幣，網路 ${zone.portal.network}`);
+  }
+
+  if (lines.length === 0) {
+    sendSystem(session.sessionId, '目前世界資料沒有定義傳送點。');
+    return;
+  }
+
+  sendSystem(session.sessionId, '── 傳送點 ──');
+  for (const line of lines) sendSystem(session.sessionId, line);
+}
+
+function cmdTravel(session: WsSession, target: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法使用傳送。');
+    return;
+  }
+  if (!target) {
+    sendError(session.sessionId, '用法：travel <zone_id|portal_id>');
+    return;
+  }
+
+  const zone = findPortalZone(target);
+  if (!zone?.portal) {
+    sendError(session.sessionId, `找不到傳送點「${target}」。可用 portals 查看列表。`);
+    return;
+  }
+
+  const access = canAccessZone(char, zone.id);
+  if (!access.ok) {
+    sendError(session.sessionId, access.message);
+    return;
+  }
+
+  const unlocked = zone.portal.unlockByDefault || isPortalUnlocked(char.id, zone.portal.id);
+  if (!unlocked) {
+    sendError(session.sessionId, `${zone.portal.name} 尚未啟用。請先到當地使用 activate portal。`);
+    return;
+  }
+
+  const cost = getPortalCost(char, zone);
+  if (char.gold < cost) {
+    sendError(session.sessionId, `金幣不足。傳送到 ${zone.name} 需要 ${cost} 金幣。`);
+    return;
+  }
+
+  const destination = zone.rooms.map(roomId => getRoom(roomId)).find(Boolean);
+  if (!destination) {
+    sendError(session.sessionId, `${zone.name} 尚未設定可傳送的入口房間。`);
+    return;
+  }
+
+  const previousRoom = char.roomId;
+  char.gold -= cost;
+  char.roomId = destination.id;
+  unlockZone(char.id, zone.id, 'travel');
+  world.placePlayer(char.id, destination.id);
+  saveCharacter(char);
+  sendNarrative(session.sessionId, `你啟動 ${zone.portal.name}，從 ${previousRoom} 傳送到 ${destination.name}。花費 ${cost} 金幣。`);
+  cmdLook(session);
+}
+
+function cmdRecall(session: WsSession): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法回城。');
+    return;
+  }
+
+  const starter = getZone('starter_village');
+  if (!starter?.portal) {
+    sendError(session.sessionId, '目前沒有可用的主城回程點。');
+    return;
+  }
+
+  const destination = getRoom('village_square') ?? starter.rooms.map(roomId => getRoom(roomId)).find(Boolean);
+  if (!destination) {
+    sendError(session.sessionId, '主城回程點缺少房間資料。');
+    return;
+  }
+
+  char.roomId = destination.id;
+  world.placePlayer(char.id, destination.id);
+  unlockZone(char.id, starter.id, 'recall');
+  unlockPortal(char.id, starter.portal.id, starter.id);
+  saveCharacter(char);
+  sendNarrative(session.sessionId, `你集中精神啟動回程印記，返回 ${destination.name}。`);
+  cmdLook(session);
 }
 
 // ─── 組隊系統 ───
@@ -3154,6 +3305,10 @@ function cmdHelp(session: WsSession, topic?: string): void {
         'look (l)            查看周圍環境',
         'go <方向> (n/s/e/w)  移動',
         'map                 顯示地圖',
+        'activate portal     啟用目前區域傳送陣',
+        'portals             查看傳送點解鎖狀態',
+        'travel <傳送點>      傳送到已啟用區域',
+        'recall              回到新手村廣場',
         'rest                原地休息，恢復 HP 與資源',
       ],
     },
@@ -4353,6 +4508,52 @@ function cmdSignin(session: WsSession): void {
 }
 
 // ─── 工具函式 ───
+
+function canAccessZone(char: Character, zoneId: string, grantWhenRequirementsMet = true): { ok: true } | { ok: false; message: string } {
+  const zone = getZone(zoneId);
+  if (!zone) return { ok: false, message: `未知區域：${zoneId}` };
+  if (!zone.unlock) return { ok: true };
+  if (isZoneUnlocked(char.id, zoneId)) return { ok: true };
+
+  const unlock = zone.unlock;
+  if (unlock.requiredLevel && char.level < unlock.requiredLevel) {
+    return { ok: false, message: `${zone.name} 需要等級 ${unlock.requiredLevel} 才能進入。` };
+  }
+  if (unlock.requiredQuestId && !isQuestCompleted(char.id, unlock.requiredQuestId)) {
+    return { ok: false, message: `${zone.name} 需要先完成任務 ${unlock.requiredQuestId}。` };
+  }
+  if (unlock.requiredItemId && !getInventory(char.id).some(item => item.itemId === unlock.requiredItemId && item.quantity > 0)) {
+    const itemName = ITEM_DEFS[unlock.requiredItemId]?.name ?? unlock.requiredItemId;
+    return { ok: false, message: `${zone.name} 需要持有 ${itemName}。` };
+  }
+  if (unlock.requiredZoneId && !isZoneUnlocked(char.id, unlock.requiredZoneId)) {
+    const requiredZone = getZone(unlock.requiredZoneId);
+    return { ok: false, message: `${zone.name} 需要先探索 ${requiredZone?.name ?? unlock.requiredZoneId}。` };
+  }
+
+  if (grantWhenRequirementsMet) {
+    unlockZone(char.id, zoneId, 'requirements');
+  }
+  return { ok: true };
+}
+
+function findPortalZone(query: string): ZoneDef | undefined {
+  const normalized = query.trim().toLowerCase();
+  return Object.values(ZONES).find(zone => {
+    if (!zone.portal) return false;
+    return zone.id.toLowerCase() === normalized
+      || zone.name.toLowerCase() === normalized
+      || zone.portal.id.toLowerCase() === normalized
+      || zone.portal.name.toLowerCase() === normalized;
+  });
+}
+
+function getPortalCost(char: Character, zone: ZoneDef): number {
+  if (!zone.portal) return 0;
+  if (zone.portal.cost === 0) return 0;
+  if (char.level <= 10 && zone.levelRange[0] <= 10) return Math.min(zone.portal.cost, 5);
+  return zone.portal.cost;
+}
 
 function getChar(session: WsSession): Character | null {
   if (!session.characterId) {

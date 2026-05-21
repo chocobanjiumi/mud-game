@@ -378,7 +378,7 @@ describe('Command routing (updated with new systems)', () => {
     'attack', 'skill', 'defend', 'escape',
     'equip', 'unequip', 'use', 'take', 'pick', 'drop',
     'say', 'talk', 'allocate', 'alloc', 'map', 'help',
-    'rest',
+    'rest', 'activate', 'portals', 'travel', 'recall',
     // New system commands
     'party', 'trade', 'quest', 'duel', 'arena',
     'dungeon', 'leaderboard', 'rank', 'classchange', 'job',
@@ -408,7 +408,7 @@ describe('Command routing (updated with new systems)', () => {
   });
 
   it('should recognize all new system commands', () => {
-    const newCommands = ['party', 'trade', 'quest', 'duel', 'arena', 'dungeon', 'classchange', 'job', 'rank', 'rest'];
+    const newCommands = ['party', 'trade', 'quest', 'duel', 'arena', 'dungeon', 'classchange', 'job', 'rank', 'rest', 'activate', 'portals', 'travel', 'recall'];
     for (const cmd of newCommands) {
       const result = parseCommand(cmd);
       expect(result?.isValid, `${cmd} should be valid`).toBe(true);

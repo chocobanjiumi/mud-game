@@ -271,7 +271,7 @@ export async function validateToken(accessToken: string): Promise<ArinovaUser | 
         return sessionData.user;
       }
     }
-  } catch {
+  } catch (err) {
     console.error(`[Auth] Session bearer error:`, err instanceof Error ? err.message : err);
   }
 
