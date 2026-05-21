@@ -7,6 +7,7 @@ import type {
 import { CLASS_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
+import { recordGoldSpent } from './economy-stats.js';
 
 // ============================================================
 //  常數
@@ -23,6 +24,11 @@ export function expToNextLevel(level: number): number {
   return expRequiredForLevel(level + 1) - expRequiredForLevel(level);
 }
 
+export function getHighLevelReviveFee(level: number): number {
+  if (level < HIGH_LEVEL_REVIVE_FEE_START) return 0;
+  return (level - HIGH_LEVEL_REVIVE_FEE_START + 1) * 20;
+}
+
 /** 初始基礎屬性 */
 const DEFAULT_STATS: BaseStats = {
   str: 5,
@@ -31,6 +37,7 @@ const DEFAULT_STATS: BaseStats = {
   vit: 5,
   luk: 5,
 };
+const HIGH_LEVEL_REVIVE_FEE_START = 20;
 
 /** 初始裝備槽（全空） */
 const EMPTY_EQUIPMENT: EquipmentSlots = {
@@ -493,9 +500,10 @@ export class PlayerManager {
     respawnRoom: string;
     goldLost: number;
     expLost: number;
+    reviveFee: number;
   } {
     const char = this.characters.get(characterId);
-    if (!char) return { respawnRoom: 'village_square', goldLost: 0, expLost: 0 };
+    if (!char) return { respawnRoom: 'village_square', goldLost: 0, expLost: 0, reviveFee: 0 };
 
     // 損失 5% 經驗（不低於當前等級所需的累積經驗，即不會降級）
     const expLost = Math.floor(char.exp * 0.05);
@@ -505,6 +513,9 @@ export class PlayerManager {
     // 損失 10% 金幣
     const goldLost = Math.floor(char.gold * 0.1);
     char.gold -= goldLost;
+    const reviveFee = Math.min(char.gold, getHighLevelReviveFee(char.level));
+    char.gold -= reviveFee;
+    if (goldLost + reviveFee > 0) recordGoldSpent(goldLost + reviveFee);
 
     char.hp = Math.floor(char.maxHp * 0.5); // 復活 50% HP
     char.mp = Math.floor(char.maxMp * 0.5); // 復活 50% MP
@@ -517,6 +528,7 @@ export class PlayerManager {
       respawnRoom: 'village_square',
       goldLost,
       expLost,
+      reviveFee,
     };
   }
 

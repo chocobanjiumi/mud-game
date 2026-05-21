@@ -1,6 +1,6 @@
 // Player/character management tests
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
-import { PlayerManager, expRequiredForLevel, expToNextLevel } from '../game/player.js';
+import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
 import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
@@ -372,6 +372,18 @@ describe('PlayerManager', () => {
 
       expect(result.goldLost).toBe(100); // 10% of 1000
       expect(char.gold).toBe(900);
+    });
+
+    it('charges an extra revive fee for high-level deaths', () => {
+      const char = pm.createCharacter('VeteranHero', 'user-1');
+      char.level = 25;
+      char.gold = 1000;
+
+      const result = pm.handleDeath(char.id);
+
+      expect(result.goldLost).toBe(100);
+      expect(result.reviveFee).toBe(getHighLevelReviveFee(25));
+      expect(char.gold).toBe(1000 - 100 - getHighLevelReviveFee(25));
     });
 
     it('should respawn with 50% HP and 50% MP', () => {
