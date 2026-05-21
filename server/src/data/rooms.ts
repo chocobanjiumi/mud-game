@@ -133,6 +133,10 @@ export const ZONES: Record<string, ZoneDef> = {
     rooms: [
       'town_gate', 'market_street', 'town_plaza',
       'class_change_hall', 'arena_entrance',
+      'tavern', 'auction_house', 'guild_hall', 'town_library', 'prison',
+      'lakeside_inn', 'lakeside_bank', 'lakeside_temple', 'lakeside_portal_square',
+      'lakeside_blacksmith', 'lakeside_tailor', 'lakeside_warehouse',
+      'lakeside_fish_market', 'lakeside_courthouse', 'lakeside_hidden_canal',
     ],
   },
   starter_village_ext: {
@@ -1894,10 +1898,11 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'town_gate',
     name: '城門口',
     zone: 'lakeside_town',
+    image: 'town_gate.png',
+    imagePrompt: '城門口 in lakeside_town, entrance town service room with stone gate, lake wind, shield crest, guards and warm torch light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '高大的石牆圍繞著湖畔城鎮，城門上方刻著城鎮的徽記——一面盾牌與交叉的劍。' +
-      '身著鎧甲的衛兵守在門口，來往的商人和冒險者絡繹不絕。' +
-      '透過城門可以看到繁華的市集街道。',
+      '高大的湖石城牆圍繞著城鎮，城門上方刻著盾牌與交叉長劍徽記，濕潤湖風吹過吊橋與銅釘木門。身著鎧甲的衛兵守在門口，商隊與冒險者沿西側道路排隊入城，東面可看見商業街的燈火。告示牌提示入城補給、登記任務與啟用傳送陣，門洞旁的暗格也可被 inspect 搜出走私線索。' +
+      '這裡是安全錨點與外部路線交會處，玩家可從西側返回十字路口，向東進入市場，或往南接上海岸棧道。城門上方的鐘聲會標示宵禁與警報，衛兵隊長也會提醒新來者先確認復活點、倉庫與傳送廣場位置，避免帶著任務貨物走錯危險路線。',
     exits: [
       { direction: 'west', targetRoomId: 'crossroads', description: '離開城鎮，回到十字路口' },
       { direction: 'east', targetRoomId: 'market_street', description: '進入商業街' },
@@ -1917,10 +1922,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'market_street',
     name: '商業街',
     zone: 'lakeside_town',
+    image: 'market_street.png',
+    imagePrompt: '商業街 in lakeside_town, town service market street with weapon stalls, spice smoke, hanging lanterns and lake reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '熙熙攘攘的商業街上，兩旁商店林立。武器鋪、防具店、藥材行、雜貨舖一應俱全。' +
-      '商販的叫賣聲此起彼落，空氣中混雜著烤肉和香料的味道。' +
-      '這裡是冒險者補給裝備的最佳去處。',
+      '熙熙攘攘的石板商業街沿湖岸展開，武器鋪、防具店、藥材行與雜貨舖掛著不同顏色的燈籠。烤肉煙、香料味與湖水潮氣混在一起，攤販叫賣聲壓過馬車輪聲。西側通回城門，東面通往廣場，北邊酒館門縫飄出酒香；玩家可在此補給、比價、接商人委託，也能 search 貨箱找到異常標記。街角公告牌列出每日採購清單與缺貨材料，南側鍛坊傳來敲鐵聲，提醒玩家可以把剛取得的裝備立刻修理、分解或換成旅途消耗品，也可比較拍賣場與商店價格再決定出售。路邊巡邏會提示可疑商販位置與安全出口，攤位後方還留有通往倉庫的小路。',
     exits: [
       { direction: 'west', targetRoomId: 'town_gate', description: '回到城門口' },
       { direction: 'east', targetRoomId: 'town_plaza', description: '前往城鎮廣場' },
@@ -1940,10 +1945,11 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'town_plaza',
     name: '城鎮廣場',
     zone: 'lakeside_town',
+    image: 'town_plaza.png',
+    imagePrompt: '城鎮廣場 in lakeside_town, town core plaza with hero fountain, lake sunlight, job hall banners and arena arch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '寬闘的廣場是城鎮的中心，一座英雄雕像矗立在噴泉中央。' +
-      '廣場四周環繞著重要的建築——轉職大廳、競技場、以及城主府。' +
-      '陽光灑在碧藍的湖面上，波光粼粼的景色令人心曠神怡。',
+      '寬闊的湖畔廣場是城鎮中心，英雄雕像矗立在噴泉中央，水霧映著碧藍湖面與白石地磚。四周環繞轉職大廳、競技場、拍賣場與通往神殿的拱廊，公告欄貼滿進階任務與地下城招募。西側回商業街，北面通向導師所在的大廳，南側傳來競技場歡呼，東邊是拍賣場正門。' +
+      '雕像底座有可調查的符文順序，噴泉旁也標示傳送陣方向，是玩家整理任務、查看城市服務與選擇下一條路線的核心節點。廣場巡邏路線清楚避開人潮，玩家可藉此判斷哪條街通往安全服務，哪條路會帶到訓練、交易或交通功能。',
     exits: [
       { direction: 'west', targetRoomId: 'market_street', description: '回到商業街' },
       { direction: 'north', targetRoomId: 'class_change_hall', description: '轉職大廳的宏偉大門' },
@@ -1964,10 +1970,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'class_change_hall',
     name: '轉職大廳',
     zone: 'lakeside_town',
+    image: 'class_change_hall.png',
+    imagePrompt: '轉職大廳 in lakeside_town, town service class hall with four profession pillars, ritual circle, mentor alcoves and soft magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '宏偉的大廳由四根巨柱支撐，每根柱子代表一個職業——劍與盾、魔法書、弓箭、聖杖。' +
-      '四位導師分別端坐在各自的區域，等待著有志之士前來拜師。' +
-      '大廳中央的魔法陣散發著柔和的光芒，那是轉職儀式的核心。',
+      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著劍盾、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；玩家可在此詢問轉職、檢查技能路線，或 inspect 柱腳找到各職業試煉提示。牆邊展示一轉與二轉武具樣本，地面箭紋標出各導師區域，讓玩家能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免玩家未準備好就前往高危區域，也方便回頭確認未完成職業任務。',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
       { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳' },
@@ -1992,10 +1998,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'arena_entrance',
     name: '競技場入口',
     zone: 'lakeside_town',
+    image: 'arena_entrance.png',
+    imagePrompt: '競技場入口 in lakeside_town, town service combat training room with circular arena gate, challenge board, torchlight and cheering crowd, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '巨大的圓形建築聳立在眼前，觀眾席的歡呼聲從裡面隱隱傳出。' +
-      '入口處的告示板上寫著今日的挑戰賽程和獎勵。' +
-      '幾名身經百戰的冒險者正在門口熱身，準備迎接下一場挑戰。',
+      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內訓練用魔像會重置成不同姿態；玩家可在此測試技能、完成戰鬥教學，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全訓練區，失敗時可退回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前練習，並熟悉屍體搜刮流程與裝備耐久消耗。',
     exits: [
       { direction: 'north', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
     ],

@@ -1069,10 +1069,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'tavern',
     name: '酒館',
     zone: 'lakeside_town',
+    image: 'tavern.png',
+    imagePrompt: '酒館 in lakeside_town, town service tavern with long tables, hearth light, beer barrels, adventurer notice board and smoky warm air, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '推開吱呀作響的木門，撲面而來的是啤酒花和烤肉的香氣。' +
-      '酒館內燈火通明，冒險者們圍坐在長桌旁大聲談笑，觥籌交錯。' +
-      '角落裡的吟遊詩人正撥動琴弦，唱著一首關於龍族寶藏的古老歌謠。',
+      '推開吱呀作響的木門，啤酒花、烤肉與濕木柴的香氣迎面湧來。酒館內燈火通明，冒險者圍坐長桌交換地下城情報，牆上任務板貼著湖岸委託。南面回商業街，北側後門通向拍賣場；玩家可與酒保交談、接取傳聞任務，或 inspect 角落吟遊詩人的歌詞尋找龍族寶藏線索。',
     exits: [
       { direction: 'south', targetRoomId: 'market_street', description: '回到商業街' },
       { direction: 'north', targetRoomId: 'auction_house', description: '酒館後門通往拍賣場' },
@@ -1093,18 +1093,18 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'auction_house',
     name: '拍賣場',
     zone: 'lakeside_town',
+    image: 'auction_house.png',
+    imagePrompt: '拍賣場 in lakeside_town, town service auction hall with circular podium, display cases, painted dome and golden lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一座氣派的石造建築，穹頂上繪著交易之神的壁畫。大廳中央是一個圓形的拍賣台，' +
-      '周圍環繞著階梯式的觀眾席。牆壁上的展示櫃裡陳列著等待拍賣的珍稀物品。' +
-      '拍賣官清亮的嗓音在大廳中迴盪，競價聲此起彼落。',
+      '氣派石造拍賣場有繪著交易之神的穹頂，金色吊燈照著中央圓形拍賣台與階梯觀眾席。展示櫃陳列珍稀材料、舊王國徽章和待鑑定裝備，拍賣官清亮嗓音在大廳迴盪。西側正門連廣場，南邊後門通酒館，東側貨廊通向倉庫；玩家可查看交易、追蹤特殊拍品，或 search 拍賣台底座取得非公開目錄。場內分流牌標示普通拍品、稀有裝備與公會委託櫃台，提醒玩家先確認綁定狀態、稅費與倉庫空間再競價。高台旁的估價水晶會閃出品質顏色，方便追蹤稀有以上裝備來源與成交稅紀錄，也能確認賣家聲望。',
     exits: [
       { direction: 'west', targetRoomId: 'town_plaza', description: '正門通往城鎮廣場' },
       { direction: 'south', targetRoomId: 'tavern', description: '從後門回到酒館' },
     ],
     monsters: [],
     mapSymbol: '[$]',
-    mapX: 5,
-    mapY: 5,
+    mapX: 6,
+    mapY: 6,
     guardianHints: {
       creature: '展示櫃裡有一件物品似乎在微微顫動——那可能不是普通的收藏品。',
       treasure: '拍賣台底座的暗格中藏著一份特殊的拍賣品目錄，記載著非公開的稀世珍寶。',
@@ -1116,10 +1116,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'guild_hall',
     name: '公會大廳',
     zone: 'lakeside_town',
+    image: 'guild_hall.png',
+    imagePrompt: '公會大廳 in lakeside_town, town service guild hall with crossed sword emblem, round table, magic ranking board and cool skylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一座宏偉的建築，大門上方懸掛著巨大的公會徽章——交叉的劍與月桂冠。' +
-      '大廳內陳列著歷屆公會精英的畫像和戰績，牆壁上的魔法公告板即時更新著各公會的排名。' +
-      '中央的圓桌旁坐著幾位公會長老，正在討論即將到來的公會戰。',
+      '宏偉建築的大門懸著交叉長劍與月桂冠徽章，冷色天窗照在中央圓桌與歷代精英畫像上。魔法公告板即時更新公會排名、建設需求與王國戰備，長老席旁堆放著待審的公會申請。西側通往轉職大廳，東面連城鎮圖書館，北側小門接法院走廊；玩家可查公會目標、接社交任務，並 inspect 畫像背後的獎杯牆。圓桌旁的地圖用旗針標出可支援的王國戰線與公會建設點，讓隊伍能在出城前分配採集、戰鬥與運輸任務。牆上的鐘會提醒每日與每週目標刷新時間，任務牌也標出推薦隊伍規模與獎勵分類及聲望需求。',
     exits: [
       { direction: 'east', targetRoomId: 'town_library', description: '走廊連接著城鎮圖書館' },
       { direction: 'west', targetRoomId: 'class_change_hall', description: '走廊通往轉職大廳' },
@@ -1139,10 +1139,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'town_library',
     name: '圖書館',
     zone: 'lakeside_town',
+    image: 'town_library.png',
+    imagePrompt: '圖書館 in lakeside_town, town quest library with high shelves, floating magic lamps, parchment smell and scholar reading alcove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '高聳的書架從地板延伸至天頂，數以萬計的書籍和卷軸整齊排列。' +
-      '魔法燈火在每排書架上方懸浮，投下柔和的暖光。空氣中瀰漫著古老羊皮紙的氣息。' +
-      '一位銀髮的老學者坐在閱讀區，正透過單片眼鏡研究一份泛黃的地圖。',
+      '高聳書架從地板延伸到拱頂，數以萬計的書籍與卷軸散發羊皮紙、墨水和防潮草藥味。懸浮魔法燈在每排書架上方投下暖光，銀髮學者正在閱讀區研究泛黃湖區地圖。西側回公會大廳，南面地下階梯通往監獄；玩家可查閱怪物圖鑑、接探索任務，或 inspect 禁區書架尋找被鎖鏈束縛的知識生物。閱讀桌上的索引卡提示各區域怪物弱點、採集材料與傳送解鎖條件，是規劃低等到高等路線的重要情報點。書梯旁另有舊地圖櫃，標出隱藏水道與城外道路，並留下可追蹤的頁碼標籤與任務批注及調查順序。',
     exits: [
       { direction: 'west', targetRoomId: 'guild_hall', description: '走廊通回公會大廳' },
       { direction: 'south', targetRoomId: 'prison', description: '圖書館地下層有通道通往監獄' },
@@ -1163,10 +1163,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'prison',
     name: '監獄',
     zone: 'lakeside_town',
+    image: 'prison.png',
+    imagePrompt: '監獄 in lakeside_town, town quest prison with damp stone cells, iron bars, torch shadows and guarded evidence room, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '陰暗潮濕的地下通道連接著一排排鐵欄牢房，火把在牆壁上搖曳，將影子拉得又長又詭異。' +
-      '多數牢房已經空置，但角落裡偶爾傳來鐵鏈的哐啷聲。' +
-      '獄卒在通道中來回巡邏，手中的鑰匙串發出清脆的碰撞聲。',
+      '陰暗潮濕的地下通道連接一排排鐵欄牢房，火把在鹽漬石牆上搖曳，把影子拉得又長又尖。多數牢房空置，深處卻偶爾傳來鐵鏈哐啷與低聲供詞。北面階梯回圖書館，西側暗渠可通往隱藏水道；玩家可與獄卒確認通緝任務、search 儲物間沒收品，也能 inspect 囚犯塗鴉找到越獄隧道線索。',
     exits: [
       { direction: 'north', targetRoomId: 'town_library', description: '從地下通道回到圖書館' },
     ],
@@ -1180,6 +1180,194 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       treasure: '獄卒輪班交接時，走廊盡頭的儲物間門會短暫開啟，裡面存放著沒收的違禁品。',
       spirit: '牢房牆壁上刻滿了囚犯的塗鴉，其中一段文字記載著越獄隧道的入口位置。',
     },
+  },
+
+  lakeside_inn: {
+    id: 'lakeside_inn',
+    name: '湖景旅店',
+    zone: 'lakeside_town',
+    image: 'lakeside_inn.png',
+    imagePrompt: '湖景旅店 in lakeside_town, town service inn with lake-facing windows, clean beds, blue curtains and candlelit reception desk, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖景旅店坐在商業街北端，開闊窗戶面向靜藍湖面，白色床單帶著薰衣草與乾木香。接待櫃檯掛著房牌、失物袋與冒險者留言，樓梯旁有通往酒館的短廊。南面回商業街，東側小門接神殿巷；玩家可在此休息、整理重生點與查看失物，也能 inspect 旅客留言找到湖岸支線線索。',
+    exits: [
+      { direction: 'south', targetRoomId: 'market_street', description: '旅店門口回到商業街' },
+      { direction: 'east', targetRoomId: 'lakeside_temple', description: '安靜小巷通往神殿' },
+      { direction: 'north', targetRoomId: 'tavern', description: '短廊連到酒館後側' },
+    ],
+    monsters: [],
+    mapSymbol: '[I]',
+    mapX: 4,
+    mapY: 4,
+  },
+
+  lakeside_bank: {
+    id: 'lakeside_bank',
+    name: '銀鱗銀行',
+    zone: 'lakeside_town',
+    image: 'lakeside_bank.png',
+    imagePrompt: '銀鱗銀行 in lakeside_town, town service bank with iron vault door, silver scale counters, ledgers and cold blue security light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀鱗銀行以厚重湖石與鐵門建成，櫃檯上鋪著銀鱗紋銅板，冷藍防盜符文沿金庫門緩慢流動。帳本、印章與秤盤整齊排列，地面回音讓每一步都格外清楚。西側連拍賣場貨廊，南面通倉庫；玩家可存放財物、查交易紀錄，或 search 櫃檯裂縫發現可疑押品標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'auction_house', description: '貨廊回到拍賣場' },
+      { direction: 'south', targetRoomId: 'lakeside_warehouse', description: '鐵門後是倉庫區' },
+    ],
+    monsters: [],
+    mapSymbol: '[$]',
+    mapX: 7,
+    mapY: 6,
+  },
+
+  lakeside_temple: {
+    id: 'lakeside_temple',
+    name: '湖光神殿',
+    zone: 'lakeside_town',
+    image: 'lakeside_temple.png',
+    imagePrompt: '湖光神殿 in lakeside_town, town service temple with shallow reflecting pool, pale stone altar, blue stained glass and holy dawn light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖光神殿以白石拱柱圍著淺水池，藍色彩窗把晨光折成柔和波紋，空氣裡有清水與香草味。祭壇旁擺著祈願牌、治療記錄與迷途者名冊。西側小巷回旅店，南面階梯下到傳送廣場；玩家可祈福、確認復活服務，或 inspect 水池倒影取得失蹤旅人任務提示。神官會說明死亡懲罰、復活位置與安全撤離規則，池邊蠟燭數量也暗示最近湖岸危險事件是否增加。牆面聖徽會記錄已啟用的安全點，讓玩家出城前確認死亡回程位置與治療補給是否足夠，並查看最近安全入口與復活費用，避免長途失誤和任務中斷。',
+    exits: [
+      { direction: 'west', targetRoomId: 'lakeside_inn', description: '小巷回到湖景旅店' },
+      { direction: 'south', targetRoomId: 'lakeside_portal_square', description: '石階通往傳送廣場' },
+    ],
+    monsters: [],
+    mapSymbol: '[T]',
+    mapX: 5,
+    mapY: 3,
+  },
+
+  lakeside_portal_square: {
+    id: 'lakeside_portal_square',
+    name: '湖畔傳送廣場',
+    zone: 'lakeside_town',
+    image: 'lakeside_portal_square.png',
+    imagePrompt: '湖畔傳送廣場 in lakeside_town, town traffic portal room with circular runes, blue lake mist, brass pylons and stable magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖畔傳送廣場鋪著環形符文石，黃銅導柱圍住穩定的藍色傳送光，湖霧從欄杆外飄入法陣邊緣。交通告示牌標明已解鎖節點、費用與冷卻規則，守衛會檢查戰鬥狀態與危險物資。北面通神殿，西側拱門回城鎮廣場，東側道路接魚市；玩家可 activate portal、travel 或 recall，並 inspect 導柱查看深處捷徑線索。地面刻有不同網路的顏色環，提醒玩家公共傳送、區域入口與危險撤離點的限制並不相同。法陣邊緣的灰色插槽會顯示尚未解鎖的區域，作為後續任務目標與費用提示，也標明冷卻剩餘時間與可用出口及回程路線與安全標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'lakeside_temple', description: '階梯回到湖光神殿' },
+      { direction: 'west', targetRoomId: 'town_plaza', description: '拱門通往城鎮廣場' },
+      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '湖風帶來魚市氣味' },
+    ],
+    monsters: [],
+    mapSymbol: '[O]',
+    mapX: 6,
+    mapY: 3,
+  },
+
+  lakeside_blacksmith: {
+    id: 'lakeside_blacksmith',
+    name: '湖鐵鍛坊',
+    zone: 'lakeside_town',
+    image: 'lakeside_blacksmith.png',
+    imagePrompt: '湖鐵鍛坊 in lakeside_town, town service blacksmith with lake-iron anvils, orange forge light, weapon racks and steam vents, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖鐵鍛坊靠近市場南側，橘紅爐光照著沉重鐵砧、武器架與一排淬火水槽，蒸汽帶著金屬與炭灰味。牆上掛著修理價目、強化委託和缺料清單。北面回商業街，東側棚道接裁縫坊；玩家可修理、強化或接取材料委託，search 爐邊廢料能找到仍可回收的礦石碎片。',
+    exits: [
+      { direction: 'north', targetRoomId: 'market_street', description: '回到商業街' },
+      { direction: 'east', targetRoomId: 'lakeside_tailor', description: '棚道連到裁縫坊' },
+    ],
+    monsters: [],
+    mapSymbol: '[F]',
+    mapX: 4,
+    mapY: 7,
+  },
+
+  lakeside_tailor: {
+    id: 'lakeside_tailor',
+    name: '月紋裁縫坊',
+    zone: 'lakeside_town',
+    image: 'lakeside_tailor.png',
+    imagePrompt: '月紋裁縫坊 in lakeside_town, town service tailor workshop with cloth bolts, mannequins, silver thread and soft window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月紋裁縫坊掛滿布卷、皮革樣片與半成品披風，銀線在窗光下像湖面月痕般閃爍。木製人台旁放著量尺、染料瓶與訂單卡，後牆標示各職業護甲需求。西側棚道回鍛坊，東面短街通魚市；玩家可製作或改造布甲皮甲，inspect 訂單卡可找到指定外觀與材料來源。',
+    exits: [
+      { direction: 'west', targetRoomId: 'lakeside_blacksmith', description: '棚道回到鍛坊' },
+      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '短街通往魚市' },
+    ],
+    monsters: [],
+    mapSymbol: '[S]',
+    mapX: 5,
+    mapY: 8,
+  },
+
+  lakeside_warehouse: {
+    id: 'lakeside_warehouse',
+    name: '湖港倉庫',
+    zone: 'lakeside_town',
+    image: 'lakeside_warehouse.png',
+    imagePrompt: '湖港倉庫 in lakeside_town, town service warehouse with stacked crates, rope nets, ledger desk and dim lantern aisles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖港倉庫由粗木梁和厚石牆支撐，成排貨箱、繩網與封蠟袋堆到屋頂，昏黃提燈讓巷道像迷宮。帳桌上放著入庫單與遺失貨物清單，角落有通往暗渠的排水門。北面連銀鱗銀行，西側貨門回拍賣場；玩家可管理倉庫、接找貨任務，或 search 箱底發現被調包的商品。',
+    exits: [
+      { direction: 'north', targetRoomId: 'lakeside_bank', description: '鐵門通回銀行' },
+      { direction: 'west', targetRoomId: 'auction_house', description: '貨門連到拍賣場' },
+      { direction: 'south', targetRoomId: 'lakeside_hidden_canal', description: '排水門後傳來潮聲' },
+    ],
+    monsters: [],
+    mapSymbol: '[W]',
+    mapX: 7,
+    mapY: 7,
+  },
+
+  lakeside_fish_market: {
+    id: 'lakeside_fish_market',
+    name: '湖鮮魚市',
+    zone: 'lakeside_town',
+    image: 'lakeside_fish_market.png',
+    imagePrompt: '湖鮮魚市 in lakeside_town, town social fish market with wet stone stalls, hanging nets, blue lake light and silver fish scales, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖鮮魚市鋪著潮濕青石，銀鱗魚、蟹籠和藍色水草堆在攤位上，鹽味與湖泥味混著吆喝聲。碼頭方向有漁船鈴聲，攤販桌下藏著今日捕獲記錄。西面短街回裁縫坊，北側是傳送廣場，南側木棧橋連到隱藏水道入口；玩家可買材料、接釣魚委託，或 inspect 魚鰓找出受污染湖域線索。魚販會把異常魚鱗、湖底碎片與每日行情放在不同木盤上，讓採集與烹飪路線有清楚材料來源。潮汐牌也會提示前往東方海岸與釣魚點的最佳時間，旁邊水桶可檢查稀有魚影與採集等級需求，並指向碼頭與水道入口標記處。',
+    exits: [
+      { direction: 'west', targetRoomId: 'lakeside_tailor', description: '短街回裁縫坊' },
+      { direction: 'north', targetRoomId: 'lakeside_portal_square', description: '石路回到傳送廣場' },
+      { direction: 'south', targetRoomId: 'lakeside_hidden_canal', description: '棧橋下有隱蔽水門' },
+    ],
+    monsters: [],
+    mapSymbol: '[f]',
+    mapX: 7,
+    mapY: 8,
+  },
+
+  lakeside_courthouse: {
+    id: 'lakeside_courthouse',
+    name: '湖畔裁判所',
+    zone: 'lakeside_town',
+    image: 'lakeside_courthouse.png',
+    imagePrompt: '湖畔裁判所 in lakeside_town, town quest courthouse with marble benches, sealed evidence shelves, high windows and stern white light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖畔裁判所以白色大理石長椅、封蠟證物架與高窗冷光構成嚴肅空間，法槌聲似乎仍在牆面回響。公告板列出通緝犯、走私案與公會糾紛，側門通向公會大廳，地下卷宗梯通監獄。南面連公會大廳，東側下行到監獄；玩家可接通緝與證物任務，search 旁聽席能找到被落下的證詞碎片。證物架上的編號對應監獄牢房與水道暗號，讓玩家能把城市探索、審判紀錄和追捕任務串成同一條線。書記桌上還標明哪些案件需要屍體物品或現場調查，並提示交回證物的位置與期限，方便核對任務紀錄與證物袋。',
+    exits: [
+      { direction: 'south', targetRoomId: 'guild_hall', description: '側門回公會大廳' },
+      { direction: 'east', targetRoomId: 'prison', description: '卷宗梯通往地下監獄' },
+    ],
+    monsters: [],
+    mapSymbol: '[J]',
+    mapX: 5,
+    mapY: 2,
+  },
+
+  lakeside_hidden_canal: {
+    id: 'lakeside_hidden_canal',
+    name: '隱藏水道',
+    zone: 'lakeside_town',
+    image: 'lakeside_hidden_canal.png',
+    imagePrompt: '隱藏水道 in lakeside_town, hidden exploration canal with mossy arches, black water, smuggler marks and narrow lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隱藏水道位於倉庫與魚市下方，苔痕覆滿拱形磚牆，黑水反射狹窄提燈光，牆角刻著走私者留下的潮汐記號。北面排水門回倉庫，東北木梯通魚市，西側狹洞連監獄牢房後方。這是城鎮少見的探索房，玩家可 search 破箱取得一次性藏物，inspect 潮汐記號找出海岸走私路線，但也要注意濕滑地面和暗處的警鈴線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'lakeside_warehouse', description: '排水門回到倉庫' },
+      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '木梯通往魚市棧橋' },
+      { direction: 'west', targetRoomId: 'prison', description: '狹洞連到監獄後牆' },
+    ],
+    monsters: [],
+    groundItems: [
+      { itemId: 'rare_fossil', description: '破箱裡壓著一枚被湖泥包住的奇特化石' },
+    ],
+    mapSymbol: '[?]',
+    mapX: 7,
+    mapY: 9,
   },
 
   // ─── Area 9: 魔族領地 (Lv 30-40) ──────────────────────────
