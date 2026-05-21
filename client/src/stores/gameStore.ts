@@ -15,6 +15,9 @@ import type {
   ItemRarity,
   ItemStats,
   LeaderboardEntry,
+  ZoneType,
+  PvpMode,
+  DeathPenalty,
 } from '@game/shared';
 
 import type { SoundCategory } from '../audio/AudioManager';
@@ -148,6 +151,16 @@ export interface MapData {
   ascii: string;
   currentRoom: string;
   zone: string;
+  zoneName?: string;
+  zoneType?: ZoneType;
+  dangerLevel?: number;
+  pvpMode?: PvpMode;
+  deathPenalty?: DeathPenalty;
+  exploration?: {
+    visitedRooms: number;
+    totalRooms: number;
+    percent: number;
+  };
 }
 
 // --- Connection state ---

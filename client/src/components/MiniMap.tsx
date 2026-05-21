@@ -3,13 +3,28 @@ import { useGameStore } from '../stores/gameStore';
 export default function MiniMap() {
   const mapData = useGameStore((s) => s.mapData);
   const room = useGameStore((s) => s.room);
+  const zoneLabel = mapData?.zoneName ?? mapData?.zone;
 
   return (
     <div className="bg-bg-secondary border border-border-dim rounded p-2">
       <div className="text-xs text-text-dim mb-1 flex items-center justify-between">
         <span>地圖</span>
-        {mapData?.zone && <span className="text-text-amber">{mapData.zone}</span>}
+        {zoneLabel && <span className="text-text-amber">{zoneLabel}</span>}
       </div>
+
+      {mapData?.zoneType && (
+        <div className="mb-2 grid grid-cols-2 gap-x-2 gap-y-1 text-[10px] text-text-dim">
+          <span>類型 <b className="text-text-bright font-normal">{mapData.zoneType}</b></span>
+          <span>危險 <b className="text-text-amber font-normal">{mapData.dangerLevel ?? 0}</b></span>
+          <span>PvP <b className="text-text-bright font-normal">{mapData.pvpMode}</b></span>
+          <span>死亡 <b className="text-text-bright font-normal">{mapData.deathPenalty}</b></span>
+          {mapData.exploration && (
+            <span className="col-span-2">
+              探索 <b className="text-text-terminal font-normal">{mapData.exploration.visitedRooms}/{mapData.exploration.totalRooms} ({mapData.exploration.percent}%)</b>
+            </span>
+          )}
+        </div>
+      )}
 
       {mapData?.ascii ? (
         <pre className="text-[10px] leading-tight text-text-terminal font-mono whitespace-pre select-none">

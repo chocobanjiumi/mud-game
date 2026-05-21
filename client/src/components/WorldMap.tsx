@@ -65,10 +65,11 @@ export default function WorldMap() {
   const setWorldMapOpen = useGameStore((s) => s.setWorldMapOpen);
   const exploredRooms = useGameStore((s) => s.exploredRooms);
   const room = useGameStore((s) => s.room);
+  const mapData = useGameStore((s) => s.mapData);
 
   if (!worldMapOpen) return null;
 
-  // Determine current zone from room id (simple heuristic)
+  const currentZoneId = mapData?.zone ?? '';
   const currentRoomId = room?.id ?? '';
 
   // Calculate explored rooms per zone
@@ -80,7 +81,7 @@ export default function WorldMap() {
     return count;
   };
 
-  const isCurrentZone = (zoneId: string) => currentRoomId.startsWith(zoneId);
+  const isCurrentZone = (zoneId: string) => currentZoneId === zoneId || currentRoomId.startsWith(zoneId);
 
   const svgWidth = PAD_X * 2 + 4 * COL_WIDTH;
   const svgHeight = PAD_Y * 2 + 8 * ROW_HEIGHT;
@@ -102,6 +103,15 @@ export default function WorldMap() {
 
         {/* Map body */}
         <div className="worldmap-body">
+          {mapData?.zoneType && (
+            <div className="mb-3 grid grid-cols-5 gap-2 text-[10px] text-text-dim">
+              <div>區域 <span className="text-text-amber">{mapData.zoneName ?? mapData.zone}</span></div>
+              <div>類型 <span className="text-text-bright">{mapData.zoneType}</span></div>
+              <div>危險 <span className="text-text-amber">{mapData.dangerLevel ?? 0}</span></div>
+              <div>PvP <span className="text-text-bright">{mapData.pvpMode}</span></div>
+              <div>死亡 <span className="text-text-bright">{mapData.deathPenalty}</span></div>
+            </div>
+          )}
           <svg
             width={svgWidth}
             height={svgHeight}

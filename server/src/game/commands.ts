@@ -1712,6 +1712,16 @@ function cmdMap(session: WsSession): void {
     ascii: miniMap,
     currentRoom: char.roomId,
     zone: room?.zone ?? 'world',
+    zoneName: zone?.name,
+    zoneType: zone?.type,
+    dangerLevel: zone?.dangerLevel,
+    pvpMode: zone?.pvpMode,
+    deathPenalty: zone?.deathPenalty,
+    exploration: room ? {
+      visitedRooms,
+      totalRooms,
+      percent,
+    } : undefined,
   });
   if (room && zone) {
     sendSystem(session.sessionId, `探索度：${zone.name} ${visitedRooms}/${totalRooms} (${percent}%)；類型 ${zone.type}，危險度 ${zone.dangerLevel}，PvP ${zone.pvpMode}，死亡懲罰 ${zone.deathPenalty}`);

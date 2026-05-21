@@ -3,7 +3,7 @@
 import type { Character, EquipmentSlots } from './player.js';
 import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { InventoryItem } from './item.js';
-import type { RoomExit } from './world.js';
+import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
 import type { ActiveStatusEffect } from './combat.js';
 
 // Client → Server
@@ -111,6 +111,16 @@ export interface MapPayload {
   ascii: string;
   currentRoom: string;
   zone: string;
+  zoneName?: string;
+  zoneType?: ZoneType;
+  dangerLevel?: number;
+  pvpMode?: PvpMode;
+  deathPenalty?: DeathPenalty;
+  exploration?: {
+    visitedRooms: number;
+    totalRooms: number;
+    percent: number;
+  };
 }
 
 // Shop-related payloads
