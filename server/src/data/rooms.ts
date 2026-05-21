@@ -38,6 +38,11 @@ export const ZONES: Record<string, ZoneDef> = {
     rooms: [
       'village_square', 'adventurer_guild', 'weapon_shop',
       'potion_shop', 'village_gate', 'training_ground',
+      'starter_village_inn', 'starter_village_storehouse', 'starter_village_chapel',
+      'starter_village_portal_shrine', 'starter_village_market_lane', 'starter_village_crafting_shed',
+      'starter_village_notice_corner', 'starter_village_well_path', 'starter_village_old_library',
+      'starter_village_river_stairs', 'starter_village_guard_post', 'starter_village_stable_yard',
+      'starter_village_hidden_cellar', 'starter_village_rooftop_walk',
     ],
   },
   plains: {
@@ -1028,15 +1033,18 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_square',
     name: '村莊廣場',
     zone: 'starter_village',
+    image: 'village_square.png',
+    imagePrompt: '村莊廣場 in starter_village, town core plaza with fountain, quest board, service crossroads, warm lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '新手村的中心廣場，地面鋪著整齊的石板。廣場中央矗立著一座古老的噴泉，' +
-      '清澈的泉水日夜不息地流淌。四周的告示板上貼滿了各式各樣的冒險委託。',
+      '新手村的中心廣場鋪著被歲月磨亮的灰色石板，雨後的水痕沿著縫隙流向中央噴泉，泉水在銅色燈籠下泛著柔和微光。北側公會門口掛滿委託單，東邊傳來鐵匠鋪的敲擊聲，西邊飄著草藥與乾花氣味，南側可看見村門火把和通往平原的泥路。噴泉旁的舊告示板標出新手訓練、傳送陣與村內服務位置，也暗示有些委託需要仔細查看廣場角落。' +
+      '廣場四周的排水溝能聽見細小水聲，旅人腳印在不同方向交錯，讓新人能從聲音、氣味和路標判斷下一步該去商店、公會、村口或傳送祠堂。噴泉底座有幾道新刮痕，提醒玩家可用 look 或 inspect 找到隱藏線索。',
     exits: [
       { direction: 'north', targetRoomId: 'adventurer_guild', description: '冒險者公會的大門敞開著' },
       { direction: 'east', targetRoomId: 'weapon_shop', description: '傳來鐵匠打鐵的聲響' },
       { direction: 'west', targetRoomId: 'potion_shop', description: '空氣中飄著草藥的香氣' },
       { direction: 'south', targetRoomId: 'village_gate', description: '通往村口的道路' },
       { direction: 'up', targetRoomId: 'village_backhill', description: '一條小路蜿蜒通往村莊後山' },
+      { direction: 'down', targetRoomId: 'starter_village_portal_shrine', description: '噴泉後方的石階通往傳送祠堂' },
     ],
     npcs: ['village_chief'],
     mapSymbol: '[ ]',
@@ -1053,12 +1061,14 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'adventurer_guild',
     name: '冒險者公會',
     zone: 'starter_village',
+    image: 'adventurer_guild.png',
+    imagePrompt: '冒險者公會 in starter_village, town service guild hall with quest board, mentor desk, candlelit rafters, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '寬敞的大廳裡擺放著長桌和木椅，牆上掛著歷代冒險者的肖像畫。' +
-      '公會櫃檯後方是一面巨大的任務看板，上面密密麻麻地釘著各種委託單。' +
-      '一位經驗豐富的導師正在指導新人。',
+      '公會大廳由粗木梁撐起，長桌上堆著地圖、空酒杯與磨損的訓練手冊，牆面掛著歷代冒險者的肖像與被怪物爪痕劃破的盾牌。北牆任務看板密密麻麻釘著委託單，燭光照出不同顏色的緊急標記；南門回到廣場，旁邊的小門通往安靜的舊書庫。導師站在櫃檯前提醒新人先學會 look、go、attack 與 loot corpse，再接取更遠的區域任務。' +
+      '木地板在櫃檯前被踩出淺色痕跡，表示這裡是接任務與回報成果的主要動線。角落的沙盤標出村口、訓練場和傳送祠堂，旁邊還放著幾具怪物骨片作為教具，提示玩家任務目標常會要求擊敗、搜刮或回收證物。',
     exits: [
       { direction: 'south', targetRoomId: 'village_square', description: '回到廣場' },
+      { direction: 'east', targetRoomId: 'starter_village_old_library', description: '側門後是保存教本的舊書庫' },
     ],
     npcs: ['adventure_mentor'],
     mapSymbol: '[G]',
@@ -1075,12 +1085,14 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'weapon_shop',
     name: '武器店',
     zone: 'starter_village',
+    image: 'weapon_shop.png',
+    imagePrompt: '武器店 in starter_village, town service weapon shop with forge, weapon racks, orange firelight and smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '牆壁上掛滿了各式各樣的武器——長劍、短刀、弓箭、法杖應有盡有。' +
-      '爐火映照出鐵匠魁梧的身影，空氣中瀰漫著金屬的味道。' +
-      '幾把剛打好的新劍在架子上閃閃發光。',
+      '武器店的石牆被爐火烤得微微發紅，長劍、短弓、權杖與練習盾按等級掛在不同架位上，金屬油與煤煙的味道混在一起。鐵砧旁的地面刻著安全線，提醒新人不要靠近噴濺的火星；西門可回廣場，北側半開的木門連到修補裝備的小工棚。架上每件武器都掛著用途牌，暗示玩家可以比較欄位、等級與職業需求再裝備。' +
+      '爐邊水槽不斷冒出白霧，敲打聲會隨鐵匠動作在屋樑間回響。櫃檯下方擺著待鑑定的舊短劍和木箱，牆上的箭頭牌標示修補工棚方向，提醒玩家戰鬥前檢查武器、耐久和背包空位。',
     exits: [
       { direction: 'west', targetRoomId: 'village_square', description: '回到廣場' },
+      { direction: 'north', targetRoomId: 'starter_village_crafting_shed', description: '小工棚裡傳出磨刀與修補聲' },
     ],
     npcs: ['blacksmith'],
     mapSymbol: '[W]',
@@ -1097,12 +1109,14 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'potion_shop',
     name: '藥水店',
     zone: 'starter_village',
+    image: 'potion_shop.png',
+    imagePrompt: '藥水店 in starter_village, town service apothecary with herb shelves, glowing bottles, green window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '小巧的店面裡瓶瓶罐罐排列得井然有序，五顏六色的藥水在架子上微微發光。' +
-      '櫃檯上擺著一本翻開的藥典，空氣中混合著薰衣草和薄荷的清新氣息。' +
-      '藥師正專注地研磨著什麼。',
+      '藥水店裡的木架從地面堆到天花板，紅藍藥水在玻璃瓶中閃著柔光，乾燥薰衣草、薄荷與苦艾草垂掛在窗邊。櫃檯後方的藥典翻到治療創傷的頁面，旁邊標著低等冒險者常用補給；東門通回廣場，後門通往儲藏屋。地上細碎藥粉形成一條淡綠痕跡，提示仔細調查或補給後再前往戰鬥區。' +
+      '屋內能聽見研磨棒碰撞石臼的細響，藥師把不同尺寸的瓶子依照用途排列，讓人一眼看出恢復生命、魔力和解除異常的差別。後方門縫吹來倉庫冷氣，暗示補給箱、隱藏地窖和簡單搜尋任務都與這間店相連。',
     exits: [
       { direction: 'east', targetRoomId: 'village_square', description: '回到廣場' },
+      { direction: 'north', targetRoomId: 'starter_village_storehouse', description: '藥草箱堆滿後方儲藏屋' },
     ],
     npcs: ['herbalist'],
     mapSymbol: '[P]',
@@ -1119,15 +1133,17 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'village_gate',
     name: '村口',
     zone: 'starter_village',
+    image: 'village_gate.png',
+    imagePrompt: '村口 in starter_village, town gate and safe exit with wooden palisade, torchlight, road to plains, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '簡樸的木柵欄標示著新手村的邊界。一條泥土小路蜿蜒向南，通往廣闊的平原。' +
-      '村口的守衛正靠在柵門旁打盹，身旁的火把在微風中搖曳。' +
-      '遠方隱約可見綠油油的草原。',
+      '村口的木柵欄沿著低矮土坡展開，尖木樁上繫著避獸鈴，微風吹過時發出細碎聲響。南方泥路通往翠綠平原，遠處能看見草浪和野獸踩出的暗色小徑；北面回到廣場，東側訓練場傳來木劍撞擊聲，西側小路繞往外圍。守衛火把照亮路標與警告牌，提醒初學者先檢查裝備、藥水與任務，再離開安全區進入可能遭遇史萊姆的道路。' +
+      '柵門下方有新鮮黏液和被拖曳的草束，說明怪物偶爾會靠近安全區邊緣。木梯通往上方哨所，可俯看撤退路線；路標同時標出平原入口與村外小徑，讓玩家能清楚判斷南、北、東、西與上方出口。',
     exits: [
       { direction: 'north', targetRoomId: 'village_square', description: '回到廣場' },
       { direction: 'east', targetRoomId: 'training_ground', description: '訓練場在東邊' },
       { direction: 'south', targetRoomId: 'plains_entrance', description: '踏出村口，前往翠綠平原' },
       { direction: 'west', targetRoomId: 'village_outskirts', description: '一條小路通往村莊外圍' },
+      { direction: 'up', targetRoomId: 'starter_village_guard_post', description: '木梯通往守衛哨所' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 2, respawnSeconds: 30 },
@@ -1146,6 +1162,8 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'training_ground',
     name: '訓練場',
     zone: 'starter_village',
+    image: 'training_ground.png',
+    imagePrompt: '訓練場 in starter_village, town training yard with straw dummies, weapon rack, sunset dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一片被夯實的空地上擺放著稻草人和木製練習靶，幾位新手冒險者正揮汗如雨地練習著基本的劈砍動作。' +
       '場邊的武器架上放著各種練習用的鈍器，木劍碰撞聲和教官的喝斥聲此起彼落。' +
@@ -1153,6 +1171,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
+      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '木梯連到觀戰用的屋頂棧道' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
@@ -1166,6 +1185,252 @@ export const ROOMS: Record<string, RoomDef> = {
       treasure: '武器架底下的泥土裡埋著什麼東西，隱約露出一角。',
       spirit: '這片訓練場承載了無數新手的汗水，地面似乎殘留著鬥志的能量。',
     },
+  },
+
+  starter_village_inn: {
+    id: 'starter_village_inn',
+    name: '旅人小屋',
+    zone: 'starter_village',
+    image: 'starter_village_inn.png',
+    imagePrompt: '旅人小屋 in starter_village, town service inn with hearth, bunks, rain-dark timber, warm firelight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '旅人小屋裡燃著穩定的壁爐，濕斗篷掛在門邊滴水，粗木長凳被來往新手磨得發亮。北窗能看見公會屋簷，南側窄門通向藥水店附近的小巷，東邊則是人聲嘈雜的冒險者公會。櫃檯旁放著簡易床位牌與醒酒茶，提示受傷或補給不足時可以先回到安全服務區整理狀態。',
+    exits: [
+      { direction: 'east', targetRoomId: 'adventurer_guild', description: '公會大廳就在隔壁' },
+      { direction: 'south', targetRoomId: 'potion_shop', description: '草藥香從南側門縫飄來' },
+    ],
+    mapSymbol: '[I]',
+    mapX: 1,
+    mapY: 1,
+  },
+
+  starter_village_storehouse: {
+    id: 'starter_village_storehouse',
+    name: '補給倉庫',
+    zone: 'starter_village',
+    image: 'starter_village_storehouse.png',
+    imagePrompt: '補給倉庫 in starter_village, town service storehouse with crates, herb bundles, shaft of dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '補給倉庫堆滿標著公會印記的木箱，乾草、繃帶、空瓶與低階採集工具分門別類放在架上，屋頂破洞灑下一束帶塵光線。東門通往藥水店櫃檯，地板下方傳出空洞回聲，暗示某個可調查的地窖入口。牆上的清單提醒新人出門前確認負重與消耗品，避免在野外無法拾取戰利品。',
+    exits: [
+      { direction: 'east', targetRoomId: 'potion_shop', description: '回到藥水店' },
+      { direction: 'down', targetRoomId: 'starter_village_hidden_cellar', description: '一塊鬆動地板通往隱蔽地窖' },
+    ],
+    mapSymbol: '[S]',
+    mapX: 0,
+    mapY: 2,
+  },
+
+  starter_village_chapel: {
+    id: 'starter_village_chapel',
+    name: '晨光禮拜堂',
+    zone: 'starter_village',
+    image: 'starter_village_chapel.png',
+    imagePrompt: '晨光禮拜堂 in starter_village, town service chapel with simple altar, colored window light, quiet stone floor, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '晨光禮拜堂由白石和舊木梁搭成，彩色玻璃把清晨光線切成淡金與淺藍的碎片，灑在簡樸祭壇前。南門連到市場小巷，西側通向舊書庫，祭壇旁的祈願簿記著許多失敗又重新出發的冒險者姓名。這裡沒有怪物，卻提示玩家死亡後安全點、治療服務與祭司職業相關任務的方向。長椅間能聞到蠟油和雨濕木頭的味道，祭壇背後掛著村內安全路線圖，標明廣場、傳送祠堂和村口哨所的位置。幾張祈禱紙提到復活、護送與治療委託，暗示玩家可從 NPC 對話或任務看板取得支援型目標，也能辨認安靜側廊的出口。',
+    exits: [
+      { direction: 'south', targetRoomId: 'starter_village_market_lane', description: '禮拜堂外是市場小巷' },
+      { direction: 'west', targetRoomId: 'starter_village_old_library', description: '側廊通往舊書庫' },
+    ],
+    mapSymbol: '[C]',
+    mapX: 4,
+    mapY: 1,
+  },
+
+  starter_village_portal_shrine: {
+    id: 'starter_village_portal_shrine',
+    name: '新手村傳送祠堂',
+    zone: 'starter_village',
+    image: 'starter_village_portal_shrine.png',
+    imagePrompt: '新手村傳送祠堂 in starter_village, town service portal room with runestone circle, blue lantern light, safe travel node, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村莊廣場，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
+    exits: [
+      { direction: 'up', targetRoomId: 'village_square', description: '石階回到村莊廣場' },
+      { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方' },
+    ],
+    mapSymbol: '[O]',
+    mapX: 2,
+    mapY: 4,
+  },
+
+  starter_village_market_lane: {
+    id: 'starter_village_market_lane',
+    name: '市場小巷',
+    zone: 'starter_village',
+    image: 'starter_village_market_lane.png',
+    imagePrompt: '市場小巷 in starter_village, town social market lane with stalls, canvas awnings, lantern glow after rain, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '市場小巷夾在武器店、禮拜堂與馬廄之間，濕潤石路上反射著攤棚燈火，水果籃、皮革包和破舊地圖擺得略顯凌亂。西邊能回到武器店，北側是安靜禮拜堂，南方傳來馬匹噴鼻聲。攤販低聲談論平原怪物與缺貨材料，提示玩家可從交易、對話和支線委託取得下一個探索方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'weapon_shop', description: '鐵匠鋪就在西側' },
+      { direction: 'north', targetRoomId: 'starter_village_chapel', description: '禮拜堂鐘聲從北方傳來' },
+      { direction: 'south', targetRoomId: 'starter_village_stable_yard', description: '馬廄院在南邊' },
+    ],
+    mapSymbol: '[M]',
+    mapX: 4,
+    mapY: 2,
+  },
+
+  starter_village_crafting_shed: {
+    id: 'starter_village_crafting_shed',
+    name: '修補工棚',
+    zone: 'starter_village',
+    image: 'starter_village_crafting_shed.png',
+    imagePrompt: '修補工棚 in starter_village, town service crafting shed with workbench, whetstone, coals and side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示玩家能從掉落材料、採集資源和工匠服務逐步改善初期裝備。',
+    exits: [
+      { direction: 'west', targetRoomId: 'weapon_shop', description: '回到武器店前廳' },
+      { direction: 'south', targetRoomId: 'training_ground', description: '訓練場的喊聲從南方傳來' },
+      { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '小門外是馬廄院' },
+    ],
+    mapSymbol: '[F]',
+    mapX: 4,
+    mapY: 3,
+  },
+
+  starter_village_notice_corner: {
+    id: 'starter_village_notice_corner',
+    name: '告示角落',
+    zone: 'starter_village',
+    image: 'starter_village_notice_corner.png',
+    imagePrompt: '告示角落 in starter_village, town quest notice corner with wooden boards, pinned maps, side alley lamplight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '告示角落位在廣場南西側的轉角，數塊木板被雨水泡得發黑，仍釘著尋物、採集、巡邏和協助新人的短委託。北邊是藥水店，東方可到村口，西側狹路延伸到古井。紙張邊緣有被撕下的痕跡，提示玩家查看 quest、追蹤任務目標，並留意有些委託需要 search 或 inspect 才能找到線索。木板下方散落舊蠟封與泥腳印，表示有人匆忙撕走其中一張任務單；旁邊的箭頭牌標示藥水店、古井與村口方向，使玩家能根據任務文字快速規劃路線，還能發現被雨水暈開的暗號。角落油燈下壓著一張缺角地圖，標出村內可調查處與回報路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'potion_shop', description: '藥水店的草藥香從北方飄來' },
+      { direction: 'east', targetRoomId: 'village_gate', description: '村口火把在東方晃動' },
+      { direction: 'west', targetRoomId: 'starter_village_well_path', description: '狹路通往村內古井' },
+    ],
+    mapSymbol: '[N]',
+    mapX: 1,
+    mapY: 3,
+  },
+
+  starter_village_well_path: {
+    id: 'starter_village_well_path',
+    name: '古井小路',
+    zone: 'starter_village',
+    image: 'starter_village_well_path.png',
+    imagePrompt: '古井小路 in starter_village, town exploration path with old well, mossy stones, pale moonlit water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古井小路被青苔石牆夾住，井口掛著生鏽滑輪，井水在微光下泛出不自然的銀色漣漪。東邊回到告示角落，南側階梯下到河岸，北面能看見補給倉庫背牆。井沿刻著被磨損的符號，旁邊散落幾枚濕硬幣，提示這裡適合調查、聽聲音或尋找被村民遺忘的小型寶物。',
+    exits: [
+      { direction: 'east', targetRoomId: 'starter_village_notice_corner', description: '告示板在東側轉角' },
+      { direction: 'south', targetRoomId: 'starter_village_river_stairs', description: '石階下方有水聲' },
+    ],
+    mapSymbol: '[~]',
+    mapX: 0,
+    mapY: 3,
+  },
+
+  starter_village_old_library: {
+    id: 'starter_village_old_library',
+    name: '舊書庫',
+    zone: 'starter_village',
+    image: 'starter_village_old_library.png',
+    imagePrompt: '舊書庫 in starter_village, town quest library with dusty shelves, tutorial manuals, narrow amber window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊書庫藏在公會與禮拜堂之間，低矮書架塞滿泛黃手冊、怪物素描和初級地圖，灰塵在狹窗透進的琥珀色光束中漂浮。西門回到公會，東側通向禮拜堂，南側可繞回武器店附近。書桌上攤著一本標註 look、go、attack、equip 的教本，提示玩家能從文字線索學會基本指令與區域知識。',
+    exits: [
+      { direction: 'west', targetRoomId: 'adventurer_guild', description: '回到公會大廳' },
+      { direction: 'east', targetRoomId: 'starter_village_chapel', description: '側廊通往禮拜堂' },
+      { direction: 'south', targetRoomId: 'weapon_shop', description: '書庫南門接近武器店' },
+    ],
+    mapSymbol: '[L]',
+    mapX: 3,
+    mapY: 1,
+  },
+
+  starter_village_river_stairs: {
+    id: 'starter_village_river_stairs',
+    name: '溪畔石階',
+    zone: 'starter_village',
+    image: 'starter_village_river_stairs.png',
+    imagePrompt: '溪畔石階 in starter_village, town exploration river stairs with reeds, wet stones, reflected lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '溪畔石階沿著村內小溪下降，濕石上長著細苔，蘆葦在水邊沙沙作響，遠處橋下偶爾閃過銀色魚影。北邊回到古井小路，東方可通往傳送祠堂附近的低地。水聲遮住村內喧鬧，地上有小型足跡和被沖來的破布，提示玩家這裡可能藏著採集、釣魚或追蹤任務的早期線索。石階末端有半沉的小木箱與斷裂魚線，暗示死路也可能有可調查物；溪流方向清楚指向東側低地，讓玩家能用水聲辨認通往祠堂的繞路，並注意濕滑石面上的新鮮痕跡。水面倒影也能看見上方古井的輪廓，階梯旁還刻著提醒慢行的舊字。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_village_well_path', description: '石階上方是古井小路' },
+      { direction: 'east', targetRoomId: 'starter_village_portal_shrine', description: '沿低地小徑可繞到傳送祠堂' },
+    ],
+    mapSymbol: '[R]',
+    mapX: 0,
+    mapY: 4,
+  },
+
+  starter_village_guard_post: {
+    id: 'starter_village_guard_post',
+    name: '守衛哨所',
+    zone: 'starter_village',
+    image: 'starter_village_guard_post.png',
+    imagePrompt: '守衛哨所 in starter_village, town service guard post above gate, watch lantern, road signs and palisade, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。下方可回村口，西側窄廊連到傳送祠堂，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
+    exits: [
+      { direction: 'down', targetRoomId: 'village_gate', description: '木梯下到村口' },
+      { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂' },
+      { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '屋頂棧道向東延伸' },
+    ],
+    mapSymbol: '[B]',
+    mapX: 2,
+    mapY: 5,
+  },
+
+  starter_village_stable_yard: {
+    id: 'starter_village_stable_yard',
+    name: '馬廄院',
+    zone: 'starter_village',
+    image: 'starter_village_stable_yard.png',
+    imagePrompt: '馬廄院 in starter_village, town service stable yard with hay, wagon wheels, muddy lantern-lit ground, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '馬廄院裡堆著乾草、木桶與尚未修好的車輪，泥地被馬蹄踩出深淺不一的水坑，油燈掛在橫梁下緩慢晃動。北方連到市場小巷，西側是修補工棚，南邊屋頂棧道投下細長陰影。牆上釘著運送路線與村外風險標記，暗示交通、背包負重和區域解鎖會影響玩家能否安全移動。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '市場小巷在北側' },
+      { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊' },
+      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '木階可上屋頂棧道' },
+    ],
+    mapSymbol: '[H]',
+    mapX: 4,
+    mapY: 4,
+  },
+
+  starter_village_hidden_cellar: {
+    id: 'starter_village_hidden_cellar',
+    name: '隱蔽地窖',
+    zone: 'starter_village',
+    image: 'starter_village_hidden_cellar.png',
+    imagePrompt: '隱蔽地窖 in starter_village, hidden exploration cellar with old crates, spiderwebs, single lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隱蔽地窖比倉庫地板更潮濕，石牆滲出細小水珠，蛛網覆住破木箱與幾只封泥罐。上方活板門通回補給倉庫，東側狹縫能鑽到旅人小屋地基下，唯一油燈把箱角陰影拉得很長。這裡不像正式服務房，卻有明顯可調查痕跡與一次性寶箱位置，提示新人學會檢查死路與隱藏空間。',
+    exits: [
+      { direction: 'up', targetRoomId: 'starter_village_storehouse', description: '活板門回到補給倉庫' },
+      { direction: 'east', targetRoomId: 'starter_village_inn', description: '狹縫通往旅人小屋地基旁' },
+    ],
+    items: ['small_hp_potion'],
+    mapSymbol: '[?]',
+    mapX: 0,
+    mapY: 1,
+  },
+
+  starter_village_rooftop_walk: {
+    id: 'starter_village_rooftop_walk',
+    name: '屋頂棧道',
+    zone: 'starter_village',
+    image: 'starter_village_rooftop_walk.png',
+    imagePrompt: '屋頂棧道 in starter_village, town exploration rooftop walkway over training yard, ropes, dusk sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。南側梯子下到訓練場，西面連向守衛哨所，東邊可下馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
+    exits: [
+      { direction: 'south', targetRoomId: 'training_ground', description: '梯子下到訓練場' },
+      { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '棧道西端連到守衛哨所' },
+      { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '東側木階下到馬廄院' },
+    ],
+    mapSymbol: '[^]',
+    mapX: 3,
+    mapY: 4,
   },
 
   // ─── 翠綠平原 (plains) ─────────────────────────────────
