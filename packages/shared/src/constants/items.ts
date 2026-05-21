@@ -113,6 +113,64 @@ function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
   return result;
 }
 
+function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
+  const weaponTypes = [
+    'greataxe',
+    'katana',
+    'elemental_staff',
+    'grimoire',
+    'hourglass_staff',
+    'crossbow',
+    'dagger',
+    'whip',
+    'holy_tome',
+    'nature_staff',
+    'warhammer',
+  ] as const;
+  const names: Record<typeof weaponTypes[number], string> = {
+    greataxe: '巨斧',
+    katana: '太刀',
+    elemental_staff: '元素杖',
+    grimoire: '魔導書',
+    hourglass_staff: '沙漏杖',
+    crossbow: '弩',
+    dagger: '匕首',
+    whip: '長鞭',
+    holy_tome: '聖典',
+    nature_staff: '自然杖',
+    warhammer: '戰錘',
+  };
+  const result: Record<string, ItemDef> = {};
+
+  for (const weaponType of weaponTypes) {
+    for (const levelReq of [50, 60]) {
+      const id = `${weaponType}_lv${levelReq}`;
+      const statKey = weaponType === 'elemental_staff' || weaponType === 'grimoire' || weaponType === 'hourglass_staff' || weaponType === 'holy_tome' || weaponType === 'nature_staff'
+        ? 'matk'
+        : 'atk';
+      result[id] = {
+        id,
+        name: `${names[weaponType]}${levelReq}`,
+        type: 'weapon',
+        description: `${names[weaponType]}${levelReq} 是高階冒險者使用的標準化基礎武器，填補 ${weaponType} 在 Lv.${levelReq} 的進階裝備路線。`,
+        buyPrice: levelReq * 180,
+        sellPrice: levelReq * 90,
+        stackable: false,
+        maxStack: 1,
+        levelReq,
+        equipSlot: 'weapon',
+        stats: { [statKey]: Math.floor(levelReq * 1.35) },
+        rarity: levelReq >= 60 ? 'legendary' : 'epic',
+        weaponType,
+        sourceTags: ['shop', 'drop', 'weapon_progression'],
+        zoneTags: levelReq >= 60 ? ['final_battleground', 'global'] : ['dragon_valley', 'abyss_rift', 'global'],
+      };
+    }
+  }
+
+  return result;
+}
+
 const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
   wooden_sword: {
@@ -2054,6 +2112,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     rarity: 'legendary',
   },
   ...createSupplementalEquipmentDefs(),
+  ...createHighLevelWeaponProgressionDefs(),
 
   // ============ 製作系統食物成品 ============
   hp_steak: {

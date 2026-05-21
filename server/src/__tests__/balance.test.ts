@@ -389,6 +389,66 @@ describe('Balance: Gold economy', () => {
     expect(bySlot.belt).toBeGreaterThanOrEqual(25);
     expect(bySlot.necklace).toBeGreaterThanOrEqual(25);
   });
+
+  it('should provide baseline weapons for every major weapon type at milestone levels', () => {
+    const weaponTypes = [
+      'spear',
+      'greataxe',
+      'katana',
+      'elemental_staff',
+      'grimoire',
+      'hourglass_staff',
+      'crossbow',
+      'dagger',
+      'whip',
+      'holy_tome',
+      'nature_staff',
+      'warhammer',
+    ];
+    const milestoneLevels = [1, 10, 20, 30, 40, 50, 60];
+    const weapons = Object.values(ITEM_DEFS).filter(item => item.type === 'weapon');
+
+    for (const weaponType of weaponTypes) {
+      for (const levelReq of milestoneLevels) {
+        expect(
+          weapons.some(item => item.weaponType === weaponType && item.levelReq === levelReq),
+          `${weaponType} Lv.${levelReq}`,
+        ).toBe(true);
+      }
+    }
+  });
+
+  it('should provide equipment choices for every slot across early level bands', () => {
+    const slots = ['weapon', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'];
+    const equipment = Object.values(ITEM_DEFS).filter(item =>
+      item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory',
+    );
+    const ranges = [
+      { min: 1, max: 10, required: 3 },
+      { min: 11, max: 20, required: 4 },
+      { min: 21, max: 30, required: 4 },
+    ];
+
+    for (const slot of slots) {
+      for (const range of ranges) {
+        const count = equipment.filter(item =>
+          item.equipSlot === slot && item.levelReq >= range.min && item.levelReq <= range.max,
+        ).length;
+        expect(count, `${slot} Lv.${range.min}-${range.max}`).toBeGreaterThanOrEqual(range.required);
+      }
+    }
+  });
+
+  it('should let level 1-10 players naturally find replacements for at least four slots', () => {
+    const equipment = Object.values(ITEM_DEFS).filter(item =>
+      (item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory')
+      && item.levelReq <= 10
+      && (item.sourceTags?.includes('drop') || item.sourceTags?.includes('shop')),
+    );
+    const slots = new Set(equipment.map(item => item.equipSlot));
+
+    expect(slots.size).toBeGreaterThanOrEqual(4);
+  });
 });
 
 describe('Balance: Stat scaling', () => {
