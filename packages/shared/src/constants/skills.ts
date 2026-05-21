@@ -1363,7 +1363,17 @@ function inferSkillTags(def: RawSkillDef): SkillTag[] {
   if (def.effects?.some(effect => effect.type.endsWith('_up'))) tags.add('buff');
   if (def.effects?.some(effect => effect.type.endsWith('_down') || effect.type === 'mark' || effect.type === 'poison' || effect.type === 'burn' || effect.type === 'bleed')) tags.add('debuff');
   if (def.effects?.some(effect => effect.type === 'stun' || effect.type === 'slow' || effect.type === 'freeze' || effect.type === 'fear' || effect.type === 'taunt' || effect.type === 'silence')) tags.add('control');
-  if (def.effects?.some(effect => effect.type === 'shield' || effect.type === 'damage_reduction' || effect.type === 'counter' || effect.type === 'invincible' || effect.type === 'unyielding')) tags.add('defense');
+  if (def.effects?.some(effect =>
+    effect.type === 'shield'
+    || effect.type === 'mana_shield'
+    || effect.type === 'damage_reduction'
+    || effect.type === 'counter'
+    || effect.type === 'invincible'
+    || effect.type === 'unyielding'
+    || effect.type === 'def_up'
+    || effect.type === 'mdef_up'
+    || effect.type === 'dodge_up'
+  )) tags.add('defense');
   if (def.special?.interrupt) tags.add('interrupt');
   if (def.special?.dispelShield || def.special?.removeDebuffs) tags.add('dispel');
   if (def.special?.summon || def.id.includes('summon')) tags.add('summon');
