@@ -28,6 +28,7 @@ import {
   toBaseEquipmentDef,
   ITEM_DEFS,
   SKILL_DEFS,
+  CLASS_BUILD_DEFS,
   CLASS_DEFS,
   getLearnableSkills,
   getAllAvailableSkills,
@@ -729,6 +730,29 @@ describe('Balance: Skill metadata', () => {
     for (const classId of playerClassIds) {
       const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
       expect(skills.some(skill => skill.questUnlock), classId).toBe(true);
+    }
+  });
+
+  it('gives every first- and second-job class two supported builds', () => {
+    const affixSkillTags = new Set(Object.values(AFFIX_POOLS).flatMap(pool =>
+      pool.flatMap(affix => affix.skillTags ?? []),
+    ));
+    const classIds = Object.values(CLASS_DEFS)
+      .filter(classDef => classDef.tier === 1 || classDef.tier === 2)
+      .map(classDef => classDef.id);
+
+    for (const classId of classIds) {
+      const builds = CLASS_BUILD_DEFS[classId] ?? [];
+      const availableSkillTags = new Set(getAllAvailableSkills(classId).flatMap(skill => skill.tags));
+
+      expect(builds.length, classId).toBeGreaterThanOrEqual(2);
+      for (const build of builds) {
+        expect(build.classId, build.id).toBe(classId);
+        expect(build.skillTags.length, build.id).toBeGreaterThan(0);
+        expect(build.affixSkillTags.length, build.id).toBeGreaterThan(0);
+        expect(build.skillTags.every(tag => availableSkillTags.has(tag)), build.id).toBe(true);
+        expect(build.affixSkillTags.every(tag => affixSkillTags.has(tag)), build.id).toBe(true);
+      }
     }
   });
 

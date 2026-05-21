@@ -6,6 +6,82 @@ import { CLASS_DEFS } from './classes.js';
 
 type RawSkillDef = Omit<SkillDef, 'tags' | 'scaling'> & Partial<Pick<SkillDef, 'tags' | 'scaling'>>;
 
+export interface ClassBuildDef {
+  id: string;
+  classId: ClassId;
+  name: string;
+  skillTags: SkillTag[];
+  affixSkillTags: SkillTag[];
+  description: string;
+}
+
+export const CLASS_BUILD_DEFS: Partial<Record<ClassId, ClassBuildDef[]>> = {
+  swordsman: [
+    { id: 'swordsman_vanguard', classId: 'swordsman', name: '前衛守勢', skillTags: ['defense', 'control'], affixSkillTags: ['defense', 'control'], description: '以鐵壁、挑釁與反擊架勢穩住前線。' },
+    { id: 'swordsman_battlecry', classId: 'swordsman', name: '戰吼壓制', skillTags: ['burst', 'support'], affixSkillTags: ['burst', 'resource'], description: '用戰吼與重擊建立短爆發節奏。' },
+  ],
+  mage: [
+    { id: 'mage_elementalist', classId: 'mage', name: '元素爆破', skillTags: ['magical', 'aoe'], affixSkillTags: ['burst', 'resource'], description: '以火、冰、雷輪轉製造範圍魔法壓力。' },
+    { id: 'mage_arcane_guard', classId: 'mage', name: '魔盾迴路', skillTags: ['defense', 'resource'], affixSkillTags: ['defense', 'resource'], description: '用魔力盾與冥想拉長施法續航。' },
+  ],
+  ranger: [
+    { id: 'ranger_marksman', classId: 'ranger', name: '精準狙擊', skillTags: ['single_target', 'burst'], affixSkillTags: ['burst', 'resource'], description: '用精準射擊與專注齊射打出單體爆發。' },
+    { id: 'ranger_trapper', classId: 'ranger', name: '陷阱毒箭', skillTags: ['control', 'nature'], affixSkillTags: ['control', 'resource'], description: '以陷阱、毒箭和機動性處理怪物節奏。' },
+  ],
+  priest: [
+    { id: 'priest_shepherd', classId: 'priest', name: '聖光牧者', skillTags: ['heal', 'support'], affixSkillTags: ['defense', 'resource'], description: '專注治療、淨化與團隊增益。' },
+    { id: 'priest_smite', classId: 'priest', name: '懲戒信徒', skillTags: ['light', 'damage'], affixSkillTags: ['burst', 'resource'], description: '以聖光攻擊和祝福建立攻守節奏。' },
+  ],
+  knight: [
+    { id: 'knight_bulwark', classId: 'knight', name: '聖盾壁壘', skillTags: ['defense', 'support'], affixSkillTags: ['defense', 'resource'], description: '以護盾、守護與減傷承擔隊伍壓力。' },
+    { id: 'knight_judicator', classId: 'knight', name: '審判騎槍', skillTags: ['light', 'interrupt'], affixSkillTags: ['control', 'burst'], description: '用制裁與破陣工具壓制怪物機制。' },
+  ],
+  berserker: [
+    { id: 'berserker_bloodlust', classId: 'berserker', name: '嗜血狂怒', skillTags: ['burst', 'damage'], affixSkillTags: ['burst', 'resource'], description: '用狂暴與毀滅劈斬交換高爆發。' },
+    { id: 'berserker_survivor', classId: 'berserker', name: '瀕死求生', skillTags: ['defense', 'resource'], affixSkillTags: ['defense', 'resource'], description: '以痛覺錨定與吸血維持低血量戰鬥。' },
+  ],
+  sword_saint: [
+    { id: 'sword_saint_iaijutsu', classId: 'sword_saint', name: '拔刀會心', skillTags: ['single_target', 'burst'], affixSkillTags: ['burst', 'resource'], description: '用拔刀與天斷追求單體決勝。' },
+    { id: 'sword_saint_afterimage', classId: 'sword_saint', name: '殘影連斬', skillTags: ['defense', 'control'], affixSkillTags: ['defense', 'control'], description: '以閃避、反擊與心斬維持攻防節奏。' },
+  ],
+  archmage: [
+    { id: 'archmage_cataclysm', classId: 'archmage', name: '元素災變', skillTags: ['aoe', 'burst'], affixSkillTags: ['burst', 'resource'], description: '以隕石、暴風雪和元素奔流清場。' },
+    { id: 'archmage_arcane_engine', classId: 'archmage', name: '奧術引擎', skillTags: ['resource', 'defense'], affixSkillTags: ['resource', 'defense'], description: '用魔力編織與奧術結界維持長戰。' },
+  ],
+  warlock: [
+    { id: 'warlock_curse', classId: 'warlock', name: '詛咒爆破', skillTags: ['dark', 'burst'], affixSkillTags: ['burst', 'resource'], description: '以詛咒與暗影爆破引爆目標。' },
+    { id: 'warlock_drain', classId: 'warlock', name: '汲魂續戰', skillTags: ['dark', 'defense'], affixSkillTags: ['defense', 'resource'], description: '靠生命汲取與黑暗交易拉長戰鬥。' },
+  ],
+  chronomancer: [
+    { id: 'chronomancer_lockdown', classId: 'chronomancer', name: '時停控場', skillTags: ['control', 'interrupt'], affixSkillTags: ['control', 'resource'], description: '利用減速、時停與時間線切斷控制節奏。' },
+    { id: 'chronomancer_paradox', classId: 'chronomancer', name: '悖論爆發', skillTags: ['burst', 'support'], affixSkillTags: ['burst', 'resource'], description: '以加速、回溯與悖論爆發創造爆發窗口。' },
+  ],
+  marksman: [
+    { id: 'marksman_headshot', classId: 'marksman', name: '要害狙擊', skillTags: ['single_target', 'burst'], affixSkillTags: ['burst', 'resource'], description: '以一擊必殺與絕殺領域處理高價值目標。' },
+    { id: 'marksman_suppression', classId: 'marksman', name: '壓制箭幕', skillTags: ['aoe', 'control'], affixSkillTags: ['control', 'resource'], description: '用箭雨與釘足射擊限制敵群。' },
+  ],
+  assassin: [
+    { id: 'assassin_execution', classId: 'assassin', name: '處刑暗殺', skillTags: ['dark', 'burst'], affixSkillTags: ['burst', 'resource'], description: '靠潛行、背刺與處刑印記爆發。' },
+    { id: 'assassin_poison', classId: 'assassin', name: '毒刃牽制', skillTags: ['nature', 'control'], affixSkillTags: ['control', 'resource'], description: '以致命毒藥、絞喉和煙幕拖垮目標。' },
+  ],
+  beast_master: [
+    { id: 'beast_master_pack', classId: 'beast_master', name: '群獵合擊', skillTags: ['single_target', 'burst'], affixSkillTags: ['burst', 'resource'], description: '與夥伴同步撲擊，集中單體火力。' },
+    { id: 'beast_master_command', classId: 'beast_master', name: '首領號令', skillTags: ['control', 'support'], affixSkillTags: ['control', 'defense'], description: '以咆哮與共享本能掌控戰場。' },
+  ],
+  high_priest: [
+    { id: 'high_priest_miracle', classId: 'high_priest', name: '奇蹟治療', skillTags: ['heal', 'burst'], affixSkillTags: ['burst', 'resource'], description: '用復活、聖域與奇蹟時刻拯救隊伍。' },
+    { id: 'high_priest_ward', classId: 'high_priest', name: '聖盾守護', skillTags: ['defense', 'dispel'], affixSkillTags: ['defense', 'resource'], description: '以神聖護盾與淨化鐘聲處理危險機制。' },
+  ],
+  druid: [
+    { id: 'druid_wildshape', classId: 'druid', name: '野性變形', skillTags: ['nature', 'burst'], affixSkillTags: ['burst', 'resource'], description: '用變身與翠綠奔湧切換攻守。' },
+    { id: 'druid_regrowth', classId: 'druid', name: '再生荊棘', skillTags: ['heal', 'defense'], affixSkillTags: ['defense', 'resource'], description: '以再生、荊棘和樹皮護體維持隊伍。' },
+  ],
+  inquisitor: [
+    { id: 'inquisitor_verdict', classId: 'inquisitor', name: '宣判爆發', skillTags: ['light', 'burst'], affixSkillTags: ['burst', 'resource'], description: '以天譴、神怒與宣判時刻處決目標。' },
+    { id: 'inquisitor_silence', classId: 'inquisitor', name: '沉默審判', skillTags: ['dispel', 'control'], affixSkillTags: ['control', 'defense'], description: '用異端標記、殉道聖盾與沉默敕令反制機制。' },
+  ],
+};
+
 /** 所有技能定義 */
 const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   // ════════════════════════════════════════════
