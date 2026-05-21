@@ -6,6 +6,7 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
+import { GuildManager } from '../game/guild.js';
 import {
   disassembleEquipment,
   getHighTierReforgeMaterials,
@@ -917,6 +918,37 @@ describe('economy statistics', () => {
 
     expect(getAveragePlayerGold()).toBeGreaterThan(0);
     expect(getHighQualityEquipmentCirculation()).toBeGreaterThan(0);
+  });
+});
+
+describe('guild construction economy', () => {
+  beforeAll(() => {
+    initDb();
+    new GuildManager().ensureTables();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('requires both gold and materials to create a guild', () => {
+    insertTestCharacter('guild-builder-missing', 'GuildBuilderMissing', 6000);
+    const missing = getCharacterById('guild-builder-missing')!;
+    const guildMgr = new GuildManager();
+
+    expect(guildMgr.createGuild(missing, '缺料公會').success).toBe(false);
+
+    insertTestCharacter('guild-builder-ready', 'GuildBuilderReady', 6000);
+    addInventoryItem('guild-builder-ready', 'iron_ore', 20);
+    addInventoryItem('guild-builder-ready', 'elf_wood', 5);
+    const ready = getCharacterById('guild-builder-ready')!;
+
+    const result = guildMgr.createGuild(ready, '建設公會');
+    expect(result.success).toBe(true);
+    expect(ready.gold).toBe(1000);
+    const inventory = getInventory('guild-builder-ready');
+    expect(inventory.find(item => item.itemId === 'iron_ore')).toBeUndefined();
+    expect(inventory.find(item => item.itemId === 'elf_wood')).toBeUndefined();
   });
 });
 

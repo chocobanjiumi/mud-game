@@ -10,6 +10,7 @@ import {
 } from '../db/queries.js';
 import { ITEM_DEFS } from '@game/shared';
 import type { Character } from '@game/shared';
+import { recordGoldSpent } from './economy-stats.js';
 
 // ============================================================
 //  型別
@@ -64,6 +65,10 @@ interface GuildStorageRow {
 // ============================================================
 
 const CREATE_GUILD_COST = 5000;
+const CREATE_GUILD_MATERIALS = [
+  { itemId: 'iron_ore', count: 20 },
+  { itemId: 'elf_wood', count: 5 },
+];
 const MAX_GUILD_LEVEL = 10;
 const BASE_MAX_MEMBERS = 20;
 const MEMBERS_PER_LEVEL = 5;
@@ -126,6 +131,15 @@ export class GuildManager {
     if (character.gold < CREATE_GUILD_COST) {
       return { success: false, message: `建立公會需要 ${CREATE_GUILD_COST} 金幣，你目前有 ${character.gold} 金幣。` };
     }
+    for (const material of CREATE_GUILD_MATERIALS) {
+      const have = getInventory(character.id)
+        .filter(item => item.itemId === material.itemId && !item.equipped && !item.itemInstanceId)
+        .reduce((sum, item) => sum + item.quantity, 0);
+      if (have < material.count) {
+        const name = ITEM_DEFS[material.itemId]?.name ?? material.itemId;
+        return { success: false, message: `建立公會需要 ${name} x${material.count}（目前 ${have}）。` };
+      }
+    }
 
     // 檢查是否已在公會中
     const existingMembership = this.getCharacterGuild(character.id);
@@ -144,6 +158,7 @@ export class GuildManager {
 
     character.gold -= CREATE_GUILD_COST;
     saveCharacter(character);
+    recordGoldSpent(CREATE_GUILD_COST);
 
     try {
       getDb().prepare(
@@ -153,6 +168,9 @@ export class GuildManager {
       getDb().prepare(
         'INSERT INTO guild_members (guild_id, character_id, rank, joined_at) VALUES (?, ?, ?, ?)',
       ).run(guildId, character.id, 'leader', now);
+      for (const material of CREATE_GUILD_MATERIALS) {
+        removeInventoryItem(character.id, material.itemId, material.count);
+      }
     } catch {
       character.gold += CREATE_GUILD_COST;
       saveCharacter(character);
@@ -161,7 +179,7 @@ export class GuildManager {
 
     return {
       success: true,
-      message: `成功建立公會「${guildName}」！消耗 ${CREATE_GUILD_COST} 金幣。`,
+      message: `成功建立公會「${guildName}」！消耗 ${CREATE_GUILD_COST} 金幣與建設材料。`,
     };
   }
 
