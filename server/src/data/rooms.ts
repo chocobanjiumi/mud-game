@@ -61,6 +61,12 @@ export const ZONES: Record<string, ZoneDef> = {
     rooms: [
       'plains_entrance', 'grass_path', 'windmill_farm',
       'crossroads', 'old_well',
+      'sunflower_field', 'hunter_lodge', 'abandoned_minecart',
+      'riverside_fishing', 'windmill_interior',
+      'plains_hare_burrows', 'plains_wolf_tracks', 'plains_bandit_hideout',
+      'plains_moonlit_copse', 'plains_herb_slope', 'plains_shepherd_camp',
+      'plains_broken_bridge', 'plains_stone_circle', 'plains_watch_mound',
+      'plains_alpha_den',
     ],
   },
   dark_forest: {
@@ -1439,10 +1445,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'plains_entrance',
     name: '平原入口',
     zone: 'plains',
+    image: 'plains_entrance.png',
+    imagePrompt: '平原入口 in plains, entrance room from village gate into green grassland, dirt road, warm sun and long grass, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '踏出新手村，眼前豁然開朗。一望無際的翠綠平原在陽光下閃耀著生機，' +
-      '微風帶來泥土與青草的芬芳。遠處的風車慢悠悠地轉動著。' +
-      '這裡是通往廣闊世界的第一步。',
+      '踏出新手村木門後視野忽然展開，翠綠平原在溫暖陽光下起伏，齊膝草浪一路延伸到遠方風車。泥土路從北方村口接入草地，南側小徑被旅人踩出清楚痕跡，東方可見麥田與風車，西邊向日葵田在光中閃動。空氣有青草、濕土和獸毛味，草叢裡偶爾傳來野兔奔跑聲，提醒新人這裡已是會遭遇怪物的野外入口。',
     exits: [
       { direction: 'north', targetRoomId: 'village_gate', description: '回到新手村村口' },
       { direction: 'south', targetRoomId: 'grass_path', description: '沿著草原小徑前進' },
@@ -1467,10 +1473,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'grass_path',
     name: '草原小徑',
     zone: 'plains',
+    image: 'grass_path.png',
+    imagePrompt: '草原小徑 in plains, main route room through tall grass and wildflowers, visible wolf tracks, angled afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一條被旅人踩出的蜿蜒小徑穿過齊膝的草叢。道路兩旁野花盛開，' +
-      '蝴蝶在花叢間翩翩起舞。偶爾能聽到草叢中細碎的沙沙聲。' +
-      '要小心——不是所有的沙沙聲都來自風。',
+      '蜿蜒小徑穿過齊膝草叢，兩側野花吸引蝴蝶盤旋，花粉與乾草味在風裡混成微甜氣息。北面能看見村口方向的路標，南方道路下沉通向十字路口，草葉間還有幾枚狼爪印與被咬斷的兔毛。這裡是新手最常練習戰鬥的主路，玩家若聽見連續沙沙聲，就該準備 attack 或觀察是否有狼群靠近。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_entrance', description: '回到平原入口' },
       { direction: 'south', targetRoomId: 'crossroads', description: '通往十字路口' },
@@ -1494,10 +1500,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'windmill_farm',
     name: '風車農場',
     zone: 'plains',
+    image: 'windmill_farm.png',
+    imagePrompt: '風車農場 in plains, resource farm room with windmill, wheat field, fences, golden light and bandit shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一座高大的風車矗立在金黃的麥田中央，巨大的葉片在風中緩緩旋轉。' +
-      '農夫們辛勤地在田間勞作，幾隻家畜在柵欄裡悠閒地吃草。' +
-      '這裡看起來很平靜，但農夫們抱怨最近常有盜賊出沒。',
+      '高大風車立在金黃麥田中央，木葉片推動齒輪發出低沉咔嗒聲，麥穗在夕光裡像潮水一樣搖晃。西路回到平原入口，南門通向風車內部，東邊生鏽礦車道消失在草丘後。柵欄旁有被撬開的穀倉鎖與凌亂腳印，農夫低聲抱怨盜賊夜裡出沒，提示這裡兼具補給、資源與小規模戰鬥事件。',
     exits: [
       { direction: 'west', targetRoomId: 'plains_entrance', description: '回到平原入口' },
       { direction: 'south', targetRoomId: 'windmill_interior', description: '走進風車內部' },
@@ -1520,10 +1526,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'crossroads',
     name: '十字路口',
     zone: 'plains',
+    image: 'crossroads.png',
+    imagePrompt: '十字路口 in plains, main route crossroads with old signpost, well, roads to forest and town, overcast directional light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '兩條道路在此交匯，形成一個十字路口。一塊古舊的路標上依稀可辨幾個方向：' +
-      '北方通往新手村，南方是暗影森林，東方的道路通向湖畔城鎮。' +
-      '路標旁有一口古井，似乎很久沒人使用了。',
+      '兩條舊道路在此交會，中央路標被風雨磨白，仍能辨認北往新手村、南入暗影森林、東至湖畔城鎮，西側古井半掩在荒草中。車轍、狼爪與蛇行痕跡互相交錯，讓這裡既是交通節點也是遭遇點。路標底座有可疑縫隙，旁邊倒著破盾與乾枯血跡，提示玩家選路前應查看任務方向並注意毒蛇或野狼伏擊。',
     exits: [
       { direction: 'north', targetRoomId: 'grass_path', description: '沿小徑返回' },
       { direction: 'south', targetRoomId: 'forest_entrance', description: '通往暗影森林' },
@@ -1548,10 +1554,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'old_well',
     name: '古井旁',
     zone: 'plains',
+    image: 'old_well.png',
+    imagePrompt: '古井旁 in plains, hidden exploration room with mossy old well, carved stones, cold blue glow from depth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一口被苔蘚覆蓋的古井佇立在荒草中，石砌的井壁上刻著模糊的符文。' +
-      '往井裡望去，深不見底的黑暗中似乎有什麼東西在微微發光。' +
-      '據說這口井曾經通往地下洞窟。',
+      '苔蘚覆蓋的古井孤立在荒草深處，井壁石塊刻著幾乎磨平的符文，潮冷氣息從黑暗井底往上湧。東邊路口仍能看見路標，井內垂下的舊繩索通往洞窟入口，周圍草叢裡有毒蛇蛻皮與碎骨。井底微光像是在引誘旅人靠近，提示玩家可下探、調查符文或準備面對地底怪物。',
     exits: [
       { direction: 'east', targetRoomId: 'crossroads', description: '回到十字路口' },
       { direction: 'down', targetRoomId: 'cave_entrance', description: '攀著井壁向下探索' },

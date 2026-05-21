@@ -15,10 +15,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'sunflower_field',
     name: '向日葵田',
     zone: 'plains',
+    image: 'sunflower_field.png',
+    imagePrompt: '向日葵田 in plains, exploration room with tall sunflower maze, golden petals, field rat tunnels, bright sun, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一片金燦燦的向日葵田在陽光下綻放，花莖高過人頭，形成一座花的迷宮。' +
-      '微風拂過時，萬千花盤齊齊轉向太陽，沙沙作響。' +
-      '田間偶爾能瞥見灰色的身影一閃而過——田鼠和烏鴉是這裡的常客。',
+      '金燦燦的向日葵高過人頭，花盤在陽光下緩慢轉動，形成一座帶著花粉香的天然迷宮。東側穿過花田可回平原入口，北邊有獵人小屋的煙囪，南方傳來河水聲。泥土表面佈滿田鼠洞和烏鴉爪痕，最高那株花下的土色明顯較新，提示玩家可 search 找到小型寶物，也可能驚動田鼠群。',
     exits: [
       { direction: 'east', targetRoomId: 'plains_entrance', description: '穿過花田回到平原入口' },
       { direction: 'north', targetRoomId: 'hunter_lodge', description: '花田盡頭有一間小木屋' },
@@ -42,10 +42,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'hunter_lodge',
     name: '獵人小屋',
     zone: 'plains',
+    image: 'hunter_lodge.png',
+    imagePrompt: '獵人小屋 in plains, quest NPC lodge with hides, antlers, porch, forest edge shadow and hearth light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一間由原木搭建的堅固小屋，門口掛著風乾的獸皮和鹿角。' +
-      '屋內壁爐的火光透過窗戶映出溫暖的橙色。一位老獵人坐在門廊上擦拭弓弦，' +
-      '身旁的獵犬懶洋洋地趴在階梯上打盹。',
+      '原木小屋立在向日葵田北緣，門口掛著風乾獸皮、鹿角與狼牙串，壁爐橙光從窗縫灑到門廊。南方回到花田，西側隱蔽小路能通往森林高處，木牆上釘著野狼腳印拓片與箭矢記號。老獵人坐在階梯上擦拭弓弦，獵犬偶爾朝草叢低吼，提示這裡可接狩獵任務、購買補給或詢問狼群線索。',
     exits: [
       { direction: 'south', targetRoomId: 'sunflower_field', description: '回到向日葵田' },
       { direction: 'west', targetRoomId: 'ancient_treehouse', description: '小屋後方有條隱蔽的小路通往古老樹屋' },
@@ -66,10 +66,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'abandoned_minecart',
     name: '廢棄礦車道',
     zone: 'plains',
+    image: 'abandoned_minecart.png',
+    imagePrompt: '廢棄礦車道 in plains, resource route room with rusty rails, overturned carts, low cave mouth, cold damp light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '生鏽的鐵軌從草地延伸入一個低矮的洞口，幾輛翻覆的礦車散落在軌道旁。' +
-      '空氣中瀰漫著鐵鏽和潮濕泥土的氣味，洞口深處傳來間歇的滴水聲。' +
-      '這條礦道似乎通往水晶洞窟的某個角落。',
+      '生鏽鐵軌從風車農場東側延伸進低矮洞口，翻覆礦車散落在濕草與碎石間，空氣有鐵鏽、泥水和蝙蝠糞味。西邊可回農場，南方礦道往地底傾斜，車輪印旁有田鼠啃咬過的麻袋。礦車內殘留幾塊閃光礦石，提示這裡是早期採集與洞窟路線入口，但小蝙蝠可能從陰影中飛出。',
     exits: [
       { direction: 'west', targetRoomId: 'windmill_farm', description: '沿著軌道走回風車農場' },
       { direction: 'south', targetRoomId: 'cave_entrance', description: '順著礦車道向南深入地底' },
@@ -93,10 +93,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'riverside_fishing',
     name: '河邊釣場',
     zone: 'plains',
+    image: 'riverside_fishing.png',
+    imagePrompt: '河邊釣場 in plains, resource fishing room with clear stream, willow trees, flat stones, cool reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一條清澈的小河蜿蜒流過草原，河畔的柳樹垂下綠色的簾幕。' +
-      '幾塊平整的大石頭從岸邊延伸入水中，是天然的釣魚平台。' +
-      '水面下銀色的魚群悠然游過，河風帶來清涼的水氣。',
+      '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示玩家能採集、釣魚或追蹤被沖來的旅人遺物。',
     exits: [
       { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田' },
       { direction: 'east', targetRoomId: 'windmill_interior', description: '河邊有座古老的水車風車' },
@@ -119,10 +119,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'windmill_interior',
     name: '風車內部',
     zone: 'plains',
+    image: 'windmill_interior.png',
+    imagePrompt: '風車內部 in plains, resource interior room with gears, millstone, flour dust, narrow sunbeams, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '推開厚重的木門，巨大的齒輪和石磨在頭頂緩緩轉動，發出有節奏的咔嗒聲。' +
-      '空氣中飄散著麵粉的清香，陽光透過狹窄的窗縫射入，塵埃在光柱中飛舞。' +
-      '樓梯盤旋而上，通往風車的頂層觀景台。',
+      '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝。',
     exits: [
       { direction: 'west', targetRoomId: 'riverside_fishing', description: '走出風車回到河邊' },
       { direction: 'north', targetRoomId: 'windmill_farm', description: '從側門走向風車農場' },
@@ -139,6 +139,218 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       treasure: '石磨的底座有一塊可以取下的石板，下面藏著磨坊主人的私房錢。',
       spirit: '風車的齒輪運轉中蘊含著古代工匠的智慧，據說設計者是一位隱居的矮人技師。',
     },
+  },
+
+  plains_hare_burrows: {
+    id: 'plains_hare_burrows',
+    name: '野兔洞群',
+    zone: 'plains',
+    image: 'plains_hare_burrows.png',
+    imagePrompt: '野兔洞群 in plains, combat room with burrow holes, trampled grass, low morning light, wild rabbit encounter, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '草坡上密密麻麻分布著野兔洞，洞口被乾草和白色絨毛覆住，泥土帶著剛翻開的濕氣。東邊通往平原入口，南側狼跡小路延伸進更高的草叢，西面能聽見遠處石環傳來的風聲。洞口旁有被咬碎的藥草與旅人皮包碎片，提示玩家可在此練習追擊快速怪物，也能 search 找到野兔拖進洞裡的零碎物品。',
+    exits: [
+      { direction: 'east', targetRoomId: 'plains_entrance', description: '回到平原入口' },
+      { direction: 'south', targetRoomId: 'plains_wolf_tracks', description: '狼爪印一路延伸向南' },
+    ],
+    monsters: [
+      { monsterId: 'wild_rabbit', maxCount: 4, respawnSeconds: 25 },
+      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[b]',
+    mapX: 1,
+    mapY: 4,
+  },
+
+  plains_wolf_tracks: {
+    id: 'plains_wolf_tracks',
+    name: '狼跡草坡',
+    zone: 'plains',
+    image: 'plains_wolf_tracks.png',
+    imagePrompt: '狼跡草坡 in plains, combat room with tall grass, wolf tracks, broken fence and cold side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '草坡被數道狼爪印切開，倒伏草葉一路指向南方陰影，空氣裡有濃重獸腥味和泥土濕味。北邊是野兔洞群，東側可回草原小徑，西邊月光小林的樹影在白天也顯得偏暗。折斷的牧羊杖插在路旁，提醒玩家狼群會結伴出現，若任務要求擊殺野狼，這裡是最直接但也最危險的練功點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'plains_hare_burrows', description: '回到野兔洞群' },
+      { direction: 'east', targetRoomId: 'grass_path', description: '草原小徑在東側' },
+      { direction: 'west', targetRoomId: 'plains_moonlit_copse', description: '陰涼樹影覆蓋西方小林' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'wild_rabbit', maxCount: 1, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[w]',
+    mapX: 1,
+    mapY: 5,
+  },
+
+  plains_bandit_hideout: {
+    id: 'plains_bandit_hideout',
+    name: '盜賊藏身處',
+    zone: 'plains',
+    image: 'plains_bandit_hideout.png',
+    imagePrompt: '盜賊藏身處 in plains, elite combat room with canvas lean-to, stolen crates, campfire smoke, dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，南側斷橋方向有撤退腳印。箱子上刻著農場印記，提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
+    exits: [
+      { direction: 'north', targetRoomId: 'abandoned_minecart', description: '沿矮丘回到廢棄礦車道' },
+      { direction: 'west', targetRoomId: 'plains_herb_slope', description: '藥草坡在西邊' },
+      { direction: 'south', targetRoomId: 'plains_broken_bridge', description: '泥腳印通往斷橋' },
+    ],
+    monsters: [
+      { monsterId: 'bandit', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'goblin_scout', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[!]',
+    mapX: 4,
+    mapY: 5,
+  },
+
+  plains_moonlit_copse: {
+    id: 'plains_moonlit_copse',
+    name: '月影小林',
+    zone: 'plains',
+    image: 'plains_moonlit_copse.png',
+    imagePrompt: '月影小林 in plains, hidden exploration room with small trees, pale moonlike shade, owl feathers and blue flowers, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一小片矮樹孤立在平原西側，即使正午也有淡淡月色般的冷光停在樹根附近，藍色小花沿著樹影排列。東邊是狼跡草坡，南方石環在樹縫間若隱若現。林地裡有鷹羽、狼毛和被拖拽過的痕跡，提示玩家這裡是隱藏支線與精英線索的前置地點，仔細 inspect 樹根或花叢可能找到通往石環的提示。',
+    exits: [
+      { direction: 'east', targetRoomId: 'plains_wolf_tracks', description: '回到狼跡草坡' },
+      { direction: 'south', targetRoomId: 'plains_stone_circle', description: '樹影間露出古老石環' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 1, respawnSeconds: 55 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[*]',
+    mapX: 0,
+    mapY: 5,
+  },
+
+  plains_herb_slope: {
+    id: 'plains_herb_slope',
+    name: '藥草斜坡',
+    zone: 'plains',
+    image: 'plains_herb_slope.png',
+    imagePrompt: '藥草斜坡 in plains, resource room with herb patches, bees, sloped grass and amber sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斜坡朝西展開，野薄荷、止血草和淡紫色小花在石縫間生長，蜜蜂嗡鳴聲被暖風帶得很遠。北邊可回草原小徑，東方盜賊藏身處的煙柱隱約可見，南側斷橋下傳來溪水拍擊聲。地面有採集者留下的小刀痕與籃印，提示玩家可在這裡進行草藥採集或追查被盜補給的去向，但也要留心野豬翻土造成的衝撞路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'grass_path', description: '回到草原小徑' },
+      { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '煙味來自東側藏身處' },
+      { direction: 'south', targetRoomId: 'plains_broken_bridge', description: '斜坡下方是斷橋' },
+    ],
+    monsters: [
+      { monsterId: 'prairie_boar', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 30 },
+    ],
+    mapSymbol: '[h]',
+    mapX: 3,
+    mapY: 5,
+  },
+
+  plains_shepherd_camp: {
+    id: 'plains_shepherd_camp',
+    name: '牧羊人營地',
+    zone: 'plains',
+    image: 'plains_shepherd_camp.png',
+    imagePrompt: '牧羊人營地 in plains, quest camp room with wool tents, sheep pens, cooking fire and evening light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '牧羊人營地靠著農場南側的緩坡搭起，羊圈木欄被撞歪，灰白羊毛掛在刺木上，煮鍋散出奶油與煙草氣味。西邊可回風車農場，南面藥草坡與盜賊藏身處隔著高草相望。營地木桌上有失蹤羊群的簡圖、狼爪拓印和求助紙條，提示玩家能接到護送、尋物或擊退野獸的支線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'windmill_farm', description: '回到風車農場' },
+      { direction: 'south', targetRoomId: 'plains_herb_slope', description: '羊群踩出的路通往藥草坡' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 50 },
+      { monsterId: 'prairie_boar', maxCount: 1, respawnSeconds: 65 },
+    ],
+    mapSymbol: '[c]',
+    mapX: 4,
+    mapY: 3,
+  },
+
+  plains_broken_bridge: {
+    id: 'plains_broken_bridge',
+    name: '斷木橋',
+    zone: 'plains',
+    image: 'plains_broken_bridge.png',
+    imagePrompt: '斷木橋 in plains, main route event room with collapsed bridge, creek, muddy tracks and stormy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬蹄印和拖行箱子的痕跡。北邊是藥草斜坡，東側可追向盜賊藏身處，西邊十字路口的路標露出半截。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
+    exits: [
+      { direction: 'north', targetRoomId: 'plains_herb_slope', description: '回到藥草斜坡' },
+      { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '盜賊腳印往東延伸' },
+      { direction: 'west', targetRoomId: 'crossroads', description: '沿泥路回到十字路口' },
+    ],
+    monsters: [
+      { monsterId: 'bandit', maxCount: 1, respawnSeconds: 60 },
+      { monsterId: 'prairie_boar', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[=]',
+    mapX: 3,
+    mapY: 6,
+  },
+
+  plains_stone_circle: {
+    id: 'plains_stone_circle',
+    name: '古石環',
+    zone: 'plains',
+    image: 'plains_stone_circle.png',
+    imagePrompt: '古石環 in plains, hidden event room with standing stones, carved runes, cold dawn light and circling crows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '十二塊立石圍成粗糙圓環，表面刻著被苔蘚遮住的古老符號，冷風穿過石縫時像有人低語。北邊月影小林遮住入口，東側能回十字路口，南方守望土丘從草浪中隆起。石環中央有焦黑祭痕與烏鴉羽毛，提示玩家可 inspect 符文、觸發區域事件，或找到與平原狼群異常躁動有關的線索。',
+    exits: [
+      { direction: 'north', targetRoomId: 'plains_moonlit_copse', description: '回到月影小林' },
+      { direction: 'east', targetRoomId: 'old_well', description: '荒草路通向古井旁' },
+      { direction: 'south', targetRoomId: 'plains_watch_mound', description: '石環南側是守望土丘' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'wind_hawk', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[o]',
+    mapX: 0,
+    mapY: 6,
+  },
+
+  plains_watch_mound: {
+    id: 'plains_watch_mound',
+    name: '守望土丘',
+    zone: 'plains',
+    image: 'plains_watch_mound.png',
+    imagePrompt: '守望土丘 in plains, exploration room on grassy mound, old banner pole, broad view to village forest and river, clear wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '守望土丘比周圍草地高出一截，腐朽旗杆插在頂端，風從四面吹來，能同時看見北方石環、東方十字路口和更南側陰暗狼穴入口。草坡上留有舊營火灰、破望遠鏡和被風磨平的哨兵刻字。這裡本身不算危險，但提供方向感與戰術視野，提示玩家可在進入更深處前確認路線、整理任務並觀察狼群巡邏。',
+    exits: [
+      { direction: 'north', targetRoomId: 'plains_stone_circle', description: '回到古石環' },
+      { direction: 'east', targetRoomId: 'crossroads', description: '下坡可回十字路口' },
+      { direction: 'south', targetRoomId: 'plains_alpha_den', description: '南坡通往狼群首領的棲地' },
+    ],
+    mapSymbol: '[^]',
+    mapX: 1,
+    mapY: 7,
+  },
+
+  plains_alpha_den: {
+    id: 'plains_alpha_den',
+    name: '狼群首領棲地',
+    zone: 'plains',
+    image: 'plains_alpha_den.png',
+    imagePrompt: '狼群首領棲地 in plains, boss room with grass den, bones, torn banners, red dusk light and wolf silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '土丘南面的高草被踩成圓形空地，中央堆著白骨、破披風和被咬碎的木盾，血腥味與濕草味混在低沉狼嚎裡。北方斜坡回到守望土丘，東面斷橋方向仍有盜賊丟下的贓物痕跡，西側草牆幾乎封死，只留下狼群出入的窄道。這裡是平原狼群首領活動的棲地，草叢邊緣有多組伏擊腳印與巨大爪痕；玩家進入前應確認藥水、裝備和任務目標，戰鬥後可搜查骨堆取得區域事件線索。空地邊緣插著半截路標，上面還留有從十字路口拖來的鐵釘，顯示狼群已威脅主要道路。風穿過草牆時會暴露幾條短暫撤退縫隙，但狼王嚎叫後這些路徑很快會被狼群封住。',
+    exits: [
+      { direction: 'north', targetRoomId: 'plains_watch_mound', description: '沿斜坡撤回守望土丘' },
+      { direction: 'east', targetRoomId: 'plains_broken_bridge', description: '血跡小徑通往斷木橋' },
+    ],
+    monsters: [
+      { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[A]',
+    mapX: 0,
+    mapY: 7,
   },
 
   // ─── Area 6: 暗影森林擴充 (Lv 12-20) ────────────────────
