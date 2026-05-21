@@ -20,7 +20,9 @@ import {
   QUALITY_RULES,
   generateEquipmentInstance,
   getEligibleAffixes,
+  rollEquipmentDrop,
   rollItemQuality,
+  selectEquipmentDropCandidates,
   toBaseEquipmentDef,
   ITEM_DEFS,
   SKILL_DEFS,
@@ -508,6 +510,38 @@ describe('Balance: Item instance generation', () => {
     expect(rollItemQuality(100, [], () => 0.2)).toBe('rare');
     expect(rollItemQuality(999, [], () => 0)).toBe('legendary');
     expect(rollItemQuality(0, ['world_boss'], () => 0)).toBe('mythic');
+  });
+
+  it('selects equipment drops by source, level, slot, source tags, and zone tags', () => {
+    const candidates = selectEquipmentDropCandidates({
+      source: 'starter wolf reward',
+      levelMin: 1,
+      levelMax: 10,
+      slots: ['ring', 'necklace'],
+      sourceTags: ['starter_progression'],
+      zoneTags: ['plains'],
+    });
+
+    expect(candidates.length).toBeGreaterThan(0);
+    expect(candidates.every(item => item.level >= 1 && item.level <= 10)).toBe(true);
+    expect(candidates.every(item => item.equipSlot === 'ring' || item.equipSlot === 'necklace')).toBe(true);
+    expect(candidates.every(item => item.sourceTags.includes('starter_progression'))).toBe(true);
+    expect(candidates.every(item => item.zoneTags.includes('plains'))).toBe(true);
+  });
+
+  it('rolls a deterministic equipment drop from matching candidates', () => {
+    const drop = rollEquipmentDrop({
+      source: 'starter armor reward',
+      levelMin: 1,
+      levelMax: 10,
+      slots: ['head'],
+      sourceTags: ['starter_progression'],
+      zoneTags: ['starter_village'],
+    }, () => 0);
+
+    expect(drop).not.toBeNull();
+    expect(drop?.equipSlot).toBe('head');
+    expect(drop?.level).toBeLessThanOrEqual(10);
   });
 });
 

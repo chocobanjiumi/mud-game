@@ -1,4 +1,6 @@
-import type { BaseEquipmentDef, EquipSlot, ItemStats } from '../types/item.js';
+import { ITEM_DEFS } from '../constants/items.js';
+import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats } from '../types/item.js';
+import { toBaseEquipmentDef } from '../types/item.js';
 
 export type ItemQuality = 'normal' | 'fine' | 'rare' | 'epic' | 'legendary' | 'mythic';
 export type AffixTier = 'T1' | 'T2' | 'T3' | 'T4' | 'T5';
@@ -36,6 +38,15 @@ export interface GenerateEquipmentInstanceOptions {
   classId?: string;
   sourceTags?: string[];
   random?: () => number;
+}
+
+export interface EquipmentDropRule {
+  source: string;
+  levelMin: number;
+  levelMax: number;
+  slots?: EquipSlot[];
+  sourceTags?: string[];
+  zoneTags?: string[];
 }
 
 const TIER_ORDER: AffixTier[] = ['T1', 'T2', 'T3', 'T4', 'T5'];
@@ -99,6 +110,25 @@ export function generateEquipmentInstance(
   };
 }
 
+export function selectEquipmentDropCandidates(
+  rule: EquipmentDropRule,
+  itemDefs: Record<string, ItemDef> = ITEM_DEFS,
+): BaseEquipmentDef[] {
+  return Object.values(itemDefs)
+    .map(def => toBaseEquipmentDef(def))
+    .filter((def): def is BaseEquipmentDef => !!def)
+    .filter(def => def.level >= rule.levelMin && def.level <= rule.levelMax)
+    .filter(def => !rule.slots || rule.slots.includes(def.equipSlot))
+    .filter(def => tagsMatch(def.sourceTags, rule.sourceTags))
+    .filter(def => tagsMatch(def.zoneTags, rule.zoneTags));
+}
+
+export function rollEquipmentDrop(rule: EquipmentDropRule, random: () => number = Math.random): BaseEquipmentDef | null {
+  const candidates = selectEquipmentDropCandidates(rule);
+  if (candidates.length === 0) return null;
+  return candidates[Math.floor(random() * candidates.length)];
+}
+
 export function rollItemQuality(
   luk = 0,
   sourceTags: string[] = [],
@@ -158,4 +188,9 @@ function rollAffixes(
   }
 
   return selected;
+}
+
+function tagsMatch(candidateTags: string[], requiredTags?: string[]): boolean {
+  if (!requiredTags || requiredTags.length === 0) return true;
+  return requiredTags.some(tag => candidateTags.includes(tag));
 }

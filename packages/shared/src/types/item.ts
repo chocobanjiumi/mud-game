@@ -61,9 +61,9 @@ export function toBaseEquipmentDef(def: ItemDef | undefined): BaseEquipmentDef |
   if (!isEquipmentItemDef(def)) return null;
   return {
     ...def,
-    level: def.levelReq,
-    sourceTags: [],
-    zoneTags: [],
+    level: def.level ?? def.levelReq,
+    sourceTags: def.sourceTags ?? [],
+    zoneTags: def.zoneTags ?? [],
   };
 }
 
