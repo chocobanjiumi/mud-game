@@ -85,6 +85,11 @@ export const ZONES: Record<string, ZoneDef> = {
     rooms: [
       'forest_entrance', 'dense_trail', 'mushroom_swamp',
       'ancient_treehouse', 'deep_forest', 'elf_ruins',
+      'firefly_trail', 'deep_poison_swamp', 'elf_altar',
+      'withered_forest', 'dark_treehollow',
+      'dark_forest_spider_web', 'dark_forest_raven_perch', 'dark_forest_root_bridge',
+      'dark_forest_witch_hut', 'dark_forest_moonwell', 'dark_forest_hunter_blind',
+      'dark_forest_bramble_maze', 'dark_forest_shadow_clearing', 'dark_forest_elder_grove',
     ],
   },
   crystal_cave: {
@@ -1581,10 +1586,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'forest_entrance',
     name: '森林入口',
     zone: 'dark_forest',
+    image: 'forest_entrance.png',
+    imagePrompt: '森林入口 in dark_forest, entrance room with giant oak archway, wet roots, dim green light and warning shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '巨大的橡樹如同門衛般矗立在森林入口兩側，枝椏交錯形成一道天然的拱門。' +
-      '踏入森林的那一刻，陽光驟然黯淡，空氣變得潮濕而陰涼。' +
-      '鳥鳴聲從四面八方傳來，但看不到任何鳥的蹤跡。',
+      '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示玩家進入後會遭遇暗影狼伏擊。',
     exits: [
       { direction: 'north', targetRoomId: 'crossroads', description: '回到十字路口' },
       { direction: 'south', targetRoomId: 'dense_trail', description: '深入密林小道' },
@@ -1608,10 +1613,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'dense_trail',
     name: '密林小道',
     zone: 'dark_forest',
+    image: 'dense_trail.png',
+    imagePrompt: '密林小道 in dark_forest, main route room choked by vines, spider silk, leaf carpet and dim filtered light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '越走越深，周圍的樹木越來越高大，藤蔓和荊棘幾乎堵住了去路。' +
-      '腳下的落葉厚得像地毯，踩上去沒有一點聲音。' +
-      '偶爾有蛛絲黏在臉上，讓人不禁打了個寒顫。',
+      '越往深處走，樹木越高，藤蔓和荊棘幾乎把道路擠成窄縫，厚落葉吸走腳步聲，只剩遠處不自然的枝條摩擦聲。北面可退回森林入口，西邊飄來沼澤腐甜氣味，南方深林更暗，東側螢光若隱若現。臉上偶爾黏到冰冷蛛絲，提示巨型蜘蛛可能在頭頂結網，玩家應留意方向與伏擊。',
     exits: [
       { direction: 'north', targetRoomId: 'forest_entrance', description: '退回森林入口' },
       { direction: 'west', targetRoomId: 'mushroom_swamp', description: '空氣中飄來沼澤的氣味' },
@@ -1636,10 +1641,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'mushroom_swamp',
     name: '蘑菇沼澤',
     zone: 'dark_forest',
+    image: 'mushroom_swamp.png',
+    imagePrompt: '蘑菇沼澤 in dark_forest, resource combat swamp room with giant glowing mushrooms, bubbling mud, sickly green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '地面變得泥濘不堪，到處冒著詭異的氣泡。巨大的蘑菇散發著幽幽的螢光，' +
-      '有的甚至比人還高。空氣中瀰漫著腐敗的甜膩氣息。' +
-      '沼澤深處傳來低沉的咕嚕聲——最好不要靠得太近。',
+      '泥地在腳下慢慢下陷，紫黑水泡從沼澤表面鼓起又破裂，巨大螢光蘑菇照出病態綠光，有些菌傘高過人頭。東面回到密林小道，西方毒霧更濃，泥水裡可見蛛腿般的細長倒影。腐敗甜味和潮濕木屑味混在一起，最大的蘑菇根部埋著發光材料，提示玩家可採集但也可能驚動蜘蛛與樹精。',
     exits: [
       { direction: 'east', targetRoomId: 'dense_trail', description: '回到密林小道' },
       { direction: 'west', targetRoomId: 'deep_poison_swamp', description: '沼澤向西延伸，毒霧越來越濃' },
@@ -1662,10 +1667,10 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'ancient_treehouse',
     name: '古老樹屋',
     zone: 'dark_forest',
+    image: 'ancient_treehouse.png',
+    imagePrompt: '古老樹屋 in dark_forest, exploration room with elven treehouse, spiral stairs, ancient books, shafts of green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一棵千年巨木的枝幹間建著一座被遺忘的樹屋，木製的階梯盤旋而上。' +
-      '雖然年久失修，但精巧的建築工藝仍然清晰可辨——這是精靈族的傑作。' +
-      '樹屋裡殘留著一些古老的書籍和魔法道具。',
+      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精低鳴，提示玩家可調查精靈歷史或遭遇守護樹靈。',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
       { direction: 'east', targetRoomId: 'hunter_lodge', description: '林間小路通往一間獵人小屋' },
@@ -1687,10 +1692,11 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'deep_forest',
     name: '森林深處',
     zone: 'dark_forest',
+    image: 'deep_forest.png',
+    imagePrompt: '森林深處 in dark_forest, boss route room with huge roots, green watching eyes, oppressive darkness and wolf territory, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '這裡幾乎伸手不見五指。古老的樹根盤踞在地面上，宛如沉睡的巨蛇。' +
-      '幽暗中，一雙一雙泛著綠光的眼睛正注視著你。' +
-      '空氣中充滿了野獸的氣息——暗影狼王的領地就在附近。',
+      '森林深處幾乎吞掉所有光線，古老樹根盤踞在地面上，像沉睡巨蛇繞過腐葉和黑水坑。北方可退回密林小道，南方精靈遺跡透出微弱藍光，西側枯萎之林散出灰燼味。幽暗裡一雙雙綠眼保持距離跟隨，地上有巨大狼爪與被拖走獵物的痕跡；這裡是暗影狼王與暗影樹靈的活動邊界，玩家進入前應確認藥水、裝備和任務目標。' +
+      '粗根間散落舊箭矢、破披風和被咬碎的骨片，風穿過樹洞時像低聲警告。若沿著狼爪向南追蹤，會接近遺跡與更深事件；若往西撤退，則進入枯萎之林的詛咒路線，路線選擇會影響後續遭遇。',
     exits: [
       { direction: 'north', targetRoomId: 'dense_trail', description: '退回密林小道' },
       { direction: 'south', targetRoomId: 'elf_ruins', description: '一道微弱的光從南方透出' },
@@ -1715,10 +1721,11 @@ export const ROOMS: Record<string, RoomDef> = {
     id: 'elf_ruins',
     name: '精靈遺跡',
     zone: 'dark_forest',
+    image: 'elf_ruins.png',
+    imagePrompt: '精靈遺跡 in dark_forest, landmark room with broken elven pillars, faded magic circle, blue crystal altar light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '穿過重重樹幕，眼前出現一片開闊的遺跡。殘破的石柱上雕刻著精靈族的文字，' +
-      '地面的魔法陣雖已黯淡，但仍隱隱散發著微光。' +
-      '遺跡中央的祭壇上放著一顆發著淡藍色光芒的水晶。',
+      '穿過重重樹幕後，開闊遺跡像被森林吞下的廣場般出現，斷裂白石柱刻滿精靈文字，地面魔法陣雖黯淡仍有藍光沿刻痕流動。北面回到森林深處，南方空氣逐漸灼熱通往火山地帶，東側老樹叢深處傳來低沉脈動。祭壇中央的水晶映出破碎記憶與任務線索，是地標、劇情與 Boss 事件的核心節點，玩家可 inspect 符文確認暗影來源。' +
+      '石柱旁有被暗影侵蝕的箭孔和精靈守衛殘甲，說明這裡曾經爆發過長期防衛戰。水晶光芒會指向暗影空地與古樹心庭，玩家若完成森林線索，可在此回收證物、觸發下一段區域推進或判斷通往火山的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'deep_forest', description: '返回森林深處' },
       { direction: 'south', targetRoomId: 'volcano_base', description: '遺跡南方的空氣越來越灼熱，通往火山地帶' },

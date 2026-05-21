@@ -359,10 +359,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'firefly_trail',
     name: '螢火蟲小徑',
     zone: 'dark_forest',
+    image: 'firefly_trail.png',
+    imagePrompt: '螢火蟲小徑 in dark_forest, main route room lit by magical fireflies, moss carpet, blue-green glow and hidden predators, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '密林中的一條幽靜小徑，數以千計的螢火蟲在兩旁的灌木叢中閃爍，' +
-      '將黑暗的森林點綴成一條夢幻的光之走廊。' +
-      '腳下的苔蘚柔軟如地毯，每一步都踩出微弱的磷光。',
+      '密林中這條小徑被數以千計的螢火蟲照亮，藍綠光點沿灌木排列成夢幻走廊，腳下苔蘚柔軟得像濕地毯。西邊可回密林小道，南方螢光逐漸稀疏並轉成毒霧，東側銀光指向精靈祭壇。每一步都踩出微弱磷光，也暴露行蹤；若某片螢火突然熄滅，通常代表暗影狼或蜘蛛正從側面靠近。' +
+      '灌木下有精靈胸針、細小骨片和被拖曳的鞋印，提醒玩家這裡既是主路也是伏擊線索點。螢火會短暫聚成箭頭，指向祭壇或毒霧沼澤，適合用 look 判斷下一步任務方向，也能作為受傷時撤回密林小道的光標與安全提示。',
     exits: [
       { direction: 'west', targetRoomId: 'dense_trail', description: '沿著光點回到密林小道' },
       { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '螢火蟲越來越少，空氣越來越潮濕' },
@@ -386,6 +387,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'deep_poison_swamp',
     name: '毒霧沼澤深處',
     zone: 'dark_forest',
+    image: 'deep_poison_swamp.png',
+    imagePrompt: '毒霧沼澤深處 in dark_forest, elite resource swamp room with purple toxic fog, dead trunks, glowing poisonous mushrooms, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '沼澤在此處變得更加深邃，濃厚的紫色毒霧從水面蒸騰而起，遮蔽了一切視線。' +
       '枯朽的樹幹如骸骨般從泥漿中伸出，上面覆蓋著發光的毒蘑菇。' +
@@ -395,11 +398,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
     ],
     monsters: [
-      { monsterId: 'poison_toad', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'poison_snake', maxCount: 3, respawnSeconds: 40 },
       { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 50 },
     ],
     mapSymbol: '[!]',
-    mapX: 1,
+    mapX: 0,
     mapY: 8,
     guardianHints: {
       creature: '毒霧最濃的地方棲息著巨型毒蛙，牠們的舌頭射程比你想像的更遠。',
@@ -412,10 +415,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'elf_altar',
     name: '精靈祭壇',
     zone: 'dark_forest',
+    image: 'elf_altar.png',
+    imagePrompt: '精靈祭壇 in dark_forest, landmark room with white stone altar, moon emblem, silver healing light and crystal orb, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '古老的白色石柱圍成一個半圓，中央的祭壇上刻著精靈族的月亮紋章。' +
-      '儘管周圍的森林已被暗影侵蝕，這裡卻保持著一片寧靜的銀白色光輝。' +
-      '祭壇上的水晶球緩緩旋轉，散發出溫柔的治癒氣息。',
+      '古老白色石柱圍成半圓，中央祭壇刻著精靈族月亮紋章，銀白光輝把四周暗影隔在石階之外。西邊螢火蟲小徑仍在閃爍，南方枯萎之林像被詛咒燒乾，祭壇水晶球緩慢旋轉並散出淡淡治癒氣息。石面有新鮮爪痕與乾涸血跡，提示這裡既是地標與劇情節點，也是暗影生物試圖突破結界的前線。' +
+      '水晶球內偶爾浮現森林深處與古樹心庭的影像，旁邊石盆殘留可採集的銀色露水。玩家可在此 inspect 月亮紋章，確認詛咒來源、取得支線提示，或沿南側道路追蹤枯萎蔓延的方向，並判斷結界仍能提供短暫庇護。',
     exits: [
       { direction: 'west', targetRoomId: 'firefly_trail', description: '回到螢火蟲小徑' },
       { direction: 'south', targetRoomId: 'withered_forest', description: '祭壇背後的森林一片枯萎' },
@@ -425,8 +429,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[E]',
-    mapX: 2,
-    mapY: 7,
+    mapX: 3,
+    mapY: 8,
     guardianHints: {
       creature: '祭壇的守護樹精對靠近的暗影生物充滿敵意，但對友善的訪客並不主動攻擊。',
       treasure: '水晶球中封存著精靈女王的一縷記憶，觸碰它也許能習得遠古的精靈魔法。',
@@ -438,6 +442,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'withered_forest',
     name: '枯萎之林',
     zone: 'dark_forest',
+    image: 'withered_forest.png',
+    imagePrompt: '枯萎之林 in dark_forest, combat room of dead gray trees, ash-covered ground, purple cracks and moving treants, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '所有的樹木都失去了生機，灰白色的枝幹扭曲成詭異的形狀，如同無數伸出的手臂。' +
       '地面覆蓋著厚厚的灰燼，踩上去會揚起令人窒息的塵埃。' +
@@ -448,12 +454,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'deep_forest', description: '枯林邊緣連接著森林深處' },
     ],
     monsters: [
-      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 900 },
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 50 },
     ],
     mapSymbol: '[X]',
-    mapX: 2,
-    mapY: 8,
+    mapX: 1,
+    mapY: 9,
     guardianHints: {
       creature: '看似靜止的枯木中有些是暗黑樹人——注意觀察樹幹上是否有脈動的紫色紋路。',
       treasure: '灰燼之下埋著被暗影力量結晶化的樹心，是鍛造暗屬性武器的關鍵材料。',
@@ -465,6 +471,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     id: 'dark_treehollow',
     name: '黑暗樹洞',
     zone: 'dark_forest',
+    image: 'dark_treehollow.png',
+    imagePrompt: '黑暗樹洞 in dark_forest, hidden elite room inside dead giant tree, purple fungi, hollow chamber and deep shadow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
       '一棵直徑超過十公尺的千年巨木已經完全枯死，中空的樹幹形成了一座天然的暗室。' +
       '樹洞內壁上覆蓋著發出幽紫色光芒的菌類，空氣中充斥著腐朽與魔力交織的氣味。' +
@@ -473,18 +481,216 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'withered_forest', description: '爬出樹洞回到枯萎之林' },
     ],
     monsters: [
-      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 900 },
       { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 80 },
       { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 55 },
     ],
     mapSymbol: '[D]',
-    mapX: 2,
-    mapY: 9,
+    mapX: 1,
+    mapY: 10,
     guardianHints: {
       creature: '樹洞最深處的黑暗中藏著蝙蝠群的巢穴，驚動牠們會引發恐怖的蝙蝠潮。',
       treasure: '內壁的菌類下有精靈族的封印紋章，破解它可能開啟隱藏的地下通道。',
       spirit: '這棵巨木是森林最初的守護樹，它的死亡標誌著暗影力量的勝利。但在枯朽的核心中，最後一絲生命之力仍在頑強地跳動。',
     },
+  },
+
+  dark_forest_spider_web: {
+    id: 'dark_forest_spider_web',
+    name: '蛛網密室',
+    zone: 'dark_forest',
+    image: 'dark_forest_spider_web.png',
+    imagePrompt: '蛛網密室 in dark_forest, combat room with giant layered webs, trapped bones, pale shafts of light and spider silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '密林東側的樹枝被巨大蛛網纏成半封閉空間，白色絲線層層交疊，困住腐葉、獸骨和破裂背包。西邊可退回密林小道，南側根橋方向傳來低沉木頭摩擦聲，蛛網間有幾條通往高處的細線。這裡是巨型蜘蛛的狩獵點，玩家若觸碰閃光物品可能觸發伏擊，但也能找到被困旅人留下的補給與任務證物。',
+    exits: [
+      { direction: 'west', targetRoomId: 'dense_trail', description: '撥開蛛絲回到密林小道' },
+      { direction: 'south', targetRoomId: 'dark_forest_root_bridge', description: '粗大樹根延伸向南' },
+    ],
+    monsters: [
+      { monsterId: 'giant_spider', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[s]',
+    mapX: 3,
+    mapY: 9,
+  },
+
+  dark_forest_raven_perch: {
+    id: 'dark_forest_raven_perch',
+    name: '黑鴉棲枝',
+    zone: 'dark_forest',
+    image: 'dark_forest_raven_perch.png',
+    imagePrompt: '黑鴉棲枝 in dark_forest, exploration room with leaning dead trees, black birds, feathers and cold moonlit branches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '幾株傾斜枯木在沼澤北側交錯成高枝平台，黑鴉安靜排列在枝頭，只有羽毛偶爾落進霧中。東方螢火小徑透出微光，南邊毒霧沼澤冒著紫泡，西側可繞往月井方向。枝條上掛著亮片、骨戒和被叼來的紙片，提示玩家可 search 鳥巢尋找線索，但驚動鳥群會引來暗影生物注意。',
+    exits: [
+      { direction: 'east', targetRoomId: 'firefly_trail', description: '螢火光在東方閃動' },
+      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '毒霧從南方沼澤升起' },
+      { direction: 'west', targetRoomId: 'dark_forest_moonwell', description: '冷光從西方水井映出' },
+    ],
+    monsters: [
+      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 55 },
+    ],
+    mapSymbol: '[r]',
+    mapX: 0,
+    mapY: 7,
+  },
+
+  dark_forest_root_bridge: {
+    id: 'dark_forest_root_bridge',
+    name: '盤根橋',
+    zone: 'dark_forest',
+    image: 'dark_forest_root_bridge.png',
+    imagePrompt: '盤根橋 in dark_forest, main route room with giant exposed roots forming bridge over black stream, dim green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '數條巨大樹根橫跨黑水溪，形成濕滑窄橋，溪底反射出不屬於天空的綠色微光。北面蛛網密室懸著白絲，西側可回森林深處，南方暗影空地被低霧包圍。根橋兩側沒有護欄，木質表面有狼爪與樹精刻痕，提示玩家這是繞行與撤退的重要路線，但戰鬥中被逼到邊緣會非常危險。',
+    exits: [
+      { direction: 'north', targetRoomId: 'dark_forest_spider_web', description: '蛛網掛滿北側枝條' },
+      { direction: 'west', targetRoomId: 'deep_forest', description: '粗根延回森林深處' },
+      { direction: 'south', targetRoomId: 'dark_forest_shadow_clearing', description: '南方空地被黑霧籠罩' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'treant', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[=]',
+    mapX: 3,
+    mapY: 10,
+  },
+
+  dark_forest_witch_hut: {
+    id: 'dark_forest_witch_hut',
+    name: '森林女巫小屋',
+    zone: 'dark_forest',
+    image: 'dark_forest_witch_hut.png',
+    imagePrompt: '森林女巫小屋 in dark_forest, quest elite room with crooked hut, hanging herbs, green cauldron light and root doorway, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '歪斜小屋架在樹根與石塊之間，乾草藥、骨鈴和發光蘑菇掛滿屋簷，綠色坩堝光從門縫溢出。東邊月井散出冷光，南面荊棘迷宮像活物般開合，屋後暗門通向枯萎之林。桌上有被撕開的森林地圖和未完成咒文，提示玩家這裡是任務與精英遭遇點，可調查女巫如何操縱森林詛咒。',
+    exits: [
+      { direction: 'east', targetRoomId: 'dark_forest_moonwell', description: '月井冷光在東方閃爍' },
+      { direction: 'south', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘牆向南開出縫隙' },
+      { direction: 'west', targetRoomId: 'withered_forest', description: '屋後小徑通往枯萎之林' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[W]',
+    mapX: 0,
+    mapY: 9,
+  },
+
+  dark_forest_moonwell: {
+    id: 'dark_forest_moonwell',
+    name: '月影井',
+    zone: 'dark_forest',
+    image: 'dark_forest_moonwell.png',
+    imagePrompt: '月影井 in dark_forest, resource hidden room with circular stone well, moon reflection, blue water and silver moss, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '圓形石井藏在銀苔覆蓋的小空地中，井水不映樹冠，只映出一輪蒼白月亮，周圍空氣帶著清冷礦物味。東邊黑鴉棲枝傳來低叫，西側女巫小屋飄出草藥煙，南面荊棘迷宮堵住去路。井沿有精靈刻痕與水滴形凹槽，提示玩家可採集月井水、解讀符文，或取得解除毒霧與暗影詛咒的材料。',
+    exits: [
+      { direction: 'east', targetRoomId: 'dark_forest_raven_perch', description: '黑鴉在東側枝頭低鳴' },
+      { direction: 'west', targetRoomId: 'dark_forest_witch_hut', description: '女巫小屋隱在西側樹根後' },
+      { direction: 'south', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮在南方纏結' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 80 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 60 },
+    ],
+    mapSymbol: '[m]',
+    mapX: 0,
+    mapY: 10,
+  },
+
+  dark_forest_hunter_blind: {
+    id: 'dark_forest_hunter_blind',
+    name: '獵人瞭望棚',
+    zone: 'dark_forest',
+    image: 'dark_forest_hunter_blind.png',
+    imagePrompt: '獵人瞭望棚 in dark_forest, exploration room with camouflaged wooden blind, rope ladder, arrows and filtered forest light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '一座偽裝成枝葉堆的木製瞭望棚架在樹屋南側，繩梯被苔蘚染成暗綠，棚內留下箭袋、磨損望遠筒和幾張狼群巡路草圖。北邊可回古老樹屋，南側靠近蛛網密室，東方能看見暗精靈弓手活動的細長影子。這裡提供安全觀察角度，提示玩家可查看怪物動線、選擇埋伏或撤退路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ancient_treehouse', description: '繩梯上方連回古老樹屋' },
+      { direction: 'south', targetRoomId: 'dark_forest_spider_web', description: '蛛網密室在南側枝葉後' },
+      { direction: 'east', targetRoomId: 'dark_forest_root_bridge', description: '遠處盤根橋露出一角' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 75 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 40 },
+    ],
+    mapSymbol: '[H]',
+    mapX: 4,
+    mapY: 8,
+  },
+
+  dark_forest_bramble_maze: {
+    id: 'dark_forest_bramble_maze',
+    name: '荊棘迷宮',
+    zone: 'dark_forest',
+    image: 'dark_forest_bramble_maze.png',
+    imagePrompt: '荊棘迷宮 in dark_forest, main route room of thorn walls, torn cloth, narrow passages and green-black light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '活著般的荊棘牆在月井南面交錯移動，黑刺上掛著撕裂布條、暗紅樹液和被纏住的獸骨。北邊可退回月影井或女巫小屋，東側通向暗影空地，西邊枯萎之林的灰霧從縫隙滲入。道路會被枝條短暫封閉，提示玩家需要觀察方向、避開纏繞伏擊，並在戰鬥中利用迷宮作為撤退或繞行路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'dark_forest_moonwell', description: '月井冷光指引北方出口' },
+      { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地' },
+      { direction: 'west', targetRoomId: 'dark_forest_witch_hut', description: '女巫小屋在西北側樹根後' },
+    ],
+    monsters: [
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'treant', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[#]',
+    mapX: 4,
+    mapY: 10,
+  },
+
+  dark_forest_shadow_clearing: {
+    id: 'dark_forest_shadow_clearing',
+    name: '暗影空地',
+    zone: 'dark_forest',
+    image: 'dark_forest_shadow_clearing.png',
+    imagePrompt: '暗影空地 in dark_forest, elite combat clearing with black mist, claw marks, broken moonlight and circling wolves, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑霧在林間空地低低旋轉，月光落到地面前就被撕成碎片，周圍樹皮佈滿巨大爪痕。北方盤根橋可作撤退路，西邊荊棘迷宮仍在移動，南方老樹叢傳來深沉心跳般的聲音。地面有狼群圍獵形成的圓形足跡，提示玩家這裡是精英遭遇與 Boss 前哨，進入後應準備群體戰與中斷技能。',
+    exits: [
+      { direction: 'north', targetRoomId: 'dark_forest_root_bridge', description: '盤根橋在北方黑水溪上' },
+      { direction: 'west', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮可作側向撤退' },
+      { direction: 'south', targetRoomId: 'dark_forest_elder_grove', description: '沉重心跳聲來自南方老樹叢' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 75 },
+    ],
+    mapSymbol: '[!]',
+    mapX: 3,
+    mapY: 11,
+  },
+
+  dark_forest_elder_grove: {
+    id: 'dark_forest_elder_grove',
+    name: '古樹心庭',
+    zone: 'dark_forest',
+    image: 'dark_forest_elder_grove.png',
+    imagePrompt: '古樹心庭 in dark_forest, boss landmark room with ancient heart tree, glowing roots, ruined elven seals and oppressive shadow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古樹心庭被環狀樹根圍住，中央巨木的樹心裂開，暗紫光從裂縫中一下一下跳動，像整座森林的病灶。北方可退回暗影空地，西北方樹洞通往黑暗樹洞，東側隱約連回精靈遺跡的破碎結界。地上散落精靈封印石、腐化樹心碎片與狼王爪痕，這裡是暗影森林大型事件鉤子與最終地標；玩家需要完成線索、準備隊伍或至少整理補給再挑戰暗影樹靈。' +
+      '巨木周圍的根牆會隨心跳聲緩慢開合，短暫露出可撤退的北側缺口，也可能在戰鬥中封住側路。腐化樹心旁有可 loot 的結晶化樹皮與狼群戰利品，暗示擊敗首領後能取得區域推進證物並削弱森林詛咒。',
+    exits: [
+      { direction: 'north', targetRoomId: 'dark_forest_shadow_clearing', description: '回到暗影空地' },
+      { direction: 'west', targetRoomId: 'dark_treehollow', description: '裂根通往黑暗樹洞' },
+      { direction: 'east', targetRoomId: 'elf_ruins', description: '破碎結界連向精靈遺跡' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[B]',
+    mapX: 2,
+    mapY: 11,
   },
 
   // ─── Area 7: 水晶洞窟擴充 (Lv 18-28) ────────────────────
