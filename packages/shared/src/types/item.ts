@@ -40,6 +40,30 @@ export interface ItemDef {
   };
 }
 
+export type EquipmentItemType = 'weapon' | 'armor' | 'accessory';
+
+export interface BaseEquipmentDef extends ItemDef {
+  type: EquipmentItemType;
+  equipSlot: EquipSlot;
+  level: number;
+  sourceTags: string[];
+  zoneTags: string[];
+}
+
+export function isEquipmentItemDef(def: ItemDef | undefined): def is ItemDef & { type: EquipmentItemType; equipSlot: EquipSlot } {
+  return !!def && (def.type === 'weapon' || def.type === 'armor' || def.type === 'accessory') && !!def.equipSlot;
+}
+
+export function toBaseEquipmentDef(def: ItemDef | undefined): BaseEquipmentDef | null {
+  if (!isEquipmentItemDef(def)) return null;
+  return {
+    ...def,
+    level: def.levelReq,
+    sourceTags: [],
+    zoneTags: [],
+  };
+}
+
 export interface ItemStats {
   atk?: number;
   matk?: number;
