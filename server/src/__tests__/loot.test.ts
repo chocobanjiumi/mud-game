@@ -85,11 +85,16 @@ describe('LootCalculator', () => {
     loot = new LootCalculator();
   });
 
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   // ── Gold drops ──
 
   describe('calculateDrops - gold', () => {
     it('should drop gold within the defined range', () => {
       const monster = makeMonsterDef({ goldReward: [10, 20] });
+      vi.spyOn(Math, 'random').mockReturnValue(0.1);
 
       // Run many times to check range
       for (let i = 0; i < 100; i++) {
@@ -101,8 +106,16 @@ describe('LootCalculator', () => {
 
     it('should return exact gold when min equals max', () => {
       const monster = makeMonsterDef({ goldReward: [15, 15] });
+      vi.spyOn(Math, 'random').mockReturnValue(0.1);
       const result = loot.calculateDrops(monster, 5);
       expect(result.gold).toBe(15);
+    });
+
+    it('should allow normal monsters to drop no gold', () => {
+      const monster = makeMonsterDef({ goldReward: [10, 20] });
+      vi.spyOn(Math, 'random').mockReturnValue(0.95);
+      const result = loot.calculateDrops(monster, 5);
+      expect(result.gold).toBe(0);
     });
 
     it('should return correct exp reward', () => {
@@ -194,6 +207,89 @@ describe('LootCalculator', () => {
       // adjustedChance = min(1.0, 0.9 * 2.0) = 1.0
       const result = loot.calculateDrops(monster, 200);
       expect(result.items).toHaveLength(1);
+    });
+  });
+
+  describe('buildMonsterLootTable', () => {
+    it('should create normal monster loot tables with configured category rates', () => {
+      const monster = makeMonsterDef({
+        drops: [
+          { itemId: 'slime_jelly', chance: 0.1, minQty: 1, maxQty: 1 },
+          { itemId: 'small_hp_potion', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'iron_sword', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'class_change_scroll_swordsman', chance: 0.1, minQty: 1, maxQty: 1 },
+          { itemId: 'nature_crystal', chance: 0.5, minQty: 1, maxQty: 1 },
+        ],
+      });
+
+      const table = loot.buildMonsterLootTable(monster);
+
+      expect(table.tier).toBe('normal');
+      expect(table.goldChance).toBeGreaterThanOrEqual(0.8);
+      expect(table.goldChance).toBeLessThanOrEqual(0.95);
+      expect(table.entries.find(e => e.itemId === 'slime_jelly')?.chance).toBeGreaterThanOrEqual(0.3);
+      expect(table.entries.find(e => e.itemId === 'slime_jelly')?.chance).toBeLessThanOrEqual(0.6);
+      expect(table.entries.find(e => e.itemId === 'small_hp_potion')?.chance).toBeGreaterThanOrEqual(0.05);
+      expect(table.entries.find(e => e.itemId === 'small_hp_potion')?.chance).toBeLessThanOrEqual(0.15);
+      expect(table.entries.find(e => e.itemId === 'iron_sword')?.chance).toBeGreaterThanOrEqual(0.05);
+      expect(table.entries.find(e => e.itemId === 'iron_sword')?.chance).toBeLessThanOrEqual(0.12);
+      expect(table.entries.find(e => e.itemId === 'class_change_scroll_swordsman')?.chance).toBeGreaterThanOrEqual(0.4);
+      expect(table.entries.find(e => e.itemId === 'nature_crystal')?.chance).toBeGreaterThanOrEqual(0.001);
+      expect(table.entries.find(e => e.itemId === 'nature_crystal')?.chance).toBeLessThanOrEqual(0.02);
+    });
+
+    it('should create elite loot tables with elite material, equipment, and recipe rates', () => {
+      const monster = makeMonsterDef({
+        isElite: true,
+        drops: [
+          { itemId: 'slime_jelly', chance: 0.1, minQty: 1, maxQty: 1 },
+          { itemId: 'nature_crystal', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'iron_sword', chance: 0.1, minQty: 1, maxQty: 1 },
+          { itemId: 'alchemy_recipe_test', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'alpha_fang', chance: 0.5, minQty: 1, maxQty: 1 },
+        ],
+      });
+
+      const table = loot.buildMonsterLootTable(monster);
+
+      expect(table.tier).toBe('elite');
+      expect(table.goldChance).toBe(1);
+      expect(table.entries.find(e => e.itemId === 'slime_jelly')?.chance).toBeGreaterThanOrEqual(0.6);
+      expect(table.entries.find(e => e.itemId === 'slime_jelly')?.chance).toBeLessThanOrEqual(0.9);
+      expect(table.entries.find(e => e.itemId === 'nature_crystal')?.chance).toBeGreaterThanOrEqual(0.1);
+      expect(table.entries.find(e => e.itemId === 'nature_crystal')?.chance).toBeLessThanOrEqual(0.25);
+      expect(table.entries.find(e => e.itemId === 'iron_sword')?.chance).toBeGreaterThanOrEqual(0.25);
+      expect(table.entries.find(e => e.itemId === 'iron_sword')?.chance).toBeLessThanOrEqual(0.5);
+      expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeGreaterThanOrEqual(0.02);
+      expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeLessThanOrEqual(0.08);
+      expect(table.entries.find(e => e.itemId === 'alpha_fang')?.chance).toBeGreaterThanOrEqual(0.05);
+      expect(table.entries.find(e => e.itemId === 'alpha_fang')?.chance).toBeLessThanOrEqual(0.15);
+    });
+
+    it('should create boss loot tables with guaranteed equipment and boss rates', () => {
+      const monster = makeMonsterDef({
+        isBoss: true,
+        aiType: 'boss',
+        drops: [
+          { itemId: 'dragon_scale', chance: 0.1, minQty: 1, maxQty: 1 },
+          { itemId: 'sword_saint_ring', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'god_of_war_spear', chance: 0.5, minQty: 1, maxQty: 1 },
+          { itemId: 'alchemy_recipe_test', chance: 0.01, minQty: 1, maxQty: 1 },
+        ],
+      });
+
+      const table = loot.buildMonsterLootTable(monster);
+
+      expect(table.tier).toBe('boss');
+      expect(table.goldChance).toBe(1);
+      expect(table.entries.some(e => e.category === 'equipment' && e.chance === 1)).toBe(true);
+      expect(table.entries.find(e => e.itemId === 'dragon_scale')?.chance).toBeGreaterThanOrEqual(0.5);
+      expect(table.entries.find(e => e.itemId === 'sword_saint_ring')?.chance).toBeGreaterThanOrEqual(0.1);
+      expect(table.entries.find(e => e.itemId === 'sword_saint_ring')?.chance).toBeLessThanOrEqual(0.3);
+      expect(table.entries.find(e => e.itemId === 'god_of_war_spear')?.chance).toBeGreaterThanOrEqual(0.005);
+      expect(table.entries.find(e => e.itemId === 'god_of_war_spear')?.chance).toBeLessThanOrEqual(0.05);
+      expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeGreaterThanOrEqual(0.05);
+      expect(table.entries.find(e => e.itemId === 'alchemy_recipe_test')?.chance).toBeLessThanOrEqual(0.15);
     });
   });
 

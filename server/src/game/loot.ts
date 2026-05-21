@@ -1,7 +1,48 @@
 // 掉落系統 - 經驗分配與物品掉落
 
 import type { MonsterDef, DropEntry, CombatLoot, Character } from '@game/shared';
+import { ITEM_DEFS } from '@game/shared';
 import type { MonsterInstance } from './world.js';
+
+export type MonsterLootTier = 'normal' | 'elite' | 'boss';
+export type MonsterLootCategory =
+  | 'gold'
+  | 'material'
+  | 'rare_material'
+  | 'consumable'
+  | 'equipment'
+  | 'quest'
+  | 'recipe'
+  | 'regional_special'
+  | 'set_piece'
+  | 'special_equipment';
+
+export interface MonsterLootEntry extends DropEntry {
+  category: MonsterLootCategory;
+}
+
+export interface MonsterLootTable {
+  monsterId: string;
+  tier: MonsterLootTier;
+  goldChance: number;
+  goldReward: [number, number];
+  entries: MonsterLootEntry[];
+}
+
+const REGIONAL_SPECIAL_DROP_IDS = new Set([
+  'alpha_fang',
+  'guardian_crystal',
+  'knight_sigil',
+  'demon_horn',
+  'dragon_fang',
+  'void_shard',
+  'celestial_fragment',
+  'ancient_fragment',
+  'rare_fossil',
+  'elf_feather',
+  'dragon_dust',
+  'ancient_runestone',
+]);
 
 // ============================================================
 //  LootCalculator
@@ -16,11 +57,31 @@ export class LootCalculator {
    * @returns 掉落結果
    */
   calculateDrops(monster: MonsterDef, playerLuk: number): CombatLoot {
+    const lootTable = this.buildMonsterLootTable(monster);
     const exp = monster.expReward;
-    const gold = this.rollGold(monster.goldReward[0], monster.goldReward[1]);
-    const items = this.rollDrops(monster.drops, playerLuk);
+    const gold = Math.random() < lootTable.goldChance
+      ? this.rollGold(lootTable.goldReward[0], lootTable.goldReward[1])
+      : 0;
+    const items = this.rollDrops(lootTable.entries, playerLuk);
 
     return { exp, gold, items };
+  }
+
+  buildMonsterLootTable(monster: MonsterDef): MonsterLootTable {
+    const tier: MonsterLootTier = monster.isBoss ? 'boss' : monster.isElite ? 'elite' : 'normal';
+    const entries = monster.drops.map(drop => this.normalizeDropEntry(drop, tier));
+
+    if (tier === 'boss') {
+      this.ensureBossEquipmentGuarantee(entries, monster);
+    }
+
+    return {
+      monsterId: monster.id,
+      tier,
+      goldChance: tier === 'normal' ? 0.9 : 1,
+      goldReward: monster.goldReward,
+      entries,
+    };
   }
 
   /**
@@ -125,7 +186,7 @@ export class LootCalculator {
    * LUK 影響掉率：每點 LUK 增加 0.5% 的掉率加成
    */
   private rollDrops(
-    drops: DropEntry[],
+    drops: MonsterLootEntry[],
     playerLuk: number,
   ): { itemId: string; quantity: number }[] {
     const result: { itemId: string; quantity: number }[] = [];
@@ -147,6 +208,114 @@ export class LootCalculator {
     }
 
     return result;
+  }
+
+  private normalizeDropEntry(drop: DropEntry, tier: MonsterLootTier): MonsterLootEntry {
+    const category = this.classifyDrop(drop.itemId);
+    const hasItemDef = !!ITEM_DEFS[drop.itemId] || category === 'recipe';
+    return {
+      ...drop,
+      chance: hasItemDef ? this.normalizeDropChance(drop.chance, category, tier) : drop.chance,
+      category,
+    };
+  }
+
+  private normalizeDropChance(chance: number, category: MonsterLootCategory, tier: MonsterLootTier): number {
+    if (tier === 'normal') {
+      switch (category) {
+        case 'material': return this.clampChance(chance, 0.3, 0.6);
+        case 'rare_material':
+        case 'regional_special':
+        case 'recipe': return this.clampChance(chance, 0.001, 0.02);
+        case 'consumable': return this.clampChance(chance, 0.05, 0.15);
+        case 'equipment':
+        case 'set_piece':
+        case 'special_equipment': return this.clampChance(chance, 0.05, 0.12);
+        case 'quest': return this.clampChance(chance, 0.4, 1.0);
+        default: return chance;
+      }
+    }
+
+    if (tier === 'elite') {
+      switch (category) {
+        case 'material': return this.clampChance(chance, 0.6, 0.9);
+        case 'rare_material': return this.clampChance(chance, 0.1, 0.25);
+        case 'equipment':
+        case 'set_piece':
+        case 'special_equipment': return this.clampChance(chance, 0.25, 0.5);
+        case 'recipe': return this.clampChance(chance, 0.02, 0.08);
+        case 'regional_special': return this.clampChance(chance, 0.05, 0.15);
+        default: return chance;
+      }
+    }
+
+    switch (category) {
+      case 'material':
+      case 'rare_material':
+      case 'regional_special': return this.clampChance(chance, 0.5, 1.0);
+      case 'set_piece': return this.clampChance(chance, 0.1, 0.3);
+      case 'special_equipment': return this.clampChance(chance, 0.005, 0.05);
+      case 'recipe': return this.clampChance(chance, 0.05, 0.15);
+      case 'equipment': return chance;
+      default: return chance;
+    }
+  }
+
+  private classifyDrop(itemId: string): MonsterLootCategory {
+    const def = ITEM_DEFS[itemId];
+    if (!def) {
+      if (itemId.includes('recipe') || itemId.includes('配方')) return 'recipe';
+      return 'material';
+    }
+
+    if (def.type === 'quest') return 'quest';
+    if (itemId.includes('recipe') || def.name.includes('配方')) return 'recipe';
+    if (def.setId) return 'set_piece';
+    if (def.type === 'weapon' || def.type === 'armor' || def.type === 'accessory') {
+      if (def.rarity === 'legendary' || def.rarity === 'mythic') return 'special_equipment';
+      return 'equipment';
+    }
+    if (def.type === 'consumable') return 'consumable';
+    if (def.type === 'material') {
+      if (this.isRegionalSpecialDrop(itemId)) return 'regional_special';
+      if (def.rarity === 'rare' || def.rarity === 'epic' || def.rarity === 'legendary' || def.rarity === 'mythic' || def.sellPrice >= 50) {
+        return 'rare_material';
+      }
+      return 'material';
+    }
+    return 'material';
+  }
+
+  private ensureBossEquipmentGuarantee(entries: MonsterLootEntry[], monster: MonsterDef): void {
+    const equipment = entries.find(entry => entry.category === 'equipment');
+    if (equipment) {
+      equipment.chance = 1.0;
+      return;
+    }
+
+    entries.unshift({
+      itemId: this.getFallbackBossEquipment(monster.level),
+      chance: 1.0,
+      minQty: 1,
+      maxQty: 1,
+      category: 'equipment',
+    });
+  }
+
+  private getFallbackBossEquipment(level: number): string {
+    if (level >= 30) return 'flame_blade';
+    if (level >= 20) return 'crystal_staff';
+    if (level >= 10) return 'steel_sword';
+    return 'iron_sword';
+  }
+
+  private clampChance(chance: number, min: number, max: number): number {
+    if (chance <= 0) return 0;
+    return Math.min(max, Math.max(min, chance));
+  }
+
+  private isRegionalSpecialDrop(itemId: string): boolean {
+    return REGIONAL_SPECIAL_DROP_IDS.has(itemId);
   }
 
   /** 合併相同物品 */
