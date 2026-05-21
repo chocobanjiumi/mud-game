@@ -3,7 +3,7 @@ import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel } from '../game/player.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
 import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
-import { AuctionManager } from '../game/auction.js';
+import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
 import {
@@ -772,6 +772,8 @@ describe('item instances in player economies', () => {
     const bought = getInventory('auction-instance-buyer').find(item => item.itemInstanceId === 'inst_auction_spear');
     expect(bought?.quality).toBe('epic');
     expect(bought?.affixes?.[0]?.id).toBe('numeric_dex_t2');
+    expect(getCharacterById('auction-instance-seller')?.gold)
+      .toBe(100 - getAuctionListingFee(10) + 25 - getAuctionSaleTax(25));
   });
 
   it('preserves item instance id through market sell orders', () => {

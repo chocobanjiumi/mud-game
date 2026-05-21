@@ -9,6 +9,9 @@ import {
 import { ITEM_DEFS } from '@game/shared';
 import { nanoid } from 'nanoid';
 
+const AUCTION_LISTING_FEE_RATE = 0.05;
+const AUCTION_SALE_TAX_RATE = 0.08;
+
 // ============================================================
 //  型別定義
 // ============================================================
@@ -27,6 +30,14 @@ export interface AuctionRecord {
   created_at: number;
   expires_at: number;
   status: string; // active / sold / expired / cancelled
+}
+
+export function getAuctionListingFee(minPrice: number): number {
+  return Math.max(1, Math.floor(minPrice * AUCTION_LISTING_FEE_RATE));
+}
+
+export function getAuctionSaleTax(finalPrice: number): number {
+  return Math.max(1, Math.floor(finalPrice * AUCTION_SALE_TAX_RATE));
 }
 
 // ============================================================
@@ -105,8 +116,7 @@ export class AuctionManager {
       return { ok: false, message: '有品質或詞綴的裝備實例一次只能上架 1 件。' };
     }
 
-    // Listing fee: 5% of min_price
-    const listingFee = Math.max(1, Math.floor(minPrice * 0.05));
+    const listingFee = getAuctionListingFee(minPrice);
     if (seller.gold < listingFee) {
       return { ok: false, message: `上架手續費 ${listingFee} 金幣不足（你有 ${seller.gold} 金幣）。` };
     }
@@ -276,13 +286,15 @@ export class AuctionManager {
       db.prepare('UPDATE auctions SET current_bid = ?, current_bidder_id = ? WHERE id = ?')
         .run(auction.buyout_price, buyerId, auctionId);
 
-      // Transfer gold: buyer -> seller
+      // Transfer gold: buyer -> seller, with sale tax removed from the economy
       buyer.gold -= auction.buyout_price;
       saveCharacter(buyer);
 
       const seller = getCharacterById(auction.seller_id);
+      const saleTax = getAuctionSaleTax(auction.buyout_price);
+      const sellerProceeds = auction.buyout_price - saleTax;
       if (seller) {
-        seller.gold += auction.buyout_price;
+        seller.gold += sellerProceeds;
         saveCharacter(seller);
       }
 
@@ -292,7 +304,7 @@ export class AuctionManager {
       const def = ITEM_DEFS[auction.item_id];
       return {
         ok: true,
-        message: `成功直購「${def?.name ?? auction.item_id}」x${auction.item_count}，花費 ${auction.buyout_price} 金幣！`,
+        message: `成功直購「${def?.name ?? auction.item_id}」x${auction.item_count}，花費 ${auction.buyout_price} 金幣！成交稅 ${saleTax} 金幣。`,
       };
     });
 
@@ -403,12 +415,13 @@ export class AuctionManager {
 
     for (const auction of expired) {
       if (auction.current_bidder_id && auction.current_bid > 0) {
-        // Has bids: transfer item to highest bidder, gold to seller
+        // Has bids: transfer item to highest bidder, gold to seller, with sale tax removed
         addAuctionItemToInventory(auction.current_bidder_id, auction);
 
         const seller = getCharacterById(auction.seller_id);
+        const saleTax = getAuctionSaleTax(auction.current_bid);
         if (seller) {
-          seller.gold += auction.current_bid;
+          seller.gold += auction.current_bid - saleTax;
           saveCharacter(seller);
         }
 
