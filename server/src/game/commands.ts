@@ -5067,6 +5067,11 @@ function cmdGuild(session: WsSession, args: string[]): void {
       break;
     }
     case 'storage': {
+      if (args[1]?.toLowerCase() === 'expand') {
+        const result = guildMgr.expandStorage(char.id);
+        sendSystem(session.sessionId, result.message);
+        break;
+      }
       const text = guildMgr.formatGuildStorage(char.id);
       sendSystem(session.sessionId, text);
       break;
@@ -5124,6 +5129,7 @@ function cmdGuild(session: WsSession, args: string[]): void {
         '  guild members — 成員列表\n' +
         '  guild chat <訊息> — 公會聊天\n' +
         '  guild storage — 公會倉庫\n' +
+        '  guild storage expand — 擴充公會倉庫\n' +
         '  guild deposit <物品> [數量] — 存入倉庫\n' +
         '  guild withdraw <物品> [數量] — 取出倉庫\n' +
         '  guild promote <玩家> — 晉升成員\n' +

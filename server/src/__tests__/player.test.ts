@@ -6,7 +6,7 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
-import { GuildManager } from '../game/guild.js';
+import { GuildManager, getGuildStorageExpansionCost } from '../game/guild.js';
 import {
   disassembleEquipment,
   getHighTierReforgeMaterials,
@@ -932,25 +932,55 @@ describe('guild construction economy', () => {
   });
 
   it('requires both gold and materials to create a guild', () => {
+    cleanupGuildTestCharacter('guild-builder-missing');
+    cleanupGuildTestCharacter('guild-builder-ready');
     insertTestCharacter('guild-builder-missing', 'GuildBuilderMissing', 6000);
     const missing = getCharacterById('guild-builder-missing')!;
     const guildMgr = new GuildManager();
 
-    expect(guildMgr.createGuild(missing, '缺料公會').success).toBe(false);
+    expect(guildMgr.createGuild(missing, `缺料公會_${Date.now()}`).success).toBe(false);
 
     insertTestCharacter('guild-builder-ready', 'GuildBuilderReady', 6000);
     addInventoryItem('guild-builder-ready', 'iron_ore', 20);
     addInventoryItem('guild-builder-ready', 'elf_wood', 5);
     const ready = getCharacterById('guild-builder-ready')!;
 
-    const result = guildMgr.createGuild(ready, '建設公會');
+    const result = guildMgr.createGuild(ready, `建設公會_${Date.now()}`);
     expect(result.success).toBe(true);
     expect(ready.gold).toBe(1000);
     const inventory = getInventory('guild-builder-ready');
     expect(inventory.find(item => item.itemId === 'iron_ore')).toBeUndefined();
     expect(inventory.find(item => item.itemId === 'elf_wood')).toBeUndefined();
   });
+
+  it('expands guild storage by spending gold', () => {
+    cleanupGuildTestCharacter('guild-storage-builder');
+    insertTestCharacter('guild-storage-builder', 'GuildStorageBuilder', 8000);
+    addInventoryItem('guild-storage-builder', 'iron_ore', 20);
+    addInventoryItem('guild-storage-builder', 'elf_wood', 5);
+    const char = getCharacterById('guild-storage-builder')!;
+    const guildMgr = new GuildManager();
+
+    expect(guildMgr.createGuild(char, `倉庫公會_${Date.now()}`).success).toBe(true);
+    const before = guildMgr.getGuildInfo(char.id)!;
+    const cost = getGuildStorageExpansionCost(before.storageSlots);
+
+    expect(guildMgr.expandStorage(char.id).success).toBe(true);
+    const after = guildMgr.getGuildInfo(char.id)!;
+    expect(after.storageSlots).toBe(before.storageSlots + 10);
+    expect(getCharacterById(char.id)?.gold).toBe(8000 - 5000 - cost);
+  });
 });
+
+function cleanupGuildTestCharacter(characterId: string): void {
+  const guildRows = getDb().prepare('SELECT id FROM guilds WHERE leader_id = ?').all(characterId) as { id: string }[];
+  for (const guild of guildRows) {
+    getDb().prepare('DELETE FROM guild_storage WHERE guild_id = ?').run(guild.id);
+    getDb().prepare('DELETE FROM guild_members WHERE guild_id = ?').run(guild.id);
+    getDb().prepare('DELETE FROM guilds WHERE id = ?').run(guild.id);
+  }
+  getDb().prepare('DELETE FROM guild_members WHERE character_id = ?').run(characterId);
+}
 
 function insertTestCharacter(id: string, name: string, gold: number): void {
   getDb().prepare(

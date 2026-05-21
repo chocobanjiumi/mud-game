@@ -26,6 +26,7 @@ export interface GuildInfo {
   level: number;
   exp: number;
   maxMembers: number;
+  storageSlots: number;
   createdAt: number;
 }
 
@@ -44,6 +45,7 @@ interface GuildRow {
   level: number;
   exp: number;
   max_members: number;
+  storage_slots: number;
   created_at: number;
 }
 
@@ -69,6 +71,8 @@ const CREATE_GUILD_MATERIALS = [
   { itemId: 'iron_ore', count: 20 },
   { itemId: 'elf_wood', count: 5 },
 ];
+const BASE_GUILD_STORAGE_SLOTS = 20;
+const GUILD_STORAGE_EXPANSION_SLOTS = 10;
 const MAX_GUILD_LEVEL = 10;
 const BASE_MAX_MEMBERS = 20;
 const MEMBERS_PER_LEVEL = 5;
@@ -76,6 +80,11 @@ const MEMBERS_PER_LEVEL = 5;
 /** 公會升級所需經驗 */
 function guildExpRequired(level: number): number {
   return level * 1000;
+}
+
+export function getGuildStorageExpansionCost(currentSlots: number): number {
+  const expansions = Math.max(0, Math.floor((currentSlots - BASE_GUILD_STORAGE_SLOTS) / GUILD_STORAGE_EXPANSION_SLOTS));
+  return 1000 + expansions * 750;
 }
 
 // ============================================================
@@ -95,6 +104,7 @@ export class GuildManager {
           level INTEGER DEFAULT 1,
           exp INTEGER DEFAULT 0,
           max_members INTEGER DEFAULT 20,
+          storage_slots INTEGER DEFAULT 20,
           created_at INTEGER
         );
         CREATE TABLE IF NOT EXISTS guild_members (
@@ -112,6 +122,10 @@ export class GuildManager {
         );
         CREATE INDEX IF NOT EXISTS idx_guild_members_char ON guild_members(character_id);
       `);
+      const guildColumns = getDb().prepare("PRAGMA table_info(guilds)").all() as { name: string }[];
+      if (!new Set(guildColumns.map(column => column.name)).has('storage_slots')) {
+        getDb().exec(`ALTER TABLE guilds ADD COLUMN storage_slots INTEGER DEFAULT ${BASE_GUILD_STORAGE_SLOTS}`);
+      }
     } catch { /* tables may already exist */ }
   }
 
@@ -162,8 +176,8 @@ export class GuildManager {
 
     try {
       getDb().prepare(
-        'INSERT INTO guilds (id, name, description, leader_id, level, exp, max_members, created_at) VALUES (?, ?, ?, ?, 1, 0, ?, ?)',
-      ).run(guildId, guildName, description, character.id, BASE_MAX_MEMBERS, now);
+        'INSERT INTO guilds (id, name, description, leader_id, level, exp, max_members, storage_slots, created_at) VALUES (?, ?, ?, ?, 1, 0, ?, ?, ?)',
+      ).run(guildId, guildName, description, character.id, BASE_MAX_MEMBERS, BASE_GUILD_STORAGE_SLOTS, now);
 
       getDb().prepare(
         'INSERT INTO guild_members (guild_id, character_id, rank, joined_at) VALUES (?, ?, ?, ?)',
@@ -411,6 +425,12 @@ export class GuildManager {
       const existing = getDb().prepare(
         'SELECT count FROM guild_storage WHERE guild_id = ? AND item_id = ?',
       ).get(membership.guildId, itemId) as { count: number } | undefined;
+      const guild = this.getGuildById(membership.guildId);
+      const usedSlots = this.getGuildStorage(membership.guildId).length;
+      if (!existing && guild && usedSlots >= guild.storageSlots) {
+        addInventoryItem(characterId, itemId, count);
+        return { success: false, message: `公會倉庫容量不足（${usedSlots}/${guild.storageSlots}）。可用 guild storage expand 擴充。` };
+      }
 
       if (existing) {
         getDb().prepare(
@@ -429,6 +449,31 @@ export class GuildManager {
     const char = getCharacterById(characterId);
     this.broadcastToGuild(membership.guildId, `${char?.name ?? '未知'}存入了 ${itemDef.name} x${count} 到公會倉庫。`);
     return { success: true, message: `成功存入 ${itemDef.name} x${count} 到公會倉庫。` };
+  }
+
+  expandStorage(characterId: string): { success: boolean; message: string } {
+    const membership = this.getCharacterGuild(characterId);
+    if (!membership) return { success: false, message: '你不在任何公會中。' };
+    if (membership.rank === 'member') return { success: false, message: '只有幹部和會長可以擴充公會倉庫。' };
+
+    const guild = this.getGuildById(membership.guildId);
+    if (!guild) return { success: false, message: '公會資料異常。' };
+
+    const char = getCharacterById(characterId);
+    if (!char) return { success: false, message: '角色不存在。' };
+
+    const cost = getGuildStorageExpansionCost(guild.storageSlots);
+    if (char.gold < cost) {
+      return { success: false, message: `擴充公會倉庫需要 ${cost} 金幣，你目前有 ${char.gold}。` };
+    }
+
+    char.gold -= cost;
+    saveCharacter(char);
+    recordGoldSpent(cost);
+    const nextSlots = guild.storageSlots + GUILD_STORAGE_EXPANSION_SLOTS;
+    getDb().prepare('UPDATE guilds SET storage_slots = ? WHERE id = ?').run(nextSlots, guild.id);
+
+    return { success: true, message: `公會倉庫已擴充至 ${nextSlots} 格，消耗 ${cost} 金幣。` };
   }
 
   withdrawItem(
@@ -554,12 +599,13 @@ export class GuildManager {
       return '你不在任何公會中。';
     }
 
+    const guild = this.getGuildById(membership.guildId);
     const items = this.getGuildStorage(membership.guildId);
     if (items.length === 0) {
-      return '公會倉庫是空的。';
+      return `公會倉庫是空的。（0/${guild?.storageSlots ?? BASE_GUILD_STORAGE_SLOTS}）`;
     }
 
-    let text = '公會倉庫\n';
+    let text = `公會倉庫（${items.length}/${guild?.storageSlots ?? BASE_GUILD_STORAGE_SLOTS}）\n`;
     text += '─'.repeat(40) + '\n';
 
     for (const item of items) {
@@ -618,6 +664,7 @@ export class GuildManager {
         level: row.level,
         exp: row.exp,
         maxMembers: row.max_members,
+        storageSlots: row.storage_slots ?? BASE_GUILD_STORAGE_SLOTS,
         createdAt: row.created_at,
       };
     } catch {
@@ -637,6 +684,7 @@ export class GuildManager {
         level: row.level,
         exp: row.exp,
         maxMembers: row.max_members,
+        storageSlots: row.storage_slots ?? BASE_GUILD_STORAGE_SLOTS,
         createdAt: row.created_at,
       };
     } catch {
