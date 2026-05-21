@@ -12,11 +12,34 @@ import {
   getInventory,
   getStoredItemInstance,
   removeInventoryItem,
+  saveCharacter,
   upsertItemInstance,
 } from '../db/queries.js';
 
 const AFFIX_REROLL_COST_ITEM = 'affix_essence';
 const QUALITY_REFORGE_COST_ITEM = 'reforge_crystal';
+const REFORGE_GOLD_COST_BY_QUALITY: Record<string, number> = {
+  normal: 20,
+  fine: 40,
+  rare: 80,
+  epic: 160,
+  legendary: 300,
+  mythic: 500,
+};
+const HIGH_TIER_REFORGE_MATERIALS: Record<string, { itemId: string; count: number }[]> = {
+  normal: [],
+  fine: [],
+  rare: [],
+  epic: [{ itemId: AFFIX_REROLL_COST_ITEM, count: 2 }],
+  legendary: [
+    { itemId: AFFIX_REROLL_COST_ITEM, count: 3 },
+    { itemId: 'ancient_fragment', count: 1 },
+  ],
+  mythic: [
+    { itemId: AFFIX_REROLL_COST_ITEM, count: 5 },
+    { itemId: 'ancient_fragment', count: 2 },
+  ],
+};
 const QUALITY_DISASSEMBLE_REWARDS: Record<string, { reforgeCrystals: number; affixEssences: number }> = {
   normal: { reforgeCrystals: 0, affixEssences: 0 },
   fine: { reforgeCrystals: 1, affixEssences: 1 },
@@ -44,6 +67,14 @@ export interface ReforgeQualityResult {
 export interface DisassembleItemResult {
   success: boolean;
   message: string;
+}
+
+export function getReforgeGoldCost(quality: string): number {
+  return REFORGE_GOLD_COST_BY_QUALITY[quality] ?? REFORGE_GOLD_COST_BY_QUALITY.normal;
+}
+
+export function getHighTierReforgeMaterials(quality: string): { itemId: string; count: number }[] {
+  return HIGH_TIER_REFORGE_MATERIALS[quality] ?? [];
 }
 
 export function rerollItemAffix(characterId: string, itemInstanceId: string, affixNumber: number): RerollAffixResult {
@@ -139,8 +170,24 @@ export function reforgeItemQuality(characterId: string, itemInstanceId: string):
 
   const baseItem = toBaseEquipmentDef(ITEM_DEFS[instance.baseItemId]);
   if (!baseItem) return { success: false, message: '此 item instance 不是可重鑄品質的裝備。' };
-  if (!consumeMaterial(characterId, QUALITY_REFORGE_COST_ITEM, 1)) {
-    return { success: false, message: '需要「重鑄水晶」x1 才能重鑄品質。' };
+  const goldCost = getReforgeGoldCost(instance.quality);
+  if (char.gold < goldCost) {
+    return { success: false, message: `金幣不足！重鑄需要 ${goldCost} 金幣，你只有 ${char.gold} 金幣。` };
+  }
+  const requiredMaterials = [
+    { itemId: QUALITY_REFORGE_COST_ITEM, count: 1 },
+    ...getHighTierReforgeMaterials(instance.quality),
+  ];
+  for (const material of requiredMaterials) {
+    if (!hasMaterial(characterId, material.itemId, material.count)) {
+      const name = ITEM_DEFS[material.itemId]?.name ?? material.itemId;
+      return { success: false, message: `需要「${name}」x${material.count} 才能重鑄品質。` };
+    }
+  }
+  char.gold -= goldCost;
+  saveCharacter(char);
+  for (const material of requiredMaterials) {
+    consumeMaterial(characterId, material.itemId, material.count);
   }
 
   const reforged = reforgeEquipmentInstanceQuality(baseItem, {
@@ -162,7 +209,7 @@ export function reforgeItemQuality(characterId: string, itemInstanceId: string):
   const itemName = ITEM_DEFS[instance.baseItemId]?.name ?? instance.baseItemId;
   return {
     success: true,
-    message: `已重鑄「${itemName}」品質：${instance.quality} → ${reforged.quality}。`,
+    message: `已重鑄「${itemName}」品質：${instance.quality} → ${reforged.quality}，花費 ${goldCost} 金幣。`,
   };
 }
 
@@ -202,7 +249,11 @@ export function disassembleEquipment(characterId: string, itemKey: string): Disa
 }
 
 function consumeMaterial(characterId: string, itemId: string, count: number): boolean {
-  const material = getInventory(characterId).find(item => item.itemId === itemId && !item.equipped && !item.itemInstanceId);
-  if (!material || material.quantity < count) return false;
+  if (!hasMaterial(characterId, itemId, count)) return false;
   return removeInventoryItem(characterId, itemId, count);
+}
+
+function hasMaterial(characterId: string, itemId: string, count: number): boolean {
+  const material = getInventory(characterId).find(item => item.itemId === itemId && !item.equipped && !item.itemInstanceId);
+  return !!material && material.quantity >= count;
 }

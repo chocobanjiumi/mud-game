@@ -6,7 +6,14 @@ import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, get
 import { AuctionManager } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
-import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from '../game/item-reforge.js';
+import {
+  disassembleEquipment,
+  getHighTierReforgeMaterials,
+  getReforgeGoldCost,
+  lockItemAffix,
+  reforgeItemQuality,
+  rerollItemAffix,
+} from '../game/item-reforge.js';
 
 // ============================================================
 //  Tests
@@ -664,6 +671,29 @@ describe('inventory item instances', () => {
     expect(reforged?.quality).toBeDefined();
     expect(reforged?.lockedAffixIndexes).toBeUndefined();
     expect(reforged?.affixes?.length ?? 0).toBeGreaterThanOrEqual(0);
+    expect(getCharacterById(characterId)?.gold).toBe(100 - getReforgeGoldCost('rare'));
+  });
+
+  it('requires extra rare materials for high-tier quality reforge', () => {
+    const characterId = 'item-instance-high-reforge-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name, class_id, gold) VALUES (?, ?, ?, ?, ?)',
+    ).run(characterId, 'user-instance-high-reforge', 'InstanceHighReforgeHero', 'swordsman', 500);
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_high_reforge',
+      baseItemId: 'spear_steel',
+      quality: 'epic',
+      affixes: [],
+    });
+    addInventoryItem(characterId, 'reforge_crystal', 1);
+
+    const missingMaterial = reforgeItemQuality(characterId, 'inst_spear_steel_high_reforge');
+    expect(missingMaterial.success).toBe(false);
+    expect(getHighTierReforgeMaterials('epic')).toEqual([{ itemId: 'affix_essence', count: 2 }]);
+
+    addInventoryItem(characterId, 'affix_essence', 2);
+    expect(reforgeItemQuality(characterId, 'inst_spear_steel_high_reforge').success).toBe(true);
   });
 
   it('can disassemble equipment into reforge materials', () => {
