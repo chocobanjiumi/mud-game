@@ -353,6 +353,21 @@ describe('Balance: Gold economy', () => {
       }
     }
   });
+
+  it('all equipment should expose slot, level, source tags, and zone tags', () => {
+    const equipment = Object.values(ITEM_DEFS).filter(item =>
+      item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory',
+    );
+
+    expect(equipment.length).toBeGreaterThan(0);
+    for (const item of equipment) {
+      expect(item.equipSlot, item.id).toBeTruthy();
+      expect(item.equipSlot, item.id).not.toBe('accessory');
+      expect(item.level, item.id).toBe(item.levelReq);
+      expect(item.sourceTags, item.id).toEqual(expect.arrayContaining([expect.any(String)]));
+      expect(item.zoneTags, item.id).toEqual(expect.arrayContaining([expect.any(String)]));
+    }
+  });
 });
 
 describe('Balance: Stat scaling', () => {

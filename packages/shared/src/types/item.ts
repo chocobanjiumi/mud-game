@@ -31,6 +31,9 @@ export interface ItemDef {
   requiredClass?: string[];  // class IDs that can equip
   rarity?: ItemRarity;
   setId?: string;  // equipment set identifier
+  level?: number;
+  sourceTags?: string[];
+  zoneTags?: string[];
   weaponType?: WeaponType;
   attackDescriptions?: {
     normal: string;   // normal attack text

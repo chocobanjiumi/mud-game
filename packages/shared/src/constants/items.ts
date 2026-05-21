@@ -1,8 +1,60 @@
 // 物品資料
 
-import type { ItemDef, ItemRarity } from '../types/item.js';
+import type { EquipSlot, ItemDef, ItemRarity } from '../types/item.js';
 
-export const ITEM_DEFS: Record<string, ItemDef> = {
+const EQUIPMENT_TYPES = new Set(['weapon', 'armor', 'accessory']);
+
+function normalizeItemDefs(defs: Record<string, ItemDef>): Record<string, ItemDef> {
+  return Object.fromEntries(
+    Object.entries(defs).map(([id, def]) => {
+      if (!EQUIPMENT_TYPES.has(def.type)) return [id, def];
+      return [id, {
+        ...def,
+        equipSlot: def.equipSlot ?? inferEquipSlot(id),
+        level: def.level ?? def.levelReq,
+        sourceTags: def.sourceTags ?? inferSourceTags(id, def),
+        zoneTags: def.zoneTags ?? inferZoneTags(id, def),
+      }];
+    }),
+  );
+}
+
+function inferEquipSlot(itemId: string): EquipSlot {
+  if (itemId.includes('ring')) return 'ring';
+  if (itemId.includes('earring')) return 'earring';
+  if (itemId.includes('belt')) return 'belt';
+  if (itemId.includes('necklace') || itemId.includes('pendant') || itemId.includes('amulet') || itemId.includes('charm') || itemId.includes('relic')) return 'necklace';
+  if (itemId.includes('helm') || itemId.includes('hat') || itemId.includes('cap')) return 'head';
+  if (itemId.includes('glove') || itemId.includes('gauntlet')) return 'hands';
+  if (itemId.includes('boot') || itemId.includes('greave') || itemId.includes('sandal')) return 'feet';
+  if (itemId.includes('armor') || itemId.includes('mail') || itemId.includes('robe') || itemId.includes('vest') || itemId.includes('garb') || itemId.includes('plate')) return 'body';
+  return 'weapon';
+}
+
+function inferSourceTags(itemId: string, def: ItemDef): string[] {
+  const tags = new Set<string>();
+  if (def.setId) tags.add('set');
+  if (def.buyPrice > 0) tags.add('shop');
+  if (itemId.includes('boss') || itemId.includes('dragon') || itemId.includes('abyss') || itemId.includes('god_of_war')) tags.add('boss');
+  if (itemId.includes('craft') || itemId.includes('mithril')) tags.add('crafting');
+  if (tags.size === 0) tags.add('drop');
+  return Array.from(tags);
+}
+
+function inferZoneTags(itemId: string, def: ItemDef): string[] {
+  const haystack = `${itemId} ${def.name} ${def.description} ${def.element ?? ''}`.toLowerCase();
+  const tags = new Set<string>();
+  if (haystack.includes('slime') || haystack.includes('wooden') || haystack.includes('cloth') || haystack.includes('leather')) tags.add('starter_village');
+  if (haystack.includes('wolf') || haystack.includes('nature')) tags.add('plains');
+  if (haystack.includes('shadow') || haystack.includes('dark') || haystack.includes('abyss')) tags.add('dark_forest');
+  if (haystack.includes('crystal') || haystack.includes('ice') || haystack.includes('frost')) tags.add('crystal_cave');
+  if (haystack.includes('flame') || haystack.includes('fire') || haystack.includes('dragon')) tags.add('volcano_zone');
+  if (haystack.includes('holy') || haystack.includes('light')) tags.add('celestial_ruins');
+  if (tags.size === 0) tags.add('global');
+  return Array.from(tags);
+}
+
+const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
   wooden_sword: {
     id: 'wooden_sword', name: '木劍', type: 'weapon',
@@ -2081,6 +2133,8 @@ export const ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
 };
+
+export const ITEM_DEFS: Record<string, ItemDef> = normalizeItemDefs(RAW_ITEM_DEFS);
 
 /** 新手初始裝備（創建角色時給予） */
 export const STARTER_ITEMS = [
