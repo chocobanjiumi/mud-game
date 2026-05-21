@@ -1,7 +1,7 @@
 // 製作系統 — CraftingManager
 
 import { getDb } from '../db/schema.js';
-import { getCharacterById, getInventory, addInventoryItem, removeInventoryItem } from '../db/queries.js';
+import { getCharacterById, getInventory, addInventoryItem, removeInventoryItem, saveCharacter } from '../db/queries.js';
 import {
   generateEquipmentInstance,
   ITEM_DEFS,
@@ -583,6 +583,11 @@ export function getRecipeResult(recipe: RecipeDef, slot?: EquipSlot): { itemId: 
   return recipe.slotResults?.[slot];
 }
 
+export function getRecipeGoldCost(recipe: RecipeDef): number {
+  const materialUnits = recipe.materials.reduce((sum, material) => sum + material.count, 0);
+  return Math.max(1, recipe.level * 4 + materialUnits * 2);
+}
+
 // ============================================================
 //  CraftingManager
 // ============================================================
@@ -685,6 +690,14 @@ export class CraftingManager {
         };
       }
     }
+    const goldCost = getRecipeGoldCost(recipe);
+    const char = getCharacterById(characterId);
+    if (!char) {
+      return { success: false, message: '找不到角色資料。' };
+    }
+    if (char.gold < goldCost) {
+      return { success: false, message: `金幣不足：製作需要 ${goldCost} 金幣（目前 ${char.gold}）。` };
+    }
     if (options.preferredAffixTag) {
       const requiredEssence = (recipe.materials.find(mat => mat.itemId === 'affix_essence')?.count ?? 0) + 1;
       const haveEssence = invMap.get('affix_essence') ?? 0;
@@ -694,6 +707,8 @@ export class CraftingManager {
     }
 
     // 消耗材料
+    char.gold -= goldCost;
+    saveCharacter(char);
     for (const mat of recipe.materials) {
       removeInventoryItem(characterId, mat.itemId, mat.count);
     }
@@ -714,7 +729,7 @@ export class CraftingManager {
         success: true,
         crafted: false,
         message:
-          `製作失敗！材料已消耗。（成功率 ${finalRate}%）\n` +
+          `製作失敗！材料與 ${goldCost} 金幣已消耗。（成功率 ${finalRate}%）\n` +
           `獲得 ${recipe.exp} ${CATEGORY_NAMES[recipe.category]}經驗。`,
       };
     }
@@ -734,7 +749,6 @@ export class CraftingManager {
     const baseEquipment = toBaseEquipmentDef(ITEM_DEFS[result.itemId]);
     let itemInstanceId: string | undefined;
     if (baseEquipment) {
-      const char = getCharacterById(characterId);
       const instance = generateEquipmentInstance(baseEquipment, {
         classId: char?.classId,
         luk: char?.stats.luk,
@@ -768,7 +782,7 @@ export class CraftingManager {
       itemInstanceId,
       criticalSuccess,
       message:
-        `${criticalText}獲得：${resultName}${countText}（成功率 ${finalRate}%）` +
+        `${criticalText}獲得：${resultName}${countText}（成功率 ${finalRate}%，費用 ${goldCost} 金幣）` +
         qualityText +
         affixText +
         instanceText +

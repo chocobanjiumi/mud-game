@@ -44,6 +44,7 @@ import {
   RECIPES,
   calculateCriticalCraftRate,
   calculateMaterialQualityBonus,
+  getRecipeGoldCost,
   getRecipeResult,
 } from '../game/crafting.js';
 import type { CombatStats } from '../game/damage.js';
@@ -884,6 +885,13 @@ describe('Balance: Crafting definitions', () => {
         expect(ITEM_DEFS[result.itemId]?.equipSlot, `${recipe.id}:slot:${slot}`).toBe(slot);
       }
     }
+  });
+
+  it('charges a positive but low early-game gold cost for every recipe', () => {
+    for (const recipe of Object.values(RECIPES)) {
+      expect(getRecipeGoldCost(recipe), recipe.id).toBeGreaterThan(0);
+    }
+    expect(getRecipeGoldCost(RECIPES.craft_small_hp_potion)).toBeLessThanOrEqual(15);
   });
 
   it('has at least one crafting route for every equipment slot', () => {
