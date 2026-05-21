@@ -4,6 +4,7 @@ import type {
   CombatState, CombatAction, CombatActionType, CombatResult,
   CombatantState, DamageResult, CombatLoot, ActiveStatusEffect, StatusEffect,
   MonsterDef, Character, SkillDef, ElementType, ResourceType,
+  MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { SKILL_DEFS } from '@game/shared';
@@ -23,6 +24,31 @@ import type { MonsterInstance } from './world.js';
 
 const TURN_TIMER_SECONDS = 5;
 const DEFAULT_ACTION: CombatActionType = 'attack';
+
+const DEFAULT_BOSS_PHASES: MonsterPhaseRule[] = [
+  {
+    phase: 2,
+    hpThresholdPercent: 70,
+    message: '進入第二階段，攻勢變得更加猛烈！',
+    damageMultiplier: 1.15,
+  },
+  {
+    phase: 3,
+    hpThresholdPercent: 35,
+    message: '進入最終階段，準備釋放壓倒性的力量！',
+    damageMultiplier: 1.3,
+  },
+];
+
+const DEFAULT_BOSS_TELEGRAPHS: MonsterTelegraphAction[] = [
+  {
+    id: 'boss_heavy_cast',
+    skillId: 'basic_attack',
+    message: '開始蓄積危險攻勢，下一次行動可被打斷。',
+    executeMessage: '釋放了蓄勢已久的攻擊！',
+    cooldownRounds: 3,
+  },
+];
 
 // ============================================================
 //  CombatSession — 單場戰鬥的狀態
@@ -129,6 +155,9 @@ export class CombatEngine {
       classId: 'monster',
       activeEffects: [],
       isDead: false,
+      monsterBehavior: this.getMonsterBehaviorType(m.def),
+      monsterPhases: this.getMonsterPhaseRules(m.def),
+      currentMonsterPhase: 1,
     }));
 
     const state: CombatState = {
@@ -167,6 +196,8 @@ export class CombatEngine {
     };
 
     this.sessions.set(combatId, session);
+
+    this.prepareMonsterTelegraphs(session, state.actionLog);
 
     // 啟動回合計時器
     this.startTurnTimer(session);
@@ -300,6 +331,10 @@ export class CombatEngine {
       // 檢查是否被控制
       if (this.effectEngine.isControlled(actor.activeEffects)) {
         roundLog.push(`${actor.name}被控制，無法行動！`);
+        if (actor.pendingTelegraph) {
+          roundLog.push(`${actor.name}的蓄力行動被中斷了！`);
+          actor.pendingTelegraph = undefined;
+        }
         continue;
       }
 
@@ -361,6 +396,7 @@ export class CombatEngine {
     session.state.round++;
     session.state.phase = 'action_select';
     session.state.actionLog.push(`【第 ${session.state.round} 回合】`);
+    this.prepareMonsterTelegraphs(session, session.state.actionLog);
 
     // 重啟計時器
     this.startTurnTimer(session);
@@ -396,7 +432,7 @@ export class CombatEngine {
       damageType: 'physical',
       element: 'none',
       targetElement,
-      multiplier: 1.0,
+      multiplier: 1.0 * this.getMonsterPhaseDamageMultiplier(actor),
       attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
@@ -432,6 +468,10 @@ export class CombatEngine {
       return;
     }
 
+    this.consumeTelegraphIfPrepared(actor, action, log);
+    this.interruptTelegraphIfPossible(actor, target, skillDef, log);
+    this.dispelShieldIfPossible(actor, target, skillDef, log);
+
     // 資源消耗（使用技能定義的 resourceCost）
     let resourceCost = skillDef?.resourceCost ?? 5;
     // 套裝加成：MP 消耗減免
@@ -456,7 +496,7 @@ export class CombatEngine {
     // 使用技能定義的 damageType、element、multiplier
     const damageType = skillDef?.damageType ?? 'magical';
     const element = skillDef?.element ?? 'none';
-    const multiplier = skillDef?.multiplier ?? 1.5;
+    const multiplier = (skillDef?.multiplier ?? 1.5) * this.getMonsterPhaseDamageMultiplier(actor);
 
     const dmgResult = calculateDamage({
       attackerId: actor.id,
@@ -498,6 +538,17 @@ export class CombatEngine {
           `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
         );
         this.applyDamageToTarget(session, target, dmgResult.damage, log);
+        this.triggerMonsterPhases(session, target, log);
+      }
+    }
+
+    if (skillDef?.effects && !dmgResult.isMiss && !dmgResult.isDodged) {
+      for (const eff of skillDef.effects) {
+        const msg = this.effectEngine.applyEffect(target.activeEffects, {
+          ...eff,
+          source: actor.id,
+        }, actor.name);
+        log.push(`  ${target.name}${msg}`);
       }
     }
 
@@ -608,6 +659,7 @@ export class CombatEngine {
     log.push(`${desc}造成 ${result.damage} 點傷害！${elemText}`);
 
     this.applyDamageToTarget(session, target, result.damage, log);
+    this.triggerMonsterPhases(session, target, log);
 
     // 資源系統：劍士系被擊中獲得怒氣
     this.gainResourceOnHit(target, log);
@@ -713,6 +765,14 @@ export class CombatEngine {
         targetId: target?.id,
       };
 
+      if (enemy.pendingTelegraph) {
+        action.type = 'skill';
+        action.skillId = enemy.pendingTelegraph.skillId;
+        action.targetId = this.selectTargetForSkill(session, enemy, action.skillId)?.id;
+        session.state.pendingActions.set(enemy.id, action);
+        continue;
+      }
+
       // Boss 和 aggressive 怪物偶爾使用技能
       if (
         instance.def.aiType === 'boss' ||
@@ -724,8 +784,16 @@ export class CombatEngine {
           const nonBasic = instance.def.skills.filter(s => s !== 'basic_attack');
           if (nonBasic.length > 0) {
             action.skillId = nonBasic[Math.floor(Math.random() * nonBasic.length)];
+            action.targetId = this.selectTargetForSkill(session, enemy, action.skillId)?.id;
           }
         }
+      }
+
+      const preferredSkillId = this.getPreferredPhaseSkill(enemy, instance.def);
+      if (preferredSkillId) {
+        action.type = 'skill';
+        action.skillId = preferredSkillId;
+        action.targetId = this.selectTargetForSkill(session, enemy, preferredSkillId)?.id;
       }
 
       // Healer 型 AI：隊友 HP 低時優先治療
@@ -765,6 +833,196 @@ export class CombatEngine {
 
     // 隨機目標
     return alivePlayers[Math.floor(Math.random() * alivePlayers.length)];
+  }
+
+  private selectTargetForSkill(
+    session: CombatSession,
+    actor: CombatantState,
+    skillId: string | undefined,
+  ): CombatantState | undefined {
+    const skillDef = skillId ? SKILL_DEFS[skillId] : undefined;
+    if (!skillDef) {
+      return this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
+    }
+
+    if (skillDef.targetType === 'self') return actor;
+    if (skillDef.targetType === 'single_ally') {
+      const allies = actor.isPlayer ? session.state.playerTeam : session.state.enemyTeam;
+      return this.selectRandomAlive(allies);
+    }
+    if (skillDef.targetType === 'all_allies') return actor;
+
+    return this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
+  }
+
+  private getMonsterBehaviorType(def: MonsterDef): MonsterBehaviorType {
+    if (def.behaviorType) return def.behaviorType;
+    if (def.isBoss || def.aiType === 'boss') return 'phase_boss';
+    if (def.aiType === 'defensive') return 'guardian';
+    if (def.aiType === 'healer') return 'caster';
+    if (def.skills.some(skillId => {
+      const skill = SKILL_DEFS[skillId];
+      return skill?.damageType === 'magical' || skill?.effects?.some(e => e.type === 'silence' || e.type === 'freeze');
+    })) {
+      return 'caster';
+    }
+    if (def.aiType === 'aggressive') return 'ambusher';
+    return 'basic';
+  }
+
+  private getMonsterPhaseRules(def: MonsterDef): MonsterPhaseRule[] {
+    if (def.phaseRules?.length) return def.phaseRules;
+    return def.isBoss || def.aiType === 'boss' ? DEFAULT_BOSS_PHASES : [];
+  }
+
+  private getMonsterTelegraphActions(def: MonsterDef): MonsterTelegraphAction[] {
+    if (def.telegraphActions?.length) return def.telegraphActions;
+    if (def.isBoss || def.aiType === 'boss') {
+      const nonBasic = def.skills.filter(skillId => skillId !== 'basic_attack');
+      const skillId = nonBasic[0] ?? 'basic_attack';
+      return DEFAULT_BOSS_TELEGRAPHS.map(action => ({ ...action, skillId }));
+    }
+    const heavySkill = def.skills.find(skillId => {
+      const skill = SKILL_DEFS[skillId];
+      return skill && skill.multiplier >= 1.5;
+    });
+    return heavySkill
+      ? [{
+        id: `${def.id}_${heavySkill}_telegraph`,
+        skillId: heavySkill,
+        message: '正在瞄準強力攻擊，可用打斷技能阻止。',
+        executeMessage: '完成瞄準並發動強力攻擊！',
+        minRound: 2,
+        cooldownRounds: 4,
+      }]
+      : [];
+  }
+
+  private prepareMonsterTelegraphs(session: CombatSession, log: string[]): void {
+    for (const enemy of session.state.enemyTeam) {
+      if (enemy.isDead || enemy.pendingTelegraph) continue;
+      const instance = session.monsterInstances.get(enemy.id);
+      if (!instance) continue;
+
+      const telegraph = this.getMonsterTelegraphActions(instance.def).find(action => {
+        const minRound = action.minRound ?? 1;
+        const cooldown = action.cooldownRounds ?? 3;
+        if (session.state.round < minRound) return false;
+        if (action.hpBelowPercent !== undefined && enemy.hp > enemy.maxHp * (action.hpBelowPercent / 100)) {
+          return false;
+        }
+        return (session.state.round - minRound) % cooldown === 0;
+      });
+
+      if (!telegraph) continue;
+      enemy.pendingTelegraph = {
+        id: telegraph.id,
+        skillId: telegraph.skillId,
+        message: telegraph.message,
+        executeMessage: telegraph.executeMessage,
+        preparedRound: session.state.round,
+      };
+      log.push(`【預兆】${enemy.name}${telegraph.message}`);
+    }
+  }
+
+  private consumeTelegraphIfPrepared(
+    actor: CombatantState,
+    action: CombatAction,
+    log: string[],
+  ): void {
+    if (!actor.pendingTelegraph || action.skillId !== actor.pendingTelegraph.skillId) return;
+    if (actor.pendingTelegraph.executeMessage) {
+      log.push(`${actor.name}${actor.pendingTelegraph.executeMessage}`);
+    }
+    actor.pendingTelegraph = undefined;
+  }
+
+  private interruptTelegraphIfPossible(
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef | null,
+    log: string[],
+  ): void {
+    if (!target.pendingTelegraph) return;
+    const hasControlEffect = skillDef?.effects?.some(e =>
+      e.type === 'stun' || e.type === 'freeze' || e.type === 'silence' || e.type === 'fear',
+    ) ?? false;
+    if (!skillDef?.special?.interrupt && !hasControlEffect) return;
+
+    const interrupted = target.pendingTelegraph;
+    target.pendingTelegraph = undefined;
+    this.effectEngine.applyEffect(target.activeEffects, {
+      type: 'stun',
+      value: 1,
+      duration: 1,
+      source: actor.id,
+    }, actor.name);
+    log.push(`${actor.name}打斷了${target.name}的${interrupted.id}！`);
+  }
+
+  private dispelShieldIfPossible(
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef | null,
+    log: string[],
+  ): void {
+    if (!skillDef?.special?.dispelShield) return;
+    let removedValue = 0;
+    const remaining: ActiveStatusEffect[] = [];
+    for (const effect of target.activeEffects) {
+      if (effect.type === 'shield' || effect.type === 'mana_shield') {
+        removedValue += effect.value;
+      } else {
+        remaining.push(effect);
+      }
+    }
+    if (removedValue <= 0) return;
+    target.activeEffects = remaining;
+    log.push(`${actor.name}粉碎了${target.name}價值 ${removedValue} 點的護盾！`);
+  }
+
+  private triggerMonsterPhases(
+    session: CombatSession,
+    target: CombatantState,
+    log: string[],
+  ): void {
+    if (target.isPlayer || target.isDead || !target.monsterPhases?.length) return;
+    const currentPhase = target.currentMonsterPhase ?? 1;
+    const nextPhases = target.monsterPhases
+      .filter(rule => rule.phase > currentPhase && target.hp <= target.maxHp * (rule.hpThresholdPercent / 100))
+      .sort((a, b) => a.phase - b.phase);
+
+    for (const rule of nextPhases) {
+      target.currentMonsterPhase = rule.phase;
+      log.push(`【階段轉換】${target.name}${rule.message}`);
+      if (rule.applyEffect) {
+        const msg = this.effectEngine.applyEffect(target.activeEffects, {
+          ...rule.applyEffect,
+          source: target.id,
+        }, target.name);
+        log.push(`  ${target.name}${msg}`);
+      }
+    }
+
+    if (nextPhases.length > 0) {
+      this.prepareMonsterTelegraphs(session, log);
+    }
+  }
+
+  private getMonsterPhaseDamageMultiplier(actor: CombatantState): number {
+    if (actor.isPlayer || !actor.monsterPhases?.length) return 1;
+    const currentPhase = actor.currentMonsterPhase ?? 1;
+    const phase = actor.monsterPhases.find(rule => rule.phase === currentPhase);
+    return phase?.damageMultiplier ?? 1;
+  }
+
+  private getPreferredPhaseSkill(actor: CombatantState, def: MonsterDef): string | undefined {
+    if (actor.isPlayer || !actor.monsterPhases?.length) return undefined;
+    const currentPhase = actor.currentMonsterPhase ?? 1;
+    const phase = actor.monsterPhases.find(rule => rule.phase === currentPhase);
+    if (!phase?.preferSkillId || !def.skills.includes(phase.preferSkillId)) return undefined;
+    return phase.preferSkillId;
   }
 
   // ──────────────────────────────────────────────────────────

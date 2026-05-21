@@ -41,7 +41,15 @@ export interface SkillDef {
   multiplier: number; // 技能倍率
   description: string; // 中文描述
   effects?: StatusEffect[];
-  special?: Record<string, unknown>;
+  special?: SkillSpecial;
+}
+
+export interface SkillSpecial {
+  [key: string]: unknown;
+  interrupt?: boolean;
+  dispelShield?: boolean;
+  isHeal?: boolean;
+  removeDebuffs?: boolean;
 }
 
 export interface LearnedSkill {

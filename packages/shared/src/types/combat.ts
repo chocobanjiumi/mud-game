@@ -45,6 +45,10 @@ export interface CombatantState {
   classId: string;
   activeEffects: ActiveStatusEffect[];
   isDead: boolean;
+  monsterBehavior?: MonsterBehaviorType;
+  monsterPhases?: MonsterPhaseRule[];
+  currentMonsterPhase?: number;
+  pendingTelegraph?: PendingTelegraphAction;
 }
 
 export interface ActiveStatusEffect extends StatusEffect {
@@ -90,6 +94,9 @@ export interface MonsterDef {
   goldReward: [number, number]; // [min, max]
   drops: DropEntry[];
   aiType: MonsterAiType;
+  behaviorType?: MonsterBehaviorType;
+  phaseRules?: MonsterPhaseRule[];
+  telegraphActions?: MonsterTelegraphAction[];
   description: string;
   isBoss: boolean;
   isElite?: boolean;
@@ -98,6 +105,40 @@ export interface MonsterDef {
 }
 
 export type MonsterAiType = 'aggressive' | 'defensive' | 'healer' | 'boss' | 'passive';
+export type MonsterBehaviorType =
+  | 'basic'
+  | 'ambusher'
+  | 'guardian'
+  | 'caster'
+  | 'summoner'
+  | 'phase_boss';
+
+export interface MonsterPhaseRule {
+  phase: number;
+  hpThresholdPercent: number;
+  message: string;
+  damageMultiplier?: number;
+  preferSkillId?: string;
+  applyEffect?: StatusEffect;
+}
+
+export interface MonsterTelegraphAction {
+  id: string;
+  skillId: string;
+  message: string;
+  executeMessage?: string;
+  hpBelowPercent?: number;
+  minRound?: number;
+  cooldownRounds?: number;
+}
+
+export interface PendingTelegraphAction {
+  id: string;
+  skillId: string;
+  message: string;
+  executeMessage?: string;
+  preparedRound: number;
+}
 
 export interface DropEntry {
   itemId: string;

@@ -152,6 +152,26 @@ describe('CombatEngine', () => {
       expect(state.enemyTeam[0].isPlayer).toBe(false);
     });
 
+    it('should initialize boss behavior, phases, and telegraph actions', () => {
+      const player = makeCharacter();
+      const monster = makeMonsterInstance({
+        id: 'test_boss',
+        name: 'Test Boss',
+        aiType: 'boss',
+        isBoss: true,
+        skills: ['basic_attack', 'power_strike'],
+      });
+
+      const combatId = engine.startCombat([player], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      const boss = state.enemyTeam[0];
+
+      expect(boss.monsterBehavior).toBe('phase_boss');
+      expect(boss.monsterPhases).toHaveLength(2);
+      expect(boss.pendingTelegraph?.skillId).toBe('power_strike');
+      expect(state.actionLog.some(line => line.includes('【預兆】'))).toBe(true);
+    });
+
     it('should support multiple players', () => {
       const p1 = makeCharacter({ name: 'Hero1' });
       const p2 = makeCharacter({ name: 'Hero2' });
@@ -203,6 +223,68 @@ describe('CombatEngine', () => {
 
       const accepted = engine.submitAction('invalid-combat-id', action);
       expect(accepted).toBe(false);
+    });
+
+    it('should allow interrupt skills to cancel monster telegraphs', () => {
+      const player = makeCharacter({
+        classId: 'ranger',
+        stats: { str: 15, int: 5, dex: 100, vit: 10, luk: 5 },
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'energy',
+      });
+      const monster = makeMonsterInstance({
+        id: 'test_boss',
+        name: 'Test Boss',
+        aiType: 'boss',
+        isBoss: true,
+        hp: 500,
+        dex: 1,
+        skills: ['basic_attack', 'power_strike'],
+      });
+
+      const combatId = engine.startCombat([player], [monster]);
+      const accepted = engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'trap',
+        targetId: monster.instanceId,
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(accepted).toBe(true);
+      expect(state.enemyTeam[0].pendingTelegraph).toBeUndefined();
+      expect(state.actionLog.some(line => line.includes('打斷'))).toBe(true);
+    });
+
+    it('should let dispel shield skills remove shield effects', () => {
+      const player = makeCharacter({
+        classId: 'knight',
+        stats: { str: 100, int: 5, dex: 100, vit: 10, luk: 5 },
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+      });
+      const monster = makeMonsterInstance({ hp: 500, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      state.enemyTeam[0].activeEffects.push({
+        type: 'shield',
+        value: 80,
+        duration: 3,
+        remainingDuration: 3,
+      });
+
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'judgment',
+        targetId: monster.instanceId,
+      });
+
+      expect(state.enemyTeam[0].activeEffects.some(effect => effect.type === 'shield')).toBe(false);
+      expect(state.actionLog.some(line => line.includes('粉碎'))).toBe(true);
     });
   });
 

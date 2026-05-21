@@ -183,6 +183,7 @@ export const SKILL_DEFS: Record<string, SkillDef> = {
     damageType: 'physical', element: 'none', multiplier: 1.3,
     description: '俯身在地面巧妙地布設一個隱蔽的機關陷阱，落葉與泥土完美掩蓋了一切痕跡。當粗心的敵人踏入陷阱範圍，鋼製的機關猛然合攏，尖銳的倒刺深深刺入肉體，劇烈的疼痛讓獵物動彈不得。',
     effects: [{ type: 'stun', value: 1, duration: 1 }],
+    special: { interrupt: true },
   },
   critical_edge: {
     id: 'critical_edge', name: '致命一擊', englishName: 'Critical Edge',
@@ -284,6 +285,7 @@ export const SKILL_DEFS: Record<string, SkillDef> = {
     damageType: 'physical', element: 'light', multiplier: 1.8,
     description: '以神聖之力加持手中的武器，讓其化為灼熱的審判之錘。沉重的一擊落下時大地震顫，金色的衝擊波從落點向四周擴散。被制裁之錘擊中的敵人不僅承受巨大的傷害，更會在聖光的衝擊下陷入短暫的暈眩。',
     effects: [{ type: 'stun', value: 1, duration: 1 }],
+    special: { interrupt: true, dispelShield: true },
   },
   unyielding: {
     id: 'unyielding', name: '不屈意志', englishName: 'Unyielding',
