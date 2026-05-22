@@ -1181,7 +1181,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 7,
     recommendedPartySize: [2, 4],
     primaryElements: ['light', 'dark', 'fire'],
-    rooms: [],
+    rooms: [
+      'ashfall_monastery_ash_gate', 'ashfall_monastery_bell_court', 'ashfall_monastery_scorched_cloister', 'ashfall_monastery_cinder_garden', 'ashfall_monastery_broken_font', 'ashfall_monastery_penitent_cells', 'ashfall_monastery_blackened_library', 'ashfall_monastery_ember_chapel', 'ashfall_monastery_fallen_refectory', 'ashfall_monastery_ash_scriptorium', 'ashfall_monastery_smoke_ambulatory', 'ashfall_monastery_crypt_stairs', 'ashfall_monastery_bone_ossuary', 'ashfall_monastery_censer_hall', 'ashfall_monastery_saint_mosaic', 'ashfall_monastery_firelit_apocrypha', 'ashfall_monastery_shadow_belfry', 'ashfall_monastery_reliquary_vault', 'ashfall_monastery_dual_altar', 'ashfall_monastery_ashen_sanctum'
+    ],
   },
   frostbite_pass: {
     id: 'frostbite_pass',

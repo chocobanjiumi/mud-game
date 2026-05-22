@@ -22698,4 +22698,536 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 灰落修道院擴充 (Lv 34-46) ─────────────────────────
+
+  ashfall_monastery_ash_gate: {
+    id: 'ashfall_monastery_ash_gate',
+    name: '灰門',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_ash_gate.png',
+    imagePrompt: '灰門 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灰門位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'east', targetRoomId: 'ashfall_monastery_bell_court', description: '鐘庭在東側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '焦黑迴廊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 240 },
+      { monsterId: 'imp', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '灰門的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '灰門的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '灰門殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_bell_court: {
+    id: 'ashfall_monastery_bell_court',
+    name: '鐘庭',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_bell_court.png',
+    imagePrompt: '鐘庭 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐘庭位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_ash_gate', description: '回到灰門' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_cinder_garden', description: '餘燼庭園在東側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_broken_font', description: '破聖水盤在北側' },
+    ],
+    monsters: [
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '鐘庭的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '鐘庭的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '鐘庭殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_scorched_cloister: {
+    id: 'ashfall_monastery_scorched_cloister',
+    name: '焦黑迴廊',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_scorched_cloister.png',
+    imagePrompt: '焦黑迴廊 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '焦黑迴廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_ash_gate', description: '回到灰門' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_broken_font', description: '破聖水盤在東側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_penitent_cells', description: '懺悔小室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[廊]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '焦黑迴廊的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '焦黑迴廊的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '焦黑迴廊殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_cinder_garden: {
+    id: 'ashfall_monastery_cinder_garden',
+    name: '餘燼庭園',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_cinder_garden.png',
+    imagePrompt: '餘燼庭園 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '餘燼庭園位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_bell_court', description: '回到鐘庭' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_ember_chapel', description: '餘火小禮拜堂在北側' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 240 },
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[園]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '餘燼庭園的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '餘燼庭園的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '餘燼庭園殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_broken_font: {
+    id: 'ashfall_monastery_broken_font',
+    name: '破聖水盤',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_broken_font.png',
+    imagePrompt: '破聖水盤 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '破聖水盤位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '回到焦黑迴廊' },
+      { direction: 'south', targetRoomId: 'ashfall_monastery_bell_court', description: '回到鐘庭' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_blackened_library', description: '燻黑書庫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'cursed_priest', maxCount: 2, respawnSeconds: 240 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[盤]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '破聖水盤的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '破聖水盤的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '破聖水盤殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_penitent_cells: {
+    id: 'ashfall_monastery_penitent_cells',
+    name: '懺悔小室',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_penitent_cells.png',
+    imagePrompt: '懺悔小室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '懺悔小室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_scorched_cloister', description: '回到焦黑迴廊' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_ash_scriptorium', description: '灰抄經室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 260 },
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[室]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '懺悔小室的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '懺悔小室的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '懺悔小室殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_blackened_library: {
+    id: 'ashfall_monastery_blackened_library',
+    name: '燻黑書庫',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_blackened_library.png',
+    imagePrompt: '燻黑書庫 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燻黑書庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_broken_font', description: '回到破聖水盤' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_fallen_refectory', description: '墮落食堂在東側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_firelit_apocrypha', description: '火照外典室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'dark_mage', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[書]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '燻黑書庫的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '燻黑書庫的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '燻黑書庫殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_ember_chapel: {
+    id: 'ashfall_monastery_ember_chapel',
+    name: '餘火小禮拜堂',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_ember_chapel.png',
+    imagePrompt: '餘火小禮拜堂 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '餘火小禮拜堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_cinder_garden', description: '回到餘燼庭園' },
+      { direction: 'west', targetRoomId: 'ashfall_monastery_blackened_library', description: '燻黑書庫在西側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_saint_mosaic', description: '聖者碎像在北側' },
+    ],
+    monsters: [
+      { monsterId: 'cursed_priest', maxCount: 2, respawnSeconds: 240 },
+      { monsterId: 'flame_dragon_knight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[禮]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '餘火小禮拜堂的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '餘火小禮拜堂的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '餘火小禮拜堂殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_fallen_refectory: {
+    id: 'ashfall_monastery_fallen_refectory',
+    name: '墮落食堂',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_fallen_refectory.png',
+    imagePrompt: '墮落食堂 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '墮落食堂位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_censer_hall', description: '香爐廳在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 2, respawnSeconds: 260 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[食]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '墮落食堂的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '墮落食堂的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '墮落食堂殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_ash_scriptorium: {
+    id: 'ashfall_monastery_ash_scriptorium',
+    name: '灰抄經室',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_ash_scriptorium.png',
+    imagePrompt: '灰抄經室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灰抄經室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_penitent_cells', description: '回到懺悔小室' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '煙霧步廊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_mage', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[抄]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '灰抄經室的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '灰抄經室的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '灰抄經室殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_smoke_ambulatory: {
+    id: 'ashfall_monastery_smoke_ambulatory',
+    name: '煙霧步廊',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_smoke_ambulatory.png',
+    imagePrompt: '煙霧步廊 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '煙霧步廊位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_ash_scriptorium', description: '回到灰抄經室' },
+      { direction: 'south', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_censer_hall', description: '香爐廳在東側' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_crypt_stairs', description: '地下墓階在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'imp', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[煙]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '煙霧步廊的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '煙霧步廊的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '煙霧步廊殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_crypt_stairs: {
+    id: 'ashfall_monastery_crypt_stairs',
+    name: '地下墓階',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_crypt_stairs.png',
+    imagePrompt: '地下墓階 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '地下墓階位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '骨灰藏室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 210 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '地下墓階的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '地下墓階的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '地下墓階殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_bone_ossuary: {
+    id: 'ashfall_monastery_bone_ossuary',
+    name: '骨灰藏室',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_bone_ossuary.png',
+    imagePrompt: '骨灰藏室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨灰藏室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_crypt_stairs', description: '回到地下墓階' },
+      { direction: 'south', targetRoomId: 'ashfall_monastery_censer_hall', description: '回到香爐廳' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_reliquary_vault', description: '聖物庫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 210 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '骨灰藏室的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '骨灰藏室的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '骨灰藏室殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_censer_hall: {
+    id: 'ashfall_monastery_censer_hall',
+    name: '香爐廳',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_censer_hall.png',
+    imagePrompt: '香爐廳 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '香爐廳位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
+      { direction: 'south', targetRoomId: 'ashfall_monastery_fallen_refectory', description: '回到墮落食堂' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '骨灰藏室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[香]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '香爐廳的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '香爐廳的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '香爐廳殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_saint_mosaic: {
+    id: 'ashfall_monastery_saint_mosaic',
+    name: '聖者碎像',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_saint_mosaic.png',
+    imagePrompt: '聖者碎像 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '聖者碎像位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_ember_chapel', description: '回到餘火小禮拜堂' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_shadow_belfry', description: '暗影鐘樓在東側' },
+    ],
+    monsters: [
+      { monsterId: 'spectral_knight', maxCount: 2, respawnSeconds: 210 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '聖者碎像的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '聖者碎像的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '聖者碎像殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_firelit_apocrypha: {
+    id: 'ashfall_monastery_firelit_apocrypha',
+    name: '火照外典室',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_firelit_apocrypha.png',
+    imagePrompt: '火照外典室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '火照外典室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'dark_mage', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[典]',
+    mapX: 2,
+    mapY: 4,
+    guardianHints: {
+      creature: '火照外典室的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '火照外典室的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '火照外典室殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_shadow_belfry: {
+    id: 'ashfall_monastery_shadow_belfry',
+    name: '暗影鐘樓',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_shadow_belfry.png',
+    imagePrompt: '暗影鐘樓 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暗影鐘樓位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_saint_mosaic', description: '回到聖者碎像' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[樓]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '暗影鐘樓的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '暗影鐘樓的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '暗影鐘樓殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_reliquary_vault: {
+    id: 'ashfall_monastery_reliquary_vault',
+    name: '聖物庫',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_reliquary_vault.png',
+    imagePrompt: '聖物庫 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '聖物庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '回到骨灰藏室' },
+      { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[庫]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '聖物庫的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '聖物庫的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '聖物庫殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_dual_altar: {
+    id: 'ashfall_monastery_dual_altar',
+    name: '雙相祭壇',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_dual_altar.png',
+    imagePrompt: '雙相祭壇 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雙相祭壇位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_firelit_apocrypha', description: '回到火照外典室' },
+      { direction: 'south', targetRoomId: 'ashfall_monastery_reliquary_vault', description: '回到聖物庫' },
+      { direction: 'east', targetRoomId: 'ashfall_monastery_ashen_sanctum', description: '灰燼聖所深處在東側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'cursed_priest', maxCount: 2, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 4,
+    mapY: 4,
+    guardianHints: {
+      creature: '雙相祭壇的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '雙相祭壇的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '雙相祭壇殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
+  ashfall_monastery_ashen_sanctum: {
+    id: 'ashfall_monastery_ashen_sanctum',
+    name: '灰燼聖所',
+    zone: 'ashfall_monastery' as RoomDef['zone'],
+    image: 'ashfall_monastery_ashen_sanctum.png',
+    imagePrompt: '灰燼聖所 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灰燼聖所位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，玩家可以 inspect 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 search 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ashfall_monastery_dual_altar', description: '回到雙相祭壇' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'flame_dragon_knight', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[聖]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '灰燼聖所的灰燼若逆著鐘聲揚起，附近墮落修士或魔族巡邏正在靠近。',
+      treasure: '灰燼聖所的外典封條、聖像裂縫或香爐底座旁可能藏著修道院線索。',
+      spirit: '灰燼聖所殘留修士祈禱、墮落儀式與聖光殘響互相撕扯的記憶。',
+    },
+  },
+
 };
