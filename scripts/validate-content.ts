@@ -181,6 +181,43 @@ function validateZoneExplorationContent(zone: ZoneDef): void {
   }
 }
 
+function roomFunction(room: RoomDef): string | undefined {
+  return room.imagePrompt?.match(/room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i)?.[1].toLowerCase();
+}
+
+function validateNonTownZoneTemplate(zone: ZoneDef): void {
+  if (zone.type === 'town') return;
+  const zoneRooms = zone.rooms.map((roomId) => ROOMS[roomId]).filter((room): room is RoomDef => !!room);
+  const countRole = (role: string): number => zoneRooms.filter((room) => roomFunction(room) === role).length;
+  const entrance = countRole('entrance');
+  const mainRoute = countRole('main route');
+  const combat = countRole('combat');
+  const hidden = countRole('hidden');
+  const resource = countRole('resource');
+  const elite = countRole('elite');
+  const boss = countRole('boss');
+  const trafficRooms = zoneRooms.filter((room) => /portal|gate|entrance|harbor|dock|pass|shortcut|recall|傳送|入口|門|港|碼頭|捷徑|回程|隘口/.test(roomSearchText(room))).length;
+
+  if (entrance < 1) add('error', `zone:${zone.id}`, `non-town zone requires at least 1 entrance or safe anchor, found ${entrance}`);
+  if (mainRoute < 4 || mainRoute > 6) add('error', `zone:${zone.id}`, `non-town zone requires 4-6 main route rooms, found ${mainRoute}`);
+  if (combat < 5 || combat > 8) add('error', `zone:${zone.id}`, `non-town zone requires 5-8 combat rooms, found ${combat}`);
+  if (hidden < 2 || hidden > 4) add('error', `zone:${zone.id}`, `non-town zone requires 2-4 exploration or hidden rooms, found ${hidden}`);
+  if (resource < 2 || resource > 3) add('error', `zone:${zone.id}`, `non-town zone requires 2-3 resource or event rooms, found ${resource}`);
+  if (elite < 1) add('error', `zone:${zone.id}`, `non-town zone requires at least 1 elite room, found ${elite}`);
+  if (boss < 1) add('error', `zone:${zone.id}`, `non-town zone requires at least 1 boss, event, or story room, found ${boss}`);
+  if (trafficRooms < 1) add('error', `zone:${zone.id}`, `non-town zone requires at least 1 return shortcut, portal, one-way exit, or traffic node, found ${trafficRooms}`);
+
+  if (zone.type === 'pvp' || zone.type === 'kingdom' || zone.type === 'endgame') {
+    const safeEntrances = entrance;
+    const contestedObjectives = resource + elite + boss;
+    const flankRooms = hidden + mainRoute;
+    if (safeEntrances < 1) add('error', `zone:${zone.id}`, `PvP/kingdom/endgame zone requires at least 1 safe entrance or protected area, found ${safeEntrances}`);
+    if (mainRoute < 2) add('error', `zone:${zone.id}`, `PvP/kingdom/endgame zone requires at least 2 main routes, found ${mainRoute}`);
+    if (contestedObjectives < 3) add('error', `zone:${zone.id}`, `PvP/kingdom/endgame zone requires at least 3 contestable objectives, found ${contestedObjectives}`);
+    if (flankRooms < 4) add('error', `zone:${zone.id}`, `PvP/kingdom/endgame zone requires at least 4 flank, ambush, or retreat rooms, found ${flankRooms}`);
+  }
+}
+
 function roomImagePath(room: RoomDef): string {
   return path.join(ROOM_IMAGE_DIR, room.image ?? `${room.id}.png`);
 }
@@ -221,6 +258,7 @@ function validateZones(): void {
       validateTownStructure(zone);
     }
     validateZoneExplorationContent(zone);
+    validateNonTownZoneTemplate(zone);
 
     if (zone.type !== 'town') {
       const combatRooms = zone.rooms.filter((roomId) => (ROOMS[roomId]?.monsters?.length ?? 0) > 0);

@@ -4454,7 +4454,31 @@ function roomHasHiddenMarker(room: RoomDef): boolean {
 function markRoomAsHidden(room: RoomDef): void {
   if (roomHasHiddenMarker(room)) return;
   if (room.imagePrompt) {
-    room.imagePrompt = room.imagePrompt.replace(/room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i, 'room function hidden');
+    setRoomFunction(room, 'hidden');
+  }
+}
+
+function setRoomFunction(room: RoomDef, role: 'entrance' | 'main route' | 'combat' | 'resource' | 'hidden' | 'elite' | 'boss' | 'town service'): void {
+  if (!room.imagePrompt) return;
+  room.imagePrompt = room.imagePrompt.replace(/room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i, `room function ${role}`);
+}
+
+function ensureNonTownRoomRoleTemplates(): void {
+  const baseRoles = [
+    'entrance',
+    'main route', 'main route', 'main route', 'main route', 'main route',
+    'combat', 'combat', 'combat', 'combat', 'combat', 'combat',
+    'hidden', 'hidden', 'hidden',
+    'resource', 'resource', 'resource',
+    'elite',
+    'boss',
+    'boss',
+  ] as const;
+
+  for (const zone of Object.values(ZONES)) {
+    if (zone.type === 'town') continue;
+    const zoneRooms = zone.rooms.map((roomId) => ROOMS[roomId]).filter((room): room is RoomDef => !!room);
+    zoneRooms.forEach((room, index) => setRoomFunction(room, baseRoles[index] ?? 'combat'));
   }
 }
 
@@ -4482,6 +4506,7 @@ function ensureZoneExplorationAnchors(): void {
   }
 }
 
+ensureNonTownRoomRoleTemplates();
 ensureZoneExplorationAnchors();
 
 /** 取得房間定義 */
