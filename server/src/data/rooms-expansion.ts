@@ -10570,4 +10570,532 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '巫妖陵寢保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
     },
   },
+  storm_highlands_cliff_gate: {
+    id: 'storm_highlands_cliff_gate',
+    name: '峭壁入口',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_cliff_gate.png',
+    imagePrompt: '峭壁入口 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '峭壁入口位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'east', targetRoomId: 'storm_highlands_windcut_path', description: '風切小徑通往高原' },
+      { direction: 'north', targetRoomId: 'storm_highlands_rain_shelf', description: '雨棚岩臺通往北側' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '峭壁入口的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '峭壁入口的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '峭壁入口保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_windcut_path: {
+    id: 'storm_highlands_windcut_path',
+    name: '風切小徑',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_windcut_path.png',
+    imagePrompt: '風切小徑 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風切小徑位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_cliff_gate', description: '小徑回到峭壁入口' },
+      { direction: 'east', targetRoomId: 'storm_highlands_goat_ledge', description: '碎石路通往山羊岩階' },
+      { direction: 'north', targetRoomId: 'storm_highlands_cloud_bridge', description: '雲橋纜索通往高空' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[徑]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '風切小徑的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '風切小徑的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '風切小徑保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_rain_shelf: {
+    id: 'storm_highlands_rain_shelf',
+    name: '雨棚岩臺',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_rain_shelf.png',
+    imagePrompt: '雨棚岩臺 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雨棚岩臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'storm_highlands_cliff_gate', description: '雨幕回到峭壁入口' },
+      { direction: 'east', targetRoomId: 'storm_highlands_cloud_bridge', description: '濕岩路通往雲橋' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[雨]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '雨棚岩臺的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雨棚岩臺的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '雨棚岩臺保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_cloud_bridge: {
+    id: 'storm_highlands_cloud_bridge',
+    name: '雲索橋',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_cloud_bridge.png',
+    imagePrompt: '雲索橋 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雲索橋位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'storm_highlands_windcut_path', description: '纜索回到風切小徑' },
+      { direction: 'west', targetRoomId: 'storm_highlands_rain_shelf', description: '濕岩路回到雨棚岩臺' },
+      { direction: 'east', targetRoomId: 'storm_highlands_griffin_watch', description: '橋端通往獅鷲哨臺' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '雲索橋的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雲索橋的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '雲索橋保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_goat_ledge: {
+    id: 'storm_highlands_goat_ledge',
+    name: '山羊岩階',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_goat_ledge.png',
+    imagePrompt: '山羊岩階 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '山羊岩階位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_windcut_path', description: '碎石路回到風切小徑' },
+      { direction: 'east', targetRoomId: 'storm_highlands_thunder_pool', description: '凹岩路通往雷雨池' },
+      { direction: 'south', targetRoomId: 'storm_highlands_basalt_spine', description: '黑岩脊向南延伸' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '山羊岩階的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '山羊岩階的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '山羊岩階保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_griffin_watch: {
+    id: 'storm_highlands_griffin_watch',
+    name: '獅鷲哨臺',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_griffin_watch.png',
+    imagePrompt: '獅鷲哨臺 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獅鷲哨臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_cloud_bridge', description: '橋端回到雲索橋' },
+      { direction: 'east', targetRoomId: 'storm_highlands_eagle_scarp', description: '羽痕通往雷鷹崖' },
+      { direction: 'south', targetRoomId: 'storm_highlands_thunder_pool', description: '哨臺階梯落向雷雨池' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '獅鷲哨臺的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '獅鷲哨臺的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '獅鷲哨臺保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_thunder_pool: {
+    id: 'storm_highlands_thunder_pool',
+    name: '雷雨池',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_thunder_pool.png',
+    imagePrompt: '雷雨池 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷雨池位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_goat_ledge', description: '凹岩路回到山羊岩階' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_watch', description: '階梯回到獅鷲哨臺' },
+      { direction: 'east', targetRoomId: 'storm_highlands_old_windmill', description: '水渠通往舊風車' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '雷雨池的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雷雨池的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '雷雨池保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_basalt_spine: {
+    id: 'storm_highlands_basalt_spine',
+    name: '玄武岩脊',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_basalt_spine.png',
+    imagePrompt: '玄武岩脊 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玄武岩脊位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'north', targetRoomId: 'storm_highlands_goat_ledge', description: '黑岩脊回到山羊岩階' },
+      { direction: 'east', targetRoomId: 'storm_highlands_screaming_gully', description: '裂隙通往嘯風谷' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[脊]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '玄武岩脊的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '玄武岩脊的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '玄武岩脊保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_eagle_scarp: {
+    id: 'storm_highlands_eagle_scarp',
+    name: '雷鷹崖',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_eagle_scarp.png',
+    imagePrompt: '雷鷹崖 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷鷹崖位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_griffin_watch', description: '羽痕回到獅鷲哨臺' },
+      { direction: 'east', targetRoomId: 'storm_highlands_nest_pillars', description: '巢柱通往高處' },
+      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '崖路落向舊風車' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 4, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[鷹]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '雷鷹崖的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雷鷹崖的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '雷鷹崖保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_old_windmill: {
+    id: 'storm_highlands_old_windmill',
+    name: '舊風車臺',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_old_windmill.png',
+    imagePrompt: '舊風車臺 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊風車臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_thunder_pool', description: '水渠回到雷雨池' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '崖路回到雷鷹崖' },
+      { direction: 'east', targetRoomId: 'storm_highlands_storm_altar', description: '折翼階通往風神祭壇' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[車]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '舊風車臺的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '舊風車臺的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '舊風車臺保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_screaming_gully: {
+    id: 'storm_highlands_screaming_gully',
+    name: '嘯風谷',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_screaming_gully.png',
+    imagePrompt: '嘯風谷 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '嘯風谷位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_basalt_spine', description: '裂隙回到玄武岩脊' },
+      { direction: 'east', targetRoomId: 'storm_highlands_lightning_tree', description: '風聲通往雷擊枯樹' },
+      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '斜坡回到舊風車臺' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[谷]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '嘯風谷的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '嘯風谷的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '嘯風谷保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_nest_pillars: {
+    id: 'storm_highlands_nest_pillars',
+    name: '高巢石柱',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_nest_pillars.png',
+    imagePrompt: '高巢石柱 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高巢石柱位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_eagle_scarp', description: '巢柱回到雷鷹崖' },
+      { direction: 'east', targetRoomId: 'storm_highlands_sky_cairns', description: '石堆路通往天葬石堆' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[巢]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '高巢石柱的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '高巢石柱的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '高巢石柱保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_storm_altar: {
+    id: 'storm_highlands_storm_altar',
+    name: '風神祭壇',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_storm_altar.png',
+    imagePrompt: '風神祭壇 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風神祭壇位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_old_windmill', description: '折翼階回到舊風車臺' },
+      { direction: 'north', targetRoomId: 'storm_highlands_sky_cairns', description: '祭階升向天葬石堆' },
+      { direction: 'east', targetRoomId: 'storm_highlands_eye_of_gale', description: '祭紋通往暴風眼' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '風神祭壇的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '風神祭壇的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '風神祭壇保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_lightning_tree: {
+    id: 'storm_highlands_lightning_tree',
+    name: '雷擊枯樹',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_lightning_tree.png',
+    imagePrompt: '雷擊枯樹 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷擊枯樹位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_screaming_gully', description: '風聲回到嘯風谷' },
+      { direction: 'east', targetRoomId: 'storm_highlands_broken_beacon', description: '焦木路通往斷烽臺' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[樹]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '雷擊枯樹的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雷擊枯樹的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '雷擊枯樹保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_sky_cairns: {
+    id: 'storm_highlands_sky_cairns',
+    name: '天葬石堆',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_sky_cairns.png',
+    imagePrompt: '天葬石堆 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天葬石堆位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_nest_pillars', description: '石堆路回到高巢石柱' },
+      { direction: 'south', targetRoomId: 'storm_highlands_storm_altar', description: '祭階回到風神祭壇' },
+      { direction: 'east', targetRoomId: 'storm_highlands_griffin_aerie', description: '羽骨路通往獅鷲巢臺' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[葬]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '天葬石堆的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '天葬石堆的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '天葬石堆保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_broken_beacon: {
+    id: 'storm_highlands_broken_beacon',
+    name: '斷烽臺',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_broken_beacon.png',
+    imagePrompt: '斷烽臺 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斷烽臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_lightning_tree', description: '焦木路回到雷擊枯樹' },
+      { direction: 'east', targetRoomId: 'storm_highlands_stormglass_mine', description: '碎光路通往風暴玻礦' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '烽臺階升向暴風眼' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[烽]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '斷烽臺的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '斷烽臺的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '斷烽臺保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_eye_of_gale: {
+    id: 'storm_highlands_eye_of_gale',
+    name: '暴風眼',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_eye_of_gale.png',
+    imagePrompt: '暴風眼 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暴風眼位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_storm_altar', description: '祭紋回到風神祭壇' },
+      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '烽臺階回到斷烽臺' },
+      { direction: 'east', targetRoomId: 'storm_highlands_worldboss_peak', description: '風牆裂口通往風暴王峰' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[眼]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '暴風眼的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '暴風眼的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '暴風眼保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_griffin_aerie: {
+    id: 'storm_highlands_griffin_aerie',
+    name: '獅鷲巢臺',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_griffin_aerie.png',
+    imagePrompt: '獅鷲巢臺 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獅鷲巢臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_sky_cairns', description: '羽骨路回到天葬石堆' },
+      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '巢臺風道通往風暴王峰' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 3, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[獅]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '獅鷲巢臺的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '獅鷲巢臺的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '獅鷲巢臺保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_stormglass_mine: {
+    id: 'storm_highlands_stormglass_mine',
+    name: '風暴玻礦',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_stormglass_mine.png',
+    imagePrompt: '風暴玻礦 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴玻礦位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_broken_beacon', description: '碎光路回到斷烽臺' },
+      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '礦脈斜坡通往風暴王峰' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[礦]',
+    mapX: 6,
+    mapY: -1,
+    guardianHints: {
+      creature: '風暴玻礦的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '風暴玻礦的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '風暴玻礦保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
+
+  storm_highlands_worldboss_peak: {
+    id: 'storm_highlands_worldboss_peak',
+    name: '風暴王峰',
+    zone: 'storm_highlands' as RoomDef['zone'],
+    image: 'storm_highlands_worldboss_peak.png',
+    imagePrompt: '風暴王峰 in storm_highlands, windswept mountain highlands above clouds, lightning storm, ancient wind altar ruins, griffin nests, sheer cliffs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴王峰位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'storm_highlands_eye_of_gale', description: '風牆裂口回到暴風眼' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '巢臺風道回到獅鷲巢臺' },
+      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '礦脈斜坡回到風暴玻礦' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 3, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[王]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '風暴王峰的風聲若忽然變尖，空中獵手或風暴龍影通常正在接近。',
+      treasure: '風暴王峰的碎羽、玻化岩或舊祭紋旁可能藏著高原事件線索。',
+      spirit: '風暴王峰保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
+    },
+  },
 };
