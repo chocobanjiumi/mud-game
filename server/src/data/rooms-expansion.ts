@@ -13221,4 +13221,532 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '潮汐王座保留著神殿沉入海底後仍用藍火維持封印的記憶。',
     },
   },
+  obsidian_depths_mine_lift: {
+    id: 'obsidian_depths_mine_lift',
+    name: '深層礦梯',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_mine_lift.png',
+    imagePrompt: '深層礦梯 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深層礦梯位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'east', targetRoomId: 'obsidian_depths_glass_vein', description: '黑曜礦脈通往東側' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_cooling_shelf', description: '冷卻岩棚向下延伸' },
+    ],
+    monsters: [
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '深層礦梯的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '深層礦梯的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '深層礦梯保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_glass_vein: {
+    id: 'obsidian_depths_glass_vein',
+    name: '鏡黑礦脈',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_glass_vein.png',
+    imagePrompt: '鏡黑礦脈 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏡黑礦脈位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_mine_lift', description: '礦脈回到深層礦梯' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_lava_drip', description: '熔滴廊在前方' },
+      { direction: 'north', targetRoomId: 'obsidian_depths_shard_claim', description: '碎晶採區在上方' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[礦]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '鏡黑礦脈的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '鏡黑礦脈的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '鏡黑礦脈保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_shard_claim: {
+    id: 'obsidian_depths_shard_claim',
+    name: '碎曜採區',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_shard_claim.png',
+    imagePrompt: '碎曜採區 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '碎曜採區位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'south', targetRoomId: 'obsidian_depths_glass_vein', description: '碎曜採區回到鏡黑礦脈' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_mirror_chamber', description: '反光洞室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[採]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '碎曜採區的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '碎曜採區的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '碎曜採區保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_cooling_shelf: {
+    id: 'obsidian_depths_cooling_shelf',
+    name: '冷卻岩棚',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_cooling_shelf.png',
+    imagePrompt: '冷卻岩棚 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冷卻岩棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'north', targetRoomId: 'obsidian_depths_mine_lift', description: '冷卻岩棚回到礦梯' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_sulfur_pocket', description: '硫磺袋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'lava_worm', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 0,
+    mapY: -1,
+    guardianHints: {
+      creature: '冷卻岩棚的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '冷卻岩棚的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '冷卻岩棚保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_lava_drip: {
+    id: 'obsidian_depths_lava_drip',
+    name: '熔滴廊',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_lava_drip.png',
+    imagePrompt: '熔滴廊 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熔滴廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_glass_vein', description: '熔滴廊回到礦脈' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_old_furnace', description: '舊熔爐在前方' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_sulfur_pocket', description: '熱氣井落向硫磺袋' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[滴]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '熔滴廊的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '熔滴廊的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '熔滴廊保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_mirror_chamber: {
+    id: 'obsidian_depths_mirror_chamber',
+    name: '黑鏡洞室',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_mirror_chamber.png',
+    imagePrompt: '黑鏡洞室 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑鏡洞室位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_shard_claim', description: '黑鏡洞室回到採區' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_chain_gallery', description: '鐵鏈廊在東側' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_old_furnace', description: '反光坡落向舊熔爐' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'fire_elemental', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '黑鏡洞室的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '黑鏡洞室的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '黑鏡洞室保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_sulfur_pocket: {
+    id: 'obsidian_depths_sulfur_pocket',
+    name: '硫磺氣袋',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_sulfur_pocket.png',
+    imagePrompt: '硫磺氣袋 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '硫磺氣袋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_cooling_shelf', description: '硫磺氣袋回到岩棚' },
+      { direction: 'north', targetRoomId: 'obsidian_depths_lava_drip', description: '熱氣井回到熔滴廊' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_magma_rill', description: '岩漿細渠在前方' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[硫]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '硫磺氣袋的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '硫磺氣袋的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '硫磺氣袋保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_old_furnace: {
+    id: 'obsidian_depths_old_furnace',
+    name: '古代熔爐',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_old_furnace.png',
+    imagePrompt: '古代熔爐 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古代熔爐位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_lava_drip', description: '舊熔爐回到熔滴廊' },
+      { direction: 'north', targetRoomId: 'obsidian_depths_mirror_chamber', description: '反光坡回到黑鏡洞室' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_forge_guard_post', description: '守衛臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[爐]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '古代熔爐的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '古代熔爐的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '古代熔爐保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_chain_gallery: {
+    id: 'obsidian_depths_chain_gallery',
+    name: '鎖鏈長廊',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_chain_gallery.png',
+    imagePrompt: '鎖鏈長廊 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鎖鏈長廊位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_mirror_chamber', description: '鎖鏈長廊回到黑鏡洞室' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '黑玻橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'fire_elemental', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[鏈]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '鎖鏈長廊的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '鎖鏈長廊的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '鎖鏈長廊保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_magma_rill: {
+    id: 'obsidian_depths_magma_rill',
+    name: '岩漿細渠',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_magma_rill.png',
+    imagePrompt: '岩漿細渠 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '岩漿細渠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_sulfur_pocket', description: '岩漿細渠回到硫磺袋' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_forge_guard_post', description: '熔流路通往守衛臺' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_ember_basin', description: '餘燼盆地在下方' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'fire_elemental', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[渠]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '岩漿細渠的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '岩漿細渠的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '岩漿細渠保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_forge_guard_post: {
+    id: 'obsidian_depths_forge_guard_post',
+    name: '熔爐守衛臺',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_forge_guard_post.png',
+    imagePrompt: '熔爐守衛臺 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熔爐守衛臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_old_furnace', description: '守衛臺回到古代熔爐' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_magma_rill', description: '熔流路回到岩漿細渠' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_obsidian_market', description: '棄市礦棚在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[守]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '熔爐守衛臺的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '熔爐守衛臺的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '熔爐守衛臺保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_black_glass_bridge: {
+    id: 'obsidian_depths_black_glass_bridge',
+    name: '黑玻橋',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_black_glass_bridge.png',
+    imagePrompt: '黑玻橋 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑玻橋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_chain_gallery', description: '黑玻橋回到鎖鏈長廊' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_depths_shrine', description: '深層小祠在東側' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_obsidian_market', description: '橋下坡落向棄市礦棚' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'demon_warrior', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '黑玻橋的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '黑玻橋的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '黑玻橋保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_ember_basin: {
+    id: 'obsidian_depths_ember_basin',
+    name: '餘燼盆地',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_ember_basin.png',
+    imagePrompt: '餘燼盆地 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '餘燼盆地位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'north', targetRoomId: 'obsidian_depths_magma_rill', description: '餘燼盆地回到岩漿細渠' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_lavafall_overlook', description: '熔瀑臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fire_elemental', maxCount: 3, respawnSeconds: 140 },
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 110 },
+    ],
+    mapSymbol: '[燼]',
+    mapX: 3,
+    mapY: -2,
+    guardianHints: {
+      creature: '餘燼盆地的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '餘燼盆地的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '餘燼盆地保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_obsidian_market: {
+    id: 'obsidian_depths_obsidian_market',
+    name: '棄市礦棚',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_obsidian_market.png',
+    imagePrompt: '棄市礦棚 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '棄市礦棚位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_forge_guard_post', description: '礦棚回到守衛臺' },
+      { direction: 'north', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '橋下坡回到黑玻橋' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_core_drill', description: '核心鑽井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '棄市礦棚的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '棄市礦棚的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '棄市礦棚保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_depths_shrine: {
+    id: 'obsidian_depths_depths_shrine',
+    name: '深層火祠',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_depths_shrine.png',
+    imagePrompt: '深層火祠 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深層火祠位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_black_glass_bridge', description: '火祠回到黑玻橋' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_core_drill', description: '祭火路通往核心鑽井' },
+    ],
+    monsters: [
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '深層火祠的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '深層火祠的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '深層火祠保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_lavafall_overlook: {
+    id: 'obsidian_depths_lavafall_overlook',
+    name: '熔瀑臺',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_lavafall_overlook.png',
+    imagePrompt: '熔瀑臺 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熔瀑臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_ember_basin', description: '熔瀑臺回到餘燼盆地' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_molten_lock', description: '熔鎖門在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[瀑]',
+    mapX: 4,
+    mapY: -2,
+    guardianHints: {
+      creature: '熔瀑臺的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '熔瀑臺的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '熔瀑臺保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_core_drill: {
+    id: 'obsidian_depths_core_drill',
+    name: '核心鑽井',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_core_drill.png',
+    imagePrompt: '核心鑽井 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '核心鑽井位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_obsidian_market', description: '核心鑽井回到棄市礦棚' },
+      { direction: 'north', targetRoomId: 'obsidian_depths_depths_shrine', description: '祭火路回到深層火祠' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_heart_mirror', description: '心鏡廳在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[鑽]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '核心鑽井的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '核心鑽井的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '核心鑽井保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_molten_lock: {
+    id: 'obsidian_depths_molten_lock',
+    name: '熔鎖門',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_molten_lock.png',
+    imagePrompt: '熔鎖門 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熔鎖門位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_lavafall_overlook', description: '熔鎖門回到熔瀑臺' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_heart_mirror', description: '熔鎖通道通往心鏡廳' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'demon_warrior', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[鎖]',
+    mapX: 5,
+    mapY: -2,
+    guardianHints: {
+      creature: '熔鎖門的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '熔鎖門的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '熔鎖門保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_heart_mirror: {
+    id: 'obsidian_depths_heart_mirror',
+    name: '黑曜心鏡',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_heart_mirror.png',
+    imagePrompt: '黑曜心鏡 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑曜心鏡位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_core_drill', description: '心鏡廳回到核心鑽井' },
+      { direction: 'south', targetRoomId: 'obsidian_depths_molten_lock', description: '熔鎖通道回到熔鎖門' },
+      { direction: 'east', targetRoomId: 'obsidian_depths_worldforge_core', description: '核心裂口通往世界熔爐' },
+    ],
+    monsters: [
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[心]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑曜心鏡的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '黑曜心鏡的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '黑曜心鏡保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
+
+  obsidian_depths_worldforge_core: {
+    id: 'obsidian_depths_worldforge_core',
+    name: '世界熔爐核心',
+    zone: 'obsidian_depths' as RoomDef['zone'],
+    image: 'obsidian_depths_worldforge_core.png',
+    imagePrompt: '世界熔爐核心 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '世界熔爐核心位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+    exits: [
+      { direction: 'west', targetRoomId: 'obsidian_depths_heart_mirror', description: '核心裂口回到黑曜心鏡' },
+    ],
+    monsters: [
+      { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'fire_elemental', maxCount: 3, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 8,
+    mapY: 0,
+    guardianHints: {
+      creature: '世界熔爐核心的黑曜反光若忽然多出影子，熔爐守衛通常已經接近。',
+      treasure: '世界熔爐核心的礦脈、熔渣或古代爐印旁可能藏著高階採集線索。',
+      spirit: '世界熔爐核心保留著黑曜深層被古代熔爐長年燒穿的記憶。',
+    },
+  },
 };
