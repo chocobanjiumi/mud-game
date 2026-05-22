@@ -1232,7 +1232,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 9,
     recommendedPartySize: [3, 4],
     primaryElements: ['light', 'fire'],
-    rooms: [],
+    rooms: [
+      'sunspire_white_stone_gate', 'sunspire_sunlit_stair', 'sunspire_mirror_plinth', 'sunspire_flameglass_walk', 'sunspire_radiant_lift', 'sunspire_solar_armory', 'sunspire_hymn_gallery', 'sunspire_burning_archive', 'sunspire_celestial_guard_hall', 'sunspire_trial_of_embers', 'sunspire_trial_of_dawn', 'sunspire_winged_balcony', 'sunspire_lens_chamber', 'sunspire_sunfire_choir', 'sunspire_ashen_shadow_edge', 'sunspire_gold_flare_bridge', 'sunspire_seraph_watch', 'sunspire_apex_antechamber', 'sunspire_war_god_sigil', 'sunspire_crown_of_day'
+    ],
   },
   moonshadow_court: {
     id: 'moonshadow_court',

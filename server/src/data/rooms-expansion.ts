@@ -24294,4 +24294,534 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 日耀尖塔擴充 (Lv 45-58) ───────────────────────────
+
+  sunspire_white_stone_gate: {
+    id: 'sunspire_white_stone_gate',
+    name: '白石塔門',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_white_stone_gate.png',
+    imagePrompt: '白石塔門 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '白石塔門位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sunspire_sunlit_stair', description: '日光階在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '白石塔門的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '白石塔門的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '白石塔門殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_sunlit_stair: {
+    id: 'sunspire_sunlit_stair',
+    name: '日光階',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_sunlit_stair.png',
+    imagePrompt: '日光階 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日光階位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_white_stone_gate', description: '回到白石塔門' },
+      { direction: 'east', targetRoomId: 'sunspire_mirror_plinth', description: '鏡石臺在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_flameglass_walk', description: '焰玻步道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '日光階的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日光階的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日光階殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_mirror_plinth: {
+    id: 'sunspire_mirror_plinth',
+    name: '鏡石臺',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_mirror_plinth.png',
+    imagePrompt: '鏡石臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏡石臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_sunlit_stair', description: '回到日光階' },
+      { direction: 'east', targetRoomId: 'sunspire_solar_armory', description: '太陽武庫在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_radiant_lift', description: '日耀升降井在北側' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '鏡石臺的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '鏡石臺的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '鏡石臺殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_flameglass_walk: {
+    id: 'sunspire_flameglass_walk',
+    name: '焰玻步道',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_flameglass_walk.png',
+    imagePrompt: '焰玻步道 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '焰玻步道位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_sunlit_stair', description: '回到日光階' },
+      { direction: 'east', targetRoomId: 'sunspire_radiant_lift', description: '日耀升降井在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_burning_archive', description: '燃書庫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[焰]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '焰玻步道的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '焰玻步道的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '焰玻步道殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_radiant_lift: {
+    id: 'sunspire_radiant_lift',
+    name: '日耀升降井',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_radiant_lift.png',
+    imagePrompt: '日耀升降井 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日耀升降井位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_flameglass_walk', description: '回到焰玻步道' },
+      { direction: 'south', targetRoomId: 'sunspire_mirror_plinth', description: '回到鏡石臺' },
+      { direction: 'east', targetRoomId: 'sunspire_celestial_guard_hall', description: '天界守衛廳在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '日耀升降井的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日耀升降井的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日耀升降井殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_solar_armory: {
+    id: 'sunspire_solar_armory',
+    name: '太陽武庫',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_solar_armory.png',
+    imagePrompt: '太陽武庫 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '太陽武庫位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_mirror_plinth', description: '回到鏡石臺' },
+      { direction: 'north', targetRoomId: 'sunspire_hymn_gallery', description: '聖歌廊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[武]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '太陽武庫的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '太陽武庫的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '太陽武庫殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_hymn_gallery: {
+    id: 'sunspire_hymn_gallery',
+    name: '聖歌廊',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_hymn_gallery.png',
+    imagePrompt: '聖歌廊 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '聖歌廊位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_solar_armory', description: '回到太陽武庫' },
+      { direction: 'east', targetRoomId: 'sunspire_celestial_guard_hall', description: '天界守衛廳在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_trial_of_embers', description: '餘燼試煉室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[歌]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '聖歌廊的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '聖歌廊的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '聖歌廊殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_burning_archive: {
+    id: 'sunspire_burning_archive',
+    name: '燃書庫',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_burning_archive.png',
+    imagePrompt: '燃書庫 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燃書庫位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_flameglass_walk', description: '回到焰玻步道' },
+      { direction: 'east', targetRoomId: 'sunspire_trial_of_embers', description: '餘燼試煉室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[書]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '燃書庫的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '燃書庫的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '燃書庫殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_celestial_guard_hall: {
+    id: 'sunspire_celestial_guard_hall',
+    name: '天界守衛廳',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_celestial_guard_hall.png',
+    imagePrompt: '天界守衛廳 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天界守衛廳位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_hymn_gallery', description: '回到聖歌廊' },
+      { direction: 'south', targetRoomId: 'sunspire_radiant_lift', description: '回到日耀升降井' },
+      { direction: 'east', targetRoomId: 'sunspire_lens_chamber', description: '聚光鏡室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[守]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '天界守衛廳的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '天界守衛廳的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '天界守衛廳殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_trial_of_embers: {
+    id: 'sunspire_trial_of_embers',
+    name: '餘燼試煉室',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_trial_of_embers.png',
+    imagePrompt: '餘燼試煉室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '餘燼試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_burning_archive', description: '回到燃書庫' },
+      { direction: 'south', targetRoomId: 'sunspire_hymn_gallery', description: '回到聖歌廊' },
+      { direction: 'east', targetRoomId: 'sunspire_trial_of_dawn', description: '黎明試煉室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[燼]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '餘燼試煉室的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '餘燼試煉室的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '餘燼試煉室殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_trial_of_dawn: {
+    id: 'sunspire_trial_of_dawn',
+    name: '黎明試煉室',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_trial_of_dawn.png',
+    imagePrompt: '黎明試煉室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黎明試煉室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_trial_of_embers', description: '回到餘燼試煉室' },
+      { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_sunfire_choir', description: '日火唱詩席在北側' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[曦]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '黎明試煉室的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '黎明試煉室的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '黎明試煉室殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_winged_balcony: {
+    id: 'sunspire_winged_balcony',
+    name: '翼影露臺',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_winged_balcony.png',
+    imagePrompt: '翼影露臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '翼影露臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sunspire_ashen_shadow_edge', description: '灰影邊緣在東側' },
+      { direction: 'north', targetRoomId: 'sunspire_sunfire_choir', description: '日火唱詩席在北側' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[翼]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '翼影露臺的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '翼影露臺的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '翼影露臺殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_lens_chamber: {
+    id: 'sunspire_lens_chamber',
+    name: '聚光鏡室',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_lens_chamber.png',
+    imagePrompt: '聚光鏡室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '聚光鏡室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_celestial_guard_hall', description: '回到天界守衛廳' },
+      { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 600 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '聚光鏡室的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '聚光鏡室的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '聚光鏡室殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_sunfire_choir: {
+    id: 'sunspire_sunfire_choir',
+    name: '日火唱詩席',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_sunfire_choir.png',
+    imagePrompt: '日火唱詩席 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日火唱詩席位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_trial_of_dawn', description: '回到黎明試煉室' },
+      { direction: 'west', targetRoomId: 'sunspire_winged_balcony', description: '翼影露臺在西側' },
+      { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[詩]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '日火唱詩席的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日火唱詩席的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日火唱詩席殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_ashen_shadow_edge: {
+    id: 'sunspire_ashen_shadow_edge',
+    name: '灰影邊緣',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_ashen_shadow_edge.png',
+    imagePrompt: '灰影邊緣 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灰影邊緣位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_winged_balcony', description: '回到翼影露臺' },
+      { direction: 'east', targetRoomId: 'sunspire_gold_flare_bridge', description: '金焰橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 600 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[影]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '灰影邊緣的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '灰影邊緣的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '灰影邊緣殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_gold_flare_bridge: {
+    id: 'sunspire_gold_flare_bridge',
+    name: '金焰橋',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_gold_flare_bridge.png',
+    imagePrompt: '金焰橋 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '金焰橋位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_lens_chamber', description: '回到聚光鏡室' },
+      { direction: 'south', targetRoomId: 'sunspire_trial_of_dawn', description: '回到黎明試煉室' },
+      { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '金焰橋的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '金焰橋的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '金焰橋殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_seraph_watch: {
+    id: 'sunspire_seraph_watch',
+    name: '熾天使哨臺',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_seraph_watch.png',
+    imagePrompt: '熾天使哨臺 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熾天使哨臺位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_gold_flare_bridge', description: '回到金焰橋' },
+      { direction: 'north', targetRoomId: 'sunspire_apex_antechamber', description: '塔頂前室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[熾]',
+    mapX: 6,
+    mapY: 2,
+    guardianHints: {
+      creature: '熾天使哨臺的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '熾天使哨臺的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '熾天使哨臺殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_apex_antechamber: {
+    id: 'sunspire_apex_antechamber',
+    name: '塔頂前室',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_apex_antechamber.png',
+    imagePrompt: '塔頂前室 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '塔頂前室位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sunspire_seraph_watch', description: '回到熾天使哨臺' },
+      { direction: 'east', targetRoomId: 'sunspire_war_god_sigil', description: '戰神印記在東側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[前]',
+    mapX: 6,
+    mapY: 3,
+    guardianHints: {
+      creature: '塔頂前室的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '塔頂前室的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '塔頂前室殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_war_god_sigil: {
+    id: 'sunspire_war_god_sigil',
+    name: '戰神印記',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_war_god_sigil.png',
+    imagePrompt: '戰神印記 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '戰神印記位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_apex_antechamber', description: '回到塔頂前室' },
+      { direction: 'east', targetRoomId: 'sunspire_crown_of_day', description: '日冠核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[戰]',
+    mapX: 7,
+    mapY: 3,
+    guardianHints: {
+      creature: '戰神印記的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '戰神印記的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '戰神印記殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
+  sunspire_crown_of_day: {
+    id: 'sunspire_crown_of_day',
+    name: '日冠核心',
+    zone: 'sunspire' as RoomDef['zone'],
+    image: 'sunspire_crown_of_day.png',
+    imagePrompt: '日冠核心 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日冠核心位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sunspire_war_god_sigil', description: '回到戰神印記' },
+    ],
+    monsters: [
+      { monsterId: 'seraph', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[冠]',
+    mapX: 8,
+    mapY: 3,
+    guardianHints: {
+      creature: '日冠核心的日輪光線若突然聚焦，附近天界守衛或熾天使通常正在換位。',
+      treasure: '日冠核心的鏡面、聖歌座或白石縫旁可能藏著日耀尖塔線索。',
+      spirit: '日冠核心殘留追求神聖力量者接受試煉與被日火吞沒的記憶。',
+    },
+  },
+
 };
