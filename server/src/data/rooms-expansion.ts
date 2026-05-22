@@ -27515,4 +27515,541 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+
+  // ─── 蛇河三角洲擴充 (Lv 18-30) ───────────────────────────
+
+  serpent_delta_entrance_ferry: {
+    id: 'serpent_delta_entrance_ferry',
+    name: '渡口入口',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_entrance_ferry.png',
+    imagePrompt: '渡口入口 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '渡口入口位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'east', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在東側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[渡]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '渡口入口的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '渡口入口的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '渡口入口殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_split_reed_bank: {
+    id: 'serpent_delta_split_reed_bank',
+    name: '分流水蘆岸',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_split_reed_bank.png',
+    imagePrompt: '分流水蘆岸 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '分流水蘆岸位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'south', targetRoomId: 'serpent_delta_stilt_hamlet', description: '吊腳村在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_entrance_ferry', description: '渡口入口在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_mudfish_pool', description: '泥魚潭在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[蘆]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '分流水蘆岸的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '分流水蘆岸的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '分流水蘆岸殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_mudfish_pool: {
+    id: 'serpent_delta_mudfish_pool',
+    name: '泥魚潭',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_mudfish_pool.png',
+    imagePrompt: '泥魚潭 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '泥魚潭位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'south', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在西側' },
+    ],
+    monsters: [
+      { monsterId: 'cave_dragon', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[魚]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '泥魚潭的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '泥魚潭的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '泥魚潭殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_stilt_hamlet: {
+    id: 'serpent_delta_stilt_hamlet',
+    name: '吊腳村',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_stilt_hamlet.png',
+    imagePrompt: '吊腳村 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '吊腳村位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在南側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[村]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '吊腳村的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '吊腳村的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '吊腳村殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_cold_bend: {
+    id: 'serpent_delta_cold_bend',
+    name: '冷水彎',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_cold_bend.png',
+    imagePrompt: '冷水彎 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冷水彎位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_mudfish_pool', description: '泥魚潭在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_stilt_hamlet', description: '吊腳村在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_scale_net_yard', description: '鱗網場在東側' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[彎]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '冷水彎的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '冷水彎的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '冷水彎殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_scale_net_yard: {
+    id: 'serpent_delta_scale_net_yard',
+    name: '鱗網場',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_scale_net_yard.png',
+    imagePrompt: '鱗網場 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鱗網場位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'south', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在西側' },
+    ],
+    monsters: [
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[網]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '鱗網場的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '鱗網場的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '鱗網場殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_heron_marker: {
+    id: 'serpent_delta_heron_marker',
+    name: '鷺標洲',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_heron_marker.png',
+    imagePrompt: '鷺標洲 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鷺標洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'east', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[鷺]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '鷺標洲的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '鷺標洲的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '鷺標洲殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_green_herb_islet: {
+    id: 'serpent_delta_green_herb_islet',
+    name: '青藥小洲',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_green_herb_islet.png',
+    imagePrompt: '青藥小洲 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '青藥小洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_stilt_hamlet', description: '吊腳村在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_mangrove_maze', description: '紅樹迷道在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_heron_marker', description: '鷺標洲在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[藥]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '青藥小洲的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '青藥小洲的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '青藥小洲殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_sunken_pirogue: {
+    id: 'serpent_delta_sunken_pirogue',
+    name: '沉獨木舟',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_sunken_pirogue.png',
+    imagePrompt: '沉獨木舟 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉獨木舟位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在東側' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[舟]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '沉獨木舟的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '沉獨木舟的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '沉獨木舟殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_serpent_shrine_steps: {
+    id: 'serpent_delta_serpent_shrine_steps',
+    name: '蛇祠階',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_serpent_shrine_steps.png',
+    imagePrompt: '蛇祠階 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蛇祠階位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_scale_net_yard', description: '鱗網場在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_flooded_granary', description: '淹穀倉在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '蛇祠階的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '蛇祠階的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '蛇祠階殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_flooded_granary: {
+    id: 'serpent_delta_flooded_granary',
+    name: '淹穀倉',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_flooded_granary.png',
+    imagePrompt: '淹穀倉 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '淹穀倉位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'south', targetRoomId: 'serpent_delta_moonlit_fishing_post', description: '月釣哨在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在西側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[倉]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '淹穀倉的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '淹穀倉的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '淹穀倉殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_mangrove_maze: {
+    id: 'serpent_delta_mangrove_maze',
+    name: '紅樹迷道',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_mangrove_maze.png',
+    imagePrompt: '紅樹迷道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '紅樹迷道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在北側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在東側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[樹]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '紅樹迷道的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '紅樹迷道的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '紅樹迷道殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_ice_mist_channel: {
+    id: 'serpent_delta_ice_mist_channel',
+    name: '冰霧水道',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_ice_mist_channel.png',
+    imagePrompt: '冰霧水道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰霧水道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_old_levy_causeway', description: '舊堤道在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_mangrove_maze', description: '紅樹迷道在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[霧]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '冰霧水道的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '冰霧水道的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '冰霧水道殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_egg_mound: {
+    id: 'serpent_delta_egg_mound',
+    name: '蛇卵丘',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_egg_mound.png',
+    imagePrompt: '蛇卵丘 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蛇卵丘位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_moonlit_fishing_post', description: '月釣哨在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[卵]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '蛇卵丘的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '蛇卵丘的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '蛇卵丘殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_moonlit_fishing_post: {
+    id: 'serpent_delta_moonlit_fishing_post',
+    name: '月釣哨',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_moonlit_fishing_post.png',
+    imagePrompt: '月釣哨 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月釣哨位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_flooded_granary', description: '淹穀倉在北側' },
+      { direction: 'south', targetRoomId: 'serpent_delta_blue_lotus_marsh', description: '藍蓮沼在南側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在西側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[釣]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '月釣哨的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '月釣哨的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '月釣哨殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_old_levy_causeway: {
+    id: 'serpent_delta_old_levy_causeway',
+    name: '舊堤道',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_old_levy_causeway.png',
+    imagePrompt: '舊堤道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊堤道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在北側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[堤]',
+    mapX: 2,
+    mapY: 4,
+    guardianHints: {
+      creature: '舊堤道的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '舊堤道的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '舊堤道殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_priest_mask_hut: {
+    id: 'serpent_delta_priest_mask_hut',
+    name: '祭司面具屋',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_priest_mask_hut.png',
+    imagePrompt: '祭司面具屋 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '祭司面具屋位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在北側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_old_levy_causeway', description: '舊堤道在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_blue_lotus_marsh', description: '藍蓮沼在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[面]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '祭司面具屋的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '祭司面具屋的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '祭司面具屋殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_blue_lotus_marsh: {
+    id: 'serpent_delta_blue_lotus_marsh',
+    name: '藍蓮沼',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_blue_lotus_marsh.png',
+    imagePrompt: '藍蓮沼 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍蓮沼位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'north', targetRoomId: 'serpent_delta_moonlit_fishing_post', description: '月釣哨在北側' },
+      { direction: 'west', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_manymouth_confluence', description: '百口合流在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[蓮]',
+    mapX: 4,
+    mapY: 4,
+    guardianHints: {
+      creature: '藍蓮沼的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '藍蓮沼的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '藍蓮沼殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_manymouth_confluence: {
+    id: 'serpent_delta_manymouth_confluence',
+    name: '百口合流',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_manymouth_confluence.png',
+    imagePrompt: '百口合流 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '百口合流位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'west', targetRoomId: 'serpent_delta_blue_lotus_marsh', description: '藍蓮沼在西側' },
+      { direction: 'east', targetRoomId: 'serpent_delta_serpent_god_backwater', description: '蛇神背水在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[合]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '百口合流的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '百口合流的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '百口合流殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
+  serpent_delta_serpent_god_backwater: {
+    id: 'serpent_delta_serpent_god_backwater',
+    name: '蛇神背水',
+    zone: 'serpent_delta' as RoomDef['zone'],
+    image: 'serpent_delta_serpent_god_backwater.png',
+    imagePrompt: '蛇神背水 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蛇神背水位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，玩家可以 inspect 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標。',
+    exits: [
+      { direction: 'west', targetRoomId: 'serpent_delta_manymouth_confluence', description: '百口合流在西側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[神]',
+    mapX: 6,
+    mapY: 4,
+    guardianHints: {
+      creature: '蛇神背水的水面若冒出連續小泡，附近湖蛇、祭司巡邏或沼地獵手可能正在靠近。',
+      treasure: '蛇神背水的蘆根、魚網鉛墜、藍蓮葉底或蛇紋石縫可能藏著三角洲材料。',
+      spirit: '蛇神背水殘留吊腳村遷徙、蛇神祭典與小船迷失支流的潮聲記憶。',
+    },
+  },
+
 };

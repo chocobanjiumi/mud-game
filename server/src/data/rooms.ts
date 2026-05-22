@@ -1334,7 +1334,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 5,
     recommendedPartySize: [1, 3],
     primaryElements: ['nature', 'ice'],
-    rooms: [],
+    rooms: [
+      'serpent_delta_entrance_ferry', 'serpent_delta_split_reed_bank', 'serpent_delta_mudfish_pool', 'serpent_delta_stilt_hamlet', 'serpent_delta_cold_bend', 'serpent_delta_scale_net_yard', 'serpent_delta_heron_marker', 'serpent_delta_green_herb_islet', 'serpent_delta_sunken_pirogue', 'serpent_delta_serpent_shrine_steps', 'serpent_delta_flooded_granary', 'serpent_delta_mangrove_maze', 'serpent_delta_ice_mist_channel', 'serpent_delta_egg_mound', 'serpent_delta_moonlit_fishing_post', 'serpent_delta_old_levy_causeway', 'serpent_delta_priest_mask_hut', 'serpent_delta_blue_lotus_marsh', 'serpent_delta_manymouth_confluence', 'serpent_delta_serpent_god_backwater'
+    ],
   },
   kingdom_frontier: {
     id: 'kingdom_frontier',
