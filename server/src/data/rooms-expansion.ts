@@ -14277,4 +14277,534 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '外界空洞保留著隕星撞開大地與外界裂縫時的記憶。',
     },
   },
+  time_ruins_epoch_gate: {
+    id: 'time_ruins_epoch_gate',
+    name: '紀元入口',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_epoch_gate.png',
+    imagePrompt: '紀元入口 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '紀元入口位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'east', targetRoomId: 'time_ruins_broken_clockway', description: '碎鐘路通往廢墟' },
+      { direction: 'north', targetRoomId: 'time_ruins_reverse_riverbank', description: '倒流河岸在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '紀元入口的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '紀元入口的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '紀元入口保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_broken_clockway: {
+    id: 'time_ruins_broken_clockway',
+    name: '碎鐘路',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_broken_clockway.png',
+    imagePrompt: '碎鐘路 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '碎鐘路位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_epoch_gate', description: '碎鐘路回到紀元入口' },
+      { direction: 'east', targetRoomId: 'time_ruins_hourglass_square', description: '沙漏廣場在前方' },
+      { direction: 'south', targetRoomId: 'time_ruins_future_ash', description: '未來灰燼坡向下延伸' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '碎鐘路的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '碎鐘路的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '碎鐘路保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_reverse_riverbank: {
+    id: 'time_ruins_reverse_riverbank',
+    name: '倒流河岸',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_reverse_riverbank.png',
+    imagePrompt: '倒流河岸 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '倒流河岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'south', targetRoomId: 'time_ruins_epoch_gate', description: '倒流河岸回到紀元入口' },
+      { direction: 'east', targetRoomId: 'time_ruins_memory_reef', description: '記憶礁岸在東側' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[河]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '倒流河岸的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '倒流河岸的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '倒流河岸保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_memory_reef: {
+    id: 'time_ruins_memory_reef',
+    name: '記憶礁岸',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_memory_reef.png',
+    imagePrompt: '記憶礁岸 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '記憶礁岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_reverse_riverbank', description: '記憶礁岸回到倒流河' },
+      { direction: 'east', targetRoomId: 'time_ruins_past_market', description: '舊日市集殘影在東側' },
+      { direction: 'south', targetRoomId: 'time_ruins_hourglass_square', description: '記憶坡落向沙漏廣場' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[憶]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '記憶礁岸的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '記憶礁岸的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '記憶礁岸保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_hourglass_square: {
+    id: 'time_ruins_hourglass_square',
+    name: '沙漏廣場',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_hourglass_square.png',
+    imagePrompt: '沙漏廣場 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沙漏廣場位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_broken_clockway', description: '沙漏廣場回到碎鐘路' },
+      { direction: 'north', targetRoomId: 'time_ruins_memory_reef', description: '記憶坡回到礁岸' },
+      { direction: 'east', targetRoomId: 'time_ruins_stalled_bell_tower', description: '停擺鐘塔在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[沙]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '沙漏廣場的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '沙漏廣場的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '沙漏廣場保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_future_ash: {
+    id: 'time_ruins_future_ash',
+    name: '未來灰燼',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_future_ash.png',
+    imagePrompt: '未來灰燼 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '未來灰燼位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'north', targetRoomId: 'time_ruins_broken_clockway', description: '未來灰燼回到碎鐘路' },
+      { direction: 'east', targetRoomId: 'time_ruins_ruined_observatory', description: '毀壞觀測臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[灰]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '未來灰燼的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '未來灰燼的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '未來灰燼保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_past_market: {
+    id: 'time_ruins_past_market',
+    name: '舊日市集',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_past_market.png',
+    imagePrompt: '舊日市集 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊日市集位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_memory_reef', description: '市集殘影回到記憶礁岸' },
+      { direction: 'east', targetRoomId: 'time_ruins_sundial_court', description: '日晷庭在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '舊日市集的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '舊日市集的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '舊日市集保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_stalled_bell_tower: {
+    id: 'time_ruins_stalled_bell_tower',
+    name: '停擺鐘塔',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_stalled_bell_tower.png',
+    imagePrompt: '停擺鐘塔 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '停擺鐘塔位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_hourglass_square', description: '停擺鐘塔回到沙漏廣場' },
+      { direction: 'east', targetRoomId: 'time_ruins_paradox_cloister', description: '悖論迴廊在東側' },
+      { direction: 'south', targetRoomId: 'time_ruins_ruined_observatory', description: '鐘塔階落向觀測臺' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[塔]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '停擺鐘塔的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '停擺鐘塔的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '停擺鐘塔保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_ruined_observatory: {
+    id: 'time_ruins_ruined_observatory',
+    name: '毀壞觀測臺',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_ruined_observatory.png',
+    imagePrompt: '毀壞觀測臺 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '毀壞觀測臺位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_future_ash', description: '觀測臺回到未來灰燼' },
+      { direction: 'north', targetRoomId: 'time_ruins_stalled_bell_tower', description: '鐘塔階回到停擺鐘塔' },
+      { direction: 'east', targetRoomId: 'time_ruins_lightning_record', description: '雷刻紀錄室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[觀]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '毀壞觀測臺的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '毀壞觀測臺的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '毀壞觀測臺保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_sundial_court: {
+    id: 'time_ruins_sundial_court',
+    name: '日晷庭',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_sundial_court.png',
+    imagePrompt: '日晷庭 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日晷庭位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_past_market', description: '日晷庭回到舊日市集' },
+      { direction: 'east', targetRoomId: 'time_ruins_split_statue', description: '分裂雕像在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[晷]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '日晷庭的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '日晷庭的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '日晷庭保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_paradox_cloister: {
+    id: 'time_ruins_paradox_cloister',
+    name: '悖論迴廊',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_paradox_cloister.png',
+    imagePrompt: '悖論迴廊 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '悖論迴廊位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_stalled_bell_tower', description: '悖論迴廊回到停擺鐘塔' },
+      { direction: 'north', targetRoomId: 'time_ruins_split_statue', description: '錯位階通往分裂雕像' },
+      { direction: 'east', targetRoomId: 'time_ruins_looping_bridge', description: '循環橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[悖]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '悖論迴廊的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '悖論迴廊的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '悖論迴廊保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_lightning_record: {
+    id: 'time_ruins_lightning_record',
+    name: '雷刻紀錄室',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_lightning_record.png',
+    imagePrompt: '雷刻紀錄室 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷刻紀錄室位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_ruined_observatory', description: '雷刻室回到觀測臺' },
+      { direction: 'east', targetRoomId: 'time_ruins_looping_bridge', description: '電弧路通往循環橋' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[雷]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '雷刻紀錄室的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '雷刻紀錄室的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '雷刻紀錄室保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_split_statue: {
+    id: 'time_ruins_split_statue',
+    name: '分裂雕像',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_split_statue.png',
+    imagePrompt: '分裂雕像 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '分裂雕像位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_sundial_court', description: '分裂雕像回到日晷庭' },
+      { direction: 'south', targetRoomId: 'time_ruins_paradox_cloister', description: '錯位階回到悖論迴廊' },
+      { direction: 'east', targetRoomId: 'time_ruins_agefall_steps', description: '歲落階在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '分裂雕像的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '分裂雕像的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '分裂雕像保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_looping_bridge: {
+    id: 'time_ruins_looping_bridge',
+    name: '循環橋',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_looping_bridge.png',
+    imagePrompt: '循環橋 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '循環橋位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_paradox_cloister', description: '循環橋回到悖論迴廊' },
+      { direction: 'south', targetRoomId: 'time_ruins_lightning_record', description: '電弧路回到雷刻室' },
+      { direction: 'east', targetRoomId: 'time_ruins_timeline_archive', description: '時間線檔案館在東側' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '循環橋的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '循環橋的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '循環橋保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_agefall_steps: {
+    id: 'time_ruins_agefall_steps',
+    name: '歲落階',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_agefall_steps.png',
+    imagePrompt: '歲落階 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '歲落階位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_split_statue', description: '歲落階回到分裂雕像' },
+      { direction: 'east', targetRoomId: 'time_ruins_clockheart_gate', description: '鐘心門在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'chaos_spawn', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[歲]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '歲落階的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '歲落階的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '歲落階保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_timeline_archive: {
+    id: 'time_ruins_timeline_archive',
+    name: '時間線檔案館',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_timeline_archive.png',
+    imagePrompt: '時間線檔案館 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '時間線檔案館位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_looping_bridge', description: '檔案館回到循環橋' },
+      { direction: 'north', targetRoomId: 'time_ruins_clockheart_gate', description: '索引階通往鐘心門' },
+      { direction: 'east', targetRoomId: 'time_ruins_causality_well', description: '因果井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[檔]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '時間線檔案館的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '時間線檔案館的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '時間線檔案館保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_clockheart_gate: {
+    id: 'time_ruins_clockheart_gate',
+    name: '鐘心門',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_clockheart_gate.png',
+    imagePrompt: '鐘心門 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐘心門位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_agefall_steps', description: '鐘心門回到歲落階' },
+      { direction: 'south', targetRoomId: 'time_ruins_timeline_archive', description: '索引階回到檔案館' },
+      { direction: 'east', targetRoomId: 'time_ruins_worldboss_minute_zero', description: '零分核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[心]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '鐘心門的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '鐘心門的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '鐘心門保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_causality_well: {
+    id: 'time_ruins_causality_well',
+    name: '因果井',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_causality_well.png',
+    imagePrompt: '因果井 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '因果井位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_timeline_archive', description: '因果井回到時間線檔案館' },
+      { direction: 'east', targetRoomId: 'time_ruins_worldboss_minute_zero', description: '因果裂縫通往零分核心' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[因]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '因果井的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '因果井的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '因果井保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_worldboss_minute_zero: {
+    id: 'time_ruins_worldboss_minute_zero',
+    name: '零分核心',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_worldboss_minute_zero.png',
+    imagePrompt: '零分核心 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '零分核心位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_clockheart_gate', description: '零分核心回到鐘心門' },
+      { direction: 'south', targetRoomId: 'time_ruins_causality_well', description: '因果裂縫回到因果井' },
+      { direction: 'east', targetRoomId: 'time_ruins_afterimage_void', description: '餘影虛空在核心後方' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[王]',
+    mapX: 8,
+    mapY: 0,
+    guardianHints: {
+      creature: '零分核心的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '零分核心的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '零分核心保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
+
+  time_ruins_afterimage_void: {
+    id: 'time_ruins_afterimage_void',
+    name: '餘影虛空',
+    zone: 'time_ruins' as RoomDef['zone'],
+    image: 'time_ruins_afterimage_void.png',
+    imagePrompt: '餘影虛空 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '餘影虛空位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+    exits: [
+      { direction: 'west', targetRoomId: 'time_ruins_worldboss_minute_zero', description: '餘影虛空回到零分核心' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 3, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[虛]',
+    mapX: 9,
+    mapY: 0,
+    guardianHints: {
+      creature: '餘影虛空的影子若先於本人移動，時間裂隙裡的敵人通常已經靠近。',
+      treasure: '餘影虛空的鐘面、日晷或檔案殘頁旁可能藏著時間廢墟線索。',
+      spirit: '餘影虛空保留著過去與未來同時崩塌時留下的記憶。',
+    },
+  },
 };
