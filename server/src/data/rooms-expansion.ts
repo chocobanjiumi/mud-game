@@ -10010,4 +10010,564 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '鑲燈橋記錄著地下城邦用光與河聲維持秩序的方式。',
     },
   },
+  cursed_graveyard_iron_gate: {
+    id: 'cursed_graveyard_iron_gate',
+    name: '鏽鐵墓門',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_iron_gate.png',
+    imagePrompt: '鏽鐵墓門 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏽鐵墓門籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'east', targetRoomId: 'cursed_graveyard_crow_path', description: '黑羽小徑通往墓園深處' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_watch_lantern', description: '殘燈路通往守夜燈亭' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '鏽鐵墓門的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '鏽鐵墓門的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '鏽鐵墓門保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_crow_path: {
+    id: 'cursed_graveyard_crow_path',
+    name: '黑羽墓徑',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_crow_path.png',
+    imagePrompt: '黑羽墓徑 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑羽墓徑籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_iron_gate', description: '墓徑回到鏽鐵墓門' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_sunken_graves', description: '塌陷墓排通往沉墓地' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_bell_tower', description: '鐘聲引向無人鐘樓' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[徑]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑羽墓徑的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '黑羽墓徑的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '黑羽墓徑保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_bell_tower: {
+    id: 'cursed_graveyard_bell_tower',
+    name: '無人鐘樓',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_bell_tower.png',
+    imagePrompt: '無人鐘樓 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '無人鐘樓籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'south', targetRoomId: 'cursed_graveyard_crow_path', description: '鐘影落回黑羽墓徑' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_mourner_steps', description: '石階通往送葬臺' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 140 },
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '無人鐘樓的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '無人鐘樓的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '無人鐘樓保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_watch_lantern: {
+    id: 'cursed_graveyard_watch_lantern',
+    name: '守夜燈亭',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_watch_lantern.png',
+    imagePrompt: '守夜燈亭 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '守夜燈亭籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'north', targetRoomId: 'cursed_graveyard_iron_gate', description: '殘燈路回到鏽鐵墓門' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_withered_yew', description: '枯根路通往枯紫杉' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[燈]',
+    mapX: 0,
+    mapY: -1,
+    guardianHints: {
+      creature: '守夜燈亭的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '守夜燈亭的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '守夜燈亭保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_sunken_graves: {
+    id: 'cursed_graveyard_sunken_graves',
+    name: '沉墓地',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_sunken_graves.png',
+    imagePrompt: '沉墓地 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉墓地籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_crow_path', description: '塌陷墓排回到黑羽墓徑' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_ossuary_wall', description: '骨牆缺口通往藏骨牆' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_withered_yew', description: '濕土路通往枯紫杉' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 80 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[沉]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '沉墓地的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '沉墓地的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '沉墓地保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_mourner_steps: {
+    id: 'cursed_graveyard_mourner_steps',
+    name: '送葬臺階',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_mourner_steps.png',
+    imagePrompt: '送葬臺階 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '送葬臺階籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_bell_tower', description: '石階回到無人鐘樓' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_ossuary_wall', description: '白骨路通往藏骨牆' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_moon_crypt', description: '月光階通往月蝕墓室' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '送葬臺階的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '送葬臺階的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '送葬臺階保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_withered_yew: {
+    id: 'cursed_graveyard_withered_yew',
+    name: '枯紫杉',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_withered_yew.png',
+    imagePrompt: '枯紫杉 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '枯紫杉籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_watch_lantern', description: '枯根路回到守夜燈亭' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_sunken_graves', description: '濕土路回到沉墓地' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_gravedigger_shack', description: '木鍬痕通往掘墓棚' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[杉]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '枯紫杉的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '枯紫杉的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '枯紫杉保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_ossuary_wall: {
+    id: 'cursed_graveyard_ossuary_wall',
+    name: '藏骨牆',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_ossuary_wall.png',
+    imagePrompt: '藏骨牆 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藏骨牆籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_sunken_graves', description: '骨牆缺口回到沉墓地' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_mourner_steps', description: '白骨路回到送葬臺階' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_saint_statue', description: '骨龕路通往破聖像' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '藏骨牆的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '藏骨牆的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '藏骨牆保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_gravedigger_shack: {
+    id: 'cursed_graveyard_gravedigger_shack',
+    name: '掘墓棚',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_gravedigger_shack.png',
+    imagePrompt: '掘墓棚 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '掘墓棚籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_withered_yew', description: '木鍬痕回到枯紫杉' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_coffin_lane', description: '棺木路通往棺材巷' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_black_mist_pool', description: '黑霧低地通往霧池' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '掘墓棚的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '掘墓棚的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '掘墓棚保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_moon_crypt: {
+    id: 'cursed_graveyard_moon_crypt',
+    name: '月蝕墓室',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_moon_crypt.png',
+    imagePrompt: '月蝕墓室 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月蝕墓室籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_mourner_steps', description: '月光階回到送葬臺階' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_saint_statue', description: '裂石梯通往破聖像' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_candle_maze', description: '冷燭路通往燭迷陣' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[月]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '月蝕墓室的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '月蝕墓室的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '月蝕墓室保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_saint_statue: {
+    id: 'cursed_graveyard_saint_statue',
+    name: '破聖像',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_saint_statue.png',
+    imagePrompt: '破聖像 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '破聖像籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_ossuary_wall', description: '骨龕路回到藏骨牆' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_moon_crypt', description: '裂石梯回到月蝕墓室' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_cursed_fountain', description: '乾涸水道通往詛咒噴泉' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '破聖像的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '破聖像的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '破聖像保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_coffin_lane: {
+    id: 'cursed_graveyard_coffin_lane',
+    name: '棺材巷',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_coffin_lane.png',
+    imagePrompt: '棺材巷 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '棺材巷籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_gravedigger_shack', description: '棺木路回到掘墓棚' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_black_mist_pool', description: '拖痕通往黑霧池' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_plague_pit', description: '腐土坡通往瘟疫坑' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[棺]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '棺材巷的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '棺材巷的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '棺材巷保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_black_mist_pool: {
+    id: 'cursed_graveyard_black_mist_pool',
+    name: '黑霧池',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_black_mist_pool.png',
+    imagePrompt: '黑霧池 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑霧池籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'north', targetRoomId: 'cursed_graveyard_gravedigger_shack', description: '黑霧低地回到掘墓棚' },
+      { direction: 'west', targetRoomId: 'cursed_graveyard_coffin_lane', description: '拖痕回到棺材巷' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_plague_pit', description: '霧線通往瘟疫坑' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 90 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[霧]',
+    mapX: 3,
+    mapY: -2,
+    guardianHints: {
+      creature: '黑霧池的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '黑霧池的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '黑霧池保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_candle_maze: {
+    id: 'cursed_graveyard_candle_maze',
+    name: '冷燭迷陣',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_candle_maze.png',
+    imagePrompt: '冷燭迷陣 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冷燭迷陣籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_moon_crypt', description: '冷燭路回到月蝕墓室' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_cursed_fountain', description: '燭淚路通往詛咒噴泉' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_chapel_ruin', description: '斷牆通往禮拜堂廢墟' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[燭]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '冷燭迷陣的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '冷燭迷陣的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '冷燭迷陣保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_cursed_fountain: {
+    id: 'cursed_graveyard_cursed_fountain',
+    name: '詛咒噴泉',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_cursed_fountain.png',
+    imagePrompt: '詛咒噴泉 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '詛咒噴泉籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_saint_statue', description: '乾涸水道回到破聖像' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_candle_maze', description: '燭淚路回到冷燭迷陣' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_chapel_ruin', description: '黑水路通往禮拜堂廢墟' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[泉]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '詛咒噴泉的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '詛咒噴泉的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '詛咒噴泉保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_plague_pit: {
+    id: 'cursed_graveyard_plague_pit',
+    name: '瘟疫坑',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_plague_pit.png',
+    imagePrompt: '瘟疫坑 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '瘟疫坑籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'north', targetRoomId: 'cursed_graveyard_coffin_lane', description: '腐土坡回到棺材巷' },
+      { direction: 'west', targetRoomId: 'cursed_graveyard_black_mist_pool', description: '霧線回到黑霧池' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_gravekeeper_vault', description: '封蠟路通往守墓人地窖' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_soldier', maxCount: 4, respawnSeconds: 80 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[疫]',
+    mapX: 4,
+    mapY: -2,
+    guardianHints: {
+      creature: '瘟疫坑的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '瘟疫坑的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '瘟疫坑保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_chapel_ruin: {
+    id: 'cursed_graveyard_chapel_ruin',
+    name: '禮拜堂廢墟',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_chapel_ruin.png',
+    imagePrompt: '禮拜堂廢墟 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '禮拜堂廢墟籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_cursed_fountain', description: '黑水路回到詛咒噴泉' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_gravekeeper_vault', description: '斷禱階通往守墓人地窖' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_litany_altar', description: '破拱門通往悼詞祭壇' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[堂]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '禮拜堂廢墟的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '禮拜堂廢墟的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '禮拜堂廢墟保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_gravekeeper_vault: {
+    id: 'cursed_graveyard_gravekeeper_vault',
+    name: '守墓人地窖',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_gravekeeper_vault.png',
+    imagePrompt: '守墓人地窖 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '守墓人地窖籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_plague_pit', description: '封蠟路回到瘟疫坑' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_chapel_ruin', description: '斷禱階回到禮拜堂廢墟' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_bone_bridge', description: '地下橋通往骨橋' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[窖]',
+    mapX: 5,
+    mapY: -2,
+    guardianHints: {
+      creature: '守墓人地窖的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '守墓人地窖的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '守墓人地窖保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_litany_altar: {
+    id: 'cursed_graveyard_litany_altar',
+    name: '悼詞祭壇',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_litany_altar.png',
+    imagePrompt: '悼詞祭壇 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '悼詞祭壇籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_chapel_ruin', description: '破拱門回到禮拜堂廢墟' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_bone_bridge', description: '祭壇階通往骨橋' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_lich_mausoleum', description: '黑經路通往巫妖陵寢' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '悼詞祭壇的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '悼詞祭壇的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '悼詞祭壇保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_bone_bridge: {
+    id: 'cursed_graveyard_bone_bridge',
+    name: '骨橋',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_bone_bridge.png',
+    imagePrompt: '骨橋 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨橋籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_gravekeeper_vault', description: '地下橋回到守墓人地窖' },
+      { direction: 'north', targetRoomId: 'cursed_graveyard_litany_altar', description: '祭壇階回到悼詞祭壇' },
+      { direction: 'east', targetRoomId: 'cursed_graveyard_lich_mausoleum', description: '骨橋盡頭通往巫妖陵寢' },
+    ],
+    monsters: [
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'skeleton_soldier', maxCount: 3, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 6,
+    mapY: -1,
+    guardianHints: {
+      creature: '骨橋的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '骨橋的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '骨橋保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
+
+  cursed_graveyard_lich_mausoleum: {
+    id: 'cursed_graveyard_lich_mausoleum',
+    name: '巫妖陵寢',
+    zone: 'cursed_graveyard' as RoomDef['zone'],
+    image: 'cursed_graveyard_lich_mausoleum.png',
+    imagePrompt: '巫妖陵寢 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '巫妖陵寢籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+    exits: [
+      { direction: 'west', targetRoomId: 'cursed_graveyard_litany_altar', description: '黑經路回到悼詞祭壇' },
+      { direction: 'south', targetRoomId: 'cursed_graveyard_bone_bridge', description: '骨橋回到外圍' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'skeleton_general', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[巫]',
+    mapX: 8,
+    mapY: 0,
+    guardianHints: {
+      creature: '巫妖陵寢的霧聲忽然停住時，附近不死者通常已經改變巡邏路線。',
+      treasure: '巫妖陵寢的碎碑、骨龕或燭臺旁可能藏著墓園線索與舊教會遺物。',
+      spirit: '巫妖陵寢保留著詛咒墓園從安葬之地變成亡者牢籠的記憶。',
+    },
+  },
 };
