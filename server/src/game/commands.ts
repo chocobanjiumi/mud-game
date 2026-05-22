@@ -94,9 +94,9 @@ function getAvailableGroundItems(roomId: string): GroundItem[] {
 }
 
 /** 標記地上物品已被撿走 */
-function markGroundItemPicked(roomId: string, itemId: string): void {
+function markGroundItemPicked(roomId: string, itemId: string, oneTime = false): void {
   const key = `${roomId}:${itemId}`;
-  pickedUpItems.set(key, Date.now() + GROUND_ITEM_RESPAWN_MS);
+  pickedUpItems.set(key, oneTime ? Number.POSITIVE_INFINITY : Date.now() + GROUND_ITEM_RESPAWN_MS);
 }
 
 // ─── 指令路由 ───
@@ -1633,7 +1633,7 @@ function cmdTake(session: WsSession, itemName: string): void {
   if (match) {
     const def = ITEM_DEFS[match.itemId];
     addInventoryItem(char.id, match.itemId, 1);
-    markGroundItemPicked(char.roomId, match.itemId);
+    markGroundItemPicked(char.roomId, match.itemId, match.oneTime);
     questMgr.updateProgress(char.id, 'collect_item', match.itemId);
     sendNarrative(session.sessionId, `你撿起了${def?.name ?? match.itemId}。`);
     return;

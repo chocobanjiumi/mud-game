@@ -4437,6 +4437,53 @@ export const ROOMS: Record<string, RoomDef> = {
 import { EXPANSION_ROOMS } from './rooms-expansion.js';
 Object.assign(ROOMS, EXPANSION_ROOMS);
 
+const CHEST_BY_ZONE_TYPE: Record<ZoneDef['type'], string> = {
+  town: 'bronze_chest',
+  wilds: 'bronze_chest',
+  resource: 'silver_chest',
+  pvp: 'silver_chest',
+  kingdom: 'silver_chest',
+  dungeon_entrance: 'gold_chest',
+  endgame: 'gold_chest',
+};
+
+function roomHasHiddenMarker(room: RoomDef): boolean {
+  return /room function hidden|hidden|secret|隱|秘/i.test(`${room.id} ${room.name} ${room.description} ${room.imagePrompt ?? ''}`);
+}
+
+function markRoomAsHidden(room: RoomDef): void {
+  if (roomHasHiddenMarker(room)) return;
+  if (room.imagePrompt) {
+    room.imagePrompt = room.imagePrompt.replace(/room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i, 'room function hidden');
+  }
+}
+
+function ensureZoneExplorationAnchors(): void {
+  for (const zone of Object.values(ZONES)) {
+    const zoneRooms = zone.rooms.map((roomId) => ROOMS[roomId]).filter((room): room is RoomDef => !!room);
+    if (zoneRooms.length === 0) continue;
+
+    const hiddenRoom = zoneRooms.find(roomHasHiddenMarker) ?? zoneRooms[Math.min(2, zoneRooms.length - 1)];
+    markRoomAsHidden(hiddenRoom);
+
+    const hasOneTimeChest = zoneRooms.some((room) =>
+      room.groundItems?.some((item) => item.oneTime && item.itemId.includes('chest')),
+    );
+    if (!hasOneTimeChest) {
+      hiddenRoom.groundItems = [
+        ...(hiddenRoom.groundItems ?? []),
+        {
+          itemId: CHEST_BY_ZONE_TYPE[zone.type],
+          description: `${zone.name}隱蔽角落裡的一次性寶箱，箱面刻著區域紋章，只會供第一位發現者取走。`,
+          oneTime: true,
+        },
+      ];
+    }
+  }
+}
+
+ensureZoneExplorationAnchors();
+
 /** 取得房間定義 */
 export function getRoom(roomId: string): RoomDef | undefined {
   return ROOMS[roomId];

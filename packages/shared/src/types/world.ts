@@ -98,6 +98,7 @@ export interface TravelNodeDef {
 export interface GroundItem {
   itemId: string;
   description: string;
+  oneTime?: boolean;
 }
 
 export interface RoomDef {

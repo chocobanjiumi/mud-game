@@ -69,6 +69,7 @@ const ROOM_DIRECTION_PATTERN = /北|南|東|西|上|下|入口|出口|道路|小
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 const MIN_ZONE_THEME_EQUIPMENT = 6;
 const MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT = 10;
+const MIN_ZONE_INSPECTABLE_ROOMS = 3;
 const TUTORIAL_MAIN_COMMANDS = ['look', 'go', 'attack', 'loot corpse', 'equip', 'quest', 'activate portal'] as const;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
@@ -142,6 +143,38 @@ function validateTownStructure(zone: ZoneDef): void {
   if (trafficRooms < 1) add('error', `zone:${zone.id}`, `town requires at least 1 traffic room, found ${trafficRooms}`);
 }
 
+function isInspectableRoom(room: RoomDef): boolean {
+  const text = roomSearchText(room);
+  return !!room.guardianHints
+    || (room.groundItems?.length ?? 0) > 0
+    || /inspect|search|look|可調查|調查|暗格|符文|線索|機關|寶箱|藏|痕跡/.test(text);
+}
+
+function isHiddenRoom(room: RoomDef): boolean {
+  return /room function hidden|hidden|secret|隱|秘/i.test(`${room.id} ${room.name} ${room.description} ${room.imagePrompt ?? ''}`);
+}
+
+function hasOneTimeChest(room: RoomDef): boolean {
+  return room.groundItems?.some((item) => item.oneTime && item.itemId.includes('chest')) ?? false;
+}
+
+function validateZoneExplorationContent(zone: ZoneDef): void {
+  const zoneRooms = zone.rooms.map((roomId) => ROOMS[roomId]).filter((room): room is RoomDef => !!room);
+  const inspectableRooms = zoneRooms.filter(isInspectableRoom).length;
+  const hiddenRooms = zoneRooms.filter(isHiddenRoom).length;
+  const oneTimeChests = zoneRooms.filter(hasOneTimeChest).length;
+
+  if (inspectableRooms < MIN_ZONE_INSPECTABLE_ROOMS) {
+    add('error', `zone:${zone.id}`, `requires at least ${MIN_ZONE_INSPECTABLE_ROOMS} inspectable rooms, found ${inspectableRooms}`);
+  }
+  if (hiddenRooms < 1) {
+    add('error', `zone:${zone.id}`, 'requires at least 1 hidden room');
+  }
+  if (oneTimeChests < 1) {
+    add('error', `zone:${zone.id}`, 'requires at least 1 one-time chest');
+  }
+}
+
 function roomImagePath(room: RoomDef): string {
   return path.join(ROOM_IMAGE_DIR, room.image ?? `${room.id}.png`);
 }
@@ -181,6 +214,7 @@ function validateZones(): void {
     if (zone.type === 'town') {
       validateTownStructure(zone);
     }
+    validateZoneExplorationContent(zone);
 
     if (zone.type !== 'town') {
       const combatRooms = zone.rooms.filter((roomId) => (ROOMS[roomId]?.monsters?.length ?? 0) > 0);
