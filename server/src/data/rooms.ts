@@ -1352,7 +1352,9 @@ export const ZONES: Record<string, ZoneDef> = {
     recommendedPartySize: [2, 4],
     primaryElements: ['none', 'fire', 'dark'],
     portal: { id: 'portal_kingdom_frontier', name: '王國邊境傳送陣', cost: 90, network: 'kingdom' },
-    rooms: [],
+    rooms: [
+      'kingdom_frontier_portal_muster', 'kingdom_frontier_border_road', 'kingdom_frontier_watchtower_west', 'kingdom_frontier_supply_camp', 'kingdom_frontier_battlefield_crossing', 'kingdom_frontier_watchtower_east', 'kingdom_frontier_lumber_claim', 'kingdom_frontier_iron_claim', 'kingdom_frontier_siege_yard', 'kingdom_frontier_banner_hill', 'kingdom_frontier_truce_tent', 'kingdom_frontier_burnt_farmstead', 'kingdom_frontier_darkwood_cut', 'kingdom_frontier_firebreak_ridge', 'kingdom_frontier_spyglass_ruin', 'kingdom_frontier_treasury_wagon', 'kingdom_frontier_prisoner_stockade', 'kingdom_frontier_redoubt_gate', 'kingdom_frontier_war_table_bunker', 'kingdom_frontier_command_front'
+    ],
   },
 };
 
