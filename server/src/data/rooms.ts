@@ -1044,7 +1044,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 4,
     recommendedPartySize: [1, 3],
     primaryElements: ['ice', 'none'],
-    rooms: [],
+    rooms: [
+      'saltwind_flats_tide_gate', 'saltwind_flats_white_ripple', 'saltwind_flats_brine_pool', 'saltwind_flats_saltgrass_strip', 'saltwind_flats_driftwood_post', 'saltwind_flats_crab_march', 'saltwind_flats_mist_marker', 'saltwind_flats_bone_pier', 'saltwind_flats_pirate_blind', 'saltwind_flats_glass_salt_field', 'saltwind_flats_shallow_cut', 'saltwind_flats_fisher_cache', 'saltwind_flats_sea_serpent_track', 'saltwind_flats_blue_mud_shelf', 'saltwind_flats_wrecked_skiff', 'saltwind_flats_salt_crystal_nest', 'saltwind_flats_lowtide_causeway', 'saltwind_flats_fog_bell', 'saltwind_flats_tidewatch_ruin', 'saltwind_flats_deep_brine_eye'
+    ],
   },
   thornmaze: {
     id: 'thornmaze',

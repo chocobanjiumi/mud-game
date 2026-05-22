@@ -18534,4 +18534,538 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 鹽風灘擴充 (Lv 14-24) ─────────────────────────────
+
+  saltwind_flats_tide_gate: {
+    id: 'saltwind_flats_tide_gate',
+    name: '退潮入口樁',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_tide_gate.png',
+    imagePrompt: '退潮入口樁 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '退潮入口樁位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'east', targetRoomId: 'saltwind_flats_white_ripple', description: '白波鹽面在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_mist_marker', description: '霧中路標在北側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 1, respawnSeconds: 80 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '退潮入口樁的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '退潮入口樁的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '退潮入口樁殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_white_ripple: {
+    id: 'saltwind_flats_white_ripple',
+    name: '白波鹽面',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_white_ripple.png',
+    imagePrompt: '白波鹽面 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '白波鹽面位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_brine_pool', description: '鹽水潮池在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在北側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'poison_toad', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[鹽]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '白波鹽面的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '白波鹽面的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '白波鹽面殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_brine_pool: {
+    id: 'saltwind_flats_brine_pool',
+    name: '鹽水潮池',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_brine_pool.png',
+    imagePrompt: '鹽水潮池 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹽水潮池位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_driftwood_post', description: '漂木哨柱在東側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_crab_march', description: '蟹行淺灘在南側' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '鹽水潮池的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '鹽水潮池的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '鹽水潮池殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_saltgrass_strip: {
+    id: 'saltwind_flats_saltgrass_strip',
+    name: '鹽草帶',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_saltgrass_strip.png',
+    imagePrompt: '鹽草帶 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹽草帶位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_driftwood_post', description: '漂木哨柱在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在北側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 100 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '鹽草帶的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '鹽草帶的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '鹽草帶殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_driftwood_post: {
+    id: 'saltwind_flats_driftwood_post',
+    name: '漂木哨柱',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_driftwood_post.png',
+    imagePrompt: '漂木哨柱 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '漂木哨柱位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_brine_pool', description: '回到鹽水潮池' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_bone_pier', description: '魚骨棧橋在北側' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_shallow_cut', description: '淺水裂道在東側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '漂木哨柱的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '漂木哨柱的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '漂木哨柱殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_crab_march: {
+    id: 'saltwind_flats_crab_march',
+    name: '蟹行淺灘',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_crab_march.png',
+    imagePrompt: '蟹行淺灘 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蟹行淺灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'north', targetRoomId: 'saltwind_flats_brine_pool', description: '回到鹽水潮池' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_blue_mud_shelf', description: '藍泥層在東側' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[蟹]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '蟹行淺灘的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '蟹行淺灘的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '蟹行淺灘殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_mist_marker: {
+    id: 'saltwind_flats_mist_marker',
+    name: '霧中路標',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_mist_marker.png',
+    imagePrompt: '霧中路標 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霧中路標位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_glass_salt_field', description: '玻璃鹽田在北側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'pirate', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[霧]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '霧中路標的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '霧中路標的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '霧中路標殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_bone_pier: {
+    id: 'saltwind_flats_bone_pier',
+    name: '魚骨棧橋',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_bone_pier.png',
+    imagePrompt: '魚骨棧橋 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '魚骨棧橋位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱' },
+      { direction: 'west', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在西側' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_fisher_cache', description: '漁夫藏點在東側' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'pirate', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '魚骨棧橋的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '魚骨棧橋的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '魚骨棧橋殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_pirate_blind: {
+    id: 'saltwind_flats_pirate_blind',
+    name: '海盜隱棚',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_pirate_blind.png',
+    imagePrompt: '海盜隱棚 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海盜隱棚位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '回到鹽草帶' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_bone_pier', description: '魚骨棧橋在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_glass_salt_field', description: '玻璃鹽田在北側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '海盜隱棚的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '海盜隱棚的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '海盜隱棚殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_glass_salt_field: {
+    id: 'saltwind_flats_glass_salt_field',
+    name: '玻璃鹽田',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_glass_salt_field.png',
+    imagePrompt: '玻璃鹽田 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玻璃鹽田位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_mist_marker', description: '回到霧中路標' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在東側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_salt_crystal_nest', description: '鹽晶巢在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[晶]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '玻璃鹽田的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '玻璃鹽田的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '玻璃鹽田殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_shallow_cut: {
+    id: 'saltwind_flats_shallow_cut',
+    name: '淺水裂道',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_shallow_cut.png',
+    imagePrompt: '淺水裂道 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '淺水裂道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '海蛇痕在東側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_wrecked_skiff', description: '破舟灘在南側' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[裂]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '淺水裂道的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '淺水裂道的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '淺水裂道殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_fisher_cache: {
+    id: 'saltwind_flats_fisher_cache',
+    name: '漁夫藏點',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_fisher_cache.png',
+    imagePrompt: '漁夫藏點 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '漁夫藏點位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_bone_pier', description: '回到魚骨棧橋' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_lowtide_causeway', description: '退潮石道在東側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[藏]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '漁夫藏點的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '漁夫藏點的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '漁夫藏點殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_sea_serpent_track: {
+    id: 'saltwind_flats_sea_serpent_track',
+    name: '海蛇痕',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_sea_serpent_track.png',
+    imagePrompt: '海蛇痕 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海蛇痕位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_shallow_cut', description: '回到淺水裂道' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_lowtide_causeway', description: '退潮石道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[蛇]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '海蛇痕的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '海蛇痕的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '海蛇痕殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_blue_mud_shelf: {
+    id: 'saltwind_flats_blue_mud_shelf',
+    name: '藍泥層',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_blue_mud_shelf.png',
+    imagePrompt: '藍泥層 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍泥層位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_crab_march', description: '回到蟹行淺灘' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_wrecked_skiff', description: '破舟灘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[泥]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '藍泥層的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '藍泥層的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '藍泥層殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_wrecked_skiff: {
+    id: 'saltwind_flats_wrecked_skiff',
+    name: '破舟灘',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_wrecked_skiff.png',
+    imagePrompt: '破舟灘 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '破舟灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_blue_mud_shelf', description: '回到藍泥層' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_shallow_cut', description: '回到淺水裂道' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_fog_bell', description: '霧鐘桿在東側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[舟]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '破舟灘的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '破舟灘的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '破舟灘殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_salt_crystal_nest: {
+    id: 'saltwind_flats_salt_crystal_nest',
+    name: '鹽晶巢',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_salt_crystal_nest.png',
+    imagePrompt: '鹽晶巢 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹽晶巢位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[巢]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '鹽晶巢的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '鹽晶巢的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '鹽晶巢殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_lowtide_causeway: {
+    id: 'saltwind_flats_lowtide_causeway',
+    name: '退潮石道',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_lowtide_causeway.png',
+    imagePrompt: '退潮石道 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '退潮石道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_fisher_cache', description: '回到漁夫藏點' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '回到海蛇痕' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側' },
+    ],
+    monsters: [
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[道]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '退潮石道的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '退潮石道的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '退潮石道殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_fog_bell: {
+    id: 'saltwind_flats_fog_bell',
+    name: '霧鐘桿',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_fog_bell.png',
+    imagePrompt: '霧鐘桿 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霧鐘桿位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_wrecked_skiff', description: '回到破舟灘' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_lowtide_causeway', description: '上行到退潮石道' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'pirate', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '霧鐘桿的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '霧鐘桿的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '霧鐘桿殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_tidewatch_ruin: {
+    id: 'saltwind_flats_tidewatch_ruin',
+    name: '潮望廢墟',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_tidewatch_ruin.png',
+    imagePrompt: '潮望廢墟 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮望廢墟位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'west', targetRoomId: 'saltwind_flats_lowtide_causeway', description: '回到退潮石道' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_fog_bell', description: '回到霧鐘桿' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_deep_brine_eye', description: '深鹽眼在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[墟]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '潮望廢墟的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '潮望廢墟的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '潮望廢墟殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
+  saltwind_flats_deep_brine_eye: {
+    id: 'saltwind_flats_deep_brine_eye',
+    name: '深鹽眼',
+    zone: 'saltwind_flats' as RoomDef['zone'],
+    image: 'saltwind_flats_deep_brine_eye.png',
+    imagePrompt: '深鹽眼 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深鹽眼位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+    exits: [
+      { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟' },
+    ],
+    monsters: [
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[眼]',
+    mapX: 6,
+    mapY: 2,
+    guardianHints: {
+      creature: '深鹽眼的鹽面若浮出濕亮拖痕，附近海蛇或海盜巡哨多半正在靠近。',
+      treasure: '深鹽眼的鹽晶裂縫、破舟木板或潮池邊可能藏著鹽風灘補給線索。',
+      spirit: '深鹽眼殘留漁夫、海盜與迷路旅人被潮霧吞沒前留下的記憶。',
+    },
+  },
+
 };
