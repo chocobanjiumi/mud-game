@@ -12161,4 +12161,532 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '空王座保留著失落王都在崩壞前最後一刻仍試圖維持秩序的記憶。',
     },
   },
+  sky_isles_lift_dock: {
+    id: 'sky_isles_lift_dock',
+    name: '升空碼頭',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_lift_dock.png',
+    imagePrompt: '升空碼頭 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '升空碼頭位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sky_isles_chain_bridge', description: '鐵鏈橋通往第一座浮島' },
+      { direction: 'north', targetRoomId: 'sky_isles_cloudwatch_post', description: '雲哨索道通往哨站' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '升空碼頭的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '升空碼頭的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '升空碼頭保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_chain_bridge: {
+    id: 'sky_isles_chain_bridge',
+    name: '鐵鏈雲橋',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_chain_bridge.png',
+    imagePrompt: '鐵鏈雲橋 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐵鏈雲橋位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_lift_dock', description: '鐵鏈橋回到升空碼頭' },
+      { direction: 'east', targetRoomId: 'sky_isles_rune_anchor', description: '符文錨臺固定著下一座島' },
+      { direction: 'south', targetRoomId: 'sky_isles_fallen_span', description: '斷橋殘段向下垂落' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '鐵鏈雲橋的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '鐵鏈雲橋的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '鐵鏈雲橋保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_cloudwatch_post: {
+    id: 'sky_isles_cloudwatch_post',
+    name: '雲哨站',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_cloudwatch_post.png',
+    imagePrompt: '雲哨站 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雲哨站位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sky_isles_lift_dock', description: '索道回到升空碼頭' },
+      { direction: 'east', targetRoomId: 'sky_isles_gale_meadow', description: '風草坡通往雲上草甸' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '雲哨站的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雲哨站的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '雲哨站保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_gale_meadow: {
+    id: 'sky_isles_gale_meadow',
+    name: '雲上草甸',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_gale_meadow.png',
+    imagePrompt: '雲上草甸 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雲上草甸位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_cloudwatch_post', description: '風草坡回到雲哨站' },
+      { direction: 'east', targetRoomId: 'sky_isles_sunlit_shrine', description: '白光路通往日照小祠' },
+      { direction: 'south', targetRoomId: 'sky_isles_rune_anchor', description: '符文路落向錨臺' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '雲上草甸的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雲上草甸的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '雲上草甸保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_rune_anchor: {
+    id: 'sky_isles_rune_anchor',
+    name: '符文錨臺',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_rune_anchor.png',
+    imagePrompt: '符文錨臺 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '符文錨臺位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_chain_bridge', description: '符文錨臺回到鐵鏈雲橋' },
+      { direction: 'north', targetRoomId: 'sky_isles_gale_meadow', description: '符文路升回雲上草甸' },
+      { direction: 'east', targetRoomId: 'sky_isles_prism_causeway', description: '折光堤道通往主島' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[錨]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '符文錨臺的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '符文錨臺的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '符文錨臺保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_fallen_span: {
+    id: 'sky_isles_fallen_span',
+    name: '墜落橋段',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_fallen_span.png',
+    imagePrompt: '墜落橋段 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '墜落橋段位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sky_isles_chain_bridge', description: '斷橋殘段回到鐵鏈雲橋' },
+      { direction: 'east', targetRoomId: 'sky_isles_thunder_nest', description: '羽痕通往雷鷹巢' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[墜]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '墜落橋段的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '墜落橋段的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '墜落橋段保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_sunlit_shrine: {
+    id: 'sky_isles_sunlit_shrine',
+    name: '日照小祠',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_sunlit_shrine.png',
+    imagePrompt: '日照小祠 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日照小祠位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_gale_meadow', description: '白光路回到雲上草甸' },
+      { direction: 'east', targetRoomId: 'sky_isles_oracle_steps', description: '祈禱階通往神諭階' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '日照小祠的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '日照小祠的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '日照小祠保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_prism_causeway: {
+    id: 'sky_isles_prism_causeway',
+    name: '折光堤道',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_prism_causeway.png',
+    imagePrompt: '折光堤道 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '折光堤道位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_rune_anchor', description: '折光堤道回到符文錨臺' },
+      { direction: 'east', targetRoomId: 'sky_isles_sky_market_ruin', description: '浮市殘街在前方' },
+      { direction: 'north', targetRoomId: 'sky_isles_oracle_steps', description: '亮階通往神諭階' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[光]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '折光堤道的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '折光堤道的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '折光堤道保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_thunder_nest: {
+    id: 'sky_isles_thunder_nest',
+    name: '雷鷹巢島',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_thunder_nest.png',
+    imagePrompt: '雷鷹巢島 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷鷹巢島位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_fallen_span', description: '羽痕回到墜落橋段' },
+      { direction: 'east', targetRoomId: 'sky_isles_stormwell', description: '雷痕通往風暴井' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 4, respawnSeconds: 120 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[鷹]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '雷鷹巢島的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雷鷹巢島的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '雷鷹巢島保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_oracle_steps: {
+    id: 'sky_isles_oracle_steps',
+    name: '神諭階',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_oracle_steps.png',
+    imagePrompt: '神諭階 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神諭階位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_sunlit_shrine', description: '祈禱階回到日照小祠' },
+      { direction: 'south', targetRoomId: 'sky_isles_prism_causeway', description: '亮階回到折光堤道' },
+      { direction: 'east', targetRoomId: 'sky_isles_cloud_temple_gate', description: '白石階通往雲神殿門' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[諭]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '神諭階的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '神諭階的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '神諭階保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_sky_market_ruin: {
+    id: 'sky_isles_sky_market_ruin',
+    name: '浮市殘街',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_sky_market_ruin.png',
+    imagePrompt: '浮市殘街 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '浮市殘街位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_prism_causeway', description: '浮市街回到折光堤道' },
+      { direction: 'east', targetRoomId: 'sky_isles_mirror_pool', description: '破攤路通往天鏡池' },
+      { direction: 'south', targetRoomId: 'sky_isles_stormwell', description: '排雲梯通往風暴井' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '浮市殘街的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '浮市殘街的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '浮市殘街保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_stormwell: {
+    id: 'sky_isles_stormwell',
+    name: '風暴井',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_stormwell.png',
+    imagePrompt: '風暴井 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴井位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_thunder_nest', description: '雷痕回到雷鷹巢島' },
+      { direction: 'north', targetRoomId: 'sky_isles_sky_market_ruin', description: '排雲梯回到浮市殘街' },
+      { direction: 'east', targetRoomId: 'sky_isles_broken_obelisk', description: '電弧路通往斷方尖碑' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '風暴井的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '風暴井的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '風暴井保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_cloud_temple_gate: {
+    id: 'sky_isles_cloud_temple_gate',
+    name: '雲神殿門',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_cloud_temple_gate.png',
+    imagePrompt: '雲神殿門 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雲神殿門位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_oracle_steps', description: '白石階回到神諭階' },
+      { direction: 'east', targetRoomId: 'sky_isles_halo_courtyard', description: '光環庭院在門後' },
+      { direction: 'south', targetRoomId: 'sky_isles_mirror_pool', description: '水光階落向天鏡池' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[殿]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '雲神殿門的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '雲神殿門的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '雲神殿門保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_mirror_pool: {
+    id: 'sky_isles_mirror_pool',
+    name: '天鏡池',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_mirror_pool.png',
+    imagePrompt: '天鏡池 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天鏡池位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_sky_market_ruin', description: '破攤路回到浮市殘街' },
+      { direction: 'north', targetRoomId: 'sky_isles_cloud_temple_gate', description: '水光階回到雲神殿門' },
+      { direction: 'east', targetRoomId: 'sky_isles_halo_courtyard', description: '鏡面橋通往光環庭院' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '天鏡池的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '天鏡池的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '天鏡池保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_broken_obelisk: {
+    id: 'sky_isles_broken_obelisk',
+    name: '斷方尖碑',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_broken_obelisk.png',
+    imagePrompt: '斷方尖碑 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斷方尖碑位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_stormwell', description: '電弧路回到風暴井' },
+      { direction: 'east', targetRoomId: 'sky_isles_starfall_ledge', description: '碑影路通往星墜崖' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[碑]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '斷方尖碑的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '斷方尖碑的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '斷方尖碑保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_halo_courtyard: {
+    id: 'sky_isles_halo_courtyard',
+    name: '光環庭院',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_halo_courtyard.png',
+    imagePrompt: '光環庭院 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '光環庭院位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_mirror_pool', description: '鏡面橋回到天鏡池' },
+      { direction: 'north', targetRoomId: 'sky_isles_cloud_temple_gate', description: '光環庭院回到雲神殿門' },
+      { direction: 'east', targetRoomId: 'sky_isles_ascendant_bridge', description: '升天橋通往最高島' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[環]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '光環庭院的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '光環庭院的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '光環庭院保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_starfall_ledge: {
+    id: 'sky_isles_starfall_ledge',
+    name: '星墜崖',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_starfall_ledge.png',
+    imagePrompt: '星墜崖 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '星墜崖位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_broken_obelisk', description: '碑影路回到斷方尖碑' },
+      { direction: 'east', targetRoomId: 'sky_isles_ascendant_bridge', description: '碎星路通往升天橋' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[星]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '星墜崖的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '星墜崖的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '星墜崖保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_ascendant_bridge: {
+    id: 'sky_isles_ascendant_bridge',
+    name: '升天橋',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_ascendant_bridge.png',
+    imagePrompt: '升天橋 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '升天橋位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_halo_courtyard', description: '升天橋回到光環庭院' },
+      { direction: 'south', targetRoomId: 'sky_isles_starfall_ledge', description: '碎星路回到星墜崖' },
+      { direction: 'east', targetRoomId: 'sky_isles_worldboss_island', description: '風牆裂口通往世界王島' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 3, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[升]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '升天橋的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '升天橋的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '升天橋保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_worldboss_island: {
+    id: 'sky_isles_worldboss_island',
+    name: '世界王浮島',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_worldboss_island.png',
+    imagePrompt: '世界王浮島 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '世界王浮島位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sky_isles_ascendant_bridge', description: '風牆裂口回到升天橋' },
+      { direction: 'south', targetRoomId: 'sky_isles_skycore_sanctum', description: '核心階梯通往天空核心' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 3, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[王]',
+    mapX: 8,
+    mapY: 0,
+    guardianHints: {
+      creature: '世界王浮島的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '世界王浮島的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '世界王浮島保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
+
+  sky_isles_skycore_sanctum: {
+    id: 'sky_isles_skycore_sanctum',
+    name: '天空核心聖所',
+    zone: 'sky_isles' as RoomDef['zone'],
+    image: 'sky_isles_skycore_sanctum.png',
+    imagePrompt: '天空核心聖所 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '天空核心聖所位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sky_isles_worldboss_island', description: '核心階梯回到世界王浮島' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 8,
+    mapY: -1,
+    guardianHints: {
+      creature: '天空核心聖所的雲影若突然破開，空中獵手或風暴龍影通常正在接近。',
+      treasure: '天空核心聖所的符文錨、碎橋或神殿殘片旁可能藏著浮島事件線索。',
+      spirit: '天空核心聖所保留著古代符文讓群島懸浮於雲海之上的記憶。',
+    },
+  },
 };
