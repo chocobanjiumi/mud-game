@@ -17997,4 +17997,541 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 銀松山脈擴充 (Lv 24-36) ───────────────────────────
+
+  silverpine_range_entry_claim: {
+    id: 'silverpine_range_entry_claim',
+    name: '山脈入口界樁',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_entry_claim.png',
+    imagePrompt: '山脈入口界樁 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '山脈入口界樁位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'east', targetRoomId: 'silverpine_range_vein_path', description: '銀脈山徑在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_snowline_gate', description: '雪線門在北側' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '山脈入口界樁的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '山脈入口界樁的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '山脈入口界樁殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_vein_path: {
+    id: 'silverpine_range_vein_path',
+    name: '銀脈山徑',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_vein_path.png',
+    imagePrompt: '銀脈山徑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀脈山徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁' },
+      { direction: 'east', targetRoomId: 'silverpine_range_herb_shelf', description: '寒草岩層在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'snow_wolf', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[脈]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '銀脈山徑的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '銀脈山徑的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '銀脈山徑殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_herb_shelf: {
+    id: 'silverpine_range_herb_shelf',
+    name: '寒草岩層',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_herb_shelf.png',
+    imagePrompt: '寒草岩層 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '寒草岩層位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_vein_path', description: '回到銀脈山徑' },
+      { direction: 'east', targetRoomId: 'silverpine_range_water_pocket', description: '融雪水窪在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_mica_switchback', description: '雲母折道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '寒草岩層的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '寒草岩層的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '寒草岩層殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_water_pocket: {
+    id: 'silverpine_range_water_pocket',
+    name: '融雪水窪',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_water_pocket.png',
+    imagePrompt: '融雪水窪 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '融雪水窪位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層' },
+      { direction: 'east', targetRoomId: 'silverpine_range_beast_scrape', description: '獸痕雪坡在東側' },
+      { direction: 'south', targetRoomId: 'silverpine_range_frost_herb_ledge', description: '霜草岩棚在南側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[水]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '融雪水窪的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '融雪水窪的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '融雪水窪殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_beast_scrape: {
+    id: 'silverpine_range_beast_scrape',
+    name: '獸痕雪坡',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_beast_scrape.png',
+    imagePrompt: '獸痕雪坡 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獸痕雪坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
+      { direction: 'east', targetRoomId: 'silverpine_range_relic_pit', description: '古礦遺坑在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在北側' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[獸]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '獸痕雪坡的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '獸痕雪坡的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '獸痕雪坡殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_relic_pit: {
+    id: 'silverpine_range_relic_pit',
+    name: '古礦遺坑',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_relic_pit.png',
+    imagePrompt: '古礦遺坑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古礦遺坑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡' },
+      { direction: 'north', targetRoomId: 'silverpine_range_crystal_scree', description: '晶石碎坡在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[遺]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '古礦遺坑的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '古礦遺坑的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '古礦遺坑殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_snowline_gate: {
+    id: 'silverpine_range_snowline_gate',
+    name: '雪線木門',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_snowline_gate.png',
+    imagePrompt: '雪線木門 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雪線木門位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁' },
+      { direction: 'east', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在東側' },
+    ],
+    monsters: [
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '雪線木門的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '雪線木門的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '雪線木門殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_moonneedle_pines: {
+    id: 'silverpine_range_moonneedle_pines',
+    name: '月針松林',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_moonneedle_pines.png',
+    imagePrompt: '月針松林 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月針松林位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_snowline_gate', description: '回到雪線木門' },
+      { direction: 'south', targetRoomId: 'silverpine_range_vein_path', description: '落回銀脈山徑' },
+      { direction: 'east', targetRoomId: 'silverpine_range_mica_switchback', description: '雲母折道在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_windcut_bridge', description: '風切木橋在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[松]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '月針松林的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '月針松林的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '月針松林殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_mica_switchback: {
+    id: 'silverpine_range_mica_switchback',
+    name: '雲母折道',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_mica_switchback.png',
+    imagePrompt: '雲母折道 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雲母折道位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
+      { direction: 'south', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層' },
+      { direction: 'east', targetRoomId: 'silverpine_range_old_miner_camp', description: '舊礦工營在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[折]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '雲母折道的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '雲母折道的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '雲母折道殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_frost_herb_ledge: {
+    id: 'silverpine_range_frost_herb_ledge',
+    name: '霜草岩棚',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_frost_herb_ledge.png',
+    imagePrompt: '霜草岩棚 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霜草岩棚位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'north', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
+      { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側' },
+      { direction: 'west', targetRoomId: 'silverpine_range_iceglass_cavern', description: '冰玻洞在西側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '霜草岩棚的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '霜草岩棚的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '霜草岩棚殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_goat_track: {
+    id: 'silverpine_range_goat_track',
+    name: '山羊窄徑',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_goat_track.png',
+    imagePrompt: '山羊窄徑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '山羊窄徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡' },
+      { direction: 'east', targetRoomId: 'silverpine_range_eagle_spire', description: '鷹巢尖峰在東側' },
+      { direction: 'west', targetRoomId: 'silverpine_range_old_miner_camp', description: '舊礦工營在西側' },
+    ],
+    monsters: [
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[徑]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '山羊窄徑的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '山羊窄徑的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '山羊窄徑殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_crystal_scree: {
+    id: 'silverpine_range_crystal_scree',
+    name: '晶石碎坡',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_crystal_scree.png',
+    imagePrompt: '晶石碎坡 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '晶石碎坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_relic_pit', description: '回到古礦遺坑' },
+      { direction: 'west', targetRoomId: 'silverpine_range_goat_track', description: '山徑回到山羊窄徑' },
+      { direction: 'north', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[晶]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '晶石碎坡的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '晶石碎坡的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '晶石碎坡殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_windcut_bridge: {
+    id: 'silverpine_range_windcut_bridge',
+    name: '風切木橋',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_windcut_bridge.png',
+    imagePrompt: '風切木橋 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風切木橋位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
+      { direction: 'east', targetRoomId: 'silverpine_range_old_miner_camp', description: '舊礦工營在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_silver_sap_grove', description: '銀脂松圃在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'frost_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '風切木橋的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '風切木橋的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '風切木橋殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_old_miner_camp: {
+    id: 'silverpine_range_old_miner_camp',
+    name: '舊礦工營',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_old_miner_camp.png',
+    imagePrompt: '舊礦工營 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊礦工營位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_mica_switchback', description: '回到雲母折道' },
+      { direction: 'east', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_iceglass_cavern', description: '冰玻洞在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '舊礦工營的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '舊礦工營的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '舊礦工營殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_iceglass_cavern: {
+    id: 'silverpine_range_iceglass_cavern',
+    name: '冰玻洞',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_iceglass_cavern.png',
+    imagePrompt: '冰玻洞 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰玻洞位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_old_miner_camp', description: '回到舊礦工營' },
+      { direction: 'west', targetRoomId: 'silverpine_range_windcut_bridge', description: '風切木橋在西側' },
+      { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[洞]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '冰玻洞的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '冰玻洞的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '冰玻洞殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_eagle_spire: {
+    id: 'silverpine_range_eagle_spire',
+    name: '鷹巢尖峰',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_eagle_spire.png',
+    imagePrompt: '鷹巢尖峰 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鷹巢尖峰位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_goat_track', description: '回到山羊窄徑' },
+      { direction: 'north', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[鷹]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '鷹巢尖峰的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '鷹巢尖峰的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '鷹巢尖峰殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_silver_sap_grove: {
+    id: 'silverpine_range_silver_sap_grove',
+    name: '銀脂松圃',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_silver_sap_grove.png',
+    imagePrompt: '銀脂松圃 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀脂松圃位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_windcut_bridge', description: '回到風切木橋' },
+      { direction: 'east', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[脂]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '銀脂松圃的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '銀脂松圃的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '銀脂松圃殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_avalanche_bowl: {
+    id: 'silverpine_range_avalanche_bowl',
+    name: '雪崩凹地',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_avalanche_bowl.png',
+    imagePrompt: '雪崩凹地 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雪崩凹地位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'west', targetRoomId: 'silverpine_range_iceglass_cavern', description: '回到冰玻洞' },
+      { direction: 'south', targetRoomId: 'silverpine_range_frost_herb_ledge', description: '回到霜草岩棚' },
+      { direction: 'east', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[崩]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '雪崩凹地的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '雪崩凹地的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '雪崩凹地殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_starwatch_ridge: {
+    id: 'silverpine_range_starwatch_ridge',
+    name: '觀星脊',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_starwatch_ridge.png',
+    imagePrompt: '觀星脊 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '觀星脊位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_eagle_spire', description: '回到鷹巢尖峰' },
+      { direction: 'west', targetRoomId: 'silverpine_range_silver_sap_grove', description: '回到銀脂松圃' },
+      { direction: 'north', targetRoomId: 'silverpine_range_high_mine_core', description: '高山礦核在北側' },
+    ],
+    monsters: [
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[星]',
+    mapX: 5,
+    mapY: 3,
+    guardianHints: {
+      creature: '觀星脊的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '觀星脊的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '觀星脊殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
+  silverpine_range_high_mine_core: {
+    id: 'silverpine_range_high_mine_core',
+    name: '高山礦核',
+    zone: 'silverpine_range' as RoomDef['zone'],
+    image: 'silverpine_range_high_mine_core.png',
+    imagePrompt: '高山礦核 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高山礦核位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+    exits: [
+      { direction: 'south', targetRoomId: 'silverpine_range_starwatch_ridge', description: '回到觀星脊' },
+    ],
+    monsters: [
+      { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '高山礦核的雪面若出現反光裂痕，附近巡邏獸群或冰霜元素可能正在靠近。',
+      treasure: '高山礦核的礦脈、松脂或冰縫旁可能藏著銀松山脈高階採集材料。',
+      spirit: '高山礦核殘留礦工、獵人與巡山者在寒夜裡留下的路標記憶。',
+    },
+  },
+
 };

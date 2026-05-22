@@ -1027,7 +1027,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['ice', 'nature'],
-    rooms: resourceNodeRoomIds('silverpine_range'),
+    rooms: [
+      'silverpine_range_entry_claim', 'silverpine_range_vein_path', 'silverpine_range_herb_shelf', 'silverpine_range_water_pocket', 'silverpine_range_beast_scrape', 'silverpine_range_relic_pit', 'silverpine_range_snowline_gate', 'silverpine_range_moonneedle_pines', 'silverpine_range_mica_switchback', 'silverpine_range_frost_herb_ledge', 'silverpine_range_goat_track', 'silverpine_range_crystal_scree', 'silverpine_range_windcut_bridge', 'silverpine_range_old_miner_camp', 'silverpine_range_iceglass_cavern', 'silverpine_range_eagle_spire', 'silverpine_range_silver_sap_grove', 'silverpine_range_avalanche_bowl', 'silverpine_range_starwatch_ridge', 'silverpine_range_high_mine_core'
+    ],
   },
   saltwind_flats: {
     id: 'saltwind_flats',
