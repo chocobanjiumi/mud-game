@@ -62,6 +62,7 @@ import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffi
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
 import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
 import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventorySlotLoad } from './inventory-capacity.js';
+import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -2156,6 +2157,12 @@ function cmdTravel(session: WsSession, target: string): void {
     return;
   }
 
+  const pvpDamageCheck = canUsePvpDamageRestrictedTravel(char);
+  if (!pvpDamageCheck.ok) {
+    sendError(session.sessionId, pvpDamageCheck.message);
+    return;
+  }
+
   const costResult = payTravelCost(char, node);
   if (!costResult.ok) {
     sendError(session.sessionId, costResult.message);
@@ -2195,6 +2202,12 @@ function cmdRecall(session: WsSession): void {
   const kingdomCargoCheck = canUseKingdomCargoRestrictedTravel(char);
   if (!kingdomCargoCheck.ok) {
     sendError(session.sessionId, kingdomCargoCheck.message);
+    return;
+  }
+
+  const pvpDamageCheck = canUsePvpDamageRestrictedTravel(char);
+  if (!pvpDamageCheck.ok) {
+    sendError(session.sessionId, pvpDamageCheck.message);
     return;
   }
 
@@ -5565,6 +5578,16 @@ function canUseKingdomCargoRestrictedTravel(char: Character, node?: TravelNodeDe
   return {
     ok: false,
     message: `你正攜帶王國資源（${names}），無法使用一般傳送。請走王國路線、交付資源或使用危險撤離點。`,
+  };
+}
+
+function canUsePvpDamageRestrictedTravel(char: Character): { ok: true } | { ok: false; message: string } {
+  const remaining = getPvpTravelLockRemainingSeconds(char.id);
+  if (remaining <= 0) return { ok: true };
+
+  return {
+    ok: false,
+    message: `剛受到 PvP 傷害，${remaining} 秒內無法傳送逃跑。請先脫離戰線或等待傷害鎖定結束。`,
   };
 }
 

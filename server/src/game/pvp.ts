@@ -9,6 +9,7 @@ import { recordPvp, updateLeaderboard } from '../db/database.js';
 import { getDb } from '../db/schema.js';
 import { getInventory, removeInventoryItem, addInventoryItem } from '../db/queries.js';
 import { expRequiredForLevel } from './player.js';
+import { recordRecentPvpDamageForCombat } from './pvp-travel-lock.js';
 import { questMgr, classQuest2Mgr } from './state.js';
 
 // ============================================================
@@ -300,6 +301,8 @@ export class PvPManager {
     player2Char: Character,
     type: 'duel' | 'arena',
   ): void {
+    recordRecentPvpDamageForCombat([player1Id, player2Id]);
+
     // 將 player2 模擬為「怪物」以使用戰鬥引擎
     const fakeMonsterDef: MonsterDef = {
       id: `pvp_${player2Id}`,
@@ -367,6 +370,8 @@ export class PvPManager {
     loserChar: Character,
     type: 'duel' | 'arena',
   ): void {
+    recordRecentPvpDamageForCombat([winnerId, loserId]);
+
     // 計算 ELO 變動
     const winnerElo = this.getElo(winnerId);
     const loserElo = this.getElo(loserId);
