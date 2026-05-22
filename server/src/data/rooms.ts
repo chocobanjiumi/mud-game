@@ -1130,7 +1130,9 @@ export const ZONES: Record<string, ZoneDef> = {
     recommendedPartySize: [1, 1],
     primaryElements: ['none'],
     portal: { id: 'portal_kingsroad_market', name: '王道市集傳送陣', cost: 20, network: 'public' },
-    rooms: [],
+    rooms: [
+      'kingsroad_market_portal_plaza', 'kingsroad_market_crossroad_stalls', 'kingsroad_market_grain_arcade', 'kingsroad_market_spice_awning', 'kingsroad_market_blacksmith_row', 'kingsroad_market_cloth_lane', 'kingsroad_market_adventurer_board', 'kingsroad_market_caravan_yard', 'kingsroad_market_coin_exchange', 'kingsroad_market_herbal_square', 'kingsroad_market_fishmonger_steps', 'kingsroad_market_scribe_corner', 'kingsroad_market_guard_post', 'kingsroad_market_well_court', 'kingsroad_market_auction_tent', 'kingsroad_market_tavern_front', 'kingsroad_market_pack_animal_ring', 'kingsroad_market_shrine_of_routes', 'kingsroad_market_back_alley_ledgers', 'kingsroad_market_high_balcony'
+    ],
   },
   arena_quarter: {
     id: 'arena_quarter',
