@@ -2587,7 +2587,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。' +
       '只有暗影生物的眼睛在黑暗中如同幽靈般閃爍。地面是一層流動的暗影，' +
-      '每一步都會激起漣漪般的黑色波紋。在這裡，連自己的身體都開始變得模糊。' +
+      '每一步都會激起漣漪般的黑色波紋。南側回廊仍有微弱輪廓，北方混沌橋像一道裂光。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'void_corridor', description: '退回虛空迴廊' },
@@ -2648,7 +2648,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座詭異的花園漂浮在虛空之中，花朵是由凝固的噩夢結晶而成。' +
       '每一朵花都在無聲地綻放與凋零，散發著令人昏沉的幽香。' +
-      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。' +
+      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。西側仍能退回入口，北方花徑通向扭曲時間。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
@@ -2707,7 +2707,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起。' +
       '你能同時看到這個地方千年前的繁華和千年後的廢墟。' +
-      '時間之流在此分岔又匯合，一步之差可能跨越百年。地面裂縫裡還卡著不同年代的武器殘影。' +
+      '時間之流在此分岔又匯合，一步之差可能跨越百年。西側殘影指回虛空迴廊，北方斷裂光帶通往更深裂隙。地面裂縫裡還卡著不同年代的武器殘影。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
@@ -3185,7 +3185,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。' +
       '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
-      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。' +
+      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。西側光門回到天界之門，北方書架後藏著抄寫室。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
@@ -4498,7 +4498,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_mist_pool.png',
     imagePrompt: '霧潭 in whispering_valley, round misty pool with dark water, reeds, pale fish shadows and spider cave slope, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。西側倒木回到上游，北面濕坡通向蛛網岩洞。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_fallen_log', description: '倒木通回上游' },
       { direction: 'south', targetRoomId: 'whispering_valley_fishing_bend', description: '水流回到釣魚灣' },
@@ -4714,7 +4714,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_whispering_rift.png',
     imagePrompt: '低語裂縫 in whispering_valley, narrow glowing rift in wet valley rock, water threads, echo symbols, mist and gathered beasts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain valley, clear lantern light',
     description:
-      '隱瀑石室與石堰水聲最終都指向這道狹窄岩縫。裂縫裡不是黑暗，而是細細流動的藍白光絲，所有溪谷低語都從這裡被水聲帶出。岩壁符號會回應舊神龕白石、巡林哨站記錄和石堰水位，像在要求玩家完成一套修復溪谷聲音的儀式。這裡是低語溪谷的大型事件鉤子與 Boss 前哨，怪物會被過強的回音吸引而來。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '隱瀑石室與石堰水聲最終都指向這道狹窄岩縫，南側水蝕小徑可退回石室，西面水聲連到石堰。裂縫裡不是黑暗，而是細細流動的藍白光絲，所有溪谷低語都從這裡被水聲帶出。岩壁符號會回應舊神龕白石、巡林哨站記錄和石堰水位，像在要求玩家完成一套修復溪谷聲音的儀式。這裡是低語溪谷的大型事件鉤子與 Boss 前哨，怪物會被過強的回音吸引而來。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_hidden_cascade', description: '水蝕小徑回到隱瀑石室' },
       { direction: 'west', targetRoomId: 'whispering_valley_stone_weir', description: '水聲回流到石堰' },

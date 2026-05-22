@@ -55,6 +55,17 @@ const IMAGE_STYLE_PHRASE = 'dark fantasy painterly environment illustration, ver
 const IMAGE_PROMPT_FUNCTION_PATTERN = /room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i;
 const IMAGE_PROMPT_TERRAIN_PATTERN = /terrain [a-z ]+/i;
 const IMAGE_PROMPT_LIGHT_PATTERN = /\b(light|lit|lantern|torch|candle|firelight|moon|sun|dawn|dusk|glow|glowing|shadow|dark|amber|blue|green|red|pale|beam|shaft|mist|fog)\b|光|燈|火|燭|月|日|晨|暮|暗|影|霧/i;
+const ROOM_PLACE_SENSE_PATTERNS = [
+  /地形|地面|泥|沙|草|岩|石|山|谷|林|田|沼|海|湖|河|溪|水|雪|冰|火|熔岩|礁|岸|洞|坡|崖|坑|灘|原|丘|泉|潭|潮|terrain|mud|sand|grass|rock|stone|mountain|valley|forest|field|marsh|sea|lake|river|snow|ice|lava|cave|slope|cliff/i,
+  /建築|牆|門|橋|階|塔|城|村|營|屋|廳|殿|棚|井|欄|店|港|碼頭|祭壇|石柱|柱|雕像|廣場|道路|路|小徑|building|wall|gate|door|bridge|stair|tower|hall|temple|altar|plaza|road/i,
+  /氣味|香|臭|腥|硫磺|腐味|煙味|礦味|味道|odor|smell|scent/i,
+  /聲|鳴|響|低語|回音|吱嘎|呼嘯|水聲|腳步|敲|咆哮|sound|echo|whisper|roar/i,
+  /光|燈|火把|燭|月|日|晨|暮|陰影|暗|亮|微光|發光|glow|light|torch|candle|moon|sun|shadow/i,
+  /材質|石板|木|鐵|銅|銀|金|玻璃|水晶|骨|皮|布|繩|藤壺|海藻|metal|wood|glass|crystal|bone|cloth/i,
+  /天氣|雨|雪|風|霧|雲|雷|暴風|潮濕|乾燥|濕滑|weather|rain|snow|wind|fog|cloud|storm/i,
+] as const;
+const ROOM_PLAY_CLUE_PATTERN = /怪|魔物|敵|守衛|首領|王|資源|礦|草藥|魚|NPC|商人|導師|可調查|調查|inspect|search|look|危險|風險|陷阱|捷徑|寶箱|任務|委託|戰鬥|採集|loot|corpse|monster|resource|npc|danger|shortcut|chest|quest|補給|服務|交通|回程|安全|遭遇|遭遇點|路線|機關|鑰|封印|巡邏|伏擊|迷路|解謎|收集|取得|開啟|啟用|傳送|標記|整理|撤退|背包|裝備|等級|玩家|可用|可以|能夠|適合|協助|提示|判斷|警告|練習|生物|飛龍|古龍|幼龍|水母|烏鴉|田鼠|史萊姆|盜匪|流放者|術士|兵器|雷獸|巨人|精靈|狼|龍|探索點|事件點|儀式|揭示|前哨|守護/i;
+const ROOM_DIRECTION_PATTERN = /北|南|東|西|上|下|入口|出口|道路|小路|路|河|牆|坡|門|橋|階|地標|通往|回到|連到|前往|沿著|旁|側|盡頭|中央|方向|north|south|east|west|up|down|exit|road|river|wall|slope|gate|door|bridge|stair|landmark/i;
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
@@ -104,6 +115,10 @@ function hasTrafficNode(zone: ZoneDef): boolean {
 
 function roomSearchText(room: RoomDef): string {
   return `${room.id} ${room.name} ${room.description}`;
+}
+
+function roomPlaceSenseCount(description: string): number {
+  return ROOM_PLACE_SENSE_PATTERNS.filter((pattern) => pattern.test(description)).length;
 }
 
 function validateTownStructure(zone: ZoneDef): void {
@@ -211,6 +226,16 @@ function validateRooms(): void {
     }
     if (isHighRiskZone(ZONES[room.zone]) && !/PvP|PVP|pvp|王國戰|開放衝突|敵對玩家|玩家|死亡|金幣|耐久|撤退|伏擊|爭奪|衝突/.test(room.description)) {
       add('error', `room:${room.id}`, 'high-risk PvP room description must mention PvP, conflict, death penalty, retreat, or ambush risk');
+    }
+    const placeSenseCount = roomPlaceSenseCount(room.description);
+    if (placeSenseCount < 2) {
+      add('error', `room:${room.id}`, `description must include at least 2 place-sense details, found ${placeSenseCount}`);
+    }
+    if (!ROOM_PLAY_CLUE_PATTERN.test(room.description)) {
+      add('error', `room:${room.id}`, 'description must include a gameplay clue');
+    }
+    if (!ROOM_DIRECTION_PATTERN.test(room.description)) {
+      add('error', `room:${room.id}`, 'description must include directional context');
     }
 
     if (!room.exits || room.exits.length === 0) {
