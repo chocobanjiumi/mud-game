@@ -1300,7 +1300,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['nature', 'lightning'],
-    rooms: [],
+    rooms: [
+      'emerald_canopy_entrance_root_lift', 'emerald_canopy_vine_bridge_low', 'emerald_canopy_moss_rope_walk', 'emerald_canopy_raincatch_basin', 'emerald_canopy_birdfolk_roost', 'emerald_canopy_storm_bough', 'emerald_canopy_firefly_bower', 'emerald_canopy_orchid_cache', 'emerald_canopy_sapfall_gully', 'emerald_canopy_hawk_watch', 'emerald_canopy_greenheart_span', 'emerald_canopy_thorn_silk_nest', 'emerald_canopy_sunleaf_garden', 'emerald_canopy_elite_patrol_perch', 'emerald_canopy_lightning_bark_shrine', 'emerald_canopy_hollow_trunk_market', 'emerald_canopy_ancient_bee_hive', 'emerald_canopy_cloudroot_bridge', 'emerald_canopy_stag_crown_clearing', 'emerald_canopy_high_green_court'
+    ],
   },
   hollow_mountain: {
     id: 'hollow_mountain',
