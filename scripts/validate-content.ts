@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ZONES, ROOMS } from '../server/src/data/rooms.js';
+import { getTravelNodes } from '../server/src/data/travel.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { EXPANSION_MONSTERS } from '../server/src/data/monsters-expansion.js';
 import { NPCS } from '../server/src/data/npcs.js';
@@ -308,10 +309,54 @@ function validateQuests(): void {
   }
 }
 
+function validateTravelNodes(): void {
+  const nodes = getTravelNodes();
+  const nodesByZone = new Map<string, ReturnType<typeof getTravelNodes>>();
+  for (const node of nodes) {
+    const zoneNodes = nodesByZone.get(node.zoneId) ?? [];
+    zoneNodes.push(node);
+    nodesByZone.set(node.zoneId, zoneNodes);
+  }
+
+  for (const zone of Object.values(ZONES)) {
+    const zoneNodes = nodesByZone.get(zone.id) ?? [];
+    if (zone.type === 'kingdom') {
+      const kingdomRoutes = zoneNodes.filter((node) => node.kind === 'kingdom_route');
+      if (kingdomRoutes.length === 0) {
+        add('error', `zone:${zone.id}`, 'kingdom zone requires at least one kingdom_route travel node');
+      }
+      for (const node of kingdomRoutes) {
+        if (node.network !== 'kingdom') {
+          add('error', `travel:${node.id}`, 'kingdom_route must use kingdom network');
+        }
+        if (node.cost.type !== 'kingdom_treasury') {
+          add('error', `travel:${node.id}`, 'kingdom_route must consume kingdom treasury resources');
+        }
+      }
+    }
+
+    if (zone.pvpMode === 'open' || zone.pvpMode === 'faction' || zone.pvpMode === 'kingdom_war') {
+      const evacNodes = zoneNodes.filter((node) => node.kind === 'danger_evac');
+      if (evacNodes.length === 0) {
+        add('error', `zone:${zone.id}`, 'PvP danger zone requires at least one danger_evac travel node');
+      }
+      for (const node of evacNodes) {
+        if (node.network !== 'pvp_evac') {
+          add('error', `travel:${node.id}`, 'danger_evac must use pvp_evac network');
+        }
+        if (node.cost.type !== 'item' || node.cost.itemId !== 'battle_token') {
+          add('error', `travel:${node.id}`, 'danger_evac must consume battle_token or equivalent PvP resource');
+        }
+      }
+    }
+  }
+}
+
 validateZones();
 validateRooms();
 validateMonstersAndItems();
 validateQuests();
+validateTravelNodes();
 
 const errors = findings.filter((finding) => finding.severity === 'error');
 const warnings = findings.filter((finding) => finding.severity === 'warning');

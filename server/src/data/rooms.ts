@@ -992,7 +992,7 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 4,
     recommendedPartySize: [1, 4],
     primaryElements: ['none', 'fire'],
-    portal: { id: 'portal_ironwood_fort', name: '鐵木要塞傳送陣', cost: 50, network: 'public' },
+    portal: { id: 'portal_ironwood_fort', name: '鐵木要塞傳送陣', cost: 50, network: 'kingdom' },
     rooms: [
       'ironwood_fort_portal_yard', 'ironwood_fort_outer_gate', 'ironwood_fort_muster_square', 'ironwood_fort_quartermaster_row', 'ironwood_fort_west_bastion', 'ironwood_fort_east_bastion', 'ironwood_fort_barracks_hall', 'ironwood_fort_forge_works', 'ironwood_fort_signal_tower', 'ironwood_fort_war_room', 'ironwood_fort_scout_roost', 'ironwood_fort_prison_block', 'ironwood_fort_supply_tunnel', 'ironwood_fort_old_cistern', 'ironwood_fort_ironwood_grove', 'ironwood_fort_hidden_sally', 'ironwood_fort_command_walk', 'ironwood_fort_oath_chapel', 'ironwood_fort_keep_gate', 'ironwood_fort_high_keep'
     ],
