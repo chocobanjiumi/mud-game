@@ -17458,4 +17458,543 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 琥珀森林擴充 (Lv 20-32) ───────────────────────────
+
+  amber_forest_entry_claim: {
+    id: 'amber_forest_entry_claim',
+    name: '採集入口界樁',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_entry_claim.png',
+    imagePrompt: '採集入口界樁 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '採集入口界樁位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'east', targetRoomId: 'amber_forest_vein_path', description: '琥珀脈徑在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_resin_gate', description: '樹脂門在北側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '採集入口界樁的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '採集入口界樁的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '採集入口界樁保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_vein_path: {
+    id: 'amber_forest_vein_path',
+    name: '琥珀脈徑',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_vein_path.png',
+    imagePrompt: '琥珀脈徑 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '琥珀脈徑位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
+      { direction: 'east', targetRoomId: 'amber_forest_herb_shelf', description: '藥草層在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[脈]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '琥珀脈徑的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '琥珀脈徑的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '琥珀脈徑保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_herb_shelf: {
+    id: 'amber_forest_herb_shelf',
+    name: '樹脂藥草層',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_herb_shelf.png',
+    imagePrompt: '樹脂藥草層 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '樹脂藥草層位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_vein_path', description: '回到琥珀脈徑' },
+      { direction: 'east', targetRoomId: 'amber_forest_water_pocket', description: '水囊窪地在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在北側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '樹脂藥草層的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '樹脂藥草層的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '樹脂藥草層保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_water_pocket: {
+    id: 'amber_forest_water_pocket',
+    name: '琥珀水囊',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_water_pocket.png',
+    imagePrompt: '琥珀水囊 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '琥珀水囊位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_herb_shelf', description: '回到樹脂藥草層' },
+      { direction: 'east', targetRoomId: 'amber_forest_beast_scrape', description: '獸痕樹皮在東側' },
+      { direction: 'south', targetRoomId: 'amber_forest_sapfall_gully', description: '樹脂落溝在南側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[水]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '琥珀水囊的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '琥珀水囊的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '琥珀水囊保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_beast_scrape: {
+    id: 'amber_forest_beast_scrape',
+    name: '獸痕樹皮',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_beast_scrape.png',
+    imagePrompt: '獸痕樹皮 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獸痕樹皮位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
+      { direction: 'east', targetRoomId: 'amber_forest_relic_pit', description: '遺物坑在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[獸]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '獸痕樹皮的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '獸痕樹皮的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '獸痕樹皮保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_relic_pit: {
+    id: 'amber_forest_relic_pit',
+    name: '封存遺物坑',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_relic_pit.png',
+    imagePrompt: '封存遺物坑 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '封存遺物坑位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_beast_scrape', description: '回到獸痕樹皮' },
+      { direction: 'north', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[遺]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '封存遺物坑的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '封存遺物坑的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '封存遺物坑保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_resin_gate: {
+    id: 'amber_forest_resin_gate',
+    name: '凝脂樹門',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_resin_gate.png',
+    imagePrompt: '凝脂樹門 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '凝脂樹門位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
+      { direction: 'east', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '凝脂樹門的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '凝脂樹門的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '凝脂樹門保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_golden_canopy: {
+    id: 'amber_forest_golden_canopy',
+    name: '金冠樹幕',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_golden_canopy.png',
+    imagePrompt: '金冠樹幕 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '金冠樹幕位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_resin_gate', description: '回到凝脂樹門' },
+      { direction: 'south', targetRoomId: 'amber_forest_vein_path', description: '落回琥珀脈徑' },
+      { direction: 'east', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_glassroot_bridge', description: '玻璃根橋在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[冠]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '金冠樹幕的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '金冠樹幕的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '金冠樹幕保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_wasp_nests: {
+    id: 'amber_forest_wasp_nests',
+    name: '封蠟蜂巢',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_wasp_nests.png',
+    imagePrompt: '封蠟蜂巢 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '封蠟蜂巢位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕' },
+      { direction: 'south', targetRoomId: 'amber_forest_herb_shelf', description: '落回樹脂藥草層' },
+      { direction: 'east', targetRoomId: 'amber_forest_suntrap_clearing', description: '日陷空地在東側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'crystal_lizard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[蜂]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '封蠟蜂巢的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '封蠟蜂巢的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '封蠟蜂巢保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_sapfall_gully: {
+    id: 'amber_forest_sapfall_gully',
+    name: '樹脂落溝',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_sapfall_gully.png',
+    imagePrompt: '樹脂落溝 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '樹脂落溝位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'north', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
+      { direction: 'east', targetRoomId: 'amber_forest_charcoal_stand', description: '焦木林列在東側' },
+      { direction: 'west', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在西側' },
+    ],
+    monsters: [
+      { monsterId: 'lava_worm', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[溝]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '樹脂落溝的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '樹脂落溝的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '樹脂落溝保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_glassroot_bridge: {
+    id: 'amber_forest_glassroot_bridge',
+    name: '玻璃根橋',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_glassroot_bridge.png',
+    imagePrompt: '玻璃根橋 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玻璃根橋位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕' },
+      { direction: 'east', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_glowing_hollow', description: '發光樹洞在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '玻璃根橋的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '玻璃根橋的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '玻璃根橋保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_suntrap_clearing: {
+    id: 'amber_forest_suntrap_clearing',
+    name: '日陷空地',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_suntrap_clearing.png',
+    imagePrompt: '日陷空地 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '日陷空地位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_wasp_nests', description: '回到封蠟蜂巢' },
+      { direction: 'south', targetRoomId: 'amber_forest_charcoal_stand', description: '焦木林列在南側' },
+      { direction: 'east', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在東側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[日]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '日陷空地的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '日陷空地的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '日陷空地保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_smoke_mycology: {
+    id: 'amber_forest_smoke_mycology',
+    name: '煙菌坡',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_smoke_mycology.png',
+    imagePrompt: '煙菌坡 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '煙菌坡位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'east', targetRoomId: 'amber_forest_sapfall_gully', description: '回到樹脂落溝' },
+      { direction: 'north', targetRoomId: 'amber_forest_glassroot_bridge', description: '上行至玻璃根橋' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[菌]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '煙菌坡的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '煙菌坡的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '煙菌坡保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_charcoal_stand: {
+    id: 'amber_forest_charcoal_stand',
+    name: '焦木林列',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_charcoal_stand.png',
+    imagePrompt: '焦木林列 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '焦木林列位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_sapfall_gully', description: '回到樹脂落溝' },
+      { direction: 'north', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
+      { direction: 'east', targetRoomId: 'amber_forest_ember_beetle_mound', description: '燼甲蟲丘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'lava_worm', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[焦]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '焦木林列的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '焦木林列的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '焦木林列保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_glowing_hollow: {
+    id: 'amber_forest_glowing_hollow',
+    name: '發光樹洞',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_glowing_hollow.png',
+    imagePrompt: '發光樹洞 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '發光樹洞位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_glassroot_bridge', description: '回到玻璃根橋' },
+      { direction: 'east', targetRoomId: 'amber_forest_ember_beetle_mound', description: '燼甲蟲丘在東側' },
+      { direction: 'north', targetRoomId: 'amber_forest_elder_resin_tree', description: '古脂巨樹在北側' },
+    ],
+    monsters: [
+      { monsterId: 'cave_bat', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[洞]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '發光樹洞的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '發光樹洞的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '發光樹洞保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_ember_beetle_mound: {
+    id: 'amber_forest_ember_beetle_mound',
+    name: '燼甲蟲丘',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_ember_beetle_mound.png',
+    imagePrompt: '燼甲蟲丘 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燼甲蟲丘位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_charcoal_stand', description: '回到焦木林列' },
+      { direction: 'north', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在北側' },
+      { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[蟲]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '燼甲蟲丘的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '燼甲蟲丘的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '燼甲蟲丘保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_hunter_blind: {
+    id: 'amber_forest_hunter_blind',
+    name: '樹上獵棚',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_hunter_blind.png',
+    imagePrompt: '樹上獵棚 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '樹上獵棚位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
+      { direction: 'south', targetRoomId: 'amber_forest_ember_beetle_mound', description: '落向燼甲蟲丘' },
+      { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
+      { direction: 'south', targetRoomId: 'amber_forest_beast_scrape', description: '斜梯回到獸痕樹皮' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '樹上獵棚的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '樹上獵棚的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '樹上獵棚保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_petrified_bloom: {
+    id: 'amber_forest_petrified_bloom',
+    name: '石化花圃',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_petrified_bloom.png',
+    imagePrompt: '石化花圃 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '石化花圃位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'west', targetRoomId: 'amber_forest_hunter_blind', description: '回到樹上獵棚' },
+      { direction: 'south', targetRoomId: 'amber_forest_relic_pit', description: '回到封存遺物坑' },
+      { direction: 'north', targetRoomId: 'amber_forest_deep_amber_core', description: '深琥珀核心在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[花]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '石化花圃的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '石化花圃的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '石化花圃保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_elder_resin_tree: {
+    id: 'amber_forest_elder_resin_tree',
+    name: '古脂巨樹',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_elder_resin_tree.png',
+    imagePrompt: '古脂巨樹 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古脂巨樹位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_glowing_hollow', description: '回到發光樹洞' },
+      { direction: 'east', targetRoomId: 'amber_forest_deep_amber_core', description: '根脈通往深琥珀核心' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_treant', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[古]',
+    mapX: 1,
+    mapY: 4,
+    guardianHints: {
+      creature: '古脂巨樹的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '古脂巨樹的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '古脂巨樹保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
+  amber_forest_deep_amber_core: {
+    id: 'amber_forest_deep_amber_core',
+    name: '深琥珀核心',
+    zone: 'amber_forest' as RoomDef['zone'],
+    image: 'amber_forest_deep_amber_core.png',
+    imagePrompt: '深琥珀核心 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深琥珀核心位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+    exits: [
+      { direction: 'south', targetRoomId: 'amber_forest_petrified_bloom', description: '回到石化花圃' },
+      { direction: 'west', targetRoomId: 'amber_forest_elder_resin_tree', description: '根脈回到古脂巨樹' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'flame_dragon_knight', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '深琥珀核心的樹脂表面若出現新鮮震紋，附近魔物多半正沿根脈移動。',
+      treasure: '深琥珀核心的琥珀裂縫、草根或封存昆蟲旁可能藏著高階採集材料。',
+      spirit: '深琥珀核心保留著採集者迷路、標記與被森林封存的記憶。',
+    },
+  },
+
 };

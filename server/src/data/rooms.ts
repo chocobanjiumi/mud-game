@@ -1010,7 +1010,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 5,
     recommendedPartySize: [2, 4],
     primaryElements: ['nature', 'fire'],
-    rooms: resourceNodeRoomIds('amber_forest'),
+    rooms: [
+      'amber_forest_entry_claim', 'amber_forest_vein_path', 'amber_forest_herb_shelf', 'amber_forest_water_pocket', 'amber_forest_beast_scrape', 'amber_forest_relic_pit', 'amber_forest_resin_gate', 'amber_forest_golden_canopy', 'amber_forest_wasp_nests', 'amber_forest_sapfall_gully', 'amber_forest_glassroot_bridge', 'amber_forest_suntrap_clearing', 'amber_forest_smoke_mycology', 'amber_forest_charcoal_stand', 'amber_forest_glowing_hollow', 'amber_forest_ember_beetle_mound', 'amber_forest_hunter_blind', 'amber_forest_petrified_bloom', 'amber_forest_elder_resin_tree', 'amber_forest_deep_amber_core'
+    ],
   },
   silverpine_range: {
     id: 'silverpine_range',
