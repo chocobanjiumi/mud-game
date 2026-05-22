@@ -1266,7 +1266,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [2, 4],
     primaryElements: ['lightning', 'none'],
-    rooms: resourceNodeRoomIds('machine_graveyard'),
+    rooms: [
+      'machine_graveyard_entrance_crane', 'machine_graveyard_rusted_turnstile', 'machine_graveyard_scrap_canyon', 'machine_graveyard_sparking_rail', 'machine_graveyard_broken_foundry', 'machine_graveyard_gearbone_pit', 'machine_graveyard_copper_vein_shelf', 'machine_graveyard_oil_black_cistern', 'machine_graveyard_clockwork_nest', 'machine_graveyard_magnet_tower_base', 'machine_graveyard_core_wake_hall', 'machine_graveyard_wireweed_garden', 'machine_graveyard_battery_catacomb', 'machine_graveyard_servo_bone_yard', 'machine_graveyard_piston_shrine', 'machine_graveyard_signal_dish', 'machine_graveyard_deep_bore_lift', 'machine_graveyard_ancient_cpu_vault', 'machine_graveyard_runaway_guard_line', 'machine_graveyard_prime_reactor_shell'
+    ],
   },
   bloodsalt_coast: {
     id: 'bloodsalt_coast',
