@@ -1095,7 +1095,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 7,
     recommendedPartySize: [2, 4],
     primaryElements: ['dark', 'ice'],
-    rooms: [],
+    rooms: [
+      'reef_of_bones_tide_gate', 'reef_of_bones_rib_shoal', 'reef_of_bones_wreck_bow', 'reef_of_bones_skull_marker', 'reef_of_bones_splinter_deck', 'reef_of_bones_cold_tide_pool', 'reef_of_bones_bone_bridge', 'reef_of_bones_ghost_anchor', 'reef_of_bones_sunken_cabin', 'reef_of_bones_icekelp_tangle', 'reef_of_bones_drowned_hold', 'reef_of_bones_whalebone_arch', 'reef_of_bones_black_coral_cut', 'reef_of_bones_reefbell_post', 'reef_of_bones_captain_grave', 'reef_of_bones_frostwake_cave', 'reef_of_bones_shattered_mast', 'reef_of_bones_treasure_keel', 'reef_of_bones_lichlight_reef', 'reef_of_bones_drowned_vault'
+    ],
   },
   sapphire_lake: {
     id: 'sapphire_lake',
