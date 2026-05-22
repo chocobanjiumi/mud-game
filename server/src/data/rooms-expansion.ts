@@ -9509,4 +9509,505 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '日火坑保留著琉璃沙丘被古代魔法熔成玻海前後的記憶。',
     },
   },
+  underground_city_gate_lift: {
+    id: 'underground_city_gate_lift',
+    name: '城邦升降門',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_gate_lift.png',
+    imagePrompt: '城邦升降門 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '城邦升降門位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'east', targetRoomId: 'underground_city_arrival_plaza', description: '升降橋通往抵達廣場' },
+      { direction: 'down', targetRoomId: 'underground_city_lower_stairs', description: '螺旋階梯落向下層街' },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '城邦升降門的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '城邦升降門的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '城邦升降門記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_arrival_plaza: {
+    id: 'underground_city_arrival_plaza',
+    name: '抵達廣場',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_arrival_plaza.png',
+    imagePrompt: '抵達廣場 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '抵達廣場位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_gate_lift', description: '升降橋回到城邦升降門' },
+      { direction: 'east', targetRoomId: 'underground_city_portal_hall', description: '藍光拱道通往傳送廳' },
+      { direction: 'south', targetRoomId: 'underground_city_market_terrace', description: '石階下到市場露臺' },
+    ],
+    mapSymbol: '[場]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '抵達廣場的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '抵達廣場的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '抵達廣場記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_portal_hall: {
+    id: 'underground_city_portal_hall',
+    name: '傳送廳',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_portal_hall.png',
+    imagePrompt: '傳送廳 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '傳送廳位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_arrival_plaza', description: '拱道回到抵達廣場' },
+      { direction: 'east', targetRoomId: 'underground_city_council_chamber', description: '符文路通往議事廳' },
+    ],
+    mapSymbol: '[傳]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '傳送廳的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '傳送廳的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '傳送廳記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_council_chamber: {
+    id: 'underground_city_council_chamber',
+    name: '議事廳',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_council_chamber.png',
+    imagePrompt: '議事廳 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '議事廳位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_portal_hall', description: '符文路回到傳送廳' },
+      { direction: 'south', targetRoomId: 'underground_city_scribe_archive', description: '書吏階梯通往卷宗庫' },
+    ],
+    mapSymbol: '[議]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '議事廳的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '議事廳的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '議事廳記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_market_terrace: {
+    id: 'underground_city_market_terrace',
+    name: '市場露臺',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_market_terrace.png',
+    imagePrompt: '市場露臺 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '市場露臺位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_arrival_plaza', description: '石階回到抵達廣場' },
+      { direction: 'east', targetRoomId: 'underground_city_black_market', description: '布棚暗巷通往黑市' },
+      { direction: 'south', targetRoomId: 'underground_city_craft_lane', description: '工具聲引向工匠巷' },
+    ],
+    mapSymbol: '[市]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '市場露臺的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '市場露臺的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '市場露臺記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_black_market: {
+    id: 'underground_city_black_market',
+    name: '黑市暗巷',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_black_market.png',
+    imagePrompt: '黑市暗巷 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑市暗巷位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_market_terrace', description: '布棚巷回到市場露臺' },
+      { direction: 'east', targetRoomId: 'underground_city_smuggler_dock', description: '暗號門通往走私碼頭' },
+      { direction: 'south', targetRoomId: 'underground_city_guild_office', description: '窄梯通往公會辦事處' },
+    ],
+    mapSymbol: '[黑]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '黑市暗巷的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '黑市暗巷的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '黑市暗巷記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_scribe_archive: {
+    id: 'underground_city_scribe_archive',
+    name: '書吏卷宗庫',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_scribe_archive.png',
+    imagePrompt: '書吏卷宗庫 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '書吏卷宗庫位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_council_chamber', description: '書吏階梯回到議事廳' },
+      { direction: 'west', targetRoomId: 'underground_city_guild_office', description: '檔案廊通往公會辦事處' },
+      { direction: 'down', targetRoomId: 'underground_city_old_foundation', description: '封塵梯降往舊地基' },
+    ],
+    mapSymbol: '[書]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '書吏卷宗庫的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '書吏卷宗庫的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '書吏卷宗庫記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_craft_lane: {
+    id: 'underground_city_craft_lane',
+    name: '工匠巷',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_craft_lane.png',
+    imagePrompt: '工匠巷 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '工匠巷位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_market_terrace', description: '工具聲回到市場露臺' },
+      { direction: 'east', targetRoomId: 'underground_city_forge_square', description: '熱浪通往熔爐廣場' },
+      { direction: 'south', targetRoomId: 'underground_city_mender_shop', description: '燈牌指向修補鋪' },
+    ],
+    mapSymbol: '[匠]',
+    mapX: 1,
+    mapY: -2,
+    guardianHints: {
+      creature: '工匠巷的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '工匠巷的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '工匠巷記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_guild_office: {
+    id: 'underground_city_guild_office',
+    name: '公會辦事處',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_guild_office.png',
+    imagePrompt: '公會辦事處 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '公會辦事處位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_black_market', description: '窄梯回到黑市暗巷' },
+      { direction: 'east', targetRoomId: 'underground_city_scribe_archive', description: '檔案廊回到卷宗庫' },
+      { direction: 'south', targetRoomId: 'underground_city_inn_cavern', description: '石燈路通往旅店洞廳' },
+    ],
+    mapSymbol: '[會]',
+    mapX: 2,
+    mapY: -2,
+    guardianHints: {
+      creature: '公會辦事處的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '公會辦事處的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '公會辦事處記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_forge_square: {
+    id: 'underground_city_forge_square',
+    name: '熔爐廣場',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_forge_square.png',
+    imagePrompt: '熔爐廣場 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '熔爐廣場位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_craft_lane', description: '熱浪回到工匠巷' },
+      { direction: 'east', targetRoomId: 'underground_city_crucible_workshop', description: '鐵軌通往坩堝工坊' },
+      { direction: 'south', targetRoomId: 'underground_city_steam_baths', description: '蒸汽管線通往浴場' },
+    ],
+    mapSymbol: '[爐]',
+    mapX: 2,
+    mapY: -3,
+    guardianHints: {
+      creature: '熔爐廣場的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '熔爐廣場的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '熔爐廣場記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_mender_shop: {
+    id: 'underground_city_mender_shop',
+    name: '修補鋪',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_mender_shop.png',
+    imagePrompt: '修補鋪 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '修補鋪位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_craft_lane', description: '燈牌回到工匠巷' },
+      { direction: 'east', targetRoomId: 'underground_city_inn_cavern', description: '補給巷通往旅店洞廳' },
+    ],
+    mapSymbol: '[修]',
+    mapX: 0,
+    mapY: -2,
+    guardianHints: {
+      creature: '修補鋪的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '修補鋪的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '修補鋪記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_inn_cavern: {
+    id: 'underground_city_inn_cavern',
+    name: '旅店洞廳',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_inn_cavern.png',
+    imagePrompt: '旅店洞廳 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '旅店洞廳位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_guild_office', description: '石燈路回到公會辦事處' },
+      { direction: 'west', targetRoomId: 'underground_city_mender_shop', description: '補給巷回到修補鋪' },
+      { direction: 'east', targetRoomId: 'underground_city_steam_baths', description: '暖霧通往蒸汽浴場' },
+      { direction: 'south', targetRoomId: 'underground_city_lamp_garden', description: '幽光坡通往菌燈庭園' },
+    ],
+    mapSymbol: '[旅]',
+    mapX: 1,
+    mapY: -3,
+    guardianHints: {
+      creature: '旅店洞廳的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '旅店洞廳的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '旅店洞廳記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_crucible_workshop: {
+    id: 'underground_city_crucible_workshop',
+    name: '坩堝工坊',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_crucible_workshop.png',
+    imagePrompt: '坩堝工坊 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '坩堝工坊位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_forge_square', description: '鐵軌回到熔爐廣場' },
+      { direction: 'south', targetRoomId: 'underground_city_guard_barracks', description: '裝甲坡通往守備營' },
+      { direction: 'east', targetRoomId: 'underground_city_gem_exchange', description: '精砂路通往寶石交易所' },
+    ],
+    mapSymbol: '[坩]',
+    mapX: 3,
+    mapY: -3,
+    guardianHints: {
+      creature: '坩堝工坊的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '坩堝工坊的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '坩堝工坊記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_steam_baths: {
+    id: 'underground_city_steam_baths',
+    name: '蒸汽浴場',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_steam_baths.png',
+    imagePrompt: '蒸汽浴場 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蒸汽浴場位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_forge_square', description: '蒸汽管線回到熔爐廣場' },
+      { direction: 'west', targetRoomId: 'underground_city_inn_cavern', description: '暖霧回到旅店洞廳' },
+      { direction: 'south', targetRoomId: 'underground_city_darkriver_quay', description: '排水階梯通往暗河碼頭' },
+    ],
+    mapSymbol: '[浴]',
+    mapX: 2,
+    mapY: -4,
+    guardianHints: {
+      creature: '蒸汽浴場的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '蒸汽浴場的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '蒸汽浴場記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_gem_exchange: {
+    id: 'underground_city_gem_exchange',
+    name: '寶石交易所',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_gem_exchange.png',
+    imagePrompt: '寶石交易所 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '寶石交易所位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'west', targetRoomId: 'underground_city_crucible_workshop', description: '精砂路回到坩堝工坊' },
+      { direction: 'south', targetRoomId: 'underground_city_lantern_bridge', description: '鑲燈橋通往燈橋' },
+    ],
+    mapSymbol: '[寶]',
+    mapX: 4,
+    mapY: -3,
+    guardianHints: {
+      creature: '寶石交易所的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '寶石交易所的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '寶石交易所記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_guard_barracks: {
+    id: 'underground_city_guard_barracks',
+    name: '守備營',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_guard_barracks.png',
+    imagePrompt: '守備營 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '守備營位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_crucible_workshop', description: '裝甲坡回到坩堝工坊' },
+      { direction: 'west', targetRoomId: 'underground_city_darkriver_quay', description: '巡邏道通往暗河碼頭' },
+      { direction: 'east', targetRoomId: 'underground_city_lantern_bridge', description: '石盾路通往燈橋' },
+    ],
+    mapSymbol: '[營]',
+    mapX: 3,
+    mapY: -4,
+    guardianHints: {
+      creature: '守備營的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '守備營的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '守備營記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_lamp_garden: {
+    id: 'underground_city_lamp_garden',
+    name: '菌燈庭園',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_lamp_garden.png',
+    imagePrompt: '菌燈庭園 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '菌燈庭園位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_inn_cavern', description: '幽光坡回到旅店洞廳' },
+      { direction: 'east', targetRoomId: 'underground_city_darkriver_quay', description: '濕石路通往暗河碼頭' },
+      { direction: 'south', targetRoomId: 'underground_city_lower_stairs', description: '根鬚階梯通往下層街' },
+    ],
+    mapSymbol: '[菌]',
+    mapX: 1,
+    mapY: -4,
+    guardianHints: {
+      creature: '菌燈庭園的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '菌燈庭園的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '菌燈庭園記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_darkriver_quay: {
+    id: 'underground_city_darkriver_quay',
+    name: '暗河碼頭',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_darkriver_quay.png',
+    imagePrompt: '暗河碼頭 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暗河碼頭位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_steam_baths', description: '排水階梯回到蒸汽浴場' },
+      { direction: 'west', targetRoomId: 'underground_city_lamp_garden', description: '濕石路回到菌燈庭園' },
+      { direction: 'east', targetRoomId: 'underground_city_guard_barracks', description: '巡邏道回到守備營' },
+      { direction: 'south', targetRoomId: 'underground_city_smuggler_dock', description: '暗流通往走私碼頭' },
+    ],
+    mapSymbol: '[河]',
+    mapX: 2,
+    mapY: -5,
+    guardianHints: {
+      creature: '暗河碼頭的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '暗河碼頭的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '暗河碼頭記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_smuggler_dock: {
+    id: 'underground_city_smuggler_dock',
+    name: '走私碼頭',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_smuggler_dock.png',
+    imagePrompt: '走私碼頭 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '走私碼頭位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_black_market', description: '暗號門回到黑市暗巷' },
+      { direction: 'west', targetRoomId: 'underground_city_darkriver_quay', description: '暗流回到暗河碼頭' },
+      { direction: 'south', targetRoomId: 'underground_city_old_foundation', description: '破渠通往舊地基' },
+    ],
+    mapSymbol: '[私]',
+    mapX: 3,
+    mapY: -5,
+    guardianHints: {
+      creature: '走私碼頭的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '走私碼頭的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '走私碼頭記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_lower_stairs: {
+    id: 'underground_city_lower_stairs',
+    name: '下層螺旋街',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_lower_stairs.png',
+    imagePrompt: '下層螺旋街 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '下層螺旋街位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'up', targetRoomId: 'underground_city_gate_lift', description: '螺旋階梯升回城邦升降門' },
+      { direction: 'north', targetRoomId: 'underground_city_lamp_garden', description: '根鬚階梯回到菌燈庭園' },
+      { direction: 'east', targetRoomId: 'underground_city_old_foundation', description: '古牆缺口通往舊地基' },
+    ],
+    mapSymbol: '[階]',
+    mapX: 0,
+    mapY: -4,
+    guardianHints: {
+      creature: '下層螺旋街的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '下層螺旋街的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '下層螺旋街記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_old_foundation: {
+    id: 'underground_city_old_foundation',
+    name: '舊城地基',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_old_foundation.png',
+    imagePrompt: '舊城地基 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊城地基位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+    exits: [
+      { direction: 'up', targetRoomId: 'underground_city_scribe_archive', description: '封塵梯升回卷宗庫' },
+      { direction: 'north', targetRoomId: 'underground_city_smuggler_dock', description: '破渠回到走私碼頭' },
+      { direction: 'west', targetRoomId: 'underground_city_lower_stairs', description: '古牆缺口回到下層螺旋街' },
+    ],
+    mapSymbol: '[舊]',
+    mapX: 2,
+    mapY: -6,
+    guardianHints: {
+      creature: '舊城地基的巡邏腳步與燈號能提示附近是否有城市守備正在換班。',
+      treasure: '舊城地基的石縫、攤位或舊標牌旁可能藏有可交易情報與失物。',
+      spirit: '舊城地基記錄著地下城邦在熔爐、暗河與市集之間維持生活的方式。',
+    },
+  },
+
+  underground_city_lantern_bridge: {
+    id: 'underground_city_lantern_bridge',
+    name: '鑲燈橋',
+    zone: 'underground_city' as RoomDef['zone'],
+    image: 'underground_city_lantern_bridge.png',
+    imagePrompt: '鑲燈橋 in underground_city, broad subterranean bridge set with lantern gems over dark river, forge glow, tiered stone streets and carved city arches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鑲燈橋橫跨暗河上方，橋欄嵌著一排排發光礦石，光線被水面反射成綠藍色波紋，照亮對岸守備營、寶石交易所與更深處的工坊街。這裡是地下城邦重要的交通節點，也是城鎮居民判斷河水水位、蒸汽壓力和市場人潮的觀察點。玩家可以在橋上整理路線、尋找交易消息、確認守備巡邏方向，或 inspect 橋欄刻字得知哪些舊礦道已封閉。雖然城邦內屬於安全區域，橋下暗流仍提醒旅人不要把這座城市只當成商店集合；它有自己的秩序、歷史與持續運作的地下脈搏。',
+    exits: [
+      { direction: 'north', targetRoomId: 'underground_city_gem_exchange', description: '鑲燈階梯回到寶石交易所' },
+      { direction: 'west', targetRoomId: 'underground_city_guard_barracks', description: '石盾路回到守備營' },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 4,
+    mapY: -4,
+    guardianHints: {
+      creature: '鑲燈橋的燈石若依序轉暗，通常代表守備巡邏正在橋下換線。',
+      treasure: '橋欄舊刻字旁可能藏著商旅留下的押貨暗記。',
+      spirit: '鑲燈橋記錄著地下城邦用光與河聲維持秩序的方式。',
+    },
+  },
 };
