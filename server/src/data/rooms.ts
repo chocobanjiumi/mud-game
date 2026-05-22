@@ -1147,7 +1147,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 0,
     recommendedPartySize: [1, 4],
     primaryElements: ['none'],
-    rooms: [],
+    rooms: [
+      'arena_quarter_grand_gate', 'arena_quarter_ticket_colonnade', 'arena_quarter_betting_house', 'arena_quarter_weapon_check', 'arena_quarter_warmup_sand', 'arena_quarter_duel_ring_east', 'arena_quarter_duel_ring_west', 'arena_quarter_training_yard', 'arena_quarter_healer_bench', 'arena_quarter_armor_rack_lane', 'arena_quarter_champion_wall', 'arena_quarter_lower_stands', 'arena_quarter_upper_stands', 'arena_quarter_roar_tavern', 'arena_quarter_strategy_tables', 'arena_quarter_referee_box', 'arena_quarter_prize_counter', 'arena_quarter_private_boxes', 'arena_quarter_victory_arch', 'arena_quarter_center_arena'
+    ],
   },
   royal_hunting_grounds: {
     id: 'royal_hunting_grounds',
