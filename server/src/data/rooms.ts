@@ -1198,7 +1198,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['ice', 'none'],
-    rooms: [],
+    rooms: [
+      'frostbite_pass_snow_gate', 'frostbite_pass_caravan_marker', 'frostbite_pass_icewind_cut', 'frostbite_pass_frozen_switchback', 'frostbite_pass_buried_wagon', 'frostbite_pass_blue_ice_bridge', 'frostbite_pass_yeti_scrape', 'frostbite_pass_whiteout_basin', 'frostbite_pass_coldfire_camp', 'frostbite_pass_glacier_mouth', 'frostbite_pass_sleet_watch', 'frostbite_pass_bone_sled_path', 'frostbite_pass_crystal_fir_grove', 'frostbite_pass_wind_howl_arch', 'frostbite_pass_lost_merchant_cache', 'frostbite_pass_frost_giant_steps', 'frostbite_pass_ice_cairn_field', 'frostbite_pass_northbound_ridge', 'frostbite_pass_dragon_breath_shelf', 'frostbite_pass_polar_seal_gate'
+    ],
   },
   necropolis_gate: {
     id: 'necropolis_gate',
