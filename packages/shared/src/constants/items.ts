@@ -1995,6 +1995,24 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '從古代遺跡中挖掘出的神秘碎片，表面刻著已經失傳的古代文字。碎片中似乎封印著遠古的力量，靠近時偶爾會聽到微弱的低語聲。', buyPrice: 300, sellPrice: 150,
     stackable: true, maxStack: 99, levelReq: 20,
   },
+  kingdom_supply_crate: {
+    id: 'kingdom_supply_crate', name: '王國補給箱', type: 'material',
+    description: '封有王國軍需印記的沉重補給箱，內含糧秣、繃帶與前線修繕零件。箱角的蠟封會記錄運送路線，攜帶時必須依王國交通規則交付。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['kingdom_war', 'resource_war'], zoneTags: ['kingdom_frontier'],
+  },
+  kingdom_iron_shipment: {
+    id: 'kingdom_iron_shipment', name: '王國鐵料車契', type: 'material',
+    description: '前線鐵料車隊的押運契據，附著可追蹤的國庫封印。它代表一批待送往哨塔與攻城器械場的鐵料，不能透過一般傳送規避運輸風險。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['kingdom_war', 'resource_war'], zoneTags: ['kingdom_frontier'],
+  },
+  kingdom_banner_cache: {
+    id: 'kingdom_banner_cache', name: '王國戰旗匣', type: 'material',
+    description: '裝著戰旗、號角與臨時軍令的長匣，匣面刻有交戰王國的辨識符。這類資源必須沿戰線或王國路線移動，否則封印會失效。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['kingdom_war', 'resource_war'], zoneTags: ['kingdom_frontier'],
+  },
 
   // ============ 戰鬥道具 ============
   smoke_bomb: {

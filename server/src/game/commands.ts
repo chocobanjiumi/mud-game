@@ -61,7 +61,7 @@ import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
 import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
-import { INVENTORY_SLOT_CAPACITY, getInventorySlotLoad } from './inventory-capacity.js';
+import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventorySlotLoad } from './inventory-capacity.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -2150,6 +2150,12 @@ function cmdTravel(session: WsSession, target: string): void {
     return;
   }
 
+  const kingdomCargoCheck = canUseKingdomCargoRestrictedTravel(char, node);
+  if (!kingdomCargoCheck.ok) {
+    sendError(session.sessionId, kingdomCargoCheck.message);
+    return;
+  }
+
   const costResult = payTravelCost(char, node);
   if (!costResult.ok) {
     sendError(session.sessionId, costResult.message);
@@ -2183,6 +2189,12 @@ function cmdRecall(session: WsSession): void {
   const loadCheck = canUseInventoryRestrictedTravel(char);
   if (!loadCheck.ok) {
     sendError(session.sessionId, loadCheck.message);
+    return;
+  }
+
+  const kingdomCargoCheck = canUseKingdomCargoRestrictedTravel(char);
+  if (!kingdomCargoCheck.ok) {
+    sendError(session.sessionId, kingdomCargoCheck.message);
     return;
   }
 
@@ -5538,6 +5550,21 @@ function canUseInventoryRestrictedTravel(char: Character, node?: TravelNodeDef):
   return {
     ok: false,
     message: `背包超重（${load.slots}/${load.capacity} 格），無法使用一般傳送。請整理背包或使用危險撤離點。`,
+  };
+}
+
+function canUseKingdomCargoRestrictedTravel(char: Character, node?: TravelNodeDef): { ok: true } | { ok: false; message: string } {
+  if (node?.kind === 'kingdom_route' || node?.kind === 'danger_evac') return { ok: true };
+
+  const carriedItemIds = getCarriedKingdomResourceItemIds(getInventory(char.id));
+  if (carriedItemIds.length === 0) return { ok: true };
+
+  const names = carriedItemIds
+    .map(itemId => ITEM_DEFS[itemId]?.name ?? itemId)
+    .join('、');
+  return {
+    ok: false,
+    message: `你正攜帶王國資源（${names}），無法使用一般傳送。請走王國路線、交付資源或使用危險撤離點。`,
   };
 }
 
