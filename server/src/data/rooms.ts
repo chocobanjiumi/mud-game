@@ -1061,7 +1061,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['nature', 'dark'],
-    rooms: [],
+    rooms: [
+      'thornmaze_gate_arch', 'thornmaze_outer_briar_lane', 'thornmaze_threefold_fork', 'thornmaze_redthorn_wall', 'thornmaze_moss_keyhole', 'thornmaze_whispering_hedge', 'thornmaze_poison_bloom_bed', 'thornmaze_blackroot_tunnel', 'thornmaze_wildrose_snare', 'thornmaze_druid_marker', 'thornmaze_turning_courtyard', 'thornmaze_spiderthorn_den', 'thornmaze_moonvine_bridge', 'thornmaze_bloodsap_pool', 'thornmaze_lost_hunter_camp', 'thornmaze_living_wall', 'thornmaze_silent_stag_glade', 'thornmaze_crooked_totem', 'thornmaze_inner_altar_ring', 'thornmaze_ancient_druid_altar'
+    ],
   },
   ember_march: {
     id: 'ember_march',
