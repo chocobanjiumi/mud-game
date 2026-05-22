@@ -1317,7 +1317,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [2, 4],
     primaryElements: ['none', 'ice', 'lightning'],
-    rooms: resourceNodeRoomIds('hollow_mountain'),
+    rooms: [
+      'hollow_mountain_entrance_wind_gate', 'hollow_mountain_spiral_mine_ramp', 'hollow_mountain_echo_market', 'hollow_mountain_frost_vein_wall', 'hollow_mountain_thunder_ore_bridge', 'hollow_mountain_hollow_bell_chamber', 'hollow_mountain_quarry_lift', 'hollow_mountain_black_granite_cut', 'hollow_mountain_windpipe_tunnel', 'hollow_mountain_crystal_scree', 'hollow_mountain_dungeon_hub_cavern', 'hollow_mountain_deep_mushroom_shelf', 'hollow_mountain_ice_chain_gallery', 'hollow_mountain_miner_oath_post', 'hollow_mountain_storm_capacitor', 'hollow_mountain_old_drill_nest', 'hollow_mountain_silver_breath_well', 'hollow_mountain_ancient_cart_maze', 'hollow_mountain_high_vault_stairs', 'hollow_mountain_mountain_heart_core'
+    ],
   },
   serpent_delta: {
     id: 'serpent_delta',

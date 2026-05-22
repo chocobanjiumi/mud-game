@@ -26978,4 +26978,541 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+
+  // ─── 空心山擴充 (Lv 36-50) ───────────────────────────
+
+  hollow_mountain_entrance_wind_gate: {
+    id: 'hollow_mountain_entrance_wind_gate',
+    name: '風門入口',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_entrance_wind_gate.png',
+    imagePrompt: '風門入口 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風門入口位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'east', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '風門入口的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '風門入口的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '風門入口殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_spiral_mine_ramp: {
+    id: 'hollow_mountain_spiral_mine_ramp',
+    name: '螺旋礦坡',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_spiral_mine_ramp.png',
+    imagePrompt: '螺旋礦坡 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '螺旋礦坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'hollow_mountain_frost_vein_wall', description: '霜脈壁在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_entrance_wind_gate', description: '風門入口在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_echo_market', description: '回音市集在東側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[坡]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '螺旋礦坡的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '螺旋礦坡的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '螺旋礦坡殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_echo_market: {
+    id: 'hollow_mountain_echo_market',
+    name: '回音市集',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_echo_market.png',
+    imagePrompt: '回音市集 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '回音市集位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在西側' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '回音市集的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '回音市集的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '回音市集殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_frost_vein_wall: {
+    id: 'hollow_mountain_frost_vein_wall',
+    name: '霜脈壁',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_frost_vein_wall.png',
+    imagePrompt: '霜脈壁 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '霜脈壁位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在南側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[霜]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '霜脈壁的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '霜脈壁的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '霜脈壁殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_thunder_ore_bridge: {
+    id: 'hollow_mountain_thunder_ore_bridge',
+    name: '雷礦橋',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_thunder_ore_bridge.png',
+    imagePrompt: '雷礦橋 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '雷礦橋位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_echo_market', description: '回音市集在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_frost_vein_wall', description: '霜脈壁在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_hollow_bell_chamber', description: '空鐘室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[雷]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '雷礦橋的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '雷礦橋的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '雷礦橋殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_hollow_bell_chamber: {
+    id: 'hollow_mountain_hollow_bell_chamber',
+    name: '空鐘室',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_hollow_bell_chamber.png',
+    imagePrompt: '空鐘室 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '空鐘室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在西側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '空鐘室的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '空鐘室的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '空鐘室殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_quarry_lift: {
+    id: 'hollow_mountain_quarry_lift',
+    name: '採石升降臺',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_quarry_lift.png',
+    imagePrompt: '採石升降臺 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '採石升降臺位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'east', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在東側' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[升]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '採石升降臺的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '採石升降臺的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '採石升降臺殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_black_granite_cut: {
+    id: 'hollow_mountain_black_granite_cut',
+    name: '黑花崗切場',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_black_granite_cut.png',
+    imagePrompt: '黑花崗切場 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑花崗切場位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_frost_vein_wall', description: '霜脈壁在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_deep_mushroom_shelf', description: '深菇棚在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_quarry_lift', description: '採石升降臺在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[岩]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '黑花崗切場的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '黑花崗切場的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '黑花崗切場殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_windpipe_tunnel: {
+    id: 'hollow_mountain_windpipe_tunnel',
+    name: '風管隧道',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_windpipe_tunnel.png',
+    imagePrompt: '風管隧道 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風管隧道位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在東側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[風]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '風管隧道的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '風管隧道的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '風管隧道殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_crystal_scree: {
+    id: 'hollow_mountain_crystal_scree',
+    name: '晶石碎坡',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_crystal_scree.png',
+    imagePrompt: '晶石碎坡 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '晶石碎坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_hollow_bell_chamber', description: '空鐘室在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_dungeon_hub_cavern', description: '洞城樞紐在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[晶]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '晶石碎坡的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '晶石碎坡的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '晶石碎坡殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_dungeon_hub_cavern: {
+    id: 'hollow_mountain_dungeon_hub_cavern',
+    name: '洞城樞紐',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_dungeon_hub_cavern.png',
+    imagePrompt: '洞城樞紐 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '洞城樞紐位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'hollow_mountain_storm_capacitor', description: '風暴蓄能室在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在西側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[樞]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '洞城樞紐的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '洞城樞紐的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '洞城樞紐殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_deep_mushroom_shelf: {
+    id: 'hollow_mountain_deep_mushroom_shelf',
+    name: '深菇棚',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_deep_mushroom_shelf.png',
+    imagePrompt: '深菇棚 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深菇棚位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在北側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[菇]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '深菇棚的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '深菇棚的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '深菇棚殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_ice_chain_gallery: {
+    id: 'hollow_mountain_ice_chain_gallery',
+    name: '冰鏈廊',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_ice_chain_gallery.png',
+    imagePrompt: '冰鏈廊 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰鏈廊位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_old_drill_nest', description: '舊鑽巢在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_deep_mushroom_shelf', description: '深菇棚在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[鏈]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '冰鏈廊的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '冰鏈廊的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '冰鏈廊殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_miner_oath_post: {
+    id: 'hollow_mountain_miner_oath_post',
+    name: '礦誓柱',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_miner_oath_post.png',
+    imagePrompt: '礦誓柱 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '礦誓柱位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_storm_capacitor', description: '風暴蓄能室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[誓]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '礦誓柱的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '礦誓柱的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '礦誓柱殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_storm_capacitor: {
+    id: 'hollow_mountain_storm_capacitor',
+    name: '風暴蓄能室',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_storm_capacitor.png',
+    imagePrompt: '風暴蓄能室 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '風暴蓄能室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_dungeon_hub_cavern', description: '洞城樞紐在北側' },
+      { direction: 'south', targetRoomId: 'hollow_mountain_ancient_cart_maze', description: '古礦車迷宮在南側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在西側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[蓄]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '風暴蓄能室的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '風暴蓄能室的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '風暴蓄能室殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_old_drill_nest: {
+    id: 'hollow_mountain_old_drill_nest',
+    name: '舊鑽巢',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_old_drill_nest.png',
+    imagePrompt: '舊鑽巢 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊鑽巢位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在北側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[鑽]',
+    mapX: 2,
+    mapY: 4,
+    guardianHints: {
+      creature: '舊鑽巢的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '舊鑽巢的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '舊鑽巢殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_silver_breath_well: {
+    id: 'hollow_mountain_silver_breath_well',
+    name: '銀息井',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_silver_breath_well.png',
+    imagePrompt: '銀息井 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀息井位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在北側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_old_drill_nest', description: '舊鑽巢在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_ancient_cart_maze', description: '古礦車迷宮在東側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '銀息井的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '銀息井的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '銀息井殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_ancient_cart_maze: {
+    id: 'hollow_mountain_ancient_cart_maze',
+    name: '古礦車迷宮',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_ancient_cart_maze.png',
+    imagePrompt: '古礦車迷宮 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古礦車迷宮位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'north', targetRoomId: 'hollow_mountain_storm_capacitor', description: '風暴蓄能室在北側' },
+      { direction: 'west', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_high_vault_stairs', description: '高穹階在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[車]',
+    mapX: 4,
+    mapY: 4,
+    guardianHints: {
+      creature: '古礦車迷宮的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '古礦車迷宮的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '古礦車迷宮殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_high_vault_stairs: {
+    id: 'hollow_mountain_high_vault_stairs',
+    name: '高穹階',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_high_vault_stairs.png',
+    imagePrompt: '高穹階 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高穹階位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'hollow_mountain_ancient_cart_maze', description: '古礦車迷宮在西側' },
+      { direction: 'east', targetRoomId: 'hollow_mountain_mountain_heart_core', description: '山心核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '高穹階的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '高穹階的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '高穹階殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
+  hollow_mountain_mountain_heart_core: {
+    id: 'hollow_mountain_mountain_heart_core',
+    name: '山心核心',
+    zone: 'hollow_mountain' as RoomDef['zone'],
+    image: 'hollow_mountain_mountain_heart_core.png',
+    imagePrompt: '山心核心 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '山心核心位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，玩家可以 inspect 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'hollow_mountain_high_vault_stairs', description: '高穹階在西側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[心]',
+    mapX: 6,
+    mapY: 4,
+    guardianHints: {
+      creature: '山心核心的回音若突然延遲，附近礦洞守衛、古龍或深層魔物可能正在換道。',
+      treasure: '山心核心的霜脈裂縫、雷礦節點、礦車底盤或銀息井旁可能藏著空心山材料。',
+      spirit: '山心核心殘留礦工撤離、山腹風暴與洞城樞紐封門時的低沉記憶。',
+    },
+  },
+
 };
