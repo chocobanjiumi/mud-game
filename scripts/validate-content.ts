@@ -52,6 +52,9 @@ const REQUIRED_EQUIP_SLOTS = [
   'necklace',
 ] as const;
 const IMAGE_STYLE_PHRASE = 'dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text';
+const IMAGE_PROMPT_FUNCTION_PATTERN = /room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i;
+const IMAGE_PROMPT_TERRAIN_PATTERN = /terrain [a-z ]+/i;
+const IMAGE_PROMPT_LIGHT_PATTERN = /\b(light|lit|lantern|torch|candle|firelight|moon|sun|dawn|dusk|glow|glowing|shadow|dark|amber|blue|green|red|pale|beam|shaft|mist|fog)\b|光|燈|火|燭|月|日|晨|暮|暗|影|霧/i;
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
@@ -254,6 +257,15 @@ function validateRooms(): void {
       }
       if (!room.imagePrompt.includes(IMAGE_STYLE_PHRASE)) {
         add('error', `room:${room.id}`, 'imagePrompt missing required style phrase');
+      }
+      if (!IMAGE_PROMPT_FUNCTION_PATTERN.test(room.imagePrompt)) {
+        add('error', `room:${room.id}`, 'imagePrompt must include room function');
+      }
+      if (!IMAGE_PROMPT_TERRAIN_PATTERN.test(room.imagePrompt)) {
+        add('error', `room:${room.id}`, 'imagePrompt must include main terrain');
+      }
+      if (!IMAGE_PROMPT_LIGHT_PATTERN.test(room.imagePrompt)) {
+        add('error', `room:${room.id}`, 'imagePrompt must include light source or lighting');
       }
     }
   }
