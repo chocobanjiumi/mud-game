@@ -171,6 +171,139 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
   return result;
 }
 
+interface ZoneEquipmentTheme {
+  id: string;
+  name: string;
+  level: number;
+  bossOrDungeon?: boolean;
+}
+
+const ZONE_EQUIPMENT_THEMES: ZoneEquipmentTheme[] = [
+  { id: 'starter_village', name: '新手村', level: 1 },
+  { id: 'plains', name: '翠綠平原', level: 3 },
+  { id: 'dark_forest', name: '暗影森林', level: 8 },
+  { id: 'crystal_cave', name: '水晶洞窟', level: 12 },
+  { id: 'lakeside_town', name: '湖畔城鎮', level: 15 },
+  { id: 'starter_village_ext', name: '新手村外圍', level: 4 },
+  { id: 'eastern_coast', name: '東方海岸', level: 10 },
+  { id: 'volcano_zone', name: '火山地帶', level: 18 },
+  { id: 'frozen_wastes', name: '冰封雪原', level: 20 },
+  { id: 'demon_territory', name: '魔族領地', level: 25 },
+  { id: 'dragon_valley', name: '龍谷', level: 30, bossOrDungeon: true },
+  { id: 'abyss_rift', name: '深淵裂隙', level: 35, bossOrDungeon: true },
+  { id: 'celestial_ruins', name: '天界遺跡', level: 38, bossOrDungeon: true },
+  { id: 'old_farmland', name: '老舊農場', level: 5 },
+  { id: 'whispering_valley', name: '低語溪谷', level: 7 },
+  { id: 'abandoned_mines', name: '廢棄礦坑', level: 10 },
+  { id: 'wildgrass_hills', name: '荒草丘陵', level: 12 },
+  { id: 'mist_harbor', name: '霧港', level: 14 },
+  { id: 'ancient_ruins', name: '古代遺跡', level: 16, bossOrDungeon: true },
+  { id: 'marsh_of_mirrors', name: '鏡沼', level: 18 },
+  { id: 'redrock_badlands', name: '赤岩荒地', level: 20 },
+  { id: 'sunken_catacombs', name: '沉沒墓窟', level: 22, bossOrDungeon: true },
+  { id: 'thundersteppe', name: '雷鳴草原', level: 24 },
+  { id: 'glass_dunes', name: '琉璃沙丘', level: 26 },
+  { id: 'underground_city', name: '地下城邦', level: 26 },
+  { id: 'cursed_graveyard', name: '詛咒墓園', level: 28 },
+  { id: 'storm_highlands', name: '風暴高原', level: 30 },
+  { id: 'blackwood', name: '黑木林', level: 30 },
+  { id: 'lost_capital', name: '失落王都', level: 32, bossOrDungeon: true },
+  { id: 'sky_isles', name: '浮空群島', level: 34, bossOrDungeon: true },
+  { id: 'deepsea_temple', name: '深海神殿', level: 36, bossOrDungeon: true },
+  { id: 'obsidian_depths', name: '黑曜深層', level: 36 },
+  { id: 'starfall_crater', name: '星隕坑', level: 38 },
+  { id: 'time_ruins', name: '時間廢墟', level: 40, bossOrDungeon: true },
+  { id: 'astral_wastes', name: '星界荒原', level: 42, bossOrDungeon: true },
+  { id: 'final_battleground', name: '終焉戰場', level: 45, bossOrDungeon: true },
+  { id: 'moonlit_fen', name: '月光濕地', level: 18 },
+  { id: 'pilgrim_road', name: '朝聖古道', level: 20 },
+  { id: 'ironwood_fort', name: '鐵木要塞', level: 22 },
+  { id: 'amber_forest', name: '琥珀森林', level: 24 },
+  { id: 'silverpine_range', name: '銀松山脈', level: 26 },
+  { id: 'saltwind_flats', name: '鹽風灘', level: 28 },
+  { id: 'thornmaze', name: '荊棘迷宮', level: 30 },
+  { id: 'ember_march', name: '餘燼邊境', level: 32 },
+  { id: 'reef_of_bones', name: '白骨礁', level: 34, bossOrDungeon: true },
+  { id: 'sapphire_lake', name: '藍寶湖', level: 24 },
+  { id: 'kingsroad_market', name: '王道市集', level: 18 },
+  { id: 'arena_quarter', name: '競技城區', level: 20 },
+  { id: 'royal_hunting_grounds', name: '王家獵場', level: 26 },
+  { id: 'ashfall_monastery', name: '灰落修道院', level: 32, bossOrDungeon: true },
+  { id: 'frostbite_pass', name: '霜咬隘口', level: 34 },
+  { id: 'necropolis_gate', name: '死都外門', level: 38, bossOrDungeon: true },
+  { id: 'sunspire', name: '日耀尖塔', level: 40, bossOrDungeon: true },
+  { id: 'moonshadow_court', name: '月影庭', level: 42, bossOrDungeon: true },
+  { id: 'machine_graveyard', name: '機械墳場', level: 36 },
+  { id: 'bloodsalt_coast', name: '血鹽海岸', level: 30 },
+  { id: 'emerald_canopy', name: '翡翠樹冠', level: 28 },
+  { id: 'hollow_mountain', name: '空心山', level: 34 },
+  { id: 'serpent_delta', name: '蛇河三角洲', level: 32 },
+  { id: 'kingdom_frontier', name: '王國邊境', level: 30 },
+];
+
+const ZONE_THEME_BASE_SLOTS = ['head', 'body', 'hands', 'feet', 'ring', 'necklace'] as const;
+const ZONE_THEME_EXTRA_SLOTS = ['weapon', 'earring', 'belt', 'ring'] as const;
+const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
+  weapon: '戰刃',
+  head: '兜帽',
+  body: '護甲',
+  hands: '護手',
+  feet: '長靴',
+  ring: '指環',
+  earring: '耳飾',
+  belt: '腰帶',
+  necklace: '墜飾',
+};
+
+function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
+  const result: Record<string, ItemDef> = {};
+
+  for (const theme of ZONE_EQUIPMENT_THEMES) {
+    const slots = theme.bossOrDungeon
+      ? [...ZONE_THEME_BASE_SLOTS, ...ZONE_THEME_EXTRA_SLOTS]
+      : ZONE_THEME_BASE_SLOTS;
+
+    slots.forEach((slot, index) => {
+      const id = `zone_${theme.id}_${slot}_${index + 1}`;
+      const levelReq = Math.max(1, theme.level + Math.floor(index / 3));
+      const type = slot === 'weapon'
+        ? 'weapon'
+        : ['head', 'body', 'hands', 'feet'].includes(slot)
+          ? 'armor'
+          : 'accessory';
+      const stat = slot === 'weapon' || slot === 'hands'
+        ? 'atk'
+        : slot === 'ring' || slot === 'necklace'
+          ? 'luk'
+          : slot === 'earring'
+            ? 'int'
+            : slot === 'belt'
+              ? 'vit'
+              : 'def';
+      result[id] = {
+        id,
+        name: `${theme.name}${ZONE_THEME_SLOT_NAMES[slot]}`,
+        type,
+        description: `${theme.name}${ZONE_THEME_SLOT_NAMES[slot]} 是帶有 ${theme.name} 地貌、怪物與工藝痕跡的區域主題裝備，用於讓該區域掉落與任務獎勵形成可辨識的套裝感。`,
+        buyPrice: 0,
+        sellPrice: 90 + levelReq * 28,
+        stackable: false,
+        maxStack: 1,
+        levelReq,
+        equipSlot: slot,
+        stats: { [stat]: Math.max(2, Math.floor(levelReq / 4) + index + 1) },
+        rarity: theme.bossOrDungeon && index >= ZONE_THEME_BASE_SLOTS.length ? 'rare' : levelReq >= 30 ? 'uncommon' : 'common',
+        sourceTags: theme.bossOrDungeon && index >= ZONE_THEME_BASE_SLOTS.length
+          ? ['drop', 'boss', 'zone_theme']
+          : ['drop', 'quest', 'zone_theme'],
+        zoneTags: [theme.id],
+      };
+    });
+  }
+
+  return result;
+}
+
 const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
   wooden_sword: {
@@ -2288,7 +2421,10 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 };
 
-export const ITEM_DEFS: Record<string, ItemDef> = normalizeItemDefs(RAW_ITEM_DEFS);
+export const ITEM_DEFS: Record<string, ItemDef> = normalizeItemDefs({
+  ...RAW_ITEM_DEFS,
+  ...createZoneThemeEquipmentDefs(),
+});
 
 /** 新手初始裝備（創建角色時給予） */
 export const STARTER_ITEMS = [

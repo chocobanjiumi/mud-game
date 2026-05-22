@@ -67,6 +67,8 @@ const ROOM_PLACE_SENSE_PATTERNS = [
 const ROOM_PLAY_CLUE_PATTERN = /怪|魔物|敵|守衛|首領|王|資源|礦|草藥|魚|NPC|商人|導師|可調查|調查|inspect|search|look|危險|風險|陷阱|捷徑|寶箱|任務|委託|戰鬥|採集|loot|corpse|monster|resource|npc|danger|shortcut|chest|quest|補給|服務|交通|回程|安全|遭遇|遭遇點|路線|機關|鑰|封印|巡邏|伏擊|迷路|解謎|收集|取得|開啟|啟用|傳送|標記|整理|撤退|背包|裝備|等級|玩家|可用|可以|能夠|適合|協助|提示|判斷|警告|練習|生物|飛龍|古龍|幼龍|水母|烏鴉|田鼠|史萊姆|盜匪|流放者|術士|兵器|雷獸|巨人|精靈|狼|龍|探索點|事件點|儀式|揭示|前哨|守護/i;
 const ROOM_DIRECTION_PATTERN = /北|南|東|西|上|下|入口|出口|道路|小路|路|河|牆|坡|門|橋|階|地標|通往|回到|連到|前往|沿著|旁|側|盡頭|中央|方向|north|south|east|west|up|down|exit|road|river|wall|slope|gate|door|bridge|stair|landmark/i;
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
+const MIN_ZONE_THEME_EQUIPMENT = 6;
+const MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT = 10;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
 
@@ -314,6 +316,25 @@ function validateMonstersAndItems(): void {
     const count = Object.values(ITEM_DEFS).filter((item) => item.equipSlot === slot).length;
     if (count === 0) {
       add('error', `items:${slot}`, 'requires at least one base item for this equipment slot');
+    }
+  }
+
+  const equipmentByZone = new Map<string, number>();
+  for (const item of Object.values(ITEM_DEFS)) {
+    if (!['weapon', 'armor', 'accessory'].includes(item.type)) continue;
+    for (const zoneId of item.zoneTags ?? []) {
+      if (zoneId === 'global') continue;
+      equipmentByZone.set(zoneId, (equipmentByZone.get(zoneId) ?? 0) + 1);
+    }
+  }
+
+  for (const zone of Object.values(ZONES)) {
+    const count = equipmentByZone.get(zone.id) ?? 0;
+    if (count < MIN_ZONE_THEME_EQUIPMENT) {
+      add('error', `zone:${zone.id}`, `requires at least ${MIN_ZONE_THEME_EQUIPMENT} zone-themed equipment items, found ${count}`);
+    }
+    if ((zone.type === 'endgame' || zone.type === 'dungeon_entrance') && count < MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT) {
+      add('error', `zone:${zone.id}`, `boss or dungeon zone requires at least ${MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT} themed equipment or set pieces, found ${count}`);
     }
   }
 }
