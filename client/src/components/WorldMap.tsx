@@ -71,6 +71,7 @@ export default function WorldMap() {
 
   const currentZoneId = mapData?.zone ?? '';
   const currentRoomId = room?.id ?? '';
+  const travelNodes = mapData?.travelNodes ?? room?.travelNodes ?? [];
 
   // Calculate explored rooms per zone
   const getExploredCount = (zoneId: string) => {
@@ -210,6 +211,41 @@ export default function WorldMap() {
               );
             })}
           </svg>
+
+          <div className="mt-3 border-t border-border-dim pt-3">
+            <div className="flex items-center justify-between text-[10px] text-text-dim mb-2">
+              <span>交通點</span>
+              <span>
+                已解鎖 {travelNodes.filter((node) => node.unlocked).length}/{travelNodes.length}
+              </span>
+            </div>
+            {travelNodes.length > 0 ? (
+              <div className="grid grid-cols-2 gap-2">
+                {travelNodes.map((node) => (
+                  <button
+                    key={node.id}
+                    className={`text-left border px-2 py-1 text-[10px] ${
+                      node.unlocked
+                        ? 'border-green-500/40 bg-green-500/10 text-chat-party'
+                        : 'border-border-dim bg-bg-secondary text-text-dim'
+                    }`}
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent('terminal-command', {
+                        detail: node.unlocked ? `travel ${node.id}` : 'activate portal',
+                      }));
+                    }}
+                  >
+                    <span className="block truncate">{node.name}</span>
+                    <span className="block text-[9px] text-text-dim">
+                      {node.unlocked ? '已解鎖' : '未解鎖'} · {node.kind}
+                    </span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <div className="text-[10px] text-text-dim">目前區域沒有可顯示的交通點。</div>
+            )}
+          </div>
         </div>
 
         {/* Legend */}

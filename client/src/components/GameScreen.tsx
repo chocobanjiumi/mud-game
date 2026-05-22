@@ -47,6 +47,13 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const toggleWorldMap = useGameStore((s) => s.toggleWorldMap);
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
 
+  const openWorldMap = useCallback(() => {
+    if (!worldMapOpen) {
+      onCommand('map');
+    }
+    toggleWorldMap();
+  }, [onCommand, toggleWorldMap, worldMapOpen]);
+
   // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -73,7 +80,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         toggleLeaderboard();
       }
       if (e.key === 'm' || e.key === 'M') {
-        toggleWorldMap();
+        openWorldMap();
       }
     };
     const handleOpenShopEvent = () => {
@@ -91,7 +98,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       window.removeEventListener('open-shop', handleOpenShopEvent);
       window.removeEventListener('terminal-command', handleTerminalCommand);
     };
-  }, [shopOpen, onOpenShop, onCommand, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, toggleWorldMap]);
+  }, [shopOpen, onOpenShop, onCommand, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, openWorldMap]);
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
@@ -124,7 +131,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="角色" shortcut="C" active={characterSheetOpen} onClick={toggleCharacterSheet} />
             <QuickButton label="聊天" active={chatPanelOpen} onClick={toggleChatPanel} />
             <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
-            <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={toggleWorldMap} />
+            <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={openWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
             <QuickButton label="查看" onClick={() => onCommand('look')} />
             <QuickButton label="狀態" onClick={() => onCommand('status')} />
