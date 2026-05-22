@@ -52,6 +52,8 @@ const REQUIRED_EQUIP_SLOTS = [
 ] as const;
 const IMAGE_STYLE_PHRASE = 'dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text';
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
+const MAX_ROOM_DESCRIPTION_CHARS = 300;
+const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
 
 const findings: Finding[] = [];
 const allMonsters = { ...MONSTERS, ...EXPANSION_MONSTERS };
@@ -91,6 +93,28 @@ function hasTrafficNode(zone: ZoneDef): boolean {
   });
 }
 
+function roomSearchText(room: RoomDef): string {
+  return `${room.id} ${room.name} ${room.description}`;
+}
+
+function validateTownStructure(zone: ZoneDef): void {
+  const zoneRooms = zone.rooms.map((roomId) => ROOMS[roomId]).filter((room): room is RoomDef => !!room);
+  const countMatches = (pattern: RegExp, predicate?: (room: RoomDef) => boolean): number =>
+    zoneRooms.filter((room) => pattern.test(roomSearchText(room)) || predicate?.(room)).length;
+
+  const serviceRooms = countMatches(/inn|guild|shop|market|bank|temple|portal|training|auction|warehouse|tavern|healer|counter|stable|harbor|dock|forge|craft|公會|商店|市場|銀行|神殿|傳送|訓練|拍賣|倉庫|酒館|醫|港|碼頭|鍛|櫃|旅店|客棧/);
+  const npcQuestRooms = countMatches(/quest|guild|chief|mentor|board|council|scribe|referee|prize|contract|委託|任務|公會|長|導師|看板|議會|書記|裁判|獎|契約|NPC|祭司|商人/, (room) => (room.npcs?.length ?? 0) > 0);
+  const socialRooms = countMatches(/tavern|guild|market|square|plaza|hall|balcony|auction|class|trade|公會|市場|廣場|大廳|酒館|看台|拍賣|交易|職業|社交/);
+  const exploreRooms = countMatches(/hidden|secret|cellar|canal|alley|ruin|暗|隱|秘|地窖|水道|後巷|遺跡/);
+  const trafficRooms = countMatches(/portal|gate|harbor|dock|road|entrance|shrine|station|傳送|門|港|碼頭|道路|入口|祠|站/);
+
+  if (serviceRooms < 6) add('error', `zone:${zone.id}`, `town requires at least 6 service rooms, found ${serviceRooms}`);
+  if (npcQuestRooms < 4) add('error', `zone:${zone.id}`, `town requires at least 4 NPC or quest rooms, found ${npcQuestRooms}`);
+  if (socialRooms < 3) add('error', `zone:${zone.id}`, `town requires at least 3 social, guild, trade, or class rooms, found ${socialRooms}`);
+  if (exploreRooms < 2) add('error', `zone:${zone.id}`, `town requires at least 2 exploration or hidden rooms, found ${exploreRooms}`);
+  if (trafficRooms < 1) add('error', `zone:${zone.id}`, `town requires at least 1 traffic room, found ${trafficRooms}`);
+}
+
 function roomImagePath(room: RoomDef): string {
   return path.join(ROOM_IMAGE_DIR, room.image ?? `${room.id}.png`);
 }
@@ -127,6 +151,10 @@ function validateZones(): void {
       add('error', `zone:${zone.id}`, 'requires at least one traffic node, portal, entrance, shortcut, or recall route');
     }
 
+    if (zone.type === 'town') {
+      validateTownStructure(zone);
+    }
+
     if (zone.type !== 'town') {
       const combatRooms = zone.rooms.filter((roomId) => (ROOMS[roomId]?.monsters?.length ?? 0) > 0);
       if (combatRooms.length < MIN_NON_TOWN_COMBAT_ROOMS) {
@@ -149,6 +177,10 @@ function validateRooms(): void {
   const occupied = new Map<string, string>();
 
   for (const room of Object.values(ROOMS)) {
+    if (!ROOM_ID_PATTERN.test(room.id)) {
+      add('error', `room:${room.id}`, 'room id must use readable lowercase snake_case');
+    }
+
     for (const field of REQUIRED_ROOM_FIELDS) {
       const value = room[field];
       if (value === undefined || value === null || value === '') {
@@ -164,6 +196,9 @@ function validateRooms(): void {
     const count = chineseCharCount(room.description);
     if (count < minDescription) {
       add('error', `room:${room.id}`, `description has ${count} Chinese chars; requires at least ${minDescription}`);
+    }
+    if (count > MAX_ROOM_DESCRIPTION_CHARS) {
+      add('error', `room:${room.id}`, `description has ${count} Chinese chars; should not exceed ${MAX_ROOM_DESCRIPTION_CHARS}`);
     }
 
     if (!room.exits || room.exits.length === 0) {
