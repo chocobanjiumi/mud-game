@@ -502,9 +502,12 @@ export class CorpseManager {
     return [...(this.corpsesByRoom.get(roomId) ?? [])];
   }
 
-  findCorpse(roomId: string, query?: string, now = Date.now()): CorpseContainer | undefined {
+  findCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): CorpseContainer | undefined {
     const corpses = this.getCorpses(roomId, now);
     if (!query || query.trim().length === 0 || query === 'corpse' || query === '屍體') {
+      if (characterId) {
+        return corpses.find(corpse => this.canLootCorpse(corpse, characterId, now)) ?? corpses[0];
+      }
       return corpses[0];
     }
 
@@ -519,7 +522,7 @@ export class CorpseManager {
   }
 
   searchCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): LootCorpseResult {
-    const corpse = this.findCorpse(roomId, query, now);
+    const corpse = this.findCorpse(roomId, query, now, characterId);
     if (!corpse) {
       return { ok: false, message: '這裡沒有可搜尋的屍體。' };
     }
@@ -540,7 +543,7 @@ export class CorpseManager {
   }
 
   lootCorpse(roomId: string, characterId: string, query?: string, now = Date.now()): LootCorpseResult {
-    const corpse = this.findCorpse(roomId, query, now);
+    const corpse = this.findCorpse(roomId, query, now, characterId);
     if (!corpse) {
       return { ok: false, message: '這裡沒有可搜刮的屍體。' };
     }
@@ -604,6 +607,13 @@ export class CorpseManager {
     const personalCount = (corpse.personalItems[characterId] ?? [])
       .reduce((sum, item) => sum + item.quantity, 0);
     return sharedCount + personalCount;
+  }
+
+  private canLootCorpse(corpse: CorpseContainer, characterId: string, now: number): boolean {
+    if (now < corpse.protectedUntil && !corpse.participantIds.includes(characterId)) return false;
+    return corpse.gold > 0
+      || corpse.items.length > 0
+      || (corpse.personalItems[characterId]?.length ?? 0) > 0;
   }
 
   private clonePersonalItems(

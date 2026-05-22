@@ -580,6 +580,37 @@ describe('CorpseManager', () => {
     expect(result.message).toContain('搜刮一空');
   });
 
+  it('targets the next lootable corpse when using generic corpse query', () => {
+    const corpses = new CorpseManager();
+    const firstMonster = makeMonsterInstance({ id: 'green_slime', name: 'Green Slime' });
+    const secondMonster = makeMonsterInstance({ id: 'red_slime', name: 'Red Slime' });
+
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: firstMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 7, items: [] },
+      now,
+    });
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: secondMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 11, items: [] },
+      now,
+    });
+
+    const first = corpses.lootCorpse('plains', 'player-1', 'corpse', now);
+    const second = corpses.lootCorpse('plains', 'player-1', 'corpse', now);
+
+    expect(first.corpse?.monsterId).toBe('green_slime');
+    expect(first.loot?.gold).toBe(7);
+    expect(second.corpse?.monsterId).toBe('red_slime');
+    expect(second.loot?.gold).toBe(11);
+  });
+
   it('keeps personal quest items separate for each looter', () => {
     const corpses = new CorpseManager();
     const monster = makeMonsterInstance();
