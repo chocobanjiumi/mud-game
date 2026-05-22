@@ -23764,4 +23764,534 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 死都外門擴充 (Lv 40-52) ───────────────────────────
+
+  necropolis_gate_black_approach: {
+    id: 'necropolis_gate_black_approach',
+    name: '黑門引道',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_black_approach.png',
+    imagePrompt: '黑門引道 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑門引道位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'east', targetRoomId: 'necropolis_gate_half_open_gate', description: '半開黑門在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_mourner_steps', description: '哀悼階在北側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑門引道的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '黑門引道的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '黑門引道殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_half_open_gate: {
+    id: 'necropolis_gate_half_open_gate',
+    name: '半開黑門',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_half_open_gate.png',
+    imagePrompt: '半開黑門 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '半開黑門位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_black_approach', description: '回到黑門引道' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_bone_causeway', description: '白骨堤道在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_silent_muster', description: '靜默列陣在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '半開黑門的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '半開黑門的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '半開黑門殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_bone_causeway: {
+    id: 'necropolis_gate_bone_causeway',
+    name: '白骨堤道',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_bone_causeway.png',
+    imagePrompt: '白骨堤道 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '白骨堤道位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_half_open_gate', description: '回到半開黑門' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_iron_ossuary', description: '鐵骨藏室在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_grave_banner_line', description: '墓旗線在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[堤]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '白骨堤道的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '白骨堤道的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '白骨堤道殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_silent_muster: {
+    id: 'necropolis_gate_silent_muster',
+    name: '靜默列陣',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_silent_muster.png',
+    imagePrompt: '靜默列陣 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '靜默列陣位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_half_open_gate', description: '回到半開黑門' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_grave_banner_line', description: '墓旗線在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_watchless_tower', description: '無守望塔在北側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[陣]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '靜默列陣的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '靜默列陣的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '靜默列陣殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_grave_banner_line: {
+    id: 'necropolis_gate_grave_banner_line',
+    name: '墓旗線',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_grave_banner_line.png',
+    imagePrompt: '墓旗線 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '墓旗線位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_silent_muster', description: '回到靜默列陣' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_bone_causeway', description: '回到白骨堤道' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_soul_well', description: '魂井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[旗]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '墓旗線的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '墓旗線的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '墓旗線殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_iron_ossuary: {
+    id: 'necropolis_gate_iron_ossuary',
+    name: '鐵骨藏室',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_iron_ossuary.png',
+    imagePrompt: '鐵骨藏室 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐵骨藏室位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_bone_causeway', description: '回到白骨堤道' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_soul_well', description: '魂井在北側' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_charnel_bridge', description: '屍橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[骨]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '鐵骨藏室的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '鐵骨藏室的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '鐵骨藏室殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_soul_well: {
+    id: 'necropolis_gate_soul_well',
+    name: '魂井',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_soul_well.png',
+    imagePrompt: '魂井 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '魂井位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_grave_banner_line', description: '回到墓旗線' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_iron_ossuary', description: '回到鐵骨藏室' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_war_drum_yard', description: '戰鼓庭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '魂井的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '魂井的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '魂井殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_mourner_steps: {
+    id: 'necropolis_gate_mourner_steps',
+    name: '哀悼階',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_mourner_steps.png',
+    imagePrompt: '哀悼階 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '哀悼階位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_black_approach', description: '回到黑門引道' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_watchless_tower', description: '無守望塔在北側' },
+    ],
+    monsters: [
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '哀悼階的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '哀悼階的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '哀悼階殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_watchless_tower: {
+    id: 'necropolis_gate_watchless_tower',
+    name: '無守望塔',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_watchless_tower.png',
+    imagePrompt: '無守望塔 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '無守望塔位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'south', targetRoomId: 'necropolis_gate_mourner_steps', description: '回到哀悼階' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_crypt_market', description: '墓市廊在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[塔]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '無守望塔的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '無守望塔的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '無守望塔殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_crypt_market: {
+    id: 'necropolis_gate_crypt_market',
+    name: '墓市廊',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_crypt_market.png',
+    imagePrompt: '墓市廊 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '墓市廊位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_watchless_tower', description: '回到無守望塔' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_war_drum_yard', description: '戰鼓庭在東側' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_death_roll_archive', description: '死亡名冊庫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[市]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '墓市廊的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '墓市廊的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '墓市廊殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_war_drum_yard: {
+    id: 'necropolis_gate_war_drum_yard',
+    name: '戰鼓庭',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_war_drum_yard.png',
+    imagePrompt: '戰鼓庭 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '戰鼓庭位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_crypt_market', description: '回到墓市廊' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_soul_well', description: '回到魂井' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_wight_barracks', description: '怨衛兵營在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[鼓]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '戰鼓庭的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '戰鼓庭的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '戰鼓庭殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_charnel_bridge: {
+    id: 'necropolis_gate_charnel_bridge',
+    name: '屍橋',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_charnel_bridge.png',
+    imagePrompt: '屍橋 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '屍橋位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_iron_ossuary', description: '回到鐵骨藏室' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_plague_censer', description: '疫香爐在東側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '屍橋的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '屍橋的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '屍橋殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_wight_barracks: {
+    id: 'necropolis_gate_wight_barracks',
+    name: '怨衛兵營',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_wight_barracks.png',
+    imagePrompt: '怨衛兵營 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '怨衛兵營位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_war_drum_yard', description: '回到戰鼓庭' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '怨衛兵營的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '怨衛兵營的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '怨衛兵營殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_plague_censer: {
+    id: 'necropolis_gate_plague_censer',
+    name: '疫香爐',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_plague_censer.png',
+    imagePrompt: '疫香爐 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '疫香爐位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_charnel_bridge', description: '回到屍橋' },
+      { direction: 'north', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[疫]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '疫香爐的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '疫香爐的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '疫香爐殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_eclipsed_statue: {
+    id: 'necropolis_gate_eclipsed_statue',
+    name: '蝕日雕像',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_eclipsed_statue.png',
+    imagePrompt: '蝕日雕像 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蝕日雕像位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'east', targetRoomId: 'necropolis_gate_death_roll_archive', description: '死亡名冊庫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '蝕日雕像的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '蝕日雕像的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '蝕日雕像殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_death_roll_archive: {
+    id: 'necropolis_gate_death_roll_archive',
+    name: '死亡名冊庫',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_death_roll_archive.png',
+    imagePrompt: '死亡名冊庫 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '死亡名冊庫位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_eclipsed_statue', description: '回到蝕日雕像' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_crypt_market', description: '回到墓市廊' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_void_crack', description: '虛空裂縫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[冊]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '死亡名冊庫的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '死亡名冊庫的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '死亡名冊庫殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_void_crack: {
+    id: 'necropolis_gate_void_crack',
+    name: '虛空裂縫',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_void_crack.png',
+    imagePrompt: '虛空裂縫 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '虛空裂縫位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_death_roll_archive', description: '回到死亡名冊庫' },
+      { direction: 'south', targetRoomId: 'necropolis_gate_plague_censer', description: '回到疫香爐' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_inner_portcullis', description: '內城閘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[裂]',
+    mapX: 5,
+    mapY: 2,
+    guardianHints: {
+      creature: '虛空裂縫的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '虛空裂縫的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '虛空裂縫殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_inner_portcullis: {
+    id: 'necropolis_gate_inner_portcullis',
+    name: '內城閘',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_inner_portcullis.png',
+    imagePrompt: '內城閘 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '內城閘位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_void_crack', description: '回到虛空裂縫' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_bone_throne_antechamber', description: '骨王座前廳在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[閘]',
+    mapX: 6,
+    mapY: 2,
+    guardianHints: {
+      creature: '內城閘的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '內城閘的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '內城閘殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_bone_throne_antechamber: {
+    id: 'necropolis_gate_bone_throne_antechamber',
+    name: '骨王座前廳',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_bone_throne_antechamber.png',
+    imagePrompt: '骨王座前廳 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨王座前廳位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_inner_portcullis', description: '回到內城閘' },
+      { direction: 'east', targetRoomId: 'necropolis_gate_dead_city_threshold', description: '死都門檻在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[座]',
+    mapX: 7,
+    mapY: 2,
+    guardianHints: {
+      creature: '骨王座前廳的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '骨王座前廳的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '骨王座前廳殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
+  necropolis_gate_dead_city_threshold: {
+    id: 'necropolis_gate_dead_city_threshold',
+    name: '死都門檻',
+    zone: 'necropolis_gate' as RoomDef['zone'],
+    image: 'necropolis_gate_dead_city_threshold.png',
+    imagePrompt: '死都門檻 in necropolis_gate, necropolis gate endgame dark fortress with half open black gate, bone causeway, undead army formation, soul well, void crack, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '死都門檻位於通往死者之城的巨大黑門前，半開門縫、白骨堤道、墓旗線、魂井、屍橋與無人守望塔共同標出終局戰場的入口。這裡是陣營衝突、精英巡邏與世界王前哨區，玩家可以 inspect 軍靴刻痕、墓旗符號、魂井回聲和內城閘鎖來判斷亡軍動向，也能 search 鐵骨藏室、墓市廊、死亡名冊庫與骨王座前廳尋找死都線索。若隊伍忽略戰鼓節奏、虛空裂縫與怨衛列隊，巫妖、魔族將軍、虛空行者與深淵領主會封鎖撤退；若穩定沿黑門、屍橋與內城閘推進，則能抵達死都門檻並帶回亡軍集結記錄、黑門符印與陣營戰報與撤退暗號。',
+    exits: [
+      { direction: 'west', targetRoomId: 'necropolis_gate_bone_throne_antechamber', description: '回到骨王座前廳' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+      { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 480 },
+    ],
+    mapSymbol: '[都]',
+    mapX: 8,
+    mapY: 2,
+    guardianHints: {
+      creature: '死都門檻的軍靴聲若突然整齊停下，附近亡軍或深淵巡邏可能正在換陣。',
+      treasure: '死都門檻的墓旗、名冊或骨縫旁可能藏著死都外門線索。',
+      spirit: '死都門檻殘留亡軍集結、黑門開啟與陣營戰火逼近的記憶。',
+    },
+  },
+
 };

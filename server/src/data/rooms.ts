@@ -1215,7 +1215,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [3, 4],
     primaryElements: ['dark'],
-    rooms: [],
+    rooms: [
+      'necropolis_gate_black_approach', 'necropolis_gate_half_open_gate', 'necropolis_gate_bone_causeway', 'necropolis_gate_silent_muster', 'necropolis_gate_grave_banner_line', 'necropolis_gate_iron_ossuary', 'necropolis_gate_soul_well', 'necropolis_gate_mourner_steps', 'necropolis_gate_watchless_tower', 'necropolis_gate_crypt_market', 'necropolis_gate_war_drum_yard', 'necropolis_gate_charnel_bridge', 'necropolis_gate_wight_barracks', 'necropolis_gate_plague_censer', 'necropolis_gate_eclipsed_statue', 'necropolis_gate_death_roll_archive', 'necropolis_gate_void_crack', 'necropolis_gate_inner_portcullis', 'necropolis_gate_bone_throne_antechamber', 'necropolis_gate_dead_city_threshold'
+    ],
   },
   sunspire: {
     id: 'sunspire',
