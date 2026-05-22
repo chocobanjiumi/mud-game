@@ -11098,4 +11098,535 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '風暴王峰保留著風暴高原被風神祭壇與雷雲長年塑形的記憶。',
     },
   },
+  blackwood_charcoal_gate: {
+    id: 'blackwood_charcoal_gate',
+    name: '炭樹入口',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_charcoal_gate.png',
+    imagePrompt: '炭樹入口 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '炭樹入口位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'east', targetRoomId: 'blackwood_ash_path', description: '灰徑通往林內' },
+      { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '炭樹入口的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '炭樹入口的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '炭樹入口保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_ash_path: {
+    id: 'blackwood_ash_path',
+    name: '灰燼小徑',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_ash_path.png',
+    imagePrompt: '灰燼小徑 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '灰燼小徑位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_charcoal_gate', description: '灰徑回到炭樹入口' },
+      { direction: 'east', targetRoomId: 'blackwood_moving_copse', description: '樹影通往移動樹叢' },
+      { direction: 'south', targetRoomId: 'blackwood_black_moss_bed', description: '苔痕落向黑苔床' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[徑]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '灰燼小徑的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '灰燼小徑的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '灰燼小徑保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_hunter_marker: {
+    id: 'blackwood_hunter_marker',
+    name: '獵人刻痕',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_hunter_marker.png',
+    imagePrompt: '獵人刻痕 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵人刻痕位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口' },
+      { direction: 'east', targetRoomId: 'blackwood_raven_roost', description: '羽毛路通往渡鴉棲枝' },
+    ],
+    monsters: [
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[獵]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '獵人刻痕的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '獵人刻痕的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '獵人刻痕保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_raven_roost: {
+    id: 'blackwood_raven_roost',
+    name: '渡鴉棲枝',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_raven_roost.png',
+    imagePrompt: '渡鴉棲枝 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '渡鴉棲枝位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_hunter_marker', description: '羽毛路回到獵人刻痕' },
+      { direction: 'east', targetRoomId: 'blackwood_webbed_crossing', description: '蛛絲路通往織網岔口' },
+      { direction: 'south', targetRoomId: 'blackwood_moving_copse', description: '低枝路回到移動樹叢' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 140 },
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[鴉]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '渡鴉棲枝的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '渡鴉棲枝的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '渡鴉棲枝保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_moving_copse: {
+    id: 'blackwood_moving_copse',
+    name: '移動樹叢',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_moving_copse.png',
+    imagePrompt: '移動樹叢 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '移動樹叢位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_ash_path', description: '樹影回到灰燼小徑' },
+      { direction: 'north', targetRoomId: 'blackwood_raven_roost', description: '低枝路通往渡鴉棲枝' },
+      { direction: 'east', targetRoomId: 'blackwood_root_maze', description: '盤根路通往根迷宮' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[移]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '移動樹叢的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '移動樹叢的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '移動樹叢保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_black_moss_bed: {
+    id: 'blackwood_black_moss_bed',
+    name: '黑苔床',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_black_moss_bed.png',
+    imagePrompt: '黑苔床 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑苔床位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑' },
+      { direction: 'east', targetRoomId: 'blackwood_witch_hollow', description: '藥草味通往女巫樹洞' },
+    ],
+    monsters: [
+      { monsterId: 'forest_spider', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[苔]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '黑苔床的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '黑苔床的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '黑苔床保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_webbed_crossing: {
+    id: 'blackwood_webbed_crossing',
+    name: '織網岔口',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_webbed_crossing.png',
+    imagePrompt: '織網岔口 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '織網岔口位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_raven_roost', description: '蛛絲路回到渡鴉棲枝' },
+      { direction: 'south', targetRoomId: 'blackwood_root_maze', description: '網線落向根迷宮' },
+      { direction: 'east', targetRoomId: 'blackwood_dark_elf_blind', description: '暗箭路通往暗精靈伏臺' },
+    ],
+    monsters: [
+      { monsterId: 'forest_spider', maxCount: 4, respawnSeconds: 80 },
+      { monsterId: 'giant_spider', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[網]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '織網岔口的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '織網岔口的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '織網岔口保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_root_maze: {
+    id: 'blackwood_root_maze',
+    name: '盤根迷宮',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_root_maze.png',
+    imagePrompt: '盤根迷宮 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '盤根迷宮位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_moving_copse', description: '盤根路回到移動樹叢' },
+      { direction: 'north', targetRoomId: 'blackwood_webbed_crossing', description: '網線回到織網岔口' },
+      { direction: 'east', targetRoomId: 'blackwood_sap_pool', description: '黏液痕通往黑樹脂池' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[根]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '盤根迷宮的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '盤根迷宮的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '盤根迷宮保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_witch_hollow: {
+    id: 'blackwood_witch_hollow',
+    name: '女巫樹洞',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_witch_hollow.png',
+    imagePrompt: '女巫樹洞 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '女巫樹洞位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_black_moss_bed', description: '藥草味回到黑苔床' },
+      { direction: 'east', targetRoomId: 'blackwood_bone_chimes', description: '骨鈴路通往骨鈴林' },
+      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '無月空地向南展開' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[巫]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '女巫樹洞的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '女巫樹洞的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '女巫樹洞保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_dark_elf_blind: {
+    id: 'blackwood_dark_elf_blind',
+    name: '暗精靈伏臺',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_dark_elf_blind.png',
+    imagePrompt: '暗精靈伏臺 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暗精靈伏臺位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_webbed_crossing', description: '暗箭路回到織網岔口' },
+      { direction: 'east', targetRoomId: 'blackwood_poison_fern', description: '毒蕨坡通往毒蕨林' },
+      { direction: 'south', targetRoomId: 'blackwood_sap_pool', description: '斜梯落向黑樹脂池' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 3, respawnSeconds: 140 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[伏]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '暗精靈伏臺的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '暗精靈伏臺的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '暗精靈伏臺保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_sap_pool: {
+    id: 'blackwood_sap_pool',
+    name: '黑樹脂池',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_sap_pool.png',
+    imagePrompt: '黑樹脂池 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑樹脂池位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_root_maze', description: '黏液痕回到盤根迷宮' },
+      { direction: 'north', targetRoomId: 'blackwood_dark_elf_blind', description: '斜梯回到暗精靈伏臺' },
+      { direction: 'east', targetRoomId: 'blackwood_burnt_totem', description: '焦木路通往燒焦圖騰' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_treant', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[脂]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑樹脂池的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '黑樹脂池的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '黑樹脂池保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_bone_chimes: {
+    id: 'blackwood_bone_chimes',
+    name: '骨鈴林',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_bone_chimes.png',
+    imagePrompt: '骨鈴林 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨鈴林位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_witch_hollow', description: '骨鈴路回到女巫樹洞' },
+      { direction: 'east', targetRoomId: 'blackwood_burnt_totem', description: '吊骨路通往燒焦圖騰' },
+      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '鈴聲落向無月空地' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 90 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[鈴]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '骨鈴林的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '骨鈴林的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '骨鈴林保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_moonless_glade: {
+    id: 'blackwood_moonless_glade',
+    name: '無月空地',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_moonless_glade.png',
+    imagePrompt: '無月空地 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '無月空地位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞' },
+      { direction: 'east', targetRoomId: 'blackwood_wolf_den', description: '爪痕通往影狼窩' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[月]',
+    mapX: 3,
+    mapY: -2,
+    guardianHints: {
+      creature: '無月空地的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '無月空地的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '無月空地保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_poison_fern: {
+    id: 'blackwood_poison_fern',
+    name: '毒蕨林',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_poison_fern.png',
+    imagePrompt: '毒蕨林 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '毒蕨林位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_dark_elf_blind', description: '毒蕨坡回到伏臺' },
+      { direction: 'east', targetRoomId: 'blackwood_hollow_log_bridge', description: '倒木橋通往空心木橋' },
+    ],
+    monsters: [
+      { monsterId: 'forest_spider', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'dark_elf_archer', maxCount: 2, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[蕨]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '毒蕨林的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '毒蕨林的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '毒蕨林保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_burnt_totem: {
+    id: 'blackwood_burnt_totem',
+    name: '燒焦圖騰',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_burnt_totem.png',
+    imagePrompt: '燒焦圖騰 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燒焦圖騰位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_sap_pool', description: '焦木路回到黑樹脂池' },
+      { direction: 'north', targetRoomId: 'blackwood_poison_fern', description: '煙痕路通往毒蕨林' },
+      { direction: 'east', targetRoomId: 'blackwood_elder_ring', description: '炭圈通往長老樹環' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[圖]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '燒焦圖騰的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '燒焦圖騰的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '燒焦圖騰保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_wolf_den: {
+    id: 'blackwood_wolf_den',
+    name: '影狼窩',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_wolf_den.png',
+    imagePrompt: '影狼窩 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '影狼窩位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_moonless_glade', description: '爪痕回到無月空地' },
+      { direction: 'east', targetRoomId: 'blackwood_fallen_shrine', description: '獸道通往倒塌小祠' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_wolf', maxCount: 4, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[狼]',
+    mapX: 4,
+    mapY: -2,
+    guardianHints: {
+      creature: '影狼窩的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '影狼窩的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '影狼窩保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_hollow_log_bridge: {
+    id: 'blackwood_hollow_log_bridge',
+    name: '空心木橋',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_hollow_log_bridge.png',
+    imagePrompt: '空心木橋 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '空心木橋位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_poison_fern', description: '倒木橋回到毒蕨林' },
+      { direction: 'south', targetRoomId: 'blackwood_elder_ring', description: '樹洞階落向長老樹環' },
+    ],
+    monsters: [
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '空心木橋的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '空心木橋的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '空心木橋保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_elder_ring: {
+    id: 'blackwood_elder_ring',
+    name: '長老樹環',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_elder_ring.png',
+    imagePrompt: '長老樹環 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '長老樹環位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_burnt_totem', description: '炭圈回到燒焦圖騰' },
+      { direction: 'north', targetRoomId: 'blackwood_hollow_log_bridge', description: '樹洞階回到空心木橋' },
+      { direction: 'east', targetRoomId: 'blackwood_heartwood_core', description: '年輪路通往黑心木核' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_treant', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[環]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '長老樹環的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '長老樹環的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '長老樹環保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_fallen_shrine: {
+    id: 'blackwood_fallen_shrine',
+    name: '倒塌小祠',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_fallen_shrine.png',
+    imagePrompt: '倒塌小祠 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '倒塌小祠位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_wolf_den', description: '獸道回到影狼窩' },
+      { direction: 'north', targetRoomId: 'blackwood_elder_ring', description: '斷柱路通往長老樹環' },
+      { direction: 'east', targetRoomId: 'blackwood_heartwood_core', description: '祠後根道通往黑心木核' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[祠]',
+    mapX: 5,
+    mapY: -2,
+    guardianHints: {
+      creature: '倒塌小祠的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '倒塌小祠的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '倒塌小祠保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
+
+  blackwood_heartwood_core: {
+    id: 'blackwood_heartwood_core',
+    name: '黑心木核',
+    zone: 'blackwood' as RoomDef['zone'],
+    image: 'blackwood_heartwood_core.png',
+    imagePrompt: '黑心木核 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '黑心木核位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
+    exits: [
+      { direction: 'west', targetRoomId: 'blackwood_elder_ring', description: '年輪路回到長老樹環' },
+      { direction: 'south', targetRoomId: 'blackwood_fallen_shrine', description: '祠後根道回到倒塌小祠' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '黑心木核的樹影若與火光方向相反，附近獵食者通常已經開始包抄。',
+      treasure: '黑心木核的苔床、樹脂裂縫或舊祭器旁可能藏著黑木林採集線索。',
+      spirit: '黑心木核保留著黑木林從普通森林變成會移動陰影迷宮的記憶。',
+    },
+  },
 };
