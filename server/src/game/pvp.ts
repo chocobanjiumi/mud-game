@@ -9,6 +9,7 @@ import { recordPvp, updateLeaderboard } from '../db/database.js';
 import { getDb } from '../db/schema.js';
 import { getInventory, removeInventoryItem, addInventoryItem } from '../db/queries.js';
 import { expRequiredForLevel } from './player.js';
+import { cancelPvpDangerEvacCasts } from './pvp-evac-cast.js';
 import { recordRecentPvpDamageForCombat } from './pvp-travel-lock.js';
 import { questMgr, classQuest2Mgr } from './state.js';
 
@@ -301,6 +302,7 @@ export class PvPManager {
     player2Char: Character,
     type: 'duel' | 'arena',
   ): void {
+    cancelPvpDangerEvacCasts([player1Id, player2Id]);
     recordRecentPvpDamageForCombat([player1Id, player2Id]);
 
     // 將 player2 模擬為「怪物」以使用戰鬥引擎
@@ -370,6 +372,7 @@ export class PvPManager {
     loserChar: Character,
     type: 'duel' | 'arena',
   ): void {
+    cancelPvpDangerEvacCasts([winnerId, loserId]);
     recordRecentPvpDamageForCombat([winnerId, loserId]);
 
     // 計算 ELO 變動

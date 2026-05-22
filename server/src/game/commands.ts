@@ -62,6 +62,7 @@ import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffi
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
 import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
 import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventorySlotLoad } from './inventory-capacity.js';
+import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
@@ -2160,6 +2161,36 @@ function cmdTravel(session: WsSession, target: string): void {
   const pvpDamageCheck = canUsePvpDamageRestrictedTravel(char);
   if (!pvpDamageCheck.ok) {
     sendError(session.sessionId, pvpDamageCheck.message);
+    return;
+  }
+
+  if (node.kind === 'danger_evac') {
+    const originRoomId = char.roomId;
+    const cast = beginPvpDangerEvacCast(char.id, () => {
+      const currentChar = getChar(session);
+      if (!currentChar) return;
+      if (currentChar.roomId !== originRoomId) {
+        sendError(session.sessionId, '危險撤離讀條因位置改變而中止。');
+        return;
+      }
+      completeTravel(session, node);
+    });
+    if (!cast.ok) {
+      sendError(session.sessionId, `危險撤離讀條進行中，還需 ${cast.remainingSeconds} 秒。`);
+      return;
+    }
+    sendSystem(session.sessionId, `開始啟動 ${node.name}，需要 ${cast.seconds} 秒讀條。受到 PvP 攻擊會中斷撤離。`);
+    return;
+  }
+
+  completeTravel(session, node);
+}
+
+function completeTravel(session: WsSession, node: TravelNodeDef): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (isInCombat(char.id)) {
+    sendError(session.sessionId, '戰鬥中無法使用傳送。');
     return;
   }
 
