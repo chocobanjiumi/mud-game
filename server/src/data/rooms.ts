@@ -1078,7 +1078,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['fire', 'none'],
-    rooms: [],
+    rooms: [
+      'ember_march_ash_gate', 'ember_march_cinder_road', 'ember_march_smoke_trench', 'ember_march_charred_milestone', 'ember_march_burnt_watchpost', 'ember_march_lava_crack', 'ember_march_glass_ash_field', 'ember_march_war_camp_ruin', 'ember_march_slag_bridge', 'ember_march_firegrass_flat', 'ember_march_worm_burrow', 'ember_march_black_sand_basin', 'ember_march_ember_forge', 'ember_march_fallen_banner', 'ember_march_scorched_oasis', 'ember_march_bonekiln_pass', 'ember_march_molten_toll', 'ember_march_dragonprint_ridge', 'ember_march_border_keep_shell', 'ember_march_heartfire_breach'
+    ],
   },
   reef_of_bones: {
     id: 'reef_of_bones',
