@@ -1249,7 +1249,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 8,
     recommendedPartySize: [2, 4],
     primaryElements: ['light', 'dark', 'nature'],
-    rooms: [],
+    rooms: [
+      'moonshadow_court_moonlit_gate', 'moonshadow_court_dreamglass_foyer', 'moonshadow_court_silver_bramble_path', 'moonshadow_court_twilight_fountain', 'moonshadow_court_masked_ball_hall', 'moonshadow_court_moth_lantern_gallery', 'moonshadow_court_whispering_hedge', 'moonshadow_court_lunar_arboretum', 'moonshadow_court_oath_mirror_room', 'moonshadow_court_velvet_duel_court', 'moonshadow_court_fae_archive', 'moonshadow_court_nightbloom_garden', 'moonshadow_court_crescent_bridge', 'moonshadow_court_shadow_throne_steps', 'moonshadow_court_queen_silence_chapel', 'moonshadow_court_moonwell_balcony', 'moonshadow_court_dream_harvest_grove', 'moonshadow_court_glass_deer_paddock', 'moonshadow_court_eclipse_curtain', 'moonshadow_court_hidden_court_core'
+    ],
   },
   machine_graveyard: {
     id: 'machine_graveyard',

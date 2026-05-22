@@ -24824,4 +24824,543 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+
+  // ─── 月影庭擴充 (Lv 38-50) ───────────────────────────
+
+  moonshadow_court_moonlit_gate: {
+    id: 'moonshadow_court_moonlit_gate',
+    name: '月影門',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_moonlit_gate.png',
+    imagePrompt: '月影門 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月影門位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'east', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '夢玻前廳在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_whispering_hedge', description: '低語樹籬在北側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '月影門的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '月影門的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '月影門殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_dreamglass_foyer: {
+    id: 'moonshadow_court_dreamglass_foyer',
+    name: '夢玻前廳',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_dreamglass_foyer.png',
+    imagePrompt: '夢玻前廳 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '夢玻前廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_moonlit_gate', description: '回到月影門' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_silver_bramble_path', description: '銀棘小徑在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_twilight_fountain', description: '暮光噴泉在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[廳]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '夢玻前廳的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '夢玻前廳的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '夢玻前廳殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_silver_bramble_path: {
+    id: 'moonshadow_court_silver_bramble_path',
+    name: '銀棘小徑',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_silver_bramble_path.png',
+    imagePrompt: '銀棘小徑 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀棘小徑位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '回到夢玻前廳' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '假面舞廳在北側' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[棘]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '銀棘小徑的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '銀棘小徑的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '銀棘小徑殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_twilight_fountain: {
+    id: 'moonshadow_court_twilight_fountain',
+    name: '暮光噴泉',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_twilight_fountain.png',
+    imagePrompt: '暮光噴泉 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暮光噴泉位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'moonshadow_court_dreamglass_foyer', description: '回到夢玻前廳' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '假面舞廳在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '月相樹園在北側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[泉]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '暮光噴泉的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '暮光噴泉的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '暮光噴泉殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_masked_ball_hall: {
+    id: 'moonshadow_court_masked_ball_hall',
+    name: '假面舞廳',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_masked_ball_hall.png',
+    imagePrompt: '假面舞廳 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '假面舞廳位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_twilight_fountain', description: '回到暮光噴泉' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_silver_bramble_path', description: '回到銀棘小徑' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_moth_lantern_gallery', description: '蛾燈長廊在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '誓鏡室在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[舞]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '假面舞廳的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '假面舞廳的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '假面舞廳殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_moth_lantern_gallery: {
+    id: 'moonshadow_court_moth_lantern_gallery',
+    name: '蛾燈長廊',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_moth_lantern_gallery.png',
+    imagePrompt: '蛾燈長廊 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '蛾燈長廊位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '回到假面舞廳' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '絨幕決鬥庭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[燈]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '蛾燈長廊的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '蛾燈長廊的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '蛾燈長廊殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_whispering_hedge: {
+    id: 'moonshadow_court_whispering_hedge',
+    name: '低語樹籬',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_whispering_hedge.png',
+    imagePrompt: '低語樹籬 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '低語樹籬位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'moonshadow_court_moonlit_gate', description: '回到月影門' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '月相樹園在東側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[籬]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '低語樹籬的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '低語樹籬的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '低語樹籬殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_lunar_arboretum: {
+    id: 'moonshadow_court_lunar_arboretum',
+    name: '月相樹園',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_lunar_arboretum.png',
+    imagePrompt: '月相樹園 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月相樹園位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_whispering_hedge', description: '回到低語樹籬' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_twilight_fountain', description: '回到暮光噴泉' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '誓鏡室在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_nightbloom_garden', description: '夜花庭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[樹]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '月相樹園的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '月相樹園的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '月相樹園殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_oath_mirror_room: {
+    id: 'moonshadow_court_oath_mirror_room',
+    name: '誓鏡室',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_oath_mirror_room.png',
+    imagePrompt: '誓鏡室 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '誓鏡室位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '回到月相樹園' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_masked_ball_hall', description: '回到假面舞廳' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '絨幕決鬥庭在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_crescent_bridge', description: '弦月橋在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[誓]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '誓鏡室的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '誓鏡室的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '誓鏡室殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_velvet_duel_court: {
+    id: 'moonshadow_court_velvet_duel_court',
+    name: '絨幕決鬥庭',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_velvet_duel_court.png',
+    imagePrompt: '絨幕決鬥庭 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '絨幕決鬥庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '回到誓鏡室' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_moth_lantern_gallery', description: '回到蛾燈長廊' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_fae_archive', description: '妖精檔案館在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '影王座階在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[鬥]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '絨幕決鬥庭的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '絨幕決鬥庭的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '絨幕決鬥庭殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_fae_archive: {
+    id: 'moonshadow_court_fae_archive',
+    name: '妖精檔案館',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_fae_archive.png',
+    imagePrompt: '妖精檔案館 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '妖精檔案館位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '回到絨幕決鬥庭' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_queen_silence_chapel', description: '靜后小禮拜堂在北側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[檔]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '妖精檔案館的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '妖精檔案館的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '妖精檔案館殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_nightbloom_garden: {
+    id: 'moonshadow_court_nightbloom_garden',
+    name: '夜花庭',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_nightbloom_garden.png',
+    imagePrompt: '夜花庭 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '夜花庭位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'moonshadow_court_lunar_arboretum', description: '回到月相樹園' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_crescent_bridge', description: '弦月橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[花]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '夜花庭的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '夜花庭的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '夜花庭殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_crescent_bridge: {
+    id: 'moonshadow_court_crescent_bridge',
+    name: '弦月橋',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_crescent_bridge.png',
+    imagePrompt: '弦月橋 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '弦月橋位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_nightbloom_garden', description: '回到夜花庭' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_oath_mirror_room', description: '回到誓鏡室' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '影王座階在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_moonwell_balcony', description: '月井露臺在北側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '弦月橋的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '弦月橋的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '弦月橋殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_shadow_throne_steps: {
+    id: 'moonshadow_court_shadow_throne_steps',
+    name: '影王座階',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_shadow_throne_steps.png',
+    imagePrompt: '影王座階 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '影王座階位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_crescent_bridge', description: '回到弦月橋' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_velvet_duel_court', description: '回到絨幕決鬥庭' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_queen_silence_chapel', description: '靜后小禮拜堂在東側' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_dream_harvest_grove', description: '夢收穫林在北側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[座]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '影王座階的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '影王座階的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '影王座階殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_queen_silence_chapel: {
+    id: 'moonshadow_court_queen_silence_chapel',
+    name: '靜后小禮拜堂',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_queen_silence_chapel.png',
+    imagePrompt: '靜后小禮拜堂 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '靜后小禮拜堂位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '回到影王座階' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_fae_archive', description: '回到妖精檔案館' },
+      { direction: 'north', targetRoomId: 'moonshadow_court_glass_deer_paddock', description: '玻鹿欄在北側' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[禮]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '靜后小禮拜堂的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '靜后小禮拜堂的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '靜后小禮拜堂殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_moonwell_balcony: {
+    id: 'moonshadow_court_moonwell_balcony',
+    name: '月井露臺',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_moonwell_balcony.png',
+    imagePrompt: '月井露臺 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月井露臺位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'south', targetRoomId: 'moonshadow_court_crescent_bridge', description: '回到弦月橋' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_dream_harvest_grove', description: '夢收穫林在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[井]',
+    mapX: 2,
+    mapY: 4,
+    guardianHints: {
+      creature: '月井露臺的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '月井露臺的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '月井露臺殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_dream_harvest_grove: {
+    id: 'moonshadow_court_dream_harvest_grove',
+    name: '夢收穫林',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_dream_harvest_grove.png',
+    imagePrompt: '夢收穫林 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '夢收穫林位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_moonwell_balcony', description: '回到月井露臺' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_shadow_throne_steps', description: '回到影王座階' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_glass_deer_paddock', description: '玻鹿欄在東側' },
+    ],
+    monsters: [
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[收]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '夢收穫林的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '夢收穫林的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '夢收穫林殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_glass_deer_paddock: {
+    id: 'moonshadow_court_glass_deer_paddock',
+    name: '玻鹿欄',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_glass_deer_paddock.png',
+    imagePrompt: '玻鹿欄 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玻鹿欄位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_dream_harvest_grove', description: '回到夢收穫林' },
+      { direction: 'south', targetRoomId: 'moonshadow_court_queen_silence_chapel', description: '回到靜后小禮拜堂' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_eclipse_curtain', description: '月蝕帷幕在東側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[鹿]',
+    mapX: 4,
+    mapY: 4,
+    guardianHints: {
+      creature: '玻鹿欄的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '玻鹿欄的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '玻鹿欄殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_eclipse_curtain: {
+    id: 'moonshadow_court_eclipse_curtain',
+    name: '月蝕帷幕',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_eclipse_curtain.png',
+    imagePrompt: '月蝕帷幕 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月蝕帷幕位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_glass_deer_paddock', description: '回到玻鹿欄' },
+      { direction: 'east', targetRoomId: 'moonshadow_court_hidden_court_core', description: '隱庭核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[蝕]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '月蝕帷幕的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '月蝕帷幕的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '月蝕帷幕殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
+  moonshadow_court_hidden_court_core: {
+    id: 'moonshadow_court_hidden_court_core',
+    name: '隱庭核心',
+    zone: 'moonshadow_court' as RoomDef['zone'],
+    image: 'moonshadow_court_hidden_court_core.png',
+    imagePrompt: '隱庭核心 in moonshadow_court, moonlit fae court half real half dream with silver brambles, dreamglass floor, twilight fountain, masked ballroom, crescent bridge, moonwell balcony, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隱庭核心位於半現實半夢境的月影庭內，銀棘樹籬、夢玻地磚、暮光噴泉、假面舞廳與弦月橋交錯成妖精宮廷的終局試煉。這裡適合高階隊伍採集稀有夜花、追蹤精英巡邏並進行受規範的決鬥，玩家可以 inspect 月相刻痕、假面座次、誓鏡裂紋和月井潮線來判斷宮廷規則，也能 search 妖精檔案館、夜花庭、夢收穫林與靜后小禮拜堂尋找密約線索。若隊伍忽略低語樹籬的換路、玻鹿群的驚動與月蝕帷幕的沉默禁令，惡魔貴族、龍騎士、古龍與虛空行者會把訪客困在夢境回廊；若穩定沿弦月橋、影王座階與月井露臺推進，則能抵達隱庭核心並帶回妖精密約、夜花樣本、月相路徑與安全回程標記。',
+    exits: [
+      { direction: 'west', targetRoomId: 'moonshadow_court_eclipse_curtain', description: '回到月蝕帷幕' },
+    ],
+    monsters: [
+      { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 6,
+    mapY: 4,
+    guardianHints: {
+      creature: '隱庭核心的月光若突然像水面一樣倒流，附近妖精廷衛或夢境獵手通常正在換位。',
+      treasure: '隱庭核心的銀棘縫、假面座次、月井邊或夜花根下可能藏著月影庭密約。',
+      spirit: '隱庭核心殘留妖精宮廷宴會、決鬥誓約與訪客被困入夢的記憶。',
+    },
+  },
+
 };
