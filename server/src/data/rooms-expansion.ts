@@ -12689,4 +12689,536 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '天空核心聖所保留著古代符文讓群島懸浮於雲海之上的記憶。',
     },
   },
+  deepsea_temple_tide_gate: {
+    id: 'deepsea_temple_tide_gate',
+    name: '潮汐石門',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_tide_gate.png',
+    imagePrompt: '潮汐石門 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮汐石門位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'east', targetRoomId: 'deepsea_temple_bluefire_hall', description: '藍火長廊通往神殿內部' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_coral_watch', description: '珊瑚階通往外哨' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '潮汐石門的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '潮汐石門的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '潮汐石門保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_bluefire_hall: {
+    id: 'deepsea_temple_bluefire_hall',
+    name: '藍火長廊',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_bluefire_hall.png',
+    imagePrompt: '藍火長廊 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍火長廊位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_tide_gate', description: '藍火長廊回到潮汐石門' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_shell_court', description: '貝殼庭院在前方' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_silt_stairs', description: '淤泥階梯下沉' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[火]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '藍火長廊的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '藍火長廊的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '藍火長廊保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_coral_watch: {
+    id: 'deepsea_temple_coral_watch',
+    name: '珊瑚外哨',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_coral_watch.png',
+    imagePrompt: '珊瑚外哨 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '珊瑚外哨位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'south', targetRoomId: 'deepsea_temple_tide_gate', description: '珊瑚階回到潮汐石門' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_choir_reef', description: '歌礁回音在東側' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '珊瑚外哨的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '珊瑚外哨的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '珊瑚外哨保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_choir_reef: {
+    id: 'deepsea_temple_choir_reef',
+    name: '回音歌礁',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_choir_reef.png',
+    imagePrompt: '回音歌礁 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '回音歌礁位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_coral_watch', description: '歌礁回到珊瑚外哨' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_moonpool_nave', description: '月池中殿在前方' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_shell_court', description: '貝光路落向庭院' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[歌]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '回音歌礁的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '回音歌礁的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '回音歌礁保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_shell_court: {
+    id: 'deepsea_temple_shell_court',
+    name: '貝殼庭院',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_shell_court.png',
+    imagePrompt: '貝殼庭院 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '貝殼庭院位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_bluefire_hall', description: '貝殼庭院回到藍火長廊' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_choir_reef', description: '貝光路回到回音歌礁' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_drowned_library', description: '水封書庫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[庭]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '貝殼庭院的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '貝殼庭院的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '貝殼庭院保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_silt_stairs: {
+    id: 'deepsea_temple_silt_stairs',
+    name: '淤泥階梯',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_silt_stairs.png',
+    imagePrompt: '淤泥階梯 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '淤泥階梯位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'north', targetRoomId: 'deepsea_temple_bluefire_hall', description: '淤泥階梯回到藍火長廊' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_darkcurrent_canal', description: '暗流水道向東延伸' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 140 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '淤泥階梯的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '淤泥階梯的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '淤泥階梯保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_moonpool_nave: {
+    id: 'deepsea_temple_moonpool_nave',
+    name: '月池中殿',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_moonpool_nave.png',
+    imagePrompt: '月池中殿 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月池中殿位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_choir_reef', description: '月池回到回音歌礁' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_drowned_library', description: '石階落向水封書庫' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_pearl_oratory', description: '珍珠祈室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[月]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '月池中殿的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '月池中殿的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '月池中殿保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_drowned_library: {
+    id: 'deepsea_temple_drowned_library',
+    name: '水封書庫',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_drowned_library.png',
+    imagePrompt: '水封書庫 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '水封書庫位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_shell_court', description: '水封書庫回到貝殼庭院' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_moonpool_nave', description: '石階回到月池中殿' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_tideclock_room', description: '潮鐘室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[書]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '水封書庫的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '水封書庫的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '水封書庫保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_darkcurrent_canal: {
+    id: 'deepsea_temple_darkcurrent_canal',
+    name: '暗流水道',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_darkcurrent_canal.png',
+    imagePrompt: '暗流水道 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '暗流水道位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_silt_stairs', description: '暗流水道回到淤泥階梯' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_bone_anchor', description: '骨錨臺在暗流盡頭' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_drowned_library', description: '排水井上接書庫' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[渠]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '暗流水道的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '暗流水道的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '暗流水道保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_pearl_oratory: {
+    id: 'deepsea_temple_pearl_oratory',
+    name: '珍珠祈室',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_pearl_oratory.png',
+    imagePrompt: '珍珠祈室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '珍珠祈室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_moonpool_nave', description: '珍珠祈室回到月池中殿' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_statue_trench', description: '神像裂溝在東側' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[珠]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '珍珠祈室的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '珍珠祈室的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '珍珠祈室保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_tideclock_room: {
+    id: 'deepsea_temple_tideclock_room',
+    name: '潮鐘室',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_tideclock_room.png',
+    imagePrompt: '潮鐘室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮鐘室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_drowned_library', description: '潮鐘室回到水封書庫' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_abyssal_garden', description: '深淵花園在東側' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_bone_anchor', description: '潮鏈垂向骨錨臺' },
+    ],
+    monsters: [
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[鐘]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '潮鐘室的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '潮鐘室的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '潮鐘室保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_bone_anchor: {
+    id: 'deepsea_temple_bone_anchor',
+    name: '骨錨臺',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_bone_anchor.png',
+    imagePrompt: '骨錨臺 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨錨臺位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_darkcurrent_canal', description: '骨錨臺回到暗流水道' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_tideclock_room', description: '潮鏈回到潮鐘室' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_whalebone_bridge', description: '鯨骨橋向東跨出' },
+    ],
+    monsters: [
+      { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[錨]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '骨錨臺的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '骨錨臺的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '骨錨臺保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_statue_trench: {
+    id: 'deepsea_temple_statue_trench',
+    name: '神像裂溝',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_statue_trench.png',
+    imagePrompt: '神像裂溝 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '神像裂溝位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_pearl_oratory', description: '神像裂溝回到珍珠祈室' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_abyssal_garden', description: '裂溝落向深淵花園' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_forbidden_altar', description: '黑石階通往禁忌祭壇' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[像]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '神像裂溝的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '神像裂溝的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '神像裂溝保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_abyssal_garden: {
+    id: 'deepsea_temple_abyssal_garden',
+    name: '深淵花園',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_abyssal_garden.png',
+    imagePrompt: '深淵花園 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深淵花園位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_tideclock_room', description: '深淵花園回到潮鐘室' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_statue_trench', description: '裂溝回到神像區' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '沉睡神諭室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 4, respawnSeconds: 80 },
+      { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[園]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '深淵花園的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '深淵花園的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '深淵花園保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_whalebone_bridge: {
+    id: 'deepsea_temple_whalebone_bridge',
+    name: '鯨骨橋',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_whalebone_bridge.png',
+    imagePrompt: '鯨骨橋 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鯨骨橋位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_bone_anchor', description: '鯨骨橋回到骨錨臺' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_tentacle_gate', description: '觸手門在前方' },
+    ],
+    monsters: [
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+    ],
+    mapSymbol: '[橋]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '鯨骨橋的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '鯨骨橋的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '鯨骨橋保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_forbidden_altar: {
+    id: 'deepsea_temple_forbidden_altar',
+    name: '禁忌祭壇',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_forbidden_altar.png',
+    imagePrompt: '禁忌祭壇 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '禁忌祭壇位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_statue_trench', description: '禁忌祭壇回到神像裂溝' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '祭壇水階通往神諭室' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_godwhisper_chamber', description: '低語室在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'deep_fishman', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '禁忌祭壇的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '禁忌祭壇的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '禁忌祭壇保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_sleeping_oracle: {
+    id: 'deepsea_temple_sleeping_oracle',
+    name: '沉睡神諭室',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_sleeping_oracle.png',
+    imagePrompt: '沉睡神諭室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉睡神諭室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_abyssal_garden', description: '神諭室回到深淵花園' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_forbidden_altar', description: '祭壇水階回到禁忌祭壇' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_tidal_throne', description: '潮汐王座在前方' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'jellyfish', maxCount: 3, respawnSeconds: 80 },
+    ],
+    mapSymbol: '[諭]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '沉睡神諭室的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '沉睡神諭室的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '沉睡神諭室保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_tentacle_gate: {
+    id: 'deepsea_temple_tentacle_gate',
+    name: '觸手門',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_tentacle_gate.png',
+    imagePrompt: '觸手門 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '觸手門位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_whalebone_bridge', description: '觸手門回到鯨骨橋' },
+      { direction: 'east', targetRoomId: 'deepsea_temple_tidal_throne', description: '黑水廊通往潮汐王座' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[觸]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '觸手門的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '觸手門的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '觸手門保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_godwhisper_chamber: {
+    id: 'deepsea_temple_godwhisper_chamber',
+    name: '古神低語室',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_godwhisper_chamber.png',
+    imagePrompt: '古神低語室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古神低語室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_forbidden_altar', description: '低語室回到禁忌祭壇' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_tidal_throne', description: '低語階通往潮汐王座' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[語]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '古神低語室的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '古神低語室的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '古神低語室保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
+
+  deepsea_temple_tidal_throne: {
+    id: 'deepsea_temple_tidal_throne',
+    name: '潮汐王座',
+    zone: 'deepsea_temple' as RoomDef['zone'],
+    image: 'deepsea_temple_tidal_throne.png',
+    imagePrompt: '潮汐王座 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+    exits: [
+      { direction: 'west', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '潮汐王座回到沉睡神諭室' },
+      { direction: 'north', targetRoomId: 'deepsea_temple_godwhisper_chamber', description: '低語階回到古神低語室' },
+      { direction: 'south', targetRoomId: 'deepsea_temple_tentacle_gate', description: '黑水廊回到觸手門' },
+    ],
+    monsters: [
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'deep_fishman', maxCount: 3, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[王]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '潮汐王座的水流若忽然倒轉，深海巡行者通常已經接近。',
+      treasure: '潮汐王座的貝殼、祭文或骨錨旁可能藏著深海神殿事件線索。',
+      spirit: '潮汐王座保留著神殿沉入海底後仍用藍火維持封印的記憶。',
+    },
+  },
 };
