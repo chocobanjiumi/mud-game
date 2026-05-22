@@ -28,6 +28,8 @@ export interface DungeonInstance {
   currentRoomIndex: number;
   /** 是否已通關 */
   cleared: boolean;
+  /** 是否等待死亡後的入口/復活/退出選擇 */
+  defeated: boolean;
   /** 是否為首次通關 */
   isFirstClear: boolean;
   /** 實例建立時間 */
@@ -203,6 +205,7 @@ export class DungeonManager {
       playerIds,
       currentRoomIndex: 0,
       cleared: false,
+      defeated: false,
       isFirstClear,
       startedAt: Date.now(),
       timerHandle: null,
@@ -426,19 +429,19 @@ export class DungeonManager {
   private onDefeat(instance: DungeonInstance): void {
     const def = DUNGEON_DEFS[instance.dungeonId];
     const dungeonName = def?.name ?? '未知副本';
-    const entranceRoom = def?.entranceRoomId ?? 'village_square';
+    instance.defeated = true;
 
     for (const id of instance.playerIds) {
+      const char = instance.playerCharacters.get(id);
+      if (char) {
+        char.hp = 0;
+      }
       sendToCharacter(id, 'system', {
-        text: `副本「${dungeonName}」挑戰失敗！已被傳送回入口。`,
+        text:
+          `副本「${dungeonName}」挑戰失敗！\n` +
+          '可輸入 dungeon entrance 回副本入口、dungeon revive 由隊友復活重試，或 dungeon leave 退出副本。',
       });
     }
-
-    // 傳送回入口
-    this.teleportPartyBack(instance, entranceRoom);
-
-    // 清理
-    this.cleanupInstance(instance);
   }
 
   // ──────────────────────────────────────────────────────────
@@ -517,6 +520,48 @@ export class DungeonManager {
     }
 
     return `你離開了副本「${dungeonName}」，已傳送回入口。`;
+  }
+
+  chooseDeathOption(playerId: string, option: 'entrance' | 'revive' | 'exit'): string {
+    const instance = this.getPlayerInstance(playerId);
+    if (!instance) return '你目前不在任何副本中。';
+    if (!instance.defeated) return '目前沒有待處理的副本死亡選項。';
+
+    const def = DUNGEON_DEFS[instance.dungeonId];
+    const dungeonName = def?.name ?? '未知副本';
+    const entranceRoom = def?.entranceRoomId ?? 'village_square';
+
+    if (option === 'entrance') {
+      this.teleportPartyBack(instance, entranceRoom);
+      this.cleanupInstance(instance);
+      return `隊伍回到副本「${dungeonName}」入口。`;
+    }
+
+    if (option === 'exit') {
+      this.teleportPartyBack(instance, entranceRoom);
+      this.cleanupInstance(instance);
+      return `隊伍退出副本「${dungeonName}」，已返回入口。`;
+    }
+
+    if (instance.playerIds.length < 2) {
+      return '單人副本無法選擇隊友復活。請選擇 dungeon entrance 或 dungeon leave。';
+    }
+
+    for (const id of instance.playerIds) {
+      const char = instance.playerCharacters.get(id);
+      if (!char) continue;
+      char.hp = Math.max(1, Math.floor(char.maxHp * 0.5));
+      char.mp = Math.floor(char.maxMp * 0.5);
+    }
+
+    instance.defeated = false;
+    for (const id of instance.playerIds) {
+      sendToCharacter(id, 'system', {
+        text: `隊友復活成功，副本「${dungeonName}」將從目前房間重新挑戰。`,
+      });
+    }
+    setTimeout(() => this.startRoomCombat(instance), 500);
+    return `隊伍在副本「${dungeonName}」中復活，準備重試目前房間。`;
   }
 
   // ──────────────────────────────────────────────────────────

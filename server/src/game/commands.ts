@@ -2592,8 +2592,23 @@ function cmdDungeon(session: WsSession, args: string[]): void {
         `副本：${def.name}\n` +
         `目前房間：${currentRoom?.name ?? '未知'}（${instance.currentRoomIndex + 1}/${def.rooms.length}）\n` +
         `剩餘時間：${minutes} 分 ${seconds} 秒\n` +
-        `狀態：${instance.cleared ? '已通關' : '進行中'}`,
+        `狀態：${instance.cleared ? '已通關' : instance.defeated ? '等待死亡選項' : '進行中'}`,
       );
+      break;
+    }
+    case 'entrance': {
+      const msg = dungeonMgr.chooseDeathOption(char.id, 'entrance');
+      sendSystem(session.sessionId, msg);
+      break;
+    }
+    case 'revive': {
+      const msg = dungeonMgr.chooseDeathOption(char.id, 'revive');
+      sendSystem(session.sessionId, msg);
+      break;
+    }
+    case 'exit': {
+      const msg = dungeonMgr.chooseDeathOption(char.id, 'exit');
+      sendSystem(session.sessionId, msg);
       break;
     }
     case 'leave': {
@@ -2632,6 +2647,9 @@ function cmdDungeon(session: WsSession, args: string[]): void {
         '  dungeon queue cancel   — 取消排隊\n' +
         '  dungeon queue status   — 查看排隊狀態\n' +
         '  dungeon status         — 查看副本進度\n' +
+        '  dungeon entrance       — 死亡後回副本入口\n' +
+        '  dungeon revive         — 死亡後由隊友復活重試\n' +
+        '  dungeon exit           — 死亡後退出副本\n' +
         '  dungeon leave          — 離開副本（放棄）',
       );
   }
