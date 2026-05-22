@@ -1164,7 +1164,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 5,
     recommendedPartySize: [1, 4],
     primaryElements: ['nature', 'none'],
-    rooms: [],
+    rooms: [
+      'royal_hunting_grounds_horn_gate', 'royal_hunting_grounds_permit_lodge', 'royal_hunting_grounds_deer_run', 'royal_hunting_grounds_boar_wallows', 'royal_hunting_grounds_falcon_perch', 'royal_hunting_grounds_noble_blind', 'royal_hunting_grounds_silver_trail', 'royal_hunting_grounds_hounds_yard', 'royal_hunting_grounds_herb_copse', 'royal_hunting_grounds_stag_mirror', 'royal_hunting_grounds_old_oak_stand', 'royal_hunting_grounds_gamekeeper_camp', 'royal_hunting_grounds_arrow_range', 'royal_hunting_grounds_wolf_cut', 'royal_hunting_grounds_royal_marker', 'royal_hunting_grounds_hidden_poacher_path', 'royal_hunting_grounds_moonlit_clearing', 'royal_hunting_grounds_griffon_ledge', 'royal_hunting_grounds_trophy_pavilion', 'royal_hunting_grounds_white_stag_grove'
+    ],
   },
   ashfall_monastery: {
     id: 'ashfall_monastery',

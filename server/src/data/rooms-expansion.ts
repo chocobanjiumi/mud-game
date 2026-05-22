@@ -22162,4 +22162,540 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 王家獵場擴充 (Lv 18-32) ───────────────────────────
+
+  royal_hunting_grounds_horn_gate: {
+    id: 'royal_hunting_grounds_horn_gate',
+    name: '獵角門',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_horn_gate.png',
+    imagePrompt: '獵角門 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵角門位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '狩獵許可屋在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_deer_run', description: '鹿徑在北側' },
+    ],
+    monsters: [
+      { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '獵角門的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獵角門的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獵角門保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_permit_lodge: {
+    id: 'royal_hunting_grounds_permit_lodge',
+    name: '狩獵許可屋',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_permit_lodge.png',
+    imagePrompt: '狩獵許可屋 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '狩獵許可屋位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '獵犬院在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '貴族隱棚在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[許]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '狩獵許可屋的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '狩獵許可屋的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '狩獵許可屋保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_deer_run: {
+    id: 'royal_hunting_grounds_deer_run',
+    name: '鹿徑',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_deer_run.png',
+    imagePrompt: '鹿徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹿徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '野豬泥塘在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '銀葉獵徑在北側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 100 },
+    ],
+    mapSymbol: '[鹿]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '鹿徑的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '鹿徑的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '鹿徑保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_boar_wallows: {
+    id: 'royal_hunting_grounds_boar_wallows',
+    name: '野豬泥塘',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_boar_wallows.png',
+    imagePrompt: '野豬泥塘 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '野豬泥塘位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_deer_run', description: '回到鹿徑' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '獵鷹棲臺在東側' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '獵犬院在南側' },
+    ],
+    monsters: [
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[豬]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '野豬泥塘的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '野豬泥塘的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '野豬泥塘保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_falcon_perch: {
+    id: 'royal_hunting_grounds_falcon_perch',
+    name: '獵鷹棲臺',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_falcon_perch.png',
+    imagePrompt: '獵鷹棲臺 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵鷹棲臺位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '回到野豬泥塘' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_herb_copse', description: '草藥矮林在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '鹿影水鏡在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'dark_elf_archer', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[鷹]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '獵鷹棲臺的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獵鷹棲臺的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獵鷹棲臺保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_noble_blind: {
+    id: 'royal_hunting_grounds_noble_blind',
+    name: '貴族隱棚',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_noble_blind.png',
+    imagePrompt: '貴族隱棚 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '貴族隱棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '回到狩獵許可屋' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '鹿影水鏡在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[棚]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '貴族隱棚的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '貴族隱棚的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '貴族隱棚保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_silver_trail: {
+    id: 'royal_hunting_grounds_silver_trail',
+    name: '銀葉獵徑',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_silver_trail.png',
+    imagePrompt: '銀葉獵徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀葉獵徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_deer_run', description: '回到鹿徑' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '貴族隱棚在東側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '古橡木群在北側' },
+    ],
+    monsters: [
+      { monsterId: 'treant', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[銀]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '銀葉獵徑的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '銀葉獵徑的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '銀葉獵徑保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_hounds_yard: {
+    id: 'royal_hunting_grounds_hounds_yard',
+    name: '獵犬院',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_hounds_yard.png',
+    imagePrompt: '獵犬院 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵犬院位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '回到狩獵許可屋' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '野豬泥塘在北側' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在東側' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[犬]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '獵犬院的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獵犬院的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獵犬院保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_herb_copse: {
+    id: 'royal_hunting_grounds_herb_copse',
+    name: '草藥矮林',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_herb_copse.png',
+    imagePrompt: '草藥矮林 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '草藥矮林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '回到獵鷹棲臺' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在東側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '草藥矮林的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '草藥矮林的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '草藥矮林保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_stag_mirror: {
+    id: 'royal_hunting_grounds_stag_mirror',
+    name: '鹿影水鏡',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_stag_mirror.png',
+    imagePrompt: '鹿影水鏡 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹿影水鏡位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '回到貴族隱棚' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '回到獵鷹棲臺' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '王室界碑在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '鹿影水鏡的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '鹿影水鏡的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '鹿影水鏡保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_old_oak_stand: {
+    id: 'royal_hunting_grounds_old_oak_stand',
+    name: '古橡木群',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_old_oak_stand.png',
+    imagePrompt: '古橡木群 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '古橡木群位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '回到銀葉獵徑' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_hidden_poacher_path', description: '偷獵者小徑在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[橡]',
+    mapX: 0,
+    mapY: 3,
+    guardianHints: {
+      creature: '古橡木群的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '古橡木群的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '古橡木群保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_gamekeeper_camp: {
+    id: 'royal_hunting_grounds_gamekeeper_camp',
+    name: '獵場看守營',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_gamekeeper_camp.png',
+    imagePrompt: '獵場看守營 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵場看守營位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_herb_copse', description: '回到草藥矮林' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在南側' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '獵場看守營的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獵場看守營的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獵場看守營保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_arrow_range: {
+    id: 'royal_hunting_grounds_arrow_range',
+    name: '箭靶場',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_arrow_range.png',
+    imagePrompt: '箭靶場 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '箭靶場位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '回到獵犬院' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在北側' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '狼切道在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[靶]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '箭靶場的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '箭靶場的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '箭靶場保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_wolf_cut: {
+    id: 'royal_hunting_grounds_wolf_cut',
+    name: '狼切道',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_wolf_cut.png',
+    imagePrompt: '狼切道 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '狼切道位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '回到箭靶場' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_griffon_ledge', description: '獅鷲岩棚在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 150 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[狼]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '狼切道的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '狼切道的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '狼切道保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_royal_marker: {
+    id: 'royal_hunting_grounds_royal_marker',
+    name: '王室界碑',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_royal_marker.png',
+    imagePrompt: '王室界碑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '王室界碑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '回到鹿影水鏡' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在北側' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在東側' },
+    ],
+    monsters: [
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[界]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '王室界碑的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '王室界碑的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '王室界碑保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_hidden_poacher_path: {
+    id: 'royal_hunting_grounds_hidden_poacher_path',
+    name: '偷獵者小徑',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_hidden_poacher_path.png',
+    imagePrompt: '偷獵者小徑 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '偷獵者小徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '回到古橡木群' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在東側' },
+    ],
+    monsters: [
+      { monsterId: 'bandit', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+    ],
+    mapSymbol: '[偷]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '偷獵者小徑的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '偷獵者小徑的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '偷獵者小徑保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_moonlit_clearing: {
+    id: 'royal_hunting_grounds_moonlit_clearing',
+    name: '月光空地',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_moonlit_clearing.png',
+    imagePrompt: '月光空地 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '月光空地位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_hidden_poacher_path', description: '回到偷獵者小徑' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '回到王室界碑' },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_white_stag_grove', description: '白鹿林在東側' },
+    ],
+    monsters: [
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[月]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '月光空地的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '月光空地的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '月光空地保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_griffon_ledge: {
+    id: 'royal_hunting_grounds_griffon_ledge',
+    name: '獅鷲岩棚',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_griffon_ledge.png',
+    imagePrompt: '獅鷲岩棚 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獅鷲岩棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'thunder_eagle', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_dragon', maxCount: 1, respawnSeconds: 260 },
+    ],
+    mapSymbol: '[岩]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '獅鷲岩棚的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獅鷲岩棚的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獅鷲岩棚保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_trophy_pavilion: {
+    id: 'royal_hunting_grounds_trophy_pavilion',
+    name: '獵物陳列亭',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_trophy_pavilion.png',
+    imagePrompt: '獵物陳列亭 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '獵物陳列亭位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '回到獵場看守營' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_white_stag_grove', description: '白鹿林在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[亭]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '獵物陳列亭的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '獵物陳列亭的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '獵物陳列亭保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
+  royal_hunting_grounds_white_stag_grove: {
+    id: 'royal_hunting_grounds_white_stag_grove',
+    name: '白鹿林',
+    zone: 'royal_hunting_grounds' as RoomDef['zone'],
+    image: 'royal_hunting_grounds_white_stag_grove.png',
+    imagePrompt: '白鹿林 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+    exits: [
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '回到月光空地' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'shadow_wolf_alpha', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[白]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '白鹿林的草葉若被整齊壓伏，附近獵物、狼群或王室巡哨可能正在移動。',
+      treasure: '白鹿林的箭羽、界碑或獵棚角落可能藏著王家獵場委託線索。',
+      spirit: '白鹿林保存著貴族狩獵、偷獵爭端與白鹿傳說留下的記憶。',
+    },
+  },
+
 };
