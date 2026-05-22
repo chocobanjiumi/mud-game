@@ -74,6 +74,8 @@ const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 const MIN_ZONE_THEME_EQUIPMENT = 6;
 const MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT = 10;
 const MIN_ZONE_INSPECTABLE_ROOMS = 3;
+const MIN_ZONE_QUEST_OBJECTIVES = 8;
+const MIN_IMPORTANT_ZONE_QUEST_OBJECTIVES = 12;
 const TUTORIAL_MAIN_COMMANDS = ['look', 'go', 'attack', 'loot corpse', 'equip', 'quest', 'activate portal'] as const;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
@@ -425,6 +427,67 @@ function validateQuests(): void {
       if (!ITEM_DEFS[reward.itemId]) {
         add('error', `quest:${quest.id}`, `reward references missing item: ${reward.itemId}`);
       }
+    }
+  }
+
+  const questsByZone = new Map<string, typeof QUEST_DEFS[keyof typeof QUEST_DEFS][]>();
+  for (const quest of Object.values(QUEST_DEFS)) {
+    const zoneIds = new Set<string>();
+    for (const rep of quest.rewards.zoneReputation ?? []) zoneIds.add(rep.zoneId);
+    for (const objective of quest.objectives) {
+      const room = ROOMS[objective.targetId];
+      if (room) zoneIds.add(room.zone);
+    }
+    for (const zoneId of zoneIds) {
+      const zoneQuests = questsByZone.get(zoneId) ?? [];
+      zoneQuests.push(quest);
+      questsByZone.set(zoneId, zoneQuests);
+    }
+  }
+
+  for (const zone of Object.values(ZONES)) {
+    const zoneQuests = questsByZone.get(zone.id) ?? [];
+    const objectiveCount = zoneQuests.reduce((sum, quest) => sum + quest.objectives.length, 0);
+    const minObjectives = (zone.type === 'endgame' || zone.type === 'dungeon_entrance' || zone.type === 'pvp' || zone.type === 'kingdom')
+      ? MIN_IMPORTANT_ZONE_QUEST_OBJECTIVES
+      : MIN_ZONE_QUEST_OBJECTIVES;
+    const countByType = (type: string): number => zoneQuests.filter((quest) => quest.type === type).length;
+    const hasObjective = (predicate: (objective: typeof zoneQuests[number]['objectives'][number]) => boolean): boolean =>
+      zoneQuests.some((quest) => quest.objectives.some(predicate));
+    const hasTransportQuest = zoneQuests.some((quest) =>
+      /activate portal|travel|交通|傳送/i.test(`${quest.description} ${quest.dialogueStart ?? ''} ${quest.dialogueComplete ?? ''}`)
+      || quest.objectives.some((objective) => /portal|travel|交通|傳送/i.test(`${objective.targetId} ${objective.targetName}`)),
+    );
+
+    if (objectiveCount < minObjectives) {
+      add('error', `zone:${zone.id}`, `requires at least ${minObjectives} quest objectives, found ${objectiveCount}`);
+    }
+    if (countByType('main') < 1 || countByType('main') > 3) {
+      add('error', `zone:${zone.id}`, `requires 1-3 main or progression quests, found ${countByType('main')}`);
+    }
+    if (countByType('side') < 3 || countByType('side') > 5) {
+      add('error', `zone:${zone.id}`, `requires 3-5 side quests, found ${countByType('side')}`);
+    }
+    if (countByType('daily') < 2 || countByType('daily') > 4) {
+      add('error', `zone:${zone.id}`, `requires 2-4 daily quest templates, found ${countByType('daily')}`);
+    }
+    if (countByType('exploration') < 2 || countByType('exploration') > 3) {
+      add('error', `zone:${zone.id}`, `requires 2-3 exploration quests, found ${countByType('exploration')}`);
+    }
+    if (countByType('boss') < 1 || countByType('boss') > 2) {
+      add('error', `zone:${zone.id}`, `requires 1-2 boss or elite quests, found ${countByType('boss')}`);
+    }
+    if (zone.type === 'resource' && countByType('crafting') < 1) {
+      add('error', `zone:${zone.id}`, 'resource zone requires at least 1 gathering or crafting quest');
+    }
+    if (!hasTransportQuest) {
+      add('error', `zone:${zone.id}`, 'requires at least 1 quest that guides transport activation');
+    }
+    if (!hasObjective((objective) => objective.type === 'loot_corpse')) {
+      add('error', `zone:${zone.id}`, 'requires at least 1 quest using loot corpse or corpse quest item');
+    }
+    if (!hasObjective((objective) => objective.type === 'inspect_object')) {
+      add('error', `zone:${zone.id}`, 'requires at least 1 quest using search or inspect');
     }
   }
 }

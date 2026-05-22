@@ -2,6 +2,194 @@
 // 此檔案定義所有主線、支線、每日、每週任務
 
 import type { QuestDef, QuestObjective, QuestReward } from './quest.js';
+import { ROOMS, ZONES } from '../data/rooms.js';
+
+function questLevelForZone(zoneId: string): number {
+  return ZONES[zoneId]?.levelRange?.[0] ?? 1;
+}
+
+function pickZoneRoom(zoneId: string, index: number) {
+  const roomIds = ZONES[zoneId]?.rooms ?? [];
+  return ROOMS[roomIds[Math.min(index, Math.max(0, roomIds.length - 1))]] ?? ROOMS[roomIds[0]];
+}
+
+function pickZoneHiddenRoom(zoneId: string) {
+  const rooms = (ZONES[zoneId]?.rooms ?? []).map((roomId) => ROOMS[roomId]).filter(Boolean);
+  return rooms.find((room) => /room function hidden|hidden|secret|隱|秘/i.test(`${room.id} ${room.name} ${room.description} ${room.imagePrompt ?? ''}`))
+    ?? rooms[0];
+}
+
+function pickZoneMonsterId(zoneId: string): string {
+  const rooms = (ZONES[zoneId]?.rooms ?? []).map((roomId) => ROOMS[roomId]).filter(Boolean);
+  return rooms.flatMap((room) => room.monsters ?? [])[0]?.monsterId ?? '*';
+}
+
+function zoneQuestReward(zoneId: string, exp: number, gold: number): QuestReward {
+  return { exp, gold, zoneReputation: [{ zoneId, amount: 5 }] };
+}
+
+function createZoneCoverageQuestDefs(): Record<string, QuestDef> {
+  const result: Record<string, QuestDef> = {};
+
+  for (const zone of Object.values(ZONES)) {
+    const entry = pickZoneRoom(zone.id, 0);
+    const route = pickZoneRoom(zone.id, 1);
+    const route2 = pickZoneRoom(zone.id, 2);
+    const hidden = pickZoneHiddenRoom(zone.id) ?? entry;
+    if (!entry || !route || !route2 || !hidden) continue;
+
+    const levelReq = questLevelForZone(zone.id);
+    const monsterId = pickZoneMonsterId(zone.id);
+    const travelTarget = zone.portal?.id ?? `${entry.id}:travel_anchor`;
+    const chestItem = zone.type === 'endgame' || zone.type === 'dungeon_entrance' ? 'gold_chest' : zone.type === 'resource' ? 'silver_chest' : 'bronze_chest';
+
+    const base = `zone_${zone.id}`;
+    result[`${base}_progression`] = {
+      id: `${base}_progression`,
+      name: `${zone.name}推進`,
+      description: `前往${zone.name}入口、主路與交通點，確認路線並引導玩家使用 activate portal 或 inspect 交通標記。`,
+      type: 'main',
+      levelReq,
+      objectives: [
+        { type: 'visit', targetId: entry.id, targetName: entry.name, required: 1 },
+        { type: 'visit', targetId: route.id, targetName: route.name, required: 1 },
+        { type: 'inspect_object', targetId: travelTarget, targetName: `${zone.name}交通點`, required: 1 },
+      ],
+      rewards: zoneQuestReward(zone.id, 250 + levelReq * 20, 120 + levelReq * 8),
+      dialogueStart: `先確認${zone.name}的入口、主路與交通點。`,
+      dialogueComplete: `${zone.name}的推進路線已建立。`,
+      repeatable: false,
+    };
+
+    result[`${base}_side_hidden`] = {
+      id: `${base}_side_hidden`,
+      name: `${zone.name}隱線`,
+      description: `搜尋${zone.name}的隱藏房間、檢查可疑標記，並從屍體或殘留物取得線索。`,
+      type: 'side',
+      levelReq,
+      objectives: [
+        { type: 'visit', targetId: hidden.id, targetName: hidden.name, required: 1 },
+        { type: 'inspect_object', targetId: hidden.id, targetName: `${hidden.name}線索`, required: 1 },
+        { type: 'loot_corpse', targetId: 'corpse', targetName: `${zone.name}屍體線索`, required: 1 },
+      ],
+      rewards: zoneQuestReward(zone.id, 180 + levelReq * 16, 90 + levelReq * 6),
+      dialogueStart: `${zone.name}有一條不在地圖上的隱線。`,
+      dialogueComplete: `你找到了${zone.name}的隱藏線索。`,
+      repeatable: false,
+    };
+
+    for (let i = 1; i <= 2; i++) {
+      const targetRoom = pickZoneRoom(zone.id, i + 2) ?? route2;
+      result[`${base}_side_${i}`] = {
+        id: `${base}_side_${i}`,
+        name: `${zone.name}支線 ${i}`,
+        description: `完成${zone.name}第 ${i} 條區域支線，處理路線上的威脅與可調查物。`,
+        type: 'side',
+        levelReq,
+        objectives: [
+          { type: 'visit', targetId: targetRoom.id, targetName: targetRoom.name, required: 1 },
+          { type: 'inspect_object', targetId: targetRoom.id, targetName: `${targetRoom.name}調查點`, required: 1 },
+          ...(i === 1 ? [{ type: 'kill_monster' as const, targetId: monsterId, targetName: `${zone.name}威脅`, required: 1 }] : []),
+        ],
+        rewards: zoneQuestReward(zone.id, 160 + levelReq * 14, 80 + levelReq * 5),
+        dialogueStart: `${zone.name}還有待處理的支線委託。`,
+        dialogueComplete: `${zone.name}支線 ${i} 已完成。`,
+        repeatable: false,
+      };
+    }
+
+    for (let i = 1; i <= 2; i++) {
+      result[`${base}_daily_${i}`] = {
+        id: `${base}_daily_${i}`,
+        name: `${zone.name}每日 ${i}`,
+        description: `每日巡查${zone.name}，包含移動、檢查與戰鬥或屍體回收。`,
+        type: 'daily',
+        levelReq,
+        objectives: i === 1
+          ? [
+              { type: 'visit', targetId: route.id, targetName: route.name, required: 1 },
+              { type: 'inspect_object', targetId: route.id, targetName: `${route.name}巡查點`, required: 1 },
+            ]
+          : [
+              { type: 'kill_monster', targetId: monsterId, targetName: `${zone.name}巡邏威脅`, required: 1 },
+              { type: 'loot_corpse', targetId: 'corpse', targetName: `${zone.name}戰後回收`, required: 1 },
+            ],
+        rewards: zoneQuestReward(zone.id, 120 + levelReq * 10, 60 + levelReq * 4),
+        dialogueStart: `${zone.name}每日巡查開始。`,
+        dialogueComplete: `${zone.name}每日 ${i} 已完成。`,
+        repeatable: true,
+      };
+    }
+
+    result[`${base}_exploration_1`] = {
+      id: `${base}_exploration_1`,
+      name: `${zone.name}探勘一`,
+      description: `探索${zone.name}的隱藏處與一次性寶箱。`,
+      type: 'exploration',
+      levelReq,
+      objectives: [
+        { type: 'visit', targetId: hidden.id, targetName: hidden.name, required: 1 },
+        { type: 'inspect_object', targetId: hidden.id, targetName: `${hidden.name}隱藏標記`, required: 1 },
+        { type: 'collect_item', targetId: chestItem, targetName: `${zone.name}一次性寶箱`, required: 1 },
+      ],
+      rewards: zoneQuestReward(zone.id, 180 + levelReq * 12, 90 + levelReq * 5),
+      dialogueStart: `找出${zone.name}的隱藏寶箱。`,
+      dialogueComplete: `${zone.name}探勘一完成。`,
+      repeatable: false,
+    };
+
+    result[`${base}_exploration_2`] = {
+      id: `${base}_exploration_2`,
+      name: `${zone.name}探勘二`,
+      description: `用 search 或 inspect 追蹤${zone.name}第二條探索線。`,
+      type: 'exploration',
+      levelReq,
+      objectives: [
+        { type: 'visit', targetId: route2.id, targetName: route2.name, required: 1 },
+        { type: 'inspect_object', targetId: route2.id, targetName: `${route2.name}探索標記`, required: 1 },
+      ],
+      rewards: zoneQuestReward(zone.id, 170 + levelReq * 11, 85 + levelReq * 5),
+      dialogueStart: `${zone.name}還有第二條探索線。`,
+      dialogueComplete: `${zone.name}探勘二完成。`,
+      repeatable: false,
+    };
+
+    result[`${base}_boss`] = {
+      id: `${base}_boss`,
+      name: `${zone.name}精英討伐`,
+      description: `擊敗${zone.name}的 Boss、精英或大型事件威脅。`,
+      type: 'boss',
+      levelReq,
+      objectives: [
+        { type: 'defeat_boss', targetId: monsterId === '*' ? 'boss' : monsterId, targetName: `${zone.name}精英威脅`, required: 1 },
+      ],
+      rewards: zoneQuestReward(zone.id, 320 + levelReq * 24, 160 + levelReq * 10),
+      dialogueStart: `${zone.name}的精英威脅需要處理。`,
+      dialogueComplete: `${zone.name}精英討伐完成。`,
+      repeatable: false,
+    };
+
+    if (zone.type === 'resource') {
+      result[`${base}_crafting`] = {
+        id: `${base}_crafting`,
+        name: `${zone.name}採製委託`,
+        description: `採集${zone.name}資源並完成一次製作回報。`,
+        type: 'crafting',
+        levelReq,
+        objectives: [
+          { type: 'gather_resource', targetId: '*', targetName: `${zone.name}資源`, required: 1 },
+          { type: 'craft_item', targetId: '*', targetName: `${zone.name}製作品`, required: 1 },
+        ],
+        rewards: zoneQuestReward(zone.id, 200 + levelReq * 14, 100 + levelReq * 6),
+        dialogueStart: `${zone.name}需要採製支援。`,
+        dialogueComplete: `${zone.name}採製委託完成。`,
+        repeatable: false,
+      };
+    }
+  }
+
+  return result;
+}
 
 // ============================================================
 //  擴展任務定義
@@ -965,6 +1153,8 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
     dialogueComplete: '每週對戰挑戰完成！你是鬥技場的王者。',
     repeatable: true,
   },
+
+  ...createZoneCoverageQuestDefs(),
 };
 
 // ============================================================
