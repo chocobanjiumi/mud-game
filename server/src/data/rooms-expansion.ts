@@ -16918,4 +16918,544 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '靜望臺保留著巡禮者、商隊與伏擊者反覆踏過古道的記憶。',
     },
   },
+  // ─── 鐵木要塞擴充 (Lv 18-30) ───────────────────────────
+
+  ironwood_fort_portal_yard: {
+    id: 'ironwood_fort_portal_yard',
+    name: '傳送陣庭',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_portal_yard.png',
+    imagePrompt: '傳送陣庭 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '傳送陣庭位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'east', targetRoomId: 'ironwood_fort_outer_gate', description: '鐵木外門在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_quartermaster_row', description: '軍需行列在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'bandit', maxCount: 1, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[傳]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '傳送陣庭的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '傳送陣庭的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '傳送陣庭仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_outer_gate: {
+    id: 'ironwood_fort_outer_gate',
+    name: '鐵木外門',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_outer_gate.png',
+    imagePrompt: '鐵木外門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐵木外門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_muster_square', description: '點兵廣場在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_west_bastion', description: '西堡牆梯在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '鐵木外門的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '鐵木外門的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '鐵木外門仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_muster_square: {
+    id: 'ironwood_fort_muster_square',
+    name: '點兵廣場',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_muster_square.png',
+    imagePrompt: '點兵廣場 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '點兵廣場位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_outer_gate', description: '回到鐵木外門' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_east_bastion', description: '東堡牆在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_barracks_hall', description: '兵營大廳在北側' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_supply_tunnel', description: '補給隧道在南側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 120 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[兵]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '點兵廣場的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '點兵廣場的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '點兵廣場仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_quartermaster_row: {
+    id: 'ironwood_fort_quartermaster_row',
+    name: '軍需行列',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_quartermaster_row.png',
+    imagePrompt: '軍需行列 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '軍需行列位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_west_bastion', description: '西堡牆在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_forge_works', description: '鍛造工坊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'bandit', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[需]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '軍需行列的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '軍需行列的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '軍需行列仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_west_bastion: {
+    id: 'ironwood_fort_west_bastion',
+    name: '西側堡牆',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_west_bastion.png',
+    imagePrompt: '西側堡牆 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '西側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_outer_gate', description: '落回鐵木外門' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_barracks_hall', description: '牆道通往兵營' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[西]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '西側堡牆的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '西側堡牆的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '西側堡牆仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_east_bastion: {
+    id: 'ironwood_fort_east_bastion',
+    name: '東側堡牆',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_east_bastion.png',
+    imagePrompt: '東側堡牆 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '東側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在北側' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_hidden_sally', description: '隱蔽突門在南側' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[東]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '東側堡牆的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '東側堡牆的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '東側堡牆仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_barracks_hall: {
+    id: 'ironwood_fort_barracks_hall',
+    name: '兵營大廳',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_barracks_hall.png',
+    imagePrompt: '兵營大廳 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '兵營大廳位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_west_bastion', description: '牆道通往西堡牆' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '戰圖室在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '斥候棲臺在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dwarf_guard', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'undead_knight', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '兵營大廳的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '兵營大廳的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '兵營大廳仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_forge_works: {
+    id: 'ironwood_fort_forge_works',
+    name: '鐵木鍛坊',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_forge_works.png',
+    imagePrompt: '鐵木鍛坊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐵木鍛坊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_scout_roost', description: '高架棧道通往斥候棲臺' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_ironwood_grove', description: '鐵木林圃在北側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'dwarf_guard', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[鍛]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '鐵木鍛坊的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '鐵木鍛坊的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '鐵木鍛坊仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_signal_tower: {
+    id: 'ironwood_fort_signal_tower',
+    name: '烽火信號塔',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_signal_tower.png',
+    imagePrompt: '烽火信號塔 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '烽火信號塔位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '戰圖室在西側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在北側' },
+    ],
+    monsters: [
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[烽]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '烽火信號塔的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '烽火信號塔的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '烽火信號塔仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_war_room: {
+    id: 'ironwood_fort_war_room',
+    name: '戰圖室',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_war_room.png',
+    imagePrompt: '戰圖室 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '戰圖室位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '回到兵營大廳' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_mage', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'spectral_knight', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[圖]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '戰圖室的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '戰圖室的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '戰圖室仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_scout_roost: {
+    id: 'ironwood_fort_scout_roost',
+    name: '斥候棲臺',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_scout_roost.png',
+    imagePrompt: '斥候棲臺 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '斥候棲臺位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_barracks_hall', description: '回到兵營大廳' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_forge_works', description: '棧道通往鐵木鍛坊' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_prison_block', description: '囚牢走道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dark_elf_archer', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 90 },
+    ],
+    mapSymbol: '[哨]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '斥候棲臺的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '斥候棲臺的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '斥候棲臺仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_prison_block: {
+    id: 'ironwood_fort_prison_block',
+    name: '囚牢石廊',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_prison_block.png',
+    imagePrompt: '囚牢石廊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '囚牢石廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_scout_roost', description: '回到斥候棲臺' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_oath_chapel', description: '禮拜堂側門在東側' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_old_cistern', description: '舊蓄水池在西側' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[牢]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '囚牢石廊的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '囚牢石廊的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '囚牢石廊仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_supply_tunnel: {
+    id: 'ironwood_fort_supply_tunnel',
+    name: '補給隧道',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_supply_tunnel.png',
+    imagePrompt: '補給隧道 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '補給隧道位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'north', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_hidden_sally', description: '暗道通往隱蔽突門' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_old_cistern', description: '濕冷支道通往舊蓄水池' },
+    ],
+    monsters: [
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'bandit', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[補]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '補給隧道的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '補給隧道的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '補給隧道仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_old_cistern: {
+    id: 'ironwood_fort_old_cistern',
+    name: '舊蓄水池',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_old_cistern.png',
+    imagePrompt: '舊蓄水池 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '舊蓄水池位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'east', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_prison_block', description: '石階通往囚牢石廊' },
+    ],
+    monsters: [
+      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '舊蓄水池的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '舊蓄水池的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '舊蓄水池仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_ironwood_grove: {
+    id: 'ironwood_fort_ironwood_grove',
+    name: '鐵木林圃',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_ironwood_grove.png',
+    imagePrompt: '鐵木林圃 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鐵木林圃位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_forge_works', description: '回到鐵木鍛坊' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_prison_block', description: '木根小徑通往囚牢石廊' },
+    ],
+    monsters: [
+      { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[木]',
+    mapX: 0,
+    mapY: 3,
+    guardianHints: {
+      creature: '鐵木林圃的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '鐵木林圃的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '鐵木林圃仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_hidden_sally: {
+    id: 'ironwood_fort_hidden_sally',
+    name: '隱蔽突門',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_hidden_sally.png',
+    imagePrompt: '隱蔽突門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隱蔽突門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'bandit', maxCount: 2, respawnSeconds: 70 },
+    ],
+    mapSymbol: '[突]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '隱蔽突門的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '隱蔽突門的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '隱蔽突門仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_command_walk: {
+    id: 'ironwood_fort_command_walk',
+    name: '指揮長廊',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_command_walk.png',
+    imagePrompt: '指揮長廊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '指揮長廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在西側' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在東側' },
+    ],
+    monsters: [
+      { monsterId: 'spectral_knight', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[令]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '指揮長廊的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '指揮長廊的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '指揮長廊仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_oath_chapel: {
+    id: 'ironwood_fort_oath_chapel',
+    name: '誓約禮拜堂',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_oath_chapel.png',
+    imagePrompt: '誓約禮拜堂 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '誓約禮拜堂位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_prison_block', description: '側廊通往囚牢石廊' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在東側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在北側' },
+    ],
+    monsters: [
+      { monsterId: 'undead_knight', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'cursed_priest', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[誓]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '誓約禮拜堂的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '誓約禮拜堂的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '誓約禮拜堂仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_keep_gate: {
+    id: 'ironwood_fort_keep_gate',
+    name: '內堡門',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_keep_gate.png',
+    imagePrompt: '內堡門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '內堡門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '回到誓約禮拜堂' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_high_keep', description: '高堡核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'spectral_knight', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[堡]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '內堡門的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '內堡門的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '內堡門仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
+  ironwood_fort_high_keep: {
+    id: 'ironwood_fort_high_keep',
+    name: '高堡核心',
+    zone: 'ironwood_fort' as RoomDef['zone'],
+    image: 'ironwood_fort_high_keep.png',
+    imagePrompt: '高堡核心 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '高堡核心位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+    exits: [
+      { direction: 'west', targetRoomId: 'ironwood_fort_keep_gate', description: '回到內堡門' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 300 },
+      { monsterId: 'dark_mage', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[冠]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '高堡核心的守備聲響若突然停住，通常代表巡邏隊或伏擊者正在換位。',
+      treasure: '高堡核心的軍械箱、封條或石縫旁可能藏著鐵木要塞任務線索。',
+      spirit: '高堡核心仍殘留邊境軍團反覆宣誓、守城與撤退的記憶。',
+    },
+  },
+
 };
