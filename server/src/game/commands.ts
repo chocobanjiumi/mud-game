@@ -61,6 +61,7 @@ import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
 import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
+import { INVENTORY_SLOT_CAPACITY, getInventorySlotLoad } from './inventory-capacity.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -718,7 +719,7 @@ function cmdInventory(session: WsSession): void {
   sendToSession(session.sessionId, 'inventory', {
     items: itemDetails,
     equipment: char.equipment,
-    capacity: 20,
+    capacity: INVENTORY_SLOT_CAPACITY,
     gold: char.gold,
   });
 }
@@ -2143,6 +2144,12 @@ function cmdTravel(session: WsSession, target: string): void {
     return;
   }
 
+  const loadCheck = canUseInventoryRestrictedTravel(char, node);
+  if (!loadCheck.ok) {
+    sendError(session.sessionId, loadCheck.message);
+    return;
+  }
+
   const costResult = payTravelCost(char, node);
   if (!costResult.ok) {
     sendError(session.sessionId, costResult.message);
@@ -2170,6 +2177,12 @@ function cmdRecall(session: WsSession): void {
   if (!char) return;
   if (isInCombat(char.id)) {
     sendError(session.sessionId, '戰鬥中無法回城。');
+    return;
+  }
+
+  const loadCheck = canUseInventoryRestrictedTravel(char);
+  if (!loadCheck.ok) {
+    sendError(session.sessionId, loadCheck.message);
     return;
   }
 
@@ -5514,6 +5527,18 @@ function canTravelFromCurrentRoom(char: Character, node: TravelNodeDef): { ok: t
   }
 
   return { ok: true };
+}
+
+function canUseInventoryRestrictedTravel(char: Character, node?: TravelNodeDef): { ok: true } | { ok: false; message: string } {
+  if (node?.kind === 'danger_evac') return { ok: true };
+
+  const load = getInventorySlotLoad(getInventory(char.id));
+  if (!load.overloaded) return { ok: true };
+
+  return {
+    ok: false,
+    message: `背包超重（${load.slots}/${load.capacity} 格），無法使用一般傳送。請整理背包或使用危險撤離點。`,
+  };
 }
 
 function getTravelCooldownRemaining(characterId: string): number {
