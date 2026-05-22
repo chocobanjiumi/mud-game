@@ -25902,4 +25902,543 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+
+  // ─── 血鹽海岸擴充 (Lv 32-44) ───────────────────────────
+
+  bloodsalt_coast_entrance_tidegate: {
+    id: 'bloodsalt_coast_entrance_tidegate',
+    name: '潮門入口',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_entrance_tidegate.png',
+    imagePrompt: '潮門入口 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '潮門入口位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '紅鹽灘在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '鹵蝕小徑在北側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '潮門入口的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '潮門入口的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '潮門入口殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_red_salt_flats: {
+    id: 'bloodsalt_coast_red_salt_flats',
+    name: '紅鹽灘',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_red_salt_flats.png',
+    imagePrompt: '紅鹽灘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '紅鹽灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '拾荒者標記在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '骨網淺灘在北側' },
+    ],
+    monsters: [
+      { monsterId: 'elder_treant', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[鹽]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '紅鹽灘的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '紅鹽灘的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '紅鹽灘殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_wreckers_marker: {
+    id: 'bloodsalt_coast_wreckers_marker',
+    name: '拾荒者標記',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_wreckers_marker.png',
+    imagePrompt: '拾荒者標記 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '拾荒者標記位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[標]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '拾荒者標記的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '拾荒者標記的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '拾荒者標記殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_bone_net_shoal: {
+    id: 'bloodsalt_coast_bone_net_shoal',
+    name: '骨網淺灘',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_bone_net_shoal.png',
+    imagePrompt: '骨網淺灘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '骨網淺灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '鹽玻洞在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[網]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '骨網淺灘的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '骨網淺灘的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '骨網淺灘殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_pirate_beacon: {
+    id: 'bloodsalt_coast_pirate_beacon',
+    name: '海盜烽燈',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_pirate_beacon.png',
+    imagePrompt: '海盜烽燈 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '海盜烽燈位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '赤潮池在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在北側' },
+    ],
+    monsters: [
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'pirate_captain', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[烽]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '海盜烽燈的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '海盜烽燈的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '海盜烽燈殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_crimson_tide_pool: {
+    id: 'bloodsalt_coast_crimson_tide_pool',
+    name: '赤潮池',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_crimson_tide_pool.png',
+    imagePrompt: '赤潮池 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '赤潮池位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[潮]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '赤潮池的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '赤潮池的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '赤潮池殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_brine_cut_path: {
+    id: 'bloodsalt_coast_brine_cut_path',
+    name: '鹵蝕小徑',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_brine_cut_path.png',
+    imagePrompt: '鹵蝕小徑 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '鹽玻洞在東側' },
+    ],
+    monsters: [
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[鹵]',
+    mapX: 0,
+    mapY: 2,
+    guardianHints: {
+      creature: '鹵蝕小徑的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '鹵蝕小徑的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '鹵蝕小徑殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_saltglass_cave: {
+    id: 'bloodsalt_coast_saltglass_cave',
+    name: '鹽玻洞',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_saltglass_cave.png',
+    imagePrompt: '鹽玻洞 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鹽玻洞位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '回到鹵蝕小徑' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側' },
+    ],
+    monsters: [
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[洞]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '鹽玻洞的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '鹽玻洞的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '鹽玻洞殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_reef_fishing_post: {
+    id: 'bloodsalt_coast_reef_fishing_post',
+    name: '礁釣哨',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_reef_fishing_post.png',
+    imagePrompt: '礁釣哨 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '礁釣哨位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lake_hydra', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[釣]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '礁釣哨的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '礁釣哨的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '礁釣哨殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_blood_altar_ledge: {
+    id: 'bloodsalt_coast_blood_altar_ledge',
+    name: '血壇岩棚',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_blood_altar_ledge.png',
+    imagePrompt: '血壇岩棚 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '回到赤潮池' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '走私者小灣在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[壇]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '血壇岩棚的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '血壇岩棚的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '血壇岩棚殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_smuggler_cove: {
+    id: 'bloodsalt_coast_smuggler_cove',
+    name: '走私者小灣',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_smuggler_cove.png',
+    imagePrompt: '走私者小灣 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '走私者小灣位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側' },
+    ],
+    monsters: [
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 360 },
+    ],
+    mapSymbol: '[灣]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '走私者小灣的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '走私者小灣的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '走私者小灣殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_drowned_watchtower: {
+    id: 'bloodsalt_coast_drowned_watchtower',
+    name: '沉水望塔',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_drowned_watchtower.png',
+    imagePrompt: '沉水望塔 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉水望塔位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在東側' },
+    ],
+    monsters: [
+      { monsterId: 'succubus', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[塔]',
+    mapX: 1,
+    mapY: 3,
+    guardianHints: {
+      creature: '沉水望塔的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '沉水望塔的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '沉水望塔殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_razor_clam_beds: {
+    id: 'bloodsalt_coast_razor_clam_beds',
+    name: '刃貝床',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_razor_clam_beds.png',
+    imagePrompt: '刃貝床 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '刃貝床位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '回到沉水望塔' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '戰旗沙丘在北側' },
+    ],
+    monsters: [
+      { monsterId: 'flame_dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'hellhound', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[貝]',
+    mapX: 2,
+    mapY: 3,
+    guardianHints: {
+      creature: '刃貝床的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '刃貝床的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '刃貝床殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_sharktooth_pass: {
+    id: 'bloodsalt_coast_sharktooth_pass',
+    name: '鯊齒隘',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_sharktooth_pass.png',
+    imagePrompt: '鯊齒隘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鯊齒隘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在東側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在北側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'demon_warrior', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[齒]',
+    mapX: 3,
+    mapY: 3,
+    guardianHints: {
+      creature: '鯊齒隘的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '鯊齒隘的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '鯊齒隘殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_ice_dark_surge: {
+    id: 'bloodsalt_coast_ice_dark_surge',
+    name: '冰暗湧道',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_ice_dark_surge.png',
+    imagePrompt: '冰暗湧道 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '冰暗湧道位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在北側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[湧]',
+    mapX: 4,
+    mapY: 3,
+    guardianHints: {
+      creature: '冰暗湧道的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '冰暗湧道的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '冰暗湧道殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_warflag_dune: {
+    id: 'bloodsalt_coast_warflag_dune',
+    name: '戰旗沙丘',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_warflag_dune.png',
+    imagePrompt: '戰旗沙丘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '戰旗沙丘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在東側' },
+    ],
+    monsters: [
+      { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 420 },
+      { monsterId: 'young_dragon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[旗]',
+    mapX: 2,
+    mapY: 4,
+    guardianHints: {
+      creature: '戰旗沙丘的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '戰旗沙丘的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '戰旗沙丘殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_ghost_keel_grave: {
+    id: 'bloodsalt_coast_ghost_keel_grave',
+    name: '幽艏船墓',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_ghost_keel_grave.png',
+    imagePrompt: '幽艏船墓 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '幽艏船墓位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '回到戰旗沙丘' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'lich', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[船]',
+    mapX: 3,
+    mapY: 4,
+    guardianHints: {
+      creature: '幽艏船墓的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '幽艏船墓的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '幽艏船墓殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_red_coral_labyrinth: {
+    id: 'bloodsalt_coast_red_coral_labyrinth',
+    name: '紅珊瑚迷宮',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_red_coral_labyrinth.png',
+    imagePrompt: '紅珊瑚迷宮 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '紅珊瑚迷宮位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '回到幽艏船墓' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_tithe_of_blood_pier', description: '血稅棧橋在東側' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'demon_lord', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[珊]',
+    mapX: 4,
+    mapY: 4,
+    guardianHints: {
+      creature: '紅珊瑚迷宮的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '紅珊瑚迷宮的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '紅珊瑚迷宮殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_tithe_of_blood_pier: {
+    id: 'bloodsalt_coast_tithe_of_blood_pier',
+    name: '血稅棧橋',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_tithe_of_blood_pier.png',
+    imagePrompt: '血稅棧橋 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '血稅棧橋位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '回到紅珊瑚迷宮' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_ritual_reef_core', description: '儀式礁心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'arch_demon', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[棧]',
+    mapX: 5,
+    mapY: 4,
+    guardianHints: {
+      creature: '血稅棧橋的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '血稅棧橋的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '血稅棧橋殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
+  bloodsalt_coast_ritual_reef_core: {
+    id: 'bloodsalt_coast_ritual_reef_core',
+    name: '儀式礁心',
+    zone: 'bloodsalt_coast' as RoomDef['zone'],
+    image: 'bloodsalt_coast_ritual_reef_core.png',
+    imagePrompt: '儀式礁心 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '儀式礁心位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+    exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_tithe_of_blood_pier', description: '回到血稅棧橋' },
+    ],
+    monsters: [
+      { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 480 },
+      { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 420 },
+    ],
+    mapSymbol: '[礁]',
+    mapX: 6,
+    mapY: 4,
+    guardianHints: {
+      creature: '儀式礁心的赤潮若突然倒灌，附近掠奪者、海祭巡邏或敵對隊伍可能正在靠近。',
+      treasure: '儀式礁心的鹽晶縫、骨網節、沉船艙板或紅珊瑚根部可能藏著血鹽海岸資源。',
+      spirit: '儀式礁心殘留海盜分贓、資源戰衝突與血祭儀式完成前的潮聲記憶。',
+    },
+  },
+
 };

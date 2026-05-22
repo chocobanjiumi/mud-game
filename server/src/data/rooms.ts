@@ -1283,7 +1283,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 7,
     recommendedPartySize: [2, 4],
     primaryElements: ['dark', 'ice'],
-    rooms: [],
+    rooms: [
+      'bloodsalt_coast_entrance_tidegate', 'bloodsalt_coast_red_salt_flats', 'bloodsalt_coast_wreckers_marker', 'bloodsalt_coast_bone_net_shoal', 'bloodsalt_coast_pirate_beacon', 'bloodsalt_coast_crimson_tide_pool', 'bloodsalt_coast_brine_cut_path', 'bloodsalt_coast_saltglass_cave', 'bloodsalt_coast_reef_fishing_post', 'bloodsalt_coast_blood_altar_ledge', 'bloodsalt_coast_smuggler_cove', 'bloodsalt_coast_drowned_watchtower', 'bloodsalt_coast_razor_clam_beds', 'bloodsalt_coast_sharktooth_pass', 'bloodsalt_coast_ice_dark_surge', 'bloodsalt_coast_warflag_dune', 'bloodsalt_coast_ghost_keel_grave', 'bloodsalt_coast_red_coral_labyrinth', 'bloodsalt_coast_tithe_of_blood_pier', 'bloodsalt_coast_ritual_reef_core'
+    ],
   },
   emerald_canopy: {
     id: 'emerald_canopy',
