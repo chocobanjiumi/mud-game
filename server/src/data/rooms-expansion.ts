@@ -13749,4 +13749,532 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       spirit: '世界熔爐核心保留著黑曜深層被古代熔爐長年燒穿的記憶。',
     },
   },
+  starfall_crater_rim_gate: {
+    id: 'starfall_crater_rim_gate',
+    name: '隕坑邊門',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_rim_gate.png',
+    imagePrompt: '隕坑邊門 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隕坑邊門位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'east', targetRoomId: 'starfall_crater_glass_slope', description: '玻化斜坡通往坑內' },
+      { direction: 'north', targetRoomId: 'starfall_crater_survey_camp', description: '測量營地在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[門]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '隕坑邊門的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '隕坑邊門的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '隕坑邊門保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_glass_slope: {
+    id: 'starfall_crater_glass_slope',
+    name: '玻化斜坡',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_glass_slope.png',
+    imagePrompt: '玻化斜坡 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玻化斜坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_rim_gate', description: '玻化斜坡回到邊門' },
+      { direction: 'east', targetRoomId: 'starfall_crater_stariron_field', description: '星鐵散地在前方' },
+      { direction: 'south', targetRoomId: 'starfall_crater_burning_scree', description: '燃石坡向下滑落' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'thunder_eagle', maxCount: 1, respawnSeconds: 120 },
+    ],
+    mapSymbol: '[坡]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '玻化斜坡的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '玻化斜坡的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '玻化斜坡保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_survey_camp: {
+    id: 'starfall_crater_survey_camp',
+    name: '測量營地',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_survey_camp.png',
+    imagePrompt: '測量營地 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '測量營地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'south', targetRoomId: 'starfall_crater_rim_gate', description: '營地路回到隕坑邊門' },
+      { direction: 'east', targetRoomId: 'starfall_crater_magnetized_spire', description: '磁化尖塔在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[營]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '測量營地的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '測量營地的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '測量營地保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_magnetized_spire: {
+    id: 'starfall_crater_magnetized_spire',
+    name: '磁化尖塔',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_magnetized_spire.png',
+    imagePrompt: '磁化尖塔 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '磁化尖塔位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_survey_camp', description: '尖塔路回到測量營地' },
+      { direction: 'east', targetRoomId: 'starfall_crater_radiant_pool', description: '輻光水池在東側' },
+      { direction: 'south', targetRoomId: 'starfall_crater_stariron_field', description: '磁砂坡落向星鐵散地' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[磁]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '磁化尖塔的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '磁化尖塔的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '磁化尖塔保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_stariron_field: {
+    id: 'starfall_crater_stariron_field',
+    name: '星鐵散地',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_stariron_field.png',
+    imagePrompt: '星鐵散地 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '星鐵散地位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_glass_slope', description: '星鐵散地回到玻化斜坡' },
+      { direction: 'north', targetRoomId: 'starfall_crater_magnetized_spire', description: '磁砂坡回到磁化尖塔' },
+      { direction: 'east', targetRoomId: 'starfall_crater_impact_trench', description: '撞擊裂溝在前方' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 3, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[鐵]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '星鐵散地的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '星鐵散地的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '星鐵散地保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_burning_scree: {
+    id: 'starfall_crater_burning_scree',
+    name: '燃石坡',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_burning_scree.png',
+    imagePrompt: '燃石坡 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燃石坡位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'north', targetRoomId: 'starfall_crater_glass_slope', description: '燃石坡回到玻化斜坡' },
+      { direction: 'east', targetRoomId: 'starfall_crater_fallen_observatory', description: '墜落觀測臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[燃]',
+    mapX: 1,
+    mapY: -1,
+    guardianHints: {
+      creature: '燃石坡的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '燃石坡的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '燃石坡保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_radiant_pool: {
+    id: 'starfall_crater_radiant_pool',
+    name: '輻光水池',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_radiant_pool.png',
+    imagePrompt: '輻光水池 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '輻光水池位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_magnetized_spire', description: '輻光水池回到磁化尖塔' },
+      { direction: 'east', targetRoomId: 'starfall_crater_silvergrass_ring', description: '銀草環在東側' },
+    ],
+    monsters: [
+      { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[池]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '輻光水池的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '輻光水池的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '輻光水池保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_impact_trench: {
+    id: 'starfall_crater_impact_trench',
+    name: '撞擊裂溝',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_impact_trench.png',
+    imagePrompt: '撞擊裂溝 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '撞擊裂溝位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_stariron_field', description: '裂溝回到星鐵散地' },
+      { direction: 'east', targetRoomId: 'starfall_crater_alien_eggs', description: '異卵灘在前方' },
+      { direction: 'south', targetRoomId: 'starfall_crater_fallen_observatory', description: '斷臺階通往觀測臺' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[裂]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '撞擊裂溝的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '撞擊裂溝的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '撞擊裂溝保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_fallen_observatory: {
+    id: 'starfall_crater_fallen_observatory',
+    name: '墜落觀測臺',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_fallen_observatory.png',
+    imagePrompt: '墜落觀測臺 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '墜落觀測臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_burning_scree', description: '觀測臺回到燃石坡' },
+      { direction: 'north', targetRoomId: 'starfall_crater_impact_trench', description: '斷臺階回到撞擊裂溝' },
+      { direction: 'east', targetRoomId: 'starfall_crater_comet_shard_mine', description: '彗片礦井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_assassin', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[觀]',
+    mapX: 2,
+    mapY: -1,
+    guardianHints: {
+      creature: '墜落觀測臺的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '墜落觀測臺的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '墜落觀測臺保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_silvergrass_ring: {
+    id: 'starfall_crater_silvergrass_ring',
+    name: '銀草環',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_silvergrass_ring.png',
+    imagePrompt: '銀草環 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '銀草環位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_radiant_pool', description: '銀草環回到輻光水池' },
+      { direction: 'east', targetRoomId: 'starfall_crater_gravity_well', description: '重力井在東側' },
+    ],
+    monsters: [
+      { monsterId: 'wind_hawk', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 3,
+    mapY: 1,
+    guardianHints: {
+      creature: '銀草環的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '銀草環的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '銀草環保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_alien_eggs: {
+    id: 'starfall_crater_alien_eggs',
+    name: '異界卵灘',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_alien_eggs.png',
+    imagePrompt: '異界卵灘 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '異界卵灘位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_impact_trench', description: '異卵灘回到撞擊裂溝' },
+      { direction: 'east', targetRoomId: 'starfall_crater_voidglass_arch', description: '虛玻拱在東側' },
+      { direction: 'south', targetRoomId: 'starfall_crater_comet_shard_mine', description: '碎星坡落向礦井' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[卵]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '異界卵灘的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '異界卵灘的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '異界卵灘保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_comet_shard_mine: {
+    id: 'starfall_crater_comet_shard_mine',
+    name: '彗片礦井',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_comet_shard_mine.png',
+    imagePrompt: '彗片礦井 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '彗片礦井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_fallen_observatory', description: '彗片礦井回到觀測臺' },
+      { direction: 'north', targetRoomId: 'starfall_crater_alien_eggs', description: '碎星坡回到異卵灘' },
+      { direction: 'east', targetRoomId: 'starfall_crater_meteoric_forge', description: '隕鐵熔臺在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'shadow_demon', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[彗]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '彗片礦井的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '彗片礦井的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '彗片礦井保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_gravity_well: {
+    id: 'starfall_crater_gravity_well',
+    name: '重力井',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_gravity_well.png',
+    imagePrompt: '重力井 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '重力井位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_silvergrass_ring', description: '重力井回到銀草環' },
+      { direction: 'east', targetRoomId: 'starfall_crater_star_map_ruin', description: '星圖廢墟在東側' },
+      { direction: 'south', targetRoomId: 'starfall_crater_voidglass_arch', description: '引力坡落向虛玻拱' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[重]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '重力井的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '重力井的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '重力井保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_voidglass_arch: {
+    id: 'starfall_crater_voidglass_arch',
+    name: '虛玻拱',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_voidglass_arch.png',
+    imagePrompt: '虛玻拱 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '虛玻拱位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_alien_eggs', description: '虛玻拱回到異卵灘' },
+      { direction: 'north', targetRoomId: 'starfall_crater_gravity_well', description: '引力坡回到重力井' },
+      { direction: 'east', targetRoomId: 'starfall_crater_worldscar_rift', description: '世界傷痕裂縫在東側' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'chaos_spawn', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[虛]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '虛玻拱的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '虛玻拱的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '虛玻拱保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_meteoric_forge: {
+    id: 'starfall_crater_meteoric_forge',
+    name: '隕鐵熔臺',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_meteoric_forge.png',
+    imagePrompt: '隕鐵熔臺 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '隕鐵熔臺位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_comet_shard_mine', description: '隕鐵熔臺回到彗片礦井' },
+      { direction: 'east', targetRoomId: 'starfall_crater_impact_core', description: '撞擊核心在東側' },
+    ],
+    monsters: [
+      { monsterId: 'fire_elemental', maxCount: 2, respawnSeconds: 140 },
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+    ],
+    mapSymbol: '[熔]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '隕鐵熔臺的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '隕鐵熔臺的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '隕鐵熔臺保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_star_map_ruin: {
+    id: 'starfall_crater_star_map_ruin',
+    name: '星圖廢墟',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_star_map_ruin.png',
+    imagePrompt: '星圖廢墟 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '星圖廢墟位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_gravity_well', description: '星圖廢墟回到重力井' },
+      { direction: 'south', targetRoomId: 'starfall_crater_worldscar_rift', description: '星線落向世界傷痕' },
+    ],
+    monsters: [
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[圖]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '星圖廢墟的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '星圖廢墟的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '星圖廢墟保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_worldscar_rift: {
+    id: 'starfall_crater_worldscar_rift',
+    name: '世界傷痕',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_worldscar_rift.png',
+    imagePrompt: '世界傷痕 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '世界傷痕位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_voidglass_arch', description: '世界傷痕回到虛玻拱' },
+      { direction: 'north', targetRoomId: 'starfall_crater_star_map_ruin', description: '星線回到星圖廢墟' },
+      { direction: 'east', targetRoomId: 'starfall_crater_worldboss_core', description: '裂隙通往世界王核心' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[痕]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '世界傷痕的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '世界傷痕的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '世界傷痕保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_impact_core: {
+    id: 'starfall_crater_impact_core',
+    name: '撞擊核心',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_impact_core.png',
+    imagePrompt: '撞擊核心 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '撞擊核心位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_meteoric_forge', description: '撞擊核心回到隕鐵熔臺' },
+      { direction: 'east', targetRoomId: 'starfall_crater_worldboss_core', description: '熔星路通往世界王核心' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 2, respawnSeconds: 160 },
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+    ],
+    mapSymbol: '[核]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '撞擊核心的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '撞擊核心的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '撞擊核心保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_worldboss_core: {
+    id: 'starfall_crater_worldboss_core',
+    name: '世界王星核',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_worldboss_core.png',
+    imagePrompt: '世界王星核 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '世界王星核位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_worldscar_rift', description: '裂隙回到世界傷痕' },
+      { direction: 'south', targetRoomId: 'starfall_crater_impact_core', description: '熔星路回到撞擊核心' },
+      { direction: 'east', targetRoomId: 'starfall_crater_outer_void', description: '外界空洞在星核後方' },
+    ],
+    monsters: [
+      { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[王]',
+    mapX: 7,
+    mapY: 0,
+    guardianHints: {
+      creature: '世界王星核的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '世界王星核的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '世界王星核保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
+
+  starfall_crater_outer_void: {
+    id: 'starfall_crater_outer_void',
+    name: '外界空洞',
+    zone: 'starfall_crater' as RoomDef['zone'],
+    image: 'starfall_crater_outer_void.png',
+    imagePrompt: '外界空洞 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '外界空洞位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+    exits: [
+      { direction: 'west', targetRoomId: 'starfall_crater_worldboss_core', description: '外界空洞回到世界王星核' },
+    ],
+    monsters: [
+      { monsterId: 'chaos_spawn', maxCount: 3, respawnSeconds: 180 },
+      { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[外]',
+    mapX: 8,
+    mapY: 0,
+    guardianHints: {
+      creature: '外界空洞的星光若忽然偏折，異界巡行者通常已經接近。',
+      treasure: '外界空洞的星鐵、彗片或虛玻裂紋旁可能藏著高階採集線索。',
+      spirit: '外界空洞保留著隕星撞開大地與外界裂縫時的記憶。',
+    },
+  },
 };
