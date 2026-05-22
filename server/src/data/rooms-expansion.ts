@@ -20676,4 +20676,538 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     },
   },
 
+  // ─── 藍寶湖擴充 (Lv 15-25) ─────────────────────────────
+
+  sapphire_lake_entry_claim: {
+    id: 'sapphire_lake_entry_claim',
+    name: '湖岸採集界樁',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_entry_claim.png',
+    imagePrompt: '湖岸採集界樁 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖岸採集界樁位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'east', targetRoomId: 'sapphire_lake_vein_path', description: '藍脈湖徑在東側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_lantern_dock', description: '燈籠碼頭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'crystal_lizard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[入]',
+    mapX: 0,
+    mapY: 0,
+    guardianHints: {
+      creature: '湖岸採集界樁的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '湖岸採集界樁的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '湖岸採集界樁殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_vein_path: {
+    id: 'sapphire_lake_vein_path',
+    name: '藍脈湖徑',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_vein_path.png',
+    imagePrompt: '藍脈湖徑 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍脈湖徑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_herb_shelf', description: '湖草淺棚在東側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[脈]',
+    mapX: 1,
+    mapY: 0,
+    guardianHints: {
+      creature: '藍脈湖徑的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '藍脈湖徑的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '藍脈湖徑殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_herb_shelf: {
+    id: 'sapphire_lake_herb_shelf',
+    name: '湖草淺棚',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_herb_shelf.png',
+    imagePrompt: '湖草淺棚 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖草淺棚位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_water_pocket', description: '清泉水囊在東側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '藍蘆葦帶在北側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[草]',
+    mapX: 2,
+    mapY: 0,
+    guardianHints: {
+      creature: '湖草淺棚的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '湖草淺棚的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '湖草淺棚殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_water_pocket: {
+    id: 'sapphire_lake_water_pocket',
+    name: '清泉水囊',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_water_pocket.png',
+    imagePrompt: '清泉水囊 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '清泉水囊位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_beast_scrape', description: '湖獸擦痕在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_pebble_weir', description: '卵石水堰在南側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[水]',
+    mapX: 3,
+    mapY: 0,
+    guardianHints: {
+      creature: '清泉水囊的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '清泉水囊的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '清泉水囊殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_beast_scrape: {
+    id: 'sapphire_lake_beast_scrape',
+    name: '湖獸擦痕',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_beast_scrape.png',
+    imagePrompt: '湖獸擦痕 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖獸擦痕位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_relic_pit', description: '湖底遺坑在東側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '玻魚灣在北側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_lizard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[獸]',
+    mapX: 4,
+    mapY: 0,
+    guardianHints: {
+      creature: '湖獸擦痕的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '湖獸擦痕的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '湖獸擦痕殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_relic_pit: {
+    id: 'sapphire_lake_relic_pit',
+    name: '湖底遺坑',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_relic_pit.png',
+    imagePrompt: '湖底遺坑 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '湖底遺坑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_beast_scrape', description: '回到湖獸擦痕' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_sunken_step', description: '沉階在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[遺]',
+    mapX: 5,
+    mapY: 0,
+    guardianHints: {
+      creature: '湖底遺坑的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '湖底遺坑的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '湖底遺坑殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_lantern_dock: {
+    id: 'sapphire_lake_lantern_dock',
+    name: '燈籠碼頭',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_lantern_dock.png',
+    imagePrompt: '燈籠碼頭 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '燈籠碼頭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在東側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 1, respawnSeconds: 120 },
+      { monsterId: 'crystal_lizard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[碼]',
+    mapX: 0,
+    mapY: 1,
+    guardianHints: {
+      creature: '燈籠碼頭的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '燈籠碼頭的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '燈籠碼頭殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_mirror_shallows: {
+    id: 'sapphire_lake_mirror_shallows',
+    name: '鏡面淺灘',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_mirror_shallows.png',
+    imagePrompt: '鏡面淺灘 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '鏡面淺灘位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_lantern_dock', description: '回到燈籠碼頭' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '藍蘆葦帶在東側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_mineral_spring', description: '礦泉眼在北側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[鏡]',
+    mapX: 1,
+    mapY: 1,
+    guardianHints: {
+      creature: '鏡面淺灘的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '鏡面淺灘的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '鏡面淺灘殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_blue_reed_bed: {
+    id: 'sapphire_lake_blue_reed_bed',
+    name: '藍蘆葦帶',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_blue_reed_bed.png',
+    imagePrompt: '藍蘆葦帶 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍蘆葦帶位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_glassfish_cove', description: '玻魚灣在東側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[蘆]',
+    mapX: 2,
+    mapY: 1,
+    guardianHints: {
+      creature: '藍蘆葦帶的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '藍蘆葦帶的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '藍蘆葦帶殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_pebble_weir: {
+    id: 'sapphire_lake_pebble_weir',
+    name: '卵石水堰',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_pebble_weir.png',
+    imagePrompt: '卵石水堰 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '卵石水堰位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'north', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_crystal_sandbar', description: '晶砂洲在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[堰]',
+    mapX: 3,
+    mapY: -1,
+    guardianHints: {
+      creature: '卵石水堰的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '卵石水堰的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '卵石水堰殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_glassfish_cove: {
+    id: 'sapphire_lake_glassfish_cove',
+    name: '玻魚灣',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_glassfish_cove.png',
+    imagePrompt: '玻魚灣 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '玻魚灣位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '回到藍蘆葦帶' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '回到湖獸擦痕' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在東側' },
+    ],
+    monsters: [
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[灣]',
+    mapX: 4,
+    mapY: 1,
+    guardianHints: {
+      creature: '玻魚灣的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '玻魚灣的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '玻魚灣殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_sunken_step: {
+    id: 'sapphire_lake_sunken_step',
+    name: '沉階',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_sunken_step.png',
+    imagePrompt: '沉階 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '沉階位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sapphire_lake_relic_pit', description: '回到湖底遺坑' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '回到玻魚灣' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_deep_vein_window', description: '深脈窗在北側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[階]',
+    mapX: 5,
+    mapY: 1,
+    guardianHints: {
+      creature: '沉階的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '沉階的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '沉階殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_mineral_spring: {
+    id: 'sapphire_lake_mineral_spring',
+    name: '礦泉眼',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_mineral_spring.png',
+    imagePrompt: '礦泉眼 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '礦泉眼位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '靜水石窟在東側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[泉]',
+    mapX: 1,
+    mapY: 2,
+    guardianHints: {
+      creature: '礦泉眼的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '礦泉眼的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '礦泉眼殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_crystal_sandbar: {
+    id: 'sapphire_lake_crystal_sandbar',
+    name: '晶砂洲',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_crystal_sandbar.png',
+    imagePrompt: '晶砂洲 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '晶砂洲位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_pebble_weir', description: '回到卵石水堰' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+    ],
+    mapSymbol: '[砂]',
+    mapX: 4,
+    mapY: -1,
+    guardianHints: {
+      creature: '晶砂洲的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '晶砂洲的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '晶砂洲殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_lily_cache: {
+    id: 'sapphire_lake_lily_cache',
+    name: '睡蓮藏點',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_lily_cache.png',
+    imagePrompt: '睡蓮藏點 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_crystal_sandbar', description: '回到晶砂洲' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '回到玻魚灣' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '藍寶礦脈在東側' },
+    ],
+    monsters: [
+      { monsterId: 'poison_toad', maxCount: 2, respawnSeconds: 120 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[蓮]',
+    mapX: 5,
+    mapY: -1,
+    guardianHints: {
+      creature: '睡蓮藏點的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '睡蓮藏點的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '睡蓮藏點殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_calmwater_grotto: {
+    id: 'sapphire_lake_calmwater_grotto',
+    name: '靜水石窟',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_calmwater_grotto.png',
+    imagePrompt: '靜水石窟 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '靜水石窟位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_mineral_spring', description: '回到礦泉眼' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_spirit_mirror', description: '水靈鏡在東側' },
+    ],
+    monsters: [
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'crystal_lizard', maxCount: 1, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[窟]',
+    mapX: 2,
+    mapY: 2,
+    guardianHints: {
+      creature: '靜水石窟的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '靜水石窟的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '靜水石窟殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_spirit_mirror: {
+    id: 'sapphire_lake_spirit_mirror',
+    name: '水靈鏡',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_spirit_mirror.png',
+    imagePrompt: '水靈鏡 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '水靈鏡位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '回到靜水石窟' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '深脈窗在東側' },
+    ],
+    monsters: [
+      { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 180 },
+      { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[靈]',
+    mapX: 3,
+    mapY: 2,
+    guardianHints: {
+      creature: '水靈鏡的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '水靈鏡的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '水靈鏡殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_deep_vein_window: {
+    id: 'sapphire_lake_deep_vein_window',
+    name: '深脈窗',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_deep_vein_window.png',
+    imagePrompt: '深脈窗 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '深脈窗位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '回到水靈鏡' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '回到沉階' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '藍寶礦脈在東側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[窗]',
+    mapX: 4,
+    mapY: 2,
+    guardianHints: {
+      creature: '深脈窗的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '深脈窗的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '深脈窗殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_sapphire_lode: {
+    id: 'sapphire_lake_sapphire_lode',
+    name: '藍寶礦脈',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_sapphire_lode.png',
+    imagePrompt: '藍寶礦脈 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍寶礦脈位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '回到睡蓮藏點' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_blueheart_sanctum', description: '藍心聖潭在北側' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 210 },
+      { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 150 },
+    ],
+    mapSymbol: '[礦]',
+    mapX: 6,
+    mapY: 0,
+    guardianHints: {
+      creature: '藍寶礦脈的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '藍寶礦脈的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '藍寶礦脈殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
+  sapphire_lake_blueheart_sanctum: {
+    id: 'sapphire_lake_blueheart_sanctum',
+    name: '藍心聖潭',
+    zone: 'sapphire_lake' as RoomDef['zone'],
+    image: 'sapphire_lake_blueheart_sanctum.png',
+    imagePrompt: '藍心聖潭 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
+    description:
+      '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+    exits: [
+      { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '回到深脈窗' },
+    ],
+    monsters: [
+      { monsterId: 'crystal_golem', maxCount: 1, respawnSeconds: 240 },
+      { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 180 },
+      { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 180 },
+    ],
+    mapSymbol: '[心]',
+    mapX: 6,
+    mapY: 1,
+    guardianHints: {
+      creature: '藍心聖潭的湖面若出現反向水紋，附近湖蛇、晶蜥或水元素可能正在靠近。',
+      treasure: '藍心聖潭的藍寶裂紋、水草根部或沉階縫隙旁可能藏著採集線索。',
+      spirit: '藍心聖潭殘留採集者、水精靈與湖底礦脈長年共鳴的記憶。',
+    },
+  },
+
 };

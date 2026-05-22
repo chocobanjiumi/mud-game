@@ -1112,7 +1112,9 @@ export const ZONES: Record<string, ZoneDef> = {
     dangerLevel: 2,
     recommendedPartySize: [1, 2],
     primaryElements: ['ice', 'nature'],
-    rooms: resourceNodeRoomIds('sapphire_lake'),
+    rooms: [
+      'sapphire_lake_entry_claim', 'sapphire_lake_vein_path', 'sapphire_lake_herb_shelf', 'sapphire_lake_water_pocket', 'sapphire_lake_beast_scrape', 'sapphire_lake_relic_pit', 'sapphire_lake_lantern_dock', 'sapphire_lake_mirror_shallows', 'sapphire_lake_blue_reed_bed', 'sapphire_lake_pebble_weir', 'sapphire_lake_glassfish_cove', 'sapphire_lake_sunken_step', 'sapphire_lake_mineral_spring', 'sapphire_lake_crystal_sandbar', 'sapphire_lake_lily_cache', 'sapphire_lake_calmwater_grotto', 'sapphire_lake_spirit_mirror', 'sapphire_lake_deep_vein_window', 'sapphire_lake_sapphire_lode', 'sapphire_lake_blueheart_sanctum'
+    ],
   },
   kingsroad_market: {
     id: 'kingsroad_market',
