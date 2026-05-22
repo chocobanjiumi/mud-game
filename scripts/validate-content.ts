@@ -83,6 +83,11 @@ function isCombatOrResourceRoom(room: RoomDef): boolean {
     || (zone?.tags ?? []).some((tag) => ['gathering', 'fishing', 'mining', 'resource_war'].includes(tag));
 }
 
+function isHighRiskZone(zone: ZoneDef | undefined): boolean {
+  if (!zone) return false;
+  return zone.pvpMode === 'open' || zone.pvpMode === 'kingdom_war' || zone.type === 'pvp' || zone.type === 'kingdom';
+}
+
 function hasTrafficNode(zone: ZoneDef): boolean {
   if (zone.portal) return true;
 
@@ -199,6 +204,9 @@ function validateRooms(): void {
     }
     if (count > MAX_ROOM_DESCRIPTION_CHARS) {
       add('error', `room:${room.id}`, `description has ${count} Chinese chars; should not exceed ${MAX_ROOM_DESCRIPTION_CHARS}`);
+    }
+    if (isHighRiskZone(ZONES[room.zone]) && !/PvP|PVP|pvp|王國戰|開放衝突|敵對玩家|玩家|死亡|金幣|耐久|撤退|伏擊|爭奪|衝突/.test(room.description)) {
+      add('error', `room:${room.id}`, 'high-risk PvP room description must mention PvP, conflict, death penalty, retreat, or ambush risk');
     }
 
     if (!room.exits || room.exits.length === 0) {
