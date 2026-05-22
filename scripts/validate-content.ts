@@ -20,6 +20,8 @@ interface Finding {
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ROOM_IMAGE_DIR = path.join(ROOT, 'client/public/images/rooms');
+const MIN_ROOM_IMAGE_WIDTH = 960;
+const MIN_ROOM_IMAGE_HEIGHT = 1536;
 const REQUIRED_ZONE_FIELDS: (keyof ZoneDef)[] = [
   'type',
   'region',
@@ -55,6 +57,8 @@ const IMAGE_STYLE_PHRASE = 'dark fantasy painterly environment illustration, ver
 const IMAGE_PROMPT_FUNCTION_PATTERN = /room function (entrance|main route|combat|resource|hidden|elite|boss|town service)/i;
 const IMAGE_PROMPT_TERRAIN_PATTERN = /terrain [a-z ]+/i;
 const IMAGE_PROMPT_LIGHT_PATTERN = /\b(light|lit|lantern|torch|candle|firelight|moon|sun|dawn|dusk|glow|glowing|shadow|dark|amber|blue|green|red|pale|beam|shaft|mist|fog)\b|光|燈|火|燭|月|日|晨|暮|暗|影|霧/i;
+const IMAGE_PROMPT_PLACE_COMPOSITION_PATTERN = /\benvironment illustration\b|\broom function\b|\bterrain\b/i;
+const IMAGE_PROMPT_FORBIDDEN_PATTERN = /\b(modern|sci[- ]?fi|science fiction|ui panel|interface|cartoon|chibi|cute mascot|abstract background|only fog|solid color|color block)\b|現代|科幻|介面|卡通|Q版|抽象|純霧|色塊/i;
 const ROOM_PLACE_SENSE_PATTERNS = [
   /地形|地面|泥|沙|草|岩|石|山|谷|林|田|沼|海|湖|河|溪|水|雪|冰|火|熔岩|礁|岸|洞|坡|崖|坑|灘|原|丘|泉|潭|潮|terrain|mud|sand|grass|rock|stone|mountain|valley|forest|field|marsh|sea|lake|river|snow|ice|lava|cave|slope|cliff/i,
   /建築|牆|門|橋|階|塔|城|村|營|屋|廳|殿|棚|井|欄|店|港|碼頭|祭壇|石柱|柱|雕像|廣場|道路|路|小徑|building|wall|gate|door|bridge|stair|tower|hall|temple|altar|plaza|road/i,
@@ -303,6 +307,9 @@ function validateRooms(): void {
       } else {
         const ratio = size.width / size.height;
         const expected = 10 / 16;
+        if (size.width < MIN_ROOM_IMAGE_WIDTH || size.height < MIN_ROOM_IMAGE_HEIGHT) {
+          add('error', `room:${room.id}`, `room image should be at least close to 1024x1638, found ${size.width}x${size.height}`);
+        }
         if (Math.abs(ratio - expected) > 0.02) {
           add('error', `room:${room.id}`, `room image ratio must be close to 10:16, found ${size.width}x${size.height}`);
         }
@@ -328,6 +335,12 @@ function validateRooms(): void {
       }
       if (!IMAGE_PROMPT_LIGHT_PATTERN.test(room.imagePrompt)) {
         add('error', `room:${room.id}`, 'imagePrompt must include light source or lighting');
+      }
+      if (!IMAGE_PROMPT_PLACE_COMPOSITION_PATTERN.test(room.imagePrompt)) {
+        add('error', `room:${room.id}`, 'imagePrompt must be place-focused environment composition');
+      }
+      if (IMAGE_PROMPT_FORBIDDEN_PATTERN.test(room.imagePrompt)) {
+        add('error', `room:${room.id}`, 'imagePrompt contains forbidden modern, sci-fi, UI, cartoon, abstract, fog-only, or color-block terms');
       }
     }
   }
