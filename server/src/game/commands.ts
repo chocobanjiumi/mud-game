@@ -57,6 +57,7 @@ import {
   unlockAppearance,
 } from './appearance.js';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
+import { getPveRespawnRoomId } from './death-respawn.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
 import { disassembleEquipment, lockItemAffix, reforgeItemQuality, rerollItemAffix } from './item-reforge.js';
 import { CRAFTING_CATEGORIES, type CraftingCategory, type CraftingOptions } from './crafting.js';
@@ -937,13 +938,15 @@ function cmdAttack(session: WsSession, target: string): void {
 
       char.hp = Math.floor(char.maxHp * 0.5);
       char.mp = Math.floor(char.maxMp * 0.5);
-      char.roomId = 'village_square';
-      world.placePlayer(char.id, 'village_square');
+      const respawnRoomId = getPveRespawnRoomId(char.roomId);
+      char.roomId = respawnRoomId;
+      world.placePlayer(char.id, respawnRoomId);
       saveCharacter(char);
 
       const playerSession = getSessionByCharacterId(char.id);
       if (playerSession) {
-        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣。`, 'error');
+        const respawnRoom = getRoom(respawnRoomId);
+        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣，回到 ${respawnRoom?.name ?? respawnRoomId}。`, 'error');
       }
     }
 

@@ -7,6 +7,7 @@ import type {
 import { CLASS_DEFS, createEmptyEquipmentSlots } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
+import { getPveRespawnRoomId } from './death-respawn.js';
 import { recordGoldSpent } from './economy-stats.js';
 
 // ============================================================
@@ -522,10 +523,11 @@ export class PlayerManager {
     // 資源重置：怒氣歸零，其他回到初始值
     const classDef = CLASS_DEFS[char.classId];
     char.resource = classDef ? classDef.initialResource : 0;
-    char.roomId = 'village_square'; // 回到新手村廣場
+    const respawnRoom = getPveRespawnRoomId(char.roomId);
+    char.roomId = respawnRoom;
 
     return {
-      respawnRoom: 'village_square',
+      respawnRoom,
       goldLost,
       expLost,
       reviveFee,

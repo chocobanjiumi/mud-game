@@ -370,14 +370,14 @@ describe('PlayerManager', () => {
   // ── Death handling ──
 
   describe('handleDeath', () => {
-    it('should respawn at village_square', () => {
+    it('should respawn at the nearest safe point', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      char.roomId = 'dark_forest_deep';
+      char.roomId = 'grass_path';
 
       const result = pm.handleDeath(char.id);
 
-      expect(result.respawnRoom).toBe('village_square');
-      expect(char.roomId).toBe('village_square');
+      expect(result.respawnRoom).toBe('plains_entrance');
+      expect(char.roomId).toBe('plains_entrance');
     });
 
     it('should lose 10% gold on death', () => {
