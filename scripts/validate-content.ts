@@ -51,6 +51,7 @@ const REQUIRED_EQUIP_SLOTS = [
   'necklace',
 ] as const;
 const IMAGE_STYLE_PHRASE = 'dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text';
+const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 
 const findings: Finding[] = [];
 const allMonsters = { ...MONSTERS, ...EXPANSION_MONSTERS };
@@ -112,6 +113,13 @@ function validateZones(): void {
 
     if (!hasTrafficNode(zone)) {
       add('error', `zone:${zone.id}`, 'requires at least one traffic node, portal, entrance, shortcut, or recall route');
+    }
+
+    if (zone.type !== 'town') {
+      const combatRooms = zone.rooms.filter((roomId) => (ROOMS[roomId]?.monsters?.length ?? 0) > 0);
+      if (combatRooms.length < MIN_NON_TOWN_COMBAT_ROOMS) {
+        add('error', `zone:${zone.id}`, `requires at least ${MIN_NON_TOWN_COMBAT_ROOMS} combat rooms, found ${combatRooms.length}`);
+      }
     }
 
     for (const roomId of zone.rooms) {
