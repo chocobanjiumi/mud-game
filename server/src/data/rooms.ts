@@ -2527,7 +2527,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '穿過鏽蝕的鐵門，你來到了墓地最深處。這裡的墓碑更加古老，刻著早已被遺忘的文字。' +
       '地面上散落著碎裂的骨骸和褪色的花環，空氣中彌漫著死亡的氣息。' +
-      '一座巨大的石棺矗立在中央，封印的符文依然微微發光。',
+      '一座巨大的石棺矗立在中央，封印的符文依然微微發光。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'graveyard_entrance', description: '回到墓地入口' },
     ],
@@ -2679,7 +2680,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_herb_garden.png',
     imagePrompt: '藥草圃 in starter_village_ext, resource room with raised herb beds, dew, clay markers and soft green morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，玩家可 gather 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。',
+      '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，玩家可 gather 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_beehive_grove', description: '回到蜂巢樹叢' },
       { direction: 'south', targetRoomId: 'village_outskirts', description: '小籬門通往村外小路' },
@@ -2811,7 +2812,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_charcoal_kiln.png',
     imagePrompt: '炭窯 in starter_village_ext, resource combat kiln room with smoking charcoal mound, chopped logs, ash footprints and orange ember light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。玩家可採集木炭材料、inspect 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。',
+      '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。玩家可採集木炭材料、inspect 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '回到舊磨坊小徑' },
       { direction: 'east', targetRoomId: 'starter_ext_ruined_bridge', description: '灰路通向斷橋' },
@@ -2833,7 +2834,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_ruined_bridge.png',
     imagePrompt: '斷橋 in starter_village_ext, event route room with broken wooden bridge, shallow ravine, mossy posts and cloudy side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，玩家可 inspect 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。',
+      '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，玩家可 inspect 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '水聲通回蛙鳴池' },
       { direction: 'west', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰路回到炭窯' },
@@ -3221,7 +3222,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_tidepool_grotto.png',
     imagePrompt: '潮池岩穴 in eastern_coast, hidden exploration tidepool grotto with mirror pools, shell marks, blue cave light and crab shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。玩家可 search 潮池底部找半寶石和古幣，也能 inspect 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。',
+      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。玩家可 search 潮池底部找半寶石和古幣，也能 inspect 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'tidal_zone', description: '濕滑石路回到潮間帶' },
       { direction: 'south', targetRoomId: 'sea_cave', description: '裂縫通向海蝕洞' },
@@ -3241,7 +3242,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_seaweed_flats.png',
     imagePrompt: '海藻灘 in eastern_coast, resource combat flats with thick kelp mats, driftwood, jellyfish pools and pale green tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。玩家可 gather 海藻材料、search 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。',
+      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。玩家可 gather 海藻材料、search 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'sandy_beach', description: '沙地回到沙灘' },
       { direction: 'east', targetRoomId: 'coral_shallows', description: '水線通往珊瑚淺灘' },
@@ -3263,7 +3264,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_smugglers_cove.png',
     imagePrompt: '走私者海灣 in eastern_coast, hidden combat cove with narrow inlet, covered crates, lantern signals and purple dusk surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。玩家可 inspect 提燈節奏找走私暗號，search 貨箱取得任務證物，但會引來海盜巡邏。',
+      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。玩家可 inspect 提燈節奏找走私暗號，search 貨箱取得任務證物，但會引來海盜巡邏。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'cliff_path', description: '沿崖壁回到海崖步道' },
       { direction: 'south', targetRoomId: 'eastern_coast_pirate_cache', description: '貨箱痕跡通往藏貨處' },
@@ -3284,7 +3285,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_broken_pier.png',
     imagePrompt: '斷裂棧橋 in eastern_coast, event route room with shattered pier posts, loose planks, crab nests and cloudy harbor light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。玩家可 inspect 斷樁判斷是否被海盜破壞，search 漁網找修橋材料，也要處理爬上木板的海蟹。',
+      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。玩家可 inspect 斷樁判斷是否被海盜破壞，search 漁網找修橋材料，也要處理爬上木板的海蟹。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'fishing_dock', description: '回到漁村碼頭' },
       { direction: 'south', targetRoomId: 'lighthouse', description: '沿岸前往燈塔' },
@@ -3305,7 +3306,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_stormwatch_ledge.png',
     imagePrompt: '觀潮斷崖 in eastern_coast, elite exploration cliff ledge with storm clouds, warning cairns, gull bones and lightning sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡通向海蛇巢。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。',
+      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡通向海蛇巢。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_smugglers_cove', description: '小徑回走私者海灣' },
       { direction: 'south', targetRoomId: 'pirate_camp', description: '陡坡下方是海盜營地' },
@@ -3326,7 +3327,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_pearl_bed.png',
     imagePrompt: '珍珠床 in eastern_coast, resource underwater shallows with oyster beds, pale pearls, filtered sunlight and jellyfish drift, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。玩家可 gather 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。',
+      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。玩家可 gather 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_broken_pier', description: '潮溝回斷裂棧橋' },
       { direction: 'south', targetRoomId: 'coral_shallows', description: '水色變深通往珊瑚淺灘' },
@@ -3692,7 +3693,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ash_field.png',
     imagePrompt: '火山灰原 in volcano_zone, entrance combat ash field with black dunes, ember sparks, buried ore and smoky red horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方可接熔岩橋外側，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。',
+      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方可接熔岩橋外側，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'volcano_base', description: '灰路回到火山山腳' },
       { direction: 'south', targetRoomId: 'volcano_lava_bridge', description: '灼熱風指向熔岩橋' },
@@ -3712,7 +3713,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_lava_bridge.png',
     imagePrompt: '熔岩橋 in volcano_zone, dangerous route room with narrow basalt bridge over lava lake, heat shimmer and falling sparks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端有通往蒸汽升降梯的維修階。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。',
+      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端有通往蒸汽升降梯的維修階。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_ash_field', description: '回到火山灰原' },
       { direction: 'east', targetRoomId: 'volcano_crater', description: '橋尾接火山口邊緣' },
@@ -3756,7 +3757,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_sulfur_springs.png',
     imagePrompt: '硫磺熱泉 in volcano_zone, resource combat hot springs with yellow pools, boiling vents, sulfur crystals and poisonous steam light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '硫磺谷西側的熱泉池不斷冒泡，黃色結晶沿池緣生長，毒霧把遠處岩壁染成暗綠。東面回硫磺谷，南側可攀上玄武岩階。玩家可 gather 硫磺與熱泉礦泥，inspect 蒸汽節奏避開噴發，也要注意熔岩蟲會從沸騰池底突然鑽出。',
+      '硫磺谷西側的熱泉池不斷冒泡，黃色結晶沿池緣生長，毒霧把遠處岩壁染成暗綠。東面回硫磺谷，南側可攀上玄武岩階。玩家可 gather 硫磺與熱泉礦泥，inspect 蒸汽節奏避開噴發，也要注意熔岩蟲會從沸騰池底突然鑽出。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'sulfur_valley', description: '熱霧散處回硫磺谷' },
       { direction: 'south', targetRoomId: 'volcano_basalt_steps', description: '黑色石階通往高處' },
@@ -3776,7 +3777,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ember_barracks.png',
     imagePrompt: '餘燼兵房 in volcano_zone, elite combat dwarf barracks with iron bunks, ember braziers, weapon racks and smoky red light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。',
+      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'dwarf_mine', description: '走廊回到矮人礦坑' },
       { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '貨道通往鍛造庫房' },
@@ -3797,7 +3798,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_crystal_vent.png',
     imagePrompt: '火晶噴氣口 in volcano_zone, resource combat vent with red crystals, steam jets, magma river glow and fractured basalt, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側通餘燼兵房，南邊有通往採場的黑石路。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。',
+      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側通餘燼兵房，南邊有通往採場的黑石路。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'magma_river', description: '裂縫回到岩漿河' },
       { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '黑鐵門通往餘燼兵房' },
@@ -3822,7 +3823,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_obsidian_quarry.png',
     imagePrompt: '黑曜石採場 in volcano_zone, resource combat quarry with black glass terraces, mine carts, red seams and golem silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。',
+      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_cave', description: '採場入口回黑曜石洞' },
       { direction: 'north', targetRoomId: 'volcano_steam_lift', description: '軌道通往蒸汽升降梯' },
@@ -3844,7 +3845,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_basalt_steps.png',
     imagePrompt: '玄武岩階 in volcano_zone, main route combat basalt stairs with carved dwarf markers, lava glow below and falling ash, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回硫磺熱泉，東面接火焰神殿入口，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。',
+      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回硫磺熱泉，東面接火焰神殿入口，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '石階下方是硫磺熱泉' },
       { direction: 'east', targetRoomId: 'fire_temple_entrance', description: '石階接回火焰神殿入口' },
@@ -4059,7 +4060,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。' +
       '洞穴深處的溫度極低，呼出的氣息瞬間凝結成冰霜。' +
-      '冰元素和霜巨人守護著這處天然的冰晶寶庫。西面回冰河，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫可通往高聳冰晶尖塔。',
+      '冰元素和霜巨人守護著這處天然的冰晶寶庫。西面回冰河，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫可通往高聳冰晶尖塔。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'glacier', description: '回到冰河' },
       { direction: 'north', targetRoomId: 'ice_castle_gate', description: '洞穴深處通向一座冰封城堡' },
@@ -4204,7 +4206,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_snowdrift_pass.png',
     imagePrompt: '積雪隘口 in frozen_wastes, main route combat pass with high snowdrifts, buried trail stakes, wolf tracks and cold overcast light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。玩家可 inspect 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。',
+      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。玩家可 inspect 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '風雪聲通往暴風雪路' },
@@ -4225,7 +4227,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_ice_fishing_hole.png',
     imagePrompt: '冰釣洞 in frozen_wastes, resource room with cut ice hole, fishing line, frost buckets, fish shadows and blue lake light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可接暴風雪路，西側冰面裂縫通往冰河深處。玩家可 gather 魚材或 search 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。',
+      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可接暴風雪路，西側冰面裂縫通往冰河深處。玩家可 gather 魚材或 search 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'frozen_lake', description: '回到凍湖冰面' },
       { direction: 'south', targetRoomId: 'blizzard_path', description: '風雪路在南側' },
@@ -4267,7 +4269,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_abandoned_sledge.png',
     imagePrompt: '廢棄雪橇 in frozen_wastes, hidden exploration wrecked sledge with broken runners, scattered crates, frozen blood and low campfire light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。玩家可 search 箱子找一次性補給，inspect 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。',
+      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。玩家可 search 箱子找一次性補給，inspect 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪坡回到積雪隘口' },
       { direction: 'east', targetRoomId: 'mountain_camp', description: '營火光在東側閃動' },
@@ -4381,7 +4383,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_crystal_spire.png',
     imagePrompt: '冰晶尖塔 in frozen_wastes, resource elite spire with towering blue crystals, prism stairs, frost mist and bright cold light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰晶洞穴，北側結冰哨塔可作外部路線，東面裂谷中傳來冰龍呼吸。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。',
+      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰晶洞穴，北側結冰哨塔可作外部路線，東面裂谷中傳來冰龍呼吸。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴' },
       { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '外部冰橋通向結冰哨塔' },

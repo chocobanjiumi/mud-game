@@ -392,7 +392,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '沼澤在此處變得更加深邃，濃厚的紫色毒霧從水面蒸騰而起，遮蔽了一切視線。' +
       '枯朽的樹幹如骸骨般從泥漿中伸出，上面覆蓋著發光的毒蘑菇。' +
-      '四處傳來此起彼伏的咕嚕聲和蛙鳴——這裡的一切都帶著毒性。',
+      '四處傳來此起彼伏的咕嚕聲和蛙鳴——這裡的一切都帶著毒性。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'firefly_trail', description: '退回螢火蟲小徑' },
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
@@ -447,7 +448,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '所有的樹木都失去了生機，灰白色的枝幹扭曲成詭異的形狀，如同無數伸出的手臂。' +
       '地面覆蓋著厚厚的灰燼，踩上去會揚起令人窒息的塵埃。' +
-      '枯木之間偶爾傳來沉重的腳步聲——暗黑樹人在這裡遊蕩。',
+      '枯木之間偶爾傳來沉重的腳步聲——暗黑樹人在這裡遊蕩。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'elf_altar', description: '北方透出一線銀光' },
       { direction: 'south', targetRoomId: 'dark_treehollow', description: '最大的枯木底部有個漆黑的洞穴' },
@@ -476,7 +478,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一棵直徑超過十公尺的千年巨木已經完全枯死，中空的樹幹形成了一座天然的暗室。' +
       '樹洞內壁上覆蓋著發出幽紫色光芒的菌類，空氣中充斥著腐朽與魔力交織的氣味。' +
-      '樹洞深處似乎通往更深層的空間，黑暗中有什麼東西在低吟。',
+      '樹洞深處似乎通往更深層的空間，黑暗中有什麼東西在低吟。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'withered_forest', description: '爬出樹洞回到枯萎之林' },
     ],
@@ -1381,7 +1384,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冰封雪原的盡頭，大地突然斷裂成一道巨大的裂谷。裂谷對面是一片焦黑的荒原，' +
       '空氣中瀰漫著硫磺的刺鼻氣味，遠方的天空被永恆的紅色火焰映照。' +
-      '一座搖搖欲墜的石橋橫跨裂谷，這是通往魔族領地的唯一通路。',
+      '一座搖搖欲墜的石橋橫跨裂谷，這是通往魔族領地的唯一通路。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'ice_throne', description: '退回冰封王座' },
       { direction: 'north', targetRoomId: 'scorched_plains', description: '踏上焦黑的荒原' },
@@ -1410,7 +1414,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一望無際的焦黑平原，大地龜裂如蛛網，裂縫中不時竄出赤紅色的火焰。' +
       '枯萎的樹木如同黑色的骨架矗立其間，天空永遠籠罩在灰紅色的煙塵之下。' +
-      '遠處傳來低沉的戰鼓聲，那是魔族巡邏隊的信號。',
+      '遠處傳來低沉的戰鼓聲，那是魔族巡邏隊的信號。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_border', description: '退回邊境裂谷' },
       { direction: 'north', targetRoomId: 'demon_village', description: '隱約可見魔族的營帳' },
@@ -1440,7 +1445,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '由黑色岩石和獸骨搭建的簡陋村落，低矮的帳篷和骨架棚屋散佈其間。' +
       '魔族士兵在村中巡邏，鍛造爐裡的火焰徹夜不熄，空氣中充斥著金屬和鮮血的氣味。' +
-      '村落中央的圖騰柱上掛滿了冒險者的裝備殘骸，作為對入侵者的警告。',
+      '村落中央的圖騰柱上掛滿了冒險者的裝備殘骸，作為對入侵者的警告。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'scorched_plains', description: '回到焦土平原' },
       { direction: 'north', targetRoomId: 'dark_fortress_gate', description: '村落北方矗立著黑暗要塞' },
@@ -1559,7 +1565,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '寬闊的地下營房中排列著數百張由獸骨和獸皮製成的簡陋床鋪。' +
       '武器架上陳列著各式各樣的魔族武器，牆壁上掛著作戰地圖和戰旗。' +
-      '空氣中充斥著魔族特有的刺鼻體味，偶爾能聽到士兵們的粗獷笑聲。',
+      '空氣中充斥著魔族特有的刺鼻體味，偶爾能聽到士兵們的粗獷笑聲。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'torture_chamber', description: '回到拷問室' },
       { direction: 'west', targetRoomId: 'summoning_circle', description: '兵營深處有一道暗紅的門' },
@@ -1647,7 +1654,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一間由魔法結界守護的石室，四壁鑲嵌著發光的紅色寶石。' +
       '室內堆放著從各地掠奪來的金幣、寶石和魔法物品，散發著誘人的光芒。' +
-      '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。',
+      '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'demon_village', description: '回到魔族村落' },
       { direction: 'south', targetRoomId: 'demon_shadow_market', description: '狹窄貨梯通往影市後門' },
@@ -2032,7 +2040,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一片被巨大龍骨散佈的荒野，有些骨骸的肋骨如同拱門般高聳，頭骨比房屋還要巨大。' +
       '這裡是遠古巨龍的安息之地，空氣中殘留著龍族亡魂的低語。' +
-      '腐朽的骨骼中滲出暗綠色的毒液——古龍蛇在骨海中遊蕩。',
+      '腐朽的骨骼中滲出暗綠色的毒液——古龍蛇在骨海中遊蕩。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'dragon_valley_entrance', description: '回到龍谷入口' },
       { direction: 'north', targetRoomId: 'ancient_dragon_lair', description: '最大的龍骨指向一個洞穴' },
@@ -2513,7 +2522,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。' +
       '空間在此處開始扭曲，牆壁上的岩石呈現出不可能的幾何形狀。' +
-      '耳邊傳來低沉的嗡鳴聲，那是維度壁壘被侵蝕的聲音。',
+      '耳邊傳來低沉的嗡鳴聲，那是維度壁壘被侵蝕的聲音。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'up', targetRoomId: 'elder_dragon_sanctum', description: '回到古龍聖殿' },
       { direction: 'north', targetRoomId: 'void_corridor', description: '踏入扭曲的虛空' },
@@ -2543,7 +2553,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。' +
       '走廊的地板時而凝固時而透明，能透過腳下看到星辰般閃爍的深淵。' +
-      '偶爾有扭曲的光芒從虛空中射出，照亮走廊上蠕動的暗影生物。牆面缺口會傳來其他時間線的低語。',
+      '偶爾有扭曲的光芒從虛空中射出，照亮走廊上蠕動的暗影生物。牆面缺口會傳來其他時間線的低語。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'abyss_entrance', description: '退回深淵入口' },
       { direction: 'north', targetRoomId: 'shadow_realm', description: '走廊延伸入更深的黑暗' },
@@ -2573,7 +2584,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。' +
       '只有暗影生物的眼睛在黑暗中如同幽靈般閃爍。地面是一層流動的暗影，' +
-      '每一步都會激起漣漪般的黑色波紋。在這裡，連自己的身體都開始變得模糊。',
+      '每一步都會激起漣漪般的黑色波紋。在這裡，連自己的身體都開始變得模糊。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'void_corridor', description: '退回虛空迴廊' },
       { direction: 'north', targetRoomId: 'chaos_bridge', description: '黑暗中有一道混沌的光芒' },
@@ -2602,7 +2614,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而是虛無。' +
       '橋的兩側翻湧著不同顏色的能量——火、冰、雷、光、暗交替閃爍。' +
-      '踏上橋面的瞬間，現實的法則就不再適用。橋面邊緣還會短暫浮現其他隊伍失敗時留下的腳印。',
+      '踏上橋面的瞬間，現實的法則就不再適用。橋面邊緣還會短暫浮現其他隊伍失敗時留下的腳印。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'shadow_realm', description: '退回暗影領域' },
       { direction: 'north', targetRoomId: 'abyss_core', description: '橋的盡頭是深淵的核心' },
@@ -2632,7 +2645,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座詭異的花園漂浮在虛空之中，花朵是由凝固的噩夢結晶而成。' +
       '每一朵花都在無聲地綻放與凋零，散發著令人昏沉的幽香。' +
-      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。',
+      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
       { direction: 'north', targetRoomId: 'time_distortion', description: '花園邊緣的空間在扭曲' },
@@ -2690,7 +2704,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起。' +
       '你能同時看到這個地方千年前的繁華和千年後的廢墟。' +
-      '時間之流在此分岔又匯合，一步之差可能跨越百年。地面裂縫裡還卡著不同年代的武器殘影。',
+      '時間之流在此分岔又匯合，一步之差可能跨越百年。地面裂縫裡還卡著不同年代的武器殘影。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
       { direction: 'south', targetRoomId: 'nightmare_garden', description: '回到噩夢花園' },
@@ -3105,7 +3120,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。' +
       '走廊兩側是破碎的天界建築殘骸，曾經宏偉的殿堂如今只剩下斷壁殘垣。' +
-      '但即便是廢墟，這裡的每一塊石頭都散發著令人敬畏的神聖之力。',
+      '但即便是廢墟，這裡的每一塊石頭都散發著令人敬畏的神聖之力。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'celestial_gate', description: '退回天界之門' },
       { direction: 'north', targetRoomId: 'angel_garden', description: '前方出現一片翠綠的花園' },
@@ -3135,7 +3151,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。' +
       '花園中央的噴泉仍在流淌著發光的聖水，空氣中充滿了治癒和安寧的氣息。' +
-      '幾位熾天使在花園中巡遊，牠們的翅膀散發出溫暖的金色光芒。',
+      '幾位熾天使在花園中巡遊，牠們的翅膀散發出溫暖的金色光芒。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'starlight_path', description: '退回星光走廊' },
       { direction: 'north', targetRoomId: 'celestial_throne_room', description: '花園盡頭是天界王座' },
@@ -3165,7 +3182,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。' +
       '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
-      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。',
+      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。' +
+      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
       { direction: 'north', targetRoomId: 'celestial_scriptorium', description: '書架後方是抄寫室' },
@@ -3935,7 +3953,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_beehive_rows.png',
     imagePrompt: '蜂箱行列 in old_farmland, rows of old beehives under fruit trees, buzzing insects, wax frames and golden haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。玩家可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。',
+      '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。玩家可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_mildew_orchard', description: '果樹小路回到霉斑果園' },
       { direction: 'south', targetRoomId: 'old_farmland_chicken_coop', description: '蜂箱盡頭是破雞舍' },
@@ -4042,7 +4060,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_chicken_coop.png',
     imagePrompt: '破雞舍 in old_farmland, ruined chicken coop with straw nests, broken wire, feathers, rats and cloudy farmyard light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚、蜂箱行列和牧草地，是農場東側動線的交會點。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。',
+      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚、蜂箱行列和牧草地，是農場東側動線的交會點。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
       { direction: 'south', targetRoomId: 'old_farmland_toolshed', description: '破網通往工具棚' },
@@ -4180,7 +4198,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_entrance.png',
     imagePrompt: '溪谷入口 in whispering_valley, narrow valley entrance with clear creek, leaning trail marker, reeds and cool morning mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '老舊農場北方的小徑在兩面岩壁間收窄，清澈溪水沿石縫流出，風穿過谷口時會發出像低聲說話的聲音。入口木牌標著釣點、草藥坡與瀑布方向，是低語溪谷的交通節點與安全錨點。玩家可在此確認退路，也能沿南側小徑回到老農場界碑。',
+      '老舊農場北方的小徑在兩面岩壁間收窄，清澈溪水沿石縫流出，風穿過谷口時會發出像低聲說話的聲音。入口木牌標著釣點、草藥坡與瀑布方向，是低語溪谷的交通節點與安全錨點。玩家可在此確認退路，也能沿南側小徑回到老農場界碑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_stone_marker', description: '小徑回到老農場石界碑' },
       { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸' },
@@ -4208,7 +4226,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_reed_bank.png',
     imagePrompt: '蘆葦岸 in whispering_valley, creek bank of tall reeds, dragonflies, muddy animal tracks and filtered green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。玩家可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。',
+      '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。玩家可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口' },
       { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈' },
@@ -4235,7 +4253,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_clear_stream.png',
     imagePrompt: '清溪淺灘 in whispering_valley, shallow clear stream over smooth stones, minnows, slime bubbles and bright green valley light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。玩家可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。',
+      '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。玩家可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸' },
       { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群' },
@@ -4261,7 +4279,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_mossy_footbridge.png',
     imagePrompt: '苔石小橋 in whispering_valley, moss-covered stone footbridge over creek, ferns, wet rocks and soft mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一座低矮石橋橫跨溪水，橋面長滿濕滑青苔，欄杆上刻著巡林人留下的箭頭。橋下水聲被石拱壓成低沉耳語，偶爾會把上游的動靜提前送到腳邊。這裡是溪谷東西兩側的交通節點，玩家可從橋上前往草藥坡、冷泉或回到谷口。',
+      '一座低矮石橋橫跨溪水，橋面長滿濕滑青苔，欄杆上刻著巡林人留下的箭頭。橋下水聲被石拱壓成低沉耳語，偶爾會把上游的動靜提前送到腳邊。這裡是溪谷東西兩側的交通節點，玩家可從橋上前往草藥坡、冷泉或回到谷口。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_entrance', description: '石橋西側回到入口' },
       { direction: 'east', targetRoomId: 'whispering_valley_cold_spring', description: '橋東有冷泉冒霧' },
@@ -4288,7 +4306,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_herb_slope.png',
     imagePrompt: '草藥斜坡 in whispering_valley, sloped bank with medicinal herbs, dew, small flowers, spider threads and green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '溪谷東坡長滿薄荷、冷葉草與銀邊蕨，清晨露珠讓整面斜坡閃閃發亮。草藥之間有細細蛛絲和小獸腳印，顯示這裡不只有採集者來過。玩家可按藥性採集草藥，也能順著坡頂前往回音岩群或冰蕨叢；若採錯未成熟草株，附近蜘蛛會被震動吸引。',
+      '溪谷東坡長滿薄荷、冷葉草與銀邊蕨，清晨露珠讓整面斜坡閃閃發亮。草藥之間有細細蛛絲和小獸腳印，顯示這裡不只有採集者來過。玩家可按藥性採集草藥，也能順著坡頂前往回音岩群或冰蕨叢；若採錯未成熟草株，附近蜘蛛會被震動吸引。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_clear_stream', description: '斜坡下方是清溪淺灘' },
       { direction: 'south', targetRoomId: 'whispering_valley_mossy_footbridge', description: '小徑回到苔石橋' },
@@ -4315,7 +4333,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_fishing_bend.png',
     imagePrompt: '釣魚灣 in whispering_valley, quiet bend of creek with flat stones, fishing line, reeds and silver fish ripples, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，玩家可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。',
+      '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，玩家可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_reed_bank', description: '回到蘆葦岸' },
       { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧' },
@@ -4342,7 +4360,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_echo_rocks.png',
     imagePrompt: '回音岩群 in whispering_valley, clustered echo rocks beside stream, carved marks, moss, birds and sound wave mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，玩家可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。',
+      '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，玩家可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘' },
       { direction: 'east', targetRoomId: 'whispering_valley_ice_fern_patch', description: '冷聲從東側冰蕨傳來' },
@@ -4396,7 +4414,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_cold_spring.png',
     imagePrompt: '冷泉 in whispering_valley, clear cold spring steaming lightly, blue stones, mossy bridge path and healing herbs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '苔石小橋東側冒出一眼清冷泉水，泉面泛著淡藍光，周圍石頭比溪谷其他地方更冷。泉邊長著冰蕨幼苗和細小白花，水中偶爾有半透明史萊姆滑過。這裡是治療與資源節點，玩家可採集冷泉水或尋找冰屬性材料，但泉水過冷會讓行動變慢。',
+      '苔石小橋東側冒出一眼清冷泉水，泉面泛著淡藍光，周圍石頭比溪谷其他地方更冷。泉邊長著冰蕨幼苗和細小白花，水中偶爾有半透明史萊姆滑過。這裡是治療與資源節點，玩家可採集冷泉水或尋找冰屬性材料，但泉水過冷會讓行動變慢。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_mossy_footbridge', description: '回到苔石小橋' },
       { direction: 'north', targetRoomId: 'whispering_valley_willow_camp', description: '柳樹營地在泉北' },
@@ -4450,7 +4468,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_fallen_log.png',
     imagePrompt: '倒木淺橋 in whispering_valley, fallen tree across creek, moss, mushrooms, bird tracks and rushing water below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '一棵老樹倒在釣魚灣上游，樹幹橫跨溪水，形成勉強可走的天然淺橋。樹皮長滿蘑菇和青苔，枝杈間卡著羽毛、魚骨和幾段破線。通過倒木可到達霧潭或回音岩群，但腳下濕滑，戰鬥時很容易被史萊姆逼退到水裡。',
+      '一棵老樹倒在釣魚灣上游，樹幹橫跨溪水，形成勉強可走的天然淺橋。樹皮長滿蘑菇和青苔，枝杈間卡著羽毛、魚骨和幾段破線。通過倒木可到達霧潭或回音岩群，但腳下濕滑，戰鬥時很容易被史萊姆逼退到水裡。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_fishing_bend', description: '沿溪回到釣魚灣' },
       { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '倒木西端靠近回音岩群' },
@@ -4477,7 +4495,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_mist_pool.png',
     imagePrompt: '霧潭 in whispering_valley, round misty pool with dark water, reeds, pale fish shadows and spider cave slope, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。',
+      '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_fallen_log', description: '倒木通回上游' },
       { direction: 'south', targetRoomId: 'whispering_valley_fishing_bend', description: '水流回到釣魚灣' },
@@ -4531,7 +4549,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_ice_fern_patch.png',
     imagePrompt: '冰蕨叢 in whispering_valley, patch of pale blue ferns frosted by cold spring mist, dew crystals and spider silk, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '草藥坡北端突然變冷，地面長出一片淡藍冰蕨，每片葉緣都凝著霜珠。冰蕨會隨聲音微微顫動，把腳步聲傳向回音岩群和瀑布方向。這裡是稀有採集點，玩家可取得冰屬性藥草，也要小心藏在葉背的蜘蛛和被寒氣吸引的史萊姆。',
+      '草藥坡北端突然變冷，地面長出一片淡藍冰蕨，每片葉緣都凝著霜珠。冰蕨會隨聲音微微顫動，把腳步聲傳向回音岩群和瀑布方向。這裡是稀有採集點，玩家可取得冰屬性藥草，也要小心藏在葉背的蜘蛛和被寒氣吸引的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_herb_slope', description: '回到較溫暖的草藥坡' },
       { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '冷聲回到回音岩群' },
@@ -4558,7 +4576,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_wolf_den.png',
     imagePrompt: '溪狼巢 in whispering_valley, shallow wolf den under roots beside creek, bones, wet fur tracks and dim green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。這裡是低等精英戰鬥房，玩家若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。',
+      '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。這裡是低等精英戰鬥房，玩家若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'whispering_valley_waterfall_base', description: '水聲通向瀑布底部' },
       { direction: 'south', targetRoomId: 'whispering_valley_echo_rocks', description: '岩間小路回到回音岩群' },
@@ -4613,7 +4631,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_hidden_cascade.png',
     imagePrompt: '隱瀑石室 in whispering_valley, hidden chamber behind waterfall, glowing wet stone, secret cascade, fern roots and blue mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '穿過瀑布水幕後，岩壁內竟藏著一間狹長石室，第二道更細的隱瀑沿著裂縫落入深潭。石室牆面佈滿水蝕符號，形狀與舊神龕白石上的符文一致。這裡是隱藏探索房，玩家能揭開低語來源、找到稀有水晶，也會遭遇從蛛洞和冷泉追來的怪物。',
+      '穿過瀑布水幕後，岩壁內竟藏著一間狹長石室，第二道更細的隱瀑沿著裂縫落入深潭。石室牆面佈滿水蝕符號，形狀與舊神龕白石上的符文一致。這裡是隱藏探索房，玩家能揭開低語來源、找到稀有水晶，也會遭遇從蛛洞和冷泉追來的怪物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_waterfall_base', description: '穿回外側瀑布底部' },
       { direction: 'east', targetRoomId: 'whispering_valley_ice_fern_patch', description: '窄縫通向冰蕨叢' },
@@ -4640,7 +4658,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_ranger_post.png',
     imagePrompt: '巡林哨站 in whispering_valley, small wooden ranger post, map board, hanging lantern, valley trail signs and cool shade, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '谷口西側的木棚是廢棄巡林哨站，牆上釘著溪谷路線圖、怪物出沒記錄和幾張被雨水暈開的告示。桌面還留著半瓶驅蟲油與一盞可重新點燃的舊燈。這裡是任務與交通提示房，玩家可取得溪谷路線、蛛洞警告或失蹤巡林人的初始線索。',
+      '谷口西側的木棚是廢棄巡林哨站，牆上釘著溪谷路線圖、怪物出沒記錄和幾張被雨水暈開的告示。桌面還留著半瓶驅蟲油與一盞可重新點燃的舊燈。這裡是任務與交通提示房，玩家可取得溪谷路線、蛛洞警告或失蹤巡林人的初始線索。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'whispering_valley_entrance', description: '木棚外就是溪谷入口' },
       { direction: 'north', targetRoomId: 'whispering_valley_stone_weir', description: '巡林小徑通往石堰' },
@@ -4666,7 +4684,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_stone_weir.png',
     imagePrompt: '石堰 in whispering_valley, old stone weir across stream, shallow steps, water control stones and wolf tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '巡林小徑北端有一座矮石堰，把溪水分成幾條淺流，石塊上刻著水位線和修補記號。若移動幾塊鬆動石頭，就能改變下游冷泉與釣魚灣的水量。這裡是事件與捷徑點，玩家可修復石堰、追蹤狼群，或由西側小路快速切到瀑布附近。',
+      '巡林小徑北端有一座矮石堰，把溪水分成幾條淺流，石塊上刻著水位線和修補記號。若移動幾塊鬆動石頭，就能改變下游冷泉與釣魚灣的水量。這裡是事件與捷徑點，玩家可修復石堰、追蹤狼群，或由西側小路快速切到瀑布附近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_ranger_post', description: '巡林小徑回到哨站' },
       { direction: 'east', targetRoomId: 'whispering_valley_wolf_den', description: '狼徑通向溪狼巢' },
@@ -4749,7 +4767,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_vein_path.png',
     imagePrompt: '裸露礦脈道 in abandoned_mines, tunnel wall with exposed ore veins, pick marks, rope markers and dusty lantern glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '主礦道兩側岩壁露出灰銀色礦脈，舊鑿痕密密麻麻，像有無數礦工在同一面牆上敲了多年。地上鋪著碎石與斷裂繩標，偶爾能看見新近被拖動的痕跡。玩家可在此採礦、辨認礦脈純度，也要留意從裂縫鑽出的蝙蝠與亡靈礦工。',
+      '主礦道兩側岩壁露出灰銀色礦脈，舊鑿痕密密麻麻，像有無數礦工在同一面牆上敲了多年。地上鋪著碎石與斷裂繩標，偶爾能看見新近被拖動的痕跡。玩家可在此採礦、辨認礦脈純度，也要留意從裂縫鑽出的蝙蝠與亡靈礦工。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_entry_claim', description: '繩標回到入口' },
       { direction: 'east', targetRoomId: 'abandoned_mines_herb_shelf', description: '礦道旁有潮濕岩棚' },
@@ -4776,7 +4794,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_herb_shelf.png',
     imagePrompt: '潮濕藥草岩棚 in abandoned_mines, damp stone shelf with cave herbs, dripping roots, mushrooms and pale mineral light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '礦道轉角有一片濕滑岩棚，地下水沿根鬚滴落，讓幾簇耐陰草藥和白色菌菇在礦粉中生長。這裡是少見的地下採集點，藥草能中和礦坑粉塵，也可作為任務材料。岩棚上方有細小蛛絲與蝙蝠抓痕，採集時若動作太大，會驚動洞頂生物。',
+      '礦道轉角有一片濕滑岩棚，地下水沿根鬚滴落，讓幾簇耐陰草藥和白色菌菇在礦粉中生長。這裡是少見的地下採集點，藥草能中和礦坑粉塵，也可作為任務材料。岩棚上方有細小蛛絲與蝙蝠抓痕，採集時若動作太大，會驚動洞頂生物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_vein_path', description: '回到裸露礦脈道' },
       { direction: 'east', targetRoomId: 'abandoned_mines_water_pocket', description: '水聲從前方口袋洞傳來' },
@@ -4803,7 +4821,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_water_pocket.png',
     imagePrompt: '積水口袋洞 in abandoned_mines, small flooded pocket chamber, black water, broken rails, mineral reflections and hanging roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '礦道低處積成一座口袋洞，黑水淹過腳踝，水面倒映著斷裂鐵軌和木梁。每踩一步都會揚起礦粉和氣泡，像水下有什麼在緩慢呼吸。玩家可在此採水、搜索沉沒工具或找出通往淹沒支道的入口，但積水也讓亡靈與蝙蝠的動向更難判斷。',
+      '礦道低處積成一座口袋洞，黑水淹過腳踝，水面倒映著斷裂鐵軌和木梁。每踩一步都會揚起礦粉和氣泡，像水下有什麼在緩慢呼吸。玩家可在此採水、搜索沉沒工具或找出通往淹沒支道的入口，但積水也讓亡靈與蝙蝠的動向更難判斷。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_herb_shelf', description: '濕滑岩棚在西側' },
       { direction: 'east', targetRoomId: 'abandoned_mines_beast_scrape', description: '濕腳印通向獸爪痕' },
@@ -4830,7 +4848,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_beast_scrape.png',
     imagePrompt: '獸爪刮痕道 in abandoned_mines, tunnel walls clawed by beasts, broken supports, scattered bones and red warning marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '這段礦道牆面滿是深深爪痕，木支架被抓斷，地上散著小動物骨骸和被拖裂的礦工布條。刮痕有些新，有些已被礦粉覆蓋，顯示某種地下野獸長期把這裡當巡行通道。玩家可追蹤刮痕前往遺物坑，也可能遭遇洞穴蝙蝠和骷髏守衛的夾擊。',
+      '這段礦道牆面滿是深深爪痕，木支架被抓斷，地上散著小動物骨骸和被拖裂的礦工布條。刮痕有些新，有些已被礦粉覆蓋，顯示某種地下野獸長期把這裡當巡行通道。玩家可追蹤刮痕前往遺物坑，也可能遭遇洞穴蝙蝠和骷髏守衛的夾擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_water_pocket', description: '濕腳印回到積水口袋洞' },
       { direction: 'east', targetRoomId: 'abandoned_mines_relic_pit', description: '爪痕盡頭是遺物坑' },
@@ -4883,7 +4901,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_lift_station.png',
     imagePrompt: '舊升降台 in abandoned_mines, rusted lift platform, chains, pulley wheels, deep shaft and dust beams, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '入口北側的舊升降台懸在方形井口上方，鐵鏈生鏽，滑輪卡著碎石和乾掉的油泥。平台邊緣還掛著半截安全繩，像曾有人急著逃離。這裡是礦坑交通節點，可連往礦車場與深層井道；若修好制動桿，玩家能更安全地穿梭上下層。',
+      '入口北側的舊升降台懸在方形井口上方，鐵鏈生鏽，滑輪卡著碎石和乾掉的油泥。平台邊緣還掛著半截安全繩，像曾有人急著逃離。這裡是礦坑交通節點，可連往礦車場與深層井道；若修好制動桿，玩家能更安全地穿梭上下層。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_entry_claim', description: '回到礦坑入口' },
       { direction: 'east', targetRoomId: 'abandoned_mines_cart_yard', description: '鐵軌通向礦車場' },
@@ -4910,7 +4928,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_cart_yard.png',
     imagePrompt: '礦車調度場 in abandoned_mines, abandoned mine cart yard, rusted rails, switch levers, ore carts and lantern haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '多條鐵軌在此交會，幾輛礦車歪在軌道上，車斗裡還殘留半車碎礦和破布。調度桿上的標牌寫著主礦道、木支廊和冶煉間，但有幾面被人刻意轉反。玩家可推動礦車打開路線，也可能讓金屬撞擊聲驚醒深處守衛。',
+      '多條鐵軌在此交會，幾輛礦車歪在軌道上，車斗裡還殘留半車碎礦和破布。調度桿上的標牌寫著主礦道、木支廊和冶煉間，但有幾面被人刻意轉反。玩家可推動礦車打開路線，也可能讓金屬撞擊聲驚醒深處守衛。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_lift_station', description: '鐵軌回到升降台' },
       { direction: 'south', targetRoomId: 'abandoned_mines_vein_path', description: '主軌回到礦脈道' },
@@ -4938,7 +4956,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_timber_gallery.png',
     imagePrompt: '木支廊 in abandoned_mines, tunnel gallery held by old timber supports, sagging beams, dust and warning chalk marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '礦車場東側的支廊由密集木柱撐住，梁木彎曲，表面畫著已經褪色的白色警告符號。每走幾步都能聽見木頭呻吟，碎石從頂板細縫落下。這裡是危險過渡房，玩家可加固支架或快速通過；若戰鬥拖太久，坍塌聲會引來更多洞穴生物。',
+      '礦車場東側的支廊由密集木柱撐住，梁木彎曲，表面畫著已經褪色的白色警告符號。每走幾步都能聽見木頭呻吟，碎石從頂板細縫落下。這裡是危險過渡房，玩家可加固支架或快速通過；若戰鬥拖太久，坍塌聲會引來更多洞穴生物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_cart_yard', description: '支軌回到礦車場' },
       { direction: 'east', targetRoomId: 'abandoned_mines_echo_shaft', description: '木廊盡頭是豎井邊' },
@@ -4993,7 +5011,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_crystal_pocket.png',
     imagePrompt: '小晶洞 in abandoned_mines, small crystal pocket with blue white mineral shards, pick marks, damp floor and faint glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '木支廊下方的矮洞通向一座小晶洞，藍白晶簇從岩壁向外生長，照亮地上細小水珠。晶洞裡的礦晶尚未完全被採走，周圍卻有許多匆忙敲擊留下的裂痕。玩家可採集晶體或研究礦脈走向，但晶光也會吸引蝙蝠與更深處的石像守衛注意。',
+      '木支廊下方的矮洞通向一座小晶洞，藍白晶簇從岩壁向外生長，照亮地上細小水珠。晶洞裡的礦晶尚未完全被採走，周圍卻有許多匆忙敲擊留下的裂痕。玩家可採集晶體或研究礦脈走向，但晶光也會吸引蝙蝠與更深處的石像守衛注意。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_mines_timber_gallery', description: '矮洞回到木支廊' },
       { direction: 'south', targetRoomId: 'abandoned_mines_herb_shelf', description: '潮濕裂縫回到藥草岩棚' },
@@ -5047,7 +5065,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_flooded_crosscut.png',
     imagePrompt: '淹沒橫巷 in abandoned_mines, flooded crosscut tunnel, waist-deep dark water, rails under surface and reflected lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '回音豎井東側的橫巷被水淹沒，水面只露出幾段鐵軌和木支架頂端。牆上白漆水位線顯示這裡曾多次試圖排水，卻一次比一次失敗。玩家可沿牆邊鐵環前進，尋找沉沒支道與排水閘，也要小心骷髏在黑水中突然站起。',
+      '回音豎井東側的橫巷被水淹沒，水面只露出幾段鐵軌和木支架頂端。牆上白漆水位線顯示這裡曾多次試圖排水，卻一次比一次失敗。玩家可沿牆邊鐵環前進，尋找沉沒支道與排水閘，也要小心骷髏在黑水中突然站起。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'abandoned_mines_echo_shaft', description: '側洞回到回音豎井' },
       { direction: 'south', targetRoomId: 'abandoned_mines_water_pocket', description: '積水流回口袋洞' },
@@ -5154,7 +5172,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_old_smelter.png',
     imagePrompt: '舊冶煉間 in abandoned_mines, abandoned smelter chamber with cold furnace, slag piles, carts and red rust stains, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text',
     description:
-      '礦車場北端的冶煉間已經熄火多年，冷爐膛裡堆滿黑渣，牆面被煙燻成深灰色。鐵砧旁散著半成品錠條和破裂模具，像工人突然停手離開。這裡是資源與精英戰鬥房，可回收礦渣、尋找冶煉記錄，並通往石像龕或工頭室。',
+      '礦車場北端的冶煉間已經熄火多年，冷爐膛裡堆滿黑渣，牆面被煙燻成深灰色。鐵砧旁散著半成品錠條和破裂模具，像工人突然停手離開。這裡是資源與精英戰鬥房，可回收礦渣、尋找冶煉記錄，並通往石像龕或工頭室。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_cart_yard', description: '重軌回到礦車場' },
       { direction: 'east', targetRoomId: 'abandoned_mines_gargoyle_niche', description: '爐後石門通向石像龕' },
