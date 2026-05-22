@@ -69,6 +69,7 @@ const ROOM_DIRECTION_PATTERN = /北|南|東|西|上|下|入口|出口|道路|小
 const MIN_NON_TOWN_COMBAT_ROOMS = 12;
 const MIN_ZONE_THEME_EQUIPMENT = 6;
 const MIN_BOSS_OR_DUNGEON_THEME_EQUIPMENT = 10;
+const TUTORIAL_MAIN_COMMANDS = ['look', 'go', 'attack', 'loot corpse', 'equip', 'quest', 'activate portal'] as const;
 const MAX_ROOM_DESCRIPTION_CHARS = 300;
 const ROOM_ID_PATTERN = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
 
@@ -340,6 +341,20 @@ function validateMonstersAndItems(): void {
 }
 
 function validateQuests(): void {
+  const tutorialMainQuests = Object.values(QUEST_DEFS).filter((quest) => quest.type === 'main' && quest.levelReq <= 10);
+  const tutorialText = tutorialMainQuests.map((quest) => [
+    quest.name,
+    quest.description,
+    quest.dialogueStart ?? '',
+    quest.dialogueComplete ?? '',
+    ...quest.objectives.map((objective) => `${objective.type} ${objective.targetId} ${objective.targetName}`),
+  ].join(' ')).join(' ').toLowerCase();
+  for (const command of TUTORIAL_MAIN_COMMANDS) {
+    if (!tutorialText.includes(command)) {
+      add('error', 'quests:tutorial', `Lv.1-Lv.10 main quests must teach command: ${command}`);
+    }
+  }
+
   for (const quest of Object.values(QUEST_DEFS)) {
     for (const objective of quest.objectives) {
       const isWildcard = objective.targetId.includes('*');

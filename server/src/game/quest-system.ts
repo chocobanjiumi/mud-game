@@ -16,7 +16,7 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
   main_01_awakening: {
     id: 'main_01_awakening',
     name: '覺醒',
-    description: '與村長交談了解世界，並探索新手村的各個角落。',
+    description: '與村長交談了解世界，使用 `look` 查看房間、用 `quest` 追蹤任務、用 `go` 前往各處，最後在傳送祠堂輸入 `activate portal` 啟用傳送陣。',
     type: 'main',
     levelReq: 1,
     objectives: [
@@ -24,9 +24,11 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
       { type: 'visit', targetId: 'adventurer_guild', targetName: '冒險者公會', required: 1 },
       { type: 'visit', targetId: 'weapon_shop', targetName: '武器店', required: 1 },
       { type: 'visit', targetId: 'potion_shop', targetName: '藥水店', required: 1 },
+      { type: 'visit', targetId: 'starter_village_portal_shrine', targetName: '新手村傳送祠堂', required: 1 },
+      { type: 'inspect_object', targetId: 'portal_starter_village', targetName: '啟用新手村傳送陣', required: 1 },
     ],
     rewards: { exp: 50, gold: 30 },
-    dialogueStart: '歡迎來到這個世界，年輕的冒險者。先四處看看，認識一下村子吧。',
+    dialogueStart: '歡迎來到這個世界，年輕的冒險者。先輸入 look 查看周圍，再用 quest 確認目標；需要移動時用 go north、go down 這類指令，最後在傳送祠堂用 activate portal。',
     dialogueComplete: '很好，你已經對村子有了基本的了解。現在是時候踏出第一步了！',
     repeatable: false,
   },
@@ -34,15 +36,16 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
   main_02_first_battle: {
     id: 'main_02_first_battle',
     name: '初戰',
-    description: '在訓練場擊敗 5 隻綠史萊姆，證明自己的戰鬥能力。',
+    description: '在訓練場用 `attack` 擊敗 5 隻綠史萊姆，戰鬥後用 `loot corpse` 搜刮屍體，取得裝備後用 `equip` 換上。',
     type: 'main',
     levelReq: 3,
     objectives: [
       { type: 'kill', targetId: 'green_slime', targetName: '綠色史萊姆', required: 5 },
+      { type: 'loot_corpse', targetId: 'green_slime', targetName: '搜刮綠色史萊姆屍體', required: 1 },
     ],
-    rewards: { exp: 200, gold: 100 },
-    dialogueStart: '想要成為真正的冒險者？先去訓練場證明你能戰鬥吧！',
-    dialogueComplete: '不錯的身手！你已經具備了基本的戰鬥能力。',
+    rewards: { exp: 200, gold: 100, equipmentSlotRewards: [{ slot: 'hands', levelMax: 10, sourceTags: ['starter_progression', 'zone_theme'] }] },
+    dialogueStart: '想要成為真正的冒險者？到訓練場用 attack green_slime 戰鬥，勝利後輸入 loot corpse 搜刮，再用 equip 裝上合適的掉落裝。',
+    dialogueComplete: '不錯的身手！你已經學會攻擊、搜刮屍體和替換裝備。',
     repeatable: false,
   },
 
