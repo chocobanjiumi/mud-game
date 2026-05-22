@@ -69,6 +69,11 @@ function isSpecialRoom(room: RoomDef): boolean {
   return /boss|lord|king|alpha|throne|sanctum|chamber|gate|portal|summon|core|lair|王|首領|狼王|領主|王座|聖所|核心|傳送|地標|祭壇|巢穴|城門|廣場|大廳/.test(haystack);
 }
 
+function isHiddenQuestEliteRoom(room: RoomDef): boolean {
+  const haystack = `${room.id} ${room.name} ${room.description}`;
+  return /hidden|secret|elite|quest|boss|lord|king|queen|core|sanctum|lair|throne|隱|秘|精英|任務|王|核心|聖所|巢穴|王座/.test(haystack);
+}
+
 function isCombatOrResourceRoom(room: RoomDef): boolean {
   const zone = ZONES[room.zone];
   return (room.monsters?.length ?? 0) > 0
@@ -155,7 +160,7 @@ function validateRooms(): void {
       add('error', `room:${room.id}`, `references missing zone: ${room.zone}`);
     }
 
-    const minDescription = isSpecialRoom(room) ? 200 : isCombatOrResourceRoom(room) ? 100 : 80;
+    const minDescription = isSpecialRoom(room) ? 200 : isHiddenQuestEliteRoom(room) ? 150 : isCombatOrResourceRoom(room) ? 100 : 80;
     const count = chineseCharCount(room.description);
     if (count < minDescription) {
       add('error', `room:${room.id}`, `description has ${count} Chinese chars; requires at least ${minDescription}`);
