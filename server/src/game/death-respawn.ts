@@ -27,3 +27,17 @@ export function getPveRespawnRoomId(currentRoomId: string): string {
 
   return DEFAULT_RESPAWN_ROOM_ID;
 }
+
+export function getPvpRespawnRoomId(currentRoomId: string): string {
+  const currentRoom = getRoom(currentRoomId);
+  const currentZone = currentRoom ? getZone(currentRoom.zone) : undefined;
+
+  if (
+    currentZone
+    && (currentZone.pvpMode === 'open' || currentZone.pvpMode === 'faction' || currentZone.pvpMode === 'kingdom_war')
+  ) {
+    return firstExistingRoom(currentZone.rooms) ?? DEFAULT_RESPAWN_ROOM_ID;
+  }
+
+  return getPveRespawnRoomId(currentRoomId);
+}

@@ -7,11 +7,13 @@ import type { MonsterInstance } from './world.js';
 import { sendToCharacter } from '../ws/handler.js';
 import { recordPvp, updateLeaderboard } from '../db/database.js';
 import { getDb } from '../db/schema.js';
-import { getInventory, removeInventoryItem, addInventoryItem } from '../db/queries.js';
+import { getInventory, removeInventoryItem, addInventoryItem, saveCharacter } from '../db/queries.js';
+import { getRoom } from '../data/rooms.js';
+import { getPvpRespawnRoomId } from './death-respawn.js';
 import { expRequiredForLevel } from './player.js';
 import { cancelPvpDangerEvacCasts } from './pvp-evac-cast.js';
 import { recordRecentPvpDamageForCombat } from './pvp-travel-lock.js';
-import { questMgr, classQuest2Mgr } from './state.js';
+import { questMgr, classQuest2Mgr, world } from './state.js';
 
 // ============================================================
 //  型別定義
@@ -434,6 +436,11 @@ export class PvPManager {
     } else {
       loserChar.resource = Math.floor(loserChar.maxResource * 0.5);
     }
+    const loserRespawnRoomId = getPvpRespawnRoomId(loserChar.roomId);
+    loserChar.roomId = loserRespawnRoomId;
+    world.placePlayer(loserId, loserRespawnRoomId);
+    saveCharacter(winnerChar);
+    saveCharacter(loserChar);
 
     // 記錄到資料庫
     try {
@@ -476,6 +483,7 @@ export class PvPManager {
       `你在決鬥中落敗！` +
       (droppedItemName ? `${droppedItemName}被對方奪走了。` : '') +
       `\n失去了 ${expLost} 經驗值和 ${goldLost} 金幣。` +
+      `\n你回到 ${getRoom(loserRespawnRoomId)?.name ?? loserRespawnRoomId}。` +
       `\nELO：${loserElo} → ${loserElo + loserChange}（${loserChange}）`;
 
     sendToCharacter(loserId, 'system', { text: loserMsg });
