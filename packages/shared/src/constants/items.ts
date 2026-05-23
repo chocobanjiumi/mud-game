@@ -2794,6 +2794,41 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['cursed_graveyard', 'quest', 'monster_drop'], zoneTags: ['cursed_graveyard'],
   },
+  highland_stormfeather: {
+    id: 'highland_stormfeather', name: '高原風暴羽', type: 'material',
+    description: '風暴高原鷹群與獅鷲巢穴掉落的灰藍羽毛，羽緣永遠順著強風顫動。可用來製作抗風箭羽與高空信標。',
+    buyPrice: 0, sellPrice: 82,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['storm_highlands', 'monster_drop', 'gathering'], zoneTags: ['storm_highlands'],
+  },
+  stormgoat_horn: {
+    id: 'stormgoat_horn', name: '暴風山羊角', type: 'material',
+    description: '山羊岩階附近巨角獸折落的螺旋角，角根有被雷雨反覆洗出的黑紋。高原嚮導用它固定攀繩。',
+    buyPrice: 0, sellPrice: 74,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['storm_highlands', 'monster_drop'], zoneTags: ['storm_highlands'],
+  },
+  stormglass_ore: {
+    id: 'stormglass_ore', name: '風暴玻礦', type: 'material',
+    description: '斷烽臺與風暴玻礦脈採得的黑亮礦石，內部封著細小閃電紋。鍛造時會發出像遠雷的低鳴。',
+    buyPrice: 0, sellPrice: 90,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['storm_highlands', 'monster_drop', 'mining'], zoneTags: ['storm_highlands'],
+  },
+  wind_altar_chime: {
+    id: 'wind_altar_chime', name: '風壇殘鈴', type: 'quest',
+    description: '風神祭壇裂柱上拆下的青銅殘鈴，只在暴風眼張開時發聲。它能證明隊伍找到了進入風牆的正確節奏。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['storm_highlands', 'quest', 'salvage'], zoneTags: ['storm_highlands'],
+  },
+  gale_king_plume: {
+    id: 'gale_king_plume', name: '風王冠羽', type: 'quest',
+    description: '風暴王峰獅鷲王冠上脫落的長羽，羽軸像玻璃一樣透明，內部有雲層旋轉。它是高原天空領主的核心證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['storm_highlands', 'quest', 'monster_drop'], zoneTags: ['storm_highlands'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

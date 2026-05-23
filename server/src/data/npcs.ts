@@ -5848,6 +5848,105 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把墓園 Boss 線索包裝成可以追查與中斷的儀式。',
     },
   },
+
+  storm_highlands_cliff_guide: {
+    id: 'storm_highlands_cliff_guide',
+    name: '卡瑞克',
+    alias: 'guide',
+    title: '高原攀風嚮導',
+    description:
+      '一名嚮導把攀繩纏在峭壁入口的鐵樁上，肩上披著被雨打硬的羽斗篷。' +
+      '他會先看雲層流速，再決定今天要不要讓外來者上雲索橋。',
+    roomId: 'storm_highlands_cliff_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '高原路不是往上走，是先學會什麼時候不要被風帶走。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '獅鷲在哪？', nextId: 'griffin' },
+          { text: '我會壓低身子。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先過風切小徑，看雨棚岩臺和雲索橋。要進暴風眼，先拿風壇殘鈴，不然風牆會把你送回崖底。',
+        options: [
+          { text: '獅鷲在哪？', nextId: 'griffin' },
+          { text: '我去找殘鈴。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'griffin',
+        text: '哨臺是巡邏，巢臺是領地，王峰是禁區。看見風暴羽逆風飄時，代表牠們已經在你上方。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '繩結打三次。第一個給手，第二個給命，第三個給風。' },
+    ],
+    guardianHints: {
+      creature: '卡瑞克能辨識風切隼、暴角岩羊、雲橋掠風者與風哨獅鷲的活動路線。',
+      treasure: '他的攀風圖標出風壇殘鈴、風暴玻礦與風王冠羽的用途。',
+      spirit: '他把高原的垂直危險轉成玩家可遵守的攀行規則。',
+    },
+  },
+
+  storm_highlands_aerie_keeper: {
+    id: 'storm_highlands_aerie_keeper',
+    name: '琳娜',
+    alias: 'keeper',
+    title: '獅鷲巢臺看守',
+    description:
+      '一名巢臺看守躲在天葬石堆後的背風處，整理折斷羽管、風壇殘鈴與礦脈碎片。' +
+      '她的手套上滿是爪痕，但每一道都被仔細縫回原位。',
+    roomId: 'storm_highlands_sky_cairns',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'highland_stormfeather',
+      'stormgoat_horn',
+      'stormglass_ore',
+      'wind_altar_chime',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買東西時別背對巢臺。獅鷲不介意你交易，但牠們討厭你假裝天空不存在。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '風王要怎麼打？', nextId: 'king' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、風暴羽、山羊角、風暴玻礦、風壇殘鈴都有。要去王峰，至少把鈴帶上。',
+        action: { type: 'shop', data: { shopType: 'storm_highlands_supply' } },
+        options: [
+          { text: '風王要怎麼打？', nextId: 'king' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'king',
+        text: '風王不是只靠翅膀。牠會改風向、叫巢群、把你的位置變成錯誤。先聽殘鈴，再看雲影。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會看雲影。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你覺得風突然安靜，不是安全，是牠們正在俯衝。' },
+    ],
+    guardianHints: {
+      creature: '琳娜能說明風哨獅鷲、暴風眼飛龍與風王獅鷲的高空節奏。',
+      treasure: '她提供風暴羽、山羊角、風暴玻礦與風壇殘鈴。',
+      spirit: '她把獅鷲巢線與王峰 Boss 線索接成可準備的補給節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
