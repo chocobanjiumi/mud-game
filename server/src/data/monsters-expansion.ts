@@ -10317,4 +10317,169 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '主祭把海盜、紅潮、魚人與血祭儀式收束成血鹽海岸終點。',
     },
   },
+
+  emerald_canopy_vine_scout: {
+    id: 'emerald_canopy_vine_scout', name: '藤橋斥候', alias: 'vinescout',
+    level: 25, hp: 1320, mp: 260, str: 74, int: 52, dex: 118, vit: 78, luk: 22,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'root_bind', 'poison_arrow'],
+    expReward: 2100, goldReward: [540, 1020],
+    drops: [
+      { itemId: 'emerald_canopy_leaf', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'raincatch_elixir', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '低藤橋與苔繩步道間巡行的樹冠斥候，腳踝綁著會發芽的繩索。牠會先切斷藤橋退路，再用毒箭逼迫旅人分散。',
+    isBoss: false,
+    guardianHints: {
+      creature: '藤橋斥候會毒箭與根縛，走藤橋時先清高處哨點。',
+      treasure: '翡翠冠葉常作為斥候披肩材料。',
+      spirit: '藤橋斥候建立樹冠層的路線控制威脅。',
+    },
+  },
+
+  emerald_canopy_thunder_hawk: {
+    id: 'emerald_canopy_thunder_hawk', name: '雷枝鷹', alias: 'thunderhawk',
+    level: 26, hp: 1180, mp: 320, str: 72, int: 78, dex: 142, vit: 58, luk: 24,
+    element: 'lightning',
+    skills: ['basic_attack', 'quick_dash', 'lightning', 'blind'],
+    expReward: 2300, goldReward: [600, 1140],
+    drops: [
+      { itemId: 'storm_bough_splinter', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'emerald_canopy_leaf', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '雷枝臺與鷹望臺上空盤旋的猛禽，羽根末端帶著靜電火花。牠會用俯衝把人趕向沒有護欄的枝端。',
+    isBoss: false,
+    guardianHints: {
+      creature: '雷枝鷹會雷擊與致盲，看到羽毛立起就分散。',
+      treasure: '雷枝木刺常被牠用來加固巢穴。',
+      spirit: '雷枝鷹讓樹冠的高度與雷雨風險連動。',
+    },
+  },
+
+  emerald_canopy_birdfolk_guard: {
+    id: 'emerald_canopy_birdfolk_guard', name: '鳥民棲臺守衛', alias: 'birdguard',
+    level: 27, hp: 1600, mp: 300, str: 96, int: 58, dex: 112, vit: 96, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'quick_dash', 'poison_arrow'],
+    expReward: 2600, goldReward: [680, 1280],
+    drops: [
+      { itemId: 'emerald_canopy_leaf', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'ancient_honeycomb_wax', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '鳥巢村臺外圍守路的鳥民戰士，長矛用藤枝與羽骨綁成。牠們不是敵對族群，只是不相信沒有引薦的地面人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鳥民棲臺守衛會快速換位與毒箭，避免追進狹窄棧道。',
+      treasure: '牠們使用翡翠冠葉作為通行標記。',
+      spirit: '鳥民守衛讓樹冠層有居民與秩序。',
+    },
+  },
+
+  emerald_canopy_sapfall_treant: {
+    id: 'emerald_canopy_sapfall_treant', name: '樹脂瀑樹衛', alias: 'saptreant',
+    level: 29, hp: 2300, mp: 460, str: 108, int: 84, dex: 28, vit: 180, luk: 12,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain'],
+    expReward: 3400, goldReward: [880, 1660],
+    drops: [
+      { itemId: 'emerald_canopy_leaf', chance: 0.34, minQty: 1, maxQty: 3 },
+      { itemId: 'raincatch_elixir', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '樹脂瀑溝中從樹幹裡站起的樹衛，外皮流著金色樹脂。牠會用黏稠根鬚拖慢入侵者，讓高處巡梢包圍。',
+    isBoss: false,
+    guardianHints: {
+      creature: '樹脂瀑樹衛會護盾、根縛與吸取，護盾期間先防守。',
+      treasure: '接雨靈露常在樹脂瀑旁保存。',
+      spirit: '樹衛把樹冠生態的防衛反應表現出來。',
+    },
+  },
+
+  emerald_canopy_ancient_bee_swarm: {
+    id: 'emerald_canopy_ancient_bee_swarm', name: '古蜂群', alias: 'beeswarm',
+    level: 30, hp: 1500, mp: 300, str: 58, int: 46, dex: 150, vit: 62, luk: 20,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_bite', 'swarm_assault', 'sonic_wave'],
+    expReward: 3700, goldReward: [960, 1820],
+    drops: [
+      { itemId: 'ancient_honeycomb_wax', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'raincatch_elixir', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '古蜂巢深處被樹冠魔力養大的蜂群，翅音像細小雷聲。牠們會保護蜂蠟，也會把闖入者包成活的巢材。',
+    isBoss: false,
+    guardianHints: {
+      creature: '古蜂群會多段突襲與音波，別在蜂巢口停留。',
+      treasure: '古蜂蠟是蜂群最主要的掉落。',
+      spirit: '蜂群讓樹冠資源點有明確採集風險。',
+    },
+  },
+
+  emerald_canopy_lightning_bark_shaman: {
+    id: 'emerald_canopy_lightning_bark_shaman', name: '雷皮巫枝者', alias: 'barkshaman',
+    level: 32, hp: 2100, mp: 760, str: 60, int: 150, dex: 62, vit: 130, luk: 22,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'root_bind', 'bark_shield', 'heal'],
+    expReward: 4600, goldReward: [1200, 2280],
+    drops: [
+      { itemId: 'storm_bough_splinter', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'ancient_honeycomb_wax', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description: '雷皮小祠裡替古木引雷的巫枝者，肩上長著焦黑嫩芽。牠會把閃電導入樹皮，再轉成治癒或懲戒。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '雷皮巫枝者會雷擊、治療與根縛，優先處理。',
+      treasure: '雷枝木刺常由牠保管。',
+      spirit: '巫枝者把自然與雷元素主題連接起來。',
+    },
+  },
+
+  emerald_canopy_glasswing_stag: {
+    id: 'emerald_canopy_glasswing_stag', name: '晶翼鹿冠獸', alias: 'glassstag',
+    level: 34, hp: 3000, mp: 620, str: 118, int: 108, dex: 118, vit: 170, luk: 28,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'holy_light', 'root_bind', 'reflect_barrier'],
+    expReward: 5800, goldReward: [1520, 2880],
+    drops: [
+      { itemId: 'emerald_canopy_leaf', chance: 0.44, minQty: 2, maxQty: 4 },
+      { itemId: 'storm_bough_splinter', chance: 0.3, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '鹿冠空地出現的高大獸靈，背上透明薄翼反射樹冠日光。牠不是獵物，而是判斷訪客是否尊重高綠庭的使者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '晶翼鹿冠獸會反射與根縛，屏障期間停手。',
+      treasure: '翡翠冠葉會在牠走過的地方重新生長。',
+      spirit: '鹿冠獸將樹冠生態與高綠庭誓約串起來。',
+    },
+  },
+
+  emerald_canopy_high_green_warden: {
+    id: 'emerald_canopy_high_green_warden', name: '高綠庭守護靈', alias: 'greenwarden',
+    level: 37, hp: 5200, mp: 1100, str: 144, int: 180, dex: 84, vit: 260, luk: 32,
+    element: 'nature',
+    skills: ['basic_attack', 'lightning', 'nature_drain', 'root_bind', 'reflect_barrier', 'holy_light'],
+    expReward: 8600, goldReward: [2260, 4280],
+    drops: [
+      { itemId: 'high_green_court_mark', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'storm_bough_splinter', chance: 0.64, minQty: 1, maxQty: 3 },
+      { itemId: 'ancient_honeycomb_wax', chance: 0.46, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description: '高綠庭中由古木、雷光與鹿角影凝成的守護靈，聲音像風吹過整片樹冠。牠只允許懂得輕踏藤橋的人繼續前行。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2100,
+    guardianHints: {
+      creature: '高綠庭守護靈會反射、根縛、吸取與雷擊，屏障期間停手整隊。',
+      treasure: '牠必定掉落高綠庭印記。',
+      spirit: '守護靈把鳥民、古蜂、雷枝與鹿冠空地收束成樹冠終點。',
+    },
+  },
 };

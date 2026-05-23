@@ -3968,6 +3968,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['bloodsalt_coast'],
   },
 
+  // ─── 翡翠樹冠樹冠材料 (Lv 25-37) ───
+  emerald_canopy_leaf: {
+    id: 'emerald_canopy_leaf', name: '翡翠冠葉', type: 'material',
+    description: '樹冠高處採下的厚綠葉片，葉脈帶著微弱雷光。鳥巢村落用它製作防雨披與藤橋標記。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 25, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['emerald_canopy'],
+  },
+  storm_bough_splinter: {
+    id: 'storm_bough_splinter', name: '雷枝木刺', type: 'material',
+    description: '雷枝臺被閃電劈裂後留下的硬木刺，握住時會讓指節發麻。可用於製作帶電箭頭與樹冠護符。',
+    buyPrice: 2200, sellPrice: 1100, stackable: true, maxStack: 99, levelReq: 28, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['emerald_canopy'],
+  },
+  ancient_honeycomb_wax: {
+    id: 'ancient_honeycomb_wax', name: '古蜂蠟', type: 'material',
+    description: '古蜂巢深處凝成的琥珀色蜂蠟，混著樹脂與花粉。樹冠居民會用它封住高處裂木。',
+    buyPrice: 2000, sellPrice: 1000, stackable: true, maxStack: 99, levelReq: 26, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['emerald_canopy'],
+  },
+  raincatch_elixir: {
+    id: 'raincatch_elixir', name: '接雨靈露', type: 'consumable',
+    description: '接雨盆地收集的清亮露水，加入翡翠冠葉後能快速恢復疲憊與擦傷。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 20, levelReq: 25, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 320 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['emerald_canopy'],
+  },
+  high_green_court_mark: {
+    id: 'high_green_court_mark', name: '高綠庭印記', type: 'quest',
+    description: '高綠庭守護靈消散後留下的樹冠紋印，像鹿角與藤橋交織而成。它證明訪客獲得了樹冠層的通行認可。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 37, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['emerald_canopy'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

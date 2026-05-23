@@ -10195,6 +10195,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  emerald_canopy_birdfolk_guide: {
+    id: 'emerald_canopy_birdfolk_guide',
+    name: '莉亞',
+    alias: 'guide',
+    title: '鳥巢村臺引路人',
+    description: '一名鳥民引路人站在鳥巢村臺邊，羽披上縫著許多藤橋通行結。',
+    roomId: 'emerald_canopy_birdfolk_roost',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '地面人走樹冠時總看腳下，卻忘了危險多半從上面來。',
+        options: [
+          { text: '我該帶回什麼？', nextId: 'proof' },
+          { text: '高綠庭在哪？', nextId: 'court' },
+          { text: '我會抬頭看。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'proof', text: '翡翠冠葉、雷枝木刺、古蜂蠟。這些能證明你走過藤橋、雷枝與蜂巢，不只是坐根升機上來看風景。', options: [{ text: '高綠庭在哪？', nextId: 'court' }, { text: '我去收集。', nextId: 'farewell' }] },
+      { id: 'court', text: '鹿冠空地後方。若晶翼鹿冠獸不讓路，就不要硬闖。牠不是看門獸，是問題本身。', options: [{ text: '我該帶回什麼？', nextId: 'proof' }, { text: '我會尊重牠。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '藤橋會記住重步伐的人。輕一點，活久一點。' },
+    ],
+    guardianHints: {
+      creature: '莉亞提示藤橋斥候、雷枝鷹、晶翼鹿冠獸與高綠庭守護靈。',
+      treasure: '她說明翡翠冠葉、雷枝木刺、古蜂蠟與高綠庭印記。',
+      spirit: '鳥民引路人把樹冠通行規矩與終點試煉連起來。',
+    },
+  },
+
+  emerald_canopy_hollow_market_keeper: {
+    id: 'emerald_canopy_hollow_market_keeper',
+    name: '托爾',
+    alias: 'keeper',
+    title: '空樹市集藥材商',
+    description: '一名藥材商在空樹市集裡整理葉包、蜂蠟與雨露瓶，攤位用樹藤綁在中空樹壁上。',
+    roomId: 'emerald_canopy_hollow_trunk_market',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'raincatch_elixir', 'emerald_canopy_leaf', 'ancient_honeycomb_wax'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買接雨靈露嗎？在樹冠走太久，連肺都會開始長苔。',
+        options: [
+          { text: '我看看貨品。', nextId: 'shop' },
+          { text: '古蜂巢危險嗎？', nextId: 'hive' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、接雨靈露、翡翠冠葉、古蜂蠟。高綠庭印記不賣，守護靈也不收金幣。', action: { type: 'shop', data: { shopType: 'emerald_canopy_market' } }, options: [{ text: '古蜂巢危險嗎？', nextId: 'hive' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'hive', text: '古蜂不怕火，只討厭貪心。取蠟時別敲第二下，第二下通常是牠們回你的。', options: [{ text: '我看看貨品。', nextId: 'shop' }, { text: '我會小心。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '瓶子拴牢。從這裡掉下去，落地前就先被藤橋笑死。' },
+    ],
+    guardianHints: {
+      creature: '托爾提示古蜂群、樹脂瀑樹衛與雷皮巫枝者。',
+      treasure: '他販售接雨靈露、翡翠冠葉與古蜂蠟。',
+      spirit: '空樹市集提供樹冠中段補給與採集提示。',
+    },
+  },
+
+  emerald_canopy_green_court_listener: {
+    id: 'emerald_canopy_green_court_listener',
+    name: '梅芙',
+    alias: 'listener',
+    title: '高綠庭聆聽者',
+    description: '一名聆聽者跪坐在高綠庭邊緣，耳後插著雷枝木刺，掌心托著一片不會枯萎的冠葉。',
+    roomId: 'emerald_canopy_high_green_court',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '守護靈不討厭訪客。牠只討厭把樹冠當階梯、把生靈當戰利品的人。',
+        options: [
+          { text: '守護靈怎麼打？', nextId: 'warden' },
+          { text: '印記代表什麼？', nextId: 'mark' },
+          { text: '我會放輕腳步。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'warden', text: '反射光像樹皮發亮時停手。根縛會先抓最急的人，雷擊會找站太近的人。', options: [{ text: '印記代表什麼？', nextId: 'mark' }, { text: '我會觀察。', nextId: 'farewell' }] },
+      { id: 'mark', text: '高綠庭印記不是通關章，是樹冠承認你沒有把路踩斷。', options: [{ text: '守護靈怎麼打？', nextId: 'warden' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '如果風突然停了，先聽葉子，不要聽自己的心跳。' },
+    ],
+    guardianHints: {
+      creature: '梅芙提示晶翼鹿冠獸與高綠庭守護靈的反射、根縛與雷擊。',
+      treasure: '她說明高綠庭印記是樹冠終點證物。',
+      spirit: '聆聽者把樹冠終點收束到尊重生態與通行誓約。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
