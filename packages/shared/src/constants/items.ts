@@ -3301,6 +3301,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['moonlit_fen'],
   },
 
+  // ─── 朝聖古道材料與聖路補給 (Lv 12-22) ───
+  pilgrim_bell_charm: {
+    id: 'pilgrim_bell_charm', name: '朝聖鈴符', type: 'material',
+    description: '鐘鈴小祠與祈願階上遺落的小鈴符，搖動時聲音很輕，卻能讓路邊殘響短暫安靜下來。',
+    buyPrice: 420, sellPrice: 210, stackable: true, maxStack: 99, levelReq: 12, rarity: 'uncommon',
+    sourceTags: ['drop', 'shop'], zoneTags: ['pilgrim_road'],
+  },
+  worn_caravan_seal: {
+    id: 'worn_caravan_seal', name: '磨損商隊印', type: 'material',
+    description: '商隊車轍與廢棄旅舍附近拾得的舊貨印，印面被砂石磨平，仍能辨出通往聖地的補給徽記。',
+    buyPrice: 520, sellPrice: 260, stackable: true, maxStack: 99, levelReq: 14, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['pilgrim_road'],
+  },
+  white_marker_lime: {
+    id: 'white_marker_lime', name: '白石灰粉', type: 'material',
+    description: '白石路標與聖徒橋剝落的微亮灰粉，灑在斷石道上能短暫顯出真正的朝聖路徑。',
+    buyPrice: 640, sellPrice: 320, stackable: true, maxStack: 99, levelReq: 16, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['pilgrim_road'],
+  },
+  sunroad_ration: {
+    id: 'sunroad_ration', name: '日路乾糧', type: 'consumable',
+    description: '古道商隊留下的硬麥餅與鹽果乾，味道樸素但耐放，能在長途巡禮中恢復少量生命與資源。',
+    buyPrice: 780, sellPrice: 390, stackable: true, maxStack: 20, levelReq: 15, rarity: 'rare',
+    useEffect: { type: 'heal_both', value: 120, value2: 55 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['pilgrim_road'],
+  },
+  sanctuary_gate_sigil: {
+    id: 'sanctuary_gate_sigil', name: '聖地門印', type: 'quest',
+    description: '聖地門與終點聖碑之間顯現的白金門印，只有通過古道試煉的旅人才會讓它完整發光。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 22, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['pilgrim_road'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

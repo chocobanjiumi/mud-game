@@ -6476,6 +6476,201 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     },
   },
 
+  road_dust_stray: {
+    id: 'road_dust_stray', name: '古道塵犬', alias: 'duststray',
+    level: 12, hp: 260, mp: 34, str: 32, int: 10, dex: 28, vit: 24, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'bite', 'howl', 'quick_dash'],
+    expReward: 170, goldReward: [45, 88],
+    drops: [
+      { itemId: 'worn_caravan_seal', chance: 0.2, minQty: 1, maxQty: 1 },
+      { itemId: 'sunroad_ration', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '跟著古道商隊殘香徘徊的瘦長野犬，皮毛被白石灰與路塵染成灰黃。牠們會在里程石堆與舊旗石路附近成群追逐腳步聲，咬住落單旅人的行囊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '古道塵犬會用嚎叫召集同伴，遇到兩隻以上時先清數量。',
+      treasure: '牠們偶爾拖著商隊印或乾糧袋。',
+      spirit: '塵犬是商隊斷絕後仍沿路等待投餵的野化生態。',
+    },
+  },
+
+  milestone_crow_herald: {
+    id: 'milestone_crow_herald', name: '里程鴉使', alias: 'crowherald',
+    level: 13, hp: 220, mp: 88, str: 18, int: 30, dex: 42, vit: 18, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'screech', 'blind'],
+    expReward: 190, goldReward: [50, 96],
+    drops: [
+      { itemId: 'pilgrim_bell_charm', chance: 0.32, minQty: 1, maxQty: 2 },
+      { itemId: 'white_marker_lime', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '棲在里程石堆與白石路標上的黑鴉，爪上纏著斷裂祈願繩。牠們會模仿小鈴聲引人抬頭，再用尖叫與石灰粉遮蔽視線。',
+    isBoss: false,
+    guardianHints: {
+      creature: '里程鴉使尖叫後常接致盲，靠近路標時先看天空。',
+      treasure: '牠們會偷走朝聖鈴符，也會啄下白石灰粉。',
+      spirit: '鴉使像古道的壞掉告示牌，仍在宣告錯誤方向。',
+    },
+  },
+
+  shrine_bell_wraith: {
+    id: 'shrine_bell_wraith', name: '小祠鈴影', alias: 'bellwraith',
+    level: 14, hp: 300, mp: 120, str: 20, int: 38, dex: 24, vit: 26, luk: 16,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'blind', 'life_drain'],
+    expReward: 230, goldReward: [62, 118],
+    drops: [
+      { itemId: 'pilgrim_bell_charm', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'white_marker_lime', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '鐘鈴小祠與祈願階殘留的半透明鈴影，身體由舊祈禱、燭煙與白色鈴聲組成。牠不主動離開小祠太遠，卻會吸走打斷祈願者的生命熱度。',
+    isBoss: false,
+    guardianHints: {
+      creature: '小祠鈴影會用白光致盲並吸血，先打斷牠的祈禱節奏。',
+      treasure: '朝聖鈴符多半掛在牠半透明的手腕上。',
+      spirit: '鈴影是巡禮者未送達聖地的祈願殘響。',
+    },
+  },
+
+  caravan_rut_cutpurse: {
+    id: 'caravan_rut_cutpurse', name: '車轍割袋客', alias: 'cutpurse',
+    level: 15, hp: 330, mp: 60, str: 34, int: 18, dex: 44, vit: 26, luk: 24,
+    element: 'none',
+    skills: ['basic_attack', 'backstab', 'steal', 'quick_dash'],
+    expReward: 260, goldReward: [70, 135],
+    drops: [
+      { itemId: 'worn_caravan_seal', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'sunroad_ration', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '在商隊車轍與廢棄旅舍間活動的割袋客，刀刃短而薄，專割補給繩與錢袋。牠們熟悉古道每個彎角，會把旅人引向伏擊彎道。',
+    isBoss: false,
+    guardianHints: {
+      creature: '車轍割袋客會偷竊與背刺，補給多時最好優先擊倒。',
+      treasure: '牠們身上常有磨損商隊印與日路乾糧。',
+      spirit: '割袋客代表古道商隊線崩壞後生出的掠奪秩序。',
+    },
+  },
+
+  drywell_ambusher: {
+    id: 'drywell_ambusher', name: '乾井伏擊者', alias: 'wellambusher',
+    level: 16, hp: 390, mp: 70, str: 40, int: 18, dex: 36, vit: 34, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'backstab', 'poison_bite'],
+    expReward: 310, goldReward: [82, 158],
+    drops: [
+      { itemId: 'worn_caravan_seal', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'pilgrim_bell_charm', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '藏在乾井、荊棘缺口與斷石道陰影中的伏擊者，披著破朝聖斗篷，武器塗著廉價蛇毒。牠們會等旅人查看水井或路標時從背後切入。',
+    isBoss: false,
+    guardianHints: {
+      creature: '乾井伏擊者有毒刃與背刺，接近井口前先檢查兩側草叢。',
+      treasure: '牠們常搶走商隊印，也會把朝聖鈴符當護身物。',
+      spirit: '伏擊者利用的是朝聖者習慣停下祈禱與取水的善意。',
+    },
+  },
+
+  saint_bridge_penitent: {
+    id: 'saint_bridge_penitent', name: '聖徒橋苦行殘影', alias: 'penitent',
+    level: 17, hp: 470, mp: 150, str: 34, int: 46, dex: 20, vit: 46, luk: 14,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'reflect_barrier', 'bone_strike'],
+    expReward: 370, goldReward: [98, 188],
+    drops: [
+      { itemId: 'white_marker_lime', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'pilgrim_bell_charm', chance: 0.34, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '聖徒橋與白石路標間反覆跪行的苦行殘影，膝下拖出一條淡白痕跡。牠會用反射光幕保護橋面，並以骨杖敲擊試圖越過祈願線的人。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '聖徒橋苦行殘影會反射，看到橋面變白時先停手。',
+      treasure: '牠留下的白石灰粉能標示真正古道路徑。',
+      spirit: '殘影仍在完成未結束的苦行，不理解古道已經荒廢。',
+    },
+  },
+
+  smuggler_cache_guard: {
+    id: 'smuggler_cache_guard', name: '走私藏點守衛', alias: 'cacheguard',
+    level: 18, hp: 560, mp: 90, str: 54, int: 22, dex: 34, vit: 50, luk: 16,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'slash', 'howl'],
+    expReward: 430, goldReward: [115, 220],
+    drops: [
+      { itemId: 'worn_caravan_seal', chance: 0.66, minQty: 1, maxQty: 3 },
+      { itemId: 'sunroad_ration', chance: 0.38, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '守在走私藏點與盜匪望臺之間的重甲打手，盾牌上釘著被搶來的商隊木牌。牠會用身體堵住狹窄路口，讓同夥從高處射擊或繞後。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '走私藏點守衛會衝鋒與咆哮，先處理旁邊割袋客再拆盾。',
+      treasure: '牠保管大量磨損商隊印與乾糧補給。',
+      spirit: '守衛把朝聖古道視為稅道，只認通行費不認聖地。',
+    },
+  },
+
+  final_marker_lightsworn: {
+    id: 'final_marker_lightsworn', name: '終點聖碑光誓者', alias: 'lightsworn',
+    level: 20, hp: 680, mp: 210, str: 50, int: 62, dex: 28, vit: 58, luk: 20,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'death_mark', 'reflect_barrier', 'charge'],
+    expReward: 560, goldReward: [150, 290],
+    drops: [
+      { itemId: 'white_marker_lime', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'sanctuary_gate_sigil', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '在聖地門與終點聖碑間守望的光誓殘影，盔甲上刻著早已失效的巡禮誓詞。牠會審視所有靠近聖碑的人，並用白光標記違背誓詞者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '終點聖碑光誓者會標記並反射，後段戰鬥需要保留回復。',
+      treasure: '牠是白石灰粉與聖地門印的主要來源之一。',
+      spirit: '光誓者是聖地門前最後仍維持秩序的古代誓約。',
+    },
+  },
+
+  sanctuary_gate_trialkeeper: {
+    id: 'sanctuary_gate_trialkeeper', name: '聖地門試煉守', alias: 'trialkeeper',
+    level: 22, hp: 980, mp: 280, str: 66, int: 74, dex: 34, vit: 76, luk: 24,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'reflect_barrier', 'death_mark', 'charge'],
+    expReward: 820, goldReward: [220, 420],
+    drops: [
+      { itemId: 'sanctuary_gate_sigil', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'white_marker_lime', chance: 0.75, minQty: 2, maxQty: 4 },
+      { itemId: 'pilgrim_bell_charm', chance: 0.55, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '聖地門後方甦醒的試煉守衛，身披白石板與鈴符編成的鎧甲，手中長槍像一截發光路標。牠不追殺逃離者，只阻止沒有完成古道誓約的人跨過終點聖碑。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1200,
+    guardianHints: {
+      creature: '聖地門試煉守會反射、標記與衝鋒，先等屏障空窗再集中輸出。',
+      treasure: '牠必定掉落聖地門印，是朝聖古道終點證明。',
+      spirit: '試煉守是古道最後的檢查，不屬於盜匪也不屬於亡靈。',
+    },
+  },
+
   war_gate_bannerman: {
     id: 'war_gate_bannerman', name: '終戰門旗衛', alias: 'bannerman',
     level: 55, hp: 3400, mp: 420, str: 84, int: 48, dex: 54, vit: 88, luk: 18,

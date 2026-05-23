@@ -7028,6 +7028,151 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  pilgrim_road_waywarden: {
+    id: 'pilgrim_road_waywarden',
+    name: '艾德溫',
+    alias: 'waywarden',
+    title: '古道起點守路人',
+    description:
+      '一名披著舊白斗篷的守路人站在古道起點，手杖頂端掛著磨亮的小鈴。' +
+      '他不阻止旅人上路，只會在每個人踏上第一塊石板前數一次影子。',
+    roomId: 'pilgrim_road_waygate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '朝聖古道不長，難的是每一段都會問你為什麼還要往前。',
+        options: [
+          { text: '古道現在有什麼危險？', nextId: 'danger' },
+          { text: '聖地門在哪？', nextId: 'gate' },
+          { text: '我會自己走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text: '前段是塵犬與鴉使，中段有割袋客和伏擊者，後段的光誓者比盜匪更麻煩，因為牠們真的相信自己在守秩序。',
+        options: [
+          { text: '聖地門在哪？', nextId: 'gate' },
+          { text: '我先檢查補給。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'gate',
+        text: '沿白石路標到聖地門，再到終點聖碑。若你的鈴符在那裡無聲，代表試煉守已經醒了。',
+        options: [
+          { text: '古道現在有什麼危險？', nextId: 'danger' },
+          { text: '我出發。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '路上別踢倒里程石。迷路的人最先怪路，其實多半是自己動了標記。' },
+    ],
+    guardianHints: {
+      creature: '艾德溫能提示古道塵犬、里程鴉使、終點聖碑光誓者與聖地門試煉守。',
+      treasure: '他說明朝聖鈴符、白石灰粉與聖地門印的古道用途。',
+      spirit: '他把朝聖古道拆成前段路標、中段伏擊與後段聖地試煉。',
+    },
+  },
+
+  pilgrim_road_caravan_supplier: {
+    id: 'pilgrim_road_caravan_supplier',
+    name: '米菈',
+    alias: 'supplier',
+    title: '廢棄旅舍商隊補給商',
+    description:
+      '一名商隊補給商把貨攤搭在廢棄旅舍還沒塌的牆邊，木箱上蓋著防塵布。' +
+      '她的帳本裡仍保留著許多已經不會抵達聖地的隊伍名字。',
+    roomId: 'pilgrim_road_abandoned_inn',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'return_scroll',
+      'pilgrim_bell_charm',
+      'worn_caravan_seal',
+      'sunroad_ration',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '補給先買好。這條路最會把人拖到還差一瓶藥水的地方。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '商隊為何停了？', nextId: 'caravan' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、回城卷軸、朝聖鈴符、商隊印、日路乾糧。白石灰粉要自己去白石路標找，我不跟光誓者搶生意。',
+        action: { type: 'shop', data: { shopType: 'pilgrim_road_supplier' } },
+        options: [
+          { text: '商隊為何停了？', nextId: 'caravan' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'caravan',
+        text: '不是沒人想走，是走私藏點和盜匪望臺把路拆成了稅卡。再往後，聖地門也不一定讓活人通過。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會留意伏擊。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '乾糧放外袋，鈴符放內袋。割袋客第一刀通常割外袋。' },
+    ],
+    guardianHints: {
+      creature: '米菈能提示車轍割袋客、乾井伏擊者與走私藏點守衛的補給壓力。',
+      treasure: '她販售朝聖鈴符、商隊印與日路乾糧，補足古道中段補給節點。',
+      spirit: '她把古道的商隊歷史與玩家可用補給連接起來。',
+    },
+  },
+
+  pilgrim_road_cemetery_keeper: {
+    id: 'pilgrim_road_cemetery_keeper',
+    name: '索蘭',
+    alias: 'keeper',
+    title: '舊墓岔路守墓人',
+    description:
+      '一名守墓人在舊墓岔路擦拭白石碑，鐵鏟靠在膝邊，斗篷上沾著乾草與石灰粉。' +
+      '他說自己只負責讓迷路的人知道哪一條路不是終點。',
+    roomId: 'pilgrim_road_old_cemetery_turn',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '走到這裡還活著，代表你至少躲過了半條路的貪心。',
+        options: [
+          { text: '白石路標怎麼看？', nextId: 'marker' },
+          { text: '試煉守是什麼？', nextId: 'trial' },
+          { text: '我繼續走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'marker',
+        text: '真的白石路標會在日落時背光，假的會把影子指向伏擊彎道。帶白石灰粉能讓假影子短暫散開。',
+        options: [
+          { text: '試煉守是什麼？', nextId: 'trial' },
+          { text: '我去找灰粉。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'trial',
+        text: '聖地門試煉守只問一件事：你是不是完成了這條路。殺過去的人不一定能通過，活著抵達的人也不一定。',
+        options: [
+          { text: '白石路標怎麼看？', nextId: 'marker' },
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別在墓碑上坐下。那是給走不動的人，不是給累的人。' },
+    ],
+    guardianHints: {
+      creature: '索蘭能提示聖徒橋苦行殘影、終點聖碑光誓者與聖地門試煉守。',
+      treasure: '他說明白石灰粉與聖地門印的後段用途。',
+      spirit: '他把舊墓岔路變成前往聖地門前的警告節點。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
