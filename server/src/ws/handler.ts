@@ -154,9 +154,9 @@ export function broadcastToRoom(
   }
 }
 
-/** 傳送純文字敘述訊息 */
-export function sendNarrative(sessionId: string, text: string, color?: string): void {
-  sendToSession(sessionId, 'narrative', { text, color });
+/** 傳送敘述訊息，可附帶文字中的可互動片段 */
+export function sendNarrative(sessionId: string, text: string, color?: string, entities?: Record<string, unknown>[]): void {
+  sendToSession(sessionId, 'narrative', { text, color, entities });
 }
 
 /** 傳送系統訊息 */

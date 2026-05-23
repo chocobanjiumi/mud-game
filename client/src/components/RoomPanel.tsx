@@ -4,12 +4,27 @@ function sendCommand(command: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: command }));
 }
 
+function ordinalLabels<T extends { monsterName: string }>(items: T[]): string[] {
+  const totals = new Map<string, number>();
+  for (const item of items) {
+    totals.set(item.monsterName, (totals.get(item.monsterName) ?? 0) + 1);
+  }
+
+  const seen = new Map<string, number>();
+  return items.map((item) => {
+    const next = (seen.get(item.monsterName) ?? 0) + 1;
+    seen.set(item.monsterName, next);
+    return (totals.get(item.monsterName) ?? 0) > 1 ? `${item.monsterName}#${next}` : item.monsterName;
+  });
+}
+
 export default function RoomPanel() {
   const room = useGameStore((s) => s.room);
   if (!room) return null;
 
   const hints = room.inspectHints ?? [];
   const corpses = room.corpses ?? [];
+  const corpseLabels = ordinalLabels(corpses);
   const nodes = room.gatheringNodes ?? [];
   const travelNodes = room.travelNodes ?? [];
 
@@ -33,9 +48,9 @@ export default function RoomPanel() {
       )}
 
       <div className="grid grid-cols-1 gap-1 text-xs">
-        {corpses.map((corpse) => (
-          <button key={corpse.id} className="room-row" onClick={() => sendCommand('loot corpse')}>
-            <span className="text-combat-damage">{corpse.monsterName}</span>
+        {corpses.map((corpse, index) => (
+          <button key={corpse.id} className="room-row" onClick={() => sendCommand(`loot ${corpse.id}`)}>
+            <span className="text-combat-damage">{corpseLabels[index]}</span>
             <span className="text-text-dim">{corpse.empty ? '已空' : corpse.protected ? '保護中' : '可搜刮'}</span>
           </button>
         ))}

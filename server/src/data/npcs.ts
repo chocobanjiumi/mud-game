@@ -3000,13 +3000,26 @@ export function getNpcsByRoom(roomId: string): NpcDef[] {
   return Object.values(NPCS).filter(npc => npc.roomId === roomId);
 }
 
-/** 根據名稱模糊搜尋 NPC */
+function parseOrdinalTarget(name: string): { name: string; ordinal?: number } {
+  const trimmed = name.trim();
+  const hashMatch = trimmed.match(/^(.+?)#(\d+)$/);
+  const match = hashMatch;
+  if (!match) return { name: trimmed };
+
+  const ordinal = parseInt(match[2], 10);
+  if (!Number.isFinite(ordinal) || ordinal < 1) return { name: trimmed };
+  return { name: match[1].trim(), ordinal };
+}
+
+/** 根據名稱或「名稱#序號」模糊搜尋 NPC */
 export function findNpcByName(name: string, roomId?: string): NpcDef | undefined {
   const candidates = roomId
     ? Object.values(NPCS).filter(npc => npc.roomId === roomId)
     : Object.values(NPCS);
-  const q = name.toLowerCase();
-  return candidates.find(
-    npc => npc.name === name || npc.name.includes(name) || npc.id.includes(name) || npc.alias.toLowerCase() === q || npc.alias.toLowerCase().includes(q),
+  const parsed = parseOrdinalTarget(name);
+  const q = parsed.name.toLowerCase();
+  const matches = candidates.filter(
+    npc => npc.name === parsed.name || npc.name.includes(parsed.name) || npc.id.includes(parsed.name) || npc.alias.toLowerCase() === q || npc.alias.toLowerCase().includes(q),
   );
+  return parsed.ordinal ? matches[parsed.ordinal - 1] : matches[0];
 }

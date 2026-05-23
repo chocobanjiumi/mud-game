@@ -26,7 +26,7 @@ import type { SoundCategory } from '../audio/AudioManager';
 
 // --- Terminal line ---
 
-export type EntityType = 'npc' | 'monster' | 'player';
+export type EntityType = 'npc' | 'monster' | 'player' | 'action';
 
 export interface TerminalEntity {
   name: string;       // 顯示名稱（含 alias）
@@ -34,6 +34,8 @@ export interface TerminalEntity {
   alias?: string;     // 英文簡稱
   npcType?: string;   // NPC 子類型 (merchant, etc.)
   cmdName: string;    // 用於指令的名稱（中文名）
+  commandTarget?: string; // 唯一指令目標（例如 instanceId）
+  actionCommand?: string; // 點擊後直接執行的指令
 }
 
 export interface TerminalLine {
@@ -124,9 +126,9 @@ export interface RoomInfo {
   image?: string;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
-  npcs: { id: string; name: string; title: string }[];
+  npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
-  monsters: { id: string; name: string; level: number; hp: number; maxHp: number }[];
+  monsters: { id: string; name: string; alias: string; level: number; hp: number; maxHp: number }[];
   corpses?: { id: string; monsterName: string; empty: boolean; protected: boolean }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];

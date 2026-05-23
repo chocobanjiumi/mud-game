@@ -21,6 +21,18 @@ export interface MonsterInstance {
   respawnAt: number | null; // timestamp for respawn; null = alive
 }
 
+function parseOrdinalTarget(query: string): { name: string; ordinal?: number } {
+  const trimmed = query.trim();
+  const hashMatch = trimmed.match(/^(.+?)#(\d+)$/);
+  const spaceMatch = trimmed.match(/^(.+?)\s+(\d+)$/);
+  const match = hashMatch ?? spaceMatch;
+  if (!match) return { name: trimmed };
+
+  const ordinal = parseInt(match[2], 10);
+  if (!Number.isFinite(ordinal) || ordinal < 1) return { name: trimmed };
+  return { name: match[1].trim(), ordinal };
+}
+
 // ============================================================
 //  WorldManager
 // ============================================================
@@ -241,20 +253,22 @@ export class WorldManager {
     return (this.roomMonsters.get(roomId) ?? []).find(m => m.instanceId === instanceId);
   }
 
-  /** 根據名稱或 ID 模糊查找房間內的怪物 */
+  /** 根據名稱、ID 或「名稱#序號」模糊查找房間內的怪物 */
   findMonsterInRoom(roomId: string, query: string): MonsterInstance | undefined {
     const alive = this.getAliveMonsters(roomId);
-    const q = query.toLowerCase();
-    return alive.find(
+    const parsed = parseOrdinalTarget(query);
+    const q = parsed.name.toLowerCase();
+    const matches = alive.filter(
       m =>
-        m.def.name === query ||
-        m.def.name.includes(query) ||
-        m.monsterId === query ||
-        m.monsterId.includes(query) ||
-        m.instanceId === query ||
+        m.def.name === parsed.name ||
+        m.def.name.includes(parsed.name) ||
+        m.monsterId === parsed.name ||
+        m.monsterId.includes(parsed.name) ||
+        m.instanceId === parsed.name ||
         m.def.alias.toLowerCase() === q ||
         m.def.alias.toLowerCase().includes(q),
     );
+    return parsed.ordinal ? matches[parsed.ordinal - 1] : matches[0];
   }
 
   /** 標記怪物死亡並設定重生時間 */

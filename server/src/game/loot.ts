@@ -464,6 +464,20 @@ export interface LootCorpseResult {
   loot?: Pick<CombatLoot, 'gold' | 'items'>;
 }
 
+function parseCorpseOrdinalTarget(query?: string): { name: string; ordinal?: number } {
+  const trimmed = query?.trim() ?? '';
+  if (!trimmed) return { name: '' };
+
+  const hashMatch = trimmed.match(/^(.+?)#(\d+)$/);
+  const spaceMatch = trimmed.match(/^(.+?)\s+(\d+)$/);
+  const match = hashMatch ?? spaceMatch;
+  if (!match) return { name: trimmed };
+
+  const ordinal = parseInt(match[2], 10);
+  if (!Number.isFinite(ordinal) || ordinal < 1) return { name: trimmed };
+  return { name: match[1].trim(), ordinal };
+}
+
 export class CorpseManager {
   private corpsesByRoom = new Map<string, CorpseContainer[]>();
   private counter = 0;
@@ -504,21 +518,25 @@ export class CorpseManager {
 
   findCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): CorpseContainer | undefined {
     const corpses = this.getCorpses(roomId, now);
-    if (!query || query.trim().length === 0 || query === 'corpse' || query === '屍體') {
+    const parsed = parseCorpseOrdinalTarget(query);
+    if (!parsed.name || parsed.name === 'corpse' || parsed.name === '屍體') {
       if (characterId) {
-        return corpses.find(corpse => this.canLootCorpse(corpse, characterId, now)) ?? corpses[0];
+        const lootable = corpses.filter(corpse => this.canLootCorpse(corpse, characterId, now));
+        const candidates = lootable.length > 0 ? lootable : corpses;
+        return parsed.ordinal ? candidates[parsed.ordinal - 1] : candidates[0];
       }
-      return corpses[0];
+      return parsed.ordinal ? corpses[parsed.ordinal - 1] : corpses[0];
     }
 
-    const lower = query.trim().toLowerCase();
-    return corpses.find(corpse =>
+    const lower = parsed.name.toLowerCase();
+    const matches = corpses.filter(corpse =>
       corpse.id.toLowerCase() === lower
       || corpse.monsterId.toLowerCase() === lower
       || corpse.monsterId.toLowerCase().includes(lower)
       || corpse.monsterName.toLowerCase().includes(lower)
       || `${corpse.monsterName}屍體`.toLowerCase().includes(lower),
     );
+    return parsed.ordinal ? matches[parsed.ordinal - 1] : matches[0];
   }
 
   searchCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): LootCorpseResult {

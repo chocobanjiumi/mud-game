@@ -19,11 +19,12 @@ export default function ObjectivePanel() {
       suggestions.push({ label: '選擇戰鬥行動', command: 'attack', tone: 'danger' });
     }
   } else if (room?.corpses?.some(corpse => !corpse.empty)) {
-    suggestions.push({ label: '搜刮屍體', command: 'loot corpse' });
+    const corpse = room.corpses.find(c => !c.empty) ?? room.corpses[0];
+    suggestions.push({ label: '搜刮屍體', command: `loot ${corpse.id}` });
   } else if (room?.gatheringNodes?.length) {
     suggestions.push({ label: `採集 ${room.gatheringNodes[0].name}`, command: `gather ${room.gatheringNodes[0].id}` });
   } else if (room?.monsters?.length) {
-    suggestions.push({ label: `攻擊 ${room.monsters[0].name}`, command: `attack ${room.monsters[0].name}`, tone: 'danger' });
+    suggestions.push({ label: `攻擊 ${room.monsters[0].name}`, command: `attack ${room.monsters[0].id}`, tone: 'danger' });
   } else if (quests.length > 0) {
     const quest = quests.find(q => q.status === 'active') ?? quests[0];
     const step = quest.steps[quest.currentStep];

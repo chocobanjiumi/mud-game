@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback, type ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { TerminalEntity, TerminalLine as TLine } from '../stores/gameStore';
 
@@ -44,20 +44,21 @@ const colorClassMap: Record<string, string> = {
 
 /** 根據實體類型取得動作選單 */
 function getActionsForEntity(entity: TerminalEntity): { label: string; command: string }[] {
+  const target = entity.commandTarget ?? entity.cmdName;
   if (entity.entityType === 'npc') {
     const actions: { label: string; command: string }[] = [
-      { label: '查看', command: `look ${entity.cmdName}` },
-      { label: '對話', command: `talk ${entity.cmdName}` },
+      { label: '查看', command: `look ${target}` },
+      { label: '對話', command: `talk ${target}` },
     ];
     if (entity.npcType === 'merchant') {
-      actions.push({ label: '交易', command: `shop ${entity.cmdName}` });
+      actions.push({ label: '交易', command: `shop ${target}` });
     }
     return actions;
   }
   if (entity.entityType === 'monster') {
     return [
-      { label: '查看', command: `look ${entity.cmdName}` },
-      { label: '攻擊', command: `attack ${entity.cmdName}` },
+      { label: '查看', command: `look ${target}` },
+      { label: '攻擊', command: `attack ${target}` },
     ];
   }
   if (entity.entityType === 'player') {
@@ -67,6 +68,9 @@ function getActionsForEntity(entity: TerminalEntity): { label: string; command: 
       { label: '決鬥', command: `duel ${entity.cmdName}` },
       { label: '交易', command: `trade ${entity.cmdName}` },
     ];
+  }
+  if (entity.entityType === 'action' && entity.actionCommand) {
+    return [{ label: entity.name, command: entity.actionCommand }];
   }
   return [];
 }
@@ -92,6 +96,10 @@ function ClickableEntity({ entity, colorClass, onOpenMenu }: {
       className={`${colorClass} underline decoration-dotted cursor-pointer hover:brightness-125`}
       onClick={(e) => {
         e.stopPropagation();
+        if (entity.actionCommand) {
+          sendTerminalCommand(entity.actionCommand);
+          return;
+        }
         onOpenMenu(entity, e.clientX, e.clientY);
       }}
     >
@@ -110,22 +118,26 @@ function InteractiveLine({ line, colorClass, onOpenMenu }: {
     return <>{line.text || '\u00A0'}</>;
   }
 
-  // 找出前綴 (e.g. "NPC: ", "怪物: ", "玩家: ")
   const text = line.text;
-  const colonIdx = text.indexOf(': ');
-  const prefix = colonIdx >= 0 ? text.slice(0, colonIdx + 2) : '';
+  const parts: ReactNode[] = [];
+  let cursor = 0;
 
-  return (
-    <>
-      {prefix}
-      {line.entities.map((entity, i) => (
-        <span key={i}>
-          {i > 0 && ', '}
-          <ClickableEntity entity={entity} colorClass={colorClass} onOpenMenu={onOpenMenu} />
-        </span>
-      ))}
-    </>
-  );
+  line.entities.forEach((entity, i) => {
+    const index = text.indexOf(entity.name, cursor);
+    if (index < 0) {
+      if (i > 0) parts.push(', ');
+      parts.push(<ClickableEntity key={`entity-${i}`} entity={entity} colorClass={colorClass} onOpenMenu={onOpenMenu} />);
+      return;
+    }
+
+    if (index > cursor) parts.push(text.slice(cursor, index));
+    parts.push(<ClickableEntity key={`entity-${i}`} entity={entity} colorClass={colorClass} onOpenMenu={onOpenMenu} />);
+    cursor = index + entity.name.length;
+  });
+
+  if (cursor < text.length) parts.push(text.slice(cursor));
+
+  return <>{parts}</>;
 }
 
 export default function Terminal() {

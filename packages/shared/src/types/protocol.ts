@@ -37,6 +37,15 @@ export interface ServerMessage {
 export interface NarrativePayload {
   text: string;
   color?: string;
+  entities?: {
+    name: string;
+    entityType: 'npc' | 'monster' | 'player' | 'action';
+    alias?: string;
+    npcType?: string;
+    cmdName: string;
+    commandTarget?: string;
+    actionCommand?: string;
+  }[];
 }
 
 export interface RoomPayload {

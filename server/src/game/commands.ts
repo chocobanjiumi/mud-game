@@ -287,9 +287,8 @@ function cmdLook(session: WsSession, target?: string): void {
       }
       return;
     }
-    // 找怪物（支援中文名和英文 alias）
-    const monsters = world.getAliveMonsters(char.roomId);
-    const monster = monsters.find(m => m.def.name.includes(target) || (m.def.alias && m.def.alias.toLowerCase().includes(target.toLowerCase())));
+    // 找怪物（支援中文名、英文 alias 和同名序號）
+    const monster = world.findMonsterInRoom(char.roomId, target);
     if (monster) {
       sendSystem(session.sessionId, `═══ ${monster.def.name} (Lv.${monster.def.level}) ═══`);
       if (monster.def.description) {
@@ -391,12 +390,19 @@ function cmdLook(session: WsSession, target?: string): void {
   }
 
   const corpses = corpseMgr.getCorpses(char.roomId);
-  for (const corpse of corpses) {
+  const corpseLabels = buildOrdinalLabels(corpses, corpse => corpse.monsterName);
+  for (const [index, corpse] of corpses.entries()) {
     const empty = corpse.gold <= 0 && corpse.items.length === 0;
     sendNarrative(
       session.sessionId,
-      `${corpse.monsterName}的屍體倒在這裡${empty ? '，已被搜刮一空' : '。可用 loot corpse 搜刮' }。`,
+      `${corpseLabels[index]}的屍體倒在這裡。${empty ? '已被搜刮一空。' : '搜刮'}`,
       'item',
+      empty ? undefined : [{
+        name: '搜刮',
+        entityType: 'action',
+        cmdName: '搜刮',
+        actionCommand: `loot ${corpse.id}`,
+      }],
     );
   }
 
@@ -5663,6 +5669,22 @@ function normalizeCommandTarget(target: string): string {
   return target.trim().toLowerCase();
 }
 
+function buildOrdinalLabels<T>(items: T[], keyOf: (item: T) => string): string[] {
+  const totals = new Map<string, number>();
+  for (const item of items) {
+    const key = keyOf(item);
+    totals.set(key, (totals.get(key) ?? 0) + 1);
+  }
+
+  const seen = new Map<string, number>();
+  return items.map(item => {
+    const key = keyOf(item);
+    const next = (seen.get(key) ?? 0) + 1;
+    seen.set(key, next);
+    return (totals.get(key) ?? 0) > 1 ? `${key}#${next}` : key;
+  });
+}
+
 function findGroundItem(roomId: string, target: string): GroundItem | undefined {
   const lower = normalizeCommandTarget(target);
   return getAvailableGroundItems(roomId).find(groundItem => {
@@ -5699,14 +5721,15 @@ function sendSearchSummary(session: WsSession, room: RoomDef): void {
   }
 
   const npcs = getNpcsByRoom(room.id);
-  if (npcs.length > 0) lines.push(`NPC：${npcs.map(npc => npc.name).join('、')}`);
+  if (npcs.length > 0) lines.push(`NPC：${buildOrdinalLabels(npcs, npc => npc.name).join('、')}`);
 
   const monsters = world.getAliveMonsters(room.id);
-  if (monsters.length > 0) lines.push(`怪物：${monsters.map(monster => monster.def.name).join('、')}`);
+  if (monsters.length > 0) lines.push(`怪物：${buildOrdinalLabels(monsters, monster => monster.def.name).join('、')}`);
 
   const corpses = corpseMgr.getCorpses(room.id);
   if (corpses.length > 0) {
-    lines.push(`屍體：${corpses.map(corpse => `${corpse.monsterName}${corpse.gold <= 0 && corpse.items.length === 0 ? '(空)' : ''}`).join('、')}`);
+    const corpseLabels = buildOrdinalLabels(corpses, corpse => corpse.monsterName);
+    lines.push(`屍體：${corpses.map((corpse, index) => `${corpseLabels[index]}${corpse.gold <= 0 && corpse.items.length === 0 ? '(空)' : ''}`).join('、')}`);
   }
 
   if (lines.length === 0) {

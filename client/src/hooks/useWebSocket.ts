@@ -30,6 +30,22 @@ const MAX_RECONNECT_ATTEMPTS = 10;
 const PING_INTERVAL = 25000;
 const PURCHASE_TIMEOUT = 10000; // 10 seconds
 
+function ordinalLabels<T extends { name: string }>(items: T[], keyOf: (item: T) => string = (item) => item.name): string[] {
+  const totals = new Map<string, number>();
+  for (const item of items) {
+    const key = keyOf(item);
+    totals.set(key, (totals.get(key) ?? 0) + 1);
+  }
+
+  const seen = new Map<string, number>();
+  return items.map((item) => {
+    const key = keyOf(item);
+    const next = (seen.get(key) ?? 0) + 1;
+    seen.set(key, next);
+    return (totals.get(key) ?? 0) > 1 ? `${item.name}#${next}` : item.name;
+  });
+}
+
 export function useWebSocket() {
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectAttemptRef = useRef(0);
@@ -48,8 +64,8 @@ export function useWebSocket() {
 
     switch (msg.type) {
       case 'narrative': {
-        const { text, color } = p as unknown as NarrativePayload;
-        s.addTerminalLine(text, color);
+        const { text, color, entities } = p as unknown as NarrativePayload;
+        s.addTerminalLine(text, color, entities);
         break;
       }
 
@@ -77,23 +93,27 @@ export function useWebSocket() {
           s.addTerminalLine(`出口: ${dirs}`, 'exits');
         }
         if (room.npcs.length > 0) {
-          const names = room.npcs.map((n) => `${n.name}/${n.alias}(${n.title})`).join(', ');
-          const npcEntities = room.npcs.map((n) => ({
-            name: `${n.name}/${n.alias}(${n.title})`,
+          const labels = ordinalLabels(room.npcs);
+          const names = room.npcs.map((n, index) => `${labels[index]}/${n.alias}(${n.title})`).join(', ');
+          const npcEntities = room.npcs.map((n, index) => ({
+            name: `${labels[index]}/${n.alias}(${n.title})`,
             entityType: 'npc' as const,
             alias: n.alias,
-            npcType: (n as any).type as string | undefined,
-            cmdName: n.name,
+            npcType: n.type,
+            cmdName: labels[index],
+            commandTarget: n.id,
           }));
           s.addTerminalLine(`NPC: ${names}`, 'npc', npcEntities);
         }
         if (room.monsters.length > 0) {
-          const names = room.monsters.map((m) => `${m.name}/${m.alias} Lv.${m.level}`).join(', ');
-          const monsterEntities = room.monsters.map((m) => ({
-            name: `${m.name}/${m.alias} Lv.${m.level}`,
+          const labels = ordinalLabels(room.monsters);
+          const names = room.monsters.map((m, index) => `${labels[index]}/${m.alias} Lv.${m.level}`).join(', ');
+          const monsterEntities = room.monsters.map((m, index) => ({
+            name: `${labels[index]}/${m.alias} Lv.${m.level}`,
             entityType: 'monster' as const,
             alias: m.alias,
-            cmdName: m.name,
+            cmdName: labels[index],
+            commandTarget: m.id,
           }));
           s.addTerminalLine(`怪物: ${names}`, 'monster', monsterEntities);
         }
