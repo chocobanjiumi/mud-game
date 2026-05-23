@@ -7741,6 +7741,150 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  saltwind_flats_tide_surveyor: {
+    id: 'saltwind_flats_tide_surveyor',
+    name: '瑟拉',
+    alias: 'surveyor',
+    title: '退潮入口樁潮汐測量員',
+    description:
+      '一名潮汐測量員站在退潮入口樁旁，靴底沾滿白鹽，手裡拿著刻潮尺。' +
+      '她每隔幾分鐘就敲一下木樁，確認鹽面下方還是不是硬地。',
+    roomId: 'saltwind_flats_tide_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '鹽風灘只有退潮時像路。潮水回來後，路會先忘記你。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '深鹽眼在哪？', nextId: 'eye' },
+          { text: '我會看潮線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先走白波鹽面與鹽水潮池，再沿霧鐘找退潮石道。別相信海盜隱棚旁的假鐘聲。',
+        options: [
+          { text: '深鹽眼在哪？', nextId: 'eye' },
+          { text: '我先找路標。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'eye',
+        text: '潮望廢墟北面就是深鹽眼。若霧鐘自己響，守望者已經在數你的腳步。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '我會準備好。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '腳下鹽殼變軟就退，別等水聲。聽見水聲通常已經晚了。' },
+    ],
+    guardianHints: {
+      creature: '瑟拉能提示鹽晶步蟲、退潮海蛇與深鹽眼守望者的潮線。',
+      treasure: '她說明白灘鹽晶、霧鐘舌與深鹽眼珠的路線用途。',
+      spirit: '她把鹽風灘的退潮時間轉成可行走的安全節奏。',
+    },
+  },
+
+  saltwind_flats_fisher_mender: {
+    id: 'saltwind_flats_fisher_mender',
+    name: '博恩',
+    alias: 'mender',
+    title: '漁夫藏點補網匠',
+    description:
+      '一名老補網匠躲在漁夫藏點後方，膝上攤著破網與鹽蟹硬殼。' +
+      '他身旁的小箱子裡放著藍泥鹽包、乾繩和幾枚霧鐘零件。',
+    roomId: 'saltwind_flats_fisher_cache',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'flatsalt_crystal',
+      'fogbell_clapper',
+      'blue_mud_saltpack',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '想買補給就快點。霧一厚，漁夫藏點就會變成別人的藏點。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '海盜在哪？', nextId: 'pirates' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、白灘鹽晶、霧鐘舌、藍泥鹽包。鹽蟹硬殼要自己去蟹行淺灘敲。',
+        action: { type: 'shop', data: { shopType: 'saltwind_fisher' } },
+        options: [
+          { text: '海盜在哪？', nextId: 'pirates' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'pirates',
+        text: '漂木哨柱、海盜隱棚、破舟灘都有。他們不搶最重的，只搶你退潮前最需要的。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會防著哨兵。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '藍泥鹽包別吃，是敷的。上次有人吃了，罵得比海盜還大聲。' },
+    ],
+    guardianHints: {
+      creature: '博恩能提示鹽池蟹衛、霧灘海盜哨兵與魚骨濁潮人的補給風險。',
+      treasure: '他販售白灘鹽晶、霧鐘舌與藍泥鹽包。',
+      spirit: '他把漁夫藏點變成鹽風灘中段的補給節點。',
+    },
+  },
+
+  saltwind_flats_fogbell_keeper: {
+    id: 'saltwind_flats_fogbell_keeper',
+    name: '露塔',
+    alias: 'bellkeeper',
+    title: '霧鐘桿守鐘人',
+    description:
+      '一名守鐘人站在霧鐘桿下，手裡握著備用鐘舌，斗篷被鹽霧浸得發硬。' +
+      '她會先聽風，再決定要不要敲鐘。',
+    roomId: 'saltwind_flats_fog_bell',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '霧鐘不是給你聽的，是給路聽的。路聽見了，才肯露出來。',
+        options: [
+          { text: '怎麼分辨假鐘？', nextId: 'falsebell' },
+          { text: '守望者怕鐘聲嗎？', nextId: 'keeper' },
+          { text: '我會聽回音。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'falsebell',
+        text: '真鐘三響後有鹽殼回音，假鐘只有霧。海盜哨兵學得像，但他們學不會鹽面回答。',
+        options: [
+          { text: '守望者怕鐘聲嗎？', nextId: 'keeper' },
+          { text: '我會數回音。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'keeper',
+        text: '不怕。牠就是從太多鐘聲裡醒來的。你帶霧鐘舌去深鹽眼，只是讓自己知道退路在哪。',
+        options: [
+          { text: '怎麼分辨假鐘？', nextId: 'falsebell' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若第四響自己出現，離開鐘桿。那不是我敲的。' },
+    ],
+    guardianHints: {
+      creature: '露塔能提示玻璃鹽元素、退潮海蛇與深鹽眼守望者的後段節奏。',
+      treasure: '她說明霧鐘舌與深鹽眼珠的用途。',
+      spirit: '她把霧鐘、退潮石道與深鹽眼串成終段導航規則。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

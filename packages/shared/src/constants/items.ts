@@ -3443,6 +3443,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['silverpine_range'],
   },
 
+  // ─── 鹽風灘生態材料與潮汐補給 (Lv 14-24) ───
+  flatsalt_crystal: {
+    id: 'flatsalt_crystal', name: '白灘鹽晶', type: 'material',
+    description: '退潮後在白波鹽面凝出的透明鹽晶，邊緣鋒利，常被漁夫磨成驅霧粉。',
+    buyPrice: 520, sellPrice: 260, stackable: true, maxStack: 99, levelReq: 14, rarity: 'uncommon',
+    sourceTags: ['drop', 'shop'], zoneTags: ['saltwind_flats'],
+  },
+  brine_crab_shell: {
+    id: 'brine_crab_shell', name: '鹽蟹硬殼', type: 'material',
+    description: '蟹行淺灘大型鹽蟹留下的厚殼，殼面覆著白色鹽霜，可做成耐鹽護片。',
+    buyPrice: 680, sellPrice: 340, stackable: true, maxStack: 99, levelReq: 16, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['saltwind_flats'],
+  },
+  fogbell_clapper: {
+    id: 'fogbell_clapper', name: '霧鐘舌', type: 'material',
+    description: '霧鐘桿與潮望廢墟間掉落的銅鐘舌，敲響時能短暫穿透鹽霧，指引退潮石道。',
+    buyPrice: 850, sellPrice: 425, stackable: true, maxStack: 99, levelReq: 18, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['saltwind_flats'],
+  },
+  blue_mud_saltpack: {
+    id: 'blue_mud_saltpack', name: '藍泥鹽包', type: 'consumable',
+    description: '以藍泥層濕鹽與乾草包成的小補給，敷在傷口上很痛，但能快速恢復少量生命。',
+    buyPrice: 720, sellPrice: 360, stackable: true, maxStack: 20, levelReq: 16, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 180 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['saltwind_flats'],
+  },
+  deep_brine_pearl: {
+    id: 'deep_brine_pearl', name: '深鹽眼珠', type: 'quest',
+    description: '深鹽眼底部凝成的灰白鹽珠，內部封著潮汐倒影與海蛇鱗光，是鹽風灘核心證明物。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 24, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['saltwind_flats'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

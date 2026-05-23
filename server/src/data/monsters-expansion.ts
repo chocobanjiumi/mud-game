@@ -7515,4 +7515,198 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '晶龍是礦脈、冰玻與星光在山頂凝成的守護意志。',
     },
   },
+
+  saltflat_crystal_scuttler: {
+    id: 'saltflat_crystal_scuttler', name: '鹽晶步蟲', alias: 'saltscuttler',
+    level: 14, hp: 320, mp: 60, str: 30, int: 14, dex: 38, vit: 26, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'quick_dash', 'crystal_shard'],
+    expReward: 240, goldReward: [65, 125],
+    drops: [
+      { itemId: 'flatsalt_crystal', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'blue_mud_saltpack', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '在白波鹽面與玻璃鹽田上快速爬行的小型鹽晶蟲，背甲像一簇透明鹽花。牠會借鹽面反光突然轉向，用碎晶割傷腳踝。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鹽晶步蟲速度快，鹽面閃動時先穩住站位。',
+      treasure: '牠背甲能剝下白灘鹽晶。',
+      spirit: '步蟲是鹽風灘退潮後最先出現的晶化生物。',
+    },
+  },
+
+  saltgrass_reedstalker: {
+    id: 'saltgrass_reedstalker', name: '鹽草伏行者', alias: 'saltstalker',
+    level: 15, hp: 360, mp: 82, str: 34, int: 18, dex: 42, vit: 28, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'blind', 'poison_bite'],
+    expReward: 270, goldReward: [72, 140],
+    drops: [
+      { itemId: 'flatsalt_crystal', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'fogbell_clapper', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '藏在鹽草帶和霧中路標旁的細長伏行者，皮膚覆著灰白鹽粉。牠會用鹽霧迷眼，再沿漂木陰影繞到隊伍側面。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鹽草伏行者會致盲與毒咬，霧厚時不要追太遠。',
+      treasure: '牠常把霧鐘零件藏在鹽草窩裡。',
+      spirit: '伏行者是鹽草與薄霧共同養出的伏擊生物。',
+    },
+  },
+
+  brinepool_crab_guard: {
+    id: 'brinepool_crab_guard', name: '鹽池蟹衛', alias: 'brinecrab',
+    level: 16, hp: 520, mp: 70, str: 46, int: 12, dex: 24, vit: 62, luk: 10,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'shell_guard'],
+    expReward: 330, goldReward: [88, 170],
+    drops: [
+      { itemId: 'brine_crab_shell', chance: 0.64, minQty: 1, maxQty: 2 },
+      { itemId: 'blue_mud_saltpack', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '守在鹽水潮池與蟹行淺灘的大型鹽蟹，兩螯包著厚厚鹽殼。牠會橫向堵住退潮水道，逼迫旅人踩進更深的藍泥。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鹽池蟹衛防禦高，舉螯時先等牠護殼結束。',
+      treasure: '鹽蟹硬殼是牠最穩定的掉落。',
+      spirit: '蟹衛維持潮池邊界，阻止外來者攪亂鹽水。',
+    },
+  },
+
+  pirate_mist_scout: {
+    id: 'pirate_mist_scout', name: '霧灘海盜哨兵', alias: 'mistscout',
+    level: 17, hp: 440, mp: 90, str: 42, int: 18, dex: 50, vit: 32, luk: 22,
+    element: 'none',
+    skills: ['basic_attack', 'backstab', 'steal', 'quick_dash'],
+    expReward: 380, goldReward: [105, 200],
+    drops: [
+      { itemId: 'fogbell_clapper', chance: 0.28, minQty: 1, maxQty: 1 },
+      { itemId: 'blue_mud_saltpack', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '藏在漂木哨柱、海盜隱棚與破舟灘附近的海盜哨兵，斗篷被鹽霧泡得發白。牠們會偷走補給，並用霧鐘假聲引人走錯潮道。',
+    isBoss: false,
+    guardianHints: {
+      creature: '霧灘海盜哨兵會偷竊與背刺，先清哨兵再搜藏點。',
+      treasure: '牠們身上常有霧鐘舌與藍泥鹽包。',
+      spirit: '海盜哨兵把退潮路線變成掠奪陷阱。',
+    },
+  },
+
+  fishbone_murkling: {
+    id: 'fishbone_murkling', name: '魚骨濁潮人', alias: 'murkling',
+    level: 18, hp: 500, mp: 150, str: 38, int: 42, dex: 34, vit: 42, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'life_drain', 'blind'],
+    expReward: 440, goldReward: [120, 230],
+    drops: [
+      { itemId: 'flatsalt_crystal', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'fogbell_clapper', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '在魚骨棧橋與漁夫藏點附近浮出的濁潮人，身上掛著魚骨與鹽草繩。牠們會用冷鹽水凝成尖矛，拖走靠近潮池邊緣的人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '魚骨濁潮人會水矛與致盲，棧橋上要保持距離。',
+      treasure: '牠們收集白灘鹽晶與霧鐘零件當作飾物。',
+      spirit: '濁潮人是漁夫失蹤傳聞背後的主要威脅。',
+    },
+  },
+
+  blue_mud_saltback: {
+    id: 'blue_mud_saltback', name: '藍泥鹽背獸', alias: 'saltback',
+    level: 19, hp: 720, mp: 100, str: 58, int: 18, dex: 22, vit: 78, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'toxic_cloud', 'stone_skin'],
+    expReward: 520, goldReward: [140, 270],
+    drops: [
+      { itemId: 'blue_mud_saltpack', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'brine_crab_shell', chance: 0.26, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '藍泥層與破舟灘間爬行的厚背泥獸，背上乾鹽結成一片灰白甲殼。牠會翻動藍泥釋放刺鼻鹽霧，再用沉重身體撞碎木船殘骸。',
+    isBoss: false,
+    guardianHints: {
+      creature: '藍泥鹽背獸會毒霧與石膚，霧起時先退出藍泥層。',
+      treasure: '藍泥鹽包多從牠背甲下方挖出。',
+      spirit: '鹽背獸讓看似平坦的泥層變成活動陷阱。',
+    },
+  },
+
+  glasssalt_elemental: {
+    id: 'glasssalt_elemental', name: '玻璃鹽元素', alias: 'glasselemental',
+    level: 21, hp: 820, mp: 260, str: 46, int: 70, dex: 28, vit: 76, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_shard', 'ice_storm', 'reflect_barrier'],
+    expReward: 700, goldReward: [190, 360],
+    drops: [
+      { itemId: 'flatsalt_crystal', chance: 0.78, minQty: 1, maxQty: 4 },
+      { itemId: 'deep_brine_pearl', chance: 0.08, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '玻璃鹽田與鹽晶巢中凝出的透明元素，身體由鹽晶與薄冰折射成多重輪廓。牠會升起反射鹽幕，讓攻擊者被自己的光影刺傷。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '玻璃鹽元素會反射屏障，屏障期間不要強攻。',
+      treasure: '白灘鹽晶是牠最主要的掉落。',
+      spirit: '鹽元素是整片白灘晶化後的守衛。',
+    },
+  },
+
+  lowtide_serpent: {
+    id: 'lowtide_serpent', name: '退潮海蛇', alias: 'lowtideserpent',
+    level: 22, hp: 920, mp: 220, str: 70, int: 42, dex: 38, vit: 70, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'coil', 'poison_bite'],
+    expReward: 780, goldReward: [210, 405],
+    drops: [
+      { itemId: 'deep_brine_pearl', chance: 0.16, minQty: 1, maxQty: 1 },
+      { itemId: 'brine_crab_shell', chance: 0.32, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '沿海蛇痕與退潮石道滑行的灰白海蛇，鱗片被鹽霜磨得發亮。牠會在薄水下盤成圈，等旅人踏上石道時纏住腳踝拖向潮池。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '退潮海蛇會纏繞與毒咬，看到濕亮拖痕就先停步。',
+      treasure: '深鹽眼珠偶爾會卡在牠喉囊中。',
+      spirit: '海蛇標記著退潮路線最危險的深水回流。',
+    },
+  },
+
+  deep_brine_eye_keeper: {
+    id: 'deep_brine_eye_keeper', name: '深鹽眼守望者', alias: 'brinekeeper',
+    level: 24, hp: 1500, mp: 360, str: 82, int: 68, dex: 34, vit: 104, luk: 20,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'ice_storm', 'reflect_barrier', 'death_mark'],
+    expReward: 1250, goldReward: [340, 650],
+    drops: [
+      { itemId: 'deep_brine_pearl', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'flatsalt_crystal', chance: 0.7, minQty: 2, maxQty: 4 },
+      { itemId: 'fogbell_clapper', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '潮望廢墟後方深鹽眼中浮起的白灰守望者，身軀像由鹽霧、海蛇骨與潮池冷光組成。牠每次敲響霧鐘，都會讓退潮石道短暫消失在白霧中。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1200,
+    guardianHints: {
+      creature: '深鹽眼守望者會水矛、冰風暴與反射屏障，屏障期間先穩血線。',
+      treasure: '牠必定掉落深鹽眼珠，是鹽風灘核心證明物。',
+      spirit: '守望者是潮霧、鹽晶與失蹤漁船記憶凝成的核心。',
+    },
+  },
 };
