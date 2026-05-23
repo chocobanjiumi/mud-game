@@ -7,6 +7,7 @@ import { sendToCharacter } from '../ws/handler.js';
 import { getDb } from '../db/schema.js';
 import { saveCharacter } from '../db/queries.js';
 import { ClassChangeManager } from './class-change.js';
+import { addExperienceToCharacter } from './leveling.js';
 
 // ============================================================
 //  型別定義
@@ -554,7 +555,7 @@ export class ClassQuest2Manager {
 
     // 發放獎勵
     character.gold += def.rewards.gold;
-    character.exp += def.rewards.exp;
+    addExperienceToCharacter(character, def.rewards.exp);
     saveCharacter(character);
 
     // 獎勵物品由呼叫端處理（需要 addInventoryItem）

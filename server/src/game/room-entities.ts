@@ -32,6 +32,7 @@ export interface RoomEntityCorpse {
   label?: string;
   empty: boolean;
   protected: boolean;
+  protectedUntil?: number;
 }
 
 export interface RoomEntityGatheringNode {
@@ -119,7 +120,7 @@ export function buildRoomEntities(input: {
       id: corpse.id,
       type: 'corpse' as const,
       label: `${corpse.label ?? corpse.monsterName} 屍體`,
-      subtitle: corpse.empty ? '已空' : corpse.protected ? '保護中' : '可搜刮',
+      subtitle: corpse.empty ? '已空' : corpse.protected ? `保護中${formatRemaining(corpse.protectedUntil)}` : '可搜刮',
       actions: [{
         label: '搜刮',
         command: `loot ${corpse.id}`,
@@ -169,6 +170,12 @@ export function buildRoomEntities(input: {
       ],
     })),
   ];
+}
+
+function formatRemaining(timestamp?: number): string {
+  if (!timestamp) return '';
+  const seconds = Math.max(0, Math.ceil((timestamp - Date.now()) / 1000));
+  return seconds > 0 ? ` ${seconds}s` : '';
 }
 
 function directionChinese(dir: string): string {

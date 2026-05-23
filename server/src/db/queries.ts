@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -34,7 +34,7 @@ export function createCharacter(
   db.prepare(`
     INSERT INTO characters (id, user_id, name, level, exp, class_id, race_id, gender_id, faith_id, faith_favor, hp, mp, max_hp, max_mp,
       str, int_, dex, vit, luk, free_points, gold, room_id, is_ai, agent_id, created_at, last_login)
-    VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, 0, ?, ?, ?, ?,
+    VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, 10, ?, ?, ?, ?,
       ?, ?, ?, ?, ?, 0, 100, 'village_square', ?, ?, ?, ?)
   `).run(
     id, userId, name, raceId, genderId, faithId, maxHp, maxMp, maxHp, maxMp,
@@ -49,6 +49,8 @@ export function createCharacter(
 
   // 學習初始技能 (揮砍)
   learnSkill(id, 'slash');
+  learnSkill(id, RACE_DEFS[raceId].passiveSkillId);
+  learnSkill(id, FAITH_DEFS[faithId].passiveSkillId);
 
   return getCharacterById(id)!;
 }

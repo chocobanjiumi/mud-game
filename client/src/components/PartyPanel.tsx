@@ -29,7 +29,8 @@ export default function PartyPanel() {
   if (!showParty) return null;
 
   return (
-    <div className="bg-bg-secondary border-b border-border-dim w-full flex flex-col panel-enter">
+    <div className="party-overlay" onClick={toggleParty}>
+      <div className="party-modal panel-enter" onClick={(event) => event.stopPropagation()}>
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-dim">
         <span className="text-xs font-bold text-text-terminal">隊伍</span>
@@ -87,6 +88,7 @@ export default function PartyPanel() {
             );
           })
         )}
+      </div>
       </div>
     </div>
   );

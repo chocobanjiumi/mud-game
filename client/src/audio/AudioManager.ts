@@ -31,16 +31,66 @@ const SOUNDS: Record<string, SoundDef> = {
 
 export type SoundId = keyof typeof SOUNDS;
 
+export interface AudioSettingsState {
+  enabled: boolean;
+  masterVolume: number;
+  volumes: Record<SoundCategory, number>;
+}
+
+const AUDIO_SETTINGS_KEY = 'mud.audio.settings.v1';
+const DEFAULT_AUDIO_SETTINGS: AudioSettingsState = {
+  enabled: true,
+  masterVolume: 0.5,
+  volumes: { bgm: 0.3, sfx: 0.7, ui: 0.5 },
+};
+
+function clampVolume(value: unknown, fallback: number): number {
+  return typeof value === 'number' && Number.isFinite(value)
+    ? Math.max(0, Math.min(1, value))
+    : fallback;
+}
+
+function normalizeSettings(value: unknown): AudioSettingsState {
+  const raw = value && typeof value === 'object' ? value as Partial<AudioSettingsState> : {};
+  const rawVolumes = raw.volumes && typeof raw.volumes === 'object'
+    ? raw.volumes as Partial<Record<SoundCategory, number>>
+    : {};
+  return {
+    enabled: typeof raw.enabled === 'boolean' ? raw.enabled : DEFAULT_AUDIO_SETTINGS.enabled,
+    masterVolume: clampVolume(raw.masterVolume, DEFAULT_AUDIO_SETTINGS.masterVolume),
+    volumes: {
+      bgm: clampVolume(rawVolumes.bgm, DEFAULT_AUDIO_SETTINGS.volumes.bgm),
+      sfx: clampVolume(rawVolumes.sfx, DEFAULT_AUDIO_SETTINGS.volumes.sfx),
+      ui: clampVolume(rawVolumes.ui, DEFAULT_AUDIO_SETTINGS.volumes.ui),
+    },
+  };
+}
+
+export function loadAudioSettings(): AudioSettingsState {
+  if (typeof window === 'undefined') return DEFAULT_AUDIO_SETTINGS;
+  try {
+    const stored = window.localStorage.getItem(AUDIO_SETTINGS_KEY);
+    return stored ? normalizeSettings(JSON.parse(stored)) : DEFAULT_AUDIO_SETTINGS;
+  } catch {
+    return DEFAULT_AUDIO_SETTINGS;
+  }
+}
+
 class AudioManager {
   private static instance: AudioManager | null = null;
   private ctx: AudioContext | null = null;
-  private masterVolume = 0.5;
-  private volumes: Record<SoundCategory, number> = { bgm: 0.3, sfx: 0.7, ui: 0.5 };
-  private muted = false;
+  private masterVolume = DEFAULT_AUDIO_SETTINGS.masterVolume;
+  private volumes: Record<SoundCategory, number> = { ...DEFAULT_AUDIO_SETTINGS.volumes };
+  private muted = !DEFAULT_AUDIO_SETTINGS.enabled;
   private bgmOscillator: OscillatorNode | null = null;
   private bgmGain: GainNode | null = null;
 
-  private constructor() {}
+  private constructor() {
+    const settings = loadAudioSettings();
+    this.masterVolume = settings.masterVolume;
+    this.volumes = { ...settings.volumes };
+    this.muted = !settings.enabled;
+  }
 
   static getInstance(): AudioManager {
     if (!AudioManager.instance) {
@@ -62,6 +112,27 @@ class AudioManager {
   private getEffectiveVolume(category: SoundCategory): number {
     if (this.muted) return 0;
     return this.masterVolume * this.volumes[category];
+  }
+
+  private persist(): void {
+    if (typeof window === 'undefined') return;
+    const settings: AudioSettingsState = {
+      enabled: !this.muted,
+      masterVolume: this.masterVolume,
+      volumes: { ...this.volumes },
+    };
+    try {
+      window.localStorage.setItem(AUDIO_SETTINGS_KEY, JSON.stringify(settings));
+    } catch {
+      // Storage can be unavailable in private or embedded contexts.
+    }
+  }
+
+  private updateLiveBgmGain(): void {
+    if (this.bgmGain && this.ctx) {
+      const effective = this.getEffectiveVolume('bgm');
+      this.bgmGain.gain.setValueAtTime(effective * 0.15, this.ctx.currentTime);
+    }
   }
 
   play(soundId: string): void {
@@ -131,28 +202,27 @@ class AudioManager {
 
   setVolume(category: SoundCategory, volume: number): void {
     this.volumes[category] = Math.max(0, Math.min(1, volume));
-    // Update live BGM gain if applicable
-    if (category === 'bgm' && this.bgmGain && this.ctx) {
-      const effective = this.getEffectiveVolume('bgm');
-      this.bgmGain.gain.setValueAtTime(effective * 0.15, this.ctx.currentTime);
-    }
+    if (category === 'bgm') this.updateLiveBgmGain();
+    this.persist();
   }
 
   setMasterVolume(volume: number): void {
     this.masterVolume = Math.max(0, Math.min(1, volume));
-    if (this.bgmGain && this.ctx) {
-      const effective = this.getEffectiveVolume('bgm');
-      this.bgmGain.gain.setValueAtTime(effective * 0.15, this.ctx.currentTime);
-    }
+    this.updateLiveBgmGain();
+    this.persist();
   }
 
   toggleMute(): boolean {
     this.muted = !this.muted;
-    if (this.bgmGain && this.ctx) {
-      const effective = this.getEffectiveVolume('bgm');
-      this.bgmGain.gain.setValueAtTime(effective * 0.15, this.ctx.currentTime);
-    }
+    this.updateLiveBgmGain();
+    this.persist();
     return this.muted;
+  }
+
+  setEnabled(enabled: boolean): void {
+    this.muted = !enabled;
+    this.updateLiveBgmGain();
+    this.persist();
   }
 
   isEnabled(): boolean {

@@ -501,6 +501,36 @@ describe('getLootAnnouncementScope', () => {
 describe('CorpseManager', () => {
   const now = new Date('2026-05-22T00:00:00.000Z').getTime();
 
+  it('resolves duplicated corpse labels to the requested ordinal target', () => {
+    const corpses = new CorpseManager();
+    const firstMonster = makeMonsterInstance({ id: 'slime', name: '史萊姆' });
+    const secondMonster = {
+      ...makeMonsterInstance({ id: 'slime', name: '史萊姆' }),
+      instanceId: 'slime_2',
+    };
+
+    const first = corpses.createCorpse({
+      roomId: 'plains',
+      monster: firstMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 0, gold: 1, items: [] },
+      now,
+    });
+    const second = corpses.createCorpse({
+      roomId: 'plains',
+      monster: secondMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 0, gold: 2, items: [] },
+      now,
+    });
+
+    expect(first.id).not.toBe(second.id);
+    expect(corpses.findCorpse('plains', '史萊姆#2', now, 'player-1')?.id).toBe(second.id);
+    expect(corpses.findCorpse('plains', 'corpse 2', now, 'player-1')?.id).toBe(second.id);
+  });
+
   it('creates corpse containers with gold and items after combat rewards are rolled', () => {
     const corpses = new CorpseManager();
     const monster = makeMonsterInstance();

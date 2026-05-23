@@ -22,12 +22,11 @@ import {
   calculateAtk, calculateMatk, calculateDef, calculateMdef,
   calculateCritRate, calculateDodgeRate, calculateHitRate,
   calculateCritDamage,
-  getExpForLevel,
   FAITH_DEFS, GENDER_DEFS, RACE_DEFS,
   DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID,
   isFaithId,
 } from '@game/shared';
-import type { Character, ClassId, FaithId, MonsterDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -70,6 +69,8 @@ import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventory
 import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
+import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
+import { addExperienceToCharacter, expRequiredForLevel } from './leveling.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -330,6 +331,7 @@ function cmdAlias(session: WsSession, args: string[]): void {
   if (args[0].toLowerCase() === 'reset') {
     clearCharacterAliases(char.id);
     sendSystem(session.sessionId, '已清除所有自訂 alias，恢復預設別名。');
+    cmdStatus(session);
     return;
   }
 
@@ -355,6 +357,7 @@ function cmdAlias(session: WsSession, args: string[]): void {
 
   setCharacterAlias(char.id, alias, command);
   sendSystem(session.sessionId, `已設定 alias：${alias} => ${command}`);
+  cmdStatus(session);
 }
 
 function cmdUnalias(session: WsSession, args: string[]): void {
@@ -371,6 +374,7 @@ function cmdUnalias(session: WsSession, args: string[]): void {
 
   if (deleteCharacterAlias(char.id, alias)) {
     sendSystem(session.sessionId, `已刪除 alias：${alias}`);
+    cmdStatus(session);
   } else if (SYSTEM_ALIASES[alias]) {
     sendSystem(session.sessionId, `「${alias}」是預設 alias，無需刪除。`);
   } else {
@@ -466,6 +470,7 @@ function cmdLook(session: WsSession, target?: string): void {
     label: roomCorpseLabels[index],
     empty: corpse.gold <= 0 && corpse.items.length === 0,
     protected: now < corpse.protectedUntil && !corpse.participantIds.includes(char.id),
+    protectedUntil: corpse.protectedUntil,
   }));
   const gatheringNodes = gatheringMgr.getAvailableNodes(roomInfo.room, zone, char.level).map(node => ({
     id: node.id,
@@ -544,6 +549,16 @@ function cmdLook(session: WsSession, target?: string): void {
 
   // 觸發任務進度（拜訪地點）
   questMgr.updateProgress(char.id, 'visit', char.roomId);
+  sendQuestUpdate(session, 'sync');
+}
+
+function sendQuestUpdate(session: WsSession, action = 'sync'): void {
+  const char = getChar(session);
+  if (!char) return;
+  sendToSession(session.sessionId, 'quest_update', {
+    action,
+    quests: questMgr.getActiveQuestSummaries(char.id),
+  });
 }
 
 function cmdSearch(session: WsSession, target?: string): void {
@@ -827,7 +842,7 @@ function cmdStatus(session: WsSession): void {
   if (!char) return;
 
   const classDef = CLASS_DEFS[char.classId];
-  const nextExp = getExpForLevel(char.level + 1);
+  const nextExp = expRequiredForLevel(char.level + 1);
 
   sendToSession(session.sessionId, 'status', {
     character: char,
@@ -844,6 +859,7 @@ function cmdStatus(session: WsSession): void {
     expToNext: Math.max(0, nextExp - char.exp),
     effects: [],
     skills: getLearnedSkills(char.id),
+    aliases: getCharacterAliases(char.id),
   });
 }
 
@@ -927,6 +943,11 @@ function prayToFaith(session: WsSession, char: Character): void {
     sendError(session.sessionId, `祈禱尚在冷卻中，剩餘 ${formatDuration(cooldown)}。`);
     return;
   }
+  const favorCost = 10;
+  if ((char.faithFavor ?? 0) < favorCost) {
+    sendError(session.sessionId, `恩寵不足。祈禱需要 ${favorCost} 恩寵，可用 offering <金幣> 獻祭提高恩寵。`);
+    return;
+  }
 
   const hpRestore = Math.max(1, Math.floor(char.maxHp * (faith.id === 'aelora' ? 0.25 : 0.12)));
   const mpRestore = Math.max(1, Math.floor(char.maxMp * (faith.id === 'ithern' || faith.id === 'nesha' ? 0.2 : 0.08)));
@@ -934,11 +955,11 @@ function prayToFaith(session: WsSession, char: Character): void {
   char.hp = Math.min(char.maxHp, char.hp + hpRestore);
   char.mp = Math.min(char.maxMp, char.mp + mpRestore);
   char.resource = Math.min(char.maxResource, char.resource + resourceRestore);
-  char.faithFavor = Math.min(100, (char.faithFavor ?? 0) + 5);
+  char.faithFavor = Math.max(0, (char.faithFavor ?? 0) - favorCost);
   char.faithCooldownUntil = Date.now() + 10 * 60 * 1000;
   saveCharacter(char);
 
-  sendSystem(session.sessionId, `你向${faith.name}祈禱，獲得「${faith.prayerName}」。HP +${hpRestore}，MP +${mpRestore}，資源 +${resourceRestore}，恩寵 +5。`);
+  sendSystem(session.sessionId, `你向${faith.name}祈禱，消耗 ${favorCost} 恩寵並獲得「${faith.prayerName}」。HP +${hpRestore}，MP +${mpRestore}，資源 +${resourceRestore}。`);
   cmdStatus(session);
 }
 
@@ -1061,7 +1082,20 @@ function cmdSkills(session: WsSession): void {
 
   const learned = getLearnedSkills(char.id);
   sendSystem(session.sessionId, '── 技能列表 ──');
-  for (const ls of learned) {
+  const originPassives = learned.filter(ls => ls.skillId.startsWith('race_') || ls.skillId.startsWith('faith_'));
+  const classSkills = learned.filter(ls => !ls.skillId.startsWith('race_') && !ls.skillId.startsWith('faith_'));
+  if (originPassives.length > 0) {
+    sendSystem(session.sessionId, '天賦 / 種族 / 信仰');
+    for (const ls of originPassives) {
+      const def = SKILL_DEFS[ls.skillId];
+      if (!def) continue;
+      sendSystem(session.sessionId, `  ${def.name}（${def.englishName}）[被動] - ${def.description}`);
+    }
+  }
+  if (classSkills.length > 0) {
+    sendSystem(session.sessionId, '職業 / 戰鬥');
+  }
+  for (const ls of classSkills) {
     const def = SKILL_DEFS[ls.skillId];
     if (!def) continue;
     const typeStr = def.type === 'passive' ? '[被動]' : `[主動 消耗:${def.resourceCost}]`;
@@ -1215,23 +1249,12 @@ function cmdAttack(session: WsSession, target: string): void {
 
         // 經驗值（隊伍分配）
         if (drops.exp > 0) {
-          const expShare = Math.max(1, Math.floor(drops.exp / players.length));
-          freshChar.exp += expShare;
-          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expShare}`);
+          const baseExpShare = Math.max(1, Math.floor(drops.exp / players.length));
+          const { expGained, levelsGained } = addExperienceToCharacter(freshChar, baseExpShare);
+          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expGained}`);
 
-          // 升級檢查
-          let leveled = false;
-          while (freshChar.exp >= getExpForLevel(freshChar.level + 1)) {
-            freshChar.level++;
-            freshChar.freePoints += 5;
-            freshChar.maxHp += 10 + freshChar.stats.vit * 2;
-            freshChar.hp = freshChar.maxHp;
-            freshChar.maxMp += 5 + freshChar.stats.int;
-            freshChar.mp = freshChar.maxMp;
-            leveled = true;
-          }
-          if (leveled) {
-            skillTreeMgr.grantPoint(freshChar.id, freshChar);
+          if (levelsGained > 0) {
+            for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(freshChar.id, freshChar);
             sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `升級了！目前等級 Lv.${freshChar.level}`);
           }
         }
@@ -1264,7 +1287,7 @@ function cmdAttack(session: WsSession, target: string): void {
     // PvE 死亡懲罰
     if (result === 'defeat') {
       const expLost = Math.floor(char.exp * 0.05);
-      const minExpForLevel = getExpForLevel(char.level);
+      const minExpForLevel = expRequiredForLevel(char.level);
       char.exp = Math.max(minExpForLevel, char.exp - expLost);
 
       const goldLost = Math.floor(char.gold * 0.1);
@@ -1280,7 +1303,9 @@ function cmdAttack(session: WsSession, target: string): void {
       const playerSession = getSessionByCharacterId(char.id);
       if (playerSession) {
         const respawnRoom = getRoom(respawnRoomId);
-        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣，回到 ${respawnRoom?.name ?? respawnRoomId}。`, 'error');
+        const respawnName = respawnRoom?.name ?? respawnRoomId;
+        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣。`, 'error');
+        sendNarrative(playerSession.sessionId, `你慢慢甦醒過來...發現已回到${respawnName}。`);
       }
     }
 
@@ -1288,6 +1313,14 @@ function cmdAttack(session: WsSession, target: string): void {
     if (result === 'victory' || result === 'defeat' || result === 'fled') {
       const hpPercent = char.maxHp > 0 ? Math.floor((char.hp / char.maxHp) * 100) : 0;
       classQuestMgr.onCombatEnd(char.id, char.roomId, result, hpPercent);
+
+      for (const participant of players) {
+        const freshChar = getCharacterById(participant.id);
+        const playerSession = getSessionByCharacterId(participant.id);
+        if (!freshChar || !playerSession) continue;
+        saveCharacter(freshChar);
+        cmdStatus(playerSession);
+      }
     }
   });
 
@@ -1488,6 +1521,7 @@ function cmdEquip(session: WsSession, itemName: string): void {
 
   setEquipped(char.id, match.itemId, true);
   sendSystem(session.sessionId, `你裝備了「${def.name}」。`);
+  cmdInventory(session);
 
   // 教學系統：裝備鉤子
   tutorialMgr.advanceStep(char.id, 'equip');
@@ -1509,6 +1543,7 @@ function cmdUnequip(session: WsSession, itemName: string): void {
   const def = ITEM_DEFS[match.itemId];
   setEquipped(char.id, match.itemId, false);
   sendSystem(session.sessionId, `你卸下了「${def?.name ?? itemName}」。`);
+  cmdInventory(session);
 }
 
 function cmdUse(session: WsSession, itemName: string): void {
@@ -2031,6 +2066,8 @@ function cmdLoot(session: WsSession, target: string): void {
     questMgr.updateProgress(recipient.id, 'loot_corpse', result.corpse?.monsterId ?? 'corpse');
     questMgr.updateProgress(recipient.id, 'loot_corpse', 'corpse');
     saveCharacter(recipient);
+    const recipientSession = getSessionByCharacterId(recipient.id);
+    if (recipientSession) cmdInventory(recipientSession);
   }
 
   for (const item of personalQuestItems) {
@@ -2046,6 +2083,7 @@ function cmdLoot(session: WsSession, target: string): void {
     questMgr.updateProgress(char.id, 'loot_corpse', 'corpse');
   }
   saveCharacter(char);
+  cmdInventory(session);
   if (distribution.assignments.size > 0) sendSystem(session.sessionId, distribution.message);
   sendSystem(session.sessionId, result.message);
 }
@@ -2109,7 +2147,7 @@ function cmdSay(session: WsSession, message: string): void {
 // 追蹤玩家目前的 NPC 對話狀態
 const activeDialogues = new Map<string, { npcId: string; nodeId: string }>();
 
-function showDialogueNode(session: WsSession, npc: { id: string; name: string; dialogue: { id: string; text: string; options?: { text: string; nextId: string }[]; action?: { type: string; data?: Record<string, unknown> } }[] }, nodeId: string): void {
+function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void {
   const node = npc.dialogue.find(d => d.id === nodeId);
   if (!node) {
     sendSystem(session.sessionId, `${npc.name}沉默了。`);
@@ -2123,7 +2161,7 @@ function showDialogueNode(session: WsSession, npc: { id: string; name: string; d
     if (char) {
       switch (node.action.type) {
         case 'shop':
-          sendSystem(session.sessionId, `${npc.name}展示了商品。輸入 buy <物品> 購買。`);
+          sendNpcShopListing(session, char, npc);
           break;
         case 'heal':
           char.hp = char.maxHp;
@@ -2179,13 +2217,52 @@ function cmdShop(session: WsSession, npcName: string): void {
   if (shopNode) {
     showDialogueNode(session, npc, shopNode.id);
   } else {
-    // 沒有 shop 節點，顯示商品列表
-    const itemNames = npc.shopItems
-      .map(id => ITEM_DEFS[id]?.name ?? id)
-      .join(', ');
-    sendSystem(session.sessionId, `【${npc.name}的商品】：${itemNames}`);
-    sendSystem(session.sessionId, `輸入 buy <物品> 購買。`);
+    sendNpcShopListing(session, char, npc);
   }
+}
+
+function sendNpcShopListing(
+  session: WsSession,
+  char: Character,
+  npc: NpcDef,
+): void {
+  const items = npc.shopItems
+    ?.map((itemId) => {
+      const def = ITEM_DEFS[itemId];
+      if (!def) return null;
+      const price = applyShopBuyOriginDiscount(char, def.buyPrice);
+      const stats = def.stats
+        ? Object.entries(def.stats)
+          .filter(([, value]) => typeof value === 'number' && value !== 0)
+          .map(([key, value]) => `${key}+${value}`)
+          .join(' ')
+        : '';
+      return {
+        name: def.name,
+        price,
+        levelReq: def.levelReq,
+        type: def.type,
+        stats,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null) ?? [];
+
+  sendSystem(session.sessionId, `${npc.name}展示了商品：`);
+  if (items.length === 0) {
+    sendSystem(session.sessionId, '  目前沒有可販售商品。');
+    return;
+  }
+
+  for (const item of items) {
+    const detail = [
+      `${item.price} 金幣`,
+      `Lv.${item.levelReq}`,
+      item.type,
+      item.stats,
+    ].filter(Boolean).join(' / ');
+    sendSystem(session.sessionId, `  ${item.name} — ${detail}`);
+  }
+  sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買，例如：buy 木劍');
 }
 
 /** buy <物品名稱> — 從當前房間的商人 NPC 購買物品 */
@@ -2216,15 +2293,17 @@ function cmdBuy(session: WsSession, itemName: string): void {
   const def = ITEM_DEFS[matchId];
   if (!def) { sendError(session.sessionId, '物品資料異常。'); return; }
 
-  if (char.gold < def.buyPrice) {
-    sendError(session.sessionId, `金幣不足！「${def.name}」需要 ${def.buyPrice} 金幣，你只有 ${char.gold} 金幣。`);
+  const price = applyShopBuyOriginDiscount(char, def.buyPrice);
+  if (char.gold < price) {
+    sendError(session.sessionId, `金幣不足！「${def.name}」需要 ${price} 金幣，你只有 ${char.gold} 金幣。`);
     return;
   }
 
-  char.gold -= def.buyPrice;
+  char.gold -= price;
   saveCharacter(char);
   addInventoryItem(char.id, matchId, 1);
-  sendSystem(session.sessionId, `購買了「${def.name}」，花費 ${def.buyPrice} 金幣。（剩餘：${char.gold}）`);
+  sendSystem(session.sessionId, `購買了「${def.name}」，花費 ${price} 金幣。（剩餘：${char.gold}）`);
+  cmdInventory(session);
 }
 
 function cmdTalk(session: WsSession, npcName: string): void {
@@ -2775,6 +2854,7 @@ function cmdQuest(session: WsSession, args: string[]): void {
       if (result.success) {
         tutorialMgr.advanceStep(char.id, 'quest');
       }
+      sendQuestUpdate(session, result.success ? 'accepted' : 'sync');
       break;
     }
     case 'complete': case 'turn-in': {
@@ -2785,6 +2865,7 @@ function cmdQuest(session: WsSession, args: string[]): void {
       if (result.rewards) {
         saveCharacter(char);
       }
+      sendQuestUpdate(session, result.rewards ? 'completed' : 'sync');
       break;
     }
     case 'abandon': case 'drop': {
@@ -2792,6 +2873,7 @@ function cmdQuest(session: WsSession, args: string[]): void {
       if (!questId) { sendError(session.sessionId, '用法：quest abandon <任務ID>'); return; }
       const result = questMgr.abandonQuest(char.id, questId);
       sendSystem(session.sessionId, result.message);
+      sendQuestUpdate(session, result.success ? 'abandoned' : 'sync');
       break;
     }
     case 'info': case 'detail': {
@@ -4323,6 +4405,7 @@ function cmdGather(session: WsSession, args: string[]): void {
     sendSystem(session.sessionId, result.message);
     if (result.gathered) {
       questMgr.updateProgress(char.id, 'gather_resource', result.gathered.itemId);
+      cmdInventory(session);
     }
   } else {
     const available = gatheringMgr.getAvailableNodes(room, zone, char.level);
@@ -5869,11 +5952,14 @@ function getTravelCostAmount(char: Character, node: TravelNodeDef): number {
   if (!zone) return 0;
   const base = getPortalCost(char, zone);
   if (node.cost.type === 'gold') {
+    let amount: number;
     if (node.cost.amount !== undefined) {
-      if (char.level <= 10 && zone.levelRange[0] <= 10) return Math.min(node.cost.amount, 5);
-      return node.kind === 'zone_entrance' ? 10 + zone.levelRange[0] * 3 : node.cost.amount;
+      if (char.level <= 10 && zone.levelRange[0] <= 10) amount = Math.min(node.cost.amount, 5);
+      else amount = node.kind === 'zone_entrance' ? 10 + zone.levelRange[0] * 3 : node.cost.amount;
+    } else {
+      amount = Math.ceil(base * (node.cost.multiplier ?? 1));
     }
-    return Math.ceil(base * (node.cost.multiplier ?? 1));
+    return applyTravelGoldOriginDiscount(char, amount);
   }
   if (node.cost.type === 'kingdom_treasury') return node.cost.amount;
   if (node.cost.type === 'item') return node.cost.quantity;

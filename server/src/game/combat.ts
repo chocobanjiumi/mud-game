@@ -4,7 +4,7 @@ import type {
   CombatState, CombatAction, CombatActionType, CombatResult,
   CombatantState, DamageResult, CombatLoot, ActiveStatusEffect, StatusEffect,
   MonsterDef, Character, SkillDef, ElementType, ResourceType,
-  MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction,
+  MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction, InlineEntityPayload,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { SKILL_DEFS } from '@game/shared';
@@ -17,6 +17,12 @@ import { getAttackDescription } from './attack-descriptions.js';
 import { SkillTreeManager } from './skill-tree.js';
 import type { AttackResultType } from './attack-descriptions.js';
 import type { MonsterInstance } from './world.js';
+import {
+  applyHealingReceivedOriginModifier,
+  applyIncomingDamageOriginReduction,
+  applyOutgoingDamageOriginBonus,
+  getFleeOriginBonus,
+} from './origin-effects.js';
 
 // ============================================================
 //  常數
@@ -134,6 +140,8 @@ export class CombatEngine {
       resourceType: p.resourceType,
       level: p.level,
       classId: p.classId,
+      raceId: p.raceId,
+      faithId: p.faithId,
       activeEffects: [],
       isDead: false,
     }));
@@ -436,6 +444,8 @@ export class CombatEngine {
       attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
+    dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, null, session.state.round);
+    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, 'physical', dmgResult.element);
 
     results.push(dmgResult);
 
@@ -508,6 +518,8 @@ export class CombatEngine {
       attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
+    dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
+    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, damageType, dmgResult.element);
 
     results.push(dmgResult);
 
@@ -521,6 +533,7 @@ export class CombatEngine {
       if (pct.healPower) {
         healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
       }
+      healAmount = applyHealingReceivedOriginModifier(target, healAmount);
       const before = target.hp;
       target.hp = Math.min(target.maxHp, target.hp + healAmount);
       const actual = target.hp - before;
@@ -591,7 +604,7 @@ export class CombatEngine {
       Math.max(1, session.state.enemyTeam.filter(e => !e.isDead).length);
 
     const playerDex = this.getCombatantDex(session, actor.id);
-    const fleeChance = Math.min(80, Math.max(10, 30 + (playerDex - avgEnemyDex) * 2));
+    const fleeChance = Math.min(80, Math.max(10, 30 + (playerDex - avgEnemyDex) * 2 + getFleeOriginBonus(actor)));
 
     if (Math.random() * 100 < fleeChance) {
       log.push(`${actor.name}成功逃跑了！`);
@@ -733,7 +746,7 @@ export class CombatEngine {
 
       // HoT 回血
       if (result.healing > 0) {
-        c.hp = Math.min(c.maxHp, c.hp + result.healing);
+        c.hp = Math.min(c.maxHp, c.hp + applyHealingReceivedOriginModifier(c, result.healing));
       }
 
       // MP 回復
@@ -922,7 +935,7 @@ export class CombatEngine {
         executeMessage: telegraph.executeMessage,
         preparedRound: session.state.round,
       };
-      log.push(`【預兆】${enemy.name}${telegraph.message}`);
+      log.push(`【預兆】${enemy.name}${telegraph.message} 防禦`);
     }
   }
 
@@ -1129,6 +1142,7 @@ export class CombatEngine {
   ): void {
     const playerIds = Array.from(session.playerCharacters.keys());
     if (!this.broadcastFn) return;
+    const logEntities = log.map(line => this.buildCombatInlineActions(line));
 
     this.broadcastFn(session.id, playerIds, {
       type: 'combat_action',
@@ -1136,11 +1150,22 @@ export class CombatEngine {
         round: session.state.round,
         actions: [],
         log,
+        logEntities,
         playerTeam: session.state.playerTeam,
         enemyTeam: session.state.enemyTeam,
       },
       timestamp: Date.now(),
     });
+  }
+
+  private buildCombatInlineActions(line: string): InlineEntityPayload[] {
+    if (!line.includes('【預兆】') || !line.includes('防禦')) return [];
+    return [{
+      name: '防禦',
+      entityType: 'action',
+      cmdName: '防禦',
+      actionCommand: 'defend',
+    }];
   }
 
   // ──────────────────────────────────────────────────────────

@@ -13,7 +13,6 @@ import {
   type GenderId,
   type RaceId,
 } from '@game/shared';
-import { useGameStore } from '../stores/gameStore';
 
 interface CreateCharacterScreenProps {
   onCreate: (payload: CreateCharacterPayload) => void;
@@ -27,17 +26,29 @@ const statLabels = {
   luk: 'LUK',
 };
 
+type CreationStep = 'name' | 'race' | 'gender' | 'faith' | 'confirm';
+const STEPS: CreationStep[] = ['name', 'race', 'gender', 'faith', 'confirm'];
+const STEP_LABEL: Record<CreationStep, string> = {
+  name: '名稱',
+  race: '種族',
+  gender: '稱謂',
+  faith: '信仰',
+  confirm: '確認',
+};
+
 export default function CreateCharacterScreen({ onCreate }: CreateCharacterScreenProps) {
   const [name, setName] = useState('');
   const [raceId, setRaceId] = useState<RaceId>(DEFAULT_RACE_ID);
   const [genderId, setGenderId] = useState<GenderId>(DEFAULT_GENDER_ID);
   const [faithId, setFaithId] = useState<FaithId>(DEFAULT_FAITH_ID);
+  const [step, setStep] = useState<CreationStep>('name');
   const [error, setError] = useState('');
-  const userId = useGameStore((s) => s.arinovaUser?.id ?? '');
 
   const race = RACE_DEFS[raceId];
   const faith = FAITH_DEFS[faithId];
   const stats = useMemo(() => getInitialStatsForRace(raceId), [raceId]);
+  const stepIndex = STEPS.indexOf(step);
+  const isConfirm = step === 'confirm';
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -47,7 +58,16 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
       return;
     }
     setError('');
-    onCreate({ name: trimmed, userId, raceId, genderId, faithId });
+    if (!isConfirm) {
+      setStep(STEPS[Math.min(STEPS.length - 1, stepIndex + 1)]);
+      return;
+    }
+    onCreate({ name: trimmed, raceId, genderId, faithId });
+  };
+
+  const goBack = () => {
+    setError('');
+    setStep(STEPS[Math.max(0, stepIndex - 1)]);
   };
 
   return (
@@ -60,7 +80,27 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
 
         <form onSubmit={handleSubmit} className="grid flex-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.75fr)]">
           <main className="space-y-5">
-            <section className="space-y-3">
+            <div className="flex flex-wrap gap-2">
+              {STEPS.map((item, index) => (
+                <button
+                  key={item}
+                  type="button"
+                  onClick={() => index <= stepIndex && setStep(item)}
+                  disabled={index > stepIndex}
+                  className={`rounded border px-3 py-1.5 text-xs ${
+                    item === step
+                      ? 'border-text-terminal bg-bg-secondary text-text-terminal'
+                      : index < stepIndex
+                        ? 'border-border-dim bg-bg-primary text-text-bright hover:border-border-glow'
+                        : 'border-border-dim bg-bg-primary text-text-dim opacity-60'
+                  }`}
+                >
+                  {index + 1}. {STEP_LABEL[item]}
+                </button>
+              ))}
+            </div>
+
+            {step === 'name' && <section className="space-y-3">
               <label className="block text-sm font-bold text-text-terminal" htmlFor="character-name">
                 名稱
               </label>
@@ -74,9 +114,9 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                 placeholder="2-12 字"
               />
               {error && <div className="text-xs text-combat-damage">{error}</div>}
-            </section>
+            </section>}
 
-            <section className="space-y-3">
+            {step === 'race' && <section className="space-y-3">
               <h2 className="text-sm font-bold text-text-terminal">種族</h2>
               <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
                 {Object.values(RACE_DEFS).map((option) => (
@@ -100,10 +140,11 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                   </button>
                 ))}
               </div>
-            </section>
+            </section>}
 
-            <section className="space-y-3">
+            {step === 'gender' && <section className="space-y-3">
               <h2 className="text-sm font-bold text-text-terminal">性別</h2>
+              <p className="text-xs text-text-dim">只影響稱謂與敘事，不改變 stats、掉落、傷害或技能。</p>
               <div className="grid gap-2 sm:grid-cols-4">
                 {Object.values(GENDER_DEFS).map((option) => (
                   <button
@@ -120,9 +161,9 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                   </button>
                 ))}
               </div>
-            </section>
+            </section>}
 
-            <section className="space-y-3">
+            {step === 'faith' && <section className="space-y-3">
               <h2 className="text-sm font-bold text-text-terminal">信仰</h2>
               <div className="grid gap-2 md:grid-cols-2">
                 {Object.values(FAITH_DEFS).map((option) => (
@@ -146,7 +187,49 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                   </button>
                 ))}
               </div>
-            </section>
+            </section>}
+
+            {step === 'confirm' && <section className="space-y-3">
+              <h2 className="text-sm font-bold text-text-terminal">確認角色</h2>
+              <div className="rounded-md border border-border-dim bg-bg-secondary p-4">
+                <div className="text-xl font-bold text-text-bright">{name.trim()}</div>
+                <div className="mt-1 text-sm text-text-dim">
+                  {race.name} / {GENDER_DEFS[genderId].name} / {faith.name}・{faith.title}
+                </div>
+                <div className="mt-4 grid grid-cols-5 gap-2">
+                  {Object.entries(stats).map(([key, value]) => (
+                    <div key={key} className="rounded border border-border-dim bg-bg-primary p-2 text-center">
+                      <div className="text-[11px] text-text-dim">{statLabels[key as keyof typeof statLabels]}</div>
+                      <div className="font-bold text-text-bright">{value}</div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  <SummaryBlock label="種族被動" title={race.passiveName} text={race.passiveDescription} />
+                  <SummaryBlock label="信仰被動" title={faith.passiveName} text={faith.passiveDescription} />
+                  <SummaryBlock label="祈禱祝福" title={faith.prayerName} text={faith.prayerDescription} />
+                  <SummaryBlock label="禁忌" title={faith.taboos.join('、')} text="違背禁忌會降低恩寵，不會永久毀掉角色。" />
+                </div>
+              </div>
+            </section>}
+
+            <div className="flex gap-2 border-t border-border-dim pt-4">
+              {stepIndex > 0 && (
+                <button
+                  type="button"
+                  onClick={goBack}
+                  className="rounded-md border border-border-dim bg-bg-primary px-4 py-3 font-bold text-text-bright transition-colors hover:border-border-glow"
+                >
+                  返回
+                </button>
+              )}
+              <button
+                type="submit"
+                className="rounded-md bg-text-terminal px-4 py-3 font-bold text-bg-primary transition-colors hover:bg-text-bright"
+              >
+                {isConfirm ? '建立並進入' : '下一步'}
+              </button>
+            </div>
           </main>
 
           <aside className="lg:sticky lg:top-5 lg:self-start">
@@ -170,12 +253,9 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                 <SummaryBlock label="祈禱" title={faith.prayerName} text={faith.prayerDescription} />
               </div>
 
-              <button
-                type="submit"
-                className="mt-5 w-full rounded-md bg-text-terminal px-4 py-3 font-bold text-bg-primary transition-colors hover:bg-text-bright"
-              >
-                建立並進入
-              </button>
+              <div className="mt-5 text-xs leading-5 text-text-dim">
+                最後確認前都可以返回修改。建立後會自動登入並進入新手區。
+              </div>
             </div>
           </aside>
         </form>

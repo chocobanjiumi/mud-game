@@ -57,11 +57,20 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
     toggleWorldMap();
   }, [onCommand, toggleWorldMap, worldMapOpen]);
 
+  const toggleInventoryPanel = useCallback(() => {
+    if (!showInventory) {
+      onCommand('inventory');
+    }
+    toggleInventory();
+  }, [onCommand, showInventory, toggleInventory]);
+
   // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't trigger when typing in inputs
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.target instanceof HTMLElement && e.target.isContentEditable) return;
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
       // WASD movement
       if (e.key === 'w' || e.key === 'W') { onCommand('go north', '前往 north'); return; }
       if (e.key === 'a' || e.key === 'A') { onCommand('go west', '前往 west'); return; }
@@ -119,20 +128,18 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       {/* Top: Status bar */}
       <StatusBar />
 
-      {/* Middle: main area */}
-      <div className="flex-1 flex min-h-0">
-        {/* Left sidebar: minimap */}
-        <div className="w-44 shrink-0 flex flex-col gap-2 p-2 border-r border-border-dim overflow-y-auto">
+      {/* Middle: A/B/C/D workspace */}
+      <div className="game-main flex-1 min-h-0">
+        {/* A: quick actions */}
+        <div className="game-left flex flex-col gap-2 p-2 border-r border-border-dim overflow-y-auto">
           <MiniMap />
-          <ObjectivePanel />
 
-          {/* Quick action buttons */}
           <div className="space-y-1">
             <div className="text-[10px] text-text-dim uppercase tracking-wider px-1">
               快捷操作
             </div>
 
-            <QuickButton label="背包" shortcut="I" active={showInventory} onClick={toggleInventory} />
+            <QuickButton label="背包" shortcut="I" active={showInventory} onClick={toggleInventoryPanel} />
             <QuickButton label="隊伍" shortcut="P" active={showParty} onClick={toggleParty} />
             <QuickButton label="任務" shortcut="Q" active={questLogOpen} onClick={toggleQuestLog} />
             <QuickButton label="角色" shortcut="C" active={characterSheetOpen} onClick={toggleCharacterSheet} />
@@ -171,28 +178,35 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           </div>
         </div>
 
-        {/* Center: Terminal */}
-        <div className="flex-1 flex flex-col min-w-0 relative">
-          <Terminal />
-          <CombatPanel />
-          <SkillBar onUseSkill={handleUseSkill} />
-          <CommandInput onSubmit={onCommand} />
+        {/* B: scene image */}
+        <div className="game-image min-w-0 bg-bg-secondary border-r border-border-dim overflow-y-auto">
+          <RoomImage />
         </div>
 
-        {/* Right sidebar: large room image + secondary panels */}
-        <div className="w-[360px] xl:w-[420px] shrink-0 flex flex-col bg-bg-secondary border-l border-border-dim min-h-0">
-          <RoomImage />
+        {/* C: operation area */}
+        <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
+          <div className="context-objective p-2 border-b border-border-dim">
+            <ObjectivePanel />
+          </div>
+          <CombatPanel />
+          <SkillBar onUseSkill={handleUseSkill} />
           <RoomPanel />
           <SelectedTargetPanel />
           <div className="flex-1 min-h-0 overflow-y-auto">
-            <Inventory />
-            <PartyPanel />
             <ChatPanel onSendChat={onSendChat} />
           </div>
+        </div>
+
+        {/* D: text area */}
+        <div className="game-center flex flex-col min-w-0 relative">
+          <Terminal />
+          <CommandInput onSubmit={onCommand} />
         </div>
       </div>
 
       {/* Modals / Overlays */}
+      <Inventory />
+      <PartyPanel />
       <ShopModal onPurchase={onPurchase} onGetTransactions={onGetTransactions} />
       <QuestLog />
       <CharacterSheet />

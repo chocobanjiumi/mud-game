@@ -72,4 +72,25 @@ describe('room entity builder', () => {
       reason: '出口上鎖',
     });
   });
+
+  it('shows corpse protection countdown in the entity subtitle', () => {
+    const protectedUntil = Date.now() + 30_000;
+    const entities = buildRoomEntities({
+      char: character,
+      room,
+      npcs: [],
+      players: [],
+      monsters: [],
+      corpses: [
+        { id: 'protected_corpse', monsterName: '史萊姆', empty: false, protected: true, protectedUntil },
+      ],
+      gatheringNodes: [],
+      travelNodes: [],
+      groundItems: [],
+    });
+
+    const corpse = entities.find(entity => entity.id === 'protected_corpse');
+    expect(corpse?.subtitle).toMatch(/^保護中 \d+s$/);
+    expect(corpse?.actions[0].disabled).toBe(true);
+  });
 });

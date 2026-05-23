@@ -4,11 +4,13 @@ import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
   EquipmentSlots, SkillDef, RaceId, GenderId, FaithId,
 } from '@game/shared';
-import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, createEmptyEquipmentSlots, getInitialStatsForRace } from '@game/shared';
+import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, RACE_DEFS, createEmptyEquipmentSlots, getInitialStatsForRace } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 import { getPveRespawnRoomId } from './death-respawn.js';
 import { recordGoldSpent } from './economy-stats.js';
+import { addExperienceToCharacter, applyLevelUp, expRequiredForLevel as getRequiredExp } from './leveling.js';
+import { applyHealingReceivedOriginModifier } from './origin-effects.js';
 
 // ============================================================
 //  常數
@@ -16,8 +18,7 @@ import { recordGoldSpent } from './economy-stats.js';
 
 /** 計算升到等級 N 所需的累積經驗值 */
 export function expRequiredForLevel(level: number): number {
-  // 公式：level N requires N*100 + (N-1)*50
-  return level * 100 + (level - 1) * 50;
+  return getRequiredExp(level);
 }
 
 /** 計算等級 N 到等級 N+1 的經驗需求差值 */
@@ -98,7 +99,7 @@ export class PlayerManager {
       raceId,
       genderId,
       faithId,
-      faithFavor: 0,
+      faithFavor: 10,
       hp: hpMax,
       mp: mpMax,
       maxHp: hpMax,
@@ -118,7 +119,11 @@ export class PlayerManager {
     };
 
     this.characters.set(id, character);
-    this.learnedSkills.set(id, []);
+    this.learnedSkills.set(id, [
+      { skillId: 'slash', level: 1, currentCooldown: 0 },
+      { skillId: RACE_DEFS[raceId].passiveSkillId, level: 1, currentCooldown: 0 },
+      { skillId: FAITH_DEFS[faithId].passiveSkillId, level: 1, currentCooldown: 0 },
+    ]);
 
     return character;
   }
@@ -180,12 +185,9 @@ export class PlayerManager {
     const char = this.characters.get(characterId);
     if (!char) return 0;
 
-    char.exp += amount;
-    let levelsGained = 0;
-
-    while (char.exp >= expRequiredForLevel(char.level + 1)) {
-      this.performLevelUp(char);
-      levelsGained++;
+    const { levelsGained } = addExperienceToCharacter(char, amount);
+    for (let i = 0; i < levelsGained; i++) {
+      if (this.onLevelUpFn) this.onLevelUpFn(char.id, char);
     }
 
     return levelsGained;
@@ -200,20 +202,7 @@ export class PlayerManager {
 
   /** 執行一次升級 */
   private performLevelUp(char: Character): void {
-    char.level++;
-    char.freePoints += 5;
-
-    // HP 成長: +10 + VIT*2
-    const hpGrowth = 10 + char.stats.vit * 2;
-    char.maxHp += hpGrowth;
-    char.hp = char.maxHp; // 升級時回滿
-
-    // MP 成長: +5 + INT*1.5
-    const mpGrowth = Math.floor(5 + char.stats.int * 1.5);
-    char.maxMp += mpGrowth;
-    char.mp = char.maxMp; // 升級時回滿
-
-    // 外部回呼（技能樹給點等）
+    applyLevelUp(char);
     if (this.onLevelUpFn) {
       this.onLevelUpFn(char.id, char);
     }
@@ -446,7 +435,7 @@ export class PlayerManager {
     if (!char) return 0;
 
     const before = char.hp;
-    char.hp = Math.min(char.maxHp, char.hp + amount);
+    char.hp = Math.min(char.maxHp, char.hp + applyHealingReceivedOriginModifier(char, amount));
     return char.hp - before;
   }
 

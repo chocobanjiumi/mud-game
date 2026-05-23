@@ -23,7 +23,10 @@ import type {
   DeathPenalty,
 } from '@game/shared';
 
+import { loadAudioSettings } from '../audio/AudioManager';
 import type { SoundCategory } from '../audio/AudioManager';
+
+const initialAudioSettings = loadAudioSettings();
 
 // --- Terminal line ---
 
@@ -130,7 +133,7 @@ export interface RoomInfo {
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number }[];
-  corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean }[];
+  corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean; protectedUntil?: number }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
@@ -242,6 +245,8 @@ export interface GameState {
   // Skills
   skills: LearnedSkill[];
   setSkills: (skills: LearnedSkill[]) => void;
+  aliases: Record<string, string>;
+  setAliases: (aliases: Record<string, string>) => void;
 
   // Party
   party: PartyMember[];
@@ -384,13 +389,12 @@ export const useGameStore = create<GameState>((set) => ({
   room: null,
   selectedEntity: null,
   setRoom: (room) => set((state) => {
-    const selectedEntity = room?.entities?.some((entity) => (
+    const selectedEntity = room?.entities?.find((entity) => (
       state.selectedEntity
       && entity.id === state.selectedEntity.id
       && entity.type === state.selectedEntity.type
     ))
-      ? state.selectedEntity
-      : null;
+      ?? null;
     return { room, selectedEntity };
   }),
   setSelectedEntity: (selectedEntity) => set({ selectedEntity }),
@@ -409,6 +413,7 @@ export const useGameStore = create<GameState>((set) => ({
   inCombat: false,
   setInCombat: (inCombat) => set((state) => ({
     inCombat,
+    selectedEntity: inCombat ? null : state.selectedEntity,
     selectedCombatTargetId: inCombat ? state.selectedCombatTargetId : null,
   })),
   setSelectedCombatTargetId: (selectedCombatTargetId) => set({ selectedCombatTargetId }),
@@ -426,6 +431,8 @@ export const useGameStore = create<GameState>((set) => ({
   // Skills
   skills: [],
   setSkills: (skills) => set({ skills }),
+  aliases: {},
+  setAliases: (aliases) => set({ aliases }),
 
   // Party
   party: [],
@@ -600,9 +607,9 @@ export const useGameStore = create<GameState>((set) => ({
     }),
 
   // Audio
-  audioEnabled: true,
+  audioEnabled: initialAudioSettings.enabled,
   setAudioEnabled: (audioEnabled) => set({ audioEnabled }),
-  audioVolumes: { bgm: 0.3, sfx: 0.7, ui: 0.5 },
+  audioVolumes: initialAudioSettings.volumes,
   setAudioVolumes: (audioVolumes) => set({ audioVolumes }),
   audioSettingsOpen: false,
   setAudioSettingsOpen: (audioSettingsOpen) => set({ audioSettingsOpen }),

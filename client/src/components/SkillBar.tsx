@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import { SKILL_DEFS } from '@game/shared';
 
 interface SkillBarProps {
   onUseSkill: (skillId: string) => void;
@@ -8,8 +9,9 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
   const skills = useGameStore((s) => s.skills);
   const inCombat = useGameStore((s) => s.inCombat);
   const character = useGameStore((s) => s.character);
+  const activeSkills = skills.filter((skill) => SKILL_DEFS[skill.skillId]?.type === 'active');
 
-  if (skills.length === 0) return null;
+  if (activeSkills.length === 0) return null;
 
   return (
     <div className="bg-bg-secondary border-t border-border-dim px-3 py-1.5">
@@ -17,7 +19,7 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
         <span className="text-[10px] text-text-dim mr-1 shrink-0">
           技能 {character ? `${character.resource}/${character.maxResource}` : ''}
         </span>
-        {skills.map((skill, index) => {
+        {activeSkills.map((skill, index) => {
           const onCooldown = skill.currentCooldown > 0;
           const hotkey = index < 9 ? `${index + 1}` : null;
 

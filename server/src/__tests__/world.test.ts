@@ -26,6 +26,14 @@ describe('WorldManager respawn policy', () => {
     expect(slime!.respawnAt! - now.getTime()).toBe(25_000);
   });
 
+  it('resolves duplicated monster labels to the requested ordinal target', () => {
+    const slimes = world.getAliveMonsters('training_ground').filter(monster => monster.monsterId === 'slime');
+    expect(slimes.length).toBeGreaterThanOrEqual(2);
+
+    expect(world.findMonsterInRoom('training_ground', '史萊姆#2')?.instanceId).toBe(slimes[1].instanceId);
+    expect(world.findMonsterInRoom('training_ground', '史萊姆 2')?.instanceId).toBe(slimes[1].instanceId);
+  });
+
   it('does not allow boss spawns below 30 minutes', () => {
     const boss = world.findMonsterInRoom('deep_forest', 'shadow_wolf_alpha');
     expect(boss).toBeDefined();

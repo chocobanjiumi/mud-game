@@ -22,7 +22,7 @@ export default function RoomImage() {
     : `/mud/images/rooms/${roomImage}`;
 
   return (
-    <div className="overflow-hidden border-b border-border-dim bg-bg-secondary">
+    <div className="room-image-panel overflow-hidden bg-bg-secondary">
       <div className="px-3 py-2 border-b border-border-dim flex items-center justify-between">
         <span className="text-xs font-bold text-text-terminal truncate">{room.name}</span>
         <span className="text-[10px] text-text-dim shrink-0">場景</span>
@@ -30,7 +30,7 @@ export default function RoomImage() {
       <img
         src={imagePath}
         alt={room.name}
-        className="w-full aspect-[10/16] max-h-[58vh] object-cover bg-bg-primary"
+        className="room-image-media w-full object-cover bg-bg-primary"
         onError={() => {
           if (useFallback) {
             setHideImage(true);

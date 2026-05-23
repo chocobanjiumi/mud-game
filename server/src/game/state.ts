@@ -41,16 +41,23 @@ import { ensureCollectionLogTables } from './collection-log.js';
 import { ensureAppearanceTables } from './appearance.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
-  getInventory, getLearnedSkills,
+  getInventory, getLearnedSkills, getCharacterAliases,
   addInventoryItem, removeInventoryItem, getStoredItemInstance,
 } from '../db/queries.js';
 import type { Character } from '@game/shared';
-import { ITEM_DEFS, getExpForLevel } from '@game/shared';
-import { sendToCharacter } from '../ws/handler.js';
+import {
+  calculateAtk, calculateCritDamage, calculateCritRate, calculateDef,
+  calculateDodgeRate, calculateHitRate, calculateMatk, calculateMdef,
+  ITEM_DEFS,
+} from '@game/shared';
+import { getAllSessions, sendToCharacter, sendToSession } from '../ws/handler.js';
 import { getRoom } from '../data/rooms.js';
 import { LootCalculator } from './loot.js';
+import { addExperienceToCharacter, expRequiredForLevel } from './leveling.js';
 
 const lootCalc = new LootCalculator();
+const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
+const NATURAL_RECOVERY_RATE = 0.02;
 
 // ============================================================
 //  子系統單例
@@ -247,6 +254,11 @@ export function initGameSystems(): void {
     petMgr.decayHappiness();
   }, 3_600_000);
 
+  // 在線角色自然恢復：非戰鬥時少量回復 HP / 資源。
+  setInterval(() => {
+    tickNaturalRecovery();
+  }, NATURAL_RECOVERY_INTERVAL_MS);
+
   // 自動戰鬥系統：設定回呼
   autoBattleMgr.setCallbacks({
     autoAttack: (characterId) => {
@@ -269,20 +281,9 @@ export function initGameSystems(): void {
             const drops = lootCalc.calculateDrops(monster.def, freshChar.stats.luk);
             // 經驗值
             if (drops.exp > 0) {
-              freshChar.exp += drops.exp;
-              // 升級檢查
-              let leveled = false;
-              while (freshChar.exp >= getExpForLevel(freshChar.level + 1)) {
-                freshChar.level++;
-                freshChar.freePoints += 5;
-                freshChar.maxHp += 10 + freshChar.stats.vit * 2;
-                freshChar.hp = freshChar.maxHp;
-                freshChar.maxMp += 5 + freshChar.stats.int;
-                freshChar.mp = freshChar.maxMp;
-                leveled = true;
-              }
-              if (leveled) {
-                skillTreeMgr.grantPoint(characterId, freshChar);
+              const { levelsGained } = addExperienceToCharacter(freshChar, drops.exp);
+              if (levelsGained > 0) {
+                for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(characterId, freshChar);
                 sendToCharacter(characterId, 'system', {
                   text: `【自動戰鬥】升級了！目前等級 Lv.${freshChar.level}`,
                 });
@@ -382,6 +383,52 @@ export function isInCombat(playerId: string): boolean {
 
 export function getPlayerCombatId(characterId: string): string | undefined {
   return combat.getPlayerCombatId(characterId);
+}
+
+function tickNaturalRecovery(): void {
+  for (const session of getAllSessions()) {
+    if (!session.characterId || isInCombat(session.characterId)) continue;
+
+    const char = getCharacterById(session.characterId);
+    if (!char) continue;
+
+    const hpRecover = char.hp < char.maxHp
+      ? Math.max(1, Math.floor(char.maxHp * NATURAL_RECOVERY_RATE))
+      : 0;
+    const resourceRecover = char.resourceType !== 'rage' && char.resource < char.maxResource
+      ? Math.max(1, Math.floor(char.maxResource * NATURAL_RECOVERY_RATE))
+      : 0;
+
+    if (hpRecover <= 0 && resourceRecover <= 0) continue;
+
+    char.hp = Math.min(char.maxHp, char.hp + hpRecover);
+    if (resourceRecover > 0) {
+      char.resource = Math.min(char.maxResource, char.resource + resourceRecover);
+    }
+    saveCharacter(char);
+    sendCharacterStatus(session.sessionId, char);
+  }
+}
+
+function sendCharacterStatus(sessionId: string, char: Character): void {
+  const nextExp = expRequiredForLevel(char.level + 1);
+  sendToSession(sessionId, 'status', {
+    character: char,
+    derived: {
+      atk: calculateAtk(char.stats.str, 0),
+      matk: calculateMatk(char.stats.int, 0),
+      def: calculateDef(char.stats.vit, 0),
+      mdef: calculateMdef(char.stats.int, char.stats.vit, 0),
+      hitRate: calculateHitRate(char.stats.dex, 5),
+      dodgeRate: calculateDodgeRate(char.stats.dex, char.stats.luk),
+      critRate: calculateCritRate(char.stats.dex, char.stats.luk),
+      critDamage: calculateCritDamage(),
+    },
+    expToNext: Math.max(0, nextExp - char.exp),
+    effects: [],
+    skills: getLearnedSkills(char.id),
+    aliases: getCharacterAliases(char.id),
+  });
 }
 
 // ============================================================

@@ -157,7 +157,7 @@ describe('PlayerManager', () => {
       const levelsGained = pm.addExp(char.id, 50);
 
       expect(levelsGained).toBe(0);
-      expect(char.exp).toBe(50);
+      expect(char.exp).toBe(51);
       expect(char.level).toBe(1);
     });
 
@@ -314,15 +314,23 @@ describe('PlayerManager', () => {
   describe('learnSkill', () => {
     it('should learn a new skill', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      const result = pm.learnSkill(char.id, 'slash');
+      const result = pm.learnSkill(char.id, 'fireball');
 
       expect(result.success).toBe(true);
 
       const skills = pm.getLearnedSkills(char.id);
-      expect(skills).toHaveLength(1);
-      expect(skills[0].skillId).toBe('slash');
-      expect(skills[0].level).toBe(1);
-      expect(skills[0].currentCooldown).toBe(0);
+      expect(skills.some(skill => skill.skillId === 'fireball' && skill.level === 1 && skill.currentCooldown === 0)).toBe(true);
+    });
+
+    it('should start with class, race, and faith skills', () => {
+      const char = pm.createCharacter('TestHero', 'user-1');
+      const skills = pm.getLearnedSkills(char.id).map(skill => skill.skillId);
+
+      expect(skills).toEqual(expect.arrayContaining([
+        'slash',
+        'race_human_adaptability',
+        'faith_aelora_dawn_grace',
+      ]));
     });
 
     it('should not learn the same skill twice', () => {
@@ -335,11 +343,10 @@ describe('PlayerManager', () => {
 
     it('should learn multiple different skills', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.learnSkill(char.id, 'slash');
       pm.learnSkill(char.id, 'guard');
 
       const skills = pm.getLearnedSkills(char.id);
-      expect(skills).toHaveLength(2);
+      expect(skills.map(skill => skill.skillId)).toEqual(expect.arrayContaining(['slash', 'guard']));
     });
   });
 
@@ -353,7 +360,7 @@ describe('PlayerManager', () => {
 
       pm.tickCooldowns(char.id);
       const skills = pm.getLearnedSkills(char.id);
-      expect(skills[0].currentCooldown).toBe(2);
+      expect(skills.find(skill => skill.skillId === 'fireball')?.currentCooldown).toBe(2);
     });
 
     it('should not reduce below 0', () => {

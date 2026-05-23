@@ -1,9 +1,10 @@
 import { getRoom, getZone, ZONES } from '../data/rooms.js';
 
-export const DEFAULT_RESPAWN_ROOM_ID = 'village_square';
+export const DEFAULT_RESPAWN_ROOM_ID = 'starter_village_portal_shrine';
 
 function firstExistingRoom(roomIds: string[]): string | undefined {
-  return roomIds.find(roomId => !!getRoom(roomId));
+  return roomIds.find(roomId => roomId.includes('shrine') && !!getRoom(roomId))
+    ?? roomIds.find(roomId => !!getRoom(roomId));
 }
 
 export function getPveRespawnRoomId(currentRoomId: string): string {

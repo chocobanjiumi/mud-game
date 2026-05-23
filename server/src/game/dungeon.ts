@@ -14,6 +14,7 @@ import {
   addItemToInventory,
 } from '../db/database.js';
 import { getDb } from '../db/schema.js';
+import { addExperienceToCharacter } from './leveling.js';
 
 // ============================================================
 //  型別定義
@@ -383,7 +384,7 @@ export class DungeonManager {
       // 發放金幣和經驗
       if (char) {
         char.gold += rewards.gold;
-        char.exp += rewards.exp;
+        addExperienceToCharacter(char, rewards.exp);
       }
 
       // 首次通關發放物品

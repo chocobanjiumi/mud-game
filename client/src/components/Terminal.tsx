@@ -79,6 +79,11 @@ function sendTerminalCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
+function commandTargetId(command?: string): string | null {
+  const target = command?.trim().split(/\s+/)[1];
+  return target || null;
+}
+
 interface PopupState {
   entity: TerminalEntity;
   x: number;
@@ -97,6 +102,7 @@ function ClickableEntity({ entity, colorClass, onOpenMenu }: {
       onClick={(e) => {
         e.stopPropagation();
         if (entity.actionCommand) {
+          onOpenMenu(entity, e.clientX, e.clientY);
           sendTerminalCommand(entity.actionCommand, entity.name);
           return;
         }
@@ -149,14 +155,16 @@ export default function Terminal() {
   const [popup, setPopup] = useState<PopupState | null>(null);
 
   const handleOpenMenu = useCallback((entity: TerminalEntity, x: number, y: number) => {
+    const actionTargetId = commandTargetId(entity.actionCommand);
     const roomEntity = room?.entities?.find((candidate) => (
-      candidate.id === entity.commandTarget
+      candidate.id === actionTargetId
+      || candidate.id === entity.commandTarget
       || candidate.id === entity.cmdName
       || candidate.label === entity.cmdName
       || candidate.label === entity.name
     ));
     if (roomEntity) setSelectedEntity(roomEntity);
-    setPopup({ entity, x, y });
+    if (!entity.actionCommand) setPopup({ entity, x, y });
   }, [room?.entities, setSelectedEntity]);
 
   // 點擊其他地方關閉選單

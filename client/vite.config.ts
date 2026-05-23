@@ -5,5 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/mud/',
-  server: { port: 3700, proxy: { '/ws': { target: 'ws://localhost:3701', ws: true } } }
+  server: { port: 3700, proxy: { '/ws': { target: 'ws://localhost:3701', ws: true } } },
+  build: {
+    chunkSizeWarningLimit: 650,
+  },
 });

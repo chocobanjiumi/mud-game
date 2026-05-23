@@ -69,7 +69,7 @@ export default function App() {
       // Add the command to terminal as echo
       useGameStore.getState().addTerminalLine(`> ${friendlyEcho ?? command}`, 'command');
       // Intercept legacy create command and open the full creation flow.
-      const createMatch = command.match(/^create\s+(.+)$/i);
+      const createMatch = command.match(/^create(?:\s+.*)?$/i);
       if (createMatch) {
         useGameStore.getState().setScreen('create');
         return;

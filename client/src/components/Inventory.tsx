@@ -31,7 +31,8 @@ export default function Inventory() {
     : [];
 
   return (
-    <div className="bg-bg-secondary border-b border-border-dim w-full flex flex-col panel-enter">
+    <div className="inventory-overlay" onClick={toggleInventory}>
+      <div className="inventory-modal panel-enter" onClick={(event) => event.stopPropagation()}>
       {/* Header */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-dim">
         <span className="text-xs font-bold text-text-terminal">背包</span>
@@ -62,7 +63,7 @@ export default function Inventory() {
                 {EQUIP_SLOT_LABELS[slot] ?? slot}
               </span>
               <span className={itemId ? 'text-text-bright' : 'text-text-dim'}>
-                {itemId ?? '-- 空 --'}
+                {itemId ? (ITEM_DEFS[itemId]?.name ?? itemId) : '-- 空 --'}
               </span>
             </div>
           ))}
@@ -80,44 +81,48 @@ export default function Inventory() {
           <div className="grid grid-cols-1 gap-0.5">
             {inventory
               .filter((item) => !item.equipped)
-              .map((item, i) => (
-                <div
-                  key={`${item.itemId}-${i}`}
-                  className="flex items-center justify-between text-xs hover:bg-bg-tertiary px-1 py-0.5 rounded cursor-default group"
-                  title={`${item.itemId} x${item.quantity}`}
-                  onMouseEnter={(event) => {
-                    const def = ITEM_DEFS[item.itemId];
-                    if (!def) return;
-                    setTooltipPosition({ x: event.clientX, y: event.clientY });
-                    setTooltipItem({
-                      id: def.id,
-                      name: def.name,
-                      description: def.description,
-                      rarity: def.rarity ?? 'common',
-                      quality: item.quality,
-                      affixes: item.affixes,
-                      fixedEffects: item.fixedEffects,
-                      levelReq: def.levelReq,
-                      stats: def.stats,
-                      equipSlot: def.equipSlot,
-                      type: def.type,
-                      sourceTags: def.sourceTags,
-                      bound: false,
-                    });
-                  }}
-                  onMouseMove={(event) => setTooltipPosition({ x: event.clientX, y: event.clientY })}
-                  onMouseLeave={() => setTooltipItem(null)}
-                >
-                  <span className="text-text-bright group-hover:text-text-terminal truncate">
-                    {item.itemId}
-                  </span>
-                  {item.quantity > 1 && (
-                    <span className="text-text-dim shrink-0 ml-1">x{item.quantity}</span>
-                  )}
-                </div>
-              ))}
+              .map((item, i) => {
+                const def = ITEM_DEFS[item.itemId];
+                const itemName = def?.name ?? item.itemId;
+                return (
+                  <div
+                    key={`${item.itemId}-${i}`}
+                    className="flex items-center justify-between text-xs hover:bg-bg-tertiary px-1 py-0.5 rounded cursor-default group"
+                    title={`${itemName} x${item.quantity}`}
+                    onMouseEnter={(event) => {
+                      if (!def) return;
+                      setTooltipPosition({ x: event.clientX, y: event.clientY });
+                      setTooltipItem({
+                        id: def.id,
+                        name: def.name,
+                        description: def.description,
+                        rarity: def.rarity ?? 'common',
+                        quality: item.quality,
+                        affixes: item.affixes,
+                        fixedEffects: item.fixedEffects,
+                        levelReq: def.levelReq,
+                        stats: def.stats,
+                        equipSlot: def.equipSlot,
+                        type: def.type,
+                        sourceTags: def.sourceTags,
+                        bound: false,
+                      });
+                    }}
+                    onMouseMove={(event) => setTooltipPosition({ x: event.clientX, y: event.clientY })}
+                    onMouseLeave={() => setTooltipItem(null)}
+                  >
+                    <span className="text-text-bright group-hover:text-text-terminal truncate">
+                      {itemName}
+                    </span>
+                    {item.quantity > 1 && (
+                      <span className="text-text-dim shrink-0 ml-1">x{item.quantity}</span>
+                    )}
+                  </div>
+                );
+              })}
           </div>
         )}
+      </div>
       </div>
     </div>
   );

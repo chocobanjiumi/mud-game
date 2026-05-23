@@ -251,6 +251,7 @@ async function handleLogin(
 
     // 自動 look
     handleCommand(session, 'look');
+    handleCommand(session, 'status');
     return;
   }
 
@@ -268,6 +269,7 @@ async function handleLogin(
         message: `歡迎回來，${charByName.name}！`,
       });
       handleCommand(session, 'look');
+      handleCommand(session, 'status');
       return;
     }
   }
@@ -282,6 +284,7 @@ async function handleLogin(
       message: `歡迎回來，${character.name}！`,
     });
     handleCommand(session, 'look');
+    handleCommand(session, 'status');
     return;
   }
 
@@ -350,10 +353,11 @@ function handleCreateCharacter(
       message: `角色「${character.name}」建立成功。${race.name} / ${gender.name} / 信仰${faith.name}`,
     });
 
-    sendNarrativeWelcome(session);
+    sendNarrativeWelcome(session, character);
 
     // 自動 look
     handleCommand(session, 'look');
+    handleCommand(session, 'status');
   } catch (err) {
     const errMsg = err instanceof Error ? err.message : '建立角色失敗';
     if (errMsg.includes('UNIQUE')) {
@@ -616,9 +620,15 @@ function handleGetTransactions(session: WsSession): void {
 }
 
 /** 新角色歡迎訊息 */
-function sendNarrativeWelcome(session: WsSession): void {
+function sendNarrativeWelcome(session: WsSession, character?: NonNullable<ReturnType<typeof getCharacterById>>): void {
+  const race = character ? RACE_DEFS[character.raceId ?? 'human'] : null;
+  const faith = character ? FAITH_DEFS[character.faithId ?? 'aelora'] : null;
   sendSystem(session.sessionId, '═══════════════════════════════════════');
   sendSystem(session.sessionId, '歡迎來到「幻境冒險」MUD 世界！');
+  if (character && race && faith) {
+    sendSystem(session.sessionId, `${character.name} 以${race.name}之身踏入新手村，${race.passiveName}的天賦已在血脈中甦醒。`);
+    sendSystem(session.sessionId, `你向${faith.title}${faith.name}立下最初的誓言，獲得「${faith.passiveName}」的庇護。`);
+  }
   sendSystem(session.sessionId, '');
   sendSystem(session.sessionId, '基本指令：');
   sendSystem(session.sessionId, '  look     - 查看周圍環境');

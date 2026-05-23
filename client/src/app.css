@@ -322,6 +322,35 @@ input::placeholder {
   color: var(--color-combat-damage);
 }
 
+.inventory-overlay,
+.party-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 880;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.inventory-modal,
+.party-modal {
+  width: min(620px, 92vw);
+  max-height: min(720px, 86vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-dim);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.05), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.party-modal {
+  width: min(480px, 92vw);
+}
+
 .objective-row {
   color: var(--color-text-bright);
   font-size: 11px;
@@ -330,6 +359,180 @@ input::placeholder {
 .objective-row-danger {
   border-color: rgba(255, 102, 102, 0.35);
   color: var(--color-combat-damage);
+}
+
+.objective-row:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.game-main {
+  display: grid;
+  grid-template-columns:
+    minmax(136px, 0.58fr)
+    minmax(220px, 0.95fr)
+    minmax(300px, 1.2fr)
+    minmax(420px, 1.7fr);
+  overflow: hidden;
+}
+
+.game-left,
+.game-image,
+.game-actions,
+.game-center {
+  min-height: 0;
+}
+
+.game-actions,
+.game-center {
+  overflow: hidden;
+}
+
+.room-image-panel {
+  min-height: 100%;
+  border-bottom: 0;
+}
+
+.room-image-media {
+  aspect-ratio: 10 / 16;
+  max-height: calc(100vh - 86px);
+}
+
+@media (max-width: 1180px) {
+  .game-main {
+    grid-template-columns:
+      124px
+      minmax(180px, 0.8fr)
+      minmax(280px, 1fr)
+      minmax(360px, 1.35fr);
+  }
+}
+
+@media (max-width: 920px) {
+  .game-main {
+    grid-template-columns: 112px minmax(210px, 0.9fr) minmax(0, 1.4fr);
+    grid-template-rows: minmax(220px, 42%) minmax(0, 58%);
+    overflow: hidden;
+  }
+
+  .game-left {
+    grid-row: 1 / 3;
+  }
+
+  .game-image {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .game-actions {
+    grid-column: 2;
+    grid-row: 2;
+    border-top: 1px solid var(--color-border-dim);
+  }
+
+  .game-center {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+
+  .room-image-media {
+    aspect-ratio: 16 / 10;
+    max-height: 34vh;
+  }
+
+  .combat-action {
+    min-height: 34px;
+    flex: 1 1 30%;
+  }
+
+  .context-objective {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-bg-secondary);
+  }
+}
+
+@media (max-width: 720px) {
+  .game-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(220px, 40vh) minmax(0, 1fr);
+    overflow-y: auto;
+  }
+
+  .game-left {
+    grid-column: 1;
+    grid-row: 1;
+    display: block;
+    max-height: 130px;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-dim);
+  }
+
+  .game-left .space-y-1 {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .game-left .space-y-1 > .text-\[10px\],
+  .game-left .space-y-1 > .border-t {
+    display: none;
+  }
+
+  .game-left button {
+    min-height: 34px;
+    text-align: center;
+  }
+
+  .game-image {
+    grid-column: 1;
+    grid-row: 2;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-dim);
+    max-height: 28vh;
+  }
+
+  .game-actions {
+    grid-column: 1;
+    grid-row: 3;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-dim);
+    overflow-y: auto;
+  }
+
+  .game-center {
+    grid-column: 1;
+    grid-row: 4;
+    min-height: 42vh;
+  }
+
+  .room-image-media {
+    aspect-ratio: 16 / 9;
+    max-height: 22vh;
+  }
+
+  .room-panel,
+  .selected-target-panel {
+    max-height: 18vh;
+    overflow-y: auto;
+  }
+
+  .combat-panel {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .inventory-overlay,
+  .party-overlay {
+    padding: 12px;
+  }
+
+  .inventory-modal,
+  .party-modal {
+    max-height: 88vh;
+  }
 }
 
 /* === Shop Modal === */

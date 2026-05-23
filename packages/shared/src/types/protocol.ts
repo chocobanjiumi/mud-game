@@ -10,7 +10,6 @@ import type { CharacterOriginSelection } from './origin.js';
 
 export interface CreateCharacterPayload extends CharacterOriginSelection {
   name: string;
-  userId: string;
 }
 
 // Client → Server
@@ -54,6 +53,8 @@ export interface NarrativePayload {
   }[];
 }
 
+export type InlineEntityPayload = NonNullable<NarrativePayload['entities']>[number];
+
 export type RoomEntityType = 'exit' | 'npc' | 'monster' | 'corpse' | 'gathering' | 'travel' | 'item' | 'player';
 
 export interface RoomEntityAction {
@@ -85,7 +86,7 @@ export interface RoomPayload {
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number }[];
-  corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean }[];
+  corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean; protectedUntil?: number }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
@@ -107,6 +108,7 @@ export interface StatusPayload {
   expToNext: number;
   effects: ActiveStatusEffect[];
   skills?: LearnedSkill[];
+  aliases?: Record<string, string>;
 }
 
 export interface CombatStartPayload {
@@ -121,6 +123,7 @@ export interface CombatActionPayload {
   round: number;
   actions: DamageResult[];
   log: string[];
+  logEntities?: InlineEntityPayload[][];
   playerTeam: CombatantState[];
   enemyTeam: CombatantState[];
 }

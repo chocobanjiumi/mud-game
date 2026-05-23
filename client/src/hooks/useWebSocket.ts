@@ -72,13 +72,21 @@ export function useWebSocket() {
 
       case 'system': {
         const text = (p.text as string) ?? JSON.stringify(p);
-        s.addTerminalLine(`[系統] ${text}`, 'system');
+        const entities = (p.entities as NarrativePayload['entities'] | undefined)?.map(entity => ({
+          ...entity,
+          name: entity.name,
+        }));
+        s.addTerminalLine(`[系統] ${text}`, 'system', entities);
         break;
       }
 
       case 'error': {
         const text = (p.message as string) ?? (p.text as string) ?? JSON.stringify(p);
-        s.addTerminalLine(`[錯誤] ${text}`, 'error');
+        const entities = (p.entities as NarrativePayload['entities'] | undefined)?.map(entity => ({
+          ...entity,
+          name: entity.name,
+        }));
+        s.addTerminalLine(`[錯誤] ${text}`, 'error', entities);
         break;
       }
 
@@ -148,10 +156,12 @@ export function useWebSocket() {
       case 'status': {
         const status = p as unknown as StatusPayload;
         s.setCharacter(status.character);
+        s.setGold(status.character.gold);
         s.setDerivedStats(status.derived);
         s.setExpToNext(status.expToNext);
         s.setActiveEffects(status.effects);
         if (status.skills) s.setSkills(status.skills);
+        if (status.aliases) s.setAliases(status.aliases);
         break;
       }
 
@@ -159,6 +169,7 @@ export function useWebSocket() {
         const character = p.character as unknown as Character | undefined;
         if (character) {
           s.setCharacter(character);
+          s.setGold(character.gold);
         }
         s.addTerminalLine((p.message as string) ?? '登入成功！歡迎來到冒險世界。', 'system');
         s.setScreen('game');
@@ -181,6 +192,20 @@ export function useWebSocket() {
 
       case 'combat_start': {
         const data = p as unknown as CombatStartPayload;
+        const current = s.character;
+        const self = current ? data.playerTeam.find((player) => player.id === current.id) : undefined;
+        if (current && self) {
+          s.setCharacter({
+            ...current,
+            hp: self.hp,
+            maxHp: self.maxHp,
+            mp: self.mp,
+            maxMp: self.maxMp,
+            resource: self.resource,
+            maxResource: self.maxResource,
+            resourceType: self.resourceType,
+          });
+        }
         s.setInCombat(true);
         s.setCombat({
           combatId: data.combatId,
@@ -209,6 +234,20 @@ export function useWebSocket() {
       case 'combat_action': {
         const data = p as unknown as CombatActionPayload;
         const combat = s.combat;
+        const current = s.character;
+        const self = current ? data.playerTeam.find((player) => player.id === current.id) : undefined;
+        if (current && self) {
+          s.setCharacter({
+            ...current,
+            hp: self.hp,
+            maxHp: self.maxHp,
+            mp: self.mp,
+            maxMp: self.maxMp,
+            resource: self.resource,
+            maxResource: self.maxResource,
+            resourceType: self.resourceType,
+          });
+        }
         if (combat) {
           s.setCombat({
             ...combat,
@@ -218,8 +257,8 @@ export function useWebSocket() {
             log: [...combat.log, ...data.log],
           });
         }
-        for (const line of data.log) {
-          s.addTerminalLine(line, 'combat');
+        for (const [index, line] of data.log.entries()) {
+          s.addTerminalLine(line, 'combat', data.logEntities?.[index]);
         }
         for (const enemy of data.enemyTeam) {
           if (enemy.monsterPhases?.length) {

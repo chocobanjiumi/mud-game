@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import { ITEM_DEFS, SKILL_DEFS } from '@game/shared';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -22,6 +23,9 @@ export default function CombatPanel() {
   const inCombat = useGameStore((s) => s.inCombat);
   const selectedTargetId = useGameStore((s) => s.selectedCombatTargetId);
   const setSelectedTargetId = useGameStore((s) => s.setSelectedCombatTargetId);
+  const skills = useGameStore((s) => s.skills);
+  const character = useGameStore((s) => s.character);
+  const inventory = useGameStore((s) => s.inventory);
 
   if (!inCombat || !combat) return null;
 
@@ -29,6 +33,18 @@ export default function CombatPanel() {
   const enemyLabels = ordinalEnemyLabels(livingEnemies);
   const targetId = selectedTargetId ?? livingEnemies[0]?.id ?? null;
   const targetLabel = targetId ? enemyLabels.get(targetId) : null;
+  const commonSkills = skills
+    .map((skill) => ({ learned: skill, def: SKILL_DEFS[skill.skillId] }))
+    .filter(({ def }) => def?.type === 'active')
+    .slice(0, 5);
+  const combatItems = inventory
+    .map((item) => ({ item, def: ITEM_DEFS[item.itemId] }))
+    .filter(({ def }) => def?.type === 'consumable' && def.useEffect && (
+      def.useEffect.type.startsWith('heal_')
+      || def.useEffect.type.startsWith('food_')
+      || def.useEffect.type.startsWith('combat_')
+    ))
+    .slice(0, 4);
 
   return (
     <div className="combat-panel border-t border-border-dim bg-bg-secondary px-3 py-2 space-y-2">
@@ -58,6 +74,19 @@ export default function CombatPanel() {
                 <span>HP {enemy.hp}/{enemy.maxHp}</span>
                 {enemy.pendingTelegraph && <span className="text-text-amber">預兆</span>}
               </div>
+              {enemy.activeEffects.length > 0 && (
+                <div className="mt-1 flex flex-wrap gap-1">
+                  {enemy.activeEffects.slice(0, 4).map((effect, index) => (
+                    <span
+                      key={`${enemy.id}-${effect.type}-${index}`}
+                      className="rounded border border-border-dim/60 px-1 text-[10px] text-text-amber"
+                      title={`${effect.type} ${effect.remainingDuration}回合`}
+                    >
+                      {effect.type.replace(/_/g, ' ')}
+                    </span>
+                  ))}
+                </div>
+              )}
             </button>
           );
         })}
@@ -77,6 +106,47 @@ export default function CombatPanel() {
         <button className="combat-action" onClick={() => sendCommand('flee', '逃跑')}>
           逃跑
         </button>
+        {commonSkills.map(({ learned, def }) => {
+          if (!def) return null;
+          const needsTarget = def.targetType === 'single_enemy';
+          const onCooldown = learned.currentCooldown > 0;
+          const lacksResource = character ? character.resource < def.resourceCost : false;
+          const disabled = onCooldown || lacksResource || (needsTarget && !targetId);
+          const reason = onCooldown
+            ? `冷卻 ${learned.currentCooldown} 回合`
+            : lacksResource
+              ? `${character?.resourceType ?? '資源'}不足`
+              : needsTarget && !targetId
+                ? '需要目標'
+                : undefined;
+          return (
+            <button
+              key={learned.skillId}
+              className={`combat-action ${def.tags.includes('heal') || def.tags.includes('defense') ? 'combat-action-primary' : 'combat-action-danger'}`}
+              disabled={disabled}
+              title={reason}
+              onClick={() => {
+                const targetSuffix = needsTarget && targetId ? ` ${targetId}` : '';
+                sendCommand(`skill ${learned.skillId}${targetSuffix}`, `使用 ${def.name}`);
+              }}
+            >
+              {def.name}
+            </button>
+          );
+        })}
+        {combatItems.map(({ item, def }) => {
+          if (!def) return null;
+          return (
+            <button
+              key={`${item.itemId}-${item.itemInstanceId ?? 'stack'}`}
+              className="combat-action combat-action-primary"
+              onClick={() => sendCommand(`use ${def.name}`, `使用 ${def.name}`)}
+              title={`x${item.quantity}`}
+            >
+              {def.name}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

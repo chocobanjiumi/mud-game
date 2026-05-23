@@ -3,6 +3,7 @@
 import type { ClassId } from '../types/player.js';
 import type { SkillDef, SkillScaling, SkillTag } from '../types/skill.js';
 import { CLASS_DEFS } from './classes.js';
+import { FAITH_DEFS, RACE_DEFS } from './origins.js';
 
 type RawSkillDef = Omit<SkillDef, 'tags' | 'scaling'> & Partial<Pick<SkillDef, 'tags' | 'scaling'>>;
 
@@ -1271,7 +1272,10 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 };
 
-export const SKILL_DEFS: Record<string, SkillDef> = normalizeSkillDefs(RAW_SKILL_DEFS);
+export const SKILL_DEFS: Record<string, SkillDef> = normalizeSkillDefs({
+  ...RAW_SKILL_DEFS,
+  ...createOriginPassiveSkillDefs(),
+});
 
 interface SecondJobSkillExpansion {
   classId: ClassId;
@@ -1515,6 +1519,53 @@ function inferSkillTags(def: RawSkillDef): SkillTag[] {
   if (def.resourceCost > 0) tags.add('resource');
   if (def.id.includes('step') || def.id.includes('dash') || def.id.includes('charge')) tags.add('mobility');
   return [...tags];
+}
+
+function createOriginPassiveSkillDefs(): Record<string, RawSkillDef> {
+  const racePassives = Object.fromEntries(
+    Object.values(RACE_DEFS).map((race) => [race.passiveSkillId, {
+      id: race.passiveSkillId,
+      name: race.passiveName,
+      englishName: race.passiveSkillId,
+      classId: 'adventurer' as const,
+      learnLevel: 1,
+      type: 'passive' as const,
+      targetType: 'self' as const,
+      resourceCost: 0,
+      cooldown: 0,
+      damageType: 'pure' as const,
+      element: race.tags?.includes('dark') ? 'dark' as const : race.tags?.includes('nature') ? 'nature' as const : 'none' as const,
+      multiplier: 0,
+      tags: ['passive' as const],
+      scaling: { stat: 'none' as const, coefficient: 0 },
+      description: race.passiveDescription,
+    }]),
+  );
+
+  const faithPassives = Object.fromEntries(
+    Object.values(FAITH_DEFS).map((faith) => [faith.passiveSkillId, {
+      id: faith.passiveSkillId,
+      name: faith.passiveName,
+      englishName: faith.passiveSkillId,
+      classId: 'adventurer' as const,
+      learnLevel: 1,
+      type: 'passive' as const,
+      targetType: 'self' as const,
+      resourceCost: 0,
+      cooldown: 0,
+      damageType: 'pure' as const,
+      element: faith.tags?.includes('light') ? 'light' as const : faith.tags?.includes('dark') ? 'dark' as const : faith.tags?.includes('nature') ? 'nature' as const : 'none' as const,
+      multiplier: 0,
+      tags: ['passive' as const],
+      scaling: { stat: 'none' as const, coefficient: 0 },
+      description: faith.passiveDescription,
+    }]),
+  );
+
+  return {
+    ...racePassives,
+    ...faithPassives,
+  };
 }
 
 // ─── 工具函式 ───

@@ -7,6 +7,7 @@ import { addItemToInventory } from '../db/database.js';
 import { ITEM_DEFS } from '@game/shared';
 import { unlockPortal, unlockZone } from '../db/queries.js';
 import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
+import { addExperienceToCharacter } from './leveling.js';
 
 // ============================================================
 //  型別定義
@@ -64,6 +65,16 @@ export interface QuestDef {
   dialogueStart?: string;
   dialogueComplete?: string;
   repeatable: boolean;
+}
+
+export interface QuestSummary {
+  id: string;
+  name: string;
+  description: string;
+  category: 'main' | 'side' | 'daily' | 'weekly' | 'exploration' | 'boss' | 'crafting';
+  status: 'active' | 'completed' | 'failed';
+  steps: { description: string; current: number; target: number }[];
+  currentStep: number;
 }
 
 /** DB 中的任務進度資料 */
@@ -402,6 +413,10 @@ export class QuestManager {
           progress: progressTexts.join('、'),
         });
       }
+      sendToCharacter(characterId, 'quest_update', {
+        action: allComplete ? 'completable' : 'progress',
+        quests: this.getActiveQuestSummaries(characterId),
+      });
     }
   }
 
@@ -454,7 +469,7 @@ export class QuestManager {
     this.markQuestComplete(characterId, questId);
 
     // 發放獎勵
-    character.exp += def.rewards.exp;
+    const expResult = addExperienceToCharacter(character, def.rewards.exp);
     character.gold += def.rewards.gold;
 
     if (def.rewards.items) {
@@ -466,7 +481,7 @@ export class QuestManager {
     this.applyStructuredRewards(characterId, def.rewards);
 
     // 通知玩家
-    let rewardText = `${def.rewards.exp} EXP、${def.rewards.gold} 金幣`;
+    let rewardText = `${expResult.expGained} EXP、${def.rewards.gold} 金幣`;
     if (def.rewards.items && def.rewards.items.length > 0) {
       rewardText += '，以及道具獎勵';
     }
@@ -762,6 +777,31 @@ export class QuestManager {
     }
   }
 
+  getActiveQuestSummaries(characterId: string): QuestSummary[] {
+    const summaries: QuestSummary[] = [];
+    for (const row of this.getActiveQuestsFromDb(characterId)) {
+      const def = QUEST_DEFS[row.quest_id];
+      if (!def) continue;
+      const progress: Record<string, number> = JSON.parse(row.progress || '{}');
+      const steps = def.objectives.map((obj) => ({
+        description: `${questObjectiveTypeLabel(obj.type)} ${obj.targetName}`,
+        current: progress[questObjectiveKey(obj)] ?? 0,
+        target: obj.required,
+      }));
+      const currentStep = Math.max(0, steps.findIndex(step => step.current < step.target));
+      summaries.push({
+        id: def.id,
+        name: def.name,
+        description: def.description,
+        category: questTypeToClientCategory(def.type),
+        status: row.status,
+        steps,
+        currentStep: currentStep === -1 ? Math.max(0, steps.length - 1) : currentStep,
+      });
+    }
+    return summaries;
+  }
+
   private insertQuestProgress(characterId: string, questId: string): void {
     try {
       getDb()
@@ -915,6 +955,11 @@ function questObjectiveTypeLabel(type: QuestObjectiveType): string {
     leaderboard_score: '排行榜紀錄',
   };
   return labels[type];
+}
+
+function questTypeToClientCategory(type: QuestType): QuestSummary['category'] {
+  if (type === 'class_change' || type === 'faction') return 'main';
+  return type;
 }
 
 function formatStructuredRewardSuffix(rewards: QuestReward): string {

@@ -2,6 +2,7 @@
 
 import type { ElementType, SkillTag, StatusEffect } from './skill.js';
 import type { GuardianHints, ResourceType } from './player.js';
+import type { FaithId, RaceId } from './origin.js';
 
 export type CombatPhase = 'encounter' | 'action_select' | 'resolve' | 'end';
 export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item';
@@ -43,6 +44,8 @@ export interface CombatantState {
   resourceType: ResourceType;
   level: number;
   classId: string;
+  raceId?: RaceId;
+  faithId?: FaithId;
   activeEffects: ActiveStatusEffect[];
   isDead: boolean;
   monsterBehavior?: MonsterBehaviorType;

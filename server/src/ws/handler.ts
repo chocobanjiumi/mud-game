@@ -160,13 +160,13 @@ export function sendNarrative(sessionId: string, text: string, color?: string, e
 }
 
 /** 傳送系統訊息 */
-export function sendSystem(sessionId: string, text: string): void {
-  sendToSession(sessionId, 'system', { text });
+export function sendSystem(sessionId: string, text: string, entities?: Record<string, unknown>[]): void {
+  sendToSession(sessionId, 'system', { text, entities });
 }
 
 /** 傳送錯誤訊息 */
-export function sendError(sessionId: string, text: string): void {
-  sendToSession(sessionId, 'error', { text });
+export function sendError(sessionId: string, text: string, entities?: Record<string, unknown>[]): void {
+  sendToSession(sessionId, 'error', { text, entities });
 }
 
 // ─── 心跳機制 ───

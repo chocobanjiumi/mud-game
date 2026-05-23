@@ -38,9 +38,10 @@ export default function AudioSettings() {
   );
 
   const handleMuteToggle = useCallback(() => {
-    const muted = audio.toggleMute();
-    setAudioEnabled(!muted);
-  }, [audio, setAudioEnabled]);
+    const nextEnabled = !audioEnabled;
+    audio.setEnabled(nextEnabled);
+    setAudioEnabled(nextEnabled);
+  }, [audio, audioEnabled, setAudioEnabled]);
 
   if (!audioSettingsOpen) return null;
 

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, type KeyboardEvent } from 'react';
 import { useGameStore } from '../stores/gameStore';
+import { SKILL_DEFS } from '@game/shared';
 
 const COMMON_COMMANDS = [
   'look', 'go', 'north', 'south', 'east', 'west', 'up', 'down',
@@ -37,16 +38,17 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
   const combat = useGameStore((s) => s.combat);
   const inventory = useGameStore((s) => s.inventory);
   const skills = useGameStore((s) => s.skills);
+  const aliases = useGameStore((s) => s.aliases);
 
   const updateSuggestions = useCallback((text: string) => {
     if (!text.trim()) {
       setSuggestions([]);
       return;
     }
-    const matches = buildSuggestions(text, { room, combat, inventory, skills }).slice(0, 8);
+    const matches = buildSuggestions(text, { room, combat, inventory, skills, aliases }).slice(0, 8);
     setSuggestions(matches);
     setSelectedSuggestion(0);
-  }, [combat, inventory, room, skills]);
+  }, [aliases, combat, inventory, room, skills]);
 
   const submit = useCallback(() => {
     const trimmed = value.trim();
@@ -184,7 +186,7 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
 
 function buildSuggestions(
   text: string,
-  state: Pick<ReturnType<typeof useGameStore.getState>, 'room' | 'combat' | 'inventory' | 'skills'>,
+  state: Pick<ReturnType<typeof useGameStore.getState>, 'room' | 'combat' | 'inventory' | 'skills' | 'aliases'>,
 ): Suggestion[] {
   const endsWithSpace = /\s$/.test(text);
   const parts = text.trimStart().split(/\s+/);
@@ -196,6 +198,7 @@ function buildSuggestions(
     return [
       ...COMMON_COMMANDS.map((cmd) => commandSuggestion(cmd)),
       ...COMMON_ALIASES.map((alias) => commandSuggestion(alias, 'alias')),
+      ...Object.entries(state.aliases).map(([alias, command]) => commandSuggestion(alias, command)),
     ]
       .filter((item) => item.value.startsWith(lower))
       .slice(0, 8);
@@ -248,9 +251,11 @@ function getTargetSuggestions(
   }
 
   if (command === 'attack') {
-    const roomTargets = (state.room?.monsters ?? []).map((monster) => ({
-      label: monster.label ?? monster.name,
-      detail: `Lv.${monster.level}`,
+    const roomTargets = (state.room?.entities ?? [])
+      .filter(entity => entity.type === 'monster')
+      .map((monster) => ({
+      label: monster.label,
+      detail: monster.subtitle ?? '怪物',
     }));
     const combatTargets = ordinalCombatLabels(state.combat?.enemyTeam ?? []).map((enemy) => ({
       label: enemy.label,
@@ -262,17 +267,16 @@ function getTargetSuggestions(
   }
 
   if (command === 'talk' || command === 'shop') {
-    return (state.room?.npcs ?? [])
-      .map((npc) => suggestion(npc.name, `${npc.alias} ${npc.title}`, `${command} ${npc.name}`))
+    return (state.room?.entities ?? [])
+      .filter(entity => entity.type === 'npc')
+      .map((npc) => suggestion(npc.label, npc.subtitle ?? 'NPC', `${command} ${npc.label}`))
       .filter((item) => matches(item.value));
   }
 
   if (command === 'loot') {
-    return (state.room?.corpses ?? [])
-      .map((corpse) => {
-        const label = corpse.label ?? corpse.monsterName;
-        return suggestion(label, corpse.empty ? '已空' : '屍體', `loot ${label}`);
-      })
+    return (state.room?.entities ?? [])
+      .filter(entity => entity.type === 'corpse')
+      .map((corpse) => suggestion(corpse.label, corpse.subtitle ?? '屍體', `loot ${corpse.label}`))
       .filter((item) => matches(item.value));
   }
 
@@ -288,7 +292,13 @@ function getTargetSuggestions(
 
   if (command === 'skill') {
     return state.skills
-      .map((skill) => suggestion(skill.skillId, '技能', `skill ${skill.skillId}`))
+      .flatMap((skill) => {
+        const def = SKILL_DEFS[skill.skillId];
+        return [
+          suggestion(skill.skillId, def?.name ?? '技能', `skill ${skill.skillId}`),
+          ...(def?.name ? [suggestion(def.name, skill.skillId, `skill ${def.id}`)] : []),
+        ];
+      })
       .filter((item) => matches(item.value));
   }
 
