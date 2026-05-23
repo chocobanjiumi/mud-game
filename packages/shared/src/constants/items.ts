@@ -2829,6 +2829,41 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['storm_highlands', 'quest', 'monster_drop'], zoneTags: ['storm_highlands'],
   },
+  blackbark_charcoal: {
+    id: 'blackbark_charcoal', name: '黑木炭皮', type: 'material',
+    description: '黑木林炭樹剝落的焦黑樹皮，摸起來冰冷卻會吞掉火光。獵人用它塗抹箭桿與路標，避免夜裡被樹影發現。',
+    buyPrice: 0, sellPrice: 84,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['blackwood', 'monster_drop', 'gathering'], zoneTags: ['blackwood'],
+  },
+  umbral_spider_silk: {
+    id: 'umbral_spider_silk', name: '幽影蛛絲', type: 'material',
+    description: '織網岔口和毒蕨林採得的暗色蛛絲，離開陰影後會短暫變透明。可用於陷阱、縫線與消音弓弦。',
+    buyPrice: 0, sellPrice: 78,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['blackwood', 'monster_drop', 'gathering'], zoneTags: ['blackwood'],
+  },
+  nightfern_venom: {
+    id: 'nightfern_venom', name: '夜蕨毒液', type: 'material',
+    description: '毒蕨林和黑苔床滲出的墨綠毒液，會讓火把光圈慢慢縮小。女巫用它調配迷路藥與破影箭毒。',
+    buyPrice: 0, sellPrice: 82,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['blackwood', 'monster_drop', 'gathering'], zoneTags: ['blackwood'],
+  },
+  hunter_mark_charm: {
+    id: 'hunter_mark_charm', name: '獵人刻痕符', type: 'quest',
+    description: '黑木林入口獵人刻在骨片上的方向符，只有在樹木換位後仍會指向真正出口。它是深入林心前必備的定位證明。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['blackwood', 'quest', 'service'], zoneTags: ['blackwood'],
+  },
+  heartwood_shadow_core: {
+    id: 'heartwood_shadow_core', name: '黑心木影核', type: 'quest',
+    description: '黑心木核深處剝離的暗綠年輪核心，內部有樹影像活物一樣緩慢轉動。它能證明黑木林換位異常來自林心本身。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['blackwood', 'quest', 'monster_drop'], zoneTags: ['blackwood'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

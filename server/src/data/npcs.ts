@@ -5947,6 +5947,106 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把獅鷲巢線與王峰 Boss 線索接成可準備的補給節點。',
     },
   },
+
+  blackwood_hunter_guide: {
+    id: 'blackwood_hunter_guide',
+    name: '瑟恩',
+    alias: 'guide',
+    title: '黑木獵徑嚮導',
+    description:
+      '一名獵人靠在炭樹入口旁，斗篷外層塗著黑木炭皮，腰間掛著刻痕符與不點燃的短燈。' +
+      '他看路時不看前方，而是看樹影是否少了一截。',
+    roomId: 'blackwood_charcoal_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '黑木林會換位置。你若只記路，就已經迷路了。',
+        options: [
+          { text: '怎麼辨認真路？', nextId: 'route' },
+          { text: '林裡最危險的是什麼？', nextId: 'threats' },
+          { text: '我會看刻痕。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '看獵人刻痕符、看樹影缺口、看渡鴉是否逆著風站。若三者不同，跟最安靜的那條路走。',
+        options: [
+          { text: '林裡最危險的是什麼？', nextId: 'threats' },
+          { text: '我去找刻痕符。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'threats',
+        text: '影狼找火，蛛網找影子，女巫找你的判斷。真正的危險在黑心木核，因為那裡會讓整座森林替它移動。',
+        options: [
+          { text: '怎麼辨認真路？', nextId: 'route' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '火把能照路，也能把你賣給森林。少用，快走。' },
+    ],
+    guardianHints: {
+      creature: '瑟恩能辨認炭皮影狼、黑木織影蛛、渡鴉咒獵者與幽根黑樹人的活動痕跡。',
+      treasure: '他的刻痕符說明黑木炭皮、幽影蛛絲、夜蕨毒液與黑心木影核的用途。',
+      spirit: '他把黑木林的換位規則轉成玩家可以追蹤的生存方法。',
+    },
+  },
+
+  blackwood_witch_supplier: {
+    id: 'blackwood_witch_supplier',
+    name: '芙洛',
+    alias: 'supplier',
+    title: '夜蕨藥袋商',
+    description:
+      '一名藥袋商在女巫樹洞外整理黑苔、夜蕨毒液與幽影蛛絲，身後的短燈被三層黑布包住。' +
+      '她不像女巫，卻熟悉女巫留下的每一種錯路。',
+    roomId: 'blackwood_witch_hollow',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'blackbark_charcoal',
+      'umbral_spider_silk',
+      'nightfern_venom',
+      'hunter_mark_charm',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '補給、解毒、遮光。黑木林裡這三樣比刀重要，刀只會讓你死得比較有信心。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '黑心木核怎麼進？', nextId: 'heart' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、黑木炭皮、幽影蛛絲、夜蕨毒液、獵人刻痕符。要進林心，別空手。',
+        action: { type: 'shop', data: { shopType: 'blackwood_supply' } },
+        options: [
+          { text: '黑心木核怎麼進？', nextId: 'heart' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'heart',
+        text: '先過長老樹環，再看倒塌小祠的根道。黑心木王會改路，刻痕符只能告訴你哪條路還是真的。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會帶刻痕符。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你的影子先走進樹洞，你就別跟著了。' },
+    ],
+    guardianHints: {
+      creature: '芙洛能提示夜蕨女巫、灰盲暗精靈弓手、骨鈴潛行者與黑心木王的危險徵兆。',
+      treasure: '她販售黑木炭皮、幽影蛛絲、夜蕨毒液與獵人刻痕符。',
+      spirit: '她讓黑木林的材料和林心 Boss 線索形成可準備的補給節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
