@@ -611,6 +611,62 @@ describe('CorpseManager', () => {
     expect(second.loot?.gold).toBe(11);
   });
 
+  it('targets duplicated corpses by hash ordinal', () => {
+    const corpses = new CorpseManager();
+    const firstMonster = makeMonsterInstance({ id: 'green_slime', name: '史萊姆' });
+    const secondMonster = makeMonsterInstance({ id: 'green_slime', name: '史萊姆' });
+
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: firstMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 7, items: [] },
+      now,
+    });
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: secondMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 11, items: [] },
+      now,
+    });
+
+    const second = corpses.lootCorpse('plains', 'player-1', '史萊姆#2', now);
+
+    expect(second.ok).toBe(true);
+    expect(second.loot?.gold).toBe(11);
+  });
+
+  it('targets duplicated corpses by space ordinal', () => {
+    const corpses = new CorpseManager();
+    const firstMonster = makeMonsterInstance({ id: 'green_slime', name: '史萊姆' });
+    const secondMonster = makeMonsterInstance({ id: 'green_slime', name: '史萊姆' });
+
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: firstMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 7, items: [] },
+      now,
+    });
+    corpses.createCorpse({
+      roomId: 'plains',
+      monster: secondMonster,
+      killerId: 'player-1',
+      participantIds: ['player-1'],
+      loot: { exp: 10, gold: 11, items: [] },
+      now,
+    });
+
+    const second = corpses.lootCorpse('plains', 'player-1', '史萊姆 2', now);
+
+    expect(second.ok).toBe(true);
+    expect(second.loot?.gold).toBe(11);
+  });
+
   it('keeps personal quest items separate for each looter', () => {
     const corpses = new CorpseManager();
     const monster = makeMonsterInstance();
