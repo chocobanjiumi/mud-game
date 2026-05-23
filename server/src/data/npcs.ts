@@ -6193,6 +6193,105 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把終局 Boss 線索包裝成加冕儀式的調查鏈。',
     },
   },
+
+  sky_isles_lift_cartographer: {
+    id: 'sky_isles_lift_cartographer',
+    name: '諾亞',
+    alias: 'cartographer',
+    title: '升空碼頭測高員',
+    description:
+      '一名測高員坐在升空碼頭的絞盤旁，面前攤著會自己浮起的島圖。' +
+      '他用浮空符文片壓住地圖邊角，避免整張圖飄進雲海。',
+    roomId: 'sky_isles_lift_dock',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '上島前先記高度。方向會騙你，高度比較誠實。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '天空核心在哪？', nextId: 'core' },
+          { text: '我會看高度。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先走鐵鏈雲橋和符文錨臺，再過折光堤道。要進世界王浮島，風暴井核能穩住風牆。',
+        options: [
+          { text: '天空核心在哪？', nextId: 'core' },
+          { text: '我去找井核。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '最高島後面還有核心聖所。別只看橋，橋斷了還能退；核心若失衡，整片群島會一起往下走。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若腳下石板忽然變輕，別跳，那不是好消息。' },
+    ],
+    guardianHints: {
+      creature: '諾亞能說明雲銀風鳶、符文錨魔像、風暴井渦靈與升天橋雷龍的路線關係。',
+      treasure: '他的浮島圖標出浮空符文片、風暴井核與天空核心聖物的用途。',
+      spirit: '他把浮空群島的垂直路線轉成玩家能追蹤的高度規則。',
+    },
+  },
+
+  sky_isles_relic_keeper: {
+    id: 'sky_isles_relic_keeper',
+    name: '賽菈',
+    alias: 'keeper',
+    title: '雲上市遺物保管人',
+    description:
+      '一名保管人在浮市殘街的破攤前整理雲銀長羽、光環稜核和符文碎片。' +
+      '她的貨箱用三條細鏈拴住，防止交易到一半飛走。',
+    roomId: 'sky_isles_sky_market_ruin',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'sky_rune_shard',
+      'cloudsilver_plume',
+      'halo_prism_core',
+      'stormwell_core',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買之前先抓穩欄杆。雲上市的老規矩：貨物掉下去歸雲海，買主掉下去也一樣。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '世界王浮島要什麼？', nextId: 'boss' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '高階藥水、符文片、雲銀長羽、光環稜核、風暴井核。越往上，越需要能把你留在島上的東西。',
+        action: { type: 'shop', data: { shopType: 'sky_isles_relics' } },
+        options: [
+          { text: '世界王浮島要什麼？', nextId: 'boss' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'boss',
+        text: '風暴井核開風牆，光環稜核穩神殿門，天空核心聖物只有核心執政體會放手。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別相信太平的雲。它只是還沒輪到你掉下去。' },
+    ],
+    guardianHints: {
+      creature: '賽菈能提示天鏡光靈、斷碑雷衛、光環庭院裁定者與天空核心執政體的素材需求。',
+      treasure: '她供應符文片、雲銀長羽、光環稜核與風暴井核。',
+      spirit: '她把浮空群島的高階素材與終局入口連成可補給的節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

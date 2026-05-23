@@ -2899,6 +2899,41 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['lost_capital', 'quest', 'monster_drop'], zoneTags: ['lost_capital'],
   },
+  sky_rune_shard: {
+    id: 'sky_rune_shard', name: '浮空符文片', type: 'material',
+    description: '浮空群島符文錨臺和斷方尖碑剝落的白金碎片，仍帶著讓石塊懸浮的微弱推力。',
+    buyPrice: 0, sellPrice: 110,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sky_isles', 'monster_drop', 'salvage'], zoneTags: ['sky_isles'],
+  },
+  cloudsilver_plume: {
+    id: 'cloudsilver_plume', name: '雲銀長羽', type: 'material',
+    description: '雷鷹巢島與雲上草甸掉落的銀白長羽，羽軸會吸附雲霧。可用於高階飛行符、箭羽與神殿祭旗。',
+    buyPrice: 0, sellPrice: 104,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sky_isles', 'monster_drop', 'gathering'], zoneTags: ['sky_isles'],
+  },
+  halo_prism_core: {
+    id: 'halo_prism_core', name: '光環稜核', type: 'material',
+    description: '光環庭院與天鏡池中凝出的多面光核，能把雷光折成柔和白環。它是雲神殿機關的主要能源。',
+    buyPrice: 0, sellPrice: 122,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sky_isles', 'monster_drop', 'salvage'], zoneTags: ['sky_isles'],
+  },
+  stormwell_core: {
+    id: 'stormwell_core', name: '風暴井核', type: 'quest',
+    description: '風暴井底部被雷光托起的旋轉核心，內部有雲海倒流的影像。它能短暫穩定通往世界王浮島的風牆。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['sky_isles', 'quest', 'monster_drop'], zoneTags: ['sky_isles'],
+  },
+  skycore_relic: {
+    id: 'skycore_relic', name: '天空核心聖物', type: 'quest',
+    description: '天空核心聖所中封存的白金聖物，外形像縮小的浮島群。它是維持整片群島高度的核心證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['sky_isles', 'quest', 'monster_drop'], zoneTags: ['sky_isles'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {
