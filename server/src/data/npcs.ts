@@ -9479,6 +9479,194 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  ashfall_monastery_bell_caretaker: {
+    id: 'ashfall_monastery_bell_caretaker',
+    name: '歐瑞克',
+    alias: 'caretaker',
+    title: '灰鐘看守',
+    description:
+      '一名灰袍老人守在鐘庭裂鐘旁，手裡握著不再完整的鐘槌。' +
+      '他每聽一次鐘聲都會數拍，像是在確認修道院還有多少地方沒有徹底墮落。',
+    roomId: 'ashfall_monastery_bell_court',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '鐘聲若連響三下，表示灰門還記得祈禱；若第四下跟著來，那就是暗鐘收魂者在點名。',
+        options: [
+          { text: '我該先找什麼？', nextId: 'first' },
+          { text: '暗鐘在哪？', nextId: 'belfry' },
+          { text: '我會聽鐘聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'first',
+        text: '灰門鑰片、焦黑經頁、斷香爐鏈節。這三樣能指出外典、香爐廳與聖物庫的儀式線。',
+        options: [
+          { text: '暗鐘在哪？', nextId: 'belfry' },
+          { text: '我去找證物。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'belfry',
+        text: '聖者碎像後方。若你聽見鐘聲卻看不見鐘，就先離開陰影。',
+        options: [
+          { text: '我該先找什麼？', nextId: 'first' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '不要跟著第四聲走。第四聲從不帶人回來。' },
+    ],
+    guardianHints: {
+      creature: '歐瑞克提示餘燼鐘魔、灰衣失聲修士與暗鐘收魂者。',
+      treasure: '他說明灰門鑰片、焦黑經頁與斷香爐鏈節的線索價值。',
+      spirit: '灰鐘看守把鐘庭從普通入口變成整座修道院的警訊節點。',
+    },
+  },
+
+  ashfall_monastery_relic_sister: {
+    id: 'ashfall_monastery_relic_sister',
+    name: '賽菈',
+    alias: 'sister',
+    title: '聖物庫倖存修女',
+    description:
+      '一名修女坐在聖物庫外的破箱上，白手套已被餘火油染成金褐色。' +
+      '她把可用聖物和危險聖物分開，動作冷靜得像每一次呼吸都經過訓練。',
+    roomId: 'ashfall_monastery_reliquary_vault',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'ember_reliquary_oil',
+      'censer_chain_link',
+      'soot_scripture_leaf',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '能用的聖物在左箱，會低語的在右箱。你要買左箱，還是回頭處理右箱的原因？',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '聖物庫怎麼失守？', nextId: 'vault' },
+          { text: '我先檢查四周。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、餘火油、鏈節與經頁。封印碎片不賣，那種東西若能買到，代表你買的是陷阱。',
+        action: { type: 'shop', data: { shopType: 'ashfall_relic_supply' } },
+        options: [
+          { text: '聖物庫怎麼失守？', nextId: 'vault' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'vault',
+        text: '哨衛沒有背叛，它只是繼續守門。問題是門後的命令換了主人。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我去處理哨衛。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '餘火油只點在傷口旁，不要點在經頁旁。' },
+    ],
+    guardianHints: {
+      creature: '賽菈提示聖物餘燼哨衛、雙相赦罪司與灰燼墮院長。',
+      treasure: '她販售聖物餘火油、斷香爐鏈節與焦黑經頁。',
+      spirit: '她讓聖物庫成為補給、封印判讀與儀式線索節點。',
+    },
+  },
+
+  ashfall_monastery_crypt_mapper: {
+    id: 'ashfall_monastery_crypt_mapper',
+    name: '馬洛',
+    alias: 'mapper',
+    title: '墓階測繪員',
+    description:
+      '一名測繪員把繩結固定在地下墓階欄杆上，地圖邊緣全是灰手印。' +
+      '他不願進入骨灰藏室第二次，但仍能準確指出每一個回聲來自哪條墓道。',
+    roomId: 'ashfall_monastery_crypt_stairs',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '墓階往下數七級會聽見骨灰罈回聲。若回聲比你慢半拍，守骨者已醒。',
+        options: [
+          { text: '骨灰藏室有什麼？', nextId: 'ossuary' },
+          { text: '怎麼到聖物庫？', nextId: 'route' },
+          { text: '我會照你的繩結走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'ossuary',
+        text: '聖骨、裂封印、還有不願被搬動的守骨者。別把灰罈打碎，碎了它們就不只是一個敵人。',
+        options: [
+          { text: '怎麼到聖物庫？', nextId: 'route' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '煙霧步廊北上，過墓階，再往東。若看到乾淨火光，就是聖物庫哨衛在等你。',
+        options: [
+          { text: '骨灰藏室有什麼？', nextId: 'ossuary' },
+          { text: '我出發。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '繩結若突然變暖，代表你離餘火太近。' },
+    ],
+    guardianHints: {
+      creature: '馬洛提示骨灰藏室守骨者、煙香怨靈與聖物餘燼哨衛。',
+      treasure: '他指出裂聖所封印可能出現在墓階與骨灰藏室。',
+      spirit: '測繪員讓地下路線、回聲與封印碎片形成可探索脈絡。',
+    },
+  },
+
+  ashfall_monastery_absolution_witness: {
+    id: 'ashfall_monastery_absolution_witness',
+    name: '艾芙琳',
+    alias: 'witness',
+    title: '雙相祭壇見證者',
+    description:
+      '一名見證者站在雙相祭壇陰影邊界，左手戴白手套，右手纏黑布。' +
+      '她不碰祭壇，只記錄哪些祈禱還像祈禱，哪些已變成命令。',
+    roomId: 'ashfall_monastery_dual_altar',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '這裡的赦罪一半是聖光，一半是灰。別只相信亮的一邊，也別只害怕暗的一邊。',
+        options: [
+          { text: '赦罪司怎麼打？', nextId: 'absolver' },
+          { text: '院長在哪？', nextId: 'abbot' },
+          { text: '我會看清楚。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'absolver',
+        text: '牠治療、標記、反射。看到祭壇亮成鏡面時停手，否則你的虔誠會反過來刺穿自己。',
+        options: [
+          { text: '院長在哪？', nextId: 'abbot' },
+          { text: '我會等屏障退去。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'abbot',
+        text: '灰燼聖所。若你帶回杖首，就證明這場火終於有了主人，也有了終點。',
+        options: [
+          { text: '赦罪司怎麼打？', nextId: 'absolver' },
+          { text: '我去聖所。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別在反射光裡低頭認罪。那不是告解，是陷阱。' },
+    ],
+    guardianHints: {
+      creature: '艾芙琳提示雙相赦罪司與灰燼墮院長的反射屏障。',
+      treasure: '她說明裂聖所封印與灰院長杖首的任務用途。',
+      spirit: '她把修道院最深處的光暗雙相與院長儀式連接起來。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

@@ -8898,4 +8898,263 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '白鹿守誓靈把王室狩獵、珍稀野獸與獵場誓約收束在一起。',
     },
   },
+
+  ashfall_ash_novice: {
+    id: 'ashfall_ash_novice', name: '灰衣失聲修士', alias: 'ashnovice',
+    level: 34, hp: 1420, mp: 360, str: 62, int: 96, dex: 46, vit: 90, luk: 14,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'fear', 'life_drain'],
+    expReward: 2700, goldReward: [720, 1360],
+    drops: [
+      { itemId: 'ash_gray_key', chance: 0.34, minQty: 1, maxQty: 1 },
+      { itemId: 'soot_scripture_leaf', chance: 0.26, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '灰門與懺悔小室間遊蕩的初階修士，喉嚨被灰燼封住，只能用鐘聲節拍祈禱。牠們仍守著舊戒律，卻已分不清訪客與罪人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '灰衣失聲修士會恐懼與吸血，鐘聲變低時先解控。',
+      treasure: '灰門鑰片常藏在牠的灰袍內襯。',
+      spirit: '失聲修士代表灰落修道院最外層的戒律殘響。',
+    },
+  },
+
+  ashfall_cinder_bell_imp: {
+    id: 'ashfall_cinder_bell_imp', name: '餘燼鐘魔', alias: 'bellimp',
+    level: 34, hp: 1180, mp: 280, str: 58, int: 84, dex: 88, vit: 58, luk: 22,
+    element: 'fire',
+    skills: ['basic_attack', 'fireball', 'blind', 'quick_dash'],
+    expReward: 2660, goldReward: [700, 1320],
+    drops: [
+      { itemId: 'ash_gray_key', chance: 0.18, minQty: 1, maxQty: 1 },
+      { itemId: 'ember_reliquary_oil', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '鐘庭橫梁上跳動的小惡魔，尾巴拖著未熄的鐘繩火星。牠會敲響破鐘引來巡邏，也會把熱灰灑進入侵者眼裡。',
+    isBoss: false,
+    guardianHints: {
+      creature: '餘燼鐘魔會火球與致盲，聽到亂鐘要先處理高處。',
+      treasure: '牠常偷走灰門鑰片與聖物餘火油。',
+      spirit: '鐘魔把原本召集祈禱的鐘聲扭成警報。',
+    },
+  },
+
+  ashfall_scorched_cloister_monk: {
+    id: 'ashfall_scorched_cloister_monk', name: '焦廊焚掌僧', alias: 'burnmonk',
+    level: 35, hp: 1680, mp: 220, str: 102, int: 48, dex: 76, vit: 106, luk: 12,
+    element: 'fire',
+    skills: ['basic_attack', 'slash', 'charge', 'fire_breath'],
+    expReward: 2900, goldReward: [760, 1440],
+    drops: [
+      { itemId: 'ember_reliquary_oil', chance: 0.28, minQty: 1, maxQty: 1 },
+      { itemId: 'censer_chain_link', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '焦黑迴廊裡仍按武僧步法巡行的墮落僧侶，掌心燒成黑紅裂紋。牠每次出拳都帶起火灰，像在重演修道院被焚的那晚。',
+    isBoss: false,
+    guardianHints: {
+      creature: '焦廊焚掌僧會衝鋒與火息，別站在窄廊正線。',
+      treasure: '牠身上可能帶聖物餘火油。',
+      spirit: '焚掌僧保存修道院武僧戒律被火焰扭曲後的形態。',
+    },
+  },
+
+  ashfall_broken_font_penitent: {
+    id: 'ashfall_broken_font_penitent', name: '破盤悔罪者', alias: 'penitent',
+    level: 35, hp: 1540, mp: 420, str: 58, int: 92, dex: 42, vit: 112, luk: 10,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'heal', 'death_mark'],
+    expReward: 2960, goldReward: [780, 1480],
+    drops: [
+      { itemId: 'ash_gray_key', chance: 0.26, minQty: 1, maxQty: 1 },
+      { itemId: 'soot_scripture_leaf', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description:
+      '破聖水盤旁跪伏的悔罪亡者，額頭貼著已焦的赦罪紙。牠會用殘存聖光治癒同伴，卻同時把死亡印記按在活人身上。',
+    isBoss: false,
+    guardianHints: {
+      creature: '破盤悔罪者會治療與死亡印記，優先打斷牠。',
+      treasure: '焦黑經頁常黏在聖水盤裂縫。',
+      spirit: '悔罪者展現聖光殘響與墮落詛咒並存的矛盾。',
+    },
+  },
+
+  ashfall_blackened_librarian: {
+    id: 'ashfall_blackened_librarian', name: '燻黑禁書司書', alias: 'librarian',
+    level: 36, hp: 1360, mp: 620, str: 42, int: 126, dex: 54, vit: 82, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'fear', 'death_mark', 'life_drain'],
+    expReward: 3200, goldReward: [840, 1580],
+    drops: [
+      { itemId: 'soot_scripture_leaf', chance: 0.66, minQty: 1, maxQty: 3 },
+      { itemId: 'cracked_sanctum_seal', chance: 0.04, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '燻黑書庫深處翻頁的禁書司書，十指像炭筆一樣留下黑痕。牠不守護書籍內容，只守護那些不該被重新讀出的名字。',
+    isBoss: false,
+    guardianHints: {
+      creature: '燻黑禁書司書會暗影爆破與死亡印記，標記後要轉守。',
+      treasure: '焦黑經頁主要從書庫與司書身上取得。',
+      spirit: '司書讓修道院的禁儀來源落在書庫線索上。',
+    },
+  },
+
+  ashfall_ember_chapel_cantor: {
+    id: 'ashfall_ember_chapel_cantor', name: '餘火禮唱者', alias: 'cantor',
+    level: 37, hp: 1500, mp: 560, str: 48, int: 118, dex: 58, vit: 94, luk: 20,
+    element: 'fire',
+    skills: ['basic_attack', 'fireball', 'holy_light', 'heal', 'meteor'],
+    expReward: 3400, goldReward: [900, 1700],
+    drops: [
+      { itemId: 'ember_reliquary_oil', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'soot_scripture_leaf', chance: 0.26, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description:
+      '餘火小禮拜堂裡持續唱誦的墮落唱者，聲音帶著火焰噼啪聲。牠會把禱歌變成燃燒的祝福，讓同伴在灰裡重新站起。',
+    isBoss: false,
+    guardianHints: {
+      creature: '餘火禮唱者會治療與隕石，詠唱時集中火力。',
+      treasure: '聖物餘火油常保存在禮唱者燈盞內。',
+      spirit: '禮唱者連接小禮拜堂與餘火儀式。',
+    },
+  },
+
+  ashfall_censer_wraith: {
+    id: 'ashfall_censer_wraith', name: '煙香怨靈', alias: 'censerwraith',
+    level: 38, hp: 1460, mp: 500, str: 54, int: 108, dex: 86, vit: 78, luk: 16,
+    element: 'dark',
+    skills: ['basic_attack', 'blind', 'fear', 'soul_drain', 'ethereal_shield'],
+    expReward: 3600, goldReward: [940, 1780],
+    drops: [
+      { itemId: 'censer_chain_link', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'ember_reliquary_oil', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '煙霧步廊與香爐廳之間聚散的怨靈，身體像被香煙勾出的空洞人形。斷裂鏈節在霧中拖行，聲音比腳步更早抵達。',
+    isBoss: false,
+    guardianHints: {
+      creature: '煙香怨靈會致盲、恐懼與護盾，煙變厚時先停手觀察。',
+      treasure: '斷香爐鏈節多從牠拖行的黑鏈取得。',
+      spirit: '怨靈把香爐廳從淨化場所轉成迷失魂魄的迴廊。',
+    },
+  },
+
+  ashfall_ossuary_bonekeeper: {
+    id: 'ashfall_ossuary_bonekeeper', name: '骨灰藏室守骨者', alias: 'bonekeeper',
+    level: 39, hp: 2300, mp: 420, str: 112, int: 72, dex: 40, vit: 168, luk: 12,
+    element: 'dark',
+    skills: ['basic_attack', 'bone_strike', 'spectral_slash', 'ethereal_shield', 'life_drain'],
+    expReward: 4300, goldReward: [1120, 2120],
+    drops: [
+      { itemId: 'censer_chain_link', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'cracked_sanctum_seal', chance: 0.08, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '骨灰藏室裡由聖骨、灰罈與黑線縫合成的高大守衛，胸腔內沒有心臟，只有持續飄散的骨灰。牠不離開墓階，只阻止任何人帶走聖骨。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '骨灰藏室守骨者防禦高且會吸血，先破護盾。',
+      treasure: '裂聖所封印偶爾夾在聖骨灰罈中。',
+      spirit: '守骨者讓地下墓階與聖物庫形成正式門檻。',
+    },
+  },
+
+  ashfall_reliquary_sentinel: {
+    id: 'ashfall_reliquary_sentinel', name: '聖物餘燼哨衛', alias: 'sentinel',
+    level: 40, hp: 2400, mp: 460, str: 124, int: 78, dex: 54, vit: 176, luk: 14,
+    element: 'fire',
+    skills: ['basic_attack', 'stone_slam', 'fire_breath', 'reflect_barrier', 'charge'],
+    expReward: 4600, goldReward: [1200, 2280],
+    drops: [
+      { itemId: 'ember_reliquary_oil', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'cracked_sanctum_seal', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '聖物庫門前披掛黑銅甲的餘燼哨衛，甲縫裡透出乾淨但危險的火光。牠曾保護聖物免於外敵，如今也保護墮落儀式免於中斷。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '聖物餘燼哨衛會反射與衝鋒，開盾時停用高傷法術。',
+      treasure: '聖物餘火油主要保存在牠守護的燈槽中。',
+      spirit: '哨衛顯示聖物庫的防線仍完整，只是效忠方向已變。',
+    },
+  },
+
+  ashfall_shadow_belfry_tollkeeper: {
+    id: 'ashfall_shadow_belfry_tollkeeper', name: '暗鐘收魂者', alias: 'tollkeeper',
+    level: 41, hp: 2200, mp: 620, str: 82, int: 124, dex: 82, vit: 132, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'sonic_wave', 'fear', 'death_mark', 'soul_drain'],
+    expReward: 4900, goldReward: [1280, 2420],
+    drops: [
+      { itemId: 'censer_chain_link', chance: 0.32, minQty: 1, maxQty: 2 },
+      { itemId: 'soot_scripture_leaf', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '暗影鐘樓上倒吊的收魂者，雙手握著裂鐘鐘舌。牠每敲一下鐘，附近亡者就像被點名般抬頭。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '暗鐘收魂者有音波與死亡印記，鐘響後立刻分散。',
+      treasure: '牠的鐘舌上常纏著斷香爐鏈節。',
+      spirit: '收魂者把鐘樓變成召魂與指揮節點。',
+    },
+  },
+
+  ashfall_dual_altar_absolver: {
+    id: 'ashfall_dual_altar_absolver', name: '雙相赦罪司', alias: 'absolver',
+    level: 43, hp: 2600, mp: 780, str: 78, int: 146, dex: 64, vit: 150, luk: 24,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'shadow_blast', 'heal', 'reflect_barrier', 'death_mark'],
+    expReward: 5600, goldReward: [1460, 2760],
+    drops: [
+      { itemId: 'cracked_sanctum_seal', chance: 0.34, minQty: 1, maxQty: 1 },
+      { itemId: 'soot_scripture_leaf', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description:
+      '雙相祭壇前主持錯誤赦罪的高階祭司，半邊法衣潔白，半邊燒成黑灰。牠會同時使用聖光與暗影，把傷口稱為告解，把死亡稱為寬恕。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '雙相赦罪司會治療、反射與死亡印記，先看清法衣亮暗再出手。',
+      treasure: '裂聖所封印常由牠保管。',
+      spirit: '赦罪司是修道院光暗交錯主題的核心精英。',
+    },
+  },
+
+  ashfall_fallen_abbot: {
+    id: 'ashfall_fallen_abbot', name: '灰燼墮院長', alias: 'fallenabbot',
+    level: 46, hp: 5200, mp: 1100, str: 118, int: 172, dex: 72, vit: 220, luk: 32,
+    element: 'fire',
+    skills: ['basic_attack', 'meteor', 'shadow_blast', 'holy_light', 'life_drain', 'reflect_barrier'],
+    expReward: 8200, goldReward: [2200, 4200],
+    drops: [
+      { itemId: 'abbot_ash_crozier_head', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'cracked_sanctum_seal', chance: 0.82, minQty: 1, maxQty: 2 },
+      { itemId: 'ember_reliquary_oil', chance: 0.66, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description:
+      '灰燼聖所深處仍站在祭壇前的墮落院長，權杖頂端熔成黑玻璃聖徽。牠相信焚毀肉身能保存信仰，因此要把整座修道院化為永不冷卻的灰燼。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2400,
+    guardianHints: {
+      creature: '灰燼墮院長會隕石、吸血、聖光與反射屏障，屏障階段停手整隊。',
+      treasure: '牠必定掉落灰院長杖首，是修道院首腦被擊敗的證明。',
+      spirit: '墮院長把鐘聲、聖物、外典與灰燼儀式全部收束到灰燼聖所。',
+    },
+  },
 };

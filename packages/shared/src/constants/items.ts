@@ -3725,6 +3725,45 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['royal_hunting_grounds'],
   },
 
+  // ─── 灰落修道院封印與聖物 (Lv 34-46) ───
+  ash_gray_key: {
+    id: 'ash_gray_key', name: '灰門鑰片', type: 'quest',
+    description: '灰落修道院灰門內側剝落的鑰片，邊緣仍有鐘庭灰燼。它能證明探索者已進入修道院，而不是只在外牆撿拾殘片。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 34, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['ashfall_monastery'],
+  },
+  cracked_sanctum_seal: {
+    id: 'cracked_sanctum_seal', name: '裂聖所封印', type: 'quest',
+    description: '雙相祭壇與灰燼聖所之間裂開的封印碎片，一半帶著聖光殘響，一半被黑灰侵蝕。修道院倖存者用它判斷墮落儀式是否仍在擴散。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 12, levelReq: 42, rarity: 'epic',
+    sourceTags: ['boss', 'quest'], zoneTags: ['ashfall_monastery'],
+  },
+  soot_scripture_leaf: {
+    id: 'soot_scripture_leaf', name: '焦黑經頁', type: 'material',
+    description: '燻黑書庫和灰抄經室裡殘存的經頁，字跡被火線燒斷卻沒有完全消失。拓印師能從灰痕中復原禁儀片段。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 99, levelReq: 36, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['ashfall_monastery'],
+  },
+  censer_chain_link: {
+    id: 'censer_chain_link', name: '斷香爐鏈節', type: 'material',
+    description: '香爐廳垂落的黑鐵鏈節，孔洞裡塞滿灰與乾香。它曾用來固定驅邪香爐，如今常被煙怨靈拖著作響。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 99, levelReq: 38, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['ashfall_monastery'],
+  },
+  ember_reliquary_oil: {
+    id: 'ember_reliquary_oil', name: '聖物餘火油', type: 'consumable',
+    description: '聖物庫保存的微溫燈油，混入骨灰後仍能燃起乾淨火光。塗在傷口旁會驅散寒意並恢復體力。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 20, levelReq: 34, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 420 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['ashfall_monastery'],
+  },
+  abbot_ash_crozier_head: {
+    id: 'abbot_ash_crozier_head', name: '灰院長杖首', type: 'quest',
+    description: '灰燼聖所墮落院長權杖頂端的殘片，聖徽外圈已燒成黑玻璃。交回它能證明修道院深處的儀式首腦已被擊敗。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 46, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['ashfall_monastery'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
