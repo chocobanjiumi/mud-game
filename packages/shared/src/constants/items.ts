@@ -3367,6 +3367,44 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['ironwood_fort'],
   },
 
+  // ─── 琥珀森林材料與採集加工物 (Lv 20-32) ───
+  golden_resin_chunk: {
+    id: 'golden_resin_chunk', name: '金脂塊', type: 'material',
+    description: '琥珀森林古木滲出的金色樹脂凝塊，半透明表面封著細小氣泡，是基礎採集與加工材料。',
+    buyPrice: 1200, sellPrice: 600, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['amber_forest'],
+  },
+  amber_vein_shard: {
+    id: 'amber_vein_shard', name: '琥珀脈晶', type: 'material',
+    description: '琥珀脈徑與玻璃根橋中敲下的硬質脈晶，內部有金色紋路緩慢流動，可用來校準採集工具。',
+    buyPrice: 1500, sellPrice: 750, stackable: true, maxStack: 99, levelReq: 22, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['amber_forest'],
+  },
+  waxwing_chitin: {
+    id: 'waxwing_chitin', name: '封蠟蟲甲', type: 'material',
+    description: '封蠟蜂巢與燼甲蟲丘附近昆蟲留下的硬甲，邊緣帶著樹脂封蠟，可耐熱也能防潮。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 24, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['amber_forest'],
+  },
+  smoke_resin_spore: {
+    id: 'smoke_resin_spore', name: '煙脂孢子', type: 'material',
+    description: '煙菌坡與焦木林列飄出的灰金孢子，遇熱會釋放甜澀煙味，是火性藥劑與誘蟲餌的原料。',
+    buyPrice: 2100, sellPrice: 1050, stackable: true, maxStack: 99, levelReq: 26, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['amber_forest'],
+  },
+  resin_cutting_knife: {
+    id: 'resin_cutting_knife', name: '樹脂切刀', type: 'quest',
+    description: '採集工會用來切開活樹脂的薄刃工具，刀背刻有採集界樁編號，可避免採集者誤傷古木根脈。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 20, rarity: 'rare',
+    sourceTags: ['quest', 'shop'], zoneTags: ['amber_forest'],
+  },
+  deep_amber_heart: {
+    id: 'deep_amber_heart', name: '深琥珀心核', type: 'quest',
+    description: '深琥珀核心中取出的溫熱心核，內部封著遠古昆蟲、樹脂火光與一段仍未停止生長的金色年輪。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 32, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['amber_forest'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

@@ -7104,4 +7104,220 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '統帥是終焉戰場的收束點，牠倒下前戰爭不會真正結束。',
     },
   },
+
+  amber_sapling_lurker: {
+    id: 'amber_sapling_lurker', name: '琥珀幼樹伏行者', alias: 'saplinglurker',
+    level: 20, hp: 760, mp: 170, str: 52, int: 42, dex: 24, vit: 72, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain'],
+    expReward: 720, goldReward: [195, 370],
+    drops: [
+      { itemId: 'golden_resin_chunk', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'amber_vein_shard', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '採集入口與凝脂樹門附近緩慢移動的幼樹怪，樹皮下積著半透明金脂。牠會把根鬚藏進落葉與樹脂脈裡，等採集者靠近後封住退路。',
+    isBoss: false,
+    guardianHints: {
+      creature: '琥珀幼樹伏行者會根縛與吸取生命，採集前先清周圍根影。',
+      treasure: '牠外皮能切出金脂塊，根部偶爾凝著琥珀脈晶。',
+      spirit: '幼樹伏行者是森林對粗暴採集的第一層反應。',
+    },
+  },
+
+  resin_vein_lizard: {
+    id: 'resin_vein_lizard', name: '樹脂脈蜥', alias: 'resinlizard',
+    level: 21, hp: 700, mp: 120, str: 58, int: 24, dex: 52, vit: 42, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'poison_bite', 'coil'],
+    expReward: 760, goldReward: [205, 390],
+    drops: [
+      { itemId: 'amber_vein_shard', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'golden_resin_chunk', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '沿琥珀脈徑與玻璃根橋爬行的細長蜥蜴，鱗片像一片片透明樹脂。牠會在金色根脈間高速穿梭，用帶麻痺性的樹脂毒液咬住獵物。',
+    isBoss: false,
+    guardianHints: {
+      creature: '樹脂脈蜥速度快且帶毒，看到脈晶震動時準備閃避。',
+      treasure: '琥珀脈晶常卡在牠背脊鱗片下。',
+      spirit: '脈蜥像森林流動樹脂的捕食形態。',
+    },
+  },
+
+  sealed_wax_wasp: {
+    id: 'sealed_wax_wasp', name: '封蠟胡蜂', alias: 'waxwasp',
+    level: 22, hp: 620, mp: 160, str: 46, int: 34, dex: 68, vit: 30, luk: 20,
+    element: 'fire',
+    skills: ['basic_attack', 'quick_dash', 'venomous_bite', 'blind'],
+    expReward: 820, goldReward: [220, 420],
+    drops: [
+      { itemId: 'waxwing_chitin', chance: 0.5, minQty: 1, maxQty: 2 },
+      { itemId: 'golden_resin_chunk', chance: 0.26, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '封蠟蜂巢中鑽出的金黑胡蜂，翅膜覆著薄薄樹脂，振動時會灑下灼熱蠟粉。牠們會先用蠟粉迷住眼睛，再以毒針標記入侵巢區的人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '封蠟胡蜂會致盲與毒擊，蜂巢區不要拉太多。',
+      treasure: '封蠟蟲甲需要在胡蜂翅膜硬化前剝取。',
+      spirit: '胡蜂是琥珀森林最活躍的資源守衛。',
+    },
+  },
+
+  amber_water_serpent: {
+    id: 'amber_water_serpent', name: '琥珀水囊蛇', alias: 'amberserpent',
+    level: 23, hp: 840, mp: 190, str: 62, int: 38, dex: 40, vit: 62, luk: 16,
+    element: 'nature',
+    skills: ['basic_attack', 'water_spear', 'poison_bite', 'coil'],
+    expReward: 920, goldReward: [245, 470],
+    drops: [
+      { itemId: 'golden_resin_chunk', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'amber_vein_shard', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '盤在琥珀水囊與樹脂落溝中的水蛇，鱗片間滲著金色樹液。牠會把水囊表面偽裝成平靜琥珀，再突然以水矛和毒牙攻擊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '琥珀水囊蛇會纏繞與水矛，水面過於平整時不要靠近。',
+      treasure: '牠的鱗片縫隙常積著金脂塊與脈晶。',
+      spirit: '水囊蛇讓森林少數水源也帶著採集風險。',
+    },
+  },
+
+  suntrap_bloom_mantis: {
+    id: 'suntrap_bloom_mantis', name: '日陷花螳', alias: 'sunmantis',
+    level: 24, hp: 820, mp: 150, str: 72, int: 28, dex: 70, vit: 42, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'slash', 'backstab', 'quick_dash'],
+    expReward: 1010, goldReward: [270, 515],
+    drops: [
+      { itemId: 'golden_resin_chunk', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'waxwing_chitin', chance: 0.26, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '日陷空地與石化花圃間伏在發光花葉上的大型螳螂，前肢像兩把琥珀短刀。牠會利用強烈樹脂反光消失在視線裡，從採集者背後切入。',
+    isBoss: false,
+    guardianHints: {
+      creature: '日陷花螳爆發高，花影突然折斷時代表牠準備背刺。',
+      treasure: '牠的刀肢常封著金脂與蟲甲碎片。',
+      spirit: '花螳是日陷空地阻止過度採花的狩獵者。',
+    },
+  },
+
+  smoke_resin_myconid: {
+    id: 'smoke_resin_myconid', name: '煙脂菌人', alias: 'resinmyconid',
+    level: 25, hp: 900, mp: 260, str: 38, int: 72, dex: 22, vit: 66, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_spit', 'toxic_cloud', 'life_drain'],
+    expReward: 1120, goldReward: [300, 570],
+    drops: [
+      { itemId: 'smoke_resin_spore', chance: 0.64, minQty: 1, maxQty: 2 },
+      { itemId: 'golden_resin_chunk', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '煙菌坡上由樹脂、灰燼與菌絲長成的人形菌體，傘蓋下方飄著灰金孢霧。牠會吸收靠近者的生命熱度，讓孢子在焦木間繼續發芽。',
+    isBoss: false,
+    guardianHints: {
+      creature: '煙脂菌人會毒霧與吸血，孢霧濃時先後撤。',
+      treasure: '煙脂孢子需要從牠傘蓋下方採集。',
+      spirit: '菌人是火燒後森林試圖重新分解樹脂的形態。',
+    },
+  },
+
+  ember_carapace_beetle: {
+    id: 'ember_carapace_beetle', name: '燼甲蟲', alias: 'emberbeetle',
+    level: 26, hp: 1040, mp: 130, str: 78, int: 24, dex: 30, vit: 92, luk: 14,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'stone_slam', 'stone_skin'],
+    expReward: 1220, goldReward: [330, 630],
+    drops: [
+      { itemId: 'waxwing_chitin', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'smoke_resin_spore', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '焦木林列與燼甲蟲丘中翻動炭土的巨大甲蟲，甲殼像燒黑後又被樹脂封住的盾牌。牠會噴出滾燙樹脂火，並用厚殼撞碎採集架。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '燼甲蟲防禦厚且有火焰，先避開噴火再集中攻擊腹部。',
+      treasure: '封蠟蟲甲以燼甲蟲外殼品質最好。',
+      spirit: '牠是火與樹脂共生後誕生的硬殼清道夫。',
+    },
+  },
+
+  petrified_resin_golem: {
+    id: 'petrified_resin_golem', name: '石化樹脂魔像', alias: 'resingolem',
+    level: 28, hp: 1350, mp: 240, str: 82, int: 48, dex: 16, vit: 118, luk: 10,
+    element: 'nature',
+    skills: ['basic_attack', 'stone_slam', 'crystal_slam', 'reflect_barrier'],
+    expReward: 1450, goldReward: [390, 740],
+    drops: [
+      { itemId: 'amber_vein_shard', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'golden_resin_chunk', chance: 0.55, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'defensive',
+    description:
+      '封存遺物坑與石化花圃中站起的樹脂魔像，身體由硬化花莖、琥珀脈晶與古老工具碎片組成。牠會用反光樹脂屏障保護深層採集點。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '石化樹脂魔像會反射屏障，屏障期間不要貪攻。',
+      treasure: '牠體內蘊藏大量琥珀脈晶與金脂塊。',
+      spirit: '魔像像森林把舊採集工具重新組成的防盜機制。',
+    },
+  },
+
+  elder_resin_treant: {
+    id: 'elder_resin_treant', name: '古脂樹人', alias: 'resintreant',
+    level: 30, hp: 1500, mp: 320, str: 78, int: 66, dex: 18, vit: 128, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain', 'reflect_barrier'],
+    expReward: 1650, goldReward: [445, 850],
+    drops: [
+      { itemId: 'golden_resin_chunk', chance: 0.75, minQty: 2, maxQty: 4 },
+      { itemId: 'smoke_resin_spore', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '古脂巨樹旁甦醒的高大樹人，樹幹中封著數十層金色年輪。牠每次移動都會拉起大片根脈，像要把整座森林重新包進琥珀裡。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '古脂樹人會根縛、吸血與反射，適合慢慢拆解。',
+      treasure: '牠是金脂塊與煙脂孢子的高品質來源。',
+      spirit: '古脂樹人代表森林古木對深層採集的最後警告。',
+    },
+  },
+
+  deep_amber_matriarch: {
+    id: 'deep_amber_matriarch', name: '深琥珀蟲母', alias: 'ambermatriarch',
+    level: 32, hp: 2100, mp: 420, str: 92, int: 78, dex: 42, vit: 136, luk: 22,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'venomous_bite', 'toxic_cloud', 'reflect_barrier', 'death_mark'],
+    expReward: 2200, goldReward: [600, 1150],
+    drops: [
+      { itemId: 'deep_amber_heart', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'waxwing_chitin', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'amber_vein_shard', chance: 0.55, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '沉睡在深琥珀核心中的巨大蟲母，半身被金色樹脂封住，仍能透過脈晶與蜂巢操控整片森林的昆蟲。牠醒來時，封存千年的翅影會在核心內同時拍動。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1500,
+    guardianHints: {
+      creature: '深琥珀蟲母會毒霧、火焰與反射屏障，先處理同場精英再攻本體。',
+      treasure: '牠必定掉落深琥珀心核，是琥珀森林核心材料。',
+      spirit: '蟲母是封存昆蟲生態與古木樹脂意志的共同核心。',
+    },
+  },
 };

@@ -7363,6 +7363,195 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  amber_forest_claim_surveyor: {
+    id: 'amber_forest_claim_surveyor',
+    name: '伊蓮',
+    alias: 'surveyor',
+    title: '採集入口界樁測量員',
+    description:
+      '一名採集測量員站在界樁旁，腰間掛著樹脂切刀與標記繩。' +
+      '她不斷在木板上記下金脂流向，避免採集隊誤入仍在生長的根脈。',
+    roomId: 'amber_forest_entry_claim',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '琥珀森林可以採，但不能亂砍。這裡每一道金脂脈都還活著。',
+        options: [
+          { text: '我該先採什麼？', nextId: 'route' },
+          { text: '深琥珀核心在哪？', nextId: 'core' },
+          { text: '我會照界樁走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先取金脂塊和琥珀脈晶，再到蜂巢找封蠟蟲甲。煙脂孢子別在上風處採，會睡倒整隊。',
+        options: [
+          { text: '深琥珀核心在哪？', nextId: 'core' },
+          { text: '我去琥珀脈徑。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '古脂巨樹和石化花圃之後才是深琥珀核心。若聽見翅聲卻看不見蟲，代表蟲母已經醒了。',
+        options: [
+          { text: '我該先採什麼？', nextId: 'route' },
+          { text: '我會避開核心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '用切刀，不要用斧頭。森林分得清採集和傷害。' },
+    ],
+    guardianHints: {
+      creature: '伊蓮能提示琥珀幼樹伏行者、樹脂脈蜥、古脂樹人與深琥珀蟲母的路線。',
+      treasure: '她說明金脂塊、琥珀脈晶、封蠟蟲甲與煙脂孢子的採集順序。',
+      spirit: '她把琥珀森林的 resource 區規矩轉成採集動線。',
+    },
+  },
+
+  amber_forest_resin_broker: {
+    id: 'amber_forest_resin_broker',
+    name: '卡洛',
+    alias: 'broker',
+    title: '琥珀脈徑樹脂經紀',
+    description:
+      '一名樹脂經紀坐在琥珀脈徑旁的防黏布上，貨箱中分格放著金脂塊、琥珀脈晶與備用切刀。' +
+      '他說每一塊材料都已登記，不登記的通常會被森林自己收回。',
+    roomId: 'amber_forest_vein_path',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'golden_resin_chunk',
+      'amber_vein_shard',
+      'resin_cutting_knife',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買材料、買切刀、買解毒劑都可以。買命不行，森林不賣第二次機會。',
+        options: [
+          { text: '我看看材料。', nextId: 'shop' },
+          { text: '哪些材料不能買？', nextId: 'rare' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '金脂塊、琥珀脈晶、樹脂切刀和基礎補給。封蠟蟲甲與煙脂孢子太不穩，最好自己取。',
+        action: { type: 'shop', data: { shopType: 'amber_forest_resin' } },
+        options: [
+          { text: '哪些材料不能買？', nextId: 'rare' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rare',
+        text: '封蠟蟲甲要新鮮，煙脂孢子要看風向，深琥珀心核更別想。能放在箱裡賣的，都只是外層材料。',
+        options: [
+          { text: '我看看材料。', nextId: 'shop' },
+          { text: '我自己去採。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '切刀用完擦乾淨。樹脂會記住上一個採集者的手。' },
+    ],
+    guardianHints: {
+      creature: '卡洛能提示樹脂脈蜥、封蠟胡蜂與煙脂菌人的材料價值。',
+      treasure: '他販售金脂塊、琥珀脈晶與樹脂切刀，補足資源區商店需求。',
+      spirit: '他把琥珀森林採集材料導入可回訪的經濟節點。',
+    },
+  },
+
+  amber_forest_waspkeeper: {
+    id: 'amber_forest_waspkeeper',
+    name: '蜜雅',
+    alias: 'waspkeeper',
+    title: '封蠟蜂巢看巢人',
+    description:
+      '一名戴著厚面紗的看巢人站在封蠟蜂巢下方，手臂包著防蠟布。' +
+      '她用很小的煙罐控制蜂群方向，卻從不把煙吹向深琥珀核心。',
+    roomId: 'amber_forest_wasp_nests',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別拍蜂巢。封蠟胡蜂聽不懂道歉，只認震動。',
+        options: [
+          { text: '我要採封蠟蟲甲。', nextId: 'chitin' },
+          { text: '蟲母會來這裡嗎？', nextId: 'matriarch' },
+          { text: '我會放輕腳步。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'chitin',
+        text: '先用煙脂孢子壓住蜂群，再剝翅膜邊緣。剝太深會讓整窩醒來，連燼甲蟲都會跟著躁動。',
+        options: [
+          { text: '蟲母會來這裡嗎？', nextId: 'matriarch' },
+          { text: '我去找孢子。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'matriarch',
+        text: '蟲母不來蜂巢，蜂巢去聽牠。深琥珀核心一震，所有封蠟翅都會同時停一下。',
+        options: [
+          { text: '我要採封蠟蟲甲。', nextId: 'chitin' },
+          { text: '我會觀察翅聲。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '如果蜂聲忽然變整齊，立刻離開。那不是安靜，是命令。' },
+    ],
+    guardianHints: {
+      creature: '蜜雅能提示封蠟胡蜂、燼甲蟲與深琥珀蟲母的昆蟲生態線。',
+      treasure: '她說明封蠟蟲甲與煙脂孢子的採集方式。',
+      spirit: '她把蜂巢、蟲丘與核心串成琥珀森林的昆蟲控制鏈。',
+    },
+  },
+
+  amber_forest_old_resin_druid: {
+    id: 'amber_forest_old_resin_druid',
+    name: '羅恩',
+    alias: 'druid',
+    title: '古脂巨樹老德魯伊',
+    description:
+      '一名老德魯伊坐在古脂巨樹根旁，鬍鬚裡凝著細小金脂珠。' +
+      '他用木杖敲擊樹根聽回音，分辨深層琥珀是否仍在穩定生長。',
+    roomId: 'amber_forest_elder_resin_tree',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你走到這裡，森林已經知道你的重量。接下來每一步都會被記進年輪。',
+        options: [
+          { text: '古脂樹人為何醒來？', nextId: 'treant' },
+          { text: '深琥珀心核能取嗎？', nextId: 'heart' },
+          { text: '我會尊重森林。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'treant',
+        text: '因為外層採得太快。古脂樹人不是敵人，是森林在問你還要拿多少。',
+        options: [
+          { text: '深琥珀心核能取嗎？', nextId: 'heart' },
+          { text: '我會先停手。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'heart',
+        text: '能取，但只能從蟲母甦醒後剝離。死琥珀是石頭，活琥珀才是心核。',
+        options: [
+          { text: '古脂樹人為何醒來？', nextId: 'treant' },
+          { text: '我準備好了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把核心帶到火旁。那會讓裡面的年輪以為春天來了。' },
+    ],
+    guardianHints: {
+      creature: '羅恩能提示古脂樹人、石化樹脂魔像與深琥珀蟲母的後段關係。',
+      treasure: '他說明深琥珀心核與高階樹脂材料的取得條件。',
+      spirit: '他把採集行為與森林年輪、核心生長連成主題收束。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
