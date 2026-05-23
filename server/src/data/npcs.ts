@@ -4279,6 +4279,199 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他代表仍想理解封印的人，而不是只想打破它的人。',
     },
   },
+
+  marsh_mirrors_pathfinder: {
+    id: 'marsh_mirrors_pathfinder',
+    name: '洛苓',
+    alias: 'pathfinder',
+    title: '鏡沼探路人',
+    description:
+      '一名披著防水斗篷的探路人站在泥炭小洲舊營火旁，手腕纏著黑蘆路繩。' +
+      '她每說一句話都會看一次水面倒影，確認對方還站在同一個方向。',
+    roomId: 'marsh_of_mirrors_peat_islet',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '在鏡沼裡，地圖只能信一半。另一半要靠路繩、苔痕，還有你願不願意承認自己已經迷路。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '倒影怎麼判斷？', nextId: 'reflection' },
+          { text: '失蹤旅人呢？', nextId: 'missing' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先從蘆葦入口到泥炭小洲校準方向，再走歪木棧道或黑水小徑。看到月光堤道前，不要追任何會叫你名字的聲音。',
+        options: [
+          { text: '倒影怎麼判斷？', nextId: 'reflection' },
+          { text: '失蹤旅人呢？', nextId: 'missing' },
+        ],
+      },
+      {
+        id: 'reflection',
+        text:
+          '真路的倒影會慢半拍，假路太完美。鏡苔能貼在真實地標上，黑蘆纖維能綁住回程路。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '我記下來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'missing',
+        text:
+          '失路石堆上的名牌不是紀念品，是路線紀錄。找到名牌就帶回來，我能看出他們最後信了哪一個倒影。',
+        options: [
+          { text: '倒影怎麼判斷？', nextId: 'reflection' },
+          { text: '我會找。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '回頭看見兩個自己時，跟著鞋底有泥的那個走。',
+      },
+    ],
+    guardianHints: {
+      creature: '洛苓知道蘆影潛伏者和巫燈回聲最常模仿哪些聲音。',
+      treasure: '她的黑蘆路繩能標出泥炭小洲、月光堤道與玻璃水核心的真路關係。',
+      spirit: '她把迷路者留下的錯誤變成後來者能活用的路標。',
+    },
+  },
+
+  marsh_mirrors_bog_apothecary: {
+    id: 'marsh_mirrors_bog_apothecary',
+    name: '薇妲',
+    alias: 'apothecary',
+    title: '沼澤藥師',
+    description:
+      '一名沼澤藥師在毒花床邊架起防潮藥箱，箱內分著銀面藻、鏡苔、解毒劑與綠色藥瓶。' +
+      '她的布面罩浸過草藥，說話時仍能聞到淡淡苦味。',
+    roomId: 'marsh_of_mirrors_poison_bloom_bed',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'silver_algae',
+      'mirror_moss',
+      'black_reed_fiber',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '想活著穿過鏡沼，解毒劑不嫌多，路標材料也不嫌多。毒霧會傷人，假路會殺人。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '哪些材料有用？', nextId: 'materials' },
+          { text: '毒花怎麼採？', nextId: 'blooms' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、銀面藻、鏡苔和黑蘆纖維都有。別把鏡核碎片拿來換藥，那東西要交給懂核心的人。',
+        action: { type: 'shop', data: { shopType: 'mirror_marsh' } },
+        options: [
+          { text: '哪些材料有用？', nextId: 'materials' },
+          { text: '毒花怎麼採？', nextId: 'blooms' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '銀面藻穩定解毒藥，鏡苔標記真路，黑蘆纖維綁路繩。玻璃水膜和失路名牌別亂賣，那些是追查核心的證據。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'blooms',
+        text:
+          '看倒影。倒影裡還沒開的花，現實裡才剛好成熟。若倒影已經枯了，採下來只會放出黑霧。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '藥能解毒，不能解貪路。看見捷徑時先停一步。',
+      },
+    ],
+    guardianHints: {
+      creature: '薇妲熟悉鏡泥毒蛙、黑蘆泥膠與毒花霧氣的反應。',
+      treasure: '她的藥箱分格收著銀面藻、鏡苔與黑蘆纖維。',
+      spirit: '她讓鏡沼的毒性短暫變成可被理解的藥理。',
+    },
+  },
+
+  marsh_mirrors_shrine_keeper: {
+    id: 'marsh_mirrors_shrine_keeper',
+    name: '莫芮',
+    alias: 'keeper',
+    title: '沉祠守名人',
+    description:
+      '一名沉默的守名人坐在沉沒小祠乾燥供桌旁，膝上放著一串被水泡白的名牌。' +
+      '她不替失蹤者立碑，只把每個名字重新念到正確方向。',
+    roomId: 'marsh_of_mirrors_sinking_shrine',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '名字若只留在水裡，就會被鏡沼學去。把失路名牌交回來，至少能讓一個聲音不再被巫燈借走。',
+        options: [
+          { text: '小祠供品是什麼？', nextId: 'offering' },
+          { text: '巫燈從哪來？', nextId: 'lantern' },
+          { text: '玻璃水核心呢？', nextId: 'core' },
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'offering',
+        text:
+          '解毒草、鏡苔、失路名牌。供品不是討好水下的東西，是提醒自己哪些名字不能拿去換捷徑。',
+        options: [
+          { text: '巫燈從哪來？', nextId: 'lantern' },
+          { text: '玻璃水核心呢？', nextId: 'core' },
+        ],
+      },
+      {
+        id: 'lantern',
+        text:
+          '巫燈不是人在點，是那些被鏡沼記住的求救聲。你若回應，它就知道你害怕誰沒有回來。',
+        options: [
+          { text: '小祠供品是什麼？', nextId: 'offering' },
+          { text: '我不會回應。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text:
+          '核心讓水學會複製。打碎它也許能救路，也可能讓所有倒影一起醒來。先帶回鏡核碎片，再談選擇。',
+        options: [
+          { text: '巫燈從哪來？', nextId: 'lantern' },
+          { text: '我會帶回證據。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '走之前念一次自己的名字。若水裡的你沒有跟著念，就不要出發。',
+      },
+    ],
+    guardianHints: {
+      creature: '莫芮能分辨巫燈回聲、沉柳樹衛與玻璃水倒核心的喚醒順序。',
+      treasure: '她手中的名牌串能指出失路石堆、小祠與巫燈處的錯路來源。',
+      spirit: '她守護的不是祠堂，而是被鏡沼借走前的名字。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

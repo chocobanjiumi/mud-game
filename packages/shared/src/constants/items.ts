@@ -2500,6 +2500,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['ancient_ruins', 'quest', 'monster_drop'], zoneTags: ['ancient_ruins'],
   },
+  silver_algae: {
+    id: 'silver_algae', name: '銀面藻', type: 'material',
+    description: '只在鏡沼銀色水面邊緣生長的細藻，離水後仍會反射不存在的月光。藥師用它穩定解毒藥與幻覺藥劑。',
+    buyPrice: 0, sellPrice: 22,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'gathering', 'monster_drop'], zoneTags: ['marsh_of_mirrors'],
+  },
+  mirror_moss: {
+    id: 'mirror_moss', name: '鏡苔', type: 'material',
+    description: '貼著泥炭小洲與月光堤道石縫生長的濕苔，葉面像細小鏡片。可用來標記真實路線，避免被倒影誤導。',
+    buyPrice: 0, sellPrice: 24,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'gathering', 'quest'], zoneTags: ['marsh_of_mirrors'],
+  },
+  black_reed_fiber: {
+    id: 'black_reed_fiber', name: '黑蘆纖維', type: 'material',
+    description: '鏡沼深處黑蘆剝下的韌性纖維，浸水後不會腐爛。探路人會把它編成不受倒影干擾的路繩。',
+    buyPrice: 0, sellPrice: 20,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'monster_drop', 'salvage'], zoneTags: ['marsh_of_mirrors'],
+  },
+  glasswater_film: {
+    id: 'glasswater_film', name: '玻璃水膜', type: 'material',
+    description: '從破碎倒影與玻璃水核心邊緣刮下的透明水膜，薄得像不存在。它能短暫保存某一刻的正確倒影。',
+    buyPrice: 0, sellPrice: 36,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'monster_drop', 'hidden_cache'], zoneTags: ['marsh_of_mirrors'],
+  },
+  lost_name_tag: {
+    id: 'lost_name_tag', name: '失路名牌', type: 'quest',
+    description: '失路石堆與沉沒小祠附近撿到的防水名牌，刻痕被泡得發白。它能證明失蹤旅人最後走向哪一條假路。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'quest', 'monster_drop'], zoneTags: ['marsh_of_mirrors'],
+  },
+  mirror_core_splinter: {
+    id: 'mirror_core_splinter', name: '鏡核碎片', type: 'quest',
+    description: '玻璃水核心外圈剝落的透明碎核，轉動時會讓周圍倒影慢半拍。它是鏡沼迷路現象的核心物證。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['marsh_of_mirrors', 'quest', 'monster_drop'], zoneTags: ['marsh_of_mirrors'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {
