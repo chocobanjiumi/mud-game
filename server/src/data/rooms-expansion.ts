@@ -2566,8 +2566,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'rift_anchor_guardian', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 75 },
     ],
+    npcs: ['rift_seal_researcher'],
     mapSymbol: '[淵]',
     mapX: 3,
     mapY: 30,
@@ -2597,6 +2599,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'mirrorlake_reflection', maxCount: 1, respawnSeconds: 80 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
     ],
     mapSymbol: '[廊]',
@@ -2749,6 +2752,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'time_splinter_stalker', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
     ],
     mapSymbol: '[時]',
@@ -2806,6 +2810,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'rift_anchor_guardian', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 75 },
     ],
     mapSymbol: '[錨]',
@@ -2833,6 +2838,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'mirrorlake_reflection', maxCount: 2, respawnSeconds: 80 },
       { monsterId: 'nightmare', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[鏡]',
@@ -2887,6 +2893,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 3, respawnSeconds: 60 },
+      { monsterId: 'time_splinter_stalker', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 70 },
     ],
     mapSymbol: '[觀]',
@@ -2940,6 +2947,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'time_splinter_stalker', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
     ],
     mapSymbol: '[碎]',
@@ -2967,6 +2975,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'gravity_well_maw', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
     ],
     mapSymbol: '[重]',
@@ -3020,8 +3029,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 3, respawnSeconds: 65 },
+      { monsterId: 'gravity_well_maw', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'void_walker', maxCount: 1, respawnSeconds: 70 },
     ],
+    npcs: ['rift_forge_scavenger'],
     mapSymbol: '[爐]',
     mapX: 2,
     mapY: 34,
@@ -3047,8 +3058,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'mirrorlake_reflection', maxCount: 1, respawnSeconds: 80 },
       { monsterId: 'shadow_demon', maxCount: 2, respawnSeconds: 70 },
     ],
+    npcs: ['echo_court_witness'],
     mapSymbol: '[響]',
     mapX: 5,
     mapY: 33,
@@ -3074,6 +3087,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'beacon_eye_harrier', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[標]',
@@ -3101,6 +3115,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'beacon_eye_harrier', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 70 },
     ],
     mapSymbol: '[塔]',

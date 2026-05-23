@@ -3368,6 +3368,160 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  // ─── 深淵裂隙 NPC ──────────────────────────────────────
+
+  rift_seal_researcher: {
+    id: 'rift_seal_researcher',
+    name: '裂隙封印研究員',
+    alias: 'sealresearcher',
+    title: '站在入口邊緣的穩定者',
+    description: '一名用錨鏈把自己固定在深淵入口旁的研究員，護目鏡映著紫黑裂光。她的筆記本用龍鱗片作封面，頁角夾著來自封印錨階的斷鏈灰。',
+    roomId: 'abyss_entrance',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別站在裂縫正中。這裡不是洞穴，是一個正在思考怎麼吞掉你的座標。先把錨鏈讀懂，再往下走。',
+        options: [
+          { text: '錨鏈代表什麼？', nextId: 'anchor' },
+          { text: '我該收集什麼？', nextId: 'samples' },
+          { text: '深淵最危險的是什麼？', nextId: 'danger' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'anchor',
+        text: '龍族和術士曾合作把入口釘在現實上。現在錨鏈被深淵反過來做成守衛；從裂隙錨衛身上取回鏈環，我們才能知道封印哪裡先斷。',
+        options: [
+          { text: '我會找深淵錨鏈環。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'samples',
+        text: '虛空碎片、深淵錨鏈環、時間碎片、信標眼核。前兩個能穩入口，後兩個能證明領主正在校準通往天界的路。',
+        options: [
+          { text: '了解。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text: '不是死亡，是偏移。你以為自己往北走，實際上可能走進別人的記憶、上一秒或信標傳出的座標。留下路標，別相信倒影。',
+        options: [
+          { text: '不相信倒影。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若聽見自己的聲音從前方傳來，停下。真正的你應該還在原地。' },
+    ],
+    guardianHints: {
+      creature: '研究員腰間的錨鏈會在虛空行者現身前繃緊。',
+      treasure: '她的筆記中有封印錨階、鏡湖與信標三處座標的相對誤差。',
+      spirit: '她知道自己可能出不去，所以把每一頁筆記都寫成下一個人能讀懂的格式。',
+    },
+  },
+
+  rift_forge_scavenger: {
+    id: 'rift_forge_scavenger',
+    name: '裂隙熔爐拾荒者',
+    alias: 'riftforger',
+    title: '在不可能火焰旁交易的人',
+    description: '一個穿著多層隔熱斗篷的拾荒者，臉上覆著被虛空燒裂的銀面具。他用長鉗從裂隙熔爐邊撿出未成形金屬，攤位則綁在一塊漂浮砧台上。',
+    roomId: 'rift_forge',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion', 'large_mp_potion', 'return_scroll',
+      'abyssal_stabilizer', 'void_shard', 'rift_metal_blank',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別碰紫火，除非你想被燒成另一種可能性。要補給、穩定劑、虛空碎片，還是裂界金屬胚？快選，砧台下一次移位快到了。',
+        options: [
+          { text: '看看貨。', nextId: 'shop' },
+          { text: '裂界金屬胚是什麼？', nextId: 'blank' },
+          { text: '這座熔爐誰在用？', nextId: 'forge' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '裂隙穩定劑能讓你在引力井旁多活一會；裂界金屬胚還沒被深淵完成，拿走它就是少一把割開空間的武器。',
+        action: { type: 'shop', data: { shopType: 'rift_forge' } },
+        options: [
+          { text: '交易完成。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'blank',
+        text: '它不是普通金屬，是被熔爐逼著在多種物質形態間閃爍的碎片。若交給穩定者，也許能做封印釘；若落到深淵手裡，就會變成裂界刃。',
+        options: [
+          { text: '誰在供料？', nextId: 'forge' },
+        ],
+      },
+      {
+        id: 'forge',
+        text: '深淵核心掉碎片，倒重巨口吞碎片，熔爐再把碎片吐成武器。你要阻止這條鏈，先處理引力井和信標。',
+        options: [
+          { text: '我會去看。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '離開前確認影子還貼在腳下。若影子先走，你就別跟上。' },
+    ],
+    guardianHints: {
+      creature: '拾荒者面具會在倒重巨口靠近時反射出井心黑光。',
+      treasure: '他的漂浮砧台下方藏著半張裂隙熔爐供料清單。',
+      spirit: '他做買賣不是因為勇敢，而是因為裂隙裡的材料離開一件，深淵就少一件武器。',
+    },
+  },
+
+  echo_court_witness: {
+    id: 'echo_court_witness',
+    name: '迴響庭證人',
+    alias: 'witness',
+    title: '被聲音留下的人',
+    description: '一個半透明的人影坐在迴響庭審判台旁，身形會隨每一道回聲短暫分裂。她的胸口沒有傷口，只有一枚不停震動的聲晶。',
+    roomId: 'echo_court',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '我不是活人，也還不是死者。我是被深淵漏掉的一句證詞。若你聽得懂迴響，就能找到上一支隊伍最後看見的信標。',
+        options: [
+          { text: '上一支隊伍發現了什麼？', nextId: 'last_route' },
+          { text: '信標要怎麼處理？', nextId: 'beacon' },
+          { text: '你需要什麼？', nextId: 'request' },
+          { text: '我會聽回聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'last_route',
+        text: '他們從記憶迷宮進來，帶著時間碎片，最後被信標眼獵者標記。回聲橋打開後，他們只留下三個字：別抬頭。',
+        options: [
+          { text: '信標眼獵者？', nextId: 'beacon' },
+        ],
+      },
+      {
+        id: 'beacon',
+        text: '信標外層有眼狀符文。先打碎外圈，取下信標眼核，再處理核心。若直接碰光柱，混沌之子會沿座標裂縫反覆湧來。',
+        options: [
+          { text: '我會先破外圈。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'request',
+        text: '若你找到鏡湖記憶片或信標眼核，帶回這裡。聲音需要證物，否則我說出的真相會被深淵改寫。',
+        options: [
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '在迴響庭裡，沉默也是路標。太吵時，虛空行者會先找到你。' },
+    ],
+    guardianHints: {
+      creature: '證人無法離開迴響庭，但她會在虛空行者追逐最大聲回音前先摀住耳朵。',
+      treasure: '她胸口的聲晶封存著被抹去隊伍的最後路線。',
+      spirit: '她代表深淵無法完全吞掉的證詞，讓失敗者仍能指引後來者。',
+    },
+  },
+
   // ─── 湖畔城鎮擴充 NPC ──────────────────────────────────
 
   innkeeper: {
