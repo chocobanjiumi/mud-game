@@ -3113,6 +3113,43 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
 
+  // ─── 星隕坑材料與星核聖物 (Lv 48-58) ───
+  stariron_nodule: {
+    id: 'stariron_nodule', name: '星鐵核粒', type: 'material',
+    description: '星鐵散地挖出的銀黑核粒，表面會隨天空星位改變亮度，是打造高階星鐵裝備的基礎礦材。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 99, levelReq: 48, rarity: 'epic',
+  },
+  radiant_glass_sand: {
+    id: 'radiant_glass_sand', name: '輻光玻砂', type: 'material',
+    description: '隕星高熱把坑壁熔成的發光玻砂，握在手中會留下淡金光痕，可用於折射護符與照明粉。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 99, levelReq: 49, rarity: 'epic',
+  },
+  magnetized_meteorite: {
+    id: 'magnetized_meteorite', name: '磁化隕鐵', type: 'material',
+    description: '磁化尖塔周圍吸附出的隕鐵塊，能牽動金屬工具與雷光，是穩定重力井前最重要的導電材料。',
+    buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 50, rarity: 'legendary',
+  },
+  comet_shard: {
+    id: 'comet_shard', name: '彗星碎片', type: 'material',
+    description: '彗片礦井中剝落的冷白晶片，邊緣拖著細小星尾，常被觀測者用來校準星圖與遠距傳訊。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 99, levelReq: 51, rarity: 'legendary',
+  },
+  gravity_lens: {
+    id: 'gravity_lens', name: '重力透鏡', type: 'material',
+    description: '重力井內凝結出的透明弧片，透過它觀察物體時距離會被拉長或壓縮，是研究星核裂縫的關鍵材料。',
+    buyPrice: 3600, sellPrice: 1800, stackable: true, maxStack: 99, levelReq: 53, rarity: 'legendary',
+  },
+  worldscar_fragment: {
+    id: 'worldscar_fragment', name: '世界傷痕碎片', type: 'quest',
+    description: '世界傷痕邊緣剝落的裂縫碎片，內側映著不屬於此世的星空，是進入世界王星核前的危險憑證。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 56, rarity: 'legendary',
+  },
+  starcore_heart: {
+    id: 'starcore_heart', name: '世界王星核心臟', type: 'quest',
+    description: '星隕坑最深處仍在跳動的隕星心臟，光與雷在核心中交替閃爍，像一顆尚未承認墜落的星辰。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 58, rarity: 'mythic',
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

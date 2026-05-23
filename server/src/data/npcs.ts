@@ -6536,6 +6536,151 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他把黑曜深層從單純採礦區提升為惡魔奪取熔爐產能的劇情節點。',
     },
   },
+
+  starfall_crater_surveyor: {
+    id: 'starfall_crater_surveyor',
+    name: '艾芙',
+    alias: 'surveyor',
+    title: '測量營地星坑測繪員',
+    description:
+      '一名測繪員守著被磁砂壓住的星坑地圖，量角器和羅盤都懸在半空微微顫動。' +
+      '她用銀線標出重力安全坡道，並記錄每次世界傷痕發光的時間。',
+    roomId: 'starfall_crater_survey_camp',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別相信羅盤。星隕坑裡，北方有時候只是磁砂想讓你去的方向。',
+        options: [
+          { text: '採集路線怎麼走？', nextId: 'route' },
+          { text: '世界王星核在哪？', nextId: 'core' },
+          { text: '我先校準工具。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先走玻化斜坡和星鐵散地，避開磁化尖塔的雷暴。要進重力井前，準備磁化隕鐵和重力透鏡。',
+        options: [
+          { text: '世界王星核在哪？', nextId: 'core' },
+          { text: '我會標記坡道。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '世界傷痕後面就是星核，但裂縫會挑人。沒有世界傷痕碎片，星核只會把你送回你最害怕的天空。',
+        options: [
+          { text: '採集路線怎麼走？', nextId: 'route' },
+          { text: '我去找碎片。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若影子往上飄，不是你變輕了，是重力井在看你。' },
+    ],
+    guardianHints: {
+      creature: '艾芙能提示星玻哨衛、磁雷鷹、重力井畸體與世界傷痕雷龍的路線風險。',
+      treasure: '她會說明星鐵核粒、磁化隕鐵、重力透鏡與世界傷痕碎片的用途。',
+      spirit: '她把星隕坑的危險轉成坡道、磁暴與裂縫週期三種可追蹤資訊。',
+    },
+  },
+
+  starfall_crater_meteoric_smith: {
+    id: 'starfall_crater_meteoric_smith',
+    name: '洛罕',
+    alias: 'meteorsmith',
+    title: '隕鐵熔臺星鐵匠',
+    description:
+      '一名星鐵匠在隕鐵熔臺邊工作，火鉗被磁化隕鐵吸得不斷偏斜。' +
+      '他把彗星碎片排成星座形狀，用來判斷哪一批星鐵能承受雷光淬火。',
+    roomId: 'starfall_crater_meteoric_forge',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'stariron_nodule',
+      'radiant_glass_sand',
+      'magnetized_meteorite',
+      'comet_shard',
+      'gravity_lens',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買之前先把鐵器綁好。這裡的材料會自己挑主人，也會自己飛走。',
+        options: [
+          { text: '我看看星材。', nextId: 'shop' },
+          { text: '星核前需要什麼？', nextId: 'core' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、星鐵核粒、輻光玻砂、磁化隕鐵、彗星碎片、重力透鏡。越靠近星核，越別只信自己的腳。',
+        action: { type: 'shop', data: { shopType: 'starfall_crater_starforge' } },
+        options: [
+          { text: '星核前需要什麼？', nextId: 'core' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '星鐵穩武器，玻砂穩光，磁鐵導雷，透鏡穩重力。世界傷痕碎片得自己拿，匠人買不到那種裂縫。',
+        options: [
+          { text: '我看看星材。', nextId: 'shop' },
+          { text: '我去裂縫。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若聽見熔臺裡有心跳聲，別問價格，先離遠一點。' },
+    ],
+    guardianHints: {
+      creature: '洛罕能提示星鐵魔像、彗片掘行獸、星圖輝靈與外界吞星者的材料關係。',
+      treasure: '他的商店供應星隕坑高階材料與藥水，提供世界王前補給節點。',
+      spirit: '他把星鐵採集、隕鐵加工與星核通行需求連成一條可回訪服務線。',
+    },
+  },
+
+  starfall_crater_star_map_keeper: {
+    id: 'starfall_crater_star_map_keeper',
+    name: '賽琳',
+    alias: 'mapkeeper',
+    title: '星圖廢墟守圖人',
+    description:
+      '一名守圖人坐在破裂星圖中央，斗篷上縫著銀草、彗片和已失效的觀測鏡片。' +
+      '她每說一句話，腳下星線就會重新連成另一個可能的天空。',
+    roomId: 'starfall_crater_star_map_ruin',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '隕星不是掉下來，它是被某個地方放開。星圖只記得放手的方向。',
+        options: [
+          { text: '外界空洞是什麼？', nextId: 'void' },
+          { text: '星核心臟能做什麼？', nextId: 'heart' },
+          { text: '我先看星圖。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'void',
+        text: '外界空洞不是洞，是入口的另一面。吞星者正從那邊拉扯星核，牠若成功，這座坑會變成門。',
+        options: [
+          { text: '星核心臟能做什麼？', nextId: 'heart' },
+          { text: '我會去星核。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'heart',
+        text: '星核心臟可以證明裂縫仍能被關上。帶回它，至少我們知道這顆星還屬不屬於這個世界。',
+        options: [
+          { text: '外界空洞是什麼？', nextId: 'void' },
+          { text: '我會帶回核心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別在星圖上踩自己的名字。那通常會讓路變短，但代價很長。' },
+    ],
+    guardianHints: {
+      creature: '賽琳能解釋星圖輝靈、世界傷痕雷龍與外界吞星者的世界王線。',
+      treasure: '她指出世界傷痕碎片與世界王星核心臟在封閉裂縫中的用途。',
+      spirit: '她把星隕坑從資源採集區推進到外界裂縫與世界王劇情節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
