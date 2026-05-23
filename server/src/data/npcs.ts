@@ -5699,6 +5699,155 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他把城邦下層的交通感具體化。',
     },
   },
+
+  cursed_graveyard_watch_keeper: {
+    id: 'cursed_graveyard_watch_keeper',
+    name: '艾妲',
+    alias: 'keeper',
+    title: '守夜燈亭看守',
+    description:
+      '一名披著防霧斗篷的看守站在守夜燈亭殘燈旁，手裡握著一截裂鐘舌和沾著黑蠟的火鉗。' +
+      '她會先看旅人的影子是否完整，再決定要不要回答問題。',
+    roomId: 'cursed_graveyard_watch_lantern',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '進墓園前先數影子。你有一個，暫時還算活人。',
+        options: [
+          { text: '墓鐘為什麼響？', nextId: 'bell' },
+          { text: '黑霧怎麼避？', nextId: 'mist' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'bell',
+        text: '鐘樓沒人，但鐘聲會點名。被點到的骸兵會爬回葬列，被點到的生者最好別答應。',
+        options: [
+          { text: '黑霧怎麼避？', nextId: 'mist' },
+          { text: '我不回應鐘聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'mist',
+        text: '黑霧靠冷燭和封蠟繞路。看不見墓碑時別直走，先找守夜燈、破聖像或骨牆。',
+        options: [
+          { text: '墓鐘為什麼響？', nextId: 'bell' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若聽見自己的名字從棺裡傳出來，別回答。名字可以重取，命不行。' },
+    ],
+    guardianHints: {
+      creature: '艾妲能說明墓鐘骸兵、黑羽怨影與黑霧池的行動徵兆。',
+      treasure: '她需要墓鐘舌片、黑霧殘渣與守墓封蠟來校正燈亭。',
+      spirit: '她讓墓園入口成為仍能求生的最後秩序點。',
+    },
+  },
+
+  cursed_graveyard_grave_seller: {
+    id: 'cursed_graveyard_grave_seller',
+    name: '羅文',
+    alias: 'seller',
+    title: '掘墓棚補給人',
+    description:
+      '一名沉默的補給人守在掘墓棚內，把冷燭、聖水、封蠟和撬棺工具分開擺放。' +
+      '他的貨架上沒有裝飾，只有每件物品被使用後可能多活多久的粗略標記。',
+    roomId: 'cursed_graveyard_gravedigger_shack',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'large_hp_potion',
+      'grave_bone_shard',
+      'grave_bell_clapper',
+      'black_mist_residue',
+      'cracked_saint_lens',
+      'gravekeeper_wax_seal',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你要買能活著出去的東西，不是好看的東西。墓園不欣賞品味。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '哪些材料重要？', nextId: 'materials' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、墓園骨片、墓鐘舌片、黑霧殘渣、破聖像透片、守墓封蠟。買之前先想好要走哪條路。',
+        action: { type: 'shop', data: { shopType: 'cursed_graveyard_supply' } },
+        options: [
+          { text: '哪些材料重要？', nextId: 'materials' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '骨片看葬列，舌片聽墓鐘，黑霧殘渣看詛咒，聖像透片看真影，封蠟看哪口棺不該開。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把空棺當路標。空棺通常在等人補上。' },
+    ],
+    guardianHints: {
+      creature: '羅文熟悉瘟棺抬行者、墓誓亡騎與守墓地窖監守的掉落證物。',
+      treasure: '他的棚內販售墓園材料與深入墓園前的恢復補給。',
+      spirit: '他把死亡地景轉化成玩家能理解的補給與線索系統。',
+    },
+  },
+
+  cursed_graveyard_litany_reader: {
+    id: 'cursed_graveyard_litany_reader',
+    name: '瑪席雅',
+    alias: 'reader',
+    title: '悼詞解讀者',
+    description:
+      '一名解讀者跪坐在禮拜堂廢墟的斷椅旁，膝上攤著被黑霧咬壞的悼詞拓本。' +
+      '她用破聖像透片壓住書頁，避免字句自己爬回巫妖陵寢。',
+    roomId: 'cursed_graveyard_chapel_ruin',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '這裡的悼詞不是給死者聽，是給墓園聽。念錯一句，整座墓園都會以為葬禮還沒結束。',
+        options: [
+          { text: '巫妖在守什麼？', nextId: 'lich' },
+          { text: '悼詞頁有什麼用？', nextId: 'page' },
+          { text: '我先不碰書。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'lich',
+        text:
+          '月悼巫妖守祭壇，鐘墓巫妖主守結尾。只要鐘聲和悼詞互相接上，亡者就永遠不會被送走。',
+        options: [
+          { text: '悼詞頁有什麼用？', nextId: 'page' },
+          { text: '我要切斷鐘聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'page',
+        text:
+          '悼詞頁不是戰利品，是證據。收齊後能知道哪一句把整座墓園鎖住，也能知道該在哪裡停下誦讀。',
+        options: [
+          { text: '巫妖在守什麼？', nextId: 'lich' },
+          { text: '我會帶回來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你必須讀悼詞，讀到自己的名字前就停。' },
+    ],
+    guardianHints: {
+      creature: '瑪席雅能解釋月悼巫妖、鐘墓巫妖主與破聖像鬼的儀式關係。',
+      treasure: '她需要巫妖悼詞頁與破聖像透片來重建詛咒祈文。',
+      spirit: '她把墓園 Boss 線索包裝成可以追查與中斷的儀式。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

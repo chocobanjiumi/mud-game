@@ -2752,6 +2752,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['underground_city', 'quest', 'service'], zoneTags: ['underground_city'],
   },
+  grave_bell_clapper: {
+    id: 'grave_bell_clapper', name: '墓鐘舌片', type: 'material',
+    description: '無人鐘樓落下的裂銅鐘舌，敲擊時只會發出像遠處哭聲的悶響。守夜人用它判斷詛咒霧是否正在靠近。',
+    buyPrice: 0, sellPrice: 72,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'monster_drop', 'salvage'], zoneTags: ['cursed_graveyard'],
+  },
+  grave_bone_shard: {
+    id: 'grave_bone_shard', name: '墓園骨片', type: 'material',
+    description: '沉墓地與骨橋上散落的灰白骨片，表面刻著墓園鐘聲震出的細紋。可用來追蹤骸兵葬列與骨橋結構。',
+    buyPrice: 0, sellPrice: 58,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'monster_drop', 'salvage'], zoneTags: ['cursed_graveyard'],
+  },
+  black_mist_residue: {
+    id: 'black_mist_residue', name: '黑霧殘渣', type: 'material',
+    description: '黑霧池與瘟疫坑邊緣凝成的黏冷殘渣，會沿瓶壁逆流。可用來辨識詛咒濃度與亡靈聚集方向。',
+    buyPrice: 0, sellPrice: 68,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'monster_drop', 'gathering'], zoneTags: ['cursed_graveyard'],
+  },
+  cracked_saint_lens: {
+    id: 'cracked_saint_lens', name: '破聖像透片', type: 'material',
+    description: '破聖像眼窩裡拆下的乳白玻片，月光穿過時會短暫照出被詛咒者生前的輪廓。',
+    buyPrice: 0, sellPrice: 76,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'monster_drop', 'salvage'], zoneTags: ['cursed_graveyard'],
+  },
+  gravekeeper_wax_seal: {
+    id: 'gravekeeper_wax_seal', name: '守墓封蠟', type: 'quest',
+    description: '守墓人地窖保存的黑紅封蠟，封面壓著墓園鑰匙與悼詞書頁。它能證明某座棺木本不該被重新打開。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'quest', 'salvage'], zoneTags: ['cursed_graveyard'],
+  },
+  lich_litany_page: {
+    id: 'lich_litany_page', name: '巫妖悼詞頁', type: 'quest',
+    description: '悼詞祭壇與巫妖陵寢散落的黑經書頁，每一行悼詞都會把讀者的呼吸短暫拖慢。它記錄著墓園詛咒的核心祈文。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['cursed_graveyard', 'quest', 'monster_drop'], zoneTags: ['cursed_graveyard'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {
