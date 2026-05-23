@@ -2668,6 +2668,55 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['thundersteppe', 'quest', 'monster_drop'], zoneTags: ['thundersteppe'],
   },
+  fused_glass_sand: {
+    id: 'fused_glass_sand', name: '熔融玻砂', type: 'material',
+    description: '琉璃沙丘表層刮下的透明砂粒，日照下會像水一樣流動。工匠用它調製耐熱釉料與折光粉。',
+    buyPrice: 0, sellPrice: 58,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['glass_dunes', 'monster_drop', 'gathering'], zoneTags: ['glass_dunes'],
+  },
+  mirror_shard_plate: {
+    id: 'mirror_shard_plate', name: '鏡砂甲片', type: 'material',
+    description: '玻砂獸與沙蜥背上剝落的反光甲片，邊緣薄如刀刃。可用於製作遮光面罩、反射護甲與陷阱標記。',
+    buyPrice: 0, sellPrice: 64,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['glass_dunes', 'monster_drop'], zoneTags: ['glass_dunes'],
+  },
+  obsidian_well_salt: {
+    id: 'obsidian_well_salt', name: '黑曜井鹽', type: 'material',
+    description: '黑曜井和鹽風切谷沉澱出的黑白鹽晶，含有微弱火脈氣味。旅人用它保存水袋，也用來測試幻影邊界。',
+    buyPrice: 0, sellPrice: 60,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['glass_dunes', 'gathering', 'service'], zoneTags: ['glass_dunes'],
+  },
+  prism_lens_core: {
+    id: 'prism_lens_core', name: '稜鏡透核', type: 'material',
+    description: '稜鏡拱與晶魔像場回收的多面透核，能把烈日切成七道可見光線。古王朝曾用它校準日輪熔臺。',
+    buyPrice: 0, sellPrice: 78,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['glass_dunes', 'monster_drop', 'salvage'], zoneTags: ['glass_dunes'],
+  },
+  sunbleached_relic_seal: {
+    id: 'sunbleached_relic_seal', name: '日漂遺印', type: 'quest',
+    description: '半埋商隊與遺物坑出土的古王朝封印，原本的金漆被烈日漂成白色。它能證明海市集影下方仍有真實道路。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['glass_dunes', 'quest', 'salvage'], zoneTags: ['glass_dunes'],
+  },
+  lost_sun_disc: {
+    id: 'lost_sun_disc', name: '失朝日輪盤', type: 'quest',
+    description: '失朝祭壇碎裂儀盤的一角，表面刻著日火坑、埋宮門與稜鏡拱的對位線。它是重新定位宮門機關的關鍵。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['glass_dunes', 'quest', 'monster_drop'], zoneTags: ['glass_dunes'],
+  },
+  sunfire_heartglass: {
+    id: 'sunfire_heartglass', name: '日火心玻', type: 'quest',
+    description: '日火坑中心凝出的赤金玻核，內部像封著一輪小太陽。它是判斷琉璃沙丘熔化異常是否仍在擴張的核心證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['glass_dunes', 'quest', 'monster_drop'], zoneTags: ['glass_dunes'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

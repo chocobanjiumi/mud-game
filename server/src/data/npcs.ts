@@ -5111,6 +5111,199 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他把戰鬥前的準備轉化成和風暴協商的儀式。',
     },
   },
+
+  glass_dunes_surveyor: {
+    id: 'glass_dunes_surveyor',
+    name: '瑟琳',
+    alias: 'surveyor',
+    title: '琉璃沙丘測光員',
+    description:
+      '一名披著遮光白布的測光員站在日照玻門邊，手裡拿著刻度鏡、黑鹽袋與被熱風磨白的地圖。' +
+      '她每隔數息就把鏡面轉開，避免整張地圖被太陽燒穿。',
+    roomId: 'glass_dunes_sun_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '進沙丘前先學會看反光。亮的地方不一定是路，暗的地方也不一定安全。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '沙下有什麼？', nextId: 'threats' },
+          { text: '日火坑在哪？', nextId: 'crater' },
+          { text: '我會看光。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先過鏡面沙坡，補水去暗水袋，想進宮門就找海市集影和黑曜井。別在正午穿過玻暴盆地。',
+        options: [
+          { text: '沙下有什麼？', nextId: 'threats' },
+          { text: '日火坑在哪？', nextId: 'crater' },
+        ],
+      },
+      {
+        id: 'threats',
+        text:
+          '玻砂沙蜥看背光，鏡砂潛獵者看水袋，海市蜃怨看你的影子。找不到影子時，先停下。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'crater',
+        text:
+          '日火坑在埋宮門和失朝祭壇之後。要帶日輪盤線索，否則你只會被玻砂帶回同一個入口。',
+        options: [
+          { text: '沙下有什麼？', nextId: 'threats' },
+          { text: '我去找日輪盤。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '用布包住金屬，用鹽試幻影，用陰影記方向。',
+      },
+    ],
+    guardianHints: {
+      creature: '瑟琳能辨認玻砂沙蜥、鏡砂潛獵者與海市蜃怨留下的折光痕跡。',
+      treasure: '她的測光圖標出日照玻門、暗水袋、海市集影和日火坑的相對位置。',
+      spirit: '她把一片會說謊的沙海量成可走的路。',
+    },
+  },
+
+  glass_dunes_mirage_trader: {
+    id: 'glass_dunes_mirage_trader',
+    name: '法希德',
+    alias: 'trader',
+    title: '海市補給商',
+    description:
+      '一名補給商在海市集影的破旗下擺攤，貨架半真半假，只有壓著黑曜井鹽的商品不會隨熱浪晃動。' +
+      '他販售水袋、遮光布、玻砂材料與通往宮門的古印線索。',
+    roomId: 'glass_dunes_mirage_bazaar',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'fused_glass_sand',
+      'mirror_shard_plate',
+      'obsidian_well_salt',
+      'sunbleached_relic_seal',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '看清楚再買。這裡有些攤位只收金幣，有些攤位收影子。我的攤位只收你願意付的東西。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '哪些東西是真的？', nextId: 'real' },
+          { text: '宮門要什麼？', nextId: 'door' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '水、藥、黑曜井鹽、玻砂、鏡砂甲片和日漂遺印。要去日火坑，別只帶武器。',
+        action: { type: 'shop', data: { shopType: 'glass_dunes_supply' } },
+        options: [
+          { text: '哪些東西是真的？', nextId: 'real' },
+          { text: '宮門要什麼？', nextId: 'door' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'real',
+        text:
+          '被鹽壓住的是真的，能投下影子的多半是真的，會跟你討價還價的就要小心。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'door',
+        text:
+          '埋宮門不認鑰匙，認對位線。日漂遺印能證明你不是幻影，失朝日輪盤能告訴門該往哪裡轉。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我去找日輪盤。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '若你回到同一面破旗前，先別罵路，檢查自己的影子。',
+      },
+    ],
+    guardianHints: {
+      creature: '法希德知道鏡砂潛獵者會先割水袋，也知道海市蜃怨如何偽裝攤影。',
+      treasure: '他的真貨壓著黑曜井鹽，包含熔融玻砂、鏡砂甲片與日漂遺印。',
+      spirit: '他讓海市集影成為危險幻象中少數能交易的真實節點。',
+    },
+  },
+
+  glass_dunes_sunwright: {
+    id: 'glass_dunes_sunwright',
+    name: '伊蘭',
+    alias: 'sunwright',
+    title: '日輪匠師',
+    description:
+      '一名匠師守在日輪熔臺陰影邊，皮圍裙被玻砂燒出細小孔洞。' +
+      '他用稜鏡透核校準光線，試圖讓失控熔臺停止把沙海繼續熔成玻璃。',
+    roomId: 'glass_dunes_solar_forge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '這座熔臺本來只是工坊，不是太陽的牢籠。古王朝把光線折得太準，才把災難也折了進來。',
+        options: [
+          { text: '熔臺怎麼停？', nextId: 'forge' },
+          { text: '日衛守什麼？', nextId: 'sentinel' },
+          { text: '琉璃龍是什麼？', nextId: 'wyrm' },
+          { text: '我先去找材料。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'forge',
+        text:
+          '需要稜鏡透核校光、黑曜井鹽降溫、日輪盤對位。少一樣，熔臺只會把你的影子燒到牆上。',
+        options: [
+          { text: '日衛守什麼？', nextId: 'sentinel' },
+          { text: '琉璃龍是什麼？', nextId: 'wyrm' },
+        ],
+      },
+      {
+        id: 'sentinel',
+        text:
+          '失朝日衛不是單純的守門人。它們守的是日輪盤秩序，只要你站錯光線，就會被當成盜墓者。',
+        options: [
+          { text: '熔臺怎麼停？', nextId: 'forge' },
+          { text: '我會找陰影。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'wyrm',
+        text:
+          '日火琉璃龍不是龍，是被鎖進玻璃裡的日火反噬。打牠前先讓祭壇投下陰影，否則吐息會被整座坑反射。',
+        options: [
+          { text: '熔臺怎麼停？', nextId: 'forge' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '別相信最亮的路。工匠活下來靠的是角度，不是膽量。',
+      },
+    ],
+    guardianHints: {
+      creature: '伊蘭能解釋稜鏡魔像守衛、日輪熔火元素與日火琉璃龍的光線弱點。',
+      treasure: '他的校準盤需要稜鏡透核、黑曜井鹽與失朝日輪盤。',
+      spirit: '他把古王朝工藝從神話拉回可修理的機械問題。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
