@@ -317,17 +317,17 @@ function handleCreateCharacter(
     return;
   }
 
-  if (payload.raceId !== undefined && !isRaceId(payload.raceId)) {
+  if (!isRaceId(payload.raceId)) {
     sendError(session.sessionId, '未知的種族選擇。');
     return;
   }
 
-  if (payload.genderId !== undefined && !isGenderId(payload.genderId)) {
+  if (!isGenderId(payload.genderId)) {
     sendError(session.sessionId, '未知的性別選擇。');
     return;
   }
 
-  if (payload.faithId !== undefined && !isFaithId(payload.faithId)) {
+  if (!isFaithId(payload.faithId)) {
     sendError(session.sessionId, '未知的信仰選擇。');
     return;
   }

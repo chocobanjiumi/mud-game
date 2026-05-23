@@ -68,11 +68,10 @@ export default function App() {
     (command: string, friendlyEcho?: string) => {
       // Add the command to terminal as echo
       useGameStore.getState().addTerminalLine(`> ${friendlyEcho ?? command}`, 'command');
-      // Intercept "create <name>" to use create_character message type
+      // Intercept legacy create command and open the full creation flow.
       const createMatch = command.match(/^create\s+(.+)$/i);
       if (createMatch) {
-        const userId = useGameStore.getState().arinovaUser?.id ?? '';
-        createCharacter({ name: createMatch[1].trim(), userId });
+        useGameStore.getState().setScreen('create');
         return;
       }
       sendCommand(command);

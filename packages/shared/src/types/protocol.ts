@@ -8,7 +8,7 @@ import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
 import type { ActiveStatusEffect } from './combat.js';
 import type { CharacterOriginSelection } from './origin.js';
 
-export interface CreateCharacterPayload extends Partial<CharacterOriginSelection> {
+export interface CreateCharacterPayload extends CharacterOriginSelection {
   name: string;
   userId: string;
 }
