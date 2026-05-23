@@ -807,9 +807,15 @@ function cmdAttack(session: WsSession, target: string): void {
   // 如果已在戰鬥中，提交普攻行動
   const existingCombatId = getPlayerCombatId(char.id);
   if (existingCombatId) {
+    const targetId = resolveCombatTargetId(existingCombatId, target);
+    if (target && !targetId) {
+      sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
+      return;
+    }
     combat.submitAction(existingCombatId, {
       actorId: char.id,
       type: 'attack',
+      targetId,
     });
     return;
   }
@@ -1072,10 +1078,16 @@ function cmdSkill(session: WsSession, args: string[]): void {
 
   const combatId = getPlayerCombatId(char.id);
   if (combatId) {
+    const targetId = resolveCombatTargetId(combatId, target);
+    if (target && !targetId) {
+      sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
+      return;
+    }
     combat.submitAction(combatId, {
       actorId: char.id,
       type: 'skill',
       skillId: matchedSkill.skillId,
+      targetId,
     });
     // 教學系統：技能使用鉤子
     tutorialMgr.advanceStep(char.id, 'skill');
@@ -5706,6 +5718,38 @@ function buildOrdinalLabels<T>(items: T[], keyOf: (item: T) => string): string[]
     seen.set(key, next);
     return (totals.get(key) ?? 0) > 1 ? `${key}#${next}` : key;
   });
+}
+
+function parseOrdinalTarget(target: string): { name: string; ordinal?: number } {
+  const trimmed = target.trim();
+  const hashMatch = trimmed.match(/^(.+?)#(\d+)$/);
+  const spaceMatch = trimmed.match(/^(.+?)\s+(\d+)$/);
+  const match = hashMatch ?? spaceMatch;
+  if (!match) return { name: trimmed };
+
+  const ordinal = parseInt(match[2], 10);
+  if (!Number.isFinite(ordinal) || ordinal < 1) return { name: trimmed };
+  return { name: match[1].trim(), ordinal };
+}
+
+function resolveCombatTargetId(combatId: string, target: string): string | undefined {
+  if (!target.trim()) return undefined;
+
+  const state = combat.getCombatState(combatId);
+  if (!state) return undefined;
+
+  const parsed = parseOrdinalTarget(target);
+  const query = parsed.name.toLowerCase();
+  const combatants = [...state.enemyTeam, ...state.playerTeam].filter(combatant => !combatant.isDead);
+  const matches = combatants.filter(combatant =>
+    combatant.id === parsed.name
+    || combatant.name === parsed.name
+    || combatant.name.includes(parsed.name)
+    || combatant.name.toLowerCase() === query
+    || combatant.name.toLowerCase().includes(query),
+  );
+
+  return parsed.ordinal ? matches[parsed.ordinal - 1]?.id : matches[0]?.id;
 }
 
 function buildRoomEntities(input: {

@@ -278,6 +278,50 @@ input::placeholder {
   background: rgba(255, 94, 94, 0.16);
 }
 
+.combat-enemy {
+  min-width: 0;
+  padding: 6px;
+  border: 1px solid rgba(26, 58, 92, 0.65);
+  border-radius: 4px;
+  background: rgba(13, 13, 26, 0.48);
+  text-align: left;
+}
+
+.combat-enemy:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.combat-enemy-selected {
+  border-color: rgba(255, 94, 94, 0.45);
+  background: rgba(255, 94, 94, 0.08);
+}
+
+.combat-action {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 12px;
+}
+
+.combat-action:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.combat-action-primary {
+  border-color: rgba(0, 255, 136, 0.3);
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-text-terminal);
+}
+
+.combat-action-danger {
+  border-color: rgba(255, 94, 94, 0.3);
+  background: rgba(255, 94, 94, 0.1);
+  color: var(--color-combat-damage);
+}
+
 .objective-row {
   color: var(--color-text-bright);
   font-size: 11px;

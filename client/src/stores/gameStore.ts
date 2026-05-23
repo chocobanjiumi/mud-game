@@ -226,6 +226,8 @@ export interface GameState {
   setCombat: (combat: CombatInfo | null) => void;
   inCombat: boolean;
   setInCombat: (inCombat: boolean) => void;
+  selectedCombatTargetId: string | null;
+  setSelectedCombatTargetId: (id: string | null) => void;
 
   // Inventory
   inventory: InventoryItem[];
@@ -395,9 +397,21 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Combat
   combat: null,
-  setCombat: (combat) => set({ combat }),
+  selectedCombatTargetId: null,
+  setCombat: (combat) => set((state) => {
+    const selectedCombatTargetId = combat?.enemyTeam.some(enemy => (
+      !enemy.isDead && enemy.id === state.selectedCombatTargetId
+    ))
+      ? state.selectedCombatTargetId
+      : combat?.enemyTeam.find(enemy => !enemy.isDead)?.id ?? null;
+    return { combat, selectedCombatTargetId };
+  }),
   inCombat: false,
-  setInCombat: (inCombat) => set({ inCombat }),
+  setInCombat: (inCombat) => set((state) => ({
+    inCombat,
+    selectedCombatTargetId: inCombat ? state.selectedCombatTargetId : null,
+  })),
+  setSelectedCombatTargetId: (selectedCombatTargetId) => set({ selectedCombatTargetId }),
 
   // Inventory
   inventory: [],

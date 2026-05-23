@@ -8,6 +8,7 @@ import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
+import CombatPanel from './CombatPanel';
 import ObjectivePanel from './ObjectivePanel';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
@@ -47,6 +48,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const leaderboardOpen = useGameStore((s) => s.leaderboardOpen);
   const toggleWorldMap = useGameStore((s) => s.toggleWorldMap);
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
+  const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
 
   const openWorldMap = useCallback(() => {
     if (!worldMapOpen) {
@@ -103,9 +105,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
-      onCommand(`skill ${skillId}`);
+      onCommand(`skill ${skillId}${selectedCombatTargetId ? ` ${selectedCombatTargetId}` : ''}`);
     },
-    [onCommand],
+    [onCommand, selectedCombatTargetId],
   );
 
   return (
@@ -168,6 +170,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         {/* Center: Terminal */}
         <div className="flex-1 flex flex-col min-w-0 relative">
           <Terminal />
+          <CombatPanel />
           <SkillBar onUseSkill={handleUseSkill} />
           <CommandInput onSubmit={onCommand} />
         </div>
