@@ -3668,6 +3668,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[路]',
     mapX: 0,
@@ -3693,7 +3694,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_collapsed_barn', description: '東方可見塌陷穀倉' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'mildew_harvestling', maxCount: 1, respawnSeconds: 45 },
       { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
     ],
     mapSymbol: '[麥]',
@@ -3720,8 +3722,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_irrigation_channel', description: '堵塞水流通往灌溉渠' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
-      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+      { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[溝]',
     mapX: 1,
@@ -3747,8 +3749,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形' },
     ],
     monsters: [
+      { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
     ],
     mapSymbol: '[草]',
     mapX: 0,
@@ -3775,7 +3777,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'old_farmland_pumpkin_patch', description: '後門外是南瓜地' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
       { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 45 },
     ],
     mapSymbol: '[倉]',
@@ -3802,8 +3804,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'old_farmland_mildew_orchard', description: '北方是霉斑果園' },
     ],
     monsters: [
-      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
-      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+      { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[井]',
     mapX: 2,
@@ -3829,8 +3831,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'thorn_pumpkin', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[瓜]',
     mapX: 1,
@@ -3856,8 +3858,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_beehive_rows', description: '果樹間傳來蜂群嗡鳴' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'mildew_harvestling', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[果]',
     mapX: 2,
@@ -3883,7 +3885,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '東側有一間工具棚' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 4, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 3, respawnSeconds: 30 },
     ],
     mapSymbol: '[糧]',
     mapX: 3,
@@ -3909,8 +3911,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_granary', description: '水渠旁有小糧倉' },
     ],
     monsters: [
-      { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 30 },
-      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+      { monsterId: 'ditch_sludge', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[渠]',
     mapX: 2,
@@ -3936,8 +3938,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
-      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
+      { monsterId: 'ditch_sludge', maxCount: 1, respawnSeconds: 35 },
     ],
     mapSymbol: '[舍]',
     mapX: 3,
@@ -3964,7 +3966,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
-      { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 25 },
+      { monsterId: 'mildew_harvestling', maxCount: 1, respawnSeconds: 45 },
     ],
     mapSymbol: '[蜂]',
     mapX: 3,
@@ -3990,8 +3992,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_cart_shortcut', description: '舊車道從棚外繞過' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
-      { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
+      { monsterId: 'ditch_sludge', maxCount: 1, respawnSeconds: 35 },
     ],
     mapSymbol: '[棚]',
     mapX: 4,
@@ -4018,7 +4020,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
-      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+      { monsterId: 'mildew_harvestling', maxCount: 1, respawnSeconds: 45 },
     ],
     mapSymbol: '[牧]',
     mapX: 4,
@@ -4043,8 +4045,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
     ],
     monsters: [
-      { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[窖]',
     mapX: 1,
@@ -4071,7 +4073,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '破柵欄後是牧草地' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[雞]',
@@ -4099,7 +4101,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
-      { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 45 },
+      { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 90 },
     ],
     mapSymbol: '[樹]',
     mapX: 3,
@@ -4126,7 +4128,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
-      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+      { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 90 },
     ],
     mapSymbol: '[碑]',
     mapX: 3,
@@ -4151,9 +4153,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'old_farmland_stone_marker', description: '倒伏草痕回到石界碑' },
     ],
     monsters: [
-      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'harvest_wight', maxCount: 1, respawnSeconds: 900 },
+      { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 120 },
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
     ],
     mapSymbol: '[陣]',
     mapX: 1,
@@ -4179,7 +4181,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'village_outskirts', description: '舊車道繞回村外小路' },
     ],
     monsters: [
-      { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
+      { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
       { monsterId: 'green_slime', maxCount: 1, respawnSeconds: 30 },
     ],
     mapSymbol: '[捷]',

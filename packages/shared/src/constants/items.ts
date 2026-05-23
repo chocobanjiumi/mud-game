@@ -2241,6 +2241,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '熔岩怪物留下的灼熱碎片。', buyPrice: 0, sellPrice: 28,
     stackable: true, maxStack: 99, levelReq: 1,
   },
+  blighted_wheat_stalk: {
+    id: 'blighted_wheat_stalk', name: '枯疫麥稈', type: 'material',
+    description: '老舊農場裡受豐收儀式污染的麥稈，外層乾脆易碎，內部仍殘留微弱生機，可作為低階煉金與農場任務材料。',
+    buyPrice: 0, sellPrice: 5,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['old_farmland', 'monster_drop', 'gathering'], zoneTags: ['old_farmland'],
+  },
+  mildew_apple: {
+    id: 'mildew_apple', name: '霉斑蘋果', type: 'material',
+    description: '果園裡半腐半熟的蘋果，霉斑沿果皮形成細小符紋。處理得當能萃取藥性，處理失敗則會引來更多魔化作物。',
+    buyPrice: 0, sellPrice: 6,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['old_farmland', 'monster_drop', 'gathering'], zoneTags: ['old_farmland'],
+  },
+  gnawed_pumpkin_rind: {
+    id: 'gnawed_pumpkin_rind', name: '啃痕南瓜皮', type: 'material',
+    description: '被鼠群與藤蔓反覆啃咬的厚南瓜皮，表面帶有甜膩黏液。農場匠人可用它測試魔化作物的成熟程度。',
+    buyPrice: 0, sellPrice: 7,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['old_farmland', 'monster_drop'], zoneTags: ['old_farmland'],
+  },
+  scarecrow_straw_bundle: {
+    id: 'scarecrow_straw_bundle', name: '守田稻草束', type: 'material',
+    description: '從活動稻草人身上散落的舊稻草，混著鴉羽、泥土與殘破布線。靠近時會微微指向收成圓陣。',
+    buyPrice: 0, sellPrice: 9,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['old_farmland', 'monster_drop'], zoneTags: ['old_farmland'],
+  },
+  moonlit_pasture_bell: {
+    id: 'moonlit_pasture_bell', name: '月牧鈴', type: 'material',
+    description: '牧草地遺落的小鈴，銀色表面映著不屬於白日的月光。搖響時能聽見遠處牲畜回欄的幻聲。',
+    buyPrice: 0, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['old_farmland', 'monster_drop', 'hidden_cache'], zoneTags: ['old_farmland'],
+  },
+  rusted_farm_key: {
+    id: 'rusted_farm_key', name: '生鏽農舍鑰匙', type: 'quest',
+    description: '刻著農場姓氏的舊鑰匙，齒痕被泥與鏽蝕遮住，但仍能開啟農舍或糧倉裡某些保存完好的箱櫃。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['old_farmland', 'quest', 'monster_drop'], zoneTags: ['old_farmland'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

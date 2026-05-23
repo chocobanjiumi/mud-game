@@ -2988,6 +2988,142 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '鑑定師的眼睛能直接看到物品中流動的魔力——這種能力被稱為「鑑定之眼」，是極其稀有的天賦。',
     },
   },
+
+  old_farmland_caretaker: {
+    id: 'old_farmland_caretaker',
+    name: '葛倫',
+    alias: 'caretaker',
+    title: '老農場看守人',
+    description:
+      '一名瘦削老人披著補丁斗篷，靴底沾滿乾裂泥土，腰間掛著一串已經分不清用途的舊鑰匙。' +
+      '他每天沿著舊農路巡看田壟、穀倉和井口，像是在替早已離開的人守住最後一季收成。',
+    roomId: 'old_farmland_crossroads',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '你要進老農場？先看草浪，再看水溝。草浪無風自動就是鼠群，水溝冒綠泡就是污泥怪。' +
+          '若看見稻草人轉頭，別急著把背露給它。',
+        options: [
+          { text: '這裡為什麼荒廢？', nextId: 'history' },
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '你在找什麼？', nextId: 'key' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'history',
+        text:
+          '那年歉收，農夫們想用舊界碑上的儀式把土地喚醒。井水先變甜，果子先變大，' +
+          '接著南瓜裂口會吐霧，麥稈在夜裡自己站起來。人就是從那時開始少的。',
+        options: [
+          { text: '收成圓陣在哪？', nextId: 'route' },
+          { text: '聽起來像詛咒。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先清水溝，再看舊井。井水的根往果園和根窖跑，最後都指向北邊收成圓陣。' +
+          '若你在稻草人身上找到草束或鑰匙，農舍裡的抽屜也許會開口。',
+        options: [
+          { text: '鑰匙？', nextId: 'key' },
+          { text: '我知道路線了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'key',
+        text:
+          '農舍鑰匙不在我手上了。牠們把亮的東西都拖走，有些在鼠巢，有些掛到稻草人胸口。' +
+          '真正那把，多半跟著收成圓陣裡的怨靈一起醒著。',
+        options: [
+          { text: '我會去找。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '別只看路，也要看作物往哪邊倒。老農場會用倒伏的草告訴你危險從哪裡來。',
+      },
+    ],
+    guardianHints: {
+      creature: '葛倫能分辨草浪裡是鼠群、黑鴉還是稻草人的拖繩。',
+      treasure: '他記得農舍抽屜、糧倉地板與界碑苔蘚後方的舊藏物位置。',
+      spirit: '他不是農場主人，只是最後一個仍把這片地當成責任的人。',
+    },
+  },
+
+  old_farmland_seed_peddler: {
+    id: 'old_farmland_seed_peddler',
+    name: '米拉',
+    alias: 'seedpeddler',
+    title: '舊種子小販',
+    description:
+      '一名背著防水種子箱的年輕小販，把貨攤架在破工具棚乾燥的一角。她用炭筆標記每包種子的來源，' +
+      '也收購冒險者從農場怪物身上帶回的異常作物樣本。',
+    roomId: 'old_farmland_toolshed',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'herb',
+      'smoke_bomb',
+      'throwing_knife',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '工具棚還算乾，種子不會馬上發霉。要補藥水、解毒劑，或換點能把鼠群嚇散的小東西嗎？',
+        options: [
+          { text: '你賣什麼？', nextId: 'shop' },
+          { text: '你為什麼留在這？', nextId: 'reason' },
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '晚點再看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '我只帶得動輕貨：藥水、解毒劑、草藥，還有遇到鼠群或黑鴉時能爭取距離的小道具。',
+        action: { type: 'shop', data: { shopType: 'field' } },
+        options: [
+          { text: '你為什麼留在這？', nextId: 'reason' },
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'reason',
+        text:
+          '老農場的土還沒死透。枯疫麥稈、霉斑蘋果、啃痕南瓜皮都能告訴我們污染怎麼走。' +
+          '只要知道它怎麼走，就有機會把正常種子種回來。',
+        options: [
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '我看看商品。', nextId: 'shop' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '鼠群常帶枯疫麥稈，果園收成靈會掉霉斑蘋果，南瓜地要找啃痕南瓜皮。' +
+          '若你拿到守田稻草束或月牧鈴，先別亂賣，那些多半和北邊圓陣有關。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '離開工具棚前先聽屋頂，黑鴉若停在上面，影子會比聲音更早落下來。',
+      },
+    ],
+    guardianHints: {
+      creature: '米拉會用種子箱的震動判斷附近是否有藤蔓型魔物甦醒。',
+      treasure: '她的箱底藏著一小包未受污染的古老農場種子。',
+      spirit: '她相信老農場不是廢墟，而是一塊仍在求救的土地。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
