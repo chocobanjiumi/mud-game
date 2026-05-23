@@ -1398,8 +1398,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'imp', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'ash_watch_scout', maxCount: 1, respawnSeconds: 55 },
       { monsterId: 'demon_soldier', maxCount: 1, respawnSeconds: 60 },
     ],
+    npcs: ['demon_border_defector'],
     mapSymbol: '[邊]',
     mapX: 3,
     mapY: 17,
@@ -1490,6 +1492,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'bloodslag_hound', maxCount: 1, respawnSeconds: 60 },
       { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
     ],
     mapSymbol: '[血]',
@@ -1553,6 +1556,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { monsterId: 'succubus', maxCount: 2, respawnSeconds: 65 },
       { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 50 },
     ],
+    npcs: ['captive_field_surgeon'],
     mapSymbol: '[刑]',
     mapX: 3,
     mapY: 21,
@@ -1581,6 +1585,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'war_forge_taskmaster', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 55 },
     ],
     mapSymbol: '[營]',
@@ -1699,6 +1704,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'imp', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'ash_watch_scout', maxCount: 2, respawnSeconds: 55 },
       { monsterId: 'demon_soldier', maxCount: 1, respawnSeconds: 55 },
     ],
     mapSymbol: '[哨]',
@@ -1755,6 +1761,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
       { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 50 },
     ],
+    npcs: ['shadow_market_broker'],
     mapSymbol: '[市]',
     mapX: 4,
     mapY: 19,
@@ -1779,6 +1786,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'hellhound', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'bloodslag_hound', maxCount: 1, respawnSeconds: 60 },
       { monsterId: 'imp', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[渠]',
@@ -1858,8 +1866,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'war_forge_taskmaster', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'demon_general', maxCount: 1, respawnSeconds: 1800 },
     ],
+    npcs: ['war_forge_spy'],
     mapSymbol: '[爐]',
     mapX: 5,
     mapY: 20,

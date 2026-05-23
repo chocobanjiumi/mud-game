@@ -3009,6 +3009,210 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  // ─── 魔族領地 NPC ──────────────────────────────────────
+
+  demon_border_defector: {
+    id: 'demon_border_defector',
+    name: '邊境叛逃兵',
+    alias: 'defector',
+    title: '失去軍牌的魔族士兵',
+    description: '一名躲在裂谷橋墩陰影下的魔族士兵，黑甲被冰霜和焦灰刮得斑駁。牠刻意折斷了自己的軍牌，用灰布包住雙角，眼神總在哨塔與焦土平原之間游移。',
+    roomId: 'demon_border',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別拔武器，我已經不替黑堡巡邏了。灰燼哨塔每次點火都會把你的路線傳回要塞；想活著穿過這裡，就先看懂火光。',
+        options: [
+          { text: '哨塔火光代表什麼？', nextId: 'signal_fire' },
+          { text: '這裡真的會被其他玩家伏擊嗎？', nextId: 'pvp_warning' },
+          { text: '你需要什麼？', nextId: 'request' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'signal_fire',
+        text: '藍白火是邊境偵查，暗紅火是地獄犬放行，連閃三次代表將軍親自巡門。若你從灰燼斥候身上拿到哨火筒，後面很多路都能少走冤枉戰。',
+        options: [
+          { text: '我會找灰燼哨火筒。', nextId: 'farewell' },
+          { text: '還有其他風險嗎？', nextId: 'pvp_warning' },
+        ],
+      },
+      {
+        id: 'pvp_warning',
+        text: '這片地是開放戰場。魔族巡邏、地形煙塵、敵對玩家都會利用同一條撤退路；別在血河與拷問室久留，死了不只掉血，還可能掉金幣。',
+        options: [
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'request',
+        text: '帶回灰燼哨火筒和符印塔拓片。前者能證明哨塔換班，後者能證明城門結界如何改位。沒有這兩樣，黑堡只會一直補兵。',
+        options: [
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '走橋時別看火，看影子。小惡魔喜歡從你以為安全的方向飛出來。' },
+    ],
+    guardianHints: {
+      creature: '叛逃兵仍能聽懂魔族哨語，牠會在火盆變色前先縮進橋墩陰影。',
+      treasure: '牠折斷的軍牌背面刻著灰燼哨塔與血河之間的短路。',
+      spirit: '牠不是善良，只是知道魔王下一場遠征會把低階士兵當燃料。',
+    },
+  },
+
+  shadow_market_broker: {
+    id: 'shadow_market_broker',
+    name: '影市掮客',
+    alias: 'broker',
+    title: '黑布棚下的補給販子',
+    description: '一名把臉藏在黑色面紗後的走私商，攤位上堆著軍糧、礦渣、符紙和拆下來的鎖環。她說話時總會先看牆上影子，像是在確認有沒有守軍靠近。',
+    roomId: 'demon_shadow_market',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion', 'large_mp_potion', 'return_scroll',
+      'black_fortress_ration', 'blood_river_slag', 'ash_watch_signal_flare',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買補給就快，軍隊剛從戰爭熔爐拖走一批長槍，影市很快會清場。黑堡軍糧、血河魔渣、哨火筒都有，但別問來源。',
+        options: [
+          { text: '看看貨。', nextId: 'shop' },
+          { text: '影市和要塞軍隊什麼關係？', nextId: 'market_route' },
+          { text: '有熔爐情報嗎？', nextId: 'forge_info' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '高風險地帶只認能救命的貨。黑堡軍糧能撐過一輪圍攻，血河魔渣能換到熔爐工匠的注意，哨火筒則能讓你懂得哪條路快要封死。',
+        action: { type: 'shop', data: { shopType: 'shadow_market' } },
+        options: [
+          { text: '交易完成。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'market_route',
+        text: '影市不屬於軍隊，但軍隊離不開影市。寶庫、熔爐、兵營都有東西從黑布棚下轉手；你要找失蹤物資，就看哪個攤位的影子不跟主人同步。',
+        options: [
+          { text: '熔爐那邊呢？', nextId: 'forge_info' },
+        ],
+      },
+      {
+        id: 'forge_info',
+        text: '戰爐監工最怕未淬火的熔胚被拿走。少一批戰爭熔胚，前線長槍就少一批詛咒；想讓要塞慢下來，砸風箱不如搶冷卻架。',
+        options: [
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '離開影市前確認背包。這裡最常消失的不是金幣，是你以為沒人知道的情報。' },
+    ],
+    guardianHints: {
+      creature: '掮客身旁沒有守衛，但棚頂的影子會在危險靠近時先動。',
+      treasure: '她的貨箱夾層藏著一份黑堡補給路線圖。',
+      spirit: '影市的存在證明魔族領地並非鐵板一塊，貪婪讓縫隙變得可利用。',
+    },
+  },
+
+  captive_field_surgeon: {
+    id: 'captive_field_surgeon',
+    name: '被囚軍醫',
+    alias: 'surgeon',
+    title: '鐵鏈旁的戰地醫師',
+    description: '一位被鎖在拷問室角落的人類軍醫，外袍早被煙灰和血跡染黑。他用磨鈍的手術刀切開繩索纖維，身旁藏著幾瓶偷來的藥水與一張逃生記號圖。',
+    roomId: 'torture_chamber',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你還能走路，代表還沒被拷問室拖進黑井。聽著，鎖鏈庭院的守軍會把傷者推回這裡處理，你能從他們身上找到煉獄鎖環。',
+        options: [
+          { text: '煉獄鎖環有什麼用？', nextId: 'chain_link' },
+          { text: '你知道逃生路線嗎？', nextId: 'escape_marks' },
+          { text: '我該怎麼在這裡活下來？', nextId: 'survival' },
+          { text: '保重。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'chain_link',
+        text: '鎖環不是單純刑具，它導引符印塔的封魂線。拿到足夠鎖環，就能推測哪幾段牆不是承重牆，而是魔法管路。',
+        options: [
+          { text: '我會從守軍身上找。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'escape_marks',
+        text: '地上箭頭有兩套。短箭頭通兵營，長箭頭通鎖鏈庭院；若你看見箭頭旁有三道刮痕，那是巡邏剛經過，別跟著走。',
+        options: [
+          { text: '很有用。', nextId: 'survival' },
+        ],
+      },
+      {
+        id: 'survival',
+        text: '別把大型藥水留到最後一口氣才喝。魅魔會先打亂你的判斷，士兵才補刀；如果看見紅光從東牆脈動，表示召喚陣正在吸走周圍魔力。',
+        options: [
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你能出去，替我把逃生記號刻到影市後巷。下一個被抓的人也許還能用上。' },
+    ],
+    guardianHints: {
+      creature: '軍醫能靠腳步聲分辨魅魔與士兵，因為兩者拖動鎖鏈的節奏不同。',
+      treasure: '他的藥瓶裡混有能短暫壓制暗火灼傷的黑堡軍糧粉末。',
+      spirit: '他留下逃生記號不是為了自己，而是為了下一批俘虜。',
+    },
+  },
+
+  war_forge_spy: {
+    id: 'war_forge_spy',
+    name: '熔爐內應',
+    alias: 'forgespy',
+    title: '偽裝成搬運工的情報員',
+    description: '一名穿著魔族搬運工外衣的人類情報員，臉上塗滿煤灰，手臂被高溫燙出新舊交錯的傷痕。他推著空礦車在熔爐邊慢慢移動，實際上正記錄風箱與冷卻槽的節奏。',
+    roomId: 'demon_war_forge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別盯著我看，監工會數人頭。你若想讓戰爭熔爐停下，就帶走戰爭熔胚，再把符印塔拓片交給懂結界的人。',
+        options: [
+          { text: '戰爭熔胚在哪裡？', nextId: 'blank_location' },
+          { text: '符印塔拓片和熔爐有關？', nextId: 'sigil_link' },
+          { text: '監工怎麼對付？', nextId: 'taskmaster' },
+          { text: '我會低調。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'blank_location',
+        text: '冷卻架第二層。戰爐監工每次巡完兵營都會檢查一次，拿走熔胚後別原路回影市，熱管線通往熔岩下水道更容易甩開追兵。',
+        options: [
+          { text: '我去找冷卻架。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sigil_link',
+        text: '熔爐不是只靠火，符印塔會把城門結界的餘熱導到這裡。拓片能顯示哪個時段管路轉向，那時破壞風箱才不會被立刻修復。',
+        options: [
+          { text: '原來如此。', nextId: 'taskmaster' },
+        ],
+      },
+      {
+        id: 'taskmaster',
+        text: '監工的長鉤會讓士兵重新列隊。別在熔池邊跟牠硬拚，把牠引到砧台後，牠的鎖鏈會卡住半拍。',
+        options: [
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '礦車一響就代表新一隊士兵進場。到時候不管拿到什麼，都先離開。' },
+    ],
+    guardianHints: {
+      creature: '內應會用推車輪聲遮住你的腳步，但無法遮住戰爐監工的長鉤拖地聲。',
+      treasure: '他的空礦車底部夾著半張熔爐管線圖。',
+      spirit: '他願意留在熔爐，是因為每少一批熔胚，前線就少一批被詛咒的武器。',
+    },
+  },
+
   // ─── 湖畔城鎮擴充 NPC ──────────────────────────────────
 
   innkeeper: {
