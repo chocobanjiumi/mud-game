@@ -91,6 +91,38 @@ export function deleteCharacter(id: string): void {
   db.prepare('DELETE FROM characters WHERE id = ?').run(id);
 }
 
+// ─── Character aliases ───
+
+export function getCharacterAliases(characterId: string): Record<string, string> {
+  const rows = getDb().prepare(
+    'SELECT alias, command FROM character_aliases WHERE character_id = ? ORDER BY alias ASC',
+  ).all(characterId) as { alias: string; command: string }[];
+
+  return Object.fromEntries(rows.map(row => [row.alias, row.command]));
+}
+
+export function setCharacterAlias(characterId: string, alias: string, command: string): void {
+  const now = Math.floor(Date.now() / 1000);
+  getDb().prepare(`
+    INSERT INTO character_aliases (character_id, alias, command, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(character_id, alias) DO UPDATE SET
+      command = excluded.command,
+      updated_at = excluded.updated_at
+  `).run(characterId, alias, command, now, now);
+}
+
+export function deleteCharacterAlias(characterId: string, alias: string): boolean {
+  const result = getDb().prepare(
+    'DELETE FROM character_aliases WHERE character_id = ? AND alias = ?',
+  ).run(characterId, alias);
+  return result.changes > 0;
+}
+
+export function clearCharacterAliases(characterId: string): void {
+  getDb().prepare('DELETE FROM character_aliases WHERE character_id = ?').run(characterId);
+}
+
 // ─── Inventory CRUD ───
 
 export interface StoredItemInstance {

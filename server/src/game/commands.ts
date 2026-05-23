@@ -14,6 +14,7 @@ import {
   isZoneUnlocked, unlockPortal, unlockZone,
   getDiscoveryCount, getDiscoveryTotalCount, hasDiscovery, recordDiscovery,
   getMemberKingdom, getKingdomById, updateKingdom,
+  getCharacterAliases, setCharacterAlias, deleteCharacterAlias, clearCharacterAliases,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -79,6 +80,39 @@ const pickedUpItems = new Map<string, number>();
 const GROUND_ITEM_RESPAWN_MS = 10 * 60 * 1000; // 10 分鐘
 const travelCooldowns = new Map<string, number>();
 
+const SYSTEM_ALIASES: Record<string, string> = {
+  n: 'go north', s: 'go south', e: 'go east', w: 'go west',
+  u: 'go up', d: 'go down',
+  l: 'look', i: 'inventory', inv: 'inventory',
+  stat: 'status', stats: 'status',
+  atk: 'attack', kill: 'attack',
+  flee: 'escape', run: 'escape',
+  eq: 'equip', uneq: 'unequip',
+  sk: 'skills',
+  '?': 'help',
+  lb: 'leaderboard',
+  cq: 'classquest',
+  cq2: 'classquest2',
+  st: 'skilltree',
+};
+
+const BUILTIN_COMMANDS = new Set([
+  'look', 'search', 'inspect', 'open', 'go', 'move',
+  'status', 'inventory', 'skills', 'attack', 'skill',
+  'defend', 'escape', 'equip', 'unequip', 'use',
+  'take', 'pick', 'pickup', 'get', 'loot', 'drop',
+  'say', 'talk', 'shop', 'buy', 'allocate', 'alloc',
+  'map', 'rest', 'activate', 'portals', 'travel', 'recall',
+  'party', 'trade', 'quest', 'quests', 'duel', 'arena', 'dungeon',
+  'classchange', 'job', 'rank', 'leaderboard', 'help',
+  'achievements', 'achievement', 'title', 'fishcodex', 'monstercodex',
+  'collection', 'pet', 'tame', 'event', 'weather', 'worldevent', 'mail', 'emote',
+  'friend', 'auto', 'market', 'war', 'army', 'bounty', 'treasury',
+  'diplomacy', 'building', 'craft', 'crafting', 'auction', 'fish',
+  'classquest', 'classquest2', 'skilltree', 'token', 'alias', 'unalias',
+  'tutorial', 'friends', 'guild', 'g', 'signin', 'checkin',
+]);
+
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
 function getAvailableGroundItems(roomId: string): GroundItem[] {
   const room = getRoom(roomId);
@@ -103,7 +137,7 @@ function markGroundItemPicked(roomId: string, itemId: string, oneTime = false): 
 // ─── 指令路由 ───
 
 /** 主要指令處理入口 */
-export function handleCommand(session: WsSession, input: string): void {
+export function handleCommand(session: WsSession, input: string, aliasDepth = 0): void {
   const trimmed = input.trim();
   if (!trimmed) return;
 
@@ -112,27 +146,14 @@ export function handleCommand(session: WsSession, input: string): void {
   const args = parts.slice(1);
   const argStr = args.join(' ');
 
-  // 指令別名
-  const aliasMap: Record<string, string> = {
-    n: 'go north', s: 'go south', e: 'go east', w: 'go west',
-    u: 'go up', d: 'go down',
-    l: 'look', i: 'inventory', inv: 'inventory',
-    stat: 'status', stats: 'status',
-    atk: 'attack', kill: 'attack',
-    flee: 'escape', run: 'escape',
-    eq: 'equip', uneq: 'unequip',
-    sk: 'skills',
-    '?': 'help',
-    lb: 'leaderboard',
-    cq: 'classquest',
-    cq2: 'classquest2',
-    st: 'skilltree',
-  };
-
-  if (aliasMap[cmd]) {
-    const expanded = aliasMap[cmd];
+  const aliasExpanded = expandAlias(session, cmd, aliasDepth);
+  if (aliasExpanded) {
+    if (aliasDepth >= 5) {
+      sendError(session.sessionId, 'Alias 展開層數過深，請檢查是否有循環 alias。');
+      return;
+    }
     const rest = argStr ? ` ${argStr}` : '';
-    return handleCommand(session, `${expanded}${rest}`);
+    return handleCommand(session, `${aliasExpanded}${rest}`, aliasDepth + 1);
   }
 
   // 數字輸入 → 對話選項回覆
@@ -258,12 +279,95 @@ export function handleCommand(session: WsSession, input: string): void {
     // 每日簽到
     case 'signin': case 'checkin': cmdSignin(session); break;
     case 'help': cmdHelp(session, argStr); break;
+    case 'alias': cmdAlias(session, args); break;
+    case 'unalias': cmdUnalias(session, args); break;
     default:
       sendError(session.sessionId, `未知指令：${cmd}。輸入 help 查看可用指令。`);
   }
 }
 
 // ─── 基本指令 ───
+
+function expandAlias(session: WsSession, cmd: string, aliasDepth: number): string | null {
+  if (BUILTIN_COMMANDS.has(cmd)) return null;
+
+  const char = getChar(session);
+  if (char) {
+    const playerAlias = getCharacterAliases(char.id)[cmd];
+    if (playerAlias) return playerAlias;
+  }
+
+  return SYSTEM_ALIASES[cmd] ?? null;
+}
+
+function cmdAlias(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) {
+    sendError(session.sessionId, '需要先登入角色才能設定 alias。');
+    return;
+  }
+
+  if (args.length === 0) {
+    const playerAliases = getCharacterAliases(char.id);
+    sendSystem(session.sessionId, '═══ 指令別名 ═══');
+    const merged = { ...SYSTEM_ALIASES, ...playerAliases };
+    for (const [alias, command] of Object.entries(merged).sort(([a], [b]) => a.localeCompare(b))) {
+      const source = playerAliases[alias] ? '自訂' : '預設';
+      sendSystem(session.sessionId, `  ${alias.padEnd(12)} => ${command} (${source})`);
+    }
+    return;
+  }
+
+  if (args[0].toLowerCase() === 'reset') {
+    clearCharacterAliases(char.id);
+    sendSystem(session.sessionId, '已清除所有自訂 alias，恢復預設別名。');
+    return;
+  }
+
+  if (args.length < 2) {
+    sendError(session.sessionId, '用法：alias <名稱> <指令>，或 alias reset');
+    return;
+  }
+
+  const alias = args[0].trim().toLowerCase();
+  const command = args.slice(1).join(' ').trim();
+  if (!alias || /\s/.test(alias)) {
+    sendError(session.sessionId, 'Alias 名稱不能包含空白。');
+    return;
+  }
+  if (BUILTIN_COMMANDS.has(alias)) {
+    sendError(session.sessionId, `「${alias}」是系統指令，不能設為 alias。`);
+    return;
+  }
+  if (!command) {
+    sendError(session.sessionId, 'Alias 展開指令不能是空白。');
+    return;
+  }
+
+  setCharacterAlias(char.id, alias, command);
+  sendSystem(session.sessionId, `已設定 alias：${alias} => ${command}`);
+}
+
+function cmdUnalias(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) {
+    sendError(session.sessionId, '需要先登入角色才能刪除 alias。');
+    return;
+  }
+  const alias = args[0]?.trim().toLowerCase();
+  if (!alias) {
+    sendError(session.sessionId, '用法：unalias <名稱>');
+    return;
+  }
+
+  if (deleteCharacterAlias(char.id, alias)) {
+    sendSystem(session.sessionId, `已刪除 alias：${alias}`);
+  } else if (SYSTEM_ALIASES[alias]) {
+    sendSystem(session.sessionId, `「${alias}」是預設 alias，無需刪除。`);
+  } else {
+    sendError(session.sessionId, `找不到自訂 alias「${alias}」。`);
+  }
+}
 
 function cmdLook(session: WsSession, target?: string): void {
   const char = getChar(session);

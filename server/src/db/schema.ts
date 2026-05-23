@@ -84,6 +84,16 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, skill_id)
     );
 
+    -- 玩家自訂指令別名
+    CREATE TABLE IF NOT EXISTS character_aliases (
+      character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
+      alias TEXT NOT NULL,
+      command TEXT NOT NULL,
+      created_at INTEGER DEFAULT (unixepoch()),
+      updated_at INTEGER DEFAULT (unixepoch()),
+      PRIMARY KEY (character_id, alias)
+    );
+
     -- 隊伍
     CREATE TABLE IF NOT EXISTS parties (
       id TEXT PRIMARY KEY,
