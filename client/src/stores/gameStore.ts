@@ -12,6 +12,7 @@ import type {
   TransactionRecord,
   AgentInfo,
   AgentMessage,
+  RoomEntity,
   AffixDef,
   ItemQuality,
   ItemRarity,
@@ -128,11 +129,12 @@ export interface RoomInfo {
   players: { id: string; name: string; classId: string; level: number }[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
-  monsters: { id: string; name: string; alias: string; level: number; hp: number; maxHp: number }[];
-  corpses?: { id: string; monsterName: string; empty: boolean; protected: boolean }[];
+  monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number }[];
+  corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
+  entities?: RoomEntity[];
 }
 
 // --- Combat state ---

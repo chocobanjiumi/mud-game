@@ -200,6 +200,45 @@ input::placeholder {
   background: rgba(255, 255, 255, 0.04);
 }
 
+.room-entity-row {
+  align-items: stretch;
+}
+
+.room-action {
+  min-width: 36px;
+  height: 24px;
+  padding: 0 6px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 10px;
+}
+
+.room-action:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.room-action-primary {
+  border-color: rgba(0, 255, 136, 0.28);
+  background: rgba(0, 255, 136, 0.09);
+  color: var(--color-text-terminal);
+}
+
+.room-action-primary:hover:not(:disabled) {
+  background: rgba(0, 255, 136, 0.15);
+}
+
+.room-action-danger {
+  border-color: rgba(255, 94, 94, 0.28);
+  background: rgba(255, 94, 94, 0.08);
+  color: var(--color-combat-damage);
+}
+
+.room-action-danger:hover:not(:disabled) {
+  background: rgba(255, 94, 94, 0.15);
+}
+
 .objective-row {
   color: var(--color-text-bright);
   font-size: 11px;

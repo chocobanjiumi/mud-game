@@ -106,7 +106,9 @@ export function useWebSocket() {
           s.addTerminalLine(`NPC: ${names}`, 'npc', npcEntities);
         }
         if (room.monsters.length > 0) {
-          const labels = ordinalLabels(room.monsters);
+          const labels = room.monsters.map(m => m.label).every(Boolean)
+            ? room.monsters.map(m => m.label!)
+            : ordinalLabels(room.monsters);
           const names = room.monsters.map((m, index) => `${labels[index]}/${m.alias} Lv.${m.level}`).join(', ');
           const monsterEntities = room.monsters.map((m, index) => ({
             name: `${labels[index]}/${m.alias} Lv.${m.level}`,
