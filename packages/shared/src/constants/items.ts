@@ -3224,6 +3224,50 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'mythic',
   },
 
+  // ─── 終焉戰場材料與終末軍旗聖物 (Lv 55-60) ───
+  broken_warbanner: {
+    id: 'broken_warbanner', name: '破旗殘布', type: 'material',
+    description: '終戰入口與破旗原上撕裂的軍旗殘布，布面仍記著最後一輪衝鋒的方向，靠近黑焰時會自行收緊。',
+    buyPrice: 3600, sellPrice: 1800, stackable: true, maxStack: 99, levelReq: 55, rarity: 'epic',
+    sourceTags: ['drop', 'shop'], zoneTags: ['final_battleground'],
+  },
+  kingbone_oath_shard: {
+    id: 'kingbone_oath_shard', name: '王骨誓片', type: 'material',
+    description: '王骨石堆與誓約石圈剝落的骨白碎片，表面刻著未完成的王令，只有在戰場完全無風時才會顯字。',
+    buyPrice: 4000, sellPrice: 2000, stackable: true, maxStack: 99, levelReq: 56, rarity: 'legendary',
+    sourceTags: ['drop', 'shop'], zoneTags: ['final_battleground'],
+  },
+  blackflame_ember: {
+    id: 'blackflame_ember', name: '黑焰餘燼', type: 'material',
+    description: '黑焰前線與餘火泥地中尚未熄滅的黑色火種，火心沒有熱度，卻會把周圍的影子燒成灰。',
+    buyPrice: 4400, sellPrice: 2200, stackable: true, maxStack: 99, levelReq: 57, rarity: 'legendary',
+    sourceTags: ['drop', 'shop'], zoneTags: ['final_battleground'],
+  },
+  fallen_halo_fragment: {
+    id: 'fallen_halo_fragment', name: '墜天光環碎片', type: 'material',
+    description: '墜天坑與斷光橋附近拾得的白金碎環，光線像被戰場切斷，能短暫壓住黑焰與暗影腐蝕。',
+    buyPrice: 4800, sellPrice: 2400, stackable: true, maxStack: 99, levelReq: 58, rarity: 'legendary',
+    sourceTags: ['drop'], zoneTags: ['final_battleground'],
+  },
+  godscar_blood_crystal: {
+    id: 'godscar_blood_crystal', name: '神傷血晶', type: 'material',
+    description: '神傷核心與裂世縫中凝成的暗紅晶體，內部封著神血與魔神黑火互相撕裂後留下的微弱脈動。',
+    buyPrice: 5400, sellPrice: 2700, stackable: true, maxStack: 99, levelReq: 59, rarity: 'legendary',
+    sourceTags: ['drop'], zoneTags: ['final_battleground'],
+  },
+  final_standard_seal: {
+    id: 'final_standard_seal', name: '終末軍旗印', type: 'quest',
+    description: '終末軍旗統帥身上浮現的戰印，握住它時能聽見諸王軍令與魔神咆哮同時停在最後一字。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['final_battleground'],
+  },
+  silence_after_war_core: {
+    id: 'silence_after_war_core', name: '戰後寂地核心', type: 'quest',
+    description: '戰後寂地深處留下的寂靜核心，所有戰鼓、祈禱與慘叫都在其中被壓成一枚不再震動的黑白石核。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'mythic',
+    sourceTags: ['boss'], zoneTags: ['final_battleground'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

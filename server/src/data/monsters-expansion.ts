@@ -6281,4 +6281,223 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '吞噬者代表黑域本身，不是入侵荒原，而是在把荒原拉回外界。',
     },
   },
+
+  war_gate_bannerman: {
+    id: 'war_gate_bannerman', name: '終戰門旗衛', alias: 'bannerman',
+    level: 55, hp: 3400, mp: 420, str: 84, int: 48, dex: 54, vit: 88, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'charge', 'howl', 'death_mark'],
+    expReward: 3600, goldReward: [720, 1440],
+    drops: [
+      { itemId: 'broken_warbanner', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'kingbone_oath_shard', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '披著破旗的門衛軍魂仍守在終戰入口，甲片被黑焰燒成暗紅，卻始終維持衝鋒陣形。牠會先以旗號標記入侵者，再帶著周圍殘兵一起壓上戰線。',
+    isBoss: false,
+    guardianHints: {
+      creature: '終戰門旗衛會以死亡印記開戰，先處理旗號標記再推進。',
+      treasure: '牠常掉落破旗殘布，偶爾帶著王骨誓片。',
+      spirit: '門旗衛代表終焉戰場仍未解除的第一道軍令。',
+    },
+  },
+
+  kingbone_oath_knight: {
+    id: 'kingbone_oath_knight', name: '王骨誓騎', alias: 'oathknight',
+    level: 56, hp: 3700, mp: 500, str: 88, int: 58, dex: 50, vit: 96, luk: 20,
+    element: 'light',
+    skills: ['basic_attack', 'charge', 'holy_light', 'reflect_barrier'],
+    expReward: 3850, goldReward: [770, 1540],
+    drops: [
+      { itemId: 'kingbone_oath_shard', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'broken_warbanner', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '由王骨石堆與誓約石圈重新站起的騎士殘影，胸甲內沒有血肉，只剩白光與未完成的王令。牠會用反射屏障護住同袍，直到誓言被徹底擊碎。',
+    isBoss: false,
+    guardianHints: {
+      creature: '王骨誓騎會保護附近敵人，反射屏障期間避免浪費爆發。',
+      treasure: '王骨誓片多半從牠裂開的胸甲中剝落。',
+      spirit: '誓騎是諸王軍令殘存的形體，不完全屬於亡靈。',
+    },
+  },
+
+  siege_trench_revenant: {
+    id: 'siege_trench_revenant', name: '攻城壕怨軍', alias: 'trenchrevenant',
+    level: 56, hp: 3500, mp: 460, str: 82, int: 66, dex: 58, vit: 84, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_storm', 'life_drain', 'death_mark'],
+    expReward: 3800, goldReward: [760, 1520],
+    drops: [
+      { itemId: 'broken_warbanner', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'blackflame_ember', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '攻城壕溝中堆疊太久的怨軍殘影，身體由濕泥、碎甲與未冷的血雨黏合而成。牠會從壕溝側壁鑽出，用暗影風暴把隊伍拖回攻城最慘烈的位置。',
+    isBoss: false,
+    guardianHints: {
+      creature: '攻城壕怨軍會吸取生命並施加印記，壕溝戰不宜拖長。',
+      treasure: '牠身上的泥甲常纏著破旗殘布與黑焰餘燼。',
+      spirit: '怨軍是攻城失敗瞬間被固定下來的集體怨念。',
+    },
+  },
+
+  ember_mud_colossus: {
+    id: 'ember_mud_colossus', name: '餘火泥巨像', alias: 'embercolossus',
+    level: 57, hp: 4300, mp: 360, str: 96, int: 44, dex: 30, vit: 112, luk: 14,
+    element: 'fire',
+    skills: ['basic_attack', 'stone_slam', 'fire_breath', 'stone_skin'],
+    expReward: 4200, goldReward: [840, 1680],
+    drops: [
+      { itemId: 'blackflame_ember', chance: 0.54, minQty: 1, maxQty: 2 },
+      { itemId: 'broken_warbanner', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '由餘火泥地與攻城機殘骸中聚成的巨大泥像，體內仍埋著燒黑的輪軸與兵器。牠走動時會把黑焰泥漿甩向四周，讓戰場重新陷入燃燒。',
+    isBoss: false,
+    guardianHints: {
+      creature: '餘火泥巨像防禦高，會用石膚與重擊拖慢隊伍。',
+      treasure: '黑焰餘燼常卡在牠胸口未熄的泥火裡。',
+      spirit: '巨像像戰場本身把廢鐵與餘火揉成的守衛。',
+    },
+  },
+
+  sunless_chapel_seraph: {
+    id: 'sunless_chapel_seraph', name: '無日禮拜堂熾影', alias: 'sunlessseraph',
+    level: 57, hp: 4000, mp: 840, str: 58, int: 116, dex: 66, vit: 78, luk: 28,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'sacred_flame', 'reflect_barrier'],
+    expReward: 4450, goldReward: [890, 1780],
+    drops: [
+      { itemId: 'fallen_halo_fragment', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'kingbone_oath_shard', chance: 0.3, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description:
+      '無日禮拜堂內殘存的白金熾影，羽翼像被斷光橋切開的日輪。牠會替王骨軍魂縫合傷口，也會用聖焰燒掉接近墜天坑的黑影。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '無日禮拜堂熾影會治療與反射，先打斷支援節奏。',
+      treasure: '墜天光環碎片多半從牠破裂的羽環上落下。',
+      spirit: '熾影不是救贖者，而是最後祈禱被戰場扭曲後的形體。',
+    },
+  },
+
+  blood_rain_warmage: {
+    id: 'blood_rain_warmage', name: '血雨戰法師', alias: 'rainmage',
+    level: 58, hp: 3900, mp: 920, str: 52, int: 122, dex: 70, vit: 72, luk: 30,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_storm', 'fire_breath', 'life_drain', 'death_mark'],
+    expReward: 4700, goldReward: [940, 1880],
+    drops: [
+      { itemId: 'blackflame_ember', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'godscar_blood_crystal', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '血雨盆地中仍在施法的戰場法師，法袍被雨水黏成暗紅色，指尖燃著黑焰符文。牠會把血雨改寫成詛咒，讓被標記者在戰線中迅速失血。',
+    isBoss: false,
+    guardianHints: {
+      creature: '血雨戰法師會用印記與吸血製造壓力，優先擊殺較穩。',
+      treasure: '牠的法袍中可找到黑焰餘燼與少量神傷血晶。',
+      spirit: '戰法師保存的是終戰中最髒的軍用法術。',
+    },
+  },
+
+  demon_scar_vanguard: {
+    id: 'demon_scar_vanguard', name: '魔神爪痕先鋒', alias: 'scarvanguard',
+    level: 58, hp: 4700, mp: 620, str: 104, int: 72, dex: 62, vit: 98, luk: 22,
+    element: 'fire',
+    skills: ['basic_attack', 'charge', 'fire_breath', 'shadow_devour'],
+    expReward: 5000, goldReward: [1000, 2000],
+    drops: [
+      { itemId: 'blackflame_ember', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'godscar_blood_crystal', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '從魔神爪痕中爬出的黑甲先鋒，武器像一截仍在燃燒的指骨。牠會沿著裂痕衝鋒，把隊伍逼向黑焰前線與裂世縫之間最狹窄的死角。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '魔神爪痕先鋒爆發高，遭衝鋒標記後要立刻穩住血線。',
+      treasure: '牠是黑焰餘燼與神傷血晶的重要來源。',
+      spirit: '先鋒像魔神最後一爪留下的戰意延伸。',
+    },
+  },
+
+  blackflame_general: {
+    id: 'blackflame_general', name: '黑焰終軍將', alias: 'blackflamegeneral',
+    level: 59, hp: 5600, mp: 760, str: 112, int: 84, dex: 54, vit: 110, luk: 26,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'shadow_storm', 'howl', 'reflect_barrier'],
+    expReward: 5600, goldReward: [1120, 2240],
+    drops: [
+      { itemId: 'blackflame_ember', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'final_standard_seal', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '黑焰前線與末令高臺之間巡行的終軍將領，披風由熄不掉的黑火構成。牠會重新整編附近殘兵，讓破旗、王骨與墜天光都被迫聽從同一道軍令。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '黑焰終軍將會用咆哮與屏障重整敵方節奏，先清小怪再打將領。',
+      treasure: '牠穩定掉落黑焰餘燼，極少留下終末軍旗印。',
+      spirit: '終軍將是戰場尚未承認戰爭結束的指揮核心。',
+    },
+  },
+
+  godscar_avatar: {
+    id: 'godscar_avatar', name: '神傷化身', alias: 'godscar',
+    level: 60, hp: 7600, mp: 980, str: 98, int: 124, dex: 58, vit: 116, luk: 30,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'sacred_flame', 'meteor', 'reflect_barrier', 'death_mark'],
+    expReward: 6800, goldReward: [1360, 2720],
+    drops: [
+      { itemId: 'godscar_blood_crystal', chance: 1.0, minQty: 1, maxQty: 2 },
+      { itemId: 'fallen_halo_fragment', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'silence_after_war_core', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'boss',
+    description:
+      '神傷核心中站起的白金與暗紅混合化身，像一位神祇被終戰撕開後留下的傷口。牠每次舉手都會讓天光與黑焰同時墜落，逼迫挑戰者承受兩方殘留的審判。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '神傷化身會交替使用聖焰、隕落與反射屏障，屏障期間務必收手。',
+      treasure: '牠必定掉落神傷血晶，偶爾凝出戰後寂地核心。',
+      spirit: '神傷化身不是完整神明，而是神祇在終戰中留下的傷口意志。',
+    },
+  },
+
+  final_standard_warlord: {
+    id: 'final_standard_warlord', name: '終末軍旗統帥', alias: 'finalwarlord',
+    level: 60, hp: 8200, mp: 900, str: 126, int: 104, dex: 62, vit: 118, luk: 34,
+    element: 'dark',
+    skills: ['basic_attack', 'charge', 'shadow_devour', 'fire_breath', 'howl', 'death_mark'],
+    expReward: 7200, goldReward: [1440, 2880],
+    drops: [
+      { itemId: 'final_standard_seal', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'silence_after_war_core', chance: 0.42, minQty: 1, maxQty: 1 },
+      { itemId: 'broken_warbanner', chance: 0.78, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '立於終末軍旗下的最後統帥，盔甲上同時掛著諸王徽記與魔神裂紋。牠沒有勝利者的姿態，只是不斷重複最後一道進軍命令，直到整片戰場再次醒來。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '終末軍旗統帥會用咆哮、衝鋒與死亡印記滾雪球，先處理同行精英。',
+      treasure: '牠必定掉落終末軍旗印，並有機會留下戰後寂地核心。',
+      spirit: '統帥是終焉戰場的收束點，牠倒下前戰爭不會真正結束。',
+    },
+  },
 };

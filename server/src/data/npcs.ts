@@ -6881,6 +6881,105 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把荒原採集、黑星通行與外層黑域終局材料整合成可回訪服務。',
     },
   },
+
+  final_battleground_war_scribe: {
+    id: 'final_battleground_war_scribe',
+    name: '赫倫',
+    alias: 'scribe',
+    title: '終戰入口軍史官',
+    description:
+      '一名灰袍軍史官站在終戰入口的斷碑旁，手中的銅筆不停記錄破旗飄動、黑焰推進與神傷脈動。' +
+      '他的影子比身體更像士兵，彷彿仍在替最後一場戰爭點名。',
+    roomId: 'final_battleground_war_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別急著衝向終末軍旗。這片戰場最危險的不是敵人還活著，而是軍令仍然有效。',
+        options: [
+          { text: '先看戰線。', nextId: 'front' },
+          { text: '神傷核心在哪？', nextId: 'godscar' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'front',
+        text: '破旗殘布能指向殘兵，王骨誓片會引你去誓約石圈；黑焰餘燼若開始無熱燃燒，就代表終軍將正在整隊。',
+        options: [
+          { text: '神傷核心在哪？', nextId: 'godscar' },
+          { text: '我去清理戰線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'godscar',
+        text: '裂世縫之後才是神傷核心。別把墜天光環碎片用得太早，神傷化身的白光比黑焰更會懲罰貪攻。',
+        options: [
+          { text: '先看戰線。', nextId: 'front' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若軍旗忽然沒有影子，立刻後撤。那代表統帥正在重新點名。' },
+    ],
+    guardianHints: {
+      creature: '赫倫能提示終戰門旗衛、黑焰終軍將、神傷化身與終末軍旗統帥的推進順序。',
+      treasure: '他說明破旗殘布、王骨誓片、黑焰餘燼與墜天光環碎片的戰線用途。',
+      spirit: '他把終焉戰場拆成軍令、黑焰、神傷與終末軍旗四個危險節點。',
+    },
+  },
+
+  final_battleground_relic_quartermaster: {
+    id: 'final_battleground_relic_quartermaster',
+    name: '瑪薩',
+    alias: 'quartermaster',
+    title: '末令高臺遺物軍需官',
+    description:
+      '一名戴著半邊鐵面具的軍需官守在末令高臺，貨箱裡整齊放著藥水、破旗殘布與封存黑焰的石匣。' +
+      '她每次交貨前都會先確認買主的影子還連在腳下。',
+    roomId: 'final_battleground_last_command_post',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'phoenix_feather',
+      'broken_warbanner',
+      'kingbone_oath_shard',
+      'blackflame_ember',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '末令高臺只賣能讓你活著走到下一面旗的東西。想買補給，先把手伸出來，我要看有沒有黑焰燒痕。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '終軍將在哪？', nextId: 'general' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '大型藥水、鳳凰之羽、破旗殘布、王骨誓片、黑焰餘燼。神傷血晶和終末軍旗印我不賣，能買到的都不是真貨。',
+        action: { type: 'shop', data: { shopType: 'final_battleground_relics' } },
+        options: [
+          { text: '終軍將在哪？', nextId: 'general' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'general',
+        text: '黑焰前線、無冠戰場、終末軍旗都可能聽見牠的號令。若你身上的破旗殘布同時往三個方向拉，代表牠已經盯上你。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會準備好。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別在這裡數戰利品。末令高臺會記住貪心的人。' },
+    ],
+    guardianHints: {
+      creature: '瑪薩能提示魔神爪痕先鋒、黑焰終軍將與終末軍旗統帥的材料壓力。',
+      treasure: '她販售高階藥水與前中段終焉戰場材料，神傷與終局聖物仍需戰鬥取得。',
+      spirit: '她把末令高臺變成終焉戰場深處唯一可回訪的補給節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
