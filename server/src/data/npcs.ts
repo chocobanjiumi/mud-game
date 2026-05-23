@@ -4724,6 +4724,199 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他把貪婪包裝成勘探，但至少知道火口真的會反咬。',
     },
   },
+
+  sunken_catacombs_tide_surveyor: {
+    id: 'sunken_catacombs_tide_surveyor',
+    name: '納溫',
+    alias: 'surveyor',
+    title: '墓窟水位測繪員',
+    description:
+      '一名測繪員站在潮汐階梯上方，手裡拿著浸油繩尺與防水筆記板。' +
+      '他的靴子滿是黑泥，卻仍仔細記下每一層潮痕高度。',
+    roomId: 'sunken_catacombs_tide_stair',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '這座墓窟不是被外面的水淹了，是裡面的水一直往上吐。你若不記水位，回頭路會變成牆。',
+        options: [
+          { text: '該先去哪裡？', nextId: 'route' },
+          { text: '水閘怎麼判斷？', nextId: 'sluice' },
+          { text: '深潮井是什麼？', nextId: 'well' },
+          { text: '我會標記退路。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先過前廳、黑水渠和水閘控制室。不要急著進王冠墓室，先找到長明燈油和水閘齒輪。',
+        options: [
+          { text: '水閘怎麼判斷？', nextId: 'sluice' },
+          { text: '深潮井是什麼？', nextId: 'well' },
+        ],
+      },
+      {
+        id: 'sluice',
+        text:
+          '三個輪盤分別管外層、漂棺和深潮。錯一個，鏈橋就會變得比怪物還危險。',
+        options: [
+          { text: '該先去哪裡？', nextId: 'route' },
+          { text: '我會記下潮痕。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'well',
+        text:
+          '深潮井像墓窟的喉嚨。它吐出的不是水，是一段還沒沉下去的王冠誓言。',
+        options: [
+          { text: '水閘怎麼判斷？', nextId: 'sluice' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '每過三間房就看一次牆上潮痕。若潮痕比你高，先想退路。',
+      },
+    ],
+    guardianHints: {
+      creature: '納溫能從水聲判斷潮浸骸兵、黑渠水蛇與黑水泥魘是否接近。',
+      treasure: '他的測繪板標出水閘控制室、深潮井與王冠墓室的水位關係。',
+      spirit: '他把黑水的升降變成仍可讀懂的路線。',
+    },
+  },
+
+  sunken_catacombs_lamp_keeper: {
+    id: 'sunken_catacombs_lamp_keeper',
+    name: '芮妲',
+    alias: 'lampkeeper',
+    title: '長明燈守油人',
+    description:
+      '一名守油人坐在長明燈龕旁，身邊擺著防水油瓶、乾燥火絨、繩索與幾枚從水裡撈出的青銅齒輪。' +
+      '她每隔一會兒就用小銀勺替藍白燈火添油。',
+    roomId: 'sunken_catacombs_lantern_niche',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'funeral_lamp_oil',
+      'tidewheel_gear',
+      'coffin_chain_link',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '買補給可以，吹燈不行。這盞火不是給死人看的，是給活人記得哪邊才是出口。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '長明燈油有什麼用？', nextId: 'oil' },
+          { text: '哪些東西別賣？', nextId: 'evidence' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、長明燈油、水閘齒輪和棺鏈節都有。下去之前多帶一瓶油，黑水最會吃光。',
+        action: { type: 'shop', data: { shopType: 'catacomb_lamps' } },
+        options: [
+          { text: '長明燈油有什麼用？', nextId: 'oil' },
+          { text: '哪些東西別賣？', nextId: 'evidence' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'oil',
+        text:
+          '燈油能照出停屍間的真出口，也能讓溺誓亡騎短暫想起自己守的是誰。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會留著。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'evidence',
+        text:
+          '溺水騎士徽章和溺王冠碎片別賣。前者開路，後者說明深潮井下到底醒了什麼。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '火苗若變黑，就別往前了。那不是風，是水在看你。',
+      },
+    ],
+    guardianHints: {
+      creature: '芮妲知道哭者怨影與溺誓亡騎對長明燈油的反應。',
+      treasure: '她的油箱旁整理著燈油、水閘齒輪與棺鏈節。',
+      spirit: '她守的火是墓窟裡少數仍站在活人這邊的東西。',
+    },
+  },
+
+  sunken_catacombs_crypt_reader: {
+    id: 'sunken_catacombs_crypt_reader',
+    name: '歐薇',
+    alias: 'reader',
+    title: '王冠墓文解讀者',
+    description:
+      '一名墓文解讀者站在哭者墓室的浮雕前，袖口綁著防水紙卷，指尖沾滿黑水與白粉。' +
+      '她反覆比對哭者祈詞、騎士徽章與王冠鎖鏈圖案。',
+    roomId: 'sunken_catacombs_mourner_crypt',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '王冠墓室裡躺的不是國王。他是第一個想命令深潮井的人，也是第一個被深潮井命令的人。',
+        options: [
+          { text: '需要哪些線索？', nextId: 'clues' },
+          { text: '哭者怨影是什麼？', nextId: 'mourner' },
+          { text: '王冠碎片呢？', nextId: 'crown' },
+          { text: '我會記下墓文。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'clues',
+        text:
+          '長明燈油照路，溺水騎士徽章開墓階，黑水沉泥能判斷哪段碑文被井水改寫。',
+        options: [
+          { text: '哭者怨影是什麼？', nextId: 'mourner' },
+          { text: '王冠碎片呢？', nextId: 'crown' },
+        ],
+      },
+      {
+        id: 'mourner',
+        text:
+          '不是所有哭聲都在哀悼。有些是在提醒你：不要把死者的名字交給井底。',
+        options: [
+          { text: '需要哪些線索？', nextId: 'clues' },
+          { text: '我懂了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'crown',
+        text:
+          '碎片能證明潮主還在，但拿太多會讓墓窟以為你想繼承那頂王冠。',
+        options: [
+          { text: '哭者怨影是什麼？', nextId: 'mourner' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '讀墓文時不要只看名字。鎖鏈刻在哪裡，才是真正的句子。',
+      },
+    ],
+    guardianHints: {
+      creature: '歐薇能解釋哭者怨影、溺誓亡騎與溺冠潮主之間的墓文關係。',
+      treasure: '她的拓本記錄王冠墓室與深淵蓄水池的封印句式。',
+      spirit: '她讓沉沒墓窟不只是一座災難，也是一份仍能被讀懂的警告。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

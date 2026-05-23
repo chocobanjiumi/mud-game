@@ -2584,6 +2584,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['redrock_badlands', 'quest', 'monster_drop'], zoneTags: ['redrock_badlands'],
   },
+  blackwater_silt: {
+    id: 'blackwater_silt', name: '黑水沉泥', type: 'material',
+    description: '沉沒墓窟水渠與骨泥盆地沉積的冰冷黑泥，混著細碎骨粉與墓蠟。可用來判讀水位、封印與黑水污染來源。',
+    buyPrice: 0, sellPrice: 34,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'monster_drop', 'gathering'], zoneTags: ['sunken_catacombs'],
+  },
+  coffin_chain_link: {
+    id: 'coffin_chain_link', name: '石棺銅鏈節', type: 'material',
+    description: '漂棺室與石棺漂流帶拆下的青銅鏈節，表面有潮汐符號與長年碰撞造成的缺口。',
+    buyPrice: 0, sellPrice: 38,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'monster_drop', 'salvage'], zoneTags: ['sunken_catacombs'],
+  },
+  funeral_lamp_oil: {
+    id: 'funeral_lamp_oil', name: '長明燈油', type: 'material',
+    description: '長明燈龕殘留的藍白燈油，遇到黑水會浮出細小火星。可作為辨識真出口與淨化亡靈的媒介。',
+    buyPrice: 0, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'gathering', 'quest'], zoneTags: ['sunken_catacombs'],
+  },
+  tidewheel_gear: {
+    id: 'tidewheel_gear', name: '水閘齒輪', type: 'material',
+    description: '水閘控制室與蛇形排水道回收的青銅齒輪，齒面刻著古代潮汐表。它能修復墓窟水位機關。',
+    buyPrice: 0, sellPrice: 42,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'monster_drop', 'salvage'], zoneTags: ['sunken_catacombs'],
+  },
+  drowned_knight_crest: {
+    id: 'drowned_knight_crest', name: '溺水騎士徽章', type: 'quest',
+    description: '騎士墓庫中亡靈騎士仍緊握的家族徽章，銀面被黑水腐蝕。它是打開王冠墓室與淨化騎士誓言的關鍵。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'quest', 'monster_drop'], zoneTags: ['sunken_catacombs'],
+  },
+  drowned_crown_fragment: {
+    id: 'drowned_crown_fragment', name: '溺王冠碎片', type: 'quest',
+    description: '王冠墓室與深淵蓄水池浮出的黑銀碎片，邊緣像被水流磨出細齒。它能證明深潮井下的意志仍未沉寂。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['sunken_catacombs', 'quest', 'monster_drop'], zoneTags: ['sunken_catacombs'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {
