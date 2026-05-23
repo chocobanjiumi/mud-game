@@ -9755,6 +9755,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  necropolis_gate_death_roll_scribe: {
+    id: 'necropolis_gate_death_roll_scribe',
+    name: '卡爾文',
+    alias: 'scribe',
+    title: '死亡名冊抄錄員',
+    description: '一名抄錄員坐在死亡名冊庫外，筆尖沒有墨水，卻能在紙上留下黑色凹痕。',
+    roomId: 'necropolis_gate_death_roll_archive',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '外門不是門，是名冊。名字在冊上的人走進去，名字不在冊上的人會被寫上去。',
+        options: [
+          { text: '我該找什麼？', nextId: 'proof' },
+          { text: '門檻守將在哪？', nextId: 'gatekeeper' },
+          { text: '我會留意名冊。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'proof', text: '黑門碎楔、墓旗殘布、魂井沉渣。三樣湊齊，就知道外門正在徵召誰。', options: [{ text: '門檻守將在哪？', nextId: 'gatekeeper' }, { text: '我去找證物。', nextId: 'farewell' }] },
+      { id: 'gatekeeper', text: '死都門檻。牠不接受口頭通行，只接受能從牠手中搶下的入城令。', options: [{ text: '我該找什麼？', nextId: 'proof' }, { text: '我會前往門檻。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '別在名冊上找自己的名字。找到時通常太晚。' },
+    ],
+    guardianHints: {
+      creature: '卡爾文提示黑門怨衛、魂井諭亡者、內閘亡軍元帥與死都門檻守將。',
+      treasure: '他說明黑門碎楔、墓旗殘布、魂井沉渣與死都入城令。',
+      spirit: '抄錄員把死都外門的軍陣與名冊徵召主題說清楚。',
+    },
+  },
+
+  necropolis_gate_crypt_broker: {
+    id: 'necropolis_gate_crypt_broker',
+    name: '薇拉',
+    alias: 'broker',
+    title: '墓市廊臨時商人',
+    description: '一名臨時商人站在墓市廊燈下，腰包裡裝的是骨籌，袖口卻藏著活人的護符瓶。',
+    roomId: 'necropolis_gate_crypt_market',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'charnel_ward_phial', 'grave_banner_cloth', 'crypt_market_token'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '墓市只收骨籌，但我還收活人的金幣。趁我還記得你有脈搏，快買。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '墓市安全嗎？', nextId: 'market' },
+          { text: '先不了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、護符瓶、墓旗殘布、墓市骨籌。死都入城令不在市場上流通，別信任何報價。', action: { type: 'shop', data: { shopType: 'necropolis_crypt_supply' } }, options: [{ text: '墓市安全嗎？', nextId: 'market' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'market', text: '安全到足以讓你付錢，不安全到讓你討價還價。看見骨券商笑，就把手從錢袋拿開。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會快點離開。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '活人腳步聲在墓市很貴，別浪費。' },
+    ],
+    guardianHints: {
+      creature: '薇拉提示墓市骨券商、疫香爐抬手與虛裂歸亡者。',
+      treasure: '她販售屍橋護符瓶、墓旗殘布與墓市骨籌。',
+      spirit: '墓市商人讓死都外門補給點具有風險與黑市感。',
+    },
+  },
+
+  necropolis_gate_threshold_witness: {
+    id: 'necropolis_gate_threshold_witness',
+    name: '奧德',
+    alias: 'witness',
+    title: '死都門檻見證者',
+    description: '一名披著灰黑外袍的見證者站在死都門檻旁，靴尖永遠沒有越過最後一道裂縫。',
+    roomId: 'necropolis_gate_dead_city_threshold',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '門檻守將不問你為何而來，只問你是否還能離開。反射黑光亮起時，別把勇氣誤當答案。',
+        options: [
+          { text: '守將怎麼打？', nextId: 'fight' },
+          { text: '入城令代表什麼？', nextId: 'writ' },
+          { text: '我會看清黑光。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'fight', text: '死亡印記先到，吸血隨後，反射最後。活下來的人才有資格談進城。', options: [{ text: '入城令代表什麼？', nextId: 'writ' }, { text: '我會等屏障退去。', nextId: 'farewell' }] },
+      { id: 'writ', text: '死都入城令不是邀請，是你從外門軍法中撕出的缺口。拿到它，內城才會承認你存在。', options: [{ text: '守將怎麼打？', nextId: 'fight' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '跨過門檻前，先確定你的影子還跟著你。' },
+    ],
+    guardianHints: {
+      creature: '奧德提示死都門檻守將的死亡印記、吸血與反射屏障。',
+      treasure: '他說明死都入城令是外門終點證物。',
+      spirit: '見證者把外門終點與進入死者之城的資格連起來。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

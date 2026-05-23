@@ -9363,4 +9363,211 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '封門巨像把霜咬隘口的商隊失蹤、霜巨人足跡與極北邊界收束起來。',
     },
   },
+
+  necropolis_black_gate_wight: {
+    id: 'necropolis_black_gate_wight', name: '黑門怨衛', alias: 'gatewight',
+    level: 40, hp: 2500, mp: 420, str: 116, int: 78, dex: 56, vit: 168, luk: 12,
+    element: 'dark',
+    skills: ['basic_attack', 'bone_strike', 'fear', 'death_mark'],
+    expReward: 5200, goldReward: [1360, 2580],
+    drops: [
+      { itemId: 'black_gate_splinter', chance: 0.46, minQty: 1, maxQty: 1 },
+      { itemId: 'charnel_ward_phial', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '黑門引道上仍保持站哨姿勢的亡者衛兵，鎧甲內只有乾灰和命令。牠會檢查每個活人的影子是否列入死亡名冊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '黑門怨衛會恐懼與死亡印記，進門前先清掉門衛。',
+      treasure: '黑門碎楔常掛在怨衛腰甲上。',
+      spirit: '怨衛建立死都外門的軍事檢查氣氛。',
+    },
+  },
+
+  necropolis_bone_causeway_lancer: {
+    id: 'necropolis_bone_causeway_lancer', name: '白骨堤槍兵', alias: 'bonelancer',
+    level: 41, hp: 2320, mp: 260, str: 132, int: 42, dex: 88, vit: 138, luk: 14,
+    element: 'dark',
+    skills: ['basic_attack', 'spectral_slash', 'charge', 'death_mark'],
+    expReward: 5480, goldReward: [1440, 2720],
+    drops: [
+      { itemId: 'grave_banner_cloth', chance: 0.28, minQty: 1, maxQty: 2 },
+      { itemId: 'black_gate_splinter', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '白骨堤道兩側列隊衝鋒的長槍兵，槍尖由不知名脊骨磨成。牠們會等戰鼓聲落下才同時踏步。',
+    isBoss: false,
+    guardianHints: {
+      creature: '白骨堤槍兵會衝鋒與死亡印記，聽到踏步整齊時立刻散開。',
+      treasure: '墓旗殘布常纏在槍柄上。',
+      spirit: '槍兵讓白骨堤道成為軍陣而非單純墓地。',
+    },
+  },
+
+  necropolis_grave_banner_captain: {
+    id: 'necropolis_grave_banner_captain', name: '墓旗百夫長', alias: 'bannercaptain',
+    level: 43, hp: 3000, mp: 520, str: 138, int: 82, dex: 70, vit: 190, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'spectral_slash', 'fear', 'ethereal_shield', 'death_mark'],
+    expReward: 6400, goldReward: [1680, 3180],
+    drops: [
+      { itemId: 'grave_banner_cloth', chance: 0.64, minQty: 1, maxQty: 3 },
+      { itemId: 'crypt_market_token', chance: 0.18, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '墓旗線與靜默列陣之間巡視的亡軍百夫長，背後旗架掛滿死名布條。牠舉旗時，附近亡者會重新對齊隊形。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '墓旗百夫長會護盾與標記，旗幟立起時先轉防守。',
+      treasure: '墓旗殘布是牠的主要掉落。',
+      spirit: '百夫長讓死都外門的亡者軍隊具備指揮核心。',
+    },
+  },
+
+  necropolis_ossuary_collector: {
+    id: 'necropolis_ossuary_collector', name: '鐵骨收殮者', alias: 'collector',
+    level: 44, hp: 2860, mp: 480, str: 116, int: 96, dex: 50, vit: 206, luk: 10,
+    element: 'dark',
+    skills: ['basic_attack', 'bone_strike', 'soul_drain', 'ethereal_shield'],
+    expReward: 6700, goldReward: [1760, 3320],
+    drops: [
+      { itemId: 'soul_well_residue', chance: 0.3, minQty: 1, maxQty: 1 },
+      { itemId: 'charnel_ward_phial', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '鐵骨藏室裡整理骨骸的高大亡者，手推車上每根骨頭都有軍籍編號。牠會把倒下的人重新歸檔。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鐵骨收殮者防禦高且會靈魂汲取，先破護盾。',
+      treasure: '魂井沉渣偶爾卡在牠的骨匣底部。',
+      spirit: '收殮者把死亡名冊與骨藏室的行政感連起來。',
+    },
+  },
+
+  necropolis_soul_well_oracle: {
+    id: 'necropolis_soul_well_oracle', name: '魂井諭亡者', alias: 'oracle',
+    level: 45, hp: 2380, mp: 880, str: 54, int: 164, dex: 62, vit: 126, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'life_drain', 'fear', 'death_mark'],
+    expReward: 7200, goldReward: [1880, 3560],
+    drops: [
+      { itemId: 'soul_well_residue', chance: 0.68, minQty: 1, maxQty: 2 },
+      { itemId: 'crypt_market_token', chance: 0.22, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '魂井旁低聲宣讀軍令的亡者祭司，井水映不出牠的臉，只映出即將被徵召的名字。',
+    isBoss: false,
+    guardianHints: {
+      creature: '魂井諭亡者會吸血、恐懼與死亡印記，先處理施法者。',
+      treasure: '魂井沉渣主要由牠守護。',
+      spirit: '諭亡者讓魂井成為死都外門徵兵儀式的核心。',
+    },
+  },
+
+  necropolis_crypt_market_broker: {
+    id: 'necropolis_crypt_market_broker', name: '墓市骨券商', alias: 'bonebroker',
+    level: 46, hp: 2480, mp: 620, str: 76, int: 130, dex: 94, vit: 130, luk: 28,
+    element: 'dark',
+    skills: ['basic_attack', 'blind', 'shadow_blast', 'quick_dash', 'soul_drain'],
+    expReward: 7400, goldReward: [1940, 3680],
+    drops: [
+      { itemId: 'crypt_market_token', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'grave_banner_cloth', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '墓市廊裡用骨籌交易姓名的掮客，長袍內襯滿滿都是未使用的死亡契約。牠會把活人的退路賣給亡軍。',
+    isBoss: false,
+    guardianHints: {
+      creature: '墓市骨券商速度快且會致盲，先別讓牠逃到後排。',
+      treasure: '墓市骨籌是牠最常見的交易物。',
+      spirit: '骨券商讓死都外門有非軍陣的黑市面向。',
+    },
+  },
+
+  necropolis_plague_censer_bearer: {
+    id: 'necropolis_plague_censer_bearer', name: '疫香爐抬手', alias: 'censerbearer',
+    level: 47, hp: 2760, mp: 720, str: 92, int: 138, dex: 46, vit: 174, luk: 14,
+    element: 'dark',
+    skills: ['basic_attack', 'toxic_cloud', 'fear', 'life_drain', 'ethereal_shield'],
+    expReward: 7900, goldReward: [2060, 3900],
+    drops: [
+      { itemId: 'charnel_ward_phial', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'soul_well_residue', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '疫香爐旁拖行巨大香爐的亡者，爐煙裡能看見病死者的手影。牠不追人，只讓每個呼吸都變成負擔。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '疫香爐抬手會毒霧與護盾，煙起時先退開。',
+      treasure: '屍橋護符瓶能抵禦附近腐敗氣味。',
+      spirit: '抬手讓疫香爐成為死都外門的環境威脅。',
+    },
+  },
+
+  necropolis_void_crack_revenant: {
+    id: 'necropolis_void_crack_revenant', name: '虛裂歸亡者', alias: 'voidrevenant',
+    level: 49, hp: 3200, mp: 820, str: 118, int: 144, dex: 92, vit: 178, luk: 20,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_dash', 'shadow_blast', 'soul_drain', 'reflect_barrier'],
+    expReward: 9000, goldReward: [2360, 4460],
+    drops: [
+      { itemId: 'soul_well_residue', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'black_gate_splinter', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '虛空裂縫裡反覆走出的歸亡者，身體邊緣像被黑門擠壓過。牠記得自己已死，卻不記得是哪一次。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '虛裂歸亡者會突進、吸魂與反射，反射期間停手。',
+      treasure: '虛裂附近常凝出魂井沉渣。',
+      spirit: '歸亡者把死都外門和更深層虛空裂縫連接起來。',
+    },
+  },
+
+  necropolis_inner_portcullis_marshal: {
+    id: 'necropolis_inner_portcullis_marshal', name: '內閘亡軍元帥', alias: 'marshal',
+    level: 50, hp: 4200, mp: 760, str: 172, int: 112, dex: 74, vit: 240, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'spectral_slash', 'charge', 'death_mark', 'ethereal_shield'],
+    expReward: 10400, goldReward: [2720, 5140],
+    drops: [
+      { itemId: 'grave_banner_cloth', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'crypt_market_token', chance: 0.36, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'defensive',
+    description: '內城閘前統整亡軍列隊的元帥，頭盔面罩沒有縫隙，只傳出整齊軍靴聲。牠一抬手，整座外門都像要關上。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '內閘亡軍元帥會衝鋒、護盾與死亡印記，先拉開隊形。',
+      treasure: '牠背後旗架保留大量墓旗殘布。',
+      spirit: '元帥是進入死都門檻前的軍陣壓力高點。',
+    },
+  },
+
+  necropolis_dead_city_gatekeeper: {
+    id: 'necropolis_dead_city_gatekeeper', name: '死都門檻守將', alias: 'gatekeeper',
+    level: 52, hp: 6400, mp: 1250, str: 190, int: 176, dex: 76, vit: 300, luk: 30,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'spectral_slash', 'life_drain', 'death_mark', 'reflect_barrier'],
+    expReward: 13200, goldReward: [3500, 6600],
+    drops: [
+      { itemId: 'dead_city_writ', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'soul_well_residue', chance: 0.78, minQty: 1, maxQty: 3 },
+      { itemId: 'grave_banner_cloth', chance: 0.62, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description: '死都門檻前唯一會抬頭看活人的守將，披風像黑門縫裡流出的夜。牠不守一扇門，而是守住生者與死者仍能分辨彼此的最後界線。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2700,
+    guardianHints: {
+      creature: '死都門檻守將會反射、吸血與死亡印記，屏障期間停手整隊。',
+      treasure: '牠必定掉落死都入城令。',
+      spirit: '守將把外門軍陣、魂井徵召與死都入城資格收束成終點。',
+    },
+  },
 };

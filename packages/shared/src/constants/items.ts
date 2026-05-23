@@ -3797,6 +3797,45 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['frostbite_pass'],
   },
 
+  // ─── 死都外門軍陣與亡者聖物 (Lv 40-52) ───
+  black_gate_splinter: {
+    id: 'black_gate_splinter', name: '黑門碎楔', type: 'quest',
+    description: '半開黑門邊緣剝落的黑鐵楔片，表面刻著死都軍靴隊列的編號。它能證明探索者已越過外門引道。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 40, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['necropolis_gate'],
+  },
+  grave_banner_cloth: {
+    id: 'grave_banner_cloth', name: '墓旗殘布', type: 'material',
+    description: '墓旗線上撕下的黑灰旗布，針腳裡混著骨粉與舊軍印。亡者軍陣會依旗布方向重新列隊。',
+    buyPrice: 3600, sellPrice: 1800, stackable: true, maxStack: 99, levelReq: 42, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['necropolis_gate'],
+  },
+  soul_well_residue: {
+    id: 'soul_well_residue', name: '魂井沉渣', type: 'material',
+    description: '魂井底部凝成的黑藍色沉渣，靠近耳邊會聽見細小軍令。死靈術士用它追蹤被徵召的亡魂。',
+    buyPrice: 4400, sellPrice: 2200, stackable: true, maxStack: 99, levelReq: 44, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['necropolis_gate'],
+  },
+  crypt_market_token: {
+    id: 'crypt_market_token', name: '墓市骨籌', type: 'quest',
+    description: '墓市廊流通的薄骨籌碼，每一枚都刻著一個死者名。它不是貨幣，而是死都外門允許交易的臨時通行證。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 40, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['necropolis_gate'],
+  },
+  charnel_ward_phial: {
+    id: 'charnel_ward_phial', name: '屍橋護符瓶', type: 'consumable',
+    description: '裝著淡灰護符灰的小玻璃瓶，打開後會短暫壓住屍橋與疫香爐附近的腐敗氣味，並恢復體力。',
+    buyPrice: 4200, sellPrice: 2100, stackable: true, maxStack: 20, levelReq: 40, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 520 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['necropolis_gate'],
+  },
+  dead_city_writ: {
+    id: 'dead_city_writ', name: '死都入城令', type: 'quest',
+    description: '死都門檻守將倒下後浮現的黑色令狀，字跡像軍靴踏出的裂紋。持有它才算真正打開死者之城的外門。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 52, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['necropolis_gate'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
