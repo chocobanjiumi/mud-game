@@ -2325,6 +2325,55 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['whispering_valley', 'quest', 'monster_drop'], zoneTags: ['whispering_valley'],
   },
+  tarnished_ore_chunk: {
+    id: 'tarnished_ore_chunk', name: '失光礦塊', type: 'material',
+    description: '廢棄礦坑裡採得的灰銀礦塊，表面像被礦難當晚的黑霧熏暗。敲擊時聲音沉悶，可用於鍛造與事故調查。',
+    buyPrice: 0, sellPrice: 16,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'monster_drop', 'gathering'], zoneTags: ['abandoned_mines'],
+  },
+  mine_timber_splinter: {
+    id: 'mine_timber_splinter', name: '礦坑支木片', type: 'material',
+    description: '從活動木支架或坍塌樑木上取下的硬木片，內側仍留有白色安全符號與黑色礦粉。',
+    buyPrice: 0, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'monster_drop', 'salvage'], zoneTags: ['abandoned_mines'],
+  },
+  bat_guano_salt: {
+    id: 'bat_guano_salt', name: '蝠糞硝鹽', type: 'material',
+    description: '蝙蝠棲洞裡結成的刺鼻硝鹽，混有礦粉與蟲殼碎片。經處理後可作為火藥、肥料或煉金催化物。',
+    buyPrice: 0, sellPrice: 11,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'monster_drop', 'gathering'], zoneTags: ['abandoned_mines'],
+  },
+  drowned_lantern_oil: {
+    id: 'drowned_lantern_oil', name: '沉燈油', type: 'material',
+    description: '從淹沒橫巷與沉軌段撈起的黑色燈油，遇火仍能短暫燃亮，火光中會浮現礦工最後的影子。',
+    buyPrice: 0, sellPrice: 18,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'monster_drop', 'salvage'], zoneTags: ['abandoned_mines'],
+  },
+  safety_lamp_lens: {
+    id: 'safety_lamp_lens', name: '安全燈鏡片', type: 'material',
+    description: '舊安全燈上拆下的厚玻璃鏡片，邊緣刻有三次點燈的礦工規範。可作為修復燈具與辨識毒霧的工具零件。',
+    buyPrice: 0, sellPrice: 20,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'salvage', 'hidden_cache'], zoneTags: ['abandoned_mines'],
+  },
+  foreman_key_tag: {
+    id: 'foreman_key_tag', name: '工頭鑰匙牌', type: 'quest',
+    description: '刻著工頭室、火藥室與深層倉櫃編號的銅牌，邊角有撬痕。它能證明礦難後仍有人回來翻找證據。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'quest', 'monster_drop'], zoneTags: ['abandoned_mines'],
+  },
+  core_ore_shard: {
+    id: 'core_ore_shard', name: '礦核碎片', type: 'quest',
+    description: '深部礦核剝落的暗紅礦片，握在手中會像心跳般發熱。它是礦工亡魂無法離開礦坑的核心線索。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['abandoned_mines', 'quest', 'monster_drop'], zoneTags: ['abandoned_mines'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

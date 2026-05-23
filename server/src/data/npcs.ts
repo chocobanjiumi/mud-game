@@ -3266,6 +3266,202 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把溪谷視為病人，而不是採集場。',
     },
   },
+
+  abandoned_mines_surveyor: {
+    id: 'abandoned_mines_surveyor',
+    name: '班恩',
+    alias: 'surveyor',
+    title: '礦坑測量師',
+    description:
+      '一名灰鬍測量師坐在礦權牌旁，膝上攤著被礦粉染黑的舊地圖。' +
+      '他的測繩、羅盤與安全燈都保養得很好，像是隨時準備重新下井。',
+    roomId: 'abandoned_mines_entry_claim',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '要進廢坑就記住三件事：聽到礦車聲先靠牆，看到水面多出倒影就退，安全燈熄了不要逞強。',
+        options: [
+          { text: '礦坑為什麼廢棄？', nextId: 'history' },
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '深部礦核是什麼？', nextId: 'core' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'history',
+        text:
+          '帳面上寫坍方，實際上是他們挖到一顆會回應敲擊的礦核。工頭下令加班，' +
+          '升降台、沉軌段、深部核心同一晚全出事，之後沒人能把亡魂帶出去。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '深部礦核是什麼？', nextId: 'core' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先走礦脈道和礦車場，確認支架還能撐多久。再查工頭室、火藥室和沉軌段。' +
+          '若你找到工頭鑰匙牌，就能證明事故後有人回來動過現場。',
+        options: [
+          { text: '礦核在哪？', nextId: 'core' },
+          { text: '我會照路線查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text:
+          '在回音豎井底部。它像礦石，也像心臟。帶回礦核碎片前，別相信任何點名聲，' +
+          '那多半是礦核縛工頭還在叫死去礦工上工。',
+        options: [
+          { text: '我會留意點名聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '繩標若斷了就回頭補上。礦坑最會吞掉的不是人，是人對退路的記憶。',
+      },
+    ],
+    guardianHints: {
+      creature: '班恩能從敲擊聲分辨鏽鎬礦工、沉軌怨影與礦背爬蟲。',
+      treasure: '他的舊地圖標出工頭室暗櫃與逃生側洞的堵塞點。',
+      spirit: '他不是來尋寶，而是想把礦難真正原因寫回地圖上。',
+    },
+  },
+
+  abandoned_mines_salvager: {
+    id: 'abandoned_mines_salvager',
+    name: '桃莉',
+    alias: 'salvager',
+    title: '礦坑回收商',
+    description:
+      '一名矮壯回收商把小貨攤架在舊升降台旁，背後堆著繩索、鏟頭、油布與修補過的安全燈。' +
+      '她手套上滿是鐵鏽與硝鹽，說話時總先看一眼井口深處。',
+    roomId: 'abandoned_mines_lift_station',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'smoke_bomb',
+      'throwing_knife',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '買補給就快。這地方聽見金屬聲就會醒，尤其是礦車場和沉軌段。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '哪些東西值得回收？', nextId: 'salvage' },
+          { text: '你敢待在這裡？', nextId: 'reason' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、煙霧彈和短刀都有。要進蝙蝠棲洞或沉軌段，別空手下去。',
+        action: { type: 'shop', data: { shopType: 'mine_salvage' } },
+        options: [
+          { text: '哪些東西值得回收？', nextId: 'salvage' },
+          { text: '你敢待在這裡？', nextId: 'reason' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'salvage',
+        text:
+          '失光礦塊、支木片、蝠糞硝鹽、沉燈油、安全燈鏡片都有人收。' +
+          '工頭鑰匙牌和礦核碎片別賣，那些是證據，不是貨。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'reason',
+        text:
+          '廢坑不是死坑。只要還有風、還有水、還有礦塵落下，就有東西能回收。' +
+          '真正可怕的是深處有人還在點名，像班表從沒停過。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '聽起來不妙。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '安全燈照不亮的地方，先丟石子。沒有回音才是真的危險。',
+      },
+    ],
+    guardianHints: {
+      creature: '桃莉知道哪些金屬聲會引來蝙蝠，哪些會引來沉軌怨影。',
+      treasure: '她的貨箱底部藏著一片完整安全燈鏡片，是她保命的工具。',
+      spirit: '她把回收當成替礦工整理遺物，只是嘴上從不承認。',
+    },
+  },
+
+  abandoned_mines_ledger_ghost: {
+    id: 'abandoned_mines_ledger_ghost',
+    name: '伊諾',
+    alias: 'ledgerghost',
+    title: '記帳亡魂',
+    description:
+      '一名半透明礦工亡魂守在工頭室破桌旁，手指反覆翻動不存在的帳本頁。' +
+      '他的胸前掛著已熄滅的安全燈，燈罩內偶爾映出塗黑的班表名字。',
+    roomId: 'abandoned_mines_foreman_office',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '第七班少了三人，第八班多了四具影子。帳不平，工頭不准我們離開。',
+        options: [
+          { text: '誰塗黑了名冊？', nextId: 'ledger' },
+          { text: '工頭在哪？', nextId: 'foreman' },
+          { text: '要怎麼讓你們安息？', nextId: 'rest' },
+          { text: '我先調查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'ledger',
+        text:
+          '不是墨水，是礦核的血。名字被蓋住後，人就只剩職務：挖、推、撐、點燈。' +
+          '找到工頭鑰匙牌，打開鎖櫃，真名還在夾層裡。',
+        options: [
+          { text: '工頭在哪？', nextId: 'foreman' },
+          { text: '我會找鎖櫃。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'foreman',
+        text:
+          '他在深部礦核前點名。每點一個名字，就有一副骨頭重新拿起鎬。',
+        options: [
+          { text: '要怎麼讓你們安息？', nextId: 'rest' },
+          { text: '我會去深部核心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rest',
+        text:
+          '把礦核碎片帶回來，把真名念完，安全燈點三次。不是為了照路，是為了讓我們知道班已經結束。',
+        options: [
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '如果你聽見自己的名字，不要回答。礦坑只會點死人的名。',
+      },
+    ],
+    guardianHints: {
+      creature: '伊諾能說出鏽鎬礦工為何聚集在哪些房間。',
+      treasure: '他知道工頭室鎖櫃與帳本夾層的位置。',
+      spirit: '他的執念不是財寶，而是把所有礦工的真名重新寫回帳本。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
