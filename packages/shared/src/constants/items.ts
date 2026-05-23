@@ -2864,6 +2864,41 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['blackwood', 'quest', 'monster_drop'], zoneTags: ['blackwood'],
   },
+  royal_timeglass: {
+    id: 'royal_timeglass', name: '王都時砂玻', type: 'material',
+    description: '失落王都停鐘廣場與時裂長廊散落的細碎玻砂，每一粒都像封著崩壞前一秒的光。可用來校準時間裂隙。',
+    buyPrice: 0, sellPrice: 96,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['lost_capital', 'monster_drop', 'salvage'], zoneTags: ['lost_capital'],
+  },
+  marble_gargoyle_eye: {
+    id: 'marble_gargoyle_eye', name: '白石像鬼眼', type: 'material',
+    description: '王都雕像庭園與日輪禮拜堂的白石守衛眼核，內部有光暗交錯的裂紋。它能辨識王都仍在運作的守衛命令。',
+    buyPrice: 0, sellPrice: 88,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['lost_capital', 'monster_drop', 'salvage'], zoneTags: ['lost_capital'],
+  },
+  senate_wax_tablet: {
+    id: 'senate_wax_tablet', name: '議政蠟版', type: 'material',
+    description: '市政檔案館與議政廢廳回收的黑金蠟版，上面還留著王都崩壞前最後一道投票刻痕。',
+    buyPrice: 0, sellPrice: 92,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['lost_capital', 'monster_drop', 'archive'], zoneTags: ['lost_capital'],
+  },
+  coronation_seal: {
+    id: 'coronation_seal', name: '加冕封印', type: 'quest',
+    description: '加冕階與王座前廳殘留的黑金封印，封面壓著空王座與失落王冠。它是進入王座儀式的通行證明。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['lost_capital', 'quest', 'salvage'], zoneTags: ['lost_capital'],
+  },
+  empty_throne_crown: {
+    id: 'empty_throne_crown', name: '空王座冠影', type: 'quest',
+    description: '空王座上方凝成的半透明冠影，觸碰時會聽見整座王都同時跪下的聲音。它是王都時間停滯異常的核心證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['lost_capital', 'quest', 'monster_drop'], zoneTags: ['lost_capital'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

@@ -6047,6 +6047,152 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她讓黑木林的材料和林心 Boss 線索形成可準備的補給節點。',
     },
   },
+
+  lost_capital_gate_archivist: {
+    id: 'lost_capital_gate_archivist',
+    name: '伊薇特',
+    alias: 'archivist',
+    title: '王都外門檔案官',
+    description:
+      '一名檔案官站在王都外門殘柱下，懷裡抱著被時間裂痕燒焦的城門名冊。' +
+      '她用白石像鬼眼當鎮紙，避免紙頁回到崩壞前一刻。',
+    roomId: 'lost_capital_outer_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '進王都前先記住：這裡不是廢墟，是一座還在執行最後命令的城市。',
+        options: [
+          { text: '最後命令是什麼？', nextId: 'order' },
+          { text: '該先去哪裡？', nextId: 'route' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'order',
+        text: '守衛守門，書吏抄名，裁決官判案，王座等待加冕。問題是，王已經不在。',
+        options: [
+          { text: '該先去哪裡？', nextId: 'route' },
+          { text: '我去找封印。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先過寂靜王道，找停鐘廣場和檔案館。要進空王座，沒有加冕封印就只是送進下一段重演。',
+        options: [
+          { text: '最後命令是什麼？', nextId: 'order' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若守衛問你效忠誰，不要回答「王」。這座城會當真。' },
+    ],
+    guardianHints: {
+      creature: '伊薇特能解釋寂靜王道守衛、停鐘白石像鬼與檔案巫妖書吏的命令來源。',
+      treasure: '她需要王都時砂玻、白石像鬼眼與議政蠟版來重建崩壞紀錄。',
+      spirit: '她把失落王都的時間停滯轉成可調查的行政與儀式線索。',
+    },
+  },
+
+  lost_capital_relic_broker: {
+    id: 'lost_capital_relic_broker',
+    name: '賽佛',
+    alias: 'broker',
+    title: '凝固市集遺物商',
+    description:
+      '一名遺物商在凝固市集的石攤後整理半透明時砂瓶、蠟版碎片與王家封印拓本。' +
+      '他的攤位不喊價，因為王都裡連討價還價都可能被時間記住。',
+    roomId: 'lost_capital_frozen_market',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'royal_timeglass',
+      'marble_gargoyle_eye',
+      'senate_wax_tablet',
+      'coronation_seal',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買遺物前先想清楚。王都的東西很少壞掉，但很常把買主拖回壞掉那一刻。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '空王座需要什麼？', nextId: 'throne' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、王都時砂玻、白石像鬼眼、議政蠟版、加冕封印。要去王座前廳，至少帶封印。',
+        action: { type: 'shop', data: { shopType: 'lost_capital_relics' } },
+        options: [
+          { text: '空王座需要什麼？', nextId: 'throne' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'throne',
+        text: '封印開門，蠟版證明判決，時砂玻校正長廊。至於冠影，只有空王座君影願意交出來。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別在停鐘廣場數錢。你會一直數到同一枚。' },
+    ],
+    guardianHints: {
+      creature: '賽佛能提示凝市影決鬥者、審判廳裁決官、時裂攝政影與空王座君影的通行需求。',
+      treasure: '他的攤位供應時砂玻、像鬼眼、議政蠟版與加冕封印。',
+      spirit: '他把王都考古物轉成可補給的通行與儀式材料。',
+    },
+  },
+
+  lost_capital_sun_chaplain: {
+    id: 'lost_capital_sun_chaplain',
+    name: '奧蕾雅',
+    alias: 'chaplain',
+    title: '日輪禮拜堂殘牧',
+    description:
+      '一名殘牧坐在日輪禮拜堂斷光下，聖袍一半仍亮，一半已被時裂燒黑。' +
+      '她記得加冕儀式的每一句禱詞，也記得哪一句開始出錯。',
+    roomId: 'lost_capital_sun_chapel',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '王座不是空的。它坐著一個命令：繼續等待。',
+        options: [
+          { text: '加冕儀式錯在哪？', nextId: 'rite' },
+          { text: '君影是什麼？', nextId: 'sovereign' },
+          { text: '我先聽禱詞。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rite',
+        text:
+          '封印打開前，攝政影改了誓詞。於是王沒有登座，城市卻已經跪下。那一刻被時裂保存到現在。',
+        options: [
+          { text: '君影是什麼？', nextId: 'sovereign' },
+          { text: '我去找封印。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sovereign',
+        text:
+          '空王座君影不是國王，是整座城市對國王的需要。你若只攻擊它，王都會繼續造出下一個。',
+        options: [
+          { text: '加冕儀式錯在哪？', nextId: 'rite' },
+          { text: '我會找冠影。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '踏上紅毯前，先確認你不是被王都選中的替代品。' },
+    ],
+    guardianHints: {
+      creature: '奧蕾雅能解釋日輪殘翼使、時裂攝政影與空王座君影的儀式關係。',
+      treasure: '她需要加冕封印、空王座冠影與時砂玻來重建錯誤加冕。',
+      spirit: '她把終局 Boss 線索包裝成加冕儀式的調查鏈。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
