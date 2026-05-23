@@ -2458,6 +2458,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['mist_harbor', 'quest', 'hidden_cache'], zoneTags: ['mist_harbor'],
   },
+  sun_dial_pin: {
+    id: 'sun_dial_pin', name: '日晷校準釘', type: 'material',
+    description: '古代遺跡日晷露台遺留的黃銅校準釘，尖端仍帶有微弱白光。考古隊可用它重建日影槽順序。',
+    buyPrice: 0, sellPrice: 34,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'monster_drop', 'archaeology'], zoneTags: ['ancient_ruins'],
+  },
+  moon_gate_tablet: {
+    id: 'moon_gate_tablet', name: '月門陶板', type: 'material',
+    description: '刻著月相步序的薄陶板，邊緣被水池磨圓。只有與倒影水池對照時，才能看懂其中缺失的符號。',
+    buyPrice: 0, sellPrice: 36,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'monster_drop', 'archaeology'], zoneTags: ['ancient_ruins'],
+  },
+  construct_gear: {
+    id: 'construct_gear', name: '構裝齒輪', type: 'material',
+    description: '青銅構裝體胸腔中的小齒輪，齒面刻有古代編號。仍能按固定節奏轉動，可用於修復守衛基座。',
+    buyPrice: 0, sellPrice: 42,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'monster_drop', 'salvage'], zoneTags: ['ancient_ruins'],
+  },
+  lightseal_dust: {
+    id: 'lightseal_dust', name: '光封塵', type: 'material',
+    description: '封印階梯與內聖所附近漂浮的白色光塵，裝入玻璃瓶後仍會沿著日月符號排列。',
+    buyPrice: 0, sellPrice: 40,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'monster_drop', 'gathering'], zoneTags: ['ancient_ruins'],
+  },
+  oracle_shard: {
+    id: 'oracle_shard', name: '神諭碎片', type: 'quest',
+    description: '神諭室裂晶邊緣剝落的透明碎片，內部會反覆浮現城市被白光吞沒的片段。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'quest', 'monster_drop'], zoneTags: ['ancient_ruins'],
+  },
+  sealed_core_fragment: {
+    id: 'sealed_core_fragment', name: '封印光核碎片', type: 'quest',
+    description: '內聖所核心外層脫落的白光碎片，觸碰時能聽見守衛啟動序列。它是判斷封印是否穩定的關鍵物證。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['ancient_ruins', 'quest', 'monster_drop'], zoneTags: ['ancient_ruins'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

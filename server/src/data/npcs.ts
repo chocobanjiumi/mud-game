@@ -4086,6 +4086,199 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他代表霧港不寫進海關簿的那半座城市。',
     },
   },
+
+  ancient_ruins_lead_archaeologist: {
+    id: 'ancient_ruins_lead_archaeologist',
+    name: '莉瑟',
+    alias: 'archaeologist',
+    title: '測繪隊首席考古學者',
+    description:
+      '一名滿身沙塵的考古學者守在測繪桌旁，桌面壓著遺跡平面圖、拓印紙與數枚紅色路釘。' +
+      '她說話時總會先確認日晷、月門與封印階梯的位置，像怕任何一條線索被遺跡重新打亂。',
+    roomId: 'ancient_ruins_survey_camp',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '先別急著往深處走。這座遺跡不是墓，是一套還在運轉的觀測封印。你每碰一個房間，它都在記錄你。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '日月線索在哪？', nextId: 'sunmoon' },
+          { text: '神諭室代表什麼？', nextId: 'oracle' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '外層先看銘文庭、馬賽克大廳和資料庫。要進中層，就把方尖碑、日晷露台與倒影水池的結果對上。',
+        options: [
+          { text: '日月線索在哪？', nextId: 'sunmoon' },
+          { text: '神諭室代表什麼？', nextId: 'oracle' },
+        ],
+      },
+      {
+        id: 'sunmoon',
+        text:
+          '日晷給方向，水池給月相，月門只承認兩者交疊的答案。若你只拿其中一半，封印階梯會把你送回危險處。',
+        options: [
+          { text: '神諭室代表什麼？', nextId: 'oracle' },
+          { text: '我會記下來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'oracle',
+        text:
+          '神諭室不是預言房，是審問房。它會把古代人的錯誤重播給你看，然後看你是否仍想打開內聖所。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '我明白了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '把拓印帶回來給我。證據越完整，我們越不需要用命去猜。',
+      },
+    ],
+    guardianHints: {
+      creature: '莉瑟能分辨哪些守衛屬於外層巡邏，哪些是封印核心喚醒的防線。',
+      treasure: '她的測繪圖標出方尖碑、日晷露台與倒影水池的校準關係。',
+      spirit: '她把冒險者的路線變成遺跡重新被理解的證據。',
+    },
+  },
+
+  ancient_ruins_relic_curator: {
+    id: 'ancient_ruins_relic_curator',
+    name: '托瑪',
+    alias: 'curator',
+    title: '遺物整理員',
+    description:
+      '一名遺物整理員坐在塵封資料庫的石架旁，正把陶板碎片、青銅釘與封印光塵分格裝箱。' +
+      '他的貨攤不像商店，更像一張被迫開放的研究桌。',
+    roomId: 'ancient_ruins_dust_archive',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'sun_dial_pin',
+      'moon_gate_tablet',
+      'lightseal_dust',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '要補給就挑快點。這裡每次有人翻陶板，書架後面的骨頭都像想糾正分類。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '哪些遺物能用？', nextId: 'relics' },
+          { text: '資料庫安全嗎？', nextId: 'danger' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、日晷校準釘、月門殘片和封印光塵都有。別把任務證物當普通材料賣掉。',
+        action: { type: 'shop', data: { shopType: 'ruins_relics' } },
+        options: [
+          { text: '哪些遺物能用？', nextId: 'relics' },
+          { text: '資料庫安全嗎？', nextId: 'danger' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'relics',
+        text:
+          '日晷校準釘用在露台，月門殘片對應拱門，封印光塵能判斷石鎖是否還活著。神諭碎片和核心殘片別亂碰。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text:
+          '相對安全，意思是還來得及逃。銘文縛骨會從書架縫裡走出來，誓石哨兵則只在你拿錯匣子時醒。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '聽起來夠危險。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '陶板看年份，封印看裂紋，人看他敢不敢承認自己讀錯了。',
+      },
+    ],
+    guardianHints: {
+      creature: '托瑪知道銘文縛骨與誓石哨兵通常守在哪類陶板旁。',
+      treasure: '他的分格箱裡整理著日晷、月門與封印階梯可用的遺物。',
+      spirit: '他讓資料庫從死文字變成可被再次使用的工具。',
+    },
+  },
+
+  ancient_ruins_seal_adept: {
+    id: 'ancient_ruins_seal_adept',
+    name: '艾文',
+    alias: 'sealadept',
+    title: '封印學徒',
+    description:
+      '一名年輕封印學徒蹲在封印階梯前，用細刷清理石鎖裂縫中的白色光塵。' +
+      '他腰間掛著空試管與失敗拓印，神情緊張卻不肯離開階梯半步。',
+    roomId: 'ancient_ruins_sealed_stair',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '別直接碰石鎖。它們不是門閂，是三段問題。答錯時醒來的不是鎖，是下面那套防線。',
+        options: [
+          { text: '需要什麼材料？', nextId: 'materials' },
+          { text: '石鎖怎麼判讀？', nextId: 'locks' },
+          { text: '內聖所有什麼？', nextId: 'sanctum' },
+          { text: '我會避開石鎖。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '封印光塵可以測裂縫，神諭碎片能確認答案是否被改寫，核心殘片則代表你已經越過該停下來的線。',
+        options: [
+          { text: '石鎖怎麼判讀？', nextId: 'locks' },
+          { text: '內聖所有什麼？', nextId: 'sanctum' },
+        ],
+      },
+      {
+        id: 'locks',
+        text:
+          '第一道看日影，第二道看月相，第三道看神諭室回放。三者若缺一個，青銅構裝會把你當成闖入者。',
+        options: [
+          { text: '需要什麼材料？', nextId: 'materials' },
+          { text: '我會照順序。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sanctum',
+        text:
+          '我只看過白光從門縫裡漏出來。老師說那不是寶物的光，是某個錯誤還沒有完全死掉。',
+        options: [
+          { text: '石鎖怎麼判讀？', nextId: 'locks' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '若你聽見階梯下面有齒輪聲，先退三步。能退回來也是答案的一部分。',
+      },
+    ],
+    guardianHints: {
+      creature: '艾文能判斷石鎖錯誤時會先喚醒構裝體還是神諭回聲。',
+      treasure: '他的試管能收集封印光塵，判斷階梯是否可安全開啟。',
+      spirit: '他代表仍想理解封印的人，而不是只想打破它的人。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
