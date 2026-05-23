@@ -6882,6 +6882,152 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  moonlit_fen_reed_pathfinder: {
+    id: 'moonlit_fen_reed_pathfinder',
+    name: '芙菈',
+    alias: 'pathfinder',
+    title: '蘆葦入口引路人',
+    description:
+      '一名披著銀蘆斗篷的引路人蹲在蘆葦入口，用木炭在濕木板上畫出螢火、柳根與白蘆迷道的位置。' +
+      '她說話很輕，像怕驚醒水面下的夢。',
+    roomId: 'moonlit_fen_reed_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '月光濕地不會阻止你進去，但它會記住你踩壞了哪一株夜花。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '夢水核心是什麼？', nextId: 'dreamwater' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先沿月花岸和螢火池熟悉水深，再去妖光環。白蘆迷道和月沼祭壇不要獨自進，蘆葉會把人帶回錯誤夜晚。',
+        options: [
+          { text: '夢水核心是什麼？', nextId: 'dreamwater' },
+          { text: '我先找月花。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'dreamwater',
+        text: '夢水核心是濕地的心口。若你看到水面映出不屬於今天的月亮，就代表月衛已經醒了。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別追最亮的螢火。真正的路通常只亮一半。' },
+    ],
+    guardianHints: {
+      creature: '芙菈能提示月蘆小妖、螢燈群、白蘆迷道巡獵者與夢水月衛的路線。',
+      treasure: '她說明月花瓣、銀蘆纖維、螢燈腺與夢水露的採集位置。',
+      spirit: '她把月光濕地的生態規矩轉成可行走的安全路線。',
+    },
+  },
+
+  moonlit_fen_moonflower_apothecary: {
+    id: 'moonlit_fen_moonflower_apothecary',
+    name: '露彌',
+    alias: 'apothecary',
+    title: '月花岸藥師',
+    description:
+      '一名年輕藥師在月花岸的小棚裡分類花瓣與銀蘆纖維，棚頂掛著幾只裝有螢燈腺的玻璃瓶。' +
+      '她的袖口總帶著濕泥與淡淡花香。',
+    roomId: 'moonlit_fen_moonflower_bank',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'moonflower_petal',
+      'silver_reed_fiber',
+      'dreamwater_dew',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買藥水可以，但別把月花全摘光。濕地不是倉庫，是還活著的病人。',
+        options: [
+          { text: '我看看藥材。', nextId: 'shop' },
+          { text: '哪些東西有毒？', nextId: 'poison' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、月花瓣、銀蘆纖維、夢水露。螢燈腺太容易失光，最好自己去螢火池採。',
+        action: { type: 'shop', data: { shopType: 'moonlit_fen_apothecary' } },
+        options: [
+          { text: '哪些東西有毒？', nextId: 'poison' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'poison',
+        text: '銀泥沼膠、黑水水蛭花都會放毒。若被白蘆巡獵者咬傷，先用解毒劑，不要等傷口開始發光。',
+        options: [
+          { text: '我看看藥材。', nextId: 'shop' },
+          { text: '我會備著解毒劑。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '採月花時留一片給水面。這是規矩。' },
+    ],
+    guardianHints: {
+      creature: '露彌能提示銀泥沼膠、月花螳螂與黑水水蛭花的毒性。',
+      treasure: '她販售基礎藥水、解毒劑、月花瓣、銀蘆纖維與夢水露。',
+      spirit: '她把濕地材料導入可回訪的補給節點，避免玩家只靠掉落補給。',
+    },
+  },
+
+  moonlit_fen_canoe_keeper: {
+    id: 'moonlit_fen_canoe_keeper',
+    name: '澤恩',
+    alias: 'canoekeeper',
+    title: '舊舟營守舟人',
+    description:
+      '一名沉默的守舟人坐在舊舟營邊削著槳，身旁泊著幾艘長滿燈苔的窄舟。' +
+      '他偶爾抬頭看月沼祭壇，像在確認水路還沒有被夢吞掉。',
+    roomId: 'moonlit_fen_old_canoe_camp',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '想去月沼祭壇，就先聽水聲。若槳聲有兩次回音，第二次不是你划的。',
+        options: [
+          { text: '祭壇需要什麼？', nextId: 'altar' },
+          { text: '水路安全嗎？', nextId: 'waterway' },
+          { text: '我自己走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'altar',
+        text: '帶著螢燈腺和夢水露，至少能看清一半符文。月沼祭壇符片只能從月衛那裡取，偷來的會碎。',
+        options: [
+          { text: '水路安全嗎？', nextId: 'waterway' },
+          { text: '我去準備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'waterway',
+        text: '黑水流有水蛭花，白蘆迷道有巡獵者。真正危險的是看見自己已經抵達祭壇，然後相信那是真的。',
+        options: [
+          { text: '祭壇需要什麼？', nextId: 'altar' },
+          { text: '我會看腳下。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '槳放輕。夢水不喜歡被吵醒。' },
+    ],
+    guardianHints: {
+      creature: '澤恩能提示黑水水蛭花、白蘆迷道巡獵者與夢水月衛的後段路線。',
+      treasure: '他說明螢燈腺、夢水露與月沼祭壇符片的用途。',
+      spirit: '他把舊舟營變成月沼祭壇與夢水核心前的敘事節點。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

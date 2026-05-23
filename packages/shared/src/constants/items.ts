@@ -3268,6 +3268,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['final_battleground'],
   },
 
+  // ─── 月光濕地材料與夢水物品 (Lv 8-16) ───
+  moonflower_petal: {
+    id: 'moonflower_petal', name: '月花瓣', type: 'material',
+    description: '月花岸與夜花小林採得的銀白花瓣，離水後仍會在夜裡微微發光，是濕地藥師常用的鎮定材料。',
+    buyPrice: 220, sellPrice: 110, stackable: true, maxStack: 99, levelReq: 8, rarity: 'uncommon',
+    sourceTags: ['drop', 'shop'], zoneTags: ['moonlit_fen'],
+  },
+  silver_reed_fiber: {
+    id: 'silver_reed_fiber', name: '銀蘆纖維', type: 'material',
+    description: '白蘆迷道與蘆葦入口割下的堅韌纖維，表面覆著月光般的細粉，可用來縫補防水斗篷與簡易護符。',
+    buyPrice: 260, sellPrice: 130, stackable: true, maxStack: 99, levelReq: 9, rarity: 'uncommon',
+    sourceTags: ['drop', 'shop'], zoneTags: ['moonlit_fen'],
+  },
+  firefly_lantern_gland: {
+    id: 'firefly_lantern_gland', name: '螢燈腺', type: 'material',
+    description: '螢火池成群飛蟲留下的柔亮光腺，放入瓶中能短暫照出水面下的根系與隱藏氣泡。',
+    buyPrice: 320, sellPrice: 160, stackable: true, maxStack: 99, levelReq: 10, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['moonlit_fen'],
+  },
+  dreamwater_dew: {
+    id: 'dreamwater_dew', name: '夢水露', type: 'consumable',
+    description: '月井與夢水核心凝出的透明露珠，飲下後能恢復少量生命與資源，但也會讓視野短暫映出濕地倒影。',
+    buyPrice: 420, sellPrice: 210, stackable: true, maxStack: 20, levelReq: 12, rarity: 'rare',
+    useEffect: { type: 'heal_both', value: 90, value2: 45 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['moonlit_fen'],
+  },
+  lunar_altar_token: {
+    id: 'lunar_altar_token', name: '月沼祭壇符片', type: 'quest',
+    description: '月沼祭壇邊緣剝落的半月形符片，靠近夢水核心時會浮現一圈妖光文字。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 16, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['moonlit_fen'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

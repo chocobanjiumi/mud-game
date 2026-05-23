@@ -6282,6 +6282,200 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     },
   },
 
+  moonlit_reed_sprite: {
+    id: 'moonlit_reed_sprite', name: '月蘆小妖', alias: 'reedsprite',
+    level: 8, hp: 130, mp: 48, str: 13, int: 18, dex: 22, vit: 12, luk: 16,
+    element: 'light',
+    skills: ['basic_attack', 'quick_dash', 'blind'],
+    expReward: 82, goldReward: [22, 42],
+    drops: [
+      { itemId: 'silver_reed_fiber', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'moonflower_petal', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '藏在蘆葦入口與白蘆迷道間的小型妖精，身體像一截被月光照亮的蘆芯。牠們會用細小光點誤導旅人視線，再把腳步聲引進較深的泥水。',
+    isBoss: false,
+    guardianHints: {
+      creature: '月蘆小妖會致盲並快速移動，看到蘆尖連續發光時先穩住位置。',
+      treasure: '牠們常把銀蘆纖維纏成小巢，裡面偶爾混著月花瓣。',
+      spirit: '小妖是濕地對外來腳步的第一層警告。',
+    },
+  },
+
+  silver_mire_sludge: {
+    id: 'silver_mire_sludge', name: '銀泥沼膠', alias: 'miresludge',
+    level: 9, hp: 180, mp: 42, str: 16, int: 14, dex: 8, vit: 26, luk: 8,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_spit', 'toxic_cloud'],
+    expReward: 96, goldReward: [26, 50],
+    drops: [
+      { itemId: 'silver_reed_fiber', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'dreamwater_dew', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '銀泥沼中聚成的半透明泥膠，身體裡漂著蘆根、月花粉與發亮氣泡。牠會堵住淺灘路徑，吐出帶甜味的毒霧讓追蹤者迷失方向。',
+    isBoss: false,
+    guardianHints: {
+      creature: '銀泥沼膠會鋪開身體防守，等牠吐霧後重新聚形再攻擊。',
+      treasure: '銀泥中能濾出銀蘆纖維，少數泥膠體內含有夢水露。',
+      spirit: '牠像濕地把腐水與月光揉成的低階守衛。',
+    },
+  },
+
+  firefly_lantern_swarm: {
+    id: 'firefly_lantern_swarm', name: '螢燈群', alias: 'lanternswarm',
+    level: 10, hp: 150, mp: 80, str: 12, int: 24, dex: 30, vit: 12, luk: 18,
+    element: 'light',
+    skills: ['basic_attack', 'quick_dash', 'blind', 'sonic_wave'],
+    expReward: 112, goldReward: [30, 58],
+    drops: [
+      { itemId: 'firefly_lantern_gland', chance: 0.55, minQty: 1, maxQty: 2 },
+      { itemId: 'moonflower_petal', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '螢火池上方成群盤旋的發光飛蟲，光點會排列成錯誤的道路標記。牠們單體脆弱，卻能以高頻振翅與閃光讓隊伍短暫失去方向感。',
+    isBoss: false,
+    guardianHints: {
+      creature: '螢燈群靠閃光和聲波干擾，範圍攻擊能快速清掉牠們。',
+      treasure: '螢燈腺需要在光點熄滅前收集，品質才會穩定。',
+      spirit: '牠們是濕地天然路標，也會把不受歡迎的人指向錯路。',
+    },
+  },
+
+  willow_whisper_root: {
+    id: 'willow_whisper_root', name: '靜柳低語根', alias: 'willowroot',
+    level: 11, hp: 240, mp: 70, str: 20, int: 24, dex: 10, vit: 30, luk: 10,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'nature_drain', 'bark_shield'],
+    expReward: 135, goldReward: [36, 70],
+    drops: [
+      { itemId: 'silver_reed_fiber', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'moonflower_petal', chance: 0.26, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '靜柳叢下方伸出的細長樹根，會用像人聲的低語模仿同伴呼喚。牠在水面下纏住腳踝，再慢慢吸走獵物身上的溫度與水分。',
+    isBoss: false,
+    guardianHints: {
+      creature: '靜柳低語根會根縛與吸取生命，靠近柳根水面時不要分散。',
+      treasure: '牠纏住的蘆葦常保留完整銀蘆纖維。',
+      spirit: '低語根是靜柳叢把迷路聲音收進根系後長出的怪物。',
+    },
+  },
+
+  moonflower_mantis: {
+    id: 'moonflower_mantis', name: '月花螳螂', alias: 'moonmantis',
+    level: 12, hp: 260, mp: 54, str: 34, int: 18, dex: 38, vit: 22, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'slash', 'backstab'],
+    expReward: 155, goldReward: [42, 82],
+    drops: [
+      { itemId: 'moonflower_petal', chance: 0.5, minQty: 1, maxQty: 2 },
+      { itemId: 'firefly_lantern_gland', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '伏在夜花小林與月花岸花叢間的淡銀螳螂，前肢邊緣像被月光磨亮的短刃。牠會利用花瓣反光隱藏身形，等獵物伸手採花時突然切入。',
+    isBoss: false,
+    guardianHints: {
+      creature: '月花螳螂擅長突襲，花叢突然落瓣時代表牠已經靠近。',
+      treasure: '牠守著品質最好的月花瓣，也會吞食螢燈群留下的光腺。',
+      spirit: '螳螂是月花小林用來阻止過度採集的自然刀刃。',
+    },
+  },
+
+  blackwater_leech_bloom: {
+    id: 'blackwater_leech_bloom', name: '黑水水蛭花', alias: 'leechbloom',
+    level: 13, hp: 300, mp: 86, str: 24, int: 34, dex: 16, vit: 34, luk: 12,
+    element: 'nature',
+    skills: ['basic_attack', 'life_drain', 'poison_bite', 'toxic_cloud'],
+    expReward: 185, goldReward: [50, 98],
+    drops: [
+      { itemId: 'dreamwater_dew', chance: 0.32, minQty: 1, maxQty: 1 },
+      { itemId: 'moonflower_petal', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '黑水流與半月池邊開出的暗紫色水花，花蕊其實是一圈吸血水蛭。牠會用甜香吸引旅人靠近，再從水下伸出細長吸盤拖住腳踝。',
+    isBoss: false,
+    guardianHints: {
+      creature: '黑水水蛭花會吸血並放毒，血線低時不要貪採水邊花。',
+      treasure: '成熟花杯內常凝著夢水露。',
+      spirit: '牠是月光濕地美麗與危險並存的典型生態。',
+    },
+  },
+
+  fae_ring_trickster: {
+    id: 'fae_ring_trickster', name: '妖光環戲法師', alias: 'faetrickster',
+    level: 14, hp: 340, mp: 150, str: 18, int: 46, dex: 36, vit: 24, luk: 24,
+    element: 'light',
+    skills: ['basic_attack', 'blind', 'holy_light', 'quick_dash', 'steal'],
+    expReward: 230, goldReward: [62, 120],
+    drops: [
+      { itemId: 'firefly_lantern_gland', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'dreamwater_dew', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '妖光環中跳舞的濕地妖精術士，披著螢光苔衣，笑聲會從三個方向同時傳來。牠喜歡把敵人誘進光圈，再偷走補給或用白光遮住退路。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '妖光環戲法師會偷竊與致盲，進入妖光環前先整理背包與補給。',
+      treasure: '牠收集螢燈腺與夢水露當作戲法材料。',
+      spirit: '戲法師不是純粹惡意，而是在測試旅人是否尊重濕地規矩。',
+    },
+  },
+
+  white_reed_stalker: {
+    id: 'white_reed_stalker', name: '白蘆迷道巡獵者', alias: 'reedstalker',
+    level: 15, hp: 430, mp: 92, str: 44, int: 24, dex: 42, vit: 32, luk: 16,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'venomous_bite', 'root_bind', 'blind'],
+    expReward: 280, goldReward: [75, 145],
+    drops: [
+      { itemId: 'silver_reed_fiber', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'lunar_altar_token', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '白蘆迷道中低伏前進的長身巡獵者，皮膚覆著銀白蘆粉，幾乎能融進整片蘆海。牠會先用根鬚封路，再從側面咬住落單者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '白蘆迷道巡獵者會封路與致盲，跟著蘆葉晃動方向能判斷位置。',
+      treasure: '牠身上的蘆粉可整理成高品質銀蘆纖維。',
+      spirit: '巡獵者是祭壇外圈的守路生物，會阻止旅人直闖夢水核心。',
+    },
+  },
+
+  dreamwater_lunar_guardian: {
+    id: 'dreamwater_lunar_guardian', name: '夢水月衛', alias: 'lunarguardian',
+    level: 16, hp: 760, mp: 220, str: 48, int: 54, dex: 30, vit: 58, luk: 18,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'water_spear', 'reflect_barrier', 'root_bind'],
+    expReward: 420, goldReward: [115, 220],
+    drops: [
+      { itemId: 'lunar_altar_token', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'dreamwater_dew', chance: 0.72, minQty: 1, maxQty: 2 },
+      { itemId: 'firefly_lantern_gland', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '夢水核心前浮起的半透明守衛，盔甲像由月井水面與白蘆倒影折成。牠會以水矛切斷退路，用反射光幕保護祭壇，直到入侵者證明自己不是來污染濕地。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 900,
+    guardianHints: {
+      creature: '夢水月衛會根縛、水矛與反射屏障，屏障期間先回復或清小怪。',
+      treasure: '牠必定留下月沼祭壇符片，是夢水核心線的主要證明物。',
+      spirit: '月衛是月光濕地對核心水脈的自我保護意志。',
+    },
+  },
+
   war_gate_bannerman: {
     id: 'war_gate_bannerman', name: '終戰門旗衛', alias: 'bannerman',
     level: 55, hp: 3400, mp: 420, str: 84, int: 48, dex: 54, vit: 88, luk: 18,
