@@ -1,6 +1,8 @@
-import type { FaithDef, GenderDef, RaceDef } from '../types/origin.js';
+import type { BaseStats } from '../types/player.js';
+import type { CharacterOriginSelection, FaithDef, GenderDef, RaceDef } from '../types/origin.js';
+import { INITIAL_STATS } from './game.js';
 
-export const RACE_DEFS: Record<string, RaceDef> = {
+export const RACE_DEFS: Record<RaceDef['id'], RaceDef> = {
   human: {
     id: 'human',
     name: '人類',
@@ -73,14 +75,14 @@ export const RACE_DEFS: Record<string, RaceDef> = {
   },
 };
 
-export const GENDER_DEFS: Record<string, GenderDef> = {
+export const GENDER_DEFS: Record<GenderDef['id'], GenderDef> = {
   male: { id: 'male', name: '男性', description: '只影響稱謂與敘事，不影響能力。' },
   female: { id: 'female', name: '女性', description: '只影響稱謂與敘事，不影響能力。' },
   nonbinary: { id: 'nonbinary', name: '非二元', description: '只影響稱謂與敘事，不影響能力。' },
   undisclosed: { id: 'undisclosed', name: '不透露', description: '只影響稱謂與敘事，不影響能力。' },
 };
 
-export const FAITH_DEFS: Record<string, FaithDef> = {
+export const FAITH_DEFS: Record<FaithDef['id'], FaithDef> = {
   aelora: {
     id: 'aelora',
     name: '艾洛拉',
@@ -236,3 +238,32 @@ export const FAITH_DEFS: Record<string, FaithDef> = {
 export const DEFAULT_RACE_ID = 'human';
 export const DEFAULT_GENDER_ID = 'undisclosed';
 export const DEFAULT_FAITH_ID = 'aelora';
+
+export const DEFAULT_CHARACTER_ORIGIN: CharacterOriginSelection = {
+  raceId: DEFAULT_RACE_ID,
+  genderId: DEFAULT_GENDER_ID,
+  faithId: DEFAULT_FAITH_ID,
+};
+
+export function isRaceId(value: unknown): value is RaceDef['id'] {
+  return typeof value === 'string' && value in RACE_DEFS;
+}
+
+export function isGenderId(value: unknown): value is GenderDef['id'] {
+  return typeof value === 'string' && value in GENDER_DEFS;
+}
+
+export function isFaithId(value: unknown): value is FaithDef['id'] {
+  return typeof value === 'string' && value in FAITH_DEFS;
+}
+
+export function getInitialStatsForRace(raceId: RaceDef['id']): BaseStats {
+  const race = RACE_DEFS[raceId];
+  return {
+    str: Math.max(1, INITIAL_STATS.str + (race.statMods.str ?? 0)),
+    int: Math.max(1, INITIAL_STATS.int + (race.statMods.int ?? 0)),
+    dex: Math.max(1, INITIAL_STATS.dex + (race.statMods.dex ?? 0)),
+    vit: Math.max(1, INITIAL_STATS.vit + (race.statMods.vit ?? 0)),
+    luk: Math.max(1, INITIAL_STATS.luk + (race.statMods.luk ?? 0)),
+  };
+}

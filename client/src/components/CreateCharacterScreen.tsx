@@ -1,0 +1,202 @@
+import { useMemo, useState } from 'react';
+import type { FormEvent } from 'react';
+import {
+  DEFAULT_FAITH_ID,
+  DEFAULT_GENDER_ID,
+  DEFAULT_RACE_ID,
+  FAITH_DEFS,
+  GENDER_DEFS,
+  RACE_DEFS,
+  getInitialStatsForRace,
+  type CreateCharacterPayload,
+  type FaithId,
+  type GenderId,
+  type RaceId,
+} from '@game/shared';
+import { useGameStore } from '../stores/gameStore';
+
+interface CreateCharacterScreenProps {
+  onCreate: (payload: CreateCharacterPayload) => void;
+}
+
+const statLabels = {
+  str: 'STR',
+  int: 'INT',
+  dex: 'DEX',
+  vit: 'VIT',
+  luk: 'LUK',
+};
+
+export default function CreateCharacterScreen({ onCreate }: CreateCharacterScreenProps) {
+  const [name, setName] = useState('');
+  const [raceId, setRaceId] = useState<RaceId>(DEFAULT_RACE_ID);
+  const [genderId, setGenderId] = useState<GenderId>(DEFAULT_GENDER_ID);
+  const [faithId, setFaithId] = useState<FaithId>(DEFAULT_FAITH_ID);
+  const [error, setError] = useState('');
+  const userId = useGameStore((s) => s.arinovaUser?.id ?? '');
+
+  const race = RACE_DEFS[raceId];
+  const faith = FAITH_DEFS[faithId];
+  const stats = useMemo(() => getInitialStatsForRace(raceId), [raceId]);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const trimmed = name.trim();
+    if (trimmed.length < 2 || trimmed.length > 12) {
+      setError('角色名稱長度須在 2-12 字之間');
+      return;
+    }
+    setError('');
+    onCreate({ name: trimmed, userId, raceId, genderId, faithId });
+  };
+
+  return (
+    <div className="h-full overflow-y-auto bg-bg-primary scanline text-text-bright">
+      <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col gap-5 px-4 py-5 lg:px-6">
+        <header className="flex flex-col gap-1 border-b border-border-dim pb-4">
+          <h1 className="text-2xl font-bold text-text-terminal text-glow">建立角色</h1>
+          <div className="text-sm text-text-dim">選擇出身、稱謂與信仰後進入世界。</div>
+        </header>
+
+        <form onSubmit={handleSubmit} className="grid flex-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.75fr)]">
+          <main className="space-y-5">
+            <section className="space-y-3">
+              <label className="block text-sm font-bold text-text-terminal" htmlFor="character-name">
+                名稱
+              </label>
+              <input
+                id="character-name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                autoFocus
+                maxLength={12}
+                className="w-full rounded-md border border-border-dim bg-bg-secondary px-3 py-3 text-text-bright outline-none focus:border-border-glow"
+                placeholder="2-12 字"
+              />
+              {error && <div className="text-xs text-combat-damage">{error}</div>}
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-sm font-bold text-text-terminal">種族</h2>
+              <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+                {Object.values(RACE_DEFS).map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setRaceId(option.id)}
+                    className={`min-h-36 rounded-md border p-3 text-left transition-colors ${
+                      raceId === option.id
+                        ? 'border-text-terminal bg-bg-secondary text-text-bright'
+                        : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
+                    }`}
+                  >
+                    <div className="mb-1 flex items-center justify-between gap-2">
+                      <span className="font-bold text-text-bright">{option.name}</span>
+                      <span className="text-xs text-text-amber">{formatStatMods(option.statMods)}</span>
+                    </div>
+                    <p className="mb-2 text-xs leading-5">{option.description}</p>
+                    <div className="text-xs text-text-terminal">{option.passiveName}</div>
+                    <p className="text-xs leading-5 text-text-dim">{option.passiveDescription}</p>
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-sm font-bold text-text-terminal">性別</h2>
+              <div className="grid gap-2 sm:grid-cols-4">
+                {Object.values(GENDER_DEFS).map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setGenderId(option.id)}
+                    className={`rounded-md border px-3 py-3 text-left text-sm transition-colors ${
+                      genderId === option.id
+                        ? 'border-text-terminal bg-bg-secondary text-text-bright'
+                        : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
+                    }`}
+                  >
+                    {option.name}
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section className="space-y-3">
+              <h2 className="text-sm font-bold text-text-terminal">信仰</h2>
+              <div className="grid gap-2 md:grid-cols-2">
+                {Object.values(FAITH_DEFS).map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setFaithId(option.id)}
+                    className={`min-h-32 rounded-md border p-3 text-left transition-colors ${
+                      faithId === option.id
+                        ? 'border-text-terminal bg-bg-secondary text-text-bright'
+                        : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
+                    }`}
+                  >
+                    <div className="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                      <span className="font-bold text-text-bright">{option.name}</span>
+                      <span className="text-xs text-text-amber">{option.title}</span>
+                    </div>
+                    <p className="mb-2 text-xs leading-5">{option.description}</p>
+                    <div className="text-xs text-text-terminal">{option.passiveName}</div>
+                    <p className="text-xs leading-5 text-text-dim">{option.passiveDescription}</p>
+                  </button>
+                ))}
+              </div>
+            </section>
+          </main>
+
+          <aside className="lg:sticky lg:top-5 lg:self-start">
+            <div className="rounded-md border border-border-dim bg-bg-secondary p-4">
+              <div className="mb-3 text-sm font-bold text-text-terminal">角色預覽</div>
+              <div className="mb-4 text-xl font-bold text-text-bright">{name.trim() || '未命名冒險者'}</div>
+
+              <div className="mb-4 grid grid-cols-5 gap-2">
+                {Object.entries(stats).map(([key, value]) => (
+                  <div key={key} className="rounded border border-border-dim bg-bg-primary p-2 text-center">
+                    <div className="text-[11px] text-text-dim">{statLabels[key as keyof typeof statLabels]}</div>
+                    <div className="font-bold text-text-bright">{value}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="space-y-3 text-sm">
+                <SummaryBlock label="種族" title={race.name} text={race.passiveDescription} />
+                <SummaryBlock label="性別" title={GENDER_DEFS[genderId].name} text={GENDER_DEFS[genderId].description} />
+                <SummaryBlock label="信仰" title={`${faith.name}・${faith.title}`} text={faith.passiveDescription} />
+                <SummaryBlock label="祈禱" title={faith.prayerName} text={faith.prayerDescription} />
+              </div>
+
+              <button
+                type="submit"
+                className="mt-5 w-full rounded-md bg-text-terminal px-4 py-3 font-bold text-bg-primary transition-colors hover:bg-text-bright"
+              >
+                建立並進入
+              </button>
+            </div>
+          </aside>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function SummaryBlock({ label, title, text }: { label: string; title: string; text: string }) {
+  return (
+    <div className="border-t border-border-dim pt-3">
+      <div className="mb-1 text-xs text-text-dim">{label}</div>
+      <div className="font-bold text-text-bright">{title}</div>
+      <div className="mt-1 text-xs leading-5 text-text-dim">{text}</div>
+    </div>
+  );
+}
+
+function formatStatMods(statMods: Partial<Record<keyof typeof statLabels, number>>): string {
+  const parts = Object.entries(statMods)
+    .filter(([, value]) => value !== undefined && value !== 0)
+    .map(([key, value]) => `${statLabels[key as keyof typeof statLabels]} ${value! > 0 ? '+' : ''}${value}`);
+  return parts.length > 0 ? parts.join(' ') : '均衡';
+}

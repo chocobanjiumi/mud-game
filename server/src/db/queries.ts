@@ -2,18 +2,34 @@
 
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
-import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID } from '@game/shared';
+import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace } from '@game/shared';
 
 // ─── Character CRUD ───
 
 /** 建立新角色 */
-export function createCharacter(userId: string, name: string, isAi = false, agentId?: string): Character {
+export interface CreateCharacterOptions {
+  raceId?: RaceId;
+  genderId?: GenderId;
+  faithId?: FaithId;
+}
+
+export function createCharacter(
+  userId: string,
+  name: string,
+  isAi = false,
+  agentId?: string,
+  options: CreateCharacterOptions = {},
+): Character {
   const db = getDb();
   const id = nanoid();
   const now = Math.floor(Date.now() / 1000);
-  const maxHp = calculateMaxHp(1, INITIAL_STATS.vit);
-  const maxMp = calculateMaxMp(1, INITIAL_STATS.int);
+  const raceId = options.raceId ?? DEFAULT_RACE_ID;
+  const genderId = options.genderId ?? DEFAULT_GENDER_ID;
+  const faithId = options.faithId ?? DEFAULT_FAITH_ID;
+  const stats = getInitialStatsForRace(raceId);
+  const maxHp = calculateMaxHp(1, stats.vit);
+  const maxMp = calculateMaxMp(1, stats.int);
 
   db.prepare(`
     INSERT INTO characters (id, user_id, name, level, exp, class_id, race_id, gender_id, faith_id, faith_favor, hp, mp, max_hp, max_mp,
@@ -21,8 +37,8 @@ export function createCharacter(userId: string, name: string, isAi = false, agen
     VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, 0, ?, ?, ?, ?,
       ?, ?, ?, ?, ?, 0, 100, 'village_square', ?, ?, ?, ?)
   `).run(
-    id, userId, name, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, maxHp, maxMp, maxHp, maxMp,
-    INITIAL_STATS.str, INITIAL_STATS.int, INITIAL_STATS.dex, INITIAL_STATS.vit, INITIAL_STATS.luk,
+    id, userId, name, raceId, genderId, faithId, maxHp, maxMp, maxHp, maxMp,
+    stats.str, stats.int, stats.dex, stats.vit, stats.luk,
     isAi ? 1 : 0, agentId ?? null, now, now,
   );
 

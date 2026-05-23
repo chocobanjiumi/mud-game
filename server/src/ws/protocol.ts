@@ -1,7 +1,7 @@
 // WebSocket 訊息解析與路由
 
 import type { WebSocket } from 'ws';
-import type { ClientMessage, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
+import type { ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
 import type { WsSession } from './handler.js';
 import {
   sendToSession, sendError, sendSystem, updatePing,
@@ -12,7 +12,7 @@ import { handleCommand } from '../game/commands.js';
 import { world } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
-import { ITEM_DEFS } from '@game/shared';
+import { FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
 
 /** Shared CurrencyManager instance */
 const currencyManager = new CurrencyManager();
@@ -296,9 +296,9 @@ async function handleLogin(
 /** 處理建立角色 */
 function handleCreateCharacter(
   session: WsSession,
-  payload: { name: string; userId: string },
+  payload: CreateCharacterPayload,
 ): void {
-  const { name } = payload;
+  const name = payload.name?.trim();
 
   // 永遠使用 server 端驗證過的 userId，不信任 client 傳的值
   const userId = session.userId;
@@ -317,14 +317,37 @@ function handleCreateCharacter(
     return;
   }
 
+  if (payload.raceId !== undefined && !isRaceId(payload.raceId)) {
+    sendError(session.sessionId, '未知的種族選擇。');
+    return;
+  }
+
+  if (payload.genderId !== undefined && !isGenderId(payload.genderId)) {
+    sendError(session.sessionId, '未知的性別選擇。');
+    return;
+  }
+
+  if (payload.faithId !== undefined && !isFaithId(payload.faithId)) {
+    sendError(session.sessionId, '未知的信仰選擇。');
+    return;
+  }
+
   try {
-    const character = createCharacter(userId, name);
+    const character = createCharacter(userId, name, false, undefined, {
+      raceId: payload.raceId,
+      genderId: payload.genderId,
+      faithId: payload.faithId,
+    });
     bindCharacter(session.sessionId, character.id, userId);
     world.placePlayer(character.id, character.roomId);
 
+    const race = RACE_DEFS[character.raceId ?? 'human'];
+    const gender = GENDER_DEFS[character.genderId ?? 'undisclosed'];
+    const faith = FAITH_DEFS[character.faithId ?? 'aelora'];
+
     sendToSession(session.sessionId, 'login_success', {
       character,
-      message: `角色「${character.name}」建立成功！歡迎來到冒險世界。`,
+      message: `角色「${character.name}」建立成功。${race.name} / ${gender.name} / 信仰${faith.name}`,
     });
 
     sendNarrativeWelcome(session);

@@ -72,7 +72,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
 
         <div className="mt-6 text-center text-text-dim text-xs space-y-1">
           <p>目前暫停 Arinova 登入與 AI 夥伴，方便本地測試。</p>
-          <p>尚未建立角色時，進入後輸入 create &lt;角色名稱&gt;。</p>
+          <p>尚未建立角色時，登入後會進入建立角色流程。</p>
         </div>
       </div>
     </div>

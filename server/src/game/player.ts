@@ -2,9 +2,9 @@
 
 import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
-  EquipmentSlots, SkillDef,
+  EquipmentSlots, SkillDef, RaceId, GenderId, FaithId,
 } from '@game/shared';
-import { CLASS_DEFS, createEmptyEquipmentSlots } from '@game/shared';
+import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, createEmptyEquipmentSlots, getInitialStatsForRace } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 import { getPveRespawnRoomId } from './death-respawn.js';
@@ -30,15 +30,13 @@ export function getHighLevelReviveFee(level: number): number {
   return (level - HIGH_LEVEL_REVIVE_FEE_START + 1) * 20;
 }
 
-/** 初始基礎屬性 */
-const DEFAULT_STATS: BaseStats = {
-  str: 5,
-  int: 5,
-  dex: 5,
-  vit: 5,
-  luk: 5,
-};
 const HIGH_LEVEL_REVIVE_FEE_START = 20;
+
+export interface PlayerCreateCharacterOptions {
+  raceId?: RaceId;
+  genderId?: GenderId;
+  faithId?: FaithId;
+}
 
 /** 初始裝備槽（全空） */
 const EMPTY_EQUIPMENT: EquipmentSlots = {
@@ -73,11 +71,23 @@ export class PlayerManager {
   // ──────────────────────────────────────────────────────────
 
   /** 建立新角色 */
-  createCharacter(name: string, userId: string, isAi = false, agentId?: string): Character {
+  createCharacter(
+    name: string,
+    userId: string,
+    isAi = false,
+    agentId?: string,
+    options: PlayerCreateCharacterOptions = {},
+  ): Character {
     const id = randomUUID();
     const now = Date.now();
 
     const classDef = CLASS_DEFS['adventurer'];
+    const raceId = options.raceId ?? DEFAULT_RACE_ID;
+    const genderId = options.genderId ?? DEFAULT_GENDER_ID;
+    const faithId = options.faithId ?? DEFAULT_FAITH_ID;
+    const stats = getInitialStatsForRace(raceId);
+    const hpMax = 100 + (stats.vit - 5) * 8;
+    const mpMax = 30 + (stats.int - 5) * 5;
     const character: Character = {
       id,
       userId,
@@ -85,14 +95,18 @@ export class PlayerManager {
       level: 1,
       exp: 0,
       classId: 'adventurer',
-      hp: 100,
-      mp: 30,
-      maxHp: 100,
-      maxMp: 30,
+      raceId,
+      genderId,
+      faithId,
+      faithFavor: 0,
+      hp: hpMax,
+      mp: mpMax,
+      maxHp: hpMax,
+      maxMp: mpMax,
       resource: classDef.initialResource,
       maxResource: classDef.maxResource,
       resourceType: classDef.resourceType,
-      stats: { ...DEFAULT_STATS },
+      stats,
       freePoints: 0,
       gold: 100,
       roomId: 'village_square',

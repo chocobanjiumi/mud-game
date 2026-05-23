@@ -48,3 +48,9 @@ export interface FaithDef {
   taboos: string[];
   tags?: string[];
 }
+
+export interface CharacterOriginSelection {
+  raceId: RaceId;
+  genderId: GenderId;
+  faithId: FaithId;
+}

@@ -187,7 +187,7 @@ export type ConnectionState = 'disconnected' | 'connecting' | 'connected';
 
 // --- Screen state ---
 
-export type Screen = 'login' | 'game';
+export type Screen = 'login' | 'create' | 'game';
 
 // --- Main store ---
 

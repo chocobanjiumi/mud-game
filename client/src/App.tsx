@@ -3,7 +3,9 @@ import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from './stores/gameStore';
 import { useWebSocket } from './hooks/useWebSocket';
 import LoginScreen from './components/LoginScreen';
+import CreateCharacterScreen from './components/CreateCharacterScreen';
 import GameScreen from './components/GameScreen';
+import type { CreateCharacterPayload } from '@game/shared';
 
 // Initialize Arinova SDK on app load (v0.1.3 constructor pattern)
 const ARINOVA_APP_ID = import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game-671a1dd6';
@@ -70,7 +72,7 @@ export default function App() {
       const createMatch = command.match(/^create\s+(.+)$/i);
       if (createMatch) {
         const userId = useGameStore.getState().arinovaUser?.id ?? '';
-        createCharacter(createMatch[1].trim(), userId);
+        createCharacter({ name: createMatch[1].trim(), userId });
         return;
       }
       sendCommand(command);
@@ -80,6 +82,10 @@ export default function App() {
 
   if (screen === 'login') {
     return <LoginScreen onLogin={handleLogin} />;
+  }
+
+  if (screen === 'create') {
+    return <CreateCharacterScreen onCreate={(payload: CreateCharacterPayload) => createCharacter(payload)} />;
   }
 
   return (

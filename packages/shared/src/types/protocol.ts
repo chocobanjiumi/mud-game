@@ -6,12 +6,18 @@ import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { InventoryItem } from './item.js';
 import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
 import type { ActiveStatusEffect } from './combat.js';
+import type { CharacterOriginSelection } from './origin.js';
+
+export interface CreateCharacterPayload extends Partial<CharacterOriginSelection> {
+  name: string;
+  userId: string;
+}
 
 // Client → Server
 export type ClientMessage =
   | { type: 'command'; payload: string }
   | { type: 'login'; payload: { userId: string; characterId?: string; accessToken?: string } }
-  | { type: 'create_character'; payload: { name: string; userId: string } }
+  | { type: 'create_character'; payload: CreateCharacterPayload }
   | { type: 'ping' }
   | { type: 'open_shop' }
   | { type: 'purchase'; payload: { itemId: string } }

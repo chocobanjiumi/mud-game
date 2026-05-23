@@ -20,6 +20,7 @@ import type {
   BalanceUpdatePayload,
   LeaderboardDataPayload,
   Character,
+  CreateCharacterPayload,
 } from '@game/shared';
 
 const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
@@ -159,7 +160,7 @@ export function useWebSocket() {
         if (character) {
           s.setCharacter(character);
         }
-        s.addTerminalLine('登入成功！歡迎來到冒險世界。', 'system');
+        s.addTerminalLine((p.message as string) ?? '登入成功！歡迎來到冒險世界。', 'system');
         s.setScreen('game');
         break;
       }
@@ -173,9 +174,7 @@ export function useWebSocket() {
           }
           send({ type: 'login', payload: { userId: chars[0].name, characterId: chars[0].id } });
         } else {
-          // No characters — transition to game screen for character creation
-          s.setScreen('game');
-          s.addTerminalLine('[系統] 尚未建立角色，請使用 create <角色名稱> 來建立新角色。', 'system');
+          s.setScreen('create');
         }
         break;
       }
@@ -519,8 +518,8 @@ export function useWebSocket() {
   );
 
   const createCharacter = useCallback(
-    (name: string, userId: string) => {
-      send({ type: 'create_character', payload: { name, userId } });
+    (payload: CreateCharacterPayload) => {
+      send({ type: 'create_character', payload });
     },
     [send],
   );
