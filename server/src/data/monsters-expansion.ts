@@ -6671,6 +6671,221 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     },
   },
 
+  ironwood_gate_sentinel: {
+    id: 'ironwood_gate_sentinel', name: '鐵木門哨', alias: 'gatesentinel',
+    level: 18, hp: 620, mp: 80, str: 58, int: 20, dex: 32, vit: 58, luk: 14,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'howl', 'stone_skin'],
+    expReward: 520, goldReward: [140, 260],
+    drops: [
+      { itemId: 'ironwood_plank', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'fort_supply_token', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '守在鐵木外門與傳送陣庭的重甲哨兵，盾牌由鐵木與黑鐵鉚成。牠們原本是邊境守軍，如今被錯誤軍令困在巡邏路線上，會攔下任何沒有通行記號的人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鐵木門哨防禦高，會用衝鋒與咆哮拖住隊伍。',
+      treasure: '牠的盾牌與腰牌能拆出鐵木板材與要塞補給牌。',
+      spirit: '門哨代表要塞仍在執行封鎖命令。',
+    },
+  },
+
+  quartermaster_renegade: {
+    id: 'quartermaster_renegade', name: '叛逃軍需兵', alias: 'renegade',
+    level: 19, hp: 560, mp: 92, str: 44, int: 24, dex: 44, vit: 38, luk: 24,
+    element: 'none',
+    skills: ['basic_attack', 'backstab', 'steal', 'quick_dash'],
+    expReward: 560, goldReward: [150, 285],
+    drops: [
+      { itemId: 'fort_supply_token', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'sunroad_ration', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '佔據軍需行列與補給隧道的叛逃士兵，背袋裡塞滿偷來的火油、箭束與乾糧。牠們熟悉要塞暗門，會在戰鬥中割走補給後迅速後撤。',
+    isBoss: false,
+    guardianHints: {
+      creature: '叛逃軍需兵會偷竊，補給多時優先處理。',
+      treasure: '牠們身上最常見的是要塞補給牌。',
+      spirit: '軍需兵讓要塞的補給系統變成內亂來源。',
+    },
+  },
+
+  bastion_crossbowman: {
+    id: 'bastion_crossbowman', name: '堡牆弩手', alias: 'crossbowman',
+    level: 20, hp: 540, mp: 100, str: 42, int: 22, dex: 58, vit: 34, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'blind', 'death_mark'],
+    expReward: 610, goldReward: [165, 315],
+    drops: [
+      { itemId: 'scout_signal_fuse', chance: 0.34, minQty: 1, maxQty: 1 },
+      { itemId: 'fort_supply_token', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '伏在東西堡牆與斥候棲臺上的弩手，弩臂覆著黑色鐵木片，箭頭綁著短信管。牠們會先以煙火標記目標，再從牆道死角連射。',
+    isBoss: false,
+    guardianHints: {
+      creature: '堡牆弩手會標記與致盲，進入牆道前先找掩體。',
+      treasure: '斥候信管常掛在牠的弩機側袋。',
+      spirit: '弩手是要塞偵查火線的一部分，仍在回報不存在的敵軍。',
+    },
+  },
+
+  forge_cinder_guard: {
+    id: 'forge_cinder_guard', name: '鍛坊燼衛', alias: 'cinderguard',
+    level: 22, hp: 760, mp: 140, str: 66, int: 34, dex: 26, vit: 70, luk: 12,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'stone_slam', 'stone_skin'],
+    expReward: 760, goldReward: [205, 390],
+    drops: [
+      { itemId: 'forge_cinder_oil', chance: 0.42, minQty: 1, maxQty: 1 },
+      { itemId: 'ironwood_plank', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '鐵木鍛坊中由火油、鐵灰與木炭包覆的重衛，胸甲縫隙透出暗紅爐光。牠們用燼油維持要塞火線，也會把入侵者推進未冷的鍛槽。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鍛坊燼衛會石膚與火焰噴吐，火線區域不宜久站。',
+      treasure: '鍛坊燼油常封在牠腰間的耐火瓶。',
+      spirit: '燼衛是鍛坊自動防衛與士兵紀律混成的產物。',
+    },
+  },
+
+  ironwood_rootwarden: {
+    id: 'ironwood_rootwarden', name: '鐵木根衛', alias: 'rootwarden',
+    level: 23, hp: 820, mp: 180, str: 58, int: 46, dex: 18, vit: 82, luk: 14,
+    element: 'none',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain'],
+    expReward: 840, goldReward: [225, 430],
+    drops: [
+      { itemId: 'ironwood_plank', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'forge_cinder_oil', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '鐵木林圃深處被軍法符釘喚醒的根系守衛，樹皮硬得像黑鐵。牠會用根鬚封住林圃與囚牢間的小路，吸取靠近者的體力修補城牆。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鐵木根衛會根縛與吸取生命，林圃戰鬥要避免被分割。',
+      treasure: '高品質鐵木板材主要來自根衛外皮。',
+      spirit: '根衛說明要塞本身與鐵木林圃其實共享防衛意志。',
+    },
+  },
+
+  prison_chain_jailer: {
+    id: 'prison_chain_jailer', name: '囚牢鎖衛', alias: 'jailer',
+    level: 24, hp: 780, mp: 150, str: 70, int: 28, dex: 30, vit: 72, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'bone_strike', 'charge', 'death_mark'],
+    expReward: 910, goldReward: [245, 465],
+    drops: [
+      { itemId: 'fort_supply_token', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'ironwood_plank', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '囚牢石廊中拖著黑鐵鎖鏈的看守，頭盔面罩被鐵木根鬚封死。牠會用軍令印記標定逃犯與闖入者，鎖鏈敲擊聲能傳到整條石廊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '囚牢鎖衛會標記與衝鋒，狹窄石廊中要先退到開闊處。',
+      treasure: '牠保管囚牢補給牌與加固鐵木片。',
+      spirit: '鎖衛是要塞紀律失控後仍在追捕所有人的殘留權力。',
+    },
+  },
+
+  signal_fire_sapper: {
+    id: 'signal_fire_sapper', name: '烽火爆破兵', alias: 'sapper',
+    level: 25, hp: 720, mp: 220, str: 46, int: 62, dex: 44, vit: 42, luk: 18,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_bolt', 'fire_breath', 'blind', 'quick_dash'],
+    expReward: 980, goldReward: [265, 505],
+    drops: [
+      { itemId: 'scout_signal_fuse', chance: 0.66, minQty: 1, maxQty: 2 },
+      { itemId: 'forge_cinder_oil', chance: 0.32, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '信號塔與隱蔽突門間活動的爆破兵，背負裝滿信管與火油的小型木箱。牠會用彩煙遮蔽視線，再把火信管丟進補給箱與橋架下方。',
+    isBoss: false,
+    guardianHints: {
+      creature: '烽火爆破兵會致盲與火焰攻擊，看到彩煙時立刻散開。',
+      treasure: '牠是斥候信管與鍛坊燼油的重要來源。',
+      spirit: '爆破兵把要塞通訊系統變成了內部破壞手段。',
+    },
+  },
+
+  oath_chapel_knight: {
+    id: 'oath_chapel_knight', name: '誓約堂鐵騎', alias: 'oathknight',
+    level: 27, hp: 1100, mp: 260, str: 82, int: 48, dex: 34, vit: 92, luk: 16,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'reflect_barrier', 'holy_light', 'death_mark'],
+    expReward: 1180, goldReward: [320, 610],
+    drops: [
+      { itemId: 'fort_supply_token', chance: 0.6, minQty: 1, maxQty: 3 },
+      { itemId: 'keep_command_seal', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '誓約禮拜堂內仍跪守軍旗的鐵騎，鎧甲縫隙塞滿黑色鐵木籤。牠會用反射屏障保護禮拜堂門線，並將違令者標成叛軍。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '誓約堂鐵騎會反射與標記，屏障期間先防守。',
+      treasure: '牠身上可能帶著內堡軍令印的殘片。',
+      spirit: '鐵騎是要塞誓約還沒崩潰的一面，也是最固執的一面。',
+    },
+  },
+
+  command_tablet_construct: {
+    id: 'command_tablet_construct', name: '軍令板構裝', alias: 'tabletconstruct',
+    level: 28, hp: 1250, mp: 240, str: 76, int: 54, dex: 20, vit: 104, luk: 10,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'reflect_barrier', 'crystal_slam', 'death_mark'],
+    expReward: 1320, goldReward: [355, 680],
+    drops: [
+      { itemId: 'ironwood_plank', chance: 0.52, minQty: 2, maxQty: 4 },
+      { itemId: 'keep_command_seal', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '戰圖室與指揮長廊中啟動的厚重構裝，胸口嵌著刻滿軍令的鐵木板。牠會根據殘缺戰圖重新排列敵我位置，並用軍令印壓制不服從者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '軍令板構裝防禦極高，會反射與標記，適合在屏障空窗爆發。',
+      treasure: '內堡軍令印常從牠胸口軍令板上剝落。',
+      spirit: '構裝是要塞指揮系統無人校正後的錯誤延伸。',
+    },
+  },
+
+  high_keep_warmarshal: {
+    id: 'high_keep_warmarshal', name: '高堡戰帥', alias: 'warmarshal',
+    level: 30, hp: 1700, mp: 360, str: 96, int: 72, dex: 42, vit: 118, luk: 20,
+    element: 'fire',
+    skills: ['basic_attack', 'charge', 'fire_breath', 'reflect_barrier', 'death_mark', 'howl'],
+    expReward: 1700, goldReward: [460, 880],
+    drops: [
+      { itemId: 'keep_command_seal', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'scout_signal_fuse', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'forge_cinder_oil', chance: 0.55, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '高堡核心中仍握著黑鐵軍令槍的戰 Marshal，披風被鍛坊火星燒出破洞，眼中只有未結束的邊境戰報。牠會同時調動火線、構裝與誓約騎士，直到內堡軍令印被奪下。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1500,
+    guardianHints: {
+      creature: '高堡戰 Marshal 會反射、標記、火焰與咆哮，先清旁邊精英再打本體。',
+      treasure: '牠必定掉落內堡軍令印，是鐵木要塞高堡核心證明。',
+      spirit: '戰 Marshal 是要塞失控軍令的最高節點。',
+    },
+  },
+
   war_gate_bannerman: {
     id: 'war_gate_bannerman', name: '終戰門旗衛', alias: 'bannerman',
     level: 55, hp: 3400, mp: 420, str: 84, int: 48, dex: 54, vit: 88, luk: 18,

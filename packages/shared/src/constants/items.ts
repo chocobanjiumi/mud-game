@@ -3334,6 +3334,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['pilgrim_road'],
   },
 
+  // ─── 鐵木要塞軍需與鍛坊物資 (Lv 18-30) ───
+  ironwood_plank: {
+    id: 'ironwood_plank', name: '鐵木板材', type: 'material',
+    description: '鐵木要塞梁柱與林圃中切下的深色板材，質地沉重，敲擊時會發出接近黑鐵的低鳴。',
+    buyPrice: 900, sellPrice: 450, stackable: true, maxStack: 99, levelReq: 18, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['ironwood_fort'],
+  },
+  fort_supply_token: {
+    id: 'fort_supply_token', name: '要塞補給牌', type: 'material',
+    description: '軍需行列與補給隧道使用的鐵木小牌，背面刻著領取箭矢、乾糧與火油的簡略記號。',
+    buyPrice: 1100, sellPrice: 550, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['ironwood_fort'],
+  },
+  scout_signal_fuse: {
+    id: 'scout_signal_fuse', name: '斥候信管', type: 'material',
+    description: '信號塔與斥候棲臺使用的短火信管，點燃後會燒出不同顏色的煙，方便邊境守軍判讀敵情。',
+    buyPrice: 1350, sellPrice: 675, stackable: true, maxStack: 99, levelReq: 22, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['ironwood_fort'],
+  },
+  forge_cinder_oil: {
+    id: 'forge_cinder_oil', name: '鍛坊燼油', type: 'consumable',
+    description: '鐵木鍛坊調配的黑紅火油，可快速恢復少量生命並提高身體溫度，常被巡牆士兵用來撐過寒夜守備。',
+    buyPrice: 1500, sellPrice: 750, stackable: true, maxStack: 20, levelReq: 24, rarity: 'epic',
+    useEffect: { type: 'heal_hp', value: 260 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['ironwood_fort'],
+  },
+  keep_command_seal: {
+    id: 'keep_command_seal', name: '內堡軍令印', type: 'quest',
+    description: '高堡核心軍令台上顯現的黑鐵印記，只有壓制內堡叛亂與構裝失控後才會停止發燙。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 30, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['ironwood_fort'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

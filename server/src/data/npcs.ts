@@ -7173,6 +7173,196 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  ironwood_fort_gate_captain: {
+    id: 'ironwood_fort_gate_captain',
+    name: '羅德里克',
+    alias: 'captain',
+    title: '鐵木外門守備隊長',
+    description:
+      '一名鬍鬚花白的守備隊長站在鐵木外門內側，鎧甲上有多處火油燒痕。' +
+      '他手中握著半截軍令槍，像隨時準備把失控哨兵重新編入隊列。',
+    roomId: 'ironwood_fort_outer_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要塞還站著，但軍令已經壞了。別把每個穿軍甲的人都當成友軍。',
+        options: [
+          { text: '先看戰線。', nextId: 'front' },
+          { text: '高堡核心在哪？', nextId: 'keep' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'front',
+        text: '外門是門哨，軍需行列有叛逃兵，信號塔有爆破兵。若烽火變成綠煙，代表內堡在對自己下令開火。',
+        options: [
+          { text: '高堡核心在哪？', nextId: 'keep' },
+          { text: '我先清外門。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'keep',
+        text: '穿過指揮長廊和誓約禮拜堂就是內堡門。高堡戰帥不會離開核心，牠只會讓整座要塞替牠走路。',
+        options: [
+          { text: '先看戰線。', nextId: 'front' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '聽見三短一長的號角就蹲下。那不是集合，是爆破。' },
+    ],
+    guardianHints: {
+      creature: '羅德里克能提示鐵木門哨、烽火爆破兵、誓約堂鐵騎與高堡戰帥。',
+      treasure: '他說明鐵木板材、斥候信管與內堡軍令印的軍事用途。',
+      spirit: '他把鐵木要塞的外門、信號塔與高堡核心整理成主要推進線。',
+    },
+  },
+
+  ironwood_fort_quartermaster: {
+    id: 'ironwood_fort_quartermaster',
+    name: '貝菈',
+    alias: 'quartermaster',
+    title: '軍需行列補給官',
+    description:
+      '一名補給官坐在軍需行列的木箱上，身旁整齊堆著藥水、箭束與封好的燼油瓶。' +
+      '她每次交貨都會在補給牌上多刻一道記號，避免叛逃兵拿同一塊牌領兩次。',
+    roomId: 'ironwood_fort_quartermaster_row',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'large_hp_potion',
+      'large_mp_potion',
+      'ironwood_plank',
+      'fort_supply_token',
+      'forge_cinder_oil',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '補給牌拿出來。沒有也能買，但別問我為什麼比軍價貴。',
+        options: [
+          { text: '我看看軍需。', nextId: 'shop' },
+          { text: '叛逃兵在哪？', nextId: 'renegades' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、鐵木板材、補給牌、鍛坊燼油。斥候信管不賣，信號塔那邊一亂，半座堡都會燒起來。',
+        action: { type: 'shop', data: { shopType: 'ironwood_fort_quartermaster' } },
+        options: [
+          { text: '叛逃兵在哪？', nextId: 'renegades' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'renegades',
+        text: '補給隧道、廢箱後面、隱蔽突門，全是他們喜歡的地方。看到有人背兩個火油箱還說只是巡邏，先打。',
+        options: [
+          { text: '我看看軍需。', nextId: 'shop' },
+          { text: '我會檢查火油箱。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '燼油別靠近明火開瓶。這句話我今天已經說得太晚三次了。' },
+    ],
+    guardianHints: {
+      creature: '貝菈能提示叛逃軍需兵、走私藏點守衛與鍛坊燼衛的補給線。',
+      treasure: '她販售鐵木板材、要塞補給牌與鍛坊燼油。',
+      spirit: '她把軍需行列變成鐵木要塞的補給與經濟節點。',
+    },
+  },
+
+  ironwood_fort_forgemaster: {
+    id: 'ironwood_fort_forgemaster',
+    name: '奧斯坦',
+    alias: 'forgemaster',
+    title: '鐵木鍛坊爐主',
+    description:
+      '一名矮壯爐主站在鐵木鍛坊的爐口前，皮圍裙上沾滿黑紅燼油。' +
+      '他不斷調整風箱，確保爐火燒向城牆外，而不是燒進兵營。',
+    roomId: 'ironwood_fort_forge_works',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '鍛坊還能用，問題是現在連爐灰都聽軍令。別讓燼衛靠近火油堆。',
+        options: [
+          { text: '鍛坊失控到什麼程度？', nextId: 'forge' },
+          { text: '鐵木林圃安全嗎？', nextId: 'grove' },
+          { text: '我去看看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'forge',
+        text: '燼衛只是外殼，真正麻煩的是信號塔把爆破命令送進鍛坊。拿到斥候信管後，先看顏色再點。',
+        options: [
+          { text: '鐵木林圃安全嗎？', nextId: 'grove' },
+          { text: '我會管住火線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'grove',
+        text: '林圃的根衛比士兵還守規矩。你要板材可以取外皮，別砍根，根一斷，西牆會先倒。',
+        options: [
+          { text: '鍛坊失控到什麼程度？', nextId: 'forge' },
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '看到火變成黑色就後退。那不是熱，是命令在燒。' },
+    ],
+    guardianHints: {
+      creature: '奧斯坦能提示鍛坊燼衛、鐵木根衛與烽火爆破兵的火線關係。',
+      treasure: '他說明鐵木板材、鍛坊燼油與斥候信管的用途。',
+      spirit: '他把鍛坊與鐵木林圃整理成要塞防衛資源線。',
+    },
+  },
+
+  ironwood_fort_scout_sergeant: {
+    id: 'ironwood_fort_scout_sergeant',
+    name: '凱莎',
+    alias: 'sergeant',
+    title: '斥候棲臺軍士',
+    description:
+      '一名斥候軍士蹲在斥候棲臺邊緣，手邊攤著幾支燒過一半的信管。' +
+      '她說話時總先看信號塔，再看隱蔽突門，像在等下一次錯誤烽火。',
+    roomId: 'ironwood_fort_scout_roost',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '信號塔已經不可信了。紅煙是敵襲，白煙是撤退，綠煙是有人想讓我們互相開火。',
+        options: [
+          { text: '我該先處理哪裡？', nextId: 'route' },
+          { text: '內堡門怎麼進？', nextId: 'keep' },
+          { text: '我會看煙色。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先清信號塔，再查囚牢石廊。若鎖衛開始敲三下鏈子，代表指揮長廊的構裝也醒了。',
+        options: [
+          { text: '內堡門怎麼進？', nextId: 'keep' },
+          { text: '我去信號塔。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'keep',
+        text: '內堡門需要你壓住指揮長廊和誓約禮拜堂兩邊。只打一邊，高堡戰帥會用另一邊補線。',
+        options: [
+          { text: '我該先處理哪裡？', nextId: 'route' },
+          { text: '了解。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別站在旗影下面。弩手最喜歡把旗影當刻度。' },
+    ],
+    guardianHints: {
+      creature: '凱莎能提示堡牆弩手、囚牢鎖衛、軍令板構裝與高堡戰帥。',
+      treasure: '她說明斥候信管與內堡軍令印的後段用途。',
+      spirit: '她把斥候棲臺、信號塔與內堡門串成後半段推進線。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
