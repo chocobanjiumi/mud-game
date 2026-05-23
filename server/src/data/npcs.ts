@@ -2799,7 +2799,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'survival_tips',
         text: '第一，保暖。沒有毛皮裝備的話，在暴風雪中每分鐘都在掉體力。' +
           '第二，跟著石碑走。雪原中有古人立的指路石碑，跟著它們就不會迷路。' +
-          '第三，遠離狼群。雪狼成群結隊出沒，單獨行動很容易被圍攻。',
+          '第三，遠離狼群。霜松潛獵者會繞背，冰河裂縫裡還有骨魄，不要只盯著正前方。',
         options: [
           { text: '謝謝提醒。', nextId: 'farewell' },
           { text: '冰封城堡怎麼走？', nextId: 'ice_castle_info' },
@@ -2826,7 +2826,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'ice_castle_info',
         text: '冰封城堡在雪原的最北端，需要穿過暴風雪小徑、越過冰川才能到達。' +
-          '城堡的大門被冰封了千年，據說只有持有冰元素核心的人才能打開。' +
+          '城堡的大門被冰封了千年，據說只有持有冰元素核心，並看懂符石環與冰哨徽章上的巡邏順序，才能安全靠近。' +
           '裡面沉睡著傳說中的冰龍……你真的要去？',
         options: [
           { text: '我會做好準備的。', nextId: 'farewell' },
@@ -2866,6 +2866,7 @@ export const NPCS: Record<string, NpcDef> = {
       'leather_armor', 'leather_boots', 'leather_gloves', 'leather_cap',
       'large_hp_potion', 'large_mp_potion',
       'antidote', 'return_scroll',
+      'warming_fur_broth', 'snowwolf_fur', 'frostpine_resin',
     ],
     dialogue: [
       {
@@ -2881,7 +2882,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'shop',
         text: '皮甲、皮靴、皮手套——全是上好的雪狼皮製的，保暖又耐用。' +
-          '藥水也帶足了，在雪原裡受傷可不是開玩笑的。另外回城卷軸多帶幾張，' +
+          '藥水、暖身毛皮湯、雪狼毛和霜松樹脂也帶足了，在雪原裡受傷可不是開玩笑的。另外回城卷軸多帶幾張，' +
           '萬一遇到暴風雪，一張卷軸就是你和死亡之間的距離。',
         action: { type: 'shop', data: { shopType: 'fur' } },
         options: [
@@ -2892,7 +2893,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'living_here',
         text: '十五年了。最開始是跟著一支探險隊來的，後來隊伍解散了，我就留下來做生意。' +
           '雪原看似荒涼，但這裡的動物皮毛可是最好的材料——城鎮裡的貴族們願意出高價購買。' +
-          '不過最近雪狼群越來越兇猛，獵取毛皮的風險也越來越高了。',
+          '不過最近雪狼群越來越兇猛，霜松林還出現了專門繞背的潛獵者，獵取毛皮的風險也越來越高了。',
         options: [
           { text: '辛苦了。看看商品吧。', nextId: 'shop' },
           { text: '保重。', nextId: 'farewell' },
@@ -2963,7 +2964,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'castle_info',
         text: '城堡內部被冰完全封凍。王座大廳裡沉睡著冰龍和國王的遺體。' +
           '寶物庫中保存著冰之王國的國寶——據說有一把能操控冰雪的神弓，' +
-          '就是傳說中的「冰之弓」。但進入城堡的條件是……你需要冰元素核心作為鑰匙。',
+          '就是傳說中的「冰之弓」。但進入城堡的條件是……你需要冰元素核心作為鑰匙，也最好帶回冰哨徽章確認外牆巡邏。',
         options: [
           { text: '冰元素核心在哪裡？', nextId: 'core_location' },
           { text: '我明白了。', nextId: 'farewell' },
@@ -2971,8 +2972,8 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'core_location',
-        text: '水晶冰洞深處。那裡有一頭冰元素巨獸守護著核心——' +
-          '牠是冰龍力量的延伸，力量不可小覷。擊敗牠才能取得核心。',
+        text: '水晶冰洞深處和冰晶尖塔都有線索。那裡有冰元素、冰河骨魄與王朝霜衛守著舊封印——' +
+          '牠們是冰龍力量的延伸，力量不可小覷。擊敗牠們並帶回符石片，才可能取得核心路線。',
         options: [
           { text: '我去準備。', nextId: 'farewell' },
         ],

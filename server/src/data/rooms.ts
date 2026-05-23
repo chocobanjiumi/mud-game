@@ -3963,6 +3963,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 2, respawnSeconds: 40 },
     ],
+    npcs: ['snow_guide'],
     mapSymbol: '[雪]',
     mapX: 2,
     mapY: 12,
@@ -3992,6 +3993,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 50 },
     ],
     mapSymbol: '[暴]',
     mapX: 2,
@@ -4052,6 +4054,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'glacier_bone_wraith', maxCount: 1, respawnSeconds: 70 },
     ],
     mapSymbol: '[湖]',
     mapX: 2,
@@ -4080,8 +4083,9 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '西側雪地有廢棄雪橇' },
     ],
     monsters: [
-      { monsterId: 'snow_wolf', maxCount: 1, respawnSeconds: 60 },
+      { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 60 },
     ],
+    npcs: ['fur_merchant'],
     mapSymbol: '[營]',
     mapX: 3,
     mapY: 12,
@@ -4139,6 +4143,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'glacier_bone_wraith', maxCount: 1, respawnSeconds: 80 },
     ],
     groundItems: [
       { itemId: 'ice_crystal', description: '極光下有一顆閃爍的冰晶' },
@@ -4169,6 +4174,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 4, respawnSeconds: 35 },
+      { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[狼]',
     mapX: 3,
@@ -4197,9 +4203,10 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '城牆旁有結冰哨塔' },
     ],
     monsters: [
-      { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 65 },
-      { monsterId: 'yeti', maxCount: 1, respawnSeconds: 60 },
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 65 },
+      { monsterId: 'royal_frost_guard', maxCount: 1, respawnSeconds: 1200 },
     ],
+    npcs: ['ice_castle_guard'],
     mapSymbol: '[門]',
     mapX: 3,
     mapY: 15,
@@ -4229,6 +4236,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'royal_frost_guard', maxCount: 1, respawnSeconds: 1200 },
     ],
     mapSymbol: '[龍]',
     mapX: 3,
@@ -4255,6 +4263,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 55 },
     ],
     mapSymbol: '[隘]',
     mapX: 1,
@@ -4276,6 +4285,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'glacier_bone_wraith', maxCount: 1, respawnSeconds: 75 },
     ],
     mapSymbol: '[釣]',
     mapX: 1,
@@ -4297,6 +4307,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'frostpine_stalker', maxCount: 1, respawnSeconds: 55 },
     ],
     mapSymbol: '[松]',
     mapX: 4,
@@ -4343,6 +4354,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'glacier_bone_wraith', maxCount: 1, respawnSeconds: 75 },
     ],
     mapSymbol: '[裂]',
     mapX: 1,
@@ -4365,9 +4377,11 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
       { monsterId: 'ice_elemental', maxCount: 1, respawnSeconds: 50 },
+      { monsterId: 'royal_frost_guard', maxCount: 1, respawnSeconds: 1200 },
     ],
     groundItems: [
       { itemId: 'ice_crystal', description: '祭壇邊有一顆被極光照亮的冰晶' },
+      { itemId: 'aurora_runestone_chip', description: '符石底座裂下一枚紫綠色石片' },
     ],
     mapSymbol: '[符]',
     mapX: 1,
@@ -4410,7 +4424,11 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'frozen_wastes_crystal_spire', description: '冰晶尖塔在東側發光' },
     ],
     monsters: [
-      { monsterId: 'frost_giant', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'royal_frost_guard', maxCount: 1, respawnSeconds: 1200 },
+    ],
+    groundItems: [
+      { itemId: 'frozen_watch_badge', description: '結冰兵器架下壓著一枚舊王朝徽章' },
     ],
     mapSymbol: '[哨]',
     mapX: 4,
@@ -4433,6 +4451,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'ice_elemental', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'glacier_bone_wraith', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[尖]',
     mapX: 4,
@@ -4455,6 +4474,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
       { monsterId: 'frost_giant_king', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'royal_frost_guard', maxCount: 1, respawnSeconds: 1200 },
     ],
     mapSymbol: '[息]',
     mapX: 4,
