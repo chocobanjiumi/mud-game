@@ -2146,6 +2146,37 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['kingdom_war', 'resource_war'], zoneTags: ['kingdom_frontier'],
   },
+  frontier_ration_pack: {
+    id: 'frontier_ration_pack', name: '邊境軍糧包', type: 'consumable',
+    description: '補給營分發的壓縮軍糧與止血布包，味道普通但耐放。前線士兵會把它塞在胸甲內側，受傷時先咬開封繩。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 20, levelReq: 25, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 360 },
+    sourceTags: ['drop', 'shop', 'kingdom_war'], zoneTags: ['kingdom_frontier'],
+  },
+  frontier_spyglass_lens: {
+    id: 'frontier_spyglass_lens', name: '邊境望遠鏡片', type: 'material',
+    description: '望遠鏡遺跡與哨塔斥候使用的厚玻璃鏡片，邊緣刻著量距刻度。可用來校準偵查器材與投石機射界。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 99, levelReq: 30, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['kingdom_frontier'],
+  },
+  siege_lock_pin: {
+    id: 'siege_lock_pin', name: '攻城鎖銷', type: 'material',
+    description: '攻城器械場拆下的粗鐵鎖銷，表面有火藥燻黑痕。少一枚鎖銷就能讓整台弩砲偏轉半座城門。',
+    buyPrice: 3800, sellPrice: 1900, stackable: true, maxStack: 99, levelReq: 34, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['kingdom_frontier'],
+  },
+  prisoner_parole_token: {
+    id: 'prisoner_parole_token', name: '俘虜假釋牌', type: 'quest',
+    description: '俘虜柵欄中流通的臨時假釋牌，一面刻著姓名，一面刻著交換條件。它能證明玩家介入了邊境俘虜線。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 40, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['kingdom_frontier'],
+  },
+  frontier_command_seal: {
+    id: 'frontier_command_seal', name: '前線指揮印', type: 'quest',
+    description: '前線指揮官敗退後留下的重銅軍印，印面仍帶著火漆與血痕。它證明邊境戰圖的核心命令已被奪下。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['kingdom_frontier'],
+  },
 
   // ============ 戰鬥道具 ============
   smoke_bomb: {

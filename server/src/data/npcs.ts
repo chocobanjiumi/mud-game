@@ -10473,6 +10473,75 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  kingdom_frontier_muster_officer: {
+    id: 'kingdom_frontier_muster_officer',
+    name: '卡雷恩',
+    alias: 'officer',
+    title: '傳送點兵場軍務官',
+    description: '一名披著半舊軍披的軍務官站在傳送點兵場，手裡的點名板被戰線標記劃得密密麻麻。',
+    roomId: 'kingdom_frontier_portal_muster',
+    type: 'quest',
+    dialogue: [
+      { id: 'greeting', text: '這裡不是決戰場，是所有決戰開始前都會弄丟補給的地方。先知道你要守哪條線，再拔劍。', options: [{ text: '先看戰線。', nextId: 'front' }, { text: '有哪些敵人？', nextId: 'creatures' }, { text: '我去點兵。', nextId: 'farewell' }] },
+      { id: 'front', text: '哨塔看路，補給營續命，攻城器械場推戰線。前壘門之後才是地堡與指揮所。', options: [{ text: '有哪些敵人？', nextId: 'creatures' }, { text: '知道了。', nextId: 'farewell' }] },
+      { id: 'creatures', text: '徵召兵守路，重弩手盯高處，掠兵專偷補給。別把他們當魔王打，這裡真正可怕的是命令。', options: [{ text: '先看戰線。', nextId: 'front' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若你聽見三面號角同時響，別問誰下令，先找掩體。' },
+    ],
+    guardianHints: { creature: '卡雷恩提示邊境徵召兵、哨塔重弩手與補給線掠兵。', treasure: '他說明補給箱、戰旗匣與軍糧包的戰線用途。', spirit: '軍務官把王國邊境入口定位為戰線調度區。' },
+  },
+
+  kingdom_frontier_supply_quartermaster: {
+    id: 'kingdom_frontier_supply_quartermaster',
+    name: '蜜拉',
+    alias: 'quartermaster',
+    title: '補給營軍需官',
+    description: '一名軍需官坐在補給營貨箱後方，所有箱子都用不同顏色的戰線蠟封標記。',
+    roomId: 'kingdom_frontier_supply_camp',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'frontier_ration_pack', 'frontier_spyglass_lens', 'kingdom_supply_crate', 'kingdom_banner_cache'],
+    dialogue: [
+      { id: 'greeting', text: '買藥水可以，亂拿補給箱不行。每個箱子都有路線，走錯路比丟掉還糟。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '攻城器械缺什麼？', nextId: 'siege' }, { text: '稍後再來。', nextId: 'farewell' }] },
+      { id: 'shop', text: '大型藥水、邊境軍糧、望遠鏡片、補給箱、戰旗匣。前線指揮印不賣，能買到的指揮印都只能騙新兵。', action: { type: 'shop', data: { shopType: 'kingdom_frontier_supply' } }, options: [{ text: '攻城器械缺什麼？', nextId: 'siege' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'siege', text: '鎖銷。永遠缺鎖銷。攻城爆破工拆一枚，弩砲就會把自己的旗打下來。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我去找。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '離營前把補給繩綁好。掠兵最愛聽箱扣鬆掉的聲音。' },
+    ],
+    guardianHints: { creature: '蜜拉提示補給線掠兵、攻城爆破工與戰旗騎士。', treasure: '她販售軍糧包、望遠鏡片與王國戰線物資。', spirit: '軍需官讓補給營成為邊境中段補給節點。' },
+  },
+
+  kingdom_frontier_truce_envoy: {
+    id: 'kingdom_frontier_truce_envoy',
+    name: '歐德琳',
+    alias: 'envoy',
+    title: '停戰帳使節',
+    description: '一名使節站在停戰帳破碎長桌前，面前排著停戰繩、俘虜牌與尚未簽名的交換名冊。',
+    roomId: 'kingdom_frontier_truce_tent',
+    type: 'quest',
+    dialogue: [
+      { id: 'greeting', text: '停戰帳不是和平，只是所有人暫時承認還要交換活人。別在這裡拔劍，除非你想替名冊加一行。', options: [{ text: '俘虜線在哪？', nextId: 'prisoners' }, { text: '後段怎麼推？', nextId: 'late' }, { text: '我會守規矩。', nextId: 'farewell' }] },
+      { id: 'prisoners', text: '俘虜柵欄在前壘門前。假釋牌能救人，也能害人，拿到後先看背面交換條件。', options: [{ text: '後段怎麼推？', nextId: 'late' }, { text: '明白。', nextId: 'farewell' }] },
+      { id: 'late', text: '暗林斥候會改訊號，前壘門隊長會關門，地堡參謀會標記你。到指揮所前，先確定你不是照著敵人的地圖走。', options: [{ text: '俘虜線在哪？', nextId: 'prisoners' }, { text: '我會核對路線。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '停戰帳外的旗若同時朝內飄，代表有人準備撕約。' },
+    ],
+    guardianHints: { creature: '歐德琳提示暗林斥候、前壘門隊長與戰圖地堡參謀。', treasure: '她說明俘虜假釋牌與後段軍令線。', spirit: '使節把停戰帳與俘虜柵欄串成邊境政治線。' },
+  },
+
+  kingdom_frontier_command_aide: {
+    id: 'kingdom_frontier_command_aide',
+    name: '班恩',
+    alias: 'aide',
+    title: '戰圖地堡副官',
+    description: '一名副官守在戰圖地堡入口，外套內側縫滿備用軍令，眼神比地圖釘還冷。',
+    roomId: 'kingdom_frontier_war_table_bunker',
+    type: 'quest',
+    dialogue: [
+      { id: 'greeting', text: '指揮所就在東面。你若看不懂戰圖，前線指揮官會替你決定死在哪一格。', options: [{ text: '指揮官怎麼打？', nextId: 'general' }, { text: '參謀有什麼危險？', nextId: 'marshal' }, { text: '我會看圖。', nextId: 'farewell' }] },
+      { id: 'general', text: '前線指揮官亮起反射時停手，被死亡標記就先保命。他的戰吼會叫回殘兵，別把小兵留到最後。', options: [{ text: '參謀有什麼危險？', nextId: 'marshal' }, { text: '知道了。', nextId: 'farewell' }] },
+      { id: 'marshal', text: '參謀不一定殺你，但會讓所有人知道該殺誰。標記粉落在你腳邊時，立刻換位。', options: [{ text: '指揮官怎麼打？', nextId: 'general' }, { text: '我會留意。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '拿到前線指揮印後別急著蓋章。先確認那張命令不是寫給你自己的。' },
+    ],
+    guardianHints: { creature: '班恩提示戰圖地堡參謀與前線指揮官。', treasure: '他說明前線指揮印是邊境終點證物。', spirit: '副官把戰圖地堡與指揮所收束成王國邊境終局。' },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
