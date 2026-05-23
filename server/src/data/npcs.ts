@@ -10283,6 +10283,101 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  hollow_mountain_wind_gate_surveyor: {
+    id: 'hollow_mountain_wind_gate_surveyor',
+    name: '洛杭',
+    alias: 'surveyor',
+    title: '風門測繪師',
+    description: '一名老測繪師坐在風門入口的石階上，膝上攤著被風壓吹皺的山腹剖面圖。',
+    roomId: 'hollow_mountain_entrance_wind_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '進空心山前先聽風。風聲若像鐘，代表路還開著；若像人叫你名字，別回頭。',
+        options: [
+          { text: '該先走哪裡？', nextId: 'route' },
+          { text: '有什麼怪？', nextId: 'creatures' },
+          { text: '我會聽風。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'route', text: '先穩住風門與螺旋礦坡，再往霜脈壁、雷礦橋推。高穹階之後就不是礦路，是山心在聽你走路。', options: [{ text: '有什麼怪？', nextId: 'creatures' }, { text: '知道了。', nextId: 'farewell' }] },
+      { id: 'creatures', text: '礦衛不怕喊，怨影專門學人喊。雷礦蜥會沿鐵軌放電，看到軌面發白就別站成一排。', options: [{ text: '該先走哪裡？', nextId: 'route' }, { text: '我會記住。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若地圖開始自己捲起來，表示風壓變了，先退到門邊。' },
+    ],
+    guardianHints: {
+      creature: '洛杭提示風門礦衛、回音礦工怨影與雷礦蜥的基礎危險。',
+      treasure: '他指出空風礦、霜脈晶與雷礦碎片的主要採集路線。',
+      spirit: '測繪師把空心山入口轉成路線判讀與風壓主題。',
+    },
+  },
+
+  hollow_mountain_echo_market_quartermaster: {
+    id: 'hollow_mountain_echo_market_quartermaster',
+    name: '芙琳',
+    alias: 'quartermaster',
+    title: '回音市集礦材商',
+    description: '一名女商人靠在回音市集的吊秤旁，貨箱裡分格放著會鳴響、結霜與跳電的礦材。',
+    roomId: 'hollow_mountain_echo_market',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'silver_breath_tonic',
+      'hollow_wind_ore',
+      'frost_vein_crystal',
+      'thunder_ore_shard',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買礦材或藥劑都小聲點。這市集會把討價還價傳到三條隧道外，連怨影都學得很快。',
+        options: [
+          { text: '我看看貨品。', nextId: 'shop' },
+          { text: '銀息藥劑做什麼？', nextId: 'tonic' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '大型藥水、銀息藥劑、空風礦、霜脈晶、雷礦碎片。山心共鳴核我不賣，那東西拿出來市集會塌。', action: { type: 'shop', data: { shopType: 'hollow_mountain_market' } }, options: [{ text: '銀息藥劑做什麼？', nextId: 'tonic' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'tonic', text: '銀息能讓肺適應風壓，也能把冰鏈廊那種冷痛壓下去。喝太慢沒用，風不等人。', options: [{ text: '我看看貨品。', nextId: 'shop' }, { text: '明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '貨拿穩。雷礦碎片若在袋裡互相碰撞，你會比火把更亮。' },
+    ],
+    guardianHints: {
+      creature: '芙琳提示霜脈岩傀、風暴蓄能獄卒與銀息井看守。',
+      treasure: '她販售銀息藥劑與空心山前中段礦材。',
+      spirit: '回音市集成為空心山中段補給與材料交換節點。',
+    },
+  },
+
+  hollow_mountain_miner_oath_keeper: {
+    id: 'hollow_mountain_miner_oath_keeper',
+    name: '奧爾班',
+    alias: 'oathkeeper',
+    title: '礦誓柱守誓人',
+    description: '一名獨眼守誓人站在礦誓柱旁，左手按著刻滿名字的黑花崗板，右手握著折斷的礦鎬。',
+    roomId: 'hollow_mountain_miner_oath_post',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '礦誓不是叫你往深處走，是叫你知道什麼時候該停。山心最會殺死聽不見警告的人。',
+        options: [
+          { text: '山心核心怎麼打？', nextId: 'heart' },
+          { text: '礦車迷宮呢？', nextId: 'cart' },
+          { text: '我會守誓。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'heart', text: '山心泰坦胸口亮成鏡面時停手。雷鳴後分散，冰風起時靠牆，地面開始跟心跳同步就準備防禦。', options: [{ text: '礦車迷宮呢？', nextId: 'cart' }, { text: '我會觀察。', nextId: 'farewell' }] },
+      { id: 'cart', text: '古礦車迷宮機兵會推車換軌。不要只看牠，還要看軌道哪一段開始顫。舊鑽頭通常在牠背後匣子裡。', options: [{ text: '山心核心怎麼打？', nextId: 'heart' }, { text: '知道了。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若你帶回山心共鳴核，先別慶祝。讓它安靜三次，確定山沒有跟著你回來。' },
+    ],
+    guardianHints: {
+      creature: '奧爾班提示古礦車迷宮機兵與山心共鳴泰坦的反射、雷鳴與軌道機關。',
+      treasure: '他說明舊鑽頭與山心共鳴核的取得位置。',
+      spirit: '守誓人把空心山後段收束成礦誓、克制與山心終點。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

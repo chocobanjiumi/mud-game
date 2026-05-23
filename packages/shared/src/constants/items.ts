@@ -4001,6 +4001,51 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['emerald_canopy'],
   },
 
+  // ─── 空心山礦脈與山心材料 (Lv 36-50) ───
+  hollow_wind_ore: {
+    id: 'hollow_wind_ore', name: '空風礦', type: 'material',
+    description: '風門與螺旋礦坡間採出的多孔礦石，放在耳邊會發出低沉山鳴。礦工用它判斷空心山內部風壓是否穩定。',
+    buyPrice: 4200, sellPrice: 2100, stackable: true, maxStack: 99, levelReq: 36, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['hollow_mountain'],
+  },
+  frost_vein_crystal: {
+    id: 'frost_vein_crystal', name: '霜脈晶', type: 'material',
+    description: '霜脈壁和冰鏈廊中凝出的淡藍晶體，裂面像被寒風磨過。可用於穩定高階冰屬附魔與冷卻礦鑽。',
+    buyPrice: 4800, sellPrice: 2400, stackable: true, maxStack: 99, levelReq: 38, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['hollow_mountain'],
+  },
+  thunder_ore_shard: {
+    id: 'thunder_ore_shard', name: '雷礦碎片', type: 'material',
+    description: '雷礦橋與風暴蓄能室剝落的帶電礦片，邊緣會在黑暗中跳出細小火花。它是空心山最危險也最值錢的礦材。',
+    buyPrice: 5600, sellPrice: 2800, stackable: true, maxStack: 99, levelReq: 39, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['hollow_mountain'],
+  },
+  black_granite_plate: {
+    id: 'black_granite_plate', name: '黑花崗板', type: 'material',
+    description: '黑花崗切場切下的厚重石板，表面吸音且耐震。洞城工匠會把它嵌進升降臺與礦車底盤。',
+    buyPrice: 5200, sellPrice: 2600, stackable: true, maxStack: 99, levelReq: 40, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['hollow_mountain'],
+  },
+  old_drill_bit: {
+    id: 'old_drill_bit', name: '舊鑽頭', type: 'material',
+    description: '舊鑽巢中拆下的磨鈍鑽頭，內圈仍刻著礦隊編號。修整後可作為採礦工具的替換零件。',
+    buyPrice: 0, sellPrice: 3000, stackable: true, maxStack: 30, levelReq: 41, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['hollow_mountain'],
+  },
+  silver_breath_tonic: {
+    id: 'silver_breath_tonic', name: '銀息藥劑', type: 'consumable',
+    description: '銀息井旁凝出的冷白霧水調成的藥劑，飲下後能讓肺部短暫適應空心山的風壓，並恢復大量體力。',
+    buyPrice: 6200, sellPrice: 3100, stackable: true, maxStack: 20, levelReq: 36, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 560 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['hollow_mountain'],
+  },
+  mountain_heart_resonator: {
+    id: 'mountain_heart_resonator', name: '山心共鳴核', type: 'quest',
+    description: '山心核心守衛崩解後留下的中空礦核，內部回音與整座空心山同步震動。它證明探索者抵達並穩定了山腹最深處。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 50, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['hollow_mountain'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

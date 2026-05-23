@@ -10482,4 +10482,230 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '守護靈把鳥民、古蜂、雷枝與鹿冠空地收束成樹冠終點。',
     },
   },
+
+  hollow_mountain_wind_gate_sentinel: {
+    id: 'hollow_mountain_wind_gate_sentinel', name: '風門礦衛', alias: 'windminer',
+    level: 36, hp: 3100, mp: 420, str: 142, int: 62, dex: 72, vit: 210, luk: 16,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'stone_skin', 'sonic_wave'],
+    expReward: 6800, goldReward: [1780, 3360],
+    drops: [
+      { itemId: 'hollow_wind_ore', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'silver_breath_tonic', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '風門入口與螺旋礦坡上仍執行舊礦令的重甲礦衛，胸甲鑲著會鳴響的空風礦。牠們會用盾面敲出回音，讓入侵者誤判隧道方向。',
+    isBoss: false,
+    guardianHints: {
+      creature: '風門礦衛會石膚與音波，聽見盾響時別追著回音跑。',
+      treasure: '空風礦常嵌在牠們胸甲與風門鉸鏈上。',
+      spirit: '礦衛把空心山的礦城秩序與回音迷路風險建立起來。',
+    },
+  },
+
+  hollow_mountain_echo_miner_wraith: {
+    id: 'hollow_mountain_echo_miner_wraith', name: '回音礦工怨影', alias: 'echominer',
+    level: 37, hp: 2600, mp: 760, str: 82, int: 136, dex: 96, vit: 120, luk: 20,
+    element: 'none',
+    skills: ['basic_attack', 'sonic_wave', 'life_drain', 'blind'],
+    expReward: 7200, goldReward: [1880, 3560],
+    drops: [
+      { itemId: 'hollow_wind_ore', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'old_drill_bit', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '回音市集與空鐘室中徘徊的礦工怨影，只剩安全帽燈與背後拖行的鐵鎬聲。牠會把求救聲折成多重回音，引人走向斷層。',
+    isBoss: false,
+    guardianHints: {
+      creature: '回音礦工怨影會致盲、吸血與音波，先離開空曠鐘室。',
+      treasure: '舊鑽頭與空風礦常被怨影背在工具袋裡。',
+      spirit: '怨影讓回音市集不只是補給點，也保留礦難記憶。',
+    },
+  },
+
+  hollow_mountain_frost_vein_golem: {
+    id: 'hollow_mountain_frost_vein_golem', name: '霜脈岩傀', alias: 'frostveingolem',
+    level: 38, hp: 3900, mp: 560, str: 150, int: 78, dex: 38, vit: 270, luk: 12,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'ice_armor', 'frost_nova'],
+    expReward: 7800, goldReward: [2040, 3860],
+    drops: [
+      { itemId: 'frost_vein_crystal', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'black_granite_plate', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '霜脈壁中被鑿醒的冰岩傀儡，身體由黑花崗與霜脈晶交錯組成。牠動作緩慢，但每一步都會讓冰鏈重新繃緊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '霜脈岩傀會冰甲、霜爆與巨石猛擊，冰甲時先處理小怪。',
+      treasure: '霜脈晶主要從牠肩背裂縫剝落。',
+      spirit: '岩傀把空心山的冰層採礦風險具象化。',
+    },
+  },
+
+  hollow_mountain_thunder_ore_lizard: {
+    id: 'hollow_mountain_thunder_ore_lizard', name: '雷礦蜥', alias: 'oreliz',
+    level: 39, hp: 3000, mp: 700, str: 118, int: 118, dex: 126, vit: 142, luk: 22,
+    element: 'lightning',
+    skills: ['basic_attack', 'quick_dash', 'lightning', 'tail_whip'],
+    expReward: 8400, goldReward: [2200, 4160],
+    drops: [
+      { itemId: 'thunder_ore_shard', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'hollow_wind_ore', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '雷礦橋下方爬行的厚鱗蜥獸，鱗縫間卡著發亮礦砂。牠會沿著鐵軌放電，逼迫隊伍離開安全踏板。',
+    isBoss: false,
+    guardianHints: {
+      creature: '雷礦蜥會雷擊與尾擊，別站在同一段礦車軌上。',
+      treasure: '雷礦碎片常黏在牠的腹鱗與爪縫。',
+      spirit: '雷礦蜥讓雷礦橋與風暴蓄能室有在地生物壓力。',
+    },
+  },
+
+  hollow_mountain_quarry_chain_brute: {
+    id: 'hollow_mountain_quarry_chain_brute', name: '採石鏈役', alias: 'chainbrute',
+    level: 40, hp: 4300, mp: 360, str: 190, int: 44, dex: 54, vit: 250, luk: 10,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'stone_slam', 'howl'],
+    expReward: 9000, goldReward: [2360, 4460],
+    drops: [
+      { itemId: 'black_granite_plate', chance: 0.66, minQty: 1, maxQty: 3 },
+      { itemId: 'old_drill_bit', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '採石升降臺與黑花崗切場裡拖著斷鏈的巨型役工，皮膚被石粉磨成灰白。牠會把鏈鉤甩進礦車道，把人拉向切石鋸痕。',
+    isBoss: false,
+    guardianHints: {
+      creature: '採石鏈役會咆哮、重擊與斬擊，被鏈鉤拉近後先防禦。',
+      treasure: '黑花崗板常從牠搬運的石料上取得。',
+      spirit: '鏈役表現空心山被過度開採後留下的暴力勞動痕跡。',
+    },
+  },
+
+  hollow_mountain_windpipe_bat_swarm: {
+    id: 'hollow_mountain_windpipe_bat_swarm', name: '風管蝠群', alias: 'windbats',
+    level: 40, hp: 2400, mp: 520, str: 76, int: 70, dex: 180, vit: 82, luk: 22,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'sonic_wave', 'swarm_assault'],
+    expReward: 8800, goldReward: [2300, 4340],
+    drops: [
+      { itemId: 'hollow_wind_ore', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'silver_breath_tonic', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '風管隧道裡依靠山腹氣流遷徙的白眼蝠群，翅膜會在強風中發出尖哨。牠們不是最強的敵人，卻最會把火把和隊形一起打散。',
+    isBoss: false,
+    guardianHints: {
+      creature: '風管蝠群會突襲、群攻與音波，先離開狹窄風口。',
+      treasure: '空風礦會被蝠群拖回巢穴磨翼。',
+      spirit: '蝠群讓風管隧道有高速、干擾型威脅。',
+    },
+  },
+
+  hollow_mountain_deepcap_colossus: {
+    id: 'hollow_mountain_deepcap_colossus', name: '深菇岩巨像', alias: 'deepcap',
+    level: 42, hp: 5200, mp: 680, str: 168, int: 102, dex: 34, vit: 310, luk: 14,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'toxic_cloud', 'stone_skin'],
+    expReward: 10400, goldReward: [2720, 5140],
+    drops: [
+      { itemId: 'black_granite_plate', chance: 0.44, minQty: 1, maxQty: 3 },
+      { itemId: 'frost_vein_crystal', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '深菇棚下方由岩層與巨型菌傘一同長成的巨像，步伐會震落成片孢粉。牠通常靜止不動，直到有人破壞菌棚支柱。',
+    isBoss: false,
+    guardianHints: {
+      creature: '深菇岩巨像會毒霧、石膚與重擊，毒霧散開前不要貪攻。',
+      treasure: '黑花崗板與霜脈晶會卡在巨像腿部菌根。',
+      spirit: '巨像讓深菇棚成為採集與環境危害混合區。',
+    },
+  },
+
+  hollow_mountain_storm_capacitor_jailer: {
+    id: 'hollow_mountain_storm_capacitor_jailer', name: '風暴蓄能獄卒', alias: 'stormjailer',
+    level: 44, hp: 5600, mp: 1200, str: 132, int: 190, dex: 74, vit: 260, luk: 24,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'sonic_barrage', 'reflect_barrier', 'blind'],
+    expReward: 12200, goldReward: [3200, 6060],
+    drops: [
+      { itemId: 'thunder_ore_shard', chance: 0.74, minQty: 2, maxQty: 4 },
+      { itemId: 'silver_breath_tonic', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '風暴蓄能室中看守雷籠的高階獄卒，長戟尖端綁著雷礦導線。牠能把山腹回音轉成刺眼電弧，封住靠近核心的路。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '風暴蓄能獄卒會反射、致盲、雷擊與音波連擊，反射亮起時停手。',
+      treasure: '雷礦碎片是牠維持雷籠的主要材料。',
+      spirit: '獄卒把空心山中段轉入高階雷礦機關戰。',
+    },
+  },
+
+  hollow_mountain_silver_breath_warden: {
+    id: 'hollow_mountain_silver_breath_warden', name: '銀息井看守', alias: 'silverwarden',
+    level: 46, hp: 6200, mp: 980, str: 170, int: 150, dex: 62, vit: 330, luk: 20,
+    element: 'ice',
+    skills: ['basic_attack', 'ice_armor', 'ice_storm', 'stone_slam', 'heal'],
+    expReward: 14200, goldReward: [3720, 7040],
+    drops: [
+      { itemId: 'frost_vein_crystal', chance: 0.64, minQty: 2, maxQty: 4 },
+      { itemId: 'silver_breath_tonic', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description: '銀息井旁披著霜白礦袍的井看守，面罩內只看得見一團冷霧。牠會用冰風暴把井口封住，再以銀息替同伴修補裂甲。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '銀息井看守會冰甲、冰風暴與治療，優先打斷治療壓力。',
+      treasure: '銀息藥劑與霜脈晶常由井看守保管。',
+      spirit: '井看守把銀息井設計成續戰與補給爭奪點。',
+    },
+  },
+
+  hollow_mountain_cart_maze_automaton: {
+    id: 'hollow_mountain_cart_maze_automaton', name: '古礦車迷宮機兵', alias: 'cartauto',
+    level: 47, hp: 5900, mp: 720, str: 196, int: 96, dex: 98, vit: 280, luk: 16,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'sonic_barrage', 'quick_dash', 'stone_skin'],
+    expReward: 15200, goldReward: [3980, 7540],
+    drops: [
+      { itemId: 'old_drill_bit', chance: 0.54, minQty: 1, maxQty: 2 },
+      { itemId: 'black_granite_plate', chance: 0.46, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'aggressive',
+    description: '古礦車迷宮中仍沿錯誤軌道巡行的機兵，肩上裝著報廢鑽頭與撞角。牠會突然推動礦車換軌，讓整支隊伍暴露在衝撞線上。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '古礦車迷宮機兵會高速換位、音波連擊與石膚，先看軌道方向。',
+      treasure: '舊鑽頭多半藏在牠背後的維修匣。',
+      spirit: '機兵讓古礦車迷宮具備機關與戰鬥雙重壓力。',
+    },
+  },
+
+  hollow_mountain_heart_titan: {
+    id: 'hollow_mountain_heart_titan', name: '山心共鳴泰坦', alias: 'hearttitan',
+    level: 50, hp: 9800, mp: 1800, str: 260, int: 220, dex: 58, vit: 460, luk: 28,
+    element: 'lightning',
+    skills: ['basic_attack', 'stone_slam', 'lightning', 'ice_storm', 'reflect_barrier', 'sonic_barrage'],
+    expReward: 24000, goldReward: [6300, 11900],
+    drops: [
+      { itemId: 'mountain_heart_resonator', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'thunder_ore_shard', chance: 0.8, minQty: 2, maxQty: 5 },
+      { itemId: 'frost_vein_crystal', chance: 0.58, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description: '山心核心深處站起的巨大礦體泰坦，胸腔是一座中空鐘室，雷礦與霜脈在其中交替發光。牠每次踏步都會讓整座空心山重新校準回音。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 3000,
+    guardianHints: {
+      creature: '山心共鳴泰坦會反射、雷擊、冰風暴與音波連擊，反射期間停手並分散站位。',
+      treasure: '牠必定掉落山心共鳴核。',
+      spirit: '泰坦把風門、礦脈、雷礦、銀息井與山心核心收束成空心山終點。',
+    },
+  },
 };
