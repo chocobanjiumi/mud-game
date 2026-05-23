@@ -3542,6 +3542,38 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['ember_march'],
   },
 
+  // ─── 白骨礁沉船鑰物與潮汐證物 (Lv 28-40) ───
+  reefbone_splinter: {
+    id: 'reefbone_splinter', name: '礁骨裂片', type: 'material',
+    description: '白骨礁巨獸肋骨與白骨橋裂縫中剝落的灰白骨片，浸過冷潮後堅硬如石，可用來辨識退潮後露出的安全骨脊。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 99, levelReq: 28, rarity: 'rare',
+    sourceTags: ['drop', 'salvage'], zoneTags: ['reef_of_bones'],
+  },
+  black_coral_hook: {
+    id: 'black_coral_hook', name: '黑珊瑚鉤', type: 'material',
+    description: '黑珊瑚切口與沉船船舷上折下的彎鉤狀珊瑚，尖端會吸附幽冷海霧，是製作開鎖針與海盜詛咒媒介的材料。',
+    buyPrice: 2800, sellPrice: 1400, stackable: true, maxStack: 99, levelReq: 30, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['reef_of_bones'],
+  },
+  tidebell_clapper: {
+    id: 'tidebell_clapper', name: '礁鐘舌片', type: 'material',
+    description: '礁鐘柱內部掉落的青黑金屬舌片，敲擊時會回應下一次退潮方向，常被探寶者用來判斷溺亡寶庫開門時刻。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 99, levelReq: 32, rarity: 'epic',
+    sourceTags: ['drop', 'shop'], zoneTags: ['reef_of_bones'],
+  },
+  drowned_treasure_map: {
+    id: 'drowned_treasure_map', name: '溺寶殘圖', type: 'quest',
+    description: '沉沒船艙與船長墓中拼出的防水羊皮殘圖，墨線在退潮時才會浮現，標出幽靈錨、寶藏龍骨與溺亡寶庫的相對位置。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 34, rarity: 'epic',
+    sourceTags: ['drop', 'quest'], zoneTags: ['reef_of_bones'],
+  },
+  vault_captain_seal: {
+    id: 'vault_captain_seal', name: '寶庫船長印', type: 'quest',
+    description: '溺亡寶庫守護者身上留下的黑銀船長印，外圈刻著船名與礁鐘方位，內側封著不死海盜守財直到退潮盡頭的誓約。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 40, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['reef_of_bones'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

@@ -8173,6 +8173,150 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  reef_of_bones_tide_chartist: {
+    id: 'reef_of_bones_tide_chartist',
+    name: '賽芮',
+    alias: 'chartist',
+    title: '白骨潮門退潮測繪師',
+    description:
+      '一名測繪師站在白骨潮門前，把潮線、船名與巨獸肋骨位置畫在防水皮紙上。' +
+      '她的靴底綁著骨釘，避免冷潮突然回湧時被拖下淺灘。',
+    roomId: 'reef_of_bones_tide_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '白骨礁只有退潮時像路。潮聲一變，所有路都會重新變回海。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '寶庫怎麼找？', nextId: 'vault' },
+          { text: '我會看潮線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先沿肋骨淺灘到沉船船首，再聽礁鐘柱。黑珊瑚切口不是捷徑，那裡會吃掉方向感。',
+        options: [
+          { text: '寶庫怎麼找？', nextId: 'vault' },
+          { text: '我先去肋骨淺灘。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'vault',
+        text: '溺亡寶庫在斷桅林東面，但你需要溺寶殘圖和礁鐘方向。若霜浪洞亮起，骨龍也醒了。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '我會留意霜浪洞。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別跟著亮水走。真正安全的潮路通常比較難看。' },
+    ],
+    guardianHints: {
+      creature: '賽芮能提示肋灘骸兵、冷潮溺者、黑珊瑚潛伏者與溺亡寶庫船長的路線。',
+      treasure: '她說明礁骨裂片、礁鐘舌片與溺寶殘圖的用途。',
+      spirit: '她把白骨礁拆成退潮路線、船骸入口、黑珊瑚危險區與寶庫核心。',
+    },
+  },
+
+  reef_of_bones_coral_scrimshander: {
+    id: 'reef_of_bones_coral_scrimshander',
+    name: '洛克',
+    alias: 'scrimshander',
+    title: '黑珊瑚切口骨雕商',
+    description:
+      '一名骨雕商在黑珊瑚切口外擺著小攤，刀具插在鯨骨盒裡，旁邊掛著退潮鈴。' +
+      '他販賣能在冷潮裡保命的藥物，也收購不會低語的黑珊瑚。',
+    roomId: 'reef_of_bones_black_coral_cut',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'antidote',
+      'reefbone_splinter',
+      'black_coral_hook',
+      'tidebell_clapper',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買東西快一點。這片礁的價格會跟潮水一起漲，命也一樣。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '黑珊瑚危險嗎？', nextId: 'coral' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、礁骨裂片、黑珊瑚鉤、礁鐘舌片。溺寶殘圖不賣，賣那個會讓死人找上門。',
+        action: { type: 'shop', data: { shopType: 'reef_of_bones_scrimshander' } },
+        options: [
+          { text: '黑珊瑚危險嗎？', nextId: 'coral' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'coral',
+        text: '黑珊瑚會記得被誰折下。若鉤子自己往船艙方向轉，代表那塊珊瑚還連著潛伏者。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '聽見礁鐘只響一下就快跑。響兩下通常已經太晚。' },
+    ],
+    guardianHints: {
+      creature: '洛克能提示冰藻縛手、黑珊瑚潛伏者、幽錨拖行者與鯨骨守衛。',
+      treasure: '他販售礁骨裂片、黑珊瑚鉤與礁鐘舌片。',
+      spirit: '他讓黑珊瑚切口成為補給、鑑定與風險提示節點。',
+    },
+  },
+
+  reef_of_bones_captain_widow: {
+    id: 'reef_of_bones_captain_widow',
+    name: '米蕾雅',
+    alias: 'widow',
+    title: '船長墓守墓寡婦',
+    description:
+      '一名披著鹽白黑紗的女人坐在船長墓旁，手中縫補一面永遠濕透的船旗。' +
+      '她不像活人，也不像亡靈；每次潮水回頭，她的影子都會少一段。',
+    roomId: 'reef_of_bones_captain_grave',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '他說只是下船取寶，很快回來。後來整片礁都開始替他守門。',
+        options: [
+          { text: '船長在哪？', nextId: 'captain' },
+          { text: '骨龍又是什麼？', nextId: 'drake' },
+          { text: '我會帶回船長印。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'captain',
+        text: '溺亡寶庫。若你見到他，別提歸航。他已經把回家的方向抵給寶藏了。',
+        options: [
+          { text: '骨龍又是什麼？', nextId: 'drake' },
+          { text: '我去寶庫。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'drake',
+        text: '那不是他的寵物，是礁本身。盜墓者越多，牠的骨翼越完整。',
+        options: [
+          { text: '船長在哪？', nextId: 'captain' },
+          { text: '我會避開霜浪。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你拿到寶庫船長印，別戴在手上。它會把你也算進船員名冊。' },
+    ],
+    guardianHints: {
+      creature: '米蕾雅能提示礁鐘潮祭司、巫光礁賢者、溺亡寶庫船長與霜浪骨龍。',
+      treasure: '她說明溺寶殘圖與寶庫船長印背後的守財誓約。',
+      spirit: '她把白骨礁從沉船財寶區連到不死海盜、歸航失敗與巨獸骨礁的核心故事。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

@@ -8097,4 +8097,244 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '亞龍是火山與戰爭在邊境交會後誕生的活火線。',
     },
   },
+
+  rib_shoal_skeleton: {
+    id: 'rib_shoal_skeleton', name: '肋灘骸兵', alias: 'ribskeleton',
+    level: 28, hp: 980, mp: 160, str: 70, int: 34, dex: 36, vit: 82, luk: 10,
+    element: 'dark',
+    skills: ['basic_attack', 'bone_strike', 'spectral_slash', 'ice_armor'],
+    expReward: 1580, goldReward: [420, 790],
+    drops: [
+      { itemId: 'reefbone_splinter', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'tidebell_clapper', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '肋骨淺灘與白骨潮門附近列隊巡行的骸兵，骨甲被冷潮磨得像礁石。牠們會在退潮露出的骨脊上守路，把誤入者推向下一波冰潮。',
+    isBoss: false,
+    guardianHints: {
+      creature: '肋灘骸兵會用冰甲擋下第一輪攻勢，等護甲裂開再集中攻擊。',
+      treasure: '牠們身上常剝落礁骨裂片。',
+      spirit: '骸兵是船員與礁獸殘骸被同一場退潮綁在一起的結果。',
+    },
+  },
+
+  wreckdeck_cutthroat: {
+    id: 'wreckdeck_cutthroat', name: '裂板斷喉海盜', alias: 'cutthroat',
+    level: 29, hp: 900, mp: 220, str: 72, int: 42, dex: 76, vit: 58, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'slash', 'shadow_dash', 'smoke_bomb'],
+    expReward: 1680, goldReward: [450, 860],
+    drops: [
+      { itemId: 'black_coral_hook', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'drowned_treasure_map', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '裂木甲板與沉船船首間伏擊旅人的不死海盜，喉骨上仍插著生前的短刀。牠們熟悉每塊會翻落的甲板，常把尋寶者逼向破洞。',
+    isBoss: false,
+    guardianHints: {
+      creature: '裂板斷喉海盜會突進與煙幕，甲板吱響時不要追影。',
+      treasure: '牠們腰帶上常掛著黑珊瑚鉤。',
+      spirit: '斷喉海盜是守寶詛咒最底層的巡邏者。',
+    },
+  },
+
+  coldtide_drowned: {
+    id: 'coldtide_drowned', name: '冷潮溺者', alias: 'coldtidedrowned',
+    level: 30, hp: 1040, mp: 260, str: 58, int: 64, dex: 32, vit: 90, luk: 12,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'frost_nova', 'soul_drain'],
+    expReward: 1800, goldReward: [480, 910],
+    drops: [
+      { itemId: 'reefbone_splinter', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'tideglass_shard', chance: 0.3, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '冷潮池與沉沒船艙裡爬出的溺亡者，肺腔灌滿冰水，說話時只冒出破碎泡沫。牠們會抓住活人的腳踝，把體溫拖進退潮後留下的深坑。',
+    isBoss: false,
+    guardianHints: {
+      creature: '冷潮溺者會冰霜爆發與吸魂，池邊戰鬥要保持距離。',
+      treasure: '牠們骨縫裡常卡著礁骨與潮玻璃碎片。',
+      spirit: '溺者是白骨礁每次漲潮後留下的失蹤名單。',
+    },
+  },
+
+  icekelp_strangler: {
+    id: 'icekelp_strangler', name: '冰藻縛手', alias: 'icekelp',
+    level: 31, hp: 1120, mp: 300, str: 54, int: 74, dex: 28, vit: 96, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'root_bind', 'frost_nova', 'nature_drain'],
+    expReward: 1920, goldReward: [515, 980],
+    drops: [
+      { itemId: 'black_coral_hook', chance: 0.34, minQty: 1, maxQty: 2 },
+      { itemId: 'tidebell_clapper', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '冰藻纏灘與黑珊瑚切口裡伸出的深綠藻手，外層覆著薄冰，根部纏滿小骨。牠們會假裝成退潮後的海草，等腳步靠近再收緊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '冰藻縛手會束縛與冰爆，先清除腳邊藻影。',
+      treasure: '黑珊瑚鉤常被冰藻包在根部。',
+      spirit: '冰藻把沉船、黑珊瑚與溺者遺骨編成同一片陷阱。',
+    },
+  },
+
+  black_coral_lurker: {
+    id: 'black_coral_lurker', name: '黑珊瑚潛伏者', alias: 'corallurker',
+    level: 32, hp: 980, mp: 360, str: 48, int: 90, dex: 64, vit: 62, luk: 20,
+    element: 'dark',
+    skills: ['basic_attack', 'poison_spit', 'blind', 'life_drain'],
+    expReward: 2060, goldReward: [550, 1040],
+    drops: [
+      { itemId: 'black_coral_hook', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'drowned_treasure_map', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '黑珊瑚切口深處緩慢爬行的暗色怪物，身體像珊瑚與人骨拼成的海盜影子。牠會用毒霧遮住礁鐘方向，讓隊伍錯過安全退潮。',
+    isBoss: false,
+    guardianHints: {
+      creature: '黑珊瑚潛伏者會致盲與吸血，黑霧變甜時先解毒。',
+      treasure: '完整的黑珊瑚鉤多從牠背脊切下。',
+      spirit: '潛伏者是守寶詛咒在黑珊瑚上的生長形態。',
+    },
+  },
+
+  reefbell_cultist: {
+    id: 'reefbell_cultist', name: '礁鐘潮祭司', alias: 'bellcultist',
+    level: 33, hp: 1080, mp: 520, str: 40, int: 104, dex: 30, vit: 76, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'frost_nova', 'death_mark', 'soul_drain', 'blind'],
+    expReward: 2220, goldReward: [595, 1130],
+    drops: [
+      { itemId: 'tidebell_clapper', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'drowned_treasure_map', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '礁鐘柱與船長墓旁低聲祈潮的亡靈祭司，手中搖著沒有鐘身的金屬舌片。牠們用鐘聲延後退潮，讓活人困在逐漸回升的冷水裡。',
+    isBoss: false,
+    guardianHints: {
+      creature: '礁鐘潮祭司會死亡印記與吸魂，先打斷鐘聲。',
+      treasure: '礁鐘舌片是牠們施法的核心。',
+      spirit: '潮祭司把海盜守財誓約偽裝成潮汐儀式。',
+    },
+  },
+
+  whalebone_warden: {
+    id: 'whalebone_warden', name: '鯨骨守衛', alias: 'whalewarden',
+    level: 34, hp: 1680, mp: 320, str: 96, int: 50, dex: 22, vit: 138, luk: 10,
+    element: 'ice',
+    skills: ['basic_attack', 'bone_strike', 'ice_armor', 'stone_slam', 'water_spear'],
+    expReward: 2500, goldReward: [670, 1270],
+    drops: [
+      { itemId: 'reefbone_splinter', chance: 0.76, minQty: 2, maxQty: 4 },
+      { itemId: 'tidebell_clapper', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '鯨骨拱與白骨橋上站起的巨大骨衛，身軀由巨獸肋骨、船釘與冰潮鹽殼組成。牠會把骨橋當成身體的一部分，震碎站位錯誤的隊伍。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '鯨骨守衛會冰甲與重砸，骨橋震動時立刻換位。',
+      treasure: '牠身上能取得大量礁骨裂片。',
+      spirit: '守衛是巨獸骨架被海盜誓約喚醒後的門閂。',
+    },
+  },
+
+  ghost_anchor_dragger: {
+    id: 'ghost_anchor_dragger', name: '幽錨拖行者', alias: 'anchordragger',
+    level: 35, hp: 1520, mp: 420, str: 88, int: 78, dex: 34, vit: 112, luk: 16,
+    element: 'dark',
+    skills: ['basic_attack', 'phantom_charge', 'soul_drain', 'ethereal_shield', 'death_mark'],
+    expReward: 2700, goldReward: [720, 1370],
+    drops: [
+      { itemId: 'black_coral_hook', chance: 0.48, minQty: 1, maxQty: 3 },
+      { itemId: 'drowned_treasure_map', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '幽靈錨旁拖著巨大錨鏈前進的亡靈水手，錨尖每次落地都會讓船骸發出呻吟。牠會用錨鏈把隊伍拉回錯誤潮位。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '幽錨拖行者會衝鋒與護盾，錨鏈拉直時避開直線。',
+      treasure: '牠常持有溺寶殘圖的一角。',
+      spirit: '拖行者代表船永遠無法離礁的詛咒。',
+    },
+  },
+
+  lichlight_reef_sage: {
+    id: 'lichlight_reef_sage', name: '巫光礁賢者', alias: 'reefsage',
+    level: 36, hp: 1320, mp: 720, str: 34, int: 126, dex: 32, vit: 82, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'ice_storm', 'soul_drain', 'death_mark', 'reflect_barrier'],
+    expReward: 2920, goldReward: [780, 1480],
+    drops: [
+      { itemId: 'tidebell_clapper', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'drowned_treasure_map', chance: 0.34, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '巫光礁上浮現的沉船術士殘魂，身後漂著青白磷火與破碎航海圖。牠研究如何讓寶庫永遠停在退潮前一刻，並把闖入者寫進失蹤船名錄。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '巫光礁賢者會冰風暴、反射與死亡印記，屏障期間先清小怪。',
+      treasure: '牠保存較完整的溺寶殘圖。',
+      spirit: '賢者是守寶詛咒的記錄者與潮汐計算者。',
+    },
+  },
+
+  drowned_vault_captain: {
+    id: 'drowned_vault_captain', name: '溺亡寶庫船長', alias: 'vaultcaptain',
+    level: 38, hp: 2850, mp: 680, str: 118, int: 108, dex: 48, vit: 150, luk: 28,
+    element: 'dark',
+    skills: ['basic_attack', 'spectral_slash', 'ice_storm', 'death_mark', 'ethereal_shield', 'soul_drain'],
+    expReward: 3800, goldReward: [1050, 1980],
+    drops: [
+      { itemId: 'vault_captain_seal', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'drowned_treasure_map', chance: 0.78, minQty: 1, maxQty: 2 },
+      { itemId: 'black_coral_hook', chance: 0.62, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description:
+      '溺亡寶庫深處守著財寶的海盜船長，帽沿掛滿貝殼、骨幣與黑銀印章。牠每次拔刀都會讓寶庫水位上升，彷彿整艘沉船仍聽從牠的命令。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '溺亡寶庫船長會冰風暴、吸魂與幽盾，水位升高時先保命。',
+      treasure: '牠必定掉落寶庫船長印，是白骨礁沉船寶庫的核心憑證。',
+      spirit: '船長是守財誓約與退潮詛咒共同形成的主體。',
+    },
+  },
+
+  frostwake_bone_drake: {
+    id: 'frostwake_bone_drake', name: '霜浪骨龍', alias: 'frostbonedrake',
+    level: 40, hp: 3300, mp: 780, str: 128, int: 118, dex: 40, vit: 168, luk: 24,
+    element: 'ice',
+    skills: ['basic_attack', 'ice_storm', 'frost_nova', 'bone_strike', 'reflect_barrier', 'death_mark'],
+    expReward: 4300, goldReward: [1180, 2250],
+    drops: [
+      { itemId: 'vault_captain_seal', chance: 0.54, minQty: 1, maxQty: 1 },
+      { itemId: 'reefbone_splinter', chance: 0.86, minQty: 3, maxQty: 6 },
+      { itemId: 'tidebell_clapper', chance: 0.48, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '霜浪洞與溺亡寶庫之間甦醒的巨獸骨龍，肋骨內部灌滿青白潮光。牠不是活龍，而是白骨礁本身對盜墓者的回應，振翼時會把退潮重新推回洞內。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2400,
+    guardianHints: {
+      creature: '霜浪骨龍會冰風暴、反射與死亡印記，潮光灌滿肋骨時不要站在正面。',
+      treasure: '牠掉落大量礁骨裂片，也可能帶有寶庫船長印。',
+      spirit: '骨龍是巨獸骨礁與沉船詛咒融合出的最終守門者。',
+    },
+  },
 };
