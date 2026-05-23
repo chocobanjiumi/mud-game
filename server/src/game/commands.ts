@@ -115,7 +115,7 @@ const BUILTIN_COMMANDS = new Set([
   'diplomacy', 'building', 'craft', 'crafting', 'auction', 'fish',
   'classquest', 'classquest2', 'skilltree', 'token', 'alias', 'unalias',
   'tutorial', 'friends', 'guild', 'g', 'signin', 'checkin',
-  'faith', 'pray',
+  'faith', 'pray', 'offering', 'renounce',
 ]);
 
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
@@ -285,6 +285,8 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'signin': case 'checkin': cmdSignin(session); break;
     case 'faith': cmdFaith(session, args); break;
     case 'pray': cmdFaith(session, ['pray', ...args]); break;
+    case 'offering': cmdOffering(session, args); break;
+    case 'renounce': cmdRenounce(session, args); break;
     case 'help': cmdHelp(session, argStr); break;
     case 'alias': cmdAlias(session, args); break;
     case 'unalias': cmdUnalias(session, args); break;
@@ -865,7 +867,27 @@ function cmdFaith(session: WsSession, args: string[]): void {
   }
 
   if (sub === 'pray') {
+    const target = args.slice(1).join(' ');
+    const targetFaithId = target ? resolveFaithId(target) : (char.faithId ?? DEFAULT_FAITH_ID);
+    if (!targetFaithId) {
+      sendError(session.sessionId, '找不到該神祗。使用 faith list 查看可選信仰。');
+      return;
+    }
+    if (targetFaithId !== (char.faithId ?? DEFAULT_FAITH_ID)) {
+      sendError(session.sessionId, '目前只能向自己的信仰祈禱。改信可使用 faith follow <神祗>。');
+      return;
+    }
     prayToFaith(session, char);
+    return;
+  }
+
+  if (sub === 'offering') {
+    cmdOffering(session, args.slice(1));
+    return;
+  }
+
+  if (sub === 'renounce') {
+    renounceFaith(session, char);
     return;
   }
 
@@ -880,7 +902,7 @@ function cmdFaith(session: WsSession, args: string[]): void {
     return;
   }
 
-  sendSystem(session.sessionId, '信仰指令：faith / faith list / faith pray / faith follow <神祗>');
+  sendSystem(session.sessionId, '信仰指令：faith / faith list / faith pray / faith offering <金幣> / faith follow <神祗> / faith renounce');
 }
 
 function sendFaithInfo(session: WsSession, char: Character): void {
@@ -935,6 +957,56 @@ function changeFaith(session: WsSession, char: Character, faithId: FaithId): voi
 
   sendSystem(session.sessionId, `你改信${next.name}・${next.title}。既有恩寵歸零，祈禱進入 1 小時冷卻。`);
   sendSystem(session.sessionId, `新的被動：${next.passiveName}：${next.passiveDescription}`);
+  cmdStatus(session);
+}
+
+function cmdOffering(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const amount = parseInt(args[0] ?? '', 10);
+  if (!Number.isFinite(amount) || amount <= 0) {
+    sendError(session.sessionId, '用法：offering <金幣數量>');
+    return;
+  }
+  if (char.gold < amount) {
+    sendError(session.sessionId, '金幣不足，無法獻祭。');
+    return;
+  }
+
+  const faith = FAITH_DEFS[char.faithId ?? DEFAULT_FAITH_ID];
+  const favorGain = Math.max(1, Math.min(20, Math.floor(amount / 50)));
+  char.gold -= amount;
+  char.faithFavor = Math.min(100, (char.faithFavor ?? 0) + favorGain);
+  saveCharacter(char);
+
+  sendSystem(session.sessionId, `你向${faith.name}獻上 ${amount} 金幣。恩寵 +${favorGain}，目前 ${char.faithFavor}/100。`);
+  cmdStatus(session);
+}
+
+function cmdRenounce(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if ((args[0] ?? '').toLowerCase() !== 'faith') {
+    sendError(session.sessionId, '用法：renounce faith');
+    return;
+  }
+
+  renounceFaith(session, char);
+}
+
+function renounceFaith(session: WsSession, char: Character): void {
+  const faith = FAITH_DEFS[char.faithId ?? DEFAULT_FAITH_ID];
+  char.faithId = DEFAULT_FAITH_ID;
+  char.faithFavor = 0;
+  char.faithCooldownUntil = Date.now() + 60 * 60 * 1000;
+  saveCharacter(char);
+
+  sendSystem(session.sessionId, `你放棄了${faith.name}的信仰。恩寵歸零，祈禱進入 1 小時冷卻。`);
+  if (faith.id !== DEFAULT_FAITH_ID) {
+    sendSystem(session.sessionId, `你暫時回到${FAITH_DEFS[DEFAULT_FAITH_ID].name}的庇護之下，可用 faith follow <神祗> 改信。`);
+  }
   cmdStatus(session);
 }
 
@@ -4414,6 +4486,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
       lines: [
         'status (stat)       查看角色狀態',
         'faith               查看信仰、祈禱與改信',
+        'pray / offering     祈禱 / 獻金提高恩寵',
         'inventory (i)       查看背包',
         'skills (sk)         查看技能列表',
         'allocate <屬性> <點> 分配屬性點',
