@@ -43,40 +43,40 @@ const colorClassMap: Record<string, string> = {
 };
 
 /** 根據實體類型取得動作選單 */
-function getActionsForEntity(entity: TerminalEntity): { label: string; command: string }[] {
+function getActionsForEntity(entity: TerminalEntity): { label: string; command: string; echo: string }[] {
   const target = entity.commandTarget ?? entity.cmdName;
   if (entity.entityType === 'npc') {
-    const actions: { label: string; command: string }[] = [
-      { label: '查看', command: `look ${target}` },
-      { label: '對話', command: `talk ${target}` },
+    const actions: { label: string; command: string; echo: string }[] = [
+      { label: '查看', command: `look ${target}`, echo: `查看 ${entity.cmdName}` },
+      { label: '對話', command: `talk ${target}`, echo: `對話 ${entity.cmdName}` },
     ];
     if (entity.npcType === 'merchant') {
-      actions.push({ label: '交易', command: `shop ${target}` });
+      actions.push({ label: '交易', command: `shop ${target}`, echo: `交易 ${entity.cmdName}` });
     }
     return actions;
   }
   if (entity.entityType === 'monster') {
     return [
-      { label: '查看', command: `look ${target}` },
-      { label: '攻擊', command: `attack ${target}` },
+      { label: '查看', command: `look ${target}`, echo: `查看 ${entity.cmdName}` },
+      { label: '攻擊', command: `attack ${target}`, echo: `攻擊 ${entity.cmdName}` },
     ];
   }
   if (entity.entityType === 'player') {
     return [
-      { label: '查看', command: `look ${entity.cmdName}` },
-      { label: '組隊', command: `party invite ${entity.cmdName}` },
-      { label: '決鬥', command: `duel ${entity.cmdName}` },
-      { label: '交易', command: `trade ${entity.cmdName}` },
+      { label: '查看', command: `look ${entity.cmdName}`, echo: `查看 ${entity.cmdName}` },
+      { label: '組隊', command: `party invite ${entity.cmdName}`, echo: `邀請 ${entity.cmdName} 組隊` },
+      { label: '決鬥', command: `duel ${entity.cmdName}`, echo: `挑戰 ${entity.cmdName}` },
+      { label: '交易', command: `trade ${entity.cmdName}`, echo: `交易 ${entity.cmdName}` },
     ];
   }
   if (entity.entityType === 'action' && entity.actionCommand) {
-    return [{ label: entity.name, command: entity.actionCommand }];
+    return [{ label: entity.name, command: entity.actionCommand, echo: entity.name }];
   }
   return [];
 }
 
-function sendTerminalCommand(command: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: command }));
+function sendTerminalCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
 interface PopupState {
@@ -97,7 +97,7 @@ function ClickableEntity({ entity, colorClass, onOpenMenu }: {
       onClick={(e) => {
         e.stopPropagation();
         if (entity.actionCommand) {
-          sendTerminalCommand(entity.actionCommand);
+          sendTerminalCommand(entity.actionCommand, entity.name);
           return;
         }
         onOpenMenu(entity, e.clientX, e.clientY);
@@ -217,7 +217,7 @@ export default function Terminal() {
               key={action.command}
               className="w-full text-left px-3 py-1.5 text-sm text-text-bright hover:bg-bg-tertiary cursor-pointer"
               onClick={() => {
-                sendTerminalCommand(action.command);
+                sendTerminalCommand(action.command, action.echo);
                 setPopup(null);
               }}
             >

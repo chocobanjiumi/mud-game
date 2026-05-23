@@ -1,8 +1,8 @@
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 
-function sendCommand(command: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: command }));
+function sendCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
 interface Suggestion {
@@ -84,7 +84,7 @@ export default function ObjectivePanel() {
           <button
             key={`${suggestion.command}-${suggestion.label}`}
             className={`objective-row ${suggestion.tone === 'danger' ? 'objective-row-danger' : ''}`}
-            onClick={() => sendCommand(suggestion.command)}
+            onClick={() => sendCommand(suggestion.command, suggestion.label)}
           >
             <span className="truncate">{suggestion.label}</span>
           </button>

@@ -65,9 +65,9 @@ export default function App() {
   );
 
   const handleCommand = useCallback(
-    (command: string) => {
+    (command: string, friendlyEcho?: string) => {
       // Add the command to terminal as echo
-      useGameStore.getState().addTerminalLine(`> ${command}`, 'command');
+      useGameStore.getState().addTerminalLine(`> ${friendlyEcho ?? command}`, 'command');
       // Intercept "create <name>" to use create_character message type
       const createMatch = command.match(/^create\s+(.+)$/i);
       if (createMatch) {

@@ -1,8 +1,8 @@
 import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 
-function sendCommand(command: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: command }));
+function sendCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
 function ordinalLabels<T extends { monsterName: string }>(items: T[]): string[] {
@@ -73,7 +73,7 @@ function EntityRow({ entity }: { entity: RoomEntity }) {
             className={actionClass(action)}
             disabled={action.disabled}
             title={action.reason}
-            onClick={() => !action.disabled && sendCommand(action.command)}
+            onClick={() => !action.disabled && sendCommand(action.command, `${action.label} ${entity.label}`)}
           >
             {action.label}
           </button>
@@ -99,7 +99,7 @@ export default function RoomPanel() {
     <div className="room-panel border-b border-border-dim bg-bg-secondary px-3 py-2 space-y-2">
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold text-text-terminal">附近物件</span>
-        <button className="text-[10px] text-text-dim hover:text-text-bright" onClick={() => sendCommand('search room')}>
+        <button className="text-[10px] text-text-dim hover:text-text-bright" onClick={() => sendCommand('search room', '搜尋房間')}>
           search
         </button>
       </div>
@@ -107,7 +107,7 @@ export default function RoomPanel() {
       {hints.length > 0 && (
         <div className="flex flex-wrap gap-1">
           {hints.map((hint) => (
-            <button key={hint.command} className="room-chip" onClick={() => sendCommand(hint.command)}>
+            <button key={hint.command} className="room-chip" onClick={() => sendCommand(hint.command, hint.label)}>
               {hint.label}
             </button>
           ))}
@@ -132,21 +132,21 @@ export default function RoomPanel() {
       ) : (
         <div className="grid grid-cols-1 gap-1 text-xs">
           {corpses.map((corpse, index) => (
-            <button key={corpse.id} className="room-row" onClick={() => sendCommand(`loot ${corpse.id}`)}>
+            <button key={corpse.id} className="room-row" onClick={() => sendCommand(`loot ${corpse.id}`, `搜刮 ${corpse.label ?? corpseLabels[index]}`)}>
               <span className="text-combat-damage">{corpse.label ?? corpseLabels[index]}</span>
               <span className="text-text-dim">{corpse.empty ? '已空' : corpse.protected ? '保護中' : '可搜刮'}</span>
             </button>
           ))}
 
           {nodes.map((node) => (
-            <button key={node.id} className="room-row" onClick={() => sendCommand(`gather ${node.id}`)}>
+            <button key={node.id} className="room-row" onClick={() => sendCommand(`gather ${node.id}`, `採集 ${node.name}`)}>
               <span className="text-text-amber">{node.name}</span>
               <span className="text-text-dim">{node.skill} Lv.{node.levelMin}</span>
             </button>
           ))}
 
           {travelNodes.map((node) => (
-            <button key={node.id} className="room-row" onClick={() => sendCommand(node.unlocked ? `travel ${node.id}` : 'activate portal')}>
+            <button key={node.id} className="room-row" onClick={() => sendCommand(node.unlocked ? `travel ${node.id}` : 'activate portal', node.unlocked ? `前往 ${node.name}` : `啟用 ${node.name}`)}>
               <span className="text-chat-party">{node.name}</span>
               <span className="text-text-dim">{node.unlocked ? '可旅行' : '可啟用'}</span>
             </button>

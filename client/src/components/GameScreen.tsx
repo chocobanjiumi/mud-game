@@ -23,7 +23,7 @@ import WorldMap from './WorldMap';
 import AudioSettings from './AudioSettings';
 
 interface GameScreenProps {
-  onCommand: (command: string) => void;
+  onCommand: (command: string, friendlyEcho?: string) => void;
   onOpenShop: () => void;
   onPurchase: (itemId: string) => void;
   onGetTransactions: () => void;
@@ -63,10 +63,10 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       // Don't trigger when typing in inputs
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
       // WASD movement
-      if (e.key === 'w' || e.key === 'W') { onCommand('go north'); return; }
-      if (e.key === 'a' || e.key === 'A') { onCommand('go west'); return; }
-      if (e.key === 's' || e.key === 'S') { onCommand('go south'); return; }
-      if (e.key === 'd' || e.key === 'D') { onCommand('go east'); return; }
+      if (e.key === 'w' || e.key === 'W') { onCommand('go north', '前往 north'); return; }
+      if (e.key === 'a' || e.key === 'A') { onCommand('go west', '前往 west'); return; }
+      if (e.key === 's' || e.key === 'S') { onCommand('go south', '前往 south'); return; }
+      if (e.key === 'd' || e.key === 'D') { onCommand('go east', '前往 east'); return; }
       // UI panels
       if (e.key === 'b' || e.key === 'B') {
         if (!shopOpen) {
@@ -90,8 +90,12 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (!shopOpen) onOpenShop();
     };
     const handleTerminalCommand = (e: Event) => {
-      const cmd = (e as CustomEvent).detail as string;
-      if (cmd) onCommand(cmd);
+      const detail = (e as CustomEvent).detail as string | { command: string; echo?: string };
+      if (typeof detail === 'string') {
+        if (detail) onCommand(detail);
+        return;
+      }
+      if (detail?.command) onCommand(detail.command, detail.echo);
     };
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('open-shop', handleOpenShopEvent);
@@ -105,7 +109,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
-      onCommand(`skill ${skillId}${selectedCombatTargetId ? ` ${selectedCombatTargetId}` : ''}`);
+      onCommand(`skill ${skillId}${selectedCombatTargetId ? ` ${selectedCombatTargetId}` : ''}`, `使用技能 ${skillId}`);
     },
     [onCommand, selectedCombatTargetId],
   );
@@ -136,16 +140,16 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
             <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={openWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
-            <QuickButton label="查看" onClick={() => onCommand('look')} />
-            <QuickButton label="狀態" onClick={() => onCommand('status')} />
-            <QuickButton label="地圖" onClick={() => onCommand('map')} />
-            <QuickButton label="技能" onClick={() => onCommand('skills')} />
+            <QuickButton label="查看" onClick={() => onCommand('look', '查看四周')} />
+            <QuickButton label="狀態" onClick={() => onCommand('status', '查看狀態')} />
+            <QuickButton label="地圖" onClick={() => onCommand('map', '查看地圖')} />
+            <QuickButton label="技能" onClick={() => onCommand('skills', '查看技能')} />
             {inCombat && (
               <>
                 <div className="border-t border-border-dim my-1" />
-                <QuickButton label="攻擊" onClick={() => onCommand('attack')} highlight />
-                <QuickButton label="防禦" onClick={() => onCommand('defend')} />
-                <QuickButton label="逃跑" onClick={() => onCommand('flee')} />
+                <QuickButton label="攻擊" onClick={() => onCommand('attack', '攻擊目前目標')} highlight />
+                <QuickButton label="防禦" onClick={() => onCommand('defend', '防禦')} />
+                <QuickButton label="逃跑" onClick={() => onCommand('flee', '逃跑')} />
               </>
             )}
           </div>

@@ -1,8 +1,8 @@
 import type { RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 
-function sendCommand(command: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: command }));
+function sendCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
 const TYPE_LABEL: Record<RoomEntityType, string> = {
@@ -71,7 +71,7 @@ export default function SelectedTargetPanel() {
             className={actionClass(action)}
             disabled={action.disabled}
             title={action.reason}
-            onClick={() => !action.disabled && sendCommand(action.command)}
+            onClick={() => !action.disabled && sendCommand(action.command, `${action.label} ${entity.label}`)}
           >
             {action.label}
           </button>
