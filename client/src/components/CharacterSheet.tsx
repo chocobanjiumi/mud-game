@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import { DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, GENDER_DEFS, RACE_DEFS } from '@game/shared';
 
 const CLASS_NAMES: Record<string, string> = {
   adventurer: '冒險者',
@@ -62,6 +63,9 @@ export default function CharacterSheet() {
   if (!characterSheetOpen || !character) return null;
 
   const className = CLASS_NAMES[character.classId] ?? character.classId;
+  const race = RACE_DEFS[character.raceId ?? DEFAULT_RACE_ID];
+  const gender = GENDER_DEFS[character.genderId ?? DEFAULT_GENDER_ID];
+  const faith = FAITH_DEFS[character.faithId ?? DEFAULT_FAITH_ID];
   const visibleEquipSlots = equipment?.accessory
     ? [...EQUIP_SLOTS, { key: 'accessory', label: '舊飾品', icon: '[飾]' }]
     : EQUIP_SLOTS;
@@ -90,6 +94,9 @@ export default function CharacterSheet() {
                 {className} Lv.{character.level}
               </div>
               <div className="text-[10px] text-text-dim mt-1">
+                {race.name} / {gender.name} / {faith.name}
+              </div>
+              <div className="text-[10px] text-text-dim mt-1">
                 EXP: {character.exp}/{expToNext} | 金幣: {character.gold.toLocaleString()}
               </div>
               {character.freePoints > 0 && (
@@ -97,6 +104,19 @@ export default function CharacterSheet() {
                   未分配點數: {character.freePoints}
                 </div>
               )}
+            </div>
+
+            <div className="text-[10px] text-text-dim uppercase tracking-wider mb-1 mt-3">出身與信仰</div>
+            <div className="space-y-1 text-xs">
+              <div className="rounded border border-border-dim bg-bg-primary p-2">
+                <div className="text-text-terminal">{race.passiveName}</div>
+                <div className="text-text-dim leading-5">{race.passiveDescription}</div>
+              </div>
+              <div className="rounded border border-border-dim bg-bg-primary p-2">
+                <div className="text-text-terminal">{faith.passiveName}</div>
+                <div className="text-text-dim leading-5">{faith.passiveDescription}</div>
+                <div className="mt-1 text-text-amber">恩寵 {character.faithFavor ?? 0}/100</div>
+              </div>
             </div>
 
             {/* Base Stats */}

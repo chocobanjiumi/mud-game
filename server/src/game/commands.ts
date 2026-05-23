@@ -23,8 +23,11 @@ import {
   calculateCritRate, calculateDodgeRate, calculateHitRate,
   calculateCritDamage,
   getExpForLevel,
+  FAITH_DEFS, GENDER_DEFS, RACE_DEFS,
+  DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID,
+  isFaithId,
 } from '@game/shared';
-import type { Character, ClassId, MonsterDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, FaithId, MonsterDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import type { RoomEntity } from '@game/shared/types/protocol';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
@@ -94,6 +97,7 @@ const SYSTEM_ALIASES: Record<string, string> = {
   cq: 'classquest',
   cq2: 'classquest2',
   st: 'skilltree',
+  pray: 'faith pray',
 };
 
 const BUILTIN_COMMANDS = new Set([
@@ -111,6 +115,7 @@ const BUILTIN_COMMANDS = new Set([
   'diplomacy', 'building', 'craft', 'crafting', 'auction', 'fish',
   'classquest', 'classquest2', 'skilltree', 'token', 'alias', 'unalias',
   'tutorial', 'friends', 'guild', 'g', 'signin', 'checkin',
+  'faith', 'pray',
 ]);
 
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
@@ -278,6 +283,8 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'guild': case 'g': cmdGuild(session, args); break;
     // 每日簽到
     case 'signin': case 'checkin': cmdSignin(session); break;
+    case 'faith': cmdFaith(session, args); break;
+    case 'pray': cmdFaith(session, ['pray', ...args]); break;
     case 'help': cmdHelp(session, argStr); break;
     case 'alias': cmdAlias(session, args); break;
     case 'unalias': cmdUnalias(session, args); break;
@@ -836,6 +843,122 @@ function cmdStatus(session: WsSession): void {
     effects: [],
     skills: getLearnedSkills(char.id),
   });
+}
+
+function cmdFaith(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+  if (!sub || sub === 'info' || sub === 'status') {
+    sendFaithInfo(session, char);
+    return;
+  }
+
+  if (sub === 'list') {
+    sendSystem(session.sessionId, '── 可信仰神祗 ──');
+    for (const faith of Object.values(FAITH_DEFS)) {
+      sendSystem(session.sessionId, `  ${faith.id.padEnd(8)} ${faith.name}・${faith.title} - ${faith.passiveName}`);
+    }
+    sendSystem(session.sessionId, '使用 faith follow <神祗ID或名稱> 改信。改信會清空恩寵並進入祈禱冷卻。');
+    return;
+  }
+
+  if (sub === 'pray') {
+    prayToFaith(session, char);
+    return;
+  }
+
+  if (sub === 'follow' || sub === 'choose') {
+    const target = args.slice(1).join(' ');
+    const faithId = resolveFaithId(target);
+    if (!faithId) {
+      sendError(session.sessionId, '找不到該神祗。使用 faith list 查看可選信仰。');
+      return;
+    }
+    changeFaith(session, char, faithId);
+    return;
+  }
+
+  sendSystem(session.sessionId, '信仰指令：faith / faith list / faith pray / faith follow <神祗>');
+}
+
+function sendFaithInfo(session: WsSession, char: Character): void {
+  const race = RACE_DEFS[char.raceId ?? DEFAULT_RACE_ID];
+  const gender = GENDER_DEFS[char.genderId ?? DEFAULT_GENDER_ID];
+  const faith = FAITH_DEFS[char.faithId ?? DEFAULT_FAITH_ID];
+  const cooldown = getFaithCooldownRemaining(char);
+
+  sendSystem(session.sessionId, `── ${char.name} 的出身與信仰 ──`);
+  sendSystem(session.sessionId, `種族：${race.name} - ${race.passiveName}：${race.passiveDescription}`);
+  sendSystem(session.sessionId, `性別：${gender.name}`);
+  sendSystem(session.sessionId, `信仰：${faith.name}・${faith.title}`);
+  sendSystem(session.sessionId, `被動：${faith.passiveName}：${faith.passiveDescription}`);
+  sendSystem(session.sessionId, `祈禱：${faith.prayerName}：${faith.prayerDescription}`);
+  sendSystem(session.sessionId, `恩寵：${char.faithFavor ?? 0}/100${cooldown > 0 ? `；祈禱冷卻 ${formatDuration(cooldown)}` : ''}`);
+}
+
+function prayToFaith(session: WsSession, char: Character): void {
+  const faith = FAITH_DEFS[char.faithId ?? DEFAULT_FAITH_ID];
+  const cooldown = getFaithCooldownRemaining(char);
+  if (cooldown > 0) {
+    sendError(session.sessionId, `祈禱尚在冷卻中，剩餘 ${formatDuration(cooldown)}。`);
+    return;
+  }
+
+  const hpRestore = Math.max(1, Math.floor(char.maxHp * (faith.id === 'aelora' ? 0.25 : 0.12)));
+  const mpRestore = Math.max(1, Math.floor(char.maxMp * (faith.id === 'ithern' || faith.id === 'nesha' ? 0.2 : 0.08)));
+  const resourceRestore = Math.max(1, Math.floor(char.maxResource * (faith.id === 'karvos' ? 0.2 : 0.08)));
+  char.hp = Math.min(char.maxHp, char.hp + hpRestore);
+  char.mp = Math.min(char.maxMp, char.mp + mpRestore);
+  char.resource = Math.min(char.maxResource, char.resource + resourceRestore);
+  char.faithFavor = Math.min(100, (char.faithFavor ?? 0) + 5);
+  char.faithCooldownUntil = Date.now() + 10 * 60 * 1000;
+  saveCharacter(char);
+
+  sendSystem(session.sessionId, `你向${faith.name}祈禱，獲得「${faith.prayerName}」。HP +${hpRestore}，MP +${mpRestore}，資源 +${resourceRestore}，恩寵 +5。`);
+  cmdStatus(session);
+}
+
+function changeFaith(session: WsSession, char: Character, faithId: FaithId): void {
+  const current = char.faithId ?? DEFAULT_FAITH_ID;
+  if (current === faithId) {
+    sendFaithInfo(session, char);
+    return;
+  }
+
+  const next = FAITH_DEFS[faithId];
+  char.faithId = faithId;
+  char.faithFavor = 0;
+  char.faithCooldownUntil = Date.now() + 60 * 60 * 1000;
+  saveCharacter(char);
+
+  sendSystem(session.sessionId, `你改信${next.name}・${next.title}。既有恩寵歸零，祈禱進入 1 小時冷卻。`);
+  sendSystem(session.sessionId, `新的被動：${next.passiveName}：${next.passiveDescription}`);
+  cmdStatus(session);
+}
+
+function resolveFaithId(input: string): FaithId | null {
+  const normalized = input.trim().toLowerCase();
+  if (!normalized) return null;
+  if (isFaithId(normalized)) return normalized;
+  return Object.values(FAITH_DEFS).find((faith) => (
+    faith.name.toLowerCase() === normalized
+    || faith.title.toLowerCase() === normalized
+    || `${faith.name}${faith.title}`.toLowerCase() === normalized
+  ))?.id ?? null;
+}
+
+function getFaithCooldownRemaining(char: Character): number {
+  return Math.max(0, (char.faithCooldownUntil ?? 0) - Date.now());
+}
+
+function formatDuration(ms: number): string {
+  const totalSeconds = Math.ceil(ms / 1000);
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+  if (minutes <= 0) return `${seconds} 秒`;
+  return `${minutes} 分 ${seconds.toString().padStart(2, '0')} 秒`;
 }
 
 function cmdInventory(session: WsSession): void {
@@ -4290,6 +4413,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
       title: '角色資訊',
       lines: [
         'status (stat)       查看角色狀態',
+        'faith               查看信仰、祈禱與改信',
         'inventory (i)       查看背包',
         'skills (sk)         查看技能列表',
         'allocate <屬性> <點> 分配屬性點',
