@@ -2416,6 +2416,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['wildgrass_hills', 'quest', 'hidden_cache'], zoneTags: ['wildgrass_hills'],
   },
+  fog_lantern_wick: {
+    id: 'fog_lantern_wick', name: '霧燈燈芯', type: 'material',
+    description: '霧港燈塔與碼頭燈常用的耐鹽燈芯，浸過鯨油與海草灰。點燃後火光偏藍，能在濃霧中保持穩定。',
+    buyPrice: 24, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['mist_harbor', 'shop', 'service'], zoneTags: ['mist_harbor'],
+  },
+  tideglass_shard: {
+    id: 'tideglass_shard', name: '潮玻璃碎片', type: 'material',
+    description: '霧港潮池與防波堤旁撿到的磨圓玻璃，顏色隨潮位變深。海圖師會用它校準霧夜航線。',
+    buyPrice: 0, sellPrice: 15,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['mist_harbor', 'gathering', 'quest'], zoneTags: ['mist_harbor'],
+  },
+  salt_cured_fish: {
+    id: 'salt_cured_fish', name: '鹽漬霧魚', type: 'material',
+    description: '魚市用粗鹽與霧港海草醃成的銀魚，耐放且腥味很低。水手常把它當航海口糧或交換小費。',
+    buyPrice: 18, sellPrice: 9,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['mist_harbor', 'shop', 'food'], zoneTags: ['mist_harbor'],
+  },
+  harbor_seal_stamp: {
+    id: 'harbor_seal_stamp', name: '港務封印章', type: 'quest',
+    description: '海關廳使用的銅製封印章，印面刻著霧港潮鐘與三道浪紋。若它出現在走私巷，代表港務紀錄被動過手腳。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['mist_harbor', 'quest', 'service'], zoneTags: ['mist_harbor'],
+  },
+  ferry_token: {
+    id: 'ferry_token', name: '渡船木牌', type: 'quest',
+    description: '霧港渡船棧橋發出的防水木牌，背面刻著潮位時段。沒有它，船夫通常不會在濃霧裡載客出港。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['mist_harbor', 'quest', 'service'], zoneTags: ['mist_harbor'],
+  },
+  smuggled_cargo_tag: {
+    id: 'smuggled_cargo_tag', name: '走私貨牌', type: 'quest',
+    description: '九號倉與走私巷之間流通的無名貨牌，木面只刻著潮汐暗號。它能指向被海關簿抹掉的私航貨箱。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['mist_harbor', 'quest', 'hidden_cache'], zoneTags: ['mist_harbor'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

@@ -864,6 +864,68 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     },
   },
 
+  // ─── 霧港事件怪 (Lv 20-24，非城鎮常駐 spawn) ─────────────
+
+  harbor_training_dummy: {
+    id: 'harbor_training_dummy',
+    name: '碼頭訓練假人',
+    alias: 'harbordummy',
+    level: 20,
+    hp: 520,
+    mp: 0,
+    str: 10,
+    int: 1,
+    dex: 1,
+    vit: 40,
+    luk: 1,
+    element: 'none',
+    skills: ['basic_attack'],
+    expReward: 0,
+    goldReward: [0, 0],
+    drops: [],
+    aiType: 'passive',
+    description:
+      '冒險者碼頭用來測試武器與船上戰鬥姿勢的厚木假人，外層包著舊帆布與繩結。它不會主動攻擊，只作為訓練或教學事件目標。',
+    isBoss: false,
+    guardianHints: {
+      creature: '假人能承受碼頭訓練攻擊，但不代表真實海戰會如此安穩。',
+      treasure: '假人底座常壓著新手冒險者遺落的箭頭與木牌。',
+      spirit: '霧港把訓練放在碼頭，是因為海上沒有第二次練習機會。',
+    },
+  },
+
+  fog_alley_cutpurse: {
+    id: 'fog_alley_cutpurse',
+    name: '霧巷扒手',
+    alias: 'cutpurse',
+    level: 24,
+    hp: 360,
+    mp: 36,
+    str: 24,
+    int: 18,
+    dex: 36,
+    vit: 22,
+    luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'steal', 'blind'],
+    expReward: 120,
+    goldReward: [35, 75],
+    drops: [
+      { itemId: 'smuggled_cargo_tag', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'smoke_bomb', chance: 0.16, minQty: 1, maxQty: 1 },
+      { itemId: 'throwing_knife', chance: 0.12, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '只在走私調查或夜間事件中現身的霧港扒手，披著防水短披風，手裡藏著煙粉與割袋小刀。牠們借霧燈暗角下手，不會作為城鎮常駐怪物。',
+    isBoss: false,
+    guardianHints: {
+      creature: '扒手會先丟煙粉再短衝，保持背靠牆面能降低被繞後機會。',
+      treasure: '牠身上可能帶著走私貨牌，能追查九號倉的私航貨箱。',
+      spirit: '霧港的犯罪不是野外威脅，而是港務秩序縫隙中的事件。',
+    },
+  },
+
   // ─── 暗影森林擴充 (Lv 14-18) ──────────────────────────────
 
   poison_toad: {

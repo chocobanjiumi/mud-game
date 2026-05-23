@@ -3592,6 +3592,500 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把隱泉當成所有旅人的臨時避風港。',
     },
   },
+
+  mist_harbor_gatewarden: {
+    id: 'mist_harbor_gatewarden',
+    name: '歐德',
+    alias: 'gatewarden',
+    title: '霧港守門人',
+    description:
+      '一名披著油布披肩的老守門人站在霧港城門下，手裡拿著防潮名冊與銅哨。' +
+      '他的靴子永遠濕著，卻能從腳印深淺判斷旅人是從陸路、碼頭還是走私巷來的。',
+    roomId: 'mist_harbor_fog_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '新來的？先記住，霧港不怕迷路，怕的是有人替你改路。船票、封條、住客名牌都收好。',
+        options: [
+          { text: '霧港最近有什麼事？', nextId: 'trouble' },
+          { text: '我該去哪裡報到？', nextId: 'route' },
+          { text: '公告板上的急件？', nextId: 'notice' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'trouble',
+        text:
+          '九號倉封條不對，走私巷貨牌變多，霧望燈室又有人半夜轉燈。這三件事若串起來，就不是小偷小摸。',
+        options: [
+          { text: '我該去哪裡報到？', nextId: 'route' },
+          { text: '公告板上的急件？', nextId: 'notice' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先去潮汐廣場看潮鐘，再到海關廳登記。要接委託就去冒險者碼頭，想查航線去海圖檔案室。',
+        options: [
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'notice',
+        text:
+          '公告被撕下不是風吹的。若你找到港務封印章或走私貨牌，拿回來給海關，不要在魚市裡亂問。',
+        options: [
+          { text: '我會查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '霧裡有人叫你名字也別急著回頭，先看腳下影子是不是多了一個。',
+      },
+    ],
+    guardianHints: {
+      creature: '歐德知道霧巷扒手通常從哪些濕石縫消失。',
+      treasure: '他的名冊夾著近期失蹤船員與貨箱的交叉記錄。',
+      spirit: '他守的不是城門，而是霧港仍願意承認的入口。',
+    },
+  },
+
+  mist_harbor_tide_clerk: {
+    id: 'mist_harbor_tide_clerk',
+    name: '菲娜',
+    alias: 'tideclerk',
+    title: '潮鐘書記',
+    description:
+      '一名年輕書記坐在潮汐廣場的潮鐘旁，膝上放著潮位簿與一支防水炭筆。' +
+      '她每次聽見銅錘響起，都會在簿上記下船期與霧色。',
+    roomId: 'mist_harbor_tide_plaza',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '潮鐘不只報時，也報誰該進港、誰該離港。最近有幾艘船的鐘點對不上。',
+        options: [
+          { text: '怎麼查船期？', nextId: 'schedule' },
+          { text: '鐘點對不上？', nextId: 'missing' },
+          { text: '霧港路線怎麼走？', nextId: 'directions' },
+          { text: '謝謝。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'schedule',
+        text:
+          '海關管貨，船長辦公室管船，潮鐘管時間。三份記錄不一致時，通常就是有人在霧裡進出了。',
+        options: [
+          { text: '鐘點對不上？', nextId: 'missing' },
+          { text: '霧港路線怎麼走？', nextId: 'directions' },
+        ],
+      },
+      {
+        id: 'missing',
+        text:
+          '有艘灰帆船沒敲進港鐘，貨卻進了九號倉。若你找到走私貨牌，時間一定能對上。',
+        options: [
+          { text: '我會留意九號倉。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'directions',
+        text:
+          '北邊是傳送燈塔，東邊魚市，南邊海關，西邊城門。迷路時回到潮鐘，霧港所有路都會被它敲回來。',
+        options: [
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '聽見鐘響就停一步。霧港很多意外，都發生在急著趕潮的人身上。',
+      },
+    ],
+    guardianHints: {
+      creature: '菲娜能從鐘聲間隔判斷霧巷是否有人借潮聲掩護行動。',
+      treasure: '潮位簿能比對灰帆船與九號倉貨物的時間差。',
+      spirit: '她把霧港混亂的日常整理成潮汐節拍。',
+    },
+  },
+
+  mist_harbor_customs_master: {
+    id: 'mist_harbor_customs_master',
+    name: '葛維克',
+    alias: 'customsmaster',
+    title: '海關總管',
+    description:
+      '一名鬍鬚整齊的海關總管坐在銅秤後，手邊排著港務封印章、潮濕貨簿與一杯冷茶。' +
+      '他的眼神比秤砣還穩，任何被改過的封條都逃不過他的手指。',
+    roomId: 'mist_harbor_customs_house',
+    type: 'merchant',
+    shopItems: [
+      'return_scroll',
+      'small_hp_potion',
+      'medium_hp_potion',
+      'antidote',
+      'fog_lantern_wick',
+      'salt_cured_fish',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '登記貨物、查船名、買港口補給，都在這裡。若是來問九號倉，先拿出證據。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '九號倉怎麼了？', nextId: 'warehouse' },
+          { text: '港務封印章？', nextId: 'stamp' },
+          { text: '先不打擾。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '合法補給只有這些：回程卷軸、藥水、解毒劑、霧燈燈芯和鹽漬霧魚。其餘貨品請出示封條。',
+        action: { type: 'shop', data: { shopType: 'customs' } },
+        options: [
+          { text: '九號倉怎麼了？', nextId: 'warehouse' },
+          { text: '港務封印章？', nextId: 'stamp' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'warehouse',
+        text:
+          '封條完整，重量不對；簿冊完整，墨跡太新。有人用真正的章蓋了假的貨。',
+        options: [
+          { text: '港務封印章？', nextId: 'stamp' },
+          { text: '我去查貨牌。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'stamp',
+        text:
+          '若你在走私巷看到同樣印紋，別交給巷裡的人。章能開門，也能關掉一整條航線。',
+        options: [
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '霧港允許灰色地帶，但不允許有人把整座港變成自己的倉庫。',
+      },
+    ],
+    guardianHints: {
+      creature: '葛維克知道霧巷扒手常販賣哪種偽造貨牌。',
+      treasure: '他的鎖櫃裡有一枚備用港務封印章與近月貨簿副本。',
+      spirit: '他用表格守住霧港，因為海霧會抹平太多真相。',
+    },
+  },
+
+  mist_harbor_fishmonger: {
+    id: 'mist_harbor_fishmonger',
+    name: '露莎',
+    alias: 'fishmonger',
+    title: '晨霧魚販',
+    description:
+      '一名嗓門響亮的魚販站在濕木攤後，手起刀落把銀魚切得整齊。' +
+      '她的圍裙沾滿鹽霧與魚鱗，卻能記住每艘小船今天捕到了什麼。',
+    roomId: 'mist_harbor_fish_market',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'herb',
+      'salt_cured_fish',
+      'fog_lantern_wick',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '新鮮霧魚、鹽漬霧魚、暖胃湯料都有。別嫌魚市吵，安靜下來才是真的出事。',
+        options: [
+          { text: '我看看商品。', nextId: 'shop' },
+          { text: '今天有怪事嗎？', nextId: 'rumor' },
+          { text: '走私巷在哪？', nextId: 'alley' },
+          { text: '晚點再買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '要吃的、要點燈的、要止血的都有。魚市不是藥店，但水手知道什麼東西能撐過一晚。',
+        action: { type: 'shop', data: { shopType: 'fish_market' } },
+        options: [
+          { text: '今天有怪事嗎？', nextId: 'rumor' },
+          { text: '走私巷在哪？', nextId: 'alley' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rumor',
+        text:
+          '灰帆船沒進魚市，卻有人賣牠船上的冰鹽魚。要我說，貨從九號倉或走私巷進來的。',
+        options: [
+          { text: '走私巷在哪？', nextId: 'alley' },
+          { text: '我會查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'alley',
+        text:
+          '攤後那條濕巷就是。你若看見木箱上沒有魚味，八成不是魚貨。',
+        options: [
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '買魚記得看眼睛，查案記得看箱底。兩個都不能只聽賣家說。',
+      },
+    ],
+    guardianHints: {
+      creature: '露莎能看出霧巷扒手是否混在魚市人潮裡。',
+      treasure: '她知道哪幾個魚箱常被拿來藏走私貨牌。',
+      spirit: '魚市是霧港最吵的地方，也是消息最難完全藏住的地方。',
+    },
+  },
+
+  mist_harbor_innkeeper: {
+    id: 'mist_harbor_innkeeper',
+    name: '瑪洛',
+    alias: 'innkeeper',
+    title: '沉錨旅店老闆',
+    description:
+      '一名寬肩旅店老闆站在沉錨旅店櫃台後，手邊放著住客簿、房牌和一壺熱酒。' +
+      '他說話慢，卻能在吵雜水手中聽見誰提到失蹤船名。',
+    roomId: 'mist_harbor_anchor_inn',
+    type: 'innkeeper',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '要房間、熱湯、還是打聽船員？霧港夜裡濕冷，別在碼頭硬撐。',
+        options: [
+          { text: '我需要休息。', nextId: 'rest' },
+          { text: '住客簿被撕了？', nextId: 'ledger' },
+          { text: '有外海傳聞嗎？', nextId: 'rumor' },
+          { text: '先不用。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rest',
+        text: '空房還有。把濕斗篷掛在爐邊，別把來路告訴第一個請你喝酒的人。',
+        action: { type: 'heal', data: { service: 'inn' } },
+        options: [
+          { text: '住客簿被撕了？', nextId: 'ledger' },
+          { text: '謝謝。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'ledger',
+        text:
+          '撕掉的不是客人，是船員。那幾頁都有海關封蠟味，還有九號倉常用的濕繩印。',
+        options: [
+          { text: '有外海傳聞嗎？', nextId: 'rumor' },
+          { text: '我會去海關看看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rumor',
+        text:
+          '水手說霧望燈室最近照過一條不存在的航線。若那是真的，某艘船不是迷路，是被叫回來了。',
+        options: [
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '霧港的床很軟，夢很重。睡前把重要東西壓在枕頭下。',
+      },
+    ],
+    guardianHints: {
+      creature: '瑪洛能從旅店人聲中分辨真正的恐慌與水手吹牛。',
+      treasure: '住客簿殘頁可追到失蹤灰帆船員。',
+      spirit: '他讓水手相信霧港還有能回來的門。',
+    },
+  },
+
+  mist_harbor_guild_factor: {
+    id: 'mist_harbor_guild_factor',
+    name: '凱汀',
+    alias: 'factor',
+    title: '冒險者碼頭書記',
+    description:
+      '一名公會書記坐在防潮棚下，把任務牌按潮位、船型與危險程度排好。' +
+      '他的桌面有乾燥墨盒、繩結樣本與一個訓練假人的修理清單。',
+    roomId: 'mist_harbor_guild_quay',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '想接海上委託、護航、搜救，或只是測測新武器？先在這裡登記隊伍。',
+        options: [
+          { text: '有什麼委託？', nextId: 'contracts' },
+          { text: '訓練假人？', nextId: 'training' },
+          { text: '走私調查能接嗎？', nextId: 'smuggling' },
+          { text: '稍後再說。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'contracts',
+        text:
+          '今天有渡船護送、失物打撈、九號倉核對、外海霧燈巡查。危險最高的是最後兩個。',
+        options: [
+          { text: '訓練假人？', nextId: 'training' },
+          { text: '走私調查能接嗎？', nextId: 'smuggling' },
+        ],
+      },
+      {
+        id: 'training',
+        text:
+          '碼頭假人只供測招，不給經驗也不掉東西。別在真船上才發現自己站不穩。',
+        options: [
+          { text: '走私調查能接嗎？', nextId: 'smuggling' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'smuggling',
+        text:
+          '能接，但先拿到海關或魚市的線索。沒有貨牌、封印章或潮鐘時間，公會不能替你擔保。',
+        options: [
+          { text: '我去找線索。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '霧港委託看起來都像找東西，最後通常都是找人。',
+      },
+    ],
+    guardianHints: {
+      creature: '凱汀管理碼頭訓練假人與夜間走私事件登記。',
+      treasure: '他的委託牌背面記著未公開的渡船失蹤名單。',
+      spirit: '他把霧港的不安變成冒險者能承接的工作。',
+    },
+  },
+
+  mist_harbor_lamplighter: {
+    id: 'mist_harbor_lamplighter',
+    name: '艾菈',
+    alias: 'lamplighter',
+    title: '霧望守燈人',
+    description:
+      '一名守燈人站在霧望燈室的巨大透鏡旁，手套上沾著藍色燈油。' +
+      '她的腰帶掛滿小鏡片與霧燈燈芯，每隔幾句話就會確認燈光方位。',
+    roomId: 'mist_harbor_fogwatch_lantern',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '別碰透鏡。這盞燈照錯一格，就可能把船帶進沒有海圖的霧裡。',
+        options: [
+          { text: '最近有人轉燈？', nextId: 'tamper' },
+          { text: '需要什麼材料？', nextId: 'materials' },
+          { text: '外海有什麼？', nextId: 'sea' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'tamper',
+        text:
+          '有。燈室地板某個刻度被磨得太亮，指向官方航線外的黑水區。那不是手滑，是習慣。',
+        options: [
+          { text: '需要什麼材料？', nextId: 'materials' },
+          { text: '外海有什麼？', nextId: 'sea' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '霧燈燈芯、潮玻璃碎片和乾淨燈油。若你從潮池小祠帶回潮玻璃，我能校準燈色。',
+        options: [
+          { text: '外海有什麼？', nextId: 'sea' },
+          { text: '我去找材料。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sea',
+        text:
+          '有時是冰潮，有時是幽霧船。有時只是人不願承認的私航。燈只照路，不替人選真相。',
+        options: [
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '若你在霧裡看見兩盞一樣的燈，跟著較暗的那盞。假的總想亮一點。',
+      },
+    ],
+    guardianHints: {
+      creature: '艾菈能判斷霧中船影是真船、幽霧船還是傳送燈折影。',
+      treasure: '她的備品盒裡有霧燈燈芯與潮玻璃校準片。',
+      spirit: '她守的不只是燈，而是霧港選擇照亮的航線。',
+    },
+  },
+
+  mist_harbor_alley_broker: {
+    id: 'mist_harbor_alley_broker',
+    name: '薩維',
+    alias: 'broker',
+    title: '霧巷掮客',
+    description:
+      '一名笑容很淺的掮客靠在走私巷暗門旁，手裡拋著一枚無名貨牌。' +
+      '他的外套沒有任何徽記，但每個經過的搬運工都會避開他的影子。',
+    roomId: 'mist_harbor_smugglers_alley',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '迷路的人不會走到這裡。你是找貨、找人，還是找一個能說服海關的故事？',
+        options: [
+          { text: '我在找走私貨牌。', nextId: 'tag' },
+          { text: '九號倉的貨？', nextId: 'warehouse' },
+          { text: '霧巷扒手呢？', nextId: 'cutpurse' },
+          { text: '只是路過。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'tag',
+        text:
+          '貨牌只是木頭，值錢的是上面的潮汐暗號。看得懂的人知道哪個箱子不該存在。',
+        options: [
+          { text: '九號倉的貨？', nextId: 'warehouse' },
+          { text: '霧巷扒手呢？', nextId: 'cutpurse' },
+        ],
+      },
+      {
+        id: 'warehouse',
+        text:
+          '九號倉有兩道門：海關知道的一道，潮水知道的一道。你想進哪一道，得看你願意欠誰。',
+        options: [
+          { text: '霧巷扒手呢？', nextId: 'cutpurse' },
+          { text: '我不欠人情。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'cutpurse',
+        text:
+          '扒手不是我的人，但他們知道誰口袋裡有封印章。夜裡起霧時，小心腰包比小心刀更重要。',
+        options: [
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '霧港每條暗路都有出口，只是出口不一定還在霧港。',
+      },
+    ],
+    guardianHints: {
+      creature: '薩維知道霧巷扒手何時會在事件中現身。',
+      treasure: '他手裡的貨牌能指出九號倉暗門與私航貨箱。',
+      spirit: '他代表霧港不寫進海關簿的那半座城市。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
