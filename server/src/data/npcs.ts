@@ -8029,6 +8029,150 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  ember_march_ashgate_scout: {
+    id: 'ember_march_ashgate_scout',
+    name: '莉珊',
+    alias: 'scout',
+    title: '灰燼入口門邊境斥候',
+    description:
+      '一名邊境斥候蹲在灰燼入口門旁，用燒黑的短刀撥開灰面足跡。' +
+      '她的披風邊緣被火星咬出小洞，卻仍整齊別著撤退路線針。',
+    roomId: 'ember_march_ash_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '灰面今天比昨天熱。別踩亮線，那不是路，是下面的火在找出口。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '心火缺口在哪？', nextId: 'breach' },
+          { text: '我會看灰面。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '焦炭路看腳印，煙溝看煙向，倒旗坡看旗布。旗子倒向熱風時，表示邊爐或亞龍醒了。',
+        options: [
+          { text: '心火缺口在哪？', nextId: 'breach' },
+          { text: '我先去焦炭路。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'breach',
+        text: '邊堡外殼東面。若龍印脊開始吹乾熱風，心火缺口亞龍已經在巡火線。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '灰燼會蓋住屍體，但蓋不住新腳印。走慢一點，活久一點。' },
+    ],
+    guardianHints: {
+      creature: '莉珊能提示灰路火星群、煙溝伏行者、焦旗掠兵與心火缺口亞龍的路線。',
+      treasure: '她說明燼玻碎片、灰線旗布與心火邊境印的用途。',
+      spirit: '她把餘燼邊境整理成入口、戰營、鍛台、邊堡與心火缺口的推進節奏。',
+    },
+  },
+
+  ember_march_cinder_apothecary: {
+    id: 'ember_march_cinder_apothecary',
+    name: '寇恩',
+    alias: 'apothecary',
+    title: '餘燼鍛台燒傷藥販',
+    description:
+      '一名藥販在餘燼鍛台旁支起耐火布棚，桌上擺著封蠟藥罐與渣鐵量匙。' +
+      '他每賣出一瓶藥，就把瓶口重新浸進冷灰裡測溫。',
+    roomId: 'ember_march_ember_forge',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'antidote',
+      'slag_iron_clinker',
+      'cinderbite_salve',
+      'emberglass_shard',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要藥、要熔塊、要能保住腳底的東西，我都有。要保證？那得問火山。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '鍛台為什麼還熱？', nextId: 'forge' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '大型藥水、解毒劑、渣鐵熔塊、燼咬藥膏、燼玻碎片。灰線旗布我不賣，那通常還連著麻煩。',
+        action: { type: 'shop', data: { shopType: 'ember_march_apothecary' } },
+        options: [
+          { text: '鍛台為什麼還熱？', nextId: 'forge' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'forge',
+        text: '邊爐熔衛還在執行戰時命令。牠把所有靠近鍛台的人都當成偷軍需的敵兵。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '我會避開爐口。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '藥膏薄薄一層就好。塗太厚，灰會黏住你。' },
+    ],
+    guardianHints: {
+      creature: '寇恩能提示玻灰蜥、熔裂燼蟲、渣甲巨像與邊爐熔衛。',
+      treasure: '他販售渣鐵熔塊、燼咬藥膏與燼玻碎片。',
+      spirit: '他讓餘燼鍛台成為火線補給與風險說明節點。',
+    },
+  },
+
+  ember_march_banner_marshal_echo: {
+    id: 'ember_march_banner_marshal_echo',
+    name: '奧瑞克',
+    alias: 'marshal',
+    title: '倒旗坡邊境元帥殘響',
+    description:
+      '一道邊境元帥的殘響站在倒旗坡斷旗前，盔甲內只有灰燼與微弱火光。' +
+      '他仍用軍禮回應每一次熱風，像還在等待撤退命令被承認。',
+    roomId: 'ember_march_fallen_banner',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '撤退不是潰敗。沒有把消息帶回去，才是潰敗。',
+        options: [
+          { text: '當年發生什麼？', nextId: 'history' },
+          { text: '心火邊境印是什麼？', nextId: 'seal' },
+          { text: '我會帶回紀錄。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'history',
+        text: '火山先裂，敵軍後到。邊堡封門太晚，鍛台又把火線餵給了龍印脊。',
+        options: [
+          { text: '心火邊境印是什麼？', nextId: 'seal' },
+          { text: '我去邊堡外殼。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'seal',
+        text: '那是火線的核心證物。拿到它，就能證明這裡不是單純失守，而是火山、軍令與龍印一起失控。',
+        options: [
+          { text: '當年發生什麼？', nextId: 'history' },
+          { text: '我會處理心火缺口。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若旗布重新燃起，不要敬禮，先找掩體。' },
+    ],
+    guardianHints: {
+      creature: '奧瑞克能提示焦旗掠兵、骨窯灰衛、邊爐熔衛與心火缺口亞龍。',
+      treasure: '他說明灰線旗布、渣鐵熔塊與心火邊境印的戰線意義。',
+      spirit: '他把餘燼邊境的災害從自然火山提升為軍事失控與撤退失敗的故事。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

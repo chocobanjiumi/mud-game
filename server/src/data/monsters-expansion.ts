@@ -7903,4 +7903,198 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '祭司是迷宮中央祭壇與活牆誓約的共同核心。',
     },
   },
+
+  ashroad_sparkling: {
+    id: 'ashroad_sparkling', name: '灰路火星群', alias: 'sparkswarm',
+    level: 22, hp: 760, mp: 260, str: 34, int: 72, dex: 58, vit: 48, luk: 16,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_bolt', 'quick_dash', 'blind'],
+    expReward: 980, goldReward: [260, 500],
+    drops: [
+      { itemId: 'emberglass_shard', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'cinderbite_salve', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '焦炭路與灰燼入口門上成群游動的小火星，遠看像被風吹起的灰塵。牠們會突然聚成灼亮火線，燒穿靴底並刺瞎沒有遮眼的旅人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '灰路火星群聚亮時會致盲，先離開灰面火線。',
+      treasure: '牠們熄滅後常留下燼玻碎片。',
+      spirit: '火星群是餘燼邊境仍未冷卻的表層呼吸。',
+    },
+  },
+
+  cinder_trench_stalker: {
+    id: 'cinder_trench_stalker', name: '煙溝伏行者', alias: 'trenchstalker',
+    level: 23, hp: 860, mp: 180, str: 62, int: 34, dex: 70, vit: 54, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'smoke_bomb', 'slash', 'quick_dash'],
+    expReward: 1080, goldReward: [285, 540],
+    drops: [
+      { itemId: 'ashline_banner_scrap', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'emberglass_shard', chance: 0.24, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '躲在煙溝與焦黑里程碑陰影下的邊境伏兵，披著被火山灰染白的破斗篷。牠們不是正規軍，而是被災後火線養成的掠食者。',
+    isBoss: false,
+    guardianHints: {
+      creature: '煙溝伏行者會用煙幕遮斷視線，煙溝內不要追單影。',
+      treasure: '牠們身上常纏著灰線旗布。',
+      spirit: '伏行者代表戰場殘民被火山灰吞沒後留下的惡意。',
+    },
+  },
+
+  glass_ash_lizard: {
+    id: 'glass_ash_lizard', name: '玻灰蜥', alias: 'ashlizard',
+    level: 24, hp: 920, mp: 220, str: 58, int: 48, dex: 52, vit: 68, luk: 12,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_bolt', 'poison_bite', 'stone_skin'],
+    expReward: 1180, goldReward: [310, 590],
+    drops: [
+      { itemId: 'emberglass_shard', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'slag_iron_clinker', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '玻璃灰原上低伏爬行的火成蜥蜴，背鱗像冷卻後重新裂開的黑玻璃。牠會把身體埋進灰裡，只露出一排反光脊刺等待獵物靠近。',
+    isBoss: false,
+    guardianHints: {
+      creature: '玻灰蜥會硬化鱗片，背脊反光時先等牠翻身。',
+      treasure: '牠的鱗片可剝成燼玻碎片。',
+      spirit: '玻灰蜥是火山灰與荒地生物融合出的穩定族群。',
+    },
+  },
+
+  ember_crack_worm: {
+    id: 'ember_crack_worm', name: '熔裂燼蟲', alias: 'emberworm',
+    level: 25, hp: 1080, mp: 120, str: 76, int: 24, dex: 28, vit: 92, luk: 10,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'stone_slam', 'charge'],
+    expReward: 1300, goldReward: [345, 650],
+    drops: [
+      { itemId: 'lava_fragment', chance: 0.48, minQty: 1, maxQty: 3 },
+      { itemId: 'slag_iron_clinker', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '熔裂縫和蟲道裡鑽出的粗大燼蟲，口器像燒紅的鐵鉗。牠們沿地下熱脈穿行，會在灰面隆起前一瞬間撞出地表。',
+    isBoss: false,
+    guardianHints: {
+      creature: '熔裂燼蟲衝撞前地面會鼓起，看到灰線隆起就散開。',
+      treasure: '牠們腹節裡常卡著渣鐵熔塊。',
+      spirit: '燼蟲是火山餘熱仍在地下移動的證據。',
+    },
+  },
+
+  burnt_banner_raider: {
+    id: 'burnt_banner_raider', name: '焦旗掠兵', alias: 'ashraider',
+    level: 26, hp: 980, mp: 160, str: 78, int: 30, dex: 56, vit: 72, luk: 16,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'charge', 'smoke_bomb'],
+    expReward: 1420, goldReward: [380, 720],
+    drops: [
+      { itemId: 'ashline_banner_scrap', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'cinderbite_salve', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '戰營殘址與倒旗坡間出沒的灰甲掠兵，肩上插著燒斷的軍旗。牠們熟悉舊補給線，會用假撤退路標把隊伍帶進火線。',
+    isBoss: false,
+    guardianHints: {
+      creature: '焦旗掠兵會煙幕後衝鋒，旗影倒向異常時多半是伏擊。',
+      treasure: '灰線旗布大多從牠們背旗上拆下。',
+      spirit: '掠兵是邊境戰線崩壞後殘存的人禍。',
+    },
+  },
+
+  bonekiln_ashguard: {
+    id: 'bonekiln_ashguard', name: '骨窯灰衛', alias: 'ashguard',
+    level: 28, hp: 1220, mp: 240, str: 82, int: 46, dex: 26, vit: 104, luk: 10,
+    element: 'fire',
+    skills: ['basic_attack', 'bone_strike', 'fire_bolt', 'stone_skin'],
+    expReward: 1680, goldReward: [450, 850],
+    drops: [
+      { itemId: 'slag_iron_clinker', chance: 0.46, minQty: 1, maxQty: 3 },
+      { itemId: 'ashline_banner_scrap', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '骨窯隘口裡由焦骨、渣鐵和灰泥堆成的守衛，胸腔仍有火星緩慢起落。牠們守著災後焚化坑，不讓任何人翻找戰死者遺物。',
+    isBoss: false,
+    guardianHints: {
+      creature: '骨窯灰衛硬化時很難擊穿，等火星降暗再集中攻擊。',
+      treasure: '牠胸甲常嵌著渣鐵熔塊。',
+      spirit: '灰衛把戰場殘骸誤認成仍需守護的軍庫。',
+    },
+  },
+
+  slagplate_colossus: {
+    id: 'slagplate_colossus', name: '渣甲巨像', alias: 'slagcolossus',
+    level: 30, hp: 1850, mp: 280, str: 104, int: 42, dex: 14, vit: 154, luk: 8,
+    element: 'fire',
+    skills: ['basic_attack', 'stone_slam', 'stone_skin', 'reflect_barrier', 'fire_breath'],
+    expReward: 2180, goldReward: [590, 1120],
+    drops: [
+      { itemId: 'slag_iron_clinker', chance: 0.74, minQty: 2, maxQty: 4 },
+      { itemId: 'emberglass_shard', chance: 0.3, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '渣鐵橋與邊堡外殼附近站起的熔渣巨像，外殼像多層燒壞甲板。牠每一步都會把灰面壓成赤亮裂紋，是邊境火線最明顯的重型威脅。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '渣甲巨像會反射與重砸，屏障亮起時先停手。',
+      treasure: '大量渣鐵熔塊可從牠破裂甲片取得。',
+      spirit: '巨像是邊堡與熔渣橋被火山重新塑形後的殘骸。',
+    },
+  },
+
+  border_forge_sentinel: {
+    id: 'border_forge_sentinel', name: '邊爐熔衛', alias: 'forgesentinel',
+    level: 31, hp: 1580, mp: 440, str: 86, int: 88, dex: 22, vit: 118, luk: 12,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_bolt', 'fire_breath', 'reflect_barrier', 'stone_slam'],
+    expReward: 2360, goldReward: [640, 1210],
+    drops: [
+      { itemId: 'slag_iron_clinker', chance: 0.6, minQty: 1, maxQty: 3 },
+      { itemId: 'cinderbite_salve', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '餘燼鍛台裡尚未停工的熔爐守衛，身體由鐵框、灰炭與半熔工具拼成。牠會把闖入者判定為偷取軍需的敵軍，並重新點燃整座鍛台。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '邊爐熔衛會連續噴火與反射，鍛台升溫時先拉開距離。',
+      treasure: '牠保管渣鐵熔塊與燼咬藥膏。',
+      spirit: '熔衛保留著邊境軍需系統失控後的最後指令。',
+    },
+  },
+
+  heartfire_breach_drake: {
+    id: 'heartfire_breach_drake', name: '心火缺口亞龍', alias: 'heartdrake',
+    level: 34, hp: 2550, mp: 620, str: 112, int: 104, dex: 42, vit: 144, luk: 24,
+    element: 'fire',
+    skills: ['basic_attack', 'fire_breath', 'meteor', 'reflect_barrier', 'charge', 'death_mark'],
+    expReward: 3200, goldReward: [880, 1660],
+    drops: [
+      { itemId: 'heartfire_border_seal', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'emberglass_shard', chance: 0.76, minQty: 2, maxQty: 5 },
+      { itemId: 'cinderbite_salve', chance: 0.54, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '盤踞心火缺口的赤黑亞龍，雙翼像被火山灰磨破的軍旗，胸口嵌著仍在跳動的邊境火印。牠不是純血龍，而是龍印脊熱流、邊堡戰火與火山餘燼共同養出的災厄。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '心火缺口亞龍會隕火、衝鋒與死亡印記，反射屏障期間不要硬打。',
+      treasure: '牠必定掉落心火邊境印，是餘燼邊境火線核心證物。',
+      spirit: '亞龍是火山與戰爭在邊境交會後誕生的活火線。',
+    },
+  },
 };

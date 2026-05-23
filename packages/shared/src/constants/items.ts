@@ -3509,6 +3509,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['thornmaze'],
   },
 
+  // ─── 餘燼邊境熔渣材料與邊境證物 (Lv 22-34) ───
+  emberglass_shard: {
+    id: 'emberglass_shard', name: '燼玻碎片', type: 'material',
+    description: '餘燼邊境玻璃灰原與熔裂縫裡凝成的黑紅玻片，邊緣仍有火星慢慢游動，可用於耐火護符與熔渣偵測。',
+    buyPrice: 1500, sellPrice: 750, stackable: true, maxStack: 99, levelReq: 22, rarity: 'rare',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['ember_march'],
+  },
+  ashline_banner_scrap: {
+    id: 'ashline_banner_scrap', name: '灰線旗布', type: 'material',
+    description: '倒旗坡與戰營殘址回收的焦黑軍旗殘布，布面仍能看見撤退路線與火山爆裂當晚的軍記標線。',
+    buyPrice: 1700, sellPrice: 850, stackable: true, maxStack: 99, levelReq: 24, rarity: 'rare',
+    sourceTags: ['drop', 'salvage'], zoneTags: ['ember_march'],
+  },
+  slag_iron_clinker: {
+    id: 'slag_iron_clinker', name: '渣鐵熔塊', type: 'material',
+    description: '渣鐵橋與餘燼鍛台剝落的粗重熔塊，敲開後能看到赤亮鐵紋，是修補邊境火線裝備的核心材料。',
+    buyPrice: 2100, sellPrice: 1050, stackable: true, maxStack: 99, levelReq: 26, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['ember_march'],
+  },
+  cinderbite_salve: {
+    id: 'cinderbite_salve', name: '燼咬藥膏', type: 'consumable',
+    description: '以焦泉礦殼、灰線草與冷卻熔渣調成的厚藥膏，能暫時舒緩火山灰灼傷，但塗抹時會像被火星咬住。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 20, levelReq: 28, rarity: 'epic',
+    useEffect: { type: 'heal_hp', value: 280 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['ember_march'],
+  },
+  heartfire_border_seal: {
+    id: 'heartfire_border_seal', name: '心火邊境印', type: 'quest',
+    description: '心火缺口深處凝出的赤黑印記，外圈像燒熔的邊境城牆，內圈則記錄火山灰、戰營與龍印脊共同形成的火線節點。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 34, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['ember_march'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
