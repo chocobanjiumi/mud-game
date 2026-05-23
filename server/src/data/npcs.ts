@@ -9843,6 +9843,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  sunspire_trial_archivist: {
+    id: 'sunspire_trial_archivist',
+    name: '伊萊恩',
+    alias: 'archivist',
+    title: '日耀試煉書記',
+    description: '一名白袍書記站在燃書庫外，手中冊頁沒有燒焦，反而亮得像薄金。',
+    roomId: 'sunspire_burning_archive',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '尖塔不獎賞盲信。日試蠟印記錄你是否通過試煉，日冠聖印記錄你是否理解試煉。',
+        options: [
+          { text: '我該收集什麼？', nextId: 'proof' },
+          { text: '日冠核心在哪？', nextId: 'crown' },
+          { text: '我會完成試煉。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'proof', text: '日鏡碎片、聖歌金箔、日試蠟印。它們會指出光線、禮拜與武力三條試煉是否失衡。', options: [{ text: '日冠核心在哪？', nextId: 'crown' }, { text: '我去找證物。', nextId: 'farewell' }] },
+      { id: 'crown', text: '塔頂前室之後。若你在戰神印記前只看見自己的影子，就還沒準備好。', options: [{ text: '我該收集什麼？', nextId: 'proof' }, { text: '我會先完成中層。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '別直視聚光鏡太久。尖塔會把你的遲疑照得很清楚。' },
+    ],
+    guardianHints: {
+      creature: '伊萊恩提示聚光鏡守、日火唱詩者、戰神印守與日冠顯聖者。',
+      treasure: '她說明日鏡碎片、聖歌金箔、日試蠟印與日冠聖印。',
+      spirit: '書記把日耀尖塔的試煉證物與塔頂目標連接起來。',
+    },
+  },
+
+  sunspire_sunfire_keeper: {
+    id: 'sunspire_sunfire_keeper',
+    name: '索拉',
+    alias: 'keeper',
+    title: '日火補給守',
+    description: '一名守燈人坐在日火唱詩席旁，手套上沾著金色蠟屑與燈油香。',
+    roomId: 'sunspire_sunfire_choir',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'sunfire_vial', 'hymn_gold_leaf', 'solar_trial_wax'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '日火可以照路，也可以把你照成灰。要補給就快些，唱詩者下一段高音快到了。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '灰影邊緣怎麼回事？', nextId: 'shadow' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、日火小瓶、聖歌金箔、日試蠟印。日冠聖印不賣，能賣的就不叫終點。', action: { type: 'shop', data: { shopType: 'sunspire_sunfire_supply' } }, options: [{ text: '灰影邊緣怎麼回事？', nextId: 'shadow' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'shadow', text: '追光的人若只想被照亮，就會在邊緣留下影子。灰影悔光者就是那種影子。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會留意。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '日火小瓶別在鏡室裡亂開，反光會咬人。' },
+    ],
+    guardianHints: {
+      creature: '索拉提示日火唱詩者、灰影悔光者與熾哨翼長。',
+      treasure: '她販售日火小瓶、聖歌金箔與日試蠟印。',
+      spirit: '守燈人讓日耀尖塔中段有穩定補給與暗影反噬說明。',
+    },
+  },
+
+  sunspire_crown_witness: {
+    id: 'sunspire_crown_witness',
+    name: '阿瑞斯特',
+    alias: 'witness',
+    title: '日冠核心見證者',
+    description: '一名見證者站在日冠核心門前，披風內側反射出像正午一樣乾淨的白光。',
+    roomId: 'sunspire_crown_of_day',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '日冠顯聖者不問你信什麼，只看你在反射屏障升起時能不能停手。',
+        options: [
+          { text: '顯聖者怎麼打？', nextId: 'avatar' },
+          { text: '日冠聖印代表什麼？', nextId: 'sigil' },
+          { text: '我會控制攻勢。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'avatar', text: '隕石前有長光，反射前有鏡環。貪攻的人會被自己的火焰審判。', options: [{ text: '日冠聖印代表什麼？', nextId: 'sigil' }, { text: '我會看鏡環。', nextId: 'farewell' }] },
+      { id: 'sigil', text: '它證明你到過正午光下，且沒有被自己的影子拖回去。', options: [{ text: '顯聖者怎麼打？', nextId: 'avatar' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '正午沒有陰影，但人會自己帶來陰影。' },
+    ],
+    guardianHints: {
+      creature: '阿瑞斯特提示日冠顯聖者的隕石、反射與神聖護盾。',
+      treasure: '他說明日冠聖印是尖塔終點證物。',
+      spirit: '見證者把日耀尖塔終點與自我節制主題收束起來。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

@@ -9570,4 +9570,191 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '守將把外門軍陣、魂井徵召與死都入城資格收束成終點。',
     },
   },
+
+  sunspire_white_stone_acolyte: {
+    id: 'sunspire_white_stone_acolyte', name: '白石日侍', alias: 'acolyte',
+    level: 45, hp: 2600, mp: 720, str: 76, int: 146, dex: 68, vit: 142, luk: 22,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'heal', 'sacred_shield'],
+    expReward: 7600, goldReward: [1980, 3740],
+    drops: [
+      { itemId: 'hymn_gold_leaf', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'sunfire_vial', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description: '白石塔門與日光階間維持禮儀的侍者，額前日紋會在施法時發亮。牠把每個登塔者都視為尚未通過審判的朝聖者。',
+    isBoss: false,
+    guardianHints: {
+      creature: '白石日侍會治療與聖盾，先打斷支援。',
+      treasure: '聖歌金箔常藏在牠的禮袍邊緣。',
+      spirit: '日侍建立日耀尖塔入口的神聖試煉感。',
+    },
+  },
+
+  sunspire_flameglass_knight: {
+    id: 'sunspire_flameglass_knight', name: '焰玻階騎士', alias: 'glassknight',
+    level: 46, hp: 3100, mp: 420, str: 152, int: 72, dex: 78, vit: 194, luk: 18,
+    element: 'fire',
+    skills: ['basic_attack', 'slash', 'charge', 'fire_breath'],
+    expReward: 8200, goldReward: [2140, 4040],
+    drops: [
+      { itemId: 'solar_trial_wax', chance: 0.32, minQty: 1, maxQty: 1 },
+      { itemId: 'sunfire_vial', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '焰玻步道上守衛窄橋的騎士，鎧甲像半透明紅玻璃。牠每次衝鋒都會在地面留下燃燒的足印。',
+    isBoss: false,
+    guardianHints: {
+      creature: '焰玻階騎士會衝鋒與火息，別站在步道直線上。',
+      treasure: '日試蠟印常封在牠的肩甲內側。',
+      spirit: '焰玻騎士讓尖塔火線試煉有近戰壓迫。',
+    },
+  },
+
+  sunspire_mirror_lens_keeper: {
+    id: 'sunspire_mirror_lens_keeper', name: '聚光鏡守', alias: 'lenskeeper',
+    level: 48, hp: 2840, mp: 860, str: 68, int: 168, dex: 84, vit: 146, luk: 24,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'blind', 'reflect_barrier'],
+    expReward: 9000, goldReward: [2360, 4460],
+    drops: [
+      { itemId: 'sunspire_lens_shard', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'solar_trial_wax', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '鏡石臺與聚光鏡室之間校準日光的守衛，面罩由多層鏡片組成。牠會把攻擊折回施術者眼前。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '聚光鏡守會致盲與反射屏障，亮成鏡面時停手。',
+      treasure: '日鏡碎片主要從鏡守身上取得。',
+      spirit: '鏡守讓尖塔的光線機關成為戰鬥機制。',
+    },
+  },
+
+  sunspire_sunfire_cantor: {
+    id: 'sunspire_sunfire_cantor', name: '日火唱詩者', alias: 'cantor',
+    level: 49, hp: 2700, mp: 980, str: 58, int: 176, dex: 72, vit: 138, luk: 26,
+    element: 'fire',
+    skills: ['basic_attack', 'fireball', 'holy_light', 'heal', 'meteor'],
+    expReward: 9600, goldReward: [2520, 4760],
+    drops: [
+      { itemId: 'sunfire_vial', chance: 0.56, minQty: 1, maxQty: 2 },
+      { itemId: 'hymn_gold_leaf', chance: 0.4, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'healer',
+    description: '聖歌廊與日火唱詩席間領唱的火焰祭者，歌聲會讓燈焰沿牆面奔跑。牠唱到高音時，塔內陰影會被瞬間燒空。',
+    isBoss: false,
+    guardianHints: {
+      creature: '日火唱詩者會治療與隕石，詠唱時集中火力。',
+      treasure: '日火小瓶常由唱詩者保管。',
+      spirit: '唱詩者把尖塔的神聖與火焰主題結合。',
+    },
+  },
+
+  sunspire_solar_armory_construct: {
+    id: 'sunspire_solar_armory_construct', name: '太陽武庫造兵', alias: 'armoryconstruct',
+    level: 51, hp: 3900, mp: 620, str: 176, int: 98, dex: 46, vit: 244, luk: 14,
+    element: 'light',
+    skills: ['basic_attack', 'stone_slam', 'sacred_shield', 'reflect_barrier'],
+    expReward: 10800, goldReward: [2820, 5320],
+    drops: [
+      { itemId: 'sunspire_lens_shard', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'solar_trial_wax', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '太陽武庫裡由白石與金屬聖徽組成的造兵，胸口嵌著小型日輪。牠不追逐，只會把闖入者推回試煉線。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '太陽武庫造兵會聖盾與反射，防禦期先整隊。',
+      treasure: '日鏡碎片常嵌在牠的胸口日輪。',
+      spirit: '造兵讓武庫區成為耐久與反射測試。',
+    },
+  },
+
+  sunspire_ashen_shadow_penitent: {
+    id: 'sunspire_ashen_shadow_penitent', name: '灰影悔光者', alias: 'penitent',
+    level: 52, hp: 3000, mp: 760, str: 96, int: 142, dex: 90, vit: 162, luk: 20,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'blind', 'life_drain', 'holy_light'],
+    expReward: 11200, goldReward: [2920, 5520],
+    drops: [
+      { itemId: 'hymn_gold_leaf', chance: 0.32, minQty: 1, maxQty: 2 },
+      { itemId: 'sunfire_vial', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '灰影邊緣徘徊的失敗朝聖者，半身被日火燒白，半身仍拖著影子。牠會用聖光救自己，再用暗影懲罰別人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '灰影悔光者會致盲、吸血與聖光，先壓低續戰。',
+      treasure: '牠身上常有被燒皺的聖歌金箔。',
+      spirit: '悔光者補足日耀尖塔被暗影反噬的一面。',
+    },
+  },
+
+  sunspire_seraph_watch_commander: {
+    id: 'sunspire_seraph_watch_commander', name: '熾哨翼長', alias: 'wingcommander',
+    level: 54, hp: 3600, mp: 980, str: 132, int: 162, dex: 126, vit: 188, luk: 28,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'fireball', 'quick_dash', 'divine_shield'],
+    expReward: 12400, goldReward: [3240, 6120],
+    drops: [
+      { itemId: 'solar_trial_wax', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'sunfire_vial', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '熾天使哨臺上指揮翼影巡邏的翼長，羽翼像燃燒的白刃。牠會從露臺高處突進，把挑戰者逼回塔內。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '熾哨翼長速度快且會神聖護盾，護盾期先防守。',
+      treasure: '日試蠟印常掛在牠的翼甲上。',
+      spirit: '翼長讓塔頂前的空中巡邏具有明確指揮者。',
+    },
+  },
+
+  sunspire_wargod_sigil_keeper: {
+    id: 'sunspire_wargod_sigil_keeper', name: '戰神印守', alias: 'sigilkeeper',
+    level: 56, hp: 4700, mp: 760, str: 210, int: 112, dex: 72, vit: 276, luk: 24,
+    element: 'fire',
+    skills: ['basic_attack', 'slash', 'charge', 'fire_breath', 'sacred_shield'],
+    expReward: 14000, goldReward: [3660, 6920],
+    drops: [
+      { itemId: 'solar_trial_wax', chance: 0.66, minQty: 2, maxQty: 3 },
+      { itemId: 'sunspire_lens_shard', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '戰神印記前駐守的重甲守衛，盾面刻著正午決鬥的圖樣。牠不宣判勝負，只宣判誰還能站著登上日冠核心。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '戰神印守會衝鋒、火息與聖盾，看到盾面發光就散開。',
+      treasure: '大量日試蠟印被壓在牠的盾帶下。',
+      spirit: '印守將尖塔試煉推向最後的武力門檻。',
+    },
+  },
+
+  sunspire_day_crown_avatar: {
+    id: 'sunspire_day_crown_avatar', name: '日冠顯聖者', alias: 'daycrown',
+    level: 58, hp: 7200, mp: 1500, str: 170, int: 230, dex: 92, vit: 320, luk: 36,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'meteor', 'reflect_barrier', 'divine_shield', 'fireball'],
+    expReward: 16800, goldReward: [4400, 8320],
+    drops: [
+      { itemId: 'day_crown_sigil', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'sunspire_lens_shard', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'sunfire_vial', chance: 0.58, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description: '日冠核心中由正午光芒凝成的顯聖者，身後日輪像睜開的審判之眼。牠不是神明本身，而是尖塔用來衡量追求神聖力量者的最後答案。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 3000,
+    guardianHints: {
+      creature: '日冠顯聖者會隕石、神聖護盾與反射屏障，屏障期間停手整隊。',
+      treasure: '牠必定掉落日冠聖印。',
+      spirit: '顯聖者把白石塔門、試煉、戰神印記與日冠核心收束為尖塔終點。',
+    },
+  },
 };

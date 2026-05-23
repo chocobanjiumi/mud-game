@@ -3836,6 +3836,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['necropolis_gate'],
   },
 
+  // ─── 日耀尖塔日火聖物 (Lv 45-58) ───
+  sunspire_lens_shard: {
+    id: 'sunspire_lens_shard', name: '日鏡碎片', type: 'material',
+    description: '聚光鏡室與鏡石臺掉落的白金鏡片，能把微弱火光折成刺眼日芒。尖塔修士用它測量塔內光線是否失衡。',
+    buyPrice: 5200, sellPrice: 2600, stackable: true, maxStack: 99, levelReq: 45, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['sunspire'],
+  },
+  hymn_gold_leaf: {
+    id: 'hymn_gold_leaf', name: '聖歌金箔', type: 'material',
+    description: '聖歌廊牆面剝落的薄金箔，表面仍殘留唱詩聲震出的細紋。它能修補被暗影污染的聖像。',
+    buyPrice: 4800, sellPrice: 2400, stackable: true, maxStack: 99, levelReq: 46, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['sunspire'],
+  },
+  solar_trial_wax: {
+    id: 'solar_trial_wax', name: '日試蠟印', type: 'quest',
+    description: '黎明試煉室與餘燼試煉室使用的金紅蠟印，印面刻著尖塔階梯。集齊後能證明冒險者通過了中層試煉。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 48, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['sunspire'],
+  },
+  sunfire_vial: {
+    id: 'sunfire_vial', name: '日火小瓶', type: 'consumable',
+    description: '裝著日火唱詩席燈焰的小瓶，打開後會釋出短暫暖光並恢復體力。瓶口若照到暗影會發出細小爆鳴。',
+    buyPrice: 5600, sellPrice: 2800, stackable: true, maxStack: 20, levelReq: 45, rarity: 'epic',
+    useEffect: { type: 'heal_hp', value: 620 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['sunspire'],
+  },
+  day_crown_sigil: {
+    id: 'day_crown_sigil', name: '日冠聖印', type: 'quest',
+    description: '日冠核心守護者敗退後留下的耀白聖印，外圈像正午太陽，內圈像審判之眼。它證明尖塔頂端試煉已被完成。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 58, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['sunspire'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
