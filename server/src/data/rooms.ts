@@ -2422,6 +2422,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'creek_mossling_slime', maxCount: 2, respawnSeconds: 30 },
     ],
     mapSymbol: '[~]',
     mapX: 3,
@@ -2451,6 +2452,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
     ],
+    npcs: ['farmer'],
     mapSymbol: '[田]',
     mapX: 3,
     mapY: 1,
@@ -2476,7 +2478,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'village_farmland', description: '回到農田' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'orchard_sharpbeak_crow', maxCount: 2, respawnSeconds: 35 },
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
     ],
     mapSymbol: '[果]',
@@ -2623,6 +2625,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
       { monsterId: 'skeleton_soldier', maxCount: 2, respawnSeconds: 45 },
     ],
+    npcs: ['starter_ext_watch_patrol'],
     mapSymbol: '[塔]',
     mapX: 4,
     mapY: 3,
@@ -2667,7 +2670,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'starter_ext_herb_garden', description: '藥草香從南側飄來' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'orchard_sharpbeak_crow', maxCount: 2, respawnSeconds: 35 },
       { monsterId: 'field_rat', maxCount: 1, respawnSeconds: 35 },
     ],
     mapSymbol: '[蜂]',
@@ -2690,6 +2693,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
     ],
+    npcs: ['starter_ext_field_medic'],
     mapSymbol: '[草]',
     mapX: 5,
     mapY: 2,
@@ -2710,6 +2714,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
+      { monsterId: 'creek_mossling_slime', maxCount: 2, respawnSeconds: 30 },
     ],
     mapSymbol: '[池]',
     mapX: 2,
@@ -2774,10 +2779,11 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'watchtower', description: '窄路繞向瞭望台' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 40 },
+      { monsterId: 'orchard_sharpbeak_crow', maxCount: 2, respawnSeconds: 40 },
     ],
     groundItems: [
       { itemId: 'small_mp_potion', description: '神龕供盤旁放著一瓶微光藥水' },
+      { itemId: 'willow_prayer_tag', description: '柳根旁落著一片寫有名字的祈願木牌' },
     ],
     mapSymbol: '[祠]',
     mapX: 5,
@@ -2798,6 +2804,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 30 },
+      { monsterId: 'hollow_stump_hoarder', maxCount: 1, respawnSeconds: 600 },
     ],
     groundItems: [
       { itemId: 'small_hp_potion', description: '陶罐旁藏著一瓶未開封的紅色藥水' },
@@ -2865,7 +2872,8 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 4, respawnSeconds: 25 },
-      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 35 },
+      { monsterId: 'orchard_sharpbeak_crow', maxCount: 1, respawnSeconds: 35 },
+      { monsterId: 'hollow_stump_hoarder', maxCount: 1, respawnSeconds: 600 },
     ],
     groundItems: [
       { itemId: 'rare_fossil', description: '樹洞深處塞著一塊像骨片的奇特化石' },

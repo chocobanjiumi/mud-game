@@ -1714,6 +1714,127 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  starter_ext_field_medic: {
+    id: 'starter_ext_field_medic',
+    name: '蕾娜',
+    alias: 'medic',
+    title: '村醫學徒',
+    description:
+      '一名年輕學徒蹲在藥草圃旁整理陶罐，袖口沾著新鮮泥土與綠色藥膏。她把採回的溪蘆、苔膠和蜂蠟分成小包，方便第一次出村的冒險者立刻看懂用途。',
+    roomId: 'starter_ext_herb_garden',
+    type: 'merchant',
+    shopItems: [
+      'village_herb_salve',
+      'herb',
+      'antidote',
+      'small_hp_potion',
+      'hillside_moss_jelly',
+      'creek_reed_splint',
+      'orchard_waxcomb',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '別踩到藥畦。這裡的草藥夠治擦傷，但不夠治魯莽。你要補藥膏，還是想知道哪些材料值得帶回？',
+        options: [
+          { text: '我想買補給。', nextId: 'shop' },
+          { text: '外圍有哪些材料？', nextId: 'materials' },
+          { text: '哪裡比較危險？', nextId: 'danger' },
+          { text: '我先看看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text:
+          '村醫藥膏、藥草、解毒劑和小瓶生命藥水都有。若你帶回山坡苔膠、溪蘆夾板或果園蜂蠟，我也會收。',
+        action: { type: 'shop', data: { shopType: 'starter_ext_medic' } },
+        options: [
+          { text: '外圍有哪些材料？', nextId: 'materials' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '溪苔史萊姆會留下苔膠，溪邊蘆葦能做夾板。果園和蜂巢樹叢常有蜂蠟，但利喙鴉會把亮東西拖到巢裡，找木牌時記得抬頭。',
+        options: [
+          { text: '哪裡比較危險？', nextId: 'danger' },
+          { text: '我看看補給。', nextId: 'shop' },
+        ],
+      },
+      {
+        id: 'danger',
+        text:
+          '空心樹樁最近有一隻屯糧鼠，會偷藥包和繩索。它不算真正的 Boss，但對新手來說已經夠麻煩。',
+        options: [
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '回村前把傷口洗乾淨。泥土留在裡面，比鼠咬還麻煩。' },
+    ],
+    guardianHints: {
+      creature: '蕾娜能從咬痕分辨田鼠、屯糧鼠與利喙鴉造成的傷口。',
+      treasure: '她的陶罐標籤說明山坡苔膠、溪蘆夾板與果園蜂蠟的初階配方。',
+      spirit: '她把新手村外圍從單純練級區連回可學習的採集與補給循環。',
+    },
+  },
+
+  starter_ext_watch_patrol: {
+    id: 'starter_ext_watch_patrol',
+    name: '托瑪',
+    alias: 'watchman',
+    title: '外圍巡夜人',
+    description:
+      '一名年長巡夜人靠在瞭望台石牆邊，斗篷下掛著短哨、舊鑰匙和一卷巡邏繩。他的目光反覆掃過柳樹神龕、盜匪足跡與墓地鐵門。',
+    roomId: 'watchtower',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '第一次走到這裡？記住三件事：烏鴉不只吃果子，盜匪不只踩一條路，墓地的骨頭不會自己安分。',
+        options: [
+          { text: '我該先查哪裡？', nextId: 'route' },
+          { text: '柳樹神龕怎麼了？', nextId: 'shrine' },
+          { text: '空心樹樁危險嗎？', nextId: 'stump' },
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '從練習空地看盜匪足跡，再去柳樹神龕找祈願牌。若祈願牌被鴉巢或屯糧鼠拖走，就順著空心樹樁查到墓地外牆。',
+        options: [
+          { text: '柳樹神龕怎麼了？', nextId: 'shrine' },
+          { text: '空心樹樁危險嗎？', nextId: 'stump' },
+        ],
+      },
+      {
+        id: 'shrine',
+        text:
+          '有孩子在那裡掛了願望，後來木牌少了一片。找到柳木祈願牌，就能知道盜匪是從哪邊偷看村路。',
+        options: [
+          { text: '我去找木牌。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'stump',
+        text:
+          '空心樹樁不是大墓地，但根道很窄。屯糧鼠會把斷橋粗繩和藥包拖進去，別讓牠把你的退路也拖走。',
+        options: [
+          { text: '了解。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '看到塔旗忽然逆風擺，就退回村口。那表示墓地方向又有東西醒了。' },
+    ],
+    guardianHints: {
+      creature: '托瑪能提示利喙鴉、空樹屯糧鼠、骷髏兵與骷髏將軍的路線層級。',
+      treasure: '他的巡邏繩標出柳樹神龕、空心樹樁與墓地入口之間的安全撤退點。',
+      spirit: '他讓新手村外圍的訓練、盜匪、神龕與墓地線索形成可追蹤的任務鏈。',
+    },
+  },
+
   wandering_bard: {
     id: 'wandering_bard',
     name: '流浪吟遊詩人',

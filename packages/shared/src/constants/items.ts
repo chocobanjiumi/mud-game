@@ -2159,6 +2159,37 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 60, sellPrice: 30, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
     sourceTags: ['shop', 'crafting'], zoneTags: ['starter_village'],
   },
+  hillside_moss_jelly: {
+    id: 'hillside_moss_jelly', name: '山坡苔膠', type: 'material',
+    description: '新手村後山史萊姆體內凝出的淡綠膠質，混著苔蘚和露水氣味。村醫會用它調和外傷藥，也能作為初階煉金練習材料。',
+    buyPrice: 90, sellPrice: 45, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['starter_village_ext'],
+  },
+  creek_reed_splint: {
+    id: 'creek_reed_splint', name: '溪蘆夾板', type: 'material',
+    description: '小溪邊採下的筆直蘆葦，曬乾後韌性很好。村醫學徒常把它削成臨時夾板，也用來固定剛包好的草藥繃帶。',
+    buyPrice: 110, sellPrice: 55, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['starter_village_ext'],
+  },
+  orchard_waxcomb: {
+    id: 'orchard_waxcomb', name: '果園蜂蠟', type: 'material',
+    description: '蜂巢樹叢掉落的小塊金色蜂蠟，黏著花粉、落果汁液和細碎羽毛。修補弓弦、封存藥膏或製作新手護符都很實用。',
+    buyPrice: 140, sellPrice: 70, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['starter_village_ext'],
+  },
+  village_herb_salve: {
+    id: 'village_herb_salve', name: '村醫藥膏', type: 'consumable',
+    description: '用山坡苔膠、溪蘆碎屑和蜂蠟調成的綠色藥膏，塗上時有清涼刺感。適合初次出村的小傷，但無法處理嚴重毒素。',
+    buyPrice: 180, sellPrice: 90, stackable: true, maxStack: 20, levelReq: 1, rarity: 'common',
+    useEffect: { type: 'heal_hp', value: 80 },
+    sourceTags: ['shop', 'crafting'], zoneTags: ['starter_village_ext'],
+  },
+  willow_prayer_tag: {
+    id: 'willow_prayer_tag', name: '柳木祈願牌', type: 'quest',
+    description: '柳樹神龕上掉落的小木牌，背面寫著失蹤孩子的名字和一行歪斜路線。它能把盜匪足跡、瞭望台與墓地入口的調查串起來。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 1, rarity: 'common',
+    sourceTags: ['quest', 'hidden_cache'], zoneTags: ['starter_village_ext'],
+  },
   plains_sunflower_seed: {
     id: 'plains_sunflower_seed', name: '平原葵花籽', type: 'material',
     description: '翠綠平原向日葵田收下的飽滿種子，帶著淡淡青草香。旅人會把它磨成油，也會拿來餵馬與野鳥。',
@@ -2182,7 +2213,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     id: 'broken_bridge_rope', name: '斷橋粗繩', type: 'material',
     description: '斷木橋附近撿回的粗麻繩，沾著溪水與泥沙。修補橋面、綁貨車或製作簡易陷阱都能派上用場。',
     buyPrice: 260, sellPrice: 130, stackable: true, maxStack: 99, levelReq: 4, rarity: 'common',
-    sourceTags: ['drop', 'gather'], zoneTags: ['plains'],
+    sourceTags: ['drop', 'gather'], zoneTags: ['plains', 'starter_village_ext'],
   },
   shadowmoss_clump: {
     id: 'shadowmoss_clump', name: '暗苔團', type: 'material',
