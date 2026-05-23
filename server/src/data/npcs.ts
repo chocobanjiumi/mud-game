@@ -677,6 +677,125 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  starter_village_training_coach: {
+    id: 'starter_village_training_coach',
+    name: '赫伯',
+    alias: 'coach',
+    title: '訓練場教官',
+    description: '一名肩膀寬厚的退役護衛站在訓練場木樁旁，腰間掛著一串用來記錄練習進度的木籌。',
+    roomId: 'training_ground',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '木劍不會殺人，但壞習慣會。先把站姿、距離和撤退練好，再去跟村外的東西講道理。',
+        options: [
+          { text: '我想做基礎練習。', nextId: 'practice' },
+          { text: '村外第一步該注意什麼？', nextId: 'outside' },
+          { text: '稍後再練。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'practice', text: '拿一枚訓練場木籌，打三輪木樁，最後練一次後撤。記住，能活著退回村口的人才有下一次冒險。', options: [{ text: '村外第一步該注意什麼？', nextId: 'outside' }, { text: '我去練。', nextId: 'farewell' }] },
+      { id: 'outside', text: '史萊姆弱，但會讓人放鬆。打完先看血量、再看背包，不要站在路中間數戰利品。', options: [{ text: '我想做基礎練習。', nextId: 'practice' }, { text: '記住了。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '把木劍放回架上。真正的武器店在西邊，不在地上。' },
+    ],
+    guardianHints: {
+      creature: '赫伯提醒新手史萊姆與小蝙蝠只是訓練節奏，不該被改成高壓戰鬥。',
+      treasure: '他會發放訓練場木籌作為基礎練習記錄。',
+      spirit: '訓練場教官讓新手村的教學功能更完整。',
+    },
+  },
+
+  starter_village_innkeeper: {
+    id: 'starter_village_innkeeper',
+    name: '梅塔',
+    alias: 'innkeeper',
+    title: '旅人小屋掌櫃',
+    description: '一名笑容溫和的掌櫃站在旅人小屋爐火旁，櫃檯上堆著便當包、乾毛巾與給新人的路線小紙條。',
+    roomId: 'starter_village_inn',
+    type: 'merchant',
+    shopItems: ['village_lunch_bundle', 'small_hp_potion', 'small_mp_potion'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '第一次出村前先吃點東西。空肚子打史萊姆，回來時看起來會比史萊姆還軟。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '旅人小屋能做什麼？', nextId: 'inn' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '便當包、小型生命藥水、小型資源藥水。出村不用買太多，買到背包塞滿反而走不遠。', action: { type: 'shop', data: { shopType: 'starter_village_inn' } }, options: [{ text: '旅人小屋能做什麼？', nextId: 'inn' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'inn', text: '這裡讓新人整理背包、聽路線、暖暖手。真正的危險通常不是怪物，是忘了自己還剩多少藥。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會整理。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '回來時記得把泥擦在門外。門內只收故事，不收泥巴。' },
+    ],
+    guardianHints: {
+      creature: '梅塔提示新手不要在村外停留太久。',
+      treasure: '她販售村製便當包與低階藥水。',
+      spirit: '旅人小屋掌櫃提供新手村休整與補給感。',
+    },
+  },
+
+  starter_village_chapel_keeper: {
+    id: 'starter_village_chapel_keeper',
+    name: '艾琳',
+    alias: 'keeper',
+    title: '晨光禮拜堂看守',
+    description: '一名年輕看守在禮拜堂窗下整理祝福線，陽光穿過彩窗落在她手中的白棉線上。',
+    roomId: 'starter_village_chapel',
+    type: 'merchant',
+    shopItems: ['chapel_blessing_thread', 'herb', 'antidote'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '禮拜堂不保證你不會受傷，只提醒你受傷前先準備好繃帶、草藥和回來的路。',
+        options: [
+          { text: '我看看祝福物。', nextId: 'shop' },
+          { text: '村子的結界還在嗎？', nextId: 'ward' },
+          { text: '願晨光照路。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '晨光祝福線、藥草、解毒劑。祝福線只是記號，真正救你的還是判斷。', action: { type: 'shop', data: { shopType: 'starter_village_chapel' } }, options: [{ text: '村子的結界還在嗎？', nextId: 'ward' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'ward', text: '結界還在，所以強大的魔物進不來。但結界不會替你走路，也不會替你檢查背包。', options: [{ text: '我看看祝福物。', nextId: 'shop' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若你迷路，先找鐘聲。鐘聲會比驕傲更早帶你回來。' },
+    ],
+    guardianHints: {
+      creature: '艾琳補充新手村結界讓村內只保留低壓事件怪。',
+      treasure: '她販售晨光祝福線、藥草與解毒劑。',
+      spirit: '禮拜堂看守補足新手村的安全感與世界觀。',
+    },
+  },
+
+  starter_village_repair_tinker: {
+    id: 'starter_village_repair_tinker',
+    name: '波里',
+    alias: 'tinker',
+    title: '修補工棚匠人',
+    description: '一名小個子匠人在修補工棚裡敲打鍋釘和鞋扣，工作臺旁掛滿舊靴帶與磨亮的小工具。',
+    roomId: 'starter_village_crafting_shed',
+    type: 'merchant',
+    shopItems: ['repaired_boot_lace', 'practice_yard_chit', 'wooden_sword', 'cloth_armor'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '新裝備不一定救命，修好的舊裝備常常可以。你要買靴帶，還是想聽我抱怨新人怎麼把鞋穿壞？',
+        options: [
+          { text: '我看看修補品。', nextId: 'shop' },
+          { text: '修補有什麼用？', nextId: 'repair' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '修補靴帶、訓練場木籌、木劍、布甲。別笑木劍，第一把不會弄丟的武器才是好武器。', action: { type: 'shop', data: { shopType: 'starter_village_repair' } }, options: [{ text: '修補有什麼用？', nextId: 'repair' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'repair', text: '現在只是靴帶和木劍，以後就是盔甲扣、弩弦和保命的最後一顆鉚釘。從小東西開始學會檢查。', options: [{ text: '我看看修補品。', nextId: 'shop' }, { text: '我會檢查。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '走路別拖腳，靴底磨偏了我一眼就看得出來。' },
+    ],
+    guardianHints: {
+      creature: '波里提示裝備準備比硬闖更重要。',
+      treasure: '他販售修補靴帶、木劍與布甲等新手用品。',
+      spirit: '修補匠讓新手村的工棚具備實際服務功能。',
+    },
+  },
+
   // ─── 湖畔城鎮 NPC（轉職導師） ──────────────────────────
 
   sword_instructor: {

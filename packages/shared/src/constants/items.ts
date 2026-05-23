@@ -2128,6 +2128,37 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '從古代遺跡中挖掘出的神秘碎片，表面刻著已經失傳的古代文字。碎片中似乎封印著遠古的力量，靠近時偶爾會聽到微弱的低語聲。', buyPrice: 300, sellPrice: 150,
     stackable: true, maxStack: 99, levelReq: 20,
   },
+  starter_welcome_token: {
+    id: 'starter_welcome_token', name: '新手村歡迎木牌', type: 'quest',
+    description: '村長辦公桌旁發放的小木牌，上面刻著新手村橡樹與第一條出村道路。它不是貴重物品，卻能提醒新冒險者回到起點整理補給。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 1, rarity: 'common',
+    sourceTags: ['quest', 'town_service'], zoneTags: ['starter_village'],
+  },
+  practice_yard_chit: {
+    id: 'practice_yard_chit', name: '訓練場木籌', type: 'quest',
+    description: '訓練場教官用來記錄基礎練習的木籌，邊角被木劍敲得發亮。完成基礎動作後可拿去公會換取小額指引。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 1, rarity: 'common',
+    sourceTags: ['quest', 'training'], zoneTags: ['starter_village'],
+  },
+  chapel_blessing_thread: {
+    id: 'chapel_blessing_thread', name: '晨光祝福線', type: 'material',
+    description: '晨光禮拜堂編給旅人的細棉線，浸過草藥與清水，常被繫在包袋或劍柄上作為平安記號。',
+    buyPrice: 80, sellPrice: 40, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['shop', 'town_service'], zoneTags: ['starter_village'],
+  },
+  village_lunch_bundle: {
+    id: 'village_lunch_bundle', name: '村製便當包', type: 'consumable',
+    description: '旅人小屋準備的簡單便當，裡面有硬麵包、起司與一小瓶溫湯。吃下後能稍微恢復體力，適合第一次出村前準備。',
+    buyPrice: 120, sellPrice: 60, stackable: true, maxStack: 20, levelReq: 1, rarity: 'common',
+    useEffect: { type: 'heal_hp', value: 60 },
+    sourceTags: ['shop', 'town_service'], zoneTags: ['starter_village'],
+  },
+  repaired_boot_lace: {
+    id: 'repaired_boot_lace', name: '修補靴帶', type: 'material',
+    description: '修補工棚用剩皮條剪成的靴帶，便宜但可靠。村口守衛常提醒新人，鞋帶鬆了比史萊姆更容易害人摔倒。',
+    buyPrice: 60, sellPrice: 30, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['shop', 'crafting'], zoneTags: ['starter_village'],
+  },
   kingdom_supply_crate: {
     id: 'kingdom_supply_crate', name: '王國補給箱', type: 'material',
     description: '封有王國軍需印記的沉重補給箱，內含糧秣、繃帶與前線修繕零件。箱角的蠟封會記錄運送路線，攜帶時必須依王國交通規則交付。',
