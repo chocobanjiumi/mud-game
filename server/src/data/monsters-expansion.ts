@@ -6484,6 +6484,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     expReward: 170, goldReward: [45, 88],
     drops: [
       { itemId: 'worn_caravan_seal', chance: 0.2, minQty: 1, maxQty: 1 },
+      { itemId: 'broken_bridge_rope', chance: 0.18, minQty: 1, maxQty: 1 },
       { itemId: 'sunroad_ration', chance: 0.12, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',

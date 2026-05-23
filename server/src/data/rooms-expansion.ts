@@ -77,7 +77,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
       { monsterId: 'small_bat', maxCount: 2, respawnSeconds: 35 },
-      { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'dark_crow', maxCount: 1, respawnSeconds: 50 },
     ],
     mapSymbol: '[M]',
     mapX: 4,
@@ -284,7 +284,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'crossroads', description: '沿泥路回到十字路口' },
     ],
     monsters: [
-      { monsterId: 'road_dust_stray', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
       { monsterId: 'prairie_boar', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[=]',

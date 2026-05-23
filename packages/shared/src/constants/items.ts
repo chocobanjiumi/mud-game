@@ -2159,6 +2159,31 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 60, sellPrice: 30, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
     sourceTags: ['shop', 'crafting'], zoneTags: ['starter_village'],
   },
+  plains_sunflower_seed: {
+    id: 'plains_sunflower_seed', name: '平原葵花籽', type: 'material',
+    description: '翠綠平原向日葵田收下的飽滿種子，帶著淡淡青草香。旅人會把它磨成油，也會拿來餵馬與野鳥。',
+    buyPrice: 160, sellPrice: 80, stackable: true, maxStack: 99, levelReq: 3, rarity: 'common',
+    sourceTags: ['drop', 'shop', 'gather'], zoneTags: ['plains'],
+  },
+  plains_wolf_track_tag: {
+    id: 'plains_wolf_track_tag', name: '狼跡木牌', type: 'quest',
+    description: '老獵人用來標記狼群出沒方向的小木牌，背面刻著爪印深度與風向。收集後能判斷平原狼群是否靠近村路。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 5, rarity: 'common',
+    sourceTags: ['drop', 'quest'], zoneTags: ['plains'],
+  },
+  meadow_healing_salad: {
+    id: 'meadow_healing_salad', name: '草坡療傷菜包', type: 'consumable',
+    description: '旅行商人用藥草斜坡的新鮮葉菜包成的簡單補給，味道清苦但能快速止血並恢復少量體力。',
+    buyPrice: 420, sellPrice: 210, stackable: true, maxStack: 20, levelReq: 3, rarity: 'common',
+    useEffect: { type: 'heal_hp', value: 120 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['plains'],
+  },
+  broken_bridge_rope: {
+    id: 'broken_bridge_rope', name: '斷橋粗繩', type: 'material',
+    description: '斷木橋附近撿回的粗麻繩，沾著溪水與泥沙。修補橋面、綁貨車或製作簡易陷阱都能派上用場。',
+    buyPrice: 260, sellPrice: 130, stackable: true, maxStack: 99, levelReq: 4, rarity: 'common',
+    sourceTags: ['drop', 'gather'], zoneTags: ['plains'],
+  },
   kingdom_supply_crate: {
     id: 'kingdom_supply_crate', name: '王國補給箱', type: 'material',
     description: '封有王國軍需印記的沉重補給箱，內含糧秣、繃帶與前線修繕零件。箱角的蠟封會記錄運送路線，攜帶時必須依王國交通規則交付。',

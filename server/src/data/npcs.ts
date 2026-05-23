@@ -1357,6 +1357,7 @@ export const NPCS: Record<string, NpcDef> = {
     shopItems: [
       'short_bow', 'long_bow', 'antidote',
       'small_hp_potion', 'medium_hp_potion',
+      'plains_wolf_track_tag',
     ],
     dialogue: [
       {
@@ -1594,6 +1595,7 @@ export const NPCS: Record<string, NpcDef> = {
       'iron_sword', 'leather_armor', 'leather_boots',
       'small_hp_potion', 'medium_hp_potion',
       'small_mp_potion', 'antidote', 'return_scroll',
+      'plains_sunflower_seed', 'meadow_healing_salad',
     ],
     dialogue: [
       {

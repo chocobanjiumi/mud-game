@@ -86,6 +86,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'rabbit_fur', chance: 0.5, minQty: 1, maxQty: 1 },
       { itemId: 'rabbit_meat', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'plains_sunflower_seed', chance: 0.18, minQty: 1, maxQty: 2 },
     ],
     aiType: 'passive',
     description: '看似可愛的野兔，但被逼急了也會用強壯的後腿踢人。它的速度非常快，想抓住可不容易。',
@@ -118,6 +119,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'wolf_pelt', chance: 0.4, minQty: 1, maxQty: 1 },
       { itemId: 'wolf_fang', chance: 0.25, minQty: 1, maxQty: 2 },
+      { itemId: 'plains_wolf_track_tag', chance: 0.18, minQty: 1, maxQty: 1 },
       { itemId: 'small_hp_potion', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
@@ -150,6 +152,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'bandit_dagger', chance: 0.1, minQty: 1, maxQty: 1 },
       { itemId: 'stolen_pouch', chance: 0.3, minQty: 1, maxQty: 1 },
+      { itemId: 'broken_bridge_rope', chance: 0.18, minQty: 1, maxQty: 1 },
       { itemId: 'medium_hp_potion', chance: 0.1, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
@@ -511,6 +514,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [2, 5],
     drops: [
       { itemId: 'herb', chance: 0.3, minQty: 1, maxQty: 1 },
+      { itemId: 'plains_sunflower_seed', chance: 0.22, minQty: 1, maxQty: 2 },
       { itemId: 'small_hp_potion', chance: 0.08, minQty: 1, maxQty: 1 },
     ],
     aiType: 'passive',
@@ -1432,6 +1436,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [10, 25],
     drops: [
       { itemId: 'herb', chance: 0.3, minQty: 1, maxQty: 3 },
+      { itemId: 'meadow_healing_salad', chance: 0.14, minQty: 1, maxQty: 1 },
       { itemId: 'leather_gloves', chance: 0.06, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
