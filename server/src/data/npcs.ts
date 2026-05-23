@@ -8317,6 +8317,150 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  sapphire_lake_claim_surveyor: {
+    id: 'sapphire_lake_claim_surveyor',
+    name: '艾芙',
+    alias: 'surveyor',
+    title: '入口採區測脈師',
+    description:
+      '一名測脈師蹲在入口採區水邊，用細篩淘洗藍泥礦砂。' +
+      '她的木牌上畫著礦脈小徑、鏡淺灘與藍心聖窟的水線。',
+    roomId: 'sapphire_lake_entry_claim',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '湖水越清，越要小心。真正的礦脈通常藏在你看不清的水下。',
+        options: [
+          { text: '我該去哪採？', nextId: 'route' },
+          { text: '藍心礦核是什麼？', nextId: 'core' },
+          { text: '我會慢慢採。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '淺層採藍泥礦砂，玻魚灣取鱗，藍葦床採花。深脈窗口和藍心聖窟要有隊伍再下去。',
+        options: [
+          { text: '藍心礦核是什麼？', nextId: 'core' },
+          { text: '我先採淺層。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '湖底礦脈還活著的證明。拿到它之前，先學會分辨礦光和水靈的眼睛。',
+        options: [
+          { text: '我該去哪採？', nextId: 'route' },
+          { text: '我會注意水靈。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '不要一次挖太深。湖會記得每一下礦鎬。' },
+    ],
+    guardianHints: {
+      creature: '艾芙能提示藍泥蟾、脈晶蜥、藍脈晶魔像與藍心礦靈的採集風險。',
+      treasure: '她說明藍泥礦砂、玻魚鱗片與藍心礦核的用途。',
+      spirit: '她把藍寶湖整理成淺層採集、湖岸草藥、深層礦脈三段節奏。',
+    },
+  },
+
+  sapphire_lake_lotus_vendor: {
+    id: 'sapphire_lake_lotus_vendor',
+    name: '荷珊',
+    alias: 'vendor',
+    title: '藍葦床採集藥販',
+    description:
+      '一名採集藥販坐在藍葦床旁的小木筏上，藥籃裡分層放著藍蓮花瓣與湖息小瓶。' +
+      '她用玻魚鱗片貼在瓶身上，方便夜裡辨認藥色。',
+    roomId: 'sapphire_lake_blue_reed_bed',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'sapphire_lotus_petal',
+      'lakebreath_phial',
+      'blue_silt_ore',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要藥還是要花？別把藍蓮連根拔，水靈會把你的靴子也留下。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '水靈怎麼避？', nextId: 'spirit' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、藍蓮花瓣、湖息小瓶、藍泥礦砂。玻魚鱗片我不穩定收，太容易碎。',
+        action: { type: 'shop', data: { shopType: 'sapphire_lake_vendor' } },
+        options: [
+          { text: '水靈怎麼避？', nextId: 'spirit' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'spirit',
+        text: '採一瓣留兩瓣，挖一袋補一杓泥。水靈討厭貪心的人，不討厭笨手笨腳的人。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '我會留花。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '湖息小瓶別一口灌完，慢慢喝，才聽得到水下的聲音。' },
+    ],
+    guardianHints: {
+      creature: '荷珊能提示藍葦水靈、藍泥蟾、鏡淺湖蛇與靜泉守靈。',
+      treasure: '她販售藍蓮花瓣、湖息小瓶與藍泥礦砂。',
+      spirit: '她讓藍寶湖採集區有可回訪的補給與採集倫理節點。',
+    },
+  },
+
+  sapphire_lake_spirit_listener: {
+    id: 'sapphire_lake_spirit_listener',
+    name: '尤娜',
+    alias: 'listener',
+    title: '水靈鏡聽者',
+    description:
+      '一名聽者坐在水靈鏡前，雙手浸在湖水裡，像在替看不見的人梳理倒影。' +
+      '她說湖底礦脈會說話，只是聲音慢得像石頭。',
+    roomId: 'sapphire_lake_spirit_mirror',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '如果倒影比你晚眨眼，就代表湖底有東西正在看你。',
+        options: [
+          { text: '藍心聖窟危險嗎？', nextId: 'sanctum' },
+          { text: '水精靈是真的嗎？', nextId: 'spirit' },
+          { text: '我會看倒影。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sanctum',
+        text: '危險，但不是惡意。藍心礦靈只阻止過度開採；若你只是證明礦脈還活著，牠會給你答案。',
+        options: [
+          { text: '水精靈是真的嗎？', nextId: 'spirit' },
+          { text: '我會節制。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'spirit',
+        text: '真的。牠們不在故事裡，在水草的方向、礦光的節奏和你少拿的那一瓣花裡。',
+        options: [
+          { text: '藍心聖窟危險嗎？', nextId: 'sanctum' },
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '把湖當倉庫的人會迷路，把湖當活物的人能回來。' },
+    ],
+    guardianHints: {
+      creature: '尤娜能提示玻魚群、靜泉守靈與藍心礦靈的湖心徵兆。',
+      treasure: '她說明湖息小瓶與藍心礦核代表的水脈狀態。',
+      spirit: '她把藍寶湖從單純資源點連到水精靈傳說與採集節制。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

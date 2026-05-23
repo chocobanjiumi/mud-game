@@ -3574,6 +3574,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['reef_of_bones'],
   },
 
+  // ─── 藍寶湖採集材料與湖心證物 (Lv 15-25) ───
+  blue_silt_ore: {
+    id: 'blue_silt_ore', name: '藍泥礦砂', type: 'material',
+    description: '藍寶湖淺灘與礦脈小徑沉積的藍灰礦砂，洗淨後會露出細小亮點，是低階寶石加工與湖底測脈的基礎材料。',
+    buyPrice: 700, sellPrice: 350, stackable: true, maxStack: 99, levelReq: 15, rarity: 'uncommon',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['sapphire_lake'],
+  },
+  glassfish_scale: {
+    id: 'glassfish_scale', name: '玻魚鱗片', type: 'material',
+    description: '玻魚灣與鏡淺灘出現的透明魚鱗，轉動時會折出藍光，可作為水下照明粉與折射護符材料。',
+    buyPrice: 950, sellPrice: 475, stackable: true, maxStack: 99, levelReq: 17, rarity: 'uncommon',
+    sourceTags: ['drop'], zoneTags: ['sapphire_lake'],
+  },
+  sapphire_lotus_petal: {
+    id: 'sapphire_lotus_petal', name: '藍蓮花瓣', type: 'material',
+    description: '藍葦床與睡蓮藏點採得的厚實花瓣，葉脈像細小藍寶礦線，能穩定水性藥劑與採集者的呼吸節奏。',
+    buyPrice: 1200, sellPrice: 600, stackable: true, maxStack: 99, levelReq: 19, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['sapphire_lake'],
+  },
+  lakebreath_phial: {
+    id: 'lakebreath_phial', name: '湖息小瓶', type: 'consumable',
+    description: '以藍蓮花瓣與湖底冷泉封存的淡藍藥液，飲下後胸口像被清水洗過，能在採集後快速恢復體力。',
+    buyPrice: 1600, sellPrice: 800, stackable: true, maxStack: 20, levelReq: 20, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 220 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['sapphire_lake'],
+  },
+  blueheart_lode_core: {
+    id: 'blueheart_lode_core', name: '藍心礦核', type: 'quest',
+    description: '藍心聖窟深處凝出的湖底礦核，內部像有微小水精靈在沉睡，是證明藍寶湖礦脈仍有生命反應的核心證物。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 25, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['sapphire_lake'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

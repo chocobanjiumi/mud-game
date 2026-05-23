@@ -8337,4 +8337,177 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '骨龍是巨獸骨礁與沉船詛咒融合出的最終守門者。',
     },
   },
+
+  blue_silt_toad: {
+    id: 'blue_silt_toad', name: '藍泥蟾', alias: 'bluetoad',
+    level: 15, hp: 520, mp: 120, str: 36, int: 28, dex: 22, vit: 44, luk: 10,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_spit', 'tongue_lash'],
+    expReward: 620, goldReward: [150, 290],
+    drops: [
+      { itemId: 'blue_silt_ore', chance: 0.56, minQty: 1, maxQty: 3 },
+      { itemId: 'sapphire_lotus_petal', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '入口採區與藍葦床常見的小型湖蟾，背上沾滿藍灰礦泥。牠受驚時會吐出帶麻痺感的黏液，讓採集者一腳踩進軟泥。',
+    isBoss: false,
+    guardianHints: {
+      creature: '藍泥蟾會噴毒與舌擊，採泥時先清理水邊響動。',
+      treasure: '牠背上的泥殼常混有藍泥礦砂。',
+      spirit: '藍泥蟾是藍寶湖淺層礦脈最常見的生態指標。',
+    },
+  },
+
+  glassfish_swarm: {
+    id: 'glassfish_swarm', name: '玻魚群', alias: 'glassfish',
+    level: 16, hp: 460, mp: 180, str: 24, int: 52, dex: 78, vit: 28, luk: 18,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'blind', 'quick_dash'],
+    expReward: 700, goldReward: [170, 330],
+    drops: [
+      { itemId: 'glassfish_scale', chance: 0.72, minQty: 1, maxQty: 4 },
+      { itemId: 'blue_silt_ore', chance: 0.18, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '鏡淺灘與玻魚灣中閃爍游動的透明魚群，鱗片能折射湖底藍光。牠們會突然集體轉向，讓水面亮成刺眼鏡片。',
+    isBoss: false,
+    guardianHints: {
+      creature: '玻魚群會致盲，水面忽然發亮時先背光。',
+      treasure: '玻魚鱗片是湖區照明與折射材料。',
+      spirit: '魚群把湖底礦光帶到水面，是安全採集的早期訊號。',
+    },
+  },
+
+  sapphire_reed_sprite: {
+    id: 'sapphire_reed_sprite', name: '藍葦水靈', alias: 'reedsprite',
+    level: 18, hp: 620, mp: 260, str: 26, int: 68, dex: 50, vit: 42, luk: 20,
+    element: 'nature',
+    skills: ['basic_attack', 'water_spear', 'nature_drain', 'root_bind'],
+    expReward: 820, goldReward: [200, 390],
+    drops: [
+      { itemId: 'sapphire_lotus_petal', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'lakebreath_phial', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '藍葦床與睡蓮藏點間浮動的小水靈，髮絲像細長藍葦。牠們會保護湖畔草藥，將貪採者纏在水草根裡。',
+    isBoss: false,
+    guardianHints: {
+      creature: '藍葦水靈會根縛與吸取生命，採花前先看水草方向。',
+      treasure: '藍蓮花瓣多由牠們照料的花叢取得。',
+      spirit: '水靈維持湖岸植物與礦光之間的平衡。',
+    },
+  },
+
+  vein_crystal_lizard: {
+    id: 'vein_crystal_lizard', name: '脈晶蜥', alias: 'veinlizard',
+    level: 20, hp: 760, mp: 160, str: 56, int: 42, dex: 52, vit: 64, luk: 12,
+    element: 'ice',
+    skills: ['basic_attack', 'poison_bite', 'ice_armor', 'quick_dash'],
+    expReward: 980, goldReward: [240, 460],
+    drops: [
+      { itemId: 'blue_silt_ore', chance: 0.5, minQty: 1, maxQty: 3 },
+      { itemId: 'glassfish_scale', chance: 0.24, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '湖底礦脈小徑與藍寶礦脈口附近出沒的晶鱗蜥蜴，背部結著藍色細晶。牠們會沿礦線奔跑，咬斷採集者的礦袋繩。',
+    isBoss: false,
+    guardianHints: {
+      creature: '脈晶蜥速度快，冰甲亮起時先等牠衝過頭。',
+      treasure: '牠背鱗縫中常有藍泥礦砂。',
+      spirit: '脈晶蜥是湖底礦脈開始外露的生物反應。',
+    },
+  },
+
+  mirror_shallows_serpent: {
+    id: 'mirror_shallows_serpent', name: '鏡淺湖蛇', alias: 'mirrorserpent',
+    level: 21, hp: 880, mp: 220, str: 64, int: 54, dex: 58, vit: 66, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'poison_bite', 'frost_nova'],
+    expReward: 1100, goldReward: [275, 520],
+    drops: [
+      { itemId: 'glassfish_scale', chance: 0.42, minQty: 1, maxQty: 3 },
+      { itemId: 'lakebreath_phial', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '水袋凹潭與鏡淺灘中的長身湖蛇，鱗片會映出錯位倒影。牠們常在採集者低頭看水色時從倒影另一側咬出。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鏡淺湖蛇會冰爆與毒咬，不要只盯著水面倒影。',
+      treasure: '牠的鱗片可與玻魚鱗片混製折射粉。',
+      spirit: '湖蛇讓藍寶湖的清澈水面保有掠食壓力。',
+    },
+  },
+
+  blue_lode_golem: {
+    id: 'blue_lode_golem', name: '藍脈晶魔像', alias: 'bluegolem',
+    level: 23, hp: 1320, mp: 260, str: 84, int: 58, dex: 18, vit: 124, luk: 8,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'ice_armor', 'reflect_barrier'],
+    expReward: 1500, goldReward: [380, 720],
+    drops: [
+      { itemId: 'blue_silt_ore', chance: 0.74, minQty: 2, maxQty: 5 },
+      { itemId: 'blueheart_lode_core', chance: 0.08, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '遺物淺坑、藍寶礦脈與深脈窗口中站起的晶石魔像，胸口有一道如湖水般流動的藍脈。牠們會封住過度開採的礦點。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '藍脈晶魔像會反射與冰甲，採礦隊要等屏障消退再打。',
+      treasure: '牠身上能取得大量藍泥礦砂。',
+      spirit: '魔像是湖底礦脈對採集壓力的防衛反應。',
+    },
+  },
+
+  calmwater_spring_guardian: {
+    id: 'calmwater_spring_guardian', name: '靜泉守靈', alias: 'springguardian',
+    level: 24, hp: 1180, mp: 440, str: 52, int: 92, dex: 42, vit: 88, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'water_spear', 'holy_light', 'nature_drain', 'root_bind'],
+    expReward: 1680, goldReward: [425, 810],
+    drops: [
+      { itemId: 'sapphire_lotus_petal', chance: 0.5, minQty: 1, maxQty: 3 },
+      { itemId: 'lakebreath_phial', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '礦泉與靜水洞中出現的湖心守靈，身形像披著水紗的採集者。牠會治癒受損水草，也會把貪婪礦鎬拖進泉眼。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '靜泉守靈會治療與根縛，先處理支援能力。',
+      treasure: '湖息小瓶常由牠守護的泉眼封存。',
+      spirit: '守靈代表藍寶湖不是死礦，而是活的水脈。',
+    },
+  },
+
+  blueheart_lode_spirit: {
+    id: 'blueheart_lode_spirit', name: '藍心礦靈', alias: 'blueheart',
+    level: 25, hp: 1900, mp: 620, str: 70, int: 112, dex: 38, vit: 128, luk: 24,
+    element: 'ice',
+    skills: ['basic_attack', 'ice_storm', 'water_spear', 'reflect_barrier', 'holy_light'],
+    expReward: 2300, goldReward: [620, 1180],
+    drops: [
+      { itemId: 'blueheart_lode_core', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'blue_silt_ore', chance: 0.8, minQty: 3, maxQty: 6 },
+      { itemId: 'lakebreath_phial', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '藍心聖窟深處由湖底礦脈與水精靈傳說凝成的礦靈，核心像一顆在水中跳動的藍寶石。牠會用冰光封住過度採掘的隊伍。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1500,
+    guardianHints: {
+      creature: '藍心礦靈會冰風暴、反射與治療，屏障期間先穩住血量。',
+      treasure: '牠必定掉落藍心礦核，是湖底礦脈仍有生命反應的證物。',
+      spirit: '礦靈是藍寶湖採集線的核心守護者。',
+    },
+  },
 };
