@@ -28,7 +28,6 @@ import {
   isFaithId,
 } from '@game/shared';
 import type { Character, ClassId, FaithId, MonsterDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
-import type { RoomEntity } from '@game/shared/types/protocol';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -70,6 +69,7 @@ import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
 import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventorySlotLoad } from './inventory-capacity.js';
 import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
+import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
@@ -5932,22 +5932,6 @@ function normalizeCommandTarget(target: string): string {
   return target.trim().toLowerCase();
 }
 
-function buildOrdinalLabels<T>(items: T[], keyOf: (item: T) => string): string[] {
-  const totals = new Map<string, number>();
-  for (const item of items) {
-    const key = keyOf(item);
-    totals.set(key, (totals.get(key) ?? 0) + 1);
-  }
-
-  const seen = new Map<string, number>();
-  return items.map(item => {
-    const key = keyOf(item);
-    const next = (seen.get(key) ?? 0) + 1;
-    seen.set(key, next);
-    return (totals.get(key) ?? 0) > 1 ? `${key}#${next}` : key;
-  });
-}
-
 function parseOrdinalTarget(target: string): { name: string; ordinal?: number } {
   const trimmed = target.trim();
   const hashMatch = trimmed.match(/^(.+?)#(\d+)$/);
@@ -5978,113 +5962,6 @@ function resolveCombatTargetId(combatId: string, target: string): string | undef
   );
 
   return parsed.ordinal ? matches[parsed.ordinal - 1]?.id : matches[0]?.id;
-}
-
-function buildRoomEntities(input: {
-  char: Character;
-  room: RoomDef;
-  npcs: { id: string; name: string; alias: string; title: string; type: string }[];
-  players: { id: string; name: string; classId: string; level: number }[];
-  monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number }[];
-  corpses: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean }[];
-  gatheringNodes: { id: string; name: string; skill: string; levelMin: number }[];
-  travelNodes: { id: string; name: string; kind: string; unlocked: boolean }[];
-  groundItems: GroundItem[];
-}): RoomEntity[] {
-  const npcLabels = buildOrdinalLabels(input.npcs, npc => npc.name);
-  const itemLabels = buildOrdinalLabels(input.groundItems, item => ITEM_DEFS[item.itemId]?.name ?? item.itemId);
-
-  return [
-    ...input.room.exits.map(exit => ({
-      id: `exit:${exit.direction}`,
-      type: 'exit' as const,
-      label: directionChinese(exit.direction),
-      subtitle: exit.locked ? '上鎖' : (exit.description ?? exit.targetRoomId),
-      actions: [{
-        label: '前往',
-        command: `go ${exit.direction}`,
-        tone: 'primary' as const,
-        disabled: Boolean(exit.locked),
-        reason: exit.locked ? '出口上鎖' : undefined,
-      }],
-    })),
-    ...input.npcs.map((npc, index) => ({
-      id: npc.id,
-      type: 'npc' as const,
-      label: npcLabels[index],
-      subtitle: `${npc.alias} · ${npc.title}`,
-      actions: [
-        { label: '查看', command: `look ${npc.id}` },
-        { label: '對話', command: `talk ${npc.id}`, tone: 'primary' as const },
-        ...(npc.type === 'merchant' ? [{ label: '交易', command: `shop ${npc.id}` }] : []),
-      ],
-    })),
-    ...input.monsters.map(monster => ({
-      id: monster.id,
-      type: 'monster' as const,
-      label: monster.label ?? monster.name,
-      subtitle: `${monster.alias} · Lv.${monster.level}`,
-      hp: monster.hp,
-      maxHp: monster.maxHp,
-      actions: [
-        { label: '查看', command: `look ${monster.id}` },
-        { label: '攻擊', command: `attack ${monster.id}`, tone: 'danger' as const },
-      ],
-    })),
-    ...input.corpses.map(corpse => ({
-      id: corpse.id,
-      type: 'corpse' as const,
-      label: `${corpse.label ?? corpse.monsterName} 屍體`,
-      subtitle: corpse.empty ? '已空' : corpse.protected ? '保護中' : '可搜刮',
-      actions: [{
-        label: '搜刮',
-        command: `loot ${corpse.id}`,
-        tone: 'primary' as const,
-        disabled: corpse.empty || corpse.protected,
-        reason: corpse.empty ? '已被搜刮一空' : corpse.protected ? '仍受擊殺隊伍保護' : undefined,
-      }],
-    })),
-    ...input.gatheringNodes.map(node => ({
-      id: node.id,
-      type: 'gathering' as const,
-      label: node.name,
-      subtitle: `${node.skill} Lv.${node.levelMin}`,
-      actions: [{ label: '採集', command: `gather ${node.id}`, tone: 'primary' as const }],
-    })),
-    ...input.travelNodes.map(node => ({
-      id: node.id,
-      type: 'travel' as const,
-      label: node.name,
-      subtitle: node.unlocked ? '可旅行' : '可啟用',
-      actions: [{
-        label: node.unlocked ? '旅行' : '啟用',
-        command: node.unlocked ? `travel ${node.id}` : 'activate portal',
-        tone: 'primary' as const,
-      }],
-    })),
-    ...input.groundItems.map((item, index) => ({
-      id: item.itemId,
-      type: 'item' as const,
-      label: itemLabels[index],
-      subtitle: item.description,
-      actions: [
-        { label: '查看', command: `inspect ${item.itemId}` },
-        { label: '拾取', command: `take ${item.itemId}`, tone: 'primary' as const },
-      ],
-    })),
-    ...input.players.map(player => ({
-      id: player.id,
-      type: 'player' as const,
-      label: player.name,
-      subtitle: `Lv.${player.level} ${player.classId}`,
-      actions: [
-        { label: '查看', command: `look ${player.name}` },
-        { label: '組隊', command: `party invite ${player.name}` },
-        { label: '決鬥', command: `duel ${player.name}`, tone: 'danger' as const },
-        { label: '交易', command: `trade ${player.name}` },
-      ],
-    })),
-  ];
 }
 
 function findGroundItem(roomId: string, target: string): GroundItem | undefined {
