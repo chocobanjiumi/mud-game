@@ -2626,6 +2626,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['sunken_catacombs', 'quest', 'monster_drop'], zoneTags: ['sunken_catacombs'],
   },
+  stormcharged_grass: {
+    id: 'stormcharged_grass', name: '蓄雷草', type: 'material',
+    description: '雷鳴草原暴雨後仍帶著微弱電光的長草，草莖會順著下一次雷暴方向彎曲。游牧者用它編成避雷繩與風向標。',
+    buyPrice: 0, sellPrice: 44,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['thundersteppe', 'monster_drop', 'gathering'], zoneTags: ['thundersteppe'],
+  },
+  thunder_eagle_plume: {
+    id: 'thunder_eagle_plume', name: '雷鷹電羽', type: 'material',
+    description: '雷鷹巢峰掉落的藍白羽毛，羽軸仍存著細小電弧。可用來製作抗風箭羽、避雷符與偵查信物。',
+    buyPrice: 0, sellPrice: 56,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['thundersteppe', 'monster_drop', 'gathering'], zoneTags: ['thundersteppe'],
+  },
+  fulgurite_shard: {
+    id: 'fulgurite_shard', name: '雷熔玻片', type: 'material',
+    description: '風暴玻岩與世界王火坑邊緣採得的黑藍玻片，由雷擊瞬間熔化草土凝成。內部封著細小氣泡與焦草紋。',
+    buyPrice: 0, sellPrice: 62,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['thundersteppe', 'monster_drop', 'hidden_cache'], zoneTags: ['thundersteppe'],
+  },
+  stormhoof_plate: {
+    id: 'stormhoof_plate', name: '雷蹄甲片', type: 'material',
+    description: '雷蹄渡口附近巨獸蹄甲剝落的硬片，邊緣帶著被電流磨圓的裂痕。可加固靴底、盾面與坐騎護具。',
+    buyPrice: 0, sellPrice: 52,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['thundersteppe', 'monster_drop'], zoneTags: ['thundersteppe'],
+  },
+  nomad_storm_charm: {
+    id: 'nomad_storm_charm', name: '游牧避雷符', type: 'quest',
+    description: '游牧營地與風祭小祠使用的皮繩護符，綁著雷鷹電羽與蓄雷草。它能證明隊伍獲得部族允許深入風眼。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['thundersteppe', 'quest', 'service'], zoneTags: ['thundersteppe'],
+  },
+  dragonstorm_core_spark: {
+    id: 'dragonstorm_core_spark', name: '龍雷核火', type: 'quest',
+    description: '世界王火坑雷核邊緣迸出的藍白火星，被封在玻片裡仍會按心跳明滅。它是雷鳴草原最深風暴異常的核心證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['thundersteppe', 'quest', 'monster_drop'], zoneTags: ['thundersteppe'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

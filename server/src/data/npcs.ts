@@ -4917,6 +4917,200 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她讓沉沒墓窟不只是一座災難，也是一份仍能被讀懂的警告。',
     },
   },
+
+  thundersteppe_nomad_guide: {
+    id: 'thundersteppe_nomad_guide',
+    name: '塔蘭',
+    alias: 'guide',
+    title: '雷原游牧嚮導',
+    description:
+      '一名披著濕皮披肩的游牧嚮導站在雷原入口銅鈴下，腰間掛著骨哨、風向石與避雷繩。' +
+      '他說話很短，卻會在每次雷鳴後重新判斷天空。',
+    roomId: 'thundersteppe_rolling_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '進草原前先聽三次雷。第一聲看風，第二聲看獸，第三聲看你身上有多少金屬。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '雷獸在哪？', nextId: 'beasts' },
+          { text: '風眼能進嗎？', nextId: 'eye' },
+          { text: '我會聽雷。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先到游牧營地，再看天火台地和雷鼓石圈。若要進龍雷風眼，先拿到避雷符，否則雷牆會把你當成釘子。',
+        options: [
+          { text: '雷獸在哪？', nextId: 'beasts' },
+          { text: '風眼能進嗎？', nextId: 'eye' },
+        ],
+      },
+      {
+        id: 'beasts',
+        text:
+          '雷蹄巨豬走低地，風暴狼群走雨影，暴羽雷鷹走高柱。看到草浪反折時，不要站在路中間。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '我會避開蹄線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'eye',
+        text:
+          '能進，但不是靠膽子。要懂鼓聲、渡口電流和玻岩反光，龍雷化身只放懂規矩的人靠近。',
+        options: [
+          { text: '雷獸在哪？', nextId: 'beasts' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '若頭髮豎起，不要抬頭看天，先蹲下放低武器。',
+      },
+    ],
+    guardianHints: {
+      creature: '塔蘭能從草浪與雷聲判斷雷草疾行獸、雷蹄巨豬與風暴狼群的路線。',
+      treasure: '他的風向石標出雷原入口、游牧營地與龍雷風眼的安全節奏。',
+      spirit: '他把草原上的危險轉譯成旅人能遵守的規矩。',
+    },
+  },
+
+  thundersteppe_storm_provisioner: {
+    id: 'thundersteppe_storm_provisioner',
+    name: '蘇拉',
+    alias: 'provisioner',
+    title: '風暴補給商',
+    description:
+      '一名補給商在游牧營地火塘旁整理防水皮袋，袋中分著蓄雷草、雷鷹電羽、抗電繩扣與藥瓶。' +
+      '她把所有金屬器具都用皮革包住，避免交易時被雷火找上。',
+    roomId: 'thundersteppe_nomad_camp',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'stormcharged_grass',
+      'thunder_eagle_plume',
+      'stormhoof_plate',
+      'nomad_storm_charm',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '補給不只藥水。雷鳴草原需要避雷符、乾燥繩、能看風的草，還有知道什麼時候不該出發的人。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '避雷符怎麼用？', nextId: 'charm' },
+          { text: '哪些材料重要？', nextId: 'materials' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、蓄雷草、雷鷹電羽、雷蹄甲片和游牧避雷符都有。要去風眼，別空手。',
+        action: { type: 'shop', data: { shopType: 'thundersteppe_supply' } },
+        options: [
+          { text: '避雷符怎麼用？', nextId: 'charm' },
+          { text: '哪些材料重要？', nextId: 'materials' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'charm',
+        text:
+          '避雷符不是護身符，是通行證。它表示你願意照部族規矩進風眼，不亂敲鼓、不亂拔羽、不亂追獸。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會守規矩。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '蓄雷草看風，電羽看高空，雷熔玻片看落雷，雷蹄甲片看獸群。龍雷核火別賣，那是要交回來的證據。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '草原不怕你慢，只怕你在雷聲裡逞快。',
+      },
+    ],
+    guardianHints: {
+      creature: '蘇拉熟悉暴羽雷鷹、雷蹄獸母與引雷喚雷者需要避開的徵兆。',
+      treasure: '她的補給袋中有蓄雷草、雷鷹電羽、雷蹄甲片與避雷符。',
+      spirit: '她讓游牧營地成為風暴中的實用庇護點。',
+    },
+  },
+
+  thundersteppe_drumspeaker: {
+    id: 'thundersteppe_drumspeaker',
+    name: '奧魯',
+    alias: 'drumspeaker',
+    title: '雷鼓祭語者',
+    description:
+      '一名祭語者坐在雷鼓石圈邊緣，手掌貼著中空巨石，像在聽裡面的雨水回答。' +
+      '他的項鍊串著骨槌、玻片與一小段被雷火燒黑的皮鼓繩。',
+    roomId: 'thundersteppe_drum_circle',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '鼓聲不是音樂，是和雷暴談條件。敲錯一拍，風眼會以為你在挑戰它。',
+        options: [
+          { text: '正確節奏是什麼？', nextId: 'rhythm' },
+          { text: '龍雷化身是什麼？', nextId: 'avatar' },
+          { text: '火坑要怎麼進？', nextId: 'crater' },
+          { text: '我先聽。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rhythm',
+        text:
+          '先聽引雷柱林，再聽雷蹄渡口，最後才敲石圈。鼓點要留空，讓雷聲自己補上。',
+        options: [
+          { text: '龍雷化身是什麼？', nextId: 'avatar' },
+          { text: '火坑要怎麼進？', nextId: 'crater' },
+        ],
+      },
+      {
+        id: 'avatar',
+        text:
+          '不是龍，是草原把風暴記憶捏成龍的樣子。你若只想屠龍，就會錯過真正的弱點。',
+        options: [
+          { text: '正確節奏是什麼？', nextId: 'rhythm' },
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'crater',
+        text:
+          '帶避雷符、雷熔玻片與電羽。風眼裂開時不要奔跑，奔跑的人在雷眼裡像逃走的獵物。',
+        options: [
+          { text: '龍雷化身是什麼？', nextId: 'avatar' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '先讓雷聲說完，再回答。草原討厭插話的人。',
+      },
+    ],
+    guardianHints: {
+      creature: '奧魯能判斷引雷喚雷者、風暴玻岩巨像與龍雷化身的節奏關係。',
+      treasure: '他的鼓繩記錄雷鼓石圈、風暴玻岩與世界王火坑的進入順序。',
+      spirit: '他把戰鬥前的準備轉化成和風暴協商的儀式。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
