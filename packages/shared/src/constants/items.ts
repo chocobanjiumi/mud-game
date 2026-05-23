@@ -3653,6 +3653,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['quest', 'service', 'shop'], zoneTags: ['kingsroad_market'],
   },
 
+  // ─── 競技城區票券、軍需與獎章 (Lv 10-60) ───
+  arena_entry_token: {
+    id: 'arena_entry_token', name: '競技入場牌', type: 'quest',
+    description: '競技城門發放的銅製入場牌，背面刻有座位、場次與參賽者編號。沒有它，下注所和獎品櫃台都不會承認戰績。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'common',
+    sourceTags: ['quest', 'service', 'shop'], zoneTags: ['arena_quarter'],
+  },
+  betting_house_slip: {
+    id: 'betting_house_slip', name: '下注憑條', type: 'quest',
+    description: '下注所蓋章的窄紙條，記錄選手、賠率與封盤時間。紙條很薄，但在競技城區比許多口頭承諾更有重量。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'common',
+    sourceTags: ['quest', 'service'], zoneTags: ['arena_quarter'],
+  },
+  practice_wrap: {
+    id: 'practice_wrap', name: '練習護帶', type: 'consumable',
+    description: '治療長椅旁常備的厚棉護帶，浸過止血藥粉。它不能替你贏得比賽，但能讓你在下一輪開始前把手指重新握緊。',
+    buyPrice: 1200, sellPrice: 600, stackable: true, maxStack: 20, levelReq: 10, rarity: 'uncommon',
+    useEffect: { type: 'heal_hp', value: 240 },
+    sourceTags: ['shop', 'drop'], zoneTags: ['arena_quarter'],
+  },
+  referee_seal: {
+    id: 'referee_seal', name: '裁判封印', type: 'material',
+    description: '裁判席使用的紅蠟封印，能標記合規武器、禁用藥劑與有效勝場。破損的封印通常意味著有人想改寫比賽結果。',
+    buyPrice: 1600, sellPrice: 800, stackable: true, maxStack: 99, levelReq: 12, rarity: 'rare',
+    sourceTags: ['drop', 'service'], zoneTags: ['arena_quarter'],
+  },
+  champion_sash: {
+    id: 'champion_sash', name: '冠軍肩帶', type: 'quest',
+    description: '中央競技場冠軍試煉後授予的紅金肩帶，織線中夾著舊勝者留下的碎甲片，是證明通過正式競技試煉的榮譽物。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 25, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['arena_quarter'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

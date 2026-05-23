@@ -8999,6 +8999,297 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  arena_quarter_gate_steward: {
+    id: 'arena_quarter_gate_steward',
+    name: '卡登',
+    alias: 'steward',
+    title: '競技城門入場管事',
+    description:
+      '一名入場管事守在競技城門下，腰間掛著一串銅牌和紅繩。' +
+      '他看人時先看手上的繭，再看眼神，最後才看錢袋。',
+    roomId: 'arena_quarter_grand_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '入場看牌，參賽看封印，下注看憑條。競技城區歡迎熱血，不歡迎糊塗。',
+        options: [
+          { text: '我要參賽。', nextId: 'fight' },
+          { text: '我要看比賽。', nextId: 'watch' },
+          { text: '我先逛逛。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fight',
+        text: '先去武器檢查，再去熱身沙地。沒有裁判封印的武器，贏了也不算。',
+        options: [
+          { text: '我要看比賽。', nextId: 'watch' },
+          { text: '我去檢查武器。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'watch',
+        text: '票券柱廊買座，下注所押注，別在私人包廂跟陌生人借錢。',
+        options: [
+          { text: '我要參賽。', nextId: 'fight' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '站上沙地前先想好退路。觀眾只記得勝者，醫師才記得其他人。' },
+    ],
+    guardianHints: {
+      creature: '卡登提示競技區的安全參賽流程與中央冠軍試煉。',
+      treasure: '他說明競技入場牌、裁判封印與下注憑條。',
+      spirit: '他把競技城區從市集入口導入正式競技規則。',
+    },
+  },
+
+  arena_quarter_bookmaker: {
+    id: 'arena_quarter_bookmaker',
+    name: '斐洛',
+    alias: 'bookmaker',
+    title: '下注所盤口師',
+    description:
+      '一名盤口師坐在下注所高桌後，指尖轉著小銅片，眼睛不停掃過賠率板。' +
+      '他能從觀眾倒吸氣的聲音判斷下一場誰被高估。',
+    roomId: 'arena_quarter_betting_house',
+    type: 'merchant',
+    shopItems: [
+      'betting_house_slip',
+      'arena_entry_token',
+      'market_spice_pouch',
+      'practice_wrap',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '下注不是猜誰會贏，是猜大家錯在哪裡。要憑條嗎？沒有憑條就只是故事。',
+        options: [
+          { text: '我看看票券。', nextId: 'shop' },
+          { text: '今天誰熱門？', nextId: 'odds' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '下注憑條、入場牌、醒神香、練習護帶。別把治療費也押下去，這是建議不是規則。',
+        action: { type: 'shop', data: { shopType: 'arena_bookmaker' } },
+        options: [
+          { text: '今天誰熱門？', nextId: 'odds' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'odds',
+        text: '老練角鬥士穩，面具挑戰者亂，中央冠軍從不便宜。越熱的盤，越要看誰在推。',
+        options: [
+          { text: '我看看票券。', nextId: 'shop' },
+          { text: '我會看賠率。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '憑條別沾酒。字糊了，輸贏都算你倒楣。' },
+    ],
+    guardianHints: {
+      creature: '斐洛提示老練角鬥士、面具挑戰者與中央競技冠軍的風險。',
+      treasure: '他販售下注憑條、入場牌與練習護帶。',
+      spirit: '他把下注所變成競技情報與風險管理節點。',
+    },
+  },
+
+  arena_quarter_arms_referee: {
+    id: 'arena_quarter_arms_referee',
+    name: '葛倫',
+    alias: 'referee',
+    title: '武器檢查處裁判',
+    description:
+      '一名裁判站在武器檢查處，桌上放著紅蠟、量尺和一排被沒收的暗器。' +
+      '他講話不大聲，但每個參賽者都聽得很清楚。',
+    roomId: 'arena_quarter_weapon_check',
+    type: 'merchant',
+    shopItems: [
+      'referee_seal',
+      'practice_wrap',
+      'arena_entry_token',
+      'market_repair_chit',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '武器上桌，藥瓶開蓋，護符翻面。規則不是為了保護弱者，是為了讓勝負有意義。',
+        options: [
+          { text: '我看看用品。', nextId: 'shop' },
+          { text: '哪些東西禁用？', nextId: 'rules' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '裁判封印、練習護帶、入場牌、修補單。封印破了就重驗，別跟我說只是擦傷。',
+        action: { type: 'shop', data: { shopType: 'arena_referee' } },
+        options: [
+          { text: '哪些東西禁用？', nextId: 'rules' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rules',
+        text: '毒刃、詛咒飾品、會替你喊投降的護符都禁。你可以危險，但不能作弊。',
+        options: [
+          { text: '我看看用品。', nextId: 'shop' },
+          { text: '我會遵守。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '封印貼好再進場。輸給規則比輸給對手更難看。' },
+    ],
+    guardianHints: {
+      creature: '葛倫連接鋼刃決鬥者、破盾重衛與正式試煉規則。',
+      treasure: '他販售裁判封印、練習護帶與入場牌。',
+      spirit: '他讓競技戰鬥從亂鬥變成受控比賽。',
+    },
+  },
+
+  arena_quarter_healer: {
+    id: 'arena_quarter_healer',
+    name: '瑪琳',
+    alias: 'healer',
+    title: '治療長椅醫師',
+    description:
+      '一名醫師在治療長椅旁整理繃帶，手臂上有許多被牙齒與刀背留下的舊疤。' +
+      '她對勝負沒興趣，只記得誰不聽醫囑又倒回來。',
+    roomId: 'arena_quarter_healer_bench',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'practice_wrap',
+      'antidote',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '坐下，伸手。還能吵代表沒死，還想再打代表腦袋可能也要檢查。',
+        options: [
+          { text: '我看看醫療品。', nextId: 'shop' },
+          { text: '下一場能打嗎？', nextId: 'advice' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '中型藥水、法力藥水、練習護帶、解毒劑。你可以不買，但別用觀眾掌聲止血。',
+        action: { type: 'shop', data: { shopType: 'arena_healer' } },
+        options: [
+          { text: '下一場能打嗎？', nextId: 'advice' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'advice',
+        text: '能站不等於能打。若你看見兩個裁判，先休息；若你看見三個，已經太晚。',
+        options: [
+          { text: '我看看醫療品。', nextId: 'shop' },
+          { text: '我會休息。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '繃帶換下來別丟沙地上。鬥獸會吃。' },
+    ],
+    guardianHints: {
+      creature: '瑪琳提示鬥獸與中階訓練場次的醫療壓力。',
+      treasure: '她販售練習護帶與常規藥品。',
+      spirit: '她讓競技城區有合理的回復與安全節點。',
+    },
+  },
+
+  arena_quarter_strategy_coach: {
+    id: 'arena_quarter_strategy_coach',
+    name: '歐司特',
+    alias: 'coach',
+    title: '戰術桌退役教練',
+    description:
+      '一名退役教練坐在戰術桌旁，用小木牌推演走位。' +
+      '他的左腿不太靈活，但指出破綻時比多數劍客出劍還快。',
+    roomId: 'arena_quarter_strategy_tables',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別問怎麼打贏，先問自己為什麼會挨第一下。答案通常在腳，不在武器。',
+        options: [
+          { text: '怎麼打精英場？', nextId: 'elite' },
+          { text: '冠軍怎麼打？', nextId: 'champion' },
+          { text: '我先練走位。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'elite',
+        text: '老練角鬥士怕你不貪，面具挑戰者怕你不慌。精英場先穩節奏，再找破綻。',
+        options: [
+          { text: '冠軍怎麼打？', nextId: 'champion' },
+          { text: '我會穩住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'champion',
+        text: '中央冠軍的強處不是攻擊，是逼你在觀眾聲裡做錯決定。看到反擊架勢就收手。',
+        options: [
+          { text: '怎麼打精英場？', nextId: 'elite' },
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '會後退的人才有下一次進攻。' },
+    ],
+    guardianHints: {
+      creature: '歐司特提供老練角鬥士、面具挑戰者與中央競技冠軍的戰術提示。',
+      treasure: '他說明冠軍肩帶代表正式試煉通過。',
+      spirit: '他把競技區戰鬥轉成可學習、可預期的試煉鏈。',
+    },
+  },
+
+  arena_quarter_prize_keeper: {
+    id: 'arena_quarter_prize_keeper',
+    name: '莉塔',
+    alias: 'prizekeeper',
+    title: '獎品櫃台保管員',
+    description:
+      '一名保管員站在獎品櫃台後，身後掛著肩帶、徽章和被退回的破損獎盃。' +
+      '她對冒牌冠軍的耐心，比對遲到選手還少。',
+    roomId: 'arena_quarter_prize_counter',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要領獎先拿戰績和封印。只拿故事來的人，我可以給你掌聲，不給獎品。',
+        options: [
+          { text: '冠軍肩帶怎麼拿？', nextId: 'sash' },
+          { text: '獎品能換嗎？', nextId: 'prize' },
+          { text: '我先準備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'sash',
+        text: '中央競技場冠軍試煉。打贏、封印完整、裁判承認，三個都要有。',
+        options: [
+          { text: '獎品能換嗎？', nextId: 'prize' },
+          { text: '我去中央場。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'prize',
+        text: '正式獎品不能折現。下注所讓你賺錢，獎品櫃台讓你留下名字。',
+        options: [
+          { text: '冠軍肩帶怎麼拿？', nextId: 'sash' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把別人的肩帶披上來。縫線會出賣你。' },
+    ],
+    guardianHints: {
+      creature: '莉塔把中央競技冠軍與獎勵領取條件連接起來。',
+      treasure: '她說明冠軍肩帶、裁判封印與入場牌的結算關係。',
+      spirit: '她讓競技試煉有明確榮譽回收點。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

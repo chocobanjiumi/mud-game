@@ -8510,4 +8510,198 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '礦靈是藍寶湖採集線的核心守護者。',
     },
   },
+
+  arena_training_dummy: {
+    id: 'arena_training_dummy', name: '強化訓練木人', alias: 'arenadummy',
+    level: 10, hp: 720, mp: 0, str: 38, int: 1, dex: 10, vit: 70, luk: 1,
+    element: 'none',
+    skills: ['basic_attack', 'stone_skin'],
+    expReward: 420, goldReward: [80, 150],
+    drops: [
+      { itemId: 'practice_wrap', chance: 0.35, minQty: 1, maxQty: 1 },
+      { itemId: 'arena_entry_token', chance: 0.08, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '熱身沙地使用的配重木人，外層包著舊皮甲與沙袋。它不會真正殺人，但會用反彈力提醒新手別把破綻留在正面。',
+    isBoss: false,
+    guardianHints: {
+      creature: '強化訓練木人防禦高，適合測試輸出節奏。',
+      treasure: '訓練場旁常能撿到練習護帶。',
+      spirit: '木人代表競技城區最低風險的戰鬥入口。',
+    },
+  },
+
+  arena_sand_brawler: {
+    id: 'arena_sand_brawler', name: '沙地拳鬥士', alias: 'brawler',
+    level: 14, hp: 880, mp: 80, str: 68, int: 18, dex: 42, vit: 76, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'power_strike'],
+    expReward: 720, goldReward: [160, 310],
+    drops: [
+      { itemId: 'practice_wrap', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'betting_house_slip', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '熱身沙地與西側決鬥圈常見的拳鬥士，手臂纏滿厚布，腳步故意踩得很重。牠們擅長短距離衝撞，把觀眾的歡呼變成壓力。',
+    isBoss: false,
+    guardianHints: {
+      creature: '沙地拳鬥士衝撞前會壓低肩膀，側移可避開暈擊。',
+      treasure: '牠們常攜帶練習護帶與下注憑條。',
+      spirit: '拳鬥士讓競技城區有低階可控的近戰試煉。',
+    },
+  },
+
+  arena_blade_duelist: {
+    id: 'arena_blade_duelist', name: '鋼刃決鬥者', alias: 'duelist',
+    level: 18, hp: 980, mp: 160, str: 76, int: 28, dex: 70, vit: 62, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'quick_dash', 'counter_stance'],
+    expReward: 980, goldReward: [240, 460],
+    drops: [
+      { itemId: 'referee_seal', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'practice_wrap', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '東側決鬥圈與武器檢查處登錄的正式決鬥者，刀背貼著裁判封印。牠們出手乾淨，專門懲罰亂用技能的對手。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鋼刃決鬥者會反擊架勢，看到刀尖下沉時先停手。',
+      treasure: '合規武器上可取得裁判封印。',
+      spirit: '決鬥者代表正式規則下的單挑壓力。',
+    },
+  },
+
+  arena_shield_breaker: {
+    id: 'arena_shield_breaker', name: '破盾重衛', alias: 'shieldbreaker',
+    level: 22, hp: 1320, mp: 120, str: 92, int: 22, dex: 24, vit: 118, luk: 10,
+    element: 'none',
+    skills: ['basic_attack', 'stone_slam', 'shield_breaker', 'stone_skin'],
+    expReward: 1280, goldReward: [320, 610],
+    drops: [
+      { itemId: 'referee_seal', chance: 0.28, minQty: 1, maxQty: 2 },
+      { itemId: 'arena_entry_token', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '訓練場與護甲架巷常見的重裝對手，塔盾邊緣刻著裂盾分數。牠們不追擊，只一步步壓縮空間，逼隊伍學會破防。',
+    isBoss: false,
+    guardianHints: {
+      creature: '破盾重衛會破防與重砸，先繞背再輸出。',
+      treasure: '盾面常貼著裁判封印。',
+      spirit: '重衛讓競技區補上防禦型訓練對手。',
+    },
+  },
+
+  arena_rookie_mage: {
+    id: 'arena_rookie_mage', name: '見習場術士', alias: 'rookiemage',
+    level: 24, hp: 840, mp: 420, str: 26, int: 92, dex: 40, vit: 54, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'fire_bolt', 'ice_storm', 'blind'],
+    expReward: 1420, goldReward: [360, 680],
+    drops: [
+      { itemId: 'betting_house_slip', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'practice_wrap', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '戰術桌與看台試煉中登場的見習術士，法杖頂端套著防爆銅環。牠們用有限威力的元素法術逼迫隊伍練習走位。',
+    isBoss: false,
+    guardianHints: {
+      creature: '見習場術士會致盲與範圍法術，先打斷施法。',
+      treasure: '術士常握有下注憑條。',
+      spirit: '見習術士讓競技區的法術訓練有合理來源。',
+    },
+  },
+
+  arena_chain_beast: {
+    id: 'arena_chain_beast', name: '鎖鏈鬥獸', alias: 'chainbeast',
+    level: 26, hp: 1500, mp: 120, str: 106, int: 20, dex: 44, vit: 120, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'poison_bite', 'power_strike'],
+    expReward: 1620, goldReward: [410, 780],
+    drops: [
+      { itemId: 'practice_wrap', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'referee_seal', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '冠軍牆與下層看台之間放出的受訓鬥獸，脖頸仍拖著短鎖。牠的任務不是殺死參賽者，而是在安全規則內製造真正恐懼。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鎖鏈鬥獸衝鋒後會短暫停頓，把握反擊窗口。',
+      treasure: '鬥獸籠邊常有練習護帶與裁判封印。',
+      spirit: '鬥獸提供競技場中階壓力與觀眾戲劇性。',
+    },
+  },
+
+  arena_veteran_gladiator: {
+    id: 'arena_veteran_gladiator', name: '老練角鬥士', alias: 'gladiator',
+    level: 30, hp: 1780, mp: 240, str: 112, int: 42, dex: 74, vit: 126, luk: 24,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'charge', 'counter_stance', 'taunt'],
+    expReward: 2200, goldReward: [560, 1060],
+    drops: [
+      { itemId: 'referee_seal', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'betting_house_slip', chance: 0.32, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '上層看台與裁判席安排的老練角鬥士，盔甲上刻滿勝場短線。牠懂得利用觀眾聲浪與場地邊界，把普通交手拖成心理戰。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '老練角鬥士會戰吼與反擊，別在他架勢完整時硬打。',
+      treasure: '高階場次的裁判封印較完整。',
+      spirit: '角鬥士是正式競技規則下的精英對手。',
+    },
+  },
+
+  arena_masked_challenger: {
+    id: 'arena_masked_challenger', name: '面具挑戰者', alias: 'masked',
+    level: 34, hp: 1500, mp: 420, str: 86, int: 86, dex: 96, vit: 88, luk: 30,
+    element: 'none',
+    skills: ['basic_attack', 'shadow_dash', 'slash', 'blind', 'life_drain'],
+    expReward: 2500, goldReward: [640, 1220],
+    drops: [
+      { itemId: 'betting_house_slip', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'referee_seal', chance: 0.34, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '私人包廂與戰術桌常提名的神秘挑戰者，面具遮住身份與流派。牠出場時觀眾會突然安靜，因為沒人知道自己押的是誰。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '面具挑戰者會致盲、突進與吸血，保持解控。',
+      treasure: '牠常帶有高賠率下注憑條。',
+      spirit: '面具挑戰者把下注、包廂與黑馬挑戰連成一線。',
+    },
+  },
+
+  arena_grand_champion: {
+    id: 'arena_grand_champion', name: '中央競技冠軍', alias: 'champion',
+    level: 38, hp: 3000, mp: 520, str: 132, int: 76, dex: 82, vit: 168, luk: 34,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'charge', 'counter_stance', 'taunt', 'death_mark'],
+    expReward: 3600, goldReward: [960, 1820],
+    drops: [
+      { itemId: 'champion_sash', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'referee_seal', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'betting_house_slip', chance: 0.52, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '中央競技場現任冠軍的試煉投影，披著紅金肩帶，武器依挑戰者距離切換。牠代表城區承認的正式頂點，勝過牠才算真正通過競技試煉。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '中央競技冠軍會戰吼、反擊與死亡印記，架勢完整時先防守。',
+      treasure: '牠必定掉落冠軍肩帶，是競技試煉核心證明。',
+      spirit: '冠軍把訓練、下注、裁判與榮耀全部收束到中央競技場。',
+    },
+  },
 };
