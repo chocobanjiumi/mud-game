@@ -3750,6 +3750,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['sapphire_lake'],
   },
 
+  // ─── 湖畔城鎮服務票券與進階據點用品 (Lv 10-50) ───
+  lakeside_adventurer_pass: {
+    id: 'lakeside_adventurer_pass', name: '湖畔冒險章', type: 'quest',
+    description: '湖畔公會登記後發放的銅章，背面刻著轉職大廳、競技場與傳送廣場三枚小印。持有者可證明自己已在湖畔城鎮完成進階冒險者登錄。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'common',
+    sourceTags: ['quest', 'service'], zoneTags: ['lakeside_town'],
+  },
+  class_hall_attunement_charm: {
+    id: 'class_hall_attunement_charm', name: '轉職調律符', type: 'material',
+    description: '轉職大廳導師常用的薄銀符片，四角分別刻著劍、書、弓與聖杖。它能短暫穩定職業法陣，避免未熟練的冒險者在試煉前被魔力震退。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 10, rarity: 'uncommon',
+    sourceTags: ['service', 'shop'], zoneTags: ['lakeside_town'],
+  },
+  arena_practice_token: {
+    id: 'arena_practice_token', name: '競技練習牌', type: 'quest',
+    description: '競技場入口發給訓練者的銅牌，邊緣刻著木劍、假人與治療席編號。它記錄每日練習場次，方便裁判確認挑戰是否屬於安全訓練。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'common',
+    sourceTags: ['quest', 'service'], zoneTags: ['lakeside_town'],
+  },
+  lakeview_room_voucher: {
+    id: 'lakeview_room_voucher', name: '湖景房券', type: 'consumable',
+    description: '醉龍亭與湖景旅店共同承認的住宿券，紙面帶著淡淡薰衣草香。使用後像在乾淨床鋪上睡過一覺，能恢復體力，但不能在戰鬥中使用。',
+    buyPrice: 1500, sellPrice: 750, stackable: true, maxStack: 20, levelReq: 10, rarity: 'uncommon',
+    useEffect: { type: 'heal_hp', value: 220 },
+    sourceTags: ['shop', 'service'], zoneTags: ['lakeside_town'],
+  },
+  lakeside_auction_lot_ticket: {
+    id: 'lakeside_auction_lot_ticket', name: '湖畔委託券', type: 'quest',
+    description: '湖畔拍賣場使用的藍邊委託券，寫有寄售櫃台、估價水晶與交割窗口。它能證明某件物品已進入正式拍賣流程，而不是私下轉手的假貨。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'rare',
+    sourceTags: ['quest', 'service'], zoneTags: ['lakeside_town'],
+  },
+
   // ─── 王道市集交易憑證與特色商品 (Lv 1-60) ───
   kingsroad_trade_token: {
     id: 'kingsroad_trade_token', name: '王道交易牌', type: 'material',

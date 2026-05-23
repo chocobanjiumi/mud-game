@@ -1423,6 +1423,7 @@ export const NPCS: Record<string, NpcDef> = {
     shopItems: [
       'small_hp_potion', 'medium_hp_potion',
       'small_mp_potion', 'medium_mp_potion',
+      'class_hall_attunement_charm', 'arena_practice_token',
     ],
     dialogue: [
       {
@@ -1438,7 +1439,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'shop',
         text: '這是今天的菜單。我們的麥酒可是用湖畔最好的麥子釀的，冒險者們的最愛。' +
-          '另外也有一些藥水，出門冒險前補給一下總沒壞處。',
+          '另外也有一些藥水、轉職調律符和競技練習牌，出門冒險前補給一下總沒壞處。',
         action: { type: 'shop', data: { shopType: 'tavern' } },
         options: [
           { text: '謝了老闆。', nextId: 'farewell' },
@@ -2899,6 +2900,7 @@ export const NPCS: Record<string, NpcDef> = {
       'grilled_meat', 'stew', 'adventure_bento',
       'small_hp_potion', 'medium_hp_potion', 'large_hp_potion',
       'small_mp_potion', 'medium_mp_potion',
+      'lakeview_room_voucher',
     ],
     dialogue: [
       {
@@ -2915,7 +2917,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'shop',
         text: '烤肉、燉湯、冒險者便當——要填飽肚子的話都是好選擇。' +
-          '藥水也有備，紅的回血、藍的回魔。冒險者出門前一定要補給充足！',
+          '藥水也有備，紅的回血、藍的回魔。想住一晚的話，湖景房券也能在櫃檯直接買。',
         action: { type: 'shop', data: { shopType: 'inn' } },
         options: [
           { text: '謝謝老闆。', nextId: 'farewell' },
@@ -2975,7 +2977,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'services',
         text: '我們提供金幣保管服務——冒險中被擊敗可能會損失隨身金幣，但存在銀行裡的絕對安全。' +
           '另外我們也提供貸款和匯款服務，方便在不同城鎮之間調度資金。' +
-          '大額交易建議透過我們進行，可以避免被騙。',
+          '大額交易建議透過我們進行，尤其是持有湖畔委託券的拍賣交割，可以避免被騙。',
         options: [
           { text: '好的，謝謝。', nextId: 'farewell' },
         ],
@@ -3034,7 +3036,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'how_to_sell',
         text: '很簡單！把要賣的物品交給我，設一個底價，我來幫你喊價。' +
           '成交後抽取百分之十的佣金——公道吧？好東西在這裡能賣出比商店高得多的價格。' +
-          '不過品質太差的東西我不收，砸了拍賣場的招牌可不行。',
+          '不過品質太差的東西我不收，砸了拍賣場的招牌可不行。正式委託會開湖畔委託券，交割時記得找銀行確認。',
         options: [
           { text: '明白了。', nextId: 'farewell' },
         ],
@@ -3075,7 +3077,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'hidden_stats',
         text: '是的！有些裝備在鑑定之前，你只能看到基礎數值。但經過我的鑑定後，' +
           '可能會發現額外的屬性加成、特殊效果甚至是套裝屬性。' +
-          '越稀有的裝備，隱藏屬性越強。Boss 掉落的裝備尤其值得鑑定。',
+          '越稀有的裝備，隱藏屬性越強。Boss 掉落的裝備尤其值得鑑定；若是準備轉職，也可以先帶轉職調律符穩定法陣。',
         options: [
           { text: '有意思！', nextId: 'farewell' },
           { text: '裝備品質怎麼分？', nextId: 'quality_guide' },
