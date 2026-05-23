@@ -2376,6 +2376,8 @@ export const NPCS: Record<string, NpcDef> = {
       'steel_sword', 'flame_sword', 'long_bow', 'composite_bow',
       'oak_staff', 'crystal_staff', 'holy_scepter', 'divine_scepter',
       'chain_mail', 'plate_armor', 'iron_helm', 'iron_gauntlets', 'iron_boots',
+      'heatproof_miner_salve', 'fire_soup', 'salamander_tail',
+      'sulfur_crystal_cluster', 'obsidian_glass_plate', 'fire_vent_crystal',
     ],
     dialogue: [
       {
@@ -2392,7 +2394,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'shop',
         text: '看看吧！從鋼劍到炎之劍，從鎖子甲到板甲——全是我親手鍛造的精品！' +
-          '矮人出品，品質保證。你在別的地方可買不到這麼好的東西。',
+          '矮人出品，品質保證。也有耐熱礦工膏、火焰湯和幾種火山礦材，進深層前別空手。',
         action: { type: 'shop', data: { shopType: 'dwarf_forge' } },
         options: [
           { text: '好東西！', nextId: 'farewell' },
@@ -2401,7 +2403,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'crafting',
         text: '普通的鍛造對我來說小菜一碟。但如果你能帶來稀有材料——' +
-          '比如水晶核心、暗影精華、冰元素核心這些東西，我就能鍛造出傳說級的武器。' +
+          '比如火晶種、黑曜玻板、水晶核心、暗影精華、冰元素核心這些東西，我就能鍛造出傳說級的武器。' +
           '那種武器可是有靈魂的！嘿嘿。',
         options: [
           { text: '需要什麼材料？', nextId: 'materials_detail' },
@@ -2410,8 +2412,8 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'materials_detail',
-        text: '水晶核心在水晶洞窟的守護者身上，暗影精華要從暗影森林的強力怪物身上取得，' +
-          '冰元素核心則在冰封雪原的深處。集齊材料再來找我，我讓你見識見識矮人鍛造的真正實力！',
+        text: '火山本地先找硫磺晶簇、黑曜玻板和火晶種。火蜥蜴尾能做耐熱材料，校爐火鉗則能證明火晶噴氣口真的失衡。' +
+          '外地材料像水晶核心、暗影精華、冰元素核心也有用。集齊材料再來找我！',
         options: [
           { text: '我記住了。', nextId: 'farewell' },
         ],
@@ -2460,7 +2462,7 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'monster_info',
-        text: '岩石魔像和火蜥蜴，最近不知道為什麼越來越多。' +
+        text: '岩石巨人、火蜥蜴、灰燼煤精和硫煙爬蟲最近都變多了。' +
           '可能是深處的岩漿活動把牠們從更下層驅趕上來的。' +
           '矮人戰士們已經在前線擋著了，但人手不夠。',
         options: [
@@ -2470,18 +2472,16 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'ore_info',
-        text: '這座礦洞出產精鐵礦和黑曜石。更深處據說有秘銀礦脈，' +
-          '但那些區域被怪物佔據了。如果你能清理出通道，' +
-          '我們可以分你一些珍貴的礦石。',
+        text: '這座礦洞出產精鐵礦、黑曜玻板和火晶種。硫磺熱泉的晶簇也重要，' +
+          '那能讓我們判斷毒霧濃度。更深處據說有秘銀礦脈，但那些區域被怪物佔據了。',
         options: [
           { text: '秘銀！那我一定去。', nextId: 'farewell' },
         ],
       },
       {
         id: 'quest_detail',
-        text: '簡單說——幫我們清掉礦洞深處第三層的岩石魔像群。完成之後，' +
-          '我給你一批精鐵礦石，拿去找鍛造師能做出好東西。' +
-          '另外，如果你在深處看到發光的石頭記得帶回來，那可能是稀有礦石。',
+        text: '簡單說——到火晶噴氣口取回校爐火鉗，再幫我們清掉黑曜石採場的玄武岩鎮衛。完成之後，' +
+          '我給你一批精鐵與黑曜石樣本，拿去找鍛造師能做出好東西。',
         options: [
           { text: '交給我。', nextId: 'farewell' },
         ],
@@ -2560,8 +2560,8 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'prevent',
-        text: '也許……如果能找到火神的信物——一枚火元素結晶，放置在祭壇上，' +
-          '就能安撫火龍的躁動。但火元素結晶極其稀有，通常只在岩漿河的源頭才能找到。',
+        text: '也許……如果能找到火神的信物——一枚穩定的火晶種，放置在祭壇上，' +
+          '就能安撫火龍的躁動。但火晶種必須從噴氣口或火焰精靈核心取得，沾染硫煙的不能用。',
         options: [
           { text: '我去找找看。', nextId: 'farewell' },
         ],

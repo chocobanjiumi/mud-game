@@ -3460,6 +3460,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'ash_cinder_imp', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: ' . ',
     mapX: 1,
@@ -3487,7 +3488,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'volcano_sulfur_springs', description: '熱霧後是硫磺泉' },
     ],
     monsters: [
-      { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 35 },
+      { monsterId: 'sulfur_steam_crawler', maxCount: 2, respawnSeconds: 45 },
       { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
     ],
     mapSymbol: '[硫]',
@@ -3519,6 +3520,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 3, respawnSeconds: 45 },
+      { monsterId: 'ash_cinder_imp', maxCount: 2, respawnSeconds: 40 },
     ],
     groundItems: [
       { itemId: 'lava_fragment', description: '火山口邊有一塊冷卻的熔岩' },
@@ -3608,8 +3610,9 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 50 },
-      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'basalt_ward_sentinel', maxCount: 1, respawnSeconds: 1200 },
     ],
+    npcs: ['flame_priest'],
     mapSymbol: '[殿]',
     mapX: 2,
     mapY: 10,
@@ -3640,6 +3643,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
     ],
+    npcs: ['mine_foreman'],
     mapSymbol: '[礦]',
     mapX: 2,
     mapY: 7,
@@ -3726,6 +3730,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'ash_cinder_imp', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[灰]',
     mapX: 0,
@@ -3747,7 +3752,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 45 },
-      { monsterId: 'fire_salamander', maxCount: 1, respawnSeconds: 35 },
+      { monsterId: 'ash_cinder_imp', maxCount: 1, respawnSeconds: 35 },
     ],
     mapSymbol: '[橋]',
     mapX: 0,
@@ -3789,7 +3794,8 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'volcano_basalt_steps', description: '黑色石階通往高處' },
     ],
     monsters: [
-      { monsterId: 'lava_worm', maxCount: 3, respawnSeconds: 50 },
+      { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'sulfur_steam_crawler', maxCount: 2, respawnSeconds: 45 },
     ],
     mapSymbol: '[泉]',
     mapX: 0,
@@ -3833,9 +3839,11 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 35 },
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'ash_cinder_imp', maxCount: 1, respawnSeconds: 40 },
     ],
     groundItems: [
       { itemId: 'lava_fragment', description: '火晶根部卡著一塊冷卻熔岩碎片' },
+      { itemId: 'forge_calibration_tongs', description: '噴氣口旁壓著一把刻有工頭記號的黑鐵火鉗' },
     ],
     mapSymbol: '[晶]',
     mapX: 4,
@@ -3856,7 +3864,8 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '晶光路標指向噴氣口' },
     ],
     monsters: [
-      { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
+      { monsterId: 'basalt_ward_sentinel', maxCount: 1, respawnSeconds: 1200 },
       { monsterId: 'lava_worm', maxCount: 1, respawnSeconds: 50 },
     ],
     mapSymbol: '[採]',
@@ -3878,7 +3887,8 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'volcano_colossus_arena', description: '高台通往巨像競技台' },
     ],
     monsters: [
-      { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 70 },
+      { monsterId: 'basalt_ward_sentinel', maxCount: 1, respawnSeconds: 1200 },
+      { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
       { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 50 },
     ],
     mapSymbol: '[階]',
@@ -3899,7 +3909,8 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '貨道通往餘燼兵房' },
     ],
     monsters: [
-      { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 60 },
+      { monsterId: 'ash_cinder_imp', maxCount: 2, respawnSeconds: 40 },
     ],
     groundItems: [
       { itemId: 'iron_ore', description: '貨架下滾落了幾塊鐵礦' },

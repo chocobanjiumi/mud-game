@@ -2413,8 +2413,10 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   salamander_tail: {
     id: 'salamander_tail', name: '火蜥蜴尾', type: 'material',
-    description: '火蜥蜴的尾巴，蘊含火焰之力。', buyPrice: 0, sellPrice: 20,
+    description: '火蜥蜴尾端脫落的赤紅肉鰭，切面仍帶著溫熱火光。矮人鍛造師會把它曬乾磨粉，加入耐火藥膏或火焰湯中。',
+    buyPrice: 0, sellPrice: 20,
     stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['drop'], zoneTags: ['volcano_zone'],
   },
   ice_core: {
     id: 'ice_core', name: '冰元素核心', type: 'material',
@@ -2443,8 +2445,46 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   lava_fragment: {
     id: 'lava_fragment', name: '熔岩碎片', type: 'material',
-    description: '熔岩怪物留下的灼熱碎片。', buyPrice: 0, sellPrice: 28,
+    description: '熔岩蟲與火山口冷卻後留下的黑紅碎片，裂縫中仍有暗淡熱光。可作為熔爐升溫、火屬性鍛造與祭壇供火材料。',
+    buyPrice: 0, sellPrice: 28,
     stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['drop', 'gathering'], zoneTags: ['volcano_zone'],
+  },
+  sulfur_crystal_cluster: {
+    id: 'sulfur_crystal_cluster', name: '硫磺晶簇', type: 'material',
+    description: '硫磺谷與熱泉池邊長出的黃綠晶簇，靠近時有刺鼻氣味。礦工會用它檢查毒霧濃度，祭司則拿來穩定火神殿香爐。',
+    buyPrice: 0, sellPrice: 34,
+    stackable: true, maxStack: 99, levelReq: 15, rarity: 'uncommon',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['volcano_zone'],
+  },
+  obsidian_glass_plate: {
+    id: 'obsidian_glass_plate', name: '黑曜玻板', type: 'material',
+    description: '黑曜石採場敲下的平整黑玻璃石板，表面能映出扭曲紅光。適合製作防熱護片、符文基底與矮人工具刻度板。',
+    buyPrice: 0, sellPrice: 42,
+    stackable: true, maxStack: 99, levelReq: 16, rarity: 'uncommon',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['volcano_zone'],
+  },
+  fire_vent_crystal: {
+    id: 'fire_vent_crystal', name: '火晶種', type: 'material',
+    description: '火晶噴氣口凝成的紅色晶種，內部像有小火苗被封住。鍛造師會用它校準爐溫，火焰祭司則視為火神躁動的證據。',
+    buyPrice: 0, sellPrice: 58,
+    stackable: true, maxStack: 99, levelReq: 18, rarity: 'rare',
+    sourceTags: ['drop', 'gathering'], zoneTags: ['volcano_zone'],
+  },
+  heatproof_miner_salve: {
+    id: 'heatproof_miner_salve', name: '耐熱礦工膏', type: 'consumable',
+    description: '矮人礦工用硫磺晶粉、火蜥蜴尾粉和冷卻油調成的厚膏，塗上後皮膚會微微發麻。它能短暫舒緩熱傷，但不能讓人站進岩漿。',
+    buyPrice: 780, sellPrice: 390,
+    stackable: true, maxStack: 20, levelReq: 15, rarity: 'uncommon',
+    useEffect: { type: 'heal_hp', value: 180 },
+    sourceTags: ['shop', 'crafting'], zoneTags: ['volcano_zone'],
+  },
+  forge_calibration_tongs: {
+    id: 'forge_calibration_tongs', name: '校爐火鉗', type: 'quest',
+    description: '鍛造大廳用來測試熔爐風口的黑鐵火鉗，柄端刻著礦工頭目的記號。帶回它能證明玩家已進入火晶噴氣口並確認爐溫異常。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 15, rarity: 'rare',
+    sourceTags: ['quest', 'hidden_cache'], zoneTags: ['volcano_zone'],
   },
   blighted_wheat_stalk: {
     id: 'blighted_wheat_stalk', name: '枯疫麥稈', type: 'material',
@@ -3195,9 +3235,11 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   fire_soup: {
     id: 'fire_soup', name: '火焰湯', type: 'consumable',
-    description: '以火蜥蜴尾烹煮的湯品，飲用後攻擊力提升5%。', buyPrice: 100, sellPrice: 50,
+    description: '以火蜥蜴尾與辛辣根菜熬出的紅湯，喝下後喉嚨像被爐火烘過。火山礦工常在長班前喝一碗暖身。',
+    buyPrice: 100, sellPrice: 50,
     stackable: true, maxStack: 99, levelReq: 15,
     useEffect: { type: 'food_atk', value: 5, duration: 5 },
+    sourceTags: ['shop', 'cooking'], zoneTags: ['volcano_zone'],
   },
   ice_cream: {
     id: 'ice_cream', name: '冰元素冰淇淋', type: 'consumable',
