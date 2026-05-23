@@ -3148,8 +3148,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'starfall_sentinel', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 90 },
     ],
+    npcs: ['celestial_gate_pilgrim'],
     mapSymbol: '[門]',
     mapX: 3,
     mapY: 35,
@@ -3179,6 +3181,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'starfall_sentinel', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
     ],
     mapSymbol: '[星]',
@@ -3210,6 +3213,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'oathbound_seraph', maxCount: 1, respawnSeconds: 95 },
       { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
     ],
     mapSymbol: '[花]',
@@ -3240,6 +3244,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'lumen_scribe_construct', maxCount: 1, respawnSeconds: 120 },
       { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
     ],
     mapSymbol: '[書]',
@@ -3269,8 +3274,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'corrupted_halo_judge', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'celestial_guardian', maxCount: 2, respawnSeconds: 80 },
     ],
+    npcs: ['celestial_judgment_advocate'],
     mapSymbol: '[判]',
     mapX: 4,
     mapY: 36,
@@ -3387,6 +3394,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'starfall_sentinel', maxCount: 1, respawnSeconds: 90 },
       { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 90 },
     ],
     mapSymbol: '[墜]',
@@ -3441,6 +3449,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'lumen_scribe_construct', maxCount: 1, respawnSeconds: 120 },
       { monsterId: 'seraph', maxCount: 1, respawnSeconds: 85 },
     ],
     mapSymbol: '[抄]',
@@ -3468,6 +3477,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'lumen_scribe_construct', maxCount: 1, respawnSeconds: 120 },
       { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[檔]',
@@ -3495,6 +3505,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'seraph', maxCount: 2, respawnSeconds: 85 },
+      { monsterId: 'oathbound_seraph', maxCount: 1, respawnSeconds: 95 },
       { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[誓]',
@@ -3522,6 +3533,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'seraph', maxCount: 3, respawnSeconds: 85 },
+      { monsterId: 'oathbound_seraph', maxCount: 1, respawnSeconds: 95 },
       { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[熾]',
@@ -3549,6 +3561,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'fallen_angel', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'corrupted_halo_judge', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'divine_construct', maxCount: 1, respawnSeconds: 600 },
     ],
     mapSymbol: '[懺]',
@@ -3576,8 +3589,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
+      { monsterId: 'corrupted_halo_judge', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'fallen_angel', maxCount: 1, respawnSeconds: 80 },
     ],
+    npcs: ['celestial_reliquary_curator'],
     mapSymbol: '[物]',
     mapX: 2,
     mapY: 39,
@@ -3631,6 +3646,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'divine_construct', maxCount: 3, respawnSeconds: 600 },
+      { monsterId: 'dawn_armory_colossus', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'celestial_guardian', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[武]',
@@ -3684,6 +3700,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'god_of_war', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'dawn_armory_colossus', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'divine_construct', maxCount: 2, respawnSeconds: 600 },
     ],
     mapSymbol: '[封]',

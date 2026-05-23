@@ -3522,6 +3522,160 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  // ─── 天界遺跡 NPC ──────────────────────────────────────
+
+  celestial_gate_pilgrim: {
+    id: 'celestial_gate_pilgrim',
+    name: '天門朝聖者',
+    alias: 'pilgrim',
+    title: '被光門留下的凡人',
+    description: '一名跪坐在天界之門旁的老朝聖者，白髮間落滿星塵。他的袍角被深淵黑痕燒穿，手裡卻仍握著一枚溫熱的天界碎片。',
+    roomId: 'celestial_gate',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '不要把這裡當成勝利後的獎賞。天界之門打開，是因為深淵把它撕傷了。你進來後看到的每一道光，都可能是在求救。',
+        options: [
+          { text: '我該先看哪裡？', nextId: 'routes' },
+          { text: '天界守衛會攻擊我嗎？', nextId: 'guards' },
+          { text: '需要收集什麼？', nextId: 'materials' },
+          { text: '我會謹慎。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'routes',
+        text: '西側墜星廣場能看出深淵攻城路線，北方星光走廊通向審判與花園。別急著碰王座；先理解天界為何失序。',
+        options: [
+          { text: '守衛呢？', nextId: 'guards' },
+        ],
+      },
+      {
+        id: 'guards',
+        text: '守衛不是邪惡，牠們只是命令還活著。若你帶著深淵污染靠近，牠們會把你當成入侵的一部分。',
+        options: [
+          { text: '材料要怎麼分辨？', nextId: 'materials' },
+        ],
+      },
+      {
+        id: 'materials',
+        text: '天界碎片、墜星廣場碎片、誓約緞帶與流明記憶晶都能幫你讀懂這裡。破碎光環和最終封印裂片則別亂賣，那是決定結局的東西。',
+        options: [
+          { text: '我會保存。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '光不會保證安全。真正安全的是知道哪一道光正在審判你。' },
+    ],
+    guardianHints: {
+      creature: '朝聖者會在墮天使靠近時低聲背誦舊誓約。',
+      treasure: '他的天界碎片能與光門文字共鳴，顯示墜星廣場的防線破口。',
+      spirit: '他不是天界居民，只是第一個明白光門是傷口而非凱旋門的人。',
+    },
+  },
+
+  celestial_reliquary_curator: {
+    id: 'celestial_reliquary_curator',
+    name: '聖物庫管理靈',
+    alias: 'curator',
+    title: '仍在點名空龕的守靈',
+    description: '一道由金白光塵組成的管理靈漂浮在聖物庫祭台前，手中名冊有許多頁被燒成黑邊。每當她念到空龕名字，玻璃龕內便會響起細小回音。',
+    roomId: 'celestial_reliquary',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion', 'large_mp_potion', 'return_scroll',
+      'sanctum_light_broth', 'celestial_fragment', 'starfall_plaza_shard',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '入庫者，請報明目的。若為淨化污染，祭台尚可運作；若為掠奪聖物，玻璃龕會記住你的名字。',
+        options: [
+          { text: '看看補給。', nextId: 'shop' },
+          { text: '哪些聖物遺失了？', nextId: 'missing' },
+          { text: '怎麼淨化污染？', nextId: 'purify' },
+          { text: '先離開。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '聖所光湯能穩住深淵污染造成的眩暈，天界碎片與墜星碎片可用於修補小型結界。真正的聖物不出售，只能被歸還或被託付。',
+        action: { type: 'shop', data: { shopType: 'celestial_reliquary' } },
+        options: [
+          { text: '交易完成。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'missing',
+        text: '破碎光環、黎明武庫核心、誓約緞帶、流明記憶晶。它們分屬聖所、武庫、泉池與檔案庫，缺一處，最終封印就少一個條件。',
+        options: [
+          { text: '淨化條件呢？', nextId: 'purify' },
+        ],
+      },
+      {
+        id: 'purify',
+        text: '把破碎光環聖物放到祭台上，再用誓約緞帶確認意圖。若你只是想拿力量，祭台只會給你冷光。',
+        options: [
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '離庫前請確認你帶走的是補給，不是未被允許的遺物。' },
+    ],
+    guardianHints: {
+      creature: '管理靈本身不攻擊，但她念出失竊聖物名時會喚醒附近神造兵器。',
+      treasure: '名冊最後一頁記錄戰神之槍空架的封存條件。',
+      spirit: '她代表天界仍試圖用秩序面對毀滅，即使庫房已經空了一半。',
+    },
+  },
+
+  celestial_judgment_advocate: {
+    id: 'celestial_judgment_advocate',
+    name: '審判辯護者',
+    alias: 'advocate',
+    title: '站在偏斜天秤旁的聲音',
+    description: '一位披著半透明法袍的天界辯護者站在審判大廳側席，手中的光卷同時寫著赦免與裁決。她的右肩被深淵黑斑侵蝕，卻仍堅持記錄每一次選擇。',
+    roomId: 'judgment_hall',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '天秤已經偏了。若你只用武力通過，它會把你的勝利也記成罪證。先查明污染，再談裁決。',
+        options: [
+          { text: '污染從哪裡來？', nextId: 'pollution' },
+          { text: '我需要提交什麼？', nextId: 'evidence' },
+          { text: '黑環審判者是什麼？', nextId: 'judge' },
+          { text: '我會留意天秤。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'pollution',
+        text: '深淵不是把黑暗倒進大廳，而是改寫法則註解。流明記憶晶能找回原文，破碎光環聖物能把黑斑逼出天秤。',
+        options: [
+          { text: '證物呢？', nextId: 'evidence' },
+        ],
+      },
+      {
+        id: 'evidence',
+        text: '帶來流明記憶晶、誓約緞帶與破碎光環聖物。三者分別證明事實、意圖與淨化資格。',
+        options: [
+          { text: '黑環審判者呢？', nextId: 'judge' },
+        ],
+      },
+      {
+        id: 'judge',
+        text: '那是錯誤法則凝成的裁決者。牠不是墮落天使，也不是守衛；牠是天界相信自己永遠正確時留下的傷口。',
+        options: [
+          { text: '我會處理。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '記住，審判不是要你無罪，而是要你承認選擇的重量。' },
+    ],
+    guardianHints: {
+      creature: '辯護者能看見黑環審判者出現前的法則裂縫。',
+      treasure: '她的光卷背面記錄通往懺悔階空白石板的正確誓句。',
+      spirit: '她讓天界遺跡保留救贖，而不是只剩機械化懲罰。',
+    },
+  },
+
   // ─── 湖畔城鎮擴充 NPC ──────────────────────────────────
 
   innkeeper: {
