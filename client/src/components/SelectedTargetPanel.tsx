@@ -1,5 +1,6 @@
 import type { RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
+import { getEntityImagePath } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -36,13 +37,18 @@ export default function SelectedTargetPanel() {
     );
   }
 
+  const imagePath = getEntityImagePath(entity);
+
   return (
     <div className="selected-target-panel border-b border-border-dim px-3 py-2 space-y-2">
       <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <div className="text-xs text-text-dim">{TYPE_LABEL[entity.type]}</div>
-          <div className="text-sm font-bold text-text-bright truncate">{entity.label}</div>
-          {entity.subtitle && <div className="text-xs text-text-dim truncate">{entity.subtitle}</div>}
+        <div className="min-w-0 flex items-center gap-2">
+          {imagePath && <img src={imagePath} alt="" className="asset-preview" loading="lazy" />}
+          <div className="min-w-0">
+            <div className="text-xs text-text-dim">{TYPE_LABEL[entity.type]}</div>
+            <div className="text-sm font-bold text-text-bright truncate">{entity.label}</div>
+            {entity.subtitle && <div className="text-xs text-text-dim truncate">{entity.subtitle}</div>}
+          </div>
         </div>
         <button className="text-[10px] text-text-dim hover:text-text-bright" onClick={() => setSelectedEntity(null)}>
           clear

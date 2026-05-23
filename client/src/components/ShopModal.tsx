@@ -3,6 +3,7 @@ import { useGameStore } from '../stores/gameStore';
 import type { ShopItem, ShopCategory } from '@game/shared';
 import PurchaseConfirmModal from './PurchaseConfirmModal';
 import TransactionHistory from './TransactionHistory';
+import { getItemImagePath } from '../utils/assetImages';
 
 const CATEGORIES: { key: ShopCategory; label: string }[] = [
   { key: 'weapon', label: '武器' },
@@ -49,6 +50,7 @@ export default function ShopModal({ onPurchase, onGetTransactions }: ShopModalPr
   if (!shopOpen) return null;
 
   const filteredItems = shopItems.filter((item) => item.category === shopCategory);
+  const selectedImagePath = selectedItem ? getItemImagePath(selectedItem.id) : undefined;
 
   const handleClose = () => {
     setShopOpen(false);
@@ -135,43 +137,54 @@ export default function ShopModal({ onPurchase, onGetTransactions }: ShopModalPr
                 {filteredItems.length === 0 && (
                   <div className="text-text-dim text-xs p-4 text-center">此分類暫無商品</div>
                 )}
-                {filteredItems.map((item) => (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setSelectedItem(item)}
-                    className={`shop-item-row cursor-pointer ${selectedItem?.id === item.id ? 'shop-item-selected' : ''}`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span
-                        className="text-xs font-bold"
-                        style={{ color: RARITY_COLORS[item.rarity] }}
-                      >
-                        {item.name}
-                      </span>
-                      <span className="text-xs tabular-nums" style={{ color: '#f5c542' }}>
-                        {item.price} AT
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between mt-0.5">
-                      <span
-                        className="text-[10px]"
-                        style={{ color: RARITY_COLORS[item.rarity], opacity: 0.7 }}
-                      >
-                        {RARITY_LABELS[item.rarity]}
-                      </span>
-                      <span className="text-[10px] text-text-dim">
-                        Lv.{item.levelReq}
-                      </span>
-                    </div>
-                  </button>
-                ))}
+                {filteredItems.map((item) => {
+                  const imagePath = getItemImagePath(item.id);
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => setSelectedItem(item)}
+                      className={`shop-item-row cursor-pointer ${selectedItem?.id === item.id ? 'shop-item-selected' : ''}`}
+                    >
+                      <div className="flex items-center gap-2">
+                        {imagePath && <img src={imagePath} alt="" className="asset-thumb" loading="lazy" />}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-2">
+                            <span
+                              className="text-xs font-bold truncate"
+                              style={{ color: RARITY_COLORS[item.rarity] }}
+                            >
+                              {item.name}
+                            </span>
+                            <span className="text-xs tabular-nums shrink-0" style={{ color: '#f5c542' }}>
+                              {item.price} AT
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between mt-0.5">
+                            <span
+                              className="text-[10px]"
+                              style={{ color: RARITY_COLORS[item.rarity], opacity: 0.7 }}
+                            >
+                              {RARITY_LABELS[item.rarity]}
+                            </span>
+                            <span className="text-[10px] text-text-dim">
+                              Lv.{item.levelReq}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Right: Detail panel */}
               <div className="shop-detail">
                 {selectedItem ? (
                   <>
+                    {selectedImagePath && (
+                      <img src={selectedImagePath} alt="" className="asset-detail-image mb-3" loading="lazy" />
+                    )}
                     <h3
                       className="text-sm font-bold mb-1"
                       style={{ color: RARITY_COLORS[selectedItem.rarity] }}

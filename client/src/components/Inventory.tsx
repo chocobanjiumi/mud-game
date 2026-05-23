@@ -1,5 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
 import { ITEM_DEFS } from '@game/shared';
+import { getItemImagePath } from '../utils/assetImages';
 
 const EQUIP_SLOT_LABELS: Record<string, string> = {
   weapon: '武器',
@@ -84,6 +85,7 @@ export default function Inventory() {
               .map((item, i) => {
                 const def = ITEM_DEFS[item.itemId];
                 const itemName = def?.name ?? item.itemId;
+                const imagePath = getItemImagePath(item.itemId);
                 return (
                   <div
                     key={`${item.itemId}-${i}`}
@@ -111,8 +113,11 @@ export default function Inventory() {
                     onMouseMove={(event) => setTooltipPosition({ x: event.clientX, y: event.clientY })}
                     onMouseLeave={() => setTooltipItem(null)}
                   >
-                    <span className="text-text-bright group-hover:text-text-terminal truncate">
-                      {itemName}
+                    <span className="min-w-0 flex items-center gap-2">
+                      {imagePath && <img src={imagePath} alt="" className="asset-thumb" loading="lazy" />}
+                      <span className="text-text-bright group-hover:text-text-terminal truncate">
+                        {itemName}
+                      </span>
                     </span>
                     {item.quantity > 1 && (
                       <span className="text-text-dim shrink-0 ml-1">x{item.quantity}</span>

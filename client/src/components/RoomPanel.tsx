@@ -1,5 +1,6 @@
 import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
+import { getEntityImagePath } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -54,17 +55,23 @@ function EntityRow({ entity }: { entity: RoomEntity }) {
   const selectedEntity = useGameStore((s) => s.selectedEntity);
   const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
   const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
+  const imagePath = getEntityImagePath(entity);
   return (
     <div className={`room-row room-entity-row ${selected ? 'room-row-selected' : ''}`}>
       <button
-        className="min-w-0 flex-1 text-left"
+        className="min-w-0 flex-1 text-left flex items-center gap-2"
         onClick={() => setSelectedEntity(entity)}
       >
-        <span className={`${TYPE_CLASS[entity.type]} block truncate`}>{entity.label}</span>
-        {entity.subtitle && <span className="text-text-dim block truncate">{entity.subtitle}</span>}
-        {typeof entity.hp === 'number' && typeof entity.maxHp === 'number' && (
-          <span className="text-text-dim block">HP {entity.hp}/{entity.maxHp}</span>
+        {imagePath && (
+          <img src={imagePath} alt="" className="asset-thumb" loading="lazy" />
         )}
+        <span className="min-w-0">
+          <span className={`${TYPE_CLASS[entity.type]} block truncate`}>{entity.label}</span>
+          {entity.subtitle && <span className="text-text-dim block truncate">{entity.subtitle}</span>}
+          {typeof entity.hp === 'number' && typeof entity.maxHp === 'number' && (
+            <span className="text-text-dim block">HP {entity.hp}/{entity.maxHp}</span>
+          )}
+        </span>
       </button>
       <div className="flex gap-1 shrink-0">
         {entity.actions.map((action) => (

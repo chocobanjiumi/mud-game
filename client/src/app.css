@@ -209,6 +209,35 @@ input::placeholder {
   align-items: stretch;
 }
 
+.asset-thumb {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  object-fit: cover;
+  background: rgba(8, 10, 18, 0.8);
+}
+
+.asset-preview {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
+  border-radius: 6px;
+  object-fit: cover;
+  background: rgba(8, 10, 18, 0.8);
+}
+
+.asset-detail-image {
+  width: 96px;
+  height: 96px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
+  border-radius: 6px;
+  object-fit: cover;
+  background: rgba(8, 10, 18, 0.8);
+}
+
 .room-action {
   min-width: 36px;
   height: 24px;
