@@ -6781,6 +6781,106 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把高階材料、商店補給與終局通行物整合成可回訪的時間市集。',
     },
   },
+
+  astral_wastes_anchor_cartographer: {
+    id: 'astral_wastes_anchor_cartographer',
+    name: '奧林',
+    alias: 'cartographer',
+    title: '現實邊門錨圖師',
+    description:
+      '一名錨圖師站在現實邊門旁，地圖不是畫在紙上，而是用錨石碎片釘在半空。' +
+      '他每隔幾分鐘就重新量一次地平線，因為星界荒原不保證下一眼仍是同一個方向。',
+    roomId: 'astral_wastes_reality_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '先找錨，再找路。沒有錨點的路，只是黑域替你畫的邀請函。',
+        options: [
+          { text: '怎麼穿過荒原？', nextId: 'route' },
+          { text: '黑星門在哪？', nextId: 'gate' },
+          { text: '我先固定裝備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '星砂路會動，錨石丘不會。先拿錨石碎片，再過鏡面虛空與蒼白小祠，別在無光沙丘數自己的影子。',
+        options: [
+          { text: '黑星門在哪？', nextId: 'gate' },
+          { text: '我會先找錨。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'gate',
+        text: '黑星門在虛空裂縫之後。黑星印記能辨識門，荒原核心錨能讓你回來；兩者都沒有，就別碰外層黑域。',
+        options: [
+          { text: '怎麼穿過荒原？', nextId: 'route' },
+          { text: '我去找印記。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你走著走著聽見腳步聲從天空傳來，立刻回到最近的錨石。' },
+    ],
+    guardianHints: {
+      creature: '奧林能提示現實邊獵影、錨石巨像、黑星門守與荒原核心星龍的路線關係。',
+      treasure: '他說明星界星砂、錨石碎片、黑星印記與荒原核心錨的用途。',
+      spirit: '他把星界荒原的漂移地形轉成錨點、地平線與黑星門三個可追蹤規則。',
+    },
+  },
+
+  astral_wastes_void_relic_trader: {
+    id: 'astral_wastes_void_relic_trader',
+    name: '妮薇',
+    alias: 'relictrader',
+    title: '蒼白小祠虛玻商',
+    description:
+      '一名虛玻商坐在蒼白小祠的影子裡，貨箱中放著星砂瓶、虛玻鏡片和用黑布包住的黑星印記。' +
+      '她說每件商品都有重量，哪怕拿起來像一段夢。',
+    roomId: 'astral_wastes_pale_shrine',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'astral_starsand',
+      'anchor_stone_chip',
+      'voidglass_mirror',
+      'pale_star_relic',
+      'black_star_sigil',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買就用現在的錢。荒原深處的未來金幣，我上週已經收過太多假貨。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '外層黑域需要什麼？', nextId: 'dark' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、星砂、錨石碎片、虛玻鏡片、蒼白星遺物、黑星印記。能買到的只是材料，能不能回來是另一回事。',
+        action: { type: 'shop', data: { shopType: 'astral_wastes_relics' } },
+        options: [
+          { text: '外層黑域需要什麼？', nextId: 'dark' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'dark',
+        text: '黑星印記開門，荒原核心錨固定退路。外層黑域心核只能從黑域深處取，買來的不會是真的。',
+        options: [
+          { text: '我看看遺物。', nextId: 'shop' },
+          { text: '我去找核心錨。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把虛玻鏡片對著自己太久。倒影會以為它才是買主。' },
+    ],
+    guardianHints: {
+      creature: '妮薇能提示鏡虛潛伏者、蒼白祠輝靈、重力星泥怖物與外層黑域吞噬者的材料線。',
+      treasure: '她供應星界荒原材料與高階藥水，補足黑星門前的補給節點。',
+      spirit: '她把荒原採集、黑星通行與外層黑域終局材料整合成可回訪服務。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

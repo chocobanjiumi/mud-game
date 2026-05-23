@@ -3187,6 +3187,43 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'mythic',
   },
 
+  // ─── 星界荒原材料與黑星聖物 (Lv 52-60) ───
+  astral_starsand: {
+    id: 'astral_starsand', name: '星界星砂', type: 'material',
+    description: '現實邊界上漂浮的銀黑砂粒，會在掌心排成陌生星座，是星界荒原最常見也最不穩定的材料。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 99, levelReq: 52, rarity: 'epic',
+  },
+  anchor_stone_chip: {
+    id: 'anchor_stone_chip', name: '錨石碎片', type: 'material',
+    description: '錨石丘剝落的灰白石片，能短暫固定飄移地平線，避免採集者被虛空裂縫拉離現實。',
+    buyPrice: 3400, sellPrice: 1700, stackable: true, maxStack: 99, levelReq: 53, rarity: 'epic',
+  },
+  voidglass_mirror: {
+    id: 'voidglass_mirror', name: '虛玻鏡片', type: 'material',
+    description: '鏡面虛空中剝離出的黑色鏡片，映出的不是臉，而是另一條現實邊界上的倒影。',
+    buyPrice: 3800, sellPrice: 1900, stackable: true, maxStack: 99, levelReq: 54, rarity: 'legendary',
+  },
+  pale_star_relic: {
+    id: 'pale_star_relic', name: '蒼白星遺物', type: 'material',
+    description: '蒼白小祠供奉的無名星骸碎片，光線微弱卻能壓住黑暗低語，是通過黑星門的穩定材料。',
+    buyPrice: 4200, sellPrice: 2100, stackable: true, maxStack: 99, levelReq: 55, rarity: 'legendary',
+  },
+  black_star_sigil: {
+    id: 'black_star_sigil', name: '黑星印記', type: 'material',
+    description: '黑星門浮現的暗色印記，邊緣像被星光燒穿，可用來辨識荒原核心是否仍連著現實。',
+    buyPrice: 4600, sellPrice: 2300, stackable: true, maxStack: 99, levelReq: 57, rarity: 'legendary',
+  },
+  worldcore_anchor: {
+    id: 'worldcore_anchor', name: '荒原核心錨', type: 'quest',
+    description: '星界荒原核心內部抽出的現實錨點，握住它時能感到大地重新擁有重量。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 59, rarity: 'legendary',
+  },
+  outer_dark_heart: {
+    id: 'outer_dark_heart', name: '外層黑域心核', type: 'quest',
+    description: '外層黑域最深處凝成的黑色心核，內部沒有光，卻能照見星界荒原通往外界的裂縫。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'mythic',
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

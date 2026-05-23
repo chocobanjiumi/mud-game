@@ -6058,4 +6058,227 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '牠不是未來或過去，而是所有沒有發生的路在虛空中長出的掠食者。',
     },
   },
+
+  // ─── 星界荒原 (Lv 52-60) ────────────────────────────────
+
+  reality_edge_stalker: {
+    id: 'reality_edge_stalker', name: '現實邊獵影', alias: 'edgestalker',
+    level: 52, hp: 2800, mp: 420, str: 68, int: 76, dex: 78, vit: 58, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'quick_dash', 'shadow_devour', 'blind'],
+    expReward: 2600, goldReward: [520, 1040],
+    drops: [
+      { itemId: 'astral_starsand', chance: 0.42, minQty: 1, maxQty: 3 },
+      { itemId: 'anchor_stone_chip', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '現實邊門與星砂路上游走的薄影，身體像被地平線切掉一半。牠會在星砂反光裡消失，再從玩家腳下尚未固定的現實縫隙撲出。',
+    isBoss: false,
+    guardianHints: {
+      creature: '現實邊獵影突襲前星砂會短暫失去影子，保持照明能降低致盲風險。',
+      treasure: '牠足跡裡常有星界星砂與錨石碎片。',
+      spirit: '獵影像現實邊界的裂口本能，專門追逐還沒適應荒原重量的人。',
+    },
+  },
+
+  anchorstone_colossus: {
+    id: 'anchorstone_colossus', name: '錨石巨像', alias: 'anchorcolossus',
+    level: 53, hp: 3600, mp: 260, str: 88, int: 44, dex: 24, vit: 108, luk: 12,
+    element: 'light',
+    skills: ['basic_attack', 'stone_slam', 'diamond_skin', 'reflect_barrier'],
+    expReward: 2850, goldReward: [570, 1140],
+    drops: [
+      { itemId: 'anchor_stone_chip', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'astral_starsand', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '錨石丘和漂浮方尖碑周圍站起的巨像，身體由固定現實用的白石組成。牠每次踏步都會讓浮石短暫下墜，並用反射屏障守住通往荒原深處的路。',
+    isBoss: false,
+    guardianHints: {
+      creature: '錨石巨像屏障期間不要硬打，等白石裂光消失再集火。',
+      treasure: '錨石碎片主要來自牠的肩甲和膝石。',
+      spirit: '巨像不是敵意生命，而是荒原用來阻止地平線崩解的沉重錨點。',
+    },
+  },
+
+  cometbone_scavenger: {
+    id: 'cometbone_scavenger', name: '彗骨拾荒者', alias: 'cometscav',
+    level: 54, hp: 3000, mp: 360, str: 72, int: 62, dex: 62, vit: 68, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'charge', 'shadow_bite', 'death_mark'],
+    expReward: 3050, goldReward: [610, 1220],
+    drops: [
+      { itemId: 'pale_star_relic', chance: 0.26, minQty: 1, maxQty: 1 },
+      { itemId: 'astral_starsand', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '在彗骨灘和碎月路翻找星骸的外界拾荒者，背上綁著白骨與破碎月岩。牠會用骨叉標記獵物，等現實重力失衡時衝鋒收割。',
+    isBoss: false,
+    guardianHints: {
+      creature: '彗骨拾荒者標記後衝鋒傷害高，拉開與浮石邊緣的距離。',
+      treasure: '牠背囊裡偶爾藏著蒼白星遺物。',
+      spirit: '拾荒者證明荒原不是空地，而是許多外界旅團的廢棄獵場。',
+    },
+  },
+
+  mirrorvoid_lurker: {
+    id: 'mirrorvoid_lurker', name: '鏡虛潛伏者', alias: 'mirrorlurker',
+    level: 54, hp: 2600, mp: 520, str: 52, int: 86, dex: 76, vit: 56, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_devour', 'charm', 'blind'],
+    expReward: 3200, goldReward: [640, 1280],
+    drops: [
+      { itemId: 'voidglass_mirror', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'anchor_stone_chip', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '鏡面虛空中貼著倒影爬行的潛伏者，牠的臉永遠是目標慢半拍的表情。牠會魅惑玩家追逐倒影，再從鏡片背面吞噬影子。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鏡虛潛伏者靠魅惑與致盲製造錯位，先控場再輸出。',
+      treasure: '牠留下的虛玻鏡片能穩定觀察黑星門。',
+      spirit: '潛伏者不是單一生物，更像荒原把不穩定倒影變成了獵手。',
+    },
+  },
+
+  pale_shrine_luminant: {
+    id: 'pale_shrine_luminant', name: '蒼白祠輝靈', alias: 'paleluminant',
+    level: 55, hp: 3000, mp: 700, str: 40, int: 102, dex: 62, vit: 68, luk: 26,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'sacred_flame', 'crystal_prison'],
+    expReward: 3500, goldReward: [700, 1400],
+    drops: [
+      { itemId: 'pale_star_relic', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'voidglass_mirror', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description:
+      '蒼白小祠與星界湖上方浮動的輝靈，光色像失去溫度的月亮。牠會修補荒原生物被現實灼傷的裂口，也會用晶牢保存入侵者的影像。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '蒼白祠輝靈會治療並控制，優先擊殺可避免長戰。',
+      treasure: '蒼白星遺物多半在牠熄滅後留下的光塵裡。',
+      spirit: '輝靈像外界星光在小祠裡被供奉太久後產生的守護形體。',
+    },
+  },
+
+  gravity_silt_horror: {
+    id: 'gravity_silt_horror', name: '重力星泥怖物', alias: 'silthorror',
+    level: 56, hp: 3900, mp: 540, str: 80, int: 78, dex: 34, vit: 104, luk: 16,
+    element: 'dark',
+    skills: ['basic_attack', 'stone_slam', 'crystal_prison', 'shadow_devour'],
+    expReward: 3900, goldReward: [780, 1560],
+    drops: [
+      { itemId: 'black_star_sigil', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'voidglass_mirror', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '重力沉井與星泥盆地中翻湧的暗色泥體，內部漂著碎星與浮石。牠能突然增加局部重量，把隊伍壓進星泥，再吞掉被困住的影子。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '重力星泥怖物會用晶牢與重擊限制移動，先離開星泥區。',
+      treasure: '牠體內偶爾沉著黑星印記與虛玻鏡片。',
+      spirit: '怖物代表荒原的重力已開始變成活物，會主動拖住現實訪客。',
+    },
+  },
+
+  lost_constellation_seraph: {
+    id: 'lost_constellation_seraph', name: '失落星座熾影', alias: 'constellation',
+    level: 57, hp: 4200, mp: 820, str: 58, int: 112, dex: 68, vit: 76, luk: 30,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'sacred_flame', 'lightning', 'reflect_barrier'],
+    expReward: 4400, goldReward: [880, 1760],
+    drops: [
+      { itemId: 'black_star_sigil', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'pale_star_relic', chance: 0.48, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description:
+      '失落星座中殘留的光翼人形，羽翼由斷裂星線構成。牠會用蒼白聖光修補黑星門前的守衛，並把雷光折成星座圖案壓向敵人。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '失落星座熾影會治療並反射，先觀察屏障節奏再爆發。',
+      treasure: '牠的星線常凝成黑星印記與蒼白星遺物。',
+      spirit: '熾影像被遺忘星座最後的自我防衛，不願承認天空已經破裂。',
+    },
+  },
+
+  blackstar_gatekeeper: {
+    id: 'blackstar_gatekeeper', name: '黑星門守', alias: 'blackstarguard',
+    level: 58, hp: 5600, mp: 720, str: 90, int: 96, dex: 48, vit: 100, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_devour', 'death_mark', 'reflect_barrier', 'charm'],
+    expReward: 5000, goldReward: [1000, 2000],
+    drops: [
+      { itemId: 'black_star_sigil', chance: 0.72, minQty: 1, maxQty: 2 },
+      { itemId: 'worldcore_anchor', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'boss',
+    description:
+      '黑星門前的高大守衛，盔甲像一整片無光夜空，胸口只剩一顆倒燃的黑星。牠審視所有試圖通過的現實生命，並把不合格者標記成門後黑域的食物。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '黑星門守會魅惑、死亡印記與反射屏障，屏障期間先防守。',
+      treasure: '牠是黑星印記與荒原核心錨的重要來源。',
+      spirit: '門守不是守城者，而是黑星門本身對現實生命的篩選機制。',
+    },
+  },
+
+  worldcore_astral_wyrm: {
+    id: 'worldcore_astral_wyrm', name: '荒原核心星龍', alias: 'astralwyrm',
+    level: 60, hp: 7800, mp: 940, str: 104, int: 116, dex: 58, vit: 108, luk: 28,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'lightning', 'meteor', 'crystal_prison', 'reflect_barrier'],
+    expReward: 6400, goldReward: [1280, 2560],
+    drops: [
+      { itemId: 'worldcore_anchor', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'black_star_sigil', chance: 0.7, minQty: 2, maxQty: 3 },
+      { itemId: 'pale_star_relic', chance: 0.55, minQty: 2, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description:
+      '盤繞在星界荒原核心的巨大星龍，鱗片一半是蒼白星光，一半是破碎現實。牠每次翻身都會重新定義地平線，使整片荒原短暫擁有不同方向。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '荒原核心星龍會以晶牢和反射屏障拖慢節奏，保留爆發給屏障空窗。',
+      treasure: '牠必定掉落荒原核心錨，是穩定星界荒原主線的關鍵。',
+      spirit: '星龍是現實仍試圖固定荒原的最後意志。',
+    },
+  },
+
+  outer_dark_devourer: {
+    id: 'outer_dark_devourer', name: '外層黑域吞噬者', alias: 'outerdevourer',
+    level: 60, hp: 7400, mp: 1020, str: 88, int: 122, dex: 72, vit: 94, luk: 32,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_devour', 'charm', 'death_mark', 'soul_drain', 'crystal_prison'],
+    expReward: 6600, goldReward: [1320, 2640],
+    drops: [
+      { itemId: 'outer_dark_heart', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'worldcore_anchor', chance: 0.5, minQty: 1, maxQty: 1 },
+      { itemId: 'voidglass_mirror', chance: 0.75, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '外層黑域中張開的異界吞噬者，身體沒有固定邊界，只能靠被吞掉的星砂輪廓判斷大小。牠會用魅惑讓人放棄現實重量，再把失去錨點的靈魂拖進黑域。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '外層黑域吞噬者會魅惑、吸魂與死亡印記，隊伍需要保留解除控制。',
+      treasure: '牠必定掉落外層黑域心核，是星界荒原終局聖物。',
+      spirit: '吞噬者代表黑域本身，不是入侵荒原，而是在把荒原拉回外界。',
+    },
+  },
 };
