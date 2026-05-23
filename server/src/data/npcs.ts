@@ -3462,6 +3462,136 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他的執念不是財寶，而是把所有礦工的真名重新寫回帳本。',
     },
   },
+
+  wildgrass_hills_pathfinder: {
+    id: 'wildgrass_hills_pathfinder',
+    name: '希洛',
+    alias: 'pathfinder',
+    title: '丘陵領路人',
+    description:
+      '一名臉上有風砂刮痕的領路人靠在防風柵門旁，斗篷邊緣縫著切風羽。' +
+      '他用短木棍在泥地上畫出草浪、煙火與安全水源的位置。',
+    roomId: 'wildgrass_hills_windbreak_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '進丘陵先看草，不要看路。路會被哥布林改，草浪卻會老實說誰剛走過。',
+        options: [
+          { text: '丘陵現在誰控制？', nextId: 'control' },
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '風暴草冠是什麼？', nextId: 'crown' },
+          { text: '我會看草浪。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'control',
+        text:
+          '荒草戰酋用看火營、伏棚和鷹棲柱串成巡邏網。你若不先拆掉信號，酋長脊會一直有援兵。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '風暴草冠是什麼？', nextId: 'crown' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '從高草徑摸到斥候岩臺，奪旗；再破看火營，拿信號角；最後去雷丘和斷圖騰找守風誓詞。',
+        options: [
+          { text: '守風誓詞？', nextId: 'crown' },
+          { text: '路線清楚了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'crown',
+        text:
+          '風暴草冠不是王座，是舊丘民安撫強風的祭地。哥布林把那套誓詞刮壞後，雷和風都開始聽錯命令。',
+        options: [
+          { text: '我會找誓詞。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '若聽見號角，先找風從哪邊來。援兵通常會順風到。',
+      },
+    ],
+    guardianHints: {
+      creature: '希洛能從草浪判斷風草蛇、巨豬與哥布林巡邏的動線。',
+      treasure: '他的路線圖標著隱泉、斷圖騰與伏棚暗路。',
+      spirit: '他相信丘陵不是荒地，只是被錯誤的旗號和誓詞弄亂了方向。',
+    },
+  },
+
+  wildgrass_hills_trapper: {
+    id: 'wildgrass_hills_trapper',
+    name: '瑪妲',
+    alias: 'trapper',
+    title: '荒草陷阱師',
+    description:
+      '一名老練陷阱師坐在隱泉邊修補捕獸夾，腰間掛著草籽袋、羽毛束與野豬牙片。' +
+      '她把每個陷阱都綁上細鈴，避免旅人誤踩。',
+    roomId: 'wildgrass_hills_hidden_spring',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'antidote',
+      'smoke_bomb',
+      'throwing_knife',
+      'herb',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '你要走高草？補藥、煙霧彈和解毒劑先備好。這裡的蛇藏得比哥布林還安靜。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '怎麼避開陷阱？', nextId: 'traps' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '我賣能讓你從草裡活著出來的東西。別省煙霧彈，遇到風旗勇士時它能救命。',
+        action: { type: 'shop', data: { shopType: 'trapper' } },
+        options: [
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '怎麼避開陷阱？', nextId: 'traps' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '風暴草籽、切風羽、雷痕石、硬獠牙板都有人收。信號角和守風誓詞布條別賣，那是拆掉巡邏網的證據。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'traps',
+        text:
+          '哥布林陷阱沒有耐心，通常藏在最直的路上。我自己的陷阱有細鈴，聽到三短一長就繞開。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會聽鈴。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '別在草浪停住的時候走，那不是無風，是有東西伏著。',
+      },
+    ],
+    guardianHints: {
+      creature: '瑪妲知道巨豬衝鋒線與風草蛇出沒的低溝。',
+      treasure: '她藏著幾片完整硬獠牙板，準備修一面能擋衝鋒的盾。',
+      spirit: '她把隱泉當成所有旅人的臨時避風港。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

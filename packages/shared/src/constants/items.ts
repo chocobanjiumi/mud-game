@@ -2374,6 +2374,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['abandoned_mines', 'quest', 'monster_drop'], zoneTags: ['abandoned_mines'],
   },
+  stormgrass_seed: {
+    id: 'stormgrass_seed', name: '風暴草籽', type: 'material',
+    description: '荒草丘陵高處採得的金色草籽，表面帶有細小雷痕。風大時會在掌心輕跳，可用於風暴儀式與草藥調和。',
+    buyPrice: 0, sellPrice: 14,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'monster_drop', 'gathering'], zoneTags: ['wildgrass_hills'],
+  },
+  windcut_feather: {
+    id: 'windcut_feather', name: '切風羽', type: 'material',
+    description: '猛禽在強風中脫落的硬羽，羽緣鋒利，能切開乾草。獵人常把它綁在箭尾，讓箭矢在側風中保持穩定。',
+    buyPrice: 0, sellPrice: 18,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'monster_drop'], zoneTags: ['wildgrass_hills'],
+  },
+  thunder_scar_stone: {
+    id: 'thunder_scar_stone', name: '雷痕石', type: 'material',
+    description: '雷擊丘裂石中敲下的黑藍石片，內部偶爾閃過微光。可作為雷屬性裝備、祭儀與地圖標記材料。',
+    buyPrice: 0, sellPrice: 22,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'monster_drop', 'hidden_cache'], zoneTags: ['wildgrass_hills'],
+  },
+  boar_tusk_plate: {
+    id: 'boar_tusk_plate', name: '硬獠牙板', type: 'material',
+    description: '荒草巨豬撞裂木盾後留下的厚牙片，帶有泥味和草根刮痕。可用來加固皮甲、陷阱或部落戰旗。',
+    buyPrice: 0, sellPrice: 16,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'monster_drop'], zoneTags: ['wildgrass_hills'],
+  },
+  goblin_signal_horn: {
+    id: 'goblin_signal_horn', name: '哥布林信號角', type: 'quest',
+    description: '用野豬獠牙與銅環拼成的粗糙號角，吹響後聲音會被風帶到看火營與酋長脊。它能證明丘陵巡邏由同一套旗號指揮。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'quest', 'monster_drop'], zoneTags: ['wildgrass_hills'],
+  },
+  windward_oath_strip: {
+    id: 'windward_oath_strip', name: '守風誓詞布條', type: 'quest',
+    description: '從斷圖騰空腔中取出的油布誓詞，字句要求旅人順風而行、逆風停步。它是安撫風暴草冠的古老線索。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['wildgrass_hills', 'quest', 'hidden_cache'], zoneTags: ['wildgrass_hills'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {
