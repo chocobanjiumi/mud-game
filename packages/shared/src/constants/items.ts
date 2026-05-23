@@ -2717,6 +2717,41 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['glass_dunes', 'quest', 'monster_drop'], zoneTags: ['glass_dunes'],
   },
+  undercity_trade_token: {
+    id: 'undercity_trade_token', name: '城邦交易牌', type: 'quest',
+    description: '地下城邦市場露臺發放的青銅交易牌，刻有升降門、熔爐與暗河三枚印記。持有者可在正規商鋪留下交易紀錄。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['underground_city', 'quest', 'service'], zoneTags: ['underground_city'],
+  },
+  darkriver_pass: {
+    id: 'darkriver_pass', name: '暗河通行券', type: 'quest',
+    description: '暗河碼頭與走私碼頭都承認的防水石片，邊緣塗著會在菌燈下發亮的渡口漆。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['underground_city', 'quest', 'service'], zoneTags: ['underground_city'],
+  },
+  forge_heat_voucher: {
+    id: 'forge_heat_voucher', name: '熔爐熱額券', type: 'quest',
+    description: '熔爐廣場匠師簽發的耐火薄牌，可換取一次坩堝工坊校溫或裝備修補排程。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['underground_city', 'quest', 'crafting'], zoneTags: ['underground_city'],
+  },
+  lantern_fungus_oil: {
+    id: 'lantern_fungus_oil', name: '菌燈油', type: 'material',
+    description: '菌燈庭園榨出的淡綠燈油，燃燒時不冒煙，適合地底旅店、碼頭與卷宗庫使用。',
+    buyPrice: 90, sellPrice: 45,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['underground_city', 'gathering', 'service'], zoneTags: ['underground_city'],
+  },
+  black_market_seal: {
+    id: 'black_market_seal', name: '黑市暗印', type: 'quest',
+    description: '黑市暗巷中以熱蠟壓出的半合法暗印，能證明一筆交易曾被地下城邦默許，但不會出現在公開帳冊。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['underground_city', 'quest', 'service'], zoneTags: ['underground_city'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

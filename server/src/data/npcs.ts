@@ -5304,6 +5304,401 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '他把古王朝工藝從神話拉回可修理的機械問題。',
     },
   },
+
+  underground_city_lift_warden: {
+    id: 'underground_city_lift_warden',
+    name: '格倫姆',
+    alias: 'warden',
+    title: '升降門守衛',
+    description:
+      '一名穿著鉚釘護甲的守衛站在城邦升降門旁，手握升降鏈閘的銅柄。' +
+      '他會先檢查通行牌，再提醒外來者別在階梯城邦裡亂闖工坊軌道。',
+    roomId: 'underground_city_gate_lift',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '升降門只管兩件事：誰進城，誰帶著麻煩進城。你看起來至少不是第二種。',
+        options: [
+          { text: '入城規矩是什麼？', nextId: 'rules' },
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rules',
+        text: '市場交易要用交易牌，暗河搭船要通行券，熔爐排程要熱額券。黑市的事別在議事廳問。',
+        options: [
+          { text: '我該先去哪？', nextId: 'route' },
+          { text: '我會照規矩。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '抵達廣場能分流。想買東西去市場，想辦事去議事廳，想搭船就往暗河碼頭。',
+        options: [
+          { text: '入城規矩是什麼？', nextId: 'rules' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '走石階內側。外側給貨車和脾氣差的鐵匠。' },
+    ],
+    guardianHints: {
+      creature: '地下城邦是安全城鎮，格倫姆會阻止戰鬥事件被帶進升降門。',
+      treasure: '他掌握城邦交易牌、暗河通行券與熔爐熱額券的基本用途。',
+      spirit: '他讓玩家理解地下城邦不是迷宮，而是一座有規矩的運作城市。',
+    },
+  },
+
+  underground_city_portal_registrar: {
+    id: 'underground_city_portal_registrar',
+    name: '米芮',
+    alias: 'registrar',
+    title: '傳送廳登記員',
+    description:
+      '一名書記站在傳送廳藍光拱道前，桌上排著符文簿、目的地印章與防火墨水。' +
+      '她的工作是確認每次傳送都能在帳本裡找到回程。',
+    roomId: 'underground_city_portal_hall',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '傳送可以很快，也可以很麻煩。若你沒有登記，麻煩通常比你更快抵達。',
+        options: [
+          { text: '能傳去哪？', nextId: 'routes' },
+          { text: '為什麼要登記？', nextId: 'record' },
+          { text: '晚點再辦。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'routes',
+        text: '目前只處理城內節點與已承認的外部入口。危險區域傳送要先去公會辦事處留任務紀錄。',
+        options: [
+          { text: '為什麼要登記？', nextId: 'record' },
+          { text: '我去公會。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'record',
+        text: '城邦在地底，走失的人不一定往下掉，有時會往錯誤年代掉。帳本至少能知道你本來該在哪。',
+        options: [
+          { text: '能傳去哪？', nextId: 'routes' },
+          { text: '有道理。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別碰第三座拱門，它還沒承認今天是今天。' },
+    ],
+    guardianHints: {
+      creature: '米芮不提供戰鬥內容，但會把危險區傳送需求導向公會任務流程。',
+      treasure: '她能發放或驗證城邦正式服務紀錄。',
+      spirit: '她把地下城邦的移動系統變成可追蹤的行政服務。',
+    },
+  },
+
+  underground_city_market_factor: {
+    id: 'underground_city_market_factor',
+    name: '托瑪',
+    alias: 'factor',
+    title: '市場管事',
+    description:
+      '一名市場管事坐在市場露臺的秤臺旁，身後是藥水、菌燈油、繩索和一串串青銅交易牌。' +
+      '他說話像報價，短促、準確、不留太多討價空間。',
+    roomId: 'underground_city_market_terrace',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'lantern_fungus_oil',
+      'undercity_trade_token',
+      'antidote',
+      'small_hp_potion',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '市場露臺收金幣，也收可信紀錄。沒有交易牌，就別抱怨價格像石頭一樣硬。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '交易牌有什麼用？', nextId: 'token' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、菌燈油、繩索、火把、交易牌。要去下層街或暗河，先補光。',
+        action: { type: 'shop', data: { shopType: 'underground_city_market' } },
+        options: [
+          { text: '交易牌有什麼用？', nextId: 'token' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'token',
+        text: '交易牌讓商鋪知道你不是剛從暗河撈上來的影子。公開交易、修補排程、貨物寄存都會看它。',
+        options: [
+          { text: '我看看貨。', nextId: 'shop' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '離開市場前數一次錢，離開黑市前數兩次手指。' },
+    ],
+    guardianHints: {
+      creature: '托瑪維持市場安全，不讓城鎮服務區變成戰鬥區。',
+      treasure: '他的攤位提供菌燈油、城邦交易牌和基礎補給。',
+      spirit: '他把地下城邦的生活感落在可用的交易節點上。',
+    },
+  },
+
+  underground_city_black_broker: {
+    id: 'underground_city_black_broker',
+    name: '席芙',
+    alias: 'broker',
+    title: '黑市掮客',
+    description:
+      '一名掮客靠在黑市暗巷的熱管旁，指尖把半合法暗印翻來翻去。' +
+      '她不提高聲量，因為在這條巷子裡，聽得太清楚也是一種風險。',
+    roomId: 'underground_city_black_market',
+    type: 'merchant',
+    shopItems: [
+      'black_market_seal',
+      'darkriver_pass',
+      'smoke_bomb',
+      'lantern_fungus_oil',
+      'antidote',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你要買合法的東西，去市場。你要買不方便合法的東西，可以先把聲音放低。',
+        options: [
+          { text: '我看看暗貨。', nextId: 'shop' },
+          { text: '黑市暗印是什麼？', nextId: 'seal' },
+          { text: '我只是路過。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '暗印、暗河通行券、開鎖工具、煙霧彈、菌燈油。東西是真的，帳不一定是真的。',
+        action: { type: 'shop', data: { shopType: 'underground_city_black_market' } },
+        options: [
+          { text: '黑市暗印是什麼？', nextId: 'seal' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'seal',
+        text: '暗印代表城邦默許某件事發生，但不希望它太公開。別拿去議事廳炫耀。',
+        options: [
+          { text: '我看看暗貨。', nextId: 'shop' },
+          { text: '懂了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '從走私碼頭離開時，別回頭看第二盞綠燈。那不是給你的。' },
+    ],
+    guardianHints: {
+      creature: '席芙處理地下城邦的風險交易，但仍是城鎮服務 NPC。',
+      treasure: '她提供黑市暗印、暗河通行券與潛行補給。',
+      spirit: '她讓黑市成為有規則的灰色服務，而不是無差別危險區。',
+    },
+  },
+
+  underground_city_guild_clerk: {
+    id: 'underground_city_guild_clerk',
+    name: '奧登',
+    alias: 'clerk',
+    title: '公會辦事員',
+    description:
+      '一名辦事員坐在公會辦事處厚石櫃檯後，將任務委託、傳送紀錄與危險區報告分成不同顏色的石片。' +
+      '他看起來不急，但每份文件都被推到正確的位置。',
+    roomId: 'underground_city_guild_office',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '委託要寫清楚。地底最常見的死法不是怪物，是「我以為那條路能走」。',
+        options: [
+          { text: '有哪些委託？', nextId: 'quests' },
+          { text: '危險區怎麼登記？', nextId: 'danger' },
+          { text: '我整理一下。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'quests',
+        text: '目前缺暗河水位紀錄、熔爐排程簽收、舊地基踏勘報告。你能活著回來，就能拿下一份。',
+        options: [
+          { text: '危險區怎麼登記？', nextId: 'danger' },
+          { text: '我會回報。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text: '先在傳送廳留回程，再在我這裡留目的地。沒有回程紀錄的委託，酬金會先扣一半當找人費。',
+        options: [
+          { text: '有哪些委託？', nextId: 'quests' },
+          { text: '合理。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '文件別折。折痕會讓石片讀錯名字。' },
+    ],
+    guardianHints: {
+      creature: '奧登把地下城邦連到外部危險區任務，不在城內生成戰鬥。',
+      treasure: '他能驗證通行、任務與傳送紀錄。',
+      spirit: '他提供城市的任務樞紐感。',
+    },
+  },
+
+  underground_city_forge_master: {
+    id: 'underground_city_forge_master',
+    name: '巴洛克',
+    alias: 'forgemaster',
+    title: '熔爐總匠',
+    description:
+      '一名總匠站在熔爐廣場熱浪前，鬍鬚被銅環束起，手上握著能測熱的黑鐵尺。' +
+      '他能從火色判斷金屬心情，也能從冒險者護甲刮痕判斷他們是不是亂站。',
+    roomId: 'underground_city_forge_square',
+    type: 'merchant',
+    shopItems: [
+      'forge_heat_voucher',
+      'iron_ore',
+      'mithril_ore',
+      'crystal_shard',
+      'lantern_fungus_oil',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '熔爐不缺火，缺的是排程。你有熱額券，就有工位；沒有，就等火自己冷。',
+        options: [
+          { text: '我看看工坊材料。', nextId: 'shop' },
+          { text: '熱額券怎麼用？', nextId: 'voucher' },
+          { text: '先不打擾。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '熱額券、礦石、水晶碎片、菌燈油。修補鋪能做小活，坩堝工坊做大活。',
+        action: { type: 'shop', data: { shopType: 'underground_city_forge' } },
+        options: [
+          { text: '熱額券怎麼用？', nextId: 'voucher' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'voucher',
+        text: '熱額券買的是熔爐時間，不是成功保證。材料太爛，神也只能鍛出漂亮垃圾。',
+        options: [
+          { text: '我看看工坊材料。', nextId: 'shop' },
+          { text: '懂了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把濕靴踩上熔臺。上個人現在還黏在鐵軌邊。' },
+    ],
+    guardianHints: {
+      creature: '巴洛克代表熔爐廣場的製作服務，不需要新增城內怪物。',
+      treasure: '他供應熔爐熱額券、礦石與工坊材料。',
+      spirit: '他讓地下城邦的火元素變成產業，而不是單純戰鬥。',
+    },
+  },
+
+  underground_city_innkeeper: {
+    id: 'underground_city_innkeeper',
+    name: '蓮娜',
+    alias: 'innkeeper',
+    title: '旅店洞廳掌櫃',
+    description:
+      '一名掌櫃在旅店洞廳的石櫃檯後擦拭杯盞，牆上掛滿從各層街道收來的路牌。' +
+      '洞廳裡有暖霧、菌燈和足夠厚的門，能讓旅人暫時忘記地底有多深。',
+    roomId: 'underground_city_inn_cavern',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'large_hp_potion',
+      'small_mp_potion',
+      'medium_mp_potion',
+      'lantern_fungus_oil',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '床位、熱湯、乾靴。這三樣比英雄故事可靠，尤其是在地下。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '哪裡能休息？', nextId: 'rest' },
+          { text: '晚點回來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水和菌燈油都有。要走暗河，先買燈；要進工坊，先喝水。',
+        action: { type: 'shop', data: { shopType: 'underground_city_inn' } },
+        options: [
+          { text: '哪裡能休息？', nextId: 'rest' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rest',
+        text: '洞廳、蒸汽浴場、菌燈庭園都能讓人緩過來。別在走私碼頭睡，醒來時名字可能會少一半。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '門閂是免費的，但記得自己扣上。' },
+    ],
+    guardianHints: {
+      creature: '蓮娜強化地下城邦作為安全補給點的定位。',
+      treasure: '她提供恢復補給與菌燈油。',
+      spirit: '她讓城市有休息與長線探索前整備的功能。',
+    },
+  },
+
+  underground_city_ferryman: {
+    id: 'underground_city_ferryman',
+    name: '莫瑞克',
+    alias: 'ferryman',
+    title: '暗河船頭',
+    description:
+      '一名船頭靠在暗河碼頭的石樁旁，黑水拍打船腹，船燈裡燃著淡綠菌油。' +
+      '他一眼就能看出誰是乘客，誰是會把船弄沉的麻煩。',
+    roomId: 'underground_city_darkriver_quay',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '暗河不問你從哪來，只問你有沒有通行券。沒券的人，也可以游。',
+        options: [
+          { text: '通行券去哪用？', nextId: 'pass' },
+          { text: '暗河通往哪？', nextId: 'routes' },
+          { text: '我還沒準備好。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'pass',
+        text: '碼頭、走私碼頭、幾條不在公開地圖上的支流。通行券買的是位置，不買保證。',
+        options: [
+          { text: '暗河通往哪？', nextId: 'routes' },
+          { text: '我去買券。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'routes',
+        text: '北接蒸汽浴場排水，南接走私碼頭，還有幾條老地基下的舊水路。別問第三條，先活過第二條。',
+        options: [
+          { text: '通行券去哪用？', nextId: 'pass' },
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '上船前把燈買好。暗河不喜歡替人照路。' },
+    ],
+    guardianHints: {
+      creature: '莫瑞克提供交通與危險提醒，不把暗河碼頭改成戰鬥房。',
+      treasure: '他認暗河通行券與菌燈油。',
+      spirit: '他把城邦下層的交通感具體化。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
