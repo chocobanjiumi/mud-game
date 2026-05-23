@@ -10107,6 +10107,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  bloodsalt_coast_wrecker_quartermaster: {
+    id: 'bloodsalt_coast_wrecker_quartermaster',
+    name: '瑪洛克',
+    alias: 'quartermaster',
+    title: '拾荒者軍需官',
+    description: '一名披著鹽漬皮甲的軍需官站在拾荒者標記旁，桌上壓著海圖、鯊齒與染紅的鹽晶袋。',
+    roomId: 'bloodsalt_coast_wreckers_marker',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'brineward_tonic', 'bloodsalt_crystal', 'sharktooth_tally'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買就快。紅潮上來後，這張桌子可能會變成別人的戰利品。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '血稅是什麼？', nextId: 'tithe' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、鹵血護劑、血鹽晶、鯊齒記功牌。礁心血印不賣，敢賣那東西的人早被潮水拿走了。', action: { type: 'shop', data: { shopType: 'bloodsalt_wrecker_supply' } }, options: [{ text: '血稅是什麼？', nextId: 'tithe' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'tithe', text: '血稅棧橋收的不是錢，是誰能留下船、誰得留下命。戰旗私掠隊長最愛把規矩說成契約。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會避開棧橋。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '踩進紅鹽灘前先看鞋底。鹽晶會把血味留很久。' },
+    ],
+    guardianHints: {
+      creature: '瑪洛克提示紅鹽劫掠手、鹵灣走私割喉客與戰旗私掠隊長。',
+      treasure: '他販售鹵血護劑、血鹽晶與鯊齒記功牌。',
+      spirit: '軍需官讓血鹽海岸的 PVP 補給與血稅規則落地。',
+    },
+  },
+
+  bloodsalt_coast_reef_biologist: {
+    id: 'bloodsalt_coast_reef_biologist',
+    name: '莉芙',
+    alias: 'biologist',
+    title: '紅珊瑚調查員',
+    description: '一名調查員在礁釣哨整理濕透的樣本盒，手臂上有被刃貝劃出的細長傷口。',
+    roomId: 'bloodsalt_coast_reef_fishing_post',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '紅珊瑚不是普通珊瑚。它會記住血流方向，也會把祭儀的錯誤長成新的刺。',
+        options: [
+          { text: '你需要什麼樣本？', nextId: 'sample' },
+          { text: '赤潮從哪來？', nextId: 'tide' },
+          { text: '我會帶回裂片。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'sample', text: '紅珊瑚裂片、血鹽晶、骨網上的黏液。別把刃貝當石頭踩，它們會反過來收集你的樣本。', options: [{ text: '赤潮從哪來？', nextId: 'tide' }, { text: '我去淺灘。', nextId: 'farewell' }] },
+      { id: 'tide', text: '赤潮池只是表面。真正的源頭在儀式礁心，主祭把潮水變成了記名冊。', options: [{ text: '你需要什麼樣本？', nextId: 'sample' }, { text: '我會追到礁心。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '樣本盒若自己變熱，丟掉。那表示它開始記住你。' },
+    ],
+    guardianHints: {
+      creature: '莉芙提示骨網鹽鰓、刃貝群落、紅珊瑚多首獸與儀式礁心主祭。',
+      treasure: '她需要紅珊瑚裂片與血鹽晶作為調查樣本。',
+      spirit: '調查員把海岸生態異變與血祭儀式串起來。',
+    },
+  },
+
+  bloodsalt_coast_ritual_deserter: {
+    id: 'bloodsalt_coast_ritual_deserter',
+    name: '伊凡',
+    alias: 'deserter',
+    title: '血祭逃亡者',
+    description: '一名逃亡者躲在冰暗湧道旁的鹽洞裡，衣襬還留著血壇蠟印和半乾海水。',
+    roomId: 'bloodsalt_coast_ice_dark_surge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別去礁心。主祭念名字時，不需要你回答；潮水會替你回答。',
+        options: [
+          { text: '主祭怎麼打？', nextId: 'hierophant' },
+          { text: '礁心血印是什麼？', nextId: 'seal' },
+          { text: '我會小心潮聲。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'hierophant', text: '死亡印記先落，毒霧封路，冰暗潮壓住逃生方向。看到紅水退成圓形時，快散開。', options: [{ text: '礁心血印是什麼？', nextId: 'seal' }, { text: '我會記住。', nextId: 'farewell' }] },
+      { id: 'seal', text: '那是儀式被打斷後留下的傷口。帶走它，血潮至少會忘記一部分名字。', options: [{ text: '主祭怎麼打？', nextId: 'hierophant' }, { text: '我去礁心。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '如果潮水喊你全名，別回頭。那不是熟人。' },
+    ],
+    guardianHints: {
+      creature: '伊凡提示赤潮血諭者、幽艏船怨靈與儀式礁心主祭。',
+      treasure: '他說明礁心血印是血祭終點證物。',
+      spirit: '逃亡者把血祭恐懼與終點 Boss 機制說清楚。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

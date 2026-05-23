@@ -10130,4 +10130,191 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '主反應殼守衛把廢鐵、能源、古算核與甦醒核心收束成終點。',
     },
   },
+
+  bloodsalt_red_salt_reaver: {
+    id: 'bloodsalt_red_salt_reaver', name: '紅鹽劫掠手', alias: 'reaver',
+    level: 32, hp: 2100, mp: 260, str: 118, int: 42, dex: 108, vit: 116, luk: 24,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'quick_dash', 'poison_arrow'],
+    expReward: 3900, goldReward: [1020, 1940],
+    drops: [
+      { itemId: 'sharktooth_tally', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'bloodsalt_crystal', chance: 0.26, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '紅鹽灘與拾荒者標記附近出沒的海岸劫掠手，刀柄綁著血鹽布條。牠們熟悉退潮路線，專挑隊伍分散時出手。',
+    isBoss: false,
+    guardianHints: {
+      creature: '紅鹽劫掠手會毒箭與快速突進，先清理側翼。',
+      treasure: '鯊齒記功牌多掛在劫掠手腰間。',
+      spirit: '劫掠手建立血鹽海岸的海盜與 PvP 壓力。',
+    },
+  },
+
+  bloodsalt_bone_net_murloc: {
+    id: 'bloodsalt_bone_net_murloc', name: '骨網鹽鰓', alias: 'saltgill',
+    level: 33, hp: 2300, mp: 360, str: 96, int: 72, dex: 86, vit: 142, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'coil', 'venomous_bite'],
+    expReward: 4300, goldReward: [1120, 2120],
+    drops: [
+      { itemId: 'red_coral_splinter', chance: 0.34, minQty: 1, maxQty: 2 },
+      { itemId: 'bloodsalt_crystal', chance: 0.3, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '骨網淺灘與礁釣哨一帶拖著魚骨網的鹽鰓魚人，皮膚被血鹽染成暗紅。牠會把獵物拖進淺水窒息。',
+    isBoss: false,
+    guardianHints: {
+      creature: '骨網鹽鰓會纏繞與水矛，別站在骨網邊緣。',
+      treasure: '紅珊瑚裂片常卡在牠的網腳。',
+      spirit: '鹽鰓魚人讓海岸威脅不只來自海盜。',
+    },
+  },
+
+  bloodsalt_smuggler_cutthroat: {
+    id: 'bloodsalt_smuggler_cutthroat', name: '鹵灣走私割喉客', alias: 'cutthroat',
+    level: 34, hp: 2200, mp: 420, str: 112, int: 74, dex: 132, vit: 108, luk: 28,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_dash', 'blind', 'poison_arrow'],
+    expReward: 4700, goldReward: [1220, 2320],
+    drops: [
+      { itemId: 'brineward_tonic', chance: 0.28, minQty: 1, maxQty: 1 },
+      { itemId: 'sharktooth_tally', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '走私者小灣裡替海盜處理髒貨的割喉客，匕首塗著鹵血護劑剩渣。牠們在浪聲最大時才下刀。',
+    isBoss: false,
+    guardianHints: {
+      creature: '鹵灣走私割喉客會暗影突進與致盲，注意後排。',
+      treasure: '鹵血護劑常藏在走私者皮帶內側。',
+      spirit: '割喉客讓血鹽海岸的黑市與 PVP 伏擊連上。',
+    },
+  },
+
+  bloodsalt_razor_clam_colony: {
+    id: 'bloodsalt_razor_clam_colony', name: '刃貝群落', alias: 'razorclams',
+    level: 35, hp: 2600, mp: 300, str: 130, int: 40, dex: 40, vit: 190, luk: 10,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'shell_guard', 'tail_whip'],
+    expReward: 5200, goldReward: [1360, 2580],
+    drops: [
+      { itemId: 'red_coral_splinter', chance: 0.5, minQty: 1, maxQty: 3 },
+      { itemId: 'bloodsalt_crystal', chance: 0.24, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '刃貝床中成片張合的巨大貝類，貝殼邊緣像浸過血鹽的刀刃。牠們會等腳步靠近才同時彈開。',
+    isBoss: false,
+    guardianHints: {
+      creature: '刃貝群落會甲殼防禦，防禦時先清周圍敵人。',
+      treasure: '紅珊瑚裂片常被貝殼夾住。',
+      spirit: '刃貝群落提供海岸自然地形威脅。',
+    },
+  },
+
+  bloodsalt_crimson_tide_oracle: {
+    id: 'bloodsalt_crimson_tide_oracle', name: '赤潮血諭者', alias: 'tideoracle',
+    level: 37, hp: 2700, mp: 820, str: 64, int: 150, dex: 60, vit: 148, luk: 22,
+    element: 'dark',
+    skills: ['basic_attack', 'toxic_cloud', 'life_drain', 'fear', 'death_mark'],
+    expReward: 6400, goldReward: [1680, 3180],
+    drops: [
+      { itemId: 'bloodsalt_crystal', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'brineward_tonic', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description: '赤潮池與血壇岩棚間主持潮汐占卜的血諭者，掌心的鹽晶會隨祭品心跳碎裂。牠把紅潮稱為神諭。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '赤潮血諭者會毒霧、恐懼與死亡印記，優先打斷。',
+      treasure: '血鹽晶是牠主要的儀式材料。',
+      spirit: '血諭者把紅潮異象與血祭儀式連接起來。',
+    },
+  },
+
+  bloodsalt_ghost_keel_wraith: {
+    id: 'bloodsalt_ghost_keel_wraith', name: '幽艏船怨靈', alias: 'keelwraith',
+    level: 39, hp: 2850, mp: 760, str: 84, int: 142, dex: 92, vit: 146, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'soul_drain', 'fear', 'ice_storm'],
+    expReward: 7200, goldReward: [1880, 3560],
+    drops: [
+      { itemId: 'sharktooth_tally', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'brineward_tonic', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '幽艏船墓裡被船骨困住的怨靈，聲音像潮水拍打空艙。牠會召來冰冷海霧，把活人困在不存在的甲板上。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '幽艏船怨靈會恐懼、吸魂與冰風暴，霧起時先退開。',
+      treasure: '失事海盜的鯊齒記功牌常留在船墓。',
+      spirit: '怨靈讓海岸船難與亡魂線完整。',
+    },
+  },
+
+  bloodsalt_warflag_privateer: {
+    id: 'bloodsalt_warflag_privateer', name: '戰旗私掠隊長', alias: 'privateer',
+    level: 40, hp: 3600, mp: 540, str: 154, int: 90, dex: 116, vit: 188, luk: 26,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'charge', 'poison_arrow', 'death_mark'],
+    expReward: 8200, goldReward: [2140, 4040],
+    drops: [
+      { itemId: 'sharktooth_tally', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'brineward_tonic', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '戰旗沙丘與血稅棧橋間收取過路血稅的私掠隊長，披風上縫滿敵船旗角。牠把所有協議都寫在刀刃上。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '戰旗私掠隊長會衝鋒、毒箭與死亡印記，先拆旗手壓力。',
+      treasure: '牠身上有大量鯊齒記功牌。',
+      spirit: '私掠隊長支撐血鹽海岸的 PVP 戰旗氛圍。',
+    },
+  },
+
+  bloodsalt_red_coral_hydra: {
+    id: 'bloodsalt_red_coral_hydra', name: '紅珊瑚多首獸', alias: 'coralhydra',
+    level: 42, hp: 4400, mp: 700, str: 170, int: 108, dex: 54, vit: 250, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'venomous_bite', 'toxic_cloud', 'tail_whip'],
+    expReward: 9800, goldReward: [2560, 4840],
+    drops: [
+      { itemId: 'red_coral_splinter', chance: 0.76, minQty: 2, maxQty: 4 },
+      { itemId: 'bloodsalt_crystal', chance: 0.42, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'aggressive',
+    description: '紅珊瑚迷宮深處由珊瑚、蛇頸與血潮共同養出的多首獸，每顆頭都咬著不同船隻的殘片。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '紅珊瑚多首獸會毒霧、水矛與尾擊，避免站成直線。',
+      treasure: '紅珊瑚裂片主要來自牠的珊瑚角。',
+      spirit: '多首獸讓迷宮終段具備大型海獸威脅。',
+    },
+  },
+
+  bloodsalt_ritual_reef_hierophant: {
+    id: 'bloodsalt_ritual_reef_hierophant', name: '儀式礁心主祭', alias: 'hierophant',
+    level: 44, hp: 6200, mp: 1300, str: 126, int: 210, dex: 76, vit: 280, luk: 32,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'life_drain', 'toxic_cloud', 'death_mark', 'ice_storm'],
+    expReward: 12800, goldReward: [3360, 6360],
+    drops: [
+      { itemId: 'ritual_reef_bloodseal', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'bloodsalt_crystal', chance: 0.76, minQty: 2, maxQty: 4 },
+      { itemId: 'red_coral_splinter', chance: 0.58, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description: '儀式礁心中央主持血潮的主祭，袍角浸在紅水裡卻永不濕透。牠每念出一個名字，潮聲就會像傷口一樣張開。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2700,
+    guardianHints: {
+      creature: '儀式礁心主祭會死亡印記、吸血、毒霧與冰風暴，標記後先保命。',
+      treasure: '牠必定掉落礁心血印。',
+      spirit: '主祭把海盜、紅潮、魚人與血祭儀式收束成血鹽海岸終點。',
+    },
+  },
 };

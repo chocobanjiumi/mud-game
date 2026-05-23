@@ -3935,6 +3935,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['machine_graveyard'],
   },
 
+  // ─── 血鹽海岸海盜與血祭材料 (Lv 32-44) ───
+  bloodsalt_crystal: {
+    id: 'bloodsalt_crystal', name: '血鹽晶', type: 'material',
+    description: '紅潮退去後留在鹽灘上的暗紅鹽晶，帶有鐵鏽與海腥味。海盜會把它磨入刀傷，血祭者則拿它標記祭品。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 99, levelReq: 32, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['bloodsalt_coast'],
+  },
+  sharktooth_tally: {
+    id: 'sharktooth_tally', name: '鯊齒記功牌', type: 'quest',
+    description: '血鹽海岸海盜用鯊齒串成的記功牌，每一顆齒都代表一艘被拖上暗礁的船。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 32, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['bloodsalt_coast'],
+  },
+  red_coral_splinter: {
+    id: 'red_coral_splinter', name: '紅珊瑚裂片', type: 'material',
+    description: '紅珊瑚迷宮中折落的鋒利珊瑚片，會吸附附近血水並變得更硬。可用於高階毒針與血祭器具。',
+    buyPrice: 3400, sellPrice: 1700, stackable: true, maxStack: 99, levelReq: 34, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['bloodsalt_coast'],
+  },
+  brineward_tonic: {
+    id: 'brineward_tonic', name: '鹵血護劑', type: 'consumable',
+    description: '走私者用鹽草、深海酒與少量血鹽調成的強烈護劑，能壓住冰暗湧道造成的麻痺與失血。',
+    buyPrice: 3800, sellPrice: 1900, stackable: true, maxStack: 20, levelReq: 32, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 460 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['bloodsalt_coast'],
+  },
+  ritual_reef_bloodseal: {
+    id: 'ritual_reef_bloodseal', name: '礁心血印', type: 'quest',
+    description: '儀式礁心主祭敗退後凝成的黑紅印記，像一枚被海水反覆沖刷的傷口。它證明血祭儀式已被打斷。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 44, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['bloodsalt_coast'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
