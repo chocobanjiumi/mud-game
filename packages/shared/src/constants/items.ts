@@ -3686,6 +3686,45 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['arena_quarter'],
   },
 
+  // ─── 王家獵場許可與戰利品 (Lv 18-32) ───
+  royal_hunt_permit: {
+    id: 'royal_hunt_permit', name: '王獵許可章', type: 'quest',
+    description: '許可獵屋核發的銅章，刻有王冠、角鹿與獵犬紋。持有者可合法進入指定獵徑，也能證明獵物不是盜獵所得。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 18, rarity: 'rare',
+    sourceTags: ['quest', 'shop'], zoneTags: ['royal_hunting_grounds'],
+  },
+  silver_antler_tip: {
+    id: 'silver_antler_tip', name: '銀角鹿尖', type: 'material',
+    description: '王家獵場銀徑與白鹿林間掉落的鹿角尖，表面帶著淡淡銀光。貴族委託常用它證明獵人真的追到稀有鹿群。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['royal_hunting_grounds'],
+  },
+  boar_trophy_tusk: {
+    id: 'boar_trophy_tusk', name: '獵豬戰牙', type: 'material',
+    description: '泥沼野豬與王家鬥豬撞裂樹根後留下的厚重獠牙，牙根仍帶著黑泥味，可製成獵場徽章或重弩飾件。',
+    buyPrice: 1600, sellPrice: 800, stackable: true, maxStack: 99, levelReq: 18, rarity: 'uncommon',
+    sourceTags: ['drop', 'shop'], zoneTags: ['royal_hunting_grounds'],
+  },
+  falconry_jess: {
+    id: 'falconry_jess', name: '獵隼足繩', type: 'material',
+    description: '獵隼棲架與獅鷲崖上回收的細皮足繩，銅扣刻著王室鷹徽。它能追溯是哪一支獵隊放飛過猛禽。',
+    buyPrice: 2200, sellPrice: 1100, stackable: true, maxStack: 99, levelReq: 22, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['royal_hunting_grounds'],
+  },
+  gamekeeper_salve: {
+    id: 'gamekeeper_salve', name: '獵監傷藥', type: 'consumable',
+    description: '獵場看守用松脂、乾草藥與蜂蠟調成的厚藥膏，能快速止住被獵犬、荊棘或箭羽擦出的傷口。',
+    buyPrice: 1900, sellPrice: 950, stackable: true, maxStack: 20, levelReq: 18, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 260 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['royal_hunting_grounds'],
+  },
+  white_stag_oath_mark: {
+    id: 'white_stag_oath_mark', name: '白鹿誓印', type: 'quest',
+    description: '白鹿林深處留下的銀白印記，形狀像鹿蹄踏在王冠上。它證明獵人見過獵場守護靈，也提醒王室狩獵不該越過誓約。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 32, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['royal_hunting_grounds'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

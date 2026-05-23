@@ -9290,6 +9290,195 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  royal_hunting_grounds_permit_warden: {
+    id: 'royal_hunting_grounds_permit_warden',
+    name: '艾德溫',
+    alias: 'warden',
+    title: '許可獵屋王室獵監',
+    description:
+      '一名王室獵監站在許可獵屋門口，手套上沾著蠟封與獵犬毛。' +
+      '他用同樣嚴厲的眼神看貴族、傭兵和聲稱只是路過的人。',
+    roomId: 'royal_hunting_grounds_permit_lodge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '進獵場先看許可章。沒有許可的人說自己是獵人，有許可的人才需要證明自己不是盜獵者。',
+        options: [
+          { text: '我要合法狩獵。', nextId: 'permit' },
+          { text: '白鹿是什麼？', nextId: 'stag' },
+          { text: '我會守規矩。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'permit',
+        text: '沿鹿徑、避幼獸、戰利品要登記。獵豬牙和銀角尖能交差，白鹿誓印不能拿來炫耀。',
+        options: [
+          { text: '白鹿是什麼？', nextId: 'stag' },
+          { text: '我去鹿徑。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'stag',
+        text: '白鹿不是獵物。若牠出現，代表獵場在審問你，而不是邀請你拉弓。',
+        options: [
+          { text: '我要合法狩獵。', nextId: 'permit' },
+          { text: '我記住了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把許可章借人。獵犬記的是味道，不是簽名。' },
+    ],
+    guardianHints: {
+      creature: '艾德溫提示王獵犬群、銀徑角鹿、棘林失控獵監與白鹿守誓靈。',
+      treasure: '他說明王獵許可章、銀角鹿尖與白鹿誓印。',
+      spirit: '他把王家獵場的合法狩獵與誓約邊界建立起來。',
+    },
+  },
+
+  royal_hunting_grounds_gamekeeper_supplier: {
+    id: 'royal_hunting_grounds_gamekeeper_supplier',
+    name: '瑪塔',
+    alias: 'supplier',
+    title: '看守營獵場補給官',
+    description:
+      '一名補給官在看守營裡整理弓繩、傷藥和獵犬鈴。' +
+      '她的木箱上刻著許多牙痕，顯然不是每次補給都順利送到。',
+    roomId: 'royal_hunting_grounds_gamekeeper_camp',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'gamekeeper_salve',
+      'boar_trophy_tusk',
+      'falconry_jess',
+      'royal_hunt_permit',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要藥、要足繩、要補許可？快說。獵犬院那邊的鈴聲一亂，我就得關箱。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '盜獵者在哪？', nextId: 'poachers' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '中型藥水、獵監傷藥、獵豬戰牙、獵隼足繩、許可章。銀角尖不賣，那得自己合法取得。',
+        action: { type: 'shop', data: { shopType: 'royal_hunting_supply' } },
+        options: [
+          { text: '盜獵者在哪？', nextId: 'poachers' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'poachers',
+        text: '隱蔽盜獵小徑、貴族獵棚後方、獅鷲崖下都可能有痕跡。看見剪斷的足繩就通知獵監。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '傷藥塗薄一點。塗厚了，獵犬會以為你是點心。' },
+    ],
+    guardianHints: {
+      creature: '瑪塔提示綠林盜獵者、王冠獵隼群、泥牙鬥豬與獅鷲崖母獸。',
+      treasure: '她販售獵監傷藥、獵豬戰牙、獵隼足繩與許可章。',
+      spirit: '她讓獵場補給與盜獵調查形成可回訪節點。',
+    },
+  },
+
+  royal_hunting_grounds_noble_patron: {
+    id: 'royal_hunting_grounds_noble_patron',
+    name: '羅莎琳',
+    alias: 'patron',
+    title: '貴族獵棚委託人',
+    description:
+      '一名貴族委託人坐在獵棚陰影裡，手邊放著未開封的獵弓和一疊委託書。' +
+      '她比多數獵人更懂獵場規矩，也更懂哪些規矩會被人用金幣扭曲。',
+    roomId: 'royal_hunting_grounds_noble_blind',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '我委託的是證物，不是屠戮。帶回銀角鹿尖可以，帶回一片沉默的森林不行。',
+        options: [
+          { text: '你要什麼證物？', nextId: 'proof' },
+          { text: '誰在盜獵？', nextId: 'poachers' },
+          { text: '我會節制。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'proof',
+        text: '銀角尖、足繩、合法牙飾都能說明問題。白鹿誓印若出現，代表我們所有人都越界了。',
+        options: [
+          { text: '誰在盜獵？', nextId: 'poachers' },
+          { text: '我去銀徑。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'poachers',
+        text: '有人用貴族名義買假許可，也有人讓獵監背黑鍋。你找證據，不要只找替罪羊。',
+        options: [
+          { text: '你要什麼證物？', nextId: 'proof' },
+          { text: '我會查清楚。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '真正的獵人知道何時收弓。' },
+    ],
+    guardianHints: {
+      creature: '羅莎琳提示銀徑角鹿、盜獵者、失控獵監與白鹿守誓靈的劇情關係。',
+      treasure: '她說明銀角鹿尖、獵隼足繩與白鹿誓印作為證物的用途。',
+      spirit: '她讓貴族委託從單純狩獵變成調查獵場濫權與盜獵。',
+    },
+  },
+
+  royal_hunting_grounds_stag_listener: {
+    id: 'royal_hunting_grounds_stag_listener',
+    name: '伊文',
+    alias: 'listener',
+    title: '白鹿林誓約聽者',
+    description:
+      '一名沉默的聽者跪坐在白鹿林邊，身旁插著沒有箭頭的木箭。' +
+      '他說自己不是來狩獵，而是來聽獵場還願不願意原諒王室。',
+    roomId: 'royal_hunting_grounds_white_stag_grove',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '白鹿不怕箭。牠怕人忘了自己為什麼拉弓。',
+        options: [
+          { text: '白鹿會攻擊嗎？', nextId: 'avatar' },
+          { text: '誓印要怎麼處理？', nextId: 'mark' },
+          { text: '我會放低武器。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'avatar',
+        text: '牠會阻止貪婪，不會追殺敬畏。若牠張開反射光幕，就先停止攻擊。',
+        options: [
+          { text: '誓印要怎麼處理？', nextId: 'mark' },
+          { text: '我會觀察。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'mark',
+        text: '帶回許可獵屋。誓印不是戰利品，是獵場給王室的警告。',
+        options: [
+          { text: '白鹿會攻擊嗎？', nextId: 'avatar' },
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '如果林間突然安靜，別先找獵物，先找自己的影子。' },
+    ],
+    guardianHints: {
+      creature: '伊文提示白鹿守誓靈、老橡守林衛與獅鷲崖母獸的高階風險。',
+      treasure: '他說明白鹿誓印不是普通掉落，而是獵場警告。',
+      spirit: '他把王家獵場收束到節制、誓約與王室責任。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

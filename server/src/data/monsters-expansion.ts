@@ -8704,4 +8704,198 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '冠軍把訓練、下注、裁判與榮耀全部收束到中央競技場。',
     },
   },
+
+  royal_hunt_hound_pack: {
+    id: 'royal_hunt_hound_pack', name: '王獵犬群', alias: 'houndpack',
+    level: 18, hp: 860, mp: 80, str: 64, int: 18, dex: 72, vit: 58, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'poison_bite'],
+    expReward: 960, goldReward: [230, 440],
+    drops: [
+      { itemId: 'gamekeeper_salve', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'royal_hunt_permit', chance: 0.06, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '獵犬院和王冠獵門附近巡跑的訓練犬群，頸圈掛著小銅鈴。牠們不分貴族或盜獵者，只追逐沒有許可章的氣味。',
+    isBoss: false,
+    guardianHints: {
+      creature: '王獵犬群速度快，聽見鈴聲接近時先靠邊站位。',
+      treasure: '獵犬院常備獵監傷藥。',
+      spirit: '獵犬群代表王室獵場的秩序與警戒。',
+    },
+  },
+
+  mudtusk_boar: {
+    id: 'mudtusk_boar', name: '泥牙鬥豬', alias: 'mudboar',
+    level: 19, hp: 1040, mp: 60, str: 82, int: 12, dex: 30, vit: 92, luk: 8,
+    element: 'nature',
+    skills: ['basic_attack', 'charge', 'stone_slam'],
+    expReward: 1080, goldReward: [260, 500],
+    drops: [
+      { itemId: 'boar_trophy_tusk', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'gamekeeper_salve', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '野豬泥沼裡翻拱地面的厚皮鬥豬，獠牙沾著黑泥與碎根。牠衝鋒前會用前蹄刨地，把貴族獵隊的陣形撞散。',
+    isBoss: false,
+    guardianHints: {
+      creature: '泥牙鬥豬衝鋒前會刨地，側移可避開撞擊。',
+      treasure: '獵豬戰牙多從牠的厚獠牙取得。',
+      spirit: '鬥豬讓獵場保留粗野而可預期的低中階威脅。',
+    },
+  },
+
+  silvertrail_stag: {
+    id: 'silvertrail_stag', name: '銀徑角鹿', alias: 'silverstag',
+    level: 21, hp: 920, mp: 220, str: 58, int: 54, dex: 78, vit: 62, luk: 20,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'holy_light', 'root_bind'],
+    expReward: 1220, goldReward: [300, 570],
+    drops: [
+      { itemId: 'silver_antler_tip', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'royal_hunt_permit', chance: 0.08, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '鹿徑與銀徑間出沒的修長角鹿，鹿角邊緣像被月光磨亮。牠會用藤根阻止追獵者靠近幼鹿，只在被逼入死角時反擊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '銀徑角鹿會治癒與根縛，追擊時避免踩進銀色苔痕。',
+      treasure: '銀角鹿尖是合法狩獵委託常見證物。',
+      spirit: '角鹿是獵場珍稀野獸與狩獵倫理的交界。',
+    },
+  },
+
+  crown_falcon_swarm: {
+    id: 'crown_falcon_swarm', name: '王冠獵隼群', alias: 'falcons',
+    level: 22, hp: 780, mp: 160, str: 52, int: 36, dex: 96, vit: 40, luk: 18,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'blind', 'poison_arrow'],
+    expReward: 1320, goldReward: [330, 630],
+    drops: [
+      { itemId: 'falconry_jess', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'silver_antler_tip', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '獵隼棲架和箭靶林上空盤旋的王室猛禽，足繩上的銅扣在陽光下閃爍。牠們會俯衝啄眼，逼獵人低頭失去獵物位置。',
+    isBoss: false,
+    guardianHints: {
+      creature: '王冠獵隼群會致盲，俯衝前會先拉高盤旋。',
+      treasure: '獵隼足繩可從掉落的皮帶與銅扣回收。',
+      spirit: '獵隼群代表貴族獵術與獵場控制權。',
+    },
+  },
+
+  greenwood_poacher: {
+    id: 'greenwood_poacher', name: '綠林盜獵者', alias: 'poacher',
+    level: 23, hp: 900, mp: 180, str: 58, int: 38, dex: 86, vit: 54, luk: 20,
+    element: 'none',
+    skills: ['basic_attack', 'poison_arrow', 'shadow_dash', 'root_bind'],
+    expReward: 1420, goldReward: [360, 680],
+    drops: [
+      { itemId: 'royal_hunt_permit', chance: 0.18, minQty: 1, maxQty: 1 },
+      { itemId: 'falconry_jess', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '隱蔽盜獵小徑和貴族獵棚附近活動的偷獵者，箭袋裡混著麻醉針與偽造許可。牠們熟悉巡邏死角，專挑珍稀獵物下手。',
+    isBoss: false,
+    guardianHints: {
+      creature: '綠林盜獵者會毒箭與束縛，先清除高處弓手。',
+      treasure: '盜獵者身上可能帶偽造或偷來的王獵許可章。',
+      spirit: '盜獵者讓王室獵場的爭端不只來自野獸。',
+    },
+  },
+
+  thornwood_gamekeeper: {
+    id: 'thornwood_gamekeeper', name: '棘林失控獵監', alias: 'gamekeeper',
+    level: 25, hp: 1180, mp: 240, str: 78, int: 52, dex: 58, vit: 90, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_arrow', 'root_bind', 'bark_shield'],
+    expReward: 1600, goldReward: [410, 780],
+    drops: [
+      { itemId: 'gamekeeper_salve', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'royal_hunt_permit', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '看守營與箭靶林裡過度執行規章的獵監，披風上縫滿舊許可章。牠會把所有越線者都視為盜獵者，連貴族委託也不例外。',
+    isBoss: false,
+    guardianHints: {
+      creature: '棘林失控獵監會根縛與毒箭，先避開警戒線。',
+      treasure: '牠保存獵監傷藥與許可章。',
+      spirit: '失控獵監代表王室秩序過度僵化後的危險。',
+    },
+  },
+
+  old_oak_warden: {
+    id: 'old_oak_warden', name: '老橡守林衛', alias: 'oakwarden',
+    level: 28, hp: 1760, mp: 360, str: 96, int: 72, dex: 20, vit: 150, luk: 10,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'stone_slam', 'nature_drain'],
+    expReward: 2200, goldReward: [570, 1080],
+    drops: [
+      { itemId: 'silver_antler_tip', chance: 0.34, minQty: 1, maxQty: 2 },
+      { itemId: 'gamekeeper_salve', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '老橡林立地裡站起的古老守林衛，樹皮上嵌著王室邊界釘與鹿角碎片。牠不追逐獵人，只會封住被破壞的林徑。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '老橡守林衛會護盾、吸取與束縛，屏障期間先防守。',
+      treasure: '牠身上常嵌著銀角鹿尖。',
+      spirit: '守林衛是獵場本身對過度狩獵的回應。',
+    },
+  },
+
+  griffon_ledge_matriarch: {
+    id: 'griffon_ledge_matriarch', name: '獅鷲崖母獸', alias: 'griffonmatriarch',
+    level: 30, hp: 1580, mp: 320, str: 104, int: 54, dex: 92, vit: 104, luk: 22,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'charge', 'blind', 'poison_arrow'],
+    expReward: 2450, goldReward: [640, 1220],
+    drops: [
+      { itemId: 'falconry_jess', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'silver_antler_tip', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '獅鷲崖上守巢的猛禽母獸，翼尖帶著王室獵隼足繩纏出的舊傷。牠會把任何靠近巢穴的人當成偷蛋者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '獅鷲崖母獸會高速俯衝與致盲，看到翼影變大就散開。',
+      treasure: '獵隼足繩常纏在牠巢邊。',
+      spirit: '母獸讓獵場高處生態與貴族馴禽衝突連起來。',
+    },
+  },
+
+  white_stag_avatar: {
+    id: 'white_stag_avatar', name: '白鹿守誓靈', alias: 'whitestag',
+    level: 32, hp: 2600, mp: 620, str: 86, int: 118, dex: 80, vit: 142, luk: 32,
+    element: 'nature',
+    skills: ['basic_attack', 'holy_light', 'root_bind', 'nature_drain', 'reflect_barrier', 'quick_dash'],
+    expReward: 3300, goldReward: [880, 1680],
+    drops: [
+      { itemId: 'white_stag_oath_mark', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'silver_antler_tip', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'gamekeeper_salve', chance: 0.5, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '白鹿林深處現身的銀白守護靈，鹿角像由月光與王冠誓約共同長成。牠不是獵物，而是檢驗獵人是否仍懂節制的古老見證。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '白鹿守誓靈會治療、反射與根縛，屏障期間不要貪攻。',
+      treasure: '牠必定掉落白鹿誓印，是王家獵場核心證物。',
+      spirit: '白鹿守誓靈把王室狩獵、珍稀野獸與獵場誓約收束在一起。',
+    },
+  },
 };
