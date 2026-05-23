@@ -3405,6 +3405,44 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['amber_forest'],
   },
 
+  // ─── 銀松山脈礦材與採集工具 (Lv 24-36) ───
+  silverpine_mica: {
+    id: 'silverpine_mica', name: '銀松雲母', type: 'material',
+    description: '銀松山脈岩壁間剝落的銀白雲母片，夜裡會反射星光，是山脈最常見的礦材。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 24, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['silverpine_range'],
+  },
+  frost_herb_bundle: {
+    id: 'frost_herb_bundle', name: '霜草束', type: 'material',
+    description: '寒草岩層與霜草岩棚採得的藍白藥草，葉面結著不會融化的細霜，可用於抗寒藥劑。',
+    buyPrice: 2100, sellPrice: 1050, stackable: true, maxStack: 99, levelReq: 25, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['silverpine_range'],
+  },
+  iceglass_ore: {
+    id: 'iceglass_ore', name: '冰玻礦', type: 'material',
+    description: '冰玻洞與晶石碎坡中採出的透明礦石，硬度接近水晶，握在手中會吸走多餘熱度。',
+    buyPrice: 2500, sellPrice: 1250, stackable: true, maxStack: 99, levelReq: 28, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['silverpine_range'],
+  },
+  starwatch_silver_ore: {
+    id: 'starwatch_silver_ore', name: '觀星銀礦', type: 'material',
+    description: '觀星脊與高山礦核出產的星點銀礦，礦面像夜空般散著微光，是高階鍛造與觀測器材材料。',
+    buyPrice: 3100, sellPrice: 1550, stackable: true, maxStack: 99, levelReq: 32, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['silverpine_range'],
+  },
+  mountain_pick_head: {
+    id: 'mountain_pick_head', name: '高山鎬頭', type: 'quest',
+    description: '舊礦工營保存的重鎬頭，專門用來敲開冰玻礦與雲母脈，使用前必須先除霜。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 24, rarity: 'rare',
+    sourceTags: ['quest', 'shop'], zoneTags: ['silverpine_range'],
+  },
+  high_mine_core: {
+    id: 'high_mine_core', name: '高山礦核', type: 'quest',
+    description: '銀松山脈最高礦脈深處取出的寒銀核心，內部同時封著冰玻光、星光與遠古礦工的敲擊回音。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 36, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['silverpine_range'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

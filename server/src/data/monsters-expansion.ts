@@ -7320,4 +7320,199 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '蟲母是封存昆蟲生態與古木樹脂意志的共同核心。',
     },
   },
+
+  silverpine_snowstalker: {
+    id: 'silverpine_snowstalker', name: '銀松雪徑獸', alias: 'snowstalker',
+    level: 24, hp: 980, mp: 130, str: 72, int: 24, dex: 58, vit: 58, luk: 18,
+    element: 'ice',
+    skills: ['basic_attack', 'bite', 'quick_dash', 'howl'],
+    expReward: 1050, goldReward: [285, 540],
+    drops: [
+      { itemId: 'silverpine_mica', chance: 0.34, minQty: 1, maxQty: 2 },
+      { itemId: 'frost_herb_bundle', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '在銀松山道與獸痕雪坡間追蹤氣味的雪白山獸，背毛中夾著雲母碎屑。牠會利用雪線與松影掩護衝刺，專咬採礦隊伍的後排。',
+    isBoss: false,
+    guardianHints: {
+      creature: '銀松雪徑獸會嚎叫與快速突進，雪坡上不要讓後排落單。',
+      treasure: '牠毛皮常沾著銀松雲母與霜草碎葉。',
+      spirit: '雪徑獸是山脈前段最常見的捕食者。',
+    },
+  },
+
+  mica_cliff_lizard: {
+    id: 'mica_cliff_lizard', name: '雲母崖蜥', alias: 'micalizard',
+    level: 25, hp: 920, mp: 150, str: 64, int: 30, dex: 68, vit: 50, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'quick_dash', 'crystal_shard', 'poison_bite'],
+    expReward: 1120, goldReward: [300, 570],
+    drops: [
+      { itemId: 'silverpine_mica', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'iceglass_ore', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '貼著銀脈山徑與雲母折道岩面活動的細長蜥蜴，鱗片像一層層薄雲母。牠會從反光岩壁中突然竄出，用冰晶碎片割傷獵物。',
+    isBoss: false,
+    guardianHints: {
+      creature: '雲母崖蜥會利用反光隱身，岩面閃爍時先防禦。',
+      treasure: '銀松雲母多半卡在牠的鱗片邊緣。',
+      spirit: '崖蜥像礦脈本身長出的守路生物。',
+    },
+  },
+
+  frost_herb_witch: {
+    id: 'frost_herb_witch', name: '霜草巫女', alias: 'frostwitch',
+    level: 26, hp: 880, mp: 360, str: 34, int: 82, dex: 34, vit: 54, luk: 22,
+    element: 'nature',
+    skills: ['basic_attack', 'ice_storm', 'root_bind', 'nature_drain'],
+    expReward: 1240, goldReward: [335, 640],
+    drops: [
+      { itemId: 'frost_herb_bundle', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'silverpine_mica', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '寒草岩層與霜草岩棚間採藥的山巫，斗篷由銀松針與霜草編成。她會用凍風保護藥草，並把冒失採集者的腳纏在冰根裡。',
+    isBoss: false,
+    guardianHints: {
+      creature: '霜草巫女會冰風暴與根縛，採藥點戰鬥要避免被控場。',
+      treasure: '她身上保存著完整霜草束。',
+      spirit: '霜草巫女是山脈藥草生態的守護者。',
+    },
+  },
+
+  iceglass_golem: {
+    id: 'iceglass_golem', name: '冰玻魔像', alias: 'iceglassgolem',
+    level: 28, hp: 1450, mp: 260, str: 82, int: 50, dex: 16, vit: 124, luk: 10,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_slam', 'ice_armor', 'reflect_barrier'],
+    expReward: 1500, goldReward: [405, 770],
+    drops: [
+      { itemId: 'iceglass_ore', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'silverpine_mica', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '冰玻洞與晶石碎坡中凝出的透明魔像，身體內部折射著藍白礦光。牠會升起冰甲與反射屏障，讓採礦鎬在自己手中震裂。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '冰玻魔像會冰甲與反射，等屏障空窗再集中攻擊。',
+      treasure: '冰玻礦主要從牠胸口與肩部剝落。',
+      spirit: '牠是山脈冰玻礦脈的自動防衛。',
+    },
+  },
+
+  silver_sap_treant: {
+    id: 'silver_sap_treant', name: '銀脂松樹人', alias: 'saptreant',
+    level: 29, hp: 1320, mp: 330, str: 74, int: 66, dex: 18, vit: 118, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'nature_drain', 'ice_storm'],
+    expReward: 1580, goldReward: [425, 810],
+    drops: [
+      { itemId: 'frost_herb_bundle', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'silverpine_mica', chance: 0.5, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'defensive',
+    description:
+      '銀脂松圃中甦醒的高大松樹人，樹脂像銀色霜線沿著樹皮流動。牠會用冰根封住山道，吸取闖入者的體溫餵養松針。',
+    isBoss: false,
+    guardianHints: {
+      creature: '銀脂松樹人會根縛、吸血與冰風，山道窄處要避免被困。',
+      treasure: '牠的松皮可刮出銀松雲母與霜草共生根。',
+      spirit: '松樹人是銀松山脈植物線的核心守衛。',
+    },
+  },
+
+  windcut_eagle: {
+    id: 'windcut_eagle', name: '風切銀鷹', alias: 'windcut',
+    level: 30, hp: 1050, mp: 240, str: 66, int: 42, dex: 92, vit: 42, luk: 22,
+    element: 'ice',
+    skills: ['basic_attack', 'quick_dash', 'sonic_wave', 'lightning'],
+    expReward: 1660, goldReward: [445, 850],
+    drops: [
+      { itemId: 'starwatch_silver_ore', chance: 0.22, minQty: 1, maxQty: 1 },
+      { itemId: 'silverpine_mica', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '盤旋在風切木橋、山羊窄徑與鷹巢尖峰上的銀羽巨鷹，羽尖能切開冰霧。牠會借山風俯衝，將獵物逼向碎石坡邊緣。',
+    isBoss: false,
+    guardianHints: {
+      creature: '風切銀鷹速度極高，聽到風聲變尖時立刻防禦。',
+      treasure: '觀星銀礦偶爾會被牠帶回巢中磨爪。',
+      spirit: '銀鷹控制著山脈中段的空中路線。',
+    },
+  },
+
+  avalanche_yeti: {
+    id: 'avalanche_yeti', name: '雪崩雪人', alias: 'avalancheyeti',
+    level: 31, hp: 1560, mp: 220, str: 98, int: 32, dex: 26, vit: 132, luk: 12,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'ice_storm', 'howl'],
+    expReward: 1780, goldReward: [480, 910],
+    drops: [
+      { itemId: 'iceglass_ore', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'frost_herb_bundle', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '雪崩凹地與山羊窄徑附近出沒的厚毛雪人，肩上堆著冰塊與折斷松枝。牠的咆哮能震落積雪，把隊伍埋進半凍泥石中。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '雪崩雪人會重擊與冰風暴，聽到低吼時離開雪壁。',
+      treasure: '牠常把冰玻礦與霜草一起帶進雪窩。',
+      spirit: '雪人是山脈地形危險本身的活動形態。',
+    },
+  },
+
+  starwatch_frost_giant: {
+    id: 'starwatch_frost_giant', name: '觀星霜巨人', alias: 'stargiant',
+    level: 34, hp: 1900, mp: 360, str: 110, int: 58, dex: 28, vit: 150, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'ice_storm', 'lightning', 'death_mark'],
+    expReward: 2100, goldReward: [565, 1080],
+    drops: [
+      { itemId: 'starwatch_silver_ore', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'iceglass_ore', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '守在觀星脊上的霜巨人，背上綁著用銀礦與松木做成的粗糙星盤。牠會用星盤標定闖入者，再引下雷光與冰雪重擊。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '觀星霜巨人會標記、雷擊與冰風暴，先處理標記壓力。',
+      treasure: '牠的星盤鑲著大量觀星銀礦。',
+      spirit: '霜巨人把山脈最高處視為觀測與狩獵的祭台。',
+    },
+  },
+
+  high_mine_crystal_wyrm: {
+    id: 'high_mine_crystal_wyrm', name: '高山礦核晶龍', alias: 'minewyrm',
+    level: 36, hp: 2600, mp: 520, str: 118, int: 90, dex: 36, vit: 168, luk: 20,
+    element: 'ice',
+    skills: ['basic_attack', 'ice_storm', 'crystal_slam', 'reflect_barrier', 'death_mark', 'lightning'],
+    expReward: 2800, goldReward: [760, 1450],
+    drops: [
+      { itemId: 'high_mine_core', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'starwatch_silver_ore', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'iceglass_ore', chance: 0.64, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '盤踞在高山礦核深處的冰晶幼龍，鱗片由冰玻礦與星點銀礦長成。牠每次呼吸都會讓礦洞亮起藍白星光，像整座山正在睜眼。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '高山礦核晶龍會反射、冰風暴與雷擊，屏障期間保留爆發。',
+      treasure: '牠必定掉落高山礦核，是銀松山脈核心材料。',
+      spirit: '晶龍是礦脈、冰玻與星光在山頂凝成的守護意志。',
+    },
+  },
 };

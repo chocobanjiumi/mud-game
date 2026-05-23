@@ -7552,6 +7552,195 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  silverpine_range_claim_surveyor: {
+    id: 'silverpine_range_claim_surveyor',
+    name: '妮拉',
+    alias: 'surveyor',
+    title: '山脈入口界樁測量員',
+    description:
+      '一名穿著厚毛披肩的測量員站在山脈入口界樁旁，手裡拿著刻度繩與除霜鎬。' +
+      '她的筆記本夾滿銀白雲母片，每一片都標著採集高度。',
+    roomId: 'silverpine_range_entry_claim',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '銀松山脈不缺礦，缺的是活著把礦背下山的人。',
+        options: [
+          { text: '先採哪裡？', nextId: 'route' },
+          { text: '高山礦核在哪？', nextId: 'core' },
+          { text: '我會照界樁走。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '前段取銀松雲母和霜草，中段進冰玻洞，後段才去觀星脊。沒有高山鎬頭，別碰高山礦核。',
+        options: [
+          { text: '高山礦核在哪？', nextId: 'core' },
+          { text: '我去銀脈山徑。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text: '觀星脊北側。若礦洞裡的星光開始呼吸，代表晶龍醒了，所有鎬聲都會傳到牠耳裡。',
+        options: [
+          { text: '先採哪裡？', nextId: 'route' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '繩子綁腰，不要綁手。手要留著抓回來。' },
+    ],
+    guardianHints: {
+      creature: '妮拉能提示銀松雪徑獸、冰玻魔像、觀星霜巨人與高山礦核晶龍的路線。',
+      treasure: '她說明銀松雲母、霜草束、冰玻礦與觀星銀礦的採集順序。',
+      spirit: '她把銀松山脈的 resource 區轉成可追蹤採集高度。',
+    },
+  },
+
+  silverpine_range_miner_factor: {
+    id: 'silverpine_range_miner_factor',
+    name: '葛蘭',
+    alias: 'factor',
+    title: '舊礦工營礦材商',
+    description:
+      '一名老礦材商守著舊礦工營的半塌棚屋，貨架上擺著雲母片、霜草束與幾個備用鎬頭。' +
+      '他說每個鎬頭都有故事，多半不是好結局。',
+    roomId: 'silverpine_range_old_miner_camp',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'large_hp_potion',
+      'silverpine_mica',
+      'frost_herb_bundle',
+      'mountain_pick_head',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買礦、買草、買鎬頭都行。買雪崩預報不行，山自己也不一定知道。',
+        options: [
+          { text: '我看看礦材。', nextId: 'shop' },
+          { text: '冰玻礦怎麼取？', nextId: 'iceglass' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '銀松雲母、霜草束、高山鎬頭和一些藥水。冰玻礦要現採，觀星銀礦我不替死人保管。',
+        action: { type: 'shop', data: { shopType: 'silverpine_miner' } },
+        options: [
+          { text: '冰玻礦怎麼取？', nextId: 'iceglass' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'iceglass',
+        text: '先把鎬頭除霜，敲三下停一下。冰玻魔像如果跟著你的節奏敲，就代表你該跑了。',
+        options: [
+          { text: '我看看礦材。', nextId: 'shop' },
+          { text: '我會聽回音。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '下山比上山難。背包留一格給繩索，不要全塞礦。' },
+    ],
+    guardianHints: {
+      creature: '葛蘭能提示雲母崖蜥、冰玻魔像與雪崩雪人的採礦風險。',
+      treasure: '他販售銀松雲母、霜草束與高山鎬頭，補足採集商店功能。',
+      spirit: '他把舊礦工營變成山脈中段補給與材料節點。',
+    },
+  },
+
+  silverpine_range_herbalist: {
+    id: 'silverpine_range_herbalist',
+    name: '芙蕾雅',
+    alias: 'herbalist',
+    title: '霜草岩棚藥師',
+    description:
+      '一名藥師在霜草岩棚旁用小刷子掃開葉面冰霜，背簍裡裝著霜草束與松針。' +
+      '她每摘一束草都會把根旁的雪壓回原位。',
+    roomId: 'silverpine_range_frost_herb_ledge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '霜草不是越多越好。摘光一層，明年整條山徑都會結黑冰。',
+        options: [
+          { text: '霜草巫女危險嗎？', nextId: 'witch' },
+          { text: '雪崩凹地怎麼走？', nextId: 'avalanche' },
+          { text: '我會留根。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'witch',
+        text: '她守草，不守人。你若帶著切根的鎬痕，她會先讓你的腳學會長根。',
+        options: [
+          { text: '雪崩凹地怎麼走？', nextId: 'avalanche' },
+          { text: '我只採葉。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'avalanche',
+        text: '午後別走，星光亮時再走。雪崩雪人睡得淺，鐵靴踩空一次就會醒。',
+        options: [
+          { text: '霜草巫女危險嗎？', nextId: 'witch' },
+          { text: '我等星光。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '霜草要用布包，別用手捏，手熱會壞葉脈。' },
+    ],
+    guardianHints: {
+      creature: '芙蕾雅能提示霜草巫女、銀脂松樹人與雪崩雪人的生態。',
+      treasure: '她說明霜草束與銀松雲母共生根的採集規矩。',
+      spirit: '她把藥草線與山脈地形危險串起來。',
+    },
+  },
+
+  silverpine_range_starwatcher: {
+    id: 'silverpine_range_starwatcher',
+    name: '歐里安',
+    alias: 'starwatcher',
+    title: '觀星脊守夜人',
+    description:
+      '一名守夜人坐在觀星脊的石台邊，身旁架著用觀星銀礦做的簡易星盤。' +
+      '他盯著高山礦核方向的藍白光點，像在等某顆星從山裡升起。',
+    roomId: 'silverpine_range_starwatch_ridge',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '山頂的星不是都在天上。有些在礦裡，有些在龍的鱗片下面。',
+        options: [
+          { text: '霜巨人守什麼？', nextId: 'giant' },
+          { text: '晶龍怎麼打？', nextId: 'wyrm' },
+          { text: '我會看星盤。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'giant',
+        text: '牠守觀測線。你帶著觀星銀礦經過，牠會覺得你偷走了牠的星。',
+        options: [
+          { text: '晶龍怎麼打？', nextId: 'wyrm' },
+          { text: '我會繞開星盤。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'wyrm',
+        text: '等反射屏障暗下去再打。高山礦核晶龍每次呼吸都會照亮弱點，但也會照亮你。',
+        options: [
+          { text: '霜巨人守什麼？', nextId: 'giant' },
+          { text: '我準備進礦核。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若星盤開始倒轉，別問我原因，先退下山脊。' },
+    ],
+    guardianHints: {
+      creature: '歐里安能提示風切銀鷹、觀星霜巨人與高山礦核晶龍的後段威脅。',
+      treasure: '他說明觀星銀礦與高山礦核的用途。',
+      spirit: '他把觀星脊、高山礦核與星光礦脈收束成山脈終段。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
