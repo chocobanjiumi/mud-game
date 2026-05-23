@@ -218,6 +218,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'shadow_pelt', chance: 0.35, minQty: 1, maxQty: 1 },
       { itemId: 'shadow_essence', chance: 0.15, minQty: 1, maxQty: 1 },
+      { itemId: 'ranger_shadow_report', chance: 0.12, minQty: 1, maxQty: 1 },
       { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
@@ -248,6 +249,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [20, 40],
     drops: [
       { itemId: 'spider_silk', chance: 0.45, minQty: 1, maxQty: 3 },
+      { itemId: 'spider_silk_bundle', chance: 0.22, minQty: 1, maxQty: 2 },
       { itemId: 'spider_venom', chance: 0.25, minQty: 1, maxQty: 1 },
       { itemId: 'spider_eye', chance: 0.15, minQty: 1, maxQty: 1 },
     ],
@@ -279,6 +281,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [25, 50],
     drops: [
       { itemId: 'ancient_bark', chance: 0.4, minQty: 1, maxQty: 2 },
+      { itemId: 'shadowmoss_clump', chance: 0.22, minQty: 1, maxQty: 2 },
       { itemId: 'nature_crystal', chance: 0.1, minQty: 1, maxQty: 1 },
       { itemId: 'treant_sap', chance: 0.3, minQty: 1, maxQty: 1 },
     ],
@@ -1196,6 +1199,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'faded_grimoire', chance: 1.0, minQty: 1, maxQty: 1 },
       { itemId: 'ancient_bark', chance: 1.0, minQty: 2, maxQty: 4 },
+      { itemId: 'shadowmoss_clump', chance: 0.52, minQty: 1, maxQty: 3 },
       { itemId: 'nature_crystal', chance: 0.5, minQty: 1, maxQty: 2 },
       { itemId: 'shadow_essence', chance: 0.6, minQty: 1, maxQty: 2 },
     ],
@@ -1531,6 +1535,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [20, 40],
     drops: [
       { itemId: 'herb', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'spider_silk_bundle', chance: 0.24, minQty: 1, maxQty: 2 },
       { itemId: 'antidote', chance: 0.25, minQty: 1, maxQty: 2 },
     ],
     aiType: 'aggressive',
@@ -1562,6 +1567,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'long_bow', chance: 0.08, minQty: 1, maxQty: 1 },
       { itemId: 'shadow_essence', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'ranger_shadow_report', chance: 0.14, minQty: 1, maxQty: 1 },
       { itemId: 'medium_hp_potion', chance: 0.2, minQty: 1, maxQty: 1 },
     ],
     aiType: 'aggressive',
@@ -1593,6 +1599,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     drops: [
       { itemId: 'crystal_staff', chance: 0.05, minQty: 1, maxQty: 1 },
       { itemId: 'mage_robe', chance: 0.06, minQty: 1, maxQty: 1 },
+      { itemId: 'moonwell_draught', chance: 0.2, minQty: 1, maxQty: 1 },
       { itemId: 'medium_mp_potion', chance: 0.3, minQty: 1, maxQty: 2 },
     ],
     aiType: 'healer',

@@ -485,7 +485,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 900 },
-      { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 80 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 80 },
       { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 55 },
     ],
     mapSymbol: '[D]',

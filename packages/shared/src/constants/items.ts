@@ -2184,6 +2184,31 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 260, sellPrice: 130, stackable: true, maxStack: 99, levelReq: 4, rarity: 'common',
     sourceTags: ['drop', 'gather'], zoneTags: ['plains'],
   },
+  shadowmoss_clump: {
+    id: 'shadowmoss_clump', name: '暗苔團', type: 'material',
+    description: '暗影森林樹根下剝下的濕冷苔蘚，離開陰影後仍會慢慢吸光。藥草採集者常用它測量森林污染深度。',
+    buyPrice: 620, sellPrice: 310, stackable: true, maxStack: 99, levelReq: 10, rarity: 'rare',
+    sourceTags: ['drop', 'shop', 'gather'], zoneTags: ['dark_forest'],
+  },
+  spider_silk_bundle: {
+    id: 'spider_silk_bundle', name: '密林蛛絲束', type: 'material',
+    description: '暗影森林蛛網密室收集的韌性蛛絲，帶有淡淡毒粉。可用於縫補披風、製作陷阱或固定藥草包。',
+    buyPrice: 780, sellPrice: 390, stackable: true, maxStack: 99, levelReq: 10, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['dark_forest'],
+  },
+  moonwell_draught: {
+    id: 'moonwell_draught', name: '月井清露', type: 'consumable',
+    description: '月影井中取出的冷白露水，加入暗苔後能暫時壓住森林毒霧造成的暈眩，並恢復體力。',
+    buyPrice: 1100, sellPrice: 550, stackable: true, maxStack: 20, levelReq: 10, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 180 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['dark_forest'],
+  },
+  ranger_shadow_report: {
+    id: 'ranger_shadow_report', name: '巡林暗影報告', type: 'quest',
+    description: '巡林者用防水皮紙記下的暗影擴散報告，包含狼跡、蛛網密度與古樹心庭根系異常。交回後可協助判斷森林核心是否惡化。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 12, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['dark_forest'],
+  },
   kingdom_supply_crate: {
     id: 'kingdom_supply_crate', name: '王國補給箱', type: 'material',
     description: '封有王國軍需印記的沉重補給箱，內含糧秣、繃帶與前線修繕零件。箱角的蠟封會記錄運送路線，攜帶時必須依王國交通規則交付。',

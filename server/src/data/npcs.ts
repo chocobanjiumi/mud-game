@@ -2195,6 +2195,7 @@ export const NPCS: Record<string, NpcDef> = {
       'small_hp_potion', 'medium_hp_potion', 'large_hp_potion',
       'small_mp_potion', 'medium_mp_potion',
       'antidote', 'strength_potion', 'agility_potion',
+      'shadowmoss_clump', 'moonwell_draught',
     ],
     dialogue: [
       {
