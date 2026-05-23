@@ -6391,6 +6391,151 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把高階素材、商店補給與終局通行物整合成一個可回訪的服務點。',
     },
   },
+
+  obsidian_depths_mine_foreman: {
+    id: 'obsidian_depths_mine_foreman',
+    name: '葛朗',
+    alias: 'foreman',
+    title: '深層礦梯工頭',
+    description:
+      '一名老礦工守在深層礦梯旁，鬍鬚被硫煙燻成灰黑，手上的測溫錘仍亮著暗紅刻度。' +
+      '他把每條礦脈的熱壓變化記在鐵牌上，避免採集隊走進會自燃的黑曜路線。',
+    roomId: 'obsidian_depths_mine_lift',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '下礦前先看錘溫。黑曜會照出你的臉，也會照出你死在哪條路。',
+        options: [
+          { text: '哪條路能採礦？', nextId: 'route' },
+          { text: '世界熔爐在哪？', nextId: 'forge' },
+          { text: '我先檢查裝備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '鏡黑礦脈採碎片，硫磺氣袋採硫心礦。若鎖鏈長廊開始自己響，代表熔爐鏈衛醒了。',
+        options: [
+          { text: '世界熔爐在哪？', nextId: 'forge' },
+          { text: '我會標記路線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'forge',
+        text: '過黑玻橋，拿熔鎖印記，再從心鏡廳進核心。別相信心鏡裡比較輕鬆的那條路，那通常是惡魔給你的。',
+        options: [
+          { text: '哪條路能採礦？', nextId: 'route' },
+          { text: '我去找印記。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若靴底開始黏住地面，別省那瓶藥水，跑。' },
+    ],
+    guardianHints: {
+      creature: '葛朗能提示碎曜爬行獸、硫煙小魔、熔爐鏈衛與熔鎖門監守的路線風險。',
+      treasure: '他會說明鏡面黑曜碎片、硫心礦與熔鎖印記的用途。',
+      spirit: '他把資源區的採集節奏轉成熱壓、反光與鎖鏈聲三種可辨識訊號。',
+    },
+  },
+
+  obsidian_depths_relic_smelter: {
+    id: 'obsidian_depths_relic_smelter',
+    name: '蓓菈',
+    alias: 'smelter',
+    title: '棄市礦棚遺物熔匠',
+    description:
+      '一名熔匠在棄市礦棚搭起臨時坩堝，黑玻鏈環、核心鑽頭和半熔藥瓶分類排在耐火布上。' +
+      '她的護目鏡被黑曜反光刮花，卻仍能精準看出材料的熔點。',
+    roomId: 'obsidian_depths_obsidian_market',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'mirror_obsidian_shard',
+      'sulfur_heart_ore',
+      'blackglass_chain_link',
+      'ancient_forge_cinder',
+      'core_drill_bit',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買就快，坩堝下一次升溫時，這裡連價格牌都會融掉。',
+        options: [
+          { text: '我看看材料。', nextId: 'shop' },
+          { text: '熔鎖門要什麼？', nextId: 'lock' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、黑曜碎片、硫心礦、黑玻鏈環、古爐餘燼、核心鑽頭。越接近核心，越需要買能讓你回頭的東西。',
+        action: { type: 'shop', data: { shopType: 'obsidian_depths_relics' } },
+        options: [
+          { text: '熔鎖門要什麼？', nextId: 'lock' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'lock',
+        text: '鏈環修門，餘燼校溫，鑽頭開殼。熔鎖印記得從監守身上取，不然黑曜心鏡只會讓你繞回原點。',
+        options: [
+          { text: '我看看材料。', nextId: 'shop' },
+          { text: '我去找監守。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '別把剛買的材料放在心鏡前。影子也會想偷。' },
+    ],
+    guardianHints: {
+      creature: '蓓菈能提示黑玻魔像、熔爐鏈衛、心鏡暗魔與世界熔爐巨像的材料關係。',
+      treasure: '她供應黑曜深層材料與高階藥水，讓資源區有可回訪補給點。',
+      spirit: '她把採集、熔煉與核心通行物整合成棄市礦棚的交易節點。',
+    },
+  },
+
+  obsidian_depths_fire_shrine_adept: {
+    id: 'obsidian_depths_fire_shrine_adept',
+    name: '伊洛',
+    alias: 'adept',
+    title: '深層火祠守焰學徒',
+    description:
+      '一名守焰學徒跪在深層火祠前，火光把他的影子投在黑曜牆上，影子卻比本人多出一對角。' +
+      '他負責辨識古爐餘燼是否仍屬於人類匠師，而不是惡魔鑄兵爐。',
+    roomId: 'obsidian_depths_depths_shrine',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '火不會說謊，但黑曜會替火加上你想聽的旁白。',
+        options: [
+          { text: '火祠在守什麼？', nextId: 'shrine' },
+          { text: '大惡魔想做什麼？', nextId: 'fiend' },
+          { text: '我先聽火聲。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shrine',
+        text: '這裡原本替匠師校準火種。現在惡魔把火種改成軍爐，若世界熔爐燼核被奪，整條礦脈都會變成兵器。',
+        options: [
+          { text: '大惡魔想做什麼？', nextId: 'fiend' },
+          { text: '我去核心確認。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fiend',
+        text: '牠不缺火，牠缺穩定的爐心。心鏡暗魔負責篩選恐懼，世界熔爐巨像負責鍛打，最後由大惡魔接管產能。',
+        options: [
+          { text: '火祠在守什麼？', nextId: 'shrine' },
+          { text: '我會破壞爐心。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你的影子先走一步，停下來。那代表心鏡已經開始認得你。' },
+    ],
+    guardianHints: {
+      creature: '伊洛能解釋餘燼盆地火靈、心鏡暗魔、世界熔爐巨像與黑曜深層大惡魔的主線關係。',
+      treasure: '他指出古爐餘燼、核心鑽頭與世界熔爐燼核在熔爐線中的用途。',
+      spirit: '他把黑曜深層從單純採礦區提升為惡魔奪取熔爐產能的劇情節點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */

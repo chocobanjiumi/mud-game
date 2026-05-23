@@ -3113,6 +3113,43 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
 
+  // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
+  mirror_obsidian_shard: {
+    id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
+    description: '從鏡黑礦脈敲下的黑曜碎片，表面能映出不在身後的影子，是高階熔爐校準反光角度的基材。',
+    buyPrice: 2000, sellPrice: 1000, stackable: true, maxStack: 99, levelReq: 45, rarity: 'epic',
+  },
+  sulfur_heart_ore: {
+    id: 'sulfur_heart_ore', name: '硫心礦', type: 'material',
+    description: '硫磺氣袋深處凝出的黃黑礦核，敲裂時會噴出刺鼻熱霧，常被用於耐火藥劑與爆破鑽井。',
+    buyPrice: 2300, sellPrice: 1150, stackable: true, maxStack: 99, levelReq: 46, rarity: 'epic',
+  },
+  blackglass_chain_link: {
+    id: 'blackglass_chain_link', name: '黑玻鏈環', type: 'material',
+    description: '熔爐守衛使用的黑玻鎖鏈環，外層像玻璃般光滑，內側卻留有能吸住暗火的粗糙刻痕。',
+    buyPrice: 2700, sellPrice: 1350, stackable: true, maxStack: 99, levelReq: 48, rarity: 'legendary',
+  },
+  ancient_forge_cinder: {
+    id: 'ancient_forge_cinder', name: '古爐餘燼', type: 'material',
+    description: '古代熔爐底部尚未熄滅的餘燼，隔著石匣仍會緩慢升溫，是重鑄高階裝備時最穩定的火種。',
+    buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 49, rarity: 'legendary',
+  },
+  core_drill_bit: {
+    id: 'core_drill_bit', name: '核心鑽頭', type: 'material',
+    description: '核心鑽井折斷的古代鑽頭，尖端混合黑曜、熔鐵與惡魔骨粉，可在世界熔爐外殼留下刻痕。',
+    buyPrice: 3400, sellPrice: 1700, stackable: true, maxStack: 99, levelReq: 51, rarity: 'legendary',
+  },
+  molten_lock_sigill: {
+    id: 'molten_lock_sigill', name: '熔鎖印記', type: 'quest',
+    description: '熔鎖門守衛身上剝落的赤黑印記，仍會按照古代熔爐的節拍開合，是進入黑曜心鏡的憑證。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 52, rarity: 'legendary',
+  },
+  worldforge_ember_core: {
+    id: 'worldforge_ember_core', name: '世界熔爐燼核', type: 'quest',
+    description: '世界熔爐核心深處凝出的暗紅燼核，內部像有一座微型火山持續呼吸，是黑曜深層最終熔爐線索。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 55, rarity: 'mythic',
+  },
+
   // ─── 深海神殿材料與聖物 (Lv 42-52) ───
   bluefire_coral: {
     id: 'bluefire_coral', name: '藍火珊瑚', type: 'material',
