@@ -3150,6 +3150,43 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 58, rarity: 'mythic',
   },
 
+  // ─── 時間廢墟材料與零分核心 (Lv 50-60) ───
+  reversed_hourglass_sand: {
+    id: 'reversed_hourglass_sand', name: '倒流沙漏砂', type: 'material',
+    description: '沙漏廣場中逆向流動的銀砂，離開容器後仍會向上漂浮，可用於校準時間線儀式。',
+    buyPrice: 2800, sellPrice: 1400, stackable: true, maxStack: 99, levelReq: 50, rarity: 'epic',
+  },
+  broken_clock_gear: {
+    id: 'broken_clock_gear', name: '碎鐘齒輪', type: 'material',
+    description: '碎鐘路與停擺鐘塔剝落的黑銅齒輪，齒痕會重複敲出同一秒鐘的回音。',
+    buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 51, rarity: 'epic',
+  },
+  memory_reef_pearl: {
+    id: 'memory_reef_pearl', name: '記憶礁珠', type: 'material',
+    description: '倒流河岸沖上記憶礁的灰白珠核，內部封著陌生人的過去與還未發生的告別。',
+    buyPrice: 3400, sellPrice: 1700, stackable: true, maxStack: 99, levelReq: 52, rarity: 'legendary',
+  },
+  paradox_splinter: {
+    id: 'paradox_splinter', name: '悖論裂片', type: 'material',
+    description: '悖論迴廊中互相否定的時線碎片，邊緣會不斷變成剛裂開與早已風化兩種狀態。',
+    buyPrice: 3800, sellPrice: 1900, stackable: true, maxStack: 99, levelReq: 54, rarity: 'legendary',
+  },
+  causality_thread: {
+    id: 'causality_thread', name: '因果絲線', type: 'material',
+    description: '因果井底部拉出的透明絲線，能短暫把原因與結果縫在一起，是零分核心前最危險的媒介。',
+    buyPrice: 4200, sellPrice: 2100, stackable: true, maxStack: 99, levelReq: 56, rarity: 'legendary',
+  },
+  minute_zero_key: {
+    id: 'minute_zero_key', name: '零分鑰印', type: 'quest',
+    description: '鐘心門深處浮現的鑰形時間印記，只有在秒針完全停下時才會顯露輪廓。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 58, rarity: 'legendary',
+  },
+  afterimage_void_core: {
+    id: 'afterimage_void_core', name: '餘影虛空核心', type: 'quest',
+    description: '零分核心後方殘留的虛空核心，內部同時存在已結束與尚未開始的兩場戰鬥。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'mythic',
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

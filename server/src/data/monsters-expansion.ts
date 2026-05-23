@@ -5858,4 +5858,204 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '吞星者不是守護者，而是隕星撞開裂縫後真正想進入世界的存在。',
     },
   },
+
+  // ─── 時間廢墟 (Lv 50-60) ────────────────────────────────
+
+  epoch_gate_warden: {
+    id: 'epoch_gate_warden', name: '紀元門衛', alias: 'epochwarden',
+    level: 50, hp: 2600, mp: 320, str: 76, int: 62, dex: 38, vit: 88, luk: 16,
+    element: 'lightning',
+    skills: ['basic_attack', 'stone_slam', 'lightning', 'reflect_barrier'],
+    expReward: 1900, goldReward: [380, 760],
+    drops: [
+      { itemId: 'broken_clock_gear', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'reversed_hourglass_sand', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '紀元入口與碎鐘路上巡行的青銅守衛，胸口鑲著不斷倒轉的秒針。牠會把攻擊折回上一瞬間，讓冒進者反覆承受自己剛打出的力道。',
+    isBoss: false,
+    guardianHints: {
+      creature: '紀元門衛開啟反射屏障時先停手，秒針恢復正轉後再進攻。',
+      treasure: '牠身上的碎鐘齒輪是時間廢墟最基礎的機關材料。',
+      spirit: '門衛仍在守一座已不存在的城門，只是每次輪值都停在同一天。',
+    },
+  },
+
+  reverse_river_memory: {
+    id: 'reverse_river_memory', name: '倒流河記憶體', alias: 'rivermemory',
+    level: 51, hp: 2100, mp: 460, str: 34, int: 82, dex: 58, vit: 54, luk: 22,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'blind', 'soul_drain'],
+    expReward: 2050, goldReward: [410, 820],
+    drops: [
+      { itemId: 'memory_reef_pearl', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'reversed_hourglass_sand', chance: 0.26, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description:
+      '倒流河岸上凝成的人形記憶，身體像由水、光和舊日聲音疊成。牠會治癒附近時線殘影，也能把冒險者的視野沖回不該看見的過去。',
+    isBoss: false,
+    guardianHints: {
+      creature: '倒流河記憶體會治療同伴，優先擊殺能避免前線被拖成消耗戰。',
+      treasure: '牠消散後常留下記憶礁珠與倒流沙漏砂。',
+      spirit: '牠不是亡魂，而是河水把某段人生反覆倒放後產生的形體。',
+    },
+  },
+
+  hourglass_automaton: {
+    id: 'hourglass_automaton', name: '沙漏機偶', alias: 'hourglass',
+    level: 52, hp: 3000, mp: 280, str: 78, int: 54, dex: 34, vit: 96, luk: 14,
+    element: 'light',
+    skills: ['basic_attack', 'crystal_prison', 'diamond_skin', 'shatter'],
+    expReward: 2250, goldReward: [450, 900],
+    drops: [
+      { itemId: 'reversed_hourglass_sand', chance: 0.55, minQty: 1, maxQty: 3 },
+      { itemId: 'broken_clock_gear', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '沙漏廣場與日晷庭中拖著玻璃腹腔行走的機偶，腹內銀砂忽快忽慢。牠會把敵人困進短暫晶牢，再讓身體硬化成近乎不可摧毀的時間殼。',
+    isBoss: false,
+    guardianHints: {
+      creature: '沙漏機偶使用晶牢後會接硬化，先處理控制再等待硬化結束。',
+      treasure: '牠腹內的倒流沙漏砂品質穩定，是零分核心儀式常用耗材。',
+      spirit: '機偶曾是校時工具，如今只會固執地把所有人校回錯誤秒數。',
+    },
+  },
+
+  future_ash_paradox: {
+    id: 'future_ash_paradox', name: '未來灰悖形', alias: 'ashparadox',
+    level: 53, hp: 2700, mp: 500, str: 62, int: 86, dex: 56, vit: 66, luk: 20,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_devour', 'death_mark', 'blind'],
+    expReward: 2500, goldReward: [500, 1000],
+    drops: [
+      { itemId: 'paradox_splinter', chance: 0.32, minQty: 1, maxQty: 1 },
+      { itemId: 'memory_reef_pearl', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '未來灰燼中提前燒完的生命殘形，輪廓每隔幾秒就變成另一種死法。牠用死亡印記把目標拉向尚未發生的結局，再吞噬留下的影子。',
+    isBoss: false,
+    guardianHints: {
+      creature: '未來灰悖形標記後爆發很高，保留補血與解除壓力手段。',
+      treasure: '牠灰燼裡能找到悖論裂片，是後段時間線材料。',
+      spirit: '牠是時間廢墟最直觀的警告：未來也會反過來追殺現在。',
+    },
+  },
+
+  stopped_bell_chronolich: {
+    id: 'stopped_bell_chronolich', name: '停鐘時巫妖', alias: 'chronolich',
+    level: 55, hp: 3900, mp: 760, str: 44, int: 104, dex: 48, vit: 72, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'soul_drain', 'death_mark', 'shadow_storm', 'charm'],
+    expReward: 3600, goldReward: [720, 1440],
+    drops: [
+      { itemId: 'paradox_splinter', chance: 0.52, minQty: 1, maxQty: 2 },
+      { itemId: 'broken_clock_gear', chance: 0.5, minQty: 2, maxQty: 3 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '停擺鐘塔中保存肉身死亡瞬間的巫妖，法袍上掛滿停止擺動的小鐘。牠能讓詛咒在命中前就已經發生，並用魅惑迫使隊伍重演失敗選擇。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '停鐘時巫妖會魅惑與死亡印記，先控場或集火避免隊伍互相拖累。',
+      treasure: '牠保管大量碎鐘齒輪與悖論裂片。',
+      spirit: '巫妖不是長生成功者，而是被卡在死亡前一秒的失敗者。',
+    },
+  },
+
+  lightning_record_drake: {
+    id: 'lightning_record_drake', name: '雷刻紀錄龍', alias: 'recorddrake',
+    level: 56, hp: 4300, mp: 620, str: 84, int: 90, dex: 58, vit: 82, luk: 22,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'sonic_wave', 'meteor', 'reflect_barrier'],
+    expReward: 3900, goldReward: [780, 1560],
+    drops: [
+      { itemId: 'causality_thread', chance: 0.34, minQty: 1, maxQty: 1 },
+      { itemId: 'paradox_splinter', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '盤踞在雷刻紀錄室的龍形電弧，鱗片像一頁頁被雷光刻過的紀錄。牠每次咆哮都會重播上一輪戰鬥的傷害軌跡，讓失誤變成可重複的災難。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '雷刻紀錄龍會反射並重播爆發，屏障期間先轉守勢。',
+      treasure: '牠的雷刻鱗片中常纏著因果絲線。',
+      spirit: '牠是廢墟用來記錄錯誤時間線的活檔案。',
+    },
+  },
+
+  causality_adjudicator: {
+    id: 'causality_adjudicator', name: '因果裁定者', alias: 'adjudicator',
+    level: 57, hp: 4700, mp: 820, str: 72, int: 108, dex: 52, vit: 86, luk: 26,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'lightning', 'crystal_prison', 'death_mark'],
+    expReward: 4300, goldReward: [860, 1720],
+    drops: [
+      { itemId: 'causality_thread', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'minute_zero_key', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'healer',
+    description:
+      '因果井旁浮現的白金審判者，雙手各握一端透明絲線。牠會先固定原因，再把結果強行套到目標身上，讓治療、傷害與死亡印記以錯誤順序發生。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '因果裁定者會治療並施加死亡印記，應優先處理。',
+      treasure: '因果絲線主要來自牠的裁定絲，偶爾能取到零分鑰印。',
+      spirit: '裁定者代表時間廢墟仍試圖維持秩序，即使秩序本身已經錯亂。',
+    },
+  },
+
+  minute_zero_dragon: {
+    id: 'minute_zero_dragon', name: '零分古龍', alias: 'zerodragon',
+    level: 60, hp: 7800, mp: 900, str: 110, int: 108, dex: 58, vit: 110, luk: 28,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'meteor', 'sonic_wave', 'reflect_barrier', 'death_mark'],
+    expReward: 6000, goldReward: [1200, 2400],
+    drops: [
+      { itemId: 'minute_zero_key', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'causality_thread', chance: 0.8, minQty: 2, maxQty: 3 },
+      { itemId: 'paradox_splinter', chance: 0.65, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '零分核心盤起的古龍，身體被固定在所有鐘聲同時歸零的一刻。牠的雷鳴不是從天空落下，而是從未來打回現在，讓每次防禦都像慢了一秒。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '零分古龍會用反射屏障保護隕石與雷擊爆發，屏障期間務必穩血。',
+      treasure: '牠必定掉落零分鑰印，是進入餘影虛空前的核心憑證。',
+      spirit: '古龍是時間廢墟把所有戰鬥壓縮到同一分鐘後誕生的守門 Boss。',
+    },
+  },
+
+  afterimage_void_serpent: {
+    id: 'afterimage_void_serpent', name: '餘影虛空蛇', alias: 'afterserpent',
+    level: 60, hp: 7200, mp: 980, str: 88, int: 118, dex: 76, vit: 92, luk: 30,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_devour', 'charm', 'crystal_prison', 'lightning', 'soul_drain'],
+    expReward: 6200, goldReward: [1240, 2480],
+    drops: [
+      { itemId: 'afterimage_void_core', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'minute_zero_key', chance: 0.55, minQty: 1, maxQty: 1 },
+      { itemId: 'memory_reef_pearl', chance: 0.75, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description:
+      '餘影虛空中游出的時間蛇，身軀由無數未被選擇的行動殘影構成。牠能魅惑玩家追逐自己的另一種可能，並把被困住的選擇一口吞下。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '餘影虛空蛇會魅惑、晶牢與吸魂，保留解除控制與爆發窗口。',
+      treasure: '牠必定掉落餘影虛空核心，是時間廢墟終局材料。',
+      spirit: '牠不是未來或過去，而是所有沒有發生的路在虛空中長出的掠食者。',
+    },
+  },
 };

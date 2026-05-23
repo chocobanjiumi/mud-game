@@ -6681,6 +6681,106 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把星隕坑從資源採集區推進到外界裂縫與世界王劇情節點。',
     },
   },
+
+  time_ruins_epoch_keeper: {
+    id: 'time_ruins_epoch_keeper',
+    name: '赫倫',
+    alias: 'epochkeeper',
+    title: '紀元入口守時人',
+    description:
+      '一名守時人站在紀元入口的碎鐘門下，斗篷邊緣每隔一秒就重新磨損又復原。' +
+      '他用一只裂開懷錶記錄隊伍進入廢墟的次數，哪怕隊伍自己完全不記得。',
+    roomId: 'time_ruins_epoch_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你們已經來過。也許是明天，也許是剛才。別糾正我，時間廢墟不喜歡被糾正。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '零分核心在哪？', nextId: 'zero' },
+          { text: '我先確認時間。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '碎鐘路取齒輪，倒流河岸找記憶礁珠。過停擺鐘塔前，先準備悖論裂片，不然你會一直回到錯路。',
+        options: [
+          { text: '零分核心在哪？', nextId: 'zero' },
+          { text: '我會記路。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'zero',
+        text: '鐘心門後就是零分核心。因果井能縫路，但也會縫住人。拿到零分鑰印以前，不要相信任何捷徑。',
+        options: [
+          { text: '安全路線怎麼走？', nextId: 'route' },
+          { text: '我去找鑰印。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你聽見自己回答過同一句話，停下來，把下一步換掉。' },
+    ],
+    guardianHints: {
+      creature: '赫倫能提示紀元門衛、倒流河記憶體、停鐘時巫妖與零分古龍的路線風險。',
+      treasure: '他說明碎鐘齒輪、倒流沙漏砂、悖論裂片與零分鑰印的用途。',
+      spirit: '他把時間廢墟的重複死亡與回圈路線轉成玩家可追蹤的進度規則。',
+    },
+  },
+
+  time_ruins_clockwork_peddler: {
+    id: 'time_ruins_clockwork_peddler',
+    name: '莫菈',
+    alias: 'peddler',
+    title: '舊日市集鐘件商',
+    description:
+      '一名鐘件商在舊日市集的殘影裡擺攤，貨架上的每件商品都標著三種不同年代的價格。' +
+      '她收集碎鐘齒輪、倒流砂與因果絲線，也販售能撐過零分核心的補給。',
+    roomId: 'time_ruins_past_market',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'reversed_hourglass_sand',
+      'broken_clock_gear',
+      'memory_reef_pearl',
+      'paradox_splinter',
+      'causality_thread',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '先說好，若你明天才付錢，我昨天就會開始追債。',
+        options: [
+          { text: '我看看鐘件。', nextId: 'shop' },
+          { text: '因果井要什麼？', nextId: 'well' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、倒流砂、碎鐘齒輪、記憶礁珠、悖論裂片、因果絲線。別嫌貴，有些東西你已經買過一次了。',
+        action: { type: 'shop', data: { shopType: 'time_ruins_clockworks' } },
+        options: [
+          { text: '因果井要什麼？', nextId: 'well' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'well',
+        text: '因果絲線能縫路，零分鑰印能開鐘心門。餘影虛空核心不是商品，那東西只會從你沒選的路裡掉出來。',
+        options: [
+          { text: '我看看鐘件。', nextId: 'shop' },
+          { text: '我去因果井。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若你回來時少了一段記憶，我可以打折收購。' },
+    ],
+    guardianHints: {
+      creature: '莫菈能提示沙漏機偶、雷刻紀錄龍、因果裁定者與餘影虛空蛇的材料需求。',
+      treasure: '她供應時間廢墟材料與高階藥水，補足零分核心前的服務節點。',
+      spirit: '她把高階材料、商店補給與終局通行物整合成可回訪的時間市集。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
