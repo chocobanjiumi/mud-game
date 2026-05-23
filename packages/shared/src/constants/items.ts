@@ -3112,6 +3112,38 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '傳說中環繞世界的巨蛇脫落的鱗片，蘊含著毀天滅地的力量。', buyPrice: 0, sellPrice: 2000,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
+
+  // ─── 深海神殿材料與聖物 (Lv 42-52) ───
+  bluefire_coral: {
+    id: 'bluefire_coral', name: '藍火珊瑚', type: 'material',
+    description: '在水下仍燃燒幽藍聖火的珊瑚枝，表面刻著神殿祭司用來壓制潮汐低語的細小符紋。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 42, rarity: 'epic',
+  },
+  abyssal_pearl: {
+    id: 'abyssal_pearl', name: '深淵珍珠', type: 'material',
+    description: '由深海神諭室的黑潮長年磨成的珍珠，內部會反射出不屬於現世的星光與影子。',
+    buyPrice: 2200, sellPrice: 1100, stackable: true, maxStack: 99, levelReq: 44, rarity: 'epic',
+  },
+  tideclock_gear: {
+    id: 'tideclock_gear', name: '潮鐘齒輪', type: 'material',
+    description: '古老潮鐘脫落的青銅齒輪，轉動時能短暫改變周遭水流方向，是深海機關的核心零件。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 99, levelReq: 46, rarity: 'legendary',
+  },
+  whalebone_relic: {
+    id: 'whalebone_relic', name: '鯨骨聖片', type: 'material',
+    description: '刻滿祭文的古鯨骨碎片，仍保存著神殿沉沒前最後一次大潮的低鳴。',
+    buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 48, rarity: 'legendary',
+  },
+  forbidden_altar_seal: {
+    id: 'forbidden_altar_seal', name: '禁壇封印', type: 'quest',
+    description: '封住禁忌祭壇的黑藍色印記，邊緣滲著鹽霜與暗影，似乎需要古神低語才能完全解讀。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 50, rarity: 'legendary',
+  },
+  tidal_throne_core: {
+    id: 'tidal_throne_core', name: '潮汐王座核心', type: 'quest',
+    description: '潮汐王座深處剝落的核心聖物，內部同時脈動著冰冷海潮與深暗神意。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 52, rarity: 'mythic',
+  },
 };
 
 export const ITEM_DEFS: Record<string, ItemDef> = normalizeItemDefs({

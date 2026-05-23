@@ -6292,6 +6292,105 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她把浮空群島的高階素材與終局入口連成可補給的節點。',
     },
   },
+
+  deepsea_temple_tidekeeper: {
+    id: 'deepsea_temple_tidekeeper',
+    name: '瑟恩',
+    alias: 'tidekeeper',
+    title: '潮汐石門守潮人',
+    description:
+      '一名守潮人站在潮汐石門的藍火旁，披肩上縫著海鹽、珊瑚與褪色祭司符帶。' +
+      '他用銅杖敲擊地面測量水流，記錄每一次暗流倒轉的時間。',
+    roomId: 'deepsea_temple_tide_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別急著進門。這座神殿不是迷路，它是在等你走進錯誤的潮汐。',
+        options: [
+          { text: '該怎麼判斷潮汐？', nextId: 'tide' },
+          { text: '潮汐王座在哪？', nextId: 'throne' },
+          { text: '我先調整裝備。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'tide',
+        text: '藍火向內倒，魚人巡邏；貝殼無聲，神諭影靠近；潮鐘若響三次，就別在橋上停留。',
+        options: [
+          { text: '潮汐王座在哪？', nextId: 'throne' },
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'throne',
+        text: '從月池入書庫，拿潮鐘齒輪；過骨錨與鯨骨橋，禁壇封印會告訴你王座還願不願開口。',
+        options: [
+          { text: '該怎麼判斷潮汐？', nextId: 'tide' },
+          { text: '我去找封印。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若聽見有人在水裡叫你的名字，不要回頭。那通常不是活人。' },
+    ],
+    guardianHints: {
+      creature: '瑟恩能提示藍火魚人衛、歌礁水母怨靈、珍珠神諭影與潮汐王座利維坦的路線關係。',
+      treasure: '他會指出藍火珊瑚、潮鐘齒輪、禁壇封印與王座核心在儀式中的用途。',
+      spirit: '他把深海神殿的暗流規則轉成玩家能理解的進攻順序。',
+    },
+  },
+
+  deepsea_temple_relic_diver: {
+    id: 'deepsea_temple_relic_diver',
+    name: '米菈',
+    alias: 'diver',
+    title: '貝殼庭院遺物潛商',
+    description:
+      '一名遺物潛商坐在貝殼庭院的碎柱旁，身邊掛滿防水藥瓶、潮鐘零件和用繩索串起的珍珠。' +
+      '她的潛水盔裂著一道縫，縫中卻穩定冒出藍火微光。',
+    roomId: 'deepsea_temple_shell_court',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'bluefire_coral',
+      'abyssal_pearl',
+      'tideclock_gear',
+      'whalebone_relic',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買東西前先數好氣泡。這裡最貴的不是遺物，是你回程時還剩幾口氣。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '禁壇需要什麼？', nextId: 'altar' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '高階藥水、藍火珊瑚、深淵珍珠、潮鐘齒輪、鯨骨聖片。想走到王座，最好別只帶勇氣。',
+        action: { type: 'shop', data: { shopType: 'deepsea_temple_relics' } },
+        options: [
+          { text: '禁壇需要什麼？', nextId: 'altar' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'altar',
+        text: '珍珠聽神諭，齒輪校潮鐘，鯨骨穩封印。禁壇封印本身，通常得從那些會說古神話的怪物身上拿。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '我去找封印。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '回來時別把影子留在神諭室。少了影子的人很難討價還價。' },
+    ],
+    guardianHints: {
+      creature: '米菈能提示抄魂者、潮鐘幼九頭蛇、鯨骨錨巨像與古神低語畸體的掉落需求。',
+      treasure: '她供應深海神殿材料與高階藥水，補足前往禁壇和王座前的補給節點。',
+      spirit: '她把高階素材、商店補給與終局通行物整合成一個可回訪的服務點。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
