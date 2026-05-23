@@ -8461,6 +8461,544 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  kingsroad_market_portal_guide: {
+    id: 'kingsroad_market_portal_guide',
+    name: '帕洛',
+    alias: 'guide',
+    title: '傳送陣廣場引路員',
+    description:
+      '一名引路員站在傳送陣廣場邊緣，手裡握著寫滿攤位方向的木牌。' +
+      '他能在一片叫賣聲中精準聽出誰迷路、誰掉錢、誰正在找委託板。',
+    roomId: 'kingsroad_market_portal_plaza',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '第一次來王道市集？先記住三個地方：委託板、錢幣所、商隊院。其他攤位會自己把你喊過去。',
+        options: [
+          { text: '我要找補給。', nextId: 'supplies' },
+          { text: '我要找委託。', nextId: 'jobs' },
+          { text: '我先看看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'supplies',
+        text: '藥材去草藥方場，吃食去穀物拱廊，旅貨去商隊院。要正式收據就先去錢幣兌換所換交易牌。',
+        options: [
+          { text: '我要找委託。', nextId: 'jobs' },
+          { text: '知道了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'jobs',
+        text: '冒險委託板在鍛匠列北面。別接沒有封蠟價目表的貨，那通常不是委託，是麻煩。',
+        options: [
+          { text: '我要找補給。', nextId: 'supplies' },
+          { text: '我去看委託板。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '看好錢袋。市集很安全，但安全不代表沒人粗心。' },
+    ],
+    guardianHints: {
+      creature: '王道市集是非戰鬥城鎮，帕洛提示玩家不要在此尋找野怪。',
+      treasure: '他指向王道交易牌、封蠟價目表與商隊貨單的功能。',
+      spirit: '他把市集的交易、委託與轉運功能串成新手可理解的入口。',
+    },
+  },
+
+  kingsroad_market_grain_monger: {
+    id: 'kingsroad_market_grain_monger',
+    name: '米羅',
+    alias: 'grainmonger',
+    title: '穀物拱廊糧商',
+    description:
+      '一名糧商坐在穀物拱廊的麻袋堆上，袖口沾著麥粉，腰間掛著小秤。' +
+      '他把冒險者的胃口看得比金幣更準。',
+    roomId: 'kingsroad_market_grain_arcade',
+    type: 'merchant',
+    shopItems: [
+      'market_lunch_bundle',
+      'small_hp_potion',
+      'medium_hp_potion',
+      'kingsroad_trade_token',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '遠路回來的人先吃飯，談價才不會把自己也賣便宜。',
+        options: [
+          { text: '我看看吃食。', nextId: 'shop' },
+          { text: '糧價穩嗎？', nextId: 'prices' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '午食包、基礎藥水、交易牌。真正的大宗糧價要看封蠟價目表，不看嘴上喊價。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_grain' } },
+        options: [
+          { text: '糧價穩嗎？', nextId: 'prices' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'prices',
+        text: '穩，但有人喜歡讓它看起來不穩。若你看到同一袋麥子換三次標價，就去文書角查。',
+        options: [
+          { text: '我看看吃食。', nextId: 'shop' },
+          { text: '我會注意。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '帶一包路上吃，別等血量見底才想起午飯。' },
+    ],
+    guardianHints: {
+      creature: '米羅強調此區為補給節點，不是戰鬥點。',
+      treasure: '他販售王道午食包與王道交易牌。',
+      spirit: '他讓市集的民生交易與價格調查有落點。',
+    },
+  },
+
+  kingsroad_market_spice_seller: {
+    id: 'kingsroad_market_spice_seller',
+    name: '莎芙',
+    alias: 'spiceseller',
+    title: '香料棚醒神香商',
+    description:
+      '一名香料商在彩布棚下整理小紙包，指尖沾著紅椒與乾橘皮香氣。' +
+      '她說好香料不只調味，也能讓走夜路的人保持清醒。',
+    roomId: 'kingsroad_market_spice_awning',
+    type: 'merchant',
+    shopItems: [
+      'market_spice_pouch',
+      'medium_mp_potion',
+      'antidote',
+      'kingsroad_trade_token',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '你看起來像剛從野外回來。買包醒神香，至少別在拍賣帳棚睡過叫價。',
+        options: [
+          { text: '我看看香料。', nextId: 'shop' },
+          { text: '哪種貨最容易假？', nextId: 'fake' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '市集香料包、法力藥水、解毒劑、交易牌。香味太衝的別買，通常是在遮霉。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_spice' } },
+        options: [
+          { text: '哪種貨最容易假？', nextId: 'fake' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fake',
+        text: '遠地香料、礦石粉、藥草乾貨。真貨不怕問來源，怕問來源的通常怕衛兵。',
+        options: [
+          { text: '我看看香料。', nextId: 'shop' },
+          { text: '我懂了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '香料包別灑進水袋。上次有人這樣做，三天都睡不著。' },
+    ],
+    guardianHints: {
+      creature: '莎芙讓市集維持非戰鬥交易氣氛。',
+      treasure: '她販售市集香料包、解毒劑與交易牌。',
+      spirit: '她補上市集假貨與來源追查的情報面。',
+    },
+  },
+
+  kingsroad_market_forge_broker: {
+    id: 'kingsroad_market_forge_broker',
+    name: '布朗特',
+    alias: 'broker',
+    title: '鍛匠列裝備仲介',
+    description:
+      '一名裝備仲介站在鍛匠列的鐵砧之間，手上拿著估價槌與一疊修補單。' +
+      '他不親自打鐵，卻知道每把劍的主人是否付得起尾款。',
+    roomId: 'kingsroad_market_blacksmith_row',
+    type: 'merchant',
+    shopItems: [
+      'iron_sword',
+      'iron_shield',
+      'market_repair_chit',
+      'kingsroad_trade_token',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買成品、修舊貨、問估價都可以。想靠一句傳說讓破劍翻十倍價，那去拍賣帳棚。',
+        options: [
+          { text: '我看看裝備。', nextId: 'shop' },
+          { text: '估價要注意什麼？', nextId: 'value' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '基礎武器、盾、修補工具、交易牌。真正稀有品要有貨號券，不然別信。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_forge' } },
+        options: [
+          { text: '估價要注意什麼？', nextId: 'value' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'value',
+        text: '看磨損、看銘文、看誰願意作保。沒有來源的好貨，通常會帶來比價格更高的問題。',
+        options: [
+          { text: '我看看裝備。', nextId: 'shop' },
+          { text: '我會留證明。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '修補單收好，掉了就只能重新排隊。' },
+    ],
+    guardianHints: {
+      creature: '布朗特提供城鎮裝備服務，不新增戰鬥。',
+      treasure: '他讓王道交易牌與拍賣貨號券形成裝備交易證明鏈。',
+      spirit: '他補上市集裝備買賣、估價與修補功能。',
+    },
+  },
+
+  kingsroad_market_board_clerk: {
+    id: 'kingsroad_market_board_clerk',
+    name: '妮拉',
+    alias: 'clerk',
+    title: '冒險委託板登記員',
+    description:
+      '一名登記員守在冒險委託板旁，用紅線把護送、採集、調查與討伐委託分開。' +
+      '她寫字很快，拒絕無章委託的速度更快。',
+    roomId: 'kingsroad_market_adventurer_board',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '接委託前先看章。沒有價目、沒有路線、沒有作保人，獎金再高都先當陷阱。',
+        options: [
+          { text: '今天有什麼委託？', nextId: 'jobs' },
+          { text: '怎麼分辨假委託？', nextId: 'fake' },
+          { text: '我先看板。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'jobs',
+        text: '商隊缺護送，草藥方場缺採集，後巷帳本處缺查帳。你想賺快錢，先確認自己跑得比麻煩快。',
+        options: [
+          { text: '怎麼分辨假委託？', nextId: 'fake' },
+          { text: '我去商隊院問。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fake',
+        text: '假委託喜歡寫「事成重酬」。真委託會寫地點、期限、交付物與誰負責賠償。',
+        options: [
+          { text: '今天有什麼委託？', nextId: 'jobs' },
+          { text: '我記下了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '不要把委託撕走。抄下編號就好，紙比你想的貴。' },
+    ],
+    guardianHints: {
+      creature: '妮拉明確把市集任務導向非戰鬥與外部區域。',
+      treasure: '她提示封蠟價目表、商隊貨單與拍賣貨號券的證明作用。',
+      spirit: '她讓委託板成為市集任務與風險篩選中心。',
+    },
+  },
+
+  kingsroad_market_caravan_master: {
+    id: 'kingsroad_market_caravan_master',
+    name: '哈德溫',
+    alias: 'caravan',
+    title: '商隊院調度長',
+    description:
+      '一名調度長站在商隊院的車轍圖前，腰間掛著路線印章與馱獸鈴。' +
+      '他說每條王道都能賺錢，只是有些路要先付醫藥費。',
+    roomId: 'kingsroad_market_caravan_yard',
+    type: 'merchant',
+    shopItems: [
+      'caravan_waybill',
+      'return_scroll',
+      'market_lunch_bundle',
+      'kingsroad_trade_token',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要搭貨車、押貨、查路線，都先拿貨單。沒有貨單的貨，半路掉了也沒人承認。',
+        options: [
+          { text: '我看看路用貨。', nextId: 'shop' },
+          { text: '哪條路最穩？', nextId: 'routes' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '商隊貨單、回城卷軸、午食包、交易牌。想押高價貨，先讓衛兵亭看過你的名字。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_caravan' } },
+        options: [
+          { text: '哪條路最穩？', nextId: 'routes' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'routes',
+        text: '白天走湖畔，雨天避山口，夜裡別走沒有路神燈的岔道。最快的路通常只對盜匪最快。',
+        options: [
+          { text: '我看看路用貨。', nextId: 'shop' },
+          { text: '我會看路神燈。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '貨單別折到印章。折壞了，文書角會讓你重新排隊。' },
+    ],
+    guardianHints: {
+      creature: '哈德溫把戰鬥風險導向市集外的護送路線。',
+      treasure: '他販售商隊貨單、回城卷軸與路用補給。',
+      spirit: '他讓王道市集成為跨區轉運與護送任務中心。',
+    },
+  },
+
+  kingsroad_market_coin_factor: {
+    id: 'kingsroad_market_coin_factor',
+    name: '維克',
+    alias: 'factor',
+    title: '錢幣兌換所帳房',
+    description:
+      '一名帳房坐在厚玻璃後方，桌上分著王國幣、外地銀片與冒險者帶回的奇怪代幣。' +
+      '他每數十枚就敲一下銅鐘，像在替市集量脈。',
+    roomId: 'kingsroad_market_coin_exchange',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '換錢可以，作保也可以。想把沾血的寶石當乾淨貨賣，請先去衛兵亭。',
+        options: [
+          { text: '交易牌怎麼用？', nextId: 'token' },
+          { text: '假幣多嗎？', nextId: 'fake' },
+          { text: '我先排隊。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'token',
+        text: '王道交易牌不是貨幣，是紀錄。它證明你在市集內買賣過，出了糾紛才有人能查。',
+        options: [
+          { text: '假幣多嗎？', nextId: 'fake' },
+          { text: '我懂了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fake',
+        text: '假幣不多，假故事比較多。每個人都說自己剛從古王墓回來，結果連泥都沒乾。',
+        options: [
+          { text: '交易牌怎麼用？', nextId: 'token' },
+          { text: '我去文書角查。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '下一位。錢會等人，隊伍不會。' },
+    ],
+    guardianHints: {
+      creature: '維克補足城鎮經濟功能，不涉及戰鬥。',
+      treasure: '他說明王道交易牌與封蠟價目表的交易證明作用。',
+      spirit: '他讓市集的貨幣、作保與糾紛查核更可信。',
+    },
+  },
+
+  kingsroad_market_herb_mistress: {
+    id: 'kingsroad_market_herb_mistress',
+    name: '苔莎',
+    alias: 'herbalist',
+    title: '草藥方場調藥師',
+    description:
+      '一名調藥師在草藥方場中央碾碎乾葉，旁邊排著標有產地的小瓶。' +
+      '她能聞出一束草藥走過哪條路，也能聞出它是不是昨天才被改過標籤。',
+    roomId: 'kingsroad_market_herbal_square',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'market_spice_pouch',
+      'market_lunch_bundle',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '藥水要新鮮，乾草要看產地。標籤寫得越漂亮，越要聞一下底味。',
+        options: [
+          { text: '我看看藥。', nextId: 'shop' },
+          { text: '假藥怎麼看？', nextId: 'fake' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '中型藥水、法力藥水、解毒劑、醒神香、午食包。真正稀有草藥要看封蠟來源。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_herbs' } },
+        options: [
+          { text: '假藥怎麼看？', nextId: 'fake' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'fake',
+        text: '假藥最怕水。滴一滴井水，顏色散得太快就是染的；味道甜得像糖，就是想遮腐。',
+        options: [
+          { text: '我看看藥。', nextId: 'shop' },
+          { text: '我會試水。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '解毒劑買了就帶身上，不要放在倉庫裡當擺設。' },
+    ],
+    guardianHints: {
+      creature: '苔莎維持草藥補給節點，不新增本區怪物。',
+      treasure: '她販售藥水、解毒劑、市集香料包與午食包。',
+      spirit: '她補上市集常態補給與假藥辨識功能。',
+    },
+  },
+
+  kingsroad_market_auctioneer: {
+    id: 'kingsroad_market_auctioneer',
+    name: '葛蕾塔',
+    alias: 'auctioneer',
+    title: '拍賣帳棚估價師',
+    description:
+      '一名估價師站在拍賣帳棚的木台上，手持小槌，聲音能壓過整條攤街。' +
+      '她看一眼包裝，就知道賣家想隱瞞的是產地、裂痕還是詛咒。',
+    roomId: 'kingsroad_market_auction_tent',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '拍賣不是喊得最大聲的人贏，是最清楚自己買了什麼的人活得久。',
+        options: [
+          { text: '貨號券怎麼用？', nextId: 'ticket' },
+          { text: '哪些貨不能碰？', nextId: 'danger' },
+          { text: '我先看拍賣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'ticket',
+        text: '拍賣貨號券能查寄售人、估價與交割窗口。沒有券的貨，離開帳棚就不歸我們管。',
+        options: [
+          { text: '哪些貨不能碰？', nextId: 'danger' },
+          { text: '我會收好券。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text: '會自己發熱的盒子、沒有影子的寶石、賣家急著離城的任何東西。便宜不是理由，是警告。',
+        options: [
+          { text: '貨號券怎麼用？', nextId: 'ticket' },
+          { text: '我知道了。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '聽到第三槌才算成交，第二槌就掏錢的人最容易被騙。' },
+    ],
+    guardianHints: {
+      creature: '葛蕾塔把高價貨風險留在交易層，不轉為本區戰鬥。',
+      treasure: '她說明拍賣貨號券與交易牌如何保護高價交易。',
+      spirit: '她讓拍賣帳棚具備估價、交割與風險辨識功能。',
+    },
+  },
+
+  kingsroad_market_guard_sergeant: {
+    id: 'kingsroad_market_guard_sergeant',
+    name: '羅文',
+    alias: 'sergeant',
+    title: '衛兵亭市集巡長',
+    description:
+      '一名巡長靠在衛兵亭前，盔甲擦得不亮，卻沒有一處妨礙拔劍。' +
+      '他的目光總在錢袋、攤棚後門和忽然安靜的人群之間移動。',
+    roomId: 'kingsroad_market_guard_post',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '市集不禁討價還價，禁偷、禁詐、禁把詛咒貨物賣給不識字的人。',
+        options: [
+          { text: '最近有麻煩嗎？', nextId: 'trouble' },
+          { text: '我要報可疑貨。', nextId: 'report' },
+          { text: '我只是路過。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'trouble',
+        text: '後巷帳本處有幾筆貨單對不上，拍賣帳棚也收到過假貨號券。看見封蠟破了就別接手。',
+        options: [
+          { text: '我要報可疑貨。', nextId: 'report' },
+          { text: '我去查帳本。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'report',
+        text: '帶貨號券、價目表或商隊貨單來。沒有證物，我只能盯人；有證物，我能抓人。',
+        options: [
+          { text: '最近有麻煩嗎？', nextId: 'trouble' },
+          { text: '我會帶證物。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '市集很大，但出口就那幾個。別替壞人省時間。' },
+    ],
+    guardianHints: {
+      creature: '羅文處理治安與可疑交易，不讓城鎮本身變成戰鬥區。',
+      treasure: '他要求拍賣貨號券、封蠟價目表與商隊貨單作為證物。',
+      spirit: '他補上市集治安與交易糾紛的官方節點。',
+    },
+  },
+
+  kingsroad_market_scribe_notary: {
+    id: 'kingsroad_market_scribe_notary',
+    name: '伊芙琳',
+    alias: 'notary',
+    title: '文書角封蠟書記',
+    description:
+      '一名書記坐在文書角的長桌後，手邊堆著價目表、貨單副本與紅蠟章。' +
+      '她說市集真正流通的不是金幣，是能被查回來的紀錄。',
+    roomId: 'kingsroad_market_scribe_corner',
+    type: 'merchant',
+    shopItems: [
+      'sealed_price_list',
+      'auction_lot_ticket',
+      'caravan_waybill',
+      'kingsroad_trade_token',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要副本、封蠟、貨號查詢或價目表？請排成一列，別把墨水滴在證物上。',
+        options: [
+          { text: '我看看文書。', nextId: 'shop' },
+          { text: '封蠟有什麼用？', nextId: 'seal' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '封蠟價目表、拍賣貨號券、商隊貨單、王道交易牌。買了就保管好，補副本很貴。',
+        action: { type: 'shop', data: { shopType: 'kingsroad_scribe' } },
+        options: [
+          { text: '封蠟有什麼用？', nextId: 'seal' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'seal',
+        text: '封蠟不是裝飾，是責任。誰蓋章、誰收貨、誰估價，章都記得比人清楚。',
+        options: [
+          { text: '我看看文書。', nextId: 'shop' },
+          { text: '我會收好。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '不要折證物。折痕有時比謊話更難處理。' },
+    ],
+    guardianHints: {
+      creature: '伊芙琳將市集衝突落在文書證據，不新增怪物。',
+      treasure: '她販售封蠟價目表、拍賣貨號券、商隊貨單與交易牌。',
+      spirit: '她讓王道市集的所有交易道具形成可查核的閉環。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

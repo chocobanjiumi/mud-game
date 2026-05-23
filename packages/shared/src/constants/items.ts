@@ -3607,6 +3607,52 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['sapphire_lake'],
   },
 
+  // ─── 王道市集交易憑證與特色商品 (Lv 1-60) ───
+  kingsroad_trade_token: {
+    id: 'kingsroad_trade_token', name: '王道交易牌', type: 'material',
+    description: '王道市集錢幣兌換所發放的黃銅交易牌，刻有傳送陣、商隊院與拍賣帳棚三枚標記，用於記錄合法交易與寄售排程。',
+    buyPrice: 300, sellPrice: 150, stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
+    sourceTags: ['shop', 'service'], zoneTags: ['kingsroad_market'],
+  },
+  caravan_waybill: {
+    id: 'caravan_waybill', name: '商隊貨單', type: 'quest',
+    description: '商隊院簽發的折疊貨單，列著出城方向、馱獸編號與押運人姓名。它能證明某批貨物是經王道市集合規轉運。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 1, rarity: 'common',
+    sourceTags: ['quest', 'shop'], zoneTags: ['kingsroad_market'],
+  },
+  market_spice_pouch: {
+    id: 'market_spice_pouch', name: '市集香料包', type: 'consumable',
+    description: '香料棚用薄紙包好的暖香粉，混有胡椒、乾橘皮與醒神草。旅人常在長途前聞一點，讓精神從市集喧鬧中穩定下來。',
+    buyPrice: 900, sellPrice: 450, stackable: true, maxStack: 20, levelReq: 1, rarity: 'uncommon',
+    useEffect: { type: 'heal_mp', value: 120 },
+    sourceTags: ['shop'], zoneTags: ['kingsroad_market'],
+  },
+  market_lunch_bundle: {
+    id: 'market_lunch_bundle', name: '王道午食包', type: 'consumable',
+    description: '穀物拱廊與魚販石階合賣的午食包，裡面有硬麥餅、鹽魚片與酸菜。味道樸實，但能讓剛回城的冒險者迅速恢復力氣。',
+    buyPrice: 800, sellPrice: 400, stackable: true, maxStack: 20, levelReq: 1, rarity: 'common',
+    useEffect: { type: 'heal_hp', value: 160 },
+    sourceTags: ['shop'], zoneTags: ['kingsroad_market'],
+  },
+  auction_lot_ticket: {
+    id: 'auction_lot_ticket', name: '拍賣貨號券', type: 'quest',
+    description: '拍賣帳棚使用的厚紙貨號券，邊角蓋有紅蠟與看台章。持券者可查詢寄售貨物、估價紀錄與得標後的交割窗口。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 1, rarity: 'rare',
+    sourceTags: ['quest', 'service'], zoneTags: ['kingsroad_market'],
+  },
+  sealed_price_list: {
+    id: 'sealed_price_list', name: '封蠟價目表', type: 'quest',
+    description: '文書角封存的市集價目表，記錄穀物、藥草、礦材與護送費率。封蠟未破時可作為調查哄抬物價或假貨流通的證據。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 1, rarity: 'rare',
+    sourceTags: ['quest', 'service'], zoneTags: ['kingsroad_market'],
+  },
+  market_repair_chit: {
+    id: 'market_repair_chit', name: '市集修補單', type: 'quest',
+    description: '鍛匠列開出的修補排程單，記錄裝備狀況、估價與取件時段。若交易糾紛發生，它也是證明裝備交付狀態的文件。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 1, rarity: 'uncommon',
+    sourceTags: ['quest', 'service', 'shop'], zoneTags: ['kingsroad_market'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
