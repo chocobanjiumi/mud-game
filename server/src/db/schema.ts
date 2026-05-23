@@ -38,6 +38,11 @@ export function initDb(): Database.Database {
       level INTEGER DEFAULT 1,
       exp INTEGER DEFAULT 0,
       class_id TEXT DEFAULT 'adventurer',
+      race_id TEXT DEFAULT 'human',
+      gender_id TEXT DEFAULT 'undisclosed',
+      faith_id TEXT DEFAULT 'aelora',
+      faith_favor INTEGER DEFAULT 0,
+      faith_cooldown_until INTEGER,
       hp INTEGER DEFAULT 100,
       mp INTEGER DEFAULT 30,
       max_hp INTEGER DEFAULT 100,
@@ -457,6 +462,21 @@ export function initDb(): Database.Database {
     `);
 
     console.log('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
+  }
+
+  // ── Migration: character origin fields ──
+  {
+    const database = db;
+    const charColumns = database.prepare("PRAGMA table_info(characters)").all() as { name: string }[];
+    const charColumnNames = new Set(charColumns.map(c => c.name));
+    const addColumn = (name: string, sql: string) => {
+      if (!charColumnNames.has(name)) database.exec(sql);
+    };
+    addColumn('race_id', `ALTER TABLE characters ADD COLUMN race_id TEXT DEFAULT 'human'`);
+    addColumn('gender_id', `ALTER TABLE characters ADD COLUMN gender_id TEXT DEFAULT 'undisclosed'`);
+    addColumn('faith_id', `ALTER TABLE characters ADD COLUMN faith_id TEXT DEFAULT 'aelora'`);
+    addColumn('faith_favor', `ALTER TABLE characters ADD COLUMN faith_favor INTEGER DEFAULT 0`);
+    addColumn('faith_cooldown_until', `ALTER TABLE characters ADD COLUMN faith_cooldown_until INTEGER`);
   }
 
   // ── Migration: 新增 marked_location 欄位（傳送石標記） ──

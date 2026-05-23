@@ -37,6 +37,7 @@ export type ClassId =
 export type ClassTier = 0 | 1 | 2;
 
 export type ResourceType = 'mp' | 'rage' | 'energy' | 'faith';
+export type { RaceId, GenderId, FaithId } from './origin.js';
 
 export interface ClassDef {
   id: ClassId;
@@ -106,6 +107,11 @@ export interface Character {
   level: number;
   exp: number;
   classId: ClassId;
+  raceId?: import('./origin.js').RaceId;
+  genderId?: import('./origin.js').GenderId;
+  faithId?: import('./origin.js').FaithId;
+  faithFavor?: number;
+  faithCooldownUntil?: number;
   hp: number;
   mp: number;
   maxHp: number;

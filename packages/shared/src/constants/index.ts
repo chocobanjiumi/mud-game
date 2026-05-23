@@ -6,3 +6,4 @@ export * from './items.js';
 export * from './monsters.js';
 export * from './game.js';
 export * from './gathering.js';
+export * from './origins.js';

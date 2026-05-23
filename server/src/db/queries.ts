@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS, createEmptyEquipmentSlots } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, INITIAL_STATS, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -16,12 +16,12 @@ export function createCharacter(userId: string, name: string, isAi = false, agen
   const maxMp = calculateMaxMp(1, INITIAL_STATS.int);
 
   db.prepare(`
-    INSERT INTO characters (id, user_id, name, level, exp, class_id, hp, mp, max_hp, max_mp,
+    INSERT INTO characters (id, user_id, name, level, exp, class_id, race_id, gender_id, faith_id, faith_favor, hp, mp, max_hp, max_mp,
       str, int_, dex, vit, luk, free_points, gold, room_id, is_ai, agent_id, created_at, last_login)
-    VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, ?,
+    VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, 0, ?, ?, ?, ?,
       ?, ?, ?, ?, ?, 0, 100, 'village_square', ?, ?, ?, ?)
   `).run(
-    id, userId, name, maxHp, maxMp, maxHp, maxMp,
+    id, userId, name, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, maxHp, maxMp, maxHp, maxMp,
     INITIAL_STATS.str, INITIAL_STATS.int, INITIAL_STATS.dex, INITIAL_STATS.vit, INITIAL_STATS.luk,
     isAi ? 1 : 0, agentId ?? null, now, now,
   );
@@ -66,6 +66,7 @@ export function saveCharacter(char: Character): void {
   db.prepare(`
     UPDATE characters SET
       level = ?, exp = ?, class_id = ?,
+      race_id = ?, gender_id = ?, faith_id = ?, faith_favor = ?, faith_cooldown_until = ?,
       hp = ?, mp = ?, max_hp = ?, max_mp = ?,
       resource = ?, max_resource = ?, resource_type = ?,
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
@@ -75,6 +76,11 @@ export function saveCharacter(char: Character): void {
     WHERE id = ?
   `).run(
     char.level, char.exp, char.classId,
+    char.raceId ?? DEFAULT_RACE_ID,
+    char.genderId ?? DEFAULT_GENDER_ID,
+    char.faithId ?? DEFAULT_FAITH_ID,
+    char.faithFavor ?? 0,
+    char.faithCooldownUntil ?? null,
     char.hp, char.mp, char.maxHp, char.maxMp,
     char.resource, char.maxResource, char.resourceType,
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
@@ -454,6 +460,11 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     level: row.level as number,
     exp: row.exp as number,
     classId: row.class_id as ClassId,
+    raceId: (row.race_id as import('@game/shared').RaceId) ?? DEFAULT_RACE_ID,
+    genderId: (row.gender_id as import('@game/shared').GenderId) ?? DEFAULT_GENDER_ID,
+    faithId: (row.faith_id as import('@game/shared').FaithId) ?? DEFAULT_FAITH_ID,
+    faithFavor: (row.faith_favor as number) ?? 0,
+    faithCooldownUntil: (row.faith_cooldown_until as number) ?? undefined,
     hp: row.hp as number,
     mp: row.mp as number,
     maxHp: row.max_hp as number,
