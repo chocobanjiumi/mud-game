@@ -9757,4 +9757,191 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '顯聖者把白石塔門、試煉、戰神印記與日冠核心收束為尖塔終點。',
     },
   },
+
+  moonshadow_moonlit_page: {
+    id: 'moonshadow_moonlit_page', name: '月影侍頁', alias: 'moonpage',
+    level: 38, hp: 2100, mp: 520, str: 70, int: 118, dex: 96, vit: 118, luk: 26,
+    element: 'light',
+    skills: ['basic_attack', 'holy_light', 'quick_dash', 'blind'],
+    expReward: 5200, goldReward: [1360, 2580],
+    drops: [
+      { itemId: 'moonmask_shard', chance: 0.32, minQty: 1, maxQty: 1 },
+      { itemId: 'dreamglass_dew', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '月影門旁迎接賓客的妖精侍頁，手中銀盤盛著不存在的邀請函。牠會禮貌地要求活人戴上面具，直到對方忘記自己的名字。',
+    isBoss: false,
+    guardianHints: {
+      creature: '月影侍頁會致盲與高速移位，先辨認真正位置。',
+      treasure: '月面具碎片常藏在牠的銀盤下。',
+      spirit: '侍頁讓月影庭入口具有宮廷禮儀與夢境迷失感。',
+    },
+  },
+
+  moonshadow_dreamglass_duelist: {
+    id: 'moonshadow_dreamglass_duelist', name: '夢玻決鬥客', alias: 'duelist',
+    level: 39, hp: 2360, mp: 460, str: 118, int: 80, dex: 132, vit: 124, luk: 30,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'shadow_dash', 'blind'],
+    expReward: 5600, goldReward: [1460, 2760],
+    drops: [
+      { itemId: 'moonmask_shard', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'dreamglass_dew', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '夢玻前廳與絨幕決鬥庭間尋找對手的假面劍客，劍影會晚半拍出現在鏡面裡。牠向影子致意，再刺向本人。',
+    isBoss: false,
+    guardianHints: {
+      creature: '夢玻決鬥客會暗影突進與致盲，別只看鏡中劍影。',
+      treasure: '牠決鬥面具可碎成月面具碎片。',
+      spirit: '決鬥客把舞會禮儀與危險試煉連在一起。',
+    },
+  },
+
+  moonshadow_silver_bramble_knight: {
+    id: 'moonshadow_silver_bramble_knight', name: '銀棘誓騎', alias: 'brambleknight',
+    level: 40, hp: 2700, mp: 500, str: 132, int: 82, dex: 72, vit: 176, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'bark_shield', 'spectral_slash'],
+    expReward: 6100, goldReward: [1600, 3020],
+    drops: [
+      { itemId: 'nightbloom_petal', chance: 0.28, minQty: 1, maxQty: 2 },
+      { itemId: 'moonmask_shard', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '銀棘小徑上履行舊誓的妖精騎士，甲縫長出月白荊棘。牠守護的不是道路，而是通過道路時許下的謊言。',
+    isBoss: false,
+    guardianHints: {
+      creature: '銀棘誓騎會根縛與護盾，荊棘張開時先停手整隊。',
+      treasure: '夜花瓣常纏在銀棘護甲上。',
+      spirit: '誓騎讓月影庭的宮廷誓約具備戰鬥形態。',
+    },
+  },
+
+  moonshadow_moth_lantern_swarm: {
+    id: 'moonshadow_moth_lantern_swarm', name: '蛾燈群靈', alias: 'mothswarm',
+    level: 41, hp: 1900, mp: 680, str: 50, int: 130, dex: 140, vit: 82, luk: 28,
+    element: 'light',
+    skills: ['basic_attack', 'blind', 'sonic_wave', 'quick_dash'],
+    expReward: 6400, goldReward: [1680, 3180],
+    drops: [
+      { itemId: 'moth_lantern_dust', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'dreamglass_dew', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '蛾燈長廊中圍繞銀火飛舞的夢境群靈，翅粉會讓人把走廊看成舞池。燈火越亮，牠們越接近真實。',
+    isBoss: false,
+    guardianHints: {
+      creature: '蛾燈群靈會致盲與音波，燈光聚集處先清掉。',
+      treasure: '蛾燈銀粉是牠們最常見的掉落。',
+      spirit: '群靈讓月影庭的長廊呈現夢境迷航感。',
+    },
+  },
+
+  moonshadow_oath_mirror_double: {
+    id: 'moonshadow_oath_mirror_double', name: '誓鏡倒影', alias: 'mirrordouble',
+    level: 43, hp: 2600, mp: 760, str: 94, int: 144, dex: 94, vit: 140, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'reflect_barrier', 'shadow_blast', 'life_drain'],
+    expReward: 7200, goldReward: [1880, 3560],
+    drops: [
+      { itemId: 'dreamglass_dew', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'moonmask_shard', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '誓鏡室中從鏡面走出的倒影，外貌像挑戰者，聲音卻像月影庭的書記官。牠會反射未履行的誓言，也反射太急的攻擊。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '誓鏡倒影會反射屏障與吸血，鏡面亮起時停手。',
+      treasure: '夢玻露滴會沿著誓鏡裂痕凝結。',
+      spirit: '倒影把誓約、鏡面與自我審判主題具象化。',
+    },
+  },
+
+  moonshadow_nightbloom_matron: {
+    id: 'moonshadow_nightbloom_matron', name: '夜花園母', alias: 'matron',
+    level: 44, hp: 3200, mp: 820, str: 86, int: 152, dex: 70, vit: 208, luk: 22,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'nature_drain', 'heal', 'bark_shield'],
+    expReward: 7800, goldReward: [2040, 3860],
+    drops: [
+      { itemId: 'nightbloom_petal', chance: 0.72, minQty: 1, maxQty: 3 },
+      { itemId: 'moth_lantern_dust', chance: 0.24, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description: '夜花庭與夢收穫林間照看花床的妖精園母，裙襬像盛開的黑紫花冠。牠會治癒花叢，也會把不速之客種進夢土。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '夜花園母會治療、根縛與吸取，優先處理續戰能力。',
+      treasure: '夜花瓣主要由園母守護。',
+      spirit: '園母讓月影庭的自然面從裝飾變成威脅。',
+    },
+  },
+
+  moonshadow_glass_deer_herald: {
+    id: 'moonshadow_glass_deer_herald', name: '玻鹿傳令', alias: 'glassdeer',
+    level: 45, hp: 2850, mp: 880, str: 88, int: 148, dex: 128, vit: 150, luk: 34,
+    element: 'light',
+    skills: ['basic_attack', 'quick_dash', 'holy_light', 'root_bind', 'reflect_barrier'],
+    expReward: 8400, goldReward: [2200, 4160],
+    drops: [
+      { itemId: 'dreamglass_dew', chance: 0.5, minQty: 1, maxQty: 2 },
+      { itemId: 'nightbloom_petal', chance: 0.3, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '玻鹿欄中等待傳令的透明鹿形妖精，體內流動著弦月般的白光。牠奔跑時會把現實踩成短暫的夢境碎片。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '玻鹿傳令速度快且會反射，追擊前確認屏障消失。',
+      treasure: '夢玻露滴常從牠蹄印中凝出。',
+      spirit: '玻鹿把宮廷命令與夢境穿行能力連起來。',
+    },
+  },
+
+  moonshadow_eclipse_curtain_assassin: {
+    id: 'moonshadow_eclipse_curtain_assassin', name: '月蝕帷幕刺客', alias: 'eclipseassassin',
+    level: 47, hp: 3000, mp: 660, str: 132, int: 112, dex: 168, vit: 138, luk: 36,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_dash', 'blind', 'death_mark', 'life_drain'],
+    expReward: 9400, goldReward: [2460, 4660],
+    drops: [
+      { itemId: 'moth_lantern_dust', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'moonmask_shard', chance: 0.38, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '月蝕帷幕後等候王命的妖精刺客，披風邊緣像被黑月咬缺。牠只在掌聲最熱烈時出手，讓死亡看起來像舞步。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '月蝕帷幕刺客會暗影突進、致盲與死亡印記，先保護後排。',
+      treasure: '刺客面具會留下月面具碎片。',
+      spirit: '刺客把舞會、宮廷陰謀與月蝕帷幕連成終段壓力。',
+    },
+  },
+
+  moonshadow_hidden_court_queen: {
+    id: 'moonshadow_hidden_court_queen', name: '隱庭月后投影', alias: 'moonqueen',
+    level: 50, hp: 6200, mp: 1500, str: 128, int: 220, dex: 128, vit: 280, luk: 42,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_blast', 'holy_light', 'root_bind', 'reflect_barrier', 'death_mark'],
+    expReward: 12800, goldReward: [3360, 6360],
+    drops: [
+      { itemId: 'hidden_court_decree', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'moth_lantern_dust', chance: 0.68, minQty: 2, maxQty: 4 },
+      { itemId: 'nightbloom_petal', chance: 0.62, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description: '隱庭核心中半坐在王座、半映在夢裡的月后投影，冠冕由黑月與白花共同編成。牠不是完整的女王，而是宮廷用來審判訪客是否配聽真名的影子。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2700,
+    guardianHints: {
+      creature: '隱庭月后投影會反射、根縛與死亡印記，屏障期間停手整隊。',
+      treasure: '牠必定掉落隱庭敕令。',
+      spirit: '月后投影把月影庭的舞會、誓鏡、夜花與夢境核心收束成終點。',
+    },
+  },
 };

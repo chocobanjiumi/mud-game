@@ -9931,6 +9931,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  moonshadow_court_mask_seneschal: {
+    id: 'moonshadow_court_mask_seneschal',
+    name: '瑟琳',
+    alias: 'seneschal',
+    title: '月影假面管事',
+    description: '一名管事站在假面舞廳入口，手中托盤上排列著銀面具，每一張都像正在等待新名字。',
+    roomId: 'moonshadow_court_masked_ball_hall',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '進入月影庭，請先選一張面具。沒有面具的人會被庭中夢境替你選一張。',
+        options: [
+          { text: '我該找什麼？', nextId: 'proof' },
+          { text: '隱庭核心在哪？', nextId: 'core' },
+          { text: '我會戴好面具。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'proof', text: '月面具碎片、蛾燈銀粉、夜花瓣。它們能證明你不是被舞會帶著走，而是自己穿過宮廷。', options: [{ text: '隱庭核心在哪？', nextId: 'core' }, { text: '我去找證物。', nextId: 'farewell' }] },
+      { id: 'core', text: '月蝕帷幕後方。若你在誓鏡裡看見自己沒有影子，就暫時別進去。', options: [{ text: '我該找什麼？', nextId: 'proof' }, { text: '我會先去誓鏡室。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '舞會結束前不要摘下面具。摘下的人通常也摘下了名字。' },
+    ],
+    guardianHints: {
+      creature: '瑟琳提示夢玻決鬥客、誓鏡倒影、月蝕帷幕刺客與隱庭月后投影。',
+      treasure: '她說明月面具碎片、蛾燈銀粉、夜花瓣與隱庭敕令。',
+      spirit: '假面管事把月影庭的宮廷禮儀、證物與核心路線連起來。',
+    },
+  },
+
+  moonshadow_court_lantern_peddler: {
+    id: 'moonshadow_court_lantern_peddler',
+    name: '米芮',
+    alias: 'peddler',
+    title: '蛾燈小販',
+    description: '一名小販坐在蛾燈長廊轉角，攤布上擺滿銀粉瓶、夜花乾瓣與會自行變暗的玻璃杯。',
+    roomId: 'moonshadow_court_moth_lantern_gallery',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'dreamglass_dew', 'moth_lantern_dust', 'nightbloom_petal'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買點夢玻露吧。這裡的走廊很會假裝自己是出口。',
+        options: [
+          { text: '我看看貨品。', nextId: 'shop' },
+          { text: '夜花庭危險嗎？', nextId: 'garden' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、夢玻露、蛾燈銀粉、夜花瓣。隱庭敕令不在攤上，能擺攤賣的都不是真敕令。', action: { type: 'shop', data: { shopType: 'moonshadow_lantern_goods' } }, options: [{ text: '夜花庭危險嗎？', nextId: 'garden' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'garden', text: '夜花會聽掌聲開花。你若聽見沒有人的掌聲，就別回頭。', options: [{ text: '我看看貨品。', nextId: 'shop' }, { text: '我會留意掌聲。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '燈不要舉太高。太亮會把別人的夢也照醒。' },
+    ],
+    guardianHints: {
+      creature: '米芮提示蛾燈群靈、夜花園母與玻鹿傳令。',
+      treasure: '她販售夢玻露滴、蛾燈銀粉與夜花瓣。',
+      spirit: '蛾燈小販提供中段補給並強化夢境迷路感。',
+    },
+  },
+
+  moonshadow_court_decree_witness: {
+    id: 'moonshadow_court_decree_witness',
+    name: '奧菲拉',
+    alias: 'witness',
+    title: '隱庭敕令見證者',
+    description: '一名見證者立在隱庭核心前，半邊臉戴著黑月面具，半邊臉映著白花影。',
+    roomId: 'moonshadow_court_hidden_court_core',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '月后投影只問一件事：你穿過的是宮廷，還是自己的夢？回答錯的人會永遠留在舞會裡。',
+        options: [
+          { text: '月后怎麼打？', nextId: 'queen' },
+          { text: '敕令代表什麼？', nextId: 'decree' },
+          { text: '我會穩住夢境。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'queen', text: '反射屏障升起時停手，根縛落下時先救隊友。死亡印記不是威脅，是倒數。', options: [{ text: '敕令代表什麼？', nextId: 'decree' }, { text: '我會看屏障。', nextId: 'farewell' }] },
+      { id: 'decree', text: '隱庭敕令證明月影庭承認你聽過真名，但不代表你能保有真名。', options: [{ text: '月后怎麼打？', nextId: 'queen' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若王座空著，別坐。那通常表示王座正在等你。' },
+    ],
+    guardianHints: {
+      creature: '奧菲拉提示隱庭月后投影的反射、根縛與死亡印記。',
+      treasure: '她說明隱庭敕令是月影庭終點證物。',
+      spirit: '敕令見證者把宮廷核心與夢境身份主題收束起來。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

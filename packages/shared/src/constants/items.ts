@@ -3869,6 +3869,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['sunspire'],
   },
 
+  // ─── 月影庭夢境宮廷材料 (Lv 38-50) ───
+  moonmask_shard: {
+    id: 'moonmask_shard', name: '月面具碎片', type: 'quest',
+    description: '假面舞廳中破碎的銀白面具片，內側仍有夢境禮儀的低語。它能證明持有者被月影庭承認為舞會賓客。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 38, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['moonshadow_court'],
+  },
+  moth_lantern_dust: {
+    id: 'moth_lantern_dust', name: '蛾燈銀粉', type: 'material',
+    description: '蛾燈長廊裡飄落的細銀粉，在暗處會像月屑一樣發亮。妖精工匠用它修補夢境玻璃與月影帷幕。',
+    buyPrice: 3600, sellPrice: 1800, stackable: true, maxStack: 99, levelReq: 39, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['moonshadow_court'],
+  },
+  nightbloom_petal: {
+    id: 'nightbloom_petal', name: '夜花瓣', type: 'material',
+    description: '夜花庭只在月影最深時綻放的花瓣，握住時能短暫聽見夢境中的掌聲。',
+    buyPrice: 4000, sellPrice: 2000, stackable: true, maxStack: 99, levelReq: 40, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['moonshadow_court'],
+  },
+  dreamglass_dew: {
+    id: 'dreamglass_dew', name: '夢玻露滴', type: 'consumable',
+    description: '夢玻前廳與誓鏡室凝出的清亮露滴，飲下後能讓破碎夢境暫時穩定，並恢復體力。',
+    buyPrice: 4600, sellPrice: 2300, stackable: true, maxStack: 20, levelReq: 38, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 500 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['moonshadow_court'],
+  },
+  hidden_court_decree: {
+    id: 'hidden_court_decree', name: '隱庭敕令', type: 'quest',
+    description: '隱庭核心女王投影消散後留下的月黑敕令，字跡會在現實與夢境間交替。它證明月影庭的核心試煉已被通過。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 50, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['moonshadow_court'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',
