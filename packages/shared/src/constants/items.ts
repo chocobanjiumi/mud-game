@@ -2283,6 +2283,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['old_farmland', 'quest', 'monster_drop'], zoneTags: ['old_farmland'],
   },
+  whisper_reed: {
+    id: 'whisper_reed', name: '低語蘆葦', type: 'material',
+    description: '低語溪谷岸邊採得的空心蘆葦，風吹過時會留下短促回音。巡林人常用它判斷水道方向與附近怪物動靜。',
+    buyPrice: 0, sellPrice: 8,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['whispering_valley', 'monster_drop', 'gathering'], zoneTags: ['whispering_valley'],
+  },
+  coldspring_dew: {
+    id: 'coldspring_dew', name: '冷泉露', type: 'material',
+    description: '凝在冷泉石面的藍白露水，離開溪谷後仍保持低溫。可用於舒緩毒素、保存草藥或調和冰屬性藥劑。',
+    buyPrice: 0, sellPrice: 10,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['whispering_valley', 'monster_drop', 'gathering'], zoneTags: ['whispering_valley'],
+  },
+  ice_fern_frond: {
+    id: 'ice_fern_frond', name: '冰蕨葉', type: 'material',
+    description: '冰蕨叢裡採下的霜藍葉片，葉脈會把聲音震成細小水珠。藥師可用它製作抗寒與鎮定類藥材。',
+    buyPrice: 0, sellPrice: 12,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['whispering_valley', 'monster_drop', 'gathering'], zoneTags: ['whispering_valley'],
+  },
+  echo_stone_chip: {
+    id: 'echo_stone_chip', name: '回音石片', type: 'material',
+    description: '從回音岩群或低語裂縫震落的小石片，貼近耳邊能聽見延遲的水聲。適合作為聲音儀式與符文材料。',
+    buyPrice: 0, sellPrice: 14,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['whispering_valley', 'monster_drop', 'hidden_cache'], zoneTags: ['whispering_valley'],
+  },
+  ranger_badge: {
+    id: 'ranger_badge', name: '巡林徽章', type: 'quest',
+    description: '失蹤巡林人留下的銅徽章，背面刻著巡視路線與石堰水位記號。舊神龕似乎會回應它的金屬聲。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['whispering_valley', 'quest', 'monster_drop'], zoneTags: ['whispering_valley'],
+  },
+  whispering_crystal: {
+    id: 'whispering_crystal', name: '低語水晶', type: 'quest',
+    description: '低語裂縫中凝成的藍白水晶，內部光絲像水流般移動。它記錄溪谷水聲失序的核心節奏。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['whispering_valley', 'quest', 'monster_drop'], zoneTags: ['whispering_valley'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

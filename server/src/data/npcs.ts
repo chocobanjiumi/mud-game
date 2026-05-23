@@ -3124,6 +3124,148 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她相信老農場不是廢墟，而是一塊仍在求救的土地。',
     },
   },
+
+  whispering_valley_ranger: {
+    id: 'whispering_valley_ranger',
+    name: '洛岑',
+    alias: 'ranger',
+    title: '溪谷巡林人',
+    description:
+      '一名披著防水斗篷的巡林人站在舊哨站路線圖前，肩帶上別著缺了一角的銅徽章。' +
+      '他的聲音壓得很低，像怕自己的話被溪谷回音學走。',
+    roomId: 'whispering_valley_ranger_post',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '進溪谷後別只聽聲音。回音會說謊，水花比較誠實。若你看到藍白微光，先找退路再靠近。',
+        options: [
+          { text: '溪谷出了什麼事？', nextId: 'problem' },
+          { text: '我該從哪裡開始？', nextId: 'route' },
+          { text: '你在找徽章？', nextId: 'badge' },
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'problem',
+        text:
+          '石堰水位亂了，冷泉變得太冷，舊神龕也不再回應。低語裂縫像把所有水聲拉成一條線，' +
+          '怪物被那聲音吸上游，連狼群都改了巡獵路線。',
+        options: [
+          { text: '我該從哪裡開始？', nextId: 'route' },
+          { text: '低語裂縫在哪？', nextId: 'rift' },
+        ],
+      },
+      {
+        id: 'route',
+        text:
+          '先看蘆葦岸與清溪，熟悉水聲。再去冷泉、草藥坡和蛛網岩洞找失蹤巡林人的線索。' +
+          '若能拿回巡林徽章，舊神龕會指出隱瀑石室。',
+        options: [
+          { text: '徽章在哪？', nextId: 'badge' },
+          { text: '低語裂縫在哪？', nextId: 'rift' },
+        ],
+      },
+      {
+        id: 'badge',
+        text:
+          '徽章可能被冰蕨織網蛛拖進洞裡，也可能落在溪影狼巢。它背面刻著石堰水位，' +
+          '沒有那個記號，很難讓神龕重新聽懂人的聲音。',
+        options: [
+          { text: '我會去找。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'rift',
+        text:
+          '上游石堰與隱瀑石室之間。若裂縫裡的聲音開始重複你的話，代表低語者醒了。',
+        options: [
+          { text: '我明白了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '看水面，不要只聽耳朵。溪谷若真的要警告你，會先讓水停一拍。',
+      },
+    ],
+    guardianHints: {
+      creature: '洛岑能從水花方向判斷溪影狼與清溪史萊姆的位置。',
+      treasure: '他的路線圖標出石堰、神龕與隱瀑石室之間的安全節點。',
+      spirit: '他相信溪谷不是被詛咒，而是失去了正確的水聲節奏。',
+    },
+  },
+
+  whispering_valley_herbalist: {
+    id: 'whispering_valley_herbalist',
+    name: '芙蕾',
+    alias: 'herbalist',
+    title: '冷泉藥師',
+    description:
+      '一位背著竹製藥箱的藥師蹲在冷泉旁，用細布收集藍白露水。她的袖口縫著防水符線，' +
+      '藥箱裡分門別類放著草藥、解毒劑與冰蕨樣本。',
+    roomId: 'whispering_valley_cold_spring',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'small_mp_potion',
+      'medium_hp_potion',
+      'antidote',
+      'status_cure',
+      'herb',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '冷泉露很有用，但別直接喝。這裡的水會記住聲音，調錯比例就會讓人一直聽見回音。',
+        options: [
+          { text: '我看看藥品。', nextId: 'shop' },
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '冷泉怎麼了？', nextId: 'spring' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '我有基本藥水、解毒劑和狀態藥。要進蛛網岩洞或冰蕨叢，至少帶一瓶解毒劑。',
+        action: { type: 'shop', data: { shopType: 'herbalist' } },
+        options: [
+          { text: '哪些材料值得帶回？', nextId: 'materials' },
+          { text: '冷泉怎麼了？', nextId: 'spring' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'materials',
+        text:
+          '低語蘆葦、冷泉露、冰蕨葉都能入藥。回音石片和低語水晶別亂磨粉，' +
+          '它們不是單純礦物，而是溪谷聲音凝下來的東西。',
+        options: [
+          { text: '我看看藥品。', nextId: 'shop' },
+          { text: '冷泉怎麼了？', nextId: 'spring' },
+        ],
+      },
+      {
+        id: 'spring',
+        text:
+          '冷泉比去年冷太多，史萊姆也變得透明。水脈上游一定有東西把聲音和寒氣鎖住了，' +
+          '也許在隱瀑石室，也許更深。',
+        options: [
+          { text: '我會往上游查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '採冰蕨時別折主莖。你只要葉片，溪谷還需要它繼續聽水聲。',
+      },
+    ],
+    guardianHints: {
+      creature: '芙蕾能用藥箱裡的露水震動判斷附近是否有回音微光。',
+      treasure: '她保留一份尚未污染的冷泉露，可作為判斷水脈異常的基準。',
+      spirit: '她把溪谷視為病人，而不是採集場。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
