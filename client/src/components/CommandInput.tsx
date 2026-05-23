@@ -1,15 +1,26 @@
 import { useState, useRef, useCallback, type KeyboardEvent } from 'react';
+import { useGameStore } from '../stores/gameStore';
 
 const COMMON_COMMANDS = [
-  'look', 'north', 'south', 'east', 'west', 'up', 'down',
+  'look', 'go', 'north', 'south', 'east', 'west', 'up', 'down',
   'attack', 'defend', 'flee', 'use', 'equip', 'unequip',
-  'inventory', 'status', 'skills', 'party', 'map',
+  'inventory', 'status', 'skills', 'skill', 'party', 'map',
   'say', 'shout', 'whisper', 'help',
   'buy', 'sell', 'talk', 'quest',
   'rest', 'pickup', 'drop',
   'search', 'inspect', 'open',
   'activate', 'portals', 'travel', 'recall',
+  'loot', 'faith', 'pray', 'alias', 'unalias',
 ];
+
+const COMMON_ALIASES = ['l', 'i', 'stat', 'stats', 'atk', 'kill', 'sk', 'n', 's', 'e', 'w', 'u', 'd'];
+
+interface Suggestion {
+  value: string;
+  label: string;
+  detail?: string;
+  complete: string;
+}
 
 interface CommandInputProps {
   onSubmit: (command: string) => void;
@@ -18,21 +29,24 @@ interface CommandInputProps {
 export default function CommandInput({ onSubmit }: CommandInputProps) {
   const [value, setValue] = useState('');
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const historyRef = useRef<string[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const room = useGameStore((s) => s.room);
+  const combat = useGameStore((s) => s.combat);
+  const inventory = useGameStore((s) => s.inventory);
+  const skills = useGameStore((s) => s.skills);
 
   const updateSuggestions = useCallback((text: string) => {
     if (!text.trim()) {
       setSuggestions([]);
       return;
     }
-    const lower = text.toLowerCase();
-    const matches = COMMON_COMMANDS.filter((cmd) => cmd.startsWith(lower)).slice(0, 5);
+    const matches = buildSuggestions(text, { room, combat, inventory, skills }).slice(0, 8);
     setSuggestions(matches);
     setSelectedSuggestion(0);
-  }, []);
+  }, [combat, inventory, room, skills]);
 
   const submit = useCallback(() => {
     const trimmed = value.trim();
@@ -56,7 +70,7 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
       if (e.key === 'Tab' && suggestions.length > 0) {
         e.preventDefault();
         const selected = suggestions[selectedSuggestion] ?? suggestions[0];
-        setValue(selected + ' ');
+        setValue(selected.complete);
         setSuggestions([]);
         return;
       }
@@ -64,7 +78,7 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
       // Enter: submit
       if (e.key === 'Enter') {
         e.preventDefault();
-        if (suggestions.length > 0 && value === suggestions[selectedSuggestion]) {
+        if (suggestions.length > 0 && value === suggestions[selectedSuggestion]?.complete.trim()) {
           // If suggestion is fully typed, just submit
         }
         submit();
@@ -128,20 +142,21 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
         <div className="absolute bottom-full left-0 right-0 bg-bg-secondary border border-border-dim">
           {suggestions.map((cmd, i) => (
             <div
-              key={cmd}
-              className={`px-3 py-1 text-sm cursor-pointer ${
+              key={`${cmd.complete}:${cmd.label}`}
+              className={`flex cursor-pointer items-center justify-between gap-3 px-3 py-1.5 text-sm ${
                 i === selectedSuggestion
                   ? 'bg-bg-tertiary text-text-terminal'
                   : 'text-text-dim hover:bg-bg-tertiary hover:text-text-bright'
               }`}
               onMouseDown={(e) => {
                 e.preventDefault();
-                setValue(cmd + ' ');
+                setValue(cmd.complete);
                 setSuggestions([]);
                 inputRef.current?.focus();
               }}
             >
-              {cmd}
+              <span className="truncate">{cmd.label}</span>
+              {cmd.detail && <span className="shrink-0 text-xs text-text-dim">{cmd.detail}</span>}
             </div>
           ))}
         </div>
@@ -165,4 +180,159 @@ export default function CommandInput({ onSubmit }: CommandInputProps) {
       </div>
     </div>
   );
+}
+
+function buildSuggestions(
+  text: string,
+  state: Pick<ReturnType<typeof useGameStore.getState>, 'room' | 'combat' | 'inventory' | 'skills'>,
+): Suggestion[] {
+  const endsWithSpace = /\s$/.test(text);
+  const parts = text.trimStart().split(/\s+/);
+  const command = parts[0]?.toLowerCase() ?? '';
+  const argPrefix = endsWithSpace ? '' : parts.slice(1).join(' ');
+
+  if (parts.length === 1 && !endsWithSpace) {
+    const lower = command.toLowerCase();
+    return [
+      ...COMMON_COMMANDS.map((cmd) => commandSuggestion(cmd)),
+      ...COMMON_ALIASES.map((alias) => commandSuggestion(alias, 'alias')),
+    ]
+      .filter((item) => item.value.startsWith(lower))
+      .slice(0, 8);
+  }
+
+  const normalizedCommand = normalizeCommand(command);
+  const targetSuggestions = getTargetSuggestions(normalizedCommand, argPrefix, state);
+  if (targetSuggestions.length > 0) return targetSuggestions;
+
+  return [];
+}
+
+function commandSuggestion(command: string, detail = 'command'): Suggestion {
+  return {
+    value: command,
+    label: command,
+    detail,
+    complete: `${command} `,
+  };
+}
+
+function normalizeCommand(command: string): string {
+  const aliases: Record<string, string> = {
+    atk: 'attack',
+    kill: 'attack',
+    n: 'go',
+    s: 'go',
+    e: 'go',
+    w: 'go',
+    u: 'go',
+    d: 'go',
+    sk: 'skills',
+  };
+  return aliases[command] ?? command;
+}
+
+function getTargetSuggestions(
+  command: string,
+  prefix: string,
+  state: Pick<ReturnType<typeof useGameStore.getState>, 'room' | 'combat' | 'inventory' | 'skills'>,
+): Suggestion[] {
+  const lower = prefix.toLowerCase();
+  const makeComplete = (label: string) => `${command} ${label}`;
+  const matches = (label: string) => label.toLowerCase().includes(lower);
+
+  if (command === 'go' || command === 'move') {
+    return (state.room?.exits ?? [])
+      .map((exit) => suggestion(exit.direction, '出口', `go ${exit.direction}`))
+      .filter((item) => matches(item.value));
+  }
+
+  if (command === 'attack') {
+    const roomTargets = (state.room?.monsters ?? []).map((monster) => ({
+      label: monster.label ?? monster.name,
+      detail: `Lv.${monster.level}`,
+    }));
+    const combatTargets = ordinalCombatLabels(state.combat?.enemyTeam ?? []).map((enemy) => ({
+      label: enemy.label,
+      detail: `HP ${enemy.hp}/${enemy.maxHp}`,
+    }));
+    return [...combatTargets, ...roomTargets]
+      .filter((target) => matches(target.label))
+      .map((target) => suggestion(target.label, target.detail, makeComplete(target.label)));
+  }
+
+  if (command === 'talk' || command === 'shop') {
+    return (state.room?.npcs ?? [])
+      .map((npc) => suggestion(npc.name, `${npc.alias} ${npc.title}`, `${command} ${npc.name}`))
+      .filter((item) => matches(item.value));
+  }
+
+  if (command === 'loot') {
+    return (state.room?.corpses ?? [])
+      .map((corpse) => {
+        const label = corpse.label ?? corpse.monsterName;
+        return suggestion(label, corpse.empty ? '已空' : '屍體', `loot ${label}`);
+      })
+      .filter((item) => matches(item.value));
+  }
+
+  if (command === 'inspect' || command === 'open' || command === 'search') {
+    const labels = [
+      ...(state.room?.entities ?? []).map((entity) => ({ label: entity.label, detail: entity.type })),
+      ...(state.room?.exits ?? []).map((exit) => ({ label: exit.direction, detail: '出口' })),
+    ];
+    return labels
+      .filter((target) => matches(target.label))
+      .map((target) => suggestion(target.label, target.detail, `${command} ${target.label}`));
+  }
+
+  if (command === 'skill') {
+    return state.skills
+      .map((skill) => suggestion(skill.skillId, '技能', `skill ${skill.skillId}`))
+      .filter((item) => matches(item.value));
+  }
+
+  if (command === 'use' || command === 'equip' || command === 'unequip' || command === 'drop') {
+    return state.inventory
+      .map((item) => {
+        const label = (item as { name?: string }).name ?? item.itemId;
+        return suggestion(label, `x${item.quantity}`, `${command} ${label}`);
+      })
+      .filter((item) => matches(item.value));
+  }
+
+  if (command === 'travel') {
+    return (state.room?.travelNodes ?? [])
+      .map((node) => suggestion(node.name, node.unlocked ? '已啟用' : '未啟用', `travel ${node.name}`))
+      .filter((item) => matches(item.value));
+  }
+
+  return [];
+}
+
+function suggestion(value: string, detail: string, complete: string): Suggestion {
+  return {
+    value,
+    label: value,
+    detail,
+    complete,
+  };
+}
+
+function ordinalCombatLabels(enemies: NonNullable<ReturnType<typeof useGameStore.getState>['combat']>['enemyTeam']) {
+  const totals = new Map<string, number>();
+  for (const enemy of enemies) {
+    totals.set(enemy.name, (totals.get(enemy.name) ?? 0) + 1);
+  }
+  const seen = new Map<string, number>();
+  return enemies
+    .filter((enemy) => !enemy.isDead)
+    .map((enemy) => {
+      const next = (seen.get(enemy.name) ?? 0) + 1;
+      seen.set(enemy.name, next);
+      return {
+        ...enemy,
+        label: (totals.get(enemy.name) ?? 0) > 1 ? `${enemy.name}#${next}` : enemy.name,
+      };
+    });
 }
