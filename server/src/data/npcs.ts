@@ -10378,6 +10378,101 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  serpent_delta_ferry_pilot: {
+    id: 'serpent_delta_ferry_pilot',
+    name: '阿渡',
+    alias: 'ferryman',
+    title: '蛇河渡口船夫',
+    description: '一名赤腳船夫坐在渡口入口的窄船尾，竹篙上纏著乾蛇蛻與蘆草結。',
+    roomId: 'serpent_delta_entrance_ferry',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '蛇河不是一條河，是很多張嘴。你聽見哪邊喊你，就先確認水流是不是也往那邊走。',
+        options: [
+          { text: '先去哪裡？', nextId: 'route' },
+          { text: '水裡有什麼？', nextId: 'creatures' },
+          { text: '我會看水。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'route', text: '先過分流水蘆岸和吊腳村，別急著碰蛇祠階。等你認得冷霧和藍蓮味，再往百口合流去。', options: [{ text: '水裡有什麼？', nextId: 'creatures' }, { text: '知道了。', nextId: 'farewell' }] },
+      { id: 'creatures', text: '蘆岸絞蛇拖腳，泥魚裝枯枝，冷霧電鰻會讓槳變冰。看到水面同時冒三圈泡，就別下船。', options: [{ text: '先去哪裡？', nextId: 'route' }, { text: '我會小心。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '竹篙別插太深。有些泥不是泥，是等你借力的嘴。' },
+    ],
+    guardianHints: {
+      creature: '阿渡提示蘆岸絞蛇、泥魚伏擊者與冷霧電鰻。',
+      treasure: '他指出蘆鱗條、冷霧瓶與藍蓮瓣的早期採集路線。',
+      spirit: '船夫把蛇河三角洲入口轉成水路判讀與伏擊主題。',
+    },
+  },
+
+  serpent_delta_stilt_herbalist: {
+    id: 'serpent_delta_stilt_herbalist',
+    name: '蘭婆',
+    alias: 'herbalist',
+    title: '吊腳村藥婆',
+    description: '一名藥婆在吊腳村的竹棚下熬著深綠藥湯，鍋邊排著蛇卵殼粉、藍蓮瓣與解毒草。',
+    roomId: 'serpent_delta_stilt_hamlet',
+    type: 'merchant',
+    shopItems: [
+      'medium_hp_potion',
+      'medium_mp_potion',
+      'antidote',
+      'delta_antivenom_brew',
+      'reedscale_strip',
+      'blue_lotus_petal',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '被咬了才來買解毒湯，通常已經少走三步路了。先買，活著回來再嫌苦。',
+        options: [
+          { text: '我看看藥材。', nextId: 'shop' },
+          { text: '蛇卵殼有用嗎？', nextId: 'egg' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '中型藥水、解毒劑、三角洲解毒湯、蘆鱗條、藍蓮瓣。蛇神背水鱗不賣，那東西沾了太多河口。', action: { type: 'shop', data: { shopType: 'serpent_delta_herbs' } }, options: [{ text: '蛇卵殼有用嗎？', nextId: 'egg' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'egg', text: '蛇卵殼磨粉能壓毒，但你最好別自己去偷。育母聽得見殼裂聲，隔兩條水道都聽得見。', options: [{ text: '我看看藥材。', nextId: 'shop' }, { text: '我記住了。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '藥湯趁熱喝。冷掉會像三角洲的霧一樣黏喉。' },
+    ],
+    guardianHints: {
+      creature: '蘭婆提示蛇卵丘育母、蛇祠面具侍者與藍蓮冷霧諭者。',
+      treasure: '她販售三角洲解毒湯、蘆鱗條與藍蓮瓣。',
+      spirit: '藥婆把吊腳村變成濕地補給與毒性應對節點。',
+    },
+  },
+
+  serpent_delta_shrine_keeper: {
+    id: 'serpent_delta_shrine_keeper',
+    name: '瑟鈴',
+    alias: 'keeper',
+    title: '蛇祠守階人',
+    description: '一名披著白鱗披肩的守階人站在蛇祠階上，手裡的面具內側畫著百條支流。',
+    roomId: 'serpent_delta_serpent_shrine_steps',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '祭壇不要求你跪，只要求你知道哪一條水不能踏。百口合流之後，每條水都會記住你的腳印。',
+        options: [
+          { text: '百口河蛇怎麼打？', nextId: 'hydra' },
+          { text: '藍蓮沼有什麼？', nextId: 'lotus' },
+          { text: '我會尊重祭路。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'hydra', text: '百口河蛇吐毒霧時別退進冷霧，尾巴掃水後才是冰風暴。蛇神背水鱗只會給能活著離開背水的人。', options: [{ text: '藍蓮沼有什麼？', nextId: 'lotus' }, { text: '我會觀察。', nextId: 'farewell' }] },
+      { id: 'lotus', text: '藍蓮冷霧諭者會把花影變成屏障。花影亮起時停手，否則你是在替它祈禱。', options: [{ text: '百口河蛇怎麼打？', nextId: 'hydra' }, { text: '明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '若面具自己轉向背水，代表河口已經醒了。' },
+    ],
+    guardianHints: {
+      creature: '瑟鈴提示藍蓮冷霧諭者與百口河蛇的屏障、毒霧和冰風暴。',
+      treasure: '她說明蛇神背水鱗是三角洲終點證物。',
+      spirit: '守階人把蛇祠、藍蓮沼與蛇神背水收束成祭壇主線。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',

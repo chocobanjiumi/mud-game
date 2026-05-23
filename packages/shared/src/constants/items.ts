@@ -4046,6 +4046,45 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['hollow_mountain'],
   },
 
+  // ─── 蛇河三角洲濕地材料 (Lv 18-30) ───
+  reedscale_strip: {
+    id: 'reedscale_strip', name: '蘆鱗條', type: 'material',
+    description: '蛇河三角洲蘆岸與鱗網場收集的長條鱗片，表面像濕蘆葉一樣有細密紋路。漁民會把它編進防水網具。',
+    buyPrice: 1200, sellPrice: 600, stackable: true, maxStack: 99, levelReq: 18, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['serpent_delta'],
+  },
+  blue_lotus_petal: {
+    id: 'blue_lotus_petal', name: '藍蓮瓣', type: 'material',
+    description: '藍蓮沼中只在冷霧裡張開的花瓣，花面帶著淡淡冰光。祭司用它平衡蛇毒與寒氣。',
+    buyPrice: 1600, sellPrice: 800, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['serpent_delta'],
+  },
+  cold_mist_vial: {
+    id: 'cold_mist_vial', name: '冷霧瓶', type: 'material',
+    description: '從冷水彎與冰霧水道封存的白霧小瓶，瓶壁永遠潮濕。可用於冰屬藥劑、陷阱與渡河護符。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 99, levelReq: 21, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['serpent_delta'],
+  },
+  serpent_egg_shell: {
+    id: 'serpent_egg_shell', name: '蛇卵殼', type: 'material',
+    description: '蛇卵丘中破開的厚殼碎片，內側有冰藍黏膜。三角洲藥師會把它磨粉，用來中和毒液。',
+    buyPrice: 1500, sellPrice: 750, stackable: true, maxStack: 99, levelReq: 22, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['serpent_delta'],
+  },
+  delta_antivenom_brew: {
+    id: 'delta_antivenom_brew', name: '三角洲解毒湯', type: 'consumable',
+    description: '吊腳村用青藥、蛇卵殼粉與藍蓮瓣熬成的苦湯，能壓下蛇毒與濕冷造成的虛弱，並恢復體力。',
+    buyPrice: 2200, sellPrice: 1100, stackable: true, maxStack: 20, levelReq: 18, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 260 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['serpent_delta'],
+  },
+  serpent_god_backwater_scale: {
+    id: 'serpent_god_backwater_scale', name: '蛇神背水鱗', type: 'quest',
+    description: '蛇神背水深處的多口河蛇敗退後留下的巨大鱗片，鱗面映著分裂的河道。它證明三角洲祭壇的失衡已被平息。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 30, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['serpent_delta'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

@@ -10708,4 +10708,209 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '泰坦把風門、礦脈、雷礦、銀息井與山心核心收束成空心山終點。',
     },
   },
+
+  serpent_delta_reed_constrictor: {
+    id: 'serpent_delta_reed_constrictor', name: '蘆岸絞蛇', alias: 'reedconstrictor',
+    level: 18, hp: 820, mp: 120, str: 66, int: 30, dex: 86, vit: 64, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'venomous_bite', 'root_bind', 'quick_dash'],
+    expReward: 1250, goldReward: [320, 610],
+    drops: [
+      { itemId: 'reedscale_strip', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'delta_antivenom_brew', chance: 0.1, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '分流水蘆岸與渡口附近潛伏的長身水蛇，背鱗像蘆葉般貼著水面。牠會先纏住腳踝，再把獵物拖進看似淺的泥水。',
+    isBoss: false,
+    guardianHints: {
+      creature: '蘆岸絞蛇會毒咬與根縛，穿過蘆岸時先清水邊。',
+      treasure: '蘆鱗條主要從牠背鱗剝取。',
+      spirit: '蘆岸絞蛇建立三角洲入口的濕地伏擊感。',
+    },
+  },
+
+  serpent_delta_mudfish_ambusher: {
+    id: 'serpent_delta_mudfish_ambusher', name: '泥魚伏擊者', alias: 'mudfish',
+    level: 19, hp: 900, mp: 110, str: 72, int: 28, dex: 94, vit: 74, luk: 16,
+    element: 'nature',
+    skills: ['basic_attack', 'tail_whip', 'poison_spit', 'quick_dash'],
+    expReward: 1420, goldReward: [370, 700],
+    drops: [
+      { itemId: 'reedscale_strip', chance: 0.34, minQty: 1, maxQty: 2 },
+      { itemId: 'blue_lotus_petal', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '泥魚潭裡半魚半蜥的伏擊生物，會把身體埋進腐泥，只露出像枯枝的背刺。水面冒泡時，通常已經太近。',
+    isBoss: false,
+    guardianHints: {
+      creature: '泥魚伏擊者會毒液與尾擊，看到泥泡連成線就退開。',
+      treasure: '牠會把蘆鱗條與藍蓮瓣拖進泥洞。',
+      spirit: '泥魚讓三角洲淺水區有移動與搜尋壓力。',
+    },
+  },
+
+  serpent_delta_stilt_scaleguard: {
+    id: 'serpent_delta_stilt_scaleguard', name: '吊腳鱗衛', alias: 'scaleguard',
+    level: 20, hp: 1180, mp: 180, str: 86, int: 44, dex: 82, vit: 104, luk: 14,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'stone_slam', 'poison_arrow'],
+    expReward: 1700, goldReward: [440, 840],
+    drops: [
+      { itemId: 'reedscale_strip', chance: 0.48, minQty: 1, maxQty: 3 },
+      { itemId: 'delta_antivenom_brew', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '吊腳村與鱗網場間巡守的鱗甲衛士，盾牌用河蛇鱗與硬木編成。牠們守護村路，也會攻擊不懂祭壇禁忌的外來者。',
+    isBoss: false,
+    guardianHints: {
+      creature: '吊腳鱗衛會盾擊、斬擊與毒箭，先避開狹窄棧道。',
+      treasure: '鱗衛甲片可拆成蘆鱗條。',
+      spirit: '鱗衛讓吊腳村具備居民防衛而非純野獸威脅。',
+    },
+  },
+
+  serpent_delta_coldmist_eel: {
+    id: 'serpent_delta_coldmist_eel', name: '冷霧電鰻', alias: 'mist eel',
+    level: 21, hp: 980, mp: 360, str: 54, int: 94, dex: 118, vit: 60, luk: 20,
+    element: 'ice',
+    skills: ['basic_attack', 'frost_nova', 'lightning', 'blind'],
+    expReward: 1900, goldReward: [500, 950],
+    drops: [
+      { itemId: 'cold_mist_vial', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'blue_lotus_petal', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '冷水彎與冰霧水道中游動的蒼白電鰻，身邊總跟著一圈低溫霧氣。牠會在水下放出冰冷電流，讓船槳與手指同時麻木。',
+    isBoss: false,
+    guardianHints: {
+      creature: '冷霧電鰻會霜爆、雷擊與致盲，別站在同一片淺水。',
+      treasure: '冷霧瓶多半要從牠盤踞的霧穴取得。',
+      spirit: '電鰻把蛇河三角洲的冰霧元素落到水道生物上。',
+    },
+  },
+
+  serpent_delta_mangrove_rootbinder: {
+    id: 'serpent_delta_mangrove_rootbinder', name: '紅樹縛根靈', alias: 'rootbinder',
+    level: 22, hp: 1400, mp: 340, str: 72, int: 96, dex: 44, vit: 132, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'nature_drain', 'poison_spit'],
+    expReward: 2200, goldReward: [570, 1080],
+    drops: [
+      { itemId: 'blue_lotus_petal', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'serpent_egg_shell', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '紅樹迷道裡由纏根、淤泥與蛇蛻長成的濕地靈，會把木根偽裝成渡板。走錯一步，整片根網就會收緊。',
+    isBoss: false,
+    guardianHints: {
+      creature: '紅樹縛根靈會根縛、吸取與毒液，先退出根網。',
+      treasure: '藍蓮瓣與蛇卵殼常卡在紅樹根間。',
+      spirit: '縛根靈支撐三角洲的紅樹迷道與自然元素。',
+    },
+  },
+
+  serpent_delta_moon_net_slinger: {
+    id: 'serpent_delta_moon_net_slinger', name: '月釣網手', alias: 'netslinger',
+    level: 23, hp: 1220, mp: 260, str: 78, int: 62, dex: 122, vit: 76, luk: 26,
+    element: 'none',
+    skills: ['basic_attack', 'quick_dash', 'poison_arrow', 'root_bind'],
+    expReward: 2450, goldReward: [640, 1220],
+    drops: [
+      { itemId: 'reedscale_strip', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'cold_mist_vial', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '月釣哨與鱗網場出沒的水上獵手，身上披著被月光浸白的魚網。牠會用帶刺網索絆倒目標，再把人拖向暗流。',
+    isBoss: false,
+    guardianHints: {
+      creature: '月釣網手會網陷阱與毒箭，踩到網線前先清哨點。',
+      treasure: '牠的網具常綁著蘆鱗條和冷霧瓶。',
+      spirit: '網手讓漁村與水道有半人形掠食者壓力。',
+    },
+  },
+
+  serpent_delta_shrine_mask_acolyte: {
+    id: 'serpent_delta_shrine_mask_acolyte', name: '蛇祠面具侍者', alias: 'maskacolyte',
+    level: 24, hp: 1500, mp: 520, str: 58, int: 126, dex: 72, vit: 96, luk: 20,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_spit', 'heal', 'root_bind', 'frost_nova'],
+    expReward: 2850, goldReward: [740, 1400],
+    drops: [
+      { itemId: 'serpent_egg_shell', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'blue_lotus_petal', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description: '蛇祠階與祭司面具屋裡守著舊儀式的侍者，面具眼洞滴著藍蓮汁。牠們會替蛇巢治傷，也會用冷霧拖慢褻瀆者。',
+    isBoss: false,
+    guardianHints: {
+      creature: '蛇祠面具侍者會治療、根縛與霜爆，優先處理。',
+      treasure: '蛇卵殼與藍蓮瓣是牠們儀式材料。',
+      spirit: '面具侍者把蛇神祭壇與居民信仰轉成戰鬥內容。',
+    },
+  },
+
+  serpent_delta_egg_mound_broodmother: {
+    id: 'serpent_delta_egg_mound_broodmother', name: '蛇卵丘育母', alias: 'broodmother',
+    level: 26, hp: 2600, mp: 520, str: 122, int: 88, dex: 86, vit: 170, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'venomous_bite', 'toxic_cloud', 'tail_whip', 'heal'],
+    expReward: 3900, goldReward: [1020, 1940],
+    drops: [
+      { itemId: 'serpent_egg_shell', chance: 0.78, minQty: 2, maxQty: 4 },
+      { itemId: 'delta_antivenom_brew', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '盤踞蛇卵丘的巨大母蛇，身下保護著半透明卵囊。牠會用毒霧遮住幼蛇動向，並用尾巴掃開靠近卵丘的人。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '蛇卵丘 brood母會毒霧、尾擊與治療，先離開卵丘低窪處。',
+      treasure: '蛇卵殼是牠最穩定的掉落。',
+      spirit: 'brood母讓蛇卵丘成為三角洲中段的精英巢穴。',
+    },
+  },
+
+  serpent_delta_blue_lotus_oracle: {
+    id: 'serpent_delta_blue_lotus_oracle', name: '藍蓮冷霧諭者', alias: 'lotusoracle',
+    level: 28, hp: 2400, mp: 980, str: 50, int: 164, dex: 74, vit: 140, luk: 28,
+    element: 'ice',
+    skills: ['basic_attack', 'ice_storm', 'frost_nova', 'heal', 'reflect_barrier'],
+    expReward: 5100, goldReward: [1340, 2540],
+    drops: [
+      { itemId: 'blue_lotus_petal', chance: 0.72, minQty: 2, maxQty: 4 },
+      { itemId: 'cold_mist_vial', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'healer',
+    description: '藍蓮沼深處在花影中站立的冷霧諭者，聲音像水面下的祈禱。牠會把藍蓮花影化成冰霧屏障，保護通往背水的祭路。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '藍蓮冷霧諭者會反射、冰風暴與治療，屏障期間停手。',
+      treasure: '藍蓮瓣與冷霧瓶集中在諭者守護的花叢。',
+      spirit: '諭者把三角洲後段轉入冰霧祭儀主題。',
+    },
+  },
+
+  serpent_delta_manymouth_hydra: {
+    id: 'serpent_delta_manymouth_hydra', name: '百口河蛇', alias: 'manyhydra',
+    level: 30, hp: 5200, mp: 1100, str: 148, int: 132, dex: 86, vit: 250, luk: 26,
+    element: 'ice',
+    skills: ['basic_attack', 'venomous_bite', 'water_spear', 'ice_storm', 'toxic_cloud', 'tail_whip'],
+    expReward: 8200, goldReward: [2160, 4080],
+    drops: [
+      { itemId: 'serpent_god_backwater_scale', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'serpent_egg_shell', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'blue_lotus_petal', chance: 0.46, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'boss',
+    description: '蛇神背水與百口合流間浮出的多首河蛇，每張口都含著不同支流的水聲。牠不是單純野獸，而像整片三角洲對失衡祭儀的反噬。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2100,
+    guardianHints: {
+      creature: '百口河蛇會毒霧、水矛、冰風暴與尾擊，先分散再處理毒霧區。',
+      treasure: '牠必定掉落蛇神背水鱗。',
+      spirit: '百口河蛇收束吊腳村、蛇卵丘、藍蓮沼與蛇神背水主線。',
+    },
+  },
 };
