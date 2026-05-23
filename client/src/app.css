@@ -200,6 +200,11 @@ input::placeholder {
   background: rgba(255, 255, 255, 0.04);
 }
 
+.room-row-selected {
+  border-color: rgba(0, 255, 136, 0.45);
+  background: rgba(0, 255, 136, 0.08);
+}
+
 .room-entity-row {
   align-items: stretch;
 }
@@ -237,6 +242,40 @@ input::placeholder {
 
 .room-action-danger:hover:not(:disabled) {
   background: rgba(255, 94, 94, 0.15);
+}
+
+.target-action {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 11px;
+}
+
+.target-action:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.target-action-primary {
+  border-color: rgba(0, 255, 136, 0.3);
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--color-text-terminal);
+}
+
+.target-action-primary:hover:not(:disabled) {
+  background: rgba(0, 255, 136, 0.17);
+}
+
+.target-action-danger {
+  border-color: rgba(255, 94, 94, 0.3);
+  background: rgba(255, 94, 94, 0.09);
+  color: var(--color-combat-damage);
+}
+
+.target-action-danger:hover:not(:disabled) {
+  background: rgba(255, 94, 94, 0.16);
 }
 
 .objective-row {

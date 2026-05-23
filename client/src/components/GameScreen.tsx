@@ -7,6 +7,7 @@ import StatusBar from './StatusBar';
 import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
 import RoomPanel from './RoomPanel';
+import SelectedTargetPanel from './SelectedTargetPanel';
 import ObjectivePanel from './ObjectivePanel';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
@@ -175,6 +176,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         <div className="w-[360px] xl:w-[420px] shrink-0 flex flex-col bg-bg-secondary border-l border-border-dim min-h-0">
           <RoomImage />
           <RoomPanel />
+          <SelectedTargetPanel />
           <div className="flex-1 min-h-0 overflow-y-auto">
             <Inventory />
             <PartyPanel />

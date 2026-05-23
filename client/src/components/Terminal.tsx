@@ -142,13 +142,22 @@ function InteractiveLine({ line, colorClass, onOpenMenu }: {
 
 export default function Terminal() {
   const terminalLines = useGameStore((s) => s.terminalLines);
+  const room = useGameStore((s) => s.room);
+  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldAutoScrollRef = useRef(true);
   const [popup, setPopup] = useState<PopupState | null>(null);
 
   const handleOpenMenu = useCallback((entity: TerminalEntity, x: number, y: number) => {
+    const roomEntity = room?.entities?.find((candidate) => (
+      candidate.id === entity.commandTarget
+      || candidate.id === entity.cmdName
+      || candidate.label === entity.cmdName
+      || candidate.label === entity.name
+    ));
+    if (roomEntity) setSelectedEntity(roomEntity);
     setPopup({ entity, x, y });
-  }, []);
+  }, [room?.entities, setSelectedEntity]);
 
   // 點擊其他地方關閉選單
   useEffect(() => {

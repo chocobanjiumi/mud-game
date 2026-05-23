@@ -51,14 +51,14 @@ function actionClass(action: RoomEntityAction): string {
 }
 
 function EntityRow({ entity }: { entity: RoomEntity }) {
-  const primaryAction = entity.actions.find((action) => !action.disabled) ?? entity.actions[0];
+  const selectedEntity = useGameStore((s) => s.selectedEntity);
+  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
+  const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
   return (
-    <div className="room-row room-entity-row">
+    <div className={`room-row room-entity-row ${selected ? 'room-row-selected' : ''}`}>
       <button
         className="min-w-0 flex-1 text-left"
-        disabled={!primaryAction || primaryAction.disabled}
-        title={primaryAction?.reason}
-        onClick={() => primaryAction && !primaryAction.disabled && sendCommand(primaryAction.command)}
+        onClick={() => setSelectedEntity(entity)}
       >
         <span className={`${TYPE_CLASS[entity.type]} block truncate`}>{entity.label}</span>
         {entity.subtitle && <span className="text-text-dim block truncate">{entity.subtitle}</span>}

@@ -218,6 +218,8 @@ export interface GameState {
   // Room
   room: RoomInfo | null;
   setRoom: (room: RoomInfo | null) => void;
+  selectedEntity: RoomEntity | null;
+  setSelectedEntity: (entity: RoomEntity | null) => void;
 
   // Combat
   combat: CombatInfo | null;
@@ -378,7 +380,18 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Room
   room: null,
-  setRoom: (room) => set({ room }),
+  selectedEntity: null,
+  setRoom: (room) => set((state) => {
+    const selectedEntity = room?.entities?.some((entity) => (
+      state.selectedEntity
+      && entity.id === state.selectedEntity.id
+      && entity.type === state.selectedEntity.type
+    ))
+      ? state.selectedEntity
+      : null;
+    return { room, selectedEntity };
+  }),
+  setSelectedEntity: (selectedEntity) => set({ selectedEntity }),
 
   // Combat
   combat: null,
