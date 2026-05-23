@@ -3476,6 +3476,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['saltwind_flats'],
   },
 
+  // ─── 荊棘迷宮植物材料與祭壇物 (Lv 26-38) ───
+  redthorn_spine: {
+    id: 'redthorn_spine', name: '紅刺棘針', type: 'material',
+    description: '荊棘迷宮外環與紅刺牆上剝下的硬棘，尖端滲著暗紅汁液，會在迷宮轉向時微微震動。',
+    buyPrice: 1900, sellPrice: 950, stackable: true, maxStack: 99, levelReq: 26, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['thornmaze'],
+  },
+  blackroot_vine: {
+    id: 'blackroot_vine', name: '黑根藤索', type: 'material',
+    description: '黑根隧道與活牆裡抽出的深色藤索，韌性極高，切斷後仍會朝最近的土壤爬動。',
+    buyPrice: 2300, sellPrice: 1150, stackable: true, maxStack: 99, levelReq: 28, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['thornmaze'],
+  },
+  bloodsap_phial: {
+    id: 'bloodsap_phial', name: '血脂小瓶', type: 'consumable',
+    description: '從血脂池中封存的暗紅樹脂，少量塗抹能恢復生命，但過量會讓皮膚長出細刺。',
+    buyPrice: 2600, sellPrice: 1300, stackable: true, maxStack: 20, levelReq: 30, rarity: 'epic',
+    useEffect: { type: 'heal_hp', value: 300 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['thornmaze'],
+  },
+  moonvine_loop: {
+    id: 'moonvine_loop', name: '月藤環', type: 'material',
+    description: '月藤橋與靜鹿空地附近自然彎成的銀綠藤環，月光下會顯示短暫安全路徑。',
+    buyPrice: 2900, sellPrice: 1450, stackable: true, maxStack: 99, levelReq: 32, rarity: 'epic',
+    sourceTags: ['drop'], zoneTags: ['thornmaze'],
+  },
+  druid_altar_seed: {
+    id: 'druid_altar_seed', name: '德魯伊祭壇種', type: 'quest',
+    description: '古代德魯伊祭壇核心長出的黑綠種子，種殼上刻著會閉合迷宮的古老誓文。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 38, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['thornmaze'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

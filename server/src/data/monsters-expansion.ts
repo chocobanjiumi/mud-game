@@ -7709,4 +7709,198 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '守望者是潮霧、鹽晶與失蹤漁船記憶凝成的核心。',
     },
   },
+
+  redthorn_briarling: {
+    id: 'redthorn_briarling', name: '紅刺棘靈', alias: 'briarling',
+    level: 26, hp: 980, mp: 220, str: 66, int: 44, dex: 32, vit: 82, luk: 14,
+    element: 'nature',
+    skills: ['basic_attack', 'root_bind', 'poison_spit', 'bark_shield'],
+    expReward: 1180, goldReward: [320, 610],
+    drops: [
+      { itemId: 'redthorn_spine', chance: 0.64, minQty: 1, maxQty: 3 },
+      { itemId: 'blackroot_vine', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '外環刺徑與紅刺牆間爬行的小型荊棘靈，身體由紅刺與苔皮纏成。牠會用根鬚封路，逼迫旅人走向迷宮自行選定的岔口。',
+    isBoss: false,
+    guardianHints: {
+      creature: '紅刺棘靈會根縛與毒刺，靠近紅刺牆時先清路邊藤影。',
+      treasure: '紅刺棘針多從牠背部硬刺剝落。',
+      spirit: '棘靈是迷宮活牆的前段感知器。',
+    },
+  },
+
+  whisper_hedge_mimic: {
+    id: 'whisper_hedge_mimic', name: '低語樹牆擬形', alias: 'hedgemimic',
+    level: 27, hp: 900, mp: 300, str: 42, int: 78, dex: 36, vit: 70, luk: 18,
+    element: 'dark',
+    skills: ['basic_attack', 'blind', 'charm', 'life_drain'],
+    expReward: 1280, goldReward: [345, 660],
+    drops: [
+      { itemId: 'redthorn_spine', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'moonvine_loop', chance: 0.14, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '低語樹牆與旋轉庭中模仿同伴聲音的樹影，枝葉會排成人臉。牠會用低語魅惑旅人走向錯路，再吸走迷路者的生命熱度。',
+    isBoss: false,
+    guardianHints: {
+      creature: '低語樹牆擬形會魅惑與致盲，聽見熟人聲音不要立刻追。',
+      treasure: '牠枝條間偶爾纏著月藤環。',
+      spirit: '擬形是迷宮用記憶引路的惡意版本。',
+    },
+  },
+
+  poison_bloom_matron: {
+    id: 'poison_bloom_matron', name: '毒花床母株', alias: 'bloommatron',
+    level: 28, hp: 1050, mp: 360, str: 48, int: 86, dex: 22, vit: 84, luk: 16,
+    element: 'nature',
+    skills: ['basic_attack', 'toxic_cloud', 'poison_spit', 'nature_drain'],
+    expReward: 1400, goldReward: [380, 720],
+    drops: [
+      { itemId: 'bloodsap_phial', chance: 0.24, minQty: 1, maxQty: 1 },
+      { itemId: 'redthorn_spine', chance: 0.42, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description:
+      '毒花床深處張開的巨大花株，花瓣像濕亮紫舌，根部吸著暗紅樹脂。牠會吐出甜香毒霧，讓採花者在幻覺裡慢慢走進荊棘。',
+    isBoss: false,
+    guardianHints: {
+      creature: '毒花床母株會毒霧與吸血，花香變甜時先後撤。',
+      treasure: '血脂小瓶可從牠根部滲出的暗紅汁液封存。',
+      spirit: '母株是迷宮用美麗遮掩危險的典型節點。',
+    },
+  },
+
+  blackroot_strangler: {
+    id: 'blackroot_strangler', name: '黑根絞藤', alias: 'strangler',
+    level: 30, hp: 1240, mp: 240, str: 78, int: 50, dex: 24, vit: 108, luk: 12,
+    element: 'dark',
+    skills: ['basic_attack', 'root_bind', 'life_drain', 'shadow_bite'],
+    expReward: 1580, goldReward: [425, 810],
+    drops: [
+      { itemId: 'blackroot_vine', chance: 0.68, minQty: 1, maxQty: 3 },
+      { itemId: 'bloodsap_phial', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '黑根隧道與活牆下方伸出的粗大絞藤，表皮像濕黑皮革。牠會纏住腳踝與手腕，吸取血液餵養迷宮內層。',
+    isBoss: false,
+    guardianHints: {
+      creature: '黑根絞藤會根縛與吸血，黑根隧道中不要分散。',
+      treasure: '黑根藤索主要從牠身上切取。',
+      spirit: '絞藤是迷宮閉合力量的肌腱。',
+    },
+  },
+
+  spiderthorn_weaver: {
+    id: 'spiderthorn_weaver', name: '蛛刺編網者', alias: 'spiderthorn',
+    level: 31, hp: 980, mp: 260, str: 58, int: 58, dex: 70, vit: 58, luk: 18,
+    element: 'nature',
+    skills: ['basic_attack', 'poison_web', 'web_trap', 'venomous_bite'],
+    expReward: 1680, goldReward: [455, 865],
+    drops: [
+      { itemId: 'blackroot_vine', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'redthorn_spine', chance: 0.38, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '蛛刺窟裡以黑根和紅刺編網的多足怪，腹部掛著細小毒花。牠會把通道織成假牆，等獵物自行撞進網裡。',
+    isBoss: false,
+    guardianHints: {
+      creature: '蛛刺編網者會網陷與毒咬，蛛刺窟入口先檢查牆面。',
+      treasure: '牠的網線常混著黑根藤索與紅刺棘針。',
+      spirit: '編網者讓迷宮不只會閉合，還會偽裝出口。',
+    },
+  },
+
+  moonvine_stag: {
+    id: 'moonvine_stag', name: '月藤靜鹿', alias: 'moonstag',
+    level: 32, hp: 1180, mp: 340, str: 66, int: 76, dex: 64, vit: 74, luk: 22,
+    element: 'nature',
+    skills: ['basic_attack', 'quick_dash', 'holy_light', 'root_bind'],
+    expReward: 1820, goldReward: [490, 930],
+    drops: [
+      { itemId: 'moonvine_loop', chance: 0.58, minQty: 1, maxQty: 2 },
+      { itemId: 'bloodsap_phial', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '靜鹿空地與月藤橋上出現的銀角鹿，鹿角纏著微光月藤。牠會用柔光修補迷宮受損處，也會把闖入者困在一圈活藤之中。',
+    isBoss: false,
+    guardianHints: {
+      creature: '月藤靜鹿會治療與根縛，若牠開始發光先打斷支援。',
+      treasure: '月藤環常自然長在牠鹿角附近。',
+      spirit: '靜鹿是迷宮少數不主動殺戮但仍會守路的生靈。',
+    },
+  },
+
+  living_wall_colossus: {
+    id: 'living_wall_colossus', name: '活牆巨像', alias: 'wallcolossus',
+    level: 34, hp: 1900, mp: 360, str: 96, int: 64, dex: 14, vit: 158, luk: 10,
+    element: 'nature',
+    skills: ['basic_attack', 'stone_slam', 'root_bind', 'reflect_barrier', 'bark_shield'],
+    expReward: 2200, goldReward: [590, 1120],
+    drops: [
+      { itemId: 'blackroot_vine', chance: 0.7, minQty: 2, maxQty: 4 },
+      { itemId: 'moonvine_loop', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description:
+      '活牆深處整面荊棘牆站起後形成的巨大守衛，胸口嵌著德魯伊刻石碎片。牠會用反射藤幕封住通道，迫使隊伍在狹窄路線中承受重擊。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '活牆巨像會反射與根縛，屏障期間先防守。',
+      treasure: '牠體內能取得大量黑根藤索。',
+      spirit: '巨像是迷宮閉合意志的主體。',
+    },
+  },
+
+  crooked_totem_hexer: {
+    id: 'crooked_totem_hexer', name: '歪斜圖騰咒師', alias: 'totemhexer',
+    level: 35, hp: 1320, mp: 520, str: 42, int: 108, dex: 34, vit: 82, luk: 24,
+    element: 'dark',
+    skills: ['basic_attack', 'shadow_storm', 'death_mark', 'charm', 'life_drain'],
+    expReward: 2380, goldReward: [640, 1220],
+    drops: [
+      { itemId: 'bloodsap_phial', chance: 0.42, minQty: 1, maxQty: 2 },
+      { itemId: 'druid_altar_seed', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description:
+      '歪斜圖騰旁徘徊的古老咒師殘影，身體由黑根、血脂與碎木面具拼成。牠會用詛咒讓道路轉向，把隊伍引往內祭環。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '歪斜圖騰咒師會魅惑、死亡印記與吸血，先處理控制。',
+      treasure: '牠少量持有德魯伊祭壇種的碎片。',
+      spirit: '咒師是古代德魯伊儀式失衡後留下的暗面。',
+    },
+  },
+
+  ancient_briar_hierophant: {
+    id: 'ancient_briar_hierophant', name: '古荊德魯伊祭司', alias: 'briarhierophant',
+    level: 38, hp: 2600, mp: 720, str: 86, int: 126, dex: 36, vit: 146, luk: 28,
+    element: 'dark',
+    skills: ['basic_attack', 'root_bind', 'shadow_storm', 'nature_drain', 'reflect_barrier', 'death_mark'],
+    expReward: 3300, goldReward: [900, 1700],
+    drops: [
+      { itemId: 'druid_altar_seed', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'moonvine_loop', chance: 0.7, minQty: 1, maxQty: 3 },
+      { itemId: 'bloodsap_phial', chance: 0.6, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'boss',
+    description:
+      '古代德魯伊祭壇中甦醒的荊棘祭司，半身仍是人形，半身已長成黑根與月藤。牠維持著迷宮閉合的古老誓約，會把所有出口重新編進祭壇根系。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 1800,
+    guardianHints: {
+      creature: '古荊德魯伊祭司會根縛、反射、吸血與死亡印記，屏障期間不要貪攻。',
+      treasure: '牠必定掉落德魯伊祭壇種，是荊棘迷宮核心證明物。',
+      spirit: '祭司是迷宮中央祭壇與活牆誓約的共同核心。',
+    },
+  },
 };

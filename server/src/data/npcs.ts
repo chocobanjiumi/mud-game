@@ -7885,6 +7885,150 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  thornmaze_gate_cartographer: {
+    id: 'thornmaze_gate_cartographer',
+    name: '薇恩',
+    alias: 'cartographer',
+    title: '荊棘入口拱測徑師',
+    description:
+      '一名測徑師站在荊棘入口拱外，把剛畫好的地圖撕成小片重新排列。' +
+      '她說迷宮不是地形，而是一種很慢的思考。',
+    roomId: 'thornmaze_gate_arch',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '別相信你剛走過的路。荊棘迷宮會記得你的腳步，然後換一種方式回答。',
+        options: [
+          { text: '我該先走哪裡？', nextId: 'route' },
+          { text: '祭壇在哪？', nextId: 'altar' },
+          { text: '我會標記路線。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'route',
+        text: '先看紅刺牆，再找苔鑰孔。聽見低語不要回頭，看到月藤才代表你接近內圈。',
+        options: [
+          { text: '祭壇在哪？', nextId: 'altar' },
+          { text: '我先找苔鑰孔。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'altar',
+        text: '內祭環北面。若活牆開始同時呼吸，古荊德魯伊祭司已經知道你來了。',
+        options: [
+          { text: '我該先走哪裡？', nextId: 'route' },
+          { text: '我會準備。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '用紅刺做記號可以，但別把刺插進活牆。牆會記仇。' },
+    ],
+    guardianHints: {
+      creature: '薇恩能提示紅刺棘靈、低語樹牆擬形、活牆巨像與古荊德魯伊祭司的路線。',
+      treasure: '她說明紅刺棘針、黑根藤索與月藤環的用途。',
+      spirit: '她把會變動的迷宮轉成可追蹤的外圈、中圈、內祭環節奏。',
+    },
+  },
+
+  thornmaze_briarsalve_herbalist: {
+    id: 'thornmaze_briarsalve_herbalist',
+    name: '瑪芙',
+    alias: 'herbalist',
+    title: '苔鑰孔荊藥師',
+    description:
+      '一名荊藥師在苔鑰孔旁的小棚裡調和血脂與苔粉，手指被細刺扎得滿是小傷。' +
+      '她的藥瓶都用藤環固定，免得迷宮轉向時滾進牆裡。',
+    roomId: 'thornmaze_moss_keyhole',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion',
+      'large_mp_potion',
+      'antidote',
+      'redthorn_spine',
+      'bloodsap_phial',
+      'moonvine_loop',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要買藥就快。這棚子昨天還在南邊，明天可能在牆裡。',
+        options: [
+          { text: '我看看藥材。', nextId: 'shop' },
+          { text: '毒花床怎麼過？', nextId: 'poison' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、紅刺棘針、血脂小瓶、月藤環。黑根藤索我不賣，那東西會自己找買主。',
+        action: { type: 'shop', data: { shopType: 'thornmaze_herbalist' } },
+        options: [
+          { text: '毒花床怎麼過？', nextId: 'poison' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'poison',
+        text: '別聞花香，別踩濕土。毒花床母株喜歡讓人以為自己還在原地，其實已經走進根裡。',
+        options: [
+          { text: '我看看藥材。', nextId: 'shop' },
+          { text: '我會備解毒劑。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '血脂只塗一層。塗三層的人，現在還在那邊長葉子。' },
+    ],
+    guardianHints: {
+      creature: '瑪芙能提示毒花床母株、蛛刺編網者與黑根絞藤的毒性。',
+      treasure: '她販售紅刺棘針、血脂小瓶與月藤環。',
+      spirit: '她把荊棘迷宮的植物傷害轉成可回訪補給節點。',
+    },
+  },
+
+  thornmaze_old_druid_echo: {
+    id: 'thornmaze_old_druid_echo',
+    name: '歐塔',
+    alias: 'echo',
+    title: '德魯伊刻石殘響',
+    description:
+      '一道老德魯伊的半透明殘響停在德魯伊刻石前，聲音像從樹洞裡傳出。' +
+      '他每說一句話，刻石上的苔紋就會重新排列。',
+    roomId: 'thornmaze_druid_marker',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '迷宮本來是守護，不是牢籠。後來有人要求它永遠不要打開。',
+        options: [
+          { text: '誰關上了迷宮？', nextId: 'closed' },
+          { text: '祭壇種是什麼？', nextId: 'seed' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'closed',
+        text: '古荊祭司。他用自己的名字餵給活牆，從此牆只記得閉合，不記得放行。',
+        options: [
+          { text: '祭壇種是什麼？', nextId: 'seed' },
+          { text: '我去內祭環。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'seed',
+        text: '祭壇種不是鑰匙，是承諾。拿走它，迷宮會短暫想起自己也能停止生長。',
+        options: [
+          { text: '誰關上了迷宮？', nextId: 'closed' },
+          { text: '我明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '若牆上出現你的名字，別讀完。讀完就會留下。' },
+    ],
+    guardianHints: {
+      creature: '歐塔能提示活牆巨像、歪斜圖騰咒師與古荊德魯伊祭司。',
+      treasure: '他說明月藤環、黑根藤索與德魯伊祭壇種的核心關係。',
+      spirit: '他把迷宮閉合原因與古代德魯伊祭壇連接起來。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
