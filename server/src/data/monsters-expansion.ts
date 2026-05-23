@@ -9944,4 +9944,190 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '月后投影把月影庭的舞會、誓鏡、夜花與夢境核心收束成終點。',
     },
   },
+
+  machine_scrap_claw_drone: {
+    id: 'machine_scrap_claw_drone', name: '廢鐵爪機', alias: 'clawdrone',
+    level: 35, hp: 1900, mp: 180, str: 110, int: 40, dex: 86, vit: 132, luk: 12,
+    element: 'none',
+    skills: ['basic_attack', 'slash', 'quick_dash'],
+    expReward: 4300, goldReward: [1120, 2120],
+    drops: [
+      { itemId: 'rusted_servo_joint', chance: 0.58, minQty: 1, maxQty: 3 },
+      { itemId: 'oilblack_coolant', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '入口吊臂與廢鐵峽間四處爬行的拆解機，鉗爪會把任何移動物都當成可回收零件。',
+    isBoss: false,
+    guardianHints: {
+      creature: '廢鐵爪機速度快，鉗爪張開時會突進。',
+      treasure: '鏽伺服關節常從牠的腿部拆下。',
+      spirit: '爪機建立機械墳場的自動回收威脅。',
+    },
+  },
+
+  machine_sparking_rail_runner: {
+    id: 'machine_sparking_rail_runner', name: '火花軌行者', alias: 'railrunner',
+    level: 36, hp: 1780, mp: 420, str: 74, int: 104, dex: 132, vit: 92, luk: 18,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'quick_dash', 'sonic_wave'],
+    expReward: 4620, goldReward: [1200, 2280],
+    drops: [
+      { itemId: 'copper_coil_spool', chance: 0.56, minQty: 1, maxQty: 2 },
+      { itemId: 'rusted_servo_joint', chance: 0.22, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '火花軌上沿著斷裂鐵軌高速滑行的小型機械，輪緣噴出藍白電弧。牠會把旅人逼到帶電軌枕上。',
+    isBoss: false,
+    guardianHints: {
+      creature: '火花軌行者會雷擊與音波，聽見軌道尖鳴就散開。',
+      treasure: '銅線線圈常纏在牠的驅動輪內。',
+      spirit: '軌行者讓機械墳場具備電擊與地形壓力。',
+    },
+  },
+
+  machine_foundry_automaton: {
+    id: 'machine_foundry_automaton', name: '斷爐自動兵', alias: 'automaton',
+    level: 37, hp: 2500, mp: 300, str: 138, int: 58, dex: 48, vit: 184, luk: 10,
+    element: 'fire',
+    skills: ['basic_attack', 'stone_slam', 'fire_breath', 'diamond_skin'],
+    expReward: 5200, goldReward: [1360, 2580],
+    drops: [
+      { itemId: 'rusted_servo_joint', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'oilblack_coolant', chance: 0.24, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '斷爐場中仍執行鑄造命令的重型自動兵，胸爐忽明忽暗。牠會把闖入者視為未完成鑄件。',
+    isBoss: false,
+    guardianHints: {
+      creature: '斷爐自動兵會火息與硬化，硬化時先防守。',
+      treasure: '黑油冷卻劑可從牠的冷卻管路抽取。',
+      spirit: '自動兵讓斷爐場的工業火線形成中段壓力。',
+    },
+  },
+
+  machine_wireweed_crawler: {
+    id: 'machine_wireweed_crawler', name: '線草爬行體', alias: 'wirecrawler',
+    level: 38, hp: 2140, mp: 520, str: 88, int: 112, dex: 76, vit: 142, luk: 16,
+    element: 'lightning',
+    skills: ['basic_attack', 'root_bind', 'lightning', 'poison_web'],
+    expReward: 5600, goldReward: [1460, 2760],
+    drops: [
+      { itemId: 'copper_coil_spool', chance: 0.5, minQty: 1, maxQty: 3 },
+      { itemId: 'oilblack_coolant', chance: 0.16, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '線草園中由電纜與雜草交纏成的爬行體，根鬚末端接著破碎插頭。牠會把獵物綁進短路的線叢。',
+    isBoss: false,
+    guardianHints: {
+      creature: '線草爬行體會束縛與雷擊，先遠離線叢。',
+      treasure: '銅線線圈常從牠的根鬚中回收。',
+      spirit: '線草體把機械墳場的資源區與失控生態連起來。',
+    },
+  },
+
+  machine_magnet_tower_sentinel: {
+    id: 'machine_magnet_tower_sentinel', name: '磁塔哨衛', alias: 'magnetsentinel',
+    level: 40, hp: 3100, mp: 620, str: 128, int: 126, dex: 42, vit: 218, luk: 12,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'reflect_barrier', 'crystal_slam'],
+    expReward: 6600, goldReward: [1720, 3260],
+    drops: [
+      { itemId: 'copper_coil_spool', chance: 0.66, minQty: 1, maxQty: 3 },
+      { itemId: 'ancient_cpu_key', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '磁塔基座下方固定不動的哨衛，肩部磁環會吸起周圍廢鐵。牠不追人，只把所有金屬武器拉向自己。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '磁塔哨衛會雷擊與反射，磁環亮起時停用爆發。',
+      treasure: '銅線線圈與古算核鑰片都可能藏在磁塔基座。',
+      spirit: '磁塔哨衛讓機械墳場有明確的電磁節點。',
+    },
+  },
+
+  machine_battery_catacomb_mourner: {
+    id: 'machine_battery_catacomb_mourner', name: '電池墓窖哀械', alias: 'batterymourner',
+    level: 41, hp: 2600, mp: 740, str: 72, int: 148, dex: 54, vit: 172, luk: 16,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'life_drain', 'mana_shield'],
+    expReward: 7000, goldReward: [1820, 3440],
+    drops: [
+      { itemId: 'oilblack_coolant', chance: 0.38, minQty: 1, maxQty: 2 },
+      { itemId: 'copper_coil_spool', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '電池墓窖裡看守失效能源匣的哀械，胸腔每次放電都像一聲嘆息。牠會從敵人體內抽取熱量轉成電荷。',
+    isBoss: false,
+    guardianHints: {
+      creature: '電池墓窖哀械會雷擊、吸取與魔力盾，盾起時先換目標。',
+      treasure: '黑油冷卻劑可穩定墓窖過熱電池。',
+      spirit: '哀械把廢棄能源與墓葬意象融合。',
+    },
+  },
+
+  machine_ancient_cpu_judge: {
+    id: 'machine_ancient_cpu_judge', name: '古算核審判器', alias: 'cpujudge',
+    level: 44, hp: 3400, mp: 980, str: 88, int: 178, dex: 70, vit: 190, luk: 22,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'arcane_burst', 'reflect_barrier', 'sonic_wave'],
+    expReward: 8400, goldReward: [2200, 4160],
+    drops: [
+      { itemId: 'ancient_cpu_key', chance: 0.62, minQty: 1, maxQty: 2 },
+      { itemId: 'copper_coil_spool', chance: 0.36, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '古算核庫中負責判斷入侵者權限的浮空審判器，外殼投射著不斷重算的古代符號。牠會把錯誤答案轉成高壓電弧。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '古算核審判器會雷擊、魔力爆發與反射，符號重排時停手。',
+      treasure: '古算核鑰片主要由審判器保管。',
+      spirit: '審判器讓古算核庫成為邏輯門檻而非普通倉庫。',
+    },
+  },
+
+  machine_runaway_guard_unit: {
+    id: 'machine_runaway_guard_unit', name: '失控守衛單元', alias: 'guardunit',
+    level: 46, hp: 4200, mp: 560, str: 176, int: 96, dex: 62, vit: 262, luk: 14,
+    element: 'none',
+    skills: ['basic_attack', 'charge', 'stone_slam', 'diamond_skin', 'shatter'],
+    expReward: 9800, goldReward: [2560, 4840],
+    drops: [
+      { itemId: 'rusted_servo_joint', chance: 0.58, minQty: 2, maxQty: 4 },
+      { itemId: 'ancient_cpu_key', chance: 0.28, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '失控守衛列中脫離指令的重裝單元，盾臂仍會自動保護不存在的主人。牠把所有生命體都判定為核心威脅。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '失控守衛單元會衝鋒、硬化與碎裂衝擊，硬化退去再爆發。',
+      treasure: '大量鏽伺服關節可從牠的盾臂拆下。',
+      spirit: '守衛單元是核心甦醒前的軍事化壓力。',
+    },
+  },
+
+  machine_prime_reactor_warden: {
+    id: 'machine_prime_reactor_warden', name: '主反應殼守衛', alias: 'reactorwarden',
+    level: 48, hp: 6200, mp: 1250, str: 188, int: 190, dex: 48, vit: 320, luk: 20,
+    element: 'lightning',
+    skills: ['basic_attack', 'lightning', 'arcane_burst', 'reflect_barrier', 'shatter', 'diamond_skin'],
+    expReward: 12800, goldReward: [3360, 6360],
+    drops: [
+      { itemId: 'prime_reactor_core', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'ancient_cpu_key', chance: 0.72, minQty: 1, maxQty: 2 },
+      { itemId: 'copper_coil_spool', chance: 0.58, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description: '主反應殼內喚醒的核心守衛，胸口反應爐像藍白心臟般跳動。牠不是生物也不是亡靈，而是古代機械墳場再次開始思考的第一個答案。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2700,
+    guardianHints: {
+      creature: '主反應殼守衛會反射、硬化、碎裂與雷擊，反射期間停手整隊。',
+      treasure: '牠必定掉落主反應核心。',
+      spirit: '主反應殼守衛把廢鐵、能源、古算核與甦醒核心收束成終點。',
+    },
+  },
 };

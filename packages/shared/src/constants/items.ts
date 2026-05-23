@@ -3902,6 +3902,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['moonshadow_court'],
   },
 
+  // ─── 機械墳場零件與核心 (Lv 35-48) ───
+  rusted_servo_joint: {
+    id: 'rusted_servo_joint', name: '鏽伺服關節', type: 'material',
+    description: '機械墳場常見的舊式伺服關節，齒面磨損卻仍會自行抽動。拆解工可用它修補低階機械臂。',
+    buyPrice: 2800, sellPrice: 1400, stackable: true, maxStack: 99, levelReq: 35, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['machine_graveyard'],
+  },
+  copper_coil_spool: {
+    id: 'copper_coil_spool', name: '銅線線圈', type: 'material',
+    description: '銅脈棚與火花軌上回收的厚銅線圈，仍殘留不穩定電荷。它是重啟古代裝置最實用的材料。',
+    buyPrice: 3200, sellPrice: 1600, stackable: true, maxStack: 99, levelReq: 36, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['machine_graveyard'],
+  },
+  oilblack_coolant: {
+    id: 'oilblack_coolant', name: '黑油冷卻劑', type: 'consumable',
+    description: '黑油蓄池中提煉出的冷卻劑，經過淨化後能快速降溫傷口與裝備過熱處，並恢復體力。',
+    buyPrice: 3600, sellPrice: 1800, stackable: true, maxStack: 20, levelReq: 35, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 420 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['machine_graveyard'],
+  },
+  ancient_cpu_key: {
+    id: 'ancient_cpu_key', name: '古算核鑰片', type: 'quest',
+    description: '古算核庫門禁模組中拆下的細小鑰片，表面刻著已失傳的邏輯符號。它能證明探索者接近了機械墳場核心。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 42, rarity: 'epic',
+    sourceTags: ['drop', 'quest'], zoneTags: ['machine_graveyard'],
+  },
+  prime_reactor_core: {
+    id: 'prime_reactor_core', name: '主反應核心', type: 'quest',
+    description: '主反應殼守衛停機後浮出的高密度核心，內部仍有藍白電弧旋轉。它是機械墳場最重要的甦醒證物。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 48, rarity: 'legendary',
+    sourceTags: ['boss'], zoneTags: ['machine_graveyard'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

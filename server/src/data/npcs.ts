@@ -10019,6 +10019,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  machine_graveyard_scrap_foreman: {
+    id: 'machine_graveyard_scrap_foreman',
+    name: '格里特',
+    alias: 'foreman',
+    title: '廢鐵拆解工頭',
+    description: '一名拆解工頭站在入口吊臂下，皮圍裙上掛滿標記過的螺栓與燒焦工牌。',
+    roomId: 'machine_graveyard_entrance_crane',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '這裡不是廢墟，是還沒承認自己死掉的工廠。先找伺服關節和銅線，別直接碰核心。',
+        options: [
+          { text: '我該回收什麼？', nextId: 'salvage' },
+          { text: '核心在哪？', nextId: 'core' },
+          { text: '我會從外圍拆起。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'salvage', text: '鏽伺服關節、銅線線圈、黑油冷卻劑。它們能告訴你哪一條系統正在重新通電。', options: [{ text: '核心在哪？', nextId: 'core' }, { text: '我去回收。', nextId: 'farewell' }] },
+      { id: 'core', text: '古算核庫之後是失控守衛列，再往深處才是主反應殼。沒有鑰片就別去敲那扇門。', options: [{ text: '我該回收什麼？', nextId: 'salvage' }, { text: '我會先找鑰片。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '聽見齒輪開始同步時，先蹲下。它們通常在找頭的高度。' },
+    ],
+    guardianHints: {
+      creature: '格里特提示廢鐵爪機、火花軌行者、古算核審判器與主反應殼守衛。',
+      treasure: '他說明鏽伺服關節、銅線線圈、黑油冷卻劑與古算核鑰片。',
+      spirit: '拆解工頭把機械墳場的回收與核心甦醒路線建立起來。',
+    },
+  },
+
+  machine_graveyard_oil_seller: {
+    id: 'machine_graveyard_oil_seller',
+    name: '帕琪',
+    alias: 'seller',
+    title: '黑油蓄池補給商',
+    description: '一名補給商坐在黑油蓄池邊，所有瓶罐都用銅線繫著，避免被磁塔吸走。',
+    roomId: 'machine_graveyard_oil_black_cistern',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'oilblack_coolant', 'rusted_servo_joint', 'copper_coil_spool'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '買冷卻劑嗎？這地方連傷口都會過熱，別等皮帶冒煙才想起來。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '磁塔怎麼辦？', nextId: 'magnet' },
+          { text: '稍後再來。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '藥水、黑油冷卻劑、伺服關節、銅線線圈。主反應核心不賣，賣得動的核心都不是真核心。', action: { type: 'shop', data: { shopType: 'machine_graveyard_salvage' } }, options: [{ text: '磁塔怎麼辦？', nextId: 'magnet' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'magnet', text: '磁環亮起時別用金屬武器硬砍。等它吸滿廢鐵，反而會慢半拍。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會等慢拍。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '瓶子拿穩。黑油灑在靴底，下一步就是滑進蓄池。' },
+    ],
+    guardianHints: {
+      creature: '帕琪提示磁塔哨衛、電池墓窖哀械與失控守衛單元。',
+      treasure: '她販售黑油冷卻劑、鏽伺服關節與銅線線圈。',
+      spirit: '補給商讓資源區有可回訪的材料與補給節點。',
+    },
+  },
+
+  machine_graveyard_core_auditor: {
+    id: 'machine_graveyard_core_auditor',
+    name: '諾亞',
+    alias: 'auditor',
+    title: '核心甦醒監測員',
+    description: '一名監測員站在古算核庫門外，耳邊儀器不斷記錄主反應殼傳來的低頻脈衝。',
+    roomId: 'machine_graveyard_ancient_cpu_vault',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '古算核已經開始自我檢查。若主反應殼完全醒來，整片墳場會把自己組回一座工廠。',
+        options: [
+          { text: '守衛怎麼打？', nextId: 'warden' },
+          { text: '核心代表什麼？', nextId: 'core' },
+          { text: '我會關閉反應殼。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'warden', text: '反射、硬化、碎裂、雷擊。看到反應爐變成鏡面時停手，不然它會把你的輸出算回你身上。', options: [{ text: '核心代表什麼？', nextId: 'core' }, { text: '我會等反射退去。', nextId: 'farewell' }] },
+      { id: 'core', text: '主反應核心不是戰利品，是甦醒證據。帶回它，至少能證明這座墳場還沒有完全醒來。', options: [{ text: '守衛怎麼打？', nextId: 'warden' }, { text: '我明白。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '如果你聽見所有齒輪同時停止，立刻跑。那不是停機，是在聽你。' },
+    ],
+    guardianHints: {
+      creature: '諾亞提示古算核審判器、失控守衛單元與主反應殼守衛。',
+      treasure: '他說明古算核鑰片與主反應核心的任務用途。',
+      spirit: '監測員把機械墳場終點收束到核心甦醒危機。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
