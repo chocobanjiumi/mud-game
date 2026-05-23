@@ -2901,6 +2901,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'sandy_beach', description: '沙灘在前方延伸' },
       { direction: 'east', targetRoomId: 'fishing_dock', description: '遠處可以看到漁村碼頭' },
     ],
+    npcs: ['ship_captain', 'shipwright'],
     mapSymbol: '[棧]',
     mapX: 4,
     mapY: 5,
@@ -2929,6 +2930,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 30 },
+      { monsterId: 'reefback_crab_guard', maxCount: 1, respawnSeconds: 900 },
     ],
     mapSymbol: ' . ',
     mapX: 4,
@@ -2985,6 +2987,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 40 },
       { monsterId: 'sea_serpent', maxCount: 2, respawnSeconds: 45 },
+      { monsterId: 'tidepool_murk_eel', maxCount: 1, respawnSeconds: 55 },
     ],
     mapSymbol: '[洞]',
     mapX: 4,
@@ -3011,6 +3014,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'coastal_boardwalk', description: '回到海邊棧道' },
       { direction: 'south', targetRoomId: 'lighthouse', description: '沿海岸走向燈塔' },
     ],
+    npcs: ['fisherman', 'seafood_merchant'],
     mapSymbol: '[碼]',
     mapX: 5,
     mapY: 5,
@@ -3037,7 +3041,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'coral_shallows', description: '沿海岸走向珊瑚淺灘' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 30 },
+      { monsterId: 'storm_gull', maxCount: 2, respawnSeconds: 35 },
       { monsterId: 'sea_crab', maxCount: 2, respawnSeconds: 35 },
     ],
     mapSymbol: '[燈]',
@@ -3129,6 +3133,7 @@ export const ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'reefback_crab_guard', maxCount: 1, respawnSeconds: 900 },
     ],
     mapSymbol: '[崖]',
     mapX: 6,
@@ -3326,7 +3331,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'eastern_coast_serpent_nest', description: '碎石坡通向海蛇巢' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
+      { monsterId: 'storm_gull', maxCount: 3, respawnSeconds: 35 },
     ],
     mapSymbol: '[崖]',
     mapX: 8,
@@ -3349,6 +3354,10 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 35 },
       { monsterId: 'sea_serpent', maxCount: 1, respawnSeconds: 45 },
+      { monsterId: 'tidepool_murk_eel', maxCount: 1, respawnSeconds: 55 },
+    ],
+    groundItems: [
+      { itemId: 'tidewatch_pearl', description: '半開蚌殼裡有一顆刻著潮紋的珍珠' },
     ],
     mapSymbol: '[珠]',
     mapX: 6,
@@ -3396,6 +3405,7 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'sea_serpent', maxCount: 3, respawnSeconds: 45 },
       { monsterId: 'deep_fishman', maxCount: 1, respawnSeconds: 55 },
+      { monsterId: 'tidepool_murk_eel', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[蛇]',
     mapX: 7,

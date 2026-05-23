@@ -2215,6 +2215,37 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 260, sellPrice: 130, stackable: true, maxStack: 99, levelReq: 4, rarity: 'common',
     sourceTags: ['drop', 'gather'], zoneTags: ['plains', 'starter_village_ext'],
   },
+  salt_crab_shell: {
+    id: 'salt_crab_shell', name: '鹽蟹硬殼', type: 'material',
+    description: '東方海岸巨蟹身上剝落的青白甲殼，邊緣結著細鹽。漁民會把它磨成防潮粉，造船匠則用來測試船板耐水性。',
+    buyPrice: 300, sellPrice: 150, stackable: true, maxStack: 99, levelReq: 8, rarity: 'common',
+    sourceTags: ['drop', 'gather'], zoneTags: ['eastern_coast'],
+  },
+  moon_jelly_lantern: {
+    id: 'moon_jelly_lantern', name: '月水母燈囊', type: 'material',
+    description: '水母體內取出的半透明發光囊，離水後仍會微微跳光。船長常把它封在玻璃瓶裡，用來標記夜間潮道。',
+    buyPrice: 420, sellPrice: 210, stackable: true, maxStack: 99, levelReq: 9, rarity: 'uncommon',
+    sourceTags: ['drop'], zoneTags: ['eastern_coast'],
+  },
+  kelp_rope_coil: {
+    id: 'kelp_rope_coil', name: '海藻繩卷', type: 'material',
+    description: '海藻灘收集的厚韌海藻曬乾後編成的繩卷，帶著鹽味和淡綠光澤。修網、綁船或臨時固定傷員都能派上用場。',
+    buyPrice: 360, sellPrice: 180, stackable: true, maxStack: 99, levelReq: 8, rarity: 'common',
+    sourceTags: ['drop', 'gather'], zoneTags: ['eastern_coast'],
+  },
+  tidewatch_pearl: {
+    id: 'tidewatch_pearl', name: '觀潮珍珠', type: 'quest',
+    description: '珍珠床裡找到的乳白珍珠，表面有細小潮紋。交給漁夫能校準退潮時刻，也能證明有人在夜裡盜採蚌床。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 10, rarity: 'rare',
+    sourceTags: ['quest', 'hidden_cache'], zoneTags: ['eastern_coast'],
+  },
+  dockside_seaweed_stew: {
+    id: 'dockside_seaweed_stew', name: '碼頭海藻湯', type: 'consumable',
+    description: '海鮮商人用海藻、鹽蟹碎肉和薑片煮成的熱湯，入口鹹鮮。它能在潮濕海風中恢復體力，但味道不適合久放。',
+    buyPrice: 520, sellPrice: 260, stackable: true, maxStack: 20, levelReq: 8, rarity: 'common',
+    useEffect: { type: 'heal_hp', value: 140 },
+    sourceTags: ['shop'], zoneTags: ['eastern_coast'],
+  },
   shadowmoss_clump: {
     id: 'shadowmoss_clump', name: '暗苔團', type: 'material',
     description: '暗影森林樹根下剝下的濕冷苔蘚，離開陰影後仍會慢慢吸光。藥草採集者常用它測量森林污染深度。',

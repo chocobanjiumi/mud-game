@@ -1931,7 +1931,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'fishing_tips',
         text: '釣魚嘛，講究的是耐心。清晨和黃昏魚最活躍。用蚯蚓能釣到普通魚，' +
           '用發光的蟲餌能引來深海魚。對了，珊瑚淺灘那邊聽說有稀有的七彩魚，' +
-          '不過水流太急，一般人過不去。',
+          '不過水流太急，一般人過不去。若你在珍珠床找到觀潮珍珠，我能幫你看出退潮時刻。',
         options: [
           { text: '七彩魚？', nextId: 'rare_fish' },
           { text: '謝謝指點。', nextId: 'farewell' },
@@ -1959,7 +1959,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'sea_safety',
         text: '碼頭附近還算安全，但別往暗礁那邊去。海盜營地更是碰都不要碰，' +
           '那群亡命之徒可不跟你講道理。沉船遺跡裡倒是有不少寶貝，' +
-          '不過守在那裡的螃蟹精可不好對付。',
+          '不過潮池岩穴和斷裂棧橋下的礁背蟹衛可不好對付。',
         options: [
           { text: '我會注意的。', nextId: 'farewell' },
         ],
@@ -2056,6 +2056,7 @@ export const NPCS: Record<string, NpcDef> = {
     shopItems: [
       'grilled_meat', 'stew', 'adventure_bento',
       'small_hp_potion', 'medium_hp_potion', 'antidote',
+      'dockside_seaweed_stew', 'salt_crab_shell', 'kelp_rope_coil',
     ],
     dialogue: [
       {
@@ -2071,7 +2072,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'shop',
         text: '烤肉、燉湯、冒險者便當應有盡有！我家的燉湯可是用深海鮮魚熬的，' +
-          '喝一碗能暖到骨子裡。出門冒險前吃飽喝足，打起怪來才有勁！',
+          '喝一碗能暖到骨子裡。今天還有碼頭海藻湯、鹽蟹硬殼和海藻繩卷，出門前補足才有勁！',
         action: { type: 'shop', data: { shopType: 'seafood' } },
         options: [
           { text: '謝謝老闆。', nextId: 'farewell' },
@@ -2080,7 +2081,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'business',
         text: '唉，最近生意不太好做。海裡那個大傢伙嚇跑了不少魚，漁獲少了價格就上去了。' +
-          '不過我的手藝可不會偷工減料！便宜又好吃，這是老字號的招牌。',
+          '不過海藻灘和潮池岩穴還能收材料，水母燈囊、鹽蟹硬殼和海藻繩卷都有人要。',
         options: [
           { text: '那來點吃的吧。', nextId: 'shop' },
           { text: '希望生意興隆。', nextId: 'farewell' },
@@ -2139,7 +2140,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'materials',
         text: '好木材是關鍵。普通的木頭禁不住海水的腐蝕，需要特殊的木料。' +
           '暗影森林的古木最好，水晶洞窟裡的石化木也不錯。' +
-          '再加上矮人鍛造的鐵釘……嗯，造一條好船可不便宜。',
+          '再加上矮人鍛造的鐵釘、海藻繩卷和鹽蟹硬殼防潮粉……嗯，造一條好船可不便宜。',
         options: [
           { text: '原來如此。', nextId: 'farewell' },
         ],
