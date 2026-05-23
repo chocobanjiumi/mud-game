@@ -11048,4 +11048,47 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     respawnTime: 3000,
     guardianHints: { creature: '前線指揮官會死亡印記、反射、火球與戰吼，反射期間停手並清掉增援。', treasure: '牠必定掉落前線指揮印。', spirit: '指揮官收束整個王國邊境的戰線系統。' },
   },
+
+  crystal_cave_prism_wisp: {
+    id: 'crystal_cave_prism_wisp', name: '棱鏡晶靈', alias: 'prismwisp',
+    level: 24, hp: 620, mp: 280, str: 32, int: 92, dex: 78, vit: 58, luk: 22,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_shard', 'frost_nova', 'blind'],
+    expReward: 620, goldReward: [170, 320],
+    drops: [
+      { itemId: 'prism_shard', chance: 0.62, minQty: 1, maxQty: 3 },
+      { itemId: 'echo_crystal_dust', chance: 0.3, minQty: 1, maxQty: 2 },
+      { itemId: 'crystal_resonance_tonic', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '棱鏡門與鳴晶廊附近漂浮的晶光靈體，身體像一枚旋轉的透明晶核。牠會把光折成刺眼幻象，讓冒險者誤判通道距離。',
+    isBoss: false,
+    guardianHints: {
+      creature: '棱鏡晶靈會晶刺、霜爆與致盲，看到七色光暈時先分散。',
+      treasure: '棱鏡碎片與回音晶粉常從晶靈外殼剝落。',
+      spirit: '晶靈讓水晶洞窟的折射與魔力干擾成為戰鬥威脅。',
+    },
+  },
+
+  crystal_cave_mirror_golem: {
+    id: 'crystal_cave_mirror_golem', name: '鏡晶魔像', alias: 'mirrorgolem',
+    level: 28, hp: 1850, mp: 480, str: 110, int: 96, dex: 28, vit: 190, luk: 14,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'crystal_shard', 'reflect_barrier', 'ice_armor'],
+    expReward: 1150, goldReward: [310, 590],
+    drops: [
+      { itemId: 'miner_focus_lens', chance: 0.48, minQty: 1, maxQty: 2 },
+      { itemId: 'prism_gate_rune', chance: 0.16, minQty: 1, maxQty: 1 },
+      { itemId: 'prism_shard', chance: 0.34, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '鏡晶迷宮與魔像鍛造間中巡行的厚重魔像，胸口嵌著一片會映出延遲動作的晶鏡。牠會用反射屏障懲罰貪攻者。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '鏡晶魔像會反射、冰甲與重擊，屏障亮起時停手。',
+      treasure: '礦工聚光鏡與棱鏡門符片常嵌在牠胸口晶鏡旁。',
+      spirit: '鏡晶魔像補足水晶洞窟中段的精英機關守衛。',
+    },
+  },
 };

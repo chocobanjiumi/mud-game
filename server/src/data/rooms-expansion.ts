@@ -740,6 +740,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 45 },
       { monsterId: 'cave_bat', maxCount: 2, respawnSeconds: 40 },
+      { monsterId: 'crystal_cave_prism_wisp', maxCount: 1, respawnSeconds: 75 },
     ],
     mapSymbol: '[J]',
     mapX: 0,
@@ -969,6 +970,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 75 },
       { monsterId: 'crystal_lizard', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'crystal_cave_mirror_golem', maxCount: 1, respawnSeconds: 900 },
     ],
     mapSymbol: '[M]',
     mapX: 1,
@@ -991,6 +993,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1200 },
       { monsterId: 'gargoyle', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'crystal_cave_mirror_golem', maxCount: 1, respawnSeconds: 900 },
     ],
     mapSymbol: '[G]',
     mapX: 1,
@@ -1012,6 +1015,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'crystal_lizard', maxCount: 3, respawnSeconds: 50 },
       { monsterId: 'cave_bat_swarm', maxCount: 1, respawnSeconds: 90 },
+      { monsterId: 'crystal_cave_prism_wisp', maxCount: 1, respawnSeconds: 80 },
     ],
     groundItems: [
       { itemId: 'crystal_shard', description: '半淹沒寶箱旁散落著水晶碎片' },
@@ -1038,6 +1042,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'crystal_guardian', maxCount: 1, respawnSeconds: 1500 },
       { monsterId: 'gargoyle', maxCount: 1, respawnSeconds: 80 },
+      { monsterId: 'crystal_cave_prism_wisp', maxCount: 2, respawnSeconds: 75 },
     ],
     mapSymbol: '[P]',
     mapX: 2,

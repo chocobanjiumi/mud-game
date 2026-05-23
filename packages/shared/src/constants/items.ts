@@ -2209,6 +2209,37 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 30, levelReq: 12, rarity: 'rare',
     sourceTags: ['drop', 'quest'], zoneTags: ['dark_forest'],
   },
+  prism_shard: {
+    id: 'prism_shard', name: '棱鏡碎片', type: 'material',
+    description: '水晶洞窟棱鏡門附近剝落的透明碎片，轉動時會分出七道細光。寶石商人會用它校準切割角度。',
+    buyPrice: 1400, sellPrice: 700, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['crystal_cave'],
+  },
+  echo_crystal_dust: {
+    id: 'echo_crystal_dust', name: '回音晶粉', type: 'material',
+    description: '回音裂谷與鳴晶廊震落的細晶粉，裝進瓶中仍會發出輕微嗡鳴。礦工用它辨認空洞與脆弱晶壁。',
+    buyPrice: 1200, sellPrice: 600, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
+    sourceTags: ['drop', 'gather'], zoneTags: ['crystal_cave'],
+  },
+  miner_focus_lens: {
+    id: 'miner_focus_lens', name: '礦工聚光鏡', type: 'material',
+    description: '廢礦工營地留下的厚晶鏡片，可把微弱燈光集中成細束。採礦者會用它檢查晶脈裂紋。',
+    buyPrice: 1800, sellPrice: 900, stackable: true, maxStack: 30, levelReq: 22, rarity: 'rare',
+    sourceTags: ['drop', 'shop'], zoneTags: ['crystal_cave'],
+  },
+  crystal_resonance_tonic: {
+    id: 'crystal_resonance_tonic', name: '晶鳴穩定劑', type: 'consumable',
+    description: '以回音晶粉和月白水調成的穩定劑，能壓住水晶洞窟的魔力震盪，並恢復體力。',
+    buyPrice: 2200, sellPrice: 1100, stackable: true, maxStack: 20, levelReq: 20, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 260 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['crystal_cave'],
+  },
+  prism_gate_rune: {
+    id: 'prism_gate_rune', name: '棱鏡門符片', type: 'quest',
+    description: '棱鏡門鎖槽中掉出的三角符片，表面折射出看不見的通道。它證明探索者已深入水晶洞窟核心路線。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 26, rarity: 'epic',
+    sourceTags: ['drop', 'quest'], zoneTags: ['crystal_cave'],
+  },
   kingdom_supply_crate: {
     id: 'kingdom_supply_crate', name: '王國補給箱', type: 'material',
     description: '封有王國軍需印記的沉重補給箱，內含糧秣、繃帶與前線修繕零件。箱角的蠟封會記錄運送路線，攜帶時必須依王國交通規則交付。',

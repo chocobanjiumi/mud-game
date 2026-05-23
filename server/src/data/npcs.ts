@@ -2538,6 +2538,7 @@ export const NPCS: Record<string, NpcDef> = {
       'crystal_shard', 'lucky_charm', 'power_amulet', 'wisdom_amulet',
       'medium_hp_potion', 'large_hp_potion',
       'medium_mp_potion', 'large_mp_potion',
+      'prism_shard', 'miner_focus_lens', 'crystal_resonance_tonic',
     ],
     dialogue: [
       {
