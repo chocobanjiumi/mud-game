@@ -3213,6 +3213,161 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  // ─── 龍谷 NPC ──────────────────────────────────────────
+
+  dragon_gate_loremaster: {
+    id: 'dragon_gate_loremaster',
+    name: '龍門銘文師',
+    alias: 'loremaster',
+    title: '解讀龍語的守門學者',
+    description: '一位披著防火灰斗篷的老學者，坐在龍谷入口的古老供台旁。她的手杖頂端綁著自然脫落的龍鱗，腰間掛滿拓印布、雲石粉與破損魔族軍牌。',
+    roomId: 'dragon_valley_entrance',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '放低武器，先讀岩壁。龍谷不是寶庫入口，而是仍在運作的聖地；魔族曾經不懂這一點，所以只留下熔化的黑鐵。',
+        options: [
+          { text: '龍語警告寫了什麼？', nextId: 'warning' },
+          { text: '我該先去哪些地方？', nextId: 'routes' },
+          { text: '哪些材料可以拿？', nextId: 'law' },
+          { text: '我會保持敬意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'warning',
+        text: '大意是：取被允許之物，避開新生之巢，別把屠戮當成鍛造資格。你若想活著通過，就分清自然脫落的龍鱗和剛從血肉上剝下的戰利品。',
+        options: [
+          { text: '那材料怎麼取得？', nextId: 'law' },
+          { text: '路線呢？', nextId: 'routes' },
+        ],
+      },
+      {
+        id: 'routes',
+        text: '向西先看風棲岩棚，能學會風向；向東到龍骨原野，會明白死亡如何守護這裡。若直上天空之橋，請先備好抗雷與回復品。',
+        options: [
+          { text: '我會先觀察。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'law',
+        text: '雲石碎片、自然脫落的龍牙、泉邊龍鱗、火玻璃鱗片，這些都能被鍛台接受。墜星隕鐵和龍諭透鏡則要交給知道封印的人，別拿去亂賣。',
+        options: [
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '看見幼龍時別追。你追的是一隻幼龍，牠喊來的是整座山谷。' },
+    ],
+    guardianHints: {
+      creature: '銘文師能從風聲辨認空中巡邏，因為龍翼會改變入口雲霧的回音。',
+      treasure: '她的拓印布上有龍之寶庫門鎖的舊式龍語寫法。',
+      spirit: '她不是龍族僕從，而是少數被允許記錄龍谷歷史的外人。',
+    },
+  },
+
+  dragon_scale_artisan: {
+    id: 'dragon_scale_artisan',
+    name: '龍鱗匠師',
+    alias: 'scaleartisan',
+    title: '藍火鍛台守匠',
+    description: '一名身材矮壯的龍裔工匠，肩上披著耐火鱗片圍裙，手臂布滿藍火燙痕。他站在水晶砧旁，仔細檢查每一片材料是否帶著掠奪血氣。',
+    roomId: 'dragon_scale_forge',
+    type: 'merchant',
+    shopItems: [
+      'large_hp_potion', 'large_mp_potion', 'return_scroll',
+      'scaleforge_broth', 'cloudstone_shard', 'fireglass_scale',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '把材料放到藍火邊。火不認謊言，偷剝的鱗會變冷灰，自然脫落的鱗才會回應鍛台。',
+        options: [
+          { text: '看看補給與材料。', nextId: 'shop' },
+          { text: '龍鱗鍛台能做什麼？', nextId: 'forge' },
+          { text: '你收哪些材料？', nextId: 'materials' },
+          { text: '先不打擾。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '鱗鍛熱湯能撐過高巢熱風，雲石碎片能修鞍具，火玻璃鱗片能補抗火符刃。別買了就往龍蛋室亂闖，那不是材料倉庫。',
+        action: { type: 'shop', data: { shopType: 'dragon_forge' } },
+        options: [
+          { text: '交易完成。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'forge',
+        text: '這裡能把龍鱗、龍牙、雲石與星鐵做成守護裝備，但前提是材料來源被龍谷承認。力量不是偷來的，是被允許承擔的。',
+        options: [
+          { text: '材料來源怎麼判斷？', nextId: 'materials' },
+        ],
+      },
+      {
+        id: 'materials',
+        text: '龍鱗片、火玻璃鱗片、雲石碎片、雷巢晶簇都能鍛。龍諭透鏡和墜星隕鐵別先丟進火裡，那些牽涉預言和深淵封印。',
+        options: [
+          { text: '我會分開保存。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '離開前喝點熱湯。高處風冷，火熱，兩者都會殺人。' },
+    ],
+    guardianHints: {
+      creature: '匠師不直接戰鬥，但藍火會驅逐帶著掠奪血氣的人。',
+      treasure: '水晶砧內封著一片古龍自然脫落的第一片鱗。',
+      spirit: '龍族鍛造的核心不是鋒利，而是承諾不把聖地變成屠宰場。',
+    },
+  },
+
+  dragon_oracle_keeper: {
+    id: 'dragon_oracle_keeper',
+    name: '龍諭守望者',
+    alias: 'oraclekeeper',
+    title: '星圖棲台的記錄者',
+    description: '一位戴著水晶目鏡的年輕龍裔，站在龍諭棲台的星圖透鏡間。她的披肩縫著雷巢晶簇與雲石粉，手中石板反覆描摹同一段關於深淵裂隙的預言。',
+    roomId: 'dragon_oracle_perch',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '星圖又偏了。魔族要塞的黑火、墜星坑的裂紋、聖殿地板下的深淵，三者正在同一個夜裡重合。',
+        options: [
+          { text: '你需要什麼證物？', nextId: 'evidence' },
+          { text: '預言指向哪裡？', nextId: 'prophecy' },
+          { text: '天衛巡空圖有用嗎？', nextId: 'patrol_map' },
+          { text: '我會記住。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'evidence',
+        text: '帶回龍諭透鏡、墜星隕鐵與天衛巡空圖。透鏡證明星圖，隕鐵證明裂紋，巡空圖能證明異常擴大的日期不是巧合。',
+        options: [
+          { text: '我會找這些。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'prophecy',
+        text: '預言不說誰會勝利，只說一扇門會從地下打開。古龍守著門不是因為貪婪，而是因為門後的東西連龍也不想再看見一次。',
+        options: [
+          { text: '這和深淵有關。', nextId: 'evidence' },
+        ],
+      },
+      {
+        id: 'patrol_map',
+        text: '天衛營地的巡空圖會標出哪一夜裂隙第一次變寬。若日期和魔族遠征命令吻合，就代表黑堡不是單純攻打龍谷，而是在逼古龍離開封印。',
+        options: [
+          { text: '我去天衛營地。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'farewell', text: '星圖不會等人。雷球轉北時，聖殿門會短暫顯形。' },
+    ],
+    guardianHints: {
+      creature: '守望者能預判風暴巨龍回巢時間，因為星圖透鏡會先轉向雷巢。',
+      treasure: '她的石板背面刻著通往墜星坑的安全星位。',
+      spirit: '她記錄預言不是為了神秘，而是為了讓下一個區域的災難有跡可循。',
+    },
+  },
+
   // ─── 湖畔城鎮擴充 NPC ──────────────────────────────────
 
   innkeeper: {

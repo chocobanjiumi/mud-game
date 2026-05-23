@@ -1978,8 +1978,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 60 },
+      { monsterId: 'cloudstone_drake', maxCount: 1, respawnSeconds: 65 },
       { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 75 },
     ],
+    npcs: ['dragon_gate_loremaster'],
     mapSymbol: '[龍]',
     mapX: 3,
     mapY: 24,
@@ -2008,6 +2010,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'cloudstone_drake', maxCount: 1, respawnSeconds: 65 },
       { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[徑]',
@@ -2037,6 +2040,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'wyvern', maxCount: 3, respawnSeconds: 60 },
+      { monsterId: 'cloudstone_drake', maxCount: 1, respawnSeconds: 65 },
       { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
     ],
     mapSymbol: '[崖]',
@@ -2156,6 +2160,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
+      { monsterId: 'cloudstone_drake', maxCount: 1, respawnSeconds: 70 },
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[橋]',
@@ -2271,6 +2276,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 3, respawnSeconds: 55 },
+      { monsterId: 'cloudstone_drake', maxCount: 1, respawnSeconds: 65 },
       { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 65 },
     ],
     mapSymbol: '[風]',
@@ -2297,6 +2303,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'fireglass_drake', maxCount: 1, respawnSeconds: 70 },
       { monsterId: 'dragon_knight', maxCount: 1, respawnSeconds: 80 },
     ],
     groundItems: [
@@ -2354,6 +2361,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'fireglass_drake', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[璃]',
@@ -2381,6 +2389,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
+      { monsterId: 'thunder_roost_wyrmling', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'wyvern', maxCount: 2, respawnSeconds: 65 },
     ],
     mapSymbol: '[雷]',
@@ -2408,8 +2417,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'starfall_wyrm', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
+    npcs: ['dragon_oracle_keeper'],
     mapSymbol: '[諭]',
     mapX: 4,
     mapY: 28,
@@ -2435,6 +2446,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'young_dragon', maxCount: 2, respawnSeconds: 55 },
+      { monsterId: 'fireglass_drake', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[熔]',
@@ -2462,8 +2474,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
+      { monsterId: 'fireglass_drake', maxCount: 1, respawnSeconds: 75 },
       { monsterId: 'ancient_wyrm', maxCount: 1, respawnSeconds: 75 },
     ],
+    npcs: ['dragon_scale_artisan'],
     groundItems: [
       { itemId: 'dragon_scale', description: '水晶砧旁放著一片等待鍛造的古龍鱗' },
     ],
@@ -2491,6 +2505,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dragon_knight', maxCount: 3, respawnSeconds: 80 },
+      { monsterId: 'thunder_roost_wyrmling', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'wyvern', maxCount: 1, respawnSeconds: 65 },
     ],
     mapSymbol: '[衛]',
@@ -2517,6 +2532,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
+      { monsterId: 'starfall_wyrm', maxCount: 1, respawnSeconds: 600 },
       { monsterId: 'elder_dragon', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: '[星]',
