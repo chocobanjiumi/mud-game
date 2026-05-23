@@ -3764,6 +3764,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     sourceTags: ['boss'], zoneTags: ['ashfall_monastery'],
   },
 
+  // ─── 霜咬隘口失商與極北封印 (Lv 28-38) ───
+  stormglass_shard: {
+    id: 'stormglass_shard', name: '暴雪玻璃片', type: 'material',
+    description: '白霧盆地與藍冰橋上被狂風磨出的透明冰片，邊緣像玻璃一樣鋒利。商隊嚮導用它判斷暴風雪是否帶有魔力。',
+    buyPrice: 2100, sellPrice: 1050, stackable: true, maxStack: 99, levelReq: 28, rarity: 'rare',
+    sourceTags: ['drop'], zoneTags: ['frostbite_pass'],
+  },
+  lost_caravan_seal: {
+    id: 'lost_caravan_seal', name: '失商貨印', type: 'quest',
+    description: '埋雪貨車與失商藏點中找到的金屬貨印，背面刻著已凍裂的商隊名。它能證明失蹤貨物不是被雪崩單純吞沒。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 20, levelReq: 28, rarity: 'rare',
+    sourceTags: ['drop', 'quest'], zoneTags: ['frostbite_pass'],
+  },
+  frostbite_salve: {
+    id: 'frostbite_salve', name: '霜咬藥膏', type: 'consumable',
+    description: '冷火營用藍苔、油脂與熱石灰調成的厚藥膏，能把凍傷處慢慢拉回知覺。',
+    buyPrice: 2400, sellPrice: 1200, stackable: true, maxStack: 20, levelReq: 28, rarity: 'rare',
+    useEffect: { type: 'heal_hp', value: 340 },
+    sourceTags: ['drop', 'shop'], zoneTags: ['frostbite_pass'],
+  },
+  blue_ice_core: {
+    id: 'blue_ice_core', name: '藍冰核心', type: 'material',
+    description: '冰河口與晶松林深處凝成的藍色冰核，內部有像心跳一樣的白光。工匠能用它穩定極寒附魔。',
+    buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 32, rarity: 'epic',
+    sourceTags: ['drop', 'shop'], zoneTags: ['frostbite_pass'],
+  },
+  polar_gate_sigil: {
+    id: 'polar_gate_sigil', name: '極北封門印', type: 'quest',
+    description: '極北封門守衛倒下後留下的冰藍印記，握在手中會聽見遠方風暴停止一瞬。它是通過霜咬隘口高處的證明。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 38, rarity: 'epic',
+    sourceTags: ['boss'], zoneTags: ['frostbite_pass'],
+  },
+
   // ─── 黑曜深層材料與熔爐核心 (Lv 45-55) ───
   mirror_obsidian_shard: {
     id: 'mirror_obsidian_shard', name: '鏡面黑曜碎片', type: 'material',

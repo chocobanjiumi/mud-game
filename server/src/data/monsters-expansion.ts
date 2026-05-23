@@ -9157,4 +9157,210 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
       spirit: '墮院長把鐘聲、聖物、外典與灰燼儀式全部收束到灰燼聖所。',
     },
   },
+
+  frostbite_whiteout_wolf_pack: {
+    id: 'frostbite_whiteout_wolf_pack', name: '白霧雪狼群', alias: 'whitewolves',
+    level: 28, hp: 1280, mp: 120, str: 92, int: 24, dex: 104, vit: 78, luk: 18,
+    element: 'ice',
+    skills: ['basic_attack', 'quick_dash', 'ice_storm'],
+    expReward: 2300, goldReward: [600, 1140],
+    drops: [
+      { itemId: 'frostbite_salve', chance: 0.18, minQty: 1, maxQty: 1 },
+      { itemId: 'stormglass_shard', chance: 0.22, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'aggressive',
+    description: '白霧盆地與雪門附近成群狩獵的雪狼，毛色會在暴風裡消失。牠們不急著撕咬獵物，而是把旅人逼離標記路線。',
+    isBoss: false,
+    guardianHints: {
+      creature: '白霧雪狼群會從霧中突進，看到雪面多點腳印就收縮隊形。',
+      treasure: '暴雪玻璃片常黏在牠們毛皮間。',
+      spirit: '雪狼群建立霜咬隘口入口的迷路與圍獵壓力。',
+    },
+  },
+
+  frostbite_sleet_harrier: {
+    id: 'frostbite_sleet_harrier', name: '雨雪裂翼鷂', alias: 'sleetharrier',
+    level: 29, hp: 1160, mp: 220, str: 68, int: 62, dex: 128, vit: 58, luk: 24,
+    element: 'ice',
+    skills: ['basic_attack', 'quick_dash', 'blind', 'water_spear'],
+    expReward: 2460, goldReward: [640, 1220],
+    drops: [
+      { itemId: 'stormglass_shard', chance: 0.44, minQty: 1, maxQty: 2 },
+      { itemId: 'frostbite_salve', chance: 0.12, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '雨雪哨與冰風切道上空盤旋的高山猛禽，翼羽被凍雨切出裂痕。牠會俯衝啄眼，把旅人趕向風口。',
+    isBoss: false,
+    guardianHints: {
+      creature: '雨雪裂翼鷂會致盲與水矛，俯衝前會逆風停拍一瞬。',
+      treasure: '牠巢邊可拾得暴雪玻璃片。',
+      spirit: '裂翼鷂讓高處哨點與暴風視線風險連動。',
+    },
+  },
+
+  frostbite_buried_caravan_wight: {
+    id: 'frostbite_buried_caravan_wight', name: '埋雪商隊怨影', alias: 'caravanwight',
+    level: 30, hp: 1480, mp: 360, str: 68, int: 88, dex: 54, vit: 104, luk: 12,
+    element: 'dark',
+    skills: ['basic_attack', 'life_drain', 'fear', 'death_mark'],
+    expReward: 2700, goldReward: [700, 1320],
+    drops: [
+      { itemId: 'lost_caravan_seal', chance: 0.64, minQty: 1, maxQty: 2 },
+      { itemId: 'frostbite_salve', chance: 0.2, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'defensive',
+    description: '埋雪貨車下方仍抓著貨箱的商隊怨影，身上的皮革被冰封成硬殼。牠們會質問每個路過者是否看見自己的貨印。',
+    isBoss: false,
+    guardianHints: {
+      creature: '埋雪商隊怨影會恐懼與死亡印記，先清理貨車周圍。',
+      treasure: '失商貨印大多在牠們身上。',
+      spirit: '商隊怨影把失蹤商隊從背景事件變成可追查線索。',
+    },
+  },
+
+  frostbite_blue_ice_lizard: {
+    id: 'frostbite_blue_ice_lizard', name: '藍冰裂蜥', alias: 'icelizard',
+    level: 30, hp: 1540, mp: 260, str: 86, int: 58, dex: 84, vit: 110, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'tail_whip', 'crystal_prison', 'ice_armor'],
+    expReward: 2820, goldReward: [740, 1400],
+    drops: [
+      { itemId: 'blue_ice_core', chance: 0.38, minQty: 1, maxQty: 1 },
+      { itemId: 'stormglass_shard', chance: 0.28, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '藍冰橋裂縫裡伏行的冰蜥，鱗片像凍住的玻璃。牠會把獵物推向薄冰，再用水晶牢籠封住退路。',
+    isBoss: false,
+    guardianHints: {
+      creature: '藍冰裂蜥會冰甲與水晶牢籠，別站在橋面裂縫上。',
+      treasure: '藍冰核心常從牠胸腹鱗下取出。',
+      spirit: '冰蜥讓藍冰橋成為地形危險而不只是通道。',
+    },
+  },
+
+  frostbite_scarred_yeti: {
+    id: 'frostbite_scarred_yeti', name: '霜疤雪怪', alias: 'scarredyeti',
+    level: 32, hp: 2100, mp: 180, str: 126, int: 28, dex: 46, vit: 152, luk: 10,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'charge', 'ice_storm'],
+    expReward: 3300, goldReward: [860, 1620],
+    drops: [
+      { itemId: 'frostbite_salve', chance: 0.36, minQty: 1, maxQty: 2 },
+      { itemId: 'lost_caravan_seal', chance: 0.18, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '雪怪抓痕附近巡行的巨獸，肩背全是舊弩傷與凍疤。牠記得商隊火把的味道，會先摧毀任何發光補給。',
+    isBoss: false,
+    guardianHints: {
+      creature: '霜疤雪怪會衝鋒與震擊，看到牠捶胸就散開。',
+      treasure: '牠巢穴常有商隊遺失貨印。',
+      spirit: '霜疤雪怪連接失商事件與高山獸患。',
+    },
+  },
+
+  frostbite_crystal_fir_lurker: {
+    id: 'frostbite_crystal_fir_lurker', name: '晶松伏行者', alias: 'firlurker',
+    level: 33, hp: 1760, mp: 420, str: 78, int: 92, dex: 62, vit: 118, luk: 16,
+    element: 'ice',
+    skills: ['basic_attack', 'root_bind', 'ice_storm', 'diamond_skin'],
+    expReward: 3560, goldReward: [920, 1740],
+    drops: [
+      { itemId: 'blue_ice_core', chance: 0.42, minQty: 1, maxQty: 1 },
+      { itemId: 'stormglass_shard', chance: 0.24, minQty: 1, maxQty: 2 },
+    ],
+    aiType: 'defensive',
+    description: '晶松林裡從樹影下滑出的冰木伏行者，枝條被凍成透明尖刺。牠會用冰根扣住腳踝，讓暴風完成剩下的事。',
+    isBoss: false,
+    guardianHints: {
+      creature: '晶松伏行者會根縛與鑽石之膚，護甲期間先清小怪。',
+      treasure: '藍冰核心會卡在晶松根瘤中。',
+      spirit: '伏行者讓霜咬隘口的森林區也保有冰屬威脅。',
+    },
+  },
+
+  frostbite_glacier_golem: {
+    id: 'frostbite_glacier_golem', name: '冰河裂心魔像', alias: 'glaciergolem',
+    level: 34, hp: 2700, mp: 380, str: 138, int: 60, dex: 24, vit: 196, luk: 8,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_slam', 'crystal_prison', 'diamond_skin', 'shatter'],
+    expReward: 4400, goldReward: [1140, 2160],
+    drops: [
+      { itemId: 'blue_ice_core', chance: 0.68, minQty: 1, maxQty: 2 },
+      { itemId: 'stormglass_shard', chance: 0.36, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'defensive',
+    description: '冰河口緩慢移動的藍白魔像，胸口裂縫裡能看見冰核跳光。牠每一步都會讓橋面重新結冰，也讓舊裂縫變得更深。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '冰河裂心魔像會牢籠、硬化與碎裂衝擊，等硬化退去再爆發。',
+      treasure: '藍冰核心是牠最主要的掉落。',
+      spirit: '冰河魔像是通往高段隘口的耐久門檻。',
+    },
+  },
+
+  frostbite_giant_pathbreaker: {
+    id: 'frostbite_giant_pathbreaker', name: '霜巨開路者', alias: 'pathbreaker',
+    level: 36, hp: 3100, mp: 300, str: 164, int: 44, dex: 38, vit: 214, luk: 12,
+    element: 'ice',
+    skills: ['basic_attack', 'stone_slam', 'charge', 'ice_storm', 'tail_whip'],
+    expReward: 5200, goldReward: [1360, 2580],
+    drops: [
+      { itemId: 'lost_caravan_seal', chance: 0.28, minQty: 1, maxQty: 2 },
+      { itemId: 'blue_ice_core', chance: 0.32, minQty: 1, maxQty: 1 },
+    ],
+    aiType: 'aggressive',
+    description: '霜巨人足跡與北行山脊間行走的巨人斥候，拖著像路標一樣高的冰斧。牠不是迷路，而是在替更大的東西開路。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '霜巨開路者會衝鋒與範圍震擊，別站在足跡直線上。',
+      treasure: '牠常把商隊貨印串在斧柄上。',
+      spirit: '開路者把普通獸患提升為霜巨人軍勢逼近。',
+    },
+  },
+
+  frostbite_dragonbreath_whelp: {
+    id: 'frostbite_dragonbreath_whelp', name: '龍息冰棚幼龍', alias: 'icewhelp',
+    level: 37, hp: 2550, mp: 620, str: 116, int: 108, dex: 82, vit: 148, luk: 24,
+    element: 'ice',
+    skills: ['basic_attack', 'water_spear', 'ice_storm', 'crystal_prison', 'blizzard'],
+    expReward: 5600, goldReward: [1460, 2760],
+    drops: [
+      { itemId: 'blue_ice_core', chance: 0.46, minQty: 1, maxQty: 2 },
+      { itemId: 'stormglass_shard', chance: 0.42, minQty: 1, maxQty: 3 },
+    ],
+    aiType: 'aggressive',
+    description: '龍息冰棚上練習吐息的幼龍，冰霧在鼻孔旁凝成小小風暴。牠的吐息還不穩定，卻足以把整段山脊封成白牆。',
+    isBoss: false,
+    isElite: true,
+    guardianHints: {
+      creature: '龍息冰棚幼龍會暴風雪與水晶牢籠，看到吸氣就離開正面。',
+      treasure: '藍冰核心會在幼龍吐息凍結處形成。',
+      spirit: '幼龍把霜咬隘口終段推向極北與龍息威脅。',
+    },
+  },
+
+  frostbite_polar_gate_colossus: {
+    id: 'frostbite_polar_gate_colossus', name: '極北封門巨像', alias: 'polarcolossus',
+    level: 38, hp: 4400, mp: 760, str: 168, int: 118, dex: 34, vit: 260, luk: 18,
+    element: 'ice',
+    skills: ['basic_attack', 'crystal_slam', 'blizzard', 'reflect_barrier', 'shatter', 'ice_armor'],
+    expReward: 7000, goldReward: [1880, 3560],
+    drops: [
+      { itemId: 'polar_gate_sigil', chance: 1.0, minQty: 1, maxQty: 1 },
+      { itemId: 'blue_ice_core', chance: 0.76, minQty: 1, maxQty: 3 },
+      { itemId: 'stormglass_shard', chance: 0.6, minQty: 2, maxQty: 4 },
+    ],
+    aiType: 'boss',
+    description: '極北封門前沉睡的巨大冰像，面甲下沒有眼睛，只有暴風雪旋轉。牠會測量每個通行者的體溫，太溫暖者不得越過封門。',
+    isBoss: true,
+    isElite: true,
+    respawnTime: 2100,
+    guardianHints: {
+      creature: '極北封門巨像會暴風雪、反射與碎裂衝擊，反射期間停手整隊。',
+      treasure: '牠必定掉落極北封門印。',
+      spirit: '封門巨像把霜咬隘口的商隊失蹤、霜巨人足跡與極北邊界收束起來。',
+    },
+  },
 };

@@ -9667,6 +9667,94 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 
+  frostbite_pass_caravan_scout: {
+    id: 'frostbite_pass_caravan_scout',
+    name: '妮雅',
+    alias: 'scout',
+    title: '失商路線斥候',
+    description: '一名斥候站在商隊路標旁，雪帽上綁著紅布條，手中地圖被凍得像薄木片。',
+    roomId: 'frostbite_pass_caravan_marker',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '商隊不是走丟，是被什麼東西一步步逼離路標。找到失商貨印，我就能確認是哪一支隊伍。',
+        options: [
+          { text: '失商在哪？', nextId: 'caravan' },
+          { text: '雪怪呢？', nextId: 'yeti' },
+          { text: '我會沿路標走。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'caravan', text: '埋雪貨車、骨橇路、失商藏點。看到貨箱被整齊掀開，就不是雪崩。', options: [{ text: '雪怪呢？', nextId: 'yeti' }, { text: '我去找貨印。', nextId: 'farewell' }] },
+      { id: 'yeti', text: '霜疤雪怪討厭火光，牠會先砸補給，再慢慢追人。', options: [{ text: '失商在哪？', nextId: 'caravan' }, { text: '我會小心火光。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '暴風裡別相信直線，直線通常是懸崖。' },
+    ],
+    guardianHints: {
+      creature: '妮雅提示埋雪商隊怨影、霜疤雪怪與白霧雪狼群。',
+      treasure: '她需要失商貨印來辨認失蹤商隊。',
+      spirit: '斥候把霜咬隘口的商隊失蹤事件建立成入口任務線。',
+    },
+  },
+
+  frostbite_pass_coldfire_quartermaster: {
+    id: 'frostbite_pass_coldfire_quartermaster',
+    name: '霍爾姆',
+    alias: 'quartermaster',
+    title: '冷火營補給官',
+    description: '一名補給官把藥膏罐埋在溫灰中保溫，帳篷外掛滿防風繩與裂冰釘。',
+    roomId: 'frostbite_pass_coldfire_camp',
+    type: 'merchant',
+    shopItems: ['large_hp_potion', 'large_mp_potion', 'frostbite_salve', 'blue_ice_core'],
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '要藥膏、熱繩、藍冰核心？快買。冷火只保得住營地，保不住你在山脊上的命。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '高處有什麼？', nextId: 'ridge' },
+          { text: '先不買。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'shop', text: '霜咬藥膏能救凍傷，藍冰核心能穩住附魔。極北封門印不賣，那得自己過封門。', action: { type: 'shop', data: { shopType: 'frostbite_coldfire_supply' } }, options: [{ text: '高處有什麼？', nextId: 'ridge' }, { text: '先這樣。', nextId: 'farewell' }] },
+      { id: 'ridge', text: '霜巨人足跡往北，龍息冰棚往東。看到冰面像在呼吸，代表幼龍就在附近。', options: [{ text: '我看看補給。', nextId: 'shop' }, { text: '我會繫好防風繩。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '藥膏別省。少塗一層，就多掉一根手指。' },
+    ],
+    guardianHints: {
+      creature: '霍爾姆提示晶松伏行者、霜巨開路者與龍息冰棚幼龍。',
+      treasure: '他販售霜咬藥膏與藍冰核心。',
+      spirit: '冷火營成為隘口中段補給與高處風險說明點。',
+    },
+  },
+
+  frostbite_pass_polar_gate_warden: {
+    id: 'frostbite_pass_polar_gate_warden',
+    name: '艾絲特',
+    alias: 'warden',
+    title: '極北封門守望者',
+    description: '一名守望者靠在極北封門旁，眉睫結霜，披風內側縫著舊商隊名牌。',
+    roomId: 'frostbite_pass_polar_seal_gate',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '封門巨像不是阻止你前進，而是確認你是否還能活著回頭。',
+        options: [
+          { text: '巨像怎麼打？', nextId: 'colossus' },
+          { text: '封門印有什麼用？', nextId: 'sigil' },
+          { text: '我會觀察風暴。', nextId: 'farewell' },
+        ],
+      },
+      { id: 'colossus', text: '反射冰光亮起時停手。它碎裂前會把整座門前冰面一起震開。', options: [{ text: '封門印有什麼用？', nextId: 'sigil' }, { text: '我會等反射退去。', nextId: 'farewell' }] },
+      { id: 'sigil', text: '極北封門印證明你通過了霜咬隘口，不只是被暴風推到門前。', options: [{ text: '巨像怎麼打？', nextId: 'colossus' }, { text: '我去試試。', nextId: 'farewell' }] },
+      { id: 'farewell', text: '門前若突然安靜，別高興，那是暴風在吸氣。' },
+    ],
+    guardianHints: {
+      creature: '艾絲特提示極北封門巨像的反射與碎裂衝擊。',
+      treasure: '她說明極北封門印是霜咬隘口終點證物。',
+      spirit: '守望者把封門 Boss 與商隊失蹤線收束到極北邊界。',
+    },
+  },
+
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
     name: '赫倫',
