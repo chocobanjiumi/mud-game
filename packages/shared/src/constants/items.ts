@@ -2542,6 +2542,48 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['marsh_of_mirrors', 'quest', 'monster_drop'], zoneTags: ['marsh_of_mirrors'],
   },
+  red_ore_chunk: {
+    id: 'red_ore_chunk', name: '赤鐵礦塊', type: 'material',
+    description: '赤岩荒地礦脈中敲下的深紅礦塊，內部帶著乾熱金屬味。商隊與盜匪都把它視為鍛造與交易的硬通貨。',
+    buyPrice: 0, sellPrice: 28,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'monster_drop', 'gathering'], zoneTags: ['redrock_badlands'],
+  },
+  cinder_crust: {
+    id: 'cinder_crust', name: '焦泉礦殼', type: 'material',
+    description: '焦泉與火靈盆地邊緣剝落的黑色礦殼，遇冷後仍會散出淡淡熱氣。可作為耐火護具與火成藥劑材料。',
+    buyPrice: 0, sellPrice: 30,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'monster_drop', 'gathering'], zoneTags: ['redrock_badlands'],
+  },
+  blackflag_token: {
+    id: 'blackflag_token', name: '黑旗令牌', type: 'material',
+    description: '黑旗盜匪用來辨識哨塔、營地與伏擊峽谷小隊的鐵牌，背面刻有粗糙路線記號。',
+    buyPrice: 0, sellPrice: 26,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'monster_drop', 'salvage'], zoneTags: ['redrock_badlands'],
+  },
+  desert_scout_spyglass: {
+    id: 'desert_scout_spyglass', name: '荒地斥候望遠鏡', type: 'material',
+    description: '被沙塵刮花的短筒望遠鏡，鏡片邊緣刻著距離標線。可用來偵查黑旗瞭望點與碎岩脊高處伏兵。',
+    buyPrice: 0, sellPrice: 42,
+    stackable: true, maxStack: 99, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'monster_drop', 'recon'], zoneTags: ['redrock_badlands'],
+  },
+  caravan_guard_badge: {
+    id: 'caravan_guard_badge', name: '商隊護衛徽章', type: 'quest',
+    description: '焚車殘骸附近找回的金屬徽章，邊緣被火燒黑。它能證明商隊遇襲與黑旗盜匪供應線有關。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'quest', 'monster_drop'], zoneTags: ['redrock_badlands'],
+  },
+  scarlet_crater_core: {
+    id: 'scarlet_crater_core', name: '猩紅火成核心', type: 'quest',
+    description: '猩紅火口裂縫中凝成的火成核心，表面有黑旗刮痕與巨人指印。它是追查盜匪爭奪赤礦原因的關鍵證物。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 1,
+    sourceTags: ['redrock_badlands', 'quest', 'monster_drop'], zoneTags: ['redrock_badlands'],
+  },
 
   // ============ 鍛造裝備（製作系統成品） ============
   iron_shield: {

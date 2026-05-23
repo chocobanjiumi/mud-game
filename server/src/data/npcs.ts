@@ -4472,6 +4472,258 @@ export const NPCS: Record<string, NpcDef> = {
       spirit: '她守護的不是祠堂，而是被鏡沼借走前的名字。',
     },
   },
+
+  redrock_caravan_quartermaster: {
+    id: 'redrock_caravan_quartermaster',
+    name: '哈坎',
+    alias: 'quartermaster',
+    title: '商隊軍需官',
+    description:
+      '一名滿臉風沙的軍需官守在沙塵隘口木樁旁，腳邊堆著水袋、繃帶、備用弩弦與被沙刮花的路牌。' +
+      '他說話時總會先看岩脊高處，像任何交易都可能被一支箭打斷。',
+    roomId: 'redrock_badlands_dust_gate',
+    type: 'merchant',
+    shopItems: [
+      'small_hp_potion',
+      'medium_hp_potion',
+      'small_mp_potion',
+      'antidote',
+      'smoke_bomb',
+      'throwing_knife',
+      'red_ore_chunk',
+      'cinder_crust',
+    ],
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '進赤岩荒地前先補水、補藥、補退路。這裡最貴的不是貨，是你還能不能把貨帶回來。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '黑旗盜匪在哪？', nextId: 'blackflag' },
+          { text: '商隊怎麼遇襲？', nextId: 'caravan' },
+          { text: '晚點再來。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'shop',
+        text: '藥水、解毒劑、煙霧彈、短刀、赤鐵礦塊和焦泉礦殼都有。別省煙霧彈，撤退時它比多一把刀有用。',
+        action: { type: 'shop', data: { shopType: 'redrock_supply' } },
+        options: [
+          { text: '黑旗盜匪在哪？', nextId: 'blackflag' },
+          { text: '商隊怎麼遇襲？', nextId: 'caravan' },
+          { text: '先這樣。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'blackflag',
+        text:
+          '哨塔看路，營地分贓，黑旗瞭望點看全局。若你先打營地不拆哨塔，等於替他們敲集合鐘。',
+        options: [
+          { text: '我看看補給。', nextId: 'shop' },
+          { text: '商隊怎麼遇襲？', nextId: 'caravan' },
+        ],
+      },
+      {
+        id: 'caravan',
+        text:
+          '焚車殘骸還有護衛徽章沒找回來。若你看到黑旗令牌和火成核心放在一起，就不是單純劫貨。',
+        options: [
+          { text: '我會去查。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '進去前看高處，出來前數人數。赤岩荒地最喜歡少還一個人。',
+      },
+    ],
+    guardianHints: {
+      creature: '哈坎知道沙路劫掠者和黑旗射手通常從哪些高處開戰。',
+      treasure: '他的軍需箱裡分著赤鐵礦塊、焦泉礦殼和商隊失物紀錄。',
+      spirit: '他讓荒地入口仍像一條路，而不是單向的陷阱。',
+    },
+  },
+
+  redrock_wreck_scout: {
+    id: 'redrock_wreck_scout',
+    name: '雅菈',
+    alias: 'scout',
+    title: '焚車調查斥候',
+    description:
+      '一名斥候蹲在焚車殘骸旁，用炭筆記錄車輪、箭孔與狼爪痕。' +
+      '她背後掛著短筒望遠鏡與破披風，披風邊緣還留著燒焦味。',
+    roomId: 'redrock_badlands_burnt_wagon',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '車不是先燒的，是先被截停、拆貨、再用火靈掩痕。黑旗想讓我們以為這只是一次普通劫案。',
+        options: [
+          { text: '該找什麼證據？', nextId: 'evidence' },
+          { text: '火靈怎麼牽進來？', nextId: 'fire' },
+          { text: '附近安全嗎？', nextId: 'danger' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'evidence',
+        text:
+          '商隊護衛徽章、黑旗令牌、刮花望遠鏡。三樣湊齊，就能證明他們不是亂搶，是在找赤礦路線。',
+        options: [
+          { text: '火靈怎麼牽進來？', nextId: 'fire' },
+          { text: '附近安全嗎？', nextId: 'danger' },
+        ],
+      },
+      {
+        id: 'fire',
+        text:
+          '火靈盆地最近太躁，像有人把焦泉礦殼和赤鐵礦塊丟進火口試東西。那不是取暖，是試爆。',
+        options: [
+          { text: '該找什麼證據？', nextId: 'evidence' },
+          { text: '我去火口看看。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'danger',
+        text:
+          '白天看高處，夜裡看車底。焦鬃荒狼等屍體，黑旗射手等救屍體的人。',
+        options: [
+          { text: '我會留意。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '別把第一眼看到的箭孔當真。黑旗最會把方向做給你看。',
+      },
+    ],
+    guardianHints: {
+      creature: '雅菈能從箭孔與狼爪分辨黑旗射手、焦鬃荒狼與沙路劫掠者的行動順序。',
+      treasure: '她追查商隊護衛徽章與荒地斥候望遠鏡。',
+      spirit: '她把燒毀的車輪重新讀成一條仍能追下去的線索。',
+    },
+  },
+
+  redrock_exile_informant: {
+    id: 'redrock_exile_informant',
+    name: '賽洛',
+    alias: 'informant',
+    title: '流放者情報販',
+    description:
+      '一名流放者靠在洞穴鍛爐旁，披著磨掉徽記的護甲，手裡轉著一枚黑旗令牌。' +
+      '他不像盜匪，卻也不像願意回到王國道路上的人。',
+    roomId: 'redrock_badlands_exile_den',
+    type: 'general',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '你帶黑旗來，我當你敵人；你帶護衛徽章來，我當你有問題；你兩個都沒有，我當你還能談。',
+        options: [
+          { text: '黑旗在找什麼？', nextId: 'blackflag' },
+          { text: '決鬥石圈呢？', nextId: 'duel' },
+          { text: '火口能走嗎？', nextId: 'crater' },
+          { text: '只是路過。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'blackflag',
+        text:
+          '他們想用赤礦和焦泉礦殼餵火口，逼出猩紅火成核心。成功的話，這片荒地就不只是搶路了。',
+        options: [
+          { text: '決鬥石圈呢？', nextId: 'duel' },
+          { text: '火口能走嗎？', nextId: 'crater' },
+        ],
+      },
+      {
+        id: 'duel',
+        text:
+          '石圈有規矩，但規矩只管站在圈裡的人。真正的威脅通常趴在圈外岩塊後面，拿著毒箭。',
+        options: [
+          { text: '黑旗在找什麼？', nextId: 'blackflag' },
+          { text: '我懂了。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'crater',
+        text:
+          '能走，不建議。黑旗戰頭在那裡等結果，赤礦巨像和火靈也會被熱流喚醒。',
+        options: [
+          { text: '我會準備好。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '荒地裡別急著問誰是好人。先問誰有退路。',
+      },
+    ],
+    guardianHints: {
+      creature: '賽洛知道流放決鬥者與黑旗戰頭如何利用決鬥規則。',
+      treasure: '他手上的黑旗令牌能對上營地、哨塔與火口路線。',
+      spirit: '他代表赤岩荒地裡仍想活下去、但不再相信秩序的人。',
+    },
+  },
+
+  redrock_crater_prospector: {
+    id: 'redrock_crater_prospector',
+    name: '伊卓',
+    alias: 'prospector',
+    title: '火口勘探師',
+    description:
+      '一名鬍鬚燒短的勘探師站在猩紅火口邊緣，背包裡插滿礦釘、耐火瓶和裂紋測尺。' +
+      '他看起來害怕火口，卻更害怕有人在他之前取走核心。',
+    roomId: 'redrock_badlands_scarlet_crater',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text:
+          '別敲中央裂縫。黑旗已經敲太多次，熱流快連成一條會咬人的路了。',
+        options: [
+          { text: '火成核心在哪？', nextId: 'core' },
+          { text: '熱流會怎樣？', nextId: 'heat' },
+          { text: '黑旗戰頭呢？', nextId: 'warlord' },
+          { text: '我會退後。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'core',
+        text:
+          '核心不在最大裂縫，在黑旗戰頭站過的側縫。那裡有赤礦、焦泉礦殼和巨人指印，三種痕跡疊在一起。',
+        options: [
+          { text: '熱流會怎樣？', nextId: 'heat' },
+          { text: '黑旗戰頭呢？', nextId: 'warlord' },
+        ],
+      },
+      {
+        id: 'heat',
+        text:
+          '若火口再暴動，焦泉、火靈盆地和熔岩蟲陷坑會一起醒。你以為是在打一場戰鬥，其實是在踩一整張熱網。',
+        options: [
+          { text: '火成核心在哪？', nextId: 'core' },
+          { text: '我會小心。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'warlord',
+        text:
+          '他不是礦工，卻知道怎麼逼礦脈吐東西。先打掉他的黑旗令牌，再看核心會不會安靜。',
+        options: [
+          { text: '熱流會怎樣？', nextId: 'heat' },
+          { text: '明白。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'farewell',
+        text: '腳底若熱到隔著靴子都疼，別逞強。荒地不缺英雄的灰。',
+      },
+    ],
+    guardianHints: {
+      creature: '伊卓能判斷黑旗戰頭、赤礦岩巨像與熔岩蟲的熱流喚醒順序。',
+      treasure: '他的裂紋測尺能指出猩紅火成核心最可能凝結的位置。',
+      spirit: '他把貪婪包裝成勘探，但至少知道火口真的會反咬。',
+    },
+  },
 };
 
 /** 取得 NPC 定義 */
