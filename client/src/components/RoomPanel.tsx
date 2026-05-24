@@ -118,7 +118,7 @@ export function RoomPanelView({
       <div className="flex items-center justify-between">
         <span className="text-xs font-bold text-text-terminal">附近物件</span>
         <button className="text-[10px] text-text-dim hover:text-text-bright" onClick={() => sendCommand('search room', '搜尋房間')}>
-          search
+          搜尋
         </button>
       </div>
 

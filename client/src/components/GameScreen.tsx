@@ -72,10 +72,10 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       if (e.target instanceof HTMLElement && e.target.isContentEditable) return;
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       // WASD movement
-      if (e.key === 'w' || e.key === 'W') { onCommand('go north', '前往 north'); return; }
-      if (e.key === 'a' || e.key === 'A') { onCommand('go west', '前往 west'); return; }
-      if (e.key === 's' || e.key === 'S') { onCommand('go south', '前往 south'); return; }
-      if (e.key === 'd' || e.key === 'D') { onCommand('go east', '前往 east'); return; }
+      if (e.key === 'w' || e.key === 'W') { onCommand('go north', '前往北方'); return; }
+      if (e.key === 'a' || e.key === 'A') { onCommand('go west', '前往西方'); return; }
+      if (e.key === 's' || e.key === 'S') { onCommand('go south', '前往南方'); return; }
+      if (e.key === 'd' || e.key === 'D') { onCommand('go east', '前往東方'); return; }
       // UI panels
       if (e.key === 'b' || e.key === 'B') {
         if (!shopOpen) {

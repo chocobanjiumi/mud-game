@@ -123,6 +123,21 @@ describe('PlayerManager', () => {
       expect(char.stats.luk).toBe(5);
     });
 
+    it('should apply selected race, gender, and faith at creation', () => {
+      const char = pm.createCharacter('OriginHero', 'user-1', false, undefined, {
+        raceId: 'orc',
+        genderId: 'female',
+        faithId: 'mirak',
+      });
+
+      expect(char.raceId).toBe('orc');
+      expect(char.genderId).toBe('female');
+      expect(char.faithId).toBe('mirak');
+      expect(char.faithFavor).toBe(10);
+      expect(char.stats).toMatchObject({ str: 8, vit: 6, int: 4, dex: 5, luk: 5 });
+      expect(char.maxHp).toBeGreaterThan(100);
+    });
+
     it('should create AI character when isAi is true', () => {
       const char = pm.createCharacter('AIBot', 'user-ai', true, 'agent-1');
 
