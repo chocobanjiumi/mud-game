@@ -3,9 +3,10 @@
 
 import { getDb } from '../db/schema.js';
 import { randomUUID } from 'crypto';
-import { addInventoryItem, getCharacterById, saveCharacter } from '../db/queries.js';
+import { getCharacterById, saveCharacter } from '../db/queries.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
+import { addRewardItemToInventory } from './item-instance-rewards.js';
 
 // ============================================================
 //  型別定義
@@ -367,7 +368,8 @@ export class WorldEventManager {
         if (Math.random() < chance) {
           const qty = drop.minQty + Math.floor(Math.random() * (drop.maxQty - drop.minQty + 1));
           try {
-            addInventoryItem(r.characterId, drop.itemId, qty);
+            const char = getCharacterById(r.characterId);
+            if (char) addRewardItemToInventory(char, drop.itemId, qty, ['world_boss']);
           } catch { /* ignore */ }
         }
       }

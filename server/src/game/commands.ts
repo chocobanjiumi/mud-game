@@ -19,7 +19,6 @@ import {
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
-  generateEquipmentInstance, toBaseEquipmentDef,
   calculateMaxHp, calculateMaxMp,
   calculateAtk, calculateMatk, calculateDef, calculateMdef,
   calculateCritRate, calculateDodgeRate, calculateHitRate,
@@ -77,6 +76,7 @@ import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } fr
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
 import { getModifiedSkillRuntime, getResourceAffixBonus, getSkillAffixModifiers } from './equipment-affixes.js';
+import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
@@ -1194,24 +1194,7 @@ function formatDuration(ms: number): string {
 }
 
 function addLootItemToInventory(char: Character, itemId: string, quantity: number): string[] {
-  const def = ITEM_DEFS[itemId];
-  const baseEquipment = toBaseEquipmentDef(def);
-  if (!baseEquipment) {
-    addInventoryItem(char.id, itemId, quantity);
-    return [def?.name ?? itemId];
-  }
-
-  const names: string[] = [];
-  for (let i = 0; i < quantity; i++) {
-    const instance = generateEquipmentInstance(baseEquipment, {
-      luk: char.stats.luk,
-      classId: char.classId,
-      sourceTags: baseEquipment.sourceTags,
-    });
-    addInventoryItem(char.id, itemId, 1, false, instance);
-    names.push(`${def?.name ?? itemId}${instance.quality !== 'normal' ? `（${instance.quality}）` : ''}`);
-  }
-  return names;
+  return addRewardItemToInventory(char, itemId, quantity, ['monster_drop']).map(formatRewardEntry);
 }
 
 function cmdInventory(session: WsSession): void {
@@ -2535,7 +2518,7 @@ function cmdTake(session: WsSession, itemName: string): void {
 
   if (match) {
     const def = ITEM_DEFS[match.itemId];
-    addInventoryItem(char.id, match.itemId, 1);
+    addRewardItemToInventory(char, match.itemId, 1, ['ground_item']);
     markGroundItemPicked(char.roomId, match.itemId, match.oneTime);
     questMgr.updateProgress(char.id, 'collect_item', match.itemId);
     sendNarrative(session.sessionId, `你撿起了${def?.name ?? match.itemId}。`);
@@ -2877,7 +2860,7 @@ function cmdBuy(session: WsSession, itemName: string): void {
 
   char.gold -= price;
   saveCharacter(char);
-  addInventoryItem(char.id, matchId, 1);
+  addRewardItemToInventory(char, matchId, 1, ['shop']);
   sendSystem(session.sessionId, `購買了「${def.name}」，花費 ${price} 金幣。（剩餘：${char.gold}）`);
   cmdInventory(session);
 }

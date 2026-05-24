@@ -27,6 +27,7 @@ import {
 } from '../game/item-reforge.js';
 import { getEquipmentStats } from '../game/damage.js';
 import { applyTriggeredAffixEvents, getModifiedSkillResourceCost, getModifiedSkillRuntime, getSkillAffixModifiers } from '../game/equipment-affixes.js';
+import { addRewardItemToInventory } from '../game/item-instance-rewards.js';
 import { applySkillResourceChange, checkSkillResource } from '../game/skill-resource.js';
 import {
   ensureEconomyStatsTables,
@@ -698,6 +699,25 @@ describe('inventory item instances', () => {
     expect(getEquippedItems(characterId)).toEqual([
       expect.objectContaining({ itemId: 'spear_steel', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 }),
     ]);
+  });
+
+  it('creates stored item instances when rewarding equipment', () => {
+    const char = createDbCharacter('user-instance-reward', 'RewardInstanceHero');
+
+    const entries = addRewardItemToInventory(char, 'spear_steel', 1, ['monster_drop']);
+
+    expect(entries[0].itemInstanceId).toBeDefined();
+    const rewarded = getInventory(char.id).find(item => item.itemInstanceId === entries[0].itemInstanceId);
+    expect(rewarded).toEqual(expect.objectContaining({
+      itemId: 'spear_steel',
+      itemInstanceId: entries[0].itemInstanceId,
+      quantity: 1,
+      quality: expect.any(String),
+    }));
+    expect(getStoredItemInstance(entries[0].itemInstanceId!)).toEqual(expect.objectContaining({
+      baseItemId: 'spear_steel',
+      quality: rewarded?.quality,
+    }));
   });
 
   it('applies equipped item instance affix stats to combat equipment stats', () => {

@@ -58,6 +58,7 @@ import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyHpRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
+import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
@@ -311,14 +312,14 @@ export function initGameSystems(): void {
             }
             saveCharacter(char);
             // 物品掉落
+            const itemNames: string[] = [];
             for (const item of drops.items) {
-              addInventoryItem(characterId, item.itemId, item.quantity);
+              itemNames.push(
+                ...addRewardItemToInventory(char, item.itemId, item.quantity, ['auto_battle', 'monster_drop'])
+                  .map(formatRewardEntry),
+              );
             }
             // 通知
-            const itemNames = drops.items.map(i => {
-              const def = ITEM_DEFS[i.itemId];
-              return `${def?.name ?? i.itemId} x${i.quantity}`;
-            });
             const parts: string[] = [];
             if (drops.exp > 0) parts.push(`經驗 +${drops.exp}`);
             if (drops.gold > 0) parts.push(`金幣 +${drops.gold}`);
