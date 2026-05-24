@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_coast_water_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_coast_water_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_coast_water_serpent_egg_shell",
+      "category": "material",
+      "targetId": "serpent_egg_shell",
+      "name": "蛇卵殼",
+      "outputPath": "client/public/images/materials/material_coast_water_serpent_egg_shell.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_tidebell_clapper",
+      "category": "material",
+      "targetId": "tidebell_clapper",
+      "name": "礁鐘舌片",
+      "outputPath": "client/public/images/materials/material_coast_water_tidebell_clapper.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_tideclock_gear",
+      "category": "material",
+      "targetId": "tideclock_gear",
+      "name": "潮鐘齒輪",
+      "outputPath": "client/public/images/materials/material_coast_water_tideclock_gear.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_tideglass_shard",
+      "category": "material",
+      "targetId": "tideglass_shard",
+      "name": "潮玻璃碎片",
+      "outputPath": "client/public/images/materials/material_coast_water_tideglass_shard.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_whalebone_relic",
+      "category": "material",
+      "targetId": "whalebone_relic",
+      "name": "鯨骨聖片",
+      "outputPath": "client/public/images/materials/material_coast_water_whalebone_relic.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_low_wilds_stolen_pouch",
+      "category": "material",
+      "targetId": "stolen_pouch",
+      "name": "贓物袋",
+      "outputPath": "client/public/images/materials/material_coast_water_low_wilds_stolen_pouch.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
