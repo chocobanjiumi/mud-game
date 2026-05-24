@@ -74,6 +74,7 @@ import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './ori
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
+import { getModifiedSkillResourceCost } from './equipment-affixes.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
@@ -1620,8 +1621,9 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  if (skillDef && skillDef.resourceCost > char.resource) {
-    sendError(session.sessionId, `資源不足！${skillDef.name}需要 ${skillDef.resourceCost} 點。`);
+  const resourceCost = getModifiedSkillResourceCost(char.id, skillDef);
+  if (resourceCost > char.resource) {
+    sendError(session.sessionId, `資源不足！${skillDef.name}需要 ${resourceCost} 點。`);
     return;
   }
 
@@ -1630,7 +1632,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       sendError(session.sessionId, '觀察需要指定目標。');
       return;
     }
-    spendSkillResource(char, skillDef.resourceCost);
+    spendSkillResource(char, resourceCost);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」。`);
@@ -1655,7 +1657,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, fieldEffect.message ?? '技能沒有可作用的目標。');
       return;
     }
-    spendSkillResource(char, skillDef.resourceCost);
+    spendSkillResource(char, resourceCost);
     saveCharacter(char);
     if (fieldEffect.target && fieldEffect.target.id !== char.id) {
       saveCharacter(fieldEffect.target);
@@ -1663,7 +1665,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」，${fieldEffect.message ?? '生效了。'}`);
   } else {
-    spendSkillResource(char, skillDef.resourceCost);
+    spendSkillResource(char, resourceCost);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);

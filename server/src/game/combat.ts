@@ -24,6 +24,7 @@ import {
   getFleeOriginBonus,
 } from './origin-effects.js';
 import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
+import { getSkillAffixModifiers } from './equipment-affixes.js';
 
 // ============================================================
 //  常數
@@ -529,6 +530,10 @@ export class CombatEngine {
 
     // 資源消耗（使用技能定義的 resourceCost）
     let resourceCost = skillDef?.resourceCost ?? 5;
+    const affixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef) : null;
+    if (affixModifiers?.resourceCostReductionPct) {
+      resourceCost = Math.max(1, Math.floor(resourceCost * (1 - affixModifiers.resourceCostReductionPct / 100)));
+    }
     // 套裝加成：MP 消耗減免
     if (actor.resourceType === 'mp') {
       const pct = this.getPlayerSetBonusPct(session, actor.id);
@@ -549,7 +554,9 @@ export class CombatEngine {
     // 使用技能定義的 damageType、element、multiplier
     const damageType = skillDef?.damageType ?? 'magical';
     const element = skillDef?.element ?? 'none';
-    const multiplier = (skillDef?.multiplier ?? 1.5) * this.getMonsterPhaseDamageMultiplier(actor);
+    const multiplier = (skillDef?.multiplier ?? 1.5)
+      * (1 + (affixModifiers?.damageBonusPct ?? 0) / 100)
+      * this.getMonsterPhaseDamageMultiplier(actor);
 
     // 治癒技能特殊處理
     const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
@@ -584,6 +591,9 @@ export class CombatEngine {
         const pct = this.getPlayerSetBonusPct(session, actor.id);
         if (pct.healPower) {
           healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
+        }
+        if (affixModifiers?.healingBonusPct) {
+          healAmount = Math.floor(healAmount * (1 + affixModifiers.healingBonusPct / 100));
         }
         healAmount = applyHealingReceivedOriginModifier(target, healAmount);
         const before = target.hp;

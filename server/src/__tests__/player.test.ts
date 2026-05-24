@@ -26,6 +26,7 @@ import {
   rerollItemAffix,
 } from '../game/item-reforge.js';
 import { getEquipmentStats } from '../game/damage.js';
+import { getModifiedSkillResourceCost, getSkillAffixModifiers } from '../game/equipment-affixes.js';
 import {
   ensureEconomyStatsTables,
   getAverageAuctionSalePrice,
@@ -716,6 +717,45 @@ describe('inventory item instances', () => {
     const unequipped = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
     expect(unequipped.str).toBe(before.str);
     expect(unequipped.weaponAtk).toBe(before.weaponAtk);
+  });
+
+  it('applies equipped skill-tag affixes to skill cost and output modifiers', () => {
+    const characterId = 'item-instance-skill-affix-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-skill-affix', 'SkillAffixHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, true, {
+      itemInstanceId: 'inst_spear_steel_skill_affix',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [
+        {
+          id: 'behavior_focus_t2',
+          name: '專注',
+          pool: 'behavior',
+          tier: 'T2',
+          appliesTo: ['weapon'],
+          skillTags: ['resource'],
+          behavior: 'reduce_resource_cost',
+        },
+        {
+          id: 'behavior_execute_t5',
+          name: '處決',
+          pool: 'behavior',
+          tier: 'T5',
+          appliesTo: ['weapon'],
+          skillTags: ['burst'],
+          behavior: 'execute_low_hp',
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    const modifiers = getSkillAffixModifiers(characterId, SKILL_DEFS.power_strike);
+
+    expect(getModifiedSkillResourceCost(characterId, SKILL_DEFS.power_strike)).toBeLessThan(SKILL_DEFS.power_strike.resourceCost);
+    expect(modifiers.damageBonusPct).toBeGreaterThan(0);
   });
 
   it('can reroll a stored item instance affix', () => {
