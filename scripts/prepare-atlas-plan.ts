@@ -359,6 +359,31 @@ function writeMarkdown(plan: AtlasPlan, outPath: string): void {
   fs.writeFileSync(outPath, `${lines.join('\n')}\n`);
 }
 
+function writeImageGenPromptJsonl(plan: AtlasPlan, outPath: string): void {
+  const records = (['npc', 'monster', 'item', 'material'] as Category[])
+    .flatMap(category => plan.targets[category])
+    .map(target => ({
+      assetId: target.id,
+      targetId: target.targetId,
+      category: target.category,
+      name: target.name,
+      type: target.type,
+      zoneIds: target.zoneIds,
+      source: target.source,
+      outputPath: target.outputPath,
+      tool: 'Codex imagegen skill built-in image_gen',
+      generationMode: 'single image per asset',
+      prompt: [
+        target.prompt,
+        'Generate exactly one finished bitmap asset for this single target.',
+        'Do not create an atlas sheet, grid, contact sheet, collage, text label, initial, UI badge, watermark, frame, or category icon.',
+        'The final image must be suitable for direct use as the target game asset at inventory, shop, NPC, or monster portrait size.',
+      ].join(' '),
+    }));
+
+  fs.writeFileSync(outPath, `${records.map(record => JSON.stringify(record)).join('\n')}\n`);
+}
+
 function main(): void {
   const options = parseArgs(process.argv.slice(2));
   const zones = parseMud3Zones(options.mud3);
@@ -382,9 +407,11 @@ function main(): void {
   fs.mkdirSync(options.outDir, { recursive: true });
   fs.writeFileSync(path.join(options.outDir, 'phase4-atlas-plan.json'), `${JSON.stringify(plan, null, 2)}\n`);
   writeMarkdown(plan, path.join(options.outDir, 'phase4-atlas-batches.md'));
+  writeImageGenPromptJsonl(plan, path.join(options.outDir, 'ai-prompts.jsonl'));
 
   console.log(`Wrote ${path.relative(ROOT, path.join(options.outDir, 'phase4-atlas-plan.json'))}`);
   console.log(`Wrote ${path.relative(ROOT, path.join(options.outDir, 'phase4-atlas-batches.md'))}`);
+  console.log(`Wrote ${path.relative(ROOT, path.join(options.outDir, 'ai-prompts.jsonl'))}`);
   console.log(`Targets: NPC=${counts.npc}, monster=${counts.monster}, item=${counts.item}, material=${counts.material}`);
   console.log(`Batches: NPC=${batchCounts.npc}, monster=${batchCounts.monster}, item=${batchCounts.item}, material=${batchCounts.material}`);
   console.log(`Partial batches: ${backlog.length}`);
