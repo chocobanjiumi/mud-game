@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_cave_mine_01",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_cave_mine_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_cave_mine_ancient_forge_cinder",
+      "category": "material",
+      "targetId": "ancient_forge_cinder",
+      "name": "古爐餘燼",
+      "outputPath": "client/public/images/materials/material_cave_mine_ancient_forge_cinder.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_bat_guano_salt",
+      "category": "material",
+      "targetId": "bat_guano_salt",
+      "name": "蝠糞硝鹽",
+      "outputPath": "client/public/images/materials/material_cave_mine_bat_guano_salt.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_black_granite_plate",
+      "category": "material",
+      "targetId": "black_granite_plate",
+      "name": "黑花崗板",
+      "outputPath": "client/public/images/materials/material_cave_mine_black_granite_plate.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_blackglass_chain_link",
+      "category": "material",
+      "targetId": "blackglass_chain_link",
+      "name": "黑玻鏈環",
+      "outputPath": "client/public/images/materials/material_cave_mine_blackglass_chain_link.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_core_drill_bit",
+      "category": "material",
+      "targetId": "core_drill_bit",
+      "name": "核心鑽頭",
+      "outputPath": "client/public/images/materials/material_cave_mine_core_drill_bit.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_cave_mine_drowned_lantern_oil",
+      "category": "material",
+      "targetId": "drowned_lantern_oil",
+      "name": "沉燈油",
+      "outputPath": "client/public/images/materials/material_cave_mine_drowned_lantern_oil.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_echo_crystal",
+      "category": "material",
+      "targetId": "echo_crystal",
+      "name": "迴音水晶",
+      "outputPath": "client/public/images/materials/material_cave_mine_echo_crystal.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_echo_crystal_dust",
+      "category": "material",
+      "targetId": "echo_crystal_dust",
+      "name": "回音晶粉",
+      "outputPath": "client/public/images/materials/material_cave_mine_echo_crystal_dust.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_frost_vein_crystal",
+      "category": "material",
+      "targetId": "frost_vein_crystal",
+      "name": "霜脈晶",
+      "outputPath": "client/public/images/materials/material_cave_mine_frost_vein_crystal.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_guardian_crystal",
+      "category": "material",
+      "targetId": "guardian_crystal",
+      "name": "守護者水晶",
+      "outputPath": "client/public/images/materials/material_cave_mine_guardian_crystal.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
