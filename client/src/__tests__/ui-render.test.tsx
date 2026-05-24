@@ -7,6 +7,7 @@ import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
 import { CombatPanelView } from '../components/CombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
+import { InventoryView } from '../components/Inventory';
 import { useGameStore } from '../stores/gameStore';
 
 const slimeEntity: RoomEntity = {
@@ -93,6 +94,10 @@ beforeEach(() => {
     selectedCombatTargetId: null,
     skills: [],
     inventory: [],
+    equipment: null,
+    inventoryCapacity: 20,
+    gold: 0,
+    showInventory: false,
     character: null,
   });
 });
@@ -129,6 +134,30 @@ describe('key UI component rendering', () => {
     expect(html).toContain('能力值');
     expect(html).toContain('掉落');
     expect(html).toContain('常見的低階怪物');
+  });
+
+  it('renders inventory category tabs', () => {
+    const html = renderToStaticMarkup(
+      <InventoryView
+        inventory={[
+        { itemId: 'wooden_sword', quantity: 1, equipped: false },
+        { itemId: 'small_hp_potion', quantity: 2, equipped: false },
+        { itemId: 'iron_ore', quantity: 3, equipped: false },
+        ]}
+        equipment={null}
+        inventoryCapacity={20}
+        gold={12}
+        onClose={() => undefined}
+        setTooltipItem={() => undefined}
+        setTooltipPosition={() => undefined}
+      />,
+    );
+
+    for (const label of ['全部', '武器', '防具', '飾品', '消耗品', '材料', '任務']) {
+      expect(html).toContain(label);
+    }
+    expect(html).toContain('木劍');
+    expect(html).toContain('x2');
   });
 
   it('renders objective suggestions from current room actions', () => {
