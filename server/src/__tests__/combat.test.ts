@@ -268,6 +268,32 @@ describe('CombatEngine', () => {
       expect(accepted).toBe(true);
     });
 
+    it('tracks skill cooldowns and rejects reuse while cooling down', () => {
+      const player = makeCharacter({
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+        stats: { str: 15, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+      const combatId = engine.startCombat([player], [monster]);
+
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'power_strike',
+        targetId: monster.instanceId,
+      })).toBe(true);
+
+      expect(engine.getSkillCooldownRemaining(combatId, player.id, 'power_strike')).toBeGreaterThan(0);
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'power_strike',
+        targetId: monster.instanceId,
+      })).toBe(false);
+    });
+
     it('should reject action for invalid combat ID', () => {
       const action: CombatAction = {
         actorId: 'nonexistent',

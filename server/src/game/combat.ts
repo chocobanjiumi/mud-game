@@ -80,6 +80,8 @@ export interface CombatSession {
   monsterInstances: Map<string, MonsterInstance>;
   /** 玩家目前普通攻擊目標 */
   preferredTargetIds: Map<string, string>;
+  /** 角色技能冷卻：`${actorId}:${skillId}` -> remaining rounds */
+  skillCooldowns: Map<string, number>;
   /** 裝備詞綴內部冷卻 */
   affixCooldowns: Map<string, number>;
   /** 回合計時器 */
@@ -217,6 +219,7 @@ export class CombatEngine {
       playerCharacters,
       monsterInstances,
       preferredTargetIds: new Map(),
+      skillCooldowns: new Map(),
       affixCooldowns: new Map(),
       turnTimerHandle: null,
       turnStartTime: Date.now(),
@@ -246,6 +249,9 @@ export class CombatEngine {
   submitAction(combatId: string, action: CombatAction): boolean {
     const session = this.sessions.get(combatId);
     if (!session || session.state.phase !== 'action_select') return false;
+    if (action.type === 'skill' && action.skillId && this.getSkillCooldownRemaining(combatId, action.actorId, action.skillId) > 0) {
+      return false;
+    }
 
     session.state.pendingActions.set(action.actorId, action);
 
@@ -282,6 +288,16 @@ export class CombatEngine {
    */
   getCombatState(combatId: string): CombatState | undefined {
     return this.sessions.get(combatId)?.state;
+  }
+
+  getSkillCooldownRemaining(combatId: string, actorId: string, skillId: string): number {
+    return this.sessions.get(combatId)?.skillCooldowns.get(this.getSkillCooldownKey(actorId, skillId)) ?? 0;
+  }
+
+  startSkillCooldown(combatId: string, actorId: string, skillId: string, rounds: number): void {
+    const session = this.sessions.get(combatId);
+    if (!session || rounds <= 0) return;
+    session.skillCooldowns.set(this.getSkillCooldownKey(actorId, skillId), rounds);
   }
 
   setPreferredTarget(combatId: string, playerId: string, targetId: string): boolean {
@@ -437,6 +453,7 @@ export class CombatEngine {
 
     // 回合結束：遞減裝備詞綴內部冷卻
     this.processAffixCooldowns(session);
+    this.processSkillCooldowns(session);
 
     // 冷卻遞減
     // (由外部 PlayerManager 處理)
@@ -543,6 +560,12 @@ export class CombatEngine {
   ): void {
     // 查找技能定義
     const skillDef = action.skillId ? SKILL_DEFS[action.skillId] : null;
+    if (skillDef && action.skillId && this.getSkillCooldownRemaining(session.id, actor.id, action.skillId) > 0) {
+      const remaining = this.getSkillCooldownRemaining(session.id, actor.id, action.skillId);
+      log.push(`${actor.name}的「${skillDef.name}」冷卻中，還需 ${remaining} tick，改為普通攻擊！`);
+      this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
+      return;
+    }
 
     const targets = this.getSkillTargets(session, actor, action, skillDef);
     const primaryTarget = targets[0];
@@ -585,6 +608,10 @@ export class CombatEngine {
     }
     if (skillDef) this.applySkillResourceChangeWithAffixes(actor, skillDef, resourceCost);
     else actor.resource -= resourceCost;
+    if (skillDef && action.skillId) {
+      const cooldown = skillRuntime?.cooldown ?? skillDef.cooldown;
+      this.startSkillCooldown(session.id, actor.id, action.skillId, cooldown);
+    }
     if (skillDef && !isHealSkill) {
       this.triggerAffixEvents(session, actor, 'on_cast', log, {
         targetHpPercent: this.getHpPercent(primaryTarget),
@@ -1617,6 +1644,18 @@ export class CombatEngine {
       if (next <= 0) session.affixCooldowns.delete(key);
       else session.affixCooldowns.set(key, next);
     }
+  }
+
+  private processSkillCooldowns(session: CombatSession): void {
+    for (const [key, rounds] of session.skillCooldowns) {
+      const next = rounds - 1;
+      if (next <= 0) session.skillCooldowns.delete(key);
+      else session.skillCooldowns.set(key, next);
+    }
+  }
+
+  private getSkillCooldownKey(actorId: string, skillId: string): string {
+    return `${actorId}:${skillId}`;
   }
 
   private getAffixCooldownKey(characterId: string, affixId: string): string {

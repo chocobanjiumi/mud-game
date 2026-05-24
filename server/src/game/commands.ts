@@ -121,6 +121,8 @@ const activeExitTraps = new Map<string, ActiveExitTrap>();
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
+const FIELD_SKILL_COOLDOWN_TICK_MS = 5_000;
+const fieldSkillCooldowns = new Map<string, number>();
 const PLANAR_DIRECTIONS = new Set<Direction>(['north', 'south', 'east', 'west']);
 
 function scheduleCorpseExpiry(roomId: string, corpseId: string, expiresAt: number): void {
@@ -1658,12 +1660,25 @@ function cmdSkill(session: WsSession, args: string[]): void {
       sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
       return;
     }
-    combat.submitAction(combatId, {
+    const cooldownRemaining = combat.getSkillCooldownRemaining(combatId, char.id, matchedSkill.skillId);
+    if (cooldownRemaining > 0) {
+      sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} tick。`);
+      return;
+    }
+
+    const accepted = combat.submitAction(combatId, {
       actorId: char.id,
       type: 'skill',
       skillId: matchedSkill.skillId,
       targetId,
     });
+    if (!accepted) {
+      const remaining = combat.getSkillCooldownRemaining(combatId, char.id, matchedSkill.skillId);
+      sendError(session.sessionId, remaining > 0
+        ? `「${skillDef.name}」冷卻中，還需 ${remaining} tick。`
+        : `目前不能施放「${skillDef.name}」，戰鬥狀態或目標已改變。`);
+      return;
+    }
     // 教學系統：技能使用鉤子
     tutorialMgr.advanceStep(char.id, 'skill');
     return;
@@ -1675,6 +1690,11 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 
   const skillRuntime = getModifiedSkillRuntime(char.id, skillDef, { trigger: skillDef.special?.isHeal ? 'on_heal' : 'on_cast' });
+  const fieldCooldownRemaining = getFieldSkillCooldownRemaining(char.id, skillDef.id);
+  if (fieldCooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${fieldCooldownRemaining} 秒。`);
+    return;
+  }
   const resourceCheck = checkSkillResource(char, skillDef, skillRuntime.resourceCost);
   if (!resourceCheck.ok) {
     sendError(session.sessionId, resourceCheck.message ?? `資源不足！${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
@@ -1687,6 +1707,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       return;
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」。`);
@@ -1712,6 +1733,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       return;
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
     recordDiscovery(char.id, targetRoom.zone, targetRoom.id, 'scout_room', targetRoom.id);
     const fieldEffect = applyFieldSkillEffect(char, skillDef, char);
     saveCharacter(char);
@@ -1734,6 +1756,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       return;
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
     activeExitTraps.set(exitTrapKey(char.roomId, target), {
       ownerId: char.id,
       skillId: skillDef.id,
@@ -1762,6 +1785,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       return;
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
     saveCharacter(char);
     if (fieldEffect.target && fieldEffect.target.id !== char.id) {
       saveCharacter(fieldEffect.target);
@@ -1770,6 +1794,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」，${fieldEffect.message ?? '生效了。'}`);
   } else {
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
@@ -1800,6 +1825,25 @@ function spendSkillResource(char: Character, skillDef: typeof SKILL_DEFS[string]
   applySkillResourceChange(char, skillDef, resourceCost, faithBonus);
 }
 
+function getFieldSkillCooldownRemaining(characterId: string, skillId: string): number {
+  const until = fieldSkillCooldowns.get(fieldSkillCooldownKey(characterId, skillId)) ?? 0;
+  const remainingMs = until - Date.now();
+  if (remainingMs <= 0) {
+    fieldSkillCooldowns.delete(fieldSkillCooldownKey(characterId, skillId));
+    return 0;
+  }
+  return Math.ceil(remainingMs / 1000);
+}
+
+function startFieldSkillCooldown(characterId: string, skillId: string, cooldownTicks: number): void {
+  if (cooldownTicks <= 0) return;
+  fieldSkillCooldowns.set(fieldSkillCooldownKey(characterId, skillId), Date.now() + cooldownTicks * FIELD_SKILL_COOLDOWN_TICK_MS);
+}
+
+function fieldSkillCooldownKey(characterId: string, skillId: string): string {
+  return `${characterId}:${skillId}`;
+}
+
 function handleCrossRoomCombatSkill(
   session: WsSession,
   char: Character,
@@ -1827,6 +1871,11 @@ function handleCrossRoomCombatSkill(
   }
 
   const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: skillDef.special?.isHeal ? 'on_heal' : 'on_cast' });
+  const cooldownRemaining = combat.getSkillCooldownRemaining(combatId, char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} tick。`);
+    return true;
+  }
   const resourceCheck = checkSkillResource(actor, skillDef, runtime.resourceCost);
   if (!resourceCheck.ok) {
     sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
@@ -1881,6 +1930,7 @@ function handleCrossRoomCombatSkill(
   }
 
   applySkillResourceChange(actor, skillDef, resourceCheck.effectiveCost, actor.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0);
+  combat.startSkillCooldown(combatId, char.id, skillDef.id, runtime.cooldown);
   char.resource = actor.resource;
   char.mp = actor.mp;
   saveCharacter(char);

@@ -702,7 +702,14 @@ describe('inventory item instances', () => {
   });
 
   it('creates stored item instances when rewarding equipment', () => {
-    const char = createDbCharacter('user-instance-reward', 'RewardInstanceHero');
+    const char = {
+      id: 'item-instance-reward-test',
+      stats: { str: 10, int: 5, dex: 8, vit: 8, luk: 5 },
+      classId: 'swordsman',
+    };
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
+    ).run(char.id, 'user-instance-reward', 'RewardInstanceHero', char.classId);
 
     const entries = addRewardItemToInventory(char, 'spear_steel', 1, ['monster_drop']);
 
