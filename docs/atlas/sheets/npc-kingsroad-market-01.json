@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_kingsroad_market_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingsroad_market_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_auctioneer",
+      "category": "npc",
+      "targetId": "kingsroad_market_auctioneer",
+      "name": "葛蕾塔",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_auctioneer.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_board_clerk",
+      "category": "npc",
+      "targetId": "kingsroad_market_board_clerk",
+      "name": "妮莎",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_board_clerk.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_caravan_master",
+      "category": "npc",
+      "targetId": "kingsroad_market_caravan_master",
+      "name": "哈德溫",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_caravan_master.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_coin_factor",
+      "category": "npc",
+      "targetId": "kingsroad_market_coin_factor",
+      "name": "維克",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_coin_factor.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

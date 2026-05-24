@@ -1,0 +1,36 @@
+{
+  "sheetId": "npc_kingsroad_market_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingsroad_market_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_portal_guide",
+      "category": "npc",
+      "targetId": "kingsroad_market_portal_guide",
+      "name": "帕洛",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_portal_guide.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_scribe_notary",
+      "category": "npc",
+      "targetId": "kingsroad_market_scribe_notary",
+      "name": "伊芙琳",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_scribe_notary.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_spice_seller",
+      "category": "npc",
+      "targetId": "kingsroad_market_spice_seller",
+      "name": "莎芙",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_spice_seller.png",
+      "row": 1,
+      "column": 0
+    }
+  ]
+}

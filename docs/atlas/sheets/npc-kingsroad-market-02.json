@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_kingsroad_market_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingsroad_market_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_forge_broker",
+      "category": "npc",
+      "targetId": "kingsroad_market_forge_broker",
+      "name": "布朗特",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_forge_broker.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_grain_monger",
+      "category": "npc",
+      "targetId": "kingsroad_market_grain_monger",
+      "name": "米羅",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_grain_monger.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_guard_sergeant",
+      "category": "npc",
+      "targetId": "kingsroad_market_guard_sergeant",
+      "name": "羅德",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_guard_sergeant.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_kingsroad_market_kingsroad_market_herb_mistress",
+      "category": "npc",
+      "targetId": "kingsroad_market_herb_mistress",
+      "name": "苔莎",
+      "outputPath": "client/public/images/npcs/npc_kingsroad_market_kingsroad_market_herb_mistress.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
