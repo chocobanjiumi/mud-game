@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_demon_abyss_04",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_demon_abyss_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_demon_abyss_time_splinter",
+      "category": "material",
+      "targetId": "time_splinter",
+      "name": "時間碎片",
+      "outputPath": "client/public/images/materials/material_demon_abyss_time_splinter.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_war_forge_blank",
+      "category": "material",
+      "targetId": "war_forge_blank",
+      "name": "戰爭熔胚",
+      "outputPath": "client/public/images/materials/material_demon_abyss_war_forge_blank.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_astral_time_crystal_core",
+      "category": "material",
+      "targetId": "crystal_core",
+      "name": "水晶核心",
+      "outputPath": "client/public/images/materials/material_demon_abyss_astral_time_crystal_core.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_demon_abyss_cave_mine_demon_horn",
+      "category": "material",
+      "targetId": "demon_horn",
+      "name": "惡魔之角",
+      "outputPath": "client/public/images/materials/material_demon_abyss_cave_mine_demon_horn.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_dragon_celestial_shadow_essence",
+      "category": "material",
+      "targetId": "shadow_essence",
+      "name": "暗影精華",
+      "outputPath": "client/public/images/materials/material_demon_abyss_dragon_celestial_shadow_essence.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_lost_capital_knight_sigil",
+      "category": "material",
+      "targetId": "knight_sigil",
+      "name": "騎士徽記",
+      "outputPath": "client/public/images/materials/material_demon_abyss_lost_capital_knight_sigil.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

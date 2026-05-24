@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_demon_abyss_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_demon_abyss_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_demon_abyss_mirror_memory_splinter",
+      "category": "material",
+      "targetId": "mirror_memory_splinter",
+      "name": "鏡湖記憶片",
+      "outputPath": "client/public/images/materials/material_demon_abyss_mirror_memory_splinter.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_nightmare_fruit",
+      "category": "material",
+      "targetId": "nightmare_fruit",
+      "name": "噩夢果實",
+      "outputPath": "client/public/images/materials/material_demon_abyss_nightmare_fruit.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_rift_metal_blank",
+      "category": "material",
+      "targetId": "rift_metal_blank",
+      "name": "裂界金屬胚",
+      "outputPath": "client/public/images/materials/material_demon_abyss_rift_metal_blank.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_demon_abyss_soul_well_residue",
+      "category": "material",
+      "targetId": "soul_well_residue",
+      "name": "魂井沉渣",
+      "outputPath": "client/public/images/materials/material_demon_abyss_soul_well_residue.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_spectral_essence",
+      "category": "material",
+      "targetId": "spectral_essence",
+      "name": "幽靈精華",
+      "outputPath": "client/public/images/materials/material_demon_abyss_spectral_essence.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_tidewheel_gear",
+      "category": "material",
+      "targetId": "tidewheel_gear",
+      "name": "水閘齒輪",
+      "outputPath": "client/public/images/materials/material_demon_abyss_tidewheel_gear.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
