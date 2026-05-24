@@ -24,7 +24,13 @@ import {
   getFleeOriginBonus,
 } from './origin-effects.js';
 import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
-import { getResourceAffixBonus, getSkillAffixModifiers } from './equipment-affixes.js';
+import {
+  applyTriggeredAffixEvents,
+  getResourceAffixBonus,
+  getSkillAffixModifiers,
+  type AffixTriggerContext,
+  type TriggeredAffixContext,
+} from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 
 // ============================================================
@@ -72,6 +78,8 @@ export interface CombatSession {
   monsterInstances: Map<string, MonsterInstance>;
   /** 玩家目前普通攻擊目標 */
   preferredTargetIds: Map<string, string>;
+  /** 裝備詞綴內部冷卻 */
+  affixCooldowns: Map<string, number>;
   /** 回合計時器 */
   turnTimerHandle: ReturnType<typeof setTimeout> | null;
   /** 回合開始時間 */
@@ -207,6 +215,7 @@ export class CombatEngine {
       playerCharacters,
       monsterInstances,
       preferredTargetIds: new Map(),
+      affixCooldowns: new Map(),
       turnTimerHandle: null,
       turnStartTime: Date.now(),
       onEnd: onEnd ?? null,
@@ -424,6 +433,9 @@ export class CombatEngine {
     // 回合結束：處理每回合資源回復
     this.processResourceRegen(session, roundLog);
 
+    // 回合結束：遞減裝備詞綴內部冷卻
+    this.processAffixCooldowns(session);
+
     // 冷卻遞減
     // (由外部 PlayerManager 處理)
 
@@ -501,10 +513,21 @@ export class CombatEngine {
 
     // 取得攻擊者的武器 ID（玩家從裝備欄取得，怪物為 null）
     const weaponItemId = this.getEquippedWeaponId(session, actor.id);
+    const targetHpPercent = this.getHpPercent(target);
     this.applyDamageResult(session, dmgResult, actor, target, log, weaponItemId);
 
     // 資源系統：戰士系攻擊獲得怒氣
     if (!dmgResult.isMiss && !dmgResult.isDodged) {
+      this.triggerAffixEvents(session, actor, 'on_hit', log, {
+        targetHpPercent,
+        isFirstHit: session.state.round === 1,
+      });
+      if (target.isDead) {
+        this.triggerAffixEvents(session, actor, 'on_kill', log, {
+          targetHpPercent: 0,
+          isFirstHit: session.state.round === 1,
+        });
+      }
       this.gainResourceOnAttack(actor, dmgResult, log);
     }
   }
@@ -562,6 +585,12 @@ export class CombatEngine {
     }
     if (skillDef) this.applySkillResourceChangeWithAffixes(actor, skillDef, resourceCost);
     else actor.resource -= resourceCost;
+    if (skillDef && !isHealSkill) {
+      this.triggerAffixEvents(session, actor, 'on_cast', log, {
+        targetHpPercent: this.getHpPercent(primaryTarget),
+        isFirstHit: session.state.round === 1,
+      });
+    }
 
     const attackerStats = this.getCombatStats(session, actor);
 
@@ -616,18 +645,45 @@ export class CombatEngine {
         target.hp = Math.min(target.maxHp, target.hp + healAmount);
         const actual = target.hp - before;
         log.push(`${actor.name}使用了${skillName}，為${target.name}回復了 ${actual} HP！`);
+        if (actual > 0) {
+          this.triggerAffixEvents(session, actor, 'on_heal', log, {
+            targetHpPercent: this.getHpPercent(target),
+            isFirstHit: session.state.round === 1,
+          });
+        }
       } else {
+        const targetHpPercent = this.getHpPercent(target);
         if (dmgResult.isMiss) {
           log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
         } else if (dmgResult.isDodged) {
           log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+          this.triggerAffixEvents(session, target, 'on_dodge', log, {
+            targetHpPercent,
+            isFirstHit: session.state.round === 1,
+          });
         } else {
           const critText = dmgResult.isCrit ? '暴擊！' : '';
           log.push(
             `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
           );
+          if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
+            this.triggerAffixEvents(session, target, 'on_block', log, {
+              targetHpPercent,
+              isFirstHit: session.state.round === 1,
+            });
+          }
           this.applyDamageToTarget(session, target, dmgResult.damage, log);
           this.triggerMonsterPhases(session, target, log);
+          this.triggerAffixEvents(session, actor, 'on_hit', log, {
+            targetHpPercent,
+            isFirstHit: session.state.round === 1,
+          });
+          if (target.isDead) {
+            this.triggerAffixEvents(session, actor, 'on_kill', log, {
+              targetHpPercent: 0,
+              isFirstHit: session.state.round === 1,
+            });
+          }
         }
       }
 
@@ -714,6 +770,10 @@ export class CombatEngine {
       // 閃避仍使用 miss 描述（武器揮空的情境）
       const desc = getAttackDescription(actor.name, target.name, weaponItemId, 'miss');
       log.push(`${desc}（被閃避）`);
+      this.triggerAffixEvents(session, target, 'on_dodge', log, {
+        targetHpPercent: this.getHpPercent(target),
+        isFirstHit: session.state.round === 1,
+      });
       return;
     }
 
@@ -739,6 +799,13 @@ export class CombatEngine {
     }
 
     log.push(`${desc}造成 ${result.damage} 點傷害！${elemText}`);
+
+    if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
+      this.triggerAffixEvents(session, target, 'on_block', log, {
+        targetHpPercent: this.getHpPercent(target),
+        isFirstHit: session.state.round === 1,
+      });
+    }
 
     this.applyDamageToTarget(session, target, result.damage, log);
     this.triggerMonsterPhases(session, target, log);
@@ -1364,6 +1431,41 @@ export class CombatEngine {
       ? getResourceAffixBonus(actor.id, 'faithDelta')
       : 0;
     applySkillResourceChange(actor, skillDef, resourceCost, faithBonus);
+  }
+
+  private triggerAffixEvents(
+    session: CombatSession,
+    owner: CombatantState,
+    trigger: AffixTriggerContext,
+    log: string[],
+    context: TriggeredAffixContext = {},
+  ): void {
+    if (!owner.isPlayer || owner.isDead) return;
+    const results = applyTriggeredAffixEvents(owner.id, owner, trigger, context, {
+      isOnCooldown: affixId => (session.affixCooldowns.get(this.getAffixCooldownKey(owner.id, affixId)) ?? 0) > 0,
+      startCooldown: (affixId, rounds) => {
+        session.affixCooldowns.set(this.getAffixCooldownKey(owner.id, affixId), rounds);
+      },
+    });
+    for (const result of results) {
+      log.push(...result.messages);
+    }
+  }
+
+  private processAffixCooldowns(session: CombatSession): void {
+    for (const [key, rounds] of session.affixCooldowns) {
+      const next = rounds - 1;
+      if (next <= 0) session.affixCooldowns.delete(key);
+      else session.affixCooldowns.set(key, next);
+    }
+  }
+
+  private getAffixCooldownKey(characterId: string, affixId: string): string {
+    return `${characterId}:${affixId}`;
+  }
+
+  private getHpPercent(target: Pick<CombatantState, 'hp' | 'maxHp'>): number {
+    return target.maxHp > 0 ? (target.hp / target.maxHp) * 100 : 100;
   }
 
   /** 取得資源中文名稱 */

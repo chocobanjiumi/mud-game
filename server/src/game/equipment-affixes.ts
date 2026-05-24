@@ -1,4 +1,4 @@
-import type { AffixDef, SkillDef } from '@game/shared';
+import type { AffixDef, CombatantState, ResourceType, SkillDef } from '@game/shared';
 import { getEquippedItems } from '../db/queries.js';
 
 export interface SkillAffixModifiers {
@@ -18,6 +18,21 @@ export interface SkillAffixContext {
   targetHpPercent?: number;
   isFirstHit?: boolean;
   isApproachingTarget?: boolean;
+}
+
+export interface TriggeredAffixContext extends SkillAffixContext {
+  round?: number;
+}
+
+export interface AffixTriggerCooldownState {
+  isOnCooldown: (affixId: string) => boolean;
+  startCooldown: (affixId: string, rounds: number) => void;
+}
+
+export interface TriggeredAffixResult {
+  affix: AffixDef;
+  resourceDelta: number;
+  messages: string[];
 }
 
 const TIER_VALUE: Record<string, number> = {
@@ -98,6 +113,38 @@ export function getModifiedSkillResourceCost(characterId: string, skillDef: Skil
   return Math.max(1, Math.floor(baseCost * (1 - modifiers.resourceCostReductionPct / 100)));
 }
 
+export function applyTriggeredAffixEvents(
+  characterId: string,
+  owner: Pick<CombatantState, 'name' | 'resource' | 'maxResource' | 'resourceType' | 'mp' | 'maxMp'>,
+  trigger: AffixTriggerContext,
+  context: TriggeredAffixContext = {},
+  cooldownState?: AffixTriggerCooldownState,
+): TriggeredAffixResult[] {
+  const results: TriggeredAffixResult[] = [];
+
+  for (const affix of getEquippedAffixes(characterId)) {
+    if (affix.trigger !== trigger) continue;
+    if (!affixMatchesContext(affix, { ...context, trigger })) continue;
+    if (cooldownState?.isOnCooldown(affix.id)) continue;
+
+    const resourceDelta = applyResourceModifiers(owner, affix.resourceModifiers);
+    const messages = [`  ${owner.name}的裝備詞綴「${affix.name}」觸發。`];
+    if (resourceDelta > 0) {
+      messages.push(`  ${owner.name}恢復了 ${resourceDelta} 點${getResourceLabel(owner.resourceType)}。`);
+    } else if (resourceDelta < 0) {
+      messages.push(`  ${owner.name}消耗了 ${Math.abs(resourceDelta)} 點${getResourceLabel(owner.resourceType)}。`);
+    }
+
+    if (affix.internalCooldownRounds && affix.internalCooldownRounds > 0) {
+      cooldownState?.startCooldown(affix.id, affix.internalCooldownRounds);
+    }
+
+    results.push({ affix, resourceDelta, messages });
+  }
+
+  return results;
+}
+
 function affixMatchesSkill(affix: AffixDef, skillDef: SkillDef): boolean {
   if (affix.skillIds?.includes(skillDef.id)) return true;
   const affixTags = affix.skillTags ?? [];
@@ -118,4 +165,51 @@ function affixMatchesContext(affix: AffixDef, context: SkillAffixContext): boole
     default:
       return true;
   }
+}
+
+function applyResourceModifiers(
+  owner: Pick<CombatantState, 'resource' | 'maxResource' | 'resourceType' | 'mp' | 'maxMp'>,
+  modifiers: AffixDef['resourceModifiers'],
+): number {
+  if (!modifiers) return 0;
+
+  const before = owner.resource;
+  const delta = getResourceModifierDelta(owner.resourceType, modifiers);
+  if (delta === 0) return 0;
+
+  owner.resource = clamp(owner.resource + delta, 0, owner.maxResource);
+  if (owner.resourceType === 'mp') {
+    owner.mp = clamp((owner.mp ?? before) + delta, 0, owner.maxMp ?? owner.maxResource);
+    owner.resource = owner.mp;
+  }
+
+  return owner.resource - before;
+}
+
+function getResourceModifierDelta(resourceType: ResourceType, modifiers: AffixDef['resourceModifiers']): number {
+  if (!modifiers) return 0;
+  switch (resourceType) {
+    case 'rage':
+      return modifiers.rageGain ?? 0;
+    case 'focus':
+      return modifiers.focusRegen ?? 0;
+    case 'mp':
+      return modifiers.mpRegen ?? 0;
+    case 'faith':
+      return modifiers.faithDelta ?? 0;
+  }
+}
+
+function getResourceLabel(resourceType: ResourceType): string {
+  const labels: Record<ResourceType, string> = {
+    mp: 'MP',
+    rage: '怒氣',
+    focus: '專注',
+    faith: '信仰',
+  };
+  return labels[resourceType];
+}
+
+function clamp(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
 }

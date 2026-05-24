@@ -601,7 +601,7 @@ describe('Balance: Item instance generation', () => {
       preferredAffixWeight: 100,
       random: vi.fn()
         .mockReturnValueOnce(0.53)
-        .mockReturnValue(0.99),
+        .mockReturnValue(0.2),
     });
 
     expect(instance.quality).toBe('fine');

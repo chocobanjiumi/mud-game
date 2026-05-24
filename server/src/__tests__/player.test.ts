@@ -26,7 +26,7 @@ import {
   rerollItemAffix,
 } from '../game/item-reforge.js';
 import { getEquipmentStats } from '../game/damage.js';
-import { getModifiedSkillResourceCost, getSkillAffixModifiers } from '../game/equipment-affixes.js';
+import { applyTriggeredAffixEvents, getModifiedSkillResourceCost, getSkillAffixModifiers } from '../game/equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from '../game/skill-resource.js';
 import {
   ensureEconomyStatsTables,
@@ -821,6 +821,125 @@ describe('inventory item instances', () => {
       trigger: 'on_hit',
       targetHpPercent: 20,
     }).damageBonusPct).toBeGreaterThan(0);
+  });
+
+  it('applies triggered affix events for block, kill, and heal resources', () => {
+    const characterId = 'item-instance-trigger-affix-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-trigger-affix', 'TriggerAffixHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, true, {
+      itemInstanceId: 'inst_spear_steel_trigger_affix',
+      baseItemId: 'spear_steel',
+      quality: 'legendary',
+      affixes: [
+        {
+          id: 'behavior_counter_t4',
+          name: '反擊',
+          pool: 'behavior',
+          tier: 'T4',
+          appliesTo: ['weapon'],
+          trigger: 'on_block',
+          resourceModifiers: { rageGain: 3 },
+        },
+        {
+          id: 'behavior_harvest_t3',
+          name: '收割',
+          pool: 'behavior',
+          tier: 'T3',
+          appliesTo: ['weapon'],
+          trigger: 'on_kill',
+          resourceModifiers: { rageGain: 6, focusRegen: 6, mpRegen: 4 },
+        },
+        {
+          id: 'behavior_mercy_t2',
+          name: '慈心',
+          pool: 'behavior',
+          tier: 'T2',
+          appliesTo: ['weapon'],
+          trigger: 'on_heal',
+          resourceModifiers: { faithDelta: 1 },
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    const warrior = {
+      name: 'TriggerAffixHero',
+      resource: 10,
+      maxResource: 100,
+      resourceType: 'rage' as const,
+      mp: 0,
+      maxMp: 0,
+    };
+    const blockResults = applyTriggeredAffixEvents(characterId, warrior, 'on_block', { isFirstHit: true });
+    const killResults = applyTriggeredAffixEvents(characterId, warrior, 'on_kill');
+
+    expect(blockResults.map(result => result.affix.id)).toEqual(['behavior_counter_t4']);
+    expect(killResults.map(result => result.affix.id)).toEqual(['behavior_harvest_t3']);
+    expect(warrior.resource).toBe(19);
+
+    const priest = {
+      name: 'FaithHero',
+      resource: 50,
+      maxResource: 100,
+      resourceType: 'faith' as const,
+      mp: 0,
+      maxMp: 0,
+    };
+    const healResults = applyTriggeredAffixEvents(characterId, priest, 'on_heal');
+
+    expect(healResults.map(result => result.affix.id)).toEqual(['behavior_mercy_t2']);
+    expect(priest.resource).toBe(51);
+  });
+
+  it('respects internal cooldowns for triggered affix events', () => {
+    const characterId = 'item-instance-trigger-cooldown-affix-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-trigger-cooldown-affix', 'CooldownAffixHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, true, {
+      itemInstanceId: 'inst_spear_steel_trigger_cooldown_affix',
+      baseItemId: 'spear_steel',
+      quality: 'legendary',
+      affixes: [
+        {
+          id: 'behavior_harvest_t3',
+          name: '收割',
+          pool: 'behavior',
+          tier: 'T3',
+          appliesTo: ['weapon'],
+          trigger: 'on_kill',
+          internalCooldownRounds: 1,
+          resourceModifiers: { rageGain: 6 },
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    const cooldowns = new Map<string, number>();
+    const cooldownState = {
+      isOnCooldown: (affixId: string) => (cooldowns.get(affixId) ?? 0) > 0,
+      startCooldown: (affixId: string, rounds: number) => cooldowns.set(affixId, rounds),
+    };
+    const warrior = {
+      name: 'CooldownAffixHero',
+      resource: 0,
+      maxResource: 100,
+      resourceType: 'rage' as const,
+      mp: 0,
+      maxMp: 0,
+    };
+
+    const first = applyTriggeredAffixEvents(characterId, warrior, 'on_kill', {}, cooldownState);
+    const second = applyTriggeredAffixEvents(characterId, warrior, 'on_kill', {}, cooldownState);
+
+    expect(first).toHaveLength(1);
+    expect(second).toHaveLength(0);
+    expect(cooldowns.get('behavior_harvest_t3')).toBe(1);
+    expect(warrior.resource).toBe(6);
   });
 
   it('can reroll a stored item instance affix', () => {
