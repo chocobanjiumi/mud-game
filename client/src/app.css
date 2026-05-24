@@ -2184,6 +2184,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   padding: 3px 6px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.02);
@@ -2191,8 +2192,24 @@ input::placeholder {
 }
 
 .charsheet-stat-label {
+  display: block;
   font-weight: bold;
   font-size: 11px;
+}
+
+.charsheet-stat-help {
+  display: block;
+  margin-top: 1px;
+  color: var(--color-text-dim);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.charsheet-stat-control {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .charsheet-stat-value {
@@ -2200,6 +2217,33 @@ input::placeholder {
   font-weight: bold;
   tabular-nums: true;
   font-variant-numeric: tabular-nums;
+  min-width: 24px;
+  text-align: right;
+}
+
+.charsheet-stat-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.charsheet-stat-button {
+  min-width: 30px;
+  height: 23px;
+  padding: 0 6px;
+  border: 1px solid rgba(0, 255, 136, 0.28);
+  border-radius: 4px;
+  color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.08);
+  font-size: 10px;
+}
+
+.charsheet-stat-button:hover:not(:disabled) {
+  background: rgba(0, 255, 136, 0.14);
+}
+
+.charsheet-stat-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42;
 }
 
 .charsheet-derived-grid {

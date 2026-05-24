@@ -8,6 +8,7 @@ import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/Obj
 import { CombatPanelView } from '../components/CombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
 import { InventoryView } from '../components/Inventory';
+import { CharacterSheetView } from '../components/CharacterSheet';
 import { useGameStore } from '../stores/gameStore';
 
 const slimeEntity: RoomEntity = {
@@ -158,6 +159,46 @@ describe('key UI component rendering', () => {
     }
     expect(html).toContain('木劍');
     expect(html).toContain('x2');
+  });
+
+  it('renders stat allocation controls when free points are available', () => {
+    const character = {
+        id: 'player-1',
+        userId: 'user-1',
+        name: '測試者',
+        level: 2,
+        exp: 0,
+        classId: 'adventurer',
+        hp: 40,
+        mp: 20,
+        maxHp: 40,
+        maxMp: 20,
+        resource: 20,
+        maxResource: 20,
+        resourceType: 'mp',
+        stats: { str: 5, int: 5, dex: 5, vit: 5, luk: 5 },
+        freePoints: 5,
+        gold: 0,
+        roomId: 'training_ground',
+        isAi: false,
+        equipment: {},
+        createdAt: 0,
+        lastLogin: 0,
+      } as Character;
+
+    const html = renderToStaticMarkup(
+      <CharacterSheetView
+        character={character}
+        derivedStats={null}
+        equipment={null}
+        expToNext={100}
+        onClose={() => undefined}
+      />,
+    );
+
+    expect(html).toContain('未分配點數: 5');
+    expect(html).toContain('+1');
+    expect(html).toContain('+5');
   });
 
   it('renders objective suggestions from current room actions', () => {

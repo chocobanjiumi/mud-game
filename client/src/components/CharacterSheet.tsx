@@ -1,5 +1,10 @@
 import { useGameStore } from '../stores/gameStore';
-import { DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, GENDER_DEFS, RACE_DEFS } from '@game/shared';
+import { DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, GENDER_DEFS, RACE_DEFS, type Character, type EquipmentSlots } from '@game/shared';
+import type { DerivedStats } from '../stores/gameStore';
+
+function sendCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+}
 
 const CLASS_NAMES: Record<string, string> = {
   adventurer: '冒險者',
@@ -28,6 +33,14 @@ const STAT_LABELS: { key: string; label: string; color: string }[] = [
   { key: 'vit', label: 'VIT 體力', color: '#ffaa44' },
   { key: 'luk', label: 'LUK 幸運', color: '#ffcc00' },
 ];
+
+const STAT_HELP: Record<string, string> = {
+  str: '提高物理攻擊',
+  int: '提高魔攻與 MP',
+  dex: '提高命中與迴避',
+  vit: '提高 HP 與防禦',
+  luk: '提高暴擊與掉落表現',
+};
 
 const EQUIP_SLOTS: { key: string; label: string; icon: string }[] = [
   { key: 'head', label: '頭部', icon: '[頭]' },
@@ -62,6 +75,30 @@ export default function CharacterSheet() {
 
   if (!characterSheetOpen || !character) return null;
 
+  return (
+    <CharacterSheetView
+      character={character}
+      derivedStats={derivedStats}
+      equipment={equipment}
+      expToNext={expToNext}
+      onClose={() => setCharacterSheetOpen(false)}
+    />
+  );
+}
+
+export function CharacterSheetView({
+  character,
+  derivedStats,
+  equipment,
+  expToNext,
+  onClose,
+}: {
+  character: Character;
+  derivedStats: DerivedStats | null;
+  equipment: EquipmentSlots | null;
+  expToNext: number;
+  onClose: () => void;
+}) {
   const className = CLASS_NAMES[character.classId] ?? character.classId;
   const race = RACE_DEFS[character.raceId ?? DEFAULT_RACE_ID];
   const gender = GENDER_DEFS[character.genderId ?? DEFAULT_GENDER_ID];
@@ -71,13 +108,13 @@ export default function CharacterSheet() {
     : EQUIP_SLOTS;
 
   return (
-    <div className="charsheet-overlay" onClick={() => setCharacterSheetOpen(false)}>
+    <div className="charsheet-overlay" onClick={onClose}>
       <div className="charsheet-modal" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="charsheet-header">
           <span className="text-sm font-bold text-text-terminal">角色資訊</span>
           <button
-            onClick={() => setCharacterSheetOpen(false)}
+            onClick={onClose}
             className="text-text-dim hover:text-text-bright text-xs cursor-pointer"
           >
             [關閉] C
@@ -124,12 +161,39 @@ export default function CharacterSheet() {
             <div className="charsheet-stat-grid">
               {STAT_LABELS.map((stat) => {
                 const val = character.stats[stat.key as keyof typeof character.stats] ?? 0;
+                const canAllocate = character.freePoints > 0;
+                const canAllocateFive = character.freePoints >= 5;
                 return (
                   <div key={stat.key} className="charsheet-stat-row">
-                    <span className="charsheet-stat-label" style={{ color: stat.color }}>
-                      {stat.label}
-                    </span>
-                    <span className="charsheet-stat-value">{val}</span>
+                    <div className="min-w-0">
+                      <span className="charsheet-stat-label" style={{ color: stat.color }}>
+                        {stat.label}
+                      </span>
+                      <span className="charsheet-stat-help">{STAT_HELP[stat.key]}</span>
+                    </div>
+                    <div className="charsheet-stat-control">
+                      <span className="charsheet-stat-value">{val}</span>
+                      {character.freePoints > 0 && (
+                        <span className="charsheet-stat-buttons">
+                          <button
+                            type="button"
+                            className="charsheet-stat-button"
+                            disabled={!canAllocate}
+                            onClick={() => sendCommand(`allocate ${stat.key} 1`, `${stat.label} +1`)}
+                          >
+                            +1
+                          </button>
+                          <button
+                            type="button"
+                            className="charsheet-stat-button"
+                            disabled={!canAllocateFive}
+                            onClick={() => sendCommand(`allocate ${stat.key} 5`, `${stat.label} +5`)}
+                          >
+                            +5
+                          </button>
+                        </span>
+                      )}
+                    </div>
                   </div>
                 );
               })}
