@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_kingdom_war_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_kingdom_war_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_kingdom_war_ironwood_plank",
+      "category": "material",
+      "targetId": "ironwood_plank",
+      "name": "鐵木板材",
+      "outputPath": "client/public/images/materials/material_kingdom_war_ironwood_plank.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_kingdom_war_kingdom_banner_cache",
+      "category": "material",
+      "targetId": "kingdom_banner_cache",
+      "name": "王國戰旗匣",
+      "outputPath": "client/public/images/materials/material_kingdom_war_kingdom_banner_cache.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_kingdom_war_kingdom_iron_shipment",
+      "category": "material",
+      "targetId": "kingdom_iron_shipment",
+      "name": "王國鐵料車契",
+      "outputPath": "client/public/images/materials/material_kingdom_war_kingdom_iron_shipment.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_kingdom_war_kingdom_supply_crate",
+      "category": "material",
+      "targetId": "kingdom_supply_crate",
+      "name": "王國補給箱",
+      "outputPath": "client/public/images/materials/material_kingdom_war_kingdom_supply_crate.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_kingdom_war_moonvine_loop",
+      "category": "material",
+      "targetId": "moonvine_loop",
+      "name": "月藤環",
+      "outputPath": "client/public/images/materials/material_kingdom_war_moonvine_loop.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_kingdom_war_redthorn_spine",
+      "category": "material",
+      "targetId": "redthorn_spine",
+      "name": "紅刺棘針",
+      "outputPath": "client/public/images/materials/material_kingdom_war_redthorn_spine.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

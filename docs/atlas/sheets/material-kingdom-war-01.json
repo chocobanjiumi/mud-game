@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_kingdom_war_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_kingdom_war_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_kingdom_war_blackroot_vine",
+      "category": "material",
+      "targetId": "blackroot_vine",
+      "name": "黑根藤索",
+      "outputPath": "client/public/images/materials/material_kingdom_war_blackroot_vine.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_kingdom_war_boar_trophy_tusk",
+      "category": "material",
+      "targetId": "boar_trophy_tusk",
+      "name": "獵豬戰牙",
+      "outputPath": "client/public/images/materials/material_kingdom_war_boar_trophy_tusk.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_kingdom_war_copper_coil_spool",
+      "category": "material",
+      "targetId": "copper_coil_spool",
+      "name": "銅線線圈",
+      "outputPath": "client/public/images/materials/material_kingdom_war_copper_coil_spool.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_kingdom_war_falconry_jess",
+      "category": "material",
+      "targetId": "falconry_jess",
+      "name": "獵隼足繩",
+      "outputPath": "client/public/images/materials/material_kingdom_war_falconry_jess.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_kingdom_war_fort_supply_token",
+      "category": "material",
+      "targetId": "fort_supply_token",
+      "name": "要塞補給牌",
+      "outputPath": "client/public/images/materials/material_kingdom_war_fort_supply_token.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_kingdom_war_frontier_spyglass_lens",
+      "category": "material",
+      "targetId": "frontier_spyglass_lens",
+      "name": "邊境望遠鏡片",
+      "outputPath": "client/public/images/materials/material_kingdom_war_frontier_spyglass_lens.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

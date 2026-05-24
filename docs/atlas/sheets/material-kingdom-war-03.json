@@ -1,0 +1,45 @@
+{
+  "sheetId": "material_kingdom_war_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_kingdom_war_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_kingdom_war_rusted_servo_joint",
+      "category": "material",
+      "targetId": "rusted_servo_joint",
+      "name": "鏽伺服關節",
+      "outputPath": "client/public/images/materials/material_kingdom_war_rusted_servo_joint.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_kingdom_war_scout_signal_fuse",
+      "category": "material",
+      "targetId": "scout_signal_fuse",
+      "name": "斥候信管",
+      "outputPath": "client/public/images/materials/material_kingdom_war_scout_signal_fuse.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_kingdom_war_siege_lock_pin",
+      "category": "material",
+      "targetId": "siege_lock_pin",
+      "name": "攻城鎖銷",
+      "outputPath": "client/public/images/materials/material_kingdom_war_siege_lock_pin.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_kingdom_war_silver_antler_tip",
+      "category": "material",
+      "targetId": "silver_antler_tip",
+      "name": "銀角鹿尖",
+      "outputPath": "client/public/images/materials/material_kingdom_war_silver_antler_tip.png",
+      "row": 1,
+      "column": 0
+    }
+  ]
+}
