@@ -57,8 +57,12 @@ export default function NpcDialogueModal() {
                 const imagePath = getItemImagePath(item.id);
                 return (
                   <div key={item.id} className="npc-dialogue-shop-item">
-                    {imagePath && <img src={imagePath} alt="" className="asset-thumb" loading="lazy" />}
-                    <div className="min-w-0 flex-1">
+                    {imagePath ? (
+                      <img src={imagePath} alt="" className="npc-dialogue-shop-thumb" loading="lazy" />
+                    ) : (
+                      <div className="npc-dialogue-shop-thumb npc-dialogue-shop-thumb-fallback" />
+                    )}
+                    <div className="npc-dialogue-shop-info">
                       <div className="npc-dialogue-shop-row">
                         <span className="npc-dialogue-shop-name">{item.name}</span>
                         <span className="npc-dialogue-shop-price">{item.price} 金</span>
