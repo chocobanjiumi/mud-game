@@ -117,10 +117,11 @@ describe('key UI component rendering', () => {
 
   it('renders the skill acquisition table', () => {
     const html = renderToStaticMarkup(<SkillTablePage />);
-    expect(html).toContain('技能獲得等級表');
+    expect(html).toContain('初始職業技能草案');
     expect(html).toContain('劍士');
-    expect(html).toContain('火球術');
-    expect(html).toContain('種族與信仰被動');
+    expect(html).toContain('暴風雪');
+    expect(html).toContain('極限嘲諷');
+    expect(html).toContain('arrivalTicks');
   });
 
   it('renders skill learned modal details', () => {
