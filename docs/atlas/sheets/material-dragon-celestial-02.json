@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_dragon_celestial_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_dragon_celestial_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_dragon_celestial_dragon_scale",
+      "category": "material",
+      "targetId": "dragon_scale",
+      "name": "龍鱗片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_dragon_scale.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_dragon_celestial_fireglass_scale",
+      "category": "material",
+      "targetId": "fireglass_scale",
+      "name": "火玻璃鱗片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_fireglass_scale.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_dragon_celestial_hymn_gold_leaf",
+      "category": "material",
+      "targetId": "hymn_gold_leaf",
+      "name": "聖歌金箔",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_hymn_gold_leaf.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_dragon_celestial_lumen_memory_crystal",
+      "category": "material",
+      "targetId": "lumen_memory_crystal",
+      "name": "流明記憶晶",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_lumen_memory_crystal.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_dragon_celestial_moth_lantern_dust",
+      "category": "material",
+      "targetId": "moth_lantern_dust",
+      "name": "蛾燈銀粉",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_moth_lantern_dust.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_dragon_celestial_nightbloom_petal",
+      "category": "material",
+      "targetId": "nightbloom_petal",
+      "name": "夜花瓣",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_nightbloom_petal.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

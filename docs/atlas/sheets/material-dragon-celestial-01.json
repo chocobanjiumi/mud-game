@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_dragon_celestial_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_dragon_celestial_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_dragon_celestial_broken_halo_relic",
+      "category": "material",
+      "targetId": "broken_halo_relic",
+      "name": "破碎光環聖物",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_broken_halo_relic.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_dragon_celestial_celestial_fragment",
+      "category": "material",
+      "targetId": "celestial_fragment",
+      "name": "天界碎片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_celestial_fragment.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_dragon_celestial_cloudstone_shard",
+      "category": "material",
+      "targetId": "cloudstone_shard",
+      "name": "雲石碎片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_cloudstone_shard.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_dragon_celestial_dawn_armory_core",
+      "category": "material",
+      "targetId": "dawn_armory_core",
+      "name": "黎明武庫核心",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_dawn_armory_core.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_dragon_celestial_dragon_dust",
+      "category": "material",
+      "targetId": "dragon_dust",
+      "name": "龍之鱗粉",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_dragon_dust.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_dragon_celestial_dragon_fang",
+      "category": "material",
+      "targetId": "dragon_fang",
+      "name": "龍牙",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_dragon_fang.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
