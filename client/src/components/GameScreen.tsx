@@ -6,7 +6,6 @@ import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
 import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
-import CrossRoomCombatPanel from './CrossRoomCombatPanel';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
 import CombatPanel from './CombatPanel';
@@ -185,7 +184,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         {/* B: scene image */}
         <div className="game-image min-w-0 bg-bg-secondary border-r border-border-dim overflow-y-auto">
           <RoomImage />
-          <CrossRoomCombatPanel />
         </div>
 
         {/* C: operation area */}

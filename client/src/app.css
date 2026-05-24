@@ -389,6 +389,10 @@ input::placeholder {
   background: rgba(13, 13, 26, 0.38);
 }
 
+.room-panel .cross-room-panel {
+  margin: 0;
+}
+
 .cross-room-head {
   display: flex;
   align-items: flex-start;

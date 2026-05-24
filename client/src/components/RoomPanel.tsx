@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 import MonsterDetailModal from './MonsterDetailModal';
+import { CrossRoomCombatPanelView } from './CrossRoomCombatPanel';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -111,10 +112,14 @@ export function RoomPanelView({
   room,
   selectedEntity,
   setSelectedEntity,
+  inCombat = false,
+  combat = null,
 }: {
   room: RoomInfo;
   selectedEntity: RoomEntity | null;
   setSelectedEntity: (entity: RoomEntity | null) => void;
+  inCombat?: ReturnType<typeof useGameStore.getState>['inCombat'];
+  combat?: ReturnType<typeof useGameStore.getState>['combat'];
 }) {
   const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
   const hints = room.inspectHints ?? [];
@@ -146,7 +151,9 @@ export function RoomPanelView({
 
       {hasEntityPayload ? (
         <div className="space-y-2 text-xs">
+          <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} />
           {SECTION_ORDER.map((type) => {
+            if (type === 'monster') return null;
             const sectionEntities = entities.filter((entity) => entity.type === type);
             if (sectionEntities.length === 0) return null;
             return (
@@ -204,6 +211,8 @@ export default function RoomPanel() {
   const room = useGameStore((s) => s.room);
   const selectedEntity = useGameStore((s) => s.selectedEntity);
   const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
+  const inCombat = useGameStore((s) => s.inCombat);
+  const combat = useGameStore((s) => s.combat);
   if (!room) return null;
-  return <RoomPanelView room={room} selectedEntity={selectedEntity} setSelectedEntity={setSelectedEntity} />;
+  return <RoomPanelView room={room} selectedEntity={selectedEntity} setSelectedEntity={setSelectedEntity} inCombat={inCombat} combat={combat} />;
 }
