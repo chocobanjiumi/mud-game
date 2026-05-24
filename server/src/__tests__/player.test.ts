@@ -4,9 +4,15 @@ import { SKILL_DEFS } from '@game/shared';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
 import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
-import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
+import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, learnSkill, removeInventoryItem, setEquipped } from '../db/queries.js';
 import { grantLearnableSkills } from '../game/skill-learning.js';
 import { applyFieldSkillEffect } from '../game/field-skill-effects.js';
+import {
+  applyInventoryHandlingBonus,
+  applyUtilitySuccessRateBonus,
+  getSurvivalDodgeBonus,
+  rollUtilityExtraQuantity,
+} from '../game/passive-skill-effects.js';
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
@@ -1172,6 +1178,41 @@ describe('field skill effects', () => {
     expect(SKILL_DEFS.war_cry.usageContext).toBe('combat');
     expect(SKILL_DEFS.mass_heal.usageContext).toBe('combat');
     expect(SKILL_DEFS.purify.usageContext).toBe('combat');
+  });
+});
+
+describe('adventurer passive skill effects', () => {
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('applies pack sense to consumable recovery amounts', () => {
+    const char = createDbCharacter(`pack-sense-${Date.now()}`, `Pack${Date.now()}`);
+    learnSkill(char.id, 'pack_sense');
+
+    expect(applyInventoryHandlingBonus(char.id, 50)).toBe(55);
+  });
+
+  it('applies steady hands to utility success rates and gathering extras', () => {
+    const char = createDbCharacter(`steady-hands-${Date.now()}`, `Steady${Date.now()}`);
+    learnSkill(char.id, 'steady_hands');
+
+    expect(applyUtilitySuccessRateBonus(char.id, 85)).toBe(95);
+    expect(applyUtilitySuccessRateBonus(char.id, 95)).toBe(100);
+    expect(rollUtilityExtraQuantity(char.id, 1, () => 0.05)).toEqual({ quantity: 2, extra: 1 });
+    expect(rollUtilityExtraQuantity(char.id, 1, () => 0.5)).toEqual({ quantity: 1, extra: 0 });
+  });
+
+  it('applies survival dodge only at the low hp threshold', () => {
+    const char = createDbCharacter(`survival-${Date.now()}`, `Survive${Date.now()}`);
+    learnSkill(char.id, 'survival');
+
+    expect(getSurvivalDodgeBonus(char.id, 20, 100)).toBe(15);
+    expect(getSurvivalDodgeBonus(char.id, 21, 100)).toBe(0);
   });
 });
 

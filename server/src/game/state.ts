@@ -57,6 +57,7 @@ import { LootCalculator } from './loot.js';
 import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyHpRecovery } from './recovery.js';
+import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
@@ -353,7 +354,7 @@ export function initGameSystems(): void {
             const combatant = combatId
               ? combat.getCombatState(combatId)?.playerTeam.find(p => p.id === characterId)
               : undefined;
-            const healed = applyHpRecovery(char, def.useEffect.value, combatant);
+            const healed = applyHpRecovery(char, applyInventoryHandlingBonus(characterId, def.useEffect.value), combatant);
             saveCharacter(char);
             sendToCharacter(characterId, 'system', { text: `【自動戰鬥】使用了「${def.name}」，回復 ${healed} HP。` });
           }

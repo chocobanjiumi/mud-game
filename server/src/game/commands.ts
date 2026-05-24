@@ -75,6 +75,7 @@ import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } fr
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
+import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
 const lootCalc = new LootCalculator();
@@ -1823,7 +1824,7 @@ function cmdUse(session: WsSession, itemName: string): void {
   // ─── 基礎回復藥水 ───
   if (effect.type === 'heal_hp') {
     removeInventoryItem(char.id, match.itemId, 1);
-    const healed = applyHpRecovery(char, effect.value, getPlayerCombatant());
+    const healed = applyHpRecovery(char, applyInventoryHandlingBonus(char.id, effect.value), getPlayerCombatant());
     finishConsumableUse();
     sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} HP。`);
     return;
@@ -1834,7 +1835,7 @@ function cmdUse(session: WsSession, itemName: string): void {
     if (char.resourceType === 'rage') {
       sendSystem(session.sessionId, `你使用了「${def.name}」，但怒氣無法透過藥水恢復。`);
     } else {
-      const healed = applyResourceRecovery(char, effect.value, getPlayerCombatant());
+      const healed = applyResourceRecovery(char, applyInventoryHandlingBonus(char.id, effect.value), getPlayerCombatant());
       const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
       sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} ${resourceLabel}。`);
     }
@@ -1845,8 +1846,8 @@ function cmdUse(session: WsSession, itemName: string): void {
   if (effect.type === 'heal_both') {
     removeInventoryItem(char.id, match.itemId, 1);
     const combatant = getPlayerCombatant();
-    const healedHp = applyHpRecovery(char, effect.value, combatant);
-    const healedResource = applyResourceRecovery(char, effect.value2 ?? 0, combatant);
+    const healedHp = applyHpRecovery(char, applyInventoryHandlingBonus(char.id, effect.value), combatant);
+    const healedResource = applyResourceRecovery(char, applyInventoryHandlingBonus(char.id, effect.value2 ?? 0), combatant);
     finishConsumableUse();
     if (char.resourceType === 'rage') {
       sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healedHp} HP；怒氣無法透過藥水恢復。`);

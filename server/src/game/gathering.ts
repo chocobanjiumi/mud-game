@@ -9,6 +9,7 @@ import {
   type ZoneDef,
 } from '@game/shared';
 import { addInventoryItem } from '../db/queries.js';
+import { rollUtilityExtraQuantity } from './passive-skill-effects.js';
 
 const GATHERING_COOLDOWN_MS = 5_000;
 const gatheringCooldowns = new Map<string, number>();
@@ -86,14 +87,15 @@ export class GatheringManager {
     gatheringCooldowns.set(characterId, now);
 
     const yieldDef = rollYield(node, random);
-    const quantity = rollQuantity(yieldDef.minQty, yieldDef.maxQty, random);
+    const baseQuantity = rollQuantity(yieldDef.minQty, yieldDef.maxQty, random);
+    const { quantity, extra } = rollUtilityExtraQuantity(characterId, baseQuantity, random);
     addInventoryItem(characterId, yieldDef.itemId, quantity);
     recordMaterialQuality(characterId, yieldDef.itemId, yieldDef.quality, quantity);
 
     const itemName = ITEM_DEFS[yieldDef.itemId]?.name ?? yieldDef.itemId;
     return {
       ok: true,
-      message: `你在「${node.name}」採集到 ${QUALITY_LABELS[yieldDef.quality]} ${itemName} x${quantity}。`,
+      message: `你在「${node.name}」採集到 ${QUALITY_LABELS[yieldDef.quality]} ${itemName} x${quantity}${extra > 0 ? `（穩定手法 +${extra}）` : ''}。`,
       gathered: {
         nodeId: node.id,
         itemId: yieldDef.itemId,

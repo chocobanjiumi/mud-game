@@ -12,6 +12,7 @@ import {
 } from '@game/shared';
 import { consumeGatheredMaterialQualities } from './gathering.js';
 import { recordGoldSpent } from './economy-stats.js';
+import { applyUtilitySuccessRateBonus, getLearnedPassiveSpecialNumber } from './passive-skill-effects.js';
 
 // ============================================================
 //  型別定義
@@ -742,9 +743,9 @@ export class CraftingManager {
     }
     const consumedQualities = consumeGatheredMaterialQualities(characterId, recipe.materials);
 
-    // 計算成功率：base + (craftingLevel - recipeLevel) * 2，最高 100
+    // 計算成功率：base + (craftingLevel - recipeLevel) * 2 + 被動加成，最高 100
     const bonus = Math.max(0, (levelInfo.level - recipe.level) * 2);
-    const finalRate = Math.min(100, recipe.successRate + bonus);
+    const finalRate = applyUtilitySuccessRateBonus(characterId, recipe.successRate + bonus);
     const random = options.random ?? Math.random;
     const roll = random() * 100;
     const craftSuccess = roll < finalRate;
@@ -864,7 +865,10 @@ export class CraftingManager {
       const statusIcon = canCraft ? '[可]' : '[鎖]';
       const resultName = ITEM_DEFS[r.result.itemId]?.name ?? r.result.itemId;
       text += `${statusIcon} ${r.id}  ${r.name}\n`;
-      text += `   等級需求：Lv.${r.level}  成功率：${r.successRate}%\n`;
+      const bonus = Math.max(0, (levelInfo.level - r.level) * 2);
+      const finalRate = applyUtilitySuccessRateBonus(characterId, r.successRate + bonus);
+      const steadyHandsBonus = getLearnedPassiveSpecialNumber(characterId, 'steady_hands', 'utilityActionBonus');
+      text += `   等級需求：Lv.${r.level}  成功率：${finalRate}%${steadyHandsBonus > 0 ? `（穩定手法 +${steadyHandsBonus}%）` : ''}\n`;
       text += `   成品：${resultName}`;
       if (r.result.count > 1) text += ` x${r.result.count}`;
       text += '\n';
@@ -881,7 +885,8 @@ export class CraftingManager {
     const levelInfo = this.getCraftingLevel(characterId, recipe.category);
     const resultName = ITEM_DEFS[recipe.result.itemId]?.name ?? recipe.result.itemId;
     const bonus = Math.max(0, (levelInfo.level - recipe.level) * 2);
-    const finalRate = Math.min(100, recipe.successRate + bonus);
+    const finalRate = applyUtilitySuccessRateBonus(characterId, recipe.successRate + bonus);
+    const steadyHandsBonus = getLearnedPassiveSpecialNumber(characterId, 'steady_hands', 'utilityActionBonus');
 
     // 取得背包來檢查材料
     const inventory = getInventory(characterId);
@@ -893,7 +898,7 @@ export class CraftingManager {
     let text = `── 配方詳情：${recipe.name} ──\n`;
     text += `類別：${CATEGORY_NAMES[recipe.category]}\n`;
     text += `等級需求：Lv.${recipe.level}（你的等級：Lv.${levelInfo.level}）\n`;
-    text += `基礎成功率：${recipe.successRate}%（你的成功率：${finalRate}%）\n`;
+    text += `基礎成功率：${recipe.successRate}%（你的成功率：${finalRate}%${steadyHandsBonus > 0 ? `，穩定手法 +${steadyHandsBonus}%` : ''}）\n`;
     text += `經驗值：${recipe.exp}\n`;
     text += `成品：${resultName}`;
     if (recipe.result.count > 1) text += ` x${recipe.result.count}`;

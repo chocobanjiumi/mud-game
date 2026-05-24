@@ -23,6 +23,7 @@ import {
   applyOutgoingDamageOriginBonus,
   getFleeOriginBonus,
 } from './origin-effects.js';
+import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
 
 // ============================================================
 //  常數
@@ -1499,6 +1500,8 @@ export class CombatEngine {
         derived.hitRate += stb.hitRateBonus;
         derived.critDamage += stb.critDamageBonus;
       }
+
+      derived.dodgeRate += getSurvivalDodgeBonus(combatant.id, combatant.hp, combatant.maxHp);
 
       // Apply active buff effects from potions/food/skills
       for (const eff of combatant.activeEffects) {
