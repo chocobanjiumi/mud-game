@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_cave_mine_02",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_cave_mine_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_cave_mine_hollow_wind_ore",
+      "category": "material",
+      "targetId": "hollow_wind_ore",
+      "name": "空風礦",
+      "outputPath": "client/public/images/materials/material_cave_mine_hollow_wind_ore.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_iron_ore",
+      "category": "material",
+      "targetId": "iron_ore",
+      "name": "鐵礦",
+      "outputPath": "client/public/images/materials/material_cave_mine_iron_ore.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_lantern_fungus_oil",
+      "category": "material",
+      "targetId": "lantern_fungus_oil",
+      "name": "菌燈油",
+      "outputPath": "client/public/images/materials/material_cave_mine_lantern_fungus_oil.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_mine_timber_splinter",
+      "category": "material",
+      "targetId": "mine_timber_splinter",
+      "name": "礦坑支木片",
+      "outputPath": "client/public/images/materials/material_cave_mine_mine_timber_splinter.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_miner_focus_lens",
+      "category": "material",
+      "targetId": "miner_focus_lens",
+      "name": "礦工聚光鏡",
+      "outputPath": "client/public/images/materials/material_cave_mine_miner_focus_lens.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_cave_mine_mirror_obsidian_shard",
+      "category": "material",
+      "targetId": "mirror_obsidian_shard",
+      "name": "鏡面黑曜碎片",
+      "outputPath": "client/public/images/materials/material_cave_mine_mirror_obsidian_shard.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_mithril_ore",
+      "category": "material",
+      "targetId": "mithril_ore",
+      "name": "秘銀礦",
+      "outputPath": "client/public/images/materials/material_cave_mine_mithril_ore.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_old_drill_bit",
+      "category": "material",
+      "targetId": "old_drill_bit",
+      "name": "舊鑽頭",
+      "outputPath": "client/public/images/materials/material_cave_mine_old_drill_bit.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_prism_shard",
+      "category": "material",
+      "targetId": "prism_shard",
+      "name": "棱鏡碎片",
+      "outputPath": "client/public/images/materials/material_cave_mine_prism_shard.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_safety_lamp_lens",
+      "category": "material",
+      "targetId": "safety_lamp_lens",
+      "name": "安全燈鏡片",
+      "outputPath": "client/public/images/materials/material_cave_mine_safety_lamp_lens.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
