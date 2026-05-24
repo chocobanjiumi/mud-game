@@ -1,6 +1,8 @@
 import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
+import { useState } from 'react';
 import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
+import MonsterDetailModal from './MonsterDetailModal';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -55,10 +57,12 @@ function EntityRow({
   entity,
   selectedEntity,
   setSelectedEntity,
+  onInspectMonster,
 }: {
   entity: RoomEntity;
   selectedEntity: RoomEntity | null;
   setSelectedEntity: (entity: RoomEntity | null) => void;
+  onInspectMonster: (entity: RoomEntity) => void;
 }) {
   const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
   const imagePath = getEntityImagePath(entity);
@@ -86,7 +90,14 @@ function EntityRow({
             className={actionClass(action)}
             disabled={action.disabled}
             title={action.reason}
-            onClick={() => !action.disabled && sendCommand(action.command, `${action.label} ${entity.label}`)}
+            onClick={() => {
+              if (action.disabled) return;
+              if (entity.type === 'monster' && action.label === '查看') {
+                onInspectMonster(entity);
+                return;
+              }
+              sendCommand(action.command, `${action.label} ${entity.label}`);
+            }}
           >
             {action.label}
           </button>
@@ -105,6 +116,7 @@ export function RoomPanelView({
   selectedEntity: RoomEntity | null;
   setSelectedEntity: (entity: RoomEntity | null) => void;
 }) {
+  const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
   const hints = room.inspectHints ?? [];
   const entities = room.entities ?? [];
   const corpses = room.corpses ?? [];
@@ -147,6 +159,7 @@ export function RoomPanelView({
                       entity={entity}
                       selectedEntity={selectedEntity}
                       setSelectedEntity={setSelectedEntity}
+                      onInspectMonster={setDetailMonster}
                     />
                   ))}
                 </div>
@@ -182,6 +195,7 @@ export function RoomPanelView({
       {!hasEntityPayload && corpses.length === 0 && nodes.length === 0 && travelNodes.length === 0 && hints.length === 0 && (
         <div className="text-xs text-text-dim">目前沒有明確互動物。</div>
       )}
+      {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
     </div>
   );
 }

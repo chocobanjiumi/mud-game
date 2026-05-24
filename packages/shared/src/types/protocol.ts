@@ -95,6 +95,34 @@ export interface RoomEntityAction {
   reason?: string;
 }
 
+export interface RoomEntityMonsterDetails {
+  monsterId: string;
+  name: string;
+  alias: string;
+  level: number;
+  hp: number;
+  maxHp: number;
+  mp: number;
+  maxMp: number;
+  element: string;
+  aiType: string;
+  behaviorType?: string;
+  isBoss: boolean;
+  isElite?: boolean;
+  expReward: number;
+  goldReward: [number, number];
+  stats: {
+    str: number;
+    int: number;
+    dex: number;
+    vit: number;
+    luk: number;
+  };
+  skills: string[];
+  drops: { itemId: string; chance: number; minQty: number; maxQty: number }[];
+  description: string;
+}
+
 export interface RoomEntity {
   id: string;
   type: RoomEntityType;
@@ -102,6 +130,7 @@ export interface RoomEntity {
   subtitle?: string;
   hp?: number;
   maxHp?: number;
+  monsterDetails?: RoomEntityMonsterDetails;
   actions: RoomEntityAction[];
 }
 
@@ -117,7 +146,7 @@ export interface RoomPayload {
   players: { id: string; name: string; classId: string; level: number }[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
-  monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number }[];
+  monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number; monsterDetails?: RoomEntityMonsterDetails }[];
   corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean; protectedUntil?: number }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];

@@ -488,6 +488,38 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     level: m.def.level,
     hp: m.hp,
     maxHp: m.maxHp,
+    monsterDetails: {
+      monsterId: m.monsterId,
+      name: m.def.name,
+      alias: m.def.alias,
+      level: m.def.level,
+      hp: m.hp,
+      maxHp: m.maxHp,
+      mp: m.def.mp,
+      maxMp: m.def.mp,
+      element: m.def.element,
+      aiType: m.def.aiType,
+      behaviorType: m.def.behaviorType,
+      isBoss: m.def.isBoss,
+      isElite: m.def.isElite,
+      expReward: m.def.expReward,
+      goldReward: m.def.goldReward,
+      stats: {
+        str: m.def.str,
+        int: m.def.int,
+        dex: m.def.dex,
+        vit: m.def.vit,
+        luk: m.def.luk,
+      },
+      skills: m.def.skills,
+      drops: m.def.drops.map(drop => ({
+        itemId: drop.itemId,
+        chance: drop.chance,
+        minQty: drop.minQty,
+        maxQty: drop.maxQty,
+      })),
+      description: m.def.description,
+    },
   }));
   const zone = getZone(roomInfo.room.zone);
   const now = Date.now();

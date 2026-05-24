@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
+import MonsterDetailModal from './MonsterDetailModal';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -20,11 +21,13 @@ export default function RoomImage() {
   const [useFallback, setUseFallback] = useState(false);
   const [hideImage, setHideImage] = useState(false);
   const [openMonsterId, setOpenMonsterId] = useState<string | null>(null);
+  const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
 
   useEffect(() => {
     setUseFallback(false);
     setHideImage(false);
     setOpenMonsterId(null);
+    setDetailMonster(null);
   }, [room?.id]);
 
   useEffect(() => {
@@ -116,6 +119,11 @@ export default function RoomImage() {
                     title={action.reason}
                     onClick={() => {
                       if (action.disabled) return;
+                      if (action.label === '查看') {
+                        setDetailMonster(openMonster);
+                        setOpenMonsterId(null);
+                        return;
+                      }
                       sendCommand(action.command, `${action.label} ${openMonster.label}`);
                       setOpenMonsterId(null);
                     }}
@@ -128,6 +136,7 @@ export default function RoomImage() {
           )}
         </div>
       )}
+      {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
     </div>
   );
 }
@@ -143,6 +152,7 @@ function getMonsterEntities(room: NonNullable<ReturnType<typeof useGameStore.get
     subtitle: `Lv.${monster.level}`,
     hp: monster.hp,
     maxHp: monster.maxHp,
+    monsterDetails: monster.monsterDetails,
     actions: [
       { label: '查看', command: `look ${monster.id}` },
       { label: '攻擊', command: `attack ${monster.id}`, tone: 'danger' },

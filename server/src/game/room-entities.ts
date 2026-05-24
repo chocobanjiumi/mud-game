@@ -1,6 +1,28 @@
 import { ITEM_DEFS } from '@game/shared';
 import type { Character, GroundItem, RoomDef, RoomEntity } from '@game/shared';
 
+type RoomEntityMonsterDetails = {
+  monsterId: string;
+  name: string;
+  alias: string;
+  level: number;
+  hp: number;
+  maxHp: number;
+  mp: number;
+  maxMp: number;
+  element: string;
+  aiType: string;
+  behaviorType?: string;
+  isBoss: boolean;
+  isElite?: boolean;
+  expReward: number;
+  goldReward: [number, number];
+  stats: { str: number; int: number; dex: number; vit: number; luk: number };
+  skills: string[];
+  drops: { itemId: string; chance: number; minQty: number; maxQty: number }[];
+  description: string;
+};
+
 export interface RoomEntityNpc {
   id: string;
   name: string;
@@ -24,6 +46,7 @@ export interface RoomEntityMonster {
   level: number;
   hp: number;
   maxHp: number;
+  monsterDetails?: RoomEntityMonsterDetails;
 }
 
 export interface RoomEntityCorpse {
@@ -111,6 +134,7 @@ export function buildRoomEntities(input: {
       subtitle: `${monster.alias} · Lv.${monster.level}`,
       hp: monster.hp,
       maxHp: monster.maxHp,
+      monsterDetails: monster.monsterDetails,
       actions: [
         { label: '查看', command: `look ${monster.id}` },
         { label: '攻擊', command: `attack ${monster.id}`, tone: 'danger' as const },

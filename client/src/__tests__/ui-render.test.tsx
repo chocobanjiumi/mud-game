@@ -6,6 +6,7 @@ import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
 import { CombatPanelView } from '../components/CombatPanel';
+import MonsterDetailModal from '../components/MonsterDetailModal';
 import { useGameStore } from '../stores/gameStore';
 
 const slimeEntity: RoomEntity = {
@@ -15,6 +16,25 @@ const slimeEntity: RoomEntity = {
   subtitle: 'slime · Lv.1',
   hp: 30,
   maxHp: 30,
+  monsterDetails: {
+    monsterId: 'slime',
+    name: '史萊姆',
+    alias: 'slime',
+    level: 1,
+    hp: 30,
+    maxHp: 30,
+    mp: 0,
+    maxMp: 0,
+    element: 'none',
+    aiType: 'passive',
+    isBoss: false,
+    expReward: 5,
+    goldReward: [1, 3],
+    stats: { str: 2, int: 1, dex: 1, vit: 2, luk: 1 },
+    skills: [],
+    drops: [{ itemId: 'slime_jelly', chance: 0.5, minQty: 1, maxQty: 2 }],
+    description: '常見的低階怪物。',
+  },
   actions: [
     { label: '查看', command: 'look monster_green_slime_a' },
     { label: '攻擊', command: 'attack monster_green_slime_a', tone: 'danger' },
@@ -100,6 +120,15 @@ describe('key UI component rendering', () => {
     expect(targetHtml).toContain('怪物');
     expect(targetHtml).toContain('HP');
     expect(targetHtml).toContain('攻擊');
+  });
+
+  it('renders monster detail modal with expanded monster information', () => {
+    const html = renderToStaticMarkup(<MonsterDetailModal monster={slimeEntity} onClose={() => undefined} />);
+
+    expect(html).toContain('史萊姆#1');
+    expect(html).toContain('能力值');
+    expect(html).toContain('掉落');
+    expect(html).toContain('常見的低階怪物');
   });
 
   it('renders objective suggestions from current room actions', () => {
