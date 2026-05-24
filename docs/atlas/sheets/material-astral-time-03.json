@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_astral_time_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_astral_time_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_astral_time_moon_gate_tablet",
+      "category": "material",
+      "targetId": "moon_gate_tablet",
+      "name": "月門陶板",
+      "outputPath": "client/public/images/materials/material_astral_time_moon_gate_tablet.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_pale_star_relic",
+      "category": "material",
+      "targetId": "pale_star_relic",
+      "name": "蒼白星遺物",
+      "outputPath": "client/public/images/materials/material_astral_time_pale_star_relic.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_paradox_splinter",
+      "category": "material",
+      "targetId": "paradox_splinter",
+      "name": "悖論裂片",
+      "outputPath": "client/public/images/materials/material_astral_time_paradox_splinter.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_astral_time_radiant_glass_sand",
+      "category": "material",
+      "targetId": "radiant_glass_sand",
+      "name": "輻光玻砂",
+      "outputPath": "client/public/images/materials/material_astral_time_radiant_glass_sand.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_reversed_hourglass_sand",
+      "category": "material",
+      "targetId": "reversed_hourglass_sand",
+      "name": "倒流沙漏砂",
+      "outputPath": "client/public/images/materials/material_astral_time_reversed_hourglass_sand.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_stariron_nodule",
+      "category": "material",
+      "targetId": "stariron_nodule",
+      "name": "星鐵核粒",
+      "outputPath": "client/public/images/materials/material_astral_time_stariron_nodule.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
