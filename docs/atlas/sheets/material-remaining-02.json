@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_remaining_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_remaining_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_final_war_godscar_blood_crystal",
+      "category": "material",
+      "targetId": "godscar_blood_crystal",
+      "name": "神傷血晶",
+      "outputPath": "client/public/images/materials/material_final_war_godscar_blood_crystal.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_final_war_kingbone_oath_shard",
+      "category": "material",
+      "targetId": "kingbone_oath_shard",
+      "name": "王骨誓片",
+      "outputPath": "client/public/images/materials/material_final_war_kingbone_oath_shard.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_lost_capital_marble_gargoyle_eye",
+      "category": "material",
+      "targetId": "marble_gargoyle_eye",
+      "name": "白石像鬼眼",
+      "outputPath": "client/public/images/materials/material_lost_capital_marble_gargoyle_eye.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_lost_capital_royal_timeglass",
+      "category": "material",
+      "targetId": "royal_timeglass",
+      "name": "王都時砂玻",
+      "outputPath": "client/public/images/materials/material_lost_capital_royal_timeglass.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_lost_capital_senate_wax_tablet",
+      "category": "material",
+      "targetId": "senate_wax_tablet",
+      "name": "議政蠟版",
+      "outputPath": "client/public/images/materials/material_lost_capital_senate_wax_tablet.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_town_market_class_hall_attunement_charm",
+      "category": "material",
+      "targetId": "class_hall_attunement_charm",
+      "name": "轉職調律符",
+      "outputPath": "client/public/images/materials/material_town_market_class_hall_attunement_charm.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

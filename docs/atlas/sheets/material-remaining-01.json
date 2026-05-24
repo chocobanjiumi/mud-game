@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_remaining_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_remaining_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_cave_mine_forest_fen_spider_silk_bundle",
+      "category": "material",
+      "targetId": "spider_silk_bundle",
+      "name": "密林蛛絲束",
+      "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_silk_bundle.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_forest_fen_spider_venom",
+      "category": "material",
+      "targetId": "spider_venom",
+      "name": "蜘蛛毒液",
+      "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_venom.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_endgame_void_shard",
+      "category": "material",
+      "targetId": "void_shard",
+      "name": "虛空碎片",
+      "outputPath": "client/public/images/materials/material_endgame_void_shard.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_final_war_blackflame_ember",
+      "category": "material",
+      "targetId": "blackflame_ember",
+      "name": "黑焰餘燼",
+      "outputPath": "client/public/images/materials/material_final_war_blackflame_ember.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_final_war_broken_warbanner",
+      "category": "material",
+      "targetId": "broken_warbanner",
+      "name": "破旗殘布",
+      "outputPath": "client/public/images/materials/material_final_war_broken_warbanner.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_final_war_fallen_halo_fragment",
+      "category": "material",
+      "targetId": "fallen_halo_fragment",
+      "name": "墜天光環碎片",
+      "outputPath": "client/public/images/materials/material_final_war_fallen_halo_fragment.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

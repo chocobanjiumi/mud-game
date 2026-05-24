@@ -1,0 +1,27 @@
+{
+  "sheetId": "material_remaining_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_remaining_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_town_market_kingsroad_trade_token",
+      "category": "material",
+      "targetId": "kingsroad_trade_token",
+      "name": "王道交易牌",
+      "outputPath": "client/public/images/materials/material_town_market_kingsroad_trade_token.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_town_market_referee_seal",
+      "category": "material",
+      "targetId": "referee_seal",
+      "name": "裁判封印",
+      "outputPath": "client/public/images/materials/material_town_market_referee_seal.png",
+      "row": 0,
+      "column": 1
+    }
+  ]
+}
