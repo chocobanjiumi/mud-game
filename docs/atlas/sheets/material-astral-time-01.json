@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_astral_time_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_astral_time_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_astral_time_anchor_stone_chip",
+      "category": "material",
+      "targetId": "anchor_stone_chip",
+      "name": "錨石碎片",
+      "outputPath": "client/public/images/materials/material_astral_time_anchor_stone_chip.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_ancient_fragment",
+      "category": "material",
+      "targetId": "ancient_fragment",
+      "name": "古代碎片",
+      "outputPath": "client/public/images/materials/material_astral_time_ancient_fragment.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_astral_starsand",
+      "category": "material",
+      "targetId": "astral_starsand",
+      "name": "星界星砂",
+      "outputPath": "client/public/images/materials/material_astral_time_astral_starsand.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_astral_time_black_star_sigil",
+      "category": "material",
+      "targetId": "black_star_sigil",
+      "name": "黑星印記",
+      "outputPath": "client/public/images/materials/material_astral_time_black_star_sigil.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_broken_clock_gear",
+      "category": "material",
+      "targetId": "broken_clock_gear",
+      "name": "碎鐘齒輪",
+      "outputPath": "client/public/images/materials/material_astral_time_broken_clock_gear.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_causality_thread",
+      "category": "material",
+      "targetId": "causality_thread",
+      "name": "因果絲線",
+      "outputPath": "client/public/images/materials/material_astral_time_causality_thread.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
