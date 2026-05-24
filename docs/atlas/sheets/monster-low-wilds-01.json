@@ -1,0 +1,81 @@
+{
+  "sheetId": "monster_low_wilds_01",
+  "category": "monster",
+  "columns": 4,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_low_wilds_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "monster_low_wilds_slime",
+      "category": "monster",
+      "targetId": "slime",
+      "name": "史萊姆",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_slime.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "monster_low_wilds_green_slime",
+      "category": "monster",
+      "targetId": "green_slime",
+      "name": "綠史萊姆",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_green_slime.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "monster_low_wilds_wild_rabbit",
+      "category": "monster",
+      "targetId": "wild_rabbit",
+      "name": "野兔",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_wild_rabbit.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "monster_low_wilds_field_rat",
+      "category": "monster",
+      "targetId": "field_rat",
+      "name": "田鼠",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_field_rat.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "monster_low_wilds_goblin_scout",
+      "category": "monster",
+      "targetId": "goblin_scout",
+      "name": "哥布林斥候",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_goblin_scout.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "monster_low_wilds_small_bat",
+      "category": "monster",
+      "targetId": "small_bat",
+      "name": "小蝙蝠",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_small_bat.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "monster_low_wilds_bandit",
+      "category": "monster",
+      "targetId": "bandit",
+      "name": "盜賊",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_bandit.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "monster_low_wilds_forest_fen_wild_wolf",
+      "category": "monster",
+      "targetId": "wild_wolf",
+      "name": "野狼",
+      "outputPath": "client/public/images/monsters/monster_low_wilds_forest_fen_wild_wolf.png",
+      "row": 1,
+      "column": 3
+    }
+  ]
+}
