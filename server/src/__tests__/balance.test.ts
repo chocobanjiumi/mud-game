@@ -48,6 +48,7 @@ import {
   getRecipeResult,
 } from '../game/crafting.js';
 import type { CombatStats } from '../game/damage.js';
+import type { RoomDef } from '@game/shared';
 
 // ============================================================
 //  Helpers
@@ -874,6 +875,39 @@ describe('Balance: Gathering definitions', () => {
       'fishing',
       'archaeology',
     ]));
+  });
+
+  it('does not let a generic gathering tag expose every gathering skill', () => {
+    const gathering = new GatheringManager();
+    const room = {
+      id: 'generic_gathering_room',
+      name: '普通採集空地',
+      zone: 'plains',
+      description: '',
+      exits: [],
+      tags: ['gathering'],
+    } as RoomDef & { tags: string[] };
+
+    const skills = new Set(gathering.getAvailableNodes(room, undefined, 60).map(node => node.skill));
+
+    expect(skills).not.toContain('mining');
+    expect(skills).not.toContain('fishing');
+    expect(skills).not.toContain('archaeology');
+    expect(skills.size).toBeLessThan(6);
+  });
+
+  it('maps resource room names to focused gathering skills', () => {
+    const gathering = new GatheringManager();
+    const zone = ZONES.glass_dunes;
+
+    expect(gathering.getAvailableNodes(ROOMS.glass_dunes_herb_shelf, zone, 60).map(node => node.skill))
+      .toContain('herbalism');
+    expect(gathering.getAvailableNodes(ROOMS.glass_dunes_water_pocket, zone, 60).map(node => node.skill))
+      .toContain('fishing');
+    expect(gathering.getAvailableNodes(ROOMS.glass_dunes_beast_scrape, zone, 60).map(node => node.skill))
+      .toContain('skinning');
+    expect(gathering.getAvailableNodes(ROOMS.glass_dunes_relic_pit, zone, 60).map(node => node.skill))
+      .toContain('archaeology');
   });
 
   it('gives every resource zone at least six gathering node rooms', () => {

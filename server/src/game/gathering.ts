@@ -13,6 +13,7 @@ import { addInventoryItem } from '../db/queries.js';
 const GATHERING_COOLDOWN_MS = 5_000;
 const gatheringCooldowns = new Map<string, number>();
 const materialQualityLedger = new Map<string, Partial<Record<GatheringMaterialQuality, number>>>();
+const SPECIFIC_GATHERING_TAGS = new Set(['mining', 'herbalism', 'logging', 'skinning', 'fishing', 'archaeology']);
 
 const QUALITY_LABELS: Record<GatheringMaterialQuality, string> = {
   rough: '粗糙',
@@ -35,7 +36,8 @@ export interface GatherResult {
 
 export class GatheringManager {
   getAvailableNodes(room: RoomDef, zone?: ZoneDef, level = 60): GatheringNodeDef[] {
-    const roomTags = new Set((room as RoomDef & { tags?: string[] }).tags ?? []);
+    const roomTags = getRoomGatheringTags(room);
+    const hasSpecificRoomGathering = [...roomTags].some(tag => SPECIFIC_GATHERING_TAGS.has(tag));
     const zoneTags = new Set([
       zone?.id,
       zone?.type,
@@ -46,8 +48,8 @@ export class GatheringManager {
     return Object.values(GATHERING_NODE_DEFS)
       .filter(node => node.levelMin <= level)
       .filter(node =>
-        node.roomTags.some(tag => roomTags.has(tag) || zoneTags.has(tag))
-        || node.zoneTags.some(tag => room.zone === tag || zoneTags.has(tag)),
+        node.roomTags.some(tag => roomTags.has(tag))
+        || (!hasSpecificRoomGathering && node.zoneTags.some(tag => room.zone === tag || zoneTags.has(tag))),
       )
       .sort((a, b) => a.levelMin - b.levelMin || a.id.localeCompare(b.id));
   }
@@ -104,6 +106,37 @@ export class GatheringManager {
   resetCooldown(characterId: string): void {
     gatheringCooldowns.delete(characterId);
   }
+}
+
+export function getRoomGatheringTags(room: RoomDef): Set<string> {
+  const roomTags = new Set((room as RoomDef & { tags?: string[] }).tags ?? []);
+  const signature = `${room.id} ${room.name} ${(room as RoomDef & { mapSymbol?: string }).mapSymbol ?? ''}`.toLowerCase();
+
+  if (matchesAny(signature, ['mine', 'mining', 'vein', 'ore', 'lode', 'quarry', 'crystal', '礦', '脈', '晶'])) {
+    roomTags.add('mining');
+  }
+  if (matchesAny(signature, ['herb', 'moss', 'fern', 'bloom', 'flower', '藥', '草', '苔', '花'])) {
+    roomTags.add('herbalism');
+  }
+  if (matchesAny(signature, ['forest', 'wood', 'tree', 'grove', 'log', 'canopy', 'oak', 'pine', 'willow', '林', '木', '樹'])) {
+    roomTags.add('logging');
+  }
+  if (matchesAny(signature, ['beast_scrape', 'fur', 'hide', 'skin', 'den', 'nest', 'burrow', 'wallow', '獵', '獸', '巢', '穴', '皮'])) {
+    roomTags.add('skinning');
+  }
+  if (matchesAny(signature, ['fish', 'fishing', 'water', 'river', 'lake', 'pond', 'pool', 'creek', 'dock', 'reef', 'tide', '水', '湖', '河', '溪', '池', '泉', '魚', '釣'])) {
+    roomTags.add('fishing');
+  }
+  if (matchesAny(signature, ['relic', 'ruin', 'ancient', 'fossil', 'runestone', 'crypt', 'tomb', '遺', '古', '碑', '墓', '化石'])) {
+    roomTags.add('archaeology');
+  }
+
+  roomTags.delete('gathering');
+  return roomTags;
+}
+
+function matchesAny(value: string, patterns: string[]): boolean {
+  return patterns.some(pattern => value.includes(pattern));
 }
 
 export function consumeGatheredMaterialQualities(
