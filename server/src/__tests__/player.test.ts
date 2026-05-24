@@ -772,6 +772,46 @@ describe('inventory item instances', () => {
     expect(modifiers.damageBonusPct).toBeGreaterThan(0);
   });
 
+  it('only applies conditional affix skill bonuses when the trigger context matches', () => {
+    const characterId = 'item-instance-conditional-affix-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-conditional-affix', 'ConditionalAffixHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, true, {
+      itemInstanceId: 'inst_spear_steel_conditional_affix',
+      baseItemId: 'spear_steel',
+      quality: 'legendary',
+      affixes: [
+        {
+          id: 'behavior_execute_t5',
+          name: '處決',
+          pool: 'behavior',
+          tier: 'T5',
+          appliesTo: ['weapon'],
+          skillTags: ['burst'],
+          trigger: 'on_hit',
+          condition: 'low_hp',
+          skillModifiers: { damagePct: 10 },
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    expect(getSkillAffixModifiers(characterId, SKILL_DEFS.power_strike, {
+      trigger: 'on_hit',
+      targetHpPercent: 80,
+    }).damageBonusPct).toBe(0);
+    expect(getSkillAffixModifiers(characterId, SKILL_DEFS.power_strike, {
+      trigger: 'on_cast',
+      targetHpPercent: 20,
+    }).damageBonusPct).toBe(0);
+    expect(getSkillAffixModifiers(characterId, SKILL_DEFS.power_strike, {
+      trigger: 'on_hit',
+      targetHpPercent: 20,
+    }).damageBonusPct).toBeGreaterThan(0);
+  });
+
   it('can reroll a stored item instance affix', () => {
     const characterId = 'item-instance-reroll-test';
     getDb().prepare(

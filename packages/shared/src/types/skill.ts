@@ -10,7 +10,7 @@ export type ElementType = 'fire' | 'ice' | 'lightning' | 'light' | 'dark' | 'nat
 export type SkillTag =
   | 'damage' | 'aoe' | 'single_target' | 'heal' | 'support' | 'defense'
   | 'control' | 'interrupt' | 'dispel' | 'buff' | 'debuff' | 'mobility'
-  | 'summon' | 'burst' | 'resource' | 'passive'
+  | 'summon' | 'burst' | 'resource' | 'passive' | 'cross_room'
   | DamageType
   | ElementType;
 export type SkillScalingStat = 'atk' | 'matk' | 'def' | 'mdef' | 'hp' | 'resource' | 'none';

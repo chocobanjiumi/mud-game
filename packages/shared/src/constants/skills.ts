@@ -1598,7 +1598,7 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
   return Object.fromEntries(
     Object.entries(defs).map(([id, def]) => [id, {
       ...def,
-      tags: def.tags ?? inferSkillTags(def),
+      tags: normalizeSkillTags(def),
       scaling: def.scaling ?? inferSkillScaling(def),
       usageContext: def.usageContext ?? inferSkillUsageContext(def),
       questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
@@ -1613,6 +1613,10 @@ function createShortSkillDescription(def: RawSkillDef): string {
   const [firstSentence] = def.description.split(/[。.!！?？]/);
   if (firstSentence && firstSentence.trim().length > 0) return `${firstSentence.trim()}。`;
   return def.description;
+}
+
+function normalizeSkillTags(def: RawSkillDef): SkillTag[] {
+  return [...new Set([...(def.tags ?? []), ...inferSkillTags(def)])];
 }
 
 function inferSkillUsageContext(def: RawSkillDef): SkillUsageContext {
@@ -1681,6 +1685,7 @@ function inferSkillTags(def: RawSkillDef): SkillTag[] {
   if (def.special?.interrupt) tags.add('interrupt');
   if (def.special?.dispelShield || def.special?.removeDebuffs) tags.add('dispel');
   if (def.special?.summon || def.id.includes('summon')) tags.add('summon');
+  if (def.special?.crossRoom || def.special?.crossRoomRequiresScout || def.special?.areaScope === 'adjacent_cardinal') tags.add('cross_room');
   if (def.cooldown >= 5 || def.multiplier >= 2) tags.add('burst');
   if (def.resourceCost > 0) tags.add('resource');
   if (def.id.includes('step') || def.id.includes('dash') || def.id.includes('charge')) tags.add('mobility');

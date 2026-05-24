@@ -11,6 +11,14 @@ export interface SkillAffixModifiers {
 }
 
 export type ResourceAffixModifierKey = 'rageGain' | 'focusRegen' | 'mpRegen' | 'faithDelta';
+export type AffixTriggerContext = 'on_hit' | 'on_block' | 'on_dodge' | 'on_kill' | 'on_cast' | 'on_heal';
+
+export interface SkillAffixContext {
+  trigger?: AffixTriggerContext;
+  targetHpPercent?: number;
+  isFirstHit?: boolean;
+  isApproachingTarget?: boolean;
+}
 
 const TIER_VALUE: Record<string, number> = {
   T1: 1,
@@ -29,7 +37,7 @@ export function getResourceAffixBonus(characterId: string, key: ResourceAffixMod
     .reduce((sum, affix) => sum + (affix.resourceModifiers?.[key] ?? 0), 0);
 }
 
-export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef): SkillAffixModifiers {
+export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef, context: SkillAffixContext = {}): SkillAffixModifiers {
   const modifiers: SkillAffixModifiers = {
     resourceCostReductionPct: 0,
     damageBonusPct: 0,
@@ -43,6 +51,7 @@ export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef):
     const tier = TIER_VALUE[affix.tier] ?? 1;
     const matchesSkill = affixMatchesSkill(affix, skillDef);
     if (!matchesSkill) continue;
+    if (!affixMatchesContext(affix, context)) continue;
 
     if (affix.behavior === 'reduce_resource_cost') {
       modifiers.resourceCostReductionPct += 4 + tier * 2;
@@ -94,4 +103,19 @@ function affixMatchesSkill(affix: AffixDef, skillDef: SkillDef): boolean {
   const affixTags = affix.skillTags ?? [];
   if (affixTags.length === 0) return false;
   return affixTags.some(tag => skillDef.tags.includes(tag));
+}
+
+function affixMatchesContext(affix: AffixDef, context: SkillAffixContext): boolean {
+  if (affix.trigger && context.trigger && affix.trigger !== context.trigger) return false;
+
+  switch (affix.condition) {
+    case 'low_hp':
+      return context.targetHpPercent !== undefined && context.targetHpPercent <= 35;
+    case 'first_hit':
+      return context.isFirstHit === true;
+    case 'approaching_target':
+      return context.isApproachingTarget === true;
+    default:
+      return true;
+  }
 }

@@ -19,6 +19,8 @@ export interface AffixDef {
   classTags?: string[];
   skillTags?: SkillTag[];
   skillIds?: string[];
+  sourceTags?: string[];
+  zoneTags?: string[];
   weaponTypes?: string[];
   stats?: Partial<ItemStats>;
   behavior?: string;
@@ -107,7 +109,9 @@ export const AFFIX_POOLS: Record<AffixPool, AffixDef[]> = {
     { id: 'behavior_focus_t2', name: '專注', kind: 'behavior', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], itemLevelMin: 8, itemLevelMax: 35, skillTags: ['resource'], behavior: 'reduce_resource_cost', trigger: 'on_cast', skillModifiers: { resourceCostPct: -8 } },
     { id: 'behavior_swift_t3', name: '疾行', kind: 'behavior', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['mobility'], behavior: 'bonus_after_dodge', trigger: 'on_dodge', stats: { dodgeRate: 3 } },
     { id: 'behavior_counter_t4', name: '反擊', kind: 'behavior', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], itemLevelMin: 32, skillTags: ['control'], behavior: 'counter_on_block', trigger: 'on_block', resourceModifiers: { rageGain: 3 } },
-    { id: 'behavior_execute_t5', name: '處決', kind: 'behavior', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], itemLevelMin: 45, skillTags: ['burst'], behavior: 'execute_low_hp', trigger: 'on_hit', condition: 'low_hp', skillModifiers: { damagePct: 10 } },
+    { id: 'behavior_cross_room_t3', name: '鷹眼', kind: 'suffix', pool: 'behavior', tier: 'T3', appliesTo: ['weapon', 'head', 'ring'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['cross_room'], sourceTags: ['plains', 'scout', 'ranged'], behavior: 'cross_room_accuracy', trigger: 'on_hit', skillModifiers: { rangeDelta: 1 } },
+    { id: 'behavior_snare_t4', name: '絆足', kind: 'suffix', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'feet'], itemLevelMin: 32, skillTags: ['control'], sourceTags: ['forest', 'trap', 'gathering'], behavior: 'delay_approach', trigger: 'on_hit', condition: 'approaching_target', skillModifiers: { arrivalTicksDelta: 1 } },
+    { id: 'behavior_execute_t5', name: '處決', kind: 'behavior', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], itemLevelMin: 45, skillTags: ['burst'], sourceTags: ['boss', 'undead', 'dungeon'], behavior: 'execute_low_hp', trigger: 'on_hit', condition: 'low_hp', internalCooldownRounds: 3, skillModifiers: { damagePct: 10 } },
   ],
   class: [
     { id: 'class_swordsman_t2', name: '戰士節奏', kind: 'prefix', pool: 'class', tier: 'T2', appliesTo: ['weapon', 'ring'], itemLevelMin: 8, classTags: ['swordsman', 'knight', 'berserker', 'sword_saint'], stats: { atk: 5 }, resourceModifiers: { rageGain: 2 } },
@@ -123,7 +127,7 @@ export function generateEquipmentInstance(
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
   const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight);
+  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight, options.sourceTags ?? baseItem.sourceTags, baseItem.zoneTags);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -143,7 +147,7 @@ export function reforgeEquipmentInstanceQuality(
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
   const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight);
+  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight, options.sourceTags ?? baseItem.sourceTags, baseItem.zoneTags);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -249,6 +253,8 @@ function rollAffixes(
   random: () => number,
   preferredAffixTags: SkillTag[] = [],
   preferredAffixWeight = 4,
+  sourceTags: string[] = [],
+  zoneTags: string[] = [],
 ): AffixDef[] {
   const rule = QUALITY_RULES[quality];
   const [min, max] = rule.affixCount;
@@ -270,7 +276,7 @@ function rollAffixes(
   }
   const selected: AffixDef[] = [];
   while (selected.length < count && pool.length > 0) {
-    const index = pickWeightedAffixIndex(pool, preferredAffixTags, preferredAffixWeight, random);
+    const index = pickWeightedAffixIndex(pool, preferredAffixTags, preferredAffixWeight, sourceTags, zoneTags, random);
     const [candidate] = pool.splice(index, 1);
     selected.push(candidate);
   }
@@ -287,15 +293,19 @@ function pickWeightedAffixIndex(
   pool: AffixDef[],
   preferredAffixTags: SkillTag[],
   preferredAffixWeight: number,
+  sourceTags: string[],
+  zoneTags: string[],
   random: () => number,
 ): number {
-  if (preferredAffixTags.length === 0) return Math.floor(random() * pool.length);
   const preferred = new Set(preferredAffixTags);
-  const weights = pool.map(affix =>
-    (affix.skillTags ?? []).some(tag => preferred.has(tag))
-      ? Math.max(1, preferredAffixWeight)
-      : 1,
-  );
+  const source = new Set(sourceTags);
+  const zone = new Set(zoneTags);
+  const weights = pool.map((affix) => {
+    const preferredWeight = (affix.skillTags ?? []).some(tag => preferred.has(tag)) ? Math.max(1, preferredAffixWeight) : 1;
+    const sourceWeight = (affix.sourceTags ?? []).some(tag => source.has(tag)) ? 4 : 0;
+    const zoneWeight = (affix.zoneTags ?? []).some(tag => zone.has(tag)) ? 3 : 0;
+    return preferredWeight + sourceWeight + zoneWeight;
+  });
   const total = weights.reduce((sum, weight) => sum + weight, 0);
   let roll = random() * total;
   for (let i = 0; i < weights.length; i++) {

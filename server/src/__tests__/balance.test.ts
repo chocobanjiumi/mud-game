@@ -606,6 +606,20 @@ describe('Balance: Item instance generation', () => {
     expect(instance.affixes.some(affix => affix.skillTags?.includes('burst'))).toBe(true);
   });
 
+  it('weights generated affixes toward source and zone tags', () => {
+    const base = { ...toBaseEquipmentDef(ITEM_DEFS.spear_steel)!, level: 45, sourceTags: ['ranged'], zoneTags: ['plains'] };
+    const instance = generateEquipmentInstance(base, {
+      sourceTags: ['ranged', 'plains', 'scout'],
+      qualityBonus: 0.1,
+      random: vi.fn()
+        .mockReturnValueOnce(0.53)
+        .mockReturnValue(0.5),
+    });
+
+    expect(instance.quality).toBe('fine');
+    expect(instance.affixes.some(affix => affix.id === 'behavior_cross_room_t3')).toBe(true);
+  });
+
   it('rerolls one affix without duplicating retained affixes', () => {
     const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
     const currentAffixes = [

@@ -95,7 +95,7 @@ export default function ItemTooltip() {
   // Equipment comparison: find currently equipped item in the same slot
   const isEquippable = !!tooltipItem.equipSlot;
   const isEquipped = tooltipItem.equipSlot && equipment
-    ? equipment[tooltipItem.equipSlot as keyof typeof equipment] === tooltipItem.id
+    ? inventory.some((item) => item.equipped && item.itemId === tooltipItem.id && ITEM_DEFS[item.itemId]?.equipSlot === tooltipItem.equipSlot)
     : false;
 
   // Find the equipped item's stats for comparison (compute real diff)
@@ -103,20 +103,18 @@ export default function ItemTooltip() {
   if (isEquippable && !isEquipped && tooltipItem.equipSlot && equipment) {
     const equippedItemId = equipment[tooltipItem.equipSlot as keyof typeof equipment];
     if (equippedItemId && Object.keys(totalStats).length > 0) {
-      // 從 ITEM_DEFS 取得已裝備道具的數值
+      const equippedItem = inventory.find((item) => item.equipped && item.itemId === equippedItemId);
       const equippedDef = ITEM_DEFS[equippedItemId];
-      const equippedStats = equippedDef?.stats as Record<string, number> | undefined;
-      if (equippedStats) {
-        const allKeys = new Set([...Object.keys(totalStats), ...Object.keys(equippedStats)]);
-        comparisonDiffs = {};
-        for (const key of allKeys) {
-          const newVal = totalStats[key] ?? 0;
-          const oldVal = equippedStats[key] ?? 0;
-          const diff = newVal - oldVal;
-          if (diff !== 0) comparisonDiffs[key] = diff;
-        }
-        if (Object.keys(comparisonDiffs).length === 0) comparisonDiffs = null;
+      const equippedStats = combineStats(equippedDef?.stats, equippedItem?.affixes);
+      const allKeys = new Set([...Object.keys(totalStats), ...Object.keys(equippedStats)]);
+      comparisonDiffs = {};
+      for (const key of allKeys) {
+        const newVal = totalStats[key] ?? 0;
+        const oldVal = equippedStats[key] ?? 0;
+        const diff = newVal - oldVal;
+        if (diff !== 0) comparisonDiffs[key] = diff;
       }
+      if (Object.keys(comparisonDiffs).length === 0) comparisonDiffs = null;
     }
   }
 

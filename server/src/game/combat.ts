@@ -530,10 +530,14 @@ export class CombatEngine {
     this.consumeTelegraphIfPrepared(actor, action, log);
 
     // 資源消耗（使用技能定義的 resourceCost）
+    const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
     let resourceCost = skillDef?.resourceCost ?? 5;
-    const affixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef) : null;
-    if (affixModifiers?.resourceCostReductionPct) {
-      resourceCost = Math.max(1, Math.floor(resourceCost * (1 - affixModifiers.resourceCostReductionPct / 100)));
+    const resourceAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
+      trigger: isHealSkill ? 'on_heal' : 'on_cast',
+      targetHpPercent: primaryTarget.maxHp > 0 ? (primaryTarget.hp / primaryTarget.maxHp) * 100 : 100,
+    }) : null;
+    if (resourceAffixModifiers?.resourceCostReductionPct) {
+      resourceCost = Math.max(1, Math.floor(resourceCost * (1 - resourceAffixModifiers.resourceCostReductionPct / 100)));
     }
     // 套裝加成：MP 消耗減免
     if (actor.resourceType === 'mp') {
@@ -564,16 +568,18 @@ export class CombatEngine {
     // 使用技能定義的 damageType、element、multiplier
     const damageType = skillDef?.damageType ?? 'magical';
     const element = skillDef?.element ?? 'none';
-    const multiplier = (skillDef?.multiplier ?? 1.5)
-      * (1 + (affixModifiers?.damageBonusPct ?? 0) / 100)
-      * this.getMonsterPhaseDamageMultiplier(actor);
+    const baseMultiplier = (skillDef?.multiplier ?? 1.5) * this.getMonsterPhaseDamageMultiplier(actor);
 
     // 治癒技能特殊處理
-    const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
     const skillName = skillDef?.name ?? action.skillId ?? (isHealSkill ? '治癒' : '技能');
 
     for (const target of targets) {
       if (target.isDead) continue;
+      const outputAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
+        trigger: isHealSkill ? 'on_heal' : 'on_hit',
+        targetHpPercent: target.maxHp > 0 ? (target.hp / target.maxHp) * 100 : 100,
+      }) : null;
+      const multiplier = baseMultiplier * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100);
       this.interruptTelegraphIfPossible(actor, target, skillDef, log);
       this.dispelShieldIfPossible(actor, target, skillDef, log);
 
@@ -602,8 +608,8 @@ export class CombatEngine {
         if (pct.healPower) {
           healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
         }
-        if (affixModifiers?.healingBonusPct) {
-          healAmount = Math.floor(healAmount * (1 + affixModifiers.healingBonusPct / 100));
+        if (outputAffixModifiers?.healingBonusPct) {
+          healAmount = Math.floor(healAmount * (1 + outputAffixModifiers.healingBonusPct / 100));
         }
         healAmount = applyHealingReceivedOriginModifier(target, healAmount);
         const before = target.hp;
