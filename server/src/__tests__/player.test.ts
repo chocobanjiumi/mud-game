@@ -1224,6 +1224,24 @@ describe('skill learning grants', () => {
     expect(learned.map(skill => skill.id)).toContain('guard');
     expect(getLearnedSkills(char.id).some(skill => skill.skillId === 'guard')).toBe(true);
   });
+
+  it('grants every starter-class skill unlocked across multiple levels at once', () => {
+    const char = createDbCharacter(`multi-skill-user-${Date.now()}`, `MultiSkill${Date.now()}`, false, undefined, { classId: 'swordsman' });
+    char.classId = 'swordsman';
+    char.level = 16;
+
+    const learned = grantLearnableSkills(char);
+    const learnedIds = new Set(learned.map(skill => skill.id));
+    const storedIds = new Set(getLearnedSkills(char.id).map(skill => skill.skillId));
+
+    for (const skillId of ['blade_aura', 'war_cry', 'power_strike', 'counter_stance']) {
+      expect(learnedIds.has(skillId)).toBe(true);
+    }
+
+    for (const skillId of ['warrior_slash', 'iron_wall', 'taunt', 'blade_aura', 'war_cry', 'power_strike', 'counter_stance']) {
+      expect(storedIds.has(skillId)).toBe(true);
+    }
+  });
 });
 
 describe('field skill effects', () => {

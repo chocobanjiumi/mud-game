@@ -1596,10 +1596,6 @@ function inferSkillUsageContext(def: RawSkillDef): SkillUsageContext {
 function getClassQuestSkillUnlock(skillId: string): SkillDef['questUnlock'] | undefined {
   const questIdBySkillId: Record<string, string> = {
     dirty_trick: 'beginner_first_steps',
-    war_cry: 'class_swordsman_path',
-    meditation: 'class_mage_path',
-    trap: 'class_ranger_path',
-    divine_grace: 'class_priest_path',
     shield_breaker: 'swordsman_to_knight',
     savage_interrupt: 'swordsman_to_berserker',
     mind_cut: 'swordsman_to_sword_saint',

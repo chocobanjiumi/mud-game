@@ -877,9 +877,9 @@ describe('Balance: Skill metadata', () => {
     expect(weeklyObjectives).toContain('leaderboard_score');
   });
 
-  it('gives every player class at least one class quest unlocked skill', () => {
+  it('keeps class quest unlocked skills on adventurer or advanced classes', () => {
     const playerClassIds = Object.values(CLASS_DEFS)
-      .filter(classDef => classDef.id !== 'monster')
+      .filter(classDef => classDef.id === 'adventurer' || classDef.tier >= 2)
       .map(classDef => classDef.id);
 
     for (const classId of playerClassIds) {
