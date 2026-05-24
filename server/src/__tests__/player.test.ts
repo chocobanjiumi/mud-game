@@ -1135,6 +1135,44 @@ describe('field skill effects', () => {
     expect(result.message).toContain('15 HP');
     expect(char.hp).toBe(55);
   });
+
+  it('applies single-target healing outside combat', () => {
+    const pm = new PlayerManager();
+    const caster = pm.createCharacter('FieldPriest', 'user-2');
+    const target = pm.createCharacter('FieldTarget', 'user-3');
+    caster.stats.int = 12;
+    target.maxHp = 100;
+    target.hp = 50;
+
+    const result = applyFieldSkillEffect(caster, SKILL_DEFS.heal, target);
+
+    expect(result.handled).toBe(true);
+    expect(result.consumeResource).toBe(true);
+    expect(result.message).toContain('FieldTarget');
+    expect(target.hp).toBe(98);
+  });
+
+  it('does not spend resources when field healing has no missing hp', () => {
+    const pm = new PlayerManager();
+    const char = pm.createCharacter('FullHpPriest', 'user-4');
+    char.hp = char.maxHp;
+
+    const result = applyFieldSkillEffect(char, SKILL_DEFS.heal);
+
+    expect(result.handled).toBe(true);
+    expect(result.consumeResource).toBe(false);
+    expect(result.message).toContain('已經是滿的');
+  });
+
+  it('keeps combat buffs and group heals out of field usage until field persistence exists', () => {
+    expect(SKILL_DEFS.heal.usageContext).toBe('both');
+    expect(SKILL_DEFS.first_aid.usageContext).toBe('both');
+    expect(SKILL_DEFS.inspect.usageContext).toBe('field');
+    expect(SKILL_DEFS.blessing.usageContext).toBe('combat');
+    expect(SKILL_DEFS.war_cry.usageContext).toBe('combat');
+    expect(SKILL_DEFS.mass_heal.usageContext).toBe('combat');
+    expect(SKILL_DEFS.purify.usageContext).toBe('combat');
+  });
 });
 
 function cleanupGuildTestCharacter(characterId: string): void {

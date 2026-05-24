@@ -1460,8 +1460,8 @@ function inferSkillUsageContext(def: RawSkillDef): SkillUsageContext {
   if (def.type === 'passive') return 'both';
   if (def.id === 'inspect') return 'field';
   if (def.id === 'first_aid') return 'both';
-  if (def.special?.isHeal || def.special?.removeDebuffs) return 'both';
-  if (def.targetType === 'single_ally' || def.targetType === 'all_allies') return 'both';
+  if (def.special?.isHeal && def.targetType === 'single_ally') return 'both';
+  if (def.targetType === 'single_ally' || def.targetType === 'all_allies') return 'combat';
   if (def.targetType === 'single_enemy' || def.targetType === 'all_enemies') return 'combat';
   return 'combat';
 }

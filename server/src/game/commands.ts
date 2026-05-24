@@ -1598,14 +1598,41 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  const fieldEffect = applyFieldSkillEffect(char, skillDef);
-  if (fieldEffect.handled) {
-    if (fieldEffect.message?.includes('已經是滿的')) {
-      sendSystem(session.sessionId, fieldEffect.message);
+  if (skillDef.id === 'inspect') {
+    if (!target) {
+      sendError(session.sessionId, '觀察需要指定目標。');
       return;
     }
     spendSkillResource(char, skillDef.resourceCost);
     saveCharacter(char);
+    cmdStatus(session);
+    sendSystem(session.sessionId, `你使用了「${skillDef.name}」。`);
+    cmdInspect(session, target);
+    classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
+    if (isQuestSupportSkill(skillDef)) {
+      questMgr.updateProgress(char.id, 'use_support_skill', matchedSkill.skillId);
+    }
+    tutorialMgr.advanceStep(char.id, 'skill');
+    return;
+  }
+
+  const fieldTarget = target && skillDef.targetType === 'single_ally' ? findCharacterByName(target) : null;
+  if (target && skillDef.targetType === 'single_ally' && !fieldTarget) {
+    sendError(session.sessionId, `找不到技能目標「${target}」。`);
+    return;
+  }
+
+  const fieldEffect = applyFieldSkillEffect(char, skillDef, fieldTarget ?? char);
+  if (fieldEffect.handled) {
+    if (fieldEffect.consumeResource === false) {
+      sendSystem(session.sessionId, fieldEffect.message ?? '技能沒有可作用的目標。');
+      return;
+    }
+    spendSkillResource(char, skillDef.resourceCost);
+    saveCharacter(char);
+    if (fieldEffect.target && fieldEffect.target.id !== char.id) {
+      saveCharacter(fieldEffect.target);
+    }
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」，${fieldEffect.message ?? '生效了。'}`);
   } else {
