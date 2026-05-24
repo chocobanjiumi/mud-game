@@ -345,6 +345,34 @@ describe('CombatEngine', () => {
       expect(state.enemyTeam[1].hp).toBeLessThan(999);
       vi.restoreAllMocks();
     });
+
+    it('does not spend resources when a skill falls back for insufficient resource', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'mage',
+        stats: { str: 5, int: 40, dex: 100, vit: 10, luk: 5 },
+        resource: 5,
+        maxResource: 50,
+        resourceType: 'mp',
+        mp: 5,
+        maxMp: 50,
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      const accepted = engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'fireball',
+        targetId: monster.instanceId,
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(accepted).toBe(true);
+      expect(state.playerTeam[0].resource).toBe(5);
+      expect(state.playerTeam[0].mp).toBe(5);
+      vi.restoreAllMocks();
+    });
   });
 
   // ── Victory condition ──

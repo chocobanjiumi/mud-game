@@ -1300,7 +1300,7 @@ export class CombatEngine {
     }
   }
 
-  /** 每回合資源回復（遊俠系：能量 +15） */
+  /** 每回合資源回復（遊俠系：專注 +15） */
   private processResourceRegen(session: CombatSession, log: string[]): void {
     const allCombatants = [
       ...session.state.playerTeam,
@@ -1310,13 +1310,13 @@ export class CombatEngine {
     for (const c of allCombatants) {
       if (c.isDead) continue;
 
-      // 遊俠系：每回合能量 +15
+      // 遊俠系：每回合專注 +15
       if (c.resourceType === 'energy') {
         const before = c.resource;
         c.resource = Math.min(c.maxResource, c.resource + 15 + this.getCombatantResourceAffixBonus(c.id, c.isPlayer, 'focusRegen'));
         const actual = c.resource - before;
         if (actual > 0) {
-          log.push(`${c.name}恢復了 ${actual} 點能量。`);
+          log.push(`${c.name}恢復了 ${actual} 點專注。`);
         }
       }
 
