@@ -1,5 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
-import type { ItemRarity } from '@game/shared';
+import type { AffixDef, ItemRarity, ItemStats } from '@game/shared';
 import { ITEM_DEFS } from '@game/shared';
 
 const RARITY_COLORS: Record<ItemRarity, string> = {
@@ -42,8 +42,43 @@ const STAT_DISPLAY_NAMES: Record<string, string> = {
   vit: '體力',
   luk: '幸運',
   critRate: '暴擊率',
+  critDamage: '暴擊傷害',
+  hitRate: '命中率',
   dodgeRate: '迴避率',
 };
+
+function combineStats(
+  base: Partial<ItemStats> | undefined,
+  affixes: AffixDef[] | undefined,
+): Record<string, number> {
+  const total: Record<string, number> = { ...(base as Record<string, number> | undefined ?? {}) };
+  for (const affix of affixes ?? []) {
+    for (const [key, value] of Object.entries(affix.stats ?? {})) {
+      total[key] = (total[key] ?? 0) + value;
+    }
+  }
+  return total;
+}
+
+function describeAffix(affix: AffixDef): string {
+  const parts: string[] = [];
+  for (const [key, value] of Object.entries(affix.stats ?? {})) {
+    const label = STAT_DISPLAY_NAMES[key] ?? key;
+    parts.push(`${label} ${value > 0 ? '+' : ''}${value}`);
+  }
+  for (const [key, value] of Object.entries(affix.skillModifiers ?? {})) {
+    parts.push(`${key} ${value > 0 ? '+' : ''}${value}`);
+  }
+  for (const [key, value] of Object.entries(affix.resourceModifiers ?? {})) {
+    parts.push(`${key} ${value > 0 ? '+' : ''}${value}`);
+  }
+  if (affix.skillTags?.length) parts.push(`技能:${affix.skillTags.join('/')}`);
+  if (affix.skillIds?.length) parts.push(`指定:${affix.skillIds.join('/')}`);
+  if (affix.trigger) parts.push(`觸發:${affix.trigger}`);
+  if (affix.condition) parts.push(`條件:${affix.condition}`);
+  if (parts.length === 0 && affix.behavior) parts.push(affix.behavior);
+  return parts.join('、');
+}
 
 export default function ItemTooltip() {
   const tooltipItem = useGameStore((s) => s.tooltipItem);
@@ -55,6 +90,7 @@ export default function ItemTooltip() {
 
   const rarityColor = RARITY_COLORS[tooltipItem.rarity] ?? RARITY_COLORS.common;
   const rarityLabel = RARITY_LABELS[tooltipItem.rarity] ?? '普通';
+  const totalStats = combineStats(tooltipItem.stats, tooltipItem.affixes);
 
   // Equipment comparison: find currently equipped item in the same slot
   const isEquippable = !!tooltipItem.equipSlot;
@@ -66,15 +102,15 @@ export default function ItemTooltip() {
   let comparisonDiffs: Record<string, number> | null = null;
   if (isEquippable && !isEquipped && tooltipItem.equipSlot && equipment) {
     const equippedItemId = equipment[tooltipItem.equipSlot as keyof typeof equipment];
-    if (equippedItemId && tooltipItem.stats) {
+    if (equippedItemId && Object.keys(totalStats).length > 0) {
       // 從 ITEM_DEFS 取得已裝備道具的數值
       const equippedDef = ITEM_DEFS[equippedItemId];
       const equippedStats = equippedDef?.stats as Record<string, number> | undefined;
       if (equippedStats) {
-        const allKeys = new Set([...Object.keys(tooltipItem.stats), ...Object.keys(equippedStats)]);
+        const allKeys = new Set([...Object.keys(totalStats), ...Object.keys(equippedStats)]);
         comparisonDiffs = {};
         for (const key of allKeys) {
-          const newVal = (tooltipItem.stats as Record<string, number>)[key] ?? 0;
+          const newVal = totalStats[key] ?? 0;
           const oldVal = equippedStats[key] ?? 0;
           const diff = newVal - oldVal;
           if (diff !== 0) comparisonDiffs[key] = diff;
@@ -112,9 +148,9 @@ export default function ItemTooltip() {
       </div>
 
       {/* Stats */}
-      {tooltipItem.stats && Object.keys(tooltipItem.stats).length > 0 && (
+      {Object.keys(totalStats).length > 0 && (
         <div className="item-tooltip-stats">
-          {Object.entries(tooltipItem.stats).map(([key, value]) => {
+          {Object.entries(totalStats).map(([key, value]) => {
             if (value === 0 || value === undefined) return null;
             const displayName = STAT_DISPLAY_NAMES[key] ?? key;
             const isPositive = value > 0;
@@ -153,9 +189,9 @@ export default function ItemTooltip() {
         <div className="item-tooltip-stats">
           <div className="text-[10px] text-text-dim mb-0.5">詞綴</div>
           {tooltipItem.affixes.map((affix) => (
-            <div key={affix.id} className="item-tooltip-stat-line">
+            <div key={affix.id} className="item-tooltip-stat-line items-start gap-2">
               <span className="text-text-bright">{affix.name}</span>
-              <span className="text-text-dim">{affix.tier}</span>
+              <span className="text-text-dim text-right">{affix.tier} {describeAffix(affix)}</span>
             </div>
           ))}
         </div>

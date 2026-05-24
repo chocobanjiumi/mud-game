@@ -19,6 +19,7 @@ import {
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
+  generateEquipmentInstance, toBaseEquipmentDef,
   calculateMaxHp, calculateMaxMp,
   calculateAtk, calculateMatk, calculateDef, calculateMdef,
   calculateCritRate, calculateDodgeRate, calculateHitRate,
@@ -1173,6 +1174,27 @@ function formatDuration(ms: number): string {
   return `${minutes} 分 ${seconds.toString().padStart(2, '0')} 秒`;
 }
 
+function addLootItemToInventory(char: Character, itemId: string, quantity: number): string[] {
+  const def = ITEM_DEFS[itemId];
+  const baseEquipment = toBaseEquipmentDef(def);
+  if (!baseEquipment) {
+    addInventoryItem(char.id, itemId, quantity);
+    return [def?.name ?? itemId];
+  }
+
+  const names: string[] = [];
+  for (let i = 0; i < quantity; i++) {
+    const instance = generateEquipmentInstance(baseEquipment, {
+      luk: char.stats.luk,
+      classId: char.classId,
+      sourceTags: baseEquipment.sourceTags,
+    });
+    addInventoryItem(char.id, itemId, 1, false, instance);
+    names.push(`${def?.name ?? itemId}${instance.quality !== 'normal' ? `（${instance.quality}）` : ''}`);
+  }
+  return names;
+}
+
 function cmdInventory(session: WsSession): void {
   const char = getChar(session);
   if (!char) return;
@@ -1742,7 +1764,7 @@ function cmdEquip(session: WsSession, itemName: string): void {
   const inv = getInventory(char.id);
   const match = inv.find((item) => {
     const def = ITEM_DEFS[item.itemId];
-    return def && (def.name === itemName || item.itemId === itemName);
+    return def && (def.name === itemName || item.itemId === itemName || item.itemInstanceId === itemName);
   });
   if (!match) { sendError(session.sessionId, `背包中沒有「${itemName}」。`); return; }
 
@@ -1760,13 +1782,13 @@ function cmdEquip(session: WsSession, itemName: string): void {
   const equipped = getEquippedItems(char.id);
   for (const eq of equipped) {
     const eqDef = ITEM_DEFS[eq.itemId];
-    if (eqDef?.equipSlot === targetSlot && eq.itemId !== match.itemId) {
-      setEquipped(char.id, eq.itemId, false);
+    if (eqDef?.equipSlot === targetSlot && eq.itemInstanceId !== match.itemInstanceId) {
+      setEquipped(char.id, eq.itemId, false, eq.itemInstanceId);
       sendSystem(session.sessionId, `你卸下了「${eqDef.name}」。`);
     }
   }
 
-  setEquipped(char.id, match.itemId, true);
+  setEquipped(char.id, match.itemId, true, match.itemInstanceId);
   sendSystem(session.sessionId, `你裝備了「${def.name}」。`);
   cmdInventory(session);
 
@@ -1783,12 +1805,12 @@ function cmdUnequip(session: WsSession, itemName: string): void {
   const match = inv.find((item) => {
     if (!item.equipped) return false;
     const def = ITEM_DEFS[item.itemId];
-    return def && (def.name === itemName || item.itemId === itemName);
+    return def && (def.name === itemName || item.itemId === itemName || item.itemInstanceId === itemName);
   });
   if (!match) { sendError(session.sessionId, `你沒有裝備「${itemName}」。`); return; }
 
   const def = ITEM_DEFS[match.itemId];
-  setEquipped(char.id, match.itemId, false);
+  setEquipped(char.id, match.itemId, false, match.itemInstanceId);
   sendSystem(session.sessionId, `你卸下了「${def?.name ?? itemName}」。`);
   cmdInventory(session);
 }
@@ -2171,9 +2193,9 @@ function cmdUse(session: WsSession, itemName: string): void {
         goldReward += goldAmount;
       } else {
         const lootItem = lootTable[Math.floor(Math.random() * lootTable.length)];
-        addInventoryItem(char.id, lootItem, 1);
+        const grantedNames = addLootItemToInventory(char, lootItem, 1);
         const lootDef = ITEM_DEFS[lootItem];
-        obtainedItems.push(lootDef?.name ?? lootItem);
+        obtainedItems.push(...(grantedNames.length > 0 ? grantedNames : [lootDef?.name ?? lootItem]));
       }
     }
 
@@ -2318,10 +2340,11 @@ function cmdLoot(session: WsSession, target: string): void {
     }
 
     for (const item of assignedLoot.items) {
-      addInventoryItem(recipient.id, item.itemId, item.quantity);
+      const grantedNames = addLootItemToInventory(recipient, item.itemId, item.quantity);
       questMgr.updateProgress(recipient.id, 'collect_item', item.itemId);
       const def = ITEM_DEFS[item.itemId];
-      sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
+      const itemText = grantedNames.length > 1 ? grantedNames.join('、') : `${def?.name ?? item.itemId} x${item.quantity}`;
+      sendSystem(getSessionByCharacterId(recipient.id)?.sessionId ?? session.sessionId, `獲得 ${itemText}`);
       announceLootItem(recipient, item.itemId, result.corpse?.roomId ?? char.roomId);
     }
 
@@ -2333,7 +2356,7 @@ function cmdLoot(session: WsSession, target: string): void {
   }
 
   for (const item of personalQuestItems) {
-    addInventoryItem(char.id, item.itemId, item.quantity);
+    addLootItemToInventory(char, item.itemId, item.quantity);
     questMgr.updateProgress(char.id, 'collect_item', item.itemId);
     const def = ITEM_DEFS[item.itemId];
     sendSystem(session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
@@ -2391,12 +2414,12 @@ function cmdDrop(session: WsSession, itemName: string): void {
   const inv = getInventory(char.id);
   const match = inv.find((item) => {
     const def = ITEM_DEFS[item.itemId];
-    return def && (def.name === itemName || item.itemId === itemName) && !item.equipped;
+    return def && (def.name === itemName || item.itemId === itemName || item.itemInstanceId === itemName) && !item.equipped;
   });
   if (!match) { sendError(session.sessionId, `背包中沒有「${itemName}」。`); return; }
 
   const def = ITEM_DEFS[match.itemId];
-  removeInventoryItem(char.id, match.itemId, 1);
+  removeInventoryItem(char.id, match.itemId, 1, match.itemInstanceId);
   sendSystem(session.sessionId, `你丟棄了「${def?.name ?? itemName}」。`);
 }
 

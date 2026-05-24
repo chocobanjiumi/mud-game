@@ -81,6 +81,8 @@ export interface ItemStats {
   vit?: number;
   luk?: number;
   critRate?: number;
+  critDamage?: number;
+  hitRate?: number;
   dodgeRate?: number;
 }
 

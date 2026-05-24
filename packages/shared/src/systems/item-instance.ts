@@ -10,13 +10,30 @@ export type AffixPool = 'numeric' | 'combat' | 'behavior' | 'class';
 export interface AffixDef {
   id: string;
   name: string;
+  kind?: 'prefix' | 'suffix' | 'fixed' | 'behavior';
   pool: AffixPool;
   tier: AffixTier;
   appliesTo: EquipSlot[];
+  itemLevelMin?: number;
+  itemLevelMax?: number;
   classTags?: string[];
   skillTags?: SkillTag[];
+  skillIds?: string[];
+  weaponTypes?: string[];
   stats?: Partial<ItemStats>;
   behavior?: string;
+  trigger?: 'on_hit' | 'on_block' | 'on_dodge' | 'on_kill' | 'on_cast' | 'on_heal';
+  condition?: 'low_hp' | 'first_hit' | 'approaching_target';
+  internalCooldownRounds?: number;
+  resourceModifiers?: Partial<Record<'rageGain' | 'focusRegen' | 'mpRegen' | 'faithDelta', number>>;
+  skillModifiers?: {
+    resourceCostPct?: number;
+    damagePct?: number;
+    healingPct?: number;
+    cooldownDelta?: number;
+    rangeDelta?: number;
+    arrivalTicksDelta?: number;
+  };
 }
 
 export interface ItemQualityRule {
@@ -71,31 +88,32 @@ export const QUALITY_RULES: Record<ItemQuality, ItemQualityRule> = {
 
 export const AFFIX_POOLS: Record<AffixPool, AffixDef[]> = {
   numeric: [
-    { id: 'numeric_str_t1', name: '力量', pool: 'numeric', tier: 'T1', appliesTo: ['weapon', 'hands', 'ring', 'necklace'], stats: { str: 1 } },
-    { id: 'numeric_int_t2', name: '智識', pool: 'numeric', tier: 'T2', appliesTo: ['weapon', 'head', 'earring', 'necklace'], stats: { int: 2 } },
-    { id: 'numeric_vit_t3', name: '堅韌', pool: 'numeric', tier: 'T3', appliesTo: ['head', 'body', 'belt', 'feet'], stats: { vit: 3 } },
-    { id: 'numeric_dex_t4', name: '精準', pool: 'numeric', tier: 'T4', appliesTo: ['weapon', 'hands', 'feet', 'ring'], stats: { dex: 4 } },
-    { id: 'numeric_luk_t5', name: '天運', pool: 'numeric', tier: 'T5', appliesTo: ['ring', 'earring', 'necklace'], stats: { luk: 5 } },
+    { id: 'numeric_str_t1', name: '力量', kind: 'prefix', pool: 'numeric', tier: 'T1', appliesTo: ['weapon', 'hands', 'ring', 'necklace'], itemLevelMin: 1, itemLevelMax: 20, stats: { str: 1 } },
+    { id: 'numeric_int_t2', name: '智識', kind: 'prefix', pool: 'numeric', tier: 'T2', appliesTo: ['weapon', 'head', 'earring', 'necklace'], itemLevelMin: 8, itemLevelMax: 30, stats: { int: 2 } },
+    { id: 'numeric_vit_t3', name: '堅韌', kind: 'prefix', pool: 'numeric', tier: 'T3', appliesTo: ['head', 'body', 'belt', 'feet'], itemLevelMin: 18, itemLevelMax: 45, stats: { vit: 3 } },
+    { id: 'numeric_dex_t4', name: '精準', kind: 'prefix', pool: 'numeric', tier: 'T4', appliesTo: ['weapon', 'hands', 'feet', 'ring'], itemLevelMin: 32, itemLevelMax: 60, stats: { dex: 4 } },
+    { id: 'numeric_luk_t5', name: '天運', kind: 'prefix', pool: 'numeric', tier: 'T5', appliesTo: ['ring', 'earring', 'necklace'], itemLevelMin: 45, stats: { luk: 5 } },
   ],
   combat: [
-    { id: 'combat_atk_t1', name: '銳利', pool: 'combat', tier: 'T1', appliesTo: ['weapon', 'hands'], stats: { atk: 3 } },
-    { id: 'combat_def_t2', name: '守勢', pool: 'combat', tier: 'T2', appliesTo: ['head', 'body', 'hands', 'feet', 'belt'], stats: { def: 4 } },
-    { id: 'combat_crit_t3', name: '會心', pool: 'combat', tier: 'T3', appliesTo: ['weapon', 'ring', 'earring'], stats: { critRate: 2 } },
-    { id: 'combat_mdef_t4', name: '魔障', pool: 'combat', tier: 'T4', appliesTo: ['head', 'body', 'necklace'], stats: { mdef: 8 } },
-    { id: 'combat_overpower_t5', name: '破滅', pool: 'combat', tier: 'T5', appliesTo: ['weapon', 'ring'], stats: { atk: 12 } },
+    { id: 'combat_atk_t1', name: '銳利', kind: 'suffix', pool: 'combat', tier: 'T1', appliesTo: ['weapon', 'hands'], itemLevelMin: 1, itemLevelMax: 24, stats: { atk: 3 } },
+    { id: 'combat_def_t2', name: '守勢', kind: 'suffix', pool: 'combat', tier: 'T2', appliesTo: ['head', 'body', 'hands', 'feet', 'belt'], itemLevelMin: 8, itemLevelMax: 35, stats: { def: 4 } },
+    { id: 'combat_crit_t3', name: '會心', kind: 'suffix', pool: 'combat', tier: 'T3', appliesTo: ['weapon', 'ring', 'earring'], itemLevelMin: 18, itemLevelMax: 50, stats: { critRate: 2, critDamage: 4 } },
+    { id: 'combat_mdef_t4', name: '魔障', kind: 'suffix', pool: 'combat', tier: 'T4', appliesTo: ['head', 'body', 'necklace'], itemLevelMin: 32, stats: { mdef: 8 } },
+    { id: 'combat_overpower_t5', name: '破滅', kind: 'suffix', pool: 'combat', tier: 'T5', appliesTo: ['weapon', 'ring'], itemLevelMin: 45, stats: { atk: 12, hitRate: 3 } },
   ],
   behavior: [
-    { id: 'behavior_guard_t1', name: '護持', pool: 'behavior', tier: 'T1', appliesTo: ['body', 'belt'], skillTags: ['defense'], behavior: 'reduce_first_hit' },
-    { id: 'behavior_focus_t2', name: '專注', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], skillTags: ['resource'], behavior: 'reduce_resource_cost' },
-    { id: 'behavior_swift_t3', name: '疾行', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], skillTags: ['mobility'], behavior: 'bonus_after_dodge' },
-    { id: 'behavior_counter_t4', name: '反擊', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], skillTags: ['control'], behavior: 'counter_on_block' },
-    { id: 'behavior_execute_t5', name: '處決', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], skillTags: ['burst'], behavior: 'execute_low_hp' },
+    { id: 'behavior_guard_t1', name: '護持', kind: 'behavior', pool: 'behavior', tier: 'T1', appliesTo: ['body', 'belt'], itemLevelMin: 1, itemLevelMax: 24, skillTags: ['defense'], behavior: 'reduce_first_hit', trigger: 'on_block', condition: 'first_hit', skillModifiers: { damagePct: -6 } },
+    { id: 'behavior_burst_t1', name: '蓄勢', kind: 'behavior', pool: 'behavior', tier: 'T1', appliesTo: ['weapon', 'ring'], itemLevelMin: 1, itemLevelMax: 24, skillTags: ['burst'], behavior: 'burst_damage', trigger: 'on_cast', skillModifiers: { damagePct: 3 } },
+    { id: 'behavior_focus_t2', name: '專注', kind: 'behavior', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], itemLevelMin: 8, itemLevelMax: 35, skillTags: ['resource'], behavior: 'reduce_resource_cost', trigger: 'on_cast', skillModifiers: { resourceCostPct: -8 } },
+    { id: 'behavior_swift_t3', name: '疾行', kind: 'behavior', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['mobility'], behavior: 'bonus_after_dodge', trigger: 'on_dodge', stats: { dodgeRate: 3 } },
+    { id: 'behavior_counter_t4', name: '反擊', kind: 'behavior', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], itemLevelMin: 32, skillTags: ['control'], behavior: 'counter_on_block', trigger: 'on_block', resourceModifiers: { rageGain: 3 } },
+    { id: 'behavior_execute_t5', name: '處決', kind: 'behavior', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], itemLevelMin: 45, skillTags: ['burst'], behavior: 'execute_low_hp', trigger: 'on_hit', condition: 'low_hp', skillModifiers: { damagePct: 10 } },
   ],
   class: [
-    { id: 'class_swordsman_t2', name: '劍士節奏', pool: 'class', tier: 'T2', appliesTo: ['weapon', 'ring'], classTags: ['swordsman', 'knight', 'berserker', 'sword_saint'], stats: { atk: 5 } },
-    { id: 'class_mage_t3', name: '法師迴路', pool: 'class', tier: 'T3', appliesTo: ['weapon', 'earring'], classTags: ['mage', 'archmage', 'warlock', 'chronomancer'], stats: { matk: 6 } },
-    { id: 'class_ranger_t4', name: '遊俠步伐', pool: 'class', tier: 'T4', appliesTo: ['weapon', 'feet'], classTags: ['ranger', 'marksman', 'assassin', 'beast_master'], stats: { dex: 5 } },
-    { id: 'class_priest_t5', name: '祭司信念', pool: 'class', tier: 'T5', appliesTo: ['weapon', 'necklace'], classTags: ['priest', 'high_priest', 'druid', 'inquisitor'], stats: { mdef: 10 } },
+    { id: 'class_swordsman_t2', name: '戰士節奏', kind: 'prefix', pool: 'class', tier: 'T2', appliesTo: ['weapon', 'ring'], itemLevelMin: 8, classTags: ['swordsman', 'knight', 'berserker', 'sword_saint'], stats: { atk: 5 }, resourceModifiers: { rageGain: 2 } },
+    { id: 'class_mage_t3', name: '法師迴路', kind: 'prefix', pool: 'class', tier: 'T3', appliesTo: ['weapon', 'earring'], itemLevelMin: 18, classTags: ['mage', 'archmage', 'warlock', 'chronomancer'], stats: { matk: 6 }, resourceModifiers: { mpRegen: 2 } },
+    { id: 'class_ranger_t4', name: '遊俠步伐', kind: 'prefix', pool: 'class', tier: 'T4', appliesTo: ['weapon', 'feet'], itemLevelMin: 32, classTags: ['ranger', 'marksman', 'assassin', 'beast_master'], stats: { dex: 5 }, resourceModifiers: { focusRegen: 2 } },
+    { id: 'class_priest_t5', name: '祭司信念', kind: 'prefix', pool: 'class', tier: 'T5', appliesTo: ['weapon', 'necklace'], itemLevelMin: 45, classTags: ['priest', 'high_priest', 'druid', 'inquisitor'], stats: { mdef: 10 }, resourceModifiers: { faithDelta: 1 } },
   ],
 };
 
@@ -191,6 +209,9 @@ export function getEligibleAffixes(baseItem: BaseEquipmentDef, quality: ItemQual
     .flat()
     .filter(affix => TIER_ORDER.indexOf(affix.tier) >= minTierIndex)
     .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
+    .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
+    .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
+    .filter(affix => !affix.weaponTypes || !baseItem.weaponType || affix.weaponTypes.includes(baseItem.weaponType))
     .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId)));
 }
 
@@ -235,6 +256,18 @@ function rollAffixes(
   if (count === 0) return [];
 
   const pool = [...getEligibleAffixes(baseItem, quality, classId)];
+  if (pool.length < count) {
+    const existingIds = new Set(pool.map(affix => affix.id));
+    const rule = QUALITY_RULES[quality];
+    pool.push(...Object.values(AFFIX_POOLS)
+      .flat()
+      .filter(affix => !existingIds.has(affix.id))
+      .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
+      .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
+      .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
+      .filter(affix => !affix.weaponTypes || !baseItem.weaponType || affix.weaponTypes.includes(baseItem.weaponType))
+      .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId))));
+  }
   const selected: AffixDef[] = [];
   while (selected.length < count && pool.length > 0) {
     const index = pickWeightedAffixIndex(pool, preferredAffixTags, preferredAffixWeight, random);

@@ -159,14 +159,15 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
   }
 
   // ── 命中判定 ──────────────────────────────────────────
-  const hitRate = calcHitRate(attacker.dex, target.dex);
+  const hitRate = Math.max(5, Math.min(100, calcHitRate(attacker.dex, target.dex) + (attacker.hitRate - 95)));
   if (!rollChance(hitRate)) {
     result.isMiss = true;
     return result;
   }
 
   // ── 閃避判定 ──────────────────────────────────────────
-  const dodgeRate = calcDodgeRate(target.dex, target.luk);
+  const baseDodgeRate = calcDodgeRate(target.dex, target.luk);
+  const dodgeRate = Math.max(0, Math.min(80, baseDodgeRate + (target.dodgeRate - baseDodgeRate)));
   if (rollChance(dodgeRate)) {
     result.isDodged = true;
     return result;
@@ -188,7 +189,8 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
   baseDmg = Math.max(1, baseDmg); // 最少 1 點傷害
 
   // ── 暴擊判定 ──────────────────────────────────────────
-  const critRate = calcCritRate(attacker.dex, attacker.luk);
+  const baseCritRate = calcCritRate(attacker.dex, attacker.luk);
+  const critRate = Math.max(0, Math.min(80, baseCritRate + (attacker.critRate - baseCritRate)));
   if (rollChance(critRate)) {
     result.isCrit = true;
     baseDmg = baseDmg * (attacker.critDamage / 100);
@@ -350,6 +352,8 @@ function applyFlatEquipmentStats(result: EquipmentBonusStats, stats: NonNullable
   if (stats.hp) result.bonusHp += stats.hp;
   if (stats.mp) result.bonusMp += stats.mp;
   if (stats.critRate) result.bonusCritRate += stats.critRate;
+  if (stats.critDamage) result.bonusCritDamage += stats.critDamage;
+  if (stats.hitRate) result.bonusHitRate += stats.hitRate;
   if (stats.dodgeRate) result.bonusDodgeRate += stats.dodgeRate;
 }
 

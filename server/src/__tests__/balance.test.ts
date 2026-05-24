@@ -525,6 +525,58 @@ describe('Balance: Item instance generation', () => {
     expect(rareAffixes.filter(affix => affix.pool === 'class').every(affix => affix.classTags?.includes('swordsman'))).toBe(true);
   });
 
+  it('filters affixes by item level bands', () => {
+    const noviceWeapon = { ...toBaseEquipmentDef(ITEM_DEFS.iron_sword)!, level: 1 };
+    const earlyAffixes = getEligibleAffixes(noviceWeapon, 'legendary', 'swordsman');
+
+    expect(earlyAffixes.some(affix => affix.id === 'combat_overpower_t5')).toBe(false);
+    expect(earlyAffixes.every(affix => affix.itemLevelMin === undefined || noviceWeapon.level >= affix.itemLevelMin)).toBe(true);
+  });
+
+  it('applies equipment-derived hit, dodge, crit, and crit damage bonuses in damage rolls', () => {
+    vi.spyOn(Math, 'random').mockReturnValue(0);
+
+    const attacker = {
+      atk: 20,
+      matk: 0,
+      def: 0,
+      mdef: 0,
+      hitRate: 115,
+      dodgeRate: 0,
+      critRate: 80,
+      critDamage: 220,
+      dex: 0,
+      luk: 0,
+    };
+    const target = {
+      atk: 0,
+      matk: 0,
+      def: 0,
+      mdef: 0,
+      hitRate: 95,
+      dodgeRate: 0,
+      critRate: 0,
+      critDamage: 150,
+      dex: 0,
+      luk: 0,
+    };
+
+    const result = calculateDamage({
+      attackerId: 'attacker',
+      targetId: 'target',
+      damageType: 'physical',
+      element: 'none',
+      targetElement: 'none',
+      multiplier: 1,
+      attacker,
+      target,
+    });
+
+    expect(result.isCrit).toBe(true);
+    expect(result.damage).toBeGreaterThanOrEqual(41);
+    vi.restoreAllMocks();
+  });
+
   it('allows LUK to improve quality rolls without opening mythic outside endgame sources', () => {
     expect(rollItemQuality(0, [], () => 0.2)).toBe('fine');
     expect(rollItemQuality(100, [], () => 0.2)).toBe('rare');

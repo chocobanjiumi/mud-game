@@ -182,10 +182,11 @@ export function InventoryView({
                 const itemType = def?.type;
                 const canEquip = itemType === 'weapon' || itemType === 'armor' || itemType === 'accessory';
                 const canUse = itemType === 'consumable';
+                const commandItemId = item.itemInstanceId ?? item.itemId;
                 const actions = [
-                  ...(canEquip ? [{ label: '裝備', command: `equip ${item.itemId}`, tone: 'primary' as const }] : []),
+                  ...(canEquip ? [{ label: '裝備', command: `equip ${commandItemId}`, tone: 'primary' as const }] : []),
                   ...(canUse ? [{ label: '使用', command: `use ${item.itemId}`, tone: 'primary' as const }] : []),
-                  { label: '丟棄', command: `drop ${item.itemId}`, tone: 'danger' as const },
+                  { label: '丟棄', command: `drop ${commandItemId}`, tone: 'danger' as const },
                 ];
                 return (
                   <div

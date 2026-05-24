@@ -5,6 +5,9 @@ export interface SkillAffixModifiers {
   resourceCostReductionPct: number;
   damageBonusPct: number;
   healingBonusPct: number;
+  cooldownDelta: number;
+  rangeDelta: number;
+  arrivalTicksDelta: number;
 }
 
 const TIER_VALUE: Record<string, number> = {
@@ -24,6 +27,9 @@ export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef):
     resourceCostReductionPct: 0,
     damageBonusPct: 0,
     healingBonusPct: 0,
+    cooldownDelta: 0,
+    rangeDelta: 0,
+    arrivalTicksDelta: 0,
   };
 
   for (const affix of getEquippedAffixes(characterId)) {
@@ -46,12 +52,27 @@ export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef):
     if (skillDef.tags.includes('heal')) {
       modifiers.healingBonusPct += tier * 2;
     }
+    if (affix.skillModifiers?.resourceCostPct) {
+      modifiers.resourceCostReductionPct += Math.abs(Math.min(0, affix.skillModifiers.resourceCostPct));
+    }
+    if (affix.skillModifiers?.damagePct && affix.skillModifiers.damagePct > 0) {
+      modifiers.damageBonusPct += affix.skillModifiers.damagePct;
+    }
+    if (affix.skillModifiers?.healingPct && affix.skillModifiers.healingPct > 0) {
+      modifiers.healingBonusPct += affix.skillModifiers.healingPct;
+    }
+    modifiers.cooldownDelta += affix.skillModifiers?.cooldownDelta ?? 0;
+    modifiers.rangeDelta += affix.skillModifiers?.rangeDelta ?? 0;
+    modifiers.arrivalTicksDelta += affix.skillModifiers?.arrivalTicksDelta ?? 0;
   }
 
   return {
     resourceCostReductionPct: Math.min(40, modifiers.resourceCostReductionPct),
     damageBonusPct: Math.min(30, modifiers.damageBonusPct),
     healingBonusPct: Math.min(30, modifiers.healingBonusPct),
+    cooldownDelta: modifiers.cooldownDelta,
+    rangeDelta: modifiers.rangeDelta,
+    arrivalTicksDelta: modifiers.arrivalTicksDelta,
   };
 }
 
@@ -62,6 +83,7 @@ export function getModifiedSkillResourceCost(characterId: string, skillDef: Skil
 }
 
 function affixMatchesSkill(affix: AffixDef, skillDef: SkillDef): boolean {
+  if (affix.skillIds?.includes(skillDef.id)) return true;
   const affixTags = affix.skillTags ?? [];
   if (affixTags.length === 0) return false;
   return affixTags.some(tag => skillDef.tags.includes(tag));
