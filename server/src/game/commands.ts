@@ -1300,8 +1300,7 @@ function cmdAttack(session: WsSession, target: string): void {
         });
         const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
         for (const p of players) {
-          const freshChar = getCharacterById(p.id);
-          if (!freshChar) continue;
+          const freshChar = p;
 
           const activeQuestItemIds = getActiveQuestDropIds(freshChar.id, defeatedMonster.def);
           personalItems[freshChar.id] = lootCalc.calculatePersonalQuestDrops(

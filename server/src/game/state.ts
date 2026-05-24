@@ -288,25 +288,24 @@ export function initGameSystems(): void {
           world.killMonster(char.roomId, monster.instanceId);
 
           // 計算並發放戰利品
-          const freshChar = getCharacterById(characterId);
-          if (freshChar) {
-            const drops = lootCalc.calculateDrops(monster.def, freshChar.stats.luk);
+          if (char) {
+            const drops = lootCalc.calculateDrops(monster.def, char.stats.luk);
             // 經驗值
             if (drops.exp > 0) {
-              const { levelsGained } = addExperienceToCharacter(freshChar, drops.exp);
+              const { levelsGained } = addExperienceToCharacter(char, drops.exp);
               if (levelsGained > 0) {
-                for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(characterId, freshChar);
+                for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(characterId, char);
                 sendToCharacter(characterId, 'system', {
-                  text: `【自動戰鬥】升級了！目前等級 Lv.${freshChar.level}`,
+                  text: `【自動戰鬥】升級了！目前等級 Lv.${char.level}`,
                 });
               }
             }
             // 金幣
             if (drops.gold > 0) {
-              freshChar.gold += drops.gold;
+              char.gold += drops.gold;
               recordGoldProduced(drops.gold);
             }
-            saveCharacter(freshChar);
+            saveCharacter(char);
             // 物品掉落
             for (const item of drops.items) {
               addInventoryItem(characterId, item.itemId, item.quantity);
