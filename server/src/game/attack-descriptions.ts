@@ -31,7 +31,7 @@ const DEFAULT_ATTACK_DESC: AttackDescriptions = {
 //  各武器類型的預設攻擊描述
 // ============================================================
 
-const WEAPON_ATTACK_DESCRIPTIONS: Record<WeaponType, AttackDescriptions> = {
+const WEAPON_ATTACK_DESCRIPTIONS: Partial<Record<WeaponType, AttackDescriptions>> = {
   spear: {
     normal: '{attacker}挺槍突刺，長槍刺向{defender}！',
     critical: '{attacker}的長槍如閃電般貫穿{defender}的防線！暴擊！',
@@ -141,7 +141,7 @@ export function getAttackDescription(
         descriptions = itemDef.attackDescriptions;
       } else if (itemDef.weaponType && WEAPON_ATTACK_DESCRIPTIONS[itemDef.weaponType]) {
         // 其次使用武器類型預設描述
-        descriptions = WEAPON_ATTACK_DESCRIPTIONS[itemDef.weaponType];
+        descriptions = WEAPON_ATTACK_DESCRIPTIONS[itemDef.weaponType] ?? DEFAULT_ATTACK_DESC;
       }
     }
   }

@@ -75,7 +75,7 @@ import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './ori
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
-import { getModifiedSkillResourceCost, getResourceAffixBonus } from './equipment-affixes.js';
+import { getModifiedSkillRuntime, getResourceAffixBonus } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
@@ -1239,7 +1239,8 @@ function cmdSkills(session: WsSession): void {
   for (const ls of classSkills) {
     const def = SKILL_DEFS[ls.skillId];
     if (!def) continue;
-    const typeStr = def.type === 'passive' ? '[被動]' : `[主動 消耗:${def.resourceCost}]`;
+    const runtime = def.type === 'active' ? getModifiedSkillRuntime(char.id, def) : null;
+    const typeStr = def.type === 'passive' ? '[被動]' : `[主動 消耗:${runtime?.resourceCost ?? def.resourceCost} CD:${runtime?.cooldown ?? def.cooldown}]`;
     sendSystem(session.sessionId, `  ${def.name}（${def.englishName}）${typeStr} - ${def.description}`);
   }
 }
@@ -1644,8 +1645,8 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  const resourceCost = getModifiedSkillResourceCost(char.id, skillDef);
-  const resourceCheck = checkSkillResource(char, skillDef, resourceCost);
+  const skillRuntime = getModifiedSkillRuntime(char.id, skillDef, { trigger: skillDef.special?.isHeal ? 'on_heal' : 'on_cast' });
+  const resourceCheck = checkSkillResource(char, skillDef, skillRuntime.resourceCost);
   if (!resourceCheck.ok) {
     sendError(session.sessionId, resourceCheck.message ?? `資源不足！${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
     return;

@@ -26,7 +26,7 @@ import {
   rerollItemAffix,
 } from '../game/item-reforge.js';
 import { getEquipmentStats } from '../game/damage.js';
-import { applyTriggeredAffixEvents, getModifiedSkillResourceCost, getSkillAffixModifiers } from '../game/equipment-affixes.js';
+import { applyTriggeredAffixEvents, getModifiedSkillResourceCost, getModifiedSkillRuntime, getSkillAffixModifiers } from '../game/equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from '../game/skill-resource.js';
 import {
   ensureEconomyStatsTables,
@@ -821,6 +821,50 @@ describe('inventory item instances', () => {
       trigger: 'on_hit',
       targetHpPercent: 20,
     }).damageBonusPct).toBeGreaterThan(0);
+  });
+
+  it('builds modified skill runtime values from equipped affixes', () => {
+    const characterId = 'item-instance-runtime-affix-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-runtime-affix', 'RuntimeAffixHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, true, {
+      itemInstanceId: 'inst_spear_steel_runtime_affix',
+      baseItemId: 'spear_steel',
+      quality: 'legendary',
+      affixes: [
+        {
+          id: 'runtime_cost',
+          name: '省力',
+          pool: 'behavior',
+          tier: 'T3',
+          appliesTo: ['weapon'],
+          skillTags: ['resource'],
+          trigger: 'on_cast',
+          skillModifiers: { resourceCostPct: -10, cooldownDelta: -1 },
+        },
+        {
+          id: 'runtime_cross_room',
+          name: '遠目',
+          pool: 'behavior',
+          tier: 'T3',
+          appliesTo: ['weapon'],
+          skillTags: ['cross_room'],
+          trigger: 'on_hit',
+          skillModifiers: { rangeDelta: 1, arrivalTicksDelta: 1 },
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    const costRuntime = getModifiedSkillRuntime(characterId, SKILL_DEFS.fireball, { trigger: 'on_cast' });
+    const rangeRuntime = getModifiedSkillRuntime(characterId, SKILL_DEFS.fireball, { trigger: 'on_hit' });
+
+    expect(costRuntime.resourceCost).toBeLessThan(SKILL_DEFS.fireball.resourceCost);
+    expect(costRuntime.cooldown).toBe(SKILL_DEFS.fireball.cooldown - 1);
+    expect(rangeRuntime.range).toBe(2);
+    expect(rangeRuntime.arrivalTicks).toBe((SKILL_DEFS.fireball.special?.arrivalTicks as number) + 1);
   });
 
   it('applies triggered affix events for block, kill, and heal resources', () => {

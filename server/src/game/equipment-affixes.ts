@@ -35,6 +35,13 @@ export interface TriggeredAffixResult {
   messages: string[];
 }
 
+export interface ModifiedSkillRuntime {
+  resourceCost: number;
+  cooldown: number;
+  range: number;
+  arrivalTicks?: number;
+}
+
 const TIER_VALUE: Record<string, number> = {
   T1: 1,
   T2: 2,
@@ -111,6 +118,32 @@ export function getModifiedSkillResourceCost(characterId: string, skillDef: Skil
   if (baseCost <= 0) return 0;
   const modifiers = getSkillAffixModifiers(characterId, skillDef);
   return Math.max(1, Math.floor(baseCost * (1 - modifiers.resourceCostReductionPct / 100)));
+}
+
+export function getModifiedSkillRuntime(
+  characterId: string,
+  skillDef: SkillDef,
+  context: SkillAffixContext = {},
+): ModifiedSkillRuntime {
+  const modifiers = getSkillAffixModifiers(characterId, skillDef, context);
+  const resourceCost = skillDef.resourceCost <= 0
+    ? 0
+    : Math.max(1, Math.floor(skillDef.resourceCost * (1 - modifiers.resourceCostReductionPct / 100)));
+  const baseRange = skillDef.special?.crossRoom || skillDef.special?.crossRoomRequiresScout || skillDef.special?.areaScope === 'adjacent_cardinal'
+    ? 1
+    : 0;
+  const rawArrivalTicks = typeof skillDef.special?.arrivalTicks === 'number'
+    ? skillDef.special.arrivalTicks
+    : undefined;
+
+  return {
+    resourceCost,
+    cooldown: Math.max(0, skillDef.cooldown + modifiers.cooldownDelta),
+    range: Math.max(0, baseRange + modifiers.rangeDelta),
+    arrivalTicks: rawArrivalTicks === undefined
+      ? undefined
+      : Math.max(0, rawArrivalTicks + modifiers.arrivalTicksDelta),
+  };
 }
 
 export function applyTriggeredAffixEvents(

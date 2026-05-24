@@ -26,6 +26,7 @@ import {
 import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
 import {
   applyTriggeredAffixEvents,
+  getModifiedSkillRuntime,
   getResourceAffixBonus,
   getSkillAffixModifiers,
   type AffixTriggerContext,
@@ -555,13 +556,11 @@ export class CombatEngine {
     // 資源消耗（使用技能定義的 resourceCost）
     const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
     let resourceCost = skillDef?.resourceCost ?? 5;
-    const resourceAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
+    const skillRuntime = skillDef ? getModifiedSkillRuntime(actor.id, skillDef, {
       trigger: isHealSkill ? 'on_heal' : 'on_cast',
       targetHpPercent: primaryTarget.maxHp > 0 ? (primaryTarget.hp / primaryTarget.maxHp) * 100 : 100,
     }) : null;
-    if (resourceAffixModifiers?.resourceCostReductionPct) {
-      resourceCost = Math.max(1, Math.floor(resourceCost * (1 - resourceAffixModifiers.resourceCostReductionPct / 100)));
-    }
+    if (skillRuntime) resourceCost = skillRuntime.resourceCost;
     // 套裝加成：MP 消耗減免
     if (actor.resourceType === 'mp') {
       const pct = this.getPlayerSetBonusPct(session, actor.id);
