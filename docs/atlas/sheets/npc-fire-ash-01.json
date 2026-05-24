@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_fire_ash_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_fire_ash_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_ashfall_monastery_ashfall_monastery_absolution_witness",
+      "category": "npc",
+      "targetId": "ashfall_monastery_absolution_witness",
+      "name": "艾芙琳",
+      "outputPath": "client/public/images/npcs/npc_ashfall_monastery_ashfall_monastery_absolution_witness.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_ashfall_monastery_ashfall_monastery_bell_caretaker",
+      "category": "npc",
+      "targetId": "ashfall_monastery_bell_caretaker",
+      "name": "歐瑞克",
+      "outputPath": "client/public/images/npcs/npc_ashfall_monastery_ashfall_monastery_bell_caretaker.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_ashfall_monastery_ashfall_monastery_crypt_mapper",
+      "category": "npc",
+      "targetId": "ashfall_monastery_crypt_mapper",
+      "name": "馬洛",
+      "outputPath": "client/public/images/npcs/npc_ashfall_monastery_ashfall_monastery_crypt_mapper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_ashfall_monastery_ashfall_monastery_relic_sister",
+      "category": "npc",
+      "targetId": "ashfall_monastery_relic_sister",
+      "name": "瑟拉菲",
+      "outputPath": "client/public/images/npcs/npc_ashfall_monastery_ashfall_monastery_relic_sister.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

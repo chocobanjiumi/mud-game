@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_fire_ash_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_fire_ash_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_glass_dunes_glass_dunes_sunwright",
+      "category": "npc",
+      "targetId": "glass_dunes_sunwright",
+      "name": "伊蘭",
+      "outputPath": "client/public/images/npcs/npc_glass_dunes_glass_dunes_sunwright.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_glass_dunes_glass_dunes_surveyor",
+      "category": "npc",
+      "targetId": "glass_dunes_surveyor",
+      "name": "瑟琳",
+      "outputPath": "client/public/images/npcs/npc_glass_dunes_glass_dunes_surveyor.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_redrock_badlands_redrock_caravan_quartermaster",
+      "category": "npc",
+      "targetId": "redrock_caravan_quartermaster",
+      "name": "哈坎",
+      "outputPath": "client/public/images/npcs/npc_redrock_badlands_redrock_caravan_quartermaster.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_redrock_badlands_redrock_crater_prospector",
+      "category": "npc",
+      "targetId": "redrock_crater_prospector",
+      "name": "伊卓",
+      "outputPath": "client/public/images/npcs/npc_redrock_badlands_redrock_crater_prospector.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

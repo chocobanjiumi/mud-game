@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_fire_ash_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_fire_ash_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_redrock_badlands_redrock_exile_informant",
+      "category": "npc",
+      "targetId": "redrock_exile_informant",
+      "name": "賽洛",
+      "outputPath": "client/public/images/npcs/npc_redrock_badlands_redrock_exile_informant.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_redrock_badlands_redrock_wreck_scout",
+      "category": "npc",
+      "targetId": "redrock_wreck_scout",
+      "name": "雅菈",
+      "outputPath": "client/public/images/npcs/npc_redrock_badlands_redrock_wreck_scout.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_volcano_zone_dwarf_blacksmith",
+      "category": "npc",
+      "targetId": "dwarf_blacksmith",
+      "name": "矮人鍛造師",
+      "outputPath": "client/public/images/npcs/npc_volcano_zone_dwarf_blacksmith.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_volcano_zone_flame_priest",
+      "category": "npc",
+      "targetId": "flame_priest",
+      "name": "火焰祭司",
+      "outputPath": "client/public/images/npcs/npc_volcano_zone_flame_priest.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

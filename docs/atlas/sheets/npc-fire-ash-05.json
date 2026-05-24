@@ -1,0 +1,18 @@
+{
+  "sheetId": "npc_fire_ash_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_fire_ash_05.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_volcano_zone_mine_foreman",
+      "category": "npc",
+      "targetId": "mine_foreman",
+      "name": "礦工頭目",
+      "outputPath": "client/public/images/npcs/npc_volcano_zone_mine_foreman.png",
+      "row": 0,
+      "column": 0
+    }
+  ]
+}

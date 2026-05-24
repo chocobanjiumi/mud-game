@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_fire_ash_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_fire_ash_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_ember_march_ember_march_ashgate_scout",
+      "category": "npc",
+      "targetId": "ember_march_ashgate_scout",
+      "name": "莉珊",
+      "outputPath": "client/public/images/npcs/npc_ember_march_ember_march_ashgate_scout.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_ember_march_ember_march_banner_marshal_echo",
+      "category": "npc",
+      "targetId": "ember_march_banner_marshal_echo",
+      "name": "奧瑞克",
+      "outputPath": "client/public/images/npcs/npc_ember_march_ember_march_banner_marshal_echo.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_ember_march_ember_march_cinder_apothecary",
+      "category": "npc",
+      "targetId": "ember_march_cinder_apothecary",
+      "name": "寇恩",
+      "outputPath": "client/public/images/npcs/npc_ember_march_ember_march_cinder_apothecary.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_glass_dunes_glass_dunes_mirage_trader",
+      "category": "npc",
+      "targetId": "glass_dunes_mirage_trader",
+      "name": "法希德",
+      "outputPath": "client/public/images/npcs/npc_glass_dunes_glass_dunes_mirage_trader.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
