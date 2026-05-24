@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_coast_water_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_bloodsalt_coast_bloodsalt_coast_reef_biologist",
+      "category": "npc",
+      "targetId": "bloodsalt_coast_reef_biologist",
+      "name": "莉芙",
+      "outputPath": "client/public/images/npcs/npc_bloodsalt_coast_bloodsalt_coast_reef_biologist.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_bloodsalt_coast_bloodsalt_coast_ritual_deserter",
+      "category": "npc",
+      "targetId": "bloodsalt_coast_ritual_deserter",
+      "name": "伊凡",
+      "outputPath": "client/public/images/npcs/npc_bloodsalt_coast_bloodsalt_coast_ritual_deserter.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_bloodsalt_coast_bloodsalt_coast_wrecker_quartermaster",
+      "category": "npc",
+      "targetId": "bloodsalt_coast_wrecker_quartermaster",
+      "name": "瑪洛克",
+      "outputPath": "client/public/images/npcs/npc_bloodsalt_coast_bloodsalt_coast_wrecker_quartermaster.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_deepsea_temple_deepsea_temple_relic_diver",
+      "category": "npc",
+      "targetId": "deepsea_temple_relic_diver",
+      "name": "米菈",
+      "outputPath": "client/public/images/npcs/npc_deepsea_temple_deepsea_temple_relic_diver.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

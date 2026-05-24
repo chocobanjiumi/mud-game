@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_coast_water_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_eastern_coast_shipwright",
+      "category": "npc",
+      "targetId": "shipwright",
+      "name": "造船匠",
+      "outputPath": "client/public/images/npcs/npc_eastern_coast_shipwright.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_alley_broker",
+      "category": "npc",
+      "targetId": "mist_harbor_alley_broker",
+      "name": "薩維",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_alley_broker.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_customs_master",
+      "category": "npc",
+      "targetId": "mist_harbor_customs_master",
+      "name": "葛維克",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_customs_master.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_fishmonger",
+      "category": "npc",
+      "targetId": "mist_harbor_fishmonger",
+      "name": "露莎",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_fishmonger.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
