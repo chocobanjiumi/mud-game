@@ -885,7 +885,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     drops: [],
     aiType: 'passive',
     description:
-      '冒險者碼頭用來測試武器與船上戰鬥姿勢的厚木假人，外層包著舊帆布與繩結。它不會主動攻擊，只作為訓練或教學事件目標。',
+      '冒險者碼頭豎著的厚木假人，外層包著舊帆布與水手繩結，底座被鹽霧泡得發白。靠近時只會隨海風吱呀搖晃。',
     isBoss: false,
     guardianHints: {
       creature: '假人能承受碼頭訓練攻擊，但不代表真實海戰會如此安穩。',
@@ -1080,7 +1080,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     ],
     aiType: 'defensive',
     description:
-      '構裝間維修軌道上啟動的古代試煉機，青銅骨架包覆石甲，胸口鑲著白光核心。牠會掃描符文資格，再以衝撞與晶能槌擊測試闖入者。',
+      '構裝間維修軌道上啟動的古代試煉機，青銅骨架包覆石甲，胸口鑲著白光核心。牠會辨識符文資格，再以衝撞與晶能槌擊驅逐闖入者。',
     isBoss: false,
     isElite: true,
     guardianHints: {
@@ -9085,7 +9085,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     ],
     aiType: 'defensive',
     description:
-      '熱身沙地使用的配重木人，外層包著舊皮甲與沙袋。它不會真正殺人，但會用反彈力提醒新手別把破綻留在正面。',
+      '熱身沙地使用的配重木人，外層包著舊皮甲與沙袋，胸口掛著裂痕木牌。受擊後會以機簧反彈，逼近者必須守住正面破綻。',
     isBoss: false,
     guardianHints: {
       creature: '強化訓練木人防禦高，適合測試輸出節奏。',
@@ -9148,7 +9148,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     ],
     aiType: 'defensive',
     description:
-      '訓練場與護甲架巷常見的重裝對手，塔盾邊緣刻著裂盾分數。牠們不追擊，只一步步壓縮空間，逼隊伍學會破防。',
+      '護甲架巷常見的重裝對手，塔盾邊緣刻著裂盾記號，盔甲內傳出低沉呼吸。牠們一步步壓縮空間，以重盾逼開敵人的防線。',
     isBoss: false,
     guardianHints: {
       creature: '破盾重衛會破防與重砸，先繞背再輸出。',
@@ -9279,7 +9279,7 @@ export const EXPANSION_MONSTERS: Record<string, MonsterDef> = {
     ],
     aiType: 'aggressive',
     description:
-      '獵犬院和王冠獵門附近巡跑的訓練犬群，頸圈掛著小銅鈴。牠們不分貴族或盜獵者，只追逐沒有許可章的氣味。',
+      '獵犬院和王冠獵門附近巡跑的王室犬群，頸圈掛著小銅鈴，鼻端沾著濕草味。牠們不分貴族或盜獵者，只追逐沒有許可章的氣味。',
     isBoss: false,
     guardianHints: {
       creature: '王獵犬群速度快，聽見鈴聲接近時先靠邊站位。',

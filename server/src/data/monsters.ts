@@ -27,7 +27,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
       { itemId: 'small_hp_potion', chance: 0.1, minQty: 1, maxQty: 1 },
     ],
     aiType: 'passive',
-    description: '一團果凍般的半透明生物，在地上緩慢地蠕動。看起來人畜無害，是新手冒險者的最佳練習對象。',
+    description: '一團果凍般的半透明生物，在地上緩慢蠕動，體內浮著草屑與微光氣泡。牠通常只會本能地撲向靠近的腳步。',
     isBoss: false,
     guardianHints: {
       creature: '這隻史萊姆的核心偏右，從側面攻擊更容易命中要害。',
@@ -2487,7 +2487,7 @@ export const MONSTERS: Record<string, MonsterDef> = {
     goldReward: [0, 0],
     drops: [],
     aiType: 'passive',
-    description: '競技場內的練習用假人，外表是稻草編織的人偶。無論怎麼打都不會倒下，是測試傷害輸出的最佳工具。',
+    description: '競技場內的稻草人偶，外層纏著粗麻繩與舊皮革，木樁深釘入沙地。每次受擊都會從關節傳出沉悶回響。',
     isBoss: false,
     guardianHints: {
       creature: '假人的關節處有特殊機關，用特定角度攻擊可以觸發隱藏的連擊訓練模式。試試瞄準接縫處。',

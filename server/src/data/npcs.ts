@@ -5065,7 +5065,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   ancient_ruins_relic_curator: {
     id: 'ancient_ruins_relic_curator',
-    name: '托瑪',
+    name: '塔維恩',
     alias: 'curator',
     title: '遺物整理員',
     description:
@@ -6312,7 +6312,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   underground_city_market_factor: {
     id: 'underground_city_market_factor',
-    name: '托瑪',
+    name: '摩里克',
     alias: 'factor',
     title: '市場管事',
     description:
@@ -7210,7 +7210,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   deepsea_temple_tidekeeper: {
     id: 'deepsea_temple_tidekeeper',
-    name: '瑟恩',
+    name: '賽恩',
     alias: 'tidekeeper',
     title: '潮汐石門守潮人',
     description:
@@ -7990,7 +7990,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   pilgrim_road_caravan_supplier: {
     id: 'pilgrim_road_caravan_supplier',
-    name: '米菈',
+    name: '米蓮',
     alias: 'supplier',
     title: '廢棄旅舍商隊補給商',
     description:
@@ -9234,7 +9234,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   sapphire_lake_claim_surveyor: {
     id: 'sapphire_lake_claim_surveyor',
-    name: '艾芙',
+    name: '艾薇',
     alias: 'surveyor',
     title: '入口採區測脈師',
     description:
@@ -9579,7 +9579,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   kingsroad_market_board_clerk: {
     id: 'kingsroad_market_board_clerk',
-    name: '妮拉',
+    name: '妮莎',
     alias: 'clerk',
     title: '冒險委託板登記員',
     description:
@@ -9819,7 +9819,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   kingsroad_market_guard_sergeant: {
     id: 'kingsroad_market_guard_sergeant',
-    name: '羅文',
+    name: '羅德',
     alias: 'sergeant',
     title: '衛兵亭市集巡長',
     description:
@@ -10013,7 +10013,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   arena_quarter_arms_referee: {
     id: 'arena_quarter_arms_referee',
-    name: '葛倫',
+    name: '格蘭特',
     alias: 'referee',
     title: '武器檢查處裁判',
     description:
@@ -10207,7 +10207,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   royal_hunting_grounds_permit_warden: {
     id: 'royal_hunting_grounds_permit_warden',
-    name: '艾德溫',
+    name: '艾德里安',
     alias: 'warden',
     title: '許可獵屋王室獵監',
     description:
@@ -10441,7 +10441,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   ashfall_monastery_relic_sister: {
     id: 'ashfall_monastery_relic_sister',
-    name: '賽菈',
+    name: '瑟拉菲',
     alias: 'sister',
     title: '聖物庫倖存修女',
     description:
@@ -10848,7 +10848,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   moonshadow_court_mask_seneschal: {
     id: 'moonshadow_court_mask_seneschal',
-    name: '瑟琳',
+    name: '莎緹雅',
     alias: 'seneschal',
     title: '月影假面管事',
     description: '一名管事站在假面舞廳入口，手中托盤上排列著銀面具，每一張都像正在等待新名字。',
@@ -10877,7 +10877,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   moonshadow_court_lantern_peddler: {
     id: 'moonshadow_court_lantern_peddler',
-    name: '米芮',
+    name: '米蘿',
     alias: 'peddler',
     title: '蛾燈小販',
     description: '一名小販坐在蛾燈長廊轉角，攤布上擺滿銀粉瓶、夜花乾瓣與會自行變暗的玻璃杯。',
@@ -10995,7 +10995,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   machine_graveyard_core_auditor: {
     id: 'machine_graveyard_core_auditor',
-    name: '諾亞',
+    name: '諾維克',
     alias: 'auditor',
     title: '核心甦醒監測員',
     description: '一名監測員站在古算核庫門外，耳邊儀器不斷記錄主反應殼傳來的低頻脈衝。',
@@ -11442,7 +11442,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   kingdom_frontier_command_aide: {
     id: 'kingdom_frontier_command_aide',
-    name: '班恩',
+    name: '巴隆',
     alias: 'aide',
     title: '戰圖地堡副官',
     description: '一名副官守在戰圖地堡入口，外套內側縫滿備用軍令，眼神比地圖釘還冷。',
@@ -11459,7 +11459,7 @@ export const NPCS: Record<string, NpcDef> = {
 
   final_battleground_war_scribe: {
     id: 'final_battleground_war_scribe',
-    name: '赫倫',
+    name: '赫爾穆',
     alias: 'scribe',
     title: '終戰入口軍史官',
     description:
