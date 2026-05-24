@@ -22,6 +22,7 @@ import type {
   PvpMode,
   DeathPenalty,
   LocalMapPayload,
+  NpcDialoguePayload,
 } from '@game/shared';
 
 import { loadAudioSettings } from '../audio/AudioManager';
@@ -226,6 +227,8 @@ export interface GameState {
   setRoom: (room: RoomInfo | null) => void;
   selectedEntity: RoomEntity | null;
   setSelectedEntity: (entity: RoomEntity | null) => void;
+  npcDialogue: NpcDialoguePayload | null;
+  setNpcDialogue: (dialogue: NpcDialoguePayload | null) => void;
 
   // Combat
   combat: CombatInfo | null;
@@ -391,6 +394,7 @@ export const useGameStore = create<GameState>((set) => ({
   // Room
   room: null,
   selectedEntity: null,
+  npcDialogue: null,
   setRoom: (room) => set((state) => {
     const selectedEntity = room?.entities?.find((entity) => (
       state.selectedEntity
@@ -401,6 +405,7 @@ export const useGameStore = create<GameState>((set) => ({
     return { room, selectedEntity };
   }),
   setSelectedEntity: (selectedEntity) => set({ selectedEntity }),
+  setNpcDialogue: (npcDialogue) => set({ npcDialogue }),
 
   // Combat
   combat: null,

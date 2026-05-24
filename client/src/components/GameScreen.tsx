@@ -21,6 +21,7 @@ import ChatPanel from './ChatPanel';
 import LeaderboardPanel from './LeaderboardPanel';
 import WorldMap from './WorldMap';
 import AudioSettings from './AudioSettings';
+import NpcDialogueModal from './NpcDialogueModal';
 
 interface GameScreenProps {
   onCommand: (command: string, friendlyEcho?: string) => void;
@@ -213,6 +214,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       <LeaderboardPanel />
       <WorldMap />
       <AudioSettings />
+      <NpcDialogueModal />
       <ItemTooltip />
     </div>
   );

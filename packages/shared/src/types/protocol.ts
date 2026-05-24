@@ -30,6 +30,7 @@ export type ServerMessageType =
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'skill_learned' | 'class_change' | 'trade'
   | 'quest' | 'quest_update' | 'leaderboard' | 'leaderboard_data' | 'map' | 'token_balance'
+  | 'npc_dialogue'
   | 'shop_items' | 'purchase_result' | 'transaction_history' | 'balance_update';
 
 export interface ServerMessage {
@@ -54,6 +55,22 @@ export interface NarrativePayload {
 }
 
 export type InlineEntityPayload = NonNullable<NarrativePayload['entities']>[number];
+
+export interface NpcDialogueOptionPayload {
+  index: number;
+  text: string;
+  command: string;
+}
+
+export interface NpcDialoguePayload {
+  npcId: string;
+  npcName: string;
+  npcTitle: string;
+  npcType: string;
+  nodeId: string;
+  text: string;
+  options: NpcDialogueOptionPayload[];
+}
 
 export type RoomEntityType = 'exit' | 'npc' | 'monster' | 'corpse' | 'gathering' | 'travel' | 'item' | 'player';
 

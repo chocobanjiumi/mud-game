@@ -14,6 +14,7 @@ import type {
   PartyPayload,
   ChatPayload,
   MapPayload,
+  NpcDialoguePayload,
   ShopItemsPayload,
   PurchaseResultPayload,
   TransactionHistoryPayload,
@@ -363,6 +364,12 @@ export function useWebSocket() {
       case 'map': {
         const data = p as unknown as MapPayload;
         s.setMapData(data);
+        break;
+      }
+
+      case 'npc_dialogue': {
+        const data = p as unknown as NpcDialoguePayload;
+        s.setNpcDialogue(data);
         break;
       }
 

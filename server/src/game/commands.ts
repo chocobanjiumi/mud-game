@@ -2268,7 +2268,6 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
 
   let dialogueText = `【${npc.name}】：${node.text}`;
   if (node.options && node.options.length > 0) {
-    dialogueText += '\n';
     for (let i = 0; i < node.options.length; i++) {
       dialogueText += `\n  ${i + 1}. ${node.options[i].text}`;
     }
@@ -2278,7 +2277,20 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
     // 沒有選項，對話結束
     activeDialogues.delete(session.sessionId);
   }
-  sendNarrative(session.sessionId, dialogueText);
+  sendToSession(session.sessionId, 'npc_dialogue' as any, {
+    npcId: npc.id,
+    npcName: npc.name,
+    npcTitle: npc.title,
+    npcType: npc.type,
+    nodeId: node.id,
+    text: node.text,
+    options: (node.options ?? []).map((option, index) => ({
+      index: index + 1,
+      text: option.text,
+      command: `talk ${npc.id} ${index + 1}`,
+    })),
+  });
+  sendNarrative(session.sessionId, dialogueText, 'npc');
 }
 
 /** shop <NPC> — 直接開啟商人 NPC 的商店（跳到 shop 對話節點） */
