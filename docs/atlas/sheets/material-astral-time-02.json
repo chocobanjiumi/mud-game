@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_astral_time_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_astral_time_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_astral_time_comet_shard",
+      "category": "material",
+      "targetId": "comet_shard",
+      "name": "彗星碎片",
+      "outputPath": "client/public/images/materials/material_astral_time_comet_shard.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_construct_gear",
+      "category": "material",
+      "targetId": "construct_gear",
+      "name": "構裝齒輪",
+      "outputPath": "client/public/images/materials/material_astral_time_construct_gear.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_gravity_lens",
+      "category": "material",
+      "targetId": "gravity_lens",
+      "name": "重力透鏡",
+      "outputPath": "client/public/images/materials/material_astral_time_gravity_lens.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_astral_time_lightseal_dust",
+      "category": "material",
+      "targetId": "lightseal_dust",
+      "name": "光封塵",
+      "outputPath": "client/public/images/materials/material_astral_time_lightseal_dust.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_magnetized_meteorite",
+      "category": "material",
+      "targetId": "magnetized_meteorite",
+      "name": "磁化隕鐵",
+      "outputPath": "client/public/images/materials/material_astral_time_magnetized_meteorite.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_memory_reef_pearl",
+      "category": "material",
+      "targetId": "memory_reef_pearl",
+      "name": "記憶礁珠",
+      "outputPath": "client/public/images/materials/material_astral_time_memory_reef_pearl.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
