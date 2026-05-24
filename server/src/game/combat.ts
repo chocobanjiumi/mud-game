@@ -31,6 +31,7 @@ import {
   getSkillAffixModifiers,
   type AffixTriggerContext,
   type TriggeredAffixContext,
+  type TriggeredAffixResult,
 } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 
@@ -676,7 +677,7 @@ export class CombatEngine {
             `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
           );
           if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
-            this.triggerAffixEvents(session, target, 'on_block', log, {
+            dmgResult.damage = this.applyBlockAffixEffects(session, target, actor, dmgResult.damage, log, {
               targetHpPercent,
               isFirstHit: session.state.round === 1,
             });
@@ -820,7 +821,7 @@ export class CombatEngine {
     log.push(`${desc}造成 ${result.damage} 點傷害！${elemText}`);
 
     if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
-      this.triggerAffixEvents(session, target, 'on_block', log, {
+      result.damage = this.applyBlockAffixEffects(session, target, actor, result.damage, log, {
         targetHpPercent: this.getHpPercent(target),
         isFirstHit: session.state.round === 1,
       });
@@ -1556,8 +1557,8 @@ export class CombatEngine {
     trigger: AffixTriggerContext,
     log: string[],
     context: TriggeredAffixContext = {},
-  ): void {
-    if (!owner.isPlayer || owner.isDead) return;
+  ): TriggeredAffixResult[] {
+    if (!owner.isPlayer || owner.isDead) return [];
     const results = applyTriggeredAffixEvents(owner.id, owner, trigger, context, {
       isOnCooldown: affixId => (session.affixCooldowns.get(this.getAffixCooldownKey(owner.id, affixId)) ?? 0) > 0,
       startCooldown: (affixId, rounds) => {
@@ -1567,6 +1568,47 @@ export class CombatEngine {
     for (const result of results) {
       log.push(...result.messages);
     }
+    return results;
+  }
+
+  private applyBlockAffixEffects(
+    session: CombatSession,
+    defender: CombatantState,
+    attacker: CombatantState,
+    damage: number,
+    log: string[],
+    context: TriggeredAffixContext,
+  ): number {
+    const results = this.triggerAffixEvents(session, defender, 'on_block', log, context);
+    let nextDamage = damage;
+
+    for (const result of results) {
+      if (result.affix.behavior === 'reduce_first_hit') {
+        const pct = Math.abs(Math.min(0, result.affix.skillModifiers?.damagePct ?? -6));
+        if (pct > 0) {
+          const before = nextDamage;
+          nextDamage = Math.max(1, Math.floor(nextDamage * (1 - pct / 100)));
+          log.push(`  ${defender.name}的「${result.affix.name}」使格擋傷害降低 ${before - nextDamage} 點。`);
+        }
+      }
+
+      if (result.affix.behavior === 'counter_on_block' && !attacker.isDead) {
+        const defenderStats = this.getCombatStats(session, defender);
+        const counterDamage = Math.max(1, Math.floor(defenderStats.atk * 0.35));
+        attacker.hp = Math.max(0, attacker.hp - counterDamage);
+        log.push(`  ${defender.name}的「${result.affix.name}」反擊${attacker.name}，造成 ${counterDamage} 點傷害。`);
+        if (attacker.hp <= 0) {
+          attacker.isDead = true;
+          log.push(`  ${attacker.name}被反擊擊倒了！`);
+          this.triggerAffixEvents(session, defender, 'on_kill', log, {
+            targetHpPercent: 0,
+            isFirstHit: context.isFirstHit,
+          });
+        }
+      }
+    }
+
+    return nextDamage;
   }
 
   private processAffixCooldowns(session: CombatSession): void {

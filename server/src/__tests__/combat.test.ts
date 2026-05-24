@@ -3,7 +3,8 @@ import { describe, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } 
 import { CombatEngine } from '../game/combat.js';
 import type { Character, MonsterDef, CombatAction } from '@game/shared';
 import type { MonsterInstance } from '../game/world.js';
-import { initDb, closeDb } from '../db/schema.js';
+import { getDb, initDb, closeDb } from '../db/schema.js';
+import { addInventoryItem, setEquipped } from '../db/queries.js';
 
 // ============================================================
 //  Helpers
@@ -514,6 +515,76 @@ describe('CombatEngine', () => {
 
       expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'poison')).toBe(false);
       expect(state.actionLog.some(line => line.includes('淨化'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies block affixes as real mitigation and counter damage', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        id: 'combat-block-affix-player',
+        name: 'BlockAffixHero',
+        level: 10,
+        hp: 200,
+        stats: { str: 30, int: 5, dex: 30, vit: 20, luk: 5 },
+      });
+      getDb().prepare('INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)')
+        .run(player.id, 'combat-block-affix-user', player.name);
+      addInventoryItem(player.id, 'leather_armor', 1, false, {
+        itemInstanceId: 'combat_block_affix_armor',
+        baseItemId: 'leather_armor',
+        quality: 'rare',
+        affixes: [{
+          id: 'behavior_guard_t1',
+          name: '護持',
+          pool: 'behavior',
+          tier: 'T1',
+          appliesTo: ['body'],
+          behavior: 'reduce_first_hit',
+          trigger: 'on_block',
+          condition: 'first_hit',
+          skillModifiers: { damagePct: -6 },
+        }],
+        fixedEffects: [],
+      });
+      addInventoryItem(player.id, 'wooden_shield', 1, false, {
+        itemInstanceId: 'combat_counter_affix_shield',
+        baseItemId: 'wooden_shield',
+        quality: 'rare',
+        affixes: [{
+          id: 'behavior_counter_t4',
+          name: '反擊',
+          pool: 'behavior',
+          tier: 'T4',
+          appliesTo: ['hands'],
+          behavior: 'counter_on_block',
+          trigger: 'on_block',
+          resourceModifiers: { rageGain: 3 },
+        }],
+        fixedEffects: [],
+      });
+      expect(setEquipped(player.id, 'leather_armor', true, 'combat_block_affix_armor')).toBe(true);
+      expect(setEquipped(player.id, 'wooden_shield', true, 'combat_counter_affix_shield')).toBe(true);
+
+      const monster = makeMonsterInstance({
+        id: 'block_test_ogre',
+        name: 'Block Test Ogre',
+        hp: 120,
+        str: 18,
+        dex: 1,
+      });
+      const combatId = engine.startCombat([player], [monster]);
+
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'guard',
+        targetId: player.id,
+      })).toBe(true);
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.enemyTeam[0].hp).toBeLessThan(120);
+      expect(state.actionLog.some(line => line.includes('格擋傷害降低'))).toBe(true);
+      expect(state.actionLog.some(line => line.includes('反擊Block Test Ogre'))).toBe(true);
       vi.restoreAllMocks();
     });
   });

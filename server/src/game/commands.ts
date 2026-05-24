@@ -76,7 +76,7 @@ import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './ori
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
-import { getModifiedSkillRuntime, getResourceAffixBonus } from './equipment-affixes.js';
+import { getModifiedSkillRuntime, getResourceAffixBonus, getSkillAffixModifiers } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
@@ -1795,7 +1795,11 @@ function handleCrossRoomCombatSkill(
     const selected = skillDef.targetType === 'single_enemy'
       ? [parsed.target ? world.findMonsterInRoom(targetRoomId, parsed.target) : candidates[0]].filter((monster): monster is NonNullable<typeof monster> => !!monster)
       : candidates.slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? candidates.length);
-    const arrivalTicks = Math.max(0, runtime.arrivalTicks ?? getNumericSpecial(skillDef, 'arrivalTicks') ?? 1);
+    const hitRuntime = getModifiedSkillRuntime(char.id, skillDef, {
+      trigger: 'on_hit',
+      isApproachingTarget: true,
+    });
+    const arrivalTicks = Math.max(0, hitRuntime.arrivalTicks ?? runtime.arrivalTicks ?? getNumericSpecial(skillDef, 'arrivalTicks') ?? 1);
 
     for (const monster of selected) {
       const damage = applyCrossRoomSkillDamage(char, skillDef, monster);
@@ -1850,7 +1854,13 @@ function applyCrossRoomSkillDamage(char: Character, skillDef: typeof SKILL_DEFS[
     ? char.stats.str * 2 + char.stats.dex
     : char.stats.int * 2;
   const defense = skillDef.damageType === 'physical' ? monster.def.vit : Math.floor((monster.def.int + monster.def.vit) / 2);
-  const damage = Math.max(1, Math.floor(stat * skillDef.multiplier - defense * 0.5));
+  const outputModifiers = getSkillAffixModifiers(char.id, skillDef, {
+    trigger: 'on_hit',
+    targetHpPercent: monster.maxHp > 0 ? (monster.hp / monster.maxHp) * 100 : 100,
+    isApproachingTarget: true,
+  });
+  const multiplier = skillDef.multiplier * (1 + outputModifiers.damageBonusPct / 100);
+  const damage = Math.max(1, Math.floor(stat * multiplier - defense * 0.5));
   monster.hp = Math.max(0, monster.hp - damage);
   if (monster.hp <= 0) monster.isDead = true;
   return damage;
