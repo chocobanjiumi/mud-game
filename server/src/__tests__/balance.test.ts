@@ -778,6 +778,19 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('keeps every active skill connected to a mechanical effect', () => {
+    const commandBackedSkills = new Set(['inspect']);
+    const emptySkills = Object.values(SKILL_DEFS)
+      .filter(skill => skill.type === 'active')
+      .filter(skill => !commandBackedSkills.has(skill.id))
+      .filter(skill => skill.multiplier <= 0)
+      .filter(skill => (skill.effects?.length ?? 0) === 0)
+      .filter(skill => !skill.special || Object.keys(skill.special).length === 0)
+      .map(skill => skill.id);
+
+    expect(emptySkills).toEqual([]);
+  });
+
   it('gives the base adventurer at least four level 1-10 skills', () => {
     const skills = Object.values(SKILL_DEFS).filter(skill =>
       skill.classId === 'adventurer' && skill.learnLevel >= 1 && skill.learnLevel <= 10,
