@@ -312,6 +312,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 5 },
   },
+  bronze_sword: {
+    id: 'bronze_sword', name: '青銅劍', type: 'weapon',
+    description: '以青銅澆鑄後反覆磨利的短劍，劍脊比木劍沉重，刃口帶著溫暖的金褐色光澤。它適合剛離開訓練場的冒險者使用，能應付平原野獸與零散盜匪，但長時間戰鬥後需要回鐵匠鋪重新打磨。', buyPrice: 120, sellPrice: 60,
+    stackable: false, maxStack: 1, levelReq: 3,
+    equipSlot: 'weapon', stats: { atk: 8 },
+  },
   iron_sword: {
     id: 'iron_sword', name: '鐵劍', type: 'weapon',
     description: '一把由鐵匠精心鍛造的長劍，劍刃泛著冷冽的銀光。劍身筆直而厚實，揮動時發出低沉的破風聲。雖不華麗，卻是戰場上值得信賴的利器。', buyPrice: 200, sellPrice: 100,
@@ -419,6 +425,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '用厚實的亞麻布縫製的簡易護甲，雖然無法抵擋利刃，但至少能防止擦傷和蟲咬。穿著輕便舒適，是每位新手冒險者的標準裝備。', buyPrice: 40, sellPrice: 20,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'body', stats: { def: 3 },
+  },
+  wooden_shield: {
+    id: 'wooden_shield', name: '木盾', type: 'armor',
+    description: '用兩層硬木板交錯釘合的小圓盾，外圈包著粗糙鐵皮，背面還留著鐵匠手寫的持握記號。它擋不住沉重戰斧，卻能讓新手在面對狼爪、短刀與飛石時多一分反應空間。', buyPrice: 90, sellPrice: 45,
+    stackable: false, maxStack: 1, levelReq: 2,
+    equipSlot: 'hands', stats: { def: 4, hp: 10 },
   },
   leather_armor: {
     id: 'leather_armor', name: '皮甲', type: 'armor',
@@ -1786,6 +1798,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   antidote: {
     id: 'antidote', name: '解毒劑', type: 'consumable',
     description: '一瓶翠綠色的解毒藥劑，散發著刺鼻的藥草氣味。據說是以七種解毒草藥熬製而成，飲下後體內的毒素會迅速被中和分解。', buyPrice: 15, sellPrice: 7,
+    stackable: true, maxStack: 99, levelReq: 1,
+    useEffect: { type: 'buff', value: 0, duration: 0 },
+  },
+  status_cure: {
+    id: 'status_cure', name: '淨身藥露', type: 'consumable',
+    description: '一瓶透明偏銀的藥露，瓶口封著乾燥薄荷與白鹽紙籤。藥師通常建議在中毒、麻痺或受黑暗濁氣影響後立刻飲用；它的味道苦澀，只能作為緊急淨化輔助，不能取代完整治療。', buyPrice: 35, sellPrice: 17,
     stackable: true, maxStack: 99, levelReq: 1,
     useEffect: { type: 'buff', value: 0, duration: 0 },
   },
