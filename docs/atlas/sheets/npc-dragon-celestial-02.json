@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_dragon_celestial_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_dragon_celestial_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_dragon_valley_dragon_oracle_keeper",
+      "category": "npc",
+      "targetId": "dragon_oracle_keeper",
+      "name": "龍諭守望者",
+      "outputPath": "client/public/images/npcs/npc_dragon_valley_dragon_oracle_keeper.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_dragon_valley_dragon_scale_artisan",
+      "category": "npc",
+      "targetId": "dragon_scale_artisan",
+      "name": "龍鱗匠師",
+      "outputPath": "client/public/images/npcs/npc_dragon_valley_dragon_scale_artisan.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_moonshadow_court_moonshadow_court_decree_witness",
+      "category": "npc",
+      "targetId": "moonshadow_court_decree_witness",
+      "name": "奧菲拉",
+      "outputPath": "client/public/images/npcs/npc_moonshadow_court_moonshadow_court_decree_witness.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_moonshadow_court_moonshadow_court_lantern_peddler",
+      "category": "npc",
+      "targetId": "moonshadow_court_lantern_peddler",
+      "name": "米蘿",
+      "outputPath": "client/public/images/npcs/npc_moonshadow_court_moonshadow_court_lantern_peddler.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

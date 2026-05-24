@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_dragon_celestial_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_dragon_celestial_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_celestial_ruins_celestial_gate_pilgrim",
+      "category": "npc",
+      "targetId": "celestial_gate_pilgrim",
+      "name": "天門朝聖者",
+      "outputPath": "client/public/images/npcs/npc_celestial_ruins_celestial_gate_pilgrim.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_celestial_ruins_celestial_judgment_advocate",
+      "category": "npc",
+      "targetId": "celestial_judgment_advocate",
+      "name": "審判辯護者",
+      "outputPath": "client/public/images/npcs/npc_celestial_ruins_celestial_judgment_advocate.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_celestial_ruins_celestial_reliquary_curator",
+      "category": "npc",
+      "targetId": "celestial_reliquary_curator",
+      "name": "聖物庫管理靈",
+      "outputPath": "client/public/images/npcs/npc_celestial_ruins_celestial_reliquary_curator.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_dragon_valley_dragon_gate_loremaster",
+      "category": "npc",
+      "targetId": "dragon_gate_loremaster",
+      "name": "龍門銘文師",
+      "outputPath": "client/public/images/npcs/npc_dragon_valley_dragon_gate_loremaster.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

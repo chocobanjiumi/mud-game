@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_dragon_celestial_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_dragon_celestial_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_moonshadow_court_moonshadow_court_mask_seneschal",
+      "category": "npc",
+      "targetId": "moonshadow_court_mask_seneschal",
+      "name": "莎緹雅",
+      "outputPath": "client/public/images/npcs/npc_moonshadow_court_moonshadow_court_mask_seneschal.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_sunspire_sunspire_crown_witness",
+      "category": "npc",
+      "targetId": "sunspire_crown_witness",
+      "name": "阿瑞斯特",
+      "outputPath": "client/public/images/npcs/npc_sunspire_sunspire_crown_witness.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_sunspire_sunspire_sunfire_keeper",
+      "category": "npc",
+      "targetId": "sunspire_sunfire_keeper",
+      "name": "索拉",
+      "outputPath": "client/public/images/npcs/npc_sunspire_sunspire_sunfire_keeper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_sunspire_sunspire_trial_archivist",
+      "category": "npc",
+      "targetId": "sunspire_trial_archivist",
+      "name": "伊萊恩",
+      "outputPath": "client/public/images/npcs/npc_sunspire_sunspire_trial_archivist.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
