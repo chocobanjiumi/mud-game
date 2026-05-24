@@ -24,6 +24,8 @@ import type {
   DeathNoticePayload,
   LocalMapPayload,
   NpcDialoguePayload,
+  NearbyCombatPayload,
+  CardinalDirection,
 } from '@game/shared';
 
 import { loadAudioSettings } from '../audio/AudioManager';
@@ -157,6 +159,7 @@ export interface RoomInfo {
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
   entities?: RoomEntity[];
+  nearbyCombat?: NearbyCombatPayload;
 }
 
 // --- Combat state ---
@@ -253,6 +256,8 @@ export interface GameState {
   setInCombat: (inCombat: boolean) => void;
   selectedCombatTargetId: string | null;
   setSelectedCombatTargetId: (id: string | null) => void;
+  selectedCrossRoomDirection: CardinalDirection | null;
+  setSelectedCrossRoomDirection: (direction: CardinalDirection | null) => void;
 
   // Inventory
   inventory: InventoryItem[];
@@ -431,6 +436,7 @@ export const useGameStore = create<GameState>((set) => ({
   // Combat
   combat: null,
   selectedCombatTargetId: null,
+  selectedCrossRoomDirection: null,
   setCombat: (combat) => set((state) => {
     const selectedCombatTargetId = combat?.enemyTeam.some(enemy => (
       !enemy.isDead && enemy.id === state.selectedCombatTargetId
@@ -446,6 +452,7 @@ export const useGameStore = create<GameState>((set) => ({
     selectedCombatTargetId: inCombat ? state.selectedCombatTargetId : null,
   })),
   setSelectedCombatTargetId: (selectedCombatTargetId) => set({ selectedCombatTargetId }),
+  setSelectedCrossRoomDirection: (selectedCrossRoomDirection) => set({ selectedCrossRoomDirection }),
 
   // Inventory
   inventory: [],

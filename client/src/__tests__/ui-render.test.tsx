@@ -228,6 +228,64 @@ describe('key UI component rendering', () => {
             { direction: 'north', targetRoomId: 'north_room', description: '北側草地' },
             { direction: 'east', targetRoomId: 'east_room', description: '東側小徑' },
           ],
+          nearbyCombat: {
+            current: {
+              roomId: 'training_ground',
+              roomName: '訓練場',
+              monsters: [{
+                id: 'monster_green_slime_a',
+                monsterId: 'slime',
+                name: '史萊姆',
+                alias: 'slime',
+                label: '史萊姆#1',
+                level: 1,
+                hp: 30,
+                maxHp: 30,
+                threatTags: [],
+              }],
+            },
+            neighbors: [
+              {
+                direction: 'north',
+                passable: true,
+                roomId: 'north_room',
+                roomName: '北側草地',
+                scouted: true,
+                monsterCount: 1,
+                monsters: [{
+                  id: 'wild_rabbit_1',
+                  monsterId: 'wild_rabbit',
+                  name: '野兔',
+                  alias: 'wild_rabbit',
+                  label: '野兔#1',
+                  level: 1,
+                  hp: 12,
+                  maxHp: 12,
+                  threatTags: ['passive'],
+                }],
+              },
+              {
+                direction: 'east',
+                passable: true,
+                roomId: 'east_room',
+                roomName: '東側小徑',
+                scouted: false,
+                monsterCount: 2,
+              },
+            ],
+            approaching: [{
+              instanceId: 'wolf_approach',
+              monsterId: 'wolf',
+              name: '野狼',
+              alias: 'wolf',
+              sourceDirection: 'north',
+              sourceRoomId: 'north_room',
+              destinationRoomId: 'training_ground',
+              arrivalTicks: 2,
+              hp: 20,
+              maxHp: 20,
+            }],
+          },
         }}
         inCombat={false}
         combat={null}
@@ -238,6 +296,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('跨房技能目標');
     expect(html).toContain('北側');
     expect(html).toContain('東側');
+    expect(html).toContain('北側草地');
+    expect(html).toContain('東側小徑');
     expect(html).toContain('本房');
     expect(html).toContain('史萊姆#1');
   });

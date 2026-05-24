@@ -567,6 +567,30 @@ input::placeholder {
   white-space: nowrap;
 }
 
+.cross-room-target .cross-room-hp {
+  color: var(--color-text-dim);
+  font-size: 8px;
+}
+
+.cross-room-approaching {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.cross-room-approaching span {
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  border: 1px solid rgba(255, 184, 0, 0.28);
+  border-radius: 3px;
+  color: var(--color-text-amber);
+  background: rgba(255, 184, 0, 0.08);
+  font-size: 9px;
+}
+
 .cross-room-adjacent {
   display: flex;
   align-items: center;

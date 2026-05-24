@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { ChatChannel } from '../stores/gameStore';
+import { SKILL_DEFS } from '@game/shared';
 import Terminal from './Terminal';
 import CommandInput from './CommandInput';
 import StatusBar from './StatusBar';
@@ -51,6 +52,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const toggleWorldMap = useGameStore((s) => s.toggleWorldMap);
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
   const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
+  const selectedCrossRoomDirection = useGameStore((s) => s.selectedCrossRoomDirection);
 
   const openWorldMap = useCallback(() => {
     if (!worldMapOpen) {
@@ -120,9 +122,19 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
   const handleUseSkill = useCallback(
     (skillId: string) => {
-      onCommand(`skill ${skillId}${selectedCombatTargetId ? ` ${selectedCombatTargetId}` : ''}`, `使用技能 ${skillId}`);
+      const def = SKILL_DEFS[skillId];
+      const isFourWay = def?.special?.areaScope === 'adjacent_cardinal';
+      const needsDirection = Boolean(def?.special?.crossRoom || def?.special?.crossRoomRequiresScout);
+      const suffix = isFourWay
+        ? ''
+        : needsDirection && selectedCrossRoomDirection
+          ? ` direction:${selectedCrossRoomDirection}`
+          : selectedCombatTargetId
+            ? ` ${selectedCombatTargetId}`
+            : '';
+      onCommand(`skill ${skillId}${suffix}`, `使用技能 ${def?.name ?? skillId}`);
     },
-    [onCommand, selectedCombatTargetId],
+    [onCommand, selectedCombatTargetId, selectedCrossRoomDirection],
   );
 
   return (

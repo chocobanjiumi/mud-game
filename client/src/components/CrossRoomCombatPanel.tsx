@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import type { Direction, RoomEntity, RoomExit } from '@game/shared';
+import type { CardinalDirection, Direction, NearbyCombatMonsterPayload, NearbyCombatNeighborPayload, RoomEntity, RoomExit } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 
-type LaneId = 'self' | Direction;
+type LaneId = 'self' | CardinalDirection;
 
-const CARDINAL_DIRECTIONS: Direction[] = ['north', 'west', 'east', 'south'];
+const CARDINAL_DIRECTIONS: CardinalDirection[] = ['north', 'west', 'east', 'south'];
 
 const DIRECTION_LABEL: Record<Direction, string> = {
   north: '北',
@@ -61,11 +61,20 @@ export function CrossRoomCombatPanelView({
   inCombat: boolean;
   combat: CombatInfo | null;
 }) {
-  const [selectedLane, setSelectedLane] = useState<LaneId>('self');
+  const [selectedLane, setSelectedLaneState] = useState<LaneId>('self');
+  const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
   const roomMonsters = getRoomMonsters(room);
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
+  const nearby = room.nearbyCombat;
+  const neighborByDirection = new Map((nearby?.neighbors ?? []).map((neighbor) => [neighbor.direction, neighbor]));
   const combatEnemies = combat?.enemyTeam.filter((enemy) => !enemy.isDead) ?? [];
   const selectedLabel = selectedLane === 'self' ? '本房' : `${DIRECTION_LABEL[selectedLane]}側`;
+  const currentMonsters = nearby?.current.monsters ?? [];
+
+  const setSelectedLane = (lane: LaneId) => {
+    setSelectedLaneState(lane);
+    setSelectedCrossRoomDirection(lane === 'self' ? null : lane);
+  };
 
   return (
     <section className="cross-room-panel">
@@ -84,6 +93,7 @@ export function CrossRoomCombatPanelView({
         <DirectionLane
           direction="north"
           exit={exitByDirection.get('north')}
+          neighbor={neighborByDirection.get('north')}
           active={selectedLane === 'north'}
           onSelect={setSelectedLane}
         />
@@ -92,6 +102,7 @@ export function CrossRoomCombatPanelView({
         <DirectionLane
           direction="west"
           exit={exitByDirection.get('west')}
+          neighbor={neighborByDirection.get('west')}
           active={selectedLane === 'west'}
           onSelect={setSelectedLane}
         />
@@ -101,12 +112,13 @@ export function CrossRoomCombatPanelView({
           onClick={() => setSelectedLane('self')}
         >
           <span className="cross-room-lane-main">本房</span>
-          <span>{roomMonsters.length > 0 ? `${roomMonsters.length} 隻可見` : '無可見怪物'}</span>
+          <span>{currentMonsters.length || roomMonsters.length ? `${currentMonsters.length || roomMonsters.length} 隻可見` : '無可見怪物'}</span>
           {combatEnemies.length > 0 && <b>{combatEnemies.length} 戰鬥中</b>}
         </button>
         <DirectionLane
           direction="east"
           exit={exitByDirection.get('east')}
+          neighbor={neighborByDirection.get('east')}
           active={selectedLane === 'east'}
           onSelect={setSelectedLane}
         />
@@ -115,6 +127,7 @@ export function CrossRoomCombatPanelView({
         <DirectionLane
           direction="south"
           exit={exitByDirection.get('south')}
+          neighbor={neighborByDirection.get('south')}
           active={selectedLane === 'south'}
           onSelect={setSelectedLane}
         />
@@ -123,9 +136,15 @@ export function CrossRoomCombatPanelView({
 
       <div className="cross-room-detail">
         {selectedLane === 'self' ? (
-          <CurrentRoomTargets monsters={roomMonsters} />
+          <CurrentRoomTargets monsters={roomMonsters} payloadMonsters={currentMonsters} />
         ) : (
-          <AdjacentRoomPreview direction={selectedLane} exit={exitByDirection.get(selectedLane)} />
+          <AdjacentRoomPreview
+            direction={selectedLane}
+            exit={exitByDirection.get(selectedLane)}
+            neighbor={neighborByDirection.get(selectedLane)}
+            approaching={nearby?.approaching.filter((monster) => monster.sourceDirection === selectedLane) ?? []}
+            onSelectDirection={() => setSelectedLane(selectedLane)}
+          />
         )}
       </div>
     </section>
@@ -135,15 +154,24 @@ export function CrossRoomCombatPanelView({
 function DirectionLane({
   direction,
   exit,
+  neighbor,
   active,
   onSelect,
 }: {
-  direction: Direction;
+  direction: CardinalDirection;
   exit: RoomExit | undefined;
+  neighbor?: NearbyCombatNeighborPayload;
   active: boolean;
   onSelect: (lane: LaneId) => void;
 }) {
-  const reachable = Boolean(exit);
+  const reachable = Boolean(neighbor?.passable ?? exit);
+  const monsterText = neighbor
+    ? neighbor.scouted
+      ? `${neighbor.monsterCount} 隻`
+      : neighbor.passable
+        ? neighbor.monsterCount > 0 ? `${neighbor.monsterCount} 未知` : '未偵查'
+        : '牆'
+    : reachable ? '可指定' : '牆';
   return (
     <div
       className={laneClass(active, reachable)}
@@ -156,9 +184,9 @@ function DirectionLane({
         onClick={() => onSelect(direction)}
       >
         <span className="cross-room-lane-main">{DIRECTION_LABEL[direction]}側</span>
-        <span>{reachable ? '可指定' : '牆'}</span>
+        <span>{monsterText}</span>
       </button>
-      {reachable && <b>抵達 --</b>}
+      {reachable && <b>{neighbor?.roomName ?? '可前往'}</b>}
       {reachable && (
         <button
           type="button"
@@ -172,8 +200,14 @@ function DirectionLane({
   );
 }
 
-function CurrentRoomTargets({ monsters }: { monsters: RoomEntity[] }) {
-  if (monsters.length === 0) {
+function CurrentRoomTargets({
+  monsters,
+  payloadMonsters,
+}: {
+  monsters: RoomEntity[];
+  payloadMonsters: NearbyCombatMonsterPayload[];
+}) {
+  if (monsters.length === 0 && payloadMonsters.length === 0) {
     return <div className="cross-room-empty">本房目前沒有可見怪物。</div>;
   }
 
@@ -195,31 +229,92 @@ function CurrentRoomTargets({ monsters }: { monsters: RoomEntity[] }) {
           </button>
         );
       })}
+      {monsters.length === 0 && payloadMonsters.slice(0, 6).map((monster) => (
+        <MonsterChip
+          key={monster.id}
+          monster={monster}
+          onClick={() => sendCommand(`attack ${monster.id}`, `攻擊 ${monster.label ?? monster.name}`)}
+        />
+      ))}
     </div>
   );
 }
 
-function AdjacentRoomPreview({ direction, exit }: { direction: Direction; exit: RoomExit | undefined }) {
-  if (!exit) {
+function AdjacentRoomPreview({
+  direction,
+  exit,
+  neighbor,
+  approaching,
+  onSelectDirection,
+}: {
+  direction: CardinalDirection;
+  exit: RoomExit | undefined;
+  neighbor?: NearbyCombatNeighborPayload;
+  approaching: NonNullable<RoomInfo['nearbyCombat']>['approaching'];
+  onSelectDirection: () => void;
+}) {
+  const passable = neighbor?.passable ?? Boolean(exit);
+  if (!passable) {
     return <div className="cross-room-empty">{DIRECTION_LABEL[direction]}側沒有可通行房間。</div>;
   }
+  const roomTitle = neighbor?.roomName ?? directionTitle(exit, direction);
+  const monsters = neighbor?.monsters ?? [];
 
   return (
     <div className="cross-room-adjacent">
       <div className="min-w-0">
-        <div className="cross-room-adjacent-title">{directionTitle(exit, direction)}</div>
-        <div className="cross-room-adjacent-note">目前後端尚未提供鄰房怪物清單；這裡會顯示怪物頭像、數量與 arrivalTicks。</div>
+        <div className="cross-room-adjacent-title">{roomTitle}</div>
+        <div className="cross-room-adjacent-note">
+          {neighbor?.scouted
+            ? monsters.length > 0 ? `${monsters.length} 隻可見目標` : '已偵查，沒有可見怪物'
+            : `${neighbor?.monsterCount ?? 0} 個未知目標，需要偵查後才能看見詳情`}
+        </div>
+        {approaching.length > 0 && (
+          <div className="cross-room-approaching">
+            {approaching.map((monster) => (
+              <span key={monster.instanceId}>{monster.name} 抵達 {monster.arrivalTicks}</span>
+            ))}
+          </div>
+        )}
+        {monsters.length > 0 && (
+          <div className="cross-room-targets">
+            {monsters.slice(0, 6).map((monster) => (
+              <MonsterChip
+                key={monster.id}
+                monster={monster}
+                onClick={onSelectDirection}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <div className="cross-room-actions">
         <button
           type="button"
           className="cross-room-action cross-room-action-primary"
-          title="跨房技能後端接上後，這個方向會成為下一次技能目標。"
+          title="技能列會使用這個方向作為跨房技能目標。"
+          onClick={onSelectDirection}
         >
           指定
         </button>
       </div>
     </div>
+  );
+}
+
+function MonsterChip({
+  monster,
+  onClick,
+}: {
+  monster: NearbyCombatMonsterPayload;
+  onClick: () => void;
+}) {
+  return (
+    <button type="button" className="cross-room-target" onClick={onClick}>
+      {monster.image ? <img src={monster.image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
+      <small>{monster.label ?? monster.name}</small>
+      <small className="cross-room-hp">HP {monster.hp}/{monster.maxHp}</small>
+    </button>
   );
 }
 
