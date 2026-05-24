@@ -349,6 +349,7 @@ export class EffectEngine {
       mana_shield: '魔力盾',
       thorns: '荊棘',
       mark: '標記',
+      next_shot_damage: '蓄勢射擊',
       damage_reduction: '傷害減免',
       heal_reduction: '治癒減弱',
       invincible: '無敵',

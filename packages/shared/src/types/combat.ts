@@ -52,6 +52,7 @@ export interface CombatantState {
   monsterPhases?: MonsterPhaseRule[];
   currentMonsterPhase?: number;
   pendingTelegraph?: PendingTelegraphAction;
+  isApproaching?: boolean;
 }
 
 export interface ActiveStatusEffect extends StatusEffect {

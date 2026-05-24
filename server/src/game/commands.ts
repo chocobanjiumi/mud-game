@@ -1546,7 +1546,7 @@ function cmdAttack(session: WsSession, target: string): void {
           sendSystem(session.sessionId, `${approaching.name}觸發了${directionChinese(approaching.sourceDirection)}側陷阱，延後 ${delayed?.arrivalTicks ?? trap.arrivalTicksDelta} tick 抵達！`);
           continue;
         }
-        combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id);
+        combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id, { isApproaching: true });
         sendSystem(session.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
       }
     }
@@ -1918,7 +1918,7 @@ function handleCrossRoomCombatSkill(
         hits.push(`${monster.def.name}受到 ${damage} 傷害，arrivalTicks=${approaching.arrivalTicks}`);
         if (approaching.arrivalTicks === 0) {
           const arrived = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === monster.instanceId);
-          if (arrived) combat.addMonsterToCombat(combatId, arrived, char.id);
+          if (arrived) combat.addMonsterToCombat(combatId, arrived, char.id, { isApproaching: true });
         }
       }
     }

@@ -124,7 +124,7 @@ export class CombatEngine {
     this.broadcastFn = fn;
   }
 
-  private monsterToCombatant(m: MonsterInstance): CombatantState {
+  private monsterToCombatant(m: MonsterInstance, options: { isApproaching?: boolean } = {}): CombatantState {
     return {
       id: m.instanceId,
       name: m.def.name,
@@ -144,6 +144,7 @@ export class CombatEngine {
       monsterBehavior: this.getMonsterBehaviorType(m.def),
       monsterPhases: this.getMonsterPhaseRules(m.def),
       currentMonsterPhase: 1,
+      isApproaching: options.isApproaching,
     };
   }
 
@@ -309,7 +310,12 @@ export class CombatEngine {
     return true;
   }
 
-  addMonsterToCombat(combatId: string, monster: MonsterInstance, preferredByPlayerId?: string): boolean {
+  addMonsterToCombat(
+    combatId: string,
+    monster: MonsterInstance,
+    preferredByPlayerId?: string,
+    options: { isApproaching?: boolean } = {},
+  ): boolean {
     const session = this.sessions.get(combatId);
     if (!session || monster.isDead) return false;
     if (session.monsterInstances.has(monster.instanceId)) {
@@ -317,7 +323,7 @@ export class CombatEngine {
       return false;
     }
 
-    const combatant = this.monsterToCombatant(monster);
+    const combatant = this.monsterToCombatant(monster, options);
     session.state.enemyTeam.push(combatant);
     session.monsterInstances.set(monster.instanceId, monster);
     if (preferredByPlayerId) session.preferredTargetIds.set(preferredByPlayerId, monster.instanceId);
@@ -597,8 +603,11 @@ export class CombatEngine {
         resourceCost = Math.max(1, Math.floor(resourceCost * (1 - pct.mpCostReduction / 100)));
       }
     }
-    if (skillDef) {
-      const resourceCheck = checkSkillResource(actor, skillDef, resourceCost);
+    const resourceSkillDef = skillDef
+      ? this.getContextualSkillResourceDef(session, actor, primaryTarget, skillDef)
+      : null;
+    if (skillDef && resourceSkillDef) {
+      const resourceCheck = checkSkillResource(actor, resourceSkillDef, resourceCost);
       if (!resourceCheck.ok) {
         log.push(`${actor.name}的${resourceCheck.message ?? `${this.getResourceLabel(actor.resourceType)}不足`}，改為普通攻擊！`);
         this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
@@ -611,7 +620,7 @@ export class CombatEngine {
       this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
       return;
     }
-    if (skillDef) this.applySkillResourceChangeWithAffixes(actor, skillDef, resourceCost);
+    if (skillDef && resourceSkillDef) this.applySkillResourceChangeWithAffixes(actor, resourceSkillDef, resourceCost);
     else actor.resource -= resourceCost;
     if (skillDef && action.skillId) {
       const cooldown = skillRuntime?.cooldown ?? skillDef.cooldown;
@@ -636,15 +645,22 @@ export class CombatEngine {
 
     for (const target of targets) {
       if (target.isDead) continue;
-      if (skillDef && this.applyNonDamageSkillEffect(actor, target, skillDef, skillName, log)) {
+      if (skillDef && !this.shouldDamageUndeadWithPurify(session, target, skillDef) && this.applyNonDamageSkillEffect(actor, target, skillDef, skillName, log)) {
         continue;
       }
       const outputAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
         trigger: isHealSkill ? 'on_heal' : 'on_hit',
         targetHpPercent: target.maxHp > 0 ? (target.hp / target.maxHp) * 100 : 100,
       }) : null;
+      const targetBaseMultiplier = skillDef && this.shouldDamageUndeadWithPurify(session, target, skillDef)
+        ? 0.7
+        : baseMultiplier;
       const markBonus = this.effectEngine.getEffectValue(target.activeEffects, 'mark');
-      const multiplier = baseMultiplier * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100) * (1 + markBonus / 100);
+      const specialBonus = skillDef ? this.getSpecialDamageBonusPct(session, actor, target, skillDef) : 0;
+      const multiplier = targetBaseMultiplier
+        * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100)
+        * (1 + markBonus / 100)
+        * (1 + specialBonus / 100);
       this.interruptTelegraphIfPossible(actor, target, skillDef, log);
       this.dispelShieldIfPossible(actor, target, skillDef, log);
 
@@ -717,7 +733,13 @@ export class CombatEngine {
               this.gainResource(target, 12 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'rageGain'), log, '因格擋承傷獲得');
             }
           }
+          if (actor.isApproaching && this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
+            const before = dmgResult.damage;
+            dmgResult.damage = Math.max(1, Math.floor(dmgResult.damage * 0.85));
+            log.push(`  ${target.name}穩住陣線，抵住逼近攻勢，傷害降低 ${before - dmgResult.damage} 點。`);
+          }
           this.applyDamageToTarget(session, target, dmgResult.damage, log);
+          this.consumeNextShotDamageBonus(actor, skillDef, log);
           this.triggerMonsterPhases(session, target, log);
           this.applySkillHitResourceEffects(actor, target, skillDef, log);
           this.triggerAffixEvents(session, actor, 'on_hit', log, {
@@ -735,8 +757,10 @@ export class CombatEngine {
 
       if (skillDef?.effects && !dmgResult.isMiss && !dmgResult.isDodged) {
         for (const eff of skillDef.effects) {
+          const contextualValue = this.getContextualEffectValue(actor, target, skillDef, eff);
           const msg = this.effectEngine.applyEffect(target.activeEffects, {
             ...eff,
+            value: contextualValue,
             source: actor.id,
           }, actor.name);
           log.push(`  ${target.name}${msg}`);
@@ -908,9 +932,17 @@ export class CombatEngine {
     }
 
     // 護盾吸收
+    const hadShield = target.activeEffects.some(effect => effect.type === 'shield');
     const shieldResult = this.effectEngine.absorbWithShield(target.activeEffects, damage);
     if (shieldResult.absorbedDamage > 0) {
       log.push(`  ${target.name}的護盾吸收了 ${shieldResult.absorbedDamage} 點傷害。`);
+    }
+    if (hadShield && shieldResult.absorbedDamage > 0 && !target.activeEffects.some(effect => effect.type === 'shield')) {
+      const heal = Math.max(1, Math.floor(target.maxHp * 0.08));
+      const before = target.hp;
+      target.hp = Math.min(target.maxHp, target.hp + heal);
+      const actual = target.hp - before;
+      if (actual > 0) log.push(`  ${target.name}的守護禱言破裂，回復 ${actual} HP。`);
     }
     damage = shieldResult.remainingDamage;
 
@@ -1090,6 +1122,10 @@ export class CombatEngine {
     if (targetType === 'all_allies') return allies.filter(c => !c.isDead);
 
     if (targetType === 'single_ally') {
+      if (skillDef?.special?.undeadDamage && action.targetId) {
+        const enemyTarget = enemies.find(enemy => enemy.id === action.targetId && !enemy.isDead);
+        if (enemyTarget && this.isUndeadCombatant(session, enemyTarget)) return [enemyTarget];
+      }
       const target = action.targetId ? this.findCombatant(session, action.targetId) : this.selectRandomAlive(allies);
       return target && !target.isDead ? [target] : [];
     }
@@ -1223,6 +1259,100 @@ export class CombatEngine {
     if (removedValue <= 0) return;
     target.activeEffects = remaining;
     log.push(`${actor.name}粉碎了${target.name}價值 ${removedValue} 點的護盾！`);
+  }
+
+  private getContextualSkillResourceDef(
+    session: CombatSession,
+    _actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef,
+  ): SkillDef {
+    if (!this.shouldDamageUndeadWithPurify(session, target, skillDef)) return skillDef;
+    const undeadFaithDelta = this.getNumericSpecial(skillDef, 'undeadFaithDelta');
+    if (undeadFaithDelta === undefined) return skillDef;
+    return {
+      ...skillDef,
+      special: {
+        ...skillDef.special,
+        faithDelta: undeadFaithDelta,
+        faithMin: Math.abs(Math.min(0, undeadFaithDelta)),
+        faithMax: undefined,
+      },
+    };
+  }
+
+  private getSpecialDamageBonusPct(
+    session: CombatSession,
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef,
+  ): number {
+    let bonusPct = 0;
+    if (skillDef.special?.bonusAgainstTaunted && this.effectEngine.hasEffect(target.activeEffects, 'taunt')) {
+      bonusPct += 25;
+    }
+
+    if (skillDef.special?.undeadMultiplier && this.isUndeadCombatant(session, target)) {
+      bonusPct += (Number(skillDef.special.undeadMultiplier) - 1) * 100;
+    }
+    if (skillDef.special?.darkMultiplier && this.getCombatantElement(session, target.id) === 'dark') {
+      bonusPct += (Number(skillDef.special.darkMultiplier) - 1) * 100;
+    }
+    if (skillDef.special?.undeadOnlyBonus && this.isUndeadCombatant(session, target)) {
+      bonusPct += 35;
+    }
+    if (this.shouldDamageUndeadWithPurify(session, target, skillDef)) {
+      bonusPct += 100;
+    }
+
+    const nextShot = actor.activeEffects.find(effect => effect.type === 'next_shot_damage');
+    if (nextShot && skillDef.damageType === 'physical' && skillDef.tags.includes('cross_room')) {
+      bonusPct += nextShot.value;
+    }
+    return bonusPct;
+  }
+
+  private getContextualEffectValue(
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef,
+    effect: StatusEffect,
+  ): number {
+    if (
+      skillDef.special?.allyDamageReduction
+      && effect.type === 'damage_reduction'
+      && target.id !== actor.id
+    ) {
+      return this.getNumericSpecial(skillDef, 'allyDamageReduction') ?? effect.value;
+    }
+    if (
+      skillDef.special?.exitAccuracyDown
+      && effect.type === 'atk_down'
+      && target.isApproaching
+    ) {
+      return this.getNumericSpecial(skillDef, 'exitAccuracyDown') ?? effect.value;
+    }
+    return effect.value;
+  }
+
+  private consumeNextShotDamageBonus(actor: CombatantState, skillDef: SkillDef | null, log: string[]): void {
+    if (!skillDef || skillDef.damageType !== 'physical' || !skillDef.tags.includes('cross_room')) return;
+    const index = actor.activeEffects.findIndex(effect => effect.type === 'next_shot_damage');
+    if (index < 0) return;
+    const [effect] = actor.activeEffects.splice(index, 1);
+    log.push(`  ${actor.name}消耗蓄勢射擊，這次射擊傷害 +${effect.value}%。`);
+  }
+
+  private shouldDamageUndeadWithPurify(session: CombatSession, target: CombatantState, skillDef: SkillDef): boolean {
+    return Boolean(skillDef.special?.undeadDamage && !target.isPlayer && this.isUndeadCombatant(session, target));
+  }
+
+  private isUndeadCombatant(session: CombatSession, target: CombatantState): boolean {
+    if (target.isPlayer) return false;
+    const instance = session.monsterInstances.get(target.id);
+    const def = instance?.def;
+    const text = `${def?.id ?? ''} ${def?.alias ?? ''} ${def?.name ?? target.name}`.toLowerCase();
+    return ['undead', 'skeleton', 'zombie', 'ghoul', 'wraith', 'bone', '骷髏', '殭屍', '亡靈', '不死'].some(token => text.includes(token));
   }
 
   private triggerMonsterPhases(
@@ -1524,12 +1654,25 @@ export class CombatEngine {
 
     if (skillDef.effects) {
       for (const eff of skillDef.effects) {
+        const contextualValue = this.getContextualEffectValue(actor, target, skillDef, eff);
         const msg = this.effectEngine.applyEffect(target.activeEffects, {
           ...eff,
+          value: contextualValue,
           source: actor.id,
         }, actor.name);
         log.push(`  ${target.name}${msg}`);
       }
+    }
+
+    const nextShotDamageBonus = this.getNumericSpecial(skillDef, 'nextShotDamageBonus');
+    if (nextShotDamageBonus !== undefined && nextShotDamageBonus > 0 && actor.id === target.id) {
+      const msg = this.effectEngine.applyEffect(target.activeEffects, {
+        type: 'next_shot_damage',
+        value: nextShotDamageBonus,
+        duration: 2,
+        source: actor.id,
+      }, actor.name);
+      log.push(`  ${target.name}${msg}`);
     }
 
     const directGain = this.getNumericSpecial(skillDef, 'resourceGain');
@@ -1563,6 +1706,17 @@ export class CombatEngine {
     const mpGain = this.getNumericSpecial(skillDef, 'mpGainOnSpellHit') ?? 0;
     if (mpGain > 0 && skillDef.damageType === 'magical') {
       this.gainResource(actor, mpGain, log, '法術命中後恢復');
+    }
+
+    if (actor.resourceType === 'mp' && skillDef.damageType === 'magical') {
+      const meditation = actor.activeEffects.find(effect => effect.type === 'mana_regen');
+      if (meditation) {
+        const baseGain = this.getNumericSpecial(SKILL_DEFS.meditation, 'mpGainOnSpellHit') ?? 0;
+        const approachingGain = target.isApproaching
+          ? this.getNumericSpecial(SKILL_DEFS.meditation, 'mpGainOnApproachingHit') ?? 0
+          : 0;
+        this.gainResource(actor, baseGain + approachingGain, log, target.isApproaching ? '命中逼近目標後恢復' : '冥想迴流恢復');
+      }
     }
   }
 

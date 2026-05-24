@@ -619,6 +619,232 @@ describe('CombatEngine', () => {
       vi.restoreAllMocks();
     });
 
+    it('applies warrior bonus damage against taunted targets', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const normalWarrior = makeCharacter({
+        classId: 'swordsman',
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+        stats: { str: 30, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const tauntWarrior = makeCharacter({
+        ...normalWarrior,
+        id: 'taunt-bonus-warrior',
+        resource: 100,
+      });
+      const normalMonster = makeMonsterInstance({ hp: 500, dex: 1, vit: 10 });
+      const tauntedMonster = makeMonsterInstance({ hp: 500, dex: 1, vit: 10 });
+      tauntedMonster.instanceId = 'taunted_bonus_target';
+
+      const normalCombatId = engine.startCombat([normalWarrior], [normalMonster]);
+      engine.submitAction(normalCombatId, {
+        actorId: normalWarrior.id,
+        type: 'skill',
+        skillId: 'power_strike',
+        targetId: normalMonster.instanceId,
+      });
+      const normalDamage = 500 - engine.getCombatState(normalCombatId)!.enemyTeam[0].hp;
+
+      const tauntCombatId = engine.startCombat([tauntWarrior], [tauntedMonster]);
+      const tauntState = engine.getCombatState(tauntCombatId)!;
+      tauntState.enemyTeam[0].activeEffects.push({
+        type: 'taunt',
+        value: 1,
+        duration: 2,
+        remainingDuration: 2,
+        source: tauntWarrior.id,
+      });
+      engine.submitAction(tauntCombatId, {
+        actorId: tauntWarrior.id,
+        type: 'skill',
+        skillId: 'power_strike',
+        targetId: tauntedMonster.instanceId,
+      });
+      const tauntedDamage = 500 - tauntState.enemyTeam[0].hp;
+
+      expect(tauntedDamage).toBeGreaterThan(normalDamage);
+      vi.restoreAllMocks();
+    });
+
+    it('consumes ranger quick step as a next-shot damage bonus', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const ranger = makeCharacter({
+        classId: 'ranger',
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'focus',
+        stats: { str: 20, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 500, str: 1, dex: 1, vit: 10 });
+      const combatId = engine.startCombat([ranger], [monster]);
+
+      engine.submitAction(combatId, {
+        actorId: ranger.id,
+        type: 'skill',
+        skillId: 'quick_step',
+        targetId: ranger.id,
+      });
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(true);
+
+      engine.submitAction(combatId, {
+        actorId: ranger.id,
+        type: 'skill',
+        skillId: 'precise_shot',
+        targetId: monster.instanceId,
+      });
+
+      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(false);
+      expect(state.actionLog.some(line => line.includes('蓄勢射擊'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('lets meditation restore extra MP when hitting approaching monsters', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const mage = makeCharacter({
+        classId: 'mage',
+        resource: 30,
+        maxResource: 80,
+        mp: 30,
+        maxMp: 80,
+        resourceType: 'mp',
+        stats: { str: 5, int: 30, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 500, str: 1, dex: 1, vit: 10 });
+      const combatId = engine.startCombat([mage], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      state.playerTeam[0].activeEffects.push({
+        type: 'mana_regen',
+        value: 6,
+        duration: 3,
+        remainingDuration: 3,
+        source: mage.id,
+      });
+      state.enemyTeam[0].isApproaching = true;
+
+      engine.submitAction(combatId, {
+        actorId: mage.id,
+        type: 'skill',
+        skillId: 'magic_missile',
+        targetId: monster.instanceId,
+      });
+
+      expect(state.playerTeam[0].resource).toBeGreaterThan(30);
+      expect(state.actionLog.some(line => line.includes('命中逼近目標後恢復'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies priest undead and dark target special damage rules', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const priest = makeCharacter({
+        classId: 'priest',
+        resource: 50,
+        maxResource: 100,
+        resourceType: 'faith',
+        stats: { str: 5, int: 30, dex: 100, vit: 10, luk: 5 },
+      });
+      const undead = makeMonsterInstance({
+        id: 'undead_knight',
+        name: 'Undead Knight',
+        alias: 'undead',
+        hp: 500,
+        dex: 1,
+        vit: 10,
+        element: 'dark',
+      });
+      const combatId = engine.startCombat([priest], [undead]);
+      const state = engine.getCombatState(combatId)!;
+
+      engine.submitAction(combatId, {
+        actorId: priest.id,
+        type: 'skill',
+        skillId: 'holy_light',
+        targetId: undead.instanceId,
+      });
+      const holyDamage = 500 - state.enemyTeam[0].hp;
+
+      engine.submitAction(combatId, {
+        actorId: priest.id,
+        type: 'skill',
+        skillId: 'purify',
+        targetId: undead.instanceId,
+      });
+      const purifyDamage = 500 - state.enemyTeam[0].hp - holyDamage;
+
+      expect(holyDamage).toBeGreaterThan(0);
+      expect(purifyDamage).toBeGreaterThan(0);
+      expect(state.playerTeam[0].resource).toBe(30);
+      vi.restoreAllMocks();
+    });
+
+    it('applies contextual ally and approaching defensive skill values', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const warrior = makeCharacter({
+        id: 'line-holder',
+        classId: 'swordsman',
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+        stats: { str: 20, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const ally = makeCharacter({
+        id: 'line-ally',
+        name: 'LineAlly',
+        classId: 'swordsman',
+        hp: 200,
+        maxHp: 200,
+        resource: 0,
+        maxResource: 100,
+        resourceType: 'rage',
+        stats: { str: 10, int: 5, dex: 80, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 500, str: 10, dex: 1, vit: 10 });
+      const combatId = engine.startCombat([warrior, ally], [monster]);
+
+      engine.submitAction(combatId, {
+        actorId: warrior.id,
+        type: 'skill',
+        skillId: 'counter_stance',
+        targetId: warrior.id,
+      });
+      engine.submitAction(combatId, {
+        actorId: ally.id,
+        type: 'attack',
+        targetId: monster.instanceId,
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam.find(player => player.id === warrior.id)!.activeEffects.find(effect => effect.type === 'damage_reduction')?.value).toBe(20);
+      expect(state.playerTeam.find(player => player.id === ally.id)!.activeEffects.some(effect => effect.type === 'damage_reduction' && effect.value === 10)).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('uses stronger smoke arrow accuracy reduction on approaching targets', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const ranger = makeCharacter({
+        classId: 'ranger',
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'focus',
+        stats: { str: 10, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 500, dex: 1, vit: 10 });
+      const combatId = engine.startCombat([ranger], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      state.enemyTeam[0].isApproaching = true;
+
+      engine.submitAction(combatId, {
+        actorId: ranger.id,
+        type: 'skill',
+        skillId: 'barrage',
+        targetId: monster.instanceId,
+      });
+
+      expect(state.enemyTeam[0].activeEffects.find(effect => effect.type === 'atk_down')?.value).toBe(18);
+      vi.restoreAllMocks();
+    });
+
     it('applies block affixes as real mitigation and counter damage', () => {
       vi.spyOn(Math, 'random').mockReturnValue(0.5);
       const player = makeCharacter({

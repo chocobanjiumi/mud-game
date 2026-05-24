@@ -25,6 +25,7 @@ export type StatusEffectType =
   | 'regen' | 'mana_regen'
   | 'shield' | 'taunt' | 'counter' | 'stealth'
   | 'mana_shield' | 'thorns' | 'mark'
+  | 'next_shot_damage'
   | 'damage_reduction' | 'heal_reduction'
   | 'invincible' | 'unyielding';
 
