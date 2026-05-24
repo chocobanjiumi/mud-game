@@ -9,6 +9,7 @@ import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
 import { CombatPanelView } from '../components/CombatPanel';
+import { CrossRoomCombatPanelView } from '../components/CrossRoomCombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
 import { InventoryView } from '../components/Inventory';
 import { CharacterSheetView } from '../components/CharacterSheet';
@@ -199,6 +200,30 @@ describe('key UI component rendering', () => {
     expect(targetHtml).toContain('怪物');
     expect(targetHtml).toContain('HP');
     expect(targetHtml).toContain('攻擊');
+  });
+
+  it('renders cross-room combat targeting lanes', () => {
+    const state = useGameStore.getState();
+    const html = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={{
+          ...state.room!,
+          exits: [
+            { direction: 'north', targetRoomId: 'north_room', description: '北側草地' },
+            { direction: 'east', targetRoomId: 'east_room', description: '東側小徑' },
+          ],
+        }}
+        inCombat={false}
+        combat={null}
+      />,
+    );
+
+    expect(html).toContain('周邊戰鬥');
+    expect(html).toContain('跨房技能目標');
+    expect(html).toContain('北側');
+    expect(html).toContain('東側');
+    expect(html).toContain('本房');
+    expect(html).toContain('史萊姆#1');
   });
 
   it('renders monster detail modal with expanded monster information', () => {

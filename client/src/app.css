@@ -381,6 +381,214 @@ input::placeholder {
   background: rgba(255, 94, 94, 0.15);
 }
 
+.cross-room-panel {
+  margin: 8px;
+  padding: 10px;
+  border: 1px solid rgba(26, 58, 92, 0.78);
+  border-radius: 6px;
+  background: rgba(13, 13, 26, 0.38);
+}
+
+.cross-room-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.cross-room-title {
+  color: var(--color-text-terminal);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cross-room-subtitle {
+  margin-top: 1px;
+  color: var(--color-text-dim);
+  font-size: 10px;
+}
+
+.cross-room-state {
+  min-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  border: 1px solid rgba(0, 255, 136, 0.22);
+  border-radius: 3px;
+  color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.06);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.cross-room-state-danger {
+  border-color: rgba(255, 94, 94, 0.28);
+  color: var(--color-combat-damage);
+  background: rgba(255, 94, 94, 0.08);
+}
+
+.cross-room-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.cross-room-lane {
+  min-width: 0;
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  padding: 5px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 5px;
+  color: var(--color-text-dim);
+  background: rgba(8, 10, 18, 0.62);
+  font-size: 10px;
+  text-align: center;
+}
+
+.cross-room-lane:not(:disabled):hover {
+  color: var(--color-text-bright);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.cross-room-lane-main {
+  color: var(--color-text-bright);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.cross-room-lane b {
+  color: var(--color-text-amber);
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.cross-room-lane-reachable {
+  border-color: rgba(0, 255, 136, 0.26);
+}
+
+.cross-room-lane-active {
+  border-color: rgba(255, 184, 0, 0.72);
+  box-shadow: 0 0 0 1px rgba(255, 184, 0, 0.16);
+  background: rgba(255, 184, 0, 0.07);
+}
+
+.cross-room-lane-blocked {
+  opacity: 0.46;
+}
+
+.cross-room-detail {
+  margin-top: 8px;
+  min-height: 58px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(26, 58, 92, 0.62);
+}
+
+.cross-room-empty {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--color-text-dim);
+  font-size: 11px;
+}
+
+.cross-room-targets {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.cross-room-target {
+  width: 54px;
+  min-width: 54px;
+  min-height: 58px;
+  padding: 4px;
+  border: 1px solid rgba(255, 94, 94, 0.25);
+  border-radius: 5px;
+  color: var(--color-combat-damage);
+  background: rgba(255, 94, 94, 0.06);
+}
+
+.cross-room-target:hover:not(:disabled) {
+  background: rgba(255, 94, 94, 0.12);
+}
+
+.cross-room-target img,
+.cross-room-target > span {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 3px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 4px;
+  object-fit: cover;
+  background: rgba(8, 10, 18, 0.82);
+}
+
+.cross-room-target small {
+  display: block;
+  overflow: hidden;
+  color: var(--color-text-bright);
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cross-room-adjacent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cross-room-adjacent-title {
+  overflow: hidden;
+  color: var(--color-text-bright);
+  font-size: 11px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cross-room-adjacent-note {
+  margin-top: 2px;
+  color: var(--color-text-dim);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.cross-room-actions {
+  display: flex;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.cross-room-action {
+  min-height: 26px;
+  padding: 0 8px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 10px;
+}
+
+.cross-room-action:hover {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.cross-room-action-primary {
+  border-color: rgba(0, 255, 136, 0.28);
+  color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.09);
+}
+
 .target-action {
   min-height: 28px;
   padding: 0 8px;
