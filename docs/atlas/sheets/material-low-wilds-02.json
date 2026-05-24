@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_low_wilds_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_low_wilds_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_low_wilds_blighted_wheat_stalk",
+      "category": "material",
+      "targetId": "blighted_wheat_stalk",
+      "name": "枯疫麥稈",
+      "outputPath": "client/public/images/materials/material_low_wilds_blighted_wheat_stalk.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_chapel_blessing_thread",
+      "category": "material",
+      "targetId": "chapel_blessing_thread",
+      "name": "晨光祝福線",
+      "outputPath": "client/public/images/materials/material_low_wilds_chapel_blessing_thread.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_low_wilds_creek_reed_splint",
+      "category": "material",
+      "targetId": "creek_reed_splint",
+      "name": "溪蘆夾板",
+      "outputPath": "client/public/images/materials/material_low_wilds_creek_reed_splint.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_low_wilds_gnawed_pumpkin_rind",
+      "category": "material",
+      "targetId": "gnawed_pumpkin_rind",
+      "name": "啃痕南瓜皮",
+      "outputPath": "client/public/images/materials/material_low_wilds_gnawed_pumpkin_rind.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_mildew_apple",
+      "category": "material",
+      "targetId": "mildew_apple",
+      "name": "霉斑蘋果",
+      "outputPath": "client/public/images/materials/material_low_wilds_mildew_apple.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_low_wilds_moonlit_pasture_bell",
+      "category": "material",
+      "targetId": "moonlit_pasture_bell",
+      "name": "月牧鈴",
+      "outputPath": "client/public/images/materials/material_low_wilds_moonlit_pasture_bell.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

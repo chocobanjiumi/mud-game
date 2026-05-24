@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_low_wilds_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_low_wilds_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_low_wilds_pilgrim_bell_charm",
+      "category": "material",
+      "targetId": "pilgrim_bell_charm",
+      "name": "朝聖鈴符",
+      "outputPath": "client/public/images/materials/material_low_wilds_pilgrim_bell_charm.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_repaired_boot_lace",
+      "category": "material",
+      "targetId": "repaired_boot_lace",
+      "name": "修補靴帶",
+      "outputPath": "client/public/images/materials/material_low_wilds_repaired_boot_lace.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_low_wilds_scarecrow_straw_bundle",
+      "category": "material",
+      "targetId": "scarecrow_straw_bundle",
+      "name": "守田稻草束",
+      "outputPath": "client/public/images/materials/material_low_wilds_scarecrow_straw_bundle.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_low_wilds_stormgrass_seed",
+      "category": "material",
+      "targetId": "stormgrass_seed",
+      "name": "風暴草籽",
+      "outputPath": "client/public/images/materials/material_low_wilds_stormgrass_seed.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_white_marker_lime",
+      "category": "material",
+      "targetId": "white_marker_lime",
+      "name": "白石灰粉",
+      "outputPath": "client/public/images/materials/material_low_wilds_white_marker_lime.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_low_wilds_windcut_feather",
+      "category": "material",
+      "targetId": "windcut_feather",
+      "name": "切風羽",
+      "outputPath": "client/public/images/materials/material_low_wilds_windcut_feather.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
