@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, BaseStats, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -12,6 +12,7 @@ export interface CreateCharacterOptions {
   raceId?: RaceId;
   genderId?: GenderId;
   faithId?: FaithId;
+  classId?: ClassId;
 }
 
 export function createCharacter(
@@ -27,17 +28,29 @@ export function createCharacter(
   const raceId = options.raceId ?? DEFAULT_RACE_ID;
   const genderId = options.genderId ?? DEFAULT_GENDER_ID;
   const faithId = options.faithId ?? DEFAULT_FAITH_ID;
-  const stats = getInitialStatsForRace(raceId);
+  const requestedClassDef = options.classId ? CLASS_DEFS[options.classId] : undefined;
+  const classDef = requestedClassDef?.tier === 1 ? requestedClassDef : CLASS_DEFS.adventurer;
+  const baseStats = getInitialStatsForRace(raceId);
+  const stats: BaseStats = {
+    str: baseStats.str + classDef.baseStatBonus.str,
+    int: baseStats.int + classDef.baseStatBonus.int,
+    dex: baseStats.dex + classDef.baseStatBonus.dex,
+    vit: baseStats.vit + classDef.baseStatBonus.vit,
+    luk: baseStats.luk + classDef.baseStatBonus.luk,
+  };
   const maxHp = calculateMaxHp(1, stats.vit);
   const maxMp = calculateMaxMp(1, stats.int);
 
   db.prepare(`
     INSERT INTO characters (id, user_id, name, level, exp, class_id, race_id, gender_id, faith_id, faith_favor, hp, mp, max_hp, max_mp,
+      resource, max_resource, resource_type,
       str, int_, dex, vit, luk, free_points, gold, room_id, is_ai, agent_id, created_at, last_login)
-    VALUES (?, ?, ?, 1, 0, 'adventurer', ?, ?, ?, 10, ?, ?, ?, ?,
+    VALUES (?, ?, ?, 1, 0, ?, ?, ?, ?, 10, ?, ?, ?, ?,
+      ?, ?, ?,
       ?, ?, ?, ?, ?, 0, 100, 'village_square', ?, ?, ?, ?)
   `).run(
-    id, userId, name, raceId, genderId, faithId, maxHp, maxMp, maxHp, maxMp,
+    id, userId, name, classDef.id, raceId, genderId, faithId, maxHp, maxMp, maxHp, maxMp,
+    classDef.initialResource, classDef.maxResource, classDef.resourceType,
     stats.str, stats.int, stats.dex, stats.vit, stats.luk,
     isAi ? 1 : 0, agentId ?? null, now, now,
   );

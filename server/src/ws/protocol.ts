@@ -1,7 +1,7 @@
 // WebSocket 訊息解析與路由
 
 import type { WebSocket } from 'ws';
-import type { ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
+import type { ClassId, ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
 import type { WsSession } from './handler.js';
 import {
   sendToSession, sendError, sendSystem, updatePing,
@@ -12,7 +12,7 @@ import { handleCommand } from '../game/commands.js';
 import { world } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
-import { FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
+import { CLASS_DEFS, FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
 
 /** Shared CurrencyManager instance */
 const currencyManager = new CurrencyManager();
@@ -37,6 +37,11 @@ function releasePurchaseLock(userId: string, itemId: string): void {
     userLocks.delete(itemId);
     if (userLocks.size === 0) purchaseLocks.delete(userId);
   }
+}
+
+function isStartingClassId(value: unknown): value is ClassId {
+  return typeof value === 'string'
+    && Object.values(CLASS_DEFS).some((classDef) => classDef.id === value && classDef.tier === 1);
 }
 
 // ─── 速率限制 ───
@@ -299,7 +304,7 @@ async function handleLogin(
 /** 處理建立角色 */
 function handleCreateCharacter(
   session: WsSession,
-  payload: CreateCharacterPayload,
+  payload: CreateCharacterPayload & { classId?: unknown },
 ): void {
   const name = payload.name?.trim();
 
@@ -335,11 +340,17 @@ function handleCreateCharacter(
     return;
   }
 
+  if (!isStartingClassId(payload.classId)) {
+    sendError(session.sessionId, '未知的一轉職業選擇。');
+    return;
+  }
+
   try {
     const character = createCharacter(userId, name, false, undefined, {
       raceId: payload.raceId,
       genderId: payload.genderId,
       faithId: payload.faithId,
+      classId: payload.classId,
     });
     bindCharacter(session.sessionId, character.id, userId);
     world.placePlayer(character.id, character.roomId);
@@ -347,10 +358,11 @@ function handleCreateCharacter(
     const race = RACE_DEFS[character.raceId ?? 'human'];
     const gender = GENDER_DEFS[character.genderId ?? 'undisclosed'];
     const faith = FAITH_DEFS[character.faithId ?? 'aelora'];
+    const classDef = CLASS_DEFS[character.classId];
 
     sendToSession(session.sessionId, 'login_success', {
       character,
-      message: `角色「${character.name}」建立成功。${race.name} / ${gender.name} / 信仰${faith.name}`,
+      message: `角色「${character.name}」建立成功。${race.name} / ${gender.name} / ${classDef.name} / 信仰${faith.name}`,
     });
 
     sendNarrativeWelcome(session, character);
