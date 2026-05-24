@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_ice_mountain_01",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_ice_mountain_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_ice_mountain_aurora_runestone_chip",
+      "category": "material",
+      "targetId": "aurora_runestone_chip",
+      "name": "極光符石片",
+      "outputPath": "client/public/images/materials/material_ice_mountain_aurora_runestone_chip.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_ice_mountain_blue_ice_core",
+      "category": "material",
+      "targetId": "blue_ice_core",
+      "name": "藍冰核心",
+      "outputPath": "client/public/images/materials/material_ice_mountain_blue_ice_core.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_ice_mountain_cloudsilver_plume",
+      "category": "material",
+      "targetId": "cloudsilver_plume",
+      "name": "雲銀長羽",
+      "outputPath": "client/public/images/materials/material_ice_mountain_cloudsilver_plume.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_ice_mountain_frost_herb_bundle",
+      "category": "material",
+      "targetId": "frost_herb_bundle",
+      "name": "霜草束",
+      "outputPath": "client/public/images/materials/material_ice_mountain_frost_herb_bundle.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_ice_mountain_frostpine_resin",
+      "category": "material",
+      "targetId": "frostpine_resin",
+      "name": "霜松樹脂",
+      "outputPath": "client/public/images/materials/material_ice_mountain_frostpine_resin.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_ice_mountain_glacier_fossil_shard",
+      "category": "material",
+      "targetId": "glacier_fossil_shard",
+      "name": "冰河化石片",
+      "outputPath": "client/public/images/materials/material_ice_mountain_glacier_fossil_shard.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_ice_mountain_halo_prism_core",
+      "category": "material",
+      "targetId": "halo_prism_core",
+      "name": "光環稜核",
+      "outputPath": "client/public/images/materials/material_ice_mountain_halo_prism_core.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_ice_mountain_highland_stormfeather",
+      "category": "material",
+      "targetId": "highland_stormfeather",
+      "name": "高原風暴羽",
+      "outputPath": "client/public/images/materials/material_ice_mountain_highland_stormfeather.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_ice_mountain_iceglass_ore",
+      "category": "material",
+      "targetId": "iceglass_ore",
+      "name": "冰玻礦",
+      "outputPath": "client/public/images/materials/material_ice_mountain_iceglass_ore.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_ice_mountain_silverpine_mica",
+      "category": "material",
+      "targetId": "silverpine_mica",
+      "name": "銀松雲母",
+      "outputPath": "client/public/images/materials/material_ice_mountain_silverpine_mica.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
