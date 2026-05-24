@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_demon_abyss_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_demon_abyss_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_demon_abyss_abyss_anchor_link",
+      "category": "material",
+      "targetId": "abyss_anchor_link",
+      "name": "深淵錨鏈環",
+      "outputPath": "client/public/images/materials/material_demon_abyss_abyss_anchor_link.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_black_mist_residue",
+      "category": "material",
+      "targetId": "black_mist_residue",
+      "name": "黑霧殘渣",
+      "outputPath": "client/public/images/materials/material_demon_abyss_black_mist_residue.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_blackwater_silt",
+      "category": "material",
+      "targetId": "blackwater_silt",
+      "name": "黑水沉泥",
+      "outputPath": "client/public/images/materials/material_demon_abyss_blackwater_silt.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_demon_abyss_blood_river_slag",
+      "category": "material",
+      "targetId": "blood_river_slag",
+      "name": "血河魔渣",
+      "outputPath": "client/public/images/materials/material_demon_abyss_blood_river_slag.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_coffin_chain_link",
+      "category": "material",
+      "targetId": "coffin_chain_link",
+      "name": "石棺銅鏈節",
+      "outputPath": "client/public/images/materials/material_demon_abyss_coffin_chain_link.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_cracked_saint_lens",
+      "category": "material",
+      "targetId": "cracked_saint_lens",
+      "name": "破聖像透片",
+      "outputPath": "client/public/images/materials/material_demon_abyss_cracked_saint_lens.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

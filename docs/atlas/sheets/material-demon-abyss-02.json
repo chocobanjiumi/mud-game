@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_demon_abyss_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_demon_abyss_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_demon_abyss_funeral_lamp_oil",
+      "category": "material",
+      "targetId": "funeral_lamp_oil",
+      "name": "長明燈油",
+      "outputPath": "client/public/images/materials/material_demon_abyss_funeral_lamp_oil.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_grave_banner_cloth",
+      "category": "material",
+      "targetId": "grave_banner_cloth",
+      "name": "墓旗殘布",
+      "outputPath": "client/public/images/materials/material_demon_abyss_grave_banner_cloth.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_grave_bell_clapper",
+      "category": "material",
+      "targetId": "grave_bell_clapper",
+      "name": "墓鐘舌片",
+      "outputPath": "client/public/images/materials/material_demon_abyss_grave_bell_clapper.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_demon_abyss_grave_bone_shard",
+      "category": "material",
+      "targetId": "grave_bone_shard",
+      "name": "墓園骨片",
+      "outputPath": "client/public/images/materials/material_demon_abyss_grave_bone_shard.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_demon_abyss_hellhound_fang",
+      "category": "material",
+      "targetId": "hellhound_fang",
+      "name": "地獄犬牙",
+      "outputPath": "client/public/images/materials/material_demon_abyss_hellhound_fang.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_demon_abyss_infernal_chain_link",
+      "category": "material",
+      "targetId": "infernal_chain_link",
+      "name": "煉獄鎖環",
+      "outputPath": "client/public/images/materials/material_demon_abyss_infernal_chain_link.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
