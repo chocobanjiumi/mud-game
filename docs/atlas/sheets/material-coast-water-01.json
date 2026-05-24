@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_coast_water_01",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_coast_water_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_coast_water_abyssal_pearl",
+      "category": "material",
+      "targetId": "abyssal_pearl",
+      "name": "深淵珍珠",
+      "outputPath": "client/public/images/materials/material_coast_water_abyssal_pearl.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_black_coral_hook",
+      "category": "material",
+      "targetId": "black_coral_hook",
+      "name": "黑珊瑚鉤",
+      "outputPath": "client/public/images/materials/material_coast_water_black_coral_hook.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_bloodsalt_crystal",
+      "category": "material",
+      "targetId": "bloodsalt_crystal",
+      "name": "血鹽晶",
+      "outputPath": "client/public/images/materials/material_coast_water_bloodsalt_crystal.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_blue_lotus_petal",
+      "category": "material",
+      "targetId": "blue_lotus_petal",
+      "name": "藍蓮瓣",
+      "outputPath": "client/public/images/materials/material_coast_water_blue_lotus_petal.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_coast_water_blue_silt_ore",
+      "category": "material",
+      "targetId": "blue_silt_ore",
+      "name": "藍泥礦砂",
+      "outputPath": "client/public/images/materials/material_coast_water_blue_silt_ore.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_coast_water_bluefire_coral",
+      "category": "material",
+      "targetId": "bluefire_coral",
+      "name": "藍火珊瑚",
+      "outputPath": "client/public/images/materials/material_coast_water_bluefire_coral.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_brine_crab_shell",
+      "category": "material",
+      "targetId": "brine_crab_shell",
+      "name": "鹽霜厚蟹殼",
+      "outputPath": "client/public/images/materials/material_coast_water_brine_crab_shell.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_cold_mist_vial",
+      "category": "material",
+      "targetId": "cold_mist_vial",
+      "name": "冷霧瓶",
+      "outputPath": "client/public/images/materials/material_coast_water_cold_mist_vial.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_flatsalt_crystal",
+      "category": "material",
+      "targetId": "flatsalt_crystal",
+      "name": "白灘鹽晶",
+      "outputPath": "client/public/images/materials/material_coast_water_flatsalt_crystal.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_coast_water_fog_lantern_wick",
+      "category": "material",
+      "targetId": "fog_lantern_wick",
+      "name": "霧燈燈芯",
+      "outputPath": "client/public/images/materials/material_coast_water_fog_lantern_wick.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
