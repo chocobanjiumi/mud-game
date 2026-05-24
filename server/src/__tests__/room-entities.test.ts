@@ -71,6 +71,15 @@ describe('room entity builder', () => {
       disabled: true,
       reason: '出口上鎖',
     });
+
+    for (const entity of entities) {
+      expect(entity.label, entity.id).not.toContain('monster_green_slime');
+      expect(entity.label, entity.id).not.toContain('npc_village_elder');
+      expect(entity.label, entity.id).not.toContain('green_slime_corpse');
+      for (const action of entity.actions) {
+        expect(action.label, `${entity.id}:${action.command}`).not.toContain(entity.id);
+      }
+    }
   });
 
   it('shows corpse protection countdown in the entity subtitle', () => {

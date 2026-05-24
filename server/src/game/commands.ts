@@ -72,6 +72,7 @@ import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { addExperienceToCharacter, expRequiredForLevel } from './leveling.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
+import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
 import type { LootDistributionMode } from './party.js';
@@ -83,41 +84,6 @@ import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, G
 const pickedUpItems = new Map<string, number>();
 const GROUND_ITEM_RESPAWN_MS = 10 * 60 * 1000; // 10 分鐘
 const travelCooldowns = new Map<string, number>();
-
-const SYSTEM_ALIASES: Record<string, string> = {
-  n: 'go north', s: 'go south', e: 'go east', w: 'go west',
-  u: 'go up', d: 'go down',
-  l: 'look', i: 'inventory', inv: 'inventory',
-  stat: 'status', stats: 'status',
-  atk: 'attack', kill: 'attack',
-  flee: 'escape', run: 'escape',
-  eq: 'equip', uneq: 'unequip',
-  sk: 'skills',
-  '?': 'help',
-  lb: 'leaderboard',
-  cq: 'classquest',
-  cq2: 'classquest2',
-  st: 'skilltree',
-  pray: 'faith pray',
-};
-
-const BUILTIN_COMMANDS = new Set([
-  'look', 'search', 'inspect', 'open', 'go', 'move',
-  'status', 'inventory', 'skills', 'attack', 'skill',
-  'defend', 'escape', 'equip', 'unequip', 'use',
-  'take', 'pick', 'pickup', 'get', 'loot', 'drop',
-  'say', 'talk', 'shop', 'buy', 'allocate', 'alloc',
-  'map', 'rest', 'activate', 'portals', 'travel', 'recall',
-  'party', 'trade', 'quest', 'quests', 'duel', 'arena', 'dungeon',
-  'classchange', 'job', 'rank', 'leaderboard', 'help',
-  'achievements', 'achievement', 'title', 'fishcodex', 'monstercodex',
-  'collection', 'pet', 'tame', 'event', 'weather', 'worldevent', 'mail', 'emote',
-  'friend', 'auto', 'market', 'war', 'army', 'bounty', 'treasury',
-  'diplomacy', 'building', 'craft', 'crafting', 'auction', 'fish',
-  'classquest', 'classquest2', 'skilltree', 'token', 'alias', 'unalias',
-  'tutorial', 'friends', 'guild', 'g', 'signin', 'checkin',
-  'faith', 'pray', 'offering', 'renounce',
-]);
 
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
 function getAvailableGroundItems(roomId: string): GroundItem[] {
@@ -154,7 +120,7 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
 
   const aliasExpanded = expandAlias(session, cmd, aliasDepth);
   if (aliasExpanded) {
-    if (aliasDepth >= 5) {
+    if (aliasDepth >= MAX_ALIAS_EXPANSION_DEPTH) {
       sendError(session.sessionId, 'Alias 展開層數過深，請檢查是否有循環 alias。');
       return;
     }
@@ -299,15 +265,8 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
 // ─── 基本指令 ───
 
 function expandAlias(session: WsSession, cmd: string, aliasDepth: number): string | null {
-  if (BUILTIN_COMMANDS.has(cmd)) return null;
-
   const char = getChar(session);
-  if (char) {
-    const playerAlias = getCharacterAliases(char.id)[cmd];
-    if (playerAlias) return playerAlias;
-  }
-
-  return SYSTEM_ALIASES[cmd] ?? null;
+  return resolveAliasExpansion(cmd, char ? getCharacterAliases(char.id) : {});
 }
 
 function cmdAlias(session: WsSession, args: string[]): void {
