@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_forest_fen_02",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_forest_fen_emerald_canopy_leaf",
+      "category": "material",
+      "targetId": "emerald_canopy_leaf",
+      "name": "翡翠冠葉",
+      "outputPath": "client/public/images/materials/material_forest_fen_emerald_canopy_leaf.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_forest_fen_firefly_lantern_gland",
+      "category": "material",
+      "targetId": "firefly_lantern_gland",
+      "name": "螢燈腺",
+      "outputPath": "client/public/images/materials/material_forest_fen_firefly_lantern_gland.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_glasswater_film",
+      "category": "material",
+      "targetId": "glasswater_film",
+      "name": "玻璃水膜",
+      "outputPath": "client/public/images/materials/material_forest_fen_glasswater_film.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_forest_fen_golden_resin_chunk",
+      "category": "material",
+      "targetId": "golden_resin_chunk",
+      "name": "金脂塊",
+      "outputPath": "client/public/images/materials/material_forest_fen_golden_resin_chunk.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_forest_fen_ice_fern_frond",
+      "category": "material",
+      "targetId": "ice_fern_frond",
+      "name": "冰蕨葉",
+      "outputPath": "client/public/images/materials/material_forest_fen_ice_fern_frond.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_forest_fen_mirror_moss",
+      "category": "material",
+      "targetId": "mirror_moss",
+      "name": "鏡苔",
+      "outputPath": "client/public/images/materials/material_forest_fen_mirror_moss.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_forest_fen_moonflower_petal",
+      "category": "material",
+      "targetId": "moonflower_petal",
+      "name": "月花瓣",
+      "outputPath": "client/public/images/materials/material_forest_fen_moonflower_petal.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_nature_crystal",
+      "category": "material",
+      "targetId": "nature_crystal",
+      "name": "自然水晶",
+      "outputPath": "client/public/images/materials/material_forest_fen_nature_crystal.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_forest_fen_nightfern_venom",
+      "category": "material",
+      "targetId": "nightfern_venom",
+      "name": "夜蕨毒液",
+      "outputPath": "client/public/images/materials/material_forest_fen_nightfern_venom.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_forest_fen_poison_gland",
+      "category": "material",
+      "targetId": "poison_gland",
+      "name": "毒腺",
+      "outputPath": "client/public/images/materials/material_forest_fen_poison_gland.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
