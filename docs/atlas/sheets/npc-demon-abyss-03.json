@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_demon_abyss_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_demon_abyss_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_demon_territory_shadow_market_broker",
+      "category": "npc",
+      "targetId": "shadow_market_broker",
+      "name": "影市掮客",
+      "outputPath": "client/public/images/npcs/npc_demon_territory_shadow_market_broker.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_demon_territory_war_forge_spy",
+      "category": "npc",
+      "targetId": "war_forge_spy",
+      "name": "熔爐內應",
+      "outputPath": "client/public/images/npcs/npc_demon_territory_war_forge_spy.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_necropolis_gate_necropolis_gate_crypt_broker",
+      "category": "npc",
+      "targetId": "necropolis_gate_crypt_broker",
+      "name": "薇拉",
+      "outputPath": "client/public/images/npcs/npc_necropolis_gate_necropolis_gate_crypt_broker.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_necropolis_gate_necropolis_gate_death_roll_scribe",
+      "category": "npc",
+      "targetId": "necropolis_gate_death_roll_scribe",
+      "name": "卡爾文",
+      "outputPath": "client/public/images/npcs/npc_necropolis_gate_necropolis_gate_death_roll_scribe.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

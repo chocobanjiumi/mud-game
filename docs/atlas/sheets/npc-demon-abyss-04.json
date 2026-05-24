@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_demon_abyss_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_demon_abyss_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_necropolis_gate_necropolis_gate_threshold_witness",
+      "category": "npc",
+      "targetId": "necropolis_gate_threshold_witness",
+      "name": "奧德",
+      "outputPath": "client/public/images/npcs/npc_necropolis_gate_necropolis_gate_threshold_witness.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_sunken_catacombs_sunken_catacombs_crypt_reader",
+      "category": "npc",
+      "targetId": "sunken_catacombs_crypt_reader",
+      "name": "歐薇",
+      "outputPath": "client/public/images/npcs/npc_sunken_catacombs_sunken_catacombs_crypt_reader.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_sunken_catacombs_sunken_catacombs_lamp_keeper",
+      "category": "npc",
+      "targetId": "sunken_catacombs_lamp_keeper",
+      "name": "芮妲",
+      "outputPath": "client/public/images/npcs/npc_sunken_catacombs_sunken_catacombs_lamp_keeper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_sunken_catacombs_sunken_catacombs_tide_surveyor",
+      "category": "npc",
+      "targetId": "sunken_catacombs_tide_surveyor",
+      "name": "納溫",
+      "outputPath": "client/public/images/npcs/npc_sunken_catacombs_sunken_catacombs_tide_surveyor.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

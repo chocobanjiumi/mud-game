@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_demon_abyss_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_demon_abyss_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_abyss_rift_echo_court_witness",
+      "category": "npc",
+      "targetId": "echo_court_witness",
+      "name": "迴響庭證人",
+      "outputPath": "client/public/images/npcs/npc_abyss_rift_echo_court_witness.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_abyss_rift_rift_forge_scavenger",
+      "category": "npc",
+      "targetId": "rift_forge_scavenger",
+      "name": "裂隙熔爐拾荒者",
+      "outputPath": "client/public/images/npcs/npc_abyss_rift_rift_forge_scavenger.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_abyss_rift_rift_seal_researcher",
+      "category": "npc",
+      "targetId": "rift_seal_researcher",
+      "name": "裂隙封印研究員",
+      "outputPath": "client/public/images/npcs/npc_abyss_rift_rift_seal_researcher.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_cursed_graveyard_cursed_graveyard_grave_seller",
+      "category": "npc",
+      "targetId": "cursed_graveyard_grave_seller",
+      "name": "羅文",
+      "outputPath": "client/public/images/npcs/npc_cursed_graveyard_cursed_graveyard_grave_seller.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

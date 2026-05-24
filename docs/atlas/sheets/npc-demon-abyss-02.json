@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_demon_abyss_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_demon_abyss_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_cursed_graveyard_cursed_graveyard_litany_reader",
+      "category": "npc",
+      "targetId": "cursed_graveyard_litany_reader",
+      "name": "瑪席雅",
+      "outputPath": "client/public/images/npcs/npc_cursed_graveyard_cursed_graveyard_litany_reader.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_cursed_graveyard_cursed_graveyard_watch_keeper",
+      "category": "npc",
+      "targetId": "cursed_graveyard_watch_keeper",
+      "name": "艾妲",
+      "outputPath": "client/public/images/npcs/npc_cursed_graveyard_cursed_graveyard_watch_keeper.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_demon_territory_captive_field_surgeon",
+      "category": "npc",
+      "targetId": "captive_field_surgeon",
+      "name": "被囚軍醫",
+      "outputPath": "client/public/images/npcs/npc_demon_territory_captive_field_surgeon.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_demon_territory_demon_border_defector",
+      "category": "npc",
+      "targetId": "demon_border_defector",
+      "name": "邊境叛逃兵",
+      "outputPath": "client/public/images/npcs/npc_demon_territory_demon_border_defector.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
