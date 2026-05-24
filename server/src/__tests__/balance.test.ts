@@ -876,6 +876,42 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('makes each level-one starter class feel mechanically distinct', () => {
+    const starterClassIds = ['swordsman', 'mage', 'ranger', 'priest'] as const;
+    const resourceTypes = new Set(starterClassIds.map(classId => CLASS_DEFS[classId].resourceType));
+
+    expect(resourceTypes).toEqual(new Set(['rage', 'mp', 'focus', 'faith']));
+    for (const classId of starterClassIds) {
+      const levelOneSkills = getLearnableSkills(classId, 1)
+        .filter(skill => skill.classId === classId)
+        .filter(skill => skill.type === 'active');
+      const skillTags = new Set(levelOneSkills.flatMap(skill => skill.tags));
+
+      expect(levelOneSkills.length, classId).toBeGreaterThanOrEqual(3);
+      expect(skillTags.has('resource'), classId).toBe(true);
+      expect(levelOneSkills.some(skill => skill.multiplier > 0), classId).toBe(true);
+      expect(
+        levelOneSkills.some(skill => skill.effects?.length || skill.special && Object.keys(skill.special).length > 0),
+        classId,
+      ).toBe(true);
+    }
+  });
+
+  it('keeps first-job level 8-20 skill progression without long empty gaps', () => {
+    for (const classId of ['swordsman', 'mage', 'ranger', 'priest'] as const) {
+      const levels = getLearnableSkills(classId, 20)
+        .filter(skill => skill.classId === classId)
+        .map(skill => skill.learnLevel)
+        .sort((a, b) => a - b);
+      const uniqueLevels = [...new Set(levels)];
+      const gaps = uniqueLevels.slice(1).map((level, index) => level - uniqueLevels[index]);
+
+      expect(uniqueLevels, classId).toEqual([1, 5, 8, 12, 16]);
+      expect(Math.max(...gaps), classId).toBeLessThanOrEqual(4);
+      expect(20 - uniqueLevels[uniqueLevels.length - 1], classId).toBeLessThanOrEqual(4);
+    }
+  });
+
   it('maps every starter skill to an existing icon asset', () => {
     for (const skillId of starterSkillIds) {
       const iconPath = Object.values(SKILL_DEFS).find(skill => skill.id === skillId)?.iconPath;
