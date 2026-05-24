@@ -1312,6 +1312,20 @@ describe('class resource skill gates', () => {
     expect(checkSkillResource(mercifulPriest, SKILL_DEFS.heal).ok).toBe(false);
     expect(checkSkillResource(judgmentPriest, SKILL_DEFS.holy_light).ok).toBe(false);
   });
+
+  it('lets faith affix bonuses deepen healing and judgment movement', () => {
+    const priest = {
+      resource: 50,
+      maxResource: 100,
+      resourceType: 'faith' as const,
+    };
+
+    expect(applySkillResourceChange(priest, SKILL_DEFS.heal, SKILL_DEFS.heal.resourceCost, 2)).toBe(17);
+    expect(priest.resource).toBe(67);
+
+    expect(applySkillResourceChange(priest, SKILL_DEFS.holy_light, SKILL_DEFS.holy_light.resourceCost, 2)).toBe(-14);
+    expect(priest.resource).toBe(53);
+  });
 });
 
 describe('adventurer passive skill effects', () => {

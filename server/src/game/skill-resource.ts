@@ -52,11 +52,17 @@ export function checkSkillResource(
   return { ok: true, effectiveCost };
 }
 
-export function applySkillResourceChange(actor: ResourceCarrier, skillDef: SkillDef, effectiveCost = skillDef.resourceCost): number {
+export function applySkillResourceChange(
+  actor: ResourceCarrier,
+  skillDef: SkillDef,
+  effectiveCost = skillDef.resourceCost,
+  faithDeltaBonus = 0,
+): number {
   const before = actor.resource;
   const faithDelta = actor.resourceType === 'faith' ? getNumericSpecial(skillDef, 'faithDelta') : undefined;
   if (faithDelta !== undefined) {
-    actor.resource = clampResource(actor.resource + faithDelta, actor.maxResource);
+    const bonus = faithDeltaBonus > 0 ? Math.sign(faithDelta) * faithDeltaBonus : 0;
+    actor.resource = clampResource(actor.resource + faithDelta + bonus, actor.maxResource);
     return actor.resource - before;
   }
 

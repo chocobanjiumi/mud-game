@@ -24,7 +24,7 @@ import {
   getFleeOriginBonus,
 } from './origin-effects.js';
 import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
-import { getEquippedAffixes, getSkillAffixModifiers } from './equipment-affixes.js';
+import { getResourceAffixBonus, getSkillAffixModifiers } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 
 // ============================================================
@@ -556,7 +556,7 @@ export class CombatEngine {
       this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
       return;
     }
-    if (skillDef) applySkillResourceChange(actor, skillDef, resourceCost);
+    if (skillDef) this.applySkillResourceChangeWithAffixes(actor, skillDef, resourceCost);
     else actor.resource -= resourceCost;
 
     const attackerStats = this.getCombatStats(session, actor);
@@ -1278,7 +1278,7 @@ export class CombatEngine {
   /** 攻擊命中時的資源增益（戰士系：怒氣 +10，暴擊 +15） */
   private gainResourceOnAttack(actor: CombatantState, dmgResult: DamageResult, log: string[]): void {
     if (actor.resourceType === 'rage') {
-      const gain = (dmgResult.isCrit ? 15 : 10) + this.getResourceAffixBonus(actor, 'rageGain');
+      const gain = (dmgResult.isCrit ? 15 : 10) + this.getCombatantResourceAffixBonus(actor.id, actor.isPlayer, 'rageGain');
       const before = actor.resource;
       actor.resource = Math.min(actor.maxResource, actor.resource + gain);
       const actual = actor.resource - before;
@@ -1292,7 +1292,7 @@ export class CombatEngine {
   private gainResourceOnHit(target: CombatantState, log: string[]): void {
     if (target.resourceType === 'rage' && !target.isDead) {
       const before = target.resource;
-      target.resource = Math.min(target.maxResource, target.resource + 5 + this.getResourceAffixBonus(target, 'rageGain'));
+      target.resource = Math.min(target.maxResource, target.resource + 5 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'rageGain'));
       const actual = target.resource - before;
       if (actual > 0) {
         log.push(`  ${target.name}因受擊獲得了 ${actual} 點怒氣。`);
@@ -1313,7 +1313,7 @@ export class CombatEngine {
       // 遊俠系：每回合能量 +15
       if (c.resourceType === 'energy') {
         const before = c.resource;
-        c.resource = Math.min(c.maxResource, c.resource + 15 + this.getResourceAffixBonus(c, 'focusRegen'));
+        c.resource = Math.min(c.maxResource, c.resource + 15 + this.getCombatantResourceAffixBonus(c.id, c.isPlayer, 'focusRegen'));
         const actual = c.resource - before;
         if (actual > 0) {
           log.push(`${c.name}恢復了 ${actual} 點能量。`);
@@ -1334,7 +1334,7 @@ export class CombatEngine {
       }
 
       if (c.resourceType === 'mp' && c.isPlayer) {
-        const mpRegen = this.getResourceAffixBonus(c, 'mpRegen');
+        const mpRegen = this.getCombatantResourceAffixBonus(c.id, c.isPlayer, 'mpRegen');
         if (mpRegen > 0) {
           const before = c.resource;
           c.resource = Math.min(c.maxResource, c.resource + mpRegen);
@@ -1348,10 +1348,16 @@ export class CombatEngine {
     }
   }
 
-  private getResourceAffixBonus(combatant: CombatantState, key: 'rageGain' | 'focusRegen' | 'mpRegen' | 'faithDelta'): number {
-    if (!combatant.isPlayer) return 0;
-    return getEquippedAffixes(combatant.id)
-      .reduce((sum, affix) => sum + (affix.resourceModifiers?.[key] ?? 0), 0);
+  private getCombatantResourceAffixBonus(characterId: string, isPlayer: boolean, key: Parameters<typeof getResourceAffixBonus>[1]): number {
+    if (!isPlayer) return 0;
+    return getResourceAffixBonus(characterId, key);
+  }
+
+  private applySkillResourceChangeWithAffixes(actor: CombatantState, skillDef: SkillDef, resourceCost: number): void {
+    const faithBonus = actor.resourceType === 'faith' && actor.isPlayer
+      ? getResourceAffixBonus(actor.id, 'faithDelta')
+      : 0;
+    applySkillResourceChange(actor, skillDef, resourceCost, faithBonus);
   }
 
   /** 取得資源中文名稱 */
@@ -1359,7 +1365,7 @@ export class CombatEngine {
     const labels: Record<ResourceType, string> = {
       mp: 'MP',
       rage: '怒氣',
-      energy: '能量',
+      energy: '專注',
       faith: '信仰',
     };
     return labels[resourceType] ?? 'MP';

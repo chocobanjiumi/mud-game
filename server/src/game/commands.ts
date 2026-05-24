@@ -75,7 +75,7 @@ import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './ori
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
-import { getModifiedSkillResourceCost } from './equipment-affixes.js';
+import { getModifiedSkillResourceCost, getResourceAffixBonus } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
@@ -1716,7 +1716,8 @@ function cmdSkill(session: WsSession, args: string[]): void {
 }
 
 function spendSkillResource(char: Character, skillDef: typeof SKILL_DEFS[string], resourceCost: number): void {
-  applySkillResourceChange(char, skillDef, resourceCost);
+  const faithBonus = char.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0;
+  applySkillResourceChange(char, skillDef, resourceCost, faithBonus);
 }
 
 function getSkillUsageContext(skillDef: typeof SKILL_DEFS[string]): 'combat' | 'field' | 'both' {
@@ -1858,7 +1859,7 @@ function cmdUse(session: WsSession, itemName: string): void {
       sendSystem(session.sessionId, `你使用了「${def.name}」，但怒氣無法透過藥水恢復。`);
     } else {
       const healed = applyResourceRecovery(char, applyInventoryHandlingBonus(char.id, effect.value), getPlayerCombatant());
-      const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+      const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
       sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} ${resourceLabel}。`);
     }
     finishConsumableUse();
@@ -2773,7 +2774,7 @@ function cmdRest(session: WsSession): void {
   if (char.resourceType !== 'rage') {
     const resRecover = Math.floor(char.maxResource * 0.3);
     char.resource = Math.min(char.maxResource, char.resource + resRecover);
-    const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+    const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
     resourceMsg = ` 和 ${resRecover} ${resourceLabel}`;
   }
 

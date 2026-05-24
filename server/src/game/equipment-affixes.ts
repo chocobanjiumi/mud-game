@@ -10,6 +10,8 @@ export interface SkillAffixModifiers {
   arrivalTicksDelta: number;
 }
 
+export type ResourceAffixModifierKey = 'rageGain' | 'focusRegen' | 'mpRegen' | 'faithDelta';
+
 const TIER_VALUE: Record<string, number> = {
   T1: 1,
   T2: 2,
@@ -20,6 +22,11 @@ const TIER_VALUE: Record<string, number> = {
 
 export function getEquippedAffixes(characterId: string): AffixDef[] {
   return getEquippedItems(characterId).flatMap(item => item.affixes ?? []);
+}
+
+export function getResourceAffixBonus(characterId: string, key: ResourceAffixModifierKey): number {
+  return getEquippedAffixes(characterId)
+    .reduce((sum, affix) => sum + (affix.resourceModifiers?.[key] ?? 0), 0);
 }
 
 export function getSkillAffixModifiers(characterId: string, skillDef: SkillDef): SkillAffixModifiers {

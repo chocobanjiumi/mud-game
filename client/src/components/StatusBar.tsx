@@ -25,7 +25,7 @@ const CLASS_NAMES: Record<string, string> = {
 const RESOURCE_CONFIG: Record<ResourceType, { label: string; color: string; bgColor: string }> = {
   mp: { label: 'MP', color: '#4488ff', bgColor: 'rgba(68, 136, 255, 0.15)' },
   rage: { label: '怒氣', color: '#ff4444', bgColor: 'rgba(255, 68, 68, 0.15)' },
-  energy: { label: '能量', color: '#ffcc00', bgColor: 'rgba(255, 204, 0, 0.15)' },
+  energy: { label: '專注', color: '#ffcc00', bgColor: 'rgba(255, 204, 0, 0.15)' },
   faith: { label: '信仰', color: '#ccddff', bgColor: 'rgba(204, 221, 255, 0.15)' },
 };
 
