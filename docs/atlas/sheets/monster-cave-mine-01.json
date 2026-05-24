@@ -1,0 +1,81 @@
+{
+  "sheetId": "monster_cave_mine_01",
+  "category": "monster",
+  "columns": 4,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "monster_cave_mine_blackglass_golem",
+      "category": "monster",
+      "targetId": "blackglass_golem",
+      "name": "黑玻魔像",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_blackglass_golem.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "monster_cave_mine_cave_bat_swarm",
+      "category": "monster",
+      "targetId": "cave_bat_swarm",
+      "name": "洞窟蝙蝠群",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_cave_bat_swarm.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "monster_cave_mine_corebound_overseer",
+      "category": "monster",
+      "targetId": "corebound_overseer",
+      "name": "礦核縛工頭",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_corebound_overseer.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "monster_cave_mine_crystal_cave_mirror_golem",
+      "category": "monster",
+      "targetId": "crystal_cave_mirror_golem",
+      "name": "鏡晶魔像",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_crystal_cave_mirror_golem.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "monster_cave_mine_crystal_cave_prism_wisp",
+      "category": "monster",
+      "targetId": "crystal_cave_prism_wisp",
+      "name": "棱鏡晶靈",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_crystal_cave_prism_wisp.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "monster_cave_mine_crystal_dragon",
+      "category": "monster",
+      "targetId": "crystal_dragon",
+      "name": "水晶龍",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_crystal_dragon.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "monster_cave_mine_crystal_guardian",
+      "category": "monster",
+      "targetId": "crystal_guardian",
+      "name": "水晶守衛",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_crystal_guardian.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "monster_cave_mine_dustwing_bat",
+      "category": "monster",
+      "targetId": "dustwing_bat",
+      "name": "礦塵蝙蝠",
+      "outputPath": "client/public/images/monsters/monster_cave_mine_dustwing_bat.png",
+      "row": 1,
+      "column": 3
+    }
+  ]
+}
