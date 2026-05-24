@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_cave_mine_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_cave_mine_05.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_underground_city_underground_city_innkeeper",
+      "category": "npc",
+      "targetId": "underground_city_innkeeper",
+      "name": "蓮娜",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_innkeeper.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_lift_warden",
+      "category": "npc",
+      "targetId": "underground_city_lift_warden",
+      "name": "格倫姆",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_lift_warden.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_market_factor",
+      "category": "npc",
+      "targetId": "underground_city_market_factor",
+      "name": "摩里克",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_market_factor.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_portal_registrar",
+      "category": "npc",
+      "targetId": "underground_city_portal_registrar",
+      "name": "米芮",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_portal_registrar.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

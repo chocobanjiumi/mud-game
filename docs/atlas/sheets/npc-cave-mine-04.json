@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_cave_mine_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_cave_mine_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_underground_city_underground_city_black_broker",
+      "category": "npc",
+      "targetId": "underground_city_black_broker",
+      "name": "席芙",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_black_broker.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_ferryman",
+      "category": "npc",
+      "targetId": "underground_city_ferryman",
+      "name": "莫瑞克",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_ferryman.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_forge_master",
+      "category": "npc",
+      "targetId": "underground_city_forge_master",
+      "name": "巴洛克",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_forge_master.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_underground_city_underground_city_guild_clerk",
+      "category": "npc",
+      "targetId": "underground_city_guild_clerk",
+      "name": "奧登",
+      "outputPath": "client/public/images/npcs/npc_underground_city_underground_city_guild_clerk.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

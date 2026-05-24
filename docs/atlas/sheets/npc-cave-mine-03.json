@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_cave_mine_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_cave_mine_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_hollow_mountain_hollow_mountain_wind_gate_surveyor",
+      "category": "npc",
+      "targetId": "hollow_mountain_wind_gate_surveyor",
+      "name": "洛杭",
+      "outputPath": "client/public/images/npcs/npc_hollow_mountain_hollow_mountain_wind_gate_surveyor.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_obsidian_depths_obsidian_depths_fire_shrine_adept",
+      "category": "npc",
+      "targetId": "obsidian_depths_fire_shrine_adept",
+      "name": "伊洛",
+      "outputPath": "client/public/images/npcs/npc_obsidian_depths_obsidian_depths_fire_shrine_adept.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_obsidian_depths_obsidian_depths_mine_foreman",
+      "category": "npc",
+      "targetId": "obsidian_depths_mine_foreman",
+      "name": "葛朗",
+      "outputPath": "client/public/images/npcs/npc_obsidian_depths_obsidian_depths_mine_foreman.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_obsidian_depths_obsidian_depths_relic_smelter",
+      "category": "npc",
+      "targetId": "obsidian_depths_relic_smelter",
+      "name": "蓓菈",
+      "outputPath": "client/public/images/npcs/npc_obsidian_depths_obsidian_depths_relic_smelter.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
