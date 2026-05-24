@@ -1,10 +1,12 @@
 // Player/character management tests
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
+import { SKILL_DEFS } from '@game/shared';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
 import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
 import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
 import { grantLearnableSkills } from '../game/skill-learning.js';
+import { applyFieldSkillEffect } from '../game/field-skill-effects.js';
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
@@ -1116,6 +1118,22 @@ describe('skill learning grants', () => {
 
     expect(learned.map(skill => skill.id)).toContain('guard');
     expect(getLearnedSkills(char.id).some(skill => skill.skillId === 'guard')).toBe(true);
+  });
+});
+
+describe('field skill effects', () => {
+  it('applies first aid healing outside combat', () => {
+    const pm = new PlayerManager();
+    const char = pm.createCharacter('FieldMedic', 'user-1');
+    char.level = 4;
+    char.maxHp = 100;
+    char.hp = 40;
+
+    const result = applyFieldSkillEffect(char, SKILL_DEFS.first_aid);
+
+    expect(result.handled).toBe(true);
+    expect(result.message).toContain('15 HP');
+    expect(char.hp).toBe(55);
   });
 });
 

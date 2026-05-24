@@ -73,6 +73,7 @@ import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
+import { applyFieldSkillEffect } from './field-skill-effects.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
@@ -1597,7 +1598,22 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
+  const fieldEffect = applyFieldSkillEffect(char, skillDef);
+  if (fieldEffect.handled) {
+    if (fieldEffect.message?.includes('已經是滿的')) {
+      sendSystem(session.sessionId, fieldEffect.message);
+      return;
+    }
+    spendSkillResource(char, skillDef.resourceCost);
+    saveCharacter(char);
+    cmdStatus(session);
+    sendSystem(session.sessionId, `你使用了「${skillDef.name}」，${fieldEffect.message ?? '生效了。'}`);
+  } else {
+    spendSkillResource(char, skillDef.resourceCost);
+    saveCharacter(char);
+    cmdStatus(session);
+    sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
+  }
 
   // 轉職任務：技能使用鉤子（非戰鬥中使用技能）
   classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
@@ -1616,6 +1632,14 @@ function cmdSkill(session: WsSession, args: string[]): void {
         classQuestMgr.onHealPerformed(char.id, targetChar.id);
       }
     }
+  }
+}
+
+function spendSkillResource(char: Character, resourceCost: number): void {
+  if (resourceCost <= 0) return;
+  char.resource = Math.max(0, char.resource - resourceCost);
+  if (char.resourceType === 'mp') {
+    char.mp = Math.max(0, char.mp - resourceCost);
   }
 }
 
