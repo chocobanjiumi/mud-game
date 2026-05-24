@@ -336,6 +336,61 @@ describe('CombatEngine', () => {
       expect(state.actionLog.some(line => line.includes('打斷'))).toBe(true);
     });
 
+    it('forces silenced combatants to attack instead of using skills', () => {
+      const player = makeCharacter({
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+        stats: { str: 15, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+      const combatId = engine.startCombat([player], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      state.playerTeam[0].activeEffects.push({
+        type: 'silence',
+        value: 1,
+        duration: 2,
+        remainingDuration: 2,
+        source: monster.instanceId,
+      });
+
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'power_strike',
+        targetId: monster.instanceId,
+      })).toBe(true);
+
+      expect(state.actionLog.some(line => line.includes('被沉默'))).toBe(true);
+      expect(engine.getSkillCooldownRemaining(combatId, player.id, 'power_strike')).toBe(0);
+    });
+
+    it('makes taunted monsters target the taunt source', () => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0.1);
+      try {
+        const taunter = makeCharacter({ id: 'taunter', name: 'Taunter', hp: 200, maxHp: 200 });
+        const ally = makeCharacter({ id: 'ally', name: 'Ally', hp: 200, maxHp: 200 });
+        const monster = makeMonsterInstance({ hp: 999, str: 40, dex: 1 });
+        const combatId = engine.startCombat([taunter, ally], [monster]);
+        const state = engine.getCombatState(combatId)!;
+        state.enemyTeam[0].activeEffects.push({
+          type: 'taunt',
+          value: 1,
+          duration: 2,
+          remainingDuration: 2,
+          source: taunter.id,
+        });
+
+        engine.submitAction(combatId, { actorId: taunter.id, type: 'defend' });
+        engine.submitAction(combatId, { actorId: ally.id, type: 'defend' });
+
+        expect(state.playerTeam.find(player => player.id === taunter.id)!.hp).toBeLessThan(taunter.maxHp);
+        expect(state.playerTeam.find(player => player.id === ally.id)!.hp).toBe(ally.maxHp);
+      } finally {
+        randomSpy.mockRestore();
+      }
+    });
+
     it('should let dispel shield skills remove shield effects', () => {
       const player = makeCharacter({
         classId: 'knight',

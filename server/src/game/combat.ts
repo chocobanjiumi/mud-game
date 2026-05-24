@@ -428,6 +428,11 @@ export class CombatEngine {
           this.executeAttack(session, action, actor, roundLog, damageResults);
           break;
         case 'skill':
+          if (this.effectEngine.hasEffect(actor.activeEffects, 'silence')) {
+            roundLog.push(`${actor.name}被沉默，無法使用技能，改為普通攻擊！`);
+            this.executeAttack(session, { ...action, type: 'attack', skillId: undefined }, actor, roundLog, damageResults);
+            break;
+          }
           this.executeSkill(session, action, actor, roundLog, damageResults);
           break;
         case 'defend':
@@ -1034,15 +1039,16 @@ export class CombatEngine {
   private selectMonsterTarget(
     session: CombatSession,
     _instance: MonsterInstance,
-    _enemy: CombatantState,
+    enemy: CombatantState,
   ): CombatantState | undefined {
     const alivePlayers = session.state.playerTeam.filter(p => !p.isDead);
     if (alivePlayers.length === 0) return undefined;
 
-    // 檢查是否有人在挑釁
-    const tauntTarget = alivePlayers.find(p =>
-      this.effectEngine.hasEffect(p.activeEffects, 'taunt'),
-    );
+    // 挑釁效果套在怪物身上，source 指向吸引仇恨的玩家。
+    const taunt = enemy.activeEffects.find(effect => effect.type === 'taunt' && effect.source);
+    const tauntTarget = taunt
+      ? alivePlayers.find(player => player.id === taunt.source)
+      : undefined;
     if (tauntTarget) return tauntTarget;
 
     // 隨機目標
@@ -1695,16 +1701,22 @@ export class CombatEngine {
   }
 
   private getCombatantDex(session: CombatSession, id: string): number {
+    const combatant = this.findCombatant(session, id);
     const char = session.playerCharacters.get(id);
+    let dex: number;
     if (char) {
       const eqStats = getEquipmentStats(char);
-      return char.stats.dex + eqStats.dex;
+      dex = char.stats.dex + eqStats.dex;
+    } else {
+      const monster = session.monsterInstances.get(id);
+      dex = monster?.def.dex ?? 5;
     }
 
-    const monster = session.monsterInstances.get(id);
-    if (monster) return monster.def.dex;
-
-    return 5; // fallback
+    if (!combatant) return dex;
+    const slow = this.effectEngine.getEffectValue(combatant.activeEffects, 'slow');
+    const speedUp = this.effectEngine.getEffectValue(combatant.activeEffects, 'speed_up');
+    const adjusted = dex * (1 - Math.min(90, slow) / 100) * (1 + speedUp / 100);
+    return Math.max(1, Math.floor(adjusted));
   }
 
   private getCombatantLuk(session: CombatSession, id: string): number {
