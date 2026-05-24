@@ -561,7 +561,7 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     maxMp: row.max_mp as number,
     resource: (row.resource as number) ?? 30,
     maxResource: (row.max_resource as number) ?? 30,
-    resourceType: (row.resource_type as string as import('@game/shared').ResourceType) ?? 'mp',
+    resourceType: normalizeResourceType(row.resource_type),
     stats: {
       str: row.str as number,
       int: row.int_ as number,
@@ -579,6 +579,12 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     createdAt: row.created_at as number,
     lastLogin: row.last_login as number,
   };
+}
+
+function normalizeResourceType(value: unknown): import('@game/shared').ResourceType {
+  if (value === 'energy') return 'focus';
+  if (value === 'rage' || value === 'focus' || value === 'faith' || value === 'mp') return value;
+  return 'mp';
 }
 
 // ─── Transactions CRUD ───

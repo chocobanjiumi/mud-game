@@ -36,6 +36,8 @@ import {
   GATHERING_NODE_DEFS,
   getLearnableSkills,
   getAllAvailableSkills,
+  TIER2_LEVEL_REQ,
+  TIER3_LEVEL_REQ,
 } from '@game/shared';
 import { MONSTERS as MONSTER_DEFS } from '../data/monsters.js';
 import { QUEST_DEFS } from '../game/quest.js';
@@ -978,6 +980,21 @@ describe('Balance: Skill metadata', () => {
 
     expect(withoutQuest.some(skill => skill.id === questLockedSkill.id)).toBe(false);
     expect(withQuest.some(skill => skill.id === questLockedSkill.id)).toBe(true);
+  });
+});
+
+describe('Balance: Class progression rules', () => {
+  it('sets second job at level 20 and third job at level 40', () => {
+    expect(TIER2_LEVEL_REQ).toBe(20);
+    expect(TIER3_LEVEL_REQ).toBe(40);
+  });
+
+  it('uses focus as the ranger-family resource', () => {
+    for (const classId of ['ranger', 'marksman', 'assassin', 'beast_master'] as const) {
+      expect(CLASS_DEFS[classId].resourceType).toBe('focus');
+      expect(CLASS_DEFS[classId].initialResource).toBe(100);
+      expect(CLASS_DEFS[classId].maxResource).toBe(100);
+    }
   });
 });
 

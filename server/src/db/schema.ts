@@ -455,9 +455,9 @@ export function initDb(): Database.Database {
       UPDATE characters SET resource_type = 'mp', resource = max_mp, max_resource = max_mp
       WHERE class_id IN ('mage', 'archmage', 'warlock', 'chronomancer');
     `);
-    // 遊俠系 → energy, 100, 100
+    // 遊俠系 → focus, 100, 100
     db.exec(`
-      UPDATE characters SET resource_type = 'energy', resource = 100, max_resource = 100
+      UPDATE characters SET resource_type = 'focus', resource = 100, max_resource = 100
       WHERE class_id IN ('ranger', 'marksman', 'assassin', 'beast_master');
     `);
     // 祭司系 → faith, 50, 100
@@ -473,6 +473,11 @@ export function initDb(): Database.Database {
 
     console.log('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
   }
+
+  db.exec(`
+    UPDATE characters SET resource_type = 'focus'
+    WHERE resource_type = 'energy';
+  `);
 
   // ── Migration: character origin fields ──
   {

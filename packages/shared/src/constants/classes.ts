@@ -50,7 +50,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 1, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['marksman', 'assassin', 'beast_master'],
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -145,7 +145,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '遠程狙擊專家，以精準射擊消滅敵人。',
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 0, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -156,7 +156,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '暗影殺手，潛行暗殺，單體爆發極高。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 0, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -167,7 +167,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '與野獸為伴的遊俠，召喚夥伴協同作戰。',
     baseStatBonus: { str: 2, int: 2, dex: 4, vit: 2, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -267,6 +267,9 @@ export const TIER1_LEVEL_REQ = 1;
 
 /** 二轉所需等級 */
 export const TIER2_LEVEL_REQ = 20;
+
+/** 三轉 / 高階專精所需等級 */
+export const TIER3_LEVEL_REQ = 40;
 
 /** 二轉所需金幣 */
 export const TIER2_GOLD_COST = 2000;

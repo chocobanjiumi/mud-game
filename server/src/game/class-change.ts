@@ -54,7 +54,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 1, luk: 1 },
     parentClass: 'adventurer',
     advancedClasses: ['marksman', 'assassin', 'beast_master'],
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -149,7 +149,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '遠程爆發，精準狙殺。',
     baseStatBonus: { str: 2, int: 0, dex: 8, vit: 0, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -160,7 +160,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '潛行暗殺，單體爆發。',
     baseStatBonus: { str: 3, int: 0, dex: 7, vit: 0, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -171,7 +171,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     description: '召喚夥伴，人寵協同作戰。',
     baseStatBonus: { str: 2, int: 2, dex: 4, vit: 2, luk: 2 },
     parentClass: 'ranger',
-    resourceType: 'energy',
+    resourceType: 'focus',
     initialResource: 100,
     maxResource: 100,
   },
@@ -238,6 +238,12 @@ const FIRST_CLASS_OPTIONS: ClassId[] = ['swordsman', 'mage', 'ranger', 'priest']
 
 const SECOND_CLASS_CHANGE_LEVEL = 20;
 const SECOND_CLASS_CHANGE_GOLD = 2000;
+
+// ============================================================
+//  三轉 / 高階專精需求 (Lv 40)
+// ============================================================
+
+export const THIRD_CLASS_CHANGE_LEVEL = 40;
 
 /** 初始職業 → 二轉的路徑 */
 const SECOND_CLASS_OPTIONS: Record<ClassId, ClassId[]> = {

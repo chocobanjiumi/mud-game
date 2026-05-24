@@ -21,9 +21,9 @@ export interface DerivedStats {
 
 export type ClassId =
   | 'adventurer'
-  // 一轉
+  // 初始職業
   | 'swordsman' | 'mage' | 'ranger' | 'priest'
-  // 二轉 - 劍士系
+  // 二轉 - 戰士系
   | 'knight' | 'berserker' | 'sword_saint'
   // 二轉 - 法師系
   | 'archmage' | 'warlock' | 'chronomancer'
@@ -36,7 +36,7 @@ export type ClassId =
 
 export type ClassTier = 0 | 1 | 2;
 
-export type ResourceType = 'mp' | 'rage' | 'energy' | 'faith';
+export type ResourceType = 'mp' | 'rage' | 'focus' | 'faith';
 export type { RaceId, GenderId, FaithId } from './origin.js';
 
 export interface ClassDef {

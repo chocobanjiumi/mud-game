@@ -1859,7 +1859,7 @@ function cmdUse(session: WsSession, itemName: string): void {
       sendSystem(session.sessionId, `你使用了「${def.name}」，但怒氣無法透過藥水恢復。`);
     } else {
       const healed = applyResourceRecovery(char, applyInventoryHandlingBonus(char.id, effect.value), getPlayerCombatant());
-      const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+      const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'focus' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
       sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} ${resourceLabel}。`);
     }
     finishConsumableUse();
@@ -2774,7 +2774,7 @@ function cmdRest(session: WsSession): void {
   if (char.resourceType !== 'rage') {
     const resRecover = Math.floor(char.maxResource * 0.3);
     char.resource = Math.min(char.maxResource, char.resource + resRecover);
-    const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
+    const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'focus' ? '專注' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
     resourceMsg = ` 和 ${resRecover} ${resourceLabel}`;
   }
 

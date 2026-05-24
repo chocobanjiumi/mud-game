@@ -197,6 +197,17 @@ describe('PlayerManager', () => {
       expect(learned).toEqual(expect.arrayContaining(['magic_missile', 'fireball', 'mana_shield']));
     });
 
+    it('should use focus as the ranger resource at creation', () => {
+      const char = pm.createCharacter('InitialRanger', 'user-1', false, undefined, {
+        classId: 'ranger',
+      });
+
+      expect(char.classId).toBe('ranger');
+      expect(char.resourceType).toBe('focus');
+      expect(char.resource).toBe(100);
+      expect(char.maxResource).toBe(100);
+    });
+
     it('should create AI character when isAi is true', () => {
       const char = pm.createCharacter('AIBot', 'user-ai', true, 'agent-1');
 

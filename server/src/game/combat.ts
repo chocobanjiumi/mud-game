@@ -1317,7 +1317,7 @@ export class CombatEngine {
       if (c.isDead) continue;
 
       // 遊俠系：每回合專注 +15
-      if (c.resourceType === 'energy') {
+      if (c.resourceType === 'focus') {
         const before = c.resource;
         c.resource = Math.min(c.maxResource, c.resource + 15 + this.getCombatantResourceAffixBonus(c.id, c.isPlayer, 'focusRegen'));
         const actual = c.resource - before;
@@ -1371,7 +1371,7 @@ export class CombatEngine {
     const labels: Record<ResourceType, string> = {
       mp: 'MP',
       rage: '怒氣',
-      energy: '專注',
+      focus: '專注',
       faith: '信仰',
     };
     return labels[resourceType] ?? 'MP';

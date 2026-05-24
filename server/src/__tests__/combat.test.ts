@@ -263,7 +263,7 @@ describe('CombatEngine', () => {
         stats: { str: 15, int: 5, dex: 100, vit: 10, luk: 5 },
         resource: 100,
         maxResource: 100,
-        resourceType: 'energy',
+        resourceType: 'focus',
       });
       const monster = makeMonsterInstance({
         id: 'test_boss',

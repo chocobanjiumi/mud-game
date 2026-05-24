@@ -335,7 +335,7 @@ function getResourceLabelForPrompt(resourceType?: string): string {
   const map: Record<string, string> = {
     mp: 'MP',
     rage: '怒氣',
-    energy: '專注',
+    focus: '專注',
     faith: '信仰',
   };
   return map[resourceType ?? 'mp'] ?? 'MP';

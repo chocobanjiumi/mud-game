@@ -45,7 +45,7 @@ const INITIAL_CLASS_IDS: InitialClassId[] = ['swordsman', 'mage', 'ranger', 'pri
 const resourceLabels = {
   mp: 'MP',
   rage: '怒氣',
-  energy: '專注',
+  focus: '專注',
   faith: '信仰',
 };
 
