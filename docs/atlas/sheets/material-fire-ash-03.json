@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_fire_ash_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_fire_ash_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_fire_ash_red_ore_chunk",
+      "category": "material",
+      "targetId": "red_ore_chunk",
+      "name": "赤鐵礦塊",
+      "outputPath": "client/public/images/materials/material_fire_ash_red_ore_chunk.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_salamander_tail",
+      "category": "material",
+      "targetId": "salamander_tail",
+      "name": "火蜥蜴尾",
+      "outputPath": "client/public/images/materials/material_fire_ash_salamander_tail.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_slag_iron_clinker",
+      "category": "material",
+      "targetId": "slag_iron_clinker",
+      "name": "渣鐵熔塊",
+      "outputPath": "client/public/images/materials/material_fire_ash_slag_iron_clinker.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_fire_ash_soot_scripture_leaf",
+      "category": "material",
+      "targetId": "soot_scripture_leaf",
+      "name": "焦黑經頁",
+      "outputPath": "client/public/images/materials/material_fire_ash_soot_scripture_leaf.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_sulfur_crystal_cluster",
+      "category": "material",
+      "targetId": "sulfur_crystal_cluster",
+      "name": "硫磺晶簇",
+      "outputPath": "client/public/images/materials/material_fire_ash_sulfur_crystal_cluster.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_cave_mine_lava_fragment",
+      "category": "material",
+      "targetId": "lava_fragment",
+      "name": "熔岩碎片",
+      "outputPath": "client/public/images/materials/material_fire_ash_cave_mine_lava_fragment.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

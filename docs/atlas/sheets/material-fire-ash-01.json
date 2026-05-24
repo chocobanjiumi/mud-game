@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_fire_ash_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_fire_ash_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_fire_ash_ashline_banner_scrap",
+      "category": "material",
+      "targetId": "ashline_banner_scrap",
+      "name": "灰線旗布",
+      "outputPath": "client/public/images/materials/material_fire_ash_ashline_banner_scrap.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_blackflag_token",
+      "category": "material",
+      "targetId": "blackflag_token",
+      "name": "黑旗令牌",
+      "outputPath": "client/public/images/materials/material_fire_ash_blackflag_token.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_censer_chain_link",
+      "category": "material",
+      "targetId": "censer_chain_link",
+      "name": "斷香爐鏈節",
+      "outputPath": "client/public/images/materials/material_fire_ash_censer_chain_link.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_fire_ash_cinder_crust",
+      "category": "material",
+      "targetId": "cinder_crust",
+      "name": "焦泉礦殼",
+      "outputPath": "client/public/images/materials/material_fire_ash_cinder_crust.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_desert_scout_spyglass",
+      "category": "material",
+      "targetId": "desert_scout_spyglass",
+      "name": "荒地斥候望遠鏡",
+      "outputPath": "client/public/images/materials/material_fire_ash_desert_scout_spyglass.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_emberglass_shard",
+      "category": "material",
+      "targetId": "emberglass_shard",
+      "name": "燼玻碎片",
+      "outputPath": "client/public/images/materials/material_fire_ash_emberglass_shard.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}

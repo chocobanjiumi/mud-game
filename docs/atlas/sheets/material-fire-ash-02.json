@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_fire_ash_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_fire_ash_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_fire_ash_fire_vent_crystal",
+      "category": "material",
+      "targetId": "fire_vent_crystal",
+      "name": "火晶種",
+      "outputPath": "client/public/images/materials/material_fire_ash_fire_vent_crystal.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_fused_glass_sand",
+      "category": "material",
+      "targetId": "fused_glass_sand",
+      "name": "熔融玻砂",
+      "outputPath": "client/public/images/materials/material_fire_ash_fused_glass_sand.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_mirror_shard_plate",
+      "category": "material",
+      "targetId": "mirror_shard_plate",
+      "name": "鏡砂甲片",
+      "outputPath": "client/public/images/materials/material_fire_ash_mirror_shard_plate.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_fire_ash_obsidian_glass_plate",
+      "category": "material",
+      "targetId": "obsidian_glass_plate",
+      "name": "黑曜玻板",
+      "outputPath": "client/public/images/materials/material_fire_ash_obsidian_glass_plate.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_fire_ash_obsidian_well_salt",
+      "category": "material",
+      "targetId": "obsidian_well_salt",
+      "name": "黑曜井鹽",
+      "outputPath": "client/public/images/materials/material_fire_ash_obsidian_well_salt.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_fire_ash_prism_lens_core",
+      "category": "material",
+      "targetId": "prism_lens_core",
+      "name": "稜鏡透核",
+      "outputPath": "client/public/images/materials/material_fire_ash_prism_lens_core.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
