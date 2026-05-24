@@ -110,6 +110,14 @@ type LocalMapPayload = {
 
 type CardinalDirection = 'north' | 'east' | 'south' | 'west';
 const CARDINAL_DIRECTIONS: CardinalDirection[] = ['north', 'east', 'south', 'west'];
+interface ActiveExitTrap {
+  ownerId: string;
+  skillId: string;
+  resourceGainOnTrigger: number;
+  arrivalTicksDelta: number;
+  placedAt: number;
+}
+const activeExitTraps = new Map<string, ActiveExitTrap>();
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
@@ -1538,6 +1546,21 @@ function cmdAttack(session: WsSession, target: string): void {
     for (const approaching of arrived) {
       const monster = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === approaching.instanceId);
       if (monster) {
+        const trap = consumeExitTrap(char.roomId, approaching.sourceDirection);
+        if (trap) {
+          const delayed = world.moveMonsterToApproaching(
+            char.roomId,
+            char.roomId,
+            approaching.sourceDirection,
+            monster.instanceId,
+            Math.max(1, trap.arrivalTicksDelta),
+            approaching.targetPlayerId ?? char.id,
+            approaching.targetPartyId,
+          );
+          grantTrapFocus(trap, session.sessionId);
+          sendSystem(session.sessionId, `${approaching.name}觸發了${directionChinese(approaching.sourceDirection)}側陷阱，延後 ${delayed?.arrivalTicks ?? trap.arrivalTicksDelta} tick 抵達！`);
+          continue;
+        }
         combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id);
         sendSystem(session.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
       }
@@ -1689,6 +1712,56 @@ function cmdSkill(session: WsSession, args: string[]): void {
     if (isQuestSupportSkill(skillDef)) {
       questMgr.updateProgress(char.id, 'use_support_skill', matchedSkill.skillId);
     }
+    tutorialMgr.advanceStep(char.id, 'skill');
+    return;
+  }
+
+  if (skillDef.special?.scoutDirection) {
+    if (!isCardinalDirection(target)) {
+      sendError(session.sessionId, `「${skillDef.name}」需要指定方向：north/east/south/west。`);
+      return;
+    }
+    const room = getRoom(char.roomId);
+    const exit = room?.exits.find(candidate => candidate.direction === target && !candidate.locked);
+    const targetRoom = exit ? getRoom(exit.targetRoomId) : null;
+    if (!room || !targetRoom) {
+      sendError(session.sessionId, `${directionChinese(target)}方沒有可偵查的房間。`);
+      return;
+    }
+    spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    recordDiscovery(char.id, targetRoom.zone, targetRoom.id, 'scout_room', targetRoom.id);
+    const fieldEffect = applyFieldSkillEffect(char, skillDef, char);
+    saveCharacter(char);
+    cmdStatus(session);
+    sendSystem(session.sessionId, `你偵查了${directionChinese(target)}方「${targetRoom.name}」，${fieldEffect.message ?? '掌握了周邊威脅。'}`);
+    broadcastRoomState(char.roomId);
+    tutorialMgr.advanceStep(char.id, 'skill');
+    return;
+  }
+
+  if (skillDef.special?.trapExit) {
+    if (!isCardinalDirection(target)) {
+      sendError(session.sessionId, `「${skillDef.name}」需要指定出口方向：north/east/south/west。`);
+      return;
+    }
+    const room = getRoom(char.roomId);
+    const exit = room?.exits.find(candidate => candidate.direction === target && !candidate.locked);
+    if (!room || !exit) {
+      sendError(session.sessionId, `${directionChinese(target)}方沒有可設置陷阱的出口。`);
+      return;
+    }
+    spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+    activeExitTraps.set(exitTrapKey(char.roomId, target), {
+      ownerId: char.id,
+      skillId: skillDef.id,
+      resourceGainOnTrigger: getNumericSpecial(skillDef, 'resourceGainOnTrigger') ?? 0,
+      arrivalTicksDelta: getNumericSpecial(skillDef, 'arrivalTicksDelta') ?? 1,
+      placedAt: Date.now(),
+    });
+    saveCharacter(char);
+    cmdStatus(session);
+    sendSystem(session.sessionId, `你在${directionChinese(target)}方出口設置了「${skillDef.name}」。`);
+    broadcastRoomState(char.roomId);
     tutorialMgr.advanceStep(char.id, 'skill');
     return;
   }
@@ -1847,6 +1920,30 @@ function parseCrossRoomTarget(target: string): { direction?: CardinalDirection; 
 
 function isCardinalDirection(value: string): value is CardinalDirection {
   return CARDINAL_DIRECTIONS.includes(value as CardinalDirection);
+}
+
+function exitTrapKey(roomId: string, direction: CardinalDirection): string {
+  return `${roomId}:${direction}`;
+}
+
+function consumeExitTrap(roomId: string, direction: CardinalDirection): ActiveExitTrap | undefined {
+  const key = exitTrapKey(roomId, direction);
+  const trap = activeExitTraps.get(key);
+  if (trap) activeExitTraps.delete(key);
+  return trap;
+}
+
+function grantTrapFocus(trap: ActiveExitTrap, fallbackSessionId: string): void {
+  if (trap.resourceGainOnTrigger <= 0) return;
+  const owner = getCharacterById(trap.ownerId);
+  if (!owner || owner.resourceType !== 'focus') return;
+  const before = owner.resource;
+  owner.resource = Math.min(owner.maxResource, owner.resource + trap.resourceGainOnTrigger);
+  saveCharacter(owner);
+  const actual = owner.resource - before;
+  if (actual <= 0) return;
+  const ownerSession = getSessionByCharacterId(owner.id);
+  sendSystem(ownerSession?.sessionId ?? fallbackSessionId, `你的陷阱觸發，恢復了 ${actual} 點專注。`);
 }
 
 function applyCrossRoomSkillDamage(char: Character, skillDef: typeof SKILL_DEFS[string], monster: ReturnType<typeof world.getAliveMonsters>[number]): number {
