@@ -128,6 +128,7 @@ export interface SkillLearnedNotice {
   description: string;
   learnLevel: number;
   skillType: 'active' | 'passive';
+  usageContext: 'combat' | 'field' | 'both';
   targetType: string;
   resourceCost: number;
   cooldown: number;

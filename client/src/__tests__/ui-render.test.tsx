@@ -129,6 +129,7 @@ describe('key UI component rendering', () => {
       description: '降低下一次受到的傷害。',
       learnLevel: 2,
       skillType: 'active',
+      usageContext: 'combat',
       targetType: 'self',
       resourceCost: 0,
       cooldown: 2,
@@ -137,6 +138,7 @@ describe('key UI component rendering', () => {
     const html = renderToStaticMarkup(<SkillLearnedModalView notice={notice} remaining={0} onDismiss={() => undefined} />);
     expect(html).toContain('防禦');
     expect(html).toContain('Lv.2');
+    expect(html).toContain('戰鬥');
     expect(html).toContain('技能已加入快捷列與技能列表');
   });
 

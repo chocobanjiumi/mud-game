@@ -1548,9 +1548,23 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
+  const skillDef = SKILL_DEFS[matchedSkill.skillId];
+  if (!skillDef) {
+    sendError(session.sessionId, `技能「${skillName}」資料不存在。`);
+    return;
+  }
+  if (skillDef.type === 'passive') {
+    sendError(session.sessionId, `「${skillDef.name}」是被動技能，不需要手動使用。`);
+    return;
+  }
+  const usageContext = getSkillUsageContext(skillDef);
+
   const combatId = getPlayerCombatId(char.id);
   if (combatId) {
-    const skillDef = SKILL_DEFS[matchedSkill.skillId];
+    if (usageContext === 'field') {
+      sendError(session.sessionId, `「${skillDef.name}」只能在平時使用。`);
+      return;
+    }
     if (skillDef?.targetType === 'all_enemies' && skillDef.special?.areaScope !== 'combat') {
       for (const roomMonster of world.getAliveMonsters(char.roomId)) {
         combat.addMonsterToCombat(combatId, roomMonster);
@@ -1573,7 +1587,11 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  const skillDef = SKILL_DEFS[matchedSkill.skillId];
+  if (usageContext === 'combat') {
+    sendError(session.sessionId, `「${skillDef.name}」只能在戰鬥中使用。`);
+    return;
+  }
+
   if (skillDef && skillDef.resourceCost > char.resource) {
     sendError(session.sessionId, `資源不足！${skillDef.name}需要 ${skillDef.resourceCost} 點。`);
     return;
@@ -1599,6 +1617,10 @@ function cmdSkill(session: WsSession, args: string[]): void {
       }
     }
   }
+}
+
+function getSkillUsageContext(skillDef: typeof SKILL_DEFS[string]): 'combat' | 'field' | 'both' {
+  return (skillDef as typeof skillDef & { usageContext?: 'combat' | 'field' | 'both' }).usageContext ?? 'combat';
 }
 
 function isQuestSupportSkill(skillDef: typeof SKILL_DEFS[string]): boolean {

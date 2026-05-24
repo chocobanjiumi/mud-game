@@ -395,6 +395,7 @@ export function useWebSocket() {
             description: (p.description as string | undefined) ?? '',
             learnLevel: (p.learnLevel as number | undefined) ?? 1,
             skillType: ((p.skillType as 'active' | 'passive' | undefined) ?? 'active'),
+            usageContext: ((p.usageContext as 'combat' | 'field' | 'both' | undefined) ?? 'combat'),
             targetType: (p.targetType as string | undefined) ?? '',
             resourceCost: (p.resourceCost as number | undefined) ?? 0,
             cooldown: (p.cooldown as number | undefined) ?? 0,

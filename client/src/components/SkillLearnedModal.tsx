@@ -9,6 +9,12 @@ const targetLabels: Record<string, string> = {
   all_allies: '所有隊友',
 };
 
+const usageLabels = {
+  combat: '戰鬥',
+  field: '平時',
+  both: '兩者',
+};
+
 export default function SkillLearnedModal() {
   const notice = useGameStore((s) => s.skillLearnedNotices[0]);
   const remaining = useGameStore((s) => Math.max(0, s.skillLearnedNotices.length - 1));
@@ -38,6 +44,7 @@ export function SkillLearnedModalView({
         <div className="mt-4 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
           <InfoCell label="等級" value={`Lv.${notice.learnLevel}`} />
           <InfoCell label="型態" value={notice.skillType === 'passive' ? '被動' : '主動'} />
+          <InfoCell label="場景" value={usageLabels[notice.usageContext]} />
           <InfoCell label="目標" value={targetLabels[notice.targetType] ?? notice.targetType} />
           <InfoCell label="消耗/CD" value={`${notice.resourceCost} / ${notice.cooldown}`} />
         </div>

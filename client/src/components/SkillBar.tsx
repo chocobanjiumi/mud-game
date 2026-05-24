@@ -9,7 +9,13 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
   const skills = useGameStore((s) => s.skills);
   const inCombat = useGameStore((s) => s.inCombat);
   const character = useGameStore((s) => s.character);
-  const activeSkills = skills.filter((skill) => SKILL_DEFS[skill.skillId]?.type === 'active');
+  const activeSkills = skills.filter((skill) => {
+    const def = SKILL_DEFS[skill.skillId];
+    if (!def || def.type !== 'active') return false;
+    return inCombat
+      ? def.usageContext === 'combat' || def.usageContext === 'both'
+      : def.usageContext === 'field' || def.usageContext === 'both';
+  });
 
   if (activeSkills.length === 0) return null;
 
@@ -17,9 +23,10 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
     <div className="bg-bg-secondary border-t border-border-dim px-3 py-1.5">
       <div className="flex items-center gap-1 overflow-x-auto">
         <span className="text-[10px] text-text-dim mr-1 shrink-0">
-          技能 {character ? `${character.resource}/${character.maxResource}` : ''}
+          {inCombat ? '戰鬥技能' : '平時技能'} {character ? `${character.resource}/${character.maxResource}` : ''}
         </span>
         {activeSkills.map((skill, index) => {
+          const def = SKILL_DEFS[skill.skillId];
           const onCooldown = skill.currentCooldown > 0;
           const hotkey = index < 9 ? `${index + 1}` : null;
 
@@ -27,19 +34,17 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
             <button
               key={skill.skillId}
               onClick={() => !onCooldown && onUseSkill(skill.skillId)}
-              disabled={onCooldown || !inCombat}
+              disabled={onCooldown}
               className={`
                 relative px-2 py-1 text-xs rounded border cursor-pointer
                 ${
                   onCooldown
                     ? 'border-border-dim/50 bg-bg-primary/30 text-text-dim cursor-not-allowed'
-                    : inCombat
-                      ? 'border-border-glow/30 bg-bg-tertiary/50 text-text-terminal hover:bg-bg-tertiary hover:border-border-glow/60'
-                      : 'border-border-dim/50 bg-bg-primary/30 text-text-dim cursor-not-allowed'
+                    : 'border-border-glow/30 bg-bg-tertiary/50 text-text-terminal hover:bg-bg-tertiary hover:border-border-glow/60'
                 }
                 transition-colors
               `}
-              title={`${skill.skillId}${onCooldown ? ` (冷卻: ${skill.currentCooldown}回合)` : ''}`}
+              title={`${def?.name ?? skill.skillId} · ${def?.usageContext ?? ''}${onCooldown ? ` (冷卻: ${skill.currentCooldown}回合)` : ''}`}
             >
               {/* Hotkey badge */}
               {hotkey && (
@@ -47,7 +52,7 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
                   {hotkey}
                 </span>
               )}
-              <span className="truncate max-w-16 block">{skill.skillId}</span>
+              <span className="truncate max-w-16 block">{def?.name ?? skill.skillId}</span>
               {/* Cooldown overlay */}
               {onCooldown && (
                 <span className="absolute inset-0 flex items-center justify-center bg-bg-primary/60 rounded text-text-amber text-[10px] font-bold">

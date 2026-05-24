@@ -4,6 +4,7 @@ import type { ClassId } from './player.js';
 
 export type SkillTargetType = 'single_enemy' | 'all_enemies' | 'self' | 'single_ally' | 'all_allies';
 export type SkillType = 'active' | 'passive';
+export type SkillUsageContext = 'combat' | 'field' | 'both';
 export type DamageType = 'physical' | 'magical' | 'pure';
 export type ElementType = 'fire' | 'ice' | 'lightning' | 'light' | 'dark' | 'nature' | 'none';
 export type SkillTag =
@@ -40,6 +41,7 @@ export interface SkillDef {
   classId: ClassId;
   learnLevel: number;
   type: SkillType;
+  usageContext: SkillUsageContext;
   targetType: SkillTargetType;
   resourceCost: number;
   cooldown: number;

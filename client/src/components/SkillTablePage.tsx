@@ -1,4 +1,4 @@
-import { CLASS_DEFS, FAITH_DEFS, RACE_DEFS, SKILL_DEFS, type ClassId, type SkillDef, type SkillTargetType } from '@game/shared';
+import { CLASS_DEFS, FAITH_DEFS, RACE_DEFS, SKILL_DEFS, type ClassId, type SkillDef, type SkillTargetType, type SkillUsageContext } from '@game/shared';
 
 const CLASS_ORDER: ClassId[] = [
   'adventurer',
@@ -47,6 +47,12 @@ const elementLabels = {
 const typeLabels = {
   active: '主動',
   passive: '被動',
+};
+
+const usageLabels: Record<SkillUsageContext, string> = {
+  combat: '戰鬥',
+  field: '平時',
+  both: '兩者',
 };
 
 const classNotes: Record<ClassId, string> = {
@@ -146,12 +152,13 @@ export default function SkillTablePage() {
 function SkillTable({ skills }: { skills: SkillDef[] }) {
   return (
     <div className="overflow-x-auto rounded-md border border-border-dim bg-bg-secondary">
-      <table className="min-w-[980px] w-full border-collapse text-left text-sm">
+      <table className="min-w-[1060px] w-full border-collapse text-left text-sm">
         <thead className="bg-bg-primary text-xs text-text-dim">
           <tr>
             <Th>等級</Th>
             <Th>技能</Th>
             <Th>型態</Th>
+            <Th>場景</Th>
             <Th>目標</Th>
             <Th>傷害</Th>
             <Th>消耗</Th>
@@ -171,6 +178,11 @@ function SkillTable({ skills }: { skills: SkillDef[] }) {
                 <div className="mt-1 text-xs text-text-dim">{skill.id}</div>
               </Td>
               <Td>{typeLabels[skill.type]}</Td>
+              <Td>
+                <span className="rounded border border-border-dim bg-bg-primary px-2 py-1 text-xs text-text-terminal">
+                  {usageLabels[skill.usageContext]}
+                </span>
+              </Td>
               <Td>{targetLabels[skill.targetType]}</Td>
               <Td>
                 <div>{damageLabels[skill.damageType]}</div>

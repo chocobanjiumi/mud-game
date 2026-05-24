@@ -27,6 +27,7 @@ export function grantAndNotifyLearnableSkills(character: Character): SkillDef[] 
       description: skill.description,
       learnLevel: skill.learnLevel,
       skillType: skill.type,
+      usageContext: (skill as SkillDef & { usageContext?: 'combat' | 'field' | 'both' }).usageContext ?? 'combat',
       targetType: skill.targetType,
       resourceCost: skill.resourceCost,
       cooldown: skill.cooldown,
