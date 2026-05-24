@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_ice_mountain_02",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_ice_mountain_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_ice_mountain_sky_rune_shard",
+      "category": "material",
+      "targetId": "sky_rune_shard",
+      "name": "浮空符文片",
+      "outputPath": "client/public/images/materials/material_ice_mountain_sky_rune_shard.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_ice_mountain_snowwolf_fur",
+      "category": "material",
+      "targetId": "snowwolf_fur",
+      "name": "雪狼毛",
+      "outputPath": "client/public/images/materials/material_ice_mountain_snowwolf_fur.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_ice_mountain_starwatch_silver_ore",
+      "category": "material",
+      "targetId": "starwatch_silver_ore",
+      "name": "觀星銀礦",
+      "outputPath": "client/public/images/materials/material_ice_mountain_starwatch_silver_ore.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_ice_mountain_stormglass_ore",
+      "category": "material",
+      "targetId": "stormglass_ore",
+      "name": "風暴玻礦",
+      "outputPath": "client/public/images/materials/material_ice_mountain_stormglass_ore.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_ice_mountain_stormglass_shard",
+      "category": "material",
+      "targetId": "stormglass_shard",
+      "name": "暴雪玻璃片",
+      "outputPath": "client/public/images/materials/material_ice_mountain_stormglass_shard.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_ice_mountain_stormgoat_horn",
+      "category": "material",
+      "targetId": "stormgoat_horn",
+      "name": "暴風山羊角",
+      "outputPath": "client/public/images/materials/material_ice_mountain_stormgoat_horn.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
