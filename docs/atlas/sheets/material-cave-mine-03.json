@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_cave_mine_03",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_cave_mine_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_cave_mine_sulfur_heart_ore",
+      "category": "material",
+      "targetId": "sulfur_heart_ore",
+      "name": "硫心礦",
+      "outputPath": "client/public/images/materials/material_cave_mine_sulfur_heart_ore.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_tarnished_ore_chunk",
+      "category": "material",
+      "targetId": "tarnished_ore_chunk",
+      "name": "失光礦塊",
+      "outputPath": "client/public/images/materials/material_cave_mine_tarnished_ore_chunk.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_thunder_ore_shard",
+      "category": "material",
+      "targetId": "thunder_ore_shard",
+      "name": "雷礦碎片",
+      "outputPath": "client/public/images/materials/material_cave_mine_thunder_ore_shard.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_astral_time_rock_fragment",
+      "category": "material",
+      "targetId": "rock_fragment",
+      "name": "岩石碎片",
+      "outputPath": "client/public/images/materials/material_cave_mine_astral_time_rock_fragment.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_demon_abyss_gargoyle_stone",
+      "category": "material",
+      "targetId": "gargoyle_stone",
+      "name": "石像鬼之石",
+      "outputPath": "client/public/images/materials/material_cave_mine_demon_abyss_gargoyle_stone.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_cave_mine_demon_abyss_gargoyle_wing",
+      "category": "material",
+      "targetId": "gargoyle_wing",
+      "name": "石像鬼之翼",
+      "outputPath": "client/public/images/materials/material_cave_mine_demon_abyss_gargoyle_wing.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_cave_mine_fire_ash_stone_heart",
+      "category": "material",
+      "targetId": "stone_heart",
+      "name": "石之心",
+      "outputPath": "client/public/images/materials/material_cave_mine_fire_ash_stone_heart.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_cave_mine_forest_fen_bat_wing",
+      "category": "material",
+      "targetId": "bat_wing",
+      "name": "蝙蝠翅膀",
+      "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_bat_wing.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_cave_mine_forest_fen_spider_eye",
+      "category": "material",
+      "targetId": "spider_eye",
+      "name": "蜘蛛眼",
+      "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_eye.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_cave_mine_forest_fen_spider_silk",
+      "category": "material",
+      "targetId": "spider_silk",
+      "name": "蜘蛛絲",
+      "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_silk.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
