@@ -62,6 +62,18 @@ export interface NpcDialogueOptionPayload {
   command: string;
 }
 
+export interface NpcDialogueShopItemPayload {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  type: string;
+  rarity: string;
+  levelReq: number;
+  stats?: Record<string, number>;
+  command: string;
+}
+
 export interface NpcDialoguePayload {
   npcId: string;
   npcName: string;
@@ -70,6 +82,7 @@ export interface NpcDialoguePayload {
   nodeId: string;
   text: string;
   options: NpcDialogueOptionPayload[];
+  shopItems?: NpcDialogueShopItemPayload[];
 }
 
 export type RoomEntityType = 'exit' | 'npc' | 'monster' | 'corpse' | 'gathering' | 'travel' | 'item' | 'player';

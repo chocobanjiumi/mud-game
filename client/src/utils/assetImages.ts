@@ -16,8 +16,12 @@ export function getItemImagePath(itemId: string): string | undefined {
   return getAssetPath(category, itemId);
 }
 
+export function getNpcImagePath(npcId: string): string | undefined {
+  return getAssetPath('npc', npcId);
+}
+
 export function getEntityImagePath(entity: RoomEntity): string | undefined {
-  if (entity.type === 'npc') return getAssetPath('npc', entity.id);
+  if (entity.type === 'npc') return getNpcImagePath(entity.id);
   if (entity.type === 'monster') return getAssetPath('monster', monsterTargetId(entity.id));
   if (entity.type === 'item') return getItemImagePath(entity.id);
   return undefined;

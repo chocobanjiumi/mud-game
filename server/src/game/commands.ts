@@ -2233,6 +2233,7 @@ function cmdSay(session: WsSession, message: string): void {
 const activeDialogues = new Map<string, { npcId: string; nodeId: string }>();
 
 function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void {
+  const char = getChar(session);
   const node = npc.dialogue.find(d => d.id === nodeId);
   if (!node) {
     sendSystem(session.sessionId, `${npc.name}沉默了。`);
@@ -2242,7 +2243,6 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
 
   // 執行 action
   if (node.action) {
-    const char = getChar(session);
     if (char) {
       switch (node.action.type) {
         case 'shop':
@@ -2289,6 +2289,7 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
       text: option.text,
       command: `talk ${npc.id} ${index + 1}`,
     })),
+    shopItems: node.action?.type === 'shop' && char ? buildNpcShopItems(char, npc) : undefined,
   });
   sendNarrative(session.sessionId, dialogueText, 'npc');
 }
@@ -2323,26 +2324,15 @@ function sendNpcShopListing(
   char: Character,
   npc: NpcDef,
 ): void {
-  const items = npc.shopItems
-    ?.map((itemId) => {
-      const def = ITEM_DEFS[itemId];
-      if (!def) return null;
-      const price = applyShopBuyOriginDiscount(char, def.buyPrice);
-      const stats = def.stats
-        ? Object.entries(def.stats)
-          .filter(([, value]) => typeof value === 'number' && value !== 0)
-          .map(([key, value]) => `${key}+${value}`)
-          .join(' ')
-        : '';
-      return {
-        name: def.name,
-        price,
-        levelReq: def.levelReq,
-        type: def.type,
-        stats,
-      };
-    })
-    .filter((item): item is NonNullable<typeof item> => item !== null) ?? [];
+  const items = buildNpcShopItems(char, npc).map(item => ({
+    ...item,
+    statsText: item.stats
+      ? Object.entries(item.stats)
+        .filter(([, value]) => typeof value === 'number' && value !== 0)
+        .map(([key, value]) => `${key}+${value}`)
+        .join(' ')
+      : '',
+  }));
 
   sendSystem(session.sessionId, `${npc.name}展示了商品：`);
   if (items.length === 0) {
@@ -2355,11 +2345,47 @@ function sendNpcShopListing(
       `${item.price} 金幣`,
       `Lv.${item.levelReq}`,
       item.type,
-      item.stats,
+      item.statsText,
     ].filter(Boolean).join(' / ');
     sendSystem(session.sessionId, `  ${item.name} — ${detail}`);
   }
   sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買，例如：buy 木劍');
+}
+
+function buildNpcShopItems(char: Character, npc: NpcDef): {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  type: string;
+  rarity: string;
+  levelReq: number;
+  stats?: Record<string, number>;
+  command: string;
+}[] {
+  return npc.shopItems
+    ?.map((itemId) => {
+      const def = ITEM_DEFS[itemId];
+      if (!def) return null;
+      const stats = def.stats
+        ? Object.fromEntries(
+          Object.entries(def.stats)
+            .filter(([, value]) => typeof value === 'number' && value !== 0),
+        ) as Record<string, number>
+        : undefined;
+      return {
+        id: itemId,
+        name: def.name,
+        description: def.description,
+        price: applyShopBuyOriginDiscount(char, def.buyPrice),
+        type: String(def.type),
+        rarity: def.rarity ?? 'common',
+        levelReq: def.levelReq,
+        stats: stats && Object.keys(stats).length > 0 ? stats : undefined,
+        command: `buy ${def.name}`,
+      };
+    })
+    .filter((item): item is NonNullable<typeof item> => item !== null) ?? [];
 }
 
 /** buy <物品名稱> — 從當前房間的商人 NPC 購買物品 */
