@@ -55,6 +55,7 @@ import { getAllSessions, sendToCharacter, sendToSession } from '../ws/handler.js
 import { getRoom } from '../data/rooms.js';
 import { LootCalculator } from './loot.js';
 import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
+import { applyHpRecovery } from './recovery.js';
 
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
@@ -346,8 +347,11 @@ export function initGameSystems(): void {
           const def = ITEM_DEFS[potionId];
           if (def?.useEffect?.type === 'heal_hp') {
             removeInventoryItem(characterId, potionId, 1);
-            const healed = Math.min(def.useEffect.value, char.maxHp - char.hp);
-            char.hp = Math.min(char.maxHp, char.hp + def.useEffect.value);
+            const combatId = combat.getPlayerCombatId(characterId);
+            const combatant = combatId
+              ? combat.getCombatState(combatId)?.playerTeam.find(p => p.id === characterId)
+              : undefined;
+            const healed = applyHpRecovery(char, def.useEffect.value, combatant);
             saveCharacter(char);
             sendToCharacter(characterId, 'system', { text: `【自動戰鬥】使用了「${def.name}」，回復 ${healed} HP。` });
           }

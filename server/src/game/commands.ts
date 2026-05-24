@@ -72,6 +72,7 @@ import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
+import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
 const lootCalc = new LootCalculator();
@@ -1676,13 +1677,21 @@ function cmdUse(session: WsSession, itemName: string): void {
   const effect = def.useEffect;
   const inCombat = isInCombat(char.id);
   const combatId = getPlayerCombatId(char.id);
+  const getPlayerCombatant = () => {
+    if (!combatId) return undefined;
+    return combat.getCombatState(combatId)?.playerTeam.find(p => p.id === char.id);
+  };
+  const finishConsumableUse = () => {
+    saveCharacter(char);
+    cmdStatus(session);
+    cmdInventory(session);
+  };
 
-  // ─── 基礎回復藥水（保留原有邏輯） ───
+  // ─── 基礎回復藥水 ───
   if (effect.type === 'heal_hp') {
     removeInventoryItem(char.id, match.itemId, 1);
-    const healed = Math.min(effect.value, char.maxHp - char.hp);
-    char.hp = Math.min(char.maxHp, char.hp + effect.value);
-    saveCharacter(char);
+    const healed = applyHpRecovery(char, effect.value, getPlayerCombatant());
+    finishConsumableUse();
     sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} HP。`);
     return;
   }
@@ -1692,23 +1701,25 @@ function cmdUse(session: WsSession, itemName: string): void {
     if (char.resourceType === 'rage') {
       sendSystem(session.sessionId, `你使用了「${def.name}」，但怒氣無法透過藥水恢復。`);
     } else {
-      const healed = Math.min(effect.value, char.maxResource - char.resource);
-      char.resource = Math.min(char.maxResource, char.resource + effect.value);
+      const healed = applyResourceRecovery(char, effect.value, getPlayerCombatant());
       const resourceLabel = char.resourceType === 'mp' ? 'MP' : char.resourceType === 'energy' ? '體力' : char.resourceType === 'faith' ? '信仰' : char.resourceType;
-      saveCharacter(char);
       sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healed} ${resourceLabel}。`);
     }
+    finishConsumableUse();
     return;
   }
 
   if (effect.type === 'heal_both') {
     removeInventoryItem(char.id, match.itemId, 1);
-    char.hp = Math.min(char.maxHp, char.hp + effect.value);
-    if (char.resourceType !== 'rage') {
-      char.resource = Math.min(char.maxResource, char.resource + (effect.value2 ?? 0));
+    const combatant = getPlayerCombatant();
+    const healedHp = applyHpRecovery(char, effect.value, combatant);
+    const healedResource = applyResourceRecovery(char, effect.value2 ?? 0, combatant);
+    finishConsumableUse();
+    if (char.resourceType === 'rage') {
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healedHp} HP；怒氣無法透過藥水恢復。`);
+    } else {
+      sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 ${healedHp} HP 和 ${healedResource} 資源。`);
     }
-    saveCharacter(char);
-    sendSystem(session.sessionId, `你使用了「${def.name}」，回復了 HP 和資源。`);
     return;
   }
 
