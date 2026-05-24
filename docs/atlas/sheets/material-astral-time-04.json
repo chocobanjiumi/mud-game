@@ -1,0 +1,54 @@
+{
+  "sheetId": "material_astral_time_04",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_astral_time_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_astral_time_sun_dial_pin",
+      "category": "material",
+      "targetId": "sun_dial_pin",
+      "name": "日晷校準釘",
+      "outputPath": "client/public/images/materials/material_astral_time_sun_dial_pin.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_voidglass_mirror",
+      "category": "material",
+      "targetId": "voidglass_mirror",
+      "name": "虛玻鏡片",
+      "outputPath": "client/public/images/materials/material_astral_time_voidglass_mirror.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_astral_time_cave_mine_crystal_scale",
+      "category": "material",
+      "targetId": "crystal_scale",
+      "name": "水晶鱗片",
+      "outputPath": "client/public/images/materials/material_astral_time_cave_mine_crystal_scale.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_astral_time_cave_mine_crystal_shard",
+      "category": "material",
+      "targetId": "crystal_shard",
+      "name": "水晶碎片",
+      "outputPath": "client/public/images/materials/material_astral_time_cave_mine_crystal_shard.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_astral_time_cave_mine_ice_crystal",
+      "category": "material",
+      "targetId": "ice_crystal",
+      "name": "冰晶",
+      "outputPath": "client/public/images/materials/material_astral_time_cave_mine_ice_crystal.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
