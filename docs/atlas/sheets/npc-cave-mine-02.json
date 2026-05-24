@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_cave_mine_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_cave_mine_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_crystal_cave_dead_adventurer",
+      "category": "npc",
+      "targetId": "dead_adventurer",
+      "name": "冒險者殘骸",
+      "outputPath": "client/public/images/npcs/npc_crystal_cave_dead_adventurer.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_crystal_cave_gem_merchant",
+      "category": "npc",
+      "targetId": "gem_merchant",
+      "name": "寶石商人",
+      "outputPath": "client/public/images/npcs/npc_crystal_cave_gem_merchant.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_hollow_mountain_hollow_mountain_echo_market_quartermaster",
+      "category": "npc",
+      "targetId": "hollow_mountain_echo_market_quartermaster",
+      "name": "芙琳",
+      "outputPath": "client/public/images/npcs/npc_hollow_mountain_hollow_mountain_echo_market_quartermaster.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_hollow_mountain_hollow_mountain_miner_oath_keeper",
+      "category": "npc",
+      "targetId": "hollow_mountain_miner_oath_keeper",
+      "name": "奧爾班",
+      "outputPath": "client/public/images/npcs/npc_hollow_mountain_hollow_mountain_miner_oath_keeper.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

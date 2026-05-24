@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_cave_mine_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_cave_mine_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_abandoned_mines_abandoned_mines_ledger_ghost",
+      "category": "npc",
+      "targetId": "abandoned_mines_ledger_ghost",
+      "name": "伊諾",
+      "outputPath": "client/public/images/npcs/npc_abandoned_mines_abandoned_mines_ledger_ghost.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_abandoned_mines_abandoned_mines_salvager",
+      "category": "npc",
+      "targetId": "abandoned_mines_salvager",
+      "name": "桃莉",
+      "outputPath": "client/public/images/npcs/npc_abandoned_mines_abandoned_mines_salvager.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_abandoned_mines_abandoned_mines_surveyor",
+      "category": "npc",
+      "targetId": "abandoned_mines_surveyor",
+      "name": "班恩",
+      "outputPath": "client/public/images/npcs/npc_abandoned_mines_abandoned_mines_surveyor.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_crystal_cave_crystal_scholar",
+      "category": "npc",
+      "targetId": "crystal_scholar",
+      "name": "水晶學者",
+      "outputPath": "client/public/images/npcs/npc_crystal_cave_crystal_scholar.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
