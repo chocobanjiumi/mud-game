@@ -122,6 +122,11 @@ describe('key UI component rendering', () => {
     expect(html).toContain('戰士');
     expect(html).toContain('暴風雪');
     expect(html).toContain('極限怒吼');
+    expect(html).toContain('破甲重擊');
+    expect(html).toContain('魔力回流');
+    expect(html).toContain('多重射擊');
+    expect(html).toContain('群體治癒');
+    expect(html).toContain('Lv12 與 Lv16');
     expect(html).toContain('消耗 70 怒氣');
     expect(html).toContain('信仰 -25');
     expect(html).toContain('arrivalTicks');

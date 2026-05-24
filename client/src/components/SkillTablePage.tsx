@@ -87,6 +87,24 @@ const classPlans: ClassPlan[] = [
         tickRule: 'arrivalTicks = 0，四方可移動怪物立刻進入本房並加入戰鬥；自身 2 tick 受到傷害 -25%。',
         upgrades: ['Lv2 減傷提高到 -30%', 'Lv3 消耗降為 60 怒氣', 'Lv4 拉怪後獲得 MaxHP 10% 護盾', 'Lv5 被拉怪物首 tick 命中 -10%'],
       },
+      {
+        level: 12,
+        name: '破甲重擊',
+        role: '單體壓制',
+        cost: '消耗 35 怒氣；命中 +5 怒氣',
+        scope: '本房間 / 目前戰鬥目標',
+        tickRule: '造成中高物理傷害，附加 3 tick 破甲 -12%；對已被挑釁目標破甲效果提高。',
+        upgrades: ['Lv2 傷害 +8%', 'Lv3 破甲提高到 -15%', 'Lv4 對 Boss 改為 -8% 但持續 +1 tick', 'Lv5 命中後下一次橫掃傷害 +12%'],
+      },
+      {
+        level: 16,
+        name: '堅守陣線',
+        role: '團隊減壓',
+        cost: '消耗 45 怒氣；被打時每次 +4 怒氣',
+        scope: '自己 / 隊伍',
+        tickRule: '3 tick 內你受到傷害 -20%，隊友受到本房戰鬥怪物傷害 -10%；若有 approaching 怪抵達，首 tick 你獲得額外格擋率。',
+        upgrades: ['Lv2 自身減傷提高到 -25%', 'Lv3 隊友減傷提高到 -12%', 'Lv4 approaching 首 tick 額外格擋提高', 'Lv5 持續期間挑釁消耗 -5 怒氣'],
+      },
     ],
   },
   {
@@ -141,6 +159,24 @@ const classPlans: ClassPlan[] = [
         scope: '東西南北相鄰房間',
         tickRule: '四方房間怪物受冰傷；被命中怪物 arrivalTicks = 3，3 tick 後大量壓力抵達。',
         upgrades: ['Lv2 傷害 +8%', 'Lv3 怪物命中 -10%，2 tick', 'Lv4 arrivalTicks +1', 'Lv5 附加 slow 2 tick'],
+      },
+      {
+        level: 12,
+        name: '閃電束',
+        role: '直線穿透',
+        cost: '消耗 28 MP',
+        scope: '本房出口 / 指定相鄰方向',
+        tickRule: '指定方向直線電傷，最多命中 3 隻；若目標在相鄰房，命中後 arrivalTicks = 2。',
+        upgrades: ['Lv2 傷害 +8%', 'Lv3 命中目標數 +1', 'Lv4 對濕潤/金屬目標 +15% 傷害', 'Lv5 命中 3 隻以上返還 8 MP'],
+      },
+      {
+        level: 16,
+        name: '魔力回流',
+        role: '續航 / 爆發準備',
+        cost: '消耗 18 MP',
+        scope: '自己',
+        tickRule: '接下來 4 tick 內，你每次法術命中回復 6 MP；若命中 approaching 目標，額外回復 4 MP。',
+        upgrades: ['Lv2 回復提高到 7 MP', 'Lv3 持續 +1 tick', 'Lv4 暴擊法術額外回復 5 MP', 'Lv5 狀態結束時下一個法術消耗 -15%'],
       },
     ],
   },
@@ -197,6 +233,24 @@ const classPlans: ClassPlan[] = [
         tickRule: '持續 5 tick 或觸發 1 次；approaching 怪物抵達該出口時受傷，並 arrivalTicks +1。',
         upgrades: ['Lv2 傷害提高', 'Lv3 可觸發 2 次', 'Lv4 附加 slow', 'Lv5 對標記怪物追加定身'],
       },
+      {
+        level: 12,
+        name: '多重射擊',
+        role: '遠距多目標',
+        cost: '消耗 30 專注；每命中 1 隻 +2 專注',
+        scope: '本房間 / 已偵查相鄰房最多 3 隻',
+        tickRule: '攻擊最多 3 個目標；若對相鄰房施放，所有命中怪物 arrivalTicks = 2。',
+        upgrades: ['Lv2 傷害 +8%', 'Lv3 目標數 +1', 'Lv4 對標記目標傷害 +15%', 'Lv5 命中 3 隻以上使下一次偵查免費'],
+      },
+      {
+        level: 16,
+        name: '煙霧箭',
+        role: '降命中 / 撤退控場',
+        cost: '消耗 28 專注',
+        scope: '本房間 / 指定出口',
+        tickRule: '2 tick 內本房怪物命中 -12%；若指定出口，從該出口抵達的怪物首 tick 命中 -18%。',
+        upgrades: ['Lv2 持續 +1 tick', 'Lv3 命中下降提高到 -15%', 'Lv4 對遠程怪額外 -8% 命中', 'Lv5 施放後翻滾消耗 -5 專注'],
+      },
     ],
   },
   {
@@ -251,6 +305,24 @@ const classPlans: ClassPlan[] = [
         scope: '東西南北相鄰房間',
         tickRule: '四方暗/undead 受光傷；普通怪被驚動，undead approaching 延遲，arrivalTicks = 2。',
         upgrades: ['Lv2 對 undead 傷害 +15%', 'Lv3 恐懼延遲 +1 tick', 'Lv4 隊友獲得 MaxHP 5% 小盾', 'Lv5 四方邪惡目標命中 -10%，2 tick'],
+      },
+      {
+        level: 12,
+        name: '群體治癒',
+        role: '隊伍回復',
+        cost: '信仰 +25；條件：目前信仰 <= 75',
+        scope: '全隊',
+        tickRule: '治療全隊少量 HP；目標低於 40% HP 時治療量提高，會把信仰推向慈悲端。',
+        upgrades: ['Lv2 治療 +8%', 'Lv3 低血量加成提高', 'Lv4 附加 1 tick 小再生', 'Lv5 若至少治療 3 人，下一次聖光消耗信仰 -4'],
+      },
+      {
+        level: 16,
+        name: '驅邪結界',
+        role: '出口防線 / 反邪惡',
+        cost: '信仰 -18；條件：目前信仰 >= 18',
+        scope: '指定出口',
+        tickRule: '指定出口設置 4 tick 結界；暗/undead 抵達時受光傷並 arrivalTicks +1，普通怪抵達時命中 -8%。',
+        upgrades: ['Lv2 傷害 +8%', 'Lv3 持續 +1 tick', 'Lv4 undead 延遲效果提高', 'Lv5 結界觸發時給隊友 MaxHP 4% 小盾'],
       },
     ],
   },
@@ -548,6 +620,7 @@ export default function SkillTablePage() {
             </RuleBlock>
             <RuleBlock title="開局目標">
               玩家一創角就要感覺到職業差異：戰士控壓力、法師打大範圍、遊俠掌握情報、祭司撐住危局。
+              Lv12 與 Lv16 會補上中期工具，避免 Lv8 大招後一路空窗到 Lv20。
             </RuleBlock>
           </div>
         </section>
