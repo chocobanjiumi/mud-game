@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import type { Character, CombatantState, RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
+import SkillTablePage from '../components/SkillTablePage';
 import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
@@ -109,6 +110,14 @@ describe('key UI component rendering', () => {
     expect(html).toContain('建立角色');
     expect(html).toContain('職業');
     expect(html).toContain('角色預覽');
+  });
+
+  it('renders the skill acquisition table', () => {
+    const html = renderToStaticMarkup(<SkillTablePage />);
+    expect(html).toContain('技能獲得等級表');
+    expect(html).toContain('劍士');
+    expect(html).toContain('火球術');
+    expect(html).toContain('種族與信仰被動');
   });
 
   it('renders room entities and selected target actions without showing internal ids as labels', () => {

@@ -5,6 +5,7 @@ import { useWebSocket } from './hooks/useWebSocket';
 import LoginScreen from './components/LoginScreen';
 import CreateCharacterScreen from './components/CreateCharacterScreen';
 import GameScreen from './components/GameScreen';
+import SkillTablePage from './components/SkillTablePage';
 import type { CreateCharacterPayload } from '@game/shared';
 
 // Initialize Arinova SDK on app load (v0.1.3 constructor pattern)
@@ -18,6 +19,10 @@ export const arinova = new Arinova({
 });
 
 export default function App() {
+  if (window.location.pathname.replace(/\/+$/, '') === '/mud/skill') {
+    return <SkillTablePage />;
+  }
+
   const screen = useGameStore((s) => s.screen);
   const { sendCommand, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
 
