@@ -37,6 +37,24 @@ describe('WorldManager respawn policy', () => {
     expect(world.findMonsterInRoom('training_ground', '史萊姆 2')?.instanceId).toBe(slimes[1].instanceId);
   });
 
+  it('notifies room state changes when monsters die and respawn', () => {
+    const changedRooms: string[] = [];
+    world.setRoomStateChangeFunction(roomId => changedRooms.push(roomId));
+    world.placePlayer('p1', 'training_ground');
+    const slime = world.findMonsterInRoom('training_ground', 'slime');
+    expect(slime).toBeDefined();
+
+    world.killMonster('training_ground', slime!.instanceId);
+
+    expect(changedRooms).toContain('training_ground');
+    changedRooms.length = 0;
+
+    vi.advanceTimersByTime(25_000);
+
+    expect(changedRooms).toContain('training_ground');
+    expect(world.getAliveMonsters('training_ground').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+  });
+
   it('does not allow boss spawns below 30 minutes', () => {
     const boss = world.findMonsterInRoom('deep_forest', 'shadow_wolf_alpha');
     expect(boss).toBeDefined();

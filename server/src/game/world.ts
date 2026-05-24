@@ -458,6 +458,7 @@ export class WorldManager {
     const respawnSeconds = this.getEffectiveRespawnSeconds(roomId, monster, spawnPoint);
 
     monster.respawnAt = Date.now() + respawnSeconds * 1000;
+    this.roomStateChangeFn?.(roomId);
   }
 
   private getEffectiveRespawnSeconds(
