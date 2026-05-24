@@ -884,6 +884,23 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('maps every learnable implemented player skill to an existing icon asset', () => {
+    const playerClassIds = Object.values(CLASS_DEFS)
+      .filter(classDef => classDef.id !== 'monster')
+      .map(classDef => classDef.id);
+
+    const checkedSkillIds = new Set<string>();
+    for (const classId of playerClassIds) {
+      for (const skill of getLearnableSkills(classId, 60)) {
+        if (checkedSkillIds.has(skill.id)) continue;
+        checkedSkillIds.add(skill.id);
+        expect(skill.implementationStatus, skill.id).toBe('implemented');
+        expect(skill.iconPath, skill.id).toMatch(/^\/images\/skills\/icons\/.+\.png$/);
+        expect(existsSync(path.join(process.cwd(), 'client/public', skill.iconPath!.replace(/^\//, ''))), skill.id).toBe(true);
+      }
+    }
+  });
+
   it('gives each second-job class eight to ten class skills', () => {
     for (const classId of [
       'knight',

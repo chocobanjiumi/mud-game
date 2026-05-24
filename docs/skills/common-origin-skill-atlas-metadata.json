@@ -1,0 +1,279 @@
+{
+  "version": 1,
+  "grid": {
+    "cols": 4,
+    "rows": 4,
+    "iconSize": 256
+  },
+  "style": "dark fantasy RPG, painterly glyph silhouettes, high contrast, no text, no UI frame",
+  "atlases": [
+    {
+      "file": "/images/skills/atlas/common-origin-skills-atlas-01.png",
+      "promptSummary": "Deterministic dark fantasy RPG icon atlas for adventurer, race, and faith skills; high contrast, no text, no UI frame.",
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "skillId": "slash",
+          "name": "揮砍",
+          "theme": "crossed steel slash",
+          "icon": "/images/skills/icons/slash.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "skillId": "guard",
+          "name": "防禦",
+          "theme": "raised shield",
+          "icon": "/images/skills/icons/guard.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "skillId": "first_aid",
+          "name": "急救",
+          "theme": "bandage and red vial",
+          "icon": "/images/skills/icons/first_aid.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "skillId": "inspect",
+          "name": "觀察",
+          "theme": "watching eye and lens",
+          "icon": "/images/skills/icons/inspect.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "skillId": "survival",
+          "name": "求生本能",
+          "theme": "campfire and leaf",
+          "icon": "/images/skills/icons/survival.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "skillId": "pack_sense",
+          "name": "行囊感知",
+          "theme": "satchel rune",
+          "icon": "/images/skills/icons/pack_sense.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "skillId": "field_awareness",
+          "name": "戰場感知",
+          "theme": "compass star",
+          "icon": "/images/skills/icons/field_awareness.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "skillId": "steady_hands",
+          "name": "穩定手法",
+          "theme": "steady hand craft",
+          "icon": "/images/skills/icons/steady_hands.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "skillId": "desperate_strike",
+          "name": "孤注一擊",
+          "theme": "cracked crimson blade",
+          "icon": "/images/skills/icons/desperate_strike.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "skillId": "race_human_adaptability",
+          "name": "適應力",
+          "theme": "four-point human sigil",
+          "icon": "/images/skills/icons/race_human_adaptability.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "skillId": "race_elf_keen_senses",
+          "name": "靈敏感知",
+          "theme": "leaf and moon eye",
+          "icon": "/images/skills/icons/race_elf_keen_senses.png"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "skillId": "race_dwarf_stoneblood",
+          "name": "石血體質",
+          "theme": "stone heart",
+          "icon": "/images/skills/icons/race_dwarf_stoneblood.png"
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "skillId": "race_orc_battleblood",
+          "name": "戰血",
+          "theme": "blood tusk",
+          "icon": "/images/skills/icons/race_orc_battleblood.png"
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "skillId": "race_halfling_lucky_steps",
+          "name": "幸運腳步",
+          "theme": "lucky footprint",
+          "icon": "/images/skills/icons/race_halfling_lucky_steps.png"
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "skillId": "race_dragonborn_dragonblood",
+          "name": "龍血抗性",
+          "theme": "dragon scale",
+          "icon": "/images/skills/icons/race_dragonborn_dragonblood.png"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "skillId": "race_shadowkin_shadow_affinity",
+          "name": "幽影親和",
+          "theme": "shadow crescent",
+          "icon": "/images/skills/icons/race_shadowkin_shadow_affinity.png"
+        }
+      ]
+    },
+    {
+      "file": "/images/skills/atlas/common-origin-skills-atlas-02.png",
+      "promptSummary": "Deterministic dark fantasy RPG icon atlas for adventurer, race, and faith skills; high contrast, no text, no UI frame.",
+      "cells": [
+        {
+          "row": 0,
+          "col": 0,
+          "skillId": "faith_aelora_dawn_grace",
+          "name": "黎明恩澤",
+          "theme": "dawn sun",
+          "icon": "/images/skills/icons/faith_aelora_dawn_grace.png"
+        },
+        {
+          "row": 0,
+          "col": 1,
+          "skillId": "faith_karvos_battle_fervor",
+          "name": "戰意不息",
+          "theme": "war ember",
+          "icon": "/images/skills/icons/faith_karvos_battle_fervor.png"
+        },
+        {
+          "row": 0,
+          "col": 2,
+          "skillId": "faith_ithern_whispering_pages",
+          "name": "書頁低語",
+          "theme": "arcane page",
+          "icon": "/images/skills/icons/faith_ithern_whispering_pages.png"
+        },
+        {
+          "row": 0,
+          "col": 3,
+          "skillId": "faith_mirak_golden_road",
+          "name": "金路眷顧",
+          "theme": "gold road coin",
+          "icon": "/images/skills/icons/faith_mirak_golden_road.png"
+        },
+        {
+          "row": 1,
+          "col": 0,
+          "skillId": "faith_virdan_forest_stride",
+          "name": "林間步伐",
+          "theme": "forest stride",
+          "icon": "/images/skills/icons/faith_virdan_forest_stride.png"
+        },
+        {
+          "row": 1,
+          "col": 1,
+          "skillId": "faith_shalan_moon_whisper",
+          "name": "月下低語",
+          "theme": "moon whisper",
+          "icon": "/images/skills/icons/faith_shalan_moon_whisper.png"
+        },
+        {
+          "row": 1,
+          "col": 2,
+          "skillId": "faith_talorn_stormblood",
+          "name": "風暴血脈",
+          "theme": "storm bolt",
+          "icon": "/images/skills/icons/faith_talorn_stormblood.png"
+        },
+        {
+          "row": 1,
+          "col": 3,
+          "skillId": "faith_oser_dead_whispers",
+          "name": "亡者低語",
+          "theme": "spirit skull",
+          "icon": "/images/skills/icons/faith_oser_dead_whispers.png"
+        },
+        {
+          "row": 2,
+          "col": 0,
+          "skillId": "faith_brokk_forgeheart",
+          "name": "爐心耐性",
+          "theme": "forge anvil heart",
+          "icon": "/images/skills/icons/faith_brokk_forgeheart.png"
+        },
+        {
+          "row": 2,
+          "col": 1,
+          "skillId": "faith_nesha_forbidden_echo",
+          "name": "禁識殘響",
+          "theme": "forbidden echo rune",
+          "icon": "/images/skills/icons/faith_nesha_forbidden_echo.png"
+        },
+        {
+          "row": 2,
+          "col": 2,
+          "skillId": "common_origin_blank_10",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "skillId": "common_origin_blank_11",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        },
+        {
+          "row": 3,
+          "col": 0,
+          "skillId": "common_origin_blank_12",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        },
+        {
+          "row": 3,
+          "col": 1,
+          "skillId": "common_origin_blank_13",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        },
+        {
+          "row": 3,
+          "col": 2,
+          "skillId": "common_origin_blank_14",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "skillId": "common_origin_blank_15",
+          "name": "保留空格",
+          "theme": "reserved blank slot",
+          "icon": null
+        }
+      ]
+    }
+  ]
+}

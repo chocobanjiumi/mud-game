@@ -16,7 +16,41 @@ export interface ClassBuildDef {
   description: string;
 }
 
+const COMMON_ORIGIN_SKILL_ICON_IDS = [
+  'slash',
+  'guard',
+  'first_aid',
+  'inspect',
+  'survival',
+  'pack_sense',
+  'field_awareness',
+  'steady_hands',
+  'desperate_strike',
+  'race_human_adaptability',
+  'race_elf_keen_senses',
+  'race_dwarf_stoneblood',
+  'race_orc_battleblood',
+  'race_halfling_lucky_steps',
+  'race_dragonborn_dragonblood',
+  'race_shadowkin_shadow_affinity',
+  'faith_aelora_dawn_grace',
+  'faith_karvos_battle_fervor',
+  'faith_ithern_whispering_pages',
+  'faith_mirak_golden_road',
+  'faith_virdan_forest_stride',
+  'faith_shalan_moon_whisper',
+  'faith_talorn_stormblood',
+  'faith_oser_dead_whispers',
+  'faith_brokk_forgeheart',
+  'faith_nesha_forbidden_echo',
+] as const;
+
+const COMMON_ORIGIN_SKILL_ICON_PATHS: Record<string, string> = Object.fromEntries(
+  COMMON_ORIGIN_SKILL_ICON_IDS.map(skillId => [skillId, `/images/skills/icons/${skillId}.png`]),
+);
+
 const STARTER_SKILL_ICON_PATHS: Record<string, string> = {
+  ...COMMON_ORIGIN_SKILL_ICON_PATHS,
   warrior_slash: '/images/skills/icons/warrior_slash.png',
   iron_wall: '/images/skills/icons/iron_wall.png',
   taunt: '/images/skills/icons/taunt.png',
