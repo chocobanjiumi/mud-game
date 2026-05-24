@@ -1,4 +1,4 @@
-import type { RoomEntityAction, RoomEntityType } from '@game/shared';
+import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 
@@ -24,10 +24,13 @@ function actionClass(action: RoomEntityAction): string {
   return 'target-action';
 }
 
-export default function SelectedTargetPanel() {
-  const entity = useGameStore((s) => s.selectedEntity);
-  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
-
+export function SelectedTargetPanelView({
+  entity,
+  setSelectedEntity,
+}: {
+  entity: RoomEntity | null;
+  setSelectedEntity: (entity: RoomEntity | null) => void;
+}) {
   if (!entity) {
     return (
       <div className="selected-target-panel border-b border-border-dim px-3 py-2">
@@ -85,4 +88,10 @@ export default function SelectedTargetPanel() {
       </div>
     </div>
   );
+}
+
+export default function SelectedTargetPanel() {
+  const entity = useGameStore((s) => s.selectedEntity);
+  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
+  return <SelectedTargetPanelView entity={entity} setSelectedEntity={setSelectedEntity} />;
 }

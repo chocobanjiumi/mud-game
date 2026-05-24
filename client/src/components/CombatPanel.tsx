@@ -1,5 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
-import { ITEM_DEFS, SKILL_DEFS } from '@game/shared';
+import { ITEM_DEFS, SKILL_DEFS, type Character, type InventoryItem, type LearnedSkill } from '@game/shared';
+import type { CombatInfo } from '../stores/gameStore';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -18,15 +19,23 @@ function ordinalEnemyLabels(enemies: { id: string; name: string }[]): Map<string
   return labels;
 }
 
-export default function CombatPanel() {
-  const combat = useGameStore((s) => s.combat);
-  const inCombat = useGameStore((s) => s.inCombat);
-  const selectedTargetId = useGameStore((s) => s.selectedCombatTargetId);
-  const setSelectedTargetId = useGameStore((s) => s.setSelectedCombatTargetId);
-  const skills = useGameStore((s) => s.skills);
-  const character = useGameStore((s) => s.character);
-  const inventory = useGameStore((s) => s.inventory);
-
+export function CombatPanelView({
+  combat,
+  inCombat,
+  selectedTargetId,
+  setSelectedTargetId,
+  skills,
+  character,
+  inventory,
+}: {
+  combat: CombatInfo | null;
+  inCombat: boolean;
+  selectedTargetId: string | null;
+  setSelectedTargetId: (id: string | null) => void;
+  skills: LearnedSkill[];
+  character: Character | null;
+  inventory: InventoryItem[];
+}) {
   if (!inCombat || !combat) return null;
 
   const livingEnemies = combat.enemyTeam.filter((enemy) => !enemy.isDead);
@@ -149,5 +158,26 @@ export default function CombatPanel() {
         })}
       </div>
     </div>
+  );
+}
+
+export default function CombatPanel() {
+  const combat = useGameStore((s) => s.combat);
+  const inCombat = useGameStore((s) => s.inCombat);
+  const selectedTargetId = useGameStore((s) => s.selectedCombatTargetId);
+  const setSelectedTargetId = useGameStore((s) => s.setSelectedCombatTargetId);
+  const skills = useGameStore((s) => s.skills);
+  const character = useGameStore((s) => s.character);
+  const inventory = useGameStore((s) => s.inventory);
+  return (
+    <CombatPanelView
+      combat={combat}
+      inCombat={inCombat}
+      selectedTargetId={selectedTargetId}
+      setSelectedTargetId={setSelectedTargetId}
+      skills={skills}
+      character={character}
+      inventory={inventory}
+    />
   );
 }

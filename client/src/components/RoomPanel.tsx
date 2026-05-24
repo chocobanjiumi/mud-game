@@ -1,5 +1,5 @@
 import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
-import { useGameStore } from '../stores/gameStore';
+import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
@@ -51,9 +51,15 @@ function actionClass(action: RoomEntityAction): string {
   return 'room-action';
 }
 
-function EntityRow({ entity }: { entity: RoomEntity }) {
-  const selectedEntity = useGameStore((s) => s.selectedEntity);
-  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
+function EntityRow({
+  entity,
+  selectedEntity,
+  setSelectedEntity,
+}: {
+  entity: RoomEntity;
+  selectedEntity: RoomEntity | null;
+  setSelectedEntity: (entity: RoomEntity | null) => void;
+}) {
   const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
   const imagePath = getEntityImagePath(entity);
   return (
@@ -90,10 +96,15 @@ function EntityRow({ entity }: { entity: RoomEntity }) {
   );
 }
 
-export default function RoomPanel() {
-  const room = useGameStore((s) => s.room);
-  if (!room) return null;
-
+export function RoomPanelView({
+  room,
+  selectedEntity,
+  setSelectedEntity,
+}: {
+  room: RoomInfo;
+  selectedEntity: RoomEntity | null;
+  setSelectedEntity: (entity: RoomEntity | null) => void;
+}) {
   const hints = room.inspectHints ?? [];
   const entities = room.entities ?? [];
   const corpses = room.corpses ?? [];
@@ -130,7 +141,14 @@ export default function RoomPanel() {
               <section key={type} className="space-y-1">
                 <div className="text-[10px] text-text-dim">{SECTION_LABEL[type]}</div>
                 <div className="grid grid-cols-1 gap-1">
-                  {sectionEntities.map((entity) => <EntityRow key={`${entity.type}-${entity.id}`} entity={entity} />)}
+                  {sectionEntities.map((entity) => (
+                    <EntityRow
+                      key={`${entity.type}-${entity.id}`}
+                      entity={entity}
+                      selectedEntity={selectedEntity}
+                      setSelectedEntity={setSelectedEntity}
+                    />
+                  ))}
                 </div>
               </section>
             );
@@ -166,4 +184,12 @@ export default function RoomPanel() {
       )}
     </div>
   );
+}
+
+export default function RoomPanel() {
+  const room = useGameStore((s) => s.room);
+  const selectedEntity = useGameStore((s) => s.selectedEntity);
+  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
+  if (!room) return null;
+  return <RoomPanelView room={room} selectedEntity={selectedEntity} setSelectedEntity={setSelectedEntity} />;
 }

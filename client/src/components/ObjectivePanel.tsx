@@ -1,11 +1,11 @@
 import { SKILL_DEFS, type RoomEntity, type RoomEntityAction } from '@game/shared';
-import { useGameStore } from '../stores/gameStore';
+import { useGameStore, type CombatInfo, type Quest, type RoomInfo } from '../stores/gameStore';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
-interface Suggestion {
+export interface ObjectiveSuggestion {
   label: string;
   command?: string;
   tone?: 'danger' | 'default';
@@ -15,7 +15,7 @@ function findAction(entity: RoomEntity, label: string): RoomEntityAction | undef
   return entity.actions.find((action) => action.label === label && !action.disabled);
 }
 
-function actionSuggestion(entity: RoomEntity, action: RoomEntityAction, label: string, tone?: Suggestion['tone']): Suggestion {
+function actionSuggestion(entity: RoomEntity, action: RoomEntityAction, label: string, tone?: ObjectiveSuggestion['tone']): ObjectiveSuggestion {
   return {
     label,
     command: action.command,
@@ -28,7 +28,7 @@ function textMatchesEntity(text: string, entity: RoomEntity): boolean {
     || (entity.subtitle ? text.includes(entity.subtitle.split('·')[0].trim()) : false);
 }
 
-function questActionSuggestion(text: string, entities: RoomEntity[]): Suggestion | null {
+function questActionSuggestion(text: string, entities: RoomEntity[]): ObjectiveSuggestion | null {
   const wantsKill = /擊殺|消滅|打倒|kill|defeat/i.test(text);
   const wantsLoot = /搜刮|loot|屍體/i.test(text);
   const wantsTalk = /交談|對話|談|talk|回報/i.test(text);
@@ -83,15 +83,16 @@ function questActionSuggestion(text: string, entities: RoomEntity[]): Suggestion
   return null;
 }
 
-export default function ObjectivePanel() {
-  const room = useGameStore((s) => s.room);
-  const quests = useGameStore((s) => s.activeQuests);
-  const inCombat = useGameStore((s) => s.inCombat);
-  const combat = useGameStore((s) => s.combat);
-  const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
-  const skills = useGameStore((s) => s.skills);
-
-  const suggestions: Suggestion[] = [];
+export function buildObjectiveSuggestions(input: {
+  room: RoomInfo | null;
+  quests: Quest[];
+  inCombat: boolean;
+  combat: CombatInfo | null;
+  selectedCombatTargetId: string | null;
+  skills: ReturnType<typeof useGameStore.getState>['skills'];
+}): ObjectiveSuggestion[] {
+  const { room, quests, inCombat, combat, selectedCombatTargetId, skills } = input;
+  const suggestions: ObjectiveSuggestion[] = [];
   if (inCombat) {
     const telegraph = combat?.enemyTeam.find(enemy => enemy.pendingTelegraph);
     const selectedEnemy = combat?.enemyTeam.find(enemy => enemy.id === selectedCombatTargetId && !enemy.isDead);
@@ -148,7 +149,10 @@ export default function ObjectivePanel() {
       suggestions.push({ label: '查看四周', command: 'look' });
     }
   }
+  return suggestions;
+}
 
+export function ObjectivePanelView({ suggestions }: { suggestions: ObjectiveSuggestion[] }) {
   return (
     <div className="bg-bg-secondary border border-border-dim rounded p-2">
       <div className="text-xs text-text-dim mb-1">推薦</div>
@@ -165,5 +169,19 @@ export default function ObjectivePanel() {
         ))}
       </div>
     </div>
+  );
+}
+
+export default function ObjectivePanel() {
+  const room = useGameStore((s) => s.room);
+  const quests = useGameStore((s) => s.activeQuests);
+  const inCombat = useGameStore((s) => s.inCombat);
+  const combat = useGameStore((s) => s.combat);
+  const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
+  const skills = useGameStore((s) => s.skills);
+  return (
+    <ObjectivePanelView
+      suggestions={buildObjectiveSuggestions({ room, quests, inCombat, combat, selectedCombatTargetId, skills })}
+    />
   );
 }
