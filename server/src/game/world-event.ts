@@ -5,6 +5,7 @@ import { getDb } from '../db/schema.js';
 import { randomUUID } from 'crypto';
 import { addInventoryItem, getCharacterById, saveCharacter } from '../db/queries.js';
 import { addExperienceToCharacter } from './leveling.js';
+import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 
 // ============================================================
 //  型別定義
@@ -354,7 +355,8 @@ export class WorldEventManager {
         const char = getCharacterById(r.characterId);
         if (char) {
           char.gold += gold;
-          addExperienceToCharacter(char, exp);
+          const expResult = addExperienceToCharacter(char, exp);
+          if (expResult.levelsGained > 0) grantAndNotifyLearnableSkills(char);
           saveCharacter(char);
         }
       } catch { /* ignore */ }

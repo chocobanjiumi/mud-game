@@ -15,6 +15,7 @@ import {
 } from '../db/database.js';
 import { getDb } from '../db/schema.js';
 import { addExperienceToCharacter } from './leveling.js';
+import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 
 // ============================================================
 //  型別定義
@@ -384,7 +385,8 @@ export class DungeonManager {
       // 發放金幣和經驗
       if (char) {
         char.gold += rewards.gold;
-        addExperienceToCharacter(char, rewards.exp);
+        const expResult = addExperienceToCharacter(char, rewards.exp);
+        if (expResult.levelsGained > 0) grantAndNotifyLearnableSkills(char);
       }
 
       // 首次通關發放物品

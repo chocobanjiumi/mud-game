@@ -72,6 +72,7 @@ import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
+import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
@@ -1386,6 +1387,7 @@ function cmdAttack(session: WsSession, target: string): void {
 
             if (levelsGained > 0) {
               for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(freshChar.id, freshChar);
+              grantAndNotifyLearnableSkills(freshChar);
               sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `升級了！目前等級 Lv.${freshChar.level}`);
             }
           }

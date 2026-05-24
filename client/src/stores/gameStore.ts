@@ -122,6 +122,17 @@ export interface TooltipItemData {
   bound?: boolean;
 }
 
+export interface SkillLearnedNotice {
+  skillId: string;
+  name: string;
+  description: string;
+  learnLevel: number;
+  skillType: 'active' | 'passive';
+  targetType: string;
+  resourceCost: number;
+  cooldown: number;
+}
+
 // --- Room info ---
 
 export interface RoomInfo {
@@ -251,6 +262,9 @@ export interface GameState {
   // Skills
   skills: LearnedSkill[];
   setSkills: (skills: LearnedSkill[]) => void;
+  skillLearnedNotices: SkillLearnedNotice[];
+  addSkillLearnedNotice: (notice: SkillLearnedNotice) => void;
+  dismissSkillLearnedNotice: () => void;
   aliases: Record<string, string>;
   setAliases: (aliases: Record<string, string>) => void;
 
@@ -439,6 +453,11 @@ export const useGameStore = create<GameState>((set) => ({
   // Skills
   skills: [],
   setSkills: (skills) => set({ skills }),
+  skillLearnedNotices: [],
+  addSkillLearnedNotice: (notice) =>
+    set((state) => ({ skillLearnedNotices: [...state.skillLearnedNotices, notice] })),
+  dismissSkillLearnedNotice: () =>
+    set((state) => ({ skillLearnedNotices: state.skillLearnedNotices.slice(1) })),
   aliases: {},
   setAliases: (aliases) => set({ aliases }),
 

@@ -22,6 +22,7 @@ import type {
   LeaderboardDataPayload,
   Character,
   CreateCharacterPayload,
+  LearnedSkill,
 } from '@game/shared';
 
 const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
@@ -382,6 +383,23 @@ export function useWebSocket() {
 
       case 'skill_learned': {
         const name = p.name as string;
+        const skillId = p.skillId as string | undefined;
+        const learnedSkill = p.learnedSkill as LearnedSkill | undefined;
+        if (skillId && learnedSkill && !s.skills.some(skill => skill.skillId === skillId)) {
+          s.setSkills([...s.skills, learnedSkill]);
+        }
+        if (skillId) {
+          s.addSkillLearnedNotice({
+            skillId,
+            name,
+            description: (p.description as string | undefined) ?? '',
+            learnLevel: (p.learnLevel as number | undefined) ?? 1,
+            skillType: ((p.skillType as 'active' | 'passive' | undefined) ?? 'active'),
+            targetType: (p.targetType as string | undefined) ?? '',
+            resourceCost: (p.resourceCost as number | undefined) ?? 0,
+            cooldown: (p.cooldown as number | undefined) ?? 0,
+          });
+        }
         s.addTerminalLine(`學會了新技能: ${name}`, 'skill');
         break;
       }

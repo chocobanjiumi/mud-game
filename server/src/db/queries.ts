@@ -401,6 +401,13 @@ export function isQuestCompleted(characterId: string, questId: string): boolean 
   return !!row;
 }
 
+export function getCompletedQuestIds(characterId: string): string[] {
+  const rows = getDb().prepare(
+    "SELECT quest_id FROM quest_progress WHERE character_id = ? AND status = 'completed'",
+  ).all(characterId) as { quest_id: string }[];
+  return rows.map(row => row.quest_id);
+}
+
 export function recordDiscovery(
   characterId: string,
   zoneId: string,

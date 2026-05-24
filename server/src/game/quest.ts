@@ -8,6 +8,7 @@ import { ITEM_DEFS } from '@game/shared';
 import { unlockPortal, unlockZone } from '../db/queries.js';
 import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
 import { addExperienceToCharacter } from './leveling.js';
+import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 
 // ============================================================
 //  型別定義
@@ -470,6 +471,7 @@ export class QuestManager {
 
     // 發放獎勵
     const expResult = addExperienceToCharacter(character, def.rewards.exp);
+    grantAndNotifyLearnableSkills(character);
     character.gold += def.rewards.gold;
 
     if (def.rewards.items) {

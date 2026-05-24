@@ -55,6 +55,7 @@ import { getAllSessions, sendToCharacter, sendToSession } from '../ws/handler.js
 import { getRoom } from '../data/rooms.js';
 import { LootCalculator } from './loot.js';
 import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
+import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyHpRecovery } from './recovery.js';
 
 const lootCalc = new LootCalculator();
@@ -296,6 +297,7 @@ export function initGameSystems(): void {
               const { levelsGained } = addExperienceToCharacter(char, drops.exp);
               if (levelsGained > 0) {
                 for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(characterId, char);
+                grantAndNotifyLearnableSkills(char);
                 sendToCharacter(characterId, 'system', {
                   text: `【自動戰鬥】升級了！目前等級 Lv.${char.level}`,
                 });

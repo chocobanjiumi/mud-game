@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import type { Character, CombatantState, RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
 import SkillTablePage from '../components/SkillTablePage';
+import { SkillLearnedModalView } from '../components/SkillLearnedModal';
 import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
@@ -95,6 +96,7 @@ beforeEach(() => {
     inCombat: false,
     selectedCombatTargetId: null,
     skills: [],
+    skillLearnedNotices: [],
     inventory: [],
     equipment: null,
     inventoryCapacity: 20,
@@ -118,6 +120,24 @@ describe('key UI component rendering', () => {
     expect(html).toContain('劍士');
     expect(html).toContain('火球術');
     expect(html).toContain('種族與信仰被動');
+  });
+
+  it('renders skill learned modal details', () => {
+    const notice = {
+      skillId: 'guard',
+      name: '防禦',
+      description: '降低下一次受到的傷害。',
+      learnLevel: 2,
+      skillType: 'active',
+      targetType: 'self',
+      resourceCost: 0,
+      cooldown: 2,
+    };
+
+    const html = renderToStaticMarkup(<SkillLearnedModalView notice={notice} remaining={0} onDismiss={() => undefined} />);
+    expect(html).toContain('防禦');
+    expect(html).toContain('Lv.2');
+    expect(html).toContain('技能已加入快捷列與技能列表');
   });
 
   it('renders room entities and selected target actions without showing internal ids as labels', () => {

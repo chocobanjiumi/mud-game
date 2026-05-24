@@ -3,7 +3,8 @@ import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
 import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
-import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
+import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
+import { grantLearnableSkills } from '../game/skill-learning.js';
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
 import { MarketManager } from '../game/market.js';
 import { TradeManager } from '../game/trade.js';
@@ -1095,6 +1096,26 @@ describe('long-term collection logs', () => {
     expect(unlockAppearance(characterId, 'aura_boss_slayer')).toBe(true);
     expect(equipAppearance(characterId, 'aura_boss_slayer').ok).toBe(true);
     expect(getEquippedAppearance(characterId).aura).toBe('aura_boss_slayer');
+  });
+});
+
+describe('skill learning grants', () => {
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('grants newly learnable skills when a character reaches the required level', () => {
+    const char = createDbCharacter(`skill-user-${Date.now()}`, `Skill${Date.now()}`);
+    char.level = 2;
+
+    const learned = grantLearnableSkills(char);
+
+    expect(learned.map(skill => skill.id)).toContain('guard');
+    expect(getLearnedSkills(char.id).some(skill => skill.skillId === 'guard')).toBe(true);
   });
 });
 
