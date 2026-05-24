@@ -1,0 +1,63 @@
+{
+  "sheetId": "material_thundersteppe_01",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_thundersteppe_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_thundersteppe_fulgurite_shard",
+      "category": "material",
+      "targetId": "fulgurite_shard",
+      "name": "雷熔玻片",
+      "outputPath": "client/public/images/materials/material_thundersteppe_fulgurite_shard.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_thundersteppe_stormcharged_grass",
+      "category": "material",
+      "targetId": "stormcharged_grass",
+      "name": "蓄雷草",
+      "outputPath": "client/public/images/materials/material_thundersteppe_stormcharged_grass.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_thundersteppe_stormhoof_plate",
+      "category": "material",
+      "targetId": "stormhoof_plate",
+      "name": "雷蹄甲片",
+      "outputPath": "client/public/images/materials/material_thundersteppe_stormhoof_plate.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_thundersteppe_thunder_eagle_plume",
+      "category": "material",
+      "targetId": "thunder_eagle_plume",
+      "name": "雷鷹電羽",
+      "outputPath": "client/public/images/materials/material_thundersteppe_thunder_eagle_plume.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_thundersteppe_low_wilds_boar_tusk_plate",
+      "category": "material",
+      "targetId": "boar_tusk_plate",
+      "name": "硬獠牙板",
+      "outputPath": "client/public/images/materials/material_thundersteppe_low_wilds_boar_tusk_plate.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_thundersteppe_low_wilds_thunder_scar_stone",
+      "category": "material",
+      "targetId": "thunder_scar_stone",
+      "name": "雷痕石",
+      "outputPath": "client/public/images/materials/material_thundersteppe_low_wilds_thunder_scar_stone.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
