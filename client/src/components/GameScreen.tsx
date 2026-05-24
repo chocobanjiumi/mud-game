@@ -23,6 +23,7 @@ import WorldMap from './WorldMap';
 import AudioSettings from './AudioSettings';
 import NpcDialogueModal from './NpcDialogueModal';
 import SkillLearnedModal from './SkillLearnedModal';
+import DeathNoticeModal from './DeathNoticeModal';
 
 interface GameScreenProps {
   onCommand: (command: string, friendlyEcho?: string) => void;
@@ -217,6 +218,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       <AudioSettings />
       <NpcDialogueModal />
       <SkillLearnedModal />
+      <DeathNoticeModal />
       <ItemTooltip />
     </div>
   );

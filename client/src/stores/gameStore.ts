@@ -21,6 +21,7 @@ import type {
   ZoneType,
   PvpMode,
   DeathPenalty,
+  DeathNoticePayload,
   LocalMapPayload,
   NpcDialoguePayload,
 } from '@game/shared';
@@ -133,6 +134,8 @@ export interface SkillLearnedNotice {
   resourceCost: number;
   cooldown: number;
 }
+
+export type DeathNotice = DeathNoticePayload;
 
 // --- Room info ---
 
@@ -266,6 +269,8 @@ export interface GameState {
   skillLearnedNotices: SkillLearnedNotice[];
   addSkillLearnedNotice: (notice: SkillLearnedNotice) => void;
   dismissSkillLearnedNotice: () => void;
+  deathNotice: DeathNotice | null;
+  setDeathNotice: (notice: DeathNotice | null) => void;
   aliases: Record<string, string>;
   setAliases: (aliases: Record<string, string>) => void;
 
@@ -459,6 +464,8 @@ export const useGameStore = create<GameState>((set) => ({
     set((state) => ({ skillLearnedNotices: [...state.skillLearnedNotices, notice] })),
   dismissSkillLearnedNotice: () =>
     set((state) => ({ skillLearnedNotices: state.skillLearnedNotices.slice(1) })),
+  deathNotice: null,
+  setDeathNotice: (deathNotice) => set({ deathNotice }),
   aliases: {},
   setAliases: (aliases) => set({ aliases }),
 

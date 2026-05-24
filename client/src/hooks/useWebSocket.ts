@@ -10,6 +10,7 @@ import type {
   CombatStartPayload,
   CombatActionPayload,
   CombatEndPayload,
+  DeathNoticePayload,
   InventoryPayload,
   PartyPayload,
   ChatPayload,
@@ -303,6 +304,12 @@ export function useWebSocket() {
         AudioManager.getInstance().play('bgm_village');
         // Clear combat state after a short delay
         setTimeout(() => store.getState().setCombat(null), 3000);
+        break;
+      }
+
+      case 'death_notice': {
+        const data = p as unknown as DeathNoticePayload;
+        s.setDeathNotice(data);
         break;
       }
 

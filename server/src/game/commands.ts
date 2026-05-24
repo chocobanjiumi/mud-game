@@ -1425,12 +1425,18 @@ function cmdAttack(session: WsSession, target: string): void {
 
     // PvE 死亡懲罰
     if (result === 'defeat') {
-      const expLost = Math.floor(char.exp * 0.05);
+      const beforeExp = char.exp;
+      const beforeGold = char.gold;
+      const beforeLevel = char.level;
+      const expPenalty = Math.floor(char.exp * 0.05);
       const minExpForLevel = expRequiredForLevel(char.level);
-      char.exp = Math.max(minExpForLevel, char.exp - expLost);
+      char.exp = Math.max(minExpForLevel, char.exp - expPenalty);
+      const expLost = beforeExp - char.exp;
 
       const goldLost = Math.floor(char.gold * 0.1);
       char.gold = Math.max(0, char.gold - goldLost);
+      const actualGoldLost = beforeGold - char.gold;
+      if (actualGoldLost > 0) recordGoldSpent(actualGoldLost);
 
       char.hp = Math.floor(char.maxHp * 0.5);
       char.mp = Math.floor(char.maxMp * 0.5);
@@ -1443,8 +1449,28 @@ function cmdAttack(session: WsSession, target: string): void {
       if (playerSession) {
         const respawnRoom = getRoom(respawnRoomId);
         const respawnName = respawnRoom?.name ?? respawnRoomId;
-        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣。`, 'error');
+        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${actualGoldLost} 金幣。`, 'error');
         sendNarrative(playerSession.sessionId, `你慢慢甦醒過來...發現已回到${respawnName}。`);
+        sendToSession(playerSession.sessionId, 'death_notice' as any, {
+          title: '你死亡了',
+          message: `你在戰鬥中倒下，靈魂被送回${respawnName}。`,
+          losses: {
+            exp: expLost,
+            gold: actualGoldLost,
+            items: [],
+            levelDown: char.level < beforeLevel,
+          },
+          recovery: {
+            hp: char.hp,
+            maxHp: char.maxHp,
+            mp: char.mp,
+            maxMp: char.maxMp,
+          },
+          respawn: {
+            roomId: respawnRoomId,
+            roomName: respawnName,
+          },
+        });
         const roomPayload = buildRoomPayload(char);
         if (roomPayload) {
           sendToSession(playerSession.sessionId, 'room', roomPayload as unknown as Record<string, unknown>);

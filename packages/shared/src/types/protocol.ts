@@ -28,6 +28,7 @@ export type ServerMessageType =
   | 'room' | 'inventory' | 'party' | 'error' | 'pong'
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
+  | 'death_notice'
   | 'skill_learned' | 'class_change' | 'trade'
   | 'quest' | 'quest_update' | 'leaderboard' | 'leaderboard_data' | 'map' | 'token_balance'
   | 'npc_dialogue'
@@ -208,6 +209,27 @@ export interface CombatEndPayload {
   result: 'victory' | 'defeat' | 'fled';
   loot?: CombatLoot;
   log: string[];
+}
+
+export interface DeathNoticePayload {
+  title: string;
+  message: string;
+  losses: {
+    exp: number;
+    gold: number;
+    items: string[];
+    levelDown: boolean;
+  };
+  recovery: {
+    hp: number;
+    maxHp: number;
+    mp: number;
+    maxMp: number;
+  };
+  respawn: {
+    roomId: string;
+    roomName: string;
+  };
 }
 
 export interface InventoryPayload {

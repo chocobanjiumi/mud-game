@@ -4,6 +4,7 @@ import type { Character, CombatantState, RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
 import SkillTablePage from '../components/SkillTablePage';
 import { SkillLearnedModalView } from '../components/SkillLearnedModal';
+import { DeathNoticeModalView } from '../components/DeathNoticeModal';
 import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
@@ -140,6 +141,30 @@ describe('key UI component rendering', () => {
     expect(html).toContain('Lv.2');
     expect(html).toContain('戰鬥');
     expect(html).toContain('技能已加入快捷列與技能列表');
+  });
+
+  it('renders death notice modal with explicit losses and respawn details', () => {
+    const html = renderToStaticMarkup(
+      <DeathNoticeModalView
+        notice={{
+          title: '你死亡了',
+          message: '你在戰鬥中倒下，靈魂被送回新手村祠堂。',
+          losses: { exp: 12, gold: 8, items: [], levelDown: false },
+          recovery: { hp: 40, maxHp: 80, mp: 20, maxMp: 40 },
+          respawn: { roomId: 'starter_village_portal_shrine', roomName: '新手村祠堂' },
+        }}
+        onDismiss={() => undefined}
+      />,
+    );
+
+    expect(html).toContain('你死亡了');
+    expect(html).toContain('經驗損失');
+    expect(html).toContain('12');
+    expect(html).toContain('金幣損失');
+    expect(html).toContain('8');
+    expect(html).toContain('掉落物品');
+    expect(html).toContain('無');
+    expect(html).toContain('新手村祠堂');
   });
 
   it('renders room entities and selected target actions without showing internal ids as labels', () => {
