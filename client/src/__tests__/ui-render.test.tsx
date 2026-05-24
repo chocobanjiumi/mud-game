@@ -118,9 +118,11 @@ describe('key UI component rendering', () => {
   it('renders the skill acquisition table', () => {
     const html = renderToStaticMarkup(<SkillTablePage />);
     expect(html).toContain('初始職業技能草案');
-    expect(html).toContain('劍士');
+    expect(html).toContain('戰士');
     expect(html).toContain('暴風雪');
-    expect(html).toContain('極限嘲諷');
+    expect(html).toContain('極限怒吼');
+    expect(html).toContain('消耗 70 怒氣');
+    expect(html).toContain('信仰 -25');
     expect(html).toContain('arrivalTicks');
   });
 
