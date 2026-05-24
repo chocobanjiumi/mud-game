@@ -67,6 +67,8 @@ export interface CombatSession {
   playerCharacters: Map<string, Character>;
   /** 額外追蹤：怪物實例參照 */
   monsterInstances: Map<string, MonsterInstance>;
+  /** 玩家目前普通攻擊目標 */
+  preferredTargetIds: Map<string, string>;
   /** 回合計時器 */
   turnTimerHandle: ReturnType<typeof setTimeout> | null;
   /** 回合開始時間 */
@@ -105,6 +107,29 @@ export class CombatEngine {
     fn: (combatId: string, playerIds: string[], message: unknown) => void,
   ): void {
     this.broadcastFn = fn;
+  }
+
+  private monsterToCombatant(m: MonsterInstance): CombatantState {
+    return {
+      id: m.instanceId,
+      name: m.def.name,
+      isPlayer: false,
+      isAi: true,
+      hp: m.hp,
+      maxHp: m.maxHp,
+      mp: m.mp,
+      maxMp: m.maxMp,
+      resource: m.mp,
+      maxResource: m.maxMp,
+      resourceType: 'mp' as ResourceType,
+      level: m.def.level,
+      classId: 'monster',
+      activeEffects: [],
+      isDead: false,
+      monsterBehavior: this.getMonsterBehaviorType(m.def),
+      monsterPhases: this.getMonsterPhaseRules(m.def),
+      currentMonsterPhase: 1,
+    };
   }
 
   // ──────────────────────────────────────────────────────────
@@ -147,26 +172,7 @@ export class CombatEngine {
     }));
 
     // 建立怪物 CombatantState
-    const enemyTeam: CombatantState[] = monsters.map(m => ({
-      id: m.instanceId,
-      name: m.def.name,
-      isPlayer: false,
-      isAi: true,
-      hp: m.hp,
-      maxHp: m.maxHp,
-      mp: m.mp,
-      maxMp: m.maxMp,
-      resource: m.mp,
-      maxResource: m.maxMp,
-      resourceType: 'mp' as ResourceType,
-      level: m.def.level,
-      classId: 'monster',
-      activeEffects: [],
-      isDead: false,
-      monsterBehavior: this.getMonsterBehaviorType(m.def),
-      monsterPhases: this.getMonsterPhaseRules(m.def),
-      currentMonsterPhase: 1,
-    }));
+    const enemyTeam: CombatantState[] = monsters.map(m => this.monsterToCombatant(m));
 
     const state: CombatState = {
       id: combatId,
@@ -197,6 +203,7 @@ export class CombatEngine {
       state,
       playerCharacters,
       monsterInstances,
+      preferredTargetIds: new Map(),
       turnTimerHandle: null,
       turnStartTime: Date.now(),
       onEnd: onEnd ?? null,
@@ -206,6 +213,8 @@ export class CombatEngine {
     this.sessions.set(combatId, session);
 
     this.prepareMonsterTelegraphs(session, state.actionLog);
+
+    this.broadcastCombatStart(session);
 
     // 啟動回合計時器
     this.startTurnTimer(session);
@@ -261,6 +270,38 @@ export class CombatEngine {
     return this.sessions.get(combatId)?.state;
   }
 
+  setPreferredTarget(combatId: string, playerId: string, targetId: string): boolean {
+    const session = this.sessions.get(combatId);
+    if (!session) return false;
+    const target = session.state.enemyTeam.find(enemy => enemy.id === targetId && !enemy.isDead);
+    if (!target) return false;
+    session.preferredTargetIds.set(playerId, targetId);
+    return true;
+  }
+
+  addMonsterToCombat(combatId: string, monster: MonsterInstance, preferredByPlayerId?: string): boolean {
+    const session = this.sessions.get(combatId);
+    if (!session || monster.isDead) return false;
+    if (session.monsterInstances.has(monster.instanceId)) {
+      if (preferredByPlayerId) this.setPreferredTarget(combatId, preferredByPlayerId, monster.instanceId);
+      return false;
+    }
+
+    const combatant = this.monsterToCombatant(monster);
+    session.state.enemyTeam.push(combatant);
+    session.monsterInstances.set(monster.instanceId, monster);
+    if (preferredByPlayerId) session.preferredTargetIds.set(preferredByPlayerId, monster.instanceId);
+
+    const log = [`${monster.def.name}加入了戰鬥！`];
+    this.prepareMonsterTelegraphs(session, log);
+    this.broadcastRoundResult(session, log, []);
+    return true;
+  }
+
+  getCombatMonsterInstances(combatId: string): MonsterInstance[] {
+    return Array.from(this.sessions.get(combatId)?.monsterInstances.values() ?? []);
+  }
+
   // ──────────────────────────────────────────────────────────
   //  回合計時器
   // ──────────────────────────────────────────────────────────
@@ -292,9 +333,15 @@ export class CombatEngine {
     for (const c of allCombatants) {
       if (!session.state.pendingActions.has(c.id)) {
         // 怪物 AI 或超時玩家 → 預設普通攻擊
-        const target = c.isPlayer
-          ? this.selectRandomAlive(session.state.enemyTeam)
-          : this.selectRandomAlive(session.state.playerTeam);
+        const preferredTargetId = c.isPlayer ? session.preferredTargetIds.get(c.id) : undefined;
+        const preferredTarget = preferredTargetId
+          ? session.state.enemyTeam.find(enemy => enemy.id === preferredTargetId && !enemy.isDead)
+          : undefined;
+        const target = preferredTarget ?? (
+          c.isPlayer
+            ? this.selectRandomAlive(session.state.enemyTeam)
+            : this.selectRandomAlive(session.state.playerTeam)
+        );
 
         session.state.pendingActions.set(c.id, {
           actorId: c.id,
@@ -469,18 +516,15 @@ export class CombatEngine {
     // 查找技能定義
     const skillDef = action.skillId ? SKILL_DEFS[action.skillId] : null;
 
-    const target = action.targetId
-      ? this.findCombatant(session, action.targetId)
-      : this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
+    const targets = this.getSkillTargets(session, actor, action, skillDef);
+    const primaryTarget = targets[0];
 
-    if (!target || target.isDead) {
+    if (!primaryTarget) {
       log.push(`${actor.name}的技能失去了目標。`);
       return;
     }
 
     this.consumeTelegraphIfPrepared(actor, action, log);
-    this.interruptTelegraphIfPossible(actor, target, skillDef, log);
-    this.dispelShieldIfPossible(actor, target, skillDef, log);
 
     // 資源消耗（使用技能定義的 resourceCost）
     let resourceCost = skillDef?.resourceCost ?? 5;
@@ -500,68 +544,74 @@ export class CombatEngine {
     actor.resource -= resourceCost;
 
     const attackerStats = this.getCombatStats(session, actor);
-    const targetStats = this.getCombatStats(session, target);
-    const targetElement = this.getCombatantElement(session, target.id);
 
     // 使用技能定義的 damageType、element、multiplier
     const damageType = skillDef?.damageType ?? 'magical';
     const element = skillDef?.element ?? 'none';
     const multiplier = (skillDef?.multiplier ?? 1.5) * this.getMonsterPhaseDamageMultiplier(actor);
 
-    const dmgResult = calculateDamage({
-      attackerId: actor.id,
-      targetId: target.id,
-      damageType,
-      element,
-      targetElement,
-      multiplier,
-      attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
-      target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
-    });
-    dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
-    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, damageType, dmgResult.element);
-
-    results.push(dmgResult);
-
     // 治癒技能特殊處理
     const isHealSkill = skillDef?.special?.isHeal || action.skillId === 'heal' || action.skillId === 'mass_heal';
-    if (isHealSkill) {
-      const healBase = attackerStats.matk * multiplier;
-      let healAmount = Math.max(1, Math.floor(healBase));
-      // 套裝加成：治癒力量
-      const pct = this.getPlayerSetBonusPct(session, actor.id);
-      if (pct.healPower) {
-        healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
-      }
-      healAmount = applyHealingReceivedOriginModifier(target, healAmount);
-      const before = target.hp;
-      target.hp = Math.min(target.maxHp, target.hp + healAmount);
-      const actual = target.hp - before;
-      const skillName = skillDef?.name ?? '治癒';
-      log.push(`${actor.name}使用了${skillName}，為${target.name}回復了 ${actual} HP！`);
-    } else {
-      const skillName = skillDef?.name ?? action.skillId ?? '技能';
-      if (dmgResult.isMiss) {
-        log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
-      } else if (dmgResult.isDodged) {
-        log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
-      } else {
-        const critText = dmgResult.isCrit ? '暴擊！' : '';
-        log.push(
-          `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
-        );
-        this.applyDamageToTarget(session, target, dmgResult.damage, log);
-        this.triggerMonsterPhases(session, target, log);
-      }
-    }
+    const skillName = skillDef?.name ?? action.skillId ?? (isHealSkill ? '治癒' : '技能');
 
-    if (skillDef?.effects && !dmgResult.isMiss && !dmgResult.isDodged) {
-      for (const eff of skillDef.effects) {
-        const msg = this.effectEngine.applyEffect(target.activeEffects, {
-          ...eff,
-          source: actor.id,
-        }, actor.name);
-        log.push(`  ${target.name}${msg}`);
+    for (const target of targets) {
+      if (target.isDead) continue;
+      this.interruptTelegraphIfPossible(actor, target, skillDef, log);
+      this.dispelShieldIfPossible(actor, target, skillDef, log);
+
+      const targetStats = this.getCombatStats(session, target);
+      const targetElement = this.getCombatantElement(session, target.id);
+      const dmgResult = calculateDamage({
+        attackerId: actor.id,
+        targetId: target.id,
+        damageType,
+        element,
+        targetElement,
+        multiplier,
+        attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+        target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
+      });
+      dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
+      dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, damageType, dmgResult.element);
+
+      results.push(dmgResult);
+
+      if (isHealSkill) {
+        const healBase = attackerStats.matk * multiplier;
+        let healAmount = Math.max(1, Math.floor(healBase));
+        // 套裝加成：治癒力量
+        const pct = this.getPlayerSetBonusPct(session, actor.id);
+        if (pct.healPower) {
+          healAmount = Math.floor(healAmount * (1 + pct.healPower / 100));
+        }
+        healAmount = applyHealingReceivedOriginModifier(target, healAmount);
+        const before = target.hp;
+        target.hp = Math.min(target.maxHp, target.hp + healAmount);
+        const actual = target.hp - before;
+        log.push(`${actor.name}使用了${skillName}，為${target.name}回復了 ${actual} HP！`);
+      } else {
+        if (dmgResult.isMiss) {
+          log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
+        } else if (dmgResult.isDodged) {
+          log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+        } else {
+          const critText = dmgResult.isCrit ? '暴擊！' : '';
+          log.push(
+            `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
+          );
+          this.applyDamageToTarget(session, target, dmgResult.damage, log);
+          this.triggerMonsterPhases(session, target, log);
+        }
+      }
+
+      if (skillDef?.effects && !dmgResult.isMiss && !dmgResult.isDodged) {
+        for (const eff of skillDef.effects) {
+          const msg = this.effectEngine.applyEffect(target.activeEffects, {
+            ...eff,
+            source: actor.id,
+          }, actor.name);
+          log.push(`  ${target.name}${msg}`);
+        }
       }
     }
 
@@ -868,6 +918,29 @@ export class CombatEngine {
     return this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
   }
 
+  private getSkillTargets(
+    session: CombatSession,
+    actor: CombatantState,
+    action: CombatAction,
+    skillDef: SkillDef | null,
+  ): CombatantState[] {
+    const enemies = actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam;
+    const allies = actor.isPlayer ? session.state.playerTeam : session.state.enemyTeam;
+    const targetType = skillDef?.targetType ?? 'single_enemy';
+
+    if (targetType === 'self') return [actor].filter(c => !c.isDead);
+    if (targetType === 'all_enemies') return enemies.filter(c => !c.isDead);
+    if (targetType === 'all_allies') return allies.filter(c => !c.isDead);
+
+    if (targetType === 'single_ally') {
+      const target = action.targetId ? this.findCombatant(session, action.targetId) : this.selectRandomAlive(allies);
+      return target && !target.isDead ? [target] : [];
+    }
+
+    const target = action.targetId ? this.findCombatant(session, action.targetId) : this.selectRandomAlive(enemies);
+    return target && !target.isDead ? [target] : [];
+  }
+
   private getMonsterBehaviorType(def: MonsterDef): MonsterBehaviorType {
     if (def.behaviorType) return def.behaviorType;
     if (def.isBoss || def.aiType === 'boss') return 'phase_boss';
@@ -1153,6 +1226,23 @@ export class CombatEngine {
         logEntities,
         playerTeam: session.state.playerTeam,
         enemyTeam: session.state.enemyTeam,
+      },
+      timestamp: Date.now(),
+    });
+  }
+
+  private broadcastCombatStart(session: CombatSession): void {
+    const playerIds = Array.from(session.playerCharacters.keys());
+    if (!this.broadcastFn) return;
+
+    this.broadcastFn(session.id, playerIds, {
+      type: 'combat_start',
+      payload: {
+        combatId: session.id,
+        round: session.state.round,
+        playerTeam: session.state.playerTeam,
+        enemyTeam: session.state.enemyTeam,
+        turnTimer: session.state.turnTimer,
       },
       timestamp: Date.now(),
     });

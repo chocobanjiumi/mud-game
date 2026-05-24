@@ -15,6 +15,7 @@ import {
   getDiscoveryCount, getDiscoveryTotalCount, hasDiscovery, recordDiscovery,
   getMemberKingdom, getKingdomById, updateKingdom,
   getCharacterAliases, setCharacterAlias, deleteCharacterAlias, clearCharacterAliases,
+  clearGroundItemPickup, getGroundItemRespawnAt, PERMANENT_GROUND_ITEM_PICKUP, setGroundItemRespawnAt,
 } from '../db/queries.js';
 import {
   ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
@@ -26,7 +27,7 @@ import {
   DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID,
   isFaithId,
 } from '@game/shared';
-import type { Character, ClassId, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, RoomPayload, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -70,7 +71,7 @@ import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
-import { addExperienceToCharacter, expRequiredForLevel } from './leveling.js';
+import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
 const lootCalc = new LootCalculator();
@@ -78,12 +79,38 @@ const corpseMgr = new CorpseManager();
 import type { LootDistributionMode } from './party.js';
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 
+world.setRoomStateChangeFunction((roomId) => {
+  broadcastRoomState(roomId);
+});
+
 // ─── 地上物品撿取追蹤 ───
 
-/** 記錄已被撿走的地上物品，key = `${roomId}:${itemId}`, value = 重生時間 */
-const pickedUpItems = new Map<string, number>();
 const GROUND_ITEM_RESPAWN_MS = 10 * 60 * 1000; // 10 分鐘
+
+type LocalMapPayload = {
+  size: 5;
+  currentRoom: string;
+  rooms: {
+    id: string;
+    name: string;
+    x: number;
+    y: number;
+    explored: boolean;
+    exits: RoomExit[];
+  }[];
+};
+
+type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
+
+function scheduleCorpseExpiry(roomId: string, corpseId: string, expiresAt: number): void {
+  const delay = Math.max(0, expiresAt - Date.now());
+  setTimeout(() => {
+    if (corpseMgr.removeCorpse(roomId, corpseId)) {
+      broadcastRoomState(roomId);
+    }
+  }, delay);
+}
 
 /** 取得房間中可撿取的地上物品（排除已被撿走且尚未重生的） */
 function getAvailableGroundItems(roomId: string): GroundItem[] {
@@ -92,18 +119,21 @@ function getAvailableGroundItems(roomId: string): GroundItem[] {
 
   const now = Date.now();
   return room.groundItems.filter(gi => {
-    const key = `${roomId}:${gi.itemId}`;
-    const respawnAt = pickedUpItems.get(key);
+    const respawnAt = getGroundItemRespawnAt(roomId, gi.itemId);
+    if (respawnAt === PERMANENT_GROUND_ITEM_PICKUP) return false;
     if (respawnAt && now < respawnAt) return false;
-    if (respawnAt && now >= respawnAt) pickedUpItems.delete(key);
+    if (respawnAt && now >= respawnAt) clearGroundItemPickup(roomId, gi.itemId);
     return true;
   });
 }
 
 /** 標記地上物品已被撿走 */
 function markGroundItemPicked(roomId: string, itemId: string, oneTime = false): void {
-  const key = `${roomId}:${itemId}`;
-  pickedUpItems.set(key, oneTime ? Number.POSITIVE_INFINITY : Date.now() + GROUND_ITEM_RESPAWN_MS);
+  setGroundItemRespawnAt(
+    roomId,
+    itemId,
+    oneTime ? PERMANENT_GROUND_ITEM_PICKUP : Date.now() + GROUND_ITEM_RESPAWN_MS,
+  );
 }
 
 // ─── 指令路由 ───
@@ -399,7 +429,45 @@ function cmdLook(session: WsSession, target?: string): void {
   recordDiscovery(char.id, roomInfo.room.zone, roomInfo.room.id, 'visit_room', roomInfo.room.id);
   updateExplorationAchievements(char.id, roomInfo.room.zone, roomInfo.room.id);
 
-  // 取得同房間的其他玩家
+  const payload = buildRoomPayload(char);
+  if (!payload) return;
+  sendToSession(session.sessionId, 'room', payload as unknown as Record<string, unknown>);
+
+  // 顯示地上物品
+  const groundItems = getAvailableGroundItems(char.roomId);
+  for (const gi of groundItems) {
+    const def = ITEM_DEFS[gi.itemId];
+    if (def) {
+      sendNarrative(session.sessionId, `${gi.description}（${def.name}）`, 'item');
+    }
+  }
+
+  const corpses = corpseMgr.getCorpses(char.roomId).filter(corpse => shouldShowCorpseToCharacter(corpse, char.id));
+  const corpseLabels = buildOrdinalLabels(corpses, corpse => corpse.monsterName);
+  for (const [index, corpse] of corpses.entries()) {
+    const empty = isCorpseEmptyForCharacter(corpse, char.id);
+    sendNarrative(
+      session.sessionId,
+      `${corpseLabels[index]}的屍體倒在這裡。${empty ? '已被搜刮一空。' : '搜刮'}`,
+      'item',
+      empty ? undefined : [{
+        name: '搜刮',
+        entityType: 'action',
+        cmdName: '搜刮',
+        actionCommand: `loot ${corpse.id}`,
+      }],
+    );
+  }
+
+  // 觸發任務進度（拜訪地點）
+  questMgr.updateProgress(char.id, 'visit', char.roomId);
+  sendQuestUpdate(session, 'sync');
+}
+
+function buildRoomPayload(char: Character, silent = false): RoomStatePayload | null {
+  const roomInfo = world.getRoomInfo(char.roomId);
+  if (!roomInfo) return null;
+
   const playersInRoom = world.getPlayersInRoom(char.roomId)
     .filter(id => id !== char.id)
     .map(id => {
@@ -421,13 +489,13 @@ function cmdLook(session: WsSession, target?: string): void {
   }));
   const zone = getZone(roomInfo.room.zone);
   const now = Date.now();
-  const corpseContainers = corpseMgr.getCorpses(char.roomId);
+  const corpseContainers = corpseMgr.getCorpses(char.roomId).filter(corpse => shouldShowCorpseToCharacter(corpse, char.id));
   const roomCorpseLabels = buildOrdinalLabels(corpseContainers, corpse => corpse.monsterName);
   const roomCorpses = corpseContainers.map((corpse, index) => ({
     id: corpse.id,
     monsterName: corpse.monsterName,
     label: roomCorpseLabels[index],
-    empty: corpse.gold <= 0 && corpse.items.length === 0,
+    empty: isCorpseEmptyForCharacter(corpse, char.id),
     protected: now < corpse.protectedUntil && !corpse.participantIds.includes(char.id),
     protectedUntil: corpse.protectedUntil,
   }));
@@ -463,11 +531,13 @@ function cmdLook(session: WsSession, target?: string): void {
   });
   const inspectHints = buildRoomInspectHints(roomInfo.room, roomCorpses.length > 0, gatheringNodes.length > 0, roomTravelNodes.length > 0);
 
-  sendToSession(session.sessionId, 'room', {
+  return {
     id: char.roomId,
     zone: roomInfo.room.zone,
     name: roomInfo.room.name,
     description: roomInfo.room.description,
+    silent,
+    localMap: buildLocalMapPayload(char, roomInfo.room),
     image: roomInfo.room.image,
     exits: roomInfo.room.exits,
     players: playersInRoom,
@@ -479,36 +549,52 @@ function cmdLook(session: WsSession, target?: string): void {
     travelNodes: roomTravelNodes,
     inspectHints,
     entities,
-  });
+  };
+}
 
-  // 顯示地上物品
-  for (const gi of groundItems) {
-    const def = ITEM_DEFS[gi.itemId];
-    if (def) {
-      sendNarrative(session.sessionId, `${gi.description}（${def.name}）`, 'item');
-    }
+function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPayload {
+  const rooms = getRoomsByZone(currentRoom.zone)
+    .filter(room => Math.abs(room.mapX - currentRoom.mapX) <= 2 && Math.abs(room.mapY - currentRoom.mapY) <= 2)
+    .map(room => {
+      const explored = room.id === currentRoom.id || hasDiscovery(char.id, 'visit_room', room.id);
+      const adjacent = currentRoom.exits.some(exit => exit.targetRoomId === room.id);
+      if (!explored && !adjacent) return null;
+      return {
+        id: room.id,
+        name: room.name,
+        x: room.mapX,
+        y: room.mapY,
+        explored,
+        exits: room.exits,
+      };
+    })
+    .filter((room): room is LocalMapPayload['rooms'][number] => Boolean(room));
+
+  return {
+    size: 5,
+    currentRoom: currentRoom.id,
+    rooms,
+  };
+}
+
+function broadcastRoomState(roomId: string): void {
+  for (const onlineSession of getAllSessions()) {
+    if (!onlineSession.characterId) continue;
+    const char = getCharacterById(onlineSession.characterId);
+    if (!char || char.roomId !== roomId) continue;
+    const payload = buildRoomPayload(char, true);
+    if (payload) sendToSession(onlineSession.sessionId, 'room', payload as unknown as Record<string, unknown>);
   }
+}
 
-  const corpses = corpseMgr.getCorpses(char.roomId);
-  const corpseLabels = buildOrdinalLabels(corpses, corpse => corpse.monsterName);
-  for (const [index, corpse] of corpses.entries()) {
-    const empty = corpse.gold <= 0 && corpse.items.length === 0;
-    sendNarrative(
-      session.sessionId,
-      `${corpseLabels[index]}的屍體倒在這裡。${empty ? '已被搜刮一空。' : '搜刮'}`,
-      'item',
-      empty ? undefined : [{
-        name: '搜刮',
-        entityType: 'action',
-        cmdName: '搜刮',
-        actionCommand: `loot ${corpse.id}`,
-      }],
-    );
-  }
+function isCorpseEmptyForCharacter(corpse: { gold: number; items: unknown[]; personalItems: Record<string, unknown[]> }, characterId: string): boolean {
+  return corpse.gold <= 0
+    && corpse.items.length === 0
+    && (corpse.personalItems[characterId]?.length ?? 0) === 0;
+}
 
-  // 觸發任務進度（拜訪地點）
-  questMgr.updateProgress(char.id, 'visit', char.roomId);
-  sendQuestUpdate(session, 'sync');
+function shouldShowCorpseToCharacter(corpse: { gold: number; items: unknown[]; personalItems: Record<string, unknown[]> }, characterId: string): boolean {
+  return !isCorpseEmptyForCharacter(corpse, characterId);
 }
 
 function sendQuestUpdate(session: WsSession, action = 'sync'): void {
@@ -801,10 +887,10 @@ function cmdStatus(session: WsSession): void {
   if (!char) return;
 
   const classDef = CLASS_DEFS[char.classId];
-  const nextExp = expRequiredForLevel(char.level + 1);
+  const expProgress = getLevelExpProgress(char);
 
   sendToSession(session.sessionId, 'status', {
-    character: char,
+    character: { ...char, exp: expProgress.current },
     derived: {
       atk: calculateAtk(char.stats.str, 0),
       matk: calculateMatk(char.stats.int, 0),
@@ -815,7 +901,7 @@ function cmdStatus(session: WsSession): void {
       critRate: calculateCritRate(char.stats.dex, char.stats.luk),
       critDamage: calculateCritDamage(),
     },
-    expToNext: Math.max(0, nextExp - char.exp),
+    expToNext: expProgress.required,
     effects: [],
     skills: getLearnedSkills(char.id),
     aliases: getCharacterAliases(char.id),
@@ -1096,19 +1182,29 @@ function cmdAttack(session: WsSession, target: string): void {
   const char = getChar(session);
   if (!char) return;
 
-  // 如果已在戰鬥中，提交普攻行動
+  // 如果已在戰鬥中，attack <目標> 只切換目前目標；若目標是房間怪，先拉入戰鬥群體。
   const existingCombatId = getPlayerCombatId(char.id);
   if (existingCombatId) {
     const targetId = resolveCombatTargetId(existingCombatId, target);
-    if (target && !targetId) {
-      sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
+    if (targetId) {
+      combat.setPreferredTarget(existingCombatId, char.id, targetId);
+      sendSystem(session.sessionId, `目前攻擊目標已切換為「${target}」。`);
       return;
     }
-    combat.submitAction(existingCombatId, {
-      actorId: char.id,
-      type: 'attack',
-      targetId,
-    });
+
+    if (target) {
+      const roomMonster = world.findMonsterInRoom(char.roomId, target);
+      if (!roomMonster) {
+        sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
+        return;
+      }
+
+      combat.addMonsterToCombat(existingCombatId, roomMonster, char.id);
+      sendSystem(session.sessionId, `你將${roomMonster.def.name}拉入戰鬥，並切換為目前攻擊目標。`);
+      return;
+    }
+
+    sendSystem(session.sessionId, '你會在下一個 tick 普攻目前目標。使用 attack <目標> 可切換目標或拉怪。');
     return;
   }
 
@@ -1133,107 +1229,120 @@ function cmdAttack(session: WsSession, target: string): void {
   }
   if (players.length === 0) players.push(char);
 
+  // 追蹤玩家行動（用於轉職任務鉤子）
+  let lastRound = 1;
+  const lastPlayerActions = new Map<string, { type: string; skillId?: string }>();
+
   // 開始戰鬥
   const combatId = combat.startCombat(players, [monster], (result) => {
     // 戰鬥結束後的處理
     if (result === 'victory') {
-      // 觸發任務進度
-      questMgr.updateProgress(char.id, 'kill', monster.monsterId);
-      recordMonsterCodexKill(char.id, monster.monsterId, Boolean(monster.def.isBoss || monster.def.aiType === 'boss'));
-      achievementMgr.onMonsterKill(
-        char.id,
-        monster.monsterId,
-        Boolean(monster.def.isBoss || monster.def.aiType === 'boss'),
-        Boolean(monster.def.isElite),
-        monster.def.element,
-      );
+      const defeatedMonsters = combat.getCombatMonsterInstances(combatId)
+        .filter(defeated => defeated.isDead || defeated.hp <= 0);
 
-      // BOSS 擊殺額外觸發（用於每日/每週 BOSS 任務）
-      if (monster.def.isBoss) {
-        questMgr.updateProgress(char.id, 'kill', 'boss');
-        questMgr.updateProgress(char.id, 'defeat_boss', monster.monsterId);
-        unlockAppearance(char.id, 'aura_boss_slayer');
-      }
-
-      // 菁英怪擊殺：公會經驗 +30
-      if (monster.def.isElite || monster.def.isBoss) {
-        const guildId = guildMgr.getCharacterGuildId(char.id);
-        if (guildId) {
-          guildMgr.addGuildExp(guildId, 30);
-        }
-      }
-
-      // 轉職任務：怪物擊殺鉤子 — 取得最後一次使用的技能類型
-      const lastAction = lastPlayerActions.get(char.id);
-      const usedSkillType: 'physical' | 'magical' | undefined =
-        lastAction?.type === 'skill'
-          ? (SKILL_DEFS[lastAction.skillId ?? '']?.damageType === 'magical' ? 'magical' : 'physical')
-          : lastAction?.type === 'attack' ? 'physical' : undefined;
-
-      classQuestMgr.onMonsterKill(char.id, monster.monsterId, {
-        usedSkillType,
-        round: lastRound,
-      });
-
-      // 二轉任務：怪物擊殺鉤子
-      classQuest2Mgr.onMonsterKill(char.id, monster.monsterId, {
-        isCrit: false,
-        isFirstRound: lastRound <= 1,
-        isElite: !!monster.def.isElite,
-        isBoss: !!monster.def.isBoss,
-        isSolo: players.length === 1,
-        usedMagicOnly: usedSkillType === 'magical',
-        isDark: monster.def.element === 'dark',
-        isUndead: monster.def.element === 'dark',
-      });
-
-      world.killMonster(char.roomId, monster.instanceId);
-
-      // 經驗立即結算；金幣與物品留在屍體中等待搜刮。
-      const drops = lootCalc.calculateDrops(monster.def, char.stats.luk, {
-        activeQuestItemIds: [],
-        partySize: players.length,
-      });
-      const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
-      for (const p of players) {
-        const freshChar = getCharacterById(p.id);
-        if (!freshChar) continue;
-
-        const activeQuestItemIds = getActiveQuestDropIds(freshChar.id, monster.def);
-        personalItems[freshChar.id] = lootCalc.calculatePersonalQuestDrops(
-          monster.def,
-          freshChar.stats.luk,
-          activeQuestItemIds,
+      for (const defeatedMonster of defeatedMonsters) {
+        // 觸發任務進度
+        questMgr.updateProgress(char.id, 'kill', defeatedMonster.monsterId);
+        recordMonsterCodexKill(char.id, defeatedMonster.monsterId, Boolean(defeatedMonster.def.isBoss || defeatedMonster.def.aiType === 'boss'));
+        achievementMgr.onMonsterKill(
+          char.id,
+          defeatedMonster.monsterId,
+          Boolean(defeatedMonster.def.isBoss || defeatedMonster.def.aiType === 'boss'),
+          Boolean(defeatedMonster.def.isElite),
+          defeatedMonster.def.element,
         );
 
-        // 經驗值（隊伍分配）
-        if (drops.exp > 0) {
-          const baseExpShare = Math.max(1, Math.floor(drops.exp / players.length));
-          const { expGained, levelsGained } = addExperienceToCharacter(freshChar, baseExpShare);
-          sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expGained}`);
+        // BOSS 擊殺額外觸發（用於每日/每週 BOSS 任務）
+        if (defeatedMonster.def.isBoss) {
+          questMgr.updateProgress(char.id, 'kill', 'boss');
+          questMgr.updateProgress(char.id, 'defeat_boss', defeatedMonster.monsterId);
+          unlockAppearance(char.id, 'aura_boss_slayer');
+        }
 
-          if (levelsGained > 0) {
-            for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(freshChar.id, freshChar);
-            sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `升級了！目前等級 Lv.${freshChar.level}`);
+        // 菁英怪擊殺：公會經驗 +30
+        if (defeatedMonster.def.isElite || defeatedMonster.def.isBoss) {
+          const guildId = guildMgr.getCharacterGuildId(char.id);
+          if (guildId) {
+            guildMgr.addGuildExp(guildId, 30);
           }
         }
 
-        saveCharacter(freshChar);
-      }
+        // 轉職任務：怪物擊殺鉤子 — 取得最後一次使用的技能類型
+        const lastAction = lastPlayerActions.get(char.id);
+        const usedSkillType: 'physical' | 'magical' | undefined =
+          lastAction?.type === 'skill'
+            ? (SKILL_DEFS[lastAction.skillId ?? '']?.damageType === 'magical' ? 'magical' : 'physical')
+            : lastAction?.type === 'attack' ? 'physical' : undefined;
 
-      const corpse = corpseMgr.createCorpse({
-        roomId: char.roomId,
-        monster,
-        killerId: char.id,
-        participantIds: players.map(player => player.id),
-        loot: drops,
-        personalItems,
-      });
-      for (const p of players) {
-        sendSystem(
-          getSessionByCharacterId(p.id)?.sessionId ?? '',
-          `${monster.def.name}留下了屍體（${corpse.gold} 金幣、${corpse.items.length} 種物品）。輸入 loot corpse 搜刮。`,
-        );
+        classQuestMgr.onMonsterKill(char.id, defeatedMonster.monsterId, {
+          usedSkillType,
+          round: lastRound,
+        });
+
+        // 二轉任務：怪物擊殺鉤子
+        classQuest2Mgr.onMonsterKill(char.id, defeatedMonster.monsterId, {
+          isCrit: false,
+          isFirstRound: lastRound <= 1,
+          isElite: !!defeatedMonster.def.isElite,
+          isBoss: !!defeatedMonster.def.isBoss,
+          isSolo: players.length === 1,
+          usedMagicOnly: usedSkillType === 'magical',
+          isDark: defeatedMonster.def.element === 'dark',
+          isUndead: defeatedMonster.def.element === 'dark',
+        });
+
+        world.killMonster(char.roomId, defeatedMonster.instanceId);
+
+        // 經驗立即結算；金幣與物品留在屍體中等待搜刮。
+        const drops = lootCalc.calculateDrops(defeatedMonster.def, char.stats.luk, {
+          activeQuestItemIds: [],
+          partySize: players.length,
+        });
+        const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
+        for (const p of players) {
+          const freshChar = getCharacterById(p.id);
+          if (!freshChar) continue;
+
+          const activeQuestItemIds = getActiveQuestDropIds(freshChar.id, defeatedMonster.def);
+          personalItems[freshChar.id] = lootCalc.calculatePersonalQuestDrops(
+            defeatedMonster.def,
+            freshChar.stats.luk,
+            activeQuestItemIds,
+          );
+
+          // 經驗值（隊伍分配）
+          if (drops.exp > 0) {
+            const baseExpShare = Math.max(1, Math.floor(drops.exp / players.length));
+            const { expGained, levelsGained } = addExperienceToCharacter(freshChar, baseExpShare);
+            sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expGained}`);
+
+            if (levelsGained > 0) {
+              for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(freshChar.id, freshChar);
+              sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `升級了！目前等級 Lv.${freshChar.level}`);
+            }
+          }
+
+          saveCharacter(freshChar);
+        }
+
+        const corpse = corpseMgr.createCorpse({
+          roomId: char.roomId,
+          monster: defeatedMonster,
+          killerId: char.id,
+          participantIds: players.map(player => player.id),
+          loot: drops,
+          personalItems,
+        });
+        scheduleCorpseExpiry(char.roomId, corpse.id, corpse.expiresAt);
+        for (const p of players) {
+          sendSystem(
+            getSessionByCharacterId(p.id)?.sessionId ?? '',
+            `${defeatedMonster.def.name}留下了屍體（${corpse.gold} 金幣、${corpse.items.length} 種物品）。輸入 loot corpse 搜刮。`,
+          );
+        }
+      }
+      if (defeatedMonsters.length > 0) {
+        broadcastRoomState(char.roomId);
       }
 
       // 教學系統：擊殺鉤子
@@ -1265,6 +1374,10 @@ function cmdAttack(session: WsSession, target: string): void {
         const respawnName = respawnRoom?.name ?? respawnRoomId;
         sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${goldLost} 金幣。`, 'error');
         sendNarrative(playerSession.sessionId, `你慢慢甦醒過來...發現已回到${respawnName}。`);
+        const roomPayload = buildRoomPayload(char);
+        if (roomPayload) {
+          sendToSession(playerSession.sessionId, 'room', roomPayload as unknown as Record<string, unknown>);
+        }
       }
     }
 
@@ -1283,9 +1396,7 @@ function cmdAttack(session: WsSession, target: string): void {
     }
   });
 
-  // 追蹤玩家行動（用於轉職任務鉤子）
-  let lastRound = 1;
-  const lastPlayerActions = new Map<string, { type: string; skillId?: string }>();
+  combat.setPreferredTarget(combatId, char.id, monster.instanceId);
 
   combat.setRoundEndCallback(combatId, (roundInfo) => {
     lastRound = roundInfo.round;
@@ -1369,6 +1480,13 @@ function cmdSkill(session: WsSession, args: string[]): void {
 
   const combatId = getPlayerCombatId(char.id);
   if (combatId) {
+    const skillDef = SKILL_DEFS[matchedSkill.skillId];
+    if (skillDef?.targetType === 'all_enemies' && skillDef.special?.areaScope !== 'combat') {
+      for (const roomMonster of world.getAliveMonsters(char.roomId)) {
+        combat.addMonsterToCombat(combatId, roomMonster);
+      }
+    }
+
     const targetId = resolveCombatTargetId(combatId, target);
     if (target && !targetId) {
       sendError(session.sessionId, `找不到戰鬥目標「${target}」。`);
@@ -1970,6 +2088,8 @@ function cmdTake(session: WsSession, itemName: string): void {
     markGroundItemPicked(char.roomId, match.itemId, match.oneTime);
     questMgr.updateProgress(char.id, 'collect_item', match.itemId);
     sendNarrative(session.sessionId, `你撿起了${def?.name ?? match.itemId}。`);
+    cmdInventory(session);
+    broadcastRoomState(char.roomId);
     return;
   }
 
@@ -1990,6 +2110,9 @@ function cmdLoot(session: WsSession, target: string): void {
   const loot = result.loot;
   if (!loot || (loot.gold <= 0 && loot.items.length === 0)) {
     sendSystem(session.sessionId, result.message);
+    if (result.corpse && corpseMgr.removeCorpseIfEmpty(result.corpse)) {
+      broadcastRoomState(char.roomId);
+    }
     return;
   }
 
@@ -2043,6 +2166,10 @@ function cmdLoot(session: WsSession, target: string): void {
   }
   saveCharacter(char);
   cmdInventory(session);
+  if (result.corpse) {
+    corpseMgr.removeCorpseIfEmpty(result.corpse);
+  }
+  broadcastRoomState(char.roomId);
   if (distribution.assignments.size > 0) sendSystem(session.sessionId, distribution.message);
   sendSystem(session.sessionId, result.message);
 }
@@ -2375,6 +2502,7 @@ function cmdMap(session: WsSession): void {
       totalRooms,
       percent,
     } : undefined,
+    localMap: room ? buildLocalMapPayload(char, room) : undefined,
     travelNodes: room ? getTravelNodes()
       .filter(node => node.zoneId === room.zone)
       .map(node => ({

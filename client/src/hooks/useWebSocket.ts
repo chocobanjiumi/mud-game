@@ -94,6 +94,7 @@ export function useWebSocket() {
         const room = p as unknown as RoomPayload;
         s.setRoom(room);
         s.addExploredRoom(room.id);
+        if (room.silent) break;
         s.addTerminalLine('');
         s.addTerminalLine(`═══ ${room.name} ═══`, 'room-title');
         s.addTerminalLine(room.description, 'room-desc');

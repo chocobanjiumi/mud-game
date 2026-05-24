@@ -21,6 +21,7 @@ import type {
   ZoneType,
   PvpMode,
   DeathPenalty,
+  LocalMapPayload,
 } from '@game/shared';
 
 import { loadAudioSettings } from '../audio/AudioManager';
@@ -128,6 +129,7 @@ export interface RoomInfo {
   name: string;
   description: string;
   image?: string;
+  localMap?: LocalMapPayload;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
@@ -176,6 +178,7 @@ export interface MapData {
   dangerLevel?: number;
   pvpMode?: PvpMode;
   deathPenalty?: DeathPenalty;
+  localMap?: LocalMapPayload;
   exploration?: {
     visitedRooms: number;
     totalRooms: number;

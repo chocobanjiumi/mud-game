@@ -43,6 +43,7 @@ import {
   getCharacterById, getCharacterByName, saveCharacter,
   getInventory, getLearnedSkills, getCharacterAliases,
   addInventoryItem, removeInventoryItem, getStoredItemInstance,
+  clearGroundItemPickup, getGroundItemRespawnAt, PERMANENT_GROUND_ITEM_PICKUP, setGroundItemRespawnAt,
 } from '../db/queries.js';
 import type { Character } from '@game/shared';
 import {
@@ -53,7 +54,7 @@ import {
 import { getAllSessions, sendToCharacter, sendToSession } from '../ws/handler.js';
 import { getRoom } from '../data/rooms.js';
 import { LootCalculator } from './loot.js';
-import { addExperienceToCharacter, expRequiredForLevel } from './leveling.js';
+import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
 
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
@@ -104,6 +105,17 @@ export const dailyRewardMgr = new DailyRewardManager();
 
 export function initGameSystems(): void {
   // WorldManager
+  world.setBroadcastFunction((roomId, message) => {
+    const msg = message as { type?: string; payload?: Record<string, unknown> };
+    if (!msg.type || !msg.payload) return;
+    for (const session of getAllSessions()) {
+      if (!session.characterId) continue;
+      const char = getCharacterById(session.characterId);
+      if (char?.roomId === roomId) {
+        sendToSession(session.sessionId, msg.type as any, msg.payload);
+      }
+    }
+  });
   world.init();
 
   // PvPManager
@@ -359,9 +371,19 @@ export function initGameSystems(): void {
       if (!room?.groundItems) return;
 
       for (const gi of room.groundItems) {
+        const respawnAt = getGroundItemRespawnAt(room.id, gi.itemId);
+        if (respawnAt === PERMANENT_GROUND_ITEM_PICKUP) continue;
+        if (respawnAt && Date.now() < respawnAt) continue;
+        if (respawnAt && Date.now() >= respawnAt) clearGroundItemPickup(room.id, gi.itemId);
+
         const def = ITEM_DEFS[gi.itemId];
         if (def) {
           addInventoryItem(characterId, gi.itemId, 1);
+          setGroundItemRespawnAt(
+            room.id,
+            gi.itemId,
+            gi.oneTime ? PERMANENT_GROUND_ITEM_PICKUP : Date.now() + 10 * 60 * 1000,
+          );
           sendToCharacter(characterId, 'system', {
             text: `【自動拾取】撿起了「${def.name}」。`,
           });
@@ -411,9 +433,9 @@ function tickNaturalRecovery(): void {
 }
 
 function sendCharacterStatus(sessionId: string, char: Character): void {
-  const nextExp = expRequiredForLevel(char.level + 1);
+  const expProgress = getLevelExpProgress(char);
   sendToSession(sessionId, 'status', {
-    character: char,
+    character: { ...char, exp: expProgress.current },
     derived: {
       atk: calculateAtk(char.stats.str, 0),
       matk: calculateMatk(char.stats.int, 0),
@@ -424,7 +446,7 @@ function sendCharacterStatus(sessionId: string, char: Character): void {
       critRate: calculateCritRate(char.stats.dex, char.stats.luk),
       critDamage: calculateCritDamage(),
     },
-    expToNext: Math.max(0, nextExp - char.exp),
+    expToNext: expProgress.required,
     effects: [],
     skills: getLearnedSkills(char.id),
     aliases: getCharacterAliases(char.id),

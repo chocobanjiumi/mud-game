@@ -70,6 +70,7 @@ export interface SkillSpecial {
   dispelShield?: boolean;
   isHeal?: boolean;
   removeDebuffs?: boolean;
+  areaScope?: 'room' | 'combat';
 }
 
 export interface LearnedSkill {

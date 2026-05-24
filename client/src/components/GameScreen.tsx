@@ -188,11 +188,11 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
           <div className="context-objective p-2 border-b border-border-dim">
             <ObjectivePanel />
           </div>
-          <CombatPanel />
-          <SkillBar onUseSkill={handleUseSkill} />
-          <RoomPanel />
-          <SelectedTargetPanel />
-          <div className="flex-1 min-h-0 overflow-y-auto">
+          <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
+            <CombatPanel />
+            <SkillBar onUseSkill={handleUseSkill} />
+            <RoomPanel />
+            <SelectedTargetPanel />
             <ChatPanel onSendChat={onSendChat} />
           </div>
         </div>

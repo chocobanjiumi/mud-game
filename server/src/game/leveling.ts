@@ -5,17 +5,26 @@ export function expRequiredForLevel(level: number): number {
   return level * 100 + (level - 1) * 50;
 }
 
+export function getLevelExpProgress(char: Character): { current: number; required: number } {
+  const currentLevelExp = expRequiredForLevel(char.level);
+  const nextLevelExp = expRequiredForLevel(char.level + 1);
+  return {
+    current: Math.max(0, char.exp - currentLevelExp),
+    required: Math.max(1, nextLevelExp - currentLevelExp),
+  };
+}
+
 export function applyLevelUp(char: Character): void {
   char.level++;
   char.freePoints += 5;
 
   const hpGrowth = 10 + char.stats.vit * 2;
   char.maxHp += hpGrowth;
-  char.hp = char.maxHp;
+  char.hp = Math.min(char.hp, char.maxHp);
 
   const mpGrowth = Math.floor(5 + char.stats.int * 1.5);
   char.maxMp += mpGrowth;
-  char.mp = char.maxMp;
+  char.mp = Math.min(char.mp, char.maxMp);
 }
 
 export function addExperienceToCharacter(

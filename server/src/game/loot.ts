@@ -516,6 +516,25 @@ export class CorpseManager {
     return [...(this.corpsesByRoom.get(roomId) ?? [])];
   }
 
+  removeCorpse(roomId: string, corpseId: string): boolean {
+    const corpses = this.corpsesByRoom.get(roomId);
+    if (!corpses) return false;
+
+    const active = corpses.filter(corpse => corpse.id !== corpseId);
+    if (active.length === corpses.length) return false;
+    if (active.length > 0) {
+      this.corpsesByRoom.set(roomId, active);
+    } else {
+      this.corpsesByRoom.delete(roomId);
+    }
+    return true;
+  }
+
+  removeCorpseIfEmpty(corpse: CorpseContainer): boolean {
+    if (!this.isCorpseEmpty(corpse)) return false;
+    return this.removeCorpse(corpse.roomId, corpse.id);
+  }
+
   findCorpse(roomId: string, query?: string, now = Date.now(), characterId?: string): CorpseContainer | undefined {
     const corpses = this.getCorpses(roomId, now);
     const parsed = parseCorpseOrdinalTarget(query);
@@ -625,6 +644,11 @@ export class CorpseManager {
     const personalCount = (corpse.personalItems[characterId] ?? [])
       .reduce((sum, item) => sum + item.quantity, 0);
     return sharedCount + personalCount;
+  }
+
+  private isCorpseEmpty(corpse: CorpseContainer): boolean {
+    if (corpse.gold > 0 || corpse.items.length > 0) return false;
+    return Object.values(corpse.personalItems).every(items => items.length === 0);
   }
 
   private canLootCorpse(corpse: CorpseContainer, characterId: string, now: number): boolean {

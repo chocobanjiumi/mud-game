@@ -80,6 +80,8 @@ export interface RoomPayload {
   zone: string;
   name: string;
   description: string;
+  silent?: boolean;
+  localMap?: LocalMapPayload;
   image?: string;
   exits: RoomExit[];
   players: { id: string; name: string; classId: string; level: number }[];
@@ -91,6 +93,21 @@ export interface RoomPayload {
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
   entities?: RoomEntity[];
+}
+
+export interface LocalMapRoom {
+  id: string;
+  name: string;
+  x: number;
+  y: number;
+  explored: boolean;
+  exits: RoomExit[];
+}
+
+export interface LocalMapPayload {
+  size: 5;
+  currentRoom: string;
+  rooms: LocalMapRoom[];
 }
 
 export interface StatusPayload {
@@ -168,6 +185,7 @@ export interface MapPayload {
     totalRooms: number;
     percent: number;
   };
+  localMap?: LocalMapPayload;
   travelNodes?: { id: string; name: string; roomId: string; kind: string; unlocked: boolean }[];
 }
 

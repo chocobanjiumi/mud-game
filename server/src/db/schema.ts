@@ -152,6 +152,15 @@ export function initDb(): Database.Database {
       PRIMARY KEY (character_id, discovery_type, target_id)
     );
 
+    -- 地上物品拾取狀態。respawn_at_ms = -1 表示永久拾取，不會重生。
+    CREATE TABLE IF NOT EXISTS ground_item_pickups (
+      room_id TEXT NOT NULL,
+      item_id TEXT NOT NULL,
+      respawn_at_ms INTEGER NOT NULL,
+      picked_at_ms INTEGER NOT NULL,
+      PRIMARY KEY (room_id, item_id)
+    );
+
     -- 區域聲望
     CREATE TABLE IF NOT EXISTS character_zone_reputation (
       character_id TEXT NOT NULL REFERENCES characters(id) ON DELETE CASCADE,
@@ -408,6 +417,7 @@ export function initDb(): Database.Database {
     CREATE INDEX IF NOT EXISTS idx_zone_unlocks_character ON character_zone_unlocks(character_id);
     CREATE INDEX IF NOT EXISTS idx_portal_unlocks_character ON character_portal_unlocks(character_id);
     CREATE INDEX IF NOT EXISTS idx_discoveries_character_zone ON character_discoveries(character_id, zone_id);
+    CREATE INDEX IF NOT EXISTS idx_ground_item_pickups_respawn ON ground_item_pickups(respawn_at_ms);
     CREATE INDEX IF NOT EXISTS idx_zone_reputation_character ON character_zone_reputation(character_id);
     CREATE INDEX IF NOT EXISTS idx_learned_recipes_character ON learned_recipes(character_id);
   `);

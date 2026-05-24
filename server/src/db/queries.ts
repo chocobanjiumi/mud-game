@@ -454,6 +454,31 @@ export function hasDiscovery(characterId: string, discoveryType: string, targetI
   return !!row;
 }
 
+export const PERMANENT_GROUND_ITEM_PICKUP = -1;
+
+export function getGroundItemRespawnAt(roomId: string, itemId: string): number | null {
+  const row = getDb().prepare(
+    'SELECT respawn_at_ms FROM ground_item_pickups WHERE room_id = ? AND item_id = ?',
+  ).get(roomId, itemId) as { respawn_at_ms: number } | undefined;
+  return row?.respawn_at_ms ?? null;
+}
+
+export function setGroundItemRespawnAt(roomId: string, itemId: string, respawnAtMs: number): void {
+  getDb().prepare(`
+    INSERT INTO ground_item_pickups (room_id, item_id, respawn_at_ms, picked_at_ms)
+    VALUES (?, ?, ?, ?)
+    ON CONFLICT(room_id, item_id) DO UPDATE SET
+      respawn_at_ms = excluded.respawn_at_ms,
+      picked_at_ms = excluded.picked_at_ms
+  `).run(roomId, itemId, respawnAtMs, Date.now());
+}
+
+export function clearGroundItemPickup(roomId: string, itemId: string): void {
+  getDb().prepare(
+    'DELETE FROM ground_item_pickups WHERE room_id = ? AND item_id = ?',
+  ).run(roomId, itemId);
+}
+
 // ─── Helpers ───
 
 /** 將資料庫列轉為 Character 物件 */

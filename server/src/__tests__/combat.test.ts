@@ -194,6 +194,38 @@ describe('CombatEngine', () => {
 
       expect(state.enemyTeam).toHaveLength(2);
     });
+
+    it('should add another room monster to an active combat', () => {
+      const player = makeCharacter();
+      const m1 = makeMonsterInstance({ id: 'slime_1', name: 'Slime 1' });
+      const m2 = makeMonsterInstance({ id: 'slime_2', name: 'Slime 2' });
+      m2.instanceId = 'slime_2_1';
+
+      const combatId = engine.startCombat([player], [m1]);
+      const added = engine.addMonsterToCombat(combatId, m2, player.id);
+      const state = engine.getCombatState(combatId)!;
+
+      expect(added).toBe(true);
+      expect(state.enemyTeam.map(enemy => enemy.id)).toEqual([m1.instanceId, m2.instanceId]);
+    });
+
+    it('should use the preferred target for timed default attacks', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({ stats: { str: 50, int: 5, dex: 100, vit: 10, luk: 5 } });
+      const m1 = makeMonsterInstance({ id: 'slime_1', name: 'Slime 1', hp: 999, dex: 1 });
+      const m2 = makeMonsterInstance({ id: 'slime_2', name: 'Slime 2', hp: 999, dex: 1 });
+      m2.instanceId = 'slime_2_1';
+
+      const combatId = engine.startCombat([player], [m1, m2]);
+      engine.setPreferredTarget(combatId, player.id, m2.instanceId);
+
+      vi.advanceTimersByTime(5000);
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.enemyTeam[0].hp).toBe(999);
+      expect(state.enemyTeam[1].hp).toBeLessThan(999);
+      vi.restoreAllMocks();
+    });
   });
 
   // ── Submit action ──
@@ -285,6 +317,33 @@ describe('CombatEngine', () => {
 
       expect(state.enemyTeam[0].activeEffects.some(effect => effect.type === 'shield')).toBe(false);
       expect(state.actionLog.some(line => line.includes('粉碎'))).toBe(true);
+    });
+
+    it('should apply all-enemy skills to every active enemy', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'swordsman',
+        stats: { str: 80, int: 5, dex: 100, vit: 10, luk: 5 },
+        resource: 100,
+        maxResource: 100,
+        resourceType: 'rage',
+      });
+      const m1 = makeMonsterInstance({ id: 'slime_1', name: 'Slime 1', hp: 999, dex: 1 });
+      const m2 = makeMonsterInstance({ id: 'slime_2', name: 'Slime 2', hp: 999, dex: 1 });
+      m2.instanceId = 'slime_2_1';
+
+      const combatId = engine.startCombat([player], [m1, m2]);
+      const state = engine.getCombatState(combatId)!;
+
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'blade_aura',
+      });
+
+      expect(state.enemyTeam[0].hp).toBeLessThan(999);
+      expect(state.enemyTeam[1].hp).toBeLessThan(999);
+      vi.restoreAllMocks();
     });
   });
 

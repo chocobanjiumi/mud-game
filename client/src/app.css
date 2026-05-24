@@ -181,6 +181,114 @@ input::placeholder {
   background: rgba(0, 255, 136, 0.12);
 }
 
+.minimap-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 22px);
+  grid-auto-rows: 22px;
+  gap: 3px;
+  justify-content: center;
+}
+
+.minimap-cell {
+  width: 22px;
+  height: 22px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.minimap-wall {
+  background: #26344f;
+  border-color: #344764;
+}
+
+.minimap-room {
+  background: rgba(0, 255, 136, 0.07);
+  border-color: rgba(0, 255, 136, 0.74);
+}
+
+.minimap-room-unexplored {
+  border-style: dashed;
+  border-color: rgba(255, 184, 0, 0.75);
+}
+
+.minimap-current {
+  border-color: var(--color-text-amber);
+  box-shadow: 0 0 0 1px rgba(255, 184, 0, 0.25), 0 0 10px rgba(255, 184, 0, 0.18);
+}
+
+.minimap-current > span {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--color-text-amber);
+  box-shadow: 0 0 8px rgba(255, 184, 0, 0.4);
+}
+
+.minimap-clickable {
+  cursor: pointer;
+}
+
+.minimap-clickable:hover {
+  background: rgba(0, 255, 136, 0.14);
+  border-color: var(--color-text-terminal);
+}
+
+.minimap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: var(--color-text-dim);
+  font-size: 10px;
+}
+
+.minimap-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.minimap-legend b {
+  width: 9px;
+  height: 9px;
+  border-radius: 1px;
+  display: inline-block;
+}
+
+.minimap-legend-wall {
+  background: #26344f;
+  border: 1px solid #344764;
+}
+
+.minimap-legend-room {
+  background: rgba(0, 255, 136, 0.07);
+  border: 1px solid rgba(0, 255, 136, 0.74);
+}
+
+.minimap-legend-current {
+  background: var(--color-text-amber);
+  border: 1px solid var(--color-text-amber);
+}
+
+.minimap-exit {
+  min-width: 24px;
+  height: 20px;
+  padding: 0 5px;
+  border: 1px solid rgba(0, 255, 136, 0.22);
+  border-radius: 3px;
+  color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.06);
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.minimap-exit:hover {
+  border-color: rgba(0, 255, 136, 0.45);
+  background: rgba(0, 255, 136, 0.1);
+}
+
 .room-row,
 .objective-row {
   width: 100%;
@@ -417,14 +525,152 @@ input::placeholder {
   overflow: hidden;
 }
 
+.game-actions-scroll {
+  scrollbar-gutter: stable;
+}
+
+.game-actions-scroll > .chat-panel {
+  min-height: 220px;
+}
+
 .room-image-panel {
   min-height: 100%;
   border-bottom: 0;
+  position: relative;
 }
 
 .room-image-media {
   aspect-ratio: 10 / 16;
   max-height: calc(100vh - 86px);
+}
+
+.scene-monster-strip {
+  position: relative;
+  border-top: 1px solid var(--color-border-dim);
+  padding: 8px 10px 10px;
+  background: rgba(13, 13, 26, 0.42);
+}
+
+.scene-monster-strip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: var(--color-text-dim);
+  font-size: 10px;
+}
+
+.scene-monster-list {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.scene-monster-avatar {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  position: relative;
+  padding: 0;
+  border: 1px solid rgba(255, 94, 94, 0.34);
+  border-radius: 5px;
+  background: rgba(13, 13, 26, 0.75);
+  overflow: hidden;
+}
+
+.scene-monster-avatar:hover,
+.scene-monster-avatar-active {
+  border-color: rgba(255, 184, 0, 0.82);
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.14);
+}
+
+.scene-monster-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scene-monster-avatar > span {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--color-combat-damage);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.scene-monster-avatar b {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--color-combat-damage);
+}
+
+.scene-monster-menu {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: calc(100% - 6px);
+  z-index: 40;
+  border: 1px solid var(--color-border-dim);
+  border-radius: 6px;
+  background: var(--color-bg-secondary);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.48);
+  overflow: hidden;
+}
+
+.scene-monster-menu-title {
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--color-border-dim);
+  color: var(--color-text-bright);
+  font-size: 12px;
+}
+
+.scene-monster-menu-title small {
+  flex-shrink: 0;
+  color: var(--color-text-dim);
+  font-size: 10px;
+}
+
+.scene-monster-menu-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+}
+
+.scene-monster-action {
+  min-height: 26px;
+  padding: 0 9px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 4px;
+  color: var(--color-text-bright);
+  background: rgba(148, 163, 184, 0.08);
+  font-size: 11px;
+}
+
+.scene-monster-action:hover:not(:disabled) {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.scene-monster-action-primary {
+  border-color: rgba(0, 255, 136, 0.28);
+  background: rgba(0, 255, 136, 0.09);
+  color: var(--color-text-terminal);
+}
+
+.scene-monster-action-danger {
+  border-color: rgba(255, 94, 94, 0.34);
+  background: rgba(255, 94, 94, 0.1);
+  color: var(--color-combat-damage);
 }
 
 @media (max-width: 1180px) {
@@ -527,7 +773,6 @@ input::placeholder {
     grid-row: 3;
     border-right: none;
     border-bottom: 1px solid var(--color-border-dim);
-    overflow-y: auto;
   }
 
   .game-center {

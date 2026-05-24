@@ -1,6 +1,7 @@
 // Player/character management tests
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
+import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
 import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
 import { AuctionManager, getAuctionListingFee, getAuctionSaleTax } from '../game/auction.js';
@@ -74,6 +75,39 @@ describe('expToNextLevel', () => {
     // level 2: 2*100 + 1*50 = 250
     // difference = 150
     expect(toNext).toBe(150);
+  });
+});
+
+describe('getLevelExpProgress', () => {
+  it('converts cumulative exp into current level progress', () => {
+    expect(getLevelExpProgress({ level: 2, exp: 322 } as any)).toEqual({
+      current: 72,
+      required: 150,
+    });
+  });
+});
+
+describe('addExperienceToCharacter', () => {
+  it('does not fully heal hp or mp on level up', () => {
+    const char = {
+      level: 1,
+      exp: 240,
+      freePoints: 0,
+      hp: 45,
+      maxHp: 100,
+      mp: 12,
+      maxMp: 40,
+      stats: { vit: 5, int: 4 },
+    } as any;
+
+    const result = addExperienceToCharacter(char, 20);
+
+    expect(result.levelsGained).toBe(1);
+    expect(char.level).toBe(2);
+    expect(char.maxHp).toBeGreaterThan(100);
+    expect(char.maxMp).toBeGreaterThan(40);
+    expect(char.hp).toBe(45);
+    expect(char.mp).toBe(12);
   });
 });
 
@@ -210,7 +244,7 @@ describe('PlayerManager', () => {
       expect(char.maxMp).toBe(beforeMaxMp + 12);
     });
 
-    it('should restore HP and MP to max on level up', () => {
+    it('should not restore HP and MP to max on level up', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
       // Damage the character first
       pm.takeDamage(char.id, 50);
@@ -221,8 +255,10 @@ describe('PlayerManager', () => {
 
       pm.addExp(char.id, 250);
 
-      expect(char.hp).toBe(char.maxHp);
-      expect(char.mp).toBe(char.maxMp);
+      expect(char.maxHp).toBeGreaterThan(100);
+      expect(char.maxMp).toBeGreaterThan(30);
+      expect(char.hp).toBe(50);
+      expect(char.mp).toBe(20);
     });
 
     it('should handle multiple level ups at once', () => {

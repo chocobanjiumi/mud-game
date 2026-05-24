@@ -50,6 +50,8 @@ export class WorldManager {
   private respawnTimer: ReturnType<typeof setInterval> | null = null;
   /** Callback for broadcasting messages to a room */
   private broadcastFn: ((roomId: string, message: unknown) => void) | null = null;
+  /** Callback when room entity state changes */
+  private roomStateChangeFn: ((roomId: string) => void) | null = null;
 
   // ──────────────────────────────────────────────────────────
   //  初始化
@@ -84,6 +86,10 @@ export class WorldManager {
   /** 註冊廣播函式 */
   setBroadcastFunction(fn: (roomId: string, message: unknown) => void): void {
     this.broadcastFn = fn;
+  }
+
+  setRoomStateChangeFunction(fn: (roomId: string) => void): void {
+    this.roomStateChangeFn = fn;
   }
 
   // ──────────────────────────────────────────────────────────
@@ -336,6 +342,7 @@ export class WorldManager {
               payload: { text: `一隻${monster.def.name}出現了！` },
               timestamp: Date.now(),
             });
+            this.roomStateChangeFn?.(roomId);
           }
         }
       }
