@@ -227,6 +227,26 @@ describe('CombatEngine', () => {
       expect(state.enemyTeam[1].hp).toBeLessThan(999);
       vi.restoreAllMocks();
     });
+
+    it('should keep same-name monsters addressable by instance id', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({ stats: { str: 50, int: 5, dex: 100, vit: 10, luk: 5 } });
+      const m1 = makeMonsterInstance({ id: 'wild_rabbit', name: '野兔', hp: 999, dex: 1 });
+      const m2 = makeMonsterInstance({ id: 'wild_rabbit', name: '野兔', hp: 999, dex: 1 });
+      m1.instanceId = 'wild_rabbit_1';
+      m2.instanceId = 'wild_rabbit_2';
+
+      const combatId = engine.startCombat([player], [m1]);
+      expect(engine.addMonsterToCombat(combatId, m2, player.id)).toBe(true);
+      engine.setPreferredTarget(combatId, player.id, m2.instanceId);
+
+      vi.advanceTimersByTime(5000);
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.enemyTeam.find(enemy => enemy.id === 'wild_rabbit_1')?.hp).toBe(999);
+      expect(state.enemyTeam.find(enemy => enemy.id === 'wild_rabbit_2')?.hp).toBeLessThan(999);
+      vi.restoreAllMocks();
+    });
   });
 
   // ── Submit action ──
