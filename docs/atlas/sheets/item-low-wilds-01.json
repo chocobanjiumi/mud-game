@@ -1,0 +1,99 @@
+{
+  "sheetId": "item_low_wilds_01",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "item_low_wilds_wooden_sword",
+      "category": "item",
+      "targetId": "wooden_sword",
+      "name": "木劍",
+      "outputPath": "client/public/images/items/item_low_wilds_wooden_sword.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "item_low_wilds_wooden_wand",
+      "category": "item",
+      "targetId": "wooden_wand",
+      "name": "木製權杖",
+      "outputPath": "client/public/images/items/item_low_wilds_wooden_wand.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "item_low_wilds_cloth_armor",
+      "category": "item",
+      "targetId": "cloth_armor",
+      "name": "布甲",
+      "outputPath": "client/public/images/items/item_low_wilds_cloth_armor.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "item_ice_mountain_low_wilds_leather_cap",
+      "category": "item",
+      "targetId": "leather_cap",
+      "name": "皮帽",
+      "outputPath": "client/public/images/items/item_ice_mountain_low_wilds_leather_cap.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "item_ice_mountain_low_wilds_leather_armor",
+      "category": "item",
+      "targetId": "leather_armor",
+      "name": "皮甲",
+      "outputPath": "client/public/images/items/item_ice_mountain_low_wilds_leather_armor.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "item_ice_mountain_low_wilds_leather_gloves",
+      "category": "item",
+      "targetId": "leather_gloves",
+      "name": "皮手套",
+      "outputPath": "client/public/images/items/item_ice_mountain_low_wilds_leather_gloves.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "item_ice_mountain_low_wilds_leather_boots",
+      "category": "item",
+      "targetId": "leather_boots",
+      "name": "皮靴",
+      "outputPath": "client/public/images/items/item_ice_mountain_low_wilds_leather_boots.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "item_low_wilds_short_bow",
+      "category": "item",
+      "targetId": "short_bow",
+      "name": "短弓",
+      "outputPath": "client/public/images/items/item_low_wilds_short_bow.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "item_low_wilds_practice_yard_chit",
+      "category": "item",
+      "targetId": "practice_yard_chit",
+      "name": "訓練場木籌",
+      "outputPath": "client/public/images/items/item_low_wilds_practice_yard_chit.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "item_low_wilds_starter_welcome_token",
+      "category": "item",
+      "targetId": "starter_welcome_token",
+      "name": "新手村歡迎木牌",
+      "outputPath": "client/public/images/items/item_low_wilds_starter_welcome_token.png",
+      "row": 2,
+      "column": 1
+    }
+  ]
+}

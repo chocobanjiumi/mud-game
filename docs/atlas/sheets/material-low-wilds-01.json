@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_low_wilds_01",
+  "category": "material",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/material_low_wilds_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_low_wilds_rabbit_fur",
+      "category": "material",
+      "targetId": "rabbit_fur",
+      "name": "兔毛",
+      "outputPath": "client/public/images/materials/material_low_wilds_rabbit_fur.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_rabbit_meat",
+      "category": "material",
+      "targetId": "rabbit_meat",
+      "name": "兔肉",
+      "outputPath": "client/public/images/materials/material_low_wilds_rabbit_meat.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_low_wilds_slime_gel",
+      "category": "material",
+      "targetId": "slime_gel",
+      "name": "黏亮史萊姆膠",
+      "outputPath": "client/public/images/materials/material_forest_fen_low_wilds_slime_gel.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_low_wilds_slime_jelly",
+      "category": "material",
+      "targetId": "slime_jelly",
+      "name": "史萊姆凝膠",
+      "outputPath": "client/public/images/materials/material_coast_water_low_wilds_slime_jelly.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_ice_mountain_low_wilds_wolf_fang",
+      "category": "material",
+      "targetId": "wolf_fang",
+      "name": "狼牙",
+      "outputPath": "client/public/images/materials/material_ice_mountain_low_wilds_wolf_fang.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_goblin_ear",
+      "category": "material",
+      "targetId": "goblin_ear",
+      "name": "哥布林耳朵",
+      "outputPath": "client/public/images/materials/material_low_wilds_goblin_ear.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_low_wilds_broken_bridge_rope",
+      "category": "material",
+      "targetId": "broken_bridge_rope",
+      "name": "斷橋粗繩",
+      "outputPath": "client/public/images/materials/material_low_wilds_broken_bridge_rope.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_low_wilds_plains_sunflower_seed",
+      "category": "material",
+      "targetId": "plains_sunflower_seed",
+      "name": "平原葵花籽",
+      "outputPath": "client/public/images/materials/material_low_wilds_plains_sunflower_seed.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_low_wilds_orchard_waxcomb",
+      "category": "material",
+      "targetId": "orchard_waxcomb",
+      "name": "果園蜂蠟",
+      "outputPath": "client/public/images/materials/material_low_wilds_orchard_waxcomb.png",
+      "row": 2,
+      "column": 0
+    },
+    {
+      "assetId": "material_low_wilds_hillside_moss_jelly",
+      "category": "material",
+      "targetId": "hillside_moss_jelly",
+      "name": "山坡苔膠",
+      "outputPath": "client/public/images/materials/material_low_wilds_hillside_moss_jelly.png",
+      "row": 2,
+      "column": 1
+    }
+  ]
+}

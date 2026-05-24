@@ -11,7 +11,16 @@ OUTPUT_SIZE = 512
 MANIFEST_PATH = ROOT / "client/public/images/atlas/manifest.json"
 
 
-def crop_cell(image: Image.Image, columns: int, rows: int, column: int, row: int, inset_ratio: float) -> Image.Image:
+def fit_to_square(image: Image.Image) -> Image.Image:
+    image.thumbnail((OUTPUT_SIZE, OUTPUT_SIZE), Image.Resampling.LANCZOS)
+    square = Image.new("RGB", (OUTPUT_SIZE, OUTPUT_SIZE), (12, 13, 16))
+    x = (OUTPUT_SIZE - image.width) // 2
+    y = (OUTPUT_SIZE - image.height) // 2
+    square.paste(image, (x, y))
+    return square
+
+
+def crop_cell(image: Image.Image, columns: int, rows: int, column: int, row: int, inset_ratio: float, mode: str) -> Image.Image:
     width, height = image.size
     cell_w = width / columns
     cell_h = height / rows
@@ -26,6 +35,9 @@ def crop_cell(image: Image.Image, columns: int, rows: int, column: int, row: int
     y0 += inset_y
     x1 -= inset_x
     y1 -= inset_y
+
+    if mode == "fit":
+        return fit_to_square(image.crop((x0, y0, x1, y1)))
 
     size = min(x1 - x0, y1 - y0)
     cx = (x0 + x1) // 2
@@ -67,6 +79,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Crop an AI-generated atlas sheet into square game assets.")
     parser.add_argument("config", help="Path to sheet config JSON")
     parser.add_argument("--inset-ratio", type=float, default=0.04, help="Fraction of each cell to trim before square crop")
+    parser.add_argument("--mode", choices=["crop", "fit"], default="crop", help="Use center square crop or fit the whole cell into a square")
     args = parser.parse_args()
 
     config_path = ROOT / args.config
@@ -77,7 +90,7 @@ def main() -> None:
     rows = int(config["rows"])
 
     for target in config["targets"]:
-        square = crop_cell(sheet, columns, rows, int(target["column"]), int(target["row"]), args.inset_ratio)
+        square = crop_cell(sheet, columns, rows, int(target["column"]), int(target["row"]), args.inset_ratio, args.mode)
         output_path = ROOT / target["outputPath"]
         output_path.parent.mkdir(parents=True, exist_ok=True)
         square.save(output_path)
