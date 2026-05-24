@@ -507,7 +507,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  騎士 (Lv 30+) - 劍士系二轉
+  //  騎士 (Lv 20+/草案) - 戰士系二轉
   // ════════════════════════════════════════════
   sacred_shield: {
     id: 'sacred_shield', name: '聖盾術', englishName: 'Sacred Shield',
@@ -544,7 +544,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  狂戰士 (Lv 30+) - 劍士系二轉
+  //  狂戰士 (Lv 20+/草案) - 戰士系二轉
   // ════════════════════════════════════════════
   frenzy: {
     id: 'frenzy', name: '狂暴', englishName: 'Frenzy',
@@ -582,7 +582,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  劍聖 (Lv 30+) - 劍士系二轉
+  //  劍聖 (Lv 20+/草案) - 戰士系二轉
   // ════════════════════════════════════════════
   iaijutsu: {
     id: 'iaijutsu', name: '拔刀術', englishName: 'Iaijutsu',
@@ -619,7 +619,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  大法師 (Lv 30+) - 法師系二轉
+  //  大法師 (Lv 20+/草案) - 法師系二轉
   // ════════════════════════════════════════════
   meteor: {
     id: 'meteor', name: '隕石術', englishName: 'Meteor',
@@ -655,7 +655,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  暗黑術士 (Lv 30+) - 法師系二轉
+  //  暗黑術士 (Lv 20+/草案) - 法師系二轉
   // ════════════════════════════════════════════
   drain_life: {
     id: 'drain_life', name: '生命汲取', englishName: 'Drain Life',
@@ -691,7 +691,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  時空術士 (Lv 30+) - 法師系二轉
+  //  時空術士 (Lv 20+/草案) - 法師系二轉
   // ════════════════════════════════════════════
   time_slow: {
     id: 'time_slow', name: '時間減速', englishName: 'Time Slow',
@@ -727,7 +727,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  神射手 (Lv 30+) - 遊俠系二轉
+  //  神射手 (Lv 20+/草案) - 遊俠系二轉
   // ════════════════════════════════════════════
   piercing_arrow: {
     id: 'piercing_arrow', name: '穿甲箭', englishName: 'Piercing Arrow',
@@ -763,7 +763,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  刺客 (Lv 30+) - 遊俠系二轉
+  //  刺客 (Lv 20+/草案) - 遊俠系二轉
   // ════════════════════════════════════════════
   stealth: {
     id: 'stealth', name: '潛行', englishName: 'Stealth',
@@ -799,7 +799,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  馴獸師 (Lv 30+) - 遊俠系二轉
+  //  馴獸師 (Lv 20+/草案) - 遊俠系二轉
   // ════════════════════════════════════════════
   tame: {
     id: 'tame', name: '馴服', englishName: 'Tame',
@@ -838,7 +838,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  神官 (Lv 30+) - 祭司系二轉
+  //  神官 (Lv 20+/草案) - 祭司系二轉
   // ════════════════════════════════════════════
   resurrection: {
     id: 'resurrection', name: '復活', englishName: 'Resurrection',
@@ -874,7 +874,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  德魯伊 (Lv 30+) - 祭司系二轉
+  //  德魯伊 (Lv 20+/草案) - 祭司系二轉
   // ════════════════════════════════════════════
   thorns: {
     id: 'thorns', name: '荊棘術', englishName: 'Thorns',
@@ -909,7 +909,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   },
 
   // ════════════════════════════════════════════
-  //  審判者 (Lv 30+) - 祭司系二轉
+  //  審判者 (Lv 20+/草案) - 祭司系二轉
   // ════════════════════════════════════════════
   sacred_flame: {
     id: 'sacred_flame', name: '聖火', englishName: 'Sacred Flame',

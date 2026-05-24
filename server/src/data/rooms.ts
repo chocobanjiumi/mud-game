@@ -2329,7 +2329,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'class_change_hall.png',
     imagePrompt: '轉職大廳 in lakeside_town, town service class hall with four profession pillars, ritual circle, mentor alcoves and soft magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著劍盾、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；玩家可在此詢問轉職、檢查技能路線，或 inspect 柱腳找到各職業試煉提示。牆邊展示一轉與二轉武具樣本，地面箭紋標出各導師區域，讓玩家能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免玩家未準備好就前往高危區域，也方便回頭確認未完成職業任務。',
+      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著盾斧、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；玩家可在此詢問二轉、檢查技能路線，或 inspect 柱腳找到各職業試煉提示。牆邊展示初始職業與二轉武具樣本，地面箭紋標出各導師區域，讓玩家能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免玩家未準備好就前往高危區域，也方便回頭確認未完成職業任務。',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
       { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳' },

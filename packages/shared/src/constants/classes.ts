@@ -17,10 +17,10 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     maxResource: 30,
   },
 
-  // ─── Tier 1：一轉職業 ───
+  // ─── Tier 1：初始職業 ───
   swordsman: {
     id: 'swordsman',
-    name: '劍士',
+    name: '戰士',
     tier: 1,
     description: '近戰物理戰士，攻守平衡，是隊伍的前線。',
     baseStatBonus: { str: 5, int: 0, dex: 2, vit: 5, luk: 0 },
@@ -67,7 +67,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     maxResource: 100,
   },
 
-  // ─── Tier 2：二轉職業 - 劍士系 ───
+  // ─── Tier 2：二轉職業 - 戰士系 ───
   knight: {
     id: 'knight',
     name: '騎士',
@@ -94,7 +94,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     id: 'sword_saint',
     name: '劍聖',
     tier: 2,
-    description: '技巧型劍士，以速制敵，連擊與迴避兼備。',
+    description: '技巧型戰士，以速制敵，連擊與迴避兼備。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 0, luk: 2 },
     parentClass: 'swordsman',
     resourceType: 'rage',
@@ -225,7 +225,7 @@ export function getClassDef(classId: ClassId): ClassDef | undefined {
   return CLASS_DEFS[classId];
 }
 
-/** 取得所有一轉職業 */
+/** 取得所有初始職業 */
 export function getTier1Classes(): ClassDef[] {
   return Object.values(CLASS_DEFS).filter((c) => c.tier === 1);
 }
@@ -262,11 +262,11 @@ export function isClassFamily(classId: ClassId, familyClassId: ClassId): boolean
   return false;
 }
 
-/** 一轉所需等級 */
-export const TIER1_LEVEL_REQ = 10;
+/** 初始職業所需等級；新角色建立時即選擇，保留給舊冒險者補選用。 */
+export const TIER1_LEVEL_REQ = 1;
 
 /** 二轉所需等級 */
-export const TIER2_LEVEL_REQ = 30;
+export const TIER2_LEVEL_REQ = 20;
 
 /** 二轉所需金幣 */
-export const TIER2_GOLD_COST = 5000;
+export const TIER2_GOLD_COST = 2000;

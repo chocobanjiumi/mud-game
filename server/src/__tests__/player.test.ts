@@ -183,6 +183,19 @@ describe('PlayerManager', () => {
       expect(char.maxHp).toBeGreaterThan(100);
     });
 
+    it('should allow selecting an initial class at creation', () => {
+      const char = pm.createCharacter('InitialMage', 'user-1', false, undefined, {
+        classId: 'mage',
+      });
+      const learned = pm.getLearnedSkills(char.id).map(skill => skill.skillId);
+
+      expect(char.classId).toBe('mage');
+      expect(char.resourceType).toBe('mp');
+      expect(char.resource).toBe(50);
+      expect(char.stats.int).toBe(13);
+      expect(learned).toEqual(expect.arrayContaining(['magic_missile', 'fireball', 'mana_shield']));
+    });
+
     it('should create AI character when isAi is true', () => {
       const char = pm.createCharacter('AIBot', 'user-ai', true, 'agent-1');
 

@@ -145,14 +145,14 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     repeatable: false,
   },
 
-  // ─── 轉職任務：劍士之路 ──────────────────────────────────
+  // ─── 初始職業任務：戰士之路 ───────────────────────────────
 
   class_swordsman_path: {
     id: 'class_swordsman_path',
-    name: '劍士之路',
-    description: '達到 Lv.10 並前往湖畔城鎮的轉職大廳，向劍術教官證明你的實力。',
+    name: '戰士之路',
+    description: '以戰士初始職業前往湖畔城鎮的轉職大廳，向武技教官證明你的實力。',
     type: 'class_change',
-    levelReq: 10,
+    levelReq: 1,
     objectives: [
       { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['physical', 'single_target'] },
     ],
@@ -161,8 +161,8 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
       gold: 200,
       items: [{ itemId: 'iron_sword', quantity: 1 }],
     },
-    dialogueStart: '你的劍術已經有一定基礎了。前往湖畔城鎮的轉職大廳，向劍術教官展示你的實力吧！',
-    dialogueComplete: '恭喜你踏上了劍士之路！以後更要努力修行。',
+    dialogueStart: '你的武技已經有一定基礎了。前往湖畔城鎮的轉職大廳，向武技教官展示你的實力吧！',
+    dialogueComplete: '恭喜你踏上了戰士之路！以後更要努力修行。',
     repeatable: false,
   },
 
@@ -171,9 +171,9 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
   class_mage_path: {
     id: 'class_mage_path',
     name: '法師之路',
-    description: '達到 Lv.10 並前往湖畔城鎮的轉職大廳，接受魔法導師的考驗。',
+    description: '以法師初始職業前往湖畔城鎮的轉職大廳，接受魔法導師的考驗。',
     type: 'class_change',
-    levelReq: 10,
+    levelReq: 1,
     objectives: [
       { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['magical', 'aoe'] },
     ],
@@ -192,9 +192,9 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
   class_ranger_path: {
     id: 'class_ranger_path',
     name: '遊俠之路',
-    description: '達到 Lv.10 並前往湖畔城鎮的轉職大廳，接受遊俠教練的測試。',
+    description: '以遊俠初始職業前往湖畔城鎮的轉職大廳，接受遊俠教練的測試。',
     type: 'class_change',
-    levelReq: 10,
+    levelReq: 1,
     objectives: [
       { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['physical', 'single_target'] },
     ],
@@ -213,9 +213,9 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
   class_priest_path: {
     id: 'class_priest_path',
     name: '祭司之路',
-    description: '達到 Lv.10 並前往湖畔城鎮的轉職大廳，接受神殿祭司的祝福。',
+    description: '以祭司初始職業前往湖畔城鎮的轉職大廳，接受神殿祭司的祝福。',
     type: 'class_change',
-    levelReq: 10,
+    levelReq: 1,
     objectives: [
       { type: 'visit', targetId: 'class_change_hall', targetName: '轉職大廳', required: 1, requiredSkillTags: ['heal', 'support'] },
     ],

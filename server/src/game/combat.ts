@@ -502,7 +502,7 @@ export class CombatEngine {
     const weaponItemId = this.getEquippedWeaponId(session, actor.id);
     this.applyDamageResult(session, dmgResult, actor, target, log, weaponItemId);
 
-    // 資源系統：劍士系攻擊獲得怒氣
+    // 資源系統：戰士系攻擊獲得怒氣
     if (!dmgResult.isMiss && !dmgResult.isDodged) {
       this.gainResourceOnAttack(actor, dmgResult, log);
     }
@@ -735,7 +735,7 @@ export class CombatEngine {
     this.applyDamageToTarget(session, target, result.damage, log);
     this.triggerMonsterPhases(session, target, log);
 
-    // 資源系統：劍士系被擊中獲得怒氣
+    // 資源系統：戰士系被擊中獲得怒氣
     this.gainResourceOnHit(target, log);
 
     // 套用附帶效果
@@ -1195,7 +1195,7 @@ export class CombatEngine {
         char.mp = pc.mp;
         char.resource = pc.resource;
 
-        // 戰鬥結束：劍士系怒氣歸零
+        // 戰鬥結束：戰士系怒氣歸零
         if (char.resourceType === 'rage') {
           char.resource = 0;
         }
@@ -1273,7 +1273,7 @@ export class CombatEngine {
   //  資源系統
   // ──────────────────────────────────────────────────────────
 
-  /** 攻擊命中時的資源增益（劍士系：怒氣 +10，暴擊 +15） */
+  /** 攻擊命中時的資源增益（戰士系：怒氣 +10，暴擊 +15） */
   private gainResourceOnAttack(actor: CombatantState, dmgResult: DamageResult, log: string[]): void {
     if (actor.resourceType === 'rage') {
       const gain = dmgResult.isCrit ? 15 : 10;
@@ -1286,7 +1286,7 @@ export class CombatEngine {
     }
   }
 
-  /** 被擊中時的資源增益（劍士系：怒氣 +5） */
+  /** 被擊中時的資源增益（戰士系：怒氣 +5） */
   private gainResourceOnHit(target: CombatantState, log: string[]): void {
     if (target.resourceType === 'rage' && !target.isDead) {
       const before = target.resource;

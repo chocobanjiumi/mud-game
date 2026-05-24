@@ -127,10 +127,10 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'founders_story',
-        text: '初代村民中有一位傳奇劍士、一位大法師和一位精靈治療師。他們在遠古戰爭中並肩作戰，' +
+        text: '初代村民中有一位傳奇戰士、一位大法師和一位精靈治療師。他們在遠古戰爭中並肩作戰，' +
           '立下了赫赫戰功。戰爭結束後，他們厭倦了殺戮，決定建立一個和平的家園，' +
           '同時也為後來的年輕冒險者提供一個安全的起點。大法師設計了守護結界，' +
-          '劍士的後代成為了歷代村長——沒錯，我也是那位劍士的後裔。' +
+          '戰士的後代成為了歷代村長——沒錯，我也是那位戰士的後裔。' +
           '不過我年輕時的冒險天賦可遠不如先祖啊，哈哈。',
         options: [
           { text: '原來村長也有冒險經歷！', nextId: 'chief_past' },
@@ -161,7 +161,7 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'get_stronger',
-        text: '先去訓練場練練手吧！擊敗怪物可以獲得經驗值和金幣。等你到了10級，就可以去湖畔城鎮的轉職大廳選擇職業了。' +
+        text: '先去訓練場練練手吧！擊敗怪物可以獲得經驗值和金幣。你一開始就已經選好初始職業，到了20級再去湖畔城鎮的轉職大廳選擇二轉方向。' +
           '記得去冒險者公會找導師學習技能，去武器店和藥水店做好準備再出發。' +
           '成長就像磨劍，需要耐心和堅持，急功近利反而容易受傷。',
         options: [
@@ -271,9 +271,9 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'class_info',
-        text: '等你到了10級，就可以去湖畔城鎮的轉職大廳選擇你的道路。' +
-          '劍士、法師、遊俠、祭司——每個職業都有不同的玩法。' +
-          '好好考慮自己想走的路線吧！不過別想太多，選了不合適以後還能調整。',
+        text: '你創角時選的初始職業會決定前 20 級的打法。' +
+          '戰士、法師、遊俠、祭司——每個職業都有不同的資源和節奏。' +
+          '到了20級，再去湖畔城鎮的轉職大廳選擇二轉路線。',
         options: [
           { text: '各職業有什麼優缺點？', nextId: 'class_comparison' },
           { text: '我明白了。', nextId: 'farewell' },
@@ -281,10 +281,10 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'class_comparison',
-        text: '好，讓老子給你分析分析！劍士——攻守平衡，能扛能打，適合喜歡正面硬剛的人，' +
+        text: '好，讓老子給你分析分析！戰士——攻守平衡，能扛能打，適合喜歡正面硬剛的人，' +
           '缺點是缺少遠程手段。法師——魔法傷害爆炸，群體攻擊無人能敵，' +
           '但血薄皮脆，被近身就危險了。遊俠——靈活多變，遠近皆可，' +
-          '擅長控制和偵查，但單體爆發力不如劍士和法師。祭司——回血保命的守護神，' +
+          '擅長控制和偵查，但單體爆發力不如戰士和法師。祭司——回血保命的守護神，' +
           '隊伍中不可或缺，但單人練級會比較辛苦。',
         options: [
           { text: '你個人推薦哪個職業？', nextId: 'class_recommend' },
@@ -293,9 +293,9 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'class_recommend',
-        text: '哈哈，你問我？我當年走的是劍士路線，一把大劍橫掃千軍，那叫一個痛快！' +
+        text: '哈哈，你問我？我當年走的是戰士路線，一把大斧橫掃千軍，那叫一個痛快！' +
           '不過說實話，沒有最強的職業，只有最適合你的職業。' +
-          '喜歡衝鋒陷陣就選劍士，喜歡運籌帷幄就選法師，' +
+          '喜歡衝鋒陷陣就選戰士，喜歡運籌帷幄就選法師，' +
           '喜歡靈活作戰就選遊俠，喜歡守護同伴就選祭司。' +
           '先問問自己的心吧，小子！戰場上最可靠的，永遠是你的信念！',
         options: [
@@ -307,7 +307,7 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'leveling_route',
         text: '練功路線嘛，聽好了新人！1到5級就在村子周圍刷史萊姆，熟悉操作。' +
           '5到10級去翠綠平原打野狼，經驗又多掉落又好。' +
-          '到了10級趕緊去轉職，轉職後實力會有質的飛躍！',
+          '10級左右會開始拿到中期工具，到了20級再去轉職大廳準備二轉，實力會有質的飛躍！',
         options: [
           { text: '轉職後呢？', nextId: 'leveling_after_class' },
           { text: '有什麼要特別注意的嗎？', nextId: 'leveling_tips' },
@@ -316,8 +316,8 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'leveling_after_class',
-        text: '轉職後10到20級繼續在翠綠平原深處和暗影森林邊緣練。' +
-          '20級以後可以組隊挑戰暗影森林深處，那裡的怪物經驗值超高！' +
+        text: '10到20級繼續在翠綠平原深處和暗影森林邊緣練。' +
+          '20級以後可以二轉，也可以組隊挑戰暗影森林深處，那裡的怪物經驗值超高！' +
           '25級左右就可以嘗試水晶洞窟了，不過最好找幾個夥伴一起去。' +
           '記住，獨行俠走不遠，找到可靠的隊友才是變強的捷徑！' +
           '當年老子要不是有搭檔……算了，不說這些了。',
@@ -422,7 +422,7 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'weapon_types',
-        text: '好，讓我給你好好講講！劍是最萬能的武器，攻守平衡，上手也快，劍士的首選。' +
+        text: '好，讓我給你好好講講！劍是最萬能的武器，攻守平衡，上手也快，戰士的首選。' +
           '法杖是法師的命根子，能增幅魔力，但近戰就別想了。' +
           '弓嘛，遠程輸出利器，遊俠用起來如虎添翼，但你得練好準頭。' +
           '盾牌不算攻擊武器，但能救你一命——擋住致命一擊的時候，你就知道它有多重要了！',
@@ -445,7 +445,7 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'equipment_advice',
-        text: '裝備搭配可是門學問！首先，武器和你的職業要匹配——劍士拿法杖那不是搞笑嗎？' +
+        text: '裝備搭配可是門學問！首先，武器和你的職業要匹配——戰士拿法杖那不是搞笑嗎？' +
           '其次，別把所有金幣都花在武器上，防具和藥水同樣重要。' +
           '我的建議是：武器佔預算的四成，防具三成，剩下的買藥水和消耗品。' +
           '另外，別追求最貴的，適合當前等級的才是最好的！',
@@ -457,7 +457,7 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'class_equipment',
-        text: '劍士——鐵劍配鐵盾，攻防一體，正面硬幹誰都不怕！' +
+        text: '戰士——鐵劍配鐵盾，攻防一體，正面硬幹誰都不怕！' +
           '法師——學徒法杖為主，別想著拿劍，你揮不動的。' +
           '遊俠——獵弓加青銅劍，遠近都能打，靈活得很。' +
           '祭司——木杖就行，反正你的主業是奶人不是打人。再配面盾牌更穩。' +
@@ -800,9 +800,9 @@ export const NPCS: Record<string, NpcDef> = {
 
   sword_instructor: {
     id: 'sword_instructor',
-    name: '劍術教官',
+    name: '武技教官',
     alias: 'swordmaster',
-    title: '劍士導師',
+    title: '戰士導師',
     description: '一名身形魁梧的中年男子，身穿磨損的鐵灰色軍用鎧甲，胸口刻著王國禁衛軍的徽章。' +
       '他的臉上有一道從左眉延伸到下巴的刀疤，目光銳利如鷹，站姿挺拔得像一把出鞘的劍。' +
       '腰間佩著一柄寒光閃爍的長劍，劍柄上纏著暗紅色的舊布條。',
@@ -812,11 +812,11 @@ export const NPCS: Record<string, NpcDef> = {
     dialogue: [
       {
         id: 'greeting',
-        text: '站直了！我是劍術教官。劍士之道，沒有僥倖，只有紀律與汗水。你是來混日子的，還是真心想走劍士的道路？',
+        text: '站直了！我是武技教官。戰士之道，沒有僥倖，只有紀律與汗水。你是來混日子的，還是真心想走戰士的道路？',
         options: [
-          { text: '我想成為劍士！', nextId: 'class_change_check' },
-          { text: '告訴我劍士的特色。', nextId: 'class_info' },
-          { text: '劍士之後可以轉什麼？', nextId: 'advanced_info' },
+          { text: '我想了解戰士！', nextId: 'class_change_check' },
+          { text: '告訴我戰士的特色。', nextId: 'class_info' },
+          { text: '戰士之後可以轉什麼？', nextId: 'advanced_info' },
           { text: '有什麼練功的建議嗎？', nextId: 'training_advice' },
           { text: '教官，能說說您的故事嗎？', nextId: 'personal_story' },
           { text: '暫時不了。', nextId: 'farewell' },
@@ -824,48 +824,48 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'class_info',
-        text: '劍士的道路沒有捷徑！聽好了——劍士是近戰物理職業，攻守平衡，是戰場上的中流砥柱。' +
+        text: '戰士的道路沒有捷徑！聽好了——戰士是近戰物理職業，攻守平衡，是戰場上的中流砥柱。' +
           '你將學會「重擊」提升單體爆發、「劍氣」進行範圍壓制、「挑釁」拉住敵人保護隊友。' +
           '轉職時會獲得力量+5、體質+5、敏捷+2的加成。屬性成長以力量和體質為主。',
         options: [
           { text: '技能樹具體是什麼樣的？', nextId: 'skill_tree_detail' },
-          { text: '我決定了，轉職劍士！', nextId: 'class_change_check' },
+          { text: '我決定了，走戰士之路！', nextId: 'class_change_check' },
           { text: '我再想想。', nextId: 'farewell' },
         ],
       },
       {
         id: 'skill_tree_detail',
-        text: '專心聽！劍士的技能分三個系統：「攻擊系」有重擊、劍氣斬、旋風斬，越後期爆發越強；' +
+        text: '專心聽！戰士的技能分三個系統：「攻擊系」有重擊、劍氣斬、旋風斬，越後期爆發越強；' +
           '「防禦系」有格擋、鐵壁、反擊姿態，讓你成為隊伍的盾；' +
           '「戰技系」有突刺、連斬、破甲一擊，講究的是精準與連擊。' +
           '每升5級解鎖新技能，但記住——不要貪多，集中點滿一個系統再擴展！這是紀律！',
         options: [
           { text: '戰鬥風格是什麼樣的？', nextId: 'combat_style' },
-          { text: '明白了，我要轉劍士！', nextId: 'class_change_check' },
+          { text: '明白了，我要轉戰士！', nextId: 'class_change_check' },
           { text: '我再考慮。', nextId: 'farewell' },
         ],
       },
       {
         id: 'combat_style',
-        text: '劍士的戰鬥風格取決於你的選擇！重劍配重甲，站在前排扛住一切——這是坦克打法。' +
+        text: '戰士的戰鬥風格取決於你的選擇！重劍配重甲，站在前排扛住一切——這是坦克打法。' +
           '輕劍配中甲，靠連擊和閃避打出持續傷害——這是輸出打法。' +
-          '劍盾組合則是最平衡的選擇，進可攻退可守。不管哪種，記住一點——劍士不退後！',
+          '劍盾組合則是最平衡的選擇，進可攻退可守。不管哪種，記住一點——戰士不退後！',
         options: [
-          { text: '我要轉職劍士！', nextId: 'class_change_check' },
+          { text: '我要選擇戰士！', nextId: 'class_change_check' },
           { text: '二轉路線呢？', nextId: 'advanced_info' },
           { text: '知道了。', nextId: 'farewell' },
         ],
       },
       {
         id: 'advanced_info',
-        text: '到了30級，劍士可以選擇三條專精路線，這是你人生最重要的選擇之一！' +
+        text: '到了20級，戰士可以選擇三條專精路線，這是你人生最重要的選擇之一！' +
           '「騎士」——重裝坦克，用聖盾保護隊伍；' +
           '「狂戰士」——暴力輸出，以血換傷害；' +
-          '「劍聖」——技巧型劍士，高連擊高閃避。' +
+          '「劍聖」——技巧型戰士，高連擊高閃避。' +
           '每條路都是血汗鍛煉出來的，想好再選！',
         options: [
           { text: '詳細比較一下三條路線？', nextId: 'advanced_compare' },
-          { text: '聽起來很棒，我要轉劍士！', nextId: 'class_change_check' },
+          { text: '聽起來很棒，我要轉戰士！', nextId: 'class_change_check' },
           { text: '我再考慮看看。', nextId: 'farewell' },
         ],
       },
@@ -876,7 +876,7 @@ export const NPCS: Record<string, NpcDef> = {
           '「劍聖」——平衡型中的平衡型，連擊與閃避兼顧，上手難度最高但天花板也最高。' +
           '組隊首選騎士，單刷首選狂戰，競技場首選劍聖。明白了嗎！',
         options: [
-          { text: '明白了，轉職劍士！', nextId: 'class_change_check' },
+          { text: '明白了，走戰士之路！', nextId: 'class_change_check' },
           { text: '有練功建議嗎？', nextId: 'training_advice' },
           { text: '收到，我再想想。', nextId: 'farewell' },
         ],
@@ -886,16 +886,16 @@ export const NPCS: Record<string, NpcDef> = {
         text: '練功不是兒戲！10級前在訓練場把基礎打好，別急著出去送死。' +
           '10到15級去翠綠平原打野狼，練習走位和格擋時機。15到20級挑戰哥布林營地，學會面對多個敵人。' +
           '20級以上進暗影森林，但絕對不要單獨行動！裝備方面，優先強化武器——攻擊就是最好的防禦。' +
-          '護甲選板甲系列，鍛造店的老闆娘會給你好價錢。記住，每天都要練劍一百次！',
+          '護甲選板甲系列，鍛造店的老闆娘會給你好價錢。記住，每天都要練武一百次！',
         options: [
           { text: '教官的建議我記住了！', nextId: 'farewell' },
-          { text: '我要轉職劍士！', nextId: 'class_change_check' },
+          { text: '我要選擇戰士！', nextId: 'class_change_check' },
         ],
       },
       {
         id: 'personal_story',
         text: '……哼，你也想聽老兵的故事？我曾是王國禁衛軍第一師團的統領。二十年前的那場魔物浪潮，' +
-          '我帶著三百名劍士守住了王都北門。三天三夜，不曾後退一步。',
+          '我帶著三百名戰士守住了王都北門。三天三夜，不曾後退一步。',
         options: [
           { text: '後來呢？', nextId: 'personal_story_2' },
           { text: '真是了不起……', nextId: 'farewell' },
@@ -904,16 +904,16 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'personal_story_2',
         text: '後來？三百人活下來的不到三十。我的副官、我最好的戰友……都留在了那面牆下。' +
-          '戰後我辭去了統領的職位，來到這裡。與其讓下一代重蹈覆轍，不如親手教出更強的劍士。' +
-          '所以我說——劍士的路沒有捷徑！每一次偷懶都可能讓你的同伴付出代價！……站直了，別給我看那種表情！',
+          '戰後我辭去了統領的職位，來到這裡。與其讓下一代重蹈覆轍，不如親手教出更強的戰士。' +
+          '所以我說——戰士的路沒有捷徑！每一次偷懶都可能讓你的同伴付出代價！……站直了，別給我看那種表情！',
         options: [
-          { text: '我不會讓教官失望的！轉職劍士！', nextId: 'class_change_check' },
+          { text: '我不會讓教官失望的！選擇戰士！', nextId: 'class_change_check' },
           { text: '教官……我會努力的。', nextId: 'farewell' },
         ],
       },
       {
         id: 'class_change_check',
-        text: '讓我看看你的資質……拔劍！站穩馬步！',
+        text: '讓我看看你的資質……握緊武器！站穩馬步！',
         action: { type: 'class_change', data: { classId: 'swordsman' } },
         options: [
           { text: '謝謝教官！', nextId: 'farewell' },
@@ -921,13 +921,13 @@ export const NPCS: Record<string, NpcDef> = {
       },
       {
         id: 'farewell',
-        text: '劍在手中，路在腳下。記住——劍士不退後！給我每天練劍一百次，少一次回來加倍！解散！',
+        text: '劍在手中，路在腳下。記住——戰士不退後！給我每天練武一百次，少一次回來加倍！解散！',
       },
     ],
     guardianHints: {
-      creature: '劍術教官的劍氣偶爾會引來好鬥的元素精靈在大廳中飛舞。',
+      creature: '武技教官的劍氣偶爾會引來好鬥的元素精靈在大廳中飛舞。',
       treasure: '教官的佩劍並非凡物——那是從暗影狼王身上奪來的魔劍。',
-      spirit: '劍術教官曾是王國的禁衛軍統領，他因某個秘密退隱至此。',
+      spirit: '武技教官曾是王國的禁衛軍統領，他因某個秘密退隱至此。',
     },
   },
 
@@ -1296,7 +1296,7 @@ export const NPCS: Record<string, NpcDef> = {
       {
         id: 'training_advice',
         text: '練功的建議嗎？願聖光照亮你的修行之路。10到15級在翠綠平原練習，祭司初期可以用聖光彈打怪，雖然慢一些但很安全。' +
-          '15到20級，我建議你找一位劍士或遊俠組隊——你負責治療，對方負責輸出，雙方都能快速成長。' +
+          '15到20級，我建議你找一位戰士或遊俠組隊——你負責治療，對方負責輸出，雙方都能快速成長。' +
           '20級以上進暗影森林，祭司在那裡非常受歡迎，因為暗影系怪物害怕聖光。' +
           '裝備方面，選擇增加智力和MP上限的法杖與布甲。祝福之戒是祭司的必備飾品，能大幅提升治療效果。' +
           '記住，不要因為練級慢就氣餒——祭司的價值在隊伍中才能真正體現。每一個被你治癒的同伴，都是你的勳章。',
@@ -9823,7 +9823,7 @@ export const NPCS: Record<string, NpcDef> = {
     alias: 'sergeant',
     title: '衛兵亭市集巡長',
     description:
-      '一名巡長靠在衛兵亭前，盔甲擦得不亮，卻沒有一處妨礙拔劍。' +
+      '一名巡長靠在衛兵亭前，盔甲擦得不亮，卻沒有一處妨礙握緊武器。' +
       '他的目光總在錢袋、攤棚後門和忽然安靜的人群之間移動。',
     roomId: 'kingsroad_market_guard_post',
     type: 'quest',
@@ -11397,7 +11397,7 @@ export const NPCS: Record<string, NpcDef> = {
     roomId: 'kingdom_frontier_portal_muster',
     type: 'quest',
     dialogue: [
-      { id: 'greeting', text: '這裡不是決戰場，是所有決戰開始前都會弄丟補給的地方。先知道你要守哪條線，再拔劍。', options: [{ text: '先看戰線。', nextId: 'front' }, { text: '有哪些敵人？', nextId: 'creatures' }, { text: '我去點兵。', nextId: 'farewell' }] },
+      { id: 'greeting', text: '這裡不是決戰場，是所有決戰開始前都會弄丟補給的地方。先知道你要守哪條線，再握緊武器。', options: [{ text: '先看戰線。', nextId: 'front' }, { text: '有哪些敵人？', nextId: 'creatures' }, { text: '我去點兵。', nextId: 'farewell' }] },
       { id: 'front', text: '哨塔看路，補給營續命，攻城器械場推戰線。前壘門之後才是地堡與指揮所。', options: [{ text: '有哪些敵人？', nextId: 'creatures' }, { text: '知道了。', nextId: 'farewell' }] },
       { id: 'creatures', text: '徵召兵守路，重弩手盯高處，掠兵專偷補給。別把他們當魔王打，這裡真正可怕的是命令。', options: [{ text: '先看戰線。', nextId: 'front' }, { text: '我明白。', nextId: 'farewell' }] },
       { id: 'farewell', text: '若你聽見三面號角同時響，別問誰下令，先找掩體。' },
@@ -11432,7 +11432,7 @@ export const NPCS: Record<string, NpcDef> = {
     roomId: 'kingdom_frontier_truce_tent',
     type: 'quest',
     dialogue: [
-      { id: 'greeting', text: '停戰帳不是和平，只是所有人暫時承認還要交換活人。別在這裡拔劍，除非你想替名冊加一行。', options: [{ text: '俘虜線在哪？', nextId: 'prisoners' }, { text: '後段怎麼推？', nextId: 'late' }, { text: '我會守規矩。', nextId: 'farewell' }] },
+      { id: 'greeting', text: '停戰帳不是和平，只是所有人暫時承認還要交換活人。別在這裡握緊武器，除非你想替名冊加一行。', options: [{ text: '俘虜線在哪？', nextId: 'prisoners' }, { text: '後段怎麼推？', nextId: 'late' }, { text: '我會守規矩。', nextId: 'farewell' }] },
       { id: 'prisoners', text: '俘虜柵欄在前壘門前。假釋牌能救人，也能害人，拿到後先看背面交換條件。', options: [{ text: '後段怎麼推？', nextId: 'late' }, { text: '明白。', nextId: 'farewell' }] },
       { id: 'late', text: '暗林斥候會改訊號，前壘門隊長會關門，地堡參謀會標記你。到指揮所前，先確定你不是照著敵人的地圖走。', options: [{ text: '俘虜線在哪？', nextId: 'prisoners' }, { text: '我會核對路線。', nextId: 'farewell' }] },
       { id: 'farewell', text: '停戰帳外的旗若同時朝內飄，代表有人準備撕約。' },

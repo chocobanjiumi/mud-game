@@ -112,7 +112,7 @@ describe('key UI component rendering', () => {
   it('renders the character creation wizard entry step', () => {
     const html = renderToStaticMarkup(<CreateCharacterScreen onCreate={() => undefined} />);
     expect(html).toContain('建立角色');
-    expect(html).toContain('冒險者');
+    expect(html).toContain('初始職業');
     expect(html).toContain('角色預覽');
   });
 

@@ -1,4 +1,4 @@
-// 轉職系統 - 一轉 (Lv 10) 與二轉 (Lv 30)
+// 轉職系統 - 初始職業 (Lv 1) 與二轉 (Lv 20)
 
 import type { Character, ClassId, BaseStats, ClassDef } from '@game/shared';
 
@@ -21,10 +21,10 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     maxResource: 30,
   },
 
-  // Tier 1 — 一轉
+  // Tier 1 — 初始職業
   swordsman: {
     id: 'swordsman',
-    name: '劍士',
+    name: '戰士',
     tier: 1,
     description: '近戰物理職業，攻守平衡。',
     baseStatBonus: { str: 5, int: 0, dex: 2, vit: 5, luk: 0 },
@@ -71,7 +71,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     maxResource: 100,
   },
 
-  // Tier 2 — 二轉（劍士系）
+  // Tier 2 — 二轉（戰士系）
   knight: {
     id: 'knight',
     name: '騎士',
@@ -98,7 +98,7 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
     id: 'sword_saint',
     name: '劍聖',
     tier: 2,
-    description: '技巧型劍士，高連擊高迴避。',
+    description: '技巧型戰士，高連擊高迴避。',
     baseStatBonus: { str: 4, int: 0, dex: 6, vit: 1, luk: 1 },
     parentClass: 'swordsman',
     resourceType: 'rage',
@@ -223,23 +223,23 @@ export const CLASS_DEFS: Record<ClassId, ClassDef> = {
 };
 
 // ============================================================
-//  一轉需求 (Lv 10)
+//  初始職業需求 (Lv 1)
 // ============================================================
 
-const FIRST_CLASS_CHANGE_LEVEL = 10;
-const FIRST_CLASS_CHANGE_GOLD = 500;
+const FIRST_CLASS_CHANGE_LEVEL = 1;
+const FIRST_CLASS_CHANGE_GOLD = 0;
 
-/** 一轉可選的職業 */
+/** 初始職業可選的職業 */
 const FIRST_CLASS_OPTIONS: ClassId[] = ['swordsman', 'mage', 'ranger', 'priest'];
 
 // ============================================================
-//  二轉需求 (Lv 30)
+//  二轉需求 (Lv 20)
 // ============================================================
 
-const SECOND_CLASS_CHANGE_LEVEL = 30;
-const SECOND_CLASS_CHANGE_GOLD = 5000;
+const SECOND_CLASS_CHANGE_LEVEL = 20;
+const SECOND_CLASS_CHANGE_GOLD = 2000;
 
-/** 一轉 → 二轉的路徑 */
+/** 初始職業 → 二轉的路徑 */
 const SECOND_CLASS_OPTIONS: Record<ClassId, ClassId[]> = {
   swordsman: ['knight', 'berserker', 'sword_saint'],
   mage: ['archmage', 'warlock', 'chronomancer'],
@@ -281,24 +281,24 @@ export class ClassChangeManager {
       return { success: false, message: '角色的當前職業資料異常。' };
     }
 
-    // ── 一轉：冒險者 → Tier 1 ────────────────────────
+    // ── 初始職業補選：舊冒險者 → Tier 1 ────────────────
     if (currentDef.tier === 0 && targetDef.tier === 1) {
       if (!FIRST_CLASS_OPTIONS.includes(targetClassId)) {
-        return { success: false, message: `${targetDef.name}不是有效的一轉職業。` };
+        return { success: false, message: `${targetDef.name}不是有效的初始職業。` };
       }
       if (char.level < FIRST_CLASS_CHANGE_LEVEL) {
         return {
           success: false,
-          message: `等級不足！一轉需要 Lv ${FIRST_CLASS_CHANGE_LEVEL}，你目前 Lv ${char.level}。`,
+          message: `等級不足！初始職業補選需要 Lv ${FIRST_CLASS_CHANGE_LEVEL}，你目前 Lv ${char.level}。`,
         };
       }
       if (char.gold < FIRST_CLASS_CHANGE_GOLD) {
         return {
           success: false,
-          message: `金幣不足！一轉需要 ${FIRST_CLASS_CHANGE_GOLD} 金幣，你目前有 ${char.gold} 金幣。`,
+          message: `金幣不足！初始職業補選需要 ${FIRST_CLASS_CHANGE_GOLD} 金幣，你目前有 ${char.gold} 金幣。`,
         };
       }
-      return { success: true, message: '符合一轉資格！' };
+      return { success: true, message: '符合初始職業補選資格！' };
     }
 
     // ── 二轉：Tier 1 → Tier 2 ────────────────────────
@@ -377,7 +377,7 @@ export class ClassChangeManager {
     char.maxResource = targetDef.maxResource;
     char.resource = targetDef.initialResource;
 
-    const tierLabel = targetDef.tier === 1 ? '一轉' : '二轉';
+    const tierLabel = targetDef.tier === 1 ? '選擇初始職業' : '二轉';
     return {
       success: true,
       message:

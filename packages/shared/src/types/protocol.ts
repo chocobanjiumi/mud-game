@@ -1,6 +1,6 @@
 // WebSocket 訊息協議
 
-import type { Character, EquipmentSlots } from './player.js';
+import type { Character, ClassId, EquipmentSlots } from './player.js';
 import type { LearnedSkill } from './skill.js';
 import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { InventoryItem } from './item.js';
@@ -10,6 +10,7 @@ import type { CharacterOriginSelection } from './origin.js';
 
 export interface CreateCharacterPayload extends CharacterOriginSelection {
   name: string;
+  classId: Extract<ClassId, 'swordsman' | 'mage' | 'ranger' | 'priest'>;
 }
 
 // Client → Server

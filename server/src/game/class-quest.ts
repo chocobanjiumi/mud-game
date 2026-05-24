@@ -1,5 +1,5 @@
 // 轉職任務系統 — ClassQuestManager
-// 四條轉職任務鏈：劍士、法師、遊俠、祭司
+// 四條轉職任務鏈：戰士、法師、遊俠、祭司
 
 import type { Character, ClassId } from '@game/shared';
 import { sendToCharacter } from '../ws/handler.js';
@@ -74,11 +74,11 @@ const RIDDLES: Riddle[] = [
 
 export const CLASS_QUEST_DEFS: Record<string, ClassQuestDef> = {
 
-  // ─── 劍士「勇氣的試煉」 ───────────────────────────────────
+  // ─── 戰士「勇氣的試煉」 ───────────────────────────────────
   warrior_trial: {
     id: 'warrior_trial',
     name: '勇氣的試煉',
-    description: '證明你的勇氣，成為一名劍士！',
+    description: '證明你的勇氣，成為一名戰士！',
     targetClass: 'swordsman',
     steps: [
       {
@@ -91,7 +91,7 @@ export const CLASS_QUEST_DEFS: Record<string, ClassQuestDef> = {
       },
       {
         description: '在轉職大廳擊敗訓練教官（練習假人）',
-        completeText: '你擊敗了訓練教官！你已具備劍士的資格。',
+        completeText: '你擊敗了訓練教官！你已具備戰士的資格。',
       },
     ],
   },
@@ -190,10 +190,10 @@ export class ClassQuestManager {
     }
 
     // 等級檢查
-    if (character.level < 10) {
+    if (character.level < 1) {
       return {
         success: false,
-        message: `需要達到 Lv.10 才能接取轉職任務「${def.name}」，你目前 Lv.${character.level}。`,
+        message: `需要達到 Lv.1 才能接取初始職業補選任務「${def.name}」，你目前 Lv.${character.level}。`,
       };
     }
 
@@ -550,7 +550,7 @@ export class ClassQuestManager {
 
     const progress = JSON.parse(row.progress || '{}');
 
-    // ─── 劍士 Step 0：殺 5 狼 ───
+    // ─── 戰士 Step 0：殺 5 狼 ───
     if (row.quest_id === 'warrior_trial' && row.step === 0) {
       if (monsterId === 'wild_wolf' || monsterId === 'shadow_wolf') {
         const kills = ((progress.kills as number) ?? 0) + 1;
@@ -568,7 +568,7 @@ export class ClassQuestManager {
       }
     }
 
-    // ─── 劍士 Step 2：在轉職大廳擊殺練習假人 ───
+    // ─── 戰士 Step 2：在轉職大廳擊殺練習假人 ───
     if (row.quest_id === 'warrior_trial' && row.step === 2) {
       if (monsterId === 'training_dummy') {
         this.advanceStep(characterId);
@@ -613,7 +613,7 @@ export class ClassQuestManager {
 
     const progress = JSON.parse(row.progress || '{}');
 
-    // ─── 劍士 Step 1：護送路線 ───
+    // ─── 戰士 Step 1：護送路線 ───
     if (row.quest_id === 'warrior_trial' && row.step === 1) {
       const escortRooms = (progress.escort_rooms as string[]) ?? [];
 
@@ -800,7 +800,7 @@ export class ClassQuestManager {
       }
     }
 
-    // ─── 劍士 Step 1：護送途中死亡重置 ───
+    // ─── 戰士 Step 1：護送途中死亡重置 ───
     if (row.quest_id === 'warrior_trial' && row.step === 1) {
       if (result === 'defeat') {
         progress.escort_rooms = [];
@@ -850,8 +850,8 @@ export class ClassQuestManager {
     if (character.classId !== 'adventurer') {
       return '你已經轉職過了，不需要轉職任務。';
     }
-    if (character.level < 10) {
-      return `需要達到 Lv.10 才能接取轉職任務（目前 Lv.${character.level}）。`;
+    if (character.level < 1) {
+      return `需要達到 Lv.1 才能接取初始職業補選任務（目前 Lv.${character.level}）。`;
     }
 
     const existing = this.getQuestRow(character.id);

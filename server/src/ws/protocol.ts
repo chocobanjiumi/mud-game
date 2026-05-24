@@ -335,11 +335,17 @@ function handleCreateCharacter(
     return;
   }
 
+  if (!isInitialClassId(payload.classId)) {
+    sendError(session.sessionId, '未知的初始職業選擇。');
+    return;
+  }
+
   try {
     const character = createCharacter(userId, name, false, undefined, {
       raceId: payload.raceId,
       genderId: payload.genderId,
       faithId: payload.faithId,
+      classId: payload.classId,
     });
     bindCharacter(session.sessionId, character.id, userId);
     world.placePlayer(character.id, character.roomId);
@@ -367,6 +373,10 @@ function handleCreateCharacter(
       sendError(session.sessionId, `建立角色失敗: ${errMsg}`);
     }
   }
+}
+
+function isInitialClassId(classId: unknown): classId is CreateCharacterPayload['classId'] {
+  return classId === 'swordsman' || classId === 'mage' || classId === 'ranger' || classId === 'priest';
 }
 
 /** 處理玩家指令 */

@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS } from '@game/shared';
+import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS, getLearnableSkills } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -12,6 +12,7 @@ export interface CreateCharacterOptions {
   raceId?: RaceId;
   genderId?: GenderId;
   faithId?: FaithId;
+  classId?: ClassId;
 }
 
 export function createCharacter(
@@ -27,8 +28,13 @@ export function createCharacter(
   const raceId = options.raceId ?? DEFAULT_RACE_ID;
   const genderId = options.genderId ?? DEFAULT_GENDER_ID;
   const faithId = options.faithId ?? DEFAULT_FAITH_ID;
-  const classDef = CLASS_DEFS.adventurer;
+  const classDef = getInitialClassDef(options.classId);
   const stats = getInitialStatsForRace(raceId);
+  stats.str += classDef.baseStatBonus.str;
+  stats.int += classDef.baseStatBonus.int;
+  stats.dex += classDef.baseStatBonus.dex;
+  stats.vit += classDef.baseStatBonus.vit;
+  stats.luk += classDef.baseStatBonus.luk;
   const maxHp = calculateMaxHp(1, stats.vit);
   const maxMp = calculateMaxMp(1, stats.int);
 
@@ -51,12 +57,22 @@ export function createCharacter(
     addInventoryItem(id, item.itemId, item.quantity, item.equipped);
   }
 
-  // 學習初始技能 (揮砍)
-  learnSkill(id, 'slash');
+  // 學習初始職業、種族與信仰技能
+  for (const skill of getLearnableSkills(classDef.id, 1)) {
+    if (!skill.id.startsWith('race_') && !skill.id.startsWith('faith_')) {
+      learnSkill(id, skill.id);
+    }
+  }
   learnSkill(id, RACE_DEFS[raceId].passiveSkillId);
   learnSkill(id, FAITH_DEFS[faithId].passiveSkillId);
 
   return getCharacterById(id)!;
+}
+
+function getInitialClassDef(classId: ClassId | undefined) {
+  const classDef = classId ? CLASS_DEFS[classId] : undefined;
+  if (classDef?.tier === 1) return classDef;
+  return CLASS_DEFS.adventurer;
 }
 
 /** 根據 ID 取得角色 */

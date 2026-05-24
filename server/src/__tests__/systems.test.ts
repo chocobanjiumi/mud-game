@@ -355,10 +355,10 @@ describe('ClassChange system logic', () => {
     archmage: { tier: 2, parentClass: 'mage' },
   };
 
-  const FIRST_CLASS_LEVEL = 10;
-  const FIRST_CLASS_GOLD = 500;
-  const SECOND_CLASS_LEVEL = 30;
-  const SECOND_CLASS_GOLD = 5000;
+  const FIRST_CLASS_LEVEL = 1;
+  const FIRST_CLASS_GOLD = 0;
+  const SECOND_CLASS_LEVEL = 20;
+  const SECOND_CLASS_GOLD = 2000;
 
   interface MockChar {
     classId: string;
@@ -390,30 +390,41 @@ describe('ClassChange system logic', () => {
     return { success: false, reason: 'invalid path' };
   };
 
-  it('should allow T0 -> T1 at level 10 with enough gold', () => {
-    expect(checkEligibility({ classId: 'adventurer', level: 10, gold: 500 }, 'swordsman').success).toBe(true);
-    expect(checkEligibility({ classId: 'adventurer', level: 10, gold: 500 }, 'mage').success).toBe(true);
+  it('should allow legacy adventurers to choose an initial class at level 1', () => {
+    expect(checkEligibility({ classId: 'adventurer', level: 1, gold: 0 }, 'swordsman').success).toBe(true);
+    expect(checkEligibility({ classId: 'adventurer', level: 1, gold: 0 }, 'mage').success).toBe(true);
   });
 
-  it('should reject T0 -> T1 at level 9', () => {
-    const result = checkEligibility({ classId: 'adventurer', level: 9, gold: 500 }, 'swordsman');
+  it('should reject T0 -> T1 below level 1', () => {
+    const result = checkEligibility({ classId: 'adventurer', level: 0, gold: 0 }, 'swordsman');
     expect(result.success).toBe(false);
     expect(result.reason).toBe('level');
   });
 
-  it('should reject T0 -> T1 without enough gold', () => {
-    const result = checkEligibility({ classId: 'adventurer', level: 10, gold: 499 }, 'swordsman');
+  it('should not charge gold for T0 -> T1 initial class fallback', () => {
+    const result = checkEligibility({ classId: 'adventurer', level: 1, gold: 0 }, 'swordsman');
+    expect(result.success).toBe(true);
+  });
+
+  it('should allow T1 -> T2 at level 20 with valid path', () => {
+    expect(checkEligibility({ classId: 'swordsman', level: 20, gold: 2000 }, 'knight').success).toBe(true);
+    expect(checkEligibility({ classId: 'swordsman', level: 20, gold: 2000 }, 'berserker').success).toBe(true);
+  });
+
+  it('should reject T1 -> T2 below level 20', () => {
+    const result = checkEligibility({ classId: 'swordsman', level: 19, gold: 2000 }, 'knight');
+    expect(result.success).toBe(false);
+    expect(result.reason).toBe('level');
+  });
+
+  it('should reject T1 -> T2 without enough gold', () => {
+    const result = checkEligibility({ classId: 'swordsman', level: 20, gold: 1999 }, 'knight');
     expect(result.success).toBe(false);
     expect(result.reason).toBe('gold');
   });
 
-  it('should allow T1 -> T2 at level 30 with valid path', () => {
-    expect(checkEligibility({ classId: 'swordsman', level: 30, gold: 5000 }, 'knight').success).toBe(true);
-    expect(checkEligibility({ classId: 'swordsman', level: 30, gold: 5000 }, 'berserker').success).toBe(true);
-  });
-
   it('should reject T1 -> T2 with invalid path', () => {
-    const result = checkEligibility({ classId: 'swordsman', level: 30, gold: 5000 }, 'archmage');
+    const result = checkEligibility({ classId: 'swordsman', level: 20, gold: 2000 }, 'archmage');
     expect(result.success).toBe(false);
     expect(result.reason).toBe('path');
   });

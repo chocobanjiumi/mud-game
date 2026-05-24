@@ -3,7 +3,7 @@ import type { ResourceType } from '@game/shared';
 
 const CLASS_NAMES: Record<string, string> = {
   adventurer: '冒險者',
-  swordsman: '劍士',
+  swordsman: '戰士',
   mage: '法師',
   ranger: '遊俠',
   priest: '祭司',

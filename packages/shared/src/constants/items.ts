@@ -596,8 +596,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   steel_sword: {
     id: 'steel_sword', name: '鋼劍', type: 'weapon',
-    description: '以高純度鋼鐵反覆鍛打而成的長劍，劍身隱約可見鍛造時留下的波紋。握在手中沉穩有力，劍尖劃過空氣時會發出銳利的嗡鳴。只有真正的劍士才能駕馭它的重量。', buyPrice: 500, sellPrice: 250,
-    stackable: false, maxStack: 1, levelReq: 10,
+    description: '以高純度鋼鐵反覆鍛打而成的長劍，劍身隱約可見鍛造時留下的波紋。握在手中沉穩有力，劍尖劃過空氣時會發出銳利的嗡鳴。只有真正的戰士才能駕馭它的重量。', buyPrice: 500, sellPrice: 250,
+    stackable: false, maxStack: 1, levelReq: 1,
     classReq: ['swordsman', 'knight', 'berserker', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 22 },
   },
@@ -795,7 +795,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     equipSlot: 'belt', stats: { hp: 10, vit: 1 },
   },
 
-  // ============ 長槍 (Spear) - 劍士/騎士 ============
+  // ============ 長槍 (Spear) - 戰士/騎士 ============
   spear_basic: {
     id: 'spear_basic', name: '木槍', type: 'weapon',
     description: '簡樸的木製長槍，新手訓練用。', buyPrice: 60, sellPrice: 30,
@@ -877,7 +877,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     rarity: 'legendary', weaponType: 'greataxe', setId: 'sword_saint_set',
   },
 
-  // ============ 太刀 (Katana) - 劍士/劍聖 ============
+  // ============ 太刀 (Katana) - 戰士/劍聖 ============
   katana_basic: {
     id: 'katana_basic', name: '竹刀', type: 'weapon',
     description: '竹製練習刀，居合入門之器。', buyPrice: 55, sellPrice: 27,
@@ -2312,8 +2312,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
 
   // ============ 任務道具 ============
   class_change_scroll_swordsman: {
-    id: 'class_change_scroll_swordsman', name: '劍士轉職卷軸', type: 'quest',
-    description: '紅蠟封住的劍士誓約卷軸，羊皮紙上畫著交叉長劍與訓練場印記，邊角磨得發亮。', buyPrice: 0, sellPrice: 0,
+    id: 'class_change_scroll_swordsman', name: '戰士轉職卷軸', type: 'quest',
+    description: '紅蠟封住的戰士誓約卷軸，羊皮紙上畫著交叉長劍與訓練場印記，邊角磨得發亮。', buyPrice: 0, sellPrice: 0,
     stackable: false, maxStack: 1, levelReq: 10,
   },
   class_change_scroll_mage: {

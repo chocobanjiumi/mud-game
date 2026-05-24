@@ -4,7 +4,7 @@ import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
   EquipmentSlots, SkillDef, RaceId, GenderId, FaithId,
 } from '@game/shared';
-import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, RACE_DEFS, createEmptyEquipmentSlots, getInitialStatsForRace } from '@game/shared';
+import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, RACE_DEFS, createEmptyEquipmentSlots, getInitialStatsForRace, getLearnableSkills } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 import { getPveRespawnRoomId } from './death-respawn.js';
@@ -37,6 +37,7 @@ export interface PlayerCreateCharacterOptions {
   raceId?: RaceId;
   genderId?: GenderId;
   faithId?: FaithId;
+  classId?: ClassId;
 }
 
 /** 初始裝備槽（全空） */
@@ -85,8 +86,13 @@ export class PlayerManager {
     const raceId = options.raceId ?? DEFAULT_RACE_ID;
     const genderId = options.genderId ?? DEFAULT_GENDER_ID;
     const faithId = options.faithId ?? DEFAULT_FAITH_ID;
-    const classDef = CLASS_DEFS.adventurer;
+    const classDef = getInitialClassDef(options.classId);
     const stats = getInitialStatsForRace(raceId);
+    stats.str += classDef.baseStatBonus.str;
+    stats.int += classDef.baseStatBonus.int;
+    stats.dex += classDef.baseStatBonus.dex;
+    stats.vit += classDef.baseStatBonus.vit;
+    stats.luk += classDef.baseStatBonus.luk;
     const hpMax = 100 + (stats.vit - 5) * 8;
     const mpMax = 30 + (stats.int - 5) * 5;
     const character: Character = {
@@ -120,7 +126,9 @@ export class PlayerManager {
 
     this.characters.set(id, character);
     this.learnedSkills.set(id, [
-      { skillId: 'slash', level: 1, currentCooldown: 0 },
+      ...getLearnableSkills(classDef.id, 1)
+        .filter(skill => !skill.id.startsWith('race_') && !skill.id.startsWith('faith_'))
+        .map(skill => ({ skillId: skill.id, level: 1, currentCooldown: 0 })),
       { skillId: RACE_DEFS[raceId].passiveSkillId, level: 1, currentCooldown: 0 },
       { skillId: FAITH_DEFS[faithId].passiveSkillId, level: 1, currentCooldown: 0 },
     ]);
@@ -570,4 +578,10 @@ export class PlayerManager {
   getAllCharacters(): Character[] {
     return Array.from(this.characters.values());
   }
+}
+
+function getInitialClassDef(classId: ClassId | undefined) {
+  const classDef = classId ? CLASS_DEFS[classId] : undefined;
+  if (classDef?.tier === 1) return classDef;
+  return CLASS_DEFS.adventurer;
 }

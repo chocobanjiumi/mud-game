@@ -1,5 +1,5 @@
 // 二轉轉職任務系統 — ClassQuest2Manager
-// 12 條二轉任務鏈（每個進階職業一條），要求 Lv30 + 一轉完成 + 2000 金幣
+// 12 條二轉任務鏈（每個進階職業一條），要求 Lv20 + 初始職業 + 2000 金幣
 
 import type { Character, ClassId } from '@game/shared';
 import { CLASS_DEFS } from '@game/shared';
@@ -51,7 +51,7 @@ interface ClassQuest2Row {
 
 export const CLASS_QUEST_2_DEFS: Record<string, ClassQuest2Def> = {
 
-  // ─── 劍士系 ───────────────────────────────────────────────
+  // ─── 戰士系 ───────────────────────────────────────────────
 
   swordsman_to_knight: {
     id: 'swordsman_to_knight',
@@ -246,7 +246,7 @@ export class ClassQuest2Manager {
   ensureTables(): void {
     // class_quests 表已在 schema.ts 建立，但 PK 是 character_id
     // 二轉任務使用 quest_id 以 'class2_' 開頭區分
-    // 需要支援同一角色同時有一轉和二轉任務紀錄
+    // 需要支援同一角色同時有初始職業補選和二轉任務紀錄
     // 修改：使用 (character_id, quest_id) 的模式，但因為 PK 是 character_id，
     // 我們在二轉中用不同的查詢前綴
     // 為了安全，直接建一個 class2_quests 表
@@ -279,14 +279,14 @@ export class ClassQuest2Manager {
     }
 
     // 等級檢查
-    if (character.level < 30) {
+    if (character.level < 20) {
       return {
         success: false,
-        message: `需要達到 Lv.30 才能接取二轉任務「${def.name}」，你目前 Lv.${character.level}。`,
+        message: `需要達到 Lv.20 才能接取二轉任務「${def.name}」，你目前 Lv.${character.level}。`,
       };
     }
 
-    // 職業檢查：必須是對應的一轉職業
+    // 職業檢查：必須是對應的初始職業
     if (character.classId !== def.fromClass) {
       const classDef = CLASS_DEFS[def.fromClass];
       return {
@@ -798,10 +798,10 @@ export class ClassQuest2Manager {
   formatAvailableQuests(character: Character): string {
     const currentClassDef = CLASS_DEFS[character.classId];
     if (!currentClassDef || currentClassDef.tier !== 1) {
-      return '只有一轉職業才能接取二轉任務。';
+      return '只有初始職業才能接取二轉任務。';
     }
-    if (character.level < 30) {
-      return `需要達到 Lv.30 才能接取二轉任務（目前 Lv.${character.level}）。`;
+    if (character.level < 20) {
+      return `需要達到 Lv.20 才能接取二轉任務（目前 Lv.${character.level}）。`;
     }
 
     const existing = this.getQuestRow(character.id);
@@ -818,7 +818,7 @@ export class ClassQuest2Manager {
 
     let text = '可選的二轉任務\n';
     text += '─'.repeat(40) + '\n';
-    text += `需求：Lv.30、2000 金幣\n\n`;
+    text += `需求：Lv.20、2000 金幣\n\n`;
 
     for (const def of available) {
       const targetClassDef = CLASS_DEFS[def.toClass];
