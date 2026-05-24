@@ -1,6 +1,6 @@
 import { ITEM_DEFS } from '../constants/items.js';
-import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats, WeaponCategory } from '../types/item.js';
-import { toBaseEquipmentDef } from '../types/item.js';
+import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats, WeaponCategory, WeaponType } from '../types/item.js';
+import { toBaseEquipmentDef, WEAPON_TYPE_DEFS } from '../types/item.js';
 import type { SkillTag } from '../types/skill.js';
 
 export type ItemQuality = 'normal' | 'fine' | 'rare' | 'epic' | 'legendary' | 'mythic';
@@ -21,7 +21,7 @@ export interface AffixDef {
   skillIds?: string[];
   sourceTags?: string[];
   zoneTags?: string[];
-  weaponTypes?: string[];
+  weaponTypes?: (WeaponType | WeaponCategory)[];
   stats?: Partial<ItemStats>;
   behavior?: string;
   trigger?: 'on_hit' | 'on_block' | 'on_dodge' | 'on_kill' | 'on_cast' | 'on_heal';
@@ -135,6 +135,8 @@ export const AFFIX_POOLS: Record<AffixPool, AffixDef[]> = {
     { id: 'numeric_vit_t3', name: '堅韌', kind: 'prefix', pool: 'numeric', tier: 'T3', appliesTo: ['head', 'body', 'belt', 'feet'], itemLevelMin: 18, itemLevelMax: 45, stats: { vit: 3 } },
     { id: 'numeric_dex_t4', name: '精準', kind: 'prefix', pool: 'numeric', tier: 'T4', appliesTo: ['weapon', 'hands', 'feet', 'ring'], itemLevelMin: 32, itemLevelMax: 60, stats: { dex: 4 } },
     { id: 'numeric_luk_t5', name: '天運', kind: 'prefix', pool: 'numeric', tier: 'T5', appliesTo: ['ring', 'earring', 'necklace'], itemLevelMin: 45, stats: { luk: 5 } },
+    { id: 'numeric_hp_t1', name: '生機', kind: 'prefix', pool: 'numeric', tier: 'T1', appliesTo: ['head', 'body', 'belt', 'necklace'], itemLevelMin: 1, itemLevelMax: 28, stats: { hp: 18 } },
+    { id: 'numeric_mp_t1', name: '靈泉', kind: 'prefix', pool: 'numeric', tier: 'T1', appliesTo: ['head', 'earring', 'necklace', 'accessory'], itemLevelMin: 1, itemLevelMax: 28, stats: { mp: 12 } },
   ],
   combat: [
     { id: 'combat_atk_t1', name: '銳利', kind: 'suffix', pool: 'combat', tier: 'T1', appliesTo: ['weapon', 'hands'], itemLevelMin: 1, itemLevelMax: 24, stats: { atk: 3 } },
@@ -142,17 +144,19 @@ export const AFFIX_POOLS: Record<AffixPool, AffixDef[]> = {
     { id: 'combat_crit_t3', name: '會心', kind: 'suffix', pool: 'combat', tier: 'T3', appliesTo: ['weapon', 'ring', 'earring'], itemLevelMin: 18, itemLevelMax: 50, stats: { critRate: 2, critDamage: 4 } },
     { id: 'combat_mdef_t4', name: '魔障', kind: 'suffix', pool: 'combat', tier: 'T4', appliesTo: ['head', 'body', 'necklace'], itemLevelMin: 32, stats: { mdef: 8 } },
     { id: 'combat_overpower_t5', name: '破滅', kind: 'suffix', pool: 'combat', tier: 'T5', appliesTo: ['weapon', 'ring'], itemLevelMin: 45, stats: { atk: 12, hitRate: 3 } },
+    { id: 'combat_hit_t2', name: '準星', kind: 'suffix', pool: 'combat', tier: 'T2', appliesTo: ['weapon', 'ring', 'earring'], itemLevelMin: 8, itemLevelMax: 35, stats: { hitRate: 3 }, weaponTypes: ['bow', 'crossbow', 'staff', 'grimoire', 'focus'] },
+    { id: 'combat_dodge_t2', name: '輕巧', kind: 'suffix', pool: 'combat', tier: 'T2', appliesTo: ['feet', 'ring', 'accessory'], itemLevelMin: 8, itemLevelMax: 35, stats: { dodgeRate: 3 } },
   ],
   behavior: [
     { id: 'behavior_guard_t1', name: '護持', kind: 'behavior', pool: 'behavior', tier: 'T1', appliesTo: ['body', 'belt'], itemLevelMin: 1, itemLevelMax: 24, skillTags: ['defense'], behavior: 'reduce_first_hit', trigger: 'on_block', condition: 'first_hit', skillModifiers: { damagePct: -6 } },
-    { id: 'behavior_burst_t1', name: '蓄勢', kind: 'behavior', pool: 'behavior', tier: 'T1', appliesTo: ['weapon', 'ring'], itemLevelMin: 1, itemLevelMax: 24, skillTags: ['burst'], behavior: 'burst_damage', trigger: 'on_cast', skillModifiers: { damagePct: 3 } },
+    { id: 'behavior_burst_t1', name: '蓄勢', kind: 'behavior', pool: 'behavior', tier: 'T1', appliesTo: ['weapon', 'ring'], itemLevelMin: 1, itemLevelMax: 24, skillTags: ['burst'], behavior: 'burst_damage', trigger: 'on_cast', skillModifiers: { damagePct: 3 }, weaponTypes: ['sword', 'axe', 'hammer', 'polearm', 'dagger', 'shortsword'] },
     { id: 'behavior_focus_t2', name: '專注', kind: 'behavior', pool: 'behavior', tier: 'T2', appliesTo: ['head', 'earring'], itemLevelMin: 8, itemLevelMax: 35, skillTags: ['resource'], behavior: 'reduce_resource_cost', trigger: 'on_cast', skillModifiers: { resourceCostPct: -8 } },
     { id: 'behavior_mercy_t2', name: '慈心', kind: 'behavior', pool: 'behavior', tier: 'T2', appliesTo: ['weapon', 'necklace'], itemLevelMin: 8, itemLevelMax: 35, skillTags: ['heal'], sourceTags: ['temple', 'faith', 'support'], behavior: 'heal_amplify', trigger: 'on_heal', skillModifiers: { healingPct: 6 }, resourceModifiers: { faithDelta: 1 } },
     { id: 'behavior_swift_t3', name: '疾行', kind: 'behavior', pool: 'behavior', tier: 'T3', appliesTo: ['feet'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['mobility'], behavior: 'bonus_after_dodge', trigger: 'on_dodge', stats: { dodgeRate: 3 } },
     { id: 'behavior_harvest_t3', name: '收割', kind: 'behavior', pool: 'behavior', tier: 'T3', appliesTo: ['weapon', 'ring'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['damage'], sourceTags: ['boss', 'undead', 'dungeon'], behavior: 'resource_on_kill', trigger: 'on_kill', internalCooldownRounds: 1, resourceModifiers: { rageGain: 6, focusRegen: 6, mpRegen: 4 } },
     { id: 'behavior_counter_t4', name: '反擊', kind: 'behavior', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'hands'], itemLevelMin: 32, skillTags: ['control'], behavior: 'counter_on_block', trigger: 'on_block', resourceModifiers: { rageGain: 3 } },
-    { id: 'behavior_cross_room_t3', name: '鷹眼', kind: 'suffix', pool: 'behavior', tier: 'T3', appliesTo: ['weapon', 'head', 'ring'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['cross_room'], sourceTags: ['plains', 'scout', 'ranged'], behavior: 'cross_room_accuracy', trigger: 'on_hit', skillModifiers: { rangeDelta: 1 } },
-    { id: 'behavior_snare_t4', name: '絆足', kind: 'suffix', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'feet'], itemLevelMin: 32, skillTags: ['control'], sourceTags: ['forest', 'trap', 'gathering'], behavior: 'delay_approach', trigger: 'on_hit', condition: 'approaching_target', skillModifiers: { arrivalTicksDelta: 1 } },
+    { id: 'behavior_cross_room_t3', name: '鷹眼', kind: 'suffix', pool: 'behavior', tier: 'T3', appliesTo: ['weapon', 'head', 'ring'], itemLevelMin: 18, itemLevelMax: 50, skillTags: ['cross_room'], sourceTags: ['plains', 'scout', 'ranged'], behavior: 'cross_room_accuracy', trigger: 'on_hit', skillModifiers: { rangeDelta: 1 }, weaponTypes: ['bow', 'crossbow'] },
+    { id: 'behavior_snare_t4', name: '絆足', kind: 'suffix', pool: 'behavior', tier: 'T4', appliesTo: ['weapon', 'feet'], itemLevelMin: 32, skillTags: ['control'], sourceTags: ['forest', 'trap', 'gathering'], behavior: 'delay_approach', trigger: 'on_hit', condition: 'approaching_target', skillModifiers: { arrivalTicksDelta: 1 }, weaponTypes: ['bow', 'crossbow', 'polearm'] },
     { id: 'behavior_execute_t5', name: '處決', kind: 'behavior', pool: 'behavior', tier: 'T5', appliesTo: ['weapon'], itemLevelMin: 45, skillTags: ['burst'], sourceTags: ['boss', 'undead', 'dungeon'], behavior: 'execute_low_hp', trigger: 'on_hit', condition: 'low_hp', internalCooldownRounds: 3, skillModifiers: { damagePct: 10 } },
   ],
   class: [
@@ -257,7 +261,7 @@ export function getEligibleAffixes(baseItem: BaseEquipmentDef, quality: ItemQual
     .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
     .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
     .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
-    .filter(affix => !affix.weaponTypes || !baseItem.weaponType || affix.weaponTypes.includes(baseItem.weaponType))
+    .filter(affix => weaponMatches(baseItem, affix))
     .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId)));
 }
 
@@ -313,7 +317,7 @@ function rollAffixes(
       .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
       .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
       .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
-      .filter(affix => !affix.weaponTypes || !baseItem.weaponType || affix.weaponTypes.includes(baseItem.weaponType))
+      .filter(affix => weaponMatches(baseItem, affix))
       .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId))));
   }
   const selected: AffixDef[] = [];
@@ -355,6 +359,14 @@ function pickWeightedAffixIndex(
     if (roll <= 0) return i;
   }
   return pool.length - 1;
+}
+
+function weaponMatches(baseItem: BaseEquipmentDef, affix: AffixDef): boolean {
+  if (!affix.weaponTypes || affix.weaponTypes.length === 0) return true;
+  if (!baseItem.weaponType) return true;
+  if (affix.weaponTypes.includes(baseItem.weaponType)) return true;
+  const category = WEAPON_TYPE_DEFS[baseItem.weaponType]?.category;
+  return !!category && affix.weaponTypes.includes(category);
 }
 
 function tagsMatch(candidateTags: string[], requiredTags?: string[]): boolean {

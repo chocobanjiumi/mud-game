@@ -1,11 +1,11 @@
 // 技能定義 - 所有職業的技能資料
 
 import type { ClassId } from '../types/player.js';
-import type { SkillDef, SkillScaling, SkillTag, SkillTargetType, SkillUsageContext, StatusEffectType } from '../types/skill.js';
+import type { SkillDef, SkillImplementationStatus, SkillScaling, SkillTag, SkillTargetType, SkillUsageContext, StatusEffectType } from '../types/skill.js';
 import { CLASS_DEFS } from './classes.js';
 import { FAITH_DEFS, RACE_DEFS } from './origins.js';
 
-type RawSkillDef = Omit<SkillDef, 'tags' | 'scaling' | 'usageContext' | 'shortDescription' | 'fullDescription'> & Partial<Pick<SkillDef, 'tags' | 'scaling' | 'usageContext' | 'shortDescription' | 'fullDescription'>>;
+type RawSkillDef = Omit<SkillDef, 'tags' | 'scaling' | 'usageContext' | 'shortDescription' | 'fullDescription' | 'implementationStatus'> & Partial<Pick<SkillDef, 'tags' | 'scaling' | 'usageContext' | 'shortDescription' | 'fullDescription' | 'implementationStatus'>>;
 
 export interface ClassBuildDef {
   id: string;
@@ -1606,6 +1606,7 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
         questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
         shortDescription: def.shortDescription ?? createShortSkillDescription(def),
         fullDescription: def.fullDescription ?? '',
+        implementationStatus: def.implementationStatus ?? inferImplementationStatus(def),
         iconPath: def.iconPath ?? STARTER_SKILL_ICON_PATHS[id],
       };
       normalized.fullDescription = createMechanicSkillDescription({
@@ -1615,6 +1616,12 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
       return [id, normalized];
     }),
   );
+}
+
+function inferImplementationStatus(def: RawSkillDef): SkillImplementationStatus {
+  if (def.classId === 'monster') return 'implemented';
+  const classDef = CLASS_DEFS[def.classId];
+  return classDef?.tier && classDef.tier >= 2 ? 'draft' : 'implemented';
 }
 
 function createMechanicSkillDescription(def: SkillDef): string {
@@ -1951,7 +1958,9 @@ export function getAllAvailableSkills(classId: ClassId): SkillDef[] {
 export function getLearnableSkills(classId: ClassId, level: number, completedQuestIds: string[] = []): SkillDef[] {
   const completed = new Set(completedQuestIds);
   return getAllAvailableSkills(classId).filter((s) =>
-    s.learnLevel <= level && (!s.questUnlock || s.questUnlock.requiredStatus !== 'completed' || completed.has(s.questUnlock.questId)),
+    s.implementationStatus === 'implemented'
+    && s.learnLevel <= level
+    && (!s.questUnlock || s.questUnlock.requiredStatus !== 'completed' || completed.has(s.questUnlock.questId)),
   );
 }
 

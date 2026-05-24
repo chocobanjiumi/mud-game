@@ -520,6 +520,20 @@ describe('Balance: Item instance generation', () => {
     }
   });
 
+  it('defines visible core stat affixes and enforces weapon family restrictions', () => {
+    const allAffixes = Object.values(AFFIX_POOLS).flat();
+    expect(allAffixes.some(affix => affix.stats?.hp)).toBe(true);
+    expect(allAffixes.some(affix => affix.stats?.mp)).toBe(true);
+    expect(allAffixes.some(affix => affix.stats?.hitRate)).toBe(true);
+    expect(allAffixes.some(affix => affix.stats?.dodgeRate)).toBe(true);
+
+    const spear = { ...toBaseEquipmentDef(ITEM_DEFS.spear_steel)!, level: 45 };
+    const crossbow = { ...toBaseEquipmentDef(ITEM_DEFS.crossbow_steel)!, level: 45 };
+
+    expect(getEligibleAffixes(spear, 'legendary', 'swordsman').some(affix => affix.id === 'behavior_cross_room_t3')).toBe(false);
+    expect(getEligibleAffixes(crossbow, 'legendary', 'ranger').some(affix => affix.id === 'behavior_cross_room_t3')).toBe(true);
+  });
+
   it('defines affix tier balance ranges and build directions for each class family', () => {
     expect(Object.keys(AFFIX_TIER_BALANCE)).toEqual(['T1', 'T2', 'T3', 'T4', 'T5']);
     expect(AFFIX_TIER_BALANCE.T5.skillModifierPct[1]).toBeGreaterThan(AFFIX_TIER_BALANCE.T1.skillModifierPct[1]);
@@ -527,6 +541,18 @@ describe('Balance: Item instance generation', () => {
       new Set(['swordsman', 'mage', 'ranger', 'priest']),
     );
     expect(AFFIX_BUILD_DIRECTIONS.every(direction => direction.skillTags.length > 0 && direction.affixIds.length > 0)).toBe(true);
+  });
+
+  it('marks tier-two class skill drafts out of automatic learning', () => {
+    const secondJobSkills = Object.values(SKILL_DEFS).filter(skill => {
+      const classDef = CLASS_DEFS[skill.classId];
+      return classDef?.tier && classDef.tier >= 2;
+    });
+
+    expect(secondJobSkills.length).toBeGreaterThan(0);
+    expect(secondJobSkills.every(skill => skill.implementationStatus === 'draft')).toBe(true);
+    expect(getLearnableSkills('knight', 60).every(skill => skill.implementationStatus === 'implemented')).toBe(true);
+    expect(getLearnableSkills('knight', 60).some(skill => skill.id === 'warrior_slash')).toBe(true);
   });
 
   it('generates quality-specific affix counts and legendary fixed effects', () => {
@@ -635,7 +661,7 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('weights generated affixes toward source and zone tags', () => {
-    const base = { ...toBaseEquipmentDef(ITEM_DEFS.spear_steel)!, level: 45, sourceTags: ['ranged'], zoneTags: ['plains'] };
+    const base = { ...toBaseEquipmentDef(ITEM_DEFS.crossbow_steel)!, level: 45, sourceTags: ['ranged'], zoneTags: ['plains'] };
     const instance = generateEquipmentInstance(base, {
       sourceTags: ['ranged', 'plains', 'scout'],
       qualityBonus: 0.1,

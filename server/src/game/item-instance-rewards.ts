@@ -8,6 +8,7 @@ export interface InventoryRewardEntry {
   quantity: number;
   name: string;
   quality?: string;
+  affixNames?: string[];
 }
 
 export function addRewardItemToInventory(
@@ -46,6 +47,7 @@ export function addRewardItemToInventory(
       quantity: 1,
       name: def?.name ?? itemId,
       quality: instance.quality,
+      affixNames: instance.affixes.map(affix => affix.name),
     });
   }
 
@@ -54,6 +56,7 @@ export function addRewardItemToInventory(
 
 export function formatRewardEntry(entry: InventoryRewardEntry): string {
   const qualityText = entry.quality && entry.quality !== 'normal' ? `（${entry.quality}）` : '';
+  const affixText = entry.affixNames?.length ? `［${entry.affixNames.join('、')}］` : '';
   const quantityText = entry.quantity > 1 ? ` x${entry.quantity}` : '';
-  return `${entry.name}${qualityText}${quantityText}`;
+  return `${entry.name}${qualityText}${affixText}${quantityText}`;
 }

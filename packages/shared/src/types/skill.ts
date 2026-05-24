@@ -5,6 +5,7 @@ import type { ClassId } from './player.js';
 export type SkillTargetType = 'single_enemy' | 'all_enemies' | 'self' | 'single_ally' | 'all_allies';
 export type SkillType = 'active' | 'passive';
 export type SkillUsageContext = 'combat' | 'field' | 'both';
+export type SkillImplementationStatus = 'implemented' | 'draft' | 'deprecated';
 export type DamageType = 'physical' | 'magical' | 'pure';
 export type ElementType = 'fire' | 'ice' | 'lightning' | 'light' | 'dark' | 'nature' | 'none';
 export type SkillTag =
@@ -54,6 +55,7 @@ export interface SkillDef {
   description: string; // 中文描述
   shortDescription: string; // UI 摘要描述
   fullDescription: string; // 詳細機制描述
+  implementationStatus: SkillImplementationStatus;
   iconPath?: string;
   effects?: StatusEffect[];
   special?: SkillSpecial;
