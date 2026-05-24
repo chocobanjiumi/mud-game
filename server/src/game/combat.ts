@@ -603,11 +603,15 @@ export class CombatEngine {
 
     for (const target of targets) {
       if (target.isDead) continue;
+      if (skillDef && this.applyNonDamageSkillEffect(actor, target, skillDef, skillName, log)) {
+        continue;
+      }
       const outputAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
         trigger: isHealSkill ? 'on_heal' : 'on_hit',
         targetHpPercent: target.maxHp > 0 ? (target.hp / target.maxHp) * 100 : 100,
       }) : null;
-      const multiplier = baseMultiplier * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100);
+      const markBonus = this.effectEngine.getEffectValue(target.activeEffects, 'mark');
+      const multiplier = baseMultiplier * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100) * (1 + markBonus / 100);
       this.interruptTelegraphIfPossible(actor, target, skillDef, log);
       this.dispelShieldIfPossible(actor, target, skillDef, log);
 
@@ -631,6 +635,9 @@ export class CombatEngine {
       if (isHealSkill) {
         const healBase = attackerStats.matk * multiplier;
         let healAmount = Math.max(1, Math.floor(healBase));
+        if (skillDef?.special?.lowHpHealBonus && this.getHpPercent(target) < 40) {
+          healAmount = Math.floor(healAmount * 1.25);
+        }
         // 套裝加成：治癒力量
         const pct = this.getPlayerSetBonusPct(session, actor.id);
         if (pct.healPower) {
@@ -656,6 +663,9 @@ export class CombatEngine {
           log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
         } else if (dmgResult.isDodged) {
           log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+          if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
+            this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
+          }
           this.triggerAffixEvents(session, target, 'on_dodge', log, {
             targetHpPercent,
             isFirstHit: session.state.round === 1,
@@ -670,9 +680,13 @@ export class CombatEngine {
               targetHpPercent,
               isFirstHit: session.state.round === 1,
             });
+            if (target.resourceType === 'rage') {
+              this.gainResource(target, 12 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'rageGain'), log, '因格擋承傷獲得');
+            }
           }
           this.applyDamageToTarget(session, target, dmgResult.damage, log);
           this.triggerMonsterPhases(session, target, log);
+          this.applySkillHitResourceEffects(actor, target, skillDef, log);
           this.triggerAffixEvents(session, actor, 'on_hit', log, {
             targetHpPercent,
             isFirstHit: session.state.round === 1,
@@ -713,6 +727,9 @@ export class CombatEngine {
       source: actor.id,
     });
     log.push(`${actor.name}擺出了防禦姿勢，本回合受到的傷害減半。`);
+    if (actor.resourceType === 'rage') {
+      this.gainResource(actor, 8 + this.getCombatantResourceAffixBonus(actor.id, actor.isPlayer, 'rageGain'), log, '因防禦獲得');
+    }
   }
 
   private executeFlee(
@@ -769,6 +786,9 @@ export class CombatEngine {
       // 閃避仍使用 miss 描述（武器揮空的情境）
       const desc = getAttackDescription(actor.name, target.name, weaponItemId, 'miss');
       log.push(`${desc}（被閃避）`);
+      if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
+        this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
+      }
       this.triggerAffixEvents(session, target, 'on_dodge', log, {
         targetHpPercent: this.getHpPercent(target),
         isFirstHit: session.state.round === 1,
@@ -804,6 +824,9 @@ export class CombatEngine {
         targetHpPercent: this.getHpPercent(target),
         isFirstHit: session.state.round === 1,
       });
+      if (target.resourceType === 'rage') {
+        this.gainResource(target, 12 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'rageGain'), log, '因格擋承傷獲得');
+      }
     }
 
     this.applyDamageToTarget(session, target, result.damage, log);
@@ -837,6 +860,18 @@ export class CombatEngine {
     const reduction = this.effectEngine.getDamageReduction(target.activeEffects);
     if (reduction > 0) {
       damage = Math.max(1, Math.floor(damage * (1 - reduction / 100)));
+    }
+
+    const manaShieldPct = this.effectEngine.getEffectValue(target.activeEffects, 'mana_shield');
+    if (manaShieldPct > 0 && target.resourceType === 'mp' && target.resource > 0) {
+      const intendedRedirect = Math.floor(damage * Math.min(80, manaShieldPct) / 100);
+      const redirected = Math.min(target.resource, intendedRedirect);
+      if (redirected > 0) {
+        target.resource = Math.max(0, target.resource - redirected);
+        target.mp = Math.max(0, target.mp - redirected);
+        damage = Math.max(1, damage - redirected);
+        log.push(`  ${target.name}的魔力護盾消耗 ${redirected} MP 抵銷傷害。`);
+      }
     }
 
     // 護盾吸收
@@ -887,6 +922,9 @@ export class CombatEngine {
       // MP 回復
       if (result.mpRestored > 0) {
         c.mp = Math.min(c.maxMp, c.mp + result.mpRestored);
+        if (c.resourceType === 'mp') {
+          c.resource = Math.min(c.maxResource, c.resource + result.mpRestored);
+        }
       }
 
       log.push(...result.messages);
@@ -1430,6 +1468,86 @@ export class CombatEngine {
       ? getResourceAffixBonus(actor.id, 'faithDelta')
       : 0;
     applySkillResourceChange(actor, skillDef, resourceCost, faithBonus);
+  }
+
+  private applyNonDamageSkillEffect(
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef,
+    skillName: string,
+    log: string[],
+  ): boolean {
+    const isSupportTarget = skillDef.multiplier <= 0
+      && (skillDef.targetType === 'self' || skillDef.targetType === 'single_ally' || skillDef.targetType === 'all_allies');
+    if (!isSupportTarget && !skillDef.special?.removeDebuffs) return false;
+
+    if (skillDef.special?.removeDebuffs) {
+      const removed = this.effectEngine.removeAllDebuffs(target.activeEffects);
+      log.push(`${actor.name}使用了${skillName}，淨化了${target.name}${removed.length > 0 ? `的 ${removed.length} 個負面狀態` : '，但沒有可移除的負面狀態'}。`);
+    } else {
+      log.push(`${actor.name}使用了${skillName}。`);
+    }
+
+    if (skillDef.effects) {
+      for (const eff of skillDef.effects) {
+        const msg = this.effectEngine.applyEffect(target.activeEffects, {
+          ...eff,
+          source: actor.id,
+        }, actor.name);
+        log.push(`  ${target.name}${msg}`);
+      }
+    }
+
+    const directGain = this.getNumericSpecial(skillDef, 'resourceGain');
+    if (directGain !== undefined && actor.id === target.id) {
+      this.gainResource(actor, directGain, log, '恢復了');
+    }
+    return true;
+  }
+
+  private applySkillHitResourceEffects(
+    actor: CombatantState,
+    target: CombatantState,
+    skillDef: SkillDef | null,
+    log: string[],
+  ): void {
+    if (!skillDef) return;
+
+    const gain = this.getNumericSpecial(skillDef, 'resourceGainOnHit')
+      ?? this.getNumericSpecial(skillDef, 'focusGainOnHit')
+      ?? 0;
+    if (gain > 0) this.gainResource(actor, gain, log, '命中後恢復');
+
+    const perHit = this.getNumericSpecial(skillDef, 'resourceGainPerHit') ?? 0;
+    if (perHit > 0) this.gainResource(actor, perHit, log, '命中後恢復');
+
+    const markedGain = this.getNumericSpecial(skillDef, 'focusGainOnMarkedHit') ?? 0;
+    if (markedGain > 0 && this.effectEngine.hasEffect(target.activeEffects, 'mark')) {
+      this.gainResource(actor, markedGain, log, '命中標記目標後恢復');
+    }
+
+    const mpGain = this.getNumericSpecial(skillDef, 'mpGainOnSpellHit') ?? 0;
+    if (mpGain > 0 && skillDef.damageType === 'magical') {
+      this.gainResource(actor, mpGain, log, '法術命中後恢復');
+    }
+  }
+
+  private gainResource(actor: CombatantState, amount: number, log: string[], reason: string): void {
+    if (amount <= 0 || actor.maxResource <= 0) return;
+    const before = actor.resource;
+    actor.resource = Math.min(actor.maxResource, actor.resource + amount);
+    if (actor.resourceType === 'mp') {
+      actor.mp = Math.min(actor.maxMp, actor.mp + (actor.resource - before));
+    }
+    const actual = actor.resource - before;
+    if (actual > 0) {
+      log.push(`  ${actor.name}${reason} ${actual} 點${this.getResourceLabel(actor.resourceType)}。`);
+    }
+  }
+
+  private getNumericSpecial(skillDef: SkillDef, key: string): number | undefined {
+    const value = skillDef.special?.[key];
+    return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
   }
 
   private triggerAffixEvents(

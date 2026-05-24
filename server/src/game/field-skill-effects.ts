@@ -39,10 +39,44 @@ export function applyFieldSkillEffect(
     };
   }
 
+  if (skillDef.special?.removeDebuffs) {
+    return {
+      handled: true,
+      message: `${target.name} 身上的負面狀態被淨化。`,
+      target,
+      consumeResource: true,
+    };
+  }
+
+  const resourceGain = getNumericSpecial(skillDef, 'resourceGain');
+  if (resourceGain !== undefined && resourceGain > 0) {
+    const before = character.resource;
+    character.resource = Math.min(character.maxResource, character.resource + resourceGain);
+    if (character.resourceType === 'mp') {
+      character.mp = Math.min(character.maxMp, character.mp + (character.resource - before));
+    }
+    return {
+      handled: true,
+      message: `恢復了 ${character.resource - before} 點${getResourceLabel(character.resourceType)}。`,
+      target: character,
+      consumeResource: true,
+    };
+  }
+
   return { handled: false };
 }
 
 function getNumericSpecial(skillDef: SkillDef, key: string): number | undefined {
   const value = skillDef.special?.[key];
   return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
+function getResourceLabel(resourceType: Character['resourceType']): string {
+  const labels: Record<Character['resourceType'], string> = {
+    mp: 'MP',
+    rage: '怒氣',
+    focus: '專注',
+    faith: '信仰',
+  };
+  return labels[resourceType];
 }

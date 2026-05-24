@@ -373,6 +373,149 @@ describe('CombatEngine', () => {
       expect(state.playerTeam[0].mp).toBe(5);
       vi.restoreAllMocks();
     });
+
+    it('applies warrior rage gain from skill hits', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'swordsman',
+        stats: { str: 30, int: 5, dex: 100, vit: 10, luk: 5 },
+        resource: 0,
+        maxResource: 100,
+        resourceType: 'rage',
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'warrior_slash',
+        targetId: monster.instanceId,
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBeGreaterThan(0);
+      expect(state.actionLog.some(line => line.includes('怒氣'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies ranger focus refunds from skill hits and round regen', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'ranger',
+        stats: { str: 20, int: 5, dex: 100, vit: 10, luk: 5 },
+        resource: 50,
+        maxResource: 100,
+        resourceType: 'focus',
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'precise_shot',
+        targetId: monster.instanceId,
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBeGreaterThan(50);
+      expect(state.actionLog.some(line => line.includes('專注'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies mana shield as a real MP damage redirect', () => {
+      const player = makeCharacter({
+        classId: 'mage',
+        hp: 200,
+        maxHp: 200,
+        mp: 50,
+        maxMp: 50,
+        stats: { str: 5, int: 30, dex: 101, vit: 10, luk: 1 },
+        resource: 50,
+        maxResource: 50,
+        resourceType: 'mp',
+      });
+      const monster = makeMonsterInstance({ hp: 999, str: 80, dex: 100 });
+      vi.spyOn(Math, 'random')
+        .mockReturnValueOnce(0.5)
+        .mockReturnValueOnce(0.1)
+        .mockReturnValueOnce(0.99)
+        .mockReturnValue(0.5);
+
+      const combatId = engine.startCombat([player], [monster]);
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'mana_shield',
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBeLessThan(38);
+      expect(state.actionLog.some(line => line.includes('魔力護盾消耗'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies mage MP recovery effects over combat ticks', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'mage',
+        hp: 200,
+        maxHp: 200,
+        mp: 50,
+        maxMp: 50,
+        stats: { str: 5, int: 30, dex: 100, vit: 10, luk: 5 },
+        resource: 50,
+        maxResource: 50,
+        resourceType: 'mp',
+      });
+      const monster = makeMonsterInstance({ hp: 999, str: 1, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'meditation',
+      });
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBe(38);
+      expect(state.actionLog.some(line => line.includes('魔力回復'))).toBe(true);
+      vi.restoreAllMocks();
+    });
+
+    it('applies purify as a real debuff removal effect', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        classId: 'priest',
+        stats: { str: 5, int: 30, dex: 100, vit: 10, luk: 5 },
+        resource: 50,
+        maxResource: 100,
+        resourceType: 'faith',
+      });
+      const monster = makeMonsterInstance({ hp: 999, dex: 1 });
+
+      const combatId = engine.startCombat([player], [monster]);
+      const state = engine.getCombatState(combatId)!;
+      state.playerTeam[0].activeEffects.push({
+        type: 'poison',
+        value: 5,
+        duration: 3,
+        remainingDuration: 3,
+        tickDamage: 5,
+      });
+
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'skill',
+        skillId: 'purify',
+        targetId: player.id,
+      });
+
+      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'poison')).toBe(false);
+      expect(state.actionLog.some(line => line.includes('淨化'))).toBe(true);
+      vi.restoreAllMocks();
+    });
   });
 
   // ── Victory condition ──

@@ -350,6 +350,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '4 tick 內法術命中回復 MP，命中 approaching 目標額外回復。',
     fullDescription: '消耗 18 MP，冷卻 6。自己獲得 4 tick 魔力回流；每次法術命中回復 6 MP，若命中 approaching 目標額外回復 4 MP。',
     tags: ['support', 'resource', 'buff', 'magical'],
+    effects: [{ type: 'mana_regen', value: 6, duration: 4 }],
     special: { mpGainOnSpellHit: 6, mpGainOnApproachingHit: 4, duration: 4 },
   },
   elemental_mastery: {
