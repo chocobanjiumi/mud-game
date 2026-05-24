@@ -71,6 +71,7 @@ import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventory
 import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
+import { buildNearbyCombatPayload } from './nearby-combat.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
@@ -106,6 +107,9 @@ type LocalMapPayload = {
     exits: RoomExit[];
   }[];
 };
+
+type CardinalDirection = 'north' | 'east' | 'south' | 'west';
+const CARDINAL_DIRECTIONS: CardinalDirection[] = ['north', 'east', 'south', 'west'];
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
@@ -589,6 +593,13 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     travelNodes: roomTravelNodes,
     inspectHints,
     entities,
+    nearbyCombat: buildNearbyCombatPayload({
+      characterId: char.id,
+      currentRoom: roomInfo.room,
+      getAliveMonsters: roomId => world.getAliveMonsters(roomId),
+      getApproachingMonsters: roomId => world.getApproachingMonsters(roomId),
+      isScouted: (characterId, roomId) => hasDiscovery(characterId, 'visit_room', roomId) || hasDiscovery(characterId, 'scout_room', roomId),
+    }),
   };
 }
 
@@ -1523,6 +1534,14 @@ function cmdAttack(session: WsSession, target: string): void {
 
   combat.setRoundEndCallback(combatId, (roundInfo) => {
     lastRound = roundInfo.round;
+    const arrived = world.tickApproaching(char.roomId);
+    for (const approaching of arrived) {
+      const monster = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === approaching.instanceId);
+      if (monster) {
+        combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id);
+        sendSystem(session.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
+      }
+    }
 
     for (const [playerId, action] of roundInfo.playerActions) {
       // 只追蹤玩家行動
@@ -1616,6 +1635,10 @@ function cmdSkill(session: WsSession, args: string[]): void {
   if (combatId) {
     if (usageContext === 'field') {
       sendError(session.sessionId, `「${skillDef.name}」只能在平時使用。`);
+      return;
+    }
+    if (handleCrossRoomCombatSkill(session, char, combatId, skillDef, target)) {
+      tutorialMgr.advanceStep(char.id, 'skill');
       return;
     }
     if (skillDef?.targetType === 'all_enemies' && skillDef.special?.areaScope !== 'combat') {
@@ -1719,6 +1742,123 @@ function cmdSkill(session: WsSession, args: string[]): void {
 function spendSkillResource(char: Character, skillDef: typeof SKILL_DEFS[string], resourceCost: number): void {
   const faithBonus = char.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0;
   applySkillResourceChange(char, skillDef, resourceCost, faithBonus);
+}
+
+function handleCrossRoomCombatSkill(
+  session: WsSession,
+  char: Character,
+  combatId: string,
+  skillDef: typeof SKILL_DEFS[string],
+  target: string,
+): boolean {
+  const areaScope = skillDef.special?.areaScope;
+  const canCrossRoom = Boolean(skillDef.special?.crossRoom || skillDef.special?.crossRoomRequiresScout || areaScope === 'adjacent_cardinal');
+  if (!canCrossRoom) return false;
+
+  const parsed = parseCrossRoomTarget(target);
+  const directions = areaScope === 'adjacent_cardinal'
+    ? CARDINAL_DIRECTIONS
+    : parsed.direction
+      ? [parsed.direction]
+      : [];
+  if (directions.length === 0) return false;
+
+  const state = combat.getCombatState(combatId);
+  const actor = state?.playerTeam.find(player => player.id === char.id && !player.isDead);
+  if (!state || !actor) {
+    sendError(session.sessionId, '找不到目前戰鬥狀態。');
+    return true;
+  }
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: skillDef.special?.isHeal ? 'on_heal' : 'on_cast' });
+  const resourceCheck = checkSkillResource(actor, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  const hits: string[] = [];
+  for (const direction of directions) {
+    const room = getRoom(char.roomId);
+    const exit = room?.exits.find(candidate => candidate.direction === direction && !candidate.locked);
+    const targetRoomId = exit?.targetRoomId;
+    if (!targetRoomId) {
+      if (directions.length === 1) sendError(session.sessionId, `方向 ${direction} 無法通行。`);
+      continue;
+    }
+    if (skillDef.special?.crossRoomRequiresScout && !hasDiscovery(char.id, 'visit_room', targetRoomId) && !hasDiscovery(char.id, 'scout_room', targetRoomId)) {
+      if (directions.length === 1) sendError(session.sessionId, `你尚未偵查 ${direction} 的房間。`);
+      continue;
+    }
+
+    const candidates = world.getAliveMonsters(targetRoomId);
+    const selected = skillDef.targetType === 'single_enemy'
+      ? [parsed.target ? world.findMonsterInRoom(targetRoomId, parsed.target) : candidates[0]].filter((monster): monster is NonNullable<typeof monster> => !!monster)
+      : candidates.slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? candidates.length);
+    const arrivalTicks = Math.max(0, runtime.arrivalTicks ?? getNumericSpecial(skillDef, 'arrivalTicks') ?? 1);
+
+    for (const monster of selected) {
+      const damage = applyCrossRoomSkillDamage(char, skillDef, monster);
+      if (monster.hp <= 0 || monster.isDead) {
+        world.killMonster(targetRoomId, monster.instanceId);
+        hits.push(`${monster.def.name}受到 ${damage} 傷害並倒下`);
+        continue;
+      }
+      const approaching = world.moveMonsterToApproaching(targetRoomId, char.roomId, direction, monster.instanceId, arrivalTicks, char.id);
+      if (approaching) {
+        hits.push(`${monster.def.name}受到 ${damage} 傷害，arrivalTicks=${approaching.arrivalTicks}`);
+        if (approaching.arrivalTicks === 0) {
+          const arrived = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === monster.instanceId);
+          if (arrived) combat.addMonsterToCombat(combatId, arrived, char.id);
+        }
+      }
+    }
+  }
+
+  if (hits.length === 0) {
+    sendError(session.sessionId, `「${skillDef.name}」沒有找到可命中的跨房目標。`);
+    return true;
+  }
+
+  applySkillResourceChange(actor, skillDef, resourceCheck.effectiveCost, actor.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0);
+  char.resource = actor.resource;
+  char.mp = actor.mp;
+  saveCharacter(char);
+  sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
+  broadcastRoomState(char.roomId);
+  return true;
+}
+
+function parseCrossRoomTarget(target: string): { direction?: CardinalDirection; target?: string } {
+  const tokens = target.split(/\s+/).filter(Boolean);
+  let direction: CardinalDirection | undefined;
+  const rest: string[] = [];
+  for (const token of tokens) {
+    const normalized = token.startsWith('direction:') ? token.slice('direction:'.length) : token;
+    if (isCardinalDirection(normalized)) direction = normalized;
+    else rest.push(token);
+  }
+  return { direction, target: rest.join(' ') };
+}
+
+function isCardinalDirection(value: string): value is CardinalDirection {
+  return CARDINAL_DIRECTIONS.includes(value as CardinalDirection);
+}
+
+function applyCrossRoomSkillDamage(char: Character, skillDef: typeof SKILL_DEFS[string], monster: ReturnType<typeof world.getAliveMonsters>[number]): number {
+  const stat = skillDef.damageType === 'physical'
+    ? char.stats.str * 2 + char.stats.dex
+    : char.stats.int * 2;
+  const defense = skillDef.damageType === 'physical' ? monster.def.vit : Math.floor((monster.def.int + monster.def.vit) / 2);
+  const damage = Math.max(1, Math.floor(stat * skillDef.multiplier - defense * 0.5));
+  monster.hp = Math.max(0, monster.hp - damage);
+  if (monster.hp <= 0) monster.isDead = true;
+  return damage;
+}
+
+function getNumericSpecial(skillDef: typeof SKILL_DEFS[string], key: string): number | undefined {
+  const value = skillDef.special?.[key];
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
 }
 
 function getSkillUsageContext(skillDef: typeof SKILL_DEFS[string]): 'combat' | 'field' | 'both' {

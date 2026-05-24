@@ -73,6 +73,37 @@ describe('WorldManager respawn policy', () => {
     expect(world.handleMove('p1', 'south')?.room.id).toBe('starter_village_rooftop_walk');
     expect(world.handleMove('p1', 'down')?.room.id).toBe('training_ground');
   });
+
+  it('moves cross-room targets into approaching state and arrives after ticks', () => {
+    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    expect(slime).toBeDefined();
+
+    const approaching = world.moveMonsterToApproaching(
+      'village_gate',
+      'village_square',
+      'south',
+      slime!.instanceId,
+      2,
+      'p1',
+    );
+
+    expect(approaching).toMatchObject({
+      instanceId: slime!.instanceId,
+      sourceDirection: 'south',
+      arrivalTicks: 2,
+      targetPlayerId: 'p1',
+    });
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getApproachingMonsters('village_square')[0].arrivalTicks).toBe(2);
+
+    expect(world.tickApproaching('village_square')).toEqual([]);
+    expect(world.getApproachingMonsters('village_square')[0].arrivalTicks).toBe(1);
+    const arrived = world.tickApproaching('village_square');
+
+    expect(arrived[0].instanceId).toBe(slime!.instanceId);
+    expect(world.getApproachingMonsters('village_square')).toEqual([]);
+    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+  });
 });
 
 describe('room exit topology', () => {

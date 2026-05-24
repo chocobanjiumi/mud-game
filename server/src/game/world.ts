@@ -1,6 +1,6 @@
 // 世界管理器 - 房間、玩家位置、怪物重生
 
-import type { RoomDef, Direction, MonsterDef, SpawnPoint } from '@game/shared';
+import type { RoomDef, Direction, MonsterDef, SpawnPoint, ApproachingMonsterPayload } from '@game/shared';
 import { ROOMS, ZONES, getRoom, getRoomsByZone } from '../data/rooms.js';
 import { getMonster } from '../data/monsters.js';
 import { getNpcsByRoom } from '../data/npcs.js';
@@ -51,6 +51,8 @@ interface MoveHistoryEntry {
   reverseDirection: Direction;
 }
 
+export interface ApproachingMonsterState extends ApproachingMonsterPayload {}
+
 // ============================================================
 //  WorldManager
 // ============================================================
@@ -64,6 +66,8 @@ export class WorldManager {
   private playerMoveHistory: Map<string, MoveHistoryEntry[]> = new Map();
   /** roomId -> MonsterInstance[] */
   private roomMonsters: Map<string, MonsterInstance[]> = new Map();
+  /** destination roomId -> approaching monsters */
+  private approachingMonsters: Map<string, ApproachingMonsterState[]> = new Map();
   /** Counter for unique monster instance IDs */
   private monsterCounter = 0;
   /** Respawn timer handle */
@@ -311,6 +315,108 @@ export class WorldManager {
   /** 取得房間內活著的怪物 */
   getAliveMonsters(roomId: string): MonsterInstance[] {
     return (this.roomMonsters.get(roomId) ?? []).filter(m => !m.isDead);
+  }
+
+  getApproachingMonsters(roomId: string): ApproachingMonsterState[] {
+    return [...(this.approachingMonsters.get(roomId) ?? [])];
+  }
+
+  setApproachingMonsters(roomId: string, monsters: ApproachingMonsterState[]): void {
+    this.approachingMonsters.set(roomId, monsters);
+    this.roomStateChangeFn?.(roomId);
+  }
+
+  moveMonsterToApproaching(
+    sourceRoomId: string,
+    destinationRoomId: string,
+    sourceDirection: ApproachingMonsterState['sourceDirection'],
+    instanceId: string,
+    arrivalTicks: number,
+    targetPlayerId?: string,
+    targetPartyId?: string,
+  ): ApproachingMonsterState | null {
+    const monsters = this.roomMonsters.get(sourceRoomId);
+    const monster = monsters?.find(candidate => candidate.instanceId === instanceId && !candidate.isDead);
+    if (!monsters || !monster) return null;
+
+    monsters.splice(monsters.indexOf(monster), 1);
+    const approaching: ApproachingMonsterState = {
+      instanceId: monster.instanceId,
+      monsterId: monster.monsterId,
+      name: monster.def.name,
+      alias: monster.def.alias,
+      sourceDirection,
+      sourceRoomId,
+      destinationRoomId,
+      arrivalTicks: Math.max(0, arrivalTicks),
+      targetPlayerId,
+      targetPartyId,
+      hp: monster.hp,
+      maxHp: monster.maxHp,
+      image: `/images/monsters/monster_${monster.monsterId}.png`,
+    };
+
+    if (arrivalTicks <= 0) {
+      this.placeArrivedMonster(approaching, monster);
+    } else {
+      const list = this.approachingMonsters.get(destinationRoomId) ?? [];
+      list.push(approaching);
+      this.approachingMonsters.set(destinationRoomId, list);
+    }
+    this.roomStateChangeFn?.(sourceRoomId);
+    this.roomStateChangeFn?.(destinationRoomId);
+    return approaching;
+  }
+
+  tickApproaching(roomId: string): ApproachingMonsterState[] {
+    const list = this.approachingMonsters.get(roomId) ?? [];
+    const arrived: ApproachingMonsterState[] = [];
+    const remaining: ApproachingMonsterState[] = [];
+
+    for (const approaching of list) {
+      const next = { ...approaching, arrivalTicks: approaching.arrivalTicks - 1 };
+      if (next.arrivalTicks <= 0) {
+        arrived.push({ ...next, arrivalTicks: 0 });
+      } else {
+        remaining.push(next);
+      }
+    }
+
+    if (remaining.length > 0) this.approachingMonsters.set(roomId, remaining);
+    else this.approachingMonsters.delete(roomId);
+
+    for (const monster of arrived) {
+      this.placeArrivedMonster(monster);
+    }
+    if (arrived.length > 0 || list.length !== remaining.length) this.roomStateChangeFn?.(roomId);
+    return arrived;
+  }
+
+  private placeArrivedMonster(approaching: ApproachingMonsterState, existing?: MonsterInstance): MonsterInstance {
+    const def = existing?.def ?? getMonster(approaching.monsterId);
+    if (!def) {
+      throw new Error(`Unknown approaching monster ${approaching.monsterId}`);
+    }
+    const instance: MonsterInstance = existing ?? {
+      instanceId: approaching.instanceId,
+      monsterId: approaching.monsterId,
+      def,
+      hp: approaching.hp,
+      maxHp: approaching.maxHp,
+      mp: def.mp,
+      maxMp: def.mp,
+      isDead: false,
+      respawnAt: null,
+    };
+    instance.hp = Math.max(1, approaching.hp);
+    instance.isDead = false;
+    instance.respawnAt = null;
+    const destination = this.roomMonsters.get(approaching.destinationRoomId) ?? [];
+    if (!destination.some(monster => monster.instanceId === instance.instanceId)) {
+      destination.push(instance);
+    }
+    this.roomMonsters.set(approaching.destinationRoomId, destination);
+    return instance;
   }
 
   /** 取得特定怪物實例 */

@@ -5,6 +5,7 @@ import type { LearnedSkill } from './skill.js';
 import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { InventoryItem } from './item.js';
 import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
+import type { Direction } from './world.js';
 import type { ActiveStatusEffect } from './combat.js';
 import type { CharacterOriginSelection } from './origin.js';
 
@@ -136,6 +137,59 @@ export interface RoomEntity {
   actions: RoomEntityAction[];
 }
 
+export type CardinalDirection = Extract<Direction, 'north' | 'south' | 'east' | 'west'>;
+
+export interface NearbyCombatMonsterPayload {
+  id: string;
+  monsterId: string;
+  name: string;
+  alias: string;
+  label?: string;
+  level: number;
+  hp: number;
+  maxHp: number;
+  image?: string;
+  threatTags: string[];
+}
+
+export interface NearbyCombatCurrentRoomPayload {
+  roomId: string;
+  roomName: string;
+  monsters: NearbyCombatMonsterPayload[];
+}
+
+export interface NearbyCombatNeighborPayload {
+  direction: CardinalDirection;
+  passable: boolean;
+  roomId?: string;
+  roomName?: string;
+  scouted: boolean;
+  monsterCount: number;
+  monsters?: NearbyCombatMonsterPayload[];
+}
+
+export interface ApproachingMonsterPayload {
+  instanceId: string;
+  monsterId: string;
+  name: string;
+  alias: string;
+  sourceDirection: CardinalDirection;
+  sourceRoomId: string;
+  destinationRoomId: string;
+  arrivalTicks: number;
+  targetPlayerId?: string;
+  targetPartyId?: string;
+  hp: number;
+  maxHp: number;
+  image?: string;
+}
+
+export interface NearbyCombatPayload {
+  current: NearbyCombatCurrentRoomPayload;
+  neighbors: NearbyCombatNeighborPayload[];
+  approaching: ApproachingMonsterPayload[];
+}
+
 export interface RoomPayload {
   id: string;
   zone: string;
@@ -154,6 +208,7 @@ export interface RoomPayload {
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
   inspectHints?: { label: string; command: string }[];
   entities?: RoomEntity[];
+  nearbyCombat?: NearbyCombatPayload;
 }
 
 export interface LocalMapRoom {
