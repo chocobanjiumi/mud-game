@@ -131,6 +131,12 @@ describe('key UI component rendering', () => {
     expect(html).toContain('神射手');
     expect(html).toContain('影刃');
     expect(html).toContain('獵陷師');
+    expect(html).toContain('元素師');
+    expect(html).toContain('奧術師');
+    expect(html).toContain('時術師');
+    expect(html).toContain('主教');
+    expect(html).toContain('審判者');
+    expect(html).toContain('德魯伊');
   });
 
   it('renders skill learned modal details', () => {
