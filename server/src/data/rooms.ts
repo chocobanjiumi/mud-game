@@ -1548,7 +1548,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
-      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '木梯連到觀戰用的屋頂棧道' },
+      { direction: 'up', targetRoomId: 'starter_village_rooftop_walk', description: '木梯上到觀戰用的屋頂棧道' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
@@ -1767,7 +1767,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '市場小巷在北側' },
       { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊' },
-      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '木階可上屋頂棧道' },
+      { direction: 'up', targetRoomId: 'starter_village_rooftop_walk', description: '木階可上屋頂棧道' },
     ],
     mapSymbol: '[H]',
     mapX: 4,
@@ -1799,9 +1799,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_rooftop_walk.png',
     imagePrompt: '屋頂棧道 in starter_village, town exploration rooftop walkway over training yard, ropes, dusk sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。南側梯子下到訓練場，西面連向守衛哨所，東邊可下馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
+      '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
     exits: [
-      { direction: 'south', targetRoomId: 'training_ground', description: '梯子下到訓練場' },
+      { direction: 'down', targetRoomId: 'training_ground', description: '梯子下到訓練場' },
       { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '棧道西端連到守衛哨所' },
       { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '東側木階下到馬廄院' },
     ],
