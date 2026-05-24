@@ -8,7 +8,49 @@ export type ItemType = 'weapon' | 'armor' | 'accessory' | 'consumable' | 'materi
 export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet';
 export type EquipSlot = 'weapon' | 'head' | 'body' | 'hands' | 'feet' | 'ring' | 'earring' | 'belt' | 'necklace' | 'accessory';
 
-export type WeaponType = 'spear' | 'greataxe' | 'katana' | 'elemental_staff' | 'grimoire' | 'hourglass_staff' | 'crossbow' | 'dagger' | 'whip' | 'holy_tome' | 'nature_staff' | 'warhammer';
+export type WeaponCategory = 'sword' | 'axe' | 'hammer' | 'polearm' | 'bow' | 'crossbow' | 'dagger' | 'shortsword' | 'staff' | 'grimoire' | 'focus' | 'holy_tome' | 'totem';
+export type WeaponType =
+  | WeaponCategory
+  | 'spear'
+  | 'greataxe'
+  | 'katana'
+  | 'elemental_staff'
+  | 'hourglass_staff'
+  | 'nature_staff'
+  | 'warhammer'
+  | 'whip';
+
+export interface WeaponTypeDef {
+  id: WeaponType;
+  name: string;
+  category: WeaponCategory;
+  rangeProfile: 'melee' | 'ranged' | 'spell' | 'support';
+  classFamilies: ClassId[];
+}
+
+export const WEAPON_TYPE_DEFS: Record<WeaponType, WeaponTypeDef> = {
+  sword: { id: 'sword', name: '劍', category: 'sword', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  axe: { id: 'axe', name: '斧', category: 'axe', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  hammer: { id: 'hammer', name: '錘', category: 'hammer', rangeProfile: 'melee', classFamilies: ['swordsman', 'priest'] },
+  polearm: { id: 'polearm', name: '槍/長柄', category: 'polearm', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  bow: { id: 'bow', name: '弓', category: 'bow', rangeProfile: 'ranged', classFamilies: ['ranger'] },
+  crossbow: { id: 'crossbow', name: '弩', category: 'crossbow', rangeProfile: 'ranged', classFamilies: ['ranger'] },
+  dagger: { id: 'dagger', name: '匕首', category: 'dagger', rangeProfile: 'melee', classFamilies: ['ranger'] },
+  shortsword: { id: 'shortsword', name: '短劍', category: 'shortsword', rangeProfile: 'melee', classFamilies: ['ranger', 'swordsman'] },
+  staff: { id: 'staff', name: '法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage', 'priest'] },
+  grimoire: { id: 'grimoire', name: '魔導書', category: 'grimoire', rangeProfile: 'spell', classFamilies: ['mage'] },
+  focus: { id: 'focus', name: '法器', category: 'focus', rangeProfile: 'spell', classFamilies: ['mage', 'priest'] },
+  holy_tome: { id: 'holy_tome', name: '聖典', category: 'holy_tome', rangeProfile: 'support', classFamilies: ['priest'] },
+  totem: { id: 'totem', name: '圖騰', category: 'totem', rangeProfile: 'support', classFamilies: ['priest'] },
+  spear: { id: 'spear', name: '槍', category: 'polearm', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  greataxe: { id: 'greataxe', name: '巨斧', category: 'axe', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  katana: { id: 'katana', name: '太刀', category: 'sword', rangeProfile: 'melee', classFamilies: ['swordsman'] },
+  elemental_staff: { id: 'elemental_staff', name: '元素法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage'] },
+  hourglass_staff: { id: 'hourglass_staff', name: '沙漏法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage'] },
+  nature_staff: { id: 'nature_staff', name: '自然法杖', category: 'staff', rangeProfile: 'support', classFamilies: ['priest'] },
+  warhammer: { id: 'warhammer', name: '戰錘', category: 'hammer', rangeProfile: 'melee', classFamilies: ['swordsman', 'priest'] },
+  whip: { id: 'whip', name: '鞭', category: 'focus', rangeProfile: 'support', classFamilies: ['ranger', 'priest'] },
+};
 
 export type ItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
 

@@ -19,7 +19,10 @@ import { LootCalculator } from '../game/loot.js';
 import { expRequiredForLevel } from '../game/player.js';
 import {
   AFFIX_POOLS,
+  AFFIX_BUILD_DIRECTIONS,
+  AFFIX_TIER_BALANCE,
   QUALITY_RULES,
+  WEAPON_TYPE_DEFS,
   generateEquipmentInstance,
   getEligibleAffixes,
   reforgeEquipmentInstanceQuality,
@@ -501,6 +504,29 @@ describe('Balance: Item instance generation', () => {
     const tiers = new Set(Object.values(AFFIX_POOLS).flat().map(affix => affix.tier));
 
     expect(tiers).toEqual(new Set(['T1', 'T2', 'T3', 'T4', 'T5']));
+  });
+
+  it('defines canonical weapon categories and maps every equipment weapon type', () => {
+    const canonicalNames = Object.values(WEAPON_TYPE_DEFS).map(def => def.name);
+    expect(canonicalNames).toEqual(expect.arrayContaining([
+      '劍', '斧', '錘', '槍/長柄', '弓', '弩', '匕首', '短劍', '法杖', '魔導書', '法器', '聖典', '圖騰',
+    ]));
+
+    const itemWeaponTypes = new Set(Object.values(ITEM_DEFS)
+      .map(item => item.weaponType)
+      .filter((weaponType): weaponType is keyof typeof WEAPON_TYPE_DEFS => !!weaponType));
+    for (const weaponType of itemWeaponTypes) {
+      expect(WEAPON_TYPE_DEFS[weaponType], weaponType).toBeDefined();
+    }
+  });
+
+  it('defines affix tier balance ranges and build directions for each class family', () => {
+    expect(Object.keys(AFFIX_TIER_BALANCE)).toEqual(['T1', 'T2', 'T3', 'T4', 'T5']);
+    expect(AFFIX_TIER_BALANCE.T5.skillModifierPct[1]).toBeGreaterThan(AFFIX_TIER_BALANCE.T1.skillModifierPct[1]);
+    expect(new Set(AFFIX_BUILD_DIRECTIONS.map(direction => direction.classId))).toEqual(
+      new Set(['swordsman', 'mage', 'ranger', 'priest']),
+    );
+    expect(AFFIX_BUILD_DIRECTIONS.every(direction => direction.skillTags.length > 0 && direction.affixIds.length > 0)).toBe(true);
   });
 
   it('generates quality-specific affix counts and legendary fixed effects', () => {

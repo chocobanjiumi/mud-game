@@ -1,5 +1,5 @@
 import { ITEM_DEFS } from '../constants/items.js';
-import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats } from '../types/item.js';
+import type { BaseEquipmentDef, EquipSlot, ItemDef, ItemStats, WeaponCategory } from '../types/item.js';
 import { toBaseEquipmentDef } from '../types/item.js';
 import type { SkillTag } from '../types/skill.js';
 
@@ -76,6 +76,46 @@ export interface EquipmentDropRule {
   sourceTags?: string[];
   zoneTags?: string[];
 }
+
+export interface AffixTierBalance {
+  statBudget: [number, number];
+  skillModifierPct: [number, number];
+  resourceModifier: [number, number];
+  internalCooldownRounds: [number, number];
+}
+
+export interface AffixBuildDirection {
+  id: string;
+  classId: string;
+  name: string;
+  weaponCategories: WeaponCategory[];
+  skillTags: SkillTag[];
+  affixIds: string[];
+  notes: string;
+}
+
+export const AFFIX_TIER_BALANCE: Record<AffixTier, AffixTierBalance> = {
+  T1: { statBudget: [1, 3], skillModifierPct: [3, 6], resourceModifier: [1, 3], internalCooldownRounds: [0, 1] },
+  T2: { statBudget: [2, 5], skillModifierPct: [6, 9], resourceModifier: [2, 4], internalCooldownRounds: [0, 2] },
+  T3: { statBudget: [3, 8], skillModifierPct: [8, 12], resourceModifier: [3, 6], internalCooldownRounds: [1, 3] },
+  T4: { statBudget: [4, 12], skillModifierPct: [10, 16], resourceModifier: [4, 8], internalCooldownRounds: [2, 4] },
+  T5: { statBudget: [5, 18], skillModifierPct: [12, 22], resourceModifier: [5, 10], internalCooldownRounds: [3, 5] },
+};
+
+export const AFFIX_BUILD_DIRECTIONS: AffixBuildDirection[] = [
+  { id: 'warrior_guard', classId: 'swordsman', name: '戰士：格擋回怒與反擊', weaponCategories: ['sword', 'hammer'], skillTags: ['defense', 'control', 'resource'], affixIds: ['behavior_guard_t1', 'behavior_counter_t4'], notes: '強化擋下第一波、被打回怒、挑釁減耗與反擊傷害，但主要坦度仍來自戰士/盾衛技能。' },
+  { id: 'warrior_berserk', classId: 'swordsman', name: '戰士：低血爆發與破甲', weaponCategories: ['axe'], skillTags: ['burst', 'aoe', 'damage'], affixIds: ['behavior_burst_t1', 'behavior_execute_t5', 'behavior_harvest_t3'], notes: '支援狂斧低血增傷、擊殺返怒與範圍命中返怒，不提供法系或遠距核心能力。' },
+  { id: 'warrior_lancer', classId: 'swordsman', name: '戰士：approaching 攔截', weaponCategories: ['polearm'], skillTags: ['control', 'cross_room', 'interrupt'], affixIds: ['behavior_snare_t4'], notes: '支援槍騎直線穿刺、出口槍陣與抵達攔截，仍需戰士系技能把怪物拉進戰線。' },
+  { id: 'mage_elementalist', classId: 'mage', name: '法師：元素輪轉與四方 AoE', weaponCategories: ['staff'], skillTags: ['damage', 'aoe', 'cross_room'], affixIds: ['class_mage_t3', 'behavior_cross_room_t3'], notes: '強化 MP 回復、元素傷害與跨房法術命中，風險來自相鄰房怪物 approaching。' },
+  { id: 'mage_arcane', classId: 'mage', name: '法師：護盾與吸能', weaponCategories: ['staff', 'grimoire', 'focus'], skillTags: ['defense', 'resource'], affixIds: ['behavior_focus_t2', 'class_mage_t3'], notes: '支援奧術師護盾效率、MP 轉換與詠唱抗打斷，但不替代祭司治療。' },
+  { id: 'mage_time', classId: 'mage', name: '法師：slow 與 arrivalTicks', weaponCategories: ['staff', 'grimoire'], skillTags: ['control', 'interrupt', 'cross_room'], affixIds: ['behavior_snare_t4'], notes: '支援時術師 slow、CD、arrivalTicks 與預兆打斷的控制定位。' },
+  { id: 'ranger_marksman', classId: 'ranger', name: '遊俠：隔房狙擊與弱點', weaponCategories: ['bow', 'crossbow'], skillTags: ['burst', 'cross_room', 'resource'], affixIds: ['behavior_cross_room_t3', 'class_ranger_t4'], notes: '強化專注回復、遠距命中、標記增傷與暴擊，不提供坦克式硬控。' },
+  { id: 'ranger_assassin', classId: 'ranger', name: '遊俠：背刺毒與煙幕', weaponCategories: ['dagger', 'shortsword'], skillTags: ['damage', 'mobility', 'control'], affixIds: ['behavior_swift_t3', 'behavior_execute_t5'], notes: '支援影刃剛抵達目標增傷、閃避後節奏與處決窗口。' },
+  { id: 'ranger_trapper', classId: 'ranger', name: '遊俠：陷阱與偵查', weaponCategories: ['bow', 'crossbow', 'focus'], skillTags: ['control', 'interrupt', 'cross_room'], affixIds: ['behavior_snare_t4', 'class_ranger_t4'], notes: '支援獵陷師陷阱持續、陷阱觸發返專注、arrivalTicks 控制與偵查資訊。' },
+  { id: 'priest_bishop', classId: 'priest', name: '祭司：群補與護盾', weaponCategories: ['holy_tome', 'staff'], skillTags: ['heal', 'defense', 'resource'], affixIds: ['behavior_mercy_t2', 'class_priest_t5'], notes: '強化治療量、護盾量、復活 CD 與慈悲端控制，但不把祭司變成高爆發輸出。' },
+  { id: 'priest_inquisitor', classId: 'priest', name: '祭司：光傷與審判', weaponCategories: ['holy_tome', 'hammer'], skillTags: ['damage', 'burst', 'interrupt'], affixIds: ['behavior_execute_t5', 'class_priest_t5'], notes: '支援審判者光傷、undead、沉默與處決，資源仍受信仰方向限制。' },
+  { id: 'priest_druid', classId: 'priest', name: '祭司：HoT 與自然控制', weaponCategories: ['totem', 'staff'], skillTags: ['heal', 'control', 'nature'], affixIds: ['behavior_mercy_t2', 'behavior_snare_t4'], notes: '支援德魯伊 HoT、荊棘、藤蔓與出口圖騰，控制強於爆發。' },
+];
 
 const TIER_ORDER: AffixTier[] = ['T1', 'T2', 'T3', 'T4', 'T5'];
 
