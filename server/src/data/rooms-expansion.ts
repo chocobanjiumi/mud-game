@@ -2887,7 +2887,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '噩夢花園北方的空間突然折成一座傾斜觀測台，巨大的透鏡不朝天空，而是指向裂隙中不斷誕生又消失的假星。台面刻滿混沌方程，線條每隔幾秒就會自行重排，讓原本正確的路徑變成死路。這裡曾是術士監測裂隙脈動的工作站，如今所有儀器都被深淵反向利用，用來尋找現實防線的薄弱處。',
     exits: [
-      { direction: 'north', targetRoomId: 'time_distortion', description: '觀測弧線回到時空扭曲區' },
+      { direction: 'up', targetRoomId: 'time_distortion', description: '觀測弧線回到時空扭曲區' },
       { direction: 'east', targetRoomId: 'time_splinter_vault', description: '透鏡光束照向時間碎片庫' },
       { direction: 'west', targetRoomId: 'nightmare_garden', description: '倒轉階梯回到噩夢花園' },
     ],
@@ -3111,7 +3111,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'abyss_lord_chamber', description: '沿塔基回到領主之間' },
       { direction: 'east', targetRoomId: 'abyssal_beacon', description: '信標光纜纏向塔身' },
-      { direction: 'up', targetRoomId: 'celestial_gate', description: '破封塔頂通向天界之門' },
     ],
     monsters: [
       { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
@@ -6264,7 +6263,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊海門旁的岩地凹出一座天然潮池，池邊立著小小石祠，供奉無名海路守護靈。漁民會在出航前放下貝殼、海玻璃、魚骨和一小撮鹽，祈求霧中看得見回家的燈。潮池水面平靜時像鏡子，偶爾會映出不屬於當下天空的星點。這裡是任務與信仰房，玩家可替失蹤水手獻祭、解讀潮池異象，或收集特殊貝殼完成居民委託。若從霧望燈室取得方位片，再來此比對倒影，能發現某條被隱藏的夜航路線。',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_sea_gate', description: '石階回到舊海門' },
-      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '潮濕岩路通向防波堤端' },
+      { direction: 'up', targetRoomId: 'mist_harbor_breakwater_end', description: '潮濕岩路上回防波堤端' },
     ],
     mapSymbol: '[祠]',
     mapX: 3,
@@ -6336,7 +6335,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '外棧道回到渡船棧橋' },
       { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '維修門通向燈室階梯' },
       { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '外梯連到霧望燈室' },
-      { direction: 'south', targetRoomId: 'mist_harbor_tidepool_shrine', description: '潮濕岩路回到潮池小祠' },
+      { direction: 'down', targetRoomId: 'mist_harbor_tidepool_shrine', description: '潮濕岩路下到潮池小祠' },
     ],
     mapSymbol: '[堤]',
     mapX: 5,
@@ -7042,7 +7041,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '遠方假燈通向鏡池' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲從北面濕地傳來' },
+      { direction: 'up', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲從上方濕地傳來' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -7317,7 +7316,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '白霧回到霧盲處' },
+      { direction: 'down', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '白霧落向霧盲處' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '月光水線通向堤道' },
     ],
     monsters: [
@@ -8098,7 +8097,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '水渠回到前廳' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_sluice_control', description: '水流通向水閘控制室' },
       { direction: 'south', targetRoomId: 'sunken_catacombs_bone_silt_basin', description: '沉泥坡通向骨泥盆地' },
-      { direction: 'east', targetRoomId: 'sunken_catacombs_serpent_drain', description: '狹窄水道通向蛇形排水道' },
+      { direction: 'down', targetRoomId: 'sunken_catacombs_serpent_drain', description: '狹窄水道下切到蛇形排水道' },
     ],
     monsters: [
       { monsterId: 'drowned_drain_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -8259,7 +8258,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sunken_catacombs_sluice_control', description: '排水道回到水閘室' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_drowned_altar', description: '低水道通向溺水祭壇' },
-      { direction: 'south', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '側渠回到黑水渠' },
+      { direction: 'up', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '側渠上回黑水渠' },
     ],
     monsters: [
       { monsterId: 'drowned_drain_serpent', maxCount: 4, respawnSeconds: 120 },
@@ -17690,7 +17689,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
       { direction: 'east', targetRoomId: 'amber_forest_relic_pit', description: '遺物坑在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在北側' },
+      { direction: 'up', targetRoomId: 'amber_forest_hunter_blind', description: '斜梯上回樹上獵棚' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
@@ -18013,7 +18012,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
       { direction: 'south', targetRoomId: 'amber_forest_ember_beetle_mound', description: '落向燼甲蟲丘' },
       { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
-      { direction: 'south', targetRoomId: 'amber_forest_beast_scrape', description: '斜梯回到獸痕樹皮' },
+      { direction: 'down', targetRoomId: 'amber_forest_beast_scrape', description: '斜梯下到獸痕樹皮' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },

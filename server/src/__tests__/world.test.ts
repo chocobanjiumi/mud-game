@@ -1,5 +1,8 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WorldManager } from '../game/world.js';
+import { ROOMS } from '../data/rooms.js';
+
+const VERTICAL_REVERSE: Record<string, string> = { up: 'down', down: 'up' };
 
 describe('WorldManager respawn policy', () => {
   let world: WorldManager;
@@ -53,5 +56,69 @@ describe('WorldManager respawn policy', () => {
     world.killMonster('windmill_farm', bandit!.instanceId);
 
     expect(bandit!.respawnAt! - now.getTime()).toBe(39_000);
+  });
+
+  it('prioritizes exact reverse movement back to the previous room', () => {
+    world.placePlayer('p1', 'weapon_shop');
+
+    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_crafting_shed');
+    expect(world.handleMove('p1', 'south')?.room.id).toBe('weapon_shop');
+  });
+
+  it('can unwind a multi-step movement path with inverse directions', () => {
+    world.placePlayer('p1', 'training_ground');
+
+    expect(world.handleMove('p1', 'up')?.room.id).toBe('starter_village_rooftop_walk');
+    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_stable_yard');
+    expect(world.handleMove('p1', 'south')?.room.id).toBe('starter_village_rooftop_walk');
+    expect(world.handleMove('p1', 'down')?.room.id).toBe('training_ground');
+  });
+});
+
+describe('room exit topology', () => {
+  it('does not define duplicate directions in a room', () => {
+    const duplicates = Object.values(ROOMS).flatMap(room => {
+      const seen = new Set<string>();
+      return room.exits
+        .filter(exit => {
+          if (seen.has(exit.direction)) return true;
+          seen.add(exit.direction);
+          return false;
+        })
+        .map(exit => `${room.id}:${exit.direction}->${exit.targetRoomId}`);
+    });
+
+    expect(duplicates).toEqual([]);
+  });
+
+  it('keeps vertical exits reversible with up and down', () => {
+    const issues = Object.values(ROOMS).flatMap(room =>
+      room.exits
+        .filter(exit => exit.direction === 'up' || exit.direction === 'down')
+        .filter(exit => {
+          const target = ROOMS[exit.targetRoomId];
+          return !target?.exits.some(back =>
+            back.targetRoomId === room.id && back.direction === VERTICAL_REVERSE[exit.direction],
+          );
+        })
+        .map(exit => `${room.id}:${exit.direction}->${exit.targetRoomId}`),
+    );
+
+    expect(issues).toEqual([]);
+  });
+
+  it('keeps known multi-level routes feeling reversible', () => {
+    expect(ROOMS.training_ground.exits.find(exit => exit.direction === 'up')?.targetRoomId)
+      .toBe('starter_village_rooftop_walk');
+    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'down')?.targetRoomId)
+      .toBe('training_ground');
+    expect(ROOMS.starter_village_stable_yard.exits.find(exit => exit.direction === 'south')?.targetRoomId)
+      .toBe('starter_village_rooftop_walk');
+    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'north')?.targetRoomId)
+      .toBe('starter_village_stable_yard');
+    expect(ROOMS.time_distortion.exits.find(exit => exit.direction === 'down')?.targetRoomId)
+      .toBe('chaos_observatory');
+    expect(ROOMS.chaos_observatory.exits.find(exit => exit.direction === 'up')?.targetRoomId)
+      .toBe('time_distortion');
   });
 });

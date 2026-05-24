@@ -1767,7 +1767,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '市場小巷在北側' },
       { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊' },
-      { direction: 'up', targetRoomId: 'starter_village_rooftop_walk', description: '木階可上屋頂棧道' },
+      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '南側木階連到屋頂棧道' },
     ],
     mapSymbol: '[H]',
     mapX: 4,
@@ -1803,7 +1803,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'down', targetRoomId: 'training_ground', description: '梯子下到訓練場' },
       { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '棧道西端連到守衛哨所' },
-      { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '東側木階下到馬廄院' },
+      { direction: 'north', targetRoomId: 'starter_village_stable_yard', description: '北側木階連到馬廄院' },
     ],
     mapSymbol: '[^]',
     mapX: 3,

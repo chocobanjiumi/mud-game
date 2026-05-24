@@ -33,6 +33,24 @@ function parseOrdinalTarget(query: string): { name: string; ordinal?: number } {
   return { name: match[1].trim(), ordinal };
 }
 
+function reverseDirection(direction: Direction): Direction {
+  const reverse: Record<Direction, Direction> = {
+    north: 'south',
+    south: 'north',
+    east: 'west',
+    west: 'east',
+    up: 'down',
+    down: 'up',
+  };
+  return reverse[direction];
+}
+
+interface MoveHistoryEntry {
+  fromRoomId: string;
+  toRoomId: string;
+  reverseDirection: Direction;
+}
+
 // ============================================================
 //  WorldManager
 // ============================================================
@@ -42,6 +60,8 @@ export class WorldManager {
   private playerPositions: Map<string, Set<string>> = new Map();
   /** playerId -> roomId */
   private playerRoomMap: Map<string, string> = new Map();
+  /** playerId -> stack of room moves, used to make immediate reverse paths stable */
+  private playerMoveHistory: Map<string, MoveHistoryEntry[]> = new Map();
   /** roomId -> MonsterInstance[] */
   private roomMonsters: Map<string, MonsterInstance[]> = new Map();
   /** Counter for unique monster instance IDs */
@@ -110,6 +130,7 @@ export class WorldManager {
     }
     this.playerPositions.get(roomId)!.add(playerId);
     this.playerRoomMap.set(playerId, roomId);
+    this.playerMoveHistory.delete(playerId);
   }
 
   /** 移除玩家（離線時呼叫） */
@@ -118,6 +139,7 @@ export class WorldManager {
     if (roomId) {
       this.playerPositions.get(roomId)?.delete(playerId);
       this.playerRoomMap.delete(playerId);
+      this.playerMoveHistory.delete(playerId);
     }
   }
 
@@ -146,6 +168,24 @@ export class WorldManager {
     const currentRoom = getRoom(currentRoomId);
     if (!currentRoom) return null;
 
+    const history = this.playerMoveHistory.get(playerId) ?? [];
+    const previousMove = history[history.length - 1];
+    if (
+      previousMove
+      && previousMove.toRoomId === currentRoomId
+      && previousMove.reverseDirection === direction
+      && getRoom(previousMove.fromRoomId)
+    ) {
+      history.pop();
+      if (history.length > 0) {
+        this.playerMoveHistory.set(playerId, history);
+      } else {
+        this.playerMoveHistory.delete(playerId);
+      }
+
+      return this.movePlayerToRoom(playerId, currentRoomId, previousMove.fromRoomId, direction);
+    }
+
     const exit = currentRoom.exits.find(e => e.direction === direction);
     if (!exit) return null;
 
@@ -155,15 +195,34 @@ export class WorldManager {
     const targetRoom = getRoom(exit.targetRoomId);
     if (!targetRoom) return null;
 
+    history.push({
+      fromRoomId: currentRoomId,
+      toRoomId: exit.targetRoomId,
+      reverseDirection: reverseDirection(direction),
+    });
+    this.playerMoveHistory.set(playerId, history);
+
+    return this.movePlayerToRoom(playerId, currentRoomId, exit.targetRoomId, direction);
+  }
+
+  private movePlayerToRoom(
+    playerId: string,
+    currentRoomId: string,
+    targetRoomId: string,
+    direction: Direction,
+  ): { room: RoomDef; fromRoomId: string } | null {
+    const targetRoom = getRoom(targetRoomId);
+    if (!targetRoom) return null;
+
     // 從舊房間移除
     this.playerPositions.get(currentRoomId)?.delete(playerId);
 
     // 放入新房間
-    if (!this.playerPositions.has(exit.targetRoomId)) {
-      this.playerPositions.set(exit.targetRoomId, new Set());
+    if (!this.playerPositions.has(targetRoomId)) {
+      this.playerPositions.set(targetRoomId, new Set());
     }
-    this.playerPositions.get(exit.targetRoomId)!.add(playerId);
-    this.playerRoomMap.set(playerId, exit.targetRoomId);
+    this.playerPositions.get(targetRoomId)!.add(playerId);
+    this.playerRoomMap.set(playerId, targetRoomId);
 
     // 廣播離開/進入訊息
     this.broadcastToRoom(currentRoomId, {
@@ -172,7 +231,7 @@ export class WorldManager {
       timestamp: Date.now(),
     }, playerId);
 
-    this.broadcastToRoom(exit.targetRoomId, {
+    this.broadcastToRoom(targetRoomId, {
       type: 'narrative',
       payload: { text: '一位冒險者來到了這裡。' },
       timestamp: Date.now(),
