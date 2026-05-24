@@ -37,7 +37,6 @@ export interface PlayerCreateCharacterOptions {
   raceId?: RaceId;
   genderId?: GenderId;
   faithId?: FaithId;
-  classId?: ClassId;
 }
 
 /** 初始裝備槽（全空） */
@@ -86,16 +85,8 @@ export class PlayerManager {
     const raceId = options.raceId ?? DEFAULT_RACE_ID;
     const genderId = options.genderId ?? DEFAULT_GENDER_ID;
     const faithId = options.faithId ?? DEFAULT_FAITH_ID;
-    const requestedClassDef = options.classId ? CLASS_DEFS[options.classId] : undefined;
-    const classDef = requestedClassDef?.tier === 1 ? requestedClassDef : CLASS_DEFS.adventurer;
-    const baseStats = getInitialStatsForRace(raceId);
-    const stats: BaseStats = {
-      str: baseStats.str + classDef.baseStatBonus.str,
-      int: baseStats.int + classDef.baseStatBonus.int,
-      dex: baseStats.dex + classDef.baseStatBonus.dex,
-      vit: baseStats.vit + classDef.baseStatBonus.vit,
-      luk: baseStats.luk + classDef.baseStatBonus.luk,
-    };
+    const classDef = CLASS_DEFS.adventurer;
+    const stats = getInitialStatsForRace(raceId);
     const hpMax = 100 + (stats.vit - 5) * 8;
     const mpMax = 30 + (stats.int - 5) * 5;
     const character: Character = {

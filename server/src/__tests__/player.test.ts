@@ -1,7 +1,6 @@
 // Player/character management tests
 import { describe, it, expect, beforeEach, beforeAll, afterAll } from 'vitest';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
-import { CLASS_DEFS } from '@game/shared';
 import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
 import { addInventoryItem, getCharacterById, getEquippedItems, getInventory, getStoredItemInstance, removeInventoryItem, setEquipped } from '../db/queries.js';
@@ -171,18 +170,6 @@ describe('PlayerManager', () => {
       expect(char.faithFavor).toBe(10);
       expect(char.stats).toMatchObject({ str: 8, vit: 6, int: 4, dex: 5, luk: 5 });
       expect(char.maxHp).toBeGreaterThan(100);
-    });
-
-    it('should apply selected tier 1 class at creation', () => {
-      const char = pm.createCharacter('MageHero', 'user-1', false, undefined, {
-        classId: 'mage',
-      });
-
-      expect(char.classId).toBe('mage');
-      expect(char.resourceType).toBe(CLASS_DEFS.mage.resourceType);
-      expect(char.resource).toBe(CLASS_DEFS.mage.initialResource);
-      expect(char.maxResource).toBe(CLASS_DEFS.mage.maxResource);
-      expect(char.stats).toMatchObject({ str: 5, int: 13, dex: 6, vit: 7, luk: 6 });
     });
 
     it('should create AI character when isAi is true', () => {

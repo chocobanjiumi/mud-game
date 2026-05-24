@@ -9,7 +9,6 @@ import {
   GENDER_DEFS,
   RACE_DEFS,
   getInitialStatsForRace,
-  type ClassId,
   type CreateCharacterPayload,
   type FaithId,
   type GenderId,
@@ -28,18 +27,16 @@ const statLabels = {
   luk: 'LUK',
 };
 
-type CreationStep = 'name' | 'class' | 'race' | 'gender' | 'faith' | 'confirm';
-const STEPS: CreationStep[] = ['name', 'class', 'race', 'gender', 'faith', 'confirm'];
+type CreationStep = 'name' | 'race' | 'gender' | 'faith' | 'confirm';
+const STEPS: CreationStep[] = ['name', 'race', 'gender', 'faith', 'confirm'];
 const STEP_LABEL: Record<CreationStep, string> = {
   name: '名稱',
-  class: '職業',
   race: '種族',
   gender: '稱謂',
   faith: '信仰',
   confirm: '確認',
 };
 
-const STARTING_CLASS_IDS: ClassId[] = ['swordsman', 'mage', 'ranger', 'priest'];
 const resourceLabels = {
   mp: 'MP',
   rage: '怒氣',
@@ -49,7 +46,6 @@ const resourceLabels = {
 
 export default function CreateCharacterScreen({ onCreate }: CreateCharacterScreenProps) {
   const [name, setName] = useState('');
-  const [classId, setClassId] = useState<ClassId>('swordsman');
   const [raceId, setRaceId] = useState<RaceId>(DEFAULT_RACE_ID);
   const [genderId, setGenderId] = useState<GenderId>(DEFAULT_GENDER_ID);
   const [faithId, setFaithId] = useState<FaithId>(DEFAULT_FAITH_ID);
@@ -58,17 +54,8 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
 
   const race = RACE_DEFS[raceId];
   const faith = FAITH_DEFS[faithId];
-  const classDef = CLASS_DEFS[classId];
-  const stats = useMemo(() => {
-    const baseStats = getInitialStatsForRace(raceId);
-    return {
-      str: baseStats.str + classDef.baseStatBonus.str,
-      int: baseStats.int + classDef.baseStatBonus.int,
-      dex: baseStats.dex + classDef.baseStatBonus.dex,
-      vit: baseStats.vit + classDef.baseStatBonus.vit,
-      luk: baseStats.luk + classDef.baseStatBonus.luk,
-    };
-  }, [classDef, raceId]);
+  const classDef = CLASS_DEFS.adventurer;
+  const stats = useMemo(() => getInitialStatsForRace(raceId), [raceId]);
   const stepIndex = STEPS.indexOf(step);
   const isConfirm = step === 'confirm';
 
@@ -84,7 +71,7 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
       setStep(STEPS[Math.min(STEPS.length - 1, stepIndex + 1)]);
       return;
     }
-    onCreate({ name: trimmed, classId, raceId, genderId, faithId });
+    onCreate({ name: trimmed, raceId, genderId, faithId });
   };
 
   const goBack = () => {
@@ -97,7 +84,7 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
       <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col gap-5 px-4 py-5 lg:px-6">
         <header className="flex flex-col gap-1 border-b border-border-dim pb-4">
           <h1 className="text-2xl font-bold text-text-terminal text-glow">建立角色</h1>
-          <div className="text-sm text-text-dim">選擇一轉職業、出身、稱謂與信仰後進入世界。</div>
+          <div className="text-sm text-text-dim">選擇出身、稱謂與信仰後，以冒險者身份進入世界。</div>
         </header>
 
         <form onSubmit={handleSubmit} className="grid flex-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.75fr)]">
@@ -136,43 +123,6 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                 placeholder="2-12 字"
               />
               {error && <div className="text-xs text-combat-damage">{error}</div>}
-            </section>}
-
-            {step === 'class' && <section className="space-y-3">
-              <h2 className="text-sm font-bold text-text-terminal">一轉職業</h2>
-              <div className="grid gap-2 md:grid-cols-2">
-                {STARTING_CLASS_IDS.map((optionId) => {
-                  const option = CLASS_DEFS[optionId];
-                  return (
-                    <button
-                      key={option.id}
-                      type="button"
-                      onClick={() => setClassId(option.id)}
-                      className={`min-h-36 rounded-md border p-3 text-left transition-colors ${
-                        classId === option.id
-                          ? 'border-text-terminal bg-bg-secondary text-text-bright'
-                          : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
-                      }`}
-                    >
-                      <div className="mb-1 flex items-center justify-between gap-2">
-                        <span className="font-bold text-text-bright">{option.name}</span>
-                        <span className="text-xs text-text-amber">{formatStatMods(option.baseStatBonus)}</span>
-                      </div>
-                      <p className="mb-3 text-xs leading-5">{option.description}</p>
-                      <div className="grid grid-cols-2 gap-2 text-xs">
-                        <div className="rounded border border-border-dim bg-bg-primary px-2 py-1.5">
-                          <span className="text-text-dim">資源 </span>
-                          <span className="text-text-bright">{resourceLabels[option.resourceType]}</span>
-                        </div>
-                        <div className="rounded border border-border-dim bg-bg-primary px-2 py-1.5">
-                          <span className="text-text-dim">初始 </span>
-                          <span className="text-text-bright">{option.initialResource}/{option.maxResource}</span>
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
             </section>}
 
             {step === 'race' && <section className="space-y-3">
@@ -264,7 +214,7 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
                   ))}
                 </div>
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
-                  <SummaryBlock label="職業" title={classDef.name} text={classDef.description} />
+                  <SummaryBlock label="起始職階" title={classDef.name} text="Lv.1 先以冒險者起步，Lv.10 後再進入一轉職業路線。" />
                   <SummaryBlock label="種族被動" title={race.passiveName} text={race.passiveDescription} />
                   <SummaryBlock label="信仰被動" title={faith.passiveName} text={faith.passiveDescription} />
                   <SummaryBlock label="祈禱祝福" title={faith.prayerName} text={faith.prayerDescription} />
@@ -295,7 +245,7 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
           <aside className="lg:sticky lg:top-5 lg:self-start">
             <div className="rounded-md border border-border-dim bg-bg-secondary p-4">
               <div className="mb-3 text-sm font-bold text-text-terminal">角色預覽</div>
-              <div className="mb-4 text-xl font-bold text-text-bright">{name.trim() || `未命名${classDef.name}`}</div>
+              <div className="mb-4 text-xl font-bold text-text-bright">{name.trim() || '未命名冒險者'}</div>
 
               <div className="mb-4 grid grid-cols-5 gap-2">
                 {Object.entries(stats).map(([key, value]) => (
@@ -307,7 +257,7 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
               </div>
 
               <div className="space-y-3 text-sm">
-                <SummaryBlock label="職業" title={`${classDef.name}・${resourceLabels[classDef.resourceType]}`} text={classDef.description} />
+                <SummaryBlock label="起始職階" title={`${classDef.name}・${resourceLabels[classDef.resourceType]}`} text="Lv.1 先以冒險者起步，Lv.10 後再進入一轉職業路線。" />
                 <SummaryBlock label="種族" title={race.name} text={race.passiveDescription} />
                 <SummaryBlock label="性別" title={GENDER_DEFS[genderId].name} text={GENDER_DEFS[genderId].description} />
                 <SummaryBlock label="信仰" title={`${faith.name}・${faith.title}`} text={faith.passiveDescription} />

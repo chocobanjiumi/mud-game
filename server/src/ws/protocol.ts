@@ -1,7 +1,7 @@
 // WebSocket 訊息解析與路由
 
 import type { WebSocket } from 'ws';
-import type { ClassId, ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
+import type { ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, ShopItemRarity } from '@game/shared';
 import type { WsSession } from './handler.js';
 import {
   sendToSession, sendError, sendSystem, updatePing,
@@ -37,11 +37,6 @@ function releasePurchaseLock(userId: string, itemId: string): void {
     userLocks.delete(itemId);
     if (userLocks.size === 0) purchaseLocks.delete(userId);
   }
-}
-
-function isStartingClassId(value: unknown): value is ClassId {
-  return typeof value === 'string'
-    && Object.values(CLASS_DEFS).some((classDef) => classDef.id === value && classDef.tier === 1);
 }
 
 // ─── 速率限制 ───
@@ -304,7 +299,7 @@ async function handleLogin(
 /** 處理建立角色 */
 function handleCreateCharacter(
   session: WsSession,
-  payload: CreateCharacterPayload & { classId?: unknown },
+  payload: CreateCharacterPayload,
 ): void {
   const name = payload.name?.trim();
 
@@ -340,17 +335,11 @@ function handleCreateCharacter(
     return;
   }
 
-  if (!isStartingClassId(payload.classId)) {
-    sendError(session.sessionId, '未知的一轉職業選擇。');
-    return;
-  }
-
   try {
     const character = createCharacter(userId, name, false, undefined, {
       raceId: payload.raceId,
       genderId: payload.genderId,
       faithId: payload.faithId,
-      classId: payload.classId,
     });
     bindCharacter(session.sessionId, character.id, userId);
     world.placePlayer(character.id, character.roomId);
