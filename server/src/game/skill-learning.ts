@@ -31,6 +31,7 @@ export function grantAndNotifyLearnableSkills(character: Character): SkillDef[] 
       targetType: skill.targetType,
       resourceCost: skill.resourceCost,
       cooldown: skill.cooldown,
+      iconPath: skill.iconPath,
       learnedSkill: { skillId: skill.id, level: 1, currentCooldown: 0 },
     });
   }

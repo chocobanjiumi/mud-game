@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "grid": { "cols": 4, "rows": 4, "iconSize": 256 },
+  "style": "dark fantasy RPG, painterly, high-contrast silhouettes, no text, no UI frame",
+  "atlases": [
+    {
+      "file": "/images/skills/atlas/starter-skills-atlas-01.png",
+      "sourceGeneratedImage": "/Users/ripple/.arinova-bridge/accounts/openai-oauth-iiccc750/generated_images/019e587b-f7ba-7643-9424-cd59f2084bb7/ig_0ab6a4a9305a2343016a135cea785c8191a25ca8efefef86d6.png",
+      "promptSummary": "4x4 atlas for warrior and mage starter skills plus two backup icons; dark fantasy RPG icon style, no text, no frames.",
+      "cells": [
+        { "row": 0, "col": 0, "skillId": "warrior_slash", "name": "斬擊", "icon": "/images/skills/icons/warrior_slash.png" },
+        { "row": 0, "col": 1, "skillId": "iron_wall", "name": "防禦架勢", "icon": "/images/skills/icons/iron_wall.png" },
+        { "row": 0, "col": 2, "skillId": "taunt", "name": "挑釁", "icon": "/images/skills/icons/taunt.png" },
+        { "row": 0, "col": 3, "skillId": "blade_aura", "name": "橫掃", "icon": "/images/skills/icons/blade_aura.png" },
+        { "row": 1, "col": 0, "skillId": "war_cry", "name": "極限怒吼", "icon": "/images/skills/icons/war_cry.png" },
+        { "row": 1, "col": 1, "skillId": "power_strike", "name": "破甲重擊", "icon": "/images/skills/icons/power_strike.png" },
+        { "row": 1, "col": 2, "skillId": "counter_stance", "name": "堅守陣線", "icon": "/images/skills/icons/counter_stance.png" },
+        { "row": 1, "col": 3, "skillId": "magic_missile", "name": "魔法飛彈", "icon": "/images/skills/icons/magic_missile.png" },
+        { "row": 2, "col": 0, "skillId": "mana_shield", "name": "魔力護盾", "icon": "/images/skills/icons/mana_shield.png" },
+        { "row": 2, "col": 1, "skillId": "fireball", "name": "火球術", "icon": "/images/skills/icons/fireball.png" },
+        { "row": 2, "col": 2, "skillId": "frost_nova", "name": "寒冰新星", "icon": "/images/skills/icons/frost_nova.png" },
+        { "row": 2, "col": 3, "skillId": "elemental_mastery", "name": "暴風雪", "icon": "/images/skills/icons/elemental_mastery.png" },
+        { "row": 3, "col": 0, "skillId": "lightning", "name": "閃電束", "icon": "/images/skills/icons/lightning.png" },
+        { "row": 3, "col": 1, "skillId": "meditation", "name": "魔力回流", "icon": "/images/skills/icons/meditation.png" },
+        { "row": 3, "col": 2, "skillId": "starter_blank_01", "name": "備用空白技能槽", "icon": "/images/skills/icons/starter_blank_01.png" },
+        { "row": 3, "col": 3, "skillId": "starter_passive_01", "name": "備用通用被動", "icon": "/images/skills/icons/starter_passive_01.png" }
+      ]
+    },
+    {
+      "file": "/images/skills/atlas/starter-skills-atlas-02.png",
+      "sourceGeneratedImage": "/Users/ripple/.arinova-bridge/accounts/openai-oauth-iiccc750/generated_images/019e587b-f7ba-7643-9424-cd59f2084bb7/ig_0ab6a4a9305a2343016a135d3d9e888191a292d983ce4026ac.png",
+      "promptSummary": "4x4 atlas for ranger and priest starter skills plus two backup icons; dark fantasy RPG icon style, no text, no frames.",
+      "cells": [
+        { "row": 0, "col": 0, "skillId": "precise_shot", "name": "射擊", "icon": "/images/skills/icons/precise_shot.png" },
+        { "row": 0, "col": 1, "skillId": "quick_step", "name": "翻滾", "icon": "/images/skills/icons/quick_step.png" },
+        { "row": 0, "col": 2, "skillId": "ranger_scout", "name": "偵查", "icon": "/images/skills/icons/ranger_scout.png" },
+        { "row": 0, "col": 3, "skillId": "poison_arrow", "name": "獵人標記", "icon": "/images/skills/icons/poison_arrow.png" },
+        { "row": 1, "col": 0, "skillId": "trap", "name": "伏擊陷阱", "icon": "/images/skills/icons/trap.png" },
+        { "row": 1, "col": 1, "skillId": "critical_edge", "name": "多重射擊", "icon": "/images/skills/icons/critical_edge.png" },
+        { "row": 1, "col": 2, "skillId": "barrage", "name": "煙霧箭", "icon": "/images/skills/icons/barrage.png" },
+        { "row": 1, "col": 3, "skillId": "holy_light", "name": "聖光", "icon": "/images/skills/icons/holy_light.png" },
+        { "row": 2, "col": 0, "skillId": "heal", "name": "治癒", "icon": "/images/skills/icons/heal.png" },
+        { "row": 2, "col": 1, "skillId": "divine_shield", "name": "守護禱言", "icon": "/images/skills/icons/divine_shield.png" },
+        { "row": 2, "col": 2, "skillId": "cleanse", "name": "淨化", "icon": "/images/skills/icons/cleanse.png" },
+        { "row": 2, "col": 3, "skillId": "holy_bell", "name": "聖鐘震盪", "icon": "/images/skills/icons/holy_bell.png" },
+        { "row": 3, "col": 0, "skillId": "mass_heal", "name": "群體治癒", "icon": "/images/skills/icons/mass_heal.png" },
+        { "row": 3, "col": 1, "skillId": "exorcism_ward", "name": "驅邪結界", "icon": "/images/skills/icons/exorcism_ward.png" },
+        { "row": 3, "col": 2, "skillId": "starter_blank_02", "name": "備用空白技能槽", "icon": "/images/skills/icons/starter_blank_02.png" },
+        { "row": 3, "col": 3, "skillId": "starter_passive_02", "name": "備用通用被動", "icon": "/images/skills/icons/starter_passive_02.png" }
+      ]
+    }
+  ]
+}

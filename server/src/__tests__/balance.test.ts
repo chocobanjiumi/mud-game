@@ -4,6 +4,8 @@
 // to verify that the game numbers make sense. They use the actual
 // damage formulas and game constants.
 
+import { existsSync } from 'fs';
+import path from 'path';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   calculateDerived,
@@ -670,6 +672,37 @@ describe('Balance: Item instance generation', () => {
 });
 
 describe('Balance: Skill metadata', () => {
+  const starterSkillIds = [
+    'warrior_slash',
+    'iron_wall',
+    'taunt',
+    'blade_aura',
+    'war_cry',
+    'power_strike',
+    'counter_stance',
+    'magic_missile',
+    'mana_shield',
+    'fireball',
+    'frost_nova',
+    'elemental_mastery',
+    'lightning',
+    'meditation',
+    'precise_shot',
+    'quick_step',
+    'ranger_scout',
+    'poison_arrow',
+    'trap',
+    'critical_edge',
+    'barrage',
+    'holy_light',
+    'heal',
+    'blessing',
+    'purify',
+    'priest_holy_bell',
+    'mass_heal',
+    'divine_grace',
+  ];
+
   it('normalizes every skill with tags and scaling metadata', () => {
     for (const skill of Object.values(SKILL_DEFS)) {
       expect(skill.tags.length, skill.id).toBeGreaterThan(0);
@@ -742,6 +775,14 @@ describe('Balance: Skill metadata', () => {
           .map(skill => skill.name);
         expect(actualNames, `${classId} Lv${level}`).toEqual(expect.arrayContaining(names));
       }
+    }
+  });
+
+  it('maps every starter skill to an existing icon asset', () => {
+    for (const skillId of starterSkillIds) {
+      const iconPath = Object.values(SKILL_DEFS).find(skill => skill.id === skillId)?.iconPath;
+      expect(iconPath, skillId).toMatch(/^\/images\/skills\/icons\/.+\.png$/);
+      expect(existsSync(path.join(process.cwd(), 'client/public', iconPath!.replace(/^\//, ''))), skillId).toBe(true);
     }
   });
 

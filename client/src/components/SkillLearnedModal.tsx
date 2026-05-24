@@ -34,12 +34,26 @@ export function SkillLearnedModalView({
   remaining: number;
   onDismiss: () => void;
 }) {
+  const iconPath = notice.iconPath ?? '/images/skills/icons/starter_blank_01.png';
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
       <div className="w-full max-w-lg rounded-md border border-border-glow bg-bg-secondary p-5 text-text-bright shadow-2xl shadow-black/50">
         <div className="mb-2 text-xs uppercase tracking-wide text-text-dim">Skill Learned</div>
-        <h2 className="text-2xl font-bold text-text-terminal text-glow">{notice.name}</h2>
-        <div className="mt-1 text-xs text-text-dim">{notice.skillId}</div>
+        <div className="flex items-center gap-4">
+          <img
+            src={iconPath}
+            alt=""
+            className="h-20 w-20 rounded border border-border-glow object-cover"
+            onError={(event) => {
+              event.currentTarget.src = '/images/skills/icons/starter_blank_01.png';
+            }}
+          />
+          <div className="min-w-0">
+            <h2 className="text-2xl font-bold text-text-terminal text-glow">{notice.name}</h2>
+            <div className="mt-1 text-xs text-text-dim">{notice.skillId}</div>
+          </div>
+        </div>
 
         <div className="mt-4 grid grid-cols-2 gap-2 text-sm sm:grid-cols-4">
           <InfoCell label="等級" value={`Lv.${notice.learnLevel}`} />

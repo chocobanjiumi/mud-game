@@ -130,6 +130,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('消耗 70 怒氣');
     expect(html).toContain('信仰 -25');
     expect(html).toContain('arrivalTicks');
+    expect(html).toContain('/images/skills/icons/warrior_slash.png');
+    expect(html).toContain('/images/skills/icons/heal.png');
     expect(html).toContain('Lv20 二轉職業草案');
     expect(html).toContain('Lv40');
     expect(html).toContain('盾衛');
@@ -163,10 +165,12 @@ describe('key UI component rendering', () => {
       targetType: 'self',
       resourceCost: 0,
       cooldown: 2,
+      iconPath: '/images/skills/icons/iron_wall.png',
     };
 
     const html = renderToStaticMarkup(<SkillLearnedModalView notice={notice} remaining={0} onDismiss={() => undefined} />);
     expect(html).toContain('防禦');
+    expect(html).toContain('/images/skills/icons/iron_wall.png');
     expect(html).toContain('Lv.2');
     expect(html).toContain('戰鬥');
     expect(html).toContain('技能已加入快捷列與技能列表');

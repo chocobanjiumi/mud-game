@@ -29,6 +29,7 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
           const def = SKILL_DEFS[skill.skillId];
           const onCooldown = skill.currentCooldown > 0;
           const hotkey = index < 9 ? `${index + 1}` : null;
+          const iconPath = def?.iconPath ?? '/images/skills/icons/starter_blank_01.png';
 
           return (
             <button
@@ -36,7 +37,7 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
               onClick={() => !onCooldown && onUseSkill(skill.skillId)}
               disabled={onCooldown}
               className={`
-                relative px-2 py-1 text-xs rounded border cursor-pointer
+                relative h-10 w-10 shrink-0 overflow-hidden rounded border cursor-pointer p-0
                 ${
                   onCooldown
                     ? 'border-border-dim/50 bg-bg-primary/30 text-text-dim cursor-not-allowed'
@@ -44,7 +45,7 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
                 }
                 transition-colors
               `}
-              title={`${def?.name ?? skill.skillId} · ${def?.usageContext ?? ''}${onCooldown ? ` (冷卻: ${skill.currentCooldown}回合)` : ''}`}
+              title={`${def?.name ?? skill.skillId} · ${def?.shortDescription ?? def?.usageContext ?? ''}${onCooldown ? ` (冷卻: ${skill.currentCooldown}回合)` : ''}`}
             >
               {/* Hotkey badge */}
               {hotkey && (
@@ -52,7 +53,15 @@ export default function SkillBar({ onUseSkill }: SkillBarProps) {
                   {hotkey}
                 </span>
               )}
-              <span className="truncate max-w-16 block">{def?.name ?? skill.skillId}</span>
+              <img
+                src={iconPath}
+                alt={def?.name ?? skill.skillId}
+                className={`h-full w-full object-cover ${onCooldown ? 'grayscale opacity-50' : ''}`}
+                draggable={false}
+                onError={(event) => {
+                  event.currentTarget.src = '/images/skills/icons/starter_blank_01.png';
+                }}
+              />
               {/* Cooldown overlay */}
               {onCooldown && (
                 <span className="absolute inset-0 flex items-center justify-center bg-bg-primary/60 rounded text-text-amber text-[10px] font-bold">

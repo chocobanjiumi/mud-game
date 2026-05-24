@@ -1,3 +1,5 @@
+import { SKILL_DEFS } from '@game/shared';
+
 type InitialClassId = 'swordsman' | 'mage' | 'ranger' | 'priest';
 
 interface SkillPlan {
@@ -9,6 +11,37 @@ interface SkillPlan {
   tickRule: string;
   upgrades: string[];
 }
+
+const skillIdByName: Record<string, string> = {
+  斬擊: 'warrior_slash',
+  防禦架勢: 'iron_wall',
+  挑釁: 'taunt',
+  橫掃: 'blade_aura',
+  極限怒吼: 'war_cry',
+  破甲重擊: 'power_strike',
+  堅守陣線: 'counter_stance',
+  魔法飛彈: 'magic_missile',
+  魔力護盾: 'mana_shield',
+  火球術: 'fireball',
+  寒冰新星: 'frost_nova',
+  暴風雪: 'elemental_mastery',
+  閃電束: 'lightning',
+  魔力回流: 'meditation',
+  射擊: 'precise_shot',
+  翻滾: 'quick_step',
+  偵查: 'ranger_scout',
+  獵人標記: 'poison_arrow',
+  伏擊陷阱: 'trap',
+  多重射擊: 'critical_edge',
+  煙霧箭: 'barrage',
+  聖光: 'holy_light',
+  治癒: 'heal',
+  守護禱言: 'divine_shield',
+  淨化: 'cleanse',
+  聖鐘震盪: 'holy_bell',
+  群體治癒: 'mass_heal',
+  驅邪結界: 'exorcism_ward',
+};
 
 interface ClassPlan {
   id: InitialClassId;
@@ -690,7 +723,17 @@ function SkillPlanTable({ skills }: { skills: SkillPlan[] }) {
           {skills.map((skill) => (
             <tr key={skill.name} className="border-t border-border-dim align-top">
               <Td><span className="font-bold text-text-terminal">Lv.{skill.level}</span></Td>
-              <Td><div className="font-bold text-text-bright">{skill.name}</div></Td>
+              <Td>
+                <div className="flex min-w-[150px] items-center gap-2">
+                  <img
+                    src={SKILL_DEFS[skillIdByName[skill.name]]?.iconPath ?? '/images/skills/icons/starter_blank_01.png'}
+                    alt=""
+                    className="h-10 w-10 rounded border border-border-dim object-cover"
+                    loading="lazy"
+                  />
+                  <div className="font-bold text-text-bright">{skill.name}</div>
+                </div>
+              </Td>
               <Td>{skill.role}</Td>
               <Td><div className="max-w-[220px] text-xs leading-5 text-text-terminal">{skill.cost}</div></Td>
               <Td><span className="text-text-amber">{skill.scope}</span></Td>

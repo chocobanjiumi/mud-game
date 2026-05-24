@@ -133,6 +133,7 @@ export interface SkillLearnedNotice {
   targetType: string;
   resourceCost: number;
   cooldown: number;
+  iconPath?: string;
 }
 
 export type DeathNotice = DeathNoticePayload;

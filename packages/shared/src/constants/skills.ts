@@ -16,6 +16,37 @@ export interface ClassBuildDef {
   description: string;
 }
 
+const STARTER_SKILL_ICON_PATHS: Record<string, string> = {
+  warrior_slash: '/images/skills/icons/warrior_slash.png',
+  iron_wall: '/images/skills/icons/iron_wall.png',
+  taunt: '/images/skills/icons/taunt.png',
+  blade_aura: '/images/skills/icons/blade_aura.png',
+  war_cry: '/images/skills/icons/war_cry.png',
+  power_strike: '/images/skills/icons/power_strike.png',
+  counter_stance: '/images/skills/icons/counter_stance.png',
+  magic_missile: '/images/skills/icons/magic_missile.png',
+  mana_shield: '/images/skills/icons/mana_shield.png',
+  fireball: '/images/skills/icons/fireball.png',
+  frost_nova: '/images/skills/icons/frost_nova.png',
+  elemental_mastery: '/images/skills/icons/elemental_mastery.png',
+  lightning: '/images/skills/icons/lightning.png',
+  meditation: '/images/skills/icons/meditation.png',
+  precise_shot: '/images/skills/icons/precise_shot.png',
+  quick_step: '/images/skills/icons/quick_step.png',
+  ranger_scout: '/images/skills/icons/ranger_scout.png',
+  poison_arrow: '/images/skills/icons/poison_arrow.png',
+  trap: '/images/skills/icons/trap.png',
+  critical_edge: '/images/skills/icons/critical_edge.png',
+  barrage: '/images/skills/icons/barrage.png',
+  holy_light: '/images/skills/icons/holy_light.png',
+  heal: '/images/skills/icons/heal.png',
+  blessing: '/images/skills/icons/divine_shield.png',
+  purify: '/images/skills/icons/cleanse.png',
+  priest_holy_bell: '/images/skills/icons/holy_bell.png',
+  mass_heal: '/images/skills/icons/mass_heal.png',
+  divine_grace: '/images/skills/icons/exorcism_ward.png',
+};
+
 export const CLASS_BUILD_DEFS: Partial<Record<ClassId, ClassBuildDef[]>> = {
   swordsman: [
     { id: 'swordsman_vanguard', classId: 'swordsman', name: '前衛守勢', skillTags: ['defense', 'control'], affixSkillTags: ['defense', 'control'], description: '以鐵壁、挑釁與反擊架勢穩住前線。' },
@@ -1573,6 +1604,7 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
       questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
       shortDescription: def.shortDescription ?? createShortSkillDescription(def),
       fullDescription: def.fullDescription ?? def.description,
+      iconPath: def.iconPath ?? STARTER_SKILL_ICON_PATHS[id],
     }]),
   );
 }

@@ -406,6 +406,7 @@ export function useWebSocket() {
             targetType: (p.targetType as string | undefined) ?? '',
             resourceCost: (p.resourceCost as number | undefined) ?? 0,
             cooldown: (p.cooldown as number | undefined) ?? 0,
+            iconPath: p.iconPath as string | undefined,
           });
         }
         s.addTerminalLine(`學會了新技能: ${name}`, 'skill');
