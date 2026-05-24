@@ -75,6 +75,7 @@ import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } fr
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
 import { getModifiedSkillResourceCost } from './equipment-affixes.js';
+import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
@@ -1622,8 +1623,9 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 
   const resourceCost = getModifiedSkillResourceCost(char.id, skillDef);
-  if (resourceCost > char.resource) {
-    sendError(session.sessionId, `資源不足！${skillDef.name}需要 ${resourceCost} 點。`);
+  const resourceCheck = checkSkillResource(char, skillDef, resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足！${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
     return;
   }
 
@@ -1632,7 +1634,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       sendError(session.sessionId, '觀察需要指定目標。');
       return;
     }
-    spendSkillResource(char, resourceCost);
+    spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」。`);
@@ -1657,7 +1659,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, fieldEffect.message ?? '技能沒有可作用的目標。');
       return;
     }
-    spendSkillResource(char, resourceCost);
+    spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
     saveCharacter(char);
     if (fieldEffect.target && fieldEffect.target.id !== char.id) {
       saveCharacter(fieldEffect.target);
@@ -1665,7 +1667,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」，${fieldEffect.message ?? '生效了。'}`);
   } else {
-    spendSkillResource(char, resourceCost);
+    spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
     saveCharacter(char);
     cmdStatus(session);
     sendSystem(session.sessionId, `你使用了「${skillDef?.name ?? skillName}」！${target ? `目標：${target}` : ''}`);
@@ -1691,12 +1693,8 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 }
 
-function spendSkillResource(char: Character, resourceCost: number): void {
-  if (resourceCost <= 0) return;
-  char.resource = Math.max(0, char.resource - resourceCost);
-  if (char.resourceType === 'mp') {
-    char.mp = Math.max(0, char.mp - resourceCost);
-  }
+function spendSkillResource(char: Character, skillDef: typeof SKILL_DEFS[string], resourceCost: number): void {
+  applySkillResourceChange(char, skillDef, resourceCost);
 }
 
 function getSkillUsageContext(skillDef: typeof SKILL_DEFS[string]): 'combat' | 'field' | 'both' {

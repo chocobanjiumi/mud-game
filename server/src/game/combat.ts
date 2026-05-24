@@ -25,6 +25,7 @@ import {
 } from './origin-effects.js';
 import { getSurvivalDodgeBonus } from './passive-skill-effects.js';
 import { getSkillAffixModifiers } from './equipment-affixes.js';
+import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 
 // ============================================================
 //  常數
@@ -541,13 +542,22 @@ export class CombatEngine {
         resourceCost = Math.max(1, Math.floor(resourceCost * (1 - pct.mpCostReduction / 100)));
       }
     }
-    if (actor.resource < resourceCost) {
+    if (skillDef) {
+      const resourceCheck = checkSkillResource(actor, skillDef, resourceCost);
+      if (!resourceCheck.ok) {
+        log.push(`${actor.name}的${resourceCheck.message ?? `${this.getResourceLabel(actor.resourceType)}不足`}，改為普通攻擊！`);
+        this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
+        return;
+      }
+      resourceCost = resourceCheck.effectiveCost;
+    } else if (actor.resource < resourceCost) {
       const resourceLabel = this.getResourceLabel(actor.resourceType);
       log.push(`${actor.name}的${resourceLabel}不足，改為普通攻擊！`);
       this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
       return;
     }
-    actor.resource -= resourceCost;
+    if (skillDef) applySkillResourceChange(actor, skillDef, resourceCost);
+    else actor.resource -= resourceCost;
 
     const attackerStats = this.getCombatStats(session, actor);
 
@@ -626,14 +636,6 @@ export class CombatEngine {
       }
     }
 
-    // 祭司系：治療/淨化技能觸發信仰增益
-    if (skillDef && actor.resourceType === 'faith') {
-      const isHealSkill = skillDef.special?.isHeal || skillDef.id === 'heal' || skillDef.id === 'mass_heal';
-      const isPurifySkill = skillDef.special?.removeDebuffs || skillDef.id === 'purify';
-      if (isHealSkill || isPurifySkill) {
-        this.gainResourceOnHeal(actor, skillDef.id, log);
-      }
-    }
   }
 
   private executeDefend(
@@ -1294,21 +1296,6 @@ export class CombatEngine {
       const actual = target.resource - before;
       if (actual > 0) {
         log.push(`  ${target.name}因受擊獲得了 ${actual} 點怒氣。`);
-      }
-    }
-  }
-
-  /** 治療/淨化時的資源增益（祭司系：信仰） */
-  gainResourceOnHeal(actor: CombatantState, skillId: string, log: string[]): void {
-    if (actor.resourceType === 'faith') {
-      // 淨化 +8，治療 +10
-      const isPurify = skillId === 'purify';
-      const gain = isPurify ? 8 : 10;
-      const before = actor.resource;
-      actor.resource = Math.min(actor.maxResource, actor.resource + gain);
-      const actual = actor.resource - before;
-      if (actual > 0) {
-        log.push(`  ${actor.name}獲得了 ${actual} 點信仰。`);
       }
     }
   }

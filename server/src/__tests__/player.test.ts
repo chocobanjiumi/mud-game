@@ -27,6 +27,7 @@ import {
 } from '../game/item-reforge.js';
 import { getEquipmentStats } from '../game/damage.js';
 import { getModifiedSkillResourceCost, getSkillAffixModifiers } from '../game/equipment-affixes.js';
+import { applySkillResourceChange, checkSkillResource } from '../game/skill-resource.js';
 import {
   ensureEconomyStatsTables,
   getAverageAuctionSalePrice,
@@ -1276,6 +1277,40 @@ describe('field skill effects', () => {
     expect(SKILL_DEFS.war_cry.usageContext).toBe('combat');
     expect(SKILL_DEFS.mass_heal.usageContext).toBe('combat');
     expect(SKILL_DEFS.purify.usageContext).toBe('both');
+  });
+});
+
+describe('class resource skill gates', () => {
+  it('moves priest faith toward mercy for healing and toward judgment for attacks', () => {
+    const priest = {
+      resource: 50,
+      maxResource: 100,
+      resourceType: 'faith' as const,
+    };
+
+    expect(checkSkillResource(priest, SKILL_DEFS.heal).ok).toBe(true);
+    expect(applySkillResourceChange(priest, SKILL_DEFS.heal)).toBe(15);
+    expect(priest.resource).toBe(65);
+
+    expect(checkSkillResource(priest, SKILL_DEFS.holy_light).ok).toBe(true);
+    expect(applySkillResourceChange(priest, SKILL_DEFS.holy_light)).toBe(-12);
+    expect(priest.resource).toBe(53);
+  });
+
+  it('blocks priest faith skills at their endpoint limits', () => {
+    const mercifulPriest = {
+      resource: 95,
+      maxResource: 100,
+      resourceType: 'faith' as const,
+    };
+    const judgmentPriest = {
+      resource: 5,
+      maxResource: 100,
+      resourceType: 'faith' as const,
+    };
+
+    expect(checkSkillResource(mercifulPriest, SKILL_DEFS.heal).ok).toBe(false);
+    expect(checkSkillResource(judgmentPriest, SKILL_DEFS.holy_light).ok).toBe(false);
   });
 });
 
