@@ -2188,7 +2188,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   alpha_fang: {
     id: 'alpha_fang', name: '狼王之牙', type: 'material',
-    description: '暗影狼王的獠牙，蘊含強大的暗影之力。', buyPrice: 0, sellPrice: 80,
+    description: '暗影狼王斷落的黑白獠牙，牙根纏著灰毛與暗紫血痕，靠近火光時會吞掉邊緣亮色。', buyPrice: 0, sellPrice: 80,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   crystal_scale: {
@@ -2275,7 +2275,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   poison_gland: {
     id: 'poison_gland', name: '毒腺', type: 'material',
-    description: '毒蛙的毒腺，製作高級毒藥的珍貴原料。', buyPrice: 0, sellPrice: 30,
+    description: '毒蛙喉囊後方割下的黃綠毒腺，薄膜半透明，裡面仍有黏稠毒液緩慢晃動。', buyPrice: 0, sellPrice: 30,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   dark_bark: {
@@ -2427,7 +2427,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   agility_potion: {
     id: 'agility_potion', name: '敏捷藥水', type: 'consumable',
-    description: '以疾風蜥蜴的尾巴萃取物調配的淡綠色藥水。飲用後身體變得輕盈如燕，反應速度大幅提升，彷彿時間都慢了下來。效果持續5回合。', buyPrice: 100, sellPrice: 50,
+    description: '細頸玻璃瓶中盛著淡綠藥液，瓶底沉著疾風蜥蜴尾鱗粉，搖晃時會拉出旋風般的銀線。', buyPrice: 100, sellPrice: 50,
     stackable: true, maxStack: 99, levelReq: 5,
     useEffect: { type: 'buff_dodge', value: 15, duration: 5 },
   },
@@ -2479,19 +2479,19 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   stew: {
     id: 'stew', name: '燉湯', type: 'consumable',
-    description: '營養豐富的燉湯，持續回復HP與資源3回合。', buyPrice: 60, sellPrice: 30,
+    description: '陶碗裡盛著濃厚肉菜燉湯，表面浮著胡椒油光與切碎根莖，熱氣帶著鹽草香。', buyPrice: 60, sellPrice: 30,
     stackable: true, maxStack: 99, levelReq: 5,
     useEffect: { type: 'food_hp_resource', value: 10, duration: 3 },
   },
   adventure_bento: {
     id: 'adventure_bento', name: '冒險者便當', type: 'consumable',
-    description: '冒險者特製便當，回復HP並提升攻擊力3%。', buyPrice: 80, sellPrice: 40,
+    description: '木盒便當用麻繩綁緊，裡面排著烤肉片、鹽飯團與醃根菜，盒蓋烙有公會小徽記。', buyPrice: 80, sellPrice: 40,
     stackable: true, maxStack: 99, levelReq: 5,
     useEffect: { type: 'food_atk', value: 3, duration: 5 },
   },
   magic_dessert: {
     id: 'magic_dessert', name: '魔法甜點', type: 'consumable',
-    description: '蘊含魔力的甜點，回復資源並提升魔攻3%。', buyPrice: 80, sellPrice: 40,
+    description: '藍紫糖霜覆在小塔糕上，頂端嵌著細碎法晶，切面會滲出淡淡星光糖漿。', buyPrice: 80, sellPrice: 40,
     stackable: true, maxStack: 99, levelReq: 5,
     useEffect: { type: 'food_matk', value: 3, duration: 5 },
   },
@@ -2503,7 +2503,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   feast: {
     id: 'feast', name: '宴會大餐', type: 'consumable',
-    description: '豪華的宴會大餐，全能力提升3%持續10回合。', buyPrice: 300, sellPrice: 150,
+    description: '銀盤上堆著烤禽、香草魚排、蜜漬果與金邊麵包，旁邊插著一面紅蠟封餐旗。', buyPrice: 300, sellPrice: 150,
     stackable: true, maxStack: 99, levelReq: 15,
     useEffect: { type: 'food_feast', value: 3, duration: 10 },
   },
@@ -2875,7 +2875,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   rare_fossil: {
     id: 'rare_fossil', name: '稀有化石', type: 'material',
-    description: '珍貴的遠古生物化石，收藏家高價收購。', buyPrice: 0, sellPrice: 800,
+    description: '遠古生物留下的螺旋骨化石，石面呈灰白與琥珀色層紋，裂縫裡卡著細砂。', buyPrice: 0, sellPrice: 800,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   elf_feather: {
@@ -3781,7 +3781,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ─── Common (Lv 1-5) ───
   small_fish: {
     id: 'small_fish', name: '小魚', type: 'material',
-    description: '隨處可見的小魚，雖然不值錢但聊勝於無。', buyPrice: 0, sellPrice: 10,
+    description: '掌心大小的銀灰小魚，鱗片還帶著溪水亮光，尾鰭薄得幾乎透明。', buyPrice: 0, sellPrice: 10,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
   },
   river_carp: {
@@ -3818,7 +3818,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   golden_crab: {
     id: 'golden_crab', name: '金色螃蟹', type: 'material',
-    description: '甲殼呈金黃色的螃蟹，據說是吉祥的象徵。', buyPrice: 0, sellPrice: 45,
+    description: '金黃色硬殼螃蟹有細小白斑，蟹鉗像打磨過的銅扣，腹甲仍沾著濕沙。', buyPrice: 0, sellPrice: 45,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'uncommon',
   },
 
@@ -3857,7 +3857,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   frost_salmon: {
     id: 'frost_salmon', name: '霜之鮭魚', type: 'material',
-    description: '渾身散發寒氣的鮭魚，觸碰會讓手指麻木。', buyPrice: 0, sellPrice: 350,
+    description: '霜白鮭魚背部覆著細冰晶，銀藍魚鱗間冒著冷霧，魚鰓像凍住的紅葉。', buyPrice: 0, sellPrice: 350,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'epic',
   },
   thunder_ray: {
@@ -3879,7 +3879,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   void_squid: {
     id: 'void_squid', name: '虛空烏賊', type: 'material',
-    description: '來自虛空的烏賊，周身纏繞著扭曲的空間。', buyPrice: 0, sellPrice: 1200,
+    description: '深紫烏賊的觸腕像墨色絲帶般扭曲，透明外膜下閃著細小星點與裂縫光。', buyPrice: 0, sellPrice: 1200,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
   world_serpent_scale: {

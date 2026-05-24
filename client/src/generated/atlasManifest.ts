@@ -1628,7 +1628,10 @@ export const ATLAS_ASSETS = {
     "zone_lakeside_town_necklace_6": "/mud/images/items/item_town_market_zone_lakeside_town_necklace_6.png",
     "zone_lakeside_town_ring_5": "/mud/images/items/item_town_market_zone_lakeside_town_ring_5.png",
     "iron_shield": "/mud/images/items/item_town_market_low_wilds_iron_shield.png",
-    "iron_sword": "/mud/images/items/item_town_market_low_wilds_iron_sword.png"
+    "iron_sword": "/mud/images/items/item_town_market_low_wilds_iron_sword.png",
+    "bronze_sword": "/mud/images/items/item_low_wilds_bronze_sword.png",
+    "wooden_shield": "/mud/images/items/item_low_wilds_wooden_shield.png",
+    "status_cure": "/mud/images/items/item_low_wilds_forest_fen_status_cure.png"
   },
   "material": {
     "anchor_stone_chip": "/mud/images/materials/material_astral_time_anchor_stone_chip.png",
