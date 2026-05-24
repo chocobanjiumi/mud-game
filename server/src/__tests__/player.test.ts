@@ -1174,10 +1174,10 @@ describe('field skill effects', () => {
     expect(SKILL_DEFS.heal.usageContext).toBe('both');
     expect(SKILL_DEFS.first_aid.usageContext).toBe('both');
     expect(SKILL_DEFS.inspect.usageContext).toBe('field');
-    expect(SKILL_DEFS.blessing.usageContext).toBe('combat');
+    expect(SKILL_DEFS.blessing.usageContext).toBe('both');
     expect(SKILL_DEFS.war_cry.usageContext).toBe('combat');
     expect(SKILL_DEFS.mass_heal.usageContext).toBe('combat');
-    expect(SKILL_DEFS.purify.usageContext).toBe('combat');
+    expect(SKILL_DEFS.purify.usageContext).toBe('both');
   });
 });
 

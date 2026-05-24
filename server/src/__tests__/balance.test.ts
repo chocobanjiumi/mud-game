@@ -628,6 +628,9 @@ describe('Balance: Skill metadata', () => {
       expect(skill.resourceCost, skill.id).toBeGreaterThanOrEqual(0);
       expect(skill.cooldown, skill.id).toBeGreaterThanOrEqual(0);
       expect(skill.learnLevel, skill.id).toBeGreaterThanOrEqual(1);
+      expect(skill.shortDescription.trim().length, skill.id).toBeGreaterThan(0);
+      expect(skill.fullDescription.trim().length, skill.id).toBeGreaterThan(0);
+      expect(skill.fullDescription.length, skill.id).toBeGreaterThanOrEqual(skill.shortDescription.length);
     }
   });
 
@@ -644,6 +647,49 @@ describe('Balance: Skill metadata', () => {
       const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
       expect(skills.length, classId).toBeGreaterThanOrEqual(6);
       expect(skills.length, classId).toBeLessThanOrEqual(8);
+    }
+  });
+
+  it('defines the level 1-16 first-job skill curve for each starter class', () => {
+    const expected: Record<string, Record<number, string[]>> = {
+      swordsman: {
+        1: ['斬擊', '防禦架勢', '挑釁'],
+        5: ['橫掃'],
+        8: ['極限怒吼'],
+        12: ['破甲重擊'],
+        16: ['堅守陣線'],
+      },
+      mage: {
+        1: ['魔法飛彈', '火球術', '魔力護盾'],
+        5: ['寒冰新星'],
+        8: ['暴風雪'],
+        12: ['閃電束'],
+        16: ['魔力回流'],
+      },
+      ranger: {
+        1: ['射擊', '翻滾', '偵查'],
+        5: ['獵人標記'],
+        8: ['伏擊陷阱'],
+        12: ['多重射擊'],
+        16: ['煙霧箭'],
+      },
+      priest: {
+        1: ['治癒', '聖光', '守護禱言'],
+        5: ['淨化'],
+        8: ['聖鐘震盪'],
+        12: ['群體治癒'],
+        16: ['驅邪結界'],
+      },
+    };
+
+    for (const [classId, skillsByLevel] of Object.entries(expected)) {
+      const skills = Object.values(SKILL_DEFS).filter(skill => skill.classId === classId);
+      for (const [level, names] of Object.entries(skillsByLevel)) {
+        const actualNames = skills
+          .filter(skill => skill.learnLevel === Number(level))
+          .map(skill => skill.name);
+        expect(actualNames, `${classId} Lv${level}`).toEqual(expect.arrayContaining(names));
+      }
     }
   });
 

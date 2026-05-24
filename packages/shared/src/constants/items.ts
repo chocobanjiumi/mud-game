@@ -411,7 +411,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
   const result: Record<string, ItemDef> = {};
 
   for (const weaponType of weaponTypes) {
-    for (const levelReq of [50, 60]) {
+    for (const levelReq of [50, 60] as const) {
       const id = `${weaponType}_lv${levelReq}`;
       const statKey = weaponType === 'elemental_staff' || weaponType === 'grimoire' || weaponType === 'hourglass_staff' || weaponType === 'holy_tome' || weaponType === 'nature_staff'
         ? 'matk'

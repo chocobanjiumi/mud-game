@@ -52,6 +52,8 @@ export interface SkillDef {
   scaling: SkillScaling;
   questUnlock?: SkillQuestUnlock;
   description: string; // 中文描述
+  shortDescription: string; // UI 摘要描述
+  fullDescription: string; // 詳細機制描述
   effects?: StatusEffect[];
   special?: SkillSpecial;
 }
@@ -72,7 +74,7 @@ export interface SkillSpecial {
   dispelShield?: boolean;
   isHeal?: boolean;
   removeDebuffs?: boolean;
-  areaScope?: 'room' | 'combat';
+  areaScope?: 'room' | 'combat' | 'adjacent_cardinal';
 }
 
 export interface LearnedSkill {
