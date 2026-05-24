@@ -1,0 +1,45 @@
+{
+  "sheetId": "material_dragon_celestial_03",
+  "category": "material",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_dragon_celestial_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_dragon_celestial_starfall_meteorite",
+      "category": "material",
+      "targetId": "starfall_meteorite",
+      "name": "墜星隕鐵",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_starfall_meteorite.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_dragon_celestial_starfall_plaza_shard",
+      "category": "material",
+      "targetId": "starfall_plaza_shard",
+      "name": "墜星廣場碎片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_starfall_plaza_shard.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_dragon_celestial_sunspire_lens_shard",
+      "category": "material",
+      "targetId": "sunspire_lens_shard",
+      "name": "日鏡碎片",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_sunspire_lens_shard.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_dragon_celestial_thunder_roost_crystal",
+      "category": "material",
+      "targetId": "thunder_roost_crystal",
+      "name": "雷巢晶簇",
+      "outputPath": "client/public/images/materials/material_dragon_celestial_thunder_roost_crystal.png",
+      "row": 1,
+      "column": 0
+    }
+  ]
+}
