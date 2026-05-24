@@ -256,13 +256,33 @@ export function setEquipped(characterId: string, itemId: string, equipped: boole
 }
 
 /** 取得角色已裝備的物品 */
-export function getEquippedItems(characterId: string): { itemId: string; itemInstanceId?: string; quantity: number }[] {
+export function getEquippedItems(characterId: string): Pick<InventoryItem, 'itemId' | 'itemInstanceId' | 'quantity' | 'quality' | 'affixes' | 'lockedAffixIndexes' | 'fixedEffects'>[] {
   const db = getDb();
   const rows = db.prepare(
-    'SELECT item_id, item_instance_id, quantity FROM inventory WHERE character_id = ? AND equipped = 1',
-  ).all(characterId) as { item_id: string; item_instance_id: string | null; quantity: number }[];
+    `SELECT i.item_id, i.item_instance_id, i.quantity,
+      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
+     FROM inventory i
+     LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
+     WHERE i.character_id = ? AND i.equipped = 1`,
+  ).all(characterId) as {
+    item_id: string;
+    item_instance_id: string | null;
+    quantity: number;
+    quality: ItemQuality | null;
+    affixes_json: string | null;
+    locked_affixes_json: string | null;
+    fixed_effects_json: string | null;
+  }[];
 
-  return rows.map((r) => ({ itemId: r.item_id, itemInstanceId: r.item_instance_id ?? undefined, quantity: r.quantity }));
+  return rows.map((r) => ({
+    itemId: r.item_id,
+    itemInstanceId: r.item_instance_id ?? undefined,
+    quantity: r.quantity,
+    quality: r.quality ?? undefined,
+    affixes: parseJsonArray<AffixDef>(r.affixes_json),
+    lockedAffixIndexes: parseJsonArray<number>(r.locked_affixes_json),
+    fixedEffects: parseJsonArray<string>(r.fixed_effects_json),
+  }));
 }
 
 export function upsertItemInstance(instance: StoredItemInstance): void {

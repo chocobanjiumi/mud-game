@@ -305,6 +305,11 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
     if (baseStats.mp) result.bonusMp += baseStats.mp + (enhBonus.mp ?? 0);
     if (baseStats.critRate) result.bonusCritRate += baseStats.critRate + (enhBonus.critRate ?? 0);
     if (baseStats.dodgeRate) result.bonusDodgeRate += baseStats.dodgeRate + (enhBonus.dodgeRate ?? 0);
+
+    for (const affix of item.affixes ?? []) {
+      if (!affix.stats) continue;
+      applyFlatEquipmentStats(result, affix.stats);
+    }
   }
 
   // Calculate set bonuses
@@ -330,6 +335,22 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
   }
 
   return result;
+}
+
+function applyFlatEquipmentStats(result: EquipmentBonusStats, stats: NonNullable<import('@game/shared').ItemStats>): void {
+  if (stats.atk) result.weaponAtk += stats.atk;
+  if (stats.matk) result.weaponMatk += stats.matk;
+  if (stats.def) result.armorDef += stats.def;
+  if (stats.mdef) result.armorMdef += stats.mdef;
+  if (stats.str) result.str += stats.str;
+  if (stats.int) result.int += stats.int;
+  if (stats.dex) result.dex += stats.dex;
+  if (stats.vit) result.vit += stats.vit;
+  if (stats.luk) result.luk += stats.luk;
+  if (stats.hp) result.bonusHp += stats.hp;
+  if (stats.mp) result.bonusMp += stats.mp;
+  if (stats.critRate) result.bonusCritRate += stats.critRate;
+  if (stats.dodgeRate) result.bonusDodgeRate += stats.dodgeRate;
 }
 
 // ============================================================

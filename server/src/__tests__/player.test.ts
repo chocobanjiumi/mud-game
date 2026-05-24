@@ -25,6 +25,7 @@ import {
   reforgeItemQuality,
   rerollItemAffix,
 } from '../game/item-reforge.js';
+import { getEquipmentStats } from '../game/damage.js';
 import {
   ensureEconomyStatsTables,
   getAverageAuctionSalePrice,
@@ -669,8 +670,52 @@ describe('inventory item instances', () => {
 
     expect(setEquipped(characterId, 'spear_steel', true, 'inst_spear_steel_equip')).toBe(true);
     expect(getEquippedItems(characterId)).toEqual([
-      { itemId: 'spear_steel', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 },
+      expect.objectContaining({ itemId: 'spear_steel', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 }),
     ]);
+  });
+
+  it('applies equipped item instance affix stats to combat equipment stats', () => {
+    const characterId = 'item-instance-affix-stats-test';
+    getDb().prepare(
+      'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
+    ).run(characterId, 'user-instance-affix-stats', 'AffixStatsHero');
+
+    addInventoryItem(characterId, 'spear_steel', 1, false, {
+      itemInstanceId: 'inst_spear_steel_affix_stats',
+      baseItemId: 'spear_steel',
+      quality: 'rare',
+      affixes: [
+        {
+          id: 'numeric_str_t1',
+          name: '力量',
+          pool: 'numeric',
+          tier: 'T1',
+          appliesTo: ['weapon'],
+          stats: { str: 1 },
+        },
+        {
+          id: 'combat_atk_t1',
+          name: '銳利',
+          pool: 'combat',
+          tier: 'T1',
+          appliesTo: ['weapon'],
+          stats: { atk: 3 },
+        },
+      ],
+      fixedEffects: [],
+    });
+
+    const before = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
+    expect(setEquipped(characterId, 'spear_steel', true, 'inst_spear_steel_affix_stats')).toBe(true);
+    const after = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
+
+    expect(after.str - before.str).toBe(1);
+    expect(after.weaponAtk - before.weaponAtk).toBeGreaterThanOrEqual(3);
+
+    expect(setEquipped(characterId, 'spear_steel', false, 'inst_spear_steel_affix_stats')).toBe(true);
+    const unequipped = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
+    expect(unequipped.str).toBe(before.str);
+    expect(unequipped.weaponAtk).toBe(before.weaponAtk);
   });
 
   it('can reroll a stored item instance affix', () => {
