@@ -20,6 +20,19 @@ interface ClassPlan {
   skills: SkillPlan[];
 }
 
+interface AdvancedClassPlan {
+  id: string;
+  baseClass: string;
+  name: string;
+  weapon: string;
+  role: string;
+  soloLoop: string;
+  partyValue: string;
+  crossRoomPlay: string;
+  resourceLoop: string;
+  signatureSkills: string[];
+}
+
 const classPlans: ClassPlan[] = [
   {
     id: 'swordsman',
@@ -243,6 +256,117 @@ const classPlans: ClassPlan[] = [
   },
 ];
 
+const advancedClassPlans: AdvancedClassPlan[] = [
+  {
+    id: 'shield_guard',
+    baseClass: '戰士',
+    name: '盾衛',
+    weapon: '盾牌必備，可搭配單手劍、單手斧、單手錘、短槍',
+    role: '格擋坦克、反擊輸出、群嘲守護',
+    soloLoop: '擋住 -> 反擊 -> 回怒 -> 再擋住。盾衛不是純肉盾，核心輸出來自被打後的穩定反擊。',
+    partyValue: '拉怪、保護隊友、打斷預兆、替隊友承傷。',
+    crossRoomPlay: '極限怒吼或鐵壁嘲諷把四方怪拉進來，靠格擋準備與反擊上限撐住第一波壓力。',
+    resourceLoop: '怒氣主要來自被打、格擋、防禦與替隊友承傷；怒氣花在盾牆、群嘲與反擊架勢。',
+    signatureSkills: [
+      '盾擊：20 怒氣，造成盾牌傷害並打斷預兆；若上一 tick 成功格擋，傷害 +30%。',
+      '反擊架勢：15 怒氣，3 tick 內受到近戰攻擊時反擊；基礎每 tick 最多 1 次，升級後 2 次。',
+      '盾牆：35 怒氣，2 tick 受到傷害 -50%，期間反擊傷害略降但被打回怒更高。',
+      '守護誓言：30 怒氣，替隊友承受部分傷害；承傷也可觸發反擊判定。',
+      '鐵壁嘲諷：60 怒氣，本房 + 四方相鄰房拉怪，獲得 2 tick 格擋準備並提高反擊上限。',
+    ],
+  },
+  {
+    id: 'rage_axe',
+    baseClass: '戰士',
+    name: '狂斧',
+    weapon: '斧 / 巨斧',
+    role: '高傷害、低血爆發、吸血、範圍劈砍',
+    soloLoop: '用高傷害快速清怪，靠吸血與低血增傷維持危險邊緣。',
+    partyValue: '清怪、爆發、破甲，負責把被坦克拉進來的怪群快速削掉。',
+    crossRoomPlay: '不擅長安全隔房控場，但怪越多越能透過旋風與吸血把壓力轉成輸出。',
+    resourceLoop: '怒氣主要來自攻擊、受傷與低血狀態；怒氣花在血怒、旋風斧與嗜血劈砍。',
+    signatureSkills: [
+      '血怒：消耗怒氣或 HP，數 tick 內提高傷害，低血時效果更強。',
+      '裂骨斬：高單體傷害並破甲，適合打菁英或 Boss。',
+      '旋風斧：本房戰鬥範圍攻擊，命中越多怒氣回收越高。',
+      '嗜血劈砍：造成傷害並依傷害回復 HP，讓狂斧能 solo 續戰。',
+      '瀕死狂暴：低血時怒氣獲取與傷害提高，但承受風險也更高。',
+    ],
+  },
+  {
+    id: 'lance_rider',
+    baseClass: '戰士',
+    name: '槍騎',
+    weapon: '槍 / 長柄武器',
+    role: '突刺、先制、距離控制、隔房衝鋒',
+    soloLoop: '用先制突刺壓低傷害交換，攔截 approaching 怪物，讓戰鬥發生在自己選的節奏。',
+    partyValue: '控制怪物抵達節奏、攔截危險目標、對預兆怪或遠程怪做先手壓制。',
+    crossRoomPlay: '最擅長處理 approaching：怪還沒到就先刺、延遲、slow，或對指定方向直線衝鋒。',
+    resourceLoop: '怒氣來自先手命中、突刺與成功攔截；怒氣花在貫穿衝鋒、槍陣與高威力突刺。',
+    signatureSkills: [
+      '突刺：高命中單體，對 approaching 或剛抵達目標有額外效果。',
+      '攔截：消耗怒氣，提前攻擊 approaching 怪物並使 arrivalTicks +1。',
+      '貫穿衝鋒：指定方向直線攻擊，可打到相鄰房目標。',
+      '槍陣：指定出口布陣，從該出口抵達的怪物受傷並 slow。',
+      '破陣一擊：對正在施放預兆或衝鋒的怪造成高傷並打斷。',
+    ],
+  },
+  {
+    id: 'marksman',
+    baseClass: '遊俠',
+    name: '神射手',
+    weapon: '弓 / 弩',
+    role: '遠距單體、隔房狙擊、標記爆發',
+    soloLoop: '偵查隔壁房，先標記高價值目標，再用狙擊把怪打殘，讓怪抵達前已經失去威脅。',
+    partyValue: '處理遠程怪、法師怪、菁英目標；提供弱點標記與單體爆發。',
+    crossRoomPlay: '最擅長隔房攻擊，可降低遠距命中懲罰，並讓被命中的怪 arrivalTicks +1。',
+    resourceLoop: '專注花在狙擊、穿透與弱點標記；靠偵查、定點射擊準備與命中回收專注。',
+    signatureSkills: [
+      '狙擊：高專注消耗，指定相鄰房單體高傷害。',
+      '穿透箭：指定方向直線穿刺，可打同方向多個目標。',
+      '弱點標記：標記目標後隊友對目標暴擊提高。',
+      '定點射擊：原地不動準備，下一次射擊大幅增傷。',
+      '壓制射擊：命中後使目標 arrivalTicks +1 或降低下一 tick 命中。',
+    ],
+  },
+  {
+    id: 'shadow_blade',
+    baseClass: '遊俠',
+    name: '影刃',
+    weapon: '匕首 / 短劍',
+    role: '潛行、背刺、毒、單體爆發',
+    soloLoop: '偵查目標後潛行接近，靠背刺和毒在短時間內解決單體危險目標。',
+    partyValue: '爆發擊殺高威脅目標，施毒削弱怪物，煙幕降低隊伍被追擊壓力。',
+    crossRoomPlay: '不走遠距射擊，而是偵查後潛入相鄰房伏擊，或對 approaching 怪物做先制背刺。',
+    resourceLoop: '專注花在潛行、背刺、毒刃與煙幕；成功背刺或毒跳可部分回收專注。',
+    signatureSkills: [
+      '潛行：消耗專注，降低被發現機率，準備背刺。',
+      '背刺：對未警戒、被標記或剛抵達目標造成高傷害。',
+      '毒刃：讓目標數 tick 掉血，抵達前也會持續受傷。',
+      '煙幕脫離：提高閃避，降低追擊壓力，可切斷部分 approaching 仇恨。',
+      '暗巷伏擊：對指定出口 approaching 怪物先制攻擊。',
+    ],
+  },
+  {
+    id: 'trap_hunter',
+    baseClass: '遊俠',
+    name: '獵陷師',
+    weapon: '弓 / 弩 / 陷阱工具',
+    role: '陷阱、控場、拉怪路線、區域準備',
+    soloLoop: '先偵查路線，布置出口陷阱，再誘敵讓怪物自己撞進控制區。',
+    partyValue: '控制 approaching、保護後排、設置戰鬥場地，讓隊伍不用硬吃怪潮。',
+    crossRoomPlay: '最懂地形，能在出口設陷阱、放誘餌、延遲抵達、暈眩或改變怪物路線。',
+    resourceLoop: '專注花在陷阱與誘餌；陷阱觸發時回專注，形成準備型循環。',
+    signatureSkills: [
+      '捕獸夾：指定出口設陷阱，抵達怪物受傷並 arrivalTicks +1。',
+      '誘餌：指定方向吸引怪物接近，但不一定立刻進戰鬥。',
+      '爆裂陷阱：怪物抵達時造成小範圍傷害。',
+      '絆索：approaching 怪物抵達時暈眩 1 tick。',
+      '陷阱連鎖：短時間內下一個陷阱觸發後提高另一個陷阱效果。',
+    ],
+  },
+];
+
 const skillPointRules = [
   'Lv2-Lv9 每級獲得 1 點技能點。',
   '技能最高 Lv5，前 10 級大約只能深化 2-3 個核心技能。',
@@ -252,6 +376,10 @@ const skillPointRules = [
 
 export default function SkillTablePage() {
   const totalSkills = classPlans.reduce((sum, plan) => sum + plan.skills.length, 0);
+  const groupedAdvanced = advancedClassPlans.reduce<Record<string, AdvancedClassPlan[]>>((groups, plan) => {
+    groups[plan.baseClass] = [...(groups[plan.baseClass] ?? []), plan];
+    return groups;
+  }, {});
 
   return (
     <div className="h-screen overflow-y-auto bg-bg-primary px-4 py-5 pb-12 text-text-bright scanline lg:px-8">
@@ -266,6 +394,7 @@ export default function SkillTablePage() {
           <div className="mt-3 flex flex-wrap gap-2 text-xs">
             <StatPill label="初始職業" value={classPlans.length.toString()} />
             <StatPill label="規劃技能" value={totalSkills.toString()} />
+            <StatPill label="二轉草案" value={advancedClassPlans.length.toString()} />
             <StatPill label="技能點" value="Lv2-Lv9 +1/級" />
             <StatPill label="一轉" value="Lv10" />
           </div>
@@ -284,6 +413,9 @@ export default function SkillTablePage() {
               {plan.name}
             </a>
           ))}
+          <a className="rounded border border-border-dim bg-bg-secondary px-3 py-2 text-xs text-text-bright hover:border-border-glow hover:text-text-terminal" href="#advanced-classes">
+            Lv10 二轉
+          </a>
         </nav>
 
         <section id="rules" className="scroll-mt-28 rounded-md border border-border-dim bg-bg-secondary p-4">
@@ -324,6 +456,31 @@ export default function SkillTablePage() {
               <SkillPlanTable skills={plan.skills} />
             </section>
           ))}
+
+          <section id="advanced-classes" className="scroll-mt-28">
+            <div className="mb-3 rounded-md border border-border-dim bg-bg-secondary p-4">
+              <h2 className="text-xl font-bold text-text-terminal">Lv10 二轉職業草案</h2>
+              <p className="mt-2 max-w-4xl text-sm leading-6 text-text-dim">
+                二轉開始允許武器專精與玩法鎖定。初始職業保持泛用，Lv10 後用武器、資源循環與跨房工具切出身份。
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              {Object.entries(groupedAdvanced).map(([baseClass, plans]) => (
+                <div key={baseClass} className="rounded-md border border-border-dim bg-bg-secondary p-4">
+                  <div className="mb-3 flex items-end justify-between gap-2">
+                    <div>
+                      <h3 className="text-lg font-bold text-text-terminal">{baseClass}二轉</h3>
+                      <div className="mt-1 text-xs text-text-dim">{plans.length} 條專精路線</div>
+                    </div>
+                  </div>
+                  <div className="grid gap-3 xl:grid-cols-3">
+                    {plans.map((plan) => <AdvancedClassCard key={plan.id} plan={plan} />)}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
         </main>
       </div>
     </div>
@@ -367,6 +524,49 @@ function SkillPlanTable({ skills }: { skills: SkillPlan[] }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function AdvancedClassCard({ plan }: { plan: AdvancedClassPlan }) {
+  return (
+    <article className="flex flex-col rounded border border-border-dim bg-bg-primary p-3">
+      <div className="flex flex-wrap items-start justify-between gap-2">
+        <div>
+          <h4 className="text-lg font-bold text-text-bright">{plan.name}</h4>
+          <div className="mt-1 text-xs text-text-amber">{plan.weapon}</div>
+        </div>
+        <span className="rounded border border-border-dim bg-bg-secondary px-2 py-1 text-xs text-text-terminal">
+          {plan.role}
+        </span>
+      </div>
+
+      <div className="mt-3 grid gap-2 text-xs leading-5 text-text-dim">
+        <InfoLine label="單人循環" value={plan.soloLoop} />
+        <InfoLine label="組隊價值" value={plan.partyValue} />
+        <InfoLine label="跨房玩法" value={plan.crossRoomPlay} />
+        <InfoLine label="資源循環" value={plan.resourceLoop} />
+      </div>
+
+      <div className="mt-3 border-t border-border-dim pt-3">
+        <div className="text-xs font-bold text-text-terminal">代表技能</div>
+        <div className="mt-2 flex flex-col gap-1">
+          {plan.signatureSkills.map((skill) => (
+            <div key={skill} className="rounded border border-border-dim bg-bg-secondary px-2 py-1 text-xs leading-5 text-text-dim">
+              {skill}
+            </div>
+          ))}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function InfoLine({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <span className="text-text-terminal">{label}：</span>
+      <span>{value}</span>
     </div>
   );
 }

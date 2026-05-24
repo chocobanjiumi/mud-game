@@ -124,6 +124,13 @@ describe('key UI component rendering', () => {
     expect(html).toContain('消耗 70 怒氣');
     expect(html).toContain('信仰 -25');
     expect(html).toContain('arrivalTicks');
+    expect(html).toContain('Lv10 二轉職業草案');
+    expect(html).toContain('盾衛');
+    expect(html).toContain('狂斧');
+    expect(html).toContain('槍騎');
+    expect(html).toContain('神射手');
+    expect(html).toContain('影刃');
+    expect(html).toContain('獵陷師');
   });
 
   it('renders skill learned modal details', () => {
