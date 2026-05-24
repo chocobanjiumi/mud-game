@@ -13,6 +13,7 @@ import { CrossRoomCombatPanelView } from '../components/CrossRoomCombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
 import { InventoryView } from '../components/Inventory';
 import { CharacterSheetView } from '../components/CharacterSheet';
+import { SkillBarView } from '../components/SkillBar';
 import { useGameStore } from '../stores/gameStore';
 
 const slimeEntity: RoomEntity = {
@@ -99,6 +100,7 @@ beforeEach(() => {
     selectedCombatTargetId: null,
     skills: [],
     skillLearnedNotices: [],
+    selectedCrossRoomDirection: null,
     inventory: [],
     equipment: null,
     inventoryCapacity: 20,
@@ -420,5 +422,29 @@ describe('key UI component rendering', () => {
     expect(html).toContain('普攻');
     expect(html).toContain('防禦');
     expect(html).toContain('逃跑');
+  });
+
+  it('renders skill bar target modes and pending target prompt', () => {
+    const html = renderToStaticMarkup(
+      <SkillBarView
+        onUseSkill={() => undefined}
+        pendingTargetSkillId="precise_shot"
+        inCombat={true}
+        character={{ resource: 40, maxResource: 100, resourceType: 'focus' } as Character}
+        selectedCombatTargetId="enemy-1"
+        selectedEntity={null}
+        selectedCrossRoomDirection="east"
+        skills={[
+          { skillId: 'precise_shot', level: 1, currentCooldown: 0 },
+          { skillId: 'critical_edge', level: 1, currentCooldown: 0 },
+          { skillId: 'war_cry', level: 1, currentCooldown: 0 },
+        ]}
+      />,
+    );
+
+    expect(html).toContain('戰鬥技能');
+    expect(html).toContain('方向');
+    expect(html).toContain('四方');
+    expect(html).toContain('需要先在周邊戰鬥選擇方向');
   });
 });

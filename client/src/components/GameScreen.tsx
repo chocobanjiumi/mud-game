@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { ChatChannel } from '../stores/gameStore';
 import { SKILL_DEFS } from '@game/shared';
@@ -53,6 +53,10 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
   const selectedCombatTargetId = useGameStore((s) => s.selectedCombatTargetId);
   const selectedCrossRoomDirection = useGameStore((s) => s.selectedCrossRoomDirection);
+  const selectedEntity = useGameStore((s) => s.selectedEntity);
+  const character = useGameStore((s) => s.character);
+  const addTerminalLine = useGameStore((s) => s.addTerminalLine);
+  const [pendingTargetSkillId, setPendingTargetSkillId] = useState<string | null>(null);
 
   const openWorldMap = useCallback(() => {
     if (!worldMapOpen) {
@@ -123,18 +127,40 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const handleUseSkill = useCallback(
     (skillId: string) => {
       const def = SKILL_DEFS[skillId];
+      if (!def) {
+        onCommand(`skill ${skillId}`, `使用技能 ${skillId}`);
+        return;
+      }
       const isFourWay = def?.special?.areaScope === 'adjacent_cardinal';
       const needsDirection = Boolean(def?.special?.crossRoom || def?.special?.crossRoomRequiresScout);
-      const suffix = isFourWay
-        ? ''
-        : needsDirection && selectedCrossRoomDirection
-          ? ` direction:${selectedCrossRoomDirection}`
-          : selectedCombatTargetId
-            ? ` ${selectedCombatTargetId}`
-            : '';
-      onCommand(`skill ${skillId}${suffix}`, `使用技能 ${def?.name ?? skillId}`);
+      const selectedRoomMonsterId = selectedEntity?.type === 'monster' ? selectedEntity.id : null;
+      let suffix = '';
+
+      if (isFourWay) {
+        suffix = '';
+      } else if (needsDirection) {
+        if (!selectedCrossRoomDirection) {
+          setPendingTargetSkillId(skillId);
+          addTerminalLine(`請先在周邊戰鬥選擇「${def.name}」的方向。`, 'system');
+          return;
+        }
+        suffix = ` direction:${selectedCrossRoomDirection}`;
+      } else if (def.targetType === 'single_enemy') {
+        const targetId = inCombat ? selectedCombatTargetId : selectedRoomMonsterId;
+        if (!targetId) {
+          setPendingTargetSkillId(skillId);
+          addTerminalLine(`請先選擇「${def.name}」的怪物目標。`, 'system');
+          return;
+        }
+        suffix = ` ${targetId}`;
+      } else if (def.targetType === 'single_ally') {
+        suffix = character?.id ? ` ${character.id}` : '';
+      }
+
+      setPendingTargetSkillId(null);
+      onCommand(`skill ${skillId}${suffix}`, `使用技能 ${def.name}`);
     },
-    [onCommand, selectedCombatTargetId, selectedCrossRoomDirection],
+    [addTerminalLine, character?.id, inCombat, onCommand, selectedCombatTargetId, selectedCrossRoomDirection, selectedEntity],
   );
 
   return (
@@ -201,7 +227,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
           <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
             <CombatPanel />
-            <SkillBar onUseSkill={handleUseSkill} />
+            <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
             <RoomPanel />
             <SelectedTargetPanel />
             <ChatPanel onSendChat={onSendChat} />
