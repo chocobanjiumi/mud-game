@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_coast_water_02",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_coast_water_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_coast_water_fogbell_clapper",
+      "category": "material",
+      "targetId": "fogbell_clapper",
+      "name": "霧鐘舌",
+      "outputPath": "client/public/images/materials/material_coast_water_fogbell_clapper.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_glassfish_scale",
+      "category": "material",
+      "targetId": "glassfish_scale",
+      "name": "玻魚鱗片",
+      "outputPath": "client/public/images/materials/material_coast_water_glassfish_scale.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_kelp_rope_coil",
+      "category": "material",
+      "targetId": "kelp_rope_coil",
+      "name": "海藻繩卷",
+      "outputPath": "client/public/images/materials/material_coast_water_kelp_rope_coil.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_moon_jelly_lantern",
+      "category": "material",
+      "targetId": "moon_jelly_lantern",
+      "name": "月水母燈囊",
+      "outputPath": "client/public/images/materials/material_coast_water_moon_jelly_lantern.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_coast_water_red_coral_splinter",
+      "category": "material",
+      "targetId": "red_coral_splinter",
+      "name": "紅珊瑚裂片",
+      "outputPath": "client/public/images/materials/material_coast_water_red_coral_splinter.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_coast_water_reedscale_strip",
+      "category": "material",
+      "targetId": "reedscale_strip",
+      "name": "蘆鱗條",
+      "outputPath": "client/public/images/materials/material_coast_water_reedscale_strip.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_coast_water_reefbone_splinter",
+      "category": "material",
+      "targetId": "reefbone_splinter",
+      "name": "礁骨裂片",
+      "outputPath": "client/public/images/materials/material_coast_water_reefbone_splinter.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_coast_water_salt_crab_shell",
+      "category": "material",
+      "targetId": "salt_crab_shell",
+      "name": "鹽蟹硬殼",
+      "outputPath": "client/public/images/materials/material_coast_water_salt_crab_shell.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_coast_water_salt_cured_fish",
+      "category": "material",
+      "targetId": "salt_cured_fish",
+      "name": "鹽漬霧魚",
+      "outputPath": "client/public/images/materials/material_coast_water_salt_cured_fish.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_coast_water_sapphire_lotus_petal",
+      "category": "material",
+      "targetId": "sapphire_lotus_petal",
+      "name": "藍蓮花瓣",
+      "outputPath": "client/public/images/materials/material_coast_water_sapphire_lotus_petal.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
