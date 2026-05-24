@@ -268,11 +268,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '極限怒吼或鐵壁嘲諷把四方怪拉進來，靠格擋準備與反擊上限撐住第一波壓力。',
     resourceLoop: '怒氣主要來自被打、格擋、防禦與替隊友承傷；怒氣花在盾牆、群嘲與反擊架勢。',
     signatureSkills: [
-      'Lv10 盾擊：消耗 20 怒氣；本房單體盾牌傷害並打斷預兆。若上一 tick 成功格擋，傷害 +30%，命中 +8 怒氣。',
-      'Lv12 反擊架勢：消耗 15 怒氣；自己 3 tick 反擊狀態，受到近戰攻擊時反擊 1 次/ tick，成功格擋時反擊傷害 +25%。',
-      'Lv14 盾牆：消耗 35 怒氣；自己 2 tick 受到傷害 -50%，被命中額外 +8 怒氣，期間反擊傷害 -15%。',
-      'Lv16 守護誓言：消耗 30 怒氣；指定隊友 3 tick 內 35% 傷害轉由你承受，承傷可觸發反擊判定。',
-      'Lv18 鐵壁嘲諷：消耗 60 怒氣；本房 + 東西南北相鄰房拉怪，arrivalTicks = 0，自己獲得 2 tick 格擋準備與反擊上限 +1。',
+      'Lv20 盾擊：消耗 20 怒氣；本房單體盾牌傷害並打斷預兆。若上一 tick 成功格擋，傷害 +30%，命中 +8 怒氣。',
+      'Lv22 反擊架勢：消耗 15 怒氣；自己 3 tick 反擊狀態，受到近戰攻擊時反擊 1 次/ tick，成功格擋時反擊傷害 +25%。',
+      'Lv24 盾牆：消耗 35 怒氣；自己 2 tick 受到傷害 -50%，被命中額外 +8 怒氣，期間反擊傷害 -15%。',
+      'Lv26 守護誓言：消耗 30 怒氣；指定隊友 3 tick 內 35% 傷害轉由你承受，承傷可觸發反擊判定。',
+      'Lv28 鐵壁嘲諷：消耗 60 怒氣；本房 + 東西南北相鄰房拉怪，arrivalTicks = 0，自己獲得 2 tick 格擋準備與反擊上限 +1。',
     ],
   },
   {
@@ -286,11 +286,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '不擅長安全隔房控場，但怪越多越能透過旋風與吸血把壓力轉成輸出。',
     resourceLoop: '怒氣主要來自攻擊、受傷與低血狀態；怒氣花在血怒、旋風斧與嗜血劈砍。',
     signatureSkills: [
-      'Lv10 裂骨斬：消耗 25 怒氣；本房單體高傷害，附加 2 tick 破甲 -15%，對菁英/Boss 破甲改為 -8%。',
-      'Lv12 血怒：消耗 20 怒氣 + 目前 HP 8%；自己 4 tick 傷害 +20%，HP 低於 40% 時提高到 +32%。',
-      'Lv14 旋風斧：消耗 45 怒氣；戰鬥中最多 5 隻怪受到物理傷害，每命中 1 隻返還 4 怒氣。',
-      'Lv16 嗜血劈砍：消耗 35 怒氣；本房單體傷害，回復造成傷害 25% 的 HP，低血時回復上限提高。',
-      'Lv18 瀕死狂暴：消耗 0 怒氣；被動，HP 低於 35% 時每 tick +8 怒氣、傷害 +18%、受到治療 -10%。',
+      'Lv20 裂骨斬：消耗 25 怒氣；本房單體高傷害，附加 2 tick 破甲 -15%，對菁英/Boss 破甲改為 -8%。',
+      'Lv22 血怒：消耗 20 怒氣 + 目前 HP 8%；自己 4 tick 傷害 +20%，HP 低於 40% 時提高到 +32%。',
+      'Lv24 旋風斧：消耗 45 怒氣；戰鬥中最多 5 隻怪受到物理傷害，每命中 1 隻返還 4 怒氣。',
+      'Lv26 嗜血劈砍：消耗 35 怒氣；本房單體傷害，回復造成傷害 25% 的 HP，低血時回復上限提高。',
+      'Lv28 瀕死狂暴：消耗 0 怒氣；被動，HP 低於 35% 時每 tick +8 怒氣、傷害 +18%、受到治療 -10%。',
     ],
   },
   {
@@ -304,11 +304,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '最擅長處理 approaching：怪還沒到就先刺、延遲、slow，或對指定方向直線衝鋒。',
     resourceLoop: '怒氣來自先手命中、突刺與成功攔截；怒氣花在貫穿衝鋒、槍陣與高威力突刺。',
     signatureSkills: [
-      'Lv10 突刺：消耗 18 怒氣；本房或 approaching 單體，高命中物理傷害；目標剛抵達 1 tick 內傷害 +20%。',
-      'Lv12 攔截：消耗 25 怒氣；指定 approaching 怪物立刻受傷且 arrivalTicks +1，成功攔截返還 8 怒氣。',
-      'Lv14 貫穿衝鋒：消耗 40 怒氣；指定方向直線攻擊本房出口與相鄰房最多 3 隻，命中後目標 arrivalTicks 至少為 1。',
-      'Lv16 槍陣：消耗 35 怒氣；指定出口持續 4 tick，從該出口抵達的怪物受傷並 slow 1 tick。',
-      'Lv18 破陣一擊：消耗 50 怒氣；本房或相鄰方向單體重擊，打斷預兆/衝鋒，成功打斷返還 15 怒氣。',
+      'Lv20 突刺：消耗 18 怒氣；本房或 approaching 單體，高命中物理傷害；目標剛抵達 1 tick 內傷害 +20%。',
+      'Lv22 攔截：消耗 25 怒氣；指定 approaching 怪物立刻受傷且 arrivalTicks +1，成功攔截返還 8 怒氣。',
+      'Lv24 貫穿衝鋒：消耗 40 怒氣；指定方向直線攻擊本房出口與相鄰房最多 3 隻，命中後目標 arrivalTicks 至少為 1。',
+      'Lv26 槍陣：消耗 35 怒氣；指定出口持續 4 tick，從該出口抵達的怪物受傷並 slow 1 tick。',
+      'Lv28 破陣一擊：消耗 50 怒氣；本房或相鄰方向單體重擊，打斷預兆/衝鋒，成功打斷返還 15 怒氣。',
     ],
   },
   {
@@ -322,11 +322,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '最擅長隔房攻擊，可降低遠距命中懲罰，並讓被命中的怪 arrivalTicks +1。',
     resourceLoop: '專注花在狙擊、穿透與弱點標記；靠偵查、定點射擊準備與命中回收專注。',
     signatureSkills: [
-      'Lv10 狙擊：消耗 35 專注；本房或已偵查相鄰房單體高傷害，隔房命中後 arrivalTicks = 2。',
-      'Lv12 弱點標記：消耗 25 專注；標記本房或已偵查單體 5 tick，隊友對目標暴擊 +8%，你額外傷害 +15%。',
-      'Lv14 穿透箭：消耗 40 專注；指定方向直線穿刺，本房出口 + 相鄰房最多 3 隻，第二隻起傷害 -20%。',
-      'Lv16 定點射擊：消耗 15 專注；自己準備 1 tick，下一個射擊/狙擊傷害 +35%、命中 +15%，移動或受重擊取消。',
-      'Lv18 壓制射擊：消耗 45 專注；本房或相鄰方向最多 4 隻，傷害中等，命中後 arrivalTicks +1 或下一 tick 命中 -12%。',
+      'Lv20 狙擊：消耗 35 專注；本房或已偵查相鄰房單體高傷害，隔房命中後 arrivalTicks = 2。',
+      'Lv22 弱點標記：消耗 25 專注；標記本房或已偵查單體 5 tick，隊友對目標暴擊 +8%，你額外傷害 +15%。',
+      'Lv24 穿透箭：消耗 40 專注；指定方向直線穿刺，本房出口 + 相鄰房最多 3 隻，第二隻起傷害 -20%。',
+      'Lv26 定點射擊：消耗 15 專注；自己準備 1 tick，下一個射擊/狙擊傷害 +35%、命中 +15%，移動或受重擊取消。',
+      'Lv28 壓制射擊：消耗 45 專注；本房或相鄰方向最多 4 隻，傷害中等，命中後 arrivalTicks +1 或下一 tick 命中 -12%。',
     ],
   },
   {
@@ -340,11 +340,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '不走遠距射擊，而是偵查後潛入相鄰房伏擊，或對 approaching 怪物做先制背刺。',
     resourceLoop: '專注花在潛行、背刺、毒刃與煙幕；成功背刺或毒跳可部分回收專注。',
     signatureSkills: [
-      'Lv10 潛行：消耗 25 專注；自己 3 tick 潛行，下一次背刺可用；每 tick 仍自然回復 5 專注。',
-      'Lv12 背刺：消耗 30 專注；本房單體高爆發，對未警戒、被標記或剛抵達目標傷害 +45%，成功擊殺返還 20 專注。',
-      'Lv14 毒刃：消耗 28 專注；本房或剛抵達單體中傷害，附加 4 tick 毒傷，毒跳期間怪物 approaching 也會受傷。',
-      'Lv16 煙幕脫離：消耗 35 專注；自己 2 tick 閃避 +30%，降低追擊仇恨；可使 1 隻 approaching 目標 arrivalTicks +1。',
-      'Lv18 暗巷伏擊：消耗 50 專注；指定出口伏擊下一隻 approaching 怪，抵達前先受背刺傷害並暈眩 1 tick。',
+      'Lv20 潛行：消耗 25 專注；自己 3 tick 潛行，下一次背刺可用；每 tick 仍自然回復 5 專注。',
+      'Lv22 背刺：消耗 30 專注；本房單體高爆發，對未警戒、被標記或剛抵達目標傷害 +45%，成功擊殺返還 20 專注。',
+      'Lv24 毒刃：消耗 28 專注；本房或剛抵達單體中傷害，附加 4 tick 毒傷，毒跳期間怪物 approaching 也會受傷。',
+      'Lv26 煙幕脫離：消耗 35 專注；自己 2 tick 閃避 +30%，降低追擊仇恨；可使 1 隻 approaching 目標 arrivalTicks +1。',
+      'Lv28 暗巷伏擊：消耗 50 專注；指定出口伏擊下一隻 approaching 怪，抵達前先受背刺傷害並暈眩 1 tick。',
     ],
   },
   {
@@ -358,11 +358,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '最懂地形，能在出口設陷阱、放誘餌、延遲抵達、暈眩或改變怪物路線。',
     resourceLoop: '專注花在陷阱與誘餌；陷阱觸發時回專注，形成準備型循環。',
     signatureSkills: [
-      'Lv10 捕獸夾：消耗 30 專注；指定出口設陷阱 5 tick，觸發時單體受傷、arrivalTicks +1，返還 10 專注。',
-      'Lv12 誘餌：消耗 20 專注；指定相鄰方向吸引最多 2 隻怪進入 approaching，arrivalTicks = 3，不直接進戰鬥。',
-      'Lv14 爆裂陷阱：消耗 45 專注；指定出口設陷阱，觸發時本房最多 4 隻受火傷，觸發返還 12 專注。',
-      'Lv16 絆索：消耗 35 專注；指定出口 4 tick，第一隻抵達怪物暈眩 1 tick 並命中 -10%，返還 8 專注。',
-      'Lv18 陷阱連鎖：消耗 25 專注；自己 6 tick 內下一個陷阱觸發後，另一個已存在陷阱效果 +30%，並額外返還 10 專注。',
+      'Lv20 捕獸夾：消耗 30 專注；指定出口設陷阱 5 tick，觸發時單體受傷、arrivalTicks +1，返還 10 專注。',
+      'Lv22 誘餌：消耗 20 專注；指定相鄰方向吸引最多 2 隻怪進入 approaching，arrivalTicks = 3，不直接進戰鬥。',
+      'Lv24 爆裂陷阱：消耗 45 專注；指定出口設陷阱，觸發時本房最多 4 隻受火傷，觸發返還 12 專注。',
+      'Lv26 絆索：消耗 35 專注；指定出口 4 tick，第一隻抵達怪物暈眩 1 tick 並命中 -10%，返還 8 專注。',
+      'Lv28 陷阱連鎖：消耗 25 專注；自己 6 tick 內下一個陷阱觸發後，另一個已存在陷阱效果 +30%，並額外返還 10 專注。',
     ],
   },
   {
@@ -376,11 +376,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '最擅長大範圍跨房法術，可對指定方向或四方房間施放，但會驚動大量怪物。',
     resourceLoop: 'MP 消耗高，靠低耗填充法術、元素命中回 MP、或短暫冥想維持爆發窗口。',
     signatureSkills: [
-      'Lv10 烈焰爆破：消耗 35 MP；本房或指定相鄰房最多 3 隻火傷，附加 3 tick 燃燒，燃燒在 approaching 期間也跳傷。',
-      'Lv12 冰封地帶：消耗 38 MP；指定相鄰方向房間範圍冰傷，命中怪物 arrivalTicks +1 並 slow 1 tick。',
-      'Lv14 連鎖閃電：消耗 42 MP；本房或相鄰房跳躍最多 5 個目標，每跳傷害 -12%，對濕潤/金屬目標傷害 +20%。',
-      'Lv16 元素共鳴：消耗 18 MP；自己 6 tick 內若連續使用不同元素命中，返還 10 MP 並使下一個元素法術傷害 +10%。',
-      'Lv18 隕星雨：消耗 70 MP；東西南北相鄰房高傷 AoE，所有存活怪進入 approaching，arrivalTicks = 3。',
+      'Lv20 烈焰爆破：消耗 35 MP；本房或指定相鄰房最多 3 隻火傷，附加 3 tick 燃燒，燃燒在 approaching 期間也跳傷。',
+      'Lv22 冰封地帶：消耗 38 MP；指定相鄰方向房間範圍冰傷，命中怪物 arrivalTicks +1 並 slow 1 tick。',
+      'Lv24 連鎖閃電：消耗 42 MP；本房或相鄰房跳躍最多 5 個目標，每跳傷害 -12%，對濕潤/金屬目標傷害 +20%。',
+      'Lv26 元素共鳴：消耗 18 MP；自己 6 tick 內若連續使用不同元素命中，返還 10 MP 並使下一個元素法術傷害 +10%。',
+      'Lv28 隕星雨：消耗 70 MP；東西南北相鄰房高傷 AoE，所有存活怪進入 approaching，arrivalTicks = 3。',
     ],
   },
   {
@@ -394,11 +394,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '不追求最大跨房傷害，而是設置結界、減速通道或保護隊伍準備迎接 approaching。',
     resourceLoop: 'MP 會同時被施法與護盾消耗；奧術師能用冥想、吸能與護盾破裂返還維持循環。',
     signatureSkills: [
-      'Lv10 奧術屏障：消耗 28 MP；自己或隊友獲得 MaxHP 18% 護盾 3 tick，護盾期間被打斷機率下降。',
-      'Lv12 魔力汲取：消耗 12 MP；本房或相鄰房單體低傷害，命中回復 18 MP；對施法怪額外回復 8 MP。',
-      'Lv14 定錨結界：消耗 40 MP；指定出口設置 4 tick 結界，抵達怪物命中 -12% 或 arrivalTicks +1。',
-      'Lv16 法術穩定：消耗 20 MP；下一個詠唱技能 MP 消耗 -20%，且不會被小傷害打斷，持續 3 tick 或施法後消失。',
-      'Lv18 奧術超載：消耗 55 MP；自己 4 tick 法術效果 +25%，結束後 4 tick MP 自然回復 -50%。',
+      'Lv20 奧術屏障：消耗 28 MP；自己或隊友獲得 MaxHP 18% 護盾 3 tick，護盾期間被打斷機率下降。',
+      'Lv22 魔力汲取：消耗 12 MP；本房或相鄰房單體低傷害，命中回復 18 MP；對施法怪額外回復 8 MP。',
+      'Lv24 定錨結界：消耗 40 MP；指定出口設置 4 tick 結界，抵達怪物命中 -12% 或 arrivalTicks +1。',
+      'Lv26 法術穩定：消耗 20 MP；下一個詠唱技能 MP 消耗 -20%，且不會被小傷害打斷，持續 3 tick 或施法後消失。',
+      'Lv28 奧術超載：消耗 55 MP；自己 4 tick 法術效果 +25%，結束後 4 tick MP 自然回復 -50%。',
     ],
   },
   {
@@ -412,11 +412,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '能把指定方向或四方怪物的 arrivalTicks 往後推，甚至讓已抵達怪短暫退回 approaching 狀態。',
     resourceLoop: 'MP 中等消耗，但強技能 CD 長；靠時間標記與成功打斷回復少量 MP 或縮短 CD。',
     signatureSkills: [
-      'Lv10 遲滯術：消耗 24 MP；本房或相鄰方向單體 slow 2 tick，若目標 approaching 則 arrivalTicks +1。',
-      'Lv12 時間鎖：消耗 36 MP；打斷本房或相鄰方向單體預兆並凍結 1 tick；Boss 改為預兆延後 1 tick。',
-      'Lv14 回溯步：消耗 45 MP；自己或隊友回復到上一 tick 的位置與 25% 已失去 HP，不能復活已死亡目標。',
-      'Lv16 加速咒：消耗 30 MP；指定隊友下一個技能 CD -1，或下一 tick 行動優先度提高；同一目標 4 tick 內不能重複。',
-      'Lv18 停滯領域：消耗 60 MP；指定出口 4 tick 停滯，從該出口抵達的怪物 arrivalTicks +1，已抵達者 slow 1 tick。',
+      'Lv20 遲滯術：消耗 24 MP；本房或相鄰方向單體 slow 2 tick，若目標 approaching 則 arrivalTicks +1。',
+      'Lv22 時間鎖：消耗 36 MP；打斷本房或相鄰方向單體預兆並凍結 1 tick；Boss 改為預兆延後 1 tick。',
+      'Lv24 回溯步：消耗 45 MP；自己或隊友回復到上一 tick 的位置與 25% 已失去 HP，不能復活已死亡目標。',
+      'Lv26 加速咒：消耗 30 MP；指定隊友下一個技能 CD -1，或下一 tick 行動優先度提高；同一目標 4 tick 內不能重複。',
+      'Lv28 停滯領域：消耗 60 MP；指定出口 4 tick 停滯，從該出口抵達的怪物 arrivalTicks +1，已抵達者 slow 1 tick。',
     ],
   },
   {
@@ -430,11 +430,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '能在怪物抵達前預先給隊伍護盾，或對四方 approaching 怪造成低傷並為隊友上小盾。',
     resourceLoop: '信仰容易往 100 慈悲端靠近，需要穿插聖光/審判類技能把信仰拉回中線。',
     signatureSkills: [
-      'Lv10 大治癒：信仰 +25；條件信仰 <= 75。單體大量治療，低於 35% HP 時治療量 +20%。',
-      'Lv12 聖域護幕：信仰 +30；條件信仰 <= 70。全隊獲得 MaxHP 12% 護盾 3 tick，怪潮抵達前可預鋪。',
-      'Lv14 復甦禱言：信仰 +40；條件信仰 <= 60。戰鬥中復活倒下隊友，回復 30% HP，CD 長。',
-      'Lv16 光明祝禱：信仰 +18；條件信仰 <= 82。指定隊友 4 tick 受到治療 +20%，下一次傷害 -15%。',
-      'Lv18 審判微光：信仰 -15；條件信仰 >= 15。本房或相鄰方向最多 3 隻低光傷，用來把信仰從慈悲端拉回中線。',
+      'Lv20 大治癒：信仰 +25；條件信仰 <= 75。單體大量治療，低於 35% HP 時治療量 +20%。',
+      'Lv22 聖域護幕：信仰 +30；條件信仰 <= 70。全隊獲得 MaxHP 12% 護盾 3 tick，怪潮抵達前可預鋪。',
+      'Lv24 復甦禱言：信仰 +40；條件信仰 <= 60。戰鬥中復活倒下隊友，回復 30% HP，CD 長。',
+      'Lv26 光明祝禱：信仰 +18；條件信仰 <= 82。指定隊友 4 tick 受到治療 +20%，下一次傷害 -15%。',
+      'Lv28 審判微光：信仰 -15；條件信仰 >= 15。本房或相鄰方向最多 3 隻低光傷，用來把信仰從慈悲端拉回中線。',
     ],
   },
   {
@@ -448,11 +448,11 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '能跨房感知邪惡並先手審判，對 undead 房間尤其強，但會快速把信仰推向 0。',
     resourceLoop: '信仰容易往 0 審判端靠近，需要用治癒/守護技能回拉，不能無腦連發攻擊。',
     signatureSkills: [
-      'Lv10 審判錘：信仰 -18；條件信仰 >= 18。本房單體光屬性重擊，對暗/undead 傷害 +25%。',
-      'Lv12 沉默敕令：信仰 -22；條件信仰 >= 22。打斷或沉默本房/相鄰方向施法怪 2 tick，成功後聖光傷害 +12%。',
-      'Lv14 異端標記：信仰 -20；條件信仰 >= 20。標記單體 5 tick，隊友對其光傷 +15%、暴擊 +6%。',
-      'Lv16 神罰：信仰 -35；條件信仰 >= 35。本房或相鄰方向單體處決，目標 HP 低於 35% 時傷害 +45%。',
-      'Lv18 懺悔治癒：信仰 +18；條件信仰 <= 82。小治療自己或隊友，並解除審判端技能連發造成的節奏壓力。',
+      'Lv20 審判錘：信仰 -18；條件信仰 >= 18。本房單體光屬性重擊，對暗/undead 傷害 +25%。',
+      'Lv22 沉默敕令：信仰 -22；條件信仰 >= 22。打斷或沉默本房/相鄰方向施法怪 2 tick，成功後聖光傷害 +12%。',
+      'Lv24 異端標記：信仰 -20；條件信仰 >= 20。標記單體 5 tick，隊友對其光傷 +15%、暴擊 +6%。',
+      'Lv26 神罰：信仰 -35；條件信仰 >= 35。本房或相鄰方向單體處決，目標 HP 低於 35% 時傷害 +45%。',
+      'Lv28 懺悔治癒：信仰 +18；條件信仰 <= 82。小治療自己或隊友，並解除審判端技能連發造成的節奏壓力。',
     ],
   },
   {
@@ -466,20 +466,21 @@ const advancedClassPlans: AdvancedClassPlan[] = [
     crossRoomPlay: '能在出口種下藤蔓，讓 approaching 怪物 slow 或 arrivalTicks +1，也能遠距播撒再生給隊伍。',
     resourceLoop: '信仰在治療與自然攻擊之間擺盪較平滑，不像主教/審判者那麼容易衝到端點。',
     signatureSkills: [
-      'Lv10 生命再生：信仰 +12；條件信仰 <= 88。自己或隊友獲得 4 tick 持續治療。',
-      'Lv12 荊棘護甲：信仰 +10；條件信仰 <= 90。目標 4 tick 受到近戰攻擊時反傷，反傷不產生額外仇恨。',
-      'Lv14 藤蔓纏繞：信仰 -12；條件信仰 >= 12。本房或相鄰方向單體自然傷害並 slow；approaching 目標 arrivalTicks +1。',
-      'Lv16 野性圖騰：信仰 +8；條件信仰 <= 92。指定出口設圖騰 5 tick，隊友獲得小再生，怪物抵達時 slow 1 tick。',
-      'Lv18 翠綠奔湧：信仰 +28；條件信仰 <= 72。全隊 5 tick 群體 HoT，若怪物在 HoT 期間抵達，首 tick 傷害 -10%。',
+      'Lv20 生命再生：信仰 +12；條件信仰 <= 88。自己或隊友獲得 4 tick 持續治療。',
+      'Lv22 荊棘護甲：信仰 +10；條件信仰 <= 90。目標 4 tick 受到近戰攻擊時反傷，反傷不產生額外仇恨。',
+      'Lv24 藤蔓纏繞：信仰 -12；條件信仰 >= 12。本房或相鄰方向單體自然傷害並 slow；approaching 目標 arrivalTicks +1。',
+      'Lv26 野性圖騰：信仰 +8；條件信仰 <= 92。指定出口設圖騰 5 tick，隊友獲得小再生，怪物抵達時 slow 1 tick。',
+      'Lv28 翠綠奔湧：信仰 +28；條件信仰 <= 72。全隊 5 tick 群體 HoT，若怪物在 HoT 期間抵達，首 tick 傷害 -10%。',
     ],
   },
 ];
 
 const skillPointRules = [
-  'Lv2-Lv9 每級獲得 1 點技能點。',
-  '技能最高 Lv5，前 10 級大約只能深化 2-3 個核心技能。',
+  'Lv2-Lv19 每級獲得 1 點技能點。',
+  '技能最高 Lv5，二轉前大約能深化 4-5 個核心技能。',
   '升級不只加倍率，也會改變 CD、範圍、arrivalTicks、護盾、命中或控場。',
-  'Lv10 後進入一轉分支，技能再開始分路線深化。',
+  'Lv20 正式二轉，二轉技能在 Lv20/22/24/26/28 逐步解鎖。',
+  'Lv40 進入三轉或高階專精，作為後期 build 的第二次大分歧。',
 ];
 
 export default function SkillTablePage() {
@@ -496,15 +497,16 @@ export default function SkillTablePage() {
           <div className="text-xs uppercase tracking-wide text-text-dim">MUD Combat Draft</div>
           <h1 className="mt-1 text-2xl font-bold text-text-terminal text-glow">初始職業技能草案</h1>
           <p className="mt-2 max-w-4xl text-sm leading-6 text-text-dim">
-            這版先定義 Lv1-Lv10 的初始職業體感：每個職業 Lv1 直接有 3 個代表性技能，
-            Lv5/Lv8 解鎖新工具，並把 tick、跨房攻擊、arrivalTicks 與技能點深化放進設計。
+            這版先定義 Lv1-Lv19 的初始職業體感：每個職業 Lv1 直接有 3 個代表性技能，
+            Lv5/Lv8 解鎖新工具，Lv20 進入二轉，Lv40 預留三轉或高階專精。
           </p>
           <div className="mt-3 flex flex-wrap gap-2 text-xs">
             <StatPill label="初始職業" value={classPlans.length.toString()} />
             <StatPill label="規劃技能" value={totalSkills.toString()} />
             <StatPill label="二轉草案" value={advancedClassPlans.length.toString()} />
-            <StatPill label="技能點" value="Lv2-Lv9 +1/級" />
-            <StatPill label="一轉" value="Lv10" />
+            <StatPill label="技能點" value="Lv2-Lv19 +1/級" />
+            <StatPill label="二轉" value="Lv20" />
+            <StatPill label="三轉" value="Lv40" />
           </div>
         </header>
 
@@ -522,7 +524,7 @@ export default function SkillTablePage() {
             </a>
           ))}
           <a className="rounded border border-border-dim bg-bg-secondary px-3 py-2 text-xs text-text-bright hover:border-border-glow hover:text-text-terminal" href="#advanced-classes">
-            Lv10 二轉
+            Lv20 二轉
           </a>
         </nav>
 
@@ -567,9 +569,10 @@ export default function SkillTablePage() {
 
           <section id="advanced-classes" className="scroll-mt-28">
             <div className="mb-3 rounded-md border border-border-dim bg-bg-secondary p-4">
-              <h2 className="text-xl font-bold text-text-terminal">Lv10 二轉職業草案</h2>
+              <h2 className="text-xl font-bold text-text-terminal">Lv20 二轉職業草案</h2>
               <p className="mt-2 max-w-4xl text-sm leading-6 text-text-dim">
-                二轉開始允許武器專精與玩法鎖定。初始職業保持泛用，Lv10 後用武器、資源循環與跨房工具切出身份。
+                二轉開始允許武器專精與玩法鎖定。初始職業保持泛用，Lv20 後用武器、資源循環與跨房工具切出身份；
+                Lv40 再進入三轉或高階專精。
               </p>
             </div>
 

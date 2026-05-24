@@ -125,7 +125,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('消耗 70 怒氣');
     expect(html).toContain('信仰 -25');
     expect(html).toContain('arrivalTicks');
-    expect(html).toContain('Lv10 二轉職業草案');
+    expect(html).toContain('Lv20 二轉職業草案');
+    expect(html).toContain('Lv40');
     expect(html).toContain('盾衛');
     expect(html).toContain('狂斧');
     expect(html).toContain('槍騎');
@@ -139,7 +140,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('審判者');
     expect(html).toContain('德魯伊');
     expect(html).toContain('二轉技能 / 消耗');
-    expect(html).toContain('Lv18 鐵壁嘲諷');
+    expect(html).toContain('Lv28 鐵壁嘲諷');
+    expect(html).toContain('Lv20/22/24/26/28');
     expect(html).toContain('消耗 70 MP');
     expect(html).toContain('信仰 +40');
     expect(html).toContain('消耗 50 專注');
