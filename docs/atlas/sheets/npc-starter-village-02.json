@@ -1,0 +1,63 @@
+{
+  "sheetId": "npc_starter_village_02",
+  "category": "npc",
+  "columns": 3,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_starter_village_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_starter_village_ext_farmer",
+      "category": "npc",
+      "targetId": "farmer",
+      "name": "農夫",
+      "outputPath": "client/public/images/npcs/npc_starter_village_ext_farmer.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_starter_village_ext_starter_ext_field_medic",
+      "category": "npc",
+      "targetId": "starter_ext_field_medic",
+      "name": "蕾娜",
+      "outputPath": "client/public/images/npcs/npc_starter_village_ext_starter_ext_field_medic.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_starter_village_ext_starter_ext_watch_patrol",
+      "category": "npc",
+      "targetId": "starter_ext_watch_patrol",
+      "name": "托瑪",
+      "outputPath": "client/public/images/npcs/npc_starter_village_ext_starter_ext_watch_patrol.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "npc_starter_village_starter_village_chapel_keeper",
+      "category": "npc",
+      "targetId": "starter_village_chapel_keeper",
+      "name": "艾琳",
+      "outputPath": "client/public/images/npcs/npc_starter_village_starter_village_chapel_keeper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_starter_village_starter_village_innkeeper",
+      "category": "npc",
+      "targetId": "starter_village_innkeeper",
+      "name": "梅塔",
+      "outputPath": "client/public/images/npcs/npc_starter_village_starter_village_innkeeper.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "npc_starter_village_starter_village_repair_tinker",
+      "category": "npc",
+      "targetId": "starter_village_repair_tinker",
+      "name": "波里",
+      "outputPath": "client/public/images/npcs/npc_starter_village_starter_village_repair_tinker.png",
+      "row": 1,
+      "column": 2
+    }
+  ]
+}
