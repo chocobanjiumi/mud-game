@@ -725,13 +725,25 @@ function SkillPlanTable({ skills }: { skills: SkillPlan[] }) {
               <Td><span className="font-bold text-text-terminal">Lv.{skill.level}</span></Td>
               <Td>
                 <div className="flex min-w-[150px] items-center gap-2">
+                  {(() => {
+                    const def = SKILL_DEFS[skillIdByName[skill.name]];
+                    return (
+                      <>
                   <img
-                    src={SKILL_DEFS[skillIdByName[skill.name]]?.iconPath ?? '/images/skills/icons/starter_blank_01.png'}
+                    src={def?.iconPath ?? '/images/skills/icons/starter_blank_01.png'}
                     alt=""
                     className="h-10 w-10 rounded border border-border-dim object-cover"
                     loading="lazy"
                   />
-                  <div className="font-bold text-text-bright">{skill.name}</div>
+                  <div>
+                    <div className="font-bold text-text-bright">{skill.name}</div>
+                    {def?.fullDescription && (
+                      <div className="mt-1 max-w-[260px] text-[11px] leading-4 text-text-dim">{def.fullDescription}</div>
+                    )}
+                  </div>
+                      </>
+                    );
+                  })()}
                 </div>
               </Td>
               <Td>{skill.role}</Td>

@@ -1,7 +1,7 @@
 // 技能定義 - 所有職業的技能資料
 
 import type { ClassId } from '../types/player.js';
-import type { SkillDef, SkillScaling, SkillTag, SkillUsageContext } from '../types/skill.js';
+import type { SkillDef, SkillScaling, SkillTag, SkillTargetType, SkillUsageContext, StatusEffectType } from '../types/skill.js';
 import { CLASS_DEFS } from './classes.js';
 import { FAITH_DEFS, RACE_DEFS } from './origins.js';
 
@@ -1597,17 +1597,205 @@ function createSecondJobSkillExpansionDefs(): Record<string, RawSkillDef> {
 
 function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, SkillDef> {
   return Object.fromEntries(
-    Object.entries(defs).map(([id, def]) => [id, {
-      ...def,
-      tags: normalizeSkillTags(def),
-      scaling: def.scaling ?? inferSkillScaling(def),
-      usageContext: def.usageContext ?? inferSkillUsageContext(def),
-      questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
-      shortDescription: def.shortDescription ?? createShortSkillDescription(def),
-      fullDescription: def.fullDescription ?? def.description,
-      iconPath: def.iconPath ?? STARTER_SKILL_ICON_PATHS[id],
-    }]),
+    Object.entries(defs).map(([id, def]) => {
+      const normalized: SkillDef = {
+        ...def,
+        tags: normalizeSkillTags(def),
+        scaling: def.scaling ?? inferSkillScaling(def),
+        usageContext: def.usageContext ?? inferSkillUsageContext(def),
+        questUnlock: def.questUnlock ?? getClassQuestSkillUnlock(id),
+        shortDescription: def.shortDescription ?? createShortSkillDescription(def),
+        fullDescription: def.fullDescription ?? '',
+        iconPath: def.iconPath ?? STARTER_SKILL_ICON_PATHS[id],
+      };
+      normalized.fullDescription = createMechanicSkillDescription({
+        ...normalized,
+        description: def.fullDescription ?? normalized.description,
+      });
+      return [id, normalized];
+    }),
   );
+}
+
+function createMechanicSkillDescription(def: SkillDef): string {
+  if (def.type === 'passive') {
+    return [
+      '類型: 被動技能。',
+      `解鎖: Lv.${def.learnLevel}。`,
+      `目標: ${targetTypeLabel(def)}。`,
+      `範圍: ${scopeLabel(def)}。`,
+      `效果: ${effectSummary(def)}。`,
+      `跨房: ${crossRoomLabel(def)}。`,
+      `戰術用途: ${createShortSkillDescription(def)}`
+    ].join(' ');
+  }
+
+  return [
+    `消耗: ${def.resourceCost} ${resourceLabelForClass(def.classId)}。`,
+    `冷卻: ${def.cooldown} tick。`,
+    `目標: ${targetTypeLabel(def)}。`,
+    `範圍: ${scopeLabel(def)}。`,
+    `效果: ${effectSummary(def)}。`,
+    `持續: ${durationLabel(def)}。`,
+    `跨房: ${crossRoomLabel(def)}。`,
+    `資源返還: ${resourceReturnLabel(def)}。`,
+    `限制: ${restrictionLabel(def)}。`,
+    `風險: ${riskLabel(def)}。`,
+    `戰術用途: ${createShortSkillDescription(def)}`
+  ].join(' ');
+}
+
+function resourceLabelForClass(classId: SkillDef['classId']): string {
+  const resourceType = CLASS_DEFS[classId]?.resourceType;
+  if (resourceType === 'rage') return '怒氣';
+  if (resourceType === 'focus') return '專注';
+  if (resourceType === 'faith') return '信仰';
+  return 'MP';
+}
+
+function targetTypeLabel(def: SkillDef): string {
+  const labels: Record<SkillTargetType, string> = {
+    single_enemy: '單體敵人',
+    all_enemies: '所有敵人',
+    self: '自己',
+    single_ally: '單體隊友',
+    all_allies: '所有隊友',
+  };
+  return labels[def.targetType];
+}
+
+function scopeLabel(def: SkillDef): string {
+  if (def.special?.areaScope === 'adjacent_cardinal') return '東西南北相鄰房';
+  if (def.special?.crossRoom || def.special?.crossRoomRequiresScout) return '本房或指定相鄰方向';
+  if (def.special?.areaScope === 'room') return '本房全房間';
+  if (def.special?.areaScope === 'combat') return '目前戰鬥群體';
+  if (def.targetType === 'all_enemies') return '目前戰鬥群體';
+  if (def.targetType === 'all_allies') return '隊伍';
+  return '本房/自身';
+}
+
+function effectSummary(def: SkillDef): string {
+  const parts: string[] = [];
+  if (def.multiplier > 0) {
+    const percent = Math.round(def.multiplier * 100);
+    parts.push(`${percent}% ${damageTypeLabel(def.damageType)}${def.element !== 'none' ? `/${def.element}` : ''}傷害`);
+  }
+  if (def.special?.isHeal) parts.push(`${Math.round(def.multiplier * 100)}% 治療`);
+  if (def.special?.healPercent) parts.push(`回復最大 HP ${def.special.healPercent}%`);
+  if (def.special?.removeDebuffs) parts.push('移除負面狀態');
+  if (def.effects?.length) {
+    parts.push(...def.effects.map(effect => `${effectTypeLabel(effect.type)} ${effect.value}${effect.duration > 0 ? `，持續 ${effect.duration} tick` : ''}`));
+  }
+  if (def.special?.interrupt) parts.push('可打斷預兆/施法');
+  if (def.special?.dispelShield) parts.push('可驅散護盾');
+  if (def.special?.trapExit) parts.push('設置出口陷阱');
+  if (def.special?.scoutDirection) parts.push('偵查指定方向房間');
+  if (parts.length === 0) return '依技能特殊規則生效';
+  return parts.join('；');
+}
+
+function durationLabel(def: SkillDef): string {
+  const durations = [
+    ...(def.effects ?? []).map(effect => effect.duration).filter(duration => duration > 0),
+    typeof def.special?.duration === 'number' ? def.special.duration : 0,
+  ].filter(duration => duration > 0);
+  if (durations.length === 0) return '立即';
+  return `${Math.max(...durations)} tick`;
+}
+
+function crossRoomLabel(def: SkillDef): string {
+  if (def.special?.areaScope === 'adjacent_cardinal') {
+    const arrival = typeof def.special.arrivalTicks === 'number' ? `，命中後 arrivalTicks = ${def.special.arrivalTicks}` : '';
+    return `可，影響東西南北相鄰房${arrival}`;
+  }
+  if (def.special?.crossRoomRequiresScout) {
+    const arrival = typeof def.special.arrivalTicks === 'number' ? `，命中後 arrivalTicks = ${def.special.arrivalTicks}` : '';
+    return `可，但需要先偵查目標房${arrival}`;
+  }
+  if (def.special?.crossRoom) {
+    const arrival = typeof def.special.arrivalTicks === 'number' ? `，命中後 arrivalTicks = ${def.special.arrivalTicks}` : '';
+    return `可，指定相鄰方向${arrival}`;
+  }
+  if (typeof def.special?.arrivalTicksDelta === 'number') {
+    return `不直接跨房，但會使 approaching/陷阱目標 arrivalTicks ${signed(def.special.arrivalTicksDelta)}`;
+  }
+  return '否';
+}
+
+function resourceReturnLabel(def: SkillDef): string {
+  const parts: string[] = [];
+  for (const key of ['resourceGain', 'resourceGainOnHit', 'focusGainOnHit', 'focusGainOnMarkedHit', 'resourceGainPerHit', 'mpGainOnSpellHit', 'resourceGainOnTrigger'] as const) {
+    const value = def.special?.[key];
+    if (typeof value === 'number' && value > 0) parts.push(`${resourceGainLabel(key)} +${value}`);
+  }
+  return parts.length > 0 ? parts.join('；') : '無';
+}
+
+function restrictionLabel(def: SkillDef): string {
+  const parts: string[] = [];
+  if (typeof def.special?.faithMin === 'number') parts.push(`信仰至少 ${def.special.faithMin}`);
+  if (typeof def.special?.faithMax === 'number') parts.push(`信仰最多 ${def.special.faithMax}`);
+  if (def.special?.undeadOnlyBonus) parts.push('undead 目標有額外效果');
+  if (def.special?.crossRoomRequiresScout) parts.push('跨房需先偵查');
+  if (def.questUnlock) parts.push(`需完成 ${def.questUnlock.questId}`);
+  return parts.length > 0 ? parts.join('；') : '無';
+}
+
+function riskLabel(def: SkillDef): string {
+  if (def.special?.areaScope === 'adjacent_cardinal') return '會驚動多個相鄰房間，命中怪物可能進入 approaching。';
+  if (def.special?.crossRoom || def.special?.crossRoomRequiresScout) return '跨房命中會讓怪物進入 approaching 並朝本房移動。';
+  if (def.special?.trapExit) return '陷阱觸發會暴露出口壓力，怪物仍會延後抵達。';
+  return '無額外拉怪風險。';
+}
+
+function damageTypeLabel(type: SkillDef['damageType']): string {
+  if (type === 'physical') return '物理';
+  if (type === 'magical') return '魔法';
+  return '純粹';
+}
+
+function effectTypeLabel(type: StatusEffectType): string {
+  const labels: Partial<Record<StatusEffectType, string>> = {
+    poison: '中毒',
+    burn: '燃燒',
+    slow: 'slow',
+    stun: 'stun',
+    fear: 'fear',
+    bleed: '流血',
+    silence: 'silence',
+    freeze: 'freeze',
+    shield: 'shield',
+    taunt: 'taunt',
+    mark: 'mark',
+    damage_reduction: '傷害減免',
+    mana_shield: '魔力護盾',
+    dodge_up: '閃避提升',
+    crit_up: '暴擊提升',
+    atk_up: '攻擊提升',
+    def_up: '防禦提升',
+    atk_down: '攻擊降低',
+    def_down: '防禦降低',
+    regen: 'HP 回復',
+    mana_regen: 'MP 回復',
+  };
+  return labels[type] ?? type;
+}
+
+function resourceGainLabel(key: string): string {
+  const labels: Record<string, string> = {
+    resourceGain: '使用後回復',
+    resourceGainOnHit: '命中回復',
+    focusGainOnHit: '命中回復專注',
+    focusGainOnMarkedHit: '命中標記目標回復專注',
+    resourceGainPerHit: '每命中一名目標回復',
+    mpGainOnSpellHit: '法術命中回復 MP',
+    resourceGainOnTrigger: '觸發回復',
+  };
+  return labels[key] ?? key;
+}
+
+function signed(value: number): string {
+  return value >= 0 ? `+${value}` : `${value}`;
 }
 
 function createShortSkillDescription(def: RawSkillDef): string {

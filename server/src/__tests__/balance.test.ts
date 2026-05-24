@@ -761,6 +761,23 @@ describe('Balance: Skill metadata', () => {
     }
   });
 
+  it('generates active skill descriptions from mechanics', () => {
+    for (const skill of Object.values(SKILL_DEFS).filter(skill => skill.type === 'active')) {
+      expect(skill.fullDescription, skill.id).toContain('消耗:');
+      expect(skill.fullDescription, skill.id).toContain('冷卻:');
+      expect(skill.fullDescription, skill.id).toContain('目標:');
+      expect(skill.fullDescription, skill.id).toContain('範圍:');
+      expect(skill.fullDescription, skill.id).toContain('效果:');
+      expect(skill.fullDescription, skill.id).toContain('持續:');
+      expect(skill.fullDescription, skill.id).toContain('跨房:');
+      expect(skill.fullDescription, skill.id).toContain('資源返還:');
+      expect(skill.fullDescription, skill.id).toContain('限制:');
+      expect(skill.fullDescription, skill.id).toContain('風險:');
+      expect(skill.fullDescription, skill.id).not.toContain('大幅提高');
+      expect(skill.fullDescription, skill.id).not.toContain('強大傷害');
+    }
+  });
+
   it('gives the base adventurer at least four level 1-10 skills', () => {
     const skills = Object.values(SKILL_DEFS).filter(skill =>
       skill.classId === 'adventurer' && skill.learnLevel >= 1 && skill.learnLevel <= 10,

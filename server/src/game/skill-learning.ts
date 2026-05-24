@@ -24,7 +24,7 @@ export function grantAndNotifyLearnableSkills(character: Character): SkillDef[] 
     sendToCharacter(character.id, 'skill_learned', {
       skillId: skill.id,
       name: skill.name,
-      description: skill.description,
+      description: skill.fullDescription,
       learnLevel: skill.learnLevel,
       skillType: skill.type,
       usageContext: (skill as SkillDef & { usageContext?: 'combat' | 'field' | 'both' }).usageContext ?? 'combat',
