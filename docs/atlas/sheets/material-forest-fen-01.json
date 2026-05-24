@@ -1,0 +1,99 @@
+{
+  "sheetId": "material_forest_fen_01",
+  "category": "material",
+  "columns": 5,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_forest_fen_alpha_fang",
+      "category": "material",
+      "targetId": "alpha_fang",
+      "name": "狼王之牙",
+      "outputPath": "client/public/images/materials/material_forest_fen_alpha_fang.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_forest_fen_amber_vein_shard",
+      "category": "material",
+      "targetId": "amber_vein_shard",
+      "name": "琥珀脈晶",
+      "outputPath": "client/public/images/materials/material_forest_fen_amber_vein_shard.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_ancient_bark",
+      "category": "material",
+      "targetId": "ancient_bark",
+      "name": "古樹皮",
+      "outputPath": "client/public/images/materials/material_forest_fen_ancient_bark.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_forest_fen_ancient_honeycomb_wax",
+      "category": "material",
+      "targetId": "ancient_honeycomb_wax",
+      "name": "古蜂蠟",
+      "outputPath": "client/public/images/materials/material_forest_fen_ancient_honeycomb_wax.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_forest_fen_black_reed_fiber",
+      "category": "material",
+      "targetId": "black_reed_fiber",
+      "name": "黑蘆纖維",
+      "outputPath": "client/public/images/materials/material_forest_fen_black_reed_fiber.png",
+      "row": 0,
+      "column": 4
+    },
+    {
+      "assetId": "material_forest_fen_blackbark_charcoal",
+      "category": "material",
+      "targetId": "blackbark_charcoal",
+      "name": "黑木炭皮",
+      "outputPath": "client/public/images/materials/material_forest_fen_blackbark_charcoal.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "material_forest_fen_coldspring_dew",
+      "category": "material",
+      "targetId": "coldspring_dew",
+      "name": "冷泉露",
+      "outputPath": "client/public/images/materials/material_forest_fen_coldspring_dew.png",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_cursed_sap",
+      "category": "material",
+      "targetId": "cursed_sap",
+      "name": "詛咒樹液",
+      "outputPath": "client/public/images/materials/material_forest_fen_cursed_sap.png",
+      "row": 1,
+      "column": 2
+    },
+    {
+      "assetId": "material_forest_fen_dark_bark",
+      "category": "material",
+      "targetId": "dark_bark",
+      "name": "暗黑樹皮",
+      "outputPath": "client/public/images/materials/material_forest_fen_dark_bark.png",
+      "row": 1,
+      "column": 3
+    },
+    {
+      "assetId": "material_forest_fen_echo_stone_chip",
+      "category": "material",
+      "targetId": "echo_stone_chip",
+      "name": "回音石片",
+      "outputPath": "client/public/images/materials/material_forest_fen_echo_stone_chip.png",
+      "row": 1,
+      "column": 4
+    }
+  ]
+}
