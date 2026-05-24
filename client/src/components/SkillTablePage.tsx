@@ -80,7 +80,7 @@ export default function SkillTablePage() {
   const totalPlayerSkills = skillsByClass.reduce((sum, group) => sum + group.skills.length, 0) + originSkills.length;
 
   return (
-    <div className="min-h-screen bg-bg-primary px-4 py-5 text-text-bright scanline lg:px-8">
+    <div className="h-screen overflow-y-auto bg-bg-primary px-4 py-5 pb-12 text-text-bright scanline lg:px-8">
       <div className="mx-auto flex max-w-7xl flex-col gap-5">
         <header className="border-b border-border-dim pb-4">
           <div className="text-xs uppercase tracking-wide text-text-dim">MUD Reference</div>
@@ -95,7 +95,7 @@ export default function SkillTablePage() {
           </div>
         </header>
 
-        <nav className="flex flex-wrap gap-2 border-b border-border-dim pb-4">
+        <nav className="sticky top-0 z-20 flex flex-wrap gap-2 border-b border-border-dim bg-bg-primary/95 py-3 backdrop-blur">
           {skillsByClass.map(({ classId, classDef }) => (
             <a
               key={classId}
@@ -115,7 +115,7 @@ export default function SkillTablePage() {
 
         <main className="flex flex-col gap-6">
           {skillsByClass.map(({ classId, classDef, skills }) => (
-            <section key={classId} id={classId} className="scroll-mt-4">
+            <section key={classId} id={classId} className="scroll-mt-28">
               <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
                 <div>
                   <h2 className="text-xl font-bold text-text-terminal">{classDef.name}</h2>
@@ -127,7 +127,7 @@ export default function SkillTablePage() {
             </section>
           ))}
 
-          <section id="origin-passives" className="scroll-mt-4">
+          <section id="origin-passives" className="scroll-mt-28">
             <div className="mb-3 flex flex-wrap items-end justify-between gap-2">
               <div>
                 <h2 className="text-xl font-bold text-text-terminal">種族與信仰被動</h2>
