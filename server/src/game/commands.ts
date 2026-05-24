@@ -102,6 +102,7 @@ type LocalMapPayload = {
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
+const PLANAR_DIRECTIONS = new Set<Direction>(['north', 'south', 'east', 'west']);
 
 function scheduleCorpseExpiry(roomId: string, corpseId: string, expiresAt: number): void {
   const delay = Math.max(0, expiresAt - Date.now());
@@ -553,7 +554,10 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
 }
 
 function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPayload {
-  const rooms = getRoomsByZone(currentRoom.zone)
+  const zoneRooms = getRoomsByZone(currentRoom.zone);
+  const planarRoomIds = getPlanarRoomIds(currentRoom, zoneRooms);
+  const rooms = zoneRooms
+    .filter(room => planarRoomIds.has(room.id))
     .filter(room => Math.abs(room.mapX - currentRoom.mapX) <= 2 && Math.abs(room.mapY - currentRoom.mapY) <= 2)
     .map(room => {
       const explored = room.id === currentRoom.id || hasDiscovery(char.id, 'visit_room', room.id);
@@ -575,6 +579,38 @@ function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPa
     currentRoom: currentRoom.id,
     rooms,
   };
+}
+
+function getPlanarRoomIds(currentRoom: RoomDef, zoneRooms: RoomDef[]): Set<string> {
+  const zoneRoomIds = new Set(zoneRooms.map(room => room.id));
+  const planarNeighbors = new Map<string, Set<string>>();
+
+  for (const room of zoneRooms) {
+    const neighbors = planarNeighbors.get(room.id) ?? new Set<string>();
+    planarNeighbors.set(room.id, neighbors);
+
+    for (const exit of room.exits) {
+      if (!PLANAR_DIRECTIONS.has(exit.direction) || !zoneRoomIds.has(exit.targetRoomId)) continue;
+      neighbors.add(exit.targetRoomId);
+
+      const reverseNeighbors = planarNeighbors.get(exit.targetRoomId) ?? new Set<string>();
+      reverseNeighbors.add(room.id);
+      planarNeighbors.set(exit.targetRoomId, reverseNeighbors);
+    }
+  }
+
+  const visited = new Set<string>([currentRoom.id]);
+  const queue = [currentRoom.id];
+  for (let index = 0; index < queue.length; index++) {
+    const roomId = queue[index];
+    for (const neighborId of planarNeighbors.get(roomId) ?? []) {
+      if (visited.has(neighborId)) continue;
+      visited.add(neighborId);
+      queue.push(neighborId);
+    }
+  }
+
+  return visited;
 }
 
 function broadcastRoomState(roomId: string): void {
