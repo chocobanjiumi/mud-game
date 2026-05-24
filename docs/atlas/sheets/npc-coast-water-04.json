@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_coast_water_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_gatewarden",
+      "category": "npc",
+      "targetId": "mist_harbor_gatewarden",
+      "name": "歐德",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_gatewarden.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_guild_factor",
+      "category": "npc",
+      "targetId": "mist_harbor_guild_factor",
+      "name": "凱汀",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_guild_factor.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_innkeeper",
+      "category": "npc",
+      "targetId": "mist_harbor_innkeeper",
+      "name": "瑪洛",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_innkeeper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_lamplighter",
+      "category": "npc",
+      "targetId": "mist_harbor_lamplighter",
+      "name": "艾菈",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_lamplighter.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

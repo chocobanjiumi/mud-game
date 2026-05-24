@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_coast_water_06",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_06.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_saltwind_flats_saltwind_flats_fisher_mender",
+      "category": "npc",
+      "targetId": "saltwind_flats_fisher_mender",
+      "name": "博恩",
+      "outputPath": "client/public/images/npcs/npc_saltwind_flats_saltwind_flats_fisher_mender.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_saltwind_flats_saltwind_flats_fogbell_keeper",
+      "category": "npc",
+      "targetId": "saltwind_flats_fogbell_keeper",
+      "name": "露塔",
+      "outputPath": "client/public/images/npcs/npc_saltwind_flats_saltwind_flats_fogbell_keeper.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_saltwind_flats_saltwind_flats_tide_surveyor",
+      "category": "npc",
+      "targetId": "saltwind_flats_tide_surveyor",
+      "name": "瑟拉",
+      "outputPath": "client/public/images/npcs/npc_saltwind_flats_saltwind_flats_tide_surveyor.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_sapphire_lake_sapphire_lake_claim_surveyor",
+      "category": "npc",
+      "targetId": "sapphire_lake_claim_surveyor",
+      "name": "艾薇",
+      "outputPath": "client/public/images/npcs/npc_sapphire_lake_sapphire_lake_claim_surveyor.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

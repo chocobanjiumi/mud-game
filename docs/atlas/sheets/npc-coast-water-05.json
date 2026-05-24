@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_coast_water_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_05.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_mist_harbor_mist_harbor_tide_clerk",
+      "category": "npc",
+      "targetId": "mist_harbor_tide_clerk",
+      "name": "菲娜",
+      "outputPath": "client/public/images/npcs/npc_mist_harbor_mist_harbor_tide_clerk.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_reef_of_bones_reef_of_bones_captain_widow",
+      "category": "npc",
+      "targetId": "reef_of_bones_captain_widow",
+      "name": "米蕾雅",
+      "outputPath": "client/public/images/npcs/npc_reef_of_bones_reef_of_bones_captain_widow.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_reef_of_bones_reef_of_bones_coral_scrimshander",
+      "category": "npc",
+      "targetId": "reef_of_bones_coral_scrimshander",
+      "name": "洛克",
+      "outputPath": "client/public/images/npcs/npc_reef_of_bones_reef_of_bones_coral_scrimshander.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_reef_of_bones_reef_of_bones_tide_chartist",
+      "category": "npc",
+      "targetId": "reef_of_bones_tide_chartist",
+      "name": "賽芮",
+      "outputPath": "client/public/images/npcs/npc_reef_of_bones_reef_of_bones_tide_chartist.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
