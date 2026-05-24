@@ -145,17 +145,30 @@ function DirectionLane({
 }) {
   const reachable = Boolean(exit);
   return (
-    <button
-      type="button"
+    <div
       className={laneClass(active, reachable)}
-      disabled={!reachable}
       title={directionTitle(exit, direction)}
-      onClick={() => onSelect(direction)}
     >
-      <span className="cross-room-lane-main">{DIRECTION_LABEL[direction]}側</span>
-      <span>{reachable ? '可指定' : '牆'}</span>
+      <button
+        type="button"
+        className="cross-room-lane-select"
+        disabled={!reachable}
+        onClick={() => onSelect(direction)}
+      >
+        <span className="cross-room-lane-main">{DIRECTION_LABEL[direction]}側</span>
+        <span>{reachable ? '可指定' : '牆'}</span>
+      </button>
       {reachable && <b>抵達 --</b>}
-    </button>
+      {reachable && (
+        <button
+          type="button"
+          className="cross-room-lane-go"
+          onClick={() => sendCommand(`go ${direction}`, `前往${DIRECTION_LABEL[direction]}方`)}
+        >
+          前往
+        </button>
+      )}
+    </div>
   );
 }
 
@@ -198,13 +211,6 @@ function AdjacentRoomPreview({ direction, exit }: { direction: Direction; exit: 
         <div className="cross-room-adjacent-note">目前後端尚未提供鄰房怪物清單；這裡會顯示怪物頭像、數量與 arrivalTicks。</div>
       </div>
       <div className="cross-room-actions">
-        <button
-          type="button"
-          className="cross-room-action"
-          onClick={() => sendCommand(`go ${direction}`, `前往${DIRECTION_LABEL[direction]}方`)}
-        >
-          前往
-        </button>
         <button
           type="button"
           className="cross-room-action cross-room-action-primary"

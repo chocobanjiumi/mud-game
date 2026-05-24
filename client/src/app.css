@@ -454,9 +454,17 @@ input::placeholder {
   text-align: center;
 }
 
-.cross-room-lane:not(:disabled):hover {
+.cross-room-lane-reachable:hover {
   color: var(--color-text-bright);
   background: rgba(255, 255, 255, 0.045);
+}
+
+.cross-room-lane-select {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
 }
 
 .cross-room-lane-main {
@@ -483,6 +491,21 @@ input::placeholder {
 
 .cross-room-lane-blocked {
   opacity: 0.46;
+}
+
+.cross-room-lane-go {
+  min-height: 20px;
+  margin-top: 2px;
+  padding: 0 6px;
+  border: 1px solid rgba(0, 255, 136, 0.24);
+  border-radius: 3px;
+  color: var(--color-text-terminal);
+  background: rgba(0, 255, 136, 0.07);
+  font-size: 10px;
+}
+
+.cross-room-lane-go:hover {
+  background: rgba(0, 255, 136, 0.14);
 }
 
 .cross-room-detail {

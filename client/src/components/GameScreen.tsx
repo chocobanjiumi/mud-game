@@ -9,7 +9,6 @@ import RoomImage from './RoomImage';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
 import CombatPanel from './CombatPanel';
-import ObjectivePanel from './ObjectivePanel';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
 import SkillBar from './SkillBar';
@@ -188,9 +187,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
         {/* C: operation area */}
         <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
-          <div className="context-objective p-2 border-b border-border-dim">
-            <ObjectivePanel />
-          </div>
           <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
             <CombatPanel />
             <SkillBar onUseSkill={handleUseSkill} />

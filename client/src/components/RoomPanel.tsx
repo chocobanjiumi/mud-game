@@ -153,6 +153,7 @@ export function RoomPanelView({
         <div className="space-y-2 text-xs">
           <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} />
           {SECTION_ORDER.map((type) => {
+            if (type === 'exit') return null;
             if (type === 'monster') return null;
             const sectionEntities = entities.filter((entity) => entity.type === type);
             if (sectionEntities.length === 0) return null;
