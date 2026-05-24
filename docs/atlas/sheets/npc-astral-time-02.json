@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_astral_time_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_astral_time_02.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_astral_wastes_astral_wastes_void_relic_trader",
+      "category": "npc",
+      "targetId": "astral_wastes_void_relic_trader",
+      "name": "妮薇",
+      "outputPath": "client/public/images/npcs/npc_astral_wastes_astral_wastes_void_relic_trader.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_starfall_crater_starfall_crater_meteoric_smith",
+      "category": "npc",
+      "targetId": "starfall_crater_meteoric_smith",
+      "name": "洛罕",
+      "outputPath": "client/public/images/npcs/npc_starfall_crater_starfall_crater_meteoric_smith.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_starfall_crater_starfall_crater_star_map_keeper",
+      "category": "npc",
+      "targetId": "starfall_crater_star_map_keeper",
+      "name": "賽琳",
+      "outputPath": "client/public/images/npcs/npc_starfall_crater_starfall_crater_star_map_keeper.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_starfall_crater_starfall_crater_surveyor",
+      "category": "npc",
+      "targetId": "starfall_crater_surveyor",
+      "name": "艾芙",
+      "outputPath": "client/public/images/npcs/npc_starfall_crater_starfall_crater_surveyor.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}

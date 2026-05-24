@@ -1,0 +1,27 @@
+{
+  "sheetId": "npc_astral_time_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_astral_time_03.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_time_ruins_time_ruins_clockwork_peddler",
+      "category": "npc",
+      "targetId": "time_ruins_clockwork_peddler",
+      "name": "莫菈",
+      "outputPath": "client/public/images/npcs/npc_time_ruins_time_ruins_clockwork_peddler.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_time_ruins_time_ruins_epoch_keeper",
+      "category": "npc",
+      "targetId": "time_ruins_epoch_keeper",
+      "name": "赫倫",
+      "outputPath": "client/public/images/npcs/npc_time_ruins_time_ruins_epoch_keeper.png",
+      "row": 0,
+      "column": 1
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "sheetId": "npc_astral_time_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_astral_time_01.sheet.png",
+  "targets": [
+    {
+      "assetId": "npc_ancient_ruins_ancient_ruins_lead_archaeologist",
+      "category": "npc",
+      "targetId": "ancient_ruins_lead_archaeologist",
+      "name": "莉瑟",
+      "outputPath": "client/public/images/npcs/npc_ancient_ruins_ancient_ruins_lead_archaeologist.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "npc_ancient_ruins_ancient_ruins_relic_curator",
+      "category": "npc",
+      "targetId": "ancient_ruins_relic_curator",
+      "name": "塔維恩",
+      "outputPath": "client/public/images/npcs/npc_ancient_ruins_ancient_ruins_relic_curator.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "npc_ancient_ruins_ancient_ruins_seal_adept",
+      "category": "npc",
+      "targetId": "ancient_ruins_seal_adept",
+      "name": "艾文",
+      "outputPath": "client/public/images/npcs/npc_ancient_ruins_ancient_ruins_seal_adept.png",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "assetId": "npc_astral_wastes_astral_wastes_anchor_cartographer",
+      "category": "npc",
+      "targetId": "astral_wastes_anchor_cartographer",
+      "name": "奧林",
+      "outputPath": "client/public/images/npcs/npc_astral_wastes_astral_wastes_anchor_cartographer.png",
+      "row": 1,
+      "column": 1
+    }
+  ]
+}
