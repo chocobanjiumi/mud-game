@@ -1,0 +1,54 @@
+{
+  "sheetId": "material_forest_fen_04",
+  "category": "material",
+  "columns": 5,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_04.sheet.png",
+  "targets": [
+    {
+      "assetId": "material_forest_fen_waxwing_chitin",
+      "category": "material",
+      "targetId": "waxwing_chitin",
+      "name": "封蠟蟲甲",
+      "outputPath": "client/public/images/materials/material_forest_fen_waxwing_chitin.png",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "assetId": "material_forest_fen_whisper_reed",
+      "category": "material",
+      "targetId": "whisper_reed",
+      "name": "低語蘆葦",
+      "outputPath": "client/public/images/materials/material_forest_fen_whisper_reed.png",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "assetId": "material_forest_fen_coast_water_herb",
+      "category": "material",
+      "targetId": "herb",
+      "name": "藥草",
+      "outputPath": "client/public/images/materials/material_forest_fen_coast_water_herb.png",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "assetId": "material_forest_fen_coast_water_snake_skin",
+      "category": "material",
+      "targetId": "snake_skin",
+      "name": "蛇皮",
+      "outputPath": "client/public/images/materials/material_forest_fen_coast_water_snake_skin.png",
+      "row": 0,
+      "column": 3
+    },
+    {
+      "assetId": "material_forest_fen_coast_water_snake_venom",
+      "category": "material",
+      "targetId": "snake_venom",
+      "name": "蛇毒",
+      "outputPath": "client/public/images/materials/material_forest_fen_coast_water_snake_venom.png",
+      "row": 0,
+      "column": 4
+    }
+  ]
+}
