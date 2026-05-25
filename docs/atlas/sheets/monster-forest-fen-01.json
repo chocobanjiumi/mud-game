@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_amber_sapling_lurker", "category": "monster", "targetId": "amber_sapling_lurker", "name": "琥珀幼樹伏行者", "outputPath": "client/public/images/monsters/monster_forest_fen_amber_sapling_lurker.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_amber_water_serpent", "category": "monster", "targetId": "amber_water_serpent", "name": "琥珀水囊蛇", "outputPath": "client/public/images/monsters/monster_forest_fen_amber_water_serpent.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_ashblind_archer", "category": "monster", "targetId": "ashblind_archer", "name": "灰盲暗精靈弓手", "outputPath": "client/public/images/monsters/monster_forest_fen_ashblind_archer.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_black_reed_slime", "category": "monster", "targetId": "black_reed_slime", "name": "黑蘆泥膠", "outputPath": "client/public/images/monsters/monster_forest_fen_black_reed_slime.png", "row": 1, "column": 1 }
+  ]
+}
