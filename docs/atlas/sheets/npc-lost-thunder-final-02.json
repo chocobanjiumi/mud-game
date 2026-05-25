@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_lost_thunder_final_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_lost_thunder_final_02.sheet.png",
+  "targets": [
+    { "assetId": "npc_thundersteppe_thundersteppe_nomad_guide", "category": "npc", "targetId": "thundersteppe_nomad_guide", "name": "塔蘭", "outputPath": "client/public/images/npcs/npc_thundersteppe_thundersteppe_nomad_guide.png", "row": 0, "column": 0 },
+    { "assetId": "npc_thundersteppe_thundersteppe_storm_provisioner", "category": "npc", "targetId": "thundersteppe_storm_provisioner", "name": "蘇拉", "outputPath": "client/public/images/npcs/npc_thundersteppe_thundersteppe_storm_provisioner.png", "row": 0, "column": 1 },
+    { "assetId": "npc_final_battleground_final_battleground_relic_quartermaster", "category": "npc", "targetId": "final_battleground_relic_quartermaster", "name": "瑪薩", "outputPath": "client/public/images/npcs/npc_final_battleground_final_battleground_relic_quartermaster.png", "row": 1, "column": 0 },
+    { "assetId": "npc_final_battleground_final_battleground_war_scribe", "category": "npc", "targetId": "final_battleground_war_scribe", "name": "赫爾穆", "outputPath": "client/public/images/npcs/npc_final_battleground_final_battleground_war_scribe.png", "row": 1, "column": 1 }
+  ]
+}

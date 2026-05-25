@@ -1,0 +1,10 @@
+{
+  "sheetId": "npc_coast_water_08",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_08.sheet.png",
+  "targets": [
+    { "assetId": "npc_serpent_delta_serpent_delta_stilt_herbalist", "category": "npc", "targetId": "serpent_delta_stilt_herbalist", "name": "蘭婆", "outputPath": "client/public/images/npcs/npc_serpent_delta_serpent_delta_stilt_herbalist.png", "row": 0, "column": 0 }
+  ]
+}

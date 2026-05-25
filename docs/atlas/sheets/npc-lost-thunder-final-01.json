@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_lost_thunder_final_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_lost_thunder_final_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_lost_capital_lost_capital_gate_archivist", "category": "npc", "targetId": "lost_capital_gate_archivist", "name": "伊薇特", "outputPath": "client/public/images/npcs/npc_lost_capital_lost_capital_gate_archivist.png", "row": 0, "column": 0 },
+    { "assetId": "npc_lost_capital_lost_capital_relic_broker", "category": "npc", "targetId": "lost_capital_relic_broker", "name": "賽佛", "outputPath": "client/public/images/npcs/npc_lost_capital_lost_capital_relic_broker.png", "row": 0, "column": 1 },
+    { "assetId": "npc_lost_capital_lost_capital_sun_chaplain", "category": "npc", "targetId": "lost_capital_sun_chaplain", "name": "奧蕾雅", "outputPath": "client/public/images/npcs/npc_lost_capital_lost_capital_sun_chaplain.png", "row": 1, "column": 0 },
+    { "assetId": "npc_thundersteppe_thundersteppe_drumspeaker", "category": "npc", "targetId": "thundersteppe_drumspeaker", "name": "奧魯", "outputPath": "client/public/images/npcs/npc_thundersteppe_thundersteppe_drumspeaker.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_coast_water_07",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_coast_water_07.sheet.png",
+  "targets": [
+    { "assetId": "npc_sapphire_lake_sapphire_lake_lotus_vendor", "category": "npc", "targetId": "sapphire_lake_lotus_vendor", "name": "荷珊", "outputPath": "client/public/images/npcs/npc_sapphire_lake_sapphire_lake_lotus_vendor.png", "row": 0, "column": 0 },
+    { "assetId": "npc_sapphire_lake_sapphire_lake_spirit_listener", "category": "npc", "targetId": "sapphire_lake_spirit_listener", "name": "尤娜", "outputPath": "client/public/images/npcs/npc_sapphire_lake_sapphire_lake_spirit_listener.png", "row": 0, "column": 1 },
+    { "assetId": "npc_serpent_delta_serpent_delta_ferry_pilot", "category": "npc", "targetId": "serpent_delta_ferry_pilot", "name": "阿渡", "outputPath": "client/public/images/npcs/npc_serpent_delta_serpent_delta_ferry_pilot.png", "row": 1, "column": 0 },
+    { "assetId": "npc_serpent_delta_serpent_delta_shrine_keeper", "category": "npc", "targetId": "serpent_delta_shrine_keeper", "name": "瑟鈴", "outputPath": "client/public/images/npcs/npc_serpent_delta_serpent_delta_shrine_keeper.png", "row": 1, "column": 1 }
+  ]
+}
