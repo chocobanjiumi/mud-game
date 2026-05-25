@@ -2559,9 +2559,10 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一間被藤蔓纏繞的破舊木屋，屋頂塌了一半，窗戶早已破碎。' +
       '屋內堆滿了落葉和碎木，角落裡有動物築巢的痕跡。' +
-      '據村民說，這裡曾住著一位古怪的老巫師。東面回後山，地板裂縫下似乎藏著地窖入口；玩家可 search 壁爐暗格取得藥水，也要小心屋樑上的烏鴉群。',
+      '據村民說，這裡曾住著一位古怪的老巫師。東面回後山，南側地板裂縫下似乎藏著地窖入口；玩家可 search 壁爐暗格取得藥水，也要小心屋樑上的烏鴉群。',
     exits: [
       { direction: 'east', targetRoomId: 'village_backhill', description: '回到後山' },
+      { direction: 'south', targetRoomId: 'starter_ext_root_cellar', description: '地板裂縫下有根窖入口' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
@@ -2797,10 +2798,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_root_cellar.png',
     imagePrompt: '根窖 in starter_village_ext, hidden resource cellar with root shelves, clay jars, dangling herbs and single lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain root, clear lantern light',
     description:
-      '廢棄小屋地板下藏著低矮根窖，粗樹根穿過土牆，陶罐、乾草藥與破布袋散發潮土氣味，唯一的提燈把木架影子拉長。東側梯子回小屋，南面狹洞通向空心樹樁。玩家可 search 陶罐取得補給或配方碎片，也可能撞見偷藏糧食的田鼠，是早期資源與隱藏探索節點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '廢棄小屋地板下藏著低矮根窖，粗樹根穿過土牆，陶罐、乾草藥與破布袋散發潮土氣味，唯一的提燈把木架影子拉長。北側梯子回小屋，深處根鬚指向更遠的空心樹樁，但需要從盜匪足跡繞路接近。玩家可 search 陶罐取得補給或配方碎片，也可能撞見偷藏糧食的田鼠，是早期資源與隱藏探索節點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'east', targetRoomId: 'abandoned_cottage', description: '木梯回到廢棄小屋' },
-      { direction: 'south', targetRoomId: 'starter_ext_hollow_stump', description: '狹洞通向空心樹樁' },
+      { direction: 'north', targetRoomId: 'abandoned_cottage', description: '木梯回到廢棄小屋' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 30 },
@@ -2864,10 +2864,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_hollow_stump.png',
     imagePrompt: '空心樹樁 in starter_village_ext, hidden elite event room with giant hollow stump, root tunnels, stolen trinkets and green shaft light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain root, clear lantern light',
     description:
-      '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊狹洞連根窖，南面小坡可回墓地深處外牆。玩家可 search 樹洞取得一次性藏物，inspect 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若從根窖繞進來，可以避開北側埋伏並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處。',
+      '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊根痕指向遠處根窖但無法直接通行，南面小坡可回墓地深處外牆。玩家可 search 樹洞取得一次性藏物，inspect 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若先調查根窖線索，再從盜匪足跡繞進來，可以避開部分迷路風險並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_bandit_footpath', description: '回到盜匪足跡' },
-      { direction: 'west', targetRoomId: 'starter_ext_root_cellar', description: '根道連到小屋地窖' },
       { direction: 'south', targetRoomId: 'graveyard_depths', description: '小坡接近墓地深處外牆' },
     ],
     monsters: [
