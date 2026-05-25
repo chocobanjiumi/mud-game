@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_kingdom_war_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_ancient_briar_hierophant", "category": "monster", "targetId": "ancient_briar_hierophant", "name": "古荊德魯伊祭司", "outputPath": "client/public/images/monsters/monster_kingdom_war_ancient_briar_hierophant.png", "row": 0, "column": 0 },
+    { "assetId": "monster_kingdom_war_bastion_crossbowman", "category": "monster", "targetId": "bastion_crossbowman", "name": "堡牆弩手", "outputPath": "client/public/images/monsters/monster_kingdom_war_bastion_crossbowman.png", "row": 0, "column": 1 },
+    { "assetId": "monster_kingdom_war_blackroot_strangler", "category": "monster", "targetId": "blackroot_strangler", "name": "黑根絞藤", "outputPath": "client/public/images/monsters/monster_kingdom_war_blackroot_strangler.png", "row": 1, "column": 0 },
+    { "assetId": "monster_kingdom_war_command_tablet_construct", "category": "monster", "targetId": "command_tablet_construct", "name": "軍令板構裝", "outputPath": "client/public/images/monsters/monster_kingdom_war_command_tablet_construct.png", "row": 1, "column": 1 }
+  ]
+}

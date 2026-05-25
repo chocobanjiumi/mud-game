@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_kingdom_war_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_crooked_totem_hexer", "category": "monster", "targetId": "crooked_totem_hexer", "name": "歪斜圖騰咒師", "outputPath": "client/public/images/monsters/monster_kingdom_war_crooked_totem_hexer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_kingdom_war_crown_falcon_swarm", "category": "monster", "targetId": "crown_falcon_swarm", "name": "王冠獵隼群", "outputPath": "client/public/images/monsters/monster_kingdom_war_crown_falcon_swarm.png", "row": 0, "column": 1 },
+    { "assetId": "monster_kingdom_war_forge_cinder_guard", "category": "monster", "targetId": "forge_cinder_guard", "name": "鍛坊燼衛", "outputPath": "client/public/images/monsters/monster_kingdom_war_forge_cinder_guard.png", "row": 1, "column": 0 },
+    { "assetId": "monster_kingdom_war_greenwood_poacher", "category": "monster", "targetId": "greenwood_poacher", "name": "綠林盜獵者", "outputPath": "client/public/images/monsters/monster_kingdom_war_greenwood_poacher.png", "row": 1, "column": 1 }
+  ]
+}

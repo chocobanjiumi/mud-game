@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_kingdom_war_04",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_kingdom_frontier_banner_knight", "category": "monster", "targetId": "kingdom_frontier_banner_knight", "name": "戰旗騎士", "outputPath": "client/public/images/monsters/monster_kingdom_war_kingdom_frontier_banner_knight.png", "row": 0, "column": 0 },
+    { "assetId": "monster_kingdom_war_kingdom_frontier_border_levy", "category": "monster", "targetId": "kingdom_frontier_border_levy", "name": "邊境徵召兵", "outputPath": "client/public/images/monsters/monster_kingdom_war_kingdom_frontier_border_levy.png", "row": 0, "column": 1 },
+    { "assetId": "monster_kingdom_war_kingdom_frontier_command_general", "category": "monster", "targetId": "kingdom_frontier_command_general", "name": "前線指揮官", "outputPath": "client/public/images/monsters/monster_kingdom_war_kingdom_frontier_command_general.png", "row": 1, "column": 0 },
+    { "assetId": "monster_kingdom_war_kingdom_frontier_darkwood_scout", "category": "monster", "targetId": "kingdom_frontier_darkwood_scout", "name": "暗林斥候", "outputPath": "client/public/images/monsters/monster_kingdom_war_kingdom_frontier_darkwood_scout.png", "row": 1, "column": 1 }
+  ]
+}
