@@ -616,8 +616,10 @@ input::placeholder {
 
 .cross-room-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 5px;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
 }
 
 .cross-room-action {

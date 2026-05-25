@@ -335,7 +335,24 @@ describe('key UI component rendering', () => {
         inCombat={false}
         combat={null}
         canScout
+        learnedSkills={[
+          { skillId: 'ranger_scout', level: 1, currentCooldown: 0 },
+          { skillId: 'trap', level: 1, currentCooldown: 0 },
+        ]}
         initialLane="east"
+      />,
+    );
+    const northCombatDetailHtml = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={room}
+        inCombat
+        combat={null}
+        learnedSkills={[
+          { skillId: 'fireball', level: 1, currentCooldown: 0 },
+          { skillId: 'poison_arrow', level: 1, currentCooldown: 0 },
+          { skillId: 'critical_edge', level: 1, currentCooldown: 0 },
+        ]}
+        initialLane="north"
       />,
     );
 
@@ -352,6 +369,10 @@ describe('key UI component rendering', () => {
     expect(html).not.toContain('cross-room-lane-scout');
     expect(eastDetailHtml).toContain('cross-room-action-scout');
     expect(eastDetailHtml).toContain('偵查');
+    expect(eastDetailHtml).toContain('伏擊陷阱');
+    expect(northCombatDetailHtml).toContain('火球術');
+    expect(northCombatDetailHtml).toContain('獵人標記');
+    expect(northCombatDetailHtml).toContain('多重射擊');
   });
 
   it('renders monster detail modal with expanded monster information', () => {

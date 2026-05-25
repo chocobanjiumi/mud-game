@@ -115,6 +115,7 @@ export function RoomPanelView({
   inCombat = false,
   combat = null,
   canScout = false,
+  learnedSkills = [],
 }: {
   room: RoomInfo;
   selectedEntity: RoomEntity | null;
@@ -122,6 +123,7 @@ export function RoomPanelView({
   inCombat?: ReturnType<typeof useGameStore.getState>['inCombat'];
   combat?: ReturnType<typeof useGameStore.getState>['combat'];
   canScout?: boolean;
+  learnedSkills?: ReturnType<typeof useGameStore.getState>['skills'];
 }) {
   const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
   const hints = room.inspectHints ?? [];
@@ -153,7 +155,7 @@ export function RoomPanelView({
 
       {hasEntityPayload ? (
         <div className="space-y-2 text-xs">
-          <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} />
+          <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} learnedSkills={learnedSkills} />
           {SECTION_ORDER.map((type) => {
             if (type === 'exit') return null;
             if (type === 'monster') return null;
@@ -216,7 +218,8 @@ export default function RoomPanel() {
   const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
   const inCombat = useGameStore((s) => s.inCombat);
   const combat = useGameStore((s) => s.combat);
-  const canScout = useGameStore((s) => s.skills.some((skill) => skill.skillId === 'ranger_scout'));
+  const learnedSkills = useGameStore((s) => s.skills);
+  const canScout = learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
   if (!room) return null;
-  return <RoomPanelView room={room} selectedEntity={selectedEntity} setSelectedEntity={setSelectedEntity} inCombat={inCombat} combat={combat} canScout={canScout} />;
+  return <RoomPanelView room={room} selectedEntity={selectedEntity} setSelectedEntity={setSelectedEntity} inCombat={inCombat} combat={combat} canScout={canScout} learnedSkills={learnedSkills} />;
 }

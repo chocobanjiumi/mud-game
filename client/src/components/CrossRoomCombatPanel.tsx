@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { CardinalDirection, Direction, NearbyCombatMonsterPayload, NearbyCombatNeighborPayload, RoomEntity, RoomExit } from '@game/shared';
+import { SKILL_DEFS, type CardinalDirection, type Direction, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath, getMonsterImagePath } from '../utils/assetImages';
 
@@ -57,12 +57,14 @@ export function CrossRoomCombatPanelView({
   inCombat,
   combat,
   canScout = false,
+  learnedSkills = [],
   initialLane = 'self',
 }: {
   room: RoomInfo;
   inCombat: boolean;
   combat: CombatInfo | null;
   canScout?: boolean;
+  learnedSkills?: LearnedSkill[];
   initialLane?: LaneId;
 }) {
   const [selectedLane, setSelectedLaneState] = useState<LaneId>(initialLane);
@@ -148,6 +150,8 @@ export function CrossRoomCombatPanelView({
             neighbor={neighborByDirection.get(selectedLane)}
             approaching={nearby?.approaching.filter((monster) => monster.sourceDirection === selectedLane) ?? []}
             canScout={canScout}
+            learnedSkills={learnedSkills}
+            inCombat={inCombat}
             onSelectDirection={() => setSelectedLane(selectedLane)}
           />
         )}
@@ -251,6 +255,8 @@ function AdjacentRoomPreview({
   neighbor,
   approaching,
   canScout,
+  learnedSkills,
+  inCombat,
   onSelectDirection,
 }: {
   direction: CardinalDirection;
@@ -258,6 +264,8 @@ function AdjacentRoomPreview({
   neighbor?: NearbyCombatNeighborPayload;
   approaching: NonNullable<RoomInfo['nearbyCombat']>['approaching'];
   canScout: boolean;
+  learnedSkills: LearnedSkill[];
+  inCombat: boolean;
   onSelectDirection: () => void;
 }) {
   const passable = neighbor?.passable ?? Boolean(exit);
@@ -266,7 +274,7 @@ function AdjacentRoomPreview({
   }
   const roomTitle = neighbor?.roomName ?? directionTitle(exit, direction);
   const monsters = neighbor?.monsters ?? [];
-  const showScout = canScout && !neighbor?.scouted;
+  const skillActions = buildAdjacentSkillActions(learnedSkills, direction, Boolean(neighbor?.scouted), inCombat, canScout);
 
   return (
     <div className="cross-room-adjacent">
@@ -297,15 +305,17 @@ function AdjacentRoomPreview({
         )}
       </div>
       <div className="cross-room-actions">
-        {showScout && (
+        {skillActions.map((action) => (
           <button
+            key={action.skillId}
             type="button"
-            className="cross-room-action cross-room-action-scout"
-            onClick={() => sendCommand(`skill ranger_scout ${direction}`, `偵查${DIRECTION_LABEL[direction]}側`)}
+            className={`cross-room-action ${action.tone === 'scout' ? 'cross-room-action-scout' : ''}`}
+            title={action.title}
+            onClick={() => sendCommand(action.command, action.echo)}
           >
-            偵查
+            {action.label}
           </button>
-        )}
+        ))}
         <button
           type="button"
           className="cross-room-action cross-room-action-primary"
@@ -317,6 +327,68 @@ function AdjacentRoomPreview({
       </div>
     </div>
   );
+}
+
+interface AdjacentSkillAction {
+  skillId: string;
+  label: string;
+  command: string;
+  echo: string;
+  title: string;
+  tone?: 'scout';
+}
+
+function buildAdjacentSkillActions(
+  learnedSkills: LearnedSkill[],
+  direction: CardinalDirection,
+  scouted: boolean,
+  inCombat: boolean,
+  canScoutFallback: boolean,
+): AdjacentSkillAction[] {
+  const actions: AdjacentSkillAction[] = [];
+  const hasScout = canScoutFallback || learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
+
+  if (hasScout && !scouted) {
+    actions.push(createAdjacentSkillAction(SKILL_DEFS.ranger_scout, direction, 'scout'));
+  }
+
+  for (const learned of learnedSkills) {
+    if (learned.skillId === 'ranger_scout') continue;
+    const def = SKILL_DEFS[learned.skillId];
+    if (!def || def.type !== 'active') continue;
+    if (!canUseInCurrentContext(def, inCombat)) continue;
+    if (!isAdjacentDetailSkill(def, scouted)) continue;
+    actions.push(createAdjacentSkillAction(def, direction));
+  }
+
+  return actions;
+}
+
+function canUseInCurrentContext(def: SkillDef, inCombat: boolean): boolean {
+  if (inCombat) return def.usageContext === 'combat' || def.usageContext === 'both';
+  return def.usageContext === 'field' || def.usageContext === 'both';
+}
+
+function isAdjacentDetailSkill(def: SkillDef, scouted: boolean): boolean {
+  if (def.special?.areaScope === 'adjacent_cardinal') return false;
+  if (def.special?.scoutDirection) return !scouted;
+  if (def.special?.trapExit) return true;
+  if (def.special?.crossRoomRequiresScout) return scouted;
+  return Boolean(def.special?.crossRoom);
+}
+
+function createAdjacentSkillAction(def: SkillDef, direction: CardinalDirection, tone?: 'scout'): AdjacentSkillAction {
+  const directionArg = def.special?.crossRoom || def.special?.crossRoomRequiresScout
+    ? `direction:${direction}`
+    : direction;
+  return {
+    skillId: def.id,
+    label: def.name,
+    command: `skill ${def.id} ${directionArg}`,
+    echo: `${def.name} ${DIRECTION_LABEL[direction]}側`,
+    title: def.shortDescription,
+    tone,
+  };
 }
 
 function MonsterChip({
@@ -340,7 +412,8 @@ export default function CrossRoomCombatPanel() {
   const room = useGameStore((s) => s.room);
   const inCombat = useGameStore((s) => s.inCombat);
   const combat = useGameStore((s) => s.combat);
-  const canScout = useGameStore((s) => s.skills.some((skill) => skill.skillId === 'ranger_scout'));
+  const learnedSkills = useGameStore((s) => s.skills);
+  const canScout = learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
   if (!room) return null;
-  return <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} />;
+  return <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} learnedSkills={learnedSkills} />;
 }

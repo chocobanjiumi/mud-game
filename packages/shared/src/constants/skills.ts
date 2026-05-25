@@ -460,6 +460,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     fullDescription: '消耗 35 專注，冷卻 5。指定出口設置陷阱 5 tick 或觸發 1 次；approaching 怪物抵達該出口時受到 130% 物理傷害、arrivalTicks +1，並回復你 10 專注。',
     effects: [{ type: 'slow', value: 25, duration: 1 }],
     tags: ['damage', 'control', 'interrupt', 'resource', 'physical'],
+    usageContext: 'both',
     special: { trapExit: true, interrupt: true, arrivalTicksDelta: 1, resourceGainOnTrigger: 10 },
   },
   critical_edge: {
@@ -569,6 +570,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     fullDescription: '信仰 -18，冷卻 6，條件信仰 >= 18。指定出口設置 4 tick 結界；暗屬性與 undead 怪物抵達時受到 80% 光屬性魔法傷害並 arrivalTicks +1，普通怪抵達時命中 -8%。',
     effects: [{ type: 'atk_down', value: 8, duration: 1 }],
     tags: ['damage', 'control', 'defense', 'resource', 'magical', 'light'],
+    usageContext: 'both',
     special: { faithDelta: -18, faithMin: 18, trapExit: true, arrivalTicksDelta: 1, duration: 4 },
   },
 
