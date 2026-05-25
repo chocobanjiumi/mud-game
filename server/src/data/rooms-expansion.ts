@@ -13209,11 +13209,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'deepsea_temple_tidal_throne.png',
     imagePrompt: '潮汐王座 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。南側黑水廊被潮汐王座的壓力壓成單向暗流，只能從觸手門進入王座。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '潮汐王座回到沉睡神諭室' },
       { direction: 'north', targetRoomId: 'deepsea_temple_godwhisper_chamber', description: '低語階回到古神低語室' },
-      { direction: 'south', targetRoomId: 'deepsea_temple_tentacle_gate', description: '黑水廊回到觸手門' },
     ],
     monsters: [
       { monsterId: 'tidal_throne_leviathan', maxCount: 1, respawnSeconds: 1800 },
