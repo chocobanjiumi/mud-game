@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_18",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_18.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_sea_crab", "category": "monster", "targetId": "sea_crab", "name": "海蟹", "outputPath": "client/public/images/monsters/monster_coast_water_sea_crab.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_sea_serpent", "category": "monster", "targetId": "sea_serpent", "name": "海蛇", "outputPath": "client/public/images/monsters/monster_coast_water_sea_serpent.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_serpent_delta_blue_lotus_oracle", "category": "monster", "targetId": "serpent_delta_blue_lotus_oracle", "name": "藍蓮冷霧諭者", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_blue_lotus_oracle.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_serpent_delta_coldmist_eel", "category": "monster", "targetId": "serpent_delta_coldmist_eel", "name": "冷霧電鰻", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_coldmist_eel.png", "row": 1, "column": 1 }
+  ]
+}

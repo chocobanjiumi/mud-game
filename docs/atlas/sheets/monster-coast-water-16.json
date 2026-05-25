@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_16",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_16.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_pirate_captain", "category": "monster", "targetId": "pirate_captain", "name": "海盜船長", "outputPath": "client/public/images/monsters/monster_coast_water_pirate_captain.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_pirate_mist_scout", "category": "monster", "targetId": "pirate_mist_scout", "name": "霧灘海盜哨兵", "outputPath": "client/public/images/monsters/monster_coast_water_pirate_mist_scout.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_reefback_crab_guard", "category": "monster", "targetId": "reefback_crab_guard", "name": "礁背蟹衛", "outputPath": "client/public/images/monsters/monster_coast_water_reefback_crab_guard.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_reefbell_cultist", "category": "monster", "targetId": "reefbell_cultist", "name": "礁鐘潮祭司", "outputPath": "client/public/images/monsters/monster_coast_water_reefbell_cultist.png", "row": 1, "column": 1 }
+  ]
+}

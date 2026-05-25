@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_17",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_17.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_rib_shoal_skeleton", "category": "monster", "targetId": "rib_shoal_skeleton", "name": "肋灘骸兵", "outputPath": "client/public/images/monsters/monster_coast_water_rib_shoal_skeleton.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_saltflat_crystal_scuttler", "category": "monster", "targetId": "saltflat_crystal_scuttler", "name": "鹽晶步蟲", "outputPath": "client/public/images/monsters/monster_coast_water_saltflat_crystal_scuttler.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_saltgrass_reedstalker", "category": "monster", "targetId": "saltgrass_reedstalker", "name": "鹽草伏行者", "outputPath": "client/public/images/monsters/monster_coast_water_saltgrass_reedstalker.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_sapphire_reed_sprite", "category": "monster", "targetId": "sapphire_reed_sprite", "name": "藍葦水靈", "outputPath": "client/public/images/monsters/monster_coast_water_sapphire_reed_sprite.png", "row": 1, "column": 1 }
+  ]
+}
