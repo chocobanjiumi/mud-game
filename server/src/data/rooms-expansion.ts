@@ -6945,11 +6945,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'marsh_of_mirrors_crooked_boardwalk.png',
     imagePrompt: '歪木棧道 in marsh_of_mirrors, crooked wooden boardwalk over marsh, broken planks, hanging moss, fog and mirrored water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain marsh, clear lantern light',
     description:
-      '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。這裡是交通與探索房，玩家可在較安全高度穿過沼澤，前往霧盲處、沉柳與泥炭小洲，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來。',
+      '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。北側可看見泥炭小洲的測路桿，但棧道端橋板斷裂，需由小洲方向接回。這裡是交通與探索房，玩家可在較安全高度穿過沼澤，前往霧盲處與沉柳，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '乾木橋通向泥炭小洲' },
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_sunken_willow', description: '倒木路通向沉水柳' },
     ],
     monsters: [
@@ -7030,10 +7029,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'marsh_of_mirrors_sunken_willow.png',
     imagePrompt: '沉水柳 in marsh_of_mirrors, sunken willow tree in black marsh water, hanging roots, mist, reflections and pale fungi, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain marsh, clear lantern light',
     description:
-      '一棵巨大的柳樹半沉在沼水中，樹冠倒垂，細長枝條像濕髮般貼著水面。根部仍活著，卻從黑水中吸收了暗色汁液，樹皮上長出微微發亮的白菌。這裡是自然資源與精英前置房，玩家可採集柳根、白菌與腐化樹液，也能追查暗黑樹人的活動痕跡。沉水柳的倒影比本體更完整，像另一棵樹正從水下向上生長。若砍錯枝條，水下倒影會先流血，然後引來樹人與蜘蛛守衛。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '一棵巨大的柳樹半沉在沼水中，樹冠倒垂，細長枝條像濕髮般貼著水面。根部仍活著，卻從黑水中吸收了暗色汁液，樹皮上長出微微發亮的白菌。西側倒木可看見歪木棧道，東側倒影可看見鏡池，但沉水柳周圍的水下根鬚會把回程纏住，需由棧道或鏡池方向進入。這裡是自然資源與精英前置房，玩家可採集柳根、白菌與腐化樹液，也能追查暗黑樹人的活動痕跡。沉水柳的倒影比本體更完整，像另一棵樹正從水下向上生長。若砍錯枝條，水下倒影會先流血，然後引來樹人與蜘蛛守衛。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '倒木路回到歪木棧道' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '倒柳影回到鏡池' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '根系延向暗樹林' },
     ],
     monsters: [
@@ -7362,12 +7359,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'marsh_of_mirrors_glasswater_core.png',
     imagePrompt: '玻璃水核心 in marsh_of_mirrors, central glasslike water core, impossible reflections, black reeds, glowing mist and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain water, clear lantern light',
     description:
-      '鏡沼最深處是一片圓形水域，水面透明如玻璃，能看見下方並不是泥底，而是一片倒置天空。黑色蘆葦圍成外圈，暗樹根、月光堤道與破碎倒影都在此交會。中央水面浮著一枚緩慢轉動的透明核心，每次轉動都會讓整片沼澤的倒影偏移。這裡是鏡沼的大型事件鉤子與最終地標，玩家可選擇穩定核心、打碎它，或取走鏡片碎核作為任務證據。任何選擇都會引來沼澤生物反應：毒蛙鳴叫、湖蛇破水、暗樹根從邊緣收攏。若隊伍沒有先取得巫燈警示與鏡池樣本，核心會顯示錯誤出口，把人送回迷霧深處。',
+      '鏡沼最深處是一片圓形水域，水面透明如玻璃，能看見下方並不是泥底，而是一片倒置天空。黑色蘆葦圍成外圈，暗樹根、月光堤道與破碎倒影都在此交會。中央水面浮著一枚緩慢轉動的透明核心，每次轉動都會讓整片沼澤的倒影偏移。東側黑根與北側雙色燈影都能辨認，但核心周圍倒影會把回程反折，需由暗樹林或巫燈處方向進入核心。這裡是鏡沼的大型事件鉤子與最終地標，玩家可選擇穩定核心、打碎它，或取走鏡片碎核作為任務證據。任何選擇都會引來沼澤生物反應：毒蛙鳴叫、湖蛇破水、暗樹根從邊緣收攏。若隊伍沒有先取得巫燈警示與鏡池樣本，核心會顯示錯誤出口，把人送回迷霧深處。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '最亮石路回到月光堤道' },
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '裂紋水面回到破碎倒影' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '黑根路回到暗樹林' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_hag_lantern', description: '雙色燈影回到巫燈處' },
     ],
     monsters: [
       { monsterId: 'glasswater_reflection_core', maxCount: 1, respawnSeconds: 1800 },
