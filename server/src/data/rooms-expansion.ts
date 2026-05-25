@@ -19531,11 +19531,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thornmaze_crooked_totem.png',
     imagePrompt: '歪斜圖騰 in thornmaze, living thorn maze with closing briar walls, red thorns, black roots, poisonous flowers, moonlit vines, ancient druid altar, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '歪斜圖騰位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
+      '歪斜圖騰位於荊棘迷宮會緩慢生長與閉合的刺牆之間，紅刺、黑根、毒花粉、月藤橋與古代德魯伊刻痕共同構成不斷改變的深林路線。這裡是高階隊伍探索與採集區，玩家可以 inspect 刺牆開合痕、苔蘚鑰孔、薔薇陷阱和圖騰朝向來判斷迷宮節奏，也能 search 獵營、血脂池、活牆根部與祭壇石縫尋找德魯伊線索。南側月藤橋與北側內祭環的刺牆會在通過後閉合，只能從那兩處進入圖騰圈。若隊伍忽略牆面閉合聲、毒花風向與暗影伏擊，地獄犬、暗影刺客、詛咒祭司與遠古樹人會切斷回路；若穩定標記岔口、記錄開合時間並守住月藤橋，則能抵達古代德魯伊祭壇並帶回迷宮核心記錄、活藤樣本與安全回程標記。',
     exits: [
       { direction: 'west', targetRoomId: 'thornmaze_silent_stag_glade', description: '回到靜鹿空地' },
-      { direction: 'south', targetRoomId: 'thornmaze_moonvine_bridge', description: '回到月藤橋' },
-      { direction: 'north', targetRoomId: 'thornmaze_inner_altar_ring', description: '內祭環在北側' },
     ],
     monsters: [
       { monsterId: 'crooked_totem_hexer', maxCount: 1, respawnSeconds: 360 },
