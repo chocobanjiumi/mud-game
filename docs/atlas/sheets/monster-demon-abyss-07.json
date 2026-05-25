@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_mourner_wraith", "category": "monster", "targetId": "mourner_wraith", "name": "哭者怨影", "outputPath": "client/public/images/monsters/monster_demon_abyss_mourner_wraith.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_necropolis_black_gate_wight", "category": "monster", "targetId": "necropolis_black_gate_wight", "name": "黑門怨衛", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_black_gate_wight.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_necropolis_bone_causeway_lancer", "category": "monster", "targetId": "necropolis_bone_causeway_lancer", "name": "白骨堤槍兵", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_bone_causeway_lancer.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_necropolis_crypt_market_broker", "category": "monster", "targetId": "necropolis_crypt_market_broker", "name": "墓市骨券商", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_crypt_market_broker.png", "row": 1, "column": 1 }
+  ]
+}

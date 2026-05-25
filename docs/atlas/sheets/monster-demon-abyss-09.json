@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_necropolis_plague_censer_bearer", "category": "monster", "targetId": "necropolis_plague_censer_bearer", "name": "疫香爐抬手", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_plague_censer_bearer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_necropolis_soul_well_oracle", "category": "monster", "targetId": "necropolis_soul_well_oracle", "name": "魂井諭亡者", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_soul_well_oracle.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_necropolis_void_crack_revenant", "category": "monster", "targetId": "necropolis_void_crack_revenant", "name": "虛裂歸亡者", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_void_crack_revenant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_nightmare", "category": "monster", "targetId": "nightmare", "name": "噩夢體", "outputPath": "client/public/images/monsters/monster_demon_abyss_nightmare.png", "row": 1, "column": 1 }
+  ]
+}

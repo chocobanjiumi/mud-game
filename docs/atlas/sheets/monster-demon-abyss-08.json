@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_necropolis_dead_city_gatekeeper", "category": "monster", "targetId": "necropolis_dead_city_gatekeeper", "name": "死都門檻守將", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_dead_city_gatekeeper.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_necropolis_grave_banner_captain", "category": "monster", "targetId": "necropolis_grave_banner_captain", "name": "墓旗百夫長", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_grave_banner_captain.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_necropolis_inner_portcullis_marshal", "category": "monster", "targetId": "necropolis_inner_portcullis_marshal", "name": "內閘亡軍元帥", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_inner_portcullis_marshal.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_necropolis_ossuary_collector", "category": "monster", "targetId": "necropolis_ossuary_collector", "name": "鐵骨收殮者", "outputPath": "client/public/images/monsters/monster_demon_abyss_necropolis_ossuary_collector.png", "row": 1, "column": 1 }
+  ]
+}
