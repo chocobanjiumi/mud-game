@@ -56,10 +56,12 @@ export function CrossRoomCombatPanelView({
   room,
   inCombat,
   combat,
+  canScout = false,
 }: {
   room: RoomInfo;
   inCombat: boolean;
   combat: CombatInfo | null;
+  canScout?: boolean;
 }) {
   const [selectedLane, setSelectedLaneState] = useState<LaneId>('self');
   const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
@@ -95,6 +97,7 @@ export function CrossRoomCombatPanelView({
           exit={exitByDirection.get('north')}
           neighbor={neighborByDirection.get('north')}
           active={selectedLane === 'north'}
+          canScout={canScout}
           onSelect={setSelectedLane}
         />
         <div />
@@ -104,6 +107,7 @@ export function CrossRoomCombatPanelView({
           exit={exitByDirection.get('west')}
           neighbor={neighborByDirection.get('west')}
           active={selectedLane === 'west'}
+          canScout={canScout}
           onSelect={setSelectedLane}
         />
         <button
@@ -120,6 +124,7 @@ export function CrossRoomCombatPanelView({
           exit={exitByDirection.get('east')}
           neighbor={neighborByDirection.get('east')}
           active={selectedLane === 'east'}
+          canScout={canScout}
           onSelect={setSelectedLane}
         />
 
@@ -129,6 +134,7 @@ export function CrossRoomCombatPanelView({
           exit={exitByDirection.get('south')}
           neighbor={neighborByDirection.get('south')}
           active={selectedLane === 'south'}
+          canScout={canScout}
           onSelect={setSelectedLane}
         />
         <div />
@@ -156,15 +162,18 @@ function DirectionLane({
   exit,
   neighbor,
   active,
+  canScout,
   onSelect,
 }: {
   direction: CardinalDirection;
   exit: RoomExit | undefined;
   neighbor?: NearbyCombatNeighborPayload;
   active: boolean;
+  canScout: boolean;
   onSelect: (lane: LaneId) => void;
 }) {
   const reachable = Boolean(neighbor?.passable ?? exit);
+  const showScout = reachable && canScout && !neighbor?.scouted;
   const monsterText = neighbor
     ? neighbor.scouted
       ? `${neighbor.monsterCount} 隻`
@@ -187,6 +196,15 @@ function DirectionLane({
         <span>{monsterText}</span>
       </button>
       {reachable && <b>{neighbor?.roomName ?? '可前往'}</b>}
+      {showScout && (
+        <button
+          type="button"
+          className="cross-room-lane-scout"
+          onClick={() => sendCommand(`skill ranger_scout ${direction}`, `偵查${DIRECTION_LABEL[direction]}側`)}
+        >
+          偵查
+        </button>
+      )}
       {reachable && (
         <button
           type="button"
@@ -323,6 +341,7 @@ export default function CrossRoomCombatPanel() {
   const room = useGameStore((s) => s.room);
   const inCombat = useGameStore((s) => s.inCombat);
   const combat = useGameStore((s) => s.combat);
+  const canScout = useGameStore((s) => s.skills.some((skill) => skill.skillId === 'ranger_scout'));
   if (!room) return null;
-  return <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} />;
+  return <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} />;
 }

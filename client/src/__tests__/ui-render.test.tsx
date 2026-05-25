@@ -325,6 +325,7 @@ describe('key UI component rendering', () => {
         }}
         inCombat={false}
         combat={null}
+        canScout
       />,
     );
 
@@ -338,6 +339,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('史萊姆#1');
     expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
     expect(html).not.toContain('/images/monsters/monster_slime.png');
+    expect(html).toContain('cross-room-lane-scout');
+    expect(html).toContain('偵查');
   });
 
   it('renders monster detail modal with expanded monster information', () => {
