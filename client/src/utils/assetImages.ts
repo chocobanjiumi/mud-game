@@ -2,6 +2,13 @@ import type { RoomEntity } from '@game/shared';
 import { ITEM_DEFS } from '@game/shared';
 import { ATLAS_ASSETS } from '../generated/atlasManifest';
 
+export function getPublicAssetPath(path: string | undefined): string | undefined {
+  if (!path) return undefined;
+  if (path.startsWith('/mud/') || path.startsWith('http://') || path.startsWith('https://')) return path;
+  if (path.startsWith('/')) return `/mud${path}`;
+  return `/mud/${path}`;
+}
+
 function monsterTargetId(entityId: string): string {
   return entityId.replace(/_\d+$/, '');
 }

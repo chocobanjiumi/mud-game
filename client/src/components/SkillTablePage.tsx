@@ -1,4 +1,5 @@
 import { SKILL_DEFS } from '@game/shared';
+import { getPublicAssetPath } from '../utils/assetImages';
 
 type InitialClassId = 'swordsman' | 'mage' | 'ranger' | 'priest';
 
@@ -730,7 +731,7 @@ function SkillPlanTable({ skills }: { skills: SkillPlan[] }) {
                     return (
                       <>
                   <img
-                    src={def?.iconPath ?? '/images/skills/icons/starter_blank_01.png'}
+                    src={getPublicAssetPath(def?.iconPath) ?? '/mud/images/skills/icons/starter_blank_01.png'}
                     alt=""
                     className="h-10 w-10 rounded border border-border-dim object-cover"
                     loading="lazy"
