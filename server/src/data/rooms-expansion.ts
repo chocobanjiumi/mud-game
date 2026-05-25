@@ -14635,10 +14635,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'time_ruins_looping_bridge.png',
     imagePrompt: '循環橋 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '循環橋位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+      '循環橋位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側電弧路在循環橋上只會把影子送回雷刻室，本體必須由雷刻紀錄室進入循環橋。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_paradox_cloister', description: '循環橋回到悖論迴廊' },
-      { direction: 'south', targetRoomId: 'time_ruins_lightning_record', description: '電弧路回到雷刻室' },
       { direction: 'east', targetRoomId: 'time_ruins_timeline_archive', description: '時間線檔案館在東側' },
     ],
     monsters: [
@@ -14768,10 +14767,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'time_ruins_worldboss_minute_zero.png',
     imagePrompt: '零分核心 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '零分核心位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
+      '零分核心位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，玩家可以 inspect 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側因果裂縫在零分核心旁閉合成單向時間疤，只能從因果井抵達核心。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代。',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_clockheart_gate', description: '零分核心回到鐘心門' },
-      { direction: 'south', targetRoomId: 'time_ruins_causality_well', description: '因果裂縫回到因果井' },
       { direction: 'east', targetRoomId: 'time_ruins_afterimage_void', description: '餘影虛空在核心後方' },
     ],
     monsters: [
