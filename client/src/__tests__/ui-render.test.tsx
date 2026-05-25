@@ -371,6 +371,21 @@ describe('key UI component rendering', () => {
         initialAdjacentTargetId="wild_rabbit_1"
       />,
     );
+    const northSelectedFieldDetailHtml = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={room}
+        inCombat={false}
+        combat={null}
+        learnedSkills={[
+          { skillId: 'precise_shot', level: 1, currentCooldown: 0 },
+          { skillId: 'fireball', level: 1, currentCooldown: 0 },
+          { skillId: 'poison_arrow', level: 1, currentCooldown: 0 },
+          { skillId: 'critical_edge', level: 1, currentCooldown: 0 },
+        ]}
+        initialLane="north"
+        initialAdjacentTargetId="wild_rabbit_1"
+      />,
+    );
 
     expect(html).toContain('周邊戰鬥');
     expect(html).toContain('跨房技能目標');
@@ -396,6 +411,11 @@ describe('key UI component rendering', () => {
     expect(northSelectedCombatDetailHtml).toContain('火球術');
     expect(northSelectedCombatDetailHtml).toContain('獵人標記');
     expect(northSelectedCombatDetailHtml).toContain('多重射擊');
+    expect(northSelectedFieldDetailHtml).toContain('單體目標：野兔#1');
+    expect(northSelectedFieldDetailHtml).toContain('>射擊</button>');
+    expect(northSelectedFieldDetailHtml).toContain('火球術');
+    expect(northSelectedFieldDetailHtml).toContain('獵人標記');
+    expect(northSelectedFieldDetailHtml).toContain('多重射擊');
   });
 
   it('renders monster detail modal with expanded monster information', () => {

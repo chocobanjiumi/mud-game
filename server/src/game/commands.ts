@@ -1684,6 +1684,11 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
+  if (usageContext === 'combat' && handleCrossRoomFieldSkill(session, char, skillDef, target)) {
+    tutorialMgr.advanceStep(char.id, 'skill');
+    return;
+  }
+
   if (usageContext === 'combat') {
     sendError(session.sessionId, `「${skillDef.name}」只能在戰鬥中使用。`);
     return;
@@ -1936,6 +1941,93 @@ function handleCrossRoomCombatSkill(
   saveCharacter(char);
   sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
   broadcastRoomState(char.roomId);
+  return true;
+}
+
+function handleCrossRoomFieldSkill(
+  session: WsSession,
+  char: Character,
+  skillDef: typeof SKILL_DEFS[string],
+  target: string,
+): boolean {
+  const areaScope = skillDef.special?.areaScope;
+  const canCrossRoom = Boolean(skillDef.special?.crossRoom || skillDef.special?.crossRoomRequiresScout || areaScope === 'adjacent_cardinal');
+  if (!canCrossRoom) return false;
+
+  const parsed = parseCrossRoomTarget(target);
+  const directions = areaScope === 'adjacent_cardinal'
+    ? CARDINAL_DIRECTIONS
+    : parsed.direction
+      ? [parsed.direction]
+      : [];
+  if (directions.length === 0) {
+    sendError(session.sessionId, `「${skillDef.name}」需要指定方向：north/east/south/west。`);
+    return true;
+  }
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: skillDef.special?.isHeal ? 'on_heal' : 'on_cast' });
+  const cooldownRemaining = getFieldSkillCooldownRemaining(char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} 秒。`);
+    return true;
+  }
+  const resourceCheck = checkSkillResource(char, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  const hits: string[] = [];
+  const affectedRooms = new Set<string>([char.roomId]);
+  for (const direction of directions) {
+    const room = getRoom(char.roomId);
+    const exit = room?.exits.find(candidate => candidate.direction === direction && !candidate.locked);
+    const targetRoomId = exit?.targetRoomId;
+    if (!targetRoomId) {
+      if (directions.length === 1) sendError(session.sessionId, `方向 ${direction} 無法通行。`);
+      continue;
+    }
+    affectedRooms.add(targetRoomId);
+    if (skillDef.special?.crossRoomRequiresScout && !hasDiscovery(char.id, 'visit_room', targetRoomId) && !hasDiscovery(char.id, 'scout_room', targetRoomId)) {
+      if (directions.length === 1) sendError(session.sessionId, `你尚未偵查 ${direction} 的房間。`);
+      continue;
+    }
+
+    const candidates = world.getAliveMonsters(targetRoomId);
+    const selected = skillDef.targetType === 'single_enemy'
+      ? [parsed.target ? world.findMonsterInRoom(targetRoomId, parsed.target) : candidates[0]].filter((monster): monster is NonNullable<typeof monster> => !!monster)
+      : candidates.slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? candidates.length);
+    const hitRuntime = getModifiedSkillRuntime(char.id, skillDef, {
+      trigger: 'on_hit',
+      isApproachingTarget: true,
+    });
+    const arrivalTicks = Math.max(0, hitRuntime.arrivalTicks ?? runtime.arrivalTicks ?? getNumericSpecial(skillDef, 'arrivalTicks') ?? 1);
+
+    for (const monster of selected) {
+      const damage = applyCrossRoomSkillDamage(char, skillDef, monster);
+      if (monster.hp <= 0 || monster.isDead) {
+        world.killMonster(targetRoomId, monster.instanceId);
+        hits.push(`${monster.def.name}受到 ${damage} 傷害並倒下`);
+        continue;
+      }
+      const approaching = world.moveMonsterToApproaching(targetRoomId, char.roomId, direction, monster.instanceId, arrivalTicks, char.id);
+      if (approaching) {
+        hits.push(`${monster.def.name}受到 ${damage} 傷害，arrivalTicks=${approaching.arrivalTicks}`);
+      }
+    }
+  }
+
+  if (hits.length === 0) {
+    sendError(session.sessionId, `「${skillDef.name}」沒有找到可命中的跨房目標。`);
+    return true;
+  }
+
+  spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+  startFieldSkillCooldown(char.id, skillDef.id, runtime.cooldown);
+  saveCharacter(char);
+  cmdStatus(session);
+  sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
+  for (const roomId of affectedRooms) broadcastRoomState(roomId);
   return true;
 }
 

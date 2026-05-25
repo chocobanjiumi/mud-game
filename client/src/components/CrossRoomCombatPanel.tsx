@@ -387,6 +387,7 @@ function buildAdjacentSkillActions(
 
 function canUseInCurrentContext(def: SkillDef, inCombat: boolean): boolean {
   if (inCombat) return def.usageContext === 'combat' || def.usageContext === 'both';
+  if (def.special?.crossRoom || def.special?.crossRoomRequiresScout || def.special?.areaScope === 'adjacent_cardinal') return true;
   return def.usageContext === 'field' || def.usageContext === 'both';
 }
 
