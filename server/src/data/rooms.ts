@@ -3323,11 +3323,10 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_stormwatch_ledge.png',
     imagePrompt: '觀潮斷崖 in eastern_coast, elite exploration cliff ledge with storm clouds, warning cairns, gull bones and lightning sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain sea, clear lantern light',
     description:
-      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡通向海蛇巢。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡只能望見遠處海蛇巢，實際需從珍珠床或暗礁水路接近。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_smugglers_cove', description: '小徑回走私者海灣' },
       { direction: 'south', targetRoomId: 'pirate_camp', description: '陡坡下方是海盜營地' },
-      { direction: 'east', targetRoomId: 'eastern_coast_serpent_nest', description: '碎石坡通向海蛇巢' },
     ],
     monsters: [
       { monsterId: 'storm_gull', maxCount: 3, respawnSeconds: 35 },
@@ -3395,10 +3394,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_serpent_nest.png',
     imagePrompt: '海蛇巢 in eastern_coast, boss event sea serpent nest with coiled bones, green water light, egg clutches and jagged reef walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain sea, clear lantern light',
     description:
-      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側碎石坡回觀潮斷崖，南面可潛入暗礁深處。這裡是大型事件鉤子，玩家可 inspect 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援。',
+      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側水面能看見觀潮斷崖但沒有可攀爬路線，南面可潛入暗礁深處。這裡是大型事件鉤子，玩家可 inspect 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_pearl_bed', description: '暗流回珍珠床' },
-      { direction: 'north', targetRoomId: 'eastern_coast_stormwatch_ledge', description: '碎石坡回觀潮斷崖' },
       { direction: 'south', targetRoomId: 'dark_reef', description: '裂谷深入暗礁區' },
     ],
     monsters: [
