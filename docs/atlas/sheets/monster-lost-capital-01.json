@@ -1,0 +1,18 @@
+{
+  "sheetId": "monster_lost_capital_01",
+  "category": "monster",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_lost_capital_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_lost_capital_archive_lich_scribe", "category": "monster", "targetId": "archive_lich_scribe", "name": "檔案巫妖書吏", "outputPath": "client/public/images/monsters/monster_lost_capital_archive_lich_scribe.png", "row": 0, "column": 0 },
+    { "assetId": "monster_lost_capital_ashen_barracks_commander", "category": "monster", "targetId": "ashen_barracks_commander", "name": "灰兵營統領", "outputPath": "client/public/images/monsters/monster_lost_capital_ashen_barracks_commander.png", "row": 0, "column": 1 },
+    { "assetId": "monster_lost_capital_clockwork_gargoyle", "category": "monster", "targetId": "clockwork_gargoyle", "name": "停鐘白石像鬼", "outputPath": "client/public/images/monsters/monster_lost_capital_clockwork_gargoyle.png", "row": 0, "column": 2 },
+    { "assetId": "monster_lost_capital_empty_throne_sovereign", "category": "monster", "targetId": "empty_throne_sovereign", "name": "空王座君影", "outputPath": "client/public/images/monsters/monster_lost_capital_empty_throne_sovereign.png", "row": 1, "column": 0 },
+    { "assetId": "monster_lost_capital_frozen_market_duelist", "category": "monster", "targetId": "frozen_market_duelist", "name": "凝市影決鬥者", "outputPath": "client/public/images/monsters/monster_lost_capital_frozen_market_duelist.png", "row": 1, "column": 1 },
+    { "assetId": "monster_lost_capital_judgment_hall_inquisitor", "category": "monster", "targetId": "judgment_hall_inquisitor", "name": "審判廳裁決官", "outputPath": "client/public/images/monsters/monster_lost_capital_judgment_hall_inquisitor.png", "row": 1, "column": 2 },
+    { "assetId": "monster_lost_capital_royal_canal_sentinel", "category": "monster", "targetId": "royal_canal_sentinel", "name": "王家水道衛", "outputPath": "client/public/images/monsters/monster_lost_capital_royal_canal_sentinel.png", "row": 2, "column": 0 },
+    { "assetId": "monster_lost_capital_silent_avenue_guard", "category": "monster", "targetId": "silent_avenue_guard", "name": "寂靜王道守衛", "outputPath": "client/public/images/monsters/monster_lost_capital_silent_avenue_guard.png", "row": 2, "column": 1 },
+    { "assetId": "monster_lost_capital_sun_chapel_seraph", "category": "monster", "targetId": "sun_chapel_seraph", "name": "日輪殘翼使", "outputPath": "client/public/images/monsters/monster_lost_capital_sun_chapel_seraph.png", "row": 2, "column": 2 }
+  ]
+}

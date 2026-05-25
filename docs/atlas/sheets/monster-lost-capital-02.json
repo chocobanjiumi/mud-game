@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_lost_capital_02",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_lost_capital_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_lost_capital_timefracture_regent", "category": "monster", "targetId": "timefracture_regent", "name": "時裂攝政影", "outputPath": "client/public/images/monsters/monster_lost_capital_timefracture_regent.png", "row": 0, "column": 0 }
+  ]
+}
