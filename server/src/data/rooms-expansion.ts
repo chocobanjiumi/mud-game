@@ -1244,11 +1244,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'lakeside_portal_square.png',
     imagePrompt: '湖畔傳送廣場 in lakeside_town, town traffic portal room with circular runes, blue lake mist, brass pylons and stable magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '湖畔傳送廣場鋪著環形符文石，黃銅導柱圍住穩定的藍色傳送光，湖霧從欄杆外飄入法陣邊緣。交通告示牌標明已解鎖節點、費用與冷卻規則，守衛會檢查戰鬥狀態與危險物資。北面通神殿，西側拱門回城鎮廣場，東側道路接魚市；玩家可 activate portal、travel 或 recall，並 inspect 導柱查看深處捷徑線索。地面刻有不同網路的顏色環，提醒玩家公共傳送、區域入口與危險撤離點的限制並不相同。法陣邊緣的灰色插槽會顯示尚未解鎖的區域，作為後續任務目標與費用提示，也標明冷卻剩餘時間與可用出口及回程路線與安全標記。',
+      '湖畔傳送廣場鋪著環形符文石，黃銅導柱圍住穩定的藍色傳送光，湖霧從欄杆外飄入法陣邊緣。交通告示牌標明已解鎖節點、費用與冷卻規則，守衛會檢查戰鬥狀態與危險物資。北面通神殿，西側拱門回城鎮廣場，若要前往魚市需先回市場街區再沿湖岸小巷前進；玩家可 activate portal、travel 或 recall，並 inspect 導柱查看深處捷徑線索。地面刻有不同網路的顏色環，提醒玩家公共傳送、區域入口與危險撤離點的限制並不相同。法陣邊緣的灰色插槽會顯示尚未解鎖的區域，作為後續任務目標與費用提示，也標明冷卻剩餘時間與可用出口及回程路線與安全標記。',
     exits: [
       { direction: 'north', targetRoomId: 'lakeside_temple', description: '階梯回到湖光神殿' },
       { direction: 'west', targetRoomId: 'town_plaza', description: '拱門通往城鎮廣場' },
-      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '湖風帶來魚市氣味' },
     ],
     monsters: [],
     mapSymbol: '[O]',
@@ -1318,10 +1317,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'lakeside_fish_market.png',
     imagePrompt: '湖鮮魚市 in lakeside_town, town social fish market with wet stone stalls, hanging nets, blue lake light and silver fish scales, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain town, clear lantern light',
     description:
-      '湖鮮魚市鋪著潮濕青石，銀鱗魚、蟹籠和藍色水草堆在攤位上，鹽味與湖泥味混著吆喝聲。碼頭方向有漁船鈴聲，攤販桌下藏著今日捕獲記錄。西面短街回裁縫坊，北側是傳送廣場，南側木棧橋連到隱藏水道入口；玩家可買材料、接釣魚委託，或 inspect 魚鰓找出受污染湖域線索。魚販會把異常魚鱗、湖底碎片與每日行情放在不同木盤上，讓採集與烹飪路線有清楚材料來源。潮汐牌也會提示前往東方海岸與釣魚點的最佳時間，旁邊水桶可檢查稀有魚影與採集等級需求，並指向碼頭與水道入口標記處。',
+      '湖鮮魚市鋪著潮濕青石，銀鱗魚、蟹籠和藍色水草堆在攤位上，鹽味與湖泥味混著吆喝聲。碼頭方向有漁船鈴聲，攤販桌下藏著今日捕獲記錄。西面短街回裁縫坊，若要前往傳送廣場需先回市場街區，南側木棧橋連到隱藏水道入口；玩家可買材料、接釣魚委託，或 inspect 魚鰓找出受污染湖域線索。魚販會把異常魚鱗、湖底碎片與每日行情放在不同木盤上，讓採集與烹飪路線有清楚材料來源。潮汐牌也會提示前往東方海岸與釣魚點的最佳時間，旁邊水桶可檢查稀有魚影與採集等級需求，並指向碼頭與水道入口標記處。',
     exits: [
       { direction: 'west', targetRoomId: 'lakeside_tailor', description: '短街回裁縫坊' },
-      { direction: 'north', targetRoomId: 'lakeside_portal_square', description: '石路回到傳送廣場' },
       { direction: 'south', targetRoomId: 'lakeside_hidden_canal', description: '棧橋下有隱蔽水門' },
     ],
     monsters: [],
@@ -1355,10 +1353,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'lakeside_hidden_canal.png',
     imagePrompt: '隱藏水道 in lakeside_town, hidden exploration canal with mossy arches, black water, smuggler marks and narrow lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain water, clear lantern light',
     description:
-      '隱藏水道位於倉庫與魚市下方，苔痕覆滿拱形磚牆，黑水反射狹窄提燈光，牆角刻著走私者留下的潮汐記號。北面排水門回倉庫，東北木梯通魚市，西側狹洞連監獄牢房後方。這是城鎮少見的探索房，玩家可 search 破箱取得一次性藏物，inspect 潮汐記號找出海岸走私路線，但也要注意濕滑地面和暗處的警鈴線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '隱藏水道位於倉庫與魚市下方，苔痕覆滿拱形磚牆，黑水反射狹窄提燈光，牆角刻著走私者留下的潮汐記號。北面木梯通往魚市棧橋，倉庫排水門可從上方落入此處，西側狹洞連監獄牢房後方。這是城鎮少見的探索房，玩家可 search 破箱取得一次性藏物，inspect 潮汐記號找出海岸走私路線，但也要注意濕滑地面和暗處的警鈴線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'lakeside_warehouse', description: '排水門回到倉庫' },
-      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '木梯通往魚市棧橋' },
+      { direction: 'north', targetRoomId: 'lakeside_fish_market', description: '木梯通往魚市棧橋' },
       { direction: 'west', targetRoomId: 'prison', description: '狹洞連到監獄後牆' },
     ],
     monsters: [],
