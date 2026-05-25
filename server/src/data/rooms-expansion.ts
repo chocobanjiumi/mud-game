@@ -16353,10 +16353,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'moonlit_fen_lunar_altar.png',
     imagePrompt: '月沼祭壇 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。南側舟痕被月沼水面吞成倒影，真正路徑只能從舊舟營划入祭壇。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_white_reed_maze', description: '月沼祭壇回到白蘆迷道' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_old_canoe_camp', description: '舟痕回到舊舟營' },
       { direction: 'east', targetRoomId: 'moonlit_fen_dreamwater_core', description: '夢水核心在東側' },
     ],
     monsters: [
