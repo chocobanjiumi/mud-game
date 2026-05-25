@@ -349,7 +349,7 @@ describe('key UI component rendering', () => {
     expect(html).toContain('史萊姆#1');
     expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
     expect(html).not.toContain('/images/monsters/monster_slime.png');
-    expect(html).toContain('cross-room-lane-scout');
+    expect(html).not.toContain('cross-room-lane-scout');
     expect(eastDetailHtml).toContain('cross-room-action-scout');
     expect(eastDetailHtml).toContain('偵查');
   });
