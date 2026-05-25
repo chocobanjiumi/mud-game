@@ -12574,10 +12574,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sky_isles_halo_courtyard.png',
     imagePrompt: '光環庭院 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain sea, clear lantern light',
     description:
-      '光環庭院位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+      '光環庭院位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。北側雲神殿門仍在光環中映出倒影，但庭院的環形風牆只允許由神殿門進入。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
     exits: [
       { direction: 'west', targetRoomId: 'sky_isles_mirror_pool', description: '鏡面橋回到天鏡池' },
-      { direction: 'north', targetRoomId: 'sky_isles_cloud_temple_gate', description: '光環庭院回到雲神殿門' },
       { direction: 'east', targetRoomId: 'sky_isles_ascendant_bridge', description: '升天橋通往最高島' },
     ],
     monsters: [
@@ -12627,10 +12626,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sky_isles_ascendant_bridge.png',
     imagePrompt: '升天橋 in sky_isles, floating islands above sea of clouds, ancient glowing runes, broken sky bridges, white temple ruins, lightning and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain sea, clear lantern light',
     description:
-      '升天橋位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
+      '升天橋位於浮空群島破碎島鏈之間，腳下石板靠古代符文懸在雲海上方，遠處可見斷橋、神殿白牆、雷鷹巢影與被風暴包圍的最高浮島。這裡是終局區域的高階路線節點，玩家可以 inspect 符文錨、羽痕、斷裂橋樑與光環投影來判斷浮島穩定度，也能 search 神殿殘片、浮市攤位與星墜碎石尋找事件線索。南側碎星路被上升氣流撕成單向斷橋，只能從星墜崖踏上升天橋。若隊伍無視雲橋晃動、突發雷雲與空中獵手的俯衝，很容易被飛龍和風暴龍影逼落邊緣；若穩定推進，則能掌握世界王浮島與天空核心聖所的開啟節奏，並確保每次跨島前都能找到可回收的穩定符文碎片。',
     exits: [
       { direction: 'west', targetRoomId: 'sky_isles_halo_courtyard', description: '升天橋回到光環庭院' },
-      { direction: 'south', targetRoomId: 'sky_isles_starfall_ledge', description: '碎星路回到星墜崖' },
       { direction: 'east', targetRoomId: 'sky_isles_worldboss_island', description: '風牆裂口通往世界王島' },
     ],
     monsters: [
