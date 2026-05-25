@@ -1657,10 +1657,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '一間由魔法結界守護的石室，四壁鑲嵌著發光的紅色寶石。' +
       '室內堆放著從各地掠奪來的金幣、寶石和魔法物品，散發著誘人的光芒。' +
       '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '南側貨梯可聽見影市叫賣聲，但結界已鎖死，只能從村落或白骨坑地重新繞路接近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'demon_village', description: '回到魔族村落' },
-      { direction: 'south', targetRoomId: 'demon_shadow_market', description: '狹窄貨梯通往影市後門' },
     ],
     monsters: [
       { monsterId: 'demon_soldier', maxCount: 2, respawnSeconds: 60 },
@@ -1740,11 +1739,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'demon_shadow_market.png',
     imagePrompt: '影市 in demon_territory, hidden demon black market under dark cloth awnings, red lanterns, cages, cursed wares, smoky alleys, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain market, clear lantern light',
     description:
-      '村落東側的黑布棚一層接一層，遮住了天空也遮住了交易者的臉。攤位上擺著破碎法器、帶詛咒的寶石、無主的武器與寫滿契約文字的羊皮紙，紅燈籠下的影子比真人更忙碌。這裡不完全受軍隊管轄，低階魔族、走私商與背叛者都會用壓低的聲音交換消息，玩家也能從混亂貨流中窺見要塞內部的補給路線。',
+      '村落東側的黑布棚一層接一層，遮住了天空也遮住了交易者的臉。攤位上擺著破碎法器、帶詛咒的寶石、無主的武器與寫滿契約文字的羊皮紙，紅燈籠下的影子比真人更忙碌。南側後巷貨梯掛著寶庫封印，已不能直接通行；若要進寶庫需回村落或從白骨坑地外牆繞入。這裡不完全受軍隊管轄，低階魔族、走私商與背叛者都會用壓低的聲音交換消息，玩家也能從混亂貨流中窺見要塞內部的補給路線。',
     exits: [
       { direction: 'west', targetRoomId: 'demon_village', description: '掀開黑布回到魔族村落' },
       { direction: 'north', targetRoomId: 'demon_war_forge', description: '鐵軌推車通往戰爭熔爐' },
-      { direction: 'south', targetRoomId: 'demon_treasury', description: '後巷貨梯通向寶庫暗門' },
     ],
     monsters: [
       { monsterId: 'succubus', maxCount: 1, respawnSeconds: 70 },
@@ -1902,10 +1900,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'demon_cursed_shrine.png',
     imagePrompt: '詛咒神龕 in demon_territory, ruined underground shrine feeding a demon summoning circle, black candles, red sigils, cracked sacred statues, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain shrine, clear lantern light',
     description:
-      '召喚陣南方的副通道通往一座被改造的古老神龕。原本潔白的神像被黑蠟覆蓋，臉部遭符文鐵片封住，神龕前的石盆裡燃著不會照亮周圍的紅火。牆上仍能看到舊日聖徽，但每一道刻痕都被魔族咒文覆寫，使此處同時散發神聖殘響與深淵低語。副陣的能量從地板裂縫流向北方，支撐著主召喚陣的持續運作。此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
+      '召喚陣南方的副通道通往一座被改造的古老神龕。原本潔白的神像被黑蠟覆蓋，臉部遭符文鐵片封住，神龕前的石盆裡燃著不會照亮周圍的紅火。牆上仍能看到舊日聖徽，但每一道刻痕都被魔族咒文覆寫，使此處同時散發神聖殘響與深淵低語。東側被黑蠟封住的側廊可感到親衛前廳氣息，但無法直接通行；需回召喚陣與魔王殿側門繞入。副陣的能量從地板裂縫流向北方，支撐著主召喚陣的持續運作。此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
     exits: [
       { direction: 'north', targetRoomId: 'summoning_circle', description: '副陣回到召喚陣大廳' },
-      { direction: 'east', targetRoomId: 'demon_lord_antechamber', description: '被黑蠟封住的側廊通向親衛前廳' },
     ],
     monsters: [
       { monsterId: 'succubus', maxCount: 2, respawnSeconds: 70 },
@@ -1928,10 +1925,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'demon_lord_antechamber.png',
     imagePrompt: '魔王親衛前廳 in demon_territory, elite guard antechamber beside demon throne, black marble floor, red banners, sealed dragon door heat, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '魔王殿東側的親衛前廳比主殿更安靜，黑色大理石地面被擦得像鏡子，能映出牆上燃燒旗幟的倒影。兩排重甲親衛站在門柱旁，身後是通往龍谷密門的控制機關與數枚暗紅水晶。這裡不是接見臣民的地方，而是魔王在決戰前調度親衛、封鎖後路與觀察召喚陣狀態的戰術室。空氣中混著深淵寒意和龍谷熱風，表示兩股力量在門後互相拉扯。桌上攤開的軍令還標著各處哨塔與熔爐編號，若能帶走，足以揭露魔族下一階段的遠征計畫。前廳天花板垂下多面黑鐵鏡，能把主殿與召喚陣的動靜投到牆上，因此親衛幾乎不會被偷襲。此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
+      '魔王殿東側的親衛前廳比主殿更安靜，黑色大理石地面被擦得像鏡子，能映出牆上燃燒旗幟的倒影。兩排重甲親衛站在門柱旁，身後是通往龍谷密門的控制機關與數枚暗紅水晶。這裡不是接見臣民的地方，而是魔王在決戰前調度親衛、封鎖後路與觀察召喚陣狀態的戰術室。南側暗紅側廊可看見詛咒神龕火光，但黑蠟門只從神龕側留下痕跡，無法作為通路。空氣中混著深淵寒意和龍谷熱風，表示兩股力量在門後互相拉扯。桌上攤開的軍令還標著各處哨塔與熔爐編號，若能帶走，足以揭露魔族下一階段的遠征計畫。前廳天花板垂下多面黑鐵鏡，能把主殿與召喚陣的動靜投到牆上，因此親衛幾乎不會被偷襲。此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
     exits: [
       { direction: 'west', targetRoomId: 'demon_throne', description: '黑石側門回到魔王殿' },
-      { direction: 'south', targetRoomId: 'demon_cursed_shrine', description: '暗紅側廊回到詛咒神龕' },
     ],
     monsters: [
       { monsterId: 'demon_general', maxCount: 2, respawnSeconds: 1800 },
