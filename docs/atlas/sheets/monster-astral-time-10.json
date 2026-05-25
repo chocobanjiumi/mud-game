@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_outer_dark_devourer", "category": "monster", "targetId": "outer_dark_devourer", "name": "外層黑域吞噬者", "outputPath": "client/public/images/monsters/monster_astral_time_outer_dark_devourer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_outer_void_star_devourer", "category": "monster", "targetId": "outer_void_star_devourer", "name": "外界吞星者", "outputPath": "client/public/images/monsters/monster_astral_time_outer_void_star_devourer.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_pale_shrine_luminant", "category": "monster", "targetId": "pale_shrine_luminant", "name": "蒼白祠輝靈", "outputPath": "client/public/images/monsters/monster_astral_time_pale_shrine_luminant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_radiant_pool_wisp", "category": "monster", "targetId": "radiant_pool_wisp", "name": "輻池星靈", "outputPath": "client/public/images/monsters/monster_astral_time_radiant_pool_wisp.png", "row": 1, "column": 1 }
+  ]
+}

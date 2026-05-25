@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_hourglass_automaton", "category": "monster", "targetId": "hourglass_automaton", "name": "沙漏機偶", "outputPath": "client/public/images/monsters/monster_astral_time_hourglass_automaton.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_lightning_record_drake", "category": "monster", "targetId": "lightning_record_drake", "name": "雷刻紀錄龍", "outputPath": "client/public/images/monsters/monster_astral_time_lightning_record_drake.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_lost_constellation_seraph", "category": "monster", "targetId": "lost_constellation_seraph", "name": "失落星座熾影", "outputPath": "client/public/images/monsters/monster_astral_time_lost_constellation_seraph.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_magnetized_thunderhawk", "category": "monster", "targetId": "magnetized_thunderhawk", "name": "磁雷鷹", "outputPath": "client/public/images/monsters/monster_astral_time_magnetized_thunderhawk.png", "row": 1, "column": 1 }
+  ]
+}
