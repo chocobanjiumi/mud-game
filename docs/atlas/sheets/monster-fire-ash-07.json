@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_ember_crack_worm", "category": "monster", "targetId": "ember_crack_worm", "name": "熔裂燼蟲", "outputPath": "client/public/images/monsters/monster_fire_ash_ember_crack_worm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_exile_duelist", "category": "monster", "targetId": "exile_duelist", "name": "流放決鬥者", "outputPath": "client/public/images/monsters/monster_fire_ash_exile_duelist.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_fire_salamander", "category": "monster", "targetId": "fire_salamander", "name": "火蜥蜴", "outputPath": "client/public/images/monsters/monster_fire_ash_fire_salamander.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_flame_spirit", "category": "monster", "targetId": "flame_spirit", "name": "火焰精靈", "outputPath": "client/public/images/monsters/monster_fire_ash_flame_spirit.png", "row": 1, "column": 1 }
+  ]
+}

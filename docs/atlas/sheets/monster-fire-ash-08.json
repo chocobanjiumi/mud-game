@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_glass_ash_lizard", "category": "monster", "targetId": "glass_ash_lizard", "name": "玻灰蜥", "outputPath": "client/public/images/monsters/monster_fire_ash_glass_ash_lizard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_glass_sand_skink", "category": "monster", "targetId": "glass_sand_skink", "name": "玻砂沙蜥", "outputPath": "client/public/images/monsters/monster_fire_ash_glass_sand_skink.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_heartfire_breach_drake", "category": "monster", "targetId": "heartfire_breach_drake", "name": "心火缺口亞龍", "outputPath": "client/public/images/monsters/monster_fire_ash_heartfire_breach_drake.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_lava_colossus", "category": "monster", "targetId": "lava_colossus", "name": "熔岩巨像", "outputPath": "client/public/images/monsters/monster_fire_ash_lava_colossus.png", "row": 1, "column": 1 }
+  ]
+}
