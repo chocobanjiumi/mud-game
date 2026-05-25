@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { CardinalDirection, Direction, NearbyCombatMonsterPayload, NearbyCombatNeighborPayload, RoomEntity, RoomExit } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
-import { getEntityImagePath } from '../utils/assetImages';
+import { getEntityImagePath, getMonsterImagePath } from '../utils/assetImages';
 
 type LaneId = 'self' | CardinalDirection;
 
@@ -309,9 +309,10 @@ function MonsterChip({
   monster: NearbyCombatMonsterPayload;
   onClick: () => void;
 }) {
+  const image = getMonsterImagePath(monster.monsterId) ?? monster.image;
   return (
     <button type="button" className="cross-room-target" onClick={onClick}>
-      {monster.image ? <img src={monster.image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
+      {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
       <small>{monster.label ?? monster.name}</small>
       <small className="cross-room-hp">HP {monster.hp}/{monster.maxHp}</small>
     </button>

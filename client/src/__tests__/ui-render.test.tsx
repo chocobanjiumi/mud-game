@@ -226,6 +226,8 @@ describe('key UI component rendering', () => {
       <CrossRoomCombatPanelView
         room={{
           ...state.room!,
+          entities: [],
+          monsters: [],
           exits: [
             { direction: 'north', targetRoomId: 'north_room', description: '北側草地' },
             { direction: 'east', targetRoomId: 'east_room', description: '東側小徑' },
@@ -243,6 +245,7 @@ describe('key UI component rendering', () => {
                 level: 1,
                 hp: 30,
                 maxHp: 30,
+                image: '/images/monsters/monster_slime.png',
                 threatTags: [],
               }],
             },
@@ -302,6 +305,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('東側小徑');
     expect(html).toContain('本房');
     expect(html).toContain('史萊姆#1');
+    expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
+    expect(html).not.toContain('/images/monsters/monster_slime.png');
   });
 
   it('renders monster detail modal with expanded monster information', () => {
