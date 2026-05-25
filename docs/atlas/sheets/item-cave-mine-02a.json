@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_cave_mine_02a",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_cave_mine_02a.sheet.png",
+  "targets": [
+    { "assetId": "item_cave_mine_prism_gate_rune", "category": "item", "targetId": "prism_gate_rune", "name": "棱鏡門符片", "outputPath": "client/public/images/items/item_cave_mine_prism_gate_rune.png", "row": 0, "column": 0 },
+    { "assetId": "item_cave_mine_silver_breath_tonic", "category": "item", "targetId": "silver_breath_tonic", "name": "銀息藥劑", "outputPath": "client/public/images/items/item_cave_mine_silver_breath_tonic.png", "row": 0, "column": 1 },
+    { "assetId": "item_cave_mine_undercity_trade_token", "category": "item", "targetId": "undercity_trade_token", "name": "城邦交易牌", "outputPath": "client/public/images/items/item_cave_mine_undercity_trade_token.png", "row": 0, "column": 2 },
+    { "assetId": "item_cave_mine_wisdom_amulet", "category": "item", "targetId": "wisdom_amulet", "name": "智慧護身符", "outputPath": "client/public/images/items/item_cave_mine_wisdom_amulet.png", "row": 1, "column": 0 },
+    { "assetId": "item_cave_mine_worldforge_ember_core", "category": "item", "targetId": "worldforge_ember_core", "name": "世界熔爐燼核", "outputPath": "client/public/images/items/item_cave_mine_worldforge_ember_core.png", "row": 1, "column": 1 },
+    { "assetId": "item_cave_mine_zone_abandoned_mines_body_2", "category": "item", "targetId": "zone_abandoned_mines_body_2", "name": "廢棄礦坑護甲", "outputPath": "client/public/images/items/item_cave_mine_zone_abandoned_mines_body_2.png", "row": 1, "column": 2 },
+    { "assetId": "item_cave_mine_zone_abandoned_mines_feet_4", "category": "item", "targetId": "zone_abandoned_mines_feet_4", "name": "廢棄礦坑長靴", "outputPath": "client/public/images/items/item_cave_mine_zone_abandoned_mines_feet_4.png", "row": 2, "column": 0 },
+    { "assetId": "item_cave_mine_zone_abandoned_mines_hands_3", "category": "item", "targetId": "zone_abandoned_mines_hands_3", "name": "廢棄礦坑護手", "outputPath": "client/public/images/items/item_cave_mine_zone_abandoned_mines_hands_3.png", "row": 2, "column": 1 },
+    { "assetId": "item_cave_mine_zone_abandoned_mines_head_1", "category": "item", "targetId": "zone_abandoned_mines_head_1", "name": "廢棄礦坑兜帽", "outputPath": "client/public/images/items/item_cave_mine_zone_abandoned_mines_head_1.png", "row": 2, "column": 2 }
+  ]
+}
