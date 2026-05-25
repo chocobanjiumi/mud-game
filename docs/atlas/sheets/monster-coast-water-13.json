@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_13",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_13.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_frostwake_bone_drake", "category": "monster", "targetId": "frostwake_bone_drake", "name": "霜浪骨龍", "outputPath": "client/public/images/monsters/monster_coast_water_frostwake_bone_drake.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_ghost_anchor_dragger", "category": "monster", "targetId": "ghost_anchor_dragger", "name": "幽錨拖行者", "outputPath": "client/public/images/monsters/monster_coast_water_ghost_anchor_dragger.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_glassfish_swarm", "category": "monster", "targetId": "glassfish_swarm", "name": "玻魚群", "outputPath": "client/public/images/monsters/monster_coast_water_glassfish_swarm.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_glasssalt_elemental", "category": "monster", "targetId": "glasssalt_elemental", "name": "玻璃鹽元素", "outputPath": "client/public/images/monsters/monster_coast_water_glasssalt_elemental.png", "row": 1, "column": 1 }
+  ]
+}

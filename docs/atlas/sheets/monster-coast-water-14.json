@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_14",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_14.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_godwhisper_aberration", "category": "monster", "targetId": "godwhisper_aberration", "name": "古神低語畸體", "outputPath": "client/public/images/monsters/monster_coast_water_godwhisper_aberration.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_icekelp_strangler", "category": "monster", "targetId": "icekelp_strangler", "name": "冰藻縛手", "outputPath": "client/public/images/monsters/monster_coast_water_icekelp_strangler.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_jellyfish", "category": "monster", "targetId": "jellyfish", "name": "水母", "outputPath": "client/public/images/monsters/monster_coast_water_jellyfish.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_lichlight_reef_sage", "category": "monster", "targetId": "lichlight_reef_sage", "name": "巫光礁賢者", "outputPath": "client/public/images/monsters/monster_coast_water_lichlight_reef_sage.png", "row": 1, "column": 1 }
+  ]
+}

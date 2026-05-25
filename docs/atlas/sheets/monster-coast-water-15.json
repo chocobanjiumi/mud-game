@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_15",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_15.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_lowtide_serpent", "category": "monster", "targetId": "lowtide_serpent", "name": "退潮海蛇", "outputPath": "client/public/images/monsters/monster_coast_water_lowtide_serpent.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_mirror_shallows_serpent", "category": "monster", "targetId": "mirror_shallows_serpent", "name": "鏡淺湖蛇", "outputPath": "client/public/images/monsters/monster_coast_water_mirror_shallows_serpent.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_pearl_oracle_shade", "category": "monster", "targetId": "pearl_oracle_shade", "name": "珍珠神諭影", "outputPath": "client/public/images/monsters/monster_coast_water_pearl_oracle_shade.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_pirate", "category": "monster", "targetId": "pirate", "name": "海盜", "outputPath": "client/public/images/monsters/monster_coast_water_pirate.png", "row": 1, "column": 1 }
+  ]
+}
