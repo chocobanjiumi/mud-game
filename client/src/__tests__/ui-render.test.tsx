@@ -253,79 +253,89 @@ describe('key UI component rendering', () => {
 
   it('renders cross-room combat targeting lanes', () => {
     const state = useGameStore.getState();
-    const html = renderToStaticMarkup(
-      <CrossRoomCombatPanelView
-        room={{
-          ...state.room!,
-          entities: [],
-          monsters: [],
-          exits: [
-            { direction: 'north', targetRoomId: 'north_room', description: '北側草地' },
-            { direction: 'east', targetRoomId: 'east_room', description: '東側小徑' },
-          ],
-          nearbyCombat: {
-            current: {
-              roomId: 'training_ground',
-              roomName: '訓練場',
-              monsters: [{
-                id: 'monster_green_slime_a',
-                monsterId: 'slime',
-                name: '史萊姆',
-                alias: 'slime',
-                label: '史萊姆#1',
-                level: 1,
-                hp: 30,
-                maxHp: 30,
-                image: '/images/monsters/monster_slime.png',
-                threatTags: [],
-              }],
-            },
-            neighbors: [
-              {
-                direction: 'north',
-                passable: true,
-                roomId: 'north_room',
-                roomName: '北側草地',
-                scouted: true,
-                monsterCount: 1,
-                monsters: [{
-                  id: 'wild_rabbit_1',
-                  monsterId: 'wild_rabbit',
-                  name: '野兔',
-                  alias: 'wild_rabbit',
-                  label: '野兔#1',
-                  level: 1,
-                  hp: 12,
-                  maxHp: 12,
-                  threatTags: ['passive'],
-                }],
-              },
-              {
-                direction: 'east',
-                passable: true,
-                roomId: 'east_room',
-                roomName: '東側小徑',
-                scouted: false,
-                monsterCount: 2,
-              },
-            ],
-            approaching: [{
-              instanceId: 'wolf_approach',
-              monsterId: 'wolf',
-              name: '野狼',
-              alias: 'wolf',
-              sourceDirection: 'north',
-              sourceRoomId: 'north_room',
-              destinationRoomId: 'training_ground',
-              arrivalTicks: 2,
-              hp: 20,
-              maxHp: 20,
+    const room = {
+      ...state.room!,
+      entities: [],
+      monsters: [],
+      exits: [
+        { direction: 'north' as const, targetRoomId: 'north_room', description: '北側草地' },
+        { direction: 'east' as const, targetRoomId: 'east_room', description: '東側小徑' },
+      ],
+      nearbyCombat: {
+        current: {
+          roomId: 'training_ground',
+          roomName: '訓練場',
+          monsters: [{
+            id: 'monster_green_slime_a',
+            monsterId: 'slime',
+            name: '史萊姆',
+            alias: 'slime',
+            label: '史萊姆#1',
+            level: 1,
+            hp: 30,
+            maxHp: 30,
+            image: '/images/monsters/monster_slime.png',
+            threatTags: [],
+          }],
+        },
+        neighbors: [
+          {
+            direction: 'north' as const,
+            passable: true,
+            roomId: 'north_room',
+            roomName: '北側草地',
+            scouted: true,
+            monsterCount: 1,
+            monsters: [{
+              id: 'wild_rabbit_1',
+              monsterId: 'wild_rabbit',
+              name: '野兔',
+              alias: 'wild_rabbit',
+              label: '野兔#1',
+              level: 1,
+              hp: 12,
+              maxHp: 12,
+              threatTags: ['passive'],
             }],
           },
-        }}
+          {
+            direction: 'east' as const,
+            passable: true,
+            roomId: 'east_room',
+            roomName: '東側小徑',
+            scouted: false,
+            monsterCount: 2,
+          },
+        ],
+        approaching: [{
+          instanceId: 'wolf_approach',
+          monsterId: 'wolf',
+          name: '野狼',
+          alias: 'wolf',
+          sourceDirection: 'north' as const,
+          sourceRoomId: 'north_room',
+          destinationRoomId: 'training_ground',
+          arrivalTicks: 2,
+          hp: 20,
+          maxHp: 20,
+        }],
+      },
+    };
+    const html = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={room}
         inCombat={false}
         combat={null}
         canScout
+      />,
+    );
+    const eastDetailHtml = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={room}
+        inCombat={false}
+        combat={null}
+        canScout
+        initialLane="east"
       />,
     );
 
@@ -340,7 +350,8 @@ describe('key UI component rendering', () => {
     expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
     expect(html).not.toContain('/images/monsters/monster_slime.png');
     expect(html).toContain('cross-room-lane-scout');
-    expect(html).toContain('偵查');
+    expect(eastDetailHtml).toContain('cross-room-action-scout');
+    expect(eastDetailHtml).toContain('偵查');
   });
 
   it('renders monster detail modal with expanded monster information', () => {

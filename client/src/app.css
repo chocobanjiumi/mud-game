@@ -655,6 +655,16 @@ input::placeholder {
   background: rgba(0, 255, 136, 0.09);
 }
 
+.cross-room-action-scout {
+  border-color: rgba(255, 184, 0, 0.34);
+  color: var(--color-text-amber);
+  background: rgba(255, 184, 0, 0.08);
+}
+
+.cross-room-action-scout:hover {
+  background: rgba(255, 184, 0, 0.16);
+}
+
 .target-action {
   min-height: 28px;
   padding: 0 8px;

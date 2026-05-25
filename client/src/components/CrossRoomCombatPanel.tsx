@@ -57,13 +57,15 @@ export function CrossRoomCombatPanelView({
   inCombat,
   combat,
   canScout = false,
+  initialLane = 'self',
 }: {
   room: RoomInfo;
   inCombat: boolean;
   combat: CombatInfo | null;
   canScout?: boolean;
+  initialLane?: LaneId;
 }) {
-  const [selectedLane, setSelectedLaneState] = useState<LaneId>('self');
+  const [selectedLane, setSelectedLaneState] = useState<LaneId>(initialLane);
   const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
   const roomMonsters = getRoomMonsters(room);
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
@@ -149,6 +151,7 @@ export function CrossRoomCombatPanelView({
             exit={exitByDirection.get(selectedLane)}
             neighbor={neighborByDirection.get(selectedLane)}
             approaching={nearby?.approaching.filter((monster) => monster.sourceDirection === selectedLane) ?? []}
+            canScout={canScout}
             onSelectDirection={() => setSelectedLane(selectedLane)}
           />
         )}
@@ -263,12 +266,14 @@ function AdjacentRoomPreview({
   exit,
   neighbor,
   approaching,
+  canScout,
   onSelectDirection,
 }: {
   direction: CardinalDirection;
   exit: RoomExit | undefined;
   neighbor?: NearbyCombatNeighborPayload;
   approaching: NonNullable<RoomInfo['nearbyCombat']>['approaching'];
+  canScout: boolean;
   onSelectDirection: () => void;
 }) {
   const passable = neighbor?.passable ?? Boolean(exit);
@@ -277,6 +282,7 @@ function AdjacentRoomPreview({
   }
   const roomTitle = neighbor?.roomName ?? directionTitle(exit, direction);
   const monsters = neighbor?.monsters ?? [];
+  const showScout = canScout && !neighbor?.scouted;
 
   return (
     <div className="cross-room-adjacent">
@@ -307,6 +313,15 @@ function AdjacentRoomPreview({
         )}
       </div>
       <div className="cross-room-actions">
+        {showScout && (
+          <button
+            type="button"
+            className="cross-room-action cross-room-action-scout"
+            onClick={() => sendCommand(`skill ranger_scout ${direction}`, `偵查${DIRECTION_LABEL[direction]}側`)}
+          >
+            偵查
+          </button>
+        )}
         <button
           type="button"
           className="cross-room-action cross-room-action-primary"
