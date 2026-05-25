@@ -155,7 +155,15 @@ export function RoomPanelView({
 
       {hasEntityPayload ? (
         <div className="space-y-2 text-xs">
-          <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} learnedSkills={learnedSkills} />
+          <CrossRoomCombatPanelView
+            room={room}
+            inCombat={inCombat}
+            combat={combat}
+            canScout={canScout}
+            learnedSkills={learnedSkills}
+            selectedEntity={selectedEntity}
+            setSelectedEntity={setSelectedEntity}
+          />
           {SECTION_ORDER.map((type) => {
             if (type === 'exit') return null;
             if (type === 'monster') return null;

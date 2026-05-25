@@ -59,7 +59,10 @@ export function CrossRoomCombatPanelView({
   canScout = false,
   learnedSkills = [],
   initialLane = 'self',
+  initialCurrentTargetId = null,
   initialAdjacentTargetId = null,
+  selectedEntity = null,
+  setSelectedEntity,
 }: {
   room: RoomInfo;
   inCombat: boolean;
@@ -67,9 +70,13 @@ export function CrossRoomCombatPanelView({
   canScout?: boolean;
   learnedSkills?: LearnedSkill[];
   initialLane?: LaneId;
+  initialCurrentTargetId?: string | null;
   initialAdjacentTargetId?: string | null;
+  selectedEntity?: RoomEntity | null;
+  setSelectedEntity?: (entity: RoomEntity | null) => void;
 }) {
   const [selectedLane, setSelectedLaneState] = useState<LaneId>(initialLane);
+  const [selectedCurrentTargetId, setSelectedCurrentTargetId] = useState<string | null>(initialCurrentTargetId);
   const [selectedAdjacentTargetId, setSelectedAdjacentTargetId] = useState<string | null>(initialAdjacentTargetId);
   const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
   const roomMonsters = getRoomMonsters(room);
@@ -146,7 +153,16 @@ export function CrossRoomCombatPanelView({
 
       <div className="cross-room-detail">
         {selectedLane === 'self' ? (
-          <CurrentRoomTargets monsters={roomMonsters} payloadMonsters={currentMonsters} />
+          <CurrentRoomTargets
+            monsters={roomMonsters}
+            payloadMonsters={currentMonsters}
+            learnedSkills={learnedSkills}
+            inCombat={inCombat}
+            selectedTargetId={selectedCurrentTargetId}
+            onSelectTarget={setSelectedCurrentTargetId}
+            selectedEntity={selectedEntity}
+            setSelectedEntity={setSelectedEntity}
+          />
         ) : (
           <AdjacentRoomPreview
             direction={selectedLane}
@@ -218,39 +234,104 @@ function DirectionLane({
 function CurrentRoomTargets({
   monsters,
   payloadMonsters,
+  learnedSkills,
+  inCombat,
+  selectedTargetId,
+  onSelectTarget,
+  selectedEntity,
+  setSelectedEntity,
 }: {
   monsters: RoomEntity[];
   payloadMonsters: NearbyCombatMonsterPayload[];
+  learnedSkills: LearnedSkill[];
+  inCombat: boolean;
+  selectedTargetId: string | null;
+  onSelectTarget: (targetId: string | null) => void;
+  selectedEntity: RoomEntity | null;
+  setSelectedEntity?: (entity: RoomEntity | null) => void;
 }) {
   if (monsters.length === 0 && payloadMonsters.length === 0) {
     return <div className="cross-room-empty">本房目前沒有可見怪物。</div>;
   }
 
+  const selectedMonster = selectedEntity?.type === 'monster'
+    ? monsters.find((monster) => monster.id === selectedEntity.id) ?? null
+    : null;
+  const selectedPayloadMonster = monsters.length === 0
+    ? payloadMonsters.find((monster) => monster.id === selectedTargetId) ?? null
+    : null;
+  const selectedCurrentTarget = selectedMonster
+    ? { id: selectedMonster.id, label: selectedMonster.label }
+    : selectedPayloadMonster
+      ? { id: selectedPayloadMonster.id, label: selectedPayloadMonster.label ?? selectedPayloadMonster.name }
+      : null;
+  const selectedAttack = selectedMonster?.actions.find((action) => action.label === '攻擊' && !action.disabled);
+  const skillActions = selectedCurrentTarget ? buildCurrentRoomSkillActions(learnedSkills, selectedCurrentTarget, inCombat) : [];
+
   return (
-    <div className="cross-room-targets">
-      {monsters.slice(0, 6).map((monster) => {
-        const image = getEntityImagePath(monster);
-        const attack = monster.actions.find((action) => action.label === '攻擊');
-        return (
-          <button
-            type="button"
-            key={monster.id}
-            className="cross-room-target"
-            disabled={!attack || attack.disabled}
-            onClick={() => attack && sendCommand(attack.command, `攻擊 ${monster.label}`)}
-          >
-            {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.label.slice(0, 1)}</span>}
-            <small>{monster.label}</small>
-          </button>
-        );
-      })}
-      {monsters.length === 0 && payloadMonsters.slice(0, 6).map((monster) => (
-        <MonsterChip
-          key={monster.id}
-          monster={monster}
-          onClick={() => sendCommand(`attack ${monster.id}`, `攻擊 ${monster.label ?? monster.name}`)}
-        />
-      ))}
+    <div className="cross-room-current">
+      <div className="min-w-0">
+        <div className="cross-room-targets">
+          {monsters.slice(0, 6).map((monster) => {
+            const image = getEntityImagePath(monster);
+            return (
+              <button
+                type="button"
+                key={monster.id}
+                className={`cross-room-target ${selectedMonster?.id === monster.id ? 'cross-room-target-active' : ''}`}
+                onClick={() => {
+                  onSelectTarget(monster.id);
+                  setSelectedEntity?.(monster);
+                }}
+              >
+                {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.label.slice(0, 1)}</span>}
+                <small>{monster.label}</small>
+              </button>
+            );
+          })}
+          {monsters.length === 0 && payloadMonsters.slice(0, 6).map((monster) => (
+            <MonsterChip
+              key={monster.id}
+              monster={monster}
+              active={selectedPayloadMonster?.id === monster.id}
+              onClick={() => {
+                setSelectedEntity?.(null);
+                onSelectTarget(monster.id);
+              }}
+            />
+          ))}
+        </div>
+        {(monsters.length > 0 || payloadMonsters.length > 0) && (
+          <div className="cross-room-adjacent-note">
+            {selectedCurrentTarget ? `本房目標：${selectedCurrentTarget.label}` : '點擊怪物頭像後可選擇攻擊或單體技能。'}
+          </div>
+        )}
+      </div>
+      {selectedCurrentTarget && (
+        <div className="cross-room-actions">
+          {(selectedAttack || selectedPayloadMonster) && (
+            <button
+              type="button"
+              className="cross-room-action cross-room-action-primary"
+              title="將目標拉入戰鬥，下一 tick 普攻。"
+              onClick={() => sendCommand(selectedAttack?.command ?? `attack ${selectedCurrentTarget.id}`, `攻擊 ${selectedCurrentTarget.label}`)}
+            >
+              攻擊
+            </button>
+          )}
+          {skillActions.map((action) => (
+            <button
+              key={action.skillId}
+              type="button"
+              className="cross-room-action"
+              title={action.title}
+              onClick={() => sendCommand(action.command, action.echo)}
+            >
+              {action.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -358,6 +439,33 @@ interface AdjacentSkillAction {
   tone?: 'scout';
 }
 
+function buildCurrentRoomSkillActions(
+  learnedSkills: LearnedSkill[],
+  target: { id: string; label: string },
+  inCombat: boolean,
+): AdjacentSkillAction[] {
+  const actions: AdjacentSkillAction[] = [];
+  for (const learned of learnedSkills) {
+    const def = SKILL_DEFS[learned.skillId];
+    if (!def || def.type !== 'active') continue;
+    if (def.targetType !== 'single_enemy') continue;
+    if (def.special?.scoutDirection || def.special?.trapExit || def.special?.areaScope === 'adjacent_cardinal') continue;
+    if (inCombat) {
+      if (def.usageContext !== 'combat' && def.usageContext !== 'both') continue;
+    } else if (def.usageContext === 'field') {
+      continue;
+    }
+    actions.push({
+      skillId: def.id,
+      label: def.name,
+      command: `skill ${def.id} ${target.id}`,
+      echo: `${def.name} ${target.label}`,
+      title: def.shortDescription,
+    });
+  }
+  return actions;
+}
+
 function buildAdjacentSkillActions(
   learnedSkills: LearnedSkill[],
   direction: CardinalDirection,
@@ -446,7 +554,19 @@ export default function CrossRoomCombatPanel() {
   const inCombat = useGameStore((s) => s.inCombat);
   const combat = useGameStore((s) => s.combat);
   const learnedSkills = useGameStore((s) => s.skills);
+  const selectedEntity = useGameStore((s) => s.selectedEntity);
+  const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
   const canScout = learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
   if (!room) return null;
-  return <CrossRoomCombatPanelView room={room} inCombat={inCombat} combat={combat} canScout={canScout} learnedSkills={learnedSkills} />;
+  return (
+    <CrossRoomCombatPanelView
+      room={room}
+      inCombat={inCombat}
+      combat={combat}
+      canScout={canScout}
+      learnedSkills={learnedSkills}
+      selectedEntity={selectedEntity}
+      setSelectedEntity={setSelectedEntity}
+    />
+  );
 }

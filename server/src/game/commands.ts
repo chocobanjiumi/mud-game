@@ -1690,6 +1690,19 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
+  if (
+    usageContext === 'combat'
+    && skillDef.targetType === 'single_enemy'
+    && target
+    && world.findMonsterInRoom(char.roomId, target)
+  ) {
+    cmdAttack(session, target);
+    if (getPlayerCombatId(char.id)) {
+      cmdSkill(session, args);
+    }
+    return;
+  }
+
   if (usageContext === 'combat') {
     sendError(session.sessionId, `「${skillDef.name}」只能在戰鬥中使用。`);
     return;

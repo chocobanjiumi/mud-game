@@ -578,6 +578,13 @@ input::placeholder {
   font-size: 8px;
 }
 
+.cross-room-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .cross-room-approaching {
   display: flex;
   flex-wrap: wrap;
