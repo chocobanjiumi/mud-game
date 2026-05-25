@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_fae_ring_trickster", "category": "monster", "targetId": "fae_ring_trickster", "name": "妖光環戲法師", "outputPath": "client/public/images/monsters/monster_forest_fen_fae_ring_trickster.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_firefly_lantern_swarm", "category": "monster", "targetId": "firefly_lantern_swarm", "name": "螢燈群", "outputPath": "client/public/images/monsters/monster_forest_fen_firefly_lantern_swarm.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_forest_spider", "category": "monster", "targetId": "forest_spider", "name": "森林蜘蛛", "outputPath": "client/public/images/monsters/monster_forest_fen_forest_spider.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_forest_witch", "category": "monster", "targetId": "forest_witch", "name": "森林女巫", "outputPath": "client/public/images/monsters/monster_forest_fen_forest_witch.png", "row": 1, "column": 1 }
+  ]
+}

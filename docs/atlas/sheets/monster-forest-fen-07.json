@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_emerald_canopy_lightning_bark_shaman", "category": "monster", "targetId": "emerald_canopy_lightning_bark_shaman", "name": "雷皮巫枝者", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_lightning_bark_shaman.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_emerald_canopy_sapfall_treant", "category": "monster", "targetId": "emerald_canopy_sapfall_treant", "name": "樹脂瀑樹衛", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_sapfall_treant.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_emerald_canopy_thunder_hawk", "category": "monster", "targetId": "emerald_canopy_thunder_hawk", "name": "雷枝鷹", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_thunder_hawk.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_emerald_canopy_vine_scout", "category": "monster", "targetId": "emerald_canopy_vine_scout", "name": "藤橋斥候", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_vine_scout.png", "row": 1, "column": 1 }
+  ]
+}

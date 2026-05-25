@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_echo_wisp", "category": "monster", "targetId": "echo_wisp", "name": "回音微光", "outputPath": "client/public/images/monsters/monster_forest_fen_echo_wisp.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_elder_charwood_guardian", "category": "monster", "targetId": "elder_charwood_guardian", "name": "炭木長老守衛", "outputPath": "client/public/images/monsters/monster_forest_fen_elder_charwood_guardian.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_elder_resin_treant", "category": "monster", "targetId": "elder_resin_treant", "name": "古脂樹人", "outputPath": "client/public/images/monsters/monster_forest_fen_elder_resin_treant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_ember_carapace_beetle", "category": "monster", "targetId": "ember_carapace_beetle", "name": "燼甲蟲", "outputPath": "client/public/images/monsters/monster_forest_fen_ember_carapace_beetle.png", "row": 1, "column": 1 }
+  ]
+}

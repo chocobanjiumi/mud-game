@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_06",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_06.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_emerald_canopy_ancient_bee_swarm", "category": "monster", "targetId": "emerald_canopy_ancient_bee_swarm", "name": "古蜂群", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_ancient_bee_swarm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_emerald_canopy_birdfolk_guard", "category": "monster", "targetId": "emerald_canopy_birdfolk_guard", "name": "鳥民棲臺守衛", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_birdfolk_guard.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_emerald_canopy_glasswing_stag", "category": "monster", "targetId": "emerald_canopy_glasswing_stag", "name": "晶翼鹿冠獸", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_glasswing_stag.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_emerald_canopy_high_green_warden", "category": "monster", "targetId": "emerald_canopy_high_green_warden", "name": "高綠庭守護靈", "outputPath": "client/public/images/monsters/monster_forest_fen_emerald_canopy_high_green_warden.png", "row": 1, "column": 1 }
+  ]
+}
