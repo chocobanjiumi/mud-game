@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_succubus", "category": "monster", "targetId": "succubus", "name": "魅魔", "outputPath": "client/public/images/monsters/monster_demon_abyss_succubus.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_tide_sodden_skeleton", "category": "monster", "targetId": "tide_sodden_skeleton", "name": "潮浸骸兵", "outputPath": "client/public/images/monsters/monster_demon_abyss_tide_sodden_skeleton.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_time_splinter_stalker", "category": "monster", "targetId": "time_splinter_stalker", "name": "碎時獵手", "outputPath": "client/public/images/monsters/monster_demon_abyss_time_splinter_stalker.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_void_walker", "category": "monster", "targetId": "void_walker", "name": "虛空行者", "outputPath": "client/public/images/monsters/monster_demon_abyss_void_walker.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_plague_coffin_bearer", "category": "monster", "targetId": "plague_coffin_bearer", "name": "瘟棺抬行者", "outputPath": "client/public/images/monsters/monster_demon_abyss_plague_coffin_bearer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_rift_anchor_guardian", "category": "monster", "targetId": "rift_anchor_guardian", "name": "裂隙錨衛", "outputPath": "client/public/images/monsters/monster_demon_abyss_rift_anchor_guardian.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_shadow_demon", "category": "monster", "targetId": "shadow_demon", "name": "暗影惡魔", "outputPath": "client/public/images/monsters/monster_demon_abyss_shadow_demon.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_sluice_gargoyle", "category": "monster", "targetId": "sluice_gargoyle", "name": "水閘石像鬼", "outputPath": "client/public/images/monsters/monster_demon_abyss_sluice_gargoyle.png", "row": 1, "column": 1 }
+  ]
+}

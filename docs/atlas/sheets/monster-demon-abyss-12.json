@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_demon_abyss_12",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_war_forge_taskmaster", "category": "monster", "targetId": "war_forge_taskmaster", "name": "戰爐監工", "outputPath": "client/public/images/monsters/monster_demon_abyss_war_forge_taskmaster.png", "row": 0, "column": 0 }
+  ]
+}
