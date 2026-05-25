@@ -122,6 +122,32 @@ describe('WorldManager respawn policy', () => {
     expect(world.getApproachingMonsters('village_square')).toEqual([]);
     expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
   });
+
+  it('respawns pulled monsters in their original spawn room', () => {
+    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    expect(slime).toBeDefined();
+
+    const approaching = world.moveMonsterToApproaching(
+      'village_gate',
+      'village_square',
+      'south',
+      slime!.instanceId,
+      0,
+      'p1',
+    );
+    expect(approaching).toBeDefined();
+    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+
+    world.killMonster('village_square', slime!.instanceId);
+
+    expect(world.getMonsterInstance('village_square', slime!.instanceId)).toBeUndefined();
+    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.isDead).toBe(true);
+
+    vi.advanceTimersByTime(30_000);
+
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+  });
 });
 
 describe('room exit topology', () => {

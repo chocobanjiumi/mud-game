@@ -12,6 +12,7 @@ import { getNpcsByRoom } from '../data/npcs.js';
 export interface MonsterInstance {
   instanceId: string;
   monsterId: string;
+  originRoomId?: string;
   def: MonsterDef;
   hp: number;
   maxHp: number;
@@ -51,7 +52,9 @@ interface MoveHistoryEntry {
   reverseDirection: Direction;
 }
 
-export interface ApproachingMonsterState extends ApproachingMonsterPayload {}
+export interface ApproachingMonsterState extends ApproachingMonsterPayload {
+  originRoomId?: string;
+}
 
 // ============================================================
 //  WorldManager
@@ -289,7 +292,7 @@ export class WorldManager {
       if (!def) continue;
 
       for (let i = 0; i < sp.maxCount; i++) {
-        instances.push(this.createMonsterInstance(def));
+        instances.push(this.createMonsterInstance(def, roomId));
       }
     }
 
@@ -297,11 +300,12 @@ export class WorldManager {
   }
 
   /** 建立怪物實例 */
-  private createMonsterInstance(def: MonsterDef): MonsterInstance {
+  private createMonsterInstance(def: MonsterDef, originRoomId: string): MonsterInstance {
     this.monsterCounter++;
     return {
       instanceId: `${def.id}_${this.monsterCounter}`,
       monsterId: def.id,
+      originRoomId,
       def,
       hp: def.hp,
       maxHp: def.hp,
@@ -348,6 +352,7 @@ export class WorldManager {
       sourceDirection,
       sourceRoomId,
       destinationRoomId,
+      originRoomId: monster.originRoomId,
       arrivalTicks: Math.max(0, arrivalTicks),
       targetPlayerId,
       targetPartyId,
@@ -400,6 +405,7 @@ export class WorldManager {
     const instance: MonsterInstance = existing ?? {
       instanceId: approaching.instanceId,
       monsterId: approaching.monsterId,
+      originRoomId: approaching.originRoomId ?? approaching.sourceRoomId,
       def,
       hp: approaching.hp,
       maxHp: approaching.maxHp,
@@ -453,12 +459,23 @@ export class WorldManager {
     monster.isDead = true;
     monster.hp = 0;
 
-    const room = getRoom(roomId);
+    const respawnRoomId = monster.originRoomId || roomId;
+    if (respawnRoomId !== roomId) {
+      monsters.splice(monsters.indexOf(monster), 1);
+      const originMonsters = this.roomMonsters.get(respawnRoomId) ?? [];
+      if (!originMonsters.some(candidate => candidate.instanceId === monster.instanceId)) {
+        originMonsters.push(monster);
+      }
+      this.roomMonsters.set(respawnRoomId, originMonsters);
+    }
+
+    const room = getRoom(respawnRoomId);
     const spawnPoint = room?.monsters?.find(sp => sp.monsterId === monster.monsterId);
-    const respawnSeconds = this.getEffectiveRespawnSeconds(roomId, monster, spawnPoint);
+    const respawnSeconds = this.getEffectiveRespawnSeconds(respawnRoomId, monster, spawnPoint);
 
     monster.respawnAt = Date.now() + respawnSeconds * 1000;
     this.roomStateChangeFn?.(roomId);
+    if (respawnRoomId !== roomId) this.roomStateChangeFn?.(respawnRoomId);
   }
 
   private getEffectiveRespawnSeconds(
