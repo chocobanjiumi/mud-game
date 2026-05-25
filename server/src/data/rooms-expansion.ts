@@ -13500,10 +13500,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'obsidian_depths_forge_guard_post.png',
     imagePrompt: '熔爐守衛臺 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '熔爐守衛臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '熔爐守衛臺位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔流路因守衛臺熱壓上湧而變成單向斜坡，只能由岩漿細渠進入守衛臺。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_old_furnace', description: '守衛臺回到古代熔爐' },
-      { direction: 'south', targetRoomId: 'obsidian_depths_magma_rill', description: '熔流路回到岩漿細渠' },
       { direction: 'east', targetRoomId: 'obsidian_depths_obsidian_market', description: '棄市礦棚在東側' },
     ],
     monsters: [
@@ -13712,10 +13711,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'obsidian_depths_heart_mirror.png',
     imagePrompt: '黑曜心鏡 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑曜心鏡位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '黑曜心鏡位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。南側熔鎖通道在心鏡反光中只留下假出口，真正通道必須由熔鎖門進入。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_core_drill', description: '心鏡廳回到核心鑽井' },
-      { direction: 'south', targetRoomId: 'obsidian_depths_molten_lock', description: '熔鎖通道回到熔鎖門' },
       { direction: 'east', targetRoomId: 'obsidian_depths_worldforge_core', description: '核心裂口通往世界熔爐' },
     ],
     monsters: [
