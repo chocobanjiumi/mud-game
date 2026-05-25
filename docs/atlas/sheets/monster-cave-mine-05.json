@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_cave_mine_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_cave_mine_hollow_mountain_echo_miner_wraith", "category": "monster", "targetId": "hollow_mountain_echo_miner_wraith", "name": "回音礦工怨影", "outputPath": "client/public/images/monsters/monster_cave_mine_hollow_mountain_echo_miner_wraith.png", "row": 0, "column": 0 },
+    { "assetId": "monster_cave_mine_hollow_mountain_frost_vein_golem", "category": "monster", "targetId": "hollow_mountain_frost_vein_golem", "name": "霜脈岩傀", "outputPath": "client/public/images/monsters/monster_cave_mine_hollow_mountain_frost_vein_golem.png", "row": 0, "column": 1 },
+    { "assetId": "monster_cave_mine_hollow_mountain_heart_titan", "category": "monster", "targetId": "hollow_mountain_heart_titan", "name": "山心共鳴泰坦", "outputPath": "client/public/images/monsters/monster_cave_mine_hollow_mountain_heart_titan.png", "row": 1, "column": 0 },
+    { "assetId": "monster_cave_mine_hollow_mountain_quarry_chain_brute", "category": "monster", "targetId": "hollow_mountain_quarry_chain_brute", "name": "採石鏈役", "outputPath": "client/public/images/monsters/monster_cave_mine_hollow_mountain_quarry_chain_brute.png", "row": 1, "column": 1 }
+  ]
+}
