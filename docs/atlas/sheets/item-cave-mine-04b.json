@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_cave_mine_04b",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_cave_mine_04b.sheet.png",
+  "targets": [
+    { "assetId": "item_cave_mine_forest_fen_crystal_staff", "category": "item", "targetId": "crystal_staff", "name": "水晶法杖", "outputPath": "client/public/images/items/item_cave_mine_forest_fen_crystal_staff.png", "row": 0, "column": 0 },
+    { "assetId": "item_cave_mine_forest_fen_medium_hp_potion", "category": "item", "targetId": "medium_hp_potion", "name": "中型生命藥水", "outputPath": "client/public/images/items/item_cave_mine_forest_fen_medium_hp_potion.png", "row": 0, "column": 1 },
+    { "assetId": "item_cave_mine_ice_mountain_crystal_armor", "category": "item", "targetId": "crystal_armor", "name": "水晶鎧甲", "outputPath": "client/public/images/items/item_cave_mine_ice_mountain_crystal_armor.png", "row": 0, "column": 2 },
+    { "assetId": "item_cave_mine_ice_mountain_crystal_blade", "category": "item", "targetId": "crystal_blade", "name": "水晶之劍", "outputPath": "client/public/images/items/item_cave_mine_ice_mountain_crystal_blade.png", "row": 1, "column": 0 },
+    { "assetId": "item_cave_mine_ice_mountain_frost_greataxe", "category": "item", "targetId": "frost_greataxe", "name": "霜巨人的戰斧", "outputPath": "client/public/images/items/item_cave_mine_ice_mountain_frost_greataxe.png", "row": 1, "column": 1 },
+    { "assetId": "item_cave_mine_low_wilds_apprentice_staff", "category": "item", "targetId": "apprentice_staff", "name": "學徒法杖", "outputPath": "client/public/images/items/item_cave_mine_low_wilds_apprentice_staff.png", "row": 1, "column": 2 },
+    { "assetId": "item_cave_mine_low_wilds_naturestaff_crystal", "category": "item", "targetId": "naturestaff_crystal", "name": "翡翠自然杖", "outputPath": "client/public/images/items/item_cave_mine_low_wilds_naturestaff_crystal.png", "row": 2, "column": 0 },
+    { "assetId": "item_cave_mine_low_wilds_smoke_bomb", "category": "item", "targetId": "smoke_bomb", "name": "煙霧彈", "outputPath": "client/public/images/items/item_cave_mine_low_wilds_smoke_bomb.png", "row": 2, "column": 1 },
+    { "assetId": "item_cave_mine_low_wilds_throwing_knife", "category": "item", "targetId": "throwing_knife", "name": "投擲短刀", "outputPath": "client/public/images/items/item_cave_mine_low_wilds_throwing_knife.png", "row": 2, "column": 2 }
+  ]
+}
