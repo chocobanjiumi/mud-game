@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_cloudbridge_raider", "category": "monster", "targetId": "cloudbridge_raider", "name": "雲橋掠風者", "outputPath": "client/public/images/monsters/monster_ice_mountain_cloudbridge_raider.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_cloudsilver_kite", "category": "monster", "targetId": "cloudsilver_kite", "name": "雲銀風鳶", "outputPath": "client/public/images/monsters/monster_ice_mountain_cloudsilver_kite.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_frost_giant", "category": "monster", "targetId": "frost_giant", "name": "霜巨人", "outputPath": "client/public/images/monsters/monster_ice_mountain_frost_giant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_frost_giant_king", "category": "monster", "targetId": "frost_giant_king", "name": "霜巨人王", "outputPath": "client/public/images/monsters/monster_ice_mountain_frost_giant_king.png", "row": 1, "column": 1 }
+  ]
+}

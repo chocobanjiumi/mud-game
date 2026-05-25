@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_03",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_frost_herb_witch", "category": "monster", "targetId": "frost_herb_witch", "name": "霜草巫女", "outputPath": "client/public/images/monsters/monster_ice_mountain_frost_herb_witch.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostbite_blue_ice_lizard", "category": "monster", "targetId": "frostbite_blue_ice_lizard", "name": "藍冰裂蜥", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_blue_ice_lizard.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_frostbite_buried_caravan_wight", "category": "monster", "targetId": "frostbite_buried_caravan_wight", "name": "埋雪商隊怨影", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_buried_caravan_wight.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostbite_crystal_fir_lurker", "category": "monster", "targetId": "frostbite_crystal_fir_lurker", "name": "晶松伏行者", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_crystal_fir_lurker.png", "row": 1, "column": 1 }
+  ]
+}

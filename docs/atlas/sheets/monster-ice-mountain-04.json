@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_04",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_frostbite_dragonbreath_whelp", "category": "monster", "targetId": "frostbite_dragonbreath_whelp", "name": "龍息冰棚幼龍", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_dragonbreath_whelp.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostbite_giant_pathbreaker", "category": "monster", "targetId": "frostbite_giant_pathbreaker", "name": "霜巨開路者", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_giant_pathbreaker.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_frostbite_glacier_golem", "category": "monster", "targetId": "frostbite_glacier_golem", "name": "冰河裂心魔像", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_glacier_golem.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostbite_polar_gate_colossus", "category": "monster", "targetId": "frostbite_polar_gate_colossus", "name": "極北封門巨像", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_polar_gate_colossus.png", "row": 1, "column": 1 }
+  ]
+}

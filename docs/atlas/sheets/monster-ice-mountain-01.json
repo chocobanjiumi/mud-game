@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_altar_gale_singer", "category": "monster", "targetId": "altar_gale_singer", "name": "風壇詠風者", "outputPath": "client/public/images/monsters/monster_ice_mountain_altar_gale_singer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_ascendant_drake", "category": "monster", "targetId": "ascendant_drake", "name": "升天橋雷龍", "outputPath": "client/public/images/monsters/monster_ice_mountain_ascendant_drake.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_avalanche_yeti", "category": "monster", "targetId": "avalanche_yeti", "name": "雪崩雪人", "outputPath": "client/public/images/monsters/monster_ice_mountain_avalanche_yeti.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_basalt_storm_colossus", "category": "monster", "targetId": "basalt_storm_colossus", "name": "玄武風暴巨像", "outputPath": "client/public/images/monsters/monster_ice_mountain_basalt_storm_colossus.png", "row": 1, "column": 1 }
+  ]
+}
