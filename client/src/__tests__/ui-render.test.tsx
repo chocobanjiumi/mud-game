@@ -2,6 +2,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
 import type { Character, CombatantState, RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
+import { CharacterSelectScreenView } from '../components/CharacterSelectScreen';
 import SkillTablePage from '../components/SkillTablePage';
 import { SkillLearnedModalView } from '../components/SkillLearnedModal';
 import { DeathNoticeModalView } from '../components/DeathNoticeModal';
@@ -107,6 +108,7 @@ beforeEach(() => {
     gold: 0,
     showInventory: false,
     character: null,
+    characterList: [],
   });
 });
 
@@ -116,6 +118,35 @@ describe('key UI component rendering', () => {
     expect(html).toContain('建立角色');
     expect(html).toContain('初始職業');
     expect(html).toContain('角色預覽');
+  });
+
+  it('renders character selection slots', () => {
+    const html = renderToStaticMarkup(
+      <CharacterSelectScreenView
+        characters={[{
+          id: 'char-warrior',
+          name: '測試戰士',
+          level: 7,
+          classId: 'swordsman',
+          raceId: 'human',
+          genderId: 'undisclosed',
+          faithId: 'aelora',
+          hp: 88,
+          maxHp: 100,
+          roomId: 'village_square',
+          gold: 123,
+          lastLogin: 1710000000000,
+        }]}
+        connection="connected"
+        onSelect={() => undefined}
+        onCreate={() => undefined}
+      />,
+    );
+
+    expect(html).toContain('選擇角色');
+    expect(html).toContain('測試戰士');
+    expect(html).toContain('Lv.7');
+    expect(html).toContain('空角色欄位');
   });
 
   it('renders the skill acquisition table', () => {

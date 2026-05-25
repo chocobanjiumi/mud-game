@@ -3,6 +3,7 @@ import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from './stores/gameStore';
 import { useWebSocket } from './hooks/useWebSocket';
 import LoginScreen from './components/LoginScreen';
+import CharacterSelectScreen from './components/CharacterSelectScreen';
 import CreateCharacterScreen from './components/CreateCharacterScreen';
 import GameScreen from './components/GameScreen';
 import SkillTablePage from './components/SkillTablePage';
@@ -24,7 +25,7 @@ export default function App() {
   }
 
   const screen = useGameStore((s) => s.screen);
-  const { sendCommand, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
+  const { sendCommand, login, selectCharacter, listCharacters, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
@@ -81,15 +82,34 @@ export default function App() {
       }
       sendCommand(command);
     },
-    [sendCommand, createCharacter],
+    [sendCommand],
   );
+
+  const handleReturnToCharacters = useCallback(() => {
+    useGameStore.getState().clearGameSessionForCharacterSelect();
+    listCharacters();
+  }, [listCharacters]);
 
   if (screen === 'login') {
     return <LoginScreen onLogin={handleLogin} />;
   }
 
+  if (screen === 'characters') {
+    return (
+      <CharacterSelectScreen
+        onSelect={selectCharacter}
+        onCreate={() => useGameStore.getState().setScreen('create')}
+      />
+    );
+  }
+
   if (screen === 'create') {
-    return <CreateCharacterScreen onCreate={(payload: CreateCharacterPayload) => createCharacter(payload)} />;
+    return (
+      <CreateCharacterScreen
+        onCreate={(payload: CreateCharacterPayload) => createCharacter(payload)}
+        onBackToCharacters={() => useGameStore.getState().setScreen('characters')}
+      />
+    );
   }
 
   return (
@@ -99,6 +119,7 @@ export default function App() {
       onPurchase={sendPurchase}
       onGetTransactions={sendGetTransactions}
       onSendChat={sendChat}
+      onReturnToCharacters={handleReturnToCharacters}
     />
   );
 }

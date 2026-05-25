@@ -54,6 +54,18 @@ export function bindCharacter(sessionId: string, characterId: string, userId: st
   console.log(`[WS] 角色綁定: ${sessionId} → ${characterId}`);
 }
 
+/** 解除連線目前綁定的角色，保留已驗證的使用者身分 */
+export function unbindCharacter(sessionId: string): string | null {
+  const session = sessions.get(sessionId);
+  if (!session?.characterId) return null;
+
+  const characterId = session.characterId;
+  characterSessions.delete(characterId);
+  session.characterId = null;
+  console.log(`[WS] 角色解除綁定: ${sessionId} → ${characterId}`);
+  return characterId;
+}
+
 /** 移除連線 */
 export function removeSession(sessionId: string): void {
   const session = sessions.get(sessionId);

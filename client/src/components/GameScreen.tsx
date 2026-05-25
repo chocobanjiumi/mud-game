@@ -31,9 +31,10 @@ interface GameScreenProps {
   onPurchase: (itemId: string) => void;
   onGetTransactions: () => void;
   onSendChat: (channel: ChatChannel, message: string) => void;
+  onReturnToCharacters: () => void;
 }
 
-export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTransactions, onSendChat }: GameScreenProps) {
+export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTransactions, onSendChat, onReturnToCharacters }: GameScreenProps) {
   const connection = useGameStore((s) => s.connection);
   const showInventory = useGameStore((s) => s.showInventory);
   const showParty = useGameStore((s) => s.showParty);
@@ -187,6 +188,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="排行榜" shortcut="L" active={leaderboardOpen} onClick={toggleLeaderboard} />
             <QuickButton label="世界地圖" shortcut="M" active={worldMapOpen} onClick={openWorldMap} />
             <QuickButton label="商店" shortcut="B" onClick={onOpenShop} />
+            <QuickButton label="返回角色選擇" onClick={onReturnToCharacters} />
             <QuickButton label="查看" onClick={() => onCommand('look', '查看四周')} />
             <QuickButton label="狀態" onClick={() => onCommand('status', '查看狀態')} />
             <QuickButton label="地圖" onClick={() => onCommand('map', '查看地圖')} />

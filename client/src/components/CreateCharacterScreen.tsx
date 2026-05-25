@@ -18,6 +18,7 @@ import {
 
 interface CreateCharacterScreenProps {
   onCreate: (payload: CreateCharacterPayload) => void;
+  onBackToCharacters?: () => void;
 }
 
 const statLabels = {
@@ -49,7 +50,7 @@ const resourceLabels = {
   faith: '信仰',
 };
 
-export default function CreateCharacterScreen({ onCreate }: CreateCharacterScreenProps) {
+export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: CreateCharacterScreenProps) {
   const [name, setName] = useState('');
   const [raceId, setRaceId] = useState<RaceId>(DEFAULT_RACE_ID);
   const [genderId, setGenderId] = useState<GenderId>(DEFAULT_GENDER_ID);
@@ -96,9 +97,20 @@ export default function CreateCharacterScreen({ onCreate }: CreateCharacterScree
   return (
     <div className="h-full overflow-y-auto bg-bg-primary scanline text-text-bright">
       <div className="mx-auto flex min-h-full w-full max-w-6xl flex-col gap-5 px-4 py-5 lg:px-6">
-        <header className="flex flex-col gap-1 border-b border-border-dim pb-4">
-          <h1 className="text-2xl font-bold text-text-terminal text-glow">建立角色</h1>
-          <div className="text-sm text-text-dim">選擇出身、稱謂、初始職業與信仰後進入世界。</div>
+        <header className="flex flex-col gap-3 border-b border-border-dim pb-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="text-2xl font-bold text-text-terminal text-glow">建立角色</h1>
+            <div className="text-sm text-text-dim">選擇出身、稱謂、初始職業與信仰後進入世界。</div>
+          </div>
+          {onBackToCharacters && (
+            <button
+              type="button"
+              onClick={onBackToCharacters}
+              className="rounded border border-border-dim bg-bg-secondary px-3 py-2 text-xs text-text-dim transition-colors hover:border-border-glow hover:text-text-bright"
+            >
+              返回角色選擇
+            </button>
+          )}
         </header>
 
         <form onSubmit={handleSubmit} className="grid flex-1 gap-5 lg:grid-cols-[minmax(0,1.45fr)_minmax(320px,0.75fr)]">

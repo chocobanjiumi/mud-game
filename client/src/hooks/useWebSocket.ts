@@ -21,6 +21,7 @@ import type {
   TransactionHistoryPayload,
   BalanceUpdatePayload,
   LeaderboardDataPayload,
+  CharacterListPayload,
   Character,
   CreateCharacterPayload,
   LearnedSkill,
@@ -181,16 +182,10 @@ export function useWebSocket() {
       }
 
       case 'character_list': {
-        const chars = p.characters as { id: string; name: string }[] | undefined;
-        if (chars && chars.length > 0) {
-          // 自動登入第一個角色，並更新儲存的憑證
-          if (storedCredentialsRef.current) {
-            storedCredentialsRef.current.characterId = chars[0].id;
-          }
-          send({ type: 'login', payload: { userId: chars[0].name, characterId: chars[0].id } });
-        } else {
-          s.setScreen('create');
-        }
+        const data = p as unknown as CharacterListPayload;
+        s.setCharacterList(data.characters ?? []);
+        s.clearGameSessionForCharacterSelect();
+        s.addTerminalLine((data.message as string | undefined) ?? '請選擇一個角色。', 'system');
         break;
       }
 
@@ -591,6 +586,36 @@ export function useWebSocket() {
     [send],
   );
 
+  const selectCharacter = useCallback(
+    (characterId: string) => {
+      const creds = storedCredentialsRef.current;
+      if (!creds) {
+        store.getState().addTerminalLine('[錯誤] 缺少登入資訊，請重新登入。', 'error');
+        store.getState().setScreen('login');
+        return;
+      }
+
+      storedCredentialsRef.current = { ...creds, characterId };
+      send({
+        type: 'login',
+        payload: {
+          userId: creds.userId,
+          characterId,
+          accessToken: creds.accessToken,
+        },
+      });
+    },
+    [send, store],
+  );
+
+  const listCharacters = useCallback(() => {
+    const creds = storedCredentialsRef.current;
+    if (creds) {
+      storedCredentialsRef.current = { ...creds, characterId: undefined };
+    }
+    send({ type: 'list_characters' });
+  }, [send]);
+
   const createCharacter = useCallback(
     (payload: CreateCharacterPayload) => {
       send({ type: 'create_character', payload });
@@ -667,5 +692,5 @@ export function useWebSocket() {
     return () => window.removeEventListener('leaderboard-request', handler);
   }, [sendLeaderboardRequest]);
 
-  return { send, sendCommand, connect, disconnect, login, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
+  return { send, sendCommand, connect, disconnect, login, selectCharacter, listCharacters, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
 }

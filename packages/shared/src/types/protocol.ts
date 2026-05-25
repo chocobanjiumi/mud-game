@@ -18,6 +18,7 @@ export interface CreateCharacterPayload extends CharacterOriginSelection {
 export type ClientMessage =
   | { type: 'command'; payload: string }
   | { type: 'login'; payload: { userId: string; characterId?: string; accessToken?: string } }
+  | { type: 'list_characters' }
   | { type: 'create_character'; payload: CreateCharacterPayload }
   | { type: 'ping' }
   | { type: 'open_shop' }
@@ -40,6 +41,13 @@ export interface ServerMessage {
   type: ServerMessageType;
   payload: Record<string, unknown>;
   timestamp: number;
+}
+
+export type CharacterListItemPayload = Pick<Character, 'id' | 'name' | 'level' | 'classId' | 'raceId' | 'genderId' | 'faithId' | 'hp' | 'maxHp' | 'roomId' | 'gold' | 'lastLogin'>;
+
+export interface CharacterListPayload {
+  characters: CharacterListItemPayload[];
+  message: string;
 }
 
 // Specific server message payloads

@@ -25,6 +25,7 @@ import type {
   LocalMapPayload,
   NpcDialoguePayload,
   NearbyCombatPayload,
+  CharacterListItemPayload,
   CardinalDirection,
 } from '@game/shared';
 
@@ -213,7 +214,7 @@ export type ConnectionState = 'disconnected' | 'connecting' | 'connected';
 
 // --- Screen state ---
 
-export type Screen = 'login' | 'create' | 'game';
+export type Screen = 'login' | 'characters' | 'create' | 'game';
 
 // --- Main store ---
 
@@ -234,6 +235,9 @@ export interface GameState {
   // Character
   character: Character | null;
   setCharacter: (character: Character | null) => void;
+  characterList: CharacterListItemPayload[];
+  setCharacterList: (characters: CharacterListItemPayload[]) => void;
+  clearGameSessionForCharacterSelect: () => void;
   derivedStats: DerivedStats | null;
   setDerivedStats: (stats: DerivedStats | null) => void;
   expToNext: number;
@@ -410,6 +414,41 @@ export const useGameStore = create<GameState>((set) => ({
   // Character
   character: null,
   setCharacter: (character) => set({ character }),
+  characterList: [],
+  setCharacterList: (characterList) => set({ characterList }),
+  clearGameSessionForCharacterSelect: () =>
+    set({
+      screen: 'characters',
+      character: null,
+      derivedStats: null,
+      expToNext: 0,
+      activeEffects: [],
+      room: null,
+      selectedEntity: null,
+      npcDialogue: null,
+      combat: null,
+      inCombat: false,
+      selectedCombatTargetId: null,
+      selectedCrossRoomDirection: null,
+      inventory: [],
+      equipment: null,
+      skills: [],
+      aliases: {},
+      party: [],
+      partyLeaderId: null,
+      mapData: null,
+      showInventory: false,
+      showParty: false,
+      questLogOpen: false,
+      characterSheetOpen: false,
+      chatPanelOpen: false,
+      leaderboardOpen: false,
+      worldMapOpen: false,
+      shopOpen: false,
+      selectedItem: null,
+      purchaseLoading: false,
+      deathNotice: null,
+    }),
   derivedStats: null,
   setDerivedStats: (derivedStats) => set({ derivedStats }),
   expToNext: 0,

@@ -5,7 +5,7 @@ import type { ClientMessage, CreateCharacterPayload, ShopItem, ShopCategory, Sho
 import type { WsSession } from './handler.js';
 import {
   sendToSession, sendError, sendSystem, updatePing,
-  bindCharacter, getSession,
+  bindCharacter, unbindCharacter, getSession,
 } from './handler.js';
 import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
@@ -133,6 +133,10 @@ export function handleMessage(session: WsSession, raw: string): void {
       });
       break;
 
+    case 'list_characters':
+      handleListCharacters(session);
+      break;
+
     case 'create_character':
       handleCreateCharacter(session, message.payload);
       break;
@@ -242,6 +246,9 @@ async function handleLogin(
       return;
     }
 
+    if (session.characterId && session.characterId !== character.id) {
+      world.removePlayer(session.characterId);
+    }
     bindCharacter(session.sessionId, character.id, verifiedUserId);
     world.placePlayer(character.id, character.roomId);
     sendToSession(session.sessionId, 'login_success', {
@@ -274,26 +281,30 @@ async function handleLogin(
     }
   }
 
-  if (characters.length === 1) {
-    // 只有一個角色，直接登入
-    const character = characters[0];
-    bindCharacter(session.sessionId, character.id, verifiedUserId);
-    world.placePlayer(character.id, character.roomId);
-    sendToSession(session.sessionId, 'login_success', {
-      character,
-      message: `歡迎回來，${character.name}！`,
-    });
-    handleCommand(session, 'look');
-    handleCommand(session, 'status');
-    return;
-  }
+  sendCharacterList(session, verifiedUserId);
+}
 
+function sendCharacterList(session: WsSession, userId: string): void {
+  const characters = getCharactersByUserId(userId);
   sendToSession(session.sessionId, 'character_list', {
     characters,
     message: characters.length > 0
       ? '請選擇一個角色，或建立新角色。'
       : '你還沒有角色，請建立一個新角色。',
   });
+}
+
+function handleListCharacters(session: WsSession): void {
+  if (!session.userId) {
+    sendError(session.sessionId, '請先登入。');
+    return;
+  }
+
+  const currentCharacterId = unbindCharacter(session.sessionId);
+  if (currentCharacterId) {
+    world.removePlayer(currentCharacterId);
+  }
+  sendCharacterList(session, session.userId);
 }
 
 /** 處理建立角色 */
@@ -347,6 +358,9 @@ function handleCreateCharacter(
       faithId: payload.faithId,
       classId: payload.classId,
     });
+    if (session.characterId && session.characterId !== character.id) {
+      world.removePlayer(session.characterId);
+    }
     bindCharacter(session.sessionId, character.id, userId);
     world.placePlayer(character.id, character.roomId);
 
