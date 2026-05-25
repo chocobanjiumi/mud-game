@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_kingdom_war_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_poison_bloom_matron", "category": "monster", "targetId": "poison_bloom_matron", "name": "毒花床母株", "outputPath": "client/public/images/monsters/monster_kingdom_war_poison_bloom_matron.png", "row": 0, "column": 0 },
+    { "assetId": "monster_kingdom_war_prison_chain_jailer", "category": "monster", "targetId": "prison_chain_jailer", "name": "囚牢鎖衛", "outputPath": "client/public/images/monsters/monster_kingdom_war_prison_chain_jailer.png", "row": 0, "column": 1 },
+    { "assetId": "monster_kingdom_war_quartermaster_renegade", "category": "monster", "targetId": "quartermaster_renegade", "name": "叛逃軍需兵", "outputPath": "client/public/images/monsters/monster_kingdom_war_quartermaster_renegade.png", "row": 1, "column": 0 },
+    { "assetId": "monster_kingdom_war_redthorn_briarling", "category": "monster", "targetId": "redthorn_briarling", "name": "紅刺棘靈", "outputPath": "client/public/images/monsters/monster_kingdom_war_redthorn_briarling.png", "row": 1, "column": 1 }
+  ]
+}

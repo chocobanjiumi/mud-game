@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_kingdom_war_12",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_thornwood_gamekeeper", "category": "monster", "targetId": "thornwood_gamekeeper", "name": "棘林失控獵監", "outputPath": "client/public/images/monsters/monster_kingdom_war_thornwood_gamekeeper.png", "row": 0, "column": 0 }
+  ]
+}
