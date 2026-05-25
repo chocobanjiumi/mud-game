@@ -2108,10 +2108,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '令人窒息的財富堆積如山——金幣、寶石、魔法武器、王冠和聖物混雜在一起，' +
       '形成一座閃閃發光的小丘。這是龍族數千年來從各個王國掠奪並收藏的寶藏。' +
-      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。寶庫頂端並非單純堆放財物，而是依照年代與王國紋章分層排列，像一座由戰利品寫成的歷史塔。牆面有風暴巨龍留下的焦黑爪痕，地板則埋著感應重量的龍語符文，只要光線折射角度改變，守衛就會立刻察覺。寶山後方的石門散發鍛火藍光，顯示部分寶物會被重新鑄造成聖殿防具。',
+      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。寶庫頂端並非單純堆放財物，而是依照年代與王國紋章分層排列，像一座由戰利品寫成的歷史塔。牆面有風暴巨龍留下的焦黑爪痕，地板則埋著感應重量的龍語符文，只要光線折射角度改變，守衛就會立刻察覺。寶山後方的石門散發鍛火藍光，但龍語封印已經閉合，需回古龍巢穴走龍牙石階前往鍛台。',
     exits: [
       { direction: 'west', targetRoomId: 'ancient_dragon_lair', description: '回到古龍巢穴' },
-      { direction: 'north', targetRoomId: 'dragon_scale_forge', description: '寶山後方有鑄鱗石門' },
     ],
     monsters: [
       { monsterId: 'storm_dragon', maxCount: 1, respawnSeconds: 1800 },
@@ -2394,11 +2393,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'dragon_oracle_perch.png',
     imagePrompt: '龍諭棲台 in dragon_valley, high oracle perch with star maps, hanging crystal lenses, storm-lit clouds and ancient dragon runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain crystal, clear lantern light',
     description:
-      '風暴之巔東側的棲台懸在雲海之上，周圍吊著數十片水晶透鏡，會隨風轉動並投射星圖。龍族祭司曾在此聆聽古龍夢境，把預言刻在弧形石座後方。許多刻痕已被雷火熔成模糊光帶，但仍能辨認出魔族要塞、深淵裂隙與一顆墜落星辰的圖案。這裡是任務線索與大型事件鉤子的理想節點，也會吸引守護預言的龍騎士。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '風暴之巔東側的棲台懸在雲海之上，周圍吊著數十片水晶透鏡，會隨風轉動並投射星圖。龍族祭司曾在此聆聽古龍夢境，把預言刻在弧形石座後方。許多刻痕已被雷火熔成模糊光帶，但仍能辨認出魔族要塞、深淵裂隙與一顆墜落星辰的圖案；北側星圖指向墜星坑，但高空裂隙不可通行，需回古龍聖殿北門。這裡是任務線索與大型事件鉤子的理想節點，也會吸引守護預言的龍騎士。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_peak', description: '回到風暴之巔' },
       { direction: 'south', targetRoomId: 'dragon_fireglass_terrace', description: '星光階梯下到火玻璃台' },
-      { direction: 'north', targetRoomId: 'dragon_starfall_crater', description: '預言圖案指向墜星坑' },
     ],
     monsters: [
       { monsterId: 'dragon_knight', maxCount: 2, respawnSeconds: 80 },
@@ -2451,10 +2449,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'dragon_scale_forge.png',
     imagePrompt: '龍鱗鍛台 in dragon_valley, sacred forge built from dragon bones and crystal anvils, scale armor pieces, blue fire and hoard gate, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain crystal, clear lantern light',
     description:
-      '古龍巢穴北側的石階通往龍鱗鍛台，這裡沒有普通鐵匠爐，只有嵌在龍骨中的藍色火焰與水晶砧。龍族會把自然脫落的鱗片、斷角與星砂放在砧上，鍛造成守護聖殿的甲片與符刃。牆面掛著半成品龍鱗甲，每一片都記錄著原主的元素氣息。鍛台同時連著寶庫與古龍聖殿，是資源、裝備與任務獎勵的交會點。砧台下方有古龍親自留下的鍛造誓言，要求使用者不得以屠龍所得換取力量。水晶砧旁還保存著多份未完成配方，可延伸後續裝備任務。藍火會辨認材料來源，讓貪婪者只得到一團冷灰。',
+      '古龍巢穴北側的石階通往龍鱗鍛台，這裡沒有普通鐵匠爐，只有嵌在龍骨中的藍色火焰與水晶砧。龍族會把自然脫落的鱗片、斷角與星砂放在砧上，鍛造成守護聖殿的甲片與符刃。牆面掛著半成品龍鱗甲，每一片都記錄著原主的元素氣息。東側可感到寶庫金光，但鑄鱗石門只留下封印紋，實際需回古龍巢穴再進寶庫；鍛台仍與古龍聖殿相連，是資源、裝備與任務獎勵的交會點。砧台下方有古龍親自留下的鍛造誓言，要求使用者不得以屠龍所得換取力量。水晶砧旁還保存著多份未完成配方，可延伸後續裝備任務。藍火會辨認材料來源，讓貪婪者只得到一團冷灰。',
     exits: [
       { direction: 'south', targetRoomId: 'ancient_dragon_lair', description: '龍牙階梯回到古龍巢穴' },
-      { direction: 'east', targetRoomId: 'dragon_hoard', description: '鑄鱗石門通往龍之寶庫' },
       { direction: 'west', targetRoomId: 'elder_dragon_sanctum', description: '側殿回到古龍聖殿' },
     ],
     monsters: [
@@ -2510,10 +2507,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'dragon_starfall_crater.png',
     imagePrompt: '墜星坑 in dragon_valley, glowing meteor crater north of elder dragon sanctum, star metal shards, dragon runes, purple abyss cracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '古龍聖殿北門外的山脊被一顆遠古星辰砸出圓形巨坑，坑底仍散發銀藍色微光。星鐵碎片嵌在岩層中，周圍刻滿龍族封印符號，防止天外力量滲入地脈。近年封印邊緣開始出現紫黑裂紋，與聖殿地板下通往深淵的裂隙互相呼應。這裡是龍谷的大型事件鉤子，能把古龍預言、星界材料與深淵危機串在一起。',
+      '古龍聖殿北門外的山脊被一顆遠古星辰砸出圓形巨坑，坑底仍散發銀藍色微光。星鐵碎片嵌在岩層中，周圍刻滿龍族封印符號，防止天外力量滲入地脈。西側星圖光帶能對應龍諭棲台，但坑壁斷裂無法直接橫越，需回古龍聖殿與風暴之巔路線。近年封印邊緣開始出現紫黑裂紋，與聖殿地板下通往深淵的裂隙互相呼應。這裡是龍谷的大型事件鉤子，能把古龍預言、星界材料與深淵危機串在一起。',
     exits: [
       { direction: 'south', targetRoomId: 'elder_dragon_sanctum', description: '沿封印石階回到古龍聖殿' },
-      { direction: 'west', targetRoomId: 'dragon_oracle_perch', description: '星圖小徑折向龍諭棲台' },
     ],
     monsters: [
       { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
