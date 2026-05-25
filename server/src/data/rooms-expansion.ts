@@ -21594,10 +21594,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'kingsroad_market_pack_animal_ring.png',
     imagePrompt: '馱獸圈 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '馱獸圈位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '馱獸圈位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。南側酒館門前的人潮被馱獸欄門隔開，只能從酒館門前東側進入馱獸圈。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_tavern_front', description: '回到酒館門前' },
       { direction: 'north', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '路神小祠在北側' },
     ],
     monsters: [],
@@ -21666,10 +21665,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'kingsroad_market_high_balcony.png',
     imagePrompt: '市集高看台 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '市集高看台位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '市集高看台位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。東側後巷帳本處的窄梯從高看台這端被貨箱堵住，只能由後巷帳本處上行進入。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_auction_tent', description: '回到拍賣帳棚' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '回到後巷帳本處' },
     ],
     monsters: [],
     mapSymbol: '[台]',
