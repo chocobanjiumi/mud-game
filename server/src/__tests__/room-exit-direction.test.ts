@@ -34,16 +34,16 @@ describe('room exit direction audit', () => {
     );
   });
 
-  it('lists non-reverse A-B-A direction cycles for the known volcano case', () => {
+  it('lists non-reverse A-B-A direction cycles for a known pending case', () => {
     const candidates = findTwoStepDirectionCycleCandidates(ROOMS, ZONES);
 
     expect(candidates).toContainEqual(
       expect.objectContaining({
-        zoneId: 'volcano_zone',
-        roomAId: 'volcano_obsidian_quarry',
-        dir1: 'east',
-        roomBId: 'volcano_crystal_vent',
-        dir2: 'south',
+        zoneId: 'abandoned_mines',
+        roomAId: 'abandoned_mines_foreman_office',
+        dir1: 'north',
+        roomBId: 'abandoned_mines_old_smelter',
+        dir2: 'north',
         isLegalReverse: false,
       }),
     );

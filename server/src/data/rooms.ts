@@ -3631,11 +3631,10 @@ export const ROOMS: Record<string, RoomDef> = {
       '礦車軌道沿著支撐木架延伸向黑暗的深處，空氣中混雜著鐵鏽、汗水和地底礦物的氣味。' +
       '身材矮壯的矮人守衛全副武裝地巡邏著，鏽鐵色的鬍鬚上沾著礦粉，銳利的眼神審視著每一個闖入者。' +
       '礦壁上閃爍著銀、銅和秘銀的光澤，這些珍貴的礦脈是矮人一族賴以生存的根基。' +
-      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。東側可聽見蒸汽升降梯齒輪聲，但實際需從下層採場或熔岩橋維修階繞行。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_base', description: '回到火山山腳' },
       { direction: 'south', targetRoomId: 'forge_hall', description: '礦道深處通往鍛造大廳' },
-      { direction: 'east', targetRoomId: 'volcano_steam_lift', description: '蒸汽升降梯在礦坑東側' },
     ],
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
@@ -3741,11 +3740,10 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_lava_bridge.png',
     imagePrompt: '熔岩橋 in volcano_zone, dangerous route room with narrow basalt bridge over lava lake, heat shimmer and falling sparks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端有通往蒸汽升降梯的維修階。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_ash_field', description: '回到火山灰原' },
       { direction: 'east', targetRoomId: 'volcano_crater', description: '橋尾接火山口邊緣' },
-      { direction: 'south', targetRoomId: 'volcano_steam_lift', description: '維修階通往蒸汽升降梯' },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 45 },
@@ -3763,10 +3761,8 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_steam_lift.png',
     imagePrompt: '蒸汽升降梯 in volcano_zone, traffic resource room with dwarf lift platform, brass gears, steam pipes and red mine light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西面維修階連熔岩橋，東側可回矮人礦坑，南方通向黑曜石採場。玩家可 inspect 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。',
+      '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西側管線通往熔岩橋但維修階已坍塌，東側能聽見礦坑敲擊聲但門軌卡死，南方通向黑曜石採場。玩家可 inspect 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。',
     exits: [
-      { direction: 'west', targetRoomId: 'volcano_lava_bridge', description: '維修階回熔岩橋' },
-      { direction: 'east', targetRoomId: 'dwarf_mine', description: '升降梯門通回矮人礦坑' },
       { direction: 'south', targetRoomId: 'volcano_obsidian_quarry', description: '下層軌道通往黑曜石採場' },
     ],
     monsters: [
@@ -3806,11 +3802,10 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ember_barracks.png',
     imagePrompt: '餘燼兵房 in volcano_zone, elite combat dwarf barracks with iron bunks, ember braziers, weapon racks and smoky red light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'west', targetRoomId: 'dwarf_mine', description: '走廊回到矮人礦坑' },
       { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '貨道通往鍛造庫房' },
-      { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '晶光從東側噴氣口透出' },
     ],
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
@@ -3827,11 +3822,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_crystal_vent.png',
     imagePrompt: '火晶噴氣口 in volcano_zone, resource combat vent with red crystals, steam jets, magma river glow and fractured basalt, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain river, clear lantern light',
     description:
-      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側通餘燼兵房，南邊有通往採場的黑石路。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側能聽見餘燼兵房的鐵門聲但岩壁封死，南邊黑石路只留下通往採場的舊標記，實際需從黑曜石洞或升降梯繞行。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'magma_river', description: '裂縫回到岩漿河' },
-      { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '黑鐵門通往餘燼兵房' },
-      { direction: 'south', targetRoomId: 'volcano_obsidian_quarry', description: '黑石路通往採場' },
     ],
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 35 },
@@ -3854,11 +3847,10 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_obsidian_quarry.png',
     imagePrompt: '黑曜石採場 in volcano_zone, resource combat quarry with black glass terraces, mine carts, red seams and golem silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴但採場邊坡已崩落。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_cave', description: '採場入口回黑曜石洞' },
       { direction: 'north', targetRoomId: 'volcano_steam_lift', description: '軌道通往蒸汽升降梯' },
-      { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '晶光路標指向噴氣口' },
     ],
     monsters: [
       { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
