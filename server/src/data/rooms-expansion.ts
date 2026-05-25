@@ -5120,11 +5120,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_mines_foreman_office.png',
     imagePrompt: '工頭辦公室 in abandoned_mines, ruined foreman office with desk, ledgers, mine maps, locked cabinet and dusty lamp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '遺物坑上方的木梯通向一間嵌在岩壁裡的小辦公室，桌面散著礦道圖、薪資帳本和幾封未寄出的事故報告。牆上掛著舊班表，最後一日的名字被墨水塗黑，抽屜裡還留著工頭匆忙收起的礦核樣本標籤。門邊安全燈早已熄滅，卻仍聞得到油煙味。鎖櫃上有新的撬痕，地板灰塵被拖出一道痕跡，像有人在礦坑荒廢後又回來翻找過證據。這裡是礦坑任務核心房，玩家可調查事故原因、找出失蹤礦工名冊，也能打開通往火藥室的鎖門。若仔細比對圖紙與班表，還能知道哪些支道在事故當晚被臨時封鎖。',
+      '遺物坑上方的木梯通向一間嵌在岩壁裡的小辦公室，桌面散著礦道圖、薪資帳本和幾封未寄出的事故報告。牆上掛著舊班表，最後一日的名字被墨水塗黑，抽屜裡還留著工頭匆忙收起的礦核樣本標籤。門邊安全燈早已熄滅，卻仍聞得到油煙味；北側後門標著舊冶煉間，但煙道塌落後無法由辦公室直接穿過。鎖櫃上有新的撬痕，地板灰塵被拖出一道痕跡，像有人在礦坑荒廢後又回來翻找過證據。這裡是礦坑任務核心房，玩家可調查事故原因、找出失蹤礦工名冊，也能打開通往火藥室的鎖門。若仔細比對圖紙與班表，還能知道哪些支道在事故當晚被臨時封鎖。',
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_relic_pit', description: '木梯下到遺物坑' },
       { direction: 'west', targetRoomId: 'abandoned_mines_powder_room', description: '鐵門後是火藥室' },
-      { direction: 'north', targetRoomId: 'abandoned_mines_old_smelter', description: '辦公室後門通往舊冶煉間' },
     ],
     monsters: [
       { monsterId: 'rust_pick_miner', maxCount: 2, respawnSeconds: 70 },
