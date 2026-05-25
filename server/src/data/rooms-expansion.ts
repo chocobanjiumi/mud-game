@@ -18758,11 +18758,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'saltwind_flats_pirate_blind.png',
     imagePrompt: '海盜隱棚 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain coast, clear lantern light',
     description:
-      '海盜隱棚位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
+      '海盜隱棚位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。西側鹽草帶與北側玻璃鹽田都被潮霧遮成單向入口，必須從鹽草帶或玻璃鹽田進入隱棚。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'west', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '回到鹽草帶' },
       { direction: 'east', targetRoomId: 'saltwind_flats_bone_pier', description: '魚骨棧橋在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_glass_salt_field', description: '玻璃鹽田在北側' },
     ],
     monsters: [
       { monsterId: 'pirate_mist_scout', maxCount: 3, respawnSeconds: 90 },
