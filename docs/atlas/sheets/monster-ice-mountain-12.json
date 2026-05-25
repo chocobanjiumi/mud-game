@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_12",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_thunderpool_eel", "category": "monster", "targetId": "thunderpool_eel", "name": "雷雨池電鰻", "outputPath": "client/public/images/monsters/monster_ice_mountain_thunderpool_eel.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_windcut_eagle", "category": "monster", "targetId": "windcut_eagle", "name": "風切銀鷹", "outputPath": "client/public/images/monsters/monster_ice_mountain_windcut_eagle.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_windcut_kestrel", "category": "monster", "targetId": "windcut_kestrel", "name": "風切隼", "outputPath": "client/public/images/monsters/monster_ice_mountain_windcut_kestrel.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_yeti", "category": "monster", "targetId": "yeti", "name": "雪人", "outputPath": "client/public/images/monsters/monster_ice_mountain_yeti.png", "row": 1, "column": 1 }
+  ]
+}

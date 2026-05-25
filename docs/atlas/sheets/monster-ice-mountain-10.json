@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_skycore_archon", "category": "monster", "targetId": "skycore_archon", "name": "天空核心執政體", "outputPath": "client/public/images/monsters/monster_ice_mountain_skycore_archon.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_snow_wolf", "category": "monster", "targetId": "snow_wolf", "name": "雪狼", "outputPath": "client/public/images/monsters/monster_ice_mountain_snow_wolf.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_starwatch_frost_giant", "category": "monster", "targetId": "starwatch_frost_giant", "name": "觀星霜巨人", "outputPath": "client/public/images/monsters/monster_ice_mountain_starwatch_frost_giant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_stormglass_minebeast", "category": "monster", "targetId": "stormglass_minebeast", "name": "風暴玻礦獸", "outputPath": "client/public/images/monsters/monster_ice_mountain_stormglass_minebeast.png", "row": 1, "column": 1 }
+  ]
+}

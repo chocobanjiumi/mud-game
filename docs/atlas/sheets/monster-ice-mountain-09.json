@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_royal_frost_guard", "category": "monster", "targetId": "royal_frost_guard", "name": "王朝霜衛", "outputPath": "client/public/images/monsters/monster_ice_mountain_royal_frost_guard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_rune_anchor_golem", "category": "monster", "targetId": "rune_anchor_golem", "name": "符文錨魔像", "outputPath": "client/public/images/monsters/monster_ice_mountain_rune_anchor_golem.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_silver_sap_treant", "category": "monster", "targetId": "silver_sap_treant", "name": "銀脂松樹人", "outputPath": "client/public/images/monsters/monster_ice_mountain_silver_sap_treant.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_silverpine_snowstalker", "category": "monster", "targetId": "silverpine_snowstalker", "name": "銀松雪徑獸", "outputPath": "client/public/images/monsters/monster_ice_mountain_silverpine_snowstalker.png", "row": 1, "column": 1 }
+  ]
+}

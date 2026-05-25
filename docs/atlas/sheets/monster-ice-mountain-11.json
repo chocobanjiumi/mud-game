@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_stormhorn_goat", "category": "monster", "targetId": "stormhorn_goat", "name": "暴角岩羊", "outputPath": "client/public/images/monsters/monster_ice_mountain_stormhorn_goat.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_stormwatch_griffin", "category": "monster", "targetId": "stormwatch_griffin", "name": "風哨獅鷲", "outputPath": "client/public/images/monsters/monster_ice_mountain_stormwatch_griffin.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_stormwell_tempest", "category": "monster", "targetId": "stormwell_tempest", "name": "風暴井渦靈", "outputPath": "client/public/images/monsters/monster_ice_mountain_stormwell_tempest.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_thunder_nest_roc", "category": "monster", "targetId": "thunder_nest_roc", "name": "雷巢巨鵬", "outputPath": "client/public/images/monsters/monster_ice_mountain_thunder_nest_roc.png", "row": 1, "column": 1 }
+  ]
+}
