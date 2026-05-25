@@ -18463,10 +18463,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'silverpine_range_avalanche_bowl.png',
     imagePrompt: '雪崩凹地 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '雪崩凹地位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
+      '雪崩凹地位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。南側霜草岩棚被新雪崩掩住，只能從霜草岩棚東側踏入凹地。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_iceglass_cavern', description: '回到冰玻洞' },
-      { direction: 'south', targetRoomId: 'silverpine_range_frost_herb_ledge', description: '回到霜草岩棚' },
       { direction: 'east', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在東側' },
     ],
     monsters: [
