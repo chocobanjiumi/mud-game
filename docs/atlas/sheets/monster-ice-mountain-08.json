@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_mica_cliff_lizard", "category": "monster", "targetId": "mica_cliff_lizard", "name": "雲母崖蜥", "outputPath": "client/public/images/monsters/monster_ice_mountain_mica_cliff_lizard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_mirrorpool_luminant", "category": "monster", "targetId": "mirrorpool_luminant", "name": "天鏡光靈", "outputPath": "client/public/images/monsters/monster_ice_mountain_mirrorpool_luminant.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_obelisk_stormwarden", "category": "monster", "targetId": "obelisk_stormwarden", "name": "斷碑雷衛", "outputPath": "client/public/images/monsters/monster_ice_mountain_obelisk_stormwarden.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_prism_causeway_seraph", "category": "monster", "targetId": "prism_causeway_seraph", "name": "折光堤道聖翼", "outputPath": "client/public/images/monsters/monster_ice_mountain_prism_causeway_seraph.png", "row": 1, "column": 1 }
+  ]
+}

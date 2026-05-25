@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_06",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_06.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_gale_eye_wyvern", "category": "monster", "targetId": "gale_eye_wyvern", "name": "暴風眼飛龍", "outputPath": "client/public/images/monsters/monster_ice_mountain_gale_eye_wyvern.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_gale_king_griffin", "category": "monster", "targetId": "gale_king_griffin", "name": "風王獅鷲", "outputPath": "client/public/images/monsters/monster_ice_mountain_gale_king_griffin.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_glacier_bone_wraith", "category": "monster", "targetId": "glacier_bone_wraith", "name": "冰河骨魄", "outputPath": "client/public/images/monsters/monster_ice_mountain_glacier_bone_wraith.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_halo_court_arbiter", "category": "monster", "targetId": "halo_court_arbiter", "name": "光環庭院裁定者", "outputPath": "client/public/images/monsters/monster_ice_mountain_halo_court_arbiter.png", "row": 1, "column": 1 }
+  ]
+}

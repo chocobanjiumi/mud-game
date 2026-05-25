@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_frostbite_scarred_yeti", "category": "monster", "targetId": "frostbite_scarred_yeti", "name": "霜疤雪怪", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_scarred_yeti.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostbite_sleet_harrier", "category": "monster", "targetId": "frostbite_sleet_harrier", "name": "雨雪裂翼鷂", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_sleet_harrier.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_frostbite_whiteout_wolf_pack", "category": "monster", "targetId": "frostbite_whiteout_wolf_pack", "name": "白霧雪狼群", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostbite_whiteout_wolf_pack.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_frostpine_stalker", "category": "monster", "targetId": "frostpine_stalker", "name": "霜松潛獵者", "outputPath": "client/public/images/monsters/monster_ice_mountain_frostpine_stalker.png", "row": 1, "column": 1 }
+  ]
+}

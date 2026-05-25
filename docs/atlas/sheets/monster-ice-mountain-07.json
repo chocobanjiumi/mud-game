@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_ice_mountain_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_ice_mountain_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_ice_mountain_high_mine_crystal_wyrm", "category": "monster", "targetId": "high_mine_crystal_wyrm", "name": "高山礦核晶龍", "outputPath": "client/public/images/monsters/monster_ice_mountain_high_mine_crystal_wyrm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_ice_mountain_ice_dragon_whelp", "category": "monster", "targetId": "ice_dragon_whelp", "name": "冰龍幼崽", "outputPath": "client/public/images/monsters/monster_ice_mountain_ice_dragon_whelp.png", "row": 0, "column": 1 },
+    { "assetId": "monster_ice_mountain_ice_elemental", "category": "monster", "targetId": "ice_elemental", "name": "冰元素", "outputPath": "client/public/images/monsters/monster_ice_mountain_ice_elemental.png", "row": 1, "column": 0 },
+    { "assetId": "monster_ice_mountain_iceglass_golem", "category": "monster", "targetId": "iceglass_golem", "name": "冰玻魔像", "outputPath": "client/public/images/monsters/monster_ice_mountain_iceglass_golem.png", "row": 1, "column": 1 }
+  ]
+}
