@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_04",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_moonshadow_dreamglass_duelist", "category": "monster", "targetId": "moonshadow_dreamglass_duelist", "name": "夢玻決鬥客", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_dreamglass_duelist.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_moonshadow_eclipse_curtain_assassin", "category": "monster", "targetId": "moonshadow_eclipse_curtain_assassin", "name": "月蝕帷幕刺客", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_eclipse_curtain_assassin.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_moonshadow_glass_deer_herald", "category": "monster", "targetId": "moonshadow_glass_deer_herald", "name": "玻鹿傳令", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_glass_deer_herald.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_moonshadow_hidden_court_queen", "category": "monster", "targetId": "moonshadow_hidden_court_queen", "name": "隱庭月后投影", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_hidden_court_queen.png", "row": 1, "column": 1 }
+  ]
+}

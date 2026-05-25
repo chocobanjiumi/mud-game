@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_moonshadow_moonlit_page", "category": "monster", "targetId": "moonshadow_moonlit_page", "name": "月影侍頁", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_moonlit_page.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_moonshadow_moth_lantern_swarm", "category": "monster", "targetId": "moonshadow_moth_lantern_swarm", "name": "蛾燈群靈", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_moth_lantern_swarm.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_moonshadow_nightbloom_matron", "category": "monster", "targetId": "moonshadow_nightbloom_matron", "name": "夜花園母", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_nightbloom_matron.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_moonshadow_oath_mirror_double", "category": "monster", "targetId": "moonshadow_oath_mirror_double", "name": "誓鏡倒影", "outputPath": "client/public/images/monsters/monster_dragon_celestial_moonshadow_oath_mirror_double.png", "row": 1, "column": 1 }
+  ]
+}
