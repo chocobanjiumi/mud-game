@@ -14239,10 +14239,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'starfall_crater_worldboss_core.png',
     imagePrompt: '世界王星核 in starfall_crater, huge meteor impact crater with star metal, glowing glass rock, alien light, gravity distortion and cosmic rifts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '世界王星核位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
+      '世界王星核位於星隕坑的玻化岩層與星鐵碎帶之間，隕石衝擊留下的輻光、磁砂、重力異常和外界裂縫讓每一步都像踩在尚未冷卻的天空傷口上。這裡是終局採礦與世界王前置節點，玩家可以 gather 星鐵、彗片、輻光砂與異界殘片，也能 inspect 磁化尖塔、星圖、卵灘和虛玻裂紋來判斷危險來源。南側熔星路被星核重力折斷成單向坡道，只能從撞擊核心進入世界王星核。若隊伍忽略重力變化或星光脈衝，晶體魔像、暗影惡魔、混沌生物與風暴龍影會切斷採集路線；若穩定標記安全坡道，則能逐步接近世界王星核，並確認採集工具沒有被磁砂吸走，撤退坡道也仍保持穩定安全可行穩固明確。',
     exits: [
       { direction: 'west', targetRoomId: 'starfall_crater_worldscar_rift', description: '裂隙回到世界傷痕' },
-      { direction: 'south', targetRoomId: 'starfall_crater_impact_core', description: '熔星路回到撞擊核心' },
       { direction: 'east', targetRoomId: 'starfall_crater_outer_void', description: '外界空洞在星核後方' },
     ],
     monsters: [
