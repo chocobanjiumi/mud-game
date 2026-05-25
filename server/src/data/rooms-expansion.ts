@@ -568,10 +568,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'dark_forest_witch_hut.png',
     imagePrompt: '森林女巫小屋 in dark_forest, quest elite room with crooked hut, hanging herbs, green cauldron light and root doorway, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain root, clear lantern light',
     description:
-      '歪斜小屋架在樹根與石塊之間，乾草藥、骨鈴和發光蘑菇掛滿屋簷，綠色坩堝光從門縫溢出。東邊月井散出冷光，南面荊棘迷宮像活物般開合，屋後暗門通向枯萎之林。桌上有被撕開的森林地圖和未完成咒文，提示玩家這裡是任務與精英遭遇點，可調查女巫如何操縱森林詛咒。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '歪斜小屋架在樹根與石塊之間，乾草藥、骨鈴和發光蘑菇掛滿屋簷，綠色坩堝光從門縫溢出。東邊月井散出冷光，通往荊棘迷宮的根痕會先繞到月井南側，屋後暗門通向枯萎之林。桌上有被撕開的森林地圖和未完成咒文，提示玩家這裡是任務與精英遭遇點，可調查女巫如何操縱森林詛咒。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'east', targetRoomId: 'dark_forest_moonwell', description: '月井冷光在東方閃爍' },
-      { direction: 'south', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘牆向南開出縫隙' },
       { direction: 'west', targetRoomId: 'withered_forest', description: '屋後小徑通往枯萎之林' },
     ],
     monsters: [
@@ -634,11 +633,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'dark_forest_bramble_maze.png',
     imagePrompt: '荊棘迷宮 in dark_forest, main route room of thorn walls, torn cloth, narrow passages and green-black light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '活著般的荊棘牆在月井南面交錯移動，黑刺上掛著撕裂布條、暗紅樹液和被纏住的獸骨。北邊可退回月影井或女巫小屋，東側通向暗影空地，西邊枯萎之林的灰霧從縫隙滲入。道路會被枝條短暫封閉，提示玩家需要觀察方向、避開纏繞伏擊，並在戰鬥中利用迷宮作為撤退或繞行路線。',
+      '活著般的荊棘牆在月井南面交錯移動，黑刺上掛著撕裂布條、暗紅樹液和被纏住的獸骨。北邊可退回月影井，東側通向暗影空地，往女巫小屋的根痕會先回到月井再轉西。道路會被枝條短暫封閉，提示玩家需要觀察方向、避開纏繞伏擊，並在戰鬥中利用迷宮作為撤退或繞行路線。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_moonwell', description: '月井冷光指引北方出口' },
       { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地' },
-      { direction: 'west', targetRoomId: 'dark_forest_witch_hut', description: '女巫小屋在西北側樹根後' },
     ],
     monsters: [
       { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 60 },
