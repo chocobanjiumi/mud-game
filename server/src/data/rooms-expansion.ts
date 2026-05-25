@@ -9937,10 +9937,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'underground_city_smuggler_dock.png',
     imagePrompt: '走私碼頭 in underground_city, vast subterranean tiered city with forge glow, dark river stonework, lantern fungus, markets and carved dwarven architecture, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain city, clear lantern light',
     description:
-      '走私碼頭位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
+      '走私碼頭位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。北側黑市暗號門與西側暗河支流都能辨認，但碼頭這端由走私者單向管制，需從黑市或暗河碼頭進入。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
     exits: [
-      { direction: 'north', targetRoomId: 'underground_city_black_market', description: '暗號門回到黑市暗巷' },
-      { direction: 'west', targetRoomId: 'underground_city_darkriver_quay', description: '暗流回到暗河碼頭' },
       { direction: 'south', targetRoomId: 'underground_city_old_foundation', description: '破渠通往舊地基' },
     ],
     mapSymbol: '[私]',
