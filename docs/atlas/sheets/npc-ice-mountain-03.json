@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_ice_mountain_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_ice_mountain_03.sheet.png",
+  "targets": [
+    { "assetId": "npc_silverpine_range_silverpine_range_miner_factor", "category": "npc", "targetId": "silverpine_range_miner_factor", "name": "葛蘭", "outputPath": "client/public/images/npcs/npc_silverpine_range_silverpine_range_miner_factor.png", "row": 0, "column": 0 },
+    { "assetId": "npc_silverpine_range_silverpine_range_starwatcher", "category": "npc", "targetId": "silverpine_range_starwatcher", "name": "歐里安", "outputPath": "client/public/images/npcs/npc_silverpine_range_silverpine_range_starwatcher.png", "row": 0, "column": 1 },
+    { "assetId": "npc_sky_isles_sky_isles_lift_cartographer", "category": "npc", "targetId": "sky_isles_lift_cartographer", "name": "諾亞", "outputPath": "client/public/images/npcs/npc_sky_isles_sky_isles_lift_cartographer.png", "row": 1, "column": 0 },
+    { "assetId": "npc_sky_isles_sky_isles_relic_keeper", "category": "npc", "targetId": "sky_isles_relic_keeper", "name": "賽菈", "outputPath": "client/public/images/npcs/npc_sky_isles_sky_isles_relic_keeper.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_ice_mountain_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_ice_mountain_02.sheet.png",
+  "targets": [
+    { "assetId": "npc_frozen_wastes_ice_castle_guard", "category": "npc", "targetId": "ice_castle_guard", "name": "冰封城堡看守", "outputPath": "client/public/images/npcs/npc_frozen_wastes_ice_castle_guard.png", "row": 0, "column": 0 },
+    { "assetId": "npc_frozen_wastes_snow_guide", "category": "npc", "targetId": "snow_guide", "name": "雪地嚮導", "outputPath": "client/public/images/npcs/npc_frozen_wastes_snow_guide.png", "row": 0, "column": 1 },
+    { "assetId": "npc_silverpine_range_silverpine_range_claim_surveyor", "category": "npc", "targetId": "silverpine_range_claim_surveyor", "name": "妮拉", "outputPath": "client/public/images/npcs/npc_silverpine_range_silverpine_range_claim_surveyor.png", "row": 1, "column": 0 },
+    { "assetId": "npc_silverpine_range_silverpine_range_herbalist", "category": "npc", "targetId": "silverpine_range_herbalist", "name": "芙蕾雅", "outputPath": "client/public/images/npcs/npc_silverpine_range_silverpine_range_herbalist.png", "row": 1, "column": 1 }
+  ]
+}

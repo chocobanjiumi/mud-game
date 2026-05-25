@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_ice_mountain_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_ice_mountain_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_frostbite_pass_frostbite_pass_caravan_scout", "category": "npc", "targetId": "frostbite_pass_caravan_scout", "name": "妮雅", "outputPath": "client/public/images/npcs/npc_frostbite_pass_frostbite_pass_caravan_scout.png", "row": 0, "column": 0 },
+    { "assetId": "npc_frostbite_pass_frostbite_pass_coldfire_quartermaster", "category": "npc", "targetId": "frostbite_pass_coldfire_quartermaster", "name": "霍爾姆", "outputPath": "client/public/images/npcs/npc_frostbite_pass_frostbite_pass_coldfire_quartermaster.png", "row": 0, "column": 1 },
+    { "assetId": "npc_frostbite_pass_frostbite_pass_polar_gate_warden", "category": "npc", "targetId": "frostbite_pass_polar_gate_warden", "name": "艾絲特", "outputPath": "client/public/images/npcs/npc_frostbite_pass_frostbite_pass_polar_gate_warden.png", "row": 1, "column": 0 },
+    { "assetId": "npc_frozen_wastes_fur_merchant", "category": "npc", "targetId": "fur_merchant", "name": "毛皮商人", "outputPath": "client/public/images/npcs/npc_frozen_wastes_fur_merchant.png", "row": 1, "column": 1 }
+  ]
+}

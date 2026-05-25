@@ -1,0 +1,11 @@
+{
+  "sheetId": "npc_ice_mountain_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_ice_mountain_04.sheet.png",
+  "targets": [
+    { "assetId": "npc_storm_highlands_storm_highlands_aerie_keeper", "category": "npc", "targetId": "storm_highlands_aerie_keeper", "name": "琳娜", "outputPath": "client/public/images/npcs/npc_storm_highlands_storm_highlands_aerie_keeper.png", "row": 0, "column": 0 },
+    { "assetId": "npc_storm_highlands_storm_highlands_cliff_guide", "category": "npc", "targetId": "storm_highlands_cliff_guide", "name": "卡瑞克", "outputPath": "client/public/images/npcs/npc_storm_highlands_storm_highlands_cliff_guide.png", "row": 0, "column": 1 }
+  ]
+}
