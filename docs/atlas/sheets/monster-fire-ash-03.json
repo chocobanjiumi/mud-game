@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_03",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_ashfall_fallen_abbot", "category": "monster", "targetId": "ashfall_fallen_abbot", "name": "灰燼墮院長", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_fallen_abbot.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_ossuary_bonekeeper", "category": "monster", "targetId": "ashfall_ossuary_bonekeeper", "name": "骨灰藏室守骨者", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_ossuary_bonekeeper.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_ashfall_reliquary_sentinel", "category": "monster", "targetId": "ashfall_reliquary_sentinel", "name": "聖物餘燼哨衛", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_reliquary_sentinel.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_scorched_cloister_monk", "category": "monster", "targetId": "ashfall_scorched_cloister_monk", "name": "焦廊焚掌僧", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_scorched_cloister_monk.png", "row": 1, "column": 1 }
+  ]
+}

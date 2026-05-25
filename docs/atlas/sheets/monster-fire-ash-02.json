@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_ashfall_censer_wraith", "category": "monster", "targetId": "ashfall_censer_wraith", "name": "煙香怨靈", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_censer_wraith.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_cinder_bell_imp", "category": "monster", "targetId": "ashfall_cinder_bell_imp", "name": "餘燼鐘魔", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_cinder_bell_imp.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_ashfall_dual_altar_absolver", "category": "monster", "targetId": "ashfall_dual_altar_absolver", "name": "雙相赦罪司", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_dual_altar_absolver.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_ember_chapel_cantor", "category": "monster", "targetId": "ashfall_ember_chapel_cantor", "name": "餘火禮唱者", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_ember_chapel_cantor.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_ash_cinder_imp", "category": "monster", "targetId": "ash_cinder_imp", "name": "灰燼煤精", "outputPath": "client/public/images/monsters/monster_fire_ash_ash_cinder_imp.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_ash_novice", "category": "monster", "targetId": "ashfall_ash_novice", "name": "灰衣失聲修士", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_ash_novice.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_ashfall_blackened_librarian", "category": "monster", "targetId": "ashfall_blackened_librarian", "name": "燻黑禁書司書", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_blackened_librarian.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_ashfall_broken_font_penitent", "category": "monster", "targetId": "ashfall_broken_font_penitent", "name": "破盤悔罪者", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_broken_font_penitent.png", "row": 1, "column": 1 }
+  ]
+}
