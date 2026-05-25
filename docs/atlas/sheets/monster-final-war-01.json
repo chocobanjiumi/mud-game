@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_final_war_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_final_war_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_final_war_blackflame_general", "category": "monster", "targetId": "blackflame_general", "name": "黑焰終軍將", "outputPath": "client/public/images/monsters/monster_final_war_blackflame_general.png", "row": 0, "column": 0 },
+    { "assetId": "monster_final_war_blood_rain_warmage", "category": "monster", "targetId": "blood_rain_warmage", "name": "血雨戰法師", "outputPath": "client/public/images/monsters/monster_final_war_blood_rain_warmage.png", "row": 0, "column": 1 },
+    { "assetId": "monster_final_war_demon_scar_vanguard", "category": "monster", "targetId": "demon_scar_vanguard", "name": "魔神爪痕先鋒", "outputPath": "client/public/images/monsters/monster_final_war_demon_scar_vanguard.png", "row": 1, "column": 0 },
+    { "assetId": "monster_final_war_ember_mud_colossus", "category": "monster", "targetId": "ember_mud_colossus", "name": "餘火泥巨像", "outputPath": "client/public/images/monsters/monster_final_war_ember_mud_colossus.png", "row": 1, "column": 1 }
+  ]
+}

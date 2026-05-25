@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_final_war_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_final_war_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_final_war_final_standard_warlord", "category": "monster", "targetId": "final_standard_warlord", "name": "終末軍旗統帥", "outputPath": "client/public/images/monsters/monster_final_war_final_standard_warlord.png", "row": 0, "column": 0 },
+    { "assetId": "monster_final_war_godscar_avatar", "category": "monster", "targetId": "godscar_avatar", "name": "神傷化身", "outputPath": "client/public/images/monsters/monster_final_war_godscar_avatar.png", "row": 0, "column": 1 },
+    { "assetId": "monster_final_war_kingbone_oath_knight", "category": "monster", "targetId": "kingbone_oath_knight", "name": "王骨誓騎", "outputPath": "client/public/images/monsters/monster_final_war_kingbone_oath_knight.png", "row": 1, "column": 0 },
+    { "assetId": "monster_final_war_siege_trench_revenant", "category": "monster", "targetId": "siege_trench_revenant", "name": "攻城壕怨軍", "outputPath": "client/public/images/monsters/monster_final_war_siege_trench_revenant.png", "row": 1, "column": 1 }
+  ]
+}

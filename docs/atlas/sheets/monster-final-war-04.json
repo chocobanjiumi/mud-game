@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_final_war_04",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_final_war_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_final_war_war_gate_bannerman", "category": "monster", "targetId": "war_gate_bannerman", "name": "終戰門旗衛", "outputPath": "client/public/images/monsters/monster_final_war_war_gate_bannerman.png", "row": 0, "column": 0 }
+  ]
+}

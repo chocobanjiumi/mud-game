@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_final_war_03",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_final_war_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_final_war_sunless_chapel_seraph", "category": "monster", "targetId": "sunless_chapel_seraph", "name": "無日禮拜堂熾影", "outputPath": "client/public/images/monsters/monster_final_war_sunless_chapel_seraph.png", "row": 0, "column": 0 }
+  ]
+}
