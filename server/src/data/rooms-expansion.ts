@@ -20653,11 +20653,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'reef_of_bones_drowned_vault.png',
     imagePrompt: '溺亡寶庫 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '溺亡寶庫位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，玩家可以 inspect 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單。',
+      '溺亡寶庫位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，玩家可以 inspect 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。南北兩側的寶藏龍骨與巫光礁在寶庫開啟後會被冷潮封住，只能從兩側礁路進入寶庫。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單。',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_shattered_mast', description: '回到斷桅林' },
-      { direction: 'south', targetRoomId: 'reef_of_bones_treasure_keel', description: '回到寶藏龍骨' },
-      { direction: 'north', targetRoomId: 'reef_of_bones_lichlight_reef', description: '回到巫光礁' },
     ],
     monsters: [
       { monsterId: 'drowned_vault_captain', maxCount: 1, respawnSeconds: 900 },
