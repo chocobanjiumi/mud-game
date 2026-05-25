@@ -1465,11 +1465,11 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'weapon_shop.png',
     imagePrompt: '武器店 in starter_village, town service weapon shop with forge, weapon racks, orange firelight and smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '武器店的石牆被爐火烤得微微發紅，長劍、短弓、權杖與練習盾按等級掛在不同架位上，金屬油與煤煙的味道混在一起。鐵砧旁的地面刻著安全線，提醒新人不要靠近噴濺的火星；西門可回廣場，北側半開的木門連到修補裝備的小工棚。架上每件武器都掛著用途牌，暗示玩家可以比較欄位、等級與職業需求再裝備。' +
+      '武器店的石牆被爐火烤得微微發紅，長劍、短弓、權杖與練習盾按等級掛在不同架位上，金屬油與煤煙的味道混在一起。鐵砧旁的地面刻著安全線，提醒新人不要靠近噴濺的火星；西門可回廣場，東側半開的木門連到修補裝備的小工棚。架上每件武器都掛著用途牌，暗示玩家可以比較欄位、等級與職業需求再裝備。' +
       '爐邊水槽不斷冒出白霧，敲打聲會隨鐵匠動作在屋樑間回響。櫃檯下方擺著待鑑定的舊短劍和木箱，牆上的箭頭牌標示修補工棚方向，提醒玩家戰鬥前檢查武器、耐久和背包空位。',
     exits: [
       { direction: 'west', targetRoomId: 'village_square', description: '回到廣場' },
-      { direction: 'north', targetRoomId: 'starter_village_crafting_shed', description: '小工棚裡傳出磨刀與修補聲' },
+      { direction: 'east', targetRoomId: 'starter_village_crafting_shed', description: '小工棚裡傳出磨刀與修補聲' },
     ],
     npcs: ['blacksmith'],
     mapSymbol: '[W]',
@@ -1489,11 +1489,11 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'potion_shop.png',
     imagePrompt: '藥水店 in starter_village, town service apothecary with herb shelves, glowing bottles, green window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain town, clear lantern light',
     description:
-      '藥水店裡的木架從地面堆到天花板，紅藍藥水在玻璃瓶中閃著柔光，乾燥薰衣草、薄荷與苦艾草垂掛在窗邊。櫃檯後方的藥典翻到治療創傷的頁面，旁邊標著低等冒險者常用補給；東門通回廣場，後門通往儲藏屋。地上細碎藥粉形成一條淡綠痕跡，提示仔細調查或補給後再前往戰鬥區。' +
+      '藥水店裡的木架從地面堆到天花板，紅藍藥水在玻璃瓶中閃著柔光，乾燥薰衣草、薄荷與苦艾草垂掛在窗邊。櫃檯後方的藥典翻到治療創傷的頁面，旁邊標著低等冒險者常用補給；東門通回廣場，西側後門通往儲藏屋。地上細碎藥粉形成一條淡綠痕跡，提示仔細調查或補給後再前往戰鬥區。' +
       '屋內能聽見研磨棒碰撞石臼的細響，藥師把不同尺寸的瓶子依照用途排列，讓人一眼看出恢復生命、魔力和解除異常的差別。後方門縫吹來倉庫冷氣，暗示補給箱、隱藏地窖和簡單搜尋任務都與這間店相連。',
     exits: [
       { direction: 'east', targetRoomId: 'village_square', description: '回到廣場' },
-      { direction: 'north', targetRoomId: 'starter_village_storehouse', description: '藥草箱堆滿後方儲藏屋' },
+      { direction: 'west', targetRoomId: 'starter_village_storehouse', description: '藥草箱堆滿後方儲藏屋' },
     ],
     npcs: ['herbalist'],
     mapSymbol: '[P]',

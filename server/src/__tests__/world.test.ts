@@ -79,8 +79,8 @@ describe('WorldManager respawn policy', () => {
   it('prioritizes exact reverse movement back to the previous room', () => {
     world.placePlayer('p1', 'weapon_shop');
 
-    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_crafting_shed');
-    expect(world.handleMove('p1', 'south')?.room.id).toBe('weapon_shop');
+    expect(world.handleMove('p1', 'east')?.room.id).toBe('starter_village_crafting_shed');
+    expect(world.handleMove('p1', 'west')?.room.id).toBe('weapon_shop');
   });
 
   it('can unwind a multi-step movement path with inverse directions', () => {
