@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_06",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_06.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_cinder_trench_stalker", "category": "monster", "targetId": "cinder_trench_stalker", "name": "煙溝伏行者", "outputPath": "client/public/images/monsters/monster_fire_ash_cinder_trench_stalker.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_cinder_wolf", "category": "monster", "targetId": "cinder_wolf", "name": "焦鬃荒狼", "outputPath": "client/public/images/monsters/monster_fire_ash_cinder_wolf.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_dust_road_raider", "category": "monster", "targetId": "dust_road_raider", "name": "沙路劫掠者", "outputPath": "client/public/images/monsters/monster_fire_ash_dust_road_raider.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_dwarf_guard", "category": "monster", "targetId": "dwarf_guard", "name": "矮人守衛", "outputPath": "client/public/images/monsters/monster_fire_ash_dwarf_guard.png", "row": 1, "column": 1 }
+  ]
+}

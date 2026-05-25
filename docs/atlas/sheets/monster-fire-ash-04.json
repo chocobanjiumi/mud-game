@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_04",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_ashfall_shadow_belfry_tollkeeper", "category": "monster", "targetId": "ashfall_shadow_belfry_tollkeeper", "name": "暗鐘收魂者", "outputPath": "client/public/images/monsters/monster_fire_ash_ashfall_shadow_belfry_tollkeeper.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_ashroad_sparkling", "category": "monster", "targetId": "ashroad_sparkling", "name": "灰路火星群", "outputPath": "client/public/images/monsters/monster_fire_ash_ashroad_sparkling.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_basalt_ward_sentinel", "category": "monster", "targetId": "basalt_ward_sentinel", "name": "玄武岩鎮衛", "outputPath": "client/public/images/monsters/monster_fire_ash_basalt_ward_sentinel.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_blackflag_marksman", "category": "monster", "targetId": "blackflag_marksman", "name": "黑旗射手", "outputPath": "client/public/images/monsters/monster_fire_ash_blackflag_marksman.png", "row": 1, "column": 1 }
+  ]
+}
