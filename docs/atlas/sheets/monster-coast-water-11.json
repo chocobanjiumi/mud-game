@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_calmwater_spring_guardian", "category": "monster", "targetId": "calmwater_spring_guardian", "name": "靜泉守靈", "outputPath": "client/public/images/monsters/monster_coast_water_calmwater_spring_guardian.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_choir_jelly_wraith", "category": "monster", "targetId": "choir_jelly_wraith", "name": "歌礁水母怨靈", "outputPath": "client/public/images/monsters/monster_coast_water_choir_jelly_wraith.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_coldtide_drowned", "category": "monster", "targetId": "coldtide_drowned", "name": "冷潮溺者", "outputPath": "client/public/images/monsters/monster_coast_water_coldtide_drowned.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_deep_brine_eye_keeper", "category": "monster", "targetId": "deep_brine_eye_keeper", "name": "深鹽眼守望者", "outputPath": "client/public/images/monsters/monster_coast_water_deep_brine_eye_keeper.png", "row": 1, "column": 1 }
+  ]
+}

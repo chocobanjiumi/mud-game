@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_12",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_deep_fishman", "category": "monster", "targetId": "deep_fishman", "name": "深海魚人", "outputPath": "client/public/images/monsters/monster_coast_water_deep_fishman.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_drowned_library_scribe", "category": "monster", "targetId": "drowned_library_scribe", "name": "水封書庫抄魂者", "outputPath": "client/public/images/monsters/monster_coast_water_drowned_library_scribe.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_drowned_vault_captain", "category": "monster", "targetId": "drowned_vault_captain", "name": "溺亡寶庫船長", "outputPath": "client/public/images/monsters/monster_coast_water_drowned_vault_captain.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_fishbone_murkling", "category": "monster", "targetId": "fishbone_murkling", "name": "魚骨濁潮人", "outputPath": "client/public/images/monsters/monster_coast_water_fishbone_murkling.png", "row": 1, "column": 1 }
+  ]
+}

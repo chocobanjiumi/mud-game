@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_blue_silt_toad", "category": "monster", "targetId": "blue_silt_toad", "name": "藍泥蟾", "outputPath": "client/public/images/monsters/monster_coast_water_blue_silt_toad.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_bluefire_murloc_guard", "category": "monster", "targetId": "bluefire_murloc_guard", "name": "藍火魚人衛", "outputPath": "client/public/images/monsters/monster_coast_water_bluefire_murloc_guard.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_blueheart_lode_spirit", "category": "monster", "targetId": "blueheart_lode_spirit", "name": "藍心礦靈", "outputPath": "client/public/images/monsters/monster_coast_water_blueheart_lode_spirit.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_brinepool_crab_guard", "category": "monster", "targetId": "brinepool_crab_guard", "name": "鹽池蟹衛", "outputPath": "client/public/images/monsters/monster_coast_water_brinepool_crab_guard.png", "row": 1, "column": 1 }
+  ]
+}
