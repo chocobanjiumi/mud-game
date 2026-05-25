@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_future_ash_paradox", "category": "monster", "targetId": "future_ash_paradox", "name": "未來灰悖形", "outputPath": "client/public/images/monsters/monster_astral_time_future_ash_paradox.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_glyphbound_skeleton", "category": "monster", "targetId": "glyphbound_skeleton", "name": "銘文縛骨", "outputPath": "client/public/images/monsters/monster_astral_time_glyphbound_skeleton.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_gravity_silt_horror", "category": "monster", "targetId": "gravity_silt_horror", "name": "重力星泥怖物", "outputPath": "client/public/images/monsters/monster_astral_time_gravity_silt_horror.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_gravity_well_aberration", "category": "monster", "targetId": "gravity_well_aberration", "name": "重力井畸體", "outputPath": "client/public/images/monsters/monster_astral_time_gravity_well_aberration.png", "row": 1, "column": 1 }
+  ]
+}

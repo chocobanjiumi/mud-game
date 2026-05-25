@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_06",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_06.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_causality_adjudicator", "category": "monster", "targetId": "causality_adjudicator", "name": "因果裁定者", "outputPath": "client/public/images/monsters/monster_astral_time_causality_adjudicator.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_comet_shard_burrower", "category": "monster", "targetId": "comet_shard_burrower", "name": "彗片掘行獸", "outputPath": "client/public/images/monsters/monster_astral_time_comet_shard_burrower.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_cometbone_scavenger", "category": "monster", "targetId": "cometbone_scavenger", "name": "彗骨拾荒者", "outputPath": "client/public/images/monsters/monster_astral_time_cometbone_scavenger.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_epoch_gate_warden", "category": "monster", "targetId": "epoch_gate_warden", "name": "紀元門衛", "outputPath": "client/public/images/monsters/monster_astral_time_epoch_gate_warden.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_afterimage_void_serpent", "category": "monster", "targetId": "afterimage_void_serpent", "name": "餘影虛空蛇", "outputPath": "client/public/images/monsters/monster_astral_time_afterimage_void_serpent.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_anchorstone_colossus", "category": "monster", "targetId": "anchorstone_colossus", "name": "錨石巨像", "outputPath": "client/public/images/monsters/monster_astral_time_anchorstone_colossus.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_blackstar_gatekeeper", "category": "monster", "targetId": "blackstar_gatekeeper", "name": "黑星門守", "outputPath": "client/public/images/monsters/monster_astral_time_blackstar_gatekeeper.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_bronze_trial_construct", "category": "monster", "targetId": "bronze_trial_construct", "name": "青銅試煉構裝", "outputPath": "client/public/images/monsters/monster_astral_time_bronze_trial_construct.png", "row": 1, "column": 1 }
+  ]
+}
