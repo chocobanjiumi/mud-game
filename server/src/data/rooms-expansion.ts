@@ -21054,10 +21054,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sapphire_lake_lily_cache.png',
     imagePrompt: '睡蓮藏點 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain lake, clear lantern light',
     description:
-      '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+      '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。西側晶砂洲與北側玻魚灣的浮標會在採集後沉入水面，只能從那兩處進入睡蓮藏點。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'west', targetRoomId: 'sapphire_lake_crystal_sandbar', description: '回到晶砂洲' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '回到玻魚灣' },
       { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '藍寶礦脈在東側' },
     ],
     monsters: [
