@@ -23535,10 +23535,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'frostbite_pass_sleet_watch.png',
     imagePrompt: '雨雪哨 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
     description:
-      '雨雪哨位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
+      '雨雪哨位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。南側白霧盆地被暴風雪回流遮斷，只能從白霧盆地東側抵達雨雪哨。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_glacier_mouth', description: '回到冰河口' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_whiteout_basin', description: '回到白霧盆地' },
       { direction: 'north', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '霜巨人足跡在北側' },
     ],
     monsters: [
