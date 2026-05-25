@@ -8067,10 +8067,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sunken_catacombs_mourner_crypt.png',
     imagePrompt: '哭者墓室 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '漂棺室北面有一座乾燥些的墓室，牆上浮雕刻著披面哭者，她們的臉被潮氣侵蝕，只剩空洞眼眶。地面放著許多破陶碗，像曾有人定期供水或供淚。這裡是敘事與精英前置房，玩家可解讀哭者浮雕、收集葬儀碗碎片，並找到通往嘆息禮拜堂的祈詞。若玩家靠近主墓龕，哭者浮雕會滲出黑水，召來骷髏與石像守衛。墓室聲音異常清楚，任何低語都像被死者聽見。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '漂棺室北面有一座乾燥些的墓室，牆上浮雕刻著披面哭者，她們的臉被潮氣侵蝕，只剩空洞眼眶。地面放著許多破陶碗，像曾有人定期供水或供淚。西側骨牆支路可見骨牆長廊，但哭者墓室這端墓龕滲水封住回程，需由長廊方向進入。這裡是敘事與精英前置房，玩家可解讀哭者浮雕、收集葬儀碗碎片，並找到通往嘆息禮拜堂的祈詞。若玩家靠近主墓龕，哭者浮雕會滲出黑水，召來骷髏與石像守衛。墓室聲音異常清楚，任何低語都像被死者聽見。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'south', targetRoomId: 'sunken_catacombs_floating_coffins', description: '墓階回到漂棺室' },
-      { direction: 'west', targetRoomId: 'sunken_catacombs_ossuary_walk', description: '骨牆支路回到長廊' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_chapel_of_sighs', description: '祈詞通向嘆息禮拜堂' },
     ],
     monsters: [
@@ -8254,10 +8253,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sunken_catacombs_chapel_of_sighs.png',
     imagePrompt: '嘆息禮拜堂 in sunken_catacombs, flooded underground catacomb scene with black water, stone tombs, cold lantern light and ancient decay, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '哭者墓室上方通向一座小禮拜堂，穹頂破裂，水滴從裂縫落下，打在長椅與淺水上，形成像嘆息般的節奏。牆上壁畫描繪送葬隊伍走入地下，但最後幾幅被黑水覆蓋。這裡是敘事與交通房，玩家可解讀祈詞、安撫被困亡靈，並打開通往鏈橋與回音停屍間的路。禮拜堂看似安靜，實際上每排長椅下都有骷髏巡衛殘留的武器。若水滴節奏突然停止，代表亡靈騎士正在禮拜堂門外等待。',
+      '哭者墓室上方通向一座小禮拜堂，穹頂破裂，水滴從裂縫落下，打在長椅與淺水上，形成像嘆息般的節奏。牆上壁畫描繪送葬隊伍走入地下，但最後幾幅被黑水覆蓋。南側燈龕路仍有藍火微光，但禮拜堂這端長椅倒塌擋住退路，需由長明燈龕循祈文路進入。這裡是敘事與交通房，玩家可解讀祈詞、安撫被困亡靈，並打開通往鏈橋與回音停屍間的路。禮拜堂看似安靜，實際上每排長椅下都有骷髏巡衛殘留的武器。若水滴節奏突然停止，代表亡靈騎士正在禮拜堂門外等待。',
     exits: [
       { direction: 'west', targetRoomId: 'sunken_catacombs_mourner_crypt', description: '墓室回到哭者墓室' },
-      { direction: 'south', targetRoomId: 'sunken_catacombs_lantern_niche', description: '燈龕路在西南側' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_chain_bridge', description: '禮拜堂門通向鏽鏈橋' },
     ],
     monsters: [
