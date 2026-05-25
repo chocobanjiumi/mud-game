@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_coast_water_24",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_24.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_wreckdeck_cutthroat", "category": "monster", "targetId": "wreckdeck_cutthroat", "name": "裂板斷喉海盜", "outputPath": "client/public/images/monsters/monster_coast_water_wreckdeck_cutthroat.png", "row": 0, "column": 0 }
+  ]
+}

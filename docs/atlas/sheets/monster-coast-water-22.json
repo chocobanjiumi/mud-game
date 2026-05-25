@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_22",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_22.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_tideclock_hydra_larva", "category": "monster", "targetId": "tideclock_hydra_larva", "name": "潮鐘幼九頭蛇", "outputPath": "client/public/images/monsters/monster_coast_water_tideclock_hydra_larva.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_tidepool_murk_eel", "category": "monster", "targetId": "tidepool_murk_eel", "name": "潮穴泥鰻", "outputPath": "client/public/images/monsters/monster_coast_water_tidepool_murk_eel.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_vein_crystal_lizard", "category": "monster", "targetId": "vein_crystal_lizard", "name": "脈晶蜥", "outputPath": "client/public/images/monsters/monster_coast_water_vein_crystal_lizard.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_whalebone_anchor_colossus", "category": "monster", "targetId": "whalebone_anchor_colossus", "name": "鯨骨錨巨像", "outputPath": "client/public/images/monsters/monster_coast_water_whalebone_anchor_colossus.png", "row": 1, "column": 1 }
+  ]
+}
