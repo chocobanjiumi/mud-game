@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_sunspire_flameglass_knight", "category": "monster", "targetId": "sunspire_flameglass_knight", "name": "焰玻階騎士", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_flameglass_knight.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_sunspire_mirror_lens_keeper", "category": "monster", "targetId": "sunspire_mirror_lens_keeper", "name": "聚光鏡守", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_mirror_lens_keeper.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_sunspire_seraph_watch_commander", "category": "monster", "targetId": "sunspire_seraph_watch_commander", "name": "熾哨翼長", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_seraph_watch_commander.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_sunspire_solar_armory_construct", "category": "monster", "targetId": "sunspire_solar_armory_construct", "name": "太陽武庫造兵", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_solar_armory_construct.png", "row": 1, "column": 1 }
+  ]
+}

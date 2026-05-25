@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_sunspire_sunfire_cantor", "category": "monster", "targetId": "sunspire_sunfire_cantor", "name": "日火唱詩者", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_sunfire_cantor.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_sunspire_wargod_sigil_keeper", "category": "monster", "targetId": "sunspire_wargod_sigil_keeper", "name": "戰神印守", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_wargod_sigil_keeper.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_sunspire_white_stone_acolyte", "category": "monster", "targetId": "sunspire_white_stone_acolyte", "name": "白石日侍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_white_stone_acolyte.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_thunder_roost_wyrmling", "category": "monster", "targetId": "thunder_roost_wyrmling", "name": "雷巢亞龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_thunder_roost_wyrmling.png", "row": 1, "column": 1 }
+  ]
+}

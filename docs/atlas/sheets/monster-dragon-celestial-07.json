@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_starfall_wyrm", "category": "monster", "targetId": "starfall_wyrm", "name": "墜星古蛇", "outputPath": "client/public/images/monsters/monster_dragon_celestial_starfall_wyrm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_storm_dragon", "category": "monster", "targetId": "storm_dragon", "name": "風暴巨龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_storm_dragon.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_sunspire_ashen_shadow_penitent", "category": "monster", "targetId": "sunspire_ashen_shadow_penitent", "name": "灰影悔光者", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_ashen_shadow_penitent.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_sunspire_day_crown_avatar", "category": "monster", "targetId": "sunspire_day_crown_avatar", "name": "日冠顯聖者", "outputPath": "client/public/images/monsters/monster_dragon_celestial_sunspire_day_crown_avatar.png", "row": 1, "column": 1 }
+  ]
+}
