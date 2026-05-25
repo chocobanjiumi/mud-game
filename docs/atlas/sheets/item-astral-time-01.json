@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_astral_time_01",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_astral_time_01.sheet.png",
+  "targets": [
+    { "assetId": "item_astral_time_afterimage_void_core", "category": "item", "targetId": "afterimage_void_core", "name": "餘影虛空核心", "outputPath": "client/public/images/items/item_astral_time_afterimage_void_core.png", "row": 0, "column": 0 },
+    { "assetId": "item_astral_time_minute_zero_key", "category": "item", "targetId": "minute_zero_key", "name": "零分鑰印", "outputPath": "client/public/images/items/item_astral_time_minute_zero_key.png", "row": 0, "column": 1 },
+    { "assetId": "item_astral_time_oracle_shard", "category": "item", "targetId": "oracle_shard", "name": "神諭碎片", "outputPath": "client/public/images/items/item_astral_time_oracle_shard.png", "row": 0, "column": 2 },
+    { "assetId": "item_astral_time_outer_dark_heart", "category": "item", "targetId": "outer_dark_heart", "name": "外層黑域心核", "outputPath": "client/public/images/items/item_astral_time_outer_dark_heart.png", "row": 1, "column": 0 },
+    { "assetId": "item_astral_time_sealed_core_fragment", "category": "item", "targetId": "sealed_core_fragment", "name": "封印光核碎片", "outputPath": "client/public/images/items/item_astral_time_sealed_core_fragment.png", "row": 1, "column": 1 },
+    { "assetId": "item_astral_time_starcore_heart", "category": "item", "targetId": "starcore_heart", "name": "世界王星核心臟", "outputPath": "client/public/images/items/item_astral_time_starcore_heart.png", "row": 1, "column": 2 },
+    { "assetId": "item_astral_time_worldcore_anchor", "category": "item", "targetId": "worldcore_anchor", "name": "荒原核心錨", "outputPath": "client/public/images/items/item_astral_time_worldcore_anchor.png", "row": 2, "column": 0 },
+    { "assetId": "item_astral_time_worldscar_fragment", "category": "item", "targetId": "worldscar_fragment", "name": "世界傷痕碎片", "outputPath": "client/public/images/items/item_astral_time_worldscar_fragment.png", "row": 2, "column": 1 },
+    { "assetId": "item_astral_time_zone_ancient_ruins_belt_9", "category": "item", "targetId": "zone_ancient_ruins_belt_9", "name": "古代遺跡腰帶", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt_9.png", "row": 2, "column": 2 }
+  ]
+}
