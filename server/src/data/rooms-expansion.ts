@@ -4018,11 +4018,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_toolshed.png',
     imagePrompt: '破工具棚 in old_farmland, broken toolshed with rusty hoes, saws, seed boxes, cracked lantern and dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。這裡適合放置修理、採集與任務道具，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_granary', description: '回到小糧倉' },
       { direction: 'north', targetRoomId: 'old_farmland_chicken_coop', description: '工具棚後方是雞舍' },
-      { direction: 'east', targetRoomId: 'old_farmland_cart_shortcut', description: '舊車道從棚外繞過' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
@@ -4045,11 +4044,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_moonlit_pasture.png',
     imagePrompt: '月光牧草地 in old_farmland, quiet pasture with broken fence, silver grass, wolf tracks and pale moonlit clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '農場東北角是一片被破柵欄圍住的牧草地，草葉在白天也泛著微弱銀光，像記住了長年照落的月色。地上有羊蹄印、野狼腳印和拖曳乾草的痕跡，顯示過去圈養的牲畜早已不在。這裡視野開闊，適合低等精英遭遇；玩家可沿牧草地通往防風樹列或收成儀式圈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '農場東北角是一片被破柵欄圍住的牧草地，草葉在白天也泛著微弱銀光，像記住了長年照落的月色。地上有羊蹄印、野狼腳印和拖曳乾草的痕跡，顯示過去圈養的牲畜早已不在。南側能看見破雞舍的屋頂，北側能望見舊石界碑，但牧草地邊界的柵門都已塌死，實際需從防風樹列繞行。這裡視野開闊，適合低等精英遭遇；玩家可沿牧草地調查防風樹列與收成儀式圈線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_windbreak_trees', description: '草坡回到防風樹列' },
-      { direction: 'south', targetRoomId: 'old_farmland_chicken_coop', description: '破柵欄通往雞舍' },
-      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '牧草盡頭有石界碑' },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -4098,12 +4095,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_chicken_coop.png',
     imagePrompt: '破雞舍 in old_farmland, ruined chicken coop with straw nests, broken wire, feathers, rats and cloudy farmyard light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚、蜂箱行列和牧草地，是農場東側動線的交會點。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
       { direction: 'south', targetRoomId: 'old_farmland_toolshed', description: '破網通往工具棚' },
       { direction: 'north', targetRoomId: 'old_farmland_beehive_rows', description: '蜂箱行列在北側' },
-      { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '破柵欄後是牧草地' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
@@ -4153,11 +4149,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_stone_marker.png',
     imagePrompt: '舊石界碑 in old_farmland, ancient boundary stone wrapped in roots, faded harvest runes, pasture wind and crow shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。界碑周圍的牧草呈環形倒伏，像有什麼在夜裡繞著它巡行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
+      '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。東側能望見月光牧草地，北側倒伏草痕指向收成圓陣，但界碑周圍根鬚封住兩條舊路，需從防風樹列或稻草人看守地繞行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列' },
-      { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '界碑旁草坡通向牧草地' },
-      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '倒伏草痕指向收成圓陣' },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -4180,10 +4174,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_harvest_circle.png',
     imagePrompt: '收成圓陣 in old_farmland, eerie crop circle of wheat and pumpkins, old harvest runes, scarecrow shadows and moonlit soil, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
+      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地' },
-      { direction: 'east', targetRoomId: 'old_farmland_stone_marker', description: '倒伏草痕回到石界碑' },
     ],
     monsters: [
       { monsterId: 'harvest_wight', maxCount: 1, respawnSeconds: 900 },
@@ -4207,10 +4200,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_cart_shortcut.png',
     imagePrompt: '舊車道捷徑 in old_farmland, shortcut cart track with broken wagon, muddy ruts, low fences and village road light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain village, clear lantern light',
     description:
-      '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口、工具棚和村外小路，也能作為低等玩家撤退時的安全路線。',
+      '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口和村外小路，也能作為低等玩家撤退時的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口' },
-      { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '車輪印通向破工具棚' },
       { direction: 'west', targetRoomId: 'village_outskirts', description: '舊車道繞回村外小路' },
     ],
     monsters: [
