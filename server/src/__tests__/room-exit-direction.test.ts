@@ -17,22 +17,7 @@ describe('room exit direction audit', () => {
       missingTargetRooms: [],
       duplicateDirections: [],
     });
-    expect(report.twoStepDirectionCycleCandidates.length).toBeGreaterThan(0);
-    expect(report.twoStepDirectionCycleCandidates[0]).toEqual(
-      expect.objectContaining({
-        zoneId: expect.any(String),
-        zoneName: expect.any(String),
-        roomAId: expect.any(String),
-        roomAName: expect.any(String),
-        dir1: expect.any(String),
-        roomBId: expect.any(String),
-        roomBName: expect.any(String),
-        dir2: expect.any(String),
-        roomADescription: expect.any(String),
-        roomBDescription: expect.any(String),
-        isLegalReverse: false,
-      }),
-    );
+    expect(report.twoStepDirectionCycleCandidates).toHaveLength(0);
   });
 
   it('lists non-reverse A-B-A direction cycles for a synthetic case', () => {

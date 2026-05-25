@@ -24543,10 +24543,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sunspire_celestial_guard_hall.png',
     imagePrompt: '天界守衛廳 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '天界守衛廳位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '天界守衛廳位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側日耀升降井的光門從守衛廳這端關閉，只能由升降井進入守衛廳。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_hymn_gallery', description: '回到聖歌廊' },
-      { direction: 'south', targetRoomId: 'sunspire_radiant_lift', description: '回到日耀升降井' },
       { direction: 'east', targetRoomId: 'sunspire_lens_chamber', description: '聚光鏡室在東側' },
     ],
     monsters: [
@@ -24676,10 +24675,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sunspire_sunfire_choir.png',
     imagePrompt: '日火唱詩席 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '日火唱詩席位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '日火唱詩席位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。西側翼影露臺被日火唱詩的光幕封住，只能從翼影露臺北側登上唱詩席。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
     exits: [
       { direction: 'south', targetRoomId: 'sunspire_trial_of_dawn', description: '回到黎明試煉室' },
-      { direction: 'west', targetRoomId: 'sunspire_winged_balcony', description: '翼影露臺在西側' },
       { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
     ],
     monsters: [
@@ -24729,10 +24727,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sunspire_gold_flare_bridge.png',
     imagePrompt: '金焰橋 in sunspire, sunspire endgame white stone tower above clouds with blazing sunlight, holy mirrors, golden flame bridge, celestial guardians, seraph watch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '金焰橋位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
+      '金焰橋位於直入雲層並吸收日光的日耀尖塔內，白石階、焰玻步道、聚光鏡室、聖歌廊與塔頂聖火共同構成神聖力量的終局試煉。這裡是高階隊伍、陣營衝突與世界王前哨區，玩家可以 inspect 日輪刻痕、鏡面角度、聖歌殘響和戰神印記來判斷塔內光流，也能 search 太陽武庫、燃書庫、天界守衛廳與塔頂前室尋找神聖線索。南側黎明試煉室的橋面在踏上金焰後熔斷，只能從黎明試煉室東側進入金焰橋。若隊伍忽略日火脈衝、翼影巡邏與光焰反噬，龍騎士、天界守衛、熾天使與神造兵器會封住上行路；若穩定沿日光階、金焰橋與熾天使哨臺推進，則能抵達日冠核心並帶回神聖試煉記錄、光流測量、聖火封印與安全下行路線。',
     exits: [
       { direction: 'west', targetRoomId: 'sunspire_lens_chamber', description: '回到聚光鏡室' },
-      { direction: 'south', targetRoomId: 'sunspire_trial_of_dawn', description: '回到黎明試煉室' },
       { direction: 'east', targetRoomId: 'sunspire_seraph_watch', description: '熾天使哨臺在東側' },
     ],
     monsters: [
