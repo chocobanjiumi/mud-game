@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_cave_mine_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_cave_mine_obsidian_shard_crawler", "category": "monster", "targetId": "obsidian_shard_crawler", "name": "碎曜爬行獸", "outputPath": "client/public/images/monsters/monster_cave_mine_obsidian_shard_crawler.png", "row": 0, "column": 0 },
+    { "assetId": "monster_cave_mine_oreback_crawler", "category": "monster", "targetId": "oreback_crawler", "name": "礦背爬蟲", "outputPath": "client/public/images/monsters/monster_cave_mine_oreback_crawler.png", "row": 0, "column": 1 },
+    { "assetId": "monster_cave_mine_rail_wraith", "category": "monster", "targetId": "rail_wraith", "name": "沉軌怨影", "outputPath": "client/public/images/monsters/monster_cave_mine_rail_wraith.png", "row": 1, "column": 0 },
+    { "assetId": "monster_cave_mine_rust_pick_miner", "category": "monster", "targetId": "rust_pick_miner", "name": "鏽鎬礦工", "outputPath": "client/public/images/monsters/monster_cave_mine_rust_pick_miner.png", "row": 1, "column": 1 }
+  ]
+}

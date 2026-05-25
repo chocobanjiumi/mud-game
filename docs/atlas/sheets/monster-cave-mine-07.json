@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_cave_mine_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_cave_mine_hollow_mountain_windpipe_bat_swarm", "category": "monster", "targetId": "hollow_mountain_windpipe_bat_swarm", "name": "風管蝠群", "outputPath": "client/public/images/monsters/monster_cave_mine_hollow_mountain_windpipe_bat_swarm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_cave_mine_magma_glass_worm", "category": "monster", "targetId": "magma_glass_worm", "name": "熔玻岩蟲", "outputPath": "client/public/images/monsters/monster_cave_mine_magma_glass_worm.png", "row": 0, "column": 1 },
+    { "assetId": "monster_cave_mine_molten_lock_warden", "category": "monster", "targetId": "molten_lock_warden", "name": "熔鎖門監守", "outputPath": "client/public/images/monsters/monster_cave_mine_molten_lock_warden.png", "row": 1, "column": 0 },
+    { "assetId": "monster_cave_mine_obsidian_depths_archfiend", "category": "monster", "targetId": "obsidian_depths_archfiend", "name": "黑曜深層大惡魔", "outputPath": "client/public/images/monsters/monster_cave_mine_obsidian_depths_archfiend.png", "row": 1, "column": 1 }
+  ]
+}

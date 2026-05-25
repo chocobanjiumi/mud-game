@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_cave_mine_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_cave_mine_sulfur_fume_imp", "category": "monster", "targetId": "sulfur_fume_imp", "name": "硫煙小魔", "outputPath": "client/public/images/monsters/monster_cave_mine_sulfur_fume_imp.png", "row": 0, "column": 0 },
+    { "assetId": "monster_cave_mine_sump_drowned", "category": "monster", "targetId": "sump_drowned", "name": "沉水礦骸", "outputPath": "client/public/images/monsters/monster_cave_mine_sump_drowned.png", "row": 0, "column": 1 },
+    { "assetId": "monster_cave_mine_timber_prop_husk", "category": "monster", "targetId": "timber_prop_husk", "name": "支木空殼", "outputPath": "client/public/images/monsters/monster_cave_mine_timber_prop_husk.png", "row": 1, "column": 0 },
+    { "assetId": "monster_cave_mine_worldforge_colossus", "category": "monster", "targetId": "worldforge_colossus", "name": "世界熔爐巨像", "outputPath": "client/public/images/monsters/monster_cave_mine_worldforge_colossus.png", "row": 1, "column": 1 }
+  ]
+}
