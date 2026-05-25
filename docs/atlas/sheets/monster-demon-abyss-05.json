@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_05",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_05.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_grave_bell_skeleton", "category": "monster", "targetId": "grave_bell_skeleton", "name": "墓鐘骸兵", "outputPath": "client/public/images/monsters/monster_demon_abyss_grave_bell_skeleton.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_grave_oath_knight", "category": "monster", "targetId": "grave_oath_knight", "name": "墓誓亡騎", "outputPath": "client/public/images/monsters/monster_demon_abyss_grave_oath_knight.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_gravekeeper_vaultwarden", "category": "monster", "targetId": "gravekeeper_vaultwarden", "name": "守墓地窖監守", "outputPath": "client/public/images/monsters/monster_demon_abyss_gravekeeper_vaultwarden.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_gravity_well_maw", "category": "monster", "targetId": "gravity_well_maw", "name": "倒重巨口", "outputPath": "client/public/images/monsters/monster_demon_abyss_gravity_well_maw.png", "row": 1, "column": 1 }
+  ]
+}

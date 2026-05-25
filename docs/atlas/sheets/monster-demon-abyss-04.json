@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_04",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_04.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_demon_lord", "category": "monster", "targetId": "demon_lord", "name": "魔王", "outputPath": "client/public/images/monsters/monster_demon_abyss_demon_lord.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_demon_soldier", "category": "monster", "targetId": "demon_soldier", "name": "魔族士兵", "outputPath": "client/public/images/monsters/monster_demon_abyss_demon_soldier.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_drowned_drain_serpent", "category": "monster", "targetId": "drowned_drain_serpent", "name": "黑渠水蛇", "outputPath": "client/public/images/monsters/monster_demon_abyss_drowned_drain_serpent.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_drowned_oath_knight", "category": "monster", "targetId": "drowned_oath_knight", "name": "溺誓亡騎", "outputPath": "client/public/images/monsters/monster_demon_abyss_drowned_oath_knight.png", "row": 1, "column": 1 }
+  ]
+}

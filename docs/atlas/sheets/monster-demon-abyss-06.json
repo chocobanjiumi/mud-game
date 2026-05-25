@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_06",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_06.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_hellhound", "category": "monster", "targetId": "hellhound", "name": "地獄犬", "outputPath": "client/public/images/monsters/monster_demon_abyss_hellhound.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_imp", "category": "monster", "targetId": "imp", "name": "小惡魔", "outputPath": "client/public/images/monsters/monster_demon_abyss_imp.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_mirrorlake_reflection", "category": "monster", "targetId": "mirrorlake_reflection", "name": "鏡湖倒影", "outputPath": "client/public/images/monsters/monster_demon_abyss_mirrorlake_reflection.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_moonlit_litany_lich", "category": "monster", "targetId": "moonlit_litany_lich", "name": "月悼巫妖", "outputPath": "client/public/images/monsters/monster_demon_abyss_moonlit_litany_lich.png", "row": 1, "column": 1 }
+  ]
+}
