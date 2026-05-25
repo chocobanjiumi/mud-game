@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_cave_mine_stragglers_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_stragglers_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_cave_mine_crystal_lizard", "category": "monster", "targetId": "crystal_lizard", "name": "水晶蜥蜴", "outputPath": "client/public/images/monsters/monster_astral_time_cave_mine_crystal_lizard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_cave_mine_ember_basin_elemental", "category": "monster", "targetId": "ember_basin_elemental", "name": "餘燼盆地火靈", "outputPath": "client/public/images/monsters/monster_cave_mine_ember_basin_elemental.png", "row": 0, "column": 1 },
+    { "assetId": "monster_cave_mine_forge_chain_guard", "category": "monster", "targetId": "forge_chain_guard", "name": "熔爐鏈衛", "outputPath": "client/public/images/monsters/monster_cave_mine_forge_chain_guard.png", "row": 1, "column": 0 },
+    { "assetId": "monster_cave_mine_frost_golem", "category": "monster", "targetId": "frost_golem", "name": "冰霜魔像", "outputPath": "client/public/images/monsters/monster_cave_mine_frost_golem.png", "row": 1, "column": 1 }
+  ]
+}

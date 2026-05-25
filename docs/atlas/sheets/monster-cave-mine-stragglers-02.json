@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_cave_mine_stragglers_02",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_cave_mine_stragglers_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_cave_mine_forest_fen_giant_spider", "category": "monster", "targetId": "giant_spider", "name": "巨型蜘蛛", "outputPath": "client/public/images/monsters/monster_cave_mine_forest_fen_giant_spider.png", "row": 0, "column": 0 }
+  ]
+}
