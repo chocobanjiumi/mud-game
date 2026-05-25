@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_03",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_chaos_spawn", "category": "monster", "targetId": "chaos_spawn", "name": "混沌之子", "outputPath": "client/public/images/monsters/monster_demon_abyss_chaos_spawn.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_coffin_chain_guard", "category": "monster", "targetId": "coffin_chain_guard", "name": "鏈棺骨衛", "outputPath": "client/public/images/monsters/monster_demon_abyss_coffin_chain_guard.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_crownbound_tide_lord", "category": "monster", "targetId": "crownbound_tide_lord", "name": "溺冠潮主", "outputPath": "client/public/images/monsters/monster_demon_abyss_crownbound_tide_lord.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_demon_general", "category": "monster", "targetId": "demon_general", "name": "魔族將軍", "outputPath": "client/public/images/monsters/monster_demon_abyss_demon_general.png", "row": 1, "column": 1 }
+  ]
+}

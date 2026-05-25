@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_abyss_lord", "category": "monster", "targetId": "abyss_lord", "name": "深淵領主", "outputPath": "client/public/images/monsters/monster_demon_abyss_abyss_lord.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_ash_watch_scout", "category": "monster", "targetId": "ash_watch_scout", "name": "灰燼斥候", "outputPath": "client/public/images/monsters/monster_demon_abyss_ash_watch_scout.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_beacon_eye_harrier", "category": "monster", "targetId": "beacon_eye_harrier", "name": "信標眼獵者", "outputPath": "client/public/images/monsters/monster_demon_abyss_beacon_eye_harrier.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_bellgrave_lich_lord", "category": "monster", "targetId": "bellgrave_lich_lord", "name": "鐘墓巫妖主", "outputPath": "client/public/images/monsters/monster_demon_abyss_bellgrave_lich_lord.png", "row": 1, "column": 1 }
+  ]
+}

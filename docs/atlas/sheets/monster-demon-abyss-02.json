@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_demon_abyss_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_demon_abyss_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_demon_abyss_blackfeather_wraith", "category": "monster", "targetId": "blackfeather_wraith", "name": "黑羽怨影", "outputPath": "client/public/images/monsters/monster_demon_abyss_blackfeather_wraith.png", "row": 0, "column": 0 },
+    { "assetId": "monster_demon_abyss_blackwater_miremass", "category": "monster", "targetId": "blackwater_miremass", "name": "黑水泥魘", "outputPath": "client/public/images/monsters/monster_demon_abyss_blackwater_miremass.png", "row": 0, "column": 1 },
+    { "assetId": "monster_demon_abyss_bloodslag_hound", "category": "monster", "targetId": "bloodslag_hound", "name": "血渣獵犬", "outputPath": "client/public/images/monsters/monster_demon_abyss_bloodslag_hound.png", "row": 1, "column": 0 },
+    { "assetId": "monster_demon_abyss_broken_saint_gargoyle", "category": "monster", "targetId": "broken_saint_gargoyle", "name": "破聖像鬼", "outputPath": "client/public/images/monsters/monster_demon_abyss_broken_saint_gargoyle.png", "row": 1, "column": 1 }
+  ]
+}
