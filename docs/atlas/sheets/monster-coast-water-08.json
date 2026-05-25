@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_bloodsalt_razor_clam_colony", "category": "monster", "targetId": "bloodsalt_razor_clam_colony", "name": "刃貝群落", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_razor_clam_colony.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_bloodsalt_red_coral_hydra", "category": "monster", "targetId": "bloodsalt_red_coral_hydra", "name": "紅珊瑚多首獸", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_red_coral_hydra.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_bloodsalt_red_salt_reaver", "category": "monster", "targetId": "bloodsalt_red_salt_reaver", "name": "紅鹽劫掠手", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_red_salt_reaver.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_bloodsalt_ritual_reef_hierophant", "category": "monster", "targetId": "bloodsalt_ritual_reef_hierophant", "name": "儀式礁心主祭", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_ritual_reef_hierophant.png", "row": 1, "column": 1 }
+  ]
+}

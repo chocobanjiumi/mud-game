@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_bloodsalt_smuggler_cutthroat", "category": "monster", "targetId": "bloodsalt_smuggler_cutthroat", "name": "鹵灣走私割喉客", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_smuggler_cutthroat.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_bloodsalt_warflag_privateer", "category": "monster", "targetId": "bloodsalt_warflag_privateer", "name": "戰旗私掠隊長", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_warflag_privateer.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_blue_lode_golem", "category": "monster", "targetId": "blue_lode_golem", "name": "藍脈晶魔像", "outputPath": "client/public/images/monsters/monster_coast_water_blue_lode_golem.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_blue_mud_saltback", "category": "monster", "targetId": "blue_mud_saltback", "name": "藍泥鹽背獸", "outputPath": "client/public/images/monsters/monster_coast_water_blue_mud_saltback.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_07",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_07.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_black_coral_lurker", "category": "monster", "targetId": "black_coral_lurker", "name": "黑珊瑚潛伏者", "outputPath": "client/public/images/monsters/monster_coast_water_black_coral_lurker.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_bloodsalt_bone_net_murloc", "category": "monster", "targetId": "bloodsalt_bone_net_murloc", "name": "骨網鹽鰓", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_bone_net_murloc.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_bloodsalt_crimson_tide_oracle", "category": "monster", "targetId": "bloodsalt_crimson_tide_oracle", "name": "赤潮血諭者", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_crimson_tide_oracle.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_bloodsalt_ghost_keel_wraith", "category": "monster", "targetId": "bloodsalt_ghost_keel_wraith", "name": "幽艏船怨靈", "outputPath": "client/public/images/monsters/monster_coast_water_bloodsalt_ghost_keel_wraith.png", "row": 1, "column": 1 }
+  ]
+}
