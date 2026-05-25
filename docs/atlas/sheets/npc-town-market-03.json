@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_town_market_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_town_market_03.sheet.png",
+  "targets": [
+    { "assetId": "npc_lakeside_town_bartender", "category": "npc", "targetId": "bartender", "name": "酒保", "outputPath": "client/public/images/npcs/npc_lakeside_town_bartender.png", "row": 0, "column": 0 },
+    { "assetId": "npc_lakeside_town_innkeeper", "category": "npc", "targetId": "innkeeper", "name": "旅館老闆", "outputPath": "client/public/images/npcs/npc_lakeside_town_innkeeper.png", "row": 0, "column": 1 },
+    { "assetId": "npc_lakeside_town_librarian", "category": "npc", "targetId": "librarian", "name": "圖書館員", "outputPath": "client/public/images/npcs/npc_lakeside_town_librarian.png", "row": 1, "column": 0 },
+    { "assetId": "npc_lakeside_town_magic_instructor", "category": "npc", "targetId": "magic_instructor", "name": "魔法導師", "outputPath": "client/public/images/npcs/npc_lakeside_town_magic_instructor.png", "row": 1, "column": 1 }
+  ]
+}

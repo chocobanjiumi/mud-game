@@ -1,0 +1,10 @@
+{
+  "sheetId": "npc_town_market_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_town_market_05.sheet.png",
+  "targets": [
+    { "assetId": "npc_lakeside_town_town_banker", "category": "npc", "targetId": "town_banker", "name": "銀行家", "outputPath": "client/public/images/npcs/npc_lakeside_town_town_banker.png", "row": 0, "column": 0 }
+  ]
+}

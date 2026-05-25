@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_town_market_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_town_market_04.sheet.png",
+  "targets": [
+    { "assetId": "npc_lakeside_town_prison_guard", "category": "npc", "targetId": "prison_guard", "name": "獄卒", "outputPath": "client/public/images/npcs/npc_lakeside_town_prison_guard.png", "row": 0, "column": 0 },
+    { "assetId": "npc_lakeside_town_ranger_instructor", "category": "npc", "targetId": "ranger_instructor", "name": "遊俠教練", "outputPath": "client/public/images/npcs/npc_lakeside_town_ranger_instructor.png", "row": 0, "column": 1 },
+    { "assetId": "npc_lakeside_town_sword_instructor", "category": "npc", "targetId": "sword_instructor", "name": "武技教官", "outputPath": "client/public/images/npcs/npc_lakeside_town_sword_instructor.png", "row": 1, "column": 0 },
+    { "assetId": "npc_lakeside_town_temple_priest", "category": "npc", "targetId": "temple_priest", "name": "神殿祭司", "outputPath": "client/public/images/npcs/npc_lakeside_town_temple_priest.png", "row": 1, "column": 1 }
+  ]
+}

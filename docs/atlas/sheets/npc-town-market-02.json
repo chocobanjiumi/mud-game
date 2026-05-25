@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_town_market_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_town_market_02.sheet.png",
+  "targets": [
+    { "assetId": "npc_arena_quarter_arena_quarter_prize_keeper", "category": "npc", "targetId": "arena_quarter_prize_keeper", "name": "莉塔", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_prize_keeper.png", "row": 0, "column": 0 },
+    { "assetId": "npc_arena_quarter_arena_quarter_strategy_coach", "category": "npc", "targetId": "arena_quarter_strategy_coach", "name": "歐司特", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_strategy_coach.png", "row": 0, "column": 1 },
+    { "assetId": "npc_lakeside_town_appraiser", "category": "npc", "targetId": "appraiser", "name": "裝備鑑定師", "outputPath": "client/public/images/npcs/npc_lakeside_town_appraiser.png", "row": 1, "column": 0 },
+    { "assetId": "npc_lakeside_town_auctioneer", "category": "npc", "targetId": "auctioneer", "name": "拍賣師", "outputPath": "client/public/images/npcs/npc_lakeside_town_auctioneer.png", "row": 1, "column": 1 }
+  ]
+}

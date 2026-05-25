@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_town_market_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_town_market_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_arena_quarter_arena_quarter_arms_referee", "category": "npc", "targetId": "arena_quarter_arms_referee", "name": "格蘭特", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_arms_referee.png", "row": 0, "column": 0 },
+    { "assetId": "npc_arena_quarter_arena_quarter_bookmaker", "category": "npc", "targetId": "arena_quarter_bookmaker", "name": "斐洛", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_bookmaker.png", "row": 0, "column": 1 },
+    { "assetId": "npc_arena_quarter_arena_quarter_gate_steward", "category": "npc", "targetId": "arena_quarter_gate_steward", "name": "卡登", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_gate_steward.png", "row": 1, "column": 0 },
+    { "assetId": "npc_arena_quarter_arena_quarter_healer", "category": "npc", "targetId": "arena_quarter_healer", "name": "瑪琳", "outputPath": "client/public/images/npcs/npc_arena_quarter_arena_quarter_healer.png", "row": 1, "column": 1 }
+  ]
+}
