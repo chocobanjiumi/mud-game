@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_forest_fen_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_forest_fen_02.sheet.png",
+  "targets": [
+    { "assetId": "npc_blackwood_blackwood_hunter_guide", "category": "npc", "targetId": "blackwood_hunter_guide", "name": "瑟恩", "outputPath": "client/public/images/npcs/npc_blackwood_blackwood_hunter_guide.png", "row": 0, "column": 0 },
+    { "assetId": "npc_blackwood_blackwood_witch_supplier", "category": "npc", "targetId": "blackwood_witch_supplier", "name": "芙洛", "outputPath": "client/public/images/npcs/npc_blackwood_blackwood_witch_supplier.png", "row": 0, "column": 1 },
+    { "assetId": "npc_dark_forest_elf_scholar", "category": "npc", "targetId": "elf_scholar", "name": "精靈學者", "outputPath": "client/public/images/npcs/npc_dark_forest_elf_scholar.png", "row": 1, "column": 0 },
+    { "assetId": "npc_dark_forest_forest_ranger", "category": "npc", "targetId": "forest_ranger", "name": "巡林者", "outputPath": "client/public/images/npcs/npc_dark_forest_forest_ranger.png", "row": 1, "column": 1 }
+  ]
+}

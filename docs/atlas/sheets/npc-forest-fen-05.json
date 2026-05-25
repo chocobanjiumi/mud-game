@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_forest_fen_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_forest_fen_05.sheet.png",
+  "targets": [
+    { "assetId": "npc_moonlit_fen_moonlit_fen_moonflower_apothecary", "category": "npc", "targetId": "moonlit_fen_moonflower_apothecary", "name": "露彌", "outputPath": "client/public/images/npcs/npc_moonlit_fen_moonlit_fen_moonflower_apothecary.png", "row": 0, "column": 0 },
+    { "assetId": "npc_moonlit_fen_moonlit_fen_reed_pathfinder", "category": "npc", "targetId": "moonlit_fen_reed_pathfinder", "name": "芙菈", "outputPath": "client/public/images/npcs/npc_moonlit_fen_moonlit_fen_reed_pathfinder.png", "row": 0, "column": 1 },
+    { "assetId": "npc_whispering_valley_whispering_valley_herbalist", "category": "npc", "targetId": "whispering_valley_herbalist", "name": "芙蕾", "outputPath": "client/public/images/npcs/npc_whispering_valley_whispering_valley_herbalist.png", "row": 1, "column": 0 },
+    { "assetId": "npc_whispering_valley_whispering_valley_ranger", "category": "npc", "targetId": "whispering_valley_ranger", "name": "洛岑", "outputPath": "client/public/images/npcs/npc_whispering_valley_whispering_valley_ranger.png", "row": 1, "column": 1 }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_forest_fen_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_forest_fen_04.sheet.png",
+  "targets": [
+    { "assetId": "npc_marsh_of_mirrors_marsh_mirrors_bog_apothecary", "category": "npc", "targetId": "marsh_mirrors_bog_apothecary", "name": "薇妲", "outputPath": "client/public/images/npcs/npc_marsh_of_mirrors_marsh_mirrors_bog_apothecary.png", "row": 0, "column": 0 },
+    { "assetId": "npc_marsh_of_mirrors_marsh_mirrors_pathfinder", "category": "npc", "targetId": "marsh_mirrors_pathfinder", "name": "洛苓", "outputPath": "client/public/images/npcs/npc_marsh_of_mirrors_marsh_mirrors_pathfinder.png", "row": 0, "column": 1 },
+    { "assetId": "npc_marsh_of_mirrors_marsh_mirrors_shrine_keeper", "category": "npc", "targetId": "marsh_mirrors_shrine_keeper", "name": "莫芮", "outputPath": "client/public/images/npcs/npc_marsh_of_mirrors_marsh_mirrors_shrine_keeper.png", "row": 1, "column": 0 },
+    { "assetId": "npc_moonlit_fen_moonlit_fen_canoe_keeper", "category": "npc", "targetId": "moonlit_fen_canoe_keeper", "name": "澤恩", "outputPath": "client/public/images/npcs/npc_moonlit_fen_moonlit_fen_canoe_keeper.png", "row": 1, "column": 1 }
+  ]
+}

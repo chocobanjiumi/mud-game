@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_forest_fen_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_forest_fen_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_amber_forest_amber_forest_claim_surveyor", "category": "npc", "targetId": "amber_forest_claim_surveyor", "name": "伊蓮", "outputPath": "client/public/images/npcs/npc_amber_forest_amber_forest_claim_surveyor.png", "row": 0, "column": 0 },
+    { "assetId": "npc_amber_forest_amber_forest_old_resin_druid", "category": "npc", "targetId": "amber_forest_old_resin_druid", "name": "羅恩", "outputPath": "client/public/images/npcs/npc_amber_forest_amber_forest_old_resin_druid.png", "row": 0, "column": 1 },
+    { "assetId": "npc_amber_forest_amber_forest_resin_broker", "category": "npc", "targetId": "amber_forest_resin_broker", "name": "卡洛", "outputPath": "client/public/images/npcs/npc_amber_forest_amber_forest_resin_broker.png", "row": 1, "column": 0 },
+    { "assetId": "npc_amber_forest_amber_forest_waspkeeper", "category": "npc", "targetId": "amber_forest_waspkeeper", "name": "蜜雅", "outputPath": "client/public/images/npcs/npc_amber_forest_amber_forest_waspkeeper.png", "row": 1, "column": 1 }
+  ]
+}

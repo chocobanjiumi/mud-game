@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_forest_fen_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_forest_fen_03.sheet.png",
+  "targets": [
+    { "assetId": "npc_dark_forest_herb_gatherer", "category": "npc", "targetId": "herb_gatherer", "name": "藥草採集者", "outputPath": "client/public/images/npcs/npc_dark_forest_herb_gatherer.png", "row": 0, "column": 0 },
+    { "assetId": "npc_emerald_canopy_emerald_canopy_birdfolk_guide", "category": "npc", "targetId": "emerald_canopy_birdfolk_guide", "name": "莉亞", "outputPath": "client/public/images/npcs/npc_emerald_canopy_emerald_canopy_birdfolk_guide.png", "row": 0, "column": 1 },
+    { "assetId": "npc_emerald_canopy_emerald_canopy_green_court_listener", "category": "npc", "targetId": "emerald_canopy_green_court_listener", "name": "梅芙", "outputPath": "client/public/images/npcs/npc_emerald_canopy_emerald_canopy_green_court_listener.png", "row": 1, "column": 0 },
+    { "assetId": "npc_emerald_canopy_emerald_canopy_hollow_market_keeper", "category": "npc", "targetId": "emerald_canopy_hollow_market_keeper", "name": "托爾", "outputPath": "client/public/images/npcs/npc_emerald_canopy_emerald_canopy_hollow_market_keeper.png", "row": 1, "column": 1 }
+  ]
+}
