@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_03",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_charcoal_bark_wolf", "category": "monster", "targetId": "charcoal_bark_wolf", "name": "炭皮影狼", "outputPath": "client/public/images/monsters/monster_forest_fen_charcoal_bark_wolf.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_clearwater_slime", "category": "monster", "targetId": "clearwater_slime", "name": "清溪史萊姆", "outputPath": "client/public/images/monsters/monster_forest_fen_clearwater_slime.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_creek_wolf_stalker", "category": "monster", "targetId": "creek_wolf_stalker", "name": "溪影狼", "outputPath": "client/public/images/monsters/monster_forest_fen_creek_wolf_stalker.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_dark_elf_archer", "category": "monster", "targetId": "dark_elf_archer", "name": "暗精靈弓手", "outputPath": "client/public/images/monsters/monster_forest_fen_dark_elf_archer.png", "row": 1, "column": 1 }
+  ]
+}
