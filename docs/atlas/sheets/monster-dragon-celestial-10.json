@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_dragon_celestial_10",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_wyvern", "category": "monster", "targetId": "wyvern", "name": "飛龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_wyvern.png", "row": 0, "column": 0 }
+  ]
+}

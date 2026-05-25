@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_dragon_celestial_11",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_young_dragon", "category": "monster", "targetId": "young_dragon", "name": "幼龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_young_dragon.png", "row": 0, "column": 0 }
+  ]
+}
