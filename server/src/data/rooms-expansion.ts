@@ -2920,11 +2920,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'time_splinter_vault.png',
     imagePrompt: '時間碎片庫 in abyss_rift, vault of floating clock shards and frozen moments, silver purple time splinters in glass cells, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '時空扭曲區東側是一間漂浮封存室，無數鐘面碎片被關在透明晶格裡，指針指向完全不同的年代。某些晶格中封著一秒鐘的火焰、一次未完成的攻擊、或一個即將說出口的名字。封存室中央的裂鐘每敲一次，玩家都會感覺自己剛剛做過的選擇被重新排列。這裡能提供時空任務素材，也能解釋深淵領主如何撕開通往天界的路。晶格後方有多條被剪斷的時間線，末端全都指向領主王座，表示牠曾反覆嘗試尋找勝利的未來。若打開錯誤晶格，房間會倒退到剛進門的一刻，只有被封存的傷痕仍然保留。',
+      '時空扭曲區東側是一間漂浮封存室，無數鐘面碎片被關在透明晶格裡，指針指向完全不同的年代。某些晶格中封著一秒鐘的火焰、一次未完成的攻擊、或一個即將說出口的名字。封存室中央的裂鐘每敲一次，玩家都會感覺自己剛剛做過的選擇被重新排列。北側回聲可聽見迴響庭，但時間線已被剪斷，需經記憶迷宮才能抵達。這裡能提供時空任務素材，也能解釋深淵領主如何撕開通往天界的路。晶格後方有多條被剪斷的時間線，末端全都指向領主王座，表示牠曾反覆嘗試尋找勝利的未來。若打開錯誤晶格，房間會倒退到剛進門的一刻，只有被封存的傷痕仍然保留。',
     exits: [
       { direction: 'west', targetRoomId: 'time_distortion', description: '晶格廊道回到時空扭曲區' },
       { direction: 'south', targetRoomId: 'nightmare_orchard', description: '碎片光流向噩夢果園' },
-      { direction: 'north', targetRoomId: 'echo_court', description: '裂鐘回聲通往迴響庭' },
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
@@ -3031,10 +3030,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'echo_court.png',
     imagePrompt: '迴響庭 in abyss_rift, court of floating stone benches and repeating sound waves, purple echoes of past battles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演冒險者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。迴響庭可以承接調查、審判與救援任務，但過多噪音會召來追逐聲音的虛空行者。若能讓正確回聲重疊，庭院會顯示被抹去隊伍的最後路線，並開啟通往深淵信標的短暫聲橋。審判台後方刻著許多未被聽見的辯詞，暗示深淵連死亡後的聲音也會收割。鐘架仍在等待判決。',
+      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演冒險者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。西側裂鐘聲能對應時間碎片庫，但聲橋不穩，必須回記憶迷宮再下到碎片庫。迴響庭可以承接調查、審判與救援任務，但過多噪音會召來追逐聲音的虛空行者。若能讓正確回聲重疊，庭院會顯示被抹去隊伍的最後路線，並開啟通往深淵信標的短暫聲橋。審判台後方刻著許多未被聽見的辯詞，暗示深淵連死亡後的聲音也會收割。鐘架仍在等待判決。',
     exits: [
       { direction: 'south', targetRoomId: 'memory_maze', description: '回聲廊道回到記憶迷宮' },
-      { direction: 'west', targetRoomId: 'time_splinter_vault', description: '裂鐘聲回到時間碎片庫' },
       { direction: 'north', targetRoomId: 'abyssal_beacon', description: '最響亮的回聲指向深淵信標' },
     ],
     monsters: [
@@ -3060,11 +3058,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'abyssal_beacon.png',
     imagePrompt: '深淵信標 in abyss_rift, tall beacon of black violet light broadcasting dimensional coordinates, rings of eyes and broken antennas, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵領主之間東側矗立著一座黑紫光柱，外層由眼狀符文與破碎天線環繞，像在向遙遠維度發送座標。信標每次閃爍，周圍空間就會浮現其他世界的輪廓：陌生城市、倒置海洋、被黑雪覆蓋的戰場。這裡是裂隙入侵的通訊核心，如果不關閉它，即使擊敗領主也可能只暫時延緩下一波深淵增援。玩家可以 inspect 眼狀符文、天線殘片、光柱節奏與地面焦痕來判斷召喚週期，也能 search 基座暗槽尋找跨區傳送任務材料。若隊伍忽略信標脈衝，混沌之子會沿著座標裂縫反覆湧入；若先破壞外層符文再處理核心，就能取得穩定樣本並記錄下一波入侵方向。',
+      '深淵領主之間東側矗立著一座黑紫光柱，外層由眼狀符文與破碎天線環繞，像在向遙遠維度發送座標。信標每次閃爍，周圍空間就會浮現其他世界的輪廓：陌生城市、倒置海洋、被黑雪覆蓋的戰場。北側光柱指向破封尖塔，但能量纜線不可攀行，需回領主之間再從塔基上去。這裡是裂隙入侵的通訊核心，如果不關閉它，即使擊敗領主也可能只暫時延緩下一波深淵增援。玩家可以 inspect 眼狀符文、天線殘片、光柱節奏與地面焦痕來判斷召喚週期，也能 search 基座暗槽尋找跨區傳送任務材料。若隊伍忽略信標脈衝，混沌之子會沿著座標裂縫反覆湧入；若先破壞外層符文再處理核心，就能取得穩定樣本並記錄下一波入侵方向。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_lord_chamber', description: '光柱基座回到領主之間' },
       { direction: 'south', targetRoomId: 'echo_court', description: '信標回聲落向迴響庭' },
-      { direction: 'north', targetRoomId: 'sealbreak_spire', description: '光柱頂端連著破封尖塔' },
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 70 },
@@ -3088,10 +3085,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'sealbreak_spire.png',
     imagePrompt: '破封尖塔 in abyss_rift, jagged spire piercing void ceiling, shattered seals, black lightning, doorway toward celestial light above, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵領主王座北方有一座尖塔倒插進虛空穹頂，塔身掛滿被撕開的封印布與斷裂聖釘。黑色閃電沿塔面向上爬升，最頂端透出一線刺眼白光，那正是通往天界遺跡的裂口。塔內每一層都刻著領主嘗試破封的紀錄，從粗糙咒文到精密維度公式逐步演變。這裡是深淵裂隙的大型事件鉤子，也是本區通往下一大區的敘事銜接。尖塔外壁仍殘留天界防衛反擊造成的白色灼痕，玩家可以從中看出上方並非安全出口，而是另一場戰爭的邊界。塔心還懸著半枚破碎聖印，正在被信標脈衝一點點染黑。',
+      '深淵領主王座北方有一座尖塔倒插進虛空穹頂，塔身掛滿被撕開的封印布與斷裂聖釘。黑色閃電沿塔面向上爬升，最頂端透出一線刺眼白光，那正是通往天界遺跡的裂口。東側信標光纜纏向塔身但會切碎接近者，實際仍需從領主之間進出塔基。塔內每一層都刻著領主嘗試破封的紀錄，從粗糙咒文到精密維度公式逐步演變。這裡是深淵裂隙的大型事件鉤子，也是本區通往下一大區的敘事銜接。尖塔外壁仍殘留天界防衛反擊造成的白色灼痕，玩家可以從中看出上方並非安全出口，而是另一場戰爭的邊界。塔心還懸著半枚破碎聖印，正在被信標脈衝一點點染黑。',
     exits: [
       { direction: 'south', targetRoomId: 'abyss_lord_chamber', description: '沿塔基回到領主之間' },
-      { direction: 'east', targetRoomId: 'abyssal_beacon', description: '信標光纜纏向塔身' },
     ],
     monsters: [
       { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
