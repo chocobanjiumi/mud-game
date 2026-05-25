@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_20",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_20.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_serpent_delta_mudfish_ambusher", "category": "monster", "targetId": "serpent_delta_mudfish_ambusher", "name": "泥魚伏擊者", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_mudfish_ambusher.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_serpent_delta_reed_constrictor", "category": "monster", "targetId": "serpent_delta_reed_constrictor", "name": "蘆岸絞蛇", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_reed_constrictor.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_serpent_delta_shrine_mask_acolyte", "category": "monster", "targetId": "serpent_delta_shrine_mask_acolyte", "name": "蛇祠面具侍者", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_shrine_mask_acolyte.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_serpent_delta_stilt_scaleguard", "category": "monster", "targetId": "serpent_delta_stilt_scaleguard", "name": "吊腳鱗衛", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_stilt_scaleguard.png", "row": 1, "column": 1 }
+  ]
+}

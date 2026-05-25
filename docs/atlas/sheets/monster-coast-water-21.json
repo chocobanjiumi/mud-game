@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_21",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_21.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_shellcourt_crab_guard", "category": "monster", "targetId": "shellcourt_crab_guard", "name": "貝庭甲蟹衛", "outputPath": "client/public/images/monsters/monster_coast_water_shellcourt_crab_guard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_silt_tide_serpent", "category": "monster", "targetId": "silt_tide_serpent", "name": "淤潮蛇", "outputPath": "client/public/images/monsters/monster_coast_water_silt_tide_serpent.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_storm_gull", "category": "monster", "targetId": "storm_gull", "name": "暴風海鷗", "outputPath": "client/public/images/monsters/monster_coast_water_storm_gull.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_tidal_throne_leviathan", "category": "monster", "targetId": "tidal_throne_leviathan", "name": "潮汐王座利維坦", "outputPath": "client/public/images/monsters/monster_coast_water_tidal_throne_leviathan.png", "row": 1, "column": 1 }
+  ]
+}

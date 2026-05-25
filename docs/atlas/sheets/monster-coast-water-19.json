@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_coast_water_19",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_coast_water_19.sheet.png",
+  "targets": [
+    { "assetId": "monster_coast_water_serpent_delta_egg_mound_broodmother", "category": "monster", "targetId": "serpent_delta_egg_mound_broodmother", "name": "蛇卵丘育母", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_egg_mound_broodmother.png", "row": 0, "column": 0 },
+    { "assetId": "monster_coast_water_serpent_delta_mangrove_rootbinder", "category": "monster", "targetId": "serpent_delta_mangrove_rootbinder", "name": "紅樹縛根靈", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_mangrove_rootbinder.png", "row": 0, "column": 1 },
+    { "assetId": "monster_coast_water_serpent_delta_manymouth_hydra", "category": "monster", "targetId": "serpent_delta_manymouth_hydra", "name": "百口河蛇", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_manymouth_hydra.png", "row": 1, "column": 0 },
+    { "assetId": "monster_coast_water_serpent_delta_moon_net_slinger", "category": "monster", "targetId": "serpent_delta_moon_net_slinger", "name": "月釣網手", "outputPath": "client/public/images/monsters/monster_coast_water_serpent_delta_moon_net_slinger.png", "row": 1, "column": 1 }
+  ]
+}
