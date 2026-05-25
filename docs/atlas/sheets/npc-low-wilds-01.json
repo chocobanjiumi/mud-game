@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_low_wilds_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_low_wilds_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_old_farmland_old_farmland_caretaker", "category": "npc", "targetId": "old_farmland_caretaker", "name": "葛倫", "outputPath": "client/public/images/npcs/npc_old_farmland_old_farmland_caretaker.png", "row": 0, "column": 0 },
+    { "assetId": "npc_old_farmland_old_farmland_seed_peddler", "category": "npc", "targetId": "old_farmland_seed_peddler", "name": "米拉", "outputPath": "client/public/images/npcs/npc_old_farmland_old_farmland_seed_peddler.png", "row": 0, "column": 1 },
+    { "assetId": "npc_pilgrim_road_pilgrim_road_caravan_supplier", "category": "npc", "targetId": "pilgrim_road_caravan_supplier", "name": "米蓮", "outputPath": "client/public/images/npcs/npc_pilgrim_road_pilgrim_road_caravan_supplier.png", "row": 1, "column": 0 },
+    { "assetId": "npc_pilgrim_road_pilgrim_road_cemetery_keeper", "category": "npc", "targetId": "pilgrim_road_cemetery_keeper", "name": "索蘭", "outputPath": "client/public/images/npcs/npc_pilgrim_road_pilgrim_road_cemetery_keeper.png", "row": 1, "column": 1 }
+  ]
+}

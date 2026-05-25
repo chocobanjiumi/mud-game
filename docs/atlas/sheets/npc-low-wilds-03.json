@@ -1,0 +1,11 @@
+{
+  "sheetId": "npc_low_wilds_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_low_wilds_03.sheet.png",
+  "targets": [
+    { "assetId": "npc_wildgrass_hills_wildgrass_hills_pathfinder", "category": "npc", "targetId": "wildgrass_hills_pathfinder", "name": "希洛", "outputPath": "client/public/images/npcs/npc_wildgrass_hills_wildgrass_hills_pathfinder.png", "row": 0, "column": 0 },
+    { "assetId": "npc_wildgrass_hills_wildgrass_hills_trapper", "category": "npc", "targetId": "wildgrass_hills_trapper", "name": "瑪妲", "outputPath": "client/public/images/npcs/npc_wildgrass_hills_wildgrass_hills_trapper.png", "row": 0, "column": 1 }
+  ]
+}
