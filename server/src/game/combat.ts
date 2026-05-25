@@ -256,17 +256,6 @@ export class CombatEngine {
 
     session.state.pendingActions.set(action.actorId, action);
 
-    // 檢查是否所有存活的玩家都已提交（怪物由系統自動處理）
-    const alivePlayers = session.state.playerTeam.filter(p => !p.isDead);
-    const allSubmitted = alivePlayers.every(p =>
-      session.state.pendingActions.has(p.id),
-    );
-
-    if (allSubmitted) {
-      // 所有玩家已提交，立即結算（不等計時器）
-      this.resolveRound(session);
-    }
-
     return true;
   }
 

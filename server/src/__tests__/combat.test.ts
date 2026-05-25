@@ -73,6 +73,10 @@ function makeMonsterInstance(overrides: Partial<MonsterDef> = {}): MonsterInstan
   };
 }
 
+function advanceCombatTick(): void {
+  vi.advanceTimersByTime(5000);
+}
+
 // ============================================================
 //  Tests
 // ============================================================
@@ -268,6 +272,37 @@ describe('CombatEngine', () => {
       expect(accepted).toBe(true);
     });
 
+    it('queues actions until the combat tick and lets later submissions override earlier ones', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({ stats: { str: 50, int: 5, dex: 100, vit: 10, luk: 5 } });
+      const m1 = makeMonsterInstance({ id: 'queued_target_1', name: 'Queued Target 1', hp: 999, dex: 1 });
+      const m2 = makeMonsterInstance({ id: 'queued_target_2', name: 'Queued Target 2', hp: 999, dex: 1 });
+      m2.instanceId = 'queued_target_2_1';
+
+      const combatId = engine.startCombat([player], [m1, m2]);
+      const state = engine.getCombatState(combatId)!;
+
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'attack',
+        targetId: m1.instanceId,
+      })).toBe(true);
+      expect(engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'attack',
+        targetId: m2.instanceId,
+      })).toBe(true);
+
+      expect(state.enemyTeam[0].hp).toBe(999);
+      expect(state.enemyTeam[1].hp).toBe(999);
+
+      advanceCombatTick();
+
+      expect(state.enemyTeam[0].hp).toBe(999);
+      expect(state.enemyTeam[1].hp).toBeLessThan(999);
+      vi.restoreAllMocks();
+    });
+
     it('tracks skill cooldowns and rejects reuse while cooling down', () => {
       const player = makeCharacter({
         resource: 100,
@@ -285,6 +320,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       })).toBe(true);
 
+      expect(engine.getSkillCooldownRemaining(combatId, player.id, 'power_strike')).toBe(0);
+      advanceCombatTick();
       expect(engine.getSkillCooldownRemaining(combatId, player.id, 'power_strike')).toBeGreaterThan(0);
       expect(engine.submitAction(combatId, {
         actorId: player.id,
@@ -332,6 +369,8 @@ describe('CombatEngine', () => {
 
       const state = engine.getCombatState(combatId)!;
       expect(accepted).toBe(true);
+      expect(state.enemyTeam[0].pendingTelegraph).toBeDefined();
+      advanceCombatTick();
       expect(state.enemyTeam[0].pendingTelegraph).toBeUndefined();
       expect(state.actionLog.some(line => line.includes('打斷'))).toBe(true);
     });
@@ -361,6 +400,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       })).toBe(true);
 
+      expect(state.actionLog.some(line => line.includes('被沉默'))).toBe(false);
+      advanceCombatTick();
       expect(state.actionLog.some(line => line.includes('被沉默'))).toBe(true);
       expect(engine.getSkillCooldownRemaining(combatId, player.id, 'power_strike')).toBe(0);
     });
@@ -384,6 +425,8 @@ describe('CombatEngine', () => {
         engine.submitAction(combatId, { actorId: taunter.id, type: 'defend' });
         engine.submitAction(combatId, { actorId: ally.id, type: 'defend' });
 
+        expect(state.playerTeam.find(player => player.id === taunter.id)!.hp).toBe(taunter.maxHp);
+        advanceCombatTick();
         expect(state.playerTeam.find(player => player.id === taunter.id)!.hp).toBeLessThan(taunter.maxHp);
         expect(state.playerTeam.find(player => player.id === ally.id)!.hp).toBe(ally.maxHp);
       } finally {
@@ -417,6 +460,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       });
 
+      expect(state.enemyTeam[0].activeEffects.some(effect => effect.type === 'shield')).toBe(true);
+      advanceCombatTick();
       expect(state.enemyTeam[0].activeEffects.some(effect => effect.type === 'shield')).toBe(false);
       expect(state.actionLog.some(line => line.includes('粉碎'))).toBe(true);
     });
@@ -443,6 +488,8 @@ describe('CombatEngine', () => {
         skillId: 'blade_aura',
       });
 
+      expect(state.enemyTeam[0].hp).toBe(999);
+      advanceCombatTick();
       expect(state.enemyTeam[0].hp).toBeLessThan(999);
       expect(state.enemyTeam[1].hp).toBeLessThan(999);
       vi.restoreAllMocks();
@@ -471,6 +518,7 @@ describe('CombatEngine', () => {
 
       const state = engine.getCombatState(combatId)!;
       expect(accepted).toBe(true);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBe(5);
       expect(state.playerTeam[0].mp).toBe(5);
       vi.restoreAllMocks();
@@ -496,6 +544,8 @@ describe('CombatEngine', () => {
       });
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBe(0);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBeGreaterThan(0);
       expect(state.actionLog.some(line => line.includes('怒氣'))).toBe(true);
       vi.restoreAllMocks();
@@ -521,6 +571,8 @@ describe('CombatEngine', () => {
       });
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBe(50);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBeGreaterThan(50);
       expect(state.actionLog.some(line => line.includes('專注'))).toBe(true);
       vi.restoreAllMocks();
@@ -553,6 +605,8 @@ describe('CombatEngine', () => {
       });
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBe(50);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBeLessThan(38);
       expect(state.actionLog.some(line => line.includes('魔力護盾消耗'))).toBe(true);
       vi.restoreAllMocks();
@@ -581,6 +635,8 @@ describe('CombatEngine', () => {
       });
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].resource).toBe(50);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBe(38);
       expect(state.actionLog.some(line => line.includes('魔力回復'))).toBe(true);
       vi.restoreAllMocks();
@@ -614,6 +670,8 @@ describe('CombatEngine', () => {
         targetId: player.id,
       });
 
+      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'poison')).toBe(true);
+      advanceCombatTick();
       expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'poison')).toBe(false);
       expect(state.actionLog.some(line => line.includes('淨化'))).toBe(true);
       vi.restoreAllMocks();
@@ -644,6 +702,7 @@ describe('CombatEngine', () => {
         skillId: 'power_strike',
         targetId: normalMonster.instanceId,
       });
+      advanceCombatTick();
       const normalDamage = 500 - engine.getCombatState(normalCombatId)!.enemyTeam[0].hp;
 
       const tauntCombatId = engine.startCombat([tauntWarrior], [tauntedMonster]);
@@ -661,6 +720,7 @@ describe('CombatEngine', () => {
         skillId: 'power_strike',
         targetId: tauntedMonster.instanceId,
       });
+      advanceCombatTick();
       const tauntedDamage = 500 - tauntState.enemyTeam[0].hp;
 
       expect(tauntedDamage).toBeGreaterThan(normalDamage);
@@ -686,6 +746,8 @@ describe('CombatEngine', () => {
         targetId: ranger.id,
       });
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(false);
+      advanceCombatTick();
       expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(true);
 
       engine.submitAction(combatId, {
@@ -695,6 +757,7 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       });
 
+      advanceCombatTick();
       expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(false);
       expect(state.actionLog.some(line => line.includes('蓄勢射擊'))).toBe(true);
       vi.restoreAllMocks();
@@ -730,6 +793,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       });
 
+      expect(state.playerTeam[0].resource).toBe(30);
+      advanceCombatTick();
       expect(state.playerTeam[0].resource).toBeGreaterThan(30);
       expect(state.actionLog.some(line => line.includes('命中逼近目標後恢復'))).toBe(true);
       vi.restoreAllMocks();
@@ -762,6 +827,7 @@ describe('CombatEngine', () => {
         skillId: 'holy_light',
         targetId: undead.instanceId,
       });
+      advanceCombatTick();
       const holyDamage = 500 - state.enemyTeam[0].hp;
 
       engine.submitAction(combatId, {
@@ -770,6 +836,7 @@ describe('CombatEngine', () => {
         skillId: 'purify',
         targetId: undead.instanceId,
       });
+      advanceCombatTick();
       const purifyDamage = 500 - state.enemyTeam[0].hp - holyDamage;
 
       expect(holyDamage).toBeGreaterThan(0);
@@ -815,6 +882,8 @@ describe('CombatEngine', () => {
       });
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.playerTeam.find(player => player.id === warrior.id)!.activeEffects.find(effect => effect.type === 'damage_reduction')?.value).toBeUndefined();
+      advanceCombatTick();
       expect(state.playerTeam.find(player => player.id === warrior.id)!.activeEffects.find(effect => effect.type === 'damage_reduction')?.value).toBe(20);
       expect(state.playerTeam.find(player => player.id === ally.id)!.activeEffects.some(effect => effect.type === 'damage_reduction' && effect.value === 10)).toBe(true);
       vi.restoreAllMocks();
@@ -841,6 +910,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       });
 
+      expect(state.enemyTeam[0].activeEffects.find(effect => effect.type === 'atk_down')?.value).toBeUndefined();
+      advanceCombatTick();
       expect(state.enemyTeam[0].activeEffects.find(effect => effect.type === 'atk_down')?.value).toBe(18);
       vi.restoreAllMocks();
     });
@@ -909,6 +980,8 @@ describe('CombatEngine', () => {
       })).toBe(true);
 
       const state = engine.getCombatState(combatId)!;
+      expect(state.enemyTeam[0].hp).toBe(120);
+      advanceCombatTick();
       expect(state.enemyTeam[0].hp).toBeLessThan(120);
       expect(state.actionLog.some(line => line.includes('格擋傷害降低'))).toBe(true);
       expect(state.actionLog.some(line => line.includes('反擊Block Test Ogre'))).toBe(true);
@@ -1067,8 +1140,8 @@ describe('CombatEngine', () => {
         targetId: monster.instanceId,
       });
 
-      // Resolution should happen (all players submitted)
-      // Check the action log for order
+      // Resolution happens on the next combat tick.
+      advanceCombatTick();
       const state = engine.getCombatState(combatId);
       if (state) {
         // FastHero (dex 50) should appear before SlowHero (dex 1) in logs
