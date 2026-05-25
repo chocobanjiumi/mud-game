@@ -1,0 +1,10 @@
+{
+  "sheetId": "monster_fire_ash_12",
+  "category": "monster",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_sunfire_glasswyrm", "category": "monster", "targetId": "sunfire_glasswyrm", "name": "日火琉璃龍", "outputPath": "client/public/images/monsters/monster_fire_ash_sunfire_glasswyrm.png", "row": 0, "column": 0 }
+  ]
+}

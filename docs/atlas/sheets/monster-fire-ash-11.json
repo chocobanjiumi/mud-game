@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_shardback_scarab", "category": "monster", "targetId": "shardback_scarab", "name": "碎背琉璃甲蟲", "outputPath": "client/public/images/monsters/monster_fire_ash_shardback_scarab.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_slagplate_colossus", "category": "monster", "targetId": "slagplate_colossus", "name": "渣甲巨像", "outputPath": "client/public/images/monsters/monster_fire_ash_slagplate_colossus.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_solar_forge_elemental", "category": "monster", "targetId": "solar_forge_elemental", "name": "日輪熔火元素", "outputPath": "client/public/images/monsters/monster_fire_ash_solar_forge_elemental.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_sulfur_steam_crawler", "category": "monster", "targetId": "sulfur_steam_crawler", "name": "硫煙爬蟲", "outputPath": "client/public/images/monsters/monster_fire_ash_sulfur_steam_crawler.png", "row": 1, "column": 1 }
+  ]
+}

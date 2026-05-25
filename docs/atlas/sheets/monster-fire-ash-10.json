@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_fire_ash_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_fire_ash_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_fire_ash_prism_golem_warden", "category": "monster", "targetId": "prism_golem_warden", "name": "稜鏡魔像守衛", "outputPath": "client/public/images/monsters/monster_fire_ash_prism_golem_warden.png", "row": 0, "column": 0 },
+    { "assetId": "monster_fire_ash_red_ore_golem", "category": "monster", "targetId": "red_ore_golem", "name": "赤礦岩巨像", "outputPath": "client/public/images/monsters/monster_fire_ash_red_ore_golem.png", "row": 0, "column": 1 },
+    { "assetId": "monster_fire_ash_redscale_viper", "category": "monster", "targetId": "redscale_viper", "name": "赤鱗毒蛇", "outputPath": "client/public/images/monsters/monster_fire_ash_redscale_viper.png", "row": 1, "column": 0 },
+    { "assetId": "monster_fire_ash_rock_giant", "category": "monster", "targetId": "rock_giant", "name": "岩石巨人", "outputPath": "client/public/images/monsters/monster_fire_ash_rock_giant.png", "row": 1, "column": 1 }
+  ]
+}
