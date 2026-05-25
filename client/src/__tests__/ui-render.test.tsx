@@ -348,11 +348,27 @@ describe('key UI component rendering', () => {
         inCombat
         combat={null}
         learnedSkills={[
+          { skillId: 'precise_shot', level: 1, currentCooldown: 0 },
           { skillId: 'fireball', level: 1, currentCooldown: 0 },
           { skillId: 'poison_arrow', level: 1, currentCooldown: 0 },
           { skillId: 'critical_edge', level: 1, currentCooldown: 0 },
         ]}
         initialLane="north"
+      />,
+    );
+    const northSelectedCombatDetailHtml = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={room}
+        inCombat
+        combat={null}
+        learnedSkills={[
+          { skillId: 'precise_shot', level: 1, currentCooldown: 0 },
+          { skillId: 'fireball', level: 1, currentCooldown: 0 },
+          { skillId: 'poison_arrow', level: 1, currentCooldown: 0 },
+          { skillId: 'critical_edge', level: 1, currentCooldown: 0 },
+        ]}
+        initialLane="north"
+        initialAdjacentTargetId="wild_rabbit_1"
       />,
     );
 
@@ -370,9 +386,16 @@ describe('key UI component rendering', () => {
     expect(eastDetailHtml).toContain('cross-room-action-scout');
     expect(eastDetailHtml).toContain('偵查');
     expect(eastDetailHtml).toContain('伏擊陷阱');
-    expect(northCombatDetailHtml).toContain('火球術');
-    expect(northCombatDetailHtml).toContain('獵人標記');
+    expect(northCombatDetailHtml).toContain('點擊怪物頭像後可使用隔房單體技能。');
+    expect(northCombatDetailHtml).not.toContain('>射擊</button>');
+    expect(northCombatDetailHtml).not.toContain('火球術');
+    expect(northCombatDetailHtml).not.toContain('獵人標記');
     expect(northCombatDetailHtml).toContain('多重射擊');
+    expect(northSelectedCombatDetailHtml).toContain('單體目標：野兔#1');
+    expect(northSelectedCombatDetailHtml).toContain('>射擊</button>');
+    expect(northSelectedCombatDetailHtml).toContain('火球術');
+    expect(northSelectedCombatDetailHtml).toContain('獵人標記');
+    expect(northSelectedCombatDetailHtml).toContain('多重射擊');
   });
 
   it('renders monster detail modal with expanded monster information', () => {

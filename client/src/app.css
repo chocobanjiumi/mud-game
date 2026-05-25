@@ -545,6 +545,12 @@ input::placeholder {
   background: rgba(255, 94, 94, 0.12);
 }
 
+.cross-room-target-active {
+  border-color: rgba(255, 184, 0, 0.72);
+  background: rgba(255, 184, 0, 0.10);
+  box-shadow: 0 0 0 1px rgba(255, 184, 0, 0.14);
+}
+
 .cross-room-target img,
 .cross-room-target > span {
   width: 32px;

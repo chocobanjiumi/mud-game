@@ -59,6 +59,7 @@ export function CrossRoomCombatPanelView({
   canScout = false,
   learnedSkills = [],
   initialLane = 'self',
+  initialAdjacentTargetId = null,
 }: {
   room: RoomInfo;
   inCombat: boolean;
@@ -66,8 +67,10 @@ export function CrossRoomCombatPanelView({
   canScout?: boolean;
   learnedSkills?: LearnedSkill[];
   initialLane?: LaneId;
+  initialAdjacentTargetId?: string | null;
 }) {
   const [selectedLane, setSelectedLaneState] = useState<LaneId>(initialLane);
+  const [selectedAdjacentTargetId, setSelectedAdjacentTargetId] = useState<string | null>(initialAdjacentTargetId);
   const setSelectedCrossRoomDirection = useGameStore((s) => s.setSelectedCrossRoomDirection);
   const roomMonsters = getRoomMonsters(room);
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
@@ -79,6 +82,7 @@ export function CrossRoomCombatPanelView({
 
   const setSelectedLane = (lane: LaneId) => {
     setSelectedLaneState(lane);
+    if (lane !== selectedLane) setSelectedAdjacentTargetId(null);
     setSelectedCrossRoomDirection(lane === 'self' ? null : lane);
   };
 
@@ -152,6 +156,8 @@ export function CrossRoomCombatPanelView({
             canScout={canScout}
             learnedSkills={learnedSkills}
             inCombat={inCombat}
+            selectedTargetId={selectedAdjacentTargetId}
+            onSelectTarget={setSelectedAdjacentTargetId}
             onSelectDirection={() => setSelectedLane(selectedLane)}
           />
         )}
@@ -257,6 +263,8 @@ function AdjacentRoomPreview({
   canScout,
   learnedSkills,
   inCombat,
+  selectedTargetId,
+  onSelectTarget,
   onSelectDirection,
 }: {
   direction: CardinalDirection;
@@ -266,6 +274,8 @@ function AdjacentRoomPreview({
   canScout: boolean;
   learnedSkills: LearnedSkill[];
   inCombat: boolean;
+  selectedTargetId: string | null;
+  onSelectTarget: (targetId: string | null) => void;
   onSelectDirection: () => void;
 }) {
   const passable = neighbor?.passable ?? Boolean(exit);
@@ -274,7 +284,8 @@ function AdjacentRoomPreview({
   }
   const roomTitle = neighbor?.roomName ?? directionTitle(exit, direction);
   const monsters = neighbor?.monsters ?? [];
-  const skillActions = buildAdjacentSkillActions(learnedSkills, direction, Boolean(neighbor?.scouted), inCombat, canScout);
+  const selectedTarget = monsters.find((monster) => monster.id === selectedTargetId) ?? null;
+  const skillActions = buildAdjacentSkillActions(learnedSkills, direction, Boolean(neighbor?.scouted), inCombat, canScout, selectedTarget);
 
   return (
     <div className="cross-room-adjacent">
@@ -298,9 +309,18 @@ function AdjacentRoomPreview({
               <MonsterChip
                 key={monster.id}
                 monster={monster}
-                onClick={onSelectDirection}
+                active={selectedTargetId === monster.id}
+                onClick={() => {
+                  onSelectDirection();
+                  onSelectTarget(monster.id);
+                }}
               />
             ))}
+          </div>
+        )}
+        {monsters.length > 0 && (
+          <div className="cross-room-adjacent-note">
+            {selectedTarget ? `單體目標：${selectedTarget.label ?? selectedTarget.name}` : '點擊怪物頭像後可使用隔房單體技能。'}
           </div>
         )}
       </div>
@@ -344,6 +364,7 @@ function buildAdjacentSkillActions(
   scouted: boolean,
   inCombat: boolean,
   canScoutFallback: boolean,
+  selectedTarget: NearbyCombatMonsterPayload | null,
 ): AdjacentSkillAction[] {
   const actions: AdjacentSkillAction[] = [];
   const hasScout = canScoutFallback || learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
@@ -357,8 +378,8 @@ function buildAdjacentSkillActions(
     const def = SKILL_DEFS[learned.skillId];
     if (!def || def.type !== 'active') continue;
     if (!canUseInCurrentContext(def, inCombat)) continue;
-    if (!isAdjacentDetailSkill(def, scouted)) continue;
-    actions.push(createAdjacentSkillAction(def, direction));
+    if (!isAdjacentDetailSkill(def, scouted, selectedTarget)) continue;
+    actions.push(createAdjacentSkillAction(def, direction, undefined, selectedTarget));
   }
 
   return actions;
@@ -369,23 +390,32 @@ function canUseInCurrentContext(def: SkillDef, inCombat: boolean): boolean {
   return def.usageContext === 'field' || def.usageContext === 'both';
 }
 
-function isAdjacentDetailSkill(def: SkillDef, scouted: boolean): boolean {
+function isAdjacentDetailSkill(def: SkillDef, scouted: boolean, selectedTarget: NearbyCombatMonsterPayload | null): boolean {
   if (def.special?.areaScope === 'adjacent_cardinal') return false;
   if (def.special?.scoutDirection) return !scouted;
   if (def.special?.trapExit) return true;
-  if (def.special?.crossRoomRequiresScout) return scouted;
-  return Boolean(def.special?.crossRoom);
+  if (def.special?.crossRoomRequiresScout && !scouted) return false;
+  if (def.special?.crossRoom || def.special?.crossRoomRequiresScout) {
+    return def.targetType === 'single_enemy' ? Boolean(selectedTarget) : true;
+  }
+  return false;
 }
 
-function createAdjacentSkillAction(def: SkillDef, direction: CardinalDirection, tone?: 'scout'): AdjacentSkillAction {
+function createAdjacentSkillAction(
+  def: SkillDef,
+  direction: CardinalDirection,
+  tone?: 'scout',
+  selectedTarget?: NearbyCombatMonsterPayload | null,
+): AdjacentSkillAction {
   const directionArg = def.special?.crossRoom || def.special?.crossRoomRequiresScout
     ? `direction:${direction}`
     : direction;
+  const targetArg = selectedTarget && def.targetType === 'single_enemy' ? ` ${selectedTarget.id}` : '';
   return {
     skillId: def.id,
     label: def.name,
-    command: `skill ${def.id} ${directionArg}`,
-    echo: `${def.name} ${DIRECTION_LABEL[direction]}側`,
+    command: `skill ${def.id} ${directionArg}${targetArg}`,
+    echo: `${def.name} ${selectedTarget?.label ?? `${DIRECTION_LABEL[direction]}側`}`,
     title: def.shortDescription,
     tone,
   };
@@ -393,14 +423,16 @@ function createAdjacentSkillAction(def: SkillDef, direction: CardinalDirection, 
 
 function MonsterChip({
   monster,
+  active = false,
   onClick,
 }: {
   monster: NearbyCombatMonsterPayload;
+  active?: boolean;
   onClick: () => void;
 }) {
   const image = getMonsterImagePath(monster.monsterId) ?? monster.image;
   return (
-    <button type="button" className="cross-room-target" onClick={onClick}>
+    <button type="button" className={`cross-room-target ${active ? 'cross-room-target-active' : ''}`} onClick={onClick}>
       {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
       <small>{monster.label ?? monster.name}</small>
       <small className="cross-room-hp">HP {monster.hp}/{monster.maxHp}</small>
