@@ -1,0 +1,18 @@
+{
+  "sheetId": "monster_town_market_01",
+  "category": "monster",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_town_market_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_town_market_arena_blade_duelist", "category": "monster", "targetId": "arena_blade_duelist", "name": "鋼刃決鬥者", "outputPath": "client/public/images/monsters/monster_town_market_arena_blade_duelist.png", "row": 0, "column": 0 },
+    { "assetId": "monster_town_market_arena_chain_beast", "category": "monster", "targetId": "arena_chain_beast", "name": "鎖鏈鬥獸", "outputPath": "client/public/images/monsters/monster_town_market_arena_chain_beast.png", "row": 0, "column": 1 },
+    { "assetId": "monster_town_market_arena_grand_champion", "category": "monster", "targetId": "arena_grand_champion", "name": "中央競技冠軍", "outputPath": "client/public/images/monsters/monster_town_market_arena_grand_champion.png", "row": 0, "column": 2 },
+    { "assetId": "monster_town_market_arena_masked_challenger", "category": "monster", "targetId": "arena_masked_challenger", "name": "面具挑戰者", "outputPath": "client/public/images/monsters/monster_town_market_arena_masked_challenger.png", "row": 1, "column": 0 },
+    { "assetId": "monster_town_market_arena_rookie_mage", "category": "monster", "targetId": "arena_rookie_mage", "name": "見習場術士", "outputPath": "client/public/images/monsters/monster_town_market_arena_rookie_mage.png", "row": 1, "column": 1 },
+    { "assetId": "monster_town_market_arena_sand_brawler", "category": "monster", "targetId": "arena_sand_brawler", "name": "沙地拳鬥士", "outputPath": "client/public/images/monsters/monster_town_market_arena_sand_brawler.png", "row": 1, "column": 2 },
+    { "assetId": "monster_town_market_arena_shield_breaker", "category": "monster", "targetId": "arena_shield_breaker", "name": "破盾重衛", "outputPath": "client/public/images/monsters/monster_town_market_arena_shield_breaker.png", "row": 2, "column": 0 },
+    { "assetId": "monster_town_market_arena_training_dummy", "category": "monster", "targetId": "arena_training_dummy", "name": "強化訓練木人", "outputPath": "client/public/images/monsters/monster_town_market_arena_training_dummy.png", "row": 2, "column": 1 },
+    { "assetId": "monster_town_market_arena_veteran_gladiator", "category": "monster", "targetId": "arena_veteran_gladiator", "name": "老練角鬥士", "outputPath": "client/public/images/monsters/monster_town_market_arena_veteran_gladiator.png", "row": 2, "column": 2 }
+  ]
+}

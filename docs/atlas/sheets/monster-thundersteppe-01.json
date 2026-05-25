@@ -1,0 +1,18 @@
+{
+  "sheetId": "monster_thundersteppe_01",
+  "category": "monster",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_thundersteppe_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_thundersteppe_dragonstorm_avatar", "category": "monster", "targetId": "dragonstorm_avatar", "name": "龍雷化身", "outputPath": "client/public/images/monsters/monster_thundersteppe_dragonstorm_avatar.png", "row": 0, "column": 0 },
+    { "assetId": "monster_thundersteppe_rodfield_stormcaller", "category": "monster", "targetId": "rodfield_stormcaller", "name": "引雷喚雷者", "outputPath": "client/public/images/monsters/monster_thundersteppe_rodfield_stormcaller.png", "row": 0, "column": 1 },
+    { "assetId": "monster_thundersteppe_stormglass_colossus", "category": "monster", "targetId": "stormglass_colossus", "name": "風暴玻岩巨像", "outputPath": "client/public/images/monsters/monster_thundersteppe_stormglass_colossus.png", "row": 0, "column": 2 },
+    { "assetId": "monster_thundersteppe_stormgrass_strider", "category": "monster", "targetId": "stormgrass_strider", "name": "雷草疾行獸", "outputPath": "client/public/images/monsters/monster_thundersteppe_stormgrass_strider.png", "row": 1, "column": 0 },
+    { "assetId": "monster_thundersteppe_stormpack_wolf", "category": "monster", "targetId": "stormpack_wolf", "name": "風暴狼群", "outputPath": "client/public/images/monsters/monster_thundersteppe_stormpack_wolf.png", "row": 1, "column": 1 },
+    { "assetId": "monster_thundersteppe_stormwing_eagle", "category": "monster", "targetId": "stormwing_eagle", "name": "暴羽雷鷹", "outputPath": "client/public/images/monsters/monster_thundersteppe_stormwing_eagle.png", "row": 1, "column": 2 },
+    { "assetId": "monster_thundersteppe_thunder_eagle", "category": "monster", "targetId": "thunder_eagle", "name": "雷鷹", "outputPath": "client/public/images/monsters/monster_thundersteppe_thunder_eagle.png", "row": 2, "column": 0 },
+    { "assetId": "monster_thundersteppe_thunderhoof_boar", "category": "monster", "targetId": "thunderhoof_boar", "name": "雷蹄巨豬", "outputPath": "client/public/images/monsters/monster_thundersteppe_thunderhoof_boar.png", "row": 2, "column": 1 },
+    { "assetId": "monster_thundersteppe_thunderhoof_matriarch", "category": "monster", "targetId": "thunderhoof_matriarch", "name": "雷蹄獸母", "outputPath": "client/public/images/monsters/monster_thundersteppe_thunderhoof_matriarch.png", "row": 2, "column": 2 }
+  ]
+}
