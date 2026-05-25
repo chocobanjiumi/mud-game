@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_15",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_15.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_whispering_rift_voice", "category": "monster", "targetId": "whispering_rift_voice", "name": "裂縫低語者", "outputPath": "client/public/images/monsters/monster_forest_fen_whispering_rift_voice.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_white_reed_stalker", "category": "monster", "targetId": "white_reed_stalker", "name": "白蘆迷道巡獵者", "outputPath": "client/public/images/monsters/monster_forest_fen_white_reed_stalker.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_willow_whisper_root", "category": "monster", "targetId": "willow_whisper_root", "name": "靜柳低語根", "outputPath": "client/public/images/monsters/monster_forest_fen_willow_whisper_root.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_low_wilds_poison_snake", "category": "monster", "targetId": "poison_snake", "name": "毒蛇", "outputPath": "client/public/images/monsters/monster_forest_fen_low_wilds_poison_snake.png", "row": 1, "column": 1 }
+  ]
+}

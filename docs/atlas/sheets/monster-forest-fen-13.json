@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_13",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_13.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_sealed_wax_wasp", "category": "monster", "targetId": "sealed_wax_wasp", "name": "封蠟胡蜂", "outputPath": "client/public/images/monsters/monster_forest_fen_sealed_wax_wasp.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_shadow_treant", "category": "monster", "targetId": "shadow_treant", "name": "暗影樹靈", "outputPath": "client/public/images/monsters/monster_forest_fen_shadow_treant.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_shadow_wolf", "category": "monster", "targetId": "shadow_wolf", "name": "暗影狼", "outputPath": "client/public/images/monsters/monster_forest_fen_shadow_wolf.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_shadow_wolf_alpha", "category": "monster", "targetId": "shadow_wolf_alpha", "name": "暗影狼王", "outputPath": "client/public/images/monsters/monster_forest_fen_shadow_wolf_alpha.png", "row": 1, "column": 1 }
+  ]
+}

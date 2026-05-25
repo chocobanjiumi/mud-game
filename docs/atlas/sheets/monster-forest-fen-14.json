@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_14",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_14.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_silver_mire_sludge", "category": "monster", "targetId": "silver_mire_sludge", "name": "銀泥沼膠", "outputPath": "client/public/images/monsters/monster_forest_fen_silver_mire_sludge.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_smoke_resin_myconid", "category": "monster", "targetId": "smoke_resin_myconid", "name": "煙脂菌人", "outputPath": "client/public/images/monsters/monster_forest_fen_smoke_resin_myconid.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_suntrap_bloom_mantis", "category": "monster", "targetId": "suntrap_bloom_mantis", "name": "日陷花螳", "outputPath": "client/public/images/monsters/monster_forest_fen_suntrap_bloom_mantis.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_treant", "category": "monster", "targetId": "treant", "name": "樹精", "outputPath": "client/public/images/monsters/monster_forest_fen_treant.png", "row": 1, "column": 1 }
+  ]
+}
