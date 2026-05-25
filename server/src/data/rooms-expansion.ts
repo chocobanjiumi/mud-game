@@ -20012,10 +20012,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'ember_march_bonekiln_pass.png',
     imagePrompt: '骨窯隘口 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
+      '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地' },
-      { direction: 'south', targetRoomId: 'ember_march_scorched_oasis', description: '回到焦泉' },
       { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
       { direction: 'east', targetRoomId: 'ember_march_dragonprint_ridge', description: '龍印脊在東側' },
     ],
