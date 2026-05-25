@@ -1,0 +1,11 @@
+{
+  "sheetId": "npc_kingdom_war_05",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingdom_war_05.sheet.png",
+  "targets": [
+    { "assetId": "npc_thornmaze_thornmaze_gate_cartographer", "category": "npc", "targetId": "thornmaze_gate_cartographer", "name": "薇恩", "outputPath": "client/public/images/npcs/npc_thornmaze_thornmaze_gate_cartographer.png", "row": 0, "column": 0 },
+    { "assetId": "npc_thornmaze_thornmaze_old_druid_echo", "category": "npc", "targetId": "thornmaze_old_druid_echo", "name": "歐塔", "outputPath": "client/public/images/npcs/npc_thornmaze_thornmaze_old_druid_echo.png", "row": 0, "column": 1 }
+  ]
+}

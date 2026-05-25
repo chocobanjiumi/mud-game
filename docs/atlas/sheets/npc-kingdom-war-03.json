@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_kingdom_war_03",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingdom_war_03.sheet.png",
+  "targets": [
+    { "assetId": "npc_machine_graveyard_machine_graveyard_core_auditor", "category": "npc", "targetId": "machine_graveyard_core_auditor", "name": "諾維克", "outputPath": "client/public/images/npcs/npc_machine_graveyard_machine_graveyard_core_auditor.png", "row": 0, "column": 0 },
+    { "assetId": "npc_machine_graveyard_machine_graveyard_oil_seller", "category": "npc", "targetId": "machine_graveyard_oil_seller", "name": "帕琪", "outputPath": "client/public/images/npcs/npc_machine_graveyard_machine_graveyard_oil_seller.png", "row": 0, "column": 1 },
+    { "assetId": "npc_machine_graveyard_machine_graveyard_scrap_foreman", "category": "npc", "targetId": "machine_graveyard_scrap_foreman", "name": "格里特", "outputPath": "client/public/images/npcs/npc_machine_graveyard_machine_graveyard_scrap_foreman.png", "row": 1, "column": 0 },
+    { "assetId": "npc_royal_hunting_grounds_royal_hunting_grounds_gamekeeper_supplier", "category": "npc", "targetId": "royal_hunting_grounds_gamekeeper_supplier", "name": "瑪塔", "outputPath": "client/public/images/npcs/npc_royal_hunting_grounds_royal_hunting_grounds_gamekeeper_supplier.png", "row": 1, "column": 1 }
+  ]
+}

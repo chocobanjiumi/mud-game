@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_kingdom_war_01",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingdom_war_01.sheet.png",
+  "targets": [
+    { "assetId": "npc_ironwood_fort_ironwood_fort_forgemaster", "category": "npc", "targetId": "ironwood_fort_forgemaster", "name": "奧斯坦", "outputPath": "client/public/images/npcs/npc_ironwood_fort_ironwood_fort_forgemaster.png", "row": 0, "column": 0 },
+    { "assetId": "npc_ironwood_fort_ironwood_fort_gate_captain", "category": "npc", "targetId": "ironwood_fort_gate_captain", "name": "羅德里克", "outputPath": "client/public/images/npcs/npc_ironwood_fort_ironwood_fort_gate_captain.png", "row": 0, "column": 1 },
+    { "assetId": "npc_ironwood_fort_ironwood_fort_quartermaster", "category": "npc", "targetId": "ironwood_fort_quartermaster", "name": "貝菈", "outputPath": "client/public/images/npcs/npc_ironwood_fort_ironwood_fort_quartermaster.png", "row": 1, "column": 0 },
+    { "assetId": "npc_ironwood_fort_ironwood_fort_scout_sergeant", "category": "npc", "targetId": "ironwood_fort_scout_sergeant", "name": "凱莎", "outputPath": "client/public/images/npcs/npc_ironwood_fort_ironwood_fort_scout_sergeant.png", "row": 1, "column": 1 }
+  ]
+}

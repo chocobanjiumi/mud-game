@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_kingdom_war_02",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingdom_war_02.sheet.png",
+  "targets": [
+    { "assetId": "npc_kingdom_frontier_kingdom_frontier_command_aide", "category": "npc", "targetId": "kingdom_frontier_command_aide", "name": "巴隆", "outputPath": "client/public/images/npcs/npc_kingdom_frontier_kingdom_frontier_command_aide.png", "row": 0, "column": 0 },
+    { "assetId": "npc_kingdom_frontier_kingdom_frontier_muster_officer", "category": "npc", "targetId": "kingdom_frontier_muster_officer", "name": "卡雷恩", "outputPath": "client/public/images/npcs/npc_kingdom_frontier_kingdom_frontier_muster_officer.png", "row": 0, "column": 1 },
+    { "assetId": "npc_kingdom_frontier_kingdom_frontier_supply_quartermaster", "category": "npc", "targetId": "kingdom_frontier_supply_quartermaster", "name": "蜜拉", "outputPath": "client/public/images/npcs/npc_kingdom_frontier_kingdom_frontier_supply_quartermaster.png", "row": 1, "column": 0 },
+    { "assetId": "npc_kingdom_frontier_kingdom_frontier_truce_envoy", "category": "npc", "targetId": "kingdom_frontier_truce_envoy", "name": "歐德琳", "outputPath": "client/public/images/npcs/npc_kingdom_frontier_kingdom_frontier_truce_envoy.png", "row": 1, "column": 1 }
+  ]
+}

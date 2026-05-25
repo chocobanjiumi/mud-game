@@ -1,0 +1,13 @@
+{
+  "sheetId": "npc_kingdom_war_04",
+  "category": "npc",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/npc_kingdom_war_04.sheet.png",
+  "targets": [
+    { "assetId": "npc_royal_hunting_grounds_royal_hunting_grounds_noble_patron", "category": "npc", "targetId": "royal_hunting_grounds_noble_patron", "name": "羅莎琳", "outputPath": "client/public/images/npcs/npc_royal_hunting_grounds_royal_hunting_grounds_noble_patron.png", "row": 0, "column": 0 },
+    { "assetId": "npc_royal_hunting_grounds_royal_hunting_grounds_permit_warden", "category": "npc", "targetId": "royal_hunting_grounds_permit_warden", "name": "艾德里安", "outputPath": "client/public/images/npcs/npc_royal_hunting_grounds_royal_hunting_grounds_permit_warden.png", "row": 0, "column": 1 },
+    { "assetId": "npc_royal_hunting_grounds_royal_hunting_grounds_stag_listener", "category": "npc", "targetId": "royal_hunting_grounds_stag_listener", "name": "伊文", "outputPath": "client/public/images/npcs/npc_royal_hunting_grounds_royal_hunting_grounds_stag_listener.png", "row": 1, "column": 0 },
+    { "assetId": "npc_thornmaze_thornmaze_briarsalve_herbalist", "category": "npc", "targetId": "thornmaze_briarsalve_herbalist", "name": "瑪芙", "outputPath": "client/public/images/npcs/npc_thornmaze_thornmaze_briarsalve_herbalist.png", "row": 1, "column": 1 }
+  ]
+}
