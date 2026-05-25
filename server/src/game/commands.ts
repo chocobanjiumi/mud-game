@@ -118,6 +118,7 @@ interface ActiveExitTrap {
   placedAt: number;
 }
 const activeExitTraps = new Map<string, ActiveExitTrap>();
+const fieldApproachingTimers = new Map<string, ReturnType<typeof setTimeout>>();
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
@@ -2028,7 +2029,75 @@ function handleCrossRoomFieldSkill(
   cmdStatus(session);
   sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
   for (const roomId of affectedRooms) broadcastRoomState(roomId);
+  scheduleFieldApproachingTick(char.roomId);
   return true;
+}
+
+function scheduleFieldApproachingTick(roomId: string): void {
+  if (fieldApproachingTimers.has(roomId)) return;
+  if (world.getApproachingMonsters(roomId).length === 0) return;
+
+  const timer = setTimeout(() => {
+    fieldApproachingTimers.delete(roomId);
+    processFieldApproachingTick(roomId);
+  }, FIELD_SKILL_COOLDOWN_TICK_MS);
+  fieldApproachingTimers.set(roomId, timer);
+}
+
+function processFieldApproachingTick(roomId: string): void {
+  const roomSessions = getAllSessions().filter((onlineSession) => {
+    if (!onlineSession.characterId) return false;
+    const onlineChar = getCharacterById(onlineSession.characterId);
+    return Boolean(onlineChar && onlineChar.roomId === roomId);
+  });
+  const activeSession = roomSessions.find((onlineSession) => onlineSession.characterId && !isInCombat(onlineSession.characterId)) ?? roomSessions[0];
+
+  if (activeSession?.characterId && isInCombat(activeSession.characterId)) {
+    scheduleFieldApproachingTick(roomId);
+    return;
+  }
+
+  const arrived = world.tickApproaching(roomId);
+  if (arrived.length === 0) {
+    broadcastRoomState(roomId);
+    scheduleFieldApproachingTick(roomId);
+    return;
+  }
+
+  for (const approaching of arrived) {
+    const monster = world.getAliveMonsters(roomId).find(candidate => candidate.instanceId === approaching.instanceId);
+    if (!monster) continue;
+
+    const trap = consumeExitTrap(roomId, approaching.sourceDirection);
+    if (trap) {
+      const delayed = world.moveMonsterToApproaching(
+        roomId,
+        roomId,
+        approaching.sourceDirection,
+        monster.instanceId,
+        Math.max(1, trap.arrivalTicksDelta),
+        approaching.targetPlayerId,
+        approaching.targetPartyId,
+      );
+      grantTrapFocus(trap, activeSession?.sessionId ?? '');
+      if (activeSession) {
+        sendSystem(activeSession.sessionId, `${approaching.name}觸發了${directionChinese(approaching.sourceDirection)}側陷阱，延後 ${delayed?.arrivalTicks ?? trap.arrivalTicksDelta} tick 抵達！`);
+      }
+      continue;
+    }
+
+    const targetSession = approaching.targetPlayerId
+      ? roomSessions.find(candidate => candidate.characterId === approaching.targetPlayerId)
+      : activeSession;
+    const combatSession = targetSession ?? activeSession;
+    if (!combatSession) continue;
+
+    sendSystem(combatSession.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
+    cmdAttack(combatSession, monster.instanceId);
+  }
+
+  broadcastRoomState(roomId);
+  scheduleFieldApproachingTick(roomId);
 }
 
 function parseCrossRoomTarget(target: string): { direction?: CardinalDirection; target?: string } {
