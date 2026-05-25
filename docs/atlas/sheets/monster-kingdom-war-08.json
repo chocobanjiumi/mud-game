@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_kingdom_war_08",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_kingdom_war_08.sheet.png",
+  "targets": [
+    { "assetId": "monster_kingdom_war_machine_runaway_guard_unit", "category": "monster", "targetId": "machine_runaway_guard_unit", "name": "失控守衛單元", "outputPath": "client/public/images/monsters/monster_kingdom_war_machine_runaway_guard_unit.png", "row": 0, "column": 0 },
+    { "assetId": "monster_kingdom_war_machine_scrap_claw_drone", "category": "monster", "targetId": "machine_scrap_claw_drone", "name": "廢鐵爪機", "outputPath": "client/public/images/monsters/monster_kingdom_war_machine_scrap_claw_drone.png", "row": 0, "column": 1 },
+    { "assetId": "monster_kingdom_war_machine_sparking_rail_runner", "category": "monster", "targetId": "machine_sparking_rail_runner", "name": "火花軌行者", "outputPath": "client/public/images/monsters/monster_kingdom_war_machine_sparking_rail_runner.png", "row": 1, "column": 0 },
+    { "assetId": "monster_kingdom_war_machine_wireweed_crawler", "category": "monster", "targetId": "machine_wireweed_crawler", "name": "線草爬行體", "outputPath": "client/public/images/monsters/monster_kingdom_war_machine_wireweed_crawler.png", "row": 1, "column": 1 }
+  ]
+}
