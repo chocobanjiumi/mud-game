@@ -17229,11 +17229,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'ironwood_fort_prison_block.png',
     imagePrompt: '囚牢石廊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '囚牢石廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
+      '囚牢石廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。西側舊蓄水池水門從囚牢這端被鐵閘鎖死，只能從舊蓄水池石階進入囚牢石廊。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_scout_roost', description: '回到斥候棲臺' },
       { direction: 'east', targetRoomId: 'ironwood_fort_oath_chapel', description: '禮拜堂側門在東側' },
-      { direction: 'west', targetRoomId: 'ironwood_fort_old_cistern', description: '舊蓄水池在西側' },
     ],
     monsters: [
       { monsterId: 'prison_chain_jailer', maxCount: 2, respawnSeconds: 160 },
