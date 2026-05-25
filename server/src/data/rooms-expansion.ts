@@ -5578,11 +5578,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_goblin_blind.png',
     imagePrompt: '哥布林伏棚 in wildgrass_hills, crude goblin hunting blind hidden in grass and orchard debris, bows, traps, smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。這是哥布林斥候和戰士混合出沒的伏擊房，玩家若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險。',
+      '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。東側能看見風車空殼，但伏棚後方草徑布滿捕獸夾，實際需從看火營破路前往風車。這是哥布林斥候和戰士混合出沒的伏擊房，玩家若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '回到果園廢址' },
       { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '伏棚通向看火營' },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_windmill_shell', description: '草徑延向風車空殼' },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 3, respawnSeconds: 60 },
@@ -5741,11 +5740,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_broken_totem.png',
     imagePrompt: '斷圖騰 in wildgrass_hills, broken wooden totem on windy hill, charms, skulls, grass seeds and storm signs, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。這裡是精英前置與任務線索房，玩家能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索。',
+      '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。東側草脊通向風暴草冠的痕跡仍在，但斷旗與骨牌擋住上坡路，需從酋長脊進入最高草冠後再折返。這裡是精英前置與任務線索房，玩家能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝' },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '草脊通向風暴草冠' },
     ],
     monsters: [
       { monsterId: 'stormbanner_champion', maxCount: 1, respawnSeconds: 120 },
