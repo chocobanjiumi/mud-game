@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_reality_edge_stalker", "category": "monster", "targetId": "reality_edge_stalker", "name": "現實邊獵影", "outputPath": "client/public/images/monsters/monster_astral_time_reality_edge_stalker.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_reverse_river_memory", "category": "monster", "targetId": "reverse_river_memory", "name": "倒流河記憶體", "outputPath": "client/public/images/monsters/monster_astral_time_reverse_river_memory.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_ruin_scarab_swarm", "category": "monster", "targetId": "ruin_scarab_swarm", "name": "遺跡聖甲群", "outputPath": "client/public/images/monsters/monster_astral_time_ruin_scarab_swarm.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_sanctum_seal_guardian", "category": "monster", "targetId": "sanctum_seal_guardian", "name": "聖所封印守衛", "outputPath": "client/public/images/monsters/monster_astral_time_sanctum_seal_guardian.png", "row": 1, "column": 1 }
+  ]
+}

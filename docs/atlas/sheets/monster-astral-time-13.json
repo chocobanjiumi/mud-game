@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_astral_time_13",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_astral_time_13.sheet.png",
+  "targets": [
+    { "assetId": "monster_astral_time_sunlit_crystal_lizard", "category": "monster", "targetId": "sunlit_crystal_lizard", "name": "日晶蜥", "outputPath": "client/public/images/monsters/monster_astral_time_sunlit_crystal_lizard.png", "row": 0, "column": 0 },
+    { "assetId": "monster_astral_time_voidglass_brood", "category": "monster", "targetId": "voidglass_brood", "name": "虛玻卵裔", "outputPath": "client/public/images/monsters/monster_astral_time_voidglass_brood.png", "row": 0, "column": 1 },
+    { "assetId": "monster_astral_time_worldcore_astral_wyrm", "category": "monster", "targetId": "worldcore_astral_wyrm", "name": "荒原核心星龍", "outputPath": "client/public/images/monsters/monster_astral_time_worldcore_astral_wyrm.png", "row": 1, "column": 0 },
+    { "assetId": "monster_astral_time_worldscar_storm_dragon", "category": "monster", "targetId": "worldscar_storm_dragon", "name": "世界傷痕雷龍", "outputPath": "client/public/images/monsters/monster_astral_time_worldscar_storm_dragon.png", "row": 1, "column": 1 }
+  ]
+}
