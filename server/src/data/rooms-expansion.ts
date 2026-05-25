@@ -191,11 +191,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'plains_bandit_hideout.png',
     imagePrompt: '盜賊藏身處 in plains, elite combat room with canvas lean-to, stolen crates, campfire smoke, dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain plains, clear lantern light',
     description:
-      '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，南側斷橋方向有撤退腳印。箱子上刻著農場印記，提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
+      '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，往斷橋的撤退腳印也先折回藥草坡再下行。箱子上刻著農場印記，提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_minecart', description: '沿矮丘回到廢棄礦車道' },
       { direction: 'west', targetRoomId: 'plains_herb_slope', description: '藥草坡在西邊' },
-      { direction: 'south', targetRoomId: 'plains_broken_bridge', description: '泥腳印通往斷橋' },
     ],
     monsters: [
       { monsterId: 'bandit', maxCount: 3, respawnSeconds: 55 },
@@ -277,10 +276,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'plains_broken_bridge.png',
     imagePrompt: '斷木橋 in plains, main route event room with collapsed bridge, creek, muddy tracks and stormy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain plains, clear lantern light',
     description:
-      '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬蹄印和拖行箱子的痕跡。北邊是藥草斜坡，東側可追向盜賊藏身處，西邊十字路口的路標露出半截。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
+      '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬蹄印和拖行箱子的痕跡。北邊是藥草斜坡，西邊十字路口的路標露出半截，往盜賊藏身處的腳印會先回到北側斜坡再轉東。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_herb_slope', description: '回到藥草斜坡' },
-      { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '盜賊腳印往東延伸' },
       { direction: 'west', targetRoomId: 'crossroads', description: '沿泥路回到十字路口' },
     ],
     monsters: [
