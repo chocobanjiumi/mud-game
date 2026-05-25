@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_10",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_10.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_lake_serpent", "category": "monster", "targetId": "lake_serpent", "name": "湖蛇", "outputPath": "client/public/images/monsters/monster_forest_fen_lake_serpent.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_mirror_mire_toad", "category": "monster", "targetId": "mirror_mire_toad", "name": "鏡泥毒蛙", "outputPath": "client/public/images/monsters/monster_forest_fen_mirror_mire_toad.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_mistglass_webspinner", "category": "monster", "targetId": "mistglass_webspinner", "name": "霧玻織網蛛", "outputPath": "client/public/images/monsters/monster_forest_fen_mistglass_webspinner.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_moonflower_mantis", "category": "monster", "targetId": "moonflower_mantis", "name": "月花螳螂", "outputPath": "client/public/images/monsters/monster_forest_fen_moonflower_mantis.png", "row": 1, "column": 1 }
+  ]
+}

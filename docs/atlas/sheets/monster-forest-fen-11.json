@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_11",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_11.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_moonless_wolf_matriarch", "category": "monster", "targetId": "moonless_wolf_matriarch", "name": "無月影狼母", "outputPath": "client/public/images/monsters/monster_forest_fen_moonless_wolf_matriarch.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_moonlit_reed_sprite", "category": "monster", "targetId": "moonlit_reed_sprite", "name": "月蘆小妖", "outputPath": "client/public/images/monsters/monster_forest_fen_moonlit_reed_sprite.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_nightfern_witch", "category": "monster", "targetId": "nightfern_witch", "name": "夜蕨女巫", "outputPath": "client/public/images/monsters/monster_forest_fen_nightfern_witch.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_petrified_resin_golem", "category": "monster", "targetId": "petrified_resin_golem", "name": "石化樹脂魔像", "outputPath": "client/public/images/monsters/monster_forest_fen_petrified_resin_golem.png", "row": 1, "column": 1 }
+  ]
+}

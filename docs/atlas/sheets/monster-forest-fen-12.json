@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_12",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_12.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_ravenmark_hexer", "category": "monster", "targetId": "ravenmark_hexer", "name": "渡鴉咒獵者", "outputPath": "client/public/images/monsters/monster_forest_fen_ravenmark_hexer.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_reedbank_lurker", "category": "monster", "targetId": "reedbank_lurker", "name": "蘆岸潛伏者", "outputPath": "client/public/images/monsters/monster_forest_fen_reedbank_lurker.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_reedshade_stalker", "category": "monster", "targetId": "reedshade_stalker", "name": "蘆影潛伏者", "outputPath": "client/public/images/monsters/monster_forest_fen_reedshade_stalker.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_resin_vein_lizard", "category": "monster", "targetId": "resin_vein_lizard", "name": "樹脂脈蜥", "outputPath": "client/public/images/monsters/monster_forest_fen_resin_vein_lizard.png", "row": 1, "column": 1 }
+  ]
+}

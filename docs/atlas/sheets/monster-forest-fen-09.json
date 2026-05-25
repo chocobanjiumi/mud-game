@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_forest_fen_09",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_forest_fen_09.sheet.png",
+  "targets": [
+    { "assetId": "monster_forest_fen_glasswater_reflection_core", "category": "monster", "targetId": "glasswater_reflection_core", "name": "玻璃水倒核心", "outputPath": "client/public/images/monsters/monster_forest_fen_glasswater_reflection_core.png", "row": 0, "column": 0 },
+    { "assetId": "monster_forest_fen_gloomroot_treant", "category": "monster", "targetId": "gloomroot_treant", "name": "幽根黑樹人", "outputPath": "client/public/images/monsters/monster_forest_fen_gloomroot_treant.png", "row": 0, "column": 1 },
+    { "assetId": "monster_forest_fen_hag_lantern_echo", "category": "monster", "targetId": "hag_lantern_echo", "name": "巫燈回聲", "outputPath": "client/public/images/monsters/monster_forest_fen_hag_lantern_echo.png", "row": 1, "column": 0 },
+    { "assetId": "monster_forest_fen_ice_fern_weaver", "category": "monster", "targetId": "ice_fern_weaver", "name": "冰蕨織網蛛", "outputPath": "client/public/images/monsters/monster_forest_fen_ice_fern_weaver.png", "row": 1, "column": 1 }
+  ]
+}
