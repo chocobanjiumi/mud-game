@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_02",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_02.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_dawn_armory_colossus", "category": "monster", "targetId": "dawn_armory_colossus", "name": "黎明武庫巨像", "outputPath": "client/public/images/monsters/monster_dragon_celestial_dawn_armory_colossus.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_divine_construct", "category": "monster", "targetId": "divine_construct", "name": "神造兵器", "outputPath": "client/public/images/monsters/monster_dragon_celestial_divine_construct.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_dragon_knight", "category": "monster", "targetId": "dragon_knight", "name": "龍騎士", "outputPath": "client/public/images/monsters/monster_dragon_celestial_dragon_knight.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_elder_dragon", "category": "monster", "targetId": "elder_dragon", "name": "古龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_elder_dragon.png", "row": 1, "column": 1 }
+  ]
+}

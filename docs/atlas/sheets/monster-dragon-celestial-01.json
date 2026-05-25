@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_01",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_01.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_ancient_wyrm", "category": "monster", "targetId": "ancient_wyrm", "name": "古龍蛇", "outputPath": "client/public/images/monsters/monster_dragon_celestial_ancient_wyrm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_celestial_guardian", "category": "monster", "targetId": "celestial_guardian", "name": "天界守衛", "outputPath": "client/public/images/monsters/monster_dragon_celestial_celestial_guardian.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_cloudstone_drake", "category": "monster", "targetId": "cloudstone_drake", "name": "雲石幼龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_cloudstone_drake.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_corrupted_halo_judge", "category": "monster", "targetId": "corrupted_halo_judge", "name": "黑環審判者", "outputPath": "client/public/images/monsters/monster_dragon_celestial_corrupted_halo_judge.png", "row": 1, "column": 1 }
+  ]
+}

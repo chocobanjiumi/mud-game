@@ -1,0 +1,13 @@
+{
+  "sheetId": "monster_dragon_celestial_03",
+  "category": "monster",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_dragon_celestial_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_dragon_celestial_fallen_angel", "category": "monster", "targetId": "fallen_angel", "name": "墮天使", "outputPath": "client/public/images/monsters/monster_dragon_celestial_fallen_angel.png", "row": 0, "column": 0 },
+    { "assetId": "monster_dragon_celestial_fireglass_drake", "category": "monster", "targetId": "fireglass_drake", "name": "火玻璃幼龍", "outputPath": "client/public/images/monsters/monster_dragon_celestial_fireglass_drake.png", "row": 0, "column": 1 },
+    { "assetId": "monster_dragon_celestial_god_of_war", "category": "monster", "targetId": "god_of_war", "name": "戰神", "outputPath": "client/public/images/monsters/monster_dragon_celestial_god_of_war.png", "row": 1, "column": 0 },
+    { "assetId": "monster_dragon_celestial_lumen_scribe_construct", "category": "monster", "targetId": "lumen_scribe_construct", "name": "流明抄寫機", "outputPath": "client/public/images/monsters/monster_dragon_celestial_lumen_scribe_construct.png", "row": 1, "column": 1 }
+  ]
+}
