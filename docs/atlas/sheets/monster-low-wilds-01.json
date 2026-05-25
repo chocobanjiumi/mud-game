@@ -1,81 +1,18 @@
 {
   "sheetId": "monster_low_wilds_01",
   "category": "monster",
-  "columns": 4,
-  "rows": 2,
+  "columns": 3,
+  "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/monster_low_wilds_01.sheet.png",
   "targets": [
-    {
-      "assetId": "monster_low_wilds_slime",
-      "category": "monster",
-      "targetId": "slime",
-      "name": "史萊姆",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_slime.png",
-      "row": 0,
-      "column": 0
-    },
-    {
-      "assetId": "monster_low_wilds_green_slime",
-      "category": "monster",
-      "targetId": "green_slime",
-      "name": "綠史萊姆",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_green_slime.png",
-      "row": 0,
-      "column": 1
-    },
-    {
-      "assetId": "monster_low_wilds_wild_rabbit",
-      "category": "monster",
-      "targetId": "wild_rabbit",
-      "name": "野兔",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_wild_rabbit.png",
-      "row": 0,
-      "column": 2
-    },
-    {
-      "assetId": "monster_low_wilds_field_rat",
-      "category": "monster",
-      "targetId": "field_rat",
-      "name": "田鼠",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_field_rat.png",
-      "row": 0,
-      "column": 3
-    },
-    {
-      "assetId": "monster_low_wilds_goblin_scout",
-      "category": "monster",
-      "targetId": "goblin_scout",
-      "name": "哥布林斥候",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_goblin_scout.png",
-      "row": 1,
-      "column": 0
-    },
-    {
-      "assetId": "monster_low_wilds_small_bat",
-      "category": "monster",
-      "targetId": "small_bat",
-      "name": "小蝙蝠",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_small_bat.png",
-      "row": 1,
-      "column": 1
-    },
-    {
-      "assetId": "monster_low_wilds_bandit",
-      "category": "monster",
-      "targetId": "bandit",
-      "name": "盜賊",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_bandit.png",
-      "row": 1,
-      "column": 2
-    },
-    {
-      "assetId": "monster_low_wilds_forest_fen_wild_wolf",
-      "category": "monster",
-      "targetId": "wild_wolf",
-      "name": "野狼",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_forest_fen_wild_wolf.png",
-      "row": 1,
-      "column": 3
-    }
+    { "assetId": "monster_low_wilds_barn_rat_swarm", "category": "monster", "targetId": "barn_rat_swarm", "name": "穀倉鼠群", "outputPath": "client/public/images/monsters/monster_low_wilds_barn_rat_swarm.png", "row": 0, "column": 0 },
+    { "assetId": "monster_low_wilds_caravan_rut_cutpurse", "category": "monster", "targetId": "caravan_rut_cutpurse", "name": "車轍割袋客", "outputPath": "client/public/images/monsters/monster_low_wilds_caravan_rut_cutpurse.png", "row": 0, "column": 1 },
+    { "assetId": "monster_low_wilds_ditch_sludge", "category": "monster", "targetId": "ditch_sludge", "name": "溝渠污泥怪", "outputPath": "client/public/images/monsters/monster_low_wilds_ditch_sludge.png", "row": 0, "column": 2 },
+    { "assetId": "monster_low_wilds_drywell_ambusher", "category": "monster", "targetId": "drywell_ambusher", "name": "乾井伏擊者", "outputPath": "client/public/images/monsters/monster_low_wilds_drywell_ambusher.png", "row": 1, "column": 0 },
+    { "assetId": "monster_low_wilds_final_marker_lightsworn", "category": "monster", "targetId": "final_marker_lightsworn", "name": "終點聖碑光誓者", "outputPath": "client/public/images/monsters/monster_low_wilds_final_marker_lightsworn.png", "row": 1, "column": 1 },
+    { "assetId": "monster_low_wilds_grassblade_raider", "category": "monster", "targetId": "grassblade_raider", "name": "草刃掠襲者", "outputPath": "client/public/images/monsters/monster_low_wilds_grassblade_raider.png", "row": 1, "column": 2 },
+    { "assetId": "monster_low_wilds_harvest_wight", "category": "monster", "targetId": "harvest_wight", "name": "歉收怨靈", "outputPath": "client/public/images/monsters/monster_low_wilds_harvest_wight.png", "row": 2, "column": 0 },
+    { "assetId": "monster_low_wilds_mildew_harvestling", "category": "monster", "targetId": "mildew_harvestling", "name": "霉斑收成靈", "outputPath": "client/public/images/monsters/monster_low_wilds_mildew_harvestling.png", "row": 2, "column": 1 },
+    { "assetId": "monster_low_wilds_milestone_crow_herald", "category": "monster", "targetId": "milestone_crow_herald", "name": "里程鴉使", "outputPath": "client/public/images/monsters/monster_low_wilds_milestone_crow_herald.png", "row": 2, "column": 2 }
   ]
 }

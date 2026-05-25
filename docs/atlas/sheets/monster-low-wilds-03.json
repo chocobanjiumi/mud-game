@@ -1,0 +1,15 @@
+{
+  "sheetId": "monster_low_wilds_03",
+  "category": "monster",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/monster_low_wilds_03.sheet.png",
+  "targets": [
+    { "assetId": "monster_low_wilds_stormtusk_boar", "category": "monster", "targetId": "stormtusk_boar", "name": "雷鬃巨豬", "outputPath": "client/public/images/monsters/monster_low_wilds_stormtusk_boar.png", "row": 0, "column": 0 },
+    { "assetId": "monster_low_wilds_straw_watchman", "category": "monster", "targetId": "straw_watchman", "name": "守田稻草人", "outputPath": "client/public/images/monsters/monster_low_wilds_straw_watchman.png", "row": 0, "column": 1 },
+    { "assetId": "monster_low_wilds_thorn_pumpkin", "category": "monster", "targetId": "thorn_pumpkin", "name": "棘藤南瓜", "outputPath": "client/public/images/monsters/monster_low_wilds_thorn_pumpkin.png", "row": 0, "column": 2 },
+    { "assetId": "monster_low_wilds_thunder_mound_shaman", "category": "monster", "targetId": "thunder_mound_shaman", "name": "雷丘薩滿", "outputPath": "client/public/images/monsters/monster_low_wilds_thunder_mound_shaman.png", "row": 1, "column": 0 },
+    { "assetId": "monster_low_wilds_wind_hawk", "category": "monster", "targetId": "wind_hawk", "name": "風之鷹", "outputPath": "client/public/images/monsters/monster_low_wilds_wind_hawk.png", "row": 1, "column": 1 },
+    { "assetId": "monster_low_wilds_windscar_hawk", "category": "monster", "targetId": "windscar_hawk", "name": "風痕鷹", "outputPath": "client/public/images/monsters/monster_low_wilds_windscar_hawk.png", "row": 1, "column": 2 }
+  ]
+}

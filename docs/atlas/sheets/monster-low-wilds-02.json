@@ -1,81 +1,18 @@
 {
   "sheetId": "monster_low_wilds_02",
   "category": "monster",
-  "columns": 4,
-  "rows": 2,
+  "columns": 3,
+  "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/monster_low_wilds_02.sheet.png",
   "targets": [
-    {
-      "assetId": "monster_low_wilds_wolf_king",
-      "category": "monster",
-      "targetId": "wolf_king",
-      "name": "狼王",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_wolf_king.png",
-      "row": 0,
-      "column": 0
-    },
-    {
-      "assetId": "monster_low_wilds_skeleton_soldier",
-      "category": "monster",
-      "targetId": "skeleton_soldier",
-      "name": "骷髏兵",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_skeleton_soldier.png",
-      "row": 0,
-      "column": 1
-    },
-    {
-      "assetId": "monster_low_wilds_skeleton_general",
-      "category": "monster",
-      "targetId": "skeleton_general",
-      "name": "骷髏將軍",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_skeleton_general.png",
-      "row": 0,
-      "column": 2
-    },
-    {
-      "assetId": "monster_low_wilds_creek_mossling_slime",
-      "category": "monster",
-      "targetId": "creek_mossling_slime",
-      "name": "溪苔史萊姆",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_creek_mossling_slime.png",
-      "row": 0,
-      "column": 3
-    },
-    {
-      "assetId": "monster_low_wilds_orchard_sharpbeak_crow",
-      "category": "monster",
-      "targetId": "orchard_sharpbeak_crow",
-      "name": "啄果利喙鴉",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_orchard_sharpbeak_crow.png",
-      "row": 1,
-      "column": 0
-    },
-    {
-      "assetId": "monster_low_wilds_hollow_stump_hoarder",
-      "category": "monster",
-      "targetId": "hollow_stump_hoarder",
-      "name": "空樹屯糧鼠",
-      "outputPath": "client/public/images/monsters/monster_low_wilds_hollow_stump_hoarder.png",
-      "row": 1,
-      "column": 1
-    },
-    {
-      "assetId": "monster_forest_fen_low_wilds_dark_crow",
-      "category": "monster",
-      "targetId": "dark_crow",
-      "name": "烏鴉",
-      "outputPath": "client/public/images/monsters/monster_forest_fen_low_wilds_dark_crow.png",
-      "row": 1,
-      "column": 2
-    },
-    {
-      "assetId": "monster_cave_mine_cave_bat",
-      "category": "monster",
-      "targetId": "cave_bat",
-      "name": "洞窟蝙蝠",
-      "outputPath": "client/public/images/monsters/monster_cave_mine_cave_bat.png",
-      "row": 1,
-      "column": 3
-    }
+    { "assetId": "monster_low_wilds_prairie_boar", "category": "monster", "targetId": "prairie_boar", "name": "平原野豬", "outputPath": "client/public/images/monsters/monster_low_wilds_prairie_boar.png", "row": 0, "column": 0 },
+    { "assetId": "monster_low_wilds_road_dust_stray", "category": "monster", "targetId": "road_dust_stray", "name": "古道塵犬", "outputPath": "client/public/images/monsters/monster_low_wilds_road_dust_stray.png", "row": 0, "column": 1 },
+    { "assetId": "monster_low_wilds_saint_bridge_penitent", "category": "monster", "targetId": "saint_bridge_penitent", "name": "聖徒橋苦行殘影", "outputPath": "client/public/images/monsters/monster_low_wilds_saint_bridge_penitent.png", "row": 0, "column": 2 },
+    { "assetId": "monster_low_wilds_sanctuary_gate_trialkeeper", "category": "monster", "targetId": "sanctuary_gate_trialkeeper", "name": "聖地門試煉守", "outputPath": "client/public/images/monsters/monster_low_wilds_sanctuary_gate_trialkeeper.png", "row": 1, "column": 0 },
+    { "assetId": "monster_low_wilds_shrine_bell_wraith", "category": "monster", "targetId": "shrine_bell_wraith", "name": "小祠鈴影", "outputPath": "client/public/images/monsters/monster_low_wilds_shrine_bell_wraith.png", "row": 1, "column": 1 },
+    { "assetId": "monster_low_wilds_smuggler_cache_guard", "category": "monster", "targetId": "smuggler_cache_guard", "name": "走私藏點守衛", "outputPath": "client/public/images/monsters/monster_low_wilds_smuggler_cache_guard.png", "row": 1, "column": 2 },
+    { "assetId": "monster_low_wilds_stormbanner_champion", "category": "monster", "targetId": "stormbanner_champion", "name": "風旗勇士", "outputPath": "client/public/images/monsters/monster_low_wilds_stormbanner_champion.png", "row": 2, "column": 0 },
+    { "assetId": "monster_low_wilds_stormgrass_serpent", "category": "monster", "targetId": "stormgrass_serpent", "name": "風草蛇", "outputPath": "client/public/images/monsters/monster_low_wilds_stormgrass_serpent.png", "row": 2, "column": 1 },
+    { "assetId": "monster_low_wilds_stormgrass_warlord", "category": "monster", "targetId": "stormgrass_warlord", "name": "荒草戰酋", "outputPath": "client/public/images/monsters/monster_low_wilds_stormgrass_warlord.png", "row": 2, "column": 2 }
   ]
 }
