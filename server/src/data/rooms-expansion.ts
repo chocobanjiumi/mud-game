@@ -8685,10 +8685,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_boar_run.png',
     imagePrompt: '野豬衝道 in thundersteppe, churned muddy boar trail through storm grass, broken shrubs, tusk marks and lightning rain, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain trail, clear lantern light',
     description:
-      '野豬衝道是一條被獠牙與厚蹄硬生生犁出的泥路，兩側灌木全被撞斷，枝葉上沾著濕泥和深色血痕。雷聲會讓草原野豬變得格外暴躁，牠們沿著這條低地來回衝撞，把任何擋路物都當成挑戰。玩家可以順著衝道快速繞開中線平原，也能在泥壁上觀察最近的獸群規模；但站位錯誤時，隊伍會在狹窄泥槽裡承受連續衝鋒。老獵人把破盾牌插在彎道外側，提醒來者轉角前先聽地面，不要只聽天空。',
+      '野豬衝道是一條被獠牙與厚蹄硬生生犁出的泥路，兩側灌木全被撞斷，枝葉上沾著濕泥和深色血痕。雷聲會讓草原野豬變得格外暴躁，牠們沿著這條低地來回衝撞，把任何擋路物都當成挑戰。東側碎骨坡可看見帶電骨原，但泥槽這端被衝斷，需由骨原高處落下。玩家可以順著衝道快速繞開中線平原，也能在泥壁上觀察最近的獸群規模；但站位錯誤時，隊伍會在狹窄泥槽裡承受連續衝鋒。老獵人把破盾牌插在彎道外側，提醒來者轉角前先聽地面，不要只聽天空。',
     exits: [
       { direction: 'north', targetRoomId: 'thundersteppe_rolling_gate', description: '泥痕回到雷原入口' },
-      { direction: 'east', targetRoomId: 'thundersteppe_charged_bonefield', description: '碎骨坡通往帶電骨原' },
       { direction: 'south', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '低地水線落向雨影溝' },
     ],
     monsters: [
@@ -8762,10 +8761,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_lightning_rod_field.png',
     imagePrompt: '引雷柱林 in thundersteppe, field of bronze and stone lightning rods, crackling storm arcs, wet prairie grass and ritual markers, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain field, clear lantern light',
     description:
-      '引雷柱林由數十根石柱與青銅長釘組成，柱身刻著粗糙刻度，用來記錄每一季雷暴落點。雷光擊中其中一根柱子後，會沿地下濕根傳到其他柱腳，形成短暫而危險的藍色蛛網。這裡既是游牧者研究天候的地標，也是雷鳴草原最容易誤傷旅人的區域。懂行的人會沿著燒焦草圈外緣移動，藉柱影避開空中視線；不懂的人若站在兩根柱子之間，很可能在下一次雷鳴前就被靜電抬起頭髮，成為整片柱林的導線。柱腳附近還留有許多焦黑小旗，代表曾有隊伍在此測量風暴路徑，玩家可藉旗面破損方向推測安全出口與下一波雷擊間隔。',
+      '引雷柱林由數十根石柱與青銅長釘組成，柱身刻著粗糙刻度，用來記錄每一季雷暴落點。雷光擊中其中一根柱子後，會沿地下濕根傳到其他柱腳，形成短暫而危險的藍色蛛網。北側布條路通向風祭小祠，但柱林這端雷弧封住回程，需從小祠順風進入。這裡既是游牧者研究天候的地標，也是雷鳴草原最容易誤傷旅人的區域。懂行的人會沿著燒焦草圈外緣移動，藉柱影避開空中視線；不懂的人若站在兩根柱子之間，很可能在下一次雷鳴前就被靜電抬起頭髮，成為整片柱林的導線。柱腳附近還留有許多焦黑小旗，代表曾有隊伍在此測量風暴路徑，玩家可藉旗面破損方向推測安全出口與下一波雷擊間隔。',
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_split_totem', description: '銅環反光回到裂木圖騰' },
-      { direction: 'north', targetRoomId: 'thundersteppe_wind_shrine', description: '布條路回到風祭小祠' },
       { direction: 'east', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '柱影延向雷鷹巢峰' },
       { direction: 'south', targetRoomId: 'thundersteppe_thunderhoof_crossing', description: '焦草缺口通往雷蹄渡口' },
     ],
@@ -8790,10 +8788,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_wolf_scarp.png',
     imagePrompt: '狼群崖坡 in thundersteppe, low prairie scarp with wolf dens, storm grass, claw marks and lightning on horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '狼群崖坡不高，卻足以讓草原風在坡面形成迴旋，掩蓋多數腳步聲。坡底有幾處半塌洞穴，洞口散落白骨、濕毛與被拖行的草束，顯示狼群常把獵物趕到這裡再分食。崖頂視野能看見帶電骨原和雨影溝，但上坡路狹窄，隊伍很容易被前後夾住。雷鳴時狼嚎會被拉長成像人的呼喊，讓初來者誤判數量與方向。若玩家能找到主狼留下的爪印，便可推測牠們下一次巡獵會繞向渡口還是衝道。',
+      '狼群崖坡不高，卻足以讓草原風在坡面形成迴旋，掩蓋多數腳步聲。坡底有幾處半塌洞穴，洞口散落白骨、濕毛與被拖行的草束，顯示狼群常把獵物趕到這裡再分食。南側能看見雨影溝，但崖坡小徑塌成單向滑坡，需由雨影溝側坡升上來。雷鳴時狼嚎會被拉長成像人的呼喊，讓初來者誤判數量與方向。若玩家能找到主狼留下的爪印，便可推測牠們下一次巡獵會繞向渡口還是衝道。',
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_charged_bonefield', description: '狼爪痕回到帶電骨原' },
-      { direction: 'south', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '崖坡小徑落向雨影溝' },
       { direction: 'east', targetRoomId: 'thundersteppe_thunderhoof_crossing', description: '崖頂草線通往雷蹄渡口' },
     ],
     monsters: [
@@ -8844,10 +8841,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_drum_circle.png',
     imagePrompt: '雷鼓石圈 in thundersteppe, ring of drum stones on prairie, storm clouds, wet hides, ritual markings and lightning, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '雷鼓石圈由十二塊中空巨石圍成，雨水打在石面會發出低沉鼓聲，與遠處雷鳴互相呼應。游牧祭司曾在這裡用節拍引導獸群遷徙，也用錯拍警告營地準備迎戰。石圈中央鋪著被踩實的灰泥，幾面舊皮鼓倒扣在防雨坑裡，鼓皮仍殘留淡淡電光。玩家若按正確節奏敲擊，可能暫時干擾狼群與野豬的巡行；若敲錯，整座石圈會把聲音傳向風暴玻岩，召來高處雷鷹與更深處的龍雷回聲。',
+      '雷鼓石圈由十二塊中空巨石圍成，雨水打在石面會發出低沉鼓聲，與遠處雷鳴互相呼應。游牧祭司曾在這裡用節拍引導獸群遷徙，也用錯拍警告營地準備迎戰。西側低溝能聽見雨影溝滴水，但石圈端鼓聲會干擾方向，需由雨影溝低聲鼓點進入。石圈中央鋪著被踩實的灰泥，幾面舊皮鼓倒扣在防雨坑裡，鼓皮仍殘留淡淡電光。玩家若按正確節奏敲擊，可能暫時干擾狼群與野豬的巡行；若敲錯，整座石圈會把聲音傳向風暴玻岩，召來高處雷鷹與更深處的龍雷回聲。',
     exits: [
       { direction: 'north', targetRoomId: 'thundersteppe_nomad_camp', description: '鼓聲北返游牧營地' },
-      { direction: 'west', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '低溝回到雨影溝' },
       { direction: 'east', targetRoomId: 'thundersteppe_stormglass_outcrop', description: '回聲引向風暴玻岩' },
     ],
     monsters: [
@@ -8872,10 +8868,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_stormglass_outcrop.png',
     imagePrompt: '風暴玻岩 in thundersteppe, black fulgurite outcrop shining in rain, storm grass, lightning reflections and cracked stone shelves, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '風暴玻岩像一片從草原脊背長出的黑色浪花，表面由無數雷擊熔出的玻璃層疊而成，雨水滑過時會反射出破碎天空。岩縫裡能找到細小發光砂粒，也能聽見地下電流沿著濕根游動的嗡鳴。這裡連接天火台地、雷鼓石圈與更深處的龍雷風眼，是高階隊伍辨認最終事件路線的重要地標。玩家若在岩面放置金屬物，能短暫看見即將落雷的位置；但玻岩也會把遠處龍息般的風暴聲放大，讓膽怯坐騎直接掙脫繩索。岩面低處刻著幾道舊箭頭，指向能避開玻裂邊緣的窄路，也暗示這裡曾是前往火坑前最後一次重整隊形的位置。',
+      '風暴玻岩像一片從草原脊背長出的黑色浪花，表面由無數雷擊熔出的玻璃層疊而成，雨水滑過時會反射出破碎天空。岩縫裡能找到細小發光砂粒，也能聽見地下電流沿著濕根游動的嗡鳴。南側回聲可辨認雷鼓石圈，但玻岩低處裂邊太滑，需由石圈回聲引路上來。這裡連接天火台地與更深處的龍雷風眼，是高階隊伍辨認最終事件路線的重要地標。玩家若在岩面放置金屬物，能短暫看見即將落雷的位置；但玻岩也會把遠處龍息般的風暴聲放大，讓膽怯坐騎直接掙脫繩索。岩面低處刻著幾道舊箭頭，指向能避開玻裂邊緣的窄路，也暗示這裡曾是前往火坑前最後一次重整隊形的位置。',
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_skyfire_mesa', description: '黑亮裂紋回到天火台地' },
-      { direction: 'south', targetRoomId: 'thundersteppe_drum_circle', description: '回聲落回雷鼓石圈' },
       { direction: 'east', targetRoomId: 'thundersteppe_dragonstorm_eye', description: '玻岩脈動指向龍雷風眼' },
     ],
     monsters: [
@@ -8953,10 +8948,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_dragonstorm_eye.png',
     imagePrompt: '龍雷風眼 in thundersteppe, circular storm eye over prairie, dragon-shaped lightning, spiraling grass and black clouds, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '龍雷風眼是一片反常安靜的圓形草地，四周風暴像牆一樣旋轉，中央卻只有細雨垂直落下。草葉全朝同一方向彎曲，地面焦痕勾勒出巨大爪印，雲層深處偶爾浮現龍形閃電。這裡是雷鳴草原最終事件前的核心地標，隊伍可在此解讀風暴、追蹤雷獸或準備挑戰世界王火坑。任何大聲咒語、錯誤祭品或過量金屬都會讓風眼縮小，迫使玩家在越來越近的雷牆中快速決定。若能保持節奏與隊形，風眼會短暫露出通往火坑的安全裂縫。風眼邊緣還殘留許多半熔化的旗杆，顯示先前挑戰者曾在此分配位置、測試雷牆節奏，並把撤退標記留給後續隊伍。',
+      '龍雷風眼是一片反常安靜的圓形草地，四周風暴像牆一樣旋轉，中央卻只有細雨垂直落下。草葉全朝同一方向彎曲，地面焦痕勾勒出巨大爪印，雲層深處偶爾浮現龍形閃電。南側雷蹄渡口溪線仍在風牆外閃爍，但風眼這端雷牆收縮，需由渡口電流溪線進入。這裡是雷鳴草原最終事件前的核心地標，隊伍可在此解讀風暴、追蹤雷獸或準備挑戰世界王火坑。任何大聲咒語、錯誤祭品或過量金屬都會讓風眼縮小，迫使玩家在越來越近的雷牆中快速決定。若能保持節奏與隊形，風眼會短暫露出通往火坑的安全裂縫。風眼邊緣還殘留許多半熔化的旗杆，顯示先前挑戰者曾在此分配位置、測試雷牆節奏，並把撤退標記留給後續隊伍。',
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_stormglass_outcrop', description: '玻岩脈動回到風暴玻岩' },
-      { direction: 'south', targetRoomId: 'thundersteppe_thunderhoof_crossing', description: '溪線回到雷蹄渡口' },
       { direction: 'east', targetRoomId: 'thundersteppe_worldboss_crater', description: '風眼裂縫通往世界王火坑' },
     ],
     monsters: [
