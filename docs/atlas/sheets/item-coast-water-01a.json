@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_coast_water_01a",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_coast_water_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_coast_water_blue_mud_saltpack", "category": "item", "targetId": "blue_mud_saltpack", "name": "藍泥鹽包", "outputPath": "client/public/images/items/item_coast_water_blue_mud_saltpack.png", "row": 0, "column": 0 },
+    { "assetId": "item_coast_water_blueheart_lode_core", "category": "item", "targetId": "blueheart_lode_core", "name": "藍心礦核", "outputPath": "client/public/images/items/item_coast_water_blueheart_lode_core.png", "row": 0, "column": 1 },
+    { "assetId": "item_coast_water_brineward_tonic", "category": "item", "targetId": "brineward_tonic", "name": "鹵血護劑", "outputPath": "client/public/images/items/item_coast_water_brineward_tonic.png", "row": 0, "column": 2 },
+    { "assetId": "item_coast_water_deep_brine_pearl", "category": "item", "targetId": "deep_brine_pearl", "name": "深鹽眼珠", "outputPath": "client/public/images/items/item_coast_water_deep_brine_pearl.png", "row": 1, "column": 0 },
+    { "assetId": "item_coast_water_delta_antivenom_brew", "category": "item", "targetId": "delta_antivenom_brew", "name": "三角洲解毒湯", "outputPath": "client/public/images/items/item_coast_water_delta_antivenom_brew.png", "row": 1, "column": 1 },
+    { "assetId": "item_coast_water_dockside_seaweed_stew", "category": "item", "targetId": "dockside_seaweed_stew", "name": "碼頭海藻湯", "outputPath": "client/public/images/items/item_coast_water_dockside_seaweed_stew.png", "row": 1, "column": 2 },
+    { "assetId": "item_coast_water_drowned_treasure_map", "category": "item", "targetId": "drowned_treasure_map", "name": "溺寶殘圖", "outputPath": "client/public/images/items/item_coast_water_drowned_treasure_map.png", "row": 2, "column": 0 },
+    { "assetId": "item_coast_water_ferry_token", "category": "item", "targetId": "ferry_token", "name": "渡船木牌", "outputPath": "client/public/images/items/item_coast_water_ferry_token.png", "row": 2, "column": 1 },
+    { "assetId": "item_coast_water_forbidden_altar_seal", "category": "item", "targetId": "forbidden_altar_seal", "name": "禁壇封印", "outputPath": "client/public/images/items/item_coast_water_forbidden_altar_seal.png", "row": 2, "column": 2 }
+  ]
+}
