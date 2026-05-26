@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_12a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_12a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_necklace_02", "category": "item", "targetId": "supplemental_necklace_02", "name": "柳葉墜飾", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_02.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_necklace_03", "category": "item", "targetId": "supplemental_necklace_03", "name": "穀金小墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_03.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_necklace_04", "category": "item", "targetId": "supplemental_necklace_04", "name": "黑苔護符", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_04.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_necklace_05", "category": "item", "targetId": "supplemental_necklace_05", "name": "潮珠項鍊", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_05.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_necklace_06", "category": "item", "targetId": "supplemental_necklace_06", "name": "礦晶墜鏈", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_06.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_necklace_07", "category": "item", "targetId": "supplemental_necklace_07", "name": "霜羽護符", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_07.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_necklace_08", "category": "item", "targetId": "supplemental_necklace_08", "name": "赤岩火墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_08.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_necklace_09", "category": "item", "targetId": "supplemental_necklace_09", "name": "銀松木符", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_09.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_necklace_10", "category": "item", "targetId": "supplemental_necklace_10", "name": "雷草項圈", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_10.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_necklace_11", "category": "item", "targetId": "supplemental_necklace_11", "name": "琥珀蜂墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_11.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_necklace_12", "category": "item", "targetId": "supplemental_necklace_12", "name": "血鹽骨鏈", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_12.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_necklace_13", "category": "item", "targetId": "supplemental_necklace_13", "name": "星砂夜墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_13.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_necklace_14", "category": "item", "targetId": "supplemental_necklace_14", "name": "月井白墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_14.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_necklace_15", "category": "item", "targetId": "supplemental_necklace_15", "name": "焦木灰符", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_15.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_necklace_16", "category": "item", "targetId": "supplemental_necklace_16", "name": "霧港羅盤墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_16.png", "row": 3, "column": 2 }
+  ]
+}
