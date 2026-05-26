@@ -1,0 +1,11 @@
+{
+  "sheetId": "item_town_market_03a",
+  "category": "item",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/item_town_market_03a.sheet.png",
+  "targets": [
+    { "assetId": "item_town_market_zone_lakeside_town_necklace_6", "category": "item", "targetId": "zone_lakeside_town_necklace_6", "name": "湖畔鎮墜飾", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_necklace_6.png", "row": 0, "column": 0 },
+    { "assetId": "item_town_market_zone_lakeside_town_ring_5", "category": "item", "targetId": "zone_lakeside_town_ring_5", "name": "湖畔鎮指環", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_ring_5.png", "row": 0, "column": 1 }
+  ]
+}
