@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_ice_mountain_01a",
+  "category": "item",
+  "columns": 5,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_ice_mountain_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_ice_mountain_frostbite_salve", "category": "item", "targetId": "frostbite_salve", "name": "霜咬藥膏", "outputPath": "client/public/images/items/item_ice_mountain_frostbite_salve.png", "row": 0, "column": 0 },
+    { "assetId": "item_ice_mountain_frozen_watch_badge", "category": "item", "targetId": "frozen_watch_badge", "name": "冰哨徽章", "outputPath": "client/public/images/items/item_ice_mountain_frozen_watch_badge.png", "row": 0, "column": 1 },
+    { "assetId": "item_ice_mountain_gale_king_plume", "category": "item", "targetId": "gale_king_plume", "name": "風王冠羽", "outputPath": "client/public/images/items/item_ice_mountain_gale_king_plume.png", "row": 0, "column": 2 },
+    { "assetId": "item_ice_mountain_high_mine_core", "category": "item", "targetId": "high_mine_core", "name": "高山礦核", "outputPath": "client/public/images/items/item_ice_mountain_high_mine_core.png", "row": 0, "column": 3 },
+    { "assetId": "item_ice_mountain_lost_caravan_seal", "category": "item", "targetId": "lost_caravan_seal", "name": "失商貨印", "outputPath": "client/public/images/items/item_ice_mountain_lost_caravan_seal.png", "row": 0, "column": 4 },
+    { "assetId": "item_ice_mountain_mithril_gauntlets", "category": "item", "targetId": "mithril_gauntlets", "name": "秘銀護手", "outputPath": "client/public/images/items/item_ice_mountain_mithril_gauntlets.png", "row": 1, "column": 0 },
+    { "assetId": "item_ice_mountain_mountain_pick_head", "category": "item", "targetId": "mountain_pick_head", "name": "高山鎬頭", "outputPath": "client/public/images/items/item_ice_mountain_mountain_pick_head.png", "row": 1, "column": 1 },
+    { "assetId": "item_ice_mountain_polar_gate_sigil", "category": "item", "targetId": "polar_gate_sigil", "name": "極北封門印", "outputPath": "client/public/images/items/item_ice_mountain_polar_gate_sigil.png", "row": 1, "column": 2 },
+    { "assetId": "item_ice_mountain_skycore_relic", "category": "item", "targetId": "skycore_relic", "name": "天空核心聖物", "outputPath": "client/public/images/items/item_ice_mountain_skycore_relic.png", "row": 1, "column": 3 },
+    { "assetId": "item_ice_mountain_stormwell_core", "category": "item", "targetId": "stormwell_core", "name": "風暴井核", "outputPath": "client/public/images/items/item_ice_mountain_stormwell_core.png", "row": 1, "column": 4 },
+    { "assetId": "item_ice_mountain_warming_fur_broth", "category": "item", "targetId": "warming_fur_broth", "name": "暖身毛皮湯", "outputPath": "client/public/images/items/item_ice_mountain_warming_fur_broth.png", "row": 2, "column": 0 },
+    { "assetId": "item_ice_mountain_wind_altar_chime", "category": "item", "targetId": "wind_altar_chime", "name": "風壇殘鈴", "outputPath": "client/public/images/items/item_ice_mountain_wind_altar_chime.png", "row": 2, "column": 1 },
+    { "assetId": "item_ice_mountain_zone_frostbite_pass_body_2", "category": "item", "targetId": "zone_frostbite_pass_body_2", "name": "霜咬隘口護甲", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_body_2.png", "row": 2, "column": 2 },
+    { "assetId": "item_ice_mountain_zone_frostbite_pass_feet_4", "category": "item", "targetId": "zone_frostbite_pass_feet_4", "name": "霜咬隘口長靴", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_feet_4.png", "row": 2, "column": 3 },
+    { "assetId": "item_ice_mountain_zone_frostbite_pass_hands_3", "category": "item", "targetId": "zone_frostbite_pass_hands_3", "name": "霜咬隘口護手", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_hands_3.png", "row": 2, "column": 4 }
+  ]
+}
