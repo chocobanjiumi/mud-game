@@ -1,8 +1,8 @@
 {
   "sheetId": "material_cave_mine_02",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_cave_mine_02.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "miner_focus_lens",
       "name": "礦工聚光鏡",
       "outputPath": "client/public/images/materials/material_cave_mine_miner_focus_lens.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_cave_mine_mirror_obsidian_shard",
@@ -57,7 +57,7 @@
       "name": "鏡面黑曜碎片",
       "outputPath": "client/public/images/materials/material_cave_mine_mirror_obsidian_shard.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_cave_mine_mithril_ore",
@@ -66,7 +66,7 @@
       "name": "秘銀礦",
       "outputPath": "client/public/images/materials/material_cave_mine_mithril_ore.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_cave_mine_old_drill_bit",
@@ -75,7 +75,7 @@
       "name": "舊鑽頭",
       "outputPath": "client/public/images/materials/material_cave_mine_old_drill_bit.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_cave_mine_prism_shard",
@@ -83,8 +83,8 @@
       "targetId": "prism_shard",
       "name": "棱鏡碎片",
       "outputPath": "client/public/images/materials/material_cave_mine_prism_shard.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_cave_mine_safety_lamp_lens",
@@ -92,8 +92,8 @@
       "targetId": "safety_lamp_lens",
       "name": "安全燈鏡片",
       "outputPath": "client/public/images/materials/material_cave_mine_safety_lamp_lens.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }

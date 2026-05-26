@@ -1,8 +1,8 @@
 {
   "sheetId": "material_cave_mine_03",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_cave_mine_03.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "gargoyle_stone",
       "name": "石像鬼之石",
       "outputPath": "client/public/images/materials/material_cave_mine_demon_abyss_gargoyle_stone.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_cave_mine_demon_abyss_gargoyle_wing",
@@ -57,7 +57,7 @@
       "name": "石像鬼之翼",
       "outputPath": "client/public/images/materials/material_cave_mine_demon_abyss_gargoyle_wing.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_cave_mine_fire_ash_stone_heart",
@@ -66,7 +66,7 @@
       "name": "石之心",
       "outputPath": "client/public/images/materials/material_cave_mine_fire_ash_stone_heart.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_cave_mine_forest_fen_bat_wing",
@@ -75,7 +75,7 @@
       "name": "蝙蝠翅膀",
       "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_bat_wing.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_cave_mine_forest_fen_spider_eye",
@@ -83,8 +83,8 @@
       "targetId": "spider_eye",
       "name": "蜘蛛眼",
       "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_eye.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_cave_mine_forest_fen_spider_silk",
@@ -92,8 +92,8 @@
       "targetId": "spider_silk",
       "name": "蜘蛛絲",
       "outputPath": "client/public/images/materials/material_cave_mine_forest_fen_spider_silk.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }
