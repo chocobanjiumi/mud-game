@@ -1,0 +1,10 @@
+{
+  "sheetId": "item_kingdom_war_low_wilds_01a",
+  "category": "item",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/item_kingdom_war_low_wilds_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_kingdom_war_low_wilds_sunroad_ration", "category": "item", "targetId": "sunroad_ration", "name": "日路乾糧", "outputPath": "client/public/images/items/item_kingdom_war_low_wilds_sunroad_ration.png", "row": 0, "column": 0 }
+  ]
+}
