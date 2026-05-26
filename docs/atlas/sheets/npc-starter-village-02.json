@@ -2,7 +2,7 @@
   "sheetId": "npc_starter_village_02",
   "category": "npc",
   "columns": 3,
-  "rows": 2,
+  "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/npc_starter_village_02.sheet.png",
   "targets": [
     {

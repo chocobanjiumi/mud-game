@@ -1,8 +1,8 @@
 {
   "sheetId": "material_ice_mountain_01",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_ice_mountain_01.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "frostpine_resin",
       "name": "霜松樹脂",
       "outputPath": "client/public/images/materials/material_ice_mountain_frostpine_resin.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_ice_mountain_glacier_fossil_shard",
@@ -57,7 +57,7 @@
       "name": "冰河化石片",
       "outputPath": "client/public/images/materials/material_ice_mountain_glacier_fossil_shard.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_ice_mountain_halo_prism_core",
@@ -66,7 +66,7 @@
       "name": "光環稜核",
       "outputPath": "client/public/images/materials/material_ice_mountain_halo_prism_core.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_ice_mountain_highland_stormfeather",
@@ -75,7 +75,7 @@
       "name": "高原風暴羽",
       "outputPath": "client/public/images/materials/material_ice_mountain_highland_stormfeather.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_ice_mountain_iceglass_ore",
@@ -83,8 +83,8 @@
       "targetId": "iceglass_ore",
       "name": "冰玻礦",
       "outputPath": "client/public/images/materials/material_ice_mountain_iceglass_ore.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_ice_mountain_silverpine_mica",
@@ -92,8 +92,8 @@
       "targetId": "silverpine_mica",
       "name": "銀松雲母",
       "outputPath": "client/public/images/materials/material_ice_mountain_silverpine_mica.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }
