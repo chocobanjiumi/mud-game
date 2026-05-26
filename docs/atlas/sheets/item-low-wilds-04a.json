@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_04a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_04a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_body_07", "category": "item", "targetId": "supplemental_body_07", "name": "礦渣鎖甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_07.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_body_08", "category": "item", "targetId": "supplemental_body_08", "name": "霜兔絨甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_08.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_body_09", "category": "item", "targetId": "supplemental_body_09", "name": "赤砂鱗甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_09.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_body_10", "category": "item", "targetId": "supplemental_body_10", "name": "銀松長甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_10.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_body_11", "category": "item", "targetId": "supplemental_body_11", "name": "雷草披甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_11.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_body_12", "category": "item", "targetId": "supplemental_body_12", "name": "琥珀蜻甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_12.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_body_13", "category": "item", "targetId": "supplemental_body_13", "name": "血鹽鱗衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_13.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_body_14", "category": "item", "targetId": "supplemental_body_14", "name": "星砂法衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_14.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_body_15", "category": "item", "targetId": "supplemental_body_15", "name": "月井白袍", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_15.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_body_16", "category": "item", "targetId": "supplemental_body_16", "name": "焦木胸甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_16.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_body_17", "category": "item", "targetId": "supplemental_body_17", "name": "霧港油衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_17.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_body_18", "category": "item", "targetId": "supplemental_body_18", "name": "古碑板甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_18.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_body_19", "category": "item", "targetId": "supplemental_body_19", "name": "鏡沼水衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_19.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_body_20", "category": "item", "targetId": "supplemental_body_20", "name": "紅爐重甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_20.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_body_21", "category": "item", "targetId": "supplemental_body_21", "name": "雷原皮甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_21.png", "row": 3, "column": 2 }
+  ]
+}
