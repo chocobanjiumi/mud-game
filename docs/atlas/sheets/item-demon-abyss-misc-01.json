@@ -1,0 +1,13 @@
+{
+  "sheetId": "item_demon_abyss_misc_01",
+  "category": "item",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/item_demon_abyss_misc_01.sheet.png",
+  "targets": [
+    { "assetId": "item_demon_abyss_dragon_celestial_return_scroll", "category": "item", "targetId": "return_scroll", "name": "回城卷軸", "outputPath": "client/public/images/items/item_demon_abyss_dragon_celestial_return_scroll.png", "row": 0, "column": 0 },
+    { "assetId": "item_demon_abyss_fire_ash_large_hp_potion", "category": "item", "targetId": "large_hp_potion", "name": "大型生命藥水", "outputPath": "client/public/images/items/item_demon_abyss_fire_ash_large_hp_potion.png", "row": 0, "column": 1 },
+    { "assetId": "item_demon_abyss_fire_ash_large_mp_potion", "category": "item", "targetId": "large_mp_potion", "name": "大型資源藥水", "outputPath": "client/public/images/items/item_demon_abyss_fire_ash_large_mp_potion.png", "row": 1, "column": 0 },
+    { "assetId": "item_demon_abyss_forest_fen_abyss_eye_staff", "category": "item", "targetId": "abyss_eye_staff", "name": "深淵之眼", "outputPath": "client/public/images/items/item_demon_abyss_forest_fen_abyss_eye_staff.png", "row": 1, "column": 1 }
+  ]
+}
