@@ -1,8 +1,8 @@
 {
   "sheetId": "material_forest_fen_02",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_02.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "ice_fern_frond",
       "name": "冰蕨葉",
       "outputPath": "client/public/images/materials/material_forest_fen_ice_fern_frond.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_mirror_moss",
@@ -57,7 +57,7 @@
       "name": "鏡苔",
       "outputPath": "client/public/images/materials/material_forest_fen_mirror_moss.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_forest_fen_moonflower_petal",
@@ -66,7 +66,7 @@
       "name": "月花瓣",
       "outputPath": "client/public/images/materials/material_forest_fen_moonflower_petal.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_forest_fen_nature_crystal",
@@ -75,7 +75,7 @@
       "name": "自然水晶",
       "outputPath": "client/public/images/materials/material_forest_fen_nature_crystal.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_forest_fen_nightfern_venom",
@@ -83,8 +83,8 @@
       "targetId": "nightfern_venom",
       "name": "夜蕨毒液",
       "outputPath": "client/public/images/materials/material_forest_fen_nightfern_venom.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_poison_gland",
@@ -92,8 +92,8 @@
       "targetId": "poison_gland",
       "name": "毒腺",
       "outputPath": "client/public/images/materials/material_forest_fen_poison_gland.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }

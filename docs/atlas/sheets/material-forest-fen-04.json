@@ -1,8 +1,8 @@
 {
   "sheetId": "material_forest_fen_04",
   "category": "material",
-  "columns": 5,
-  "rows": 1,
+  "columns": 3,
+  "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_04.sheet.png",
   "targets": [
     {
@@ -38,8 +38,8 @@
       "targetId": "snake_skin",
       "name": "蛇皮",
       "outputPath": "client/public/images/materials/material_forest_fen_coast_water_snake_skin.png",
-      "row": 0,
-      "column": 3
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_coast_water_snake_venom",
@@ -47,8 +47,8 @@
       "targetId": "snake_venom",
       "name": "蛇毒",
       "outputPath": "client/public/images/materials/material_forest_fen_coast_water_snake_venom.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 1
     }
   ]
 }

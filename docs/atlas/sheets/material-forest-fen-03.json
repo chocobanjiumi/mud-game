@@ -1,8 +1,8 @@
 {
   "sheetId": "material_forest_fen_03",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_03.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "smoke_resin_spore",
       "name": "煙脂孢子",
       "outputPath": "client/public/images/materials/material_forest_fen_smoke_resin_spore.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_spider_venom_sac",
@@ -57,7 +57,7 @@
       "name": "蜘蛛毒囊",
       "outputPath": "client/public/images/materials/material_forest_fen_spider_venom_sac.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_forest_fen_storm_bough_splinter",
@@ -66,7 +66,7 @@
       "name": "雷枝木刺",
       "outputPath": "client/public/images/materials/material_forest_fen_storm_bough_splinter.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_forest_fen_toad_skin",
@@ -75,7 +75,7 @@
       "name": "蟾蜍皮",
       "outputPath": "client/public/images/materials/material_forest_fen_toad_skin.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_forest_fen_treant_sap",
@@ -83,8 +83,8 @@
       "targetId": "treant_sap",
       "name": "樹精樹液",
       "outputPath": "client/public/images/materials/material_forest_fen_treant_sap.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_umbral_spider_silk",
@@ -92,8 +92,8 @@
       "targetId": "umbral_spider_silk",
       "name": "幽影蛛絲",
       "outputPath": "client/public/images/materials/material_forest_fen_umbral_spider_silk.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }

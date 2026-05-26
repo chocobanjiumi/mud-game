@@ -1,8 +1,8 @@
 {
   "sheetId": "material_forest_fen_01",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_forest_fen_01.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "black_reed_fiber",
       "name": "黑蘆纖維",
       "outputPath": "client/public/images/materials/material_forest_fen_black_reed_fiber.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_blackbark_charcoal",
@@ -57,7 +57,7 @@
       "name": "黑木炭皮",
       "outputPath": "client/public/images/materials/material_forest_fen_blackbark_charcoal.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_forest_fen_coldspring_dew",
@@ -66,7 +66,7 @@
       "name": "冷泉露",
       "outputPath": "client/public/images/materials/material_forest_fen_coldspring_dew.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_forest_fen_cursed_sap",
@@ -75,7 +75,7 @@
       "name": "詛咒樹液",
       "outputPath": "client/public/images/materials/material_forest_fen_cursed_sap.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_forest_fen_dark_bark",
@@ -83,8 +83,8 @@
       "targetId": "dark_bark",
       "name": "暗黑樹皮",
       "outputPath": "client/public/images/materials/material_forest_fen_dark_bark.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_forest_fen_echo_stone_chip",
@@ -92,8 +92,8 @@
       "targetId": "echo_stone_chip",
       "name": "回音石片",
       "outputPath": "client/public/images/materials/material_forest_fen_echo_stone_chip.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }
