@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_08a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_08a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_feet_20", "category": "item", "targetId": "supplemental_feet_20", "name": "紅爐鐵靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_20.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_21", "category": "item", "targetId": "supplemental_feet_21", "name": "雷原疾靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_21.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_22", "category": "item", "targetId": "supplemental_feet_22", "name": "玻砂行履", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_22.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_feet_23", "category": "item", "targetId": "supplemental_feet_23", "name": "地城銅靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_23.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_feet_24", "category": "item", "targetId": "supplemental_feet_24", "name": "墓霜灰靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_24.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_25", "category": "item", "targetId": "supplemental_feet_25", "name": "風暴釘靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_25.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_26", "category": "item", "targetId": "supplemental_feet_26", "name": "黑木獵靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_26.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_hands_01", "category": "item", "targetId": "supplemental_hands_01", "name": "麻繩護手", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_01.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_hands_02", "category": "item", "targetId": "supplemental_hands_02", "name": "溪石拳套", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_02.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_hands_03", "category": "item", "targetId": "supplemental_hands_03", "name": "柳枝手套", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_03.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_hands_04", "category": "item", "targetId": "supplemental_hands_04", "name": "穀倉鐵腕", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_04.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_hands_05", "category": "item", "targetId": "supplemental_hands_05", "name": "黑苔爪套", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_05.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_hands_06", "category": "item", "targetId": "supplemental_hands_06", "name": "潮繩護腕", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_06.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_hands_07", "category": "item", "targetId": "supplemental_hands_07", "name": "礦釘手甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_07.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_hands_08", "category": "item", "targetId": "supplemental_hands_08", "name": "霜皮指套", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_08.png", "row": 3, "column": 2 }
+  ]
+}
