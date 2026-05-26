@@ -6,6 +6,8 @@ import { CharacterSelectScreenView } from '../components/CharacterSelectScreen';
 import SkillTablePage from '../components/SkillTablePage';
 import UniqueItemPage from '../components/UniqueItemPage';
 import { UNIQUE_ITEM_DRAFTS } from '../content/uniqueItemDrafts';
+import TalentTreePage from '../components/TalentTreePage';
+import { TALENT_FAMILY_DRAFTS, getTalentDraftSummary } from '../content/talentTreeDrafts';
 import { SkillLearnedModalView } from '../components/SkillLearnedModal';
 import { DeathNoticeModalView } from '../components/DeathNoticeModal';
 import { RoomPanelView } from '../components/RoomPanel';
@@ -209,6 +211,34 @@ describe('key UI component rendering', () => {
       expect(item.visualPrompt.length).toBeGreaterThan(30);
       expect(item.drawback.length).toBeGreaterThan(10);
       expect(item.loreSource.length).toBeGreaterThan(5);
+    }
+  });
+
+
+  it('renders the talent tree draft page with complete branch and node planning', () => {
+    const html = renderToStaticMarkup(<TalentTreePage />);
+    const summary = getTalentDraftSummary();
+    expect(html).toContain('天賦樹文案規劃');
+    expect(html).toContain('此頁為文案規劃，不是正式成長系統');
+    expect(html).toContain('戰士系列');
+    expect(html).toContain('守衛 / 格擋 / 反擊');
+    expect(summary.families).toBe(4);
+    expect(summary.branches).toBe(12);
+    expect(summary.nodes).toBe(96);
+    expect(summary.keystones).toBe(12);
+    for (const family of TALENT_FAMILY_DRAFTS) {
+      expect(family.branches).toHaveLength(3);
+      for (const branch of family.branches) {
+        const branchNodes = family.nodes.filter((nodeDef) => nodeDef.branch === branch.id);
+        expect(branchNodes).toHaveLength(8);
+        expect(branchNodes.some((nodeDef) => nodeDef.keystone)).toBe(true);
+      }
+      for (const nodeDef of family.nodes) {
+        expect(nodeDef.id).toMatch(/^[a-z0-9_]+$/);
+        expect(nodeDef.mechanic.length).toBeGreaterThan(20);
+        expect(nodeDef.notSkillUpgradeNote).toContain('不直接增加既有技能');
+        expect(nodeDef.balanceNote.length).toBeGreaterThanOrEqual(10);
+      }
     }
   });
 

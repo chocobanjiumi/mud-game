@@ -30,6 +30,7 @@ export default function UniqueItemPage() {
   const [status, setStatus] = useState<FilterValue | UniqueItemStatus>(ALL);
   const [typeOrSlot, setTypeOrSlot] = useState<FilterValue | string>(ALL);
   const [mechanicTag, setMechanicTag] = useState<FilterValue | string>(ALL);
+  const [loreSource, setLoreSource] = useState<FilterValue | string>(ALL);
 
   const typeOptions = useMemo(
     () => [ALL, ...Array.from(new Set(UNIQUE_ITEM_DRAFTS.map((item) => item.typeOrSlot))).sort()],
@@ -37,6 +38,10 @@ export default function UniqueItemPage() {
   );
   const mechanicOptions = useMemo(
     () => [ALL, ...Array.from(new Set(UNIQUE_ITEM_DRAFTS.flatMap((item) => item.mechanicTags))).sort()],
+    [],
+  );
+  const loreOptions = useMemo(
+    () => [ALL, ...Array.from(new Set(UNIQUE_ITEM_DRAFTS.map((item) => item.loreSource))).sort((a, b) => a.localeCompare(b, 'zh-Hant'))],
     [],
   );
 
@@ -47,8 +52,9 @@ export default function UniqueItemPage() {
       && (status === ALL || item.selectionStatus === status)
       && (typeOrSlot === ALL || item.typeOrSlot === typeOrSlot)
       && (mechanicTag === ALL || item.mechanicTags.includes(mechanicTag))
+      && (loreSource === ALL || item.loreSource === loreSource)
     )),
-    [category, family, mechanicTag, status, typeOrSlot],
+    [category, family, loreSource, mechanicTag, status, typeOrSlot],
   );
 
   return (
@@ -78,6 +84,7 @@ export default function UniqueItemPage() {
             <FilterGroup label="分類" value={category} options={CATEGORY_OPTIONS} getLabel={labelCategory} onChange={setCategory} />
             <FilterGroup label="Type / Slot" value={typeOrSlot} options={typeOptions} getLabel={labelRaw} onChange={setTypeOrSlot} />
             <FilterGroup label="機制標籤" value={mechanicTag} options={mechanicOptions} getLabel={labelRaw} onChange={setMechanicTag} />
+            <FilterGroup label="Lore source" value={loreSource} options={loreOptions} getLabel={labelRaw} onChange={setLoreSource} />
             <FilterGroup label="狀態" value={status} options={STATUS_OPTIONS} getLabel={labelStatus} onChange={setStatus} />
           </div>
           <div className="text-sm text-text-dim">
