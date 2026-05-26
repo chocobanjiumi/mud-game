@@ -51,6 +51,15 @@ function QuestItem({ quest }: { quest: Quest }) {
         <div className="quest-item-progress">
           <div className="text-[10px] text-text-dim mb-0.5 truncate">{currentStepObj.description}</div>
           <QuestProgressBar current={currentStepObj.current} target={currentStepObj.target} />
+          {quest.nextHint && (
+            <div className="text-[10px] text-text-amber mt-1 truncate">{quest.nextHint}</div>
+          )}
+          {quest.rewardPreview && (
+            <div className="text-[10px] text-text-dim mt-1 truncate">
+              獎勵：{quest.rewardPreview.exp} EXP / {quest.rewardPreview.gold} 金幣
+              {quest.rewardPreview.equipment?.length ? ` / ${quest.rewardPreview.equipment.join('、')}` : ''}
+            </div>
+          )}
         </div>
       )}
 
@@ -58,6 +67,16 @@ function QuestItem({ quest }: { quest: Quest }) {
       {expanded && (
         <div className="quest-item-details">
           <div className="text-xs text-text-dim mb-1">{quest.description}</div>
+          {(quest.nextNpcName || quest.nextRoomName || quest.recommendedLevel) && (
+            <div className="quest-step quest-step-current mb-1">
+              <span className="quest-step-marker">{'[>]'}</span>
+              <span className="flex-1">
+                {quest.nextRoomName ? `前往 ${quest.nextRoomName}` : '下一步'}
+                {quest.nextNpcName ? `，找 ${quest.nextNpcName}` : ''}
+                {quest.recommendedLevel ? `（建議 Lv.${quest.recommendedLevel}）` : ''}
+              </span>
+            </div>
+          )}
           <div className="space-y-1">
             {quest.steps.map((step, i) => {
               const done = i < quest.currentStep || isCompleted;
@@ -76,31 +95,42 @@ function QuestItem({ quest }: { quest: Quest }) {
               );
             })}
           </div>
+          {quest.rewardPreview && (
+            <div className="mt-2 text-[10px] text-text-dim">
+              <div className="text-text-terminal mb-0.5">獎勵預覽</div>
+              <div>
+                {quest.rewardPreview.exp} EXP / {quest.rewardPreview.gold} 金幣
+                {quest.rewardPreview.items?.length ? ` / ${quest.rewardPreview.items.map(item => `${item.name} x${item.quantity}`).join('、')}` : ''}
+                {quest.rewardPreview.equipment?.length ? ` / ${quest.rewardPreview.equipment.join('、')}` : ''}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 }
 
-export default function QuestLog() {
-  const questLogOpen = useGameStore((s) => s.questLogOpen);
-  const setQuestLogOpen = useGameStore((s) => s.setQuestLogOpen);
-  const activeQuests = useGameStore((s) => s.activeQuests);
+export function QuestLogView({
+  activeQuests,
+  onClose,
+}: {
+  activeQuests: Quest[];
+  onClose: () => void;
+}) {
   const [selectedTab, setSelectedTab] = useState<QuestCategory>('main');
-
-  if (!questLogOpen) return null;
 
   const filteredQuests = activeQuests.filter((q) => q.category === selectedTab);
   const activeCount = filteredQuests.filter((q) => q.status === 'active').length;
 
   return (
-    <div className="quest-log-overlay" onClick={() => setQuestLogOpen(false)}>
+    <div className="quest-log-overlay" onClick={onClose}>
       <div className="quest-log-modal" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="quest-log-header">
           <span className="text-sm font-bold text-text-terminal">任務日誌</span>
           <button
-            onClick={() => setQuestLogOpen(false)}
+            onClick={onClose}
             className="text-text-dim hover:text-text-bright text-xs cursor-pointer"
           >
             [關閉] Q
@@ -144,4 +174,13 @@ export default function QuestLog() {
       </div>
     </div>
   );
+}
+
+export default function QuestLog() {
+  const questLogOpen = useGameStore((s) => s.questLogOpen);
+  const setQuestLogOpen = useGameStore((s) => s.setQuestLogOpen);
+  const activeQuests = useGameStore((s) => s.activeQuests);
+
+  if (!questLogOpen) return null;
+  return <QuestLogView activeQuests={activeQuests} onClose={() => setQuestLogOpen(false)} />;
 }

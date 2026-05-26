@@ -23,10 +23,12 @@ import type {
   DeathPenalty,
   DeathNoticePayload,
   LocalMapPayload,
+  WorldMapPayload,
   NpcDialoguePayload,
   NearbyCombatPayload,
   CharacterListItemPayload,
   CardinalDirection,
+  SkillPointSummary,
 } from '@game/shared';
 
 import { loadAudioSettings } from '../audio/AudioManager';
@@ -99,6 +101,18 @@ export interface Quest {
   status: QuestStatus;
   steps: QuestStep[];
   currentStep: number;
+  nextNpcId?: string;
+  nextNpcName?: string;
+  nextRoomId?: string;
+  nextRoomName?: string;
+  nextHint?: string;
+  recommendedLevel?: number;
+  rewardPreview?: {
+    exp: number;
+    gold: number;
+    items?: { itemId: string; name: string; quantity: number }[];
+    equipment?: string[];
+  };
 }
 
 // --- Leaderboard ---
@@ -115,6 +129,9 @@ export interface TooltipItemData {
   description: string;
   rarity: ItemRarity;
   quality?: ItemQuality;
+  itemLevel?: number;
+  droppedBy?: string;
+  droppedInZone?: string;
   affixes?: AffixDef[];
   fixedEffects?: string[];
   levelReq: number;
@@ -206,6 +223,7 @@ export interface MapData {
     percent: number;
   };
   travelNodes?: { id: string; name: string; roomId: string; kind: string; unlocked: boolean }[];
+  world?: WorldMapPayload;
 }
 
 // --- Connection state ---
@@ -276,6 +294,8 @@ export interface GameState {
   // Skills
   skills: LearnedSkill[];
   setSkills: (skills: LearnedSkill[]) => void;
+  skillPoints: SkillPointSummary | null;
+  setSkillPoints: (skillPoints: SkillPointSummary | null) => void;
   skillLearnedNotices: SkillLearnedNotice[];
   addSkillLearnedNotice: (notice: SkillLearnedNotice) => void;
   dismissSkillLearnedNotice: () => void;
@@ -433,6 +453,7 @@ export const useGameStore = create<GameState>((set) => ({
       inventory: [],
       equipment: null,
       skills: [],
+      skillPoints: null,
       aliases: {},
       party: [],
       partyLeaderId: null,
@@ -506,6 +527,8 @@ export const useGameStore = create<GameState>((set) => ({
   // Skills
   skills: [],
   setSkills: (skills) => set({ skills }),
+  skillPoints: null,
+  setSkillPoints: (skillPoints) => set({ skillPoints }),
   skillLearnedNotices: [],
   addSkillLearnedNotice: (notice) =>
     set((state) => ({ skillLearnedNotices: [...state.skillLearnedNotices, notice] })),

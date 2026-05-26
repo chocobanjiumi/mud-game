@@ -9,7 +9,6 @@ import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
-import CombatPanel from './CombatPanel';
 import Inventory from './Inventory';
 import PartyPanel from './PartyPanel';
 import SkillBar from './SkillBar';
@@ -24,6 +23,7 @@ import AudioSettings from './AudioSettings';
 import NpcDialogueModal from './NpcDialogueModal';
 import SkillLearnedModal from './SkillLearnedModal';
 import DeathNoticeModal from './DeathNoticeModal';
+import SkillModal from './SkillModal';
 
 interface GameScreenProps {
   onCommand: (command: string, friendlyEcho?: string) => void;
@@ -58,6 +58,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
   const character = useGameStore((s) => s.character);
   const addTerminalLine = useGameStore((s) => s.addTerminalLine);
   const [pendingTargetSkillId, setPendingTargetSkillId] = useState<string | null>(null);
+  const [skillModalOpen, setSkillModalOpen] = useState(false);
 
   const openWorldMap = useCallback(() => {
     if (!worldMapOpen) {
@@ -72,6 +73,10 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
     }
     toggleInventory();
   }, [onCommand, showInventory, toggleInventory]);
+
+  const openSkillModal = useCallback(() => {
+    setSkillModalOpen(true);
+  }, []);
 
   // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
   useEffect(() => {
@@ -191,8 +196,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <QuickButton label="返回角色選擇" onClick={onReturnToCharacters} />
             <QuickButton label="查看" onClick={() => onCommand('look', '查看四周')} />
             <QuickButton label="狀態" onClick={() => onCommand('status', '查看狀態')} />
+            <QuickButton label="升級測試" onClick={() => onCommand('debug levelup', '升級測試')} highlight />
             <QuickButton label="地圖" onClick={() => onCommand('map', '查看地圖')} />
-            <QuickButton label="技能" onClick={() => onCommand('skills', '查看技能')} />
+            <QuickButton label="技能" active={skillModalOpen} onClick={openSkillModal} />
             {inCombat && (
               <>
                 <div className="border-t border-border-dim my-1" />
@@ -228,7 +234,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         {/* C: operation area */}
         <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
           <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
-            <CombatPanel />
             <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
             <RoomPanel />
             <SelectedTargetPanel />
@@ -253,6 +258,12 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       <WorldMap />
       <AudioSettings />
       <NpcDialogueModal />
+      <SkillModal
+        open={skillModalOpen}
+        onClose={() => setSkillModalOpen(false)}
+        onUseSkill={handleUseSkill}
+        onUpgradeSkill={(skillId, skillName) => onCommand(`skill upgrade ${skillId}`, `升級技能 ${skillName}`)}
+      />
       <SkillLearnedModal />
       <DeathNoticeModal />
       <ItemTooltip />

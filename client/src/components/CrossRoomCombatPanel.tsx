@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { SKILL_DEFS, type CardinalDirection, type Direction, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
+import { SKILL_DEFS, type CardinalDirection, type CombatantState, type Direction, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
-import { getEntityImagePath, getMonsterImagePath } from '../utils/assetImages';
+import { getEntityImagePath, getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
+import SkillHoverCard from './SkillHoverCard';
+import MonsterHoverCard from './MonsterHoverCard';
 
 type LaneId = 'self' | CardinalDirection;
 
 const CARDINAL_DIRECTIONS: CardinalDirection[] = ['north', 'west', 'east', 'south'];
+const VERTICAL_DIRECTIONS: Direction[] = ['up', 'down'];
 
 const DIRECTION_LABEL: Record<Direction, string> = {
   north: '北',
@@ -52,6 +55,48 @@ function laneClass(active: boolean, reachable: boolean): string {
   ].filter(Boolean).join(' ');
 }
 
+function nearbyMonsterToHoverState(monster: NearbyCombatMonsterPayload): CombatantState {
+  return {
+    id: monster.id,
+    name: monster.label ?? monster.name,
+    isPlayer: false,
+    isAi: true,
+    hp: monster.hp,
+    maxHp: monster.maxHp,
+    mp: 0,
+    maxMp: 0,
+    resource: 0,
+    maxResource: 0,
+    resourceType: 'mp',
+    level: monster.level,
+    classId: monster.monsterId,
+    activeEffects: [],
+    isDead: monster.hp <= 0,
+  };
+}
+
+function entityMonsterToHoverState(monster: RoomEntity): CombatantState {
+  const details = monster.monsterDetails;
+  return {
+    id: monster.id,
+    name: monster.label,
+    isPlayer: false,
+    isAi: true,
+    hp: monster.hp ?? details?.hp ?? 0,
+    maxHp: monster.maxHp ?? details?.maxHp ?? 1,
+    mp: details?.mp ?? 0,
+    maxMp: details?.maxMp ?? 0,
+    resource: 0,
+    maxResource: 0,
+    resourceType: 'mp',
+    level: details?.level ?? Number(monster.subtitle?.match(/Lv\.(\d+)/)?.[1] ?? 1),
+    classId: details?.monsterId ?? monster.id,
+    activeEffects: [],
+    isDead: (monster.hp ?? details?.hp ?? 0) <= 0,
+    monsterBehavior: details?.behaviorType as CombatantState['monsterBehavior'],
+  };
+}
+
 export function CrossRoomCombatPanelView({
   room,
   inCombat,
@@ -83,6 +128,9 @@ export function CrossRoomCombatPanelView({
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
   const nearby = room.nearbyCombat;
   const neighborByDirection = new Map((nearby?.neighbors ?? []).map((neighbor) => [neighbor.direction, neighbor]));
+  const verticalExits = VERTICAL_DIRECTIONS
+    .map((direction) => exitByDirection.get(direction))
+    .filter((exit): exit is RoomExit => Boolean(exit));
   const combatEnemies = combat?.enemyTeam.filter((enemy) => !enemy.isDead) ?? [];
   const selectedLabel = selectedLane === 'self' ? '本房' : `${DIRECTION_LABEL[selectedLane]}側`;
   const currentMonsters = nearby?.current.monsters ?? [];
@@ -150,6 +198,23 @@ export function CrossRoomCombatPanelView({
         />
         <div />
       </div>
+
+      {verticalExits.length > 0 && (
+        <div className="cross-room-vertical-exits" aria-label="垂直出口">
+          {verticalExits.map((exit) => (
+            <button
+              key={exit.direction}
+              type="button"
+              className="cross-room-vertical-go"
+              title={directionTitle(exit, exit.direction)}
+              onClick={() => sendCommand(`go ${exit.direction}`, `前往${DIRECTION_LABEL[exit.direction]}方`)}
+            >
+              <span>{DIRECTION_LABEL[exit.direction]}方</span>
+              <b>{exit.description || '可前往'}</b>
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="cross-room-detail">
         {selectedLane === 'self' ? (
@@ -275,18 +340,23 @@ function CurrentRoomTargets({
           {monsters.slice(0, 6).map((monster) => {
             const image = getEntityImagePath(monster);
             return (
-              <button
-                type="button"
+              <MonsterHoverCard
                 key={monster.id}
-                className={`cross-room-target ${selectedMonster?.id === monster.id ? 'cross-room-target-active' : ''}`}
-                onClick={() => {
-                  onSelectTarget(monster.id);
-                  setSelectedEntity?.(monster);
-                }}
+                monster={entityMonsterToHoverState(monster)}
+                displayName={monster.label}
               >
-                {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.label.slice(0, 1)}</span>}
-                <small>{monster.label}</small>
-              </button>
+                <button
+                  type="button"
+                  className={`cross-room-target ${selectedMonster?.id === monster.id ? 'cross-room-target-active' : ''}`}
+                  onClick={() => {
+                    onSelectTarget(monster.id);
+                    setSelectedEntity?.(monster);
+                  }}
+                >
+                  {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.label.slice(0, 1)}</span>}
+                  <small>{monster.label}</small>
+                </button>
+              </MonsterHoverCard>
             );
           })}
           {monsters.length === 0 && payloadMonsters.slice(0, 6).map((monster) => (
@@ -310,25 +380,24 @@ function CurrentRoomTargets({
       {selectedCurrentTarget && (
         <div className="cross-room-actions">
           {(selectedAttack || selectedPayloadMonster) && (
-            <button
-              type="button"
-              className="cross-room-action cross-room-action-primary"
+            <IconActionButton
+              label="攻擊"
+              iconText="ATK"
+              className="cross-room-action-primary"
               title="將目標拉入戰鬥，下一 tick 普攻。"
               onClick={() => sendCommand(selectedAttack?.command ?? `attack ${selectedCurrentTarget.id}`, `攻擊 ${selectedCurrentTarget.label}`)}
-            >
-              攻擊
-            </button>
+            />
           )}
           {skillActions.map((action) => (
-            <button
+            <IconActionButton
               key={action.skillId}
-              type="button"
-              className="cross-room-action"
-              title={action.title}
+            label={action.label}
+            iconPath={action.iconPath}
+            iconText={action.iconText}
+            skill={action.skill}
+            title={action.title}
               onClick={() => sendCommand(action.command, action.echo)}
-            >
-              {action.label}
-            </button>
+            />
           ))}
         </div>
       )}
@@ -407,24 +476,17 @@ function AdjacentRoomPreview({
       </div>
       <div className="cross-room-actions">
         {skillActions.map((action) => (
-          <button
+          <IconActionButton
             key={action.skillId}
-            type="button"
-            className={`cross-room-action ${action.tone === 'scout' ? 'cross-room-action-scout' : ''}`}
+            label={action.label}
+            iconPath={action.iconPath}
+            iconText={action.iconText}
+            skill={action.skill}
+            className={action.tone === 'scout' ? 'cross-room-action-scout' : ''}
             title={action.title}
             onClick={() => sendCommand(action.command, action.echo)}
-          >
-            {action.label}
-          </button>
+          />
         ))}
-        <button
-          type="button"
-          className="cross-room-action cross-room-action-primary"
-          title="技能列會使用這個方向作為跨房技能目標。"
-          onClick={onSelectDirection}
-        >
-          指定
-        </button>
       </div>
     </div>
   );
@@ -436,6 +498,9 @@ interface AdjacentSkillAction {
   command: string;
   echo: string;
   title: string;
+  iconPath?: string;
+  iconText?: string;
+  skill?: SkillDef;
   tone?: 'scout';
 }
 
@@ -461,6 +526,9 @@ function buildCurrentRoomSkillActions(
       command: `skill ${def.id} ${target.id}`,
       echo: `${def.name} ${target.label}`,
       title: def.shortDescription,
+      iconPath: getPublicAssetPath(def.iconPath),
+      iconText: def.name.slice(0, 1),
+      skill: def,
     });
   }
   return actions;
@@ -477,7 +545,7 @@ function buildAdjacentSkillActions(
   const actions: AdjacentSkillAction[] = [];
   const hasScout = canScoutFallback || learnedSkills.some((skill) => skill.skillId === 'ranger_scout');
 
-  if (hasScout && !scouted) {
+  if (hasScout) {
     actions.push(createAdjacentSkillAction(SKILL_DEFS.ranger_scout, direction, 'scout'));
   }
 
@@ -501,10 +569,11 @@ function canUseInCurrentContext(def: SkillDef, inCombat: boolean): boolean {
 
 function isAdjacentDetailSkill(def: SkillDef, scouted: boolean, selectedTarget: NearbyCombatMonsterPayload | null): boolean {
   if (def.special?.areaScope === 'adjacent_cardinal') return false;
-  if (def.special?.scoutDirection) return !scouted;
+  if (def.special?.scoutDirection) return true;
   if (def.special?.trapExit) return true;
   if (def.special?.crossRoomRequiresScout && !scouted) return false;
   if (def.special?.crossRoom || def.special?.crossRoomRequiresScout) {
+    if (def.targetType === 'single_enemy' && def.special?.blindCrossRoomRandomTarget && !scouted) return true;
     return def.targetType === 'single_enemy' ? Boolean(selectedTarget) : true;
   }
   return false;
@@ -526,8 +595,46 @@ function createAdjacentSkillAction(
     command: `skill ${def.id} ${directionArg}${targetArg}`,
     echo: `${def.name} ${selectedTarget?.label ?? `${DIRECTION_LABEL[direction]}側`}`,
     title: def.shortDescription,
+    iconPath: getPublicAssetPath(def.iconPath),
+    iconText: def.name.slice(0, 1),
+    skill: def,
     tone,
   };
+}
+
+function IconActionButton({
+  label,
+  iconPath,
+  iconText,
+  skill,
+  className = '',
+  title,
+  onClick,
+}: {
+  label: string;
+  iconPath?: string;
+  iconText?: string;
+  skill?: SkillDef;
+  className?: string;
+  title: string;
+  onClick: () => void;
+}) {
+  const button = (
+    <button
+      type="button"
+      className={`cross-room-action ${className}`}
+      title={skill ? undefined : title}
+      onClick={onClick}
+    >
+      <span className="cross-room-action-icon" aria-hidden="true">
+        {iconPath
+          ? <img src={iconPath} alt="" loading="lazy" />
+          : <span>{iconText ?? label.slice(0, 1)}</span>}
+      </span>
+      <span className="cross-room-action-label">{label}</span>
+    </button>
+  );
+  return skill ? <SkillHoverCard skill={skill}>{button}</SkillHoverCard> : button;
 }
 
 function MonsterChip({
@@ -541,11 +648,13 @@ function MonsterChip({
 }) {
   const image = getMonsterImagePath(monster.monsterId) ?? monster.image;
   return (
-    <button type="button" className={`cross-room-target ${active ? 'cross-room-target-active' : ''}`} onClick={onClick}>
-      {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
-      <small>{monster.label ?? monster.name}</small>
-      <small className="cross-room-hp">HP {monster.hp}/{monster.maxHp}</small>
-    </button>
+    <MonsterHoverCard monster={nearbyMonsterToHoverState(monster)} displayName={monster.label ?? monster.name}>
+      <button type="button" className={`cross-room-target ${active ? 'cross-room-target-active' : ''}`} onClick={onClick}>
+        {image ? <img src={image} alt="" loading="lazy" /> : <span>{monster.name.slice(0, 1)}</span>}
+        <small>{monster.label ?? monster.name}</small>
+        <small className="cross-room-hp">HP {monster.hp}/{monster.maxHp}</small>
+      </button>
+    </MonsterHoverCard>
   );
 }
 

@@ -23,6 +23,18 @@ function actionSuggestion(entity: RoomEntity, action: RoomEntityAction, label: s
   };
 }
 
+function directionLabel(direction: string): string {
+  const labels: Record<string, string> = {
+    north: '北',
+    south: '南',
+    east: '東',
+    west: '西',
+    up: '上',
+    down: '下',
+  };
+  return labels[direction] ?? direction;
+}
+
 function textMatchesEntity(text: string, entity: RoomEntity): boolean {
   return text.includes(entity.label.replace(/#\d+/, ''))
     || (entity.subtitle ? text.includes(entity.subtitle.split('·')[0].trim()) : false);
@@ -128,8 +140,24 @@ export function buildObjectiveSuggestions(input: {
     const quest = quests.find(q => q.status === 'active') ?? quests[0];
     if (quest) {
       const step = quest.steps[quest.currentStep];
-      const questText = step ? `${quest.name}: ${step.description}` : quest.name;
-      const questAction = step ? questActionSuggestion(step.description, entities) : null;
+      const targetNpc = quest.nextNpcId
+        ? entities.find(entity => entity.type === 'npc' && entity.id === quest.nextNpcId && findAction(entity, '對話'))
+        : undefined;
+      const targetNpcAction = targetNpc ? findAction(targetNpc, '對話') : undefined;
+      const targetExit = quest.nextRoomId
+        ? room?.exits.find(exit => exit.targetRoomId === quest.nextRoomId)
+        : undefined;
+      const questText = quest.nextHint ?? (step ? `${quest.name}: ${step.description}` : quest.name);
+      const questAction = targetNpc && targetNpcAction
+        ? actionSuggestion(targetNpc, targetNpcAction, `對話 ${targetNpc.label}`)
+        : targetExit
+          ? {
+              label: `前往 ${quest.nextRoomName ?? directionLabel(targetExit.direction)}`,
+              command: `go ${targetExit.direction}`,
+            }
+          : step
+            ? questActionSuggestion(`${step.description} ${quest.nextRoomName ?? ''} ${quest.nextNpcName ?? ''}`, entities)
+            : null;
       suggestions.push(questAction ?? { label: questText, command: undefined });
     }
 

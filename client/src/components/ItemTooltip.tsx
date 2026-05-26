@@ -137,6 +137,9 @@ export default function ItemTooltip() {
         {tooltipItem.levelReq > 0 && (
           <span className="text-text-dim">需要等級 {tooltipItem.levelReq}</span>
         )}
+        {tooltipItem.itemLevel && (
+          <span className="text-text-dim">物品等級 Lv.{tooltipItem.itemLevel}</span>
+        )}
         {tooltipItem.type && (
           <span className="text-text-dim">{tooltipItem.type}</span>
         )}
@@ -186,12 +189,21 @@ export default function ItemTooltip() {
       {tooltipItem.affixes && tooltipItem.affixes.length > 0 && (
         <div className="item-tooltip-stats">
           <div className="text-[10px] text-text-dim mb-0.5">詞綴</div>
-          {tooltipItem.affixes.map((affix) => (
-            <div key={affix.id} className="item-tooltip-stat-line items-start gap-2">
-              <span className="text-text-bright">{affix.name}</span>
-              <span className="text-text-dim text-right">{affix.tier} {describeAffix(affix)}</span>
-            </div>
-          ))}
+          {(['prefix', 'suffix', 'behavior', 'fixed'] as const).map((kind) => {
+            const affixes = tooltipItem.affixes?.filter(affix => (affix.kind ?? 'prefix') === kind) ?? [];
+            if (affixes.length === 0) return null;
+            return (
+              <div key={kind} className="mb-1">
+                <div className="text-[10px] text-text-amber">{kind}</div>
+                {affixes.map((affix) => (
+                  <div key={affix.id} className="item-tooltip-stat-line items-start gap-2">
+                    <span className="text-text-bright">{affix.name}</span>
+                    <span className="text-text-dim text-right">{affix.tier} {describeAffix(affix)}</span>
+                  </div>
+                ))}
+              </div>
+            );
+          })}
         </div>
       )}
 
@@ -203,6 +215,8 @@ export default function ItemTooltip() {
 
       <div className="item-tooltip-meta">
         <span className="text-text-dim">來源: {tooltipItem.sourceTags?.length ? tooltipItem.sourceTags.join(', ') : '未知'}</span>
+        {tooltipItem.droppedBy && <span className="text-text-dim">掉落: {tooltipItem.droppedBy}</span>}
+        {tooltipItem.droppedInZone && <span className="text-text-dim">區域: {tooltipItem.droppedInZone}</span>}
         <span className={tooltipItem.bound ? 'text-text-amber' : 'text-text-dim'}>
           {tooltipItem.bound ? '已綁定' : '未綁定'}
         </span>

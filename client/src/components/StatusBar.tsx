@@ -1,4 +1,5 @@
 import { useGameStore } from '../stores/gameStore';
+import { getAtlasBackgroundStyle, getStatusEffectDef } from '@game/shared';
 import type { ResourceType } from '@game/shared';
 
 const CLASS_NAMES: Record<string, string> = {
@@ -163,17 +164,18 @@ export default function StatusBar() {
           {activeEffects.length > 0 && (
             <div className="flex items-center gap-1">
               {activeEffects.map((effect, i) => {
-                const isBuff = effect.type.includes('up') || effect.type === 'regen' ||
-                  effect.type === 'mana_regen' || effect.type === 'shield';
+                const def = getStatusEffectDef(effect.type);
+                const isBuff = def.polarity === 'positive';
                 return (
                   <span
                     key={`${effect.type}-${i}`}
-                    className={`px-1 rounded text-[10px] ${
+                    className={`px-1 rounded text-[10px] flex items-center gap-1 ${
                       isBuff ? 'bg-combat-buff/20 text-combat-buff' : 'bg-combat-debuff/20 text-combat-debuff'
                     }`}
-                    title={`${effect.type} (${effect.remainingDuration}回合)`}
+                    title={`${def.name} (${effect.remainingDuration}回合) · ${def.description}`}
                   >
-                    {effect.type.replace(/_/g, ' ')}
+                    {def.icon && <i aria-hidden="true" style={getAtlasBackgroundStyle(def.icon, 14)} />}
+                    {def.name}
                   </span>
                 );
               })}

@@ -1,6 +1,10 @@
 import { useGameStore } from '../stores/gameStore';
-import { ITEM_DEFS, SKILL_DEFS, type Character, type InventoryItem, type LearnedSkill } from '@game/shared';
+import { ITEM_DEFS, SKILL_DEFS, getAtlasBackgroundStyle, getCombatActionIconRect, getStatusEffectDef, type Character, type InventoryItem, type LearnedSkill, type CombatActionIconId } from '@game/shared';
 import type { CombatInfo } from '../stores/gameStore';
+import type { CSSProperties } from 'react';
+import { getItemImagePath, getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
+import SkillHoverCard from './SkillHoverCard';
+import MonsterHoverCard from './MonsterHoverCard';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -38,9 +42,13 @@ export function CombatPanelView({
 }) {
   if (!inCombat || !combat) return null;
 
-  const livingEnemies = combat.enemyTeam.filter((enemy) => !enemy.isDead);
+  const livingEnemies = combat.enemyTeam.filter((enemy) => !enemy.isDead && !enemy.isApproaching && (enemy.arrivalTicksRemaining ?? 0) <= 0);
+  if (livingEnemies.length === 0) return null;
+
   const enemyLabels = ordinalEnemyLabels(livingEnemies);
-  const targetId = selectedTargetId ?? livingEnemies[0]?.id ?? null;
+  const targetId = livingEnemies.some((enemy) => enemy.id === selectedTargetId)
+    ? selectedTargetId
+    : livingEnemies[0]?.id ?? null;
   const targetLabel = targetId ? enemyLabels.get(targetId) : null;
   const commonSkills = skills
     .map((skill) => ({ learned: skill, def: SKILL_DEFS[skill.skillId] }))
@@ -57,64 +65,79 @@ export function CombatPanelView({
 
   return (
     <div className="combat-panel border-t border-border-dim bg-bg-secondary px-3 py-2 space-y-2">
-      <div className="flex items-center justify-between gap-2">
+      <div className="combat-panel-head">
         <span className="text-xs font-bold text-combat-damage">戰鬥</span>
-        <span className="text-[10px] text-text-dim">Round {combat.round}</span>
+        <span className="combat-tick-clock" title="每 5 秒轉一圈，表示下一個戰鬥 tick">
+          <span className="combat-tick-clock-face" aria-hidden="true">
+            <span className="combat-tick-clock-hand" />
+          </span>
+          <span>Round {combat.round}</span>
+        </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+      <div className="combat-enemy-row">
         {livingEnemies.map((enemy) => {
           const selected = enemy.id === targetId;
           const hpPct = Math.max(0, Math.min(100, (enemy.hp / Math.max(1, enemy.maxHp)) * 100));
+          const imagePath = getMonsterImagePath(enemy.id);
           return (
-            <button
-              key={enemy.id}
-              className={`combat-enemy ${selected ? 'combat-enemy-selected' : ''}`}
-              onClick={() => setSelectedTargetId(enemy.id)}
-            >
-              <div className="flex items-center justify-between gap-2 text-xs">
-                <span className="truncate text-combat-damage">{enemyLabels.get(enemy.id) ?? enemy.name}</span>
-                <span className="text-text-dim shrink-0">Lv.{enemy.level}</span>
-              </div>
-              <div className="mt-1 h-1.5 bg-bg-primary border border-border-dim">
-                <div className="h-full bg-combat-damage" style={{ width: `${hpPct}%` }} />
-              </div>
-              <div className="mt-0.5 flex justify-between gap-2 text-[10px] text-text-dim">
-                <span>HP {enemy.hp}/{enemy.maxHp}</span>
-                {enemy.pendingTelegraph && <span className="text-text-amber">預兆</span>}
-              </div>
-              {enemy.activeEffects.length > 0 && (
-                <div className="mt-1 flex flex-wrap gap-1">
-                  {enemy.activeEffects.slice(0, 4).map((effect, index) => (
-                    <span
-                      key={`${enemy.id}-${effect.type}-${index}`}
-                      className="rounded border border-border-dim/60 px-1 text-[10px] text-text-amber"
-                      title={`${effect.type} ${effect.remainingDuration}回合`}
-                    >
-                      {effect.type.replace(/_/g, ' ')}
-                    </span>
-                  ))}
+            <MonsterHoverCard key={enemy.id} monster={enemy} displayName={enemyLabels.get(enemy.id) ?? enemy.name}>
+              <button
+                className={`combat-enemy ${selected ? 'combat-enemy-selected' : ''}`}
+                onClick={() => setSelectedTargetId(enemy.id)}
+              >
+                <div className="combat-enemy-hp" title={`HP ${enemy.hp}/${enemy.maxHp}`}>
+                  <span style={{ width: `${hpPct}%` }} />
                 </div>
-              )}
-            </button>
+                <div className="combat-enemy-avatar">
+                  {imagePath ? <img src={imagePath} alt="" loading="lazy" /> : <span>{enemy.name.slice(0, 1)}</span>}
+                </div>
+                <div className="combat-enemy-name">{enemyLabels.get(enemy.id) ?? enemy.name}</div>
+                <div className="combat-enemy-meta">
+                  <span>Lv.{enemy.level}</span>
+                  <span>{enemy.hp}/{enemy.maxHp}</span>
+                </div>
+                {enemy.pendingTelegraph && <div className="combat-enemy-telegraph">預兆</div>}
+                {enemy.activeEffects.length > 0 && (
+                  <div className="combat-enemy-effects">
+                    {enemy.activeEffects.slice(0, 4).map((effect, index) => (
+                      <span
+                        key={`${enemy.id}-${effect.type}-${index}`}
+                        title={`${getStatusEffectDef(effect.type).name} ${effect.remainingDuration}回合`}
+                        className={`combat-effect-${getStatusEffectDef(effect.type).category}`}
+                      >
+                        {getStatusEffectDef(effect.type).icon ? (
+                          <i aria-hidden="true" style={getAtlasBackgroundStyle(getStatusEffectDef(effect.type).icon!, 20)} />
+                        ) : getStatusEffectDef(effect.type).name}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </button>
+            </MonsterHoverCard>
           );
         })}
       </div>
 
-      <div className="flex flex-wrap gap-1">
-        <button
-          className="combat-action combat-action-danger"
+      <div className="combat-action-row">
+        <CombatActionButton
+          label="普攻"
+          actionIcon="attack"
+          className="combat-action-danger"
           disabled={!targetId}
           onClick={() => targetId && sendCommand(`attack ${targetId}`, `攻擊 ${targetLabel ?? '目前目標'}`)}
-        >
-          普攻
-        </button>
-        <button className="combat-action combat-action-primary" onClick={() => sendCommand('defend', '防禦')}>
-          防禦
-        </button>
-        <button className="combat-action" onClick={() => sendCommand('flee', '逃跑')}>
-          逃跑
-        </button>
+        />
+        <CombatActionButton
+          label="防禦"
+          actionIcon="defend"
+          className="combat-action-primary"
+          onClick={() => sendCommand('defend', '防禦')}
+        />
+        <CombatActionButton
+          label="逃跑"
+          actionIcon="flee"
+          onClick={() => sendCommand('flee', '逃跑')}
+        />
         {commonSkills.map(({ learned, def }) => {
           if (!def) return null;
           const needsTarget = def.targetType === 'single_enemy';
@@ -128,37 +151,101 @@ export function CombatPanelView({
               : needsTarget && !targetId
                 ? '需要目標'
                 : undefined;
+          const cooldownProgress = def.cooldown > 0
+            ? Math.max(0, Math.min(1, learned.currentCooldown / def.cooldown))
+            : 0;
           return (
-            <button
+            <CombatActionButton
               key={learned.skillId}
-              className={`combat-action ${def.tags.includes('heal') || def.tags.includes('defense') ? 'combat-action-primary' : 'combat-action-danger'}`}
+              label={def.name}
+              iconPath={getPublicAssetPath(def.iconPath)}
+              className={def.tags.includes('heal') || def.tags.includes('defense') ? 'combat-action-primary' : 'combat-action-danger'}
               disabled={disabled}
               title={reason}
+              skill={def}
+              cooldown={learned.currentCooldown}
+              cooldownProgress={cooldownProgress}
               onClick={() => {
                 const targetSuffix = needsTarget && targetId ? ` ${targetId}` : '';
                 sendCommand(`skill ${learned.skillId}${targetSuffix}`, `使用 ${def.name}`);
               }}
-            >
-              {def.name}
-            </button>
+            />
           );
         })}
         {combatItems.map(({ item, def }) => {
           if (!def) return null;
           return (
-            <button
+            <CombatActionButton
               key={`${item.itemId}-${item.itemInstanceId ?? 'stack'}`}
-              className="combat-action combat-action-primary"
+              label={def.name}
+              iconPath={getItemImagePath(item.itemId)}
+              className="combat-action-primary"
               onClick={() => sendCommand(`use ${def.name}`, `使用 ${def.name}`)}
               title={`x${item.quantity}`}
-            >
-              {def.name}
-            </button>
+            />
           );
         })}
       </div>
     </div>
   );
+}
+
+export function CombatActionButton({
+  label,
+  iconPath,
+  iconText,
+  actionIcon,
+  className = '',
+  disabled = false,
+  title,
+  skill,
+  cooldown = 0,
+  cooldownProgress = 0,
+  onClick,
+}: {
+  label: string;
+  iconPath?: string;
+  iconText?: string;
+  actionIcon?: CombatActionIconId;
+  className?: string;
+  disabled?: boolean;
+  title?: string;
+  skill?: NonNullable<typeof SKILL_DEFS[string]>;
+  cooldown?: number;
+  cooldownProgress?: number;
+  onClick: () => void;
+}) {
+  const style = {
+    '--combat-action-cd': `${Math.round(cooldownProgress * 360)}deg`,
+    '--combat-action-cd-rest': `${Math.round(cooldownProgress * 360) + 2}deg`,
+  } as CSSProperties;
+  const button = (
+    <button
+      type="button"
+      className={`combat-action ${cooldown > 0 ? 'combat-action-cooldown' : ''} ${className}`}
+      disabled={disabled}
+      title={skill ? undefined : title}
+      style={style}
+      onClick={onClick}
+    >
+      <span className="combat-action-icon" aria-hidden="true">
+        {iconPath ? (
+          <img src={iconPath} alt="" loading="lazy" />
+        ) : actionIcon ? (
+          <i style={getAtlasBackgroundStyle(getCombatActionIconRect(actionIcon), 28)} />
+        ) : (
+          <span>{iconText ?? label.slice(0, 1)}</span>
+        )}
+      </span>
+      {cooldown > 0 && <span className="combat-action-cd-text">{cooldown}T</span>}
+      <span className="combat-action-label">{label}</span>
+    </button>
+  );
+  return skill ? (
+    <SkillHoverCard skill={skill} currentCooldown={cooldown} disabledReason={title}>
+      {button}
+    </SkillHoverCard>
+  ) : button;
 }
 
 export default function CombatPanel() {

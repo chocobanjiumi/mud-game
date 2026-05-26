@@ -4,6 +4,8 @@ import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 import MonsterDetailModal from './MonsterDetailModal';
 import { CrossRoomCombatPanelView } from './CrossRoomCombatPanel';
+import CombatPanel from './CombatPanel';
+import ApproachingPanel from './ApproachingPanel';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -130,7 +132,6 @@ export function RoomPanelView({
   const entities = room.entities ?? [];
   const corpses = room.corpses ?? [];
   const corpseLabels = ordinalLabels(corpses);
-  const nodes = room.gatheringNodes ?? [];
   const travelNodes = room.travelNodes ?? [];
   const hasEntityPayload = entities.length > 0;
 
@@ -164,9 +165,12 @@ export function RoomPanelView({
             selectedEntity={selectedEntity}
             setSelectedEntity={setSelectedEntity}
           />
+          <ApproachingPanel />
+          <CombatPanel />
           {SECTION_ORDER.map((type) => {
             if (type === 'exit') return null;
             if (type === 'monster') return null;
+            if (type === 'gathering') return null;
             const sectionEntities = entities.filter((entity) => entity.type === type);
             if (sectionEntities.length === 0) return null;
             return (
@@ -196,13 +200,6 @@ export function RoomPanelView({
             </button>
           ))}
 
-          {nodes.map((node) => (
-            <button key={node.id} className="room-row" onClick={() => sendCommand(`gather ${node.id}`, `採集 ${node.name}`)}>
-              <span className="text-text-amber">{node.name}</span>
-              <span className="text-text-dim">{node.skill} Lv.{node.levelMin}</span>
-            </button>
-          ))}
-
           {travelNodes.map((node) => (
             <button key={node.id} className="room-row" onClick={() => sendCommand(node.unlocked ? `travel ${node.id}` : 'activate portal', node.unlocked ? `前往 ${node.name}` : `啟用 ${node.name}`)}>
               <span className="text-chat-party">{node.name}</span>
@@ -212,7 +209,7 @@ export function RoomPanelView({
         </div>
       )}
 
-      {!hasEntityPayload && corpses.length === 0 && nodes.length === 0 && travelNodes.length === 0 && hints.length === 0 && (
+      {!hasEntityPayload && corpses.length === 0 && travelNodes.length === 0 && hints.length === 0 && (
         <div className="text-xs text-text-dim">目前沒有明確互動物。</div>
       )}
       {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}

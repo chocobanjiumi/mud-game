@@ -1,6 +1,7 @@
 import { useGameStore } from '../stores/gameStore';
 import { SKILL_DEFS, type Character, type LearnedSkill, type RoomEntity, type SkillDef } from '@game/shared';
 import { getPublicAssetPath } from '../utils/assetImages';
+import SkillHoverCard from './SkillHoverCard';
 
 interface SkillBarProps {
   onUseSkill: (skillId: string) => void;
@@ -57,9 +58,11 @@ export function SkillBarView({
             selectedDirection: selectedCrossRoomDirection,
           }) : '';
 
+          if (!def) return null;
+
           return (
+            <SkillHoverCard key={skill.skillId} skill={def} currentCooldown={skill.currentCooldown}>
             <button
-              key={skill.skillId}
               onClick={() => !onCooldown && onUseSkill(skill.skillId)}
               disabled={onCooldown}
               className={`
@@ -71,7 +74,7 @@ export function SkillBarView({
                 }
                 transition-colors
               `}
-              title={`${def?.name ?? skill.skillId} · ${targetMode} · ${def?.shortDescription ?? def?.usageContext ?? ''}${onCooldown ? ` (冷卻: ${skill.currentCooldown}回合)` : ''}`}
+              aria-label={`${def.name} · ${targetMode}`}
             >
               {/* Hotkey badge */}
               {hotkey && (
@@ -100,6 +103,7 @@ export function SkillBarView({
                 </span>
               )}
             </button>
+            </SkillHoverCard>
           );
         })}
       </div>

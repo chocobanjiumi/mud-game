@@ -1,97 +1,45 @@
+import { useEffect, useMemo, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
+import type { WorldMapRoomPayload, WorldMapZonePayload } from '@game/shared';
 
-interface ZoneInfo {
-  id: string;
-  name: string;
-  levelRange: string;
-  totalRooms: number;
-  // grid position for rendering (col, row)
-  col: number;
-  row: number;
-}
+const REGION_LABELS: Record<string, string> = {
+  central: '中央',
+  east: '東部',
+  west: '西部',
+  north: '北部',
+  south: '南部',
+  underground: '地下',
+  abyss: '深淵',
+  celestial: '天界',
+};
 
-const ZONES: ZoneInfo[] = [
-  // Main north-south path (col 1)
-  { id: 'starter_village', name: '新手村', levelRange: '1-5', totalRooms: 8, col: 1, row: 0 },
-  { id: 'green_plains', name: '翠綠平原', levelRange: '5-10', totalRooms: 15, col: 1, row: 1 },
-  { id: 'dark_forest', name: '暗影森林', levelRange: '10-15', totalRooms: 14, col: 1, row: 2 },
-  { id: 'volcano', name: '火山地帶', levelRange: '20-25', totalRooms: 9, col: 1, row: 3 },
-  { id: 'demon_territory', name: '魔族領地', levelRange: '30-35', totalRooms: 13, col: 1, row: 4 },
-  { id: 'dragon_valley', name: '龍谷', levelRange: '35-40', totalRooms: 8, col: 1, row: 5 },
-  { id: 'abyss_rift', name: '深淵裂隙', levelRange: '40-45', totalRooms: 7, col: 1, row: 6 },
-  { id: 'celestial_ruins', name: '天界遺跡', levelRange: '45-50', totalRooms: 10, col: 1, row: 7 },
-  // East branches
-  { id: 'lakeside_town', name: '湖畔城鎮', levelRange: '5-8', totalRooms: 10, col: 3, row: 1 },
-  { id: 'east_coast', name: '東方海岸', levelRange: '8-12', totalRooms: 11, col: 3, row: 2 },
-  { id: 'crystal_cave', name: '水晶洞窟', levelRange: '15-20', totalRooms: 10, col: 3, row: 3 },
-  // West branch
-  { id: 'ice_plains', name: '冰封雪原', levelRange: '25-30', totalRooms: 12, col: 0, row: 2 },
-];
-
-// Connections between zones: [fromId, toId]
-const CONNECTIONS: [string, string][] = [
-  // Main path (north to south)
-  ['starter_village', 'green_plains'],
-  ['green_plains', 'dark_forest'],
-  ['dark_forest', 'volcano'],
-  ['volcano', 'demon_territory'],
-  ['demon_territory', 'dragon_valley'],
-  ['dragon_valley', 'abyss_rift'],
-  ['abyss_rift', 'celestial_ruins'],
-  // East branches
-  ['green_plains', 'lakeside_town'],
-  ['lakeside_town', 'east_coast'],
-  ['dark_forest', 'crystal_cave'],
-  // West branch
-  ['dark_forest', 'ice_plains'],
-];
-
-const COL_WIDTH = 130;
-const ROW_HEIGHT = 80;
-const BOX_W = 110;
-const BOX_H = 56;
-const PAD_X = 60;
-const PAD_Y = 40;
-
-function getCenter(zone: ZoneInfo): { cx: number; cy: number } {
-  return {
-    cx: PAD_X + zone.col * COL_WIDTH + BOX_W / 2,
-    cy: PAD_Y + zone.row * ROW_HEIGHT + BOX_H / 2,
-  };
-}
+const DIRECTION_LABELS: Record<string, string> = {
+  north: '北',
+  south: '南',
+  east: '東',
+  west: '西',
+  up: '上',
+  down: '下',
+};
 
 export default function WorldMap() {
   const worldMapOpen = useGameStore((s) => s.worldMapOpen);
   const setWorldMapOpen = useGameStore((s) => s.setWorldMapOpen);
-  const exploredRooms = useGameStore((s) => s.exploredRooms);
   const room = useGameStore((s) => s.room);
   const mapData = useGameStore((s) => s.mapData);
+  const [selectedZoneId, setSelectedZoneId] = useState<string | null>(null);
+
+  const zones = mapData?.world?.zones ?? [];
+  const currentZoneId = mapData?.zone ?? room?.zone ?? '';
+  const selectedZone = zones.find(zone => zone.id === (selectedZoneId ?? currentZoneId)) ?? zones[0] ?? null;
+  const regionGroups = useMemo(() => groupZonesByRegion(zones), [zones]);
 
   if (!worldMapOpen) return null;
-
-  const currentZoneId = mapData?.zone ?? '';
-  const currentRoomId = room?.id ?? '';
-  const travelNodes = mapData?.travelNodes ?? room?.travelNodes ?? [];
-
-  // Calculate explored rooms per zone
-  const getExploredCount = (zoneId: string) => {
-    let count = 0;
-    exploredRooms.forEach((rid) => {
-      if (rid.startsWith(zoneId)) count++;
-    });
-    return count;
-  };
-
-  const isCurrentZone = (zoneId: string) => currentZoneId === zoneId || currentRoomId.startsWith(zoneId);
-
-  const svgWidth = PAD_X * 2 + 4 * COL_WIDTH;
-  const svgHeight = PAD_Y * 2 + 8 * ROW_HEIGHT;
 
   return (
     <>
       <div className="worldmap-overlay" onClick={() => setWorldMapOpen(false)} />
       <div className="worldmap-modal">
-        {/* Header */}
         <div className="worldmap-header">
           <span className="text-text-terminal font-bold text-sm">世界地圖</span>
           <button
@@ -102,153 +50,41 @@ export default function WorldMap() {
           </button>
         </div>
 
-        {/* Map body */}
         <div className="worldmap-body">
-          {mapData?.zoneType && (
-            <div className="mb-3 grid grid-cols-5 gap-2 text-[10px] text-text-dim">
-              <div>區域 <span className="text-text-amber">{mapData.zoneName ?? mapData.zone}</span></div>
-              <div>類型 <span className="text-text-bright">{mapData.zoneType}</span></div>
-              <div>危險 <span className="text-text-amber">{mapData.dangerLevel ?? 0}</span></div>
-              <div>PvP <span className="text-text-bright">{mapData.pvpMode}</span></div>
-              <div>死亡 <span className="text-text-bright">{mapData.deathPenalty}</span></div>
-            </div>
-          )}
-          <svg
-            width={svgWidth}
-            height={svgHeight}
-            viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-            className="worldmap-svg"
-          >
-            {/* Connections */}
-            {CONNECTIONS.map(([fromId, toId]) => {
-              const fromZone = ZONES.find((z) => z.id === fromId);
-              const toZone = ZONES.find((z) => z.id === toId);
-              if (!fromZone || !toZone) return null;
-              const from = getCenter(fromZone);
-              const to = getCenter(toZone);
-              return (
-                <line
-                  key={`${fromId}-${toId}`}
-                  x1={from.cx}
-                  y1={from.cy}
-                  x2={to.cx}
-                  y2={to.cy}
-                  stroke="#1a3a5c"
-                  strokeWidth={2}
-                  strokeDasharray="4 3"
-                />
-              );
-            })}
-
-            {/* Zone boxes */}
-            {ZONES.map((zone) => {
-              const x = PAD_X + zone.col * COL_WIDTH;
-              const y = PAD_Y + zone.row * ROW_HEIGHT;
-              const explored = getExploredCount(zone.id);
-              const isCurrent = isCurrentZone(zone.id);
-              const isExplored = explored > 0;
-
-              const fillColor = isCurrent
-                ? 'rgba(255, 184, 0, 0.15)'
-                : isExplored
-                  ? 'rgba(0, 255, 136, 0.08)'
-                  : 'rgba(90, 106, 138, 0.08)';
-              const strokeColor = isCurrent
-                ? '#ffb800'
-                : isExplored
-                  ? '#00ff88'
-                  : '#1a3a5c';
-              const textColor = isCurrent
-                ? '#ffb800'
-                : isExplored
-                  ? '#00ff88'
-                  : '#5a6a8a';
-
-              return (
-                <g key={zone.id}>
-                  <rect
-                    x={x}
-                    y={y}
-                    width={BOX_W}
-                    height={BOX_H}
-                    rx={4}
-                    fill={fillColor}
-                    stroke={strokeColor}
-                    strokeWidth={isCurrent ? 2 : 1}
-                  />
-                  <text
-                    x={x + BOX_W / 2}
-                    y={y + 18}
-                    textAnchor="middle"
-                    fill={textColor}
-                    fontSize={11}
-                    fontWeight="bold"
-                    fontFamily="var(--font-mono)"
-                  >
-                    {zone.name}
-                  </text>
-                  <text
-                    x={x + BOX_W / 2}
-                    y={y + 32}
-                    textAnchor="middle"
-                    fill="#5a6a8a"
-                    fontSize={9}
-                    fontFamily="var(--font-mono)"
-                  >
-                    Lv.{zone.levelRange}
-                  </text>
-                  <text
-                    x={x + BOX_W / 2}
-                    y={y + 46}
-                    textAnchor="middle"
-                    fill="#5a6a8a"
-                    fontSize={9}
-                    fontFamily="var(--font-mono)"
-                  >
-                    {explored}/{zone.totalRooms}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-
-          <div className="mt-3 border-t border-border-dim pt-3">
-            <div className="flex items-center justify-between text-[10px] text-text-dim mb-2">
-              <span>交通點</span>
-              <span>
-                已解鎖 {travelNodes.filter((node) => node.unlocked).length}/{travelNodes.length}
-              </span>
-            </div>
-            {travelNodes.length > 0 ? (
-              <div className="grid grid-cols-2 gap-2">
-                {travelNodes.map((node) => (
-                  <button
-                    key={node.id}
-                    className={`text-left border px-2 py-1 text-[10px] ${
-                      node.unlocked
-                        ? 'border-green-500/40 bg-green-500/10 text-chat-party'
-                        : 'border-border-dim bg-bg-secondary text-text-dim'
-                    }`}
-                    onClick={() => {
-                      window.dispatchEvent(new CustomEvent('terminal-command', {
-                        detail: node.unlocked ? `travel ${node.id}` : 'activate portal',
-                      }));
-                    }}
-                  >
-                    <span className="block truncate">{node.name}</span>
-                    <span className="block text-[9px] text-text-dim">
-                      {node.unlocked ? '已解鎖' : '未解鎖'} · {node.kind}
-                    </span>
-                  </button>
+          {zones.length > 0 ? (
+            <div className="worldmap-layout">
+              <div className="worldmap-zone-list">
+                {regionGroups.map(([region, regionZones]) => (
+                  <section key={region} className="worldmap-region">
+                    <div className="worldmap-region-title">{REGION_LABELS[region] ?? region}</div>
+                    <div className="worldmap-zone-grid">
+                      {regionZones.map((zone) => (
+                        <ZoneButton
+                          key={zone.id}
+                          zone={zone}
+                          active={zone.id === selectedZone?.id}
+                          current={zone.id === currentZoneId}
+                          onClick={() => setSelectedZoneId(zone.id)}
+                        />
+                      ))}
+                    </div>
+                  </section>
                 ))}
               </div>
-            ) : (
-              <div className="text-[10px] text-text-dim">目前區域沒有可顯示的交通點。</div>
-            )}
-          </div>
+
+              <div className="worldmap-zone-detail">
+                {selectedZone ? (
+                  <ZoneRoomGraph zone={selectedZone} currentRoomId={mapData?.currentRoom ?? room?.id ?? ''} />
+                ) : (
+                  <div className="worldmap-empty">尚無區域資料。</div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div className="worldmap-empty">尚無世界地圖資料，請先使用 map 重新同步。</div>
+          )}
         </div>
 
-        {/* Legend */}
         <div className="worldmap-legend">
           <div className="worldmap-legend-item">
             <span className="worldmap-legend-box worldmap-legend-current" />
@@ -267,4 +103,227 @@ export default function WorldMap() {
       </div>
     </>
   );
+}
+
+function ZoneButton({
+  zone,
+  active,
+  current,
+  onClick,
+}: {
+  zone: WorldMapZonePayload;
+  active: boolean;
+  current: boolean;
+  onClick: () => void;
+}) {
+  const percent = zone.totalRooms > 0 ? Math.floor((zone.visitedRooms / zone.totalRooms) * 100) : 0;
+  return (
+    <button
+      type="button"
+      className={[
+        'worldmap-zone-button',
+        active ? 'worldmap-zone-button-active' : '',
+        current ? 'worldmap-zone-button-current' : '',
+        zone.visitedRooms > 0 ? 'worldmap-zone-button-explored' : '',
+      ].filter(Boolean).join(' ')}
+      onClick={onClick}
+    >
+      <span>{zone.name}</span>
+      <b>Lv.{zone.levelRange[0]}-{zone.levelRange[1]} · {zone.totalRooms} 房</b>
+      <small>{zone.visitedRooms}/{zone.totalRooms} · {percent}%</small>
+    </button>
+  );
+}
+
+function ZoneRoomGraph({ zone, currentRoomId }: { zone: WorldMapZonePayload; currentRoomId: string }) {
+  const layers = useMemo(() => getZoneLayers(zone.rooms), [zone.rooms]);
+  const currentRoom = zone.rooms.find(room => room.id === currentRoomId);
+  const defaultLayer = currentRoom?.mapLayer ?? layers.find(layer => layer.mapLayer === 0)?.mapLayer ?? layers[0]?.mapLayer ?? 0;
+  const [selectedLayer, setSelectedLayer] = useState(defaultLayer);
+
+  useEffect(() => {
+    setSelectedLayer(defaultLayer);
+  }, [zone.id, defaultLayer]);
+
+  const visibleRooms = zone.rooms.filter(room => room.mapLayer === selectedLayer);
+  const bounds = getRoomBounds(visibleRooms);
+  const width = Math.max(420, (bounds.maxX - bounds.minX + 1) * 96 + 80);
+  const height = Math.max(280, (bounds.maxY - bounds.minY + 1) * 64 + 80);
+  const positions = new Map(visibleRooms.map(room => [room.id, roomPosition(room, bounds)]));
+  const selectedLayerName = layers.find(layer => layer.mapLayer === selectedLayer)?.name ?? formatMapLayerName(selectedLayer);
+
+  return (
+    <div className="worldmap-zone-panel">
+      <div className="worldmap-zone-panel-head">
+        <div>
+          <div className="worldmap-zone-panel-title">{zone.name}</div>
+          <div className="worldmap-zone-panel-subtitle">
+            {REGION_LABELS[zone.region] ?? zone.region} · {zone.type} · {selectedLayerName} · 危險 {zone.dangerLevel} · PvP {zone.pvpMode}
+          </div>
+        </div>
+        <div className="worldmap-zone-panel-actions">
+          <div className="worldmap-zone-panel-count">{visibleRooms.length}/{zone.totalRooms}</div>
+          <div className="worldmap-layer-tabs" aria-label="地圖樓層">
+            {layers.map((layer) => (
+              <button
+                key={layer.mapLayer}
+                type="button"
+                className={layer.mapLayer === selectedLayer ? 'worldmap-layer-tab worldmap-layer-tab-active' : 'worldmap-layer-tab'}
+                onClick={() => setSelectedLayer(layer.mapLayer)}
+              >
+                {layer.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="worldmap-room-scroll">
+        {visibleRooms.length > 0 ? (
+          <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} className="worldmap-room-svg">
+          {visibleRooms.flatMap(room => room.exits
+            .filter(exit => isPlanarDirection(exit.direction) && exit.targetZoneId === zone.id && positions.has(exit.targetRoomId))
+            .map(exit => {
+              const from = positions.get(room.id)!;
+              const to = positions.get(exit.targetRoomId)!;
+              return (
+                <line
+                  key={`${room.id}-${exit.direction}-${exit.targetRoomId}`}
+                  x1={from.x}
+                  y1={from.y}
+                  x2={to.x}
+                  y2={to.y}
+                  className={exit.locked ? 'worldmap-room-link worldmap-room-link-locked' : 'worldmap-room-link'}
+                />
+              );
+            }))}
+          {visibleRooms.map((room) => {
+            const position = positions.get(room.id)!;
+            const current = room.id === currentRoomId;
+            const crossLayerExits = room.exits.filter(exit => isCrossLayerExit(exit, selectedLayer)).slice(0, 2);
+            return (
+              <g key={room.id} transform={`translate(${position.x - 42} ${position.y - 20})`}>
+                <rect
+                  width="84"
+                  height="40"
+                  rx="4"
+                  className={[
+                    'worldmap-room-node',
+                    room.explored ? 'worldmap-room-node-explored' : '',
+                    current ? 'worldmap-room-node-current' : '',
+                  ].filter(Boolean).join(' ')}
+                />
+                <text x="42" y="16" textAnchor="middle" className="worldmap-room-symbol">{room.mapSymbol}</text>
+                <title>{room.name}</title>
+                <text x="42" y="30" textAnchor="middle" className="worldmap-room-name">{room.name}</text>
+                {crossLayerExits.map((exit, index) => (
+                  <g
+                    key={`${room.id}-${exit.direction}-${exit.targetRoomId}`}
+                    transform={`translate(${64 + (index * 16)} 4)`}
+                    className={typeof exit.targetMapLayer === 'number' ? 'worldmap-layer-marker-group' : ''}
+                    onClick={() => {
+                      if (typeof exit.targetMapLayer === 'number') setSelectedLayer(exit.targetMapLayer);
+                    }}
+                  >
+                    <circle r="6" className="worldmap-layer-marker" />
+                    <text y="3" textAnchor="middle" className="worldmap-layer-marker-text">
+                      {DIRECTION_LABELS[exit.direction] ?? exit.direction}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            );
+          })}
+          </svg>
+        ) : (
+          <div className="worldmap-empty">此樓層尚無房間資料。</div>
+        )}
+      </div>
+
+      <div className="worldmap-room-list">
+        {visibleRooms.map((room) => (
+          <RoomRow key={room.id} room={room} current={room.id === currentRoomId} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RoomRow({ room, current }: { room: WorldMapRoomPayload; current: boolean }) {
+  const exitText = room.exits
+    .map(exit => {
+      const direction = DIRECTION_LABELS[exit.direction] ?? exit.direction;
+      const target = exit.targetRoomName ?? exit.targetRoomId;
+      const layerHint = typeof exit.targetMapLayer === 'number' && exit.targetMapLayer !== room.mapLayer
+        ? `(${exit.targetMapLayerName ?? formatMapLayerName(exit.targetMapLayer)})`
+        : '';
+      return `${direction}:${target}${layerHint}${exit.locked ? '(鎖)' : ''}`;
+    })
+    .slice(0, 5)
+    .join(' / ');
+  return (
+    <div className={['worldmap-room-row', current ? 'worldmap-room-row-current' : ''].filter(Boolean).join(' ')}>
+      <span>{room.name}</span>
+      <b>{room.explored ? '已探索' : '未探索'} · {room.mapLayerName ?? formatMapLayerName(room.mapLayer)}</b>
+      <small>{exitText || '無出口'}</small>
+    </div>
+  );
+}
+
+function getZoneLayers(rooms: WorldMapRoomPayload[]): { mapLayer: number; name: string }[] {
+  const layers = new Map<number, string>();
+  for (const room of rooms) {
+    layers.set(room.mapLayer, room.mapLayerName ?? formatMapLayerName(room.mapLayer));
+  }
+  return [...layers.entries()]
+    .sort(([a], [b]) => b - a)
+    .map(([mapLayer, name]) => ({ mapLayer, name }));
+}
+
+function isPlanarDirection(direction: string): boolean {
+  return direction === 'north' || direction === 'south' || direction === 'east' || direction === 'west';
+}
+
+function isCrossLayerExit(
+  exit: WorldMapRoomPayload['exits'][number],
+  selectedLayer: number,
+): boolean {
+  if (exit.direction === 'up' || exit.direction === 'down') return true;
+  return typeof exit.targetMapLayer === 'number' && exit.targetMapLayer !== selectedLayer;
+}
+
+function formatMapLayerName(layer: number): string {
+  if (layer === 0) return '地面層';
+  if (layer > 0) return `上層 ${layer}`;
+  return `地下 ${Math.abs(layer)}`;
+}
+
+function groupZonesByRegion(zones: WorldMapZonePayload[]): [string, WorldMapZonePayload[]][] {
+  const groups = new Map<string, WorldMapZonePayload[]>();
+  for (const zone of zones) {
+    const list = groups.get(zone.region) ?? [];
+    list.push(zone);
+    groups.set(zone.region, list);
+  }
+  return [...groups.entries()].map(([region, regionZones]) => [
+    region,
+    regionZones.sort((a, b) => a.levelRange[0] - b.levelRange[0] || a.name.localeCompare(b.name)),
+  ]);
+}
+
+function getRoomBounds(rooms: WorldMapRoomPayload[]): { minX: number; maxX: number; minY: number; maxY: number } {
+  if (rooms.length === 0) return { minX: 0, maxX: 0, minY: 0, maxY: 0 };
+  return rooms.reduce((bounds, room) => ({
+    minX: Math.min(bounds.minX, room.mapX),
+    maxX: Math.max(bounds.maxX, room.mapX),
+    minY: Math.min(bounds.minY, room.mapY),
+    maxY: Math.max(bounds.maxY, room.mapY),
+  }), { minX: rooms[0].mapX, maxX: rooms[0].mapX, minY: rooms[0].mapY, maxY: rooms[0].mapY });
+}
+
+function roomPosition(room: WorldMapRoomPayload, bounds: ReturnType<typeof getRoomBounds>): { x: number; y: number } {
+  return {
+    x: (room.mapX - bounds.minX) * 96 + 56,
+    y: (room.mapY - bounds.minY) * 64 + 48,
+  };
 }

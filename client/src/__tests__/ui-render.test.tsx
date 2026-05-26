@@ -10,11 +10,15 @@ import { RoomPanelView } from '../components/RoomPanel';
 import { SelectedTargetPanelView } from '../components/SelectedTargetPanel';
 import { buildObjectiveSuggestions, ObjectivePanelView } from '../components/ObjectivePanel';
 import { CombatPanelView } from '../components/CombatPanel';
+import { ApproachingPanelView } from '../components/ApproachingPanel';
 import { CrossRoomCombatPanelView } from '../components/CrossRoomCombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
 import { InventoryView } from '../components/Inventory';
 import { CharacterSheetView } from '../components/CharacterSheet';
 import { SkillBarView } from '../components/SkillBar';
+import { SkillModalView } from '../components/SkillModal';
+import { NpcDialogueModalView } from '../components/NpcDialogueModal';
+import { QuestLogView } from '../components/QuestLog';
 import { useGameStore } from '../stores/gameStore';
 
 const slimeEntity: RoomEntity = {
@@ -140,12 +144,14 @@ describe('key UI component rendering', () => {
         connection="connected"
         onSelect={() => undefined}
         onCreate={() => undefined}
+        onDelete={() => undefined}
       />,
     );
 
     expect(html).toContain('選擇角色');
     expect(html).toContain('測試戰士');
     expect(html).toContain('Lv.7');
+    expect(html).toContain('刪除角色');
     expect(html).toContain('空角色欄位');
   });
 
@@ -260,6 +266,8 @@ describe('key UI component rendering', () => {
       exits: [
         { direction: 'north' as const, targetRoomId: 'north_room', description: '北側草地' },
         { direction: 'east' as const, targetRoomId: 'east_room', description: '東側小徑' },
+        { direction: 'up' as const, targetRoomId: 'upper_room', description: '二樓平台' },
+        { direction: 'down' as const, targetRoomId: 'lower_room', description: '地下室' },
       ],
       nearbyCombat: {
         current: {
@@ -405,6 +413,10 @@ describe('key UI component rendering', () => {
     expect(html).toContain('東側');
     expect(html).toContain('北側草地');
     expect(html).toContain('東側小徑');
+    expect(html).toContain('上方');
+    expect(html).toContain('下方');
+    expect(html).toContain('二樓平台');
+    expect(html).toContain('地下室');
     expect(html).toContain('本房');
     expect(html).toContain('史萊姆#1');
     expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
@@ -419,18 +431,19 @@ describe('key UI component rendering', () => {
     expect(northCombatDetailHtml).not.toContain('獵人標記');
     expect(northCombatDetailHtml).toContain('多重射擊');
     expect(northSelectedCombatDetailHtml).toContain('單體目標：野兔#1');
-    expect(northSelectedCombatDetailHtml).toContain('>射擊</button>');
+    expect(northSelectedCombatDetailHtml).toContain('cross-room-action-icon');
+    expect(northSelectedCombatDetailHtml).toContain('cross-room-action-label">射擊</span>');
     expect(northSelectedCombatDetailHtml).toContain('火球術');
     expect(northSelectedCombatDetailHtml).toContain('獵人標記');
     expect(northSelectedCombatDetailHtml).toContain('多重射擊');
     expect(northSelectedFieldDetailHtml).toContain('單體目標：野兔#1');
-    expect(northSelectedFieldDetailHtml).toContain('>射擊</button>');
+    expect(northSelectedFieldDetailHtml).toContain('cross-room-action-label">射擊</span>');
     expect(northSelectedFieldDetailHtml).toContain('火球術');
     expect(northSelectedFieldDetailHtml).toContain('獵人標記');
     expect(northSelectedFieldDetailHtml).toContain('多重射擊');
     expect(currentSelectedDetailHtml).toContain('本房目標：史萊姆#1');
-    expect(currentSelectedDetailHtml).toContain('>攻擊</button>');
-    expect(currentSelectedDetailHtml).toContain('>射擊</button>');
+    expect(currentSelectedDetailHtml).toContain('cross-room-action-label">攻擊</span>');
+    expect(currentSelectedDetailHtml).toContain('cross-room-action-label">射擊</span>');
     expect(currentSelectedDetailHtml).toContain('火球術');
   });
 
@@ -465,6 +478,59 @@ describe('key UI component rendering', () => {
     }
     expect(html).toContain('木劍');
     expect(html).toContain('x2');
+    expect(html).toContain('出售');
+  });
+
+  it('renders merchant buy and sell tabs in npc dialogue', () => {
+    const dialogue = {
+        npcId: 'blacksmith',
+        npcName: '鐵匠',
+        npcTitle: '武器商人',
+        npcType: 'merchant',
+        nodeId: 'shop',
+        text: '看看吧。',
+        options: [],
+        shopItems: [{
+          id: 'wooden_sword',
+          name: '木劍',
+          description: '練習用木劍。',
+          price: 50,
+          type: 'weapon',
+          rarity: 'common',
+          levelReq: 1,
+          command: 'buy 木劍',
+        }],
+      };
+    const inventory = [
+      { itemId: 'small_hp_potion', quantity: 2, equipped: false },
+      { itemId: 'wooden_sword', quantity: 1, equipped: true },
+    ];
+    const buyHtml = renderToStaticMarkup(
+      <NpcDialogueModalView
+        dialogue={dialogue}
+        inventory={inventory}
+        setNpcDialogue={() => undefined}
+      />,
+    );
+    const sellHtml = renderToStaticMarkup(
+      <NpcDialogueModalView
+        dialogue={dialogue}
+        inventory={[
+          { itemId: 'small_hp_potion', quantity: 2, equipped: false },
+          { itemId: 'wooden_sword', quantity: 1, equipped: true },
+        ]}
+        setNpcDialogue={() => undefined}
+        initialTradeTab="sell"
+      />,
+    );
+
+    expect(buyHtml).toContain('購買');
+    expect(buyHtml).toContain('出售');
+    expect(buyHtml).toContain('木劍');
+    expect(buyHtml).not.toContain('小型生命藥水');
+    expect(sellHtml).toContain('小型生命藥水');
+    expect(sellHtml).toContain('出售');
+    expect(sellHtml).not.toContain('實例');
   });
 
   it('renders stat allocation controls when free points are available', () => {
@@ -522,6 +588,88 @@ describe('key UI component rendering', () => {
     expect(html).toContain('搜刮 史萊姆#1 屍體');
   });
 
+  it('renders quest guidance and reward preview', () => {
+    const elderEntity: RoomEntity = {
+      id: 'village_chief',
+      type: 'npc',
+      label: '村長',
+      subtitle: '任務',
+      actions: [{ label: '對話', command: 'talk elder', tone: 'primary' }],
+    };
+    useGameStore.setState({
+      questLogOpen: true,
+      room: { ...useGameStore.getState().room!, entities: [elderEntity] },
+      activeQuests: [{
+        id: 'main_01_awakening',
+        name: '覺醒的冒險者',
+        description: '熟悉村子並啟用傳送祠堂。',
+        category: 'main',
+        status: 'active',
+        steps: [{ description: '前往傳送祠堂', current: 0, target: 1 }],
+        currentStep: 0,
+        nextNpcId: 'village_chief',
+        nextNpcName: '村長',
+        nextRoomId: 'village_square',
+        nextRoomName: '村莊廣場',
+        nextHint: '啟用傳送祠堂後回村莊廣場找村長。',
+        recommendedLevel: 1,
+        rewardPreview: {
+          exp: 50,
+          gold: 30,
+          equipment: ['飾品裝備 Lv.5 以下'],
+        },
+      }],
+    });
+
+    const questHtml = renderToStaticMarkup(<QuestLogView activeQuests={useGameStore.getState().activeQuests} onClose={() => undefined} />);
+    const suggestions = buildObjectiveSuggestions({
+      room: useGameStore.getState().room,
+      quests: useGameStore.getState().activeQuests,
+      inCombat: false,
+      combat: null,
+      selectedCombatTargetId: null,
+      skills: [],
+    });
+    const objectiveHtml = renderToStaticMarkup(<ObjectivePanelView suggestions={suggestions} />);
+
+    expect(questHtml).toContain('啟用傳送祠堂後回村莊廣場找村長。');
+    expect(questHtml).toContain('50 EXP / 30 金幣');
+    expect(questHtml).toContain('飾品裝備 Lv.5 以下');
+    expect(objectiveHtml).toContain('對話 村長');
+  });
+
+  it('renders a clickable quest movement suggestion for adjacent rooms', () => {
+    useGameStore.setState({
+      room: {
+        ...useGameStore.getState().room!,
+        exits: [{ direction: 'east', targetRoomId: 'village_square', description: '村莊廣場' }],
+        entities: [],
+      },
+      activeQuests: [{
+        id: 'main_01_awakening',
+        name: '覺醒的冒險者',
+        description: '回村莊廣場。',
+        category: 'main',
+        status: 'active',
+        steps: [{ description: '回村莊廣場', current: 0, target: 1 }],
+        currentStep: 0,
+        nextRoomId: 'village_square',
+        nextRoomName: '村莊廣場',
+        nextHint: '回村莊廣場找村長。',
+      }],
+    });
+    const suggestions = buildObjectiveSuggestions({
+      room: useGameStore.getState().room,
+      quests: useGameStore.getState().activeQuests,
+      inCombat: false,
+      combat: null,
+      selectedCombatTargetId: null,
+      skills: [],
+    });
+
+    expect(suggestions[0]).toMatchObject({ label: '前往 村莊廣場', command: 'go east' });
+  });
+
   it('renders combat targets and action bar', () => {
     useGameStore.setState({
       inCombat: true,
@@ -554,6 +702,58 @@ describe('key UI component rendering', () => {
     expect(html).toContain('逃跑');
   });
 
+  it('separates approaching enemies from arrived combat targets', () => {
+    const approachingEnemy = enemy({
+      id: 'enemy-approaching',
+      name: '逼近史萊姆',
+      isApproaching: true,
+      arrivalTicksRemaining: 2,
+    });
+    const arrivedEnemy = enemy({
+      id: 'enemy-arrived',
+      name: '抵達史萊姆',
+    });
+    const combat = {
+      combatId: 'combat-1',
+      round: 2,
+      playerTeam: [],
+      enemyTeam: [approachingEnemy, arrivedEnemy],
+      turnTimer: 30,
+      log: [],
+    };
+    const character = { resource: 40, resourceType: 'focus' } as Character;
+    const skills = [{ skillId: 'precise_shot', level: 1, currentCooldown: 0 }];
+
+    const approachingHtml = renderToStaticMarkup(
+      <ApproachingPanelView
+        combat={combat}
+        inCombat={true}
+        selectedTargetId={null}
+        setSelectedTargetId={() => undefined}
+        skills={skills}
+        character={character}
+      />,
+    );
+    const combatHtml = renderToStaticMarkup(
+      <CombatPanelView
+        combat={combat}
+        inCombat={true}
+        selectedTargetId={null}
+        setSelectedTargetId={() => undefined}
+        skills={skills}
+        character={character}
+        inventory={[]}
+      />,
+    );
+
+    expect(approachingHtml).toContain('逼近中');
+    expect(approachingHtml).toContain('逼近史萊姆');
+    expect(approachingHtml).toContain('射擊');
+    expect(combatHtml).toContain('戰鬥');
+    expect(combatHtml).toContain('抵達史萊姆');
+    expect(combatHtml).not.toContain('逼近史萊姆');
+  });
+
   it('renders skill bar target modes and pending target prompt', () => {
     const html = renderToStaticMarkup(
       <SkillBarView
@@ -576,5 +776,70 @@ describe('key UI component rendering', () => {
     expect(html).toContain('方向');
     expect(html).toContain('四方');
     expect(html).toContain('需要先在周邊戰鬥選擇方向');
+  });
+
+  it('renders skill modal with upgrade actions', () => {
+    const html = renderToStaticMarkup(
+      <SkillModalView
+        open={true}
+        character={{ name: '測試遊俠', resource: 70, maxResource: 100, resourceType: 'focus' } as Character}
+        skills={[
+          { skillId: 'quick_step', level: 2, currentCooldown: 0 },
+          { skillId: 'race_human_adaptability', level: 1, currentCooldown: 0 },
+        ]}
+        onClose={() => undefined}
+        onUseSkill={() => undefined}
+        onUpgradeSkill={() => undefined}
+      />,
+    );
+
+    expect(html).toContain('技能');
+    expect(html).toContain('測試遊俠');
+    expect(html).toContain('專注 70/100');
+    expect(html).toContain('強襲');
+    expect(html).toContain('Lv.2/5');
+    expect(html).toContain('升級');
+    expect(html).toContain('天賦');
+  });
+
+  it('shows blind cross-room fireball action before scouting', () => {
+    const html = renderToStaticMarkup(
+      <CrossRoomCombatPanelView
+        room={{
+          id: 'training_ground',
+          zone: 'starter_village',
+          name: '訓練場',
+          description: '',
+          exits: [{ direction: 'east', targetRoomId: 'east_room', description: '東側房間' }],
+          players: [],
+          npcs: [],
+          items: [],
+          monsters: [],
+          entities: [],
+          nearbyCombat: {
+            current: { roomId: 'training_ground', roomName: '訓練場', monsters: [] },
+            neighbors: [{
+              direction: 'east',
+              roomId: 'east_room',
+              roomName: '東側房間',
+              passable: true,
+              scouted: false,
+              monsterCount: 2,
+              monsters: [],
+            }],
+            approaching: [],
+          },
+        }}
+        inCombat={false}
+        combat={null}
+        learnedSkills={[{ skillId: 'fireball', level: 1, currentCooldown: 0 }]}
+        initialLane="east"
+      />,
+    );
+
+    expect(html).toContain('火球術');
+    expect(html).toContain('2 未知');
+    expect(html).toContain('cross-room-action-icon');
+    expect(html).toContain('/mud/images/skills/icons/fireball.png');
   });
 });

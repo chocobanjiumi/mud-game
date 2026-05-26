@@ -182,10 +182,16 @@ export function InventoryView({
                 const itemType = def?.type;
                 const canEquip = itemType === 'weapon' || itemType === 'armor' || itemType === 'accessory';
                 const canUse = itemType === 'consumable';
+                const canSell = (def?.sellPrice ?? 0) > 0;
                 const commandItemId = item.itemInstanceId ?? item.itemId;
+                const metaParts = [
+                  item.quantity > 1 ? `x${item.quantity}` : ITEM_DEFS[item.itemId]?.type ?? '',
+                  canSell ? `出售 ${def?.sellPrice ?? 0}金` : '',
+                ].filter(Boolean);
                 const actions = [
                   ...(canEquip ? [{ label: '裝備', command: `equip ${commandItemId}`, tone: 'primary' as const }] : []),
                   ...(canUse ? [{ label: '使用', command: `use ${item.itemId}`, tone: 'primary' as const }] : []),
+                  ...(canSell ? [{ label: '出售', command: `sell ${commandItemId}`, tone: 'primary' as const }] : []),
                   { label: '丟棄', command: `drop ${commandItemId}`, tone: 'danger' as const },
                 ];
                 return (
@@ -203,13 +209,16 @@ export function InventoryView({
                         description: def.description,
                         rarity: def.rarity ?? 'common',
                         quality: item.quality,
+                        itemLevel: item.itemLevel,
+                        droppedBy: item.droppedBy,
+                        droppedInZone: item.droppedInZone,
                         affixes: item.affixes,
                         fixedEffects: item.fixedEffects,
                         levelReq: def.levelReq,
                         stats: def.stats,
                         equipSlot: def.equipSlot,
                         type: def.type,
-                        sourceTags: def.sourceTags,
+                        sourceTags: item.sourceTags ?? def.sourceTags,
                         bound: false,
                       });
                     }}
@@ -224,7 +233,7 @@ export function InventoryView({
                         </span>
                       </span>
                       <span className="inventory-item-meta">
-                        {item.quantity > 1 ? `x${item.quantity}` : ITEM_DEFS[item.itemId]?.type ?? ''}
+                        {metaParts.join(' · ')}
                       </span>
                     </div>
                     {openItemKey === itemKey && (
