@@ -4,6 +4,7 @@ import {
   UNIQUE_ITEM_DRAFTS,
   UNIQUE_ITEM_FAMILY_LABELS,
   UNIQUE_ITEM_STATUS_LABELS,
+  getUniqueCoverageSummary,
   type UniqueItemCategory,
   type UniqueItemFamily,
   type UniqueItemStatus,
@@ -31,6 +32,7 @@ export default function UniqueItemPage() {
   const [typeOrSlot, setTypeOrSlot] = useState<FilterValue | string>(ALL);
   const [mechanicTag, setMechanicTag] = useState<FilterValue | string>(ALL);
   const [loreSource, setLoreSource] = useState<FilterValue | string>(ALL);
+  const coverage = useMemo(() => getUniqueCoverageSummary(), []);
 
   const typeOptions = useMemo(
     () => [ALL, ...Array.from(new Set(UNIQUE_ITEM_DRAFTS.map((item) => item.typeOrSlot))).sort()],
@@ -65,9 +67,14 @@ export default function UniqueItemPage() {
           <h1 className="mt-1 text-2xl font-bold text-text-bright">Unique 武器與裝備候選池</h1>
           <p className="mt-2 max-w-5xl text-sm leading-6 text-text-dim">
             此頁是 unique 候選池，不是正式實裝清單；只整理文案與候選機制，尚未接入正式裝備 manifest、掉落、戰鬥計算或圖片生成。
-            第一批先用 20 個 benchmark item 校準獨特程度、世界觀連結與產圖描述品質。
+            目前已補齊每個武器 type 20 個候選、每個裝備 slot 10 個候選，供後續挑選。
           </p>
         </header>
+
+        <section className="grid gap-3 xl:grid-cols-2">
+          <CoverageBlock title="Weapon type coverage" rows={coverage.weaponTypes} target={20} />
+          <CoverageBlock title="Equipment slot coverage" rows={coverage.equipmentSlots} target={10} />
+        </section>
 
         <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           {FAMILY_SUMMARIES.map((entry) => (
@@ -163,6 +170,28 @@ function FilterGroup<T extends string>({
         ))}
       </select>
     </label>
+  );
+}
+
+function CoverageBlock({ title, rows, target }: { title: string; rows: { id: string; count: number }[]; target: number }) {
+  const complete = rows.every((row) => row.count === target);
+  return (
+    <section className="rounded-md border border-border-dim bg-bg-secondary p-4">
+      <div className="mb-3 flex items-center justify-between gap-3">
+        <h2 className="text-sm font-bold text-text-terminal">{title}</h2>
+        <span className={complete ? 'text-xs text-text-terminal' : 'text-xs text-text-amber'}>
+          {complete ? 'complete' : 'needs review'}
+        </span>
+      </div>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
+        {rows.map((row) => (
+          <div key={row.id} className="rounded border border-border-dim bg-bg-primary px-2 py-1.5">
+            <div className="truncate text-xs text-text-dim">{row.id}</div>
+            <div className="text-sm font-bold text-text-bright">{row.count}/{target}</div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

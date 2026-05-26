@@ -5,7 +5,7 @@ import CreateCharacterScreen from '../components/CreateCharacterScreen';
 import { CharacterSelectScreenView } from '../components/CharacterSelectScreen';
 import SkillTablePage from '../components/SkillTablePage';
 import UniqueItemPage from '../components/UniqueItemPage';
-import { UNIQUE_ITEM_DRAFTS } from '../content/uniqueItemDrafts';
+import { UNIQUE_EQUIPMENT_SLOTS, UNIQUE_ITEM_DRAFTS, UNIQUE_WEAPON_TYPES, getUniqueCoverageSummary } from '../content/uniqueItemDrafts';
 import TalentTreePage from '../components/TalentTreePage';
 import { TALENT_FAMILY_DRAFTS, getTalentDraftSummary } from '../content/talentTreeDrafts';
 import { SkillLearnedModalView } from '../components/SkillLearnedModal';
@@ -203,7 +203,18 @@ describe('key UI component rendering', () => {
     expect(html).toContain('月井落房弓');
     expect(html).toContain('血鹽鉤刃');
     expect(html).toContain('不是正式實裝清單');
-    expect(UNIQUE_ITEM_DRAFTS).toHaveLength(20);
+    expect(html).toContain('Weapon type coverage');
+    expect(html).toContain('Equipment slot coverage');
+    expect(UNIQUE_ITEM_DRAFTS).toHaveLength(UNIQUE_WEAPON_TYPES.length * 20 + UNIQUE_EQUIPMENT_SLOTS.length * 10);
+    const coverage = getUniqueCoverageSummary();
+    expect(coverage.weaponTypes).toHaveLength(20);
+    expect(coverage.equipmentSlots).toHaveLength(9);
+    for (const row of coverage.weaponTypes) {
+      expect(row.count).toBe(20);
+    }
+    for (const row of coverage.equipmentSlots) {
+      expect(row.count).toBe(10);
+    }
     for (const item of UNIQUE_ITEM_DRAFTS) {
       expect(item.id).toMatch(/^[a-z0-9_]+$/);
       expect(item.uniqueEffect.length).toBeGreaterThan(20);

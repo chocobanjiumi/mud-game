@@ -46,7 +46,7 @@ export const UNIQUE_ITEM_STATUS_LABELS: Record<UniqueItemStatus, string> = {
   selected: '選定',
 };
 
-export const UNIQUE_ITEM_DRAFTS: UniqueItemDraft[] = [
+const BENCHMARK_UNIQUE_ITEM_DRAFTS: UniqueItemDraft[] = [
   {
     id: 'moonwell_roomfall_bow',
     name: '月井落房弓',
@@ -428,3 +428,190 @@ export const UNIQUE_ITEM_DRAFTS: UniqueItemDraft[] = [
     selectionStatus: 'pending',
   },
 ];
+
+const WEAPON_TYPES: WeaponType[] = [
+  'sword', 'blade', 'dagger', 'katana', 'giant_sword',
+  'spear', 'bow', 'crossbow', 'axe', 'greataxe',
+  'hammer', 'warhammer', 'wand', 'scepter', 'staff',
+  'whip', 'focus', 'grimoire', 'holy_tome', 'shield',
+];
+
+const EQUIPMENT_SLOTS: EquipSlot[] = ['head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace', 'offhand'];
+
+const TYPE_LABELS: Record<WeaponType | EquipSlot, { zh: string; shape: string; material: string; family: UniqueItemFamily; role: string }> = {
+  weapon: { zh: '武器', shape: '清楚武器剪影', material: '黑鐵與舊銀', family: 'hybrid', role: '泛用規則' },
+  accessory: { zh: '飾品', shape: '小型護符輪廓', material: '黃銅與封蠟', family: 'hybrid', role: '特殊規則' },
+  sword: { zh: '劍', shape: '單手直劍', material: '鋼、鐵木與誓約刻線', family: 'warrior', role: '格擋反擊' },
+  blade: { zh: '刃', shape: '單手彎刃', material: '黑鐵、鹽晶與暗紅刃紋', family: 'ranger', role: '攔截流血' },
+  dagger: { zh: '匕', shape: '短匕首', material: '夜玻、骨柄與薄銀刃口', family: 'ranger', role: '伏擊標記' },
+  katana: { zh: '太刀', shape: '修長太刀', material: '銀鋼、漆黑刀鞘與月紋', family: 'warrior', role: '精準連段' },
+  giant_sword: { zh: '巨劍', shape: '寬大雙手巨劍', material: '厚鋼、王城碎石與金裂縫', family: 'warrior', role: '慢速壓制' },
+  spear: { zh: '槍', shape: '長柄穿刺槍', material: '鐵木、藍鋼與雷草纖維', family: 'warrior', role: '出口攔截' },
+  bow: { zh: '弓', shape: '長弓', material: '銀木、月井水光與魚骨片', family: 'ranger', role: '隔房狙擊' },
+  crossbow: { zh: '弩', shape: '機括十字弩', material: '鋼軌、黃銅齒輪與冷白瞄晶', family: 'ranger', role: '伏擊定點' },
+  axe: { zh: '斧', shape: '單手斧', material: '黑鐵、獸骨與赤銅鉚釘', family: 'warrior', role: '破甲連殺' },
+  greataxe: { zh: '巨斧', shape: '雙手巨斧', material: '焦黑巨刃、熔光裂縫與灰布', family: 'warrior', role: '低血清場' },
+  hammer: { zh: '手錘', shape: '單手短錘', material: '白石、銅鐘與鐵箍', family: 'priest', role: '支援打斷' },
+  warhammer: { zh: '戰錘', shape: '雙手戰錘', material: '秘銀、黑鐵與星爐孔洞', family: 'warrior', role: 'Boss 反震' },
+  wand: { zh: '魔杖', shape: '短魔杖', material: '玻璃晶芯、銅線與燭蠟', family: 'mage', role: 'MP 節奏' },
+  scepter: { zh: '權杖', shape: '單手權杖', material: '白金、日晶與彩窗金線', family: 'priest', role: '護盾赦令' },
+  staff: { zh: '法杖', shape: '長法杖', material: '古木、沙漏、元素晶核', family: 'mage', role: '房間塑形' },
+  whip: { zh: '鞭', shape: '長鞭', material: '黑藤、鋼節與星線', family: 'ranger', role: '標記傳播' },
+  focus: { zh: '法器', shape: '掌心法器', material: '河玻、銅葉與漂浮煙線', family: 'mage', role: '副手規則' },
+  grimoire: { zh: '魔典', shape: '厚重魔導書', material: '黑皮、秘銀頁與骨扣', family: 'mage', role: '暗影記錄' },
+  holy_tome: { zh: '聖典', shape: '布面聖典', material: '白蠟、金頁與骨鈴', family: 'priest', role: '治療淨化' },
+  shield: { zh: '盾', shape: '實體盾牌', material: '黑鐵、白金盾心與舊旗布', family: 'warrior', role: '隊伍防護' },
+  head: { zh: '頭部', shape: '額環或頭盔', material: '鏡玻、銀鏈與骨片', family: 'hybrid', role: '視野與抗控' },
+  body: { zh: '身體', shape: '外衣或胸甲', material: '焦灰布、白金甲片與封印線', family: 'hybrid', role: '承傷與保命' },
+  hands: { zh: '手部', shape: '護手或手套', material: '黃銅齒輪、黑鐵鉚釘與皮革', family: 'hybrid', role: '操作與觸發' },
+  feet: { zh: '腳部', shape: '長靴或腿甲', material: '深灰皮革、狼爪鐵釘與泥痕', family: 'ranger', role: '移動與偵查' },
+  ring: { zh: '戒指', shape: '厚戒或細戒', material: '暗鐵、焦旗布與小晶核', family: 'hybrid', role: '機率規則' },
+  earring: { zh: '耳環', shape: '長耳墜', material: '銀線、珍珠與水滴晶', family: 'mage', role: '感知與資源' },
+  belt: { zh: '腰帶', shape: '寬腰帶', material: '厚布、銅鈴與藥袋', family: 'priest', role: '資源底線' },
+  necklace: { zh: '項鍊', shape: '墜飾項鍊', material: '星核晶體、霜銀與彩色珠', family: 'mage', role: '職業核心' },
+  offhand: { zh: '副手', shape: '副手徽記或小盾座', material: '黑銀框架、白蠟與封線', family: 'hybrid', role: '副手協同' },
+};
+
+const LORE_POOL = [
+  { id: 'moonwell', name: '月井', source: '月井守衛、月影誓鏡雙生、月井淨化主線', color: '銀白與淡藍水光' },
+  { id: 'bloodsalt', name: '血鹽', source: '血鹽海岸、血鹽私掠者、沉船稅印主線', color: '暗紅鹽晶與濕黑鐵' },
+  { id: 'ironwood', name: '鐵木', source: '鐵木堡、鐵木門哨兵、邊境軍令', color: '深褐鐵木與黑鋼' },
+  { id: 'ashbell', name: '灰鐘', source: '灰燼修道院、墮落鐘守、終焰斷岳支線', color: '焦黑灰燼與暗橙熔光' },
+  { id: 'stormglass', name: '風暴玻璃', source: '風暴高地、風暴玻璃礦獸、雷雨主線', color: '藍紫玻璃與白色雷紋' },
+  { id: 'voidwell', name: '虛井', source: '深淵裂口、黑曜圖書館、虛井守衛', color: '黑銀與向內墜落的星砂' },
+  { id: 'sunpetal', name: '日瓣', source: '日尖塔、白晝冠冕化身、赦令儀式', color: '白金日晶與紅金火線' },
+  { id: 'bonechime', name: '骨鈴', source: '白骨鈴墓、骨鳴潛獵者、安魂任務', color: '灰白骨鈴與冷金符文' },
+  { id: 'reedtide', name: '蘆潮', source: '蘆葦河岸、蛇洲神龕、潮汐巡守', color: '黑綠蘆纖維與藍綠水滴' },
+  { id: 'blackflag', name: '黑旗', source: '黑旗軍團、失落首都、最後軍旗任務', color: '焦黑旗布與半枚金誓印' },
+  { id: 'pearloracle', name: '珍珠神諭', source: '深海神殿、珍珠神諭影、潮聲預言', color: '藍白珍珠與銀色水霧' },
+  { id: 'pilgrimbell', name: '巡禮鈴', source: '巡禮路、鐘靈怨影、旅人醫館', color: '裂紋銅鈴與白繃帶' },
+  { id: 'wolfden', name: '狼窩', source: '低地狼窩、影狼首領、獵人追蹤線', color: '深灰皮革與濕土狼毛' },
+  { id: 'glasswater', name: '鏡水', source: '鏡沼、鏡水反射核心、失名倒影支線', color: '銀鏡玻璃與黑綠沼光' },
+  { id: 'ashroad', name: '灰路', source: '灰路火花、紅岩荒地、邊境巡火隊', color: '焦灰布面與橙紅縫線' },
+  { id: 'worldforge', name: '世爐', source: '世界熔爐巨像、深礦主線、斷岳斧傳說', color: '黑鐵鉚釘與白金爐光' },
+  { id: 'starwatch', name: '星望', source: '星望霜巨人、天空核心、星圖修復主線', color: '銀藍星核與霜白刻度' },
+  { id: 'thundermound', name: '雷丘', source: '雷丘薩滿、荒草丘陵、破圖騰事件', color: '黑木圖騰與藍白雷草' },
+  { id: 'lastdawn', name: '終曉', source: '終曉聖典、最後戰場、終戰破曉主線', color: '白金破曉裂紋與柔白光暈' },
+  { id: 'cometvine', name: '彗藤', source: '彗星藤、星頁魔導書、失落星圖支線', color: '黑藤星線與彗尾火光' },
+] as const;
+
+const MECHANIC_PATTERNS = [
+  { id: 'cross_room_echo', name: '落房迴響', tag: ['cross_room', 'aoe'], effect: '命中隔房單體目標時，在目標房間留下迴響；下一次非單體行動可消耗迴響，讓該房怪物顯示目標排序。', trigger: 'cross_room 單體命中', target: '目標所在房間', limit: '每 4 回合最多 1 次', drawback: '觸發後下一次同方向命中率下降，避免連續鎖房。' },
+  { id: 'approach_hook', name: '逼近鉤記', tag: ['approach', 'control'], effect: '命中 approaching 目標時記錄來源方向；下一次該方向敵人抵達時，先延後 1 tick 再結算行動。', trigger: '命中 approaching 目標', target: '來源方向與單體敵人', limit: '同時只記錄 1 個方向', drawback: '記錄期間自身不能獲得閃避類增益。' },
+  { id: 'low_hp_oath', name: '低血誓約', tag: ['low_hp', 'resource'], effect: '生命低於 35% 時，下一次成功行動會把承受過的傷口轉成職業資源窗口，而不是直接增傷。', trigger: '低血狀態下成功命中或支援', target: '自身', limit: '每場戰鬥最多 2 次', drawback: '觸發後短時間受到治療效果降低。' },
+  { id: 'shield_transfer', name: '護盾轉寫', tag: ['shield', 'party'], effect: '成功建立護盾或格擋後，把下一次過量防護的一部分轉成同房隊友的小護盾。', trigger: 'shield 或 block 成功', target: '同房隊友', limit: '每 3 回合最多 1 次', drawback: '觸發後自身下一次閃避或移動判定變差。' },
+  { id: 'overkill_ledger', name: '溢傷帳頁', tag: ['overkill', 'resource'], effect: '擊殺被控制或標記的敵人時，記錄溢出價值；下一次工具行動可消耗記錄獲得情報或資源緩衝。', trigger: '擊殺 control/mark 目標', target: '自身下一次工具行動', limit: '最多儲存 1 筆記錄', drawback: '持有記錄時受到治療會先清空記錄。' },
+  { id: 'aoe_second_pulse', name: '範圍二脈', tag: ['aoe', 'trigger'], effect: '範圍行動命中 3 個以上目標時，有機率重複觸發附加效果；第二脈不複製主傷害。', trigger: 'AoE 命中 3 個以上目標', target: '原範圍', limit: '每場戰鬥最多 2 次', drawback: '觸發後自身下一個控制狀態持續時間可能延長。' },
+  { id: 'interrupt_refund', name: '斷招整備', tag: ['interrupt', 'resource'], effect: '成功打斷敵人後，下一次非傷害行動若成功，返還部分資源並縮短一個輕微負面狀態。', trigger: 'interrupt 成功後使用非傷害行動', target: '自身', limit: '每 4 回合最多 1 次', drawback: '觸發後下一次傷害行動冷卻增加 1 tick。' },
+  { id: 'element_rotation', name: '元素輪印', tag: ['elemental', 'room'], effect: '連續使用不同元素或不同戰術標籤後，建立輪印；輪印讓下一次房間標記保存額外資訊。', trigger: '兩次不同元素或標籤行動成功', target: '目標房間', limit: '輪印同時最多 1 枚', drawback: '連續使用同類行動會清空輪印。' },
+  { id: 'undead_sentence', name: '亡者判詞', tag: ['undead', 'silence'], effect: '對 undead 或 demon 造成狀態後，下一次支援行動可消耗判詞，揭露並短暫壓低目標行動穩定。', trigger: '影響 undead/demon', target: '單體邪物', limit: '同一目標每 5 回合 1 次', drawback: '若場上沒有邪物，觸發改為降低自身資源。' },
+  { id: 'scout_carry', name: '偵路保留', tag: ['scout', 'movement'], effect: '偵查後沿指定方向移動，會保留一部分房間情報；下一次隔房行動可消耗情報顯示威脅數量。', trigger: '偵查後移動或隔房行動', target: '相鄰房間', limit: '情報保留 2 回合', drawback: '被近戰命中時情報消失。' },
+  { id: 'boss_phase_read', name: '階段讀相', tag: ['boss', 'resist'], effect: 'Boss 或 elite 進入新階段時，記錄最高威脅屬性；下一次對應防禦行動可把提示分享給隊伍。', trigger: 'boss/elite phase change', target: '同房隊友', limit: '每個階段最多 1 次', drawback: '若 3 回合內未使用對應防禦，自己受到該屬性壓力增加。' },
+  { id: 'mark_spread', name: '標記傳播', tag: ['mark', 'trap'], effect: '命中已標記目標後，將一層弱化標記傳給同房未標記敵人，或記錄成下一個陷阱觸發條件。', trigger: '命中 marked 目標', target: '同房另一名敵人', limit: '每 2 回合最多 1 次', drawback: '沒有可傳播目標時消耗自身資源。' },
+  { id: 'cleanse_trace', name: '淨化追跡', tag: ['cleanse', 'control_resist'], effect: '成功移除負面狀態後，記錄來源；下一次同類負面狀態會先縮短，再清除記錄。', trigger: 'cleanse 成功', target: '被淨化者', limit: '同時只記錄 1 種來源', drawback: '記錄期間自身支援行動消耗略增。' },
+  { id: 'death_save', name: '留名保險', tag: ['save_death', 'faith'], effect: '同房隊友第一次受到致命傷時，若資源高於門檻，可消耗大量資源讓其保留 1 HP。', trigger: '隊友受到致命傷', target: '同房隊友', limit: '每場戰鬥 1 次', drawback: '觸發後自身治療或防護行動短暫變弱。' },
+  { id: 'exit_anchor', name: '出口錨定', tag: ['movement', 'control'], effect: '指定一個出口後，下一次從該方向抵達的威脅會被錨定；隊伍可看見其目標傾向。', trigger: '指定出口後有敵人 approaching', target: '出口方向', limit: '同時只能錨定 1 個出口', drawback: '錨定期間自身逃跑成功率下降。' },
+  { id: 'critless_precision', name: '無暴精準', tag: ['precision', 'single_target'], effect: '連續命中同一目標但沒有暴擊時，累積精準；精準可用於揭露處決窗口或弱點標籤。', trigger: '連續單體命中', target: '單體目標', limit: '最多 3 層', drawback: '切換目標會清空精準，並失去已揭露的處決窗口。' },
+  { id: 'dot_convert', name: '灼痛轉流', tag: ['dot', 'resource'], effect: '受到 DoT 後，下一次同屬性或對應防禦行動可把痛覺轉為資源緩衝。', trigger: '受到 burning/poison/curse 類持續傷害', target: '自身', limit: '每 3 回合最多 1 次', drawback: '觸發後相反屬性抗性短暫下降。' },
+  { id: 'party_call', name: '隊伍號令', tag: ['party', 'taunt'], effect: '完成保護、標記、支援三類行動之一後建立號令；隊友消耗號令時獲得目標資訊或控制縮短。', trigger: '保護/標記/支援行動成功', target: '同房隊友', limit: '號令同時最多 1 個', drawback: '號令未被消耗前自身不能再次建立號令。' },
+  { id: 'silent_charge', name: '靜默蓄能', tag: ['resource', 'stealth'], effect: '一回合未造成傷害後，下一次工具或精準行動可獲得蓄能，用於降低成本或保存標記。', trigger: '未造成傷害的一回合後', target: '自身下一次行動', limit: '蓄能持續 2 回合', drawback: '受到攻擊會清空蓄能，且本回合不能再次建立蓄能。' },
+  { id: 'mirror_backlash', name: '鏡返微痕', tag: ['reflect', 'control_resist'], effect: '首次受到標記、嘲諷或沉默時，把弱化版本複寫到來源身上，持續時間減半。', trigger: '首次受到 mark/taunt/silence', target: '施加者', limit: '每場戰鬥 1 次', drawback: '複寫後自身下一個 buff 持續時間縮短。' },
+] as const;
+
+function buildFullUniqueItemDrafts(): UniqueItemDraft[] {
+  const drafts: UniqueItemDraft[] = [...BENCHMARK_UNIQUE_ITEM_DRAFTS];
+  for (const type of WEAPON_TYPES) {
+    while (drafts.filter((item) => item.typeOrSlot === type && (item.category === 'weapon' || item.category === 'offhand')).length < 20) {
+      const index = drafts.filter((item) => item.typeOrSlot === type && (item.category === 'weapon' || item.category === 'offhand')).length;
+      drafts.push(createWeaponDraft(type, index));
+    }
+  }
+  for (const slot of EQUIPMENT_SLOTS) {
+    while (drafts.filter((item) => item.typeOrSlot === slot && item.category !== 'weapon').length < 10) {
+      const index = drafts.filter((item) => item.typeOrSlot === slot && item.category !== 'weapon').length;
+      drafts.push(createEquipmentDraft(slot, index));
+    }
+  }
+  return drafts;
+}
+
+function createWeaponDraft(type: WeaponType, index: number): UniqueItemDraft {
+  const lore = LORE_POOL[index % LORE_POOL.length];
+  const pattern = MECHANIC_PATTERNS[(index + WEAPON_TYPES.indexOf(type)) % MECHANIC_PATTERNS.length];
+  const typeDef = TYPE_LABELS[type];
+  const category: UniqueItemCategory = ['focus', 'grimoire', 'holy_tome', 'shield'].includes(type) ? 'offhand' : 'weapon';
+  const rarity = rarityFor(index);
+  const id = `${lore.id}_${pattern.id}_${type}`;
+  return {
+    id,
+    name: `${lore.name}${pattern.name}${typeDef.zh}`,
+    category,
+    typeOrSlot: type,
+    intendedBuild: typeDef.family,
+    rarity,
+    loreSource: lore.source,
+    uniqueEffect: `${typeDef.zh}專屬：${pattern.effect}`,
+    trigger: pattern.trigger,
+    targetScope: pattern.target,
+    cooldownOrLimit: pattern.limit,
+    drawback: pattern.drawback,
+    combatRole: `${typeDef.role} / ${pattern.name}`,
+    description: `${lore.source}留下的${typeDef.zh}候選。它把「${pattern.name}」刻進${typeDef.role}的打法：使用者不是單純追求數值，而是在正確的房間、目標或資源窗口把規則翻面。`,
+    visualPrompt: `${typeDef.shape}，${typeDef.material}，主色為${lore.color}；輪廓要一眼看出是${typeDef.zh}，表面帶有${lore.name}系符號、磨損痕與微弱能量，不要文字、手或角色。`,
+    mechanicTags: [...pattern.tag, type, typeDef.family],
+    selectionStatus: 'pending',
+  };
+}
+
+function createEquipmentDraft(slot: EquipSlot, index: number): UniqueItemDraft {
+  const lore = LORE_POOL[(index * 2 + EQUIPMENT_SLOTS.indexOf(slot)) % LORE_POOL.length];
+  const pattern = MECHANIC_PATTERNS[(index * 3 + EQUIPMENT_SLOTS.indexOf(slot)) % MECHANIC_PATTERNS.length];
+  const typeDef = TYPE_LABELS[slot];
+  const category = categoryForSlot(slot);
+  return {
+    id: `${lore.id}_${pattern.id}_${slot}`,
+    name: `${lore.name}${pattern.name}${typeDef.zh}`,
+    category,
+    typeOrSlot: slot,
+    intendedBuild: typeDef.family,
+    rarity: rarityFor(index + 2),
+    loreSource: lore.source,
+    uniqueEffect: `${typeDef.zh}裝備：${pattern.effect}`,
+    trigger: pattern.trigger,
+    targetScope: pattern.target,
+    cooldownOrLimit: pattern.limit,
+    drawback: pattern.drawback,
+    combatRole: `${typeDef.role} / ${pattern.name}`,
+    description: `${lore.source}相關的${typeDef.zh}候選。它把${typeDef.role}從被動數值改成可操作規則，讓玩家在${pattern.trigger}時做出取捨，而不是只堆疊屬性。`,
+    visualPrompt: `${typeDef.shape}，材質包含${typeDef.material}，主色為${lore.color}；需要明確裝備部位剪影、細節符號、舊戰痕與可產圖的材質層次，不要文字、手或角色。`,
+    mechanicTags: [...pattern.tag, slot, typeDef.family],
+    selectionStatus: 'pending',
+  };
+}
+
+function categoryForSlot(slot: EquipSlot): UniqueItemCategory {
+  if (slot === 'ring' || slot === 'earring' || slot === 'belt' || slot === 'necklace' || slot === 'accessory') return 'accessory';
+  if (slot === 'offhand') return 'offhand';
+  return 'armor';
+}
+
+function rarityFor(index: number): ItemRarity {
+  return (['rare', 'epic', 'legendary', 'mythic'] as const)[index % 4];
+}
+
+export const UNIQUE_WEAPON_TYPES = WEAPON_TYPES;
+export const UNIQUE_EQUIPMENT_SLOTS = EQUIPMENT_SLOTS;
+export const UNIQUE_ITEM_DRAFTS: UniqueItemDraft[] = buildFullUniqueItemDrafts();
+
+export function getUniqueCoverageSummary() {
+  return {
+    weaponTypes: WEAPON_TYPES.map((type) => ({
+      id: type,
+      count: UNIQUE_ITEM_DRAFTS.filter((item) => item.typeOrSlot === type && (item.category === 'weapon' || item.category === 'offhand')).length,
+    })),
+    equipmentSlots: EQUIPMENT_SLOTS.map((slot) => ({
+      id: slot,
+      count: UNIQUE_ITEM_DRAFTS.filter((item) => item.typeOrSlot === slot && item.category !== 'weapon').length,
+    })),
+  };
+}
