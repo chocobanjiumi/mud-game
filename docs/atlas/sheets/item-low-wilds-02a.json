@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_02a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_02a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_belt_02", "category": "item", "targetId": "supplemental_belt_02", "name": "旅人扣帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_02.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_belt_03", "category": "item", "targetId": "supplemental_belt_03", "name": "補丁腰帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_03.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_belt_04", "category": "item", "targetId": "supplemental_belt_04", "name": "柴薪束帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_04.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_belt_05", "category": "item", "targetId": "supplemental_belt_05", "name": "獵戶皮帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_05.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_belt_06", "category": "item", "targetId": "supplemental_belt_06", "name": "青苔扣帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_06.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_belt_07", "category": "item", "targetId": "supplemental_belt_07", "name": "守田腰索", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_07.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_belt_08", "category": "item", "targetId": "supplemental_belt_08", "name": "藥草囊帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_08.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_belt_09", "category": "item", "targetId": "supplemental_belt_09", "name": "泥路皮帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_09.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_belt_10", "category": "item", "targetId": "supplemental_belt_10", "name": "巡林扣帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_10.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_belt_11", "category": "item", "targetId": "supplemental_belt_11", "name": "露水腰帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_11.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_belt_12", "category": "item", "targetId": "supplemental_belt_12", "name": "牧人繫帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_12.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_belt_13", "category": "item", "targetId": "supplemental_belt_13", "name": "碎石腰帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_13.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_belt_14", "category": "item", "targetId": "supplemental_belt_14", "name": "藤扣皮帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_14.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_belt_15", "category": "item", "targetId": "supplemental_belt_15", "name": "溪石束帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_15.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_belt_16", "category": "item", "targetId": "supplemental_belt_16", "name": "野花腰帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_16.png", "row": 3, "column": 2 }
+  ]
+}
