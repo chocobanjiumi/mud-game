@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_kingdom_war_01a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_kingdom_war_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_kingdom_war_ancient_cpu_key", "category": "item", "targetId": "ancient_cpu_key", "name": "古算核鑰片", "outputPath": "client/public/images/items/item_kingdom_war_ancient_cpu_key.png", "row": 0, "column": 0 },
+    { "assetId": "item_kingdom_war_bloodsap_phial", "category": "item", "targetId": "bloodsap_phial", "name": "血脂小瓶", "outputPath": "client/public/images/items/item_kingdom_war_bloodsap_phial.png", "row": 0, "column": 1 },
+    { "assetId": "item_kingdom_war_druid_altar_seed", "category": "item", "targetId": "druid_altar_seed", "name": "德魯伊祭壇種", "outputPath": "client/public/images/items/item_kingdom_war_druid_altar_seed.png", "row": 0, "column": 2 },
+    { "assetId": "item_kingdom_war_forge_cinder_oil", "category": "item", "targetId": "forge_cinder_oil", "name": "鍛坊燼油", "outputPath": "client/public/images/items/item_kingdom_war_forge_cinder_oil.png", "row": 0, "column": 3 },
+    { "assetId": "item_kingdom_war_frontier_command_seal", "category": "item", "targetId": "frontier_command_seal", "name": "前線指揮印", "outputPath": "client/public/images/items/item_kingdom_war_frontier_command_seal.png", "row": 1, "column": 0 },
+    { "assetId": "item_kingdom_war_frontier_ration_pack", "category": "item", "targetId": "frontier_ration_pack", "name": "邊境軍糧包", "outputPath": "client/public/images/items/item_kingdom_war_frontier_ration_pack.png", "row": 1, "column": 1 },
+    { "assetId": "item_kingdom_war_gamekeeper_salve", "category": "item", "targetId": "gamekeeper_salve", "name": "獵監傷藥", "outputPath": "client/public/images/items/item_kingdom_war_gamekeeper_salve.png", "row": 1, "column": 2 },
+    { "assetId": "item_kingdom_war_keep_command_seal", "category": "item", "targetId": "keep_command_seal", "name": "內堡軍令印", "outputPath": "client/public/images/items/item_kingdom_war_keep_command_seal.png", "row": 1, "column": 3 },
+    { "assetId": "item_kingdom_war_oilblack_coolant", "category": "item", "targetId": "oilblack_coolant", "name": "黑油冷卻劑", "outputPath": "client/public/images/items/item_kingdom_war_oilblack_coolant.png", "row": 2, "column": 0 },
+    { "assetId": "item_kingdom_war_prime_reactor_core", "category": "item", "targetId": "prime_reactor_core", "name": "主反應核心", "outputPath": "client/public/images/items/item_kingdom_war_prime_reactor_core.png", "row": 2, "column": 1 },
+    { "assetId": "item_kingdom_war_prisoner_parole_token", "category": "item", "targetId": "prisoner_parole_token", "name": "俘虜假釋牌", "outputPath": "client/public/images/items/item_kingdom_war_prisoner_parole_token.png", "row": 2, "column": 2 },
+    { "assetId": "item_kingdom_war_royal_hunt_permit", "category": "item", "targetId": "royal_hunt_permit", "name": "王獵許可章", "outputPath": "client/public/images/items/item_kingdom_war_royal_hunt_permit.png", "row": 2, "column": 3 },
+    { "assetId": "item_kingdom_war_white_stag_oath_mark", "category": "item", "targetId": "white_stag_oath_mark", "name": "白鹿誓印", "outputPath": "client/public/images/items/item_kingdom_war_white_stag_oath_mark.png", "row": 3, "column": 0 },
+    { "assetId": "item_kingdom_war_zone_ironwood_fort_body_2", "category": "item", "targetId": "zone_ironwood_fort_body_2", "name": "鐵木要塞護甲", "outputPath": "client/public/images/items/item_kingdom_war_zone_ironwood_fort_body_2.png", "row": 3, "column": 1 },
+    { "assetId": "item_kingdom_war_zone_ironwood_fort_feet_4", "category": "item", "targetId": "zone_ironwood_fort_feet_4", "name": "鐵木要塞長靴", "outputPath": "client/public/images/items/item_kingdom_war_zone_ironwood_fort_feet_4.png", "row": 3, "column": 2 }
+  ]
+}
