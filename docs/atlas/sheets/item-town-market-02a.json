@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_town_market_02a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_town_market_02a.sheet.png",
+  "targets": [
+    { "assetId": "item_town_market_zone_arena_quarter_feet_4", "category": "item", "targetId": "zone_arena_quarter_feet_4", "name": "競技場區長靴", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_feet_4.png", "row": 0, "column": 0 },
+    { "assetId": "item_town_market_zone_arena_quarter_hands_3", "category": "item", "targetId": "zone_arena_quarter_hands_3", "name": "競技場區護手", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_hands_3.png", "row": 0, "column": 1 },
+    { "assetId": "item_town_market_zone_arena_quarter_head_1", "category": "item", "targetId": "zone_arena_quarter_head_1", "name": "競技場區兜帽", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_head_1.png", "row": 0, "column": 2 },
+    { "assetId": "item_town_market_zone_arena_quarter_necklace_6", "category": "item", "targetId": "zone_arena_quarter_necklace_6", "name": "競技場區墜飾", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_necklace_6.png", "row": 0, "column": 3 },
+    { "assetId": "item_town_market_zone_arena_quarter_ring_5", "category": "item", "targetId": "zone_arena_quarter_ring_5", "name": "競技場區指環", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_ring_5.png", "row": 1, "column": 0 },
+    { "assetId": "item_town_market_zone_kingsroad_market_body_2", "category": "item", "targetId": "zone_kingsroad_market_body_2", "name": "王道市集護甲", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_body_2.png", "row": 1, "column": 1 },
+    { "assetId": "item_town_market_zone_kingsroad_market_feet_4", "category": "item", "targetId": "zone_kingsroad_market_feet_4", "name": "王道市集長靴", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_feet_4.png", "row": 1, "column": 2 },
+    { "assetId": "item_town_market_zone_kingsroad_market_hands_3", "category": "item", "targetId": "zone_kingsroad_market_hands_3", "name": "王道市集護手", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_hands_3.png", "row": 1, "column": 3 },
+    { "assetId": "item_town_market_zone_kingsroad_market_head_1", "category": "item", "targetId": "zone_kingsroad_market_head_1", "name": "王道市集兜帽", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_head_1.png", "row": 2, "column": 0 },
+    { "assetId": "item_town_market_zone_kingsroad_market_necklace_6", "category": "item", "targetId": "zone_kingsroad_market_necklace_6", "name": "王道市集墜飾", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_necklace_6.png", "row": 2, "column": 1 },
+    { "assetId": "item_town_market_zone_kingsroad_market_ring_5", "category": "item", "targetId": "zone_kingsroad_market_ring_5", "name": "王道市集指環", "outputPath": "client/public/images/items/item_town_market_zone_kingsroad_market_ring_5.png", "row": 2, "column": 2 },
+    { "assetId": "item_town_market_zone_lakeside_town_body_2", "category": "item", "targetId": "zone_lakeside_town_body_2", "name": "湖畔鎮護甲", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_body_2.png", "row": 2, "column": 3 },
+    { "assetId": "item_town_market_zone_lakeside_town_feet_4", "category": "item", "targetId": "zone_lakeside_town_feet_4", "name": "湖畔鎮長靴", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_feet_4.png", "row": 3, "column": 0 },
+    { "assetId": "item_town_market_zone_lakeside_town_hands_3", "category": "item", "targetId": "zone_lakeside_town_hands_3", "name": "湖畔鎮護手", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_hands_3.png", "row": 3, "column": 1 },
+    { "assetId": "item_town_market_zone_lakeside_town_head_1", "category": "item", "targetId": "zone_lakeside_town_head_1", "name": "湖畔鎮兜帽", "outputPath": "client/public/images/items/item_town_market_zone_lakeside_town_head_1.png", "row": 3, "column": 2 }
+  ]
+}
