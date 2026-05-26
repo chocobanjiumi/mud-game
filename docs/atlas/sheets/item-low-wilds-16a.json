@@ -1,0 +1,22 @@
+{
+  "sheetId": "item_low_wilds_16a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_16a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_vine_nature_staff", "category": "item", "targetId": "vine_nature_staff", "name": "藤蔓之杖", "outputPath": "client/public/images/items/item_low_wilds_vine_nature_staff.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_willow_prayer_tag", "category": "item", "targetId": "willow_prayer_tag", "name": "柳木祈願牌", "outputPath": "client/public/images/items/item_low_wilds_willow_prayer_tag.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_windward_oath_strip", "category": "item", "targetId": "windward_oath_strip", "name": "守風誓詞布條", "outputPath": "client/public/images/items/item_low_wilds_windward_oath_strip.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_wolf_fang_dagger", "category": "item", "targetId": "wolf_fang_dagger", "name": "狼牙匕首", "outputPath": "client/public/images/items/item_low_wilds_wolf_fang_dagger.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_wooden_ring", "category": "item", "targetId": "wooden_ring", "name": "木戒指", "outputPath": "client/public/images/items/item_low_wilds_wooden_ring.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_world_tree_staff", "category": "item", "targetId": "world_tree_staff", "name": "世界樹之杖", "outputPath": "client/public/images/items/item_low_wilds_world_tree_staff.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_zone_old_farmland_body_2", "category": "item", "targetId": "zone_old_farmland_body_2", "name": "老舊農場護甲", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_body_2.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_zone_old_farmland_feet_4", "category": "item", "targetId": "zone_old_farmland_feet_4", "name": "老舊農場長靴", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_feet_4.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_zone_old_farmland_hands_3", "category": "item", "targetId": "zone_old_farmland_hands_3", "name": "老舊農場護手", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_hands_3.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_zone_old_farmland_head_1", "category": "item", "targetId": "zone_old_farmland_head_1", "name": "老舊農場兜帽", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_head_1.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_zone_old_farmland_necklace_6", "category": "item", "targetId": "zone_old_farmland_necklace_6", "name": "老舊農場墜飾", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_necklace_6.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_zone_old_farmland_ring_5", "category": "item", "targetId": "zone_old_farmland_ring_5", "name": "老舊農場指環", "outputPath": "client/public/images/items/item_low_wilds_zone_old_farmland_ring_5.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_zone_pilgrim_road_body_2", "category": "item", "targetId": "zone_pilgrim_road_body_2", "name": "朝聖古道護甲", "outputPath": "client/public/images/items/item_low_wilds_zone_pilgrim_road_body_2.png", "row": 3, "column": 0 }
+  ]
+}
