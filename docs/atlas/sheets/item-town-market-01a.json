@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_town_market_01a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_town_market_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_town_market_arena_entry_token", "category": "item", "targetId": "arena_entry_token", "name": "競技場入場令牌", "outputPath": "client/public/images/items/item_town_market_arena_entry_token.png", "row": 0, "column": 0 },
+    { "assetId": "item_town_market_arena_practice_token", "category": "item", "targetId": "arena_practice_token", "name": "競技場練習令牌", "outputPath": "client/public/images/items/item_town_market_arena_practice_token.png", "row": 0, "column": 1 },
+    { "assetId": "item_town_market_auction_lot_ticket", "category": "item", "targetId": "auction_lot_ticket", "name": "拍賣品票券", "outputPath": "client/public/images/items/item_town_market_auction_lot_ticket.png", "row": 0, "column": 2 },
+    { "assetId": "item_town_market_betting_house_slip", "category": "item", "targetId": "betting_house_slip", "name": "投注所紙條", "outputPath": "client/public/images/items/item_town_market_betting_house_slip.png", "row": 0, "column": 3 },
+    { "assetId": "item_town_market_caravan_waybill", "category": "item", "targetId": "caravan_waybill", "name": "商隊運貨單", "outputPath": "client/public/images/items/item_town_market_caravan_waybill.png", "row": 1, "column": 0 },
+    { "assetId": "item_town_market_champion_sash", "category": "item", "targetId": "champion_sash", "name": "冠軍綬帶", "outputPath": "client/public/images/items/item_town_market_champion_sash.png", "row": 1, "column": 1 },
+    { "assetId": "item_town_market_lakeside_adventurer_pass", "category": "item", "targetId": "lakeside_adventurer_pass", "name": "湖畔冒險者通行證", "outputPath": "client/public/images/items/item_town_market_lakeside_adventurer_pass.png", "row": 1, "column": 2 },
+    { "assetId": "item_town_market_lakeside_auction_lot_ticket", "category": "item", "targetId": "lakeside_auction_lot_ticket", "name": "湖畔拍賣票券", "outputPath": "client/public/images/items/item_town_market_lakeside_auction_lot_ticket.png", "row": 1, "column": 3 },
+    { "assetId": "item_town_market_lakeview_room_voucher", "category": "item", "targetId": "lakeview_room_voucher", "name": "湖景房憑證", "outputPath": "client/public/images/items/item_town_market_lakeview_room_voucher.png", "row": 2, "column": 0 },
+    { "assetId": "item_town_market_market_lunch_bundle", "category": "item", "targetId": "market_lunch_bundle", "name": "市集午餐包", "outputPath": "client/public/images/items/item_town_market_market_lunch_bundle.png", "row": 2, "column": 1 },
+    { "assetId": "item_town_market_market_repair_chit", "category": "item", "targetId": "market_repair_chit", "name": "市集修理票", "outputPath": "client/public/images/items/item_town_market_market_repair_chit.png", "row": 2, "column": 2 },
+    { "assetId": "item_town_market_market_spice_pouch", "category": "item", "targetId": "market_spice_pouch", "name": "市集香料袋", "outputPath": "client/public/images/items/item_town_market_market_spice_pouch.png", "row": 2, "column": 3 },
+    { "assetId": "item_town_market_practice_wrap", "category": "item", "targetId": "practice_wrap", "name": "練習纏手布", "outputPath": "client/public/images/items/item_town_market_practice_wrap.png", "row": 3, "column": 0 },
+    { "assetId": "item_town_market_sealed_price_list", "category": "item", "targetId": "sealed_price_list", "name": "封緘價目表", "outputPath": "client/public/images/items/item_town_market_sealed_price_list.png", "row": 3, "column": 1 },
+    { "assetId": "item_town_market_zone_arena_quarter_body_2", "category": "item", "targetId": "zone_arena_quarter_body_2", "name": "競技場區護甲", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_body_2.png", "row": 3, "column": 2 }
+  ]
+}
