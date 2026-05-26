@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_10a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_10a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_hands_24", "category": "item", "targetId": "supplemental_hands_24", "name": "墓霜骨腕", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_24.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_hands_25", "category": "item", "targetId": "supplemental_hands_25", "name": "風暴鐵拳", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_25.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_hands_26", "category": "item", "targetId": "supplemental_hands_26", "name": "黑木獵手", "outputPath": "client/public/images/items/item_low_wilds_supplemental_hands_26.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_head_01", "category": "item", "targetId": "supplemental_head_01", "name": "草繩皮盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_01.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_head_02", "category": "item", "targetId": "supplemental_head_02", "name": "溪石護帽", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_02.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_head_03", "category": "item", "targetId": "supplemental_head_03", "name": "柳影兜帽", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_03.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_head_04", "category": "item", "targetId": "supplemental_head_04", "name": "穀倉鐵盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_04.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_head_05", "category": "item", "targetId": "supplemental_head_05", "name": "黑苔巡盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_05.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_head_06", "category": "item", "targetId": "supplemental_head_06", "name": "潮鹽頭巾", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_06.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_head_07", "category": "item", "targetId": "supplemental_head_07", "name": "礦燈額甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_07.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_head_08", "category": "item", "targetId": "supplemental_head_08", "name": "霜針皮帽", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_08.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_head_09", "category": "item", "targetId": "supplemental_head_09", "name": "赤沙面盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_09.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_head_10", "category": "item", "targetId": "supplemental_head_10", "name": "銀松護額", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_10.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_head_11", "category": "item", "targetId": "supplemental_head_11", "name": "雷羽風帽", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_11.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_head_12", "category": "item", "targetId": "supplemental_head_12", "name": "琥珀蜂盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_12.png", "row": 3, "column": 2 }
+  ]
+}
