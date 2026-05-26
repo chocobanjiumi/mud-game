@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_06a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_06a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_earring_14", "category": "item", "targetId": "supplemental_earring_14", "name": "月井耳環", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_14.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_earring_15", "category": "item", "targetId": "supplemental_earring_15", "name": "焦木耳扣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_15.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_earring_16", "category": "item", "targetId": "supplemental_earring_16", "name": "霧港銅鈎", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_16.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_earring_17", "category": "item", "targetId": "supplemental_earring_17", "name": "古碑耳片", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_17.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_earring_18", "category": "item", "targetId": "supplemental_earring_18", "name": "鏡沼銀墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_18.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_earring_19", "category": "item", "targetId": "supplemental_earring_19", "name": "紅爐耳釘", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_19.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_earring_20", "category": "item", "targetId": "supplemental_earring_20", "name": "雷原骨墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_20.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_earring_21", "category": "item", "targetId": "supplemental_earring_21", "name": "玻砂耳鏡", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_21.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_earring_22", "category": "item", "targetId": "supplemental_earring_22", "name": "地城銅片", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_22.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_earring_23", "category": "item", "targetId": "supplemental_earring_23", "name": "墓霜耳珠", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_23.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_earring_24", "category": "item", "targetId": "supplemental_earring_24", "name": "風暴羽墜", "outputPath": "client/public/images/items/item_low_wilds_supplemental_earring_24.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_feet_01", "category": "item", "targetId": "supplemental_feet_01", "name": "草徑短靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_01.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_feet_02", "category": "item", "targetId": "supplemental_feet_02", "name": "溪石踏靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_02.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_03", "category": "item", "targetId": "supplemental_feet_03", "name": "柳影輕靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_03.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_04", "category": "item", "targetId": "supplemental_feet_04", "name": "穀場厚靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_04.png", "row": 3, "column": 2 }
+  ]
+}
