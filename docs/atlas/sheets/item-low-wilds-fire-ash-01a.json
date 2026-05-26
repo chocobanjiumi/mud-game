@@ -1,0 +1,10 @@
+{
+  "sheetId": "item_low_wilds_fire_ash_01a",
+  "category": "item",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_fire_ash_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_fire_ash_naturestaff_dragon", "category": "item", "targetId": "naturestaff_dragon", "name": "龍息自然法杖", "outputPath": "client/public/images/items/item_low_wilds_fire_ash_naturestaff_dragon.png", "row": 0, "column": 0 }
+  ]
+}

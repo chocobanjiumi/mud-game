@@ -1,0 +1,10 @@
+{
+  "sheetId": "item_low_wilds_forest_fen_01a",
+  "category": "item",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_forest_fen_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_forest_fen_plains_wolf_track_tag", "category": "item", "targetId": "plains_wolf_track_tag", "name": "平原狼跡牌", "outputPath": "client/public/images/items/item_low_wilds_forest_fen_plains_wolf_track_tag.png", "row": 0, "column": 0 }
+  ]
+}
