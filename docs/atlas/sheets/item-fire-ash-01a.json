@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_fire_ash_01a",
+  "category": "item",
+  "columns": 5,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_fire_ash_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_fire_ash_abbot_ash_crozier_head", "category": "item", "targetId": "abbot_ash_crozier_head", "name": "灰院長杖首", "outputPath": "client/public/images/items/item_fire_ash_abbot_ash_crozier_head.png", "row": 0, "column": 0 },
+    { "assetId": "item_fire_ash_ash_gray_key", "category": "item", "targetId": "ash_gray_key", "name": "灰門鑰片", "outputPath": "client/public/images/items/item_fire_ash_ash_gray_key.png", "row": 0, "column": 1 },
+    { "assetId": "item_fire_ash_caravan_guard_badge", "category": "item", "targetId": "caravan_guard_badge", "name": "商隊護衛徽章", "outputPath": "client/public/images/items/item_fire_ash_caravan_guard_badge.png", "row": 0, "column": 2 },
+    { "assetId": "item_fire_ash_chain_mail", "category": "item", "targetId": "chain_mail", "name": "鎖子甲", "outputPath": "client/public/images/items/item_fire_ash_chain_mail.png", "row": 0, "column": 3 },
+    { "assetId": "item_fire_ash_cinderbite_salve", "category": "item", "targetId": "cinderbite_salve", "name": "燼咬藥膏", "outputPath": "client/public/images/items/item_fire_ash_cinderbite_salve.png", "row": 0, "column": 4 },
+    { "assetId": "item_fire_ash_composite_bow", "category": "item", "targetId": "composite_bow", "name": "複合弓", "outputPath": "client/public/images/items/item_fire_ash_composite_bow.png", "row": 1, "column": 0 },
+    { "assetId": "item_fire_ash_cracked_sanctum_seal", "category": "item", "targetId": "cracked_sanctum_seal", "name": "裂聖所封印", "outputPath": "client/public/images/items/item_fire_ash_cracked_sanctum_seal.png", "row": 1, "column": 1 },
+    { "assetId": "item_fire_ash_crossbow_dragon", "category": "item", "targetId": "crossbow_dragon", "name": "龍牙十字弓", "outputPath": "client/public/images/items/item_fire_ash_crossbow_dragon.png", "row": 1, "column": 2 },
+    { "assetId": "item_fire_ash_dagger_dragon", "category": "item", "targetId": "dagger_dragon", "name": "龍鱗匕首", "outputPath": "client/public/images/items/item_fire_ash_dagger_dragon.png", "row": 1, "column": 3 },
+    { "assetId": "item_fire_ash_divine_scepter", "category": "item", "targetId": "divine_scepter", "name": "神聖權杖", "outputPath": "client/public/images/items/item_fire_ash_divine_scepter.png", "row": 1, "column": 4 },
+    { "assetId": "item_fire_ash_dragon_scale_armor", "category": "item", "targetId": "dragon_scale_armor", "name": "龍鱗甲", "outputPath": "client/public/images/items/item_fire_ash_dragon_scale_armor.png", "row": 2, "column": 0 },
+    { "assetId": "item_fire_ash_elestaff_dragon", "category": "item", "targetId": "elestaff_dragon", "name": "龍息元素杖", "outputPath": "client/public/images/items/item_fire_ash_elestaff_dragon.png", "row": 2, "column": 1 },
+    { "assetId": "item_fire_ash_ember_reliquary_oil", "category": "item", "targetId": "ember_reliquary_oil", "name": "聖物餘火油", "outputPath": "client/public/images/items/item_fire_ash_ember_reliquary_oil.png", "row": 2, "column": 2 },
+    { "assetId": "item_fire_ash_fire_soup", "category": "item", "targetId": "fire_soup", "name": "火焰湯", "outputPath": "client/public/images/items/item_fire_ash_fire_soup.png", "row": 2, "column": 3 },
+    { "assetId": "item_fire_ash_flame_blade", "category": "item", "targetId": "flame_blade", "name": "炎之刃", "outputPath": "client/public/images/items/item_fire_ash_flame_blade.png", "row": 2, "column": 4 }
+  ]
+}
