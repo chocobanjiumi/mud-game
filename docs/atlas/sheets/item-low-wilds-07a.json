@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_07a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_07a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_feet_05", "category": "item", "targetId": "supplemental_feet_05", "name": "黑苔潛靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_05.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_06", "category": "item", "targetId": "supplemental_feet_06", "name": "潮繩水靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_06.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_07", "category": "item", "targetId": "supplemental_feet_07", "name": "礦釘重靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_07.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_feet_08", "category": "item", "targetId": "supplemental_feet_08", "name": "霜兔絨靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_08.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_feet_09", "category": "item", "targetId": "supplemental_feet_09", "name": "赤岩踏靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_09.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_10", "category": "item", "targetId": "supplemental_feet_10", "name": "銀松雪靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_10.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_11", "category": "item", "targetId": "supplemental_feet_11", "name": "雷草快靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_11.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_feet_12", "category": "item", "targetId": "supplemental_feet_12", "name": "琥珀林靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_12.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_feet_13", "category": "item", "targetId": "supplemental_feet_13", "name": "血鹽船靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_13.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_14", "category": "item", "targetId": "supplemental_feet_14", "name": "星砂行靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_14.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_15", "category": "item", "targetId": "supplemental_feet_15", "name": "月井軟靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_15.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_feet_16", "category": "item", "targetId": "supplemental_feet_16", "name": "焦木踏靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_16.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_feet_17", "category": "item", "targetId": "supplemental_feet_17", "name": "霧港油靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_17.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_feet_18", "category": "item", "targetId": "supplemental_feet_18", "name": "古碑重靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_18.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_feet_19", "category": "item", "targetId": "supplemental_feet_19", "name": "鏡沼濕靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_19.png", "row": 3, "column": 2 }
+  ]
+}
