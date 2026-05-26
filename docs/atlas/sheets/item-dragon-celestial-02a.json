@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_dragon_celestial_02a",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_02a.sheet.png",
+  "targets": [
+    { "assetId": "item_dragon_celestial_oath_ribbon", "category": "item", "targetId": "oath_ribbon", "name": "誓約緞帶", "outputPath": "client/public/images/items/item_dragon_celestial_oath_ribbon.png", "row": 0, "column": 0 },
+    { "assetId": "item_dragon_celestial_radiant_scepter", "category": "item", "targetId": "radiant_scepter", "name": "光輝權杖", "outputPath": "client/public/images/items/item_dragon_celestial_radiant_scepter.png", "row": 0, "column": 1 },
+    { "assetId": "item_dragon_celestial_sanctum_light_broth", "category": "item", "targetId": "sanctum_light_broth", "name": "聖所光湯", "outputPath": "client/public/images/items/item_dragon_celestial_sanctum_light_broth.png", "row": 0, "column": 2 },
+    { "assetId": "item_dragon_celestial_scaleforge_broth", "category": "item", "targetId": "scaleforge_broth", "name": "鱗鍛熱湯", "outputPath": "client/public/images/items/item_dragon_celestial_scaleforge_broth.png", "row": 1, "column": 0 },
+    { "assetId": "item_dragon_celestial_skywarden_patrol_map", "category": "item", "targetId": "skywarden_patrol_map", "name": "天衛巡空圖", "outputPath": "client/public/images/items/item_dragon_celestial_skywarden_patrol_map.png", "row": 1, "column": 1 },
+    { "assetId": "item_dragon_celestial_solar_trial_wax", "category": "item", "targetId": "solar_trial_wax", "name": "日試蠟印", "outputPath": "client/public/images/items/item_dragon_celestial_solar_trial_wax.png", "row": 1, "column": 2 },
+    { "assetId": "item_dragon_celestial_storm_staff", "category": "item", "targetId": "storm_staff", "name": "風暴法杖", "outputPath": "client/public/images/items/item_dragon_celestial_storm_staff.png", "row": 2, "column": 0 },
+    { "assetId": "item_dragon_celestial_sunfire_vial", "category": "item", "targetId": "sunfire_vial", "name": "日火小瓶", "outputPath": "client/public/images/items/item_dragon_celestial_sunfire_vial.png", "row": 2, "column": 1 },
+    { "assetId": "item_dragon_celestial_zone_celestial_ruins_belt_9", "category": "item", "targetId": "zone_celestial_ruins_belt_9", "name": "天界遺跡腰帶", "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt_9.png", "row": 2, "column": 2 }
+  ]
+}
