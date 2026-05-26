@@ -1,0 +1,12 @@
+{
+  "sheetId": "item_forest_fen_misc_01",
+  "category": "item",
+  "columns": 2,
+  "rows": 2,
+  "sheetPath": "client/public/images/atlas/source-ai/item_forest_fen_misc_01.sheet.png",
+  "targets": [
+    { "assetId": "item_forest_fen_demon_abyss_demon_lord_sword", "category": "item", "targetId": "demon_lord_sword", "name": "魔王之劍", "outputPath": "client/public/images/items/item_forest_fen_demon_abyss_demon_lord_sword.png", "row": 0, "column": 0 },
+    { "assetId": "item_forest_fen_low_wilds_long_bow", "category": "item", "targetId": "long_bow", "name": "長弓", "outputPath": "client/public/images/items/item_forest_fen_low_wilds_long_bow.png", "row": 0, "column": 1 },
+    { "assetId": "item_forest_fen_town_market_medium_mp_potion", "category": "item", "targetId": "medium_mp_potion", "name": "中型資源藥水", "outputPath": "client/public/images/items/item_forest_fen_town_market_medium_mp_potion.png", "row": 1, "column": 0 }
+  ]
+}
