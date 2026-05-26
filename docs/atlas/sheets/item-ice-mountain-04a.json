@@ -1,0 +1,10 @@
+{
+  "sheetId": "item_ice_mountain_04a",
+  "category": "item",
+  "columns": 1,
+  "rows": 1,
+  "sheetPath": "client/public/images/atlas/source-ai/item_ice_mountain_04a.sheet.png",
+  "targets": [
+    { "assetId": "item_ice_mountain_zone_storm_highlands_ring_5", "category": "item", "targetId": "zone_storm_highlands_ring_5", "name": "風暴高原指環", "outputPath": "client/public/images/items/item_ice_mountain_zone_storm_highlands_ring_5.png", "row": 0, "column": 0 }
+  ]
+}
