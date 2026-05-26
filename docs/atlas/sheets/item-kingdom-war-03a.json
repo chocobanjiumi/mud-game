@@ -1,0 +1,22 @@
+{
+  "sheetId": "item_kingdom_war_03a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_kingdom_war_03a.sheet.png",
+  "targets": [
+    { "assetId": "item_kingdom_war_zone_machine_graveyard_ring_5", "category": "item", "targetId": "zone_machine_graveyard_ring_5", "name": "機械墳場指環", "outputPath": "client/public/images/items/item_kingdom_war_zone_machine_graveyard_ring_5.png", "row": 0, "column": 0 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_body_2", "category": "item", "targetId": "zone_royal_hunting_grounds_body_2", "name": "王家獵場護甲", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_body_2.png", "row": 0, "column": 1 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_feet_4", "category": "item", "targetId": "zone_royal_hunting_grounds_feet_4", "name": "王家獵場長靴", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_feet_4.png", "row": 0, "column": 2 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_hands_3", "category": "item", "targetId": "zone_royal_hunting_grounds_hands_3", "name": "王家獵場護手", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_hands_3.png", "row": 0, "column": 3 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_head_1", "category": "item", "targetId": "zone_royal_hunting_grounds_head_1", "name": "王家獵場兜帽", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_head_1.png", "row": 1, "column": 0 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_necklace_6", "category": "item", "targetId": "zone_royal_hunting_grounds_necklace_6", "name": "王家獵場墜飾", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_necklace_6.png", "row": 1, "column": 1 },
+    { "assetId": "item_kingdom_war_zone_royal_hunting_grounds_ring_5", "category": "item", "targetId": "zone_royal_hunting_grounds_ring_5", "name": "王家獵場指環", "outputPath": "client/public/images/items/item_kingdom_war_zone_royal_hunting_grounds_ring_5.png", "row": 1, "column": 2 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_body_2", "category": "item", "targetId": "zone_thornmaze_body_2", "name": "荊棘迷宮護甲", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_body_2.png", "row": 1, "column": 3 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_feet_4", "category": "item", "targetId": "zone_thornmaze_feet_4", "name": "荊棘迷宮長靴", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_feet_4.png", "row": 2, "column": 0 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_hands_3", "category": "item", "targetId": "zone_thornmaze_hands_3", "name": "荊棘迷宮護手", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_hands_3.png", "row": 2, "column": 1 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_head_1", "category": "item", "targetId": "zone_thornmaze_head_1", "name": "荊棘迷宮兜帽", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_head_1.png", "row": 2, "column": 2 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_necklace_6", "category": "item", "targetId": "zone_thornmaze_necklace_6", "name": "荊棘迷宮墜飾", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_necklace_6.png", "row": 2, "column": 3 },
+    { "assetId": "item_kingdom_war_zone_thornmaze_ring_5", "category": "item", "targetId": "zone_thornmaze_ring_5", "name": "荊棘迷宮指環", "outputPath": "client/public/images/items/item_kingdom_war_zone_thornmaze_ring_5.png", "row": 3, "column": 0 }
+  ]
+}
