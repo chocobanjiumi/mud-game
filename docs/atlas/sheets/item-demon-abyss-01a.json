@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_demon_abyss_01a",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_demon_abyss_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_demon_abyss_abyssal_stabilizer", "category": "item", "targetId": "abyssal_stabilizer", "name": "裂隙穩定劑", "outputPath": "client/public/images/items/item_demon_abyss_abyssal_stabilizer.png", "row": 0, "column": 0 },
+    { "assetId": "item_demon_abyss_ash_watch_signal_flare", "category": "item", "targetId": "ash_watch_signal_flare", "name": "灰燼哨火筒", "outputPath": "client/public/images/items/item_demon_abyss_ash_watch_signal_flare.png", "row": 0, "column": 1 },
+    { "assetId": "item_demon_abyss_beacon_eye_core", "category": "item", "targetId": "beacon_eye_core", "name": "信標眼核", "outputPath": "client/public/images/items/item_demon_abyss_beacon_eye_core.png", "row": 0, "column": 2 },
+    { "assetId": "item_demon_abyss_black_fortress_ration", "category": "item", "targetId": "black_fortress_ration", "name": "黑堡軍糧", "outputPath": "client/public/images/items/item_demon_abyss_black_fortress_ration.png", "row": 1, "column": 0 },
+    { "assetId": "item_demon_abyss_black_gate_splinter", "category": "item", "targetId": "black_gate_splinter", "name": "黑門碎楔", "outputPath": "client/public/images/items/item_demon_abyss_black_gate_splinter.png", "row": 1, "column": 1 },
+    { "assetId": "item_demon_abyss_charnel_ward_phial", "category": "item", "targetId": "charnel_ward_phial", "name": "屍橋護符瓶", "outputPath": "client/public/images/items/item_demon_abyss_charnel_ward_phial.png", "row": 1, "column": 2 },
+    { "assetId": "item_demon_abyss_crypt_market_token", "category": "item", "targetId": "crypt_market_token", "name": "墓市骨籌", "outputPath": "client/public/images/items/item_demon_abyss_crypt_market_token.png", "row": 2, "column": 0 },
+    { "assetId": "item_demon_abyss_dead_city_writ", "category": "item", "targetId": "dead_city_writ", "name": "死都入城令", "outputPath": "client/public/images/items/item_demon_abyss_dead_city_writ.png", "row": 2, "column": 1 },
+    { "assetId": "item_demon_abyss_drowned_crown_fragment", "category": "item", "targetId": "drowned_crown_fragment", "name": "溺王冠碎片", "outputPath": "client/public/images/items/item_demon_abyss_drowned_crown_fragment.png", "row": 2, "column": 2 }
+  ]
+}
