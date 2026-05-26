@@ -1,0 +1,15 @@
+{
+  "sheetId": "item_dragon_celestial_01b",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_01b.sheet.png",
+  "targets": [
+    { "assetId": "item_dragon_celestial_holy_guardian_ring", "category": "item", "targetId": "holy_guardian_ring", "name": "聖光守護戒指", "outputPath": "client/public/images/items/item_dragon_celestial_holy_guardian_ring.png", "row": 0, "column": 0 },
+    { "assetId": "item_dragon_celestial_holytome_basic", "category": "item", "targetId": "holytome_basic", "name": "祈禱書", "outputPath": "client/public/images/items/item_dragon_celestial_holytome_basic.png", "row": 0, "column": 1 },
+    { "assetId": "item_dragon_celestial_holytome_iron", "category": "item", "targetId": "holytome_iron", "name": "鐵釦聖典", "outputPath": "client/public/images/items/item_dragon_celestial_holytome_iron.png", "row": 0, "column": 2 },
+    { "assetId": "item_dragon_celestial_holytome_mithril", "category": "item", "targetId": "holytome_mithril", "name": "秘銀聖典", "outputPath": "client/public/images/items/item_dragon_celestial_holytome_mithril.png", "row": 1, "column": 0 },
+    { "assetId": "item_dragon_celestial_moonlight_katana", "category": "item", "targetId": "moonlight_katana", "name": "月光太刀", "outputPath": "client/public/images/items/item_dragon_celestial_moonlight_katana.png", "row": 1, "column": 1 },
+    { "assetId": "item_dragon_celestial_moonmask_shard", "category": "item", "targetId": "moonmask_shard", "name": "月面具碎片", "outputPath": "client/public/images/items/item_dragon_celestial_moonmask_shard.png", "row": 1, "column": 2 }
+  ]
+}

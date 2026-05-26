@@ -1,0 +1,18 @@
+{
+  "sheetId": "item_dragon_celestial_01a",
+  "category": "item",
+  "columns": 3,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_dragon_celestial_dawn_holy_tome", "category": "item", "targetId": "dawn_holy_tome", "name": "曙光聖典", "outputPath": "client/public/images/items/item_dragon_celestial_dawn_holy_tome.png", "row": 0, "column": 0 },
+    { "assetId": "item_dragon_celestial_day_crown_sigil", "category": "item", "targetId": "day_crown_sigil", "name": "日冠聖印", "outputPath": "client/public/images/items/item_dragon_celestial_day_crown_sigil.png", "row": 0, "column": 1 },
+    { "assetId": "item_dragon_celestial_dragon_oracle_lens", "category": "item", "targetId": "dragon_oracle_lens", "name": "龍諭透鏡", "outputPath": "client/public/images/items/item_dragon_celestial_dragon_oracle_lens.png", "row": 0, "column": 2 },
+    { "assetId": "item_dragon_celestial_dreamglass_dew", "category": "item", "targetId": "dreamglass_dew", "name": "夢玻露滴", "outputPath": "client/public/images/items/item_dragon_celestial_dreamglass_dew.png", "row": 1, "column": 0 },
+    { "assetId": "item_dragon_celestial_eternal_holy_tome", "category": "item", "targetId": "eternal_holy_tome", "name": "永恆聖典", "outputPath": "client/public/images/items/item_dragon_celestial_eternal_holy_tome.png", "row": 1, "column": 1 },
+    { "assetId": "item_dragon_celestial_final_seal_splinter", "category": "item", "targetId": "final_seal_splinter", "name": "最終封印裂片", "outputPath": "client/public/images/items/item_dragon_celestial_final_seal_splinter.png", "row": 1, "column": 2 },
+    { "assetId": "item_dragon_celestial_god_of_war_spear", "category": "item", "targetId": "god_of_war_spear", "name": "戰神之槍", "outputPath": "client/public/images/items/item_dragon_celestial_god_of_war_spear.png", "row": 2, "column": 0 },
+    { "assetId": "item_dragon_celestial_hidden_court_decree", "category": "item", "targetId": "hidden_court_decree", "name": "隱庭敕令", "outputPath": "client/public/images/items/item_dragon_celestial_hidden_court_decree.png", "row": 2, "column": 1 },
+    { "assetId": "item_dragon_celestial_holy_guardian_armor", "category": "item", "targetId": "holy_guardian_armor", "name": "聖光守護鎧甲", "outputPath": "client/public/images/items/item_dragon_celestial_holy_guardian_armor.png", "row": 2, "column": 2 }
+  ]
+}
