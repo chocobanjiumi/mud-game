@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_forest_fen_02a",
+  "category": "item",
+  "columns": 5,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_forest_fen_02a.sheet.png",
+  "targets": [
+    { "assetId": "item_forest_fen_raincatch_elixir", "category": "item", "targetId": "raincatch_elixir", "name": "接雨靈露", "outputPath": "client/public/images/items/item_forest_fen_raincatch_elixir.png", "row": 0, "column": 0 },
+    { "assetId": "item_forest_fen_ranger_badge", "category": "item", "targetId": "ranger_badge", "name": "巡林徽章", "outputPath": "client/public/images/items/item_forest_fen_ranger_badge.png", "row": 0, "column": 1 },
+    { "assetId": "item_forest_fen_ranger_shadow_report", "category": "item", "targetId": "ranger_shadow_report", "name": "巡林暗影報告", "outputPath": "client/public/images/items/item_forest_fen_ranger_shadow_report.png", "row": 0, "column": 2 },
+    { "assetId": "item_forest_fen_resin_cutting_knife", "category": "item", "targetId": "resin_cutting_knife", "name": "樹脂切刀", "outputPath": "client/public/images/items/item_forest_fen_resin_cutting_knife.png", "row": 0, "column": 3 },
+    { "assetId": "item_forest_fen_shadow_blade", "category": "item", "targetId": "shadow_blade", "name": "暗影之刃", "outputPath": "client/public/images/items/item_forest_fen_shadow_blade.png", "row": 0, "column": 4 },
+    { "assetId": "item_forest_fen_shadow_bow", "category": "item", "targetId": "shadow_bow", "name": "暗影弓", "outputPath": "client/public/images/items/item_forest_fen_shadow_bow.png", "row": 1, "column": 0 },
+    { "assetId": "item_forest_fen_shadow_cloak", "category": "item", "targetId": "shadow_cloak", "name": "暗影斗篷", "outputPath": "client/public/images/items/item_forest_fen_shadow_cloak.png", "row": 1, "column": 1 },
+    { "assetId": "item_forest_fen_shadow_hunter_armor", "category": "item", "targetId": "shadow_hunter_armor", "name": "暗影獵手輕甲", "outputPath": "client/public/images/items/item_forest_fen_shadow_hunter_armor.png", "row": 1, "column": 2 },
+    { "assetId": "item_forest_fen_shadow_hunter_ring", "category": "item", "targetId": "shadow_hunter_ring", "name": "暗影獵手戒指", "outputPath": "client/public/images/items/item_forest_fen_shadow_hunter_ring.png", "row": 1, "column": 3 },
+    { "assetId": "item_forest_fen_spirit_whip", "category": "item", "targetId": "spirit_whip", "name": "靈魂之鞭", "outputPath": "client/public/images/items/item_forest_fen_spirit_whip.png", "row": 1, "column": 4 },
+    { "assetId": "item_forest_fen_strength_potion", "category": "item", "targetId": "strength_potion", "name": "力量藥水", "outputPath": "client/public/images/items/item_forest_fen_strength_potion.png", "row": 2, "column": 0 },
+    { "assetId": "item_forest_fen_whispering_crystal", "category": "item", "targetId": "whispering_crystal", "name": "低語水晶", "outputPath": "client/public/images/items/item_forest_fen_whispering_crystal.png", "row": 2, "column": 1 },
+    { "assetId": "item_forest_fen_zone_amber_forest_body_2", "category": "item", "targetId": "zone_amber_forest_body_2", "name": "琥珀森林護甲", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_body_2.png", "row": 2, "column": 2 },
+    { "assetId": "item_forest_fen_zone_amber_forest_feet_4", "category": "item", "targetId": "zone_amber_forest_feet_4", "name": "琥珀森林長靴", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_feet_4.png", "row": 2, "column": 3 },
+    { "assetId": "item_forest_fen_zone_amber_forest_hands_3", "category": "item", "targetId": "zone_amber_forest_hands_3", "name": "琥珀森林護手", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_hands_3.png", "row": 2, "column": 4 }
+  ]
+}
