@@ -1,8 +1,8 @@
 {
   "sheetId": "material_coast_water_01",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_coast_water_01.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "blue_silt_ore",
       "name": "藍泥礦砂",
       "outputPath": "client/public/images/materials/material_coast_water_blue_silt_ore.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_coast_water_bluefire_coral",
@@ -57,7 +57,7 @@
       "name": "藍火珊瑚",
       "outputPath": "client/public/images/materials/material_coast_water_bluefire_coral.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_coast_water_brine_crab_shell",
@@ -66,7 +66,7 @@
       "name": "鹽霜厚蟹殼",
       "outputPath": "client/public/images/materials/material_coast_water_brine_crab_shell.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_coast_water_cold_mist_vial",
@@ -75,7 +75,7 @@
       "name": "冷霧瓶",
       "outputPath": "client/public/images/materials/material_coast_water_cold_mist_vial.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_coast_water_flatsalt_crystal",
@@ -83,8 +83,8 @@
       "targetId": "flatsalt_crystal",
       "name": "白灘鹽晶",
       "outputPath": "client/public/images/materials/material_coast_water_flatsalt_crystal.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_coast_water_fog_lantern_wick",
@@ -92,8 +92,8 @@
       "targetId": "fog_lantern_wick",
       "name": "霧燈燈芯",
       "outputPath": "client/public/images/materials/material_coast_water_fog_lantern_wick.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }

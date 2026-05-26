@@ -1,8 +1,8 @@
 {
   "sheetId": "material_coast_water_02",
   "category": "material",
-  "columns": 5,
-  "rows": 2,
+  "columns": 4,
+  "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/material_coast_water_02.sheet.png",
   "targets": [
     {
@@ -47,8 +47,8 @@
       "targetId": "red_coral_splinter",
       "name": "紅珊瑚裂片",
       "outputPath": "client/public/images/materials/material_coast_water_red_coral_splinter.png",
-      "row": 0,
-      "column": 4
+      "row": 1,
+      "column": 0
     },
     {
       "assetId": "material_coast_water_reedscale_strip",
@@ -57,7 +57,7 @@
       "name": "蘆鱗條",
       "outputPath": "client/public/images/materials/material_coast_water_reedscale_strip.png",
       "row": 1,
-      "column": 0
+      "column": 1
     },
     {
       "assetId": "material_coast_water_reefbone_splinter",
@@ -66,7 +66,7 @@
       "name": "礁骨裂片",
       "outputPath": "client/public/images/materials/material_coast_water_reefbone_splinter.png",
       "row": 1,
-      "column": 1
+      "column": 2
     },
     {
       "assetId": "material_coast_water_salt_crab_shell",
@@ -75,7 +75,7 @@
       "name": "鹽蟹硬殼",
       "outputPath": "client/public/images/materials/material_coast_water_salt_crab_shell.png",
       "row": 1,
-      "column": 2
+      "column": 3
     },
     {
       "assetId": "material_coast_water_salt_cured_fish",
@@ -83,8 +83,8 @@
       "targetId": "salt_cured_fish",
       "name": "鹽漬霧魚",
       "outputPath": "client/public/images/materials/material_coast_water_salt_cured_fish.png",
-      "row": 1,
-      "column": 3
+      "row": 2,
+      "column": 0
     },
     {
       "assetId": "material_coast_water_sapphire_lotus_petal",
@@ -92,8 +92,8 @@
       "targetId": "sapphire_lotus_petal",
       "name": "藍蓮花瓣",
       "outputPath": "client/public/images/materials/material_coast_water_sapphire_lotus_petal.png",
-      "row": 1,
-      "column": 4
+      "row": 2,
+      "column": 1
     }
   ]
 }
