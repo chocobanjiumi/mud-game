@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_low_wilds_15a",
+  "category": "item",
+  "columns": 4,
+  "rows": 4,
+  "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_15a.sheet.png",
+  "targets": [
+    { "assetId": "item_low_wilds_supplemental_weapon_02", "category": "item", "targetId": "supplemental_weapon_02", "name": "柳木獵刀", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_02.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_weapon_03", "category": "item", "targetId": "supplemental_weapon_03", "name": "田埂銅斧", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_03.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_weapon_04", "category": "item", "targetId": "supplemental_weapon_04", "name": "黑松彎刀", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_04.png", "row": 0, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_weapon_05", "category": "item", "targetId": "supplemental_weapon_05", "name": "潮玻刺劍", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_05.png", "row": 0, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_weapon_06", "category": "item", "targetId": "supplemental_weapon_06", "name": "礦燈鎚斧", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_06.png", "row": 1, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_weapon_07", "category": "item", "targetId": "supplemental_weapon_07", "name": "霜喙長矛", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_07.png", "row": 1, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_weapon_08", "category": "item", "targetId": "supplemental_weapon_08", "name": "赤岩戰鎬", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_08.png", "row": 1, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_weapon_09", "category": "item", "targetId": "supplemental_weapon_09", "name": "銀松斬刀", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_09.png", "row": 1, "column": 3 },
+    { "assetId": "item_low_wilds_supplemental_weapon_10", "category": "item", "targetId": "supplemental_weapon_10", "name": "雷草短槍", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_10.png", "row": 2, "column": 0 },
+    { "assetId": "item_low_wilds_supplemental_weapon_11", "category": "item", "targetId": "supplemental_weapon_11", "name": "琥珀弦刃", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_11.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_supplemental_weapon_12", "category": "item", "targetId": "supplemental_weapon_12", "name": "血鹽鉤刃", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_12.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_supplemental_weapon_13", "category": "item", "targetId": "supplemental_weapon_13", "name": "星砂儀刃", "outputPath": "client/public/images/items/item_low_wilds_supplemental_weapon_13.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_swift_boots", "category": "item", "targetId": "swift_boots", "name": "疾風靴", "outputPath": "client/public/images/items/item_low_wilds_swift_boots.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_village_herb_salve", "category": "item", "targetId": "village_herb_salve", "name": "村醫藥膏", "outputPath": "client/public/images/items/item_low_wilds_village_herb_salve.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_village_lunch_bundle", "category": "item", "targetId": "village_lunch_bundle", "name": "村製便當包", "outputPath": "client/public/images/items/item_low_wilds_village_lunch_bundle.png", "row": 3, "column": 2 }
+  ]
+}
