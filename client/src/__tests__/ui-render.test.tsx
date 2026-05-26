@@ -4,6 +4,8 @@ import type { Character, CombatantState, RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
 import { CharacterSelectScreenView } from '../components/CharacterSelectScreen';
 import SkillTablePage from '../components/SkillTablePage';
+import UniqueItemPage from '../components/UniqueItemPage';
+import { UNIQUE_ITEM_DRAFTS } from '../content/uniqueItemDrafts';
 import { SkillLearnedModalView } from '../components/SkillLearnedModal';
 import { DeathNoticeModalView } from '../components/DeathNoticeModal';
 import { RoomPanelView } from '../components/RoomPanel';
@@ -191,6 +193,23 @@ describe('key UI component rendering', () => {
     expect(html).toContain('消耗 70 MP');
     expect(html).toContain('信仰 +40');
     expect(html).toContain('消耗 50 專注');
+  });
+
+  it('renders the unique item candidate page with benchmark drafts', () => {
+    const html = renderToStaticMarkup(<UniqueItemPage />);
+    expect(html).toContain('Unique 武器與裝備候選池');
+    expect(html).toContain('月井落房弓');
+    expect(html).toContain('血鹽鉤刃');
+    expect(html).toContain('不是正式實裝清單');
+    expect(UNIQUE_ITEM_DRAFTS).toHaveLength(20);
+    for (const item of UNIQUE_ITEM_DRAFTS) {
+      expect(item.id).toMatch(/^[a-z0-9_]+$/);
+      expect(item.uniqueEffect.length).toBeGreaterThan(20);
+      expect(item.description.length).toBeGreaterThan(30);
+      expect(item.visualPrompt.length).toBeGreaterThan(30);
+      expect(item.drawback.length).toBeGreaterThan(10);
+      expect(item.loreSource.length).toBeGreaterThan(5);
+    }
   });
 
   it('renders skill learned modal details', () => {
