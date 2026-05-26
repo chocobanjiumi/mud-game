@@ -146,6 +146,10 @@ export interface InventoryItem {
   equipped: boolean;
   itemInstanceId?: string;
   quality?: ItemQuality;
+  itemLevel?: number;
+  droppedBy?: string;
+  droppedInZone?: string;
+  sourceTags?: string[];
   affixes?: AffixDef[];
   lockedAffixIndexes?: number[];
   fixedEffects?: string[];

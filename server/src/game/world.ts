@@ -343,7 +343,6 @@ export class WorldManager {
     const monster = monsters?.find(candidate => candidate.instanceId === instanceId && !candidate.isDead);
     if (!monsters || !monster) return null;
 
-    monsters.splice(monsters.indexOf(monster), 1);
     const approaching: ApproachingMonsterState = {
       instanceId: monster.instanceId,
       monsterId: monster.monsterId,
@@ -362,10 +361,16 @@ export class WorldManager {
     };
 
     if (arrivalTicks <= 0) {
+      monsters.splice(monsters.indexOf(monster), 1);
       this.placeArrivedMonster(approaching, monster);
     } else {
+      if (sourceRoomId === destinationRoomId) {
+        monsters.splice(monsters.indexOf(monster), 1);
+      }
       const list = this.approachingMonsters.get(destinationRoomId) ?? [];
-      list.push(approaching);
+      if (!list.some(existing => existing.instanceId === approaching.instanceId)) {
+        list.push(approaching);
+      }
       this.approachingMonsters.set(destinationRoomId, list);
     }
     this.roomStateChangeFn?.(sourceRoomId);
@@ -402,7 +407,17 @@ export class WorldManager {
     if (!def) {
       throw new Error(`Unknown approaching monster ${approaching.monsterId}`);
     }
-    const instance: MonsterInstance = existing ?? {
+    const sourceMonsters = this.roomMonsters.get(approaching.sourceRoomId) ?? [];
+    const sourceExisting = existing ?? sourceMonsters.find(monster => monster.instanceId === approaching.instanceId);
+    if (sourceExisting) {
+      const index = sourceMonsters.indexOf(sourceExisting);
+      if (index >= 0) {
+        sourceMonsters.splice(index, 1);
+        this.roomMonsters.set(approaching.sourceRoomId, sourceMonsters);
+      }
+    }
+
+    const instance: MonsterInstance = sourceExisting ?? {
       instanceId: approaching.instanceId,
       monsterId: approaching.monsterId,
       originRoomId: approaching.originRoomId ?? approaching.sourceRoomId,
@@ -423,6 +438,76 @@ export class WorldManager {
     }
     this.roomMonsters.set(approaching.destinationRoomId, destination);
     return instance;
+  }
+
+  removeApproachingMonster(roomId: string, instanceId: string): void {
+    const list = this.approachingMonsters.get(roomId) ?? [];
+    const remaining = list.filter(monster => monster.instanceId !== instanceId);
+    if (remaining.length > 0) this.approachingMonsters.set(roomId, remaining);
+    else this.approachingMonsters.delete(roomId);
+    if (remaining.length !== list.length) this.roomStateChangeFn?.(roomId);
+  }
+
+  killMonsterByInstance(instanceId: string): void {
+    for (const [roomId, monsters] of this.roomMonsters.entries()) {
+      if (monsters.some(monster => monster.instanceId === instanceId)) {
+        this.killMonster(roomId, instanceId);
+        for (const destinationRoomId of this.approachingMonsters.keys()) {
+          this.removeApproachingMonster(destinationRoomId, instanceId);
+        }
+        return;
+      }
+    }
+  }
+
+  resetSurvivingMonsterToOrigin(instanceId: string): boolean {
+    let currentRoomId: string | undefined;
+    let monster: MonsterInstance | undefined;
+
+    for (const [roomId, monsters] of this.roomMonsters.entries()) {
+      const found = monsters.find(candidate => candidate.instanceId === instanceId);
+      if (found) {
+        currentRoomId = roomId;
+        monster = found;
+        break;
+      }
+    }
+    if (!monster || !currentRoomId || monster.isDead) return false;
+
+    const changedRooms = new Set<string>([currentRoomId]);
+    for (const [roomId, list] of this.approachingMonsters.entries()) {
+      const remaining = list.filter(candidate => candidate.instanceId !== instanceId);
+      if (remaining.length !== list.length) {
+        changedRooms.add(roomId);
+        if (remaining.length > 0) this.approachingMonsters.set(roomId, remaining);
+        else this.approachingMonsters.delete(roomId);
+      }
+    }
+
+    monster.hp = monster.maxHp;
+    monster.mp = monster.maxMp;
+    monster.isDead = false;
+    monster.respawnAt = null;
+
+    const originRoomId = monster.originRoomId || currentRoomId;
+    if (originRoomId !== currentRoomId) {
+      const currentMonsters = this.roomMonsters.get(currentRoomId) ?? [];
+      const currentIndex = currentMonsters.indexOf(monster);
+      if (currentIndex >= 0) {
+        currentMonsters.splice(currentIndex, 1);
+        this.roomMonsters.set(currentRoomId, currentMonsters);
+      }
+
+      const originMonsters = this.roomMonsters.get(originRoomId) ?? [];
+      if (!originMonsters.some(candidate => candidate.instanceId === monster.instanceId)) {
+        originMonsters.push(monster);
+      }
+      this.roomMonsters.set(originRoomId, originMonsters);
+      changedRooms.add(originRoomId);
+    }
+
+    for (const roomId of changedRooms) this.roomStateChangeFn?.(roomId);
+    return true;
   }
 
   /** 取得特定怪物實例 */

@@ -22,6 +22,8 @@ export interface AffixDef {
   sourceTags?: string[];
   zoneTags?: string[];
   weaponTypes?: (WeaponType | WeaponCategory)[];
+  weight?: number;
+  family?: string;
   stats?: Partial<ItemStats>;
   behavior?: string;
   trigger?: 'on_hit' | 'on_block' | 'on_dodge' | 'on_kill' | 'on_cast' | 'on_heal';
@@ -50,6 +52,10 @@ export interface EquipmentItemInstance {
   itemInstanceId: string;
   baseItemId: string;
   quality: ItemQuality;
+  itemLevel: number;
+  droppedBy?: string;
+  droppedInZone?: string;
+  sourceTags?: string[];
   affixes: AffixDef[];
   fixedEffects: string[];
 }
@@ -58,6 +64,9 @@ export interface GenerateEquipmentInstanceOptions {
   luk?: number;
   classId?: string;
   sourceTags?: string[];
+  itemLevel?: number;
+  droppedBy?: string;
+  droppedInZone?: string;
   qualityBonus?: number;
   preferredAffixTags?: SkillTag[];
   preferredAffixWeight?: number;
@@ -94,6 +103,14 @@ export interface AffixBuildDirection {
   notes: string;
 }
 
+export interface BaselineCombatStats {
+  level: number;
+  atk: number;
+  matk: number;
+  critRateCap: number;
+  critDamageCap: number;
+}
+
 export const AFFIX_TIER_BALANCE: Record<AffixTier, AffixTierBalance> = {
   T1: { statBudget: [1, 3], skillModifierPct: [3, 6], resourceModifier: [1, 3], internalCooldownRounds: [0, 1] },
   T2: { statBudget: [2, 5], skillModifierPct: [6, 9], resourceModifier: [2, 4], internalCooldownRounds: [0, 2] },
@@ -118,6 +135,7 @@ export const AFFIX_BUILD_DIRECTIONS: AffixBuildDirection[] = [
 ];
 
 const TIER_ORDER: AffixTier[] = ['T1', 'T2', 'T3', 'T4', 'T5'];
+const TIER_BASE_WEIGHT: Record<AffixTier, number> = { T1: 100, T2: 70, T3: 35, T4: 12, T5: 3 };
 
 export const QUALITY_RULES: Record<ItemQuality, ItemQualityRule> = {
   normal: { quality: 'normal', affixCount: [0, 0], minTier: 'T1' },
@@ -172,8 +190,10 @@ export function generateEquipmentInstance(
   options: GenerateEquipmentInstanceOptions = {},
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
+  const itemLevel = Math.max(1, options.itemLevel ?? baseItem.level);
   const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight, options.sourceTags ?? baseItem.sourceTags, baseItem.zoneTags);
+  const sourceTags = options.sourceTags ?? baseItem.sourceTags;
+  const affixes = rollAffixes(baseItem, quality, options.classId, itemLevel, random, options.preferredAffixTags, options.preferredAffixWeight, sourceTags, baseItem.zoneTags);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -182,6 +202,10 @@ export function generateEquipmentInstance(
     itemInstanceId: `${baseItem.id}_${quality}_${Math.floor(random() * 1_000_000).toString(36)}`,
     baseItemId: baseItem.id,
     quality,
+    itemLevel,
+    droppedBy: options.droppedBy,
+    droppedInZone: options.droppedInZone,
+    sourceTags,
     affixes,
     fixedEffects,
   };
@@ -192,8 +216,10 @@ export function reforgeEquipmentInstanceQuality(
   options: ReforgeQualityOptions = {},
 ): EquipmentItemInstance {
   const random = options.random ?? Math.random;
+  const itemLevel = Math.max(1, options.itemLevel ?? baseItem.level);
   const quality = rollItemQuality(options.luk ?? 0, options.sourceTags ?? baseItem.sourceTags, random, options.qualityBonus ?? 0);
-  const affixes = rollAffixes(baseItem, quality, options.classId, random, options.preferredAffixTags, options.preferredAffixWeight, options.sourceTags ?? baseItem.sourceTags, baseItem.zoneTags);
+  const sourceTags = options.sourceTags ?? baseItem.sourceTags;
+  const affixes = rollAffixes(baseItem, quality, options.classId, itemLevel, random, options.preferredAffixTags, options.preferredAffixWeight, sourceTags, baseItem.zoneTags);
   const fixedEffects = quality === 'legendary' || quality === 'mythic'
     ? [`${quality}_core_${baseItem.equipSlot}`]
     : [];
@@ -202,6 +228,10 @@ export function reforgeEquipmentInstanceQuality(
     itemInstanceId: options.itemInstanceId ?? `${baseItem.id}_${quality}_${Math.floor(random() * 1_000_000).toString(36)}`,
     baseItemId: baseItem.id,
     quality,
+    itemLevel,
+    droppedBy: options.droppedBy,
+    droppedInZone: options.droppedInZone,
+    sourceTags,
     affixes,
     fixedEffects,
   };
@@ -252,15 +282,18 @@ export function rollItemQuality(
   return 'normal';
 }
 
-export function getEligibleAffixes(baseItem: BaseEquipmentDef, quality: ItemQuality, classId?: string): AffixDef[] {
+export function getEligibleAffixes(baseItem: BaseEquipmentDef, quality: ItemQuality, classId?: string, itemLevel = baseItem.level): AffixDef[] {
   const rule = QUALITY_RULES[quality];
   const minTierIndex = Math.max(0, TIER_ORDER.indexOf(rule.minTier) - 1);
+  const maxTierIndex = getMaxAffixTierIndexForItemLevel(itemLevel);
   return Object.values(AFFIX_POOLS)
     .flat()
     .filter(affix => TIER_ORDER.indexOf(affix.tier) >= minTierIndex)
+    .filter(affix => TIER_ORDER.indexOf(affix.tier) <= maxTierIndex)
     .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
-    .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
-    .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
+    .filter(affix => affix.itemLevelMin === undefined || itemLevel >= affix.itemLevelMin)
+    .filter(affix => affix.itemLevelMax === undefined || itemLevel <= affix.itemLevelMax)
+    .filter(affix => isAffixWithinOffensiveBudget(affix, itemLevel))
     .filter(affix => weaponMatches(baseItem, affix))
     .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId)));
 }
@@ -296,6 +329,7 @@ function rollAffixes(
   baseItem: BaseEquipmentDef,
   quality: ItemQuality,
   classId: string | undefined,
+  itemLevel: number,
   random: () => number,
   preferredAffixTags: SkillTag[] = [],
   preferredAffixWeight = 4,
@@ -307,23 +341,22 @@ function rollAffixes(
   const count = min === max ? min : min + Math.floor(random() * (max - min + 1));
   if (count === 0) return [];
 
-  const pool = [...getEligibleAffixes(baseItem, quality, classId)];
-  if (pool.length < count) {
-    const existingIds = new Set(pool.map(affix => affix.id));
-    const rule = QUALITY_RULES[quality];
-    pool.push(...Object.values(AFFIX_POOLS)
-      .flat()
-      .filter(affix => !existingIds.has(affix.id))
-      .filter(affix => affix.appliesTo.includes(baseItem.equipSlot))
-      .filter(affix => affix.itemLevelMin === undefined || baseItem.level >= affix.itemLevelMin)
-      .filter(affix => affix.itemLevelMax === undefined || baseItem.level <= affix.itemLevelMax)
-      .filter(affix => weaponMatches(baseItem, affix))
-      .filter(affix => affix.pool !== 'class' || (!!rule.allowsClassAffixes && !!classId && affix.classTags?.includes(classId))));
-  }
+  const pool = [...getEligibleAffixes(baseItem, quality, classId, itemLevel)];
   const selected: AffixDef[] = [];
   while (selected.length < count && pool.length > 0) {
-    const index = pickWeightedAffixIndex(pool, preferredAffixTags, preferredAffixWeight, sourceTags, zoneTags, random);
-    const [candidate] = pool.splice(index, 1);
+    const candidate = rollWeightedAffix(pool, {
+      classId,
+      preferredAffixTags,
+      preferredAffixWeight,
+      sourceTags,
+      zoneTags,
+      selected,
+      quality,
+      random,
+    });
+    if (!candidate) break;
+    const index = pool.findIndex(affix => affix.id === candidate.id);
+    pool.splice(index, 1);
     selected.push(candidate);
   }
 
@@ -335,30 +368,105 @@ function rollAffixes(
   return selected;
 }
 
-function pickWeightedAffixIndex(
+export function rollWeightedAffix(
   pool: AffixDef[],
-  preferredAffixTags: SkillTag[],
-  preferredAffixWeight: number,
-  sourceTags: string[],
-  zoneTags: string[],
-  random: () => number,
-): number {
-  const preferred = new Set(preferredAffixTags);
-  const source = new Set(sourceTags);
-  const zone = new Set(zoneTags);
-  const weights = pool.map((affix) => {
-    const preferredWeight = (affix.skillTags ?? []).some(tag => preferred.has(tag)) ? Math.max(1, preferredAffixWeight) : 1;
-    const sourceWeight = (affix.sourceTags ?? []).some(tag => source.has(tag)) ? 4 : 0;
-    const zoneWeight = (affix.zoneTags ?? []).some(tag => zone.has(tag)) ? 3 : 0;
-    return preferredWeight + sourceWeight + zoneWeight;
-  });
+  options: {
+    classId?: string;
+    preferredAffixTags?: SkillTag[];
+    preferredAffixWeight?: number;
+    sourceTags?: string[];
+    zoneTags?: string[];
+    selected?: AffixDef[];
+    quality?: ItemQuality;
+    random?: () => number;
+  } = {},
+): AffixDef | null {
+  const random = options.random ?? Math.random;
+  const selected = options.selected ?? [];
+  const candidates = pool.filter(affix => canAddAffix(affix, selected, options.quality ?? 'normal'));
+  if (candidates.length === 0) return null;
+  const weights = candidates.map(affix => calculateAffixWeight(affix, options));
   const total = weights.reduce((sum, weight) => sum + weight, 0);
   let roll = random() * total;
   for (let i = 0; i < weights.length; i++) {
     roll -= weights[i];
-    if (roll <= 0) return i;
+    if (roll <= 0) return candidates[i];
   }
-  return pool.length - 1;
+  return candidates[candidates.length - 1];
+}
+
+export function calculateAffixWeight(
+  affix: AffixDef,
+  options: {
+    classId?: string;
+    preferredAffixTags?: SkillTag[];
+    preferredAffixWeight?: number;
+    sourceTags?: string[];
+    zoneTags?: string[];
+  } = {},
+): number {
+  const base = affix.weight ?? TIER_BASE_WEIGHT[affix.tier];
+  let weight = base;
+  const preferred = new Set(options.preferredAffixTags ?? []);
+  const source = new Set(options.sourceTags ?? []);
+  const zone = new Set(options.zoneTags ?? []);
+  if ((affix.sourceTags ?? []).some(tag => source.has(tag))) weight *= 1.5;
+  if ((affix.zoneTags ?? []).some(tag => zone.has(tag))) weight *= 1.4;
+  if (options.classId && affix.classTags?.includes(options.classId)) weight *= 1.3;
+  if ((affix.skillTags ?? []).some(tag => preferred.has(tag))) weight *= Math.max(1.25, options.preferredAffixWeight ?? 1.25);
+  return Math.min(base * 3, weight);
+}
+
+export function getMaxAffixTierIndexForItemLevel(itemLevel: number): number {
+  if (itemLevel < 15) return TIER_ORDER.indexOf('T2');
+  if (itemLevel < 30) return TIER_ORDER.indexOf('T3');
+  if (itemLevel < 45) return TIER_ORDER.indexOf('T4');
+  return TIER_ORDER.indexOf('T5');
+}
+
+export function getBaselineCombatStatsForLevel(level: number): BaselineCombatStats {
+  const stat = 5 + Math.max(0, level - 1);
+  return {
+    level,
+    atk: stat * 2,
+    matk: stat * 2,
+    critRateCap: 10,
+    critDamageCap: 30,
+  };
+}
+
+export function isAffixWithinOffensiveBudget(affix: AffixDef, itemLevel: number): boolean {
+  const baseline = getBaselineCombatStatsForLevel(itemLevel);
+  const stats = affix.stats ?? {};
+  if ((stats.atk ?? 0) > Math.max(3, Math.floor(baseline.atk * 0.3))) return false;
+  if ((stats.matk ?? 0) > Math.max(3, Math.floor(baseline.matk * 0.3))) return false;
+  if ((stats.critRate ?? 0) > baseline.critRateCap) return false;
+  if ((stats.critDamage ?? 0) > baseline.critDamageCap) return false;
+  if ((affix.skillModifiers?.damagePct ?? 0) > 0 && !affix.internalCooldownRounds && !affix.condition && affix.trigger !== 'on_cast') return false;
+  return true;
+}
+
+function canAddAffix(affix: AffixDef, selected: AffixDef[], quality: ItemQuality): boolean {
+  if (selected.some(existing => existing.id === affix.id)) return false;
+  const family = affix.family ?? inferAffixFamily(affix);
+  if (family && selected.some(existing => (existing.family ?? inferAffixFamily(existing)) === family)) return false;
+  const kind = affix.kind ?? 'prefix';
+  const selectedKinds = selected.map(existing => existing.kind ?? 'prefix');
+  if (quality === 'fine') return selected.length === 0 && (kind === 'prefix' || kind === 'suffix');
+  if (quality === 'rare') {
+    if (kind !== 'prefix' && kind !== 'suffix') return false;
+    return selectedKinds.filter(existing => existing === kind).length < 1;
+  }
+  if (quality === 'epic') {
+    if (kind !== 'prefix' && kind !== 'suffix') return false;
+    return selectedKinds.filter(existing => existing === kind).length < 2;
+  }
+  return true;
+}
+
+function inferAffixFamily(affix: AffixDef): string | undefined {
+  const stat = Object.keys(affix.stats ?? {})[0];
+  return stat ? `stat:${stat}` : affix.behavior ? `behavior:${affix.behavior}` : undefined;
 }
 
 function weaponMatches(baseItem: BaseEquipmentDef, affix: AffixDef): boolean {

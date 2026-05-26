@@ -125,7 +125,8 @@ export function saveCharacter(char: Character): void {
 export function loadInventory(characterId: string): InventoryItem[] {
   const rows = getDb().prepare(
     `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
-      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
+      inst.quality, inst.item_level, inst.dropped_by, inst.dropped_in_zone, inst.source_tags_json,
+      inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ?`
@@ -136,6 +137,10 @@ export function loadInventory(characterId: string): InventoryItem[] {
     quantity: r.quantity,
     equipped: !!r.equipped,
     quality: r.quality ?? undefined,
+    itemLevel: r.item_level ?? undefined,
+    droppedBy: r.dropped_by ?? undefined,
+    droppedInZone: r.dropped_in_zone ?? undefined,
+    sourceTags: parseJsonArray(r.source_tags_json),
     affixes: parseJsonArray(r.affixes_json),
     lockedAffixIndexes: parseJsonArray(r.locked_affixes_json),
     fixedEffects: parseJsonArray(r.fixed_effects_json),
@@ -230,6 +235,12 @@ export function loadLearnedSkills(characterId: string): LearnedSkill[] {
 export function learnSkill(characterId: string, skillId: string): void {
   getDb().prepare(
     'INSERT OR IGNORE INTO learned_skills (character_id, skill_id) VALUES (?, ?)'
+  ).run(characterId, skillId);
+}
+
+export function forgetSkill(characterId: string, skillId: string): void {
+  getDb().prepare(
+    'DELETE FROM learned_skills WHERE character_id = ? AND skill_id = ?'
   ).run(characterId, skillId);
 }
 

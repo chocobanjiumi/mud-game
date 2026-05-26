@@ -12,6 +12,7 @@ export interface CombatAction {
   actorId: string;
   type: CombatActionType;
   skillId?: string;
+  skillLevel?: number;
   targetId?: string;
   itemId?: string;
 }
@@ -53,6 +54,7 @@ export interface CombatantState {
   currentMonsterPhase?: number;
   pendingTelegraph?: PendingTelegraphAction;
   isApproaching?: boolean;
+  arrivalTicksRemaining?: number;
 }
 
 export interface ActiveStatusEffect extends StatusEffect {
@@ -77,7 +79,18 @@ export interface CombatState {
 export interface CombatLoot {
   exp: number;
   gold: number;
-  items: { itemId: string; quantity: number }[];
+  items: {
+    itemId: string;
+    quantity: number;
+    itemInstanceId?: string;
+    quality?: import('../systems/item-instance.js').ItemQuality;
+    itemLevel?: number;
+    droppedBy?: string;
+    droppedInZone?: string;
+    sourceTags?: string[];
+    affixes?: import('../systems/item-instance.js').AffixDef[];
+    fixedEffects?: string[];
+  }[];
 }
 
 export interface MonsterDef {

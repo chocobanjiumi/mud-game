@@ -22,6 +22,13 @@ export interface BuildNearbyCombatPayloadInput {
 export function buildNearbyCombatPayload(input: BuildNearbyCombatPayloadInput): NearbyCombatPayload {
   const currentMonsters = input.getAliveMonsters(input.currentRoom.id);
   const currentLabels = buildOrdinalLabels(currentMonsters, monster => monster.def.name);
+  const approaching = input.getApproachingMonsters(input.currentRoom.id);
+  const approachingIdsBySourceRoom = new Map<string, Set<string>>();
+  for (const monster of approaching) {
+    const ids = approachingIdsBySourceRoom.get(monster.sourceRoomId) ?? new Set<string>();
+    ids.add(monster.instanceId);
+    approachingIdsBySourceRoom.set(monster.sourceRoomId, ids);
+  }
 
   return {
     current: {
@@ -33,7 +40,9 @@ export function buildNearbyCombatPayload(input: BuildNearbyCombatPayloadInput): 
       const exit = input.currentRoom.exits.find(candidate => candidate.direction === direction && !candidate.locked);
       const targetRoom = exit ? getRoom(exit.targetRoomId) : undefined;
       const passable = !!exit && !!targetRoom;
-      const monsters = targetRoom ? input.getAliveMonsters(targetRoom.id) : [];
+      const monsters = targetRoom
+        ? input.getAliveMonsters(targetRoom.id).filter(monster => !approachingIdsBySourceRoom.get(targetRoom.id)?.has(monster.instanceId))
+        : [];
       const scouted = !!targetRoom && input.isScouted(input.characterId, targetRoom.id);
       const labels = scouted ? buildOrdinalLabels(monsters, monster => monster.def.name) : [];
 
@@ -47,7 +56,7 @@ export function buildNearbyCombatPayload(input: BuildNearbyCombatPayloadInput): 
         monsters: scouted ? monsters.map((monster, index) => monsterToPayload(monster, labels[index])) : undefined,
       };
     }),
-    approaching: input.getApproachingMonsters(input.currentRoom.id),
+    approaching,
   };
 }
 

@@ -3,11 +3,11 @@
 import type {
   CombatState, CombatAction, CombatActionType, CombatResult,
   CombatantState, DamageResult, CombatLoot, ActiveStatusEffect, StatusEffect,
-  MonsterDef, Character, SkillDef, ElementType, ResourceType,
+  MonsterDef, Character, SkillDef, ElementType, ResourceType, DerivedStats,
   MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction, InlineEntityPayload,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
-import { SKILL_DEFS } from '@game/shared';
+import { applySkillUpgradeRule, getStatusEffectDef, SKILL_DEFS } from '@game/shared';
 import {
   calculateDamage, calculateDerived, baseStatsToCombat, derivedWithDexLuk,
   getEquipmentStats,
@@ -34,6 +34,7 @@ import {
   type TriggeredAffixResult,
 } from './equipment-affixes.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
+import { getPveHighLevelCombatPenalty } from './level-scaling.js';
 
 // ============================================================
 //  常數
@@ -84,6 +85,8 @@ export interface CombatSession {
   skillCooldowns: Map<string, number>;
   /** 裝備詞綴內部冷卻 */
   affixCooldowns: Map<string, number>;
+  /** Boss 控制免疫：targetId -> immunity expires after this round */
+  bossControlImmunityUntilRound: Map<string, number>;
   /** 回合計時器 */
   turnTimerHandle: ReturnType<typeof setTimeout> | null;
   /** 回合開始時間 */
@@ -124,7 +127,7 @@ export class CombatEngine {
     this.broadcastFn = fn;
   }
 
-  private monsterToCombatant(m: MonsterInstance, options: { isApproaching?: boolean } = {}): CombatantState {
+  private monsterToCombatant(m: MonsterInstance, options: { isApproaching?: boolean; arrivalTicksRemaining?: number } = {}): CombatantState {
     return {
       id: m.instanceId,
       name: m.def.name,
@@ -145,6 +148,7 @@ export class CombatEngine {
       monsterPhases: this.getMonsterPhaseRules(m.def),
       currentMonsterPhase: 1,
       isApproaching: options.isApproaching,
+      arrivalTicksRemaining: options.arrivalTicksRemaining,
     };
   }
 
@@ -222,6 +226,7 @@ export class CombatEngine {
       preferredTargetIds: new Map(),
       skillCooldowns: new Map(),
       affixCooldowns: new Map(),
+      bossControlImmunityUntilRound: new Map(),
       turnTimerHandle: null,
       turnStartTime: Date.now(),
       onEnd: onEnd ?? null,
@@ -290,6 +295,113 @@ export class CombatEngine {
     session.skillCooldowns.set(this.getSkillCooldownKey(actorId, skillId), rounds);
   }
 
+  broadcastCombatState(combatId: string, log: string[] = []): boolean {
+    const session = this.sessions.get(combatId);
+    if (!session) return false;
+    this.broadcastRoundResult(session, log, []);
+    return true;
+  }
+
+  executeInstantSkillDamage(
+    combatId: string,
+    actorId: string,
+    targetId: string,
+    skillDef: SkillDef,
+  ): { handled: boolean; message?: string; hit: boolean; killed: boolean } {
+    const session = this.sessions.get(combatId);
+    const actor = session?.state.playerTeam.find(player => player.id === actorId && !player.isDead);
+    const target = session?.state.enemyTeam.find(enemy => enemy.id === targetId && !enemy.isDead);
+    if (!session || !actor || !target) return { handled: false, hit: false, killed: false };
+
+    const log: string[] = [];
+    const attackerStats = this.getCombatStats(session, actor);
+    const targetStats = this.getCombatStats(session, target);
+    const targetElement = this.getCombatantElement(session, target.id);
+    const outputAffixModifiers = getSkillAffixModifiers(actor.id, skillDef, {
+      trigger: 'on_hit',
+      targetHpPercent: target.maxHp > 0 ? (target.hp / target.maxHp) * 100 : 100,
+    });
+    const markBonus = this.effectEngine.getEffectValue(target.activeEffects, 'mark');
+    const specialBonus = this.getSpecialDamageBonusPct(session, actor, target, skillDef);
+    const penalty = getPveHighLevelCombatPenalty(actor, target);
+    attackerStats.hitRate = Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty);
+    const multiplier = skillDef.multiplier
+      * this.getMonsterPhaseDamageMultiplier(actor)
+      * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100)
+      * (1 + markBonus / 100)
+      * (1 + specialBonus / 100)
+      * penalty.damageMultiplier;
+
+    const dmgResult = calculateDamage({
+      attackerId: actor.id,
+      targetId: target.id,
+      damageType: skillDef.damageType,
+      element: skillDef.element,
+      targetElement,
+      multiplier,
+      attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+      target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
+    });
+    dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
+    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, skillDef.damageType, dmgResult.element);
+
+    let hit = false;
+    if (dmgResult.isMiss) {
+      log.push(`${actor.name}使用了${skillDef.name}，但是沒有命中！`);
+    } else if (dmgResult.isDodged) {
+      log.push(`${actor.name}使用了${skillDef.name}，但被${target.name}閃避了！`);
+      this.triggerAffixEvents(session, target, 'on_dodge', log, {
+        targetHpPercent: this.getHpPercent(target),
+        isFirstHit: session.state.round === 1,
+      });
+    } else {
+      hit = true;
+      const critText = dmgResult.isCrit ? '暴擊！' : '';
+      log.push(`${actor.name}使用了${skillDef.name}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`);
+      if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
+        dmgResult.damage = this.applyBlockAffixEffects(session, target, actor, dmgResult.damage, log, {
+          targetHpPercent: this.getHpPercent(target),
+          isFirstHit: session.state.round === 1,
+        });
+      }
+      this.applyDamageToTarget(session, target, dmgResult.damage, log);
+      this.triggerMonsterPhases(session, target, log);
+      this.applySkillHitResourceEffects(actor, target, skillDef, log);
+      this.triggerAffixEvents(session, actor, 'on_hit', log, {
+        targetHpPercent: this.getHpPercent(target),
+        isFirstHit: session.state.round === 1,
+      });
+
+      const stunChance = this.getNumericSpecial(skillDef, 'stunChance') ?? 0;
+      const stunDuration = this.getNumericSpecial(skillDef, 'stunDuration') ?? 1;
+      if (!target.isDead && stunChance > 0 && Math.random() * 100 < stunChance) {
+        const msg = this.applyEffectWithBossControl(session, target, {
+          type: 'stun',
+          value: 1,
+          duration: stunDuration,
+          source: actor.id,
+        }, actor.name);
+        log.push(`  ${target.name}${msg}`);
+      }
+
+      if (target.isDead) {
+        this.triggerAffixEvents(session, actor, 'on_kill', log, {
+          targetHpPercent: 0,
+          isFirstHit: session.state.round === 1,
+        });
+      }
+    }
+
+    const killed = target.isDead;
+    session.state.actionLog.push(...log);
+    if (this.checkBattleEnd(session)) {
+      this.endCombat(session);
+    } else {
+      this.broadcastRoundResult(session, log, []);
+    }
+    return { handled: true, message: log.join(' '), hit, killed };
+  }
+
   setPreferredTarget(combatId: string, playerId: string, targetId: string): boolean {
     const session = this.sessions.get(combatId);
     if (!session) return false;
@@ -303,12 +415,17 @@ export class CombatEngine {
     combatId: string,
     monster: MonsterInstance,
     preferredByPlayerId?: string,
-    options: { isApproaching?: boolean } = {},
+    options: { isApproaching?: boolean; arrivalTicksRemaining?: number } = {},
   ): boolean {
     const session = this.sessions.get(combatId);
     if (!session || monster.isDead) return false;
     if (session.monsterInstances.has(monster.instanceId)) {
       if (preferredByPlayerId) this.setPreferredTarget(combatId, preferredByPlayerId, monster.instanceId);
+      const existing = session.state.enemyTeam.find(enemy => enemy.id === monster.instanceId);
+      if (existing) {
+        existing.isApproaching = options.isApproaching ?? existing.isApproaching;
+        existing.arrivalTicksRemaining = options.arrivalTicksRemaining ?? existing.arrivalTicksRemaining;
+      }
       return false;
     }
 
@@ -320,6 +437,22 @@ export class CombatEngine {
     const log = [`${monster.def.name}加入了戰鬥！`];
     this.prepareMonsterTelegraphs(session, log);
     this.broadcastRoundResult(session, log, []);
+    return true;
+  }
+
+  setApproachingArrivalTicks(combatId: string, monsterId: string, arrivalTicksRemaining: number): boolean {
+    const enemy = this.sessions.get(combatId)?.state.enemyTeam.find(candidate => candidate.id === monsterId);
+    if (!enemy) return false;
+    enemy.isApproaching = arrivalTicksRemaining > 0;
+    enemy.arrivalTicksRemaining = Math.max(0, arrivalTicksRemaining);
+    return true;
+  }
+
+  markMonsterArrived(combatId: string, monsterId: string): boolean {
+    const enemy = this.sessions.get(combatId)?.state.enemyTeam.find(candidate => candidate.id === monsterId);
+    if (!enemy) return false;
+    enemy.isApproaching = false;
+    enemy.arrivalTicksRemaining = 0;
     return true;
   }
 
@@ -353,7 +486,7 @@ export class CombatEngine {
     const allCombatants = [
       ...session.state.playerTeam,
       ...session.state.enemyTeam,
-    ].filter(c => !c.isDead);
+    ].filter(c => !c.isDead && !this.isWaitingToArrive(c));
 
     for (const c of allCombatants) {
       if (!session.state.pendingActions.has(c.id)) {
@@ -514,6 +647,8 @@ export class CombatEngine {
     const attackerStats = this.getCombatStats(session, actor);
     const targetStats = this.getCombatStats(session, target);
     const targetElement = this.getCombatantElement(session, target.id);
+    const penalty = getPveHighLevelCombatPenalty(actor, target);
+    attackerStats.hitRate = Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty);
 
     const dmgResult = calculateDamage({
       attackerId: actor.id,
@@ -521,7 +656,7 @@ export class CombatEngine {
       damageType: 'physical',
       element: 'none',
       targetElement,
-      multiplier: 1.0 * this.getMonsterPhaseDamageMultiplier(actor),
+      multiplier: 1.0 * this.getMonsterPhaseDamageMultiplier(actor) * penalty.damageMultiplier,
       attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
@@ -559,7 +694,8 @@ export class CombatEngine {
     results: DamageResult[],
   ): void {
     // 查找技能定義
-    const skillDef = action.skillId ? SKILL_DEFS[action.skillId] : null;
+    const baseSkillDef = action.skillId ? SKILL_DEFS[action.skillId] : undefined;
+    const skillDef = baseSkillDef ? applySkillUpgradeRule(baseSkillDef, action.skillLevel ?? 1) : null;
     if (skillDef && action.skillId && this.getSkillCooldownRemaining(session.id, actor.id, action.skillId) > 0) {
       const remaining = this.getSkillCooldownRemaining(session.id, actor.id, action.skillId);
       log.push(`${actor.name}的「${skillDef.name}」冷卻中，還需 ${remaining} tick，改為普通攻擊！`);
@@ -634,7 +770,7 @@ export class CombatEngine {
 
     for (const target of targets) {
       if (target.isDead) continue;
-      if (skillDef && !this.shouldDamageUndeadWithPurify(session, target, skillDef) && this.applyNonDamageSkillEffect(actor, target, skillDef, skillName, log)) {
+      if (skillDef && !this.shouldDamageUndeadWithPurify(session, target, skillDef) && this.applyNonDamageSkillEffect(session, actor, target, skillDef, skillName, log)) {
         continue;
       }
       const outputAffixModifiers = skillDef ? getSkillAffixModifiers(actor.id, skillDef, {
@@ -646,11 +782,17 @@ export class CombatEngine {
         : baseMultiplier;
       const markBonus = this.effectEngine.getEffectValue(target.activeEffects, 'mark');
       const specialBonus = skillDef ? this.getSpecialDamageBonusPct(session, actor, target, skillDef) : 0;
+      const penalty = getPveHighLevelCombatPenalty(actor, target);
+      const effectiveAttackerStats = {
+        ...attackerStats,
+        hitRate: Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty),
+      };
       const multiplier = targetBaseMultiplier
         * (1 + (outputAffixModifiers?.damageBonusPct ?? 0) / 100)
         * (1 + markBonus / 100)
-        * (1 + specialBonus / 100);
-      this.interruptTelegraphIfPossible(actor, target, skillDef, log);
+        * (1 + specialBonus / 100)
+        * penalty.damageMultiplier;
+      this.interruptTelegraphIfPossible(session, actor, target, skillDef, log);
       this.dispelShieldIfPossible(actor, target, skillDef, log);
 
       const targetStats = this.getCombatStats(session, target);
@@ -662,7 +804,7 @@ export class CombatEngine {
         element,
         targetElement,
         multiplier,
-        attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+        attacker: derivedWithDexLuk(effectiveAttackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
         target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
       });
       dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
@@ -747,7 +889,7 @@ export class CombatEngine {
       if (skillDef?.effects && !dmgResult.isMiss && !dmgResult.isDodged) {
         for (const eff of skillDef.effects) {
           const contextualValue = this.getContextualEffectValue(actor, target, skillDef, eff);
-          const msg = this.effectEngine.applyEffect(target.activeEffects, {
+          const msg = this.applyEffectWithBossControl(session, target, {
             ...eff,
             value: contextualValue,
             source: actor.id,
@@ -883,13 +1025,13 @@ export class CombatEngine {
 
     // 套用附帶效果
     for (const eff of result.effects) {
-      const msg = this.effectEngine.applyEffect(target.activeEffects, eff, actor.name);
+      const msg = this.applyEffectWithBossControl(session, target, eff, actor.name);
       log.push(`  ${target.name}${msg}`);
     }
   }
 
   private applyDamageToTarget(
-    _session: CombatSession,
+    session: CombatSession,
     target: CombatantState,
     rawDamage: number,
     log: string[],
@@ -931,14 +1073,19 @@ export class CombatEngine {
       const before = target.hp;
       target.hp = Math.min(target.maxHp, target.hp + heal);
       const actual = target.hp - before;
-      if (actual > 0) log.push(`  ${target.name}的守護禱言破裂，回復 ${actual} HP。`);
+      if (actual > 0) log.push(`  ${target.name}的護盾破裂，回復 ${actual} HP。`);
     }
     damage = shieldResult.remainingDamage;
 
     // 扣血
     target.hp = Math.max(0, target.hp - damage);
+    const monsterInstance = session.monsterInstances.get(target.id);
+    if (monsterInstance) {
+      monsterInstance.hp = target.hp;
+    }
     if (target.hp <= 0) {
       target.isDead = true;
+      if (monsterInstance) monsterInstance.isDead = true;
       log.push(`  ${target.name}倒下了！`);
     }
   }
@@ -1168,7 +1315,7 @@ export class CombatEngine {
 
   private prepareMonsterTelegraphs(session: CombatSession, log: string[]): void {
     for (const enemy of session.state.enemyTeam) {
-      if (enemy.isDead || enemy.pendingTelegraph) continue;
+      if (enemy.isDead || enemy.pendingTelegraph || this.isWaitingToArrive(enemy)) continue;
       const instance = session.monsterInstances.get(enemy.id);
       if (!instance) continue;
 
@@ -1207,6 +1354,7 @@ export class CombatEngine {
   }
 
   private interruptTelegraphIfPossible(
+    session: CombatSession,
     actor: CombatantState,
     target: CombatantState,
     skillDef: SkillDef | null,
@@ -1220,7 +1368,7 @@ export class CombatEngine {
 
     const interrupted = target.pendingTelegraph;
     target.pendingTelegraph = undefined;
-    this.effectEngine.applyEffect(target.activeEffects, {
+    this.applyEffectWithBossControl(session, target, {
       type: 'stun',
       value: 1,
       duration: 1,
@@ -1623,7 +1771,33 @@ export class CombatEngine {
     applySkillResourceChange(actor, skillDef, resourceCost, faithBonus);
   }
 
+  private applyEffectWithBossControl(
+    session: CombatSession,
+    target: CombatantState,
+    effect: StatusEffect,
+    sourceName?: string,
+  ): string {
+    if (!this.isBossCombatant(target) || getStatusEffectDef(effect.type).category !== 'control') {
+      return this.effectEngine.applyEffect(target.activeEffects, effect, sourceName);
+    }
+
+    const immuneUntil = session.bossControlImmunityUntilRound.get(target.id) ?? 0;
+    if (immuneUntil >= session.state.round) {
+      return '抵抗了連續控制。';
+    }
+
+    const cappedEffect = { ...effect, duration: Math.min(effect.duration, 1) };
+    const message = this.effectEngine.applyEffect(target.activeEffects, cappedEffect, sourceName);
+    session.bossControlImmunityUntilRound.set(target.id, session.state.round + 1);
+    return `${message} Boss 對連續控制產生短暫抗性。`;
+  }
+
+  private isBossCombatant(target: CombatantState): boolean {
+    return !target.isPlayer && target.monsterBehavior === 'phase_boss';
+  }
+
   private applyNonDamageSkillEffect(
+    session: CombatSession,
     actor: CombatantState,
     target: CombatantState,
     skillDef: SkillDef,
@@ -1644,7 +1818,7 @@ export class CombatEngine {
     if (skillDef.effects) {
       for (const eff of skillDef.effects) {
         const contextualValue = this.getContextualEffectValue(actor, target, skillDef, eff);
-        const msg = this.effectEngine.applyEffect(target.activeEffects, {
+        const msg = this.applyEffectWithBossControl(session, target, {
           ...eff,
           value: contextualValue,
           source: actor.id,
@@ -1843,6 +2017,10 @@ export class CombatEngine {
     return alive[Math.floor(Math.random() * alive.length)];
   }
 
+  private isWaitingToArrive(combatant: CombatantState): boolean {
+    return !combatant.isPlayer && (combatant.arrivalTicksRemaining ?? 0) > 0;
+  }
+
   private getCombatantDex(session: CombatSession, id: string): number {
     const combatant = this.findCombatant(session, id);
     const char = session.playerCharacters.get(id);
@@ -1986,30 +2164,7 @@ export class CombatEngine {
 
       derived.dodgeRate += getSurvivalDodgeBonus(combatant.id, combatant.hp, combatant.maxHp);
 
-      // Apply active buff effects from potions/food/skills
-      for (const eff of combatant.activeEffects) {
-        if (eff.remainingDuration <= 0) continue;
-        switch (eff.type) {
-          case 'atk_up':
-            derived.atk = Math.floor(derived.atk * (1 + eff.value / 100));
-            break;
-          case 'matk_up':
-            derived.matk = Math.floor(derived.matk * (1 + eff.value / 100));
-            break;
-          case 'def_up':
-            derived.def = Math.floor(derived.def * (1 + eff.value / 100));
-            break;
-          case 'mdef_up':
-            derived.mdef = Math.floor(derived.mdef * (1 + eff.value / 100));
-            break;
-          case 'dodge_up':
-            derived.dodgeRate += eff.value;
-            break;
-          case 'crit_up':
-            derived.critRate += eff.value;
-            break;
-        }
-      }
+      applyActiveEffectStatModifiers(derived, combatant.activeEffects);
 
       return derived;
     }
@@ -2021,7 +2176,9 @@ export class CombatEngine {
         { str: d.str, int: d.int, dex: d.dex, vit: d.vit, luk: d.luk },
         d.level,
       );
-      return calculateDerived(cs);
+      const derived = calculateDerived(cs);
+      applyActiveEffectStatModifiers(derived, combatant.activeEffects);
+      return derived;
     }
 
     // fallback
@@ -2065,7 +2222,7 @@ export class CombatEngine {
     if (!session) return undefined;
     const enemy = session.state.enemyTeam.find(e => e.id === enemyId);
     if (!enemy || enemy.isDead) return undefined;
-    return this.effectEngine.applyEffect(enemy.activeEffects, effect);
+    return this.applyEffectWithBossControl(session, enemy, effect);
   }
 
   /** 對戰鬥中的敵人造成固定傷害（供戰鬥道具使用） */
@@ -2104,6 +2261,47 @@ export class CombatEngine {
     if (session) {
       session.state.result = 'fled';
       this.endCombat(session);
+    }
+  }
+}
+
+export function applyActiveEffectStatModifiers(derived: DerivedStats, effects: ActiveStatusEffect[]): void {
+  for (const eff of effects) {
+    if (eff.remainingDuration <= 0) continue;
+    switch (eff.type) {
+      case 'atk_up':
+        derived.atk = Math.floor(derived.atk * (1 + eff.value / 100));
+        break;
+      case 'atk_down':
+        derived.atk = Math.max(1, Math.floor(derived.atk * (1 - eff.value / 100)));
+        break;
+      case 'matk_up':
+        derived.matk = Math.floor(derived.matk * (1 + eff.value / 100));
+        break;
+      case 'matk_down':
+        derived.matk = Math.max(1, Math.floor(derived.matk * (1 - eff.value / 100)));
+        break;
+      case 'def_up':
+        derived.def = Math.floor(derived.def * (1 + eff.value / 100));
+        break;
+      case 'def_down':
+        derived.def = Math.max(0, Math.floor(derived.def * (1 - eff.value / 100)));
+        break;
+      case 'mdef_up':
+        derived.mdef = Math.floor(derived.mdef * (1 + eff.value / 100));
+        break;
+      case 'mdef_down':
+        derived.mdef = Math.max(0, Math.floor(derived.mdef * (1 - eff.value / 100)));
+        break;
+      case 'dodge_up':
+        derived.dodgeRate += eff.value;
+        break;
+      case 'slow':
+        derived.dodgeRate = Math.max(0, derived.dodgeRate * (1 - Math.min(90, eff.value) / 100));
+        break;
+      case 'crit_up':
+        derived.critRate += eff.value;
+        break;
     }
   }
 }

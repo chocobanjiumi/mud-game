@@ -1,9 +1,11 @@
 import type { Character, SkillDef } from '@game/shared';
-import { getLearnableSkills } from '@game/shared';
-import { getCompletedQuestIds, getLearnedSkills, learnSkill } from '../db/queries.js';
+import { CLASS_DEFS, SKILL_DEFS, getLearnableSkills } from '@game/shared';
+import { forgetSkill, getCompletedQuestIds, getLearnedSkills, learnSkill } from '../db/queries.js';
 import { sendToCharacter } from '../ws/handler.js';
 
 export function grantLearnableSkills(character: Character): SkillDef[] {
+  removeLegacyAdventurerSkills(character);
+
   const learnedIds = new Set(getLearnedSkills(character.id).map(skill => skill.skillId));
   const completedQuestIds = getCompletedQuestIds(character.id);
   const newSkills = getLearnableSkills(character.classId, character.level, completedQuestIds)
@@ -16,6 +18,19 @@ export function grantLearnableSkills(character: Character): SkillDef[] {
   }
 
   return newSkills;
+}
+
+export function removeLegacyAdventurerSkills(character: Character): string[] {
+  if (character.classId === 'adventurer' || CLASS_DEFS[character.classId]?.tier === 0) return [];
+
+  const removed: string[] = [];
+  for (const learned of getLearnedSkills(character.id)) {
+    const skill = SKILL_DEFS[learned.skillId];
+    if (skill?.classId !== 'adventurer') continue;
+    forgetSkill(character.id, learned.skillId);
+    removed.push(learned.skillId);
+  }
+  return removed;
 }
 
 export function grantAndNotifyLearnableSkills(character: Character): SkillDef[] {

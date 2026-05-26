@@ -7,3 +7,5 @@ export * from './monsters.js';
 export * from './game.js';
 export * from './gathering.js';
 export * from './origins.js';
+export * from './status-icons.js';
+export * from './combat-action-icons.js';

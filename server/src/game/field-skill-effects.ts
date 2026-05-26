@@ -14,6 +14,17 @@ export function applyFieldSkillEffect(
   skillDef: SkillDef,
   target: Character = character,
 ): FieldSkillEffectResult {
+  if (skillDef.special?.faithInvert) {
+    const before = character.resource;
+    character.resource = Math.min(character.maxResource, Math.max(0, character.maxResource - character.resource));
+    return {
+      handled: true,
+      message: `信仰由 ${before} 轉為 ${character.resource}。`,
+      target: character,
+      consumeResource: true,
+    };
+  }
+
   const healPercent = getNumericSpecial(skillDef, 'healPercent');
   if (healPercent !== undefined) {
     if (character.hp >= character.maxHp) {

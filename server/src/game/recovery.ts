@@ -1,5 +1,23 @@
 import type { Character, CombatantState } from '@game/shared';
 
+export function getNaturalResourceDelta(char: Pick<Character, 'resource' | 'maxResource' | 'resourceType'>): number {
+  if (char.resourceType === 'rage') return char.resource > 0 ? -Math.min(5, char.resource) : 0;
+
+  if (char.resourceType === 'faith') {
+    const neutral = Math.min(50, char.maxResource);
+    if (char.resource < neutral) return Math.min(2, neutral - char.resource);
+    if (char.resource > neutral) return -Math.min(2, char.resource - neutral);
+    return 0;
+  }
+
+  if (char.resource >= char.maxResource) return 0;
+  if (char.resourceType === 'focus') return Math.min(15, char.maxResource - char.resource);
+  return Math.min(
+    Math.max(1, Math.floor(char.maxResource * 0.02)),
+    char.maxResource - char.resource,
+  );
+}
+
 export function applyHpRecovery(char: Character, amount: number, combatant?: CombatantState): number {
   const currentHp = combatant?.hp ?? char.hp;
   const maxHp = combatant?.maxHp ?? char.maxHp;

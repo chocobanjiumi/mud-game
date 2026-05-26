@@ -116,6 +116,8 @@ export interface RoomDef {
   mapSymbol: string;
   mapX: number;
   mapY: number;
+  mapLayer?: number;
+  mapLayerName?: string;
   guardianHints?: GuardianHints;
 }
 
@@ -173,7 +175,7 @@ export interface DialogueOption {
 }
 
 export interface DialogueCondition {
-  type: 'level' | 'class' | 'item' | 'gold' | 'quest';
+  type: 'level' | 'class' | 'item' | 'gold' | 'quest' | 'questAvailable' | 'questActive' | 'questReadyToComplete' | 'questCompleted';
   value: string | number;
 }
 

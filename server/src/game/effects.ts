@@ -1,6 +1,7 @@
 // 狀態效果引擎 - Buff/Debuff 套用、疊加、DoT/HoT 處理
 
 import type { StatusEffect, StatusEffectType, ActiveStatusEffect } from '@game/shared';
+import { getStatusEffectDef, getStatusEffectName, isNegativeStatusEffect, isPositiveStatusEffect } from '@game/shared';
 
 // ============================================================
 //  常數
@@ -204,15 +205,10 @@ export class EffectEngine {
 
   /** 移除所有負面效果（淨化） */
   removeAllDebuffs(effects: ActiveStatusEffect[]): ActiveStatusEffect[] {
-    const debuffTypes = new Set<StatusEffectType>([
-      'poison', 'burn', 'slow', 'stun', 'fear', 'bleed', 'silence', 'freeze',
-      'atk_down', 'def_down', 'matk_down', 'mdef_down',
-      'heal_reduction', 'mark',
-    ]);
-
     const removed: ActiveStatusEffect[] = [];
     for (let i = effects.length - 1; i >= 0; i--) {
-      if (debuffTypes.has(effects[i].type)) {
+      const def = getStatusEffectDef(effects[i].type);
+      if (isNegativeStatusEffect(effects[i].type) && def.cleansable) {
         removed.push(effects[i]);
         effects.splice(i, 1);
       }
@@ -222,16 +218,10 @@ export class EffectEngine {
 
   /** 移除所有正面效果（驅散） */
   removeAllBuffs(effects: ActiveStatusEffect[]): ActiveStatusEffect[] {
-    const buffTypes = new Set<StatusEffectType>([
-      'atk_up', 'def_up', 'matk_up', 'mdef_up',
-      'dodge_up', 'crit_up', 'speed_up',
-      'regen', 'mana_regen', 'shield', 'counter', 'stealth',
-      'damage_reduction', 'invincible',
-    ]);
-
     const removed: ActiveStatusEffect[] = [];
     for (let i = effects.length - 1; i >= 0; i--) {
-      if (buffTypes.has(effects[i].type)) {
+      const def = getStatusEffectDef(effects[i].type);
+      if (isPositiveStatusEffect(effects[i].type) && def.dispellable) {
         removed.push(effects[i]);
         effects.splice(i, 1);
       }
@@ -320,42 +310,7 @@ export class EffectEngine {
 
   /** 效果中文名稱 */
   effectName(type: StatusEffectType): string {
-    const names: Record<StatusEffectType, string> = {
-      poison: '中毒',
-      burn: '灼燒',
-      slow: '減速',
-      stun: '暈眩',
-      fear: '恐懼',
-      bleed: '流血',
-      silence: '沉默',
-      freeze: '冰凍',
-      atk_up: '攻擊上升',
-      def_up: '防禦上升',
-      matk_up: '魔攻上升',
-      mdef_up: '魔防上升',
-      atk_down: '攻擊下降',
-      def_down: '防禦下降',
-      matk_down: '魔攻下降',
-      mdef_down: '魔防下降',
-      dodge_up: '閃避上升',
-      crit_up: '暴擊上升',
-      speed_up: '速度上升',
-      regen: '持續回血',
-      mana_regen: '魔力回復',
-      shield: '護盾',
-      taunt: '挑釁',
-      counter: '反擊架勢',
-      stealth: '隱身',
-      mana_shield: '魔力盾',
-      thorns: '荊棘',
-      mark: '標記',
-      next_shot_damage: '蓄勢射擊',
-      damage_reduction: '傷害減免',
-      heal_reduction: '治癒減弱',
-      invincible: '無敵',
-      unyielding: '不屈',
-    };
-    return names[type] ?? type;
+    return getStatusEffectName(type);
   }
 
   /** 格式化效果列表為文字（用於狀態顯示） */

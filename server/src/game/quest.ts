@@ -9,6 +9,10 @@ import { unlockPortal, unlockZone } from '../db/queries.js';
 import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
+import { MAIN_QUEST_FLOW } from './main-quest-flow.js';
+import { NPCS } from '../data/npcs.js';
+import { getRoom } from '../data/rooms.js';
+import { addRewardItemToInventory } from './item-instance-rewards.js';
 
 // ============================================================
 //  型別定義
@@ -76,6 +80,18 @@ export interface QuestSummary {
   status: 'active' | 'completed' | 'failed';
   steps: { description: string; current: number; target: number }[];
   currentStep: number;
+  nextNpcId?: string;
+  nextNpcName?: string;
+  nextRoomId?: string;
+  nextRoomName?: string;
+  nextHint?: string;
+  recommendedLevel?: number;
+  rewardPreview?: {
+    exp: number;
+    gold: number;
+    items?: { itemId: string; name: string; quantity: number }[];
+    equipment?: string[];
+  };
 }
 
 /** DB 中的任務進度資料 */
@@ -480,7 +496,7 @@ export class QuestManager {
       }
     }
 
-    this.applyStructuredRewards(characterId, def.rewards);
+    this.applyStructuredRewards(character, def.id, def.rewards);
 
     // 通知玩家
     let rewardText = `${expResult.expGained} EXP、${def.rewards.gold} 金幣`;
@@ -574,6 +590,31 @@ export class QuestManager {
       }
 
       return true;
+    });
+  }
+
+  canStartQuest(character: Character, questId: string): boolean {
+    return this.getAvailableQuests(character).some(def => def.id === questId);
+  }
+
+  getQuestStatus(character: Character, questId: string): 'available' | 'active' | 'ready' | 'completed' | 'locked' {
+    const def = QUEST_DEFS[questId];
+    if (!def) return 'locked';
+    const row = this.getQuestProgressFromDb(character.id, questId);
+    if (row?.status === 'completed') return 'completed';
+    if (row?.status === 'active') return this.isQuestReadyToComplete(character.id, questId) ? 'ready' : 'active';
+    return this.canStartQuest(character, questId) ? 'available' : 'locked';
+  }
+
+  isQuestReadyToComplete(characterId: string, questId: string): boolean {
+    const def = QUEST_DEFS[questId];
+    if (!def) return false;
+    const row = this.getQuestProgressFromDb(characterId, questId);
+    if (!row || row.status !== 'active') return false;
+    const progress: Record<string, number> = JSON.parse(row.progress || '{}');
+    return def.objectives.every(obj => {
+      const key = questObjectiveKey(obj);
+      return (progress[key] ?? 0) >= obj.required;
     });
   }
 
@@ -799,6 +840,7 @@ export class QuestManager {
         status: row.status,
         steps,
         currentStep: currentStep === -1 ? Math.max(0, steps.length - 1) : currentStep,
+        ...buildQuestSummaryExtras(def, this.isQuestReadyToComplete(characterId, def.id)),
       });
     }
     return summaries;
@@ -850,7 +892,8 @@ export class QuestManager {
     }
   }
 
-  private applyStructuredRewards(characterId: string, rewards: QuestReward): void {
+  private applyStructuredRewards(character: Character, questId: string, rewards: QuestReward): void {
+    const characterId = character.id;
     if (rewards.portalUnlocks) {
       for (const portal of rewards.portalUnlocks) {
         unlockZone(characterId, portal.zoneId, 'quest_reward');
@@ -887,7 +930,11 @@ export class QuestManager {
           && (!reward.sourceTags || reward.sourceTags.some(tag => def.id.includes(tag))),
         );
         if (item) {
-          addItemToInventory(characterId, item.id, 1);
+          addRewardItemToInventory(character, item.id, 1, {
+            sourceTags: ['quest_reward', questId, ...(reward.sourceTags ?? [])],
+            itemLevel: reward.levelMax,
+            droppedBy: questId,
+          });
         }
       }
     }
@@ -962,6 +1009,53 @@ function questObjectiveTypeLabel(type: QuestObjectiveType): string {
 function questTypeToClientCategory(type: QuestType): QuestSummary['category'] {
   if (type === 'class_change' || type === 'faction') return 'main';
   return type;
+}
+
+function buildQuestSummaryExtras(def: QuestDef, readyToComplete: boolean): Pick<QuestSummary,
+  'nextNpcId' | 'nextNpcName' | 'nextRoomId' | 'nextRoomName' | 'nextHint' | 'recommendedLevel' | 'rewardPreview'
+> {
+  const flow = MAIN_QUEST_FLOW.find(entry => entry.questId === def.id);
+  const nextNpcId = readyToComplete ? flow?.turnInNpcId : flow?.acceptNpcId;
+  const nextRoomId = readyToComplete ? flow?.turnInRoomId : flow?.acceptRoomId;
+  const npc = nextNpcId ? NPCS[nextNpcId] : undefined;
+  const room = nextRoomId ? getRoom(nextRoomId) : undefined;
+  const equipment = [
+    ...(def.rewards.equipmentSlotRewards?.map(reward => {
+      const slotName = equipmentSlotLabel(reward.slot);
+      return reward.levelMax ? `${slotName}裝備 Lv.${reward.levelMax} 以下` : `${slotName}裝備`;
+    }) ?? []),
+    ...(flow?.rewardSummary.equipment ? [flow.rewardSummary.equipment] : []),
+  ];
+
+  return {
+    nextNpcId,
+    nextNpcName: npc?.name,
+    nextRoomId,
+    nextRoomName: room?.name,
+    nextHint: flow?.nextHint,
+    recommendedLevel: flow?.recommendedLevel,
+    rewardPreview: {
+      exp: def.rewards.exp,
+      gold: def.rewards.gold,
+      items: def.rewards.items?.map(item => ({
+        itemId: item.itemId,
+        name: ITEM_DEFS[item.itemId]?.name ?? item.itemId,
+        quantity: item.quantity,
+      })),
+      equipment: [...new Set(equipment)],
+    },
+  };
+}
+
+function equipmentSlotLabel(slot: string): string {
+  const labels: Record<string, string> = {
+    weapon: '武器',
+    body: '防具',
+    hands: '手部',
+    feet: '足部',
+    accessory: '飾品',
+  };
+  return labels[slot] ?? slot;
 }
 
 function formatStructuredRewardSuffix(rewards: QuestReward): string {

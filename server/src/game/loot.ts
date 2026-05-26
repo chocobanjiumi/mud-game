@@ -3,6 +3,8 @@
 import type { MonsterDef, DropEntry, CombatLoot, Character } from '@game/shared';
 import { ITEM_DEFS } from '@game/shared';
 import type { MonsterInstance } from './world.js';
+import { applyLowLevelExpPenalty } from './level-scaling.js';
+import { rollMonsterEquipmentDrop } from './equipment-drop.js';
 
 export type MonsterLootTier = 'normal' | 'elite' | 'boss';
 export type MonsterLootCategory =
@@ -34,6 +36,8 @@ export interface MonsterLootTable {
 export interface CalculateDropsOptions {
   activeQuestItemIds?: Iterable<string>;
   partySize?: number;
+  zoneId?: string;
+  character?: Pick<Character, 'classId' | 'stats'>;
 }
 
 const REGIONAL_SPECIAL_DROP_IDS = new Set([
@@ -84,7 +88,7 @@ export class LootCalculator {
     const gold = Math.random() < lootTable.goldChance
       ? this.rollGold(lootTable.goldReward[0], lootTable.goldReward[1])
       : 0;
-    const items = this.rollDrops(lootTable.entries, playerLuk);
+    const items = this.rollDrops(lootTable.entries, playerLuk, monster, options);
 
     return { exp, gold, items };
   }
@@ -179,20 +183,7 @@ export class LootCalculator {
     for (const member of party) {
       let exp = baseExpPerPerson;
 
-      // 等級差距懲罰
-      const levelDiff = member.level - monsterLevel;
-      if (levelDiff > 5) {
-        // 玩家等級比怪物高太多，經驗遞減
-        const penalty = Math.max(0.1, 1 - (levelDiff - 5) * 0.1);
-        exp = Math.floor(exp * penalty);
-      } else if (levelDiff < -5) {
-        // 怪物等級比玩家高太多，經驗微增（鼓勵挑戰）
-        const bonus = Math.min(1.5, 1 + Math.abs(levelDiff + 5) * 0.05);
-        exp = Math.floor(exp * bonus);
-      }
-
-      // 最少 1 經驗
-      exp = Math.max(1, exp);
+      exp = applyLowLevelExpPenalty(exp, member.level, monsterLevel);
       result.set(member.id, exp);
     }
 
@@ -234,8 +225,10 @@ export class LootCalculator {
   private rollDrops(
     drops: MonsterLootEntry[],
     playerLuk: number,
-  ): { itemId: string; quantity: number }[] {
-    const result: { itemId: string; quantity: number }[] = [];
+    monster?: MonsterDef,
+    options: CalculateDropsOptions = {},
+  ): CombatLoot['items'] {
+    const result: CombatLoot['items'] = [];
 
     // LUK 加成：每點 LUK 增加 0.5% 的掉率加成
     const lukBonus = 1 + playerLuk * 0.005;
@@ -248,7 +241,19 @@ export class LootCalculator {
           Math.random() * (drop.maxQty - drop.minQty + 1),
         );
         if (qty > 0) {
-          result.push({ itemId: drop.itemId, quantity: qty });
+          if (monster && (drop.category === 'equipment' || drop.category === 'special_equipment' || drop.category === 'set_piece')) {
+            for (let i = 0; i < qty; i++) {
+              const equipment = rollMonsterEquipmentDrop({
+                monster,
+                zoneId: options.zoneId,
+                character: options.character,
+                baseItemId: drop.itemId,
+              });
+              if (equipment) result.push(equipment);
+            }
+          } else {
+            result.push({ itemId: drop.itemId, quantity: qty });
+          }
         }
       }
     }
@@ -373,18 +378,26 @@ export class LootCalculator {
 
   /** 合併相同物品 */
   private mergeItems(
-    items: { itemId: string; quantity: number }[],
-  ): { itemId: string; quantity: number }[] {
+    items: CombatLoot['items'],
+  ): CombatLoot['items'] {
     const map = new Map<string, number>();
+    const instances: CombatLoot['items'] = [];
 
     for (const item of items) {
+      if (item.itemInstanceId) {
+        instances.push({ ...item, quantity: 1 });
+        continue;
+      }
       map.set(item.itemId, (map.get(item.itemId) ?? 0) + item.quantity);
     }
 
-    return Array.from(map.entries()).map(([itemId, quantity]) => ({
+    return [
+      ...instances,
+      ...Array.from(map.entries()).map(([itemId, quantity]) => ({
       itemId,
       quantity,
-    }));
+      })),
+    ];
   }
 
   // ──────────────────────────────────────────────────────────
@@ -441,8 +454,8 @@ export interface CorpseContainer {
   expiresAt: number;
   protectedUntil: number;
   gold: number;
-  items: { itemId: string; quantity: number }[];
-  personalItems: Record<string, { itemId: string; quantity: number }[]>;
+  items: CombatLoot['items'];
+  personalItems: Record<string, CombatLoot['items']>;
   isBoss: boolean;
   isElite: boolean;
 }
@@ -453,7 +466,7 @@ export interface CreateCorpseInput {
   killerId: string;
   participantIds: string[];
   loot: CombatLoot;
-  personalItems?: Record<string, { itemId: string; quantity: number }[]>;
+  personalItems?: Record<string, CombatLoot['items']>;
   now?: number;
 }
 
@@ -659,8 +672,8 @@ export class CorpseManager {
   }
 
   private clonePersonalItems(
-    personalItems: Record<string, { itemId: string; quantity: number }[]>,
-  ): Record<string, { itemId: string; quantity: number }[]> {
+    personalItems: Record<string, CombatLoot['items']>,
+  ): Record<string, CombatLoot['items']> {
     return Object.fromEntries(
       Object.entries(personalItems)
         .filter(([, items]) => items.length > 0)
@@ -669,12 +682,20 @@ export class CorpseManager {
   }
 
   private mergeItems(
-    items: { itemId: string; quantity: number }[],
-  ): { itemId: string; quantity: number }[] {
+    items: CombatLoot['items'],
+  ): CombatLoot['items'] {
     const merged = new Map<string, number>();
+    const instances: CombatLoot['items'] = [];
     for (const item of items) {
+      if (item.itemInstanceId) {
+        instances.push({ ...item, quantity: 1 });
+        continue;
+      }
       merged.set(item.itemId, (merged.get(item.itemId) ?? 0) + item.quantity);
     }
-    return Array.from(merged.entries()).map(([itemId, quantity]) => ({ itemId, quantity }));
+    return [
+      ...instances,
+      ...Array.from(merged.entries()).map(([itemId, quantity]) => ({ itemId, quantity })),
+    ];
   }
 }

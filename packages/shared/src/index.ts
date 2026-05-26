@@ -17,6 +17,9 @@ export type {
 } from './types/protocol.js';
 export * from './types/kingdom.js';
 export * from './systems/item-instance.js';
+export * from './systems/equipment-base.js';
+export * from './systems/status-effects.js';
+export * from './systems/skill-upgrades.js';
 
 // 常數
 export * from './constants/index.js';

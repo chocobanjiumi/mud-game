@@ -4,6 +4,60 @@ import type { NpcDef } from '@game/shared';
 
 export const NPCS: Record<string, NpcDef> = {
 
+  guild_commander: {
+    id: 'guild_commander',
+    name: '公會指揮官',
+    alias: 'commander',
+    title: '冒險者公會戰線指揮',
+    description: '身披深色軍披的公會指揮官，桌上攤著魔族領地的斥候地圖。他說話簡短，目光總停在下一條補給線上。',
+    roomId: 'guild_hall',
+    type: 'quest',
+    dialogue: [{
+      id: 'greeting',
+      text: '冰封城堡的情報已送到。魔族邊境需要可靠的人進去確認軍勢動向。',
+      options: [{ text: '我會查看任務指示。', nextId: 'farewell' }],
+    }, {
+      id: 'farewell',
+      text: '回來時帶上暗黑要塞大門的情報，別只帶勇氣回來。',
+    }],
+  },
+
+  dragon_oracle: {
+    id: 'dragon_oracle',
+    name: '龍族神諭者',
+    alias: 'oracle',
+    title: '龍谷試煉守望者',
+    description: '披著鱗光長袍的龍族神諭者站在高台邊緣，金色瞳孔像在審視你的過去與未來。',
+    roomId: 'dragon_oracle_perch',
+    type: 'quest',
+    dialogue: [{
+      id: 'greeting',
+      text: '凡人若想借龍族之力，必須先證明自己不是只會索求的火星。',
+      options: [{ text: '我會查看龍族試煉。', nextId: 'farewell' }],
+    }, {
+      id: 'farewell',
+      text: '去古龍聖殿，讓風與火判斷你是否值得被記住。',
+    }],
+  },
+
+  celestial_archon: {
+    id: 'celestial_archon',
+    name: '天界執政官',
+    alias: 'archon',
+    title: '審判大廳守門者',
+    description: '天界執政官的盔甲像破曉前的星光，聲音冷靜得幾乎不帶情緒。他守著通往終焉戰場的最後命令。',
+    roomId: 'judgment_hall',
+    type: 'quest',
+    dialogue: [{
+      id: 'greeting',
+      text: '封印意志已偏離守護本身。若你要進入終焉戰場，就必須承擔結果。',
+      options: [{ text: '我會查看最終任務。', nextId: 'farewell' }],
+    }, {
+      id: 'farewell',
+      text: '穿過天界之門，抵達神之間。戰神正在那裡等待最後的回答。',
+    }],
+  },
+
   // ─── 新手村 NPC ──────────────────────────────────────────
 
   village_chief: {

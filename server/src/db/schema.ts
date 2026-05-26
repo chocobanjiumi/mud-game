@@ -75,6 +75,10 @@ export function initDb(): Database.Database {
       id TEXT PRIMARY KEY,
       base_item_id TEXT NOT NULL,
       quality TEXT NOT NULL,
+      item_level INTEGER DEFAULT 1,
+      dropped_by TEXT,
+      dropped_in_zone TEXT,
+      source_tags_json TEXT DEFAULT '[]',
       affixes_json TEXT DEFAULT '[]',
       locked_affixes_json TEXT DEFAULT '[]',
       fixed_effects_json TEXT DEFAULT '[]',
@@ -517,6 +521,10 @@ export function initDb(): Database.Database {
         id TEXT PRIMARY KEY,
         base_item_id TEXT NOT NULL,
         quality TEXT NOT NULL,
+        item_level INTEGER DEFAULT 1,
+        dropped_by TEXT,
+        dropped_in_zone TEXT,
+        source_tags_json TEXT DEFAULT '[]',
         affixes_json TEXT DEFAULT '[]',
         locked_affixes_json TEXT DEFAULT '[]',
         fixed_effects_json TEXT DEFAULT '[]',
@@ -528,6 +536,23 @@ export function initDb(): Database.Database {
     if (!new Set(instanceColumns.map(c => c.name)).has('locked_affixes_json')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN locked_affixes_json TEXT DEFAULT '[]'`);
       console.log('[DB] Migration: 已新增 locked_affixes_json 欄位至 item_instances 表');
+    }
+    const instanceColumnNames = new Set((db.prepare("PRAGMA table_info(item_instances)").all() as { name: string }[]).map(c => c.name));
+    if (!instanceColumnNames.has('item_level')) {
+      db.exec(`ALTER TABLE item_instances ADD COLUMN item_level INTEGER DEFAULT 1`);
+      console.log('[DB] Migration: 已新增 item_level 欄位至 item_instances 表');
+    }
+    if (!instanceColumnNames.has('dropped_by')) {
+      db.exec(`ALTER TABLE item_instances ADD COLUMN dropped_by TEXT`);
+      console.log('[DB] Migration: 已新增 dropped_by 欄位至 item_instances 表');
+    }
+    if (!instanceColumnNames.has('dropped_in_zone')) {
+      db.exec(`ALTER TABLE item_instances ADD COLUMN dropped_in_zone TEXT`);
+      console.log('[DB] Migration: 已新增 dropped_in_zone 欄位至 item_instances 表');
+    }
+    if (!instanceColumnNames.has('source_tags_json')) {
+      db.exec(`ALTER TABLE item_instances ADD COLUMN source_tags_json TEXT DEFAULT '[]'`);
+      console.log('[DB] Migration: 已新增 source_tags_json 欄位至 item_instances 表');
     }
   }
 

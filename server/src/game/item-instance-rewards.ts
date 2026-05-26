@@ -8,17 +8,26 @@ export interface InventoryRewardEntry {
   quantity: number;
   name: string;
   quality?: string;
+  itemLevel?: number;
   affixNames?: string[];
+}
+
+export interface RewardItemInstanceOptions {
+  sourceTags?: string[];
+  itemLevel?: number;
+  droppedBy?: string;
+  droppedInZone?: string;
 }
 
 export function addRewardItemToInventory(
   character: Pick<Character, 'id' | 'stats' | 'classId'>,
   itemId: string,
   quantity: number,
-  sourceTags: string[] = [],
+  options: string[] | RewardItemInstanceOptions = [],
 ): InventoryRewardEntry[] {
   const def = ITEM_DEFS[itemId];
   const baseEquipment = toBaseEquipmentDef(def);
+  const rewardOptions: RewardItemInstanceOptions = Array.isArray(options) ? { sourceTags: options } : options;
   if (!baseEquipment) {
     addInventoryItem(character.id, itemId, quantity);
     return [{
@@ -30,7 +39,7 @@ export function addRewardItemToInventory(
 
   const entries: InventoryRewardEntry[] = [];
   const mergedSourceTags = Array.from(new Set([
-    ...sourceTags,
+    ...(rewardOptions.sourceTags ?? []),
     ...(baseEquipment.sourceTags ?? []),
   ]));
 
@@ -39,6 +48,9 @@ export function addRewardItemToInventory(
       luk: character.stats.luk,
       classId: character.classId,
       sourceTags: mergedSourceTags,
+      itemLevel: rewardOptions.itemLevel,
+      droppedBy: rewardOptions.droppedBy,
+      droppedInZone: rewardOptions.droppedInZone,
     });
     addInventoryItem(character.id, itemId, 1, false, instance);
     entries.push({
@@ -47,6 +59,7 @@ export function addRewardItemToInventory(
       quantity: 1,
       name: def?.name ?? itemId,
       quality: instance.quality,
+      itemLevel: instance.itemLevel,
       affixNames: instance.affixes.map(affix => affix.name),
     });
   }
@@ -56,7 +69,8 @@ export function addRewardItemToInventory(
 
 export function formatRewardEntry(entry: InventoryRewardEntry): string {
   const qualityText = entry.quality && entry.quality !== 'normal' ? `（${entry.quality}）` : '';
+  const itemLevelText = entry.itemLevel ? `Lv.${entry.itemLevel}` : '';
   const affixText = entry.affixNames?.length ? `［${entry.affixNames.join('、')}］` : '';
   const quantityText = entry.quantity > 1 ? ` x${entry.quantity}` : '';
-  return `${entry.name}${qualityText}${affixText}${quantityText}`;
+  return `${entry.name}${qualityText}${itemLevelText ? ` ${itemLevelText}` : ''}${affixText}${quantityText}`;
 }

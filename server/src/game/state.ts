@@ -51,12 +51,13 @@ import {
   calculateDodgeRate, calculateHitRate, calculateMatk, calculateMdef,
   ITEM_DEFS,
 } from '@game/shared';
-import { getAllSessions, sendToCharacter, sendToSession } from '../ws/handler.js';
+import { getAllSessions, getSessionByCharacterId, sendToCharacter, sendToSession } from '../ws/handler.js';
 import { getRoom } from '../data/rooms.js';
 import { LootCalculator } from './loot.js';
 import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
-import { grantAndNotifyLearnableSkills } from './skill-learning.js';
-import { applyHpRecovery } from './recovery.js';
+import { applyLowLevelExpPenalty, formatExpPenaltyMessage } from './level-scaling.js';
+import { grantAndNotifyLearnableSkills, removeLegacyAdventurerSkills } from './skill-learning.js';
+import { applyHpRecovery, getNaturalResourceDelta } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 
@@ -287,6 +288,14 @@ export function initGameSystems(): void {
       // 透過事件通知 commands 層處理攻擊（避免循環依賴）
       // 簡化方式：直接發起戰鬥
       const combatId = combat.startCombat([char], [monster], (result) => {
+        if (result !== 'victory') {
+          for (const combatMonster of combat.getCombatMonsterInstances(combatId)) {
+            if (!combatMonster.isDead && combatMonster.hp > 0) {
+              world.resetSurvivingMonsterToOrigin(combatMonster.instanceId);
+            }
+          }
+        }
+
         if (result === 'victory') {
           questMgr.updateProgress(char.id, 'kill', monster.monsterId);
           world.killMonster(char.roomId, monster.instanceId);
@@ -294,9 +303,10 @@ export function initGameSystems(): void {
           // 計算並發放戰利品
           if (char) {
             const drops = lootCalc.calculateDrops(monster.def, char.stats.luk);
+            const scaledExp = applyLowLevelExpPenalty(drops.exp, char.level, monster.def.level);
             // 經驗值
             if (drops.exp > 0) {
-              const { levelsGained } = addExperienceToCharacter(char, drops.exp);
+              const { levelsGained } = addExperienceToCharacter(char, scaledExp);
               if (levelsGained > 0) {
                 for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(characterId, char);
                 grantAndNotifyLearnableSkills(char);
@@ -311,6 +321,8 @@ export function initGameSystems(): void {
               recordGoldProduced(drops.gold);
             }
             saveCharacter(char);
+            const session = getSessionByCharacterId(characterId);
+            if (session) sendCharacterStatus(session.sessionId, char);
             // 物品掉落
             const itemNames: string[] = [];
             for (const item of drops.items) {
@@ -321,7 +333,9 @@ export function initGameSystems(): void {
             }
             // 通知
             const parts: string[] = [];
-            if (drops.exp > 0) parts.push(`經驗 +${drops.exp}`);
+            if (drops.exp > 0) {
+              parts.push(formatExpPenaltyMessage(scaledExp, drops.exp).replace('獲得經驗值 ', '經驗 '));
+            }
             if (drops.gold > 0) parts.push(`金幣 +${drops.gold}`);
             parts.push(...itemNames);
             if (parts.length > 0) {
@@ -424,15 +438,13 @@ function tickNaturalRecovery(): void {
     const hpRecover = char.hp < char.maxHp
       ? Math.max(1, Math.floor(char.maxHp * NATURAL_RECOVERY_RATE))
       : 0;
-    const resourceRecover = char.resourceType !== 'rage' && char.resource < char.maxResource
-      ? Math.max(1, Math.floor(char.maxResource * NATURAL_RECOVERY_RATE))
-      : 0;
+    const resourceDelta = getNaturalResourceDelta(char);
 
-    if (hpRecover <= 0 && resourceRecover <= 0) continue;
+    if (hpRecover <= 0 && resourceDelta === 0) continue;
 
     char.hp = Math.min(char.maxHp, char.hp + hpRecover);
-    if (resourceRecover > 0) {
-      char.resource = Math.min(char.maxResource, char.resource + resourceRecover);
+    if (resourceDelta !== 0) {
+      char.resource = Math.min(char.maxResource, Math.max(0, char.resource + resourceDelta));
     }
     saveCharacter(char);
     sendCharacterStatus(session.sessionId, char);
@@ -440,6 +452,7 @@ function tickNaturalRecovery(): void {
 }
 
 function sendCharacterStatus(sessionId: string, char: Character): void {
+  removeLegacyAdventurerSkills(char);
   const expProgress = getLevelExpProgress(char);
   sendToSession(sessionId, 'status', {
     character: { ...char, exp: expProgress.current },

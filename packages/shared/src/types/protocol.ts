@@ -3,6 +3,7 @@
 import type { Character, ClassId, EquipmentSlots } from './player.js';
 import type { LearnedSkill } from './skill.js';
 import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
+import type { SkillPointSummary } from '../systems/skill-upgrades.js';
 import type { InventoryItem } from './item.js';
 import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
 import type { Direction } from './world.js';
@@ -20,6 +21,7 @@ export type ClientMessage =
   | { type: 'login'; payload: { userId: string; characterId?: string; accessToken?: string } }
   | { type: 'list_characters' }
   | { type: 'create_character'; payload: CreateCharacterPayload }
+  | { type: 'delete_character'; payload: { characterId: string; confirmName: string } }
   | { type: 'ping' }
   | { type: 'open_shop' }
   | { type: 'purchase'; payload: { itemId: string } }
@@ -249,6 +251,7 @@ export interface StatusPayload {
   expToNext: number;
   effects: ActiveStatusEffect[];
   skills?: LearnedSkill[];
+  skillPoints?: SkillPointSummary;
   aliases?: Record<string, string>;
 }
 
@@ -332,6 +335,46 @@ export interface MapPayload {
   };
   localMap?: LocalMapPayload;
   travelNodes?: { id: string; name: string; roomId: string; kind: string; unlocked: boolean }[];
+  world?: WorldMapPayload;
+}
+
+export interface WorldMapPayload {
+  zones: WorldMapZonePayload[];
+  connections: { fromZoneId: string; toZoneId: string }[];
+}
+
+export interface WorldMapZonePayload {
+  id: string;
+  name: string;
+  region: string;
+  type: ZoneType;
+  levelRange: [number, number];
+  dangerLevel: number;
+  pvpMode: PvpMode;
+  deathPenalty: DeathPenalty;
+  totalRooms: number;
+  visitedRooms: number;
+  rooms: WorldMapRoomPayload[];
+}
+
+export interface WorldMapRoomPayload {
+  id: string;
+  name: string;
+  mapSymbol: string;
+  mapX: number;
+  mapY: number;
+  mapLayer: number;
+  mapLayerName?: string;
+  explored: boolean;
+  exits: {
+    direction: string;
+    targetRoomId: string;
+    targetRoomName?: string;
+    targetZoneId?: string;
+    targetMapLayer?: number;
+    targetMapLayerName?: string;
+    locked?: boolean;
+  }[];
 }
 
 // Shop-related payloads

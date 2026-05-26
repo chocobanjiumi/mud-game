@@ -7,7 +7,7 @@ import {
 } from '../ws/handler.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
-  getInventory, getLearnedSkills,
+  getInventory, getLearnedSkills, upgradeSkill,
   addInventoryItem, removeInventoryItem, setEquipped,
   getEquippedItems,
   getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
@@ -26,8 +26,14 @@ import {
   FAITH_DEFS, GENDER_DEFS, RACE_DEFS,
   DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID,
   isFaithId,
+  applySkillUpgradeRule,
+  getSkillMaxLevel,
+  getSkillPointSummary,
+  getSkillUpgradeCost,
+  getSkillUpgradeDeltas,
+  getSkillUpgradeRequiredLevel,
 } from '@game/shared';
-import type { Character, ClassId, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, RoomPayload, SkillTag, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
+import type { Character, ClassId, CombatLoot, DialogueNode, DialogueOption, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, RoomPayload, SkillTag, StatusEffect, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
   world, combat, classChange, partyMgr, tradeMgr,
   dungeonMgr, dungeonMatchMgr, questMgr, classQuestMgr, pvpMgr, leaderboardMgr, guardianMgr,
@@ -44,7 +50,7 @@ import { PET_DEFS } from './pet.js';
 import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
-import { getRoom, getRoomsByZone, getZone, ZONES } from '../data/rooms.js';
+import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES } from '../data/rooms.js';
 import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
@@ -72,19 +78,23 @@ import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
 import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
 import { buildNearbyCombatPayload } from './nearby-combat.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
+import { MAIN_QUEST_FLOW } from './main-quest-flow.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
-import { grantAndNotifyLearnableSkills } from './skill-learning.js';
+import { grantAndNotifyLearnableSkills, removeLegacyAdventurerSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
 import { getModifiedSkillRuntime, getResourceAffixBonus, getSkillAffixModifiers } from './equipment-affixes.js';
 import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
+import { applyLowLevelExpPenalty, formatExpPenaltyMessage, getHighLevelCombatPenalty } from './level-scaling.js';
+import { buildRoomMapLayerLookup, formatMapLayerName, inferMapLayerFromCoordinates } from './map-layer.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
 import type { LootDistributionMode } from './party.js';
+import type { MonsterInstance } from './world.js';
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 
 world.setRoomStateChangeFunction((roomId) => {
@@ -117,14 +127,86 @@ interface ActiveExitTrap {
   arrivalTicksDelta: number;
   placedAt: number;
 }
+interface PendingHunterMark {
+  characterId: string;
+  monsterInstanceId: string;
+  roomId: string;
+  expiresAt: number;
+}
 const activeExitTraps = new Map<string, ActiveExitTrap>();
 const fieldApproachingTimers = new Map<string, ReturnType<typeof setTimeout>>();
+const activeScoutRooms = new Set<string>();
+const pendingHunterMarks = new Map<string, PendingHunterMark>();
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
 const FIELD_SKILL_COOLDOWN_TICK_MS = 5_000;
+const HUNTER_MARK_WINDOW_MS = 30_000;
 const fieldSkillCooldowns = new Map<string, number>();
 const PLANAR_DIRECTIONS = new Set<Direction>(['north', 'south', 'east', 'west']);
+
+function scoutKey(characterId: string, originRoomId: string, targetRoomId: string): string {
+  return `${characterId}:${originRoomId}:${targetRoomId}`;
+}
+
+function recordLocalScout(characterId: string, originRoomId: string, targetRoomId: string): void {
+  activeScoutRooms.add(scoutKey(characterId, originRoomId, targetRoomId));
+}
+
+function hasLocalScout(characterId: string, originRoomId: string, targetRoomId: string): boolean {
+  return activeScoutRooms.has(scoutKey(characterId, originRoomId, targetRoomId));
+}
+
+function clearLocalScouts(characterId: string): void {
+  const prefix = `${characterId}:`;
+  for (const key of activeScoutRooms) {
+    if (key.startsWith(prefix)) activeScoutRooms.delete(key);
+  }
+}
+
+function hunterMarkKey(characterId: string, monsterInstanceId: string): string {
+  return `${characterId}:${monsterInstanceId}`;
+}
+
+function cleanupExpiredHunterMarks(now = Date.now()): void {
+  for (const [key, mark] of pendingHunterMarks) {
+    if (mark.expiresAt <= now) pendingHunterMarks.delete(key);
+  }
+}
+
+function setPendingHunterMark(characterId: string, monster: MonsterInstance, roomId: string): void {
+  cleanupExpiredHunterMarks();
+  pendingHunterMarks.set(hunterMarkKey(characterId, monster.instanceId), {
+    characterId,
+    monsterInstanceId: monster.instanceId,
+    roomId,
+    expiresAt: Date.now() + HUNTER_MARK_WINDOW_MS,
+  });
+}
+
+function consumePendingHunterMark(characterId: string, monsterInstanceId: string): boolean {
+  const key = hunterMarkKey(characterId, monsterInstanceId);
+  const mark = pendingHunterMarks.get(key);
+  if (!mark) return false;
+  if (mark.expiresAt <= Date.now()) {
+    pendingHunterMarks.delete(key);
+    return false;
+  }
+  pendingHunterMarks.delete(key);
+  return true;
+}
+
+function applyPendingHunterMarkToCombat(characterId: string, combatId: string, monster: MonsterInstance): boolean {
+  if (!consumePendingHunterMark(characterId, monster.instanceId)) return false;
+  const skillDef = SKILL_DEFS.poison_arrow;
+  const markEffect = skillDef.effects?.find(effect => effect.type === 'mark') as StatusEffect | undefined;
+  if (!markEffect) return false;
+  combat.applyEffectToEnemy(combatId, monster.instanceId, {
+    ...markEffect,
+    source: characterId,
+  });
+  return true;
+}
 
 function scheduleCorpseExpiry(roomId: string, corpseId: string, expiresAt: number): void {
   const delay = Math.max(0, expiresAt - Date.now());
@@ -190,9 +272,8 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
       if (char) {
         const npc = getNpcsByRoom(char.roomId).find(n => n.id === active.npcId);
         if (npc) {
-          const currentNode = npc.dialogue.find(d => d.id === active.nodeId);
-          if (currentNode?.options && numChoice >= 1 && numChoice <= currentNode.options.length) {
-            const chosen = currentNode.options[numChoice - 1];
+          if (numChoice >= 1 && numChoice <= active.options.length) {
+            const chosen = active.options[numChoice - 1];
             showDialogueNode(session, npc, chosen.nextId);
             questMgr.updateProgress(char.id, 'talk', npc.id);
             return;
@@ -225,6 +306,7 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'talk': cmdTalk(session, argStr); break;
     case 'shop': cmdShop(session, argStr); break;
     case 'buy': cmdBuy(session, argStr); break;
+    case 'sell': cmdSell(session, argStr); break;
     case 'allocate': case 'alloc': cmdAllocate(session, args); break;
     case 'map': cmdMap(session); break;
     case 'rest': cmdRest(session); break;
@@ -307,6 +389,7 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'pray': cmdFaith(session, ['pray', ...args]); break;
     case 'offering': cmdOffering(session, args); break;
     case 'renounce': cmdRenounce(session, args); break;
+    case 'debug': cmdDebug(session, args); break;
     case 'help': cmdHelp(session, argStr); break;
     case 'alias': cmdAlias(session, args); break;
     case 'unalias': cmdUnalias(session, args); break;
@@ -573,9 +656,15 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     id: groundItem.itemId,
     name: ITEM_DEFS[groundItem.itemId]?.name ?? groundItem.itemId,
   }));
+  const mapLayerNameByRoom = new Map(
+    [...buildRoomMapLayerLookup(Object.values(ROOMS)).entries()]
+      .map(([roomId, layer]) => [roomId, layer.mapLayerName ?? formatMapLayerName(layer.mapLayer)]),
+  );
   const entities = buildRoomEntities({
     char,
     room: roomInfo.room,
+    getRoom,
+    mapLayerNameByRoom,
     npcs: roomInfo.npcs || [],
     players: playersInRoom,
     monsters,
@@ -609,7 +698,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
       currentRoom: roomInfo.room,
       getAliveMonsters: roomId => world.getAliveMonsters(roomId),
       getApproachingMonsters: roomId => world.getApproachingMonsters(roomId),
-      isScouted: (characterId, roomId) => hasDiscovery(characterId, 'visit_room', roomId) || hasDiscovery(characterId, 'scout_room', roomId),
+      isScouted: (characterId, roomId) => hasLocalScout(characterId, roomInfo.room.id, roomId),
     }),
   };
 }
@@ -960,6 +1049,7 @@ function cmdGo(session: WsSession, direction: string): void {
     return;
   }
 
+  clearLocalScouts(char.id);
   char.roomId = result.room.id;
   unlockZone(char.id, result.room.zone, 'enter');
   saveCharacter(char);
@@ -983,10 +1073,19 @@ function cmdStatus(session: WsSession): void {
   const char = getChar(session);
   if (!char) return;
 
-  const classDef = CLASS_DEFS[char.classId];
-  const expProgress = getLevelExpProgress(char);
+  sendCharacterStatus(session.sessionId, char);
+}
 
-  sendToSession(session.sessionId, 'status', {
+function sendCharacterStatus(sessionId: string, char: Character): void {
+  removeLegacyAdventurerSkills(char);
+
+  const expProgress = getLevelExpProgress(char);
+  const combatId = getPlayerCombatId(char.id);
+  const combatantEffects = combatId
+    ? combat.getCombatState(combatId)?.playerTeam.find(player => player.id === char.id)?.activeEffects ?? []
+    : [];
+
+  sendToSession(sessionId, 'status', {
     character: { ...char, exp: expProgress.current },
     derived: {
       atk: calculateAtk(char.stats.str, 0),
@@ -999,10 +1098,47 @@ function cmdStatus(session: WsSession): void {
       critDamage: calculateCritDamage(),
     },
     expToNext: expProgress.required,
-    effects: [],
+    effects: combatantEffects,
     skills: getLearnedSkills(char.id),
+    skillPoints: getSkillPointSummary(char.level, getLearnedSkills(char.id)),
     aliases: getCharacterAliases(char.id),
   });
+}
+
+function sendCharacterStatusById(characterId: string): void {
+  const playerSession = getSessionByCharacterId(characterId);
+  if (!playerSession) return;
+
+  const char = getCharacterById(characterId);
+  if (!char) return;
+
+  sendCharacterStatus(playerSession.sessionId, char);
+}
+
+function cmdDebug(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = args[0]?.toLowerCase();
+  if (sub !== 'levelup') {
+    sendError(session.sessionId, 'Debug 指令：debug levelup');
+    return;
+  }
+
+  const neededExp = Math.max(1, expRequiredForLevel(char.level + 1) - char.exp);
+  const beforeLevel = char.level;
+  const { expGained, levelsGained } = addExperienceToCharacter(char, neededExp);
+  for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(char.id, char);
+  if (levelsGained > 0) grantAndNotifyLearnableSkills(char);
+  saveCharacter(char);
+
+  if (char.level > beforeLevel) {
+    sendToSession(session.sessionId, 'level_up', { level: char.level });
+    sendSystem(session.sessionId, `Debug 升級：Lv.${beforeLevel} → Lv.${char.level}（經驗 +${expGained}）`);
+  } else {
+    sendSystem(session.sessionId, `Debug 經驗：+${expGained}`);
+  }
+  sendCharacterStatus(session.sessionId, char);
 }
 
 function cmdFaith(session: WsSession, args: string[]): void {
@@ -1196,14 +1332,36 @@ function formatDuration(ms: number): string {
   return `${minutes} 分 ${seconds.toString().padStart(2, '0')} 秒`;
 }
 
-function addLootItemToInventory(char: Character, itemId: string, quantity: number): string[] {
-  return addRewardItemToInventory(char, itemId, quantity, ['monster_drop']).map(formatRewardEntry);
+function addLootItemToInventory(char: Character, itemOrId: string | CombatLoot['items'][number], quantity?: number): string[] {
+  const item = typeof itemOrId === 'string' ? { itemId: itemOrId, quantity: quantity ?? 1 } : itemOrId;
+  if (item.itemInstanceId && item.quality) {
+    addInventoryItem(char.id, item.itemId, 1, false, {
+      itemInstanceId: item.itemInstanceId,
+      baseItemId: item.itemId,
+      quality: item.quality,
+      itemLevel: item.itemLevel,
+      droppedBy: item.droppedBy,
+      droppedInZone: item.droppedInZone,
+      sourceTags: item.sourceTags,
+      affixes: item.affixes,
+      fixedEffects: item.fixedEffects,
+    });
+    const def = ITEM_DEFS[item.itemId];
+    const qualityText = item.quality !== 'normal' ? `（${item.quality}）` : '';
+    const levelText = item.itemLevel ? ` Lv.${item.itemLevel}` : '';
+    const affixText = item.affixes?.length ? `［${item.affixes.map(affix => affix.name).join('、')}］` : '';
+    return [`${def?.name ?? item.itemId}${qualityText}${levelText}${affixText}`];
+  }
+  return addRewardItemToInventory(char, item.itemId, item.quantity, ['monster_drop']).map(formatRewardEntry);
 }
 
 function cmdInventory(session: WsSession): void {
   const char = getChar(session);
   if (!char) return;
+  sendInventoryPayload(session, char);
+}
 
+function sendInventoryPayload(session: WsSession, char: Character): void {
   const items = getInventory(char.id);
   const itemDetails = items.map((inv) => {
     const def = ITEM_DEFS[inv.itemId];
@@ -1280,6 +1438,231 @@ function getActiveQuestDropIds(characterId: string, monster: MonsterDef): Set<st
   return activeDropIds;
 }
 
+function handlePveDefeat(player: Character, deathRoomId: string): void {
+  const beforeExp = player.exp;
+  const beforeGold = player.gold;
+  const beforeLevel = player.level;
+  const expPenalty = Math.floor(player.exp * 0.05);
+  const minExpForLevel = expRequiredForLevel(player.level);
+  player.exp = Math.max(minExpForLevel, player.exp - expPenalty);
+  const expLost = beforeExp - player.exp;
+
+  const goldLost = Math.floor(player.gold * 0.1);
+  player.gold = Math.max(0, player.gold - goldLost);
+  const actualGoldLost = beforeGold - player.gold;
+  if (actualGoldLost > 0) recordGoldSpent(actualGoldLost);
+
+  player.hp = Math.floor(player.maxHp * 0.5);
+  player.mp = Math.floor(player.maxMp * 0.5);
+  const respawnRoomId = getPveRespawnRoomId(deathRoomId);
+  player.roomId = respawnRoomId;
+  world.placePlayer(player.id, respawnRoomId);
+  saveCharacter(player);
+
+  const playerSession = getSessionByCharacterId(player.id);
+  if (!playerSession) return;
+
+  const respawnRoom = getRoom(respawnRoomId);
+  const respawnName = respawnRoom?.name ?? respawnRoomId;
+  sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${actualGoldLost} 金幣。`, 'error');
+  sendNarrative(playerSession.sessionId, `你慢慢甦醒過來...發現已回到${respawnName}。`);
+  sendToSession(playerSession.sessionId, 'death_notice' as any, {
+    title: '你死亡了',
+    message: `你在戰鬥中倒下，靈魂被送回${respawnName}。`,
+    losses: {
+      exp: expLost,
+      gold: actualGoldLost,
+      items: [],
+      levelDown: player.level < beforeLevel,
+    },
+    recovery: {
+      hp: player.hp,
+      maxHp: player.maxHp,
+      mp: player.mp,
+      maxMp: player.maxMp,
+    },
+    respawn: {
+      roomId: respawnRoomId,
+      roomName: respawnName,
+    },
+  });
+  const roomPayload = buildRoomPayload(player);
+  if (roomPayload) {
+    sendToSession(playerSession.sessionId, 'room', roomPayload as unknown as Record<string, unknown>);
+  }
+  cmdStatus(playerSession);
+}
+
+function handlePveDefeatForPlayers(players: Character[], deathRoomId: string): void {
+  for (const player of players) {
+    handlePveDefeat(player, deathRoomId);
+  }
+}
+
+function getCombatPlayersInRoom(char: Character): Character[] {
+  const partyMembers = partyMgr.getPartyMembersInRoom(char.id, char.roomId);
+  const players: Character[] = [];
+  for (const memberId of partyMembers) {
+    const memberChar = getCharacterById(memberId);
+    if (memberChar && memberChar.hp > 0) players.push(memberChar);
+  }
+  if (players.length === 0) players.push(char);
+  return players;
+}
+
+function processCombatApproachingRound(combatId: string, char: Character, session: WsSession): void {
+  const combatState = combat.getCombatState(combatId);
+  for (const approaching of world.getApproachingMonsters(char.roomId)) {
+    const combatEnemy = combatState?.enemyTeam.find(enemy => enemy.id === approaching.instanceId);
+    if (combatEnemy?.isDead) {
+      world.killMonsterByInstance(approaching.instanceId);
+      world.removeApproachingMonster(char.roomId, approaching.instanceId);
+    }
+  }
+
+  const arrived = world.tickApproaching(char.roomId);
+  const remaining = world.getApproachingMonsters(char.roomId);
+  for (const approaching of remaining) {
+    combat.setApproachingArrivalTicks(combatId, approaching.instanceId, approaching.arrivalTicks);
+  }
+
+  for (const approaching of arrived) {
+    const monster = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === approaching.instanceId);
+    if (!monster) continue;
+
+    const trap = consumeExitTrap(char.roomId, approaching.sourceDirection);
+    if (trap) {
+      const delayed = world.moveMonsterToApproaching(
+        char.roomId,
+        char.roomId,
+        approaching.sourceDirection,
+        monster.instanceId,
+        Math.max(1, trap.arrivalTicksDelta),
+        approaching.targetPlayerId ?? char.id,
+        approaching.targetPartyId,
+      );
+      if (delayed) combat.setApproachingArrivalTicks(combatId, delayed.instanceId, delayed.arrivalTicks);
+      grantTrapFocus(trap, session.sessionId);
+      sendSystem(session.sessionId, `${approaching.name}觸發了${directionChinese(approaching.sourceDirection)}側陷阱，延後 ${delayed?.arrivalTicks ?? trap.arrivalTicksDelta} tick 抵達！`);
+      continue;
+    }
+
+    combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id);
+    if (applyPendingHunterMarkToCombat(char.id, combatId, monster)) {
+      sendSystem(session.sessionId, `${approaching.name}身上的獵人標記被觸發。`);
+    }
+    combat.markMonsterArrived(combatId, approaching.instanceId);
+    sendSystem(session.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
+  }
+}
+
+function isApproachingToRoom(destinationRoomId: string, instanceId: string): boolean {
+  return world.getApproachingMonsters(destinationRoomId).some(monster => monster.instanceId === instanceId);
+}
+
+function resetSurvivingCombatMonsters(combatId: string, result: 'victory' | 'defeat' | 'fled' | 'ongoing'): void {
+  if (result === 'victory') return;
+  for (const monster of combat.getCombatMonsterInstances(combatId)) {
+    if (!monster.isDead && monster.hp > 0) {
+      world.resetSurvivingMonsterToOrigin(monster.instanceId);
+    }
+  }
+}
+
+function startApproachingCombat(
+  session: WsSession,
+  char: Character,
+  monsters: { monster: MonsterInstance; arrivalTicks: number }[],
+): string | undefined {
+  if (monsters.length === 0) return getPlayerCombatId(char.id);
+
+  const existingCombatId = getPlayerCombatId(char.id);
+  if (existingCombatId) {
+    for (const entry of monsters) {
+      combat.addMonsterToCombat(existingCombatId, entry.monster, char.id, {
+        isApproaching: entry.arrivalTicks > 0,
+        arrivalTicksRemaining: entry.arrivalTicks,
+      });
+      applyPendingHunterMarkToCombat(char.id, existingCombatId, entry.monster);
+    }
+    return existingCombatId;
+  }
+
+  const players = getCombatPlayersInRoom(char);
+  const combatId = combat.startCombat(players, monsters.map(entry => entry.monster), (result) => {
+    resetSurvivingCombatMonsters(combatId, result);
+
+    if (result === 'victory') {
+      const defeatedMonsters = combat.getCombatMonsterInstances(combatId)
+        .filter(defeated => defeated.isDead || defeated.hp <= 0);
+
+      for (const defeatedMonster of defeatedMonsters) {
+        questMgr.updateProgress(char.id, 'kill', defeatedMonster.monsterId);
+        recordMonsterCodexKill(char.id, defeatedMonster.monsterId, Boolean(defeatedMonster.def.isBoss || defeatedMonster.def.aiType === 'boss'));
+        world.killMonsterByInstance(defeatedMonster.instanceId);
+
+        const drops = lootCalc.calculateDrops(defeatedMonster.def, char.stats.luk, {
+          activeQuestItemIds: [],
+          partySize: players.length,
+          zoneId: getRoom(char.roomId)?.zone,
+          character: char,
+        });
+        const personalItems: Record<string, CombatLoot['items']> = {};
+        for (const p of players) {
+          personalItems[p.id] = lootCalc.calculatePersonalQuestDrops(
+            defeatedMonster.def,
+            p.stats.luk,
+            getActiveQuestDropIds(p.id, defeatedMonster.def),
+          );
+          if (drops.exp > 0) {
+            const baseExpShare = Math.max(1, Math.floor(drops.exp / players.length));
+            const scaledExpShare = applyLowLevelExpPenalty(baseExpShare, p.level, defeatedMonster.def.level);
+            const { expGained, levelsGained } = addExperienceToCharacter(p, scaledExpShare);
+            sendSystem(getSessionByCharacterId(p.id)?.sessionId ?? '', formatExpPenaltyMessage(expGained, baseExpShare));
+            if (levelsGained > 0) {
+              for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(p.id, p);
+              grantAndNotifyLearnableSkills(p);
+              sendSystem(getSessionByCharacterId(p.id)?.sessionId ?? '', `升級了！目前等級 Lv.${p.level}`);
+            }
+          }
+          saveCharacter(p);
+          sendCharacterStatusById(p.id);
+        }
+
+        const corpse = corpseMgr.createCorpse({
+          roomId: char.roomId,
+          monster: defeatedMonster,
+          killerId: char.id,
+          participantIds: players.map(player => player.id),
+          loot: drops,
+          personalItems,
+        });
+        scheduleCorpseExpiry(char.roomId, corpse.id, corpse.expiresAt);
+      }
+      broadcastRoomState(char.roomId);
+      autoBattleMgr.processAutoAction(char.id);
+    }
+
+    if (result === 'defeat') {
+      handlePveDefeatForPlayers(players, char.roomId);
+      broadcastRoomState(char.roomId);
+    }
+  });
+
+  for (const entry of monsters) {
+    combat.addMonsterToCombat(combatId, entry.monster, char.id, {
+      isApproaching: entry.arrivalTicks > 0,
+      arrivalTicksRemaining: entry.arrivalTicks,
+    });
+    applyPendingHunterMarkToCombat(char.id, combatId, entry.monster);
+  }
+  combat.setRoundEndCallback(combatId, () => processCombatApproachingRound(combatId, char, session));
+  sendSystem(session.sessionId, monsters.some(entry => entry.arrivalTicks > 0)
+    ? '遠處的敵人已被驚動，你進入戰鬥準備迎擊。'
+    : '附近的敵人已被驚動，你進入戰鬥。');
+  return combatId;
+}
+
 function cmdAttack(session: WsSession, target: string): void {
   const char = getChar(session);
   if (!char) return;
@@ -1302,6 +1685,9 @@ function cmdAttack(session: WsSession, target: string): void {
       }
 
       combat.addMonsterToCombat(existingCombatId, roomMonster, char.id);
+      if (applyPendingHunterMarkToCombat(char.id, existingCombatId, roomMonster)) {
+        sendSystem(session.sessionId, `${roomMonster.def.name}身上的獵人標記被觸發。`);
+      }
       sendSystem(session.sessionId, `你將${roomMonster.def.name}拉入戰鬥，並切換為目前攻擊目標。`);
       return;
     }
@@ -1337,6 +1723,8 @@ function cmdAttack(session: WsSession, target: string): void {
 
   // 開始戰鬥
   const combatId = combat.startCombat(players, [monster], (result) => {
+    resetSurvivingCombatMonsters(combatId, result);
+
     // 戰鬥結束後的處理
     if (result === 'victory') {
       const defeatedMonsters = combat.getCombatMonsterInstances(combatId)
@@ -1399,8 +1787,10 @@ function cmdAttack(session: WsSession, target: string): void {
         const drops = lootCalc.calculateDrops(defeatedMonster.def, char.stats.luk, {
           activeQuestItemIds: [],
           partySize: players.length,
+          zoneId: getRoom(char.roomId)?.zone,
+          character: char,
         });
-        const personalItems: Record<string, { itemId: string; quantity: number }[]> = {};
+        const personalItems: Record<string, CombatLoot['items']> = {};
         for (const p of players) {
           const freshChar = p;
 
@@ -1414,8 +1804,9 @@ function cmdAttack(session: WsSession, target: string): void {
           // 經驗值（隊伍分配）
           if (drops.exp > 0) {
             const baseExpShare = Math.max(1, Math.floor(drops.exp / players.length));
-            const { expGained, levelsGained } = addExperienceToCharacter(freshChar, baseExpShare);
-            sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', `獲得經驗值 +${expGained}`);
+            const scaledExpShare = applyLowLevelExpPenalty(baseExpShare, freshChar.level, defeatedMonster.def.level);
+            const { expGained, levelsGained } = addExperienceToCharacter(freshChar, scaledExpShare);
+            sendSystem(getSessionByCharacterId(freshChar.id)?.sessionId ?? '', formatExpPenaltyMessage(expGained, baseExpShare));
 
             if (levelsGained > 0) {
               for (let i = 0; i < levelsGained; i++) skillTreeMgr.grantPoint(freshChar.id, freshChar);
@@ -1425,6 +1816,7 @@ function cmdAttack(session: WsSession, target: string): void {
           }
 
           saveCharacter(freshChar);
+          sendCharacterStatusById(freshChar.id);
         }
 
         const corpse = corpseMgr.createCorpse({
@@ -1456,57 +1848,8 @@ function cmdAttack(session: WsSession, target: string): void {
 
     // PvE 死亡懲罰
     if (result === 'defeat') {
-      const beforeExp = char.exp;
-      const beforeGold = char.gold;
-      const beforeLevel = char.level;
-      const expPenalty = Math.floor(char.exp * 0.05);
-      const minExpForLevel = expRequiredForLevel(char.level);
-      char.exp = Math.max(minExpForLevel, char.exp - expPenalty);
-      const expLost = beforeExp - char.exp;
-
-      const goldLost = Math.floor(char.gold * 0.1);
-      char.gold = Math.max(0, char.gold - goldLost);
-      const actualGoldLost = beforeGold - char.gold;
-      if (actualGoldLost > 0) recordGoldSpent(actualGoldLost);
-
-      char.hp = Math.floor(char.maxHp * 0.5);
-      char.mp = Math.floor(char.maxMp * 0.5);
-      const respawnRoomId = getPveRespawnRoomId(char.roomId);
-      char.roomId = respawnRoomId;
-      world.placePlayer(char.id, respawnRoomId);
-      saveCharacter(char);
-
-      const playerSession = getSessionByCharacterId(char.id);
-      if (playerSession) {
-        const respawnRoom = getRoom(respawnRoomId);
-        const respawnName = respawnRoom?.name ?? respawnRoomId;
-        sendNarrative(playerSession.sessionId, `你被擊敗了！失去了 ${expLost} 經驗值和 ${actualGoldLost} 金幣。`, 'error');
-        sendNarrative(playerSession.sessionId, `你慢慢甦醒過來...發現已回到${respawnName}。`);
-        sendToSession(playerSession.sessionId, 'death_notice' as any, {
-          title: '你死亡了',
-          message: `你在戰鬥中倒下，靈魂被送回${respawnName}。`,
-          losses: {
-            exp: expLost,
-            gold: actualGoldLost,
-            items: [],
-            levelDown: char.level < beforeLevel,
-          },
-          recovery: {
-            hp: char.hp,
-            maxHp: char.maxHp,
-            mp: char.mp,
-            maxMp: char.maxMp,
-          },
-          respawn: {
-            roomId: respawnRoomId,
-            roomName: respawnName,
-          },
-        });
-        const roomPayload = buildRoomPayload(char);
-        if (roomPayload) {
-          sendToSession(playerSession.sessionId, 'room', roomPayload as unknown as Record<string, unknown>);
-        }
-      }
+      handlePveDefeatForPlayers(players, char.roomId);
+      broadcastRoomState(char.roomId);
     }
 
     // 轉職任務：戰鬥結束鉤子
@@ -1525,32 +1868,13 @@ function cmdAttack(session: WsSession, target: string): void {
   });
 
   combat.setPreferredTarget(combatId, char.id, monster.instanceId);
+  if (applyPendingHunterMarkToCombat(char.id, combatId, monster)) {
+    sendSystem(session.sessionId, `${monster.def.name}身上的獵人標記被觸發。`);
+  }
 
   combat.setRoundEndCallback(combatId, (roundInfo) => {
     lastRound = roundInfo.round;
-    const arrived = world.tickApproaching(char.roomId);
-    for (const approaching of arrived) {
-      const monster = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === approaching.instanceId);
-      if (monster) {
-        const trap = consumeExitTrap(char.roomId, approaching.sourceDirection);
-        if (trap) {
-          const delayed = world.moveMonsterToApproaching(
-            char.roomId,
-            char.roomId,
-            approaching.sourceDirection,
-            monster.instanceId,
-            Math.max(1, trap.arrivalTicksDelta),
-            approaching.targetPlayerId ?? char.id,
-            approaching.targetPartyId,
-          );
-          grantTrapFocus(trap, session.sessionId);
-          sendSystem(session.sessionId, `${approaching.name}觸發了${directionChinese(approaching.sourceDirection)}側陷阱，延後 ${delayed?.arrivalTicks ?? trap.arrivalTicksDelta} tick 抵達！`);
-          continue;
-        }
-        combat.addMonsterToCombat(combatId, monster, approaching.targetPlayerId ?? char.id, { isApproaching: true });
-        sendSystem(session.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
-      }
-    }
+    processCombatApproachingRound(combatId, char, session);
 
     for (const [playerId, action] of roundInfo.playerActions) {
       // 只追蹤玩家行動
@@ -1608,9 +1932,15 @@ function cmdAttack(session: WsSession, target: string): void {
 function cmdSkill(session: WsSession, args: string[]): void {
   const char = getChar(session);
   if (!char) return;
+  removeLegacyAdventurerSkills(char);
 
   if (args.length === 0) {
     sendError(session.sessionId, '請指定技能名稱。用法：skill <技能名> [目標]');
+    return;
+  }
+
+  if (['upgrade', 'up', 'levelup'].includes(args[0].toLowerCase())) {
+    cmdSkillUpgrade(session, args.slice(1));
     return;
   }
 
@@ -1629,11 +1959,12 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  const skillDef = SKILL_DEFS[matchedSkill.skillId];
-  if (!skillDef) {
+  const baseSkillDef = SKILL_DEFS[matchedSkill.skillId];
+  if (!baseSkillDef) {
     sendError(session.sessionId, `技能「${skillName}」資料不存在。`);
     return;
   }
+  const skillDef = applySkillUpgradeRule(baseSkillDef, matchedSkill.level);
   if (skillDef.type === 'passive') {
     sendError(session.sessionId, `「${skillDef.name}」是被動技能，不需要手動使用。`);
     return;
@@ -1644,6 +1975,14 @@ function cmdSkill(session: WsSession, args: string[]): void {
   if (combatId) {
     if (usageContext === 'field') {
       sendError(session.sessionId, `「${skillDef.name}」只能在平時使用。`);
+      return;
+    }
+    if (handleInstantSelfCombatSkill(session, char, combatId, skillDef)) {
+      tutorialMgr.advanceStep(char.id, 'skill');
+      return;
+    }
+    if (handleInstantEnemyCombatSkill(session, char, combatId, skillDef, target)) {
+      tutorialMgr.advanceStep(char.id, 'skill');
       return;
     }
     if (handleCrossRoomCombatSkill(session, char, combatId, skillDef, target)) {
@@ -1671,6 +2010,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
       actorId: char.id,
       type: 'skill',
       skillId: matchedSkill.skillId,
+      skillLevel: matchedSkill.level,
       targetId,
     });
     if (!accepted) {
@@ -1685,7 +2025,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  if (usageContext === 'combat' && handleCrossRoomFieldSkill(session, char, skillDef, target)) {
+  if ((usageContext === 'combat' || usageContext === 'both') && handleCrossRoomFieldSkill(session, char, skillDef, target)) {
     tutorialMgr.advanceStep(char.id, 'skill');
     return;
   }
@@ -1753,7 +2093,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
     startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
-    recordDiscovery(char.id, targetRoom.zone, targetRoom.id, 'scout_room', targetRoom.id);
+    recordLocalScout(char.id, room.id, targetRoom.id);
     const fieldEffect = applyFieldSkillEffect(char, skillDef, char);
     saveCharacter(char);
     cmdStatus(session);
@@ -1839,9 +2179,196 @@ function cmdSkill(session: WsSession, args: string[]): void {
   }
 }
 
+function cmdSkillUpgrade(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  if (args.length === 0) {
+    sendError(session.sessionId, '請指定要升級的技能。用法：skill upgrade <技能名>');
+    return;
+  }
+
+  const skillName = args.join(' ');
+  const learned = getLearnedSkills(char.id);
+  const matchedSkill = learned.find((ls) => {
+    const def = SKILL_DEFS[ls.skillId];
+    if (!def) return false;
+    return def.name === skillName || def.englishName.toLowerCase() === skillName.toLowerCase() || ls.skillId === skillName;
+  });
+
+  if (!matchedSkill) {
+    sendError(session.sessionId, `你沒有學過技能「${skillName}」。`);
+    return;
+  }
+
+  const skillDef = SKILL_DEFS[matchedSkill.skillId];
+  if (!skillDef) {
+    sendError(session.sessionId, `技能「${skillName}」資料不存在。`);
+    return;
+  }
+  const ruleMaxLevel = getSkillMaxLevel(matchedSkill.skillId);
+  const upgradeCost = getSkillUpgradeCost(matchedSkill.skillId, matchedSkill.level);
+  const nextLevel = matchedSkill.level + 1;
+  const requiredLevel = getSkillUpgradeRequiredLevel(matchedSkill.skillId, nextLevel) ?? skillDef.learnLevel;
+  const skillPoints = getSkillPointSummary(char.level, learned);
+
+  if (matchedSkill.skillId.startsWith('race_') || matchedSkill.skillId.startsWith('faith_')) {
+    sendError(session.sessionId, `「${skillDef.name}」是天賦技能，不能升級。`);
+    return;
+  }
+  if (!upgradeCost) {
+    sendError(session.sessionId, `「${skillDef.name}」目前沒有可用的升級規則。`);
+    return;
+  }
+  if (matchedSkill.level >= ruleMaxLevel) {
+    sendError(session.sessionId, `「${skillDef.name}」已達最高等級 Lv.${ruleMaxLevel}。`);
+    return;
+  }
+  if (char.level < requiredLevel) {
+    sendError(session.sessionId, `角色等級不足。「${skillDef.name}」升到 Lv.${nextLevel} 需要角色 Lv.${requiredLevel}。`);
+    return;
+  }
+  if (skillPoints.available < upgradeCost) {
+    sendError(session.sessionId, `技能點不足。「${skillDef.name}」升到 Lv.${nextLevel} 需要 ${upgradeCost} 點，你目前剩餘 ${skillPoints.available} 點。`);
+    return;
+  }
+
+  const upgraded = upgradeSkill(char.id, matchedSkill.skillId);
+  if (!upgraded) {
+    sendError(session.sessionId, `升級「${skillDef.name}」失敗。`);
+    return;
+  }
+
+  const deltas = getSkillUpgradeDeltas(skillDef, matchedSkill.level);
+  const deltaText = deltas.length > 0
+    ? `；${deltas.map(delta => `${delta.label} ${delta.before} -> ${delta.after}`).join('，')}`
+    : '；下一級目前無數值變化';
+  sendSystem(session.sessionId, `技能「${skillDef.name}」升級：Lv.${matchedSkill.level} -> Lv.${nextLevel}（消耗 ${upgradeCost} 技能點）${deltaText}`);
+  cmdStatus(session);
+}
+
 function spendSkillResource(char: Character, skillDef: typeof SKILL_DEFS[string], resourceCost: number): void {
   const faithBonus = char.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0;
   applySkillResourceChange(char, skillDef, resourceCost, faithBonus);
+}
+
+function handleInstantSelfCombatSkill(
+  session: WsSession,
+  char: Character,
+  combatId: string,
+  skillDef: typeof SKILL_DEFS[string],
+): boolean {
+  if (!skillDef.special?.instant || skillDef.targetType !== 'self') return false;
+
+  const healPercent = getNumericSpecial(skillDef, 'healPercent');
+  const faithInvert = Boolean(skillDef.special?.faithInvert);
+  if (healPercent === undefined && !faithInvert) return false;
+
+  const state = combat.getCombatState(combatId);
+  const actor = state?.playerTeam.find(player => player.id === char.id && !player.isDead);
+  if (!state || !actor) {
+    sendError(session.sessionId, '找不到目前戰鬥狀態。');
+    return true;
+  }
+
+  if (healPercent !== undefined && actor.hp >= actor.maxHp) {
+    sendSystem(session.sessionId, `${char.name} 的 HP 已經是滿的。`);
+    return true;
+  }
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: healPercent !== undefined ? 'on_heal' : 'on_cast' });
+  const cooldownRemaining = combat.getSkillCooldownRemaining(combatId, char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} tick。`);
+    return true;
+  }
+
+  const resourceCheck = checkSkillResource(actor, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  applySkillResourceChange(actor, skillDef, resourceCheck.effectiveCost, actor.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0);
+  combat.startSkillCooldown(combatId, char.id, skillDef.id, runtime.cooldown);
+
+  let message: string;
+  if (faithInvert) {
+    const before = actor.resource;
+    actor.resource = Math.min(actor.maxResource, Math.max(0, actor.maxResource - actor.resource));
+    char.resource = actor.resource;
+    message = `你使用了「${skillDef.name}」，信仰由 ${before} 轉為 ${actor.resource}。`;
+  } else {
+    const healAmount = Math.max(1, Math.floor(actor.maxHp * healPercent! / 100));
+    const healed = applyHpRecovery(char, healAmount, actor);
+    message = `你使用了「${skillDef.name}」，回復了 ${healed} HP。`;
+  }
+  char.resource = actor.resource;
+  char.mp = actor.mp;
+  saveCharacter(char);
+  cmdStatus(session);
+
+  sendSystem(session.sessionId, message);
+  combat.broadcastCombatState(combatId, [message]);
+  return true;
+}
+
+function handleInstantEnemyCombatSkill(
+  session: WsSession,
+  char: Character,
+  combatId: string,
+  skillDef: typeof SKILL_DEFS[string],
+  target: string,
+): boolean {
+  if (!skillDef.special?.instant || !['single_enemy', 'all_enemies'].includes(skillDef.targetType)) return false;
+
+  const state = combat.getCombatState(combatId);
+  const actor = state?.playerTeam.find(player => player.id === char.id && !player.isDead);
+  if (!state || !actor) {
+    sendError(session.sessionId, '找不到目前戰鬥狀態。');
+    return true;
+  }
+
+  const targetId = skillDef.targetType === 'single_enemy'
+    ? resolveCombatTargetId(combatId, target) ?? state.enemyTeam.find(enemy => !enemy.isDead && !enemy.isApproaching)?.id
+    : null;
+  const enemies = skillDef.targetType === 'single_enemy'
+    ? state.enemyTeam.filter(candidate => candidate.id === targetId && !candidate.isDead && !candidate.isApproaching)
+    : state.enemyTeam
+      .filter(enemy => !enemy.isDead && !enemy.isApproaching)
+      .slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? state.enemyTeam.length);
+  if (enemies.length === 0) {
+    sendError(session.sessionId, '找不到可攻擊的本房目標。');
+    return true;
+  }
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, {
+    trigger: 'on_cast',
+    targetHpPercent: enemies[0].maxHp > 0 ? (enemies[0].hp / enemies[0].maxHp) * 100 : 100,
+  });
+  const cooldownRemaining = combat.getSkillCooldownRemaining(combatId, char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} tick。`);
+    return true;
+  }
+
+  const resourceCheck = checkSkillResource(actor, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  applySkillResourceChange(actor, skillDef, resourceCheck.effectiveCost, actor.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0);
+  combat.startSkillCooldown(combatId, char.id, skillDef.id, runtime.cooldown);
+  const results = enemies.map(enemy => combat.executeInstantSkillDamage(combatId, char.id, enemy.id, skillDef));
+  char.resource = actor.resource;
+  char.mp = actor.mp;
+  saveCharacter(char);
+  cmdStatus(session);
+  if (results.every(result => !result.handled)) {
+    sendError(session.sessionId, `目前不能施放「${skillDef.name}」，戰鬥狀態或目標已改變。`);
+  }
+  return true;
 }
 
 function getFieldSkillCooldownRemaining(characterId: string, skillId: string): number {
@@ -1863,6 +2390,125 @@ function fieldSkillCooldownKey(characterId: string, skillId: string): string {
   return `${characterId}:${skillId}`;
 }
 
+function resolveHunterMarkTarget(
+  session: WsSession,
+  char: Character,
+  target: string,
+): { monster: MonsterInstance; roomId: string; roomName: string; direction?: CardinalDirection } | undefined {
+  const parsed = parseCrossRoomTarget(target);
+  const room = getRoom(char.roomId);
+  let targetRoomId = char.roomId;
+
+  if (parsed.direction) {
+    const exit = room?.exits.find(candidate => candidate.direction === parsed.direction && !candidate.locked);
+    if (!exit?.targetRoomId) {
+      sendError(session.sessionId, `方向 ${parsed.direction} 無法通行。`);
+      return undefined;
+    }
+    if (!hasLocalScout(char.id, char.roomId, exit.targetRoomId)) {
+      sendError(session.sessionId, `你尚未偵查 ${parsed.direction} 的房間。`);
+      return undefined;
+    }
+    targetRoomId = exit.targetRoomId;
+  }
+
+  const candidates = world.getAliveMonsters(targetRoomId)
+    .filter(monster => !parsed.direction || !isApproachingToRoom(char.roomId, monster.instanceId));
+  const targetName = parsed.target;
+  const monster = targetName
+    ? candidates.find(candidate => candidate.instanceId === targetName || candidate.def.name === targetName || candidate.def.alias === targetName)
+    : candidates[0];
+
+  if (!monster) {
+    sendError(session.sessionId, `「獵人標記」沒有找到可標記的目標。`);
+    return undefined;
+  }
+
+  return {
+    monster,
+    roomId: targetRoomId,
+    roomName: getRoom(targetRoomId)?.name ?? targetRoomId,
+    direction: parsed.direction,
+  };
+}
+
+function handleHunterMarkFieldSkill(
+  session: WsSession,
+  char: Character,
+  skillDef: typeof SKILL_DEFS[string],
+  target: string,
+): boolean {
+  const resolved = resolveHunterMarkTarget(session, char, target);
+  if (!resolved) return true;
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: 'on_cast' });
+  const cooldownRemaining = getFieldSkillCooldownRemaining(char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} 秒。`);
+    return true;
+  }
+  const resourceCheck = checkSkillResource(char, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
+  startFieldSkillCooldown(char.id, skillDef.id, runtime.cooldown);
+  setPendingHunterMark(char.id, resolved.monster, resolved.roomId);
+  saveCharacter(char);
+  cmdStatus(session);
+  const location = resolved.direction ? `${directionChinese(resolved.direction)}方「${resolved.roomName}」` : '本房';
+  sendSystem(session.sessionId, `你標記了${location}的${resolved.monster.def.name}。30 秒內與該目標進入戰鬥時，獵人標記會生效 4 tick。`);
+  broadcastRoomState(char.roomId);
+  if (resolved.roomId !== char.roomId) broadcastRoomState(resolved.roomId);
+  return true;
+}
+
+function handleHunterMarkCrossRoomCombatSkill(
+  session: WsSession,
+  char: Character,
+  combatId: string,
+  skillDef: typeof SKILL_DEFS[string],
+  target: string,
+): boolean {
+  const parsed = parseCrossRoomTarget(target);
+  if (!parsed.direction) return false;
+
+  const state = combat.getCombatState(combatId);
+  const actor = state?.playerTeam.find(player => player.id === char.id && !player.isDead);
+  if (!state || !actor) {
+    sendError(session.sessionId, '找不到目前戰鬥狀態。');
+    return true;
+  }
+
+  const resolved = resolveHunterMarkTarget(session, char, target);
+  if (!resolved) return true;
+
+  const runtime = getModifiedSkillRuntime(char.id, skillDef, { trigger: 'on_cast' });
+  const cooldownRemaining = combat.getSkillCooldownRemaining(combatId, char.id, skillDef.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `「${skillDef.name}」冷卻中，還需 ${cooldownRemaining} tick。`);
+    return true;
+  }
+  const resourceCheck = checkSkillResource(actor, skillDef, runtime.resourceCost);
+  if (!resourceCheck.ok) {
+    sendError(session.sessionId, resourceCheck.message ?? `資源不足，${skillDef.name}需要 ${resourceCheck.effectiveCost} 點。`);
+    return true;
+  }
+
+  applySkillResourceChange(actor, skillDef, resourceCheck.effectiveCost, actor.resourceType === 'faith' ? getResourceAffixBonus(char.id, 'faithDelta') : 0);
+  combat.startSkillCooldown(combatId, char.id, skillDef.id, runtime.cooldown);
+  setPendingHunterMark(char.id, resolved.monster, resolved.roomId);
+  char.resource = actor.resource;
+  char.mp = actor.mp;
+  saveCharacter(char);
+  sendSystem(session.sessionId, `你標記了${directionChinese(resolved.direction ?? parsed.direction)}方「${resolved.roomName}」的${resolved.monster.def.name}。標記不會驚動目標，30 秒內與該目標進入戰鬥時生效 4 tick。`);
+  broadcastRoomState(char.roomId);
+  if (resolved.roomId !== char.roomId) broadcastRoomState(resolved.roomId);
+  return true;
+}
+
 function handleCrossRoomCombatSkill(
   session: WsSession,
   char: Character,
@@ -1881,6 +2527,9 @@ function handleCrossRoomCombatSkill(
       ? [parsed.direction]
       : [];
   if (directions.length === 0) return false;
+  if (skillDef.id === 'poison_arrow') {
+    return handleHunterMarkCrossRoomCombatSkill(session, char, combatId, skillDef, target);
+  }
 
   const state = combat.getCombatState(combatId);
   const actor = state?.playerTeam.find(player => player.id === char.id && !player.isDead);
@@ -1902,6 +2551,7 @@ function handleCrossRoomCombatSkill(
   }
 
   const hits: string[] = [];
+  const pulledMonsters: { monster: MonsterInstance; arrivalTicks: number }[] = [];
   for (const direction of directions) {
     const room = getRoom(char.roomId);
     const exit = room?.exits.find(candidate => candidate.direction === direction && !candidate.locked);
@@ -1910,14 +2560,17 @@ function handleCrossRoomCombatSkill(
       if (directions.length === 1) sendError(session.sessionId, `方向 ${direction} 無法通行。`);
       continue;
     }
-    if (skillDef.special?.crossRoomRequiresScout && !hasDiscovery(char.id, 'visit_room', targetRoomId) && !hasDiscovery(char.id, 'scout_room', targetRoomId)) {
+    const isScouted = hasLocalScout(char.id, char.roomId, targetRoomId);
+    const canBlindRandomTarget = Boolean(skillDef.special?.blindCrossRoomRandomTarget);
+    if (skillDef.special?.crossRoomRequiresScout && !isScouted && !canBlindRandomTarget) {
       if (directions.length === 1) sendError(session.sessionId, `你尚未偵查 ${direction} 的房間。`);
       continue;
     }
 
-    const candidates = world.getAliveMonsters(targetRoomId);
+    const candidates = world.getAliveMonsters(targetRoomId)
+      .filter(monster => !isApproachingToRoom(char.roomId, monster.instanceId));
     const selected = skillDef.targetType === 'single_enemy'
-      ? [parsed.target ? world.findMonsterInRoom(targetRoomId, parsed.target) : candidates[0]].filter((monster): monster is NonNullable<typeof monster> => !!monster)
+      ? [selectSingleCrossRoomTarget(candidates, parsed.target, canBlindRandomTarget && !isScouted)].filter((monster): monster is NonNullable<typeof monster> => !!monster)
       : candidates.slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? candidates.length);
     const hitRuntime = getModifiedSkillRuntime(char.id, skillDef, {
       trigger: 'on_hit',
@@ -1935,16 +2588,20 @@ function handleCrossRoomCombatSkill(
       const approaching = world.moveMonsterToApproaching(targetRoomId, char.roomId, direction, monster.instanceId, arrivalTicks, char.id);
       if (approaching) {
         hits.push(`${monster.def.name}受到 ${damage} 傷害，arrivalTicks=${approaching.arrivalTicks}`);
-        if (approaching.arrivalTicks === 0) {
-          const arrived = world.getAliveMonsters(char.roomId).find(candidate => candidate.instanceId === monster.instanceId);
-          if (arrived) combat.addMonsterToCombat(combatId, arrived, char.id, { isApproaching: true });
-        }
+        pulledMonsters.push({ monster, arrivalTicks: approaching.arrivalTicks });
+        combat.addMonsterToCombat(combatId, monster, char.id, {
+          isApproaching: approaching.arrivalTicks > 0,
+          arrivalTicksRemaining: approaching.arrivalTicks,
+        });
       }
     }
   }
 
   if (hits.length === 0) {
-    sendError(session.sessionId, `「${skillDef.name}」沒有找到可命中的跨房目標。`);
+    if (skillDef.special?.includeCurrentRoom) {
+      return false;
+    }
+    sendError(session.sessionId, `「${skillDef.name}」沒有找到可命中的目標。`);
     return true;
   }
 
@@ -1954,6 +2611,9 @@ function handleCrossRoomCombatSkill(
   char.mp = actor.mp;
   saveCharacter(char);
   sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
+  if (pulledMonsters.some(entry => entry.arrivalTicks > 0)) {
+    sendSystem(session.sessionId, '敵人已被拉入戰鬥，正在接近中。');
+  }
   broadcastRoomState(char.roomId);
   return true;
 }
@@ -1967,6 +2627,9 @@ function handleCrossRoomFieldSkill(
   const areaScope = skillDef.special?.areaScope;
   const canCrossRoom = Boolean(skillDef.special?.crossRoom || skillDef.special?.crossRoomRequiresScout || areaScope === 'adjacent_cardinal');
   if (!canCrossRoom) return false;
+  if (skillDef.id === 'poison_arrow') {
+    return handleHunterMarkFieldSkill(session, char, skillDef, target);
+  }
 
   const parsed = parseCrossRoomTarget(target);
   const directions = areaScope === 'adjacent_cardinal'
@@ -1993,6 +2656,11 @@ function handleCrossRoomFieldSkill(
 
   const hits: string[] = [];
   const affectedRooms = new Set<string>([char.roomId]);
+  const pulledMonsters: { monster: MonsterInstance; arrivalTicks: number }[] = [];
+  const targetRooms: { roomId: string; direction: CardinalDirection | null; isCurrentRoom: boolean; isScouted: boolean }[] = [];
+  if (areaScope === 'adjacent_cardinal' && skillDef.special?.includeCurrentRoom) {
+    targetRooms.push({ roomId: char.roomId, direction: null, isCurrentRoom: true, isScouted: true });
+  }
   for (const direction of directions) {
     const room = getRoom(char.roomId);
     const exit = room?.exits.find(candidate => candidate.direction === direction && !candidate.locked);
@@ -2002,14 +2670,21 @@ function handleCrossRoomFieldSkill(
       continue;
     }
     affectedRooms.add(targetRoomId);
-    if (skillDef.special?.crossRoomRequiresScout && !hasDiscovery(char.id, 'visit_room', targetRoomId) && !hasDiscovery(char.id, 'scout_room', targetRoomId)) {
+    const isScouted = hasLocalScout(char.id, char.roomId, targetRoomId);
+    const canBlindRandomTarget = Boolean(skillDef.special?.blindCrossRoomRandomTarget);
+    if (skillDef.special?.crossRoomRequiresScout && !isScouted && !canBlindRandomTarget) {
       if (directions.length === 1) sendError(session.sessionId, `你尚未偵查 ${direction} 的房間。`);
       continue;
     }
+    targetRooms.push({ roomId: targetRoomId, direction, isCurrentRoom: false, isScouted });
+  }
 
-    const candidates = world.getAliveMonsters(targetRoomId);
+  for (const targetRoom of targetRooms) {
+    const canBlindRandomTarget = Boolean(skillDef.special?.blindCrossRoomRandomTarget);
+    const candidates = world.getAliveMonsters(targetRoom.roomId)
+      .filter(monster => !isApproachingToRoom(char.roomId, monster.instanceId));
     const selected = skillDef.targetType === 'single_enemy'
-      ? [parsed.target ? world.findMonsterInRoom(targetRoomId, parsed.target) : candidates[0]].filter((monster): monster is NonNullable<typeof monster> => !!monster)
+      ? [selectSingleCrossRoomTarget(candidates, parsed.target, canBlindRandomTarget && !targetRoom.isCurrentRoom && !targetRoom.isScouted)].filter((monster): monster is NonNullable<typeof monster> => !!monster)
       : candidates.slice(0, getNumericSpecial(skillDef, 'maxTargets') ?? candidates.length);
     const hitRuntime = getModifiedSkillRuntime(char.id, skillDef, {
       trigger: 'on_hit',
@@ -2020,19 +2695,29 @@ function handleCrossRoomFieldSkill(
     for (const monster of selected) {
       const damage = applyCrossRoomSkillDamage(char, skillDef, monster);
       if (monster.hp <= 0 || monster.isDead) {
-        world.killMonster(targetRoomId, monster.instanceId);
+        world.killMonster(targetRoom.roomId, monster.instanceId);
         hits.push(`${monster.def.name}受到 ${damage} 傷害並倒下`);
         continue;
       }
-      const approaching = world.moveMonsterToApproaching(targetRoomId, char.roomId, direction, monster.instanceId, arrivalTicks, char.id);
+      if (targetRoom.isCurrentRoom) {
+        hits.push(`${monster.def.name}受到 ${damage} 傷害`);
+        pulledMonsters.push({ monster, arrivalTicks: 0 });
+        continue;
+      }
+      const approaching = targetRoom.direction
+        ? world.moveMonsterToApproaching(targetRoom.roomId, char.roomId, targetRoom.direction, monster.instanceId, arrivalTicks, char.id)
+        : null;
       if (approaching) {
         hits.push(`${monster.def.name}受到 ${damage} 傷害，arrivalTicks=${approaching.arrivalTicks}`);
+        pulledMonsters.push({ monster, arrivalTicks: approaching.arrivalTicks });
       }
     }
   }
 
   if (hits.length === 0) {
-    sendError(session.sessionId, `「${skillDef.name}」沒有找到可命中的跨房目標。`);
+    sendError(session.sessionId, skillDef.special?.includeCurrentRoom
+      ? `「${skillDef.name}」在本地與四方相鄰房間沒有找到可命中的目標。`
+      : `「${skillDef.name}」沒有找到可命中的跨房目標。`);
     return true;
   }
 
@@ -2041,9 +2726,25 @@ function handleCrossRoomFieldSkill(
   saveCharacter(char);
   cmdStatus(session);
   sendSystem(session.sessionId, `你使用了「${skillDef.name}」：${hits.join('；')}。`);
+  startApproachingCombat(session, char, pulledMonsters);
   for (const roomId of affectedRooms) broadcastRoomState(roomId);
   scheduleFieldApproachingTick(char.roomId);
   return true;
+}
+
+function selectSingleCrossRoomTarget(
+  candidates: MonsterInstance[],
+  target: string | undefined,
+  blindRandom: boolean,
+): MonsterInstance | undefined {
+  if (candidates.length === 0) return undefined;
+  if (blindRandom) return candidates[Math.floor(Math.random() * candidates.length)];
+  if (!target) return candidates[0];
+  return candidates.find(monster =>
+    monster.instanceId === target ||
+    monster.def.name === target ||
+    monster.def.alias === target,
+  );
 }
 
 function scheduleFieldApproachingTick(roomId: string): void {
@@ -2107,6 +2808,10 @@ function processFieldApproachingTick(roomId: string): void {
 
     sendSystem(combatSession.sessionId, `${approaching.name}從${directionChinese(approaching.sourceDirection)}方抵達並加入戰鬥！`);
     cmdAttack(combatSession, monster.instanceId);
+    const combatId = getPlayerCombatId(combatSession.characterId ?? '');
+    if (combatSession.characterId && combatId && applyPendingHunterMarkToCombat(combatSession.characterId, combatId, monster)) {
+      sendSystem(combatSession.sessionId, `${approaching.name}身上的獵人標記被觸發。`);
+    }
   }
 
   broadcastRoomState(roomId);
@@ -2163,7 +2868,8 @@ function applyCrossRoomSkillDamage(char: Character, skillDef: typeof SKILL_DEFS[
     targetHpPercent: monster.maxHp > 0 ? (monster.hp / monster.maxHp) * 100 : 100,
     isApproachingTarget: true,
   });
-  const multiplier = skillDef.multiplier * (1 + outputModifiers.damageBonusPct / 100);
+  const penalty = getHighLevelCombatPenalty(char.level, monster.def.level);
+  const multiplier = skillDef.multiplier * (1 + outputModifiers.damageBonusPct / 100) * penalty.damageMultiplier;
   const damage = Math.max(1, Math.floor(stat * multiplier - defense * 0.5));
   monster.hp = Math.max(0, monster.hp - damage);
   if (monster.hp <= 0) monster.isDead = true;
@@ -2796,7 +3502,7 @@ function cmdLoot(session: WsSession, target: string): void {
     }
 
     for (const item of assignedLoot.items) {
-      const grantedNames = addLootItemToInventory(recipient, item.itemId, item.quantity);
+      const grantedNames = addLootItemToInventory(recipient, item);
       questMgr.updateProgress(recipient.id, 'collect_item', item.itemId);
       const def = ITEM_DEFS[item.itemId];
       const itemText = grantedNames.length > 1 ? grantedNames.join('、') : `${def?.name ?? item.itemId} x${item.quantity}`;
@@ -2812,7 +3518,7 @@ function cmdLoot(session: WsSession, target: string): void {
   }
 
   for (const item of personalQuestItems) {
-    addLootItemToInventory(char, item.itemId, item.quantity);
+    addLootItemToInventory(char, item);
     questMgr.updateProgress(char.id, 'collect_item', item.itemId);
     const def = ITEM_DEFS[item.itemId];
     sendSystem(session.sessionId, `獲得 ${def?.name ?? item.itemId} x${item.quantity}`);
@@ -2890,11 +3596,100 @@ function cmdSay(session: WsSession, message: string): void {
 }
 
 // 追蹤玩家目前的 NPC 對話狀態
-const activeDialogues = new Map<string, { npcId: string; nodeId: string }>();
+const activeDialogues = new Map<string, { npcId: string; nodeId: string; options: DialogueOption[] }>();
+
+export function mainQuestVirtualNodeId(kind: 'start' | 'active' | 'complete', questId: string): string {
+  return `__mainquest_${kind}:${questId}`;
+}
+
+export function resolveDialogueNode(npc: NpcDef, nodeId: string): DialogueNode | undefined {
+  const virtual = /^__mainquest_(start|active|complete):(.+)$/.exec(nodeId);
+  if (!virtual) return npc.dialogue.find(d => d.id === nodeId);
+
+  const [, kind, questId] = virtual;
+  const entry = MAIN_QUEST_FLOW.find(flow => flow.questId === questId);
+  if (!entry) return undefined;
+  if (kind === 'start' && entry.acceptNpcId === npc.id) {
+    return {
+      id: nodeId,
+      text: entry.offerText,
+      action: { type: 'quest_start', data: { questId } },
+    };
+  }
+  if (kind === 'complete' && entry.turnInNpcId === npc.id) {
+    return {
+      id: nodeId,
+      text: entry.completeText,
+      action: { type: 'quest_complete', data: { questId } },
+    };
+  }
+  if (kind === 'active' && (entry.acceptNpcId === npc.id || entry.turnInNpcId === npc.id)) {
+    return {
+      id: nodeId,
+      text: entry.activeText,
+    };
+  }
+  return undefined;
+}
+
+export function buildDialogueOptions(npc: NpcDef, node: DialogueNode, char: Character | null): DialogueOption[] {
+  const baseOptions = (node.options ?? []).filter(option => isDialogueOptionVisible(option, char));
+  if (!char || npc.dialogue[0]?.id !== node.id) return baseOptions;
+
+  const questOptions: DialogueOption[] = [];
+  for (const entry of MAIN_QUEST_FLOW) {
+    const status = questMgr.getQuestStatus(char, entry.questId);
+    if (status === 'ready' && entry.turnInNpcId === npc.id) {
+      questOptions.push({
+        text: entry.turnInOptionText,
+        nextId: mainQuestVirtualNodeId('complete', entry.questId),
+      });
+    } else if (status === 'active' && (entry.acceptNpcId === npc.id || entry.turnInNpcId === npc.id)) {
+      questOptions.push({
+        text: '詢問目前任務進度',
+        nextId: mainQuestVirtualNodeId('active', entry.questId),
+      });
+    } else if (status === 'available' && entry.acceptNpcId === npc.id) {
+      questOptions.push({
+        text: entry.startOptionText,
+        nextId: mainQuestVirtualNodeId('start', entry.questId),
+      });
+    }
+  }
+
+  return [...questOptions, ...baseOptions];
+}
+
+function isDialogueOptionVisible(option: DialogueOption, char: Character | null): boolean {
+  const condition = option.condition;
+  if (!condition) return true;
+  if (!char) return false;
+  switch (condition.type as string) {
+    case 'level':
+      return char.level >= Number(condition.value);
+    case 'class':
+      return char.classId === String(condition.value);
+    case 'gold':
+      return char.gold >= Number(condition.value);
+    case 'quest':
+    case 'questCompleted':
+      return questMgr.getQuestStatus(char, String(condition.value)) === 'completed';
+    case 'questAvailable':
+      return questMgr.getQuestStatus(char, String(condition.value)) === 'available';
+    case 'questActive':
+      return questMgr.getQuestStatus(char, String(condition.value)) === 'active';
+    case 'questReadyToComplete':
+      return questMgr.getQuestStatus(char, String(condition.value)) === 'ready';
+    case 'item':
+      return getInventory(char.id).some(item => item.itemId === String(condition.value) && item.quantity > 0);
+    default:
+      return true;
+  }
+}
 
 function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void {
   const char = getChar(session);
-  const node = npc.dialogue.find(d => d.id === nodeId);
+  const node = resolveDialogueNode(npc, nodeId);
   if (!node) {
     sendSystem(session.sessionId, `${npc.name}沉默了。`);
     activeDialogues.delete(session.sessionId);
@@ -2919,6 +3714,22 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
           if (questId) {
             const result = questMgr.startQuest(char.id, questId, char);
             sendSystem(session.sessionId, result.message);
+            if (result.success) {
+              tutorialMgr.advanceStep(char.id, 'quest');
+            }
+            sendQuestUpdate(session, result.success ? 'accepted' : 'sync');
+          }
+          break;
+        }
+        case 'quest_complete': {
+          const questId = node.action.data?.questId as string;
+          if (questId) {
+            const result = questMgr.completeQuest(char.id, questId, char);
+            sendSystem(session.sessionId, result.message);
+            if (result.rewards) {
+              saveCharacter(char);
+            }
+            sendQuestUpdate(session, result.success ? 'completed' : 'sync');
           }
           break;
         }
@@ -2926,16 +3737,20 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
     }
   }
 
+  const options = buildDialogueOptions(npc, node, char);
   let dialogueText = `【${npc.name}】：${node.text}`;
-  if (node.options && node.options.length > 0) {
-    for (let i = 0; i < node.options.length; i++) {
-      dialogueText += `\n  ${i + 1}. ${node.options[i].text}`;
+  if (options.length > 0) {
+    for (let i = 0; i < options.length; i++) {
+      dialogueText += `\n  ${i + 1}. ${options[i].text}`;
     }
     // 記錄對話狀態
-    activeDialogues.set(session.sessionId, { npcId: npc.id, nodeId });
+    activeDialogues.set(session.sessionId, { npcId: npc.id, nodeId, options });
   } else {
     // 沒有選項，對話結束
     activeDialogues.delete(session.sessionId);
+  }
+  if (node.action?.type === 'shop' && char) {
+    sendInventoryPayload(session, char);
   }
   sendToSession(session.sessionId, 'npc_dialogue' as any, {
     npcId: npc.id,
@@ -2944,7 +3759,7 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
     npcType: npc.type,
     nodeId: node.id,
     text: node.text,
-    options: (node.options ?? []).map((option, index) => ({
+    options: options.map((option, index) => ({
       index: index + 1,
       text: option.text,
       command: `talk ${npc.id} ${index + 1}`,
@@ -3009,7 +3824,7 @@ function sendNpcShopListing(
     ].filter(Boolean).join(' / ');
     sendSystem(session.sessionId, `  ${item.name} — ${detail}`);
   }
-  sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買，例如：buy 木劍');
+  sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買，例如：buy 木劍；輸入 sell <物品名稱> [數量] 出售背包物品。');
 }
 
 function buildNpcShopItems(char: Character, npc: NpcDef): {
@@ -3089,6 +3904,78 @@ function cmdBuy(session: WsSession, itemName: string): void {
   cmdInventory(session);
 }
 
+/** sell <物品名稱|instanceId> [數量] — 向當前房間商人出售背包物品 */
+function cmdSell(session: WsSession, input: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  const { itemName, quantity } = parseItemNameAndQuantity(input);
+  if (!itemName) { sendError(session.sessionId, '用法：sell <物品名稱|instanceId> [數量]'); return; }
+
+  const merchant = getNpcsByRoom(char.roomId).find(n => n.type === 'merchant');
+  if (!merchant) {
+    sendError(session.sessionId, '附近沒有商人可以收購物品。');
+    return;
+  }
+
+  const query = itemName.toLowerCase();
+  const inv = getInventory(char.id);
+  const match = inv.find((item) => {
+    if (item.equipped) return false;
+    const def = ITEM_DEFS[item.itemId];
+    return Boolean(def)
+      && (
+        item.itemInstanceId === itemName
+        || item.itemId === itemName
+        || item.itemId.toLowerCase().includes(query)
+        || def?.name === itemName
+        || def?.name.includes(itemName)
+      );
+  });
+  if (!match) {
+    sendError(session.sessionId, `背包中沒有可出售的「${itemName}」。`);
+    return;
+  }
+
+  const def = ITEM_DEFS[match.itemId];
+  if (!def || def.sellPrice <= 0) {
+    sendError(session.sessionId, `「${def?.name ?? itemName}」無法出售。`);
+    return;
+  }
+  if (match.itemInstanceId && quantity !== 1) {
+    sendError(session.sessionId, '裝備實例一次只能出售 1 件。');
+    return;
+  }
+  if (quantity <= 0 || quantity > match.quantity) {
+    sendError(session.sessionId, `數量不足。「${def.name}」目前有 ${match.quantity} 個。`);
+    return;
+  }
+
+  const removed = removeInventoryItem(char.id, match.itemId, quantity, match.itemInstanceId);
+  if (!removed) {
+    sendError(session.sessionId, '出售失敗，背包內容已改變。');
+    return;
+  }
+
+  const earned = def.sellPrice * quantity;
+  char.gold += earned;
+  saveCharacter(char);
+  recordGoldProduced(earned);
+  sendSystem(session.sessionId, `你向${merchant.name}出售了「${def.name}」x${quantity}，獲得 ${earned} 金幣。（目前：${char.gold}）`);
+  cmdInventory(session);
+}
+
+function parseItemNameAndQuantity(input: string): { itemName: string; quantity: number } {
+  const trimmed = input.trim();
+  if (!trimmed) return { itemName: '', quantity: 1 };
+  const parts = trimmed.split(/\s+/);
+  const last = parts[parts.length - 1];
+  const quantity = Number.parseInt(last, 10);
+  if (parts.length > 1 && Number.isInteger(quantity) && quantity > 0 && String(quantity) === last) {
+    return { itemName: parts.slice(0, -1).join(' '), quantity };
+  }
+  return { itemName: trimmed, quantity: 1 };
+}
+
 function cmdTalk(session: WsSession, npcName: string): void {
   const char = getChar(session);
   if (!char) return;
@@ -3105,14 +3992,13 @@ function cmdTalk(session: WsSession, npcName: string): void {
     if (active) {
       const npc = findNpcByName(name, char.roomId);
       if (npc && npc.id === active.npcId) {
-        const currentNode = npc.dialogue.find(d => d.id === active.nodeId);
-        if (currentNode?.options && choiceNum >= 1 && choiceNum <= currentNode.options.length) {
-          const chosen = currentNode.options[choiceNum - 1];
+        if (choiceNum >= 1 && choiceNum <= active.options.length) {
+          const chosen = active.options[choiceNum - 1];
           showDialogueNode(session, npc, chosen.nextId);
           questMgr.updateProgress(char.id, 'talk', npc.id);
           return;
         } else {
-          sendError(session.sessionId, `請輸入 1-${currentNode?.options?.length ?? 0} 的選項。`);
+          sendError(session.sessionId, `請輸入 1-${active.options.length} 的選項。`);
           return;
         }
       }
@@ -3174,6 +4060,7 @@ function cmdAllocate(session: WsSession, args: string[]): void {
     str: '力量(STR)', int: '智力(INT)', dex: '敏捷(DEX)', vit: '體質(VIT)', luk: '幸運(LUK)',
   };
   sendSystem(session.sessionId, `${statNames[stat]} +${points}！目前: ${char.stats[statKey]}。剩餘: ${char.freePoints}`);
+  cmdStatus(session);
 }
 
 function cmdMap(session: WsSession): void {
@@ -3209,10 +4096,111 @@ function cmdMap(session: WsSession): void {
         kind: node.kind,
         unlocked: node.unlockByDefault || isPortalUnlocked(char.id, node.id),
       })) : undefined,
+    world: buildWorldMapPayload(char),
   });
   if (room && zone) {
     sendSystem(session.sessionId, `探索度：${zone.name} ${visitedRooms}/${totalRooms} (${percent}%)；類型 ${zone.type}，危險度 ${zone.dangerLevel}，PvP ${zone.pvpMode}，死亡懲罰 ${zone.deathPenalty}`);
   }
+}
+
+function buildWorldMapPayload(char: Character): {
+  zones: {
+    id: string;
+    name: string;
+    region: string;
+    type: ZoneDef['type'];
+    levelRange: [number, number];
+    dangerLevel: number;
+    pvpMode: ZoneDef['pvpMode'];
+    deathPenalty: ZoneDef['deathPenalty'];
+    totalRooms: number;
+    visitedRooms: number;
+    rooms: {
+      id: string;
+      name: string;
+      mapSymbol: string;
+      mapX: number;
+      mapY: number;
+      mapLayer: number;
+      mapLayerName?: string;
+      explored: boolean;
+      exits: {
+        direction: string;
+        targetRoomId: string;
+        targetRoomName?: string;
+        targetZoneId?: string;
+        targetMapLayer?: number;
+        targetMapLayerName?: string;
+        locked?: boolean;
+      }[];
+    }[];
+  }[];
+  connections: { fromZoneId: string; toZoneId: string }[];
+} {
+  const roomLayers = buildRoomMapLayerLookup(Object.values(ROOMS));
+  const zones = Object.values(ZONES).map((zone) => {
+    const rooms = zone.rooms
+      .map(roomId => getRoom(roomId))
+      .filter((candidate): candidate is RoomDef => Boolean(candidate))
+      .map(room => {
+        const layer = roomLayers.get(room.id) ?? { mapLayer: inferMapLayerFromCoordinates(room) };
+        return {
+          id: room.id,
+          name: room.name,
+          mapSymbol: room.mapSymbol,
+          mapX: room.mapX,
+          mapY: room.mapY,
+          mapLayer: layer.mapLayer,
+          mapLayerName: layer.mapLayerName,
+          explored: hasDiscovery(char.id, 'visit_room', room.id) || room.id === char.roomId,
+          exits: room.exits.map(exit => {
+            const targetRoom = getRoom(exit.targetRoomId);
+            const targetLayer = targetRoom ? roomLayers.get(targetRoom.id) : undefined;
+            return {
+              direction: exit.direction,
+              targetRoomId: exit.targetRoomId,
+              targetRoomName: targetRoom?.name,
+              targetZoneId: targetRoom?.zone,
+              targetMapLayer: targetLayer?.mapLayer,
+              targetMapLayerName: targetLayer?.mapLayerName,
+              locked: exit.locked,
+            };
+          }),
+        };
+      });
+
+    return {
+      id: zone.id,
+      name: zone.name,
+      region: zone.region,
+      type: zone.type,
+      levelRange: zone.levelRange,
+      dangerLevel: zone.dangerLevel,
+      pvpMode: zone.pvpMode,
+      deathPenalty: zone.deathPenalty,
+      totalRooms: rooms.length,
+      visitedRooms: getDiscoveryCount(char.id, zone.id, 'visit_room'),
+      rooms,
+    };
+  });
+
+  const connectionKeys = new Set<string>();
+  for (const sourceRoom of Object.values(ROOMS)) {
+    for (const exit of sourceRoom.exits) {
+      const targetRoom = getRoom(exit.targetRoomId);
+      if (!targetRoom || targetRoom.zone === sourceRoom.zone) continue;
+      const [fromZoneId, toZoneId] = [sourceRoom.zone, targetRoom.zone].sort();
+      connectionKeys.add(`${fromZoneId}:${toZoneId}`);
+    }
+  }
+
+  return {
+    zones,
+    connections: Array.from(connectionKeys).map((key) => {
+      const [fromZoneId, toZoneId] = key.split(':');
+      return { fromZoneId, toZoneId };
+    }),
+  };
 }
 
 function cmdRest(session: WsSession): void {
@@ -5364,6 +6352,7 @@ function cmdHelp(session: WsSession, topic?: string): void {
       lines: [
         'equip/unequip <物品> 裝備/卸下',
         'use <物品>           使用物品',
+        'sell <物品> [數量]    在商人旁出售背包物品',
         'drop <物品>          丟棄物品',
         'upgrade / enhance    強化當前武器',
         'upgrade armor        強化身體裝備',

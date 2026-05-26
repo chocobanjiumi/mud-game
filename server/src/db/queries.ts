@@ -173,6 +173,10 @@ export interface StoredItemInstance {
   itemInstanceId: string;
   baseItemId: string;
   quality: ItemQuality;
+  itemLevel?: number;
+  droppedBy?: string;
+  droppedInZone?: string;
+  sourceTags?: string[];
   affixes?: AffixDef[];
   lockedAffixIndexes?: number[];
   fixedEffects?: string[];
@@ -233,7 +237,8 @@ export function getInventory(characterId: string): InventoryItem[] {
   const db = getDb();
   const rows = db.prepare(
     `SELECT i.item_id, i.item_instance_id, i.quantity, i.equipped,
-      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
+      inst.quality, inst.item_level, inst.dropped_by, inst.dropped_in_zone, inst.source_tags_json,
+      inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ?`,
@@ -243,6 +248,10 @@ export function getInventory(characterId: string): InventoryItem[] {
     quantity: number;
     equipped: number;
     quality: ItemQuality | null;
+    item_level: number | null;
+    dropped_by: string | null;
+    dropped_in_zone: string | null;
+    source_tags_json: string | null;
     affixes_json: string | null;
     locked_affixes_json: string | null;
     fixed_effects_json: string | null;
@@ -254,6 +263,10 @@ export function getInventory(characterId: string): InventoryItem[] {
     quantity: r.quantity,
     equipped: r.equipped === 1,
     quality: r.quality ?? undefined,
+    itemLevel: r.item_level ?? undefined,
+    droppedBy: r.dropped_by ?? undefined,
+    droppedInZone: r.dropped_in_zone ?? undefined,
+    sourceTags: parseJsonArray<string>(r.source_tags_json),
     affixes: parseJsonArray<AffixDef>(r.affixes_json),
     lockedAffixIndexes: parseJsonArray<number>(r.locked_affixes_json),
     fixedEffects: parseJsonArray<string>(r.fixed_effects_json),
@@ -276,7 +289,8 @@ export function getEquippedItems(characterId: string): Pick<InventoryItem, 'item
   const db = getDb();
   const rows = db.prepare(
     `SELECT i.item_id, i.item_instance_id, i.quantity,
-      inst.quality, inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
+      inst.quality, inst.item_level, inst.dropped_by, inst.dropped_in_zone, inst.source_tags_json,
+      inst.affixes_json, inst.locked_affixes_json, inst.fixed_effects_json
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ? AND i.equipped = 1`,
@@ -285,6 +299,10 @@ export function getEquippedItems(characterId: string): Pick<InventoryItem, 'item
     item_instance_id: string | null;
     quantity: number;
     quality: ItemQuality | null;
+    item_level: number | null;
+    dropped_by: string | null;
+    dropped_in_zone: string | null;
+    source_tags_json: string | null;
     affixes_json: string | null;
     locked_affixes_json: string | null;
     fixed_effects_json: string | null;
@@ -295,6 +313,10 @@ export function getEquippedItems(characterId: string): Pick<InventoryItem, 'item
     itemInstanceId: r.item_instance_id ?? undefined,
     quantity: r.quantity,
     quality: r.quality ?? undefined,
+    itemLevel: r.item_level ?? undefined,
+    droppedBy: r.dropped_by ?? undefined,
+    droppedInZone: r.dropped_in_zone ?? undefined,
+    sourceTags: parseJsonArray<string>(r.source_tags_json),
     affixes: parseJsonArray<AffixDef>(r.affixes_json),
     lockedAffixIndexes: parseJsonArray<number>(r.locked_affixes_json),
     fixedEffects: parseJsonArray<string>(r.fixed_effects_json),
@@ -304,12 +326,16 @@ export function getEquippedItems(characterId: string): Pick<InventoryItem, 'item
 export function upsertItemInstance(instance: StoredItemInstance): void {
   getDb().prepare(
     `INSERT OR REPLACE INTO item_instances
-      (id, base_item_id, quality, affixes_json, locked_affixes_json, fixed_effects_json)
-     VALUES (?, ?, ?, ?, ?, ?)`,
+      (id, base_item_id, quality, item_level, dropped_by, dropped_in_zone, source_tags_json, affixes_json, locked_affixes_json, fixed_effects_json)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   ).run(
     instance.itemInstanceId,
     instance.baseItemId,
     instance.quality,
+    instance.itemLevel ?? 1,
+    instance.droppedBy ?? null,
+    instance.droppedInZone ?? null,
+    JSON.stringify(instance.sourceTags ?? []),
     JSON.stringify(instance.affixes ?? []),
     JSON.stringify(normalizeLockedAffixes(instance.lockedAffixIndexes)),
     JSON.stringify(instance.fixedEffects ?? []),
@@ -318,11 +344,15 @@ export function upsertItemInstance(instance: StoredItemInstance): void {
 
 export function getStoredItemInstance(itemInstanceId: string): StoredItemInstance | undefined {
   const row = getDb().prepare(
-    'SELECT id, base_item_id, quality, affixes_json, locked_affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
+    'SELECT id, base_item_id, quality, item_level, dropped_by, dropped_in_zone, source_tags_json, affixes_json, locked_affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
   ).get(itemInstanceId) as {
     id: string;
     base_item_id: string;
     quality: ItemQuality;
+    item_level: number | null;
+    dropped_by: string | null;
+    dropped_in_zone: string | null;
+    source_tags_json: string | null;
     affixes_json: string | null;
     locked_affixes_json: string | null;
     fixed_effects_json: string | null;
@@ -333,6 +363,10 @@ export function getStoredItemInstance(itemInstanceId: string): StoredItemInstanc
     itemInstanceId: row.id,
     baseItemId: row.base_item_id,
     quality: row.quality,
+    itemLevel: row.item_level ?? undefined,
+    droppedBy: row.dropped_by ?? undefined,
+    droppedInZone: row.dropped_in_zone ?? undefined,
+    sourceTags: parseJsonArray<string>(row.source_tags_json),
     affixes: parseJsonArray<AffixDef>(row.affixes_json),
     lockedAffixIndexes: parseJsonArray<number>(row.locked_affixes_json),
     fixedEffects: parseJsonArray<string>(row.fixed_effects_json),
@@ -365,6 +399,12 @@ export function learnSkill(characterId: string, skillId: string): void {
     INSERT OR IGNORE INTO learned_skills (character_id, skill_id, level)
     VALUES (?, ?, 1)
   `).run(characterId, skillId);
+}
+
+/** 遺忘技能 */
+export function forgetSkill(characterId: string, skillId: string): void {
+  const db = getDb();
+  db.prepare('DELETE FROM learned_skills WHERE character_id = ? AND skill_id = ?').run(characterId, skillId);
 }
 
 /** 取得角色已學會的技能 */

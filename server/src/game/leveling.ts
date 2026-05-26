@@ -2,7 +2,9 @@ import type { Character } from '@game/shared';
 import { applyExperienceOriginBonus } from './origin-effects.js';
 
 export function expRequiredForLevel(level: number): number {
-  return level * 100 + (level - 1) * 50;
+  if (level <= 1) return 0;
+  const completedLevels = level - 1;
+  return completedLevels * 100 + ((completedLevels - 1) * completedLevels * 50) / 2;
 }
 
 export function getLevelExpProgress(char: Character): { current: number; required: number } {

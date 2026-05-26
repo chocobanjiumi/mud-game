@@ -91,6 +91,8 @@ export function buildOrdinalLabels<T>(items: T[], keyOf: (item: T) => string): s
 export function buildRoomEntities(input: {
   char: Character;
   room: RoomDef;
+  getRoom?: (roomId: string) => RoomDef | undefined;
+  mapLayerNameByRoom?: Map<string, string>;
   npcs: RoomEntityNpc[];
   players: RoomEntityPlayer[];
   monsters: RoomEntityMonster[];
@@ -107,7 +109,7 @@ export function buildRoomEntities(input: {
       id: `exit:${exit.direction}`,
       type: 'exit' as const,
       label: directionChinese(exit.direction),
-      subtitle: exit.locked ? '上鎖' : (exit.description ?? exit.targetRoomId),
+      subtitle: buildExitSubtitle(exit, input.getRoom?.(exit.targetRoomId), input.mapLayerNameByRoom),
       actions: [{
         label: '前往',
         command: `go ${exit.direction}`,
@@ -194,6 +196,18 @@ export function buildRoomEntities(input: {
       ],
     })),
   ];
+}
+
+function buildExitSubtitle(
+  exit: RoomDef['exits'][number],
+  targetRoom?: RoomDef,
+  mapLayerNameByRoom?: Map<string, string>,
+): string {
+  if (exit.locked) return '上鎖';
+  const targetName = targetRoom?.name ?? exit.targetRoomId;
+  const layerName = mapLayerNameByRoom?.get(exit.targetRoomId);
+  const verticalHint = (exit.direction === 'up' || exit.direction === 'down') && layerName ? ` · ${layerName}` : '';
+  return `${exit.description ?? targetName}${verticalHint}`;
 }
 
 function formatRemaining(timestamp?: number): string {
