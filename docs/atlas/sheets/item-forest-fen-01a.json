@@ -1,0 +1,24 @@
+{
+  "sheetId": "item_forest_fen_01a",
+  "category": "item",
+  "columns": 5,
+  "rows": 3,
+  "sheetPath": "client/public/images/atlas/source-ai/item_forest_fen_01a.sheet.png",
+  "targets": [
+    { "assetId": "item_forest_fen_abyssal_dagger", "category": "item", "targetId": "abyssal_dagger", "name": "深淵匕首", "outputPath": "client/public/images/items/item_forest_fen_abyssal_dagger.png", "row": 0, "column": 0 },
+    { "assetId": "item_forest_fen_agility_potion", "category": "item", "targetId": "agility_potion", "name": "敏捷藥水", "outputPath": "client/public/images/items/item_forest_fen_agility_potion.png", "row": 0, "column": 1 },
+    { "assetId": "item_forest_fen_crimson_grimoire", "category": "item", "targetId": "crimson_grimoire", "name": "血紅禁書", "outputPath": "client/public/images/items/item_forest_fen_crimson_grimoire.png", "row": 0, "column": 2 },
+    { "assetId": "item_forest_fen_deep_amber_heart", "category": "item", "targetId": "deep_amber_heart", "name": "深琥珀心核", "outputPath": "client/public/images/items/item_forest_fen_deep_amber_heart.png", "row": 0, "column": 3 },
+    { "assetId": "item_forest_fen_dreamwater_dew", "category": "item", "targetId": "dreamwater_dew", "name": "夢水露", "outputPath": "client/public/images/items/item_forest_fen_dreamwater_dew.png", "row": 0, "column": 4 },
+    { "assetId": "item_forest_fen_faded_grimoire", "category": "item", "targetId": "faded_grimoire", "name": "褪色的咒語書", "outputPath": "client/public/images/items/item_forest_fen_faded_grimoire.png", "row": 1, "column": 0 },
+    { "assetId": "item_forest_fen_heartwood_shadow_core", "category": "item", "targetId": "heartwood_shadow_core", "name": "黑心木影核", "outputPath": "client/public/images/items/item_forest_fen_heartwood_shadow_core.png", "row": 1, "column": 1 },
+    { "assetId": "item_forest_fen_high_green_court_mark", "category": "item", "targetId": "high_green_court_mark", "name": "高綠庭印記", "outputPath": "client/public/images/items/item_forest_fen_high_green_court_mark.png", "row": 1, "column": 2 },
+    { "assetId": "item_forest_fen_hunter_mark_charm", "category": "item", "targetId": "hunter_mark_charm", "name": "獵人刻痕符", "outputPath": "client/public/images/items/item_forest_fen_hunter_mark_charm.png", "row": 1, "column": 3 },
+    { "assetId": "item_forest_fen_lost_name_tag", "category": "item", "targetId": "lost_name_tag", "name": "失路名牌", "outputPath": "client/public/images/items/item_forest_fen_lost_name_tag.png", "row": 1, "column": 4 },
+    { "assetId": "item_forest_fen_lunar_altar_token", "category": "item", "targetId": "lunar_altar_token", "name": "月沼祭壇符片", "outputPath": "client/public/images/items/item_forest_fen_lunar_altar_token.png", "row": 2, "column": 0 },
+    { "assetId": "item_forest_fen_mage_robe", "category": "item", "targetId": "mage_robe", "name": "法師長袍", "outputPath": "client/public/images/items/item_forest_fen_mage_robe.png", "row": 2, "column": 1 },
+    { "assetId": "item_forest_fen_mirror_core_splinter", "category": "item", "targetId": "mirror_core_splinter", "name": "鏡核碎片", "outputPath": "client/public/images/items/item_forest_fen_mirror_core_splinter.png", "row": 2, "column": 2 },
+    { "assetId": "item_forest_fen_moonwell_draught", "category": "item", "targetId": "moonwell_draught", "name": "月井清露", "outputPath": "client/public/images/items/item_forest_fen_moonwell_draught.png", "row": 2, "column": 3 },
+    { "assetId": "item_forest_fen_phantom_blade", "category": "item", "targetId": "phantom_blade", "name": "幻影之劍", "outputPath": "client/public/images/items/item_forest_fen_phantom_blade.png", "row": 2, "column": 4 }
+  ]
+}
