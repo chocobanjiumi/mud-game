@@ -1,4 +1,5 @@
 import type { Character, CombatantState } from '@game/shared';
+import { deriveMountStats, getMountDef, ITEM_DEFS } from '@game/shared';
 
 export function getNaturalResourceDelta(char: Pick<Character, 'resource' | 'maxResource' | 'resourceType'>): number {
   if (char.resourceType === 'rage') return char.resource > 0 ? -Math.min(5, char.resource) : 0;
@@ -16,6 +17,20 @@ export function getNaturalResourceDelta(char: Pick<Character, 'resource' | 'maxR
     Math.max(1, Math.floor(char.maxResource * 0.02)),
     char.maxResource - char.resource,
   );
+}
+
+export function getNaturalMountFatigueDelta(
+  char: Pick<Character, 'activeMountId' | 'mountFatigue' | 'equipment'>,
+): number {
+  const current = Math.max(0, char.mountFatigue ?? 0);
+  if (!char.activeMountId || current <= 0) return 0;
+
+  const mount = getMountDef(char.activeMountId);
+  const saddleId = char.equipment.saddle ?? null;
+  const mountStats = deriveMountStats(mount, saddleId ? ITEM_DEFS[saddleId] : undefined);
+  if (!mountStats || mountStats.fatigueRecovery <= 0) return 0;
+
+  return -Math.min(current, mountStats.fatigueRecovery);
 }
 
 export function applyHpRecovery(char: Character, amount: number, combatant?: CombatantState): number {

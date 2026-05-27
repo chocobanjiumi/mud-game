@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { Character, CombatantState } from '@game/shared';
-import { applyHpRecovery, applyResourceRecovery } from '../game/recovery.js';
+import { applyHpRecovery, applyResourceRecovery, getNaturalMountFatigueDelta } from '../game/recovery.js';
 
 function makeCharacter(overrides: Partial<Character> = {}): Character {
   return {
@@ -95,5 +95,33 @@ describe('recovery helpers', () => {
     expect(recovered).toBe(0);
     expect(combatant.resource).toBe(15);
     expect(char.resource).toBe(15);
+  });
+
+  it('recovers mount fatigue outside combat using derived mount recovery', () => {
+    expect(getNaturalMountFatigueDelta(makeCharacter({
+      activeMountId: 'knight_warhorse',
+      mountFatigue: 6,
+      equipment: { saddle: null },
+    }))).toBe(-1);
+
+    expect(getNaturalMountFatigueDelta(makeCharacter({
+      activeMountId: 'knight_warhorse',
+      mountFatigue: 6,
+      equipment: { saddle: 'silver_rein_saddle' },
+    }))).toBe(-2);
+
+    expect(getNaturalMountFatigueDelta(makeCharacter({
+      activeMountId: 'knight_warhorse',
+      mountFatigue: 1,
+      equipment: { saddle: 'silver_rein_saddle' },
+    }))).toBe(-1);
+  });
+
+  it('does not recover mount fatigue without an active mount', () => {
+    expect(getNaturalMountFatigueDelta(makeCharacter({
+      activeMountId: null,
+      mountFatigue: 6,
+      equipment: { saddle: 'silver_rein_saddle' },
+    }))).toBe(0);
   });
 });

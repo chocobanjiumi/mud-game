@@ -57,7 +57,7 @@ import { LootCalculator } from './loot.js';
 import { addExperienceToCharacter, getLevelExpProgress } from './leveling.js';
 import { applyLowLevelExpPenalty, formatExpPenaltyMessage } from './level-scaling.js';
 import { grantAndNotifyLearnableSkills, removeLegacyAdventurerSkills } from './skill-learning.js';
-import { applyHpRecovery, getNaturalResourceDelta } from './recovery.js';
+import { applyHpRecovery, getNaturalMountFatigueDelta, getNaturalResourceDelta } from './recovery.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 
@@ -439,12 +439,16 @@ function tickNaturalRecovery(): void {
       ? Math.max(1, Math.floor(char.maxHp * NATURAL_RECOVERY_RATE))
       : 0;
     const resourceDelta = getNaturalResourceDelta(char);
+    const mountFatigueDelta = getNaturalMountFatigueDelta(char);
 
-    if (hpRecover <= 0 && resourceDelta === 0) continue;
+    if (hpRecover <= 0 && resourceDelta === 0 && mountFatigueDelta === 0) continue;
 
     char.hp = Math.min(char.maxHp, char.hp + hpRecover);
     if (resourceDelta !== 0) {
       char.resource = Math.min(char.maxResource, Math.max(0, char.resource + resourceDelta));
+    }
+    if (mountFatigueDelta !== 0) {
+      char.mountFatigue = Math.max(0, (char.mountFatigue ?? 0) + mountFatigueDelta);
     }
     saveCharacter(char);
     sendCharacterStatus(session.sessionId, char);

@@ -93,6 +93,7 @@ import { getModifiedSkillRuntime, getResourceAffixBonus, getSkillAffixModifiers 
 import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 import { applySkillResourceChange, checkSkillResource } from './skill-resource.js';
 import { applyHpRecovery, applyResourceRecovery } from './recovery.js';
+import { resolveMountedIntercept, selectMountedInterceptTarget } from './mounted-intercept.js';
 import { applyLowLevelExpPenalty, formatExpPenaltyMessage, getHighLevelCombatPenalty } from './level-scaling.js';
 import { buildRoomMapLayerLookup, formatMapLayerName, inferMapLayerFromCoordinates } from './map-layer.js';
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
@@ -3168,22 +3169,15 @@ function cmdMountedIntercept(session: WsSession, args: string[]): void {
   }
 
   const arg = args.join(' ').trim();
-  const directionToken = arg.startsWith('direction:') ? arg.slice('direction:'.length) : arg;
   const approaching = world.getApproachingMonsters(char.roomId);
-  const target = approaching.find(monster => monster.instanceId === arg)
-    ?? approaching.find(monster => monster.sourceDirection === directionToken)
-    ?? approaching[0];
+  const target = selectMountedInterceptTarget(approaching, arg);
   if (!target) {
     sendError(session.sessionId, '沒有找到可攔截的 approaching 目標。');
     return;
   }
 
   const monsterDef = MONSTERS[target.monsterId];
-  const score = mountStats.stability + mountStats.interceptBonus + char.stats.dex + char.stats.str;
-  const difficulty = 20
-    + (monsterDef?.level ?? 1) * 2
-    + (monsterDef?.isBoss ? 20 : monsterDef?.isElite ? 10 : 0);
-  const delay = score >= difficulty + 15 ? 2 : score >= difficulty ? 1 : 0;
+  const { delay } = resolveMountedIntercept(mountStats, char.stats, monsterDef);
   if (delay > 0) {
     const next = approaching.map(monster =>
       monster.instanceId === target.instanceId

@@ -31,6 +31,7 @@ const validCommands = new Set([
   'look', 'go', 'move', 'status', 'inventory', 'skills',
   'search', 'inspect', 'open',
   'attack', 'skill', 'defend', 'escape',
+  'mount', 'charge', 'intercept', 'mounted',
   'equip', 'unequip', 'use', 'take', 'pick', 'loot', 'drop',
   'say', 'talk', 'allocate', 'alloc', 'map', 'help',
   'rest', 'activate', 'portals', 'travel', 'recall',
@@ -343,6 +344,16 @@ describe('Command Parser', () => {
       const result = parseCommand('talk merchant');
       expect(result.isValid).toBe(true);
       expect(result.argStr).toBe('merchant');
+    });
+
+    it('should recognize mounted combat commands', () => {
+      expect(parseCommand('mount ride').isValid).toBe(true);
+      expect(parseCommand('charge enemy-1').isValid).toBe(true);
+      expect(parseCommand('intercept direction:north').isValid).toBe(true);
+
+      const guard = parseCommand('mounted guard ally-1');
+      expect(guard.isValid).toBe(true);
+      expect(guard.args).toEqual(['guard', 'ally-1']);
     });
   });
 });
