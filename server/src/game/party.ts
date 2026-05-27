@@ -536,6 +536,8 @@ export class PartyManager {
         level: char?.level ?? 1,
         hp: char?.hp ?? 0,
         maxHp: char?.maxHp ?? 1,
+        activeMountId: char?.activeMountId ?? null,
+        mounted: char?.mounted ?? false,
       };
     });
 

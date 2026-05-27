@@ -309,7 +309,16 @@ export interface InventoryPayload {
 export interface PartyPayload {
   id: string;
   leaderId: string;
-  members: { id: string; name: string; classId: string; level: number; hp: number; maxHp: number }[];
+  members: {
+    id: string;
+    name: string;
+    classId: string;
+    level: number;
+    hp: number;
+    maxHp: number;
+    activeMountId?: string | null;
+    mounted?: boolean;
+  }[];
 }
 
 export interface ChatPayload {

@@ -67,6 +67,8 @@ export interface PartyMember {
   level: number;
   hp: number;
   maxHp: number;
+  activeMountId?: string | null;
+  mounted?: boolean;
 }
 
 // --- Chat message ---
