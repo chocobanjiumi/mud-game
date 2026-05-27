@@ -19,6 +19,6 @@
     { "assetId": "item_forest_fen_whispering_crystal", "category": "item", "targetId": "whispering_crystal", "name": "低語水晶", "outputPath": "client/public/images/items/item_forest_fen_whispering_crystal.png", "row": 2, "column": 1 },
     { "assetId": "item_forest_fen_zone_amber_forest_body_2", "category": "item", "targetId": "zone_amber_forest_body_2", "name": "琥珀森林護甲", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_body_2.png", "row": 2, "column": 2 },
     { "assetId": "item_forest_fen_zone_amber_forest_feet_4", "category": "item", "targetId": "zone_amber_forest_feet_4", "name": "琥珀森林長靴", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_feet_4.png", "row": 2, "column": 3 },
-    { "assetId": "item_forest_fen_zone_amber_forest_hands_3", "category": "item", "targetId": "zone_amber_forest_hands_3", "name": "琥珀森林護手", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_hands_3.png", "row": 2, "column": 4 }
+    { "assetId": "item_forest_fen_zone_amber_forest_hands", "category": "item", "targetId": "zone_amber_forest_hands", "name": "琥珀森林護手", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_hands.png", "row": 2, "column": 4 }
   ]
 }

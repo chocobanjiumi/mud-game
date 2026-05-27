@@ -7,7 +7,7 @@
   "targets": [
     { "assetId": "item_demon_abyss_zone_abyss_rift_earring", "category": "item", "targetId": "zone_abyss_rift_earring", "name": "深淵裂隙耳飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_earring.png", "row": 0, "column": 0 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_feet_4", "category": "item", "targetId": "zone_abyss_rift_feet_4", "name": "深淵裂隙長靴", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_feet_4.png", "row": 0, "column": 1 },
-    { "assetId": "item_demon_abyss_zone_abyss_rift_hands_3", "category": "item", "targetId": "zone_abyss_rift_hands_3", "name": "深淵裂隙護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_hands_3.png", "row": 0, "column": 2 },
+    { "assetId": "item_demon_abyss_zone_abyss_rift_hands", "category": "item", "targetId": "zone_abyss_rift_hands", "name": "深淵裂隙護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_hands.png", "row": 0, "column": 2 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_head_1", "category": "item", "targetId": "zone_abyss_rift_head_1", "name": "深淵裂隙兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_head_1.png", "row": 1, "column": 0 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_necklace", "category": "item", "targetId": "zone_abyss_rift_necklace", "name": "深淵裂隙墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_necklace.png", "row": 1, "column": 1 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_signet", "category": "item", "targetId": "zone_abyss_rift_signet", "name": "深淵裂隙戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_signet.png", "row": 1, "column": 2 },

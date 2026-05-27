@@ -12,7 +12,7 @@
     { "assetId": "item_coast_water_zone_deepsea_temple_weapon_7", "category": "item", "targetId": "deepsea_temple_giant_sword", "name": "深海神殿戰刃", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_weapon_7.png", "row": 1, "column": 1 },
     { "assetId": "item_coast_water_zone_eastern_coast_body_2", "category": "item", "targetId": "zone_eastern_coast_body_2", "name": "東方海岸護甲", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_body_2.png", "row": 1, "column": 2 },
     { "assetId": "item_coast_water_zone_eastern_coast_feet_4", "category": "item", "targetId": "zone_eastern_coast_feet_4", "name": "東方海岸長靴", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_feet_4.png", "row": 2, "column": 0 },
-    { "assetId": "item_coast_water_zone_eastern_coast_hands_3", "category": "item", "targetId": "zone_eastern_coast_hands_3", "name": "東方海岸護手", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_hands_3.png", "row": 2, "column": 1 },
+    { "assetId": "item_coast_water_zone_eastern_coast_hands", "category": "item", "targetId": "zone_eastern_coast_hands", "name": "東方海岸護手", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_hands.png", "row": 2, "column": 1 },
     { "assetId": "item_coast_water_zone_eastern_coast_head_1", "category": "item", "targetId": "zone_eastern_coast_head_1", "name": "東方海岸兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_head_1.png", "row": 2, "column": 2 }
   ]
 }

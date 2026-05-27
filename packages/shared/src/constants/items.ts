@@ -217,6 +217,34 @@ const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'access
     'stormneedle_ring',
     'blackwood_charcoal_ring',
   ],
+  hands: [
+    'hemp_rope_handguards',
+    'creekstone_knuckles',
+    'willow_branch_gloves',
+    'granary_iron_bracers',
+    'blackmoss_claw_gloves',
+    'tide_rope_bracers',
+    'mine_spike_gauntlets',
+    'frosthide_finger_guards',
+    'redrock_bracers',
+    'silverpine_palmguards',
+    'thundergrass_arm_wraps',
+    'amber_finger_gauntlets',
+    'bloodsalt_claw_gauntlets',
+    'starsand_cuff_guards',
+    'moonwell_white_gloves',
+    'charwood_armguards',
+    'mistharbor_hook_gloves',
+    'ancient_tablet_palmguards',
+    'mirrormarsh_wet_gloves',
+    'redforge_iron_gauntlets',
+    'thundersteppe_buckle_bracers',
+    'glasssand_finger_guards',
+    'undercity_copper_gauntlets',
+    'gravefrost_bone_bracers',
+    'storm_iron_fists',
+    'blackwood_hunter_gloves',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -940,6 +968,7 @@ function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'acce
   if (slot === 'earring') return `zone_${themeId}_earring`;
   if (slot === 'necklace') return `zone_${themeId}_necklace`;
   if (slot === 'ring') return index >= ZONE_THEME_BASE_SLOTS.length ? `zone_${themeId}_signet` : `zone_${themeId}_ring`;
+  if (slot === 'hands') return `zone_${themeId}_hands`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 

@@ -6,7 +6,7 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_demon_abyss_02b.sheet.png",
   "targets": [
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_feet_4", "category": "item", "targetId": "zone_cursed_graveyard_feet_4", "name": "詛咒墓園長靴", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_feet_4.png", "row": 0, "column": 0 },
-    { "assetId": "item_demon_abyss_zone_cursed_graveyard_hands_3", "category": "item", "targetId": "zone_cursed_graveyard_hands_3", "name": "詛咒墓園護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_hands_3.png", "row": 0, "column": 1 },
+    { "assetId": "item_demon_abyss_zone_cursed_graveyard_hands", "category": "item", "targetId": "zone_cursed_graveyard_hands", "name": "詛咒墓園護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_hands.png", "row": 0, "column": 1 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_head_1", "category": "item", "targetId": "zone_cursed_graveyard_head_1", "name": "詛咒墓園兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_head_1.png", "row": 0, "column": 2 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_necklace", "category": "item", "targetId": "zone_cursed_graveyard_necklace", "name": "詛咒墓園墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_necklace.png", "row": 1, "column": 0 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_ring", "category": "item", "targetId": "zone_cursed_graveyard_ring", "name": "詛咒墓園指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_ring.png", "row": 1, "column": 1 },

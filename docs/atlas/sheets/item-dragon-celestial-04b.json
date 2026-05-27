@@ -8,7 +8,7 @@
     { "assetId": "item_dragon_celestial_zone_sunspire_body_2", "category": "item", "targetId": "zone_sunspire_body_2", "name": "日尖塔護甲", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_body_2.png", "row": 0, "column": 0 },
     { "assetId": "item_dragon_celestial_zone_sunspire_earring", "category": "item", "targetId": "zone_sunspire_earring", "name": "日尖塔耳飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_earring.png", "row": 0, "column": 1 },
     { "assetId": "item_dragon_celestial_zone_sunspire_feet_4", "category": "item", "targetId": "zone_sunspire_feet_4", "name": "日尖塔長靴", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_feet_4.png", "row": 0, "column": 2 },
-    { "assetId": "item_dragon_celestial_zone_sunspire_hands_3", "category": "item", "targetId": "zone_sunspire_hands_3", "name": "日尖塔護手", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_hands_3.png", "row": 1, "column": 0 },
+    { "assetId": "item_dragon_celestial_zone_sunspire_hands", "category": "item", "targetId": "zone_sunspire_hands", "name": "日尖塔護手", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_hands.png", "row": 1, "column": 0 },
     { "assetId": "item_dragon_celestial_zone_sunspire_head_1", "category": "item", "targetId": "zone_sunspire_head_1", "name": "日尖塔兜帽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_head_1.png", "row": 1, "column": 1 },
     { "assetId": "item_dragon_celestial_zone_sunspire_necklace", "category": "item", "targetId": "zone_sunspire_necklace", "name": "日尖塔墜飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_necklace.png", "row": 1, "column": 2 }
   ]

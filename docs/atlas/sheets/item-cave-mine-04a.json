@@ -6,7 +6,7 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_cave_mine_04a.sheet.png",
   "targets": [
     { "assetId": "item_cave_mine_zone_underground_city_feet_4", "category": "item", "targetId": "zone_underground_city_feet_4", "name": "地下城邦長靴", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_feet_4.png", "row": 0, "column": 0 },
-    { "assetId": "item_cave_mine_zone_underground_city_hands_3", "category": "item", "targetId": "zone_underground_city_hands_3", "name": "地下城邦護手", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_hands_3.png", "row": 0, "column": 1 },
+    { "assetId": "item_cave_mine_zone_underground_city_hands", "category": "item", "targetId": "zone_underground_city_hands", "name": "地下城邦護手", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_hands.png", "row": 0, "column": 1 },
     { "assetId": "item_cave_mine_zone_underground_city_head_1", "category": "item", "targetId": "zone_underground_city_head_1", "name": "地下城邦兜帽", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_head_1.png", "row": 0, "column": 2 },
     { "assetId": "item_cave_mine_zone_underground_city_necklace", "category": "item", "targetId": "zone_underground_city_necklace", "name": "地下城邦墜飾", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_necklace.png", "row": 1, "column": 0 },
     { "assetId": "item_cave_mine_zone_underground_city_ring", "category": "item", "targetId": "zone_underground_city_ring", "name": "地下城邦指環", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_ring.png", "row": 1, "column": 1 },
