@@ -7,7 +7,7 @@
   "targets": [
     { "assetId": "item_coast_water_harbor_seal_stamp", "category": "item", "targetId": "harbor_seal_stamp", "name": "港務封印章", "outputPath": "client/public/images/items/item_coast_water_harbor_seal_stamp.png", "row": 0, "column": 0 },
     { "assetId": "item_coast_water_lakebreath_phial", "category": "item", "targetId": "lakebreath_phial", "name": "湖息小瓶", "outputPath": "client/public/images/items/item_coast_water_lakebreath_phial.png", "row": 0, "column": 1 },
-    { "assetId": "item_coast_water_pirate_crossbow", "category": "item", "targetId": "pirate_crossbow", "name": "海盜船長的短銃弩", "outputPath": "client/public/images/items/item_coast_water_pirate_crossbow.png", "row": 0, "column": 2 },
+    { "assetId": "item_coast_water_pirate_crossbow", "category": "item", "targetId": "pirate_captain_crossbow", "name": "海盜船長的短銃弩", "outputPath": "client/public/images/items/item_coast_water_pirate_crossbow.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_ritual_reef_bloodseal", "category": "item", "targetId": "ritual_reef_bloodseal", "name": "礁心血印", "outputPath": "client/public/images/items/item_coast_water_ritual_reef_bloodseal.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_serpent_god_backwater_scale", "category": "item", "targetId": "serpent_god_backwater_scale", "name": "蛇神背水鱗", "outputPath": "client/public/images/items/item_coast_water_serpent_god_backwater_scale.png", "row": 1, "column": 1 },
     { "assetId": "item_coast_water_sharktooth_tally", "category": "item", "targetId": "sharktooth_tally", "name": "鯊齒記功牌", "outputPath": "client/public/images/items/item_coast_water_sharktooth_tally.png", "row": 1, "column": 2 }

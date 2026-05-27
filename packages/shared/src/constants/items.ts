@@ -1,8 +1,13 @@
 // 物品資料
 
-import type { EquipSlot, ItemDef, ItemRarity } from '../types/item.js';
+import type { EquipSlot, ItemDef, ItemRarity, WeaponType } from '../types/item.js';
 
 const EQUIPMENT_TYPES = new Set(['weapon', 'armor', 'accessory']);
+const OFFHAND_WEAPON_TYPES = new Set<WeaponType>(['focus', 'grimoire', 'holy_tome', 'shield']);
+
+function equipSlotForWeaponType(weaponType: WeaponType): EquipSlot {
+  return OFFHAND_WEAPON_TYPES.has(weaponType) ? 'offhand' : 'weapon';
+}
 
 function normalizeItemDefs(defs: Record<string, ItemDef>): Record<string, ItemDef> {
   return Object.fromEntries(
@@ -12,6 +17,7 @@ function normalizeItemDefs(defs: Record<string, ItemDef>): Record<string, ItemDe
         ...def,
         equipSlot: def.equipSlot ?? inferEquipSlot(id),
         level: def.level ?? def.levelReq,
+        weaponType: def.type === 'weapon' ? def.weaponType ?? inferWeaponType(id, def) : def.weaponType,
         sourceTags: def.sourceTags ?? inferSourceTags(id, def),
         zoneTags: def.zoneTags ?? inferZoneTags(id, def),
       }];
@@ -20,6 +26,7 @@ function normalizeItemDefs(defs: Record<string, ItemDef>): Record<string, ItemDe
 }
 
 function inferEquipSlot(itemId: string): EquipSlot {
+  if (itemId.includes('shield')) return 'offhand';
   if (itemId.includes('ring')) return 'ring';
   if (itemId.includes('earring')) return 'earring';
   if (itemId.includes('belt')) return 'belt';
@@ -29,6 +36,32 @@ function inferEquipSlot(itemId: string): EquipSlot {
   if (itemId.includes('boot') || itemId.includes('greave') || itemId.includes('sandal')) return 'feet';
   if (itemId.includes('armor') || itemId.includes('mail') || itemId.includes('robe') || itemId.includes('vest') || itemId.includes('garb') || itemId.includes('plate')) return 'body';
   return 'weapon';
+}
+
+function inferWeaponType(itemId: string, def: ItemDef): WeaponType {
+  const haystack = `${itemId} ${def.name} ${def.description}`.toLowerCase();
+
+  if (itemId.includes('shield')) return 'shield';
+  if (haystack.includes('crossbow') || haystack.includes('十字弓') || haystack.includes('弩')) return 'crossbow';
+  if (haystack.includes('bow') || haystack.includes('弓')) return 'bow';
+  if (haystack.includes('staff') || haystack.includes('法杖')) return 'staff';
+  if (haystack.includes('scepter') || haystack.includes('權杖')) return 'scepter';
+  if (haystack.includes('wand') || haystack.includes('魔杖')) return 'wand';
+  if (haystack.includes('focus') || haystack.includes('法器')) return 'focus';
+  if (haystack.includes('dagger') || haystack.includes('匕首') || haystack.includes('隱匕') || haystack.includes('裂匕')) return 'dagger';
+  if (haystack.includes('blade') || haystack.includes('短刃') || haystack.includes('刺劍') || haystack.includes('彎刀') || haystack.includes('鉤刃')) return 'blade';
+  if (haystack.includes('spear') || haystack.includes('長矛') || haystack.includes('短槍')) return 'spear';
+  if (haystack.includes('greataxe') || haystack.includes('巨斧')) return 'greataxe';
+  if (haystack.includes('axe') || haystack.includes('斧') || haystack.includes('戰鎬')) return 'axe';
+  if (haystack.includes('warhammer') || haystack.includes('戰錘')) return 'warhammer';
+  if (haystack.includes('hammer') || haystack.includes('鎚') || haystack.includes('錘')) return 'hammer';
+  if (haystack.includes('katana') || haystack.includes('太刀')) return 'katana';
+  if (haystack.includes('giant_sword') || haystack.includes('戰刃') || haystack.includes('巨劍')) return 'giant_sword';
+  if (haystack.includes('sword') || haystack.includes('劍')) return 'sword';
+  if (haystack.includes('grimoire') || haystack.includes('魔導書') || haystack.includes('魔典')) return 'grimoire';
+  if (haystack.includes('tome') || haystack.includes('聖典') || haystack.includes('祈禱書')) return 'holy_tome';
+
+  return 'sword';
 }
 
 function inferSourceTags(itemId: string, def: ItemDef): string[] {
@@ -56,6 +89,7 @@ function inferZoneTags(itemId: string, def: ItemDef): string[] {
 
 const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<EquipSlot, number> = {
   weapon: 13,
+  offhand: 0,
   head: 26,
   body: 23,
   hands: 26,
@@ -69,6 +103,7 @@ const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<EquipSlot, number> = {
 
 const SUPPLEMENTAL_SLOT_STATS: Record<Exclude<EquipSlot, 'accessory'>, keyof NonNullable<ItemDef['stats']>> = {
   weapon: 'atk',
+  offhand: 'def',
   head: 'def',
   body: 'def',
   hands: 'atk',
@@ -77,6 +112,35 @@ const SUPPLEMENTAL_SLOT_STATS: Record<Exclude<EquipSlot, 'accessory'>, keyof Non
   earring: 'int',
   belt: 'vit',
   necklace: 'str',
+};
+
+const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'accessory'>, readonly string[]>> = {
+  earring: [
+    'creek_pearl_earring',
+    'willow_bud_earring',
+    'grain_bell_earring',
+    'blackmoss_ear_cuff',
+    'tide_shell_ear_ornament',
+    'mineral_crystal_ear_stud',
+    'frostfeather_ear_drop',
+    'redsand_earring',
+    'silverpine_ear_cuff',
+    'thundergrass_ear_drop',
+    'amber_bee_wing_earring',
+    'bloodsalt_bone_earring',
+    'starsand_ear_pearl',
+    'moonwell_earring',
+    'charwood_ear_cuff',
+    'mistharbor_copper_hook_earring',
+    'ancient_tablet_ear_piece',
+    'mirrormarsh_silver_ear_drop',
+    'redforge_ear_stud',
+    'thundersteppe_bone_ear_drop',
+    'glasssand_mirror_earring',
+    'undercity_copper_ear_piece',
+    'gravefrost_ear_pearl',
+    'stormfeather_ear_drop',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -100,6 +164,7 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<Exclude<EquipSlot, 'accessory'>, Supple
     { name: '血鹽鉤刃', description: '血鹽海岸船匠鍛出的鉤刃，刃根殘留紅鹽結晶，能在盾縫間拉出破口。' },
     { name: '星砂儀刃', description: '星砂混入鋼中的儀式短刃，刃面浮著細小銀點，像夜空被壓進金屬裡。' },
   ],
+  offhand: [],
   head: [
     { name: '草繩皮盔', description: '硬皮帽沿用草繩縫緊，帽頂壓著曬乾苔葉，能擋住枝條與碎石。' },
     { name: '溪石護帽', description: '布帽前額縫著扁平溪石，石面被水磨得發亮，邊緣有藍灰色麻線。' },
@@ -313,6 +378,22 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<Exclude<EquipSlot, 'accessory'>, Supple
   ],
 };
 
+const SUPPLEMENTAL_WEAPON_IDS = [
+  'creek_iron_blade',
+  'willow_hunting_blade',
+  'field_copper_axe',
+  'blackpine_curved_blade',
+  'tidalglass_rapier_blade',
+  'minelamp_greataxe',
+  'frostbeak_spear',
+  'redrock_warpick_axe',
+  'silverpine_katana',
+  'thundergrass_spear',
+  'amber_string_blade',
+  'bloodsalt_hook_blade',
+  'starsand_ritual_blade',
+] as const;
+
 function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
   const result: Record<string, ItemDef> = {};
   const levels = [1, 5, 10, 15, 20, 25, 30];
@@ -322,14 +403,21 @@ function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
     for (let i = 0; i < count; i++) {
       const levelReq = levels[i % levels.length];
       const tier = Math.floor(i / levels.length) + 1;
-      const id = `supplemental_${slot}_${String(i + 1).padStart(2, '0')}`;
+      let id = `supplemental_${slot}_${String(i + 1).padStart(2, '0')}`;
+      if (slot === 'weapon') {
+        const supplementalWeaponId = SUPPLEMENTAL_WEAPON_IDS[i];
+        if (!supplementalWeaponId) throw new Error(`Missing supplemental weapon id for #${i + 1}`);
+        id = supplementalWeaponId;
+      } else {
+        id = SUPPLEMENTAL_EQUIPMENT_ID_SLUGS[slot]?.[i] ?? id;
+      }
       const statValue = Math.max(1, Math.floor(levelReq / 3) + tier);
       const art = SUPPLEMENTAL_EQUIPMENT_ART[slot][i];
       if (!art) throw new Error(`Missing supplemental equipment art for ${slot} #${i + 1}`);
       result[id] = {
         id,
         name: art.name,
-        type: slot === 'weapon' ? 'weapon' : slot === 'head' || slot === 'body' || slot === 'hands' || slot === 'feet' ? 'armor' : 'accessory',
+        type: slot === 'weapon' ? 'weapon' : slot === 'head' || slot === 'body' || slot === 'hands' || slot === 'feet' || slot === 'offhand' ? 'armor' : 'accessory',
         description: art.description,
         buyPrice: 80 + levelReq * 35 + tier * 20,
         sellPrice: 40 + levelReq * 17 + tier * 10,
@@ -352,16 +440,75 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
   const weaponTypes = [
     'greataxe',
     'katana',
-    'elemental_staff',
+    'staff_elemental',
     'grimoire',
-    'hourglass_staff',
+    'staff_hourglass',
     'crossbow',
     'dagger',
     'whip',
     'holy_tome',
-    'nature_staff',
+    'staff_nature',
     'warhammer',
   ] as const;
+  const progressionWeaponTypes: Record<typeof weaponTypes[number], WeaponType> = {
+    greataxe: 'greataxe',
+    katana: 'katana',
+    staff_elemental: 'staff',
+    grimoire: 'grimoire',
+    staff_hourglass: 'staff',
+    crossbow: 'crossbow',
+    dagger: 'dagger',
+    whip: 'whip',
+    holy_tome: 'holy_tome',
+    staff_nature: 'staff',
+    warhammer: 'warhammer',
+  };
+  const weaponIds: Record<typeof weaponTypes[number], Record<50 | 60, string>> = {
+    greataxe: {
+      50: 'white_ash_greataxe',
+      60: 'final_flame_mountainbreaker_greataxe',
+    },
+    katana: {
+      50: 'moonshadow_thin_katana',
+      60: 'endstar_lightless_katana',
+    },
+    staff_elemental: {
+      50: 'four_aspect_crystal_staff',
+      60: 'world_furnace_core_staff',
+    },
+    grimoire: {
+      50: 'starpage_grimoire',
+      60: 'final_black_grimoire',
+    },
+    staff_hourglass: {
+      50: 'star_etched_hourglass_staff',
+      60: 'zerotick_hourglass_staff',
+    },
+    crossbow: {
+      50: 'dragonspine_heavy_crossbow',
+      60: 'final_war_starbreaker_crossbow',
+    },
+    dagger: {
+      50: 'deepmoon_hidden_blade',
+      60: 'final_shadow_rift_blade',
+    },
+    whip: {
+      50: 'thundervine_whip',
+      60: 'final_thunder_star_whip',
+    },
+    holy_tome: {
+      50: 'corona_holy_tome',
+      60: 'last_bell_holy_tome',
+    },
+    staff_nature: {
+      50: 'emerald_root_staff',
+      60: 'world_tree_remnant_staff',
+    },
+    warhammer: {
+      50: 'oathstone_warhammer',
+      60: 'final_crownbreaker_warhammer',
+    },
+  };
   const weaponArt: Record<typeof weaponTypes[number], Record<50 | 60, SupplementalEquipmentArt>> = {
     greataxe: {
       50: { name: '白燼巨斧', description: '白燼巨斧的斧面覆著龍谷灰晶，長柄纏黑銀皮革，劈落時會拖出乾白火粉。' },
@@ -371,7 +518,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
       50: { name: '月影薄太刀', description: '月影薄太刀刃身狹長如冷月，刀鍔嵌著黑月玻片，出鞘時反光像水面裂開。' },
       60: { name: '終星無明刃', description: '終星無明刃的刀身深黑無紋，刃緣卻浮著星砂銀線，斬擊後才聽見細碎風聲。' },
     },
-    elemental_staff: {
+    staff_elemental: {
       50: { name: '四相晶杖', description: '四相晶杖頂端懸著裂成四色的晶核，杖身刻滿風火霜雷符槽，光芒輪流流動。' },
       60: { name: '世界爐心杖', description: '世界爐心杖以終戰熔核封頂，黑木杖身滲出金紅脈絡，像握著一段未冷卻地脈。' },
     },
@@ -379,7 +526,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
       50: { name: '星頁魔導書', description: '星頁魔導書封皮是深藍龍革，書脊嵌銀釘，翻頁時會落下像星屑般的冷光。' },
       60: { name: '終卷黑典', description: '終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息。' },
     },
-    hourglass_staff: {
+    staff_hourglass: {
       50: { name: '星刻沙漏杖', description: '星刻沙漏杖中央嵌著倒懸玻璃，銀砂在其中逆流，杖端環繞細小刻度環。' },
       60: { name: '零刻時杖', description: '零刻時杖的沙漏沒有上下之分，黑銀砂粒停在半空，杖身每隔一息重新刻出裂紋。' },
     },
@@ -399,7 +546,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
       50: { name: '日冕聖典', description: '日冕聖典封面包著白金薄板，中央有圓形日紋，頁緣散出柔亮金塵。' },
       60: { name: '末鐘聖典', description: '末鐘聖典以灰白骨扣鎖住，封面刻著破鐘與光翼，翻頁時會響起遙遠禱聲。' },
     },
-    nature_staff: {
+    staff_nature: {
       50: { name: '翡翠根杖', description: '翡翠根杖由活木根鬚自然纏成，杖頭長著透明綠晶，握持處仍有溫潤樹脈。' },
       60: { name: '世界樹殘杖', description: '世界樹殘杖保留焦黑樹皮與金綠新芽，杖心像有微弱春雷在木紋中回響。' },
     },
@@ -412,8 +559,9 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
 
   for (const weaponType of weaponTypes) {
     for (const levelReq of [50, 60] as const) {
-      const id = `${weaponType}_lv${levelReq}`;
-      const statKey = weaponType === 'elemental_staff' || weaponType === 'grimoire' || weaponType === 'hourglass_staff' || weaponType === 'holy_tome' || weaponType === 'nature_staff'
+      const id = weaponIds[weaponType][levelReq];
+      const newWeaponType = progressionWeaponTypes[weaponType];
+      const statKey = newWeaponType === 'staff' || newWeaponType === 'grimoire' || newWeaponType === 'holy_tome'
         ? 'matk'
         : 'atk';
       const art = weaponArt[weaponType][levelReq];
@@ -427,10 +575,10 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
         stackable: false,
         maxStack: 1,
         levelReq,
-        equipSlot: 'weapon',
+        equipSlot: equipSlotForWeaponType(newWeaponType),
         stats: { [statKey]: Math.floor(levelReq * 1.35) },
         rarity: levelReq >= 60 ? 'legendary' : 'epic',
-        weaponType,
+        weaponType: newWeaponType,
         sourceTags: ['shop', 'drop', 'weapon_progression'],
         zoneTags: levelReq >= 60 ? ['final_battleground', 'global'] : ['dragon_valley', 'abyss_rift', 'global'],
       };
@@ -438,6 +586,191 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
   }
 
   return result;
+}
+
+interface WeaponTopUpArt {
+  id: string;
+  name: string;
+  weaponType: WeaponType;
+  levelReq: number;
+  rarity: ItemRarity;
+  stat: 'atk' | 'matk';
+  classReq?: ItemDef['classReq'];
+  zoneTags: string[];
+  description: string;
+}
+
+function createWeaponTypeTopUpDefs(): Record<string, ItemDef> {
+  const weapons: WeaponTopUpArt[] = [
+    { id: 'ashwood_dueling_sword', name: '灰木決鬥劍', weaponType: 'sword', levelReq: 8, rarity: 'uncommon', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['plains'], description: '灰白硬木護手托著窄直鋼刃，劍脊有練習場反覆磨出的細亮刮痕，柄尾繫著褪色紅繩，像剛從巡邏兵器架上取下。' },
+    { id: 'mirrorlake_guard_sword', name: '鏡湖衛劍', weaponType: 'sword', levelReq: 18, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['crystal_cave'], description: '劍面薄而平整，反光帶著水藍波紋，十字護手嵌著小片湖晶，揮動時像把一道冷靜湖光拉成直線。' },
+    { id: 'blackbanner_oath_sword', name: '黑旗誓劍', weaponType: 'sword', levelReq: 32, rarity: 'epic', stat: 'atk', classReq: ['knight', 'sword_saint'], zoneTags: ['lost_capital'], description: '深鐵劍格殘留戰旗燒焦後的黑布纖維，刃根刻著半枚誓約印，整把劍沉穩得像一段未完成的軍令。' },
+    { id: 'sunlit_vanguard_sword', name: '日照前鋒劍', weaponType: 'sword', levelReq: 48, rarity: 'legendary', stat: 'atk', classReq: ['knight', 'sword_saint'], zoneTags: ['celestial_ruins'], description: '金白劍身中央開著細長光槽，護手像展開的晨翼，刃緣在暗處仍泛出微亮日線，端正而耀眼。' },
+    { id: 'reedcutting_blade', name: '割蘆短刃', weaponType: 'blade', levelReq: 7, rarity: 'uncommon', stat: 'atk', classReq: ['ranger', 'swordsman'], zoneTags: ['plains'], description: '寬背薄口的短刃殘著綠褐蘆汁斑，木柄被草繩交叉纏緊，像獵人常掛在腰側的實用割刀。' },
+    { id: 'glassfin_sideblade', name: '玻鰭側刃', weaponType: 'blade', levelReq: 24, rarity: 'rare', stat: 'atk', classReq: ['ranger', 'assassin'], zoneTags: ['eastern_coast'], description: '半透明青色刀身背脊像魚鰭般起伏，護手鑲著鹽白貝片，靠近光源時會折出濕亮海藍光。' },
+    { id: 'emberhook_crescent_blade', name: '燼鉤月刃', weaponType: 'blade', levelReq: 42, rarity: 'epic', stat: 'atk', classReq: ['assassin', 'sword_saint'], zoneTags: ['volcano_zone'], description: '刀身彎成狹長新月，內側刃口帶焦紅裂線，柄尾垂著黑鐵環，像能從甲縫間拖出燃燒傷口。' },
+    { id: 'splinter_hatchet_axe', name: '裂木手斧', weaponType: 'axe', levelReq: 5, rarity: 'common', stat: 'atk', classReq: ['swordsman', 'berserker'], zoneTags: ['starter_village'], description: '小斧面邊緣有新磨銀口，短柄保留粗糙木節與樹脂痕，像從伐木棚直接改成戰鬥用具。' },
+    { id: 'boarhide_raider_axe', name: '豬皮掠斧', weaponType: 'axe', levelReq: 9, rarity: 'uncommon', stat: 'atk', classReq: ['swordsman', 'berserker'], zoneTags: ['plains'], description: '短柄包著硬化獸皮，斧背掛有破銅鈴與牙飾，斧刃寬厚偏重，是野外掠襲者的粗獷單手斧。' },
+    { id: 'saltbite_boarding_axe', name: '鹽咬登船斧', weaponType: 'axe', levelReq: 15, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'ranger'], zoneTags: ['eastern_coast'], description: '斧刃前端帶鉤，鐵面被海風蝕出白斑，柄頭纏著深藍濕繩，像曾無數次勾住船舷與盾牌。' },
+    { id: 'redglass_cleaver_axe', name: '紅玻劈斧', weaponType: 'axe', levelReq: 22, rarity: 'rare', stat: 'atk', classReq: ['berserker', 'knight'], zoneTags: ['volcano_zone'], description: '火山玻璃嵌進斧刃中央，透明裂層裡凝著暗紅光點，斧面寬而平，像一片熔岩剛剛冷卻。' },
+    { id: 'ironroot_warden_axe', name: '鐵根守林斧', weaponType: 'axe', levelReq: 28, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'druid'], zoneTags: ['dark_forest'], description: '黑根木與鐵箍壓合成短柄，斧刃刻有葉脈般的防滑槽，沉暗而堅固，像森林守衛的武器。' },
+    { id: 'copperlion_captain_axe', name: '銅獅隊長斧', weaponType: 'axe', levelReq: 34, rarity: 'epic', stat: 'atk', classReq: ['knight', 'berserker'], zoneTags: ['lost_capital'], description: '斧背鑄成咆哮獅首，銅綠沿著鬃毛紋路沉積，鋼刃仍保持明亮，像失落軍團的指揮官武器。' },
+    { id: 'stormmarked_throwing_axe', name: '雷痕飛斧', weaponType: 'axe', levelReq: 40, rarity: 'epic', stat: 'atk', classReq: ['swordsman', 'ranger'], zoneTags: ['storm_highlands'], description: '窄斧面有青白閃電刻痕，柄尾嵌著配重鐵珠，輪廓顯示它既能近戰也能短距投擲。' },
+    { id: 'dawnforge_bearded_axe', name: '曙鍛鬚斧', weaponType: 'axe', levelReq: 46, rarity: 'epic', stat: 'atk', classReq: ['knight', 'berserker'], zoneTags: ['celestial_ruins'], description: '下垂斧刃像金白鬍鬚，刃根包著暖色銅箍，斧面細孔透出爐火餘光，是線條漂亮的神殿鍛斧。' },
+    { id: 'kingsfall_execution_axe', name: '王隕刑斧', weaponType: 'axe', levelReq: 54, rarity: 'legendary', stat: 'atk', classReq: ['berserker', 'sword_saint'], zoneTags: ['final_battleground'], description: '短柄沉重，黑鋼斧面嵌著破冠金片，刃口留有暗紅舊痕，像被縮小卻依然威嚴的處刑巨斧。' },
+    { id: 'stariron_hand_axe', name: '星鐵手斧', weaponType: 'axe', levelReq: 60, rarity: 'legendary', stat: 'atk', classReq: ['berserker', 'sword_saint'], zoneTags: ['final_battleground'], description: '深藍黑色斧面內浮著銀白星砂，短柄包覆隕鐵薄片，揮動時像把一小段夜空拖進戰場。' },
+    { id: 'fieldstone_carpenter_hammer', name: '田石木工錘', weaponType: 'hammer', levelReq: 1, rarity: 'common', stat: 'atk', classReq: ['swordsman', 'priest'], zoneTags: ['starter_village'], description: '短木柄接著圓鈍石錘頭，錘面有敲木樁留下的白痕，柄尾纏著麻線，像新手也能握穩的單手錘。' },
+    { id: 'bronze_bell_hammer', name: '銅鐘手錘', weaponType: 'hammer', levelReq: 6, rarity: 'common', stat: 'atk', classReq: ['swordsman', 'priest'], zoneTags: ['plains'], description: '銅色錘頭被打成小鐘輪廓，側面有細小裂鈴紋，短柄包著褐皮，揮動時彷彿會帶出低低鐘音。' },
+    { id: 'iron_rivet_hammer', name: '鐵鉚戰錘', weaponType: 'hammer', levelReq: 10, rarity: 'uncommon', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['lost_capital'], description: '方形鐵錘頭四面釘滿短鉚，邊角被磨得發亮，握柄有工坊火印，造型明確像可破甲的單手戰錘。' },
+    { id: 'pilgrim_mallet_hammer', name: '巡禮木槌', weaponType: 'hammer', levelReq: 14, rarity: 'uncommon', stat: 'atk', classReq: ['priest', 'druid'], zoneTags: ['pilgrim_road'], description: '厚木槌頭刻著路標與祈禱符，槌面包有一圈白鐵，柄端掛著布製護符，像朝聖者防身用的祝聖槌。' },
+    { id: 'reefstone_hammer', name: '礁石碎錘', weaponType: 'hammer', levelReq: 18, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'inquisitor'], zoneTags: ['eastern_coast'], description: '錘頭由黑礁石與鐵箍固定，表面嵌著白色貝屑，短柄有鹽霜水痕，像能敲碎甲殼與船板。' },
+    { id: 'crystalcore_hammer', name: '晶核手錘', weaponType: 'hammer', levelReq: 24, rarity: 'rare', stat: 'atk', classReq: ['knight', 'priest'], zoneTags: ['crystal_cave'], description: '透明晶核被包在鐵錘頭中央，撞擊面是霧白晶面，內部折射出淡藍光，兼具工藝感與魔法質地。' },
+    { id: 'ashbrand_hammer', name: '灰印錘', weaponType: 'hammer', levelReq: 30, rarity: 'rare', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['ashfall_monastery'], description: '黑灰錘頭烙著半熄聖印，邊緣包覆暗紅銅片，短柄纏白布但已被灰燼染暗，像修道院審判武器。' },
+    { id: 'stormcap_hammer', name: '雷帽手錘', weaponType: 'hammer', levelReq: 36, rarity: 'epic', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['storm_highlands'], description: '圓頂錘頭像一枚青鐵雷帽，頂端插著短避雷針，錘面有白色電灼痕，輪廓小而充滿爆發感。' },
+    { id: 'moonforge_hammer', name: '月鍛錘', weaponType: 'hammer', levelReq: 42, rarity: 'epic', stat: 'atk', classReq: ['priest', 'knight'], zoneTags: ['celestial_ruins'], description: '銀白錘頭被鍛成半月弧面，短柄刻著月相刻度，撞擊面泛柔和冷光，像禮儀與戰鬥兩用的聖錘。' },
+    { id: 'obsidian_judge_hammer', name: '黑曜裁錘', weaponType: 'hammer', levelReq: 48, rarity: 'epic', stat: 'atk', classReq: ['inquisitor'], zoneTags: ['obsidian_depths'], description: '黑曜石錘頭呈六角柱形，裂縫裡透著暗紅火線，柄端垂著小型鐵牌，像一柄用來敲定判決的單手錘。' },
+    { id: 'dawnstar_hammer', name: '曙星手錘', weaponType: 'hammer', levelReq: 54, rarity: 'legendary', stat: 'atk', classReq: ['high_priest', 'inquisitor'], zoneTags: ['sunspire'], description: '白金錘頭周圍嵌著放射狀小尖星，中心有透明日晶，短柄包白革，整體像一顆可以握在手中的晨星。' },
+    { id: 'final_accord_hammer', name: '終誓定音錘', weaponType: 'hammer', levelReq: 60, rarity: 'legendary', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['final_battleground'], description: '深鐵短錘包著破誓金環，錘面有黑白兩色同心圓印，揮下時像為戰場敲下最後判決，造型莊重清晰。' },
+    { id: 'chalkcircle_focus', name: '白堊圓法器', weaponType: 'focus', levelReq: 1, rarity: 'common', stat: 'matk', classReq: ['mage', 'priest'], zoneTags: ['starter_village'], description: '手掌大小的白色圓石法器，表面刻著簡單同心符圈，邊緣有粉筆般的磨痕，像初學施法者握持的副手媒介。' },
+    { id: 'copper_leaf_focus', name: '銅葉法器', weaponType: 'focus', levelReq: 6, rarity: 'common', stat: 'matk', classReq: ['mage', 'priest'], zoneTags: ['plains'], description: '薄銅片被敲成葉形，中央嵌一粒綠玻璃珠，背面有皮指環可套在手上，外形輕巧且容易辨識。' },
+    { id: 'riverglass_focus', name: '河玻法器', weaponType: 'focus', levelReq: 10, rarity: 'uncommon', stat: 'matk', classReq: ['mage'], zoneTags: ['plains'], description: '橢圓河玻磨成半透明淺藍色，銀絲從四角扣住晶面，內部有水泡般小光點，像一面微型施法透鏡。' },
+    { id: 'smokewick_focus', name: '煙芯法器', weaponType: 'focus', levelReq: 14, rarity: 'uncommon', stat: 'matk', classReq: ['warlock', 'mage'], zoneTags: ['dark_forest'], description: '黑木小框中央夾著一縷不散的灰煙，框邊刻有細小咒文，像被封存在掌中的熄燭火。' },
+    { id: 'brass_astrolabe_focus', name: '黃銅星儀法器', weaponType: 'focus', levelReq: 18, rarity: 'rare', stat: 'matk', classReq: ['mage', 'chronomancer'], zoneTags: ['lost_capital'], description: '小型黃銅星儀由三圈薄環交疊而成，中心懸著藍色星珠，拿在手中像一座可旋轉的微型天文儀。' },
+    { id: 'saltmirror_focus', name: '鹽鏡法器', weaponType: 'focus', levelReq: 24, rarity: 'rare', stat: 'matk', classReq: ['priest', 'mage'], zoneTags: ['eastern_coast'], description: '圓形鹽晶磨成霧面小鏡，鏡框包著漂白木與藍線，反光像潮水薄膜，適合海岸系施法道具圖。' },
+    { id: 'emberlens_focus', name: '燼透鏡法器', weaponType: 'focus', levelReq: 30, rarity: 'rare', stat: 'matk', classReq: ['archmage', 'warlock'], zoneTags: ['volcano_zone'], description: '紅黑金屬框夾住一片橙色透鏡，鏡面內有餘燼般的亮點，手柄短小，像能聚焦火焰的一手法器。' },
+    { id: 'frosthalo_focus', name: '霜環法器', weaponType: 'focus', levelReq: 36, rarity: 'epic', stat: 'matk', classReq: ['mage', 'chronomancer'], zoneTags: ['frostbite_pass'], description: '冰白圓環中央懸著小六角雪晶，環面有藍色霜脈，邊緣凝著細雪，視覺上像寒氣凝成的掌中光環。' },
+    { id: 'boneglyph_focus', name: '骨符法器', weaponType: 'focus', levelReq: 42, rarity: 'epic', stat: 'matk', classReq: ['warlock', 'druid'], zoneTags: ['necropolis_gate'], description: '三片薄骨牌以黑線串成三角，骨面刻著深色符槽，中央漂著微弱紫火，帶有亡靈與祭儀感。' },
+    { id: 'sunpetal_focus', name: '日瓣法器', weaponType: 'focus', levelReq: 48, rarity: 'epic', stat: 'matk', classReq: ['high_priest', 'archmage'], zoneTags: ['sunspire'], description: '金白法器像八片日瓣張開，中央透明晶核散出柔光，背面有指環固定，適合作為神聖副手法器。' },
+    { id: 'voidwell_focus', name: '虛井法器', weaponType: 'focus', levelReq: 54, rarity: 'legendary', stat: 'matk', classReq: ['warlock', 'chronomancer'], zoneTags: ['abyss_rift'], description: '黑銀圓盤中央是一口無底小井，邊緣漂著細碎星砂，光線靠近時像被吸入深處，造型神秘清楚。' },
+    { id: 'astral_crown_focus', name: '星冠法器', weaponType: 'focus', levelReq: 60, rarity: 'legendary', stat: 'matk', classReq: ['archmage', 'high_priest'], zoneTags: ['final_battleground'], description: '小型白金星冠懸浮在掌心大小的透明底座上，冠尖各嵌一粒星晶，中心有旋轉的銀白星核。' },
+    { id: 'willow_witch_wand', name: '柳巫細魔杖', weaponType: 'wand', levelReq: 1, rarity: 'common', stat: 'matk', classReq: ['mage'], zoneTags: ['starter_village'], description: '柔韌柳枝削成的單手魔杖，杖尖綁著淡綠玻珠，杖身有手刻初階符線，適合新手法師圖像。' },
+    { id: 'candlewick_wand', name: '燭芯魔杖', weaponType: 'wand', levelReq: 6, rarity: 'common', stat: 'matk', classReq: ['mage'], zoneTags: ['starter_village'], description: '杖端封著一小滴凝固白蠟，木身微黑像被燭火燻過，施法時杖尖亮起一粒溫暖火星。' },
+    { id: 'blueglass_apprentice_wand', name: '藍玻學徒杖', weaponType: 'wand', levelReq: 10, rarity: 'uncommon', stat: 'matk', classReq: ['mage', 'archmage'], zoneTags: ['crystal_cave'], description: '短而直的木杖嵌著圓形藍玻璃，內部氣泡像凍住的星點，銀線沿木柄纏成基礎導魔迴路。' },
+    { id: 'mothwing_charm_wand', name: '蛾翼咒杖', weaponType: 'wand', levelReq: 14, rarity: 'uncommon', stat: 'matk', classReq: ['mage', 'warlock'], zoneTags: ['dark_forest'], description: '杖頭掛著兩片半透明灰白翅飾，黑木杖身點著粉末狀銀斑，像夜裡會自行抖落微光的詛咒媒介。' },
+    { id: 'coppercoil_focus_wand', name: '銅線聚能杖', weaponType: 'wand', levelReq: 18, rarity: 'rare', stat: 'matk', classReq: ['mage', 'archmage'], zoneTags: ['lost_capital'], description: '短柄被細銅線密密纏繞，杖尖固定菱形透明晶片，金屬線端像齒輪觸鬚般扣住晶體。' },
+    { id: 'rainpearl_wand', name: '雨珠魔杖', weaponType: 'wand', levelReq: 22, rarity: 'rare', stat: 'matk', classReq: ['mage', 'chronomancer'], zoneTags: ['eastern_coast'], description: '淺灰漂木杖頭懸著一粒永不落下的水珠珍珠，柄身刻有潮汐刻度，帶著清冷濕亮質感。' },
+    { id: 'emberneedle_wand', name: '燼針魔杖', weaponType: 'wand', levelReq: 28, rarity: 'rare', stat: 'matk', classReq: ['mage', 'archmage'], zoneTags: ['volcano_zone'], description: '黑鐵細杖像一根長針，杖尖泛著橙紅熱點，握柄以耐火皮革包覆，像把火焰壓縮成極細光線。' },
+    { id: 'frostvein_wand', name: '霜脈魔杖', weaponType: 'wand', levelReq: 34, rarity: 'epic', stat: 'matk', classReq: ['mage', 'chronomancer'], zoneTags: ['frostbite_pass'], description: '白木柄裡透出藍色冰脈，杖頭覆著六角霜晶，邊緣有細雪粉末，是明確的冰系單手施法武器。' },
+    { id: 'inkbone_warlock_wand', name: '墨骨術士杖', weaponType: 'wand', levelReq: 40, rarity: 'epic', stat: 'matk', classReq: ['warlock'], zoneTags: ['abyss_rift'], description: '細長黑骨與銀扣拼成杖身，杖尖嵌著凝固黑墨，周圍刻滿小型禁文，精緻而危險。' },
+    { id: 'sunthread_wand', name: '日線魔杖', weaponType: 'wand', levelReq: 46, rarity: 'epic', stat: 'matk', classReq: ['archmage'], zoneTags: ['celestial_ruins'], description: '白金短柄中嵌著一條筆直金光，杖頭是水滴形透明日晶，整體纖細明亮，像一束被握住的晨光。' },
+    { id: 'voidtick_wand', name: '虛刻魔杖', weaponType: 'wand', levelReq: 54, rarity: 'legendary', stat: 'matk', classReq: ['chronomancer', 'warlock'], zoneTags: ['abyss_rift'], description: '黑銀杖身每隔一段就斷開一線空隙，杖頭懸著無框小沙漏，銀砂停在半空，像時間碎片。' },
+    { id: 'archon_star_wand', name: '星君短魔杖', weaponType: 'wand', levelReq: 60, rarity: 'legendary', stat: 'matk', classReq: ['archmage', 'chronomancer'], zoneTags: ['final_battleground'], description: '深藍星鐵短杖環繞三枚小星晶，中心漂著白金光核，短小但華麗，是高階法師單手魔杖。' },
+    { id: 'greenhorn_hunting_bow', name: '青角獵弓', weaponType: 'bow', levelReq: 6, rarity: 'common', stat: 'atk', classReq: ['ranger'], zoneTags: ['plains'], description: '淡綠角木彎成弓臂，保留天然分叉節點，弓弦粗而可靠，握把纏著淺褐皮條，剪影清楚。' },
+    { id: 'featherfall_shortbow', name: '落羽短弓', weaponType: 'bow', levelReq: 12, rarity: 'uncommon', stat: 'atk', classReq: ['ranger', 'marksman'], zoneTags: ['plains'], description: '上弓臂綁著灰白鳥羽，弓身刷有防潮樹脂，短巧輕便，拉弦處有反覆磨出的光亮弧痕。' },
+    { id: 'blackreed_marsh_bow', name: '黑蘆沼弓', weaponType: 'bow', levelReq: 20, rarity: 'rare', stat: 'atk', classReq: ['ranger', 'beast_master'], zoneTags: ['dark_forest'], description: '細長暗色弓臂像乾蘆葦般有節，弦旁掛著小骨珠與防水油布，帶濕地獵手的陰影氣味。' },
+    { id: 'saltwind_recurve_bow', name: '鹽風反曲弓', weaponType: 'bow', levelReq: 26, rarity: 'rare', stat: 'atk', classReq: ['ranger', 'marksman'], zoneTags: ['eastern_coast'], description: '兩端向外翻起的反曲弓貼著薄薄魚骨片，白鹽霜卡在接縫裡，像能在海風中保持穩定。' },
+    { id: 'amberleaf_longbow', name: '琥葉長弓', weaponType: 'bow', levelReq: 34, rarity: 'epic', stat: 'atk', classReq: ['marksman', 'beast_master'], zoneTags: ['amber_forest'], description: '弓身封入金黃樹脂與葉片脈絡，拉開時樹脂內部像有蜂蜜色光流動，優雅自然系長弓。' },
+    { id: 'stormrail_warbow', name: '風暴軌弓', weaponType: 'bow', levelReq: 42, rarity: 'epic', stat: 'atk', classReq: ['marksman'], zoneTags: ['storm_highlands'], description: '弓臂嵌著兩條青鐵導軌，弦扣處有細小避雷針，弓身留下焦黑雷痕，結實而帶風暴感。' },
+    { id: 'moonwell_silver_bow', name: '月井銀弓', weaponType: 'bow', levelReq: 50, rarity: 'legendary', stat: 'atk', classReq: ['marksman', 'beast_master'], zoneTags: ['celestial_ruins'], description: '銀白木與月井晶片製成，弓弦像一條淡淡水光，弓臂內側鑲著半月紋，安靜且明亮。' },
+    { id: 'last_horizon_bow', name: '終境地平弓', weaponType: 'bow', levelReq: 60, rarity: 'legendary', stat: 'atk', classReq: ['marksman'], zoneTags: ['final_battleground'], description: '黑金弓臂寬大如遠方地平線，兩端浮著微小星點，拉滿時弓弦會亮成一條白色直線。' },
+    { id: 'ratchet_scout_crossbow', name: '棘輪斥候弩', weaponType: 'crossbow', levelReq: 16, rarity: 'rare', stat: 'atk', classReq: ['ranger', 'marksman'], zoneTags: ['lost_capital'], description: '短小木托側面露出黃銅棘輪與細齒，弩臂塗成暗綠色，像專為斥候伏擊設計的安靜機械弩。' },
+    { id: 'obsidian_winch_crossbow', name: '黑曜絞盤弩', weaponType: 'crossbow', levelReq: 36, rarity: 'epic', stat: 'atk', classReq: ['marksman'], zoneTags: ['volcano_zone'], description: '機匣由黑曜片包覆，前端裝著小型絞盤，弩槽刻有紅色導熱線，沉重、精準且破甲。' },
+    { id: 'skybreak_siege_crossbow', name: '破空攻城弩', weaponType: 'crossbow', levelReq: 56, rarity: 'legendary', stat: 'atk', classReq: ['marksman'], zoneTags: ['final_battleground'], description: '像縮小的攻城器械，雙弩臂覆著黑金鋼片，中央箭槽寬到可放重矢，前端星晶亮著準線。' },
+    { id: 'smokeveil_dagger', name: '煙紗匕首', weaponType: 'dagger', levelReq: 28, rarity: 'rare', stat: 'atk', classReq: ['assassin'], zoneTags: ['dark_forest'], description: '霧灰刃面幾乎沒有反光，短柄繫著細黑紗帶，是刺客袖中低調但致命的單手匕首。' },
+    { id: 'nightglass_dagger', name: '夜玻匕首', weaponType: 'dagger', levelReq: 46, rarity: 'epic', stat: 'atk', classReq: ['assassin'], zoneTags: ['abyss_rift'], description: '像一片黑色玻璃碎月，刃口薄到泛紫，護手只有一圈銀絲，小巧銳利且輪廓明確。' },
+    { id: 'granitejaw_greataxe', name: '花崗顎巨斧', weaponType: 'greataxe', levelReq: 18, rarity: 'rare', stat: 'atk', classReq: ['berserker'], zoneTags: ['crystal_cave'], description: '雙刃像咬合石顎，斧面嵌著灰白岩粒，長柄以鐵箍加固，厚重得像從山壁上劈下來。' },
+    { id: 'bloodcoal_greataxe', name: '血煤巨斧', weaponType: 'greataxe', levelReq: 38, rarity: 'epic', stat: 'atk', classReq: ['berserker', 'sword_saint'], zoneTags: ['volcano_zone'], description: '斧刃黑中帶紅，像燃燒後未熄的煤層，長柄纏著暗紅皮革，斧背有粗大排煙孔。' },
+    { id: 'worldsplitter_greataxe', name: '裂界巨斧', weaponType: 'greataxe', levelReq: 58, rarity: 'legendary', stat: 'atk', classReq: ['berserker', 'sword_saint'], zoneTags: ['final_battleground'], description: '斧面像兩片錯位黑鐵大陸，中間裂縫浮著紫白光，長柄末端懸著破碎星環。' },
+    { id: 'rainstained_grimoire', name: '雨漬魔導書', weaponType: 'grimoire', levelReq: 16, rarity: 'rare', stat: 'matk', classReq: ['warlock', 'mage'], zoneTags: ['eastern_coast'], description: '深藍發黑的封皮四角包著銹銀，書頁邊緣有水痕與鹽斑，封面中央畫著半閉墨色眼睛。' },
+    { id: 'boneclasp_grimoire', name: '骨扣禁書', weaponType: 'grimoire', levelReq: 36, rarity: 'epic', stat: 'matk', classReq: ['warlock'], zoneTags: ['abyss_rift'], description: '白骨扣鎖住厚重黑皮封面，書脊垂著小片符骨，縫隙滲出暗紫光，危險而清楚。' },
+    { id: 'eclipse_index_grimoire', name: '蝕日索引魔導書', weaponType: 'grimoire', levelReq: 56, rarity: 'legendary', stat: 'matk', classReq: ['warlock', 'archmage'], zoneTags: ['celestial_ruins'], description: '封面嵌著黑金日輪，頁側有密密麻麻的金屬索引片，打開時像一座小型禁忌圖書館。' },
+    { id: 'pilgrim_holy_tome', name: '巡禮聖典', weaponType: 'holy_tome', levelReq: 16, rarity: 'rare', stat: 'matk', classReq: ['priest', 'high_priest'], zoneTags: ['plains'], description: '米白布封上有磨亮的銅質路標聖徽，書角沾著旅塵，翻頁時有微弱晨鐘光從紙縫流出。' },
+    { id: 'glasschapel_holy_tome', name: '玻璃禮拜聖典', weaponType: 'holy_tome', levelReq: 36, rarity: 'epic', stat: 'matk', classReq: ['high_priest', 'inquisitor'], zoneTags: ['celestial_ruins'], description: '封面鑲著彩窗碎片，金線把每片玻璃固定成光翼圖案，書頁邊緣泛著柔白色，聖潔而易辨識。' },
+    { id: 'last_dawn_holy_tome', name: '終曉聖典', weaponType: 'holy_tome', levelReq: 56, rarity: 'legendary', stat: 'matk', classReq: ['high_priest', 'inquisitor'], zoneTags: ['final_battleground'], description: '白金書殼中央有裂開的日冕浮雕，頁緣灑著金粉，合上時像把最後一線黎明鎖進書中。' },
+    { id: 'reedflute_katana', name: '蘆笛太刀', weaponType: 'katana', levelReq: 26, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'sword_saint'], zoneTags: ['plains'], description: '刀鞘以細蘆管拼成，刀身狹長帶淡淡青光，刀鍔像一枚中空笛孔，有流浪劍客的清冷感。' },
+    { id: 'whitecomet_katana', name: '白彗太刀', weaponType: 'katana', levelReq: 52, rarity: 'legendary', stat: 'atk', classReq: ['sword_saint'], zoneTags: ['final_battleground'], description: '刃身極亮，刀背有拖尾般的銀白紋路，黑色刀鞘嵌著小星石，出鞘時像彗星切出夜色。' },
+    { id: 'chalk_prayer_scepter', name: '白堊祈杖', weaponType: 'scepter', levelReq: 5, rarity: 'common', stat: 'matk', classReq: ['priest'], zoneTags: ['starter_village'], description: '短而樸素的權杖，杖頭是圓形白石聖徽，木柄被淺色布帶纏住，像小禮拜堂借給新祭司的聖具。' },
+    { id: 'brassbell_scepter', name: '銅鈴權杖', weaponType: 'scepter', levelReq: 12, rarity: 'uncommon', stat: 'matk', classReq: ['priest'], zoneTags: ['plains'], description: '杖頭掛著三枚小銅鈴，鈴面刻著祈禱短句，柄身有深色手汗痕，揮動時像會響起祝禱聲。' },
+    { id: 'rosewindow_scepter', name: '玫窗權杖', weaponType: 'scepter', levelReq: 18, rarity: 'rare', stat: 'matk', classReq: ['priest', 'high_priest'], zoneTags: ['celestial_ruins'], description: '杖頭鑲成彩窗圓盤，紅藍玻璃片被細金框分隔，短柄包著白革，像一扇縮小的教堂花窗。' },
+    { id: 'saltshrine_scepter', name: '鹽祠權杖', weaponType: 'scepter', levelReq: 24, rarity: 'rare', stat: 'matk', classReq: ['priest', 'druid'], zoneTags: ['eastern_coast'], description: '漂白海木杖頭固定一枚鹽晶聖符，晶面不規則但乾淨明亮，底端綁著海藍祈願繩。' },
+    { id: 'ironhalo_scepter', name: '鐵環權杖', weaponType: 'scepter', levelReq: 30, rarity: 'rare', stat: 'matk', classReq: ['inquisitor', 'high_priest'], zoneTags: ['lost_capital'], description: '杖頭是一圈厚重黑鐵光環，環內懸著銀白十字芯，柄身刻有審判條文，莊嚴而帶壓迫感。' },
+    { id: 'thorncrown_scepter', name: '棘冠權杖', weaponType: 'scepter', levelReq: 38, rarity: 'epic', stat: 'matk', classReq: ['druid', 'inquisitor'], zoneTags: ['dark_forest'], description: '頂端被活木荊棘繞成小冠，刺尖泛著金綠微光，短柄覆有深色樹皮，介於自然與聖職之間。' },
+    { id: 'aurora_mitre_scepter', name: '極光冠權杖', weaponType: 'scepter', levelReq: 48, rarity: 'epic', stat: 'matk', classReq: ['high_priest'], zoneTags: ['frostbite_pass'], description: '杖頭像透明小主教冠，內部浮著粉藍極光絲帶，白銀短柄上有細緻雪花聖印。' },
+    { id: 'seraph_judgement_scepter', name: '熾使審判權杖', weaponType: 'scepter', levelReq: 60, rarity: 'legendary', stat: 'matk', classReq: ['inquisitor', 'high_priest'], zoneTags: ['final_battleground'], description: '白金與赤金交錯鍛成，杖頭展開六片火翼狀光刃，中央懸著小型審判日輪，終局聖職武器。' },
+    { id: 'thundergrass_javelin_spear', name: '雷草投槍', weaponType: 'spear', levelReq: 22, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['thundersteppe'], description: '比長槍更輕，槍桿纏著青白草纖維，槍頭有小型倒鉤與電痕，明確表現為可投擲的遠程雙手槍。' },
+    { id: 'slagbell_warhammer', name: '渣鐘戰錘', weaponType: 'warhammer', levelReq: 18, rarity: 'rare', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['volcano_zone'], description: '錘頭像被敲裂的黑鐵鐘，表面掛著紅褐礦渣，長柄末端有銅環，揮下時彷彿能砸出沉悶鐘聲。' },
+    { id: 'granite_oath_warhammer', name: '花崗誓戰錘', weaponType: 'warhammer', levelReq: 38, rarity: 'epic', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['celestial_ruins'], description: '方形錘頭由灰白石與黑鐵箍固定，錘面刻著古誓約短文，樸拙厚重，像聖騎士破門武器。' },
+    { id: 'skyforge_crown_warhammer', name: '天爐冠戰錘', weaponType: 'warhammer', levelReq: 58, rarity: 'legendary', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['final_battleground'], description: '錘頭嵌著破碎王冠與白金火槽，長柄由深鐵包覆，錘面亮著像熔爐星空般的孔洞。' },
+    { id: 'reedlash_whip', name: '蘆索長鞭', weaponType: 'whip', levelReq: 12, rarity: 'uncommon', stat: 'atk', classReq: ['beast_master', 'ranger'], zoneTags: ['plains'], description: '多股黑蘆纖維編成鞭身，鞭柄包著粗皮，鞭尾綁著小骨片，帶野外馴獸工具的粗糙感。' },
+    { id: 'glassspine_whip', name: '玻脊長鞭', weaponType: 'whip', levelReq: 34, rarity: 'epic', stat: 'atk', classReq: ['beast_master', 'druid'], zoneTags: ['crystal_cave'], description: '每一節都嵌著透明魚脊玻片，甩動時形成一串冷亮折光，鞭柄短而精緻，華麗但危險。' },
+    { id: 'cometvine_whip', name: '彗藤星鞭', weaponType: 'whip', levelReq: 56, rarity: 'legendary', stat: 'atk', classReq: ['beast_master', 'druid'], zoneTags: ['final_battleground'], description: '黑色活藤與銀星線纏成鞭身，鞭節間浮著細小光點，鞭尾像彗星拖焰般分叉。' },
+  ];
+
+  return Object.fromEntries(weapons.map((weapon) => {
+    const statValue = Math.max(4, Math.floor(weapon.levelReq * 1.15));
+    const stats: NonNullable<ItemDef['stats']> = weapon.stat === 'matk'
+      ? { matk: statValue, int: Math.max(1, Math.floor(weapon.levelReq / 12)), mp: Math.max(5, Math.floor(weapon.levelReq * 1.2)) }
+      : { atk: statValue, dex: Math.max(1, Math.floor(weapon.levelReq / 14)) };
+    return [weapon.id, {
+      id: weapon.id,
+      name: weapon.name,
+      type: 'weapon',
+      description: weapon.description,
+      buyPrice: Math.max(80, weapon.levelReq * 95),
+      sellPrice: Math.max(40, weapon.levelReq * 45),
+      stackable: false,
+      maxStack: 1,
+      levelReq: weapon.levelReq,
+      classReq: weapon.classReq,
+      equipSlot: equipSlotForWeaponType(weapon.weaponType),
+      stats,
+      rarity: weapon.rarity,
+      weaponType: weapon.weaponType,
+      sourceTags: ['drop', 'weapon_topup'],
+      zoneTags: [...weapon.zoneTags, 'global'],
+    } satisfies ItemDef];
+  }));
+}
+
+interface ShieldTopUpArt {
+  id: string;
+  name: string;
+  levelReq: number;
+  rarity: ItemRarity;
+  classReq?: ItemDef['classReq'];
+  zoneTags: string[];
+  stats: NonNullable<ItemDef['stats']>;
+  description: string;
+}
+
+function createShieldTopUpDefs(): Record<string, ItemDef> {
+  const shields: ShieldTopUpArt[] = [
+    { id: 'reedbound_buckler_shield', name: '蘆縛小圓盾', levelReq: 4, rarity: 'common', classReq: ['swordsman', 'ranger'], zoneTags: ['starter_village', 'plains'], stats: { def: 4, dex: 1 }, description: '小型圓盾以交錯蘆桿與薄木片編壓成面，外圈用粗麻繩與暗色皮革束緊，中央有一枚磨亮銅釘，適合新手在草地與村道上格擋短刀和獸爪。' },
+    { id: 'boarhide_round_shield', name: '豬皮圓盾', levelReq: 11, rarity: 'common', classReq: ['swordsman', 'beast_master'], zoneTags: ['plains'], stats: { def: 7, hp: 14 }, description: '厚野豬皮繃在圓形木框上，表面留有深棕鬃毛紋與幾道白色爪痕，盾心釘著低矮鐵凸，整體粗獷耐撞，像平原獵人常用的副手防具。' },
+    { id: 'saltwood_kite_shield', name: '鹽木鳶盾', levelReq: 12, rarity: 'uncommon', classReq: ['knight', 'ranger'], zoneTags: ['eastern_coast'], stats: { def: 9, hp: 18 }, description: '狹長鳶形盾由漂白海木和藍灰鐵帶拼成，邊緣結著白鹽霜，盾面刻有浪線與小貝殼鉚釘，能清楚呈現海岸巡守者的防禦裝備。' },
+    { id: 'ironleaf_guard_shield', name: '鐵葉護盾', levelReq: 16, rarity: 'uncommon', classReq: ['knight', 'druid'], zoneTags: ['dark_forest'], stats: { def: 11, vit: 1 }, description: '盾面像一片寬大的黑綠鐵葉，葉脈是凸起的暗鐵肋條，握把包著潮濕樹皮，邊角有青苔與細小刮痕，兼具森林守衛與金屬防護感。' },
+    { id: 'crystal_rim_shield', name: '晶緣盾', levelReq: 20, rarity: 'rare', classReq: ['knight', 'mage'], zoneTags: ['crystal_cave'], stats: { def: 14, mdef: 3 }, description: '圓角盾的外框嵌著透明藍白晶簇，中央是霧面鋼板，晶體折出冷光但盾形仍厚實清楚，像礦洞守衛用來抵擋碎晶與魔法射線的副手盾。' },
+    { id: 'emberglass_tower_shield', name: '燼玻塔盾', levelReq: 22, rarity: 'rare', classReq: ['knight', 'berserker'], zoneTags: ['volcano_zone'], stats: { def: 18, hp: 28 }, description: '高塔盾由黑鐵大板和暗紅火山玻璃鑲片構成，盾面有熔岩般裂光，底部留下焦黑拖痕，厚重輪廓明顯，適合表現火山前線的堅硬防具。' },
+    { id: 'pilgrim_bell_shield', name: '巡禮鈴盾', levelReq: 24, rarity: 'rare', classReq: ['priest', 'knight'], zoneTags: ['pilgrim_road'], stats: { def: 16, mdef: 4, hp: 20 }, description: '米白木盾中央鑲著小銅鐘聖徽，盾緣掛有布條與祈願結，表面覆著旅塵和淡金刮痕，像朝聖護衛在長路上持用的祝聖副手盾。' },
+    { id: 'stormcap_bulwark_shield', name: '雷帽壁盾', levelReq: 26, rarity: 'epic', classReq: ['knight'], zoneTags: ['storm_highlands'], stats: { def: 22, mdef: 5 }, description: '寬大壁盾以青鐵雷帽形圓頂為中心，四角插著短避雷針，盾面有白藍電灼紋與雨蝕痕，剪影沉穩厚重，能清楚傳達抗雷與守陣用途。' },
+    { id: 'moonwell_aegis_shield', name: '月井聖盾', levelReq: 30, rarity: 'epic', classReq: ['high_priest', 'knight'], zoneTags: ['celestial_ruins'], stats: { def: 21, mdef: 8, mp: 18 }, description: '銀白橢圓盾像月井水面凝成，內側有半月鑲線與淡藍水光，邊框細緻乾淨，盾心是一枚透明月滴晶，適合神聖與月光主題的高階副手。' },
+    { id: 'blackbanner_oath_shield', name: '黑旗誓盾', levelReq: 46, rarity: 'epic', classReq: ['knight', 'sword_saint'], zoneTags: ['lost_capital'], stats: { def: 24, vit: 3 }, description: '深鐵盾面覆著燒焦黑旗布片，中央有半枚金色誓約印，邊緣布滿舊戰場缺口但結構完整，像失落軍團留下的沉重誓約防具。' },
+    { id: 'frosthalo_mirror_shield', name: '霜環鏡盾', levelReq: 50, rarity: 'legendary', classReq: ['knight', 'chronomancer'], zoneTags: ['frostbite_pass'], stats: { def: 26, mdef: 10 }, description: '冰白圓盾中央是一面淡藍霜鏡，外圈懸著六枚小雪晶，盾面可見細密冰脈與銀色刻度，冷冽而華麗，像能反射寒霜法術的傳說盾。' },
+    { id: 'obsidian_judge_shield', name: '黑曜裁盾', levelReq: 52, rarity: 'legendary', classReq: ['inquisitor', 'knight'], zoneTags: ['obsidian_depths'], stats: { def: 29, hp: 45 }, description: '六角黑曜盾厚如判決石板，裂縫中透出暗紅火線，盾心垂著小鐵牌與白色審判刻痕，輪廓莊嚴壓迫，適合終局審判者副手裝備。' },
+    { id: 'sunpetal_ward_shield', name: '日瓣護盾', levelReq: 54, rarity: 'legendary', classReq: ['high_priest', 'knight'], zoneTags: ['sunspire'], stats: { def: 27, mdef: 11, hp: 24 }, description: '白金盾面展成八片日瓣形裝甲，中央透明日晶柔亮，邊緣有細小光釘與金粉磨痕，整體明亮神聖但仍是可握持的實體盾牌。' },
+    { id: 'voidwell_guard_shield', name: '虛井守盾', levelReq: 56, rarity: 'legendary', classReq: ['warlock', 'knight'], zoneTags: ['abyss_rift'], stats: { def: 25, mdef: 13, mp: 30 }, description: '黑銀圓盾中央像一口無底小井，周圍漂著細碎星砂與向內墜落的冷光，盾邊刻有深紫禁文，神秘但剪影清楚，適合深淵防禦主題。' },
+    { id: 'skyforge_crown_shield', name: '天爐冠盾', levelReq: 58, rarity: 'legendary', classReq: ['knight', 'inquisitor'], zoneTags: ['sky_isles', 'final_battleground'], stats: { def: 31, vit: 5 }, description: '黑金塔盾嵌著破碎王冠片與白金爐槽，盾面有星孔般的冷白光點，底部包著厚重鐵靴形護角，像天空熔爐鑄出的王權防具。' },
+    { id: 'final_horizon_shield', name: '終境地平盾', levelReq: 60, rarity: 'mythic', classReq: ['knight', 'high_priest'], zoneTags: ['final_battleground'], stats: { def: 36, mdef: 14, hp: 60 }, description: '黑金巨盾的上緣像一道遠方地平線，兩側浮著細小星點，中央橫過一條筆直白光，盾面布滿終戰刮痕與金色封印，是可清楚辨識的最終副手盾牌。' },
+  ];
+
+  return Object.fromEntries(shields.map((shield) => [shield.id, {
+    id: shield.id,
+    name: shield.name,
+    type: 'armor',
+    description: shield.description,
+    buyPrice: Math.max(100, shield.levelReq * 105),
+    sellPrice: Math.max(50, shield.levelReq * 50),
+    stackable: false,
+    maxStack: 1,
+    levelReq: shield.levelReq,
+    classReq: shield.classReq,
+    equipSlot: 'offhand',
+    stats: shield.stats,
+    rarity: shield.rarity,
+    weaponType: 'shield',
+    sourceTags: ['drop', 'shield_topup'],
+    zoneTags: [...shield.zoneTags, 'global'],
+  } satisfies ItemDef]));
 }
 
 interface ZoneEquipmentTheme {
@@ -514,6 +847,7 @@ const ZONE_THEME_BASE_SLOTS = ['head', 'body', 'hands', 'feet', 'ring', 'necklac
 const ZONE_THEME_EXTRA_SLOTS = ['weapon', 'earring', 'belt', 'ring'] as const;
 const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
   weapon: '戰刃',
+  offhand: '盾牌',
   head: '兜帽',
   body: '護甲',
   hands: '護手',
@@ -524,6 +858,12 @@ const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
   necklace: '墜飾',
 };
 
+function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'accessory'>, index: number): string {
+  if (slot === 'weapon') return `${themeId}_giant_sword`;
+  if (slot === 'earring') return `zone_${themeId}_earring`;
+  return `zone_${themeId}_${slot}_${index + 1}`;
+}
+
 function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
   const result: Record<string, ItemDef> = {};
 
@@ -533,12 +873,12 @@ function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
       : ZONE_THEME_BASE_SLOTS;
 
     slots.forEach((slot, index) => {
-      const id = `zone_${theme.id}_${slot}_${index + 1}`;
+      const id = getZoneThemeEquipmentId(theme.id, slot, index);
       const slotName = slot === 'ring' && index >= ZONE_THEME_BASE_SLOTS.length ? '戒璽' : ZONE_THEME_SLOT_NAMES[slot];
       const levelReq = Math.max(1, theme.level + Math.floor(index / 3));
       const type = slot === 'weapon'
         ? 'weapon'
-        : ['head', 'body', 'hands', 'feet'].includes(slot)
+        : ['head', 'body', 'hands', 'feet', 'offhand'].includes(slot)
           ? 'armor'
           : 'accessory';
       const stat = slot === 'weapon' || slot === 'hands'
@@ -648,8 +988,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     classReq: ['ranger', 'marksman', 'assassin', 'beast_master'],
     equipSlot: 'weapon', stats: { atk: 30, dex: 5, critRate: 3 },
   },
-  wooden_wand: {
-    id: 'wooden_wand', name: '木製權杖', type: 'weapon',
+  wooden_scepter: {
+    id: 'wooden_scepter', name: '木製權杖', type: 'weapon',
     description: '一根樸素的木製權杖，頂端雕刻著簡單的祈禱符文。手握權杖時，能感受到一股溫暖而平靜的力量緩緩流過全身。是初入教會的祭司最先獲得的聖具。', buyPrice: 50, sellPrice: 25,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { matk: 5, mp: 10 },
@@ -700,7 +1040,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     id: 'wooden_shield', name: '木盾', type: 'armor',
     description: '用兩層硬木板交錯釘合的小圓盾，外圈包著粗糙鐵皮，背面還留著鐵匠手寫的持握記號。它擋不住沉重戰斧，卻能讓新手在面對狼爪、短刀與飛石時多一分反應空間。', buyPrice: 90, sellPrice: 45,
     stackable: false, maxStack: 1, levelReq: 2,
-    equipSlot: 'hands', stats: { def: 4, hp: 10 },
+    equipSlot: 'offhand', stats: { def: 4, hp: 10 },
+    weaponType: 'shield',
   },
   leather_armor: {
     id: 'leather_armor', name: '皮甲', type: 'armor',
@@ -796,39 +1137,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 長槍 (Spear) - 戰士/騎士 ============
-  spear_basic: {
-    id: 'spear_basic', name: '木槍', type: 'weapon',
+  wooden_spear: {
+    id: 'wooden_spear', name: '木槍', type: 'weapon',
     description: '簡樸的木製長槍，新手訓練用。', buyPrice: 60, sellPrice: 30,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 6 },
     rarity: 'common', weaponType: 'spear',
   },
-  spear_iron: {
-    id: 'spear_iron', name: '鐵槍', type: 'weapon',
+  iron_spear: {
+    id: 'iron_spear', name: '鐵槍', type: 'weapon',
     description: '鐵製槍頭的長槍，穿刺力不俗。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['swordsman', 'knight'],
     equipSlot: 'weapon', stats: { atk: 15 },
     rarity: 'uncommon', weaponType: 'spear',
   },
-  spear_steel: {
-    id: 'spear_steel', name: '鋼槍', type: 'weapon',
+  steel_spear: {
+    id: 'steel_spear', name: '鋼槍', type: 'weapon',
     description: '精鋼鍛造的長槍，銳不可當。', buyPrice: 800, sellPrice: 400,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['swordsman', 'knight'],
     equipSlot: 'weapon', stats: { atk: 25, dex: 2 },
     rarity: 'rare', weaponType: 'spear',
   },
-  spear_mithril: {
-    id: 'spear_mithril', name: '秘銀槍', type: 'weapon',
+  mithril_spear: {
+    id: 'mithril_spear', name: '秘銀槍', type: 'weapon',
     description: '秘銀打造的長槍，輕盈而致命。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['swordsman', 'knight'],
     equipSlot: 'weapon', stats: { atk: 38, dex: 4, str: 3 },
     rarity: 'epic', weaponType: 'spear', setId: 'sword_saint_set',
   },
-  spear_dragon: {
-    id: 'spear_dragon', name: '龍牙槍', type: 'weapon',
+  dragon_fang_spear: {
+    id: 'dragon_fang_spear', name: '龍牙槍', type: 'weapon',
     description: '以龍牙為槍尖的傳說長槍，貫穿萬物。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['swordsman', 'knight'],
@@ -837,39 +1178,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 巨斧 (Greataxe) - 狂戰士/劍聖 ============
-  greataxe_basic: {
-    id: 'greataxe_basic', name: '木柄斧', type: 'weapon',
+  wooden_greataxe: {
+    id: 'wooden_greataxe', name: '木柄斧', type: 'weapon',
     description: '粗糙的木柄大斧，沉重但威力不小。', buyPrice: 65, sellPrice: 32,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 8 },
     rarity: 'common', weaponType: 'greataxe',
   },
-  greataxe_iron: {
-    id: 'greataxe_iron', name: '鐵巨斧', type: 'weapon',
+  iron_greataxe: {
+    id: 'iron_greataxe', name: '鐵巨斧', type: 'weapon',
     description: '鐵製巨斧，一斧劈裂大地。', buyPrice: 320, sellPrice: 160,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['berserker', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 18 },
     rarity: 'uncommon', weaponType: 'greataxe',
   },
-  greataxe_steel: {
-    id: 'greataxe_steel', name: '鋼巨斧', type: 'weapon',
+  steel_greataxe: {
+    id: 'steel_greataxe', name: '鋼巨斧', type: 'weapon',
     description: '精鋼鍛造的巨斧，破甲之力驚人。', buyPrice: 850, sellPrice: 425,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['berserker', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 30, str: 3 },
     rarity: 'rare', weaponType: 'greataxe',
   },
-  greataxe_mithril: {
-    id: 'greataxe_mithril', name: '秘銀巨斧', type: 'weapon',
+  mithril_greataxe: {
+    id: 'mithril_greataxe', name: '秘銀巨斧', type: 'weapon',
     description: '秘銀打造的巨斧，揮舞如風。', buyPrice: 2600, sellPrice: 1300,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['berserker', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 45, str: 6 },
     rarity: 'epic', weaponType: 'greataxe', setId: 'sword_saint_set',
   },
-  greataxe_dragon: {
-    id: 'greataxe_dragon', name: '屠龍巨斧', type: 'weapon',
+  dragon_slayer_greataxe: {
+    id: 'dragon_slayer_greataxe', name: '屠龍巨斧', type: 'weapon',
     description: '傳說中斬殺巨龍的神器巨斧。', buyPrice: 6500, sellPrice: 3250,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['berserker', 'sword_saint'],
@@ -878,39 +1219,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 太刀 (Katana) - 戰士/劍聖 ============
-  katana_basic: {
-    id: 'katana_basic', name: '竹刀', type: 'weapon',
+  bamboo_katana: {
+    id: 'bamboo_katana', name: '竹刀', type: 'weapon',
     description: '竹製練習刀，居合入門之器。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 5, dex: 1 },
     rarity: 'common', weaponType: 'katana',
   },
-  katana_iron: {
-    id: 'katana_iron', name: '鐵太刀', type: 'weapon',
+  iron_katana: {
+    id: 'iron_katana', name: '鐵太刀', type: 'weapon',
     description: '鐵製太刀，斬擊迅捷。', buyPrice: 310, sellPrice: 155,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['swordsman', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 14, dex: 2 },
     rarity: 'uncommon', weaponType: 'katana',
   },
-  katana_steel: {
-    id: 'katana_steel', name: '鋼太刀', type: 'weapon',
+  steel_katana: {
+    id: 'steel_katana', name: '鋼太刀', type: 'weapon',
     description: '精鋼鍛造的太刀，刀氣如虹。', buyPrice: 820, sellPrice: 410,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['swordsman', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 24, dex: 4, critRate: 2 },
     rarity: 'rare', weaponType: 'katana',
   },
-  katana_mithril: {
-    id: 'katana_mithril', name: '秘銀太刀', type: 'weapon',
+  mithril_katana: {
+    id: 'mithril_katana', name: '秘銀太刀', type: 'weapon',
     description: '秘銀打造的太刀，出鞘即斬。', buyPrice: 2400, sellPrice: 1200,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['swordsman', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 36, dex: 6, critRate: 4 },
     rarity: 'epic', weaponType: 'katana', setId: 'sword_saint_set',
   },
-  katana_dragon: {
-    id: 'katana_dragon', name: '龍紋太刀', type: 'weapon',
+  dragon_mark_katana: {
+    id: 'dragon_mark_katana', name: '龍紋太刀', type: 'weapon',
     description: '刻有龍紋的傳說太刀，一閃千刀。', buyPrice: 5800, sellPrice: 2900,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['swordsman', 'sword_saint'],
@@ -919,162 +1260,162 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 元素杖 (Elemental Staff) - 法師/大法師 ============
-  elestaff_basic: {
-    id: 'elestaff_basic', name: '元素樹枝', type: 'weapon',
+  elemental_branch_staff: {
+    id: 'elemental_branch_staff', name: '元素樹枝', type: 'weapon',
     description: '蘊含微弱元素力量的樹枝。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { matk: 7, mp: 5 },
-    rarity: 'common', weaponType: 'elemental_staff',
+    rarity: 'common', weaponType: 'staff',
   },
-  elestaff_iron: {
-    id: 'elestaff_iron', name: '元素鐵杖', type: 'weapon',
+  iron_elemental_staff: {
+    id: 'iron_elemental_staff', name: '元素鐵杖', type: 'weapon',
     description: '以元素水晶強化的鐵杖。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 16, mp: 15 },
-    rarity: 'uncommon', weaponType: 'elemental_staff',
+    rarity: 'uncommon', weaponType: 'staff',
   },
-  elestaff_crystal: {
-    id: 'elestaff_crystal', name: '元素水晶杖', type: 'weapon',
+  crystal_elemental_staff: {
+    id: 'crystal_elemental_staff', name: '元素水晶杖', type: 'weapon',
     description: '鑲嵌多種元素水晶的法杖，威力強大。', buyPrice: 850, sellPrice: 425,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 28, mp: 25, int: 3 },
-    rarity: 'rare', weaponType: 'elemental_staff',
+    rarity: 'rare', weaponType: 'staff',
   },
-  elestaff_mithril: {
-    id: 'elestaff_mithril', name: '秘銀元素杖', type: 'weapon',
+  mithril_elemental_staff: {
+    id: 'mithril_elemental_staff', name: '秘銀元素杖', type: 'weapon',
     description: '秘銀與元素核心融合的法杖。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 42, mp: 40, int: 5 },
-    rarity: 'epic', weaponType: 'elemental_staff', setId: 'archmage_set',
+    rarity: 'epic', weaponType: 'staff', setId: 'archmage_set',
   },
-  elestaff_dragon: {
-    id: 'elestaff_dragon', name: '龍息元素杖', type: 'weapon',
+  dragon_breath_elemental_staff: {
+    id: 'dragon_breath_elemental_staff', name: '龍息元素杖', type: 'weapon',
     description: '注入龍之元素的至高法杖，毀天滅地。', buyPrice: 6200, sellPrice: 3100,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 60, mp: 60, int: 8 },
-    rarity: 'legendary', weaponType: 'elemental_staff', setId: 'archmage_set',
+    rarity: 'legendary', weaponType: 'staff', setId: 'archmage_set',
   },
 
   // ============ 魔典 (Grimoire) - 暗黑術士 ============
-  grimoire_basic: {
-    id: 'grimoire_basic', name: '破舊魔典', type: 'weapon',
+  worn_grimoire: {
+    id: 'worn_grimoire', name: '破舊魔典', type: 'weapon',
     description: '字跡模糊的舊魔典，仍殘留暗黑力量。', buyPrice: 60, sellPrice: 30,
     stackable: false, maxStack: 1, levelReq: 1,
-    equipSlot: 'weapon', stats: { matk: 6, int: 1 },
+    equipSlot: 'offhand', stats: { matk: 6, int: 1 },
     rarity: 'common', weaponType: 'grimoire',
   },
-  grimoire_iron: {
-    id: 'grimoire_iron', name: '鐵封魔典', type: 'weapon',
+  ironbound_grimoire: {
+    id: 'ironbound_grimoire', name: '鐵封魔典', type: 'weapon',
     description: '鐵皮封裝的魔典，記載暗黑咒語。', buyPrice: 310, sellPrice: 155,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['warlock'],
-    equipSlot: 'weapon', stats: { matk: 14, int: 3 },
+    equipSlot: 'offhand', stats: { matk: 14, int: 3 },
     rarity: 'uncommon', weaponType: 'grimoire',
   },
-  grimoire_crystal: {
-    id: 'grimoire_crystal', name: '水晶魔典', type: 'weapon',
+  crystal_grimoire: {
+    id: 'crystal_grimoire', name: '水晶魔典', type: 'weapon',
     description: '暗色水晶裝飾的魔典，蘊含深淵之力。', buyPrice: 830, sellPrice: 415,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['warlock'],
-    equipSlot: 'weapon', stats: { matk: 26, int: 5, mp: 20 },
+    equipSlot: 'offhand', stats: { matk: 26, int: 5, mp: 20 },
     rarity: 'rare', weaponType: 'grimoire',
   },
-  grimoire_mithril: {
-    id: 'grimoire_mithril', name: '秘銀魔典', type: 'weapon',
+  mithril_grimoire: {
+    id: 'mithril_grimoire', name: '秘銀魔典', type: 'weapon',
     description: '秘銀書頁的禁忌魔典，暗影纏身。', buyPrice: 2400, sellPrice: 1200,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['warlock'],
-    equipSlot: 'weapon', stats: { matk: 40, int: 7, mp: 35 },
+    equipSlot: 'offhand', stats: { matk: 40, int: 7, mp: 35 },
     rarity: 'epic', weaponType: 'grimoire', setId: 'archmage_set',
   },
-  grimoire_dragon: {
-    id: 'grimoire_dragon', name: '龍血魔典', type: 'weapon',
+  dragonblood_grimoire: {
+    id: 'dragonblood_grimoire', name: '龍血魔典', type: 'weapon',
     description: '以龍血書寫的魔典，召喚深淵之力。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['warlock'],
-    equipSlot: 'weapon', stats: { matk: 58, int: 10, mp: 50 },
+    equipSlot: 'offhand', stats: { matk: 58, int: 10, mp: 50 },
     rarity: 'legendary', weaponType: 'grimoire', setId: 'archmage_set',
   },
 
   // ============ 沙漏杖 (Hourglass Staff) - 時空術士 ============
-  hourglass_basic: {
-    id: 'hourglass_basic', name: '沙漏枝杖', type: 'weapon',
+  branch_hourglass_staff: {
+    id: 'branch_hourglass_staff', name: '沙漏枝杖', type: 'weapon',
     description: '頂端鑲嵌小沙漏的樹枝，時光微動。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { matk: 5, dex: 1, mp: 5 },
-    rarity: 'common', weaponType: 'hourglass_staff',
+    rarity: 'common', weaponType: 'staff',
   },
-  hourglass_iron: {
-    id: 'hourglass_iron', name: '鐵沙漏杖', type: 'weapon',
+  iron_hourglass_staff: {
+    id: 'iron_hourglass_staff', name: '鐵沙漏杖', type: 'weapon',
     description: '鐵製框架的沙漏杖，時間流速可控。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['chronomancer'],
     equipSlot: 'weapon', stats: { matk: 13, dex: 2, mp: 15 },
-    rarity: 'uncommon', weaponType: 'hourglass_staff',
+    rarity: 'uncommon', weaponType: 'staff',
   },
-  hourglass_crystal: {
-    id: 'hourglass_crystal', name: '水晶沙漏杖', type: 'weapon',
+  crystal_hourglass_staff: {
+    id: 'crystal_hourglass_staff', name: '水晶沙漏杖', type: 'weapon',
     description: '水晶沙漏散發時光之力。', buyPrice: 820, sellPrice: 410,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['chronomancer'],
     equipSlot: 'weapon', stats: { matk: 24, dex: 4, int: 3, mp: 25 },
-    rarity: 'rare', weaponType: 'hourglass_staff',
+    rarity: 'rare', weaponType: 'staff',
   },
-  hourglass_mithril: {
-    id: 'hourglass_mithril', name: '秘銀沙漏杖', type: 'weapon',
+  mithril_hourglass_staff: {
+    id: 'mithril_hourglass_staff', name: '秘銀沙漏杖', type: 'weapon',
     description: '秘銀沙漏杖，掌控時間長河。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['chronomancer'],
     equipSlot: 'weapon', stats: { matk: 38, dex: 6, int: 5, mp: 40 },
-    rarity: 'epic', weaponType: 'hourglass_staff', setId: 'archmage_set',
+    rarity: 'epic', weaponType: 'staff', setId: 'archmage_set',
   },
-  hourglass_dragon: {
-    id: 'hourglass_dragon', name: '龍時沙漏杖', type: 'weapon',
+  dragon_time_hourglass_staff: {
+    id: 'dragon_time_hourglass_staff', name: '龍時沙漏杖', type: 'weapon',
     description: '封印龍之時間的傳說沙漏杖，可逆轉因果。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['chronomancer'],
     equipSlot: 'weapon', stats: { matk: 55, dex: 8, int: 7, mp: 60 },
-    rarity: 'legendary', weaponType: 'hourglass_staff', setId: 'archmage_set',
+    rarity: 'legendary', weaponType: 'staff', setId: 'archmage_set',
   },
 
   // ============ 十字弓 (Crossbow) - 遊俠/神射手 ============
-  crossbow_basic: {
-    id: 'crossbow_basic', name: '簡易十字弓', type: 'weapon',
+  simple_crossbow: {
+    id: 'simple_crossbow', name: '簡易十字弓', type: 'weapon',
     description: '簡易的十字弓，射程有限。', buyPrice: 60, sellPrice: 30,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 7, dex: 1 },
     rarity: 'common', weaponType: 'crossbow',
   },
-  crossbow_iron: {
-    id: 'crossbow_iron', name: '鐵十字弓', type: 'weapon',
+  iron_crossbow: {
+    id: 'iron_crossbow', name: '鐵十字弓', type: 'weapon',
     description: '鐵製十字弓，穿透力強。', buyPrice: 320, sellPrice: 160,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['ranger', 'marksman'],
     equipSlot: 'weapon', stats: { atk: 16, dex: 3 },
     rarity: 'uncommon', weaponType: 'crossbow',
   },
-  crossbow_steel: {
-    id: 'crossbow_steel', name: '鋼十字弓', type: 'weapon',
+  steel_crossbow: {
+    id: 'steel_crossbow', name: '鋼十字弓', type: 'weapon',
     description: '精鋼打造的十字弓，精準致命。', buyPrice: 840, sellPrice: 420,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['ranger', 'marksman'],
     equipSlot: 'weapon', stats: { atk: 26, dex: 5, critRate: 3 },
     rarity: 'rare', weaponType: 'crossbow',
   },
-  crossbow_mithril: {
-    id: 'crossbow_mithril', name: '秘銀十字弓', type: 'weapon',
+  mithril_crossbow: {
+    id: 'mithril_crossbow', name: '秘銀十字弓', type: 'weapon',
     description: '秘銀製十字弓，箭矢疾如閃電。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['ranger', 'marksman'],
     equipSlot: 'weapon', stats: { atk: 40, dex: 7, critRate: 5 },
     rarity: 'epic', weaponType: 'crossbow', setId: 'shadow_hunter_set',
   },
-  crossbow_dragon: {
-    id: 'crossbow_dragon', name: '龍牙十字弓', type: 'weapon',
+  dragon_fang_crossbow: {
+    id: 'dragon_fang_crossbow', name: '龍牙十字弓', type: 'weapon',
     description: '龍牙為弦的傳說十字弓，一箭貫穿蒼穹。', buyPrice: 6200, sellPrice: 3100,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['ranger', 'marksman'],
@@ -1083,39 +1424,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 匕首 (Dagger) - 刺客 ============
-  dagger_basic: {
-    id: 'dagger_basic', name: '小匕首', type: 'weapon',
+  small_blade: {
+    id: 'small_blade', name: '小匕首', type: 'weapon',
     description: '小巧的匕首，適合暗殺。', buyPrice: 50, sellPrice: 25,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 5, dex: 2 },
     rarity: 'common', weaponType: 'dagger',
   },
-  dagger_iron: {
-    id: 'dagger_iron', name: '鐵匕首', type: 'weapon',
+  iron_blade: {
+    id: 'iron_blade', name: '鐵匕首', type: 'weapon',
     description: '鐵製匕首，暗夜中閃爍寒光。', buyPrice: 290, sellPrice: 145,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['assassin'],
     equipSlot: 'weapon', stats: { atk: 12, dex: 4, critRate: 2 },
     rarity: 'uncommon', weaponType: 'dagger',
   },
-  dagger_steel: {
-    id: 'dagger_steel', name: '鋼匕首', type: 'weapon',
+  steel_blade: {
+    id: 'steel_blade', name: '鋼匕首', type: 'weapon',
     description: '精鋼匕首，刺入無聲。', buyPrice: 800, sellPrice: 400,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['assassin'],
     equipSlot: 'weapon', stats: { atk: 22, dex: 6, critRate: 4 },
     rarity: 'rare', weaponType: 'dagger',
   },
-  dagger_mithril: {
-    id: 'dagger_mithril', name: '秘銀匕首', type: 'weapon',
+  mithril_blade: {
+    id: 'mithril_blade', name: '秘銀匕首', type: 'weapon',
     description: '秘銀打造的匕首，輕若無物。', buyPrice: 2300, sellPrice: 1150,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['assassin'],
     equipSlot: 'weapon', stats: { atk: 35, dex: 8, critRate: 6 },
     rarity: 'epic', weaponType: 'dagger', setId: 'shadow_hunter_set',
   },
-  dagger_dragon: {
-    id: 'dagger_dragon', name: '龍鱗匕首', type: 'weapon',
+  dragon_scale_blade: {
+    id: 'dragon_scale_blade', name: '龍鱗匕首', type: 'weapon',
     description: '龍鱗鍛造的傳說匕首，一擊必殺。', buyPrice: 5800, sellPrice: 2900,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['assassin'],
@@ -1124,39 +1465,39 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 鞭 (Whip) - 馴獸師 ============
-  whip_basic: {
-    id: 'whip_basic', name: '皮鞭', type: 'weapon',
+  leather_whip: {
+    id: 'leather_whip', name: '皮鞭', type: 'weapon',
     description: '牧場用的皮鞭，威嚇野獸。', buyPrice: 50, sellPrice: 25,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 5, dex: 1 },
     rarity: 'common', weaponType: 'whip',
   },
-  whip_iron: {
-    id: 'whip_iron', name: '鐵鏈鞭', type: 'weapon',
+  chain_whip: {
+    id: 'chain_whip', name: '鐵鏈鞭', type: 'weapon',
     description: '鐵鏈編織的鞭，馴服強獸。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['beast_master'],
     equipSlot: 'weapon', stats: { atk: 13, dex: 3 },
     rarity: 'uncommon', weaponType: 'whip',
   },
-  whip_steel: {
-    id: 'whip_steel', name: '鋼鞭', type: 'weapon',
+  steel_whip: {
+    id: 'steel_whip', name: '鋼鞭', type: 'weapon',
     description: '精鋼鞭身，揮舞如蛇。', buyPrice: 810, sellPrice: 405,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['beast_master'],
     equipSlot: 'weapon', stats: { atk: 23, dex: 5, str: 2 },
     rarity: 'rare', weaponType: 'whip',
   },
-  whip_mithril: {
-    id: 'whip_mithril', name: '秘銀鞭', type: 'weapon',
+  mithril_whip: {
+    id: 'mithril_whip', name: '秘銀鞭', type: 'weapon',
     description: '秘銀編織的鞭，靈動致命。', buyPrice: 2400, sellPrice: 1200,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['beast_master'],
     equipSlot: 'weapon', stats: { atk: 37, dex: 7, str: 4 },
     rarity: 'epic', weaponType: 'whip', setId: 'shadow_hunter_set',
   },
-  whip_dragon: {
-    id: 'whip_dragon', name: '龍筋鞭', type: 'weapon',
+  dragon_sinew_whip: {
+    id: 'dragon_sinew_whip', name: '龍筋鞭', type: 'weapon',
     description: '龍筋製成的傳說鞭，可馴服龍族。', buyPrice: 5900, sellPrice: 2950,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['beast_master'],
@@ -1165,121 +1506,121 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
 
   // ============ 聖典 (Holy Tome) - 祭司/神官 ============
-  holytome_basic: {
-    id: 'holytome_basic', name: '祈禱書', type: 'weapon',
+  prayer_holy_tome: {
+    id: 'prayer_holy_tome', name: '祈禱書', type: 'weapon',
     description: '記載基礎祈禱文的書籍。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
-    equipSlot: 'weapon', stats: { matk: 6, vit: 1 },
+    equipSlot: 'offhand', stats: { matk: 6, vit: 1 },
     rarity: 'common', weaponType: 'holy_tome',
   },
-  holytome_iron: {
-    id: 'holytome_iron', name: '鐵釦聖典', type: 'weapon',
+  ironclasp_holy_tome: {
+    id: 'ironclasp_holy_tome', name: '鐵釦聖典', type: 'weapon',
     description: '鐵釦裝飾的聖典，蘊含聖光。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['priest', 'high_priest'],
-    equipSlot: 'weapon', stats: { matk: 14, vit: 2, mp: 10 },
+    equipSlot: 'offhand', stats: { matk: 14, vit: 2, mp: 10 },
     rarity: 'uncommon', weaponType: 'holy_tome',
   },
-  holytome_crystal: {
-    id: 'holytome_crystal', name: '水晶聖典', type: 'weapon',
+  crystal_holy_tome: {
+    id: 'crystal_holy_tome', name: '水晶聖典', type: 'weapon',
     description: '聖光水晶鑲嵌的聖典，治癒之力強大。', buyPrice: 830, sellPrice: 415,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['priest', 'high_priest'],
-    equipSlot: 'weapon', stats: { matk: 25, vit: 4, int: 3, mp: 25 },
+    equipSlot: 'offhand', stats: { matk: 25, vit: 4, int: 3, mp: 25 },
     rarity: 'rare', weaponType: 'holy_tome',
   },
-  holytome_mithril: {
-    id: 'holytome_mithril', name: '秘銀聖典', type: 'weapon',
+  mithril_holy_tome: {
+    id: 'mithril_holy_tome', name: '秘銀聖典', type: 'weapon',
     description: '秘銀書頁的聖典，神聖護佑。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['priest', 'high_priest'],
-    equipSlot: 'weapon', stats: { matk: 38, vit: 6, int: 5, mp: 40 },
+    equipSlot: 'offhand', stats: { matk: 38, vit: 6, int: 5, mp: 40 },
     rarity: 'epic', weaponType: 'holy_tome', setId: 'holy_guardian_set',
   },
-  holytome_dragon: {
-    id: 'holytome_dragon', name: '龍聖典', type: 'weapon',
+  dragon_holy_tome: {
+    id: 'dragon_holy_tome', name: '龍聖典', type: 'weapon',
     description: '記載龍神祝福的傳說聖典，奇蹟降臨。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['priest', 'high_priest'],
-    equipSlot: 'weapon', stats: { matk: 55, vit: 8, int: 7, mp: 60 },
+    equipSlot: 'offhand', stats: { matk: 55, vit: 8, int: 7, mp: 60 },
     rarity: 'legendary', weaponType: 'holy_tome', setId: 'holy_guardian_set',
   },
 
   // ============ 自然杖 (Nature Staff) - 德魯伊 ============
-  naturestaff_basic: {
-    id: 'naturestaff_basic', name: '樹苗杖', type: 'weapon',
+  sapling_staff: {
+    id: 'sapling_staff', name: '樹苗杖', type: 'weapon',
     description: '以活樹苗製成的法杖，生命之力微弱。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { matk: 5, vit: 1, hp: 10 },
-    rarity: 'common', weaponType: 'nature_staff',
+    rarity: 'common', weaponType: 'staff',
   },
-  naturestaff_iron: {
-    id: 'naturestaff_iron', name: '鐵環自然杖', type: 'weapon',
+  ironring_nature_staff: {
+    id: 'ironring_nature_staff', name: '鐵環自然杖', type: 'weapon',
     description: '鐵環固定的自然杖，大地之力流轉。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['druid'],
     equipSlot: 'weapon', stats: { matk: 13, vit: 2, int: 2, hp: 20 },
-    rarity: 'uncommon', weaponType: 'nature_staff',
+    rarity: 'uncommon', weaponType: 'staff',
   },
-  naturestaff_crystal: {
-    id: 'naturestaff_crystal', name: '翡翠自然杖', type: 'weapon',
+  emerald_nature_staff: {
+    id: 'emerald_nature_staff', name: '翡翠自然杖', type: 'weapon',
     description: '鑲嵌翡翠的自然杖，萬物生長。', buyPrice: 820, sellPrice: 410,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['druid'],
     equipSlot: 'weapon', stats: { matk: 24, vit: 4, int: 3, hp: 40 },
-    rarity: 'rare', weaponType: 'nature_staff',
+    rarity: 'rare', weaponType: 'staff',
   },
-  naturestaff_mithril: {
-    id: 'naturestaff_mithril', name: '秘銀自然杖', type: 'weapon',
+  mithril_nature_staff: {
+    id: 'mithril_nature_staff', name: '秘銀自然杖', type: 'weapon',
     description: '秘銀與古樹融合的自然杖，生命脈動。', buyPrice: 2500, sellPrice: 1250,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['druid'],
     equipSlot: 'weapon', stats: { matk: 38, vit: 6, int: 5, hp: 60 },
-    rarity: 'epic', weaponType: 'nature_staff', setId: 'holy_guardian_set',
+    rarity: 'epic', weaponType: 'staff', setId: 'holy_guardian_set',
   },
-  naturestaff_dragon: {
-    id: 'naturestaff_dragon', name: '龍樹自然杖', type: 'weapon',
+  dragon_tree_nature_staff: {
+    id: 'dragon_tree_nature_staff', name: '龍樹自然杖', type: 'weapon',
     description: '世界樹與龍力交織的傳說自然杖。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['druid'],
     equipSlot: 'weapon', stats: { matk: 55, vit: 8, int: 7, hp: 100 },
-    rarity: 'legendary', weaponType: 'nature_staff', setId: 'holy_guardian_set',
+    rarity: 'legendary', weaponType: 'staff', setId: 'holy_guardian_set',
   },
 
   // ============ 戰錘 (Warhammer) - 審判者/騎士 ============
-  warhammer_basic: {
-    id: 'warhammer_basic', name: '木槌', type: 'weapon',
+  wooden_warhammer: {
+    id: 'wooden_warhammer', name: '木槌', type: 'weapon',
     description: '粗糙的木頭錘子，聊勝於無。', buyPrice: 60, sellPrice: 30,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 7, def: 1 },
     rarity: 'common', weaponType: 'warhammer',
   },
-  warhammer_iron: {
-    id: 'warhammer_iron', name: '鐵戰錘', type: 'weapon',
+  iron_warhammer: {
+    id: 'iron_warhammer', name: '鐵戰錘', type: 'weapon',
     description: '沉重的鐵製戰錘，粉碎敵人。', buyPrice: 320, sellPrice: 160,
     stackable: false, maxStack: 1, levelReq: 10,
     classReq: ['inquisitor', 'knight'],
     equipSlot: 'weapon', stats: { atk: 16, def: 3, str: 2 },
     rarity: 'uncommon', weaponType: 'warhammer',
   },
-  warhammer_steel: {
-    id: 'warhammer_steel', name: '鋼戰錘', type: 'weapon',
+  steel_warhammer: {
+    id: 'steel_warhammer', name: '鋼戰錘', type: 'weapon',
     description: '精鋼鍛造的戰錘，制裁邪惡。', buyPrice: 840, sellPrice: 420,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['inquisitor', 'knight'],
     equipSlot: 'weapon', stats: { atk: 28, def: 5, str: 3, matk: 5 },
     rarity: 'rare', weaponType: 'warhammer',
   },
-  warhammer_mithril: {
-    id: 'warhammer_mithril', name: '秘銀戰錘', type: 'weapon',
+  mithril_warhammer: {
+    id: 'mithril_warhammer', name: '秘銀戰錘', type: 'weapon',
     description: '秘銀鍛造的戰錘，神聖審判。', buyPrice: 2600, sellPrice: 1300,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['inquisitor', 'knight'],
     equipSlot: 'weapon', stats: { atk: 42, def: 7, str: 5, matk: 8 },
     rarity: 'epic', weaponType: 'warhammer', setId: 'holy_guardian_set',
   },
-  warhammer_dragon: {
-    id: 'warhammer_dragon', name: '龍骨戰錘', type: 'weapon',
+  dragonbone_warhammer: {
+    id: 'dragonbone_warhammer', name: '龍骨戰錘', type: 'weapon',
     description: '龍骨鍛造的傳說戰錘，審判降臨。', buyPrice: 6500, sellPrice: 3250,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['inquisitor', 'knight'],
@@ -1368,7 +1709,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 8,
     classReq: ['swordsman', 'knight', 'sword_saint'],
     equipSlot: 'weapon', stats: { atk: 15, str: 2, critRate: 2 },
-    rarity: 'rare', weaponType: 'katana',
+    rarity: 'rare', weaponType: 'sword',
     attackDescriptions: {
       normal: '揮動斑駁的古劍劈出一道弧光',
       critical: '古劍上的符文突然閃耀，爆發出驚人的一擊！',
@@ -1377,8 +1718,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     },
   },
 
-  wolf_fang_dagger: {
-    id: 'wolf_fang_dagger', name: '狼牙匕首', type: 'weapon',
+  wolf_fang_blade: {
+    id: 'wolf_fang_blade', name: '狼牙匕首', type: 'weapon',
     description: '以狼王的獠牙精心打磨而成的匕首，刃身呈月牙形，散發著野性的氣息。握住它時彷彿能聽到狼群的嚎叫。',
     buyPrice: 0, sellPrice: 800,
     stackable: false, maxStack: 1, levelReq: 12,
@@ -1393,8 +1734,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     },
   },
 
-  pirate_crossbow: {
-    id: 'pirate_crossbow', name: '海盜船長的短銃弩', type: 'weapon',
+  pirate_captain_crossbow: {
+    id: 'pirate_captain_crossbow', name: '海盜船長的短銃弩', type: 'weapon',
     description: '海盜船長的愛用武器，結合了弩箭與火藥的精巧裝置。每一發都伴隨著硝煙和轟鳴，是海上恐懼的象徵。',
     buyPrice: 0, sellPrice: 1000,
     stackable: false, maxStack: 1, levelReq: 15,
@@ -1415,7 +1756,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 2000,
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['warlock', 'mage', 'archmage'],
-    equipSlot: 'weapon', stats: { matk: 33, int: 5, mp: 30 },
+    equipSlot: 'offhand', stats: { matk: 33, int: 5, mp: 30 },
     rarity: 'epic', weaponType: 'grimoire', element: 'dark',
     attackDescriptions: {
       normal: '翻開咒語書，褪色的文字化為黑色魔力射向目標',
@@ -1441,14 +1782,14 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     },
   },
 
-  crystal_elestaff: {
-    id: 'crystal_elestaff', name: '晶簇法杖', type: 'weapon',
+  crystal_cluster_staff: {
+    id: 'crystal_cluster_staff', name: '晶簇法杖', type: 'weapon',
     description: '由水晶龍的核心結晶凝聚而成的法杖，杖頂的水晶球中不斷旋轉著七色光芒。它能引導所有元素之力，是法師夢寐以求的至寶。',
     buyPrice: 0, sellPrice: 3500,
     stackable: false, maxStack: 1, levelReq: 26,
     classReq: ['mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 47, int: 6, mp: 50, critRate: 3 },
-    rarity: 'epic', weaponType: 'elemental_staff', element: 'ice',
+    rarity: 'epic', weaponType: 'staff', element: 'ice',
     attackDescriptions: {
       normal: '水晶法杖頂端的稜鏡旋轉，折射出一道元素光束',
       critical: '七色光芒匯聚為一，法杖釋放出強大的元素風暴！',
@@ -1457,8 +1798,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     },
   },
 
-  frost_greataxe: {
-    id: 'frost_greataxe', name: '霜巨人的戰斧', type: 'weapon',
+  frost_giant_greataxe: {
+    id: 'frost_giant_greataxe', name: '霜巨人的戰斧', type: 'weapon',
     description: '霜巨人王的佩斧，由千年不化的永凍冰鑄就。斧刃散發著肉眼可見的寒氣，被它劈中的一切都會瞬間凍結。即使是最強壯的戰士也難以揮舞這把巨斧。',
     buyPrice: 0, sellPrice: 5000,
     stackable: false, maxStack: 1, levelReq: 30,
@@ -1529,7 +1870,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 1500,
     stackable: false, maxStack: 1, levelReq: 18,
     classReq: ['priest', 'high_priest', 'inquisitor'],
-    equipSlot: 'weapon', stats: { matk: 28, int: 4, vit: 3, mp: 25 },
+    equipSlot: 'offhand', stats: { matk: 28, int: 4, vit: 3, mp: 25 },
     rarity: 'rare', weaponType: 'holy_tome',
     attackDescriptions: {
       normal: '聖典綻放金色光芒，化為聖光射向目標',
@@ -1546,7 +1887,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 20,
     classReq: ['druid', 'priest', 'high_priest'],
     equipSlot: 'weapon', stats: { matk: 31, int: 3, vit: 4, mp: 30 },
-    rarity: 'rare', weaponType: 'nature_staff', element: 'nature',
+    rarity: 'rare', weaponType: 'staff', element: 'nature',
     attackDescriptions: {
       normal: '藤蔓之杖召喚地底的根莖，纏繞向目標',
       critical: '森林的怒火通過法杖爆發，無數荊棘刺穿了敵人！',
@@ -1557,8 +1898,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
 
   // ============ 特殊武器 - 隱藏寶箱 (Hidden Treasures) ============
 
-  abyssal_dagger: {
-    id: 'abyssal_dagger', name: '深淵匕首', type: 'weapon',
+  abyssal_blade: {
+    id: 'abyssal_blade', name: '深淵匕首', type: 'weapon',
     description: '從海底深淵打撈出的漆黑匕首，刃身吞噬著周圍的光線。據說它是深海魚人祭司的祭祀之器。',
     buyPrice: 0, sellPrice: 1600,
     stackable: false, maxStack: 1, levelReq: 18,
@@ -1596,7 +1937,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 24,
     classReq: ['chronomancer', 'mage', 'archmage'],
     equipSlot: 'weapon', stats: { matk: 38, int: 5, dex: 3, mp: 40 },
-    rarity: 'epic', weaponType: 'hourglass_staff', element: 'ice',
+    rarity: 'epic', weaponType: 'staff', element: 'ice',
     attackDescriptions: {
       normal: '沙漏杖中的時間碎片飛旋而出，凍結目標周圍的空間',
       critical: '時間之流被強制中斷，目標在永恆的一瞬間承受了所有傷害！',
@@ -1611,7 +1952,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 25,
     classReq: ['warlock', 'mage'],
-    equipSlot: 'weapon', stats: { matk: 42, int: 7, critRate: 4 },
+    equipSlot: 'offhand', stats: { matk: 42, int: 7, critRate: 4 },
     rarity: 'epic', weaponType: 'grimoire', element: 'dark',
     attackDescriptions: {
       normal: '血紅禁書翻開，鮮血般的魔力化為詛咒飛向目標',
@@ -1693,7 +2034,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 5000, sellPrice: 2500,
     stackable: false, maxStack: 1, levelReq: 30,
     classReq: ['high_priest', 'inquisitor'],
-    equipSlot: 'weapon', stats: { matk: 45, int: 6, vit: 5, mp: 50 },
+    equipSlot: 'offhand', stats: { matk: 45, int: 6, vit: 5, mp: 50 },
     rarity: 'legendary', weaponType: 'holy_tome',
     attackDescriptions: {
       normal: '永恆聖典翻開，創世之光傾瀉而出射向目標',
@@ -1710,7 +2051,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 32,
     classReq: ['druid', 'high_priest'],
     equipSlot: 'weapon', stats: { matk: 42, int: 5, vit: 6, mp: 45, hp: 50 },
-    rarity: 'legendary', weaponType: 'nature_staff', element: 'nature',
+    rarity: 'legendary', weaponType: 'staff', element: 'nature',
     attackDescriptions: {
       normal: '世界樹之杖召喚大地之力，根莖從地面竄出攻擊目標',
       critical: '世界樹的意志覺醒，自然的原初之力爆發！',
@@ -1721,14 +2062,14 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
 
   // ============ 特殊武器 - 高階精英掉落 (Lv 40-60) ============
 
-  demon_lord_sword: {
-    id: 'demon_lord_sword', name: '魔王之劍', type: 'weapon',
+  demon_lord_giant_sword: {
+    id: 'demon_lord_giant_sword', name: '魔王之劍', type: 'weapon',
     description: '歷代魔王的力量結晶，漆黑如夜的刀身上流淌著暗紅色的魔力脈絡。揮舞時能聽到無數亡魂的哀嚎，每一次斬擊都伴隨著地獄之火。只有征服了魔王的勇者才配握住這把劍。',
     buyPrice: 0, sellPrice: 8000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['swordsman', 'sword_saint', 'berserker'],
     equipSlot: 'weapon', stats: { atk: 52, str: 8, dex: 5, critRate: 5 },
-    rarity: 'legendary', weaponType: 'katana', element: 'dark',
+    rarity: 'legendary', weaponType: 'giant_sword', element: 'dark',
     attackDescriptions: {
       normal: '魔王之劍劈出一道漆黑的弧光，暗紅的魔力脈絡在刀身上脈動',
       critical: '地獄之門在劍尖開啟！無數亡魂的哀嚎化為毀滅性的一斬！',
@@ -1737,8 +2078,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     },
   },
 
-  elder_dragon_fang: {
-    id: 'elder_dragon_fang', name: '古龍之牙', type: 'weapon',
+  elder_dragon_fang_spear: {
+    id: 'elder_dragon_fang_spear', name: '古龍之牙', type: 'weapon',
     description: '以古龍脫落的獠牙鍛造而成的長槍，槍身散發著遠古龍族的威壓。觸碰槍身就能感受到數千年的龍之力量在其中奔湧，槍尖能輕鬆貫穿最堅硬的龍鱗。',
     buyPrice: 0, sellPrice: 12000,
     stackable: false, maxStack: 1, levelReq: 50,
@@ -1760,7 +2101,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 55,
     classReq: ['chronomancer', 'mage', 'archmage', 'warlock'],
     equipSlot: 'weapon', stats: { matk: 72, int: 12, dex: 5, mp: 60, critRate: 4 },
-    rarity: 'mythic' as ItemRarity, weaponType: 'hourglass_staff', element: 'dark',
+    rarity: 'mythic' as ItemRarity, weaponType: 'staff', element: 'dark',
     attackDescriptions: {
       normal: '深淵之眼轉動，從虛空中折射出一道扭曲的毀滅光束',
       critical: '時空在深淵之眼前碎裂！所有維度的力量在同一瞬間擊中目標！',
@@ -2233,8 +2574,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '水晶守衛停止後留下的多面核心，晶內仍漂著金色防護符，握住時會微微抗拒。', buyPrice: 0, sellPrice: 200,
     stackable: true, maxStack: 99, levelReq: 1,
   },
-  bandit_dagger: {
-    id: 'bandit_dagger', name: '盜賊匕首', type: 'weapon',
+  bandit_blade: {
+    id: 'bandit_blade', name: '盜賊匕首', type: 'weapon',
     description: '盜賊使用的粗糙匕首。', buyPrice: 0, sellPrice: 30,
     stackable: false, maxStack: 1, levelReq: 5,
     equipSlot: 'weapon', stats: { atk: 8, dex: 1 },
@@ -2262,8 +2603,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: false, maxStack: 1, levelReq: 28,
     equipSlot: 'body', stats: { def: 30, mdef: 15, hp: 60, vit: 4 },
   },
-  crystal_blade: {
-    id: 'crystal_blade', name: '水晶之劍', type: 'weapon',
+  crystal_sword: {
+    id: 'crystal_sword', name: '水晶之劍', type: 'weapon',
     description: '由純淨水晶凝聚而成的長劍，劍身透明如冰。', buyPrice: 0, sellPrice: 600,
     stackable: false, maxStack: 1, levelReq: 28,
     equipSlot: 'weapon', stats: { atk: 42, int: 4, critRate: 3 }, element: 'ice',
@@ -2303,8 +2644,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '地底王國騎士團的徽記，散發著微弱的靈魂之光。', buyPrice: 0, sellPrice: 60,
     stackable: true, maxStack: 99, levelReq: 1,
   },
-  phantom_blade: {
-    id: 'phantom_blade', name: '幻影之劍', type: 'weapon',
+  phantom_sword: {
+    id: 'phantom_sword', name: '幻影之劍', type: 'weapon',
     description: '幽靈騎士的佩劍，劍身半透明，散發冥火。', buyPrice: 0, sellPrice: 350,
     stackable: false, maxStack: 1, levelReq: 23,
     equipSlot: 'weapon', stats: { atk: 35, int: 3, critRate: 4 }, element: 'dark',
@@ -3713,7 +4054,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     id: 'iron_shield', name: '鐵盾', type: 'armor',
     description: '鐵礦鍛造的堅固盾牌，提供可靠的防護。', buyPrice: 300, sellPrice: 150,
     stackable: false, maxStack: 1, levelReq: 8,
-    equipSlot: 'hands', stats: { def: 8, hp: 20 },
+    equipSlot: 'offhand', stats: { def: 8, hp: 20 },
+    weaponType: 'shield',
     rarity: 'uncommon',
   },
   dragon_scale_armor: {
@@ -3747,6 +4089,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   ...createSupplementalEquipmentDefs(),
   ...createHighLevelWeaponProgressionDefs(),
+  ...createWeaponTypeTopUpDefs(),
+  ...createShieldTopUpDefs(),
 
   // ============ 製作系統食物成品 ============
   hp_steak: {
@@ -4979,7 +5323,7 @@ export const STARTER_ITEMS = [
 /** NPC 商店：新手村雜貨店 */
 export const SHOP_STARTER_VILLAGE = [
   'small_hp_potion', 'small_mp_potion', 'antidote',
-  'iron_sword', 'oak_staff', 'short_bow', 'wooden_wand',
+  'iron_sword', 'oak_staff', 'short_bow', 'wooden_scepter',
   'leather_armor', 'leather_cap', 'leather_gloves', 'leather_boots',
   'wooden_ring',
 ];
@@ -5064,7 +5408,7 @@ export interface EquipmentSetDef {
   bonuses: SetBonusTier[];
 }
 
-/** 套裝武器：劍聖之裝的武器包含 katana_mithril 和 katana_dragon */
+/** 套裝武器：劍聖之裝的武器包含 mithril_katana 和 dragon_mark_katana */
 // 在 ITEM_DEFS 中已經用 setId 標記了套裝部件
 
 export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
@@ -5072,7 +5416,7 @@ export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
     id: 'sword_saint_set',
     name: '劍聖之裝',
     description: '為戰士職業打造的傳說套裝，揮劍如虹。',
-    itemIds: ['katana_mithril', 'katana_dragon', 'spear_mithril', 'spear_dragon', 'greataxe_mithril', 'greataxe_dragon', 'sword_saint_armor', 'sword_saint_ring'],
+    itemIds: ['mithril_katana', 'dragon_mark_katana', 'mithril_spear', 'dragon_fang_spear', 'mithril_greataxe', 'dragon_slayer_greataxe', 'sword_saint_armor', 'sword_saint_ring'],
     bonuses: [
       {
         pieces: 2,
@@ -5091,7 +5435,7 @@ export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
     id: 'archmage_set',
     name: '大法師之裝',
     description: '為法師職業打造的傳說套裝，魔力洪流。',
-    itemIds: ['elestaff_mithril', 'elestaff_dragon', 'grimoire_mithril', 'grimoire_dragon', 'hourglass_mithril', 'hourglass_dragon', 'archmage_set_robe', 'archmage_set_ring'],
+    itemIds: ['mithril_elemental_staff', 'dragon_breath_elemental_staff', 'mithril_grimoire', 'dragonblood_grimoire', 'mithril_hourglass_staff', 'dragon_time_hourglass_staff', 'archmage_set_robe', 'archmage_set_ring'],
     bonuses: [
       {
         pieces: 2,
@@ -5109,7 +5453,7 @@ export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
     id: 'shadow_hunter_set',
     name: '暗影獵手之裝',
     description: '為遊俠職業打造的傳說套裝，暗影無蹤。',
-    itemIds: ['crossbow_mithril', 'crossbow_dragon', 'dagger_mithril', 'dagger_dragon', 'whip_mithril', 'whip_dragon', 'shadow_hunter_armor', 'shadow_hunter_ring'],
+    itemIds: ['mithril_crossbow', 'dragon_fang_crossbow', 'mithril_blade', 'dragon_scale_blade', 'mithril_whip', 'dragon_sinew_whip', 'shadow_hunter_armor', 'shadow_hunter_ring'],
     bonuses: [
       {
         pieces: 2,
@@ -5127,7 +5471,7 @@ export const EQUIPMENT_SETS: Record<string, EquipmentSetDef> = {
     id: 'holy_guardian_set',
     name: '聖光守護之裝',
     description: '為祭司職業打造的傳說套裝，聖光庇護。',
-    itemIds: ['holytome_mithril', 'holytome_dragon', 'naturestaff_mithril', 'naturestaff_dragon', 'warhammer_mithril', 'warhammer_dragon', 'holy_guardian_armor', 'holy_guardian_ring'],
+    itemIds: ['mithril_holy_tome', 'dragon_holy_tome', 'mithril_nature_staff', 'dragon_tree_nature_staff', 'mithril_warhammer', 'dragonbone_warhammer', 'holy_guardian_armor', 'holy_guardian_ring'],
     bonuses: [
       {
         pieces: 2,

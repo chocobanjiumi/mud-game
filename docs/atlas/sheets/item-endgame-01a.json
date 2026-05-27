@@ -5,16 +5,16 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_endgame_01a.sheet.png",
   "targets": [
-    { "assetId": "item_endgame_crossbow_lv50", "category": "item", "targetId": "crossbow_lv50", "name": "龍脊重弩", "outputPath": "client/public/images/items/item_endgame_crossbow_lv50.png", "row": 0, "column": 0 },
-    { "assetId": "item_endgame_dagger_lv50", "category": "item", "targetId": "dagger_lv50", "name": "深月隱匕", "outputPath": "client/public/images/items/item_endgame_dagger_lv50.png", "row": 0, "column": 1 },
-    { "assetId": "item_endgame_elemental_staff_lv50", "category": "item", "targetId": "elemental_staff_lv50", "name": "四相晶杖", "outputPath": "client/public/images/items/item_endgame_elemental_staff_lv50.png", "row": 0, "column": 2 },
-    { "assetId": "item_endgame_greataxe_lv50", "category": "item", "targetId": "greataxe_lv50", "name": "白燼巨斧", "outputPath": "client/public/images/items/item_endgame_greataxe_lv50.png", "row": 0, "column": 3 },
-    { "assetId": "item_endgame_grimoire_lv50", "category": "item", "targetId": "grimoire_lv50", "name": "星頁魔導書", "outputPath": "client/public/images/items/item_endgame_grimoire_lv50.png", "row": 1, "column": 0 },
-    { "assetId": "item_endgame_holy_tome_lv50", "category": "item", "targetId": "holy_tome_lv50", "name": "日冕聖典", "outputPath": "client/public/images/items/item_endgame_holy_tome_lv50.png", "row": 1, "column": 1 },
-    { "assetId": "item_endgame_hourglass_staff_lv50", "category": "item", "targetId": "hourglass_staff_lv50", "name": "星刻沙漏杖", "outputPath": "client/public/images/items/item_endgame_hourglass_staff_lv50.png", "row": 1, "column": 2 },
-    { "assetId": "item_endgame_katana_lv50", "category": "item", "targetId": "katana_lv50", "name": "月影薄太刀", "outputPath": "client/public/images/items/item_endgame_katana_lv50.png", "row": 1, "column": 3 },
-    { "assetId": "item_endgame_nature_staff_lv50", "category": "item", "targetId": "nature_staff_lv50", "name": "翡翠根杖", "outputPath": "client/public/images/items/item_endgame_nature_staff_lv50.png", "row": 2, "column": 0 },
-    { "assetId": "item_endgame_warhammer_lv50", "category": "item", "targetId": "warhammer_lv50", "name": "誓石戰錘", "outputPath": "client/public/images/items/item_endgame_warhammer_lv50.png", "row": 2, "column": 1 },
-    { "assetId": "item_endgame_whip_lv50", "category": "item", "targetId": "whip_lv50", "name": "雷藤長鞭", "outputPath": "client/public/images/items/item_endgame_whip_lv50.png", "row": 2, "column": 2 }
+    { "assetId": "item_endgame_crossbow_lv50", "category": "item", "targetId": "dragonspine_heavy_crossbow", "name": "龍脊重弩", "outputPath": "client/public/images/items/item_endgame_crossbow_lv50.png", "row": 0, "column": 0 },
+    { "assetId": "item_endgame_dagger_lv50", "category": "item", "targetId": "deepmoon_hidden_blade", "name": "深月隱匕", "outputPath": "client/public/images/items/item_endgame_dagger_lv50.png", "row": 0, "column": 1 },
+    { "assetId": "item_endgame_elemental_staff_lv50", "category": "item", "targetId": "four_aspect_crystal_staff", "name": "四相晶杖", "outputPath": "client/public/images/items/item_endgame_elemental_staff_lv50.png", "row": 0, "column": 2 },
+    { "assetId": "item_endgame_greataxe_lv50", "category": "item", "targetId": "white_ash_greataxe", "name": "白燼巨斧", "outputPath": "client/public/images/items/item_endgame_greataxe_lv50.png", "row": 0, "column": 3 },
+    { "assetId": "item_endgame_grimoire_lv50", "category": "item", "targetId": "starpage_grimoire", "name": "星頁魔導書", "outputPath": "client/public/images/items/item_endgame_grimoire_lv50.png", "row": 1, "column": 0 },
+    { "assetId": "item_endgame_holy_tome_lv50", "category": "item", "targetId": "corona_holy_tome", "name": "日冕聖典", "outputPath": "client/public/images/items/item_endgame_holy_tome_lv50.png", "row": 1, "column": 1 },
+    { "assetId": "item_endgame_hourglass_staff_lv50", "category": "item", "targetId": "star_etched_hourglass_staff", "name": "星刻沙漏杖", "outputPath": "client/public/images/items/item_endgame_hourglass_staff_lv50.png", "row": 1, "column": 2 },
+    { "assetId": "item_endgame_katana_lv50", "category": "item", "targetId": "moonshadow_thin_katana", "name": "月影薄太刀", "outputPath": "client/public/images/items/item_endgame_katana_lv50.png", "row": 1, "column": 3 },
+    { "assetId": "item_endgame_nature_staff_lv50", "category": "item", "targetId": "emerald_root_staff", "name": "翡翠根杖", "outputPath": "client/public/images/items/item_endgame_nature_staff_lv50.png", "row": 2, "column": 0 },
+    { "assetId": "item_endgame_warhammer_lv50", "category": "item", "targetId": "oathstone_warhammer", "name": "誓石戰錘", "outputPath": "client/public/images/items/item_endgame_warhammer_lv50.png", "row": 2, "column": 1 },
+    { "assetId": "item_endgame_whip_lv50", "category": "item", "targetId": "thundervine_whip", "name": "雷藤長鞭", "outputPath": "client/public/images/items/item_endgame_whip_lv50.png", "row": 2, "column": 2 }
   ]
 }

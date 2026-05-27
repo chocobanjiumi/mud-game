@@ -1599,7 +1599,7 @@ Zones: 60
 | r1 c2 | worldscar_fragment | 世界傷痕碎片 | `client/public/images/items/item_astral_time_worldscar_fragment.png` |
 | r1 c3 | zone_ancient_ruins_belt_9 | 古代遺跡腰帶 | `client/public/images/items/item_astral_time_zone_ancient_ruins_belt_9.png` |
 | r1 c4 | zone_ancient_ruins_body_2 | 古代遺跡護甲 | `client/public/images/items/item_astral_time_zone_ancient_ruins_body_2.png` |
-| r2 c0 | zone_ancient_ruins_earring_8 | 古代遺跡耳飾 | `client/public/images/items/item_astral_time_zone_ancient_ruins_earring_8.png` |
+| r2 c0 | zone_ancient_ruins_earring | 古代遺跡耳飾 | `client/public/images/items/item_astral_time_zone_ancient_ruins_earring.png` |
 | r2 c1 | zone_ancient_ruins_feet_4 | 古代遺跡長靴 | `client/public/images/items/item_astral_time_zone_ancient_ruins_feet_4.png` |
 | r2 c2 | zone_ancient_ruins_hands_3 | 古代遺跡護手 | `client/public/images/items/item_astral_time_zone_ancient_ruins_hands_3.png` |
 | r2 c3 | zone_ancient_ruins_head_1 | 古代遺跡兜帽 | `client/public/images/items/item_astral_time_zone_ancient_ruins_head_1.png` |
@@ -1615,17 +1615,17 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | zone_ancient_ruins_ring_10 | 古代遺跡戒璽 | `client/public/images/items/item_astral_time_zone_ancient_ruins_ring_10.png` |
 | r0 c1 | zone_ancient_ruins_ring_5 | 古代遺跡指環 | `client/public/images/items/item_astral_time_zone_ancient_ruins_ring_5.png` |
-| r0 c2 | zone_ancient_ruins_weapon_7 | 古代遺跡戰刃 | `client/public/images/items/item_astral_time_zone_ancient_ruins_weapon_7.png` |
+| r0 c2 | ancient_ruins_giant_sword | 古代遺跡戰刃 | `client/public/images/items/item_astral_time_zone_ancient_ruins_weapon_7.png` |
 | r0 c3 | zone_astral_wastes_belt_9 | 星界荒原腰帶 | `client/public/images/items/item_astral_time_zone_astral_wastes_belt_9.png` |
 | r0 c4 | zone_astral_wastes_body_2 | 星界荒原護甲 | `client/public/images/items/item_astral_time_zone_astral_wastes_body_2.png` |
-| r1 c0 | zone_astral_wastes_earring_8 | 星界荒原耳飾 | `client/public/images/items/item_astral_time_zone_astral_wastes_earring_8.png` |
+| r1 c0 | zone_astral_wastes_earring | 星界荒原耳飾 | `client/public/images/items/item_astral_time_zone_astral_wastes_earring.png` |
 | r1 c1 | zone_astral_wastes_feet_4 | 星界荒原長靴 | `client/public/images/items/item_astral_time_zone_astral_wastes_feet_4.png` |
 | r1 c2 | zone_astral_wastes_hands_3 | 星界荒原護手 | `client/public/images/items/item_astral_time_zone_astral_wastes_hands_3.png` |
 | r1 c3 | zone_astral_wastes_head_1 | 星界荒原兜帽 | `client/public/images/items/item_astral_time_zone_astral_wastes_head_1.png` |
 | r1 c4 | zone_astral_wastes_necklace_6 | 星界荒原墜飾 | `client/public/images/items/item_astral_time_zone_astral_wastes_necklace_6.png` |
 | r2 c0 | zone_astral_wastes_ring_10 | 星界荒原戒璽 | `client/public/images/items/item_astral_time_zone_astral_wastes_ring_10.png` |
 | r2 c1 | zone_astral_wastes_ring_5 | 星界荒原指環 | `client/public/images/items/item_astral_time_zone_astral_wastes_ring_5.png` |
-| r2 c2 | zone_astral_wastes_weapon_7 | 星界荒原戰刃 | `client/public/images/items/item_astral_time_zone_astral_wastes_weapon_7.png` |
+| r2 c2 | astral_wastes_giant_sword | 星界荒原戰刃 | `client/public/images/items/item_astral_time_zone_astral_wastes_weapon_7.png` |
 | r2 c3 | zone_starfall_crater_body_2 | 星隕坑護甲 | `client/public/images/items/item_astral_time_zone_starfall_crater_body_2.png` |
 | r2 c4 | zone_starfall_crater_feet_4 | 星隕坑長靴 | `client/public/images/items/item_astral_time_zone_starfall_crater_feet_4.png` |
 
@@ -1643,14 +1643,14 @@ Zones: 60
 | r0 c3 | zone_starfall_crater_ring_5 | 星隕坑指環 | `client/public/images/items/item_astral_time_zone_starfall_crater_ring_5.png` |
 | r0 c4 | zone_time_ruins_belt_9 | 時間廢墟腰帶 | `client/public/images/items/item_astral_time_zone_time_ruins_belt_9.png` |
 | r1 c0 | zone_time_ruins_body_2 | 時間廢墟護甲 | `client/public/images/items/item_astral_time_zone_time_ruins_body_2.png` |
-| r1 c1 | zone_time_ruins_earring_8 | 時間廢墟耳飾 | `client/public/images/items/item_astral_time_zone_time_ruins_earring_8.png` |
+| r1 c1 | zone_time_ruins_earring | 時間廢墟耳飾 | `client/public/images/items/item_astral_time_zone_time_ruins_earring.png` |
 | r1 c2 | zone_time_ruins_feet_4 | 時間廢墟長靴 | `client/public/images/items/item_astral_time_zone_time_ruins_feet_4.png` |
 | r1 c3 | zone_time_ruins_hands_3 | 時間廢墟護手 | `client/public/images/items/item_astral_time_zone_time_ruins_hands_3.png` |
 | r1 c4 | zone_time_ruins_head_1 | 時間廢墟兜帽 | `client/public/images/items/item_astral_time_zone_time_ruins_head_1.png` |
 | r2 c0 | zone_time_ruins_necklace_6 | 時間廢墟墜飾 | `client/public/images/items/item_astral_time_zone_time_ruins_necklace_6.png` |
 | r2 c1 | zone_time_ruins_ring_10 | 時間廢墟戒璽 | `client/public/images/items/item_astral_time_zone_time_ruins_ring_10.png` |
 | r2 c2 | zone_time_ruins_ring_5 | 時間廢墟指環 | `client/public/images/items/item_astral_time_zone_time_ruins_ring_5.png` |
-| r2 c3 | zone_time_ruins_weapon_7 | 時間廢墟戰刃 | `client/public/images/items/item_astral_time_zone_time_ruins_weapon_7.png` |
+| r2 c3 | time_ruins_giant_sword | 時間廢墟戰刃 | `client/public/images/items/item_astral_time_zone_time_ruins_weapon_7.png` |
 
 ### item_cave_mine_01
 - Category: item
@@ -1662,15 +1662,15 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | black_market_seal | 黑市暗印 | `client/public/images/items/item_cave_mine_black_market_seal.png` |
 | r0 c1 | core_ore_shard | 礦核碎片 | `client/public/images/items/item_cave_mine_core_ore_shard.png` |
-| r0 c2 | crystal_elestaff | 晶簇法杖 | `client/public/images/items/item_cave_mine_crystal_elestaff.png` |
+| r0 c2 | crystal_cluster_staff | 晶簇法杖 | `client/public/images/items/item_cave_mine_crystal_elestaff.png` |
 | r0 c3 | crystal_resonance_tonic | 晶鳴穩定劑 | `client/public/images/items/item_cave_mine_crystal_resonance_tonic.png` |
 | r0 c4 | darkriver_pass | 暗河通行券 | `client/public/images/items/item_cave_mine_darkriver_pass.png` |
-| r1 c0 | elestaff_crystal | 元素水晶杖 | `client/public/images/items/item_cave_mine_elestaff_crystal.png` |
+| r1 c0 | crystal_elemental_staff | 元素水晶杖 | `client/public/images/items/item_cave_mine_elestaff_crystal.png` |
 | r1 c1 | foreman_key_tag | 工頭鑰匙牌 | `client/public/images/items/item_cave_mine_foreman_key_tag.png` |
 | r1 c2 | forge_heat_voucher | 熔爐熱額券 | `client/public/images/items/item_cave_mine_forge_heat_voucher.png` |
 | r1 c3 | frozen_hourglass_staff | 凍結沙漏杖 | `client/public/images/items/item_cave_mine_frozen_hourglass_staff.png` |
-| r1 c4 | grimoire_crystal | 水晶魔典 | `client/public/images/items/item_cave_mine_grimoire_crystal.png` |
-| r2 c0 | hourglass_crystal | 水晶沙漏杖 | `client/public/images/items/item_cave_mine_hourglass_crystal.png` |
+| r1 c4 | crystal_grimoire | 水晶魔典 | `client/public/images/items/item_cave_mine_grimoire_crystal.png` |
+| r2 c0 | crystal_hourglass_staff | 水晶沙漏杖 | `client/public/images/items/item_cave_mine_hourglass_crystal.png` |
 | r2 c1 | lucky_charm | 幸運護符 | `client/public/images/items/item_cave_mine_lucky_charm.png` |
 | r2 c2 | molten_lock_sigill | 熔鎖印記 | `client/public/images/items/item_cave_mine_molten_lock_sigill.png` |
 | r2 c3 | mountain_heart_resonator | 山心共鳴核 | `client/public/images/items/item_cave_mine_mountain_heart_resonator.png` |
@@ -1780,8 +1780,8 @@ Zones: 60
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
 | r0 c0 | crystal_armor | 水晶鎧甲 | `client/public/images/items/item_cave_mine_ice_mountain_crystal_armor.png` |
-| r0 c1 | crystal_blade | 水晶之劍 | `client/public/images/items/item_cave_mine_ice_mountain_crystal_blade.png` |
-| r0 c2 | frost_greataxe | 霜巨人的戰斧 | `client/public/images/items/item_cave_mine_ice_mountain_frost_greataxe.png` |
+| r0 c1 | crystal_sword | 水晶之劍 | `client/public/images/items/item_cave_mine_ice_mountain_crystal_blade.png` |
+| r0 c2 | frost_giant_greataxe | 霜巨人的戰斧 | `client/public/images/items/item_cave_mine_ice_mountain_frost_greataxe.png` |
 
 ### item_cave_mine_low_wilds_01
 - Category: item
@@ -1792,7 +1792,7 @@ Zones: 60
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
 | r0 c0 | apprentice_staff | 學徒法杖 | `client/public/images/items/item_cave_mine_low_wilds_apprentice_staff.png` |
-| r0 c1 | naturestaff_crystal | 翡翠自然杖 | `client/public/images/items/item_cave_mine_low_wilds_naturestaff_crystal.png` |
+| r0 c1 | emerald_nature_staff | 翡翠自然杖 | `client/public/images/items/item_cave_mine_low_wilds_naturestaff_crystal.png` |
 | r0 c2 | smoke_bomb | 煙霧彈 | `client/public/images/items/item_cave_mine_low_wilds_smoke_bomb.png` |
 | r0 c3 | throwing_knife | 投擲短刀 | `client/public/images/items/item_cave_mine_low_wilds_throwing_knife.png` |
 
@@ -1815,7 +1815,7 @@ Zones: 60
 | r1 c3 | forbidden_altar_seal | 禁壇封印 | `client/public/images/items/item_coast_water_forbidden_altar_seal.png` |
 | r1 c4 | harbor_seal_stamp | 港務封印章 | `client/public/images/items/item_coast_water_harbor_seal_stamp.png` |
 | r2 c0 | lakebreath_phial | 湖息小瓶 | `client/public/images/items/item_coast_water_lakebreath_phial.png` |
-| r2 c1 | pirate_crossbow | 海盜船長的短銃弩 | `client/public/images/items/item_coast_water_pirate_crossbow.png` |
+| r2 c1 | pirate_captain_crossbow | 海盜船長的短銃弩 | `client/public/images/items/item_coast_water_pirate_crossbow.png` |
 | r2 c2 | ritual_reef_bloodseal | 礁心血印 | `client/public/images/items/item_coast_water_ritual_reef_bloodseal.png` |
 | r2 c3 | serpent_god_backwater_scale | 蛇神背水鱗 | `client/public/images/items/item_coast_water_serpent_god_backwater_scale.png` |
 | r2 c4 | sharktooth_tally | 鯊齒記功牌 | `client/public/images/items/item_coast_water_sharktooth_tally.png` |
@@ -1840,7 +1840,7 @@ Zones: 60
 | r1 c4 | zone_bloodsalt_coast_ring_5 | 血鹽海岸指環 | `client/public/images/items/item_coast_water_zone_bloodsalt_coast_ring_5.png` |
 | r2 c0 | zone_deepsea_temple_belt_9 | 深海神殿腰帶 | `client/public/images/items/item_coast_water_zone_deepsea_temple_belt_9.png` |
 | r2 c1 | zone_deepsea_temple_body_2 | 深海神殿護甲 | `client/public/images/items/item_coast_water_zone_deepsea_temple_body_2.png` |
-| r2 c2 | zone_deepsea_temple_earring_8 | 深海神殿耳飾 | `client/public/images/items/item_coast_water_zone_deepsea_temple_earring_8.png` |
+| r2 c2 | zone_deepsea_temple_earring | 深海神殿耳飾 | `client/public/images/items/item_coast_water_zone_deepsea_temple_earring.png` |
 | r2 c3 | zone_deepsea_temple_feet_4 | 深海神殿長靴 | `client/public/images/items/item_coast_water_zone_deepsea_temple_feet_4.png` |
 | r2 c4 | zone_deepsea_temple_hands_3 | 深海神殿護手 | `client/public/images/items/item_coast_water_zone_deepsea_temple_hands_3.png` |
 
@@ -1856,7 +1856,7 @@ Zones: 60
 | r0 c1 | zone_deepsea_temple_necklace_6 | 深海神殿墜飾 | `client/public/images/items/item_coast_water_zone_deepsea_temple_necklace_6.png` |
 | r0 c2 | zone_deepsea_temple_ring_10 | 深海神殿戒璽 | `client/public/images/items/item_coast_water_zone_deepsea_temple_ring_10.png` |
 | r0 c3 | zone_deepsea_temple_ring_5 | 深海神殿指環 | `client/public/images/items/item_coast_water_zone_deepsea_temple_ring_5.png` |
-| r0 c4 | zone_deepsea_temple_weapon_7 | 深海神殿戰刃 | `client/public/images/items/item_coast_water_zone_deepsea_temple_weapon_7.png` |
+| r0 c4 | deepsea_temple_giant_sword | 深海神殿戰刃 | `client/public/images/items/item_coast_water_zone_deepsea_temple_weapon_7.png` |
 | r1 c0 | zone_eastern_coast_body_2 | 東方海岸護甲 | `client/public/images/items/item_coast_water_zone_eastern_coast_body_2.png` |
 | r1 c1 | zone_eastern_coast_feet_4 | 東方海岸長靴 | `client/public/images/items/item_coast_water_zone_eastern_coast_feet_4.png` |
 | r1 c2 | zone_eastern_coast_hands_3 | 東方海岸護手 | `client/public/images/items/item_coast_water_zone_eastern_coast_hands_3.png` |
@@ -1880,14 +1880,14 @@ Zones: 60
 | r0 c1 | zone_mist_harbor_ring_5 | 霧港指環 | `client/public/images/items/item_coast_water_zone_mist_harbor_ring_5.png` |
 | r0 c2 | zone_reef_of_bones_belt_9 | 白骨礁腰帶 | `client/public/images/items/item_coast_water_zone_reef_of_bones_belt_9.png` |
 | r0 c3 | zone_reef_of_bones_body_2 | 白骨礁護甲 | `client/public/images/items/item_coast_water_zone_reef_of_bones_body_2.png` |
-| r0 c4 | zone_reef_of_bones_earring_8 | 白骨礁耳飾 | `client/public/images/items/item_coast_water_zone_reef_of_bones_earring_8.png` |
+| r0 c4 | zone_reef_of_bones_earring | 白骨礁耳飾 | `client/public/images/items/item_coast_water_zone_reef_of_bones_earring.png` |
 | r1 c0 | zone_reef_of_bones_feet_4 | 白骨礁長靴 | `client/public/images/items/item_coast_water_zone_reef_of_bones_feet_4.png` |
 | r1 c1 | zone_reef_of_bones_hands_3 | 白骨礁護手 | `client/public/images/items/item_coast_water_zone_reef_of_bones_hands_3.png` |
 | r1 c2 | zone_reef_of_bones_head_1 | 白骨礁兜帽 | `client/public/images/items/item_coast_water_zone_reef_of_bones_head_1.png` |
 | r1 c3 | zone_reef_of_bones_necklace_6 | 白骨礁墜飾 | `client/public/images/items/item_coast_water_zone_reef_of_bones_necklace_6.png` |
 | r1 c4 | zone_reef_of_bones_ring_10 | 白骨礁戒璽 | `client/public/images/items/item_coast_water_zone_reef_of_bones_ring_10.png` |
 | r2 c0 | zone_reef_of_bones_ring_5 | 白骨礁指環 | `client/public/images/items/item_coast_water_zone_reef_of_bones_ring_5.png` |
-| r2 c1 | zone_reef_of_bones_weapon_7 | 白骨礁戰刃 | `client/public/images/items/item_coast_water_zone_reef_of_bones_weapon_7.png` |
+| r2 c1 | reef_of_bones_giant_sword | 白骨礁戰刃 | `client/public/images/items/item_coast_water_zone_reef_of_bones_weapon_7.png` |
 | r2 c2 | zone_saltwind_flats_body_2 | 鹽風灘護甲 | `client/public/images/items/item_coast_water_zone_saltwind_flats_body_2.png` |
 | r2 c3 | zone_saltwind_flats_feet_4 | 鹽風灘長靴 | `client/public/images/items/item_coast_water_zone_saltwind_flats_feet_4.png` |
 | r2 c4 | zone_saltwind_flats_hands_3 | 鹽風灘護手 | `client/public/images/items/item_coast_water_zone_saltwind_flats_hands_3.png` |
@@ -1924,7 +1924,7 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | bandit_dagger | 盜賊匕首 | `client/public/images/items/item_coast_water_low_wilds_bandit_dagger.png` |
+| r0 c0 | bandit_blade | 盜賊匕首 | `client/public/images/items/item_coast_water_low_wilds_bandit_dagger.png` |
 
 ### item_coast_water_town_market_01
 - Category: item
@@ -1970,14 +1970,14 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | zone_abyss_rift_earring_8 | 深淵裂隙耳飾 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_earring_8.png` |
+| r0 c0 | zone_abyss_rift_earring | 深淵裂隙耳飾 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_earring.png` |
 | r0 c1 | zone_abyss_rift_feet_4 | 深淵裂隙長靴 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_feet_4.png` |
 | r0 c2 | zone_abyss_rift_hands_3 | 深淵裂隙護手 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_hands_3.png` |
 | r0 c3 | zone_abyss_rift_head_1 | 深淵裂隙兜帽 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_head_1.png` |
 | r0 c4 | zone_abyss_rift_necklace_6 | 深淵裂隙墜飾 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_necklace_6.png` |
 | r1 c0 | zone_abyss_rift_ring_10 | 深淵裂隙戒璽 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_ring_10.png` |
 | r1 c1 | zone_abyss_rift_ring_5 | 深淵裂隙指環 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_ring_5.png` |
-| r1 c2 | zone_abyss_rift_weapon_7 | 深淵裂隙戰刃 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_weapon_7.png` |
+| r1 c2 | abyss_rift_giant_sword | 深淵裂隙戰刃 | `client/public/images/items/item_demon_abyss_zone_abyss_rift_weapon_7.png` |
 | r1 c3 | zone_cursed_graveyard_body_2 | 詛咒墓園護甲 | `client/public/images/items/item_demon_abyss_zone_cursed_graveyard_body_2.png` |
 | r1 c4 | zone_cursed_graveyard_feet_4 | 詛咒墓園長靴 | `client/public/images/items/item_demon_abyss_zone_cursed_graveyard_feet_4.png` |
 | r2 c0 | zone_cursed_graveyard_hands_3 | 詛咒墓園護手 | `client/public/images/items/item_demon_abyss_zone_cursed_graveyard_hands_3.png` |
@@ -2001,14 +2001,14 @@ Zones: 60
 | r0 c4 | zone_demon_territory_ring_5 | 魔族領地指環 | `client/public/images/items/item_demon_abyss_zone_demon_territory_ring_5.png` |
 | r1 c0 | zone_necropolis_gate_belt_9 | 死都外門腰帶 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_belt_9.png` |
 | r1 c1 | zone_necropolis_gate_body_2 | 死都外門護甲 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_body_2.png` |
-| r1 c2 | zone_necropolis_gate_earring_8 | 死都外門耳飾 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_earring_8.png` |
+| r1 c2 | zone_necropolis_gate_earring | 死都外門耳飾 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_earring.png` |
 | r1 c3 | zone_necropolis_gate_feet_4 | 死都外門長靴 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_feet_4.png` |
 | r1 c4 | zone_necropolis_gate_hands_3 | 死都外門護手 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_hands_3.png` |
 | r2 c0 | zone_necropolis_gate_head_1 | 死都外門兜帽 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_head_1.png` |
 | r2 c1 | zone_necropolis_gate_necklace_6 | 死都外門墜飾 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_necklace_6.png` |
 | r2 c2 | zone_necropolis_gate_ring_10 | 死都外門戒璽 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_ring_10.png` |
 | r2 c3 | zone_necropolis_gate_ring_5 | 死都外門指環 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_ring_5.png` |
-| r2 c4 | zone_necropolis_gate_weapon_7 | 死都外門戰刃 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_weapon_7.png` |
+| r2 c4 | necropolis_gate_giant_sword | 死都外門戰刃 | `client/public/images/items/item_demon_abyss_zone_necropolis_gate_weapon_7.png` |
 
 ### item_demon_abyss_04
 - Category: item
@@ -2020,14 +2020,14 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | zone_sunken_catacombs_belt_9 | 沉沒墓窟腰帶 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt_9.png` |
 | r0 c1 | zone_sunken_catacombs_body_2 | 沉沒墓窟護甲 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_body_2.png` |
-| r0 c2 | zone_sunken_catacombs_earring_8 | 沉沒墓窟耳飾 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_earring_8.png` |
+| r0 c2 | zone_sunken_catacombs_earring | 沉沒墓窟耳飾 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_earring.png` |
 | r0 c3 | zone_sunken_catacombs_feet_4 | 沉沒墓窟長靴 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_feet_4.png` |
 | r0 c4 | zone_sunken_catacombs_hands_3 | 沉沒墓窟護手 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_hands_3.png` |
 | r1 c0 | zone_sunken_catacombs_head_1 | 沉沒墓窟兜帽 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_head_1.png` |
 | r1 c1 | zone_sunken_catacombs_necklace_6 | 沉沒墓窟墜飾 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_necklace_6.png` |
 | r1 c2 | zone_sunken_catacombs_ring_10 | 沉沒墓窟戒璽 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_ring_10.png` |
 | r1 c3 | zone_sunken_catacombs_ring_5 | 沉沒墓窟指環 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_ring_5.png` |
-| r1 c4 | zone_sunken_catacombs_weapon_7 | 沉沒墓窟戰刃 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_weapon_7.png` |
+| r1 c4 | sunken_catacombs_giant_sword | 沉沒墓窟戰刃 | `client/public/images/items/item_demon_abyss_zone_sunken_catacombs_weapon_7.png` |
 
 ### item_demon_abyss_dragon_celestial_01
 - Category: item
@@ -2078,9 +2078,9 @@ Zones: 60
 | r1 c2 | hidden_court_decree | 隱庭敕令 | `client/public/images/items/item_dragon_celestial_hidden_court_decree.png` |
 | r1 c3 | holy_guardian_armor | 聖光守護鎧甲 | `client/public/images/items/item_dragon_celestial_holy_guardian_armor.png` |
 | r1 c4 | holy_guardian_ring | 聖光守護戒指 | `client/public/images/items/item_dragon_celestial_holy_guardian_ring.png` |
-| r2 c0 | holytome_basic | 祈禱書 | `client/public/images/items/item_dragon_celestial_holytome_basic.png` |
-| r2 c1 | holytome_iron | 鐵釦聖典 | `client/public/images/items/item_dragon_celestial_holytome_iron.png` |
-| r2 c2 | holytome_mithril | 秘銀聖典 | `client/public/images/items/item_dragon_celestial_holytome_mithril.png` |
+| r2 c0 | prayer_holy_tome | 祈禱書 | `client/public/images/items/item_dragon_celestial_holytome_basic.png` |
+| r2 c1 | ironclasp_holy_tome | 鐵釦聖典 | `client/public/images/items/item_dragon_celestial_holytome_iron.png` |
+| r2 c2 | mithril_holy_tome | 秘銀聖典 | `client/public/images/items/item_dragon_celestial_holytome_mithril.png` |
 | r2 c3 | moonlight_katana | 月光太刀 | `client/public/images/items/item_dragon_celestial_moonlight_katana.png` |
 | r2 c4 | moonmask_shard | 月面具碎片 | `client/public/images/items/item_dragon_celestial_moonmask_shard.png` |
 
@@ -2102,7 +2102,7 @@ Zones: 60
 | r1 c2 | sunfire_vial | 日火小瓶 | `client/public/images/items/item_dragon_celestial_sunfire_vial.png` |
 | r1 c3 | zone_celestial_ruins_belt_9 | 天界遺跡腰帶 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt_9.png` |
 | r1 c4 | zone_celestial_ruins_body_2 | 天界遺跡護甲 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_body_2.png` |
-| r2 c0 | zone_celestial_ruins_earring_8 | 天界遺跡耳飾 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_earring_8.png` |
+| r2 c0 | zone_celestial_ruins_earring | 天界遺跡耳飾 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_earring.png` |
 | r2 c1 | zone_celestial_ruins_feet_4 | 天界遺跡長靴 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_feet_4.png` |
 | r2 c2 | zone_celestial_ruins_hands_3 | 天界遺跡護手 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_hands_3.png` |
 | r2 c3 | zone_celestial_ruins_head_1 | 天界遺跡兜帽 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_head_1.png` |
@@ -2118,17 +2118,17 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | zone_celestial_ruins_ring_10 | 天界遺跡戒璽 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_ring_10.png` |
 | r0 c1 | zone_celestial_ruins_ring_5 | 天界遺跡指環 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_ring_5.png` |
-| r0 c2 | zone_celestial_ruins_weapon_7 | 天界遺跡戰刃 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_weapon_7.png` |
+| r0 c2 | celestial_ruins_giant_sword | 天界遺跡戰刃 | `client/public/images/items/item_dragon_celestial_zone_celestial_ruins_weapon_7.png` |
 | r0 c3 | zone_dragon_valley_belt_9 | 龍谷腰帶 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_belt_9.png` |
 | r0 c4 | zone_dragon_valley_body_2 | 龍谷護甲 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_body_2.png` |
-| r1 c0 | zone_dragon_valley_earring_8 | 龍谷耳飾 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_earring_8.png` |
+| r1 c0 | zone_dragon_valley_earring | 龍谷耳飾 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_earring.png` |
 | r1 c1 | zone_dragon_valley_feet_4 | 龍谷長靴 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_feet_4.png` |
 | r1 c2 | zone_dragon_valley_hands_3 | 龍谷護手 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_hands_3.png` |
 | r1 c3 | zone_dragon_valley_head_1 | 龍谷兜帽 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_head_1.png` |
 | r1 c4 | zone_dragon_valley_necklace_6 | 龍谷墜飾 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_necklace_6.png` |
 | r2 c0 | zone_dragon_valley_ring_10 | 龍谷戒璽 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_ring_10.png` |
 | r2 c1 | zone_dragon_valley_ring_5 | 龍谷指環 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_ring_5.png` |
-| r2 c2 | zone_dragon_valley_weapon_7 | 龍谷戰刃 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_weapon_7.png` |
+| r2 c2 | dragon_valley_giant_sword | 龍谷戰刃 | `client/public/images/items/item_dragon_celestial_zone_dragon_valley_weapon_7.png` |
 | r2 c3 | zone_moonshadow_court_belt_9 | 月影庭腰帶 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_belt_9.png` |
 | r2 c4 | zone_moonshadow_court_body_2 | 月影庭護甲 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_body_2.png` |
 
@@ -2140,17 +2140,17 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | zone_moonshadow_court_earring_8 | 月影庭耳飾 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_earring_8.png` |
+| r0 c0 | zone_moonshadow_court_earring | 月影庭耳飾 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_earring.png` |
 | r0 c1 | zone_moonshadow_court_feet_4 | 月影庭長靴 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_feet_4.png` |
 | r0 c2 | zone_moonshadow_court_hands_3 | 月影庭護手 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_hands_3.png` |
 | r0 c3 | zone_moonshadow_court_head_1 | 月影庭兜帽 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_head_1.png` |
 | r0 c4 | zone_moonshadow_court_necklace_6 | 月影庭墜飾 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_necklace_6.png` |
 | r1 c0 | zone_moonshadow_court_ring_10 | 月影庭戒璽 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_ring_10.png` |
 | r1 c1 | zone_moonshadow_court_ring_5 | 月影庭指環 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_ring_5.png` |
-| r1 c2 | zone_moonshadow_court_weapon_7 | 月影庭戰刃 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_weapon_7.png` |
+| r1 c2 | moonshadow_court_giant_sword | 月影庭戰刃 | `client/public/images/items/item_dragon_celestial_zone_moonshadow_court_weapon_7.png` |
 | r1 c3 | zone_sunspire_belt_9 | 日耀尖塔腰帶 | `client/public/images/items/item_dragon_celestial_zone_sunspire_belt_9.png` |
 | r1 c4 | zone_sunspire_body_2 | 日耀尖塔護甲 | `client/public/images/items/item_dragon_celestial_zone_sunspire_body_2.png` |
-| r2 c0 | zone_sunspire_earring_8 | 日耀尖塔耳飾 | `client/public/images/items/item_dragon_celestial_zone_sunspire_earring_8.png` |
+| r2 c0 | zone_sunspire_earring | 日耀尖塔耳飾 | `client/public/images/items/item_dragon_celestial_zone_sunspire_earring.png` |
 | r2 c1 | zone_sunspire_feet_4 | 日耀尖塔長靴 | `client/public/images/items/item_dragon_celestial_zone_sunspire_feet_4.png` |
 | r2 c2 | zone_sunspire_hands_3 | 日耀尖塔護手 | `client/public/images/items/item_dragon_celestial_zone_sunspire_hands_3.png` |
 | r2 c3 | zone_sunspire_head_1 | 日耀尖塔兜帽 | `client/public/images/items/item_dragon_celestial_zone_sunspire_head_1.png` |
@@ -2166,7 +2166,7 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | zone_sunspire_ring_10 | 日耀尖塔戒璽 | `client/public/images/items/item_dragon_celestial_zone_sunspire_ring_10.png` |
 | r0 c1 | zone_sunspire_ring_5 | 日耀尖塔指環 | `client/public/images/items/item_dragon_celestial_zone_sunspire_ring_5.png` |
-| r0 c2 | zone_sunspire_weapon_7 | 日耀尖塔戰刃 | `client/public/images/items/item_dragon_celestial_zone_sunspire_weapon_7.png` |
+| r0 c2 | sunspire_giant_sword | 日耀尖塔戰刃 | `client/public/images/items/item_dragon_celestial_zone_sunspire_weapon_7.png` |
 
 ### item_dragon_celestial_cave_mine_01
 - Category: item
@@ -2176,7 +2176,7 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | holytome_crystal | 水晶聖典 | `client/public/images/items/item_dragon_celestial_cave_mine_holytome_crystal.png` |
+| r0 c0 | crystal_holy_tome | 水晶聖典 | `client/public/images/items/item_dragon_celestial_cave_mine_holytome_crystal.png` |
 
 ### item_dragon_celestial_fire_ash_01
 - Category: item
@@ -2186,9 +2186,9 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | elder_dragon_fang | 古龍之牙 | `client/public/images/items/item_dragon_celestial_fire_ash_elder_dragon_fang.png` |
+| r0 c0 | elder_dragon_fang_spear | 古龍之牙 | `client/public/images/items/item_dragon_celestial_fire_ash_elder_dragon_fang.png` |
 | r0 c1 | holy_scepter | 聖光權杖 | `client/public/images/items/item_dragon_celestial_fire_ash_holy_scepter.png` |
-| r0 c2 | holytome_dragon | 龍聖典 | `client/public/images/items/item_dragon_celestial_fire_ash_holytome_dragon.png` |
+| r0 c2 | dragon_holy_tome | 龍聖典 | `client/public/images/items/item_dragon_celestial_fire_ash_holytome_dragon.png` |
 | r0 c3 | twilight_katana | 黃昏太刀 | `client/public/images/items/item_dragon_celestial_fire_ash_twilight_katana.png` |
 
 ### item_endgame_01
@@ -2199,17 +2199,17 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | crossbow_lv50 | 龍脊重弩 | `client/public/images/items/item_endgame_crossbow_lv50.png` |
-| r0 c1 | dagger_lv50 | 深月隱匕 | `client/public/images/items/item_endgame_dagger_lv50.png` |
-| r0 c2 | elemental_staff_lv50 | 四相晶杖 | `client/public/images/items/item_endgame_elemental_staff_lv50.png` |
-| r0 c3 | greataxe_lv50 | 白燼巨斧 | `client/public/images/items/item_endgame_greataxe_lv50.png` |
-| r0 c4 | grimoire_lv50 | 星頁魔導書 | `client/public/images/items/item_endgame_grimoire_lv50.png` |
-| r1 c0 | holy_tome_lv50 | 日冕聖典 | `client/public/images/items/item_endgame_holy_tome_lv50.png` |
-| r1 c1 | hourglass_staff_lv50 | 星刻沙漏杖 | `client/public/images/items/item_endgame_hourglass_staff_lv50.png` |
-| r1 c2 | katana_lv50 | 月影薄太刀 | `client/public/images/items/item_endgame_katana_lv50.png` |
-| r1 c3 | nature_staff_lv50 | 翡翠根杖 | `client/public/images/items/item_endgame_nature_staff_lv50.png` |
-| r1 c4 | warhammer_lv50 | 誓石戰錘 | `client/public/images/items/item_endgame_warhammer_lv50.png` |
-| r2 c0 | whip_lv50 | 雷藤長鞭 | `client/public/images/items/item_endgame_whip_lv50.png` |
+| r0 c0 | dragonspine_heavy_crossbow | 龍脊重弩 | `client/public/images/items/item_endgame_crossbow_lv50.png` |
+| r0 c1 | deepmoon_hidden_blade | 深月隱匕 | `client/public/images/items/item_endgame_dagger_lv50.png` |
+| r0 c2 | four_aspect_crystal_staff | 四相晶杖 | `client/public/images/items/item_endgame_elemental_staff_lv50.png` |
+| r0 c3 | white_ash_greataxe | 白燼巨斧 | `client/public/images/items/item_endgame_greataxe_lv50.png` |
+| r0 c4 | starpage_grimoire | 星頁魔導書 | `client/public/images/items/item_endgame_grimoire_lv50.png` |
+| r1 c0 | corona_holy_tome | 日冕聖典 | `client/public/images/items/item_endgame_holy_tome_lv50.png` |
+| r1 c1 | star_etched_hourglass_staff | 星刻沙漏杖 | `client/public/images/items/item_endgame_hourglass_staff_lv50.png` |
+| r1 c2 | moonshadow_thin_katana | 月影薄太刀 | `client/public/images/items/item_endgame_katana_lv50.png` |
+| r1 c3 | emerald_root_staff | 翡翠根杖 | `client/public/images/items/item_endgame_nature_staff_lv50.png` |
+| r1 c4 | oathstone_warhammer | 誓石戰錘 | `client/public/images/items/item_endgame_warhammer_lv50.png` |
+| r2 c0 | thundervine_whip | 雷藤長鞭 | `client/public/images/items/item_endgame_whip_lv50.png` |
 
 ### item_final_war_01
 - Category: item
@@ -2219,20 +2219,20 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | crossbow_lv60 | 終戰破星弩 | `client/public/images/items/item_final_war_crossbow_lv60.png` |
-| r0 c1 | dagger_lv60 | 終影裂匕 | `client/public/images/items/item_final_war_dagger_lv60.png` |
-| r0 c2 | elemental_staff_lv60 | 世界爐心杖 | `client/public/images/items/item_final_war_elemental_staff_lv60.png` |
+| r0 c0 | final_war_starbreaker_crossbow | 終戰破星弩 | `client/public/images/items/item_final_war_crossbow_lv60.png` |
+| r0 c1 | final_shadow_rift_blade | 終影裂匕 | `client/public/images/items/item_final_war_dagger_lv60.png` |
+| r0 c2 | world_furnace_core_staff | 世界爐心杖 | `client/public/images/items/item_final_war_elemental_staff_lv60.png` |
 | r0 c3 | final_standard_seal | 終末軍旗印 | `client/public/images/items/item_final_war_final_standard_seal.png` |
-| r0 c4 | greataxe_lv60 | 終焰斷岳斧 | `client/public/images/items/item_final_war_greataxe_lv60.png` |
-| r1 c0 | grimoire_lv60 | 終卷黑典 | `client/public/images/items/item_final_war_grimoire_lv60.png` |
-| r1 c1 | holy_tome_lv60 | 末鐘聖典 | `client/public/images/items/item_final_war_holy_tome_lv60.png` |
-| r1 c2 | hourglass_staff_lv60 | 零刻時杖 | `client/public/images/items/item_final_war_hourglass_staff_lv60.png` |
-| r1 c3 | katana_lv60 | 終星無明刃 | `client/public/images/items/item_final_war_katana_lv60.png` |
-| r1 c4 | nature_staff_lv60 | 世界樹殘杖 | `client/public/images/items/item_final_war_nature_staff_lv60.png` |
+| r0 c4 | final_flame_mountainbreaker_greataxe | 終焰斷岳斧 | `client/public/images/items/item_final_war_greataxe_lv60.png` |
+| r1 c0 | final_black_grimoire | 終卷黑典 | `client/public/images/items/item_final_war_grimoire_lv60.png` |
+| r1 c1 | last_bell_holy_tome | 末鐘聖典 | `client/public/images/items/item_final_war_holy_tome_lv60.png` |
+| r1 c2 | zerotick_hourglass_staff | 零刻時杖 | `client/public/images/items/item_final_war_hourglass_staff_lv60.png` |
+| r1 c3 | endstar_lightless_katana | 終星無明刃 | `client/public/images/items/item_final_war_katana_lv60.png` |
+| r1 c4 | world_tree_remnant_staff | 世界樹殘杖 | `client/public/images/items/item_final_war_nature_staff_lv60.png` |
 | r2 c0 | phoenix_feather | 鳳凰之羽 | `client/public/images/items/item_final_war_phoenix_feather.png` |
 | r2 c1 | silence_after_war_core | 戰後寂地核心 | `client/public/images/items/item_final_war_silence_after_war_core.png` |
-| r2 c2 | warhammer_lv60 | 終冠碎錘 | `client/public/images/items/item_final_war_warhammer_lv60.png` |
-| r2 c3 | whip_lv60 | 終雷星鞭 | `client/public/images/items/item_final_war_whip_lv60.png` |
+| r2 c2 | final_crownbreaker_warhammer | 終冠碎錘 | `client/public/images/items/item_final_war_warhammer_lv60.png` |
+| r2 c3 | final_thunder_star_whip | 終雷星鞭 | `client/public/images/items/item_final_war_whip_lv60.png` |
 | r2 c4 | zone_final_battleground_belt_9 | 終焉戰場腰帶 | `client/public/images/items/item_final_war_zone_final_battleground_belt_9.png` |
 
 ### item_final_war_02
@@ -2244,14 +2244,14 @@ Zones: 60
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
 | r0 c0 | zone_final_battleground_body_2 | 終焉戰場護甲 | `client/public/images/items/item_final_war_zone_final_battleground_body_2.png` |
-| r0 c1 | zone_final_battleground_earring_8 | 終焉戰場耳飾 | `client/public/images/items/item_final_war_zone_final_battleground_earring_8.png` |
+| r0 c1 | zone_final_battleground_earring | 終焉戰場耳飾 | `client/public/images/items/item_final_war_zone_final_battleground_earring.png` |
 | r0 c2 | zone_final_battleground_feet_4 | 終焉戰場長靴 | `client/public/images/items/item_final_war_zone_final_battleground_feet_4.png` |
 | r0 c3 | zone_final_battleground_hands_3 | 終焉戰場護手 | `client/public/images/items/item_final_war_zone_final_battleground_hands_3.png` |
 | r0 c4 | zone_final_battleground_head_1 | 終焉戰場兜帽 | `client/public/images/items/item_final_war_zone_final_battleground_head_1.png` |
 | r1 c0 | zone_final_battleground_necklace_6 | 終焉戰場墜飾 | `client/public/images/items/item_final_war_zone_final_battleground_necklace_6.png` |
 | r1 c1 | zone_final_battleground_ring_10 | 終焉戰場戒璽 | `client/public/images/items/item_final_war_zone_final_battleground_ring_10.png` |
 | r1 c2 | zone_final_battleground_ring_5 | 終焉戰場指環 | `client/public/images/items/item_final_war_zone_final_battleground_ring_5.png` |
-| r1 c3 | zone_final_battleground_weapon_7 | 終焉戰場戰刃 | `client/public/images/items/item_final_war_zone_final_battleground_weapon_7.png` |
+| r1 c3 | final_battleground_giant_sword | 終焉戰場戰刃 | `client/public/images/items/item_final_war_zone_final_battleground_weapon_7.png` |
 
 ### item_fire_ash_01
 - Category: item
@@ -2268,11 +2268,11 @@ Zones: 60
 | r0 c4 | cinderbite_salve | 燼咬藥膏 | `client/public/images/items/item_fire_ash_cinderbite_salve.png` |
 | r1 c0 | composite_bow | 複合弓 | `client/public/images/items/item_fire_ash_composite_bow.png` |
 | r1 c1 | cracked_sanctum_seal | 裂聖所封印 | `client/public/images/items/item_fire_ash_cracked_sanctum_seal.png` |
-| r1 c2 | crossbow_dragon | 龍牙十字弓 | `client/public/images/items/item_fire_ash_crossbow_dragon.png` |
-| r1 c3 | dagger_dragon | 龍鱗匕首 | `client/public/images/items/item_fire_ash_dagger_dragon.png` |
+| r1 c2 | dragon_fang_crossbow | 龍牙十字弓 | `client/public/images/items/item_fire_ash_crossbow_dragon.png` |
+| r1 c3 | dragon_scale_blade | 龍鱗匕首 | `client/public/images/items/item_fire_ash_dagger_dragon.png` |
 | r1 c4 | divine_scepter | 神聖權杖 | `client/public/images/items/item_fire_ash_divine_scepter.png` |
 | r2 c0 | dragon_scale_armor | 龍鱗甲 | `client/public/images/items/item_fire_ash_dragon_scale_armor.png` |
-| r2 c1 | elestaff_dragon | 龍息元素杖 | `client/public/images/items/item_fire_ash_elestaff_dragon.png` |
+| r2 c1 | dragon_breath_elemental_staff | 龍息元素杖 | `client/public/images/items/item_fire_ash_elestaff_dragon.png` |
 | r2 c2 | ember_reliquary_oil | 聖物餘火油 | `client/public/images/items/item_fire_ash_ember_reliquary_oil.png` |
 | r2 c3 | fire_soup | 火焰湯 | `client/public/images/items/item_fire_ash_fire_soup.png` |
 | r2 c4 | flame_blade | 炎之刃 | `client/public/images/items/item_fire_ash_flame_blade.png` |
@@ -2287,14 +2287,14 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | flame_sword | 炎之劍 | `client/public/images/items/item_fire_ash_flame_sword.png` |
 | r0 c1 | forge_calibration_tongs | 校爐火鉗 | `client/public/images/items/item_fire_ash_forge_calibration_tongs.png` |
-| r0 c2 | greataxe_dragon | 屠龍巨斧 | `client/public/images/items/item_fire_ash_greataxe_dragon.png` |
-| r0 c3 | grimoire_dragon | 龍血魔典 | `client/public/images/items/item_fire_ash_grimoire_dragon.png` |
+| r0 c2 | dragon_slayer_greataxe | 屠龍巨斧 | `client/public/images/items/item_fire_ash_greataxe_dragon.png` |
+| r0 c3 | dragonblood_grimoire | 龍血魔典 | `client/public/images/items/item_fire_ash_grimoire_dragon.png` |
 | r0 c4 | heartfire_border_seal | 心火邊境印 | `client/public/images/items/item_fire_ash_heartfire_border_seal.png` |
 | r1 c0 | heatproof_miner_salve | 耐熱礦工膏 | `client/public/images/items/item_fire_ash_heatproof_miner_salve.png` |
-| r1 c1 | hourglass_dragon | 龍時沙漏杖 | `client/public/images/items/item_fire_ash_hourglass_dragon.png` |
+| r1 c1 | dragon_time_hourglass_staff | 龍時沙漏杖 | `client/public/images/items/item_fire_ash_hourglass_dragon.png` |
 | r1 c2 | iron_boots | 鐵靴 | `client/public/images/items/item_fire_ash_iron_boots.png` |
 | r1 c3 | iron_helm | 鐵盔 | `client/public/images/items/item_fire_ash_iron_helm.png` |
-| r1 c4 | katana_dragon | 龍紋太刀 | `client/public/images/items/item_fire_ash_katana_dragon.png` |
+| r1 c4 | dragon_mark_katana | 龍紋太刀 | `client/public/images/items/item_fire_ash_katana_dragon.png` |
 | r2 c0 | lava_warhammer | 熔岩之錘 | `client/public/images/items/item_fire_ash_lava_warhammer.png` |
 | r2 c1 | lost_sun_disc | 失朝日輪盤 | `client/public/images/items/item_fire_ash_lost_sun_disc.png` |
 | r2 c2 | oak_staff | 橡木法杖 | `client/public/images/items/item_fire_ash_oak_staff.png` |
@@ -2309,16 +2309,16 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | spear_dragon | 龍牙槍 | `client/public/images/items/item_fire_ash_spear_dragon.png` |
+| r0 c0 | dragon_fang_spear | 龍牙槍 | `client/public/images/items/item_fire_ash_spear_dragon.png` |
 | r0 c1 | steel_sword | 鋼劍 | `client/public/images/items/item_fire_ash_steel_sword.png` |
 | r0 c2 | sunbleached_relic_seal | 日漂遺印 | `client/public/images/items/item_fire_ash_sunbleached_relic_seal.png` |
 | r0 c3 | sunfire_heartglass | 日火心玻 | `client/public/images/items/item_fire_ash_sunfire_heartglass.png` |
 | r0 c4 | thunder_whip | 雷鳴之鞭 | `client/public/images/items/item_fire_ash_thunder_whip.png` |
-| r1 c0 | warhammer_dragon | 龍骨戰錘 | `client/public/images/items/item_fire_ash_warhammer_dragon.png` |
-| r1 c1 | whip_dragon | 龍筋鞭 | `client/public/images/items/item_fire_ash_whip_dragon.png` |
+| r1 c0 | dragonbone_warhammer | 龍骨戰錘 | `client/public/images/items/item_fire_ash_warhammer_dragon.png` |
+| r1 c1 | dragon_sinew_whip | 龍筋鞭 | `client/public/images/items/item_fire_ash_whip_dragon.png` |
 | r1 c2 | zone_ashfall_monastery_belt_9 | 灰落修道院腰帶 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_belt_9.png` |
 | r1 c3 | zone_ashfall_monastery_body_2 | 灰落修道院護甲 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_body_2.png` |
-| r1 c4 | zone_ashfall_monastery_earring_8 | 灰落修道院耳飾 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_earring_8.png` |
+| r1 c4 | zone_ashfall_monastery_earring | 灰落修道院耳飾 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_earring.png` |
 | r2 c0 | zone_ashfall_monastery_feet_4 | 灰落修道院長靴 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_feet_4.png` |
 | r2 c1 | zone_ashfall_monastery_hands_3 | 灰落修道院護手 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_hands_3.png` |
 | r2 c2 | zone_ashfall_monastery_head_1 | 灰落修道院兜帽 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_head_1.png` |
@@ -2334,7 +2334,7 @@ Zones: 60
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
 | r0 c0 | zone_ashfall_monastery_ring_5 | 灰落修道院指環 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_ring_5.png` |
-| r0 c1 | zone_ashfall_monastery_weapon_7 | 灰落修道院戰刃 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_weapon_7.png` |
+| r0 c1 | ashfall_monastery_giant_sword | 灰落修道院戰刃 | `client/public/images/items/item_fire_ash_zone_ashfall_monastery_weapon_7.png` |
 | r0 c2 | zone_ember_march_body_2 | 餘燼邊境護甲 | `client/public/images/items/item_fire_ash_zone_ember_march_body_2.png` |
 | r0 c3 | zone_ember_march_feet_4 | 餘燼邊境長靴 | `client/public/images/items/item_fire_ash_zone_ember_march_feet_4.png` |
 | r0 c4 | zone_ember_march_hands_3 | 餘燼邊境護手 | `client/public/images/items/item_fire_ash_zone_ember_march_hands_3.png` |
@@ -2377,7 +2377,7 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | abyssal_dagger | 深淵匕首 | `client/public/images/items/item_forest_fen_abyssal_dagger.png` |
+| r0 c0 | abyssal_blade | 深淵匕首 | `client/public/images/items/item_forest_fen_abyssal_dagger.png` |
 | r0 c1 | agility_potion | 敏捷藥水 | `client/public/images/items/item_forest_fen_agility_potion.png` |
 | r0 c2 | crimson_grimoire | 血紅禁書 | `client/public/images/items/item_forest_fen_crimson_grimoire.png` |
 | r0 c3 | deep_amber_heart | 深琥珀心核 | `client/public/images/items/item_forest_fen_deep_amber_heart.png` |
@@ -2391,7 +2391,7 @@ Zones: 60
 | r2 c1 | mage_robe | 法師長袍 | `client/public/images/items/item_forest_fen_mage_robe.png` |
 | r2 c2 | mirror_core_splinter | 鏡核碎片 | `client/public/images/items/item_forest_fen_mirror_core_splinter.png` |
 | r2 c3 | moonwell_draught | 月井清露 | `client/public/images/items/item_forest_fen_moonwell_draught.png` |
-| r2 c4 | phantom_blade | 幻影之劍 | `client/public/images/items/item_forest_fen_phantom_blade.png` |
+| r2 c4 | phantom_sword | 幻影之劍 | `client/public/images/items/item_forest_fen_phantom_blade.png` |
 
 ### item_forest_fen_02
 - Category: item
@@ -2491,7 +2491,7 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | demon_lord_sword | 魔王之劍 | `client/public/images/items/item_forest_fen_demon_abyss_demon_lord_sword.png` |
+| r0 c0 | demon_lord_giant_sword | 魔王之劍 | `client/public/images/items/item_forest_fen_demon_abyss_demon_lord_sword.png` |
 
 ### item_forest_fen_low_wilds_01
 - Category: item
@@ -2571,14 +2571,14 @@ Zones: 60
 | --- | --- | --- | --- |
 | r0 c0 | zone_sky_isles_belt_9 | 浮空群島腰帶 | `client/public/images/items/item_ice_mountain_zone_sky_isles_belt_9.png` |
 | r0 c1 | zone_sky_isles_body_2 | 浮空群島護甲 | `client/public/images/items/item_ice_mountain_zone_sky_isles_body_2.png` |
-| r0 c2 | zone_sky_isles_earring_8 | 浮空群島耳飾 | `client/public/images/items/item_ice_mountain_zone_sky_isles_earring_8.png` |
+| r0 c2 | zone_sky_isles_earring | 浮空群島耳飾 | `client/public/images/items/item_ice_mountain_zone_sky_isles_earring.png` |
 | r0 c3 | zone_sky_isles_feet_4 | 浮空群島長靴 | `client/public/images/items/item_ice_mountain_zone_sky_isles_feet_4.png` |
 | r0 c4 | zone_sky_isles_hands_3 | 浮空群島護手 | `client/public/images/items/item_ice_mountain_zone_sky_isles_hands_3.png` |
 | r1 c0 | zone_sky_isles_head_1 | 浮空群島兜帽 | `client/public/images/items/item_ice_mountain_zone_sky_isles_head_1.png` |
 | r1 c1 | zone_sky_isles_necklace_6 | 浮空群島墜飾 | `client/public/images/items/item_ice_mountain_zone_sky_isles_necklace_6.png` |
 | r1 c2 | zone_sky_isles_ring_10 | 浮空群島戒璽 | `client/public/images/items/item_ice_mountain_zone_sky_isles_ring_10.png` |
 | r1 c3 | zone_sky_isles_ring_5 | 浮空群島指環 | `client/public/images/items/item_ice_mountain_zone_sky_isles_ring_5.png` |
-| r1 c4 | zone_sky_isles_weapon_7 | 浮空群島戰刃 | `client/public/images/items/item_ice_mountain_zone_sky_isles_weapon_7.png` |
+| r1 c4 | sky_isles_giant_sword | 浮空群島戰刃 | `client/public/images/items/item_ice_mountain_zone_sky_isles_weapon_7.png` |
 | r2 c0 | zone_storm_highlands_body_2 | 風暴高原護甲 | `client/public/images/items/item_ice_mountain_zone_storm_highlands_body_2.png` |
 | r2 c1 | zone_storm_highlands_feet_4 | 風暴高原長靴 | `client/public/images/items/item_ice_mountain_zone_storm_highlands_feet_4.png` |
 | r2 c2 | zone_storm_highlands_hands_3 | 風暴高原護手 | `client/public/images/items/item_ice_mountain_zone_storm_highlands_hands_3.png` |
@@ -2700,14 +2700,14 @@ Zones: 60
 | r0 c1 | empty_throne_crown | 空王座冠影 | `client/public/images/items/item_lost_capital_empty_throne_crown.png` |
 | r0 c2 | zone_lost_capital_belt_9 | 失落王都腰帶 | `client/public/images/items/item_lost_capital_zone_lost_capital_belt_9.png` |
 | r0 c3 | zone_lost_capital_body_2 | 失落王都護甲 | `client/public/images/items/item_lost_capital_zone_lost_capital_body_2.png` |
-| r0 c4 | zone_lost_capital_earring_8 | 失落王都耳飾 | `client/public/images/items/item_lost_capital_zone_lost_capital_earring_8.png` |
+| r0 c4 | zone_lost_capital_earring | 失落王都耳飾 | `client/public/images/items/item_lost_capital_zone_lost_capital_earring.png` |
 | r1 c0 | zone_lost_capital_feet_4 | 失落王都長靴 | `client/public/images/items/item_lost_capital_zone_lost_capital_feet_4.png` |
 | r1 c1 | zone_lost_capital_hands_3 | 失落王都護手 | `client/public/images/items/item_lost_capital_zone_lost_capital_hands_3.png` |
 | r1 c2 | zone_lost_capital_head_1 | 失落王都兜帽 | `client/public/images/items/item_lost_capital_zone_lost_capital_head_1.png` |
 | r1 c3 | zone_lost_capital_necklace_6 | 失落王都墜飾 | `client/public/images/items/item_lost_capital_zone_lost_capital_necklace_6.png` |
 | r1 c4 | zone_lost_capital_ring_10 | 失落王都戒璽 | `client/public/images/items/item_lost_capital_zone_lost_capital_ring_10.png` |
 | r2 c0 | zone_lost_capital_ring_5 | 失落王都指環 | `client/public/images/items/item_lost_capital_zone_lost_capital_ring_5.png` |
-| r2 c1 | zone_lost_capital_weapon_7 | 失落王都戰刃 | `client/public/images/items/item_lost_capital_zone_lost_capital_weapon_7.png` |
+| r2 c1 | lost_capital_giant_sword | 失落王都戰刃 | `client/public/images/items/item_lost_capital_zone_lost_capital_weapon_7.png` |
 
 ### item_low_wilds_01
 - Category: item
@@ -2722,9 +2722,9 @@ Zones: 60
 | r0 c2 | cloth_armor | 布甲 | `client/public/images/items/item_low_wilds_cloth_armor.png` |
 | r0 c3 | goblin_signal_horn | 哥布林信號角 | `client/public/images/items/item_low_wilds_goblin_signal_horn.png` |
 | r0 c4 | meadow_healing_salad | 草坡療傷菜包 | `client/public/images/items/item_low_wilds_meadow_healing_salad.png` |
-| r1 c0 | naturestaff_basic | 樹苗杖 | `client/public/images/items/item_low_wilds_naturestaff_basic.png` |
-| r1 c1 | naturestaff_iron | 鐵環自然杖 | `client/public/images/items/item_low_wilds_naturestaff_iron.png` |
-| r1 c2 | naturestaff_mithril | 秘銀自然杖 | `client/public/images/items/item_low_wilds_naturestaff_mithril.png` |
+| r1 c0 | sapling_staff | 樹苗杖 | `client/public/images/items/item_low_wilds_naturestaff_basic.png` |
+| r1 c1 | ironring_nature_staff | 鐵環自然杖 | `client/public/images/items/item_low_wilds_naturestaff_iron.png` |
+| r1 c2 | mithril_nature_staff | 秘銀自然杖 | `client/public/images/items/item_low_wilds_naturestaff_mithril.png` |
 | r1 c3 | practice_yard_chit | 訓練場木籌 | `client/public/images/items/item_low_wilds_practice_yard_chit.png` |
 | r1 c4 | rusted_farm_key | 生鏽農舍鑰匙 | `client/public/images/items/item_low_wilds_rusted_farm_key.png` |
 | r2 c0 | rusty_hero_sword | 鏽蝕的勇者之劍 | `client/public/images/items/item_low_wilds_rusty_hero_sword.png` |
@@ -2816,18 +2816,18 @@ Zones: 60
 | r0 c0 | supplemental_body_21 | 雷原皮甲 | `client/public/images/items/item_low_wilds_supplemental_body_21.png` |
 | r0 c1 | supplemental_body_22 | 玻砂長衣 | `client/public/images/items/item_low_wilds_supplemental_body_22.png` |
 | r0 c2 | supplemental_body_23 | 地城銅衣 | `client/public/images/items/item_low_wilds_supplemental_body_23.png` |
-| r0 c3 | supplemental_earring_01 | 溪珠耳墜 | `client/public/images/items/item_low_wilds_supplemental_earring_01.png` |
-| r0 c4 | supplemental_earring_02 | 柳芽耳環 | `client/public/images/items/item_low_wilds_supplemental_earring_02.png` |
-| r1 c0 | supplemental_earring_03 | 穀鈴耳墜 | `client/public/images/items/item_low_wilds_supplemental_earring_03.png` |
-| r1 c1 | supplemental_earring_04 | 黑苔耳扣 | `client/public/images/items/item_low_wilds_supplemental_earring_04.png` |
-| r1 c2 | supplemental_earring_05 | 潮貝耳飾 | `client/public/images/items/item_low_wilds_supplemental_earring_05.png` |
-| r1 c3 | supplemental_earring_06 | 礦晶耳釘 | `client/public/images/items/item_low_wilds_supplemental_earring_06.png` |
-| r1 c4 | supplemental_earring_07 | 霜羽耳墜 | `client/public/images/items/item_low_wilds_supplemental_earring_07.png` |
-| r2 c0 | supplemental_earring_08 | 赤砂耳環 | `client/public/images/items/item_low_wilds_supplemental_earring_08.png` |
-| r2 c1 | supplemental_earring_09 | 銀松耳扣 | `client/public/images/items/item_low_wilds_supplemental_earring_09.png` |
-| r2 c2 | supplemental_earring_10 | 雷草耳墜 | `client/public/images/items/item_low_wilds_supplemental_earring_10.png` |
-| r2 c3 | supplemental_earring_11 | 琥珀蜂翼 | `client/public/images/items/item_low_wilds_supplemental_earring_11.png` |
-| r2 c4 | supplemental_earring_12 | 血鹽耳骨 | `client/public/images/items/item_low_wilds_supplemental_earring_12.png` |
+| r0 c3 | creek_pearl_earring | 溪珠耳墜 | `client/public/images/items/item_low_wilds_creek_pearl_earring.png` |
+| r0 c4 | willow_bud_earring | 柳芽耳環 | `client/public/images/items/item_low_wilds_willow_bud_earring.png` |
+| r1 c0 | grain_bell_earring | 穀鈴耳墜 | `client/public/images/items/item_low_wilds_grain_bell_earring.png` |
+| r1 c1 | blackmoss_ear_cuff | 黑苔耳扣 | `client/public/images/items/item_low_wilds_blackmoss_ear_cuff.png` |
+| r1 c2 | tide_shell_ear_ornament | 潮貝耳飾 | `client/public/images/items/item_low_wilds_tide_shell_ear_ornament.png` |
+| r1 c3 | mineral_crystal_ear_stud | 礦晶耳釘 | `client/public/images/items/item_low_wilds_mineral_crystal_ear_stud.png` |
+| r1 c4 | frostfeather_ear_drop | 霜羽耳墜 | `client/public/images/items/item_low_wilds_frostfeather_ear_drop.png` |
+| r2 c0 | redsand_earring | 赤砂耳環 | `client/public/images/items/item_low_wilds_redsand_earring.png` |
+| r2 c1 | silverpine_ear_cuff | 銀松耳扣 | `client/public/images/items/item_low_wilds_silverpine_ear_cuff.png` |
+| r2 c2 | thundergrass_ear_drop | 雷草耳墜 | `client/public/images/items/item_low_wilds_thundergrass_ear_drop.png` |
+| r2 c3 | amber_bee_wing_earring | 琥珀蜂翼 | `client/public/images/items/item_low_wilds_amber_bee_wing_earring.png` |
+| r2 c4 | bloodsalt_bone_earring | 血鹽耳骨 | `client/public/images/items/item_low_wilds_bloodsalt_bone_earring.png` |
 
 ### item_low_wilds_06
 - Category: item
@@ -2837,18 +2837,18 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | supplemental_earring_13 | 星砂耳珠 | `client/public/images/items/item_low_wilds_supplemental_earring_13.png` |
-| r0 c1 | supplemental_earring_14 | 月井耳環 | `client/public/images/items/item_low_wilds_supplemental_earring_14.png` |
-| r0 c2 | supplemental_earring_15 | 焦木耳扣 | `client/public/images/items/item_low_wilds_supplemental_earring_15.png` |
-| r0 c3 | supplemental_earring_16 | 霧港銅鈎 | `client/public/images/items/item_low_wilds_supplemental_earring_16.png` |
-| r0 c4 | supplemental_earring_17 | 古碑耳片 | `client/public/images/items/item_low_wilds_supplemental_earring_17.png` |
-| r1 c0 | supplemental_earring_18 | 鏡沼銀墜 | `client/public/images/items/item_low_wilds_supplemental_earring_18.png` |
-| r1 c1 | supplemental_earring_19 | 紅爐耳釘 | `client/public/images/items/item_low_wilds_supplemental_earring_19.png` |
-| r1 c2 | supplemental_earring_20 | 雷原骨墜 | `client/public/images/items/item_low_wilds_supplemental_earring_20.png` |
-| r1 c3 | supplemental_earring_21 | 玻砂耳鏡 | `client/public/images/items/item_low_wilds_supplemental_earring_21.png` |
-| r1 c4 | supplemental_earring_22 | 地城銅片 | `client/public/images/items/item_low_wilds_supplemental_earring_22.png` |
-| r2 c0 | supplemental_earring_23 | 墓霜耳珠 | `client/public/images/items/item_low_wilds_supplemental_earring_23.png` |
-| r2 c1 | supplemental_earring_24 | 風暴羽墜 | `client/public/images/items/item_low_wilds_supplemental_earring_24.png` |
+| r0 c0 | starsand_ear_pearl | 星砂耳珠 | `client/public/images/items/item_low_wilds_starsand_ear_pearl.png` |
+| r0 c1 | moonwell_earring | 月井耳環 | `client/public/images/items/item_low_wilds_moonwell_earring.png` |
+| r0 c2 | charwood_ear_cuff | 焦木耳扣 | `client/public/images/items/item_low_wilds_charwood_ear_cuff.png` |
+| r0 c3 | mistharbor_copper_hook_earring | 霧港銅鈎 | `client/public/images/items/item_low_wilds_mistharbor_copper_hook_earring.png` |
+| r0 c4 | ancient_tablet_ear_piece | 古碑耳片 | `client/public/images/items/item_low_wilds_ancient_tablet_ear_piece.png` |
+| r1 c0 | mirrormarsh_silver_ear_drop | 鏡沼銀墜 | `client/public/images/items/item_low_wilds_mirrormarsh_silver_ear_drop.png` |
+| r1 c1 | redforge_ear_stud | 紅爐耳釘 | `client/public/images/items/item_low_wilds_redforge_ear_stud.png` |
+| r1 c2 | thundersteppe_bone_ear_drop | 雷原骨墜 | `client/public/images/items/item_low_wilds_thundersteppe_bone_ear_drop.png` |
+| r1 c3 | glasssand_mirror_earring | 玻砂耳鏡 | `client/public/images/items/item_low_wilds_glasssand_mirror_earring.png` |
+| r1 c4 | undercity_copper_ear_piece | 地城銅片 | `client/public/images/items/item_low_wilds_undercity_copper_ear_piece.png` |
+| r2 c0 | gravefrost_ear_pearl | 墓霜耳珠 | `client/public/images/items/item_low_wilds_gravefrost_ear_pearl.png` |
+| r2 c1 | stormfeather_ear_drop | 風暴羽墜 | `client/public/images/items/item_low_wilds_stormfeather_ear_drop.png` |
 | r2 c2 | supplemental_feet_01 | 草徑短靴 | `client/public/images/items/item_low_wilds_supplemental_feet_01.png` |
 | r2 c3 | supplemental_feet_02 | 溪石踏靴 | `client/public/images/items/item_low_wilds_supplemental_feet_02.png` |
 | r2 c4 | supplemental_feet_03 | 柳影輕靴 | `client/public/images/items/item_low_wilds_supplemental_feet_03.png` |
@@ -3053,19 +3053,19 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | supplemental_weapon_01 | 溪鐵短刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_01.png` |
-| r0 c1 | supplemental_weapon_02 | 柳木獵刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_02.png` |
-| r0 c2 | supplemental_weapon_03 | 田埂銅斧 | `client/public/images/items/item_low_wilds_supplemental_weapon_03.png` |
-| r0 c3 | supplemental_weapon_04 | 黑松彎刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_04.png` |
-| r0 c4 | supplemental_weapon_05 | 潮玻刺劍 | `client/public/images/items/item_low_wilds_supplemental_weapon_05.png` |
-| r1 c0 | supplemental_weapon_06 | 礦燈鎚斧 | `client/public/images/items/item_low_wilds_supplemental_weapon_06.png` |
-| r1 c1 | supplemental_weapon_07 | 霜喙長矛 | `client/public/images/items/item_low_wilds_supplemental_weapon_07.png` |
-| r1 c2 | supplemental_weapon_08 | 赤岩戰鎬 | `client/public/images/items/item_low_wilds_supplemental_weapon_08.png` |
-| r1 c3 | supplemental_weapon_09 | 銀松斬刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_09.png` |
-| r1 c4 | supplemental_weapon_10 | 雷草短槍 | `client/public/images/items/item_low_wilds_supplemental_weapon_10.png` |
-| r2 c0 | supplemental_weapon_11 | 琥珀弦刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_11.png` |
-| r2 c1 | supplemental_weapon_12 | 血鹽鉤刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_12.png` |
-| r2 c2 | supplemental_weapon_13 | 星砂儀刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_13.png` |
+| r0 c0 | creek_iron_blade | 溪鐵短刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_01.png` |
+| r0 c1 | willow_hunting_blade | 柳木獵刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_02.png` |
+| r0 c2 | field_copper_axe | 田埂銅斧 | `client/public/images/items/item_low_wilds_supplemental_weapon_03.png` |
+| r0 c3 | blackpine_curved_blade | 黑松彎刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_04.png` |
+| r0 c4 | tidalglass_rapier_blade | 潮玻刺劍 | `client/public/images/items/item_low_wilds_supplemental_weapon_05.png` |
+| r1 c0 | minelamp_greataxe | 礦燈鎚斧 | `client/public/images/items/item_low_wilds_supplemental_weapon_06.png` |
+| r1 c1 | frostbeak_spear | 霜喙長矛 | `client/public/images/items/item_low_wilds_supplemental_weapon_07.png` |
+| r1 c2 | redrock_warpick_axe | 赤岩戰鎬 | `client/public/images/items/item_low_wilds_supplemental_weapon_08.png` |
+| r1 c3 | silverpine_katana | 銀松斬刀 | `client/public/images/items/item_low_wilds_supplemental_weapon_09.png` |
+| r1 c4 | thundergrass_spear | 雷草短槍 | `client/public/images/items/item_low_wilds_supplemental_weapon_10.png` |
+| r2 c0 | amber_string_blade | 琥珀弦刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_11.png` |
+| r2 c1 | bloodsalt_hook_blade | 血鹽鉤刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_12.png` |
+| r2 c2 | starsand_ritual_blade | 星砂儀刃 | `client/public/images/items/item_low_wilds_supplemental_weapon_13.png` |
 | r2 c3 | swift_boots | 疾風靴 | `client/public/images/items/item_low_wilds_swift_boots.png` |
 | r2 c4 | village_herb_salve | 村醫藥膏 | `client/public/images/items/item_low_wilds_village_herb_salve.png` |
 
@@ -3081,11 +3081,11 @@ Zones: 60
 | r0 c1 | vine_nature_staff | 藤蔓之杖 | `client/public/images/items/item_low_wilds_vine_nature_staff.png` |
 | r0 c2 | willow_prayer_tag | 柳木祈願牌 | `client/public/images/items/item_low_wilds_willow_prayer_tag.png` |
 | r0 c3 | windward_oath_strip | 守風誓詞布條 | `client/public/images/items/item_low_wilds_windward_oath_strip.png` |
-| r0 c4 | wolf_fang_dagger | 狼牙匕首 | `client/public/images/items/item_low_wilds_wolf_fang_dagger.png` |
+| r0 c4 | wolf_fang_blade | 狼牙匕首 | `client/public/images/items/item_low_wilds_wolf_fang_dagger.png` |
 | r1 c0 | wooden_ring | 木戒指 | `client/public/images/items/item_low_wilds_wooden_ring.png` |
 | r1 c1 | wooden_shield | 木盾 | `client/public/images/items/item_low_wilds_wooden_shield.png` |
 | r1 c2 | wooden_sword | 木劍 | `client/public/images/items/item_low_wilds_wooden_sword.png` |
-| r1 c3 | wooden_wand | 木製權杖 | `client/public/images/items/item_low_wilds_wooden_wand.png` |
+| r1 c3 | wooden_scepter | 木製權杖 | `client/public/images/items/item_low_wilds_wooden_wand.png` |
 | r1 c4 | world_tree_staff | 世界樹之杖 | `client/public/images/items/item_low_wilds_world_tree_staff.png` |
 | r2 c0 | zone_old_farmland_body_2 | 老舊農場護甲 | `client/public/images/items/item_low_wilds_zone_old_farmland_body_2.png` |
 | r2 c1 | zone_old_farmland_feet_4 | 老舊農場長靴 | `client/public/images/items/item_low_wilds_zone_old_farmland_feet_4.png` |
@@ -3159,7 +3159,7 @@ Zones: 60
 
 | Cell | Asset ID | Name | Output |
 | --- | --- | --- | --- |
-| r0 c0 | naturestaff_dragon | 龍樹自然杖 | `client/public/images/items/item_low_wilds_fire_ash_naturestaff_dragon.png` |
+| r0 c0 | dragon_tree_nature_staff | 龍樹自然杖 | `client/public/images/items/item_low_wilds_fire_ash_naturestaff_dragon.png` |
 
 ### item_low_wilds_forest_fen_01
 - Category: item

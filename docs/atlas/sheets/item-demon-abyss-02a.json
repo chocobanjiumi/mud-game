@@ -5,14 +5,14 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_demon_abyss_02a.sheet.png",
   "targets": [
-    { "assetId": "item_demon_abyss_zone_abyss_rift_earring_8", "category": "item", "targetId": "zone_abyss_rift_earring_8", "name": "深淵裂隙耳飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_earring_8.png", "row": 0, "column": 0 },
+    { "assetId": "item_demon_abyss_zone_abyss_rift_earring", "category": "item", "targetId": "zone_abyss_rift_earring", "name": "深淵裂隙耳飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_earring.png", "row": 0, "column": 0 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_feet_4", "category": "item", "targetId": "zone_abyss_rift_feet_4", "name": "深淵裂隙長靴", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_feet_4.png", "row": 0, "column": 1 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_hands_3", "category": "item", "targetId": "zone_abyss_rift_hands_3", "name": "深淵裂隙護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_hands_3.png", "row": 0, "column": 2 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_head_1", "category": "item", "targetId": "zone_abyss_rift_head_1", "name": "深淵裂隙兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_head_1.png", "row": 1, "column": 0 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_necklace_6", "category": "item", "targetId": "zone_abyss_rift_necklace_6", "name": "深淵裂隙墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_necklace_6.png", "row": 1, "column": 1 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_ring_10", "category": "item", "targetId": "zone_abyss_rift_ring_10", "name": "深淵裂隙戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_ring_10.png", "row": 1, "column": 2 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_ring_5", "category": "item", "targetId": "zone_abyss_rift_ring_5", "name": "深淵裂隙指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_ring_5.png", "row": 2, "column": 0 },
-    { "assetId": "item_demon_abyss_zone_abyss_rift_weapon_7", "category": "item", "targetId": "zone_abyss_rift_weapon_7", "name": "深淵裂隙戰刃", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_weapon_7.png", "row": 2, "column": 1 },
+    { "assetId": "item_demon_abyss_zone_abyss_rift_weapon_7", "category": "item", "targetId": "abyss_rift_giant_sword", "name": "深淵裂隙戰刃", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_weapon_7.png", "row": 2, "column": 1 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_body_2", "category": "item", "targetId": "zone_cursed_graveyard_body_2", "name": "詛咒墓園護甲", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_body_2.png", "row": 2, "column": 2 }
   ]
 }

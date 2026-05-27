@@ -17,7 +17,7 @@
     {
       "assetId": "item_low_wilds_wooden_wand",
       "category": "item",
-      "targetId": "wooden_wand",
+      "targetId": "wooden_scepter",
       "name": "木製權杖",
       "outputPath": "client/public/images/items/item_low_wilds_wooden_wand.png",
       "row": 0,

@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_cave_mine_01.sheet.png",
   "targets": [
-    { "assetId": "item_cave_mine_hourglass_crystal", "category": "item", "targetId": "hourglass_crystal", "name": "水晶沙漏杖", "outputPath": "client/public/images/items/item_cave_mine_hourglass_crystal.png", "row": 0, "column": 0 },
+    { "assetId": "item_cave_mine_hourglass_crystal", "category": "item", "targetId": "crystal_hourglass_staff", "name": "水晶沙漏杖", "outputPath": "client/public/images/items/item_cave_mine_hourglass_crystal.png", "row": 0, "column": 0 },
     { "assetId": "item_cave_mine_lucky_charm", "category": "item", "targetId": "lucky_charm", "name": "幸運護符", "outputPath": "client/public/images/items/item_cave_mine_lucky_charm.png", "row": 0, "column": 1 },
     { "assetId": "item_cave_mine_molten_lock_sigill", "category": "item", "targetId": "molten_lock_sigill", "name": "熔鎖印記", "outputPath": "client/public/images/items/item_cave_mine_molten_lock_sigill.png", "row": 0, "column": 2 },
     { "assetId": "item_cave_mine_mountain_heart_resonator", "category": "item", "targetId": "mountain_heart_resonator", "name": "山心共鳴核", "outputPath": "client/public/images/items/item_cave_mine_mountain_heart_resonator.png", "row": 1, "column": 0 },

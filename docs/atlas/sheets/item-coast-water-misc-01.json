@@ -5,7 +5,7 @@
   "rows": 2,
   "sheetPath": "client/public/images/atlas/source-ai/item_coast_water_misc_01.sheet.png",
   "targets": [
-    { "assetId": "item_coast_water_low_wilds_bandit_dagger", "category": "item", "targetId": "bandit_dagger", "name": "盜匪短刀", "outputPath": "client/public/images/items/item_coast_water_low_wilds_bandit_dagger.png", "row": 0, "column": 0 },
+    { "assetId": "item_coast_water_low_wilds_bandit_dagger", "category": "item", "targetId": "bandit_blade", "name": "盜匪短刀", "outputPath": "client/public/images/items/item_coast_water_low_wilds_bandit_dagger.png", "row": 0, "column": 0 },
     { "assetId": "item_coast_water_town_market_adventure_bento", "category": "item", "targetId": "adventure_bento", "name": "冒險便當", "outputPath": "client/public/images/items/item_coast_water_town_market_adventure_bento.png", "row": 0, "column": 1 },
     { "assetId": "item_coast_water_town_market_grilled_meat", "category": "item", "targetId": "grilled_meat", "name": "烤肉串", "outputPath": "client/public/images/items/item_coast_water_town_market_grilled_meat.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_town_market_stew", "category": "item", "targetId": "stew", "name": "熱燉湯", "outputPath": "client/public/images/items/item_coast_water_town_market_stew.png", "row": 1, "column": 1 }
