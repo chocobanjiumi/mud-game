@@ -67,6 +67,11 @@ export default function PartyPanel() {
                     </span>
                   )}
                   <span className="text-text-bright font-bold truncate">{member.name}</span>
+                  {member.mounted && (
+                    <span className="text-text-amber text-[10px]" title="騎乘中">
+                      騎乘
+                    </span>
+                  )}
                   <span className="text-text-dim ml-auto shrink-0">
                     {className} Lv.{member.level}
                   </span>
