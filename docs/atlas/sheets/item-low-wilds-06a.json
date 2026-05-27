@@ -16,9 +16,9 @@
     { "assetId": "item_low_wilds_undercity_copper_ear_piece", "category": "item", "targetId": "undercity_copper_ear_piece", "name": "地城銅片", "outputPath": "client/public/images/items/item_low_wilds_undercity_copper_ear_piece.png", "row": 2, "column": 0 },
     { "assetId": "item_low_wilds_gravefrost_ear_pearl", "category": "item", "targetId": "gravefrost_ear_pearl", "name": "墓霜耳珠", "outputPath": "client/public/images/items/item_low_wilds_gravefrost_ear_pearl.png", "row": 2, "column": 1 },
     { "assetId": "item_low_wilds_stormfeather_ear_drop", "category": "item", "targetId": "stormfeather_ear_drop", "name": "風暴羽墜", "outputPath": "client/public/images/items/item_low_wilds_stormfeather_ear_drop.png", "row": 2, "column": 2 },
-    { "assetId": "item_low_wilds_supplemental_feet_01", "category": "item", "targetId": "supplemental_feet_01", "name": "草徑短靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_01.png", "row": 2, "column": 3 },
-    { "assetId": "item_low_wilds_supplemental_feet_02", "category": "item", "targetId": "supplemental_feet_02", "name": "溪石踏靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_02.png", "row": 3, "column": 0 },
-    { "assetId": "item_low_wilds_supplemental_feet_03", "category": "item", "targetId": "supplemental_feet_03", "name": "柳影輕靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_03.png", "row": 3, "column": 1 },
-    { "assetId": "item_low_wilds_supplemental_feet_04", "category": "item", "targetId": "supplemental_feet_04", "name": "穀場厚靴", "outputPath": "client/public/images/items/item_low_wilds_supplemental_feet_04.png", "row": 3, "column": 2 }
+    { "assetId": "item_low_wilds_grass_path_short_boots", "category": "item", "targetId": "grass_path_short_boots", "name": "草徑短靴", "outputPath": "client/public/images/items/item_low_wilds_grass_path_short_boots.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_creekstone_tread_boots", "category": "item", "targetId": "creekstone_tread_boots", "name": "溪石踏靴", "outputPath": "client/public/images/items/item_low_wilds_creekstone_tread_boots.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_willow_shadow_light_boots", "category": "item", "targetId": "willow_shadow_light_boots", "name": "柳影輕靴", "outputPath": "client/public/images/items/item_low_wilds_willow_shadow_light_boots.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_granary_heavy_boots", "category": "item", "targetId": "granary_heavy_boots", "name": "穀場厚靴", "outputPath": "client/public/images/items/item_low_wilds_granary_heavy_boots.png", "row": 3, "column": 2 }
   ]
 }

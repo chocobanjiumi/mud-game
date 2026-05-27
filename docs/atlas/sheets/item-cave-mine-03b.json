@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_cave_mine_03b.sheet.png",
   "targets": [
-    { "assetId": "item_cave_mine_zone_obsidian_depths_feet_4", "category": "item", "targetId": "zone_obsidian_depths_feet_4", "name": "黑曜深層長靴", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_feet_4.png", "row": 0, "column": 0 },
+    { "assetId": "item_cave_mine_zone_obsidian_depths_feet", "category": "item", "targetId": "zone_obsidian_depths_feet", "name": "黑曜深層長靴", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_feet.png", "row": 0, "column": 0 },
     { "assetId": "item_cave_mine_zone_obsidian_depths_hands", "category": "item", "targetId": "zone_obsidian_depths_hands", "name": "黑曜深層護手", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_hands.png", "row": 0, "column": 1 },
     { "assetId": "item_cave_mine_zone_obsidian_depths_head_1", "category": "item", "targetId": "zone_obsidian_depths_head_1", "name": "黑曜深層兜帽", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_head_1.png", "row": 0, "column": 2 },
     { "assetId": "item_cave_mine_zone_obsidian_depths_necklace", "category": "item", "targetId": "zone_obsidian_depths_necklace", "name": "黑曜深層墜飾", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_necklace.png", "row": 1, "column": 0 },

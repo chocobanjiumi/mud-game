@@ -6,7 +6,7 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_04a.sheet.png",
   "targets": [
     { "assetId": "item_dragon_celestial_zone_moonshadow_court_earring", "category": "item", "targetId": "zone_moonshadow_court_earring", "name": "月影庭耳飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_earring.png", "row": 0, "column": 0 },
-    { "assetId": "item_dragon_celestial_zone_moonshadow_court_feet_4", "category": "item", "targetId": "zone_moonshadow_court_feet_4", "name": "月影庭長靴", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_feet_4.png", "row": 0, "column": 1 },
+    { "assetId": "item_dragon_celestial_zone_moonshadow_court_feet", "category": "item", "targetId": "zone_moonshadow_court_feet", "name": "月影庭長靴", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_feet.png", "row": 0, "column": 1 },
     { "assetId": "item_dragon_celestial_zone_moonshadow_court_hands", "category": "item", "targetId": "zone_moonshadow_court_hands", "name": "月影庭護手", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_hands.png", "row": 0, "column": 2 },
     { "assetId": "item_dragon_celestial_zone_moonshadow_court_head_1", "category": "item", "targetId": "zone_moonshadow_court_head_1", "name": "月影庭兜帽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_head_1.png", "row": 1, "column": 0 },
     { "assetId": "item_dragon_celestial_zone_moonshadow_court_necklace", "category": "item", "targetId": "zone_moonshadow_court_necklace", "name": "月影庭墜飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_necklace.png", "row": 1, "column": 1 },

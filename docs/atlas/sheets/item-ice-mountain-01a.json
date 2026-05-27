@@ -18,7 +18,7 @@
     { "assetId": "item_ice_mountain_warming_fur_broth", "category": "item", "targetId": "warming_fur_broth", "name": "暖身毛皮湯", "outputPath": "client/public/images/items/item_ice_mountain_warming_fur_broth.png", "row": 2, "column": 0 },
     { "assetId": "item_ice_mountain_wind_altar_chime", "category": "item", "targetId": "wind_altar_chime", "name": "風壇殘鈴", "outputPath": "client/public/images/items/item_ice_mountain_wind_altar_chime.png", "row": 2, "column": 1 },
     { "assetId": "item_ice_mountain_zone_frostbite_pass_body_2", "category": "item", "targetId": "zone_frostbite_pass_body_2", "name": "霜咬隘口護甲", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_body_2.png", "row": 2, "column": 2 },
-    { "assetId": "item_ice_mountain_zone_frostbite_pass_feet_4", "category": "item", "targetId": "zone_frostbite_pass_feet_4", "name": "霜咬隘口長靴", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_feet_4.png", "row": 2, "column": 3 },
+    { "assetId": "item_ice_mountain_zone_frostbite_pass_feet", "category": "item", "targetId": "zone_frostbite_pass_feet", "name": "霜咬隘口長靴", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_feet.png", "row": 2, "column": 3 },
     { "assetId": "item_ice_mountain_zone_frostbite_pass_hands", "category": "item", "targetId": "zone_frostbite_pass_hands", "name": "霜咬隘口護手", "outputPath": "client/public/images/items/item_ice_mountain_zone_frostbite_pass_hands.png", "row": 2, "column": 4 }
   ]
 }

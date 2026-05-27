@@ -245,6 +245,34 @@ const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'access
     'storm_iron_fists',
     'blackwood_hunter_gloves',
   ],
+  feet: [
+    'grass_path_short_boots',
+    'creekstone_tread_boots',
+    'willow_shadow_light_boots',
+    'granary_heavy_boots',
+    'blackmoss_stealth_boots',
+    'tide_rope_water_boots',
+    'mine_spike_heavy_boots',
+    'frosthare_fur_boots',
+    'redrock_tread_boots',
+    'silverpine_snowboots',
+    'thundergrass_swift_boots',
+    'amber_forest_boots',
+    'bloodsalt_ship_boots',
+    'starsand_walking_boots',
+    'moonwell_soft_boots',
+    'charwood_tread_boots',
+    'mistharbor_oil_boots',
+    'ancient_tablet_heavy_boots',
+    'mirrormarsh_wet_boots',
+    'redforge_iron_boots',
+    'thundersteppe_swift_boots',
+    'glasssand_walking_shoes',
+    'undercity_copper_boots',
+    'gravefrost_gray_boots',
+    'storm_spike_boots',
+    'blackwood_hunter_boots',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -969,6 +997,7 @@ function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'acce
   if (slot === 'necklace') return `zone_${themeId}_necklace`;
   if (slot === 'ring') return index >= ZONE_THEME_BASE_SLOTS.length ? `zone_${themeId}_signet` : `zone_${themeId}_ring`;
   if (slot === 'hands') return `zone_${themeId}_hands`;
+  if (slot === 'feet') return `zone_${themeId}_feet`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 
