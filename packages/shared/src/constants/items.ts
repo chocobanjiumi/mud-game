@@ -301,6 +301,31 @@ const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'access
     'storm_spire_helm',
     'blackwood_hunter_hat',
   ],
+  body: [
+    'hemp_lined_leather_armor',
+    'creek_reed_breastplate',
+    'willow_fence_vest',
+    'grainhusk_padded_armor',
+    'blackmoss_soft_armor',
+    'tide_sail_chestwear',
+    'mineslag_chainmail',
+    'frosthare_fur_armor',
+    'redsand_scale_armor',
+    'silverpine_long_armor',
+    'thundergrass_mantle_armor',
+    'amber_dragonfly_armor',
+    'bloodsalt_scale_garb',
+    'starsand_robe',
+    'moonwell_white_robe',
+    'charwood_breastplate',
+    'mistharbor_oilcoat',
+    'ancient_tablet_plate',
+    'mirrormarsh_water_garb',
+    'redforge_heavy_armor',
+    'thundersteppe_leather_armor',
+    'glasssand_longcoat',
+    'undercity_copper_garb',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -1027,6 +1052,7 @@ function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'acce
   if (slot === 'hands') return `zone_${themeId}_hands`;
   if (slot === 'feet') return `zone_${themeId}_feet`;
   if (slot === 'head') return `zone_${themeId}_head`;
+  if (slot === 'body') return `zone_${themeId}_body`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 

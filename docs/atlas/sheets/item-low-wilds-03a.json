@@ -14,11 +14,11 @@
     { "assetId": "item_low_wilds_undercity_copper_belt", "category": "item", "targetId": "undercity_copper_belt", "name": "地城銅帶", "outputPath": "client/public/images/items/item_low_wilds_undercity_copper_belt.png", "row": 1, "column": 2 },
     { "assetId": "item_low_wilds_gravefrost_gray_belt", "category": "item", "targetId": "gravefrost_gray_belt", "name": "墓霜灰帶", "outputPath": "client/public/images/items/item_low_wilds_gravefrost_gray_belt.png", "row": 1, "column": 3 },
     { "assetId": "item_low_wilds_storm_spike_belt", "category": "item", "targetId": "storm_spike_belt", "name": "風暴釘帶", "outputPath": "client/public/images/items/item_low_wilds_storm_spike_belt.png", "row": 2, "column": 0 },
-    { "assetId": "item_low_wilds_supplemental_body_01", "category": "item", "targetId": "supplemental_body_01", "name": "麻襯皮甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_01.png", "row": 2, "column": 1 },
-    { "assetId": "item_low_wilds_supplemental_body_02", "category": "item", "targetId": "supplemental_body_02", "name": "溪蘆胸甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_02.png", "row": 2, "column": 2 },
-    { "assetId": "item_low_wilds_supplemental_body_03", "category": "item", "targetId": "supplemental_body_03", "name": "柳籬護衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_03.png", "row": 2, "column": 3 },
-    { "assetId": "item_low_wilds_supplemental_body_04", "category": "item", "targetId": "supplemental_body_04", "name": "穀殼棉甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_04.png", "row": 3, "column": 0 },
-    { "assetId": "item_low_wilds_supplemental_body_05", "category": "item", "targetId": "supplemental_body_05", "name": "黑苔軟甲", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_05.png", "row": 3, "column": 1 },
-    { "assetId": "item_low_wilds_supplemental_body_06", "category": "item", "targetId": "supplemental_body_06", "name": "潮帆胸衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_06.png", "row": 3, "column": 2 }
+    { "assetId": "item_low_wilds_hemp_lined_leather_armor", "category": "item", "targetId": "hemp_lined_leather_armor", "name": "麻襯皮甲", "outputPath": "client/public/images/items/item_low_wilds_hemp_lined_leather_armor.png", "row": 2, "column": 1 },
+    { "assetId": "item_low_wilds_creek_reed_breastplate", "category": "item", "targetId": "creek_reed_breastplate", "name": "溪蘆胸甲", "outputPath": "client/public/images/items/item_low_wilds_creek_reed_breastplate.png", "row": 2, "column": 2 },
+    { "assetId": "item_low_wilds_willow_fence_vest", "category": "item", "targetId": "willow_fence_vest", "name": "柳籬護衣", "outputPath": "client/public/images/items/item_low_wilds_willow_fence_vest.png", "row": 2, "column": 3 },
+    { "assetId": "item_low_wilds_grainhusk_padded_armor", "category": "item", "targetId": "grainhusk_padded_armor", "name": "穀殼棉甲", "outputPath": "client/public/images/items/item_low_wilds_grainhusk_padded_armor.png", "row": 3, "column": 0 },
+    { "assetId": "item_low_wilds_blackmoss_soft_armor", "category": "item", "targetId": "blackmoss_soft_armor", "name": "黑苔軟甲", "outputPath": "client/public/images/items/item_low_wilds_blackmoss_soft_armor.png", "row": 3, "column": 1 },
+    { "assetId": "item_low_wilds_tide_sail_chestwear", "category": "item", "targetId": "tide_sail_chestwear", "name": "潮帆胸衣", "outputPath": "client/public/images/items/item_low_wilds_tide_sail_chestwear.png", "row": 3, "column": 2 }
   ]
 }

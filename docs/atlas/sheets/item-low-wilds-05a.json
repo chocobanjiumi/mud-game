@@ -5,8 +5,8 @@
   "rows": 4,
   "sheetPath": "client/public/images/atlas/source-ai/item_low_wilds_05a.sheet.png",
   "targets": [
-    { "assetId": "item_low_wilds_supplemental_body_22", "category": "item", "targetId": "supplemental_body_22", "name": "玻砂長衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_22.png", "row": 0, "column": 0 },
-    { "assetId": "item_low_wilds_supplemental_body_23", "category": "item", "targetId": "supplemental_body_23", "name": "地城銅衣", "outputPath": "client/public/images/items/item_low_wilds_supplemental_body_23.png", "row": 0, "column": 1 },
+    { "assetId": "item_low_wilds_glasssand_longcoat", "category": "item", "targetId": "glasssand_longcoat", "name": "玻砂長衣", "outputPath": "client/public/images/items/item_low_wilds_glasssand_longcoat.png", "row": 0, "column": 0 },
+    { "assetId": "item_low_wilds_undercity_copper_garb", "category": "item", "targetId": "undercity_copper_garb", "name": "地城銅衣", "outputPath": "client/public/images/items/item_low_wilds_undercity_copper_garb.png", "row": 0, "column": 1 },
     { "assetId": "item_low_wilds_creek_pearl_earring", "category": "item", "targetId": "creek_pearl_earring", "name": "溪珠耳墜", "outputPath": "client/public/images/items/item_low_wilds_creek_pearl_earring.png", "row": 0, "column": 2 },
     { "assetId": "item_low_wilds_willow_bud_earring", "category": "item", "targetId": "willow_bud_earring", "name": "柳芽耳環", "outputPath": "client/public/images/items/item_low_wilds_willow_bud_earring.png", "row": 0, "column": 3 },
     { "assetId": "item_low_wilds_grain_bell_earring", "category": "item", "targetId": "grain_bell_earring", "name": "穀鈴耳墜", "outputPath": "client/public/images/items/item_low_wilds_grain_bell_earring.png", "row": 1, "column": 0 },

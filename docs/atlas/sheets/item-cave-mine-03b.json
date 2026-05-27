@@ -10,6 +10,6 @@
     { "assetId": "item_cave_mine_zone_obsidian_depths_head", "category": "item", "targetId": "zone_obsidian_depths_head", "name": "黑曜深層兜帽", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_head.png", "row": 0, "column": 2 },
     { "assetId": "item_cave_mine_zone_obsidian_depths_necklace", "category": "item", "targetId": "zone_obsidian_depths_necklace", "name": "黑曜深層墜飾", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_necklace.png", "row": 1, "column": 0 },
     { "assetId": "item_cave_mine_zone_obsidian_depths_ring", "category": "item", "targetId": "zone_obsidian_depths_ring", "name": "黑曜深層指環", "outputPath": "client/public/images/items/item_cave_mine_zone_obsidian_depths_ring.png", "row": 1, "column": 1 },
-    { "assetId": "item_cave_mine_zone_underground_city_body_2", "category": "item", "targetId": "zone_underground_city_body_2", "name": "地下城邦護甲", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_body_2.png", "row": 1, "column": 2 }
+    { "assetId": "item_cave_mine_zone_underground_city_body", "category": "item", "targetId": "zone_underground_city_body", "name": "地下城邦護甲", "outputPath": "client/public/images/items/item_cave_mine_zone_underground_city_body.png", "row": 1, "column": 2 }
   ]
 }

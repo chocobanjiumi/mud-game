@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_astral_time_02.sheet.png",
   "targets": [
-    { "assetId": "item_astral_time_zone_ancient_ruins_body_2", "category": "item", "targetId": "zone_ancient_ruins_body_2", "name": "古代遺跡護甲", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_body_2.png", "row": 0, "column": 0 },
+    { "assetId": "item_astral_time_zone_ancient_ruins_body", "category": "item", "targetId": "zone_ancient_ruins_body", "name": "古代遺跡護甲", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_body.png", "row": 0, "column": 0 },
     { "assetId": "item_astral_time_zone_ancient_ruins_earring", "category": "item", "targetId": "zone_ancient_ruins_earring", "name": "古代遺跡耳飾", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_earring.png", "row": 0, "column": 1 },
     { "assetId": "item_astral_time_zone_ancient_ruins_feet", "category": "item", "targetId": "zone_ancient_ruins_feet", "name": "古代遺跡長靴", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_feet.png", "row": 0, "column": 2 },
     { "assetId": "item_astral_time_zone_ancient_ruins_hands", "category": "item", "targetId": "zone_ancient_ruins_hands", "name": "古代遺跡護手", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_hands.png", "row": 1, "column": 0 },

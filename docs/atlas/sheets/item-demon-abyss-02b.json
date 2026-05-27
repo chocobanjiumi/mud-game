@@ -10,6 +10,6 @@
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_head", "category": "item", "targetId": "zone_cursed_graveyard_head", "name": "詛咒墓園兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_head.png", "row": 0, "column": 2 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_necklace", "category": "item", "targetId": "zone_cursed_graveyard_necklace", "name": "詛咒墓園墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_necklace.png", "row": 1, "column": 0 },
     { "assetId": "item_demon_abyss_zone_cursed_graveyard_ring", "category": "item", "targetId": "zone_cursed_graveyard_ring", "name": "詛咒墓園指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_cursed_graveyard_ring.png", "row": 1, "column": 1 },
-    { "assetId": "item_demon_abyss_zone_demon_territory_body_2", "category": "item", "targetId": "zone_demon_territory_body_2", "name": "魔族領地護甲", "outputPath": "client/public/images/items/item_demon_abyss_zone_demon_territory_body_2.png", "row": 1, "column": 2 }
+    { "assetId": "item_demon_abyss_zone_demon_territory_body", "category": "item", "targetId": "zone_demon_territory_body", "name": "魔族領地護甲", "outputPath": "client/public/images/items/item_demon_abyss_zone_demon_territory_body.png", "row": 1, "column": 2 }
   ]
 }

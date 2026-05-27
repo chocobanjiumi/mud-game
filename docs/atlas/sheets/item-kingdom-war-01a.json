@@ -18,7 +18,7 @@
     { "assetId": "item_kingdom_war_prisoner_parole_token", "category": "item", "targetId": "prisoner_parole_token", "name": "俘虜假釋牌", "outputPath": "client/public/images/items/item_kingdom_war_prisoner_parole_token.png", "row": 2, "column": 2 },
     { "assetId": "item_kingdom_war_royal_hunt_permit", "category": "item", "targetId": "royal_hunt_permit", "name": "王獵許可章", "outputPath": "client/public/images/items/item_kingdom_war_royal_hunt_permit.png", "row": 2, "column": 3 },
     { "assetId": "item_kingdom_war_white_stag_oath_mark", "category": "item", "targetId": "white_stag_oath_mark", "name": "白鹿誓印", "outputPath": "client/public/images/items/item_kingdom_war_white_stag_oath_mark.png", "row": 3, "column": 0 },
-    { "assetId": "item_kingdom_war_zone_ironwood_fort_body_2", "category": "item", "targetId": "zone_ironwood_fort_body_2", "name": "鐵木要塞護甲", "outputPath": "client/public/images/items/item_kingdom_war_zone_ironwood_fort_body_2.png", "row": 3, "column": 1 },
+    { "assetId": "item_kingdom_war_zone_ironwood_fort_body", "category": "item", "targetId": "zone_ironwood_fort_body", "name": "鐵木要塞護甲", "outputPath": "client/public/images/items/item_kingdom_war_zone_ironwood_fort_body.png", "row": 3, "column": 1 },
     { "assetId": "item_kingdom_war_zone_ironwood_fort_feet", "category": "item", "targetId": "zone_ironwood_fort_feet", "name": "鐵木要塞長靴", "outputPath": "client/public/images/items/item_kingdom_war_zone_ironwood_fort_feet.png", "row": 3, "column": 2 }
   ]
 }

@@ -19,6 +19,6 @@
     { "assetId": "item_town_market_market_spice_pouch", "category": "item", "targetId": "market_spice_pouch", "name": "市集香料袋", "outputPath": "client/public/images/items/item_town_market_market_spice_pouch.png", "row": 2, "column": 3 },
     { "assetId": "item_town_market_practice_wrap", "category": "item", "targetId": "practice_wrap", "name": "練習纏手布", "outputPath": "client/public/images/items/item_town_market_practice_wrap.png", "row": 3, "column": 0 },
     { "assetId": "item_town_market_sealed_price_list", "category": "item", "targetId": "sealed_price_list", "name": "封緘價目表", "outputPath": "client/public/images/items/item_town_market_sealed_price_list.png", "row": 3, "column": 1 },
-    { "assetId": "item_town_market_zone_arena_quarter_body_2", "category": "item", "targetId": "zone_arena_quarter_body_2", "name": "競技場區護甲", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_body_2.png", "row": 3, "column": 2 }
+    { "assetId": "item_town_market_zone_arena_quarter_body", "category": "item", "targetId": "zone_arena_quarter_body", "name": "競技場區護甲", "outputPath": "client/public/images/items/item_town_market_zone_arena_quarter_body.png", "row": 3, "column": 2 }
   ]
 }

@@ -17,7 +17,7 @@
     { "assetId": "item_forest_fen_spirit_whip", "category": "item", "targetId": "spirit_whip", "name": "靈魂之鞭", "outputPath": "client/public/images/items/item_forest_fen_spirit_whip.png", "row": 1, "column": 4 },
     { "assetId": "item_forest_fen_strength_potion", "category": "item", "targetId": "strength_potion", "name": "力量藥水", "outputPath": "client/public/images/items/item_forest_fen_strength_potion.png", "row": 2, "column": 0 },
     { "assetId": "item_forest_fen_whispering_crystal", "category": "item", "targetId": "whispering_crystal", "name": "低語水晶", "outputPath": "client/public/images/items/item_forest_fen_whispering_crystal.png", "row": 2, "column": 1 },
-    { "assetId": "item_forest_fen_zone_amber_forest_body_2", "category": "item", "targetId": "zone_amber_forest_body_2", "name": "琥珀森林護甲", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_body_2.png", "row": 2, "column": 2 },
+    { "assetId": "item_forest_fen_zone_amber_forest_body", "category": "item", "targetId": "zone_amber_forest_body", "name": "琥珀森林護甲", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_body.png", "row": 2, "column": 2 },
     { "assetId": "item_forest_fen_zone_amber_forest_feet", "category": "item", "targetId": "zone_amber_forest_feet", "name": "琥珀森林長靴", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_feet.png", "row": 2, "column": 3 },
     { "assetId": "item_forest_fen_zone_amber_forest_hands", "category": "item", "targetId": "zone_amber_forest_hands", "name": "琥珀森林護手", "outputPath": "client/public/images/items/item_forest_fen_zone_amber_forest_hands.png", "row": 2, "column": 4 }
   ]

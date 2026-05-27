@@ -10,6 +10,6 @@
     { "assetId": "item_demon_abyss_lich_litany_page", "category": "item", "targetId": "lich_litany_page", "name": "巫妖悼詞頁", "outputPath": "client/public/images/items/item_demon_abyss_lich_litany_page.png", "row": 0, "column": 2 },
     { "assetId": "item_demon_abyss_sigil_tower_rubbing", "category": "item", "targetId": "sigil_tower_rubbing", "name": "符印塔拓片", "outputPath": "client/public/images/items/item_demon_abyss_sigil_tower_rubbing.png", "row": 1, "column": 0 },
     { "assetId": "item_demon_abyss_zone_abyss_rift_belt", "category": "item", "targetId": "zone_abyss_rift_belt", "name": "深淵裂隙腰帶", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_belt.png", "row": 1, "column": 1 },
-    { "assetId": "item_demon_abyss_zone_abyss_rift_body_2", "category": "item", "targetId": "zone_abyss_rift_body_2", "name": "深淵裂隙護甲", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_body_2.png", "row": 1, "column": 2 }
+    { "assetId": "item_demon_abyss_zone_abyss_rift_body", "category": "item", "targetId": "zone_abyss_rift_body", "name": "深淵裂隙護甲", "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_body.png", "row": 1, "column": 2 }
   ]
 }
