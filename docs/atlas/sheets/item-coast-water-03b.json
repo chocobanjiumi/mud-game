@@ -10,6 +10,6 @@
     { "assetId": "item_coast_water_zone_mist_harbor_body_2", "category": "item", "targetId": "zone_mist_harbor_body_2", "name": "霧港護甲", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_body_2.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_zone_mist_harbor_feet", "category": "item", "targetId": "zone_mist_harbor_feet", "name": "霧港長靴", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_feet.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_zone_mist_harbor_hands", "category": "item", "targetId": "zone_mist_harbor_hands", "name": "霧港護手", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_hands.png", "row": 1, "column": 1 },
-    { "assetId": "item_coast_water_zone_mist_harbor_head_1", "category": "item", "targetId": "zone_mist_harbor_head_1", "name": "霧港兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_head_1.png", "row": 1, "column": 2 }
+    { "assetId": "item_coast_water_zone_mist_harbor_head", "category": "item", "targetId": "zone_mist_harbor_head", "name": "霧港兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_head.png", "row": 1, "column": 2 }
   ]
 }

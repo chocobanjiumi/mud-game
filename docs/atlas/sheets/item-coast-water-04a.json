@@ -12,7 +12,7 @@
     { "assetId": "item_coast_water_zone_reef_of_bones_earring", "category": "item", "targetId": "zone_reef_of_bones_earring", "name": "骸骨礁耳飾", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_earring.png", "row": 1, "column": 1 },
     { "assetId": "item_coast_water_zone_reef_of_bones_feet", "category": "item", "targetId": "zone_reef_of_bones_feet", "name": "骸骨礁長靴", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_feet.png", "row": 1, "column": 2 },
     { "assetId": "item_coast_water_zone_reef_of_bones_hands", "category": "item", "targetId": "zone_reef_of_bones_hands", "name": "骸骨礁護手", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_hands.png", "row": 2, "column": 0 },
-    { "assetId": "item_coast_water_zone_reef_of_bones_head_1", "category": "item", "targetId": "zone_reef_of_bones_head_1", "name": "骸骨礁兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_head_1.png", "row": 2, "column": 1 },
+    { "assetId": "item_coast_water_zone_reef_of_bones_head", "category": "item", "targetId": "zone_reef_of_bones_head", "name": "骸骨礁兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_head.png", "row": 2, "column": 1 },
     { "assetId": "item_coast_water_zone_reef_of_bones_necklace", "category": "item", "targetId": "zone_reef_of_bones_necklace", "name": "骸骨礁墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_necklace.png", "row": 2, "column": 2 }
   ]
 }

@@ -13,6 +13,6 @@
     { "assetId": "item_dragon_celestial_zone_dragon_valley_earring", "category": "item", "targetId": "zone_dragon_valley_earring", "name": "龍谷耳飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_earring.png", "row": 1, "column": 2 },
     { "assetId": "item_dragon_celestial_zone_dragon_valley_feet", "category": "item", "targetId": "zone_dragon_valley_feet", "name": "龍谷長靴", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_feet.png", "row": 2, "column": 0 },
     { "assetId": "item_dragon_celestial_zone_dragon_valley_hands", "category": "item", "targetId": "zone_dragon_valley_hands", "name": "龍谷護手", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_hands.png", "row": 2, "column": 1 },
-    { "assetId": "item_dragon_celestial_zone_dragon_valley_head_1", "category": "item", "targetId": "zone_dragon_valley_head_1", "name": "龍谷兜帽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_head_1.png", "row": 2, "column": 2 }
+    { "assetId": "item_dragon_celestial_zone_dragon_valley_head", "category": "item", "targetId": "zone_dragon_valley_head", "name": "龍谷兜帽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_head.png", "row": 2, "column": 2 }
   ]
 }
