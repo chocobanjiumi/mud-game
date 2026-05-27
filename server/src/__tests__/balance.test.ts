@@ -4,7 +4,7 @@
 // to verify that the game numbers make sense. They use the actual
 // damage formulas and game constants.
 
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import path from 'path';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
@@ -434,6 +434,27 @@ describe('Balance: Gold economy', () => {
       expect(saddle.classReq, saddle.id).toEqual(['knight']);
       expect(mountStatKeys.length, saddle.id).toBeGreaterThan(0);
       expect(deriveSaddleMountStats(saddle).mountFatigueRecovery, saddle.id).toBeGreaterThanOrEqual(0);
+    }
+  });
+
+  it('has generated image coverage for every saddle item', () => {
+    const manifestPath = path.resolve(__dirname, '../../../client/public/images/atlas/manifest.json');
+    const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8')) as {
+      entries: { category: string; targetId: string; outputPath: string }[];
+    };
+    const saddleIds = Object.values(ITEM_DEFS)
+      .filter(item => item.equipSlot === 'saddle')
+      .map(item => item.id);
+    const itemEntries = new Map(
+      manifest.entries
+        .filter(entry => entry.category === 'item')
+        .map(entry => [entry.targetId, entry.outputPath]),
+    );
+
+    for (const saddleId of saddleIds) {
+      const outputPath = itemEntries.get(saddleId);
+      expect(outputPath, saddleId).toBeTruthy();
+      expect(existsSync(path.resolve(__dirname, '../../..', outputPath!)), saddleId).toBe(true);
     }
   });
 
