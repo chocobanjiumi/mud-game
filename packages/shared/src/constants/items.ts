@@ -115,6 +115,33 @@ const SUPPLEMENTAL_SLOT_STATS: Record<Exclude<EquipSlot, 'accessory'>, keyof Non
 };
 
 const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'accessory'>, readonly string[]>> = {
+  belt: [
+    'grass_rope_buckle_belt',
+    'creek_stone_belt',
+    'willow_woven_sash',
+    'granary_studded_belt',
+    'blackmoss_hidden_belt',
+    'tide_sail_waist_rope',
+    'minelamp_tool_belt',
+    'frosthide_waistguard',
+    'redrock_copper_belt',
+    'silverpine_wide_belt',
+    'thundergrass_knot_belt',
+    'amber_bee_belt',
+    'bloodsalt_ship_belt',
+    'starsand_sash',
+    'moonwell_white_belt',
+    'charwood_buckle_belt',
+    'mistharbor_lead_belt',
+    'ancient_tablet_stone_belt',
+    'mirrormarsh_silver_belt',
+    'redforge_rivet_belt',
+    'thundersteppe_bone_belt',
+    'glasssand_tie_belt',
+    'undercity_copper_belt',
+    'gravefrost_gray_belt',
+    'storm_spike_belt',
+  ],
   earring: [
     'creek_pearl_earring',
     'willow_bud_earring',
@@ -860,6 +887,7 @@ const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
 
 function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'accessory'>, index: number): string {
   if (slot === 'weapon') return `${themeId}_giant_sword`;
+  if (slot === 'belt') return `zone_${themeId}_belt`;
   if (slot === 'earring') return `zone_${themeId}_earring`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }

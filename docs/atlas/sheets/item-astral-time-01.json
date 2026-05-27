@@ -13,6 +13,6 @@
     { "assetId": "item_astral_time_starcore_heart", "category": "item", "targetId": "starcore_heart", "name": "世界王星核心臟", "outputPath": "client/public/images/items/item_astral_time_starcore_heart.png", "row": 1, "column": 2 },
     { "assetId": "item_astral_time_worldcore_anchor", "category": "item", "targetId": "worldcore_anchor", "name": "荒原核心錨", "outputPath": "client/public/images/items/item_astral_time_worldcore_anchor.png", "row": 2, "column": 0 },
     { "assetId": "item_astral_time_worldscar_fragment", "category": "item", "targetId": "worldscar_fragment", "name": "世界傷痕碎片", "outputPath": "client/public/images/items/item_astral_time_worldscar_fragment.png", "row": 2, "column": 1 },
-    { "assetId": "item_astral_time_zone_ancient_ruins_belt_9", "category": "item", "targetId": "zone_ancient_ruins_belt_9", "name": "古代遺跡腰帶", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt_9.png", "row": 2, "column": 2 }
+    { "assetId": "item_astral_time_zone_ancient_ruins_belt", "category": "item", "targetId": "zone_ancient_ruins_belt", "name": "古代遺跡腰帶", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt.png", "row": 2, "column": 2 }
   ]
 }

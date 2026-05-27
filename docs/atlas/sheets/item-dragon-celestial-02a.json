@@ -13,6 +13,6 @@
     { "assetId": "item_dragon_celestial_solar_trial_wax", "category": "item", "targetId": "solar_trial_wax", "name": "日試蠟印", "outputPath": "client/public/images/items/item_dragon_celestial_solar_trial_wax.png", "row": 1, "column": 2 },
     { "assetId": "item_dragon_celestial_storm_staff", "category": "item", "targetId": "storm_staff", "name": "風暴法杖", "outputPath": "client/public/images/items/item_dragon_celestial_storm_staff.png", "row": 2, "column": 0 },
     { "assetId": "item_dragon_celestial_sunfire_vial", "category": "item", "targetId": "sunfire_vial", "name": "日火小瓶", "outputPath": "client/public/images/items/item_dragon_celestial_sunfire_vial.png", "row": 2, "column": 1 },
-    { "assetId": "item_dragon_celestial_zone_celestial_ruins_belt_9", "category": "item", "targetId": "zone_celestial_ruins_belt_9", "name": "天界遺跡腰帶", "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt_9.png", "row": 2, "column": 2 }
+    { "assetId": "item_dragon_celestial_zone_celestial_ruins_belt", "category": "item", "targetId": "zone_celestial_ruins_belt", "name": "天界遺跡腰帶", "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt.png", "row": 2, "column": 2 }
   ]
 }

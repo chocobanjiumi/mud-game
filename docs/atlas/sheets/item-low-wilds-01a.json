@@ -15,6 +15,6 @@
     { "assetId": "item_low_wilds_rusty_hero_sword", "category": "item", "targetId": "rusty_hero_sword", "name": "鏽蝕的勇者之劍", "outputPath": "client/public/images/items/item_low_wilds_rusty_hero_sword.png", "row": 1, "column": 3 },
     { "assetId": "item_low_wilds_sanctuary_gate_sigil", "category": "item", "targetId": "sanctuary_gate_sigil", "name": "聖地門印", "outputPath": "client/public/images/items/item_low_wilds_sanctuary_gate_sigil.png", "row": 2, "column": 0 },
     { "assetId": "item_low_wilds_serpent_fang_spear", "category": "item", "targetId": "serpent_fang_spear", "name": "蛇牙長槍", "outputPath": "client/public/images/items/item_low_wilds_serpent_fang_spear.png", "row": 2, "column": 1 },
-    { "assetId": "item_low_wilds_supplemental_belt_01", "category": "item", "targetId": "supplemental_belt_01", "name": "草繩扣帶", "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_01.png", "row": 2, "column": 2 }
+    { "assetId": "item_low_wilds_grass_rope_buckle_belt", "category": "item", "targetId": "grass_rope_buckle_belt", "name": "草繩扣帶", "outputPath": "client/public/images/items/item_low_wilds_grass_rope_buckle_belt.png", "row": 2, "column": 2 }
   ]
 }

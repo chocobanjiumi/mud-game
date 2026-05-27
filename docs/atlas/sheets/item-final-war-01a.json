@@ -19,6 +19,6 @@
     { "assetId": "item_final_war_silence_after_war_core", "category": "item", "targetId": "silence_after_war_core", "name": "戰後寂地核心", "outputPath": "client/public/images/items/item_final_war_silence_after_war_core.png", "row": 2, "column": 1 },
     { "assetId": "item_final_war_warhammer_lv60", "category": "item", "targetId": "final_crownbreaker_warhammer", "name": "終冠碎錘", "outputPath": "client/public/images/items/item_final_war_warhammer_lv60.png", "row": 2, "column": 2 },
     { "assetId": "item_final_war_whip_lv60", "category": "item", "targetId": "final_thunder_star_whip", "name": "終雷星鞭", "outputPath": "client/public/images/items/item_final_war_whip_lv60.png", "row": 2, "column": 3 },
-    { "assetId": "item_final_war_zone_final_battleground_belt_9", "category": "item", "targetId": "zone_final_battleground_belt_9", "name": "終焉戰場腰帶", "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt_9.png", "row": 2, "column": 4 }
+    { "assetId": "item_final_war_zone_final_battleground_belt", "category": "item", "targetId": "zone_final_battleground_belt", "name": "終焉戰場腰帶", "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt.png", "row": 2, "column": 4 }
   ]
 }

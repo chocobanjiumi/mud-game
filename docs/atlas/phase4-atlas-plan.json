@@ -10209,18 +10209,18 @@
         "outputPath": "client/public/images/items/item_astral_time_worldscar_fragment.png"
       },
       {
-        "id": "item_astral_time_zone_ancient_ruins_belt_9",
-        "targetId": "zone_ancient_ruins_belt_9",
+        "id": "item_astral_time_zone_ancient_ruins_belt",
+        "targetId": "zone_ancient_ruins_belt",
         "category": "item",
         "name": "古代遺跡腰帶",
         "zoneIds": [
           "ancient_ruins"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_ancient_ruins_belt_9",
+        "source": "ITEM_DEFS.zone_ancient_ruins_belt",
         "description": "古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ancient_ruins. Subject: 古代遺跡腰帶 (zone_ancient_ruins_belt_9). Details: 古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ancient_ruins. Subject: 古代遺跡腰帶 (zone_ancient_ruins_belt). Details: 古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt.png"
       },
       {
         "id": "item_astral_time_zone_ancient_ruins_body_2",
@@ -10349,18 +10349,18 @@
         "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_weapon_7.png"
       },
       {
-        "id": "item_astral_time_zone_astral_wastes_belt_9",
-        "targetId": "zone_astral_wastes_belt_9",
+        "id": "item_astral_time_zone_astral_wastes_belt",
+        "targetId": "zone_astral_wastes_belt",
         "category": "item",
         "name": "星界荒原腰帶",
         "zoneIds": [
           "astral_wastes"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_astral_wastes_belt_9",
+        "source": "ITEM_DEFS.zone_astral_wastes_belt",
         "description": "星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: astral_wastes. Subject: 星界荒原腰帶 (zone_astral_wastes_belt_9). Details: 星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: astral_wastes. Subject: 星界荒原腰帶 (zone_astral_wastes_belt). Details: 星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_belt.png"
       },
       {
         "id": "item_astral_time_zone_astral_wastes_body_2",
@@ -10573,18 +10573,18 @@
         "outputPath": "client/public/images/items/item_astral_time_zone_starfall_crater_ring_5.png"
       },
       {
-        "id": "item_astral_time_zone_time_ruins_belt_9",
-        "targetId": "zone_time_ruins_belt_9",
+        "id": "item_astral_time_zone_time_ruins_belt",
+        "targetId": "zone_time_ruins_belt",
         "category": "item",
         "name": "時間廢墟腰帶",
         "zoneIds": [
           "time_ruins"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_time_ruins_belt_9",
+        "source": "ITEM_DEFS.zone_time_ruins_belt",
         "description": "時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt_9). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt.png"
       },
       {
         "id": "item_astral_time_zone_time_ruins_body_2",
@@ -12059,18 +12059,18 @@
         "outputPath": "client/public/images/items/item_coast_water_zone_bloodsalt_coast_ring_5.png"
       },
       {
-        "id": "item_coast_water_zone_deepsea_temple_belt_9",
-        "targetId": "zone_deepsea_temple_belt_9",
+        "id": "item_coast_water_zone_deepsea_temple_belt",
+        "targetId": "zone_deepsea_temple_belt",
         "category": "item",
         "name": "深海神殿腰帶",
         "zoneIds": [
           "deepsea_temple"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_deepsea_temple_belt_9",
+        "source": "ITEM_DEFS.zone_deepsea_temple_belt",
         "description": "深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: deepsea_temple. Subject: 深海神殿腰帶 (zone_deepsea_temple_belt_9). Details: 深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: deepsea_temple. Subject: 深海神殿腰帶 (zone_deepsea_temple_belt). Details: 深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_belt.png"
       },
       {
         "id": "item_coast_water_zone_deepsea_temple_body_2",
@@ -12367,18 +12367,18 @@
         "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_ring_5.png"
       },
       {
-        "id": "item_coast_water_zone_reef_of_bones_belt_9",
-        "targetId": "zone_reef_of_bones_belt_9",
+        "id": "item_coast_water_zone_reef_of_bones_belt",
+        "targetId": "zone_reef_of_bones_belt",
         "category": "item",
         "name": "白骨礁腰帶",
         "zoneIds": [
           "reef_of_bones"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_reef_of_bones_belt_9",
+        "source": "ITEM_DEFS.zone_reef_of_bones_belt",
         "description": "白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: reef_of_bones. Subject: 白骨礁腰帶 (zone_reef_of_bones_belt_9). Details: 白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: reef_of_bones. Subject: 白骨礁腰帶 (zone_reef_of_bones_belt). Details: 白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_belt.png"
       },
       {
         "id": "item_coast_water_zone_reef_of_bones_body_2",
@@ -13003,18 +13003,18 @@
         "outputPath": "client/public/images/items/item_demon_abyss_sigil_tower_rubbing.png"
       },
       {
-        "id": "item_demon_abyss_zone_abyss_rift_belt_9",
-        "targetId": "zone_abyss_rift_belt_9",
+        "id": "item_demon_abyss_zone_abyss_rift_belt",
+        "targetId": "zone_abyss_rift_belt",
         "category": "item",
         "name": "深淵裂隙腰帶",
         "zoneIds": [
           "abyss_rift"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_abyss_rift_belt_9",
+        "source": "ITEM_DEFS.zone_abyss_rift_belt",
         "description": "深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: abyss_rift. Subject: 深淵裂隙腰帶 (zone_abyss_rift_belt_9). Details: 深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: abyss_rift. Subject: 深淵裂隙腰帶 (zone_abyss_rift_belt). Details: 深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_belt.png"
       },
       {
         "id": "item_demon_abyss_zone_abyss_rift_body_2",
@@ -13311,18 +13311,18 @@
         "outputPath": "client/public/images/items/item_demon_abyss_zone_demon_territory_ring_5.png"
       },
       {
-        "id": "item_demon_abyss_zone_necropolis_gate_belt_9",
-        "targetId": "zone_necropolis_gate_belt_9",
+        "id": "item_demon_abyss_zone_necropolis_gate_belt",
+        "targetId": "zone_necropolis_gate_belt",
         "category": "item",
         "name": "死都外門腰帶",
         "zoneIds": [
           "necropolis_gate"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_necropolis_gate_belt_9",
+        "source": "ITEM_DEFS.zone_necropolis_gate_belt",
         "description": "死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: necropolis_gate. Subject: 死都外門腰帶 (zone_necropolis_gate_belt_9). Details: 死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: necropolis_gate. Subject: 死都外門腰帶 (zone_necropolis_gate_belt). Details: 死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_belt.png"
       },
       {
         "id": "item_demon_abyss_zone_necropolis_gate_body_2",
@@ -13451,18 +13451,18 @@
         "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_weapon_7.png"
       },
       {
-        "id": "item_demon_abyss_zone_sunken_catacombs_belt_9",
-        "targetId": "zone_sunken_catacombs_belt_9",
+        "id": "item_demon_abyss_zone_sunken_catacombs_belt",
+        "targetId": "zone_sunken_catacombs_belt",
         "category": "item",
         "name": "沉沒墓窟腰帶",
         "zoneIds": [
           "sunken_catacombs"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_sunken_catacombs_belt_9",
+        "source": "ITEM_DEFS.zone_sunken_catacombs_belt",
         "description": "沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt_9). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt.png"
       },
       {
         "id": "item_demon_abyss_zone_sunken_catacombs_body_2",
@@ -14037,18 +14037,18 @@
         "outputPath": "client/public/images/items/item_dragon_celestial_sunfire_vial.png"
       },
       {
-        "id": "item_dragon_celestial_zone_celestial_ruins_belt_9",
-        "targetId": "zone_celestial_ruins_belt_9",
+        "id": "item_dragon_celestial_zone_celestial_ruins_belt",
+        "targetId": "zone_celestial_ruins_belt",
         "category": "item",
         "name": "天界遺跡腰帶",
         "zoneIds": [
           "celestial_ruins"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_celestial_ruins_belt_9",
+        "source": "ITEM_DEFS.zone_celestial_ruins_belt",
         "description": "天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: celestial_ruins. Subject: 天界遺跡腰帶 (zone_celestial_ruins_belt_9). Details: 天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: celestial_ruins. Subject: 天界遺跡腰帶 (zone_celestial_ruins_belt). Details: 天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt.png"
       },
       {
         "id": "item_dragon_celestial_zone_celestial_ruins_body_2",
@@ -14177,18 +14177,18 @@
         "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_weapon_7.png"
       },
       {
-        "id": "item_dragon_celestial_zone_dragon_valley_belt_9",
-        "targetId": "zone_dragon_valley_belt_9",
+        "id": "item_dragon_celestial_zone_dragon_valley_belt",
+        "targetId": "zone_dragon_valley_belt",
         "category": "item",
         "name": "龍谷腰帶",
         "zoneIds": [
           "dragon_valley"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_dragon_valley_belt_9",
+        "source": "ITEM_DEFS.zone_dragon_valley_belt",
         "description": "龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: dragon_valley. Subject: 龍谷腰帶 (zone_dragon_valley_belt_9). Details: 龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: dragon_valley. Subject: 龍谷腰帶 (zone_dragon_valley_belt). Details: 龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_belt.png"
       },
       {
         "id": "item_dragon_celestial_zone_dragon_valley_body_2",
@@ -14317,18 +14317,18 @@
         "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_weapon_7.png"
       },
       {
-        "id": "item_dragon_celestial_zone_moonshadow_court_belt_9",
-        "targetId": "zone_moonshadow_court_belt_9",
+        "id": "item_dragon_celestial_zone_moonshadow_court_belt",
+        "targetId": "zone_moonshadow_court_belt",
         "category": "item",
         "name": "月影庭腰帶",
         "zoneIds": [
           "moonshadow_court"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_moonshadow_court_belt_9",
+        "source": "ITEM_DEFS.zone_moonshadow_court_belt",
         "description": "月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: moonshadow_court. Subject: 月影庭腰帶 (zone_moonshadow_court_belt_9). Details: 月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: moonshadow_court. Subject: 月影庭腰帶 (zone_moonshadow_court_belt). Details: 月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_belt.png"
       },
       {
         "id": "item_dragon_celestial_zone_moonshadow_court_body_2",
@@ -14457,18 +14457,18 @@
         "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_weapon_7.png"
       },
       {
-        "id": "item_dragon_celestial_zone_sunspire_belt_9",
-        "targetId": "zone_sunspire_belt_9",
+        "id": "item_dragon_celestial_zone_sunspire_belt",
+        "targetId": "zone_sunspire_belt",
         "category": "item",
         "name": "日耀尖塔腰帶",
         "zoneIds": [
           "sunspire"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_sunspire_belt_9",
+        "source": "ITEM_DEFS.zone_sunspire_belt",
         "description": "日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunspire. Subject: 日耀尖塔腰帶 (zone_sunspire_belt_9). Details: 日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunspire. Subject: 日耀尖塔腰帶 (zone_sunspire_belt). Details: 日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_belt.png"
       },
       {
         "id": "item_dragon_celestial_zone_sunspire_body_2",
@@ -15033,18 +15033,18 @@
         "outputPath": "client/public/images/items/item_final_war_whip_lv60.png"
       },
       {
-        "id": "item_final_war_zone_final_battleground_belt_9",
-        "targetId": "zone_final_battleground_belt_9",
+        "id": "item_final_war_zone_final_battleground_belt",
+        "targetId": "zone_final_battleground_belt",
         "category": "item",
         "name": "終焉戰場腰帶",
         "zoneIds": [
           "final_battleground"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_final_battleground_belt_9",
+        "source": "ITEM_DEFS.zone_final_battleground_belt",
         "description": "終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: final_battleground. Subject: 終焉戰場腰帶 (zone_final_battleground_belt_9). Details: 終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: final_battleground. Subject: 終焉戰場腰帶 (zone_final_battleground_belt). Details: 終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt.png"
       },
       {
         "id": "item_final_war_zone_final_battleground_body_2",
@@ -15691,18 +15691,18 @@
         "outputPath": "client/public/images/items/item_fire_ash_whip_dragon.png"
       },
       {
-        "id": "item_fire_ash_zone_ashfall_monastery_belt_9",
-        "targetId": "zone_ashfall_monastery_belt_9",
+        "id": "item_fire_ash_zone_ashfall_monastery_belt",
+        "targetId": "zone_ashfall_monastery_belt",
         "category": "item",
         "name": "灰落修道院腰帶",
         "zoneIds": [
           "ashfall_monastery"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_ashfall_monastery_belt_9",
+        "source": "ITEM_DEFS.zone_ashfall_monastery_belt",
         "description": "灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ashfall_monastery. Subject: 灰落修道院腰帶 (zone_ashfall_monastery_belt_9). Details: 灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ashfall_monastery. Subject: 灰落修道院腰帶 (zone_ashfall_monastery_belt). Details: 灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_belt.png"
       },
       {
         "id": "item_fire_ash_zone_ashfall_monastery_body_2",
@@ -17620,18 +17620,18 @@
         "outputPath": "client/public/images/items/item_ice_mountain_zone_silverpine_range_ring_5.png"
       },
       {
-        "id": "item_ice_mountain_zone_sky_isles_belt_9",
-        "targetId": "zone_sky_isles_belt_9",
+        "id": "item_ice_mountain_zone_sky_isles_belt",
+        "targetId": "zone_sky_isles_belt",
         "category": "item",
         "name": "浮空群島腰帶",
         "zoneIds": [
           "sky_isles"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_sky_isles_belt_9",
+        "source": "ITEM_DEFS.zone_sky_isles_belt",
         "description": "浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sky_isles. Subject: 浮空群島腰帶 (zone_sky_isles_belt_9). Details: 浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_ice_mountain_zone_sky_isles_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sky_isles. Subject: 浮空群島腰帶 (zone_sky_isles_belt). Details: 浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_ice_mountain_zone_sky_isles_belt.png"
       },
       {
         "id": "item_ice_mountain_zone_sky_isles_body_2",
@@ -18552,18 +18552,18 @@
         "outputPath": "client/public/images/items/item_lost_capital_empty_throne_crown.png"
       },
       {
-        "id": "item_lost_capital_zone_lost_capital_belt_9",
-        "targetId": "zone_lost_capital_belt_9",
+        "id": "item_lost_capital_zone_lost_capital_belt",
+        "targetId": "zone_lost_capital_belt",
         "category": "item",
         "name": "失落王都腰帶",
         "zoneIds": [
           "lost_capital"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.zone_lost_capital_belt_9",
+        "source": "ITEM_DEFS.zone_lost_capital_belt",
         "description": "失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt_9). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-        "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt_9.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+        "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt.png"
       },
       {
         "id": "item_lost_capital_zone_lost_capital_body_2",
@@ -18903,8 +18903,8 @@
         "outputPath": "client/public/images/items/item_low_wilds_starter_welcome_token.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_01",
-        "targetId": "supplemental_belt_01",
+        "id": "item_low_wilds_grass_rope_buckle_belt",
+        "targetId": "grass_rope_buckle_belt",
         "category": "item",
         "name": "草繩扣帶",
         "zoneIds": [
@@ -18912,14 +18912,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_01",
+        "source": "ITEM_DEFS.grass_rope_buckle_belt",
         "description": "草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 草繩扣帶 (supplemental_belt_01). Details: 草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_01.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 草繩扣帶 (grass_rope_buckle_belt). Details: 草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
+        "outputPath": "client/public/images/items/item_low_wilds_grass_rope_buckle_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_02",
-        "targetId": "supplemental_belt_02",
+        "id": "item_low_wilds_creek_stone_belt",
+        "targetId": "creek_stone_belt",
         "category": "item",
         "name": "溪石腰帶",
         "zoneIds": [
@@ -18927,14 +18927,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_02",
+        "source": "ITEM_DEFS.creek_stone_belt",
         "description": "腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 溪石腰帶 (supplemental_belt_02). Details: 腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_02.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 溪石腰帶 (creek_stone_belt). Details: 腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
+        "outputPath": "client/public/images/items/item_low_wilds_creek_stone_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_03",
-        "targetId": "supplemental_belt_03",
+        "id": "item_low_wilds_willow_woven_sash",
+        "targetId": "willow_woven_sash",
         "category": "item",
         "name": "柳編束帶",
         "zoneIds": [
@@ -18942,14 +18942,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_03",
+        "source": "ITEM_DEFS.willow_woven_sash",
         "description": "柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 柳編束帶 (supplemental_belt_03). Details: 柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_03.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 柳編束帶 (willow_woven_sash). Details: 柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
+        "outputPath": "client/public/images/items/item_low_wilds_willow_woven_sash.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_04",
-        "targetId": "supplemental_belt_04",
+        "id": "item_low_wilds_granary_studded_belt",
+        "targetId": "granary_studded_belt",
         "category": "item",
         "name": "穀倉釘帶",
         "zoneIds": [
@@ -18957,14 +18957,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_04",
+        "source": "ITEM_DEFS.granary_studded_belt",
         "description": "舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 穀倉釘帶 (supplemental_belt_04). Details: 舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_04.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 穀倉釘帶 (granary_studded_belt). Details: 舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
+        "outputPath": "client/public/images/items/item_low_wilds_granary_studded_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_05",
-        "targetId": "supplemental_belt_05",
+        "id": "item_low_wilds_blackmoss_hidden_belt",
+        "targetId": "blackmoss_hidden_belt",
         "category": "item",
         "name": "黑苔隱帶",
         "zoneIds": [
@@ -18972,14 +18972,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_05",
+        "source": "ITEM_DEFS.blackmoss_hidden_belt",
         "description": "暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 黑苔隱帶 (supplemental_belt_05). Details: 暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_05.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 黑苔隱帶 (blackmoss_hidden_belt). Details: 暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
+        "outputPath": "client/public/images/items/item_low_wilds_blackmoss_hidden_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_06",
-        "targetId": "supplemental_belt_06",
+        "id": "item_low_wilds_tide_sail_waist_rope",
+        "targetId": "tide_sail_waist_rope",
         "category": "item",
         "name": "潮帆腰索",
         "zoneIds": [
@@ -18987,14 +18987,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_06",
+        "source": "ITEM_DEFS.tide_sail_waist_rope",
         "description": "潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 潮帆腰索 (supplemental_belt_06). Details: 潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_06.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 潮帆腰索 (tide_sail_waist_rope). Details: 潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
+        "outputPath": "client/public/images/items/item_low_wilds_tide_sail_waist_rope.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_07",
-        "targetId": "supplemental_belt_07",
+        "id": "item_low_wilds_minelamp_tool_belt",
+        "targetId": "minelamp_tool_belt",
         "category": "item",
         "name": "礦燈工具帶",
         "zoneIds": [
@@ -19002,14 +19002,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_07",
+        "source": "ITEM_DEFS.minelamp_tool_belt",
         "description": "工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 礦燈工具帶 (supplemental_belt_07). Details: 工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_07.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 礦燈工具帶 (minelamp_tool_belt). Details: 工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
+        "outputPath": "client/public/images/items/item_low_wilds_minelamp_tool_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_08",
-        "targetId": "supplemental_belt_08",
+        "id": "item_low_wilds_frosthide_waistguard",
+        "targetId": "frosthide_waistguard",
         "category": "item",
         "name": "霜皮束腰",
         "zoneIds": [
@@ -19017,14 +19017,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_08",
+        "source": "ITEM_DEFS.frosthide_waistguard",
         "description": "束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霜皮束腰 (supplemental_belt_08). Details: 束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_08.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霜皮束腰 (frosthide_waistguard). Details: 束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
+        "outputPath": "client/public/images/items/item_low_wilds_frosthide_waistguard.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_09",
-        "targetId": "supplemental_belt_09",
+        "id": "item_low_wilds_redrock_copper_belt",
+        "targetId": "redrock_copper_belt",
         "category": "item",
         "name": "赤岩銅帶",
         "zoneIds": [
@@ -19032,14 +19032,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_09",
+        "source": "ITEM_DEFS.redrock_copper_belt",
         "description": "赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 赤岩銅帶 (supplemental_belt_09). Details: 赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_09.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 赤岩銅帶 (redrock_copper_belt). Details: 赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
+        "outputPath": "client/public/images/items/item_low_wilds_redrock_copper_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_10",
-        "targetId": "supplemental_belt_10",
+        "id": "item_low_wilds_silverpine_wide_belt",
+        "targetId": "silverpine_wide_belt",
         "category": "item",
         "name": "銀松寬帶",
         "zoneIds": [
@@ -19047,14 +19047,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_10",
+        "source": "ITEM_DEFS.silverpine_wide_belt",
         "description": "寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 銀松寬帶 (supplemental_belt_10). Details: 寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_10.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 銀松寬帶 (silverpine_wide_belt). Details: 寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
+        "outputPath": "client/public/images/items/item_low_wilds_silverpine_wide_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_11",
-        "targetId": "supplemental_belt_11",
+        "id": "item_low_wilds_thundergrass_knot_belt",
+        "targetId": "thundergrass_knot_belt",
         "category": "item",
         "name": "雷草結帶",
         "zoneIds": [
@@ -19062,14 +19062,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_11",
+        "source": "ITEM_DEFS.thundergrass_knot_belt",
         "description": "雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷草結帶 (supplemental_belt_11). Details: 雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_11.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷草結帶 (thundergrass_knot_belt). Details: 雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
+        "outputPath": "client/public/images/items/item_low_wilds_thundergrass_knot_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_12",
-        "targetId": "supplemental_belt_12",
+        "id": "item_low_wilds_amber_bee_belt",
+        "targetId": "amber_bee_belt",
         "category": "item",
         "name": "琥珀蜂帶",
         "zoneIds": [
@@ -19077,14 +19077,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_12",
+        "source": "ITEM_DEFS.amber_bee_belt",
         "description": "蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 琥珀蜂帶 (supplemental_belt_12). Details: 蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_12.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 琥珀蜂帶 (amber_bee_belt). Details: 蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
+        "outputPath": "client/public/images/items/item_low_wilds_amber_bee_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_13",
-        "targetId": "supplemental_belt_13",
+        "id": "item_low_wilds_bloodsalt_ship_belt",
+        "targetId": "bloodsalt_ship_belt",
         "category": "item",
         "name": "血鹽船帶",
         "zoneIds": [
@@ -19092,14 +19092,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_13",
+        "source": "ITEM_DEFS.bloodsalt_ship_belt",
         "description": "暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 血鹽船帶 (supplemental_belt_13). Details: 暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_13.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 血鹽船帶 (bloodsalt_ship_belt). Details: 暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
+        "outputPath": "client/public/images/items/item_low_wilds_bloodsalt_ship_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_14",
-        "targetId": "supplemental_belt_14",
+        "id": "item_low_wilds_starsand_sash",
+        "targetId": "starsand_sash",
         "category": "item",
         "name": "星砂束帶",
         "zoneIds": [
@@ -19107,14 +19107,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_14",
+        "source": "ITEM_DEFS.starsand_sash",
         "description": "束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 星砂束帶 (supplemental_belt_14). Details: 束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_14.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 星砂束帶 (starsand_sash). Details: 束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
+        "outputPath": "client/public/images/items/item_low_wilds_starsand_sash.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_15",
-        "targetId": "supplemental_belt_15",
+        "id": "item_low_wilds_moonwell_white_belt",
+        "targetId": "moonwell_white_belt",
         "category": "item",
         "name": "月井白帶",
         "zoneIds": [
@@ -19122,14 +19122,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_15",
+        "source": "ITEM_DEFS.moonwell_white_belt",
         "description": "白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 月井白帶 (supplemental_belt_15). Details: 白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_15.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 月井白帶 (moonwell_white_belt). Details: 白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
+        "outputPath": "client/public/images/items/item_low_wilds_moonwell_white_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_16",
-        "targetId": "supplemental_belt_16",
+        "id": "item_low_wilds_charwood_buckle_belt",
+        "targetId": "charwood_buckle_belt",
         "category": "item",
         "name": "焦木扣帶",
         "zoneIds": [
@@ -19137,14 +19137,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_16",
+        "source": "ITEM_DEFS.charwood_buckle_belt",
         "description": "焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 焦木扣帶 (supplemental_belt_16). Details: 焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_16.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 焦木扣帶 (charwood_buckle_belt). Details: 焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
+        "outputPath": "client/public/images/items/item_low_wilds_charwood_buckle_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_17",
-        "targetId": "supplemental_belt_17",
+        "id": "item_low_wilds_mistharbor_lead_belt",
+        "targetId": "mistharbor_lead_belt",
         "category": "item",
         "name": "霧港鉛帶",
         "zoneIds": [
@@ -19152,14 +19152,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_17",
+        "source": "ITEM_DEFS.mistharbor_lead_belt",
         "description": "鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霧港鉛帶 (supplemental_belt_17). Details: 鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_17.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霧港鉛帶 (mistharbor_lead_belt). Details: 鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
+        "outputPath": "client/public/images/items/item_low_wilds_mistharbor_lead_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_18",
-        "targetId": "supplemental_belt_18",
+        "id": "item_low_wilds_ancient_tablet_stone_belt",
+        "targetId": "ancient_tablet_stone_belt",
         "category": "item",
         "name": "古碑石帶",
         "zoneIds": [
@@ -19167,14 +19167,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_18",
+        "source": "ITEM_DEFS.ancient_tablet_stone_belt",
         "description": "石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 古碑石帶 (supplemental_belt_18). Details: 石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_18.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 古碑石帶 (ancient_tablet_stone_belt). Details: 石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
+        "outputPath": "client/public/images/items/item_low_wilds_ancient_tablet_stone_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_19",
-        "targetId": "supplemental_belt_19",
+        "id": "item_low_wilds_mirrormarsh_silver_belt",
+        "targetId": "mirrormarsh_silver_belt",
         "category": "item",
         "name": "鏡沼銀帶",
         "zoneIds": [
@@ -19182,14 +19182,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_19",
+        "source": "ITEM_DEFS.mirrormarsh_silver_belt",
         "description": "銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 鏡沼銀帶 (supplemental_belt_19). Details: 銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_19.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 鏡沼銀帶 (mirrormarsh_silver_belt). Details: 銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
+        "outputPath": "client/public/images/items/item_low_wilds_mirrormarsh_silver_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_20",
-        "targetId": "supplemental_belt_20",
+        "id": "item_low_wilds_redforge_rivet_belt",
+        "targetId": "redforge_rivet_belt",
         "category": "item",
         "name": "紅爐鉚帶",
         "zoneIds": [
@@ -19197,14 +19197,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_20",
+        "source": "ITEM_DEFS.redforge_rivet_belt",
         "description": "紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 紅爐鉚帶 (supplemental_belt_20). Details: 紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_20.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 紅爐鉚帶 (redforge_rivet_belt). Details: 紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
+        "outputPath": "client/public/images/items/item_low_wilds_redforge_rivet_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_21",
-        "targetId": "supplemental_belt_21",
+        "id": "item_low_wilds_thundersteppe_bone_belt",
+        "targetId": "thundersteppe_bone_belt",
         "category": "item",
         "name": "雷原骨帶",
         "zoneIds": [
@@ -19212,14 +19212,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_21",
+        "source": "ITEM_DEFS.thundersteppe_bone_belt",
         "description": "雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷原骨帶 (supplemental_belt_21). Details: 雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_21.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷原骨帶 (thundersteppe_bone_belt). Details: 雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
+        "outputPath": "client/public/images/items/item_low_wilds_thundersteppe_bone_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_22",
-        "targetId": "supplemental_belt_22",
+        "id": "item_low_wilds_glasssand_tie_belt",
+        "targetId": "glasssand_tie_belt",
         "category": "item",
         "name": "玻砂繫帶",
         "zoneIds": [
@@ -19227,14 +19227,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_22",
+        "source": "ITEM_DEFS.glasssand_tie_belt",
         "description": "玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 玻砂繫帶 (supplemental_belt_22). Details: 玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_22.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 玻砂繫帶 (glasssand_tie_belt). Details: 玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
+        "outputPath": "client/public/images/items/item_low_wilds_glasssand_tie_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_23",
-        "targetId": "supplemental_belt_23",
+        "id": "item_low_wilds_undercity_copper_belt",
+        "targetId": "undercity_copper_belt",
         "category": "item",
         "name": "地城銅帶",
         "zoneIds": [
@@ -19242,14 +19242,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_23",
+        "source": "ITEM_DEFS.undercity_copper_belt",
         "description": "地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 地城銅帶 (supplemental_belt_23). Details: 地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_23.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 地城銅帶 (undercity_copper_belt). Details: 地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
+        "outputPath": "client/public/images/items/item_low_wilds_undercity_copper_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_24",
-        "targetId": "supplemental_belt_24",
+        "id": "item_low_wilds_gravefrost_gray_belt",
+        "targetId": "gravefrost_gray_belt",
         "category": "item",
         "name": "墓霜灰帶",
         "zoneIds": [
@@ -19257,14 +19257,14 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_24",
+        "source": "ITEM_DEFS.gravefrost_gray_belt",
         "description": "灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 墓霜灰帶 (supplemental_belt_24). Details: 灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_24.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 墓霜灰帶 (gravefrost_gray_belt). Details: 灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
+        "outputPath": "client/public/images/items/item_low_wilds_gravefrost_gray_belt.png"
       },
       {
-        "id": "item_low_wilds_supplemental_belt_25",
-        "targetId": "supplemental_belt_25",
+        "id": "item_low_wilds_storm_spike_belt",
+        "targetId": "storm_spike_belt",
         "category": "item",
         "name": "風暴釘帶",
         "zoneIds": [
@@ -19272,10 +19272,10 @@
           "starter_village"
         ],
         "type": "accessory",
-        "source": "ITEM_DEFS.supplemental_belt_25",
+        "source": "ITEM_DEFS.storm_spike_belt",
         "description": "釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
-        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 風暴釘帶 (supplemental_belt_25). Details: 釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
-        "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_25.png"
+        "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 風暴釘帶 (storm_spike_belt). Details: 釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
+        "outputPath": "client/public/images/items/item_low_wilds_storm_spike_belt.png"
       },
       {
         "id": "item_low_wilds_supplemental_body_01",
@@ -39323,18 +39323,18 @@
           "column": 2
         },
         {
-          "id": "item_astral_time_zone_ancient_ruins_belt_9",
-          "targetId": "zone_ancient_ruins_belt_9",
+          "id": "item_astral_time_zone_ancient_ruins_belt",
+          "targetId": "zone_ancient_ruins_belt",
           "category": "item",
           "name": "古代遺跡腰帶",
           "zoneIds": [
             "ancient_ruins"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_ancient_ruins_belt_9",
+          "source": "ITEM_DEFS.zone_ancient_ruins_belt",
           "description": "古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ancient_ruins. Subject: 古代遺跡腰帶 (zone_ancient_ruins_belt_9). Details: 古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ancient_ruins. Subject: 古代遺跡腰帶 (zone_ancient_ruins_belt). Details: 古代遺跡腰帶沾染著古代遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_belt.png",
           "row": 1,
           "column": 3
         },
@@ -39493,18 +39493,18 @@
           "column": 2
         },
         {
-          "id": "item_astral_time_zone_astral_wastes_belt_9",
-          "targetId": "zone_astral_wastes_belt_9",
+          "id": "item_astral_time_zone_astral_wastes_belt",
+          "targetId": "zone_astral_wastes_belt",
           "category": "item",
           "name": "星界荒原腰帶",
           "zoneIds": [
             "astral_wastes"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_astral_wastes_belt_9",
+          "source": "ITEM_DEFS.zone_astral_wastes_belt",
           "description": "星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: astral_wastes. Subject: 星界荒原腰帶 (zone_astral_wastes_belt_9). Details: 星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: astral_wastes. Subject: 星界荒原腰帶 (zone_astral_wastes_belt). Details: 星界荒原腰帶沾染著星界荒原的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_belt.png",
           "row": 0,
           "column": 3
         },
@@ -39759,18 +39759,18 @@
           "column": 3
         },
         {
-          "id": "item_astral_time_zone_time_ruins_belt_9",
-          "targetId": "zone_time_ruins_belt_9",
+          "id": "item_astral_time_zone_time_ruins_belt",
+          "targetId": "zone_time_ruins_belt",
           "category": "item",
           "name": "時間廢墟腰帶",
           "zoneIds": [
             "time_ruins"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_time_ruins_belt_9",
+          "source": "ITEM_DEFS.zone_time_ruins_belt",
           "description": "時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt_9). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt.png",
           "row": 0,
           "column": 4
         },
@@ -41551,18 +41551,18 @@
           "column": 4
         },
         {
-          "id": "item_coast_water_zone_deepsea_temple_belt_9",
-          "targetId": "zone_deepsea_temple_belt_9",
+          "id": "item_coast_water_zone_deepsea_temple_belt",
+          "targetId": "zone_deepsea_temple_belt",
           "category": "item",
           "name": "深海神殿腰帶",
           "zoneIds": [
             "deepsea_temple"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_deepsea_temple_belt_9",
+          "source": "ITEM_DEFS.zone_deepsea_temple_belt",
           "description": "深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: deepsea_temple. Subject: 深海神殿腰帶 (zone_deepsea_temple_belt_9). Details: 深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: deepsea_temple. Subject: 深海神殿腰帶 (zone_deepsea_temple_belt). Details: 深海神殿腰帶沾染著深海神殿的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_belt.png",
           "row": 2,
           "column": 0
         },
@@ -41923,18 +41923,18 @@
           "column": 1
         },
         {
-          "id": "item_coast_water_zone_reef_of_bones_belt_9",
-          "targetId": "zone_reef_of_bones_belt_9",
+          "id": "item_coast_water_zone_reef_of_bones_belt",
+          "targetId": "zone_reef_of_bones_belt",
           "category": "item",
           "name": "白骨礁腰帶",
           "zoneIds": [
             "reef_of_bones"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_reef_of_bones_belt_9",
+          "source": "ITEM_DEFS.zone_reef_of_bones_belt",
           "description": "白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: reef_of_bones. Subject: 白骨礁腰帶 (zone_reef_of_bones_belt_9). Details: 白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: reef_of_bones. Subject: 白骨礁腰帶 (zone_reef_of_bones_belt). Details: 白骨礁腰帶沾染著白骨礁的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_coast_water_zone_reef_of_bones_belt.png",
           "row": 0,
           "column": 2
         },
@@ -42689,18 +42689,18 @@
           "column": 2
         },
         {
-          "id": "item_demon_abyss_zone_abyss_rift_belt_9",
-          "targetId": "zone_abyss_rift_belt_9",
+          "id": "item_demon_abyss_zone_abyss_rift_belt",
+          "targetId": "zone_abyss_rift_belt",
           "category": "item",
           "name": "深淵裂隙腰帶",
           "zoneIds": [
             "abyss_rift"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_abyss_rift_belt_9",
+          "source": "ITEM_DEFS.zone_abyss_rift_belt",
           "description": "深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: abyss_rift. Subject: 深淵裂隙腰帶 (zone_abyss_rift_belt_9). Details: 深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: abyss_rift. Subject: 深淵裂隙腰帶 (zone_abyss_rift_belt). Details: 深淵裂隙腰帶沾染著深淵裂隙的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_demon_abyss_zone_abyss_rift_belt.png",
           "row": 2,
           "column": 3
         },
@@ -43061,18 +43061,18 @@
           "column": 4
         },
         {
-          "id": "item_demon_abyss_zone_necropolis_gate_belt_9",
-          "targetId": "zone_necropolis_gate_belt_9",
+          "id": "item_demon_abyss_zone_necropolis_gate_belt",
+          "targetId": "zone_necropolis_gate_belt",
           "category": "item",
           "name": "死都外門腰帶",
           "zoneIds": [
             "necropolis_gate"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_necropolis_gate_belt_9",
+          "source": "ITEM_DEFS.zone_necropolis_gate_belt",
           "description": "死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: necropolis_gate. Subject: 死都外門腰帶 (zone_necropolis_gate_belt_9). Details: 死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: necropolis_gate. Subject: 死都外門腰帶 (zone_necropolis_gate_belt). Details: 死都外門腰帶沾染著死都外門的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_belt.png",
           "row": 1,
           "column": 0
         },
@@ -43231,18 +43231,18 @@
       "sourceAtlasPath": "client/public/images/atlas/source/item_demon_abyss_04.png",
       "targets": [
         {
-          "id": "item_demon_abyss_zone_sunken_catacombs_belt_9",
-          "targetId": "zone_sunken_catacombs_belt_9",
+          "id": "item_demon_abyss_zone_sunken_catacombs_belt",
+          "targetId": "zone_sunken_catacombs_belt",
           "category": "item",
           "name": "沉沒墓窟腰帶",
           "zoneIds": [
             "sunken_catacombs"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_sunken_catacombs_belt_9",
+          "source": "ITEM_DEFS.zone_sunken_catacombs_belt",
           "description": "沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt_9). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt.png",
           "row": 0,
           "column": 0
         },
@@ -43941,18 +43941,18 @@
           "column": 2
         },
         {
-          "id": "item_dragon_celestial_zone_celestial_ruins_belt_9",
-          "targetId": "zone_celestial_ruins_belt_9",
+          "id": "item_dragon_celestial_zone_celestial_ruins_belt",
+          "targetId": "zone_celestial_ruins_belt",
           "category": "item",
           "name": "天界遺跡腰帶",
           "zoneIds": [
             "celestial_ruins"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_celestial_ruins_belt_9",
+          "source": "ITEM_DEFS.zone_celestial_ruins_belt",
           "description": "天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: celestial_ruins. Subject: 天界遺跡腰帶 (zone_celestial_ruins_belt_9). Details: 天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: celestial_ruins. Subject: 天界遺跡腰帶 (zone_celestial_ruins_belt). Details: 天界遺跡腰帶沾染著天界遺跡的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_dragon_celestial_zone_celestial_ruins_belt.png",
           "row": 1,
           "column": 3
         },
@@ -44111,18 +44111,18 @@
           "column": 2
         },
         {
-          "id": "item_dragon_celestial_zone_dragon_valley_belt_9",
-          "targetId": "zone_dragon_valley_belt_9",
+          "id": "item_dragon_celestial_zone_dragon_valley_belt",
+          "targetId": "zone_dragon_valley_belt",
           "category": "item",
           "name": "龍谷腰帶",
           "zoneIds": [
             "dragon_valley"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_dragon_valley_belt_9",
+          "source": "ITEM_DEFS.zone_dragon_valley_belt",
           "description": "龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: dragon_valley. Subject: 龍谷腰帶 (zone_dragon_valley_belt_9). Details: 龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: dragon_valley. Subject: 龍谷腰帶 (zone_dragon_valley_belt). Details: 龍谷腰帶沾染著龍谷的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_belt.png",
           "row": 0,
           "column": 3
         },
@@ -44271,18 +44271,18 @@
           "column": 2
         },
         {
-          "id": "item_dragon_celestial_zone_moonshadow_court_belt_9",
-          "targetId": "zone_moonshadow_court_belt_9",
+          "id": "item_dragon_celestial_zone_moonshadow_court_belt",
+          "targetId": "zone_moonshadow_court_belt",
           "category": "item",
           "name": "月影庭腰帶",
           "zoneIds": [
             "moonshadow_court"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_moonshadow_court_belt_9",
+          "source": "ITEM_DEFS.zone_moonshadow_court_belt",
           "description": "月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: moonshadow_court. Subject: 月影庭腰帶 (zone_moonshadow_court_belt_9). Details: 月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: moonshadow_court. Subject: 月影庭腰帶 (zone_moonshadow_court_belt). Details: 月影庭腰帶沾染著月影庭的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_dragon_celestial_zone_moonshadow_court_belt.png",
           "row": 2,
           "column": 3
         },
@@ -44441,18 +44441,18 @@
           "column": 2
         },
         {
-          "id": "item_dragon_celestial_zone_sunspire_belt_9",
-          "targetId": "zone_sunspire_belt_9",
+          "id": "item_dragon_celestial_zone_sunspire_belt",
+          "targetId": "zone_sunspire_belt",
           "category": "item",
           "name": "日耀尖塔腰帶",
           "zoneIds": [
             "sunspire"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_sunspire_belt_9",
+          "source": "ITEM_DEFS.zone_sunspire_belt",
           "description": "日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunspire. Subject: 日耀尖塔腰帶 (zone_sunspire_belt_9). Details: 日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunspire. Subject: 日耀尖塔腰帶 (zone_sunspire_belt). Details: 日耀尖塔腰帶沾染著日耀尖塔的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_belt.png",
           "row": 1,
           "column": 3
         },
@@ -45147,18 +45147,18 @@
           "column": 3
         },
         {
-          "id": "item_final_war_zone_final_battleground_belt_9",
-          "targetId": "zone_final_battleground_belt_9",
+          "id": "item_final_war_zone_final_battleground_belt",
+          "targetId": "zone_final_battleground_belt",
           "category": "item",
           "name": "終焉戰場腰帶",
           "zoneIds": [
             "final_battleground"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_final_battleground_belt_9",
+          "source": "ITEM_DEFS.zone_final_battleground_belt",
           "description": "終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: final_battleground. Subject: 終焉戰場腰帶 (zone_final_battleground_belt_9). Details: 終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: final_battleground. Subject: 終焉戰場腰帶 (zone_final_battleground_belt). Details: 終焉戰場腰帶沾染著終焉戰場的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_final_war_zone_final_battleground_belt.png",
           "row": 2,
           "column": 4
         }
@@ -45939,18 +45939,18 @@
           "column": 1
         },
         {
-          "id": "item_fire_ash_zone_ashfall_monastery_belt_9",
-          "targetId": "zone_ashfall_monastery_belt_9",
+          "id": "item_fire_ash_zone_ashfall_monastery_belt",
+          "targetId": "zone_ashfall_monastery_belt",
           "category": "item",
           "name": "灰落修道院腰帶",
           "zoneIds": [
             "ashfall_monastery"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_ashfall_monastery_belt_9",
+          "source": "ITEM_DEFS.zone_ashfall_monastery_belt",
           "description": "灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ashfall_monastery. Subject: 灰落修道院腰帶 (zone_ashfall_monastery_belt_9). Details: 灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: ashfall_monastery. Subject: 灰落修道院腰帶 (zone_ashfall_monastery_belt). Details: 灰落修道院腰帶沾染著灰落修道院的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_belt.png",
           "row": 1,
           "column": 2
         },
@@ -48270,18 +48270,18 @@
       "sourceAtlasPath": "client/public/images/atlas/source/item_ice_mountain_03.png",
       "targets": [
         {
-          "id": "item_ice_mountain_zone_sky_isles_belt_9",
-          "targetId": "zone_sky_isles_belt_9",
+          "id": "item_ice_mountain_zone_sky_isles_belt",
+          "targetId": "zone_sky_isles_belt",
           "category": "item",
           "name": "浮空群島腰帶",
           "zoneIds": [
             "sky_isles"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_sky_isles_belt_9",
+          "source": "ITEM_DEFS.zone_sky_isles_belt",
           "description": "浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sky_isles. Subject: 浮空群島腰帶 (zone_sky_isles_belt_9). Details: 浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_ice_mountain_zone_sky_isles_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sky_isles. Subject: 浮空群島腰帶 (zone_sky_isles_belt). Details: 浮空群島腰帶沾染著浮空群島的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_ice_mountain_zone_sky_isles_belt.png",
           "row": 0,
           "column": 0
         },
@@ -49404,18 +49404,18 @@
           "column": 1
         },
         {
-          "id": "item_lost_capital_zone_lost_capital_belt_9",
-          "targetId": "zone_lost_capital_belt_9",
+          "id": "item_lost_capital_zone_lost_capital_belt",
+          "targetId": "zone_lost_capital_belt",
           "category": "item",
           "name": "失落王都腰帶",
           "zoneIds": [
             "lost_capital"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_lost_capital_belt_9",
+          "source": "ITEM_DEFS.zone_lost_capital_belt",
           "description": "失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt_9). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt.png",
           "row": 0,
           "column": 2
         },
@@ -49825,8 +49825,8 @@
       "sourceAtlasPath": "client/public/images/atlas/source/item_low_wilds_02.png",
       "targets": [
         {
-          "id": "item_low_wilds_supplemental_belt_01",
-          "targetId": "supplemental_belt_01",
+          "id": "item_low_wilds_grass_rope_buckle_belt",
+          "targetId": "grass_rope_buckle_belt",
           "category": "item",
           "name": "草繩扣帶",
           "zoneIds": [
@@ -49834,16 +49834,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_01",
+          "source": "ITEM_DEFS.grass_rope_buckle_belt",
           "description": "草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 草繩扣帶 (supplemental_belt_01). Details: 草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_01.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 草繩扣帶 (grass_rope_buckle_belt). Details: 草繩與舊皮縫成的扣帶，銅扣磨得發亮，常掛著小刀與乾糧袋。",
+          "outputPath": "client/public/images/items/item_low_wilds_grass_rope_buckle_belt.png",
           "row": 0,
           "column": 0
         },
         {
-          "id": "item_low_wilds_supplemental_belt_02",
-          "targetId": "supplemental_belt_02",
+          "id": "item_low_wilds_creek_stone_belt",
+          "targetId": "creek_stone_belt",
           "category": "item",
           "name": "溪石腰帶",
           "zoneIds": [
@@ -49851,16 +49851,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_02",
+          "source": "ITEM_DEFS.creek_stone_belt",
           "description": "腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 溪石腰帶 (supplemental_belt_02). Details: 腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_02.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 溪石腰帶 (creek_stone_belt). Details: 腰帶前端嵌著扁溪石，皮面有水痕，能壓穩藥瓶與短刃。",
+          "outputPath": "client/public/images/items/item_low_wilds_creek_stone_belt.png",
           "row": 0,
           "column": 1
         },
         {
-          "id": "item_low_wilds_supplemental_belt_03",
-          "targetId": "supplemental_belt_03",
+          "id": "item_low_wilds_willow_woven_sash",
+          "targetId": "willow_woven_sash",
           "category": "item",
           "name": "柳編束帶",
           "zoneIds": [
@@ -49868,16 +49868,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_03",
+          "source": "ITEM_DEFS.willow_woven_sash",
           "description": "柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 柳編束帶 (supplemental_belt_03). Details: 柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_03.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 柳編束帶 (willow_woven_sash). Details: 柳枝細條編入束帶兩側，柔韌不易斷，扣環散著淡淡樹皮味。",
+          "outputPath": "client/public/images/items/item_low_wilds_willow_woven_sash.png",
           "row": 0,
           "column": 2
         },
         {
-          "id": "item_low_wilds_supplemental_belt_04",
-          "targetId": "supplemental_belt_04",
+          "id": "item_low_wilds_granary_studded_belt",
+          "targetId": "granary_studded_belt",
           "category": "item",
           "name": "穀倉釘帶",
           "zoneIds": [
@@ -49885,16 +49885,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_04",
+          "source": "ITEM_DEFS.granary_studded_belt",
           "description": "舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 穀倉釘帶 (supplemental_belt_04). Details: 舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_04.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 穀倉釘帶 (granary_studded_belt). Details: 舊穀倉釘排在皮帶外側，釘頭磨平，像一串暗褐小盾。",
+          "outputPath": "client/public/images/items/item_low_wilds_granary_studded_belt.png",
           "row": 0,
           "column": 3
         },
         {
-          "id": "item_low_wilds_supplemental_belt_05",
-          "targetId": "supplemental_belt_05",
+          "id": "item_low_wilds_blackmoss_hidden_belt",
+          "targetId": "blackmoss_hidden_belt",
           "category": "item",
           "name": "黑苔隱帶",
           "zoneIds": [
@@ -49902,16 +49902,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_05",
+          "source": "ITEM_DEFS.blackmoss_hidden_belt",
           "description": "暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 黑苔隱帶 (supplemental_belt_05). Details: 暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_05.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 黑苔隱帶 (blackmoss_hidden_belt). Details: 暗綠隱帶表面覆著乾苔粉，扣環不反光，適合在林地收束披風。",
+          "outputPath": "client/public/images/items/item_low_wilds_blackmoss_hidden_belt.png",
           "row": 0,
           "column": 4
         },
         {
-          "id": "item_low_wilds_supplemental_belt_06",
-          "targetId": "supplemental_belt_06",
+          "id": "item_low_wilds_tide_sail_waist_rope",
+          "targetId": "tide_sail_waist_rope",
           "category": "item",
           "name": "潮帆腰索",
           "zoneIds": [
@@ -49919,16 +49919,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_06",
+          "source": "ITEM_DEFS.tide_sail_waist_rope",
           "description": "潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 潮帆腰索 (supplemental_belt_06). Details: 潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_06.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 潮帆腰索 (tide_sail_waist_rope). Details: 潮帆布與船索縫成腰索，末端掛著小貝扣，濕透後仍很結實。",
+          "outputPath": "client/public/images/items/item_low_wilds_tide_sail_waist_rope.png",
           "row": 1,
           "column": 0
         },
         {
-          "id": "item_low_wilds_supplemental_belt_07",
-          "targetId": "supplemental_belt_07",
+          "id": "item_low_wilds_minelamp_tool_belt",
+          "targetId": "minelamp_tool_belt",
           "category": "item",
           "name": "礦燈工具帶",
           "zoneIds": [
@@ -49936,16 +49936,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_07",
+          "source": "ITEM_DEFS.minelamp_tool_belt",
           "description": "工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 礦燈工具帶 (supplemental_belt_07). Details: 工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_07.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 礦燈工具帶 (minelamp_tool_belt). Details: 工具帶上有礦燈鉤、鐵環與裂晶袋，皮面被礦粉染成深灰。",
+          "outputPath": "client/public/images/items/item_low_wilds_minelamp_tool_belt.png",
           "row": 1,
           "column": 1
         },
         {
-          "id": "item_low_wilds_supplemental_belt_08",
-          "targetId": "supplemental_belt_08",
+          "id": "item_low_wilds_frosthide_waistguard",
+          "targetId": "frosthide_waistguard",
           "category": "item",
           "name": "霜皮束腰",
           "zoneIds": [
@@ -49953,16 +49953,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_08",
+          "source": "ITEM_DEFS.frosthide_waistguard",
           "description": "束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霜皮束腰 (supplemental_belt_08). Details: 束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_08.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霜皮束腰 (frosthide_waistguard). Details: 束腰內襯霜兔皮，外側綁著骨扣，能把寒風擋在厚衣之外。",
+          "outputPath": "client/public/images/items/item_low_wilds_frosthide_waistguard.png",
           "row": 1,
           "column": 2
         },
         {
-          "id": "item_low_wilds_supplemental_belt_09",
-          "targetId": "supplemental_belt_09",
+          "id": "item_low_wilds_redrock_copper_belt",
+          "targetId": "redrock_copper_belt",
           "category": "item",
           "name": "赤岩銅帶",
           "zoneIds": [
@@ -49970,16 +49970,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_09",
+          "source": "ITEM_DEFS.redrock_copper_belt",
           "description": "赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 赤岩銅帶 (supplemental_belt_09). Details: 赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_09.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 赤岩銅帶 (redrock_copper_belt). Details: 赤岩銅扣帶著紅砂刮痕，皮帶邊緣經火烤硬化，觸感粗糙。",
+          "outputPath": "client/public/images/items/item_low_wilds_redrock_copper_belt.png",
           "row": 1,
           "column": 3
         },
         {
-          "id": "item_low_wilds_supplemental_belt_10",
-          "targetId": "supplemental_belt_10",
+          "id": "item_low_wilds_silverpine_wide_belt",
+          "targetId": "silverpine_wide_belt",
           "category": "item",
           "name": "銀松寬帶",
           "zoneIds": [
@@ -49987,16 +49987,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_10",
+          "source": "ITEM_DEFS.silverpine_wide_belt",
           "description": "寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 銀松寬帶 (supplemental_belt_10). Details: 寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_10.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 銀松寬帶 (silverpine_wide_belt). Details: 寬帶嵌著銀松木片，木片細長，能分散腰間裝備的重量。",
+          "outputPath": "client/public/images/items/item_low_wilds_silverpine_wide_belt.png",
           "row": 1,
           "column": 4
         },
         {
-          "id": "item_low_wilds_supplemental_belt_11",
-          "targetId": "supplemental_belt_11",
+          "id": "item_low_wilds_thundergrass_knot_belt",
+          "targetId": "thundergrass_knot_belt",
           "category": "item",
           "name": "雷草結帶",
           "zoneIds": [
@@ -50004,16 +50004,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_11",
+          "source": "ITEM_DEFS.thundergrass_knot_belt",
           "description": "雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷草結帶 (supplemental_belt_11). Details: 雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_11.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷草結帶 (thundergrass_knot_belt). Details: 雷草纖維打成三重結，銅扣有電焦痕，拉緊時會發出細微震動。",
+          "outputPath": "client/public/images/items/item_low_wilds_thundergrass_knot_belt.png",
           "row": 2,
           "column": 0
         },
         {
-          "id": "item_low_wilds_supplemental_belt_12",
-          "targetId": "supplemental_belt_12",
+          "id": "item_low_wilds_amber_bee_belt",
+          "targetId": "amber_bee_belt",
           "category": "item",
           "name": "琥珀蜂帶",
           "zoneIds": [
@@ -50021,16 +50021,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_12",
+          "source": "ITEM_DEFS.amber_bee_belt",
           "description": "蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 琥珀蜂帶 (supplemental_belt_12). Details: 蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_12.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 琥珀蜂帶 (amber_bee_belt). Details: 蜂蠟封邊的腰帶嵌著小琥珀，扣眼周圍有金色粉末殘痕。",
+          "outputPath": "client/public/images/items/item_low_wilds_amber_bee_belt.png",
           "row": 2,
           "column": 1
         },
         {
-          "id": "item_low_wilds_supplemental_belt_13",
-          "targetId": "supplemental_belt_13",
+          "id": "item_low_wilds_bloodsalt_ship_belt",
+          "targetId": "bloodsalt_ship_belt",
           "category": "item",
           "name": "血鹽船帶",
           "zoneIds": [
@@ -50038,16 +50038,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_13",
+          "source": "ITEM_DEFS.bloodsalt_ship_belt",
           "description": "暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 血鹽船帶 (supplemental_belt_13). Details: 暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_13.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 血鹽船帶 (bloodsalt_ship_belt). Details: 暗紅船帶以血鹽硬化，銅環上掛著短繩，常用來固定登船鉤。",
+          "outputPath": "client/public/images/items/item_low_wilds_bloodsalt_ship_belt.png",
           "row": 2,
           "column": 2
         },
         {
-          "id": "item_low_wilds_supplemental_belt_14",
-          "targetId": "supplemental_belt_14",
+          "id": "item_low_wilds_starsand_sash",
+          "targetId": "starsand_sash",
           "category": "item",
           "name": "星砂束帶",
           "zoneIds": [
@@ -50055,16 +50055,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_14",
+          "source": "ITEM_DEFS.starsand_sash",
           "description": "束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 星砂束帶 (supplemental_belt_14). Details: 束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_14.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 星砂束帶 (starsand_sash). Details: 束帶邊緣縫有星砂線，夜裡像一條細銀河繞在腰間。",
+          "outputPath": "client/public/images/items/item_low_wilds_starsand_sash.png",
           "row": 2,
           "column": 3
         },
         {
-          "id": "item_low_wilds_supplemental_belt_15",
-          "targetId": "supplemental_belt_15",
+          "id": "item_low_wilds_moonwell_white_belt",
+          "targetId": "moonwell_white_belt",
           "category": "item",
           "name": "月井白帶",
           "zoneIds": [
@@ -50072,10 +50072,10 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_15",
+          "source": "ITEM_DEFS.moonwell_white_belt",
           "description": "白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 月井白帶 (supplemental_belt_15). Details: 白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_15.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 月井白帶 (moonwell_white_belt). Details: 白革腰帶以月井水擦洗，扣面刻著圓形水紋，表面潔淨得不沾塵。",
+          "outputPath": "client/public/images/items/item_low_wilds_moonwell_white_belt.png",
           "row": 2,
           "column": 4
         }
@@ -50090,8 +50090,8 @@
       "sourceAtlasPath": "client/public/images/atlas/source/item_low_wilds_03.png",
       "targets": [
         {
-          "id": "item_low_wilds_supplemental_belt_16",
-          "targetId": "supplemental_belt_16",
+          "id": "item_low_wilds_charwood_buckle_belt",
+          "targetId": "charwood_buckle_belt",
           "category": "item",
           "name": "焦木扣帶",
           "zoneIds": [
@@ -50099,16 +50099,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_16",
+          "source": "ITEM_DEFS.charwood_buckle_belt",
           "description": "焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 焦木扣帶 (supplemental_belt_16). Details: 焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_16.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 焦木扣帶 (charwood_buckle_belt). Details: 焦木片壓在黑皮帶外，扣環厚重，邊緣會落下極細炭粉。",
+          "outputPath": "client/public/images/items/item_low_wilds_charwood_buckle_belt.png",
           "row": 0,
           "column": 0
         },
         {
-          "id": "item_low_wilds_supplemental_belt_17",
-          "targetId": "supplemental_belt_17",
+          "id": "item_low_wilds_mistharbor_lead_belt",
+          "targetId": "mistharbor_lead_belt",
           "category": "item",
           "name": "霧港鉛帶",
           "zoneIds": [
@@ -50116,16 +50116,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_17",
+          "source": "ITEM_DEFS.mistharbor_lead_belt",
           "description": "鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霧港鉛帶 (supplemental_belt_17). Details: 鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_17.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 霧港鉛帶 (mistharbor_lead_belt). Details: 鉛灰腰帶帶著油布味，暗銅扣沉重，能在濕風裡壓住長衣下襬。",
+          "outputPath": "client/public/images/items/item_low_wilds_mistharbor_lead_belt.png",
           "row": 0,
           "column": 1
         },
         {
-          "id": "item_low_wilds_supplemental_belt_18",
-          "targetId": "supplemental_belt_18",
+          "id": "item_low_wilds_ancient_tablet_stone_belt",
+          "targetId": "ancient_tablet_stone_belt",
           "category": "item",
           "name": "古碑石帶",
           "zoneIds": [
@@ -50133,16 +50133,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_18",
+          "source": "ITEM_DEFS.ancient_tablet_stone_belt",
           "description": "石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 古碑石帶 (supplemental_belt_18). Details: 石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_18.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 古碑石帶 (ancient_tablet_stone_belt). Details: 石帶鑲著幾片古碑碎屑，符痕斷續，走動時會互相碰出鈍響。",
+          "outputPath": "client/public/images/items/item_low_wilds_ancient_tablet_stone_belt.png",
           "row": 0,
           "column": 2
         },
         {
-          "id": "item_low_wilds_supplemental_belt_19",
-          "targetId": "supplemental_belt_19",
+          "id": "item_low_wilds_mirrormarsh_silver_belt",
+          "targetId": "mirrormarsh_silver_belt",
           "category": "item",
           "name": "鏡沼銀帶",
           "zoneIds": [
@@ -50150,16 +50150,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_19",
+          "source": "ITEM_DEFS.mirrormarsh_silver_belt",
           "description": "銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 鏡沼銀帶 (supplemental_belt_19). Details: 銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_19.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 鏡沼銀帶 (mirrormarsh_silver_belt). Details: 銀泥塗在腰帶表面，光線下像水膜晃動，扣環映不出清楚影像。",
+          "outputPath": "client/public/images/items/item_low_wilds_mirrormarsh_silver_belt.png",
           "row": 0,
           "column": 3
         },
         {
-          "id": "item_low_wilds_supplemental_belt_20",
-          "targetId": "supplemental_belt_20",
+          "id": "item_low_wilds_redforge_rivet_belt",
+          "targetId": "redforge_rivet_belt",
           "category": "item",
           "name": "紅爐鉚帶",
           "zoneIds": [
@@ -50167,16 +50167,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_20",
+          "source": "ITEM_DEFS.redforge_rivet_belt",
           "description": "紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 紅爐鉚帶 (supplemental_belt_20). Details: 紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_20.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 紅爐鉚帶 (redforge_rivet_belt). Details: 紅爐鉚釘一排排固定在厚皮上，鉚頭有錘痕，靠近火源時微熱。",
+          "outputPath": "client/public/images/items/item_low_wilds_redforge_rivet_belt.png",
           "row": 0,
           "column": 4
         },
         {
-          "id": "item_low_wilds_supplemental_belt_21",
-          "targetId": "supplemental_belt_21",
+          "id": "item_low_wilds_thundersteppe_bone_belt",
+          "targetId": "thundersteppe_bone_belt",
           "category": "item",
           "name": "雷原骨帶",
           "zoneIds": [
@@ -50184,16 +50184,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_21",
+          "source": "ITEM_DEFS.thundersteppe_bone_belt",
           "description": "雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷原骨帶 (supplemental_belt_21). Details: 雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_21.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 雷原骨帶 (thundersteppe_bone_belt). Details: 雷原獸骨片串成腰帶外沿，骨片刻著短閃電紋，奔跑時敲擊作響。",
+          "outputPath": "client/public/images/items/item_low_wilds_thundersteppe_bone_belt.png",
           "row": 1,
           "column": 0
         },
         {
-          "id": "item_low_wilds_supplemental_belt_22",
-          "targetId": "supplemental_belt_22",
+          "id": "item_low_wilds_glasssand_tie_belt",
+          "targetId": "glasssand_tie_belt",
           "category": "item",
           "name": "玻砂繫帶",
           "zoneIds": [
@@ -50201,16 +50201,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_22",
+          "source": "ITEM_DEFS.glasssand_tie_belt",
           "description": "玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 玻砂繫帶 (supplemental_belt_22). Details: 玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_22.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 玻砂繫帶 (glasssand_tie_belt). Details: 玻砂細片縫在繫帶末端，行走時反光細碎，像熱風中的沙線。",
+          "outputPath": "client/public/images/items/item_low_wilds_glasssand_tie_belt.png",
           "row": 1,
           "column": 1
         },
         {
-          "id": "item_low_wilds_supplemental_belt_23",
-          "targetId": "supplemental_belt_23",
+          "id": "item_low_wilds_undercity_copper_belt",
+          "targetId": "undercity_copper_belt",
           "category": "item",
           "name": "地城銅帶",
           "zoneIds": [
@@ -50218,16 +50218,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_23",
+          "source": "ITEM_DEFS.undercity_copper_belt",
           "description": "地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 地城銅帶 (supplemental_belt_23). Details: 地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_23.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 地城銅帶 (undercity_copper_belt). Details: 地下城邦銅帶刻著秤記與齒輪邊，內襯黑絨，不會磨傷腰側。",
+          "outputPath": "client/public/images/items/item_low_wilds_undercity_copper_belt.png",
           "row": 1,
           "column": 2
         },
         {
-          "id": "item_low_wilds_supplemental_belt_24",
-          "targetId": "supplemental_belt_24",
+          "id": "item_low_wilds_gravefrost_gray_belt",
+          "targetId": "gravefrost_gray_belt",
           "category": "item",
           "name": "墓霜灰帶",
           "zoneIds": [
@@ -50235,16 +50235,16 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_24",
+          "source": "ITEM_DEFS.gravefrost_gray_belt",
           "description": "灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 墓霜灰帶 (supplemental_belt_24). Details: 灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_24.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 墓霜灰帶 (gravefrost_gray_belt). Details: 灰帶上覆著冷霜般的白粉，骨扣像小墓碑，扣緊時發出短促脆聲。",
+          "outputPath": "client/public/images/items/item_low_wilds_gravefrost_gray_belt.png",
           "row": 1,
           "column": 3
         },
         {
-          "id": "item_low_wilds_supplemental_belt_25",
-          "targetId": "supplemental_belt_25",
+          "id": "item_low_wilds_storm_spike_belt",
+          "targetId": "storm_spike_belt",
           "category": "item",
           "name": "風暴釘帶",
           "zoneIds": [
@@ -50252,10 +50252,10 @@
             "starter_village"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.supplemental_belt_25",
+          "source": "ITEM_DEFS.storm_spike_belt",
           "description": "釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 風暴釘帶 (supplemental_belt_25). Details: 釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
-          "outputPath": "client/public/images/items/item_low_wilds_supplemental_belt_25.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: plains, starter_village. Subject: 風暴釘帶 (storm_spike_belt). Details: 釘帶嵌著避雷銅釘，皮面有雨水沖出的深色紋路，適合攀行高地。",
+          "outputPath": "client/public/images/items/item_low_wilds_storm_spike_belt.png",
           "row": 1,
           "column": 4
         },
@@ -62052,18 +62052,18 @@
           "column": 3
         },
         {
-          "id": "item_astral_time_zone_time_ruins_belt_9",
-          "targetId": "zone_time_ruins_belt_9",
+          "id": "item_astral_time_zone_time_ruins_belt",
+          "targetId": "zone_time_ruins_belt",
           "category": "item",
           "name": "時間廢墟腰帶",
           "zoneIds": [
             "time_ruins"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_time_ruins_belt_9",
+          "source": "ITEM_DEFS.zone_time_ruins_belt",
           "description": "時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt_9). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: time_ruins. Subject: 時間廢墟腰帶 (zone_time_ruins_belt). Details: 時間廢墟腰帶沾染著時間廢墟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_belt.png",
           "row": 0,
           "column": 4
         },
@@ -62774,18 +62774,18 @@
       "sourceAtlasPath": "client/public/images/atlas/source/item_demon_abyss_04.png",
       "targets": [
         {
-          "id": "item_demon_abyss_zone_sunken_catacombs_belt_9",
-          "targetId": "zone_sunken_catacombs_belt_9",
+          "id": "item_demon_abyss_zone_sunken_catacombs_belt",
+          "targetId": "zone_sunken_catacombs_belt",
           "category": "item",
           "name": "沉沒墓窟腰帶",
           "zoneIds": [
             "sunken_catacombs"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_sunken_catacombs_belt_9",
+          "source": "ITEM_DEFS.zone_sunken_catacombs_belt",
           "description": "沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt_9). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: sunken_catacombs. Subject: 沉沒墓窟腰帶 (zone_sunken_catacombs_belt). Details: 沉沒墓窟腰帶沾染著沉沒墓窟的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_belt.png",
           "row": 0,
           "column": 0
         },
@@ -64447,18 +64447,18 @@
           "column": 1
         },
         {
-          "id": "item_lost_capital_zone_lost_capital_belt_9",
-          "targetId": "zone_lost_capital_belt_9",
+          "id": "item_lost_capital_zone_lost_capital_belt",
+          "targetId": "zone_lost_capital_belt",
           "category": "item",
           "name": "失落王都腰帶",
           "zoneIds": [
             "lost_capital"
           ],
           "type": "accessory",
-          "source": "ITEM_DEFS.zone_lost_capital_belt_9",
+          "source": "ITEM_DEFS.zone_lost_capital_belt",
           "description": "失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt_9). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
-          "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt_9.png",
+          "prompt": "Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI. Zones: lost_capital. Subject: 失落王都腰帶 (zone_lost_capital_belt). Details: 失落王都腰帶沾染著失落王都的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。",
+          "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_belt.png",
           "row": 0,
           "column": 2
         },
