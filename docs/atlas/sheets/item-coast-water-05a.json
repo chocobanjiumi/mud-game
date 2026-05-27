@@ -6,13 +6,13 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_coast_water_05a.sheet.png",
   "targets": [
     { "assetId": "item_coast_water_zone_saltwind_flats_head_1", "category": "item", "targetId": "zone_saltwind_flats_head_1", "name": "鹽風灘兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_saltwind_flats_head_1.png", "row": 0, "column": 0 },
-    { "assetId": "item_coast_water_zone_saltwind_flats_necklace_6", "category": "item", "targetId": "zone_saltwind_flats_necklace_6", "name": "鹽風灘墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_saltwind_flats_necklace_6.png", "row": 0, "column": 1 },
+    { "assetId": "item_coast_water_zone_saltwind_flats_necklace", "category": "item", "targetId": "zone_saltwind_flats_necklace", "name": "鹽風灘墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_saltwind_flats_necklace.png", "row": 0, "column": 1 },
     { "assetId": "item_coast_water_zone_saltwind_flats_ring_5", "category": "item", "targetId": "zone_saltwind_flats_ring_5", "name": "鹽風灘指環", "outputPath": "client/public/images/items/item_coast_water_zone_saltwind_flats_ring_5.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_zone_sapphire_lake_body_2", "category": "item", "targetId": "zone_sapphire_lake_body_2", "name": "藍玉湖護甲", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_body_2.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_zone_sapphire_lake_feet_4", "category": "item", "targetId": "zone_sapphire_lake_feet_4", "name": "藍玉湖長靴", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_feet_4.png", "row": 1, "column": 1 },
     { "assetId": "item_coast_water_zone_sapphire_lake_hands_3", "category": "item", "targetId": "zone_sapphire_lake_hands_3", "name": "藍玉湖護手", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_hands_3.png", "row": 1, "column": 2 },
     { "assetId": "item_coast_water_zone_sapphire_lake_head_1", "category": "item", "targetId": "zone_sapphire_lake_head_1", "name": "藍玉湖兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_head_1.png", "row": 2, "column": 0 },
-    { "assetId": "item_coast_water_zone_sapphire_lake_necklace_6", "category": "item", "targetId": "zone_sapphire_lake_necklace_6", "name": "藍玉湖墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_necklace_6.png", "row": 2, "column": 1 },
+    { "assetId": "item_coast_water_zone_sapphire_lake_necklace", "category": "item", "targetId": "zone_sapphire_lake_necklace", "name": "藍玉湖墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_necklace.png", "row": 2, "column": 1 },
     { "assetId": "item_coast_water_zone_sapphire_lake_ring_5", "category": "item", "targetId": "zone_sapphire_lake_ring_5", "name": "藍玉湖指環", "outputPath": "client/public/images/items/item_coast_water_zone_sapphire_lake_ring_5.png", "row": 2, "column": 2 }
   ]
 }

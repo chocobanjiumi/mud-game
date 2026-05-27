@@ -168,6 +168,28 @@ const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'access
     'gravefrost_ear_pearl',
     'stormfeather_ear_drop',
   ],
+  necklace: [
+    'creek_stone_amulet',
+    'willow_leaf_pendant',
+    'grain_gold_pendant',
+    'blackmoss_amulet',
+    'tide_pearl_necklace',
+    'mineral_crystal_pendant_chain',
+    'frostfeather_amulet',
+    'redrock_fire_pendant',
+    'silverpine_wood_amulet',
+    'thundergrass_choker',
+    'amber_bee_pendant',
+    'bloodsalt_bone_chain',
+    'starsand_night_pendant',
+    'moonwell_white_pendant',
+    'charwood_ash_amulet',
+    'mistharbor_compass_pendant',
+    'ancient_tablet_fragment_amulet',
+    'mirrormarsh_water_pendant',
+    'redforge_iron_amulet',
+    'thundersteppe_bone_amulet',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -889,6 +911,7 @@ function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'acce
   if (slot === 'weapon') return `${themeId}_giant_sword`;
   if (slot === 'belt') return `zone_${themeId}_belt`;
   if (slot === 'earring') return `zone_${themeId}_earring`;
+  if (slot === 'necklace') return `zone_${themeId}_necklace`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 

@@ -6,13 +6,13 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_forest_fen_05a.sheet.png",
   "targets": [
     { "assetId": "item_forest_fen_zone_moonlit_fen_head_1", "category": "item", "targetId": "zone_moonlit_fen_head_1", "name": "月光濕地兜帽", "outputPath": "client/public/images/items/item_forest_fen_zone_moonlit_fen_head_1.png", "row": 0, "column": 0 },
-    { "assetId": "item_forest_fen_zone_moonlit_fen_necklace_6", "category": "item", "targetId": "zone_moonlit_fen_necklace_6", "name": "月光濕地墜飾", "outputPath": "client/public/images/items/item_forest_fen_zone_moonlit_fen_necklace_6.png", "row": 0, "column": 1 },
+    { "assetId": "item_forest_fen_zone_moonlit_fen_necklace", "category": "item", "targetId": "zone_moonlit_fen_necklace", "name": "月光濕地墜飾", "outputPath": "client/public/images/items/item_forest_fen_zone_moonlit_fen_necklace.png", "row": 0, "column": 1 },
     { "assetId": "item_forest_fen_zone_moonlit_fen_ring_5", "category": "item", "targetId": "zone_moonlit_fen_ring_5", "name": "月光濕地指環", "outputPath": "client/public/images/items/item_forest_fen_zone_moonlit_fen_ring_5.png", "row": 0, "column": 2 },
     { "assetId": "item_forest_fen_zone_whispering_valley_body_2", "category": "item", "targetId": "zone_whispering_valley_body_2", "name": "低語溪谷護甲", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_body_2.png", "row": 1, "column": 0 },
     { "assetId": "item_forest_fen_zone_whispering_valley_feet_4", "category": "item", "targetId": "zone_whispering_valley_feet_4", "name": "低語溪谷長靴", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_feet_4.png", "row": 1, "column": 1 },
     { "assetId": "item_forest_fen_zone_whispering_valley_hands_3", "category": "item", "targetId": "zone_whispering_valley_hands_3", "name": "低語溪谷護手", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_hands_3.png", "row": 1, "column": 2 },
     { "assetId": "item_forest_fen_zone_whispering_valley_head_1", "category": "item", "targetId": "zone_whispering_valley_head_1", "name": "低語溪谷兜帽", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_head_1.png", "row": 2, "column": 0 },
-    { "assetId": "item_forest_fen_zone_whispering_valley_necklace_6", "category": "item", "targetId": "zone_whispering_valley_necklace_6", "name": "低語溪谷墜飾", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_necklace_6.png", "row": 2, "column": 1 },
+    { "assetId": "item_forest_fen_zone_whispering_valley_necklace", "category": "item", "targetId": "zone_whispering_valley_necklace", "name": "低語溪谷墜飾", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_necklace.png", "row": 2, "column": 1 },
     { "assetId": "item_forest_fen_zone_whispering_valley_ring_5", "category": "item", "targetId": "zone_whispering_valley_ring_5", "name": "低語溪谷指環", "outputPath": "client/public/images/items/item_forest_fen_zone_whispering_valley_ring_5.png", "row": 2, "column": 2 }
   ]
 }

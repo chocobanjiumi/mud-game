@@ -19,6 +19,6 @@
     { "assetId": "item_low_wilds_supplemental_head_24", "category": "item", "targetId": "supplemental_head_24", "name": "墓霜兜盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_24.png", "row": 2, "column": 3 },
     { "assetId": "item_low_wilds_supplemental_head_25", "category": "item", "targetId": "supplemental_head_25", "name": "風暴尖盔", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_25.png", "row": 3, "column": 0 },
     { "assetId": "item_low_wilds_supplemental_head_26", "category": "item", "targetId": "supplemental_head_26", "name": "黑木獵帽", "outputPath": "client/public/images/items/item_low_wilds_supplemental_head_26.png", "row": 3, "column": 1 },
-    { "assetId": "item_low_wilds_supplemental_necklace_01", "category": "item", "targetId": "supplemental_necklace_01", "name": "溪石護符", "outputPath": "client/public/images/items/item_low_wilds_supplemental_necklace_01.png", "row": 3, "column": 2 }
+    { "assetId": "item_low_wilds_creek_stone_amulet", "category": "item", "targetId": "creek_stone_amulet", "name": "溪石護符", "outputPath": "client/public/images/items/item_low_wilds_creek_stone_amulet.png", "row": 3, "column": 2 }
   ]
 }

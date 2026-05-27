@@ -10,6 +10,6 @@
     { "assetId": "item_astral_time_zone_ancient_ruins_feet_4", "category": "item", "targetId": "zone_ancient_ruins_feet_4", "name": "古代遺跡長靴", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_feet_4.png", "row": 0, "column": 2 },
     { "assetId": "item_astral_time_zone_ancient_ruins_hands_3", "category": "item", "targetId": "zone_ancient_ruins_hands_3", "name": "古代遺跡護手", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_hands_3.png", "row": 1, "column": 0 },
     { "assetId": "item_astral_time_zone_ancient_ruins_head_1", "category": "item", "targetId": "zone_ancient_ruins_head_1", "name": "古代遺跡兜帽", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_head_1.png", "row": 1, "column": 1 },
-    { "assetId": "item_astral_time_zone_ancient_ruins_necklace_6", "category": "item", "targetId": "zone_ancient_ruins_necklace_6", "name": "古代遺跡墜飾", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_necklace_6.png", "row": 1, "column": 2 }
+    { "assetId": "item_astral_time_zone_ancient_ruins_necklace", "category": "item", "targetId": "zone_ancient_ruins_necklace", "name": "古代遺跡墜飾", "outputPath": "client/public/images/items/item_astral_time_zone_ancient_ruins_necklace.png", "row": 1, "column": 2 }
   ]
 }

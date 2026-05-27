@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_astral_time_02b.sheet.png",
   "targets": [
-    { "assetId": "item_astral_time_zone_astral_wastes_necklace_6", "category": "item", "targetId": "zone_astral_wastes_necklace_6", "name": "星界荒原墜飾", "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_necklace_6.png", "row": 0, "column": 0 },
+    { "assetId": "item_astral_time_zone_astral_wastes_necklace", "category": "item", "targetId": "zone_astral_wastes_necklace", "name": "星界荒原墜飾", "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_necklace.png", "row": 0, "column": 0 },
     { "assetId": "item_astral_time_zone_astral_wastes_ring_10", "category": "item", "targetId": "zone_astral_wastes_ring_10", "name": "星界荒原戒璽", "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_ring_10.png", "row": 0, "column": 1 },
     { "assetId": "item_astral_time_zone_astral_wastes_ring_5", "category": "item", "targetId": "zone_astral_wastes_ring_5", "name": "星界荒原指環", "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_ring_5.png", "row": 0, "column": 2 },
     { "assetId": "item_astral_time_zone_astral_wastes_weapon_7", "category": "item", "targetId": "astral_wastes_giant_sword", "name": "星界荒原戰刃", "outputPath": "client/public/images/items/item_astral_time_zone_astral_wastes_weapon_7.png", "row": 1, "column": 0 },

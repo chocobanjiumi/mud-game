@@ -6,7 +6,7 @@
   "sheetPath": "client/public/images/atlas/source-ai/item_coast_water_03a.sheet.png",
   "targets": [
     { "assetId": "item_coast_water_zone_deepsea_temple_head_1", "category": "item", "targetId": "zone_deepsea_temple_head_1", "name": "深海神殿兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_head_1.png", "row": 0, "column": 0 },
-    { "assetId": "item_coast_water_zone_deepsea_temple_necklace_6", "category": "item", "targetId": "zone_deepsea_temple_necklace_6", "name": "深海神殿墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_necklace_6.png", "row": 0, "column": 1 },
+    { "assetId": "item_coast_water_zone_deepsea_temple_necklace", "category": "item", "targetId": "zone_deepsea_temple_necklace", "name": "深海神殿墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_necklace.png", "row": 0, "column": 1 },
     { "assetId": "item_coast_water_zone_deepsea_temple_ring_10", "category": "item", "targetId": "zone_deepsea_temple_ring_10", "name": "深海神殿戒璽", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_ring_10.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_zone_deepsea_temple_ring_5", "category": "item", "targetId": "zone_deepsea_temple_ring_5", "name": "深海神殿指環", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_ring_5.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_zone_deepsea_temple_weapon_7", "category": "item", "targetId": "deepsea_temple_giant_sword", "name": "深海神殿戰刃", "outputPath": "client/public/images/items/item_coast_water_zone_deepsea_temple_weapon_7.png", "row": 1, "column": 1 },

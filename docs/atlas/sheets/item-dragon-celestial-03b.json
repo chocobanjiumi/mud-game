@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_03b.sheet.png",
   "targets": [
-    { "assetId": "item_dragon_celestial_zone_dragon_valley_necklace_6", "category": "item", "targetId": "zone_dragon_valley_necklace_6", "name": "龍谷墜飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_necklace_6.png", "row": 0, "column": 0 },
+    { "assetId": "item_dragon_celestial_zone_dragon_valley_necklace", "category": "item", "targetId": "zone_dragon_valley_necklace", "name": "龍谷墜飾", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_necklace.png", "row": 0, "column": 0 },
     { "assetId": "item_dragon_celestial_zone_dragon_valley_ring_10", "category": "item", "targetId": "zone_dragon_valley_ring_10", "name": "龍谷戒璽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_ring_10.png", "row": 0, "column": 1 },
     { "assetId": "item_dragon_celestial_zone_dragon_valley_ring_5", "category": "item", "targetId": "zone_dragon_valley_ring_5", "name": "龍谷指環", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_ring_5.png", "row": 0, "column": 2 },
     { "assetId": "item_dragon_celestial_zone_dragon_valley_weapon_7", "category": "item", "targetId": "dragon_valley_giant_sword", "name": "龍谷戰刃", "outputPath": "client/public/images/items/item_dragon_celestial_zone_dragon_valley_weapon_7.png", "row": 1, "column": 0 },

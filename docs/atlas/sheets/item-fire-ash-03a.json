@@ -18,7 +18,7 @@
     { "assetId": "item_fire_ash_zone_ashfall_monastery_feet_4", "category": "item", "targetId": "zone_ashfall_monastery_feet_4", "name": "灰落修道院長靴", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_feet_4.png", "row": 2, "column": 0 },
     { "assetId": "item_fire_ash_zone_ashfall_monastery_hands_3", "category": "item", "targetId": "zone_ashfall_monastery_hands_3", "name": "灰落修道院護手", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_hands_3.png", "row": 2, "column": 1 },
     { "assetId": "item_fire_ash_zone_ashfall_monastery_head_1", "category": "item", "targetId": "zone_ashfall_monastery_head_1", "name": "灰落修道院兜帽", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_head_1.png", "row": 2, "column": 2 },
-    { "assetId": "item_fire_ash_zone_ashfall_monastery_necklace_6", "category": "item", "targetId": "zone_ashfall_monastery_necklace_6", "name": "灰落修道院墜飾", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_necklace_6.png", "row": 2, "column": 3 },
+    { "assetId": "item_fire_ash_zone_ashfall_monastery_necklace", "category": "item", "targetId": "zone_ashfall_monastery_necklace", "name": "灰落修道院墜飾", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_necklace.png", "row": 2, "column": 3 },
     { "assetId": "item_fire_ash_zone_ashfall_monastery_ring_10", "category": "item", "targetId": "zone_ashfall_monastery_ring_10", "name": "灰落修道院戒璽", "outputPath": "client/public/images/items/item_fire_ash_zone_ashfall_monastery_ring_10.png", "row": 2, "column": 4 }
   ]
 }

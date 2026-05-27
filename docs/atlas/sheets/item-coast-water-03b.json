@@ -5,7 +5,7 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_coast_water_03b.sheet.png",
   "targets": [
-    { "assetId": "item_coast_water_zone_eastern_coast_necklace_6", "category": "item", "targetId": "zone_eastern_coast_necklace_6", "name": "東方海岸墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_necklace_6.png", "row": 0, "column": 0 },
+    { "assetId": "item_coast_water_zone_eastern_coast_necklace", "category": "item", "targetId": "zone_eastern_coast_necklace", "name": "東方海岸墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_necklace.png", "row": 0, "column": 0 },
     { "assetId": "item_coast_water_zone_eastern_coast_ring_5", "category": "item", "targetId": "zone_eastern_coast_ring_5", "name": "東方海岸指環", "outputPath": "client/public/images/items/item_coast_water_zone_eastern_coast_ring_5.png", "row": 0, "column": 1 },
     { "assetId": "item_coast_water_zone_mist_harbor_body_2", "category": "item", "targetId": "zone_mist_harbor_body_2", "name": "霧港護甲", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_body_2.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_zone_mist_harbor_feet_4", "category": "item", "targetId": "zone_mist_harbor_feet_4", "name": "霧港長靴", "outputPath": "client/public/images/items/item_coast_water_zone_mist_harbor_feet_4.png", "row": 1, "column": 0 },
