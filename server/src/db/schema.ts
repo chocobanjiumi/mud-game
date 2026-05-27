@@ -39,10 +39,14 @@ export function initDb(): Database.Database {
       exp INTEGER DEFAULT 0,
       class_id TEXT DEFAULT 'adventurer',
       race_id TEXT DEFAULT 'human',
-      gender_id TEXT DEFAULT 'undisclosed',
+      gender_id TEXT DEFAULT 'male',
       faith_id TEXT DEFAULT 'aelora',
       faith_favor INTEGER DEFAULT 0,
       faith_cooldown_until INTEGER,
+      active_mount_id TEXT,
+      mounted INTEGER DEFAULT 0,
+      mount_fatigue INTEGER DEFAULT 0,
+      mount_cooldown_until INTEGER,
       hp INTEGER DEFAULT 100,
       mp INTEGER DEFAULT 30,
       max_hp INTEGER DEFAULT 100,
@@ -492,10 +496,11 @@ export function initDb(): Database.Database {
       if (!charColumnNames.has(name)) database.exec(sql);
     };
     addColumn('race_id', `ALTER TABLE characters ADD COLUMN race_id TEXT DEFAULT 'human'`);
-    addColumn('gender_id', `ALTER TABLE characters ADD COLUMN gender_id TEXT DEFAULT 'undisclosed'`);
+    addColumn('gender_id', `ALTER TABLE characters ADD COLUMN gender_id TEXT DEFAULT 'male'`);
     addColumn('faith_id', `ALTER TABLE characters ADD COLUMN faith_id TEXT DEFAULT 'aelora'`);
     addColumn('faith_favor', `ALTER TABLE characters ADD COLUMN faith_favor INTEGER DEFAULT 0`);
     addColumn('faith_cooldown_until', `ALTER TABLE characters ADD COLUMN faith_cooldown_until INTEGER`);
+    database.prepare("UPDATE characters SET gender_id = 'male' WHERE gender_id IS NULL OR gender_id NOT IN ('male', 'female')").run();
   }
 
   // ── Migration: 新增 marked_location 欄位（傳送石標記） ──
@@ -506,6 +511,21 @@ export function initDb(): Database.Database {
       db.exec(`ALTER TABLE characters ADD COLUMN marked_location TEXT`);
       console.log('[DB] Migration: 已新增 marked_location 欄位至 characters 表');
     }
+  }
+
+  // ── Migration: mounted stance fields ──
+  {
+    const database = db;
+    const charColumns = database.prepare("PRAGMA table_info(characters)").all() as { name: string }[];
+    const charColumnNames = new Set(charColumns.map(c => c.name));
+    const addColumn = (name: string, sql: string) => {
+      if (!charColumnNames.has(name)) database.exec(sql);
+    };
+    addColumn('active_mount_id', `ALTER TABLE characters ADD COLUMN active_mount_id TEXT`);
+    addColumn('mounted', `ALTER TABLE characters ADD COLUMN mounted INTEGER DEFAULT 0`);
+    addColumn('mount_fatigue', `ALTER TABLE characters ADD COLUMN mount_fatigue INTEGER DEFAULT 0`);
+    addColumn('mount_cooldown_until', `ALTER TABLE characters ADD COLUMN mount_cooldown_until INTEGER`);
+    database.prepare("UPDATE characters SET active_mount_id = 'knight_warhorse' WHERE class_id = 'knight' AND active_mount_id IS NULL").run();
   }
 
   // ── Migration: item instance support ──

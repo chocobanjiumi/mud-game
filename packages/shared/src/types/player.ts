@@ -151,6 +151,10 @@ export interface Character {
   lastLogin: number;
   // 傳送石標記位置
   markedLocation?: string;
+  activeMountId?: string | null;
+  mounted?: boolean;
+  mountFatigue?: number;
+  mountCooldownUntil?: number;
   // 守護靈系統
   guardianId?: string;
   guardianRoute?: GuardianRoute;

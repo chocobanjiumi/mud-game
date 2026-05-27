@@ -280,7 +280,7 @@ export class AgentController {
       const actionType = parsed.combatAction?.type ?? 'attack';
       // Filter out 'item' type which is not supported in submitCombatAction
       const validType: 'attack' | 'skill' | 'defend' | 'flee' =
-        actionType === 'item' ? 'attack' : actionType;
+        actionType === 'item' || actionType === 'mount_ride' ? 'attack' : actionType;
       this.deps.submitCombatAction(combat.id, {
         actorId: agent.characterId,
         type: validType,

@@ -18,7 +18,7 @@ import {
   clearGroundItemPickup, getGroundItemRespawnAt, PERMANENT_GROUND_ITEM_PICKUP, setGroundItemRespawnAt,
 } from '../db/queries.js';
 import {
-  ITEM_DEFS, SKILL_DEFS, CLASS_DEFS,
+  ITEM_DEFS, SKILL_DEFS, CLASS_DEFS, WEAPON_TYPE_DEFS,
   calculateMaxHp, calculateMaxMp,
   calculateAtk, calculateMatk, calculateDef, calculateMdef,
   calculateCritRate, calculateDodgeRate, calculateHitRate,
@@ -32,6 +32,10 @@ import {
   getSkillUpgradeCost,
   getSkillUpgradeDeltas,
   getSkillUpgradeRequiredLevel,
+  isTwoHandWeapon,
+  resolveEquipSlotForItem,
+  canClassUseMount,
+  getMountDef,
 } from '@game/shared';
 import type { Character, ClassId, CombatLoot, DialogueNode, DialogueOption, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, RoomPayload, SkillTag, StatusEffect, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
 import {
@@ -66,6 +70,8 @@ import {
   getAppearanceCollection,
   unlockAppearance,
 } from './appearance.js';
+
+type CombatAttackMode = 'melee' | 'ranged';
 import { BUILDING_TYPE_NAMES, NPC_TYPE_NAMES } from './kingdom-building.js';
 import { getPveRespawnRoomId } from './death-respawn.js';
 import { upgradeItem, getUpgradeInfo } from './upgrade.js';
@@ -75,7 +81,7 @@ import { recordGoldProduced, recordGoldSpent } from './economy-stats.js';
 import { INVENTORY_SLOT_CAPACITY, getCarriedKingdomResourceItemIds, getInventorySlotLoad } from './inventory-capacity.js';
 import { beginPvpDangerEvacCast } from './pvp-evac-cast.js';
 import { getPvpTravelLockRemainingSeconds } from './pvp-travel-lock.js';
-import { buildOrdinalLabels, buildRoomEntities } from './room-entities.js';
+import { buildOrdinalLabels, buildRoomEntities, type RoomEntityPlayer } from './room-entities.js';
 import { buildNearbyCombatPayload } from './nearby-combat.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { MAIN_QUEST_FLOW } from './main-quest-flow.js';
@@ -292,10 +298,13 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'status': cmdStatus(session); break;
     case 'inventory': cmdInventory(session); break;
     case 'skills': cmdSkills(session); break;
-    case 'attack': cmdAttack(session, argStr); break;
+    case 'attack': cmdAttack(session, argStr, 'melee'); break;
+    case 'melee': cmdAttack(session, argStr, 'melee'); break;
+    case 'ranged': case 'range': cmdAttack(session, argStr, 'ranged'); break;
     case 'skill': cmdSkill(session, args); break;
     case 'defend': cmdDefend(session); break;
     case 'escape': cmdEscape(session); break;
+    case 'mount': cmdMount(session, args); break;
     case 'equip': cmdEquip(session, argStr); break;
     case 'unequip': cmdUnequip(session, argStr); break;
     case 'use': cmdUse(session, argStr); break;
@@ -578,9 +587,9 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     .filter(id => id !== char.id)
     .map(id => {
       const c = getCharacterById(id);
-      return c ? { id: c.id, name: c.name, classId: c.classId, level: c.level } : null;
+      return c ? buildRoomPlayerDetails(c) : null;
     })
-    .filter((player): player is { id: string; name: string; classId: ClassId; level: number } => Boolean(player));
+    .filter((player): player is RoomEntityPlayer => Boolean(player));
 
   const aliveMonsterInstances = world.getAliveMonsters(char.roomId);
   const monsterLabels = buildOrdinalLabels(aliveMonsterInstances, monster => monster.def.name);
@@ -602,6 +611,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
       mp: m.def.mp,
       maxMp: m.def.mp,
       element: m.def.element,
+      family: m.def.family,
       aiType: m.def.aiType,
       behaviorType: m.def.behaviorType,
       isBoss: m.def.isBoss,
@@ -700,6 +710,27 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
       getApproachingMonsters: roomId => world.getApproachingMonsters(roomId),
       isScouted: (characterId, roomId) => hasLocalScout(characterId, roomInfo.room.id, roomId),
     }),
+  };
+}
+
+function buildRoomPlayerDetails(char: Character): RoomEntityPlayer {
+  return {
+    id: char.id,
+    name: char.name,
+    level: char.level,
+    classId: char.classId,
+    raceId: char.raceId,
+    genderId: char.genderId,
+    faithId: char.faithId,
+    hp: char.hp,
+    maxHp: char.maxHp,
+    mp: char.mp,
+    maxMp: char.maxMp,
+    resource: char.resource,
+    maxResource: char.maxResource,
+    resourceType: char.resourceType,
+    stats: char.stats,
+    equipment: char.equipment,
   };
 }
 
@@ -1006,43 +1037,76 @@ function cmdGo(session: WsSession, direction: string): void {
   }
 
   if (isInCombat(char.id)) {
-    sendError(session.sessionId, '戰鬥中無法移動！');
+    if (!prepareMoveThroughExit(session, char, direction, false)) return;
+    const combatId = getPlayerCombatId(char.id);
+    if (!combatId) {
+      sendError(session.sessionId, '戰鬥狀態異常，暫時無法移動。');
+      return;
+    }
+    sendSystem(session.sessionId, `你嘗試往${directionChinese(direction)}方脫離戰鬥。`);
+    const result = combat.submitActionAndResolveRound(combatId, { actorId: char.id, type: 'flee' });
+    if (result === 'fled') {
+      if (!prepareMoveThroughExit(session, char, direction, true)) return;
+      moveCharacterToDirection(session, char, direction);
+      return;
+    }
+    if (result === 'defeat') {
+      sendError(session.sessionId, '你逃跑失敗，並在追擊中倒下。');
+      return;
+    }
+    sendError(session.sessionId, '你逃跑失敗，敵人趁勢攻擊了你！');
     return;
   }
 
-  // 檢查鎖門
+  if (!prepareMoveThroughExit(session, char, direction, true)) return;
+  moveCharacterToDirection(session, char, direction);
+}
+
+function prepareMoveThroughExit(session: WsSession, char: Character, direction: string, consumeKey: boolean): boolean {
   const currentRoom = getRoom(char.roomId);
-  if (currentRoom) {
-    const exit = currentRoom.exits.find(e => e.direction === direction);
-    if (exit && exit.locked && exit.keyItemId) {
-      const inv = getInventory(char.id);
-      const hasKey = inv.some(item => item.itemId === exit.keyItemId);
-      if (!hasKey) {
-        const keyDef = ITEM_DEFS[exit.keyItemId];
-        const keyName = keyDef?.name ?? exit.keyItemId;
-        sendError(session.sessionId, `這扇門被鎖住了。你需要${keyName}才能通過。`);
-        return;
-      }
-      // 消耗鑰匙並解鎖
+  if (!currentRoom) return true;
+
+  const exit = currentRoom.exits.find(e => e.direction === direction);
+  if (!exit) return true;
+
+  if (exit.locked) {
+    if (!exit.keyItemId) {
+      sendError(session.sessionId, '這個出口上鎖，暫時無法通過。');
+      return false;
+    }
+    const inv = getInventory(char.id);
+    const hasKey = inv.some(item => item.itemId === exit.keyItemId);
+    if (!hasKey) {
+      const keyDef = ITEM_DEFS[exit.keyItemId];
+      const keyName = keyDef?.name ?? exit.keyItemId;
+      sendError(session.sessionId, `這扇門被鎖住了。你需要${keyName}才能通過。`);
+      return false;
+    }
+    if (consumeKey) {
       removeInventoryItem(char.id, exit.keyItemId, 1);
       exit.locked = false;
       const keyDef = ITEM_DEFS[exit.keyItemId];
       const keyName = keyDef?.name ?? exit.keyItemId;
       sendNarrative(session.sessionId, `你使用了${keyName}打開了門鎖。`);
     }
+  }
 
-    if (exit) {
-      const targetRoom = getRoom(exit.targetRoomId);
-      if (targetRoom && targetRoom.zone !== currentRoom.zone) {
-        const access = canAccessZone(char, targetRoom.zone);
-        if (!access.ok) {
-          sendError(session.sessionId, access.message);
-          return;
-        }
-      }
+  const targetRoom = getRoom(exit.targetRoomId);
+  if (targetRoom && targetRoom.zone !== currentRoom.zone) {
+    const access = canAccessZone(char, targetRoom.zone);
+    if (!access.ok) {
+      sendError(session.sessionId, access.message);
+      return false;
     }
   }
 
+  return true;
+}
+
+function moveCharacterToDirection(session: WsSession, char: Character, direction: string): void {
+  const followerIds = partyMgr.getFollowersOf(char.id)
+    .filter(followerId => followerId !== char.id && !isInCombat(followerId))
+    .filter(followerId => getCharacterById(followerId)?.roomId === char.roomId);
   const result = world.handleMove(char.id, direction as any);
   if (!result) {
     sendError(session.sessionId, `無法往 ${directionChinese(direction)} 移動。`);
@@ -1055,6 +1119,8 @@ function cmdGo(session: WsSession, direction: string): void {
   saveCharacter(char);
   sendNarrative(session.sessionId, `你往 ${directionChinese(direction)} 移動了。`);
   cmdLook(session);
+  broadcastRoomState(result.fromRoomId);
+  broadcastRoomState(result.room.id);
 
   // 守護靈感知：進入新房間時自動觸發
   guardianMgr.processGuardianSense(session.sessionId, char);
@@ -1067,6 +1133,34 @@ function cmdGo(session: WsSession, direction: string): void {
 
   // 教學系統：移動鉤子
   tutorialMgr.advanceStep(char.id, 'move');
+
+  for (const followerId of followerIds) {
+    moveFollowingCharacter(followerId, direction, result.fromRoomId, result.room.id);
+  }
+}
+
+function moveFollowingCharacter(followerId: string, direction: string, fromRoomId: string, targetRoomId: string): void {
+  const follower = getCharacterById(followerId);
+  const followerSession = getSessionByCharacterId(followerId);
+  if (!follower || !followerSession || follower.roomId !== fromRoomId) return;
+  if (!prepareMoveThroughExit(followerSession, follower, direction, false)) return;
+
+  const result = world.handleMove(follower.id, direction as any);
+  if (!result || result.room.id !== targetRoomId) return;
+
+  clearLocalScouts(follower.id);
+  follower.roomId = result.room.id;
+  unlockZone(follower.id, result.room.zone, 'enter');
+  saveCharacter(follower);
+  sendNarrative(followerSession.sessionId, `你跟隨隊友往 ${directionChinese(direction)} 移動。`);
+  cmdLook(followerSession);
+  cmdStatus(followerSession);
+  broadcastRoomState(result.fromRoomId);
+  broadcastRoomState(result.room.id);
+  guardianMgr.processGuardianSense(followerSession.sessionId, follower);
+  classQuestMgr.onRoomEnter(follower.id, follower.roomId);
+  classQuest2Mgr.onRoomEnter(follower.id, follower.roomId, false, false);
+  tutorialMgr.advanceStep(follower.id, 'move');
 }
 
 function cmdStatus(session: WsSession): void {
@@ -1663,17 +1757,20 @@ function startApproachingCombat(
   return combatId;
 }
 
-function cmdAttack(session: WsSession, target: string): void {
+function cmdAttack(session: WsSession, target: string, attackMode: CombatAttackMode = 'melee'): void {
   const char = getChar(session);
   if (!char) return;
+  const attackModeLabel = attackMode === 'ranged' ? '遠程' : '近戰';
 
   // 如果已在戰鬥中，attack <目標> 只切換目前目標；若目標是房間怪，先拉入戰鬥群體。
   const existingCombatId = getPlayerCombatId(char.id);
   if (existingCombatId) {
+    combat.setPreferredAttackMode(existingCombatId, char.id, attackMode);
     const targetId = resolveCombatTargetId(existingCombatId, target);
     if (targetId) {
       combat.setPreferredTarget(existingCombatId, char.id, targetId);
-      sendSystem(session.sessionId, `目前攻擊目標已切換為「${target}」。`);
+      sendSystem(session.sessionId, `已切換為${attackModeLabel}普攻，目標「${target}」。`);
+      combat.broadcastCombatState(existingCombatId);
       return;
     }
 
@@ -1688,11 +1785,13 @@ function cmdAttack(session: WsSession, target: string): void {
       if (applyPendingHunterMarkToCombat(char.id, existingCombatId, roomMonster)) {
         sendSystem(session.sessionId, `${roomMonster.def.name}身上的獵人標記被觸發。`);
       }
-      sendSystem(session.sessionId, `你將${roomMonster.def.name}拉入戰鬥，並切換為目前攻擊目標。`);
+      sendSystem(session.sessionId, `你將${roomMonster.def.name}拉入戰鬥，並切換為${attackModeLabel}普攻目標。`);
+      combat.broadcastCombatState(existingCombatId);
       return;
     }
 
-    sendSystem(session.sessionId, '你會在下一個 tick 普攻目前目標。使用 attack <目標> 可切換目標或拉怪。');
+    sendSystem(session.sessionId, `已切換為${attackModeLabel}普攻；之後未選其他行動時，每個 tick 都會維持此模式。`);
+    combat.broadcastCombatState(existingCombatId);
     return;
   }
 
@@ -1868,6 +1967,8 @@ function cmdAttack(session: WsSession, target: string): void {
   });
 
   combat.setPreferredTarget(combatId, char.id, monster.instanceId);
+  combat.setPreferredAttackMode(combatId, char.id, attackMode);
+  combat.broadcastCombatState(combatId);
   if (applyPendingHunterMarkToCombat(char.id, combatId, monster)) {
     sendSystem(session.sessionId, `${monster.def.name}身上的獵人標記被觸發。`);
   }
@@ -2131,7 +2232,7 @@ function cmdSkill(session: WsSession, args: string[]): void {
     return;
   }
 
-  const fieldTarget = target && skillDef.targetType === 'single_ally' ? findCharacterByName(target) : null;
+  const fieldTarget = target && skillDef.targetType === 'single_ally' ? resolveFieldAllyTarget(target) : null;
   if (target && skillDef.targetType === 'single_ally' && !fieldTarget) {
     sendError(session.sessionId, `找不到技能目標「${target}」。`);
     return;
@@ -2170,13 +2271,16 @@ function cmdSkill(session: WsSession, args: string[]): void {
 
   // 轉職任務：治療鉤子（非戰鬥中治療其他玩家）
   if (skillDef && (skillDef.id === 'heal' || skillDef.id === 'mass_heal' || skillDef.special?.isHeal)) {
-    if (target) {
-      const targetChar = findCharacterByName(target);
-      if (targetChar) {
-        classQuestMgr.onHealPerformed(char.id, targetChar.id);
-      }
+    if (fieldEffect.target && fieldEffect.target.id !== char.id) {
+      classQuestMgr.onHealPerformed(char.id, fieldEffect.target.id);
     }
   }
+}
+
+function resolveFieldAllyTarget(target: string): Character | null {
+  const normalized = target.trim();
+  if (!normalized) return null;
+  return getCharacterById(normalized) ?? getCharacterByName(normalized);
 }
 
 function cmdSkillUpgrade(session: WsSession, args: string[]): void {
@@ -2912,10 +3016,97 @@ function cmdEscape(session: WsSession): void {
   if (!char) return;
   const combatId = getPlayerCombatId(char.id);
   if (combatId) {
-    combat.submitAction(combatId, { actorId: char.id, type: 'flee' });
+    combat.submitActionAndResolveRound(combatId, { actorId: char.id, type: 'flee' });
     return;
   }
   sendSystem(session.sessionId, '你不在戰鬥中。');
+}
+
+function cmdMount(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+
+  const sub = (args[0] ?? 'status').toLowerCase();
+  if (sub === 'status' || sub === 'info') {
+    const mount = getMountDef(char.activeMountId);
+    sendSystem(session.sessionId, '── 坐騎狀態 ──');
+    sendSystem(session.sessionId, `坐騎：${mount ? `${mount.name} (${mount.id})` : '無'}`);
+    sendSystem(session.sessionId, `狀態：${char.mounted ? '騎乘中' : '未騎乘'}，疲勞 ${Math.max(0, char.mountFatigue ?? 0)}/${mount?.fatigueLimit ?? 0}`);
+    sendSystem(session.sessionId, '指令：mount ride / mount dismount / mount dismiss');
+    return;
+  }
+
+  if (sub === 'ride') {
+    if (!char.activeMountId) {
+      sendError(session.sessionId, '你目前沒有可呼喚的坐騎。');
+      return;
+    }
+    if (!canClassUseMount(char.classId, char.activeMountId)) {
+      sendError(session.sessionId, '你的職業無法使用這匹坐騎。');
+      return;
+    }
+    if (char.mounted) {
+      sendError(session.sessionId, '你已經在騎乘狀態。');
+      return;
+    }
+
+    const combatId = getPlayerCombatId(char.id);
+    if (combatId) {
+      const ok = combat.submitAction(combatId, { actorId: char.id, type: 'mount_ride' });
+      if (!ok) {
+        sendError(session.sessionId, '目前無法排入上馬行動。');
+        return;
+      }
+      sendSystem(session.sessionId, '你準備呼喚坐騎，上馬會在本 tick 結算。');
+      return;
+    }
+
+    char.mounted = true;
+    char.mountFatigue = Math.max(0, char.mountFatigue ?? 0);
+    saveCharacter(char);
+    sendSystem(session.sessionId, `你呼喚${getMountDef(char.activeMountId)?.name ?? '坐騎'}並進入騎乘狀態。`);
+    cmdStatus(session);
+    return;
+  }
+
+  if (sub === 'dismount' || sub === 'dismiss') {
+    const combatId = getPlayerCombatId(char.id);
+    const state = combatId ? combat.getCombatState(combatId) : undefined;
+    const actor = state?.playerTeam.find(player => player.id === char.id);
+    if (!char.mounted && !actor?.mounted) {
+      sendError(session.sessionId, '你目前不在騎乘狀態。');
+      return;
+    }
+    if (actor) actor.mounted = false;
+
+    char.mounted = false;
+    if (sub === 'dismiss') {
+      sendSystem(session.sessionId, '你讓坐騎退到戰線外。');
+    } else {
+      sendSystem(session.sessionId, '你解除騎乘姿態。');
+    }
+    saveCharacter(char);
+    cmdStatus(session);
+    return;
+  }
+
+  sendError(session.sessionId, '用法：mount / mount ride / mount dismount / mount dismiss');
+}
+
+function getItemResolvedEquipSlot(itemId: string): ReturnType<typeof resolveEquipSlotForItem> {
+  return resolveEquipSlotForItem(ITEM_DEFS[itemId]);
+}
+
+function getOffhandSlotForMainHand(slot: string): 'meleeOffHand' | 'rangedOffHand' | null {
+  if (slot === 'meleeMainHand') return 'meleeOffHand';
+  if (slot === 'rangedMainHand') return 'rangedOffHand';
+  return null;
+}
+
+function getMainHandSlotForOffhand(slot: string): 'meleeMainHand' | 'rangedMainHand' | null {
+  if (slot === 'meleeOffHand') return 'meleeMainHand';
+  if (slot === 'rangedOffHand') return 'rangedMainHand';
+  return null;
 }
 
 function cmdEquip(session: WsSession, itemName: string): void {
@@ -2939,12 +3130,20 @@ function cmdEquip(session: WsSession, itemName: string): void {
     return;
   }
 
-  // Unequip existing item in the same slot before equipping the new one
-  const targetSlot: EquipSlot = def.equipSlot;
+  const targetSlot = getItemResolvedEquipSlot(match.itemId) ?? def.equipSlot;
   const equipped = getEquippedItems(char.id);
   for (const eq of equipped) {
     const eqDef = ITEM_DEFS[eq.itemId];
-    if (eqDef?.equipSlot === targetSlot && eq.itemInstanceId !== match.itemInstanceId) {
+    if (!eqDef?.equipSlot || eq.itemInstanceId === match.itemInstanceId) continue;
+    const equippedSlot = getItemResolvedEquipSlot(eq.itemId) ?? eqDef.equipSlot;
+    const targetOffhandSlot = getOffhandSlotForMainHand(targetSlot);
+    const targetMainSlot = getMainHandSlotForOffhand(targetSlot);
+    const equippedOffhandSlot = getOffhandSlotForMainHand(equippedSlot);
+    const shouldUnequip = equippedSlot === targetSlot
+      || (targetOffhandSlot !== null && isTwoHandWeapon(def) && equippedSlot === targetOffhandSlot)
+      || (targetMainSlot !== null && equippedSlot === targetMainSlot && isTwoHandWeapon(eqDef))
+      || (equippedOffhandSlot !== null && equippedOffhandSlot === targetSlot && isTwoHandWeapon(eqDef));
+    if (shouldUnequip) {
       setEquipped(char.id, eq.itemId, false, eq.itemInstanceId);
       sendSystem(session.sessionId, `你卸下了「${eqDef.name}」。`);
     }
@@ -3412,7 +3611,7 @@ function getChestLootTable(tier: 'bronze' | 'silver' | 'gold'): string[] {
   // gold — epic/legendary items only
   return [
     // Unique weapons (with attackDescriptions)
-    'faded_grimoire', 'lava_warhammer', 'crystal_elestaff', 'frost_greataxe',
+    'faded_grimoire', 'lava_warhammer', 'crystal_cluster_staff', 'frost_giant_greataxe',
     'sandstorm_crossbow', 'frozen_hourglass_staff', 'crimson_grimoire',
     'guardian_warhammer', 'spirit_whip',
     'dwarven_masterwork_spear', 'twilight_katana',
@@ -4495,6 +4694,24 @@ function cmdParty(session: WsSession, args: string[]): void {
       sendSystem(session.sessionId, result.message);
       break;
     }
+    case 'follow': {
+      const targetName = args.slice(1).join(' ');
+      if (!targetName) { sendError(session.sessionId, '用法：party follow <隊友名稱>'); return; }
+      const party = partyMgr.getParty(char.id);
+      if (!party) { sendError(session.sessionId, '你不在任何隊伍中。'); return; }
+      const target = targetName.toLowerCase() === 'leader'
+        ? getCharacterById(party.leaderId)
+        : findCharacterByName(targetName) ?? getCharacterById(targetName);
+      if (!target) { sendError(session.sessionId, `找不到隊友「${targetName}」。`); return; }
+      const result = partyMgr.followMember(char.id, target.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
+    case 'unfollow': case 'nofollow': {
+      const result = partyMgr.unfollowMember(char.id);
+      sendSystem(session.sessionId, result.message);
+      break;
+    }
     case 'kick': {
       const targetName = args.slice(1).join(' ');
       if (!targetName) { sendError(session.sessionId, '用法：party kick <玩家名稱>'); return; }
@@ -4528,7 +4745,7 @@ function cmdParty(session: WsSession, args: string[]): void {
       break;
     }
     default:
-      sendSystem(session.sessionId, '組隊指令：party create/invite <名>/accept/decline/leave/kick <名>/loot <模式>/info');
+      sendSystem(session.sessionId, '組隊指令：party create/invite <名>/accept/decline/leave/follow <名>/unfollow/kick <名>/loot <模式>/info');
   }
 }
 
@@ -6365,9 +6582,21 @@ function cmdHelp(session: WsSession, topic?: string): void {
     combat: {
       title: '戰鬥指令',
       lines: [
-        'attack <目標>        攻擊',
+        'melee <目標>         切換近戰普攻',
+        'ranged <目標>        切換遠程/施法普攻',
+        'attack <目標>        近戰普攻（舊指令）',
         'skill <技能> [目標]   使用技能',
         'defend / flee        防禦 / 逃跑',
+        'mount ride/dismount  騎士上馬 / 下馬',
+      ],
+    },
+    mount: {
+      title: '坐騎',
+      lines: [
+        'mount               查看坐騎狀態',
+        'mount ride          呼喚坐騎並上馬',
+        'mount dismount      解除騎乘姿態',
+        'mount dismiss       讓坐騎退到戰線外',
       ],
     },
     social: {

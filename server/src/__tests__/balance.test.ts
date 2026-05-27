@@ -38,6 +38,7 @@ import {
   GATHERING_MATERIAL_QUALITIES,
   GATHERING_NODE_DEFS,
   MOUNT_STAT_KEYS,
+  MOUNT_DEFS,
   createEmptyEquipmentSlots,
   deriveSaddleMountStats,
   getLearnableSkills,
@@ -433,6 +434,16 @@ describe('Balance: Gold economy', () => {
       expect(mountStatKeys.length, saddle.id).toBeGreaterThan(0);
       expect(deriveSaddleMountStats(saddle).mountFatigueRecovery, saddle.id).toBeGreaterThanOrEqual(0);
     }
+  });
+
+  it('defines the starter knight warhorse mount', () => {
+    expect(MOUNT_DEFS.knight_warhorse).toMatchObject({
+      id: 'knight_warhorse',
+      name: '戰馬',
+      allowedClassIds: ['knight'],
+      skills: ['charge', 'mounted_guard', 'intercept'],
+    });
+    expect(MOUNT_DEFS.knight_warhorse.fatigueLimit).toBeGreaterThan(0);
   });
 
   it('should meet first-stage equipment count targets by slot', () => {

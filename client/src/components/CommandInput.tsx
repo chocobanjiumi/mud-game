@@ -12,6 +12,7 @@ const COMMON_COMMANDS = [
   'search', 'inspect', 'open',
   'activate', 'portals', 'travel', 'recall',
   'loot', 'faith', 'pray', 'alias', 'unalias',
+  'mount',
 ];
 
 const COMMON_ALIASES = ['l', 'i', 'stat', 'stats', 'atk', 'kill', 'sk', 'n', 's', 'e', 'w', 'u', 'd'];

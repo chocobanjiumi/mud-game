@@ -1,7 +1,7 @@
 // 資料庫 CRUD 操作
 
 import { getDb } from './schema.js';
-import { ITEM_DEFS, createEmptyEquipmentSlots } from '@game/shared';
+import { ITEM_DEFS, createEmptyEquipmentSlots, resolveEquipSlotForItem } from '@game/shared';
 import type { Character, EquipmentSlots, InventoryItem, LearnedSkill } from '@game/shared';
 
 // ============================================================
@@ -74,6 +74,10 @@ function rowToCharacter(row: any): Character {
     roomId: row.room_id,
     isAi: !!row.is_ai,
     agentId: row.agent_id || undefined,
+    activeMountId: row.active_mount_id ?? (row.class_id === 'knight' ? 'knight_warhorse' : null),
+    mounted: row.mounted === 1,
+    mountFatigue: Math.max(0, row.mount_fatigue ?? 0),
+    mountCooldownUntil: row.mount_cooldown_until ?? undefined,
     equipment,
     createdAt: row.created_at,
     lastLogin: row.last_login,
@@ -90,7 +94,10 @@ function loadEquipment(characterId: string): EquipmentSlots {
   for (const row of equipped) {
     const def = ITEM_DEFS[row.item_id];
     if (def?.equipSlot) {
-      slots[def.equipSlot] = row.item_id;
+      const slot = resolveEquipSlotForItem(def);
+      if (slot && slot in slots) slots[slot as keyof EquipmentSlots] = row.item_id;
+      if (def.equipSlot === 'weapon') slots.weapon = row.item_id;
+      if (def.equipSlot === 'offhand') slots.offhand = row.item_id;
     }
   }
 
@@ -105,6 +112,7 @@ export function saveCharacter(char: Character): void {
       resource = ?, max_resource = ?, resource_type = ?,
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
       free_points = ?, gold = ?, room_id = ?,
+      active_mount_id = ?, mounted = ?, mount_fatigue = ?, mount_cooldown_until = ?,
       last_login = ?
     WHERE id = ?
   `).run(
@@ -113,6 +121,10 @@ export function saveCharacter(char: Character): void {
     char.resource, char.maxResource, char.resourceType,
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
     char.freePoints, char.gold, char.roomId,
+    char.activeMountId ?? null,
+    char.mounted ? 1 : 0,
+    Math.max(0, char.mountFatigue ?? 0),
+    char.mountCooldownUntil ?? null,
     Math.floor(Date.now() / 1000),
     char.id,
   );

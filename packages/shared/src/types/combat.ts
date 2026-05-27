@@ -5,12 +5,14 @@ import type { GuardianHints, ResourceType } from './player.js';
 import type { FaithId, RaceId } from './origin.js';
 
 export type CombatPhase = 'encounter' | 'action_select' | 'resolve' | 'end';
-export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item';
+export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item' | 'mount_ride';
+export type CombatAttackMode = 'melee' | 'ranged';
 export type CombatResult = 'victory' | 'defeat' | 'fled' | 'ongoing';
 
 export interface CombatAction {
   actorId: string;
   type: CombatActionType;
+  attackMode?: CombatAttackMode;
   skillId?: string;
   skillLevel?: number;
   targetId?: string;
@@ -48,6 +50,10 @@ export interface CombatantState {
   raceId?: RaceId;
   faithId?: FaithId;
   activeEffects: ActiveStatusEffect[];
+  activeMountId?: string | null;
+  mounted?: boolean;
+  mountFatigue?: number;
+  mountCooldownUntil?: number;
   isDead: boolean;
   monsterBehavior?: MonsterBehaviorType;
   monsterPhases?: MonsterPhaseRule[];
@@ -106,6 +112,7 @@ export interface MonsterDef {
   vit: number;
   luk: number;
   element: ElementType;
+  family: MonsterFamily;
   skills: string[];
   expReward: number;
   goldReward: [number, number]; // [min, max]
@@ -121,6 +128,21 @@ export interface MonsterDef {
   respawnTime?: number; // seconds
   guardianHints?: GuardianHints;
 }
+
+export type MonsterFamily =
+  | 'ooze'
+  | 'beast'
+  | 'humanoid'
+  | 'undead'
+  | 'demon'
+  | 'dragon'
+  | 'construct'
+  | 'elemental'
+  | 'plant'
+  | 'insect'
+  | 'aquatic'
+  | 'celestial'
+  | 'aberration';
 
 export type MonsterAiType = 'aggressive' | 'defensive' | 'healer' | 'boss' | 'passive';
 export type MonsterBehaviorType =

@@ -160,6 +160,11 @@ export default function StatusBar() {
         </div>
 
         <div className="flex items-center gap-2">
+          {character.mounted && (
+            <span className="rounded border border-text-amber/40 px-1.5 py-0.5 text-[10px] text-text-amber">
+              騎乘
+            </span>
+          )}
           {/* Active effects */}
           {activeEffects.length > 0 && (
             <div className="flex items-center gap-1">

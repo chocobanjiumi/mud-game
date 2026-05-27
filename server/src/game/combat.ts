@@ -7,7 +7,7 @@ import type {
   MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction, InlineEntityPayload,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
-import { applySkillUpgradeRule, getStatusEffectDef, SKILL_DEFS } from '@game/shared';
+import { applySkillUpgradeRule, getStatusEffectDef, ITEM_DEFS, SKILL_DEFS, WEAPON_TYPE_DEFS } from '@game/shared';
 import {
   calculateDamage, calculateDerived, baseStatsToCombat, derivedWithDexLuk,
   getEquipmentStats,
@@ -42,6 +42,8 @@ import { getPveHighLevelCombatPenalty } from './level-scaling.js';
 
 const TURN_TIMER_SECONDS = 5;
 const DEFAULT_ACTION: CombatActionType = 'attack';
+type CombatAttackMode = 'melee' | 'ranged';
+type CombatActionWithAttackMode = CombatAction & { attackMode?: CombatAttackMode };
 
 const DEFAULT_BOSS_PHASES: MonsterPhaseRule[] = [
   {
@@ -81,6 +83,8 @@ export interface CombatSession {
   monsterInstances: Map<string, MonsterInstance>;
   /** 玩家目前普通攻擊目標 */
   preferredTargetIds: Map<string, string>;
+  /** 玩家目前普通攻擊模式 */
+  preferredAttackModes: Map<string, CombatAttackMode>;
   /** 角色技能冷卻：`${actorId}:${skillId}` -> remaining rounds */
   skillCooldowns: Map<string, number>;
   /** 裝備詞綴內部冷卻 */
@@ -188,6 +192,10 @@ export class CombatEngine {
       raceId: p.raceId,
       faithId: p.faithId,
       activeEffects: [],
+      activeMountId: p.activeMountId ?? null,
+      mounted: p.mounted ?? false,
+      mountFatigue: Math.max(0, p.mountFatigue ?? 0),
+      mountCooldownUntil: p.mountCooldownUntil,
       isDead: false,
     }));
 
@@ -224,6 +232,7 @@ export class CombatEngine {
       playerCharacters,
       monsterInstances,
       preferredTargetIds: new Map(),
+      preferredAttackModes: new Map(Array.from(playerCharacters.keys(), playerId => [playerId, 'melee'] as const)),
       skillCooldowns: new Map(),
       affixCooldowns: new Map(),
       bossControlImmunityUntilRound: new Map(),
@@ -258,10 +267,22 @@ export class CombatEngine {
     if (action.type === 'skill' && action.skillId && this.getSkillCooldownRemaining(combatId, action.actorId, action.skillId) > 0) {
       return false;
     }
+    const attackMode = (action as CombatActionWithAttackMode).attackMode;
+    if (action.type === 'attack' && attackMode && session.playerCharacters.has(action.actorId)) {
+      session.preferredAttackModes.set(action.actorId, attackMode);
+    }
 
     session.state.pendingActions.set(action.actorId, action);
 
     return true;
+  }
+
+  submitActionAndResolveRound(combatId: string, action: CombatAction): CombatResult | undefined {
+    const session = this.sessions.get(combatId);
+    if (!session || session.state.phase !== 'action_select') return undefined;
+    if (!this.submitAction(combatId, action)) return undefined;
+    this.resolveRound(session);
+    return session.state.result;
   }
 
   /**
@@ -339,7 +360,7 @@ export class CombatEngine {
       element: skillDef.element,
       targetElement,
       multiplier,
-      attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+      attacker: derivedWithDexLuk(this.applySkillAttackSource(attackerStats, skillDef), this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
     dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
@@ -408,6 +429,13 @@ export class CombatEngine {
     const target = session.state.enemyTeam.find(enemy => enemy.id === targetId && !enemy.isDead);
     if (!target) return false;
     session.preferredTargetIds.set(playerId, targetId);
+    return true;
+  }
+
+  setPreferredAttackMode(combatId: string, playerId: string, attackMode: CombatAttackMode): boolean {
+    const session = this.sessions.get(combatId);
+    if (!session || !session.playerCharacters.has(playerId)) return false;
+    session.preferredAttackModes.set(playerId, attackMode);
     return true;
   }
 
@@ -501,11 +529,13 @@ export class CombatEngine {
             : this.selectRandomAlive(session.state.playerTeam)
         );
 
-        session.state.pendingActions.set(c.id, {
+        const defaultAction: CombatActionWithAttackMode = {
           actorId: c.id,
           type: DEFAULT_ACTION,
+          attackMode: c.isPlayer ? (session.preferredAttackModes.get(c.id) ?? 'melee') : 'melee',
           targetId: target?.id,
-        });
+        };
+        session.state.pendingActions.set(c.id, defaultAction);
       }
     }
   }
@@ -526,8 +556,10 @@ export class CombatEngine {
     // 收集所有行動
     const actions = Array.from(session.state.pendingActions.values());
 
-    // 依 DEX 排序（速度快的先動）
+    // 防禦/護盾類行動先結算；其餘再依 DEX 排序（速度快的先動）
     actions.sort((a, b) => {
+      const priorityDiff = this.getActionPriority(b) - this.getActionPriority(a);
+      if (priorityDiff !== 0) return priorityDiff;
       const dexA = this.getCombatantDex(session, a.actorId);
       const dexB = this.getCombatantDex(session, b.actorId);
       return dexB - dexA; // 高 DEX 先行動
@@ -571,6 +603,9 @@ export class CombatEngine {
           break;
         case 'item':
           this.executeItem(session, action, actor, roundLog);
+          break;
+        case 'mount_ride':
+          this.executeMountRide(session, actor, roundLog);
           break;
       }
 
@@ -628,6 +663,26 @@ export class CombatEngine {
   //  行動執行
   // ──────────────────────────────────────────────────────────
 
+  private getActionPriority(action: CombatAction): number {
+    if (action.type === 'mount_ride') return 15;
+    if (action.type === 'defend') return 20;
+    if (action.type !== 'skill' || !action.skillId) return 0;
+
+    const skill = SKILL_DEFS[action.skillId];
+    if (!skill) return 0;
+    const isDefensiveSupport = skill.multiplier <= 0
+      && (skill.targetType === 'self' || skill.targetType === 'single_ally' || skill.targetType === 'all_allies')
+      && (
+        skill.effects?.some(effect =>
+          effect.type === 'damage_reduction'
+          || effect.type === 'shield'
+          || effect.type === 'mana_shield',
+        )
+        || skill.tags.includes('defense')
+      );
+    return isDefensiveSupport ? 20 : 0;
+  }
+
   private executeAttack(
     session: CombatSession,
     action: CombatAction,
@@ -650,23 +705,25 @@ export class CombatEngine {
     const penalty = getPveHighLevelCombatPenalty(actor, target);
     attackerStats.hitRate = Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty);
 
+    const attackMode = (action as CombatActionWithAttackMode).attackMode;
+    const damageType = this.getBasicAttackDamageType(session, actor.id, attackMode);
     const dmgResult = calculateDamage({
       attackerId: actor.id,
       targetId: target.id,
-      damageType: 'physical',
+      damageType,
       element: 'none',
       targetElement,
       multiplier: 1.0 * this.getMonsterPhaseDamageMultiplier(actor) * penalty.damageMultiplier,
-      attacker: derivedWithDexLuk(attackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+      attacker: derivedWithDexLuk(this.applyBasicAttackMode(attackerStats, session, actor.id, attackMode), this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
       target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
     });
     dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, null, session.state.round);
-    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, 'physical', dmgResult.element);
+    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, damageType, dmgResult.element);
 
     results.push(dmgResult);
 
     // 取得攻擊者的武器 ID（玩家從裝備欄取得，怪物為 null）
-    const weaponItemId = this.getEquippedWeaponId(session, actor.id);
+    const weaponItemId = this.getEquippedWeaponId(session, actor.id, attackMode);
     const targetHpPercent = this.getHpPercent(target);
     this.applyDamageResult(session, dmgResult, actor, target, log, weaponItemId);
 
@@ -804,7 +861,7 @@ export class CombatEngine {
         element,
         targetElement,
         multiplier,
-        attacker: derivedWithDexLuk(effectiveAttackerStats, this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+        attacker: derivedWithDexLuk(this.applySkillAttackSource(effectiveAttackerStats, skillDef), this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
         target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
       });
       dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, skillDef, session.state.round);
@@ -813,7 +870,7 @@ export class CombatEngine {
       results.push(dmgResult);
 
       if (isHealSkill) {
-        const healBase = attackerStats.matk * multiplier;
+        const healBase = attackerStats.spellPower * multiplier;
         let healAmount = Math.max(1, Math.floor(healBase));
         if (skillDef?.special?.lowHpHealBonus && this.getHpPercent(target) < 40) {
           healAmount = Math.floor(healAmount * 1.25);
@@ -951,6 +1008,26 @@ export class CombatEngine {
   ): void {
     // 物品使用（簡化版本，具體在物品系統中完善）
     log.push(`${actor.name}使用了道具。`);
+  }
+
+  private executeMountRide(session: CombatSession, actor: CombatantState, log: string[]): void {
+    if (!actor.isPlayer) return;
+    const char = session.playerCharacters.get(actor.id);
+    if (!char?.activeMountId) {
+      log.push(`${actor.name}試圖呼喚坐騎，但沒有可用坐騎。`);
+      return;
+    }
+    if (actor.mounted) {
+      log.push(`${actor.name}已經在騎乘狀態。`);
+      return;
+    }
+
+    actor.activeMountId = char.activeMountId;
+    actor.mounted = true;
+    actor.mountFatigue = Math.max(0, actor.mountFatigue ?? char.mountFatigue ?? 0);
+    char.mounted = true;
+    char.mountFatigue = actor.mountFatigue;
+    log.push(`${actor.name}呼喚戰馬並翻身上馬。`);
   }
 
   // ──────────────────────────────────────────────────────────
@@ -1607,6 +1684,10 @@ export class CombatEngine {
         char.hp = pc.hp;
         char.mp = pc.mp;
         char.resource = pc.resource;
+        char.activeMountId = pc.activeMountId ?? char.activeMountId ?? null;
+        char.mounted = pc.mounted ?? false;
+        char.mountFatigue = Math.max(0, pc.mountFatigue ?? char.mountFatigue ?? 0);
+        char.mountCooldownUntil = pc.mountCooldownUntil;
 
         // 戰鬥結束：戰士系怒氣歸零
         if (char.resourceType === 'rage') {
@@ -1650,6 +1731,7 @@ export class CombatEngine {
         logEntities,
         playerTeam: session.state.playerTeam,
         enemyTeam: session.state.enemyTeam,
+        preferredAttackModes: Object.fromEntries(session.preferredAttackModes),
       },
       timestamp: Date.now(),
     });
@@ -1667,6 +1749,7 @@ export class CombatEngine {
         playerTeam: session.state.playerTeam,
         enemyTeam: session.state.enemyTeam,
         turnTimer: session.state.turnTimer,
+        preferredAttackModes: Object.fromEntries(session.preferredAttackModes),
       },
       timestamp: Date.now(),
     });
@@ -2053,11 +2136,12 @@ export class CombatEngine {
     return 5;
   }
 
-  /** 取得戰鬥者裝備的武器 ID（怪物返回 null） */
-  private getEquippedWeaponId(session: CombatSession, id: string): string | null {
+  /** 取得戰鬥者普通攻擊使用的武器 ID（怪物返回 null） */
+  private getEquippedWeaponId(session: CombatSession, id: string, attackMode: CombatAttackMode = 'melee'): string | null {
     const char = session.playerCharacters.get(id);
     if (char) {
-      return char.equipment.weapon ?? null;
+      if (attackMode === 'ranged') return char.equipment.rangedMainHand ?? null;
+      return char.equipment.meleeMainHand ?? char.equipment.weapon ?? null;
     }
     return null;
   }
@@ -2108,7 +2192,7 @@ export class CombatEngine {
   private getCombatStats(
     session: CombatSession,
     combatant: CombatantState,
-  ): { atk: number; matk: number; def: number; mdef: number; critRate: number; critDamage: number; dodgeRate: number; hitRate: number } {
+  ): DerivedStats {
     const char = session.playerCharacters.get(combatant.id);
     if (char) {
       // Get equipment bonuses (including enhancement and set bonuses)
@@ -2130,6 +2214,11 @@ export class CombatEngine {
         eqStats.weaponMatk,
         eqStats.armorDef,
         eqStats.armorMdef,
+        {
+          meleeWeaponAtk: eqStats.meleeWeaponAtk,
+          rangedWeaponAtk: eqStats.rangedWeaponAtk,
+          spellWeaponMatk: eqStats.spellWeaponMatk,
+        },
       );
       cs.bonusCritRate = eqStats.bonusCritRate;
       cs.bonusCritDamage = eqStats.bonusCritDamage;
@@ -2140,8 +2229,15 @@ export class CombatEngine {
 
       // Apply set bonus percentage modifiers
       const pct = eqStats.setBonusPct;
-      if (pct.atk) derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
-      if (pct.int) derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+      if (pct.atk) {
+        derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
+        derived.meleeAtk = Math.floor(derived.meleeAtk * (1 + pct.atk / 100));
+        derived.rangedAtk = Math.floor(derived.rangedAtk * (1 + pct.atk / 100));
+      }
+      if (pct.int) {
+        derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+        derived.spellPower = Math.floor(derived.spellPower * (1 + pct.int / 100));
+      }
       if (pct.dex) {
         derived.dodgeRate = Math.floor(derived.dodgeRate * (1 + pct.dex / 100));
         derived.hitRate = Math.floor(derived.hitRate * (1 + pct.dex / 100));
@@ -2149,12 +2245,19 @@ export class CombatEngine {
       if (pct.critRate) derived.critRate += pct.critRate;
       if (pct.critDamage) derived.critDamage += pct.critDamage;
       if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
-      if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+      if (pct.spellPower) {
+        derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+        derived.spellPower = Math.floor(derived.spellPower * (1 + pct.spellPower / 100));
+      }
 
       // Apply skill tree bonuses
       if (this.skillTreeMgr) {
         const stb = this.skillTreeMgr.getBranchBonuses(combatant.id);
-        if (stb.atkPercent > 0) derived.atk = Math.floor(derived.atk * (1 + stb.atkPercent / 100));
+        if (stb.atkPercent > 0) {
+          derived.atk = Math.floor(derived.atk * (1 + stb.atkPercent / 100));
+          derived.meleeAtk = Math.floor(derived.meleeAtk * (1 + stb.atkPercent / 100));
+          derived.rangedAtk = Math.floor(derived.rangedAtk * (1 + stb.atkPercent / 100));
+        }
         if (stb.defPercent > 0) derived.def = Math.floor(derived.def * (1 + stb.defPercent / 100));
         derived.critRate += stb.critRateBonus;
         derived.dodgeRate += stb.dodgeRateBonus;
@@ -2182,7 +2285,52 @@ export class CombatEngine {
     }
 
     // fallback
-    return { atk: 10, matk: 10, def: 5, mdef: 5, critRate: 5, critDamage: 150, dodgeRate: 5, hitRate: 95 };
+    return { atk: 10, meleeAtk: 10, rangedAtk: 10, matk: 10, spellPower: 10, def: 5, mdef: 5, critRate: 5, critDamage: 150, dodgeRate: 5, hitRate: 95 };
+  }
+
+  private applySkillAttackSource(stats: DerivedStats, skillDef: SkillDef | null): DerivedStats {
+    if (!skillDef) return { ...stats, atk: stats.meleeAtk };
+    if (skillDef.attackSource === 'ranged_physical') {
+      return { ...stats, atk: stats.rangedAtk };
+    }
+    if (skillDef.attackSource === 'melee') {
+      return { ...stats, atk: stats.meleeAtk };
+    }
+    if (skillDef.attackSource === 'ranged_magical') {
+      return { ...stats, matk: stats.spellPower };
+    }
+    return stats;
+  }
+
+  private applyBasicAttackMode(
+    stats: DerivedStats,
+    session: CombatSession,
+    actorId: string,
+    attackMode: CombatAttackMode = 'melee',
+  ): DerivedStats {
+    if (attackMode === 'ranged') {
+      return this.getRangedAttackSource(session, actorId) === 'ranged_magical'
+        ? { ...stats, matk: stats.spellPower }
+        : { ...stats, atk: stats.rangedAtk };
+    }
+    return { ...stats, atk: stats.meleeAtk };
+  }
+
+  private getBasicAttackDamageType(
+    session: CombatSession,
+    actorId: string,
+    attackMode: CombatAttackMode = 'melee',
+  ): 'physical' | 'magical' {
+    return attackMode === 'ranged' && this.getRangedAttackSource(session, actorId) === 'ranged_magical'
+      ? 'magical'
+      : 'physical';
+  }
+
+  private getRangedAttackSource(session: CombatSession, actorId: string) {
+    const char = session.playerCharacters.get(actorId);
+    const itemId = char?.equipment.rangedMainHand;
+    const weaponType = itemId ? ITEM_DEFS[itemId]?.weaponType : undefined;
+    return weaponType ? WEAPON_TYPE_DEFS[weaponType]?.attackSource : undefined;
   }
 
   /** 設定回合結束回呼 */

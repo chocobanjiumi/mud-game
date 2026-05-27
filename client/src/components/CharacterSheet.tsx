@@ -5,6 +5,7 @@ import {
   FAITH_DEFS,
   GENDER_DEFS,
   ITEM_DEFS,
+  MOUNT_DEFS,
   RACE_DEFS,
   normalizeGenderId,
   type Character,
@@ -298,6 +299,16 @@ export function CharacterSheetView({
                 <span className="text-mp-bar">資源</span>
                 <span className="text-text-bright tabular-nums">{character.resource}/{character.maxResource}</span>
               </div>
+              {character.activeMountId && (
+                <div className="flex justify-between">
+                  <span className="text-text-amber">{character.mounted ? '騎乘中' : '坐騎'}</span>
+                  <span className="text-text-bright tabular-nums">
+                    {MOUNT_DEFS[character.activeMountId]?.name ?? character.activeMountId}
+                    {' '}
+                    {Math.max(0, character.mountFatigue ?? 0)}/{MOUNT_DEFS[character.activeMountId]?.fatigueLimit ?? 0}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

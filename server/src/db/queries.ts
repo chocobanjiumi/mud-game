@@ -110,6 +110,7 @@ export function saveCharacter(char: Character): void {
       str = ?, int_ = ?, dex = ?, vit = ?, luk = ?,
       free_points = ?, gold = ?, room_id = ?,
       marked_location = ?,
+      active_mount_id = ?, mounted = ?, mount_fatigue = ?, mount_cooldown_until = ?,
       last_login = ?
     WHERE id = ?
   `).run(
@@ -124,6 +125,10 @@ export function saveCharacter(char: Character): void {
     char.stats.str, char.stats.int, char.stats.dex, char.stats.vit, char.stats.luk,
     char.freePoints, char.gold, char.roomId,
     char.markedLocation ?? null,
+    char.activeMountId ?? null,
+    char.mounted ? 1 : 0,
+    Math.max(0, char.mountFatigue ?? 0),
+    char.mountCooldownUntil ?? null,
     Math.floor(Date.now() / 1000),
     char.id,
   );
@@ -616,6 +621,10 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     isAi: (row.is_ai as number) === 1,
     agentId: row.agent_id as string | undefined,
     markedLocation: (row.marked_location as string) ?? undefined,
+    activeMountId: (row.active_mount_id as string | null | undefined) ?? (row.class_id === 'knight' ? 'knight_warhorse' : null),
+    mounted: (row.mounted as number | undefined) === 1,
+    mountFatigue: Math.max(0, (row.mount_fatigue as number | undefined) ?? 0),
+    mountCooldownUntil: (row.mount_cooldown_until as number | undefined) ?? undefined,
     equipment,
     createdAt: row.created_at as number,
     lastLogin: row.last_login as number,

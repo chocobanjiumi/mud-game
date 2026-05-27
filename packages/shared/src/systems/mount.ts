@@ -1,4 +1,40 @@
 import type { ItemDef, ItemStats } from '../types/item.js';
+import type { ClassId } from '../types/player.js';
+
+export interface MountDef {
+  id: string;
+  name: string;
+  description: string;
+  allowedClassIds: ClassId[];
+  chargePower: number;
+  stability: number;
+  guardPower: number;
+  fatigueLimit: number;
+  skills: string[];
+}
+
+export const MOUNT_DEFS: Record<string, MountDef> = {
+  knight_warhorse: {
+    id: 'knight_warhorse',
+    name: '戰馬',
+    description: '騎士受封後可呼喚的基礎戰馬，提供衝鋒、騎乘守護與攔截的核心能力。',
+    allowedClassIds: ['knight'],
+    chargePower: 10,
+    stability: 10,
+    guardPower: 8,
+    fatigueLimit: 40,
+    skills: ['charge', 'mounted_guard', 'intercept'],
+  },
+};
+
+export function getMountDef(mountId: string | null | undefined): MountDef | null {
+  return mountId ? MOUNT_DEFS[mountId] ?? null : null;
+}
+
+export function canClassUseMount(classId: ClassId, mountId: string | null | undefined): boolean {
+  const mount = getMountDef(mountId);
+  return !!mount && mount.allowedClassIds.includes(classId);
+}
 
 export const MOUNT_STAT_KEYS = [
   'mountChargePower',

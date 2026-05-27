@@ -371,6 +371,15 @@ export class ClassChangeManager {
     // 更換職業
     const oldClassName = currentDef.name;
     char.classId = targetClassId;
+    if (targetClassId === 'knight') {
+      char.activeMountId = 'knight_warhorse';
+      char.mounted = false;
+      char.mountFatigue = Math.max(0, char.mountFatigue ?? 0);
+    } else if (targetDef.tier === 2) {
+      char.activeMountId = null;
+      char.mounted = false;
+      char.mountFatigue = 0;
+    }
 
     // 回滿 HP/MP（轉職慶祝）
     // 重新計算上限
