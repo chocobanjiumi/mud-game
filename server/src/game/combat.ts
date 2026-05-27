@@ -7,7 +7,7 @@ import type {
   MonsterBehaviorType, MonsterPhaseRule, MonsterTelegraphAction, InlineEntityPayload,
 } from '@game/shared';
 import { randomUUID } from 'crypto';
-import { applySkillUpgradeRule, getStatusEffectDef, ITEM_DEFS, SKILL_DEFS, WEAPON_TYPE_DEFS } from '@game/shared';
+import { applySkillUpgradeRule, deriveMountStats, getMountDef, getStatusEffectDef, ITEM_DEFS, SKILL_DEFS, WEAPON_TYPE_DEFS } from '@game/shared';
 import {
   calculateDamage, calculateDerived, baseStatsToCombat, derivedWithDexLuk,
   getEquipmentStats,
@@ -607,6 +607,12 @@ export class CombatEngine {
         case 'mount_ride':
           this.executeMountRide(session, actor, roundLog);
           break;
+        case 'mount_charge':
+          this.executeMountCharge(session, action, actor, roundLog, damageResults);
+          break;
+        case 'mounted_guard':
+          this.executeMountedGuard(session, action, actor, roundLog);
+          break;
       }
 
       // 檢查戰鬥是否結束
@@ -618,6 +624,7 @@ export class CombatEngine {
 
     // 回合結束：處理每回合資源回復
     this.processResourceRegen(session, roundLog);
+    this.processMountFatigueRecovery(session, roundLog);
 
     // 回合結束：遞減裝備詞綴內部冷卻
     this.processAffixCooldowns(session);
@@ -665,6 +672,8 @@ export class CombatEngine {
 
   private getActionPriority(action: CombatAction): number {
     if (action.type === 'mount_ride') return 15;
+    if (action.type === 'mounted_guard') return 18;
+    if (action.type === 'mount_charge') return 5;
     if (action.type === 'defend') return 20;
     if (action.type !== 'skill' || !action.skillId) return 0;
 
@@ -1028,6 +1037,126 @@ export class CombatEngine {
     char.mounted = true;
     char.mountFatigue = actor.mountFatigue;
     log.push(`${actor.name}呼喚戰馬並翻身上馬。`);
+  }
+
+  private executeMountCharge(
+    session: CombatSession,
+    action: CombatAction,
+    actor: CombatantState,
+    log: string[],
+    results: DamageResult[],
+  ): void {
+    if (!actor.mounted) {
+      log.push(`${actor.name}不在騎乘狀態，無法衝鋒。`);
+      return;
+    }
+    const mountStats = this.getActorMountStats(session, actor);
+    if (!mountStats) {
+      log.push(`${actor.name}沒有可用坐騎，衝鋒失敗。`);
+      return;
+    }
+
+    const target = action.targetId
+      ? this.findCombatant(session, action.targetId)
+      : this.selectRandomAlive(actor.isPlayer ? session.state.enemyTeam : session.state.playerTeam);
+    if (!target || target.isDead) {
+      log.push(`${actor.name}的騎乘衝鋒沒有命中目標。`);
+      this.applyMountFatigue(actor, mountStats, 12, log);
+      return;
+    }
+
+    const attackerStats = this.getCombatStats(session, actor);
+    const targetStats = this.getCombatStats(session, target);
+    const targetElement = this.getCombatantElement(session, target.id);
+    const penalty = getPveHighLevelCombatPenalty(actor, target);
+    attackerStats.hitRate = Math.max(5, attackerStats.hitRate - penalty.hitRatePenalty);
+    const weaponItemId = this.getEquippedWeaponId(session, actor.id, 'melee');
+    const weaponType = weaponItemId ? ITEM_DEFS[weaponItemId]?.weaponType : undefined;
+    const spearBonus = weaponType === 'spear' ? 0.25 : 0;
+    const multiplier = (1.0 + mountStats.chargePower / 100 + spearBonus)
+      * this.getMonsterPhaseDamageMultiplier(actor)
+      * penalty.damageMultiplier;
+    const dmgResult = calculateDamage({
+      attackerId: actor.id,
+      targetId: target.id,
+      damageType: 'physical',
+      element: 'none',
+      targetElement,
+      multiplier,
+      attacker: derivedWithDexLuk(this.applyBasicAttackMode(attackerStats, session, actor.id, 'melee'), this.getCombatantDex(session, actor.id), this.getCombatantLuk(session, actor.id)),
+      target: derivedWithDexLuk(targetStats, this.getCombatantDex(session, target.id), this.getCombatantLuk(session, target.id)),
+    });
+    dmgResult.damage = applyOutgoingDamageOriginBonus(actor, dmgResult.damage, null, session.state.round);
+    dmgResult.damage = applyIncomingDamageOriginReduction(target, dmgResult.damage, 'physical', dmgResult.element);
+    results.push(dmgResult);
+    log.push(`${actor.name}策馬向${target.name}發動衝鋒！`);
+    this.applyDamageResult(session, dmgResult, actor, target, log, weaponItemId);
+    if (!target.isDead) {
+      this.effectEngine.applyEffect(target.activeEffects, {
+        type: 'taunt',
+        value: 50 + mountStats.threatBonus,
+        duration: 1,
+        source: actor.id,
+      });
+      log.push(`  ${target.name}的注意力被${actor.name}的衝鋒吸引。`);
+    }
+    this.applyMountFatigue(actor, mountStats, 12, log);
+  }
+
+  private executeMountedGuard(session: CombatSession, action: CombatAction, actor: CombatantState, log: string[]): void {
+    if (!actor.mounted) {
+      log.push(`${actor.name}不在騎乘狀態，無法騎乘守護。`);
+      return;
+    }
+    const mountStats = this.getActorMountStats(session, actor);
+    if (!mountStats) {
+      log.push(`${actor.name}沒有可用坐騎，守護失敗。`);
+      return;
+    }
+    const allies = actor.isPlayer ? session.state.playerTeam : session.state.enemyTeam;
+    const target = action.targetId ? allies.find(ally => ally.id === action.targetId && !ally.isDead) : actor;
+    const guarded = target ?? actor;
+    const reduction = Math.min(75, 25 + mountStats.guardPower);
+    this.effectEngine.applyEffect(guarded.activeEffects, {
+      type: 'damage_reduction',
+      value: reduction,
+      duration: 1,
+      source: actor.id,
+    });
+    log.push(`${actor.name}策馬護住${guarded.name}，本回合降低 ${reduction}% 傷害。`);
+    this.applyMountFatigue(actor, mountStats, 8, log);
+  }
+
+  private getActorMountStats(session: CombatSession, actor: CombatantState): ReturnType<typeof deriveMountStats> {
+    const char = session.playerCharacters.get(actor.id);
+    const mount = getMountDef(actor.activeMountId ?? char?.activeMountId);
+    const saddleId = char?.equipment.saddle ?? null;
+    return deriveMountStats(mount, saddleId ? ITEM_DEFS[saddleId] : undefined);
+  }
+
+  private applyMountFatigue(
+    actor: CombatantState,
+    mountStats: NonNullable<ReturnType<typeof deriveMountStats>>,
+    cost: number,
+    log: string[],
+  ): void {
+    actor.mountFatigue = Math.max(0, (actor.mountFatigue ?? 0) + cost);
+    if (actor.mountFatigue >= mountStats.fatigueMax) {
+      actor.mounted = false;
+      log.push(`${actor.name}的坐騎疲勞達到上限，被迫解除騎乘。`);
+    }
+  }
+
+  private processMountFatigueRecovery(session: CombatSession, log: string[]): void {
+    for (const actor of session.state.playerTeam) {
+      const mountStats = this.getActorMountStats(session, actor);
+      if (!mountStats || (actor.mountFatigue ?? 0) <= 0) continue;
+      const before = actor.mountFatigue ?? 0;
+      actor.mountFatigue = Math.max(0, before - mountStats.fatigueRecovery);
+      if (actor.mountFatigue !== before && actor.mounted) {
+        log.push(`${actor.name}的坐騎疲勞恢復 ${before - actor.mountFatigue}。`);
+      }
+    }
   }
 
   // ──────────────────────────────────────────────────────────

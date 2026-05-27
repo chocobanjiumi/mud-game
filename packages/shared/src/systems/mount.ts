@@ -49,6 +49,16 @@ export const MOUNT_STAT_KEYS = [
 
 export type MountStatKey = typeof MOUNT_STAT_KEYS[number];
 export type SaddleMountStats = Readonly<Record<MountStatKey, number>>;
+export interface DerivedMountStats {
+  chargePower: number;
+  stability: number;
+  guardPower: number;
+  fatigueMax: number;
+  fatigueRecovery: number;
+  interceptBonus: number;
+  retreatBonus: number;
+  threatBonus: number;
+}
 
 export function createEmptySaddleMountStats(): SaddleMountStats {
   return {
@@ -71,4 +81,22 @@ export function deriveSaddleMountStats(saddle: Pick<ItemDef, 'equipSlot' | 'stat
     result[key] = saddle.stats?.[key] ?? 0;
   }
   return result;
+}
+
+export function deriveMountStats(
+  mount: MountDef | null | undefined,
+  saddle: Pick<ItemDef, 'equipSlot' | 'stats'> | undefined,
+): DerivedMountStats | null {
+  if (!mount) return null;
+  const saddleStats = deriveSaddleMountStats(saddle);
+  return {
+    chargePower: mount.chargePower + saddleStats.mountChargePower,
+    stability: mount.stability + saddleStats.mountStability,
+    guardPower: mount.guardPower + saddleStats.mountGuardPower,
+    fatigueMax: mount.fatigueLimit + saddleStats.mountFatigueMax,
+    fatigueRecovery: Math.max(0, saddleStats.mountFatigueRecovery || 1),
+    interceptBonus: saddleStats.mountedInterceptBonus,
+    retreatBonus: saddleStats.mountedRetreatBonus,
+    threatBonus: saddleStats.mountedThreatBonus,
+  };
 }

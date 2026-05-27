@@ -112,6 +112,15 @@ export function ApproachingPanelView({
       </div>
 
       <div className="combat-action-row">
+        {character?.mounted && targetId && (
+          <CombatActionButton
+            label="攔截"
+            actionIcon="defend"
+            className="combat-action-primary"
+            title="騎乘攔截逼近中的敵人，延後它抵達本房戰鬥。"
+            onClick={() => sendCommand(`intercept ${targetId}`, `攔截 ${targetLabel ?? ''}`)}
+          />
+        )}
         {damageSkills.map(({ learned, def }) => {
           if (!def) return null;
           const needsTarget = def.targetType === 'single_enemy';

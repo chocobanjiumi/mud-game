@@ -138,6 +138,36 @@ export function CombatPanelView({
           actionIcon="flee"
           onClick={() => sendCommand('flee', '逃跑')}
         />
+        {character?.activeMountId && !character.mounted && (
+          <CombatActionButton
+            label="上馬"
+            actionIcon="defend"
+            className="combat-action-primary"
+            onClick={() => sendCommand('mount ride', '上馬')}
+          />
+        )}
+        {character?.mounted && (
+          <>
+            <CombatActionButton
+              label="下馬"
+              actionIcon="flee"
+              onClick={() => sendCommand('mount dismount', '下馬')}
+            />
+            <CombatActionButton
+              label="衝鋒"
+              actionIcon="attack"
+              className="combat-action-danger"
+              disabled={!targetId}
+              onClick={() => targetId && sendCommand(`charge ${targetId}`, `衝鋒 ${targetLabel ?? '目前目標'}`)}
+            />
+            <CombatActionButton
+              label="守護"
+              actionIcon="defend"
+              className="combat-action-primary"
+              onClick={() => sendCommand(`mounted guard ${character.id}`, '騎乘守護')}
+            />
+          </>
+        )}
         {commonSkills.map(({ learned, def }) => {
           if (!def) return null;
           const needsTarget = def.targetType === 'single_enemy';

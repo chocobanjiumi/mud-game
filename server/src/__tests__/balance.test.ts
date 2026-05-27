@@ -40,6 +40,7 @@ import {
   MOUNT_STAT_KEYS,
   MOUNT_DEFS,
   createEmptyEquipmentSlots,
+  deriveMountStats,
   deriveSaddleMountStats,
   getLearnableSkills,
   getAllAvailableSkills,
@@ -444,6 +445,21 @@ describe('Balance: Gold economy', () => {
       skills: ['charge', 'mounted_guard', 'intercept'],
     });
     expect(MOUNT_DEFS.knight_warhorse.fatigueLimit).toBeGreaterThan(0);
+  });
+
+  it('derives mounted combat stats from mount plus saddle bonuses', () => {
+    const stats = deriveMountStats(MOUNT_DEFS.knight_warhorse, ITEM_DEFS.charger_saddle);
+
+    expect(stats).toMatchObject({
+      chargePower: MOUNT_DEFS.knight_warhorse.chargePower + 10,
+      stability: MOUNT_DEFS.knight_warhorse.stability,
+      guardPower: MOUNT_DEFS.knight_warhorse.guardPower,
+      fatigueMax: MOUNT_DEFS.knight_warhorse.fatigueLimit,
+      fatigueRecovery: 1,
+      interceptBonus: 0,
+      retreatBonus: 0,
+      threatBonus: 0,
+    });
   });
 
   it('should meet first-stage equipment count targets by slot', () => {

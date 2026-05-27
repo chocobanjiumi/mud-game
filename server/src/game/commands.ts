@@ -35,6 +35,7 @@ import {
   isTwoHandWeapon,
   resolveEquipSlotForItem,
   canClassUseMount,
+  deriveMountStats,
   getMountDef,
 } from '@game/shared';
 import type { Character, ClassId, CombatLoot, DialogueNode, DialogueOption, FaithId, MonsterDef, NpcDef, RoomDef, RoomExit, RoomPayload, SkillTag, StatusEffect, StatusEffectType, TravelNodeDef, ZoneDef } from '@game/shared';
@@ -305,6 +306,9 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'defend': cmdDefend(session); break;
     case 'escape': cmdEscape(session); break;
     case 'mount': cmdMount(session, args); break;
+    case 'charge': cmdMountedCharge(session, argStr); break;
+    case 'intercept': cmdMountedIntercept(session, args); break;
+    case 'mounted': cmdMounted(session, args); break;
     case 'equip': cmdEquip(session, argStr); break;
     case 'unequip': cmdUnequip(session, argStr); break;
     case 'use': cmdUse(session, argStr); break;
@@ -3029,9 +3033,10 @@ function cmdMount(session: WsSession, args: string[]): void {
   const sub = (args[0] ?? 'status').toLowerCase();
   if (sub === 'status' || sub === 'info') {
     const mount = getMountDef(char.activeMountId);
+    const mountStats = deriveMountStats(mount, char.equipment.saddle ? ITEM_DEFS[char.equipment.saddle] : undefined);
     sendSystem(session.sessionId, '── 坐騎狀態 ──');
     sendSystem(session.sessionId, `坐騎：${mount ? `${mount.name} (${mount.id})` : '無'}`);
-    sendSystem(session.sessionId, `狀態：${char.mounted ? '騎乘中' : '未騎乘'}，疲勞 ${Math.max(0, char.mountFatigue ?? 0)}/${mount?.fatigueLimit ?? 0}`);
+    sendSystem(session.sessionId, `狀態：${char.mounted ? '騎乘中' : '未騎乘'}，疲勞 ${Math.max(0, char.mountFatigue ?? 0)}/${mountStats?.fatigueMax ?? 0}`);
     sendSystem(session.sessionId, '指令：mount ride / mount dismount / mount dismiss');
     return;
   }
@@ -3091,6 +3096,114 @@ function cmdMount(session: WsSession, args: string[]): void {
   }
 
   sendError(session.sessionId, '用法：mount / mount ride / mount dismount / mount dismiss');
+}
+
+function cmdMountedCharge(session: WsSession, targetId: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!char.mounted) {
+    sendError(session.sessionId, '你必須先進入騎乘狀態才能衝鋒。');
+    return;
+  }
+  const combatId = getPlayerCombatId(char.id);
+  if (!combatId) {
+    sendError(session.sessionId, '衝鋒只能在戰鬥中使用。');
+    return;
+  }
+  const normalizedTarget = targetId.trim() || undefined;
+  const ok = combat.submitAction(combatId, {
+    actorId: char.id,
+    type: 'mount_charge',
+    targetId: normalizedTarget,
+  });
+  if (!ok) {
+    sendError(session.sessionId, '目前無法排入騎乘衝鋒。');
+    return;
+  }
+  sendSystem(session.sessionId, '你準備發動騎乘衝鋒。');
+}
+
+function cmdMounted(session: WsSession, args: string[]): void {
+  const sub = (args[0] ?? '').toLowerCase();
+  if (sub !== 'guard') {
+    sendError(session.sessionId, '用法：mounted guard <隊友ID>');
+    return;
+  }
+  const char = getChar(session);
+  if (!char) return;
+  if (!char.mounted) {
+    sendError(session.sessionId, '你必須先進入騎乘狀態才能騎乘守護。');
+    return;
+  }
+  const combatId = getPlayerCombatId(char.id);
+  if (!combatId) {
+    sendError(session.sessionId, '騎乘守護只能在戰鬥中使用。');
+    return;
+  }
+  const targetId = args.slice(1).join(' ').trim() || char.id;
+  const ok = combat.submitAction(combatId, {
+    actorId: char.id,
+    type: 'mounted_guard',
+    targetId,
+  });
+  if (!ok) {
+    sendError(session.sessionId, '目前無法排入騎乘守護。');
+    return;
+  }
+  sendSystem(session.sessionId, '你準備執行騎乘守護。');
+}
+
+function cmdMountedIntercept(session: WsSession, args: string[]): void {
+  const char = getChar(session);
+  if (!char) return;
+  if (!char.mounted) {
+    sendError(session.sessionId, '你必須先進入騎乘狀態才能攔截。');
+    return;
+  }
+  const mount = getMountDef(char.activeMountId);
+  const mountStats = deriveMountStats(mount, char.equipment.saddle ? ITEM_DEFS[char.equipment.saddle] : undefined);
+  if (!mountStats) {
+    sendError(session.sessionId, '你目前沒有可用坐騎。');
+    return;
+  }
+
+  const arg = args.join(' ').trim();
+  const directionToken = arg.startsWith('direction:') ? arg.slice('direction:'.length) : arg;
+  const approaching = world.getApproachingMonsters(char.roomId);
+  const target = approaching.find(monster => monster.instanceId === arg)
+    ?? approaching.find(monster => monster.sourceDirection === directionToken)
+    ?? approaching[0];
+  if (!target) {
+    sendError(session.sessionId, '沒有找到可攔截的 approaching 目標。');
+    return;
+  }
+
+  const monsterDef = MONSTERS[target.monsterId];
+  const score = mountStats.stability + mountStats.interceptBonus + char.stats.dex + char.stats.str;
+  const difficulty = 20
+    + (monsterDef?.level ?? 1) * 2
+    + (monsterDef?.isBoss ? 20 : monsterDef?.isElite ? 10 : 0);
+  const delay = score >= difficulty + 15 ? 2 : score >= difficulty ? 1 : 0;
+  if (delay > 0) {
+    const next = approaching.map(monster =>
+      monster.instanceId === target.instanceId
+        ? { ...monster, arrivalTicks: monster.arrivalTicks + delay }
+        : monster,
+    );
+    world.setApproachingMonsters(char.roomId, next);
+  }
+  char.mountFatigue = Math.max(0, (char.mountFatigue ?? 0) + 10);
+  const resultText = delay > 0
+    ? `延後 ${delay} tick`
+    : `未能延後抵達`;
+  if (char.mountFatigue >= mountStats.fatigueMax) {
+    char.mounted = false;
+    sendSystem(session.sessionId, `你策馬攔截「${target.name}」，${resultText}，但坐騎疲勞達到上限，被迫下馬。`);
+  } else {
+    sendSystem(session.sessionId, `你策馬攔截「${target.name}」，${resultText}。`);
+  }
+  saveCharacter(char);
+  cmdStatus(session);
 }
 
 function getItemResolvedEquipSlot(itemId: string): ReturnType<typeof resolveEquipSlotForItem> {
