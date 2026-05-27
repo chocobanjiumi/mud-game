@@ -1,6 +1,7 @@
 // 物品資料
 
 import type { EquipSlot, ItemDef, ItemRarity, WeaponType } from '../types/item.js';
+import type { ClassId } from '../types/player.js';
 
 const EQUIPMENT_TYPES = new Set(['weapon', 'armor', 'accessory']);
 const OFFHAND_WEAPON_TYPES = new Set<WeaponType>(['focus', 'grimoire', 'holy_tome', 'shield']);
@@ -87,7 +88,12 @@ function inferZoneTags(itemId: string, def: ItemDef): string[] {
   return Array.from(tags);
 }
 
-const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<EquipSlot, number> = {
+type LegacySupplementalEquipSlot = Exclude<EquipSlot,
+  'meleeMainHand' | 'meleeOffHand' | 'rangedMainHand' | 'rangedOffHand' | 'saddle'
+>;
+type LegacyNamedSupplementalEquipSlot = Exclude<LegacySupplementalEquipSlot, 'accessory'>;
+
+const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<LegacySupplementalEquipSlot, number> = {
   weapon: 13,
   offhand: 0,
   head: 26,
@@ -101,7 +107,7 @@ const SUPPLEMENTAL_EQUIPMENT_TARGETS: Record<EquipSlot, number> = {
   accessory: 0,
 };
 
-const SUPPLEMENTAL_SLOT_STATS: Record<Exclude<EquipSlot, 'accessory'>, keyof NonNullable<ItemDef['stats']>> = {
+const SUPPLEMENTAL_SLOT_STATS: Record<LegacyNamedSupplementalEquipSlot, keyof NonNullable<ItemDef['stats']>> = {
   weapon: 'atk',
   offhand: 'def',
   head: 'def',
@@ -114,7 +120,7 @@ const SUPPLEMENTAL_SLOT_STATS: Record<Exclude<EquipSlot, 'accessory'>, keyof Non
   necklace: 'str',
 };
 
-const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'accessory'>, readonly string[]>> = {
+const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<LegacyNamedSupplementalEquipSlot, readonly string[]>> = {
   belt: [
     'grass_rope_buckle_belt',
     'creek_stone_belt',
@@ -333,7 +339,7 @@ interface SupplementalEquipmentArt {
   description: string;
 }
 
-const SUPPLEMENTAL_EQUIPMENT_ART: Record<Exclude<EquipSlot, 'accessory'>, SupplementalEquipmentArt[]> = {
+const SUPPLEMENTAL_EQUIPMENT_ART: Record<LegacyNamedSupplementalEquipSlot, SupplementalEquipmentArt[]> = {
   weapon: [
     { name: '溪鐵短刃', description: '溪床黑鐵打成的短刃，刃背留著河砂亮紋，麻繩握柄沾有青草與冷水氣味。' },
     { name: '柳木獵刀', description: '柳木柄上纏著舊皮條的獵刀，刀尖薄而利，適合在平原草叢間迅速出手。' },
@@ -583,8 +589,9 @@ function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
   const result: Record<string, ItemDef> = {};
   const levels = [1, 5, 10, 15, 20, 25, 30];
 
-  for (const [slot, count] of Object.entries(SUPPLEMENTAL_EQUIPMENT_TARGETS) as [EquipSlot, number][]) {
+  for (const [slot, count] of Object.entries(SUPPLEMENTAL_EQUIPMENT_TARGETS) as [LegacySupplementalEquipSlot, number][]) {
     if (slot === 'accessory') continue;
+    const namedSlot = slot as LegacyNamedSupplementalEquipSlot;
     for (let i = 0; i < count; i++) {
       const levelReq = levels[i % levels.length];
       const tier = Math.floor(i / levels.length) + 1;
@@ -594,10 +601,10 @@ function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
         if (!supplementalWeaponId) throw new Error(`Missing supplemental weapon id for #${i + 1}`);
         id = supplementalWeaponId;
       } else {
-        id = SUPPLEMENTAL_EQUIPMENT_ID_SLUGS[slot]?.[i] ?? id;
+        id = SUPPLEMENTAL_EQUIPMENT_ID_SLUGS[namedSlot]?.[i] ?? id;
       }
       const statValue = Math.max(1, Math.floor(levelReq / 3) + tier);
-      const art = SUPPLEMENTAL_EQUIPMENT_ART[slot][i];
+      const art = SUPPLEMENTAL_EQUIPMENT_ART[namedSlot][i];
       if (!art) throw new Error(`Missing supplemental equipment art for ${slot} #${i + 1}`);
       result[id] = {
         id,
@@ -610,7 +617,7 @@ function createSupplementalEquipmentDefs(): Record<string, ItemDef> {
         maxStack: 1,
         levelReq,
         equipSlot: slot,
-        stats: { [SUPPLEMENTAL_SLOT_STATS[slot]]: statValue },
+        stats: { [SUPPLEMENTAL_SLOT_STATS[namedSlot]]: statValue },
         rarity: levelReq >= 25 ? 'rare' : levelReq >= 15 ? 'uncommon' : 'common',
         sourceTags: ['shop', 'drop', 'starter_progression'],
         zoneTags: ['starter_village', 'plains', 'global'],
@@ -1030,7 +1037,7 @@ const ZONE_EQUIPMENT_THEMES: ZoneEquipmentTheme[] = [
 
 const ZONE_THEME_BASE_SLOTS = ['head', 'body', 'hands', 'feet', 'ring', 'necklace'] as const;
 const ZONE_THEME_EXTRA_SLOTS = ['weapon', 'earring', 'belt', 'ring'] as const;
-const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
+const ZONE_THEME_SLOT_NAMES: Record<LegacyNamedSupplementalEquipSlot, string> = {
   weapon: '戰刃',
   offhand: '盾牌',
   head: '兜帽',
@@ -1043,7 +1050,7 @@ const ZONE_THEME_SLOT_NAMES: Record<Exclude<EquipSlot, 'accessory'>, string> = {
   necklace: '墜飾',
 };
 
-function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'accessory'>, index: number): string {
+function getZoneThemeEquipmentId(themeId: string, slot: LegacyNamedSupplementalEquipSlot, index: number): string {
   if (slot === 'weapon') return `${themeId}_giant_sword`;
   if (slot === 'belt') return `zone_${themeId}_belt`;
   if (slot === 'earring') return `zone_${themeId}_earring`;
@@ -1105,6 +1112,56 @@ function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
 
   return result;
 }
+
+type SaddleEquipmentSeed = readonly [
+  id: string,
+  name: string,
+  description: string,
+  rarity: ItemRarity,
+  levelReq: number,
+  stats: ItemDef['stats'],
+];
+
+const SADDLE_EQUIPMENT_SEEDS: SaddleEquipmentSeed[] = [
+  ['training_saddle', '訓練馬鞍', '厚實深棕皮革馬鞍，輪廓樸素耐用，兩側有粗麻線縫邊與木質護片。', 'common', 20, { mountStability: 3, mountFatigueMax: 5 }],
+  ['oiled_leather_saddle', '油革馬鞍', '黑褐色油亮皮革馬鞍，厚鞍墊與黃銅扣具適合長時間維持騎乘。', 'common', 20, { mountFatigueRecovery: 1 }],
+  ['iron_stirrup_saddle', '鐵鐙馬鞍', '深棕皮革搭配沉重鐵鐙，低重心設計讓新兵更容易完成衝鋒。', 'common', 22, { mountChargePower: 4 }],
+  ['guardstrap_saddle', '護帶馬鞍', '寬版護帶式馬鞍，交叉防護皮帶與盾形壓紋強調穩固包覆。', 'uncommon', 24, { mountGuardPower: 5 }],
+  ['frontline_cavalry_saddle', '前線騎兵鞍', '軍用騎兵馬鞍，深紅皮革與短旗流蘇帶著前線軍團制式感。', 'uncommon', 25, { mountChargePower: 5, mountedThreatBonus: 5 }],
+  ['longmarch_saddle', '長征馬鞍', '旅行用長征馬鞍，兩側掛有卷包、水袋扣環與備用馬掌袋。', 'uncommon', 26, { mountFatigueMax: 10, mountFatigueRecovery: 1 }],
+  ['towerguard_saddle', '塔衛重鞍', '厚重防衛型馬鞍，塔盾形鐵片與短鏈甲護簾讓騎手更難被撼動。', 'uncommon', 28, { mountStability: 8, mountGuardPower: 4 }],
+  ['charger_saddle', '衝鋒戰鞍', '銳角輪廓的衝鋒馬鞍，黑紅皮革與前傾線條為高速突擊打造。', 'rare', 30, { mountChargePower: 10 }],
+  ['interceptor_saddle', '攔截者馬鞍', '深青灰皮革搭配快速解扣與警鈴，專為急轉攔截 approaching 目標設計。', 'rare', 30, { mountedInterceptBonus: 10, mountStability: 4 }],
+  ['oathkeeper_saddle', '誓守馬鞍', '象牙色守誓馬鞍，盾牌與誓言卷軸浮雕帶有聖騎士儀式感。', 'rare', 32, { mountGuardPower: 10, mountedThreatBonus: 4 }],
+  ['silver_rein_saddle', '銀韁馬鞍', '銀白韁繩與深色皮鞍組成的精良馬鞍，能讓坐騎節奏更平穩。', 'rare', 34, { mountFatigueRecovery: 2, mountStability: 5 }],
+  ['bannerlord_saddle', '軍旗領主鞍', '鞍後立有短旗扣座，整體為戰線統御與仇恨牽制打造。', 'rare', 35, { mountedThreatBonus: 10, mountGuardPower: 5 }],
+  ['breakline_saddle', '破陣馬鞍', '前緣包覆斜切鋼片的破陣馬鞍，適合衝破戰線並延緩敵方接近。', 'epic', 38, { mountChargePower: 8, mountedInterceptBonus: 8 }],
+  ['stormhoof_saddle', '風暴蹄馬鞍', '帶有雷紋鐵扣的突擊馬鞍。特殊：衝鋒成功延後目標下一次行動，待 mounted core 支援。', 'epic', 40, { mountChargePower: 12 }],
+  ['bulwark_saddle', '堡壘馬鞍', '高鞍橋與重護片構成小型壁壘。特殊：降低騎乘狀態被強制下馬機率，待 mounted core 支援。', 'epic', 40, { mountStability: 15, mountGuardPower: 8 }],
+  ['rescue_saddle', '救援馬鞍', '輕量護帶與快拆扣具兼具守護與撤離。特殊：低血目標的騎乘守護更強，待 mounted core 支援。', 'epic', 42, { mountGuardPower: 12, mountedRetreatBonus: 8 }],
+  ['vanguard_saddle', '先鋒馬鞍', '前線偵騎用馬鞍，鞍側斜束帶讓第一波攔截更俐落。特殊：每戰首次攔截 fatigue 消耗降低，待 mounted core 支援。', 'epic', 44, { mountedInterceptBonus: 14, mountFatigueMax: 8 }],
+  ['sunspire_saddle', '日尖塔馬鞍', '白金護片與日紋鞍墊構成的聖衛馬鞍。特殊：騎乘守護吸收隊友傷害後給予護盾，待 mounted core 支援。', 'legendary', 48, { mountGuardPower: 15, mountStability: 10 }],
+  ['black_lance_saddle', '黑槍馬鞍', '黑鐵槍架與暗紅皮革組成的重突擊馬鞍。特殊：長槍衝鋒暴擊傷害提高，待 mounted core 支援。', 'legendary', 50, { mountChargePower: 18, mountedThreatBonus: 8 }],
+  ['last_bastion_saddle', '最後壁壘馬鞍', '厚重護片與誓約鎖鏈固定的終線守護馬鞍。特殊：每戰一次 fatigue 滿值時進入 1 tick last_bastion 而非立即下馬，待 mounted core 支援。', 'legendary', 50, { mountStability: 12, mountGuardPower: 12, mountFatigueMax: 12 }],
+];
+
+const SADDLE_EQUIPMENT_DEFS: Record<string, ItemDef> = Object.fromEntries(SADDLE_EQUIPMENT_SEEDS.map(([id, name, description, rarity, levelReq, stats]) => [id, {
+  id,
+  name,
+  type: 'accessory',
+  description,
+  buyPrice: levelReq * 90,
+  sellPrice: levelReq * 45,
+  stackable: false,
+  maxStack: 1,
+  levelReq,
+  classReq: ['knight'],
+  equipSlot: 'saddle',
+  stats,
+  rarity,
+  sourceTags: ['drop', 'knight', 'mounted_combat'],
+  zoneTags: ['global'],
+} satisfies ItemDef])) as Record<string, ItemDef>;
 
 const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 武器 ============
@@ -5502,15 +5559,56 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
 export const ITEM_DEFS: Record<string, ItemDef> = normalizeItemDefs({
   ...RAW_ITEM_DEFS,
   ...createZoneThemeEquipmentDefs(),
+  ...SADDLE_EQUIPMENT_DEFS,
 });
 
 /** 新手初始裝備（創建角色時給予） */
-export const STARTER_ITEMS = [
-  { itemId: 'wooden_sword', quantity: 1, equipped: true },
+export interface StarterItemGrant {
+  itemId: string;
+  quantity: number;
+  equipped: boolean;
+}
+
+const COMMON_STARTER_ITEMS: StarterItemGrant[] = [
   { itemId: 'cloth_armor', quantity: 1, equipped: true },
   { itemId: 'small_hp_potion', quantity: 5, equipped: false },
   { itemId: 'small_mp_potion', quantity: 3, equipped: false },
 ];
+
+const STARTER_WEAPON_ITEMS_BY_CLASS: Partial<Record<ClassId, StarterItemGrant[]>> = {
+  swordsman: [
+    { itemId: 'wooden_sword', quantity: 1, equipped: true },
+    { itemId: 'wooden_shield', quantity: 1, equipped: true },
+    { itemId: 'wooden_spear', quantity: 1, equipped: true },
+  ],
+  mage: [
+    { itemId: 'small_blade', quantity: 1, equipped: true },
+    { itemId: 'willow_witch_wand', quantity: 1, equipped: true },
+    { itemId: 'chalkcircle_focus', quantity: 1, equipped: true },
+  ],
+  ranger: [
+    { itemId: 'small_blade', quantity: 1, equipped: true },
+    { itemId: 'short_bow', quantity: 1, equipped: true },
+  ],
+  priest: [
+    { itemId: 'fieldstone_carpenter_hammer', quantity: 1, equipped: true },
+    { itemId: 'wooden_scepter', quantity: 1, equipped: true },
+    { itemId: 'chalkcircle_focus', quantity: 1, equipped: true },
+  ],
+};
+
+/** 舊預設：冒險者或未指定職業使用。 */
+export const STARTER_ITEMS: StarterItemGrant[] = [
+  { itemId: 'wooden_sword', quantity: 1, equipped: true },
+  ...COMMON_STARTER_ITEMS,
+];
+
+export function getStarterItemsForClass(classId: ClassId): StarterItemGrant[] {
+  return [
+    ...(STARTER_WEAPON_ITEMS_BY_CLASS[classId] ?? [{ itemId: 'wooden_sword', quantity: 1, equipped: true }]),
+    ...COMMON_STARTER_ITEMS,
+  ];
+}
 
 /** NPC 商店：新手村雜貨店 */
 export const SHOP_STARTER_VILLAGE = [

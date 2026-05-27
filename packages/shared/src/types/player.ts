@@ -10,7 +10,10 @@ export interface BaseStats {
 
 export interface DerivedStats {
   atk: number;
+  meleeAtk: number;
+  rangedAtk: number;
   matk: number;
+  spellPower: number;
   def: number;
   mdef: number;
   hitRate: number;
@@ -53,7 +56,14 @@ export interface ClassDef {
 }
 
 export interface EquipmentSlots {
+  meleeMainHand: string | null;
+  meleeOffHand: string | null;
+  rangedMainHand: string | null;
+  rangedOffHand: string | null;
+  /** @deprecated Use meleeMainHand/rangedMainHand. Kept for old persisted clients and tests. */
   weapon: string | null;
+  /** @deprecated Use meleeOffHand/rangedOffHand. Kept for old persisted clients and tests. */
+  offhand: string | null;
   head: string | null;
   body: string | null;
   hands: string | null;
@@ -63,10 +73,14 @@ export interface EquipmentSlots {
   belt: string | null;
   necklace: string | null;
   accessory: string | null;
+  saddle?: string | null;
 }
 
 export const EQUIPMENT_SLOT_KEYS = [
-  'weapon',
+  'meleeMainHand',
+  'meleeOffHand',
+  'rangedMainHand',
+  'rangedOffHand',
   'head',
   'body',
   'hands',
@@ -76,11 +90,17 @@ export const EQUIPMENT_SLOT_KEYS = [
   'belt',
   'necklace',
   'accessory',
+  'saddle',
 ] as const satisfies readonly (keyof EquipmentSlots)[];
 
 export function createEmptyEquipmentSlots(): EquipmentSlots {
   return {
+    meleeMainHand: null,
+    meleeOffHand: null,
+    rangedMainHand: null,
+    rangedOffHand: null,
     weapon: null,
+    offhand: null,
     head: null,
     body: null,
     hands: null,
@@ -90,6 +110,7 @@ export function createEmptyEquipmentSlots(): EquipmentSlots {
     belt: null,
     necklace: null,
     accessory: null,
+    saddle: null,
   };
 }
 

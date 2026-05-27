@@ -441,6 +441,7 @@ const EQUIPMENT_SLOTS: EquipSlot[] = ['head', 'body', 'hands', 'feet', 'ring', '
 const TYPE_LABELS: Record<WeaponType | EquipSlot, { zh: string; shape: string; material: string; family: UniqueItemFamily; role: string }> = {
   weapon: { zh: '武器', shape: '清楚武器剪影', material: '黑鐵與舊銀', family: 'hybrid', role: '泛用規則' },
   accessory: { zh: '飾品', shape: '小型護符輪廓', material: '黃銅與封蠟', family: 'hybrid', role: '特殊規則' },
+  saddle: { zh: '馬鞍', shape: '戰用馬鞍剪影', material: '厚皮、鐵扣與鞍墊', family: 'warrior', role: '騎乘戰鬥' },
   sword: { zh: '劍', shape: '單手直劍', material: '鋼、鐵木與誓約刻線', family: 'warrior', role: '格擋反擊' },
   blade: { zh: '刃', shape: '單手彎刃', material: '黑鐵、鹽晶與暗紅刃紋', family: 'ranger', role: '攔截流血' },
   dagger: { zh: '匕', shape: '短匕首', material: '夜玻、骨柄與薄銀刃口', family: 'ranger', role: '伏擊標記' },

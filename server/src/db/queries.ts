@@ -3,7 +3,7 @@
 import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
-import { STARTER_ITEMS, calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS, getLearnableSkills } from '@game/shared';
+import { calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS, getLearnableSkills, normalizeGenderId, getStarterItemsForClass, resolveEquipSlotForItem } from '@game/shared';
 
 // ─── Character CRUD ───
 
@@ -26,7 +26,7 @@ export function createCharacter(
   const id = nanoid();
   const now = Math.floor(Date.now() / 1000);
   const raceId = options.raceId ?? DEFAULT_RACE_ID;
-  const genderId = options.genderId ?? DEFAULT_GENDER_ID;
+  const genderId = normalizeGenderId(options.genderId);
   const faithId = options.faithId ?? DEFAULT_FAITH_ID;
   const classDef = getInitialClassDef(options.classId);
   const stats = getInitialStatsForRace(raceId);
@@ -53,7 +53,7 @@ export function createCharacter(
   );
 
   // 給予初始裝備
-  for (const item of STARTER_ITEMS) {
+  for (const item of getStarterItemsForClass(classDef.id)) {
     addInventoryItem(id, item.itemId, item.quantity, item.equipped);
   }
 
@@ -115,7 +115,7 @@ export function saveCharacter(char: Character): void {
   `).run(
     char.level, char.exp, char.classId,
     char.raceId ?? DEFAULT_RACE_ID,
-    char.genderId ?? DEFAULT_GENDER_ID,
+    normalizeGenderId(char.genderId),
     char.faithId ?? DEFAULT_FAITH_ID,
     char.faithFavor ?? 0,
     char.faithCooldownUntil ?? null,
@@ -574,13 +574,14 @@ function rowToCharacter(row: Record<string, unknown>): Character {
   const equipped = getEquippedItems(row.id as string);
   const equipment: EquipmentSlots = createEmptyEquipmentSlots();
 
-  // 這裡簡化處理：根據物品 ID 設定裝備欄位
-  // 實際應從 ITEM_DEFS 取得 equipSlot
   for (const item of equipped) {
-    const slot = guessEquipSlot(item.itemId);
+    const def = ITEM_DEFS[item.itemId];
+    const slot = resolveEquipSlotForItem(def);
     if (slot && slot in equipment) {
       (equipment as unknown as Record<string, string | null>)[slot] = item.itemId;
     }
+    if (def?.equipSlot === 'weapon') equipment.weapon = item.itemId;
+    if (def?.equipSlot === 'offhand') equipment.offhand = item.itemId;
   }
 
   return {
@@ -591,7 +592,7 @@ function rowToCharacter(row: Record<string, unknown>): Character {
     exp: row.exp as number,
     classId: row.class_id as ClassId,
     raceId: (row.race_id as import('@game/shared').RaceId) ?? DEFAULT_RACE_ID,
-    genderId: (row.gender_id as import('@game/shared').GenderId) ?? DEFAULT_GENDER_ID,
+    genderId: normalizeGenderId(row.gender_id),
     faithId: (row.faith_id as import('@game/shared').FaithId) ?? DEFAULT_FAITH_ID,
     faithFavor: (row.faith_favor as number) ?? 0,
     faithCooldownUntil: (row.faith_cooldown_until as number) ?? undefined,
@@ -925,11 +926,12 @@ function guessEquipSlot(itemId: string): string | null {
       itemId.includes('wand') || itemId.includes('scepter') || itemId.includes('blade') ||
       itemId.includes('mace') || itemId.includes('rod') ||
       itemId.includes('spear') || itemId.includes('greataxe') || itemId.includes('katana') ||
-      itemId.includes('elestaff') || itemId.includes('grimoire') || itemId.includes('hourglass') ||
-      itemId.includes('crossbow') || itemId.includes('dagger') || itemId.includes('whip') ||
-      itemId.includes('holytome') || itemId.includes('naturestaff') || itemId.includes('warhammer')) {
+      itemId.includes('grimoire') || itemId.includes('hourglass') ||
+      itemId.includes('crossbow') || itemId.includes('whip') ||
+      itemId.includes('holy_tome') || itemId.includes('warhammer')) {
     return 'weapon';
   }
+  if (itemId.includes('shield')) return 'offhand';
   if (itemId.includes('helm') || itemId.includes('hat') || itemId.includes('cap')) return 'head';
   if (itemId.includes('armor') || itemId.includes('mail') || itemId.includes('robe') ||
       itemId.includes('vest') || itemId.includes('garb') || itemId.includes('plate')) {
@@ -940,6 +942,7 @@ function guessEquipSlot(itemId: string): string | null {
   if (itemId.includes('ring')) return 'ring';
   if (itemId.includes('earring')) return 'earring';
   if (itemId.includes('belt')) return 'belt';
+  if (itemId.includes('saddle')) return 'saddle';
   if (itemId.includes('necklace') || itemId.includes('pendant') || itemId.includes('amulet') || itemId.includes('charm')) return 'necklace';
   return null;
 }

@@ -4,7 +4,12 @@ import { ITEM_DEFS, type EquipmentSlots, type InventoryItem, type ItemType } fro
 import { getItemImagePath } from '../utils/assetImages';
 
 const EQUIP_SLOT_LABELS: Record<string, string> = {
+  meleeMainHand: '近主',
+  meleeOffHand: '近副',
+  rangedMainHand: '遠主',
+  rangedOffHand: '遠副',
   weapon: '武器',
+  offhand: '副手',
   head: '頭部',
   body: '身體',
   hands: '手部',
@@ -14,6 +19,7 @@ const EQUIP_SLOT_LABELS: Record<string, string> = {
   belt: '腰帶',
   necklace: '項鍊',
   accessory: '舊飾品',
+  saddle: '馬鞍',
 };
 
 type InventoryFilter = 'all' | ItemType;
@@ -78,6 +84,7 @@ export function InventoryView({
   const [openItemKey, setOpenItemKey] = useState<string | null>(null);
   const equipSlots = equipment
     ? (Object.entries(equipment) as [string, string | null][])
+      .filter(([slot]) => slot !== 'weapon' && slot !== 'offhand')
     : [];
   const carriedItems = useMemo(() => inventory.filter((item) => !item.equipped), [inventory]);
   const filterCounts = useMemo(() => {

@@ -37,8 +37,12 @@ import {
   CLASS_DEFS,
   GATHERING_MATERIAL_QUALITIES,
   GATHERING_NODE_DEFS,
+  MOUNT_STAT_KEYS,
+  createEmptyEquipmentSlots,
+  deriveSaddleMountStats,
   getLearnableSkills,
   getAllAvailableSkills,
+  resolveEquipSlotForItem,
   TIER2_LEVEL_REQ,
   TIER3_LEVEL_REQ,
 } from '@game/shared';
@@ -293,11 +297,11 @@ describe('Balance: Healer output vs incoming damage', () => {
 describe('Balance: Exp curve - monsters to level 1->10', () => {
   it('should require a reasonable number of green slimes to reach level 10', () => {
     const slimeExp = MONSTER_DEFS.green_slime.expReward; // 10
-    const expNeeded = expRequiredForLevel(10); // 10*100 + 9*50 = 1450
+    const expNeeded = expRequiredForLevel(10); // 2700
 
     const monstersNeeded = Math.ceil(expNeeded / slimeExp);
 
-    // Should need about 145 green slimes to reach level 10
+    // Should need about 270 green slimes to reach level 10
     // This is a lot but makes sense for the weakest monster
     expect(monstersNeeded).toBeGreaterThan(50);
     expect(monstersNeeded).toBeLessThan(500);
@@ -305,11 +309,11 @@ describe('Balance: Exp curve - monsters to level 1->10', () => {
 
   it('should require reasonable goblin scouts to reach level 10', () => {
     const goblinExp = MONSTER_DEFS.goblin_scout.expReward; // 22
-    const expNeeded = expRequiredForLevel(10); // 1450
+    const expNeeded = expRequiredForLevel(10); // 2700
 
     const monstersNeeded = Math.ceil(expNeeded / goblinExp);
 
-    // About 66 goblin scouts
+    // About 123 goblin scouts
     expect(monstersNeeded).toBeGreaterThan(30);
     expect(monstersNeeded).toBeLessThan(200);
   });
@@ -407,6 +411,30 @@ describe('Balance: Gold economy', () => {
     }
   });
 
+  it('supports saddle as a knight-only equipment slot', () => {
+    const equipment = createEmptyEquipmentSlots();
+    const trainingSaddle = ITEM_DEFS.training_saddle;
+
+    expect(equipment.saddle).toBeNull();
+    expect(trainingSaddle.equipSlot).toBe('saddle');
+    expect(resolveEquipSlotForItem(trainingSaddle)).toBe('saddle');
+    expect(trainingSaddle.classReq).toEqual(expect.arrayContaining(['knight']));
+    expect(trainingSaddle.classReq).not.toEqual(expect.arrayContaining(['swordsman']));
+  });
+
+  it('defines exactly 20 saddle items with readable mount stats', () => {
+    const saddles = Object.values(ITEM_DEFS).filter(item => item.equipSlot === 'saddle');
+    expect(saddles).toHaveLength(20);
+
+    for (const saddle of saddles) {
+      const mountStatKeys = Object.keys(saddle.stats ?? {}).filter(key => (MOUNT_STAT_KEYS as readonly string[]).includes(key));
+      expect(saddle.type, saddle.id).toBe('accessory');
+      expect(saddle.classReq, saddle.id).toEqual(['knight']);
+      expect(mountStatKeys.length, saddle.id).toBeGreaterThan(0);
+      expect(deriveSaddleMountStats(saddle).mountFatigueRecovery, saddle.id).toBeGreaterThanOrEqual(0);
+    }
+  });
+
   it('should meet first-stage equipment count targets by slot', () => {
     const equipment = Object.values(ITEM_DEFS).filter(item =>
       item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory',
@@ -418,6 +446,7 @@ describe('Balance: Gold economy', () => {
 
     expect(equipment.length).toBeGreaterThanOrEqual(350);
     expect(bySlot.weapon).toBeGreaterThanOrEqual(120);
+    expect(bySlot.offhand).toBeGreaterThanOrEqual(15);
     expect(bySlot.head).toBeGreaterThanOrEqual(30);
     expect(bySlot.body).toBeGreaterThanOrEqual(40);
     expect(bySlot.hands).toBeGreaterThanOrEqual(30);
@@ -433,14 +462,12 @@ describe('Balance: Gold economy', () => {
       'spear',
       'greataxe',
       'katana',
-      'elemental_staff',
+      'staff',
       'grimoire',
-      'hourglass_staff',
       'crossbow',
       'dagger',
       'whip',
       'holy_tome',
-      'nature_staff',
       'warhammer',
     ];
     const milestoneLevels = [1, 10, 20, 30, 40, 50, 60];
@@ -457,7 +484,7 @@ describe('Balance: Gold economy', () => {
   });
 
   it('should provide equipment choices for every slot across early level bands', () => {
-    const slots = ['weapon', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'];
+    const slots = ['weapon', 'offhand', 'head', 'body', 'hands', 'feet', 'ring', 'earring', 'belt', 'necklace'];
     const equipment = Object.values(ITEM_DEFS).filter(item =>
       item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory',
     );
@@ -509,7 +536,9 @@ describe('Balance: Item instance generation', () => {
   it('defines canonical weapon categories and maps every equipment weapon type', () => {
     const canonicalNames = Object.values(WEAPON_TYPE_DEFS).map(def => def.name);
     expect(canonicalNames).toEqual(expect.arrayContaining([
-      '劍', '斧', '錘', '槍/長柄', '弓', '弩', '匕首', '短劍', '法杖', '魔導書', '法器', '聖典', '圖騰',
+      '單手劍', '單手刃', '單手匕首', '雙手太刀', '雙手巨劍', '雙手槍', '雙手弓', '雙手弩',
+      '單手斧', '雙手巨斧', '單手錘', '雙手戰錘', '單手魔杖', '單手權杖',
+      '副手法器', '副手魔導書', '副手聖典', '雙手法杖', '鞭（封存）', '副手盾牌',
     ]));
 
     const itemWeaponTypes = new Set(Object.values(ITEM_DEFS)
@@ -527,10 +556,10 @@ describe('Balance: Item instance generation', () => {
     expect(allAffixes.some(affix => affix.stats?.hitRate)).toBe(true);
     expect(allAffixes.some(affix => affix.stats?.dodgeRate)).toBe(true);
 
-    const spear = { ...toBaseEquipmentDef(ITEM_DEFS.spear_steel)!, level: 45 };
-    const crossbow = { ...toBaseEquipmentDef(ITEM_DEFS.crossbow_steel)!, level: 45 };
+    const spear = { ...toBaseEquipmentDef(ITEM_DEFS.steel_spear)!, level: 45 };
+    const crossbow = { ...toBaseEquipmentDef(ITEM_DEFS.steel_crossbow)!, level: 45 };
 
-    expect(getEligibleAffixes(spear, 'legendary', 'swordsman').some(affix => affix.id === 'behavior_cross_room_t3')).toBe(false);
+    expect(getEligibleAffixes(spear, 'legendary', 'swordsman').some(affix => affix.id === 'behavior_cross_room_t3')).toBe(true);
     expect(getEligibleAffixes(crossbow, 'legendary', 'ranger').some(affix => affix.id === 'behavior_cross_room_t3')).toBe(true);
   });
 
@@ -556,7 +585,7 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('generates quality-specific affix counts and legendary fixed effects', () => {
-    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const base = toBaseEquipmentDef(ITEM_DEFS.elder_dragon_fang_spear)!;
     const instance = generateEquipmentInstance(base, {
       classId: 'swordsman',
       sourceTags: ['world_boss'],
@@ -572,7 +601,7 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('keeps class affixes behind rare-or-better class matching rules', () => {
-    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const base = toBaseEquipmentDef(ITEM_DEFS.steel_spear)!;
     const fineAffixes = getEligibleAffixes(base, 'fine', 'swordsman');
     const rareAffixes = getEligibleAffixes(base, 'rare', 'swordsman');
 
@@ -646,22 +675,23 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('weights crafted affixes toward requested skill tags', () => {
-    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const base = toBaseEquipmentDef(ITEM_DEFS.elder_dragon_fang_spear)!;
     const instance = generateEquipmentInstance(base, {
+      sourceTags: ['world_boss'],
       qualityBonus: 0.1,
-      preferredAffixTags: ['burst'],
+      preferredAffixTags: ['damage'],
       preferredAffixWeight: 100,
       random: vi.fn()
-        .mockReturnValueOnce(0.53)
-        .mockReturnValue(0.2),
+        .mockReturnValueOnce(0.005)
+        .mockReturnValue(0.5),
     });
 
-    expect(instance.quality).toBe('fine');
-    expect(instance.affixes.some(affix => affix.skillTags?.includes('burst'))).toBe(true);
+    expect(instance.quality).toBe('legendary');
+    expect(instance.affixes.some(affix => affix.skillTags?.includes('damage'))).toBe(true);
   });
 
   it('weights generated affixes toward source and zone tags', () => {
-    const base = { ...toBaseEquipmentDef(ITEM_DEFS.crossbow_steel)!, level: 45, sourceTags: ['ranged'], zoneTags: ['plains'] };
+    const base = { ...toBaseEquipmentDef(ITEM_DEFS.steel_crossbow)!, level: 45, sourceTags: ['ranged'], zoneTags: ['plains'] };
     const instance = generateEquipmentInstance(base, {
       sourceTags: ['ranged', 'plains', 'scout'],
       qualityBonus: 0.1,
@@ -675,7 +705,7 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('rerolls one affix without duplicating retained affixes', () => {
-    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const base = toBaseEquipmentDef(ITEM_DEFS.steel_spear)!;
     const currentAffixes = [
       AFFIX_POOLS.numeric.find(affix => affix.id === 'numeric_str_t1')!,
       AFFIX_POOLS.combat.find(affix => affix.id === 'combat_atk_t1')!,
@@ -690,7 +720,7 @@ describe('Balance: Item instance generation', () => {
   });
 
   it('reforges quality while keeping the same item instance id', () => {
-    const base = toBaseEquipmentDef(ITEM_DEFS.spear_steel)!;
+    const base = toBaseEquipmentDef(ITEM_DEFS.elder_dragon_fang_spear)!;
     const reforged = reforgeEquipmentInstanceQuality(base, {
       itemInstanceId: 'test_reforge_instance',
       classId: 'swordsman',
@@ -817,6 +847,17 @@ describe('Balance: Skill metadata', () => {
     expect(emptySkills).toEqual([]);
   });
 
+  it('allows priest holy bell to appear in both field and combat skill bars', () => {
+    expect(SKILL_DEFS.priest_holy_bell).toMatchObject({
+      usageContext: 'both',
+      special: expect.objectContaining({
+        crossRoom: true,
+        areaScope: 'adjacent_cardinal',
+        includeCurrentRoom: true,
+      }),
+    });
+  });
+
   it('gives the base adventurer at least four level 1-10 skills', () => {
     const skills = Object.values(SKILL_DEFS).filter(skill =>
       skill.classId === 'adventurer' && skill.learnLevel >= 1 && skill.learnLevel <= 10,
@@ -836,7 +877,7 @@ describe('Balance: Skill metadata', () => {
   it('defines the level 1-16 first-job skill curve for each starter class', () => {
     const expected: Record<string, Record<number, string[]>> = {
       swordsman: {
-        1: ['斬擊', '防禦架勢', '挑釁'],
+        1: ['斬擊', '防禦架勢', '血性復甦'],
         5: ['橫掃'],
         8: ['極限怒吼'],
         12: ['破甲重擊'],
@@ -850,14 +891,14 @@ describe('Balance: Skill metadata', () => {
         16: ['魔力回流'],
       },
       ranger: {
-        1: ['射擊', '翻滾', '偵查'],
+        1: ['射擊', '強襲', '偵查'],
         5: ['獵人標記'],
         8: ['伏擊陷阱'],
         12: ['多重射擊'],
         16: ['煙霧箭'],
       },
       priest: {
-        1: ['治癒', '聖光', '守護禱言'],
+        1: ['治癒', '聖光', '懺悔'],
         5: ['淨化'],
         8: ['聖鐘震盪'],
         12: ['群體治癒'],
@@ -894,6 +935,17 @@ describe('Balance: Skill metadata', () => {
         levelOneSkills.some(skill => skill.effects?.length || skill.special && Object.keys(skill.special).length > 0),
         classId,
       ).toBe(true);
+    }
+  });
+
+  it('does not carry adventurer common skills into starter class learning', () => {
+    for (const classId of ['swordsman', 'mage', 'ranger', 'priest'] as const) {
+      const learnedClassIds = new Set(getLearnableSkills(classId, 10).map(skill => skill.classId));
+
+      expect(learnedClassIds.has('adventurer'), classId).toBe(false);
+      expect(getLearnableSkills(classId, 10).map(skill => skill.id), classId).not.toEqual(
+        expect.arrayContaining(['guard', 'first_aid']),
+      );
     }
   });
 

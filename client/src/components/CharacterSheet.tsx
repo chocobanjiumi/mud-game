@@ -1,6 +1,21 @@
 import { useGameStore } from '../stores/gameStore';
-import { DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, GENDER_DEFS, RACE_DEFS, type Character, type EquipmentSlots } from '@game/shared';
-import type { DerivedStats } from '../stores/gameStore';
+import {
+  DEFAULT_FAITH_ID,
+  DEFAULT_RACE_ID,
+  FAITH_DEFS,
+  GENDER_DEFS,
+  ITEM_DEFS,
+  RACE_DEFS,
+  normalizeGenderId,
+  type Character,
+  type ClassId,
+  type EquipmentSlots,
+  type GenderId,
+  type InventoryItem,
+  type RaceId,
+} from '@game/shared';
+import type { DerivedStats, TooltipItemData } from '../stores/gameStore';
+import { getItemImagePath } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -26,6 +41,33 @@ const CLASS_NAMES: Record<string, string> = {
   inquisitor: '審判者',
 };
 
+type CharacterArtClassId = Extract<ClassId, 'swordsman' | 'mage' | 'ranger' | 'priest'>;
+
+const CHARACTER_ART_CLASS_BY_CLASS_ID: Record<string, CharacterArtClassId> = {
+  adventurer: 'swordsman',
+  swordsman: 'swordsman',
+  knight: 'swordsman',
+  berserker: 'swordsman',
+  sword_saint: 'swordsman',
+  mage: 'mage',
+  archmage: 'mage',
+  warlock: 'mage',
+  chronomancer: 'mage',
+  ranger: 'ranger',
+  marksman: 'ranger',
+  assassin: 'ranger',
+  beast_master: 'ranger',
+  priest: 'priest',
+  high_priest: 'priest',
+  druid: 'priest',
+  inquisitor: 'priest',
+};
+
+function getCharacterArtPath(classId: string, genderId: GenderId, raceId: RaceId): string {
+  const artClassId = CHARACTER_ART_CLASS_BY_CLASS_ID[classId] ?? 'swordsman';
+  return `/mud/images/ui/characters/classes/${artClassId}-${genderId}-${raceId}.png`;
+}
+
 const STAT_LABELS: { key: string; label: string; color: string }[] = [
   { key: 'str', label: 'STR 力量', color: '#ff6666' },
   { key: 'int', label: 'INT 智力', color: '#6688ff' },
@@ -42,21 +84,35 @@ const STAT_HELP: Record<string, string> = {
   luk: '提高暴擊與掉落表現',
 };
 
-const EQUIP_SLOTS: { key: string; label: string; icon: string }[] = [
-  { key: 'head', label: '頭部', icon: '[頭]' },
-  { key: 'weapon', label: '武器', icon: '[武]' },
-  { key: 'body', label: '身體', icon: '[甲]' },
-  { key: 'hands', label: '手部', icon: '[手]' },
-  { key: 'feet', label: '足部', icon: '[靴]' },
-  { key: 'ring', label: '戒指', icon: '[戒]' },
-  { key: 'earring', label: '耳環', icon: '[耳]' },
-  { key: 'belt', label: '腰帶', icon: '[帶]' },
-  { key: 'necklace', label: '項鍊', icon: '[鍊]' },
+type CharacterEquipSlotKey = keyof EquipmentSlots | 'rightRing';
+
+const EQUIP_MANNEQUIN_SLOTS: {
+  key: CharacterEquipSlotKey;
+  label: string;
+  shortLabel: string;
+  position: string;
+  disabled?: boolean;
+}[] = [
+  { key: 'head', label: '頭部', shortLabel: '頭', position: 'head' },
+  { key: 'necklace', label: '項鍊', shortLabel: '鍊', position: 'necklace' },
+  { key: 'earring', label: '耳環', shortLabel: '耳', position: 'earring' },
+  { key: 'meleeMainHand', label: '近戰主手', shortLabel: '近主', position: 'meleeMainHand' },
+  { key: 'meleeOffHand', label: '近戰副手', shortLabel: '近副', position: 'meleeOffHand' },
+  { key: 'hands', label: '手套', shortLabel: '手', position: 'hands' },
+  { key: 'body', label: '身體', shortLabel: '身', position: 'body' },
+  { key: 'rangedMainHand', label: '遠程/施法主手', shortLabel: '遠主', position: 'rangedMainHand' },
+  { key: 'rangedOffHand', label: '遠程/施法副手', shortLabel: '遠副', position: 'rangedOffHand' },
+  { key: 'ring', label: '左戒指', shortLabel: '左戒', position: 'leftRing' },
+  { key: 'belt', label: '腰部', shortLabel: '腰', position: 'belt' },
+  { key: 'saddle', label: '馬鞍', shortLabel: '鞍', position: 'saddle' },
+  { key: 'rightRing', label: '右戒指', shortLabel: '右戒', position: 'rightRing', disabled: true },
+  { key: 'feet', label: '鞋子', shortLabel: '鞋', position: 'feet' },
 ];
 
 const DERIVED_STAT_LABELS: { key: string; label: string }[] = [
-  { key: 'atk', label: '攻擊力' },
-  { key: 'matk', label: '魔攻力' },
+  { key: 'meleeAtk', label: '近戰攻擊' },
+  { key: 'rangedAtk', label: '遠程攻擊' },
+  { key: 'spellPower', label: '施法強度' },
   { key: 'def', label: '防禦力' },
   { key: 'mdef', label: '魔防力' },
   { key: 'hitRate', label: '命中率' },
@@ -71,7 +127,10 @@ export default function CharacterSheet() {
   const character = useGameStore((s) => s.character);
   const derivedStats = useGameStore((s) => s.derivedStats);
   const equipment = useGameStore((s) => s.equipment);
+  const inventory = useGameStore((s) => s.inventory);
   const expToNext = useGameStore((s) => s.expToNext);
+  const setTooltipItem = useGameStore((s) => s.setTooltipItem);
+  const setTooltipPosition = useGameStore((s) => s.setTooltipPosition);
 
   if (!characterSheetOpen || !character) return null;
 
@@ -80,7 +139,10 @@ export default function CharacterSheet() {
       character={character}
       derivedStats={derivedStats}
       equipment={equipment}
+      inventory={inventory}
       expToNext={expToNext}
+      setTooltipItem={setTooltipItem}
+      setTooltipPosition={setTooltipPosition}
       onClose={() => setCharacterSheetOpen(false)}
     />
   );
@@ -90,22 +152,27 @@ export function CharacterSheetView({
   character,
   derivedStats,
   equipment,
+  inventory = [],
   expToNext,
+  setTooltipItem = () => undefined,
+  setTooltipPosition = () => undefined,
   onClose,
 }: {
   character: Character;
   derivedStats: DerivedStats | null;
   equipment: EquipmentSlots | null;
+  inventory?: InventoryItem[];
   expToNext: number;
+  setTooltipItem?: ReturnType<typeof useGameStore.getState>['setTooltipItem'];
+  setTooltipPosition?: ReturnType<typeof useGameStore.getState>['setTooltipPosition'];
   onClose: () => void;
 }) {
   const className = CLASS_NAMES[character.classId] ?? character.classId;
   const race = RACE_DEFS[character.raceId ?? DEFAULT_RACE_ID];
-  const gender = GENDER_DEFS[character.genderId ?? DEFAULT_GENDER_ID];
+  const genderId = normalizeGenderId(character.genderId);
+  const gender = GENDER_DEFS[genderId];
   const faith = FAITH_DEFS[character.faithId ?? DEFAULT_FAITH_ID];
-  const visibleEquipSlots = equipment?.accessory
-    ? [...EQUIP_SLOTS, { key: 'accessory', label: '舊飾品', icon: '[飾]' }]
-    : EQUIP_SLOTS;
+  const characterArtPath = getCharacterArtPath(character.classId, genderId, race.id);
 
   return (
     <div className="charsheet-overlay" onClick={onClose}>
@@ -237,29 +304,123 @@ export function CharacterSheetView({
           {/* Right: Equipment */}
           <div className="charsheet-equip-col">
             <div className="text-[10px] text-text-dim uppercase tracking-wider mb-2">裝備欄位</div>
-            <div className="charsheet-equip-layout">
-              {visibleEquipSlots.map((slot) => {
-                const equipped = equipment?.[slot.key as keyof typeof equipment] ?? null;
-                return (
-                  <div
-                    key={slot.key}
-                    className={`charsheet-equip-slot ${equipped ? 'charsheet-equip-slot-filled' : ''}`}
-                    title={equipped ? `${slot.label}: ${equipped}` : `${slot.label}: 空`}
-                  >
-                    <div className="charsheet-equip-icon">{slot.icon}</div>
-                    <div className="charsheet-equip-info">
-                      <div className="text-[10px] text-text-dim">{slot.label}</div>
-                      <div className={`text-xs truncate ${equipped ? 'text-text-bright' : 'text-text-dim'}`}>
-                        {equipped ?? '-- 空 --'}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="charsheet-mannequin">
+              <img
+                src={characterArtPath}
+                alt=""
+                className="charsheet-character-art"
+                loading="lazy"
+              />
+              {EQUIP_MANNEQUIN_SLOTS.map((slot) => (
+                <EquipmentSquare
+                  key={slot.key}
+                  slot={slot.key === 'saddle' && character.classId !== 'knight'
+                    ? { ...slot, disabled: true }
+                    : slot}
+                  equipment={equipment}
+                  inventory={inventory}
+                  setTooltipItem={setTooltipItem}
+                  setTooltipPosition={setTooltipPosition}
+                />
+              ))}
+              {equipment?.accessory && (
+                <EquipmentSquare
+                  slot={{ key: 'accessory', label: '舊飾品', shortLabel: '飾', position: 'accessory' }}
+                  equipment={equipment}
+                  inventory={inventory}
+                  setTooltipItem={setTooltipItem}
+                  setTooltipPosition={setTooltipPosition}
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+function EquipmentSquare({
+  slot,
+  equipment,
+  inventory,
+  setTooltipItem,
+  setTooltipPosition,
+}: {
+  slot: {
+    key: CharacterEquipSlotKey;
+    label: string;
+    shortLabel: string;
+    position: string;
+    disabled?: boolean;
+  };
+  equipment: EquipmentSlots | null;
+  inventory: InventoryItem[];
+  setTooltipItem: ReturnType<typeof useGameStore.getState>['setTooltipItem'];
+  setTooltipPosition: ReturnType<typeof useGameStore.getState>['setTooltipPosition'];
+}) {
+  const itemId = slot.key === 'rightRing' ? null : equipment?.[slot.key] ?? null;
+  const itemDef = itemId ? ITEM_DEFS[itemId] : undefined;
+  const inventoryItem = itemId ? inventory.find((item) => item.equipped && item.itemId === itemId) : undefined;
+  const imagePath = itemId ? getItemImagePath(itemId) : undefined;
+  const title = itemDef
+    ? `${slot.label}: ${itemDef.name}`
+    : slot.disabled
+      ? `${slot.label}: 尚未支援`
+      : `${slot.label}: 空`;
+
+  return (
+    <div
+      className={`charsheet-equip-square charsheet-equip-square-${slot.position} ${itemId ? 'charsheet-equip-square-filled' : ''} ${slot.disabled ? 'charsheet-equip-square-disabled' : ''}`}
+      title={title}
+      onMouseEnter={(event) => {
+        const tooltipItem = buildEquipmentTooltipItem(itemDef, inventoryItem);
+        if (!tooltipItem) return;
+        setTooltipPosition({ x: event.clientX, y: event.clientY });
+        setTooltipItem(tooltipItem);
+      }}
+      onMouseMove={(event) => {
+        if (!itemDef) return;
+        setTooltipPosition({ x: event.clientX, y: event.clientY });
+      }}
+      onMouseLeave={() => setTooltipItem(null)}
+    >
+      <div className="charsheet-equip-square-label">{slot.shortLabel}</div>
+      <div className="charsheet-equip-square-icon">
+        {imagePath ? (
+          <img src={imagePath} alt="" loading="lazy" />
+        ) : (
+          <span>{slot.shortLabel}</span>
+        )}
+      </div>
+      <div className={`charsheet-equip-square-name ${itemId ? 'text-text-bright' : 'text-text-dim'}`}>
+        {itemDef?.name ?? (slot.disabled ? '未開放' : '空')}
+      </div>
+    </div>
+  );
+}
+
+function buildEquipmentTooltipItem(
+  itemDef: typeof ITEM_DEFS[string] | undefined,
+  inventoryItem: InventoryItem | undefined,
+): TooltipItemData | null {
+  if (!itemDef) return null;
+  return {
+    id: itemDef.id,
+    name: itemDef.name,
+    description: itemDef.description,
+    rarity: itemDef.rarity ?? 'common',
+    quality: inventoryItem?.quality,
+    itemLevel: inventoryItem?.itemLevel,
+    droppedBy: inventoryItem?.droppedBy,
+    droppedInZone: inventoryItem?.droppedInZone,
+    affixes: inventoryItem?.affixes,
+    fixedEffects: inventoryItem?.fixedEffects,
+    levelReq: itemDef.levelReq,
+    stats: itemDef.stats,
+    equipSlot: itemDef.equipSlot,
+    type: itemDef.type,
+    sourceTags: inventoryItem?.sourceTags ?? itemDef.sourceTags,
+    bound: false,
+  };
 }

@@ -20,6 +20,7 @@ export * from './systems/item-instance.js';
 export * from './systems/equipment-base.js';
 export * from './systems/status-effects.js';
 export * from './systems/skill-upgrades.js';
+export * from './systems/mount.js';
 
 // 常數
 export * from './constants/index.js';

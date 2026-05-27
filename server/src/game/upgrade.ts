@@ -281,6 +281,7 @@ function slotToChineseName(slot: EquipSlot): string {
     hands: '手部裝備',
     feet: '腳部裝備',
     accessory: '飾品',
+    saddle: '馬鞍',
   };
   return names[slot] ?? slot;
 }

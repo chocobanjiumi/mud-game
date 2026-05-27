@@ -1,6 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
 import type { AffixDef, ItemRarity, ItemStats } from '@game/shared';
-import { ITEM_DEFS } from '@game/shared';
+import { ITEM_DEFS, resolveEquipSlotForItem } from '@game/shared';
 
 const RARITY_COLORS: Record<ItemRarity, string> = {
   common: '#888888',
@@ -45,6 +45,14 @@ const STAT_DISPLAY_NAMES: Record<string, string> = {
   critDamage: '暴擊傷害',
   hitRate: '命中率',
   dodgeRate: '迴避率',
+  mountChargePower: '坐騎衝鋒',
+  mountStability: '坐騎穩定',
+  mountGuardPower: '騎乘守護',
+  mountFatigueMax: '坐騎疲勞上限',
+  mountFatigueRecovery: '坐騎疲勞回復',
+  mountedInterceptBonus: '騎乘攔截',
+  mountedRetreatBonus: '騎乘撤離',
+  mountedThreatBonus: '騎乘威脅',
 };
 
 function combineStats(
@@ -91,17 +99,19 @@ export default function ItemTooltip() {
   const rarityColor = RARITY_COLORS[tooltipItem.rarity] ?? RARITY_COLORS.common;
   const rarityLabel = RARITY_LABELS[tooltipItem.rarity] ?? '普通';
   const totalStats = combineStats(tooltipItem.stats, tooltipItem.affixes);
+  const tooltipDef = ITEM_DEFS[tooltipItem.id];
+  const resolvedTooltipSlot = resolveEquipSlotForItem(tooltipDef);
 
   // Equipment comparison: find currently equipped item in the same slot
-  const isEquippable = !!tooltipItem.equipSlot;
-  const isEquipped = tooltipItem.equipSlot && equipment
-    ? inventory.some((item) => item.equipped && item.itemId === tooltipItem.id && ITEM_DEFS[item.itemId]?.equipSlot === tooltipItem.equipSlot)
+  const isEquippable = !!resolvedTooltipSlot;
+  const isEquipped = resolvedTooltipSlot && equipment
+    ? inventory.some((item) => item.equipped && item.itemId === tooltipItem.id && resolveEquipSlotForItem(ITEM_DEFS[item.itemId]) === resolvedTooltipSlot)
     : false;
 
   // Find the equipped item's stats for comparison (compute real diff)
   let comparisonDiffs: Record<string, number> | null = null;
-  if (isEquippable && !isEquipped && tooltipItem.equipSlot && equipment) {
-    const equippedItemId = equipment[tooltipItem.equipSlot as keyof typeof equipment];
+  if (isEquippable && !isEquipped && resolvedTooltipSlot && equipment) {
+    const equippedItemId = equipment[resolvedTooltipSlot as keyof typeof equipment];
     if (equippedItemId && Object.keys(totalStats).length > 0) {
       const equippedItem = inventory.find((item) => item.equipped && item.itemId === equippedItemId);
       const equippedDef = ITEM_DEFS[equippedItemId];

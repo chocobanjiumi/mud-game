@@ -5,52 +5,71 @@ import type { ElementType } from './skill.js';
 import type { AffixDef, ItemQuality } from '../systems/item-instance.js';
 
 export type ItemType = 'weapon' | 'armor' | 'accessory' | 'consumable' | 'material' | 'quest';
-export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet';
-export type EquipSlot = 'weapon' | 'head' | 'body' | 'hands' | 'feet' | 'ring' | 'earring' | 'belt' | 'necklace' | 'accessory';
+export type ArmorSlot = 'head' | 'body' | 'hands' | 'feet' | 'offhand';
+export type EquipSlot =
+  | 'meleeMainHand' | 'meleeOffHand' | 'rangedMainHand' | 'rangedOffHand'
+  | 'weapon' | 'offhand'
+  | 'head' | 'body' | 'hands' | 'feet' | 'ring' | 'earring' | 'belt' | 'necklace' | 'accessory' | 'saddle';
 
-export type WeaponCategory = 'sword' | 'axe' | 'hammer' | 'polearm' | 'bow' | 'crossbow' | 'dagger' | 'shortsword' | 'staff' | 'grimoire' | 'focus' | 'holy_tome' | 'totem';
-export type WeaponType =
-  | WeaponCategory
-  | 'spear'
-  | 'greataxe'
-  | 'katana'
-  | 'elemental_staff'
-  | 'hourglass_staff'
-  | 'nature_staff'
-  | 'warhammer'
-  | 'whip';
+export type WeaponCategory = 'sword' | 'blade' | 'dagger' | 'katana' | 'giant_sword' | 'spear' | 'bow' | 'crossbow' | 'axe' | 'greataxe' | 'hammer' | 'warhammer' | 'wand' | 'scepter' | 'focus' | 'grimoire' | 'holy_tome' | 'staff' | 'whip' | 'shield';
+export type WeaponType = WeaponCategory;
+export type WeaponHandedness = 'one_hand' | 'two_hand' | 'offhand';
+export type WeaponAttackSource = 'melee' | 'ranged_physical' | 'ranged_magical';
 
 export interface WeaponTypeDef {
   id: WeaponType;
   name: string;
   category: WeaponCategory;
   rangeProfile: 'melee' | 'ranged' | 'spell' | 'support';
+  handedness: WeaponHandedness;
+  attackSource: WeaponAttackSource;
   classFamilies: ClassId[];
 }
 
 export const WEAPON_TYPE_DEFS: Record<WeaponType, WeaponTypeDef> = {
-  sword: { id: 'sword', name: '劍', category: 'sword', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  axe: { id: 'axe', name: '斧', category: 'axe', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  hammer: { id: 'hammer', name: '錘', category: 'hammer', rangeProfile: 'melee', classFamilies: ['swordsman', 'priest'] },
-  polearm: { id: 'polearm', name: '槍/長柄', category: 'polearm', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  bow: { id: 'bow', name: '弓', category: 'bow', rangeProfile: 'ranged', classFamilies: ['ranger'] },
-  crossbow: { id: 'crossbow', name: '弩', category: 'crossbow', rangeProfile: 'ranged', classFamilies: ['ranger'] },
-  dagger: { id: 'dagger', name: '匕首', category: 'dagger', rangeProfile: 'melee', classFamilies: ['ranger'] },
-  shortsword: { id: 'shortsword', name: '短劍', category: 'shortsword', rangeProfile: 'melee', classFamilies: ['ranger', 'swordsman'] },
-  staff: { id: 'staff', name: '法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage', 'priest'] },
-  grimoire: { id: 'grimoire', name: '魔導書', category: 'grimoire', rangeProfile: 'spell', classFamilies: ['mage'] },
-  focus: { id: 'focus', name: '法器', category: 'focus', rangeProfile: 'spell', classFamilies: ['mage', 'priest'] },
-  holy_tome: { id: 'holy_tome', name: '聖典', category: 'holy_tome', rangeProfile: 'support', classFamilies: ['priest'] },
-  totem: { id: 'totem', name: '圖騰', category: 'totem', rangeProfile: 'support', classFamilies: ['priest'] },
-  spear: { id: 'spear', name: '槍', category: 'polearm', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  greataxe: { id: 'greataxe', name: '巨斧', category: 'axe', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  katana: { id: 'katana', name: '太刀', category: 'sword', rangeProfile: 'melee', classFamilies: ['swordsman'] },
-  elemental_staff: { id: 'elemental_staff', name: '元素法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage'] },
-  hourglass_staff: { id: 'hourglass_staff', name: '沙漏法杖', category: 'staff', rangeProfile: 'spell', classFamilies: ['mage'] },
-  nature_staff: { id: 'nature_staff', name: '自然法杖', category: 'staff', rangeProfile: 'support', classFamilies: ['priest'] },
-  warhammer: { id: 'warhammer', name: '戰錘', category: 'hammer', rangeProfile: 'melee', classFamilies: ['swordsman', 'priest'] },
-  whip: { id: 'whip', name: '鞭', category: 'focus', rangeProfile: 'support', classFamilies: ['ranger', 'priest'] },
+  sword: { id: 'sword', name: '單手劍', category: 'sword', rangeProfile: 'melee', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['swordsman'] },
+  blade: { id: 'blade', name: '單手刃', category: 'blade', rangeProfile: 'melee', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['ranger', 'swordsman'] },
+  dagger: { id: 'dagger', name: '單手匕首', category: 'dagger', rangeProfile: 'melee', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['ranger'] },
+  katana: { id: 'katana', name: '雙手太刀', category: 'katana', rangeProfile: 'melee', handedness: 'two_hand', attackSource: 'melee', classFamilies: ['swordsman'] },
+  giant_sword: { id: 'giant_sword', name: '雙手巨劍', category: 'giant_sword', rangeProfile: 'melee', handedness: 'two_hand', attackSource: 'melee', classFamilies: ['swordsman'] },
+  spear: { id: 'spear', name: '雙手槍', category: 'spear', rangeProfile: 'ranged', handedness: 'two_hand', attackSource: 'ranged_physical', classFamilies: ['swordsman'] },
+  bow: { id: 'bow', name: '雙手弓', category: 'bow', rangeProfile: 'ranged', handedness: 'two_hand', attackSource: 'ranged_physical', classFamilies: ['ranger'] },
+  crossbow: { id: 'crossbow', name: '雙手弩', category: 'crossbow', rangeProfile: 'ranged', handedness: 'two_hand', attackSource: 'ranged_physical', classFamilies: ['ranger'] },
+  axe: { id: 'axe', name: '單手斧', category: 'axe', rangeProfile: 'melee', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['swordsman'] },
+  greataxe: { id: 'greataxe', name: '雙手巨斧', category: 'greataxe', rangeProfile: 'melee', handedness: 'two_hand', attackSource: 'melee', classFamilies: ['swordsman'] },
+  hammer: { id: 'hammer', name: '單手錘', category: 'hammer', rangeProfile: 'melee', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['swordsman', 'priest'] },
+  warhammer: { id: 'warhammer', name: '雙手戰錘', category: 'warhammer', rangeProfile: 'melee', handedness: 'two_hand', attackSource: 'melee', classFamilies: ['swordsman', 'priest'] },
+  wand: { id: 'wand', name: '單手魔杖', category: 'wand', rangeProfile: 'spell', handedness: 'one_hand', attackSource: 'ranged_magical', classFamilies: ['mage'] },
+  scepter: { id: 'scepter', name: '單手權杖', category: 'scepter', rangeProfile: 'support', handedness: 'one_hand', attackSource: 'ranged_magical', classFamilies: ['priest'] },
+  focus: { id: 'focus', name: '副手法器', category: 'focus', rangeProfile: 'spell', handedness: 'offhand', attackSource: 'ranged_magical', classFamilies: ['mage', 'priest'] },
+  grimoire: { id: 'grimoire', name: '副手魔導書', category: 'grimoire', rangeProfile: 'spell', handedness: 'offhand', attackSource: 'ranged_magical', classFamilies: ['mage'] },
+  holy_tome: { id: 'holy_tome', name: '副手聖典', category: 'holy_tome', rangeProfile: 'support', handedness: 'offhand', attackSource: 'ranged_magical', classFamilies: ['priest'] },
+  staff: { id: 'staff', name: '雙手法杖', category: 'staff', rangeProfile: 'spell', handedness: 'two_hand', attackSource: 'ranged_magical', classFamilies: ['mage', 'priest'] },
+  whip: { id: 'whip', name: '鞭（封存）', category: 'whip', rangeProfile: 'support', handedness: 'one_hand', attackSource: 'melee', classFamilies: ['ranger', 'priest'] },
+  shield: { id: 'shield', name: '副手盾牌', category: 'shield', rangeProfile: 'support', handedness: 'offhand', attackSource: 'melee', classFamilies: ['swordsman', 'priest'] },
 };
+
+export function resolveEquipSlotForItem(def: Pick<ItemDef, 'equipSlot' | 'weaponType' | 'type'> | undefined): EquipSlot | null {
+  if (!def?.equipSlot) return null;
+  if (def.type !== 'weapon' || !def.weaponType) {
+    if (def.equipSlot === 'weapon') return 'meleeMainHand';
+    if (def.equipSlot === 'offhand') return 'meleeOffHand';
+    return def.equipSlot;
+  }
+
+  const weapon = WEAPON_TYPE_DEFS[def.weaponType];
+  if (!weapon) return def.equipSlot;
+  if (weapon.handedness === 'offhand') {
+    return weapon.attackSource === 'ranged_magical' || weapon.attackSource === 'ranged_physical'
+      ? 'rangedOffHand'
+      : 'meleeOffHand';
+  }
+  return weapon.attackSource === 'melee' ? 'meleeMainHand' : 'rangedMainHand';
+}
+
+export function isTwoHandWeapon(def: Pick<ItemDef, 'weaponType' | 'type'> | undefined): boolean {
+  return !!def?.weaponType && WEAPON_TYPE_DEFS[def.weaponType]?.handedness === 'two_hand';
+}
 
 export type ItemRarity = 'common' | 'uncommon' | 'rare' | 'epic' | 'legendary' | 'mythic';
 
@@ -126,6 +145,14 @@ export interface ItemStats {
   critDamage?: number;
   hitRate?: number;
   dodgeRate?: number;
+  mountChargePower?: number;
+  mountStability?: number;
+  mountGuardPower?: number;
+  mountFatigueMax?: number;
+  mountFatigueRecovery?: number;
+  mountedInterceptBonus?: number;
+  mountedRetreatBonus?: number;
+  mountedThreatBonus?: number;
 }
 
 export interface ItemUseEffect {
