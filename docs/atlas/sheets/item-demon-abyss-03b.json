@@ -8,8 +8,8 @@
     { "assetId": "item_demon_abyss_zone_necropolis_gate_hands_3", "category": "item", "targetId": "zone_necropolis_gate_hands_3", "name": "死都外門護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_hands_3.png", "row": 0, "column": 0 },
     { "assetId": "item_demon_abyss_zone_necropolis_gate_head_1", "category": "item", "targetId": "zone_necropolis_gate_head_1", "name": "死都外門兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_head_1.png", "row": 0, "column": 1 },
     { "assetId": "item_demon_abyss_zone_necropolis_gate_necklace", "category": "item", "targetId": "zone_necropolis_gate_necklace", "name": "死都外門墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_necklace.png", "row": 0, "column": 2 },
-    { "assetId": "item_demon_abyss_zone_necropolis_gate_ring_10", "category": "item", "targetId": "zone_necropolis_gate_ring_10", "name": "死都外門戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_ring_10.png", "row": 1, "column": 0 },
-    { "assetId": "item_demon_abyss_zone_necropolis_gate_ring_5", "category": "item", "targetId": "zone_necropolis_gate_ring_5", "name": "死都外門指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_ring_5.png", "row": 1, "column": 1 },
+    { "assetId": "item_demon_abyss_zone_necropolis_gate_signet", "category": "item", "targetId": "zone_necropolis_gate_signet", "name": "死都外門戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_signet.png", "row": 1, "column": 0 },
+    { "assetId": "item_demon_abyss_zone_necropolis_gate_ring", "category": "item", "targetId": "zone_necropolis_gate_ring", "name": "死都外門指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_ring.png", "row": 1, "column": 1 },
     { "assetId": "item_demon_abyss_zone_necropolis_gate_weapon_7", "category": "item", "targetId": "necropolis_gate_giant_sword", "name": "死都外門戰刃", "outputPath": "client/public/images/items/item_demon_abyss_zone_necropolis_gate_weapon_7.png", "row": 1, "column": 2 }
   ]
 }

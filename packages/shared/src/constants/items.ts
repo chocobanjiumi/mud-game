@@ -190,6 +190,33 @@ const SUPPLEMENTAL_EQUIPMENT_ID_SLUGS: Partial<Record<Exclude<EquipSlot, 'access
     'redforge_iron_amulet',
     'thundersteppe_bone_amulet',
   ],
+  ring: [
+    'creeklight_copper_ring',
+    'willow_leaf_ring',
+    'grain_gold_ring',
+    'blackmoss_hidden_ring',
+    'tide_pearl_ring',
+    'minelamp_iron_ring',
+    'frostpattern_silver_ring',
+    'redrock_fire_ring',
+    'silverpine_wood_ring',
+    'thundergrass_wrap_ring',
+    'amber_bee_ring',
+    'bloodsalt_red_ring',
+    'starsand_night_ring',
+    'moonwell_white_ring',
+    'charwood_black_ring',
+    'mistharbor_lead_ring',
+    'ancient_tablet_rune_ring',
+    'mirrormarsh_water_ring',
+    'redforge_iron_ring',
+    'thundersteppe_copper_ring',
+    'glasssand_bright_ring',
+    'undercity_scale_ring',
+    'gravefrost_bone_ring',
+    'stormneedle_ring',
+    'blackwood_charcoal_ring',
+  ],
 };
 
 interface SupplementalEquipmentArt {
@@ -912,6 +939,7 @@ function getZoneThemeEquipmentId(themeId: string, slot: Exclude<EquipSlot, 'acce
   if (slot === 'belt') return `zone_${themeId}_belt`;
   if (slot === 'earring') return `zone_${themeId}_earring`;
   if (slot === 'necklace') return `zone_${themeId}_necklace`;
+  if (slot === 'ring') return index >= ZONE_THEME_BASE_SLOTS.length ? `zone_${themeId}_signet` : `zone_${themeId}_ring`;
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 

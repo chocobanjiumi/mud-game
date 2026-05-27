@@ -10,6 +10,6 @@
     { "assetId": "item_coast_water_zone_serpent_delta_hands_3", "category": "item", "targetId": "zone_serpent_delta_hands_3", "name": "蛇沼三角洲護手", "outputPath": "client/public/images/items/item_coast_water_zone_serpent_delta_hands_3.png", "row": 0, "column": 2 },
     { "assetId": "item_coast_water_zone_serpent_delta_head_1", "category": "item", "targetId": "zone_serpent_delta_head_1", "name": "蛇沼三角洲兜帽", "outputPath": "client/public/images/items/item_coast_water_zone_serpent_delta_head_1.png", "row": 1, "column": 0 },
     { "assetId": "item_coast_water_zone_serpent_delta_necklace", "category": "item", "targetId": "zone_serpent_delta_necklace", "name": "蛇沼三角洲墜飾", "outputPath": "client/public/images/items/item_coast_water_zone_serpent_delta_necklace.png", "row": 1, "column": 1 },
-    { "assetId": "item_coast_water_zone_serpent_delta_ring_5", "category": "item", "targetId": "zone_serpent_delta_ring_5", "name": "蛇沼三角洲指環", "outputPath": "client/public/images/items/item_coast_water_zone_serpent_delta_ring_5.png", "row": 1, "column": 2 }
+    { "assetId": "item_coast_water_zone_serpent_delta_ring", "category": "item", "targetId": "zone_serpent_delta_ring", "name": "蛇沼三角洲指環", "outputPath": "client/public/images/items/item_coast_water_zone_serpent_delta_ring.png", "row": 1, "column": 2 }
   ]
 }

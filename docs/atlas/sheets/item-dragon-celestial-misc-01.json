@@ -5,8 +5,8 @@
   "rows": 3,
   "sheetPath": "client/public/images/atlas/source-ai/item_dragon_celestial_misc_01.sheet.png",
   "targets": [
-    { "assetId": "item_dragon_celestial_zone_sunspire_ring_10", "category": "item", "targetId": "zone_sunspire_ring_10", "name": "日耀尖塔戒璽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_ring_10.png", "row": 0, "column": 0 },
-    { "assetId": "item_dragon_celestial_zone_sunspire_ring_5", "category": "item", "targetId": "zone_sunspire_ring_5", "name": "日耀尖塔指環", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_ring_5.png", "row": 0, "column": 1 },
+    { "assetId": "item_dragon_celestial_zone_sunspire_signet", "category": "item", "targetId": "zone_sunspire_signet", "name": "日耀尖塔戒璽", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_signet.png", "row": 0, "column": 0 },
+    { "assetId": "item_dragon_celestial_zone_sunspire_ring", "category": "item", "targetId": "zone_sunspire_ring", "name": "日耀尖塔指環", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_ring.png", "row": 0, "column": 1 },
     { "assetId": "item_dragon_celestial_zone_sunspire_weapon_7", "category": "item", "targetId": "sunspire_giant_sword", "name": "日耀尖塔戰刃", "outputPath": "client/public/images/items/item_dragon_celestial_zone_sunspire_weapon_7.png", "row": 0, "column": 2 },
     { "assetId": "item_dragon_celestial_cave_mine_holytome_crystal", "category": "item", "targetId": "crystal_holy_tome", "name": "水晶聖典", "outputPath": "client/public/images/items/item_dragon_celestial_cave_mine_holytome_crystal.png", "row": 1, "column": 0 },
     { "assetId": "item_dragon_celestial_fire_ash_elder_dragon_fang", "category": "item", "targetId": "elder_dragon_fang_spear", "name": "古龍之牙", "outputPath": "client/public/images/items/item_dragon_celestial_fire_ash_elder_dragon_fang.png", "row": 1, "column": 1 },

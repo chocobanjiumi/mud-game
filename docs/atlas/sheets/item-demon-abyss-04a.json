@@ -12,7 +12,7 @@
     { "assetId": "item_demon_abyss_zone_sunken_catacombs_hands_3", "category": "item", "targetId": "zone_sunken_catacombs_hands_3", "name": "沉沒墓窟護手", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_hands_3.png", "row": 1, "column": 1 },
     { "assetId": "item_demon_abyss_zone_sunken_catacombs_head_1", "category": "item", "targetId": "zone_sunken_catacombs_head_1", "name": "沉沒墓窟兜帽", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_head_1.png", "row": 1, "column": 2 },
     { "assetId": "item_demon_abyss_zone_sunken_catacombs_necklace", "category": "item", "targetId": "zone_sunken_catacombs_necklace", "name": "沉沒墓窟墜飾", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_necklace.png", "row": 2, "column": 0 },
-    { "assetId": "item_demon_abyss_zone_sunken_catacombs_ring_10", "category": "item", "targetId": "zone_sunken_catacombs_ring_10", "name": "沉沒墓窟戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_ring_10.png", "row": 2, "column": 1 },
-    { "assetId": "item_demon_abyss_zone_sunken_catacombs_ring_5", "category": "item", "targetId": "zone_sunken_catacombs_ring_5", "name": "沉沒墓窟指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_ring_5.png", "row": 2, "column": 2 }
+    { "assetId": "item_demon_abyss_zone_sunken_catacombs_signet", "category": "item", "targetId": "zone_sunken_catacombs_signet", "name": "沉沒墓窟戒璽", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_signet.png", "row": 2, "column": 1 },
+    { "assetId": "item_demon_abyss_zone_sunken_catacombs_ring", "category": "item", "targetId": "zone_sunken_catacombs_ring", "name": "沉沒墓窟指環", "outputPath": "client/public/images/items/item_demon_abyss_zone_sunken_catacombs_ring.png", "row": 2, "column": 2 }
   ]
 }

@@ -14,8 +14,8 @@
     { "assetId": "item_lost_capital_zone_lost_capital_hands_3", "category": "item", "targetId": "zone_lost_capital_hands_3", "name": "失落王都護手", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_hands_3.png", "row": 1, "column": 2 },
     { "assetId": "item_lost_capital_zone_lost_capital_head_1", "category": "item", "targetId": "zone_lost_capital_head_1", "name": "失落王都兜帽", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_head_1.png", "row": 1, "column": 3 },
     { "assetId": "item_lost_capital_zone_lost_capital_necklace", "category": "item", "targetId": "zone_lost_capital_necklace", "name": "失落王都墜飾", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_necklace.png", "row": 2, "column": 0 },
-    { "assetId": "item_lost_capital_zone_lost_capital_ring_10", "category": "item", "targetId": "zone_lost_capital_ring_10", "name": "失落王都戒璽", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_ring_10.png", "row": 2, "column": 1 },
-    { "assetId": "item_lost_capital_zone_lost_capital_ring_5", "category": "item", "targetId": "zone_lost_capital_ring_5", "name": "失落王都指環", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_ring_5.png", "row": 2, "column": 2 },
+    { "assetId": "item_lost_capital_zone_lost_capital_signet", "category": "item", "targetId": "zone_lost_capital_signet", "name": "失落王都戒璽", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_signet.png", "row": 2, "column": 1 },
+    { "assetId": "item_lost_capital_zone_lost_capital_ring", "category": "item", "targetId": "zone_lost_capital_ring", "name": "失落王都指環", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_ring.png", "row": 2, "column": 2 },
     { "assetId": "item_lost_capital_zone_lost_capital_weapon_7", "category": "item", "targetId": "lost_capital_giant_sword", "name": "失落王都戰刃", "outputPath": "client/public/images/items/item_lost_capital_zone_lost_capital_weapon_7.png", "row": 2, "column": 3 }
   ]
 }

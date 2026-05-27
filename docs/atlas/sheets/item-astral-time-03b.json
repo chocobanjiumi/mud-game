@@ -7,8 +7,8 @@
   "targets": [
     { "assetId": "item_astral_time_zone_time_ruins_head_1", "category": "item", "targetId": "zone_time_ruins_head_1", "name": "時間廢墟兜帽", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_head_1.png", "row": 0, "column": 0 },
     { "assetId": "item_astral_time_zone_time_ruins_necklace", "category": "item", "targetId": "zone_time_ruins_necklace", "name": "時間廢墟墜飾", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_necklace.png", "row": 0, "column": 1 },
-    { "assetId": "item_astral_time_zone_time_ruins_ring_10", "category": "item", "targetId": "zone_time_ruins_ring_10", "name": "時間廢墟戒璽", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_ring_10.png", "row": 0, "column": 2 },
-    { "assetId": "item_astral_time_zone_time_ruins_ring_5", "category": "item", "targetId": "zone_time_ruins_ring_5", "name": "時間廢墟指環", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_ring_5.png", "row": 1, "column": 0 },
+    { "assetId": "item_astral_time_zone_time_ruins_signet", "category": "item", "targetId": "zone_time_ruins_signet", "name": "時間廢墟戒璽", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_signet.png", "row": 0, "column": 2 },
+    { "assetId": "item_astral_time_zone_time_ruins_ring", "category": "item", "targetId": "zone_time_ruins_ring", "name": "時間廢墟指環", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_ring.png", "row": 1, "column": 0 },
     { "assetId": "item_astral_time_zone_time_ruins_weapon_7", "category": "item", "targetId": "time_ruins_giant_sword", "name": "時間廢墟戰刃", "outputPath": "client/public/images/items/item_astral_time_zone_time_ruins_weapon_7.png", "row": 1, "column": 1 }
   ]
 }
