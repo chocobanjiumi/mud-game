@@ -90,6 +90,13 @@ describe('WorldManager respawn policy', () => {
     expect(world.handleMove('p1', 'south')?.room.id).toBe('training_ground');
   });
 
+  it('keeps world movement working through instance entrance rooms', () => {
+    world.placePlayer('p1', 'old_well');
+
+    expect(world.handleMove('p1', 'west')?.room.id).toBe('cave_entrance');
+    expect(world.handleMove('p1', 'east')?.room.id).toBe('old_well');
+  });
+
   it('moves cross-room targets into approaching state and arrives after ticks', () => {
     const slime = world.findMonsterInRoom('village_gate', 'slime');
     expect(slime).toBeDefined();
