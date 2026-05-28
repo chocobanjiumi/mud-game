@@ -2090,7 +2090,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '石柱旁有被暗影侵蝕的箭孔和精靈守衛殘甲，說明這裡曾經爆發過長期防衛戰。水晶光芒會指向暗影空地與古樹心庭，玩家若完成森林線索，可在此回收證物、觸發下一段區域推進或判斷通往火山的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'deep_forest', description: '返回森林深處' },
-      { direction: 'south', targetRoomId: 'volcano_base', description: '遺跡南方的空氣越來越灼熱，通往火山地帶' },
+      {
+        direction: 'south',
+        targetRoomId: 'volcano_base',
+        description: '遺跡南側的白石階先穿過焦黑樹根與熱風荒地，繞過兩道裂谷後才抵達火山山腳',
+        edgeKind: 'long_path',
+        edgeNote: '精靈遺跡到火山山腳跨越森林邊界與熱風荒地，屬於跨區長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 50 },
@@ -3593,7 +3599,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '遠處的火山口冒著縷縷白煙。地面的溫度比平常高出許多，' +
       '偶爾能感受到腳下輕微的震動。北面可退回精靈遺跡，南側熔岩小徑通往高處，東邊礦坑入口有矮人守衛；玩家可 inspect 火山灰爪印判斷火蜥蜴巡邏方向。',
     exits: [
-      { direction: 'north', targetRoomId: 'elf_ruins', description: '穿過灼熱的荒野回到精靈遺跡' },
+      {
+        direction: 'north',
+        targetRoomId: 'elf_ruins',
+        description: '沿北側冷卻熔岩坡穿過熱風荒地與焦黑樹根，繞回暗影森林裡的精靈遺跡',
+        edgeKind: 'long_path',
+        edgeNote: '火山山腳回精靈遺跡需要跨越火山邊界與焦黑林緣，屬於跨區長路徑。',
+      },
       { direction: 'south', targetRoomId: 'lava_trail', description: '一條小徑通往火山上方' },
       { direction: 'east', targetRoomId: 'dwarf_mine', description: '山腳旁有一個礦坑入口' },
       { direction: 'west', targetRoomId: 'volcano_ash_field', description: '灰燼荒地在西側延展' },
@@ -3683,8 +3695,20 @@ export const ROOMS: Record<string, RoomDef> = {
       '牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'north', targetRoomId: 'sulfur_valley', description: '退回硫磺谷' },
-      { direction: 'east', targetRoomId: 'fire_temple_entrance', description: '岩壁上有一道石門' },
-      { direction: 'west', targetRoomId: 'volcano_lava_bridge', description: '一道熔岩橋橫跨火山口' },
+      {
+        direction: 'east',
+        targetRoomId: 'fire_temple_entrance',
+        description: '東側石門需沿火山口內壁繞過兩段灼熱棧道，才會抵達火焰神殿入口',
+        edgeKind: 'long_path',
+        edgeNote: '火山口到火焰神殿入口不是相鄰格，需要沿內壁棧道繞行。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'volcano_lava_bridge',
+        description: '西側熔岩橋要先沿火山口外緣下降，再跨過碎裂玄武岩橋面才能抵達',
+        edgeKind: 'long_path',
+        edgeNote: '火山口到熔岩橋高度差明顯，屬於外緣下降後跨橋的長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 3, respawnSeconds: 45 },
@@ -3772,7 +3796,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '門上的古代文字似乎是矮人語，記載著神殿的歷史和警告。' +
       '門內傳來低沉的轟鳴聲和熱氣。西面回火山口，北面黑曜石洞反射著火光，南側內部通道通往火山頂；玩家可 inspect 矮人符文找寶庫密碼。',
     exits: [
-      { direction: 'west', targetRoomId: 'volcano_crater', description: '回到火山口' },
+      {
+        direction: 'west',
+        targetRoomId: 'volcano_crater',
+        description: '西側神殿石階沿內壁折返，穿過火盆與熱風棧道後才回到火山口邊緣',
+        edgeKind: 'long_path',
+        edgeNote: '火焰神殿入口回火山口需要沿內壁石階折返，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'obsidian_cave', description: '回到黑曜石洞' },
       { direction: 'south', targetRoomId: 'volcano_summit', description: '通往火山頂的內部通道' },
     ],
@@ -3866,7 +3896,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '岩石巨人如同山峰的延伸般矗立不動，火焰精靈則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
     exits: [
       { direction: 'north', targetRoomId: 'fire_temple_entrance', description: '回到火焰神殿入口' },
-      { direction: 'east', targetRoomId: 'volcano_colossus_arena', description: '熔岩競技台在東側震動' },
+      {
+        direction: 'east',
+        targetRoomId: 'volcano_colossus_arena',
+        description: '東側必須沿山巔封印鏈外圈繞行，穿過震動裂縫後才到熔岩巨像競技台',
+        edgeKind: 'long_path',
+        edgeNote: '火山頂到熔岩巨像競技台需要繞過山巔封印鏈與裂縫，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 65 },
@@ -3914,7 +3950,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_ash_field', description: '回到火山灰原' },
-      { direction: 'east', targetRoomId: 'volcano_crater', description: '橋尾接火山口邊緣' },
+      {
+        direction: 'east',
+        targetRoomId: 'volcano_crater',
+        description: '橋尾先貼著岩漿湖外圈緩慢上升，越過碎裂橋墩後才接回火山口邊緣安全處',
+        edgeKind: 'long_path',
+        edgeNote: '熔岩橋到火山口需要沿岩漿湖外圈上升，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 45 },
@@ -3934,7 +3976,13 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西側管線通往熔岩橋但維修階已坍塌，東側能聽見礦坑敲擊聲但門軌卡死，南方通向黑曜石採場。玩家可 inspect 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。',
     exits: [
-      { direction: 'south', targetRoomId: 'volcano_obsidian_quarry', description: '下層軌道通往黑曜石採場' },
+      {
+        direction: 'south',
+        targetRoomId: 'volcano_obsidian_quarry',
+        description: '南側下層軌道先繞過蒸汽管與斷裂升降架，下降兩層後才抵達黑曜石採場',
+        edgeKind: 'long_path',
+        edgeNote: '蒸汽升降梯到黑曜石採場存在高度差與繞行軌道，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
@@ -3976,7 +4024,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'west', targetRoomId: 'dwarf_mine', description: '走廊回到矮人礦坑' },
-      { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '貨道通往鍛造庫房' },
+      {
+        direction: 'south',
+        targetRoomId: 'volcano_forge_storage',
+        description: '南側貨道穿過兩道黑鐵閘門與熱風管線，繞下兵房後方才到鍛造庫房',
+        edgeKind: 'long_path',
+        edgeNote: '餘燼兵房到鍛造庫房需要穿越後勤貨道與熱風管線，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
@@ -4021,7 +4075,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴但採場邊坡已崩落。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_cave', description: '採場入口回黑曜石洞' },
-      { direction: 'north', targetRoomId: 'volcano_steam_lift', description: '軌道通往蒸汽升降梯' },
+      {
+        direction: 'north',
+        targetRoomId: 'volcano_steam_lift',
+        description: '北側礦車軌道沿採場邊坡爬升，繞過崩落黑玻璃台階後才抵達蒸汽升降梯',
+        edgeKind: 'long_path',
+        edgeNote: '黑曜石採場到蒸汽升降梯需要沿採場邊坡爬升，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'rock_giant', maxCount: 1, respawnSeconds: 70 },
@@ -4043,7 +4103,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回硫磺熱泉，東面接火焰神殿入口，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '石階下方是硫磺熱泉' },
-      { direction: 'east', targetRoomId: 'fire_temple_entrance', description: '石階接回火焰神殿入口' },
+      {
+        direction: 'east',
+        targetRoomId: 'fire_temple_entrance',
+        description: '東側玄武岩階沿內壁折返上升，穿過落灰刻痕與火盆外廊後才接回神殿入口',
+        edgeKind: 'long_path',
+        edgeNote: '玄武岩階到火焰神殿入口需要沿內壁外廊折返，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'volcano_colossus_arena', description: '高台通往巨像競技台' },
     ],
     monsters: [
@@ -4066,7 +4132,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '鍛造大廳東側的庫房堆滿鐵錠、黑曜石板與標記清楚的工具箱，冷卻架上還冒著白煙，牆角傳來低沉爐鳴。西面回鍛造大廳，北側貨道接餘燼兵房。玩家可 search 鎖箱取得材料樣本，inspect 出庫牌追蹤鍛造任務需求，也要處理從通風口竄出的火元素。這裡是火山資源線的城鎮服務延伸點，貨架按武器、護甲、飾品和消耗品分區，方便玩家確認缺少哪種礦材。牆上封蠟記錄還標示哪些箱子屬於公會訂單，錯拿會觸發守衛盤查。地上的紅色箭頭指向熔爐、礦坑與兵房三個出口，讓滿載材料的玩家能快速選擇加工、補給或撤退方向。',
     exits: [
       { direction: 'west', targetRoomId: 'forge_hall', description: '庫房門回鍛造大廳' },
-      { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '貨道通往餘燼兵房' },
+      {
+        direction: 'north',
+        targetRoomId: 'volcano_ember_barracks',
+        description: '北側貨道沿熱風管線持續上行，穿過兩道黑鐵閘門後才接回餘燼兵房後門',
+        edgeKind: 'long_path',
+        edgeNote: '鍛造庫房到餘燼兵房需要穿越後勤貨道與黑鐵閘門，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 1, respawnSeconds: 60 },
@@ -4089,7 +4161,13 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，玩家可 inspect 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。',
     exits: [
-      { direction: 'west', targetRoomId: 'volcano_summit', description: '退回火山頂' },
+      {
+        direction: 'west',
+        targetRoomId: 'volcano_summit',
+        description: '西側退路沿封印鏈外圈繞過裂縫與噴火孔，最後才回到火山頂的安全岩脊',
+        edgeKind: 'long_path',
+        edgeNote: '熔岩巨像競技台回火山頂需要沿封印鏈外圈繞行，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'volcano_basalt_steps', description: '封印台邊緣接玄武岩階' },
     ],
     monsters: [
