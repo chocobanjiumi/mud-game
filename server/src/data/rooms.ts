@@ -4503,7 +4503,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '巨大的雪人在極光下遊蕩，似乎被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
     exits: [
       { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖' },
-      { direction: 'east', targetRoomId: 'ice_castle_gate', description: '極光指引的方向有一座城堡' },
+      { direction: 'east', targetRoomId: 'ice_castle_gate', description: '東側極光之地沿彩光雪脊斜行，穿過冰晶風口與城堡外坡抵達冰封城堡大門', edgeKind: 'long_path', edgeNote: '極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_runestone_circle', description: '符石環在極光下發亮' },
     ],
     monsters: [
@@ -4562,7 +4562,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。南面退回冰晶洞穴，西側極光之地提供繞行視野，北面鎖住的大門通往冰封王座。玩家可 inspect 龍紋確認開門條件，search 石階找到霜巨人巡邏痕跡，也要小心雕像突然甦醒。這裡是通往 Boss 區的地標門檻，描述清楚提示鑰匙、隊伍與寒冷準備。城牆上的冰燈會依守衛警戒改變亮度，哨塔方向也提供撤退或繞行路線，避免隊伍直接卡在封門前。',
     exits: [
       { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴' },
-      { direction: 'west', targetRoomId: 'aurora_field', description: '回到極光之地' },
+      { direction: 'west', targetRoomId: 'aurora_field', description: '西側冰封城堡大門沿城堡外坡折返，穿過冰晶風口與彩光雪脊回到極光之地', edgeKind: 'long_path', edgeNote: '冰封城堡大門回極光之地需沿城堡外坡與彩光雪脊折返，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ice_throne', description: '推開冰門，進入城堡', locked: true, keyItemId: 'gold_key' },
       { direction: 'east', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '城牆旁有結冰哨塔' },
     ],

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T13:56:28.404Z",
+  "generatedAt": "2026-05-28T13:58:45.270Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -1143,20 +1143,11 @@
       "cardinal mismatch: cave_entrance(9,-6) east-> old_well(6,4)",
       "cardinal mismatch: cave_entrance(9,-6) north-> abandoned_minecart(9,2)",
       "cardinal mismatch: snowfield_entrance(-26,-19) east-> forest_entrance(-6,12)",
-      "cardinal mismatch: aurora_field(-26,-23) east-> ice_castle_gate(-25,-22)",
-      "cardinal mismatch: ice_castle_gate(-25,-22) west-> aurora_field(-26,-23)",
       "cardinal mismatch: ice_throne(-25,-23) north-> demon_border(49,18)",
       "cardinal mismatch: frozen_wastes_dragon_breath_rift(-24,-23) north-> demon_border(49,18)",
       "cardinal mismatch: hunter_lodge(6,1) west-> ancient_treehouse(-5,12)",
       "cardinal mismatch: abandoned_minecart(9,2) south-> cave_entrance(9,-6)",
-      "cardinal mismatch: riverside_fishing(6,3) east-> windmill_interior(8,3)",
-      "cardinal mismatch: windmill_interior(8,3) west-> riverside_fishing(6,3)",
-      "cardinal mismatch: firefly_trail(-5,13) south-> deep_poison_swamp(-8,13)",
-      "cardinal mismatch: deep_poison_swamp(-8,13) north-> firefly_trail(-5,13)",
-      "cardinal mismatch: elf_altar(-4,13) south-> withered_forest(-7,14)",
-      "cardinal mismatch: withered_forest(-7,14) north-> elf_altar(-4,13)",
-      "cardinal mismatch: demon_border(49,18) south-> ice_throne(-25,-23)",
-      "cardinal mismatch: whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
+      "cardinal mismatch: demon_border(49,18) south-> ice_throne(-25,-23)"
     ]
   },
   "worldCoordinate": {
@@ -1881,32 +1872,13 @@
       "cave_entrance(9,-6) east-> old_well(6,4)",
       "cave_entrance(9,-6) north-> abandoned_minecart(9,2)",
       "snowfield_entrance(-26,-19) east-> forest_entrance(-6,12)",
-      "aurora_field(-26,-23) east-> ice_castle_gate(-25,-22)",
-      "ice_castle_gate(-25,-22) west-> aurora_field(-26,-23)",
       "ice_throne(-25,-23) north-> demon_border(49,18)",
       "frozen_wastes_dragon_breath_rift(-24,-23) north-> demon_border(49,18)",
       "hunter_lodge(6,1) west-> ancient_treehouse(-5,12)",
       "abandoned_minecart(9,2) south-> cave_entrance(9,-6)",
-      "riverside_fishing(6,3) east-> windmill_interior(8,3)",
-      "windmill_interior(8,3) west-> riverside_fishing(6,3)",
-      "firefly_trail(-5,13) south-> deep_poison_swamp(-8,13)",
-      "deep_poison_swamp(-8,13) north-> firefly_trail(-5,13)",
-      "elf_altar(-4,13) south-> withered_forest(-7,14)",
-      "withered_forest(-7,14) north-> elf_altar(-4,13)",
-      "demon_border(49,18) south-> ice_throne(-25,-23)",
-      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
+      "demon_border(49,18) south-> ice_throne(-25,-23)"
     ],
-    "cardinalMismatchesWithinZone": [
-      "aurora_field(-26,-23) east-> ice_castle_gate(-25,-22)",
-      "ice_castle_gate(-25,-22) west-> aurora_field(-26,-23)",
-      "riverside_fishing(6,3) east-> windmill_interior(8,3)",
-      "windmill_interior(8,3) west-> riverside_fishing(6,3)",
-      "firefly_trail(-5,13) south-> deep_poison_swamp(-8,13)",
-      "deep_poison_swamp(-8,13) north-> firefly_trail(-5,13)",
-      "elf_altar(-4,13) south-> withered_forest(-7,14)",
-      "withered_forest(-7,14) north-> elf_altar(-4,13)",
-      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
-    ],
+    "cardinalMismatchesWithinZone": [],
     "cardinalMismatchesAcrossZones": [
       "plains->dark_forest: crossroads(7,4) south-> forest_entrance(-6,12)",
       "plains->crystal_cave: old_well(6,4) west-> cave_entrance(9,-6)",
@@ -1923,18 +1895,14 @@
       "demon_territory->frozen_wastes: demon_border(49,18) south-> ice_throne(-25,-23)"
     ],
     "cardinalMismatchHotspots": [
-      "dark_forest: 4",
       "plains->dark_forest: 2",
       "plains->crystal_cave: 2",
       "dark_forest->plains: 2",
       "crystal_cave->plains: 2",
-      "frozen_wastes: 2",
       "frozen_wastes->demon_territory: 2",
-      "plains: 2",
       "dark_forest->frozen_wastes: 1",
       "frozen_wastes->dark_forest: 1",
-      "demon_territory->frozen_wastes: 1",
-      "whispering_valley: 1"
+      "demon_territory->frozen_wastes: 1"
     ]
   },
   "design": {
@@ -3019,6 +2987,8 @@
     "volcano_forge_storage:west->forge_hall (long_path) 鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。",
     "volcano_forge_storage:north->volcano_ember_barracks (long_path) 鍛造庫房到餘燼兵房需要穿越後勤貨道與黑鐵閘門，屬於長路徑。",
     "volcano_colossus_arena:west->volcano_summit (long_path) 熔岩巨像競技台回火山頂需要沿封印鏈外圈繞行，屬於長路徑。",
+    "aurora_field:east->ice_castle_gate (long_path) 極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。",
+    "ice_castle_gate:west->aurora_field (long_path) 冰封城堡大門回極光之地需沿城堡外坡與彩光雪脊折返，實際路程長於相鄰一格。",
     "frozen_wastes_snowdrift_pass:north->blizzard_path (long_path) 積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。",
     "frozen_wastes_frostpine_grove:south->mountain_camp (long_path) 霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。",
     "frozen_wastes_frostpine_grove:east->wolf_den (long_path) 霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。",
@@ -3027,6 +2997,8 @@
     "frozen_wastes_runestone_circle:south->frozen_wastes_frostpine_grove (long_path) 符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。",
     "frozen_wastes_runestone_circle:north->frozen_wastes_frozen_watchpost (long_path) 符石環到結冰哨塔需穿過巡邏標記與斷冰橋陰影，實際路程長於相鄰一格。",
     "frozen_wastes_frozen_watchpost:south->frozen_wastes_runestone_circle (long_path) 結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。",
+    "riverside_fishing:east->windmill_interior (long_path) 河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。",
+    "windmill_interior:west->riverside_fishing (long_path) 風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。",
     "plains_hare_burrows:east->plains_entrance (long_path) 野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。",
     "plains_wolf_tracks:east->grass_path (long_path) 狼跡草坡到草原小徑需要沿狼爪印、倒伏高草與破木欄繞行，屬於平原內長路徑。",
     "plains_bandit_hideout:north->abandoned_minecart (long_path) 盜賊藏身處到廢棄礦車道需要沿矮丘、車轍斜坡與碎石軌道繞行，屬於平原內長路徑。",
@@ -3036,6 +3008,10 @@
     "plains_broken_bridge:west->crossroads (long_path) 斷木橋回十字路口需要沿泥路、倒木與溪水缺口繞行，屬於平原內長路徑。",
     "plains_stone_circle:east->old_well (long_path) 古石環到古井需要穿過倒伏草線、烏鴉羽痕與荒草路，屬於平原內長路徑。",
     "plains_watch_mound:east->crossroads (long_path) 守望土丘回十字路口需要沿旗杆影子、草浪與舊營火灰下坡，屬於平原內長路徑。",
+    "firefly_trail:south->deep_poison_swamp (long_path) 螢火蟲小徑到毒霧沼澤深處需沿熄光苔徑與毒霧帶下沉，實際路程長於相鄰一格。",
+    "deep_poison_swamp:north->firefly_trail (long_path) 毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。",
+    "elf_altar:south->withered_forest (long_path) 精靈祭壇到枯萎之林需沿銀光石階與破裂結界下行，實際路程長於相鄰一格。",
+    "withered_forest:north->elf_altar (long_path) 枯萎之林回精靈祭壇需沿枯枝線與銀光石階回穿，實際路程長於相鄰一格。",
     "dark_forest_spider_web:west->dense_trail (long_path) 蛛網密室回密林小道需要穿過封閉蛛網枝縫，屬於長路徑。",
     "dark_forest_raven_perch:east->firefly_trail (long_path) 黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。",
     "dark_forest_raven_perch:south->deep_poison_swamp (long_path) 黑鴉棲枝到劇毒沼澤存在高枝到沼地的落差，屬於長路徑。",
@@ -3094,6 +3070,7 @@
     "whispering_valley_spider_grotto:north->whispering_valley_old_shrine (long_path) 蛛網岩洞北側需穿過蛛絲遮蔽的狹縫與舊刻痕，才會抵達溪畔神龕。",
     "whispering_valley_spider_grotto:south->whispering_valley_mist_pool (long_path) 蛛網岩洞南側坡道濕滑且曲折，會先繞過塌岸再落到霧潭邊。",
     "whispering_valley_fallen_log:south->whispering_valley_fishing_bend (long_path) 倒木淺橋南側需沿上游水線退回釣魚灣，並非直接相鄰的短路徑。",
+    "whispering_valley_fallen_log:west->whispering_valley_echo_rocks (long_path) 倒木淺橋到回音岩群需沿濕滑樹幹與迴聲水灣橫移，實際路程長於相鄰一格。",
     "whispering_valley_fallen_log:east->whispering_valley_mist_pool (long_path) 倒木東端要跨過濕滑樹幹與塌陷潭岸，實際路程長於相鄰一格。",
     "whispering_valley_mist_pool:west->whispering_valley_fallen_log (long_path) 霧潭西側需沿塌岸攀回倒木東端，潮濕地形讓路程長於相鄰一格。",
     "whispering_valley_mist_pool:north->whispering_valley_spider_grotto (long_path) 霧潭北側濕坡會繞進蛛網遮蔽的岩縫，抵達洞口前有一段曲折上坡。",

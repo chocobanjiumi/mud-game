@@ -99,7 +99,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示玩家能採集、釣魚或追蹤被沖來的旅人遺物。',
     exits: [
       { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田' },
-      { direction: 'east', targetRoomId: 'windmill_interior', description: '河邊有座古老的水車風車' },
+      { direction: 'east', targetRoomId: 'windmill_interior', description: '東側河邊釣場沿濕滑河岸繞過水車溝渠，穿過石板小徑才進入風車內部', edgeKind: 'long_path', edgeNote: '河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 30 },
@@ -124,7 +124,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝。',
     exits: [
-      { direction: 'west', targetRoomId: 'riverside_fishing', description: '走出風車回到河邊' },
+      { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'long_path', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'windmill_farm', description: '從側門走向風車農場' },
     ],
     monsters: [
@@ -418,7 +418,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '灌木下有精靈胸針、細小骨片和被拖曳的鞋印，提醒玩家這裡既是主路也是伏擊線索點。螢火會短暫聚成箭頭，指向祭壇或毒霧沼澤，適合用 look 判斷下一步任務方向，也能作為受傷時撤回密林小道的光標與安全提示。',
     exits: [
       { direction: 'west', targetRoomId: 'dense_trail', description: '沿著光點回到密林小道' },
-      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '螢火蟲越來越少，空氣越來越潮濕' },
+      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側螢火蟲小徑沿熄光苔徑下沉，穿過潮濕樹根與紫毒霧帶抵達毒霧沼澤深處', edgeKind: 'long_path', edgeNote: '螢火蟲小徑到毒霧沼澤深處需沿熄光苔徑與毒霧帶下沉，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'elf_altar', description: '一道柔和的銀光從東方透出' },
     ],
     monsters: [
@@ -447,7 +447,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '四處傳來此起彼伏的咕嚕聲和蛙鳴——這裡的一切都帶著毒性。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'firefly_trail', description: '退回螢火蟲小徑' },
+      { direction: 'north', targetRoomId: 'firefly_trail', description: '北側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'long_path', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
     ],
     monsters: [
@@ -475,7 +475,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '水晶球內偶爾浮現森林深處與古樹心庭的影像，旁邊石盆殘留可採集的銀色露水。玩家可在此 inspect 月亮紋章，確認詛咒來源、取得支線提示，或沿南側道路追蹤枯萎蔓延的方向，並判斷結界仍能提供短暫庇護。',
     exits: [
       { direction: 'west', targetRoomId: 'firefly_trail', description: '回到螢火蟲小徑' },
-      { direction: 'south', targetRoomId: 'withered_forest', description: '祭壇背後的森林一片枯萎' },
+      { direction: 'south', targetRoomId: 'withered_forest', description: '南側精靈祭壇沿銀光石階下行，穿過破裂結界與灰白枯枝線抵達枯萎之林', edgeKind: 'long_path', edgeNote: '精靈祭壇到枯萎之林需沿銀光石階與破裂結界下行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'treant', maxCount: 2, respawnSeconds: 70 },
@@ -503,7 +503,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '枯木之間偶爾傳來沉重的腳步聲——暗黑樹人在這裡遊蕩。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'elf_altar', description: '北方透出一線銀光' },
+      { direction: 'north', targetRoomId: 'elf_altar', description: '北側枯萎之林沿灰白枯枝線回穿，越過破裂結界與銀光石階回到精靈祭壇', edgeKind: 'long_path', edgeNote: '枯萎之林回精靈祭壇需沿枯枝線與銀光石階回穿，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'dark_treehollow', description: '最大的枯木底部有個漆黑的洞穴' },
       { direction: 'east', targetRoomId: 'deep_forest', description: '枯林邊緣連接著森林深處' },
     ],
@@ -4904,7 +4904,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '倒木淺橋南側需沿上游水線退回釣魚灣，並非直接相鄰的短路徑。',
       },
-      { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '倒木西端靠近回音岩群' },
+      { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '西側倒木淺橋沿濕滑樹幹橫移，穿過迴聲水灣與碎岩淺灘抵達回音岩群', edgeKind: 'long_path', edgeNote: '倒木淺橋到回音岩群需沿濕滑樹幹與迴聲水灣橫移，實際路程長於相鄰一格。' },
       {
         direction: 'east',
         targetRoomId: 'whispering_valley_mist_pool',
