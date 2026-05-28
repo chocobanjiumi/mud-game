@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T13:47:22.710Z",
+  "generatedAt": "2026-05-28T13:50:30.420Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -1161,14 +1161,7 @@
       "cardinal mismatch: elf_altar(-4,13) south-> withered_forest(-7,14)",
       "cardinal mismatch: withered_forest(-7,14) north-> elf_altar(-4,13)",
       "cardinal mismatch: demon_border(49,18) south-> ice_throne(-25,-23)",
-      "cardinal mismatch: whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)",
-      "cardinal mismatch: pilgrim_road_bell_shrine(6,9) south-> pilgrim_road_caravan_rut(7,10)",
-      "cardinal mismatch: pilgrim_road_caravan_rut(7,10) north-> pilgrim_road_bell_shrine(6,9)",
-      "cardinal mismatch: pilgrim_road_abandoned_inn(8,10) south-> pilgrim_road_thorn_cut(7,11)",
-      "cardinal mismatch: pilgrim_road_thorn_cut(7,11) north-> pilgrim_road_abandoned_inn(8,10)",
-      "cardinal mismatch: pilgrim_road_bandit_watch(9,11) east-> pilgrim_road_sunset_camp(11,10)",
-      "cardinal mismatch: pilgrim_road_old_cemetery_turn(10,9) south-> pilgrim_road_sunset_camp(11,10)",
-      "cardinal mismatch: pilgrim_road_sunset_camp(11,10) north-> pilgrim_road_old_cemetery_turn(10,9)"
+      "cardinal mismatch: whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
     ]
   },
   "worldCoordinate": {
@@ -1911,14 +1904,7 @@
       "elf_altar(-4,13) south-> withered_forest(-7,14)",
       "withered_forest(-7,14) north-> elf_altar(-4,13)",
       "demon_border(49,18) south-> ice_throne(-25,-23)",
-      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)",
-      "pilgrim_road_bell_shrine(6,9) south-> pilgrim_road_caravan_rut(7,10)",
-      "pilgrim_road_caravan_rut(7,10) north-> pilgrim_road_bell_shrine(6,9)",
-      "pilgrim_road_abandoned_inn(8,10) south-> pilgrim_road_thorn_cut(7,11)",
-      "pilgrim_road_thorn_cut(7,11) north-> pilgrim_road_abandoned_inn(8,10)",
-      "pilgrim_road_bandit_watch(9,11) east-> pilgrim_road_sunset_camp(11,10)",
-      "pilgrim_road_old_cemetery_turn(10,9) south-> pilgrim_road_sunset_camp(11,10)",
-      "pilgrim_road_sunset_camp(11,10) north-> pilgrim_road_old_cemetery_turn(10,9)"
+      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
     ],
     "cardinalMismatchesWithinZone": [
       "magma_river(33,22) south-> obsidian_cave(33,24)",
@@ -1934,14 +1920,7 @@
       "deep_poison_swamp(-8,13) north-> firefly_trail(-5,13)",
       "elf_altar(-4,13) south-> withered_forest(-7,14)",
       "withered_forest(-7,14) north-> elf_altar(-4,13)",
-      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)",
-      "pilgrim_road_bell_shrine(6,9) south-> pilgrim_road_caravan_rut(7,10)",
-      "pilgrim_road_caravan_rut(7,10) north-> pilgrim_road_bell_shrine(6,9)",
-      "pilgrim_road_abandoned_inn(8,10) south-> pilgrim_road_thorn_cut(7,11)",
-      "pilgrim_road_thorn_cut(7,11) north-> pilgrim_road_abandoned_inn(8,10)",
-      "pilgrim_road_bandit_watch(9,11) east-> pilgrim_road_sunset_camp(11,10)",
-      "pilgrim_road_old_cemetery_turn(10,9) south-> pilgrim_road_sunset_camp(11,10)",
-      "pilgrim_road_sunset_camp(11,10) north-> pilgrim_road_old_cemetery_turn(10,9)"
+      "whispering_valley_fallen_log(3,8) west-> whispering_valley_echo_rocks(-6,5)"
     ],
     "cardinalMismatchesAcrossZones": [
       "plains->dark_forest: crossroads(7,4) south-> forest_entrance(-6,12)",
@@ -1959,7 +1938,6 @@
       "demon_territory->frozen_wastes: demon_border(49,18) south-> ice_throne(-25,-23)"
     ],
     "cardinalMismatchHotspots": [
-      "pilgrim_road: 7",
       "volcano_zone: 5",
       "dark_forest: 4",
       "plains->dark_forest: 2",
@@ -3299,6 +3277,13 @@
     "moonlit_fen_moonwell:south->moonlit_fen_white_reed_maze (long_path) 月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。",
     "moonlit_fen_white_reed_maze:north->moonlit_fen_moonwell (long_path) 白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。",
     "moonlit_fen_old_canoe_camp:east->moonlit_fen_lunar_altar (long_path) 舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。",
+    "pilgrim_road_bell_shrine:south->pilgrim_road_caravan_rut (long_path) 鐘鈴小祠到商隊車轍需沿祈願石階與深車轍斜行，實際路程長於相鄰一格。",
+    "pilgrim_road_caravan_rut:north->pilgrim_road_bell_shrine (long_path) 商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。",
+    "pilgrim_road_abandoned_inn:south->pilgrim_road_thorn_cut (long_path) 廢棄旅舍到荊棘缺口需穿過後門貨棚與荊棘暗口，實際路程長於相鄰一格。",
+    "pilgrim_road_thorn_cut:north->pilgrim_road_abandoned_inn (long_path) 荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。",
+    "pilgrim_road_bandit_watch:east->pilgrim_road_sunset_camp (long_path) 盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。",
+    "pilgrim_road_old_cemetery_turn:south->pilgrim_road_sunset_camp (long_path) 舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。",
+    "pilgrim_road_sunset_camp:north->pilgrim_road_old_cemetery_turn (long_path) 日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。",
     "ironwood_fort_barracks_hall:east->ironwood_fort_war_room (long_path) 兵營大廳到戰圖室需要穿過軍械牆道與上層轉角，實際路程長於相鄰一格。",
     "ironwood_fort_barracks_hall:north->ironwood_fort_scout_roost (long_path) 兵營大廳北側到斥候棲臺有樓層落差與外牆平台，實際路程長於相鄰一格。",
     "ironwood_fort_signal_tower:west->ironwood_fort_war_room (long_path) 烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。",

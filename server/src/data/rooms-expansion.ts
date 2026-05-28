@@ -17813,7 +17813,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_milestone_cairn', description: '鐘鈴小祠回到里程石堆' },
       { direction: 'east', targetRoomId: 'pilgrim_road_prayer_steps', description: '祈願階在東側' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_caravan_rut', description: '石階落向車轍路' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_caravan_rut', description: '南側鐘鈴小祠沿破碎祈願石階斜落，穿過白石路標與深車轍抵達商隊車轍', edgeKind: 'long_path', edgeNote: '鐘鈴小祠到商隊車轍需沿祈願石階與深車轍斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'shrine_bell_wraith', maxCount: 1, respawnSeconds: 120 },
@@ -17839,7 +17839,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '商隊車轍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_worn_flags', description: '商隊車轍回到舊旗石路' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '石階回到鐘鈴小祠' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '北側商隊車轍沿深車轍上行，穿過白石路標與破碎祈願石階回到鐘鈴小祠', edgeKind: 'long_path', edgeNote: '商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_abandoned_inn', description: '廢棄旅舍在東側' },
     ],
     monsters: [
@@ -17919,7 +17919,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_caravan_rut', description: '廢棄旅舍回到商隊車轍' },
       { direction: 'east', targetRoomId: 'pilgrim_road_ambush_bend', description: '伏擊彎道在東側' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_thorn_cut', description: '後門通往荊棘缺口' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_thorn_cut', description: '南側廢棄旅舍從坍塌後門下切，穿過乾草貨棚與荊棘暗口抵達荊棘缺口', edgeKind: 'long_path', edgeNote: '廢棄旅舍到荊棘缺口需穿過後門貨棚與荊棘暗口，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'caravan_rut_cutpurse', maxCount: 2, respawnSeconds: 95 },
@@ -17945,7 +17945,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '荊棘缺口位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_dry_well', description: '荊棘缺口回到乾井' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '後門回到廢棄旅舍' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '北側荊棘缺口沿荊棘暗口回穿，越過乾草貨棚與坍塌後門回到廢棄旅舍', edgeKind: 'long_path', edgeNote: '荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_smuggler_cache', description: '走私藏點在東側' },
     ],
     monsters: [
@@ -18104,7 +18104,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '盜匪望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_smuggler_cache', description: '盜匪望臺回到走私藏點' },
-      { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '暗哨路通往日暮營地' },
+      { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '東側盜匪望臺沿暗哨土脊橫移，繞過瞭望繩梯與落日營火線抵達日暮營地', edgeKind: 'long_path', edgeNote: '盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'smuggler_cache_guard', maxCount: 1, respawnSeconds: 300 },
@@ -18130,7 +18130,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊墓岔路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_white_marker', description: '舊墓岔路回到白石路標' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '墓道落向日暮營地' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '南側舊墓岔路沿碎墓碑小徑斜落，穿過枯草墓牆與落日營火線抵達日暮營地', edgeKind: 'long_path', edgeNote: '舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'saint_bridge_penitent', maxCount: 1, respawnSeconds: 260 },
@@ -18156,7 +18156,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '日暮營地位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_broken_causeway', description: '日暮營地回到斷石道' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '墓道回到舊墓岔路' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '北側日暮營地沿落日營火線回穿，穿過枯草墓牆與碎墓碑小徑回到舊墓岔路', edgeKind: 'long_path', edgeNote: '日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '聖地門在東側' },
     ],
     monsters: [
