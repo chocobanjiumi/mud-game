@@ -7612,7 +7612,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'redrock_badlands_rustwash_pass', description: '碎坡回到鏽水隘道' },
       { direction: 'east', targetRoomId: 'redrock_badlands_bandit_watch', description: '岩脊通向盜匪哨塔' },
       { direction: 'south', targetRoomId: 'redrock_badlands_red_ore_cut', description: '紅色礦痕往南延伸' },
-      { direction: 'north', targetRoomId: 'redrock_badlands_echo_arch', description: '風聲穿過北側拱岩' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_echo_arch',
+        description: '北面風聲穿過多段碎岩脊與落石坡，繞上高處後才抵達回聲拱岩，沿途視野開闊',
+        edgeKind: 'long_path',
+        edgeNote: '碎岩脊到回聲拱岩需要沿高低落差明顯的岩脊繞行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 2, respawnSeconds: 95 },
@@ -7640,7 +7646,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_splinter_ridge', description: '岩脊回到碎岩路' },
       { direction: 'east', targetRoomId: 'redrock_badlands_outlaw_camp', description: '旗號指向盜匪營地' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_red_ore_cut', description: '塔下礦車路通向紅礦切口' },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_red_ore_cut',
+        description: '塔下礦車路沿紅岩坡折向南方，穿過斷軌與礦渣後才到紅礦切口，車輪痕可辨路',
+        edgeKind: 'long_path',
+        edgeNote: '盜匪哨塔到紅礦切口要繞過塔基斷軌與礦車路，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'blackflag_marksman', maxCount: 3, respawnSeconds: 120 },
@@ -7666,8 +7678,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鏽水隘道南側陷成一條乾裂谷，谷底泥土龜裂成大片硬殼，裂縫間有熱氣與細小蛇洞。風被谷壁擋住，空氣悶得像石窯，連遠方喊聲都變得模糊。這裡是資源與戰鬥房，玩家可採集乾土礦、蛇毒與耐旱草根，也能避開主路哨塔繞往毒蛇平地或焦泉。乾裂谷看似低調，實際常被盜匪當成藏貨線，地上骨頭多半不是野獸留下。若裂縫突然冒出熱氣，附近可能有熔岩蟲通道。',
     exits: [
       { direction: 'north', targetRoomId: 'redrock_badlands_rustwash_pass', description: '爬坡回到鏽水隘道' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_viper_flats', description: '蛇洞密集處通向毒蛇平地' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_cinder_spring', description: '熱氣引向焦泉' },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_viper_flats',
+        description: '東側蛇洞密集處沿乾裂土坡展開，繞過荊棘與骨堆後才到毒蛇平地',
+        edgeKind: 'long_path',
+        edgeNote: '乾裂谷到毒蛇平地需沿蛇洞與裂土繞行，不是直接相鄰格。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_cinder_spring',
+        description: '南側熱氣從裂谷底部升起，需沿黑色礦殼下切後才會抵達焦泉，地面持續發燙',
+        edgeKind: 'long_path',
+        edgeNote: '乾裂谷南下焦泉有垂直下切與熱氣阻隔，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'redscale_viper', maxCount: 4, respawnSeconds: 90 },
@@ -7692,9 +7716,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '乾裂谷南端有一口冒著灰白蒸汽的焦泉，泉水不多，卻含有濃烈礦味，周圍結著黑色礦殼。流放者與盜匪都會冒險來此取水，因為整片荒地沒有幾處可靠水源。這裡是資源與衝突房，玩家可採集火成礦殼、補充有限水源，或設伏爭奪水權。泉邊有燒焦腳印與破陶罐，說明地下熱流最近變得不穩。火焰精靈偶爾會在蒸汽中現身，熔岩蟲也會沿熱流靠近。任何戰鬥都可能把泉口震裂。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_dry_gulch', description: '乾谷回到北側' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱霧通向火靈盆地' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_lava_worm_sink', description: '裂地通往熔岩蟲陷坑' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_dry_gulch',
+        description: '北返乾谷時需攀過黑色礦殼與蒸汽裂縫，熱風會遮住回頭路，岩面也容易碎裂',
+        edgeKind: 'long_path',
+        edgeNote: '焦泉回乾裂谷需要沿熱泉邊坡上切，距離長於相鄰格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_flame_spirit_basin',
+        description: '東側熱霧繞過焦泉礦殼與橘光石縫後，才會接到火靈盆地，火光可當路標',
+        edgeKind: 'long_path',
+        edgeNote: '焦泉到火靈盆地需穿過熱霧與礦殼坡，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_lava_worm_sink',
+        description: '南側裂地沿冒煙地縫下沉，繞過鬆動紅土後才到熔岩蟲陷坑，腳下震動明顯',
+        edgeKind: 'long_path',
+        edgeNote: '焦泉南下熔岩蟲陷坑有崩塌地縫阻隔，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 110 },
@@ -7723,7 +7765,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'redrock_badlands_bandit_watch', description: '旗號路回到哨塔' },
       { direction: 'east', targetRoomId: 'redrock_badlands_bone_marker', description: '戰利品路通向骨標地' },
       { direction: 'south', targetRoomId: 'redrock_badlands_ambush_canyon', description: '壕溝延向伏擊峽谷' },
-      { direction: 'north', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '黑旗坡通往瞭望點' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_blackflag_lookout',
+        description: '北側黑旗坡沿營地後方高地曲折上升，繞過落石後才到瞭望點，旗影會引導方向',
+        edgeKind: 'long_path',
+        edgeNote: '盜匪營地到黑旗瞭望點有高地落差與曲折坡道，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 4, respawnSeconds: 95 },
@@ -7751,7 +7799,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_outlaw_camp', description: '戰利品路回到營地' },
       { direction: 'east', targetRoomId: 'redrock_badlands_duel_stones', description: '骨標指向決鬥石圈' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_ambush_canyon', description: '碎骨坡通向伏擊峽谷' },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_ambush_canyon',
+        description: '南側碎骨坡穿過乾風與骸骨標記後，才會下切到伏擊峽谷，崖壁適合埋伏',
+        edgeKind: 'long_path',
+        edgeNote: '骨標地到伏擊峽谷需要沿碎骨坡下切，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'cinder_wolf', maxCount: 3, respawnSeconds: 105 },
@@ -7777,8 +7831,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '乾裂谷東側展開一片看似平坦的紅土，地面卻布滿細小蛇洞與風蝕孔。枯刺草沿著裂縫生長，任何踩斷枝條的聲音都會讓毒蛇從洞中探頭。這裡是戰鬥與素材房，玩家可收集蛇毒、蛇皮與耐旱草，或清理商隊路線上的毒蛇群。平地沒有遮蔽，適合遠程交戰，也容易讓 PvP 追擊變得直接而殘酷。若地面熱浪突然扭曲，可能不是幻象，而是地下熔岩蟲把熱氣推到表層。',
     exits: [
-      { direction: 'west', targetRoomId: 'redrock_badlands_dry_gulch', description: '蛇洞路回到乾裂谷' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_red_ore_cut', description: '紅色礦痕在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'redrock_badlands_dry_gulch',
+        description: '西側蛇洞路繞過荊棘、骨堆與裂土地面後，才會回到乾裂谷，毒蛇痕跡密集',
+        edgeKind: 'long_path',
+        edgeNote: '毒蛇平地西返乾裂谷需要沿蛇洞與裂土繞行，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_red_ore_cut',
+        description: '東側紅色礦痕沿平地邊緣延伸，繞過蛇洞群後才抵達紅礦切口，礦粉會染紅靴底',
+        edgeKind: 'long_path',
+        edgeNote: '毒蛇平地到紅礦切口需繞過蛇洞群與礦痕坡，距離較長。',
+      },
       { direction: 'south', targetRoomId: 'redrock_badlands_lava_worm_sink', description: '熱浪指向陷坑' },
     ],
     monsters: [
@@ -7805,7 +7871,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '碎岩脊南側的山壁被人鑿開一道巨大切口，裸露出深紅礦脈與黑色火成岩。廢棄礦車歪在軌道旁，車斗裡還有盜匪沒來得及搬走的礦石。這裡是資源、爭奪與中段交通房，玩家可採集赤礦、追查盜匪供應線，也能繞往毒蛇平地、哨塔或岩石巨人棲息的高處。礦脈本身帶著熱度，敲擊聲會沿山壁傳開，引來守礦的岩石巨人或其他玩家。若採集過量，切口內會掉落碎石，短暫封住安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'redrock_badlands_splinter_ridge', description: '礦痕回到碎岩脊' },
-      { direction: 'west', targetRoomId: 'redrock_badlands_viper_flats', description: '平地蛇洞在西側' },
+      {
+        direction: 'west',
+        targetRoomId: 'redrock_badlands_viper_flats',
+        description: '西側礦痕退回時要穿過蛇洞群與鬆散紅沙，才會回到毒蛇平地，需避開塌陷洞口',
+        edgeKind: 'long_path',
+        edgeNote: '紅礦切口西返毒蛇平地需要繞過蛇洞與礦渣，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'redrock_badlands_rock_giant_perch', description: '礦脈上方有巨人棲地' },
       { direction: 'south', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱礦路通向火靈盆地' },
     ],
@@ -7861,7 +7933,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '焚車殘骸東側有一座天然紅岩拱門，風穿過拱洞時會把腳步聲放大成多重回音。拱岩下方有舊營火、斷繩與刻在岩壁上的決鬥記號，是旅人、盜匪與流放者都會短暫停留的地方。東側刻痕路可看見決鬥石圈，但拱門端被落石擋住，需從石圈方向辨認回聲路。這裡是探索與交通房，玩家可用回音判斷是否有人埋伏，也可通往碎岩脊或黑旗瞭望點。拱岩高處適合遠程壓制，因此在 open PvP 中格外危險。若回音比腳步慢太多，代表另一隊伍可能正在拱門另一側模仿你的節奏。',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_burnt_wagon', description: '風道回到焚車殘骸' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_splinter_ridge', description: '岩路下到碎岩脊' },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_splinter_ridge',
+        description: '南側岩路沿拱岩落石坡下切，穿過多段碎石平台後才回到碎岩脊，回音會干擾判斷',
+        edgeKind: 'long_path',
+        edgeNote: '回聲拱岩南下碎岩脊有高低落差與落石坡，距離長於相鄰格。',
+      },
       { direction: 'north', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '拱岩上方通往黑旗瞭望點' },
     ],
     monsters: [
@@ -7888,9 +7966,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '骨標地東側的平地擺著一圈紅石，每塊石頭上都有刀痕、血跡與名字縮寫。這裡原本是流放者解決爭端的地方，如今也被玩家用作公開挑戰與 PvP 約戰地標。石圈中央沒有遮蔽，周圍卻有足夠高的岩塊供旁觀者或偷襲者藏身。這裡是 PvP 特色房與任務事件點，玩家可挑戰盜匪頭目、完成榮譽決鬥，或追查某名流放者最後一次露面的紀錄。若有人在石圈外插旗，附近盜匪會把它視作可以搶奪的宣戰信號。這裡的地形與視野會直接影響玩家遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線。務必保持警戒。',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_bone_marker', description: '骨標路回到西側' },
-      { direction: 'north', targetRoomId: 'redrock_badlands_echo_arch', description: '回聲拱岩在北側' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_exile_den', description: '流放者洞穴在南側' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '黑旗坡往東北升起' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_echo_arch',
+        description: '北側要循決鬥刻痕繞過落石與風蝕坡，才會走到回聲拱岩下，聲音會被放大',
+        edgeKind: 'long_path',
+        edgeNote: '決鬥石圈北上回聲拱岩需沿刻痕路繞行，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_exile_den',
+        description: '南側岩壁洞口藏在石圈外緣，需要繞過決鬥石柱才到流放者洞穴，血痕可作線索',
+        edgeKind: 'long_path',
+        edgeNote: '決鬥石圈到流放者洞穴有石柱與岩壁裂口阻隔，不是相鄰格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_blackflag_lookout',
+        description: '東側黑旗坡先向東北升起，再繞過旗索與落石才抵達瞭望點，坡道暴露在視線中',
+        edgeKind: 'long_path',
+        edgeNote: '決鬥石圈到黑旗瞭望點需沿高坡斜向繞行，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'exile_duelist', maxCount: 2, respawnSeconds: 180 },
@@ -7915,8 +8011,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '決鬥石圈南側的岩壁裂開一道洞口，洞內擺著破睡袋、水罐、簡易鍛爐與被磨掉徽記的舊盔甲。流放者不一定是盜匪，但在赤岩荒地生存久了，界線會變得模糊。西側窄路通向伏擊峽谷，但洞穴端被流放者用碎石封成單向暗口，需從峽谷方向鑽入。這裡是任務與高風險交涉房，玩家可與流放者交易情報、追查被盜物資，也可能因派系選擇觸發戰鬥。若玩家帶著盜匪營地旗號進入，流放者會立刻判定你站在敵對方。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_duel_stones', description: '洞口回到決鬥石圈' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_scarlet_crater', description: '深洞通向猩紅火口' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_duel_stones',
+        description: '北側洞口穿過流放者碎石暗口，繞出岩壁後才回到決鬥石圈，出口被刻痕標記',
+        edgeKind: 'long_path',
+        edgeNote: '流放者洞穴北返決鬥石圈需要穿過碎石暗口與岩壁裂縫。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_scarlet_crater',
+        description: '南側深洞沿熱光裂縫下行，繞過流放者路障後才接近猩紅火口，熱浪逐步增強',
+        edgeKind: 'long_path',
+        edgeNote: '流放者洞穴到猩紅火口是熱裂深洞路徑，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'exile_duelist', maxCount: 2, respawnSeconds: 180 },
@@ -7942,7 +8050,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '紅礦切口上方是一片寬闊岩臺，地面留著巨大腳印，邊緣堆著被徒手掰碎的礦石與半埋巨石。岩石巨人會在這裡休眠，身體與紅岩幾乎融為一體，只有胸口裂縫偶爾透出暗色光。南側熱岩坡可看見火靈盆地，但巨人踩塌了下坡路，需由盆地熱岩坡上來。這裡是精英戰鬥與資源守門房，玩家可挑戰岩巨人、取得高品質石心與赤礦，也能從高處觀察火靈盆地和猩紅火口。戰鬥時要小心落石與其他玩家干擾，因為岩臺沒有太多遮蔽。若巨人被激怒，牠會把礦石投向下方切口，改變路線安全性。',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_red_ore_cut', description: '礦脈下到紅礦切口' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_scarlet_crater', description: '巨石路指向猩紅火口' },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_scarlet_crater',
+        description: '東側巨石路沿岩臺邊緣與落石斜坡前進，最後指向猩紅火口，巨人腳印清楚可見',
+        edgeKind: 'long_path',
+        edgeNote: '岩巨人棲臺到猩紅火口需沿高岩臺和落石坡繞行，距離較長。',
+      },
     ],
     monsters: [
       { monsterId: 'red_ore_golem', maxCount: 3, respawnSeconds: 180 },
@@ -7968,9 +8082,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '紅礦切口南側陷成一個淺盆地，地面覆著黑色礦殼，裂縫中冒出橘紅火舌。火焰精靈像小型旋風般在盆地裡遊走，遇到金屬聲或血腥味便會變得躁動。這裡是元素戰鬥與材料房，玩家可收集火成結晶、完成耐火測試任務，也能繞往焦泉、岩巨人棲臺或熔岩蟲陷坑。盆地熱浪會扭曲視線，使其他玩家和盜匪看起來像殘影。若隊伍停留太久，地下熱流會把熔岩蟲引到盆地中心。',
     exits: [
       { direction: 'north', targetRoomId: 'redrock_badlands_red_ore_cut', description: '熱礦路回到紅礦切口' },
-      { direction: 'west', targetRoomId: 'redrock_badlands_cinder_spring', description: '蒸汽路回到焦泉' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_rock_giant_perch', description: '熱岩坡回到巨人棲臺' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_lava_worm_sink', description: '裂縫下到熔岩蟲陷坑' },
+      {
+        direction: 'west',
+        targetRoomId: 'redrock_badlands_cinder_spring',
+        description: '西側蒸汽路繞過黑色礦殼與燙裂石面後，才會回到焦泉，熱霧會遮住遠處',
+        edgeKind: 'long_path',
+        edgeNote: '火靈盆地西返焦泉需要穿過熱霧與礦殼坡，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_rock_giant_perch',
+        description: '東側熱岩坡沿巨人腳印上攀，繞過鬆動礦石後才回到巨人棲臺，落石聲很近',
+        edgeKind: 'long_path',
+        edgeNote: '火靈盆地到岩巨人棲臺有明顯高度差與熱岩坡，距離長於相鄰格。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'redrock_badlands_lava_worm_sink',
+        description: '南側裂縫沿橘光地縫下切，穿過鬆散紅土後才到熔岩蟲陷坑，地底有刮擦聲',
+        edgeKind: 'long_path',
+        edgeNote: '火靈盆地南下熔岩蟲陷坑需要穿過熱裂地縫，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 4, respawnSeconds: 110 },
@@ -7995,8 +8127,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '火靈盆地下方裂開一座陷坑，坑壁佈滿被高熱磨出的圓形通道，像有巨型蟲子反覆鑽過。地面不時下陷，露出短暫橘光與灼熱氣流。西側熱流與南側熱浪都仍可辨認，但陷坑邊緣在這端不穩，需由焦泉或毒蛇平地方向進入。這裡是高危戰鬥房，玩家可狩獵熔岩蟲、採集熱殼與火成寶石，也能利用地下通道避開部分 PvP 追擊。陷坑邊緣極不穩定，遠程交火或岩巨人震擊都可能讓地面坍塌。若聽到地下連續摩擦聲，代表熔岩蟲正在選擇出口，最好立刻離開中央區域。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '裂縫上回火靈盆地' },
-      { direction: 'east', targetRoomId: 'redrock_badlands_scarlet_crater', description: '地下熱道通向猩紅火口' },
+      {
+        direction: 'north',
+        targetRoomId: 'redrock_badlands_flame_spirit_basin',
+        description: '北側裂縫需沿熔岩蟲鑽出的斜道上攀，才會回到火靈盆地，熱風會迎面灌入',
+        edgeKind: 'long_path',
+        edgeNote: '熔岩蟲陷坑北返火靈盆地需要爬出熱裂斜道，距離長於相鄰格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'redrock_badlands_scarlet_crater',
+        description: '東側地下熱道穿過蟲洞與赤色裂光，最後才通向猩紅火口，通道狹窄灼熱',
+        edgeKind: 'long_path',
+        edgeNote: '熔岩蟲陷坑到猩紅火口是地下熱道，不是平面相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lava_worm', maxCount: 4, respawnSeconds: 140 },
@@ -8049,7 +8193,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '回聲拱岩上方的高處插著一面黑旗，旗布被沙風磨得像刀口。從這裡可以俯瞰焚車殘骸、盜匪營地、決鬥石圈與遠處猩紅火口，是整片赤岩荒地最重要的視野點之一。東側決鬥石圈與北側火口都在視線內，但黑旗這端高坡被旗索與落石擋住，需從石圈或火口方向接近。這裡是大型 PvP 交通與情報房，玩家可控制瞭望點、標記敵對玩家動向、截聽盜匪旗號，或開啟高地路線。黑旗旁有一架破舊望遠鏡，鏡片被刻意刮花，只有在沙塵最濃時才能看見隱藏路徑。若黑旗被放倒，附近盜匪會短暫陷入混亂。',
     exits: [
       { direction: 'south', targetRoomId: 'redrock_badlands_echo_arch', description: '下坡回到回聲拱岩' },
-      { direction: 'west', targetRoomId: 'redrock_badlands_burnt_wagon', description: '焦黑車轍在西側下方' },
+      {
+        direction: 'west',
+        targetRoomId: 'redrock_badlands_burnt_wagon',
+        description: '西側下方的焦黑車轍需沿旗索高坡折返，才會接回焚車殘骸，黑旗在頭頂飄動',
+        edgeKind: 'long_path',
+        edgeNote: '黑旗瞭望點西返焚車殘骸有高地落差與旗索坡，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'blackflag_marksman', maxCount: 3, respawnSeconds: 120 },
@@ -8074,7 +8224,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '赤岩荒地最深處是一座猩紅火口，火山並未真正噴發，卻持續從裂縫吐出熱光與金屬味。黑旗、流放者刻痕、巨人腳印與熔岩蟲通道都在此交會，像所有勢力都被同一個熱源吸引。南側深洞、東側地下熱道與北側高地都能辨認，但火口裂縫在這端形成單向崩塌，需由流放者洞穴、熔岩蟲陷坑或黑旗瞭望點方向進入。這裡是區域大型事件鉤子與最終地標，玩家可爭奪火口控制權、封堵地下熱流、追查盜匪為何把搶來的赤礦運到此處，也能挑戰岩石巨人與火焰精靈混合守衛。若火口裂縫被過度採掘，整片荒地的熱流會變得不穩，使焦泉、盆地與陷坑同時暴動。這裡的地形與視野會直接影響玩家遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'redrock_badlands_rock_giant_perch', description: '巨石路回到岩巨人棲臺' },
+      {
+        direction: 'west',
+        targetRoomId: 'redrock_badlands_rock_giant_perch',
+        description: '西側巨石路需繞過火口裂縫與落石坡，才會回到岩巨人棲臺，赤光會逐漸變暗',
+        edgeKind: 'long_path',
+        edgeNote: '猩紅火口西返岩巨人棲臺需要沿巨石坡繞行，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'blackflag_warlord', maxCount: 1, respawnSeconds: 1800 },
