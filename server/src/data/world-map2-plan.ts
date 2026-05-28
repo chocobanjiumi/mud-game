@@ -359,7 +359,7 @@ export const WORLD_MAP2_INSTANCE_ENTRANCE_COORDINATES: Record<string, { worldX: 
   necropolis_gate: { worldX: -18, worldY: 20 },
   lost_capital: { worldX: -22, worldY: 2 },
   sunspire: { worldX: 48, worldY: -3 },
-  moonshadow_court: { worldX: 24, worldY: 20 },
+  moonshadow_court: { worldX: 28, worldY: 20 },
   dragon_valley: { worldX: 40, worldY: -7 },
   sky_isles: { worldX: 23, worldY: -7 },
   starfall_crater: { worldX: 42, worldY: 21 },
