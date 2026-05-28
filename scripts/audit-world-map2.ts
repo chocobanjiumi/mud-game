@@ -43,6 +43,7 @@ const borderRoomGaps: string[] = [];
 const twoDimensionalDesignIssues: string[] = [];
 const mapPlanningUiIssues: string[] = [];
 const zoneClassificationIssues: string[] = [];
+const hybridPlanningIssues: string[] = [];
 const instanceEntries = buildInstanceEntryDefs(ZONES);
 const mapPlanningPageSource = readOptionalText(resolve(process.cwd(), '../client/src/components/MapPlanningPage.tsx'));
 
@@ -201,6 +202,28 @@ for (const [zoneId, plan] of zonePlans.entries()) {
   }
   if (!getRoom(plan.entranceRoomId)) {
     instanceEntranceIssues.push(`${zoneId}: entrance room ${plan.entranceRoomId} missing`);
+  }
+}
+
+for (const [zoneId, plan] of zonePlans.entries()) {
+  if (plan.decision !== 'hybrid') continue;
+  const zone = ZONES[zoneId];
+  if (!plan.entranceRoomId) {
+    hybridPlanningIssues.push(`${zoneId}: hybrid zone missing entranceRoomId`);
+  }
+  const worldRooms = zone.rooms.filter(roomId => {
+    const room = getRoom(roomId);
+    return room ? plannedMapScopeForRoom(room, plan) === 'world' : false;
+  });
+  const instanceRooms = zone.rooms.filter(roomId => {
+    const room = getRoom(roomId);
+    return room ? plannedMapScopeForRoom(room, plan) === 'instance' : false;
+  });
+  if (worldRooms.length === 0) {
+    hybridPlanningIssues.push(`${zoneId}: hybrid zone has no world rooms listed`);
+  }
+  if (instanceRooms.length === 0) {
+    hybridPlanningIssues.push(`${zoneId}: hybrid zone has no instance rooms listed`);
   }
 }
 
@@ -392,6 +415,7 @@ const report = {
     crossZoneExits: crossZoneExits.length,
     worldZones: zones.filter(zone => zone.decision === 'world').length,
     instanceZones: zones.filter(zone => zone.decision === 'instance').length,
+    hybridZones: zones.filter(zone => zone.decision === 'hybrid').length,
     decisionZones: zones.filter(zone => zone.decision === 'decision').length,
   },
   zones,
@@ -410,6 +434,7 @@ const report = {
     twoDimensionalDesignIssues,
     mapPlanningUiIssues,
     zoneClassificationIssues,
+    hybridPlanningIssues,
   },
   zoneLayout: {
     plannedZoneGlobalBounds: zoneGlobalBounds
@@ -455,6 +480,7 @@ if (strict) {
     ...twoDimensionalDesignIssues,
     ...mapPlanningUiIssues,
     ...zoneClassificationIssues,
+    ...hybridPlanningIssues,
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
     ...crossZoneWorldAdjacencyIssues,
@@ -565,6 +591,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Rooms: ${reportData.counts.rooms}`,
     `World zones: ${reportData.counts.worldZones}`,
     `Instance zones: ${reportData.counts.instanceZones}`,
+    `Hybrid zones: ${reportData.counts.hybridZones}`,
     `Decision zones: ${reportData.counts.decisionZones}`,
     `Cross-zone connection pairs: ${reportData.counts.crossZoneConnections}`,
     `Cross-zone exits: ${reportData.counts.crossZoneExits}`,
@@ -577,6 +604,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
     `/mud/map planning UI issues: ${reportData.design.mapPlanningUiIssues.length}`,
     `Zone classification issues: ${reportData.design.zoneClassificationIssues.length}`,
+    `Hybrid planning issues: ${reportData.design.hybridPlanningIssues.length}`,
     `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
     `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,

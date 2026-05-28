@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T10:58:31.670Z",
+  "generatedAt": "2026-05-28T11:00:28.275Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -7,6 +7,7 @@
     "crossZoneExits": 33,
     "worldZones": 31,
     "instanceZones": 26,
+    "hybridZones": 0,
     "decisionZones": 3
   },
   "zones": [
@@ -1847,7 +1848,8 @@
   "design": {
     "twoDimensionalDesignIssues": [],
     "mapPlanningUiIssues": [],
-    "zoneClassificationIssues": []
+    "zoneClassificationIssues": [],
+    "hybridPlanningIssues": []
   },
   "zoneLayout": {
     "plannedZoneGlobalBounds": [
