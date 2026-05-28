@@ -34,6 +34,7 @@ const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
 const instanceEntranceIssues: string[] = [];
 const instanceEntryIssues: string[] = [];
+const objectInteractEntryIssues: string[] = [];
 const endgameEntryIssues: string[] = [];
 const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
@@ -123,9 +124,30 @@ if (finalBattlegroundEndgameEntries.length === 0) {
 for (const [zoneId, plan] of zonePlans.entries()) {
   if (plan.decision !== 'instance') continue;
   const zoneEntries = instanceEntries.filter(entry => entry.instanceTemplateId === zoneId);
+  const objectEntries = zoneEntries.filter(entry => entry.type === 'object_interact');
   if (zoneEntries.length === 0) {
     instanceEntryIssues.push(`${zoneId}: missing InstanceEntryDef`);
     continue;
+  }
+  if (objectEntries.length === 0) {
+    objectInteractEntryIssues.push(`${zoneId}: missing object_interact entry for general exploration dungeon entry`);
+  }
+  for (const entry of objectEntries) {
+    const room = getRoom(entry.roomId);
+    if (!room) {
+      objectInteractEntryIssues.push(`${entry.id}: object_interact room ${entry.roomId} missing`);
+      continue;
+    }
+    const roomPlan = zonePlans.get(room.zone);
+    if (plannedMapScopeForRoom(room, roomPlan) !== 'world') {
+      objectInteractEntryIssues.push(`${entry.id}: object_interact entry room ${entry.roomId} is not world scope`);
+    }
+    if (!entry.objectId) {
+      objectInteractEntryIssues.push(`${entry.id}: object_interact entry missing objectId`);
+    }
+    if (!entry.dungeonId || !DUNGEON_DEFS[entry.dungeonId]) {
+      objectInteractEntryIssues.push(`${entry.id}: object_interact entry missing mapped runtime dungeon`);
+    }
   }
   for (const entry of zoneEntries) {
     const room = getRoom(entry.roomId);
@@ -268,6 +290,8 @@ const report = {
     instanceEntranceIssues,
     instanceEntries,
     mappedRuntimeDungeonEntries: instanceEntries.filter(entry => entry.dungeonId).length,
+    objectInteractEntries: instanceEntries.filter(entry => entry.type === 'object_interact').length,
+    objectInteractEntryIssues,
     instanceEntryIssues,
     endgameEntryIssues,
   },
@@ -294,6 +318,7 @@ if (strict) {
     ...crossZoneWorldAdjacencyIssues,
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
+    ...objectInteractEntryIssues,
     ...instanceEntryIssues,
     ...endgameEntryIssues,
   ];
@@ -408,6 +433,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
     `Instance entries: ${reportData.instance.instanceEntries.length}`,
     `Mapped runtime dungeon entries: ${reportData.instance.mappedRuntimeDungeonEntries}`,
+    `Object interact entries: ${reportData.instance.objectInteractEntries}`,
+    `Object interact entry issues: ${reportData.instance.objectInteractEntryIssues.length}`,
     `Instance entry issues: ${reportData.instance.instanceEntryIssues.length}`,
     `Endgame entry issues: ${reportData.instance.endgameEntryIssues.length}`,
     `Special edges: ${reportData.specialEdges.length}`,

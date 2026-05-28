@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T10:38:53.130Z",
+  "generatedAt": "2026-05-28T10:51:33.925Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2832,6 +2832,8 @@
       }
     ],
     "mappedRuntimeDungeonEntries": 37,
+    "objectInteractEntries": 26,
+    "objectInteractEntryIssues": [],
     "instanceEntryIssues": [],
     "endgameEntryIssues": []
   },
