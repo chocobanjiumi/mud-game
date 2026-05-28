@@ -1420,8 +1420,6 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'weapon_shop', description: '傳來鐵匠打鐵的聲響' },
       { direction: 'west', targetRoomId: 'potion_shop', description: '空氣中飄著草藥的香氣' },
       { direction: 'south', targetRoomId: 'village_gate', description: '通往村口的道路' },
-      { direction: 'up', targetRoomId: 'village_backhill', description: '一條小路蜿蜒通往村莊後山' },
-      { direction: 'down', targetRoomId: 'starter_village_portal_shrine', description: '噴泉後方的石階通往傳送祠堂' },
     ],
     npcs: ['village_chief'],
     mapSymbol: '[ ]',
@@ -1520,7 +1518,6 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'training_ground', description: '訓練場在東邊' },
       { direction: 'south', targetRoomId: 'plains_entrance', description: '踏出村口，前往翠綠平原' },
       { direction: 'west', targetRoomId: 'village_outskirts', description: '一條小路通往村莊外圍' },
-      { direction: 'up', targetRoomId: 'starter_village_guard_post', description: '木梯通往守衛哨所' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 2, respawnSeconds: 30 },
@@ -1548,7 +1545,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
-      { direction: 'up', targetRoomId: 'starter_village_rooftop_walk', description: '木梯上到觀戰用的屋頂棧道' },
+      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '沿訓練場北側木道前往屋頂棧道' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
@@ -1591,7 +1588,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '補給倉庫堆滿標著公會印記的木箱，乾草、繃帶、空瓶與低階採集工具分門別類放在架上，屋頂破洞灑下一束帶塵光線。東門通往藥水店櫃檯，地板下方傳出空洞回聲，暗示某個可調查的地窖入口。牆上的清單提醒新人出門前確認負重與消耗品，避免在野外無法拾取戰利品。',
     exits: [
       { direction: 'east', targetRoomId: 'potion_shop', description: '回到藥水店' },
-      { direction: 'down', targetRoomId: 'starter_village_hidden_cellar', description: '一塊鬆動地板通往隱蔽地窖' },
+      { direction: 'north', targetRoomId: 'starter_village_hidden_cellar', description: '倉庫北側暗門通往隱蔽地窖' },
     ],
     mapSymbol: '[S]',
     mapX: 0,
@@ -1624,7 +1621,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村莊廣場，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
     exits: [
-      { direction: 'up', targetRoomId: 'village_square', description: '石階回到村莊廣場' },
+      { direction: 'west', targetRoomId: 'starter_village_river_stairs', description: '低地小徑回到溪畔石階' },
       { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方' },
     ],
     mapSymbol: '[O]',
@@ -1747,7 +1744,6 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。下方可回村口，西側窄廊連到傳送祠堂，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
     exits: [
-      { direction: 'down', targetRoomId: 'village_gate', description: '木梯下到村口' },
       { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂' },
       { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '屋頂棧道向東延伸' },
     ],
@@ -1783,7 +1779,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '隱蔽地窖比倉庫地板更潮濕，石牆滲出細小水珠，蛛網覆住破木箱與幾只封泥罐。上方活板門通回補給倉庫，東側狹縫能鑽到旅人小屋地基下，唯一油燈把箱角陰影拉得很長。這裡不像正式服務房，卻有明顯可調查痕跡與一次性寶箱位置，提示新人學會檢查死路與隱藏空間。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'up', targetRoomId: 'starter_village_storehouse', description: '活板門回到補給倉庫' },
+      { direction: 'south', targetRoomId: 'starter_village_storehouse', description: '狹窄暗道回到補給倉庫' },
       { direction: 'east', targetRoomId: 'starter_village_inn', description: '狹縫通往旅人小屋地基旁' },
     ],
     items: ['small_hp_potion'],
@@ -1801,7 +1797,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
     exits: [
-      { direction: 'down', targetRoomId: 'training_ground', description: '梯子下到訓練場' },
+      { direction: 'south', targetRoomId: 'training_ground', description: '木階回到訓練場北側' },
       { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '棧道西端連到守衛哨所' },
       { direction: 'north', targetRoomId: 'starter_village_stable_yard', description: '北側木階連到馬廄院' },
     ],
@@ -1931,7 +1927,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '苔蘚覆蓋的古井孤立在荒草深處，井壁石塊刻著幾乎磨平的符文，潮冷氣息從黑暗井底往上湧。東邊路口仍能看見路標，井內垂下的舊繩索通往洞窟入口，周圍草叢裡有毒蛇蛻皮與碎骨。井底微光像是在引誘旅人靠近，提示玩家可下探、調查符文或準備面對地底怪物。',
     exits: [
       { direction: 'east', targetRoomId: 'crossroads', description: '回到十字路口' },
-      { direction: 'down', targetRoomId: 'cave_entrance', description: '攀著井壁向下探索' },
+      { direction: 'west', targetRoomId: 'cave_entrance', description: '井旁裂縫向西通往洞窟入口' },
     ],
     monsters: [
       { monsterId: 'poison_snake', maxCount: 2, respawnSeconds: 50 },
@@ -2121,7 +2117,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '古井井壁後藏著狹窄通道，盡頭是一處天然洞窟入口，岩壁鑲著零星幽藍水晶，涼風帶出潮濕礦物味。上方繩索可攀回古井，南方螢光隧道像星河般延伸，北側廢棄礦車道通向地面。洞頂倒掛蝙蝠，入口岩縫裡有水晶原石，提示玩家這裡是進入洞窟前的安全錨點與第一個戰鬥遭遇。',
     exits: [
-      { direction: 'up', targetRoomId: 'old_well', description: '攀回古井' },
+      { direction: 'east', targetRoomId: 'old_well', description: '沿井壁裂縫回到古井旁' },
       { direction: 'south', targetRoomId: 'luminous_tunnel', description: '沿著發光的隧道前進' },
       { direction: 'north', targetRoomId: 'abandoned_minecart', description: '一條廢棄的礦車道通往地面' },
     ],
@@ -2387,8 +2383,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '偶爾能看到綠色的半透明生物在草叢間蠕動。' +
       '從山頂可以俯瞰整個新手村，視野開闊。下坡能回村莊廣場，東側小路通往溪邊，西側則有破舊木屋；玩家可在巨石下 search 找到先祖符印或驚動史萊姆。山風會把村口鐘聲和溪水聲一起送上坡頂，讓新手能判斷安全退路與下一個練級方向。草叢裡的腳印分成田鼠與史萊姆拖痕，提示玩家先清理小怪再調查石縫寶物。坡頂木牌還標出村莊、溪流、磨坊與墓地方向，是外圍區域的第一個導航點與任務提示點。',
     exits: [
-      { direction: 'down', targetRoomId: 'village_square', description: '下山回到村莊廣場' },
-      { direction: 'east', targetRoomId: 'village_creek', description: '一條小路通往溪邊' },
+      { direction: 'south', targetRoomId: 'village_creek', description: '山坡小路繞向溪邊' },
+      { direction: 'east', targetRoomId: 'village_outskirts', description: '山坡路接回村外小路' },
       { direction: 'west', targetRoomId: 'abandoned_cottage', description: '山坡上有一間破舊的小屋' },
     ],
     monsters: [
@@ -2417,7 +2413,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '幾隻綠史萊姆在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
       '微風送來泥土和青草的清新氣息，偶爾傳來村婦在上游洗衣的捶打聲。',
     exits: [
-      { direction: 'west', targetRoomId: 'village_backhill', description: '沿小路回到後山' },
+      { direction: 'north', targetRoomId: 'village_backhill', description: '沿小路回到後山' },
       { direction: 'south', targetRoomId: 'village_farmland', description: '溪水流向農田方向' },
     ],
     monsters: [
@@ -2594,6 +2590,7 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'village_farmland', description: '通往農田' },
       { direction: 'south', targetRoomId: 'graveyard_entrance', description: '遠處隱約可見鐵門' },
       { direction: 'east', targetRoomId: 'village_gate', description: '回到村口' },
+      { direction: 'west', targetRoomId: 'village_backhill', description: '山坡路通往村莊後山' },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },
@@ -2981,7 +2978,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '漲潮時洞口會被海水淹沒，需要把握時機。北面退回潮間帶，水池下方可潛入海底洞穴；玩家可 inspect 潮痕判斷安全時間，也能 search 發光海藻根部。',
     exits: [
       { direction: 'north', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
-      { direction: 'down', targetRoomId: 'underwater_cave', description: '水池下方似乎有通道' },
+      { direction: 'east', targetRoomId: 'underwater_cave', description: '潮池暗道通往海底洞穴' },
     ],
     monsters: [
       { monsterId: 'jellyfish', maxCount: 2, respawnSeconds: 40 },
@@ -3216,7 +3213,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '四處散落著魚人用骨頭和貝殼堆砌的祭壇和圖騰，散發著令人不安的腥臭氣味。' +
       '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。上方通回海蝕洞，北面水道接暗礁區；玩家可 inspect 祭壇符號判斷召喚階段，search 貝殼圖騰取得深海寶珠線索，也要確認撤退路。氣泡邊緣偶爾震動，提醒玩家戰鬥拖太久可能失去安全呼吸空間。',
     exits: [
-      { direction: 'up', targetRoomId: 'sea_cave', description: '游向上方的海蝕洞' },
+      { direction: 'west', targetRoomId: 'sea_cave', description: '潮池暗道回到海蝕洞' },
       { direction: 'north', targetRoomId: 'dark_reef', description: '游回暗礁區' },
     ],
     monsters: [

@@ -2202,7 +2202,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'dragon_scale_forge', description: '側殿通往龍鱗鍛台' },
       { direction: 'west', targetRoomId: 'dragon_skywarden_camp', description: '西廊連到天衛營地' },
       { direction: 'north', targetRoomId: 'dragon_starfall_crater', description: '北門外有墜星坑' },
-      { direction: 'down', targetRoomId: 'abyss_entrance', description: '聖殿地板上有一道通往深淵的裂縫' },
     ],
     monsters: [
       { monsterId: 'storm_dragon', maxCount: 2, respawnSeconds: 1800 },
@@ -2510,6 +2509,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '古龍聖殿北門外的山脊被一顆遠古星辰砸出圓形巨坑，坑底仍散發銀藍色微光。星鐵碎片嵌在岩層中，周圍刻滿龍族封印符號，防止天外力量滲入地脈。西側星圖光帶能對應龍諭棲台，但坑壁斷裂無法直接橫越，需回古龍聖殿與風暴之巔路線。近年封印邊緣開始出現紫黑裂紋，與聖殿地板下通往深淵的裂隙互相呼應。這裡是龍谷的大型事件鉤子，能把古龍預言、星界材料與深淵危機串在一起。',
     exits: [
       { direction: 'south', targetRoomId: 'elder_dragon_sanctum', description: '沿封印石階回到古龍聖殿' },
+      { direction: 'north', targetRoomId: 'abyss_entrance', description: '墜星裂隙延伸向深淵入口' },
     ],
     monsters: [
       { monsterId: 'ancient_wyrm', maxCount: 2, respawnSeconds: 75 },
@@ -2540,7 +2540,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '耳邊傳來低沉的嗡鳴聲，那是維度壁壘被侵蝕的聲音。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'up', targetRoomId: 'elder_dragon_sanctum', description: '回到古龍聖殿' },
+      { direction: 'south', targetRoomId: 'dragon_starfall_crater', description: '裂隙邊緣回到龍谷墜星坑' },
       { direction: 'north', targetRoomId: 'void_corridor', description: '踏入扭曲的虛空' },
       { direction: 'east', targetRoomId: 'nightmare_garden', description: '一條小徑通往奇異的花園' },
       { direction: 'west', targetRoomId: 'abyss_anchor_steps', description: '破碎階梯纏著封印錨鏈' },
@@ -2729,7 +2729,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'nightmare_garden', description: '回到噩夢花園' },
       { direction: 'north', targetRoomId: 'abyss_lord_chamber', description: '時空的盡頭指向領主之間' },
       { direction: 'east', targetRoomId: 'time_splinter_vault', description: '碎裂時間流入封存室' },
-      { direction: 'down', targetRoomId: 'chaos_observatory', description: '觀測台倒映著錯亂星圖' },
     ],
     monsters: [
       { monsterId: 'void_walker', maxCount: 2, respawnSeconds: 70 },
@@ -2761,7 +2760,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'time_distortion', description: '退回時空扭曲區' },
       { direction: 'east', targetRoomId: 'abyssal_beacon', description: '王座側面有深淵信標' },
       { direction: 'north', targetRoomId: 'sealbreak_spire', description: '破封尖塔刺入虛空頂端' },
-      { direction: 'up', targetRoomId: 'celestial_gate', description: '擊敗深淵領主後，一道通往天界的光柱出現' },
     ],
     monsters: [
       { monsterId: 'chaos_spawn', maxCount: 2, respawnSeconds: 70 },
@@ -2868,8 +2866,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '噩夢花園北方的空間突然折成一座傾斜觀測台，巨大的透鏡不朝天空，而是指向裂隙中不斷誕生又消失的假星。台面刻滿混沌方程，線條每隔幾秒就會自行重排，讓原本正確的路徑變成死路。這裡曾是術士監測裂隙脈動的工作站，如今所有儀器都被深淵反向利用，用來尋找現實防線的薄弱處。',
     exits: [
-      { direction: 'up', targetRoomId: 'time_distortion', description: '觀測弧線回到時空扭曲區' },
-      { direction: 'east', targetRoomId: 'time_splinter_vault', description: '透鏡光束照向時間碎片庫' },
+      { direction: 'south', targetRoomId: 'time_splinter_vault', description: '透鏡光束照向時間碎片庫' },
       { direction: 'west', targetRoomId: 'nightmare_garden', description: '倒轉階梯回到噩夢花園' },
     ],
     monsters: [
@@ -2923,6 +2920,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '時空扭曲區東側是一間漂浮封存室，無數鐘面碎片被關在透明晶格裡，指針指向完全不同的年代。某些晶格中封著一秒鐘的火焰、一次未完成的攻擊、或一個即將說出口的名字。封存室中央的裂鐘每敲一次，玩家都會感覺自己剛剛做過的選擇被重新排列。北側回聲可聽見迴響庭，但時間線已被剪斷，需經記憶迷宮才能抵達。這裡能提供時空任務素材，也能解釋深淵領主如何撕開通往天界的路。晶格後方有多條被剪斷的時間線，末端全都指向領主王座，表示牠曾反覆嘗試尋找勝利的未來。若打開錯誤晶格，房間會倒退到剛進門的一刻，只有被封存的傷痕仍然保留。',
     exits: [
       { direction: 'west', targetRoomId: 'time_distortion', description: '晶格廊道回到時空扭曲區' },
+      { direction: 'north', targetRoomId: 'chaos_observatory', description: '觀測廊道通往混沌觀測台' },
       { direction: 'south', targetRoomId: 'nightmare_orchard', description: '碎片光流向噩夢果園' },
     ],
     monsters: [
@@ -3088,6 +3086,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '深淵領主王座北方有一座尖塔倒插進虛空穹頂，塔身掛滿被撕開的封印布與斷裂聖釘。黑色閃電沿塔面向上爬升，最頂端透出一線刺眼白光，那正是通往天界遺跡的裂口。東側信標光纜纏向塔身但會切碎接近者，實際仍需從領主之間進出塔基。塔內每一層都刻著領主嘗試破封的紀錄，從粗糙咒文到精密維度公式逐步演變。這裡是深淵裂隙的大型事件鉤子，也是本區通往下一大區的敘事銜接。尖塔外壁仍殘留天界防衛反擊造成的白色灼痕，玩家可以從中看出上方並非安全出口，而是另一場戰爭的邊界。塔心還懸著半枚破碎聖印，正在被信標脈衝一點點染黑。',
     exits: [
       { direction: 'south', targetRoomId: 'abyss_lord_chamber', description: '沿塔基回到領主之間' },
+      { direction: 'north', targetRoomId: 'celestial_gate', description: '破封裂光路通向天界之門' },
     ],
     monsters: [
       { monsterId: 'abyss_lord', maxCount: 1, respawnSeconds: 1800 },
@@ -3117,7 +3116,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '穿過光門的瞬間，世界從混沌的深淵轉變為金色的光輝。' +
       '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。門後仍能看見深淵裂口的黑紫殘影，像一道尚未癒合的傷口貼在純白光幕上。破碎聖階兩側倒伏著天界守衛的旗杆與被燒焦的羽翼印記，提示深淵曾經衝擊到這裡。玩家踏入此處時，門框文字會逐行亮起，判斷來者是入侵者、朝聖者，還是被迫接受最終試煉的挑戰者。門前光塵會記錄第一次踏入者的名字。',
     exits: [
-      { direction: 'down', targetRoomId: 'abyss_lord_chamber', description: '回到深淵領主之間' },
+      { direction: 'south', targetRoomId: 'sealbreak_spire', description: '破封尖塔的裂光路回到深淵邊境' },
       { direction: 'north', targetRoomId: 'starlight_path', description: '沿著星光之路前進' },
       { direction: 'east', targetRoomId: 'divine_library', description: '光門旁有一座宏偉的建築' },
       { direction: 'west', targetRoomId: 'celestial_starfall_plaza', description: '西側廣場鋪滿墜星碎片' },
@@ -3967,7 +3966,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉' },
-      { direction: 'down', targetRoomId: 'old_farmland_root_cellar', description: '地板下有一座根窖' },
+      { direction: 'west', targetRoomId: 'old_farmland_root_cellar', description: '屋後低矮根道通往根窖' },
       { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
     ],
     monsters: [
@@ -4071,7 +4070,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
     exits: [
-      { direction: 'up', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '木梯回到荒廢農舍' },
+      { direction: 'east', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '低矮根道回到荒廢農舍' },
       { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
     ],
     monsters: [
@@ -4933,7 +4932,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'abandoned_mines_entry_claim', description: '回到礦坑入口' },
       { direction: 'east', targetRoomId: 'abandoned_mines_cart_yard', description: '鐵軌通向礦車場' },
-      { direction: 'down', targetRoomId: 'abandoned_mines_echo_shaft', description: '升降台下方是回音豎井' },
     ],
     monsters: [
       { monsterId: 'dustwing_bat', maxCount: 3, respawnSeconds: 40 },
@@ -5013,9 +5011,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '木支廊盡頭突然開成一座深豎井，井壁釘著舊繩梯和鐵環，往下看只能看見黑暗。任何聲音都會在井中重複數十次，像有人在下方回話。斷裂升降籠卡在半空，鐵鏈磨著岩壁，落下的灰塵像細雪。井口旁散著測深繩、壞掉滑輪和被撕裂的警示牌，牌上提醒礦工進入下層前必須先點三次安全燈。這裡連接升降台、淹沒橫巷與深部核心，是礦坑中層的重要交通點，也是蝙蝠最密集的區域。玩家必須分辨回音與真正的怪物動靜，否則很容易在窄梯上被包圍；若能穩住繩梯，也能從牆縫找到通往下層的舊維修記號。',
     exits: [
-      { direction: 'up', targetRoomId: 'abandoned_mines_lift_station', description: '繩梯向上通回升降台' },
       { direction: 'west', targetRoomId: 'abandoned_mines_timber_gallery', description: '木廊回到支架區' },
-      { direction: 'down', targetRoomId: 'abandoned_mines_deep_core', description: '井底通往深部核心' },
+      { direction: 'south', targetRoomId: 'abandoned_mines_deep_core', description: '井底平巷通往深部核心' },
       { direction: 'east', targetRoomId: 'abandoned_mines_flooded_crosscut', description: '井壁側洞有潮濕水聲' },
     ],
     monsters: [
@@ -5256,7 +5253,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '回音豎井底部是一座巨大空洞，中央裸露著像心臟般的黑色礦核，表面一明一暗地閃著暗紅光。周圍鐵軌全部指向礦核，彷彿整座礦坑都圍繞它修建。碎裂礦燈、斷柄十字鎬和沒有寫完的求救字句散在地上，顯示礦難最後集中在此處爆發。每次礦核脈動，牆上晶簇都會回應般亮起，讓玩家看見岩層中封住的舊手印與求救符號。骷髏礦工在附近徘徊，石像守衛則守住通往出口的裂縫。這裡是廢棄礦坑的大型事件鉤子，玩家可決定採走礦核、封住它，或追查它為何讓礦工無法安息。若選擇久留，礦核會讓整座坑道的敵人更躁動。',
     exits: [
-      { direction: 'up', targetRoomId: 'abandoned_mines_echo_shaft', description: '繩梯上回回音豎井' },
+      { direction: 'north', targetRoomId: 'abandoned_mines_echo_shaft', description: '平巷回到回音豎井' },
       { direction: 'west', targetRoomId: 'abandoned_mines_gargoyle_niche', description: '石像守門通回石龕' },
       { direction: 'south', targetRoomId: 'abandoned_mines_sunken_rail', description: '沉軌段連回上層' },
       { direction: 'east', targetRoomId: 'abandoned_mines_escape_adit', description: '裂縫像通往逃生側洞' },
@@ -6124,7 +6121,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '傳送燈塔北面的石橋接上一段螺旋階梯，階梯沿著老燈塔內壁向上盤繞，扶手被鹽霧磨得發亮。牆面每隔幾步就嵌著小窗，能看見霧港屋頂、內港船桅與遠處防波堤在白霧中若隱若現。東側維修門標向防波堤端，但門內落石堵住通道，需由防波堤端進入燈塔維修線。這裡是交通與探索房，玩家可前往霧望燈室，也能在階梯牆上找到歷代守燈人刻下的潮汐備忘。階梯間回音很重，適合觸發回憶、偵查或找人任務。若外海有異常，窗縫會吹進帶冰味的霧，讓牆上銅釘結霜。守燈人的腳印常停在某扇小窗前，似乎那裡能看見官方不願承認的航線。階梯越往上，海浪聲就越像低語。',
     exits: [
       { direction: 'south', targetRoomId: 'mist_harbor_portal_lantern', description: '石橋回到傳送燈塔' },
-      { direction: 'up', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '旋梯上到霧望燈室' },
+      { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '燈室迴廊通往霧望燈室' },
     ],
     mapSymbol: '[梯]',
     mapX: 1,
@@ -6145,7 +6142,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '霧望燈室位在老燈塔頂端，巨大的玻璃透鏡被銅架固定，中心燃著帶藍邊的港燈。守燈人用它穿透濃霧，替返航船隻標出內港安全水道，也觀測外海是否有幽霧船、冰潮或海怪陰影。東側外梯可俯看防波堤端，但高處梯門被鹽蝕卡死，需從防波堤端外梯上來。這裡是地標與大型事件觀測房，玩家可校準燈光、解讀遠方燈號，或在夜裡尋找失蹤船隊的回應。燈室地板刻著一圈方位線，某些刻度被反覆磨損，表示有人常把燈光轉向官方航線以外的黑暗海面。完成霧港主線時，這裡會成為選擇公開真相或掩護私航的關鍵場景，也決定哪些船能穿過霧回家。透鏡背面還殘留舊日撞擊裂紋。',
     exits: [
-      { direction: 'down', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '旋梯下回燈室階梯' },
+      { direction: 'west', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈室迴廊回到階梯間' },
     ],
     mapSymbol: '[燈]',
     mapX: 1,
@@ -6210,7 +6207,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊海門旁的岩地凹出一座天然潮池，池邊立著小小石祠，供奉無名海路守護靈。漁民會在出航前放下貝殼、海玻璃、魚骨和一小撮鹽，祈求霧中看得見回家的燈。潮池水面平靜時像鏡子，偶爾會映出不屬於當下天空的星點。這裡是任務與信仰房，玩家可替失蹤水手獻祭、解讀潮池異象，或收集特殊貝殼完成居民委託。若從霧望燈室取得方位片，再來此比對倒影，能發現某條被隱藏的夜航路線。',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_sea_gate', description: '石階回到舊海門' },
-      { direction: 'up', targetRoomId: 'mist_harbor_breakwater_end', description: '潮濕岩路上回防波堤端' },
     ],
     mapSymbol: '[祠]',
     mapX: 3,
@@ -6280,7 +6276,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '外棧道回到渡船棧橋' },
       { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '維修門通向燈室階梯' },
       { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '外梯連到霧望燈室' },
-      { direction: 'down', targetRoomId: 'mist_harbor_tidepool_shrine', description: '潮濕岩路下到潮池小祠' },
     ],
     mapSymbol: '[堤]',
     mapX: 5,
@@ -6650,7 +6645,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '藤蔓迴廊東側藏著一段向下階梯，階梯口被三道石鎖封住，每道石鎖都刻著不同日月符號。鎖縫裡有細微光塵滲出，說明下層仍保存著某種運轉中的核心。北側月符階梯指向月門，但封印階梯這端石鎖未開，需由月門校正後才能回看。這裡是遺跡中段的門檻房，玩家需要從方尖碑、倒影水池與日晷露台取得線索，才能依序打開石鎖。階梯旁堆著幾件破碎裝備，顯示有人曾試圖強行破門但失敗。若解鎖順序錯誤，石階會縮回牆內，並放出守衛巡邏整條藤蔓迴廊，迫使隊伍重新回收日月線索確認答案。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。並能揭露更多古代防線細節。',
     exits: [
       { direction: 'west', targetRoomId: 'ancient_ruins_vine_choked_cloister', description: '藤路回到迴廊' },
-      { direction: 'down', targetRoomId: 'ancient_ruins_oracle_chamber', description: '開鎖後可下到神諭室' },
+      { direction: 'north', targetRoomId: 'ancient_ruins_oracle_chamber', description: '封印門後通往神諭室' },
     ],
     monsters: [
       { monsterId: 'oathstone_sentinel', maxCount: 1, respawnSeconds: 150 },
@@ -6784,7 +6779,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '封印階梯下方的神諭室呈圓形，中央懸著一枚裂開的水晶，水晶下方刻著多層同心符文。周圍石座面向中央，像昔日祭司或學者曾在這裡聆聽某種來自天象的答案。南側墓道可聽見回音墓室，但神諭室這端符文門只在回音答對後開啟，需由墓室通過葬儀詞進入。這裡是大型事件前置房，玩家可把日月線索、星象陶板與構裝序列組合起來，詢問內聖所真正封印的是什麼。水晶會用斷續影像回應，顯示城市被光吞沒、守衛轉向居民、以及最後一名祭司關閉聖所的畫面。若玩家強行取下水晶碎片，房間會召回構裝與骷髏進行最後警告，也會讓內聖所核心提前進入不穩定狀態。這段線索也會影響後續任務判定，值得隊伍停下來仔細記錄。',
     exits: [
-      { direction: 'up', targetRoomId: 'ancient_ruins_sealed_stair', description: '階梯回到封印門口' },
+      { direction: 'south', targetRoomId: 'ancient_ruins_sealed_stair', description: '封印廊道回到門口' },
       { direction: 'west', targetRoomId: 'ancient_ruins_construct_bay', description: '維修通道回到構裝間' },
       { direction: 'east', targetRoomId: 'ancient_ruins_inner_sanctum', description: '符文門通向內聖所' },
     ],
@@ -6977,7 +6972,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '遠方假燈通向鏡池' },
-      { direction: 'up', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲從上方濕地傳來' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -7250,7 +7244,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林' },
-      { direction: 'down', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '白霧落向霧盲處' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '月光水線通向堤道' },
     ],
     monsters: [
@@ -8017,7 +8010,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'north', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '水渠回到前廳' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_sluice_control', description: '水流通向水閘控制室' },
       { direction: 'south', targetRoomId: 'sunken_catacombs_bone_silt_basin', description: '沉泥坡通向骨泥盆地' },
-      { direction: 'down', targetRoomId: 'sunken_catacombs_serpent_drain', description: '狹窄水道下切到蛇形排水道' },
     ],
     monsters: [
       { monsterId: 'drowned_drain_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -8177,7 +8169,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sunken_catacombs_sluice_control', description: '排水道回到水閘室' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_drowned_altar', description: '低水道通向溺水祭壇' },
-      { direction: 'up', targetRoomId: 'sunken_catacombs_blackwater_channel', description: '側渠上回黑水渠' },
     ],
     monsters: [
       { monsterId: 'drowned_drain_serpent', maxCount: 4, respawnSeconds: 120 },
@@ -8583,7 +8574,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'thundersteppe_stormgrass_track', description: '柱影落回雷草牧道' },
       { direction: 'west', targetRoomId: 'thundersteppe_thunder_pool', description: '濕風回到雷雨水洼' },
       { direction: 'east', targetRoomId: 'thundersteppe_split_totem', description: '斷柱線通往裂木圖騰' },
-      { direction: 'up', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '石柱頂端連向雷鷹巢峰' },
+      { direction: 'north', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '石柱脊線通往雷鷹巢峰' },
     ],
     monsters: [
       { monsterId: 'stormwing_eagle', maxCount: 3, respawnSeconds: 130 },
@@ -8896,7 +8887,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雷鷹巢峰是棲柱群最高的一截，峰頂被巨巢覆蓋，枯枝、骨架與亮羽在狂風中互相摩擦，發出像刀刃刮過金屬的聲音。從這裡向下看，雷鳴草原的路線像濕皮革上的刻線，入口、圖騰、柱林與渡口都清楚可見。雷鷹把巢峰視為天空領地，任何靠近者都必須承受俯衝與落雷同時壓下的威脅。若玩家能在不毀巢的情況下取回任務物，游牧營地會承認隊伍懂得尊重草原獵手，而不是只會掠奪。',
     exits: [
-      { direction: 'down', targetRoomId: 'thundersteppe_eagle_roost', description: '石柱降回雷鷹棲柱' },
+      { direction: 'south', targetRoomId: 'thundersteppe_eagle_roost', description: '石柱脊線回到雷鷹棲柱' },
       { direction: 'west', targetRoomId: 'thundersteppe_lightning_rod_field', description: '高空柱影落向引雷柱林' },
     ],
     monsters: [
@@ -9529,7 +9520,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '城邦升降門位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
     exits: [
       { direction: 'east', targetRoomId: 'underground_city_arrival_plaza', description: '升降橋通往抵達廣場' },
-      { direction: 'down', targetRoomId: 'underground_city_lower_stairs', description: '螺旋階梯落向下層街' },
+      { direction: 'north', targetRoomId: 'underground_city_lower_stairs', description: '拱門通往下層螺旋街' },
     ],
     mapSymbol: '[門]',
     mapX: 0,
@@ -9665,7 +9656,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'underground_city_council_chamber', description: '書吏階梯回到議事廳' },
       { direction: 'west', targetRoomId: 'underground_city_guild_office', description: '檔案廊通往公會辦事處' },
-      { direction: 'down', targetRoomId: 'underground_city_old_foundation', description: '封塵梯降往舊地基' },
     ],
     mapSymbol: '[書]',
     mapX: 3,
@@ -9960,7 +9950,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '下層螺旋街位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
     exits: [
-      { direction: 'up', targetRoomId: 'underground_city_gate_lift', description: '螺旋階梯升回城邦升降門' },
+      { direction: 'south', targetRoomId: 'underground_city_gate_lift', description: '拱門回到城邦升降門' },
       { direction: 'north', targetRoomId: 'underground_city_lamp_garden', description: '根鬚階梯回到菌燈庭園' },
       { direction: 'east', targetRoomId: 'underground_city_old_foundation', description: '古牆缺口通往舊地基' },
     ],
@@ -9983,7 +9973,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '舊城地基位於地下城邦的階梯街網中，洞頂垂下鐵鏈燈、菌光燈與蒸汽管線，遠處熔爐聲、暗河水聲和市場交談聲在石壁間層層回盪。這裡屬於安全城鎮區域，玩家可以整理背包、尋找任務線索、進行交易、修補裝備或觀察地底族群如何在巨大洞窟裡維持秩序。地面刻有清楚路標，牆上也保留著舊城修築年代與警戒符號；若仔細 inspect，能找到通往黑市、工坊、暗河與舊地基的細節提示。這座城邦的每個節點都讓旅人感覺自己正在一座仍然運作的地下城市中移動，而不是走過空洞背景，並能辨認下一處服務節點。',
     exits: [
-      { direction: 'up', targetRoomId: 'underground_city_scribe_archive', description: '封塵梯升回卷宗庫' },
       { direction: 'north', targetRoomId: 'underground_city_smuggler_dock', description: '破渠回到走私碼頭' },
       { direction: 'west', targetRoomId: 'underground_city_lower_stairs', description: '古牆缺口回到下層螺旋街' },
     ],
@@ -17581,7 +17570,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
       { direction: 'east', targetRoomId: 'amber_forest_relic_pit', description: '遺物坑在東側' },
-      { direction: 'up', targetRoomId: 'amber_forest_hunter_blind', description: '斜梯上回樹上獵棚' },
+      { direction: 'south', targetRoomId: 'amber_forest_hunter_blind', description: '林間小徑通往獵棚' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
@@ -17903,7 +17892,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
       { direction: 'south', targetRoomId: 'amber_forest_ember_beetle_mound', description: '落向燼甲蟲丘' },
       { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
-      { direction: 'down', targetRoomId: 'amber_forest_beast_scrape', description: '斜梯下到獸痕樹皮' },
+      { direction: 'north', targetRoomId: 'amber_forest_beast_scrape', description: '林間小徑回到獸痕樹皮' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
