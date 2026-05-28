@@ -3,6 +3,18 @@
 import type { NpcDef } from '@game/shared';
 import { ROOMS } from './rooms.js';
 
+const MAIN_QUEST_NPC_IDS = new Set([
+  'village_chief',
+  'adventure_mentor',
+  'forest_ranger',
+  'ship_captain',
+  'flame_priest',
+  'ice_castle_guard',
+  'guild_commander',
+  'dragon_oracle',
+  'celestial_archon',
+]);
+
 export const NPCS: Record<string, NpcDef> = {
 
   guild_commander: {
@@ -11759,14 +11771,26 @@ function enrichNpcDialogueText(): void {
   for (const npc of Object.values(NPCS)) {
     for (const node of npc.dialogue) {
       const text = normalizeGenericDirectionText(node.text.trim());
-      if (countCjkChars(text) >= 45) {
+      const minimumLength = npcDialogueMinimumForData(npc, node);
+      if (countCjkChars(text) >= minimumLength) {
         node.text = text;
         continue;
       }
       const suffix = buildNpcDialogueSupplement(npc, node);
-      node.text = `${text}${text.endsWith('。') ? '' : '。'}${suffix}`;
+      let enriched = `${text}${text.endsWith('。') ? '' : '。'}${suffix}`;
+      if (countCjkChars(enriched) < minimumLength) {
+        enriched = `${enriched}${buildNpcDialogueHighSalienceSupplement(npc, node)}`;
+      }
+      node.text = enriched;
     }
   }
+}
+
+function npcDialogueMinimumForData(npc: NpcDef, node: NpcDef['dialogue'][number]): number {
+  if (MAIN_QUEST_NPC_IDS.has(npc.id) && npc.dialogue[0]?.id === node.id) return 90;
+  if (npc.dialogue.some(dialogueNode => dialogueNode.action?.type === 'instance_entry')) return 70;
+  if (node.action?.type === 'instance_entry') return 70;
+  return 45;
 }
 
 function buildNpcDialogueSupplement(npc: NpcDef, node: NpcDef['dialogue'][number]): string {
@@ -11776,6 +11800,17 @@ function buildNpcDialogueSupplement(npc: NpcDef, node: NpcDef['dialogue'][number
   const optionText = node.options?.[0]?.text?.trim().replace(/[。！？!?]$/u, '');
   const nextStep = optionText && countCjkChars(optionText) >= 4 ? optionText : describeNpcNextStep(npc);
   return `${npc.name}以${roleText}的立場把「${roomName}」的狀況說清楚，補上${actionText}，並提醒你下一步先${nextStep}。`;
+}
+
+function buildNpcDialogueHighSalienceSupplement(npc: NpcDef, node: NpcDef['dialogue'][number]): string {
+  const roomName = ROOMS[npc.roomId]?.name ?? '此處';
+  if (MAIN_QUEST_NPC_IDS.has(npc.id) && npc.dialogue[0]?.id === node.id) {
+    return `這是主線承接點，對話必須讓玩家知道「${roomName}」目前的壓力、接下來要追的目標，以及錯過指引會卡住哪段推進。`;
+  }
+  if (npc.dialogue.some(dialogueNode => dialogueNode.action?.type === 'instance_entry') || node.action?.type === 'instance_entry') {
+    return `這段話同時標明入口風險、隊伍或等級準備與進入後的第一個行動，避免玩家只看見按鈕卻不知道副本目的。`;
+  }
+  return `這段補充把地點、風險與下一步行動說完整，避免對話只剩寒暄或功能按鈕。`;
 }
 
 function describeDialogueAction(npc: NpcDef, node: NpcDef['dialogue'][number]): string {

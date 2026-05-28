@@ -24,6 +24,7 @@ import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
 import { formatDialogueOptionLabel, isSpecificDialogueOptionLabel } from '../server/src/game/dialogue-option-labels.js';
+import { MAIN_QUEST_FLOW } from '../server/src/game/main-quest-flow.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type TextKind =
@@ -165,6 +166,11 @@ const knownReferenceIds = new Set<string>([
   ...Object.keys(RECIPES),
   ...Object.values(AFFIX_POOLS).flat().map(affix => affix.id),
 ]);
+const mainQuestNpcIds = new Set<string>();
+for (const flow of MAIN_QUEST_FLOW) {
+  mainQuestNpcIds.add(flow.acceptNpcId);
+  mainQuestNpcIds.add(flow.turnInNpcId);
+}
 const referenceAllowList = new Set([
   'worldX',
   'worldY',
@@ -960,7 +966,8 @@ function isInstanceEntryNpc(npc: typeof NPCS[string]): boolean {
 }
 
 function npcDialogueMinimum(npc: typeof NPCS[string], node: typeof NPCS[string]['dialogue'][number]): number {
-  if (node.action?.type === 'instance_entry') return 45;
+  if (mainQuestNpcIds.has(npc.id) && npc.dialogue[0]?.id === node.id) return 90;
+  if (isInstanceEntryNpc(npc) || node.action?.type === 'instance_entry') return 70;
   return 45;
 }
 
