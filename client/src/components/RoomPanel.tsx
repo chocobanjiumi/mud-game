@@ -163,7 +163,7 @@ export function RoomPanelView({
               <button
                 key={entry.id}
                 className="room-row"
-                title={`${entry.description}\n副本：${entry.name}｜建議等級：${entry.minLevel ?? '-'}｜人數：1-${entry.maxPartySize ?? 1}｜需求：無｜冷卻：${entry.cooldownSeconds ?? 0} 秒`}
+                title={`${entry.description}\n副本：${entry.name}｜建議等級：${entry.minLevel ?? '-'}｜人數：1-${entry.maxPartySize ?? 1}｜需求：${formatInstanceEntryRequirements(entry)}｜冷卻：${entry.cooldownSeconds ?? 0} 秒`}
                 onClick={() => sendCommand(`enter ${entry.objectId ?? entry.id}`, `進入 ${entry.name}`)}
               >
                 <span className="text-chat-party">{entry.name}</span>
@@ -235,6 +235,24 @@ export function RoomPanelView({
       {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
     </div>
   );
+}
+
+function formatInstanceEntryRequirements(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
+  const requirements: string[] = [];
+  if (entry.requiredItemId) requirements.push(`${entry.consumeItem ? '消耗' : '持有'}道具 ${entry.requiredItemId}`);
+  if (entry.requiredQuestId) requirements.push(`任務 ${entry.requiredQuestId}：${formatQuestState(entry.requiredQuestState ?? 'completed')}`);
+  return requirements.length > 0 ? requirements.join('、') : '無';
+}
+
+function formatQuestState(state: NonNullable<RoomInfo['instanceEntries']>[number]['requiredQuestState']): string {
+  switch (state) {
+    case 'available': return '可接取';
+    case 'active': return '進行中';
+    case 'ready': return '可完成';
+    case 'completed':
+    default:
+      return '已完成';
+  }
 }
 
 export default function RoomPanel() {

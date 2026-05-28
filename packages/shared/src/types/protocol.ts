@@ -226,6 +226,10 @@ export interface RoomPayload {
     minLevel?: number;
     maxPartySize?: number;
     cooldownSeconds?: number;
+    requiredItemId?: string;
+    consumeItem?: boolean;
+    requiredQuestId?: string;
+    requiredQuestState?: 'available' | 'active' | 'ready' | 'completed';
     difficultyOptions?: string[];
   }[];
   inspectHints?: { label: string; command: string }[];

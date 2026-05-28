@@ -681,6 +681,10 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
       minLevel: entry.minLevel,
       maxPartySize: entry.maxPartySize,
       cooldownSeconds: entry.cooldownSeconds,
+      requiredItemId: entry.requiredItemId,
+      consumeItem: entry.consumeItem,
+      requiredQuestId: entry.requiredQuestId,
+      requiredQuestState: entry.requiredQuestState,
       difficultyOptions: entry.difficultyOptions,
     }));
   const groundItems = getAvailableGroundItems(char.roomId);
