@@ -36,6 +36,7 @@ const crossZoneExits: string[] = [];
 const specialEdges: string[] = [];
 const worldRoomsMissingCoords: string[] = [];
 const derivedWorldCoordinates: string[] = [];
+const instanceEntranceCoordinates: string[] = [];
 const instanceRoomsWithWorldCoords: string[] = [];
 const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
@@ -141,6 +142,9 @@ for (const room of rooms) {
   }
   if (scope === 'world' && worldCoordinate?.source === 'derived') {
     derivedWorldCoordinates.push(`${room.zone}/${room.id}: ${worldCoordinate.worldX},${worldCoordinate.worldY}`);
+  }
+  if (scope === 'world' && worldCoordinate?.source === 'instance-entry') {
+    instanceEntranceCoordinates.push(`${room.zone}/${room.id}: ${worldCoordinate.worldX},${worldCoordinate.worldY}`);
   }
   if (scope === 'instance' && (typeof room.worldX === 'number' || typeof room.worldY === 'number')) {
     instanceRoomsWithWorldCoords.push(`${room.zone}/${room.id}`);
@@ -453,6 +457,7 @@ const report = {
   worldCoordinate: {
     worldRoomsMissingCoords,
     derivedWorldCoordinates,
+    instanceEntranceCoordinates,
     coordinateCollisions,
     cardinalCoordinateMismatches,
   },
@@ -628,6 +633,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Topology acceptance issues: ${reportData.acceptance.topologyIssues.length}`,
     `World rooms missing planned world coordinates: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
     `Derived world coordinates: ${reportData.worldCoordinate.derivedWorldCoordinates.length}`,
+    `Instance entrance coordinates: ${reportData.worldCoordinate.instanceEntranceCoordinates.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,

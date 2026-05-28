@@ -52,7 +52,7 @@ export interface ZoneLocalBounds {
 export interface PlannedWorldCoordinate {
   worldX: number;
   worldY: number;
-  source: 'explicit' | 'derived';
+  source: 'explicit' | 'derived' | 'instance-entry';
 }
 
 interface RelativeCoordinate {
@@ -342,6 +342,35 @@ export const WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
   final_battleground: 'final_battleground_template',
 };
 
+export const WORLD_MAP2_INSTANCE_ENTRANCE_COORDINATES: Record<string, { worldX: number; worldY: number }> = {
+  crystal_cave: { worldX: 9, worldY: -6 },
+  abandoned_mines: { worldX: -9, worldY: -8 },
+  sunken_catacombs: { worldX: 42, worldY: 8 },
+  underground_city: { worldX: -19, worldY: 0 },
+  cursed_graveyard: { worldX: -9, worldY: 19 },
+  ancient_ruins: { worldX: 12, worldY: 14 },
+  deepsea_temple: { worldX: 48, worldY: 9 },
+  obsidian_depths: { worldX: 40, worldY: 24 },
+  hollow_mountain: { worldX: -28, worldY: -10 },
+  machine_graveyard: { worldX: 31, worldY: -6 },
+  ashfall_monastery: { worldX: 28, worldY: 28 },
+  thornmaze: { worldX: -27, worldY: 14 },
+  reef_of_bones: { worldX: 48, worldY: 13 },
+  necropolis_gate: { worldX: -18, worldY: 20 },
+  lost_capital: { worldX: -22, worldY: 2 },
+  sunspire: { worldX: 48, worldY: -3 },
+  moonshadow_court: { worldX: 24, worldY: 20 },
+  dragon_valley: { worldX: 40, worldY: -7 },
+  sky_isles: { worldX: 23, worldY: -7 },
+  starfall_crater: { worldX: 42, worldY: 21 },
+  time_ruins: { worldX: -29, worldY: -17 },
+  abyss_rift: { worldX: 49, worldY: 24 },
+  astral_wastes: { worldX: 50, worldY: -8 },
+  celestial_ruins: { worldX: 50, worldY: -2 },
+  demon_territory: { worldX: 49, worldY: 18 },
+  final_battleground: { worldX: 51, worldY: 21 },
+};
+
 const WORLD_MAP2_ENDGAME_DIFFICULTY_OPTIONS = ['normal', 'hard', 'nightmare'];
 
 const WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES: NpcDialogueInstanceEntryConfig[] = [
@@ -556,6 +585,21 @@ export function buildPlannedWorldCoordinateMap(
         coordinates.set(room.id, coordinate);
         occupied.add(coordinateKey({ x: coordinate.worldX, y: coordinate.worldY }));
       }
+    }
+
+    if (plan?.decision === 'instance' && plan.entranceRoomId) {
+      const entranceCoordinate = WORLD_MAP2_INSTANCE_ENTRANCE_COORDINATES[zone.id];
+      const entranceRoom = worldRooms.find(room => room.id === plan.entranceRoomId);
+      if (entranceCoordinate && entranceRoom && !coordinates.has(entranceRoom.id)) {
+        const coordinate = {
+          worldX: entranceCoordinate.worldX,
+          worldY: entranceCoordinate.worldY,
+          source: 'instance-entry' as const,
+        };
+        coordinates.set(entranceRoom.id, coordinate);
+        occupied.add(coordinateKey({ x: coordinate.worldX, y: coordinate.worldY }));
+      }
+      continue;
     }
 
     if (!plan?.globalBounds) continue;

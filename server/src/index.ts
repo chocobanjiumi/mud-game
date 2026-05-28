@@ -258,7 +258,7 @@ function buildPlanningWorldMapPayload(): {
       mapY: number;
       worldX?: number;
       worldY?: number;
-      worldCoordinateSource?: 'explicit' | 'derived';
+      worldCoordinateSource?: 'explicit' | 'derived' | 'instance-entry';
       mapScope: 'world' | 'instance';
       instanceTemplateId?: string;
       mapSymbol: string;
