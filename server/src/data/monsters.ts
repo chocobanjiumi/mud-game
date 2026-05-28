@@ -2501,6 +2501,90 @@ export const MONSTERS: Record<string, MonsterDef> = {
 import { EXPANSION_MONSTERS } from './monsters-expansion.js';
 Object.assign(MONSTERS, EXPANSION_MONSTERS);
 
+function enrichMonsterDescriptions(): void {
+  for (const monster of Object.values(MONSTERS)) {
+    const minimumLength = monster.isBoss ? 80 : monster.isElite ? 50 : 35;
+    if (countCjkChars(monster.description) >= minimumLength) continue;
+
+    monster.description = `${monster.description}${buildMonsterDescriptionSupplement(monster)}`;
+  }
+}
+
+function buildMonsterDescriptionSupplement(monster: MonsterDef): string {
+  const family = MONSTER_FAMILY_LABELS[monster.family] ?? '異種';
+  const element = MONSTER_ELEMENT_LABELS[monster.element] ?? '無屬性';
+  const threat = describeMonsterThreat(monster);
+  const drop = describeMonsterDrop(monster);
+  const habitat = describeMonsterHabitat(monster);
+
+  if (monster.isBoss) {
+    return `作為${family}首領，牠身上帶著${element}痕跡與明顯領地壓迫感，戰鬥時會用${threat}逼迫隊伍調整距離。${habitat}${drop}擊敗牠通常代表該區核心威脅被暫時壓制。`;
+  }
+
+  if (monster.isElite) {
+    return `這名${family}精英帶有${element}特徵，動作比同族更穩，會用${threat}拖慢冒險者推進。${habitat}${drop}`;
+  }
+
+  return `牠屬於${family}族群，身上可見${element}痕跡，常以${threat}保護巢穴或巡邏路線。${drop}`;
+}
+
+function describeMonsterThreat(monster: MonsterDef): string {
+  if (monster.skills.some(skill => /heal|prayer|recover/i.test(skill))) return '治療與支援節奏';
+  if (monster.skills.some(skill => /blind|stun|root|web|bind|mark|fear/i.test(skill))) return '控場與標記手段';
+  if (monster.skills.some(skill => /fire|ice|frost|lightning|shadow|poison|crystal|meteor/i.test(skill))) return '元素攻勢';
+  if (monster.skills.some(skill => /dash|charge|backstab|quick/i.test(skill))) return '突進與側襲';
+  if (monster.skills.some(skill => /skin|armor|shield|barrier|reflect/i.test(skill))) return '硬化防禦';
+  return '近身攻擊';
+}
+
+function describeMonsterDrop(monster: MonsterDef): string {
+  const drop = monster.drops.find(item => item.chance >= 0.3) ?? monster.drops[0];
+  if (!drop) return '牠的屍骸主要提供戰鬥經驗與區域安全感。';
+  return `牠的身體、裝備或巢穴也解釋了常見戰利品來源。`;
+}
+
+function describeMonsterHabitat(monster: MonsterDef): string {
+  if (monster.element === 'fire') return '牠多半出現在熱霧、灰燼或熔岩痕跡附近。';
+  if (monster.element === 'ice') return '牠常守在冷霧、冰晶或積雪遮蔽的地形中。';
+  if (monster.element === 'dark') return '牠偏好陰影、墓痕、裂隙或被污染的通道。';
+  if (monster.element === 'light') return '牠常伴隨聖光殘影、古代符印或天界碎片。';
+  if (monster.element === 'lightning') return '牠的棲地通常能看到焦痕、靜電與被雷擊過的地面。';
+  if (monster.element === 'nature') return '牠與藤蔓、腐土、樹根或濕草地形連在一起。';
+  return '牠的活動痕跡通常會留在道路、巢穴或警戒邊界上。';
+}
+
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
+}
+
+const MONSTER_FAMILY_LABELS: Record<string, string> = {
+  beast: '野獸',
+  humanoid: '人形',
+  undead: '亡靈',
+  demon: '惡魔',
+  dragon: '龍族',
+  elemental: '元素',
+  construct: '構裝',
+  plant: '植物',
+  insect: '蟲群',
+  ooze: '軟泥',
+  aquatic: '水生',
+  aberration: '異變',
+  celestial: '天界',
+};
+
+const MONSTER_ELEMENT_LABELS: Record<string, string> = {
+  none: '無屬性',
+  fire: '火元素',
+  ice: '冰元素',
+  lightning: '雷元素',
+  nature: '自然元素',
+  light: '光元素',
+  dark: '暗元素',
+};
+
+enrichMonsterDescriptions();
+
 /** 取得怪物定義 */
 export function getMonster(monsterId: string): MonsterDef | undefined {
   return MONSTERS[monsterId];
