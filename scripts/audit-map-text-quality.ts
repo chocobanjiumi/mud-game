@@ -636,12 +636,13 @@ function formatQuestRewardSummary(rewards: {
   recipes?: string[];
   equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
 }): string {
-  const parts = [`獎勵包含經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
-  if (rewards.items?.length) parts.push(`道具 ${rewards.items.map(item => `${ITEM_DEFS[item.itemId]?.name ?? item.itemId} x${item.quantity}`).join('、')}`);
-  if (rewards.equipmentSlotRewards?.length) parts.push(`裝備補給 ${rewards.equipmentSlotRewards.map(item => item.slot).join('、')}`);
-  if (rewards.portalUnlocks?.length) parts.push(`解鎖區域 ${rewards.portalUnlocks.map(item => ZONES[item.zoneId]?.name ?? item.zoneId).join('、')}`);
-  if (rewards.zoneReputation?.length) parts.push(`區域聲望 ${rewards.zoneReputation.map(item => `${ZONES[item.zoneId]?.name ?? item.zoneId} ${item.amount}`).join('、')}`);
-  if (rewards.recipes?.length) parts.push(`配方 ${rewards.recipes.join('、')}`);
+  const parts = [`完成後實際給予經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
+  if (rewards.items?.length) parts.push(`固定道具 ${rewards.items.map(item => `${ITEM_DEFS[item.itemId]?.name ?? item.itemId} x${item.quantity}`).join('、')}`);
+  if (rewards.equipmentSlotRewards?.length) parts.push(`依任務等級抽取${rewards.equipmentSlotRewards.map(formatEquipmentSlotReward).join('、')}裝備補給`);
+  if (rewards.portalUnlocks?.length) parts.push(`解鎖可前往區域 ${rewards.portalUnlocks.map(item => ZONES[item.zoneId]?.name ?? item.zoneId).join('、')}`);
+  if (rewards.zoneReputation?.length) parts.push(`調整區域聲望 ${rewards.zoneReputation.map(item => `${ZONES[item.zoneId]?.name ?? item.zoneId} ${item.amount}`).join('、')}`);
+  if (rewards.recipes?.length) parts.push(`解鎖或授予製作配方 ${rewards.recipes.join('、')}`);
+  parts.push('沒有列出的裝備、功能或入口不會被文案暗示為額外獎勵');
   return parts.join('；');
 }
 
@@ -651,10 +652,50 @@ function formatDungeonRewardSummary(rewards: {
   items?: { itemId: string; qty: number }[];
   equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
 }): string {
-  const parts = [`獎勵包含經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
-  if (rewards.items?.length) parts.push(`道具 ${rewards.items.map(item => `${ITEM_DEFS[item.itemId]?.name ?? item.itemId} x${item.qty}`).join('、')}`);
-  if (rewards.equipmentSlotRewards?.length) parts.push(`裝備補給 ${rewards.equipmentSlotRewards.map(item => `${item.slot}${item.levelMax ? ` Lv.${item.levelMax}` : ''}`).join('、')}`);
+  const parts = [`通關結算提供經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
+  if (rewards.items?.length) parts.push(`掉落或結算道具 ${rewards.items.map(item => `${ITEM_DEFS[item.itemId]?.name ?? item.itemId} x${item.qty}`).join('、')}`);
+  if (rewards.equipmentSlotRewards?.length) parts.push(`依副本等級抽取${rewards.equipmentSlotRewards.map(formatEquipmentSlotReward).join('、')}裝備補給`);
+  parts.push('未列出的裝備、解鎖或首通效果不應在副本文案中暗示存在');
   return parts.join('；');
+}
+
+function formatEquipmentSlotReward(reward: { slot: string; levelMax?: number; sourceTags?: string[] }): string {
+  const slotLabels: Record<string, string> = {
+    weapon: '武器',
+    offhand: '副手',
+    head: '頭部',
+    body: '身體',
+    hands: '手部',
+    feet: '腳部',
+    belt: '腰部',
+    necklace: '項鍊',
+    earring: '耳環',
+    ring: '戒指',
+    accessory: '飾品',
+  };
+  const tags = reward.sourceTags?.length ? `，來源偏向${reward.sourceTags.map(formatRewardSourceTag).join('、')}` : '';
+  return `${slotLabels[reward.slot] ?? reward.slot}${reward.levelMax ? `最高 Lv.${reward.levelMax}` : ''}${tags}`;
+}
+
+function formatRewardSourceTag(tag: string): string {
+  const labels: Record<string, string> = {
+    starter_progression: '新手成長',
+    main_quest: '主線任務',
+    zone_theme: '區域主題',
+    forest: '森林探索',
+    coast: '海岸探索',
+    pirate: '海盜戰利品',
+    fire: '火焰地帶',
+    volcano: '火山地帶',
+    ice: '冰雪地帶',
+    frozen: '極寒地帶',
+    dark: '暗影地帶',
+    demon: '魔族戰利品',
+    dragon: '龍族戰利品',
+    celestial: '天界遺跡',
+    finale: '終局戰場',
+  };
+  return labels[tag] ?? tag.replace(/_/g, ' ');
 }
 
 function formatReport(reportData: typeof report, writtenPath?: string): string {
