@@ -456,7 +456,9 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
       roomId: plan.entranceRoomId,
       objectId: `${zone.id}_entrance_object`,
       name: `${zone.name}入口`,
-      description: `${zone.name}入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。`,
+      description: zone.id === 'final_battleground'
+        ? '終焉戰場入口以固定場景物件標示在世界地圖上，玩家需在殘破軍旗前出示終末軍旗印才能宣戰；入口周圍的刻痕、封印與警示牌會確認戰印仍會保留，但宣戰後戰場會暫時沉寂並進入冷卻。'
+        : `${zone.name}入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。`,
       minLevel: zone.levelRange[0],
       maxPartySize: zone.recommendedPartySize[1],
       requiredItemId: zone.id === 'final_battleground' ? 'final_standard_seal' : undefined,

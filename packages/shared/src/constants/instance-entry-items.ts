@@ -51,7 +51,7 @@ export const WORLD_MAP2_INSTANCE_ENTRY_ITEMS: readonly InstanceEntryItemMetadata
     consumeItem: false,
     cooldownSeconds: 300,
     entryName: '荒原核心錨定',
-    entryDescription: '荒原核心錨插入星界荒原入口的裂地時，會把漂移地平線固定成一條可行走的黑星道路；道具不會消耗，隊長可用它帶隊進入穩定後的星界副本。',
+    entryDescription: '荒原核心錨插入星界荒原入口的裂地時，會把漂移地平線固定成一條可行走的黑星道路；道具不會消耗，隊長可用它帶隊進入穩定後的星界副本，但每次錨定後需要等待地平線重新校準。',
   },
   {
     zoneId: 'final_battleground',
@@ -83,7 +83,7 @@ export const WORLD_MAP2_INSTANCE_ENTRY_ITEMS: readonly InstanceEntryItemMetadata
     entranceRoomName: '白骨礁入口',
     consumeItem: false,
     entryName: '潮骨羅盤定航',
-    entryDescription: '潮骨羅盤靠近白骨礁入口時會跟著礁鐘舌片震動，指針指向退潮後露出的幽靈錨航道；羅盤不會消耗，可用來帶隊進入白骨礁副本。',
+    entryDescription: '潮骨羅盤靠近白骨礁入口時會跟著礁鐘舌片震動，指針指向退潮後露出的幽靈錨航道；羅盤不會消耗，可用來帶隊進入白骨礁副本，並提醒隊伍必須從入口房間確認航向。',
   },
   {
     zoneId: 'ashfall_monastery',

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:21:25.615Z",
+  "generatedAt": "2026-05-28T16:26:01.981Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -75,7 +75,10 @@
       "dungeonEntryTooltipMinCjkChars": 40
     },
     "instanceEntry": {
-      "descriptionMinCjkChars": 45
+      "nameMinCjkChars": 4,
+      "descriptionMinCjkChars": 45,
+      "gatedDescriptionMinCjkChars": 55,
+      "tooltipMinCjkChars": 24
     },
     "bannedGenericPhrases": [
       "這裡很危險",

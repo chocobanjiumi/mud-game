@@ -29,7 +29,9 @@ type TextKind =
   | 'quest.objective'
   | 'dungeon.description'
   | 'dungeon.room.description'
+  | 'instanceEntry.name'
   | 'instanceEntry.description'
+  | 'instanceEntry.tooltip'
   | 'item.description'
   | 'item.tooltip'
   | 'zone.description'
@@ -66,6 +68,8 @@ interface TextRecord {
   text: string;
   batchKey: string;
 }
+
+type InstanceEntryForAudit = ReturnType<typeof buildInstanceEntryDefs>[number];
 
 const write = process.argv.includes('--write');
 const strict = process.argv.includes('--strict');
@@ -288,7 +292,10 @@ for (const skill of Object.values(SKILL_DEFS)) {
 
 const instanceEntries = buildInstanceEntryDefs(ZONES);
 for (const entry of instanceEntries) {
-  checkText(entry.id, 'instanceEntry.description', 'description', entry.description, 45, 'instance entrance 描述需說明外觀、狀態與進入方式');
+  checkInstanceEntryName(entry);
+  checkText(entry.id, 'instanceEntry.description', 'description', entry.description, instanceEntryDescriptionMinimum(entry), 'instance entrance 描述需說明外觀、狀態、進入方式、需求或冷卻提示');
+  checkInstanceEntryDescription(entry);
+  checkText(`${entry.id}/tooltip`, 'instanceEntry.tooltip', 'tooltip', formatInstanceEntryTooltipAuditText(entry), 24, 'instance entry tooltip 需列出副本名稱、建議等級、人數、需求、冷卻與鎖定資訊');
 }
 
 checkRepeatedOpenings(textRecords);
@@ -377,7 +384,10 @@ const report = {
       dungeonEntryTooltipMinCjkChars: 40,
     },
     instanceEntry: {
+      nameMinCjkChars: 4,
       descriptionMinCjkChars: 45,
+      gatedDescriptionMinCjkChars: 55,
+      tooltipMinCjkChars: 24,
     },
     bannedGenericPhrases,
   },
@@ -452,6 +462,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
+  if (kind === 'instanceEntry.name' || kind === 'instanceEntry.tooltip') return kind;
   if (kind === 'monster.description') return 'monsters';
   if (kind === 'equipment.description') return 'equipment';
   if (kind === 'skill.description') return 'skills';
@@ -525,6 +536,69 @@ function formatDungeonEntryItemTooltipAuditText(entryItem: typeof WORLD_MAP2_INS
   const consumeText = entryItem.consumeItem ? '使用後消耗' : '不會消耗';
   const cooldownText = entryItem.cooldownSeconds ? `冷卻 ${Math.ceil(entryItem.cooldownSeconds / 60)} 分鐘` : '無額外冷卻';
   return `副本入口道具 tooltip 顯示可開啟 ${entryItem.dungeonName}，使用地點是 ${entryItem.entranceRoomName}，入口互動為 ${entryItem.entryName}，消耗狀態為${consumeText}，${cooldownText}；說明玩家需帶著對應道具到指定入口使用。`;
+}
+
+function checkInstanceEntryName(entry: InstanceEntryForAudit): void {
+  checkText(entry.id, 'instanceEntry.name', 'name', entry.name, 4, '副本入口名稱需是具體物件或包含副本名稱，不能只寫入口或傳送門');
+  if (/^(入口|副本入口|傳送門|門)$/u.test(entry.name.trim())) {
+    addIssue(entry.id, 'instanceEntry.name', 'name', entry.name, 4, '副本入口名稱過於泛用，需使用具體物件、地標或副本名稱');
+  }
+}
+
+function instanceEntryDescriptionMinimum(entry: InstanceEntryForAudit): number {
+  return entry.requiredItemId || entry.cooldownSeconds ? 55 : 45;
+}
+
+function checkInstanceEntryDescription(entry: InstanceEntryForAudit): void {
+  const description = entry.description;
+  const missing: string[] = [];
+  if (!/入口|門|裂縫|鐘|祭盤|祭壇|封印|刻痕|符文|錨|羅盤|卷軸|警示牌|軍令|旗|嚮導|測繪員|軍史官|場景物件/u.test(description)) {
+    missing.push('入口外觀或具體物件');
+  }
+  if (!/玩家|隊伍|使用|建立|進入|開啟|確認|帶隊|引導|站在|靠近|貼近|放上|舉向|展開|插入/u.test(description)) {
+    missing.push('玩家互動或進入方式');
+  }
+
+  const requiredItem = entry.requiredItemId ? ITEM_DEFS[entry.requiredItemId] : undefined;
+  if (entry.requiredItemId) {
+    if (!requiredItem) {
+      missing.push(`需求道具 ${entry.requiredItemId} 未定義`);
+    } else if (!description.includes(requiredItem.name)) {
+      missing.push(`需求道具名稱「${requiredItem.name}」`);
+    }
+    if (entry.consumeItem && !/消耗|耗盡|燒盡|一次|使用後消失/u.test(description)) {
+      missing.push('道具會消耗的提示');
+    }
+    if (!entry.consumeItem && !/不會被消耗|不會消耗|不消耗|仍會保留|可重複出示/u.test(description)) {
+      missing.push('道具不會消耗的提示');
+    }
+  }
+
+  if (entry.cooldownSeconds && !/等待|冷卻|沉寂|重新|平復|鐘聲|宣戰|校準|限制|暫時/u.test(description)) {
+    missing.push('冷卻或鎖定敘事原因');
+  }
+
+  if (missing.length === 0) return;
+  addMeasuredIssue(
+    entry.id,
+    'instanceEntry.description',
+    'description',
+    description,
+    countCjkChars(description),
+    instanceEntryDescriptionMinimum(entry),
+    `副本入口描述缺少：${missing.join('、')}`,
+  );
+}
+
+function formatInstanceEntryTooltipAuditText(entry: InstanceEntryForAudit): string {
+  const dungeon = entry.dungeonId ? DUNGEON_DEFS[entry.dungeonId] : undefined;
+  const dungeonName = dungeon?.name ?? entry.name;
+  const requiredItem = entry.requiredItemId ? ITEM_DEFS[entry.requiredItemId] : undefined;
+  const requirementText = requiredItem
+    ? `${requiredItem.name}${entry.consumeItem ? '，使用後消耗' : '，不會消耗'}`
+    : '無道具需求';
+  const cooldownText = entry.cooldownSeconds ? `冷卻 ${entry.cooldownSeconds} 秒` : '無入口冷卻';
+  return `入口「${entry.name}」可進入${dungeonName}，建議等級 Lv.${entry.minLevel}，人數 1-${entry.maxPartySize}，需求 ${requirementText}，${cooldownText}；若鎖定需依任務、道具或隊伍條件處理。`;
 }
 
 function skillDescriptionMinimum(skill: typeof SKILL_DEFS[string]): number {
@@ -631,7 +705,9 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'affix.description'
     || batchKey === 'item.tooltip'
     || batchKey === 'skill.tooltip'
-    || batchKey === 'skill.upgradePreview';
+    || batchKey === 'skill.upgradePreview'
+    || batchKey === 'instanceEntry.name'
+    || batchKey === 'instanceEntry.tooltip';
 }
 
 function shouldSkipCoreTermCheck(batchKey: string): boolean {
@@ -649,6 +725,8 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
+    || batchKey === 'instanceEntry.name'
+    || batchKey === 'instanceEntry.tooltip'
     || batchKey === 'instanceEntry.description';
 }
 
