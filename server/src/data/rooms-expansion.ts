@@ -7118,7 +7118,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_sunken_willow', description: '倒木路通向沉水柳' },
+      {
+        direction: 'west',
+        targetRoomId: 'marsh_of_mirrors_sunken_willow',
+        description: '西側倒木路要沿歪斜棧板、浮根與黑水缺口繞行，才會抵達沉水柳，倒影會故意縮短距離',
+        edgeKind: 'long_path',
+        edgeNote: '歪木棧道到沉水柳需沿倒木與黑水缺口繞行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -7145,7 +7151,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '遠方假燈通向鏡池' },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_mirror_pond',
+        description: '東側遠方假燈穿過霧盲水窪與錯位蘆影後，才會通向鏡池，路線必須靠腳下水聲辨認',
+        edgeKind: 'long_path',
+        edgeNote: '霧盲處到鏡池受濃霧與錯位倒影干擾，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -7172,8 +7184,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '水光回到銀面池' },
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '裂紋水面通向破碎倒影' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_sunken_willow', description: '倒柳影子通向沉水柳' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_poison_bloom_bed', description: '毒花倒影在南面' },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_sunken_willow',
+        description: '東側倒柳影子會沿鏡池邊緣反折，穿過錯位水面與浮根縫隙後才通向沉水柳',
+        edgeKind: 'long_path',
+        edgeNote: '鏡池到沉水柳被反折倒影與浮根水面隔開，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'marsh_of_mirrors_poison_bloom_bed',
+        description: '南側毒花倒影要沿鏡池裂光下沉，穿過綠霧水窪後才抵達毒花床，花影會誤導直行',
+        edgeKind: 'long_path',
+        edgeNote: '鏡池到毒花床需穿過綠霧水窪與錯位花影，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -7199,7 +7223,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一棵巨大的柳樹半沉在沼水中，樹冠倒垂，細長枝條像濕髮般貼著水面。根部仍活著，卻從黑水中吸收了暗色汁液，樹皮上長出微微發亮的白菌。西側倒木可看見歪木棧道，東側倒影可看見鏡池，但沉水柳周圍的水下根鬚會把回程纏住，需由棧道或鏡池方向進入。這裡是自然資源與精英前置房，玩家可採集柳根、白菌與腐化樹液，也能追查暗黑樹人的活動痕跡。沉水柳的倒影比本體更完整，像另一棵樹正從水下向上生長。若砍錯枝條，水下倒影會先流血，然後引來樹人與蜘蛛守衛。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '根系延向暗樹林' },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_dark_treant_grove',
+        description: '北側根系要穿過沉水柳下方的黑水與倒掛樹影，才會延進暗樹林，腳下真根與倒影會交錯',
+        edgeKind: 'long_path',
+        edgeNote: '沉水柳到暗樹林需沿水下根系繞行，不是相鄰平面一格。',
+      },
     ],
     monsters: [
       { monsterId: 'dark_treant', maxCount: 1, respawnSeconds: 160 },
@@ -7226,8 +7256,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '毒蛙泥潭東側長滿紫綠色毒花，花瓣厚得像濕蠟，花心持續吐出淡綠霧氣。這裡的水窪倒映出花朵尚未開放時的樣子，讓採集者很難分辨哪一株已經成熟。這裡是資源與事件房，玩家可採集毒花、調配解毒材料，或完成淨化霧源的任務。毒花根部常有綠色史萊姆吸附，毒蛙也會在霧氣最濃處等待獵物暈眩。若玩家採下帶有錯誤倒影的花，毒霧會短暫變成黑色，指向鏡水核心正在污染整片沼澤。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '毒泥路回到蛙潭' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '鏡池在北面' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '黑霧指向破碎倒影' },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_mirror_pond',
+        description: '北返時要沿毒花根部與綠霧水窪回溯，避開錯位花影後才會看見鏡池平整水面',
+        edgeKind: 'long_path',
+        edgeNote: '毒花床北返鏡池需穿過綠霧水窪，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_shattered_reflection',
+        description: '東側黑霧沿毒花床邊緣擴散，穿過數片錯誤倒影後才會指向破碎倒影',
+        edgeKind: 'long_path',
+        edgeNote: '毒花床到破碎倒影被黑霧與錯誤倒影隔開，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'black_reed_slime', maxCount: 3, respawnSeconds: 90 },
@@ -7279,7 +7321,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '蛛網蘆叢東側有一堆人為壘起的濕石，每顆石頭都刻著方向箭頭，卻沒有兩個箭頭指向同一條路。石堆上掛著失蹤旅人的護符、魚骨、布條和被水泡白的名字牌。這裡是探索與任務房，玩家可辨認正確路標、收集失蹤者遺物，或把鏡沼裡的錯誤路線重新記錄下來。石堆倒影中有時會出現尚未壘上的新石，像在預告下一個迷路者。若玩家隨意搬動石頭，整片霧會改變方向，把隊伍推向破碎倒影或蛇道。',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蛛絲路回到蘆叢' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '錯誤箭頭指向破碎倒影' },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_shattered_reflection',
+        description: '東側錯誤箭頭會先繞過失路石堆與漂浮護符，才指向破碎倒影，霧中會出現多條假支路',
+        edgeKind: 'long_path',
+        edgeNote: '失路石堆到破碎倒影需辨認多條假支路，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_serpent_channel', description: '低水道通向蛇道' },
     ],
     monsters: [
@@ -7306,9 +7354,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鏡池北側的水面像被看不見的力量敲碎，分成無數不連續的倒影碎片。每一片都映出不同天色、不同隊伍位置，甚至不同時間的自己。這裡是大型事件前置房，玩家可研究倒影裂紋、收集鏡片水膜，並找到通往玻璃水核心的第一組路徑規則。破碎倒影會讓怪物行動看似瞬移，毒蛙與湖蛇會從不該相連的水面突然躍出。若玩家能找出哪一片倒影沒有延遲，就能避開錯誤路線；若判斷失敗，隊伍會被送往蛇道或迷霧更深處。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '裂紋水面回到鏡池' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '錯誤箭頭回到失路石堆' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '無延遲倒影通向玻璃水核心' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在北側' },
+      {
+        direction: 'west',
+        targetRoomId: 'marsh_of_mirrors_lost_cairn',
+        description: '西返時錯誤箭頭會在破碎水面間重組，必須繞過漂浮護符與假支路後才回到失路石堆',
+        edgeKind: 'long_path',
+        edgeNote: '破碎倒影西返失路石堆需穿過重組倒影與假支路，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_glasswater_core',
+        description: '東側無延遲倒影只在水面裂片同步時出現，隊伍要踩過連續倒影碎片才會抵達玻璃水核心',
+        edgeKind: 'long_path',
+        edgeNote: '破碎倒影到玻璃水核心需穿過不連續倒影碎片，不是相鄰格。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_echo_fen',
+        description: '北側回聲濕地要沿破碎水面邊緣繞過延遲倒影，才會抵達開闊淺水區',
+        edgeKind: 'long_path',
+        edgeNote: '破碎倒影到回聲濕地受延遲倒影與淺水邊緣阻隔，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -7361,7 +7427,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '沉水柳北面的樹林被暗色樹液污染，樹幹扭曲成像人形一樣的姿勢，根系伸入一口口小鏡池中。每棵樹都有兩個影子，一個落在地面，一個倒掛在水下。這裡是精英戰鬥與大型事件前置房，玩家可追查暗黑樹人如何被鏡水腐化，採集暗樹皮與黑色樹液，也能找到通往玻璃水核心的根系路線。暗樹林的敵人行動慢卻壓迫感強，會用根系封路，把隊伍逼到錯誤倒影旁。若玩家淨化沉水柳，這裡的部分樹根會暫時停止攻擊。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_sunken_willow', description: '根路回到沉水柳' },
+      {
+        direction: 'south',
+        targetRoomId: 'marsh_of_mirrors_sunken_willow',
+        description: '南返時根路沿暗樹林水下根脈回折，穿過倒掛樹影後才回到沉水柳，黑水會遮住真實落腳點',
+        edgeKind: 'long_path',
+        edgeNote: '暗樹林南返沉水柳需沿水下根脈回折，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '黑根延向玻璃水核心' },
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在西側' },
     ],
@@ -7390,8 +7462,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '失路石堆南面的水道蜿蜒得像巨蛇身體，水面一段明亮一段漆黑，讓人難以看清深度。兩岸蘆葦低伏，像被巨大身軀反覆壓過。這裡是高風險通道與戰鬥房，玩家可沿水道繞往沉沒小祠，也能追查湖蛇巢穴與失蹤貨箱。水道中段有多處氣泡旋渦，若倒影裡先出現波紋，真正的湖蛇很快會從身旁水面竄出。毒蛙也會利用蛇道留下的空洞藏身，形成連續伏擊。安全通過後，隊伍可取得通往小祠的隱蔽路線。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
       { direction: 'north', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '低水道回到失路石堆' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '水道通往沉沒小祠' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蘆葦缺口連回蛛網蘆叢' },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_sinking_shrine',
+        description: '東側水道沿蛇形暗流繞過氣泡旋渦與低伏蘆葦後，才會通往沉沒小祠',
+        edgeKind: 'long_path',
+        edgeNote: '蛇行水道到沉沒小祠需沿蛇形暗流繞行，距離長於相鄰格。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'marsh_of_mirrors_spider_reeds',
+        description: '西側蘆葦缺口要逆著蛇形水道與蛛絲倒影回繞，才會連回蛛網蘆叢',
+        edgeKind: 'long_path',
+        edgeNote: '蛇行水道西返蛛網蘆叢需穿過水道回彎與蛛絲倒影，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 3, respawnSeconds: 120 },
@@ -7447,7 +7531,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_hag_lantern', description: '遠處巫燈在東側閃爍' },
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '白石支路通向沉沒小祠' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '最亮石路通向玻璃水核心' },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_glasswater_core',
+        description: '北側最亮石路沿月光堤道反折，穿過水面假月與黑蘆外圈後才會通向玻璃水核心',
+        edgeKind: 'long_path',
+        edgeNote: '月光堤道到玻璃水核心需沿反折石路穿過黑蘆外圈，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -7472,9 +7562,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '蛇行水道與月光堤道之間有一座半沉入水中的小祠，屋脊只剩一半露出，供桌卻奇異地保持乾燥。祠內擺著濕蠟燭、鏡片、解毒草和刻有陌生祈詞的石碗。這裡是任務與大型事件前置房，玩家可替失蹤者獻上名字牌，調查鏡沼過去是否曾被人祭祀，或取得通往巫燈處的護符。小祠倒影比本體完整，像另一座未沉沒的祠堂仍在水下等待香火。若玩家拿走錯誤供品，水下倒影會召來湖蛇與毒蛙阻止離開。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_serpent_channel', description: '蛇形水道回到西側' },
+      {
+        direction: 'west',
+        targetRoomId: 'marsh_of_mirrors_serpent_channel',
+        description: '西返時蛇形水道要沿沉沒祠堂外牆與氣泡旋渦回繞，才會回到蛇行水道',
+        edgeKind: 'long_path',
+        edgeNote: '沉沒小祠西返蛇行水道需繞過祠堂外牆與旋渦，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石支路回到月光堤道' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_hag_lantern', description: '護符指向巫燈處' },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_hag_lantern',
+        description: '北側護符路穿過半沉供桌、低霧與歪木桿倒影後，才會抵達巫燈處，燈影在水面反覆偏移',
+        edgeKind: 'long_path',
+        edgeNote: '沉沒小祠到巫燈處需穿過低霧與倒影木桿，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 2, respawnSeconds: 120 },
@@ -7501,8 +7603,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '月光堤道東側懸著一盞孤燈，燈不是掛在樹上，而是被三根歪木桿支在水面中央。燈火呈暗綠色，倒影卻是深紫色，兩種光在霧中互相拉扯。周圍掛滿骨牌、草繩、破鏡片和不知名的藥包。這裡是精英事件與任務交涉房，玩家可追查操控假燈的巫術來源，破解鏡沼迷路現象，或取得進入玻璃水核心前需要的最後警示。雖然沒有真正的女巫站在燈下，但每次玩家靠近，燈影裡都會多出一個彎腰身影。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石路回到月光堤道' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '護符路回到沉沒小祠' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '雙色燈影指向玻璃水核心' },
+      {
+        direction: 'south',
+        targetRoomId: 'marsh_of_mirrors_sinking_shrine',
+        description: '南返時護符路沿歪木桿倒影與低霧回落，穿過半沉供桌後才回到沉沒小祠',
+        edgeKind: 'long_path',
+        edgeNote: '巫燈處南返沉沒小祠需沿倒影木桿與低霧路回繞，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'marsh_of_mirrors_glasswater_core',
+        description: '北側雙色燈影必須等綠光與紫影重疊時才能辨認，沿黑蘆外圈繞行後才到玻璃水核心',
+        edgeKind: 'long_path',
+        edgeNote: '巫燈處到玻璃水核心需等待雙色燈影重疊並繞過黑蘆外圈，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'hag_lantern_echo', maxCount: 1, respawnSeconds: 180 },
@@ -7528,8 +7642,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鏡沼最深處是一片圓形水域，水面透明如玻璃，能看見下方並不是泥底，而是一片倒置天空。黑色蘆葦圍成外圈，暗樹根、月光堤道與破碎倒影都在此交會。中央水面浮著一枚緩慢轉動的透明核心，每次轉動都會讓整片沼澤的倒影偏移。東側黑根與北側雙色燈影都能辨認，但核心周圍倒影會把回程反折，需由暗樹林或巫燈處方向進入核心。這裡是鏡沼的大型事件鉤子與最終地標，玩家可選擇穩定核心、打碎它，或取走鏡片碎核作為任務證據。任何選擇都會引來沼澤生物反應：毒蛙鳴叫、湖蛇破水、暗樹根從邊緣收攏。若隊伍沒有先取得巫燈警示與鏡池樣本，核心會顯示錯誤出口，把人送回迷霧深處。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '最亮石路回到月光堤道' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_shattered_reflection', description: '裂紋水面回到破碎倒影' },
+      {
+        direction: 'south',
+        targetRoomId: 'marsh_of_mirrors_moonlit_causeway',
+        description: '南返時最亮石路會沿黑蘆外圈反折，穿過假月水面後才回到月光堤道',
+        edgeKind: 'long_path',
+        edgeNote: '玻璃水核心南返月光堤道需沿黑蘆外圈與反折石路回行，屬於長路徑。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'marsh_of_mirrors_shattered_reflection',
+        description: '西側裂紋水面要等核心倒影偏移後才會連上，隊伍需踩過連續碎片回到破碎倒影',
+        edgeKind: 'long_path',
+        edgeNote: '玻璃水核心西返破碎倒影需穿過偏移倒影碎片，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'glasswater_reflection_core', maxCount: 1, respawnSeconds: 1800 },
