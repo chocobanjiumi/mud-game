@@ -54,6 +54,41 @@ for (const spec of CONTENT_QUALITY_SPECS) {
   if (!spec.auditRule.trim()) {
     issues.push({ id: spec.id, field: spec.field, reason: 'auditRule is required' });
   }
+  if (!spec.reviewRule.trim()) {
+    issues.push({ id: spec.id, field: spec.field, reason: 'reviewRule is required' });
+  }
+  if (!spec.smallBatchReview.trim() || !spec.smallBatchReview.includes('全數')) {
+    issues.push({ id: spec.id, field: spec.field, reason: 'smallBatchReview must require full review' });
+  }
+  if (
+    !spec.largeBatchReview.trim() ||
+    !spec.largeBatchReview.includes('10') ||
+    !spec.largeBatchReview.includes('20%')
+  ) {
+    issues.push({
+      id: spec.id,
+      field: spec.field,
+      reason: 'largeBatchReview must require at least 10 entries or 20%',
+    });
+  }
+  if (!spec.highSalienceRule.trim() || !spec.highSalienceRule.includes('20%')) {
+    issues.push({
+      id: spec.id,
+      field: spec.field,
+      reason: 'highSalienceRule must raise minimum length by at least 20%',
+    });
+  }
+  if (
+    !spec.nonAutomatedFallback.trim() ||
+    !spec.nonAutomatedFallback.includes('資料已補') ||
+    !spec.nonAutomatedFallback.includes('標完成')
+  ) {
+    issues.push({
+      id: spec.id,
+      field: spec.field,
+      reason: 'nonAutomatedFallback must block completion without manual evidence',
+    });
+  }
   if (!spec.appliesTo.trim()) {
     issues.push({ id: spec.id, field: spec.field, reason: 'appliesTo is required' });
   }
