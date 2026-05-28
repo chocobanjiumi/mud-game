@@ -58,6 +58,52 @@ export const NPCS: Record<string, NpcDef> = {
     }],
   },
 
+  crystal_cave_entry_guide: {
+    id: 'crystal_cave_entry_guide',
+    name: '瑟琳',
+    alias: 'crystal_guide',
+    title: '水晶洞窟勘探嚮導',
+    description: '一名戴著護目鏡的勘探嚮導站在洞口測量水晶折光，腰間掛著繩鉤、粉筆與公會封蠟地圖。她反覆檢查礦道風向，確保進洞者知道哪條亮線代表退路。',
+    roomId: 'cave_entrance',
+    type: 'quest',
+    dialogue: [
+      {
+        id: 'greeting',
+        text: '先停在洞口，不要追著最亮的水晶走。這座洞窟會把腳步聲折到錯誤方向，我負責替公會確認隊伍、標記退路，也負責阻止沒準備好的人把自己埋進礦脈裡。',
+        options: [
+          { text: '請說明水晶洞窟勘探委託。', nextId: 'entry_intro' },
+          { text: '確認建議等級與隊伍人數。', nextId: 'entry_conditions' },
+          { text: '我先檢查補給。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'entry_intro',
+        text: '洞窟深處的折光不是普通魔力，它會讓礦脈、地下河和水晶獸巢同時改變方向。你進去要確認三件事：標記可返回的礦道、清掉干擾勘探線的魔物、帶回能證明水晶異常來源的樣本。',
+        options: [
+          { text: '確認建議等級與隊伍人數。', nextId: 'entry_conditions' },
+          { text: '請帶我進入水晶洞窟副本。', nextId: 'entry_confirm' },
+        ],
+      },
+      {
+        id: 'entry_conditions',
+        text: '建議等級二十級以上，最好兩到四人同行。若你在隊伍中，必須由隊長開啟入口；進去後先看退路標記，不要把所有回復品留到水晶龍巢才想起來。',
+        options: [
+          { text: '請帶我進入水晶洞窟副本。', nextId: 'entry_confirm' },
+          { text: '我先檢查補給。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'entry_confirm',
+        text: '我會把公會封蠟按在洞口標記上，礦道只會為這支隊伍展開一次。進去後跟著粉筆記號走，若水晶開始倒映不是自己的影子，就代表你們已經接近副本深層。',
+        action: { type: 'instance_entry', data: { entryId: 'crystal_cave_crystal_cave_entry_guide_npc_entry' } },
+      },
+      {
+        id: 'farewell',
+        text: '補給、繩索、退路標記，三樣少一樣都別進洞。水晶不會因為你勇敢就停止坍光。',
+      },
+    ],
+  },
+
   // ─── 新手村 NPC ──────────────────────────────────────────
 
   village_chief: {
@@ -5710,6 +5756,7 @@ export const NPCS: Record<string, NpcDef> = {
         text:
           '這座墓窟不是被外面的水淹了，是裡面的水一直往上吐。你若不記水位，回頭路會變成牆。',
         options: [
+          { text: '請說明沉沒墓窟水位委託。', nextId: 'entry_intro' },
           { text: '該先去哪裡？', nextId: 'route' },
           { text: '水閘怎麼判斷？', nextId: 'sluice' },
           { text: '深潮井是什麼？', nextId: 'well' },
@@ -5723,7 +5770,32 @@ export const NPCS: Record<string, NpcDef> = {
         options: [
           { text: '水閘怎麼判斷？', nextId: 'sluice' },
           { text: '深潮井是什麼？', nextId: 'well' },
+          { text: '請帶我進入沉沒墓窟副本。', nextId: 'entry_confirm' },
         ],
+      },
+      {
+        id: 'entry_intro',
+        text:
+          '我知道這座副本入口，因為水位每天都把新墓室吐到階梯旁。你進去不是單純清怪，而是要確認黑水源頭、重開水閘退路，並阻止王冠墓室把更多不死者推回入口。',
+        options: [
+          { text: '確認建議等級與隊伍人數。', nextId: 'entry_conditions' },
+          { text: '請帶我進入沉沒墓窟副本。', nextId: 'entry_confirm' },
+        ],
+      },
+      {
+        id: 'entry_conditions',
+        text:
+          '建議等級二十四級以上，兩到四人比較穩。若你在隊伍裡，隊長必須站在潮汐階梯與我確認；人數過多會讓鏈橋承重失準，低等級則很容易被黑水拖住。',
+        options: [
+          { text: '請帶我進入沉沒墓窟副本。', nextId: 'entry_confirm' },
+          { text: '我先檢查補給。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'entry_confirm',
+        text:
+          '我會把測繪繩尺固定在潮汐階梯的鐵環上，讓這次副本有一條能回到入口的水位線。進去後先聽水聲，不要等黑水淹過胸口才問出口在哪。',
+        action: { type: 'instance_entry', data: { entryId: 'sunken_catacombs_sunken_catacombs_tide_surveyor_npc_entry' } },
       },
       {
         id: 'sluice',
@@ -11526,10 +11598,35 @@ export const NPCS: Record<string, NpcDef> = {
         id: 'greeting',
         text: '別急著衝向終末軍旗。這片戰場最危險的不是敵人還活著，而是軍令仍然有效。',
         options: [
+          { text: '請宣讀終焉戰場軍令確認。', nextId: 'entry_intro' },
           { text: '先看戰線。', nextId: 'front' },
           { text: '神傷核心在哪？', nextId: 'godscar' },
           { text: '我會留意。', nextId: 'farewell' },
         ],
+      },
+      {
+        id: 'entry_intro',
+        text:
+          '我知道通往終局副本的軍令，因為所有進入戰場的人都會在這塊斷碑上留下影子。你不是去巡邏，而是要突破破旗殘兵、黑焰終軍與神傷核心，最後確認終末軍旗是否仍在重寫戰爭命令。',
+        options: [
+          { text: '確認終焉戰場建議等級與隊伍人數。', nextId: 'entry_conditions' },
+          { text: '請帶我進入終焉戰場副本。', nextId: 'entry_confirm' },
+        ],
+      },
+      {
+        id: 'entry_conditions',
+        text:
+          '這是五十五級以上的終局戰場，建議三到四人由隊長確認進入。入口會在宣戰後沉寂一段時間；若隊伍太少、等級不足，或冷卻未結束，我會把原因寫進軍令而不是讓你白白送命。',
+        options: [
+          { text: '請帶我進入終焉戰場副本。', nextId: 'entry_confirm' },
+          { text: '我先整理隊伍與補給。', nextId: 'farewell' },
+        ],
+      },
+      {
+        id: 'entry_confirm',
+        text:
+          '我會宣讀最後軍令，讓斷碑把你們的名字暫時列入終戰名冊。進入後不要相信任何安靜的旗，黑焰、神傷與軍令都會用不同方式要求你們留下。',
+        action: { type: 'instance_entry', data: { entryId: 'final_battleground_final_battleground_war_scribe_npc_entry' } },
       },
       {
         id: 'front',

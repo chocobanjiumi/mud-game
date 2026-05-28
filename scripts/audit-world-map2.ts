@@ -4,6 +4,7 @@ import type { Direction, RoomDef } from '@game/shared';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
+import { NPCS } from '../server/src/data/npcs.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type Bounds = { minX: number; maxX: number; minY: number; maxY: number };
@@ -139,6 +140,15 @@ for (const [zoneId, plan] of zonePlans.entries()) {
         instanceEntryIssues.push(`${entry.id}: item_use entry missing requiredItemId`);
       } else if (!ITEM_DEFS[entry.requiredItemId]) {
         instanceEntryIssues.push(`${entry.id}: requiredItemId ${entry.requiredItemId} missing in ITEM_DEFS`);
+      }
+    }
+    if (entry.type === 'npc_dialogue') {
+      if (!entry.npcId) {
+        instanceEntryIssues.push(`${entry.id}: npc_dialogue entry missing npcId`);
+      } else if (!NPCS[entry.npcId]) {
+        instanceEntryIssues.push(`${entry.id}: npcId ${entry.npcId} missing in NPCS`);
+      } else if (NPCS[entry.npcId].roomId !== entry.roomId) {
+        instanceEntryIssues.push(`${entry.id}: npc ${entry.npcId} is in ${NPCS[entry.npcId].roomId}, expected ${entry.roomId}`);
       }
     }
     if (entry.dungeonId && !DUNGEON_DEFS[entry.dungeonId]) {

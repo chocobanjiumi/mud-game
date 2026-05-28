@@ -50,6 +50,13 @@ interface ItemUseInstanceEntryConfig {
   description: string;
 }
 
+interface NpcDialogueInstanceEntryConfig {
+  zoneId: string;
+  npcId: string;
+  name: string;
+  description: string;
+}
+
 const WORLD_ZONE_IDS = [
   'starter_village',
   'starter_village_ext',
@@ -366,6 +373,27 @@ const WORLD_MAP2_ITEM_USE_INSTANCE_ENTRIES: ItemUseInstanceEntryConfig[] = [
   },
 ];
 
+const WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES: NpcDialogueInstanceEntryConfig[] = [
+  {
+    zoneId: 'crystal_cave',
+    npcId: 'crystal_cave_entry_guide',
+    name: '水晶洞窟勘探委託',
+    description: '水晶洞窟入口的勘探嚮導會先確認隊伍是否理解礦道坍塌、水晶折光與地底魔力風險，再用公會標記帶玩家進入獨立副本路線。',
+  },
+  {
+    zoneId: 'sunken_catacombs',
+    npcId: 'sunken_catacombs_tide_surveyor',
+    name: '沉沒墓窟水位委託',
+    description: '墓窟水位測繪員掌握黑水潮汐與退路標記，玩家可透過他的對話確認建議等級、隊伍人數與水閘風險後進入沉沒墓窟副本。',
+  },
+  {
+    zoneId: 'final_battleground',
+    npcId: 'final_battleground_war_scribe',
+    name: '終焉戰場軍令確認',
+    description: '終戰入口軍史官保存最後軍令與戰場名冊，只有在玩家透過對話確認終末軍旗、隊伍規模與冷卻限制後，才會引導隊伍進入終焉戰場副本。',
+  },
+];
+
 export function buildZoneMapPlans(zones: Record<string, ZoneDef>): Map<string, ZoneMapPlan> {
   const plans = new Map<string, ZoneMapPlan>();
   for (const zone of Object.values(zones)) {
@@ -442,6 +470,23 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
         minLevel: zone.levelRange[0],
         maxPartySize: zone.recommendedPartySize[1],
         cooldownSeconds: itemEntry.cooldownSeconds ?? 0,
+        difficultyOptions: ['normal'],
+      });
+    }
+
+    for (const npcEntry of WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES.filter(entry => entry.zoneId === zone.id)) {
+      entries.push({
+        id: `${zone.id}_${npcEntry.npcId}_npc_entry`,
+        instanceTemplateId: zone.id,
+        dungeonId: WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS[zone.id],
+        type: 'npc_dialogue',
+        roomId: plan.entranceRoomId,
+        npcId: npcEntry.npcId,
+        name: npcEntry.name,
+        description: npcEntry.description,
+        minLevel: zone.levelRange[0],
+        maxPartySize: zone.recommendedPartySize[1],
+        cooldownSeconds: zone.id === 'final_battleground' ? 600 : 0,
         difficultyOptions: ['normal'],
       });
     }

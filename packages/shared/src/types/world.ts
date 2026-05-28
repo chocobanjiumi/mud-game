@@ -196,6 +196,6 @@ export interface DialogueCondition {
 }
 
 export interface DialogueAction {
-  type: 'shop' | 'class_change' | 'heal' | 'quest_start' | 'quest_complete' | 'teleport';
+  type: 'shop' | 'class_change' | 'heal' | 'quest_start' | 'quest_complete' | 'teleport' | 'instance_entry';
   data?: Record<string, unknown>;
 }

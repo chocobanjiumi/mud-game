@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T10:01:15.345Z",
+  "generatedAt": "2026-05-28T10:07:49.300Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -83,7 +83,7 @@
   },
   "counts": {
     "rooms": 1203,
-    "npcs": 216,
+    "npcs": 217,
     "quests": 614,
     "dungeons": 29,
     "monsters": 521,
@@ -93,9 +93,9 @@
     "equipment": 932,
     "affixes": 28,
     "imagePrompts": 1203,
-    "instanceEntries": 31,
+    "instanceEntries": 34,
     "checkedDungeonItems": 117,
-    "issues": 10385
+    "issues": 10389
   },
   "issuesByKind": {
     "zone.description": 60,
@@ -104,7 +104,7 @@
     "monster.description": 150,
     "monsterFamily.summary": 13,
     "npc.description": 44,
-    "npc.dialogue.text": 768,
+    "npc.dialogue.text": 769,
     "npc.dialogue.option": 6,
     "quest.description": 614,
     "quest.dialogueStart": 613,
@@ -119,7 +119,7 @@
     "gatheringNode.description": 36,
     "affixBuildDirection.notes": 12,
     "batch.repeatedOpening": 300,
-    "batch.repeatedCoreTerm": 238,
+    "batch.repeatedCoreTerm": 241,
     "reference.unresolved": 1
   },
   "issues": [
@@ -40774,6 +40774,15 @@
       "currentLength": 24,
       "minimumLength": 45,
       "text": "穿過天界之門，抵達神之間。戰神正在那裡等待最後的回答。",
+      "reason": "NPC dialogue node 文字不足"
+    },
+    {
+      "id": "crystal_cave_entry_guide/farewell",
+      "kind": "npc.dialogue.text",
+      "field": "text",
+      "currentLength": 31,
+      "minimumLength": 45,
+      "text": "補給、繩索、退路標記，三樣少一樣都別進洞。水晶不會因為你勇敢就停止坍光。",
       "reason": "NPC dialogue node 文字不足"
     },
     {
@@ -93472,6 +93481,33 @@
       "reason": "同批生成內容核心詞「城堡」出現於 5/9 筆，超過 30% 門檻"
     },
     {
+      "id": "npc:sunken_catacombs_tide_surveyor/term:黑水",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 50,
+      "minimumLength": 30,
+      "text": "sunken_catacombs_tide_surveyor/route, sunken_catacombs_tide_surveyor/entry_intro, sunken_catacombs_tide_surveyor/entry_conditions, sunken_catacombs_tide_surveyor/entry_confirm",
+      "reason": "同批生成內容核心詞「黑水」出現於 4/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "npc:final_battleground_war_scribe/term:軍令",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 57,
+      "minimumLength": 30,
+      "text": "final_battleground_war_scribe/greeting, final_battleground_war_scribe/entry_intro, final_battleground_war_scribe/entry_conditions, final_battleground_war_scribe/entry_confirm",
+      "reason": "同批生成內容核心詞「軍令」出現於 4/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "npc:final_battleground_war_scribe/term:黑焰",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 57,
+      "minimumLength": 30,
+      "text": "final_battleground_war_scribe/entry_intro, final_battleground_war_scribe/entry_confirm, final_battleground_war_scribe/front, final_battleground_war_scribe/godscar",
+      "reason": "同批生成內容核心詞「黑焰」出現於 4/7 筆，超過 30% 門檻"
+    },
+    {
       "id": "dungeon.description/term:處的",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
@@ -93553,31 +93589,31 @@
       "reason": "同批生成內容核心詞「強化」出現於 4/11 筆，超過 30% 門檻"
     },
     {
-      "id": "instanceEntry.description/term:固定",
-      "kind": "batch.repeatedCoreTerm",
-      "field": "text",
-      "currentLength": 87,
-      "minimumLength": 30,
-      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry, sky_isles_entry",
-      "reason": "同批生成內容核心詞「固定」出現於 27/31 筆，超過 30% 門檻"
-    },
-    {
       "id": "instanceEntry.description/term:獨立",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 87,
+      "currentLength": 82,
       "minimumLength": 30,
-      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, ancient_ruins_ancient_runestone_item_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry",
-      "reason": "同批生成內容核心詞「獨立」出現於 27/31 筆，超過 30% 門檻"
+      "text": "crystal_cave_entry, crystal_cave_crystal_cave_entry_guide_npc_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, ancient_ruins_ancient_runestone_item_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry",
+      "reason": "同批生成內容核心詞「獨立」出現於 28/34 筆，超過 30% 門檻"
     },
     {
-      "id": "instanceEntry.description/term:刻痕",
+      "id": "instanceEntry.description/term:固定",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 87,
+      "currentLength": 79,
       "minimumLength": 30,
-      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, ancient_ruins_ancient_runestone_item_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry",
-      "reason": "同批生成內容核心詞「刻痕」出現於 27/31 筆，超過 30% 門檻"
+      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry, sky_isles_entry",
+      "reason": "同批生成內容核心詞「固定」出現於 27/34 筆，超過 30% 門檻"
+    },
+    {
+      "id": "instanceEntry.description/term:立副",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 79,
+      "minimumLength": 30,
+      "text": "crystal_cave_entry, crystal_cave_crystal_cave_entry_guide_npc_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry",
+      "reason": "同批生成內容核心詞「立副」出現於 27/34 筆，超過 30% 門檻"
     },
     {
       "id": "last_bastion_saddle/reference:last_bastion",

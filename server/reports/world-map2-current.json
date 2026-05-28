@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T10:01:34.706Z",
+  "generatedAt": "2026-05-28T10:11:05.208Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2241,6 +2241,22 @@
         ]
       },
       {
+        "id": "crystal_cave_crystal_cave_entry_guide_npc_entry",
+        "instanceTemplateId": "crystal_cave",
+        "dungeonId": "crystal_temple",
+        "type": "npc_dialogue",
+        "roomId": "cave_entrance",
+        "npcId": "crystal_cave_entry_guide",
+        "name": "水晶洞窟勘探委託",
+        "description": "水晶洞窟入口的勘探嚮導會先確認隊伍是否理解礦道坍塌、水晶折光與地底魔力風險，再用公會標記帶玩家進入獨立副本路線。",
+        "minLevel": 20,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "demon_territory_entry",
         "instanceTemplateId": "demon_territory",
         "dungeonId": "demon_fortress",
@@ -2362,6 +2378,22 @@
         "objectId": "sunken_catacombs_entrance_object",
         "name": "沉沒墓窟入口",
         "description": "沉沒墓窟入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 24,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "sunken_catacombs_sunken_catacombs_tide_surveyor_npc_entry",
+        "instanceTemplateId": "sunken_catacombs",
+        "dungeonId": "sunken_catacombs_template",
+        "type": "npc_dialogue",
+        "roomId": "sunken_catacombs_tide_stair",
+        "npcId": "sunken_catacombs_tide_surveyor",
+        "name": "沉沒墓窟水位委託",
+        "description": "墓窟水位測繪員掌握黑水潮汐與退路標記，玩家可透過他的對話確認建議等級、隊伍人數與水閘風險後進入沉沒墓窟副本。",
         "minLevel": 24,
         "maxPartySize": 4,
         "cooldownSeconds": 0,
@@ -2598,6 +2630,22 @@
         ]
       },
       {
+        "id": "final_battleground_final_battleground_war_scribe_npc_entry",
+        "instanceTemplateId": "final_battleground",
+        "dungeonId": "final_battleground_template",
+        "type": "npc_dialogue",
+        "roomId": "final_battleground_war_gate",
+        "npcId": "final_battleground_war_scribe",
+        "name": "終焉戰場軍令確認",
+        "description": "終戰入口軍史官保存最後軍令與戰場名冊，只有在玩家透過對話確認終末軍旗、隊伍規模與冷卻限制後，才會引導隊伍進入終焉戰場副本。",
+        "minLevel": 55,
+        "maxPartySize": 4,
+        "cooldownSeconds": 600,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "thornmaze_entry",
         "instanceTemplateId": "thornmaze",
         "dungeonId": "thornmaze_template",
@@ -2726,7 +2774,7 @@
         ]
       }
     ],
-    "mappedRuntimeDungeonEntries": 31,
+    "mappedRuntimeDungeonEntries": 34,
     "instanceEntryIssues": []
   },
   "specialEdges": []

@@ -4069,6 +4069,13 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
           }
           break;
         }
+        case 'instance_entry': {
+          const entryId = node.action.data?.entryId as string;
+          if (entryId && startNpcDialogueInstanceEntry(session, char, npc, entryId)) {
+            return;
+          }
+          break;
+        }
       }
     }
   }
@@ -5245,6 +5252,31 @@ function tryUseInstanceEntryItem(session: WsSession, char: Character, itemId: st
       session.sessionId,
       `你使用了「${itemName}」，但目前所在房間「${currentRoomName}」不是可開啟副本的入口。需求房間：${allowedRooms.join('、')}。下一步：前往指定入口房間後再次使用此道具。`,
     );
+    return true;
+  }
+
+  startInstanceEntry(session, char, entry);
+  return true;
+}
+
+function startNpcDialogueInstanceEntry(session: WsSession, char: Character, npc: NpcDef, entryId: string): boolean {
+  const entry = buildInstanceEntryDefs(ZONES).find(candidate => candidate.id === entryId);
+  if (!entry) {
+    sendError(session.sessionId, `NPC「${npc.name}」嘗試啟動副本入口「${entryId}」，但入口資料不存在。下一步：回報入口設定，補上 InstanceEntryDef 後再對話。`);
+    return true;
+  }
+  if (entry.type !== 'npc_dialogue') {
+    sendError(session.sessionId, `NPC「${npc.name}」嘗試啟動「${entry.name}」，但此入口不是 NPC 對話入口。下一步：改用正確入口物件或修正 dialogue action。`);
+    return true;
+  }
+  if (entry.npcId !== npc.id) {
+    sendError(session.sessionId, `NPC「${npc.name}」不能啟動「${entry.name}」。目前入口綁定 NPC：${entry.npcId ?? '未設定'}。下一步：尋找正確 NPC 或修正入口資料。`);
+    return true;
+  }
+  if (entry.roomId !== char.roomId) {
+    const currentRoomName = getRoom(char.roomId)?.name ?? char.roomId;
+    const requiredRoomName = getRoom(entry.roomId)?.name ?? entry.roomId;
+    sendError(session.sessionId, `你正在「${currentRoomName}」與「${npc.name}」對話，但「${entry.name}」只能在「${requiredRoomName}」啟動。下一步：前往指定入口房間後再對話。`);
     return true;
   }
 
