@@ -1145,6 +1145,21 @@ function getZoneThemeEquipmentId(themeId: string, slot: LegacyNamedSupplementalE
   return `zone_${themeId}_${slot}_${index + 1}`;
 }
 
+function buildZoneThemeEquipmentDescription(themeName: string, slot: LegacyNamedSupplementalEquipSlot, slotName: string): string {
+  const descriptions: Partial<Record<LegacyNamedSupplementalEquipSlot, string>> = {
+    head: `${slotName}的帽緣壓著${themeName}特有的塵土與細線，額前可見巡路刻痕、封蠟殘點與怪物爪擦過的異色紋理。`,
+    body: `${slotName}以${themeName}常見材料加固胸腹，表面留下修補鉚釘、舊戰痕與工匠用來辨識來源的短記號。`,
+    hands: `${slotName}掌背覆有${themeName}路線採得的硬片或皮革，指節處磨出亮痕，像是常被用來格擋與拖拉戰利品。`,
+    feet: `${slotName}鞋底嵌著${themeName}地貌留下的砂粒、木刺或礦屑，後跟補強得很厚，方便在長路與戰鬥間站穩。`,
+    ring: `${slotName}的環面刻著${themeName}委託印記，內圈留有細小磨痕，常被交給完成巡查或討伐的冒險者。`,
+    necklace: `${slotName}垂著一枚取自${themeName}地標的小墜片，繩結和金屬扣保留當地工匠的粗實收邊。`,
+    weapon: `${slotName}的刃脊混入${themeName}戰場或副本的金屬碎料，握柄壓著防滑皮條，出鞘時能看見暗色刮痕。`,
+    earring: `${slotName}以${themeName}採得的小骨片、晶粒或銅鉤串成，擺動時會露出用來標記掉落來源的微小刻線。`,
+    belt: `${slotName}扣片採用${themeName}補給線常見的厚金屬，皮面有捆綁藥袋、短刀和任務證物留下的壓痕。`,
+  };
+  return descriptions[slot] ?? `${themeName}${slotName}保留當地材料、工匠手法與戰鬥磨痕，能從外觀辨識來源與用途。`;
+}
+
 function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
   const result: Record<string, ItemDef> = {};
 
@@ -1175,7 +1190,7 @@ function createZoneThemeEquipmentDefs(): Record<string, ItemDef> {
         id,
         name: `${theme.name}${slotName}`,
         type,
-        description: `${theme.name}${slotName}沾染著${theme.name}的地貌痕跡與工匠手法，表面可見刮痕、封蠟或當地怪物留下的異色紋理。`,
+        description: buildZoneThemeEquipmentDescription(theme.name, slot, slotName),
         buyPrice: 0,
         sellPrice: 90 + levelReq * 28,
         stackable: false,

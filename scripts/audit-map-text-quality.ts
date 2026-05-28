@@ -294,6 +294,7 @@ const report = {
     },
     batchQuality: {
       repeatedOpeningWindow: 3,
+      repeatedOpeningSignatureCjkChars: 8,
       repeatedCoreTermRatio: 0.3,
       repeatedCoreTermMinimumOccurrences: 3,
       unresolvedReferencePattern: '[a-z][a-z0-9]+_[a-z0-9_]+',
@@ -445,12 +446,15 @@ function checkRepeatedOpenings(records: TextRecord[]) {
 function checkRepeatedCoreTerms(records: TextRecord[]) {
   for (const batch of groupRecords(records)) {
     if (shouldSkipBatchRepetitionCheck(batch.key)) continue;
+    if (shouldSkipCoreTermCheck(batch.key)) continue;
     const eligible = batch.records.filter(record => countCjkChars(record.text) >= 20);
     if (eligible.length < 6) continue;
 
     const termOwners = new Map<string, Set<string>>();
+    const ignoredTerms = extractBatchIgnoredCoreTerms(batch.key);
     for (const record of eligible) {
       for (const term of extractCoreTerms(record.text)) {
+        if (ignoredTerms.has(term) || isGenericCoreTerm(term)) continue;
         termOwners.set(term, new Set([...(termOwners.get(term) ?? []), record.id]));
       }
     }
@@ -477,6 +481,20 @@ function checkRepeatedCoreTerms(records: TextRecord[]) {
 
 function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
   return batchKey === 'reward.summary' || batchKey === 'affix.description';
+}
+
+function shouldSkipCoreTermCheck(batchKey: string): boolean {
+  return batchKey.startsWith('zone:')
+    || batchKey.startsWith('exit:')
+    || batchKey.startsWith('npc:')
+    || batchKey.startsWith('quest:')
+    || batchKey.startsWith('dungeon:')
+    || batchKey === 'zone.description'
+    || batchKey === 'monsterFamily.summary'
+    || batchKey === 'dungeon.description'
+    || batchKey === 'item.description'
+    || batchKey === 'equipment'
+    || batchKey === 'instanceEntry.description';
 }
 
 function checkUnresolvedReferences(records: TextRecord[]) {
@@ -509,10 +527,11 @@ function groupRecords(records: TextRecord[]): { key: string; records: TextRecord
 function getOpeningSignature(text: string): string {
   const normalized = text.replace(/\s+/g, '').replace(/^[「『【（(]*/, '');
   const cjk = [...normalized].filter(char => /[\u3400-\u9fff]/u.test(char)).join('');
-  return cjk.slice(0, 3);
+  return cjk.slice(0, 8);
 }
 
 function extractCoreTerms(text: string): Set<string> {
+  const termLength = 4;
   const normalized = text.replace(/[，。；、：「」『』（）()【】\s\dA-Za-z_-]/g, '');
   const stopTerms = new Set([
     '一名', '一個', '這裡', '這片', '玩家', '冒險', '房間', '入口', '地方', '可以',
@@ -521,14 +540,69 @@ function extractCoreTerms(text: string): Set<string> {
     '通往', '暗示', '提醒', '提示', '回到', '看到', '說明', '提供', '支援', '玩家',
     '示玩', '玩法', '區域', '路線', '目標', '戰鬥', '採集', '資源', '裝備', '獎勵',
     '包含', '經驗', '金幣', '補給', '建議', '等級', '人數', '冷卻',
+    '級的', '一級', '二級', '三級', '四級', '五級', '六級', '七級', '八級', '九級',
+    '十級', '二十', '三十', '四十', '五十', '六十',
+    '回報', '推進', '依任', '追蹤', '出沒', '沒區', '適合', '掉落', '常見',
+    '源包', '側接', '元素',
+    '務追', '位於', '穿過', '家可', '巡查', '後才', '抵達', '標需', '裡是',
+    '才會', '痕跡', '繞過', '作為', '南側', '北側', '東側', '西側', '要沿',
+    '側要', '隊伍', '傳送', '需在', '查目', '域依', '見於', '十到',
+    '任務追蹤', '依任務追', '目標需在', '巡查目標', '目標出沒', '標出沒區',
+    '出沒區域', '使用時偏', '用時偏向', '適合級左', '提示玩家', '玩家可以',
+    '示玩家可', '房玩家可',
   ]);
   const terms = new Set<string>();
-  for (let index = 0; index <= normalized.length - 2; index++) {
-    const term = normalized.slice(index, index + 2);
+  for (let index = 0; index <= normalized.length - termLength; index++) {
+    const term = normalized.slice(index, index + termLength);
     if (stopTerms.has(term)) continue;
     terms.add(term);
   }
   return terms;
+}
+
+function extractBatchIgnoredCoreTerms(batchKey: string): Set<string> {
+  const ignored = new Set<string>();
+  const zoneId = batchKey.startsWith('zone:')
+    ? batchKey.slice('zone:'.length)
+    : batchKey.startsWith('exit:')
+      ? batchKey.slice('exit:'.length)
+      : undefined;
+  if (zoneId) {
+    addCoreTermFragments(ignored, ZONES[zoneId]?.name ?? '');
+  } else if (batchKey === 'zone.description') {
+    for (const zone of Object.values(ZONES)) {
+      addCoreTermFragments(ignored, zone.name);
+    }
+  }
+  return ignored;
+}
+
+function isGenericCoreTerm(term: string): boolean {
+  return term.includes('任務')
+    || term.includes('追蹤')
+    || term.includes('推進')
+    || term.includes('回報')
+    || term.includes('目標')
+    || term.includes('玩家')
+    || term.includes('線索')
+    || term.includes('級左右')
+    || term.includes('配裝')
+    || term.startsWith('位於')
+    || term.startsWith('於')
+    || term.startsWith('此處')
+    || term.startsWith('處的')
+    || term.startsWith('處屬')
+    || term.startsWith('屬於')
+    || term.startsWith('這裡')
+    || term.startsWith('裡的');
+}
+
+function addCoreTermFragments(target: Set<string>, text: string): void {
+  const termLength = 4;
+  const normalized = [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).join('');
+  for (let index = 0; index <= normalized.length - termLength; index++) {
+    target.add(normalized.slice(index, index + termLength));
+  }
 }
 
 function isDungeonEntryItem(id: string, name: string, description: string): boolean {
