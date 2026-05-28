@@ -385,6 +385,13 @@ const coordinateCollisions = [...coordinateOwners.entries()]
   .filter(([, owners]) => owners.length > 1)
   .map(([coord, owners]) => `${coord}: ${owners.join(', ')}`);
 
+const topologyAcceptanceIssues = [
+  ...missingTargets.map(issue => `missing target: ${issue}`),
+  ...duplicateDirections.map(issue => `duplicate direction: ${issue}`),
+  ...selfLoops.map(issue => `self loop: ${issue}`),
+  ...cardinalCoordinateMismatches.map(issue => `cardinal mismatch: ${issue}`),
+];
+
 const zones = Object.values(ZONES).map(zone => {
   const zoneRooms = zone.rooms.map(roomId => getRoom(roomId)).filter((room): room is RoomDef => Boolean(room));
   const bounds = getBounds(zoneRooms);
@@ -425,6 +432,9 @@ const report = {
     selfLoops,
   },
   crossZoneExits,
+  acceptance: {
+    topologyIssues: topologyAcceptanceIssues,
+  },
   worldCoordinate: {
     worldRoomsMissingCoords,
     coordinateCollisions,
@@ -474,6 +484,7 @@ if (strict) {
     ...missingTargets,
     ...duplicateDirections,
     ...selfLoops,
+    ...topologyAcceptanceIssues,
     ...worldRoomsMissingCoords,
     ...coordinateCollisions,
     ...cardinalCoordinateMismatches,
@@ -598,6 +609,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Missing targets: ${reportData.topology.missingTargets.length}`,
     `Duplicate directions: ${reportData.topology.duplicateDirections.length}`,
     `Self loops: ${reportData.topology.selfLoops.length}`,
+    `Topology acceptance issues: ${reportData.acceptance.topologyIssues.length}`,
     `World rooms missing worldX/worldY: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T11:00:28.275Z",
+  "generatedAt": "2026-05-28T11:02:08.617Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -1133,6 +1133,9 @@
     "old_farmland/old_farmland_cart_shortcut:west->starter_village_ext/village_outskirts",
     "whispering_valley/whispering_valley_entrance:south->old_farmland/old_farmland_stone_marker"
   ],
+  "acceptance": {
+    "topologyIssues": []
+  },
   "worldCoordinate": {
     "worldRoomsMissingCoords": [
       "starter_village/village_square",
