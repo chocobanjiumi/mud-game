@@ -21,7 +21,7 @@ import { getRoomGatheringTags } from '../server/src/game/gathering.js';
 import { ACHIEVEMENT_DEFS, formatAchievementDescription, formatAchievementTitleDescription } from '../server/src/game/achievement.js';
 import { formatSystemErrorMessage } from '../server/src/game/system-messages.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
-import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
+import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from '../server/src/game/quest-system.js';
 import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
 import { formatDialogueOptionLabel, isSpecificDialogueOptionLabel } from '../server/src/game/dialogue-option-labels.js';
 import { MAIN_QUEST_FLOW } from '../server/src/game/main-quest-flow.js';
@@ -49,6 +49,7 @@ type TextKind =
   | 'system.errorMessage'
   | 'system.successMessage'
   | 'combatLog'
+  | 'quest.title'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -269,10 +270,17 @@ for (const questId of Object.keys(questDefs)) {
 }
 for (const quest of Object.values(questDefs)) {
   const descriptionMinimum = quest.type === 'main' ? 80 : 60;
+  checkText(quest.id, 'quest.title', 'name', quest.name, 4, '任務 title 必須是具體事件或目標，至少 4 個中文字');
+  auditQuestTitle(quest);
   checkText(quest.id, 'quest.description', 'description', quest.description, descriptionMinimum, '任務描述需包含背景、目標與路線提示');
   auditQuestDescriptionSemantics(quest, descriptionMinimum);
-  checkText(quest.id, 'quest.dialogueStart', 'dialogueStart', quest.dialogueStart ?? '', 45, '任務開始文字不足');
-  checkText(quest.id, 'quest.dialogueComplete', 'dialogueComplete', quest.dialogueComplete ?? '', 50, '任務完成文字不足');
+  const startMinimum = questStartDialogueMinimum(quest);
+  checkText(quest.id, 'quest.dialogueStart', 'dialogueStart', quest.dialogueStart ?? '', startMinimum, '任務開始文字不足');
+  auditQuestStartDialogue(quest, startMinimum);
+  const completeMinimum = quest.type === 'main' ? 100 : 50;
+  checkText(quest.id, 'quest.dialogueComplete', 'dialogueComplete', quest.dialogueComplete ?? '', completeMinimum, '任務完成文字不足');
+  auditQuestCompleteDialogue(quest, completeMinimum);
+  auditQuestChainSemantics(quest);
   checkText(`${quest.id}/reward`, 'reward.summary', 'rewards', formatQuestRewardSummary(quest.rewards), 30, '任務獎勵摘要需列出 exp、gold、equipment、unlock 等實際項目');
   for (const [index, objective] of quest.objectives.entries()) {
     const objectiveText = `${objective.targetName} ${objective.required}`;
@@ -1006,6 +1014,15 @@ function requireNpcTextPart(id: string, text: string, minimumLength: number, pat
   addIssue(id, 'npc.dialogue.text', 'text', text, minimumLength, reason);
 }
 
+function auditQuestTitle(quest: (typeof questDefs)[string]) {
+  if (/^(調查|清理怪物|新的任務)$/u.test(quest.name.trim())) {
+    addIssue(quest.id, 'quest.title', 'name', quest.name, 4, 'quest.title 不可只叫調查、清理怪物或新的任務');
+  }
+  if (/[a-z][a-z0-9]+_[a-z0-9_]+/u.test(quest.name)) {
+    addIssue(quest.id, 'quest.title', 'name', quest.name, 4, 'quest.title 不可顯示 raw id');
+  }
+}
+
 function auditQuestDescriptionSemantics(quest: (typeof questDefs)[string], minimumLength: number) {
   const id = quest.id;
   const text = quest.description;
@@ -1021,6 +1038,52 @@ function auditQuestDescriptionSemantics(quest: (typeof questDefs)[string], minim
       addIssue(id, 'quest.description', 'description', text, minimumLength, '自動生成 zone quest description 必須保留 zone 中文名稱，方便追溯 questId / zoneId');
     }
   }
+}
+
+function questStartDialogueMinimum(quest: (typeof questDefs)[string]): number {
+  if (quest.type === 'main' || isDungeonQuest(quest)) return 90;
+  return 60;
+}
+
+function isDungeonQuest(quest: (typeof questDefs)[string]): boolean {
+  return quest.objectives.some(objective => objective.type === 'clear_dungeon' || objective.type === 'first_clear_dungeon');
+}
+
+function auditQuestStartDialogue(quest: (typeof questDefs)[string], minimumLength: number) {
+  const text = quest.dialogueStart ?? '';
+  requireQuestDialoguePart(quest.id, 'quest.dialogueStart', 'dialogueStart', text, minimumLength, /任務|委託|挑戰|接取|接下|目標/u, 'quest.startDialogue 缺少任務動機或接取語意');
+  requireQuestDialoguePart(quest.id, 'quest.dialogueStart', 'dialogueStart', text, minimumLength, /前往|確認|入口|地點|區域|房間|附近|路線|目標出沒區域|任務指定區域/u, 'quest.startDialogue 缺少目標地點');
+  requireQuestDialoguePart(quest.id, 'quest.dialogueStart', 'dialogueStart', text, minimumLength, /下一步|回報|完成|追蹤|整理補給|出發|再返回/u, 'quest.startDialogue 缺少玩家下一步');
+  if (isDungeonQuest(quest)) {
+    requireQuestDialoguePart(quest.id, 'quest.dialogueStart', 'dialogueStart', text, 90, /副本|入口|入口房間|入口 NPC|入口物件|進入條件|通關|首通|隊伍|單人/u, '導向副本的 quest.startDialogue 必須指出入口、進入條件或通關目標');
+  }
+}
+
+function auditQuestCompleteDialogue(quest: (typeof questDefs)[string], minimumLength: number) {
+  const text = quest.dialogueComplete ?? '';
+  requireQuestDialoguePart(quest.id, 'quest.dialogueComplete', 'dialogueComplete', text, minimumLength, /完成|已完成|你已|回報|結果/u, 'quest.completionDialogue 缺少玩家完成了什麼');
+  requireQuestDialoguePart(quest.id, 'quest.dialogueComplete', 'dialogueComplete', text, minimumLength, /獎勵|經驗值|金幣|結算|背包|解鎖/u, 'quest.completionDialogue 缺少獎勵提示');
+  requireQuestDialoguePart(quest.id, 'quest.dialogueComplete', 'dialogueComplete', text, minimumLength, /下一步|區域|世界狀態|任務追蹤|後續|前往|NPC/u, 'quest.completionDialogue 缺少下一個區域、獎勵或世界狀態變化');
+}
+
+function auditQuestChainSemantics(quest: (typeof questDefs)[string]) {
+  const prerequisiteQuestId = getMainQuestPrerequisite(quest.id);
+  if (!prerequisiteQuestId) return;
+  const text = quest.description;
+  requireQuestDescriptionPart(quest.id, text, 35, /上一環|前置|承接|結果|推向|本環|下一個回報點/u, '任務鏈 description 必須寫出與上一環的因果關係');
+}
+
+function requireQuestDialoguePart(
+  id: string,
+  kind: 'quest.dialogueStart' | 'quest.dialogueComplete',
+  field: string,
+  text: string,
+  minimumLength: number,
+  pattern: RegExp,
+  reason: string,
+) {
+  if (pattern.test(text)) return;
+  addIssue(id, kind, field, text, minimumLength, reason);
 }
 
 function extractZoneIdFromQuest(questId: string): string | undefined {

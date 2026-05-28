@@ -268,6 +268,10 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
 
 function enrichQuestTextQuality(): void {
   for (const quest of Object.values(QUEST_DEFS)) {
+    if (countCjkChars(quest.name) < 4) {
+      quest.name = `${quest.name}${QUEST_TYPE_LABELS[quest.type] ?? '任務'}`;
+    }
+
     const descriptionMinimum = quest.type === 'main' ? 80 : 60;
     if (countCjkChars(quest.description) < descriptionMinimum) {
       quest.description = appendSentence(quest.description, buildQuestDescriptionSupplement(quest));
@@ -275,15 +279,24 @@ function enrichQuestTextQuality(): void {
         quest.description = appendSentence(quest.description, '完成後會更新任務追蹤，明確提示下一個可前往的地點或回報對象。');
       }
     }
-
-    if (countCjkChars(quest.dialogueStart ?? '') < 45) {
-      quest.dialogueStart = appendSentence(quest.dialogueStart ?? `接取「${quest.name}」。`, buildQuestStartSupplement(quest));
+    const prerequisiteQuestId = getMainQuestPrerequisite(quest.id);
+    if (prerequisiteQuestId && !quest.description.includes('上一環')) {
+      quest.description = appendSentence(quest.description, buildQuestChainSupplement(quest, prerequisiteQuestId));
     }
 
-    if (countCjkChars(quest.dialogueComplete ?? '') < 50) {
+    const startMinimum = questStartDialogueMinimum(quest);
+    if (countCjkChars(quest.dialogueStart ?? '') < startMinimum) {
+      quest.dialogueStart = appendSentence(quest.dialogueStart ?? `接取「${quest.name}」。`, buildQuestStartSupplement(quest));
+      if (countCjkChars(quest.dialogueStart ?? '') < startMinimum) {
+        quest.dialogueStart = appendSentence(quest.dialogueStart ?? '', buildQuestStartHighSalienceSupplement(quest));
+      }
+    }
+
+    const completeMinimum = questCompleteDialogueMinimum(quest);
+    if (countCjkChars(quest.dialogueComplete ?? '') < completeMinimum) {
       quest.dialogueComplete = appendSentence(quest.dialogueComplete ?? `完成「${quest.name}」。`, buildQuestCompleteSupplement(quest));
-      if (countCjkChars(quest.dialogueComplete ?? '') < 50) {
-        quest.dialogueComplete = appendSentence(quest.dialogueComplete ?? '', '這次回報會同步整理後續路線與可領取的實際獎勵。');
+      if (countCjkChars(quest.dialogueComplete ?? '') < completeMinimum) {
+        quest.dialogueComplete = appendSentence(quest.dialogueComplete ?? '', buildQuestCompleteHighSalienceSupplement(quest));
       }
     }
 
@@ -293,6 +306,20 @@ function enrichQuestTextQuality(): void {
       objective.targetName = buildQuestObjectiveLabel(quest, objective);
     }
   }
+}
+
+function questStartDialogueMinimum(quest: QuestDef): number {
+  if (quest.type === 'main' || hasDungeonObjective(quest)) return 90;
+  return 60;
+}
+
+function questCompleteDialogueMinimum(quest: QuestDef): number {
+  if (quest.type === 'main') return 100;
+  return 50;
+}
+
+function hasDungeonObjective(quest: QuestDef): boolean {
+  return quest.objectives.some(objective => objective.type === 'clear_dungeon' || objective.type === 'first_clear_dungeon');
 }
 
 function buildQuestDescriptionSupplement(quest: QuestDef): string {
@@ -306,8 +333,31 @@ function buildQuestStartSupplement(quest: QuestDef): string {
   return `接下委託前先確認${describeQuestRoute(quest)}，依任務追蹤完成${describeQuestObjectivePlan(quest)}，不足等級或目標未達成時先整理補給再回報。`;
 }
 
+function buildQuestStartHighSalienceSupplement(quest: QuestDef): string {
+  if (hasDungeonObjective(quest)) {
+    return '這項任務導向副本挑戰，接取前要確認入口房間、入口 NPC 或入口物件，理解進入條件與通關目標後再出發。';
+  }
+  if (quest.type === 'main') {
+    return '這是主線推進節點，接取時要確認當前衝突、目標地點、負責 NPC 與下一步路線，避免只看任務名稱就失去方向。';
+  }
+  return '這段委託會補足任務動機、目標地點與玩家下一步，避免只剩寒暄或重複任務標題。';
+}
+
 function buildQuestCompleteSupplement(quest: QuestDef): string {
   return `你已完成${describeQuestObjectivePlan(quest)}，回報後會結算${describeQuestRewards(quest.rewards)}；下一步請檢查任務追蹤、背包與可解鎖區域。`;
+}
+
+function buildQuestCompleteHighSalienceSupplement(quest: QuestDef): string {
+  if (quest.type === 'main') {
+    return '這段回報會承接主線結果，說明世界狀態如何改變、下一個區域或 NPC 要往哪裡找，以及實際獎勵為何值得完成。';
+  }
+  return '這次回報會同步整理後續路線、世界狀態變化與可領取的實際獎勵。';
+}
+
+function buildQuestChainSupplement(quest: QuestDef, prerequisiteQuestId: string): string {
+  const previousQuest = QUEST_DEFS[prerequisiteQuestId] ?? EXPANDED_QUEST_DEFS[prerequisiteQuestId];
+  const previousName = previousQuest?.name ?? prerequisiteQuestId;
+  return `上一環「${previousName}」的結果會把玩家推向本環「${quest.name}」，本環目標是${describeQuestObjectivePlan(quest)}，完成後再依任務追蹤前往下一個回報點。`;
 }
 
 function buildQuestObjectiveLabel(quest: QuestDef, objective: QuestObjective): string {
