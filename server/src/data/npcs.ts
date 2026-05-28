@@ -11790,7 +11790,13 @@ function npcDialogueMinimumForData(npc: NpcDef, node: NpcDef['dialogue'][number]
   if (MAIN_QUEST_NPC_IDS.has(npc.id) && npc.dialogue[0]?.id === node.id) return 90;
   if (npc.dialogue.some(dialogueNode => dialogueNode.action?.type === 'instance_entry')) return 70;
   if (node.action?.type === 'instance_entry') return 70;
+  if (isQuestDialogueNpcForData(npc) && npc.dialogue[0]?.id === node.id) return 60;
   return 45;
+}
+
+function isQuestDialogueNpcForData(npc: NpcDef): boolean {
+  return npc.type === 'quest'
+    || npc.dialogue.some(node => node.action?.type === 'quest_start' || node.action?.type === 'quest_complete');
 }
 
 function buildNpcDialogueSupplement(npc: NpcDef, node: NpcDef['dialogue'][number]): string {
@@ -11809,6 +11815,9 @@ function buildNpcDialogueHighSalienceSupplement(npc: NpcDef, node: NpcDef['dialo
   }
   if (npc.dialogue.some(dialogueNode => dialogueNode.action?.type === 'instance_entry') || node.action?.type === 'instance_entry') {
     return `這段話同時標明入口風險、隊伍或等級準備與進入後的第一個行動，避免玩家只看見按鈕卻不知道副本目的。`;
+  }
+  if (isQuestDialogueNpcForData(npc) && npc.dialogue[0]?.id === node.id) {
+    return `這是任務入口對話，必須先交代委託動機、具體地點或交付對象、下一步要做的事與獎勵方向，避免玩家只看到一句求助。`;
   }
   return `這段補充把地點、風險與下一步行動說完整，避免對話只剩寒暄或功能按鈕。`;
 }

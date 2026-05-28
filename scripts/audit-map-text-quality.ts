@@ -973,9 +973,15 @@ function isInstanceEntryNpc(npc: typeof NPCS[string]): boolean {
   return npc.dialogue.some(node => node.action?.type === 'instance_entry');
 }
 
+function isQuestDialogueNpc(npc: typeof NPCS[string]): boolean {
+  return npc.type === 'quest'
+    || npc.dialogue.some(node => node.action?.type === 'quest_start' || node.action?.type === 'quest_complete');
+}
+
 function npcDialogueMinimum(npc: typeof NPCS[string], node: typeof NPCS[string]['dialogue'][number]): number {
   if (mainQuestNpcIds.has(npc.id) && npc.dialogue[0]?.id === node.id) return 90;
   if (isInstanceEntryNpc(npc) || node.action?.type === 'instance_entry') return 70;
+  if (isQuestDialogueNpc(npc) && npc.dialogue[0]?.id === node.id) return 60;
   return 45;
 }
 
@@ -1006,6 +1012,11 @@ function auditNpcDialogueNode(npc: typeof NPCS[string], node: typeof NPCS[string
   }
   if (node.action?.type === 'quest_start' || node.action?.type === 'quest_complete') {
     requireNpcTextPart(id, text, minimum, /任務|委託|目標|地點|回報|獎勵|證物|完成|下一步|調查/u, '任務 NPC 對話必須提示目標地點、任務動機、獎勵或回報方向');
+  }
+  if (isQuestDialogueNpc(npc) && npc.dialogue[0]?.id === node.id) {
+    requireNpcTextPart(id, text, minimum, /任務|委託|目標|情報|威脅|線索|調查|確認|交付|證物|怪物|弱點|歷史/u, '任務 NPC 第一段必須寫出任務動機、威脅或線索');
+    requireNpcTextPart(id, text, minimum, /「[^」]+」|房間|區域|入口|附近|地點|前往|所在|路線|找|回報|交給|書籍|礦洞|深處/u, '任務 NPC 第一段必須提示玩家下一步去哪個 room、找誰或做什麼');
+    requireNpcTextPart(id, text, minimum, /下一步|先|回報|查看|詢問|出發|準備|獎勵|報酬|經驗|金幣|幫忙|幫你|好東西/u, '任務 NPC 第一段必須包含下一步或獎勵方向');
   }
 }
 
