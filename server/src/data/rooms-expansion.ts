@@ -18424,8 +18424,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
       { direction: 'west', targetRoomId: 'ironwood_fort_west_bastion', description: '牆道通往西堡牆' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '戰圖室在東側' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '斥候棲臺在北側' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '東側軍械牆道穿過兵器架與戰旗廊，繞過上層轉角後抵達戰圖室門前', edgeKind: 'long_path', edgeNote: '兵營大廳到戰圖室需要穿過軍械牆道與上層轉角，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '北側哨兵木梯沿外牆折上，越過箭孔平台與守備吊橋後抵達斥候棲臺', edgeKind: 'long_path', edgeNote: '兵營大廳北側到斥候棲臺有樓層落差與外牆平台，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -18478,7 +18478,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '烽火信號塔位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆' },
-      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '戰圖室在西側' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '西側信號牆道繞過烽火燃料架與旗語平台，沿塔身陰影通往戰圖室後門', edgeKind: 'long_path', edgeNote: '烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在北側' },
     ],
     monsters: [
@@ -18504,8 +18504,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰圖室位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '回到兵營大廳' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在東側' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '西側戰旗廊穿過戰圖桌與軍械牆道，繞過上層轉角折回兵營大廳內門', edgeKind: 'long_path', edgeNote: '戰圖室西側回兵營大廳需穿過戰旗廊與軍械牆道，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '東側旗語平台繞過烽火燃料架，沿塔身陰影與石階通往烽火信號塔內梯', edgeKind: 'long_path', edgeNote: '戰圖室東側到信號塔要經旗語平台與塔內階梯，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在北側' },
     ],
     monsters: [
@@ -18531,7 +18531,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '斥候棲臺位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_barracks_hall', description: '回到兵營大廳' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_barracks_hall', description: '南側外牆平台沿哨兵木梯折降，穿過箭孔陰影與守備吊橋回到兵營大廳', edgeKind: 'long_path', edgeNote: '斥候棲臺南側回兵營大廳需沿外牆平台下樓，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_forge_works', description: '棧道通往鐵木鍛坊' },
       { direction: 'north', targetRoomId: 'ironwood_fort_prison_block', description: '囚牢走道在北側' },
     ],
@@ -18612,7 +18612,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊蓄水池位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_prison_block', description: '石階通往囚牢石廊' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_prison_block', description: '北側潮濕石階沿舊水門長坡上行，穿過鐵閘陰影與滴水暗廊抵達囚牢石廊', edgeKind: 'long_path', edgeNote: '舊蓄水池北側到囚牢石廊有長坡與水門鐵閘，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'prison_chain_jailer', maxCount: 1, respawnSeconds: 160 },
@@ -18690,7 +18690,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '指揮長廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔' },
-      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在西側' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '西側指揮長廊越過封令拱門與軍官座席，繞過戰旗屏風接到誓約禮拜堂側門', edgeKind: 'long_path', edgeNote: '指揮長廊西側到禮拜堂需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在東側' },
     ],
     monsters: [
@@ -18718,8 +18718,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室' },
       { direction: 'west', targetRoomId: 'ironwood_fort_prison_block', description: '側廊通往囚牢石廊' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在東側' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在北側' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '東側側門穿過封令拱門與軍官座席，繞過戰旗屏風接回指揮長廊中央', edgeKind: 'long_path', edgeNote: '誓約禮拜堂東側到指揮長廊需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '北側宣誓階梯沿黑鐵聖徽上行，繞過內堡閘鏈與守門鐵柱抵達內堡門', edgeKind: 'long_path', edgeNote: '誓約禮拜堂北側到內堡門有宣誓階梯與閘鏈阻隔，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'oath_chapel_knight', maxCount: 2, respawnSeconds: 320 },
@@ -18745,7 +18745,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '內堡門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊' },
-      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '回到誓約禮拜堂' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '南側內堡閘鏈旁的宣誓階梯折降，沿黑鐵聖徽與守門鐵柱回到誓約禮拜堂', edgeKind: 'long_path', edgeNote: '內堡門南側回禮拜堂需沿宣誓階梯折降並繞過閘鏈，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_high_keep', description: '高堡核心在東側' },
     ],
     monsters: [
