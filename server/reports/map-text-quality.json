@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T15:01:27.649Z",
+  "generatedAt": "2026-05-28T15:11:15.989Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -94,8 +94,8 @@
     "affixes": 28,
     "imagePrompts": 1203,
     "instanceEntries": 37,
-    "checkedDungeonItems": 120,
-    "issues": 9796
+    "checkedDungeonItems": 119,
+    "issues": 9747
   },
   "issuesByKind": {
     "zone.description": 60,
@@ -111,8 +111,7 @@
     "quest.objective": 1425,
     "dungeon.description": 8,
     "dungeon.room.description": 40,
-    "item.description": 39,
-    "equipment.description": 457,
+    "equipment.description": 447,
     "batch.repeatedOpening": 300,
     "batch.repeatedCoreTerm": 250
   },
@@ -78868,357 +78867,6 @@
       "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
     },
     {
-      "id": "bamboo_katana",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 11,
-      "minimumLength": 40,
-      "text": "竹製練習刀，居合入門之器。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "dragon_time_hourglass_staff",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 17,
-      "minimumLength": 40,
-      "text": "封印龍之時間的傳說沙漏杖，可逆轉因果。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "ancient_bark",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 34,
-      "minimumLength": 40,
-      "text": "古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂，可作盾面補強。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "class_change_scroll_swordsman",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 33,
-      "minimumLength": 40,
-      "text": "紅蠟封住的戰士誓約卷軸，羊皮紙上畫著交叉長劍與訓練場印記，邊角磨得發亮。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "class_change_scroll_mage",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 32,
-      "minimumLength": 40,
-      "text": "藍蠟封存的法師認證卷軸，紙面浮著細小星點與初階法陣，展開時有淡淡墨香。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "class_change_scroll_ranger",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 40,
-      "text": "綠線綁起的遊俠試煉卷軸，封面壓著羽毛與箭痕，背面標著林徑巡行記號。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "class_change_scroll_priest",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 40,
-      "text": "白金絲帶束著的祭司祝聖卷軸，紙緣有聖堂水印，打開時會散出柔和乳白光。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "archmage_robe",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 16,
-      "minimumLength": 40,
-      "text": "纏繞魔法符文的高級法袍，魔力場強大。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "teleport_stone",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 32,
-      "minimumLength": 40,
-      "text": "掌心大小的灰藍符石，表面刻有折線座標。捏碎後會沿記憶標記拉開傳送光門。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "bronze_key",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 40,
-      "text": "短柄銅鑰匙已被手汗磨亮，齒端帶著細小缺口，正好能轉開銅寶箱的舊鎖。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "silver_key",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 40,
-      "text": "細長銀鑰匙柄端鑲著藍點玻璃，鑰齒切面平整，能貼合銀寶箱的精密鎖芯。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "gold_chest",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 32,
-      "minimumLength": 40,
-      "text": "沉重金寶箱覆滿浮雕與紅蠟封印，箱角鑲著寶石，靠近時能感到封存魔力震動。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "gold_key",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 36,
-      "minimumLength": 40,
-      "text": "金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光，可開啟高階寶箱。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "prism_shard",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 39,
-      "minimumLength": 40,
-      "text": "水晶洞窟棱鏡門附近剝落的透明碎片，轉動時會分出七道細光。寶石商人會用它校準切割角度。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "siege_lock_pin",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 38,
-      "minimumLength": 40,
-      "text": "攻城器械場拆下的粗鐵鎖銷，表面有火藥燻黑痕。少一枚鎖銷就能讓整台弩砲偏轉半座城門。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "elf_feather",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 40,
-      "text": "細長羽毛泛著淡金與淺綠光澤，羽軸近乎透明，像仍保留著精靈林地的晨露。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "rusted_farm_key",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 39,
-      "minimumLength": 40,
-      "text": "刻著農場姓氏的舊鑰匙，齒痕被泥與鏽蝕遮住，但仍能開啟農舍或糧倉裡某些保存完好的箱櫃。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "foreman_key_tag",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 39,
-      "minimumLength": 40,
-      "text": "刻著工頭室、火藥室與深層倉櫃編號的銅牌，邊角有撬痕。它能證明礦難後仍有人回來翻找證據。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "moon_gate_tablet",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 38,
-      "minimumLength": 40,
-      "text": "刻著月相步序的薄陶板，邊緣被水池磨圓。只有與倒影水池對照時，才能看懂其中缺失的符號。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "lightseal_dust",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 33,
-      "minimumLength": 40,
-      "text": "封印階梯與內聖所附近漂浮的白色光塵，裝入玻璃瓶後仍會沿著日月符號排列。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "thunder_eagle_plume",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 37,
-      "minimumLength": 40,
-      "text": "雷鷹巢峰掉落的藍白羽毛，羽軸仍存著細小電弧。可用來製作抗風箭羽、避雷符與偵查信物。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "lantern_fungus_oil",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 40,
-      "text": "菌燈庭園榨出的淡綠燈油，燃燒時不冒煙，適合地底旅店、碼頭與卷宗庫使用。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "cloudsilver_plume",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 38,
-      "minimumLength": 40,
-      "text": "雷鷹巢島與雲上草甸掉落的銀白長羽，羽軸會吸附雲霧。可用於高階飛行符、箭羽與神殿祭旗。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "granary_iron_bracers",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 40,
-      "text": "穀倉門鉸改成的鐵腕甲，邊緣有釘孔，內側墊著褐色粗布。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "ancient_tablet_palmguards",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 25,
-      "minimumLength": 40,
-      "text": "掌甲嵌著小塊古碑，符紋殘缺卻冰冷沉重，適合推開危險石門。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "mistharbor_lead_ring",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 40,
-      "text": "鉛灰戒面嵌著小羅盤片，指針不指北，只在霧起時微微偏轉。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "ancient_tablet_rune_ring",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 40,
-      "text": "符戒鑲著碎碑石，石面只有半個字，夜裡會浮出淡淡灰光。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "mistharbor_compass_pendant",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 26,
-      "minimumLength": 40,
-      "text": "小羅盤墜在鉛灰鏈上，指針被霧氣腐蝕，只會在潮聲裡緩慢偏轉。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "final_black_grimoire",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 40,
-      "text": "終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "oathstone_warhammer",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 40,
-      "text": "誓石戰錘的錘頭取自古代誓碑，黑鐵箍壓住裂紋，揮動時像石門落下。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "granite_oath_warhammer",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 35,
-      "minimumLength": 40,
-      "text": "方形錘頭由灰白石與黑鐵箍固定，錘面刻著古誓約短文，樸拙厚重，像聖騎士破門武器。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "pale_star_relic",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 36,
-      "minimumLength": 40,
-      "text": "蒼白小祠供奉的無名星骸碎片，光線微弱卻能壓住黑暗低語，是通過黑星門的穩定材料。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "black_star_sigil",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 34,
-      "minimumLength": 40,
-      "text": "黑星門浮現的暗色印記，邊緣像被星光燒穿，可用來辨識荒原核心是否仍連著現實。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "sanctuary_gate_sigil",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 36,
-      "minimumLength": 40,
-      "text": "聖地門與終點聖碑之間顯現的白金門印，只有通過古道試煉的旅人才會讓它完整發光。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "mountain_pick_head",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 40,
-      "text": "舊礦工營保存的重鎬頭，專門用來敲開冰玻礦與雲母脈，使用前必須先除霜。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "molten_lock_sigill",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 37,
-      "minimumLength": 40,
-      "text": "熔鎖門守衛身上剝落的赤黑印記，仍會按照古代熔爐的節拍開合，是進入黑曜心鏡的憑證。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "forbidden_altar_seal",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 35,
-      "minimumLength": 40,
-      "text": "封住禁忌祭壇的黑藍色印記，邊緣滲著鹽霜與暗影，似乎需要古神低語才能完全解讀。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "longmarch_saddle",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 40,
-      "text": "旅行用長征馬鞍，兩側掛有卷包、水袋扣環與備用馬掌袋。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "oathkeeper_saddle",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 40,
-      "text": "象牙色守誓馬鞍，盾牌與誓言卷軸浮雕帶有聖騎士儀式感。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
       "id": "composite_bow",
       "kind": "equipment.description",
       "field": "description",
@@ -79351,15 +78999,6 @@
       "currentLength": 12,
       "minimumLength": 70,
       "text": "傳說中斬殺巨龍的神器巨斧。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "bamboo_katana",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 11,
-      "minimumLength": 35,
-      "text": "竹製練習刀，居合入門之器。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -79528,9 +79167,9 @@
       "id": "dragon_time_hourglass_staff",
       "kind": "equipment.description",
       "field": "description",
-      "currentLength": 17,
+      "currentLength": 42,
       "minimumLength": 70,
-      "text": "封印龍之時間的傳說沙漏杖，可逆轉因果。",
+      "text": "封印龍之時間的傳說沙漏杖，杖首沙粒逆向流動，只有高階時空術士能用它扭轉施法節奏與因果殘影。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -80017,15 +79656,6 @@
       "currentLength": 13,
       "minimumLength": 35,
       "text": "守護者之鎧，為保護同伴而鍛造。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "archmage_robe",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 16,
-      "minimumLength": 35,
-      "text": "纏繞魔法符文的高級法袍，魔力場強大。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -80713,15 +80343,6 @@
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
-      "id": "granary_iron_bracers",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 35,
-      "text": "穀倉門鉸改成的鐵腕甲，邊緣有釘孔，內側墊著褐色粗布。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
       "id": "blackmoss_claw_gloves",
       "kind": "equipment.description",
       "field": "description",
@@ -80836,15 +80457,6 @@
       "currentLength": 25,
       "minimumLength": 35,
       "text": "霧港搬貨工用的鉤套改成護手，掌根藏著短鉤，皮革浸滿鹹霧。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "ancient_tablet_palmguards",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 25,
-      "minimumLength": 35,
-      "text": "掌甲嵌著小塊古碑，符紋殘缺卻冰冷沉重，適合推開危險石門。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -81286,24 +80898,6 @@
       "currentLength": 25,
       "minimumLength": 35,
       "text": "焦木戒圈外包薄鐵，表面有燒裂線，聞起來像雨後熄滅的火堆。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "mistharbor_lead_ring",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 35,
-      "text": "鉛灰戒面嵌著小羅盤片，指針不指北，只在霧起時微微偏轉。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "ancient_tablet_rune_ring",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 35,
-      "text": "符戒鑲著碎碑石，石面只有半個字，夜裡會浮出淡淡灰光。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -81955,15 +81549,6 @@
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
-      "id": "mistharbor_compass_pendant",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 26,
-      "minimumLength": 35,
-      "text": "小羅盤墜在鉛灰鏈上，指針被霧氣腐蝕，只會在潮聲裡緩慢偏轉。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
       "id": "ancient_tablet_fragment_amulet",
       "kind": "equipment.description",
       "field": "description",
@@ -82066,9 +81651,9 @@
       "id": "final_black_grimoire",
       "kind": "equipment.description",
       "field": "description",
-      "currentLength": 31,
+      "currentLength": 48,
       "minimumLength": 70,
-      "text": "終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息。",
+      "text": "終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息，只有終戰後仍能閱讀禁咒的術者能承受。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -82177,15 +81762,6 @@
       "currentLength": 30,
       "minimumLength": 70,
       "text": "世界樹殘杖保留焦黑樹皮與金綠新芽，杖心像有微弱春雷在木紋中回響。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "oathstone_warhammer",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 35,
-      "text": "誓石戰錘的錘頭取自古代誓碑，黑鐵箍壓住裂紋，揮動時像石門落下。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -83206,15 +82782,6 @@
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
-      "id": "longmarch_saddle",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 35,
-      "text": "旅行用長征馬鞍，兩側掛有卷包、水袋扣環與備用馬掌袋。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
       "id": "towerguard_saddle",
       "kind": "equipment.description",
       "field": "description",
@@ -83239,15 +82806,6 @@
       "currentLength": 24,
       "minimumLength": 35,
       "text": "深青灰皮革搭配快速解扣與警鈴，專為急轉攔截 approaching 目標設計。",
-      "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "oathkeeper_saddle",
-      "kind": "equipment.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 35,
-      "text": "象牙色守誓馬鞍，盾牌與誓言卷軸浮雕帶有聖騎士儀式感。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
@@ -83431,7 +82989,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:452",
+      "id": "equipment/opening:453",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83440,7 +82998,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:453",
+      "id": "equipment/opening:454",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83449,7 +83007,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:454",
+      "id": "equipment/opening:455",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83458,7 +83016,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:455",
+      "id": "equipment/opening:456",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83467,7 +83025,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:458",
+      "id": "equipment/opening:459",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83476,7 +83034,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翠綠平」"
     },
     {
-      "id": "equipment/opening:459",
+      "id": "equipment/opening:460",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83485,7 +83043,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翠綠平」"
     },
     {
-      "id": "equipment/opening:460",
+      "id": "equipment/opening:461",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83494,7 +83052,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翠綠平」"
     },
     {
-      "id": "equipment/opening:461",
+      "id": "equipment/opening:462",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83503,7 +83061,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翠綠平」"
     },
     {
-      "id": "equipment/opening:464",
+      "id": "equipment/opening:465",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83512,7 +83070,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「暗影森」"
     },
     {
-      "id": "equipment/opening:465",
+      "id": "equipment/opening:466",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83521,7 +83079,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「暗影森」"
     },
     {
-      "id": "equipment/opening:466",
+      "id": "equipment/opening:467",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83530,7 +83088,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「暗影森」"
     },
     {
-      "id": "equipment/opening:467",
+      "id": "equipment/opening:468",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83539,7 +83097,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「暗影森」"
     },
     {
-      "id": "equipment/opening:470",
+      "id": "equipment/opening:471",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83548,7 +83106,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「水晶洞」"
     },
     {
-      "id": "equipment/opening:471",
+      "id": "equipment/opening:472",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83557,7 +83115,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「水晶洞」"
     },
     {
-      "id": "equipment/opening:472",
+      "id": "equipment/opening:473",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83566,7 +83124,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「水晶洞」"
     },
     {
-      "id": "equipment/opening:473",
+      "id": "equipment/opening:474",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83575,7 +83133,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「水晶洞」"
     },
     {
-      "id": "equipment/opening:476",
+      "id": "equipment/opening:477",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83584,7 +83142,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「湖畔城」"
     },
     {
-      "id": "equipment/opening:477",
+      "id": "equipment/opening:478",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83593,7 +83151,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「湖畔城」"
     },
     {
-      "id": "equipment/opening:478",
+      "id": "equipment/opening:479",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83602,7 +83160,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「湖畔城」"
     },
     {
-      "id": "equipment/opening:479",
+      "id": "equipment/opening:480",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83611,7 +83169,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「湖畔城」"
     },
     {
-      "id": "equipment/opening:482",
+      "id": "equipment/opening:483",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83620,7 +83178,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:483",
+      "id": "equipment/opening:484",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83629,7 +83187,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:484",
+      "id": "equipment/opening:485",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83638,7 +83196,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:485",
+      "id": "equipment/opening:486",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83647,7 +83205,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「新手村」"
     },
     {
-      "id": "equipment/opening:488",
+      "id": "equipment/opening:489",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83656,7 +83214,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「東方海」"
     },
     {
-      "id": "equipment/opening:489",
+      "id": "equipment/opening:490",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83665,7 +83223,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「東方海」"
     },
     {
-      "id": "equipment/opening:490",
+      "id": "equipment/opening:491",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83674,7 +83232,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「東方海」"
     },
     {
-      "id": "equipment/opening:491",
+      "id": "equipment/opening:492",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83683,7 +83241,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「東方海」"
     },
     {
-      "id": "equipment/opening:494",
+      "id": "equipment/opening:495",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83692,7 +83250,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「火山地」"
     },
     {
-      "id": "equipment/opening:495",
+      "id": "equipment/opening:496",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83701,7 +83259,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「火山地」"
     },
     {
-      "id": "equipment/opening:496",
+      "id": "equipment/opening:497",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83710,7 +83268,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「火山地」"
     },
     {
-      "id": "equipment/opening:497",
+      "id": "equipment/opening:498",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83719,7 +83277,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「火山地」"
     },
     {
-      "id": "equipment/opening:500",
+      "id": "equipment/opening:501",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83728,7 +83286,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「冰封雪」"
     },
     {
-      "id": "equipment/opening:501",
+      "id": "equipment/opening:502",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83737,7 +83295,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「冰封雪」"
     },
     {
-      "id": "equipment/opening:502",
+      "id": "equipment/opening:503",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83746,7 +83304,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「冰封雪」"
     },
     {
-      "id": "equipment/opening:503",
+      "id": "equipment/opening:504",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83755,7 +83313,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「冰封雪」"
     },
     {
-      "id": "equipment/opening:506",
+      "id": "equipment/opening:507",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83764,7 +83322,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「魔族領」"
     },
     {
-      "id": "equipment/opening:507",
+      "id": "equipment/opening:508",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83773,7 +83331,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「魔族領」"
     },
     {
-      "id": "equipment/opening:508",
+      "id": "equipment/opening:509",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83782,7 +83340,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「魔族領」"
     },
     {
-      "id": "equipment/opening:509",
+      "id": "equipment/opening:510",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83791,7 +83349,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「魔族領」"
     },
     {
-      "id": "equipment/opening:522",
+      "id": "equipment/opening:523",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83800,7 +83358,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:523",
+      "id": "equipment/opening:524",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83809,7 +83367,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:524",
+      "id": "equipment/opening:525",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83818,7 +83376,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:525",
+      "id": "equipment/opening:526",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83827,7 +83385,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:526",
+      "id": "equipment/opening:527",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83836,7 +83394,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:527",
+      "id": "equipment/opening:528",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83845,7 +83403,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:528",
+      "id": "equipment/opening:529",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83854,7 +83412,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:529",
+      "id": "equipment/opening:530",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83863,7 +83421,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深淵裂」"
     },
     {
-      "id": "equipment/opening:532",
+      "id": "equipment/opening:533",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83872,7 +83430,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:533",
+      "id": "equipment/opening:534",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83881,7 +83439,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:534",
+      "id": "equipment/opening:535",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83890,7 +83448,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:535",
+      "id": "equipment/opening:536",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83899,7 +83457,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:536",
+      "id": "equipment/opening:537",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83908,7 +83466,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:537",
+      "id": "equipment/opening:538",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83917,7 +83475,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:538",
+      "id": "equipment/opening:539",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83926,7 +83484,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:539",
+      "id": "equipment/opening:540",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83935,7 +83493,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「天界遺」"
     },
     {
-      "id": "equipment/opening:542",
+      "id": "equipment/opening:543",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83944,7 +83502,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「老舊農」"
     },
     {
-      "id": "equipment/opening:543",
+      "id": "equipment/opening:544",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83953,7 +83511,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「老舊農」"
     },
     {
-      "id": "equipment/opening:544",
+      "id": "equipment/opening:545",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83962,7 +83520,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「老舊農」"
     },
     {
-      "id": "equipment/opening:545",
+      "id": "equipment/opening:546",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83971,7 +83529,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「老舊農」"
     },
     {
-      "id": "equipment/opening:548",
+      "id": "equipment/opening:549",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83980,7 +83538,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「低語溪」"
     },
     {
-      "id": "equipment/opening:549",
+      "id": "equipment/opening:550",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83989,7 +83547,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「低語溪」"
     },
     {
-      "id": "equipment/opening:550",
+      "id": "equipment/opening:551",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -83998,7 +83556,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「低語溪」"
     },
     {
-      "id": "equipment/opening:551",
+      "id": "equipment/opening:552",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84007,7 +83565,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「低語溪」"
     },
     {
-      "id": "equipment/opening:554",
+      "id": "equipment/opening:555",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84016,7 +83574,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「廢棄礦」"
     },
     {
-      "id": "equipment/opening:555",
+      "id": "equipment/opening:556",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84025,7 +83583,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「廢棄礦」"
     },
     {
-      "id": "equipment/opening:556",
+      "id": "equipment/opening:557",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84034,7 +83592,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「廢棄礦」"
     },
     {
-      "id": "equipment/opening:557",
+      "id": "equipment/opening:558",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84043,7 +83601,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「廢棄礦」"
     },
     {
-      "id": "equipment/opening:560",
+      "id": "equipment/opening:561",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84052,7 +83610,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荒草丘」"
     },
     {
-      "id": "equipment/opening:561",
+      "id": "equipment/opening:562",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84061,7 +83619,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荒草丘」"
     },
     {
-      "id": "equipment/opening:562",
+      "id": "equipment/opening:563",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84070,7 +83628,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荒草丘」"
     },
     {
-      "id": "equipment/opening:563",
+      "id": "equipment/opening:564",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84079,7 +83637,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荒草丘」"
     },
     {
-      "id": "equipment/opening:572",
+      "id": "equipment/opening:573",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84088,7 +83646,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:573",
+      "id": "equipment/opening:574",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84097,7 +83655,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:574",
+      "id": "equipment/opening:575",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84106,7 +83664,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:575",
+      "id": "equipment/opening:576",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84115,7 +83673,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:576",
+      "id": "equipment/opening:577",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84124,7 +83682,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:577",
+      "id": "equipment/opening:578",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84133,7 +83691,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:578",
+      "id": "equipment/opening:579",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84142,7 +83700,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:579",
+      "id": "equipment/opening:580",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84151,7 +83709,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「古代遺」"
     },
     {
-      "id": "equipment/opening:588",
+      "id": "equipment/opening:589",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84160,7 +83718,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「赤岩荒」"
     },
     {
-      "id": "equipment/opening:589",
+      "id": "equipment/opening:590",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84169,7 +83727,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「赤岩荒」"
     },
     {
-      "id": "equipment/opening:590",
+      "id": "equipment/opening:591",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84178,7 +83736,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「赤岩荒」"
     },
     {
-      "id": "equipment/opening:591",
+      "id": "equipment/opening:592",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84187,7 +83745,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「赤岩荒」"
     },
     {
-      "id": "equipment/opening:594",
+      "id": "equipment/opening:595",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84196,7 +83754,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:595",
+      "id": "equipment/opening:596",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84205,7 +83763,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:596",
+      "id": "equipment/opening:597",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84214,7 +83772,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:597",
+      "id": "equipment/opening:598",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84223,7 +83781,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:598",
+      "id": "equipment/opening:599",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84232,7 +83790,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:599",
+      "id": "equipment/opening:600",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84241,7 +83799,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:600",
+      "id": "equipment/opening:601",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84250,7 +83808,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:601",
+      "id": "equipment/opening:602",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84259,7 +83817,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「沉沒墓」"
     },
     {
-      "id": "equipment/opening:604",
+      "id": "equipment/opening:605",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84268,7 +83826,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「雷鳴草」"
     },
     {
-      "id": "equipment/opening:605",
+      "id": "equipment/opening:606",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84277,7 +83835,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「雷鳴草」"
     },
     {
-      "id": "equipment/opening:606",
+      "id": "equipment/opening:607",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84286,7 +83844,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「雷鳴草」"
     },
     {
-      "id": "equipment/opening:607",
+      "id": "equipment/opening:608",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84295,7 +83853,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「雷鳴草」"
     },
     {
-      "id": "equipment/opening:610",
+      "id": "equipment/opening:611",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84304,7 +83862,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琉璃沙」"
     },
     {
-      "id": "equipment/opening:611",
+      "id": "equipment/opening:612",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84313,7 +83871,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琉璃沙」"
     },
     {
-      "id": "equipment/opening:612",
+      "id": "equipment/opening:613",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84322,7 +83880,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琉璃沙」"
     },
     {
-      "id": "equipment/opening:613",
+      "id": "equipment/opening:614",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84331,7 +83889,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琉璃沙」"
     },
     {
-      "id": "equipment/opening:616",
+      "id": "equipment/opening:617",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84340,7 +83898,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「地下城」"
     },
     {
-      "id": "equipment/opening:617",
+      "id": "equipment/opening:618",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84349,7 +83907,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「地下城」"
     },
     {
-      "id": "equipment/opening:618",
+      "id": "equipment/opening:619",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84358,7 +83916,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「地下城」"
     },
     {
-      "id": "equipment/opening:619",
+      "id": "equipment/opening:620",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84367,7 +83925,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「地下城」"
     },
     {
-      "id": "equipment/opening:622",
+      "id": "equipment/opening:623",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84376,7 +83934,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「詛咒墓」"
     },
     {
-      "id": "equipment/opening:623",
+      "id": "equipment/opening:624",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84385,7 +83943,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「詛咒墓」"
     },
     {
-      "id": "equipment/opening:624",
+      "id": "equipment/opening:625",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84394,7 +83952,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「詛咒墓」"
     },
     {
-      "id": "equipment/opening:625",
+      "id": "equipment/opening:626",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84403,7 +83961,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「詛咒墓」"
     },
     {
-      "id": "equipment/opening:628",
+      "id": "equipment/opening:629",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84412,7 +83970,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「風暴高」"
     },
     {
-      "id": "equipment/opening:629",
+      "id": "equipment/opening:630",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84421,7 +83979,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「風暴高」"
     },
     {
-      "id": "equipment/opening:630",
+      "id": "equipment/opening:631",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84430,7 +83988,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「風暴高」"
     },
     {
-      "id": "equipment/opening:631",
+      "id": "equipment/opening:632",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84439,7 +83997,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「風暴高」"
     },
     {
-      "id": "equipment/opening:634",
+      "id": "equipment/opening:635",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84448,7 +84006,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑木林」"
     },
     {
-      "id": "equipment/opening:635",
+      "id": "equipment/opening:636",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84457,7 +84015,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑木林」"
     },
     {
-      "id": "equipment/opening:636",
+      "id": "equipment/opening:637",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84466,7 +84024,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑木林」"
     },
     {
-      "id": "equipment/opening:637",
+      "id": "equipment/opening:638",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84475,7 +84033,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑木林」"
     },
     {
-      "id": "equipment/opening:640",
+      "id": "equipment/opening:641",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84484,7 +84042,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:641",
+      "id": "equipment/opening:642",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84493,7 +84051,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:642",
+      "id": "equipment/opening:643",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84502,7 +84060,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:643",
+      "id": "equipment/opening:644",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84511,7 +84069,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:644",
+      "id": "equipment/opening:645",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84520,7 +84078,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:645",
+      "id": "equipment/opening:646",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84529,7 +84087,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:646",
+      "id": "equipment/opening:647",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84538,7 +84096,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:647",
+      "id": "equipment/opening:648",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84547,7 +84105,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「失落王」"
     },
     {
-      "id": "equipment/opening:650",
+      "id": "equipment/opening:651",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84556,7 +84114,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:651",
+      "id": "equipment/opening:652",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84565,7 +84123,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:652",
+      "id": "equipment/opening:653",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84574,7 +84132,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:653",
+      "id": "equipment/opening:654",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84583,7 +84141,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:654",
+      "id": "equipment/opening:655",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84592,7 +84150,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:655",
+      "id": "equipment/opening:656",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84601,7 +84159,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:656",
+      "id": "equipment/opening:657",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84610,7 +84168,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:657",
+      "id": "equipment/opening:658",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84619,7 +84177,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「浮空群」"
     },
     {
-      "id": "equipment/opening:660",
+      "id": "equipment/opening:661",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84628,7 +84186,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:661",
+      "id": "equipment/opening:662",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84637,7 +84195,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:662",
+      "id": "equipment/opening:663",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84646,7 +84204,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:663",
+      "id": "equipment/opening:664",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84655,7 +84213,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:664",
+      "id": "equipment/opening:665",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84664,7 +84222,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:665",
+      "id": "equipment/opening:666",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84673,7 +84231,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:666",
+      "id": "equipment/opening:667",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84682,7 +84240,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:667",
+      "id": "equipment/opening:668",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84691,7 +84249,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「深海神」"
     },
     {
-      "id": "equipment/opening:670",
+      "id": "equipment/opening:671",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84700,7 +84258,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑曜深」"
     },
     {
-      "id": "equipment/opening:671",
+      "id": "equipment/opening:672",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84709,7 +84267,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑曜深」"
     },
     {
-      "id": "equipment/opening:672",
+      "id": "equipment/opening:673",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84718,7 +84276,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑曜深」"
     },
     {
-      "id": "equipment/opening:673",
+      "id": "equipment/opening:674",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84727,7 +84285,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「黑曜深」"
     },
     {
-      "id": "equipment/opening:676",
+      "id": "equipment/opening:677",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84736,7 +84294,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星隕坑」"
     },
     {
-      "id": "equipment/opening:677",
+      "id": "equipment/opening:678",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84745,7 +84303,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星隕坑」"
     },
     {
-      "id": "equipment/opening:678",
+      "id": "equipment/opening:679",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84754,7 +84312,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星隕坑」"
     },
     {
-      "id": "equipment/opening:679",
+      "id": "equipment/opening:680",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84763,7 +84321,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星隕坑」"
     },
     {
-      "id": "equipment/opening:682",
+      "id": "equipment/opening:683",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84772,7 +84330,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:683",
+      "id": "equipment/opening:684",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84781,7 +84339,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:684",
+      "id": "equipment/opening:685",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84790,7 +84348,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:685",
+      "id": "equipment/opening:686",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84799,7 +84357,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:686",
+      "id": "equipment/opening:687",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84808,7 +84366,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:687",
+      "id": "equipment/opening:688",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84817,7 +84375,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:688",
+      "id": "equipment/opening:689",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84826,7 +84384,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:689",
+      "id": "equipment/opening:690",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84835,7 +84393,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「時間廢」"
     },
     {
-      "id": "equipment/opening:692",
+      "id": "equipment/opening:693",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84844,7 +84402,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:693",
+      "id": "equipment/opening:694",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84853,7 +84411,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:694",
+      "id": "equipment/opening:695",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84862,7 +84420,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:695",
+      "id": "equipment/opening:696",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84871,7 +84429,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:696",
+      "id": "equipment/opening:697",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84880,7 +84438,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:697",
+      "id": "equipment/opening:698",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84889,7 +84447,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:698",
+      "id": "equipment/opening:699",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84898,7 +84456,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:699",
+      "id": "equipment/opening:700",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84907,7 +84465,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「星界荒」"
     },
     {
-      "id": "equipment/opening:702",
+      "id": "equipment/opening:703",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84916,7 +84474,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:703",
+      "id": "equipment/opening:704",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84925,7 +84483,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:704",
+      "id": "equipment/opening:705",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84934,7 +84492,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:705",
+      "id": "equipment/opening:706",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84943,7 +84501,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:706",
+      "id": "equipment/opening:707",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84952,7 +84510,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:707",
+      "id": "equipment/opening:708",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84961,7 +84519,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:708",
+      "id": "equipment/opening:709",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84970,7 +84528,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:709",
+      "id": "equipment/opening:710",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84979,7 +84537,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「終焉戰」"
     },
     {
-      "id": "equipment/opening:712",
+      "id": "equipment/opening:713",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84988,7 +84546,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月光濕」"
     },
     {
-      "id": "equipment/opening:713",
+      "id": "equipment/opening:714",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -84997,7 +84555,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月光濕」"
     },
     {
-      "id": "equipment/opening:714",
+      "id": "equipment/opening:715",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85006,7 +84564,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月光濕」"
     },
     {
-      "id": "equipment/opening:715",
+      "id": "equipment/opening:716",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85015,7 +84573,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月光濕」"
     },
     {
-      "id": "equipment/opening:718",
+      "id": "equipment/opening:719",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85024,7 +84582,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「朝聖古」"
     },
     {
-      "id": "equipment/opening:719",
+      "id": "equipment/opening:720",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85033,7 +84591,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「朝聖古」"
     },
     {
-      "id": "equipment/opening:720",
+      "id": "equipment/opening:721",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85042,7 +84600,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「朝聖古」"
     },
     {
-      "id": "equipment/opening:721",
+      "id": "equipment/opening:722",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85051,7 +84609,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「朝聖古」"
     },
     {
-      "id": "equipment/opening:724",
+      "id": "equipment/opening:725",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85060,7 +84618,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鐵木要」"
     },
     {
-      "id": "equipment/opening:725",
+      "id": "equipment/opening:726",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85069,7 +84627,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鐵木要」"
     },
     {
-      "id": "equipment/opening:726",
+      "id": "equipment/opening:727",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85078,7 +84636,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鐵木要」"
     },
     {
-      "id": "equipment/opening:727",
+      "id": "equipment/opening:728",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85087,7 +84645,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鐵木要」"
     },
     {
-      "id": "equipment/opening:730",
+      "id": "equipment/opening:731",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85096,7 +84654,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琥珀森」"
     },
     {
-      "id": "equipment/opening:731",
+      "id": "equipment/opening:732",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85105,7 +84663,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琥珀森」"
     },
     {
-      "id": "equipment/opening:732",
+      "id": "equipment/opening:733",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85114,7 +84672,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琥珀森」"
     },
     {
-      "id": "equipment/opening:733",
+      "id": "equipment/opening:734",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85123,7 +84681,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「琥珀森」"
     },
     {
-      "id": "equipment/opening:736",
+      "id": "equipment/opening:737",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85132,7 +84690,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「銀松山」"
     },
     {
-      "id": "equipment/opening:737",
+      "id": "equipment/opening:738",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85141,7 +84699,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「銀松山」"
     },
     {
-      "id": "equipment/opening:738",
+      "id": "equipment/opening:739",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85150,7 +84708,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「銀松山」"
     },
     {
-      "id": "equipment/opening:739",
+      "id": "equipment/opening:740",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85159,7 +84717,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「銀松山」"
     },
     {
-      "id": "equipment/opening:742",
+      "id": "equipment/opening:743",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85168,7 +84726,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鹽風灘」"
     },
     {
-      "id": "equipment/opening:743",
+      "id": "equipment/opening:744",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85177,7 +84735,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鹽風灘」"
     },
     {
-      "id": "equipment/opening:744",
+      "id": "equipment/opening:745",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85186,7 +84744,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鹽風灘」"
     },
     {
-      "id": "equipment/opening:745",
+      "id": "equipment/opening:746",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85195,7 +84753,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「鹽風灘」"
     },
     {
-      "id": "equipment/opening:748",
+      "id": "equipment/opening:749",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85204,7 +84762,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荊棘迷」"
     },
     {
-      "id": "equipment/opening:749",
+      "id": "equipment/opening:750",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85213,7 +84771,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荊棘迷」"
     },
     {
-      "id": "equipment/opening:750",
+      "id": "equipment/opening:751",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85222,7 +84780,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荊棘迷」"
     },
     {
-      "id": "equipment/opening:751",
+      "id": "equipment/opening:752",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85231,7 +84789,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「荊棘迷」"
     },
     {
-      "id": "equipment/opening:754",
+      "id": "equipment/opening:755",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85240,7 +84798,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「餘燼邊」"
     },
     {
-      "id": "equipment/opening:755",
+      "id": "equipment/opening:756",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85249,7 +84807,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「餘燼邊」"
     },
     {
-      "id": "equipment/opening:756",
+      "id": "equipment/opening:757",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85258,7 +84816,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「餘燼邊」"
     },
     {
-      "id": "equipment/opening:757",
+      "id": "equipment/opening:758",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85267,7 +84825,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「餘燼邊」"
     },
     {
-      "id": "equipment/opening:760",
+      "id": "equipment/opening:761",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85276,7 +84834,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:761",
+      "id": "equipment/opening:762",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85285,7 +84843,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:762",
+      "id": "equipment/opening:763",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85294,7 +84852,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:763",
+      "id": "equipment/opening:764",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85303,7 +84861,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:764",
+      "id": "equipment/opening:765",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85312,7 +84870,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:765",
+      "id": "equipment/opening:766",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85321,7 +84879,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:766",
+      "id": "equipment/opening:767",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85330,7 +84888,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:767",
+      "id": "equipment/opening:768",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85339,7 +84897,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「白骨礁」"
     },
     {
-      "id": "equipment/opening:770",
+      "id": "equipment/opening:771",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85348,7 +84906,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「藍寶湖」"
     },
     {
-      "id": "equipment/opening:771",
+      "id": "equipment/opening:772",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85357,7 +84915,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「藍寶湖」"
     },
     {
-      "id": "equipment/opening:772",
+      "id": "equipment/opening:773",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85366,7 +84924,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「藍寶湖」"
     },
     {
-      "id": "equipment/opening:773",
+      "id": "equipment/opening:774",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85375,7 +84933,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「藍寶湖」"
     },
     {
-      "id": "equipment/opening:776",
+      "id": "equipment/opening:777",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85384,7 +84942,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王道市」"
     },
     {
-      "id": "equipment/opening:777",
+      "id": "equipment/opening:778",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85393,7 +84951,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王道市」"
     },
     {
-      "id": "equipment/opening:778",
+      "id": "equipment/opening:779",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85402,7 +84960,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王道市」"
     },
     {
-      "id": "equipment/opening:779",
+      "id": "equipment/opening:780",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85411,7 +84969,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王道市」"
     },
     {
-      "id": "equipment/opening:782",
+      "id": "equipment/opening:783",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85420,7 +84978,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「競技城」"
     },
     {
-      "id": "equipment/opening:783",
+      "id": "equipment/opening:784",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85429,7 +84987,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「競技城」"
     },
     {
-      "id": "equipment/opening:784",
+      "id": "equipment/opening:785",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85438,7 +84996,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「競技城」"
     },
     {
-      "id": "equipment/opening:785",
+      "id": "equipment/opening:786",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85447,7 +85005,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「競技城」"
     },
     {
-      "id": "equipment/opening:788",
+      "id": "equipment/opening:789",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85456,7 +85014,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王家獵」"
     },
     {
-      "id": "equipment/opening:789",
+      "id": "equipment/opening:790",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85465,7 +85023,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王家獵」"
     },
     {
-      "id": "equipment/opening:790",
+      "id": "equipment/opening:791",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85474,7 +85032,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王家獵」"
     },
     {
-      "id": "equipment/opening:791",
+      "id": "equipment/opening:792",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85483,7 +85041,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王家獵」"
     },
     {
-      "id": "equipment/opening:794",
+      "id": "equipment/opening:795",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85492,7 +85050,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:795",
+      "id": "equipment/opening:796",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85501,7 +85059,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:796",
+      "id": "equipment/opening:797",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85510,7 +85068,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:797",
+      "id": "equipment/opening:798",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85519,7 +85077,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:798",
+      "id": "equipment/opening:799",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85528,7 +85086,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:799",
+      "id": "equipment/opening:800",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85537,7 +85095,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:800",
+      "id": "equipment/opening:801",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85546,7 +85104,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:801",
+      "id": "equipment/opening:802",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85555,7 +85113,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「灰落修」"
     },
     {
-      "id": "equipment/opening:804",
+      "id": "equipment/opening:805",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85564,7 +85122,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「霜咬隘」"
     },
     {
-      "id": "equipment/opening:805",
+      "id": "equipment/opening:806",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85573,7 +85131,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「霜咬隘」"
     },
     {
-      "id": "equipment/opening:806",
+      "id": "equipment/opening:807",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85582,7 +85140,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「霜咬隘」"
     },
     {
-      "id": "equipment/opening:807",
+      "id": "equipment/opening:808",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85591,7 +85149,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「霜咬隘」"
     },
     {
-      "id": "equipment/opening:810",
+      "id": "equipment/opening:811",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85600,7 +85158,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:811",
+      "id": "equipment/opening:812",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85609,7 +85167,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:812",
+      "id": "equipment/opening:813",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85618,7 +85176,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:813",
+      "id": "equipment/opening:814",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85627,7 +85185,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:814",
+      "id": "equipment/opening:815",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85636,7 +85194,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:815",
+      "id": "equipment/opening:816",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85645,7 +85203,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:816",
+      "id": "equipment/opening:817",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85654,7 +85212,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:817",
+      "id": "equipment/opening:818",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85663,7 +85221,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "equipment/opening:820",
+      "id": "equipment/opening:821",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85672,7 +85230,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:821",
+      "id": "equipment/opening:822",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85681,7 +85239,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:822",
+      "id": "equipment/opening:823",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85690,7 +85248,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:823",
+      "id": "equipment/opening:824",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85699,7 +85257,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:824",
+      "id": "equipment/opening:825",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85708,7 +85266,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:825",
+      "id": "equipment/opening:826",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85717,7 +85275,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:826",
+      "id": "equipment/opening:827",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85726,7 +85284,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:827",
+      "id": "equipment/opening:828",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85735,7 +85293,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「日耀尖」"
     },
     {
-      "id": "equipment/opening:830",
+      "id": "equipment/opening:831",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85744,7 +85302,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:831",
+      "id": "equipment/opening:832",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85753,7 +85311,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:832",
+      "id": "equipment/opening:833",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85762,7 +85320,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:833",
+      "id": "equipment/opening:834",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85771,7 +85329,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:834",
+      "id": "equipment/opening:835",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85780,7 +85338,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:835",
+      "id": "equipment/opening:836",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85789,7 +85347,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:836",
+      "id": "equipment/opening:837",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85798,7 +85356,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:837",
+      "id": "equipment/opening:838",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85807,7 +85365,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「月影庭」"
     },
     {
-      "id": "equipment/opening:840",
+      "id": "equipment/opening:841",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85816,7 +85374,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「機械墳」"
     },
     {
-      "id": "equipment/opening:841",
+      "id": "equipment/opening:842",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85825,7 +85383,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「機械墳」"
     },
     {
-      "id": "equipment/opening:842",
+      "id": "equipment/opening:843",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85834,7 +85392,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「機械墳」"
     },
     {
-      "id": "equipment/opening:843",
+      "id": "equipment/opening:844",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85843,7 +85401,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「機械墳」"
     },
     {
-      "id": "equipment/opening:846",
+      "id": "equipment/opening:847",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85852,7 +85410,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「血鹽海」"
     },
     {
-      "id": "equipment/opening:847",
+      "id": "equipment/opening:848",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85861,7 +85419,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「血鹽海」"
     },
     {
-      "id": "equipment/opening:848",
+      "id": "equipment/opening:849",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85870,7 +85428,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「血鹽海」"
     },
     {
-      "id": "equipment/opening:849",
+      "id": "equipment/opening:850",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85879,7 +85437,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「血鹽海」"
     },
     {
-      "id": "equipment/opening:852",
+      "id": "equipment/opening:853",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85888,7 +85446,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翡翠樹」"
     },
     {
-      "id": "equipment/opening:853",
+      "id": "equipment/opening:854",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85897,7 +85455,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翡翠樹」"
     },
     {
-      "id": "equipment/opening:854",
+      "id": "equipment/opening:855",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85906,7 +85464,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翡翠樹」"
     },
     {
-      "id": "equipment/opening:855",
+      "id": "equipment/opening:856",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85915,7 +85473,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「翡翠樹」"
     },
     {
-      "id": "equipment/opening:858",
+      "id": "equipment/opening:859",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85924,7 +85482,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「空心山」"
     },
     {
-      "id": "equipment/opening:859",
+      "id": "equipment/opening:860",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85933,7 +85491,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「空心山」"
     },
     {
-      "id": "equipment/opening:860",
+      "id": "equipment/opening:861",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85942,7 +85500,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「空心山」"
     },
     {
-      "id": "equipment/opening:861",
+      "id": "equipment/opening:862",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85951,7 +85509,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「空心山」"
     },
     {
-      "id": "equipment/opening:864",
+      "id": "equipment/opening:865",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85960,7 +85518,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「蛇河三」"
     },
     {
-      "id": "equipment/opening:865",
+      "id": "equipment/opening:866",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85969,7 +85527,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「蛇河三」"
     },
     {
-      "id": "equipment/opening:866",
+      "id": "equipment/opening:867",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85978,7 +85536,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「蛇河三」"
     },
     {
-      "id": "equipment/opening:867",
+      "id": "equipment/opening:868",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85987,7 +85545,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「蛇河三」"
     },
     {
-      "id": "equipment/opening:870",
+      "id": "equipment/opening:871",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -85996,7 +85554,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王國邊」"
     },
     {
-      "id": "equipment/opening:871",
+      "id": "equipment/opening:872",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -86005,7 +85563,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王國邊」"
     },
     {
-      "id": "equipment/opening:872",
+      "id": "equipment/opening:873",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -86014,7 +85572,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「王國邊」"
     },
     {
-      "id": "equipment/opening:873",
+      "id": "equipment/opening:874",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88186,10 +87744,10 @@
       "id": "equipment/term:表面",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 54,
+      "currentLength": 53,
       "minimumLength": 30,
       "text": "leather_armor, wooden_ring, grainhusk_padded_armor, charwood_armguards, mirrormarsh_wet_gloves, gravefrost_bone_bracers, creeklight_copper_ring, frostpattern_silver_ring, silverpine_wood_ring, charwood_black_ring, redsand_earring, moonwell_earring",
-      "reason": "同批生成內容核心詞「表面」出現於 449/839 筆，超過 30% 門檻"
+      "reason": "同批生成內容核心詞「表面」出現於 449/842 筆，超過 30% 門檻"
     },
     {
       "id": "equipment/term:留下",
@@ -88198,7 +87756,7 @@
       "currentLength": 52,
       "minimumLength": 30,
       "text": "steel_sword, iron_boots, frostbeak_spear, blackmoss_patrol_helm, frosthide_finger_guards, redrock_tread_boots, moonwell_soft_boots, mirrormarsh_wet_boots, frostpattern_silver_ring, blackwood_charcoal_ring, fieldstone_carpenter_hammer, stormrail_warbow",
-      "reason": "同批生成內容核心詞「留下」出現於 438/839 筆，超過 30% 門檻"
+      "reason": "同批生成內容核心詞「留下」出現於 438/842 筆，超過 30% 門檻"
     },
     {
       "id": "equipment/term:下的",
@@ -88207,7 +87765,7 @@
       "currentLength": 51,
       "minimumLength": 30,
       "text": "steel_sword, blackmoss_patrol_helm, starsand_night_pendant, fieldstone_carpenter_hammer, rainpearl_wand, blackbanner_oath_shield, zone_starter_village_head, zone_starter_village_body, zone_starter_village_hands, zone_starter_village_feet, zone_starter_village_ring, zone_starter_village_necklace",
-      "reason": "同批生成內容核心詞「下的」出現於 430/839 筆，超過 30% 門檻"
+      "reason": "同批生成內容核心詞「下的」出現於 430/842 筆，超過 30% 門檻"
     },
     {
       "id": "gatheringNode.description/term:適合",

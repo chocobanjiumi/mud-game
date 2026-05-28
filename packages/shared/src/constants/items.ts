@@ -413,7 +413,7 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<LegacyNamedSupplementalEquipSlot, Suppl
     { name: '麻繩護手', description: '粗麻繩一圈圈纏在皮護手外，掌心縫著舊布，握劍時不易滑脫。' },
     { name: '溪石拳套', description: '拳套指節鑲著磨圓溪石，皮面帶著水漬，擊中時有沉悶石響。' },
     { name: '柳枝手套', description: '薄皮手套背面縫著柳枝片，能彎折卸力，指尖保留採草用的靈活度。' },
-    { name: '穀倉鐵腕', description: '穀倉門鉸改成的鐵腕甲，邊緣有釘孔，內側墊著褐色粗布。' },
+    { name: '穀倉鐵腕', description: '穀倉門鉸改成的鐵腕甲，邊緣有釘孔，內側墊著褐色粗布，適合農場與平原低階戰鬥中格擋短兵，來源與外觀都能對上穀場怪物掉落。' },
     { name: '黑苔爪套', description: '黑苔覆在爪形護手外，短刃藏於指側，出手時像樹影忽然裂開。' },
     { name: '潮繩護腕', description: '潮濕船繩編成的護腕，繩結壓著小貝片，能抵住魚叉與短刀。' },
     { name: '礦釘手甲', description: '礦釘排列在手甲指節上，黑鐵掌背刻著號碼，像從舊升降機拆下。' },
@@ -427,7 +427,7 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<LegacyNamedSupplementalEquipSlot, Suppl
     { name: '月井白手', description: '白革手套浸過月井水，指縫繡著銀線，觸碰暗物時會亮出淡淡水紋。' },
     { name: '焦木臂甲', description: '焦木片與黑鐵環拼成臂甲，表面有燒裂紋，握緊時落下細灰。' },
     { name: '霧港鉤套', description: '霧港搬貨工用的鉤套改成護手，掌根藏著短鉤，皮革浸滿鹹霧。' },
-    { name: '古碑掌甲', description: '掌甲嵌著小塊古碑，符紋殘缺卻冰冷沉重，適合推開危險石門。' },
+    { name: '古碑掌甲', description: '掌甲嵌著小塊古碑，符紋殘缺卻冰冷沉重，適合推開危險石門，也能作遺跡探索時的穩定護手，常由古代遺跡守衛掉落。' },
     { name: '鏡沼濕手', description: '鏡沼濕皮縫成的手套，表面像沾著水膜，能在泥地裡抓住滑物。' },
     { name: '紅爐鐵手', description: '紅爐旁鍛出的厚手甲，指節粗大，邊緣仍留有錘打後的暗紅斑。' },
     { name: '雷原扣腕', description: '雷原銅扣固定的腕帶，扣面刻有草原閃電紋，奔跑時貼著脈搏震動。' },
@@ -481,8 +481,8 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<LegacyNamedSupplementalEquipSlot, Suppl
     { name: '星砂夜戒', description: '夜色金屬戒上撒著星砂，轉動時銀點會沿外緣慢慢移動。' },
     { name: '月井白戒', description: '白石戒面像被水長年沖刷，內側刻著月井波紋，觸感溫和。' },
     { name: '焦木黑戒', description: '焦木戒圈外包薄鐵，表面有燒裂線，聞起來像雨後熄滅的火堆。' },
-    { name: '霧港鉛戒', description: '鉛灰戒面嵌著小羅盤片，指針不指北，只在霧起時微微偏轉。' },
-    { name: '古碑符戒', description: '符戒鑲著碎碑石，石面只有半個字，夜裡會浮出淡淡灰光。' },
+    { name: '霧港鉛戒', description: '鉛灰戒面嵌著小羅盤片，指針不指北，只在霧起時微微偏轉，是霧港水手用來辨識潮向的護符，也能提示渡船與濃霧航路。' },
+    { name: '古碑符戒', description: '符戒鑲著碎碑石，石面只有半個字，夜裡會浮出淡淡灰光，常被遺跡巡查者用來穩定微弱符文，適合探索封印房間。' },
     { name: '鏡沼水戒', description: '水戒像一圈凝住的銀泥，戒面能映出不太準確的倒影。' },
     { name: '紅爐鐵戒', description: '厚鐵戒由紅爐冷卻後打成，外緣有錘痕，靠近火源時溫度上升。' },
     { name: '雷原銅戒', description: '銅戒刻著草原閃電紋，戴在手上時會隨脈搏傳來細小震感。' },
@@ -561,7 +561,7 @@ const SUPPLEMENTAL_EQUIPMENT_ART: Record<LegacyNamedSupplementalEquipSlot, Suppl
     { name: '星砂夜墜', description: '夜色石墜裡嵌著星砂，黑底銀點密集，像一小塊被切下的星空。' },
     { name: '月井白墜', description: '白石水滴墜經月井水洗亮，表面映著淡銀波紋，貼身時平穩溫和。' },
     { name: '焦木灰符', description: '焦木片護符以黑線穿過，符面有燒裂紋，聞起來像冷掉的篝火。' },
-    { name: '霧港羅盤墜', description: '小羅盤墜在鉛灰鏈上，指針被霧氣腐蝕，只會在潮聲裡緩慢偏轉。' },
+    { name: '霧港羅盤墜', description: '小羅盤墜在鉛灰鏈上，指針被霧氣腐蝕，只會在潮聲裡緩慢偏轉，適合霧港航路與渡船任務佩戴，也能作海關線索。' },
     { name: '古碑碎符', description: '古碑碎片磨成方墜，殘缺符號橫過正面，摸起來冰冷沉重。' },
     { name: '鏡沼水墜', description: '銀泥封成的水滴墜，內部倒影始終晃動，像藏著一小片沼水。' },
     { name: '紅爐鐵符', description: '紅爐鐵片打成護符，外緣有暗紅錘痕，靠近火焰會微微發亮。' },
@@ -716,7 +716,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
     },
     grimoire: {
       50: { name: '星頁魔導書', description: '星頁魔導書封皮是深藍龍革，書脊嵌銀釘，翻頁時會落下像星屑般的冷光。' },
-      60: { name: '終卷黑典', description: '終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息。' },
+      60: { name: '終卷黑典', description: '終卷黑典以黑曜書殼封住，頁角染著灰金火痕，每次闔上都像遠處鐘聲止息，只有終戰後仍能閱讀禁咒的術者能承受。' },
     },
     staff_hourglass: {
       50: { name: '星刻沙漏杖', description: '星刻沙漏杖中央嵌著倒懸玻璃，銀砂在其中逆流，杖端環繞細小刻度環。' },
@@ -743,7 +743,7 @@ function createHighLevelWeaponProgressionDefs(): Record<string, ItemDef> {
       60: { name: '世界樹殘杖', description: '世界樹殘杖保留焦黑樹皮與金綠新芽，杖心像有微弱春雷在木紋中回響。' },
     },
     warhammer: {
-      50: { name: '誓石戰錘', description: '誓石戰錘的錘頭取自古代誓碑，黑鐵箍壓住裂紋，揮動時像石門落下。' },
+      50: { name: '誓石戰錘', description: '誓石戰錘的錘頭取自古代誓碑，黑鐵箍壓住裂紋，揮動時像石門落下，是守誓騎士用來破除封門與壓制重甲敵人的武器。' },
       60: { name: '終冠碎錘', description: '終冠碎錘嵌著破碎王冠金片，錘面滿是黑焰灼痕，落擊時會震出灰金火光。' },
     },
   };
@@ -881,7 +881,7 @@ function createWeaponTypeTopUpDefs(): Record<string, ItemDef> {
     { id: 'seraph_judgement_scepter', name: '熾使審判權杖', weaponType: 'scepter', levelReq: 60, rarity: 'legendary', stat: 'matk', classReq: ['inquisitor', 'high_priest'], zoneTags: ['final_battleground'], description: '白金與赤金交錯鍛成，杖頭展開六片火翼狀光刃，中央懸著小型審判日輪，終局聖職武器。' },
     { id: 'thundergrass_javelin_spear', name: '雷草投槍', weaponType: 'spear', levelReq: 22, rarity: 'rare', stat: 'atk', classReq: ['swordsman', 'knight'], zoneTags: ['thundersteppe'], description: '比長槍更輕，槍桿纏著青白草纖維，槍頭有小型倒鉤與電痕，明確表現為可投擲的遠程雙手槍。' },
     { id: 'slagbell_warhammer', name: '渣鐘戰錘', weaponType: 'warhammer', levelReq: 18, rarity: 'rare', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['volcano_zone'], description: '錘頭像被敲裂的黑鐵鐘，表面掛著紅褐礦渣，長柄末端有銅環，揮下時彷彿能砸出沉悶鐘聲。' },
-    { id: 'granite_oath_warhammer', name: '花崗誓戰錘', weaponType: 'warhammer', levelReq: 38, rarity: 'epic', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['celestial_ruins'], description: '方形錘頭由灰白石與黑鐵箍固定，錘面刻著古誓約短文，樸拙厚重，像聖騎士破門武器。' },
+    { id: 'granite_oath_warhammer', name: '花崗誓戰錘', weaponType: 'warhammer', levelReq: 38, rarity: 'epic', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['celestial_ruins'], description: '方形錘頭由灰白石與黑鐵箍固定，錘面刻著古誓約短文，樸拙厚重，像聖騎士破門武器，常見於天界遺跡的誓約石廊。' },
     { id: 'skyforge_crown_warhammer', name: '天爐冠戰錘', weaponType: 'warhammer', levelReq: 58, rarity: 'legendary', stat: 'atk', classReq: ['knight', 'inquisitor'], zoneTags: ['final_battleground'], description: '錘頭嵌著破碎王冠與白金火槽，長柄由深鐵包覆，錘面亮著像熔爐星空般的孔洞。' },
     { id: 'reedlash_whip', name: '蘆索長鞭', weaponType: 'whip', levelReq: 12, rarity: 'uncommon', stat: 'atk', classReq: ['beast_master', 'ranger'], zoneTags: ['plains'], description: '多股黑蘆纖維編成鞭身，鞭柄包著粗皮，鞭尾綁著小骨片，帶野外馴獸工具的粗糙感。' },
     { id: 'glassspine_whip', name: '玻脊長鞭', weaponType: 'whip', levelReq: 34, rarity: 'epic', stat: 'atk', classReq: ['beast_master', 'druid'], zoneTags: ['crystal_cave'], description: '每一節都嵌著透明魚脊玻片，甩動時形成一串冷亮折光，鞭柄短而精緻，華麗但危險。' },
@@ -1128,11 +1128,11 @@ const SADDLE_EQUIPMENT_SEEDS: SaddleEquipmentSeed[] = [
   ['iron_stirrup_saddle', '鐵鐙馬鞍', '深棕皮革搭配沉重鐵鐙，低重心設計讓新兵更容易完成衝鋒。', 'common', 22, { mountChargePower: 4 }],
   ['guardstrap_saddle', '護帶馬鞍', '寬版護帶式馬鞍，交叉防護皮帶與盾形壓紋強調穩固包覆。', 'uncommon', 24, { mountGuardPower: 5 }],
   ['frontline_cavalry_saddle', '前線騎兵鞍', '軍用騎兵馬鞍，深紅皮革與短旗流蘇帶著前線軍團制式感。', 'uncommon', 25, { mountChargePower: 5, mountedThreatBonus: 5 }],
-  ['longmarch_saddle', '長征馬鞍', '旅行用長征馬鞍，兩側掛有卷包、水袋扣環與備用馬掌袋。', 'uncommon', 26, { mountFatigueMax: 10, mountFatigueRecovery: 1 }],
+  ['longmarch_saddle', '長征馬鞍', '旅行用長征馬鞍，兩側掛有卷包、水袋扣環與備用馬掌袋，適合長距離世界移動與補給巡行，不強調衝鋒爆發。', 'uncommon', 26, { mountFatigueMax: 10, mountFatigueRecovery: 1 }],
   ['towerguard_saddle', '塔衛重鞍', '厚重防衛型馬鞍，塔盾形鐵片與短鏈甲護簾讓騎手更難被撼動。', 'uncommon', 28, { mountStability: 8, mountGuardPower: 4 }],
   ['charger_saddle', '衝鋒戰鞍', '銳角輪廓的衝鋒馬鞍，黑紅皮革與前傾線條為高速突擊打造。', 'rare', 30, { mountChargePower: 10 }],
   ['interceptor_saddle', '攔截者馬鞍', '深青灰皮革搭配快速解扣與警鈴，專為急轉攔截 approaching 目標設計。', 'rare', 30, { mountedInterceptBonus: 10, mountStability: 4 }],
-  ['oathkeeper_saddle', '誓守馬鞍', '象牙色守誓馬鞍，盾牌與誓言卷軸浮雕帶有聖騎士儀式感。', 'rare', 32, { mountGuardPower: 10, mountedThreatBonus: 4 }],
+  ['oathkeeper_saddle', '誓守馬鞍', '象牙色守誓馬鞍，盾牌與誓言卷軸浮雕帶有聖騎士儀式感，鞍橋加高可穩住守護姿態，偏向保護隊友。', 'rare', 32, { mountGuardPower: 10, mountedThreatBonus: 4 }],
   ['silver_rein_saddle', '銀韁馬鞍', '銀白韁繩與深色皮鞍組成的精良馬鞍，能讓坐騎節奏更平穩。', 'rare', 34, { mountFatigueRecovery: 2, mountStability: 5 }],
   ['bannerlord_saddle', '軍旗領主鞍', '鞍後立有短旗扣座，整體為戰線統御與仇恨牽制打造。', 'rare', 35, { mountedThreatBonus: 10, mountGuardPower: 5 }],
   ['breakline_saddle', '破陣馬鞍', '前緣包覆斜切鋼片的破陣馬鞍，適合衝破戰線並延緩敵方接近。', 'epic', 38, { mountChargePower: 8, mountedInterceptBonus: 8 }],
@@ -1470,7 +1470,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 太刀 (Katana) - 戰士/劍聖 ============
   bamboo_katana: {
     id: 'bamboo_katana', name: '竹刀', type: 'weapon',
-    description: '竹製練習刀，居合入門之器。', buyPrice: 55, sellPrice: 27,
+    description: '新手劍士練習用的竹製太刀，刀身以數片竹材綁合，重量輕而不致命，適合熟悉居合節奏與基礎命中。', buyPrice: 55, sellPrice: 27,
     stackable: false, maxStack: 1, levelReq: 1,
     equipSlot: 'weapon', stats: { atk: 5, dex: 1 },
     rarity: 'common', weaponType: 'katana',
@@ -1624,7 +1624,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   dragon_time_hourglass_staff: {
     id: 'dragon_time_hourglass_staff', name: '龍時沙漏杖', type: 'weapon',
-    description: '封印龍之時間的傳說沙漏杖，可逆轉因果。', buyPrice: 6000, sellPrice: 3000,
+    description: '封印龍之時間的傳說沙漏杖，杖首沙粒逆向流動，只有高階時空術士能用它扭轉施法節奏與因果殘影。', buyPrice: 6000, sellPrice: 3000,
     stackable: false, maxStack: 1, levelReq: 40,
     classReq: ['chronomancer'],
     equipSlot: 'weapon', stats: { matk: 55, dex: 8, int: 7, mp: 60 },
@@ -2770,7 +2770,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   ancient_bark: {
     id: 'ancient_bark', name: '古樹皮', type: 'material',
-    description: '古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂，可作盾面補強。', buyPrice: 0, sellPrice: 22,
+    description: '古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂，可作盾面補強，也能作自然系裝備的基底。', buyPrice: 0, sellPrice: 22,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   nature_crystal: {
@@ -2910,22 +2910,22 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ============ 任務道具 ============
   class_change_scroll_swordsman: {
     id: 'class_change_scroll_swordsman', name: '戰士轉職卷軸', type: 'quest',
-    description: '紅蠟封住的戰士誓約卷軸，羊皮紙上畫著交叉長劍與訓練場印記，邊角磨得發亮。', buyPrice: 0, sellPrice: 0,
+    description: '紅蠟封住的戰士誓約卷軸，羊皮紙上畫著交叉長劍與訓練場印記，邊角磨得發亮，是完成基礎試煉後交付轉職的憑證。', buyPrice: 0, sellPrice: 0,
     stackable: false, maxStack: 1, levelReq: 10,
   },
   class_change_scroll_mage: {
     id: 'class_change_scroll_mage', name: '法師轉職卷軸', type: 'quest',
-    description: '藍蠟封存的法師認證卷軸，紙面浮著細小星點與初階法陣，展開時有淡淡墨香。', buyPrice: 0, sellPrice: 0,
+    description: '藍蠟封存的法師認證卷軸，紙面浮著細小星點與初階法陣，展開時有淡淡墨香，是導師確認施法資格的轉職憑證。', buyPrice: 0, sellPrice: 0,
     stackable: false, maxStack: 1, levelReq: 10,
   },
   class_change_scroll_ranger: {
     id: 'class_change_scroll_ranger', name: '遊俠轉職卷軸', type: 'quest',
-    description: '綠線綁起的遊俠試煉卷軸，封面壓著羽毛與箭痕，背面標著林徑巡行記號。', buyPrice: 0, sellPrice: 0,
+    description: '綠線綁起的遊俠試煉卷軸，封面壓著羽毛與箭痕，背面標著林徑巡行記號，是巡林訓練合格後使用的轉職憑證。', buyPrice: 0, sellPrice: 0,
     stackable: false, maxStack: 1, levelReq: 10,
   },
   class_change_scroll_priest: {
     id: 'class_change_scroll_priest', name: '祭司轉職卷軸', type: 'quest',
-    description: '白金絲帶束著的祭司祝聖卷軸，紙緣有聖堂水印，打開時會散出柔和乳白光。', buyPrice: 0, sellPrice: 0,
+    description: '白金絲帶束著的祭司祝聖卷軸，紙緣有聖堂水印，打開時會散出柔和乳白光，是聖堂認可信仰修習的轉職憑證。', buyPrice: 0, sellPrice: 0,
     stackable: false, maxStack: 1, levelReq: 10,
   },
 
@@ -2967,7 +2967,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   archmage_robe: {
     id: 'archmage_robe', name: '大法師長袍', type: 'armor',
-    description: '纏繞魔法符文的高級法袍，魔力場強大。', buyPrice: 2700, sellPrice: 900,
+    description: '纏繞魔法符文的高級法袍，深藍布面以銀線縫出多層防護陣，能穩定大量魔力並保護施法者軀幹。', buyPrice: 2700, sellPrice: 900,
     stackable: false, maxStack: 1, levelReq: 25,
     equipSlot: 'body', stats: { mdef: 20, int: 6, mp: 60 },
   },
@@ -3056,7 +3056,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   teleport_stone: {
     id: 'teleport_stone', name: '傳送石', type: 'consumable',
-    description: '掌心大小的灰藍符石，表面刻有折線座標。捏碎後會沿記憶標記拉開傳送光門。', buyPrice: 150, sellPrice: 75,
+    description: '掌心大小的灰藍符石，表面刻有折線座標。捏碎後會沿記憶標記拉開傳送光門，只能返回已記錄過的安全位置。', buyPrice: 150, sellPrice: 75,
     stackable: true, maxStack: 99, levelReq: 5,
     useEffect: { type: 'teleport_mark', value: 0 },
   },
@@ -3146,7 +3146,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   bronze_key: {
     id: 'bronze_key', name: '銅鑰匙', type: 'material',
-    description: '短柄銅鑰匙已被手汗磨亮，齒端帶著細小缺口，正好能轉開銅寶箱的舊鎖。', buyPrice: 50, sellPrice: 25,
+    description: '短柄銅鑰匙已被手汗磨亮，齒端帶著細小缺口，正好能轉開銅寶箱的舊鎖，是低階探索常見的開箱耗材。', buyPrice: 50, sellPrice: 25,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   silver_chest: {
@@ -3157,18 +3157,18 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   silver_key: {
     id: 'silver_key', name: '銀鑰匙', type: 'material',
-    description: '細長銀鑰匙柄端鑲著藍點玻璃，鑰齒切面平整，能貼合銀寶箱的精密鎖芯。', buyPrice: 150, sellPrice: 75,
+    description: '細長銀鑰匙柄端鑲著藍點玻璃，鑰齒切面平整，能貼合銀寶箱的精密鎖芯，常從中階怪物與任務獎勵取得。', buyPrice: 150, sellPrice: 75,
     stackable: true, maxStack: 99, levelReq: 10,
   },
   gold_chest: {
     id: 'gold_chest', name: '金寶箱', type: 'consumable',
-    description: '沉重金寶箱覆滿浮雕與紅蠟封印，箱角鑲著寶石，靠近時能感到封存魔力震動。', buyPrice: 1500, sellPrice: 750,
+    description: '沉重金寶箱覆滿浮雕與紅蠟封印，箱角鑲著寶石，靠近時能感到封存魔力震動，需要金鑰匙才能開啟高階獎勵。', buyPrice: 1500, sellPrice: 750,
     stackable: true, maxStack: 99, levelReq: 20,
     useEffect: { type: 'open_chest_gold', value: 0 },
   },
   gold_key: {
     id: 'gold_key', name: '金鑰匙', type: 'material',
-    description: '金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光，可開啟高階寶箱。', buyPrice: 500, sellPrice: 250,
+    description: '金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光，可開啟高階寶箱並消耗一枚。', buyPrice: 500, sellPrice: 250,
     stackable: true, maxStack: 99, levelReq: 20,
   },
 
@@ -3359,7 +3359,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   prism_shard: {
     id: 'prism_shard', name: '棱鏡碎片', type: 'material',
-    description: '水晶洞窟棱鏡門附近剝落的透明碎片，轉動時會分出七道細光。寶石商人會用它校準切割角度。',
+    description: '水晶洞窟棱鏡門附近剝落的透明碎片，轉動時會分出七道細光。寶石商人會用它校準切割角度，也可作折光機關材料。',
     buyPrice: 1400, sellPrice: 700, stackable: true, maxStack: 99, levelReq: 20, rarity: 'rare',
     sourceTags: ['drop', 'shop'], zoneTags: ['crystal_cave'],
   },
@@ -3421,7 +3421,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   siege_lock_pin: {
     id: 'siege_lock_pin', name: '攻城鎖銷', type: 'material',
-    description: '攻城器械場拆下的粗鐵鎖銷，表面有火藥燻黑痕。少一枚鎖銷就能讓整台弩砲偏轉半座城門。',
+    description: '攻城器械場拆下的粗鐵鎖銷，表面有火藥燻黑痕。少一枚鎖銷就能讓整台弩砲偏轉半座城門，是邊境軍需線索。',
     buyPrice: 3800, sellPrice: 1900, stackable: true, maxStack: 99, levelReq: 34, rarity: 'rare',
     sourceTags: ['drop'], zoneTags: ['kingdom_frontier'],
   },
@@ -3477,7 +3477,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   elf_feather: {
     id: 'elf_feather', name: '精靈羽毛', type: 'material',
-    description: '細長羽毛泛著淡金與淺綠光澤，羽軸近乎透明，像仍保留著精靈林地的晨露。', buyPrice: 0, sellPrice: 1200,
+    description: '細長羽毛泛著淡金與淺綠光澤，羽軸近乎透明，像仍保留著精靈林地的晨露，常被用於輕盈護符與高價收藏。', buyPrice: 0, sellPrice: 1200,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   dragon_dust: {
@@ -3649,7 +3649,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   rusted_farm_key: {
     id: 'rusted_farm_key', name: '生鏽農舍鑰匙', type: 'quest',
-    description: '刻著農場姓氏的舊鑰匙，齒痕被泥與鏽蝕遮住，但仍能開啟農舍或糧倉裡某些保存完好的箱櫃。',
+    description: '刻著農場姓氏的舊鑰匙，齒痕被泥與鏽蝕遮住，但仍能開啟農舍或糧倉裡某些保存完好的箱櫃，是老舊農場任務線索。',
     buyPrice: 0, sellPrice: 0,
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['old_farmland', 'quest', 'monster_drop'], zoneTags: ['old_farmland'],
@@ -3733,7 +3733,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   foreman_key_tag: {
     id: 'foreman_key_tag', name: '工頭鑰匙牌', type: 'quest',
-    description: '刻著工頭室、火藥室與深層倉櫃編號的銅牌，邊角有撬痕。它能證明礦難後仍有人回來翻找證據。',
+    description: '刻著工頭室、火藥室與深層倉櫃編號的銅牌，邊角有撬痕。它能證明礦難後仍有人回來翻找證據，也是開啟礦坑調查線的憑證。',
     buyPrice: 0, sellPrice: 0,
     stackable: true, maxStack: 9, levelReq: 1,
     sourceTags: ['abandoned_mines', 'quest', 'monster_drop'], zoneTags: ['abandoned_mines'],
@@ -3838,7 +3838,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   moon_gate_tablet: {
     id: 'moon_gate_tablet', name: '月門陶板', type: 'material',
-    description: '刻著月相步序的薄陶板，邊緣被水池磨圓。只有與倒影水池對照時，才能看懂其中缺失的符號。',
+    description: '刻著月相步序的薄陶板，邊緣被水池磨圓。只有與倒影水池對照時，才能看懂其中缺失的符號，可協助解析月門機關。',
     buyPrice: 0, sellPrice: 36,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['ancient_ruins', 'monster_drop', 'archaeology'], zoneTags: ['ancient_ruins'],
@@ -3852,7 +3852,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   lightseal_dust: {
     id: 'lightseal_dust', name: '光封塵', type: 'material',
-    description: '封印階梯與內聖所附近漂浮的白色光塵，裝入玻璃瓶後仍會沿著日月符號排列。',
+    description: '封印階梯與內聖所附近漂浮的白色光塵，裝入玻璃瓶後仍會沿著日月符號排列，可用於修補遺跡封印與聖光儀式。',
     buyPrice: 0, sellPrice: 40,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['ancient_ruins', 'monster_drop', 'gathering'], zoneTags: ['ancient_ruins'],
@@ -4006,7 +4006,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   thunder_eagle_plume: {
     id: 'thunder_eagle_plume', name: '雷鷹電羽', type: 'material',
-    description: '雷鷹巢峰掉落的藍白羽毛，羽軸仍存著細小電弧。可用來製作抗風箭羽、避雷符與偵查信物。',
+    description: '雷鷹巢峰掉落的藍白羽毛，羽軸仍存著細小電弧。可用來製作抗風箭羽、避雷符與偵查信物，是草原風暴線索。',
     buyPrice: 0, sellPrice: 56,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['thundersteppe', 'monster_drop', 'gathering'], zoneTags: ['thundersteppe'],
@@ -4111,7 +4111,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   lantern_fungus_oil: {
     id: 'lantern_fungus_oil', name: '菌燈油', type: 'material',
-    description: '菌燈庭園榨出的淡綠燈油，燃燒時不冒煙，適合地底旅店、碼頭與卷宗庫使用。',
+    description: '菌燈庭園榨出的淡綠燈油，燃燒時不冒煙，適合地底旅店、碼頭與卷宗庫使用，也能標記暗河夜航路線。',
     buyPrice: 90, sellPrice: 45,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['underground_city', 'gathering', 'service'], zoneTags: ['underground_city'],
@@ -4279,7 +4279,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   cloudsilver_plume: {
     id: 'cloudsilver_plume', name: '雲銀長羽', type: 'material',
-    description: '雷鷹巢島與雲上草甸掉落的銀白長羽，羽軸會吸附雲霧。可用於高階飛行符、箭羽與神殿祭旗。',
+    description: '雷鷹巢島與雲上草甸掉落的銀白長羽，羽軸會吸附雲霧。可用於高階飛行符、箭羽與神殿祭旗，是浮島探索材料。',
     buyPrice: 0, sellPrice: 104,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['sky_isles', 'monster_drop', 'gathering'], zoneTags: ['sky_isles'],
@@ -4581,12 +4581,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   pale_star_relic: {
     id: 'pale_star_relic', name: '蒼白星遺物', type: 'material',
-    description: '蒼白小祠供奉的無名星骸碎片，光線微弱卻能壓住黑暗低語，是通過黑星門的穩定材料。',
+    description: '蒼白小祠供奉的無名星骸碎片，光線微弱卻能壓住黑暗低語，是通過黑星門的穩定材料，採集時需避開虛空裂縫與現實錨點失衡。',
     buyPrice: 4200, sellPrice: 2100, stackable: true, maxStack: 99, levelReq: 55, rarity: 'legendary',
   },
   black_star_sigil: {
     id: 'black_star_sigil', name: '黑星印記', type: 'material',
-    description: '黑星門浮現的暗色印記，邊緣像被星光燒穿，可用來辨識荒原核心是否仍連著現實。',
+    description: '黑星門浮現的暗色印記，邊緣像被星光燒穿，可用來辨識荒原核心是否仍連著現實，也是星界封印與黑域入口的重要線索。',
     buyPrice: 4600, sellPrice: 2300, stackable: true, maxStack: 99, levelReq: 57, rarity: 'legendary',
   },
   worldcore_anchor: {
@@ -4705,7 +4705,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   sanctuary_gate_sigil: {
     id: 'sanctuary_gate_sigil', name: '聖地門印', type: 'quest',
-    description: '聖地門與終點聖碑之間顯現的白金門印，只有通過古道試煉的旅人才會讓它完整發光。',
+    description: '聖地門與終點聖碑之間顯現的白金門印，只有通過古道試煉的旅人才會讓它完整發光，是進入聖地後段並證明巡禮完成的資格憑證。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 22, rarity: 'epic',
     sourceTags: ['boss'], zoneTags: ['pilgrim_road'],
   },
@@ -4808,7 +4808,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   mountain_pick_head: {
     id: 'mountain_pick_head', name: '高山鎬頭', type: 'quest',
-    description: '舊礦工營保存的重鎬頭，專門用來敲開冰玻礦與雲母脈，使用前必須先除霜。',
+    description: '舊礦工營保存的重鎬頭，專門用來敲開冰玻礦與雲母脈，使用前必須先除霜，是銀松山脈採集委託與礦脈定位的重要工具。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 24, rarity: 'rare',
     sourceTags: ['quest', 'shop'], zoneTags: ['silverpine_range'],
   },
@@ -5534,7 +5534,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   molten_lock_sigill: {
     id: 'molten_lock_sigill', name: '熔鎖印記', type: 'quest',
-    description: '熔鎖門守衛身上剝落的赤黑印記，仍會按照古代熔爐的節拍開合，是進入黑曜心鏡的憑證。',
+    description: '熔鎖門守衛身上剝落的赤黑印記，仍會按照古代熔爐的節拍開合，是進入黑曜心鏡的憑證，靠近熔門時會重新發熱並校準入口。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 52, rarity: 'legendary',
   },
   worldforge_ember_core: {
@@ -5566,7 +5566,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   forbidden_altar_seal: {
     id: 'forbidden_altar_seal', name: '禁壇封印', type: 'quest',
-    description: '封住禁忌祭壇的黑藍色印記，邊緣滲著鹽霜與暗影，似乎需要古神低語才能完全解讀。',
+    description: '封住禁忌祭壇的黑藍色印記，邊緣滲著鹽霜與暗影，似乎需要古神低語才能完全解讀，是深海神殿後段的危險憑證。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 50, rarity: 'legendary',
   },
   tidal_throne_core: {
