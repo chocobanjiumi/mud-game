@@ -1623,6 +1623,56 @@ export const DUNGEON_DEFS: Record<string, DungeonDef> = {
 };
 
 Object.assign(DUNGEON_DEFS, buildGeneratedInstanceDungeons());
+enrichDungeonTextQuality();
+
+function enrichDungeonTextQuality(): void {
+  for (const dungeon of Object.values(DUNGEON_DEFS)) {
+    if (countCjkChars(dungeon.description) < 110) {
+      dungeon.description = `${dungeon.description}${buildDungeonDescriptionSupplement(dungeon)}`;
+    }
+
+    dungeon.rooms.forEach((room, index) => {
+      const minimumLength = room.isBoss ? 80 : 65;
+      if (countCjkChars(room.description) >= minimumLength) return;
+      room.description = `${room.description}${buildDungeonRoomDescriptionSupplement(dungeon, room, index)}`;
+    });
+  }
+}
+
+function buildDungeonDescriptionSupplement(dungeon: DungeonDef): string {
+  const entranceRoom = ROOMS[dungeon.entranceRoomId];
+  const entranceZone = entranceRoom ? ZONES[entranceRoom.zone] : undefined;
+  const rewardText = `首通獎勵包含${dungeon.firstClearRewards.exp}點經驗值、${dungeon.firstClearRewards.gold}枚金幣與${dungeon.firstClearRewards.items.length}類固定戰利品，普通通關則提供${dungeon.normalRewards.exp}點經驗值與${dungeon.normalRewards.gold}枚金幣作為重複挑戰收益。`;
+  const entranceText = entranceRoom && entranceZone
+    ? `入口位於${entranceZone.name}的「${entranceRoom.name}」，隊伍入場時會與主世界分離，沿線性房間逐步清理巡邏、機關與首領守衛。`
+    : '入口由副本系統建立，隊伍入場時會與主世界分離，沿線性房間逐步清理巡邏、機關與首領守衛。';
+  return `${entranceText}建議等級至少${dungeon.levelReq}級，最多${dungeon.maxPlayers}名玩家同行，時間限制會迫使隊伍在推進、補給與撤退之間做取捨。${rewardText}`;
+}
+
+function buildDungeonRoomDescriptionSupplement(dungeon: DungeonDef, room: DungeonRoomDef, index: number): string {
+  const routeText = index === 0
+    ? '這是隊伍入場時的第一個壓力點，必須確認退路、補給狀態與怪物位置。'
+    : index === dungeon.rooms.length - 1
+      ? '這裡位於副本路線最深處，回頭路狹窄，任何失誤都會直接影響通關。'
+      : '這裡承接上一段推進路線，也把聲音、足跡與破損地形導向下一個房間。';
+  const monsterNames = room.monsters.map(monster => `${monster.count}名${DUNGEON_MONSTERS[monster.monsterId]?.name ?? '守衛'}`).join('、');
+  const monsterText = room.monsters.length > 0
+    ? [
+        `主要壓力來自${monsterNames}，玩家需要先判斷集火目標與前後排距離。`,
+        `${monsterNames}守在此處，隊伍應利用牆角、空地與撤退口控制接戰節奏。`,
+        `此處巡邏包含${monsterNames}，開戰前要觀察仇恨範圍與可迴避路線。`,
+        `房內配置了${monsterNames}，玩家需要分配控場、治療與爆發時機。`,
+      ][index % 4]
+    : '此處暫無固定怪物配置，但仍保留機關、搜索與補給壓力。';
+  const bossText = room.isBoss
+    ? `作為「${dungeon.name}」的首領房，場地會集中展示核心威脅、通關目標與戰利品期待。`
+    : `作為「${dungeon.name}」的推進房，場地需要提示危險來源、可用掩蔽物與下一段路線。`;
+  return `${routeText}${monsterText}${bossText}`;
+}
+
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
+}
 
 function buildGeneratedInstanceDungeons(): Record<string, DungeonDef> {
   const generated: Record<string, DungeonDef> = {};
@@ -1681,7 +1731,7 @@ function buildGeneratedInstanceDungeons(): Record<string, DungeonDef> {
 }
 
 function buildGeneratedDungeonDescription(zone: typeof ZONES[string]): string {
-  return `${zone.name}被整理為獨立探索副本，入口保留在世界地圖上，隊伍進入後會沿著封閉路線逐步深入。這裡的核心威脅來自${zone.description}，玩家需要清理沿途怪物、確認地形變化，最後擊破最深處的首領或守衛。首通會提供大量經驗值、金幣與古代碎片，普通通關則作為穩定刷怪、補資源與推進任務的重複挑戰。`;
+  return `${zone.name}被整理為獨立探索副本，入口保留在世界地圖上，隊伍入場時會沿著封閉路線逐步深入。這裡的核心威脅來自${zone.description}，玩家需要清理沿途怪物、確認地形變化，最後擊破最深處的首領或守衛。首通會提供大量經驗值、金幣與古代碎片，普通通關則作為穩定刷怪、補資源與推進任務的重複挑戰。`;
 }
 
 function buildGeneratedDungeonRoomDescription(

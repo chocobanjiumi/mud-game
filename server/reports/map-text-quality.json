@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T15:31:59.688Z",
+  "generatedAt": "2026-05-28T15:36:04.383Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -95,7 +95,7 @@
     "imagePrompts": 1203,
     "instanceEntries": 37,
     "checkedDungeonItems": 179,
-    "issues": 7429
+    "issues": 7394
   },
   "issuesByKind": {
     "exit.description": 2580,
@@ -106,10 +106,8 @@
     "quest.dialogueStart": 613,
     "quest.dialogueComplete": 614,
     "quest.objective": 1425,
-    "dungeon.description": 8,
-    "dungeon.room.description": 40,
     "batch.repeatedOpening": 316,
-    "batch.repeatedCoreTerm": 256
+    "batch.repeatedCoreTerm": 269
   },
   "issues": [
     {
@@ -61394,438 +61392,6 @@
       "reason": "objective 顯示文字不足"
     },
     {
-      "id": "shadow_dungeon",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 64,
-      "minimumLength": 110,
-      "text": "隱藏在暗影森林深處的古老地牢，暗影之力在此匯聚。傳說暗影狼王在最深處的祭壇積蓄著毀滅性的力量。只有最勇敢的冒險者才敢踏入這片永恆的黑暗。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "shadow_dungeon/shadow_dungeon_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 77,
-      "minimumLength": 80,
-      "text": "巨大的圓形大廳，正中央是一座被暗影之力環繞的祭壇。暗影狼王端坐於祭壇之上，血紅的雙眼冷冷地注視著闖入者。牠周圍的暗影凝聚成實體，化為一道道鋒利的暗影之刃——決戰即將開始。",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "crystal_temple",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 76,
-      "minimumLength": 110,
-      "text": "沉睡在水晶洞窟最深處的古代聖殿，曾是地底種族祭祀的神聖場所。如今聖殿被強大的水晶守衛所佔據，冰冷的魔力充斥著每一個角落。傳說打敗守衛就能獲得聖殿中封印已久的寶藏。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "pirate_ship",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 63,
-      "minimumLength": 110,
-      "text": "停泊在東海岸的海盜大船，船上充斥著兇殘的海盜和危險的海蛇。傳說船長的寶藏室中藏有無數從各地掠奪的財寶。只有擊敗船長才能打開寶藏室的門。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "pirate_ship/pirate_ship_deck",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 40,
-      "minimumLength": 65,
-      "text": "踏上搖晃的甲板，海風中夾雜著血腥與火藥的氣味。水手們已經發現了入侵者，紛紛拔出彎刀迎戰。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "pirate_ship/pirate_ship_cabin",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 40,
-      "minimumLength": 65,
-      "text": "昏暗的船艙中堆滿了搶來的貨物和酒桶。海蛇從破洞中竄入，與海盜一起守護著通往下層的樓梯。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "pirate_ship/pirate_ship_powder",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 46,
-      "minimumLength": 65,
-      "text": "空氣中瀰漫著硝石的刺鼻氣味，一桶桶火藥整齊排列。在這裡戰鬥需要格外小心——一個火花就可能引爆整個房間。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "pirate_ship/pirate_ship_captain_room",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 52,
-      "minimumLength": 80,
-      "text": "船長室的門被踹開，華麗的房間中央站著海盜船長——他正慢條斯理地擦拭著自己的短銃弩。「敢踏上我的船？那就用性命來償還吧！」",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "pirate_ship/pirate_ship_treasure",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 65,
-      "text": "船長倒下後，寶藏室的門緩緩打開——金幣堆積如山，珠寶閃爍著迷人的光芒。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 110,
-      "text": "建造在活火山內部的古代神殿，曾是火焰之神的祭祀場所。如今被熔岩巨像所佔據，熾熱的岩漿流經每一條走廊。只有穿越層層火焰考驗，才能抵達神殿深處面對守護者。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "flame_temple/flame_temple_entrance",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 65,
-      "text": "巨大的拱門上刻滿了火焰紋章，炙熱的空氣撲面而來。火蜥蜴在入口處巡邏。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple/flame_temple_corridor",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "走廊兩側的牆壁不斷噴射出火柱，火焰精靈在烈焰中飛舞。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple/flame_temple_lava_pool",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 65,
-      "text": "一片巨大的熔岩池佔據了大半個房間，岩石巨人從熔岩中拔地而起。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple/flame_temple_altar",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 25,
-      "minimumLength": 65,
-      "text": "古老的火焰祭壇仍在燃燒，火焰精靈守護著通往深處的道路。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple/flame_temple_trial",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 65,
-      "text": "熾熱的試煉場，四面八方都是噴射的火焰。只有通過這裡才能進入神殿深處。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "flame_temple/flame_temple_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 53,
-      "minimumLength": 80,
-      "text": "神殿的最深處，一座巨大的熔岩巨像矗立在熔岩瀑布前。牠的手中握著一把燃燒的戰錘，身上的裂縫噴射出炙熱的岩漿——最終決戰！",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "demon_fortress",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 78,
-      "minimumLength": 110,
-      "text": "矗立在魔族領域中心的巨大要塞，黑色的城牆上刻滿了詛咒符文。要塞內駐紮著魔族的精銳軍隊，魔王本人坐鎮最深處的王座之間。這是一場針對魔族核心力量的正面進攻——準備好你的勇氣。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_gate",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 22,
-      "minimumLength": 65,
-      "text": "巨大的黑鐵城門被攻破，小惡魔蜂擁而出迎擊入侵者。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_courtyard",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 65,
-      "text": "要塞的外庭廣場上，魔族士兵正在集結準備迎戰。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_barracks",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "魔族的兵營中到處都是武器架和訓練場。地獄犬在此巡邏。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_dungeon",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "陰暗的地下牢房中傳來受害者的哀嚎，魅魔在此看管囚犯。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_purgatory",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 65,
-      "text": "通往魔王之間的煉獄之路，火焰與暗影在此交織。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_summoning",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 65,
-      "text": "巨大的魔法陣在地面上發出不祥的光芒，惡魔從陣中不斷被召喚出來。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "demon_fortress/demon_fortress_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 47,
-      "minimumLength": 80,
-      "text": "黑暗的王座大廳中央，魔王端坐在骸骨王座之上。他手中的魔劍散發著毀滅性的暗黑之力——「凡人，你的冒險到此為止！」",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "dragon_nest",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 73,
-      "minimumLength": 110,
-      "text": "隱藏在龍之谷深處的遠古龍巢，無數世代的巨龍在此棲息繁衍。洞窟中堆滿了龍族千年來收集的寶藏，但古龍不會輕易讓任何人碰觸它們。挑戰古龍——這是每個冒險者的終極夢想。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_entrance",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 21,
-      "minimumLength": 65,
-      "text": "巨大的洞口散發著硫磺的氣味，幼龍在入口處守衛。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_hatchery",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 23,
-      "minimumLength": 65,
-      "text": "溫暖的孵化室中排列著巨大的龍蛋，翼龍在此保護幼龍。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_graveyard",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 21,
-      "minimumLength": 65,
-      "text": "歷代巨龍的遺骸堆積如山，龍騎士的亡靈在此遊蕩。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_breath_corridor",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "狹長的通道中不時噴射出熾熱的龍息，必須在間隙中前進。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_treasury",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 19,
-      "minimumLength": 65,
-      "text": "金幣堆積如山的寶庫，翼龍與龍騎士嚴密看守。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_deep",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "越來越深入的洞窟中，溫度不斷升高，龍的氣息越來越濃烈。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "dragon_nest/dragon_nest_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 55,
-      "minimumLength": 80,
-      "text": "巨大的穹頂洞窟中，一頭身軀如山岳般龐大的古龍盤踞在寶藏之上。牠睜開了一隻金色的眼瞳，大地隨之震顫——「渺小的人類，你來送死嗎？」",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "abyss_gate",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 76,
-      "minimumLength": 110,
-      "text": "世界邊緣的裂隙中通向深淵的入口，混沌的能量不斷從中湧出。深淵中的生物超越了凡人的理解，扭曲的空間讓方向感完全失效。只有最強大的冒險者才敢踏入這個與現實隔絕的次元。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_rift",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 19,
-      "minimumLength": 65,
-      "text": "空間的裂縫在此撕裂，虛空行者從裂縫中湧出。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_chaos",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 65,
-      "text": "上下左右已經失去意義，混沌的能量扭曲著一切。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_void",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 21,
-      "minimumLength": 65,
-      "text": "一條漂浮在虛空中的通道，暗影惡魔在此伏擊來者。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_twisted",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 65,
-      "text": "空間在此被完全扭曲，牆壁、地面、天花板交錯重疊。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_core",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 17,
-      "minimumLength": 65,
-      "text": "深淵的核心區域，混沌之力在此達到頂峰。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "abyss_gate/abyss_gate_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 57,
-      "minimumLength": 80,
-      "text": "深淵的最深處，一個巨大的存在漂浮在虛空之中。牠的身軀由純粹的混沌能量構成，周圍的空間不斷崩塌與重生——深淵領主已經注意到你了。",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
-      "id": "celestial_trial",
-      "kind": "dungeon.description",
-      "field": "description",
-      "currentLength": 74,
-      "minimumLength": 110,
-      "text": "浮空在雲端之上的古代天界遺跡，曾是眾神的戰場。如今遺跡中仍殘留著神聖的力量，墮天使與神造機兵守護著通往戰神的道路。通過八重試煉，面對戰神——這是世界上最困難的副本。",
-      "reason": "副本概述需包含進入理由、核心威脅、預期目標與主要獎勵"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_gate",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 31,
-      "minimumLength": 65,
-      "text": "金色的巨門在眼前敞開，聖光從門後傾瀉而出。墮天使在此測試來者的資格。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_light",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 25,
-      "minimumLength": 65,
-      "text": "純白的回廊中充斥著令人目眩的聖光，天界守衛在光中巡邏。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_garden",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 21,
-      "minimumLength": 65,
-      "text": "永不凋零的花朵在空中飄浮，熾天使在花園中棲息。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_library",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 24,
-      "minimumLength": 65,
-      "text": "記載著眾神歷史的古書在空中漂浮，神造機兵守護著知識。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_judgement",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 21,
-      "minimumLength": 65,
-      "text": "審判之間，所有挑戰者都必須在此接受試煉的審視。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_throne",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 26,
-      "minimumLength": 65,
-      "text": "曾經屬於眾神之王的王座，如今空無一人。但守衛們仍在此堅守。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_sanctuary",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 26,
-      "minimumLength": 65,
-      "text": "最後的聖所，距離戰神只有一步之遙。所有類型的守衛在此集結。",
-      "reason": "副本房間描述字數不足"
-    },
-    {
-      "id": "celestial_trial/celestial_trial_boss",
-      "kind": "dungeon.room.description",
-      "field": "description",
-      "currentLength": 55,
-      "minimumLength": 80,
-      "text": "天界的最高處，金色的光芒中浮現出一道偉岸的身影。戰神手持神槍，以超越凡人理解的威壓俯視著挑戰者——「來吧，讓我看看凡人的極限！」",
-      "reason": "Boss 房描述需有場景、威脅與戰鬥空間"
-    },
-    {
       "id": "zone:marsh_of_mirrors/opening:2",
       "kind": "batch.repeatedOpening",
       "field": "text",
@@ -66803,49 +66369,166 @@
       "reason": "同批生成內容核心詞「黑焰」出現於 4/7 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon.description/term:處的",
+      "id": "dungeon.description/term:隊伍",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 86,
+      "currentLength": 100,
       "minimumLength": 30,
-      "text": "shadow_dungeon, crystal_temple, demon_fortress, dragon_nest, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template",
-      "reason": "同批生成內容核心詞「處的」出現於 25/29 筆，超過 30% 門檻"
+      "text": "shadow_dungeon, crystal_temple, pirate_ship, flame_temple, demon_fortress, dragon_nest, abyss_gate, celestial_trial, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template",
+      "reason": "同批生成內容核心詞「隊伍」出現於 29/29 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon.description/term:最深",
+      "id": "dungeon.description/term:伍入",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 83,
+      "currentLength": 100,
       "minimumLength": 30,
-      "text": "shadow_dungeon, crystal_temple, demon_fortress, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template, machine_graveyard_template",
-      "reason": "同批生成內容核心詞「最深」出現於 24/29 筆，超過 30% 門檻"
+      "text": "shadow_dungeon, crystal_temple, pirate_ship, flame_temple, demon_fortress, dragon_nest, abyss_gate, celestial_trial, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template",
+      "reason": "同批生成內容核心詞「伍入」出現於 29/29 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon.description/term:古代",
+      "id": "dungeon.description/term:入場",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 83,
+      "currentLength": 100,
       "minimumLength": 30,
-      "text": "crystal_temple, flame_temple, celestial_trial, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template, machine_graveyard_template",
-      "reason": "同批生成內容核心詞「古代」出現於 24/29 筆，超過 30% 門檻"
+      "text": "shadow_dungeon, crystal_temple, pirate_ship, flame_temple, demon_fortress, dragon_nest, abyss_gate, celestial_trial, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template",
+      "reason": "同批生成內容核心詞「入場」出現於 29/29 筆，超過 30% 門檻"
     },
     {
       "id": "dungeon:flame_temple/term:火焰",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 67,
+      "currentLength": 100,
       "minimumLength": 30,
-      "text": "flame_temple/flame_temple_entrance, flame_temple/flame_temple_corridor, flame_temple/flame_temple_altar, flame_temple/flame_temple_trial",
-      "reason": "同批生成內容核心詞「火焰」出現於 4/6 筆，超過 30% 門檻"
+      "text": "flame_temple/flame_temple_entrance, flame_temple/flame_temple_corridor, flame_temple/flame_temple_lava_pool, flame_temple/flame_temple_altar, flame_temple/flame_temple_trial, flame_temple/flame_temple_boss",
+      "reason": "同批生成內容核心詞「火焰」出現於 6/6 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon:celestial_trial/term:在此",
+      "id": "dungeon:flame_temple/term:名火",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 50,
+      "currentLength": 100,
       "minimumLength": 30,
-      "text": "celestial_trial/celestial_trial_gate, celestial_trial/celestial_trial_judgement, celestial_trial/celestial_trial_throne, celestial_trial/celestial_trial_sanctuary",
-      "reason": "同批生成內容核心詞「在此」出現於 4/8 筆，超過 30% 門檻"
+      "text": "flame_temple/flame_temple_entrance, flame_temple/flame_temple_corridor, flame_temple/flame_temple_lava_pool, flame_temple/flame_temple_altar, flame_temple/flame_temple_trial, flame_temple/flame_temple_boss",
+      "reason": "同批生成內容核心詞「名火」出現於 6/6 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:flame_temple/term:作為",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "flame_temple/flame_temple_entrance, flame_temple/flame_temple_corridor, flame_temple/flame_temple_lava_pool, flame_temple/flame_temple_altar, flame_temple/flame_temple_trial, flame_temple/flame_temple_boss",
+      "reason": "同批生成內容核心詞「作為」出現於 6/6 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:demon_fortress/term:作為",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "demon_fortress/demon_fortress_gate, demon_fortress/demon_fortress_courtyard, demon_fortress/demon_fortress_barracks, demon_fortress/demon_fortress_dungeon, demon_fortress/demon_fortress_purgatory, demon_fortress/demon_fortress_summoning, demon_fortress/demon_fortress_boss",
+      "reason": "同批生成內容核心詞「作為」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:demon_fortress/term:為魔",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "demon_fortress/demon_fortress_gate, demon_fortress/demon_fortress_courtyard, demon_fortress/demon_fortress_barracks, demon_fortress/demon_fortress_dungeon, demon_fortress/demon_fortress_purgatory, demon_fortress/demon_fortress_summoning, demon_fortress/demon_fortress_boss",
+      "reason": "同批生成內容核心詞「為魔」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:demon_fortress/term:魔族",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "demon_fortress/demon_fortress_gate, demon_fortress/demon_fortress_courtyard, demon_fortress/demon_fortress_barracks, demon_fortress/demon_fortress_dungeon, demon_fortress/demon_fortress_purgatory, demon_fortress/demon_fortress_summoning, demon_fortress/demon_fortress_boss",
+      "reason": "同批生成內容核心詞「魔族」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:dragon_nest/term:龍副",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "dragon_nest/dragon_nest_entrance, dragon_nest/dragon_nest_hatchery, dragon_nest/dragon_nest_graveyard, dragon_nest/dragon_nest_breath_corridor, dragon_nest/dragon_nest_treasury, dragon_nest/dragon_nest_deep, dragon_nest/dragon_nest_boss",
+      "reason": "同批生成內容核心詞「龍副」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:dragon_nest/term:作為",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "dragon_nest/dragon_nest_entrance, dragon_nest/dragon_nest_hatchery, dragon_nest/dragon_nest_graveyard, dragon_nest/dragon_nest_breath_corridor, dragon_nest/dragon_nest_treasury, dragon_nest/dragon_nest_deep, dragon_nest/dragon_nest_boss",
+      "reason": "同批生成內容核心詞「作為」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:dragon_nest/term:為龍",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "dragon_nest/dragon_nest_entrance, dragon_nest/dragon_nest_hatchery, dragon_nest/dragon_nest_graveyard, dragon_nest/dragon_nest_breath_corridor, dragon_nest/dragon_nest_treasury, dragon_nest/dragon_nest_deep, dragon_nest/dragon_nest_boss",
+      "reason": "同批生成內容核心詞「為龍」出現於 7/7 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:abyss_gate/term:在此",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "abyss_gate/abyss_gate_rift, abyss_gate/abyss_gate_chaos, abyss_gate/abyss_gate_void, abyss_gate/abyss_gate_twisted, abyss_gate/abyss_gate_core, abyss_gate/abyss_gate_boss",
+      "reason": "同批生成內容核心詞「在此」出現於 6/6 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:abyss_gate/term:作為",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "abyss_gate/abyss_gate_rift, abyss_gate/abyss_gate_chaos, abyss_gate/abyss_gate_void, abyss_gate/abyss_gate_twisted, abyss_gate/abyss_gate_core, abyss_gate/abyss_gate_boss",
+      "reason": "同批生成內容核心詞「作為」出現於 6/6 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:abyss_gate/term:為深",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "abyss_gate/abyss_gate_rift, abyss_gate/abyss_gate_chaos, abyss_gate/abyss_gate_void, abyss_gate/abyss_gate_twisted, abyss_gate/abyss_gate_core, abyss_gate/abyss_gate_boss",
+      "reason": "同批生成內容核心詞「為深」出現於 6/6 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:celestial_trial/term:天使",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "celestial_trial/celestial_trial_gate, celestial_trial/celestial_trial_light, celestial_trial/celestial_trial_garden, celestial_trial/celestial_trial_library, celestial_trial/celestial_trial_judgement, celestial_trial/celestial_trial_throne, celestial_trial/celestial_trial_sanctuary, celestial_trial/celestial_trial_boss",
+      "reason": "同批生成內容核心詞「天使」出現於 8/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:celestial_trial/term:使副",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "celestial_trial/celestial_trial_gate, celestial_trial/celestial_trial_light, celestial_trial/celestial_trial_garden, celestial_trial/celestial_trial_library, celestial_trial/celestial_trial_judgement, celestial_trial/celestial_trial_throne, celestial_trial/celestial_trial_sanctuary, celestial_trial/celestial_trial_boss",
+      "reason": "同批生成內容核心詞「使副」出現於 8/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "dungeon:celestial_trial/term:作為",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "celestial_trial/celestial_trial_gate, celestial_trial/celestial_trial_light, celestial_trial/celestial_trial_garden, celestial_trial/celestial_trial_library, celestial_trial/celestial_trial_judgement, celestial_trial/celestial_trial_throne, celestial_trial/celestial_trial_sanctuary, celestial_trial/celestial_trial_boss",
+      "reason": "同批生成內容核心詞「作為」出現於 8/8 筆，超過 30% 門檻"
     },
     {
       "id": "item.description/term:適合",
