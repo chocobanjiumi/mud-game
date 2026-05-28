@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
 import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
+import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monsters.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
 import { WEAPON_TYPE_DEFS } from '../packages/shared/src/types/item.js';
@@ -146,7 +147,8 @@ for (const monster of Object.values(MONSTERS)) {
   );
 }
 for (const family of [...monsterFamilies].sort()) {
-  addIssue(`monsterFamily:${family}`, 'monsterFamily.summary', 'summary', '', 60, '缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向');
+  const summary = MONSTER_FAMILY_SUMMARIES[family as keyof typeof MONSTER_FAMILY_SUMMARIES]?.summary ?? '';
+  checkText(`monsterFamily:${family}`, 'monsterFamily.summary', 'summary', summary, 60, 'monster family summary 需說明共同特徵、棲地、傷害或抗性傾向');
 }
 
 for (const npc of Object.values(NPCS)) {

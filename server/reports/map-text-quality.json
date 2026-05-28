@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T14:53:39.933Z",
+  "generatedAt": "2026-05-28T14:56:51.340Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -95,14 +95,13 @@
     "imagePrompts": 1203,
     "instanceEntries": 37,
     "checkedDungeonItems": 120,
-    "issues": 9840
+    "issues": 9830
   },
   "issuesByKind": {
     "zone.description": 60,
     "imagePrompt": 1203,
     "exit.description": 2580,
     "monster.description": 150,
-    "monsterFamily.summary": 13,
     "npc.description": 44,
     "npc.dialogue.text": 769,
     "quest.description": 614,
@@ -116,7 +115,7 @@
     "equipment.description": 457,
     "gatheringNode.description": 36,
     "batch.repeatedOpening": 300,
-    "batch.repeatedCoreTerm": 245
+    "batch.repeatedCoreTerm": 248
   },
   "issues": [
     {
@@ -36055,123 +36054,6 @@
       "minimumLength": 50,
       "text": "鏡晶迷宮與魔像鍛造間中巡行的厚重魔像，胸口嵌著一片會映出延遲動作的晶鏡。牠會用反射屏障懲罰貪攻者。",
       "reason": "elite monster 描述需說明危險差異"
-    },
-    {
-      "id": "monsterFamily:aberration",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:aquatic",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:beast",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:celestial",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:construct",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:demon",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:dragon",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:elemental",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:humanoid",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:insect",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:ooze",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:plant",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
-    },
-    {
-      "id": "monsterFamily:undead",
-      "kind": "monsterFamily.summary",
-      "field": "summary",
-      "currentLength": 0,
-      "minimumLength": 60,
-      "text": "",
-      "reason": "缺 monster family summary，需說明共同特徵、棲地、傷害或抗性傾向"
     },
     {
       "id": "guild_commander",
@@ -88120,6 +88002,33 @@
       "minimumLength": 30,
       "text": "creek_mossling_slime, orchard_sharpbeak_crow, hollow_stump_hoarder, storm_gull, tidepool_murk_eel, frostpine_stalker, glacier_bone_wraith, sulfur_steam_crawler, goblin_warrior, prairie_boar, forest_spider, ditch_sludge",
       "reason": "同批生成內容核心詞「牠會」出現於 163/521 筆，超過 30% 門檻"
+    },
+    {
+      "id": "monsterFamily.summary/term:牠們",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "monsterFamily:aberration, monsterFamily:aquatic, monsterFamily:beast, monsterFamily:celestial, monsterFamily:construct, monsterFamily:demon, monsterFamily:dragon, monsterFamily:elemental, monsterFamily:humanoid, monsterFamily:insect, monsterFamily:ooze, monsterFamily:plant",
+      "reason": "同批生成內容核心詞「牠們」出現於 13/13 筆，超過 30% 門檻"
+    },
+    {
+      "id": "monsterFamily.summary/term:掉落",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "monsterFamily:aberration, monsterFamily:aquatic, monsterFamily:beast, monsterFamily:celestial, monsterFamily:construct, monsterFamily:demon, monsterFamily:dragon, monsterFamily:elemental, monsterFamily:humanoid, monsterFamily:insect, monsterFamily:ooze, monsterFamily:plant",
+      "reason": "同批生成內容核心詞「掉落」出現於 13/13 筆，超過 30% 門檻"
+    },
+    {
+      "id": "monsterFamily.summary/term:族群",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 85,
+      "minimumLength": 30,
+      "text": "monsterFamily:aquatic, monsterFamily:beast, monsterFamily:celestial, monsterFamily:construct, monsterFamily:demon, monsterFamily:elemental, monsterFamily:humanoid, monsterFamily:insect, monsterFamily:ooze, monsterFamily:plant, monsterFamily:undead",
+      "reason": "同批生成內容核心詞「族群」出現於 11/13 筆，超過 30% 門檻"
     },
     {
       "id": "npc:village_chief/term:險者",
