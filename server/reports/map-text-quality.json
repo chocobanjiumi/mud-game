@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:40:47.185Z",
+  "generatedAt": "2026-05-28T16:46:52.100Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -39,6 +39,14 @@
     },
     "gathering": {
       "nodeDescriptionMinCjkChars": 35,
+      "rareNodeDescriptionMinCjkChars": 50,
+      "riskRelatedNodeDescriptionMinCjkChars": 45,
+      "rareNodeLevelMin": 31,
+      "requiredDescriptionParts": [
+        "資源外觀",
+        "room 地貌或生成環境",
+        "採集動作"
+      ],
       "materialDescriptionMinCjkChars": 30
     },
     "equipment": {
@@ -120,6 +128,8 @@
     "monsters": 521,
     "monsterFamilies": 13,
     "gatheringNodes": 36,
+    "rareGatheringNodes": 18,
+    "riskRelatedGatheringNodes": 17,
     "materials": 291,
     "equipment": 932,
     "lootTables": 521,

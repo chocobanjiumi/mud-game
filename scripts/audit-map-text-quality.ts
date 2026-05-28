@@ -288,7 +288,7 @@ for (const monster of Object.values(MONSTERS)) {
 }
 
 for (const node of Object.values(GATHERING_NODE_DEFS)) {
-  checkText(node.id, 'gatheringNode.description', 'description', node.description, 35, 'gathering node description 需包含資源外觀、生成環境與採集動作線索');
+  auditGatheringNodeDescription(node);
 }
 
 for (const affix of Object.values(AFFIX_POOLS).flat()) {
@@ -445,6 +445,10 @@ const report = {
     },
     gathering: {
       nodeDescriptionMinCjkChars: 35,
+      rareNodeDescriptionMinCjkChars: 50,
+      riskRelatedNodeDescriptionMinCjkChars: 45,
+      rareNodeLevelMin: 31,
+      requiredDescriptionParts: ['資源外觀', 'room 地貌或生成環境', '採集動作'],
       materialDescriptionMinCjkChars: 30,
     },
     equipment: {
@@ -515,6 +519,8 @@ const report = {
     monsters: Object.keys(MONSTERS).length,
     monsterFamilies: monsterFamilies.size,
     gatheringNodes: Object.keys(GATHERING_NODE_DEFS).length,
+    rareGatheringNodes: Object.values(GATHERING_NODE_DEFS).filter(node => isRareGatheringNode(node)).length,
+    riskRelatedGatheringNodes: Object.values(GATHERING_NODE_DEFS).filter(node => isRiskRelatedGatheringNode(node)).length,
     materials: Object.values(ITEM_DEFS).filter(item => item.type === 'material').length,
     equipment: Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length,
     lootTables: Object.values(MONSTERS).length,
@@ -567,6 +573,59 @@ function checkText(id: string, kind: TextKind, field: string, text: string, mini
   if (genericPhrase) {
     addIssue(id, kind, field, text, minimumLength, `包含過於泛用文案：「${genericPhrase}」`);
   }
+}
+
+function auditGatheringNodeDescription(node: typeof GATHERING_NODE_DEFS[string]) {
+  const minimumLength = Math.max(
+    35,
+    isRareGatheringNode(node) ? 50 : 0,
+    isRiskRelatedGatheringNode(node) ? 45 : 0,
+  );
+  checkText(
+    node.id,
+    'gatheringNode.description',
+    'description',
+    node.description,
+    minimumLength,
+    'gathering node description 需包含資源外觀、生成環境、採集動作；稀有或風險相關節點需補稀有原因、採集風險與用途方向',
+  );
+
+  const requirementGroups: Array<[string, RegExp]> = [
+    ['資源外觀', /礦|礦脈|晶|草|葉|花|木|枝|皮毛|鱗|魚|蝦|水母|陶片|古錢|化石|符石|核心|碎片|紋理|微光|鱗片/u],
+    ['room 地貌或生成環境', /土坡|山壁|洞|遺跡|火山|戰場|礦坑|龍脈|地帶|古木|巡行路|戰痕|平原|森林|林地|聖壇|灰燼土|林徑|密林|巢穴|岩縫|溪|池塘|河灣|湖面|冷泉|溫泉|海面|荒地|墓道|機關室|廢墟/u],
+    ['採集動作', /採|敲|剝|撬|砍|割|梳|收起|收線|垂釣|拋線|撈|刷|採掘|切下|固定|夾取|剪下/u],
+  ];
+  for (const [label, pattern] of requirementGroups) {
+    if (!pattern.test(node.description)) {
+      addIssue(
+        node.id,
+        'gatheringNode.description',
+        'description',
+        node.description,
+        minimumLength,
+        `採集點描述缺少${label}，不可只寫通用材料句或 raw id`,
+      );
+    }
+  }
+
+  if (isRareGatheringNode(node) && !/稀有|只在|只沿|只墜落|原因|處在於|高階|傳說/u.test(node.description)) {
+    addIssue(node.id, 'gatheringNode.description', 'description', node.description, 50, '稀有採集點需說明稀有原因或生成限制');
+  }
+  if (isRiskRelatedGatheringNode(node) && !/風險|避開|避免|留意|耐熱|燙傷|機關|污染|戰場|掠食者|獸群|活蛇|巡行|殘留|亡靈/u.test(node.description)) {
+    addIssue(node.id, 'gatheringNode.description', 'description', node.description, 45, '與怪物、危險地貌或任務線索相關的採集點需提示風險或痕跡');
+  }
+  if (isRareGatheringNode(node) && !/用於|用途|製作|打造|材料|裝備|藥劑|料理|修復|法器|護符|供|可作/u.test(node.description)) {
+    addIssue(node.id, 'gatheringNode.description', 'description', node.description, 50, '稀有採集點需說明用途方向');
+  }
+}
+
+function isRareGatheringNode(node: typeof GATHERING_NODE_DEFS[string]): boolean {
+  return node.levelMin >= 31;
+}
+
+function isRiskRelatedGatheringNode(node: typeof GATHERING_NODE_DEFS[string]): boolean {
+  return node.skill === 'skinning'
+    || /崩裂|污染|暗影|蛛|蛇|龍|魔像|戰場|火山|灼熱|燒灼|機關|巡行|古龍|亡靈/u.test(node.description);
 }
 
 function recordText(id: string, kind: TextKind, field: string, text: string) {
