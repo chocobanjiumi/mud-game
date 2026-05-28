@@ -5808,7 +5808,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'wildgrass_hills_lower_slope', description: '草徑回到低風坡' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥味通往野豬泥窪' },
       { direction: 'north', targetRoomId: 'wildgrass_hills_scout_ledge', description: '草坡上方有斥候岩臺' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_stream_cut', description: '低處傳來溪水聲' },
+      {
+        direction: 'south',
+        targetRoomId: 'wildgrass_hills_stream_cut',
+        description: '南側要撥開高草並沿濕滑獸徑下切，穿過一段被草根遮住的土坡才抵達溪切溝',
+        edgeKind: 'long_path',
+        edgeNote: '高草徑到溪切溝需要穿過高草伏擊走廊與濕滑下切土坡，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 3, respawnSeconds: 60 },
@@ -5888,8 +5894,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '低風坡北側有一棵被長年強風吹彎的橡樹，樹冠幾乎貼著地面，根部卻牢牢抓住岩層。枝條上掛著旅人留下的布條、獸牙和小鈴，風一吹便發出細碎聲響。這裡比周圍安靜，適合短暫避風與整理採集品，也藏著通往種籽溝和隱泉的自然線索。玩家能辨認哪些布條是求平安，哪些是哥布林用來標記獵物的暗號。若夜裡停留，樹影會像低伏巨獸，容易引來巡邏狼群與斥候。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'south', targetRoomId: 'wildgrass_hills_lower_slope', description: '坡路回到低風坡' },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_seed_gully', description: '樹根旁有種籽溝' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_hidden_spring', description: '濕草痕跡通向隱泉' },
+      {
+        direction: 'east',
+        targetRoomId: 'wildgrass_hills_seed_gully',
+        description: '東側要繞過彎橡樹裸露根盤，沿避風草溝慢慢下行，穿過堆積籽穗後才進入種籽溝',
+        edgeKind: 'long_path',
+        edgeNote: '彎橡樹到種籽溝需要繞過根盤與避風草溝，屬於丘陵內長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_hidden_spring',
+        description: '北側濕草痕跡要穿過低垂樹冠與碎石暗渠，才能找到被石塊遮住的隱泉',
+        edgeKind: 'long_path',
+        edgeNote: '彎橡樹到隱泉需要沿濕草暗渠與碎石遮蔽繞行，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'stormgrass_serpent', maxCount: 2, respawnSeconds: 75 },
@@ -5914,9 +5932,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，玩家可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕和哥布林挖出的藏物洞，代表這條溪同時是生存水源與偷運路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '爬回高草徑' },
+      {
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_tallgrass_lane',
+        description: '北側回高草徑要踩著濕滑踏石爬上土壁，再穿過高過肩頭的乾草走廊',
+        edgeKind: 'long_path',
+        edgeNote: '溪切溝回高草徑需要沿踏石爬坡並穿過高草走廊，屬於丘陵內長路徑。',
+      },
       { direction: 'west', targetRoomId: 'wildgrass_hills_old_road_cut', description: '溪溝轉向舊路切口' },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_hidden_spring', description: '水流來自隱泉' },
+      {
+        direction: 'east',
+        targetRoomId: 'wildgrass_hills_hidden_spring',
+        description: '東側要逆著細水流穿過蘆葦、滑石與被草蓋住的暗溝，才接近隱泉水潭',
+        edgeKind: 'long_path',
+        edgeNote: '溪切溝到隱泉需要逆流穿過蘆葦、滑石與暗溝，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'stormtusk_boar', maxCount: 2, respawnSeconds: 80 },
@@ -6022,7 +6052,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '果園廢址東側架著幾座低矮伏棚，用乾草、破布和果樹枝偽裝成自然草堆。棚內擺著短弓、投石袋、捕獸夾和簡陋骨笛，地面還畫著附近路線的粗略地圖。東側能看見風車空殼，但伏棚後方草徑布滿捕獸夾，實際需從看火營破路前往風車。這是哥布林斥候和戰士混合出沒的伏擊房，玩家若直接穿過，會同時觸發陷阱與遠程攻擊。仔細拆除伏棚可取得巡邏線索，得知看火營、酋長脊與雷丘之間如何互相傳訊。棚後藏有一條被草蓋住的小徑，可以繞開部分主路危險。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '回到果園廢址' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '伏棚通向看火營' },
+      {
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_watchfire_camp',
+        description: '北側要拆開伏棚後方草網，避過捕獸夾與煙火哨線才進入看火營邊緣',
+        edgeKind: 'long_path',
+        edgeNote: '哥布林伏棚到看火營需要穿過草網陷阱與煙火哨線，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 3, respawnSeconds: 60 },
@@ -6049,7 +6085,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_stone_ring', description: '焦草路回到石環' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_chief_ridge', description: '雷痕延向酋長脊' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '坡下是看火營' },
+      {
+        direction: 'south',
+        targetRoomId: 'wildgrass_hills_watchfire_camp',
+        description: '南側焦草坡要繞過雷痕裂石與幾段鬆動土脊，才下到看火營煙火旁',
+        edgeKind: 'long_path',
+        edgeNote: '雷擊丘到看火營需要沿焦草坡與雷痕裂石繞行，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'windscar_hawk', maxCount: 2, respawnSeconds: 90 },
@@ -6074,7 +6116,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物與野豬都會來翻找食物，也吸引哥布林收集乾籽製作引火包。玩家可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用。',
     exits: [
-      { direction: 'west', targetRoomId: 'wildgrass_hills_bent_oak', description: '樹根路回到彎橡樹' },
+      {
+        direction: 'west',
+        targetRoomId: 'wildgrass_hills_bent_oak',
+        description: '西側回彎橡樹要沿種籽堆與裸露樹根逆坡而上，穿過一段避風草溝',
+        edgeKind: 'long_path',
+        edgeNote: '種籽溝回彎橡樹需要沿種籽堆、裸露樹根與避風草溝上行，屬於丘陵內長路徑。',
+      },
       { direction: 'east', targetRoomId: 'wildgrass_hills_stone_ring', description: '舊腳印通向石環' },
       { direction: 'north', targetRoomId: 'wildgrass_hills_broken_totem', description: '溝尾立著斷圖騰' },
     ],
@@ -6104,7 +6152,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'wildgrass_hills_hawk_perch', description: '石柱在西側' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '坡下是果園廢址' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_windmill_shell', description: '破路通向風車空殼' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_thunder_mound', description: '焦草坡通向雷擊丘' },
+      {
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_thunder_mound',
+        description: '北側焦草坡要穿過煙火外圈與幾道鬆動土脊，才抵達雷擊丘裂石下方',
+        edgeKind: 'long_path',
+        edgeNote: '看火營到雷擊丘需要穿過煙火外圈、焦草坡與鬆動土脊，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 3, respawnSeconds: 60 },
@@ -6131,7 +6185,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火營在西側' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_chief_ridge', description: '塔後繩梯通向酋長脊' },
+      {
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_chief_ridge',
+        description: '北側塔後繩梯要先爬過風車石殼，再沿暴露山脊貼著旗桿走到酋長脊',
+        edgeKind: 'long_path',
+        edgeNote: '風車空殼到酋長脊需要攀爬塔後繩梯並穿過暴露山脊，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'stormbanner_champion', maxCount: 2, respawnSeconds: 120 },
@@ -6156,8 +6216,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '彎橡樹北面的濕草一路引到一處被石塊遮住的泉眼，清水從岩縫滲出，形成小小水潭。潭邊有野豬、狼、鷹和哥布林混雜的足跡，代表所有生物都知道這是丘陵最穩定的水源。泉水清甜，卻在雷雨前會泛出細小氣泡，像地下也在回應雷擊丘。這裡是補給與事件房，玩家可取水、採集水草，或發現被藏在石後的求救布條。若在此休息太久，爭水的野獸會陸續靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'wildgrass_hills_bent_oak', description: '濕草路回到彎橡樹' },
-      { direction: 'west', targetRoomId: 'wildgrass_hills_stream_cut', description: '泉水流入溪切溝' },
+      {
+        direction: 'south',
+        targetRoomId: 'wildgrass_hills_bent_oak',
+        description: '南側回彎橡樹要沿濕草暗渠穿過碎石與低垂樹冠，最後繞到樹根背風面',
+        edgeKind: 'long_path',
+        edgeNote: '隱泉回彎橡樹需要沿濕草暗渠、碎石與低垂樹冠繞行，屬於丘陵內長路徑。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'wildgrass_hills_stream_cut',
+        description: '西側泉水要順著暗溝流過蘆葦、滑石與低草窄岸，才落入較低處的溪切溝',
+        edgeKind: 'long_path',
+        edgeNote: '隱泉到溪切溝需要順暗溝穿過蘆葦與滑石，屬於丘陵內長路徑。',
+      },
       { direction: 'east', targetRoomId: 'wildgrass_hills_broken_totem', description: '石後小徑通向斷圖騰' },
     ],
     monsters: [
@@ -6210,7 +6282,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雷擊丘東側的長脊被哥布林改造成首領營地，骨旗沿著稜線排列，中央有一張用野豬獠牙和舊車輪拼成的粗糙王座。從這裡可以俯瞰看火營、風車和大片高草，任何闖入者都很難避開巡邏目光。酋長會在風最大時召集戰士，讓吼聲順著山脊傳遍丘陵。王座旁堆著從旅人身上搶來的路牌、鍋具和破甲，像一座炫耀戰利品的小山。這裡是精英戰鬥房，玩家可挑戰哥布林首領、奪取部落號角，或破壞控制巡邏的旗令。若未先削弱看火營與伏棚，這場戰鬥會持續召來支援，直到旗號全被奪下為止才會停止。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_thunder_mound', description: '焦草脊回到雷擊丘' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_windmill_shell', description: '繩梯下到風車空殼' },
+      {
+        direction: 'south',
+        targetRoomId: 'wildgrass_hills_windmill_shell',
+        description: '南側要沿暴露山脊下行，再攀著塔後繩梯越過破窗，落回風車石殼內部',
+        edgeKind: 'long_path',
+        edgeNote: '酋長脊回風車空殼需要沿暴露山脊下行並攀回塔後繩梯，屬於丘陵內長路徑。',
+      },
       { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '最高草冠在東側' },
     ],
     monsters: [
@@ -6238,7 +6316,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '酋長脊東端升到荒草丘陵最高處，整片草冠被狂風壓成巨大旋渦，像一頂不停轉動的金色王冠。中央立著幾塊古老界石，石縫間有雷痕、草籽和被綁住的部落旗。當雲層低垂時，風會在草冠中心形成肉眼可見的漏斗，將聲音、灰燼與羽毛全捲向天空。界石底部還有被草根纏住的舊祭盤，盤面刻著安撫風暴的步驟，只是關鍵符號被哥布林刀痕刮壞。這裡是荒草丘陵的大型事件鉤子與最終地標，玩家可用守風誓詞安撫風暴，也可擊敗首領後拆除旗幟，讓丘陵巡邏失去統一指揮。若選擇強行採集雷草，整片草冠會引來猛禽與殘餘戰士。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_chief_ridge', description: '山脊回到酋長營地' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_broken_totem', description: '草脊回到斷圖騰' },
+      {
+        direction: 'south',
+        targetRoomId: 'wildgrass_hills_broken_totem',
+        description: '南側草脊要穿過旋風草冠邊緣、界石陰影與斷旗坡道，才折回斷圖騰',
+        edgeKind: 'long_path',
+        edgeNote: '風暴草冠到斷圖騰需要穿過旋風草冠邊緣、界石與斷旗坡道，屬於丘陵內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'thunder_mound_shaman', maxCount: 1, respawnSeconds: 150 },
