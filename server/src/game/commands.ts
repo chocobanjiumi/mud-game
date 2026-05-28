@@ -56,7 +56,7 @@ import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES } from '../data/rooms.js';
-import { buildInstanceEntryDefs } from '../data/world-map2-plan.js';
+import { buildInstanceEntryDefs, type InstanceEntryDef, type InstanceEntryQuestState } from '../data/world-map2-plan.js';
 import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
@@ -149,6 +149,7 @@ const pendingHunterMarks = new Map<string, PendingHunterMark>();
 
 type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
+const instanceEntryCooldowns = new Map<string, number>();
 const FIELD_SKILL_COOLDOWN_TICK_MS = 5_000;
 const HUNTER_MARK_WINDOW_MS = 30_000;
 const fieldSkillCooldowns = new Map<string, number>();
@@ -5226,13 +5227,30 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
   }
 
   const partyMembers = partyMgr.isInParty(char.id) ? partyMgr.getPartyMembers(char.id) : [char.id];
+  if (partyMgr.isInParty(char.id) && !partyMgr.isLeader(char.id)) {
+    sendError(session.sessionId, `你正在隊伍中，只有隊長可以開啟「${entry.name}」。下一步：請隊長在同一個入口使用 enter，或先離開隊伍後單人進入。`);
+    return;
+  }
   if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {
     sendError(session.sessionId, `隊伍人數不符，無法進入「${entry.name}」。目前人數 ${partyMembers.length}，最多允許 ${entry.maxPartySize} 人。下一步：調整隊伍人數後由隊長再次進入。`);
     return;
   }
 
+  const cooldownOwnerId = partyMgr.getPartyId(char.id) ?? char.id;
+  const cooldownRemaining = getInstanceEntryCooldownRemainingSeconds(cooldownOwnerId, entry.id);
+  if (cooldownRemaining > 0) {
+    sendError(session.sessionId, `入口冷卻中，無法進入「${entry.name}」。剩餘 ${cooldownRemaining} 秒。下一步：等待冷卻結束後再次使用入口。`);
+    return;
+  }
+
+  const gate = checkInstanceEntryRequirements(char, entry);
+  if (!gate.ok) {
+    sendError(session.sessionId, gate.message);
+    return;
+  }
+
   if (entry.dungeonId) {
-    const partyId = partyMgr.getPartyId(char.id) ?? char.id;
+    const partyId = cooldownOwnerId;
     const players: Character[] = [char];
     if (partyMgr.isInParty(char.id)) {
       for (const memberId of partyMembers) {
@@ -5243,6 +5261,10 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
     }
     const result = dungeonMgr.createInstance(partyId, entry.dungeonId, players);
     sendSystem(session.sessionId, result.message);
+    if (result.success) {
+      consumeInstanceEntryCost(char, entry);
+      setInstanceEntryCooldown(cooldownOwnerId, entry);
+    }
     return;
   }
 
@@ -5250,6 +5272,72 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
     session.sessionId,
     `你觸碰「${entry.name}」，入口封印已回應。建議等級 ${entry.minLevel ?? '-'}，隊伍人數 1-${entry.maxPartySize ?? 1}。此入口尚未綁定正式副本模板；下一步需要補上 dungeonId 或 instance template 後才能建立 instance run。`,
   );
+}
+
+function checkInstanceEntryRequirements(char: Character, entry: InstanceEntryDef): { ok: true } | { ok: false; message: string } {
+  if (entry.requiredItemId) {
+    const item = ITEM_DEFS[entry.requiredItemId];
+    const hasItem = getInventory(char.id).some(inv => inv.itemId === entry.requiredItemId && inv.quantity > 0);
+    if (!hasItem) {
+      return {
+        ok: false,
+        message: `道具不足，無法進入「${entry.name}」。缺少道具：${item?.name ?? entry.requiredItemId}。下一步：取得所需道具後回到此入口。`,
+      };
+    }
+  }
+
+  if (entry.requiredQuestId) {
+    const requiredState = entry.requiredQuestState ?? 'completed';
+    const currentState = questMgr.getQuestStatus(char, entry.requiredQuestId);
+    if (!doesQuestStateSatisfyEntry(currentState, requiredState)) {
+      return {
+        ok: false,
+        message: `任務條件不足，無法進入「${entry.name}」。需要任務 ${entry.requiredQuestId} 達到「${formatInstanceEntryQuestState(requiredState)}」，目前狀態是「${formatInstanceEntryQuestState(currentState)}」。下一步：先推進對應任務階段再返回入口。`,
+      };
+    }
+  }
+
+  return { ok: true };
+}
+
+function doesQuestStateSatisfyEntry(currentState: ReturnType<typeof questMgr.getQuestStatus>, requiredState: InstanceEntryQuestState): boolean {
+  if (requiredState === 'completed') return currentState === 'completed';
+  if (requiredState === 'ready') return currentState === 'ready' || currentState === 'completed';
+  if (requiredState === 'active') return currentState === 'active' || currentState === 'ready' || currentState === 'completed';
+  if (requiredState === 'available') return currentState !== 'locked';
+  return false;
+}
+
+function formatInstanceEntryQuestState(state: InstanceEntryQuestState | ReturnType<typeof questMgr.getQuestStatus>): string {
+  const labels: Record<string, string> = {
+    available: '可接取',
+    active: '進行中',
+    ready: '可完成',
+    completed: '已完成',
+    locked: '未解鎖',
+  };
+  return labels[state] ?? state;
+}
+
+function consumeInstanceEntryCost(char: Character, entry: InstanceEntryDef): void {
+  if (!entry.requiredItemId || !entry.consumeItem) return;
+  removeInventoryItem(char.id, entry.requiredItemId, 1);
+}
+
+function getInstanceEntryCooldownRemainingSeconds(ownerId: string, entryId: string): number {
+  const key = `${ownerId}:${entryId}`;
+  const expireAt = instanceEntryCooldowns.get(key) ?? 0;
+  const remaining = expireAt - Date.now();
+  if (remaining <= 0) {
+    instanceEntryCooldowns.delete(key);
+    return 0;
+  }
+  return Math.ceil(remaining / 1000);
+}
+
+function setInstanceEntryCooldown(ownerId: string, entry: InstanceEntryDef): void {
+  if (!entry.cooldownSeconds || entry.cooldownSeconds <= 0) return;
+  instanceEntryCooldowns.set(`${ownerId}:${entry.id}`, Date.now() + entry.cooldownSeconds * 1000);
 }
 
 // ─── 排行榜 ───
