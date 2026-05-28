@@ -7,6 +7,7 @@ export type InstanceEntryQuestState = 'available' | 'active' | 'ready' | 'comple
 export interface InstanceEntryDef {
   id: string;
   instanceTemplateId: string;
+  dungeonId?: string;
   type: InstanceEntryType;
   roomId: string;
   name: string;
@@ -286,6 +287,14 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
   },
 };
 
+const INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
+  crystal_cave: 'crystal_temple',
+  demon_territory: 'demon_fortress',
+  dragon_valley: 'dragon_nest',
+  abyss_rift: 'abyss_gate',
+  celestial_ruins: 'celestial_trial',
+};
+
 export function buildZoneMapPlans(zones: Record<string, ZoneDef>): Map<string, ZoneMapPlan> {
   const plans = new Map<string, ZoneMapPlan>();
   for (const zone of Object.values(zones)) {
@@ -336,6 +345,7 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
     entries.push({
       id: `${zone.id}_entry`,
       instanceTemplateId: zone.id,
+      dungeonId: INSTANCE_ZONE_DUNGEON_IDS[zone.id],
       type: 'object_interact',
       roomId: plan.entranceRoomId,
       objectId: `${zone.id}_entrance_object`,

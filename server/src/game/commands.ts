@@ -5231,9 +5231,24 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
     return;
   }
 
+  if (entry.dungeonId) {
+    const partyId = partyMgr.getPartyId(char.id) ?? char.id;
+    const players: Character[] = [char];
+    if (partyMgr.isInParty(char.id)) {
+      for (const memberId of partyMembers) {
+        if (memberId === char.id) continue;
+        const member = getCharacterById(memberId);
+        if (member) players.push(member);
+      }
+    }
+    const result = dungeonMgr.createInstance(partyId, entry.dungeonId, players);
+    sendSystem(session.sessionId, result.message);
+    return;
+  }
+
   sendSystem(
     session.sessionId,
-    `你觸碰「${entry.name}」，入口封印已回應。建議等級 ${entry.minLevel ?? '-'}，隊伍人數 1-${entry.maxPartySize ?? 1}。目前此入口已完成 object_interact 辨識與條件檢查；建立 instance run 會在下一階段接上。`,
+    `你觸碰「${entry.name}」，入口封印已回應。建議等級 ${entry.minLevel ?? '-'}，隊伍人數 1-${entry.maxPartySize ?? 1}。此入口尚未綁定正式副本模板；下一步需要補上 dungeonId 或 instance template 後才能建立 instance run。`,
   );
 }
 

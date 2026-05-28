@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T08:59:27.608Z",
+  "generatedAt": "2026-05-28T09:12:13.146Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2197,6 +2197,7 @@
       {
         "id": "crystal_cave_entry",
         "instanceTemplateId": "crystal_cave",
+        "dungeonId": "crystal_temple",
         "type": "object_interact",
         "roomId": "cave_entrance",
         "objectId": "crystal_cave_entrance_object",
@@ -2212,6 +2213,7 @@
       {
         "id": "demon_territory_entry",
         "instanceTemplateId": "demon_territory",
+        "dungeonId": "demon_fortress",
         "type": "object_interact",
         "roomId": "demon_border",
         "objectId": "demon_territory_entrance_object",
@@ -2227,6 +2229,7 @@
       {
         "id": "dragon_valley_entry",
         "instanceTemplateId": "dragon_valley",
+        "dungeonId": "dragon_nest",
         "type": "object_interact",
         "roomId": "dragon_valley_entrance",
         "objectId": "dragon_valley_entrance_object",
@@ -2242,6 +2245,7 @@
       {
         "id": "abyss_rift_entry",
         "instanceTemplateId": "abyss_rift",
+        "dungeonId": "abyss_gate",
         "type": "object_interact",
         "roomId": "abyss_entrance",
         "objectId": "abyss_rift_entrance_object",
@@ -2257,6 +2261,7 @@
       {
         "id": "celestial_ruins_entry",
         "instanceTemplateId": "celestial_ruins",
+        "dungeonId": "celestial_trial",
         "type": "object_interact",
         "roomId": "celestial_gate",
         "objectId": "celestial_ruins_entrance_object",
@@ -2585,6 +2590,7 @@
         ]
       }
     ],
+    "mappedRuntimeDungeonEntries": 5,
     "instanceEntryIssues": []
   },
   "specialEdges": []

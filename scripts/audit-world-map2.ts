@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { Direction, RoomDef } from '@game/shared';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
+import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type Bounds = { minX: number; maxX: number; minY: number; maxY: number };
@@ -130,6 +131,9 @@ for (const [zoneId, plan] of zonePlans.entries()) {
     if (entry.type === 'object_interact' && !entry.objectId) {
       instanceEntryIssues.push(`${entry.id}: object_interact entry missing objectId`);
     }
+    if (entry.dungeonId && !DUNGEON_DEFS[entry.dungeonId]) {
+      instanceEntryIssues.push(`${entry.id}: dungeonId ${entry.dungeonId} missing in DUNGEON_DEFS`);
+    }
   }
 }
 
@@ -214,6 +218,7 @@ const report = {
     instanceRoomsWithWorldCoords,
     instanceEntranceIssues,
     instanceEntries,
+    mappedRuntimeDungeonEntries: instanceEntries.filter(entry => entry.dungeonId).length,
     instanceEntryIssues,
   },
   specialEdges,
@@ -297,6 +302,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Instance rooms with world coordinates: ${reportData.instance.instanceRoomsWithWorldCoords.length}`,
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
     `Instance entries: ${reportData.instance.instanceEntries.length}`,
+    `Mapped runtime dungeon entries: ${reportData.instance.mappedRuntimeDungeonEntries}`,
     `Instance entry issues: ${reportData.instance.instanceEntryIssues.length}`,
     `Special edges: ${reportData.specialEdges.length}`,
   ];
