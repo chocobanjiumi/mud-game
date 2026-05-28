@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
 import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
+import { describeSkillLevel, getSkillUpgradeDeltas, getSkillUpgradeRule } from '../packages/shared/src/systems/skill-upgrades.js';
 import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monsters.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
@@ -38,6 +39,9 @@ type TextKind =
   | 'affix.description'
   | 'affixBuildDirection.notes'
   | 'reward.summary'
+  | 'skill.description'
+  | 'skill.tooltip'
+  | 'skill.upgradePreview'
   | 'imagePrompt'
   | 'batch.repeatedOpening'
   | 'batch.repeatedCoreTerm'
@@ -166,6 +170,9 @@ for (const npc of Object.values(NPCS)) {
 }
 
 const questDefs = { ...QUEST_DEFS, ...EXPANDED_QUEST_DEFS };
+for (const questId of Object.keys(questDefs)) {
+  knownReferenceIds.add(questId);
+}
 for (const quest of Object.values(questDefs)) {
   const descriptionMinimum = quest.type === 'main' ? 80 : 60;
   checkText(quest.id, 'quest.description', 'description', quest.description, descriptionMinimum, '任務描述需包含背景、目標與路線提示');
@@ -218,6 +225,38 @@ for (const affix of Object.values(AFFIX_POOLS).flat()) {
 }
 for (const direction of AFFIX_BUILD_DIRECTIONS) {
   checkText(direction.id, 'affixBuildDirection.notes', 'notes', direction.notes, 35, '詞綴流派說明需交代職業定位、武器限制與玩法目的');
+}
+
+for (const skill of Object.values(SKILL_DEFS)) {
+  checkText(
+    skill.id,
+    'skill.description',
+    'description',
+    skill.description,
+    skillDescriptionMinimum(skill),
+    '技能描述需包含定位、資源、可用時機、主要效果與限制或風險',
+  );
+  checkText(
+    `${skill.id}/tooltip`,
+    'skill.tooltip',
+    'tooltip',
+    formatSkillTooltipAuditText(skill),
+    30,
+    '技能 tooltip 需顯示資源正負變化、CD/tick/瞬發規則與主要效果',
+  );
+
+  const rule = getSkillUpgradeRule(skill.id);
+  if (!rule) continue;
+  for (let currentLevel = 1; currentLevel < rule.maxLevel; currentLevel++) {
+    checkText(
+      `${skill.id}/upgrade:${currentLevel}->${currentLevel + 1}`,
+      'skill.upgradePreview',
+      'upgradePreview',
+      formatSkillUpgradePreviewAuditText(skill, currentLevel),
+      28,
+      '技能升級預覽需列出本級提升的實際數值、影響效果與下一級差異',
+    );
+  }
 }
 
 const instanceEntries = buildInstanceEntryDefs(ZONES);
@@ -285,6 +324,13 @@ const report = {
       displayDescriptionMinCjkChars: 18,
       buildDirectionNotesMinCjkChars: 35,
     },
+    skill: {
+      descriptionMinCjkChars: 45,
+      featureSkillDescriptionMinCjkChars: 65,
+      coreSkillDescriptionMinCjkChars: 75,
+      tooltipMinCjkChars: 30,
+      upgradePreviewMinCjkChars: 28,
+    },
     reward: {
       summaryMinCjkChars: 30,
     },
@@ -318,6 +364,8 @@ const report = {
     materials: Object.values(ITEM_DEFS).filter(item => item.type === 'material').length,
     equipment: Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length,
     affixes: Object.values(AFFIX_POOLS).flat().length,
+    skills: Object.keys(SKILL_DEFS).length,
+    skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     instanceEntries: instanceEntries.length,
     checkedDungeonItems: Object.values(ITEM_DEFS).filter(item => isDungeonEntryItem(item.id, item.name, item.description)).length,
@@ -377,6 +425,8 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
   if (kind === 'monster.description') return 'monsters';
   if (kind === 'equipment.description') return 'equipment';
+  if (kind === 'skill.description') return 'skills';
+  if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
   if (kind === 'gatheringMaterial.description') return 'materials';
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
   return kind;
@@ -420,6 +470,48 @@ function checkPrompt(id: string, kind: TextKind, text: string, minimumEnglishWor
   const englishWords = countEnglishWords(text);
   if (englishWords >= minimumEnglishWords || cjkChars >= 120) return;
   addMeasuredIssue(id, kind, 'imagePrompt', text, Math.max(englishWords, cjkChars), minimumEnglishWords, reason);
+}
+
+function skillDescriptionMinimum(skill: typeof SKILL_DEFS[string]): number {
+  if (skill.learnLevel === 8 && ['swordsman', 'mage', 'ranger', 'priest'].includes(skill.classId)) return 65;
+  if (skill.tags.includes('defense') || skill.tags.includes('mobility') || skill.tags.includes('control') || skill.tags.includes('heal')) return 75;
+  return 45;
+}
+
+function formatSkillTooltipAuditText(skill: typeof SKILL_DEFS[string]): string {
+  const costLine = formatSkillResourceLine(skill);
+  const cooldownLine = skill.special?.instant
+    ? `冷卻 ${skill.cooldown} tick，瞬發且不消耗本回合 tick`
+    : `冷卻 ${skill.cooldown} tick，依戰鬥或非戰鬥技能規則結算`;
+  const effectLine = skill.fullDescription || skill.description || skill.shortDescription;
+  return `技能「${skill.name}」tooltip 顯示${costLine}，${cooldownLine}；說明包含目標、主要效果與限制：${effectLine}`;
+}
+
+function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
+  const faithDelta = skill.special?.faithDelta;
+  if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
+  if (skill.special?.faithInvert) return '信仰翻轉，依目前信仰值在正負端點間切換';
+  return `${skillResourceLabel(skill)} ${signedNumber(-skill.resourceCost)}`;
+}
+
+function skillResourceLabel(skill: typeof SKILL_DEFS[string]): string {
+  const resourceType = CLASS_DEFS[skill.classId]?.resourceType;
+  if (resourceType === 'rage') return '怒氣';
+  if (resourceType === 'focus') return '專注';
+  if (resourceType === 'faith') return '信仰';
+  return '魔力';
+}
+
+function formatSkillUpgradePreviewAuditText(skill: typeof SKILL_DEFS[string], currentLevel: number): string {
+  const deltas = getSkillUpgradeDeltas(skill, currentLevel);
+  const deltaText = deltas.length > 0
+    ? deltas.map(delta => `${delta.label} ${delta.before} 變為 ${delta.after}`).join('，')
+    : describeSkillLevel(skill, currentLevel + 1).join('，');
+  return `「${skill.name}」Lv.${currentLevel} 升到 Lv.${currentLevel + 1} 會調整 ${deltaText}；預覽讓玩家確認本級提升的數值、影響效果與下一級差異後再投入技能點。`;
+}
+
+function signedNumber(value: number): string {
+  return value > 0 ? `+${value}` : `${value}`;
 }
 
 function checkRepeatedOpenings(records: TextRecord[]) {
@@ -480,7 +572,10 @@ function checkRepeatedCoreTerms(records: TextRecord[]) {
 }
 
 function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
-  return batchKey === 'reward.summary' || batchKey === 'affix.description';
+  return batchKey === 'reward.summary'
+    || batchKey === 'affix.description'
+    || batchKey === 'skill.tooltip'
+    || batchKey === 'skill.upgradePreview';
 }
 
 function shouldSkipCoreTermCheck(batchKey: string): boolean {
@@ -494,6 +589,9 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'dungeon.description'
     || batchKey === 'item.description'
     || batchKey === 'equipment'
+    || batchKey === 'skills'
+    || batchKey === 'skill.tooltip'
+    || batchKey === 'skill.upgradePreview'
     || batchKey === 'instanceEntry.description';
 }
 

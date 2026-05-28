@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:05:20.763Z",
+  "generatedAt": "2026-05-28T16:15:30.575Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -49,6 +49,13 @@
       "displayDescriptionMinCjkChars": 18,
       "buildDirectionNotesMinCjkChars": 35
     },
+    "skill": {
+      "descriptionMinCjkChars": 45,
+      "featureSkillDescriptionMinCjkChars": 65,
+      "coreSkillDescriptionMinCjkChars": 75,
+      "tooltipMinCjkChars": 30,
+      "upgradePreviewMinCjkChars": 28
+    },
     "reward": {
       "summaryMinCjkChars": 30
     },
@@ -93,6 +100,8 @@
     "materials": 291,
     "equipment": 932,
     "affixes": 28,
+    "skills": 206,
+    "skillUpgradePreviews": 112,
     "imagePrompts": 1203,
     "instanceEntries": 37,
     "checkedDungeonItems": 192,

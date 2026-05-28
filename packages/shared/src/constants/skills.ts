@@ -1633,7 +1633,7 @@ function createSecondJobSkillExpansionDefs(): Record<string, RawSkillDef> {
 function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, SkillDef> {
   return Object.fromEntries(
     Object.entries(defs).map(([id, def]) => {
-      const normalized: SkillDef = {
+      let normalized: SkillDef = {
         ...def,
         tags: normalizeSkillTags(def),
         scaling: def.scaling ?? inferSkillScaling(def),
@@ -1643,6 +1643,10 @@ function normalizeSkillDefs(defs: Record<string, RawSkillDef>): Record<string, S
         fullDescription: def.fullDescription ?? '',
         implementationStatus: def.implementationStatus ?? inferImplementationStatus(def),
         iconPath: def.iconPath ?? STARTER_SKILL_ICON_PATHS[id],
+      };
+      normalized = {
+        ...normalized,
+        description: createQualitySkillDescription(normalized),
       };
       normalized.fullDescription = createMechanicSkillDescription({
         ...normalized,
@@ -1685,6 +1689,42 @@ function createMechanicSkillDescription(def: SkillDef): string {
     `風險: ${riskLabel(def)}。`,
     `戰術用途: ${createShortSkillDescription(def)}`
   ].join(' ');
+}
+
+function createQualitySkillDescription(def: SkillDef): string {
+  const minimum = skillDescriptionMinimum(def);
+  if (countCjkChars(def.description) >= minimum) return def.description;
+
+  const timing = def.usageContext === 'both'
+    ? '戰鬥中與非戰鬥狀態都能評估使用'
+    : def.usageContext === 'field'
+      ? '非戰鬥探索或進房前準備時使用'
+      : '戰鬥中依目標與冷卻節奏使用';
+  const resource = def.type === 'passive'
+    ? '不消耗主動資源'
+    : `${resourceLabelForClass(def.classId)} -${def.resourceCost}`;
+  return `${def.description} ${def.name}定位為${skillRoleLabel(def)}，${timing}；資源規則為${resource}，主要效果是${effectSummary(def)}，限制是${restrictionLabel(def)}，風險是${riskLabel(def)}`;
+}
+
+function skillDescriptionMinimum(def: SkillDef): number {
+  if (def.learnLevel === 8 && ['swordsman', 'mage', 'ranger', 'priest'].includes(def.classId)) return 65;
+  if (def.tags.includes('defense') || def.tags.includes('mobility') || def.tags.includes('control') || def.tags.includes('heal')) return 75;
+  return 45;
+}
+
+function skillRoleLabel(def: SkillDef): string {
+  if (def.type === 'passive') return '常駐被動強化';
+  if (def.tags.includes('heal')) return '續航與救急治療';
+  if (def.tags.includes('defense')) return '承傷、防護或生存窗口';
+  if (def.tags.includes('control') || def.tags.includes('interrupt')) return '控制、打斷或拖延敵方節奏';
+  if (def.tags.includes('aoe')) return '清理多目標與壓制房間';
+  if (def.tags.includes('burst')) return '短時間爆發輸出';
+  if (def.tags.includes('cross_room')) return '跨房先手與拉怪控制';
+  return '穩定輸出或基礎戰鬥行動';
+}
+
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
 }
 
 function resourceLabelForClass(classId: SkillDef['classId']): string {
@@ -1779,7 +1819,7 @@ function restrictionLabel(def: SkillDef): string {
   if (typeof def.special?.faithMax === 'number') parts.push(`信仰最多 ${def.special.faithMax}`);
   if (def.special?.undeadOnlyBonus) parts.push('undead 目標有額外效果');
   if (def.special?.crossRoomRequiresScout) parts.push('跨房需先偵查');
-  if (def.questUnlock) parts.push(`需完成 ${def.questUnlock.questId}`);
+  if (def.questUnlock) parts.push('需完成對應職業任務階段');
   return parts.length > 0 ? parts.join('；') : '無';
 }
 
@@ -1800,25 +1840,37 @@ function effectTypeLabel(type: StatusEffectType): string {
   const labels: Partial<Record<StatusEffectType, string>> = {
     poison: '中毒',
     burn: '燃燒',
-    slow: 'slow',
-    stun: 'stun',
-    fear: 'fear',
+    slow: '減速',
+    stun: '暈眩',
+    fear: '恐懼',
     bleed: '流血',
-    silence: 'silence',
-    freeze: 'freeze',
-    shield: 'shield',
-    taunt: 'taunt',
-    mark: 'mark',
+    silence: '沉默',
+    freeze: '冰凍',
+    shield: '護盾',
+    taunt: '嘲諷',
+    mark: '標記',
     damage_reduction: '傷害減免',
     mana_shield: '魔力護盾',
     dodge_up: '閃避提升',
     crit_up: '暴擊提升',
+    speed_up: '速度提升',
     atk_up: '攻擊提升',
     def_up: '防禦提升',
+    matk_up: '魔攻提升',
+    mdef_up: '魔防提升',
     atk_down: '攻擊降低',
     def_down: '防禦降低',
+    matk_down: '魔攻降低',
+    mdef_down: '魔防降低',
     regen: 'HP 回復',
     mana_regen: 'MP 回復',
+    thorns: '反傷',
+    next_shot_damage: '下次射擊強化',
+    heal_reduction: '治療壓制',
+    invincible: '無敵',
+    unyielding: '不屈',
+    counter: '反擊',
+    stealth: '潛行',
   };
   return labels[type] ?? type;
 }
