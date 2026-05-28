@@ -23138,8 +23138,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鹿徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '野豬泥塘在東側' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '銀葉獵徑在北側' },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_boar_wallows',
+        description: '東側鹿徑需穿過低枝、獸蹄岔路與泥塘外圍，才會抵達野豬泥塘，蹄印會逐漸變深',
+        edgeKind: 'long_path',
+        edgeNote: '鹿徑到野豬泥塘需沿獸道繞過低枝與泥塘外圍，距離長於相鄰格。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'royal_hunting_grounds_silver_trail',
+        description: '北側銀葉獵徑要沿鹿群常走的緩坡上行，穿過銀葉灌叢後才接上主獵徑',
+        edgeKind: 'long_path',
+        edgeNote: '鹿徑到銀葉獵徑有緩坡與灌叢高差，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'silvertrail_stag', maxCount: 2, respawnSeconds: 160 },
@@ -23164,9 +23176,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '野豬泥塘位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_deer_run', description: '回到鹿徑' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_deer_run',
+        description: '西返時需沿泥塘外緣避開深泥與野豬撞出的樹根，才會回到鹿徑，淺蹄印會重新出現',
+        edgeKind: 'long_path',
+        edgeNote: '野豬泥塘西返鹿徑需繞過深泥與樹根障礙，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '獵鷹棲臺在東側' },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '獵犬院在南側' },
+      {
+        direction: 'south',
+        targetRoomId: 'royal_hunting_grounds_hounds_yard',
+        description: '南側要穿過泥塘邊的犬嗅訓練樁與圍欄缺口，才會抵達獵犬院，犬吠聲會越來越近',
+        edgeKind: 'long_path',
+        edgeNote: '野豬泥塘到獵犬院需經過訓練樁與圍欄缺口，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'mudtusk_boar', maxCount: 3, respawnSeconds: 140 },
@@ -23191,8 +23215,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獵鷹棲臺位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '回到野豬泥塘' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_herb_copse', description: '草藥矮林在東側' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '鹿影水鏡在北側' },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_herb_copse',
+        description: '東側獵鷹視線沿矮林邊緣延伸，需繞過棲臺木梯與捕鳥網後才進入草藥矮林',
+        edgeKind: 'long_path',
+        edgeNote: '獵鷹棲臺到草藥矮林需繞過木梯與捕鳥網，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'royal_hunting_grounds_stag_mirror',
+        description: '北側要沿棲臺背後的石階與水鏡邊小路上行，才會抵達鹿影水鏡，鷹哨會逐漸變遠',
+        edgeKind: 'long_path',
+        edgeNote: '獵鷹棲臺到鹿影水鏡有石階與水鏡邊小路，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'crown_falcon_swarm', maxCount: 2, respawnSeconds: 150 },
@@ -23243,8 +23279,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '銀葉獵徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_deer_run', description: '回到鹿徑' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '貴族隱棚在東側' },
+      {
+        direction: 'south',
+        targetRoomId: 'royal_hunting_grounds_deer_run',
+        description: '南返時銀葉坡道沿灌叢下行，穿過鹿群磨亮的樹根後才回到鹿徑，落葉會遮住分岔腳印',
+        edgeKind: 'long_path',
+        edgeNote: '銀葉獵徑南返鹿徑需沿灌叢坡道下行，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_noble_blind',
+        description: '東側銀葉獵徑穿過兩排靜音獵簾與低垂枝葉後，才會抵達貴族隱棚',
+        edgeKind: 'long_path',
+        edgeNote: '銀葉獵徑到貴族隱棚被獵簾與低枝隔開，距離長於相鄰格。',
+      },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '古橡木群在北側' },
     ],
     monsters: [
@@ -23271,7 +23319,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獵犬院位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '回到狩獵許可屋' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '野豬泥塘在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'royal_hunting_grounds_boar_wallows',
+        description: '北側需穿過獵犬訓練樁、嗅跡圍欄與泥塘缺口，才會回到野豬泥塘，犬吠會標示出口',
+        edgeKind: 'long_path',
+        edgeNote: '獵犬院北返野豬泥塘需穿過訓練區與泥塘缺口，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在東側' },
     ],
     monsters: [
@@ -23297,8 +23351,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '草藥矮林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '回到獵鷹棲臺' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_falcon_perch',
+        description: '西返時要穿過草藥矮林邊的捕鳥網與棲臺木梯陰影，才會回到獵鷹棲臺',
+        edgeKind: 'long_path',
+        edgeNote: '草藥矮林西返獵鷹棲臺需繞過捕鳥網與木梯，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_gamekeeper_camp',
+        description: '東側藥草小徑繞過採集棚、藥籃與看守巡邏繩後，才會抵達獵場看守營',
+        edgeKind: 'long_path',
+        edgeNote: '草藥矮林到獵場看守營被採集棚與巡邏繩隔開，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'thornwood_gamekeeper', maxCount: 1, respawnSeconds: 220 },
@@ -23324,8 +23390,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鹿影水鏡位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '回到貴族隱棚' },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '回到獵鷹棲臺' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '王室界碑在東側' },
+      {
+        direction: 'south',
+        targetRoomId: 'royal_hunting_grounds_falcon_perch',
+        description: '南返時水鏡邊小路沿石階下行，穿過鷹哨陰影後才回到獵鷹棲臺，羽毛會標示轉角',
+        edgeKind: 'long_path',
+        edgeNote: '鹿影水鏡南返獵鷹棲臺需沿石階與水鏡邊路下行，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_royal_marker',
+        description: '東側水鏡反光沿界線木牌延伸，需繞過淺池與王室封繩後才抵達王室界碑',
+        edgeKind: 'long_path',
+        edgeNote: '鹿影水鏡到王室界碑需繞過淺池與封繩，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'silvertrail_stag', maxCount: 1, respawnSeconds: 160 },
@@ -23377,7 +23455,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '獵場看守營位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_herb_copse', description: '回到草藥矮林' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_herb_copse',
+        description: '西返時看守營外的巡邏繩與藥籃小徑會引回草藥矮林，途中需避開告警鈴線',
+        edgeKind: 'long_path',
+        edgeNote: '獵場看守營西返草藥矮林需沿巡邏繩與藥籃小徑回繞，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在南側' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在東側' },
     ],
@@ -23458,9 +23542,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '王室界碑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '回到鹿影水鏡' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_stag_mirror',
+        description: '西返時王室封繩沿淺池邊緣回繞，穿過界線木牌後才回到鹿影水鏡',
+        edgeKind: 'long_path',
+        edgeNote: '王室界碑西返鹿影水鏡需繞過淺池與界線木牌，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在北側' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_trophy_pavilion',
+        description: '東側界碑路穿過王室封條、石鹿座與陳列亭外廊後，才會抵達獵物陳列亭',
+        edgeKind: 'long_path',
+        edgeNote: '王室界碑到獵物陳列亭需穿過封條與外廊，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'thornwood_gamekeeper', maxCount: 1, respawnSeconds: 220 },
@@ -23486,7 +23582,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '偷獵者小徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '回到古橡木群' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_moonlit_clearing',
+        description: '東側偷獵者暗徑穿過倒伏蕨葉、舊陷阱與月光林隙後，才會抵達月光空地',
+        edgeKind: 'long_path',
+        edgeNote: '偷獵者小徑到月光空地需穿過暗徑陷阱與林隙，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'greenwood_poacher', maxCount: 3, respawnSeconds: 170 },
@@ -23511,9 +23613,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '月光空地位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_hidden_poacher_path', description: '回到偷獵者小徑' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_hidden_poacher_path',
+        description: '西返時月光林隙會退回倒伏蕨葉與舊陷阱之間，沿暗徑才會回到偷獵者小徑',
+        edgeKind: 'long_path',
+        edgeNote: '月光空地西返偷獵者小徑需沿暗徑與陷阱路回繞，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '回到王室界碑' },
-      { direction: 'east', targetRoomId: 'royal_hunting_grounds_white_stag_grove', description: '白鹿林在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'royal_hunting_grounds_white_stag_grove',
+        description: '東側月光草線穿過銀白鹿蹄印、低霧與古樹拱枝後，才會抵達白鹿林',
+        edgeKind: 'long_path',
+        edgeNote: '月光空地到白鹿林需穿過低霧與古樹拱枝，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'silvertrail_stag', maxCount: 2, respawnSeconds: 160 },
@@ -23539,7 +23653,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獅鷲岩棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'royal_hunting_grounds_trophy_pavilion',
+        description: '北側需沿獅鷲岩棚背風石階上行，繞過羽骨標記後才會抵達獵物陳列亭',
+        edgeKind: 'long_path',
+        edgeNote: '獅鷲岩棚到獵物陳列亭有岩棚石階高差，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'griffon_ledge_matriarch', maxCount: 1, respawnSeconds: 360 },
@@ -23591,7 +23711,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'west', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '回到月光空地' },
+      {
+        direction: 'west',
+        targetRoomId: 'royal_hunting_grounds_moonlit_clearing',
+        description: '西返時白鹿林的古樹拱枝與低霧會逐漸退開，沿銀白蹄印才會回到月光空地',
+        edgeKind: 'long_path',
+        edgeNote: '白鹿林西返月光空地需沿低霧與蹄印路回繞，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭' },
     ],
     monsters: [
