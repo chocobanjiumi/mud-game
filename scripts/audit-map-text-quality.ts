@@ -19,6 +19,7 @@ import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { RECIPES, type CraftingCategory, type RecipeDef } from '../server/src/game/crafting.js';
 import { getRoomGatheringTags } from '../server/src/game/gathering.js';
 import { ACHIEVEMENT_DEFS, formatAchievementDescription, formatAchievementTitleDescription } from '../server/src/game/achievement.js';
+import { formatSystemErrorMessage } from '../server/src/game/system-messages.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
@@ -43,6 +44,7 @@ type TextKind =
   | 'onboarding.stepText'
   | 'achievement.description'
   | 'title.description'
+  | 'system.errorMessage'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -498,6 +500,7 @@ auditCombatActionText();
 auditPartyAndPvpMessages();
 auditTutorialOnboardingText();
 auditAchievementAndTitleText();
+auditSystemErrorMessages();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -627,6 +630,13 @@ const report = {
       requiredParts: ['達成條件', '代表意義', '是否解鎖外觀 / 功能 / 數值'],
       bannedPatterns: ['完成成就', '獲得稱號'],
     },
+    systemError: {
+      generalErrorMinCjkChars: 12,
+      numericConditionErrorMinCjkChars: 18,
+      requiredParts: ['玩家剛做了什麼', '為什麼失敗', '目前狀態', '下一步能做什麼'],
+      numericRequiredParts: ['目前值', '需求值'],
+      normalizedAtSendErrorBoundary: true,
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -727,6 +737,7 @@ const report = {
     tutorialSteps: TUTORIAL_STEPS.length,
     achievements: Object.keys(ACHIEVEMENT_DEFS).length,
     titleDescriptions: Object.keys(ACHIEVEMENT_DEFS).length,
+    systemErrorMessages: buildSystemErrorAuditRecords().length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1152,6 +1163,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'partyInvite.message' || kind === 'partySystem.message' || kind === 'pvp.message' || kind === 'duel.message') return 'partyPvp.message';
   if (kind === 'tutorial.helpText' || kind === 'onboarding.stepText') return 'tutorialOnboarding.text';
   if (kind === 'achievement.description' || kind === 'title.description') return 'achievementTitle.description';
+  if (kind === 'system.errorMessage') return 'system.errorMessage';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -2015,6 +2027,47 @@ function requireAchievementTextPart(id: string, kind: 'achievement.description' 
   addIssue(id, kind, field, text, 35, reason);
 }
 
+function auditSystemErrorMessages() {
+  for (const record of buildSystemErrorAuditRecords()) {
+    const text = formatSystemErrorMessage(record.text);
+    const minimum = record.numeric ? 18 : 12;
+    checkText(record.id, 'system.errorMessage', 'message', text, minimum, 'system errorMessage 需包含玩家剛做了什麼、失敗原因、目前狀態與下一步');
+    requireSystemErrorPart(record.id, text, /你剛執行|你正在|你想|你使用|你選擇|嘗試|執行|進入|裝備/u, 'system errorMessage 缺少玩家剛做了什麼');
+    requireSystemErrorPart(record.id, text, /失敗原因|但|因為|無法|不足|不存在|找不到|不符|冷卻|上鎖|缺少|沒有|不能|尚未|需要/u, 'system errorMessage 缺少為什麼失敗');
+    requireSystemErrorPart(record.id, text, /目前|狀態|角色|背包|房間|戰鬥|等級|需求|剩餘|人數|金幣|未|已/u, 'system errorMessage 缺少目前狀態');
+    requireSystemErrorPart(record.id, text, /下一步|請|改用|等待|前往|返回|重新|查看|輸入|使用|先/u, 'system errorMessage 缺少下一步');
+    if (record.numeric) {
+      requireSystemErrorPart(record.id, text, /目前[^；。]*\d+|目前等級|目前人數|目前只有|目前剩餘/u, 'numeric system errorMessage 缺少目前值');
+      requireSystemErrorPart(record.id, text, /需求[^；。]*\d+|需要[^；。]*\d+|最多[^；。]*\d+|至少[^；。]*\d+/u, 'numeric system errorMessage 缺少需求值');
+    }
+  }
+}
+
+function buildSystemErrorAuditRecords(): { id: string; text: string; numeric?: boolean }[] {
+  return [
+    { id: 'command/unknown', text: '未知指令：dance。輸入 help 查看可用指令。' },
+    { id: 'movement/missingDirection', text: '請指定方向：north, south, east, west' },
+    { id: 'movement/lockedExit', text: '這個出口上鎖，暫時無法通過。' },
+    { id: 'movement/noDirection', text: '無法往 北 移動。' },
+    { id: 'combat/noTarget', text: '找不到戰鬥目標「暗影狼」。' },
+    { id: 'skill/notLearned', text: '你沒有學過技能「火球術」。' },
+    { id: 'skill/cooldown', text: '「火球術」冷卻中，還需 3 tick。' },
+    { id: 'skill/resource', text: '資源不足，火球術目前資源 3，需求 10 點。', numeric: true },
+    { id: 'equipment/missingItem', text: '背包中沒有「鐵劍」。' },
+    { id: 'equipment/level', text: '你正在裝備「鐵劍」，但角色等級不足；目前等級 3，需求等級 Lv.5。下一步請先提升等級或改穿低等級裝備。', numeric: true },
+    { id: 'instance/level', text: '你正在嘗試進入「水晶洞窟」，但等級不足；目前等級 3，需求等級 5。下一步：先完成同等級區域任務或提升等級後再返回入口。', numeric: true },
+    { id: 'instance/partySize', text: '你正在嘗試進入「水晶洞窟」，但隊伍人數不符；目前人數 6，最多允許 5 人。下一步：調整隊伍人數後由隊長再次進入。', numeric: true },
+    { id: 'quest/missingId', text: '用法：quest accept <任務ID>' },
+    { id: 'merchant/noItem', text: '你正在購買商人商品，但沒有輸入物品名稱；下一步請使用 buy <物品名稱>。' },
+    { id: 'achievement/notComplete', text: '你尚未完成該成就，無法裝備此稱號。' },
+  ];
+}
+
+function requireSystemErrorPart(id: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'system.errorMessage', 'message', text, 12, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -2117,6 +2170,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'partyPvp.message'
     || batchKey === 'tutorialOnboarding.text'
     || batchKey === 'achievementTitle.description'
+    || batchKey === 'system.errorMessage'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2462,6 +2516,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Party/PvP messages checked: ${reportData.counts.partyMessages + reportData.counts.pvpMessages}`,
     `Tutorial steps checked: ${reportData.counts.tutorialSteps}`,
     `Achievement/title descriptions checked: ${reportData.counts.achievements + reportData.counts.titleDescriptions}`,
+    `System error messages checked: ${reportData.counts.systemErrorMessages}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,

@@ -861,15 +861,15 @@ function getInstanceEntryActionCommand(entry: InstanceEntryDef): string {
 
 function getInstanceEntryAvailability(char: Character, entry: InstanceEntryDef): { ok: true } | { ok: false; message: string } {
   if (entry.minLevel && char.level < entry.minLevel) {
-    return { ok: false, message: `等級不足：目前等級 ${char.level}，需求等級 ${entry.minLevel}。` };
+    return { ok: false, message: `你正在查看副本入口「${entry.name}」，但等級不足；目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步請先完成同等級任務或提升等級後再返回入口。` };
   }
 
   const partyMembers = partyMgr.isInParty(char.id) ? partyMgr.getPartyMembers(char.id) : [char.id];
   if (partyMgr.isInParty(char.id) && !partyMgr.isLeader(char.id)) {
-    return { ok: false, message: '你正在隊伍中，只有隊長可以開啟此副本入口。' };
+    return { ok: false, message: `你正在查看副本入口「${entry.name}」，但目前隊伍狀態不是隊長；只有隊長可以開啟此入口。下一步請隊長操作，或先離隊後單人進入。` };
   }
   if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {
-    return { ok: false, message: `隊伍人數不符：目前 ${partyMembers.length} 人，最多 ${entry.maxPartySize} 人。` };
+    return { ok: false, message: `你正在查看副本入口「${entry.name}」，但隊伍人數不符；目前 ${partyMembers.length} 人，最多 ${entry.maxPartySize} 人。下一步請調整隊伍人數後由隊長再次進入。` };
   }
 
   const cooldownOwnerId = partyMgr.getPartyId(char.id) ?? char.id;
@@ -3319,7 +3319,7 @@ function cmdEquip(session: WsSession, itemName: string): void {
 
   const def = ITEM_DEFS[match.itemId];
   if (!def?.equipSlot) { sendError(session.sessionId, `「${def?.name ?? itemName}」無法裝備。`); return; }
-  if (def.levelReq > char.level) { sendError(session.sessionId, `等級不足，需要 Lv${def.levelReq}`); return; }
+  if (def.levelReq > char.level) { sendError(session.sessionId, `你正在裝備「${def.name}」，但角色等級不足；目前等級 ${char.level}，需求等級 Lv.${def.levelReq}。下一步請先提升等級或改穿低等級裝備。`); return; }
   // 職業限制檢查
   if (def.classReq && def.classReq.length > 0 && !def.classReq.includes(char.classId)) {
     sendError(session.sessionId, '你的職業無法裝備此物品');
@@ -5391,7 +5391,7 @@ function startInstanceEntry(session: WsSession, char: Character, entry: Instance
   }
 
   if (entry.minLevel && char.level < entry.minLevel) {
-    sendError(session.sessionId, `等級不足，無法進入「${entry.name}」。目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步：先完成同等級區域任務或提升等級後再返回入口。`);
+    sendError(session.sessionId, `你正在嘗試進入「${entry.name}」，但等級不足；目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步：先完成同等級區域任務或提升等級後再返回入口。`);
     return;
   }
 
@@ -5401,7 +5401,7 @@ function startInstanceEntry(session: WsSession, char: Character, entry: Instance
     return;
   }
   if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {
-    sendError(session.sessionId, `隊伍人數不符，無法進入「${entry.name}」。目前人數 ${partyMembers.length}，最多允許 ${entry.maxPartySize} 人。下一步：調整隊伍人數後由隊長再次進入。`);
+    sendError(session.sessionId, `你正在嘗試進入「${entry.name}」，但隊伍人數不符；目前人數 ${partyMembers.length}，最多允許 ${entry.maxPartySize} 人。下一步：調整隊伍人數後由隊長再次進入。`);
     return;
   }
 

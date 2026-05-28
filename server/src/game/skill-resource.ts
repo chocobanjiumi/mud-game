@@ -27,14 +27,14 @@ export function checkSkillResource(
         return {
           ok: false,
           effectiveCost: 0,
-          message: `信仰不足，${skillDef.name}需要信仰至少 ${faithMin}。`,
+          message: `信仰不足，${skillDef.name}目前信仰 ${actor.resource}，需求信仰至少 ${faithMin}。`,
         };
       }
       if (faithDelta > 0 && actor.resource > faithMax) {
         return {
           ok: false,
           effectiveCost: 0,
-          message: `信仰過高，${skillDef.name}需要信仰不高於 ${faithMax}。`,
+          message: `信仰過高，${skillDef.name}目前信仰 ${actor.resource}，需求信仰不高於 ${faithMax}。`,
         };
       }
       return { ok: true, effectiveCost: 0 };
@@ -46,7 +46,7 @@ export function checkSkillResource(
     return {
       ok: false,
       effectiveCost,
-      message: `資源不足，${skillDef.name}需要 ${effectiveCost} 點。`,
+      message: `資源不足，${skillDef.name}目前資源 ${actor.resource}，需求 ${effectiveCost} 點。`,
     };
   }
   return { ok: true, effectiveCost };

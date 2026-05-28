@@ -2,6 +2,7 @@
 
 import type { WebSocket } from 'ws';
 import type { ServerMessage, ServerMessageType } from '@game/shared';
+import { formatSystemErrorMessage } from '../game/system-messages.js';
 
 /** 玩家 WebSocket 連線資訊 */
 export interface WsSession {
@@ -178,7 +179,7 @@ export function sendSystem(sessionId: string, text: string, entities?: Record<st
 
 /** 傳送錯誤訊息 */
 export function sendError(sessionId: string, text: string, entities?: Record<string, unknown>[]): void {
-  sendToSession(sessionId, 'error', { text, entities });
+  sendToSession(sessionId, 'error', { text: formatSystemErrorMessage(text), entities });
 }
 
 // ─── 心跳機制 ───

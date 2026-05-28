@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T18:07:02.396Z",
+  "generatedAt": "2026-05-28T18:11:36.246Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -200,6 +200,21 @@
         "獲得稱號"
       ]
     },
+    "systemError": {
+      "generalErrorMinCjkChars": 12,
+      "numericConditionErrorMinCjkChars": 18,
+      "requiredParts": [
+        "玩家剛做了什麼",
+        "為什麼失敗",
+        "目前狀態",
+        "下一步能做什麼"
+      ],
+      "numericRequiredParts": [
+        "目前值",
+        "需求值"
+      ],
+      "normalizedAtSendErrorBoundary": true
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -322,6 +337,7 @@
     "tutorialSteps": 6,
     "achievements": 51,
     "titleDescriptions": 51,
+    "systemErrorMessages": 15,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
