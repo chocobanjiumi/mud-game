@@ -18,6 +18,7 @@ import { NPCS } from '../server/src/data/npcs.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { RECIPES, type CraftingCategory, type RecipeDef } from '../server/src/game/crafting.js';
 import { getRoomGatheringTags } from '../server/src/game/gathering.js';
+import { ACHIEVEMENT_DEFS, formatAchievementDescription, formatAchievementTitleDescription } from '../server/src/game/achievement.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
@@ -40,6 +41,8 @@ type TextKind =
   | 'duel.message'
   | 'tutorial.helpText'
   | 'onboarding.stepText'
+  | 'achievement.description'
+  | 'title.description'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -494,6 +497,7 @@ auditGeneratedImagePrompts();
 auditCombatActionText();
 auditPartyAndPvpMessages();
 auditTutorialOnboardingText();
+auditAchievementAndTitleText();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -617,6 +621,12 @@ const report = {
       requiredParts: ['玩家當下目標', '操作入口', '成功條件', '失敗時下一步'],
       bannedPatterns: ['請點擊', '純 UI 操作句', '只列指令'],
     },
+    achievementTitle: {
+      achievementDescriptionMinCjkChars: 35,
+      titleDescriptionMinCjkChars: 35,
+      requiredParts: ['達成條件', '代表意義', '是否解鎖外觀 / 功能 / 數值'],
+      bannedPatterns: ['完成成就', '獲得稱號'],
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -715,6 +725,8 @@ const report = {
     partyMessages: buildPartyMessageAuditRecords().length,
     pvpMessages: buildPvpMessageAuditRecords().length,
     tutorialSteps: TUTORIAL_STEPS.length,
+    achievements: Object.keys(ACHIEVEMENT_DEFS).length,
+    titleDescriptions: Object.keys(ACHIEVEMENT_DEFS).length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1139,6 +1151,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'nearbyCombat.actionLabel' || kind === 'combatPanel.actionTooltip') return 'combatAction';
   if (kind === 'partyInvite.message' || kind === 'partySystem.message' || kind === 'pvp.message' || kind === 'duel.message') return 'partyPvp.message';
   if (kind === 'tutorial.helpText' || kind === 'onboarding.stepText') return 'tutorialOnboarding.text';
+  if (kind === 'achievement.description' || kind === 'title.description') return 'achievementTitle.description';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1980,6 +1993,28 @@ function requireTutorialTextPart(id: string, text: string, pattern: RegExp, reas
   addIssue(id, 'tutorial.helpText', 'hint', text, 30, reason);
 }
 
+function auditAchievementAndTitleText() {
+  for (const def of Object.values(ACHIEVEMENT_DEFS)) {
+    const achievementText = formatAchievementDescription(def);
+    const titleText = formatAchievementTitleDescription(def);
+
+    checkText(def.id, 'achievement.description', 'description', achievementText, 35, 'achievement description 需包含達成條件、代表意義、解鎖外觀 / 功能 / 數值');
+    requireAchievementTextPart(def.id, 'achievement.description', 'description', achievementText, /完成條件|條件|進度/u, 'achievement description 缺少達成條件');
+    requireAchievementTextPart(def.id, 'achievement.description', 'description', achievementText, /代表|里程碑|掌握|玩法目標/u, 'achievement description 缺少代表意義');
+    requireAchievementTextPart(def.id, 'achievement.description', 'description', achievementText, /稱號|外觀|功能|數值|不額外/u, 'achievement description 缺少外觀 / 功能 / 數值說明');
+
+    checkText(`${def.id}/title`, 'title.description', 'description', titleText, 35, 'title description 需包含解鎖成就、代表意義、外觀 / 功能 / 數值限制');
+    requireAchievementTextPart(`${def.id}/title`, 'title.description', 'description', titleText, /稱號|解鎖|取得條件/u, 'title description 缺少稱號解鎖條件');
+    requireAchievementTextPart(`${def.id}/title`, 'title.description', 'description', titleText, /代表|里程碑|身份/u, 'title description 缺少代表意義');
+    requireAchievementTextPart(`${def.id}/title`, 'title.description', 'description', titleText, /外觀|功能|數值|不提供/u, 'title description 缺少外觀 / 功能 / 數值說明');
+  }
+}
+
+function requireAchievementTextPart(id: string, kind: 'achievement.description' | 'title.description', field: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, kind, field, text, 35, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -2081,6 +2116,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey.startsWith('merchant.')
     || batchKey === 'partyPvp.message'
     || batchKey === 'tutorialOnboarding.text'
+    || batchKey === 'achievementTitle.description'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2425,6 +2461,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Combat action tooltips checked: ${reportData.counts.combatActionTooltips}`,
     `Party/PvP messages checked: ${reportData.counts.partyMessages + reportData.counts.pvpMessages}`,
     `Tutorial steps checked: ${reportData.counts.tutorialSteps}`,
+    `Achievement/title descriptions checked: ${reportData.counts.achievements + reportData.counts.titleDescriptions}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,

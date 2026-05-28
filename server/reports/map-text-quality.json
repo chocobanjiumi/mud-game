@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T18:04:31.353Z",
+  "generatedAt": "2026-05-28T18:07:02.396Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -187,6 +187,19 @@
         "只列指令"
       ]
     },
+    "achievementTitle": {
+      "achievementDescriptionMinCjkChars": 35,
+      "titleDescriptionMinCjkChars": 35,
+      "requiredParts": [
+        "達成條件",
+        "代表意義",
+        "是否解鎖外觀 / 功能 / 數值"
+      ],
+      "bannedPatterns": [
+        "完成成就",
+        "獲得稱號"
+      ]
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -307,6 +320,8 @@
     "partyMessages": 6,
     "pvpMessages": 7,
     "tutorialSteps": 6,
+    "achievements": 51,
+    "titleDescriptions": 51,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,

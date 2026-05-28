@@ -24,6 +24,14 @@ export interface AchievementProgress {
   completedAt: number | null;
 }
 
+const ACHIEVEMENT_CATEGORY_LABELS: Record<AchievementCategory, string> = {
+  combat: '戰鬥',
+  exploration: '探索',
+  social: '社交',
+  collection: '收集',
+  crafting: '製作',
+};
+
 // ============================================================
 //  成就定義 (50 個)
 // ============================================================
@@ -244,6 +252,16 @@ export const ACHIEVEMENT_DEFS: Record<string, AchievementDef> = {
   },
 };
 
+export function formatAchievementDescription(def: AchievementDef): string {
+  const category = ACHIEVEMENT_CATEGORY_LABELS[def.category];
+  return `完成條件是${def.description}，屬於${category}類成就，進度需累積到 ${def.requiredProgress} 才會解鎖。完成後代表玩家已掌握這條玩法目標，並會開放稱號「${def.title}」作為外觀展示；此成就不額外承諾數值加成或未列出的功能。`;
+}
+
+export function formatAchievementTitleDescription(def: AchievementDef): string {
+  const category = ACHIEVEMENT_CATEGORY_LABELS[def.category];
+  return `稱號「${def.title}」由成就「${def.name}」解鎖，取得條件是${def.description}。它代表玩家在${category}玩法上的里程碑，裝備後主要作為角色身份與外觀展示；目前不提供額外戰鬥數值或隱藏功能。`;
+}
+
 // ============================================================
 //  AchievementManager
 // ============================================================
@@ -367,6 +385,7 @@ export class AchievementManager {
       const p = progressMap.get(def.id);
       return {
         ...def,
+        description: formatAchievementDescription(def),
         achievementId: def.id,
         progress: p?.progress ?? 0,
         completedAt: p?.completedAt ?? null,
