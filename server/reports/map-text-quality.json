@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:52:58.533Z",
+  "generatedAt": "2026-05-28T16:57:37.172Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -127,6 +127,17 @@
         "鎖定原因或未鎖定狀態"
       ]
     },
+    "wiki": {
+      "articleSummaryMinCjkChars": 80,
+      "tableRowNoteMinCjkChars": 35,
+      "requiredParts": [
+        "資料來源",
+        "中文名稱",
+        "分類",
+        "玩法用途",
+        "限制或注意事項"
+      ]
+    },
     "bannedGenericPhrases": [
       "這裡很危險",
       "你感到不安",
@@ -169,6 +180,8 @@
     "instanceEntries": 37,
     "mapMarkerTooltips": 1203,
     "roomActionTooltips": 3122,
+    "wikiArticleSummaries": 10,
+    "wikiTableRowNotes": 1857,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
     "issues": 0

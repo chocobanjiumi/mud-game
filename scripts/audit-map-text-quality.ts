@@ -62,6 +62,8 @@ type TextKind =
   | 'skill.upgradePreview'
   | 'mapMarker.tooltip'
   | 'roomAction.tooltip'
+  | 'wiki.article.summary'
+  | 'wiki.table.rowNote'
   | 'imagePrompt'
   | 'batch.repeatedOpening'
   | 'batch.repeatedCoreTerm'
@@ -86,6 +88,19 @@ interface TextRecord {
 }
 
 type InstanceEntryForAudit = ReturnType<typeof buildInstanceEntryDefs>[number];
+
+const WIKI_AUDIT_SECTIONS = [
+  'skills',
+  'classes',
+  'races',
+  'faiths',
+  'equipment',
+  'affixes',
+  'zones',
+  'monsters',
+  'gathering',
+  'crafting',
+] as const;
 
 const write = process.argv.includes('--write');
 const strict = process.argv.includes('--strict');
@@ -117,6 +132,7 @@ const knownReferenceIds = new Set<string>([
   ...Object.keys(CLASS_DEFS),
   ...Object.keys(SKILL_DEFS),
   ...Object.keys(WEAPON_TYPE_DEFS),
+  ...Object.keys(RECIPES),
   ...Object.values(AFFIX_POOLS).flat().map(affix => affix.id),
 ]);
 const referenceAllowList = new Set([
@@ -440,6 +456,8 @@ for (const room of Object.values(ROOMS)) {
   }
 }
 
+auditWikiTextQuality();
+
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
 checkUnresolvedReferences(textRecords);
@@ -564,6 +582,11 @@ const report = {
       roomActionTooltipMinCjkChars: 24,
       requiredParts: ['名稱', '互動方式', '目的地或效果', '鎖定原因或未鎖定狀態'],
     },
+    wiki: {
+      articleSummaryMinCjkChars: 80,
+      tableRowNoteMinCjkChars: 35,
+      requiredParts: ['資料來源', '中文名稱', '分類', '玩法用途', '限制或注意事項'],
+    },
     bannedGenericPhrases,
   },
   counts: {
@@ -595,6 +618,8 @@ const report = {
     instanceEntries: instanceEntries.length,
     mapMarkerTooltips: Object.keys(ROOMS).length,
     roomActionTooltips: Object.values(ROOMS).reduce((count, room) => count + room.exits.length, 0),
+    wikiArticleSummaries: WIKI_AUDIT_SECTIONS.length,
+    wikiTableRowNotes: countWikiRowNotesForAudit(),
     instanceEntryItems: WORLD_MAP2_INSTANCE_ENTRY_ITEMS.length,
     checkedDungeonItems: Object.values(ITEM_DEFS).filter(item => isDungeonEntryItem(item.id, item.name, item.description)).length,
     issues: issues.length,
@@ -787,6 +812,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'craftingRecipe.description') return 'craftingRecipe.description';
   if (kind === 'mapMarker.tooltip') return 'mapMarker.tooltip';
   if (kind === 'roomAction.tooltip') return 'roomAction.tooltip';
+  if (kind === 'wiki.article.summary' || kind === 'wiki.table.rowNote') return kind;
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
   return kind;
 }
@@ -1109,6 +1135,181 @@ function formatExitEdgeKindLabel(edgeKind: string | undefined): string {
   return labels[edgeKind ?? 'normal'] ?? (edgeKind ?? '一般道路');
 }
 
+function auditWikiTextQuality() {
+  for (const section of WIKI_AUDIT_SECTIONS) {
+    checkText(
+      `wiki/${section}/summary`,
+      'wiki.article.summary',
+      'summary',
+      formatWikiArticleSummaryAuditText(section),
+      80,
+      'wiki article summary 需包含資料來源、玩法用途、限制或注意事項，不可只貼 raw id 或 enum 清單',
+    );
+  }
+
+  for (const skill of Object.values(SKILL_DEFS)) {
+    checkText(skill.id, 'wiki.table.rowNote', 'rowNote', formatWikiSkillRowNote(skill), 35, 'wiki skill row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const classDef of Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster')) {
+    checkText(classDef.id, 'wiki.table.rowNote', 'rowNote', formatWikiClassRowNote(classDef), 35, 'wiki class row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const race of Object.values(RACE_DEFS)) {
+    checkText(race.id, 'wiki.table.rowNote', 'rowNote', formatWikiRaceRowNote(race), 35, 'wiki race row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const faith of Object.values(FAITH_DEFS)) {
+    checkText(faith.id, 'wiki.table.rowNote', 'rowNote', formatWikiFaithRowNote(faith), 35, 'wiki faith row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const item of Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory')) {
+    checkText(item.id, 'wiki.table.rowNote', 'rowNote', formatWikiEquipmentRowNote(item), 35, 'wiki equipment row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const affix of Object.values(AFFIX_POOLS).flat()) {
+    checkText(affix.id, 'wiki.table.rowNote', 'rowNote', formatWikiAffixRowNote(affix), 35, 'wiki affix row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const zone of Object.values(ZONES)) {
+    checkText(zone.id, 'wiki.table.rowNote', 'rowNote', formatWikiZoneRowNote(zone), 35, 'wiki zone row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const monster of Object.values(MONSTERS)) {
+    checkText(monster.id, 'wiki.table.rowNote', 'rowNote', formatWikiMonsterRowNote(monster), 35, 'wiki monster row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const node of Object.values(GATHERING_NODE_DEFS)) {
+    checkText(node.id, 'wiki.table.rowNote', 'rowNote', formatWikiGatheringRowNote(node), 35, 'wiki gathering row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+  for (const recipe of Object.values(RECIPES)) {
+    checkText(recipe.id, 'wiki.table.rowNote', 'rowNote', formatWikiCraftingRowNote(recipe), 35, 'wiki crafting row note 需包含中文名稱、分類、來源、玩法用途');
+  }
+}
+
+function countWikiRowNotesForAudit(): number {
+  return Object.keys(SKILL_DEFS).length
+    + Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster').length
+    + Object.keys(RACE_DEFS).length
+    + Object.keys(FAITH_DEFS).length
+    + Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length
+    + Object.values(AFFIX_POOLS).flat().length
+    + Object.keys(ZONES).length
+    + Object.keys(MONSTERS).length
+    + Object.keys(GATHERING_NODE_DEFS).length
+    + Object.keys(RECIPES).length;
+}
+
+function formatWikiArticleSummaryAuditText(section: typeof WIKI_AUDIT_SECTIONS[number]): string {
+  const labels: Record<typeof WIKI_AUDIT_SECTIONS[number], string> = {
+    skills: '技能',
+    classes: '職業',
+    races: '種族',
+    faiths: '信仰',
+    equipment: '裝備',
+    affixes: '詞綴',
+    zones: '區域',
+    monsters: '怪物',
+    gathering: '採集',
+    crafting: '製作',
+  };
+  const source: Record<typeof WIKI_AUDIT_SECTIONS[number], string> = {
+    skills: 'SKILL_DEFS、技能升級規則與職業資源設定',
+    classes: 'CLASS_DEFS 的一轉與二轉前職業資料',
+    races: 'RACE_DEFS 的角色創建來源資料',
+    faiths: 'FAITH_DEFS 的被動、祈禱與禁忌資料',
+    equipment: 'ITEM_DEFS、裝備部位、來源 tag 與數值資料',
+    affixes: 'AFFIX_POOLS 與詞綴流派方向資料',
+    zones: 'ZONES、ROOMS 與 world map2 規劃資料',
+    monsters: 'MONSTERS、怪物 family summary 與掉落表資料',
+    gathering: 'GATHERING_NODE_DEFS 與材料 ITEM_DEFS',
+    crafting: 'RECIPES、材料 ITEM_DEFS 與製作等級資料',
+  };
+  return `Wiki「${labels[section]}」頁面摘要的資料來源是${source[section]}，用途是讓玩家不用閱讀內部 enum 也能理解分類、玩法定位、取得方式與限制。每筆資料需顯示中文名稱、資料代號、實際效果或來源，並提醒等級、職業、資源、掉落、採集、製作或入口條件等注意事項，避免只呈現 raw id 清單。`;
+}
+
+function formatWikiSkillRowNote(skill: typeof SKILL_DEFS[string]): string {
+  return `資料代號 ${skill.id}，技能「${skill.name}」屬於${CLASS_DEFS[skill.classId]?.name ?? skill.classId}分類，來源為 SKILL_DEFS。用途是${skill.description}；限制包含${formatSkillResourceLine(skill)}、冷卻 ${skill.cooldown} tick。`;
+}
+
+function formatWikiClassRowNote(classDef: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]): string {
+  return `資料代號 ${classDef.id}，職業「${classDef.name}」分類為${classDef.tier === 1 ? '一轉職業' : '二轉或基礎職業'}，來源為 CLASS_DEFS。用途是${classDef.description}；限制是主要資源為${formatClassResourceAuditText(classDef.resourceType)}。`;
+}
+
+function formatWikiRaceRowNote(race: typeof RACE_DEFS[keyof typeof RACE_DEFS]): string {
+  return `資料代號 ${race.id}，種族「${race.name}」來源為 RACE_DEFS。分類屬於角色創建選項，玩法用途是${race.description}；限制或注意事項是能力修正 ${formatBaseStatAuditText(race.statMods)}。`;
+}
+
+function formatWikiFaithRowNote(faith: typeof FAITH_DEFS[keyof typeof FAITH_DEFS]): string {
+  return `資料代號 ${faith.id}，信仰「${faith.name}」來源為 FAITH_DEFS，分類領域是${faith.domains.join('、')}。用途是被動「${faith.passiveName}」與祈禱「${faith.prayerName}」；限制包含禁忌 ${faith.taboos.join('、')}。`;
+}
+
+function formatWikiEquipmentRowNote(item: ItemDef): string {
+  const slot = resolveEquipSlotForItem(item) ?? item.equipSlot ?? 'unknown';
+  return `資料代號 ${item.id}，裝備「${item.name}」分類為${equipmentSlotLabel(slot)}，來源為 ITEM_DEFS 與${formatEquipmentSourceAuditText(item)}。用途是${equipmentOrItemUseLabel(item)}；限制包含等級 Lv.${item.level ?? item.levelReq} 與職業 ${item.classReq?.join('、') || '不限'}。`;
+}
+
+function formatWikiAffixRowNote(affix: AffixDef): string {
+  return `資料代號 ${affix.id}，詞綴「${affix.name}」分類為${affix.kind === 'prefix' ? '前綴' : affix.kind === 'suffix' ? '後綴' : affix.kind ?? '詞綴'}，來源為 AFFIX_POOLS。用途是${describeAffix(affix)}；限制是只會出現在允許部位 ${affix.appliesTo.map(equipmentSlotLabel).join('、')}。`;
+}
+
+function formatWikiZoneRowNote(zone: typeof ZONES[string]): string {
+  return `資料代號 ${zone.id}，區域「${zone.name}」分類為${zoneTypeLabel(zone.type)} / ${zoneRegionLabel(zone.region)}，來源為 ZONES。用途是${zone.description}；限制包含等級 Lv.${zone.levelRange[0]}-${zone.levelRange[1]}、PVP ${pvpModeLabel(zone.pvpMode)} 與死亡懲罰 ${deathPenaltyLabel(zone.deathPenalty)}。`;
+}
+
+function formatWikiMonsterRowNote(monster: typeof MONSTERS[string]): string {
+  return `資料代號 ${monster.id}，怪物「${monster.name}」分類為${monster.isBoss ? '首領' : monster.isElite ? '菁英' : '一般'} / ${monster.family}，來源為 MONSTERS。用途是戰鬥、經驗 ${monster.expReward} 與掉落來源；限制是等級 Lv.${monster.level}，玩家可用它判斷刷怪風險。`;
+}
+
+function formatWikiGatheringRowNote(node: typeof GATHERING_NODE_DEFS[string]): string {
+  return `資料代號 ${node.id}，採集點「${node.name}」分類為${gatheringSkillLabel(node.skill)}，來源為 GATHERING_NODE_DEFS。用途是取得${node.yields.slice(0, 2).map(yieldDef => ITEM_DEFS[yieldDef.itemId]?.name ?? yieldDef.itemId).join('、')}並投入製作或任務；限制是場景 ${node.roomTags.map(equipmentSourceLabel).join('、')} 與等級 Lv.${node.levelMin}-${node.levelMax}。`;
+}
+
+function formatWikiCraftingRowNote(recipe: RecipeDef): string {
+  const result = getRecipeResultForAudit(recipe);
+  return `資料代號 ${recipe.id}，配方「${recipe.name}」分類為${craftingCategoryLabel(recipe.category)}，來源為 RECIPES。用途是製作${result ? ITEM_DEFS[result.itemId]?.name ?? result.itemId : '指定部位成品'}；限制是製作等級 Lv.${recipe.level}、材料 ${recipe.materials.length} 種與成功率 ${recipe.successRate}%。`;
+}
+
+function zoneTypeLabel(type: string): string {
+  const labels: Record<string, string> = {
+    town: '城鎮',
+    wilds: '野外',
+    dungeon_entrance: '副本入口',
+    resource: '資源區',
+    pvp: '競技區',
+    kingdom: '王國戰區',
+    endgame: '終局區',
+  };
+  return labels[type] ?? readableTag(type);
+}
+
+function zoneRegionLabel(region: string): string {
+  const labels: Record<string, string> = {
+    central: '中央',
+    east: '東部',
+    west: '西部',
+    north: '北部',
+    south: '南部',
+    underground: '地下',
+    abyss: '深淵',
+    celestial: '天界',
+  };
+  return labels[region] ?? readableTag(region);
+}
+
+function pvpModeLabel(mode: string): string {
+  const labels: Record<string, string> = {
+    safe: '安全',
+    duel_only: '僅決鬥',
+    open: '開放 PvP',
+    faction: '陣營 PvP',
+    kingdom_war: '王國戰爭',
+  };
+  return labels[mode] ?? readableTag(mode);
+}
+
+function deathPenaltyLabel(penalty: string): string {
+  const labels: Record<string, string> = {
+    none: '無懲罰',
+    durability: '耐久損失',
+    gold: '金幣損失',
+    loot: '掉落風險',
+  };
+  return labels[penalty] ?? readableTag(penalty);
+}
+
 function formatClassSummaryAuditText(classDef: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]): string {
   const parent = classDef.parentClass ? CLASS_DEFS[classDef.parentClass]?.name : undefined;
   const advanced = (classDef.advancedClasses ?? []).map(classId => CLASS_DEFS[classId]?.name ?? classId);
@@ -1262,6 +1463,8 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'skill.upgradePreview'
     || batchKey === 'mapMarker.tooltip'
     || batchKey === 'roomAction.tooltip'
+    || batchKey === 'wiki.article.summary'
+    || batchKey === 'wiki.table.rowNote'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip';
 }
@@ -1293,6 +1496,8 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'skill.upgradePreview'
     || batchKey === 'mapMarker.tooltip'
     || batchKey === 'roomAction.tooltip'
+    || batchKey === 'wiki.article.summary'
+    || batchKey === 'wiki.table.rowNote'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip'
     || batchKey === 'instanceEntry.description';
