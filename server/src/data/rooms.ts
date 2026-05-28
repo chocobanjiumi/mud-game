@@ -1557,7 +1557,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
-      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '沿訓練場北側木道前往屋頂棧道' },
+      { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '北側木梯沿訓練場牆邊上行，繞過稻草靶與繩索護欄抵達屋頂棧道', edgeKind: 'long_path', edgeNote: '訓練場到屋頂棧道需要爬木梯並繞過訓練器具，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'slime', maxCount: 3, respawnSeconds: 25 },
@@ -1616,7 +1616,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '晨光禮拜堂由白石和舊木梁搭成，彩色玻璃把清晨光線切成淡金與淺藍的碎片，灑在簡樸祭壇前。南門連到市場小巷，西側通向舊書庫，祭壇旁的祈願簿記著許多失敗又重新出發的冒險者姓名。這裡沒有怪物，卻提示玩家死亡後安全點、治療服務與祭司職業相關任務的方向。長椅間能聞到蠟油和雨濕木頭的味道，祭壇背後掛著村內安全路線圖，標明廣場、傳送祠堂和村口哨所的位置。幾張祈禱紙提到復活、護送與治療委託，暗示玩家可從 NPC 對話或任務看板取得支援型目標，也能辨認安靜側廊的出口。',
     exits: [
-      { direction: 'south', targetRoomId: 'starter_village_market_lane', description: '禮拜堂外是市場小巷' },
+      { direction: 'south', targetRoomId: 'starter_village_market_lane', description: '南側禮拜堂石階穿過雨棚與祈願紙，繞到攤販燈火旁的市場小巷入口', edgeKind: 'long_path', edgeNote: '禮拜堂到市場小巷需下石階並穿過雨棚與攤位，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_old_library', description: '側廊通往舊書庫' },
     ],
     mapSymbol: '[C]',
@@ -1650,8 +1650,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '市場小巷夾在武器店、禮拜堂與馬廄之間，濕潤石路上反射著攤棚燈火，水果籃、皮革包和破舊地圖擺得略顯凌亂。西邊能回到武器店，北側是安靜禮拜堂，南方傳來馬匹噴鼻聲。攤販低聲談論平原怪物與缺貨材料，提示玩家可從交易、對話和支線委託取得下一個探索方向。',
     exits: [
-      { direction: 'west', targetRoomId: 'weapon_shop', description: '鐵匠鋪就在西側' },
-      { direction: 'north', targetRoomId: 'starter_village_chapel', description: '禮拜堂鐘聲從北方傳來' },
+      { direction: 'west', targetRoomId: 'weapon_shop', description: '西側市場石路穿過攤棚與木箱堆，繞過鐵匠煤煙後抵達武器店前門', edgeKind: 'long_path', edgeNote: '市場小巷到武器店需穿過攤棚與貨箱，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'starter_village_chapel', description: '北側市場雨棚沿祈願紙與石階上行，避開攤販燈火回到晨光禮拜堂', edgeKind: 'long_path', edgeNote: '市場小巷北側回禮拜堂要穿過雨棚與石階，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'starter_village_stable_yard', description: '馬廄院在南邊' },
     ],
     mapSymbol: '[M]',
@@ -1669,7 +1669,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示玩家能從掉落材料、採集資源和工匠服務逐步改善初期裝備。',
     exits: [
       { direction: 'west', targetRoomId: 'weapon_shop', description: '回到武器店前廳' },
-      { direction: 'south', targetRoomId: 'training_ground', description: '訓練場的喊聲從南方傳來' },
+      { direction: 'south', targetRoomId: 'training_ground', description: '南側工棚後門穿過木屑、磨刀架與短牆缺口，繞到訓練場北邊空地邊緣', edgeKind: 'long_path', edgeNote: '修補工棚到訓練場需穿過後門與短牆缺口，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '小門外是馬廄院' },
     ],
     mapSymbol: '[F]',
@@ -1686,8 +1686,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '告示角落位在廣場南西側的轉角，數塊木板被雨水泡得發黑，仍釘著尋物、採集、巡邏和協助新人的短委託。北邊是藥水店，東方可到村口，西側狹路延伸到古井。紙張邊緣有被撕下的痕跡，提示玩家查看 quest、追蹤任務目標，並留意有些委託需要 search 或 inspect 才能找到線索。木板下方散落舊蠟封與泥腳印，表示有人匆忙撕走其中一張任務單；旁邊的箭頭牌標示藥水店、古井與村口方向，使玩家能根據任務文字快速規劃路線，還能發現被雨水暈開的暗號。角落油燈下壓著一張缺角地圖，標出村內可調查處與回報路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'potion_shop', description: '藥水店的草藥香從北方飄來' },
-      { direction: 'east', targetRoomId: 'village_gate', description: '村口火把在東方晃動' },
+      { direction: 'north', targetRoomId: 'potion_shop', description: '北側告示板後巷穿過雨棚與藥草木箱，沿淡綠藥粉痕跡繞回藥水店門口', edgeKind: 'long_path', edgeNote: '告示角落到藥水店需穿過後巷雨棚與藥草箱，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'village_gate', description: '東側告示角落沿濕石路穿過任務牌與守衛火把，繞到村口柵門內側', edgeKind: 'long_path', edgeNote: '告示角落到村口需沿濕石路穿過任務牌與火把區，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_well_path', description: '狹路通往村內古井' },
     ],
     mapSymbol: '[N]',
@@ -1757,7 +1757,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。下方可回村口，西側窄廊連到傳送祠堂，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂' },
-      { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '屋頂棧道向東延伸' },
+      { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '東側哨所窄廊沿木柵上緣延伸，越過火把平台後接上屋頂棧道入口', edgeKind: 'long_path', edgeNote: '守衛哨所到屋頂棧道需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[B]',
     mapX: 2,
@@ -1775,7 +1775,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '市場小巷在北側' },
       { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊' },
-      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '南側木階連到屋頂棧道' },
+      { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '南側馬廄木階穿過乾草棚與車輪架，沿屋簷陰影接上屋頂棧道入口', edgeKind: 'long_path', edgeNote: '馬廄院到屋頂棧道需穿過乾草棚與車輪架，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[H]',
     mapX: 4,
@@ -1809,9 +1809,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
     exits: [
-      { direction: 'south', targetRoomId: 'training_ground', description: '木階回到訓練場北側' },
-      { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '棧道西端連到守衛哨所' },
-      { direction: 'north', targetRoomId: 'starter_village_stable_yard', description: '北側木階連到馬廄院' },
+      { direction: 'south', targetRoomId: 'training_ground', description: '南側棧道木梯沿繩索護欄折降，繞過稻草靶後回到訓練場北側空地', edgeKind: 'long_path', edgeNote: '屋頂棧道回訓練場需下木梯並繞過訓練器具，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '西側屋頂棧道沿木柵上緣回走，越過火把平台與窄廊抵達守衛哨所', edgeKind: 'long_path', edgeNote: '屋頂棧道到守衛哨所需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'starter_village_stable_yard', description: '北側屋簷木階穿過車輪架與乾草棚陰影，折下到馬廄院泥地旁的燈柱', edgeKind: 'long_path', edgeNote: '屋頂棧道到馬廄院需沿木階穿過車輪架與乾草棚，實際路程長於相鄰一格。' },
     ],
     mapSymbol: '[^]',
     mapX: 3,
