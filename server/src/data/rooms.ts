@@ -5055,6 +5055,46 @@ function enrichRoomImagePrompts(): void {
   }
 }
 
+function enrichRoomExitDescriptions(): void {
+  for (const room of Object.values(ROOMS)) {
+    for (const exit of room.exits) {
+      const targetRoom = ROOMS[exit.targetRoomId];
+      const isCrossZone = !!targetRoom && targetRoom.zone !== room.zone;
+      const isSpecial = !!exit.edgeKind && exit.edgeKind !== 'normal';
+      const minimum = isSpecial ? 28 : isCrossZone ? 20 : 12;
+      if (countCjkChars(exit.description ?? '') >= minimum) continue;
+
+      exit.description = buildExitDescription(room, exit, targetRoom, isCrossZone, isSpecial);
+    }
+  }
+}
+
+function buildExitDescription(
+  room: RoomDef,
+  exit: RoomDef['exits'][number],
+  targetRoom: RoomDef | undefined,
+  isCrossZone: boolean,
+  isSpecial: boolean,
+): string {
+  const direction = EXIT_DIRECTION_LABELS[exit.direction];
+  const targetName = targetRoom?.name ?? '前方房間';
+  const sourceZone = ZONES[room.zone];
+  const targetZone = targetRoom ? ZONES[targetRoom.zone] : undefined;
+
+  if (isSpecial) {
+    const targetZoneName = targetZone?.name ?? '遠處區域';
+    return `${direction}側長路先離開「${room.name}」，繞過${targetZoneName}外圍地標後抵達「${targetName}」，路程明顯長於相鄰房間。`;
+  }
+
+  if (isCrossZone) {
+    const sourceZoneName = sourceZone?.name ?? '本區';
+    const targetZoneName = targetZone?.name ?? '鄰近區域';
+    return `${direction}側道路離開${sourceZoneName}，接上${targetZoneName}的「${targetName}」入口。`;
+  }
+
+  return `「${targetName}」就在${direction}側石路盡頭方向`;
+}
+
 function describePromptRoutes(room: RoomDef): string {
   const directions = room.exits.map(exit => PROMPT_DIRECTION_LABELS[exit.direction]).filter(Boolean);
   if (directions.length === 0) return 'contained chamber with a single focused central landmark';
@@ -5105,6 +5145,10 @@ function hashPromptSeed(text: string): number {
   return hash;
 }
 
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
+}
+
 const PROMPT_DIRECTION_LABELS: Record<RoomDef['exits'][number]['direction'], string> = {
   north: 'north',
   south: 'south',
@@ -5112,9 +5156,17 @@ const PROMPT_DIRECTION_LABELS: Record<RoomDef['exits'][number]['direction'], str
   west: 'west',
 };
 
+const EXIT_DIRECTION_LABELS: Record<RoomDef['exits'][number]['direction'], string> = {
+  north: '北',
+  south: '南',
+  east: '東',
+  west: '西',
+};
+
 ensureNonTownRoomRoleTemplates();
 ensureZoneExplorationAnchors();
 enrichRoomImagePrompts();
+enrichRoomExitDescriptions();
 
 /** 取得房間定義 */
 export function getRoom(roomId: string): RoomDef | undefined {

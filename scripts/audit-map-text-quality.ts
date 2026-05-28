@@ -124,7 +124,7 @@ for (const room of Object.values(ROOMS)) {
     const isSpecial = !!exit.edgeKind && exit.edgeKind !== 'normal';
     const minimum = isSpecial ? 28 : isCrossZone ? 20 : 12;
     checkText(
-      `${room.id}:${exit.direction}->${exit.targetRoomId}`,
+      `${room.zone}/${room.id}:${exit.direction}->${exit.targetRoomId}`,
       'exit.description',
       'description',
       exit.description ?? '',
@@ -370,6 +370,7 @@ function recordText(id: string, kind: TextKind, field: string, text: string) {
 
 function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'room.description') return `zone:${id.split('/')[0]}`;
+  if (kind === 'exit.description') return `exit:${id.split('/')[0]}`;
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
