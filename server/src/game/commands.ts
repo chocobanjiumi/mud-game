@@ -878,7 +878,7 @@ function getInstanceEntryAvailability(char: Character, entry: InstanceEntryDef):
   const cooldownOwnerId = partyMgr.getPartyId(char.id) ?? char.id;
   const cooldownRemaining = getInstanceEntryCooldownRemainingSeconds(cooldownOwnerId, entry.id);
   if (cooldownRemaining > 0) {
-    return { ok: false, message: `入口冷卻中：剩餘 ${cooldownRemaining} 秒。` };
+    return { ok: false, message: `你正在查看副本入口「${entry.name}」，但入口仍在冷卻中；目前剩餘 ${cooldownRemaining} 秒，需求剩餘 0 秒後才能再次開啟。下一步請等待冷卻結束後再使用入口。` };
   }
 
   const gate = checkInstanceEntryRequirements(char, entry);

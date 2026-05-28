@@ -29,4 +29,18 @@ describe('instance entry failure message quality', () => {
     expect(quest).toContain('目前狀態是「進行中」');
     expect(quest).not.toMatch(/[a-z][a-z0-9]+_[a-z0-9_]+/u);
   });
+
+  it('keeps NPC dialogue disabled reasons actionable', () => {
+    const cooldown = formatSystemErrorMessage('你正在查看副本入口「終焉戰場」，但入口仍在冷卻中；目前剩餘 60 秒，需求剩餘 0 秒後才能再次開啟。下一步請等待冷卻結束後再使用入口。');
+    expect(cooldown).toContain('終焉戰場');
+    expect(cooldown).toContain('目前剩餘 60 秒');
+    expect(cooldown).toContain('需求剩餘 0 秒');
+    expect(cooldown).toContain('下一步');
+
+    const disabled = formatSystemErrorMessage('你正在查看副本入口「水晶洞窟」，但等級不足；目前等級 3，需求等級 5。下一步請先完成同等級任務或提升等級後再返回入口。');
+    expect(disabled).toContain('水晶洞窟');
+    expect(disabled).toContain('目前等級 3');
+    expect(disabled).toContain('需求等級 5');
+    expect(disabled).toContain('下一步');
+  });
 });

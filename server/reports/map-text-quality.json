@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T18:32:26.225Z",
+  "generatedAt": "2026-05-28T18:36:52.704Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -352,7 +352,7 @@
     "tutorialSteps": 6,
     "achievements": 51,
     "titleDescriptions": 51,
-    "systemErrorMessages": 18,
+    "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
     "imagePrompts": 1203,
