@@ -22082,8 +22082,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '武器檢查處位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊' },
-      { direction: 'east', targetRoomId: 'arena_quarter_training_yard', description: '訓練場在東側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_armor_rack_lane', description: '甲架巷在北側' },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_training_yard',
+        description: '東側需繞過武器封條、驗刃桌與登記欄杆後，才會進入訓練場範圍，沿途裁判會反覆查驗',
+        edgeKind: 'long_path',
+        edgeNote: '武器檢查處到訓練場需穿過檢查動線與欄杆，距離長於相鄰格。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_armor_rack_lane',
+        description: '北側穿過寄放牌、鎖甲架與窄巷轉角後，才會抵達甲架巷，盔甲摩擦聲會逐漸變近',
+        edgeKind: 'long_path',
+        edgeNote: '武器檢查處到甲架巷需繞過寄放裝備區與窄巷，屬於長路徑。',
+      },
     ],
     monsters: [],
     mapSymbol: '[檢]',
@@ -22133,7 +22145,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '東決鬥圈位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_warmup_sand', description: '回到熱身沙地' },
-      { direction: 'west', targetRoomId: 'arena_quarter_duel_ring_west', description: '西決鬥圈在西側' },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_duel_ring_west',
+        description: '西側需穿過兩圈決鬥邊線與裁判旗架，才會接到西決鬥圈入口，場內人潮會阻擋直行',
+        edgeKind: 'long_path',
+        edgeNote: '東西決鬥圈之間隔著裁判線與觀戰欄，不是相鄰平面一格。',
+      },
       { direction: 'north', targetRoomId: 'arena_quarter_center_arena', description: '中央競技場在北側' },
     ],
     monsters: [
@@ -22159,9 +22177,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '西決鬥圈位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'east', targetRoomId: 'arena_quarter_duel_ring_east', description: '回到東決鬥圈' },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_duel_ring_east',
+        description: '東返時需穿過裁判旗架、觀戰欄與沙地邊線，才會回到東決鬥圈，腳下沙痕能辨識路線',
+        edgeKind: 'long_path',
+        edgeNote: '西決鬥圈到東決鬥圈需要繞過場內分隔線，屬於長路徑。',
+      },
       { direction: 'west', targetRoomId: 'arena_quarter_training_yard', description: '訓練場在西側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_referee_box',
+        description: '北側需沿決鬥圈外緣繞過判定旗與封鎖繩後，才到裁判席，階梯旁有衛兵把守',
+        edgeKind: 'long_path',
+        edgeNote: '西決鬥圈到裁判席要沿外圈繞行，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_sand_brawler', maxCount: 2, respawnSeconds: 260 },
@@ -22186,9 +22216,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '訓練場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'west', targetRoomId: 'arena_quarter_weapon_check', description: '回到武器檢查處' },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_weapon_check',
+        description: '西返時需穿過訓練木樁、沙坑邊線與登記欄杆，才回到武器檢查處，隊列會拖慢移動',
+        edgeKind: 'long_path',
+        edgeNote: '訓練場西返武器檢查處需要沿訓練區外緣繞行，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'arena_quarter_duel_ring_west', description: '西決鬥圈在東側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_strategy_tables',
+        description: '北側穿過訓練隊列與沙地分隔繩後，才會到達戰術桌區，木牌標示今日演練路線',
+        edgeKind: 'long_path',
+        edgeNote: '訓練場到戰術桌要穿過隊列與分隔繩，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_training_dummy', maxCount: 1, respawnSeconds: 240 },
@@ -22236,8 +22278,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '甲架巷位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_weapon_check', description: '回到武器檢查處' },
-      { direction: 'east', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在東側' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_weapon_check',
+        description: '南側沿甲架巷穿過鎖甲架與寄放牌，最後才回到武器檢查處，路旁有修甲火盆',
+        edgeKind: 'long_path',
+        edgeNote: '甲架巷南返武器檢查處需穿過裝備寄放動線，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_strategy_tables',
+        description: '東側需繞過整排護甲架與維修台，才會接到戰術桌旁的通道，裝備箱會擋住直線',
+        edgeKind: 'long_path',
+        edgeNote: '甲架巷到戰術桌被裝備架與維修台隔開，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_shield_breaker', maxCount: 2, respawnSeconds: 340 },
@@ -22263,8 +22317,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '冠軍牆位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門' },
-      { direction: 'east', targetRoomId: 'arena_quarter_armor_rack_lane', description: '甲架巷在東側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_victory_arch', description: '勝利拱在北側' },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_armor_rack_lane',
+        description: '東側沿冠軍銘牌牆繞過紀念柱後，才會進入甲架巷，觀眾獻花會佔住牆邊通道',
+        edgeKind: 'long_path',
+        edgeNote: '冠軍牆到甲架巷要沿紀念牆與柱廊繞行，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_victory_arch',
+        description: '北側需穿過冠軍銘牌、獻花階與拱門前廊後，才抵達勝利拱，地面刻滿冠軍年份',
+        edgeKind: 'long_path',
+        edgeNote: '冠軍牆到勝利拱有紀念階與拱門前廊，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_chain_beast', maxCount: 1, respawnSeconds: 360 },
@@ -22290,8 +22356,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '下層看台位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_healer_bench', description: '回到醫護長椅' },
-      { direction: 'west', targetRoomId: 'arena_quarter_center_arena', description: '中央競技場在西側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_upper_stands', description: '上層看台在北側' },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_center_arena',
+        description: '西側需沿下層看台欄杆與觀眾通道繞行，才會進入中央競技場，場門會分批開放',
+        edgeKind: 'long_path',
+        edgeNote: '下層看台到中央競技場需穿過觀眾欄杆與場門，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_upper_stands',
+        description: '北側階梯繞過觀眾席、旗桿與護欄後，才會爬到上層看台，階梯會隨人潮堵塞',
+        edgeKind: 'long_path',
+        edgeNote: '下層看台到上層看台有階梯高低差，不是平面相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_chain_beast', maxCount: 1, respawnSeconds: 360 },
@@ -22316,7 +22394,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '上層看台位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_lower_stands', description: '回到下層看台' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_lower_stands',
+        description: '南側階梯沿觀眾席護欄下行，繞過旗桿後才回到下層看台，呼喊聲會越來越近',
+        edgeKind: 'long_path',
+        edgeNote: '上層看台南返下層看台需要走階梯與護欄通道，屬於長路徑。',
+      },
       { direction: 'west', targetRoomId: 'arena_quarter_private_boxes', description: '貴賓包廂在西側' },
     ],
     monsters: [
@@ -22342,8 +22426,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '怒吼酒館位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'west', targetRoomId: 'arena_quarter_healer_bench', description: '醫護長椅在西側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在北側' },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_healer_bench',
+        description: '西側穿過酒館後門、休息棚與傷藥車後，才會到醫護長椅，藥草味會指引方向',
+        edgeKind: 'long_path',
+        edgeNote: '怒吼酒館到醫護長椅需要繞過休息棚與後門通道，距離較長。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'arena_quarter_lower_stands',
+        description: '北側需穿過觀戰人潮與酒館外廊後，才會進入下層看台，酒杯聲會逐漸被歡呼取代',
+        edgeKind: 'long_path',
+        edgeNote: '怒吼酒館到下層看台被人潮與外廊隔開，屬於長路徑。',
+      },
     ],
     monsters: [],
     mapSymbol: '[酒]',
@@ -22365,8 +22461,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰術桌位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_training_yard', description: '回到訓練場' },
-      { direction: 'west', targetRoomId: 'arena_quarter_armor_rack_lane', description: '甲架巷在西側' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_training_yard',
+        description: '南側需收起戰術圖板、繞過沙地分隔繩後，才回到訓練場，路上能看見演練箭標',
+        edgeKind: 'long_path',
+        edgeNote: '戰術桌南返訓練場需要穿過戰術區與訓練隊列，距離長於相鄰格。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_armor_rack_lane',
+        description: '西側沿戰術桌邊緣繞過維修台與護甲架後，才會到甲架巷，圖板與箱架會擋住直行',
+        edgeKind: 'long_path',
+        edgeNote: '戰術桌西返甲架巷被維修台與護甲架隔開，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在東側' },
     ],
     monsters: [
@@ -22392,9 +22500,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '裁判席位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_duel_ring_west', description: '回到西決鬥圈' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_duel_ring_west',
+        description: '南側沿裁判席階梯與判定旗繞下去，才會回到西決鬥圈，裁判哨聲會標示入口',
+        edgeKind: 'long_path',
+        edgeNote: '裁判席南返西決鬥圈需沿階梯與裁判旗區繞行，屬於長路徑。',
+      },
       { direction: 'west', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在西側' },
-      { direction: 'east', targetRoomId: 'arena_quarter_center_arena', description: '中央競技場在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_center_arena',
+        description: '東側需穿過裁判席側門、記分板與場門緩衝區，才進入中央競技場，出入口有衛兵管制',
+        edgeKind: 'long_path',
+        edgeNote: '裁判席到中央競技場被記分板與側門隔開，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_veteran_gladiator', maxCount: 1, respawnSeconds: 420 },
@@ -22420,7 +22540,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獎品櫃位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_betting_house', description: '回到下注所' },
-      { direction: 'east', targetRoomId: 'arena_quarter_warmup_sand', description: '熱身沙地在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_warmup_sand',
+        description: '東側需繞過獎品櫃、兌換欄杆與賽程告示後，才會接到熱身沙地，獎牌櫃會吸引人潮',
+        edgeKind: 'long_path',
+        edgeNote: '獎品櫃到熱身沙地需要穿過兌換動線與告示區，屬於長路徑。',
+      },
     ],
     monsters: [],
     mapSymbol: '[獎]',
@@ -22443,7 +22569,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '貴賓包廂位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台' },
-      { direction: 'south', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在南側' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_referee_box',
+        description: '南側需穿過包廂簾幕、貴賓護欄與內側階梯後，才會抵達裁判席，守衛會檢查席票',
+        edgeKind: 'long_path',
+        edgeNote: '貴賓包廂到裁判席需要走內側階梯與護欄通道，距離較長。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_masked_challenger', maxCount: 1, respawnSeconds: 450 },
@@ -22468,8 +22600,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '勝利拱位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_champion_wall', description: '回到冠軍牆' },
-      { direction: 'east', targetRoomId: 'arena_quarter_private_boxes', description: '貴賓包廂在東側' },
+      {
+        direction: 'south',
+        targetRoomId: 'arena_quarter_champion_wall',
+        description: '南側穿過勝利拱前廊、獻花階與銘牌牆後，才回到冠軍牆，石階上刻著勝場紀錄',
+        edgeKind: 'long_path',
+        edgeNote: '勝利拱南返冠軍牆有紀念階與前廊，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_private_boxes',
+        description: '東側沿勝利拱內廊與貴賓護欄繞行後，才會抵達包廂區，簾幕後有私人通道',
+        edgeKind: 'long_path',
+        edgeNote: '勝利拱到貴賓包廂需要沿內廊與護欄繞行，距離長於相鄰格。',
+      },
     ],
     monsters: [],
     mapSymbol: '[勝]',
@@ -22492,8 +22636,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '中央競技場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_duel_ring_east', description: '回到東決鬥圈' },
-      { direction: 'west', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在西側' },
-      { direction: 'east', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'arena_quarter_referee_box',
+        description: '西側需穿過場門緩衝區、記分板與裁判側門後，才會抵達裁判席，場門開合受賽程限制',
+        edgeKind: 'long_path',
+        edgeNote: '中央競技場西返裁判席需要穿過場門與記分板區，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'arena_quarter_lower_stands',
+        description: '東側需穿過場門、觀戰欄杆與下層通道後，才會進入下層看台，觀眾席通道較擁擠',
+        edgeKind: 'long_path',
+        edgeNote: '中央競技場到下層看台被場門與觀眾欄杆隔開，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'arena_grand_champion', maxCount: 1, respawnSeconds: 900 },
