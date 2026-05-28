@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:26:01.981Z",
+  "generatedAt": "2026-05-28T16:30:33.550Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -56,6 +56,11 @@
       "tooltipMinCjkChars": 30,
       "upgradePreviewMinCjkChars": 28
     },
+    "characterCreation": {
+      "classSummaryMinCjkChars": 90,
+      "raceSummaryMinCjkChars": 70,
+      "faithSummaryMinCjkChars": 70
+    },
     "reward": {
       "summaryMinCjkChars": 30
     },
@@ -104,6 +109,9 @@
     "materials": 291,
     "equipment": 932,
     "affixes": 28,
+    "playableClasses": 17,
+    "races": 7,
+    "faiths": 10,
     "skills": 206,
     "skillUpgradePreviews": 112,
     "imagePrompts": 1203,

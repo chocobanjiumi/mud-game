@@ -3,6 +3,7 @@ import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { WORLD_MAP2_INSTANCE_ENTRY_ITEMS } from '../packages/shared/src/constants/instance-entry-items.js';
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
+import { FAITH_DEFS, RACE_DEFS } from '../packages/shared/src/constants/origins.js';
 import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
 import { describeSkillLevel, getSkillUpgradeDeltas, getSkillUpgradeRule } from '../packages/shared/src/systems/skill-upgrades.js';
 import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monsters.js';
@@ -43,6 +44,9 @@ type TextKind =
   | 'affix.description'
   | 'affixBuildDirection.notes'
   | 'reward.summary'
+  | 'class.summary'
+  | 'race.summary'
+  | 'faith.summary'
   | 'skill.description'
   | 'skill.tooltip'
   | 'skill.upgradePreview'
@@ -258,6 +262,39 @@ for (const direction of AFFIX_BUILD_DIRECTIONS) {
   checkText(direction.id, 'affixBuildDirection.notes', 'notes', direction.notes, 35, '詞綴流派說明需交代職業定位、武器限制與玩法目的');
 }
 
+for (const classDef of Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster')) {
+  checkText(
+    classDef.id,
+    'class.summary',
+    'summary',
+    formatClassSummaryAuditText(classDef),
+    90,
+    '職業 summary 需包含戰鬥定位、主要資源、強項、弱點、前期玩法與二轉前限制',
+  );
+}
+
+for (const race of Object.values(RACE_DEFS)) {
+  checkText(
+    race.id,
+    'race.summary',
+    'summary',
+    formatRaceSummaryAuditText(race),
+    70,
+    '種族 summary 需包含外觀或文化特徵、玩法差異、適合職業或限制、世界觀位置',
+  );
+}
+
+for (const faith of Object.values(FAITH_DEFS)) {
+  checkText(
+    faith.id,
+    'faith.summary',
+    'summary',
+    formatFaithSummaryAuditText(faith),
+    70,
+    '信仰 summary 需包含信仰領域、玩法差異、適合職業或限制、世界觀位置與禁忌',
+  );
+}
+
 for (const skill of Object.values(SKILL_DEFS)) {
   checkText(
     skill.id,
@@ -365,6 +402,11 @@ const report = {
       tooltipMinCjkChars: 30,
       upgradePreviewMinCjkChars: 28,
     },
+    characterCreation: {
+      classSummaryMinCjkChars: 90,
+      raceSummaryMinCjkChars: 70,
+      faithSummaryMinCjkChars: 70,
+    },
     reward: {
       summaryMinCjkChars: 30,
     },
@@ -402,6 +444,9 @@ const report = {
     materials: Object.values(ITEM_DEFS).filter(item => item.type === 'material').length,
     equipment: Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length,
     affixes: Object.values(AFFIX_POOLS).flat().length,
+    playableClasses: Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster').length,
+    races: Object.keys(RACE_DEFS).length,
+    faiths: Object.keys(FAITH_DEFS).length,
     skills: Object.keys(SKILL_DEFS).length,
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
@@ -601,6 +646,39 @@ function formatInstanceEntryTooltipAuditText(entry: InstanceEntryForAudit): stri
   return `入口「${entry.name}」可進入${dungeonName}，建議等級 Lv.${entry.minLevel}，人數 1-${entry.maxPartySize}，需求 ${requirementText}，${cooldownText}；若鎖定需依任務、道具或隊伍條件處理。`;
 }
 
+function formatClassSummaryAuditText(classDef: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]): string {
+  const parent = classDef.parentClass ? CLASS_DEFS[classDef.parentClass]?.name : undefined;
+  const advanced = (classDef.advancedClasses ?? []).map(classId => CLASS_DEFS[classId]?.name ?? classId);
+  const progression = classDef.tier === 0
+    ? `二轉前先從冒險者熟悉基礎探索，再於 Lv.1 後選擇一轉方向，可走向${advanced.join('、')}。`
+    : classDef.tier === 1
+      ? `二轉前此職業必須靠一轉技能與天賦撐到 Lv.20，之後可選擇${advanced.join('、')}。`
+      : `此為二轉職業，來源是${parent ?? '未知路線'}，不屬於二轉前角色創建選項。`;
+  return `職業「${classDef.name}」的戰鬥定位是${classDef.description}主要資源為${formatClassResourceAuditText(classDef.resourceType)}，初始 ${classDef.initialResource}、上限 ${classDef.maxResource}。能力加成為${formatBaseStatAuditText(classDef.baseStatBonus)}，強項由主要屬性與資源循環決定，弱點則來自較低的副屬性、資源耗盡或尚未取得二轉技能前的工具不足。${progression}`;
+}
+
+function formatRaceSummaryAuditText(race: typeof RACE_DEFS[keyof typeof RACE_DEFS]): string {
+  return `種族「${race.name}」在世界中的定位是${race.description}能力修正為${formatBaseStatAuditText(race.statMods)}，被動「${race.passiveName}」提供${race.passiveDescription}。玩法差異集中在${race.tags?.join('、') || '通用適應'}方向，適合與相符職業、採集或探索玩法搭配；限制來自負面能力修正或特定場景才會觸發的被動條件。`;
+}
+
+function formatFaithSummaryAuditText(faith: typeof FAITH_DEFS[keyof typeof FAITH_DEFS]): string {
+  return `信仰「${faith.name}・${faith.title}」的世界觀位置是${faith.description}領域包含${faith.domains.join('、')}，被動「${faith.passiveName}」提供${faith.passiveDescription}。祈禱「${faith.prayerName}」會帶來${faith.prayerDescription}，適合重視${faith.tags?.join('、') || '信仰'}玩法的角色；限制是禁忌包含${faith.taboos.join('、')}，違背時應影響敘事或信仰互動。`;
+}
+
+function formatClassResourceAuditText(resourceType: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]['resourceType']): string {
+  if (resourceType === 'rage') return '怒氣，依受擊與戰鬥節奏取得，適合前線承傷與爆發生存';
+  if (resourceType === 'focus') return '專注，代表遊俠短時間連續輸出的節奏，耗盡後需要等待恢復';
+  if (resourceType === 'faith') return '信仰，會在慈悲與懲戒之間擺動，技能使用要管理正負方向';
+  return '魔力，依 tick 穩定回復，支撐法術、治療或通用技能循環';
+}
+
+function formatBaseStatAuditText(stats: Partial<Record<'str' | 'int' | 'dex' | 'vit' | 'luk', number>>): string {
+  const labels: Record<string, string> = { str: '力量', int: '智力', dex: '敏捷', vit: '體質', luk: '幸運' };
+  const entries = Object.entries(stats).filter(([, value]) => typeof value === 'number' && value !== 0);
+  if (entries.length === 0) return '無額外修正';
+  return entries.map(([key, value]) => `${labels[key] ?? key}${value > 0 ? '+' : ''}${value}`).join('、');
+}
+
 function skillDescriptionMinimum(skill: typeof SKILL_DEFS[string]): number {
   if (skill.learnLevel === 8 && ['swordsman', 'mage', 'ranger', 'priest'].includes(skill.classId)) return 65;
   if (skill.tags.includes('defense') || skill.tags.includes('mobility') || skill.tags.includes('control') || skill.tags.includes('heal')) return 75;
@@ -722,6 +800,9 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'item.description'
     || batchKey === 'item.tooltip'
     || batchKey === 'equipment'
+    || batchKey === 'class.summary'
+    || batchKey === 'race.summary'
+    || batchKey === 'faith.summary'
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
