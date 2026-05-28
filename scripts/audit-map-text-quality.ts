@@ -2061,6 +2061,7 @@ function buildSystemErrorAuditRecords(): { id: string; text: string; numeric?: b
     { id: 'instance/questRequired', text: '你正在嘗試進入「王城封印門」，但任務條件不足；需要「王都封印調查」達到「已完成」，目前狀態是「進行中」。下一步：先推進對應任務階段再返回入口。' },
     { id: 'quest/missingId', text: '用法：quest accept <任務ID>' },
     { id: 'merchant/noItem', text: '你正在購買商人商品，但沒有輸入物品名稱；下一步請使用 buy <物品名稱>。' },
+    { id: 'gathering/noNode', text: '目前位置不存在可採集的資源點。' },
     { id: 'achievement/notComplete', text: '你尚未完成該成就，無法裝備此稱號。' },
   ];
 }
