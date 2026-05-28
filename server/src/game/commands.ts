@@ -102,6 +102,7 @@ import { buildRoomMapLayerLookup, formatMapLayerName, inferMapLayerFromCoordinat
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { CorpseManager, LootCalculator, getLootAnnouncementScope } from './loot.js';
 import { BUILTIN_COMMANDS, MAX_ALIAS_EXPANSION_DEPTH, SYSTEM_ALIASES, resolveAliasExpansion } from './alias.js';
+import { formatDialogueOptionLabel } from './dialogue-option-labels.js';
 const lootCalc = new LootCalculator();
 const corpseMgr = new CorpseManager();
 import type { LootDistributionMode } from './party.js';
@@ -4153,9 +4154,11 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
   const options = buildDialogueOptions(npc, node, char);
   const optionPayloads = options.map((option, index) => {
     const lock = getDialogueOptionLockReason(npc, option, char);
+    const nextNode = resolveDialogueNode(npc, option.nextId);
+    const label = formatDialogueOptionLabel(npc, node, option, index, nextNode);
     return {
       index: index + 1,
-      text: option.text,
+      text: label,
       command: `talk ${npc.id} ${index + 1}`,
       disabled: Boolean(lock),
       disabledReason: lock,
@@ -4165,7 +4168,7 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
   if (options.length > 0) {
     for (let i = 0; i < options.length; i++) {
       const lock = optionPayloads[i]?.disabledReason;
-      dialogueText += `\n  ${i + 1}. ${options[i].text}${lock ? `（鎖定：${lock}）` : ''}`;
+      dialogueText += `\n  ${i + 1}. ${optionPayloads[i]?.text ?? options[i].text}${lock ? `（鎖定：${lock}）` : ''}`;
     }
     // 記錄對話狀態
     activeDialogues.set(session.sessionId, { npcId: npc.id, nodeId, options });
@@ -4433,7 +4436,11 @@ function cmdTalk(session: WsSession, npcName: string): void {
           const chosen = active.options[choiceNum - 1];
           const lock = getDialogueOptionLockReason(npc, chosen, char);
           if (lock) {
-            sendError(session.sessionId, `「${chosen.text}」目前無法選擇：${lock}`);
+            const activeNode = resolveDialogueNode(npc, active.nodeId);
+            const label = activeNode
+              ? formatDialogueOptionLabel(npc, activeNode, chosen, choiceNum - 1, resolveDialogueNode(npc, chosen.nextId))
+              : chosen.text;
+            sendError(session.sessionId, `「${label}」目前無法選擇：${lock}`);
             return;
           }
           showDialogueNode(session, npc, chosen.nextId);

@@ -23,6 +23,7 @@ import { formatSystemErrorMessage } from '../server/src/game/system-messages.js'
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
+import { formatDialogueOptionLabel, isSpecificDialogueOptionLabel } from '../server/src/game/dialogue-option-labels.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type TextKind =
@@ -237,12 +238,21 @@ for (const npc of Object.values(NPCS)) {
   for (const node of npc.dialogue) {
     checkText(`${npc.id}/${node.id}`, 'npc.dialogue.text', 'text', node.text, npcDialogueMinimum(npc, node), 'NPC dialogue node 文字不足');
     auditNpcDialogueNode(npc, node);
+    const optionLabels: string[] = [];
     for (const [index, option] of (node.options ?? []).entries()) {
-      const optionText = option.text ?? '';
-      const trimmed = optionText.trim();
-      if (trimmed === '好的' || trimmed === '進入' || trimmed === '離開' || trimmed === '告辭了。') {
-        addIssue(`${npc.id}/${node.id}/option:${index}`, 'npc.dialogue.option', 'text', optionText, 8, 'NPC 選項文字過於泛用');
+      const nextNode = npc.dialogue.find(candidate => candidate.id === option.nextId);
+      const optionText = formatDialogueOptionLabel(npc, node, option, index, nextNode);
+      optionLabels.push(optionText);
+      checkText(`${npc.id}/${node.id}/option:${index}`, 'npc.dialogue.option', 'text', optionText, 8, 'NPC 選項文字必須顯示副本、任務或玩家行動意圖');
+      if (!isSpecificDialogueOptionLabel(optionText)) {
+        addIssue(`${npc.id}/${node.id}/option:${index}`, 'npc.dialogue.option', 'text', optionText, 8, 'NPC 選項文字過於泛用，需包含任務 / 副本 / 行動名稱');
       }
+      if (nextNode?.action?.type === 'instance_entry' && !/副本|入口|進入|確認|準備|挑戰|洞窟|墓窟|戰場|神殿|礦坑|遺跡|裂隙|深淵|天界|龍谷/u.test(optionText)) {
+        addIssue(`${npc.id}/${node.id}/option:${index}`, 'npc.dialogue.option', 'text', optionText, 8, '進入確認選項必須顯示副本名稱或玩家行動意圖');
+      }
+    }
+    if (optionLabels.length > 0 && optionLabels.every(label => !isSpecificDialogueOptionLabel(label))) {
+      addIssue(`${npc.id}/${node.id}/options`, 'npc.dialogue.option', 'text', optionLabels.join(' / '), 8, '同一 NPC 節點的主要選項不可全部是泛用選項');
     }
   }
 }
