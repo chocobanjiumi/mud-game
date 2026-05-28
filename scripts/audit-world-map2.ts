@@ -30,6 +30,8 @@ const instanceRoomsWithWorldCoords: string[] = [];
 const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
 const instanceEntranceIssues: string[] = [];
+const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
+const overlappingZoneGlobalBounds: string[] = [];
 
 for (const room of rooms) {
   const seenDirections = new Set<string>();
@@ -100,6 +102,24 @@ for (const [zoneId, plan] of zonePlans.entries()) {
   }
 }
 
+const zoneGlobalBounds = [...zonePlans.values()].filter(plan => plan.decision === 'world' || plan.decision === 'decision');
+for (const plan of zoneGlobalBounds) {
+  if (!plan.globalBounds) {
+    worldOrDecisionZonesMissingGlobalBounds.push(`${plan.zoneId}:${plan.decision}`);
+  }
+}
+for (let i = 0; i < zoneGlobalBounds.length; i++) {
+  const left = zoneGlobalBounds[i];
+  if (!left.globalBounds) continue;
+  for (let j = i + 1; j < zoneGlobalBounds.length; j++) {
+    const right = zoneGlobalBounds[j];
+    if (!right.globalBounds) continue;
+    if (boundsOverlap(left.globalBounds, right.globalBounds)) {
+      overlappingZoneGlobalBounds.push(`${left.zoneId} overlaps ${right.zoneId}`);
+    }
+  }
+}
+
 const coordinateCollisions = [...coordinateOwners.entries()]
   .filter(([, owners]) => owners.length > 1)
   .map(([coord, owners]) => `${coord}: ${owners.join(', ')}`);
@@ -114,6 +134,7 @@ const zones = Object.values(ZONES).map(zone => {
     decision: plan?.decision ?? 'decision',
     reason: plan?.reason ?? '',
     entranceRoomId: plan?.entranceRoomId,
+    globalBounds: plan?.globalBounds,
     roomCount: zoneRooms.length,
     bounds,
   };
@@ -147,6 +168,17 @@ const report = {
     coordinateCollisions,
     cardinalCoordinateMismatches,
   },
+  zoneLayout: {
+    plannedZoneGlobalBounds: zoneGlobalBounds
+      .filter(plan => plan.globalBounds)
+      .map(plan => ({
+        zoneId: plan.zoneId,
+        decision: plan.decision,
+        ...plan.globalBounds,
+      })),
+    worldOrDecisionZonesMissingGlobalBounds,
+    overlappingZoneGlobalBounds,
+  },
   instance: {
     instanceRoomsWithWorldCoords,
     instanceEntranceIssues,
@@ -169,12 +201,24 @@ if (strict) {
     ...worldRoomsMissingCoords,
     ...coordinateCollisions,
     ...cardinalCoordinateMismatches,
+    ...worldOrDecisionZonesMissingGlobalBounds,
+    ...overlappingZoneGlobalBounds,
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
   ];
   if (failures.length > 0) {
     process.exitCode = 1;
   }
+}
+
+function boundsOverlap(
+  left: { minX: number; maxX: number; minY: number; maxY: number },
+  right: { minX: number; maxX: number; minY: number; maxY: number },
+): boolean {
+  return left.minX <= right.maxX &&
+    left.maxX >= right.minX &&
+    left.minY <= right.maxY &&
+    left.maxY >= right.minY;
 }
 
 function getBounds(zoneRooms: RoomDef[]): Bounds | null {
@@ -209,6 +253,9 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `World rooms missing worldX/worldY: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
+    `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
+    `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
+    `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
     `Instance rooms with world coordinates: ${reportData.instance.instanceRoomsWithWorldCoords.length}`,
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
     `Special edges: ${reportData.specialEdges.length}`,

@@ -231,6 +231,14 @@ function buildPlanningWorldMapPayload(): {
       decision: ZoneMapScopeDecision;
       reason: string;
       entranceRoomId?: string;
+      globalBounds?: {
+        minX: number;
+        maxX: number;
+        minY: number;
+        maxY: number;
+        anchor: string;
+        terrainRole: string;
+      };
     };
     levelRange: [number, number];
     dangerLevel: number;
@@ -266,6 +274,7 @@ function buildPlanningWorldMapPayload(): {
       decision: zonePlans.get(zone.id)?.decision ?? 'decision',
       reason: zonePlans.get(zone.id)?.reason ?? '',
       entranceRoomId: zonePlans.get(zone.id)?.entranceRoomId,
+      globalBounds: zonePlans.get(zone.id)?.globalBounds,
     },
     levelRange: zone.levelRange,
     dangerLevel: zone.dangerLevel,

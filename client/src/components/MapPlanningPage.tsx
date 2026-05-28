@@ -28,6 +28,14 @@ type PlanningZone = {
     decision: 'world' | 'instance' | 'hybrid' | 'decision';
     reason: string;
     entranceRoomId?: string;
+    globalBounds?: {
+      minX: number;
+      maxX: number;
+      minY: number;
+      maxY: number;
+      anchor: string;
+      terrainRole: string;
+    };
   };
   levelRange: [number, number];
   dangerLevel: number;
@@ -126,8 +134,8 @@ export default function MapPlanningPage() {
         map.set(room.id, {
           room,
           zone,
-          x: zone.offsetX + ZONE_PAD_X + ((getRoomDisplayX(room, mode) - zone.minMapX) * CELL),
-          y: zone.offsetY + ZONE_PAD_TOP + ((getRoomDisplayY(room, mode) - zone.minMapY) * CELL),
+          x: zone.offsetX + ZONE_PAD_X + (getRoomOffsetX(room, zone, mode) * CELL),
+          y: zone.offsetY + ZONE_PAD_TOP + (getRoomOffsetY(room, zone, mode) * CELL),
         });
       }
     }
@@ -269,6 +277,11 @@ export default function MapPlanningPage() {
                     <small>
                       global map: {hasPlanningCoordinate(active.room) ? `(${active.room.worldX}, ${active.room.worldY})` : '未指派'}
                     </small>
+                    {active.zone.mapPlan.globalBounds ? (
+                      <small>
+                        zone bbox: ({active.zone.mapPlan.globalBounds.minX}, {active.zone.mapPlan.globalBounds.minY}) - ({active.zone.mapPlan.globalBounds.maxX}, {active.zone.mapPlan.globalBounds.maxY})
+                      </small>
+                    ) : null}
                     <small>scope: {active.room.mapScope}</small>
                   </div>
                   <div className="map-planning-exits">
@@ -317,6 +330,10 @@ export default function MapPlanningPage() {
 }
 
 function buildAtlas(zones: PlanningZone[], mode: 'local' | 'planning'): { zones: PlacedZone[]; width: number; height: number } {
+  if (mode === 'planning') {
+    return buildGlobalAtlas(zones);
+  }
+
   const sorted = [...zones].sort((a, b) =>
     a.levelRange[0] - b.levelRange[0] ||
     a.region.localeCompare(b.region) ||
@@ -364,6 +381,85 @@ function buildAtlas(zones: PlanningZone[], mode: 'local' | 'planning'): { zones:
     width: Math.max(...placed.map(zone => zone.offsetX + zone.width + ZONE_GAP_X), 600),
     height: Math.max(...placed.map(zone => zone.offsetY + zone.height + ZONE_GAP_Y), 400),
   };
+}
+
+function buildGlobalAtlas(zones: PlanningZone[]): { zones: PlacedZone[]; width: number; height: number } {
+  const plannedZones = zones.filter(zone => zone.mapPlan.globalBounds);
+  const fallbackZones = zones.filter(zone => !zone.mapPlan.globalBounds);
+  const minGlobalX = Math.min(...plannedZones.map(zone => zone.mapPlan.globalBounds!.minX), 0);
+  const minGlobalY = Math.min(...plannedZones.map(zone => zone.mapPlan.globalBounds!.minY), 0);
+  const maxGlobalX = Math.max(...plannedZones.map(zone => zone.mapPlan.globalBounds!.maxX), 0);
+  const maxGlobalY = Math.max(...plannedZones.map(zone => zone.mapPlan.globalBounds!.maxY), 0);
+  const margin = 40;
+
+  const placedPlanned: PlacedZone[] = plannedZones.map(zone => {
+    const globalBounds = zone.mapPlan.globalBounds!;
+    const localBounds = getZoneBounds(zone, 'local');
+    return {
+      ...zone,
+      offsetX: margin + ((globalBounds.minX - minGlobalX) * CELL),
+      offsetY: margin + ((globalBounds.minY - minGlobalY) * CELL),
+      width: Math.max(
+        ((globalBounds.maxX - globalBounds.minX + 1) * CELL),
+        ((localBounds.maxX - localBounds.minX + 1) * CELL),
+      ) + (ZONE_PAD_X * 2),
+      height: Math.max(
+        ((globalBounds.maxY - globalBounds.minY + 1) * CELL),
+        ((localBounds.maxY - localBounds.minY + 1) * CELL),
+      ) + ZONE_PAD_TOP + ZONE_PAD_BOTTOM,
+      minMapX: localBounds.minX,
+      minMapY: localBounds.minY,
+    };
+  });
+
+  const fallbackStartY = margin + ((maxGlobalY - minGlobalY + 2) * CELL) + ZONE_GAP_Y;
+  const fallbackMeasured = fallbackZones
+    .sort((a, b) => a.levelRange[0] - b.levelRange[0] || a.name.localeCompare(b.name))
+    .map(zone => {
+      const bounds = getZoneBounds(zone, 'local');
+      return {
+        zone,
+        bounds,
+        width: Math.max(120, ((bounds.maxX - bounds.minX + 1) * CELL) + (ZONE_PAD_X * 2)),
+        height: Math.max(96, ((bounds.maxY - bounds.minY + 1) * CELL) + ZONE_PAD_TOP + ZONE_PAD_BOTTOM),
+      };
+    });
+  const fallbackRowHeight = Math.max(...fallbackMeasured.map(item => item.height), 96);
+  const fallbackPlaced = fallbackMeasured.map((entry, index): PlacedZone => {
+    const col = index % ZONES_PER_ROW;
+    const row = Math.floor(index / ZONES_PER_ROW);
+    const priorInRow = fallbackMeasured.slice(row * ZONES_PER_ROW, row * ZONES_PER_ROW + col);
+    return {
+      ...entry.zone,
+      offsetX: margin + priorInRow.reduce((sum, prior) => sum + prior.width + ZONE_GAP_X, 0),
+      offsetY: fallbackStartY + (row * (fallbackRowHeight + ZONE_GAP_Y)),
+      width: entry.width,
+      height: entry.height,
+      minMapX: entry.bounds.minX,
+      minMapY: entry.bounds.minY,
+    };
+  });
+
+  const placed = [...placedPlanned, ...fallbackPlaced];
+  return {
+    zones: placed,
+    width: Math.max(...placed.map(zone => zone.offsetX + zone.width + ZONE_GAP_X), ((maxGlobalX - minGlobalX + 1) * CELL) + (margin * 2), 600),
+    height: Math.max(...placed.map(zone => zone.offsetY + zone.height + ZONE_GAP_Y), 400),
+  };
+}
+
+function getRoomOffsetX(room: PlanningRoom, zone: PlacedZone, mode: 'local' | 'planning'): number {
+  if (mode === 'planning' && zone.mapPlan.globalBounds && hasPlanningCoordinate(room)) {
+    return room.worldX! - zone.mapPlan.globalBounds.minX;
+  }
+  return getRoomDisplayX(room, mode) - zone.minMapX;
+}
+
+function getRoomOffsetY(room: PlanningRoom, zone: PlacedZone, mode: 'local' | 'planning'): number {
+  if (mode === 'planning' && zone.mapPlan.globalBounds && hasPlanningCoordinate(room)) {
+    return room.worldY! - zone.mapPlan.globalBounds.minY;
+  }
+  return getRoomDisplayY(room, mode) - zone.minMapY;
 }
 
 function getZoneBounds(zone: PlanningZone, mode: 'local' | 'planning'): { minX: number; maxX: number; minY: number; maxY: number } {
