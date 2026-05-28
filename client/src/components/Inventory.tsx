@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
-import { ITEM_DEFS, type EquipmentSlots, type InventoryItem, type ItemType } from '@game/shared';
+import { ITEM_DEFS, WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID, type EquipmentSlots, type InventoryItem, type ItemType } from '@game/shared';
 import { getItemImagePath } from '../utils/assetImages';
 
 const EQUIP_SLOT_LABELS: Record<string, string> = {
@@ -188,7 +188,7 @@ export function InventoryView({
                 const itemKey = `${item.itemId}-${item.itemInstanceId ?? i}`;
                 const itemType = def?.type;
                 const canEquip = itemType === 'weapon' || itemType === 'armor' || itemType === 'accessory';
-                const canUse = itemType === 'consumable';
+                const canUse = itemType === 'consumable' || Boolean(WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID[item.itemId]);
                 const canSell = (def?.sellPrice ?? 0) > 0;
                 const commandItemId = item.itemInstanceId ?? item.itemId;
                 const metaParts = [

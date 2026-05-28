@@ -1,6 +1,6 @@
 import { useGameStore } from '../stores/gameStore';
 import type { AffixDef, ItemRarity, ItemStats } from '@game/shared';
-import { ITEM_DEFS, resolveEquipSlotForItem } from '@game/shared';
+import { ITEM_DEFS, WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID, resolveEquipSlotForItem } from '@game/shared';
 
 const RARITY_COLORS: Record<ItemRarity, string> = {
   common: '#888888',
@@ -101,6 +101,7 @@ export default function ItemTooltip() {
   const totalStats = combineStats(tooltipItem.stats, tooltipItem.affixes);
   const tooltipDef = ITEM_DEFS[tooltipItem.id];
   const resolvedTooltipSlot = resolveEquipSlotForItem(tooltipDef);
+  const dungeonEntryItem = WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID[tooltipItem.id];
 
   // Equipment comparison: find currently equipped item in the same slot
   const isEquippable = !!resolvedTooltipSlot;
@@ -231,6 +232,18 @@ export default function ItemTooltip() {
           {tooltipItem.bound ? '已綁定' : '未綁定'}
         </span>
       </div>
+
+      {dungeonEntryItem && (
+        <div className="item-tooltip-set">
+          <div className="text-[10px] text-text-amber mb-0.5">副本入口</div>
+          <div>可開啟：{dungeonEntryItem.dungeonName}</div>
+          <div>使用地點：{dungeonEntryItem.entranceRoomName}</div>
+          <div>消耗：{dungeonEntryItem.consumeItem ? '使用後消耗' : '不會消耗'}</div>
+          {dungeonEntryItem.cooldownSeconds ? (
+            <div>冷卻：{Math.ceil(dungeonEntryItem.cooldownSeconds / 60)} 分鐘</div>
+          ) : null}
+        </div>
+      )}
 
       {/* Description */}
       {tooltipItem.description && (

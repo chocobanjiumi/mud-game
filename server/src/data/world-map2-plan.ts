@@ -1,3 +1,4 @@
+import { WORLD_MAP2_INSTANCE_ENTRY_ITEMS } from '@game/shared';
 import type { RoomDef, ZoneDef } from '@game/shared';
 
 export type ZoneMapScopeDecision = 'world' | 'instance' | 'hybrid' | 'decision';
@@ -39,15 +40,6 @@ export interface ZoneGlobalBounds {
   maxY: number;
   anchor: string;
   terrainRole: string;
-}
-
-interface ItemUseInstanceEntryConfig {
-  zoneId: string;
-  itemId: string;
-  consumeItem: boolean;
-  cooldownSeconds?: number;
-  name: string;
-  description: string;
 }
 
 interface NpcDialogueInstanceEntryConfig {
@@ -332,47 +324,6 @@ export const WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
   final_battleground: 'final_battleground_template',
 };
 
-const WORLD_MAP2_ITEM_USE_INSTANCE_ENTRIES: ItemUseInstanceEntryConfig[] = [
-  {
-    zoneId: 'ancient_ruins',
-    itemId: 'ancient_runestone',
-    consumeItem: true,
-    name: '遠古符文石共鳴',
-    description: '遠古符文石貼近古代遺跡入口時會沿著門楣刻痕發光，石面裂紋指向封閉走廊深處；使用者必須站在遺跡入口前，讓符文耗盡光芒後開啟一次獨立探索。',
-  },
-  {
-    zoneId: 'sky_isles',
-    itemId: 'sky_rune_shard',
-    consumeItem: false,
-    name: '浮空符文片定位',
-    description: '浮空符文片會在浮空群島入口的斷裂錨臺上方旋轉，將散落雲橋短暫對準副本起點；它不會被消耗，但只能在入口房間用來定位可進入的浮空群島探索。',
-  },
-  {
-    zoneId: 'time_ruins',
-    itemId: 'minute_zero_key',
-    consumeItem: false,
-    cooldownSeconds: 300,
-    name: '零分鑰印校時',
-    description: '零分鑰印靠近時間廢墟入口時會把鐘面停在同一刻，讓入口封印露出可通行的裂縫；鑰印不會消耗，但每次校時後需要等待鐘聲重新排列才能再次開啟。',
-  },
-  {
-    zoneId: 'astral_wastes',
-    itemId: 'worldcore_anchor',
-    consumeItem: false,
-    cooldownSeconds: 300,
-    name: '荒原核心錨定',
-    description: '荒原核心錨插入星界荒原入口的裂地時，會把漂移地平線固定成一條可行走的黑星道路；道具不會消耗，隊長可用它帶隊進入穩定後的星界副本。',
-  },
-  {
-    zoneId: 'final_battleground',
-    itemId: 'final_standard_seal',
-    consumeItem: false,
-    cooldownSeconds: 600,
-    name: '終末軍旗印宣戰',
-    description: '終末軍旗印舉向終焉戰場入口時，殘破戰旗會回應諸王軍令並展開決戰通道；戰印不會消耗，但入口會在宣戰後沉寂一段時間，避免連續重啟終局戰場。',
-  },
-];
-
 const WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES: NpcDialogueInstanceEntryConfig[] = [
   {
     zoneId: 'crystal_cave',
@@ -456,7 +407,7 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
       difficultyOptions: ['normal'],
     });
 
-    for (const itemEntry of WORLD_MAP2_ITEM_USE_INSTANCE_ENTRIES.filter(entry => entry.zoneId === zone.id)) {
+    for (const itemEntry of WORLD_MAP2_INSTANCE_ENTRY_ITEMS.filter(entry => entry.zoneId === zone.id)) {
       entries.push({
         id: `${zone.id}_${itemEntry.itemId}_item_entry`,
         instanceTemplateId: zone.id,
@@ -465,11 +416,11 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
         roomId: plan.entranceRoomId,
         requiredItemId: itemEntry.itemId,
         consumeItem: itemEntry.consumeItem,
-        name: itemEntry.name,
-        description: itemEntry.description,
+        name: itemEntry.entryName,
+        description: itemEntry.entryDescription,
         minLevel: zone.levelRange[0],
         maxPartySize: zone.recommendedPartySize[1],
-        cooldownSeconds: itemEntry.cooldownSeconds ?? 0,
+        cooldownSeconds: 'cooldownSeconds' in itemEntry ? itemEntry.cooldownSeconds ?? 0 : 0,
         difficultyOptions: ['normal'],
       });
     }
