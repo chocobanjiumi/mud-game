@@ -2,6 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
+import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
 import { WEAPON_TYPE_DEFS } from '../packages/shared/src/types/item.js';
@@ -87,6 +88,7 @@ const knownReferenceIds = new Set<string>([
   ...Object.keys(DUNGEON_DEFS),
   ...Object.keys(GATHERING_NODE_DEFS),
   ...Object.keys(CLASS_DEFS),
+  ...Object.keys(SKILL_DEFS),
   ...Object.keys(WEAPON_TYPE_DEFS),
   ...Object.values(AFFIX_POOLS).flat().map(affix => affix.id),
 ]);

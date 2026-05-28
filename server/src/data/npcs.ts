@@ -124,7 +124,7 @@ export const NPCS: Record<string, NpcDef> = {
           { text: '我該怎麼變得更強？', nextId: 'get_stronger' },
           { text: '附近有什麼危險嗎？', nextId: 'dangers' },
           { text: '這座村子有什麼歷史嗎？', nextId: 'village_history' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先回村口整理線索。', nextId: 'farewell' },
         ],
       },
       {
@@ -1468,7 +1468,7 @@ export const NPCS: Record<string, NpcDef> = {
           { text: '我想看看你的獵具。', nextId: 'shop' },
           { text: '能教我追蹤獵物嗎？', nextId: 'tracking' },
           { text: '附近有什麼危險的獵物？', nextId: 'dangerous_prey' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先去檢查獵徑痕跡。', nextId: 'farewell' },
         ],
       },
       {
@@ -2488,7 +2488,7 @@ export const NPCS: Record<string, NpcDef> = {
           { text: '讓我看看你的武器！', nextId: 'shop' },
           { text: '你能鍛造什麼等級的武器？', nextId: 'crafting' },
           { text: '矮人族的鍛造技術是怎麼來的？', nextId: 'dwarf_lore' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先去整理鍛造材料。', nextId: 'farewell' },
         ],
       },
       {
@@ -2615,7 +2615,7 @@ export const NPCS: Record<string, NpcDef> = {
           { text: '火神是什麼？', nextId: 'fire_god' },
           { text: '這座神殿有什麼歷史？', nextId: 'temple_history' },
           { text: '火山有危險嗎？', nextId: 'volcano_danger' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先避開火山熱風。', nextId: 'farewell' },
         ],
       },
       {
@@ -2790,7 +2790,7 @@ export const NPCS: Record<string, NpcDef> = {
           '而我正好在這裡等著他們。雙贏！',
         options: [
           { text: '果然是生意人。', nextId: 'shop' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先去盤點寶石貨單。', nextId: 'farewell' },
         ],
       },
       {
@@ -3029,7 +3029,7 @@ export const NPCS: Record<string, NpcDef> = {
           { text: '城堡裡有什麼？', nextId: 'castle_info' },
           { text: '冰龍是真的嗎？', nextId: 'ice_dragon_info' },
           { text: '我要進去。', nextId: 'enter_warning' },
-          { text: '告辭了。', nextId: 'farewell' },
+          { text: '我先確認進城準備。', nextId: 'farewell' },
         ],
       },
       {
