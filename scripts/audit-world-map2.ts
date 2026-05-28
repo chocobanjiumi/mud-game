@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { Direction, RoomDef } from '@game/shared';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
@@ -41,7 +41,9 @@ const overlappingZoneGlobalBounds: string[] = [];
 const crossZoneWorldAdjacencyIssues: string[] = [];
 const borderRoomGaps: string[] = [];
 const twoDimensionalDesignIssues: string[] = [];
+const mapPlanningUiIssues: string[] = [];
 const instanceEntries = buildInstanceEntryDefs(ZONES);
+const mapPlanningPageSource = readOptionalText(resolve(process.cwd(), '../client/src/components/MapPlanningPage.tsx'));
 
 for (const room of rooms) {
   const seenDirections = new Set<string>();
@@ -238,6 +240,32 @@ for (const exitText of crossZoneExits) {
   }
 }
 
+if (!mapPlanningPageSource) {
+  mapPlanningUiIssues.push('/mud/map planning UI source missing: client/src/components/MapPlanningPage.tsx');
+} else {
+  if (!mapPlanningPageSource.includes("useState<'local' | 'planning'>('local')")) {
+    mapPlanningUiIssues.push('/mud/map missing explicit local/planning mode state');
+  }
+  if (!mapPlanningPageSource.includes('現況 local map') || !mapPlanningPageSource.includes('規劃 global map')) {
+    mapPlanningUiIssues.push('/mud/map missing visible local/global mode controls');
+  }
+  if (!mapPlanningPageSource.includes('function buildGlobalAtlas')) {
+    mapPlanningUiIssues.push('/mud/map missing global atlas layout function');
+  }
+  if (!mapPlanningPageSource.includes('zone.mapPlan.globalBounds')) {
+    mapPlanningUiIssues.push('/mud/map planning mode does not use zone global bounds as overlay placement');
+  }
+  if (!mapPlanningPageSource.includes('className="map-planning-zone-frame"')) {
+    mapPlanningUiIssues.push('/mud/map missing zone overlay frame rendering');
+  }
+  if (!mapPlanningPageSource.includes("'map-planning-room'") || !mapPlanningPageSource.includes('width={CELL - 2}') || !mapPlanningPageSource.includes('height={CELL - 2}')) {
+    mapPlanningUiIssues.push('/mud/map missing square room cell rendering');
+  }
+  if (!mapPlanningPageSource.includes('function toPlanningDisplayZone') || !mapPlanningPageSource.includes('templateRooms')) {
+    mapPlanningUiIssues.push('/mud/map missing instance entrance marker collapse with template room list');
+  }
+}
+
 const coordinateCollisions = [...coordinateOwners.entries()]
   .filter(([, owners]) => owners.length > 1)
   .map(([coord, owners]) => `${coord}: ${owners.join(', ')}`);
@@ -288,6 +316,7 @@ const report = {
   },
   design: {
     twoDimensionalDesignIssues,
+    mapPlanningUiIssues,
   },
   zoneLayout: {
     plannedZoneGlobalBounds: zoneGlobalBounds
@@ -331,6 +360,7 @@ if (strict) {
     ...coordinateCollisions,
     ...cardinalCoordinateMismatches,
     ...twoDimensionalDesignIssues,
+    ...mapPlanningUiIssues,
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
     ...crossZoneWorldAdjacencyIssues,
@@ -396,6 +426,14 @@ function rangesTouchOrOverlap(leftMin: number, leftMax: number, rightMin: number
   return leftMin <= rightMax + 1 && leftMax + 1 >= rightMin;
 }
 
+function readOptionalText(path: string): string | null {
+  try {
+    return readFileSync(path, 'utf8');
+  } catch {
+    return null;
+  }
+}
+
 function countCjkChars(text: string): number {
   return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
 }
@@ -443,6 +481,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
+    `/mud/map planning UI issues: ${reportData.design.mapPlanningUiIssues.length}`,
     `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
     `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
