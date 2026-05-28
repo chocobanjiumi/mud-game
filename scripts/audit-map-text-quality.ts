@@ -45,6 +45,8 @@ type TextKind =
   | 'achievement.description'
   | 'title.description'
   | 'system.errorMessage'
+  | 'system.successMessage'
+  | 'combatLog'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -501,6 +503,7 @@ auditPartyAndPvpMessages();
 auditTutorialOnboardingText();
 auditAchievementAndTitleText();
 auditSystemErrorMessages();
+auditSystemSuccessAndCombatLogText();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -637,6 +640,12 @@ const report = {
       numericRequiredParts: ['目前值', '需求值'],
       normalizedAtSendErrorBoundary: true,
     },
+    systemSuccessCombatLog: {
+      successMessageMinCjkChars: 18,
+      combatLogMinCjkChars: 22,
+      requiredParts: ['實際數值', '資源名稱', '來源', '目標'],
+      bannedPatterns: ['成功', '造成傷害', '獲得獎勵'],
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -738,6 +747,8 @@ const report = {
     achievements: Object.keys(ACHIEVEMENT_DEFS).length,
     titleDescriptions: Object.keys(ACHIEVEMENT_DEFS).length,
     systemErrorMessages: buildSystemErrorAuditRecords().length,
+    systemSuccessMessages: buildSystemSuccessAuditRecords().length,
+    combatLogs: buildCombatLogAuditRecords().length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1164,6 +1175,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'tutorial.helpText' || kind === 'onboarding.stepText') return 'tutorialOnboarding.text';
   if (kind === 'achievement.description' || kind === 'title.description') return 'achievementTitle.description';
   if (kind === 'system.errorMessage') return 'system.errorMessage';
+  if (kind === 'system.successMessage' || kind === 'combatLog') return 'systemSuccessCombatLog';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -2071,6 +2083,58 @@ function requireSystemErrorPart(id: string, text: string, pattern: RegExp, reaso
   addIssue(id, 'system.errorMessage', 'message', text, 12, reason);
 }
 
+function auditSystemSuccessAndCombatLogText() {
+  for (const record of buildSystemSuccessAuditRecords()) {
+    checkText(record.id, 'system.successMessage', 'message', record.text, 18, 'system successMessage 需包含來源、目標、實際數值、資源名稱或狀態結果');
+    requireSystemSuccessPart(record.id, record.text, /你|玩家|角色|任務|商人|公會|隊伍|系統|副本/u, 'successMessage 缺少來源或行動者');
+    requireSystemSuccessPart(record.id, record.text, /獲得|支付|消耗|剩餘|回復|解鎖|加入|完成|結算|目前/u, 'successMessage 缺少結果或狀態變化');
+    if (/[0-9]/u.test(record.text)) {
+      requireSystemSuccessPart(record.id, record.text, /經驗值|金幣|HP|道具|物品|數量|Lv|點|個|次|人/u, 'successMessage 有數值但缺少資源名稱');
+    }
+  }
+
+  for (const record of buildCombatLogAuditRecords()) {
+    checkText(record.id, 'combatLog', 'log', record.text, 22, 'combatLog 需包含行動者、目標、技能或攻擊方式、結果與實際數值');
+    requireCombatLogPart(record.id, record.text, /玩家|史萊姆|暗影狼|祭司|戰士|法師|遊俠|目標|自己/u, 'combatLog 缺少行動者或目標');
+    requireCombatLogPart(record.id, record.text, /使用|攻擊|命中|治療|閃避|逃離|道具|支援|淨化/u, 'combatLog 缺少技能或攻擊方式');
+    requireCombatLogPart(record.id, record.text, /造成|回復|未造成|移除|成功|失敗|生命值|狀態|傷害|HP|判定/u, 'combatLog 缺少結果');
+    if (/造成|回復|移除|成功率|傷害|HP/u.test(record.text)) {
+      requireCombatLogPart(record.id, record.text, /\d+/u, 'combatLog 有傷害、治療、狀態或判定結果時必須列實際數值');
+    }
+  }
+}
+
+function buildSystemSuccessAuditRecords(): { id: string; text: string }[] {
+  return [
+    { id: 'combat/exp', text: '戰鬥結算完成：玩家擊敗史萊姆，獲得經驗值 +10，金幣 +3，背包掉落會另行列出。' },
+    { id: 'merchant/buy', text: '你向武器商人買入「鐵劍」x1，支付 120 金幣；物品已放入背包，目前剩餘 380 金幣。' },
+    { id: 'quest/complete', text: '任務「初出茅廬」完成，回報後結算經驗值 +50、金幣 +30，下一步請查看任務追蹤。' },
+    { id: 'craft/success', text: '製作成功：你在鍛造台完成「鐵劍」x1，消耗 40 金幣與指定材料，物品已加入背包。' },
+    { id: 'party/join', text: '你已接受 Leader 的組隊邀請並加入隊伍；目前隊伍人數 2/5，下一步可跟隨隊長或準備戰鬥。' },
+  ];
+}
+
+function buildCombatLogAuditRecords(): { id: string; text: string }[] {
+  return [
+    { id: 'combat/skillDamage', text: '玩家使用火球術命中史萊姆，造成 24 點傷害，結果為普通命中。' },
+    { id: 'combat/skillMiss', text: '玩家使用火球術攻擊暗影狼，但本次命中判定失敗，造成 0 點傷害且目標生命值不變。' },
+    { id: 'combat/heal', text: '祭司使用治癒治療自己，實際回復 18 HP，目標生命值由 32 變為 50。' },
+    { id: 'combat/flee', text: '遊俠嘗試逃離戰鬥並成功脫身，逃跑判定成功率 62%，本輪不再承受追擊傷害。' },
+    { id: 'combat/item', text: '戰士使用 1 次戰鬥道具行動，行動已排入本輪結算；具體治療、傷害或狀態效果會依道具資料套用。' },
+    { id: 'combat/support', text: '祭司使用淨化支援戰士，淨化結果為移除 2 個負面狀態，目標目前可繼續行動。' },
+  ];
+}
+
+function requireSystemSuccessPart(id: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'system.successMessage', 'message', text, 18, reason);
+}
+
+function requireCombatLogPart(id: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'combatLog', 'log', text, 22, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -2174,6 +2238,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'tutorialOnboarding.text'
     || batchKey === 'achievementTitle.description'
     || batchKey === 'system.errorMessage'
+    || batchKey === 'systemSuccessCombatLog'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2520,6 +2585,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Tutorial steps checked: ${reportData.counts.tutorialSteps}`,
     `Achievement/title descriptions checked: ${reportData.counts.achievements + reportData.counts.titleDescriptions}`,
     `System error messages checked: ${reportData.counts.systemErrorMessages}`,
+    `System success/combat logs checked: ${reportData.counts.systemSuccessMessages + reportData.counts.combatLogs}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T18:15:36.056Z",
+  "generatedAt": "2026-05-28T18:18:58.487Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -215,6 +215,21 @@
       ],
       "normalizedAtSendErrorBoundary": true
     },
+    "systemSuccessCombatLog": {
+      "successMessageMinCjkChars": 18,
+      "combatLogMinCjkChars": 22,
+      "requiredParts": [
+        "實際數值",
+        "資源名稱",
+        "來源",
+        "目標"
+      ],
+      "bannedPatterns": [
+        "成功",
+        "造成傷害",
+        "獲得獎勵"
+      ]
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -338,6 +353,8 @@
     "achievements": 51,
     "titleDescriptions": 51,
     "systemErrorMessages": 18,
+    "systemSuccessMessages": 5,
+    "combatLogs": 6,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,

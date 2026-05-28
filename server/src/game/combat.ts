@@ -368,9 +368,9 @@ export class CombatEngine {
 
     let hit = false;
     if (dmgResult.isMiss) {
-      log.push(`${actor.name}使用了${skillDef.name}，但是沒有命中！`);
+      log.push(`${actor.name}使用${skillDef.name}攻擊${target.name}，但本次命中判定失敗，造成 0 點傷害且目標生命值不變。`);
     } else if (dmgResult.isDodged) {
-      log.push(`${actor.name}使用了${skillDef.name}，但被${target.name}閃避了！`);
+      log.push(`${actor.name}使用${skillDef.name}攻擊${target.name}，但${target.name}成功閃避，造成 0 點傷害且觸發閃避相關效果。`);
       this.triggerAffixEvents(session, target, 'on_dodge', log, {
         targetHpPercent: this.getHpPercent(target),
         isFirstHit: session.state.round === 1,
@@ -378,7 +378,7 @@ export class CombatEngine {
     } else {
       hit = true;
       const critText = dmgResult.isCrit ? '暴擊！' : '';
-      log.push(`${actor.name}使用了${skillDef.name}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`);
+      log.push(`${actor.name}使用${skillDef.name}命中${target.name}，造成 ${dmgResult.damage} 點傷害${critText ? `，結果為${critText}` : '，結果為普通命中'}。`);
       if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
         dmgResult.damage = this.applyBlockAffixEffects(session, target, actor, dmgResult.damage, log, {
           targetHpPercent: this.getHpPercent(target),
@@ -896,7 +896,7 @@ export class CombatEngine {
         const before = target.hp;
         target.hp = Math.min(target.maxHp, target.hp + healAmount);
         const actual = target.hp - before;
-        log.push(`${actor.name}使用了${skillName}，為${target.name}回復了 ${actual} HP！`);
+        log.push(`${actor.name}使用${skillName}治療${target.name}，實際回復 ${actual} HP，目標生命值由 ${before} 變為 ${target.hp}。`);
         if (actual > 0) {
           this.triggerAffixEvents(session, actor, 'on_heal', log, {
             targetHpPercent: this.getHpPercent(target),
@@ -906,9 +906,9 @@ export class CombatEngine {
       } else {
         const targetHpPercent = this.getHpPercent(target);
         if (dmgResult.isMiss) {
-          log.push(`${actor.name}使用了${skillName}，但是沒有命中！`);
+          log.push(`${actor.name}使用${skillName}攻擊${target.name}，但本次命中判定失敗，造成 0 點傷害且目標生命值不變。`);
         } else if (dmgResult.isDodged) {
-          log.push(`${actor.name}使用了${skillName}，但被${target.name}閃避了！`);
+          log.push(`${actor.name}使用${skillName}攻擊${target.name}，但${target.name}成功閃避，造成 0 點傷害且觸發閃避相關效果。`);
           if (target.resourceType === 'focus' && this.effectEngine.getEffectValue(target.activeEffects, 'dodge_up') > 0) {
             this.gainResource(target, 20 + this.getCombatantResourceAffixBonus(target.id, target.isPlayer, 'focusRegen'), log, '因閃避獲得');
           }
@@ -919,7 +919,7 @@ export class CombatEngine {
         } else {
           const critText = dmgResult.isCrit ? '暴擊！' : '';
           log.push(
-            `${actor.name}使用了${skillName}，對${target.name}造成 ${dmgResult.damage} 點傷害！${critText}`,
+            `${actor.name}使用${skillName}命中${target.name}，造成 ${dmgResult.damage} 點傷害${critText ? `，結果為${critText}` : '，結果為普通命中'}。`,
           );
           if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
             dmgResult.damage = this.applyBlockAffixEffects(session, target, actor, dmgResult.damage, log, {
@@ -1002,10 +1002,10 @@ export class CombatEngine {
     const fleeChance = Math.min(80, Math.max(10, 30 + (playerDex - avgEnemyDex) * 2 + getFleeOriginBonus(actor)));
 
     if (Math.random() * 100 < fleeChance) {
-      log.push(`${actor.name}成功逃跑了！`);
+      log.push(`${actor.name}嘗試逃離戰鬥並成功脫身，逃跑判定成功率 ${Math.round(fleeChance)}%，本輪不再承受追擊傷害。`);
       session.state.result = 'fled';
     } else {
-      log.push(`${actor.name}試圖逃跑，但是失敗了！`);
+      log.push(`${actor.name}嘗試逃離戰鬥但失敗，逃跑判定成功率 ${Math.round(fleeChance)}%，本輪仍會承受敵方追擊。`);
     }
   }
 
@@ -1016,7 +1016,7 @@ export class CombatEngine {
     log: string[],
   ): void {
     // 物品使用（簡化版本，具體在物品系統中完善）
-    log.push(`${actor.name}使用了道具。`);
+    log.push(`${actor.name}使用 1 次戰鬥道具行動，行動已排入本輪結算；具體治療、傷害或狀態效果會依道具資料套用。`);
   }
 
   private executeMountRide(session: CombatSession, actor: CombatantState, log: string[]): void {
@@ -1211,7 +1211,7 @@ export class CombatEngine {
       elemText = '（屬性抵抗）';
     }
 
-    log.push(`${desc}造成 ${result.damage} 點傷害！${elemText}`);
+    log.push(`${desc}命中${target.name}，造成 ${result.damage} 點傷害${elemText ? `，${elemText}` : '，目標生命值將依防禦與狀態效果扣減'}。`);
 
     if (this.effectEngine.getDamageReduction(target.activeEffects) > 0) {
       result.damage = this.applyBlockAffixEffects(session, target, actor, result.damage, log, {
@@ -2022,9 +2022,9 @@ export class CombatEngine {
 
     if (skillDef.special?.removeDebuffs) {
       const removed = this.effectEngine.removeAllDebuffs(target.activeEffects);
-      log.push(`${actor.name}使用了${skillName}，淨化了${target.name}${removed.length > 0 ? `的 ${removed.length} 個負面狀態` : '，但沒有可移除的負面狀態'}。`);
+      log.push(`${actor.name}使用${skillName}支援${target.name}，淨化結果為移除 ${removed.length} 個負面狀態，目標目前可繼續行動。`);
     } else {
-      log.push(`${actor.name}使用了${skillName}。`);
+      log.push(`${actor.name}使用${skillName}支援${target.name}，技能效果已排入本輪結算，目標狀態會依技能設定更新。`);
     }
 
     if (skillDef.effects) {
