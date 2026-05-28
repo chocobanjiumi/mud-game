@@ -87,6 +87,8 @@ import { buildOrdinalLabels, buildRoomEntities, type RoomEntityPlayer } from './
 import { buildNearbyCombatPayload } from './nearby-combat.js';
 import { applyShopBuyOriginDiscount, applyTravelGoldOriginDiscount } from './origin-effects.js';
 import { MAIN_QUEST_FLOW } from './main-quest-flow.js';
+import { QUEST_DEFS } from './quest.js';
+import { EXPANDED_QUEST_DEFS } from './quest-system.js';
 import { addExperienceToCharacter, expRequiredForLevel, getLevelExpProgress } from './leveling.js';
 import { grantAndNotifyLearnableSkills, removeLegacyAdventurerSkills } from './skill-learning.js';
 import { applyFieldSkillEffect } from './field-skill-effects.js';
@@ -5474,11 +5476,14 @@ function formatInstanceEntryDifficulty(value: string): string {
 function checkInstanceEntryRequirements(char: Character, entry: InstanceEntryDef): { ok: true } | { ok: false; message: string } {
   if (entry.requiredItemId) {
     const item = ITEM_DEFS[entry.requiredItemId];
-    const hasItem = getInventory(char.id).some(inv => inv.itemId === entry.requiredItemId && inv.quantity > 0);
+    const currentQuantity = getInventory(char.id)
+      .filter(inv => inv.itemId === entry.requiredItemId)
+      .reduce((sum, inv) => sum + inv.quantity, 0);
+    const hasItem = currentQuantity > 0;
     if (!hasItem) {
       return {
         ok: false,
-        message: `道具不足，無法進入「${entry.name}」。缺少道具：${item?.name ?? entry.requiredItemId}。下一步：取得所需道具後回到此入口。`,
+        message: `你正在嘗試進入「${entry.name}」，但入口道具不足；缺少道具「${item?.name ?? entry.requiredItemId}」，目前持有 ${currentQuantity} 個，需求 1 個。下一步：取得所需道具後回到此入口。`,
       };
     }
   }
@@ -5487,14 +5492,19 @@ function checkInstanceEntryRequirements(char: Character, entry: InstanceEntryDef
     const requiredState = entry.requiredQuestState ?? 'completed';
     const currentState = questMgr.getQuestStatus(char, entry.requiredQuestId);
     if (!doesQuestStateSatisfyEntry(currentState, requiredState)) {
+      const questName = formatQuestNameForEntry(entry.requiredQuestId);
       return {
         ok: false,
-        message: `任務條件不足，無法進入「${entry.name}」。需要任務 ${entry.requiredQuestId} 達到「${formatInstanceEntryQuestState(requiredState)}」，目前狀態是「${formatInstanceEntryQuestState(currentState)}」。下一步：先推進對應任務階段再返回入口。`,
+        message: `你正在嘗試進入「${entry.name}」，但任務條件不足；需要「${questName}」達到「${formatInstanceEntryQuestState(requiredState)}」，目前狀態是「${formatInstanceEntryQuestState(currentState)}」。下一步：先推進對應任務階段再返回入口。`,
       };
     }
   }
 
   return { ok: true };
+}
+
+function formatQuestNameForEntry(questId: string): string {
+  return QUEST_DEFS[questId]?.name ?? EXPANDED_QUEST_DEFS[questId]?.name ?? questId;
 }
 
 function doesQuestStateSatisfyEntry(currentState: ReturnType<typeof questMgr.getQuestStatus>, requiredState: InstanceEntryQuestState): boolean {

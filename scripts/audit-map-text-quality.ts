@@ -2057,6 +2057,8 @@ function buildSystemErrorAuditRecords(): { id: string; text: string; numeric?: b
     { id: 'equipment/level', text: '你正在裝備「鐵劍」，但角色等級不足；目前等級 3，需求等級 Lv.5。下一步請先提升等級或改穿低等級裝備。', numeric: true },
     { id: 'instance/level', text: '你正在嘗試進入「水晶洞窟」，但等級不足；目前等級 3，需求等級 5。下一步：先完成同等級區域任務或提升等級後再返回入口。', numeric: true },
     { id: 'instance/partySize', text: '你正在嘗試進入「水晶洞窟」，但隊伍人數不符；目前人數 6，最多允許 5 人。下一步：調整隊伍人數後由隊長再次進入。', numeric: true },
+    { id: 'instance/itemRequired', text: '你正在嘗試進入「終焉戰場軍旗裂隙」，但入口道具不足；缺少道具「終戰軍旗封印」，目前持有 0 個，需求 1 個。下一步：取得所需道具後回到此入口。', numeric: true },
+    { id: 'instance/questRequired', text: '你正在嘗試進入「王城封印門」，但任務條件不足；需要「王都封印調查」達到「已完成」，目前狀態是「進行中」。下一步：先推進對應任務階段再返回入口。' },
     { id: 'quest/missingId', text: '用法：quest accept <任務ID>' },
     { id: 'merchant/noItem', text: '你正在購買商人商品，但沒有輸入物品名稱；下一步請使用 buy <物品名稱>。' },
     { id: 'achievement/notComplete', text: '你尚未完成該成就，無法裝備此稱號。' },
