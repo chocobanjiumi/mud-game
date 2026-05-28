@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T14:56:51.340Z",
+  "generatedAt": "2026-05-28T15:01:27.649Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -95,7 +95,7 @@
     "imagePrompts": 1203,
     "instanceEntries": 37,
     "checkedDungeonItems": 120,
-    "issues": 9830
+    "issues": 9796
   },
   "issuesByKind": {
     "zone.description": 60,
@@ -113,9 +113,8 @@
     "dungeon.room.description": 40,
     "item.description": 39,
     "equipment.description": 457,
-    "gatheringNode.description": 36,
     "batch.repeatedOpening": 300,
-    "batch.repeatedCoreTerm": 248
+    "batch.repeatedCoreTerm": 250
   },
   "issues": [
     {
@@ -83333,330 +83332,6 @@
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
-      "id": "mining_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "mining_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "mining_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "mining_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "mining_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "mining_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "herbalism_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "logging_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "skinning_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "fishing_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_1",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_2",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_3",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_4",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_5",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
-      "id": "archaeology_tier_6",
-      "kind": "gatheringNode.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 35,
-      "text": "",
-      "reason": "缺 gathering node description，需包含資源外觀、生成環境與採集動作線索"
-    },
-    {
       "id": "zone:marsh_of_mirrors/opening:2",
       "kind": "batch.repeatedOpening",
       "field": "text",
@@ -88533,6 +88208,24 @@
       "minimumLength": 30,
       "text": "steel_sword, blackmoss_patrol_helm, starsand_night_pendant, fieldstone_carpenter_hammer, rainpearl_wand, blackbanner_oath_shield, zone_starter_village_head, zone_starter_village_body, zone_starter_village_hands, zone_starter_village_feet, zone_starter_village_ring, zone_starter_village_necklace",
       "reason": "同批生成內容核心詞「下的」出現於 430/839 筆，超過 30% 門檻"
+    },
+    {
+      "id": "gatheringNode.description/term:適合",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 31,
+      "minimumLength": 30,
+      "text": "mining_tier_1, mining_tier_4, herbalism_tier_1, herbalism_tier_3, herbalism_tier_5, logging_tier_1, logging_tier_3, logging_tier_4, skinning_tier_1, fishing_tier_1, archaeology_tier_1",
+      "reason": "同批生成內容核心詞「適合」出現於 11/36 筆，超過 30% 門檻"
+    },
+    {
+      "id": "gatheringNode.description/term:時要",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 31,
+      "minimumLength": 30,
+      "text": "mining_tier_3, mining_tier_5, herbalism_tier_2, herbalism_tier_6, skinning_tier_3, fishing_tier_2, fishing_tier_4, fishing_tier_5, archaeology_tier_2, archaeology_tier_4, archaeology_tier_5",
+      "reason": "同批生成內容核心詞「時要」出現於 11/36 筆，超過 30% 門檻"
     },
     {
       "id": "affixBuildDirection.notes/term:法目",

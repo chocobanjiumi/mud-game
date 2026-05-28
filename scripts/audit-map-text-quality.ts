@@ -210,7 +210,7 @@ for (const item of Object.values(ITEM_DEFS)) {
 }
 
 for (const node of Object.values(GATHERING_NODE_DEFS)) {
-  addIssue(node.id, 'gatheringNode.description', 'description', '', 35, '缺 gathering node description，需包含資源外觀、生成環境與採集動作線索');
+  checkText(node.id, 'gatheringNode.description', 'description', node.description, 35, 'gathering node description 需包含資源外觀、生成環境與採集動作線索');
 }
 
 for (const affix of Object.values(AFFIX_POOLS).flat()) {

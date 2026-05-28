@@ -21,6 +21,7 @@ export interface GatheringYieldDef {
 export interface GatheringNodeDef {
   id: string;
   name: string;
+  description: string;
   skill: GatheringSkill;
   levelMin: number;
   levelMax: number;
