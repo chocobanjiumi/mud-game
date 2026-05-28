@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:56:01.069Z",
+  "generatedAt": "2026-05-28T18:04:31.353Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -172,6 +172,21 @@
         "下一步"
       ]
     },
+    "tutorialOnboarding": {
+      "tutorialHelpTextMinCjkChars": 30,
+      "onboardingStepTextMinCjkChars": 30,
+      "requiredParts": [
+        "玩家當下目標",
+        "操作入口",
+        "成功條件",
+        "失敗時下一步"
+      ],
+      "bannedPatterns": [
+        "請點擊",
+        "純 UI 操作句",
+        "只列指令"
+      ]
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -291,6 +306,7 @@
     "combatActionTooltips": 10,
     "partyMessages": 6,
     "pvpMessages": 7,
+    "tutorialSteps": 6,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,

@@ -20,6 +20,7 @@ import { RECIPES, type CraftingCategory, type RecipeDef } from '../server/src/ga
 import { getRoomGatheringTags } from '../server/src/game/gathering.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
+import { TUTORIAL_STEPS } from '../server/src/game/tutorial.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type TextKind =
@@ -37,6 +38,8 @@ type TextKind =
   | 'partySystem.message'
   | 'pvp.message'
   | 'duel.message'
+  | 'tutorial.helpText'
+  | 'onboarding.stepText'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -490,6 +493,7 @@ auditWikiTextQuality();
 auditGeneratedImagePrompts();
 auditCombatActionText();
 auditPartyAndPvpMessages();
+auditTutorialOnboardingText();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -607,6 +611,12 @@ const report = {
       partyRequiredParts: ['邀請者或目標玩家', '隊伍狀態', '接受 / 拒絕或失敗下一步'],
       pvpRequiredParts: ['發起者或目標', '模式', '風險或限制', '下一步'],
     },
+    tutorialOnboarding: {
+      tutorialHelpTextMinCjkChars: 30,
+      onboardingStepTextMinCjkChars: 30,
+      requiredParts: ['玩家當下目標', '操作入口', '成功條件', '失敗時下一步'],
+      bannedPatterns: ['請點擊', '純 UI 操作句', '只列指令'],
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -704,6 +714,7 @@ const report = {
     combatActionTooltips: buildCombatActionAuditRecords().length,
     partyMessages: buildPartyMessageAuditRecords().length,
     pvpMessages: buildPvpMessageAuditRecords().length,
+    tutorialSteps: TUTORIAL_STEPS.length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1127,6 +1138,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind.startsWith('merchant.')) return kind;
   if (kind === 'nearbyCombat.actionLabel' || kind === 'combatPanel.actionTooltip') return 'combatAction';
   if (kind === 'partyInvite.message' || kind === 'partySystem.message' || kind === 'pvp.message' || kind === 'duel.message') return 'partyPvp.message';
+  if (kind === 'tutorial.helpText' || kind === 'onboarding.stepText') return 'tutorialOnboarding.text';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1952,6 +1964,22 @@ function requirePvpMessagePart(id: string, kind: 'pvp.message' | 'duel.message',
   addIssue(id, kind, 'message', text, 25, reason);
 }
 
+function auditTutorialOnboardingText() {
+  for (const step of TUTORIAL_STEPS) {
+    const id = `tutorial/step:${step.step}`;
+    checkText(id, 'tutorial.helpText', 'hint', step.hint, 30, 'tutorial helpText 需包含當下目標、操作入口、成功條件與失敗時下一步');
+    requireTutorialTextPart(id, step.hint, /當下目標|目標/u, 'tutorial helpText 缺少玩家當下目標');
+    requireTutorialTextPart(id, step.hint, /輸入|點擊|選擇|打開|指令列|戰鬥面板|房間詳細面板|NPC 對話/u, 'tutorial helpText 缺少操作入口');
+    requireTutorialTextPart(id, step.hint, /成功條件|完成條件|成功/u, 'tutorial helpText 缺少成功條件');
+    requireTutorialTextPart(id, step.hint, /如果|失敗|不足|不存在|沒有|不符|阻擋|下一步/u, 'tutorial helpText 缺少失敗時下一步');
+  }
+}
+
+function requireTutorialTextPart(id: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'tutorial.helpText', 'hint', text, 30, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -2052,6 +2080,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'npc.roleSummary'
     || batchKey.startsWith('merchant.')
     || batchKey === 'partyPvp.message'
+    || batchKey === 'tutorialOnboarding.text'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2395,6 +2424,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Affixes checked: ${reportData.counts.affixes}`,
     `Combat action tooltips checked: ${reportData.counts.combatActionTooltips}`,
     `Party/PvP messages checked: ${reportData.counts.partyMessages + reportData.counts.pvpMessages}`,
+    `Tutorial steps checked: ${reportData.counts.tutorialSteps}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,

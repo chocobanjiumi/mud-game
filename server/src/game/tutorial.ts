@@ -12,42 +12,42 @@ import { sendToCharacter } from '../ws/handler.js';
 export type TutorialTrigger = 'move' | 'kill' | 'equip' | 'skill' | 'talk' | 'quest';
 
 /** 教學步驟定義 */
-interface TutorialStep {
+export interface TutorialStep {
   step: number;
   trigger: TutorialTrigger;
   hint: string;
 }
 
-const TUTORIAL_STEPS: TutorialStep[] = [
+export const TUTORIAL_STEPS: TutorialStep[] = [
   {
     step: 0,
     trigger: 'move',
-    hint: '歡迎來到這個世界！輸入 `go <方向>` 來移動。試試 `go north` 往北走。',
+    hint: '當下目標是先熟悉房間移動：請在指令列輸入 `go north` 或點擊周邊房間的北方出口。成功條件是角色進入相鄰房間並看到新的房間名稱；如果方向不存在或被戰鬥阻擋，下一步請先查看 `look` 的出口提示，或用逃跑 / 結束戰鬥後再移動。',
   },
   {
     step: 1,
     trigger: 'kill',
-    hint: '發現了怪物！輸入 `attack` 開始戰鬥。',
+    hint: '當下目標是完成第一場戰鬥：在有怪物的房間輸入 `attack`，或點擊戰鬥面板中的攻擊按鈕。成功條件是擊敗一隻怪物並看到經驗值、金幣或掉落訊息；如果沒有目標，下一步請移動到野外房間、查看周邊戰鬥面板或先使用 `look` 找怪物。',
   },
   {
     step: 2,
     trigger: 'equip',
-    hint: '你獲得了裝備！輸入 `equip <物品>` 穿上它。',
+    hint: '當下目標是穿上第一件裝備：打開背包後選擇可裝備物品，或輸入 `equip <物品名稱>`。成功條件是角色面板的對應部位出現裝備並更新戰鬥屬性；如果物品等級、職業或部位不符，下一步請查看物品 tooltip、改穿符合條件的裝備，或先回商人補給。',
   },
   {
     step: 3,
     trigger: 'skill',
-    hint: '你有可用的技能！輸入 `skills` 查看，戰鬥中輸入 `skill <技能名>` 使用。',
+    hint: '當下目標是使用一次職業技能：先輸入 `skills` 查看可用技能，再於戰鬥面板點擊技能，或輸入 `skill <技能名>`。成功條件是戰鬥紀錄顯示技能效果、資源消耗與冷卻狀態；如果資源不足、冷卻中或沒有目標，下一步請等待 tick、切換目標或改用普攻。',
   },
   {
     step: 4,
     trigger: 'talk',
-    hint: '看到 NPC 了！輸入 `talk <NPC名>` 與他對話。',
+    hint: '當下目標是和 NPC 建立互動：在房間詳細面板選擇 NPC，或輸入 `talk <NPC名>`。成功條件是對話視窗或文字選項出現，並能看到任務、商店、治療或情報入口；如果房間沒有 NPC，下一步請回到新手村服務房間，或用 `look` 確認目前 NPC 名稱。',
   },
   {
     step: 5,
     trigger: 'quest',
-    hint: '你可以接受任務了！輸入 `quest list` 查看可接任務。',
+    hint: '當下目標是接取或回報第一個任務：輸入 `quest list` 查看可接清單，或在 NPC 對話中選擇任務選項。成功條件是任務日誌出現明確目標、獎勵與下一個房間線索；如果沒有可接任務，下一步請提升等級、完成前置目標，或返回村長與公會 NPC 詢問主線。',
   },
 ];
 
