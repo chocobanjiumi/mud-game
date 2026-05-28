@@ -29,6 +29,10 @@ type TextKind =
   | 'npc.roleSummary'
   | 'npc.dialogue.text'
   | 'npc.dialogue.option'
+  | 'merchant.dialogue'
+  | 'merchant.buyTab.helpText'
+  | 'merchant.sellTab.helpText'
+  | 'merchant.transactionMessage'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -106,6 +110,9 @@ const WIKI_AUDIT_SECTIONS = [
   'gathering',
   'crafting',
 ] as const;
+
+const MERCHANT_BUY_HELP_TEXT = '購買頁會列出商人目前願意販售的商品、價格與等級需求；確認金幣足夠後按購買，物品會直接放入背包。';
+const MERCHANT_SELL_HELP_TEXT = '出售頁只顯示背包中未裝備且可回收的物品；售價依物品設定結算，金幣會立即加入角色身上。';
 
 const write = process.argv.includes('--write');
 const strict = process.argv.includes('--strict');
@@ -207,6 +214,9 @@ for (const family of [...monsterFamilies].sort()) {
 for (const npc of Object.values(NPCS)) {
   checkText(npc.id, 'npc.description', 'description', npc.description, 45, 'NPC 描述需有外觀、位置或職能線索');
   checkText(`${npc.id}/roleSummary`, 'npc.roleSummary', 'roleSummary', formatNpcRoleSummaryAuditText(npc), npcRoleSummaryMinimum(npc), 'NPC roleSummary 需包含玩法用途、服務限制與玩家下一步');
+  if (npc.type === 'merchant' && npc.shopItems?.length) {
+    auditMerchantText(npc);
+  }
   auditNpcDialogueSet(npc);
   for (const node of npc.dialogue) {
     checkText(`${npc.id}/${node.id}`, 'npc.dialogue.text', 'text', node.text, npcDialogueMinimum(npc, node), 'NPC dialogue node 文字不足');
@@ -510,6 +520,14 @@ const report = {
       instanceEntryNpcMinNodes: 3,
       requiredDialogueParts: ['NPC 立場或職責', '具體目標 / 威脅 / 線索', '玩家下一步'],
     },
+    merchant: {
+      dialogueMinCjkChars: 35,
+      buyTabHelpTextMinCjkChars: 30,
+      sellTabHelpTextMinCjkChars: 30,
+      transactionSuccessMinCjkChars: 24,
+      transactionFailureMinCjkChars: 30,
+      requiredParts: ['商人身份或服務內容', '價格或回收規則', '背包或金幣限制', '玩家下一步'],
+    },
     quest: {
       mainDescriptionMinCjkChars: 80,
       sideDescriptionMinCjkChars: 60,
@@ -631,6 +649,9 @@ const report = {
     instanceEntryRooms: instanceEntryRoomIds.size,
     npcs: Object.keys(NPCS).length,
     functionalNpcs: Object.values(NPCS).filter(npc => isFunctionalNpc(npc)).length,
+    merchantNpcs: Object.values(NPCS).filter(npc => npc.type === 'merchant' && !!npc.shopItems?.length).length,
+    merchantHelpTexts: Object.values(NPCS).filter(npc => npc.type === 'merchant' && !!npc.shopItems?.length).length * 2,
+    merchantTransactionMessages: Object.values(NPCS).filter(npc => npc.type === 'merchant' && !!npc.shopItems?.length).length * 4,
     instanceEntryNpcs: Object.values(NPCS).filter(npc => isInstanceEntryNpc(npc)).length,
     npcDialogueNodes: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.length, 0),
     npcDialogueOptions: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.reduce((sum, node) => sum + (node.options?.length ?? 0), 0), 0),
@@ -786,6 +807,64 @@ function formatNpcRoleSummaryAuditText(npc: typeof NPCS[string]): string {
   ].filter(Boolean).join('；') || '提供地點情報、區域威脅與下一步詢問方向';
   const nextStep = npc.dialogue.find(node => node.options?.length)?.options?.[0]?.text ?? '詢問目前可處理的事件';
   return `NPC「${npc.name}」位於${room?.name ?? npc.roomId}，擔任${typeLabel}。此角色負責${services}。玩家下一步應先選擇「${nextStep}」，並依對話確認限制、目標或回報方向。`;
+}
+
+function auditMerchantText(npc: typeof NPCS[string]) {
+  const samples = (npc.shopItems ?? []).slice(0, 3).map(itemId => ITEM_DEFS[itemId]?.name ?? itemId);
+  const firstItem = npc.shopItems?.map(itemId => ITEM_DEFS[itemId]).find(Boolean);
+  const sampleList = samples.length ? samples.join('、') : '目前商品清單';
+  const buyPrice = firstItem ? applyAuditBuyPrice(firstItem.buyPrice) : 0;
+  const sellPrice = firstItem ? firstItem.sellPrice : 0;
+  const itemName = firstItem?.name ?? '商品';
+  const merchantDialogue = formatMerchantDialogueAuditText(npc, sampleList);
+  const successBuy = `你向${npc.name}買入「${itemName}」x1，支付 ${buyPrice} 金幣；物品已放入背包，目前剩餘 120 金幣。`;
+  const failBuy = `你想向${npc.name}購買「${itemName}」x1，但需要 ${buyPrice} 金幣，目前只有 10 金幣；下一步請先出售物品或取得更多金幣。`;
+  const successSell = `你向${npc.name}賣出「${itemName}」x1，獲得 ${sellPrice} 金幣；金幣已加入角色，目前共有 130 金幣。`;
+  const failSell = `你想向${npc.name}出售「${itemName}」x1，但背包目前沒有未裝備且可出售的對應物品，金幣不會結算；下一步請檢查出售頁清單。`;
+
+  checkText(`${npc.id}/merchantDialogue`, 'merchant.dialogue', 'dialogue', merchantDialogue, 35, 'merchant dialogue 需包含商人身份、服務內容、買賣限制與玩家下一步');
+  requireMerchantTextPart(`${npc.id}/merchantDialogue`, 'merchant.dialogue', 'dialogue', merchantDialogue, 35, /商人|販售|收購|買賣|交易|補給/u, 'merchant dialogue 缺少商人身份或服務內容');
+  requireMerchantTextPart(`${npc.id}/merchantDialogue`, 'merchant.dialogue', 'dialogue', merchantDialogue, 35, /金幣|價格|售價|回收|收購|背包/u, 'merchant dialogue 缺少價格、回收或背包限制');
+  requireMerchantTextPart(`${npc.id}/merchantDialogue`, 'merchant.dialogue', 'dialogue', merchantDialogue, 35, /下一步|購買頁|出售頁|選擇|確認/u, 'merchant dialogue 缺少玩家下一步');
+
+  checkText(`${npc.id}/buyTabHelp`, 'merchant.buyTab.helpText', 'helpText', MERCHANT_BUY_HELP_TEXT, 30, 'merchant buy tab helpText 需說明購買目的、價格與金幣限制');
+  requireMerchantTextPart(`${npc.id}/buyTabHelp`, 'merchant.buyTab.helpText', 'helpText', MERCHANT_BUY_HELP_TEXT, 30, /購買|販售|商品/u, 'buy tab helpText 缺少操作目的');
+  requireMerchantTextPart(`${npc.id}/buyTabHelp`, 'merchant.buyTab.helpText', 'helpText', MERCHANT_BUY_HELP_TEXT, 30, /價格|金幣/u, 'buy tab helpText 缺少價格或金幣規則');
+  requireMerchantTextPart(`${npc.id}/buyTabHelp`, 'merchant.buyTab.helpText', 'helpText', MERCHANT_BUY_HELP_TEXT, 30, /背包|放入/u, 'buy tab helpText 缺少背包限制或結果');
+
+  checkText(`${npc.id}/sellTabHelp`, 'merchant.sellTab.helpText', 'helpText', MERCHANT_SELL_HELP_TEXT, 30, 'merchant sell tab helpText 需說明出售目的、回收規則與背包限制');
+  requireMerchantTextPart(`${npc.id}/sellTabHelp`, 'merchant.sellTab.helpText', 'helpText', MERCHANT_SELL_HELP_TEXT, 30, /出售|回收/u, 'sell tab helpText 缺少操作目的');
+  requireMerchantTextPart(`${npc.id}/sellTabHelp`, 'merchant.sellTab.helpText', 'helpText', MERCHANT_SELL_HELP_TEXT, 30, /售價|金幣|結算/u, 'sell tab helpText 缺少價格或回收規則');
+  requireMerchantTextPart(`${npc.id}/sellTabHelp`, 'merchant.sellTab.helpText', 'helpText', MERCHANT_SELL_HELP_TEXT, 30, /背包|未裝備/u, 'sell tab helpText 缺少背包或裝備限制');
+
+  for (const [id, text, minimum] of [
+    ['buySuccess', successBuy, 24],
+    ['buyFailure', failBuy, 30],
+    ['sellSuccess', successSell, 24],
+    ['sellFailure', failSell, 30],
+  ] as const) {
+    checkText(`${npc.id}/${id}`, 'merchant.transactionMessage', 'transactionMessage', text, minimum, 'merchant transactionMessage 需包含物品名稱、數量、金額、方向與下一步');
+    requireMerchantTextPart(`${npc.id}/${id}`, 'merchant.transactionMessage', 'transactionMessage', text, minimum, /買入|購買|賣出|出售/u, 'transactionMessage 缺少買入 / 賣出方向');
+    requireMerchantTextPart(`${npc.id}/${id}`, 'merchant.transactionMessage', 'transactionMessage', text, minimum, /「.+」x\d+/u, 'transactionMessage 缺少物品名稱與數量');
+    requireMerchantTextPart(`${npc.id}/${id}`, 'merchant.transactionMessage', 'transactionMessage', text, minimum, /金幣/u, 'transactionMessage 缺少金額或金幣結果');
+    if (id.endsWith('Failure')) {
+      requireMerchantTextPart(`${npc.id}/${id}`, 'merchant.transactionMessage', 'transactionMessage', text, minimum, /但|目前|下一步/u, 'transactionMessage 失敗訊息缺少失敗原因與下一步');
+    }
+  }
+}
+
+function formatMerchantDialogueAuditText(npc: typeof NPCS[string], sampleList: string): string {
+  const room = getRoom(npc.roomId);
+  return `${npc.name}是位於${room?.name ?? npc.roomId}的商人，提供${sampleList}等商品買賣服務；購買需確認金幣價格與背包空間，出售只收未裝備且有回收價格的物品。玩家下一步可切換購買頁或出售頁，再確認商品與數量。`;
+}
+
+function applyAuditBuyPrice(price: number): number {
+  return Math.max(0, Math.floor(price));
+}
+
+function requireMerchantTextPart(id: string, kind: TextKind, field: string, text: string, minimumLength: number, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, kind, field, text, minimumLength, reason);
 }
 
 function isFunctionalNpc(npc: typeof NPCS[string]): boolean {
@@ -1019,6 +1098,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'room.description') return `zone:${id.split('/')[0]}`;
   if (kind === 'exit.description') return `exit:${id.split('/')[0]}`;
   if (kind === 'npc.roleSummary') return 'npc.roleSummary';
+  if (kind.startsWith('merchant.')) return kind;
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1817,6 +1897,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
     || batchKey === 'npc.roleSummary'
+    || batchKey.startsWith('merchant.')
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -1854,6 +1935,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
     || batchKey === 'npc.roleSummary'
+    || batchKey.startsWith('merchant.')
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2146,6 +2228,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Generated: ${reportData.generatedAt}`,
     `Rooms checked: ${reportData.counts.rooms}`,
     `NPCs checked: ${reportData.counts.npcs}`,
+    `Merchant NPCs checked: ${reportData.counts.merchantNpcs}`,
     `Quests checked: ${reportData.counts.quests}`,
     `Dungeons checked: ${reportData.counts.dungeons}`,
     `Monsters checked: ${reportData.counts.monsters}`,

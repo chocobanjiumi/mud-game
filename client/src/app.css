@@ -2413,6 +2413,15 @@ input::placeholder {
   background: rgba(255, 184, 0, 0.08);
 }
 
+.npc-dialogue-trade-help {
+  margin: 0;
+  padding: 8px 12px 10px;
+  color: var(--color-text-dim);
+  font-size: 11px;
+  line-height: 1.55;
+  border-bottom: 1px solid rgba(26, 58, 92, 0.38);
+}
+
 .npc-dialogue-shop-list {
   overflow-y: auto;
   display: grid;

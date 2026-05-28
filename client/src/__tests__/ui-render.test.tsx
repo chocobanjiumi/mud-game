@@ -580,8 +580,10 @@ describe('key UI component rendering', () => {
 
     expect(buyHtml).toContain('購買');
     expect(buyHtml).toContain('出售');
+    expect(buyHtml).toContain('確認金幣足夠後按購買');
     expect(buyHtml).toContain('木劍');
     expect(buyHtml).not.toContain('小型生命藥水');
+    expect(sellHtml).toContain('售價依物品設定結算');
     expect(sellHtml).toContain('小型生命藥水');
     expect(sellHtml).toContain('出售');
     expect(sellHtml).not.toContain('實例');

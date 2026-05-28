@@ -120,6 +120,8 @@ type LocalMapPayload = {
   rooms: {
     id: string;
     name: string;
+    zone: string;
+    zoneName?: string;
     x: number;
     y: number;
     explored: boolean;
@@ -147,7 +149,7 @@ const fieldApproachingTimers = new Map<string, ReturnType<typeof setTimeout>>();
 const activeScoutRooms = new Set<string>();
 const pendingHunterMarks = new Map<string, PendingHunterMark>();
 
-type RoomStatePayload = RoomPayload & { silent?: boolean; localMap?: LocalMapPayload };
+type RoomStatePayload = RoomPayload & { zoneName?: string; silent?: boolean; localMap?: LocalMapPayload };
 const travelCooldowns = new Map<string, number>();
 const instanceEntryCooldowns = new Map<string, number>();
 const FIELD_SKILL_COOLDOWN_TICK_MS = 5_000;
@@ -704,12 +706,13 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
   return {
     id: char.roomId,
     zone: roomInfo.room.zone,
+    zoneName: zone?.name,
     name: roomInfo.room.name,
     description: roomInfo.room.description,
     silent,
     localMap: buildLocalMapPayload(char, roomInfo.room),
     image: roomInfo.room.image,
-    exits: roomInfo.room.exits,
+    exits: enrichRoomExits(roomInfo.room),
     players: playersInRoom,
     npcs: roomInfo.npcs || [],
     items: roomItems,
@@ -760,14 +763,17 @@ function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPa
     .map(room => {
       const explored = room.id === currentRoom.id || hasDiscovery(char.id, 'visit_room', room.id);
       const adjacent = currentRoom.exits.some(exit => exit.targetRoomId === room.id);
+      const zoneName = getZone(room.zone)?.name;
       if (!explored && !adjacent) return null;
       return {
         id: room.id,
         name: room.name,
+        zone: room.zone,
+        ...(zoneName ? { zoneName } : {}),
         x: room.mapX,
         y: room.mapY,
         explored,
-        exits: room.exits,
+        exits: enrichRoomExits(room),
       };
     })
     .filter((room): room is LocalMapPayload['rooms'][number] => Boolean(room));
@@ -811,6 +817,17 @@ function getPlanarRoomIds(currentRoom: RoomDef, zoneRooms: RoomDef[]): Set<strin
   return visited;
 }
 
+function enrichRoomExits(room: RoomDef): RoomExit[] {
+  return room.exits.map(exit => {
+    const targetRoom = getRoom(exit.targetRoomId);
+    const targetZone = targetRoom ? getZone(targetRoom.zone) : undefined;
+    return {
+      ...exit,
+      targetZoneId: targetRoom?.zone,
+      targetZoneName: targetZone?.name,
+    };
+  });
+}
 
 function buildInstanceEntryPayload(char: Character, entry: InstanceEntryDef) {
   const availability = getInstanceEntryAvailability(char, entry);
@@ -4227,9 +4244,9 @@ function sendNpcShopListing(
       : '',
   }));
 
-  sendSystem(session.sessionId, `${npc.name}展示了商品：`);
+  sendSystem(session.sessionId, `${npc.name}展示可購買商品，價格會依角色出身折扣結算；請確認金幣與背包空間後再輸入 buy 指令。`);
   if (items.length === 0) {
-    sendSystem(session.sessionId, '  目前沒有可販售商品。');
+    sendSystem(session.sessionId, '  目前沒有可販售商品，請稍後再回到這名商人或尋找其他補給商。');
     return;
   }
 
@@ -4242,7 +4259,7 @@ function sendNpcShopListing(
     ].filter(Boolean).join(' / ');
     sendSystem(session.sessionId, `  ${item.name} — ${detail}`);
   }
-  sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買，例如：buy 木劍；輸入 sell <物品名稱> [數量] 出售背包物品。');
+  sendSystem(session.sessionId, '輸入 buy <物品名稱> 購買指定商品；輸入 sell <物品名稱> [數量] 出售背包中未裝備且有回收價格的物品。');
 }
 
 function buildNpcShopItems(char: Character, npc: NpcDef): {
@@ -4285,13 +4302,13 @@ function buildNpcShopItems(char: Character, npc: NpcDef): {
 function cmdBuy(session: WsSession, itemName: string): void {
   const char = getChar(session);
   if (!char) return;
-  if (!itemName) { sendError(session.sessionId, '用法：buy <物品名稱>'); return; }
+  if (!itemName) { sendError(session.sessionId, '你正在購買商人商品，但沒有輸入物品名稱；下一步請使用 buy <物品名稱>。'); return; }
 
   // 找到房間中的商人 NPC
   const npcsInRoom = getNpcsByRoom(char.roomId);
   const merchant = npcsInRoom.find(n => n.type === 'merchant' && n.shopItems?.length);
   if (!merchant) {
-    sendError(session.sessionId, '附近沒有商人可以交易。');
+    sendError(session.sessionId, '你正在購買商品，但目前房間沒有可交易商人；下一步請移動到有商人的房間再嘗試。');
     return;
   }
 
@@ -4302,23 +4319,23 @@ function cmdBuy(session: WsSession, itemName: string): void {
     return id === itemName || def?.name === itemName || def?.name.includes(itemName) || id.includes(query);
   });
   if (!matchId) {
-    sendError(session.sessionId, `${merchant.name}沒有販售「${itemName}」。`);
+    sendError(session.sessionId, `你想向${merchant.name}購買「${itemName}」，但這名商人的商品清單沒有該物品；下一步請查看購買頁現有商品。`);
     return;
   }
 
   const def = ITEM_DEFS[matchId];
-  if (!def) { sendError(session.sessionId, '物品資料異常。'); return; }
+  if (!def) { sendError(session.sessionId, `你正在購買「${matchId}」，但物品資料無法讀取；下一步請改買其他商品或回報資料異常。`); return; }
 
   const price = applyShopBuyOriginDiscount(char, def.buyPrice);
   if (char.gold < price) {
-    sendError(session.sessionId, `金幣不足！「${def.name}」需要 ${price} 金幣，你只有 ${char.gold} 金幣。`);
+    sendError(session.sessionId, `你想向${merchant.name}購買「${def.name}」x1，但需要 ${price} 金幣，目前只有 ${char.gold} 金幣；下一步請先出售物品或取得更多金幣。`);
     return;
   }
 
   char.gold -= price;
   saveCharacter(char);
   addRewardItemToInventory(char, matchId, 1, ['shop']);
-  sendSystem(session.sessionId, `購買了「${def.name}」，花費 ${price} 金幣。（剩餘：${char.gold}）`);
+  sendSystem(session.sessionId, `你向${merchant.name}買入「${def.name}」x1，支付 ${price} 金幣；物品已放入背包，目前剩餘 ${char.gold} 金幣。`);
   cmdInventory(session);
 }
 
@@ -4327,11 +4344,11 @@ function cmdSell(session: WsSession, input: string): void {
   const char = getChar(session);
   if (!char) return;
   const { itemName, quantity } = parseItemNameAndQuantity(input);
-  if (!itemName) { sendError(session.sessionId, '用法：sell <物品名稱|instanceId> [數量]'); return; }
+  if (!itemName) { sendError(session.sessionId, '你正在出售背包物品，但沒有輸入物品名稱或實例 id；下一步請使用 sell <物品名稱|instanceId> [數量]。'); return; }
 
   const merchant = getNpcsByRoom(char.roomId).find(n => n.type === 'merchant');
   if (!merchant) {
-    sendError(session.sessionId, '附近沒有商人可以收購物品。');
+    sendError(session.sessionId, '你正在出售背包物品，但目前房間沒有商人收購；下一步請移動到商人所在房間再開啟出售頁。');
     return;
   }
 
@@ -4350,27 +4367,27 @@ function cmdSell(session: WsSession, input: string): void {
       );
   });
   if (!match) {
-    sendError(session.sessionId, `背包中沒有可出售的「${itemName}」。`);
+    sendError(session.sessionId, `你想向${merchant.name}出售「${itemName}」，但背包中沒有未裝備且可出售的對應物品，金幣不會結算；下一步請檢查出售頁清單。`);
     return;
   }
 
   const def = ITEM_DEFS[match.itemId];
   if (!def || def.sellPrice <= 0) {
-    sendError(session.sessionId, `「${def?.name ?? itemName}」無法出售。`);
+    sendError(session.sessionId, `你想向${merchant.name}出售「${def?.name ?? itemName}」，但該物品沒有金幣回收價格；下一步請保留、使用或改選其他可出售物品。`);
     return;
   }
   if (match.itemInstanceId && quantity !== 1) {
-    sendError(session.sessionId, '裝備實例一次只能出售 1 件。');
+    sendError(session.sessionId, `你想出售裝備實例「${def.name}」x${quantity}，但裝備實例一次只能出售 1 件；下一步請改用 sell ${match.itemInstanceId}。`);
     return;
   }
   if (quantity <= 0 || quantity > match.quantity) {
-    sendError(session.sessionId, `數量不足。「${def.name}」目前有 ${match.quantity} 個。`);
+    sendError(session.sessionId, `你想向${merchant.name}出售「${def.name}」x${quantity}，但背包目前只有 ${match.quantity} 個；下一步請降低數量或改選其他物品。`);
     return;
   }
 
   const removed = removeInventoryItem(char.id, match.itemId, quantity, match.itemInstanceId);
   if (!removed) {
-    sendError(session.sessionId, '出售失敗，背包內容已改變。');
+    sendError(session.sessionId, `你想向${merchant.name}出售「${def.name}」x${quantity}，但背包內容在結算前已改變；下一步請重新開啟出售頁確認數量。`);
     return;
   }
 

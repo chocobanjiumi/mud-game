@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:33:03.936Z",
+  "generatedAt": "2026-05-28T17:41:21.434Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -49,6 +49,19 @@
       "requiredDialogueParts": [
         "NPC 立場或職責",
         "具體目標 / 威脅 / 線索",
+        "玩家下一步"
+      ]
+    },
+    "merchant": {
+      "dialogueMinCjkChars": 35,
+      "buyTabHelpTextMinCjkChars": 30,
+      "sellTabHelpTextMinCjkChars": 30,
+      "transactionSuccessMinCjkChars": 24,
+      "transactionFailureMinCjkChars": 30,
+      "requiredParts": [
+        "商人身份或服務內容",
+        "價格或回收規則",
+        "背包或金幣限制",
         "玩家下一步"
       ]
     },
@@ -213,6 +226,9 @@
     "instanceEntryRooms": 26,
     "npcs": 217,
     "functionalNpcs": 194,
+    "merchantNpcs": 77,
+    "merchantHelpTexts": 154,
+    "merchantTransactionMessages": 308,
     "instanceEntryNpcs": 3,
     "npcDialogueNodes": 1023,
     "npcDialogueOptions": 1844,

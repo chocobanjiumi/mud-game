@@ -7,6 +7,9 @@ function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
 }
 
+const MERCHANT_BUY_HELP_TEXT = '購買頁會列出商人目前願意販售的商品、價格與等級需求；確認金幣足夠後按購買，物品會直接放入背包。';
+const MERCHANT_SELL_HELP_TEXT = '出售頁只顯示背包中未裝備且可回收的物品；售價依物品設定結算，金幣會立即加入角色身上。';
+
 export default function NpcDialogueModal() {
   const dialogue = useGameStore((s) => s.npcDialogue);
   const setNpcDialogue = useGameStore((s) => s.setNpcDialogue);
@@ -99,85 +102,94 @@ export function NpcDialogueModalView({
             </div>
 
             {tradeTab === 'buy' ? (
-              <div className="npc-dialogue-shop-list">
-                {dialogue.shopItems.map((item) => {
-                  const imagePath = getItemImagePath(item.id);
-                  return (
-                    <div key={item.id} className="npc-dialogue-shop-item">
-                      {imagePath ? (
-                        <img src={imagePath} alt="" className="npc-dialogue-shop-thumb" loading="lazy" />
-                      ) : (
-                        <div className="npc-dialogue-shop-thumb npc-dialogue-shop-thumb-fallback" />
-                      )}
-                      <div className="npc-dialogue-shop-info">
-                        <div className="npc-dialogue-shop-row">
-                          <span className="npc-dialogue-shop-name">{item.name}</span>
-                          <span className="npc-dialogue-shop-price">{item.price} 金</span>
-                        </div>
-                        <div className="npc-dialogue-shop-meta">
-                          <span>{item.rarity}</span>
-                          <span>Lv.{item.levelReq}</span>
-                          <span>{item.type}</span>
-                        </div>
-                        <div className="npc-dialogue-shop-desc">{item.description}</div>
-                        {item.stats && Object.keys(item.stats).length > 0 && (
-                          <div className="npc-dialogue-shop-stats">
-                            {Object.entries(item.stats).map(([key, value]) => (
-                              <span key={key}>{key.toUpperCase()} +{value}</span>
-                            ))}
-                          </div>
+              <div>
+                <p className="npc-dialogue-trade-help">{MERCHANT_BUY_HELP_TEXT}</p>
+                <div className="npc-dialogue-shop-list">
+                  {dialogue.shopItems.map((item) => {
+                    const imagePath = getItemImagePath(item.id);
+                    return (
+                      <div key={item.id} className="npc-dialogue-shop-item">
+                        {imagePath ? (
+                          <img src={imagePath} alt="" className="npc-dialogue-shop-thumb" loading="lazy" />
+                        ) : (
+                          <div className="npc-dialogue-shop-thumb npc-dialogue-shop-thumb-fallback" />
                         )}
+                        <div className="npc-dialogue-shop-info">
+                          <div className="npc-dialogue-shop-row">
+                            <span className="npc-dialogue-shop-name">{item.name}</span>
+                            <span className="npc-dialogue-shop-price">{item.price} 金</span>
+                          </div>
+                          <div className="npc-dialogue-shop-meta">
+                            <span>{item.rarity}</span>
+                            <span>Lv.{item.levelReq}</span>
+                            <span>{item.type}</span>
+                          </div>
+                          <div className="npc-dialogue-shop-desc">{item.description}</div>
+                          {item.stats && Object.keys(item.stats).length > 0 && (
+                            <div className="npc-dialogue-shop-stats">
+                              {Object.entries(item.stats).map(([key, value]) => (
+                                <span key={key}>{key.toUpperCase()} +{value}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        <button
+                          className="npc-dialogue-buy"
+                          onClick={() => sendCommand(item.command, `購買 ${item.name}`)}
+                        >
+                          購買
+                        </button>
                       </div>
-                      <button
-                        className="npc-dialogue-buy"
-                        onClick={() => sendCommand(item.command, `購買 ${item.name}`)}
-                      >
-                        購買
-                      </button>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             ) : sellableItems.length > 0 ? (
-              <div className="npc-dialogue-shop-list">
-                {sellableItems.map((item, index) => {
-                  const def = ITEM_DEFS[item.itemId];
-                  const imagePath = getItemImagePath(item.itemId);
-                  const commandItemId = item.itemInstanceId ?? item.itemId;
-                  const itemKey = `${item.itemId}-${item.itemInstanceId ?? index}`;
-                  return (
-                    <div key={itemKey} className="npc-dialogue-shop-item npc-dialogue-sell-item">
-                      {imagePath ? (
-                        <img src={imagePath} alt="" className="npc-dialogue-shop-thumb" loading="lazy" />
-                      ) : (
-                        <div className="npc-dialogue-shop-thumb npc-dialogue-shop-thumb-fallback" />
-                      )}
-                      <div className="npc-dialogue-shop-info">
-                        <div className="npc-dialogue-shop-row">
-                          <span className="npc-dialogue-shop-name">{def?.name ?? item.itemId}</span>
-                          <span className="npc-dialogue-shop-price">{def?.sellPrice ?? 0} 金</span>
+              <div>
+                <p className="npc-dialogue-trade-help">{MERCHANT_SELL_HELP_TEXT}</p>
+                <div className="npc-dialogue-shop-list">
+                  {sellableItems.map((item, index) => {
+                    const def = ITEM_DEFS[item.itemId];
+                    const imagePath = getItemImagePath(item.itemId);
+                    const commandItemId = item.itemInstanceId ?? item.itemId;
+                    const itemKey = `${item.itemId}-${item.itemInstanceId ?? index}`;
+                    return (
+                      <div key={itemKey} className="npc-dialogue-shop-item npc-dialogue-sell-item">
+                        {imagePath ? (
+                          <img src={imagePath} alt="" className="npc-dialogue-shop-thumb" loading="lazy" />
+                        ) : (
+                          <div className="npc-dialogue-shop-thumb npc-dialogue-shop-thumb-fallback" />
+                        )}
+                        <div className="npc-dialogue-shop-info">
+                          <div className="npc-dialogue-shop-row">
+                            <span className="npc-dialogue-shop-name">{def?.name ?? item.itemId}</span>
+                            <span className="npc-dialogue-shop-price">{def?.sellPrice ?? 0} 金</span>
+                          </div>
+                          <div className="npc-dialogue-shop-meta">
+                            <span>{def?.rarity ?? 'common'}</span>
+                            <span>{def?.type ?? 'unknown'}</span>
+                            <span>x{item.quantity}</span>
+                          </div>
+                          <div className="npc-dialogue-shop-desc">
+                            {item.itemInstanceId ? `實例 ${item.itemInstanceId}` : def?.description}
+                          </div>
                         </div>
-                        <div className="npc-dialogue-shop-meta">
-                          <span>{def?.rarity ?? 'common'}</span>
-                          <span>{def?.type ?? 'unknown'}</span>
-                          <span>x{item.quantity}</span>
-                        </div>
-                        <div className="npc-dialogue-shop-desc">
-                          {item.itemInstanceId ? `實例 ${item.itemInstanceId}` : def?.description}
-                        </div>
+                        <button
+                          className="npc-dialogue-buy npc-dialogue-sell"
+                          onClick={() => sendCommand(`sell ${commandItemId}`, `出售 ${def?.name ?? item.itemId}`)}
+                        >
+                          出售
+                        </button>
                       </div>
-                      <button
-                        className="npc-dialogue-buy npc-dialogue-sell"
-                        onClick={() => sendCommand(`sell ${commandItemId}`, `出售 ${def?.name ?? item.itemId}`)}
-                      >
-                        出售
-                      </button>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             ) : (
-              <div className="npc-dialogue-sell-empty">背包目前沒有可出售物品。</div>
+              <div>
+                <p className="npc-dialogue-trade-help">{MERCHANT_SELL_HELP_TEXT}</p>
+                <div className="npc-dialogue-sell-empty">背包目前沒有可出售物品，請確認物品未裝備且本身有回收價格，再回到出售頁重新檢查。</div>
+              </div>
             )}
           </div>
         )}
