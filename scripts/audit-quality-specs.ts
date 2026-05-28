@@ -17,7 +17,17 @@ const requiredSpecIds = [
   'quest-text',
   'monster-description',
   'item-equipment-text',
+  'gathering-crafting-text',
+  'reward-unlock-text',
+  'skill-text',
+  'talent-text',
+  'class-race-faith-text',
+  'status-effect-text',
+  'merchant-text',
+  'wiki-text',
   'system-combat-tooltip',
+  'party-pvp-social-text',
+  'tutorial-achievement-text',
   'image-prompt',
 ];
 const specById = new Map(CONTENT_QUALITY_SPECS.map(spec => [spec.id, spec]));
