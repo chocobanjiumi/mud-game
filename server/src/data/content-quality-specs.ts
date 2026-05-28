@@ -13,6 +13,39 @@ export interface ContentQualitySpec {
   appliesTo: string;
 }
 
+export interface ContentGenerationPolicy {
+  id: string;
+  searchSpecBeforeGenerating: string;
+  unchangedTextRule: string;
+  noTextChangeRule: string;
+  futureHookRule: string;
+  batchSummaryRule: string;
+  checklistSpecRule: string;
+  vagueChecklistRule: string;
+  noSpecFallbackRule: string;
+  noCopyNeededRule: string;
+  prSummaryRule: string;
+  generatorInputRule: string;
+  generatorOutputRule: string;
+  sourceIdsRule: string;
+  noPaddingRule: string;
+  noTemplateReuseRule: string;
+  bannedPlaceholderRule: string;
+  concreteDetailRule: string;
+  gameplayPurposeRule: string;
+  adjacentRoomDistinctnessRule: string;
+  repeatedOpeningRule: string;
+  repeatedCoreNounRule: string;
+  noUnimplementedReferenceRule: string;
+  noModernUiToneRule: string;
+  auditBeforeMergeRule: string;
+  auditFailureRule: string;
+  completionSummaryRule: string;
+  bulkDeliveryFormatRule: string;
+  samplingRule: string;
+  samplingFailureRule: string;
+}
+
 const STANDARD_REVIEW_POLICY = {
   reviewRule:
     '少於 10 筆新增玩家可見文字必須全數人工讀過；10 筆以上至少抽查 10 筆或 20% 取高者，並在 checklist 註記抽查數量。',
@@ -26,6 +59,62 @@ const STANDARD_REVIEW_POLICY = {
   ContentQualitySpec,
   'reviewRule' | 'smallBatchReview' | 'largeBatchReview' | 'highSalienceRule' | 'nonAutomatedFallback'
 >;
+
+export const CONTENT_GENERATION_POLICY: ContentGenerationPolicy = {
+  id: 'content-generation-delivery-policy',
+  searchSpecBeforeGenerating:
+    '開始新增、補、重寫、生成、產生、導入或完善任何玩家可見文字前，必須先搜尋 CONTENT_QUALITY_SPECS 或同章 checklist 是否已有該資料型別規格；沒有規格先補規格，不得先寫資料。',
+  unchangedTextRule:
+    '只搬移資料但玩家可見文字不變時，checklist 必須註記「沿用既有欄位」與來源欄位，例如 reuse existing item.description。',
+  noTextChangeRule:
+    '暫時不新增文案時，checklist 必須註記原因，例如 pure internal enum、only coordinate data、UI 已引用既有 item.description。',
+  futureHookRule:
+    '生成器或實作者產出的文字若引用尚未實作的 NPC、任務、地名、道具或系統功能，必須在同一 checklist 標記 future hook 或移除引用。',
+  batchSummaryRule:
+    '每個批次完成時，commit message 或 checklist 註記必須列出新增文案欄位、套用最低字數、驗收指令與人工抽查結果。',
+  checklistSpecRule:
+    '任何 checklist 項目只要包含新增、補、重寫、生成、產生、導入、完善且會建立玩家可見文字，就必須在同一章節或 Phase 5.6 補品質規格。',
+  vagueChecklistRule:
+    'checklist 不可只寫補描述、補對話、完善文案、生成描述；必須直接附欄位名稱、最低字數、必填元素、禁止內容、驗收方式。',
+  noSpecFallbackRule:
+    '既有 checklist 項目沒有寫清楚品質要求時，實作前必須先補 checklist 格式規格，不得邊做邊猜。',
+  noCopyNeededRule:
+    '實作者覺得欄位不需要文案時，必須在 checklist 寫出純 enum 不顯示給玩家或由既有 item.description 共用等原因。',
+  prSummaryRule:
+    'PR 或 commit 摘要必須列出本批新增生成欄位、套用品質規格、驗收指令或人工抽查結果，否則 checklist 不可打勾。',
+  generatorInputRule:
+    '生成器輸入 prompt 必須列出資料類型、目標欄位、最低字數、必填元素、禁止句型、輸出格式、不得引用未實作內容。',
+  generatorOutputRule:
+    '生成器輸出必須是可直接進資料檔的表格或 JSON-like 結構化內容，逐筆包含 id、name、欄位、字數、必填元素是否滿足。',
+  sourceIdsRule: '生成器每批輸出都要附 sourceIds 或對應資料 id，方便 audit 回報精準定位。',
+  noPaddingRule:
+    '生成器不得為湊字數重複同義句；字數不足必須補具體地貌、行為、用途、方向、玩法線索或風險。',
+  noTemplateReuseRule:
+    '生成器不得把同一段文字套到多個 room、NPC 或 item 只改名稱；同批內容相似度過高要整批重寫。',
+  bannedPlaceholderRule: '任何 TODO、TBD、待補、placeholder、lorem ipsum、暫定描述 都視為 audit fail。',
+  concreteDetailRule: '每段描述至少包含一個具體地形、物件、聲音、光線、氣味或動作線索。',
+  gameplayPurposeRule:
+    '每段描述至少服務一個玩法目的，例如提示出口、副本入口、怪物族群、採集、任務或危險。',
+  adjacentRoomDistinctnessRule: '同一 zone 內相鄰 room 描述不可只是替換同義詞，必須能看出位置差異。',
+  repeatedOpeningRule:
+    '同一批生成內容不得連續 3 筆使用相同句型開頭，例如「這裡」「你看見」「前方」。',
+  repeatedCoreNounRule:
+    '同一批生成內容不得重複使用同一個核心名詞超過 30%，除非該 zone 主題明確需要並在 checklist 註記。',
+  noUnimplementedReferenceRule:
+    '文案不得引用尚未實作的系統、NPC、道具、任務或地名；若是伏筆必須在 checklist 標記 future hook。',
+  noModernUiToneRule:
+    '世界描述不得混入現代網路語、開發者語氣或 UI 操作語，例如點擊按鈕、這是副本系統。',
+  auditBeforeMergeRule:
+    '自動生成內容合併前必須跑字數與欄位完整性 audit；若該類型尚未被 audit 覆蓋，先補 audit 再合併。',
+  auditFailureRule: 'audit 失敗的文案不可進入完成狀態，也不可只修報錯幾筆後忽略同批相似問題。',
+  completionSummaryRule:
+    'commit 或 checklist 打勾前，變更摘要必須列出本次新增文案類型、對應品質規格、audit 結果與人工抽查數量。',
+  bulkDeliveryFormatRule:
+    '大量生成 room、NPC、quest 或 item 時，輸出必須使用表格或 JSON-like checklist，逐筆列出 id、name、欄位、字數、必填元素是否滿足。',
+  samplingRule:
+    '每批生成內容至少抽查 10 筆；少於 10 筆則全數檢查，抽查時確認內容真的對應該 id 的 zone、room、怪物或道具。',
+  samplingFailureRule: '抽查失敗超過 20% 時，整批退回重寫，不可只修 audit 報錯的幾筆。',
+};
 
 export const CONTENT_QUALITY_SPECS: ContentQualitySpec[] = [
   {
