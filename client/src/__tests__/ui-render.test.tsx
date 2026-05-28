@@ -753,9 +753,12 @@ describe('key UI component rendering', () => {
       />,
     );
     expect(html).toContain('戰鬥');
-    expect(html).toContain('普攻');
+    expect(html).toContain('近戰');
+    expect(html).toContain('遠程');
     expect(html).toContain('防禦');
     expect(html).toContain('逃跑');
+    expect(html).toContain('下一個戰鬥 tick 結算命中與傷害');
+    expect(html).toContain('不消耗怒氣、魔力、專注或信仰');
   });
 
   it('separates approaching enemies from arrived combat targets', () => {

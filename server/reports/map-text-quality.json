@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:41:21.434Z",
+  "generatedAt": "2026-05-28T17:47:53.458Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -140,6 +140,21 @@
       "tooltipMinCjkChars": 30,
       "upgradePreviewMinCjkChars": 28
     },
+    "combatAction": {
+      "actionLabelMinCjkChars": 2,
+      "actionTooltipMinCjkChars": 30,
+      "requiredParts": [
+        "目標",
+        "技能或行動效果",
+        "資源變化或不消耗資源",
+        "冷卻或 tick 狀態"
+      ],
+      "bannedLabels": [
+        "攻擊",
+        "使用",
+        "指定"
+      ]
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -255,6 +270,8 @@
     "statusEffects": 33,
     "skills": 206,
     "skillUpgradePreviews": 112,
+    "combatActionLabels": 10,
+    "combatActionTooltips": 10,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,

@@ -66,6 +66,8 @@ type TextKind =
   | 'skill.description'
   | 'skill.tooltip'
   | 'skill.upgradePreview'
+  | 'nearbyCombat.actionLabel'
+  | 'combatPanel.actionTooltip'
   | 'mapMarker.tooltip'
   | 'roomAction.tooltip'
   | 'wiki.article.summary'
@@ -482,6 +484,7 @@ for (const room of Object.values(ROOMS)) {
 
 auditWikiTextQuality();
 auditGeneratedImagePrompts();
+auditCombatActionText();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -585,6 +588,12 @@ const report = {
       tooltipMinCjkChars: 30,
       upgradePreviewMinCjkChars: 28,
     },
+    combatAction: {
+      actionLabelMinCjkChars: 2,
+      actionTooltipMinCjkChars: 30,
+      requiredParts: ['目標', '技能或行動效果', '資源變化或不消耗資源', '冷卻或 tick 狀態'],
+      bannedLabels: ['攻擊', '使用', '指定'],
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -678,6 +687,8 @@ const report = {
     statusEffects: Object.keys(STATUS_EFFECT_DEFS).length,
     skills: Object.keys(SKILL_DEFS).length,
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
+    combatActionLabels: buildCombatActionAuditRecords().length,
+    combatActionTooltips: buildCombatActionAuditRecords().length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1099,6 +1110,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'exit.description') return `exit:${id.split('/')[0]}`;
   if (kind === 'npc.roleSummary') return 'npc.roleSummary';
   if (kind.startsWith('merchant.')) return kind;
+  if (kind === 'nearbyCombat.actionLabel' || kind === 'combatPanel.actionTooltip') return 'combatAction';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1800,6 +1812,80 @@ function formatSkillTooltipAuditText(skill: typeof SKILL_DEFS[string]): string {
   return `技能「${skill.name}」tooltip 顯示${costLine}，${cooldownLine}；說明包含目標、主要效果與限制：${effectLine}`;
 }
 
+function auditCombatActionText() {
+  for (const record of buildCombatActionAuditRecords()) {
+    checkText(`${record.id}/label`, 'nearbyCombat.actionLabel', 'label', record.label, 2, 'nearby combat action label 必須是具體行動，不可只寫攻擊、使用或指定');
+    if (/^(攻擊|使用|指定)$/u.test(record.label)) {
+      addIssue(`${record.id}/label`, 'nearbyCombat.actionLabel', 'label', record.label, 2, 'nearby combat action label 過於泛用');
+    }
+    checkText(`${record.id}/tooltip`, 'combatPanel.actionTooltip', 'tooltip', record.tooltip, 30, 'combatPanel action tooltip 需包含目標、效果、資源變化與冷卻或 tick 狀態');
+    requireCombatActionTooltipPart(record.id, record.tooltip, /目標|自己|敵人|怪物|本房|逼近|背包|坐騎/u, 'combat action tooltip 缺少目標或作用對象');
+    requireCombatActionTooltipPart(record.id, record.tooltip, /攻擊|傷害|降低|脫離|騎乘|衝鋒|守護|攔截|觸發|效果|放入|消耗/u, 'combat action tooltip 缺少行動效果');
+    requireCombatActionTooltipPart(record.id, record.tooltip, /不消耗|消耗|怒氣|魔力|專注|信仰|道具|資源/u, 'combat action tooltip 缺少資源變化');
+    requireCombatActionTooltipPart(record.id, record.tooltip, /tick|冷卻|結算|下一個|立刻/u, 'combat action tooltip 缺少冷卻或 tick 狀態');
+  }
+}
+
+function buildCombatActionAuditRecords(): { id: string; label: string; tooltip: string }[] {
+  return [
+    {
+      id: 'combat/melee',
+      label: '近戰',
+      tooltip: '以近戰武器攻擊目前目標「史萊姆」，本次行動會在下一個戰鬥 tick 結算命中與傷害，不消耗職業資源。',
+    },
+    {
+      id: 'combat/ranged',
+      label: '遠程',
+      tooltip: '以遠程武器攻擊目前目標「史萊姆」，本次行動會在下一個戰鬥 tick 結算命中與傷害，不消耗職業資源。',
+    },
+    {
+      id: 'combat/defend',
+      label: '防禦',
+      tooltip: '進入防禦姿態直到下一個戰鬥 tick，目標是降低即將承受的傷害，不消耗怒氣、魔力、專注或信仰。',
+    },
+    {
+      id: 'combat/flee',
+      label: '逃跑',
+      tooltip: '嘗試立刻脫離目前戰鬥；成功會離開交戰狀態，失敗會在同一個 tick 承受敵人追擊傷害，不消耗職業資源。',
+    },
+    {
+      id: 'combat/mountRide',
+      label: '上馬',
+      tooltip: '在戰鬥中嘗試騎上目前坐騎，下一個 tick 前可改變機動行動與後續衝鋒選項，不消耗職業資源。',
+    },
+    {
+      id: 'combat/mountDismount',
+      label: '下馬',
+      tooltip: '從目前坐騎下馬，解除騎乘狀態並回到一般戰鬥行動，會在當前指令結算且不消耗職業資源。',
+    },
+    {
+      id: 'combat/charge',
+      label: '衝鋒',
+      tooltip: '騎乘衝向目前目標「史萊姆」，用坐騎機動製造攻擊壓力，依戰鬥 tick 結算且不消耗職業資源。',
+    },
+    {
+      id: 'combat/mountedGuard',
+      label: '守護',
+      tooltip: '命令坐騎守護自己，降低接下來承受的威脅並維持騎乘防線，依戰鬥 tick 生效且不消耗職業資源。',
+    },
+    {
+      id: 'nearbyCombat/intercept',
+      label: '攔截',
+      tooltip: '騎乘攔截逼近中的目標「暗影狼」，延後它抵達本房戰鬥；此行動依逼近 tick 結算，不消耗職業資源。',
+    },
+    {
+      id: 'combat/item',
+      label: '小型生命藥水',
+      tooltip: '使用背包道具「小型生命藥水」x1，目標是觸發治療效果；目前堆疊 2 個，會在指令結算時消耗道具而不是職業資源。',
+    },
+  ];
+}
+
+function requireCombatActionTooltipPart(id: string, text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(`${id}/tooltip`, 'combatPanel.actionTooltip', 'tooltip', text, 30, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -1892,6 +1978,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'craftingRecipe.description'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
+    || batchKey === 'combatAction'
     || batchKey === 'mapMarker.tooltip'
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
@@ -1930,6 +2017,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
+    || batchKey === 'combatAction'
     || batchKey === 'mapMarker.tooltip'
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
@@ -2237,6 +2325,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Materials checked: ${reportData.counts.materials}`,
     `Equipment checked: ${reportData.counts.equipment}`,
     `Affixes checked: ${reportData.counts.affixes}`,
+    `Combat action tooltips checked: ${reportData.counts.combatActionTooltips}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,

@@ -117,7 +117,7 @@ export function ApproachingPanelView({
             label="攔截"
             actionIcon="defend"
             className="combat-action-primary"
-            title="騎乘攔截逼近中的敵人，延後它抵達本房戰鬥。"
+            title={`騎乘攔截逼近中的目標「${targetLabel ?? '未選取'}」，延後它抵達本房戰鬥；此行動依逼近 tick 結算，不消耗職業資源。`}
             onClick={() => sendCommand(`intercept ${targetId}`, `攔截 ${targetLabel ?? ''}`)}
           />
         )}

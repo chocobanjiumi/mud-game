@@ -50,10 +50,10 @@ export function CombatPanelView({
     ? selectedTargetId
     : livingEnemies[0]?.id ?? null;
   const targetLabel = targetId ? enemyLabels.get(targetId) : null;
+  const activeAttackMode = character ? combat.preferredAttackModes?.[character.id] ?? 'melee' : 'melee';
   const commonSkills = skills
     .map((skill) => ({ learned: skill, def: SKILL_DEFS[skill.skillId] }))
-    .filter(({ def }) => def?.type === 'active')
-    .slice(0, 5);
+    .filter(({ def }) => def?.type === 'active' && (def.usageContext === 'combat' || def.usageContext === 'both'));
   const combatItems = inventory
     .map((item) => ({ item, def: ITEM_DEFS[item.itemId] }))
     .filter(({ def }) => def?.type === 'consumable' && def.useEffect && (
@@ -121,21 +121,34 @@ export function CombatPanelView({
 
       <div className="combat-action-row">
         <CombatActionButton
-          label="普攻"
+          label="近戰"
           actionIcon="attack"
           className="combat-action-danger"
+          active={activeAttackMode === 'melee'}
           disabled={!targetId}
-          onClick={() => targetId && sendCommand(`attack ${targetId}`, `攻擊 ${targetLabel ?? '目前目標'}`)}
+          title={`以近戰武器攻擊目前目標「${targetLabel ?? '未選取'}」，本次行動會在下一個戰鬥 tick 結算命中與傷害，不消耗職業資源。`}
+          onClick={() => targetId && sendCommand(`melee ${targetId}`, `近戰 ${targetLabel ?? '目前目標'}`)}
+        />
+        <CombatActionButton
+          label="遠程"
+          actionIcon="attack"
+          className="combat-action-danger"
+          active={activeAttackMode === 'ranged'}
+          disabled={!targetId}
+          title={`以遠程武器攻擊目前目標「${targetLabel ?? '未選取'}」，本次行動會在下一個戰鬥 tick 結算命中與傷害，不消耗職業資源。`}
+          onClick={() => targetId && sendCommand(`ranged ${targetId}`, `遠程 ${targetLabel ?? '目前目標'}`)}
         />
         <CombatActionButton
           label="防禦"
           actionIcon="defend"
           className="combat-action-primary"
+          title="進入防禦姿態直到下一個戰鬥 tick，目標是降低即將承受的傷害，不消耗怒氣、魔力、專注或信仰。"
           onClick={() => sendCommand('defend', '防禦')}
         />
         <CombatActionButton
           label="逃跑"
           actionIcon="flee"
+          title="嘗試立刻脫離目前戰鬥；成功會離開交戰狀態，失敗會在同一個 tick 承受敵人追擊傷害，不消耗職業資源。"
           onClick={() => sendCommand('flee', '逃跑')}
         />
         {character?.activeMountId && !character.mounted && (
@@ -143,6 +156,7 @@ export function CombatPanelView({
             label="上馬"
             actionIcon="defend"
             className="combat-action-primary"
+            title="在戰鬥中嘗試騎上目前坐騎，下一個 tick 前可改變機動行動與後續衝鋒選項，不消耗職業資源。"
             onClick={() => sendCommand('mount ride', '上馬')}
           />
         )}
@@ -151,6 +165,7 @@ export function CombatPanelView({
             <CombatActionButton
               label="下馬"
               actionIcon="flee"
+              title="從目前坐騎下馬，解除騎乘狀態並回到一般戰鬥行動，會在當前指令結算且不消耗職業資源。"
               onClick={() => sendCommand('mount dismount', '下馬')}
             />
             <CombatActionButton
@@ -158,12 +173,14 @@ export function CombatPanelView({
               actionIcon="attack"
               className="combat-action-danger"
               disabled={!targetId}
+              title={`騎乘衝向目前目標「${targetLabel ?? '未選取'}」，用坐騎機動製造攻擊壓力，依戰鬥 tick 結算且不消耗職業資源。`}
               onClick={() => targetId && sendCommand(`charge ${targetId}`, `衝鋒 ${targetLabel ?? '目前目標'}`)}
             />
             <CombatActionButton
               label="守護"
               actionIcon="defend"
               className="combat-action-primary"
+              title="命令坐騎守護自己，降低接下來承受的威脅並維持騎乘防線，依戰鬥 tick 生效且不消耗職業資源。"
               onClick={() => sendCommand(`mounted guard ${character.id}`, '騎乘守護')}
             />
           </>
@@ -211,7 +228,7 @@ export function CombatPanelView({
               iconPath={getItemImagePath(item.itemId)}
               className="combat-action-primary"
               onClick={() => sendCommand(`use ${def.name}`, `使用 ${def.name}`)}
-              title={`x${item.quantity}`}
+              title={`使用背包道具「${def.name}」x1，目標是觸發${def.useEffect?.type ?? '道具'}效果；目前堆疊 ${item.quantity} 個，會在指令結算時消耗道具而不是職業資源。`}
             />
           );
         })}
@@ -227,6 +244,7 @@ export function CombatActionButton({
   actionIcon,
   className = '',
   disabled = false,
+  active = false,
   title,
   skill,
   cooldown = 0,
@@ -239,6 +257,7 @@ export function CombatActionButton({
   actionIcon?: CombatActionIconId;
   className?: string;
   disabled?: boolean;
+  active?: boolean;
   title?: string;
   skill?: NonNullable<typeof SKILL_DEFS[string]>;
   cooldown?: number;
@@ -252,7 +271,7 @@ export function CombatActionButton({
   const button = (
     <button
       type="button"
-      className={`combat-action ${cooldown > 0 ? 'combat-action-cooldown' : ''} ${className}`}
+      className={`combat-action ${cooldown > 0 ? 'combat-action-cooldown' : ''} ${active ? 'combat-action-active' : ''} ${className}`}
       disabled={disabled}
       title={skill ? undefined : title}
       style={style}
