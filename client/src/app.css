@@ -4658,6 +4658,35 @@ input::placeholder {
   font-weight: 500;
 }
 
+.map-planning-template-list {
+  margin: 0 0 10px;
+  padding: 8px;
+  border: 1px solid rgba(90, 106, 138, 0.36);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 11px;
+}
+
+.map-planning-template-list b {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--color-text-bright);
+  font-weight: 500;
+}
+
+.map-planning-template-list div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.map-planning-template-list span {
+  padding: 2px 6px;
+  border: 1px solid rgba(0, 255, 136, 0.16);
+  border-radius: 3px;
+  color: var(--color-text-dim);
+}
+
 .map-planning-exits {
   display: flex;
   flex-direction: column;

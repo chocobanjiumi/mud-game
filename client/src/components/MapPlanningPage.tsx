@@ -56,6 +56,7 @@ type PlacedZone = PlanningZone & {
   height: number;
   minMapX: number;
   minMapY: number;
+  templateRooms?: PlanningRoom[];
 };
 
 const CELL = 14;
@@ -284,6 +285,16 @@ export default function MapPlanningPage() {
                     ) : null}
                     <small>scope: {active.room.mapScope}</small>
                   </div>
+                  {mode === 'planning' && active.zone.mapPlan.decision === 'instance' && active.zone.templateRooms ? (
+                    <div className="map-planning-template-list">
+                      <b>副本房間清單</b>
+                      <div>
+                        {active.zone.templateRooms.map(room => (
+                          <span key={room.id}>{room.name}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
                   <div className="map-planning-exits">
                     {active.room.exits.length > 0 ? active.room.exits.map(exit => (
                       <button
@@ -317,7 +328,7 @@ export default function MapPlanningPage() {
                     className={selected?.zone.id === zone.id ? 'map-planning-zone-index-active' : ''}
                   >
                     <span>{zone.name}</span>
-                    <small>{formatDecision(zone.mapPlan.decision)} · {zone.rooms.length}</small>
+                <small>{formatDecision(zone.mapPlan.decision)} · {zone.templateRooms?.length ?? zone.rooms.length}</small>
                   </button>
                 ))}
               </div>
@@ -384,8 +395,9 @@ function buildAtlas(zones: PlanningZone[], mode: 'local' | 'planning'): { zones:
 }
 
 function buildGlobalAtlas(zones: PlanningZone[]): { zones: PlacedZone[]; width: number; height: number } {
-  const plannedZones = zones.filter(zone => zone.mapPlan.globalBounds);
-  const fallbackZones = zones.filter(zone => !zone.mapPlan.globalBounds);
+  const planningZones = zones.map(toPlanningDisplayZone);
+  const plannedZones = planningZones.filter(zone => zone.mapPlan.globalBounds);
+  const fallbackZones = planningZones.filter(zone => !zone.mapPlan.globalBounds);
   const minGlobalX = Math.min(...plannedZones.map(zone => zone.mapPlan.globalBounds!.minX), 0);
   const minGlobalY = Math.min(...plannedZones.map(zone => zone.mapPlan.globalBounds!.minY), 0);
   const maxGlobalX = Math.max(...plannedZones.map(zone => zone.mapPlan.globalBounds!.maxX), 0);
@@ -445,6 +457,16 @@ function buildGlobalAtlas(zones: PlanningZone[]): { zones: PlacedZone[]; width: 
     zones: placed,
     width: Math.max(...placed.map(zone => zone.offsetX + zone.width + ZONE_GAP_X), ((maxGlobalX - minGlobalX + 1) * CELL) + (margin * 2), 600),
     height: Math.max(...placed.map(zone => zone.offsetY + zone.height + ZONE_GAP_Y), 400),
+  };
+}
+
+function toPlanningDisplayZone(zone: PlanningZone): PlanningZone & { templateRooms?: PlanningRoom[] } {
+  if (zone.mapPlan.decision !== 'instance') return zone;
+  const entranceRoom = zone.rooms.find(room => room.id === zone.mapPlan.entranceRoomId) ?? zone.rooms[0];
+  return {
+    ...zone,
+    rooms: entranceRoom ? [entranceRoom] : [],
+    templateRooms: zone.rooms,
   };
 }
 
