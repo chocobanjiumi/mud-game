@@ -150,7 +150,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '草坡上密密麻麻分布著野兔洞，洞口被乾草和白色絨毛覆住，泥土帶著剛翻開的濕氣。東邊通往平原入口，南側狼跡小路延伸進更高的草叢，西面能聽見遠處石環傳來的風聲。洞口旁有被咬碎的藥草與旅人皮包碎片，提示玩家可在此練習追擊快速怪物，也能 search 找到野兔拖進洞裡的零碎物品。',
     exits: [
-      { direction: 'east', targetRoomId: 'plains_entrance', description: '回到平原入口' },
+      {
+        direction: 'east',
+        targetRoomId: 'plains_entrance',
+        description: '東側要穿過野兔洞群外圍的低草坡與幾段塌陷洞道，才繞回平原入口',
+        edgeKind: 'long_path',
+        edgeNote: '野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。',
+      },
       { direction: 'south', targetRoomId: 'plains_wolf_tracks', description: '狼爪印一路延伸向南' },
     ],
     monsters: [
@@ -172,7 +178,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '草坡被數道狼爪印切開，倒伏草葉一路指向南方陰影，空氣裡有濃重獸腥味和泥土濕味。北邊是野兔洞群，東側可回草原小徑，西邊月光小林的樹影在白天也顯得偏暗。折斷的牧羊杖插在路旁，提醒玩家狼群會結伴出現，若任務要求擊殺野狼，這裡是最直接但也最危險的練功點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_hare_burrows', description: '回到野兔洞群' },
-      { direction: 'east', targetRoomId: 'grass_path', description: '草原小徑在東側' },
+      {
+        direction: 'east',
+        targetRoomId: 'grass_path',
+        description: '東側要沿狼爪印穿過倒伏高草與破木欄，繞過獸腥泥痕才接回草原小徑中段',
+        edgeKind: 'long_path',
+        edgeNote: '狼跡草坡到草原小徑需要沿狼爪印、倒伏高草與破木欄繞行，屬於平原內長路徑。',
+      },
       { direction: 'west', targetRoomId: 'plains_moonlit_copse', description: '陰涼樹影覆蓋西方小林' },
     ],
     monsters: [
@@ -193,7 +205,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，往斷橋的撤退腳印也先折回藥草坡再下行。箱子上刻著農場印記，提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
     exits: [
-      { direction: 'north', targetRoomId: 'abandoned_minecart', description: '沿矮丘回到廢棄礦車道' },
+      {
+        direction: 'north',
+        targetRoomId: 'abandoned_minecart',
+        description: '北側要沿矮丘背面穿過盜賊煙灰、車轍斜坡與碎石軌道，才回到廢棄礦車道',
+        edgeKind: 'long_path',
+        edgeNote: '盜賊藏身處到廢棄礦車道需要沿矮丘、車轍斜坡與碎石軌道繞行，屬於平原內長路徑。',
+      },
       { direction: 'west', targetRoomId: 'plains_herb_slope', description: '藥草坡在西邊' },
     ],
     monsters: [
@@ -235,7 +253,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '斜坡朝西展開，野薄荷、止血草和淡紫色小花在石縫間生長，蜜蜂嗡鳴聲被暖風帶得很遠。北邊可回草原小徑，東方盜賊藏身處的煙柱隱約可見，南側斷橋下傳來溪水拍擊聲。地面有採集者留下的小刀痕與籃印，提示玩家可在這裡進行草藥採集或追查被盜補給的去向，但也要留心野豬翻土造成的衝撞路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'grass_path', description: '回到草原小徑' },
+      {
+        direction: 'north',
+        targetRoomId: 'grass_path',
+        description: '北側回草原小徑要沿藥草斜坡上行，穿過蜜蜂草叢與採集者小刀痕',
+        edgeKind: 'long_path',
+        edgeNote: '藥草斜坡回草原小徑需要沿斜坡、蜜蜂草叢與採集者刀痕上行，屬於平原內長路徑。',
+      },
       { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '煙味來自東側藏身處' },
       { direction: 'south', targetRoomId: 'plains_broken_bridge', description: '斜坡下方是斷橋' },
     ],
@@ -257,8 +281,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '牧羊人營地靠著農場南側的緩坡搭起，羊圈木欄被撞歪，灰白羊毛掛在刺木上，煮鍋散出奶油與煙草氣味。西邊可回風車農場，南面藥草坡與盜賊藏身處隔著高草相望。營地木桌上有失蹤羊群的簡圖、狼爪拓印和求助紙條，提示玩家能接到護送、尋物或擊退野獸的支線。',
     exits: [
-      { direction: 'west', targetRoomId: 'windmill_farm', description: '回到風車農場' },
-      { direction: 'south', targetRoomId: 'plains_herb_slope', description: '羊群踩出的路通往藥草坡' },
+      {
+        direction: 'west',
+        targetRoomId: 'windmill_farm',
+        description: '西側回風車農場要穿過羊圈外的緩坡、歪斜木欄與農場背面草路入口',
+        edgeKind: 'long_path',
+        edgeNote: '牧羊人營地回風車農場需要穿過羊圈緩坡、歪斜木欄與農場背路，屬於平原內長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'plains_herb_slope',
+        description: '南側羊群踩出的路要穿過高草與散落羊毛，繞過盜賊煙柱才抵達藥草坡',
+        edgeKind: 'long_path',
+        edgeNote: '牧羊人營地到藥草斜坡需要沿羊群草路、散落羊毛與盜賊煙柱繞行，屬於平原內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 1, respawnSeconds: 50 },
@@ -279,7 +315,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬蹄印和拖行箱子的痕跡。北邊是藥草斜坡，西邊十字路口的路標露出半截，往盜賊藏身處的腳印會先回到北側斜坡再轉東。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_herb_slope', description: '回到藥草斜坡' },
-      { direction: 'west', targetRoomId: 'crossroads', description: '沿泥路回到十字路口' },
+      {
+        direction: 'west',
+        targetRoomId: 'crossroads',
+        description: '西側要沿斷橋旁泥路繞過倒木與溪水缺口，才回到十字路口路標前',
+        edgeKind: 'long_path',
+        edgeNote: '斷木橋回十字路口需要沿泥路、倒木與溪水缺口繞行，屬於平原內長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 75 },
@@ -300,7 +342,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '十二塊立石圍成粗糙圓環，表面刻著被苔蘚遮住的古老符號，冷風穿過石縫時像有人低語。北邊月影小林遮住入口，東側能回十字路口，南方守望土丘從草浪中隆起。石環中央有焦黑祭痕與烏鴉羽毛，提示玩家可 inspect 符文、觸發區域事件，或找到與平原狼群異常躁動有關的線索。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_moonlit_copse', description: '回到月影小林' },
-      { direction: 'east', targetRoomId: 'old_well', description: '荒草路通向古井旁' },
+      {
+        direction: 'east',
+        targetRoomId: 'old_well',
+        description: '東側荒草路要穿過石環外圍倒伏草線與烏鴉羽痕，繞過冷風石縫才通到古井旁',
+        edgeKind: 'long_path',
+        edgeNote: '古石環到古井需要穿過倒伏草線、烏鴉羽痕與荒草路，屬於平原內長路徑。',
+      },
       { direction: 'south', targetRoomId: 'plains_watch_mound', description: '石環南側是守望土丘' },
     ],
     monsters: [
@@ -322,7 +370,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '守望土丘比周圍草地高出一截，腐朽旗杆插在頂端，風從四面吹來，能同時看見北方石環、東方十字路口和更南側陰暗狼穴入口。草坡上留有舊營火灰、破望遠鏡和被風磨平的哨兵刻字。這裡本身不算危險，但提供方向感與戰術視野，提示玩家可在進入更深處前確認路線、整理任務並觀察狼群巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_stone_circle', description: '回到古石環' },
-      { direction: 'east', targetRoomId: 'crossroads', description: '下坡可回十字路口' },
+      {
+        direction: 'east',
+        targetRoomId: 'crossroads',
+        description: '東側下坡要沿守望土丘旗杆影子穿過草浪與舊營火灰，才回到十字路口',
+        edgeKind: 'long_path',
+        edgeNote: '守望土丘回十字路口需要沿旗杆影子、草浪與舊營火灰下坡，屬於平原內長路徑。',
+      },
       { direction: 'south', targetRoomId: 'plains_alpha_den', description: '南坡通往狼群首領的棲地' },
     ],
     mapSymbol: '[^]',
