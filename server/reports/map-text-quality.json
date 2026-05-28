@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T14:44:58.061Z",
+  "generatedAt": "2026-05-28T14:53:39.933Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -95,7 +95,7 @@
     "imagePrompts": 1203,
     "instanceEntries": 37,
     "checkedDungeonItems": 120,
-    "issues": 9872
+    "issues": 9840
   },
   "issuesByKind": {
     "zone.description": 60,
@@ -114,7 +114,6 @@
     "dungeon.room.description": 40,
     "item.description": 39,
     "equipment.description": 457,
-    "gatheringMaterial.description": 32,
     "gatheringNode.description": 36,
     "batch.repeatedOpening": 300,
     "batch.repeatedCoreTerm": 245
@@ -79009,9 +79008,9 @@
       "id": "ancient_bark",
       "kind": "item.description",
       "field": "description",
-      "currentLength": 28,
+      "currentLength": 34,
       "minimumLength": 40,
-      "text": "古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂。",
+      "text": "古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂，可作盾面補強。",
       "reason": "副本相關道具描述需指出用途、地點或消耗規則"
     },
     {
@@ -79099,9 +79098,9 @@
       "id": "gold_key",
       "kind": "item.description",
       "field": "description",
-      "currentLength": 29,
+      "currentLength": 36,
       "minimumLength": 40,
-      "text": "金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光。",
+      "text": "金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光，可開啟高階寶箱。",
       "reason": "副本相關道具描述需指出用途、地點或消耗規則"
     },
     {
@@ -80041,60 +80040,6 @@
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
     },
     {
-      "id": "rabbit_fur",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "野兔腹部梳下的柔軟毛皮，灰白絨毛間還沾著草籽，適合填入護具內襯。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "snake_skin",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "完整剝下的蛇皮薄而透明，鱗紋排列細密，在火光下會泛出灰綠色反光。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "spider_silk",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "巨型蜘蛛吐出的銀白絲束，細如髮絲卻難以扯斷，捲起來會反射月光。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "ancient_bark",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "treant_sap",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "樹精傷口流出的琥珀色樹液，黏稠而帶木香，靜置後會凝成半透明膠珠。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "gargoyle_wing",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "石像鬼翼膜邊緣碎落的薄石片，形狀像灰色羽骨，斷面仍留著風化紋路。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
       "id": "bandit_blade",
       "kind": "equipment.description",
       "field": "description",
@@ -80102,15 +80047,6 @@
       "minimumLength": 35,
       "text": "盜賊使用的粗糙匕首。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "stolen_pouch",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 30,
-      "text": "從盜賊身上搜到的贓物袋，裡面裝著金幣和雜物。",
-      "reason": "材料描述需說明來源與用途方向"
     },
     {
       "id": "shadow_cloak",
@@ -80147,51 +80083,6 @@
       "minimumLength": 35,
       "text": "由純淨水晶凝聚而成的長劍，劍身透明如冰。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "toad_skin",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "毒蛙背部剝下的厚皮，疣瘤間滲著淡黃黏液，乾燥後仍保有驚人的韌性。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "dark_bark",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 27,
-      "minimumLength": 30,
-      "text": "被暗影侵蝕的黑色樹皮，裂縫裡泛著紫光，摸上去像冷灰覆在指尖。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "cursed_sap",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "黑紫色樹液封在蠟塞瓶中，瓶底沉著細小影絲，搖晃時會形成扭曲樹紋。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "spectral_essence",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 18,
-      "minimumLength": 30,
-      "text": "幽靈騎士消散後凝聚的精華，蘊含亡靈之力。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "knight_sigil",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 30,
-      "text": "地底王國騎士團的徽記，散發著微弱的靈魂之光。",
-      "reason": "材料描述需說明來源與用途方向"
     },
     {
       "id": "phantom_sword",
@@ -80309,24 +80200,6 @@
       "minimumLength": 35,
       "text": "增幅魔力的神秘耳環。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "gold_key",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "fishman_fin",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "魚人背鰭呈深藍半透明，邊緣有細齒與鹽斑，乾燥後仍帶著刺鼻海腥。",
-      "reason": "材料描述需說明來源與用途方向"
     },
     {
       "id": "iron_shield",
@@ -82829,168 +82702,6 @@
       "minimumLength": 70,
       "text": "黑金巨盾的上緣像一道遠方地平線，兩側浮著細小星點，中央橫過一條筆直白光，盾面布滿終戰刮痕與金色封印，是可清楚辨識的最終副手盾牌。",
       "reason": "裝備描述需提供可辨識的外觀、來源或用途方向"
-    },
-    {
-      "id": "small_fish",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 26,
-      "minimumLength": 30,
-      "text": "掌心大小的銀灰小魚，鱗片還帶著溪水亮光，尾鰭薄得幾乎透明。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "mud_loach",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 27,
-      "minimumLength": 30,
-      "text": "滑溜泥鰍身上覆著細泥，背線呈深褐色，放在竹簍中仍會不停翻動。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "silver_trout",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 19,
-      "minimumLength": 30,
-      "text": "鱗片閃著銀光的鱒魚，需要一定技術才能釣上。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "spotted_bass",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "鱸魚銀白魚身佈滿深色斑點，魚鰭有力，離水後仍會拍打出響亮水聲。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "blue_catfish",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "夜間活動的藍鯰魚有長鬚與深藍背光，魚皮滑亮，腹部帶著河泥氣味。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "golden_crab",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "金黃色硬殼螃蟹有細小白斑，蟹鉗像打磨過的銅扣，腹甲仍沾著濕沙。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "crystal_shrimp",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 30,
-      "text": "身體近乎透明的珍稀蝦種，在水晶洞窟附近出沒。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "dragon_koi",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "龍錦鯉有金紅鱗片與細長龍鬚，額前凸起小角，游動時像拖著火色綢帶。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "moonlight_eel",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 27,
-      "minimumLength": 30,
-      "text": "細長月光鰻身體泛著乳白冷光，只在月夜浮出水面，鰭邊像薄銀絲。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "abyssal_angler",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 19,
-      "minimumLength": 30,
-      "text": "來自深海的鮟鱇魚，頭頂的燈籠散發幽藍光芒。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "phoenix_fish",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 20,
-      "minimumLength": 30,
-      "text": "鱗片如火焰般燃燒的傳說之魚，據說能浴火重生。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "frost_salmon",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "霜白鮭魚背部覆著細冰晶，銀藍魚鱗間冒著冷霧，魚鰓像凍住的紅葉。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "world_serpent_scale",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 25,
-      "minimumLength": 30,
-      "text": "傳說中環繞世界的巨蛇脫落的鱗片，蘊含著毀天滅地的力量。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "broken_clock_gear",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "碎鐘路與停擺鐘塔剝落的黑銅齒輪，齒痕會重複敲出同一秒鐘的回音。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "flatsalt_crystal",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "退潮後在白波鹽面凝出的透明鹽晶，邊緣鋒利，常被漁夫磨成驅霧粉。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "brine_crab_shell",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "蟹行淺灘大型鹽蟹留下的厚殼，殼面覆著白色鹽霜，可做成耐鹽護片。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "nightbloom_petal",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 29,
-      "minimumLength": 30,
-      "text": "夜花庭只在月影最深時綻放的花瓣，握住時能短暫聽見夢境中的掌聲。",
-      "reason": "材料描述需說明來源與用途方向"
-    },
-    {
-      "id": "whalebone_relic",
-      "kind": "gatheringMaterial.description",
-      "field": "description",
-      "currentLength": 28,
-      "minimumLength": 30,
-      "text": "刻滿祭文的古鯨骨碎片，仍保存著神殿沉沒前最後一次大潮的低鳴。",
-      "reason": "材料描述需說明來源與用途方向"
     },
     {
       "id": "dragon_valley_giant_sword",
@@ -86760,7 +86471,7 @@
       "field": "text",
       "currentLength": 3,
       "minimumLength": 1,
-      "text": "gargoyle_stone: 石像鬼身上崩落的深灰石材，表面有翼爪刮痕，敲擊時聲音比普通岩石更沉。\nstone_heart: 石像鬼胸腔內的圓形核心，外殼粗糙，中心卻有暗紅晶點像心跳般忽明忽暗。\ngargoyle_wing: 石像鬼翼膜邊緣碎落的薄石片，形狀像灰色羽骨，斷面仍留著風化紋路。",
+      "text": "gargoyle_stone: 石像鬼身上崩落的深灰石材，表面有翼爪刮痕，敲擊時聲音比普通岩石更沉。\nstone_heart: 石像鬼胸腔內的圓形核心，外殼粗糙，中心卻有暗紅晶點像心跳般忽明忽暗。\ngargoyle_wing: 石像鬼翼膜邊緣碎落的薄石片，形狀像灰色羽骨，斷面仍留著風化紋路，可磨成護符墜片。",
       "reason": "同批生成內容連續 3 筆使用相同開頭「石像鬼」"
     },
     {

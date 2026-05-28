@@ -2725,7 +2725,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   rabbit_fur: {
     id: 'rabbit_fur', name: '兔毛', type: 'material',
-    description: '野兔腹部梳下的柔軟毛皮，灰白絨毛間還沾著草籽，適合填入護具內襯。', buyPrice: 0, sellPrice: 8,
+    description: '野兔腹部梳下的柔軟毛皮，灰白絨毛間還沾著草籽，適合填入護具內襯與旅行斗篷邊。', buyPrice: 0, sellPrice: 8,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   rabbit_meat: {
@@ -2745,7 +2745,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   snake_skin: {
     id: 'snake_skin', name: '蛇皮', type: 'material',
-    description: '完整剝下的蛇皮薄而透明，鱗紋排列細密，在火光下會泛出灰綠色反光。', buyPrice: 0, sellPrice: 18,
+    description: '完整剝下的蛇皮薄而透明，鱗紋排列細密，在火光下會泛出灰綠色反光，可縫成防潮皮帶。', buyPrice: 0, sellPrice: 18,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   shadow_pelt: {
@@ -2755,7 +2755,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   spider_silk: {
     id: 'spider_silk', name: '蜘蛛絲', type: 'material',
-    description: '巨型蜘蛛吐出的銀白絲束，細如髮絲卻難以扯斷，捲起來會反射月光。', buyPrice: 0, sellPrice: 20,
+    description: '巨型蜘蛛吐出的銀白絲束，細如髮絲卻難以扯斷，捲起來會反射月光，是輕甲縫線材料。', buyPrice: 0, sellPrice: 20,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   spider_venom: {
@@ -2770,7 +2770,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   ancient_bark: {
     id: 'ancient_bark', name: '古樹皮', type: 'material',
-    description: '古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂。', buyPrice: 0, sellPrice: 22,
+    description: '古樹精身上剝落的厚樹皮，年輪像符文般捲曲，裂縫裡滲著淡金樹脂，可作盾面補強。', buyPrice: 0, sellPrice: 22,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   nature_crystal: {
@@ -2780,7 +2780,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   treant_sap: {
     id: 'treant_sap', name: '樹精樹液', type: 'material',
-    description: '樹精傷口流出的琥珀色樹液，黏稠而帶木香，靜置後會凝成半透明膠珠。', buyPrice: 0, sellPrice: 20,
+    description: '樹精傷口流出的琥珀色樹液，黏稠而帶木香，靜置後會凝成半透明膠珠，常用來黏合木器。', buyPrice: 0, sellPrice: 20,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   alpha_fang: {
@@ -2817,7 +2817,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   gargoyle_wing: {
     id: 'gargoyle_wing', name: '石像鬼之翼', type: 'material',
-    description: '石像鬼翼膜邊緣碎落的薄石片，形狀像灰色羽骨，斷面仍留著風化紋路。', buyPrice: 0, sellPrice: 25,
+    description: '石像鬼翼膜邊緣碎落的薄石片，形狀像灰色羽骨，斷面仍留著風化紋路，可磨成護符墜片。', buyPrice: 0, sellPrice: 25,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   crystal_core: {
@@ -2838,7 +2838,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   stolen_pouch: {
     id: 'stolen_pouch', name: '贓物袋', type: 'material',
-    description: '從盜賊身上搜到的贓物袋，裡面裝著金幣和雜物。', buyPrice: 0, sellPrice: 20,
+    description: '從盜賊身上搜到的贓物袋，破皮革裡塞著金幣、假印章與小刀套，可交給市集守衛清點。', buyPrice: 0, sellPrice: 20,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   shadow_cloak: {
@@ -2867,7 +2867,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   toad_skin: {
     id: 'toad_skin', name: '蟾蜍皮', type: 'material',
-    description: '毒蛙背部剝下的厚皮，疣瘤間滲著淡黃黏液，乾燥後仍保有驚人的韌性。', buyPrice: 0, sellPrice: 18,
+    description: '毒蛙背部剝下的厚皮，疣瘤間滲著淡黃黏液，乾燥後仍保有驚人的韌性，適合製作防毒襯片。', buyPrice: 0, sellPrice: 18,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   poison_gland: {
@@ -2877,12 +2877,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   dark_bark: {
     id: 'dark_bark', name: '暗黑樹皮', type: 'material',
-    description: '被暗影侵蝕的黑色樹皮，裂縫裡泛著紫光，摸上去像冷灰覆在指尖。', buyPrice: 0, sellPrice: 25,
+    description: '被暗影侵蝕的黑色樹皮，裂縫裡泛著紫光，摸上去像冷灰覆在指尖，可作暗屬護具素材。', buyPrice: 0, sellPrice: 25,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   cursed_sap: {
     id: 'cursed_sap', name: '詛咒樹液', type: 'material',
-    description: '黑紫色樹液封在蠟塞瓶中，瓶底沉著細小影絲，搖晃時會形成扭曲樹紋。', buyPrice: 0, sellPrice: 35,
+    description: '黑紫色樹液封在蠟塞瓶中，瓶底沉著細小影絲，搖晃時會形成扭曲樹紋，常用於詛咒墨水。', buyPrice: 0, sellPrice: 35,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   golem_fragment: {
@@ -2892,12 +2892,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   spectral_essence: {
     id: 'spectral_essence', name: '幽靈精華', type: 'material',
-    description: '幽靈騎士消散後凝聚的精華，蘊含亡靈之力。', buyPrice: 0, sellPrice: 45,
+    description: '幽靈騎士消散後凝聚的冷白精華，瓶壁會結出靈霜，可用來校準亡靈與暗屬附魔。', buyPrice: 0, sellPrice: 45,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   knight_sigil: {
     id: 'knight_sigil', name: '騎士徽記', type: 'material',
-    description: '地底王國騎士團的徽記，散發著微弱的靈魂之光。', buyPrice: 0, sellPrice: 60,
+    description: '地底王國騎士團的殘破徽記，邊緣刻著誓詞，微弱靈魂光可用於修復古代軍裝。', buyPrice: 0, sellPrice: 60,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   phantom_sword: {
@@ -3168,7 +3168,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   gold_key: {
     id: 'gold_key', name: '金鑰匙', type: 'material',
-    description: '金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光。', buyPrice: 500, sellPrice: 250,
+    description: '金鑰匙柄部刻著皇冠紋，鑰齒薄而複雜，插入金寶箱前會浮出一圈微光，可開啟高階寶箱。', buyPrice: 500, sellPrice: 250,
     stackable: true, maxStack: 99, levelReq: 20,
   },
 
@@ -3518,7 +3518,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   fishman_fin: {
     id: 'fishman_fin', name: '魚人鰭', type: 'material',
-    description: '魚人背鰭呈深藍半透明，邊緣有細齒與鹽斑，乾燥後仍帶著刺鼻海腥。', buyPrice: 0, sellPrice: 12,
+    description: '魚人背鰭呈深藍半透明，邊緣有細齒與鹽斑，乾燥後仍帶著刺鼻海腥，可製成防潮飾片。', buyPrice: 0, sellPrice: 12,
     stackable: true, maxStack: 99, levelReq: 1,
   },
   spider_venom_sac: {
@@ -4382,7 +4382,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ─── Common (Lv 1-5) ───
   small_fish: {
     id: 'small_fish', name: '小魚', type: 'material',
-    description: '掌心大小的銀灰小魚，鱗片還帶著溪水亮光，尾鰭薄得幾乎透明。', buyPrice: 0, sellPrice: 10,
+    description: '掌心大小的銀灰小魚，鱗片還帶著溪水亮光，尾鰭薄得幾乎透明，是初階料理常用魚材。', buyPrice: 0, sellPrice: 10,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
   },
   river_carp: {
@@ -4392,7 +4392,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   mud_loach: {
     id: 'mud_loach', name: '泥鰍', type: 'material',
-    description: '滑溜泥鰍身上覆著細泥，背線呈深褐色，放在竹簍中仍會不停翻動。', buyPrice: 0, sellPrice: 12,
+    description: '滑溜泥鰍身上覆著細泥，背線呈深褐色，放在竹簍中仍會不停翻動，可熬成耐力湯底。', buyPrice: 0, sellPrice: 12,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'common',
   },
   freshwater_shrimp: {
@@ -4404,22 +4404,22 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ─── Uncommon (Lv 5-10) ───
   silver_trout: {
     id: 'silver_trout', name: '銀鱒魚', type: 'material',
-    description: '鱗片閃著銀光的鱒魚，需要一定技術才能釣上。', buyPrice: 0, sellPrice: 30,
+    description: '銀鱒魚鱗片閃著溪光，游速極快，需要穩定釣技才能拉上岸，是敏捷料理的鮮美主材。', buyPrice: 0, sellPrice: 30,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'uncommon',
   },
   spotted_bass: {
     id: 'spotted_bass', name: '斑點鱸魚', type: 'material',
-    description: '鱸魚銀白魚身佈滿深色斑點，魚鰭有力，離水後仍會拍打出響亮水聲。', buyPrice: 0, sellPrice: 35,
+    description: '鱸魚銀白魚身佈滿深色斑點，魚鰭有力，離水後仍會拍打出響亮水聲，適合烤成補給餐。', buyPrice: 0, sellPrice: 35,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'uncommon',
   },
   blue_catfish: {
     id: 'blue_catfish', name: '藍鯰魚', type: 'material',
-    description: '夜間活動的藍鯰魚有長鬚與深藍背光，魚皮滑亮，腹部帶著河泥氣味。', buyPrice: 0, sellPrice: 40,
+    description: '夜間活動的藍鯰魚有長鬚與深藍背光，魚皮滑亮，腹部帶著河泥氣味，可作夜行藥膳。', buyPrice: 0, sellPrice: 40,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'uncommon',
   },
   golden_crab: {
     id: 'golden_crab', name: '金色螃蟹', type: 'material',
-    description: '金黃色硬殼螃蟹有細小白斑，蟹鉗像打磨過的銅扣，腹甲仍沾著濕沙。', buyPrice: 0, sellPrice: 45,
+    description: '金黃色硬殼螃蟹有細小白斑，蟹鉗像打磨過的銅扣，腹甲仍沾著濕沙，可剝取堅韌殼片。', buyPrice: 0, sellPrice: 45,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'uncommon',
   },
 
@@ -4431,34 +4431,34 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   crystal_shrimp: {
     id: 'crystal_shrimp', name: '水晶蝦', type: 'material',
-    description: '身體近乎透明的珍稀蝦種，在水晶洞窟附近出沒。', buyPrice: 0, sellPrice: 100,
+    description: '水晶蝦身體近乎透明，只在水晶洞窟冷泉附近出沒，甲殼可磨成折光粉與精緻料理。', buyPrice: 0, sellPrice: 100,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'rare',
   },
   dragon_koi: {
     id: 'dragon_koi', name: '龍錦鯉', type: 'material',
-    description: '龍錦鯉有金紅鱗片與細長龍鬚，額前凸起小角，游動時像拖著火色綢帶。', buyPrice: 0, sellPrice: 120,
+    description: '龍錦鯉有金紅鱗片與細長龍鬚，額前凸起小角，游動時像拖著火色綢帶，可入高級宴席。', buyPrice: 0, sellPrice: 120,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'rare',
   },
   moonlight_eel: {
     id: 'moonlight_eel', name: '月光鰻', type: 'material',
-    description: '細長月光鰻身體泛著乳白冷光，只在月夜浮出水面，鰭邊像薄銀絲。', buyPrice: 0, sellPrice: 150,
+    description: '細長月光鰻身體泛著乳白冷光，只在月夜浮出水面，鰭邊像薄銀絲，是月系藥劑材料。', buyPrice: 0, sellPrice: 150,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'rare',
   },
 
   // ─── Epic (Lv 18-25) ───
   abyssal_angler: {
     id: 'abyssal_angler', name: '深淵鮟鱇', type: 'material',
-    description: '來自深海的鮟鱇魚，頭頂的燈籠散發幽藍光芒。', buyPrice: 0, sellPrice: 300,
+    description: '來自深海的鮟鱇魚頭頂燈籠散發幽藍光芒，魚油可製成深水照明與暗潮誘餌。', buyPrice: 0, sellPrice: 300,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'epic',
   },
   phoenix_fish: {
     id: 'phoenix_fish', name: '鳳凰魚', type: 'material',
-    description: '鱗片如火焰般燃燒的傳說之魚，據說能浴火重生。', buyPrice: 0, sellPrice: 400,
+    description: '鳳凰魚鱗片如火焰般燃燒，離水後仍有暖光脈動，可用於火焰料理與復甦儀式。', buyPrice: 0, sellPrice: 400,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'epic',
   },
   frost_salmon: {
     id: 'frost_salmon', name: '霜之鮭魚', type: 'material',
-    description: '霜白鮭魚背部覆著細冰晶，銀藍魚鱗間冒著冷霧，魚鰓像凍住的紅葉。', buyPrice: 0, sellPrice: 350,
+    description: '霜白鮭魚背部覆著細冰晶，銀藍魚鱗間冒著冷霧，魚鰓像凍住的紅葉，可製寒抗餐。', buyPrice: 0, sellPrice: 350,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'epic',
   },
   thunder_ray: {
@@ -4485,7 +4485,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   world_serpent_scale: {
     id: 'world_serpent_scale', name: '世界蛇之鱗', type: 'material',
-    description: '傳說中環繞世界的巨蛇脫落的鱗片，蘊含著毀天滅地的力量。', buyPrice: 0, sellPrice: 2000,
+    description: '世界蛇之鱗據說由環世巨蛇脫落，墨綠鱗面刻著環形紋，可作傳說護甲核心。', buyPrice: 0, sellPrice: 2000,
     stackable: true, maxStack: 99, levelReq: 1, rarity: 'legendary',
   },
 
@@ -4534,7 +4534,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   broken_clock_gear: {
     id: 'broken_clock_gear', name: '碎鐘齒輪', type: 'material',
-    description: '碎鐘路與停擺鐘塔剝落的黑銅齒輪，齒痕會重複敲出同一秒鐘的回音。',
+    description: '碎鐘路與停擺鐘塔剝落的黑銅齒輪，齒痕會重複敲出同一秒鐘的回音，可修復時間機關。',
     buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 51, rarity: 'epic',
   },
   memory_reef_pearl: {
@@ -4822,13 +4822,13 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   // ─── 鹽風灘生態材料與潮汐補給 (Lv 14-24) ───
   flatsalt_crystal: {
     id: 'flatsalt_crystal', name: '白灘鹽晶', type: 'material',
-    description: '退潮後在白波鹽面凝出的透明鹽晶，邊緣鋒利，常被漁夫磨成驅霧粉。',
+    description: '退潮後在白波鹽面凝出的透明鹽晶，邊緣鋒利，常被漁夫磨成驅霧粉與防潮藥鹽。',
     buyPrice: 520, sellPrice: 260, stackable: true, maxStack: 99, levelReq: 14, rarity: 'uncommon',
     sourceTags: ['drop', 'shop'], zoneTags: ['saltwind_flats'],
   },
   brine_crab_shell: {
     id: 'brine_crab_shell', name: '鹽霜厚蟹殼', type: 'material',
-    description: '蟹行淺灘大型鹽蟹留下的厚殼，殼面覆著白色鹽霜，可做成耐鹽護片。',
+    description: '蟹行淺灘大型鹽蟹留下的厚殼，殼面覆著白色鹽霜，可做成耐鹽護片與海岸盾邊。',
     buyPrice: 680, sellPrice: 340, stackable: true, maxStack: 99, levelReq: 16, rarity: 'rare',
     sourceTags: ['drop'], zoneTags: ['saltwind_flats'],
   },
@@ -5305,7 +5305,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   nightbloom_petal: {
     id: 'nightbloom_petal', name: '夜花瓣', type: 'material',
-    description: '夜花庭只在月影最深時綻放的花瓣，握住時能短暫聽見夢境中的掌聲。',
+    description: '夜花庭只在月影最深時綻放的花瓣，握住時能短暫聽見夢境中的掌聲，可製月影香料。',
     buyPrice: 4000, sellPrice: 2000, stackable: true, maxStack: 99, levelReq: 40, rarity: 'rare',
     sourceTags: ['drop'], zoneTags: ['moonshadow_court'],
   },
@@ -5561,7 +5561,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   whalebone_relic: {
     id: 'whalebone_relic', name: '鯨骨聖片', type: 'material',
-    description: '刻滿祭文的古鯨骨碎片，仍保存著神殿沉沒前最後一次大潮的低鳴。',
+    description: '刻滿祭文的古鯨骨碎片，仍保存著神殿沉沒前最後一次大潮的低鳴，可作潮汐聖物核心。',
     buyPrice: 3000, sellPrice: 1500, stackable: true, maxStack: 99, levelReq: 48, rarity: 'legendary',
   },
   forbidden_altar_seal: {
