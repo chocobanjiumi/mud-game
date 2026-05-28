@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:35:24.902Z",
+  "generatedAt": "2026-05-28T16:37:41.371Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -46,6 +46,10 @@
       "uniqueBossDescriptionMinCjkChars": 70,
       "tooltipMinCjkChars": 35,
       "uniqueBossTooltipMinCjkChars": 70
+    },
+    "loot": {
+      "tableSummaryMinCjkChars": 30,
+      "dropSourceNoteMinCjkChars": 30
     },
     "affix": {
       "displayDescriptionMinCjkChars": 18,
@@ -114,6 +118,8 @@
     "gatheringNodes": 36,
     "materials": 291,
     "equipment": 932,
+    "lootTables": 521,
+    "dropSourceNotes": 1319,
     "affixes": 28,
     "playableClasses": 17,
     "races": 7,

@@ -43,6 +43,8 @@ type TextKind =
   | 'gatheringMaterial.description'
   | 'equipment.description'
   | 'equipment.tooltip'
+  | 'lootTable.summary'
+  | 'dropSource.note'
   | 'affix.description'
   | 'affixBuildDirection.notes'
   | 'reward.summary'
@@ -262,6 +264,27 @@ for (const item of Object.values(ITEM_DEFS)) {
   }
 }
 
+for (const monster of Object.values(MONSTERS)) {
+  checkText(
+    monster.id,
+    'lootTable.summary',
+    'summary',
+    formatMonsterLootTableSummaryAuditText(monster),
+    30,
+    'loot table summary 需包含掉落來源、可能物品或部位、等級或稀有度範圍、用途方向',
+  );
+  for (const drop of monster.drops) {
+    checkText(
+      `${monster.id}/${drop.itemId}`,
+      'dropSource.note',
+      'note',
+      formatMonsterDropSourceNoteAuditText(monster, drop),
+      30,
+      'drop source note 需包含掉落來源、物品名稱、機率、數量、用途方向',
+    );
+  }
+}
+
 for (const node of Object.values(GATHERING_NODE_DEFS)) {
   checkText(node.id, 'gatheringNode.description', 'description', node.description, 35, 'gathering node description 需包含資源外觀、生成環境與採集動作線索');
 }
@@ -415,6 +438,10 @@ const report = {
       tooltipMinCjkChars: 35,
       uniqueBossTooltipMinCjkChars: 70,
     },
+    loot: {
+      tableSummaryMinCjkChars: 30,
+      dropSourceNoteMinCjkChars: 30,
+    },
     affix: {
       displayDescriptionMinCjkChars: 18,
       buildDirectionNotesMinCjkChars: 35,
@@ -471,6 +498,8 @@ const report = {
     gatheringNodes: Object.keys(GATHERING_NODE_DEFS).length,
     materials: Object.values(ITEM_DEFS).filter(item => item.type === 'material').length,
     equipment: Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length,
+    lootTables: Object.values(MONSTERS).length,
+    dropSourceNotes: Object.values(MONSTERS).reduce((count, monster) => count + monster.drops.length, 0),
     affixes: Object.values(AFFIX_POOLS).flat().length,
     playableClasses: Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster').length,
     races: Object.keys(RACE_DEFS).length,
@@ -540,6 +569,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'monster.description') return 'monsters';
   if (kind === 'equipment.description') return 'equipment';
   if (kind === 'equipment.tooltip') return 'equipment.tooltip';
+  if (kind === 'lootTable.summary' || kind === 'dropSource.note') return kind;
   if (kind === 'skill.description') return 'skills';
   if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
   if (kind === 'item.tooltip') return 'item.tooltip';
@@ -707,6 +737,37 @@ function formatItemStatAuditText(stats: ItemDef['stats']): string {
     mountedThreatBonus: '騎乘威脅',
   };
   return Object.entries(stats).map(([key, value]) => `${labels[key] ?? key}${value > 0 ? '+' : ''}${value}`).join('、');
+}
+
+function formatMonsterLootTableSummaryAuditText(monster: typeof MONSTERS[string]): string {
+  const drops = monster.drops.length > 0
+    ? monster.drops.slice(0, 5).map(drop => {
+      const item = ITEM_DEFS[drop.itemId];
+      return `${item?.name ?? readableTag(drop.itemId)} ${Math.round(drop.chance * 100)}% x${drop.minQty}-${drop.maxQty}`;
+    }).join('、')
+    : '沒有固定物品掉落';
+  const goldText = `${monster.goldReward[0]}-${monster.goldReward[1]} 金幣`;
+  const tierText = monster.isBoss ? '首領' : monster.isElite ? '菁英' : '一般怪物';
+  return `${monster.name} Lv.${monster.level} 是${tierText}與${monster.family}族群掉落來源，擊敗後提供 ${monster.expReward} 經驗與 ${goldText}。掉落表包含${drops}，用途方向依物品類型可作材料、補給、任務、裝備或交易；玩家可用此摘要判斷等級區間、稀有度期待與是否值得刷取。`;
+}
+
+function formatMonsterDropSourceNoteAuditText(monster: typeof MONSTERS[string], drop: typeof MONSTERS[string]['drops'][number]): string {
+  const item = ITEM_DEFS[drop.itemId];
+  const itemName = item?.name ?? readableTag(drop.itemId);
+  const itemUse = item ? equipmentOrItemUseLabel(item) : '未登錄物品，需補資料後才能判斷用途';
+  const tierText = monster.isBoss ? '首領' : monster.isElite ? '菁英' : '一般怪物';
+  return `${itemName}可由${monster.name} Lv.${monster.level} ${tierText}掉落，掉落機率約 ${Math.round(drop.chance * 100)}%，數量 ${drop.minQty}-${drop.maxQty}。此來源 note 說明掉落來源、數量與用途方向：${itemUse}，避免只在 loot table 顯示內部 item id 或單純 drop rate。`;
+}
+
+function equipmentOrItemUseLabel(item: ItemDef): string {
+  if (item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory') {
+    const slot = resolveEquipSlotForItem(item) ?? item.equipSlot ?? 'unknown';
+    return `${equipmentSlotLabel(slot)}裝備，適合依數值與職業需求納入配裝`;
+  }
+  if (item.type === 'material') return '材料，可用於製作、任務交付或交易';
+  if (item.type === 'consumable') return '消耗品，可在探索、戰鬥或補給流程中使用';
+  if (item.type === 'quest') return '任務道具，用於推進事件、入口或交付條件';
+  return '一般物品，可依描述判斷用途';
 }
 
 function checkInstanceEntryName(entry: InstanceEntryForAudit): void {
@@ -927,6 +988,8 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'item.tooltip'
     || batchKey === 'equipment'
     || batchKey === 'equipment.tooltip'
+    || batchKey === 'lootTable.summary'
+    || batchKey === 'dropSource.note'
     || batchKey === 'class.summary'
     || batchKey === 'race.summary'
     || batchKey === 'faith.summary'
