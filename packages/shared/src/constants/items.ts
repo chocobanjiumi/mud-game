@@ -14,13 +14,17 @@ function normalizeItemDefs(defs: Record<string, ItemDef>): Record<string, ItemDe
   return Object.fromEntries(
     Object.entries(defs).map(([id, def]) => {
       if (!EQUIPMENT_TYPES.has(def.type)) return [id, def];
-      return [id, {
+      const normalized: ItemDef = {
         ...def,
         equipSlot: def.equipSlot ?? inferEquipSlot(id),
         level: def.level ?? def.levelReq,
         weaponType: def.type === 'weapon' ? def.weaponType ?? inferWeaponType(id, def) : def.weaponType,
         sourceTags: def.sourceTags ?? inferSourceTags(id, def),
         zoneTags: def.zoneTags ?? inferZoneTags(id, def),
+      };
+      return [id, {
+        ...normalized,
+        description: enrichEquipmentDescription(id, normalized),
       }];
     }),
   );
@@ -86,6 +90,84 @@ function inferZoneTags(itemId: string, def: ItemDef): string[] {
   if (haystack.includes('holy') || haystack.includes('light')) tags.add('celestial_ruins');
   if (tags.size === 0) tags.add('global');
   return Array.from(tags);
+}
+
+function enrichEquipmentDescription(itemId: string, def: ItemDef): string {
+  const minimum = def.rarity === 'legendary' || def.rarity === 'mythic' || def.sourceTags?.includes('boss') ? 70 : 45;
+  if (countCjkChars(def.description) >= minimum) return def.description;
+
+  const slot = formatEquipSlotLabel(def.equipSlot ?? inferEquipSlot(itemId));
+  const source = formatEquipmentSource(def.sourceTags ?? inferSourceTags(itemId, def), itemId);
+  const zone = formatZoneTagLabel(def.zoneTags ?? inferZoneTags(itemId, def));
+  const role = formatEquipmentRole(def.stats);
+  const tier = def.levelReq >= 50 ? '終局成長' : def.levelReq >= 30 ? '高階銜接' : def.levelReq >= 15 ? '中階替換' : '前期養成';
+  const detail = `${source}，常見於${zone}；作為${slot}使用時偏向${role}，適合${def.levelReq}級左右的${tier}配裝，外觀材質與掉落脈絡都能在背包提示中辨識。`;
+  if (minimum >= 70) {
+    return `${def.description}${detail}高稀有版本還需要在 wiki 與掉落表標明取得限制、適合職業和替換時機，避免玩家只看數值而不理解用途。`;
+  }
+  return `${def.description}${detail}`;
+}
+
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
+}
+
+function formatEquipSlotLabel(slot: EquipSlot): string {
+  const labels: Record<EquipSlot, string> = {
+    weapon: '主手武器',
+    offhand: '副手裝備',
+    meleeMainHand: '近戰主手',
+    meleeOffHand: '近戰副手',
+    rangedMainHand: '遠程主手',
+    rangedOffHand: '遠程副手',
+    head: '頭部防具',
+    body: '身體防具',
+    hands: '手部防具',
+    feet: '腳部防具',
+    belt: '腰部裝備',
+    necklace: '項鍊飾品',
+    earring: '耳環飾品',
+    ring: '戒指飾品',
+    accessory: '通用飾品',
+    saddle: '坐騎鞍具',
+  };
+  return labels[slot] ?? '裝備';
+}
+
+function formatEquipmentSource(sourceTags: string[], itemId: string): string {
+  if (sourceTags.includes('boss')) return '多由首領或高危遭遇取得';
+  if (sourceTags.includes('set')) return '屬於套裝進度的一部分';
+  if (sourceTags.includes('crafting')) return '可由鍛造或製作流程取得';
+  if (sourceTags.includes('shop')) return '可從商店、軍需或交易補給取得';
+  if (sourceTags.includes('quest')) return '通常綁定任務或區域委託獎勵';
+  if (itemId.includes('starter') || itemId.includes('wooden')) return '多在新手訓練與基礎補給中取得';
+  return '主要來自怪物掉落、寶箱或區域戰利品';
+}
+
+function formatZoneTagLabel(zoneTags: string[]): string {
+  const labels: Record<string, string> = {
+    starter_village: '新手村與周邊訓練區',
+    plains: '翠綠平原、獵場與農路',
+    dark_forest: '暗影森林與黑木林系路線',
+    crystal_cave: '水晶洞窟、礦坑與寒冷地帶',
+    volcano_zone: '火山、熔爐與高熱戰場',
+    celestial_ruins: '天界遺跡、聖地與信仰路線',
+    final_battleground: '終焉戰場與終局副本',
+    dragon_valley: '龍谷與高階龍族遭遇',
+    abyss_rift: '深淵裂隙與異界副本',
+    global: '多個世界區域或通用掉落池',
+  };
+  return zoneTags.map(tag => labels[tag] ?? '對應區域').slice(0, 2).join('、') || '通用冒險路線';
+}
+
+function formatEquipmentRole(stats: ItemDef['stats']): string {
+  if (!stats) return '補齊裝備欄位與基礎屬性';
+  if ((stats.atk ?? 0) > 0 && ((stats.critRate ?? 0) > 0 || (stats.dex ?? 0) > 0)) return '物理爆發、命中節奏與單體擊殺';
+  if ((stats.atk ?? 0) > 0) return '物理輸出、破甲與穩定普攻';
+  if ((stats.matk ?? 0) > 0 && ((stats.mp ?? 0) > 0 || (stats.int ?? 0) > 0)) return '法術輸出、魔力續航與施法成長';
+  if ((stats.def ?? 0) > 0 || (stats.mdef ?? 0) > 0 || (stats.hp ?? 0) > 0 || (stats.vit ?? 0) > 0) return '防禦、生命續戰與承受傷害';
+  if ((stats.dodgeRate ?? 0) > 0 || (stats.luk ?? 0) > 0) return '閃避、機動與探索收益';
+  return '補齊主要屬性與階段性戰力';
 }
 
 type LegacySupplementalEquipSlot = Exclude<EquipSlot,
