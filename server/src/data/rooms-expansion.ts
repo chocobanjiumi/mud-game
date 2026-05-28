@@ -3765,7 +3765,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '村外舊農路在此分成數條泥濘小徑，歪斜木牌上還能辨認出穀倉、農舍和舊井的方向。田壟長滿雜草，乾裂車轍裡積著昨夜雨水，遠處傳來田鼠啃咬木板的細碎聲。這裡是老舊農場的入口與安全錨點，玩家可以從路口判斷各支線位置，也能沿西側小路回到新手村外圍農田。',
     exits: [
-      { direction: 'west', targetRoomId: 'village_farmland', description: '沿小路回到新手村外圍農田' },
+      {
+        direction: 'west',
+        targetRoomId: 'village_farmland',
+        description: '西側小路要沿泥濘車轍繞過兩片荒田，穿過舊籬笆缺口後才回到新手村外圍農田',
+        edgeKind: 'long_path',
+        edgeNote: '舊農路口到新手村外圍農田跨過荒田與籬笆缺口，屬於跨區長路徑。',
+      },
       { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生' },
       { direction: 'east', targetRoomId: 'old_farmland_rat_ditch', description: '東邊水溝傳來窸窣聲' },
       { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田' },
@@ -3877,8 +3883,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_overgrown_field', description: '回到荒草麥田' },
       { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過' },
-      { direction: 'east', targetRoomId: 'old_farmland_well', description: '舊井在穀倉東側' },
-      { direction: 'north', targetRoomId: 'old_farmland_pumpkin_patch', description: '後門外是南瓜地' },
+      {
+        direction: 'east',
+        targetRoomId: 'old_farmland_well',
+        description: '東側舊井需繞過塌落木樑與濕泥小徑，從穀倉外牆缺口旁才能抵達',
+        edgeKind: 'long_path',
+        edgeNote: '塌陷穀倉到舊井需要繞過塌落木樑與濕泥小徑，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'old_farmland_pumpkin_patch',
+        description: '北側後門被南瓜藤纏住，必須沿穀倉背牆繞過倒塌屋頂後才進入南瓜地',
+        edgeKind: 'long_path',
+        edgeNote: '塌陷穀倉到膨脹南瓜地需要繞過倒塌屋頂與藤蔓，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
@@ -3903,9 +3921,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '田邊舊井的石圈長滿青苔，吊桶繩索已經斷裂，只剩半截泡在黑水裡。靠近井口能聽見水滴聲和微弱回音，像有人在井底敲擊石壁。井旁泥地有野獸腳印和孩子刻下的舊塗鴉，顯示這裡曾是農場居民取水與閒聊的地方。如今井水被魔化作物根鬚污染，偶爾會冒出綠色史萊姆。',
     exits: [
-      { direction: 'west', targetRoomId: 'old_farmland_collapsed_barn', description: '小徑回到塌陷穀倉' },
-      { direction: 'south', targetRoomId: 'old_farmland_irrigation_channel', description: '井水流入灌溉渠' },
-      { direction: 'north', targetRoomId: 'old_farmland_mildew_orchard', description: '北方是霉斑果園' },
+      {
+        direction: 'west',
+        targetRoomId: 'old_farmland_collapsed_barn',
+        description: '西側小徑沿井邊濕泥繞過塌落木樑，穿過穀倉外牆缺口才回到塌陷穀倉',
+        edgeKind: 'long_path',
+        edgeNote: '舊井回塌陷穀倉需要沿濕泥小徑繞過塌落木樑，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'old_farmland_irrigation_channel',
+        description: '南側井水暗渠先穿過堵塞木閘與泥溝，沿乾裂渠壁下行才接到灌溉渠',
+        edgeKind: 'long_path',
+        edgeNote: '舊井到乾涸灌溉渠需要沿堵塞暗渠與乾裂渠壁下行，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'old_farmland_mildew_orchard',
+        description: '北側果園隔著被污染的樹根坡，必須沿井畔石階繞上霉斑果樹間入口',
+        edgeKind: 'long_path',
+        edgeNote: '舊井到霉斑果園需要沿井畔石階與污染樹根坡上行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
@@ -3930,8 +3966,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '穀倉後方的南瓜地長得異常茂盛，藤蔓爬過田埂，幾顆南瓜大得像小木桶。表皮有被啃咬和抓裂的痕跡，裂縫裡散出甜膩又帶霉味的氣息，引來田鼠和黑鴉爭食。南瓜地可作為採集點，玩家能取得食材或任務種子，但過度膨脹的南瓜受到魔力刺激，碰撞時可能噴出刺激性孢子。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_collapsed_barn', description: '穿過後門回到穀倉' },
-      { direction: 'east', targetRoomId: 'old_farmland_mildew_orchard', description: '藤蔓延向果園' },
+      {
+        direction: 'south',
+        targetRoomId: 'old_farmland_collapsed_barn',
+        description: '南側回穀倉要穿過糾結南瓜藤，沿倒塌屋頂邊緣繞回後門缺口旁邊',
+        edgeKind: 'long_path',
+        edgeNote: '膨脹南瓜地回塌陷穀倉需要穿過南瓜藤與倒塌屋頂邊緣，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'old_farmland_mildew_orchard',
+        description: '東側藤蔓小路需繞過幾顆膨脹南瓜與腐果溝，才會進入霉斑果園內側',
+        edgeKind: 'long_path',
+        edgeNote: '膨脹南瓜地到霉斑果園需要沿藤蔓小路繞過腐果溝，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口' },
     ],
     monsters: [
@@ -3957,9 +4005,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '舊果園的蘋果樹和梨樹彎得很低，枝頭掛滿帶霉斑的果實，地上腐果吸引黑鴉與田鼠。樹幹上有農夫刻下的採收記號，旁邊卻長出不自然的綠色菌膜，顯示井水污染已蔓延到根部。玩家可在果園採集尚未腐壞的果子或藥用樹皮，也能找到通往蜂箱行列與舊井的小路。',
     exits: [
-      { direction: 'west', targetRoomId: 'old_farmland_pumpkin_patch', description: '藤蔓小路回到南瓜地' },
-      { direction: 'south', targetRoomId: 'old_farmland_well', description: '樹根坡道下到舊井' },
-      { direction: 'east', targetRoomId: 'old_farmland_beehive_rows', description: '果樹間傳來蜂群嗡鳴' },
+      {
+        direction: 'west',
+        targetRoomId: 'old_farmland_pumpkin_patch',
+        description: '西側藤蔓小路穿過腐果溝與低矮籬笆，繞回被膨脹南瓜擋住的田埂',
+        edgeKind: 'long_path',
+        edgeNote: '霉斑果園回膨脹南瓜地需要穿過腐果溝與籬笆，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'old_farmland_well',
+        description: '南側樹根坡道沿污染水痕下滑，經過幾段青苔石階後才回到舊井邊',
+        edgeKind: 'long_path',
+        edgeNote: '霉斑果園回舊井需要沿污染樹根坡與青苔石階下行，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'old_farmland_beehive_rows',
+        description: '東側蜂箱行列隔著密果樹與嗡鳴蜂道，必須繞過低枝才能靠近入口',
+        edgeKind: 'long_path',
+        edgeNote: '霉斑果園到蜂箱行列需要穿過密果樹與蜂道，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'mildew_harvestling', maxCount: 2, respawnSeconds: 45 },
@@ -4011,7 +4077,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的拖痕，表示史萊姆和田鼠都把這裡當成安全通道。玩家若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_rat_ditch', description: '水溝堵塞處在西邊' },
-      { direction: 'north', targetRoomId: 'old_farmland_well', description: '水渠源頭連到舊井' },
+      {
+        direction: 'north',
+        targetRoomId: 'old_farmland_well',
+        description: '北側水渠源頭要沿乾裂渠壁上行，穿過堵塞木閘與泥溝後才回到舊井',
+        edgeKind: 'long_path',
+        edgeNote: '乾涸灌溉渠回舊井需要沿乾裂渠壁與堵塞暗渠上行，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'old_farmland_granary', description: '水渠旁有小糧倉' },
     ],
     monsters: [
@@ -4038,7 +4110,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉' },
-      { direction: 'west', targetRoomId: 'old_farmland_root_cellar', description: '屋後低矮根道通往根窖' },
+      {
+        direction: 'west',
+        targetRoomId: 'old_farmland_root_cellar',
+        description: '西側屋後根道低矮潮濕，必須繞過塌陷地板與纏牆根鬚才到地下根窖',
+        edgeKind: 'long_path',
+        edgeNote: '荒廢農舍到地下根窖需要穿過低矮根道與塌陷地板，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
     ],
     monsters: [
@@ -4064,8 +4142,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '果園東側排列著十幾只舊蜂箱，木箱裂縫滲出深色蜂蠟，空氣裡充滿嗡鳴與甜味。部分蜂箱已空，部分卻住進過度活躍的野蜂，牠們被霉斑果香吸引，對任何接近者都非常敏感。玩家可採集蜂蠟、蜂蜜或修理蜂箱，也能找到通往防風樹列的窄徑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'old_farmland_mildew_orchard', description: '果樹小路回到霉斑果園' },
-      { direction: 'south', targetRoomId: 'old_farmland_chicken_coop', description: '蜂箱盡頭是破雞舍' },
+      {
+        direction: 'west',
+        targetRoomId: 'old_farmland_mildew_orchard',
+        description: '西側果樹小路要穿過嗡鳴蜂道與密集低枝，才會回到霉斑果園內側',
+        edgeKind: 'long_path',
+        edgeNote: '蜂箱行列回霉斑果園需要穿過蜂道與低枝果樹，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'old_farmland_chicken_coop',
+        description: '南側雞舍在蜂箱盡頭後方，必須沿破籬笆繞過幾排傾倒木箱才能抵達',
+        edgeKind: 'long_path',
+        edgeNote: '蜂箱行列到破雞舍需要沿破籬笆與傾倒蜂箱繞行，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹' },
     ],
     monsters: [
@@ -4142,7 +4232,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
     exits: [
-      { direction: 'east', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '低矮根道回到荒廢農舍' },
+      {
+        direction: 'east',
+        targetRoomId: 'old_farmland_abandoned_farmhouse',
+        description: '東側低矮根道要穿過潮濕根鬚與塌陷地板下方，才能回到荒廢農舍後門',
+        edgeKind: 'long_path',
+        edgeNote: '地下根窖回荒廢農舍需要穿過潮濕根道與塌陷地板，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
     ],
     monsters: [
@@ -4170,7 +4266,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
       { direction: 'south', targetRoomId: 'old_farmland_toolshed', description: '破網通往工具棚' },
-      { direction: 'north', targetRoomId: 'old_farmland_beehive_rows', description: '蜂箱行列在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'old_farmland_beehive_rows',
+        description: '北側蜂箱行列要沿雞舍破籬笆繞行，穿過倒塌木箱與蜂群巡路才到',
+        edgeKind: 'long_path',
+        edgeNote: '破雞舍到蜂箱行列需要沿破籬笆與蜂群巡路繞行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },
@@ -4274,7 +4376,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口和村外小路，也能作為低等玩家撤退時的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口' },
-      { direction: 'west', targetRoomId: 'village_outskirts', description: '舊車道繞回村外小路' },
+      {
+        direction: 'west',
+        targetRoomId: 'village_outskirts',
+        description: '西側舊車道先繞過斷木車與低矮籬笆，穿過荒田邊界後才回到村外小路',
+        edgeKind: 'long_path',
+        edgeNote: '舊車道捷徑回村外小路需要跨過荒田邊界與斷木車，屬於跨區長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
