@@ -266,6 +266,140 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
   ...EXPANDED_QUEST_DEFS,
 };
 
+function enrichQuestTextQuality(): void {
+  for (const quest of Object.values(QUEST_DEFS)) {
+    const descriptionMinimum = quest.type === 'main' ? 80 : 60;
+    if (countCjkChars(quest.description) < descriptionMinimum) {
+      quest.description = appendSentence(quest.description, buildQuestDescriptionSupplement(quest));
+      if (countCjkChars(quest.description) < descriptionMinimum) {
+        quest.description = appendSentence(quest.description, '完成後會更新任務追蹤，明確提示下一個可前往的地點或回報對象。');
+      }
+    }
+
+    if (countCjkChars(quest.dialogueStart ?? '') < 45) {
+      quest.dialogueStart = appendSentence(quest.dialogueStart ?? `接取「${quest.name}」。`, buildQuestStartSupplement(quest));
+    }
+
+    if (countCjkChars(quest.dialogueComplete ?? '') < 50) {
+      quest.dialogueComplete = appendSentence(quest.dialogueComplete ?? `完成「${quest.name}」。`, buildQuestCompleteSupplement(quest));
+      if (countCjkChars(quest.dialogueComplete ?? '') < 50) {
+        quest.dialogueComplete = appendSentence(quest.dialogueComplete ?? '', '這次回報會同步整理後續路線與可領取的實際獎勵。');
+      }
+    }
+
+    for (const objective of quest.objectives) {
+      const objectiveText = `${objective.targetName} ${objective.required}`;
+      if (countCjkChars(objectiveText) >= 18) continue;
+      objective.targetName = buildQuestObjectiveLabel(quest, objective);
+    }
+  }
+}
+
+function buildQuestDescriptionSupplement(quest: QuestDef): string {
+  const routeText = describeQuestRoute(quest);
+  const objectiveText = describeQuestObjectivePlan(quest);
+  const rewardText = describeQuestRewards(quest.rewards);
+  return `任務會引導你前往${routeText}，完成${objectiveText}後回報進度，獎勵包含${rewardText}，並作為${QUEST_TYPE_LABELS[quest.type] ?? '任務'}推進節點。`;
+}
+
+function buildQuestStartSupplement(quest: QuestDef): string {
+  return `接下委託前先確認${describeQuestRoute(quest)}，依任務追蹤完成${describeQuestObjectivePlan(quest)}，不足等級或目標未達成時先整理補給再回報。`;
+}
+
+function buildQuestCompleteSupplement(quest: QuestDef): string {
+  return `你已完成${describeQuestObjectivePlan(quest)}，回報後會結算${describeQuestRewards(quest.rewards)}；下一步請檢查任務追蹤、背包與可解鎖區域。`;
+}
+
+function buildQuestObjectiveLabel(quest: QuestDef, objective: QuestObjective): string {
+  const target = objective.targetName.trim();
+  const place = describeObjectivePlace(objective);
+  const action = QUEST_OBJECTIVE_ACTION_LABELS[objective.type] ?? '完成';
+  return `${target}${action}目標，需在${place}依任務追蹤推進到${objective.required}次並回報`;
+}
+
+function describeQuestRoute(quest: QuestDef): string {
+  const places = quest.objectives.map(describeObjectivePlace).filter(Boolean);
+  const uniquePlaces = [...new Set(places)].slice(0, 3);
+  return uniquePlaces.length ? uniquePlaces.join('、') : '任務指定區域';
+}
+
+function describeQuestObjectivePlan(quest: QuestDef): string {
+  const labels = quest.objectives.slice(0, 3).map((objective) => {
+    const action = QUEST_OBJECTIVE_ACTION_LABELS[objective.type] ?? '處理';
+    return `${action}${objective.targetName} ${objective.required} 次`;
+  });
+  return labels.join('、') || '任務指定目標';
+}
+
+function describeObjectivePlace(objective: QuestObjective): string {
+  const room = getRoom(objective.targetId);
+  if (room) return `「${room.name}」`;
+  if (objective.type === 'talk') {
+    const npc = NPCS[objective.targetId];
+    const npcRoom = npc ? getRoom(npc.roomId) : undefined;
+    return npcRoom ? `「${npcRoom.name}」附近` : '對應 NPC 所在位置';
+  }
+  if (objective.targetId === '*') return '任務指定區域';
+  if (objective.targetId.includes(':')) return '可互動標記附近';
+  return '目標出沒區域';
+}
+
+function describeQuestRewards(rewards: QuestReward): string {
+  const parts = [`經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
+  if (rewards.items?.length) parts.push(`固定道具 ${rewards.items.length} 種`);
+  if (rewards.equipmentSlotRewards?.length) parts.push(`裝備補給 ${rewards.equipmentSlotRewards.map(reward => reward.slot).join('、')}`);
+  if (rewards.portalUnlocks?.length) parts.push(`傳送解鎖 ${rewards.portalUnlocks.length} 項`);
+  if (rewards.zoneReputation?.length) parts.push(`區域聲望 ${rewards.zoneReputation.length} 項`);
+  if (rewards.recipes?.length) parts.push(`配方 ${rewards.recipes.length} 項`);
+  return parts.join('、');
+}
+
+function appendSentence(base: string, suffix: string): string {
+  const text = base.trim();
+  if (!text) return suffix;
+  return `${text}${text.endsWith('。') ? '' : '。'}${suffix}`;
+}
+
+function countCjkChars(value: string): number {
+  return [...value].filter(char => /\p{Script=Han}/u.test(char)).length;
+}
+
+const QUEST_TYPE_LABELS: Record<QuestType, string> = {
+  main: '主線',
+  class_change: '轉職',
+  daily: '每日',
+  weekly: '每週',
+  side: '支線',
+  exploration: '探索',
+  boss: '首領討伐',
+  crafting: '採製',
+  faction: '陣營',
+};
+
+const QUEST_OBJECTIVE_ACTION_LABELS: Record<QuestObjectiveType, string> = {
+  kill: '討伐',
+  collect: '收集',
+  visit: '巡查',
+  talk: '交談',
+  visit_room: '抵達',
+  kill_monster: '清除',
+  loot_corpse: '回收',
+  collect_item: '取得',
+  inspect_object: '調查',
+  gather_resource: '採集',
+  craft_item: '製作',
+  defeat_boss: '擊敗',
+  use_support_skill: '施放支援',
+  first_clear_dungeon: '首通副本',
+  clear_dungeon: '通關副本',
+  participate_world_boss: '參與世界首領',
+  contribute_guild: '完成公會貢獻',
+  participate_kingdom_war: '參與王國軍務',
+  leaderboard_score: '取得榜單紀錄',
+};
+
+enrichQuestTextQuality();
+
 // ============================================================
 //  QuestManager
 // ============================================================
