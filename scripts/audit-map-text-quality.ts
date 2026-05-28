@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { WORLD_MAP2_INSTANCE_ENTRY_ITEMS } from '../packages/shared/src/constants/instance-entry-items.js';
@@ -65,6 +65,9 @@ type TextKind =
   | 'wiki.article.summary'
   | 'wiki.table.rowNote'
   | 'imagePrompt'
+  | 'imagePrompt.characterNpc'
+  | 'imagePrompt.itemIcon'
+  | 'imagePrompt.iconAtlas'
   | 'batch.repeatedOpening'
   | 'batch.repeatedCoreTerm'
   | 'reference.unresolved';
@@ -105,6 +108,7 @@ const WIKI_AUDIT_SECTIONS = [
 const write = process.argv.includes('--write');
 const strict = process.argv.includes('--strict');
 const outPath = resolve(process.cwd(), 'reports/map-text-quality.json');
+const repoRoot = process.cwd().endsWith('/server') ? resolve(process.cwd(), '..') : process.cwd();
 
 const zonePlans = buildZoneMapPlans(ZONES);
 const issues: TextIssue[] = [];
@@ -144,6 +148,8 @@ const referenceAllowList = new Set([
   'instanceTemplateId',
   'arrivalTicks',
   'resourceCost',
+  'status_atlas_01',
+  'combat_action_atlas_01',
 ]);
 
 for (const zone of Object.values(ZONES)) {
@@ -457,6 +463,7 @@ for (const room of Object.values(ROOMS)) {
 }
 
 auditWikiTextQuality();
+auditGeneratedImagePrompts();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -559,6 +566,12 @@ const report = {
     imagePrompt: {
       roomPromptMinEnglishWords: 80,
       roomPromptMinCjkChars: 120,
+      characterNpcPromptMinEnglishWords: 70,
+      characterNpcPromptMinCjkChars: 100,
+      itemIconPromptMinEnglishWords: 45,
+      itemIconPromptMinCjkChars: 70,
+      iconAtlasPromptMinEnglishWords: 80,
+      iconAtlasPromptMinCjkChars: 120,
     },
     batchQuality: {
       repeatedOpeningWindow: 3,
@@ -615,6 +628,9 @@ const report = {
     skills: Object.keys(SKILL_DEFS).length,
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
+    characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
+    itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
+    iconAtlasPrompts: buildIconAtlasPromptRecords().length,
     instanceEntries: instanceEntries.length,
     mapMarkerTooltips: Object.keys(ROOMS).length,
     roomActionTooltips: Object.values(ROOMS).reduce((count, room) => count + room.exits.length, 0),
@@ -813,6 +829,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'mapMarker.tooltip') return 'mapMarker.tooltip';
   if (kind === 'roomAction.tooltip') return 'roomAction.tooltip';
   if (kind === 'wiki.article.summary' || kind === 'wiki.table.rowNote') return kind;
+  if (kind === 'imagePrompt.characterNpc' || kind === 'imagePrompt.itemIcon' || kind === 'imagePrompt.iconAtlas') return kind;
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
   return kind;
 }
@@ -849,12 +866,139 @@ function countEnglishWords(text: string): number {
   return (text.match(/[A-Za-z][A-Za-z0-9'-]*/g) ?? []).length;
 }
 
-function checkPrompt(id: string, kind: TextKind, text: string, minimumEnglishWords: number, reason: string) {
+function checkPrompt(id: string, kind: TextKind, text: string, minimumEnglishWords: number, reason: string, minimumCjkChars = 120) {
   recordText(id, kind, 'imagePrompt', text);
   const cjkChars = countCjkChars(text);
   const englishWords = countEnglishWords(text);
-  if (englishWords >= minimumEnglishWords || cjkChars >= 120) return;
+  if (englishWords >= minimumEnglishWords || cjkChars >= minimumCjkChars) return;
   addMeasuredIssue(id, kind, 'imagePrompt', text, Math.max(englishWords, cjkChars), minimumEnglishWords, reason);
+}
+
+interface GeneratedImagePromptRecord {
+  assetId: string;
+  targetId: string;
+  category: 'npc' | 'monster' | 'item' | 'material';
+  name: string;
+  prompt: string;
+}
+
+function auditGeneratedImagePrompts(): void {
+  for (const record of readGeneratedPromptRecords()) {
+    if (record.category === 'npc' || record.category === 'monster') {
+      checkPrompt(
+        record.assetId,
+        'imagePrompt.characterNpc',
+        record.prompt,
+        70,
+        'character / NPC / monster prompt 需包含身份、半身或全身構圖、服裝或身體特徵、姿態、背景、安全邊界與禁止文字',
+        100,
+      );
+      checkImagePromptRequiredTerms(record.assetId, 'imagePrompt.characterNpc', record.prompt, [
+        ['輸出用途', /Output purpose|direct game portrait|portrait size|game asset/i],
+        ['構圖', /half-body|full creature|upper-body|centered|bust view|portrait/i],
+        ['服裝或身體特徵', /clothing|role props|anatomy|silhouette|horns|wings|limbs|Details:/i],
+        ['姿態', /pose|posture|expressive face|attack posture/i],
+        ['背景', /background|Zones:/i],
+        ['安全邊界', /safe margins/i],
+        ['禁止文字', /no text|watermark/i],
+      ]);
+    } else {
+      checkPrompt(
+        record.assetId,
+        'imagePrompt.itemIcon',
+        record.prompt,
+        45,
+        'item icon prompt 需包含物品類型、材質、輪廓、主色或光影、單一圖標構圖、背景要求與禁止文字',
+        70,
+      );
+      checkImagePromptRequiredTerms(record.assetId, 'imagePrompt.itemIcon', record.prompt, [
+        ['輸出用途', /inventory|shop|icon|game asset/i],
+        ['單一圖標構圖', /single object|object centered|centered subject|no collage/i],
+        ['材質或輪廓', /material|silhouette|edge highlights|Details:/i],
+        ['背景要求', /backdrop|background|negative space/i],
+        ['安全邊界', /safe margins/i],
+        ['禁止文字', /no text|watermark/i],
+      ]);
+    }
+  }
+
+  for (const record of buildIconAtlasPromptRecords()) {
+    checkPrompt(
+      record.id,
+      'imagePrompt.iconAtlas',
+      record.prompt,
+      80,
+      'icon atlas prompt 需寫明 atlas 格數、比例、每格正方形、單格命名、視覺區分規則、安全邊界與禁止文字',
+      120,
+    );
+    checkImagePromptRequiredTerms(record.id, 'imagePrompt.iconAtlas', record.prompt, [
+      ['atlas 格數', /\b\d+x\d+\b|16 icons|16 square/i],
+      ['比例', /16:10|square atlas|grid/i],
+      ['每格正方形', /square cell|square icon|each cell/i],
+      ['單格命名', /cell names|named cell|listed cell/i],
+      ['視覺區分', /distinct|different silhouette|high contrast/i],
+      ['安全邊界', /safe margins/i],
+      ['禁止文字', /no text|watermark/i],
+    ]);
+  }
+}
+
+function checkImagePromptRequiredTerms(
+  id: string,
+  kind: 'imagePrompt.characterNpc' | 'imagePrompt.itemIcon' | 'imagePrompt.iconAtlas',
+  prompt: string,
+  requirements: Array<[string, RegExp]>,
+): void {
+  for (const [label, pattern] of requirements) {
+    if (pattern.test(prompt)) continue;
+    addMeasuredIssue(id, kind, 'imagePrompt', prompt, Math.max(countEnglishWords(prompt), countCjkChars(prompt)), 1, `image prompt 缺少${label}`);
+  }
+}
+
+function readGeneratedPromptRecords(): GeneratedImagePromptRecord[] {
+  const promptPath = resolve(repoRoot, 'docs/atlas/ai-prompts.jsonl');
+  if (!existsSync(promptPath)) return [];
+  return readFileSync(promptPath, 'utf8')
+    .split('\n')
+    .map(line => line.trim())
+    .filter(Boolean)
+    .map(line => JSON.parse(line) as GeneratedImagePromptRecord);
+}
+
+function countGeneratedPromptRecords(categories: GeneratedImagePromptRecord['category'][]): number {
+  const categorySet = new Set(categories);
+  return readGeneratedPromptRecords().filter(record => categorySet.has(record.category)).length;
+}
+
+function buildIconAtlasPromptRecords(): Array<{ id: string; prompt: string }> {
+  const records: Array<{ id: string; prompt: string }> = [];
+  for (const metadataPath of [
+    resolve(repoRoot, 'docs/skills/starter-skill-atlas-metadata.json'),
+    resolve(repoRoot, 'docs/skills/common-origin-skill-atlas-metadata.json'),
+  ]) {
+    if (!existsSync(metadataPath)) continue;
+    const metadata = JSON.parse(readFileSync(metadataPath, 'utf8')) as {
+      grid: { cols: number; rows: number; iconSize: number };
+      style: string;
+      atlases: Array<{ file: string; promptSummary?: string; cells: Array<{ name: string; skillId?: string; theme?: string }> }>;
+    };
+    for (const atlas of metadata.atlases) {
+      const cellNames = atlas.cells.map(cell => `${cell.name}${cell.theme ? ` (${cell.theme})` : ''}`).join(', ');
+      records.push({
+        id: atlas.file,
+        prompt: `Icon atlas prompt for ${atlas.file}: create a ${metadata.grid.cols}x${metadata.grid.rows} grid, 1:1 square atlas made from ${metadata.grid.cols * metadata.grid.rows} square cells, each cell exported as a ${metadata.grid.iconSize}x${metadata.grid.iconSize} square icon. Use ${metadata.style}; every named cell must stay visually distinct with a different silhouette, color accent, and readable motif. Cell names: ${cellNames}. Keep each icon centered with safe margins so cropping never cuts the symbol. Use no text, no UI label, no watermark, no frame, no collage, and no extra category badge.`,
+      });
+    }
+  }
+  records.push({
+    id: 'status_atlas_01',
+    prompt: 'Icon atlas prompt for status_atlas_01: create a 4x4 grid in a 16:10 source image, containing 16 square status effect icons for poison, burn, bleed, stun, freeze, fear, slow, silence, defense down, attack down, mark, shield, damage reduction, mana shield, regeneration, and mana regeneration. Each square cell is a named cell tied to one effect name, with a distinct silhouette, a different color accent, centered composition, high contrast, safe margins for cropping, no text, no UI label, no watermark, no frame, and no decorative collage outside the cells.',
+  });
+  records.push({
+    id: 'combat_action_atlas_01',
+    prompt: 'Icon atlas prompt for combat_action_atlas_01: create a 3x1 icon row inside a 16:10 source image with three square action icons for attack, defend, and flee placed on aligned square cells. Each named cell must be visually distinct: weapon strike for attack, guard shield for defend, motion or exit symbol for flee, using different silhouettes and color accents. Keep every square icon centered, readable at small size, high contrast, safe margins for cropping, no text, no UI label, no watermark, no frame, and no extra symbols outside the intended cells.',
+  });
+  return records;
 }
 
 function checkDungeonEntryItemDescription(entryItem: typeof WORLD_MAP2_INSTANCE_ENTRY_ITEMS[number], description: string): void {
@@ -1465,6 +1609,9 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
+    || batchKey === 'imagePrompt.characterNpc'
+    || batchKey === 'imagePrompt.itemIcon'
+    || batchKey === 'imagePrompt.iconAtlas'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip';
 }
@@ -1498,6 +1645,9 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
+    || batchKey === 'imagePrompt.characterNpc'
+    || batchKey === 'imagePrompt.itemIcon'
+    || batchKey === 'imagePrompt.iconAtlas'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip'
     || batchKey === 'instanceEntry.description';
@@ -1506,6 +1656,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
 function checkUnresolvedReferences(records: TextRecord[]) {
   const referencePattern = /\b[a-z][a-z0-9]+_[a-z0-9_]+\b/g;
   for (const record of records) {
+    if (record.kind === 'imagePrompt.characterNpc' || record.kind === 'imagePrompt.itemIcon' || record.kind === 'imagePrompt.iconAtlas') continue;
     const references = record.text.match(referencePattern) ?? [];
     for (const reference of references) {
       if (knownReferenceIds.has(reference) || referenceAllowList.has(reference)) continue;

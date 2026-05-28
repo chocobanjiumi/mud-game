@@ -177,11 +177,11 @@ function makePrompt(target: AtlasTarget): string {
   const zoneLine = target.zoneIds.length > 0 ? `Zones: ${target.zoneIds.join(', ')}.` : 'Zones: global.';
   const base =
     target.category === 'npc'
-      ? 'Square fantasy NPC portrait, bust view, expressive face, readable silhouette, dark fantasy painterly game asset, no text, no UI.'
+      ? 'Square fantasy NPC portrait, half-body bust view, expressive face, readable silhouette, visible clothing and role props, calm three-quarter pose, dark fantasy painterly game asset, simple atmospheric background, keep head and shoulders inside safe margins, no text, no UI.'
       : target.category === 'monster'
-        ? 'Square fantasy monster portrait, creature centered, readable silhouette, dark fantasy painterly game asset, no text, no UI.'
-        : 'Square fantasy item icon, object centered on simple dark neutral backdrop, readable silhouette, painterly game asset, no text, no UI.';
-  return `${base} ${zoneLine} Subject: ${target.name} (${target.targetId}). Details: ${truncate(target.description, 220)}`;
+        ? 'Square fantasy monster portrait, full creature visible or strong upper-body creature view, creature centered, readable silhouette, clear anatomy, attack posture or habitat clue, dark fantasy painterly game asset, simple atmospheric background, keep horns, wings, limbs, and weapon-like parts inside safe margins, no text, no UI.'
+        : 'Square fantasy item icon, single object centered, readable silhouette, material and edge highlights visible, primary color separated from simple dark neutral backdrop, painterly game asset for inventory and shop slots, keep the object inside safe margins, no text, no UI.';
+  return `${base} ${zoneLine} Subject: ${target.name} (${target.targetId}). Output purpose: direct game portrait or inventory icon at small size. Composition: centered subject, clean negative space, no frame, no collage. Details: ${truncate(target.description, 220)}`;
 }
 
 function collectTargets(zoneIds: string[]): Record<Category, AtlasTarget[]> {
@@ -377,7 +377,7 @@ function writeImageGenPromptJsonl(plan: AtlasPlan, outPath: string): void {
         target.prompt,
         'Generate exactly one finished bitmap asset for this single target.',
         'Do not create an atlas sheet, grid, contact sheet, collage, text label, initial, UI badge, watermark, frame, or category icon.',
-        'The final image must be suitable for direct use as the target game asset at inventory, shop, NPC, or monster portrait size.',
+        'The final image must be suitable for direct use as the target game asset at inventory, shop, NPC, or monster portrait size, with safe margins so UI cropping does not cut off the subject.',
       ].join(' '),
     }));
 

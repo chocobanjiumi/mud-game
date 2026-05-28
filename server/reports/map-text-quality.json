@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:57:37.172Z",
+  "generatedAt": "2026-05-28T17:06:58.285Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -98,7 +98,13 @@
     },
     "imagePrompt": {
       "roomPromptMinEnglishWords": 80,
-      "roomPromptMinCjkChars": 120
+      "roomPromptMinCjkChars": 120,
+      "characterNpcPromptMinEnglishWords": 70,
+      "characterNpcPromptMinCjkChars": 100,
+      "itemIconPromptMinEnglishWords": 45,
+      "itemIconPromptMinCjkChars": 70,
+      "iconAtlasPromptMinEnglishWords": 80,
+      "iconAtlasPromptMinCjkChars": 120
     },
     "batchQuality": {
       "repeatedOpeningWindow": 3,
@@ -177,6 +183,9 @@
     "skills": 206,
     "skillUpgradePreviews": 112,
     "imagePrompts": 1203,
+    "characterNpcImagePrompts": 714,
+    "itemIconImagePrompts": 1161,
+    "iconAtlasPrompts": 6,
     "instanceEntries": 37,
     "mapMarkerTooltips": 1203,
     "roomActionTooltips": 3122,
