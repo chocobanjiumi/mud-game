@@ -17,6 +17,7 @@ import { MONSTERS } from '../server/src/data/monsters.js';
 import { NPCS } from '../server/src/data/npcs.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { RECIPES, type CraftingCategory, type RecipeDef } from '../server/src/game/crafting.js';
+import { getRoomGatheringTags } from '../server/src/game/gathering.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
@@ -151,6 +152,8 @@ const referenceAllowList = new Set([
   'status_atlas_01',
   'combat_action_atlas_01',
 ]);
+const instanceEntries = buildInstanceEntryDefs(ZONES);
+const instanceEntryRoomIds = new Set(instanceEntries.map(entry => entry.roomId));
 
 for (const zone of Object.values(ZONES)) {
   checkText(zone.id, 'zone.description', 'description', zone.description, 90, 'zone summary 需包含地貌、等級定位、怪物族群、資源或服務、相鄰區域關係');
@@ -162,6 +165,7 @@ for (const room of Object.values(ROOMS)) {
   const scope = plannedMapScopeForRoom(room, plan);
   const roomMinimum = roomMinimumLength(room.id, room.name, room.description, zone?.type, scope);
   checkText(`${room.zone}/${room.id}`, 'room.description', 'description', room.description, roomMinimum, 'room 描述字數不足或過於泛用');
+  auditRoomDescriptionSemantics(room, zone, scope);
   if (room.imagePrompt) {
     checkPrompt(`${room.zone}/${room.id}`, 'imagePrompt', room.imagePrompt, 80, 'room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標');
   }
@@ -433,7 +437,6 @@ for (const skill of Object.values(SKILL_DEFS)) {
   }
 }
 
-const instanceEntries = buildInstanceEntryDefs(ZONES);
 for (const entry of instanceEntries) {
   checkInstanceEntryName(entry);
   checkText(entry.id, 'instanceEntry.description', 'description', entry.description, instanceEntryDescriptionMinimum(entry), 'instance entrance 描述需說明外觀、狀態、進入方式、需求或冷卻提示');
@@ -482,6 +485,12 @@ const report = {
       instanceRoomMinCjkChars: 65,
       bossEliteFinalRoomMinCjkChars: 80,
       townServiceRoomMinCjkChars: 50,
+      requiredSemanticParts: ['地形或建築主體', '方位或路徑線索', '玩法線索'],
+      townServiceRequiredParts: ['服務功能', 'NPC 或設施位置', '可互動行為'],
+      gatheringRoomRequiredParts: ['資源外觀', '生成環境', '採集位置'],
+      npcRoomRequiredParts: ['NPC 站位', '活動區域', '玩家靠近動線'],
+      monsterRoomRequiredParts: ['足跡、巢穴、屍骸、吼聲、巡邏痕跡或元素殘留'],
+      instanceEntryRequiredParts: ['入口物件', '入口狀態', '進入風險或限制'],
     },
     exit: {
       normalMinCjkChars: 12,
@@ -604,6 +613,11 @@ const report = {
   },
   counts: {
     rooms: Object.keys(ROOMS).length,
+    townServiceRooms: Object.values(ROOMS).filter(room => isTownServiceRoom(room, ZONES[room.zone])).length,
+    gatheringTaggedRooms: Object.values(ROOMS).filter(room => getRoomGatheringTags(room).size > 0).length,
+    npcRooms: Object.values(ROOMS).filter(room => (room.npcs?.length ?? 0) > 0).length,
+    monsterRooms: Object.values(ROOMS).filter(room => (room.monsters?.length ?? 0) > 0).length,
+    instanceEntryRooms: instanceEntryRoomIds.size,
     npcs: Object.keys(NPCS).length,
     quests: Object.keys(questDefs).length,
     dungeons: Object.keys(DUNGEON_DEFS).length,
@@ -660,6 +674,77 @@ function roomMinimumLength(roomId: string, name: string, description: string, zo
   if (/boss|elite|final|king|queen|lord|warlord|首領|菁英|王|核心|王座|終焉|決戰/i.test(marker)) return 80;
   if (zoneType === 'town') return 50;
   return scope === 'instance' ? 65 : 55;
+}
+
+function auditRoomDescriptionSemantics(room: typeof ROOMS[string], zone: typeof ZONES[string] | undefined, scope: 'world' | 'instance') {
+  const id = `${room.zone}/${room.id}`;
+  const text = room.description;
+  const minimumLength = roomMinimumLength(room.id, room.name, text, zone?.type, scope);
+  const gatheringTags = getRoomGatheringTags(room);
+  const hasNpcs = (room.npcs?.length ?? 0) > 0;
+  const hasMonsters = (room.monsters?.length ?? 0) > 0;
+  const hasInstanceEntry = instanceEntryRoomIds.has(room.id);
+  const isServiceRoom = isTownServiceRoom(room, zone);
+
+  requireRoomTextPart(
+    id,
+    text,
+    minimumLength,
+    /橋|坡|門|井|祭壇|壇|碼頭|礦道|礦坑|林徑|道路|小路|石階|階梯|水道|棧橋|廣場|市場|店|鋪|櫃台|鐵砧|藥架|倉庫|港|船塢|海岸|湖|河|溪|森林|林|丘|谷|山|洞|墓|廢墟|遺跡|塔|堡|營地|巢|田|農舍|溫室|沼|灘|峽|牆|廊|路口|渡口|裂隙|門廊|屋棚|棚架|熔岩|晶簇|空地|靶|場|屋|房|庭|院|窗|地窖|書庫|馬廄|工棚|棧道|區域|海灣|珊瑚|暗礁|礁|水域|岩石|岩壁|崖|平台|台地|樹|平原|石室|花園|果園|牧道|水洼|蜂箱|噴泉|水道|室內|大廳|殿堂|步道|走廊|長階|泉池|觀測台/u,
+    'room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景',
+  );
+  requireRoomTextPart(
+    id,
+    text,
+    minimumLength,
+    /北|南|東|西|前方|後方|左側|右側|內側|外側|上方|下方|入口|出口|門口|路口|通往|連到|接向|銜接|延伸|轉入|穿過|沿著|繞過|抵達|退回|深入|折返|盡頭|上游|下游|外圍|深處|邊緣|中央|對岸|旁路|支路|岔路|前往|遠處|周圍|四周|附近|從|到|回|進|出|一側|另一側|位於|之間|旁|邊|側|上|下/u,
+    'room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路',
+  );
+
+  if (isServiceRoom) {
+    requireRoomTextPart(id, text, Math.max(50, minimumLength), /交易|購買|出售|訓練|練習|轉職|修理|休息|治療|傳送|倉庫|任務|服務|補給|委託|櫃台|貨架|鐵砧|藥架|餐桌|驛站|教官/u, '城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動');
+  }
+
+  if (hasInstanceEntry) {
+    requireRoomTextPart(id, text, Math.max(65, minimumLength), /入口|門|裂隙|裂谷|傳送|渡口|船|井|祭壇|碑|封印|階梯|洞口|拱門|橋|碼頭|礦梯|通道|符文錨/u, '副本入口房間必須寫出入口物件');
+    requireRoomTextPart(id, text, Math.max(65, minimumLength), /開啟|封鎖|鎖|亮起|熄滅|震動|潮濕|破損|等待|冷卻|條件|限制|警戒|守著|需要|建議|警告|唯一|危險|搖搖欲墜|深不見底|扭曲|侵蝕|穩定度|忽略|無視|突發|陷阱|崩塌|撤退|水位|退路|沒有回來/u, '副本入口房間必須寫出入口狀態、進入風險或限制');
+  }
+
+  if (gatheringTags.size > 0) {
+    requireRoomTextPart(id, text, Math.max(55, minimumLength), /礦|晶|石縫|草|葉|花|藤|根|木|枝|樹|皮|鱗|魚|蝦|水草|陶片|古錢|化石|符石|殘片|殼|苔|藥材|香料|肉|酒|貝|海藻|水母|蘑菇|果|麥|蔬菜|作物|貨箱|骨|木料|石塊|金屬|鐵|銅|證詞|證物|紋章|旗幟|碎片|王冠|符文|水樣|卷宗|倒影|殘攤|軍械|禮拜堂|噴泉|鎧甲|長劍|石像|雕像|墓銘|水位|潮痕|毛皮|獸群|蹄坑|水罐|鍛爐|盔甲|物資/u, '有採集點的 room.description 必須自然提到資源外觀');
+    requireRoomTextPart(id, text, Math.max(55, minimumLength), /採|挖|敲|砍|割|剝|撬|釣|收線|撈|刷|拾|採集|採掘|旁|邊|側|角|下|上|間|沿|縫|堆|掛|垂|長在|覆蓋|散落|露出|觀察/u, '有採集點的 room.description 必須說明採集位置或採集動作');
+  }
+
+  if (hasNpcs) {
+    requireRoomTextPart(id, text, Math.max(55, minimumLength), /櫃台|門口|角落|路邊|廣場|桌|台|爐|架|攤|帳|棚|椅|廊|階|站在|坐在|守在|等在|靠著|巡看|整理|招呼|引導|靠近|走近|照看|告示牌|石碑|石門|營地|篝火|漁民|矮人|村醫|石橋|唯一通路/u, '有 NPC 的 room.description 必須留出 NPC 站位、活動區域或玩家靠近動線');
+  }
+
+  if (hasMonsters && !hasMonsterRoomCue(room, text)) {
+    addIssue(id, 'room.description', 'description', text, Math.max(55, minimumLength), '有主要怪物族群的 room.description 必須暗示足跡、巢穴、屍骸、吼聲、巡邏痕跡、元素殘留或實際怪物中文名稱');
+  }
+}
+
+function requireRoomTextPart(id: string, text: string, minimumLength: number, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'room.description', 'description', text, minimumLength, reason);
+}
+
+function isTownServiceRoom(room: typeof ROOMS[string], zone: typeof ZONES[string] | undefined): boolean {
+  const marker = `${room.id} ${room.name} ${(room.npcs ?? []).join(' ')} ${((room as { tags?: string[] }).tags ?? []).join(' ')}`;
+  return (zone?.type === 'town' && /merchant|blacksmith|herbalist|trainer|inn|market|shop|vendor|healer|mentor|chief|商|店|鋪|市集|鐵匠|藥師|導師|訓練|旅店|旅館|修理|倉庫|傳送|公會|櫃台|補給|服務/u.test(marker))
+    || (zone?.type === 'town' && (room.npcs?.some(npcId => {
+      const npc = NPCS[npcId];
+      return !!npc && npc.type !== 'general';
+    }) ?? false));
+}
+
+function hasMonsterRoomCue(room: typeof ROOMS[string], text: string): boolean {
+  if (/足跡|腳印|爪痕|爪印|巢|窩|屍|骨|血|吼|叫聲|咆哮|低鳴|巡邏|埋伏|啃咬|啄食|蛀咬|殘骸|黏液|蛛絲|蛛腿|蛇蛻|毒痕|焦痕|霜痕|電弧|暗影|聖光|腐臭|鱗片|羽毛|獸毛|裂痕|戰痕|警戒|被咬|撬開|倒影|痕跡|殘留|威脅|出沒|棲息|蠕動|影子|注視|水母|魚人|海蛇|巨蟹|蝙蝠|蜥蜴|石像鬼|史萊姆|田鼠|烏鴉|黑鴉|骷髏|亡者|盜匪|海盜|魔物|生物|敵人|敵群|遊蕩|靠近|喚醒|召喚|惡魔|龍|雪人|元素|巨像|守衛|親衛|巨魔|妖精|精靈|狼|蛇|蛛|鼠|蠍|蟹|鬼|獸|深淵|薄弱處|被困|噩夢|深潮|甦醒|光脈衝|裂隙|儀式|火花|守護石像|亡靈|決鬥|PVP|裁判|衛兵|對戰|約戰|火焰|熱氣|車輪印|被啃破/u.test(text)) return true;
+  return (room.monsters ?? []).some(spawn => {
+    const monster = MONSTERS[spawn.monsterId];
+    if (!monster) return false;
+    return text.includes(monster.name) || text.includes(monster.alias);
+  });
 }
 
 function checkText(id: string, kind: TextKind, field: string, text: string, minimumLength: number, reason: string) {

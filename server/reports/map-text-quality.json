@@ -1,11 +1,39 @@
 {
-  "generatedAt": "2026-05-28T17:06:58.285Z",
+  "generatedAt": "2026-05-28T17:20:16.101Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
       "instanceRoomMinCjkChars": 65,
       "bossEliteFinalRoomMinCjkChars": 80,
-      "townServiceRoomMinCjkChars": 50
+      "townServiceRoomMinCjkChars": 50,
+      "requiredSemanticParts": [
+        "地形或建築主體",
+        "方位或路徑線索",
+        "玩法線索"
+      ],
+      "townServiceRequiredParts": [
+        "服務功能",
+        "NPC 或設施位置",
+        "可互動行為"
+      ],
+      "gatheringRoomRequiredParts": [
+        "資源外觀",
+        "生成環境",
+        "採集位置"
+      ],
+      "npcRoomRequiredParts": [
+        "NPC 站位",
+        "活動區域",
+        "玩家靠近動線"
+      ],
+      "monsterRoomRequiredParts": [
+        "足跡、巢穴、屍骸、吼聲、巡邏痕跡或元素殘留"
+      ],
+      "instanceEntryRequiredParts": [
+        "入口物件",
+        "入口狀態",
+        "進入風險或限制"
+      ]
     },
     "exit": {
       "normalMinCjkChars": 12,
@@ -159,6 +187,11 @@
   },
   "counts": {
     "rooms": 1203,
+    "townServiceRooms": 49,
+    "gatheringTaggedRooms": 539,
+    "npcRooms": 33,
+    "monsterRooms": 1092,
+    "instanceEntryRooms": 26,
     "npcs": 217,
     "quests": 614,
     "dungeons": 29,
