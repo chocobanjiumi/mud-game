@@ -11,7 +11,7 @@ import { AgentController } from './ai/agent.js';
 import { getCharacterById, saveCharacter } from './db/queries.js';
 import { handleCommand } from './game/commands.js';
 import { ROOMS, ZONES, getRoom } from './data/rooms.js';
-import { buildZoneMapPlans, plannedMapScopeForRoom, type ZoneMapScopeDecision } from './data/world-map2-plan.js';
+import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom, type InstanceEntryDef, type ZoneMapScopeDecision } from './data/world-map2-plan.js';
 
 const PORT = parseInt(process.env.PORT ?? '3701', 10);
 const HOST = process.env.HOST ?? '0.0.0.0';
@@ -262,9 +262,11 @@ function buildPlanningWorldMapPayload(): {
       }[];
     }[];
   }[];
+  instanceEntries: InstanceEntryDef[];
   connections: { fromZoneId: string; toZoneId: string; count: number }[];
 } {
   const zonePlans = buildZoneMapPlans(ZONES);
+  const instanceEntries = buildInstanceEntryDefs(ZONES);
   const zones = Object.values(ZONES).map((zone) => ({
     id: zone.id,
     name: zone.name,
@@ -319,6 +321,7 @@ function buildPlanningWorldMapPayload(): {
   return {
     generatedAt: Date.now(),
     zones,
+    instanceEntries,
     connections: [...connectionCounts.entries()].map(([key, count]) => {
       const [fromZoneId, toZoneId] = key.split(':');
       return { fromZoneId, toZoneId, count };

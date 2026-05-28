@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T08:52:53.027Z",
+  "generatedAt": "2026-05-28T08:59:27.608Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -1165,6 +1165,7 @@
       "dark_forest/ancient_treehouse",
       "dark_forest/deep_forest",
       "dark_forest/elf_ruins",
+      "crystal_cave/cave_entrance",
       "lakeside_town/town_gate",
       "lakeside_town/market_street",
       "lakeside_town/town_plaza",
@@ -1294,6 +1295,10 @@
       "lakeside_town/lakeside_fish_market",
       "lakeside_town/lakeside_courthouse",
       "lakeside_town/lakeside_hidden_canal",
+      "demon_territory/demon_border",
+      "dragon_valley/dragon_valley_entrance",
+      "abyss_rift/abyss_entrance",
+      "celestial_ruins/celestial_gate",
       "old_farmland/old_farmland_crossroads",
       "old_farmland/old_farmland_overgrown_field",
       "old_farmland/old_farmland_rat_ditch",
@@ -1334,6 +1339,7 @@
       "whispering_valley/whispering_valley_ranger_post",
       "whispering_valley/whispering_valley_stone_weir",
       "whispering_valley/whispering_valley_whispering_rift",
+      "abandoned_mines/abandoned_mines_entry_claim",
       "wildgrass_hills/wildgrass_hills_windbreak_gate",
       "wildgrass_hills/wildgrass_hills_lower_slope",
       "wildgrass_hills/wildgrass_hills_tallgrass_lane",
@@ -1374,6 +1380,7 @@
       "mist_harbor/mist_harbor_chart_archive",
       "mist_harbor/mist_harbor_sea_gate",
       "mist_harbor/mist_harbor_breakwater_end",
+      "ancient_ruins/ancient_ruins_sunken_entrance",
       "marsh_of_mirrors/marsh_of_mirrors_reed_gate",
       "marsh_of_mirrors/marsh_of_mirrors_blackwater_path",
       "marsh_of_mirrors/marsh_of_mirrors_silver_pool",
@@ -1414,6 +1421,7 @@
       "redrock_badlands/redrock_badlands_ambush_canyon",
       "redrock_badlands/redrock_badlands_blackflag_lookout",
       "redrock_badlands/redrock_badlands_scarlet_crater",
+      "sunken_catacombs/sunken_catacombs_tide_stair",
       "thundersteppe/thundersteppe_rolling_gate",
       "thundersteppe/thundersteppe_stormgrass_track",
       "thundersteppe/thundersteppe_herd_plain",
@@ -1454,6 +1462,8 @@
       "glass_dunes/glass_dunes_buried_palace_door",
       "glass_dunes/glass_dunes_lost_dynasty_altar",
       "glass_dunes/glass_dunes_sunfire_crater",
+      "underground_city/underground_city_gate_lift",
+      "cursed_graveyard/cursed_graveyard_iron_gate",
       "storm_highlands/storm_highlands_cliff_gate",
       "storm_highlands/storm_highlands_windcut_path",
       "storm_highlands/storm_highlands_rain_shelf",
@@ -1494,6 +1504,14 @@
       "blackwood/blackwood_elder_ring",
       "blackwood/blackwood_fallen_shrine",
       "blackwood/blackwood_heartwood_core",
+      "lost_capital/lost_capital_outer_gate",
+      "sky_isles/sky_isles_lift_dock",
+      "deepsea_temple/deepsea_temple_tide_gate",
+      "obsidian_depths/obsidian_depths_mine_lift",
+      "starfall_crater/starfall_crater_rim_gate",
+      "time_ruins/time_ruins_epoch_gate",
+      "astral_wastes/astral_wastes_reality_gate",
+      "final_battleground/final_battleground_war_gate",
       "moonlit_fen/moonlit_fen_reed_gate",
       "moonlit_fen/moonlit_fen_moonflower_bank",
       "moonlit_fen/moonlit_fen_firefly_pool",
@@ -1614,6 +1632,7 @@
       "saltwind_flats/saltwind_flats_fog_bell",
       "saltwind_flats/saltwind_flats_tidewatch_ruin",
       "saltwind_flats/saltwind_flats_deep_brine_eye",
+      "thornmaze/thornmaze_gate_arch",
       "ember_march/ember_march_ash_gate",
       "ember_march/ember_march_cinder_road",
       "ember_march/ember_march_smoke_trench",
@@ -1634,6 +1653,7 @@
       "ember_march/ember_march_dragonprint_ridge",
       "ember_march/ember_march_border_keep_shell",
       "ember_march/ember_march_heartfire_breach",
+      "reef_of_bones/reef_of_bones_tide_gate",
       "sapphire_lake/sapphire_lake_entry_claim",
       "sapphire_lake/sapphire_lake_vein_path",
       "sapphire_lake/sapphire_lake_herb_shelf",
@@ -1714,6 +1734,7 @@
       "royal_hunting_grounds/royal_hunting_grounds_griffon_ledge",
       "royal_hunting_grounds/royal_hunting_grounds_trophy_pavilion",
       "royal_hunting_grounds/royal_hunting_grounds_white_stag_grove",
+      "ashfall_monastery/ashfall_monastery_ash_gate",
       "frostbite_pass/frostbite_pass_snow_gate",
       "frostbite_pass/frostbite_pass_caravan_marker",
       "frostbite_pass/frostbite_pass_icewind_cut",
@@ -1734,6 +1755,10 @@
       "frostbite_pass/frostbite_pass_northbound_ridge",
       "frostbite_pass/frostbite_pass_dragon_breath_shelf",
       "frostbite_pass/frostbite_pass_polar_seal_gate",
+      "necropolis_gate/necropolis_gate_black_approach",
+      "sunspire/sunspire_white_stone_gate",
+      "moonshadow_court/moonshadow_court_moonlit_gate",
+      "machine_graveyard/machine_graveyard_entrance_crane",
       "bloodsalt_coast/bloodsalt_coast_entrance_tidegate",
       "bloodsalt_coast/bloodsalt_coast_red_salt_flats",
       "bloodsalt_coast/bloodsalt_coast_wreckers_marker",
@@ -1774,6 +1799,7 @@
       "emerald_canopy/emerald_canopy_cloudroot_bridge",
       "emerald_canopy/emerald_canopy_stag_crown_clearing",
       "emerald_canopy/emerald_canopy_high_green_court",
+      "hollow_mountain/hollow_mountain_entrance_wind_gate",
       "serpent_delta/serpent_delta_entrance_ferry",
       "serpent_delta/serpent_delta_split_reed_bank",
       "serpent_delta/serpent_delta_mudfish_pool",
@@ -2166,7 +2192,400 @@
   },
   "instance": {
     "instanceRoomsWithWorldCoords": [],
-    "instanceEntranceIssues": []
+    "instanceEntranceIssues": [],
+    "instanceEntries": [
+      {
+        "id": "crystal_cave_entry",
+        "instanceTemplateId": "crystal_cave",
+        "type": "object_interact",
+        "roomId": "cave_entrance",
+        "objectId": "crystal_cave_entrance_object",
+        "name": "水晶洞窟入口",
+        "description": "水晶洞窟入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 20,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "demon_territory_entry",
+        "instanceTemplateId": "demon_territory",
+        "type": "object_interact",
+        "roomId": "demon_border",
+        "objectId": "demon_territory_entrance_object",
+        "name": "魔族領地入口",
+        "description": "魔族領地入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 30,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "dragon_valley_entry",
+        "instanceTemplateId": "dragon_valley",
+        "type": "object_interact",
+        "roomId": "dragon_valley_entrance",
+        "objectId": "dragon_valley_entrance_object",
+        "name": "龍谷入口",
+        "description": "龍谷入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 40,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "abyss_rift_entry",
+        "instanceTemplateId": "abyss_rift",
+        "type": "object_interact",
+        "roomId": "abyss_entrance",
+        "objectId": "abyss_rift_entrance_object",
+        "name": "深淵裂隙入口",
+        "description": "深淵裂隙入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 50,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "celestial_ruins_entry",
+        "instanceTemplateId": "celestial_ruins",
+        "type": "object_interact",
+        "roomId": "celestial_gate",
+        "objectId": "celestial_ruins_entrance_object",
+        "name": "天界遺跡入口",
+        "description": "天界遺跡入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 55,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "abandoned_mines_entry",
+        "instanceTemplateId": "abandoned_mines",
+        "type": "object_interact",
+        "roomId": "abandoned_mines_entry_claim",
+        "objectId": "abandoned_mines_entrance_object",
+        "name": "廢棄礦坑入口",
+        "description": "廢棄礦坑入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 10,
+        "maxPartySize": 3,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "ancient_ruins_entry",
+        "instanceTemplateId": "ancient_ruins",
+        "type": "object_interact",
+        "roomId": "ancient_ruins_sunken_entrance",
+        "objectId": "ancient_ruins_entrance_object",
+        "name": "古代遺跡入口",
+        "description": "古代遺跡入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 22,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "sunken_catacombs_entry",
+        "instanceTemplateId": "sunken_catacombs",
+        "type": "object_interact",
+        "roomId": "sunken_catacombs_tide_stair",
+        "objectId": "sunken_catacombs_entrance_object",
+        "name": "沉沒墓窟入口",
+        "description": "沉沒墓窟入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 24,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "underground_city_entry",
+        "instanceTemplateId": "underground_city",
+        "type": "object_interact",
+        "roomId": "underground_city_gate_lift",
+        "objectId": "underground_city_entrance_object",
+        "name": "地下城邦入口",
+        "description": "地下城邦入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 30,
+        "maxPartySize": 1,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "cursed_graveyard_entry",
+        "instanceTemplateId": "cursed_graveyard",
+        "type": "object_interact",
+        "roomId": "cursed_graveyard_iron_gate",
+        "objectId": "cursed_graveyard_entrance_object",
+        "name": "詛咒墓園入口",
+        "description": "詛咒墓園入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 30,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "lost_capital_entry",
+        "instanceTemplateId": "lost_capital",
+        "type": "object_interact",
+        "roomId": "lost_capital_outer_gate",
+        "objectId": "lost_capital_entrance_object",
+        "name": "失落王都入口",
+        "description": "失落王都入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 38,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "sky_isles_entry",
+        "instanceTemplateId": "sky_isles",
+        "type": "object_interact",
+        "roomId": "sky_isles_lift_dock",
+        "objectId": "sky_isles_entrance_object",
+        "name": "浮空群島入口",
+        "description": "浮空群島入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 40,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "deepsea_temple_entry",
+        "instanceTemplateId": "deepsea_temple",
+        "type": "object_interact",
+        "roomId": "deepsea_temple_tide_gate",
+        "objectId": "deepsea_temple_entrance_object",
+        "name": "深海神殿入口",
+        "description": "深海神殿入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 42,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "obsidian_depths_entry",
+        "instanceTemplateId": "obsidian_depths",
+        "type": "object_interact",
+        "roomId": "obsidian_depths_mine_lift",
+        "objectId": "obsidian_depths_entrance_object",
+        "name": "黑曜深層入口",
+        "description": "黑曜深層入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 45,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "starfall_crater_entry",
+        "instanceTemplateId": "starfall_crater",
+        "type": "object_interact",
+        "roomId": "starfall_crater_rim_gate",
+        "objectId": "starfall_crater_entrance_object",
+        "name": "星隕坑入口",
+        "description": "星隕坑入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 48,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "time_ruins_entry",
+        "instanceTemplateId": "time_ruins",
+        "type": "object_interact",
+        "roomId": "time_ruins_epoch_gate",
+        "objectId": "time_ruins_entrance_object",
+        "name": "時間廢墟入口",
+        "description": "時間廢墟入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 50,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "astral_wastes_entry",
+        "instanceTemplateId": "astral_wastes",
+        "type": "object_interact",
+        "roomId": "astral_wastes_reality_gate",
+        "objectId": "astral_wastes_entrance_object",
+        "name": "星界荒原入口",
+        "description": "星界荒原入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 52,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "final_battleground_entry",
+        "instanceTemplateId": "final_battleground",
+        "type": "object_interact",
+        "roomId": "final_battleground_war_gate",
+        "objectId": "final_battleground_entrance_object",
+        "name": "終焉戰場入口",
+        "description": "終焉戰場入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 55,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "thornmaze_entry",
+        "instanceTemplateId": "thornmaze",
+        "type": "object_interact",
+        "roomId": "thornmaze_gate_arch",
+        "objectId": "thornmaze_entrance_object",
+        "name": "荊棘迷宮入口",
+        "description": "荊棘迷宮入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 26,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "reef_of_bones_entry",
+        "instanceTemplateId": "reef_of_bones",
+        "type": "object_interact",
+        "roomId": "reef_of_bones_tide_gate",
+        "objectId": "reef_of_bones_entrance_object",
+        "name": "白骨礁入口",
+        "description": "白骨礁入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 28,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "ashfall_monastery_entry",
+        "instanceTemplateId": "ashfall_monastery",
+        "type": "object_interact",
+        "roomId": "ashfall_monastery_ash_gate",
+        "objectId": "ashfall_monastery_entrance_object",
+        "name": "灰落修道院入口",
+        "description": "灰落修道院入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 34,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "necropolis_gate_entry",
+        "instanceTemplateId": "necropolis_gate",
+        "type": "object_interact",
+        "roomId": "necropolis_gate_black_approach",
+        "objectId": "necropolis_gate_entrance_object",
+        "name": "死都外門入口",
+        "description": "死都外門入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 40,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "sunspire_entry",
+        "instanceTemplateId": "sunspire",
+        "type": "object_interact",
+        "roomId": "sunspire_white_stone_gate",
+        "objectId": "sunspire_entrance_object",
+        "name": "日耀尖塔入口",
+        "description": "日耀尖塔入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 45,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "moonshadow_court_entry",
+        "instanceTemplateId": "moonshadow_court",
+        "type": "object_interact",
+        "roomId": "moonshadow_court_moonlit_gate",
+        "objectId": "moonshadow_court_entrance_object",
+        "name": "月影庭入口",
+        "description": "月影庭入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 38,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "machine_graveyard_entry",
+        "instanceTemplateId": "machine_graveyard",
+        "type": "object_interact",
+        "roomId": "machine_graveyard_entrance_crane",
+        "objectId": "machine_graveyard_entrance_object",
+        "name": "機械墳場入口",
+        "description": "機械墳場入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 35,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "hollow_mountain_entry",
+        "instanceTemplateId": "hollow_mountain",
+        "type": "object_interact",
+        "roomId": "hollow_mountain_entrance_wind_gate",
+        "objectId": "hollow_mountain_entrance_object",
+        "name": "空心山入口",
+        "description": "空心山入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 36,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      }
+    ],
+    "instanceEntryIssues": []
   },
   "specialEdges": []
 }

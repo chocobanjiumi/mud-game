@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T08:43:41.473Z",
+  "generatedAt": "2026-05-28T08:59:27.728Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -31,6 +31,9 @@
     "item": {
       "dungeonItemDescriptionMinCjkChars": 40
     },
+    "instanceEntry": {
+      "descriptionMinCjkChars": 45
+    },
     "bannedGenericPhrases": [
       "這裡很危險",
       "你感到不安",
@@ -49,6 +52,7 @@
     "npcs": 216,
     "quests": 614,
     "dungeons": 8,
+    "instanceEntries": 26,
     "checkedDungeonItems": 115,
     "issues": 7256
   },

@@ -6,7 +6,7 @@ import { NPCS } from '../server/src/data/npcs.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
-import { buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
+import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type TextKind =
   | 'room.description'
@@ -20,6 +20,7 @@ type TextKind =
   | 'quest.objective'
   | 'dungeon.description'
   | 'dungeon.room.description'
+  | 'instanceEntry.description'
   | 'item.description';
 
 interface TextIssue {
@@ -119,6 +120,11 @@ for (const item of Object.values(ITEM_DEFS)) {
   checkText(item.id, 'item.description', 'description', item.description, 40, '副本相關道具描述需指出用途、地點或消耗規則');
 }
 
+const instanceEntries = buildInstanceEntryDefs(ZONES);
+for (const entry of instanceEntries) {
+  checkText(entry.id, 'instanceEntry.description', 'description', entry.description, 45, 'instance entrance 描述需說明外觀、狀態與進入方式');
+}
+
 const byKind = issues.reduce<Record<TextKind, number>>((acc, issue) => {
   acc[issue.kind] = (acc[issue.kind] ?? 0) + 1;
   return acc;
@@ -157,6 +163,9 @@ const report = {
     item: {
       dungeonItemDescriptionMinCjkChars: 40,
     },
+    instanceEntry: {
+      descriptionMinCjkChars: 45,
+    },
     bannedGenericPhrases,
   },
   counts: {
@@ -164,6 +173,7 @@ const report = {
     npcs: Object.keys(NPCS).length,
     quests: Object.keys(questDefs).length,
     dungeons: Object.keys(DUNGEON_DEFS).length,
+    instanceEntries: instanceEntries.length,
     checkedDungeonItems: Object.values(ITEM_DEFS).filter(item => isDungeonEntryItem(item.id, item.name, item.description)).length,
     issues: issues.length,
   },
@@ -229,6 +239,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `NPCs checked: ${reportData.counts.npcs}`,
     `Quests checked: ${reportData.counts.quests}`,
     `Dungeons checked: ${reportData.counts.dungeons}`,
+    `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,
     `Issues: ${reportData.counts.issues}`,
     ...Object.entries(reportData.issuesByKind).map(([kind, count]) => `${kind}: ${count}`),

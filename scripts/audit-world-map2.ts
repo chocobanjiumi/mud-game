@@ -2,7 +2,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { Direction, RoomDef } from '@game/shared';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
-import { buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
+import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
 
 type Bounds = { minX: number; maxX: number; minY: number; maxY: number };
 
@@ -30,8 +30,10 @@ const instanceRoomsWithWorldCoords: string[] = [];
 const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
 const instanceEntranceIssues: string[] = [];
+const instanceEntryIssues: string[] = [];
 const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
+const instanceEntries = buildInstanceEntryDefs(ZONES);
 
 for (const room of rooms) {
   const seenDirections = new Set<string>();
@@ -99,6 +101,35 @@ for (const [zoneId, plan] of zonePlans.entries()) {
   }
   if (!getRoom(plan.entranceRoomId)) {
     instanceEntranceIssues.push(`${zoneId}: entrance room ${plan.entranceRoomId} missing`);
+  }
+}
+
+for (const [zoneId, plan] of zonePlans.entries()) {
+  if (plan.decision !== 'instance') continue;
+  const zoneEntries = instanceEntries.filter(entry => entry.instanceTemplateId === zoneId);
+  if (zoneEntries.length === 0) {
+    instanceEntryIssues.push(`${zoneId}: missing InstanceEntryDef`);
+    continue;
+  }
+  for (const entry of zoneEntries) {
+    const room = getRoom(entry.roomId);
+    if (!room) {
+      instanceEntryIssues.push(`${entry.id}: room ${entry.roomId} missing`);
+      continue;
+    }
+    const roomPlan = zonePlans.get(room.zone);
+    if (plannedMapScopeForRoom(room, roomPlan) !== 'world') {
+      instanceEntryIssues.push(`${entry.id}: entry room ${entry.roomId} is not planned as world scope`);
+    }
+    if (!entry.name || entry.name === '入口') {
+      instanceEntryIssues.push(`${entry.id}: entry name is not specific`);
+    }
+    if (countCjkChars(entry.description) < 45) {
+      instanceEntryIssues.push(`${entry.id}: description too short (${countCjkChars(entry.description)}/45)`);
+    }
+    if (entry.type === 'object_interact' && !entry.objectId) {
+      instanceEntryIssues.push(`${entry.id}: object_interact entry missing objectId`);
+    }
   }
 }
 
@@ -182,6 +213,8 @@ const report = {
   instance: {
     instanceRoomsWithWorldCoords,
     instanceEntranceIssues,
+    instanceEntries,
+    instanceEntryIssues,
   },
   specialEdges,
 };
@@ -205,10 +238,15 @@ if (strict) {
     ...overlappingZoneGlobalBounds,
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
+    ...instanceEntryIssues,
   ];
   if (failures.length > 0) {
     process.exitCode = 1;
   }
+}
+
+function countCjkChars(text: string): number {
+  return [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).length;
 }
 
 function boundsOverlap(
@@ -258,6 +296,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
     `Instance rooms with world coordinates: ${reportData.instance.instanceRoomsWithWorldCoords.length}`,
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
+    `Instance entries: ${reportData.instance.instanceEntries.length}`,
+    `Instance entry issues: ${reportData.instance.instanceEntryIssues.length}`,
     `Special edges: ${reportData.specialEdges.length}`,
   ];
   if (writtenPath) {

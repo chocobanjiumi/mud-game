@@ -1,6 +1,27 @@
 import type { RoomDef, ZoneDef } from '@game/shared';
 
 export type ZoneMapScopeDecision = 'world' | 'instance' | 'hybrid' | 'decision';
+export type InstanceEntryType = 'object_interact' | 'npc_dialogue' | 'item_use';
+export type InstanceEntryQuestState = 'available' | 'active' | 'ready' | 'completed';
+
+export interface InstanceEntryDef {
+  id: string;
+  instanceTemplateId: string;
+  type: InstanceEntryType;
+  roomId: string;
+  name: string;
+  description: string;
+  objectId?: string;
+  npcId?: string;
+  requiredItemId?: string;
+  consumeItem?: boolean;
+  requiredQuestId?: string;
+  requiredQuestState?: InstanceEntryQuestState;
+  minLevel?: number;
+  maxPartySize?: number;
+  cooldownSeconds?: number;
+  difficultyOptions?: string[];
+}
 
 export interface ZoneMapPlan {
   zoneId: string;
@@ -306,8 +327,33 @@ export function buildZoneMapPlans(zones: Record<string, ZoneDef>): Map<string, Z
   return plans;
 }
 
+export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): InstanceEntryDef[] {
+  const zonePlans = buildZoneMapPlans(zones);
+  const entries: InstanceEntryDef[] = [];
+  for (const zone of Object.values(zones)) {
+    const plan = zonePlans.get(zone.id);
+    if (plan?.decision !== 'instance' || !plan.entranceRoomId) continue;
+    entries.push({
+      id: `${zone.id}_entry`,
+      instanceTemplateId: zone.id,
+      type: 'object_interact',
+      roomId: plan.entranceRoomId,
+      objectId: `${zone.id}_entrance_object`,
+      name: `${zone.name}入口`,
+      description: `${zone.name}入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。`,
+      minLevel: zone.levelRange[0],
+      maxPartySize: zone.recommendedPartySize[1],
+      cooldownSeconds: 0,
+      difficultyOptions: ['normal'],
+    });
+  }
+  return entries;
+}
+
 export function plannedMapScopeForRoom(room: RoomDef, zonePlan: ZoneMapPlan | undefined): 'world' | 'instance' {
   if (room.mapScope) return room.mapScope;
-  if (zonePlan?.decision === 'instance') return 'instance';
+  if (zonePlan?.decision === 'instance') {
+    return room.id === zonePlan.entranceRoomId ? 'world' : 'instance';
+  }
   return 'world';
 }
