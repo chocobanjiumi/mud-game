@@ -42,8 +42,78 @@ const crossZoneWorldAdjacencyIssues: string[] = [];
 const borderRoomGaps: string[] = [];
 const twoDimensionalDesignIssues: string[] = [];
 const mapPlanningUiIssues: string[] = [];
+const zoneClassificationIssues: string[] = [];
 const instanceEntries = buildInstanceEntryDefs(ZONES);
 const mapPlanningPageSource = readOptionalText(resolve(process.cwd(), '../client/src/components/MapPlanningPage.tsx'));
+
+const REQUIRED_WORLD_ZONE_IDS = new Set([
+  'starter_village',
+  'starter_village_ext',
+  'plains',
+  'old_farmland',
+  'whispering_valley',
+  'wildgrass_hills',
+  'lakeside_town',
+  'kingsroad_market',
+  'arena_quarter',
+  'eastern_coast',
+  'mist_harbor',
+  'saltwind_flats',
+  'bloodsalt_coast',
+  'sapphire_lake',
+  'moonlit_fen',
+  'serpent_delta',
+  'dark_forest',
+  'blackwood',
+  'amber_forest',
+  'emerald_canopy',
+  'silverpine_range',
+  'storm_highlands',
+  'frostbite_pass',
+  'redrock_badlands',
+  'glass_dunes',
+  'thundersteppe',
+  'ember_march',
+  'volcano_zone',
+  'ironwood_fort',
+  'royal_hunting_grounds',
+  'kingdom_frontier',
+]);
+
+const REQUIRED_INSTANCE_ZONE_IDS = new Set([
+  'crystal_cave',
+  'abandoned_mines',
+  'sunken_catacombs',
+  'underground_city',
+  'cursed_graveyard',
+  'ancient_ruins',
+  'deepsea_temple',
+  'obsidian_depths',
+  'hollow_mountain',
+  'machine_graveyard',
+  'ashfall_monastery',
+  'thornmaze',
+  'reef_of_bones',
+  'necropolis_gate',
+  'lost_capital',
+  'sunspire',
+  'moonshadow_court',
+  'dragon_valley',
+  'sky_isles',
+  'starfall_crater',
+  'time_ruins',
+  'abyss_rift',
+  'astral_wastes',
+  'celestial_ruins',
+  'demon_territory',
+  'final_battleground',
+]);
+
+const ALLOWED_DECISION_ZONE_IDS = new Set([
+  'pilgrim_road',
+  'marsh_of_mirrors',
+  'frozen_wastes',
+]);
 
 for (const room of rooms) {
   const seenDirections = new Set<string>();
@@ -111,6 +181,19 @@ for (const room of rooms) {
 }
 
 for (const [zoneId, plan] of zonePlans.entries()) {
+  if (REQUIRED_WORLD_ZONE_IDS.has(zoneId) && plan.decision !== 'world') {
+    zoneClassificationIssues.push(`${zoneId}: expected world decision for public long-lived terrain, got ${plan.decision}`);
+  }
+  if (REQUIRED_INSTANCE_ZONE_IDS.has(zoneId) && plan.decision !== 'instance') {
+    zoneClassificationIssues.push(`${zoneId}: expected instance decision for dungeon/otherworld/challenge content, got ${plan.decision}`);
+  }
+  if (plan.decision === 'decision' && !ALLOWED_DECISION_ZONE_IDS.has(zoneId)) {
+    zoneClassificationIssues.push(`${zoneId}: unexpected unresolved decision zone`);
+  }
+  if (plan.decision !== 'decision' && ALLOWED_DECISION_ZONE_IDS.has(zoneId)) {
+    zoneClassificationIssues.push(`${zoneId}: expected product decision state until hybrid/world/instance is explicitly chosen`);
+  }
+
   if (plan.decision !== 'instance' && plan.decision !== 'hybrid') continue;
   if (!plan.entranceRoomId) {
     instanceEntranceIssues.push(`${zoneId}: missing entranceRoomId`);
@@ -133,6 +216,15 @@ if (finalBattlegroundEndgameEntries.length === 0) {
 
 for (const [zoneId, plan] of zonePlans.entries()) {
   if (plan.decision !== 'instance') continue;
+  const zone = ZONES[zoneId];
+  const worldScopedRooms = zone.rooms.filter(roomId => {
+    const room = getRoom(roomId);
+    return room ? plannedMapScopeForRoom(room, plan) === 'world' : false;
+  });
+  if (worldScopedRooms.length !== 1 || worldScopedRooms[0] !== plan.entranceRoomId) {
+    zoneClassificationIssues.push(`${zoneId}: instance zone should expose only entrance room on world map, got ${worldScopedRooms.join(', ') || 'none'}`);
+  }
+
   const zoneEntries = instanceEntries.filter(entry => entry.instanceTemplateId === zoneId);
   const objectEntries = zoneEntries.filter(entry => entry.type === 'object_interact');
   if (zoneEntries.length === 0) {
@@ -317,6 +409,7 @@ const report = {
   design: {
     twoDimensionalDesignIssues,
     mapPlanningUiIssues,
+    zoneClassificationIssues,
   },
   zoneLayout: {
     plannedZoneGlobalBounds: zoneGlobalBounds
@@ -361,6 +454,7 @@ if (strict) {
     ...cardinalCoordinateMismatches,
     ...twoDimensionalDesignIssues,
     ...mapPlanningUiIssues,
+    ...zoneClassificationIssues,
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
     ...crossZoneWorldAdjacencyIssues,
@@ -482,6 +576,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
     `/mud/map planning UI issues: ${reportData.design.mapPlanningUiIssues.length}`,
+    `Zone classification issues: ${reportData.design.zoneClassificationIssues.length}`,
     `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
     `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
