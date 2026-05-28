@@ -5,6 +5,7 @@ import { WORLD_MAP2_INSTANCE_ENTRY_ITEMS } from '../packages/shared/src/constant
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
 import { FAITH_DEFS, RACE_DEFS } from '../packages/shared/src/constants/origins.js';
 import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
+import { STATUS_EFFECT_DEFS } from '../packages/shared/src/systems/status-effects.js';
 import { describeSkillLevel, getSkillUpgradeDeltas, getSkillUpgradeRule } from '../packages/shared/src/systems/skill-upgrades.js';
 import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monsters.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
@@ -47,6 +48,7 @@ type TextKind =
   | 'class.summary'
   | 'race.summary'
   | 'faith.summary'
+  | 'statusEffect.description'
   | 'skill.description'
   | 'skill.tooltip'
   | 'skill.upgradePreview'
@@ -295,6 +297,17 @@ for (const faith of Object.values(FAITH_DEFS)) {
   );
 }
 
+for (const statusEffect of Object.values(STATUS_EFFECT_DEFS)) {
+  checkText(
+    statusEffect.type,
+    'statusEffect.description',
+    'description',
+    statusEffect.description,
+    statusEffect.implementationStatus === 'partial' ? 55 : 30,
+    'status effect 描述需包含來源、持續時間或 tick 規則、數值效果、移除方式與實作狀態',
+  );
+}
+
 for (const skill of Object.values(SKILL_DEFS)) {
   checkText(
     skill.id,
@@ -407,6 +420,10 @@ const report = {
       raceSummaryMinCjkChars: 70,
       faithSummaryMinCjkChars: 70,
     },
+    statusEffect: {
+      descriptionMinCjkChars: 30,
+      partialDescriptionMinCjkChars: 55,
+    },
     reward: {
       summaryMinCjkChars: 30,
     },
@@ -447,6 +464,7 @@ const report = {
     playableClasses: Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster').length,
     races: Object.keys(RACE_DEFS).length,
     faiths: Object.keys(FAITH_DEFS).length,
+    statusEffects: Object.keys(STATUS_EFFECT_DEFS).length,
     skills: Object.keys(SKILL_DEFS).length,
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
@@ -803,6 +821,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'class.summary'
     || batchKey === 'race.summary'
     || batchKey === 'faith.summary'
+    || batchKey === 'statusEffect.description'
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'

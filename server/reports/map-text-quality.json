@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:30:33.550Z",
+  "generatedAt": "2026-05-28T16:32:26.838Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -61,6 +61,10 @@
       "raceSummaryMinCjkChars": 70,
       "faithSummaryMinCjkChars": 70
     },
+    "statusEffect": {
+      "descriptionMinCjkChars": 30,
+      "partialDescriptionMinCjkChars": 55
+    },
     "reward": {
       "summaryMinCjkChars": 30
     },
@@ -112,6 +116,7 @@
     "playableClasses": 17,
     "races": 7,
     "faiths": 10,
+    "statusEffects": 33,
     "skills": 206,
     "skillUpgradePreviews": 112,
     "imagePrompts": 1203,

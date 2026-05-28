@@ -91,6 +91,62 @@ function effect(
     cleansable,
     implementationStatus,
     icon: getStatusIconRect(type),
-    description,
+    description: enrichStatusEffectDescription(name, category, polarity, stackRule, dispellable, cleansable, implementationStatus, description),
   };
+}
+
+function enrichStatusEffectDescription(
+  name: string,
+  category: StatusEffectCategory,
+  polarity: StatusEffectDef['polarity'],
+  stackRule: StatusEffectDef['stackRule'],
+  dispellable: boolean,
+  cleansable: boolean,
+  implementationStatus: EffectImplementationStatus,
+  description: string,
+): string {
+  const sourceText = polarity === 'positive'
+    ? '來源通常是技能、道具、裝備或隊友支援'
+    : polarity === 'negative'
+      ? '來源通常是敵方技能、陷阱、毒素、控制或戰鬥機制'
+      : '來源依事件、場景或特殊規則決定';
+  const removal = [
+    dispellable ? '可被驅散' : '不可被一般驅散移除',
+    cleansable ? '可被淨化' : '不可被一般淨化移除',
+  ].join('，');
+  return `${name}屬於${statusCategoryLabel(category)}，${sourceText}；${description}持續時間與數值由套用來源決定，疊加規則為${statusStackRuleLabel(stackRule)}，${removal}，目前實作狀態為${statusImplementationLabel(implementationStatus)}。`;
+}
+
+function statusCategoryLabel(category: StatusEffectCategory): string {
+  const labels: Record<StatusEffectCategory, string> = {
+    buff: '增益狀態',
+    debuff: '減益狀態',
+    control: '控制狀態',
+    dot: '持續傷害狀態',
+    hot: '持續恢復狀態',
+    shield: '護盾或減傷狀態',
+    special: '特殊狀態',
+  };
+  return labels[category];
+}
+
+function statusStackRuleLabel(stackRule: StatusEffectDef['stackRule']): string {
+  const labels: Record<StatusEffectDef['stackRule'], string> = {
+    refresh: '刷新持續時間',
+    replace_stronger: '較強效果覆蓋較弱效果',
+    stack_by_source: '不同來源可各自存在',
+    stack_value: '數值可累加或被吸收',
+    unique: '同一目標只能存在一個',
+  };
+  return labels[stackRule];
+}
+
+function statusImplementationLabel(status: EffectImplementationStatus): string {
+  const labels: Record<EffectImplementationStatus, string> = {
+    implemented: '完整結算',
+    partial: '部分結算，仍需依戰鬥流程確認邊界',
+    visual_only: '僅顯示，不參與數值結算',
+    disabled: '停用',
+  };
+  return labels[status];
 }
