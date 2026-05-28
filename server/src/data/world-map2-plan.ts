@@ -324,6 +324,8 @@ export const WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
   final_battleground: 'final_battleground_template',
 };
 
+const WORLD_MAP2_ENDGAME_DIFFICULTY_OPTIONS = ['normal', 'hard', 'nightmare'];
+
 const WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES: NpcDialogueInstanceEntryConfig[] = [
   {
     zoneId: 'crystal_cave',
@@ -403,8 +405,10 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
       description: `${zone.name}入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。`,
       minLevel: zone.levelRange[0],
       maxPartySize: zone.recommendedPartySize[1],
-      cooldownSeconds: 0,
-      difficultyOptions: ['normal'],
+      requiredItemId: zone.id === 'final_battleground' ? 'final_standard_seal' : undefined,
+      consumeItem: zone.id === 'final_battleground' ? false : undefined,
+      cooldownSeconds: zone.id === 'final_battleground' ? 600 : 0,
+      difficultyOptions: zone.id === 'final_battleground' ? WORLD_MAP2_ENDGAME_DIFFICULTY_OPTIONS : ['normal'],
     });
 
     for (const itemEntry of WORLD_MAP2_INSTANCE_ENTRY_ITEMS.filter(entry => entry.zoneId === zone.id)) {
@@ -421,7 +425,7 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
         minLevel: zone.levelRange[0],
         maxPartySize: zone.recommendedPartySize[1],
         cooldownSeconds: 'cooldownSeconds' in itemEntry ? itemEntry.cooldownSeconds ?? 0 : 0,
-        difficultyOptions: ['normal'],
+        difficultyOptions: zone.id === 'final_battleground' ? WORLD_MAP2_ENDGAME_DIFFICULTY_OPTIONS : ['normal'],
       });
     }
 

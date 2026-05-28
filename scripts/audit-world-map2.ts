@@ -34,6 +34,7 @@ const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
 const instanceEntranceIssues: string[] = [];
 const instanceEntryIssues: string[] = [];
+const endgameEntryIssues: string[] = [];
 const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
 const crossZoneWorldAdjacencyIssues: string[] = [];
@@ -107,6 +108,16 @@ for (const [zoneId, plan] of zonePlans.entries()) {
   if (!getRoom(plan.entranceRoomId)) {
     instanceEntranceIssues.push(`${zoneId}: entrance room ${plan.entranceRoomId} missing`);
   }
+}
+
+const finalBattlegroundEndgameEntries = instanceEntries.filter(entry =>
+  entry.instanceTemplateId === 'final_battleground' &&
+  entry.requiredItemId === 'final_standard_seal' &&
+  (entry.cooldownSeconds ?? 0) > 0 &&
+  (entry.difficultyOptions?.length ?? 0) >= 3,
+);
+if (finalBattlegroundEndgameEntries.length === 0) {
+  endgameEntryIssues.push('final_battleground: missing requiredItemId + cooldown + multi-difficulty endgame entry');
 }
 
 for (const [zoneId, plan] of zonePlans.entries()) {
@@ -258,6 +269,7 @@ const report = {
     instanceEntries,
     mappedRuntimeDungeonEntries: instanceEntries.filter(entry => entry.dungeonId).length,
     instanceEntryIssues,
+    endgameEntryIssues,
   },
   specialEdges,
 };
@@ -283,6 +295,7 @@ if (strict) {
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
     ...instanceEntryIssues,
+    ...endgameEntryIssues,
   ];
   if (failures.length > 0) {
     process.exitCode = 1;
@@ -396,6 +409,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Instance entries: ${reportData.instance.instanceEntries.length}`,
     `Mapped runtime dungeon entries: ${reportData.instance.mappedRuntimeDungeonEntries}`,
     `Instance entry issues: ${reportData.instance.instanceEntryIssues.length}`,
+    `Endgame entry issues: ${reportData.instance.endgameEntryIssues.length}`,
     `Special edges: ${reportData.specialEdges.length}`,
   ];
   if (writtenPath) {

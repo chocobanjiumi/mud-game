@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T10:11:05.208Z",
+  "generatedAt": "2026-05-28T10:38:53.130Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2305,6 +2305,23 @@
         ]
       },
       {
+        "id": "abyss_rift_abyss_survey_scroll_item_entry",
+        "instanceTemplateId": "abyss_rift",
+        "dungeonId": "abyss_gate",
+        "type": "item_use",
+        "roomId": "abyss_entrance",
+        "requiredItemId": "abyss_survey_scroll",
+        "consumeItem": false,
+        "name": "深淵測繪卷軸校準",
+        "description": "深淵測繪卷軸在裂隙入口展開時會把封印錨、虛空鏡湖與信標眼位置連成銀砂路線；卷軸不會消耗，但每次校準後需要等待裂隙震盪平復。",
+        "minLevel": 50,
+        "maxPartySize": 4,
+        "cooldownSeconds": 300,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "celestial_ruins_entry",
         "instanceTemplateId": "celestial_ruins",
         "dungeonId": "celestial_trial",
@@ -2607,9 +2624,13 @@
         "description": "終焉戰場入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
         "minLevel": 55,
         "maxPartySize": 4,
-        "cooldownSeconds": 0,
+        "requiredItemId": "final_standard_seal",
+        "consumeItem": false,
+        "cooldownSeconds": 600,
         "difficultyOptions": [
-          "normal"
+          "normal",
+          "hard",
+          "nightmare"
         ]
       },
       {
@@ -2626,7 +2647,9 @@
         "maxPartySize": 4,
         "cooldownSeconds": 600,
         "difficultyOptions": [
-          "normal"
+          "normal",
+          "hard",
+          "nightmare"
         ]
       },
       {
@@ -2678,6 +2701,23 @@
         ]
       },
       {
+        "id": "reef_of_bones_tidebone_compass_item_entry",
+        "instanceTemplateId": "reef_of_bones",
+        "dungeonId": "reef_of_bones_template",
+        "type": "item_use",
+        "roomId": "reef_of_bones_tide_gate",
+        "requiredItemId": "tidebone_compass",
+        "consumeItem": false,
+        "name": "潮骨羅盤定航",
+        "description": "潮骨羅盤靠近白骨礁入口時會跟著礁鐘舌片震動，指針指向退潮後露出的幽靈錨航道；羅盤不會消耗，可用來帶隊進入白骨礁副本。",
+        "minLevel": 28,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "ashfall_monastery_entry",
         "instanceTemplateId": "ashfall_monastery",
         "dungeonId": "ashfall_monastery_template",
@@ -2686,6 +2726,23 @@
         "objectId": "ashfall_monastery_entrance_object",
         "name": "灰落修道院入口",
         "description": "灰落修道院入口以固定場景物件標示在世界地圖上，玩家能從此處建立獨立副本；入口周圍的刻痕、封印與警示牌說明這不是普通裝飾，而是通往該區深處的進入點。",
+        "minLevel": 34,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "ashfall_monastery_ashen_vigil_offering_item_entry",
+        "instanceTemplateId": "ashfall_monastery",
+        "dungeonId": "ashfall_monastery_template",
+        "type": "item_use",
+        "roomId": "ashfall_monastery_ash_gate",
+        "requiredItemId": "ashen_vigil_offering",
+        "consumeItem": true,
+        "name": "灰守祭品獻入",
+        "description": "灰守祭品放上灰落修道院入口的破裂祭盤後，焦黑經頁會被餘火點燃並照出灰門內側通道；祭品會在儀式中燒盡，只開啟一次副本入口。",
         "minLevel": 34,
         "maxPartySize": 4,
         "cooldownSeconds": 0,
@@ -2774,8 +2831,9 @@
         ]
       }
     ],
-    "mappedRuntimeDungeonEntries": 34,
-    "instanceEntryIssues": []
+    "mappedRuntimeDungeonEntries": 37,
+    "instanceEntryIssues": [],
+    "endgameEntryIssues": []
   },
   "specialEdges": []
 }

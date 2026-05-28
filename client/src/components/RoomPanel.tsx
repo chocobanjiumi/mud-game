@@ -159,24 +159,25 @@ export function RoomPanelView({
         <section className="space-y-1 text-xs">
           <div className="text-[10px] text-text-dim">副本入口</div>
           <div className="grid grid-cols-1 gap-1">
-            {instanceEntries.map((entry) => (
+            {instanceEntries.flatMap((entry) => getInstanceEntryDifficultyOptions(entry).map((difficulty) => (
               <button
-                key={entry.id}
+                key={`${entry.id}-${difficulty}`}
                 className={`room-row ${entry.disabled ? 'opacity-45 cursor-not-allowed' : ''}`}
                 disabled={entry.disabled}
-                title={formatInstanceEntryTooltip(entry)}
+                title={formatInstanceEntryTooltip(entry, difficulty)}
                 onClick={() => {
                   if (entry.disabled) return;
-                  sendCommand(entry.actionCommand ?? `enter ${entry.objectId ?? entry.id}`, `${formatInstanceEntryAction(entry)} ${entry.name}`);
+                  const difficultySuffix = difficulty === 'normal' ? '' : ` ${difficulty}`;
+                  sendCommand(`${entry.actionCommand ?? `enter ${entry.objectId ?? entry.id}`}${difficultySuffix}`, `${formatInstanceEntryAction(entry)} ${entry.name} ${formatInstanceEntryDifficulty(difficulty)}`);
                 }}
               >
                 <span className="flex items-center gap-2 text-chat-party">
                   <span aria-hidden="true">{formatInstanceEntryIcon(entry)}</span>
                   <span>{entry.name}</span>
                 </span>
-                <span className="text-text-dim">{entry.disabled ? '鎖定' : formatInstanceEntryAction(entry)}</span>
+                <span className="text-text-dim">{entry.disabled ? '鎖定' : `${formatInstanceEntryAction(entry)} ${formatInstanceEntryDifficulty(difficulty)}`}</span>
               </button>
-            ))}
+            )))}
           </div>
         </section>
       )}
@@ -253,17 +254,34 @@ function formatInstanceEntryRequirements(entry: NonNullable<RoomInfo['instanceEn
   if (entry.requiredQuestId) requirements.push(`任務 ${entry.requiredQuestId}：${formatQuestState(entry.requiredQuestState ?? 'completed')}`);
   return requirements.length > 0 ? requirements.join('、') : '無';
 }
-function formatInstanceEntryTooltip(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
+
+function formatInstanceEntryTooltip(entry: NonNullable<RoomInfo['instanceEntries']>[number], selectedDifficulty = 'normal'): string {
   return [
     entry.description,
     `副本：${entry.name}`,
     `入口方式：${formatInstanceEntryAction(entry)}`,
+    `選擇難度：${formatInstanceEntryDifficulty(selectedDifficulty)}`,
+    `可選難度：${getInstanceEntryDifficultyOptions(entry).map(formatInstanceEntryDifficulty).join('、')}`,
     `建議等級：${entry.minLevel ?? '-'}`,
     `人數：1-${entry.maxPartySize ?? 1}`,
     `需求：${formatInstanceEntryRequirements(entry)}`,
     `冷卻：${entry.cooldownSeconds ?? 0} 秒`,
     entry.disabledReason ? `鎖定原因：${entry.disabledReason}` : '',
   ].filter(Boolean).join('\n');
+}
+
+function getInstanceEntryDifficultyOptions(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string[] {
+  return entry.difficultyOptions?.length ? entry.difficultyOptions : ['normal'];
+}
+
+function formatInstanceEntryDifficulty(difficulty: string): string {
+  switch (difficulty) {
+    case 'hard': return '困難';
+    case 'nightmare': return '夢魘';
+    case 'normal':
+    default:
+      return '普通';
+  }
 }
 
 function formatInstanceEntryIcon(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {

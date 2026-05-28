@@ -24,6 +24,7 @@ import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rew
 export interface DungeonInstance {
   id: string;
   dungeonId: string;
+  difficulty: DungeonDifficulty;
   partyId: string;
   playerIds: string[];
   /** 當前房間索引（線性推進） */
@@ -40,6 +41,29 @@ export interface DungeonInstance {
   timerHandle: ReturnType<typeof setTimeout> | null;
   /** 玩家角色參照 */
   playerCharacters: Map<string, Character>;
+}
+
+export type DungeonDifficulty = 'normal' | 'hard' | 'nightmare';
+
+const DUNGEON_DIFFICULTY_LABELS: Record<DungeonDifficulty, string> = {
+  normal: '普通',
+  hard: '困難',
+  nightmare: '夢魘',
+};
+
+const DUNGEON_DIFFICULTY_MODIFIERS: Record<DungeonDifficulty, {
+  monsterHp: number;
+  monsterStats: number;
+  rewards: number;
+}> = {
+  normal: { monsterHp: 1, monsterStats: 1, rewards: 1 },
+  hard: { monsterHp: 1.35, monsterStats: 1.2, rewards: 1.25 },
+  nightmare: { monsterHp: 1.8, monsterStats: 1.45, rewards: 1.6 },
+};
+
+function normalizeDungeonDifficulty(difficulty: string | undefined): DungeonDifficulty {
+  if (difficulty === 'hard' || difficulty === 'nightmare') return difficulty;
+  return 'normal';
 }
 
 // ============================================================
@@ -139,6 +163,7 @@ export class DungeonManager {
     partyId: string,
     dungeonId: string,
     players: Character[],
+    difficulty: string = 'normal',
   ): { success: boolean; message: string; instanceId?: string } {
     const def = DUNGEON_DEFS[dungeonId];
     if (!def) {
@@ -190,6 +215,7 @@ export class DungeonManager {
 
     const instanceId = randomUUID();
     const playerIds = players.map(p => p.id);
+    const normalizedDifficulty = normalizeDungeonDifficulty(difficulty);
 
     // 判定是否首次通關
     const clearKey = `${partyId}:${dungeonId}`;
@@ -203,6 +229,7 @@ export class DungeonManager {
     const instance: DungeonInstance = {
       id: instanceId,
       dungeonId,
+      difficulty: normalizedDifficulty,
       partyId,
       playerIds,
       currentRoomIndex: 0,
@@ -228,7 +255,7 @@ export class DungeonManager {
     const firstRoom = def.rooms[0];
     for (const id of playerIds) {
       sendToCharacter(id, 'system', {
-        text: `進入副本：${def.name}`,
+        text: `進入副本：${def.name}（${DUNGEON_DIFFICULTY_LABELS[normalizedDifficulty]}）`,
       });
       sendToCharacter(id, 'narrative', {
         text: `【${firstRoom.name}】\n${firstRoom.description}`,
@@ -240,7 +267,7 @@ export class DungeonManager {
 
     return {
       success: true,
-      message: `進入副本：${def.name}`,
+      message: `進入副本：${def.name}（${DUNGEON_DIFFICULTY_LABELS[normalizedDifficulty]}）`,
       instanceId,
     };
   }
@@ -257,7 +284,7 @@ export class DungeonManager {
     if (!room) return;
 
     // 建立怪物實例
-    const monsters = this.createRoomMonsters(room);
+    const monsters = this.createRoomMonsters(room, instance.difficulty);
 
     // 取得玩家角色列表
     const players: Character[] = [];
@@ -284,9 +311,10 @@ export class DungeonManager {
     });
   }
 
-  private createRoomMonsters(room: DungeonRoomDef): MonsterInstance[] {
+  private createRoomMonsters(room: DungeonRoomDef, difficulty: DungeonDifficulty): MonsterInstance[] {
     const monsters: MonsterInstance[] = [];
     let counter = 0;
+    const modifier = DUNGEON_DIFFICULTY_MODIFIERS[difficulty];
 
     for (const spawn of room.monsters) {
       // 優先從副本怪物定義中取得，其次從世界怪物定義取得
@@ -295,14 +323,25 @@ export class DungeonManager {
 
       for (let i = 0; i < spawn.count; i++) {
         counter++;
+        const scaledDef: MonsterDef = {
+          ...def,
+          hp: Math.max(1, Math.round(def.hp * modifier.monsterHp)),
+          mp: Math.max(0, Math.round(def.mp * modifier.monsterStats)),
+          str: Math.max(1, Math.round(def.str * modifier.monsterStats)),
+          int: Math.max(1, Math.round(def.int * modifier.monsterStats)),
+          dex: Math.max(1, Math.round(def.dex * modifier.monsterStats)),
+          vit: Math.max(1, Math.round(def.vit * modifier.monsterStats)),
+          luk: Math.max(1, Math.round(def.luk * modifier.monsterStats)),
+          expReward: Math.max(1, Math.round(def.expReward * modifier.rewards)),
+        };
         monsters.push({
           instanceId: `${spawn.monsterId}_dungeon_${counter}_${Date.now()}`,
           monsterId: spawn.monsterId,
-          def,
-          hp: def.hp,
-          maxHp: def.hp,
-          mp: def.mp,
-          maxMp: def.mp,
+          def: scaledDef,
+          hp: scaledDef.hp,
+          maxHp: scaledDef.hp,
+          mp: scaledDef.mp,
+          maxMp: scaledDef.mp,
           isDead: false,
           respawnAt: null,
         });
@@ -376,7 +415,13 @@ export class DungeonManager {
     }
 
     // 計算獎勵
-    const rewards = isFirstClear ? def.firstClearRewards : def.normalRewards;
+    const rewardModifier = DUNGEON_DIFFICULTY_MODIFIERS[instance.difficulty].rewards;
+    const baseRewards = isFirstClear ? def.firstClearRewards : def.normalRewards;
+    const rewards = {
+      ...baseRewards,
+      exp: Math.max(1, Math.round(baseRewards.exp * rewardModifier)),
+      gold: Math.max(0, Math.round(baseRewards.gold * rewardModifier)),
+    };
     const bonusText = isFirstClear ? '（首次通關獎勵！）' : '';
 
     for (const id of instance.playerIds) {
@@ -428,6 +473,7 @@ export class DungeonManager {
       sendToCharacter(id, 'system', {
         text:
           `副本「${def.name}」通關！${bonusText}\n` +
+          `難度：${DUNGEON_DIFFICULTY_LABELS[instance.difficulty]}\n` +
           `耗時：${timeStr}\n` +
           `獎勵：${rewardText}`,
       });

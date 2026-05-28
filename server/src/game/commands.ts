@@ -3354,16 +3354,22 @@ function cmdUse(session: WsSession, itemName: string): void {
   const char = getChar(session);
   if (!char) return;
   if (!itemName) { sendError(session.sessionId, '用法：use <物品名稱>'); return; }
+  const parsedItem = parseInstanceEntryTarget(itemName);
 
   const inv = getInventory(char.id);
   const match = inv.find((item) => {
     const def = ITEM_DEFS[item.itemId];
-    return def && (def.name === itemName || item.itemId === itemName);
+    return def && (
+      def.name === itemName
+      || item.itemId === itemName
+      || def.name === parsedItem.target
+      || item.itemId === parsedItem.target
+    );
   });
   if (!match) { sendError(session.sessionId, `背包中沒有「${itemName}」。`); return; }
 
   const def = ITEM_DEFS[match.itemId];
-  if (tryUseInstanceEntryItem(session, char, match.itemId, def?.name ?? itemName)) {
+  if (tryUseInstanceEntryItem(session, char, match.itemId, def?.name ?? itemName, parsedItem.difficulty)) {
     return;
   }
   if (!def?.useEffect) { sendError(session.sessionId, `「${def?.name ?? itemName}」無法使用。`); return; }
@@ -5253,9 +5259,10 @@ function cmdDungeon(session: WsSession, args: string[]): void {
 function cmdEnterInstanceEntry(session: WsSession, target: string): void {
   const char = getChar(session);
   if (!char) return;
-  const normalizedTarget = normalizeCommandTarget(target);
+  const parsedTarget = parseInstanceEntryTarget(target);
+  const normalizedTarget = normalizeCommandTarget(parsedTarget.target);
   if (!normalizedTarget) {
-    sendError(session.sessionId, '用法：enter <入口物件>。請在房間面板點擊副本入口，或輸入入口名稱。');
+    sendError(session.sessionId, '用法：enter <入口物件> [normal|hard|nightmare]。請在房間面板點擊副本入口，或輸入入口名稱。');
     return;
   }
 
@@ -5275,10 +5282,10 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
     return;
   }
 
-  startInstanceEntry(session, char, entry);
+  startInstanceEntry(session, char, entry, parsedTarget.difficulty);
 }
 
-function tryUseInstanceEntryItem(session: WsSession, char: Character, itemId: string, itemName: string): boolean {
+function tryUseInstanceEntryItem(session: WsSession, char: Character, itemId: string, itemName: string, difficulty = 'normal'): boolean {
   const itemEntries = buildInstanceEntryDefs(ZONES).filter(entry => entry.type === 'item_use' && entry.requiredItemId === itemId);
   if (itemEntries.length === 0) return false;
 
@@ -5295,7 +5302,7 @@ function tryUseInstanceEntryItem(session: WsSession, char: Character, itemId: st
     return true;
   }
 
-  startInstanceEntry(session, char, entry);
+  startInstanceEntry(session, char, entry, difficulty);
   return true;
 }
 
@@ -5324,7 +5331,14 @@ function startNpcDialogueInstanceEntry(session: WsSession, char: Character, npc:
   return true;
 }
 
-function startInstanceEntry(session: WsSession, char: Character, entry: InstanceEntryDef): void {
+function startInstanceEntry(session: WsSession, char: Character, entry: InstanceEntryDef, difficulty = 'normal'): void {
+  const selectedDifficulty = normalizeInstanceEntryDifficulty(difficulty);
+  const difficultyOptions = entry.difficultyOptions?.length ? entry.difficultyOptions : ['normal'];
+  if (!difficultyOptions.includes(selectedDifficulty)) {
+    sendError(session.sessionId, `難度不符，無法進入「${entry.name}」。你選擇了 ${formatInstanceEntryDifficulty(selectedDifficulty)}，此入口支援：${difficultyOptions.map(formatInstanceEntryDifficulty).join('、')}。下一步：改用入口支援的難度重新進入。`);
+    return;
+  }
+
   if (entry.minLevel && char.level < entry.minLevel) {
     sendError(session.sessionId, `等級不足，無法進入「${entry.name}」。目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步：先完成同等級區域任務或提升等級後再返回入口。`);
     return;
@@ -5363,7 +5377,7 @@ function startInstanceEntry(session: WsSession, char: Character, entry: Instance
         if (member) players.push(member);
       }
     }
-    const result = dungeonMgr.createInstance(partyId, entry.dungeonId, players);
+    const result = dungeonMgr.createInstance(partyId, entry.dungeonId, players, selectedDifficulty);
     sendSystem(session.sessionId, result.message);
     if (result.success) {
       consumeInstanceEntryCost(char, entry);
@@ -5376,6 +5390,34 @@ function startInstanceEntry(session: WsSession, char: Character, entry: Instance
     session.sessionId,
     `你觸碰「${entry.name}」，入口封印已回應。建議等級 ${entry.minLevel ?? '-'}，隊伍人數 1-${entry.maxPartySize ?? 1}。此入口尚未綁定正式副本模板；下一步需要補上 dungeonId 或 instance template 後才能建立 instance run。`,
   );
+}
+
+function parseInstanceEntryTarget(rawTarget: string): { target: string; difficulty: string } {
+  const trimmed = rawTarget.trim();
+  if (!trimmed) return { target: '', difficulty: 'normal' };
+  const parts = trimmed.split(/\s+/);
+  const maybeDifficulty = normalizeInstanceEntryDifficulty(parts[parts.length - 1]);
+  if (maybeDifficulty !== 'normal' || ['normal', '普通'].includes(parts[parts.length - 1]?.toLowerCase() ?? '')) {
+    return { target: parts.slice(0, -1).join(' '), difficulty: maybeDifficulty };
+  }
+  return { target: trimmed, difficulty: 'normal' };
+}
+
+function normalizeInstanceEntryDifficulty(value: string | undefined): string {
+  const normalized = normalizeCommandTarget(value ?? '');
+  if (normalized === 'hard' || normalized === '困難') return 'hard';
+  if (normalized === 'nightmare' || normalized === '夢魘' || normalized === '噩夢') return 'nightmare';
+  return 'normal';
+}
+
+function formatInstanceEntryDifficulty(value: string): string {
+  switch (value) {
+    case 'hard': return '困難';
+    case 'nightmare': return '夢魘';
+    case 'normal':
+    default:
+      return '普通';
+  }
 }
 
 function checkInstanceEntryRequirements(char: Character, entry: InstanceEntryDef): { ok: true } | { ok: false; message: string } {
