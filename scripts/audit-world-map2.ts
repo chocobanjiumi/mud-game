@@ -13,6 +13,16 @@ import {
 } from '../server/src/data/world-map2-plan.js';
 
 type Bounds = { minX: number; maxX: number; minY: number; maxY: number };
+type CrossZoneExitRecord = {
+  fromZoneId: string;
+  fromRoomId: string;
+  direction: Direction;
+  toZoneId: string;
+  toRoomId: string;
+  edgeKind: RoomDef['exits'][number]['edgeKind'];
+  description: string;
+  edgeNote?: string;
+};
 
 const CARDINAL_DELTAS: Record<Direction, { dx: number; dy: number }> = {
   north: { dx: 0, dy: -1 },
@@ -33,6 +43,7 @@ const missingTargets: string[] = [];
 const duplicateDirections: string[] = [];
 const selfLoops: string[] = [];
 const crossZoneExits: string[] = [];
+const crossZoneExitRecords: CrossZoneExitRecord[] = [];
 const specialEdges: string[] = [];
 const worldRoomsMissingCoords: string[] = [];
 const derivedWorldCoordinates: string[] = [];
@@ -51,6 +62,8 @@ const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
 const crossZoneWorldAdjacencyIssues: string[] = [];
 const borderRoomGaps: string[] = [];
+const acceptedCrossZoneLongPaths: string[] = [];
+const crossZoneLongPathIssues: string[] = [];
 const twoDimensionalDesignIssues: string[] = [];
 const mapPlanningUiIssues: string[] = [];
 const zoneClassificationIssues: string[] = [];
@@ -173,6 +186,16 @@ for (const room of rooms) {
     }
     if (target.zone !== room.zone) {
       crossZoneExits.push(`${room.zone}/${room.id}:${exit.direction}->${target.zone}/${target.id}`);
+      crossZoneExitRecords.push({
+        fromZoneId: room.zone,
+        fromRoomId: room.id,
+        direction: exit.direction,
+        toZoneId: target.zone,
+        toRoomId: target.id,
+        edgeKind: exit.edgeKind,
+        description: exit.description,
+        edgeNote: exit.edgeNote,
+      });
     }
     if (exit.edgeKind && exit.edgeKind !== 'normal') {
       specialEdges.push(`${room.id}:${exit.direction}->${target.id} (${exit.edgeKind}) ${exit.edgeNote ?? ''}`.trim());
@@ -368,16 +391,24 @@ for (let i = 0; i < zoneGlobalBounds.length; i++) {
   }
 }
 
-for (const exitText of crossZoneExits) {
-  const parsed = parseCrossZoneExit(exitText);
-  if (!parsed) continue;
-  const fromPlan = zonePlans.get(parsed.fromZoneId);
-  const toPlan = zonePlans.get(parsed.toZoneId);
+for (const exitRecord of crossZoneExitRecords) {
+  const fromPlan = zonePlans.get(exitRecord.fromZoneId);
+  const toPlan = zonePlans.get(exitRecord.toZoneId);
   if (!fromPlan?.globalBounds || !toPlan?.globalBounds) continue;
   if (fromPlan.decision === 'instance' || toPlan.decision === 'instance') continue;
-  const issue = getDirectionalBoundsIssue(parsed.direction, fromPlan.globalBounds, toPlan.globalBounds);
+  const label = `${exitRecord.fromZoneId}/${exitRecord.fromRoomId}:${exitRecord.direction}->${exitRecord.toZoneId}/${exitRecord.toRoomId}`;
+  if (exitRecord.edgeKind && exitRecord.edgeKind !== 'normal') {
+    const longPathIssue = getCrossZoneLongPathIssue(exitRecord);
+    if (longPathIssue) {
+      crossZoneLongPathIssues.push(`${label}: ${longPathIssue}`);
+    } else if (exitRecord.edgeKind === 'long_path') {
+      acceptedCrossZoneLongPaths.push(label);
+    }
+    continue;
+  }
+
+  const issue = getDirectionalBoundsIssue(exitRecord.direction, fromPlan.globalBounds, toPlan.globalBounds);
   if (!issue) continue;
-  const label = `${parsed.fromZoneId}/${parsed.fromRoomId}:${parsed.direction}->${parsed.toZoneId}/${parsed.toRoomId}`;
   crossZoneWorldAdjacencyIssues.push(`${label}: ${issue}`);
   if (issue.includes('gap')) {
     borderRoomGaps.push(`${label}: ${issue}`);
@@ -496,6 +527,8 @@ const report = {
     overlappingZoneGlobalBounds,
     crossZoneWorldAdjacencyIssues,
     borderRoomGaps,
+    acceptedCrossZoneLongPaths,
+    crossZoneLongPathIssues,
   },
   instance: {
     instanceRoomsWithWorldCoords,
@@ -533,6 +566,7 @@ if (strict) {
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
     ...crossZoneWorldAdjacencyIssues,
+    ...crossZoneLongPathIssues,
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
     ...objectInteractEntryIssues,
@@ -542,24 +576,6 @@ if (strict) {
   if (failures.length > 0) {
     process.exitCode = 1;
   }
-}
-
-function parseCrossZoneExit(exitText: string): {
-  fromZoneId: string;
-  fromRoomId: string;
-  direction: Direction;
-  toZoneId: string;
-  toRoomId: string;
-} | null {
-  const match = exitText.match(/^([^/]+)\/([^:]+):(north|south|east|west)->([^/]+)\/(.+)$/);
-  if (!match) return null;
-  return {
-    fromZoneId: match[1],
-    fromRoomId: match[2],
-    direction: match[3] as Direction,
-    toZoneId: match[4],
-    toRoomId: match[5],
-  };
 }
 
 function getDirectionalBoundsIssue(
@@ -589,6 +605,27 @@ function getDirectionalBoundsIssue(
       if (!rangesTouchOrOverlap(from.minY, from.maxY, to.minY, to.maxY)) return 'west exit has no vertical bbox overlap';
       return null;
   }
+}
+
+function getCrossZoneLongPathIssue(exit: CrossZoneExitRecord): string | null {
+  if (exit.edgeKind !== 'long_path') {
+    return `${exit.edgeKind ?? 'normal'} cross-zone special edge is not accepted as long_path`;
+  }
+  const descriptionChars = countCjkChars(exit.description);
+  if (descriptionChars < 28) {
+    return `long_path description too short (${descriptionChars}/28)`;
+  }
+  if (!exit.edgeNote) {
+    return 'long_path missing edgeNote';
+  }
+  const edgeNoteChars = countCjkChars(exit.edgeNote);
+  if (edgeNoteChars < 28) {
+    return `long_path edgeNote too short (${edgeNoteChars}/28)`;
+  }
+  if (!exit.edgeNote.includes('實際路程長於相鄰一格')) {
+    return 'long_path edgeNote must explain that the route is longer than one adjacent cell';
+  }
+  return null;
 }
 
 function rangesTouchOrOverlap(leftMin: number, leftMax: number, rightMin: number, rightMax: number): boolean {
@@ -664,6 +701,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
     `Cross-zone world adjacency issues: ${reportData.zoneLayout.crossZoneWorldAdjacencyIssues.length}`,
     `Border room gaps: ${reportData.zoneLayout.borderRoomGaps.length}`,
+    `Accepted cross-zone long paths: ${reportData.zoneLayout.acceptedCrossZoneLongPaths.length}`,
+    `Cross-zone long path issues: ${reportData.zoneLayout.crossZoneLongPathIssues.length}`,
     `Instance rooms with world coordinates: ${reportData.instance.instanceRoomsWithWorldCoords.length}`,
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
     `Instance entries: ${reportData.instance.instanceEntries.length}`,
