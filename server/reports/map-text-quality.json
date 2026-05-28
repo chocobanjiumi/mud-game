@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:37:41.371Z",
+  "generatedAt": "2026-05-28T16:40:47.185Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -67,6 +67,10 @@
       "raceSummaryMinCjkChars": 70,
       "faithSummaryMinCjkChars": 70
     },
+    "talent": {
+      "nodeDescriptionMinCjkChars": 35,
+      "tier5NodeDescriptionMinCjkChars": 70
+    },
     "statusEffect": {
       "descriptionMinCjkChars": 30,
       "partialDescriptionMinCjkChars": 55
@@ -124,6 +128,8 @@
     "playableClasses": 17,
     "races": 7,
     "faiths": 10,
+    "talentNodes": 60,
+    "talentTier5Nodes": 12,
     "statusEffects": 33,
     "skills": 206,
     "skillUpgradePreviews": 112,

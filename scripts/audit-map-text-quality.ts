@@ -11,6 +11,7 @@ import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monst
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
 import { WEAPON_TYPE_DEFS, resolveEquipSlotForItem, type ItemDef } from '../packages/shared/src/types/item.js';
+import { TALENT_FAMILY_DRAFTS } from '../client/src/content/talentTreeDrafts.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { NPCS } from '../server/src/data/npcs.js';
@@ -51,6 +52,7 @@ type TextKind =
   | 'class.summary'
   | 'race.summary'
   | 'faith.summary'
+  | 'talent.node.description'
   | 'statusEffect.description'
   | 'skill.description'
   | 'skill.tooltip'
@@ -329,6 +331,19 @@ for (const faith of Object.values(FAITH_DEFS)) {
   );
 }
 
+for (const family of TALENT_FAMILY_DRAFTS) {
+  for (const node of family.nodes) {
+    checkText(
+      node.id,
+      'talent.node.description',
+      'description',
+      formatTalentNodeDescriptionAuditText(family, node),
+      node.keystone || node.tier === 5 ? 70 : 35,
+      'talent node description 需包含 build 方向、觸發條件或常駐效果、職業資源或技能關聯',
+    );
+  }
+}
+
 for (const statusEffect of Object.values(STATUS_EFFECT_DEFS)) {
   checkText(
     statusEffect.type,
@@ -458,6 +473,10 @@ const report = {
       raceSummaryMinCjkChars: 70,
       faithSummaryMinCjkChars: 70,
     },
+    talent: {
+      nodeDescriptionMinCjkChars: 35,
+      tier5NodeDescriptionMinCjkChars: 70,
+    },
     statusEffect: {
       descriptionMinCjkChars: 30,
       partialDescriptionMinCjkChars: 55,
@@ -504,6 +523,8 @@ const report = {
     playableClasses: Object.values(CLASS_DEFS).filter(classDef => classDef.id !== 'monster').length,
     races: Object.keys(RACE_DEFS).length,
     faiths: Object.keys(FAITH_DEFS).length,
+    talentNodes: TALENT_FAMILY_DRAFTS.reduce((count, family) => count + family.nodes.length, 0),
+    talentTier5Nodes: TALENT_FAMILY_DRAFTS.reduce((count, family) => count + family.nodes.filter(node => node.keystone || node.tier === 5).length, 0),
     statusEffects: Object.keys(STATUS_EFFECT_DEFS).length,
     skills: Object.keys(SKILL_DEFS).length,
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
@@ -852,6 +873,17 @@ function formatFaithSummaryAuditText(faith: typeof FAITH_DEFS[keyof typeof FAITH
   return `信仰「${faith.name}・${faith.title}」的世界觀位置是${faith.description}領域包含${faith.domains.join('、')}，被動「${faith.passiveName}」提供${faith.passiveDescription}。祈禱「${faith.prayerName}」會帶來${faith.prayerDescription}，適合重視${faith.tags?.join('、') || '信仰'}玩法的角色；限制是禁忌包含${faith.taboos.join('、')}，違背時應影響敘事或信仰互動。`;
 }
 
+function formatTalentNodeDescriptionAuditText(
+  family: typeof TALENT_FAMILY_DRAFTS[number],
+  node: typeof TALENT_FAMILY_DRAFTS[number]['nodes'][number],
+): string {
+  const branch = family.branches.find(branchDef => branchDef.id === node.branch);
+  const prerequisites = node.prerequisites.length > 0
+    ? `前置條件為先點滿上一個 Tier 節點，同路線逐 tier 解鎖。`
+    : '沒有前置節點，作為該路線的起點。';
+  return `天賦「${node.name}」屬於${family.name}的${branch?.name ?? node.branch}路線，build 方向是${node.buildIntent || branch?.buildIntent || '一轉基礎成長'}。觸發或常駐規則為${node.mechanic}；UI 說明為${node.uiCopy}。此節點與職業資源、技能節奏或戰鬥判讀的關聯是${branch?.identity ?? family.coreFantasy}，${prerequisites}每級最多投入 ${node.maxRank} 點，平衡限制為${node.balanceNote}；${node.notSkillUpgradeNote}`;
+}
+
 function formatClassResourceAuditText(resourceType: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]['resourceType']): string {
   if (resourceType === 'rage') return '怒氣，依受擊與戰鬥節奏取得，適合前線承傷與爆發生存';
   if (resourceType === 'focus') return '專注，代表遊俠短時間連續輸出的節奏，耗盡後需要等待恢復';
@@ -993,6 +1025,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'class.summary'
     || batchKey === 'race.summary'
     || batchKey === 'faith.summary'
+    || batchKey === 'talent.node.description'
     || batchKey === 'statusEffect.description'
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
