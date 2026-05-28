@@ -1900,7 +1900,13 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'grass_path', description: '沿小徑返回' },
       { direction: 'south', targetRoomId: 'forest_entrance', description: '通往暗影森林' },
-      { direction: 'east', targetRoomId: 'town_gate', description: '前往湖畔城鎮' },
+      {
+        direction: 'east',
+        targetRoomId: 'town_gate',
+        description: '東側道路要沿車轍穿過湖畔外牆前的緩坡與衛兵哨，才會抵達湖畔城門',
+        edgeKind: 'long_path',
+        edgeNote: '十字路口到湖畔城門跨越城外道路與外牆緩坡，屬於跨區長路徑。',
+      },
       { direction: 'west', targetRoomId: 'old_well', description: '走向古井' },
     ],
     monsters: [
@@ -2262,7 +2268,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '高大的湖石城牆圍繞著城鎮，城門上方刻著盾牌與交叉長劍徽記，濕潤湖風吹過吊橋與銅釘木門。身著鎧甲的衛兵守在門口，商隊與冒險者沿西側道路排隊入城，東面可看見商業街的燈火。告示牌提示入城補給、登記任務與啟用傳送陣，門洞旁的暗格也可被 inspect 搜出走私線索。' +
       '這裡是安全錨點與外部路線交會處，玩家可從西側返回十字路口，向東進入市場，或往南接上海岸棧道。城門上方的鐘聲會標示宵禁與警報，衛兵隊長也會提醒新來者先確認復活點、倉庫與傳送廣場位置，避免帶著任務貨物走錯危險路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'crossroads', description: '離開城鎮，回到十字路口' },
+      {
+        direction: 'west',
+        targetRoomId: 'crossroads',
+        description: '西側出城後要沿湖畔外牆緩坡與車轍走完整段城外道路，才會回到十字路口',
+        edgeKind: 'long_path',
+        edgeNote: '湖畔城門回十字路口需要穿過城外道路與外牆緩坡，屬於跨區長路徑。',
+      },
       { direction: 'east', targetRoomId: 'market_street', description: '進入商業街' },
       {
         direction: 'south',
