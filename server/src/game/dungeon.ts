@@ -1,7 +1,7 @@
 // 副本/實例系統 — DungeonManager
 
 import { randomUUID } from 'crypto';
-import type { Character, MonsterDef } from '@game/shared';
+import { ITEM_DEFS, type Character, type MonsterDef } from '@game/shared';
 import type { MonsterInstance } from './world.js';
 import {
   DUNGEON_DEFS, DUNGEON_MONSTERS,
@@ -11,11 +11,11 @@ import { getMonster } from '../data/monsters.js';
 import { sendToCharacter } from '../ws/handler.js';
 import {
   updateLeaderboard,
-  addItemToInventory,
 } from '../db/database.js';
 import { getDb } from '../db/schema.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
+import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 
 // ============================================================
 //  型別定義
@@ -389,17 +389,40 @@ export class DungeonManager {
         if (expResult.levelsGained > 0) grantAndNotifyLearnableSkills(char);
       }
 
+      const rewardEntries: string[] = [];
+
       // 發放通關物品
       if (rewards.items?.length) {
         for (const item of rewards.items) {
-          addItemToInventory(id, item.itemId, item.qty);
+          if (!char) continue;
+          rewardEntries.push(...addRewardItemToInventory(char, item.itemId, item.qty, {
+            sourceTags: ['dungeon_reward', instance.dungeonId],
+            itemLevel: def.levelReq,
+            droppedBy: instance.dungeonId,
+          }).map(formatRewardEntry));
+        }
+      }
+
+      if (char && rewards.equipmentSlotRewards?.length) {
+        for (const equipmentReward of rewards.equipmentSlotRewards) {
+          const item = Object.values(ITEM_DEFS).find(itemDef =>
+            itemDef.equipSlot === equipmentReward.slot
+            && (!equipmentReward.levelMax || itemDef.levelReq <= equipmentReward.levelMax)
+            && (!equipmentReward.sourceTags?.length || equipmentReward.sourceTags.some(tag => itemDef.id.includes(tag) || itemDef.sourceTags?.includes(tag))),
+          );
+          if (!item) continue;
+          rewardEntries.push(...addRewardItemToInventory(char, item.id, 1, {
+            sourceTags: ['dungeon_reward', instance.dungeonId, ...(equipmentReward.sourceTags ?? [])],
+            itemLevel: equipmentReward.levelMax,
+            droppedBy: instance.dungeonId,
+          }).map(formatRewardEntry));
         }
       }
 
       // 通知玩家
       let rewardText = `獲得 ${rewards.exp} EXP、${rewards.gold} 金幣`;
-      if (rewards.items?.length) {
-        rewardText += isFirstClear ? '，以及首通獎勵道具' : '，以及通關獎勵道具';
+      if (rewardEntries.length > 0) {
+        rewardText += `，以及${isFirstClear ? '首通' : '通關'}獎勵：${rewardEntries.join('、')}`;
       }
 
       sendToCharacter(id, 'system', {

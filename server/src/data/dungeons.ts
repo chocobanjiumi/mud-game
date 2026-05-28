@@ -39,12 +39,14 @@ export interface DungeonDef {
     exp: number;
     gold: number;
     items: { itemId: string; qty: number }[];
+    equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
   };
   /** 普通通關獎勵 */
   normalRewards: {
     exp: number;
     gold: number;
     items?: { itemId: string; qty: number }[];
+    equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
   };
   /** 對應的世界入口房間 */
   entranceRoomId: string;
@@ -1664,11 +1666,13 @@ function buildGeneratedInstanceDungeons(): Record<string, DungeonDef> {
         exp: zone.levelRange[1] * 500,
         gold: zone.levelRange[1] * 250,
         items: buildGeneratedDungeonRewardItems(zone.levelRange[1], true),
+        equipmentSlotRewards: buildGeneratedDungeonEquipmentRewards(zone.levelRange[1], true),
       },
       normalRewards: {
         exp: zone.levelRange[1] * 200,
         gold: zone.levelRange[1] * 100,
         items: buildGeneratedDungeonRewardItems(zone.levelRange[1], false),
+        equipmentSlotRewards: buildGeneratedDungeonEquipmentRewards(zone.levelRange[1], false),
       },
     };
   }
@@ -1737,6 +1741,19 @@ function buildGeneratedDungeonRewardItems(levelMax: number, firstClear: boolean)
     { itemId: 'rare_fossil', qty: 1 },
     { itemId: 'golem_core', qty: 1 },
     { itemId: 'dragon_dust', qty: 1 },
+  ];
+}
+
+function buildGeneratedDungeonEquipmentRewards(levelMax: number, firstClear: boolean): { slot: string; levelMax: number; sourceTags: string[] }[] {
+  const commonTags = ['dungeon', 'boss'];
+  if (firstClear) {
+    return [
+      { slot: 'weapon', levelMax, sourceTags: commonTags },
+      { slot: 'body', levelMax, sourceTags: commonTags },
+    ];
+  }
+  return [
+    { slot: 'head', levelMax, sourceTags: commonTags },
   ];
 }
 

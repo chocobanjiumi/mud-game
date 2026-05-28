@@ -645,9 +645,11 @@ function formatDungeonRewardSummary(rewards: {
   exp: number;
   gold: number;
   items?: { itemId: string; qty: number }[];
+  equipmentSlotRewards?: { slot: string; levelMax?: number; sourceTags?: string[] }[];
 }): string {
   const parts = [`獎勵包含經驗值 ${rewards.exp}`, `金幣 ${rewards.gold}`];
   if (rewards.items?.length) parts.push(`道具 ${rewards.items.map(item => `${ITEM_DEFS[item.itemId]?.name ?? item.itemId} x${item.qty}`).join('、')}`);
+  if (rewards.equipmentSlotRewards?.length) parts.push(`裝備補給 ${rewards.equipmentSlotRewards.map(item => `${item.slot}${item.levelMax ? ` Lv.${item.levelMax}` : ''}`).join('、')}`);
   return parts.join('；');
 }
 
