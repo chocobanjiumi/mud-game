@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:36:45.987Z",
+  "generatedAt": "2026-05-28T09:45:15.266Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -85,7 +85,7 @@
     "rooms": 1203,
     "npcs": 216,
     "quests": 614,
-    "dungeons": 8,
+    "dungeons": 29,
     "monsters": 521,
     "monsterFamilies": 13,
     "gatheringNodes": 36,
@@ -93502,28 +93502,28 @@
       "id": "dungeon.description/term:處的",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 50,
+      "currentLength": 86,
       "minimumLength": 30,
-      "text": "shadow_dungeon, crystal_temple, demon_fortress, dragon_nest",
-      "reason": "同批生成內容核心詞「處的」出現於 4/8 筆，超過 30% 門檻"
+      "text": "shadow_dungeon, crystal_temple, demon_fortress, dragon_nest, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template",
+      "reason": "同批生成內容核心詞「處的」出現於 25/29 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon.description/term:的古",
+      "id": "dungeon.description/term:最深",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 50,
+      "currentLength": 83,
       "minimumLength": 30,
-      "text": "shadow_dungeon, crystal_temple, flame_temple, celestial_trial",
-      "reason": "同批生成內容核心詞「的古」出現於 4/8 筆，超過 30% 門檻"
+      "text": "shadow_dungeon, crystal_temple, demon_fortress, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template, machine_graveyard_template",
+      "reason": "同批生成內容核心詞「最深」出現於 24/29 筆，超過 30% 門檻"
     },
     {
-      "id": "dungeon.description/term:只有",
+      "id": "dungeon.description/term:古代",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 50,
+      "currentLength": 83,
       "minimumLength": 30,
-      "text": "shadow_dungeon, pirate_ship, flame_temple, abyss_gate",
-      "reason": "同批生成內容核心詞「只有」出現於 4/8 筆，超過 30% 門檻"
+      "text": "crystal_temple, flame_temple, celestial_trial, abandoned_mines_template, sunken_catacombs_template, underground_city_template, cursed_graveyard_template, ancient_ruins_template, deepsea_temple_template, obsidian_depths_template, hollow_mountain_template, machine_graveyard_template",
+      "reason": "同批生成內容核心詞「古代」出現於 24/29 筆，超過 30% 門檻"
     },
     {
       "id": "dungeon:flame_temple/term:火焰",

@@ -389,17 +389,17 @@ export class DungeonManager {
         if (expResult.levelsGained > 0) grantAndNotifyLearnableSkills(char);
       }
 
-      // 首次通關發放物品
-      if (isFirstClear && def.firstClearRewards.items) {
-        for (const item of def.firstClearRewards.items) {
+      // 發放通關物品
+      if (rewards.items?.length) {
+        for (const item of rewards.items) {
           addItemToInventory(id, item.itemId, item.qty);
         }
       }
 
       // 通知玩家
       let rewardText = `獲得 ${rewards.exp} EXP、${rewards.gold} 金幣`;
-      if (isFirstClear && def.firstClearRewards.items.length > 0) {
-        rewardText += '，以及首通獎勵道具';
+      if (rewards.items?.length) {
+        rewardText += isFirstClear ? '，以及首通獎勵道具' : '，以及通關獎勵道具';
       }
 
       sendToCharacter(id, 'system', {

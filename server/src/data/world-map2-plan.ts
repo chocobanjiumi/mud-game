@@ -287,12 +287,33 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
   },
 };
 
-const INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
+export const WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
   crystal_cave: 'crystal_temple',
+  abandoned_mines: 'abandoned_mines_template',
+  sunken_catacombs: 'sunken_catacombs_template',
+  underground_city: 'underground_city_template',
+  cursed_graveyard: 'cursed_graveyard_template',
+  ancient_ruins: 'ancient_ruins_template',
+  deepsea_temple: 'deepsea_temple_template',
+  obsidian_depths: 'obsidian_depths_template',
+  hollow_mountain: 'hollow_mountain_template',
+  machine_graveyard: 'machine_graveyard_template',
+  ashfall_monastery: 'ashfall_monastery_template',
+  thornmaze: 'thornmaze_template',
+  reef_of_bones: 'reef_of_bones_template',
+  necropolis_gate: 'necropolis_gate_template',
+  lost_capital: 'lost_capital_template',
+  sunspire: 'sunspire_template',
+  moonshadow_court: 'moonshadow_court_template',
   demon_territory: 'demon_fortress',
   dragon_valley: 'dragon_nest',
+  sky_isles: 'sky_isles_template',
+  starfall_crater: 'starfall_crater_template',
+  time_ruins: 'time_ruins_template',
   abyss_rift: 'abyss_gate',
+  astral_wastes: 'astral_wastes_template',
   celestial_ruins: 'celestial_trial',
+  final_battleground: 'final_battleground_template',
 };
 
 export function buildZoneMapPlans(zones: Record<string, ZoneDef>): Map<string, ZoneMapPlan> {
@@ -345,7 +366,7 @@ export function buildInstanceEntryDefs(zones: Record<string, ZoneDef>): Instance
     entries.push({
       id: `${zone.id}_entry`,
       instanceTemplateId: zone.id,
-      dungeonId: INSTANCE_ZONE_DUNGEON_IDS[zone.id],
+      dungeonId: WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS[zone.id],
       type: 'object_interact',
       roomId: plan.entranceRoomId,
       objectId: `${zone.id}_entrance_object`,

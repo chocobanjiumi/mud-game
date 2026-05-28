@@ -1,6 +1,8 @@
 // 副本資料定義 - 暗影地牢 & 水晶聖殿
 
 import type { MonsterDef } from '@game/shared';
+import { ROOMS, ZONES } from './rooms.js';
+import { WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS } from './world-map2-plan.js';
 
 // ============================================================
 //  副本房間定義
@@ -42,6 +44,7 @@ export interface DungeonDef {
   normalRewards: {
     exp: number;
     gold: number;
+    items?: { itemId: string; qty: number }[];
   };
   /** 對應的世界入口房間 */
   entranceRoomId: string;
@@ -1616,6 +1619,126 @@ export const DUNGEON_DEFS: Record<string, DungeonDef> = {
     },
   },
 };
+
+Object.assign(DUNGEON_DEFS, buildGeneratedInstanceDungeons());
+
+function buildGeneratedInstanceDungeons(): Record<string, DungeonDef> {
+  const generated: Record<string, DungeonDef> = {};
+
+  for (const [zoneId, dungeonId] of Object.entries(WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS)) {
+    if (DUNGEON_DEFS[dungeonId]) continue;
+
+    const zone = ZONES[zoneId];
+    if (!zone) continue;
+
+    const sourceRooms = zone.rooms
+      .map(roomId => ROOMS[roomId])
+      .filter((room): room is NonNullable<typeof room> => Boolean(room));
+    const entranceRoomId = zone.rooms[0];
+    const dungeonSourceRooms = sourceRooms.filter(room => room.id !== entranceRoomId);
+    const selectedRooms = (dungeonSourceRooms.length > 0 ? dungeonSourceRooms : sourceRooms).slice(0, 5);
+    const zoneMonsterIds = Array.from(new Set(sourceRooms.flatMap(room => room.monsters?.map(spawn => spawn.monsterId) ?? [])));
+
+    if (selectedRooms.length === 0) continue;
+
+    generated[dungeonId] = {
+      id: dungeonId,
+      name: `${zone.name}探索副本`,
+      description: buildGeneratedDungeonDescription(zone),
+      levelReq: zone.levelRange[0],
+      maxPlayers: zone.recommendedPartySize[1],
+      timeLimit: 1800,
+      entranceFee: Math.max(0, zone.levelRange[0] * 20),
+      entranceRoomId,
+      rooms: selectedRooms.map((room, index) => {
+        const isBoss = index === selectedRooms.length - 1;
+        return {
+          id: `${dungeonId}_room_${index + 1}`,
+          name: room.name,
+          description: buildGeneratedDungeonRoomDescription(zone.name, room.name, room.description, index, isBoss),
+          monsters: buildGeneratedDungeonRoomMonsters(room, zoneMonsterIds, isBoss),
+          isBoss,
+        };
+      }),
+      firstClearRewards: {
+        exp: zone.levelRange[1] * 500,
+        gold: zone.levelRange[1] * 250,
+        items: buildGeneratedDungeonRewardItems(zone.levelRange[1], true),
+      },
+      normalRewards: {
+        exp: zone.levelRange[1] * 200,
+        gold: zone.levelRange[1] * 100,
+        items: buildGeneratedDungeonRewardItems(zone.levelRange[1], false),
+      },
+    };
+  }
+
+  return generated;
+}
+
+function buildGeneratedDungeonDescription(zone: typeof ZONES[string]): string {
+  return `${zone.name}被整理為獨立探索副本，入口保留在世界地圖上，隊伍進入後會沿著封閉路線逐步深入。這裡的核心威脅來自${zone.description}，玩家需要清理沿途怪物、確認地形變化，最後擊破最深處的首領或守衛。首通會提供大量經驗值、金幣與古代碎片，普通通關則作為穩定刷怪、補資源與推進任務的重複挑戰。`;
+}
+
+function buildGeneratedDungeonRoomDescription(
+  zoneName: string,
+  roomName: string,
+  baseDescription: string,
+  index: number,
+  isBoss: boolean,
+): string {
+  const opening = [
+    `踏入「${roomName}」時，${zoneName}的副本路線開始收束。`,
+    `沿著內側通道抵達「${roomName}」，周圍已能看出${zoneName}深處的壓力。`,
+    `越過前段危險後，「${roomName}」把隊伍帶到${zoneName}另一種地形節奏。`,
+    `靠近「${roomName}」時，牆面、地面與遠處聲響都顯示${zoneName}仍在變化。`,
+    `抵達「${roomName}」後，這段${zoneName}路線成為進入最深處前的關鍵節點。`,
+  ][index % 5];
+  const roleText = isBoss
+    ? '這是副本路線的最終戰鬥空間，四周地形逼迫隊伍正面處理首領與護衛，逃避路線很少。'
+    : '這是副本路線中的推進房間，地面痕跡、牆面缺口與遠處聲響都提示下一段危險。';
+  return `${opening}${baseDescription}${roleText}玩家在此需要觀察主要地形、確認怪物巡邏方向，並為後續房間保留生命、魔力與消耗品。`;
+}
+
+function buildGeneratedDungeonRoomMonsters(
+  room: NonNullable<typeof ROOMS[string]>,
+  zoneMonsterIds: string[],
+  isBoss: boolean,
+): { monsterId: string; count: number }[] {
+  const spawns = room.monsters ?? [];
+  if (spawns.length > 0) {
+    return spawns.slice(0, isBoss ? 3 : 2).map(spawn => ({
+      monsterId: spawn.monsterId,
+      count: Math.max(1, Math.min(spawn.maxCount, isBoss ? 2 : 1)),
+    }));
+  }
+
+  const fallbackMonsterId = zoneMonsterIds[0];
+  if (!fallbackMonsterId) return [];
+  return [{ monsterId: fallbackMonsterId, count: isBoss ? 2 : 1 }];
+}
+
+function buildGeneratedDungeonRewardItems(levelMax: number, firstClear: boolean): { itemId: string; qty: number }[] {
+  const quantity = Math.max(1, Math.floor(levelMax / 15));
+  if (firstClear) {
+    return [
+      { itemId: 'ancient_fragment', qty: quantity },
+      { itemId: 'crystal_core', qty: 1 },
+      { itemId: 'celestial_fragment', qty: 1 },
+      { itemId: 'ancient_coin', qty: quantity },
+      { itemId: 'ancient_runestone', qty: 1 },
+      { itemId: 'rare_fossil', qty: 1 },
+    ];
+  }
+  return [
+    { itemId: 'ancient_fragment', qty: quantity },
+    { itemId: 'crystal_core', qty: 1 },
+    { itemId: 'ancient_coin', qty: 1 },
+    { itemId: 'rare_fossil', qty: 1 },
+    { itemId: 'golem_core', qty: 1 },
+    { itemId: 'dragon_dust', qty: 1 },
+  ];
+}
 
 /** 取得副本定義 */
 export function getDungeon(dungeonId: string): DungeonDef | undefined {

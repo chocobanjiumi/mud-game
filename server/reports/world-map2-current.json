@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:21:09.875Z",
+  "generatedAt": "2026-05-28T09:45:23.489Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2307,6 +2307,7 @@
       {
         "id": "abandoned_mines_entry",
         "instanceTemplateId": "abandoned_mines",
+        "dungeonId": "abandoned_mines_template",
         "type": "object_interact",
         "roomId": "abandoned_mines_entry_claim",
         "objectId": "abandoned_mines_entrance_object",
@@ -2322,6 +2323,7 @@
       {
         "id": "ancient_ruins_entry",
         "instanceTemplateId": "ancient_ruins",
+        "dungeonId": "ancient_ruins_template",
         "type": "object_interact",
         "roomId": "ancient_ruins_sunken_entrance",
         "objectId": "ancient_ruins_entrance_object",
@@ -2337,6 +2339,7 @@
       {
         "id": "sunken_catacombs_entry",
         "instanceTemplateId": "sunken_catacombs",
+        "dungeonId": "sunken_catacombs_template",
         "type": "object_interact",
         "roomId": "sunken_catacombs_tide_stair",
         "objectId": "sunken_catacombs_entrance_object",
@@ -2352,6 +2355,7 @@
       {
         "id": "underground_city_entry",
         "instanceTemplateId": "underground_city",
+        "dungeonId": "underground_city_template",
         "type": "object_interact",
         "roomId": "underground_city_gate_lift",
         "objectId": "underground_city_entrance_object",
@@ -2367,6 +2371,7 @@
       {
         "id": "cursed_graveyard_entry",
         "instanceTemplateId": "cursed_graveyard",
+        "dungeonId": "cursed_graveyard_template",
         "type": "object_interact",
         "roomId": "cursed_graveyard_iron_gate",
         "objectId": "cursed_graveyard_entrance_object",
@@ -2382,6 +2387,7 @@
       {
         "id": "lost_capital_entry",
         "instanceTemplateId": "lost_capital",
+        "dungeonId": "lost_capital_template",
         "type": "object_interact",
         "roomId": "lost_capital_outer_gate",
         "objectId": "lost_capital_entrance_object",
@@ -2397,6 +2403,7 @@
       {
         "id": "sky_isles_entry",
         "instanceTemplateId": "sky_isles",
+        "dungeonId": "sky_isles_template",
         "type": "object_interact",
         "roomId": "sky_isles_lift_dock",
         "objectId": "sky_isles_entrance_object",
@@ -2412,6 +2419,7 @@
       {
         "id": "deepsea_temple_entry",
         "instanceTemplateId": "deepsea_temple",
+        "dungeonId": "deepsea_temple_template",
         "type": "object_interact",
         "roomId": "deepsea_temple_tide_gate",
         "objectId": "deepsea_temple_entrance_object",
@@ -2427,6 +2435,7 @@
       {
         "id": "obsidian_depths_entry",
         "instanceTemplateId": "obsidian_depths",
+        "dungeonId": "obsidian_depths_template",
         "type": "object_interact",
         "roomId": "obsidian_depths_mine_lift",
         "objectId": "obsidian_depths_entrance_object",
@@ -2442,6 +2451,7 @@
       {
         "id": "starfall_crater_entry",
         "instanceTemplateId": "starfall_crater",
+        "dungeonId": "starfall_crater_template",
         "type": "object_interact",
         "roomId": "starfall_crater_rim_gate",
         "objectId": "starfall_crater_entrance_object",
@@ -2457,6 +2467,7 @@
       {
         "id": "time_ruins_entry",
         "instanceTemplateId": "time_ruins",
+        "dungeonId": "time_ruins_template",
         "type": "object_interact",
         "roomId": "time_ruins_epoch_gate",
         "objectId": "time_ruins_entrance_object",
@@ -2472,6 +2483,7 @@
       {
         "id": "astral_wastes_entry",
         "instanceTemplateId": "astral_wastes",
+        "dungeonId": "astral_wastes_template",
         "type": "object_interact",
         "roomId": "astral_wastes_reality_gate",
         "objectId": "astral_wastes_entrance_object",
@@ -2487,6 +2499,7 @@
       {
         "id": "final_battleground_entry",
         "instanceTemplateId": "final_battleground",
+        "dungeonId": "final_battleground_template",
         "type": "object_interact",
         "roomId": "final_battleground_war_gate",
         "objectId": "final_battleground_entrance_object",
@@ -2502,6 +2515,7 @@
       {
         "id": "thornmaze_entry",
         "instanceTemplateId": "thornmaze",
+        "dungeonId": "thornmaze_template",
         "type": "object_interact",
         "roomId": "thornmaze_gate_arch",
         "objectId": "thornmaze_entrance_object",
@@ -2517,6 +2531,7 @@
       {
         "id": "reef_of_bones_entry",
         "instanceTemplateId": "reef_of_bones",
+        "dungeonId": "reef_of_bones_template",
         "type": "object_interact",
         "roomId": "reef_of_bones_tide_gate",
         "objectId": "reef_of_bones_entrance_object",
@@ -2532,6 +2547,7 @@
       {
         "id": "ashfall_monastery_entry",
         "instanceTemplateId": "ashfall_monastery",
+        "dungeonId": "ashfall_monastery_template",
         "type": "object_interact",
         "roomId": "ashfall_monastery_ash_gate",
         "objectId": "ashfall_monastery_entrance_object",
@@ -2547,6 +2563,7 @@
       {
         "id": "necropolis_gate_entry",
         "instanceTemplateId": "necropolis_gate",
+        "dungeonId": "necropolis_gate_template",
         "type": "object_interact",
         "roomId": "necropolis_gate_black_approach",
         "objectId": "necropolis_gate_entrance_object",
@@ -2562,6 +2579,7 @@
       {
         "id": "sunspire_entry",
         "instanceTemplateId": "sunspire",
+        "dungeonId": "sunspire_template",
         "type": "object_interact",
         "roomId": "sunspire_white_stone_gate",
         "objectId": "sunspire_entrance_object",
@@ -2577,6 +2595,7 @@
       {
         "id": "moonshadow_court_entry",
         "instanceTemplateId": "moonshadow_court",
+        "dungeonId": "moonshadow_court_template",
         "type": "object_interact",
         "roomId": "moonshadow_court_moonlit_gate",
         "objectId": "moonshadow_court_entrance_object",
@@ -2592,6 +2611,7 @@
       {
         "id": "machine_graveyard_entry",
         "instanceTemplateId": "machine_graveyard",
+        "dungeonId": "machine_graveyard_template",
         "type": "object_interact",
         "roomId": "machine_graveyard_entrance_crane",
         "objectId": "machine_graveyard_entrance_object",
@@ -2607,6 +2627,7 @@
       {
         "id": "hollow_mountain_entry",
         "instanceTemplateId": "hollow_mountain",
+        "dungeonId": "hollow_mountain_template",
         "type": "object_interact",
         "roomId": "hollow_mountain_entrance_wind_gate",
         "objectId": "hollow_mountain_entrance_object",
@@ -2620,7 +2641,7 @@
         ]
       }
     ],
-    "mappedRuntimeDungeonEntries": 5,
+    "mappedRuntimeDungeonEntries": 26,
     "instanceEntryIssues": []
   },
   "specialEdges": []
