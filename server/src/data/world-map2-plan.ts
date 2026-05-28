@@ -42,6 +42,24 @@ export interface ZoneGlobalBounds {
   terrainRole: string;
 }
 
+export interface ZoneLocalBounds {
+  minX: number;
+  maxX: number;
+  minY: number;
+  maxY: number;
+}
+
+export interface PlannedWorldCoordinate {
+  worldX: number;
+  worldY: number;
+  source: 'explicit' | 'derived';
+}
+
+interface RelativeCoordinate {
+  x: number;
+  y: number;
+}
+
 interface NpcDialogueInstanceEntryConfig {
   zoneId: string;
   npcId: string;
@@ -347,6 +365,13 @@ const WORLD_MAP2_NPC_DIALOGUE_INSTANCE_ENTRIES: NpcDialogueInstanceEntryConfig[]
   },
 ];
 
+const CARDINAL_DELTAS: Record<string, RelativeCoordinate> = {
+  north: { x: 0, y: -1 },
+  south: { x: 0, y: 1 },
+  east: { x: 1, y: 0 },
+  west: { x: -1, y: 0 },
+};
+
 export function buildZoneMapPlans(zones: Record<string, ZoneDef>): Map<string, ZoneMapPlan> {
   const plans = new Map<string, ZoneMapPlan>();
   for (const zone of Object.values(zones)) {
@@ -455,4 +480,178 @@ export function plannedMapScopeForRoom(room: RoomDef, zonePlan: ZoneMapPlan | un
     return room.id === zonePlan.entranceRoomId ? 'world' : 'instance';
   }
   return 'world';
+}
+
+export function buildZoneLocalBounds(
+  zones: Record<string, ZoneDef>,
+  getRoomById: (roomId: string) => RoomDef | undefined,
+  zonePlans = buildZoneMapPlans(zones),
+): Map<string, ZoneLocalBounds> {
+  const boundsByZone = new Map<string, ZoneLocalBounds>();
+
+  for (const zone of Object.values(zones)) {
+    const plan = zonePlans.get(zone.id);
+    const worldRooms = zone.rooms
+      .map(roomId => getRoomById(roomId))
+      .filter((room): room is RoomDef => Boolean(room))
+      .filter(room => plannedMapScopeForRoom(room, plan) === 'world');
+
+    if (worldRooms.length === 0) continue;
+
+    boundsByZone.set(zone.id, worldRooms.reduce((bounds, room) => ({
+      minX: Math.min(bounds.minX, room.mapX),
+      maxX: Math.max(bounds.maxX, room.mapX),
+      minY: Math.min(bounds.minY, room.mapY),
+      maxY: Math.max(bounds.maxY, room.mapY),
+    }), {
+      minX: worldRooms[0].mapX,
+      maxX: worldRooms[0].mapX,
+      minY: worldRooms[0].mapY,
+      maxY: worldRooms[0].mapY,
+    }));
+  }
+
+  return boundsByZone;
+}
+
+export function plannedWorldCoordinateForRoom(
+  room: RoomDef,
+  zonePlan: ZoneMapPlan | undefined,
+  zoneLocalBounds: Map<string, ZoneLocalBounds>,
+): PlannedWorldCoordinate | undefined {
+  if (plannedMapScopeForRoom(room, zonePlan) !== 'world') return undefined;
+  if (typeof room.worldX === 'number' && typeof room.worldY === 'number') {
+    return { worldX: room.worldX, worldY: room.worldY, source: 'explicit' };
+  }
+
+  const globalBounds = zonePlan?.globalBounds;
+  const localBounds = zoneLocalBounds.get(room.zone);
+  if (!globalBounds || !localBounds) return undefined;
+
+  return {
+    worldX: globalBounds.minX + (room.mapX - localBounds.minX),
+    worldY: globalBounds.minY + (room.mapY - localBounds.minY),
+    source: 'derived',
+  };
+}
+
+export function buildPlannedWorldCoordinateMap(
+  zones: Record<string, ZoneDef>,
+  getRoomById: (roomId: string) => RoomDef | undefined,
+  zonePlans = buildZoneMapPlans(zones),
+): Map<string, PlannedWorldCoordinate> {
+  const coordinates = new Map<string, PlannedWorldCoordinate>();
+  const occupied = new Set<string>();
+
+  for (const zone of Object.values(zones)) {
+    const plan = zonePlans.get(zone.id);
+    const worldRooms = zone.rooms
+      .map(roomId => getRoomById(roomId))
+      .filter((room): room is RoomDef => Boolean(room))
+      .filter(room => plannedMapScopeForRoom(room, plan) === 'world');
+
+    for (const room of worldRooms) {
+      if (typeof room.worldX === 'number' && typeof room.worldY === 'number') {
+        const coordinate = { worldX: room.worldX, worldY: room.worldY, source: 'explicit' as const };
+        coordinates.set(room.id, coordinate);
+        occupied.add(coordinateKey({ x: coordinate.worldX, y: coordinate.worldY }));
+      }
+    }
+
+    if (!plan?.globalBounds) continue;
+
+    const derivedRooms = worldRooms.filter(room => !coordinates.has(room.id));
+    if (derivedRooms.length === 0) continue;
+
+    const roomById = new Map(derivedRooms.map(room => [room.id, room]));
+    const relativeByRoom = buildExitGraphRelativeCoordinates(derivedRooms, roomById);
+    const minX = Math.min(...[...relativeByRoom.values()].map(coord => coord.x));
+    const minY = Math.min(...[...relativeByRoom.values()].map(coord => coord.y));
+
+    for (const room of derivedRooms) {
+      const relative = relativeByRoom.get(room.id);
+      if (!relative) continue;
+      const preferred = {
+        x: plan.globalBounds.minX + relative.x - minX,
+        y: plan.globalBounds.minY + relative.y - minY,
+      };
+      const coordinate = findAvailableRelativeCoordinate(preferred, occupied, zones[room.zone].rooms.length + 24);
+      occupied.add(coordinateKey(coordinate));
+      coordinates.set(room.id, {
+        worldX: coordinate.x,
+        worldY: coordinate.y,
+        source: 'derived',
+      });
+    }
+  }
+
+  return coordinates;
+}
+
+function buildExitGraphRelativeCoordinates(
+  rooms: RoomDef[],
+  roomById: Map<string, RoomDef>,
+): Map<string, RelativeCoordinate> {
+  const coordinates = new Map<string, RelativeCoordinate>();
+  const occupied = new Set<string>();
+  let nextComponentX = 0;
+
+  for (const startRoom of rooms) {
+    if (coordinates.has(startRoom.id)) continue;
+
+    coordinates.set(startRoom.id, { x: nextComponentX, y: 0 });
+    occupied.add(coordinateKey({ x: nextComponentX, y: 0 }));
+    const queue = [startRoom];
+
+    for (let index = 0; index < queue.length; index++) {
+      const room = queue[index];
+      const base = coordinates.get(room.id);
+      if (!base) continue;
+
+      for (const exit of room.exits) {
+        if (exit.edgeKind && exit.edgeKind !== 'normal') continue;
+        const delta = CARDINAL_DELTAS[exit.direction];
+        if (!delta) continue;
+        const target = roomById.get(exit.targetRoomId);
+        if (!target || coordinates.has(target.id)) continue;
+
+        const nextCoordinate = findAvailableRelativeCoordinate({
+          x: base.x + delta.x,
+          y: base.y + delta.y,
+        }, occupied, rooms.length + 8);
+        coordinates.set(target.id, nextCoordinate);
+        occupied.add(coordinateKey(nextCoordinate));
+        queue.push(target);
+      }
+    }
+
+    const componentCoords = [...coordinates.values()];
+    nextComponentX = Math.max(...componentCoords.map(coord => coord.x)) + 3;
+  }
+
+  return coordinates;
+}
+
+function findAvailableRelativeCoordinate(
+  preferred: RelativeCoordinate,
+  occupied: Set<string>,
+  maxRadius: number,
+): RelativeCoordinate {
+  if (!occupied.has(coordinateKey(preferred))) return preferred;
+
+  for (let radius = 1; radius <= maxRadius; radius++) {
+    for (let dx = -radius; dx <= radius; dx++) {
+      for (let dy = -radius; dy <= radius; dy++) {
+        if (Math.abs(dx) !== radius && Math.abs(dy) !== radius) continue;
+        const candidate = { x: preferred.x + dx, y: preferred.y + dy };
+        if (!occupied.has(coordinateKey(candidate))) return candidate;
+      }
+    }
+  }
+
+  return { x: preferred.x + maxRadius + 1, y: preferred.y };
+}
+
+function coordinateKey(coordinate: RelativeCoordinate): string {
+  return `${coordinate.x},${coordinate.y}`;
 }

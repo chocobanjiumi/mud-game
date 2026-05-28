@@ -7,6 +7,7 @@ type PlanningRoom = {
   mapY: number;
   worldX?: number;
   worldY?: number;
+  worldCoordinateSource?: 'explicit' | 'derived';
   mapScope: 'world' | 'instance';
   instanceTemplateId?: string;
   mapSymbol: string;
@@ -310,7 +311,7 @@ export default function MapPlanningPage() {
                     <small>ID: {active.room.id}</small>
                     <small>local map: ({active.room.mapX}, {active.room.mapY})</small>
                     <small>
-                      global map: {hasPlanningCoordinate(active.room) ? `(${active.room.worldX}, ${active.room.worldY})` : '未指派'}
+                      global map: {hasPlanningCoordinate(active.room) ? `(${active.room.worldX}, ${active.room.worldY})${active.room.worldCoordinateSource ? ` · ${active.room.worldCoordinateSource}` : ''}` : '未指派'}
                     </small>
                     {active.zone.mapPlan.globalBounds ? (
                       <small>

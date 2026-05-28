@@ -11,7 +11,14 @@ import { AgentController } from './ai/agent.js';
 import { getCharacterById, saveCharacter } from './db/queries.js';
 import { handleCommand } from './game/commands.js';
 import { ROOMS, ZONES, getRoom } from './data/rooms.js';
-import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom, type InstanceEntryDef, type ZoneMapScopeDecision } from './data/world-map2-plan.js';
+import {
+  buildInstanceEntryDefs,
+  buildPlannedWorldCoordinateMap,
+  buildZoneMapPlans,
+  plannedMapScopeForRoom,
+  type InstanceEntryDef,
+  type ZoneMapScopeDecision,
+} from './data/world-map2-plan.js';
 import type { Direction } from '@game/shared';
 
 const PORT = parseInt(process.env.PORT ?? '3701', 10);
@@ -251,6 +258,7 @@ function buildPlanningWorldMapPayload(): {
       mapY: number;
       worldX?: number;
       worldY?: number;
+      worldCoordinateSource?: 'explicit' | 'derived';
       mapScope: 'world' | 'instance';
       instanceTemplateId?: string;
       mapSymbol: string;
@@ -278,6 +286,7 @@ function buildPlanningWorldMapPayload(): {
   };
 } {
   const zonePlans = buildZoneMapPlans(ZONES);
+  const plannedWorldCoordinates = buildPlannedWorldCoordinateMap(ZONES, getRoom, zonePlans);
   const instanceEntries = buildInstanceEntryDefs(ZONES);
   const diagnostics = buildPlanningDiagnostics(zonePlans);
   const zones = Object.values(ZONES).map((zone) => ({
@@ -297,30 +306,35 @@ function buildPlanningWorldMapPayload(): {
     rooms: zone.rooms
       .map(roomId => getRoom(roomId))
       .filter((room): room is NonNullable<ReturnType<typeof getRoom>> => Boolean(room))
-      .map(room => ({
-        id: room.id,
-        name: room.name,
-        mapX: room.mapX,
-        mapY: room.mapY,
-        worldX: room.worldX,
-        worldY: room.worldY,
-        mapScope: plannedMapScopeForRoom(room, zonePlans.get(room.zone)),
-        instanceTemplateId: room.instanceTemplateId,
-        mapSymbol: room.mapSymbol,
-        exits: room.exits.map(exit => {
-          const targetRoom = getRoom(exit.targetRoomId);
-          return {
-            direction: exit.direction,
-            targetRoomId: exit.targetRoomId,
-            targetRoomName: targetRoom?.name,
-            targetZoneId: targetRoom?.zone,
-            locked: exit.locked,
-            edgeKind: exit.edgeKind,
-            edgeNote: exit.edgeNote,
-            broken: !targetRoom,
-          };
-        }),
-      })),
+      .map(room => {
+        const zonePlan = zonePlans.get(room.zone);
+        const worldCoordinate = plannedWorldCoordinates.get(room.id);
+        return {
+          id: room.id,
+          name: room.name,
+          mapX: room.mapX,
+          mapY: room.mapY,
+          worldX: worldCoordinate?.worldX,
+          worldY: worldCoordinate?.worldY,
+          worldCoordinateSource: worldCoordinate?.source,
+          mapScope: plannedMapScopeForRoom(room, zonePlan),
+          instanceTemplateId: room.instanceTemplateId,
+          mapSymbol: room.mapSymbol,
+          exits: room.exits.map(exit => {
+            const targetRoom = getRoom(exit.targetRoomId);
+            return {
+              direction: exit.direction,
+              targetRoomId: exit.targetRoomId,
+              targetRoomName: targetRoom?.name,
+              targetZoneId: targetRoom?.zone,
+              locked: exit.locked,
+              edgeKind: exit.edgeKind,
+              edgeNote: exit.edgeNote,
+              broken: !targetRoom,
+            };
+          }),
+        };
+      }),
   }));
 
   const connectionCounts = new Map<string, number>();

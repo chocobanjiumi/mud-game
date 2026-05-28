@@ -5,7 +5,12 @@ import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { NPCS } from '../server/src/data/npcs.js';
-import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
+import {
+  buildInstanceEntryDefs,
+  buildPlannedWorldCoordinateMap,
+  buildZoneMapPlans,
+  plannedMapScopeForRoom,
+} from '../server/src/data/world-map2-plan.js';
 
 type Bounds = { minX: number; maxX: number; minY: number; maxY: number };
 
@@ -21,6 +26,7 @@ const strict = process.argv.includes('--strict');
 const outPath = resolve(process.cwd(), 'reports/world-map2-current.json');
 
 const zonePlans = buildZoneMapPlans(ZONES);
+const plannedWorldCoordinates = buildPlannedWorldCoordinateMap(ZONES, getRoom, zonePlans);
 const rooms = Object.values(ROOMS);
 
 const missingTargets: string[] = [];
@@ -29,6 +35,7 @@ const selfLoops: string[] = [];
 const crossZoneExits: string[] = [];
 const specialEdges: string[] = [];
 const worldRoomsMissingCoords: string[] = [];
+const derivedWorldCoordinates: string[] = [];
 const instanceRoomsWithWorldCoords: string[] = [];
 const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
@@ -120,6 +127,7 @@ for (const room of rooms) {
   const seenDirections = new Set<string>();
   const plan = zonePlans.get(room.zone);
   const scope = plannedMapScopeForRoom(room, plan);
+  const worldCoordinate = plannedWorldCoordinates.get(room.id);
   const roomRecord = room as RoomDef & Record<string, unknown>;
 
   for (const forbiddenField of ['worldZ', 'worldLayer', 'worldLayerName']) {
@@ -128,14 +136,17 @@ for (const room of rooms) {
     }
   }
 
-  if (scope === 'world' && (typeof room.worldX !== 'number' || typeof room.worldY !== 'number')) {
+  if (scope === 'world' && !worldCoordinate) {
     worldRoomsMissingCoords.push(`${room.zone}/${room.id}`);
+  }
+  if (scope === 'world' && worldCoordinate?.source === 'derived') {
+    derivedWorldCoordinates.push(`${room.zone}/${room.id}: ${worldCoordinate.worldX},${worldCoordinate.worldY}`);
   }
   if (scope === 'instance' && (typeof room.worldX === 'number' || typeof room.worldY === 'number')) {
     instanceRoomsWithWorldCoords.push(`${room.zone}/${room.id}`);
   }
-  if (scope === 'world' && typeof room.worldX === 'number' && typeof room.worldY === 'number') {
-    const key = `${room.worldX},${room.worldY}`;
+  if (scope === 'world' && worldCoordinate) {
+    const key = `${worldCoordinate.worldX},${worldCoordinate.worldY}`;
     coordinateOwners.set(key, [...(coordinateOwners.get(key) ?? []), room.id]);
   }
 
@@ -162,19 +173,23 @@ for (const room of rooms) {
 
     const targetPlan = zonePlans.get(target.zone);
     const targetScope = plannedMapScopeForRoom(target, targetPlan);
+    const targetWorldCoordinate = plannedWorldCoordinates.get(target.id);
     const canCheckCoordinates =
       scope === 'world' &&
       targetScope === 'world' &&
-      typeof room.worldX === 'number' &&
-      typeof room.worldY === 'number' &&
-      typeof target.worldX === 'number' &&
-      typeof target.worldY === 'number' &&
+      Boolean(worldCoordinate) &&
+      Boolean(targetWorldCoordinate) &&
       (!exit.edgeKind || exit.edgeKind === 'normal');
     if (canCheckCoordinates) {
       const delta = CARDINAL_DELTAS[exit.direction];
-      if (target.worldX !== room.worldX + delta.dx || target.worldY !== room.worldY + delta.dy) {
+      if (
+        !targetWorldCoordinate ||
+        !worldCoordinate ||
+        targetWorldCoordinate.worldX !== worldCoordinate.worldX + delta.dx ||
+        targetWorldCoordinate.worldY !== worldCoordinate.worldY + delta.dy
+      ) {
         cardinalCoordinateMismatches.push(
-          `${room.id}(${room.worldX},${room.worldY}) ${exit.direction}-> ${target.id}(${target.worldX},${target.worldY})`,
+          `${room.id}(${worldCoordinate?.worldX},${worldCoordinate?.worldY}) ${exit.direction}-> ${target.id}(${targetWorldCoordinate?.worldX},${targetWorldCoordinate?.worldY})`,
         );
       }
     }
@@ -437,6 +452,7 @@ const report = {
   },
   worldCoordinate: {
     worldRoomsMissingCoords,
+    derivedWorldCoordinates,
     coordinateCollisions,
     cardinalCoordinateMismatches,
   },
@@ -610,7 +626,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Duplicate directions: ${reportData.topology.duplicateDirections.length}`,
     `Self loops: ${reportData.topology.selfLoops.length}`,
     `Topology acceptance issues: ${reportData.acceptance.topologyIssues.length}`,
-    `World rooms missing worldX/worldY: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
+    `World rooms missing planned world coordinates: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
+    `Derived world coordinates: ${reportData.worldCoordinate.derivedWorldCoordinates.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
