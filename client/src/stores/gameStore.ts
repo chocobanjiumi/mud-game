@@ -177,6 +177,18 @@ export interface RoomInfo {
   corpses?: { id: string; monsterName: string; label?: string; empty: boolean; protected: boolean; protectedUntil?: number }[];
   gatheringNodes?: { id: string; name: string; skill: string; levelMin: number }[];
   travelNodes?: { id: string; name: string; kind: string; unlocked: boolean }[];
+  instanceEntries?: {
+    id: string;
+    instanceTemplateId: string;
+    type: 'object_interact' | 'npc_dialogue' | 'item_use';
+    objectId?: string;
+    name: string;
+    description: string;
+    minLevel?: number;
+    maxPartySize?: number;
+    cooldownSeconds?: number;
+    difficultyOptions?: string[];
+  }[];
   inspectHints?: { label: string; command: string }[];
   entities?: RoomEntity[];
   nearbyCombat?: NearbyCombatPayload;

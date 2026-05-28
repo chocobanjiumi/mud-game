@@ -56,6 +56,7 @@ import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES } from '../data/rooms.js';
+import { buildInstanceEntryDefs } from '../data/world-map2-plan.js';
 import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
@@ -313,6 +314,7 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
     case 'equip': cmdEquip(session, argStr); break;
     case 'unequip': cmdUnequip(session, argStr); break;
     case 'use': cmdUse(session, argStr); break;
+    case 'enter': cmdEnterInstanceEntry(session, argStr); break;
     case 'take': case 'pick': case 'pickup': case 'get': cmdTake(session, argStr); break;
     case 'loot': cmdLoot(session, argStr); break;
     case 'drop': cmdDrop(session, argStr); break;
@@ -666,6 +668,20 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
       kind: node.kind,
       unlocked: node.unlockByDefault || isPortalUnlocked(char.id, node.id),
     }));
+  const instanceEntries = buildInstanceEntryDefs(ZONES)
+    .filter(entry => entry.roomId === char.roomId)
+    .map(entry => ({
+      id: entry.id,
+      instanceTemplateId: entry.instanceTemplateId,
+      type: entry.type,
+      objectId: entry.objectId,
+      name: entry.name,
+      description: entry.description,
+      minLevel: entry.minLevel,
+      maxPartySize: entry.maxPartySize,
+      cooldownSeconds: entry.cooldownSeconds,
+      difficultyOptions: entry.difficultyOptions,
+    }));
   const groundItems = getAvailableGroundItems(char.roomId);
   const roomItems = groundItems.map(groundItem => ({
     id: groundItem.itemId,
@@ -688,7 +704,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     travelNodes: roomTravelNodes,
     groundItems,
   });
-  const inspectHints = buildRoomInspectHints(roomInfo.room, roomCorpses.length > 0, gatheringNodes.length > 0, roomTravelNodes.length > 0);
+  const inspectHints = buildRoomInspectHints(roomInfo.room, roomCorpses.length > 0, gatheringNodes.length > 0, roomTravelNodes.length > 0 || instanceEntries.length > 0);
 
   return {
     id: char.roomId,
@@ -706,6 +722,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     corpses: roomCorpses,
     gatheringNodes,
     travelNodes: roomTravelNodes,
+    instanceEntries,
     inspectHints,
     entities,
     nearbyCombat: buildNearbyCombatPayload({
@@ -5176,6 +5193,48 @@ function cmdDungeon(session: WsSession, args: string[]): void {
         '  dungeon leave          — 離開副本（放棄）',
       );
   }
+}
+
+function cmdEnterInstanceEntry(session: WsSession, target: string): void {
+  const char = getChar(session);
+  if (!char) return;
+  const normalizedTarget = normalizeCommandTarget(target);
+  if (!normalizedTarget) {
+    sendError(session.sessionId, '用法：enter <入口物件>。請在房間面板點擊副本入口，或輸入入口名稱。');
+    return;
+  }
+
+  const entries = buildInstanceEntryDefs(ZONES).filter(entry => entry.roomId === char.roomId);
+  const entry = entries.find(candidate => {
+    const names = [
+      candidate.id,
+      candidate.objectId ?? '',
+      candidate.name,
+      candidate.instanceTemplateId,
+    ];
+    return names.some(name => normalizeCommandTarget(name).includes(normalizedTarget) || normalizedTarget.includes(normalizeCommandTarget(name)));
+  });
+
+  if (!entry) {
+    sendError(session.sessionId, '此房間沒有符合目標的副本入口。下一步：先查看房間面板的「副本入口」按鈕，或輸入 search room 重新確認可互動物。');
+    return;
+  }
+
+  if (entry.minLevel && char.level < entry.minLevel) {
+    sendError(session.sessionId, `等級不足，無法進入「${entry.name}」。目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步：先完成同等級區域任務或提升等級後再返回入口。`);
+    return;
+  }
+
+  const partyMembers = partyMgr.isInParty(char.id) ? partyMgr.getPartyMembers(char.id) : [char.id];
+  if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {
+    sendError(session.sessionId, `隊伍人數不符，無法進入「${entry.name}」。目前人數 ${partyMembers.length}，最多允許 ${entry.maxPartySize} 人。下一步：調整隊伍人數後由隊長再次進入。`);
+    return;
+  }
+
+  sendSystem(
+    session.sessionId,
+    `你觸碰「${entry.name}」，入口封印已回應。建議等級 ${entry.minLevel ?? '-'}，隊伍人數 1-${entry.maxPartySize ?? 1}。目前此入口已完成 object_interact 辨識與條件檢查；建立 instance run 會在下一階段接上。`,
+  );
 }
 
 // ─── 排行榜 ───

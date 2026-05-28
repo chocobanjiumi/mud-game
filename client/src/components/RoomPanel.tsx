@@ -133,6 +133,7 @@ export function RoomPanelView({
   const corpses = room.corpses ?? [];
   const corpseLabels = ordinalLabels(corpses);
   const travelNodes = room.travelNodes ?? [];
+  const instanceEntries = room.instanceEntries ?? [];
   const hasEntityPayload = entities.length > 0;
 
   return (
@@ -152,6 +153,25 @@ export function RoomPanelView({
             </button>
           ))}
         </div>
+      )}
+
+      {instanceEntries.length > 0 && (
+        <section className="space-y-1 text-xs">
+          <div className="text-[10px] text-text-dim">副本入口</div>
+          <div className="grid grid-cols-1 gap-1">
+            {instanceEntries.map((entry) => (
+              <button
+                key={entry.id}
+                className="room-row"
+                title={`${entry.description}\n副本：${entry.name}｜建議等級：${entry.minLevel ?? '-'}｜人數：1-${entry.maxPartySize ?? 1}｜需求：無｜冷卻：${entry.cooldownSeconds ?? 0} 秒`}
+                onClick={() => sendCommand(`enter ${entry.objectId ?? entry.id}`, `進入 ${entry.name}`)}
+              >
+                <span className="text-chat-party">{entry.name}</span>
+                <span className="text-text-dim">進入</span>
+              </button>
+            ))}
+          </div>
+        </section>
       )}
 
       {hasEntityPayload ? (
@@ -209,7 +229,7 @@ export function RoomPanelView({
         </div>
       )}
 
-      {!hasEntityPayload && corpses.length === 0 && travelNodes.length === 0 && hints.length === 0 && (
+      {!hasEntityPayload && corpses.length === 0 && travelNodes.length === 0 && instanceEntries.length === 0 && hints.length === 0 && (
         <div className="text-xs text-text-dim">目前沒有明確互動物。</div>
       )}
       {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
