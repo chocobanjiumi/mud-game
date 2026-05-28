@@ -11968,7 +11968,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_cloud_bridge', description: '橋端回到雲索橋' },
       { direction: 'east', targetRoomId: 'storm_highlands_eagle_scarp', description: '羽痕通往雷鷹崖' },
-      { direction: 'south', targetRoomId: 'storm_highlands_thunder_pool', description: '哨臺階梯落向雷雨池' },
+      { direction: 'south', targetRoomId: 'storm_highlands_thunder_pool', description: '哨臺南側濕滑階梯沿雲霧與斷纜折落，繞過落雷濕岩後抵達雷雨池外圈', edgeKind: 'long_path', edgeNote: '獅鷲哨臺南側要沿濕滑階梯與纜索折行到雷雨池，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 2, respawnSeconds: 170 },
@@ -11994,7 +11994,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雷雨池位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_goat_ledge', description: '凹岩路回到山羊岩階' },
-      { direction: 'north', targetRoomId: 'storm_highlands_griffin_watch', description: '階梯回到獅鷲哨臺' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_watch', description: '北側濕階逆著雷雨與雲霧繞過斷纜，沿滑石折坡回到獅鷲哨臺下方', edgeKind: 'long_path', edgeNote: '雷雨池北側回哨臺需逆風攀過濕階與斷纜，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_old_windmill', description: '水渠通往舊風車' },
     ],
     monsters: [
@@ -12048,7 +12048,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_griffin_watch', description: '羽痕回到獅鷲哨臺' },
       { direction: 'east', targetRoomId: 'storm_highlands_nest_pillars', description: '巢柱通往高處' },
-      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '崖路落向舊風車' },
+      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '南側外露崖路繞過雷鷹巢痕與碎羽陡坡，沿風車斷翼陰影落向舊風車臺', edgeKind: 'long_path', edgeNote: '雷鷹崖南側需沿外露崖路繞行到舊風車臺，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 2, respawnSeconds: 170 },
@@ -12074,7 +12074,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊風車臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_thunder_pool', description: '水渠回到雷雨池' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '崖路回到雷鷹崖' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '北側崖路逆著亂風繞過斷翼石階，再貼著外露峭壁攀回雷鷹崖外緣', edgeKind: 'long_path', edgeNote: '舊風車臺北側回雷鷹崖要繞過斷翼石階與外崖，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_storm_altar', description: '折翼階通往風神祭壇' },
     ],
     monsters: [
@@ -12102,7 +12102,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_basalt_spine', description: '裂隙回到玄武岩脊' },
       { direction: 'east', targetRoomId: 'storm_highlands_lightning_tree', description: '風聲通往雷擊枯樹' },
-      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '斜坡回到舊風車臺' },
+      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '北側嘯風斜坡沿谷壁折返並穿過亂流，越過碎石風口後回到舊風車臺', edgeKind: 'long_path', edgeNote: '嘯風谷北側斜坡被橫風切斷，需要沿谷壁折返舊風車臺，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'cloudbridge_raider', maxCount: 2, respawnSeconds: 150 },
@@ -12235,7 +12235,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_lightning_tree', description: '焦木路回到雷擊枯樹' },
       { direction: 'east', targetRoomId: 'storm_highlands_stormglass_mine', description: '碎光路通往風暴玻礦' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '烽臺階升向暴風眼' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '北側烽臺階繞過倒塌烽火座並穿過旋風裂口，沿雷光石階升向暴風眼', edgeKind: 'long_path', edgeNote: '斷烽臺北側階梯會繞過倒塌烽火座與旋風裂口，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'basalt_storm_colossus', maxCount: 1, respawnSeconds: 210 },
@@ -12261,7 +12261,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '暴風眼位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_storm_altar', description: '祭紋回到風神祭壇' },
-      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '烽臺階回到斷烽臺' },
+      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '南側旋風階道穿過倒塌烽火座陰影，沿雷光石階與碎旗樁折降回斷烽臺', edgeKind: 'long_path', edgeNote: '暴風眼南側回斷烽臺需穿過旋風階道與倒塌烽火座，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_worldboss_peak', description: '風牆裂口通往風暴王峰' },
     ],
     monsters: [
@@ -12288,7 +12288,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獅鷲巢臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_sky_cairns', description: '羽骨路回到天葬石堆' },
-      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '巢臺風道通往風暴王峰' },
+      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '南側巢臺風道越過羽骨棧脊與高低落差，穿過獅鷲盤旋區後通往風暴王峰', edgeKind: 'long_path', edgeNote: '獅鷲巢臺南側風道跨過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 3, respawnSeconds: 170 },
@@ -12314,7 +12314,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '風暴玻礦位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_broken_beacon', description: '碎光路回到斷烽臺' },
-      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '礦脈斜坡通往風暴王峰' },
+      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '北側玻化礦脈斜坡穿過閃電岩縫，沿帶電礦脊與碎玻石階一路攀上風暴王峰', edgeKind: 'long_path', edgeNote: '風暴玻礦北側需沿玻化礦脈斜坡攀上王峰，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormglass_minebeast', maxCount: 2, respawnSeconds: 230 },
@@ -12340,8 +12340,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '風暴王峰位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_eye_of_gale', description: '風牆裂口回到暴風眼' },
-      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '巢臺風道回到獅鷲巢臺' },
-      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '礦脈斜坡回到風暴玻礦' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '北側羽骨風道逆風越過棧脊與高低落差，穿過盤旋氣流回到獅鷲巢臺', edgeKind: 'long_path', edgeNote: '風暴王峰北側回巢臺要逆風穿過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '南側玻化礦脈斜坡沿閃電岩縫折降，繞過帶電礦脊與碎玻石階回到風暴玻礦', edgeKind: 'long_path', edgeNote: '風暴王峰南側下到玻礦需沿玻化礦脈折降，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'gale_king_griffin', maxCount: 1, respawnSeconds: 1800 },
