@@ -4622,7 +4622,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。玩家可 inspect 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
-      { direction: 'north', targetRoomId: 'blizzard_path', description: '風雪聲通往暴風雪路' },
+      { direction: 'north', targetRoomId: 'blizzard_path', description: '北側積雪隘口沿半埋路標上行，穿過雪牆缺口與狼蹄痕抵達暴風雪路外緣', edgeKind: 'long_path', edgeNote: '積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '雪橇殘骸在南側' },
     ],
     monsters: [
@@ -4663,9 +4663,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面回雪山營地，東側接雪狼巢穴，北面能通向符石環。玩家可 gather 霜松木與樹脂，inspect 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若玩家沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源。',
     exits: [
-      { direction: 'south', targetRoomId: 'mountain_camp', description: '下坡回到雪山營地' },
-      { direction: 'east', targetRoomId: 'wolf_den', description: '狼嚎來自東側洞穴' },
-      { direction: 'north', targetRoomId: 'frozen_wastes_runestone_circle', description: '符石微光在北側林間' },
+      { direction: 'south', targetRoomId: 'mountain_camp', description: '南側霜松林雪坡繞過倒木與狼爪痕，沿獵人風鈴與營火煙線折回雪山營地', edgeKind: 'long_path', edgeNote: '霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'wolf_den', description: '東側霜松根道穿過密林陰影與獵物拖痕，沿狼嚎方向抵達雪狼巢穴', edgeKind: 'long_path', edgeNote: '霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_runestone_circle', description: '北側霜松斷枝標記穿過極光雪坡與冰霜林隙，抵達古老符石環外圈', edgeKind: 'long_path', edgeNote: '霜松林到符石環需沿斷枝標記穿過極光雪坡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'snow_wolf', maxCount: 3, respawnSeconds: 40 },
@@ -4711,7 +4711,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側能聽見冰釣洞水聲但裂壁不可通行，南面能通往積雪隘口暗道。玩家可 inspect 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。',
     exits: [
       { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
-      { direction: 'south', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '暗道回積雪隘口' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '南側冰河裂縫暗道沿結霜繩梯折降，穿過藍冰窄縫與雪牆暗口回到積雪隘口', edgeKind: 'long_path', edgeNote: '冰河裂縫到積雪隘口需沿繩梯與藍冰窄縫折返，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 50 },
@@ -4732,8 +4732,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '極光之地西側立著一圈古老符石，冰雪祭壇位於中央，綠紫光柱在符文間緩慢移動，空氣中有細小靜電聲。東面回極光之地，南側霜松林可作撤退路，北面雪坡通向結冰哨塔。玩家可 inspect 符文順序解讀冰之王朝歷史，search 祭壇底座取得任務線索，也會吸引雪人和冰元素靠近。每塊符石都刻著不同方向記號，能把凍湖、城堡與哨塔路線串起來；若玩家在極光最亮時調查，還能看到王朝滅亡前的幻象片段。祭壇旁的凍裂刻痕提示需要冰晶材料啟動，適合作為探索任務與傳送解鎖線索和支線入口處之一。',
     exits: [
       { direction: 'east', targetRoomId: 'aurora_field', description: '極光路回到極光之地' },
-      { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '霜松林在南側' },
-      { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '雪坡通向結冰哨塔' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '南側符石環雪坡沿極光刻痕下降，穿過冰霜林隙與斷枝路標回到霜松林深處', edgeKind: 'long_path', edgeNote: '符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_frozen_watchpost', description: '北側符石環雪坡穿過王朝巡邏標記與斷冰橋陰影，沿冰牆缺口通向結冰哨塔', edgeKind: 'long_path', edgeNote: '符石環到結冰哨塔需穿過巡邏標記與斷冰橋陰影，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'yeti', maxCount: 2, respawnSeconds: 60 },
@@ -4780,7 +4780,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通符石環，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。玩家可 inspect 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助玩家選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
-      { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '雪坡通往符石環' },
+      { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '南側結冰哨塔雪坡沿斷冰橋陰影折返，穿過王朝巡邏標記回到符石環', edgeKind: 'long_path', edgeNote: '結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frost_giant', maxCount: 1, respawnSeconds: 70 },
