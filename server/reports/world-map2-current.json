@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T13:58:45.270Z",
+  "generatedAt": "2026-05-28T14:04:40.964Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -1134,21 +1134,7 @@
     "whispering_valley/whispering_valley_entrance:south->old_farmland/old_farmland_stone_marker"
   ],
   "acceptance": {
-    "topologyIssues": [
-      "cardinal mismatch: crossroads(7,4) south-> forest_entrance(-6,12)",
-      "cardinal mismatch: old_well(6,4) west-> cave_entrance(9,-6)",
-      "cardinal mismatch: forest_entrance(-6,12) north-> crossroads(7,4)",
-      "cardinal mismatch: forest_entrance(-6,12) west-> snowfield_entrance(-26,-19)",
-      "cardinal mismatch: ancient_treehouse(-5,12) east-> hunter_lodge(6,1)",
-      "cardinal mismatch: cave_entrance(9,-6) east-> old_well(6,4)",
-      "cardinal mismatch: cave_entrance(9,-6) north-> abandoned_minecart(9,2)",
-      "cardinal mismatch: snowfield_entrance(-26,-19) east-> forest_entrance(-6,12)",
-      "cardinal mismatch: ice_throne(-25,-23) north-> demon_border(49,18)",
-      "cardinal mismatch: frozen_wastes_dragon_breath_rift(-24,-23) north-> demon_border(49,18)",
-      "cardinal mismatch: hunter_lodge(6,1) west-> ancient_treehouse(-5,12)",
-      "cardinal mismatch: abandoned_minecart(9,2) south-> cave_entrance(9,-6)",
-      "cardinal mismatch: demon_border(49,18) south-> ice_throne(-25,-23)"
-    ]
+    "topologyIssues": []
   },
   "worldCoordinate": {
     "worldRoomsMissingCoords": [],
@@ -1863,47 +1849,10 @@
       "hollow_mountain/hollow_mountain_entrance_wind_gate: -28,-10"
     ],
     "coordinateCollisions": [],
-    "cardinalCoordinateMismatches": [
-      "crossroads(7,4) south-> forest_entrance(-6,12)",
-      "old_well(6,4) west-> cave_entrance(9,-6)",
-      "forest_entrance(-6,12) north-> crossroads(7,4)",
-      "forest_entrance(-6,12) west-> snowfield_entrance(-26,-19)",
-      "ancient_treehouse(-5,12) east-> hunter_lodge(6,1)",
-      "cave_entrance(9,-6) east-> old_well(6,4)",
-      "cave_entrance(9,-6) north-> abandoned_minecart(9,2)",
-      "snowfield_entrance(-26,-19) east-> forest_entrance(-6,12)",
-      "ice_throne(-25,-23) north-> demon_border(49,18)",
-      "frozen_wastes_dragon_breath_rift(-24,-23) north-> demon_border(49,18)",
-      "hunter_lodge(6,1) west-> ancient_treehouse(-5,12)",
-      "abandoned_minecart(9,2) south-> cave_entrance(9,-6)",
-      "demon_border(49,18) south-> ice_throne(-25,-23)"
-    ],
+    "cardinalCoordinateMismatches": [],
     "cardinalMismatchesWithinZone": [],
-    "cardinalMismatchesAcrossZones": [
-      "plains->dark_forest: crossroads(7,4) south-> forest_entrance(-6,12)",
-      "plains->crystal_cave: old_well(6,4) west-> cave_entrance(9,-6)",
-      "dark_forest->plains: forest_entrance(-6,12) north-> crossroads(7,4)",
-      "dark_forest->frozen_wastes: forest_entrance(-6,12) west-> snowfield_entrance(-26,-19)",
-      "dark_forest->plains: ancient_treehouse(-5,12) east-> hunter_lodge(6,1)",
-      "crystal_cave->plains: cave_entrance(9,-6) east-> old_well(6,4)",
-      "crystal_cave->plains: cave_entrance(9,-6) north-> abandoned_minecart(9,2)",
-      "frozen_wastes->dark_forest: snowfield_entrance(-26,-19) east-> forest_entrance(-6,12)",
-      "frozen_wastes->demon_territory: ice_throne(-25,-23) north-> demon_border(49,18)",
-      "frozen_wastes->demon_territory: frozen_wastes_dragon_breath_rift(-24,-23) north-> demon_border(49,18)",
-      "plains->dark_forest: hunter_lodge(6,1) west-> ancient_treehouse(-5,12)",
-      "plains->crystal_cave: abandoned_minecart(9,2) south-> cave_entrance(9,-6)",
-      "demon_territory->frozen_wastes: demon_border(49,18) south-> ice_throne(-25,-23)"
-    ],
-    "cardinalMismatchHotspots": [
-      "plains->dark_forest: 2",
-      "plains->crystal_cave: 2",
-      "dark_forest->plains: 2",
-      "crystal_cave->plains: 2",
-      "frozen_wastes->demon_territory: 2",
-      "dark_forest->frozen_wastes: 1",
-      "frozen_wastes->dark_forest: 1",
-      "demon_territory->frozen_wastes: 1"
-    ]
+    "cardinalMismatchesAcrossZones": [],
+    "cardinalMismatchHotspots": []
   },
   "design": {
     "twoDimensionalDesignIssues": [],
@@ -2920,8 +2869,15 @@
     "starter_village_rooftop_walk:west->starter_village_guard_post (long_path) 屋頂棧道到守衛哨所需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。",
     "starter_village_rooftop_walk:north->starter_village_stable_yard (long_path) 屋頂棧道到馬廄院需沿木階穿過車輪架與乾草棚，實際路程長於相鄰一格。",
     "plains_entrance:north->village_gate (long_path) 平原入口回村口需穿過草坡泥路與安全哨線，屬於跨區長路徑。",
+    "crossroads:south->forest_entrance (long_path) 十字路口到暗影森林入口跨越平原邊界與陰影樹門，實際路程長於相鄰一格。",
     "crossroads:east->town_gate (long_path) 十字路口到湖畔城門跨越城外道路與外牆緩坡，屬於跨區長路徑。",
+    "old_well:west->cave_entrance (long_path) 古井旁到洞窟入口需沿井壁裂縫垂降並穿過藍晶岩縫，實際路程長於相鄰一格。",
+    "forest_entrance:north->crossroads (long_path) 暗影森林入口到十字路口跨越陰影樹門與平原邊界，實際路程長於相鄰一格。",
+    "forest_entrance:west->snowfield_entrance (long_path) 暗影森林入口到雪原入口需穿過結霜林界與覆雪矮坡，實際路程長於相鄰一格。",
+    "ancient_treehouse:east->hunter_lodge (long_path) 古老樹屋到獵人小屋需由樹冠繩橋下降並穿過林緣獵徑，實際路程長於相鄰一格。",
     "elf_ruins:south->volcano_base (long_path) 精靈遺跡到火山山腳跨越森林邊界與熱風荒地，屬於跨區長路徑。",
+    "cave_entrance:east->old_well (long_path) 洞窟入口到古井旁需穿過藍晶岩縫並沿井壁上攀，實際路程長於相鄰一格。",
+    "cave_entrance:north->abandoned_minecart (long_path) 洞窟入口到廢棄礦車道需沿礦車斜井與塌方彎道上升，實際路程長於相鄰一格。",
     "town_gate:west->crossroads (long_path) 湖畔城門回十字路口需要穿過城外道路與外牆緩坡，屬於跨區長路徑。",
     "town_gate:south->coastal_boardwalk (long_path) 湖畔城門南側到東方海岸棧道是跨區長路徑，不是世界地圖相鄰一格。",
     "village_farmland:south->village_outskirts (long_path) 農田到村外小路需要沿田埂與水渠外緣繞行，屬於長路徑。",
@@ -2987,8 +2943,10 @@
     "volcano_forge_storage:west->forge_hall (long_path) 鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。",
     "volcano_forge_storage:north->volcano_ember_barracks (long_path) 鍛造庫房到餘燼兵房需要穿越後勤貨道與黑鐵閘門，屬於長路徑。",
     "volcano_colossus_arena:west->volcano_summit (long_path) 熔岩巨像競技台回火山頂需要沿封印鏈外圈繞行，屬於長路徑。",
+    "snowfield_entrance:east->forest_entrance (long_path) 雪原入口到暗影森林入口需跨過覆雪矮坡與結霜林界，實際路程長於相鄰一格。",
     "aurora_field:east->ice_castle_gate (long_path) 極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。",
     "ice_castle_gate:west->aurora_field (long_path) 冰封城堡大門回極光之地需沿城堡外坡與彩光雪脊折返，實際路程長於相鄰一格。",
+    "ice_throne:north->demon_border (long_path) 冰封王座到魔族邊境需穿過王座裂縫與黑煙深谷，實際路程長於相鄰一格。",
     "frozen_wastes_snowdrift_pass:north->blizzard_path (long_path) 積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。",
     "frozen_wastes_frostpine_grove:south->mountain_camp (long_path) 霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。",
     "frozen_wastes_frostpine_grove:east->wolf_den (long_path) 霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。",
@@ -2997,6 +2955,9 @@
     "frozen_wastes_runestone_circle:south->frozen_wastes_frostpine_grove (long_path) 符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。",
     "frozen_wastes_runestone_circle:north->frozen_wastes_frozen_watchpost (long_path) 符石環到結冰哨塔需穿過巡邏標記與斷冰橋陰影，實際路程長於相鄰一格。",
     "frozen_wastes_frozen_watchpost:south->frozen_wastes_runestone_circle (long_path) 結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。",
+    "frozen_wastes_dragon_breath_rift:north->demon_border (long_path) 龍息裂谷到魔族邊境需沿寒霧裂口穿過冰龍爪痕與黑煙深谷，實際路程長於相鄰一格。",
+    "hunter_lodge:west->ancient_treehouse (long_path) 獵人小屋到古老樹屋需穿過林緣獵徑並攀上樹冠繩橋，實際路程長於相鄰一格。",
+    "abandoned_minecart:south->cave_entrance (long_path) 廢棄礦車道到洞窟入口需沿礦車斜井與塌方彎道下降，實際路程長於相鄰一格。",
     "riverside_fishing:east->windmill_interior (long_path) 河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。",
     "windmill_interior:west->riverside_fishing (long_path) 風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。",
     "plains_hare_burrows:east->plains_entrance (long_path) 野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。",
@@ -3039,6 +3000,7 @@
     "lakeside_courthouse:east->prison (long_path) 湖畔裁判所到監獄需要沿卷宗梯與守衛鐵門下行，屬於長路徑。",
     "lakeside_hidden_canal:north->lakeside_fish_market (long_path) 隱藏水道回湖鮮魚市需要沿橋墩木梯上行，屬於長路徑。",
     "lakeside_hidden_canal:west->prison (long_path) 隱藏水道到監獄後牆需要穿過黑水暗渠與警鈴線，屬於長路徑。",
+    "demon_border:south->ice_throne (long_path) 魔族邊境到冰封王座需跨越石橋、黑煙深谷與冰晶斷階，實際路程長於相鄰一格。",
     "old_farmland_crossroads:west->village_farmland (long_path) 舊農路口到新手村外圍農田跨過荒田與籬笆缺口，屬於跨區長路徑。",
     "old_farmland_collapsed_barn:east->old_farmland_well (long_path) 塌陷穀倉到舊井需要繞過塌落木樑與濕泥小徑，屬於長路徑。",
     "old_farmland_collapsed_barn:north->old_farmland_pumpkin_patch (long_path) 塌陷穀倉到膨脹南瓜地需要繞過倒塌屋頂與藤蔓，屬於長路徑。",

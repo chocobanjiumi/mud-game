@@ -48,7 +48,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '原木小屋立在向日葵田北緣，門口掛著風乾獸皮、鹿角與狼牙串，壁爐橙光從窗縫灑到門廊。南方回到花田，西側隱蔽小路能通往森林高處，木牆上釘著野狼腳印拓片與箭矢記號。老獵人坐在階梯上擦拭弓弦，獵犬偶爾朝草叢低吼，提示這裡可接狩獵任務、購買補給或詢問狼群線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'south', targetRoomId: 'sunflower_field', description: '回到向日葵田' },
-      { direction: 'west', targetRoomId: 'ancient_treehouse', description: '小屋後方有條隱蔽的小路通往古老樹屋' },
+      {
+        direction: 'west',
+        targetRoomId: 'ancient_treehouse',
+        description: '小屋西側獵徑沿獸皮標記鑽入林緣，攀過樹冠繩橋與盤根木階後抵達古老樹屋',
+        edgeKind: 'long_path',
+        edgeNote: '獵人小屋到古老樹屋需穿過林緣獵徑並攀上樹冠繩橋，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [],
     npcs: ['old_hunter'],
@@ -72,7 +78,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '生鏽鐵軌從風車農場東側延伸進低矮洞口，翻覆礦車散落在濕草與碎石間，空氣有鐵鏽、泥水和蝙蝠糞味。西邊可回農場，南方礦道往地底傾斜，車輪印旁有田鼠啃咬過的麻袋。礦車內殘留幾塊閃光礦石，提示這裡是早期採集與洞窟路線入口，但小蝙蝠可能從陰影中飛出。',
     exits: [
       { direction: 'west', targetRoomId: 'windmill_farm', description: '沿著軌道走回風車農場' },
-      { direction: 'south', targetRoomId: 'cave_entrance', description: '順著礦車道向南深入地底' },
+      {
+        direction: 'south',
+        targetRoomId: 'cave_entrance',
+        description: '南側廢棄礦車道順鏽軌下滑，穿過塌方木架與濕石彎道後抵達洞窟入口',
+        edgeKind: 'long_path',
+        edgeNote: '廢棄礦車道到洞窟入口需沿礦車斜井與塌方彎道下降，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
@@ -1597,7 +1609,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '一座搖搖欲墜的石橋橫跨裂谷，這是通往魔族領地的唯一通路。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'ice_throne', description: '退回冰封王座' },
+      {
+        direction: 'south',
+        targetRoomId: 'ice_throne',
+        description: '南側魔族邊境沿石橋退入黑煙深谷，穿過冷熱交界與冰晶斷階回到冰封王座',
+        edgeKind: 'long_path',
+        edgeNote: '魔族邊境到冰封王座需跨越石橋、黑煙深谷與冰晶斷階，實際路程長於相鄰一格。',
+      },
       { direction: 'north', targetRoomId: 'scorched_plains', description: '踏上焦黑的荒原' },
       { direction: 'west', targetRoomId: 'demon_ash_watch', description: '裂谷西側有一座灰燼哨塔' },
     ],

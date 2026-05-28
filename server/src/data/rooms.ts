@@ -1917,7 +1917,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '兩條舊道路在此交會，中央路標被風雨磨白，仍能辨認北往新手村、南入暗影森林、東至湖畔城鎮，西側古井半掩在荒草中。車轍、狼爪與蛇行痕跡互相交錯，讓這裡既是交通節點也是遭遇點。路標底座有可疑縫隙，旁邊倒著破盾與乾枯血跡，提示玩家選路前應查看任務方向並注意毒蛇或野狼伏擊。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'north', targetRoomId: 'grass_path', description: '沿小徑返回' },
-      { direction: 'south', targetRoomId: 'forest_entrance', description: '通往暗影森林' },
+      {
+        direction: 'south',
+        targetRoomId: 'forest_entrance',
+        description: '南側十字路口沿破路標下行，穿過草坡警戒線與陰影樹門後抵達暗影森林入口',
+        edgeKind: 'long_path',
+        edgeNote: '十字路口到暗影森林入口跨越平原邊界與陰影樹門，實際路程長於相鄰一格。',
+      },
       {
         direction: 'east',
         targetRoomId: 'town_gate',
@@ -1951,7 +1957,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '苔蘚覆蓋的古井孤立在荒草深處，井壁石塊刻著幾乎磨平的符文，潮冷氣息從黑暗井底往上湧。東邊路口仍能看見路標，井內垂下的舊繩索通往洞窟入口，周圍草叢裡有毒蛇蛻皮與碎骨。井底微光像是在引誘旅人靠近，提示玩家可下探、調查符文或準備面對地底怪物。',
     exits: [
       { direction: 'east', targetRoomId: 'crossroads', description: '回到十字路口' },
-      { direction: 'west', targetRoomId: 'cave_entrance', description: '井旁裂縫向西通往洞窟入口' },
+      {
+        direction: 'west',
+        targetRoomId: 'cave_entrance',
+        description: '古井西側裂縫沿濕滑井壁下探，穿過垂降繩索與藍晶岩縫才抵達洞窟入口',
+        edgeKind: 'long_path',
+        edgeNote: '古井旁到洞窟入口需沿井壁裂縫垂降並穿過藍晶岩縫，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'poison_snake', maxCount: 2, respawnSeconds: 50 },
@@ -1977,10 +1989,22 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示玩家進入後會遭遇暗影狼伏擊。',
     exits: [
-      { direction: 'north', targetRoomId: 'crossroads', description: '回到十字路口' },
+      {
+        direction: 'north',
+        targetRoomId: 'crossroads',
+        description: '北側森林入口沿陰影樹門退出，穿過草坡警戒線與破路標後回到平原十字路口',
+        edgeKind: 'long_path',
+        edgeNote: '暗影森林入口到十字路口跨越陰影樹門與平原邊界，實際路程長於相鄰一格。',
+      },
       { direction: 'south', targetRoomId: 'dense_trail', description: '深入密林小道' },
       { direction: 'east', targetRoomId: 'ancient_treehouse', description: '一條岔路通往高處' },
-      { direction: 'west', targetRoomId: 'snowfield_entrance', description: '一條被霜雪覆蓋的小路通往北方雪原' },
+      {
+        direction: 'west',
+        targetRoomId: 'snowfield_entrance',
+        description: '西側森林冷徑穿過結霜樹根與覆雪矮坡，沿寒風石碑抵達冰封雪原入口',
+        edgeKind: 'long_path',
+        edgeNote: '暗影森林入口到雪原入口需穿過結霜林界與覆雪矮坡，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -2059,7 +2083,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精低鳴，提示玩家可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
-      { direction: 'east', targetRoomId: 'hunter_lodge', description: '林間小路通往一間獵人小屋' },
+      {
+        direction: 'east',
+        targetRoomId: 'hunter_lodge',
+        description: '東側樹屋階梯沿樹冠繩橋下降，穿過林緣獵徑與獸皮標記抵達獵人小屋',
+        edgeKind: 'long_path',
+        edgeNote: '古老樹屋到獵人小屋需由樹冠繩橋下降並穿過林緣獵徑，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'treant', maxCount: 2, respawnSeconds: 70 },
@@ -2147,9 +2177,21 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '古井井壁後藏著狹窄通道，盡頭是一處天然洞窟入口，岩壁鑲著零星幽藍水晶，涼風帶出潮濕礦物味。上方繩索可攀回古井，南方螢光隧道像星河般延伸，北側廢棄礦車道通向地面。洞頂倒掛蝙蝠，入口岩縫裡有水晶原石，提示玩家這裡是進入洞窟前的安全錨點與第一個戰鬥遭遇。',
     exits: [
-      { direction: 'east', targetRoomId: 'old_well', description: '沿井壁裂縫回到古井旁' },
+      {
+        direction: 'east',
+        targetRoomId: 'old_well',
+        description: '洞窟東側藍晶岩縫沿濕滑繩索上攀，穿過古井暗壁後回到平原古井旁',
+        edgeKind: 'long_path',
+        edgeNote: '洞窟入口到古井旁需穿過藍晶岩縫並沿井壁上攀，實際路程長於相鄰一格。',
+      },
       { direction: 'south', targetRoomId: 'luminous_tunnel', description: '沿著發光的隧道前進' },
-      { direction: 'north', targetRoomId: 'abandoned_minecart', description: '一條廢棄的礦車道通往地面' },
+      {
+        direction: 'north',
+        targetRoomId: 'abandoned_minecart',
+        description: '北側洞窟礦車斜井沿鏽軌上升，繞過塌方木架與濕石彎道後抵達廢棄礦車道',
+        edgeKind: 'long_path',
+        edgeNote: '洞窟入口到廢棄礦車道需沿礦車斜井與塌方彎道上升，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'cave_bat', maxCount: 3, respawnSeconds: 40 },
@@ -4321,7 +4363,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
       '入口處立著一塊石碑，上面的文字被冰霜覆蓋。東面可回暗影森林，北方風雪路徑更深，南邊營火指向雪山營地；玩家可 inspect 石碑霜字確認安全路線。',
     exits: [
-      { direction: 'east', targetRoomId: 'forest_entrance', description: '穿過冰雪小路回到暗影森林入口' },
+      {
+        direction: 'east',
+        targetRoomId: 'forest_entrance',
+        description: '東側雪原入口沿寒風石碑折返，穿過覆雪矮坡與結霜樹根回到暗影森林入口',
+        edgeKind: 'long_path',
+        edgeNote: '雪原入口到暗影森林入口需跨過覆雪矮坡與結霜林界，實際路程長於相鄰一格。',
+      },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '踏入暴風雪中' },
       { direction: 'south', targetRoomId: 'mountain_camp', description: '南方有營火的光芒' },
       { direction: 'west', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪堆間有一條西行通道' },
@@ -4594,7 +4642,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '這裡是冰封雪原的終極挑戰。南面退回城堡大門，北側王座背後的裂縫通向燃燒荒地，東側冰霧中可感到龍息裂谷震動。玩家可 inspect 王座符文確認冰龍階段，search 霜巨人王的戰旗尋找王冠密室線索，也要準備面對 Boss 與守衛的連續戰鬥。大廳地面有會逐步蔓延的霜紋，提示戰鬥拖延會壓縮站位；牆上冰晶反射出的龍影則能預告下一次吐息方向。',
     exits: [
       { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門' },
-      { direction: 'north', targetRoomId: 'demon_border', description: '王座背後的裂縫通往一片燃燒的荒地' },
+      {
+        direction: 'north',
+        targetRoomId: 'demon_border',
+        description: '北側王座裂縫穿過冰晶斷階與黑煙深谷，越過冷熱交界後抵達魔族邊境石橋',
+        edgeKind: 'long_path',
+        edgeNote: '冰封王座到魔族邊境需穿過王座裂縫與黑煙深谷，實際路程長於相鄰一格。',
+      },
       { direction: 'east', targetRoomId: 'frozen_wastes_dragon_breath_rift', description: '冰霧裂谷傳來龍息' },
     ],
     monsters: [
@@ -4825,7 +4879,13 @@ export const ROOMS: Record<string, RoomDef> = {
       '冰封王座東側裂開一道深谷，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面回冰封王座，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，玩家可 inspect 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座' },
-      { direction: 'north', targetRoomId: 'demon_border', description: '寒霧裂口通往魔族邊境' },
+      {
+        direction: 'north',
+        targetRoomId: 'demon_border',
+        description: '北側龍息裂谷沿寒霧裂口前進，穿過冰龍爪痕與黑煙深谷抵達魔族邊境石橋',
+        edgeKind: 'long_path',
+        edgeNote: '龍息裂谷到魔族邊境需沿寒霧裂口穿過冰龍爪痕與黑煙深谷，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'ice_dragon_whelp', maxCount: 1, respawnSeconds: 1800 },
