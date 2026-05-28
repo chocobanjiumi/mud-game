@@ -18,8 +18,6 @@ const DIRECTION_LABELS: Record<string, string> = {
   south: '南',
   east: '東',
   west: '西',
-  up: '上',
-  down: '下',
 };
 
 export default function WorldMap() {
@@ -288,7 +286,6 @@ function isCrossLayerExit(
   exit: WorldMapRoomPayload['exits'][number],
   selectedLayer: number,
 ): boolean {
-  if (exit.direction === 'up' || exit.direction === 'down') return true;
   return typeof exit.targetMapLayer === 'number' && exit.targetMapLayer !== selectedLayer;
 }
 

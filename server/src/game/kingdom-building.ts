@@ -95,14 +95,12 @@ export const NPC_TYPE_DESCRIPTIONS: Record<KingdomNpcType, string> = {
 };
 
 /** 反向方向對應 */
-const REVERSE_DIRECTION: Record<Direction, Direction> = {
-  north: 'south',
-  south: 'north',
-  east: 'west',
-  west: 'east',
-  up: 'down',
-  down: 'up',
-};
+function reverseDirection(direction: Direction): Direction {
+  if (direction === 'north') return 'south';
+  if (direction === 'south') return 'north';
+  if (direction === 'east') return 'west';
+  return 'east';
+}
 
 // ============================================================
 //  BuildingManager
@@ -175,7 +173,7 @@ export class BuildingManager {
       zone: 'starter_village' as any, // 王國房間不屬於任何區域
       description: BUILDING_TYPE_DESCRIPTIONS.empty,
       exits: [
-        { direction: REVERSE_DIRECTION[direction], targetRoomId: currentRoomId, description: '返回' },
+        { direction: reverseDirection(direction), targetRoomId: currentRoomId, description: '返回' },
       ],
       mapSymbol: '[K]',
       mapX: 0,

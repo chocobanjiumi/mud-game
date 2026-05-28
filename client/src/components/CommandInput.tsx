@@ -3,7 +3,7 @@ import { useGameStore } from '../stores/gameStore';
 import { SKILL_DEFS } from '@game/shared';
 
 const COMMON_COMMANDS = [
-  'look', 'go', 'north', 'south', 'east', 'west', 'up', 'down',
+  'look', 'go', 'north', 'south', 'east', 'west',
   'attack', 'defend', 'flee', 'use', 'equip', 'unequip',
   'inventory', 'status', 'skills', 'skill', 'party', 'map',
   'say', 'shout', 'whisper', 'help',
@@ -15,7 +15,7 @@ const COMMON_COMMANDS = [
   'mount',
 ];
 
-const COMMON_ALIASES = ['l', 'i', 'stat', 'stats', 'atk', 'kill', 'sk', 'n', 's', 'e', 'w', 'u', 'd'];
+const COMMON_ALIASES = ['l', 'i', 'stat', 'stats', 'atk', 'kill', 'sk', 'n', 's', 'e', 'w'];
 
 interface Suggestion {
   value: string;

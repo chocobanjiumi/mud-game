@@ -1,6 +1,5 @@
 export const SYSTEM_ALIASES: Record<string, string> = {
   n: 'go north', s: 'go south', e: 'go east', w: 'go west',
-  u: 'go up', d: 'go down',
   l: 'look', i: 'inventory', inv: 'inventory',
   stat: 'status', stats: 'status',
   atk: 'attack', kill: 'attack',
@@ -20,7 +19,7 @@ export const BUILTIN_COMMANDS = new Set([
   'status', 'inventory', 'skills', 'attack', 'skill',
   'defend', 'escape', 'equip', 'unequip', 'use',
   'take', 'pick', 'pickup', 'get', 'loot', 'drop',
-  'say', 'talk', 'shop', 'buy', 'allocate', 'alloc',
+  'say', 'talk', 'shop', 'buy', 'sell', 'allocate', 'alloc',
   'map', 'rest', 'activate', 'portals', 'travel', 'recall',
   'party', 'trade', 'quest', 'quests', 'duel', 'arena', 'dungeon',
   'classchange', 'job', 'rank', 'leaderboard', 'help',
@@ -30,7 +29,7 @@ export const BUILTIN_COMMANDS = new Set([
   'diplomacy', 'building', 'craft', 'crafting', 'auction', 'fish',
   'classquest', 'classquest2', 'skilltree', 'token', 'alias', 'unalias',
   'tutorial', 'friends', 'guild', 'g', 'signin', 'checkin',
-  'faith', 'pray', 'offering', 'renounce',
+  'faith', 'pray', 'offering', 'renounce', 'debug',
 ]);
 
 export const MAX_ALIAS_EXPANSION_DEPTH = 5;

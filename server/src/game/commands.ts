@@ -1037,7 +1037,12 @@ function cmdGo(session: WsSession, direction: string): void {
   if (!char) return;
 
   if (!direction) {
-    sendError(session.sessionId, '請指定方向：north, south, east, west, up, down');
+    sendError(session.sessionId, '請指定方向：north, south, east, west');
+    return;
+  }
+
+  if (isRemovedVerticalDirection(direction)) {
+    sendError(session.sessionId, '上下移動已取消，請使用 north, south, east, west。');
     return;
   }
 
@@ -5624,7 +5629,7 @@ function cmdBuild(session: WsSession, args: string[]): void {
         sendError(session.sessionId, '用法：build room <方向> <房間名稱>');
         return;
       }
-      const validDirs = ['north', 'south', 'east', 'west', 'up', 'down'];
+      const validDirs = ['north', 'south', 'east', 'west'];
       if (!validDirs.includes(direction)) {
         sendError(session.sessionId, `無效的方向。可用方向：${validDirs.join(', ')}`);
         return;
@@ -8245,8 +8250,8 @@ function findGroundItem(roomId: string, target: string): GroundItem | undefined 
 function findExit(room: RoomDef, target: string): RoomExit | undefined {
   const lower = normalizeCommandTarget(target);
   const directionByChinese: Record<string, string> = {
-    北: 'north', 南: 'south', 東: 'east', 西: 'west', 上: 'up', 下: 'down',
-    north: 'north', south: 'south', east: 'east', west: 'west', up: 'up', down: 'down',
+    北: 'north', 南: 'south', 東: 'east', 西: 'west',
+    north: 'north', south: 'south', east: 'east', west: 'west',
   };
   const direction = directionByChinese[target] ?? directionByChinese[lower];
   return room.exits.find(exit => {
@@ -8304,7 +8309,12 @@ function getChar(session: WsSession): Character | null {
 
 function directionChinese(dir: string): string {
   const map: Record<string, string> = {
-    north: '北', south: '南', east: '東', west: '西', up: '上', down: '下',
+    north: '北', south: '南', east: '東', west: '西',
   };
   return map[dir] ?? dir;
+}
+
+function isRemovedVerticalDirection(direction: string): boolean {
+  const normalized = direction.trim().toLowerCase();
+  return normalized === 'up' || normalized === 'down' || direction === '上' || direction === '下';
 }

@@ -2,8 +2,6 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WorldManager } from '../game/world.js';
 import { ROOMS } from '../data/rooms.js';
 
-const VERTICAL_REVERSE: Record<string, string> = { up: 'down', down: 'up' };
-
 describe('WorldManager respawn policy', () => {
   let world: WorldManager;
   const now = new Date('2026-05-22T00:00:00.000Z');
@@ -86,10 +84,10 @@ describe('WorldManager respawn policy', () => {
   it('can unwind a multi-step movement path with inverse directions', () => {
     world.placePlayer('p1', 'training_ground');
 
-    expect(world.handleMove('p1', 'up')?.room.id).toBe('starter_village_rooftop_walk');
+    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_rooftop_walk');
     expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_stable_yard');
     expect(world.handleMove('p1', 'south')?.room.id).toBe('starter_village_rooftop_walk');
-    expect(world.handleMove('p1', 'down')?.room.id).toBe('training_ground');
+    expect(world.handleMove('p1', 'south')?.room.id).toBe('training_ground');
   });
 
   it('moves cross-room targets into approaching state and arrives after ticks', () => {
@@ -166,34 +164,28 @@ describe('room exit topology', () => {
     expect(duplicates).toEqual([]);
   });
 
-  it('keeps vertical exits reversible with up and down', () => {
-    const issues = Object.values(ROOMS).flatMap(room =>
+  it('does not define vertical exits', () => {
+    const verticalExits = Object.values(ROOMS).flatMap(room =>
       room.exits
-        .filter(exit => exit.direction === 'up' || exit.direction === 'down')
-        .filter(exit => {
-          const target = ROOMS[exit.targetRoomId];
-          return !target?.exits.some(back =>
-            back.targetRoomId === room.id && back.direction === VERTICAL_REVERSE[exit.direction],
-          );
-        })
+        .filter(exit => (exit.direction as string) === 'up' || (exit.direction as string) === 'down')
         .map(exit => `${room.id}:${exit.direction}->${exit.targetRoomId}`),
     );
 
-    expect(issues).toEqual([]);
+    expect(verticalExits).toEqual([]);
   });
 
-  it('keeps known multi-level routes feeling reversible', () => {
-    expect(ROOMS.training_ground.exits.find(exit => exit.direction === 'up')?.targetRoomId)
+  it('keeps known flattened routes reversible', () => {
+    expect(ROOMS.training_ground.exits.find(exit => exit.direction === 'north')?.targetRoomId)
       .toBe('starter_village_rooftop_walk');
-    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'down')?.targetRoomId)
+    expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'south')?.targetRoomId)
       .toBe('training_ground');
     expect(ROOMS.starter_village_stable_yard.exits.find(exit => exit.direction === 'south')?.targetRoomId)
       .toBe('starter_village_rooftop_walk');
     expect(ROOMS.starter_village_rooftop_walk.exits.find(exit => exit.direction === 'north')?.targetRoomId)
       .toBe('starter_village_stable_yard');
-    expect(ROOMS.time_distortion.exits.find(exit => exit.direction === 'down')?.targetRoomId)
+    expect(ROOMS.time_splinter_vault.exits.find(exit => exit.direction === 'north')?.targetRoomId)
       .toBe('chaos_observatory');
-    expect(ROOMS.chaos_observatory.exits.find(exit => exit.direction === 'up')?.targetRoomId)
-      .toBe('time_distortion');
+    expect(ROOMS.chaos_observatory.exits.find(exit => exit.direction === 'south')?.targetRoomId)
+      .toBe('time_splinter_vault');
   });
 });

@@ -16,7 +16,6 @@ import { describe, it, expect } from 'vitest';
 /** Alias map matching the one in commands.ts */
 const aliasMap: Record<string, string> = {
   n: 'go north', s: 'go south', e: 'go east', w: 'go west',
-  u: 'go up', d: 'go down',
   l: 'look', i: 'inventory', inv: 'inventory',
   stat: 'status', stats: 'status',
   atk: 'attack', kill: 'attack',

@@ -35,15 +35,10 @@ function parseOrdinalTarget(query: string): { name: string; ordinal?: number } {
 }
 
 function reverseDirection(direction: Direction): Direction {
-  const reverse: Record<Direction, Direction> = {
-    north: 'south',
-    south: 'north',
-    east: 'west',
-    west: 'east',
-    up: 'down',
-    down: 'up',
-  };
-  return reverse[direction];
+  if (direction === 'north') return 'south';
+  if (direction === 'south') return 'north';
+  if (direction === 'east') return 'west';
+  return 'east';
 }
 
 interface MoveHistoryEntry {
@@ -689,13 +684,11 @@ export class WorldManager {
 
   /** 方向中文名稱 */
   private directionName(dir: Direction): string {
-    const names: Record<Direction, string> = {
+    const names: Partial<Record<Direction, string>> = {
       north: '北方',
       south: '南方',
       east: '東方',
       west: '西方',
-      up: '上方',
-      down: '下方',
     };
     return names[dir] ?? dir;
   }

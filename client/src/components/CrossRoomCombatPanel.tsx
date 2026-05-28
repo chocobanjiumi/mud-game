@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SKILL_DEFS, type CardinalDirection, type CombatantState, type Direction, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
+import { SKILL_DEFS, type CardinalDirection, type CombatantState, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath, getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
 import SkillHoverCard from './SkillHoverCard';
@@ -8,15 +8,12 @@ import MonsterHoverCard from './MonsterHoverCard';
 type LaneId = 'self' | CardinalDirection;
 
 const CARDINAL_DIRECTIONS: CardinalDirection[] = ['north', 'west', 'east', 'south'];
-const VERTICAL_DIRECTIONS: Direction[] = ['up', 'down'];
 
-const DIRECTION_LABEL: Record<Direction, string> = {
+const DIRECTION_LABEL: Record<CardinalDirection, string> = {
   north: '北',
   south: '南',
   east: '東',
   west: '西',
-  up: '上',
-  down: '下',
 };
 
 function sendCommand(command: string, echo?: string) {
@@ -42,7 +39,7 @@ function getRoomMonsters(room: RoomInfo): RoomEntity[] {
   }));
 }
 
-function directionTitle(exit: RoomExit | undefined, direction: Direction): string {
+function directionTitle(exit: RoomExit | undefined, direction: CardinalDirection): string {
   if (!exit) return `${DIRECTION_LABEL[direction]}側牆面`;
   return exit.description || `${DIRECTION_LABEL[direction]}側房間`;
 }
@@ -128,9 +125,6 @@ export function CrossRoomCombatPanelView({
   const exitByDirection = new Map(room.exits.map((exit) => [exit.direction, exit]));
   const nearby = room.nearbyCombat;
   const neighborByDirection = new Map((nearby?.neighbors ?? []).map((neighbor) => [neighbor.direction, neighbor]));
-  const verticalExits = VERTICAL_DIRECTIONS
-    .map((direction) => exitByDirection.get(direction))
-    .filter((exit): exit is RoomExit => Boolean(exit));
   const combatEnemies = combat?.enemyTeam.filter((enemy) => !enemy.isDead) ?? [];
   const selectedLabel = selectedLane === 'self' ? '本房' : `${DIRECTION_LABEL[selectedLane]}側`;
   const currentMonsters = nearby?.current.monsters ?? [];
@@ -198,23 +192,6 @@ export function CrossRoomCombatPanelView({
         />
         <div />
       </div>
-
-      {verticalExits.length > 0 && (
-        <div className="cross-room-vertical-exits" aria-label="垂直出口">
-          {verticalExits.map((exit) => (
-            <button
-              key={exit.direction}
-              type="button"
-              className="cross-room-vertical-go"
-              title={directionTitle(exit, exit.direction)}
-              onClick={() => sendCommand(`go ${exit.direction}`, `前往${DIRECTION_LABEL[exit.direction]}方`)}
-            >
-              <span>{DIRECTION_LABEL[exit.direction]}方</span>
-              <b>{exit.description || '可前往'}</b>
-            </button>
-          ))}
-        </div>
-      )}
 
       <div className="cross-room-detail">
         {selectedLane === 'self' ? (

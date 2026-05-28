@@ -216,7 +216,7 @@ export const EXPANDED_QUEST_DEFS: Record<string, QuestDef> = {
       { type: 'inspect_object', targetId: 'portal_starter_village', targetName: '啟用新手村傳送陣', required: 1 },
     ],
     rewards: { exp: 50, gold: 30, equipmentSlotRewards: [{ slot: 'accessory', levelMax: 5, sourceTags: ['starter_progression', 'main_quest'] }] },
-    dialogueStart: '歡迎來到這個世界，年輕的冒險者。先輸入 look 查看周圍，再用 quest 確認目標；需要移動時用 go north、go down 這類指令，最後在傳送祠堂用 activate portal。',
+    dialogueStart: '歡迎來到這個世界，年輕的冒險者。先輸入 look 查看周圍，再用 quest 確認目標；需要移動時用 go north、go east 這類指令，最後在傳送祠堂用 activate portal。',
     dialogueComplete: '很好，你已經對村子有了基本的了解。現在是時候踏出第一步了！',
     repeatable: false,
   },

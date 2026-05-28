@@ -225,8 +225,6 @@ function directionLabel(direction: Direction): string {
     south: '南',
     east: '東',
     west: '西',
-    up: '上',
-    down: '下',
   };
   return labels[direction];
 }

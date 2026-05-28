@@ -17,13 +17,13 @@ function room(overrides: Partial<RoomDef> & Pick<RoomDef, 'id'>): RoomDef {
 }
 
 describe('map layer inference', () => {
-  it('uses explicit mapLayer before mapY and still reports up/down conflicts for inferred targets', () => {
+  it('uses explicit mapLayer before mapY without inferring movement layers from exits', () => {
     const rooms = [
       room({
         id: 'ground',
         mapLayer: 0,
         mapY: 0,
-        exits: [{ direction: 'up', targetRoomId: 'high', description: '往上' }],
+        exits: [{ direction: 'north', targetRoomId: 'high', description: '往北' }],
       }),
       room({ id: 'high', mapY: 0 }),
     ];
@@ -32,7 +32,7 @@ describe('map layer inference', () => {
     const report = buildMapLayerInferenceReport(rooms);
 
     expect(layers.get('ground')?.mapLayer).toBe(0);
-    expect(layers.get('high')?.mapLayer).toBe(1);
+    expect(layers.get('high')?.mapLayer).toBe(0);
     expect(report.issues).toEqual([]);
   });
 

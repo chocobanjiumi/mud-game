@@ -1,14 +1,12 @@
 import type { Direction, RoomDef, ZoneDef } from '@game/shared';
 
-const AUDITED_DIRECTIONS: Direction[] = ['north', 'south', 'east', 'west', 'up', 'down'];
+const AUDITED_DIRECTIONS: Direction[] = ['north', 'south', 'east', 'west'];
 
-const OPPOSITE_DIRECTION: Record<Direction, Direction> = {
+const OPPOSITE_DIRECTION: Partial<Record<Direction, Direction>> = {
   north: 'south',
   south: 'north',
   east: 'west',
   west: 'east',
-  up: 'down',
-  down: 'up',
 };
 
 const AUDITED_DIRECTION_SET = new Set<Direction>(AUDITED_DIRECTIONS);

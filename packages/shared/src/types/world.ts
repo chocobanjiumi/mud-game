@@ -3,7 +3,7 @@
 import type { GuardianHints } from './player.js';
 import type { ElementType } from './skill.js';
 
-export type Direction = 'north' | 'south' | 'east' | 'west' | 'up' | 'down';
+export type Direction = 'north' | 'south' | 'east' | 'west';
 
 export interface RoomExit {
   direction: Direction;

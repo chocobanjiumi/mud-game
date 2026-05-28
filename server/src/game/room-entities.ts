@@ -205,9 +205,7 @@ function buildExitSubtitle(
 ): string {
   if (exit.locked) return '上鎖';
   const targetName = targetRoom?.name ?? exit.targetRoomId;
-  const layerName = mapLayerNameByRoom?.get(exit.targetRoomId);
-  const verticalHint = (exit.direction === 'up' || exit.direction === 'down') && layerName ? ` · ${layerName}` : '';
-  return `${exit.description ?? targetName}${verticalHint}`;
+  return exit.description ?? targetName;
 }
 
 function formatRemaining(timestamp?: number): string {
@@ -218,7 +216,7 @@ function formatRemaining(timestamp?: number): string {
 
 function directionChinese(dir: string): string {
   const map: Record<string, string> = {
-    north: '北', south: '南', east: '東', west: '西', up: '上', down: '下',
+    north: '北', south: '南', east: '東', west: '西',
   };
   return map[dir] ?? dir;
 }

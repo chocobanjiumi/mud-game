@@ -326,8 +326,6 @@ describe('key UI component rendering', () => {
       exits: [
         { direction: 'north' as const, targetRoomId: 'north_room', description: '北側草地' },
         { direction: 'east' as const, targetRoomId: 'east_room', description: '東側小徑' },
-        { direction: 'up' as const, targetRoomId: 'upper_room', description: '二樓平台' },
-        { direction: 'down' as const, targetRoomId: 'lower_room', description: '地下室' },
       ],
       nearbyCombat: {
         current: {
@@ -473,10 +471,6 @@ describe('key UI component rendering', () => {
     expect(html).toContain('東側');
     expect(html).toContain('北側草地');
     expect(html).toContain('東側小徑');
-    expect(html).toContain('上方');
-    expect(html).toContain('下方');
-    expect(html).toContain('二樓平台');
-    expect(html).toContain('地下室');
     expect(html).toContain('本房');
     expect(html).toContain('史萊姆#1');
     expect(html).toContain('/mud/images/monsters/monster_low_wilds_slime.png');
