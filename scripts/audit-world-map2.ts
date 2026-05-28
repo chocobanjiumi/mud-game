@@ -40,6 +40,9 @@ const instanceEntranceCoordinates: string[] = [];
 const instanceRoomsWithWorldCoords: string[] = [];
 const coordinateOwners = new Map<string, string[]>();
 const cardinalCoordinateMismatches: string[] = [];
+const cardinalMismatchesWithinZone: string[] = [];
+const cardinalMismatchesAcrossZones: string[] = [];
+const cardinalMismatchCountsByZone = new Map<string, number>();
 const instanceEntranceIssues: string[] = [];
 const instanceEntryIssues: string[] = [];
 const objectInteractEntryIssues: string[] = [];
@@ -192,9 +195,16 @@ for (const room of rooms) {
         targetWorldCoordinate.worldX !== worldCoordinate.worldX + delta.dx ||
         targetWorldCoordinate.worldY !== worldCoordinate.worldY + delta.dy
       ) {
-        cardinalCoordinateMismatches.push(
-          `${room.id}(${worldCoordinate?.worldX},${worldCoordinate?.worldY}) ${exit.direction}-> ${target.id}(${targetWorldCoordinate?.worldX},${targetWorldCoordinate?.worldY})`,
-        );
+        const mismatch = `${room.id}(${worldCoordinate?.worldX},${worldCoordinate?.worldY}) ${exit.direction}-> ${target.id}(${targetWorldCoordinate?.worldX},${targetWorldCoordinate?.worldY})`;
+        cardinalCoordinateMismatches.push(mismatch);
+        if (room.zone === target.zone) {
+          cardinalMismatchesWithinZone.push(mismatch);
+          cardinalMismatchCountsByZone.set(room.zone, (cardinalMismatchCountsByZone.get(room.zone) ?? 0) + 1);
+        } else {
+          const zonePair = `${room.zone}->${target.zone}`;
+          cardinalMismatchesAcrossZones.push(`${zonePair}: ${mismatch}`);
+          cardinalMismatchCountsByZone.set(zonePair, (cardinalMismatchCountsByZone.get(zonePair) ?? 0) + 1);
+        }
       }
     }
   }
@@ -404,6 +414,10 @@ const coordinateCollisions = [...coordinateOwners.entries()]
   .filter(([, owners]) => owners.length > 1)
   .map(([coord, owners]) => `${coord}: ${owners.join(', ')}`);
 
+const cardinalMismatchHotspots = [...cardinalMismatchCountsByZone.entries()]
+  .sort((left, right) => right[1] - left[1])
+  .map(([zoneOrPair, count]) => `${zoneOrPair}: ${count}`);
+
 const topologyAcceptanceIssues = [
   ...missingTargets.map(issue => `missing target: ${issue}`),
   ...duplicateDirections.map(issue => `duplicate direction: ${issue}`),
@@ -460,6 +474,9 @@ const report = {
     instanceEntranceCoordinates,
     coordinateCollisions,
     cardinalCoordinateMismatches,
+    cardinalMismatchesWithinZone,
+    cardinalMismatchesAcrossZones,
+    cardinalMismatchHotspots,
   },
   design: {
     twoDimensionalDesignIssues,
@@ -636,6 +653,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Instance entrance coordinates: ${reportData.worldCoordinate.instanceEntranceCoordinates.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
+    `Cardinal mismatches within zone: ${reportData.worldCoordinate.cardinalMismatchesWithinZone.length}`,
+    `Cardinal mismatches across zones: ${reportData.worldCoordinate.cardinalMismatchesAcrossZones.length}`,
     `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
     `/mud/map planning UI issues: ${reportData.design.mapPlanningUiIssues.length}`,
     `Zone classification issues: ${reportData.design.zoneClassificationIssues.length}`,
