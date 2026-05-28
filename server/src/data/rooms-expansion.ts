@@ -505,7 +505,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '密林東側的樹枝被巨大蛛網纏成半封閉空間，白色絲線層層交疊，困住腐葉、獸骨和破裂背包。西邊可退回密林小道，南側根橋方向傳來低沉木頭摩擦聲，蛛網間有幾條通往高處的細線。這裡是巨型蜘蛛的狩獵點，玩家若觸碰閃光物品可能觸發伏擊，但也能找到被困旅人留下的補給與任務證物。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'west', targetRoomId: 'dense_trail', description: '撥開蛛絲回到密林小道' },
+      {
+        direction: 'west',
+        targetRoomId: 'dense_trail',
+        description: '西側必須沿被蛛絲封住的枝縫慢慢退回，穿過兩段下垂蛛網後才接密林小道',
+        edgeKind: 'long_path',
+        edgeNote: '蛛網密室回密林小道需要穿過封閉蛛網枝縫，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'dark_forest_root_bridge', description: '粗大樹根延伸向南' },
     ],
     monsters: [
@@ -526,9 +532,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '幾株傾斜枯木在沼澤北側交錯成高枝平台，黑鴉安靜排列在枝頭，只有羽毛偶爾落進霧中。東方螢火小徑透出微光，南邊毒霧沼澤冒著紫泡，西側可繞往月井方向。枝條上掛著亮片、骨戒和被叼來的紙片，提示玩家可 search 鳥巢尋找線索，但驚動鳥群會引來暗影生物注意。',
     exits: [
-      { direction: 'east', targetRoomId: 'firefly_trail', description: '螢火光在東方閃動' },
-      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '毒霧從南方沼澤升起' },
-      { direction: 'west', targetRoomId: 'dark_forest_moonwell', description: '冷光從西方水井映出' },
+      {
+        direction: 'east',
+        targetRoomId: 'firefly_trail',
+        description: '東側螢火光隔著枯枝平台閃動，需要沿黑鴉標記的枝路繞下才接到螢火小徑',
+        edgeKind: 'long_path',
+        edgeNote: '黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'deep_poison_swamp',
+        description: '南側毒霧沼澤在低處翻泡，必須沿枯木根梯下行並避開紫色泡泉才抵達',
+        edgeKind: 'long_path',
+        edgeNote: '黑鴉棲枝到劇毒沼澤存在高枝到沼地的落差，屬於長路徑。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'dark_forest_moonwell',
+        description: '西側月井冷光被銀苔小徑遮住，需要跟著黑鴉羽毛繞過低霧樹根才抵達',
+        edgeKind: 'long_path',
+        edgeNote: '黑鴉棲枝到月影井需要繞過低霧樹根與銀苔小徑，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 40 },
@@ -549,7 +573,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '數條巨大樹根橫跨黑水溪，形成濕滑窄橋，溪底反射出不屬於天空的綠色微光。北面蛛網密室懸著白絲，西側可回森林深處，南方暗影空地被低霧包圍。根橋兩側沒有護欄，木質表面有狼爪與樹精刻痕，提示玩家這是繞行與撤退的重要路線，但戰鬥中被逼到邊緣會非常危險。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_spider_web', description: '蛛網掛滿北側枝條' },
-      { direction: 'west', targetRoomId: 'deep_forest', description: '粗根延回森林深處' },
+      {
+        direction: 'west',
+        targetRoomId: 'deep_forest',
+        description: '西側粗根先沿黑水溪繞行，穿過濕滑根橋與狼爪痕後才回到森林深處',
+        edgeKind: 'long_path',
+        edgeNote: '盤根橋回森林深處需要沿黑水溪根路繞行，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'dark_forest_shadow_clearing', description: '南方空地被黑霧籠罩' },
     ],
     monsters: [
@@ -571,7 +601,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '歪斜小屋架在樹根與石塊之間，乾草藥、骨鈴和發光蘑菇掛滿屋簷，綠色坩堝光從門縫溢出。東邊月井散出冷光，通往荊棘迷宮的根痕會先繞到月井南側，屋後暗門通向枯萎之林。桌上有被撕開的森林地圖和未完成咒文，提示玩家這裡是任務與精英遭遇點，可調查女巫如何操縱森林詛咒。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'east', targetRoomId: 'dark_forest_moonwell', description: '月井冷光在東方閃爍' },
-      { direction: 'west', targetRoomId: 'withered_forest', description: '屋後小徑通往枯萎之林' },
+      {
+        direction: 'west',
+        targetRoomId: 'withered_forest',
+        description: '屋後小徑先穿過掛滿骨鈴的根門，再繞過灰化樹籬才進入枯萎之林',
+        edgeKind: 'long_path',
+        edgeNote: '森林女巫小屋到枯萎之林需要穿越根門與灰化樹籬，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'forest_witch', maxCount: 1, respawnSeconds: 1800 },
@@ -591,7 +627,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '圓形石井藏在銀苔覆蓋的小空地中，井水不映樹冠，只映出一輪蒼白月亮，周圍空氣帶著清冷礦物味。東邊黑鴉棲枝傳來低叫，西側女巫小屋飄出草藥煙，南面荊棘迷宮堵住去路。井沿有精靈刻痕與水滴形凹槽，提示玩家可採集月井水、解讀符文，或取得解除毒霧與暗影詛咒的材料。',
     exits: [
-      { direction: 'east', targetRoomId: 'dark_forest_raven_perch', description: '黑鴉在東側枝頭低鳴' },
+      {
+        direction: 'east',
+        targetRoomId: 'dark_forest_raven_perch',
+        description: '東側要沿銀苔小徑穿過低霧樹根，跟著黑鴉羽毛標記爬回高枝平台',
+        edgeKind: 'long_path',
+        edgeNote: '月影井到黑鴉棲枝需要沿銀苔小徑與低霧樹根繞行，屬於長路徑。',
+      },
       { direction: 'west', targetRoomId: 'dark_forest_witch_hut', description: '女巫小屋隱在西側樹根後' },
       { direction: 'south', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮在南方纏結' },
     ],
@@ -613,9 +655,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一座偽裝成枝葉堆的木製瞭望棚架在樹屋南側，繩梯被苔蘚染成暗綠，棚內留下箭袋、磨損望遠筒和幾張狼群巡路草圖。北邊可回古老樹屋，南側靠近蛛網密室，東方能看見暗精靈弓手活動的細長影子。這裡提供安全觀察角度，提示玩家可查看怪物動線、選擇埋伏或撤退路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'ancient_treehouse', description: '繩梯上方連回古老樹屋' },
-      { direction: 'south', targetRoomId: 'dark_forest_spider_web', description: '蛛網密室在南側枝葉後' },
-      { direction: 'east', targetRoomId: 'dark_forest_root_bridge', description: '遠處盤根橋露出一角' },
+      {
+        direction: 'north',
+        targetRoomId: 'ancient_treehouse',
+        description: '北側繩梯要繞過獵棚偽裝枝葉，沿樹幹螺旋木階爬回古老樹屋平台',
+        edgeKind: 'long_path',
+        edgeNote: '獵人瞭望棚到古老樹屋需要沿偽裝繩梯與螺旋木階上行，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'dark_forest_spider_web',
+        description: '南側蛛網密室藏在枝葉後方，必須沿獵人繩標下降並穿過幾層白絲屏障',
+        edgeKind: 'long_path',
+        edgeNote: '獵人瞭望棚到蛛網密室需要沿繩標下降並穿越蛛絲屏障，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'dark_forest_root_bridge',
+        description: '東側盤根橋露出一角，需要沿瞭望棚外緣下坡，再繞過黑水溪岸才抵達',
+        edgeKind: 'long_path',
+        edgeNote: '獵人瞭望棚到盤根橋需要下坡並繞過黑水溪岸，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 75 },
@@ -680,8 +740,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '巨木周圍的根牆會隨心跳聲緩慢開合，短暫露出可撤退的北側缺口，也可能在戰鬥中封住側路。腐化樹心旁有可 loot 的結晶化樹皮與狼群戰利品，暗示擊敗首領後能取得區域推進證物並削弱森林詛咒。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_shadow_clearing', description: '回到暗影空地' },
-      { direction: 'west', targetRoomId: 'dark_treehollow', description: '裂根通往黑暗樹洞' },
-      { direction: 'east', targetRoomId: 'elf_ruins', description: '破碎結界連向精靈遺跡' },
+      {
+        direction: 'west',
+        targetRoomId: 'dark_treehollow',
+        description: '西側裂根要等根牆開合時穿過，沿腐化樹心外圈繞到黑暗樹洞入口',
+        edgeKind: 'long_path',
+        edgeNote: '古樹心庭到黑暗樹洞需要穿過開合根牆與腐化樹心外圈，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'elf_ruins',
+        description: '東側破碎結界必須沿精靈封印石繞行，穿過暗影根牆後才回到精靈遺跡',
+        edgeKind: 'long_path',
+        edgeNote: '古樹心庭到精靈遺跡需要沿封印石與暗影根牆繞行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 1800 },
