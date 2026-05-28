@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:12:13.146Z",
+  "generatedAt": "2026-05-28T09:14:44.558Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2188,7 +2188,37 @@
       }
     ],
     "worldOrDecisionZonesMissingGlobalBounds": [],
-    "overlappingZoneGlobalBounds": []
+    "overlappingZoneGlobalBounds": [],
+    "crossZoneWorldAdjacencyIssues": [
+      "starter_village/village_gate:south->plains/plains_entrance: target bbox is not south of source bbox",
+      "starter_village/village_gate:west->starter_village_ext/village_outskirts: target bbox is not west of source bbox",
+      "plains/plains_entrance:north->starter_village/village_gate: target bbox is not north of source bbox",
+      "plains/crossroads:south->dark_forest/forest_entrance: south gap 6 row(s) needs border room planning",
+      "dark_forest/forest_entrance:north->plains/crossroads: north gap 6 row(s) needs border room planning",
+      "dark_forest/forest_entrance:west->frozen_wastes/snowfield_entrance: west gap 11 column(s) needs border room planning",
+      "dark_forest/ancient_treehouse:east->plains/hunter_lodge: east gap 7 column(s) needs border room planning",
+      "dark_forest/elf_ruins:south->volcano_zone/volcano_base: south gap 2 row(s) needs border room planning",
+      "lakeside_town/town_gate:south->eastern_coast/coastal_boardwalk: target bbox is not south of source bbox",
+      "starter_village_ext/village_outskirts:east->starter_village/village_gate: target bbox is not east of source bbox",
+      "starter_village_ext/starter_ext_training_clearing:north->starter_village/village_gate: target bbox is not north of source bbox",
+      "eastern_coast/coastal_boardwalk:north->lakeside_town/town_gate: target bbox is not north of source bbox",
+      "volcano_zone/volcano_base:north->dark_forest/elf_ruins: north gap 2 row(s) needs border room planning",
+      "frozen_wastes/snowfield_entrance:east->dark_forest/forest_entrance: east gap 11 column(s) needs border room planning",
+      "plains/hunter_lodge:west->dark_forest/ancient_treehouse: west gap 7 column(s) needs border room planning",
+      "old_farmland/old_farmland_crossroads:west->starter_village_ext/village_farmland: target bbox is not west of source bbox",
+      "old_farmland/old_farmland_cart_shortcut:west->starter_village_ext/village_outskirts: target bbox is not west of source bbox",
+      "whispering_valley/whispering_valley_entrance:south->old_farmland/old_farmland_stone_marker: target bbox is not south of source bbox"
+    ],
+    "borderRoomGaps": [
+      "plains/crossroads:south->dark_forest/forest_entrance: south gap 6 row(s) needs border room planning",
+      "dark_forest/forest_entrance:north->plains/crossroads: north gap 6 row(s) needs border room planning",
+      "dark_forest/forest_entrance:west->frozen_wastes/snowfield_entrance: west gap 11 column(s) needs border room planning",
+      "dark_forest/ancient_treehouse:east->plains/hunter_lodge: east gap 7 column(s) needs border room planning",
+      "dark_forest/elf_ruins:south->volcano_zone/volcano_base: south gap 2 row(s) needs border room planning",
+      "volcano_zone/volcano_base:north->dark_forest/elf_ruins: north gap 2 row(s) needs border room planning",
+      "frozen_wastes/snowfield_entrance:east->dark_forest/forest_entrance: east gap 11 column(s) needs border room planning",
+      "plains/hunter_lodge:west->dark_forest/ancient_treehouse: west gap 7 column(s) needs border room planning"
+    ]
   },
   "instance": {
     "instanceRoomsWithWorldCoords": [],

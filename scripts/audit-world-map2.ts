@@ -34,6 +34,8 @@ const instanceEntranceIssues: string[] = [];
 const instanceEntryIssues: string[] = [];
 const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
+const crossZoneWorldAdjacencyIssues: string[] = [];
+const borderRoomGaps: string[] = [];
 const instanceEntries = buildInstanceEntryDefs(ZONES);
 
 for (const room of rooms) {
@@ -155,6 +157,22 @@ for (let i = 0; i < zoneGlobalBounds.length; i++) {
   }
 }
 
+for (const exitText of crossZoneExits) {
+  const parsed = parseCrossZoneExit(exitText);
+  if (!parsed) continue;
+  const fromPlan = zonePlans.get(parsed.fromZoneId);
+  const toPlan = zonePlans.get(parsed.toZoneId);
+  if (!fromPlan?.globalBounds || !toPlan?.globalBounds) continue;
+  if (fromPlan.decision === 'instance' || toPlan.decision === 'instance') continue;
+  const issue = getDirectionalBoundsIssue(parsed.direction, fromPlan.globalBounds, toPlan.globalBounds);
+  if (!issue) continue;
+  const label = `${parsed.fromZoneId}/${parsed.fromRoomId}:${parsed.direction}->${parsed.toZoneId}/${parsed.toRoomId}`;
+  crossZoneWorldAdjacencyIssues.push(`${label}: ${issue}`);
+  if (issue.includes('gap')) {
+    borderRoomGaps.push(`${label}: ${issue}`);
+  }
+}
+
 const coordinateCollisions = [...coordinateOwners.entries()]
   .filter(([, owners]) => owners.length > 1)
   .map(([coord, owners]) => `${coord}: ${owners.join(', ')}`);
@@ -213,6 +231,8 @@ const report = {
       })),
     worldOrDecisionZonesMissingGlobalBounds,
     overlappingZoneGlobalBounds,
+    crossZoneWorldAdjacencyIssues,
+    borderRoomGaps,
   },
   instance: {
     instanceRoomsWithWorldCoords,
@@ -241,6 +261,7 @@ if (strict) {
     ...cardinalCoordinateMismatches,
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
+    ...crossZoneWorldAdjacencyIssues,
     ...instanceRoomsWithWorldCoords,
     ...instanceEntranceIssues,
     ...instanceEntryIssues,
@@ -248,6 +269,57 @@ if (strict) {
   if (failures.length > 0) {
     process.exitCode = 1;
   }
+}
+
+function parseCrossZoneExit(exitText: string): {
+  fromZoneId: string;
+  fromRoomId: string;
+  direction: Direction;
+  toZoneId: string;
+  toRoomId: string;
+} | null {
+  const match = exitText.match(/^([^/]+)\/([^:]+):(north|south|east|west)->([^/]+)\/(.+)$/);
+  if (!match) return null;
+  return {
+    fromZoneId: match[1],
+    fromRoomId: match[2],
+    direction: match[3] as Direction,
+    toZoneId: match[4],
+    toRoomId: match[5],
+  };
+}
+
+function getDirectionalBoundsIssue(
+  direction: Direction,
+  from: { minX: number; maxX: number; minY: number; maxY: number },
+  to: { minX: number; maxX: number; minY: number; maxY: number },
+): string | null {
+  switch (direction) {
+    case 'north':
+      if (to.maxY >= from.minY) return 'target bbox is not north of source bbox';
+      if (from.minY - to.maxY > 1) return `north gap ${from.minY - to.maxY - 1} row(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minX, from.maxX, to.minX, to.maxX)) return 'north exit has no horizontal bbox overlap';
+      return null;
+    case 'south':
+      if (to.minY <= from.maxY) return 'target bbox is not south of source bbox';
+      if (to.minY - from.maxY > 1) return `south gap ${to.minY - from.maxY - 1} row(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minX, from.maxX, to.minX, to.maxX)) return 'south exit has no horizontal bbox overlap';
+      return null;
+    case 'east':
+      if (to.minX <= from.maxX) return 'target bbox is not east of source bbox';
+      if (to.minX - from.maxX > 1) return `east gap ${to.minX - from.maxX - 1} column(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minY, from.maxY, to.minY, to.maxY)) return 'east exit has no vertical bbox overlap';
+      return null;
+    case 'west':
+      if (to.maxX >= from.minX) return 'target bbox is not west of source bbox';
+      if (from.minX - to.maxX > 1) return `west gap ${from.minX - to.maxX - 1} column(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minY, from.maxY, to.minY, to.maxY)) return 'west exit has no vertical bbox overlap';
+      return null;
+  }
+}
+
+function rangesTouchOrOverlap(leftMin: number, leftMax: number, rightMin: number, rightMax: number): boolean {
+  return leftMin <= rightMax + 1 && leftMax + 1 >= rightMin;
 }
 
 function countCjkChars(text: string): number {
@@ -299,6 +371,8 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
     `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
+    `Cross-zone world adjacency issues: ${reportData.zoneLayout.crossZoneWorldAdjacencyIssues.length}`,
+    `Border room gaps: ${reportData.zoneLayout.borderRoomGaps.length}`,
     `Instance rooms with world coordinates: ${reportData.instance.instanceRoomsWithWorldCoords.length}`,
     `Instance entrance issues: ${reportData.instance.instanceEntranceIssues.length}`,
     `Instance entries: ${reportData.instance.instanceEntries.length}`,
