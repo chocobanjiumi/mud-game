@@ -2548,6 +2548,13 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     stackable: true, maxStack: 9, levelReq: 55, rarity: 'legendary',
     sourceTags: ['boss', 'quest'], zoneTags: ['abyss_rift'],
   },
+  abyss_survey_scroll: {
+    id: 'abyss_survey_scroll', name: '深淵測繪卷軸', type: 'quest',
+    description: '黑紫羊皮上以銀砂畫出深淵裂隙的封印錨點、虛空鏡湖與信標眼方位。站在深淵裂隙入口展開時，可校準副本路線，不會消耗。',
+    buyPrice: 0, sellPrice: 0,
+    stackable: true, maxStack: 9, levelReq: 55, rarity: 'legendary',
+    sourceTags: ['quest', 'dungeon_entry'], zoneTags: ['abyss_rift'],
+  },
   celestial_fragment: {
     id: 'celestial_fragment', name: '天界碎片', type: 'material',
     description: '天界遺跡中散落的神聖碎片，散發著溫暖的金色光芒。它能修補守衛核心，也能作為淨化深淵污染的基礎材料。',
@@ -4936,6 +4943,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 34, rarity: 'epic',
     sourceTags: ['drop', 'quest'], zoneTags: ['reef_of_bones'],
   },
+  tidebone_compass: {
+    id: 'tidebone_compass', name: '潮骨羅盤', type: 'quest',
+    description: '白骨礁船長墓中拼回的骨質羅盤，指針會跟著退潮鐘聲轉向幽靈錨。站在白骨礁入口使用可定位副本航道，不會消耗。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 34, rarity: 'epic',
+    sourceTags: ['quest', 'dungeon_entry'], zoneTags: ['reef_of_bones'],
+  },
   vault_captain_seal: {
     id: 'vault_captain_seal', name: '寶庫船長印', type: 'quest',
     description: '溺亡寶庫守護者身上留下的黑銀船長印，外圈刻著船名與礁鐘方位，內側封著不死海盜守財直到退潮盡頭的誓約。',
@@ -5139,6 +5152,12 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
     description: '雙相祭壇與灰燼聖所之間裂開的封印碎片，一半帶著聖光殘響，一半被黑灰侵蝕。修道院倖存者用它判斷墮落儀式是否仍在擴散。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 12, levelReq: 42, rarity: 'epic',
     sourceTags: ['boss', 'quest'], zoneTags: ['ashfall_monastery'],
+  },
+  ashen_vigil_offering: {
+    id: 'ashen_vigil_offering', name: '灰守祭品', type: 'quest',
+    description: '由焦黑經頁、裂聖所封印灰與一滴聖物餘火油封成的小祭包。站在灰落修道院入口獻上時，可開啟一次副本，使用後消耗。',
+    buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 42, rarity: 'epic',
+    sourceTags: ['quest', 'dungeon_entry'], zoneTags: ['ashfall_monastery'],
   },
   soot_scripture_leaf: {
     id: 'soot_scripture_leaf', name: '焦黑經頁', type: 'material',

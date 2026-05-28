@@ -64,6 +64,37 @@ export const WORLD_MAP2_INSTANCE_ENTRY_ITEMS: readonly InstanceEntryItemMetadata
     entryName: '終末軍旗印宣戰',
     entryDescription: '終末軍旗印舉向終焉戰場入口時，殘破戰旗會回應諸王軍令並展開決戰通道；戰印不會消耗，但入口會在宣戰後沉寂一段時間，避免連續重啟終局戰場。',
   },
+  {
+    zoneId: 'abyss_rift',
+    zoneName: '深淵裂隙',
+    itemId: 'abyss_survey_scroll',
+    dungeonName: '深淵裂隙',
+    entranceRoomName: '深淵裂隙入口',
+    consumeItem: false,
+    cooldownSeconds: 300,
+    entryName: '深淵測繪卷軸校準',
+    entryDescription: '深淵測繪卷軸在裂隙入口展開時會把封印錨、虛空鏡湖與信標眼位置連成銀砂路線；卷軸不會消耗，但每次校準後需要等待裂隙震盪平復。',
+  },
+  {
+    zoneId: 'reef_of_bones',
+    zoneName: '白骨礁',
+    itemId: 'tidebone_compass',
+    dungeonName: '白骨礁',
+    entranceRoomName: '白骨礁入口',
+    consumeItem: false,
+    entryName: '潮骨羅盤定航',
+    entryDescription: '潮骨羅盤靠近白骨礁入口時會跟著礁鐘舌片震動，指針指向退潮後露出的幽靈錨航道；羅盤不會消耗，可用來帶隊進入白骨礁副本。',
+  },
+  {
+    zoneId: 'ashfall_monastery',
+    zoneName: '灰落修道院',
+    itemId: 'ashen_vigil_offering',
+    dungeonName: '灰落修道院',
+    entranceRoomName: '灰落修道院入口',
+    consumeItem: true,
+    entryName: '灰守祭品獻入',
+    entryDescription: '灰守祭品放上灰落修道院入口的破裂祭盤後，焦黑經頁會被餘火點燃並照出灰門內側通道；祭品會在儀式中燒盡，只開啟一次副本入口。',
+  },
 ];
 
 export const WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID: Record<string, InstanceEntryItemMetadata> = Object.fromEntries(
