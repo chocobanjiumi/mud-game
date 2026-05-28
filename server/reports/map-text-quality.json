@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:28:49.114Z",
+  "generatedAt": "2026-05-28T17:33:03.936Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -57,7 +57,18 @@
       "sideDescriptionMinCjkChars": 60,
       "objectiveMinCjkChars": 18,
       "dialogueStartMinCjkChars": 45,
-      "dialogueCompleteMinCjkChars": 50
+      "dialogueCompleteMinCjkChars": 50,
+      "requiredDescriptionParts": [
+        "事件背景",
+        "目標位置",
+        "完成條件",
+        "獎勵方向"
+      ],
+      "generatedZoneQuestRequiredParts": [
+        "zone 中文名稱",
+        "威脅或調查點",
+        "questId / zoneId 可追溯"
+      ]
     },
     "dungeon": {
       "descriptionMinCjkChars": 110,
@@ -206,6 +217,7 @@
     "npcDialogueNodes": 1023,
     "npcDialogueOptions": 1844,
     "quests": 614,
+    "zoneGeneratedQuests": 551,
     "dungeons": 29,
     "monsters": 521,
     "monsterFamilies": 13,

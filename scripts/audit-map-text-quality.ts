@@ -228,6 +228,7 @@ for (const questId of Object.keys(questDefs)) {
 for (const quest of Object.values(questDefs)) {
   const descriptionMinimum = quest.type === 'main' ? 80 : 60;
   checkText(quest.id, 'quest.description', 'description', quest.description, descriptionMinimum, '任務描述需包含背景、目標與路線提示');
+  auditQuestDescriptionSemantics(quest, descriptionMinimum);
   checkText(quest.id, 'quest.dialogueStart', 'dialogueStart', quest.dialogueStart ?? '', 45, '任務開始文字不足');
   checkText(quest.id, 'quest.dialogueComplete', 'dialogueComplete', quest.dialogueComplete ?? '', 50, '任務完成文字不足');
   checkText(`${quest.id}/reward`, 'reward.summary', 'rewards', formatQuestRewardSummary(quest.rewards), 30, '任務獎勵摘要需列出 exp、gold、equipment、unlock 等實際項目');
@@ -515,6 +516,8 @@ const report = {
       objectiveMinCjkChars: 18,
       dialogueStartMinCjkChars: 45,
       dialogueCompleteMinCjkChars: 50,
+      requiredDescriptionParts: ['事件背景', '目標位置', '完成條件', '獎勵方向'],
+      generatedZoneQuestRequiredParts: ['zone 中文名稱', '威脅或調查點', 'questId / zoneId 可追溯'],
     },
     dungeon: {
       descriptionMinCjkChars: 110,
@@ -632,6 +635,7 @@ const report = {
     npcDialogueNodes: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.length, 0),
     npcDialogueOptions: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.reduce((sum, node) => sum + (node.options?.length ?? 0), 0), 0),
     quests: Object.keys(questDefs).length,
+    zoneGeneratedQuests: Object.values(questDefs).filter(quest => quest.id.startsWith('zone_')).length,
     dungeons: Object.keys(DUNGEON_DEFS).length,
     monsters: Object.keys(MONSTERS).length,
     monsterFamilies: monsterFamilies.size,
@@ -833,6 +837,35 @@ function auditNpcDialogueNode(npc: typeof NPCS[string], node: typeof NPCS[string
 function requireNpcTextPart(id: string, text: string, minimumLength: number, pattern: RegExp, reason: string) {
   if (pattern.test(text)) return;
   addIssue(id, 'npc.dialogue.text', 'text', text, minimumLength, reason);
+}
+
+function auditQuestDescriptionSemantics(quest: (typeof questDefs)[string], minimumLength: number) {
+  const id = quest.id;
+  const text = quest.description;
+  requireQuestDescriptionPart(id, text, minimumLength, /因|為|出現|異常|威脅|需要|失蹤|入侵|調查|前往|探索|每日|每週|委託|支援|確認|保護|守護|削弱|蒐集|收集|搜尋|完成|引導|任務會/u, 'quest.description 缺少事件背景或任務動機');
+  requireQuestDescriptionPart(id, text, minimumLength, /前往|位於|入口|主路|交通點|房間|區域|附近|出沒|村|平原|森林|洞窟|海岸|火山|雪原|魔族|龍谷|深淵|天界|農場|溪谷|礦|港|遺跡|墓|草原|沙丘|王都|神殿|戰場|目標出沒區域|任務指定區域/u, 'quest.description 缺少目標位置或可追蹤路線');
+  requireQuestDescriptionPart(id, text, minimumLength, /完成|擊敗|消滅|討伐|收集|採集|製作|巡查|調查|交談|回報|通關|首通|參與|貢獻|排行榜|依任務追蹤/u, 'quest.description 缺少完成條件');
+  requireQuestDescriptionPart(id, text, minimumLength, /獎勵|經驗值|金幣|裝備|補給|道具|解鎖|聲望|配方|回報進度/u, 'quest.description 缺少獎勵方向');
+
+  if (quest.id.startsWith('zone_')) {
+    const zoneId = extractZoneIdFromQuest(quest.id);
+    const zone = zoneId ? ZONES[zoneId] : undefined;
+    if (zone && !text.includes(zone.name)) {
+      addIssue(id, 'quest.description', 'description', text, minimumLength, '自動生成 zone quest description 必須保留 zone 中文名稱，方便追溯 questId / zoneId');
+    }
+  }
+}
+
+function extractZoneIdFromQuest(questId: string): string | undefined {
+  const withoutPrefix = questId.replace(/^zone_/u, '');
+  const suffixes = ['_progression', '_hidden_path', '_side_', '_daily_', '_exploration_', '_boss', '_crafting'];
+  const suffix = suffixes.find(value => withoutPrefix.includes(value));
+  return suffix ? withoutPrefix.slice(0, withoutPrefix.indexOf(suffix)) : undefined;
+}
+
+function requireQuestDescriptionPart(id: string, text: string, minimumLength: number, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'quest.description', 'description', text, minimumLength, reason);
 }
 
 function checkText(id: string, kind: TextKind, field: string, text: string, minimumLength: number, reason: string) {
