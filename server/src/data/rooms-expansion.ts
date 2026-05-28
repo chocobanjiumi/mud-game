@@ -9452,7 +9452,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_shard_claim', description: '礦脈回到碎晶採區' },
       { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '重腳印通往晶魔像場' },
-      { direction: 'north', targetRoomId: 'glass_dunes_prism_arch', description: '礦光升向稜鏡拱' },
+      {
+        direction: 'north',
+        targetRoomId: 'glass_dunes_prism_arch',
+        description: '北側礦光要先沿琉璃礦脈爬過折射廊道，再穿出高砂脊抵達稜鏡拱，途中反光會遮蔽直路',
+        edgeKind: 'long_path',
+        edgeNote: '琉璃礦廊到稜鏡拱需沿礦脈高差繞行，不是相鄰平面一格。',
+      },
     ],
     monsters: [
       { monsterId: 'shardback_scarab', maxCount: 2, respawnSeconds: 140 },
@@ -9477,9 +9483,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '耐旱藥棚位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_singing_ridge', description: '乾草線接回鳴砂脊' },
-      { direction: 'east', targetRoomId: 'glass_dunes_obsidian_well', description: '藥棚背後通往黑曜井' },
-      { direction: 'south', targetRoomId: 'glass_dunes_relic_pit', description: '根鬚坡落向遺物坑' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_singing_ridge',
+        description: '西側乾草線會繞過被玻砂割裂的藥棚外坡，再接回鳴砂脊，風聲會一路壓低腳步',
+        edgeKind: 'long_path',
+        edgeNote: '耐旱藥棚到鳴砂脊需沿藥棚外坡繞行，距離長於相鄰格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_obsidian_well',
+        description: '東側藥棚背後的遮陽繩標先穿過乾根棚架，才會抵達黑曜井，井口黑影在遠處閃動',
+        edgeKind: 'long_path',
+        edgeNote: '耐旱藥棚到黑曜井被棚架與乾根斜坡隔開，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_relic_pit',
+        description: '南側根鬚坡要穿過鬆動玻砂與塌陷邊緣後，才會落到遺物坑，碎陶片標示安全落腳點',
+        edgeKind: 'long_path',
+        edgeNote: '耐旱藥棚到遺物坑有塌坡與高低差，不是相鄰平面一格。',
+      },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 1, respawnSeconds: 120 },
@@ -9505,8 +9529,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '暗水袋位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_buried_caravan', description: '破囊路回到半埋商隊' },
-      { direction: 'east', targetRoomId: 'glass_dunes_beast_scrape', description: '濕爪痕通往獸刮地' },
-      { direction: 'south', targetRoomId: 'glass_dunes_saltwind_cut', description: '細水線落入鹽風切谷' },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_beast_scrape',
+        description: '東側濕爪痕先繞過暗水袋邊緣的軟砂與破水囊，才接到獸刮地，地面會逐漸變硬',
+        edgeKind: 'long_path',
+        edgeNote: '暗水袋到獸刮地需要避開軟砂水窪，距離長於相鄰格。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_saltwind_cut',
+        description: '南側細水線沿玻砂裂縫下切，穿過鹽霧與斜坡後才落入鹽風切谷，水聲會被熱風吞沒',
+        edgeKind: 'long_path',
+        edgeNote: '暗水袋到鹽風切谷有下切裂谷與鹽霧坡道，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -9531,9 +9567,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '獸刮地位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_water_pocket', description: '濕爪痕回到暗水袋' },
-      { direction: 'east', targetRoomId: 'glass_dunes_relic_pit', description: '碎骨路通往遺物坑' },
-      { direction: 'south', targetRoomId: 'glass_dunes_glassstorm_basin', description: '刮痕延入玻暴盆地' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_water_pocket',
+        description: '西返時需沿濕爪痕穿過硬化玻砂與軟砂水窪，才回到暗水袋，水光會在遠處晃動',
+        edgeKind: 'long_path',
+        edgeNote: '獸刮地西返暗水袋要穿過硬砂與軟砂交界，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_relic_pit',
+        description: '東側碎骨路繞過巨獸磨爪石與塌砂凹地後，才會抵達遺物坑，碎骨會指向安全邊線',
+        edgeKind: 'long_path',
+        edgeNote: '獸刮地到遺物坑被磨爪石與凹地隔開，距離長於相鄰格。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_glassstorm_basin',
+        description: '南側刮痕一路下滑到風暴盆地外緣，中途要避開旋起的玻砂刃片，不能直線穿越',
+        edgeKind: 'long_path',
+        edgeNote: '獸刮地到玻暴盆地需沿刮痕坡道下行，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'mirrorsand_stalker', maxCount: 3, respawnSeconds: 130 },
@@ -9559,7 +9613,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '遺物坑位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'north', targetRoomId: 'glass_dunes_shard_claim', description: '塌砂坡回到碎晶採區' },
-      { direction: 'west', targetRoomId: 'glass_dunes_beast_scrape', description: '碎骨路回到獸刮地' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_beast_scrape',
+        description: '西返時碎骨路會先繞過遺物坑崩邊與獸痕凹地，才接回獸刮地，腳下玻片容易滑動',
+        edgeKind: 'long_path',
+        edgeNote: '遺物坑西返獸刮地需繞過坑緣與獸痕凹地，不是相鄰格。',
+      },
       { direction: 'east', targetRoomId: 'glass_dunes_mirage_bazaar', description: '幻影旗影指向海市集' },
     ],
     monsters: [
@@ -9586,8 +9646,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '海市集影位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_relic_pit', description: '幻影散回遺物坑' },
-      { direction: 'north', targetRoomId: 'glass_dunes_obsidian_well', description: '黑影水光通往黑曜井' },
-      { direction: 'east', targetRoomId: 'glass_dunes_buried_palace_door', description: '破旗線通往埋宮門' },
+      {
+        direction: 'north',
+        targetRoomId: 'glass_dunes_obsidian_well',
+        description: '北側黑影水光會被海市蜃樓拉長，必須沿倒影標記繞過假攤棚，才會找到黑曜井',
+        edgeKind: 'long_path',
+        edgeNote: '海市集影到黑曜井有幻影攤棚與倒影路標，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_buried_palace_door',
+        description: '東側破旗線穿過幻影市集邊緣與半埋石柱後，才會抵達埋宮門，旗影會干擾方向感',
+        edgeKind: 'long_path',
+        edgeNote: '海市集影到埋宮門被幻影市集與半埋石柱隔開，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'mirage_wraith', maxCount: 3, respawnSeconds: 150 },
@@ -9612,7 +9684,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '稜鏡拱位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_singing_ridge', description: '七色坡回到鳴砂脊' },
-      { direction: 'south', targetRoomId: 'glass_dunes_vein_gallery', description: '拱影落回琉璃礦廊' },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_vein_gallery',
+        description: '南側拱影要沿折射礦光下降，繞過高砂脊與碎玻階後，才落回琉璃礦廊',
+        edgeKind: 'long_path',
+        edgeNote: '稜鏡拱南返琉璃礦廊需要下行折射廊道，屬於長路徑。',
+      },
       { direction: 'east', targetRoomId: 'glass_dunes_solar_forge', description: '熱光通往日輪熔臺' },
     ],
     monsters: [
@@ -9638,9 +9716,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '黑曜井位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_herb_shelf', description: '井繩回到耐旱藥棚' },
-      { direction: 'south', targetRoomId: 'glass_dunes_mirage_bazaar', description: '黑影水光回到海市集影' },
-      { direction: 'east', targetRoomId: 'glass_dunes_solar_forge', description: '井壁熱脈通往日輪熔臺' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_herb_shelf',
+        description: '西返時井繩會帶路穿過乾根棚架與遮陽繩標，才回到耐旱藥棚，黑影逐漸被草色取代',
+        edgeKind: 'long_path',
+        edgeNote: '黑曜井西返耐旱藥棚需穿過棚架與乾根坡，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_mirage_bazaar',
+        description: '南側黑影水光要穿過數段假井影與幻影攤棚，才會回到海市集影，錯看倒影會繞遠',
+        edgeKind: 'long_path',
+        edgeNote: '黑曜井到海市集影受假井影與幻影攤棚干擾，不是相鄰格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_solar_forge',
+        description: '東側井壁熱脈沿黑曜裂縫延伸，需繞過燙裂井台後才到日輪熔臺，熱浪會逼人慢行',
+        edgeKind: 'long_path',
+        edgeNote: '黑曜井到日輪熔臺需沿熱脈裂縫繞行，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'mirage_wraith', maxCount: 2, respawnSeconds: 150 },
@@ -9665,8 +9761,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '玻暴盆地位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_beast_scrape', description: '刮痕回到獸刮地' },
-      { direction: 'west', targetRoomId: 'glass_dunes_saltwind_cut', description: '鹽風坡回到切谷' },
+      {
+        direction: 'north',
+        targetRoomId: 'glass_dunes_beast_scrape',
+        description: '北返時刮痕坡會逆著玻砂風暴上升，穿過刃片旋流後才回到獸刮地，腳印很快被掩埋',
+        edgeKind: 'long_path',
+        edgeNote: '玻暴盆地北返獸刮地需要逆風上坡，屬於長路徑。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_saltwind_cut',
+        description: '西側鹽風坡穿過盆地外緣與白色鹽霧後，才會接回鹽風切谷，能見度一路降低',
+        edgeKind: 'long_path',
+        edgeNote: '玻暴盆地到鹽風切谷有鹽霧坡與盆地外緣，不是相鄰平面一格。',
+      },
       { direction: 'east', targetRoomId: 'glass_dunes_lost_dynasty_altar', description: '風暴裂線指向失朝祭壇' },
     ],
     monsters: [
@@ -9693,7 +9801,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鹽風切谷位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'north', targetRoomId: 'glass_dunes_buried_caravan', description: '裂谷北返半埋商隊' },
-      { direction: 'east', targetRoomId: 'glass_dunes_glassstorm_basin', description: '鹽風坡通往玻暴盆地' },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_glassstorm_basin',
+        description: '東側鹽風坡先穿過切谷白霧與碎玻窄脊，才會進入玻暴盆地，風沙會把路標刮淡',
+        edgeKind: 'long_path',
+        edgeNote: '鹽風切谷到玻暴盆地需穿越白霧與碎玻窄脊，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'mirrorsand_stalker', maxCount: 2, respawnSeconds: 130 },
@@ -9720,7 +9834,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_vein_gallery', description: '重腳印回到礦廊' },
       { direction: 'east', targetRoomId: 'glass_dunes_buried_palace_door', description: '碎石階通往埋宮門' },
-      { direction: 'north', targetRoomId: 'glass_dunes_solar_forge', description: '熱裂路升向日輪熔臺' },
+      {
+        direction: 'north',
+        targetRoomId: 'glass_dunes_solar_forge',
+        description: '北側熱裂路沿晶魔像足印上升，繞過熔渣坡與斷裂石階後，才會抵達日輪熔臺',
+        edgeKind: 'long_path',
+        edgeNote: '晶魔像場到日輪熔臺需要上行熔渣坡與石階，距離長於相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'prism_golem_warden', maxCount: 2, respawnSeconds: 190 },
@@ -9746,8 +9866,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '日輪熔臺位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_prism_arch', description: '熱光回到稜鏡拱' },
-      { direction: 'south', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '熔渣坡落回晶魔像場' },
-      { direction: 'east', targetRoomId: 'glass_dunes_lost_dynasty_altar', description: '熔臺光線指向失朝祭壇' },
+      {
+        direction: 'south',
+        targetRoomId: 'glass_dunes_crystal_golem_yard',
+        description: '南返時熔渣坡沿斷裂石階下落，需避開滾燙玻砂後才回到晶魔像場，魔像足印可作路標',
+        edgeKind: 'long_path',
+        edgeNote: '日輪熔臺南返晶魔像場需要下行熔渣坡，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_lost_dynasty_altar',
+        description: '東側熔臺光線穿過多段折射假階後，才會指到失朝祭壇，熱光會讓直線距離看起來失真',
+        edgeKind: 'long_path',
+        edgeNote: '日輪熔臺到失朝祭壇被折射假階干擾，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'solar_forge_elemental', maxCount: 2, respawnSeconds: 200 },
@@ -9772,8 +9904,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '埋宮門位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。北側碎石階可看見晶魔像場，但宮門這端被滑落玻砂封住，需由魔像場側階梯接近。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_mirage_bazaar', description: '破旗線回到海市集影' },
-      { direction: 'east', targetRoomId: 'glass_dunes_sunfire_crater', description: '宮門裂縫通往日火坑' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_mirage_bazaar',
+        description: '西返時破旗線要穿過半埋石柱與幻影市集外緣，才回到海市集影，旗影會不斷重疊',
+        edgeKind: 'long_path',
+        edgeNote: '埋宮門西返海市集影需穿過石柱群與幻影市集，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'glass_dunes_sunfire_crater',
+        description: '東側宮門裂縫會沿埋宮外牆繞過坍落玻砂，才抵達日火坑，坑緣熱浪會逼人貼牆前進',
+        edgeKind: 'long_path',
+        edgeNote: '埋宮門到日火坑需沿坍落宮牆繞行，不是相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'lost_dynasty_sentinel', maxCount: 2, respawnSeconds: 210 },
@@ -9824,7 +9968,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '日火坑位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。南側祭壇光脈仍可辨認，但坑緣玻砂持續坍落，需由失朝祭壇方向踏著光脈進入。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_buried_palace_door', description: '宮門裂縫回到埋宮門' },
+      {
+        direction: 'west',
+        targetRoomId: 'glass_dunes_buried_palace_door',
+        description: '西返時需沿日火坑邊緣逆著熱浪貼牆繞行，穿過坍落玻砂後才回到埋宮門裂縫',
+        edgeKind: 'long_path',
+        edgeNote: '日火坑西返埋宮門需繞過坑緣熱浪與坍落玻砂，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'sunfire_glasswyrm', maxCount: 1, respawnSeconds: 1800 },
