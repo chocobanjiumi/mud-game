@@ -21292,7 +21292,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '焦黑里程碑位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路' },
-      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側' },
+      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址', edgeKind: 'long_path', edgeNote: '焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -21397,9 +21397,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰營殘址位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '回到焦黑里程碑' },
-      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在東側' },
-      { direction: 'south', targetRoomId: 'ember_march_firegrass_flat', description: '火草坪在南側' },
+      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'long_path', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'long_path', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_firegrass_flat', description: '南側戰營殘址穿過塌旗營牆與冒火草溝，沿焦黑補給道下到火草坪', edgeKind: 'long_path', edgeNote: '戰營殘址到火草坪需穿過塌旗營牆與冒火草溝，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 2, respawnSeconds: 260 },
@@ -21424,7 +21424,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '渣鐵橋位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '回到戰營殘址' },
+      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址', edgeKind: 'long_path', edgeNote: '渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫' },
       { direction: 'east', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在東側' },
     ],
@@ -21451,7 +21451,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '火草坪位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'ember_march_war_camp_ruin', description: '回到戰營殘址' },
+      { direction: 'north', targetRoomId: 'ember_march_war_camp_ruin', description: '北側火草坪沿焦黑補給道上行，穿過冒火草溝與塌旗營牆回到戰營殘址', edgeKind: 'long_path', edgeNote: '火草坪回戰營殘址需沿補給道穿過冒火草溝與營牆，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_worm_burrow', description: '熔岩蟲道在東側' },
     ],
     monsters: [
@@ -21506,7 +21506,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_lava_crack', description: '回到熔裂縫' },
       { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側' },
-      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側' },
+      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '東側黑砂盆地沿蒸汽乾渠繞開骨窯熱流，穿過焦骨路標與熔灰坡抵達骨窯隘口', edgeKind: 'long_path', edgeNote: '黑砂盆地到骨窯隘口需沿蒸汽乾渠繞過骨窯熱流，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -21559,7 +21559,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '倒旗坡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ember_forge', description: '回到餘燼鍛台' },
-      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在南側' },
+      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口', edgeKind: 'long_path', edgeNote: '倒旗坡到骨窯隘口需沿軍旗列與骨灰階坡下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_molten_toll', description: '熔火關卡在東側' },
     ],
     monsters: [
@@ -21611,8 +21611,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地' },
-      { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
+      { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '西側骨窯隘口沿熔灰坡折返，穿過焦骨路標與蒸汽乾渠回到黑砂盆地', edgeKind: 'long_path', edgeNote: '骨窯隘口回黑砂盆地需沿熔灰坡與蒸汽乾渠折返，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '北側骨窯隘口沿熱風窄口上攀，穿過骨灰階坡與燒斷軍旗列回到倒旗坡', edgeKind: 'long_path', edgeNote: '骨窯隘口回倒旗坡需沿熱風窄口與軍旗列上攀，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_dragonprint_ridge', description: '龍印脊在東側' },
     ],
     monsters: [
@@ -21639,7 +21639,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '熔火關卡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
-      { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '邊堡外殼在東側' },
+      { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '東側熔火關卡沿熔渣稅道折上，穿過坍塌門洞與燒紅鐵拒馬抵達邊堡外殼', edgeKind: 'long_path', edgeNote: '熔火關卡到邊堡外殼需沿熔渣稅道與坍塌門洞折上，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'border_forge_sentinel', maxCount: 1, respawnSeconds: 420 },
@@ -21665,7 +21665,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '龍印脊位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_bonekiln_pass', description: '回到骨窯隘口' },
-      { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '邊堡外殼在北側' },
+      { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '北側龍印脊沿龍爪熱脊攀升，避開噴火裂縫後從焦黑外牆缺口抵達邊堡外殼', edgeKind: 'long_path', edgeNote: '龍印脊到邊堡外殼需沿龍爪熱脊與外牆缺口攀升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bonekiln_ashguard', maxCount: 1, respawnSeconds: 300 },
@@ -21690,8 +21690,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '邊堡外殼位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '回到熔火關卡' },
-      { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '回到龍印脊' },
+      { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '西側邊堡外殼沿坍塌門洞折返，穿過燒紅鐵拒馬與熔渣稅道回到熔火關卡', edgeKind: 'long_path', edgeNote: '邊堡外殼回熔火關卡需沿門洞與熔渣稅道折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '南側邊堡外殼從焦黑外牆缺口下切，穿過噴火裂縫與龍爪熱脊回到龍印脊', edgeKind: 'long_path', edgeNote: '邊堡外殼回龍印脊需沿外牆缺口與龍爪熱脊下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_heartfire_breach', description: '心火缺口在東側' },
     ],
     monsters: [
