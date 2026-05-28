@@ -27899,7 +27899,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '鹽玻洞在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '北側骨網淺灘沿魚骨浮網斜上，穿過鹽晶潮溝與碎玻潮洞抵達鹽玻洞', edgeKind: 'long_path', edgeNote: '骨網淺灘到鹽玻洞需沿魚骨浮網與鹽晶潮溝斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_bone_net_murloc', maxCount: 2, respawnSeconds: 280 },
@@ -27927,7 +27927,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '赤潮池在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '北側海盜烽燈沿濕滑礁階上行，繞過斷旗繩索與礁釣木樁抵達礁釣哨', edgeKind: 'long_path', edgeNote: '海盜烽燈到礁釣哨需沿濕滑礁階與斷旗繩索上行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_warflag_privateer', maxCount: 1, respawnSeconds: 520 },
@@ -27953,7 +27953,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '赤潮池位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚', edgeKind: 'long_path', edgeNote: '赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_crimson_tide_oracle', maxCount: 1, respawnSeconds: 420 },
@@ -27979,7 +27979,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'south', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
-      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '鹽玻洞在東側' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'long_path', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_smuggler_cutthroat', maxCount: 2, respawnSeconds: 300 },
@@ -28004,8 +28004,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹽玻洞位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '回到鹵蝕小徑' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑', edgeKind: 'long_path', edgeNote: '鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘', edgeKind: 'long_path', edgeNote: '鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在東側' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側' },
     ],
@@ -28033,7 +28033,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '礁釣哨位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'long_path', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在東側' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側' },
     ],
@@ -28061,7 +28061,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '回到赤潮池' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'long_path', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '走私者小灣在東側' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側' },
     ],
