@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:51:28.342Z",
+  "generatedAt": "2026-05-28T10:01:34.706Z",
   "counts": {
     "zones": 60,
     "rooms": 1203,
@@ -2337,6 +2337,23 @@
         ]
       },
       {
+        "id": "ancient_ruins_ancient_runestone_item_entry",
+        "instanceTemplateId": "ancient_ruins",
+        "dungeonId": "ancient_ruins_template",
+        "type": "item_use",
+        "roomId": "ancient_ruins_sunken_entrance",
+        "requiredItemId": "ancient_runestone",
+        "consumeItem": true,
+        "name": "遠古符文石共鳴",
+        "description": "遠古符文石貼近古代遺跡入口時會沿著門楣刻痕發光，石面裂紋指向封閉走廊深處；使用者必須站在遺跡入口前，讓符文耗盡光芒後開啟一次獨立探索。",
+        "minLevel": 22,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "sunken_catacombs_entry",
         "instanceTemplateId": "sunken_catacombs",
         "dungeonId": "sunken_catacombs_template",
@@ -2417,6 +2434,23 @@
         ]
       },
       {
+        "id": "sky_isles_sky_rune_shard_item_entry",
+        "instanceTemplateId": "sky_isles",
+        "dungeonId": "sky_isles_template",
+        "type": "item_use",
+        "roomId": "sky_isles_lift_dock",
+        "requiredItemId": "sky_rune_shard",
+        "consumeItem": false,
+        "name": "浮空符文片定位",
+        "description": "浮空符文片會在浮空群島入口的斷裂錨臺上方旋轉，將散落雲橋短暫對準副本起點；它不會被消耗，但只能在入口房間用來定位可進入的浮空群島探索。",
+        "minLevel": 40,
+        "maxPartySize": 4,
+        "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "deepsea_temple_entry",
         "instanceTemplateId": "deepsea_temple",
         "dungeonId": "deepsea_temple_template",
@@ -2481,6 +2515,23 @@
         ]
       },
       {
+        "id": "time_ruins_minute_zero_key_item_entry",
+        "instanceTemplateId": "time_ruins",
+        "dungeonId": "time_ruins_template",
+        "type": "item_use",
+        "roomId": "time_ruins_epoch_gate",
+        "requiredItemId": "minute_zero_key",
+        "consumeItem": false,
+        "name": "零分鑰印校時",
+        "description": "零分鑰印靠近時間廢墟入口時會把鐘面停在同一刻，讓入口封印露出可通行的裂縫；鑰印不會消耗，但每次校時後需要等待鐘聲重新排列才能再次開啟。",
+        "minLevel": 50,
+        "maxPartySize": 4,
+        "cooldownSeconds": 300,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "astral_wastes_entry",
         "instanceTemplateId": "astral_wastes",
         "dungeonId": "astral_wastes_template",
@@ -2497,6 +2548,23 @@
         ]
       },
       {
+        "id": "astral_wastes_worldcore_anchor_item_entry",
+        "instanceTemplateId": "astral_wastes",
+        "dungeonId": "astral_wastes_template",
+        "type": "item_use",
+        "roomId": "astral_wastes_reality_gate",
+        "requiredItemId": "worldcore_anchor",
+        "consumeItem": false,
+        "name": "荒原核心錨定",
+        "description": "荒原核心錨插入星界荒原入口的裂地時，會把漂移地平線固定成一條可行走的黑星道路；道具不會消耗，隊長可用它帶隊進入穩定後的星界副本。",
+        "minLevel": 52,
+        "maxPartySize": 4,
+        "cooldownSeconds": 300,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
         "id": "final_battleground_entry",
         "instanceTemplateId": "final_battleground",
         "dungeonId": "final_battleground_template",
@@ -2508,6 +2576,23 @@
         "minLevel": 55,
         "maxPartySize": 4,
         "cooldownSeconds": 0,
+        "difficultyOptions": [
+          "normal"
+        ]
+      },
+      {
+        "id": "final_battleground_final_standard_seal_item_entry",
+        "instanceTemplateId": "final_battleground",
+        "dungeonId": "final_battleground_template",
+        "type": "item_use",
+        "roomId": "final_battleground_war_gate",
+        "requiredItemId": "final_standard_seal",
+        "consumeItem": false,
+        "name": "終末軍旗印宣戰",
+        "description": "終末軍旗印舉向終焉戰場入口時，殘破戰旗會回應諸王軍令並展開決戰通道；戰印不會消耗，但入口會在宣戰後沉寂一段時間，避免連續重啟終局戰場。",
+        "minLevel": 55,
+        "maxPartySize": 4,
+        "cooldownSeconds": 600,
         "difficultyOptions": [
           "normal"
         ]
@@ -2641,7 +2726,7 @@
         ]
       }
     ],
-    "mappedRuntimeDungeonEntries": 26,
+    "mappedRuntimeDungeonEntries": 31,
     "instanceEntryIssues": []
   },
   "specialEdges": []

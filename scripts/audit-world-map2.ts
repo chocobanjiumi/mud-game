@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { Direction, RoomDef } from '@game/shared';
+import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
@@ -132,6 +133,13 @@ for (const [zoneId, plan] of zonePlans.entries()) {
     }
     if (entry.type === 'object_interact' && !entry.objectId) {
       instanceEntryIssues.push(`${entry.id}: object_interact entry missing objectId`);
+    }
+    if (entry.type === 'item_use') {
+      if (!entry.requiredItemId) {
+        instanceEntryIssues.push(`${entry.id}: item_use entry missing requiredItemId`);
+      } else if (!ITEM_DEFS[entry.requiredItemId]) {
+        instanceEntryIssues.push(`${entry.id}: requiredItemId ${entry.requiredItemId} missing in ITEM_DEFS`);
+      }
     }
     if (entry.dungeonId && !DUNGEON_DEFS[entry.dungeonId]) {
       instanceEntryIssues.push(`${entry.id}: dungeonId ${entry.dungeonId} missing in DUNGEON_DEFS`);

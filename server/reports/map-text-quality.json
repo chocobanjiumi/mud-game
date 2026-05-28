@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T09:51:28.772Z",
+  "generatedAt": "2026-05-28T10:01:15.345Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -93,9 +93,9 @@
     "equipment": 932,
     "affixes": 28,
     "imagePrompts": 1203,
-    "instanceEntries": 26,
-    "checkedDungeonItems": 115,
-    "issues": 10388
+    "instanceEntries": 31,
+    "checkedDungeonItems": 117,
+    "issues": 10385
   },
   "issuesByKind": {
     "zone.description": 60,
@@ -113,7 +113,7 @@
     "quest.objective": 1425,
     "dungeon.description": 8,
     "dungeon.room.description": 40,
-    "item.description": 42,
+    "item.description": 39,
     "equipment.description": 457,
     "gatheringMaterial.description": 32,
     "gatheringNode.description": 36,
@@ -83698,15 +83698,6 @@
       "reason": "副本相關道具描述需指出用途、地點或消耗規則"
     },
     {
-      "id": "ancient_runestone",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 40,
-      "text": "灰白石塊刻著深陷符文，裂縫裡流動著藍紫微光，握住時能感到古老脈動。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
       "id": "rusted_farm_key",
       "kind": "item.description",
       "field": "description",
@@ -83758,15 +83749,6 @@
       "currentLength": 31,
       "minimumLength": 40,
       "text": "菌燈庭園榨出的淡綠燈油，燃燒時不冒煙，適合地底旅店、碼頭與卷宗庫使用。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "sky_rune_shard",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 33,
-      "minimumLength": 40,
-      "text": "浮空群島符文錨臺和斷方尖碑剝落的白金碎片，仍帶著讓石塊懸浮的微弱推力。",
       "reason": "副本相關道具描述需指出用途、地點或消耗規則"
     },
     {
@@ -83848,15 +83830,6 @@
       "currentLength": 35,
       "minimumLength": 40,
       "text": "方形錘頭由灰白石與黑鐵箍固定，錘面刻著古誓約短文，樸拙厚重，像聖騎士破門武器。",
-      "reason": "副本相關道具描述需指出用途、地點或消耗規則"
-    },
-    {
-      "id": "minute_zero_key",
-      "kind": "item.description",
-      "field": "description",
-      "currentLength": 30,
-      "minimumLength": 40,
-      "text": "鐘心門深處浮現的鑰形時間印記，只有在秒針完全停下時才會顯露輪廓。",
       "reason": "副本相關道具描述需指出用途、地點或消耗規則"
     },
     {
@@ -88792,7 +88765,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「暗影狼」"
     },
     {
-      "id": "item.description/opening:102",
+      "id": "item.description/opening:104",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88801,7 +88774,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:103",
+      "id": "item.description/opening:105",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88810,7 +88783,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:104",
+      "id": "item.description/opening:106",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88819,7 +88792,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:105",
+      "id": "item.description/opening:107",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88828,7 +88801,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:106",
+      "id": "item.description/opening:108",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88837,7 +88810,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:107",
+      "id": "item.description/opening:109",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88846,7 +88819,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:108",
+      "id": "item.description/opening:110",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -88855,7 +88828,7 @@
       "reason": "同批生成內容連續 3 筆使用相同開頭「死都外」"
     },
     {
-      "id": "item.description/opening:109",
+      "id": "item.description/opening:111",
       "kind": "batch.repeatedOpening",
       "field": "text",
       "currentLength": 3,
@@ -93580,31 +93553,31 @@
       "reason": "同批生成內容核心詞「強化」出現於 4/11 筆，超過 30% 門檻"
     },
     {
-      "id": "instanceEntry.description/term:口以",
-      "kind": "batch.repeatedCoreTerm",
-      "field": "text",
-      "currentLength": 100,
-      "minimumLength": 30,
-      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry, sky_isles_entry",
-      "reason": "同批生成內容核心詞「口以」出現於 26/26 筆，超過 30% 門檻"
-    },
-    {
-      "id": "instanceEntry.description/term:以固",
-      "kind": "batch.repeatedCoreTerm",
-      "field": "text",
-      "currentLength": 100,
-      "minimumLength": 30,
-      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry, sky_isles_entry",
-      "reason": "同批生成內容核心詞「以固」出現於 26/26 筆，超過 30% 門檻"
-    },
-    {
       "id": "instanceEntry.description/term:固定",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 100,
+      "currentLength": 87,
       "minimumLength": 30,
       "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry, sky_isles_entry",
-      "reason": "同批生成內容核心詞「固定」出現於 26/26 筆，超過 30% 門檻"
+      "reason": "同批生成內容核心詞「固定」出現於 27/31 筆，超過 30% 門檻"
+    },
+    {
+      "id": "instanceEntry.description/term:獨立",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 87,
+      "minimumLength": 30,
+      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, ancient_ruins_ancient_runestone_item_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry",
+      "reason": "同批生成內容核心詞「獨立」出現於 27/31 筆，超過 30% 門檻"
+    },
+    {
+      "id": "instanceEntry.description/term:刻痕",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 87,
+      "minimumLength": 30,
+      "text": "crystal_cave_entry, demon_territory_entry, dragon_valley_entry, abyss_rift_entry, celestial_ruins_entry, abandoned_mines_entry, ancient_ruins_entry, ancient_ruins_ancient_runestone_item_entry, sunken_catacombs_entry, underground_city_entry, cursed_graveyard_entry, lost_capital_entry",
+      "reason": "同批生成內容核心詞「刻痕」出現於 27/31 筆，超過 30% 門檻"
     },
     {
       "id": "last_bastion_saddle/reference:last_bastion",

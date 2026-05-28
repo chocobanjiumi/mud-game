@@ -3323,6 +3323,9 @@ function cmdUse(session: WsSession, itemName: string): void {
   if (!match) { sendError(session.sessionId, `背包中沒有「${itemName}」。`); return; }
 
   const def = ITEM_DEFS[match.itemId];
+  if (tryUseInstanceEntryItem(session, char, match.itemId, def?.name ?? itemName)) {
+    return;
+  }
   if (!def?.useEffect) { sendError(session.sessionId, `「${def?.name ?? itemName}」無法使用。`); return; }
 
   const effect = def.useEffect;
@@ -5225,6 +5228,31 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
     return;
   }
 
+  startInstanceEntry(session, char, entry);
+}
+
+function tryUseInstanceEntryItem(session: WsSession, char: Character, itemId: string, itemName: string): boolean {
+  const itemEntries = buildInstanceEntryDefs(ZONES).filter(entry => entry.type === 'item_use' && entry.requiredItemId === itemId);
+  if (itemEntries.length === 0) return false;
+
+  const entry = itemEntries.find(candidate => candidate.roomId === char.roomId);
+  if (!entry) {
+    const currentRoomName = getRoom(char.roomId)?.name ?? char.roomId;
+    const allowedRooms = itemEntries
+      .map(candidate => getRoom(candidate.roomId)?.name ?? candidate.roomId)
+      .filter((name, index, all) => all.indexOf(name) === index);
+    sendError(
+      session.sessionId,
+      `你使用了「${itemName}」，但目前所在房間「${currentRoomName}」不是可開啟副本的入口。需求房間：${allowedRooms.join('、')}。下一步：前往指定入口房間後再次使用此道具。`,
+    );
+    return true;
+  }
+
+  startInstanceEntry(session, char, entry);
+  return true;
+}
+
+function startInstanceEntry(session: WsSession, char: Character, entry: InstanceEntryDef): void {
   if (entry.minLevel && char.level < entry.minLevel) {
     sendError(session.sessionId, `等級不足，無法進入「${entry.name}」。目前等級 ${char.level}，需求等級 ${entry.minLevel}。下一步：先完成同等級區域任務或提升等級後再返回入口。`);
     return;
@@ -5232,7 +5260,7 @@ function cmdEnterInstanceEntry(session: WsSession, target: string): void {
 
   const partyMembers = partyMgr.isInParty(char.id) ? partyMgr.getPartyMembers(char.id) : [char.id];
   if (partyMgr.isInParty(char.id) && !partyMgr.isLeader(char.id)) {
-    sendError(session.sessionId, `你正在隊伍中，只有隊長可以開啟「${entry.name}」。下一步：請隊長在同一個入口使用 enter，或先離開隊伍後單人進入。`);
+    sendError(session.sessionId, `你正在隊伍中，只有隊長可以開啟「${entry.name}」。下一步：請隊長在同一個入口使用 enter 或 use，或先離開隊伍後單人進入。`);
     return;
   }
   if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {

@@ -3481,7 +3481,8 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   ancient_runestone: {
     id: 'ancient_runestone', name: '遠古符文石', type: 'material',
-    description: '灰白石塊刻著深陷符文，裂縫裡流動著藍紫微光，握住時能感到古老脈動。', buyPrice: 0, sellPrice: 3000,
+    description: '灰白石塊刻著深陷符文，裂縫裡流動藍紫微光。它來自古代遺跡裂牆，可在遺跡入口啟動遠古符文石共鳴並開啟一次副本，使用後消耗。',
+    buyPrice: 0, sellPrice: 3000,
     stackable: true, maxStack: 99, levelReq: 1,
   },
 
@@ -4264,7 +4265,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   sky_rune_shard: {
     id: 'sky_rune_shard', name: '浮空符文片', type: 'material',
-    description: '浮空群島符文錨臺和斷方尖碑剝落的白金碎片，仍帶著讓石塊懸浮的微弱推力。',
+    description: '浮空群島符文錨臺和斷方尖碑剝落的白金碎片，仍帶著讓石塊懸浮的微弱推力。站在浮空群島入口使用時，可定位副本雲橋，不會消耗。',
     buyPrice: 0, sellPrice: 110,
     stackable: true, maxStack: 99, levelReq: 1,
     sourceTags: ['sky_isles', 'monster_drop', 'salvage'], zoneTags: ['sky_isles'],
@@ -4546,7 +4547,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   minute_zero_key: {
     id: 'minute_zero_key', name: '零分鑰印', type: 'quest',
-    description: '鐘心門深處浮現的鑰形時間印記，只有在秒針完全停下時才會顯露輪廓。',
+    description: '鐘心門深處浮現的鑰形時間印記，只有在秒針完全停下時才會顯露輪廓。站在時間廢墟入口使用可校準零分通道並開啟副本，不會消耗。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 58, rarity: 'legendary',
   },
   afterimage_void_core: {
@@ -4583,7 +4584,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   worldcore_anchor: {
     id: 'worldcore_anchor', name: '荒原核心錨', type: 'quest',
-    description: '星界荒原核心內部抽出的現實錨點，握住它時能感到大地重新擁有重量。',
+    description: '星界荒原核心內部抽出的現實錨點，握住它時能感到大地重新擁有重量。站在星界荒原入口使用可錨定副本道路並帶隊進入，不會消耗。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 59, rarity: 'legendary',
   },
   outer_dark_heart: {
@@ -4625,7 +4626,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   final_standard_seal: {
     id: 'final_standard_seal', name: '終末軍旗印', type: 'quest',
-    description: '終末軍旗統帥身上浮現的戰印，握住它時能聽見諸王軍令與魔神咆哮同時停在最後一字。',
+    description: '終末軍旗統帥身上浮現的戰印，握住它時能聽見諸王軍令與魔神咆哮同時停在最後一字。站在終焉戰場入口使用可宣戰並開啟副本，不會消耗。',
     buyPrice: 0, sellPrice: 0, stackable: true, maxStack: 9, levelReq: 60, rarity: 'legendary',
     sourceTags: ['boss'], zoneTags: ['final_battleground'],
   },
