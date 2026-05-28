@@ -66,6 +66,23 @@ describe('PartyManager logic', () => {
     partyMgr.destroy();
   });
 
+  it('returns actionable party invite messages with player and party state', () => {
+    const freshPartyMgr = new PartyManager();
+    freshPartyMgr.setCharacterLookup(id => characters[id]);
+    const invite = freshPartyMgr.invitePlayer('leader', 'member');
+    expect(invite.success).toBe(true);
+    expect(invite.message).toContain('Member');
+    expect(invite.message).toContain('30 秒內可接受或拒絕');
+    expect(invite.message).toContain('隊伍狀態');
+
+    const accept = freshPartyMgr.acceptInvite('member');
+    expect(accept.success).toBe(true);
+    expect(accept.message).toContain('Leader');
+    expect(accept.message).toContain('隊伍人數');
+    expect(accept.message).toContain('下一步');
+    freshPartyMgr.destroy();
+  });
+
   // Test party exp distribution formula
   const distributeExp = (memberCount: number, totalExp: number): Map<string, number> => {
     const distribution = new Map<string, number>();

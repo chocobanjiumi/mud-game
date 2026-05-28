@@ -104,17 +104,17 @@ export class PartyManager {
   /** 邀請玩家加入隊伍 */
   invitePlayer(inviterId: string, targetId: string): { success: boolean; message: string } {
     if (inviterId === targetId) {
-      return { success: false, message: '不能邀請自己。' };
+      return { success: false, message: '你正在發送組隊邀請，但目標是自己；目前隊伍狀態不變，下一步請輸入其他玩家名稱。' };
     }
 
     // 目標是否已有隊伍
     if (this.characterPartyMap.has(targetId)) {
-      return { success: false, message: '對方已經在隊伍中了。' };
+      return { success: false, message: '你正在發送組隊邀請，但目標玩家已在其他隊伍中；目前隊伍狀態不變，下一步請改邀其他玩家或等待對方離隊。' };
     }
 
     // 目標是否已有待處理邀請
     if (this.pendingInvites.has(targetId)) {
-      return { success: false, message: '對方已有待處理的組隊邀請。' };
+      return { success: false, message: '你正在發送組隊邀請，但目標玩家已有待處理邀請；目前隊伍狀態不變，下一步請等待對方接受或拒絕。' };
     }
 
     const inviterChar = this.getCharacterFn?.(inviterId);
@@ -127,17 +127,17 @@ export class PartyManager {
     if (partyId) {
       const party = this.parties.get(partyId);
       if (!party) {
-        return { success: false, message: '隊伍資料異常。' };
+        return { success: false, message: '你正在邀請玩家加入隊伍，但目前隊伍資料異常；邀請未送出，下一步請重新建立隊伍。' };
       }
 
       // 只有隊長可以邀請
       if (party.leaderId !== inviterId) {
-        return { success: false, message: '只有隊長可以邀請新成員。' };
+        return { success: false, message: '你正在邀請玩家加入隊伍，但目前不是隊長；邀請未送出，下一步請隊長邀請或轉移隊長。' };
       }
 
       // 檢查人數上限
       if (party.memberIds.length >= MAX_PARTY_SIZE) {
-        return { success: false, message: `隊伍已滿（最多 ${MAX_PARTY_SIZE} 人）。` };
+        return { success: false, message: `你正在邀請玩家加入隊伍，但目前隊伍已滿 ${party.memberIds.length}/${MAX_PARTY_SIZE}；下一步請先空出位置。` };
       }
     }
 
@@ -152,10 +152,10 @@ export class PartyManager {
 
     // 通知目標
     sendToCharacter(targetId, 'system', {
-      text: `${inviterName} 邀請你加入隊伍。輸入 "party accept" 接受或 "party decline" 拒絕。`,
+      text: `${inviterName} 邀請你加入隊伍；目前隊伍將在你接受後建立或加入既有隊伍，30 秒內輸入 "party accept" 接受，或輸入 "party decline" 拒絕。`,
     });
 
-    return { success: true, message: `已向 ${targetName} 發送組隊邀請。` };
+    return { success: true, message: `你已向 ${targetName} 發送組隊邀請；對方 30 秒內可接受或拒絕，目前隊伍狀態會在回應後同步。` };
   }
 
   // ──────────────────────────────────────────────────────────
@@ -181,19 +181,19 @@ export class PartyManager {
     if (!partyId || !this.parties.has(partyId)) {
       const result = this.createParty(invite.inviterId);
       if (!result.success || !result.partyId) {
-        return { success: false, message: '無法建立隊伍。' };
+        return { success: false, message: `你接受了 ${invite.inviterName} 的組隊邀請，但系統無法建立隊伍；目前尚未加入，下一步請對方重新邀請。` };
       }
       partyId = result.partyId;
     }
 
     const party = this.parties.get(partyId);
     if (!party) {
-      return { success: false, message: '隊伍資料異常。' };
+      return { success: false, message: `你接受了 ${invite.inviterName} 的組隊邀請，但隊伍資料異常；目前尚未加入，下一步請隊長重新建立隊伍。` };
     }
 
     // 再次檢查人數
     if (party.memberIds.length >= MAX_PARTY_SIZE) {
-      return { success: false, message: `隊伍已滿（最多 ${MAX_PARTY_SIZE} 人）。` };
+      return { success: false, message: `你想加入 ${invite.inviterName} 的隊伍，但目前人數已達 ${party.memberIds.length}/${MAX_PARTY_SIZE}；下一步請等隊長空出位置後重新邀請。` };
     }
 
     // 加入隊伍
@@ -206,12 +206,12 @@ export class PartyManager {
     // 通知全隊
     for (const memberId of party.memberIds) {
       sendToCharacter(memberId, 'system', {
-        text: `${targetName} 加入了隊伍！`,
+        text: `${targetName} 已加入隊伍；目前隊伍人數 ${party.memberIds.length}/${MAX_PARTY_SIZE}，隊長可繼續邀請、調整戰利品模式或開始移動。`,
       });
     }
 
     this.broadcastPartyUpdate(partyId);
-    return { success: true, message: `你加入了 ${invite.inviterName} 的隊伍。` };
+    return { success: true, message: `你已接受 ${invite.inviterName} 的組隊邀請並加入隊伍；目前隊伍人數 ${party.memberIds.length}/${MAX_PARTY_SIZE}，下一步可跟隨隊長或準備戰鬥。` };
   }
 
   /** 拒絕組隊邀請 */
@@ -224,10 +224,10 @@ export class PartyManager {
     this.pendingInvites.delete(targetId);
 
     sendToCharacter(invite.inviterId, 'system', {
-      text: '對方拒絕了你的組隊邀請。',
+      text: `${this.getCharacterFn?.(targetId)?.name ?? '目標玩家'} 拒絕了你的組隊邀請；目前隊伍狀態不變，下一步可邀請其他玩家或稍後再試。`,
     });
 
-    return { success: true, message: '你拒絕了組隊邀請。' };
+    return { success: true, message: `你已拒絕 ${invite.inviterName} 的組隊邀請；目前沒有加入該隊伍，下一步可等待其他邀請或自行建立隊伍。` };
   }
 
   // ──────────────────────────────────────────────────────────

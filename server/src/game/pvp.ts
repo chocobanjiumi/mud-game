@@ -123,11 +123,11 @@ export class PvPManager {
     targetName: string,
   ): string {
     if (challengerId === targetId) {
-      return '你不能向自己發起決鬥。';
+      return '你正在發起決鬥，但目標是自己；決鬥未建立，下一步請指定同房間或可見的其他玩家。';
     }
 
     if (this.pendingDuels.has(targetId)) {
-      return `${targetName} 已有待處理的決鬥請求。`;
+      return `你正在向 ${targetName} 發起決鬥，但對方已有待處理請求；決鬥未建立，下一步請等待對方接受、拒絕或逾時。`;
     }
 
     const request: DuelRequest = {
@@ -142,10 +142,10 @@ export class PvPManager {
     this.pendingDuels.set(targetId, request);
 
     sendToCharacter(targetId, 'system', {
-      text: `${challengerName} 向你發起了決鬥挑戰！輸入 "duel accept" 接受，或 "duel decline" 拒絕。（30 秒內有效）`,
+      text: `${challengerName} 向你發起決鬥挑戰；模式為一對一 PvP，接受後會立即進入戰鬥並承擔死亡懲罰風險，30 秒內輸入 "duel accept" 接受或 "duel decline" 拒絕。`,
     });
 
-    return `已向 ${targetName} 發起決鬥挑戰。`;
+    return `你已向 ${targetName} 發起一對一決鬥挑戰；對方 30 秒內可接受或拒絕，接受後會立即開始 PvP 戰鬥並承擔死亡懲罰風險。`;
   }
 
   /**
@@ -158,19 +158,19 @@ export class PvPManager {
   ): string {
     const request = this.pendingDuels.get(targetId);
     if (!request) {
-      return '你沒有待處理的決鬥請求。';
+      return '你正在接受決鬥，但目前沒有待處理挑戰；下一步請確認是否有人重新發起 duel。';
     }
 
     if (Date.now() > request.expiresAt) {
       this.pendingDuels.delete(targetId);
-      return '決鬥請求已過期。';
+      return `你正在接受 ${request.challengerName} 的決鬥，但請求已超過 30 秒；目前未開戰，下一步請對方重新發起。`;
     }
 
     this.pendingDuels.delete(targetId);
 
     // 通知雙方
     sendToCharacter(request.challengerId, 'system', {
-      text: `${request.targetName} 接受了你的決鬥挑戰！`,
+      text: `${request.targetName} 接受了你的決鬥挑戰；一對一 PvP 即將開始，雙方會承擔經驗、金幣與物品掉落風險。`,
     });
 
     // 啟動 PvP 戰鬥
@@ -182,7 +182,7 @@ export class PvPManager {
       'duel',
     );
 
-    return `決鬥開始！${request.challengerName} vs ${request.targetName}`;
+    return `決鬥開始：${request.challengerName} vs ${request.targetName}；模式為一對一 PvP，勝負會結算 ELO、經驗、金幣與可能物品掉落。`;
   }
 
   /**
@@ -191,16 +191,16 @@ export class PvPManager {
   declineDuel(targetId: string): string {
     const request = this.pendingDuels.get(targetId);
     if (!request) {
-      return '你沒有待處理的決鬥請求。';
+      return '你正在拒絕決鬥，但目前沒有待處理挑戰；下一步請確認是否有人重新發起 duel。';
     }
 
     this.pendingDuels.delete(targetId);
 
     sendToCharacter(request.challengerId, 'system', {
-      text: `${request.targetName} 拒絕了你的決鬥挑戰。`,
+      text: `${request.targetName} 拒絕了你的決鬥挑戰；目前不會進入 PvP 戰鬥，下一步可改邀其他玩家或稍後再試。`,
     });
 
-    return '你拒絕了決鬥挑戰。';
+    return `你已拒絕 ${request.challengerName} 的決鬥挑戰；目前不會進入 PvP 戰鬥，也不會承擔死亡懲罰風險，下一步可繼續探索或等待新挑戰。`;
   }
 
   // ──────────────────────────────────────────────────────────
@@ -213,7 +213,7 @@ export class PvPManager {
   joinArena(characterId: string, character: Character): string {
     // 檢查是否已在排隊中
     if (this.arenaQueue.some(e => e.characterId === characterId)) {
-      return '你已在競技場排隊中。';
+      return '你正在加入競技場，但目前已在 PvP 排隊中；下一步請等待配對，或使用 arena leave 離開隊列。';
     }
 
     this.arenaQueue.push({
@@ -225,10 +225,10 @@ export class PvPManager {
     // 嘗試配對
     const matchResult = this.matchmake();
     if (matchResult) {
-      return '已找到對手，競技場對戰即將開始！';
+      return '競技場已找到對手；模式為配對 PvP，對戰即將開始，請準備承擔勝負、ELO 與死亡懲罰結算。';
     }
 
-    return `已加入競技場排隊，等待匹配對手……（目前排隊人數：${this.arenaQueue.length}）`;
+    return `你已加入競技場 PvP 排隊；目前排隊人數 ${this.arenaQueue.length}，系統會尋找等級接近的對手，配對後會承擔 ELO 與死亡懲罰風險，下一步可等待或輸入 arena leave 離開。`;
   }
 
   /**
@@ -237,10 +237,10 @@ export class PvPManager {
   leaveArena(characterId: string): string {
     const idx = this.arenaQueue.findIndex(e => e.characterId === characterId);
     if (idx === -1) {
-      return '你不在競技場排隊中。';
+      return '你正在離開競技場排隊，但目前不在 PvP 隊列中；狀態不變，下一步可使用 arena join 重新排隊。';
     }
     this.arenaQueue.splice(idx, 1);
-    return '已離開競技場排隊。';
+    return '你已離開競技場 PvP 排隊；目前不會被配對，也不會承擔競技場死亡懲罰風險，下一步可繼續探索或再次使用 arena join。';
   }
 
   /**
@@ -275,10 +275,10 @@ export class PvPManager {
 
     // 通知雙方
     sendToCharacter(p1.characterId, 'system', {
-      text: `競技場配對成功！對手：${p2.character.name}（Lv.${p2.character.level}）`,
+      text: `競技場配對成功；你的對手是 ${p2.character.name}（Lv.${p2.character.level}），模式為配對 PvP，戰鬥即將開始並會結算 ELO 與死亡懲罰。`,
     });
     sendToCharacter(p2.characterId, 'system', {
-      text: `競技場配對成功！對手：${p1.character.name}（Lv.${p1.character.level}）`,
+      text: `競技場配對成功；你的對手是 ${p1.character.name}（Lv.${p1.character.level}），模式為配對 PvP，戰鬥即將開始並會結算 ELO 與死亡懲罰。`,
     });
 
     // 啟動 PvP 戰鬥

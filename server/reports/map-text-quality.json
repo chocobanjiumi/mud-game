@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:47:53.458Z",
+  "generatedAt": "2026-05-28T17:56:01.069Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -155,6 +155,23 @@
         "指定"
       ]
     },
+    "partyPvp": {
+      "partyInviteMessageMinCjkChars": 25,
+      "partySystemMessageMinCjkChars": 25,
+      "pvpMessageMinCjkChars": 25,
+      "duelMessageMinCjkChars": 25,
+      "partyRequiredParts": [
+        "邀請者或目標玩家",
+        "隊伍狀態",
+        "接受 / 拒絕或失敗下一步"
+      ],
+      "pvpRequiredParts": [
+        "發起者或目標",
+        "模式",
+        "風險或限制",
+        "下一步"
+      ]
+    },
     "characterCreation": {
       "classSummaryMinCjkChars": 90,
       "raceSummaryMinCjkChars": 70,
@@ -272,6 +289,8 @@
     "skillUpgradePreviews": 112,
     "combatActionLabels": 10,
     "combatActionTooltips": 10,
+    "partyMessages": 6,
+    "pvpMessages": 7,
     "imagePrompts": 1203,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,

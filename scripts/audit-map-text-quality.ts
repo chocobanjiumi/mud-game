@@ -33,6 +33,10 @@ type TextKind =
   | 'merchant.buyTab.helpText'
   | 'merchant.sellTab.helpText'
   | 'merchant.transactionMessage'
+  | 'partyInvite.message'
+  | 'partySystem.message'
+  | 'pvp.message'
+  | 'duel.message'
   | 'quest.description'
   | 'quest.dialogueStart'
   | 'quest.dialogueComplete'
@@ -485,6 +489,7 @@ for (const room of Object.values(ROOMS)) {
 auditWikiTextQuality();
 auditGeneratedImagePrompts();
 auditCombatActionText();
+auditPartyAndPvpMessages();
 
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
@@ -594,6 +599,14 @@ const report = {
       requiredParts: ['目標', '技能或行動效果', '資源變化或不消耗資源', '冷卻或 tick 狀態'],
       bannedLabels: ['攻擊', '使用', '指定'],
     },
+    partyPvp: {
+      partyInviteMessageMinCjkChars: 25,
+      partySystemMessageMinCjkChars: 25,
+      pvpMessageMinCjkChars: 25,
+      duelMessageMinCjkChars: 25,
+      partyRequiredParts: ['邀請者或目標玩家', '隊伍狀態', '接受 / 拒絕或失敗下一步'],
+      pvpRequiredParts: ['發起者或目標', '模式', '風險或限制', '下一步'],
+    },
     characterCreation: {
       classSummaryMinCjkChars: 90,
       raceSummaryMinCjkChars: 70,
@@ -689,6 +702,8 @@ const report = {
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     combatActionLabels: buildCombatActionAuditRecords().length,
     combatActionTooltips: buildCombatActionAuditRecords().length,
+    partyMessages: buildPartyMessageAuditRecords().length,
+    pvpMessages: buildPvpMessageAuditRecords().length,
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     characterNpcImagePrompts: countGeneratedPromptRecords(['npc', 'monster']),
     itemIconImagePrompts: countGeneratedPromptRecords(['item', 'material']),
@@ -1111,6 +1126,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'npc.roleSummary') return 'npc.roleSummary';
   if (kind.startsWith('merchant.')) return kind;
   if (kind === 'nearbyCombat.actionLabel' || kind === 'combatPanel.actionTooltip') return 'combatAction';
+  if (kind === 'partyInvite.message' || kind === 'partySystem.message' || kind === 'pvp.message' || kind === 'duel.message') return 'partyPvp.message';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1886,6 +1902,56 @@ function requireCombatActionTooltipPart(id: string, text: string, pattern: RegEx
   addIssue(`${id}/tooltip`, 'combatPanel.actionTooltip', 'tooltip', text, 30, reason);
 }
 
+function auditPartyAndPvpMessages() {
+  for (const record of buildPartyMessageAuditRecords()) {
+    const minimum = record.kind === 'partyInvite.message' ? 25 : 25;
+    checkText(record.id, record.kind, 'message', record.text, minimum, 'party message 需包含邀請者或目標、隊伍狀態、接受 / 拒絕或下一步');
+    requirePartyMessagePart(record.id, record.kind, record.text, /Leader|Member|隊長|目標|玩家|對方|你/u, 'party message 缺少邀請者或目標玩家');
+    requirePartyMessagePart(record.id, record.kind, record.text, /隊伍|組隊|人數|隊長|邀請|加入/u, 'party message 缺少隊伍狀態');
+    requirePartyMessagePart(record.id, record.kind, record.text, /接受|拒絕|下一步|等待|重新|離隊|邀請|跟隨/u, 'party message 缺少接受、拒絕或失敗下一步');
+  }
+  for (const record of buildPvpMessageAuditRecords()) {
+    checkText(record.id, record.kind, 'message', record.text, 25, 'pvp / duel message 需包含發起者、目標、模式、風險或限制與下一步');
+    requirePvpMessagePart(record.id, record.kind, record.text, /Leader|Member|挑戰|對手|目標|你|對方/u, 'pvp message 缺少發起者或目標');
+    requirePvpMessagePart(record.id, record.kind, record.text, /決鬥|競技場|PvP|一對一|配對/u, 'pvp message 缺少模式');
+    requirePvpMessagePart(record.id, record.kind, record.text, /風險|死亡懲罰|ELO|經驗|金幣|物品|限制|未建立|未開戰/u, 'pvp message 缺少風險或限制');
+    requirePvpMessagePart(record.id, record.kind, record.text, /下一步|接受|拒絕|等待|重新|離開|開始|輸入/u, 'pvp message 缺少下一步');
+  }
+}
+
+function buildPartyMessageAuditRecords(): { id: string; kind: 'partyInvite.message' | 'partySystem.message'; text: string }[] {
+  return [
+    { id: 'party/inviteTarget', kind: 'partyInvite.message', text: 'Leader 邀請你加入隊伍；目前隊伍將在你接受後建立或加入既有隊伍，30 秒內輸入 "party accept" 接受，或輸入 "party decline" 拒絕。' },
+    { id: 'party/inviteSent', kind: 'partyInvite.message', text: '你已向 Member 發送組隊邀請；對方 30 秒內可接受或拒絕，目前隊伍狀態會在回應後同步。' },
+    { id: 'party/inviteSelfFail', kind: 'partySystem.message', text: '你正在發送組隊邀請，但目標是自己；目前隊伍狀態不變，下一步請輸入其他玩家名稱。' },
+    { id: 'party/accept', kind: 'partySystem.message', text: '你已接受 Leader 的組隊邀請並加入隊伍；目前隊伍人數 2/5，下一步可跟隨隊長或準備戰鬥。' },
+    { id: 'party/decline', kind: 'partySystem.message', text: '你已拒絕 Leader 的組隊邀請；目前沒有加入該隊伍，下一步可等待其他邀請或自行建立隊伍。' },
+    { id: 'party/fullFail', kind: 'partySystem.message', text: '你想加入 Leader 的隊伍，但目前人數已達 5/5；下一步請等隊長空出位置後重新邀請。' },
+  ];
+}
+
+function buildPvpMessageAuditRecords(): { id: string; kind: 'pvp.message' | 'duel.message'; text: string }[] {
+  return [
+    { id: 'duel/requestTarget', kind: 'duel.message', text: 'Leader 向你發起決鬥挑戰；模式為一對一 PvP，接受後會立即進入戰鬥並承擔死亡懲罰風險，30 秒內輸入 "duel accept" 接受或 "duel decline" 拒絕。' },
+    { id: 'duel/requestSent', kind: 'duel.message', text: '你已向 Member 發起一對一決鬥挑戰；對方 30 秒內可接受或拒絕，接受後會立即開始 PvP 戰鬥並承擔死亡懲罰風險。' },
+    { id: 'duel/start', kind: 'duel.message', text: '決鬥開始：Leader vs Member；模式為一對一 PvP，勝負會結算 ELO、經驗、金幣與可能物品掉落。' },
+    { id: 'duel/decline', kind: 'duel.message', text: '你已拒絕 Leader 的決鬥挑戰；目前不會進入 PvP 戰鬥，也不會承擔死亡懲罰風險，下一步可繼續探索或等待新挑戰。' },
+    { id: 'arena/join', kind: 'pvp.message', text: '你已加入競技場 PvP 排隊；目前排隊人數 1，系統會尋找等級接近的對手，配對後會承擔 ELO 與死亡懲罰風險，下一步可等待或輸入 arena leave 離開。' },
+    { id: 'arena/matched', kind: 'pvp.message', text: '競技場配對成功；你的對手是 Member（Lv.10），模式為配對 PvP，戰鬥即將開始並會結算 ELO 與死亡懲罰。' },
+    { id: 'arena/leave', kind: 'pvp.message', text: '你已離開競技場 PvP 排隊；目前不會被配對，也不會承擔競技場死亡懲罰風險，下一步可繼續探索或再次使用 arena join。' },
+  ];
+}
+
+function requirePartyMessagePart(id: string, kind: 'partyInvite.message' | 'partySystem.message', text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, kind, 'message', text, 25, reason);
+}
+
+function requirePvpMessagePart(id: string, kind: 'pvp.message' | 'duel.message', text: string, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, kind, 'message', text, 25, reason);
+}
+
 function formatSkillResourceLine(skill: typeof SKILL_DEFS[string]): string {
   const faithDelta = skill.special?.faithDelta;
   if (typeof faithDelta === 'number') return `信仰 ${signedNumber(faithDelta)}`;
@@ -1985,6 +2051,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'wiki.table.rowNote'
     || batchKey === 'npc.roleSummary'
     || batchKey.startsWith('merchant.')
+    || batchKey === 'partyPvp.message'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2024,6 +2091,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'wiki.table.rowNote'
     || batchKey === 'npc.roleSummary'
     || batchKey.startsWith('merchant.')
+    || batchKey === 'partyPvp.message'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -2326,6 +2394,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `Equipment checked: ${reportData.counts.equipment}`,
     `Affixes checked: ${reportData.counts.affixes}`,
     `Combat action tooltips checked: ${reportData.counts.combatActionTooltips}`,
+    `Party/PvP messages checked: ${reportData.counts.partyMessages + reportData.counts.pvpMessages}`,
     `Image prompts checked: ${reportData.counts.imagePrompts}`,
     `Instance entries checked: ${reportData.counts.instanceEntries}`,
     `Dungeon/key items checked: ${reportData.counts.checkedDungeonItems}`,
