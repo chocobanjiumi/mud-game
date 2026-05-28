@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:15:30.575Z",
+  "generatedAt": "2026-05-28T16:21:25.615Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -71,7 +71,8 @@
       "unresolvedReferencePattern": "[a-z][a-z0-9]+_[a-z0-9_]+"
     },
     "item": {
-      "dungeonItemDescriptionMinCjkChars": 40
+      "dungeonItemDescriptionMinCjkChars": 40,
+      "dungeonEntryTooltipMinCjkChars": 40
     },
     "instanceEntry": {
       "descriptionMinCjkChars": 45
@@ -104,6 +105,7 @@
     "skillUpgradePreviews": 112,
     "imagePrompts": 1203,
     "instanceEntries": 37,
+    "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
     "issues": 0
   },

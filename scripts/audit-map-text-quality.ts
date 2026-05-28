@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
+import { WORLD_MAP2_INSTANCE_ENTRY_ITEMS } from '../packages/shared/src/constants/instance-entry-items.js';
 import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
 import { SKILL_DEFS } from '../packages/shared/src/constants/skills.js';
 import { describeSkillLevel, getSkillUpgradeDeltas, getSkillUpgradeRule } from '../packages/shared/src/systems/skill-upgrades.js';
@@ -30,6 +31,7 @@ type TextKind =
   | 'dungeon.room.description'
   | 'instanceEntry.description'
   | 'item.description'
+  | 'item.tooltip'
   | 'zone.description'
   | 'monster.description'
   | 'monsterFamily.summary'
@@ -206,6 +208,31 @@ for (const item of Object.values(ITEM_DEFS)) {
   checkText(item.id, 'item.description', 'description', item.description, 40, '副本相關道具描述需指出用途、地點或消耗規則');
 }
 
+for (const entryItem of WORLD_MAP2_INSTANCE_ENTRY_ITEMS) {
+  const item = ITEM_DEFS[entryItem.itemId];
+  if (!item) {
+    addMeasuredIssue(entryItem.itemId, 'item.description', 'description', '', 0, 1, '副本入口道具 metadata 找不到對應 ITEM_DEFS');
+    continue;
+  }
+  checkText(
+    entryItem.itemId,
+    'item.description',
+    'description',
+    item.description,
+    40,
+    '副本入口道具 description 需寫出副本名稱、使用地點、入口條件與消耗狀態',
+  );
+  checkDungeonEntryItemDescription(entryItem, item.description);
+  checkText(
+    `${entryItem.itemId}/tooltip`,
+    'item.tooltip',
+    'tooltip',
+    formatDungeonEntryItemTooltipAuditText(entryItem),
+    40,
+    '副本入口道具 tooltip 需顯示副本名稱、使用地點、入口條件、消耗與冷卻',
+  );
+}
+
 for (const item of Object.values(ITEM_DEFS)) {
   if (item.type === 'material') {
     checkText(item.id, 'gatheringMaterial.description', 'description', item.description, 30, '材料描述需說明來源與用途方向');
@@ -347,6 +374,7 @@ const report = {
     },
     item: {
       dungeonItemDescriptionMinCjkChars: 40,
+      dungeonEntryTooltipMinCjkChars: 40,
     },
     instanceEntry: {
       descriptionMinCjkChars: 45,
@@ -368,6 +396,7 @@ const report = {
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     instanceEntries: instanceEntries.length,
+    instanceEntryItems: WORLD_MAP2_INSTANCE_ENTRY_ITEMS.length,
     checkedDungeonItems: Object.values(ITEM_DEFS).filter(item => isDungeonEntryItem(item.id, item.name, item.description)).length,
     issues: issues.length,
   },
@@ -427,6 +456,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'equipment.description') return 'equipment';
   if (kind === 'skill.description') return 'skills';
   if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
+  if (kind === 'item.tooltip') return 'item.tooltip';
   if (kind === 'gatheringMaterial.description') return 'materials';
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
   return kind;
@@ -470,6 +500,31 @@ function checkPrompt(id: string, kind: TextKind, text: string, minimumEnglishWor
   const englishWords = countEnglishWords(text);
   if (englishWords >= minimumEnglishWords || cjkChars >= 120) return;
   addMeasuredIssue(id, kind, 'imagePrompt', text, Math.max(englishWords, cjkChars), minimumEnglishWords, reason);
+}
+
+function checkDungeonEntryItemDescription(entryItem: typeof WORLD_MAP2_INSTANCE_ENTRY_ITEMS[number], description: string): void {
+  const missing: string[] = [];
+  if (!description.includes(entryItem.dungeonName)) missing.push(`副本名稱「${entryItem.dungeonName}」`);
+  if (!description.includes(entryItem.entranceRoomName)) missing.push(`使用地點「${entryItem.entranceRoomName}」`);
+  const consumeText = entryItem.consumeItem ? '使用後消耗' : '不會消耗';
+  if (!description.includes(consumeText)) missing.push(`消耗狀態「${consumeText}」`);
+  if (!/副本|入口|通道|探索/.test(description)) missing.push('入口用途或副本用途');
+  if (missing.length === 0) return;
+  addMeasuredIssue(
+    entryItem.itemId,
+    'item.description',
+    'description',
+    description,
+    countCjkChars(description),
+    40,
+    `副本入口道具描述缺少：${missing.join('、')}`,
+  );
+}
+
+function formatDungeonEntryItemTooltipAuditText(entryItem: typeof WORLD_MAP2_INSTANCE_ENTRY_ITEMS[number]): string {
+  const consumeText = entryItem.consumeItem ? '使用後消耗' : '不會消耗';
+  const cooldownText = entryItem.cooldownSeconds ? `冷卻 ${Math.ceil(entryItem.cooldownSeconds / 60)} 分鐘` : '無額外冷卻';
+  return `副本入口道具 tooltip 顯示可開啟 ${entryItem.dungeonName}，使用地點是 ${entryItem.entranceRoomName}，入口互動為 ${entryItem.entryName}，消耗狀態為${consumeText}，${cooldownText}；說明玩家需帶著對應道具到指定入口使用。`;
 }
 
 function skillDescriptionMinimum(skill: typeof SKILL_DEFS[string]): number {
@@ -574,6 +629,7 @@ function checkRepeatedCoreTerms(records: TextRecord[]) {
 function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
   return batchKey === 'reward.summary'
     || batchKey === 'affix.description'
+    || batchKey === 'item.tooltip'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview';
 }
@@ -588,6 +644,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'monsterFamily.summary'
     || batchKey === 'dungeon.description'
     || batchKey === 'item.description'
+    || batchKey === 'item.tooltip'
     || batchKey === 'equipment'
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'

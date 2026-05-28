@@ -3585,7 +3585,7 @@ const RAW_ITEM_DEFS: Record<string, ItemDef> = {
   },
   ancient_runestone: {
     id: 'ancient_runestone', name: '遠古符文石', type: 'material',
-    description: '灰白石塊刻著深陷符文，裂縫裡流動藍紫微光。它來自古代遺跡裂牆，可在遺跡入口啟動遠古符文石共鳴並開啟一次副本，使用後消耗。',
+    description: '灰白石塊刻著深陷符文，裂縫裡流動藍紫微光。它來自古代遺跡裂牆，可在古代遺跡入口啟動遠古符文石共鳴並開啟一次副本，使用後消耗。',
     buyPrice: 0, sellPrice: 3000,
     stackable: true, maxStack: 99, levelReq: 1,
   },
