@@ -4229,7 +4229,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '老舊農場北方的小徑在兩面岩壁間收窄，清澈溪水沿石縫流出，風穿過谷口時會發出像低聲說話的聲音。入口木牌標著釣點、草藥坡與瀑布方向，是低語溪谷的交通節點與安全錨點。玩家可在此確認退路，也能沿南側小徑回到老農場界碑。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_stone_marker', description: '小徑回到老農場石界碑' },
+      {
+        direction: 'south',
+        targetRoomId: 'old_farmland_stone_marker',
+        description: '南向小徑沿岩壁外緣回到老農場石界碑，路程比相鄰房間更長，谷風會提醒玩家已離開溪谷',
+        edgeKind: 'long_path',
+        edgeNote: '溪谷入口南側需沿岩壁外緣走回廢田界碑，屬於跨區長路徑而非相鄰一格。',
+      },
       { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸' },
       { direction: 'east', targetRoomId: 'whispering_valley_mossy_footbridge', description: '苔石小橋跨過溪水' },
       { direction: 'west', targetRoomId: 'whispering_valley_ranger_post', description: '西側木棚像巡林哨站' },
@@ -4312,7 +4318,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_entrance', description: '石橋西側回到入口' },
       { direction: 'east', targetRoomId: 'whispering_valley_cold_spring', description: '橋東有冷泉冒霧' },
-      { direction: 'north', targetRoomId: 'whispering_valley_herb_slope', description: '橋頭小徑上到草藥坡' },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_herb_slope',
+        description: '橋頭小徑沿溪岸斜坡繞上草藥坡，中途有濕石、高度落差與採集岔路需要辨認',
+        edgeKind: 'long_path',
+        edgeNote: '苔石小橋北側小徑會沿溪岸斜坡繞上草藥坡，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'clearwater_slime', maxCount: 2, respawnSeconds: 35 },
@@ -4338,8 +4350,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '溪谷東坡長滿薄荷、冷葉草與銀邊蕨，清晨露珠讓整面斜坡閃閃發亮。草藥之間有細細蛛絲和小獸腳印，顯示這裡不只有採集者來過。玩家可按藥性採集草藥，也能順著坡頂前往回音岩群或冰蕨叢；若採錯未成熟草株，附近蜘蛛會被震動吸引。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_clear_stream', description: '斜坡下方是清溪淺灘' },
-      { direction: 'south', targetRoomId: 'whispering_valley_mossy_footbridge', description: '小徑回到苔石橋' },
-      { direction: 'north', targetRoomId: 'whispering_valley_ice_fern_patch', description: '冷霧中有冰蕨叢' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_mossy_footbridge',
+        description: '往橋面的回程順著濕滑斜坡折下苔石橋，並非平面相鄰短路，腳下青苔會拖慢步伐',
+        edgeKind: 'long_path',
+        edgeNote: '草藥坡南側需沿濕滑坡道折回橋頭，路線有高度差而非平面相鄰。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_ice_fern_patch',
+        description: '朝冷霧深處穿過多段採集坡面後才抵達冰蕨叢，路線較長且容易驚動蜘蛛',
+        edgeKind: 'long_path',
+        edgeNote: '草藥坡北側會穿過多段冷霧與採集坡面後抵達冰蕨叢，屬於長坡路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 35 },
@@ -4366,7 +4390,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_reed_bank', description: '回到蘆葦岸' },
       { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧' },
-      { direction: 'north', targetRoomId: 'whispering_valley_fallen_log', description: '倒木橫在上游' },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_fallen_log',
+        description: '順著溪流上游繞過濕石與淺灘後，才能抵達倒木淺橋，水聲會遮住怪物動靜',
+        edgeKind: 'long_path',
+        edgeNote: '釣魚灣北側需沿溪流上游繞過濕石與淺灘，才會抵達倒木淺橋。',
+      },
     ],
     monsters: [
       { monsterId: 'reedbank_lurker', maxCount: 2, respawnSeconds: 40 },
@@ -4392,8 +4422,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，玩家可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘' },
-      { direction: 'east', targetRoomId: 'whispering_valley_ice_fern_patch', description: '冷聲從東側冰蕨傳來' },
-      { direction: 'north', targetRoomId: 'whispering_valley_waterfall_base', description: '回音指向瀑布底部' },
+      {
+        direction: 'east',
+        targetRoomId: 'whispering_valley_ice_fern_patch',
+        description: '往東的冷聲穿過折音石縫與冷霧岔路，最後接到冰蕨叢，需要靠霜痕辨路',
+        edgeKind: 'long_path',
+        edgeNote: '回音岩群東側要穿過折音石縫與冷霧岔路，才會接到冰蕨叢。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_waterfall_base',
+        description: '循上游回音繞過多塊崩落岩，才會抵達瀑布底部，途中回聲常讓方向感混亂',
+        edgeKind: 'long_path',
+        edgeNote: '回音岩群北側需循著上游水聲繞過多塊崩落岩，瀑布並非相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'echo_wisp', maxCount: 2, respawnSeconds: 50 },
@@ -4418,8 +4460,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冷泉北側有一處臨時營地，幾棵柳樹把枝條垂成天然簾幕，冷掉的火坑旁放著巡林人的舊背包和簡易草藥架。營地看似安全，卻有被匆忙翻找過的痕跡，地上留下朝蜘蛛洞方向的拖痕。玩家可在此取得任務線索、補給或休息資訊，也能通往山谷東側支線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_cold_spring', description: '柳枝小路回到冷泉' },
-      { direction: 'east', targetRoomId: 'whispering_valley_spider_grotto', description: '拖痕延向蜘蛛洞' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_cold_spring',
+        description: '柳枝小路繞過垂枝與冷泉外圍後才回到泉邊，濕土與拖痕會顯示這是長路',
+        edgeKind: 'long_path',
+        edgeNote: '柳樹營地南側小路會繞過低垂柳枝與冷泉外圍，實際距離長於一格。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'whispering_valley_spider_grotto',
+        description: '沿拖痕穿過灌木與岩縫，曲折延向蛛網岩洞入口，路上可見被蛛絲纏住的布片',
+        edgeKind: 'long_path',
+        edgeNote: '柳樹營地東側拖痕穿過多段灌木與岩縫，抵達蛛網岩洞需一段曲折路程。',
+      },
       { direction: 'north', targetRoomId: 'whispering_valley_old_shrine', description: '營地後方有舊石龕' },
     ],
     monsters: [
@@ -4446,7 +4500,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '苔石小橋東側冒出一眼清冷泉水，泉面泛著淡藍光，周圍石頭比溪谷其他地方更冷。泉邊長著冰蕨幼苗和細小白花，水中偶爾有半透明史萊姆滑過。這裡是治療與資源節點，玩家可採集冷泉水或尋找冰屬性材料，但泉水過冷會讓行動變慢。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_mossy_footbridge', description: '回到苔石小橋' },
-      { direction: 'north', targetRoomId: 'whispering_valley_willow_camp', description: '柳樹營地在泉北' },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_willow_camp',
+        description: '沿泉霧與柳根小徑繞行一段後才會抵達柳樹營地，營火灰燼可作為方向線索',
+        edgeKind: 'long_path',
+        edgeNote: '冷泉北側需沿泉霧與柳根小徑繞行至營地，路線不是平面相鄰格。',
+      },
       { direction: 'east', targetRoomId: 'whispering_valley_spider_grotto', description: '岩縫通向蜘蛛洞' },
     ],
     monsters: [
@@ -4474,8 +4534,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '冷泉東側的岩縫通向一座淺洞，洞頂滲水滴落在蛛網上，讓整片白網像結霜一樣閃亮。洞內散著小動物骨骸和被拖入的巡林布片，顯示蜘蛛在此築巢已有一段時間。這裡是精英感較強的戰鬥點，玩家若想救出營地線索，必須清理洞口與深處蛛群。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_cold_spring', description: '岩縫回到冷泉' },
-      { direction: 'north', targetRoomId: 'whispering_valley_old_shrine', description: '蛛網後有通往舊神龕的小洞' },
-      { direction: 'south', targetRoomId: 'whispering_valley_mist_pool', description: '潮濕坡道落向霧潭' },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_old_shrine',
+        description: '蛛網後的狹小洞道穿過舊刻痕才通往溪畔舊神龕，低矮岩縫會迫使玩家繞行',
+        edgeKind: 'long_path',
+        edgeNote: '蛛網岩洞北側需穿過蛛絲遮蔽的狹縫與舊刻痕，才會抵達溪畔神龕。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_mist_pool',
+        description: '潮濕坡道先繞過塌岸與蛛絲，最後落到霧潭邊緣，滑落聲可能引來潛伏怪物',
+        edgeKind: 'long_path',
+        edgeNote: '蛛網岩洞南側坡道濕滑且曲折，會先繞過塌岸再落到霧潭邊。',
+      },
     ],
     monsters: [
       { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 35 },
@@ -4501,9 +4573,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '一棵老樹倒在釣魚灣上游，樹幹橫跨溪水，形成勉強可走的天然淺橋。樹皮長滿蘑菇和青苔，枝杈間卡著羽毛、魚骨和幾段破線。通過倒木可到達霧潭或回音岩群，但腳下濕滑，戰鬥時很容易被史萊姆逼退到水裡。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_fishing_bend', description: '沿溪回到釣魚灣' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_fishing_bend',
+        description: '沿上游水線退回釣魚灣，途中需繞過濕石與倒木根部，水位變化會影響通行',
+        edgeKind: 'long_path',
+        edgeNote: '倒木淺橋南側需沿上游水線退回釣魚灣，並非直接相鄰的短路徑。',
+      },
       { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '倒木西端靠近回音岩群' },
-      { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '倒木東端通往霧潭' },
+      {
+        direction: 'east',
+        targetRoomId: 'whispering_valley_mist_pool',
+        description: '跨過濕滑倒木與塌陷潭岸後才會抵達霧潭邊，腳下落差讓這段路不能視為鄰格',
+        edgeKind: 'long_path',
+        edgeNote: '倒木東端要跨過濕滑樹幹與塌陷潭岸，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'clearwater_slime', maxCount: 1, respawnSeconds: 35 },
@@ -4528,8 +4612,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '溪水在倒木與蛛洞之間積成一口圓潭，潭面常年飄著薄霧，看不清水底。西側倒木回到上游，北面濕坡通向蛛網岩洞；南側可聽見釣魚灣水聲，但潭岸塌陷後無法直接退回彎灣。霧中偶爾浮現魚影和像手指般的水草，岸邊石頭濕滑而寒冷。這裡可作為釣魚、採水與遭遇點；玩家若在霧中停留太久，會聽見不屬於同伴的低語引導自己靠近深水。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'whispering_valley_fallen_log', description: '倒木通回上游' },
-      { direction: 'north', targetRoomId: 'whispering_valley_spider_grotto', description: '濕坡通往蛛網岩洞' },
+      {
+        direction: 'west',
+        targetRoomId: 'whispering_valley_fallen_log',
+        description: '沿塌岸攀回倒木東端，潮濕地形讓路程比相鄰格更長，霧氣會遮住回頭路',
+        edgeKind: 'long_path',
+        edgeNote: '霧潭西側需沿塌岸攀回倒木東端，潮濕地形讓路程長於相鄰一格。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_spider_grotto',
+        description: '濕坡繞進蛛網遮蔽的岩縫，上坡一段後才到岩洞，洞口前能看見密集蛛絲',
+        edgeKind: 'long_path',
+        edgeNote: '霧潭北側濕坡會繞進蛛網遮蔽的岩縫，抵達洞口前有一段曲折上坡。',
+      },
     ],
     monsters: [
       { monsterId: 'clearwater_slime', maxCount: 2, respawnSeconds: 35 },
@@ -4556,7 +4652,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '柳樹營地北方的溪畔藏著一座小神龕，石面覆滿青苔，幾條褪色祈願布被系在枝上。神龕供奉的不是明確神像，而是一塊被水磨圓的白石，石上刻著代表水聲、風聲與回音的三枚符號。這裡是溪谷任務線的重要地標，玩家可獻上冷泉水或找回巡林徽章，讓神龕重新回應溪谷低語。神龕後方的岩壁有許多被蛛絲遮住的舊刻痕，記錄巡林人曾用聲音安撫溪谷水脈；東側蛛洞裂縫只夠細小生物穿過，玩家需從冷泉岩縫進入蛛網岩洞。若玩家先清理蛛網岩洞，再回到此處調查，白石會短暫發光並指出隱瀑石室方向。祈願布末端還綁著幾枚小鈴，風起時會敲出與低語裂縫相同的節奏。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_willow_camp', description: '柳樹小徑回到營地' },
-      { direction: 'north', targetRoomId: 'whispering_valley_waterfall_base', description: '上游水聲越來越響' },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_waterfall_base',
+        description: '沿溪畔刻痕與水霧往上游前進，瀑布聲會逐漸變大，石龕鈴聲會在背後變弱',
+        edgeKind: 'long_path',
+        edgeNote: '舊神龕北側需沿溪畔刻痕與水霧繞到瀑布底部，並非直接相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'ice_fern_weaver', maxCount: 1, respawnSeconds: 90 },
@@ -4581,8 +4683,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '草藥坡北端突然變冷，地面長出一片淡藍冰蕨，每片葉緣都凝著霜珠。冰蕨會隨聲音微微顫動，把腳步聲傳向回音岩群和瀑布方向。這裡是稀有採集點，玩家可取得冰屬性藥草，也要小心藏在葉背的蜘蛛和被寒氣吸引的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_herb_slope', description: '回到較溫暖的草藥坡' },
-      { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '冷聲回到回音岩群' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_herb_slope',
+        description: '穿過冷霧坡面與濕草帶後才回到較溫暖的草藥坡，霜珠消退代表接近下坡',
+        edgeKind: 'long_path',
+        edgeNote: '冰蕨叢南側需穿過冷霧坡面回到草藥坡，路線帶有明顯高度差。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'whispering_valley_echo_rocks',
+        description: '冷聲穿過折音岩縫回到回音岩群，玩家需繞行石縫並避開會放大腳步聲的岩面',
+        edgeKind: 'long_path',
+        edgeNote: '冰蕨叢西側聲音會穿過折音岩縫回到岩群，玩家實際需繞行石縫。',
+      },
       { direction: 'north', targetRoomId: 'whispering_valley_hidden_cascade', description: '霜霧指向隱瀑' },
     ],
     monsters: [
@@ -4608,8 +4722,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。北側狼徑氣味指向石堰，但巢後根洞塌陷，玩家需從巡林哨站小徑抵達石堰。這裡是低等精英戰鬥房，玩家若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'east', targetRoomId: 'whispering_valley_waterfall_base', description: '水聲通向瀑布底部' },
-      { direction: 'south', targetRoomId: 'whispering_valley_echo_rocks', description: '岩間小路回到回音岩群' },
+      {
+        direction: 'east',
+        targetRoomId: 'whispering_valley_waterfall_base',
+        description: '沿根洞與水霧小徑繞行後，水聲會引到瀑布底部，狼爪印會標出危險彎道',
+        edgeKind: 'long_path',
+        edgeNote: '溪狼巢東側要沿根洞與水霧小徑繞到瀑布底部，距離長於相鄰一格。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_echo_rocks',
+        description: '岩間小路避開根洞與崩石後，曲折回到回音岩群，碎石坡會讓退路變慢',
+        edgeKind: 'long_path',
+        edgeNote: '溪狼巢南側岩間小路需避開巢穴根洞與崩石，回到岩群前會繞行一段。',
+      },
     ],
     monsters: [
       { monsterId: 'creek_wolf_stalker', maxCount: 2, respawnSeconds: 90 },
@@ -4634,9 +4760,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '溪谷上游的瀑布從灰白岩壁落下，水霧把周圍石頭和樹根都染成濕亮銀色。瀑聲很大，卻能在某些角度聽見清楚低語，像有人站在水幕後說話。這裡是溪谷中段地標，連接狼巢、舊神龕方向、隱瀑與石堰；舊神龕可在東側水霧中看見，但濕石崩塌後不能直接橫切，需從下游柳樹營地繞行。玩家可搜索水幕、採集濕苔或尋找隱藏通路。瀑布落點周圍的石頭被水流磨出三圈同心紋，與低語裂縫符號相同。若調整石堰水量，水幕會短暫分開，露出通往隱瀑石室的安全落腳點。瀑布背後還有巡林人刻下的高度標記，顯示近年水位忽高忽低，溪谷低語也隨之變得混亂。霧中可見藍白光點上下漂移。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_echo_rocks', description: '下游回到回音岩群' },
-      { direction: 'west', targetRoomId: 'whispering_valley_wolf_den', description: '水霧後有狼巢小徑' },
-      { direction: 'north', targetRoomId: 'whispering_valley_hidden_cascade', description: '水幕後似乎還有隱瀑' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_echo_rocks',
+        description: '沿下游濕石與回音水道前進一段後才回到回音岩群，瀑聲會逐步被岩群回音取代',
+        edgeKind: 'long_path',
+        edgeNote: '瀑布底部南側需沿下游濕石與回音水道回到岩群，實際路程較長。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'whispering_valley_wolf_den',
+        description: '水霧後藏著狼巢小徑，需繞過樹根與濕滑岩面，魚骨與爪痕會提示接近巢穴',
+        edgeKind: 'long_path',
+        edgeNote: '瀑布底部西側狼徑藏在水霧與樹根後方，通往巢穴需繞過濕滑岩面。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_hidden_cascade',
+        description: '穿過瀑布水幕與內側落腳點後會進入隱瀑石室，水壓讓通行像一段短探險',
+        edgeKind: 'long_path',
+        edgeNote: '瀑布底部北側需穿過水幕與內側落腳點，才會抵達隱瀑石室。',
+      },
     ],
     monsters: [
       { monsterId: 'clearwater_slime', maxCount: 2, respawnSeconds: 35 },
@@ -4661,8 +4805,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '穿過瀑布水幕後，岩壁內竟藏著一間狹長石室，第二道更細的隱瀑沿著裂縫落入深潭。石室牆面佈滿水蝕符號，形狀與舊神龕白石上的符文一致。東側冷霧連到冰蕨叢，但裂縫被水流沖蝕得過窄，只能從冰蕨叢方向找到入口。這裡是隱藏探索房，玩家能揭開低語來源、找到稀有水晶，也會遭遇從蛛洞和冷泉追來的怪物。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_waterfall_base', description: '穿回外側瀑布底部' },
-      { direction: 'north', targetRoomId: 'whispering_valley_whispering_rift', description: '水蝕符號指向低語裂縫' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_waterfall_base',
+        description: '穿越內外兩層水幕後才能退回外側瀑布底部，落水聲會遮住出口位置',
+        edgeKind: 'long_path',
+        edgeNote: '隱瀑石室南側需穿越內外兩層水幕，退回瀑布底部不是相鄰平面移動。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_whispering_rift',
+        description: '沿水蝕符號深入狹縫暗道，最後抵達低語裂縫，藍白光絲會作為前進路標',
+        edgeKind: 'long_path',
+        edgeNote: '隱瀑石室北側需沿水蝕符號深入狹縫，抵達低語裂縫前有一段暗道。',
+      },
     ],
     monsters: [
       { monsterId: 'echo_wisp', maxCount: 2, respawnSeconds: 50 },
@@ -4714,8 +4870,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '巡林小徑北端有一座矮石堰，把溪水分成幾條淺流，石塊上刻著水位線和修補記號。若移動幾塊鬆動石頭，就能改變下游冷泉與釣魚灣的水量。這裡是事件與捷徑點，玩家可修復石堰、追蹤狼群，或由西側小路快速切到瀑布附近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'south', targetRoomId: 'whispering_valley_ranger_post', description: '巡林小徑回到哨站' },
-      { direction: 'east', targetRoomId: 'whispering_valley_wolf_den', description: '狼徑通向溪狼巢' },
-      { direction: 'north', targetRoomId: 'whispering_valley_whispering_rift', description: '水流聲指向低語裂縫' },
+      {
+        direction: 'east',
+        targetRoomId: 'whispering_valley_wolf_den',
+        description: '狼徑沿淺流與根洞繞行一段，最後通向溪狼巢，途中濕泥會留下明顯爪印',
+        edgeKind: 'long_path',
+        edgeNote: '石堰東側狼徑需沿淺流與根洞繞行，抵達溪狼巢不是相鄰一格。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'whispering_valley_whispering_rift',
+        description: '循水流聲與水位線穿過裂石暗道，才會抵達低語裂縫，石堰符號可確認路線',
+        edgeKind: 'long_path',
+        edgeNote: '石堰北側需循水位線與裂石暗道前進，才會抵達低語裂縫。',
+      },
     ],
     monsters: [
       { monsterId: 'creek_wolf_stalker', maxCount: 1, respawnSeconds: 90 },
@@ -4740,7 +4908,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '隱瀑石室與石堰水聲最終都指向這道狹窄岩縫，南側水蝕小徑可退回石室，西面水聲可聽見石堰但岩縫落差過大，需從巡林哨站路線抵達石堰。裂縫裡不是黑暗，而是細細流動的藍白光絲，所有溪谷低語都從這裡被水聲帶出。岩壁符號會回應舊神龕白石、巡林哨站記錄和石堰水位，像在要求玩家完成一套修復溪谷聲音的儀式。這裡是低語溪谷的大型事件鉤子與 Boss 前哨，怪物會被過強的回音吸引而來。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_hidden_cascade', description: '水蝕小徑回到隱瀑石室' },
+      {
+        direction: 'south',
+        targetRoomId: 'whispering_valley_hidden_cascade',
+        description: '沿狹窄水蝕小徑退回隱瀑石室，屬於長暗道移動，水聲會逐漸變成瀑布回音',
+        edgeKind: 'long_path',
+        edgeNote: '低語裂縫南側需沿狹窄水蝕小徑退回石室，屬於長暗道而非相鄰格。',
+      },
     ],
     monsters: [
       { monsterId: 'whispering_rift_voice', maxCount: 1, respawnSeconds: 1200 },
