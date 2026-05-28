@@ -612,16 +612,32 @@ export function buildPlannedWorldCoordinateMap(
     const minX = Math.min(...[...relativeByRoom.values()].map(coord => coord.x));
     const minY = Math.min(...[...relativeByRoom.values()].map(coord => coord.y));
 
-    for (const room of derivedRooms) {
-      const relative = relativeByRoom.get(room.id);
-      if (!relative) continue;
-      const preferred = {
-        x: plan.globalBounds.minX + relative.x - minX,
-        y: plan.globalBounds.minY + relative.y - minY,
+    const plannedCoordinates = derivedRooms
+      .map(room => {
+        const relative = relativeByRoom.get(room.id);
+        if (!relative) return null;
+        return {
+          room,
+          coordinate: {
+            x: plan.globalBounds!.minX + relative.x - minX,
+            y: plan.globalBounds!.minY + relative.y - minY,
+          },
+        };
+      })
+      .filter((entry): entry is { room: RoomDef; coordinate: RelativeCoordinate } => Boolean(entry));
+    const offset = findAvailableGroupOffset(
+      plannedCoordinates.map(entry => entry.coordinate),
+      occupied,
+      zones[zone.id].rooms.length + 48,
+    );
+
+    for (const entry of plannedCoordinates) {
+      const coordinate = {
+        x: entry.coordinate.x + offset.x,
+        y: entry.coordinate.y + offset.y,
       };
-      const coordinate = findAvailableRelativeCoordinate(preferred, occupied, zones[room.zone].rooms.length + 24);
       occupied.add(coordinateKey(coordinate));
-      coordinates.set(room.id, {
+      coordinates.set(entry.room.id, {
         worldX: coordinate.x,
         worldY: coordinate.y,
         source: 'derived',
@@ -694,6 +710,43 @@ function findAvailableRelativeCoordinate(
   }
 
   return { x: preferred.x + maxRadius + 1, y: preferred.y };
+}
+
+function findAvailableGroupOffset(
+  coordinates: RelativeCoordinate[],
+  occupied: Set<string>,
+  maxRadius: number,
+): RelativeCoordinate {
+  if (!groupHasCollision(coordinates, occupied, { x: 0, y: 0 })) return { x: 0, y: 0 };
+
+  for (let radius = 1; radius <= maxRadius; radius++) {
+    for (let dx = -radius; dx <= radius; dx++) {
+      for (let dy = -radius; dy <= radius; dy++) {
+        if (Math.abs(dx) !== radius && Math.abs(dy) !== radius) continue;
+        const offset = { x: dx, y: dy };
+        if (!groupHasCollision(coordinates, occupied, offset)) return offset;
+      }
+    }
+  }
+
+  return { x: maxRadius + 1, y: 0 };
+}
+
+function groupHasCollision(
+  coordinates: RelativeCoordinate[],
+  occupied: Set<string>,
+  offset: RelativeCoordinate,
+): boolean {
+  const seen = new Set<string>();
+  for (const coordinate of coordinates) {
+    const key = coordinateKey({
+      x: coordinate.x + offset.x,
+      y: coordinate.y + offset.y,
+    });
+    if (seen.has(key) || occupied.has(key)) return true;
+    seen.add(key);
+  }
+  return false;
 }
 
 function coordinateKey(coordinate: RelativeCoordinate): string {
