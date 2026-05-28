@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:49:50.091Z",
+  "generatedAt": "2026-05-28T16:52:58.533Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -39,6 +39,7 @@
     },
     "gathering": {
       "nodeDescriptionMinCjkChars": 35,
+      "hintMinCjkChars": 35,
       "rareNodeDescriptionMinCjkChars": 50,
       "riskRelatedNodeDescriptionMinCjkChars": 45,
       "rareNodeLevelMin": 31,
@@ -48,6 +49,15 @@
         "採集動作"
       ],
       "materialDescriptionMinCjkChars": 30
+    },
+    "crafting": {
+      "recipeDescriptionMinCjkChars": 35,
+      "requiredDescriptionParts": [
+        "材料來源",
+        "製作用途",
+        "需求站點或技能",
+        "可能產物"
+      ]
     },
     "equipment": {
       "descriptionMinCjkChars": 35,
@@ -138,8 +148,10 @@
     "monsters": 521,
     "monsterFamilies": 13,
     "gatheringNodes": 36,
+    "gatheringHints": 36,
     "rareGatheringNodes": 18,
     "riskRelatedGatheringNodes": 17,
+    "craftingRecipes": 40,
     "materials": 291,
     "equipment": 932,
     "lootTables": 521,

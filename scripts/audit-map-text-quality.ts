@@ -16,6 +16,7 @@ import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { NPCS } from '../server/src/data/npcs.js';
 import { DUNGEON_DEFS } from '../server/src/data/dungeons.js';
+import { RECIPES, type CraftingCategory, type RecipeDef } from '../server/src/game/crafting.js';
 import { QUEST_DEFS } from '../server/src/game/quest.js';
 import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom } from '../server/src/data/world-map2-plan.js';
@@ -41,7 +42,9 @@ type TextKind =
   | 'monster.description'
   | 'monsterFamily.summary'
   | 'gatheringNode.description'
+  | 'gatheringHint'
   | 'gatheringMaterial.description'
+  | 'craftingRecipe.description'
   | 'equipment.description'
   | 'equipment.tooltip'
   | 'lootTable.summary'
@@ -291,6 +294,25 @@ for (const monster of Object.values(MONSTERS)) {
 
 for (const node of Object.values(GATHERING_NODE_DEFS)) {
   auditGatheringNodeDescription(node);
+  checkText(
+    `${node.id}/hint`,
+    'gatheringHint',
+    'hint',
+    formatGatheringHintAuditText(node),
+    35,
+    'gathering hint 需包含材料來源、採集用途、需求技能或場景、可能產物',
+  );
+}
+
+for (const recipe of Object.values(RECIPES)) {
+  checkText(
+    recipe.id,
+    'craftingRecipe.description',
+    'description',
+    formatCraftingRecipeDescriptionAuditText(recipe),
+    35,
+    'crafting recipe description 需包含材料來源、製作用途、需求站點或技能、可能產物',
+  );
 }
 
 for (const affix of Object.values(AFFIX_POOLS).flat()) {
@@ -468,11 +490,16 @@ const report = {
     },
     gathering: {
       nodeDescriptionMinCjkChars: 35,
+      hintMinCjkChars: 35,
       rareNodeDescriptionMinCjkChars: 50,
       riskRelatedNodeDescriptionMinCjkChars: 45,
       rareNodeLevelMin: 31,
       requiredDescriptionParts: ['資源外觀', 'room 地貌或生成環境', '採集動作'],
       materialDescriptionMinCjkChars: 30,
+    },
+    crafting: {
+      recipeDescriptionMinCjkChars: 35,
+      requiredDescriptionParts: ['材料來源', '製作用途', '需求站點或技能', '可能產物'],
     },
     equipment: {
       descriptionMinCjkChars: 35,
@@ -547,8 +574,10 @@ const report = {
     monsters: Object.keys(MONSTERS).length,
     monsterFamilies: monsterFamilies.size,
     gatheringNodes: Object.keys(GATHERING_NODE_DEFS).length,
+    gatheringHints: Object.keys(GATHERING_NODE_DEFS).length,
     rareGatheringNodes: Object.values(GATHERING_NODE_DEFS).filter(node => isRareGatheringNode(node)).length,
     riskRelatedGatheringNodes: Object.values(GATHERING_NODE_DEFS).filter(node => isRiskRelatedGatheringNode(node)).length,
+    craftingRecipes: Object.keys(RECIPES).length,
     materials: Object.values(ITEM_DEFS).filter(item => item.type === 'material').length,
     equipment: Object.values(ITEM_DEFS).filter(item => item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory').length,
     lootTables: Object.values(MONSTERS).length,
@@ -658,6 +687,76 @@ function isRiskRelatedGatheringNode(node: typeof GATHERING_NODE_DEFS[string]): b
     || /崩裂|污染|暗影|蛛|蛇|龍|魔像|戰場|火山|灼熱|燒灼|機關|巡行|古龍|亡靈/u.test(node.description);
 }
 
+function formatGatheringHintAuditText(node: typeof GATHERING_NODE_DEFS[string]): string {
+  const yields = node.yields
+    .slice()
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 3)
+    .map(yieldDef => {
+      const item = ITEM_DEFS[yieldDef.itemId];
+      return `${item?.name ?? readableTag(yieldDef.itemId)} ${qualityLabel(yieldDef.quality)} x${yieldDef.minQty}-${yieldDef.maxQty}`;
+    })
+    .join('、');
+  const roomText = [...node.roomTags, ...node.zoneTags].map(tag => ZONES[tag]?.name ?? equipmentSourceLabel(tag)).join('、');
+  return `採集提示「${node.name}」需要${gatheringSkillLabel(node.skill)}技能，常見於${roomText}場景。材料來源是${node.description}，採集後可能取得${yields}，用途方向包含製作、任務、交易或裝備素材。`;
+}
+
+function formatCraftingRecipeDescriptionAuditText(recipe: RecipeDef): string {
+  const materials = recipe.materials.map(material => {
+    const item = ITEM_DEFS[material.itemId];
+    return `${item?.name ?? readableTag(material.itemId)} x${material.count}`;
+  }).join('、');
+  const result = getRecipeResultForAudit(recipe);
+  const resultItem = result ? ITEM_DEFS[result.itemId] : undefined;
+  const resultText = result
+    ? `${resultItem?.name ?? readableTag(result.itemId)}${result.count > 1 ? ` x${result.count}` : ''}`
+    : '依玩家選擇的裝備部位產生對應成品';
+  const slotText = recipe.slotResults
+    ? `可指定部位包含${Object.keys(recipe.slotResults).map(equipmentSlotLabel).join('、')}。`
+    : '';
+  return `配方「${recipe.name}」屬於${craftingCategoryLabel(recipe.category)}站點或技能，需求製作等級 Lv.${recipe.level}、成功率 ${recipe.successRate}%、完成後取得 ${recipe.exp} 製作經驗。材料來源包含${materials}，製作用途是產出${resultText}，${slotText}可能產物與材料數量都必須在 UI 中顯示，避免只列內部配方 id。`;
+}
+
+function getRecipeResultForAudit(recipe: RecipeDef): RecipeDef['result'] | undefined {
+  return recipe.result ?? Object.values(recipe.slotResults ?? {})[0];
+}
+
+function gatheringSkillLabel(skill: string): string {
+  const labels: Record<string, string> = {
+    mining: '採礦',
+    herbalism: '草藥學',
+    logging: '伐木',
+    skinning: '剝皮',
+    fishing: '釣魚',
+    archaeology: '考古',
+  };
+  return labels[skill] ?? skill;
+}
+
+function craftingCategoryLabel(category: CraftingCategory): string {
+  const labels: Record<CraftingCategory, string> = {
+    forge: '鍛造',
+    tailoring: '裁縫',
+    leatherworking: '皮革',
+    jewelcrafting: '珠寶',
+    alchemy: '煉金',
+    enchanting: '附魔',
+    cooking: '烹飪',
+  };
+  return labels[category] ?? category;
+}
+
+function qualityLabel(quality: string): string {
+  const labels: Record<string, string> = {
+    rough: '粗糙',
+    normal: '普通',
+    fine: '精良',
+    rare: '稀有',
+    perfect: '完美',
+  };
+  return labels[quality] ?? quality;
+}
+
 function recordText(id: string, kind: TextKind, field: string, text: string) {
   if (!text.trim()) return;
   textRecords.push({
@@ -683,7 +782,9 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'skill.description') return 'skills';
   if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
   if (kind === 'item.tooltip') return 'item.tooltip';
+  if (kind === 'gatheringHint') return 'gatheringHint';
   if (kind === 'gatheringMaterial.description') return 'materials';
+  if (kind === 'craftingRecipe.description') return 'craftingRecipe.description';
   if (kind === 'mapMarker.tooltip') return 'mapMarker.tooltip';
   if (kind === 'roomAction.tooltip') return 'roomAction.tooltip';
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
@@ -1155,6 +1256,8 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
   return batchKey === 'reward.summary'
     || batchKey === 'affix.description'
     || batchKey === 'item.tooltip'
+    || batchKey === 'gatheringHint'
+    || batchKey === 'craftingRecipe.description'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
     || batchKey === 'mapMarker.tooltip'
@@ -1178,6 +1281,8 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'equipment.tooltip'
     || batchKey === 'lootTable.summary'
     || batchKey === 'dropSource.note'
+    || batchKey === 'gatheringHint'
+    || batchKey === 'craftingRecipe.description'
     || batchKey === 'class.summary'
     || batchKey === 'race.summary'
     || batchKey === 'faith.summary'
