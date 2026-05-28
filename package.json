@@ -10,6 +10,7 @@
     "validate:mud5": "pnpm --filter server exec tsx ../scripts/validate-mud5.ts",
     "audit:room-exits": "pnpm --filter server exec tsx ../scripts/audit-room-exits.ts",
     "audit:world-map2": "pnpm --filter server exec tsx ../scripts/audit-world-map2.ts --write",
+    "audit:map-text": "pnpm --filter server exec tsx ../scripts/audit-map-text-quality.ts --write",
     "prepare:room-images": "pnpm --filter server exec tsx ../scripts/prepare-room-image-jobs.ts",
     "test": "vitest run",
     "test:watch": "vitest",
