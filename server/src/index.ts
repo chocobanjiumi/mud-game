@@ -10,6 +10,8 @@ import { initGameSystems, shutdownGameSystems, combat, dungeonMgr, pvpMgr, world
 import { AgentController } from './ai/agent.js';
 import { getCharacterById, saveCharacter } from './db/queries.js';
 import { handleCommand } from './game/commands.js';
+import { ROOMS, ZONES, getRoom } from './data/rooms.js';
+import { buildZoneMapPlans, plannedMapScopeForRoom, type ZoneMapScopeDecision } from './data/world-map2-plan.js';
 
 const PORT = parseInt(process.env.PORT ?? '3701', 10);
 const HOST = process.env.HOST ?? '0.0.0.0';
@@ -135,6 +137,10 @@ async function main(): Promise<void> {
     };
   });
 
+  app.get('/api/mud/world-map', async () => {
+    return buildPlanningWorldMapPayload();
+  });
+
   // WebSocket 端點
   app.register(async function wsRoutes(fastify) {
     fastify.get('/ws', { websocket: true }, (socket, req) => {
@@ -213,3 +219,100 @@ main().catch((err) => {
   console.error('[Server] 致命錯誤:', err);
   process.exit(1);
 });
+
+function buildPlanningWorldMapPayload(): {
+  generatedAt: number;
+  zones: {
+    id: string;
+    name: string;
+    region: string;
+    type: string;
+    mapPlan: {
+      decision: ZoneMapScopeDecision;
+      reason: string;
+      entranceRoomId?: string;
+    };
+    levelRange: [number, number];
+    dangerLevel: number;
+    totalRooms: number;
+    rooms: {
+      id: string;
+      name: string;
+      mapX: number;
+      mapY: number;
+      worldX?: number;
+      worldY?: number;
+      mapScope: 'world' | 'instance';
+      instanceTemplateId?: string;
+      mapSymbol: string;
+      exits: {
+        direction: string;
+        targetRoomId: string;
+        targetRoomName?: string;
+        targetZoneId?: string;
+        locked?: boolean;
+      }[];
+    }[];
+  }[];
+  connections: { fromZoneId: string; toZoneId: string; count: number }[];
+} {
+  const zonePlans = buildZoneMapPlans(ZONES);
+  const zones = Object.values(ZONES).map((zone) => ({
+    id: zone.id,
+    name: zone.name,
+    region: zone.region,
+    type: zone.type,
+    mapPlan: {
+      decision: zonePlans.get(zone.id)?.decision ?? 'decision',
+      reason: zonePlans.get(zone.id)?.reason ?? '',
+      entranceRoomId: zonePlans.get(zone.id)?.entranceRoomId,
+    },
+    levelRange: zone.levelRange,
+    dangerLevel: zone.dangerLevel,
+    totalRooms: zone.rooms.length,
+    rooms: zone.rooms
+      .map(roomId => getRoom(roomId))
+      .filter((room): room is NonNullable<ReturnType<typeof getRoom>> => Boolean(room))
+      .map(room => ({
+        id: room.id,
+        name: room.name,
+        mapX: room.mapX,
+        mapY: room.mapY,
+        worldX: room.worldX,
+        worldY: room.worldY,
+        mapScope: plannedMapScopeForRoom(room, zonePlans.get(room.zone)),
+        instanceTemplateId: room.instanceTemplateId,
+        mapSymbol: room.mapSymbol,
+        exits: room.exits.map(exit => {
+          const targetRoom = getRoom(exit.targetRoomId);
+          return {
+            direction: exit.direction,
+            targetRoomId: exit.targetRoomId,
+            targetRoomName: targetRoom?.name,
+            targetZoneId: targetRoom?.zone,
+            locked: exit.locked,
+          };
+        }),
+      })),
+  }));
+
+  const connectionCounts = new Map<string, number>();
+  for (const room of Object.values(ROOMS)) {
+    for (const exit of room.exits) {
+      const targetRoom = getRoom(exit.targetRoomId);
+      if (!targetRoom || targetRoom.zone === room.zone) continue;
+      const [fromZoneId, toZoneId] = [room.zone, targetRoom.zone].sort();
+      const key = `${fromZoneId}:${toZoneId}`;
+      connectionCounts.set(key, (connectionCounts.get(key) ?? 0) + 1);
+    }
+  }
+
+  return {
+    generatedAt: Date.now(),
+    zones,
+    connections: [...connectionCounts.entries()].map(([key, count]) => {
+      const [fromZoneId, toZoneId] = key.split(':');
+      return { fromZoneId, toZoneId, count };
+    }),
+  };
+}

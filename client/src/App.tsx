@@ -9,6 +9,7 @@ import GameScreen from './components/GameScreen';
 import SkillTablePage from './components/SkillTablePage';
 import UniqueItemPage from './components/UniqueItemPage';
 import TalentTreePage from './components/TalentTreePage';
+import MapPlanningPage from './components/MapPlanningPage';
 import type { CreateCharacterPayload } from '@game/shared';
 
 // Initialize Arinova SDK on app load (v0.1.3 constructor pattern)
@@ -28,6 +29,9 @@ export default function App() {
   }
   if (path === '/mud/talent') {
     return <TalentTreePage />;
+  }
+  if (path === '/mud/map') {
+    return <MapPlanningPage />;
   }
   if (path === '/mud/skill') {
     return <SkillTablePage />;

@@ -4,11 +4,23 @@ import type { GuardianHints } from './player.js';
 import type { ElementType } from './skill.js';
 
 export type Direction = 'north' | 'south' | 'east' | 'west';
+export type MapScope = 'world' | 'instance';
+export type RoomExitEdgeKind =
+  | 'normal'
+  | 'wrap'
+  | 'bridge'
+  | 'long_path'
+  | 'portal'
+  | 'one_way'
+  | 'instance_entry'
+  | 'instance_exit';
 
 export interface RoomExit {
   direction: Direction;
   targetRoomId: string;
   description?: string;
+  edgeKind?: RoomExitEdgeKind;
+  edgeNote?: string;
   locked?: boolean;
   keyItemId?: string;
 }
@@ -118,6 +130,10 @@ export interface RoomDef {
   mapY: number;
   mapLayer?: number;
   mapLayerName?: string;
+  worldX?: number;
+  worldY?: number;
+  mapScope?: MapScope;
+  instanceTemplateId?: string;
   guardianHints?: GuardianHints;
 }
 
