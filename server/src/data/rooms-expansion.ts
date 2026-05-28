@@ -22389,7 +22389,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
       { direction: 'east', targetRoomId: 'sapphire_lake_relic_pit', description: '湖底遺坑在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '玻魚灣在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '北側湖獸擦痕沿水下繩標繞過冷泉逆流，越過淺藍沙脊抵達玻魚灣', edgeKind: 'long_path', edgeNote: '湖獸擦痕到玻魚灣需沿水下繩標繞過逆流與沙脊，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'mirror_shallows_serpent', maxCount: 2, respawnSeconds: 230 },
@@ -22548,7 +22548,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '玻魚灣位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '回到藍蘆葦帶' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '回到湖獸擦痕' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '南側玻魚灣水道沿水下繩標折回，穿過冷泉逆流與淺藍沙脊回到湖獸擦痕', edgeKind: 'long_path', edgeNote: '玻魚灣回湖獸擦痕需沿水下繩標穿過逆流與沙脊，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在東側' },
     ],
     monsters: [
@@ -22575,8 +22575,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '沉階位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_relic_pit', description: '回到湖底遺坑' },
-      { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '回到玻魚灣' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_deep_vein_window', description: '深脈窗在北側' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '西側沉階水道繞過塌落石階與玻魚群，沿斜光浮標與淺水石縫回到玻魚灣', edgeKind: 'long_path', edgeNote: '沉階西側到玻魚灣需繞過塌階與魚群，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_deep_vein_window', description: '北側沉階沿礦光石階下探，穿過冷水暗流與藍砂斜坡後抵達深脈窗', edgeKind: 'long_path', edgeNote: '沉階北側到深脈窗是下探礦光石階與冷水暗流，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'calmwater_spring_guardian', maxCount: 1, respawnSeconds: 380 },
@@ -22628,7 +22628,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '晶砂洲位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_pebble_weir', description: '回到卵石水堰' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_lily_cache', description: '北側晶砂洲繞過鬆動砂脊與漂浮睡蓮根，沿暗藍浮標抵達睡蓮藏點', edgeKind: 'long_path', edgeNote: '晶砂洲北側到睡蓮藏點需繞過砂脊與蓮根，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'vein_crystal_lizard', maxCount: 2, respawnSeconds: 210 },
@@ -22653,7 +22653,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。西側晶砂洲與北側玻魚灣的浮標會在採集後沉入水面，只能從那兩處進入睡蓮藏點。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '藍寶礦脈在東側' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側睡蓮根道穿過浮葉陰影與藍光裂縫，沿礦砂繩標抵達藍寶礦脈', edgeKind: 'long_path', edgeNote: '睡蓮藏點東側到藍寶礦脈需穿過蓮根與礦砂繩標，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'sapphire_reed_sprite', maxCount: 2, respawnSeconds: 220 },
@@ -22705,7 +22705,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '水靈鏡位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '回到靜水石窟' },
-      { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '深脈窗在東側' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '東側水靈鏡面沿倒影水道折行，越過光紋淺坡與水幕裂隙抵達深脈窗', edgeKind: 'long_path', edgeNote: '水靈鏡到深脈窗需沿倒影水道與光紋淺坡折行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'sapphire_reed_sprite', maxCount: 1, respawnSeconds: 220 },
@@ -22730,9 +22730,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '深脈窗位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '回到水靈鏡' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '回到沉階' },
-      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '藍寶礦脈在東側' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '西側深脈窗沿倒影水道回折，穿過光紋淺坡與水幕裂隙後回到水靈鏡', edgeKind: 'long_path', edgeNote: '深脈窗西側回水靈鏡需沿倒影水道與光紋淺坡，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '南側深脈窗沿礦光石階上返，穿過冷水暗流與藍砂斜坡後回到沉階', edgeKind: 'long_path', edgeNote: '深脈窗南側回沉階需沿礦光石階上返並穿過暗流，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側深脈窗穿過藍光礦裂與水壓窄門，沿發亮礦脊與碎晶坡抵達藍寶礦脈', edgeKind: 'long_path', edgeNote: '深脈窗東側到藍寶礦脈需穿過水壓窄門與礦脊，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blue_lode_golem', maxCount: 1, respawnSeconds: 360 },
@@ -22757,7 +22757,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '藍寶礦脈位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '回到睡蓮藏點' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '西側藍寶礦脈沿礦砂繩標折返，穿過浮葉陰影與睡蓮根道回到藏點', edgeKind: 'long_path', edgeNote: '藍寶礦脈西側回睡蓮藏點需沿礦砂繩標與蓮根折返，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'sapphire_lake_blueheart_sanctum', description: '藍心聖潭在北側' },
     ],
     monsters: [
@@ -22784,7 +22784,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈' },
-      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '回到深脈窗' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '西側藍心聖潭水道繞過聖潭渦流與藍光礦幕，沿深水繩標回到深脈窗', edgeKind: 'long_path', edgeNote: '藍心聖潭西側回深脈窗需繞過聖潭渦流與礦幕，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blueheart_lode_spirit', maxCount: 1, respawnSeconds: 720 },
