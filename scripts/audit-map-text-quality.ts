@@ -10,7 +10,7 @@ import { describeSkillLevel, getSkillUpgradeDeltas, getSkillUpgradeRule } from '
 import { MONSTER_FAMILY_SUMMARIES } from '../packages/shared/src/constants/monsters.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
-import { WEAPON_TYPE_DEFS } from '../packages/shared/src/types/item.js';
+import { WEAPON_TYPE_DEFS, resolveEquipSlotForItem, type ItemDef } from '../packages/shared/src/types/item.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { NPCS } from '../server/src/data/npcs.js';
@@ -42,6 +42,7 @@ type TextKind =
   | 'gatheringNode.description'
   | 'gatheringMaterial.description'
   | 'equipment.description'
+  | 'equipment.tooltip'
   | 'affix.description'
   | 'affixBuildDirection.notes'
   | 'reward.summary'
@@ -250,6 +251,14 @@ for (const item of Object.values(ITEM_DEFS)) {
   if (item.type === 'weapon' || item.type === 'armor' || item.type === 'accessory') {
     const minimum = item.rarity === 'legendary' || item.rarity === 'mythic' || item.sourceTags?.includes('boss') ? 70 : 35;
     checkText(item.id, 'equipment.description', 'description', item.description, minimum, '裝備描述需提供可辨識的外觀、來源或用途方向');
+    checkText(
+      `${item.id}/tooltip`,
+      'equipment.tooltip',
+      'tooltip',
+      formatEquipmentTooltipAuditText(item),
+      minimum,
+      '裝備 tooltip 需包含部位、來源或掉落地、外觀材質、適合玩法或職業方向',
+    );
   }
 }
 
@@ -403,6 +412,8 @@ const report = {
     equipment: {
       descriptionMinCjkChars: 35,
       uniqueBossDescriptionMinCjkChars: 70,
+      tooltipMinCjkChars: 35,
+      uniqueBossTooltipMinCjkChars: 70,
     },
     affix: {
       displayDescriptionMinCjkChars: 18,
@@ -528,6 +539,7 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'instanceEntry.name' || kind === 'instanceEntry.tooltip') return kind;
   if (kind === 'monster.description') return 'monsters';
   if (kind === 'equipment.description') return 'equipment';
+  if (kind === 'equipment.tooltip') return 'equipment.tooltip';
   if (kind === 'skill.description') return 'skills';
   if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
   if (kind === 'item.tooltip') return 'item.tooltip';
@@ -599,6 +611,102 @@ function formatDungeonEntryItemTooltipAuditText(entryItem: typeof WORLD_MAP2_INS
   const consumeText = entryItem.consumeItem ? '使用後消耗' : '不會消耗';
   const cooldownText = entryItem.cooldownSeconds ? `冷卻 ${Math.ceil(entryItem.cooldownSeconds / 60)} 分鐘` : '無額外冷卻';
   return `副本入口道具 tooltip 顯示可開啟 ${entryItem.dungeonName}，使用地點是 ${entryItem.entranceRoomName}，入口互動為 ${entryItem.entryName}，消耗狀態為${consumeText}，${cooldownText}；說明玩家需帶著對應道具到指定入口使用。`;
+}
+
+function formatEquipmentTooltipAuditText(item: ItemDef): string {
+  const slot = resolveEquipSlotForItem(item) ?? item.equipSlot ?? 'unknown';
+  const weaponType = item.weaponType ? WEAPON_TYPE_DEFS[item.weaponType]?.name ?? item.weaponType : undefined;
+  const sourceText = formatEquipmentSourceAuditText(item);
+  const classText = item.classReq?.length || item.requiredClass?.length
+    ? [...(item.classReq ?? []), ...(item.requiredClass ?? [])].map(classId => CLASS_DEFS[classId as keyof typeof CLASS_DEFS]?.name ?? readableTag(String(classId))).join('、')
+    : '不限職業';
+  return `裝備「${item.name}」tooltip 顯示部位 ${equipmentSlotLabel(slot)}${weaponType ? `、武器類型 ${weaponType}` : ''}，等級需求 Lv.${item.level ?? item.levelReq}，稀有度 ${item.rarity ?? 'common'}，來源或掉落地為${sourceText}，可用職業為${classText}，主要數值 ${formatItemStatAuditText(item.stats)}。外觀與材質說明：${item.description}；玩法方向需讓玩家判斷適合輸出、防禦、法術、輔助或坐騎配置。`;
+}
+
+function formatEquipmentSourceAuditText(item: ItemDef): string {
+  const labels = [...(item.sourceTags ?? []), ...(item.zoneTags ?? [])]
+    .map(tag => ZONES[tag]?.name ?? equipmentSourceLabel(tag))
+    .filter((tag, index, tags) => tag && tags.indexOf(tag) === index);
+  return labels.join('、') || '通用掉落或商店來源';
+}
+
+function equipmentSourceLabel(tag: string): string {
+  const labels: Record<string, string> = {
+    shop: '商店',
+    drop: '怪物掉落',
+    quest: '任務獎勵',
+    craft: '製作',
+    crafting: '製作',
+    chest: '寶箱',
+    boss: '首領掉落',
+    dungeon: '副本',
+    global: '全域裝備池',
+    starter_progression: '前期成長裝備池',
+    weapon_topup: '武器補充裝備池',
+    shield_topup: '盾牌補充裝備池',
+    mount: '坐騎裝備',
+  };
+  return labels[tag] ?? readableTag(tag);
+}
+
+function readableTag(tag: string): string {
+  return tag
+    .split('_')
+    .filter(Boolean)
+    .map(part => part.replace(/^[a-z]/, char => char.toUpperCase()))
+    .join(' ');
+}
+
+function equipmentSlotLabel(slot: string): string {
+  const labels: Record<string, string> = {
+    meleeMainHand: '近戰主手',
+    meleeOffHand: '近戰副手',
+    rangedMainHand: '遠程主手',
+    rangedOffHand: '遠程副手',
+    weapon: '武器',
+    offhand: '副手',
+    head: '頭部',
+    body: '身體',
+    hands: '手套',
+    feet: '鞋子',
+    ring: '戒指',
+    earring: '耳環',
+    belt: '腰部',
+    necklace: '項鏈',
+    accessory: '飾品',
+    saddle: '馬鞍',
+  };
+  return labels[slot] ?? slot;
+}
+
+function formatItemStatAuditText(stats: ItemDef['stats']): string {
+  if (!stats || Object.keys(stats).length === 0) return '無額外數值';
+  const labels: Record<string, string> = {
+    atk: '攻擊',
+    matk: '魔攻',
+    def: '防禦',
+    mdef: '魔防',
+    hp: '生命',
+    mp: '魔力',
+    str: '力量',
+    int: '智力',
+    dex: '敏捷',
+    vit: '體質',
+    luk: '幸運',
+    critRate: '暴擊',
+    critDamage: '暴傷',
+    hitRate: '命中',
+    dodgeRate: '閃避',
+    mountChargePower: '坐騎衝鋒',
+    mountStability: '坐騎穩定',
+    mountGuardPower: '坐騎護衛',
+    mountFatigueMax: '坐騎耐力',
+    mountFatigueRecovery: '坐騎恢復',
+    mountedInterceptBonus: '騎乘攔截',
+    mountedRetreatBonus: '騎乘撤退',
+    mountedThreatBonus: '騎乘威脅',
+  };
+  return Object.entries(stats).map(([key, value]) => `${labels[key] ?? key}${value > 0 ? '+' : ''}${value}`).join('、');
 }
 
 function checkInstanceEntryName(entry: InstanceEntryForAudit): void {
@@ -818,6 +926,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'item.description'
     || batchKey === 'item.tooltip'
     || batchKey === 'equipment'
+    || batchKey === 'equipment.tooltip'
     || batchKey === 'class.summary'
     || batchKey === 'race.summary'
     || batchKey === 'faith.summary'

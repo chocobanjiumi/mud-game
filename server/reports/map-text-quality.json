@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:32:26.838Z",
+  "generatedAt": "2026-05-28T16:35:24.902Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -43,7 +43,9 @@
     },
     "equipment": {
       "descriptionMinCjkChars": 35,
-      "uniqueBossDescriptionMinCjkChars": 70
+      "uniqueBossDescriptionMinCjkChars": 70,
+      "tooltipMinCjkChars": 35,
+      "uniqueBossTooltipMinCjkChars": 70
     },
     "affix": {
       "displayDescriptionMinCjkChars": 18,
