@@ -1,8 +1,10 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { ITEM_DEFS } from '../packages/shared/src/constants/items.js';
+import { CLASS_DEFS } from '../packages/shared/src/constants/classes.js';
 import { GATHERING_NODE_DEFS } from '../packages/shared/src/constants/gathering.js';
 import { AFFIX_BUILD_DIRECTIONS, AFFIX_POOLS, type AffixDef } from '../packages/shared/src/systems/item-instance.js';
+import { WEAPON_TYPE_DEFS } from '../packages/shared/src/types/item.js';
 import { ROOMS, ZONES, getRoom } from '../server/src/data/rooms.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { NPCS } from '../server/src/data/npcs.js';
@@ -34,7 +36,10 @@ type TextKind =
   | 'affix.description'
   | 'affixBuildDirection.notes'
   | 'reward.summary'
-  | 'imagePrompt';
+  | 'imagePrompt'
+  | 'batch.repeatedOpening'
+  | 'batch.repeatedCoreTerm'
+  | 'reference.unresolved';
 
 interface TextIssue {
   id: string;
@@ -46,12 +51,21 @@ interface TextIssue {
   reason: string;
 }
 
+interface TextRecord {
+  id: string;
+  kind: TextKind;
+  field: string;
+  text: string;
+  batchKey: string;
+}
+
 const write = process.argv.includes('--write');
 const strict = process.argv.includes('--strict');
 const outPath = resolve(process.cwd(), 'reports/map-text-quality.json');
 
 const zonePlans = buildZoneMapPlans(ZONES);
 const issues: TextIssue[] = [];
+const textRecords: TextRecord[] = [];
 const bannedGenericPhrases = [
   '這裡很危險',
   '你感到不安',
@@ -64,6 +78,28 @@ const bannedGenericPhrases = [
   '進入副本',
   '無法進入',
 ];
+const knownReferenceIds = new Set<string>([
+  ...Object.keys(ZONES),
+  ...Object.keys(ROOMS),
+  ...Object.keys(MONSTERS),
+  ...Object.keys(NPCS),
+  ...Object.keys(ITEM_DEFS),
+  ...Object.keys(DUNGEON_DEFS),
+  ...Object.keys(GATHERING_NODE_DEFS),
+  ...Object.keys(CLASS_DEFS),
+  ...Object.keys(WEAPON_TYPE_DEFS),
+  ...Object.values(AFFIX_POOLS).flat().map(affix => affix.id),
+]);
+const referenceAllowList = new Set([
+  'worldX',
+  'worldY',
+  'mapX',
+  'mapY',
+  'dungeonId',
+  'instanceTemplateId',
+  'arrivalTicks',
+  'resourceCost',
+]);
 
 for (const zone of Object.values(ZONES)) {
   checkText(zone.id, 'zone.description', 'description', zone.description, 90, 'zone summary 需包含地貌、等級定位、怪物族群、資源或服務、相鄰區域關係');
@@ -185,6 +221,10 @@ for (const entry of instanceEntries) {
   checkText(entry.id, 'instanceEntry.description', 'description', entry.description, 45, 'instance entrance 描述需說明外觀、狀態與進入方式');
 }
 
+checkRepeatedOpenings(textRecords);
+checkRepeatedCoreTerms(textRecords);
+checkUnresolvedReferences(textRecords);
+
 const byKind = issues.reduce<Record<TextKind, number>>((acc, issue) => {
   acc[issue.kind] = (acc[issue.kind] ?? 0) + 1;
   return acc;
@@ -248,6 +288,12 @@ const report = {
       roomPromptMinEnglishWords: 80,
       roomPromptMinCjkChars: 120,
     },
+    batchQuality: {
+      repeatedOpeningWindow: 3,
+      repeatedCoreTermRatio: 0.3,
+      repeatedCoreTermMinimumOccurrences: 3,
+      unresolvedReferencePattern: '[a-z][a-z0-9]+_[a-z0-9_]+',
+    },
     item: {
       dungeonItemDescriptionMinCjkChars: 40,
     },
@@ -295,6 +341,7 @@ function roomMinimumLength(roomId: string, name: string, description: string, zo
 }
 
 function checkText(id: string, kind: TextKind, field: string, text: string, minimumLength: number, reason: string) {
+  recordText(id, kind, field, text);
   const currentLength = countCjkChars(text);
   if (currentLength < minimumLength) {
     addIssue(id, kind, field, text, minimumLength, reason);
@@ -304,6 +351,29 @@ function checkText(id: string, kind: TextKind, field: string, text: string, mini
   if (genericPhrase) {
     addIssue(id, kind, field, text, minimumLength, `包含過於泛用文案：「${genericPhrase}」`);
   }
+}
+
+function recordText(id: string, kind: TextKind, field: string, text: string) {
+  if (!text.trim()) return;
+  textRecords.push({
+    id,
+    kind,
+    field,
+    text,
+    batchKey: getBatchKey(id, kind),
+  });
+}
+
+function getBatchKey(id: string, kind: TextKind): string {
+  if (kind === 'room.description') return `zone:${id.split('/')[0]}`;
+  if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
+  if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
+  if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
+  if (kind === 'monster.description') return 'monsters';
+  if (kind === 'equipment.description') return 'equipment';
+  if (kind === 'gatheringMaterial.description') return 'materials';
+  if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
+  return kind;
 }
 
 function addIssue(id: string, kind: TextKind, field: string, text: string, minimumLength: number, reason: string) {
@@ -339,10 +409,121 @@ function countEnglishWords(text: string): number {
 }
 
 function checkPrompt(id: string, kind: TextKind, text: string, minimumEnglishWords: number, reason: string) {
+  recordText(id, kind, 'imagePrompt', text);
   const cjkChars = countCjkChars(text);
   const englishWords = countEnglishWords(text);
   if (englishWords >= minimumEnglishWords || cjkChars >= 120) return;
   addMeasuredIssue(id, kind, 'imagePrompt', text, Math.max(englishWords, cjkChars), minimumEnglishWords, reason);
+}
+
+function checkRepeatedOpenings(records: TextRecord[]) {
+  for (const batch of groupRecords(records)) {
+    if (shouldSkipBatchRepetitionCheck(batch.key)) continue;
+    const ordered = batch.records.filter(record => countCjkChars(record.text) >= 12);
+    for (let index = 0; index <= ordered.length - 3; index++) {
+      const window = ordered.slice(index, index + 3);
+      const openings = window.map(record => getOpeningSignature(record.text));
+      if (!openings[0] || openings.some(opening => opening !== openings[0])) continue;
+      addMeasuredIssue(
+        `${batch.key}/opening:${index}`,
+        'batch.repeatedOpening',
+        'text',
+        window.map(record => `${record.id}: ${record.text}`).join('\n'),
+        3,
+        1,
+        `同批生成內容連續 3 筆使用相同開頭「${openings[0]}」`,
+      );
+    }
+  }
+}
+
+function checkRepeatedCoreTerms(records: TextRecord[]) {
+  for (const batch of groupRecords(records)) {
+    if (shouldSkipBatchRepetitionCheck(batch.key)) continue;
+    const eligible = batch.records.filter(record => countCjkChars(record.text) >= 20);
+    if (eligible.length < 6) continue;
+
+    const termOwners = new Map<string, Set<string>>();
+    for (const record of eligible) {
+      for (const term of extractCoreTerms(record.text)) {
+        termOwners.set(term, new Set([...(termOwners.get(term) ?? []), record.id]));
+      }
+    }
+
+    const repeatedTerms = [...termOwners.entries()]
+      .map(([term, owners]) => ({ term, owners, ratio: owners.size / eligible.length }))
+      .filter(item => item.owners.size >= 4 && item.ratio > 0.3)
+      .sort((a, b) => b.ratio - a.ratio || b.owners.size - a.owners.size)
+      .slice(0, 3);
+
+    for (const { term, owners, ratio } of repeatedTerms) {
+      addMeasuredIssue(
+        `${batch.key}/term:${term}`,
+        'batch.repeatedCoreTerm',
+        'text',
+        [...owners].slice(0, 12).join(', '),
+        Math.round(ratio * 100),
+        30,
+        `同批生成內容核心詞「${term}」出現於 ${owners.size}/${eligible.length} 筆，超過 30% 門檻`,
+      );
+    }
+  }
+}
+
+function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
+  return batchKey === 'reward.summary' || batchKey === 'affix.description';
+}
+
+function checkUnresolvedReferences(records: TextRecord[]) {
+  const referencePattern = /\b[a-z][a-z0-9]+_[a-z0-9_]+\b/g;
+  for (const record of records) {
+    const references = record.text.match(referencePattern) ?? [];
+    for (const reference of references) {
+      if (knownReferenceIds.has(reference) || referenceAllowList.has(reference)) continue;
+      addMeasuredIssue(
+        `${record.id}/reference:${reference}`,
+        'reference.unresolved',
+        record.field,
+        record.text,
+        0,
+        1,
+        `文案引用未知 id「${reference}」，需確認已實作或標記為 future hook`,
+      );
+    }
+  }
+}
+
+function groupRecords(records: TextRecord[]): { key: string; records: TextRecord[] }[] {
+  const grouped = new Map<string, TextRecord[]>();
+  for (const record of records) {
+    grouped.set(record.batchKey, [...(grouped.get(record.batchKey) ?? []), record]);
+  }
+  return [...grouped.entries()].map(([key, batchRecords]) => ({ key, records: batchRecords }));
+}
+
+function getOpeningSignature(text: string): string {
+  const normalized = text.replace(/\s+/g, '').replace(/^[「『【（(]*/, '');
+  const cjk = [...normalized].filter(char => /[\u3400-\u9fff]/u.test(char)).join('');
+  return cjk.slice(0, 3);
+}
+
+function extractCoreTerms(text: string): Set<string> {
+  const normalized = text.replace(/[，。；、：「」『』（）()【】\s\dA-Za-z_-]/g, '');
+  const stopTerms = new Set([
+    '一名', '一個', '這裡', '這片', '玩家', '冒險', '房間', '入口', '地方', '可以',
+    '需要', '使用', '任務', '副本', '道具', '怪物', '描述', '進入', '方向', '地面',
+    '牆壁', '空氣', '光線', '聲音', '附近', '深處', '周圍', '之間', '正在', '不會',
+    '通往', '暗示', '提醒', '提示', '回到', '看到', '說明', '提供', '支援', '玩家',
+    '示玩', '玩法', '區域', '路線', '目標', '戰鬥', '採集', '資源', '裝備', '獎勵',
+    '包含', '經驗', '金幣', '補給', '建議', '等級', '人數', '冷卻',
+  ]);
+  const terms = new Set<string>();
+  for (let index = 0; index <= normalized.length - 2; index++) {
+    const term = normalized.slice(index, index + 2);
+    if (stopTerms.has(term)) continue;
+    terms.add(term);
+  }
+  return terms;
 }
 
 function isDungeonEntryItem(id: string, name: string, description: string): boolean {
