@@ -40,12 +40,20 @@ const worldOrDecisionZonesMissingGlobalBounds: string[] = [];
 const overlappingZoneGlobalBounds: string[] = [];
 const crossZoneWorldAdjacencyIssues: string[] = [];
 const borderRoomGaps: string[] = [];
+const twoDimensionalDesignIssues: string[] = [];
 const instanceEntries = buildInstanceEntryDefs(ZONES);
 
 for (const room of rooms) {
   const seenDirections = new Set<string>();
   const plan = zonePlans.get(room.zone);
   const scope = plannedMapScopeForRoom(room, plan);
+  const roomRecord = room as RoomDef & Record<string, unknown>;
+
+  for (const forbiddenField of ['worldZ', 'worldLayer', 'worldLayerName']) {
+    if (forbiddenField in roomRecord) {
+      twoDimensionalDesignIssues.push(`${room.id}: forbidden global coordinate field ${forbiddenField}`);
+    }
+  }
 
   if (scope === 'world' && (typeof room.worldX !== 'number' || typeof room.worldY !== 'number')) {
     worldRoomsMissingCoords.push(`${room.zone}/${room.id}`);
@@ -194,6 +202,12 @@ const zoneGlobalBounds = [...zonePlans.values()].filter(plan => plan.decision ==
 for (const plan of zoneGlobalBounds) {
   if (!plan.globalBounds) {
     worldOrDecisionZonesMissingGlobalBounds.push(`${plan.zoneId}:${plan.decision}`);
+  } else {
+    for (const key of Object.keys(plan.globalBounds)) {
+      if (!['minX', 'maxX', 'minY', 'maxY', 'anchor', 'terrainRole'].includes(key)) {
+        twoDimensionalDesignIssues.push(`${plan.zoneId}: global bounds contains non-2D field ${key}`);
+      }
+    }
   }
 }
 for (let i = 0; i < zoneGlobalBounds.length; i++) {
@@ -272,6 +286,9 @@ const report = {
     coordinateCollisions,
     cardinalCoordinateMismatches,
   },
+  design: {
+    twoDimensionalDesignIssues,
+  },
   zoneLayout: {
     plannedZoneGlobalBounds: zoneGlobalBounds
       .filter(plan => plan.globalBounds)
@@ -313,6 +330,7 @@ if (strict) {
     ...worldRoomsMissingCoords,
     ...coordinateCollisions,
     ...cardinalCoordinateMismatches,
+    ...twoDimensionalDesignIssues,
     ...worldOrDecisionZonesMissingGlobalBounds,
     ...overlappingZoneGlobalBounds,
     ...crossZoneWorldAdjacencyIssues,
@@ -424,6 +442,7 @@ function formatReport(reportData: typeof report, writtenPath?: string): string {
     `World rooms missing worldX/worldY: ${reportData.worldCoordinate.worldRoomsMissingCoords.length}`,
     `Coordinate collisions: ${reportData.worldCoordinate.coordinateCollisions.length}`,
     `Cardinal coordinate mismatches: ${reportData.worldCoordinate.cardinalCoordinateMismatches.length}`,
+    `2D design issues: ${reportData.design.twoDimensionalDesignIssues.length}`,
     `Planned zone global bounds: ${reportData.zoneLayout.plannedZoneGlobalBounds.length}`,
     `World/decision zones missing global bounds: ${reportData.zoneLayout.worldOrDecisionZonesMissingGlobalBounds.length}`,
     `Overlapping zone global bounds: ${reportData.zoneLayout.overlappingZoneGlobalBounds.length}`,
