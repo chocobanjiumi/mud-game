@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { WorldManager } from '../game/world.js';
-import { ROOMS } from '../data/rooms.js';
+import { ROOMS, ZONES, getRoom } from '../data/rooms.js';
+import { buildPlannedWorldCoordinateMap } from '../data/world-map2-plan.js';
 
 describe('WorldManager respawn policy', () => {
   let world: WorldManager;
@@ -194,5 +195,33 @@ describe('room exit topology', () => {
       .toBe('chaos_observatory');
     expect(ROOMS.chaos_observatory.exits.find(exit => exit.direction === 'south')?.targetRoomId)
       .toBe('time_splinter_vault');
+  });
+
+  it('keeps normal world exits aligned with planned global coordinates', () => {
+    const plannedCoordinates = buildPlannedWorldCoordinateMap(ZONES, getRoom);
+    const mismatches = Object.values(ROOMS).flatMap(room => {
+      const from = plannedCoordinates.get(room.id);
+      if (!from) return [];
+
+      return room.exits.flatMap(exit => {
+        if (exit.edgeKind && exit.edgeKind !== 'normal') return [];
+
+        const to = plannedCoordinates.get(exit.targetRoomId);
+        if (!to) return [];
+
+        const expected = {
+          north: { worldX: from.worldX, worldY: from.worldY - 1 },
+          south: { worldX: from.worldX, worldY: from.worldY + 1 },
+          east: { worldX: from.worldX + 1, worldY: from.worldY },
+          west: { worldX: from.worldX - 1, worldY: from.worldY },
+        }[exit.direction];
+
+        return expected.worldX === to.worldX && expected.worldY === to.worldY
+          ? []
+          : [`${room.id}(${from.worldX},${from.worldY}) ${exit.direction}->${exit.targetRoomId}(${to.worldX},${to.worldY})`];
+      });
+    });
+
+    expect(mismatches).toEqual([]);
   });
 });
