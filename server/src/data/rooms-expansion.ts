@@ -18555,8 +18555,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '樹脂落溝位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'north', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
-      { direction: 'east', targetRoomId: 'amber_forest_charcoal_stand', description: '焦木林列在東側' },
-      { direction: 'west', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在西側' },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_charcoal_stand',
+        description: '東側樹脂溝要沿焦黑根脈下切，再穿過黏稠樹液坡才會抵達焦木林列',
+        edgeKind: 'long_path',
+        edgeNote: '樹脂落溝到焦木林列需要沿焦黑根脈與樹液坡繞行，屬於長路徑。',
+      },
+      {
+        direction: 'west',
+        targetRoomId: 'amber_forest_smoke_mycology',
+        description: '西側煙菌坡被孢霧隔開，必須繞過封蠟根牆與低窪樹脂池才能抵達',
+        edgeKind: 'long_path',
+        edgeNote: '樹脂落溝到煙菌坡需要繞過封蠟根牆與樹脂池，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'amber_water_serpent', maxCount: 1, respawnSeconds: 150 },
@@ -18609,8 +18621,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '日陷空地位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_wasp_nests', description: '回到封蠟蜂巢' },
-      { direction: 'south', targetRoomId: 'amber_forest_charcoal_stand', description: '焦木林列在南側' },
-      { direction: 'east', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在東側' },
+      {
+        direction: 'south',
+        targetRoomId: 'amber_forest_charcoal_stand',
+        description: '南側日光陷坑要沿琥珀斜坡滑下，穿過焦黑樹樁列後才到焦木林列',
+        edgeKind: 'long_path',
+        edgeNote: '日陷空地到焦木林列有高度落差與焦木樹樁阻隔，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_hunter_blind',
+        description: '東側獵棚需沿樹冠繩標繞行，避開封蠟蜂巢外圈後才爬上隱棚平台入口',
+        edgeKind: 'long_path',
+        edgeNote: '日陷空地到樹上獵棚需要走樹冠繩標與蜂巢外緣，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
@@ -18635,7 +18659,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '煙菌坡位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。北側玻璃根橋被煙菌孢霧遮住，只能從玻璃根橋東側進入煙菌坡。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'east', targetRoomId: 'amber_forest_sapfall_gully', description: '回到樹脂落溝' },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_sapfall_gully',
+        description: '東側回程要穿過煙菌孢霧與低窪樹脂池，沿封蠟根牆繞回樹脂落溝',
+        edgeKind: 'long_path',
+        edgeNote: '煙菌坡回樹脂落溝需要穿越孢霧與樹脂池，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'smoke_resin_myconid', maxCount: 2, respawnSeconds: 160 },
@@ -18660,9 +18690,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '焦木林列位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'amber_forest_sapfall_gully', description: '回到樹脂落溝' },
-      { direction: 'north', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
-      { direction: 'east', targetRoomId: 'amber_forest_ember_beetle_mound', description: '燼甲蟲丘在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'amber_forest_sapfall_gully',
+        description: '西側回程沿焦黑根脈爬回樹脂溝，途中要避開黏稠樹液坡與斷裂木炭坑',
+        edgeKind: 'long_path',
+        edgeNote: '焦木林列回樹脂落溝需要沿根脈爬升並穿越樹液坡，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'amber_forest_suntrap_clearing',
+        description: '北側必須穿過焦黑樹樁列再爬上琥珀斜坡，才能安全回到日陷空地邊緣',
+        edgeKind: 'long_path',
+        edgeNote: '焦木林列回日陷空地需要穿越焦木樹樁與琥珀斜坡，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_ember_beetle_mound',
+        description: '東側蟲丘要沿焦木灰線繞過熱樹脂裂口，避開甲蟲巡路後才會抵達',
+        edgeKind: 'long_path',
+        edgeNote: '焦木林列到燼甲蟲丘需要繞過熱樹脂裂口與甲蟲巡路，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'ember_carapace_beetle', maxCount: 1, respawnSeconds: 280 },
@@ -18714,9 +18762,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '燼甲蟲丘位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'amber_forest_charcoal_stand', description: '回到焦木林列' },
-      { direction: 'north', targetRoomId: 'amber_forest_hunter_blind', description: '獵人隱棚在北側' },
-      { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'amber_forest_charcoal_stand',
+        description: '西側回焦木林列要繞過熱樹脂裂口，沿甲蟲外殼碎片鋪成的灰線前進',
+        edgeKind: 'long_path',
+        edgeNote: '燼甲蟲丘回焦木林列需要繞過熱樹脂裂口，屬於長路徑。',
+      },
+      {
+        direction: 'north',
+        targetRoomId: 'amber_forest_hunter_blind',
+        description: '北側獵棚要沿甲蟲丘背後的樹根梯爬升，再穿過樹冠繩橋才能抵達',
+        edgeKind: 'long_path',
+        edgeNote: '燼甲蟲丘到樹上獵棚存在樹根梯與樹冠繩橋落差，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_petrified_bloom',
+        description: '東側石化花圃隔著封存花根與琥珀尖刺，需要沿安全標記繞行才能進入',
+        edgeKind: 'long_path',
+        edgeNote: '燼甲蟲丘到石化花圃需要繞過封存花根與琥珀尖刺，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'ember_carapace_beetle', maxCount: 2, respawnSeconds: 280 },
@@ -18741,9 +18807,27 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '樹上獵棚位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'amber_forest_suntrap_clearing', description: '回到日陷空地' },
-      { direction: 'south', targetRoomId: 'amber_forest_ember_beetle_mound', description: '落向燼甲蟲丘' },
-      { direction: 'east', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在東側' },
+      {
+        direction: 'west',
+        targetRoomId: 'amber_forest_suntrap_clearing',
+        description: '西側回日陷空地需沿樹冠繩標下降，繞過封蠟蜂巢外緣後才到開闊空地',
+        edgeKind: 'long_path',
+        edgeNote: '樹上獵棚回日陷空地需要走樹冠繩標與蜂巢外緣，屬於長路徑。',
+      },
+      {
+        direction: 'south',
+        targetRoomId: 'amber_forest_ember_beetle_mound',
+        description: '南側落向燼甲蟲丘要先下樹根梯，再穿過甲蟲挖出的空殼隧道出口',
+        edgeKind: 'long_path',
+        edgeNote: '樹上獵棚到燼甲蟲丘有垂直落差與甲蟲隧道，屬於長路徑。',
+      },
+      {
+        direction: 'east',
+        targetRoomId: 'amber_forest_petrified_bloom',
+        description: '東側花圃需沿獵棚高枝繞過石化藤蔓，從樹冠裂口下到封存花徑入口',
+        edgeKind: 'long_path',
+        edgeNote: '樹上獵棚到石化花圃需要沿高枝與石化藤蔓繞行，屬於長路徑。',
+      },
       { direction: 'north', targetRoomId: 'amber_forest_beast_scrape', description: '林間小徑回到獸痕樹皮' },
     ],
     monsters: [
@@ -18769,9 +18853,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '石化花圃位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'amber_forest_hunter_blind', description: '回到樹上獵棚' },
+      {
+        direction: 'west',
+        targetRoomId: 'amber_forest_hunter_blind',
+        description: '西側回獵棚要沿石化藤蔓爬上高枝，穿過樹冠裂口後才回到隱棚平台',
+        edgeKind: 'long_path',
+        edgeNote: '石化花圃回樹上獵棚需要沿石化藤蔓爬升，屬於長路徑。',
+      },
       { direction: 'south', targetRoomId: 'amber_forest_relic_pit', description: '回到封存遺物坑' },
-      { direction: 'north', targetRoomId: 'amber_forest_deep_amber_core', description: '深琥珀核心在北側' },
+      {
+        direction: 'north',
+        targetRoomId: 'amber_forest_deep_amber_core',
+        description: '北側核心被厚重琥珀根牆包住，必須循花圃背後的透明根脈長廊進入',
+        edgeKind: 'long_path',
+        edgeNote: '石化花圃到深琥珀核心需要穿越透明根脈長廊，屬於長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'petrified_resin_golem', maxCount: 1, respawnSeconds: 360 },
@@ -18822,7 +18918,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '深琥珀核心位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'amber_forest_petrified_bloom', description: '回到石化花圃' },
+      {
+        direction: 'south',
+        targetRoomId: 'amber_forest_petrified_bloom',
+        description: '南側回花圃要沿透明根脈長廊退出，穿過厚重琥珀根牆後才看見石化花徑',
+        edgeKind: 'long_path',
+        edgeNote: '深琥珀核心回石化花圃需要沿透明根脈長廊退出，屬於長路徑。',
+      },
       { direction: 'west', targetRoomId: 'amber_forest_elder_resin_tree', description: '根脈回到古脂巨樹' },
     ],
     monsters: [
