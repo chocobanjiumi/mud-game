@@ -671,22 +671,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     }));
   const instanceEntries = buildInstanceEntryDefs(ZONES)
     .filter(entry => entry.roomId === char.roomId)
-    .map(entry => ({
-      id: entry.id,
-      instanceTemplateId: entry.instanceTemplateId,
-      type: entry.type,
-      objectId: entry.objectId,
-      name: entry.name,
-      description: entry.description,
-      minLevel: entry.minLevel,
-      maxPartySize: entry.maxPartySize,
-      cooldownSeconds: entry.cooldownSeconds,
-      requiredItemId: entry.requiredItemId,
-      consumeItem: entry.consumeItem,
-      requiredQuestId: entry.requiredQuestId,
-      requiredQuestState: entry.requiredQuestState,
-      difficultyOptions: entry.difficultyOptions,
-    }));
+    .map(entry => buildInstanceEntryPayload(char, entry));
   const groundItems = getAvailableGroundItems(char.roomId);
   const roomItems = groundItems.map(groundItem => ({
     id: groundItem.itemId,
@@ -819,6 +804,61 @@ function getPlanarRoomIds(currentRoom: RoomDef, zoneRooms: RoomDef[]): Set<strin
   }
 
   return visited;
+}
+
+
+function buildInstanceEntryPayload(char: Character, entry: InstanceEntryDef) {
+  const availability = getInstanceEntryAvailability(char, entry);
+  return {
+    id: entry.id,
+    instanceTemplateId: entry.instanceTemplateId,
+    type: entry.type,
+    objectId: entry.objectId,
+    npcId: entry.npcId,
+    name: entry.name,
+    description: entry.description,
+    minLevel: entry.minLevel,
+    maxPartySize: entry.maxPartySize,
+    cooldownSeconds: entry.cooldownSeconds,
+    disabled: !availability.ok,
+    disabledReason: availability.ok ? undefined : availability.message,
+    actionCommand: getInstanceEntryActionCommand(entry),
+    requiredItemId: entry.requiredItemId,
+    consumeItem: entry.consumeItem,
+    requiredQuestId: entry.requiredQuestId,
+    requiredQuestState: entry.requiredQuestState,
+    difficultyOptions: entry.difficultyOptions,
+  };
+}
+
+function getInstanceEntryActionCommand(entry: InstanceEntryDef): string {
+  if (entry.type === 'npc_dialogue' && entry.npcId) return `talk ${entry.npcId}`;
+  if (entry.type === 'item_use' && entry.requiredItemId) return `use ${entry.requiredItemId}`;
+  return `enter ${entry.objectId ?? entry.id}`;
+}
+
+function getInstanceEntryAvailability(char: Character, entry: InstanceEntryDef): { ok: true } | { ok: false; message: string } {
+  if (entry.minLevel && char.level < entry.minLevel) {
+    return { ok: false, message: `等級不足：目前等級 ${char.level}，需求等級 ${entry.minLevel}。` };
+  }
+
+  const partyMembers = partyMgr.isInParty(char.id) ? partyMgr.getPartyMembers(char.id) : [char.id];
+  if (partyMgr.isInParty(char.id) && !partyMgr.isLeader(char.id)) {
+    return { ok: false, message: '你正在隊伍中，只有隊長可以開啟此副本入口。' };
+  }
+  if (entry.maxPartySize && partyMembers.length > entry.maxPartySize) {
+    return { ok: false, message: `隊伍人數不符：目前 ${partyMembers.length} 人，最多 ${entry.maxPartySize} 人。` };
+  }
+
+  const cooldownOwnerId = partyMgr.getPartyId(char.id) ?? char.id;
+  const cooldownRemaining = getInstanceEntryCooldownRemainingSeconds(cooldownOwnerId, entry.id);
+  if (cooldownRemaining > 0) {
+    return { ok: false, message: `入口冷卻中：剩餘 ${cooldownRemaining} 秒。` };
+  }
+
+  const gate = checkInstanceEntryRequirements(char, entry);
+  if (!gate.ok) return gate;
+  return { ok: true };
 }
 
 function broadcastRoomState(roomId: string): void {

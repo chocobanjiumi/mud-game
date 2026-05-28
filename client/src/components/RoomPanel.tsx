@@ -1,4 +1,4 @@
-import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
+import { ITEM_DEFS, type RoomEntity, type RoomEntityAction, type RoomEntityType } from '@game/shared';
 import { useState } from 'react';
 import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
@@ -162,12 +162,19 @@ export function RoomPanelView({
             {instanceEntries.map((entry) => (
               <button
                 key={entry.id}
-                className="room-row"
-                title={`${entry.description}\n副本：${entry.name}｜建議等級：${entry.minLevel ?? '-'}｜人數：1-${entry.maxPartySize ?? 1}｜需求：${formatInstanceEntryRequirements(entry)}｜冷卻：${entry.cooldownSeconds ?? 0} 秒`}
-                onClick={() => sendCommand(`enter ${entry.objectId ?? entry.id}`, `進入 ${entry.name}`)}
+                className={`room-row ${entry.disabled ? 'opacity-45 cursor-not-allowed' : ''}`}
+                disabled={entry.disabled}
+                title={formatInstanceEntryTooltip(entry)}
+                onClick={() => {
+                  if (entry.disabled) return;
+                  sendCommand(entry.actionCommand ?? `enter ${entry.objectId ?? entry.id}`, `${formatInstanceEntryAction(entry)} ${entry.name}`);
+                }}
               >
-                <span className="text-chat-party">{entry.name}</span>
-                <span className="text-text-dim">進入</span>
+                <span className="flex items-center gap-2 text-chat-party">
+                  <span aria-hidden="true">{formatInstanceEntryIcon(entry)}</span>
+                  <span>{entry.name}</span>
+                </span>
+                <span className="text-text-dim">{entry.disabled ? '鎖定' : formatInstanceEntryAction(entry)}</span>
               </button>
             ))}
           </div>
@@ -239,10 +246,38 @@ export function RoomPanelView({
 
 function formatInstanceEntryRequirements(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
   const requirements: string[] = [];
-  if (entry.requiredItemId) requirements.push(`${entry.consumeItem ? '消耗' : '持有'}道具 ${entry.requiredItemId}`);
+  if (entry.requiredItemId) {
+    const itemName = ITEM_DEFS[entry.requiredItemId]?.name ?? entry.requiredItemId;
+    requirements.push(`${itemName}${entry.consumeItem ? '（使用後消耗）' : '（不會消耗）'}`);
+  }
   if (entry.requiredQuestId) requirements.push(`任務 ${entry.requiredQuestId}：${formatQuestState(entry.requiredQuestState ?? 'completed')}`);
   return requirements.length > 0 ? requirements.join('、') : '無';
 }
+function formatInstanceEntryTooltip(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
+  return [
+    entry.description,
+    `副本：${entry.name}`,
+    `入口方式：${formatInstanceEntryAction(entry)}`,
+    `建議等級：${entry.minLevel ?? '-'}`,
+    `人數：1-${entry.maxPartySize ?? 1}`,
+    `需求：${formatInstanceEntryRequirements(entry)}`,
+    `冷卻：${entry.cooldownSeconds ?? 0} 秒`,
+    entry.disabledReason ? `鎖定原因：${entry.disabledReason}` : '',
+  ].filter(Boolean).join('\n');
+}
+
+function formatInstanceEntryIcon(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
+  if (entry.type === 'npc_dialogue') return '☉';
+  if (entry.type === 'item_use') return '◇';
+  return '▣';
+}
+
+function formatInstanceEntryAction(entry: NonNullable<RoomInfo['instanceEntries']>[number]): string {
+  if (entry.type === 'npc_dialogue') return '對話';
+  if (entry.type === 'item_use') return '使用';
+  return '進入';
+}
+
 
 function formatQuestState(state: NonNullable<RoomInfo['instanceEntries']>[number]['requiredQuestState']): string {
   switch (state) {

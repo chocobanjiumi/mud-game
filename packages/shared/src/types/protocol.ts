@@ -221,11 +221,15 @@ export interface RoomPayload {
     instanceTemplateId: string;
     type: 'object_interact' | 'npc_dialogue' | 'item_use';
     objectId?: string;
+    npcId?: string;
     name: string;
     description: string;
     minLevel?: number;
     maxPartySize?: number;
     cooldownSeconds?: number;
+    disabled?: boolean;
+    disabledReason?: string;
+    actionCommand?: string;
     requiredItemId?: string;
     consumeItem?: boolean;
     requiredQuestId?: string;
