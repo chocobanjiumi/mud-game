@@ -11718,6 +11718,7 @@ const NPC_TYPE_LABELS: Record<NpcDef['type'], string> = {
 };
 
 enrichNpcDescriptions();
+enrichNpcDialogueText();
 
 function enrichNpcDescriptions(): void {
   for (const npc of Object.values(NPCS)) {
@@ -11752,6 +11753,49 @@ function describeNpcNextStep(npc: NpcDef): string {
   if (npc.classToTeach) return '確認訓練或轉職需求';
   if (npc.dialogue.some(node => node.action?.type === 'instance_entry')) return '確認副本入口條件';
   return '詢問目前可處理的事件';
+}
+
+function enrichNpcDialogueText(): void {
+  for (const npc of Object.values(NPCS)) {
+    for (const node of npc.dialogue) {
+      const text = normalizeGenericDirectionText(node.text.trim());
+      if (countCjkChars(text) >= 45) {
+        node.text = text;
+        continue;
+      }
+      const suffix = buildNpcDialogueSupplement(npc, node);
+      node.text = `${text}${text.endsWith('。') ? '' : '。'}${suffix}`;
+    }
+  }
+}
+
+function buildNpcDialogueSupplement(npc: NpcDef, node: NpcDef['dialogue'][number]): string {
+  const roomName = ROOMS[npc.roomId]?.name ?? '此處';
+  const roleText = NPC_TYPE_LABELS[npc.type] ?? '居民';
+  const actionText = describeDialogueAction(npc, node);
+  const optionText = node.options?.[0]?.text?.trim().replace(/[。！？!?]$/u, '');
+  const nextStep = optionText && countCjkChars(optionText) >= 4 ? optionText : describeNpcNextStep(npc);
+  return `${npc.name}以${roleText}的立場把「${roomName}」的狀況說清楚，補上${actionText}，並提醒你下一步先${nextStep}。`;
+}
+
+function describeDialogueAction(npc: NpcDef, node: NpcDef['dialogue'][number]): string {
+  if (node.action?.type === 'shop' || npc.shopItems?.length) return '交易品項、補給限制與背包準備';
+  if (node.action?.type === 'class_change' || npc.classToTeach) return '訓練條件、職業定位與轉職風險';
+  if (node.action?.type === 'heal') return '恢復服務、目前傷勢與再次出發前的準備';
+  if (node.action?.type === 'quest_start') return '委託原因、目標位置與接下任務後要完成的事';
+  if (node.action?.type === 'quest_complete') return '交付證物、完成結果與回報後的獎勵方向';
+  if (node.action?.type === 'teleport') return '傳送目的地、通行條件與抵達後的路線';
+  if (node.action?.type === 'instance_entry') return '副本威脅、入口條件與隊伍確認';
+  if (node.id === 'farewell') return '離開前需要記住的地點、危險或補給提醒';
+  return '當前目標、附近威脅與可追問的情報';
+}
+
+function normalizeGenericDirectionText(value: string): string {
+  return value
+    .replace(/往北。/gu, '往北側路徑前進。')
+    .replace(/往南。/gu, '往南側路徑前進。')
+    .replace(/往東。/gu, '往東側路徑前進。')
+    .replace(/往西。/gu, '往西側路徑前進。');
 }
 
 function countCjkChars(value: string): number {
