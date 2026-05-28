@@ -12,6 +12,7 @@ import { getCharacterById, saveCharacter } from './db/queries.js';
 import { handleCommand } from './game/commands.js';
 import { ROOMS, ZONES, getRoom } from './data/rooms.js';
 import { buildInstanceEntryDefs, buildZoneMapPlans, plannedMapScopeForRoom, type InstanceEntryDef, type ZoneMapScopeDecision } from './data/world-map2-plan.js';
+import type { Direction } from '@game/shared';
 
 const PORT = parseInt(process.env.PORT ?? '3701', 10);
 const HOST = process.env.HOST ?? '0.0.0.0';
@@ -259,14 +260,26 @@ function buildPlanningWorldMapPayload(): {
         targetRoomName?: string;
         targetZoneId?: string;
         locked?: boolean;
+        edgeKind?: string;
+        edgeNote?: string;
+        broken: boolean;
       }[];
     }[];
   }[];
   instanceEntries: InstanceEntryDef[];
   connections: { fromZoneId: string; toZoneId: string; count: number }[];
+  diagnostics: {
+    missingTargets: string[];
+    duplicateDirections: string[];
+    selfLoops: string[];
+    specialEdges: string[];
+    crossZoneWorldAdjacencyIssues: string[];
+    borderRoomGaps: string[];
+  };
 } {
   const zonePlans = buildZoneMapPlans(ZONES);
   const instanceEntries = buildInstanceEntryDefs(ZONES);
+  const diagnostics = buildPlanningDiagnostics(zonePlans);
   const zones = Object.values(ZONES).map((zone) => ({
     id: zone.id,
     name: zone.name,
@@ -302,6 +315,9 @@ function buildPlanningWorldMapPayload(): {
             targetRoomName: targetRoom?.name,
             targetZoneId: targetRoom?.zone,
             locked: exit.locked,
+            edgeKind: exit.edgeKind,
+            edgeNote: exit.edgeNote,
+            broken: !targetRoom,
           };
         }),
       })),
@@ -326,5 +342,124 @@ function buildPlanningWorldMapPayload(): {
       const [fromZoneId, toZoneId] = key.split(':');
       return { fromZoneId, toZoneId, count };
     }),
+    diagnostics,
   };
+}
+
+function buildPlanningDiagnostics(zonePlans: ReturnType<typeof buildZoneMapPlans>): {
+  missingTargets: string[];
+  duplicateDirections: string[];
+  selfLoops: string[];
+  specialEdges: string[];
+  crossZoneWorldAdjacencyIssues: string[];
+  borderRoomGaps: string[];
+} {
+  const missingTargets: string[] = [];
+  const duplicateDirections: string[] = [];
+  const selfLoops: string[] = [];
+  const crossZoneExits: string[] = [];
+  const specialEdges: string[] = [];
+  const crossZoneWorldAdjacencyIssues: string[] = [];
+  const borderRoomGaps: string[] = [];
+
+  for (const room of Object.values(ROOMS)) {
+    const seenDirections = new Set<string>();
+    for (const exit of room.exits) {
+      if (seenDirections.has(exit.direction)) {
+        duplicateDirections.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
+      }
+      seenDirections.add(exit.direction);
+
+      const targetRoom = getRoom(exit.targetRoomId);
+      if (!targetRoom) {
+        missingTargets.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
+        continue;
+      }
+      if (targetRoom.id === room.id) {
+        selfLoops.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
+      }
+      if (targetRoom.zone !== room.zone) {
+        crossZoneExits.push(`${room.zone}/${room.id}:${exit.direction}->${targetRoom.zone}/${targetRoom.id}`);
+      }
+      if (exit.edgeKind && exit.edgeKind !== 'normal') {
+        specialEdges.push(`${room.id}:${exit.direction}->${targetRoom.id} (${exit.edgeKind}) ${exit.edgeNote ?? ''}`.trim());
+      }
+    }
+  }
+
+  for (const exitText of crossZoneExits) {
+    const parsed = parseCrossZoneExit(exitText);
+    if (!parsed) continue;
+    const fromPlan = zonePlans.get(parsed.fromZoneId);
+    const toPlan = zonePlans.get(parsed.toZoneId);
+    if (!fromPlan?.globalBounds || !toPlan?.globalBounds) continue;
+    if (fromPlan.decision === 'instance' || toPlan.decision === 'instance') continue;
+    const issue = getDirectionalBoundsIssue(parsed.direction, fromPlan.globalBounds, toPlan.globalBounds);
+    if (!issue) continue;
+    const label = `${parsed.fromZoneId}/${parsed.fromRoomId}:${parsed.direction}->${parsed.toZoneId}/${parsed.toRoomId}`;
+    crossZoneWorldAdjacencyIssues.push(`${label}: ${issue}`);
+    if (issue.includes('gap')) {
+      borderRoomGaps.push(`${label}: ${issue}`);
+    }
+  }
+
+  return {
+    missingTargets,
+    duplicateDirections,
+    selfLoops,
+    specialEdges,
+    crossZoneWorldAdjacencyIssues,
+    borderRoomGaps,
+  };
+}
+
+function parseCrossZoneExit(exitText: string): {
+  fromZoneId: string;
+  fromRoomId: string;
+  direction: Direction;
+  toZoneId: string;
+  toRoomId: string;
+} | null {
+  const match = exitText.match(/^([^/]+)\/([^:]+):(north|south|east|west)->([^/]+)\/(.+)$/);
+  if (!match) return null;
+  return {
+    fromZoneId: match[1],
+    fromRoomId: match[2],
+    direction: match[3] as Direction,
+    toZoneId: match[4],
+    toRoomId: match[5],
+  };
+}
+
+function getDirectionalBoundsIssue(
+  direction: Direction,
+  from: { minX: number; maxX: number; minY: number; maxY: number },
+  to: { minX: number; maxX: number; minY: number; maxY: number },
+): string | null {
+  switch (direction) {
+    case 'north':
+      if (to.maxY >= from.minY) return 'target bbox is not north of source bbox';
+      if (from.minY - to.maxY > 1) return `north gap ${from.minY - to.maxY - 1} row(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minX, from.maxX, to.minX, to.maxX)) return 'north exit has no horizontal bbox overlap';
+      return null;
+    case 'south':
+      if (to.minY <= from.maxY) return 'target bbox is not south of source bbox';
+      if (to.minY - from.maxY > 1) return `south gap ${to.minY - from.maxY - 1} row(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minX, from.maxX, to.minX, to.maxX)) return 'south exit has no horizontal bbox overlap';
+      return null;
+    case 'east':
+      if (to.minX <= from.maxX) return 'target bbox is not east of source bbox';
+      if (to.minX - from.maxX > 1) return `east gap ${to.minX - from.maxX - 1} column(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minY, from.maxY, to.minY, to.maxY)) return 'east exit has no vertical bbox overlap';
+      return null;
+    case 'west':
+      if (to.maxX >= from.minX) return 'target bbox is not west of source bbox';
+      if (from.minX - to.maxX > 1) return `west gap ${from.minX - to.maxX - 1} column(s) needs border room planning`;
+      if (!rangesTouchOrOverlap(from.minY, from.maxY, to.minY, to.maxY)) return 'west exit has no vertical bbox overlap';
+      return null;
+  }
+}
+
+function rangesTouchOrOverlap(leftMin: number, leftMax: number, rightMin: number, rightMax: number): boolean {
+  return leftMin <= rightMax + 1 && leftMax + 1 >= rightMin;
 }

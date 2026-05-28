@@ -4631,6 +4631,28 @@ input::placeholder {
   line-height: 1.45;
 }
 
+.map-planning-diagnostic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(90, 106, 138, 0.35);
+}
+
+.map-planning-diagnostic-list b {
+  color: var(--color-text-amber);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.map-planning-diagnostic-list small {
+  color: var(--color-text-dim);
+  font-size: 10px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
 .map-planning-stat-grid span,
 .map-planning-room-detail small,
 .map-planning-muted {

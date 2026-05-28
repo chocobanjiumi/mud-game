@@ -16,6 +16,9 @@ type PlanningRoom = {
     targetRoomName?: string;
     targetZoneId?: string;
     locked?: boolean;
+    edgeKind?: string;
+    edgeNote?: string;
+    broken: boolean;
   }[];
 };
 
@@ -47,6 +50,14 @@ type PlanningMapPayload = {
   generatedAt: number;
   zones: PlanningZone[];
   connections: { fromZoneId: string; toZoneId: string; count: number }[];
+  diagnostics: {
+    missingTargets: string[];
+    duplicateDirections: string[];
+    selfLoops: string[];
+    specialEdges: string[];
+    crossZoneWorldAdjacencyIssues: string[];
+    borderRoomGaps: string[];
+  };
 };
 
 type PlacedZone = PlanningZone & {
@@ -265,6 +276,29 @@ export default function MapPlanningPage() {
             </section>
 
             <section className="map-planning-card">
+              <h2>診斷</h2>
+              <div className="map-planning-stat-grid">
+                <span>缺目標</span><b>{payload.diagnostics.missingTargets.length}</b>
+                <span>重複方向</span><b>{payload.diagnostics.duplicateDirections.length}</b>
+                <span>自迴圈</span><b>{payload.diagnostics.selfLoops.length}</b>
+                <span>特殊邊</span><b>{payload.diagnostics.specialEdges.length}</b>
+                <span>跨區問題</span><b>{payload.diagnostics.crossZoneWorldAdjacencyIssues.length}</b>
+                <span>邊界缺口</span><b>{payload.diagnostics.borderRoomGaps.length}</b>
+              </div>
+              <DiagnosticList title="邊界缺口" items={payload.diagnostics.borderRoomGaps} />
+              <DiagnosticList title="跨區方向問題" items={payload.diagnostics.crossZoneWorldAdjacencyIssues} />
+              <DiagnosticList title="特殊邊" items={payload.diagnostics.specialEdges} />
+              <DiagnosticList
+                title="Broken exits"
+                items={[
+                  ...payload.diagnostics.missingTargets,
+                  ...payload.diagnostics.duplicateDirections,
+                  ...payload.diagnostics.selfLoops,
+                ]}
+              />
+            </section>
+
+            <section className="map-planning-card">
               <h2>{active ? active.room.name : '選取房間'}</h2>
               {active ? (
                 <>
@@ -305,7 +339,8 @@ export default function MapPlanningPage() {
                       >
                         <span>{DIRECTION_LABELS[exit.direction] ?? exit.direction}</span>
                         <b>{exit.targetRoomName ?? exit.targetRoomId}</b>
-                        <small>{exit.targetZoneId && exit.targetZoneId !== active.zone.id ? `跨區：${exit.targetZoneId}` : '同區'}</small>
+                        <small>{formatExitMeta(exit, active.zone.id)}</small>
+                        {exit.edgeNote ? <small>{exit.edgeNote}</small> : null}
                       </button>
                     )) : (
                       <div className="map-planning-muted">無出口</div>
@@ -328,7 +363,7 @@ export default function MapPlanningPage() {
                     className={selected?.zone.id === zone.id ? 'map-planning-zone-index-active' : ''}
                   >
                     <span>{zone.name}</span>
-                <small>{formatDecision(zone.mapPlan.decision)} · {zone.templateRooms?.length ?? zone.rooms.length}</small>
+                    <small>{formatDecision(zone.mapPlan.decision)} · {zone.templateRooms?.length ?? zone.rooms.length}</small>
                   </button>
                 ))}
               </div>
@@ -509,6 +544,26 @@ function getRoomDisplayY(room: PlanningRoom, mode: 'local' | 'planning'): number
 
 function hasPlanningCoordinate(room: PlanningRoom): boolean {
   return typeof room.worldX === 'number' && typeof room.worldY === 'number';
+}
+
+function DiagnosticList({ title, items }: { title: string; items: string[] }) {
+  if (items.length === 0) return null;
+  return (
+    <div className="map-planning-diagnostic-list">
+      <b>{title}</b>
+      {items.slice(0, 5).map(item => (
+        <small key={item}>{item}</small>
+      ))}
+      {items.length > 5 ? <small>另有 {items.length - 5} 筆</small> : null}
+    </div>
+  );
+}
+
+function formatExitMeta(exit: PlanningRoom['exits'][number], currentZoneId: string): string {
+  if (exit.broken) return '缺 target';
+  if (exit.edgeKind && exit.edgeKind !== 'normal') return exit.edgeKind;
+  if (exit.targetZoneId && exit.targetZoneId !== currentZoneId) return `跨區：${exit.targetZoneId}`;
+  return '同區';
 }
 
 function formatDecision(decision: PlanningZone['mapPlan']['decision']): string {
