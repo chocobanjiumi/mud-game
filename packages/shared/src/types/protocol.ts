@@ -73,6 +73,8 @@ export interface NpcDialogueOptionPayload {
   index: number;
   text: string;
   command: string;
+  disabled?: boolean;
+  disabledReason?: string;
 }
 
 export interface NpcDialogueShopItemPayload {

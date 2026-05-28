@@ -187,11 +187,17 @@ export function NpcDialogueModalView({
             {dialogue.options.map((option) => (
               <button
                 key={`${dialogue.nodeId}-${option.index}`}
-                className="npc-dialogue-option"
-                onClick={() => sendCommand(option.command, option.text)}
+                className={`npc-dialogue-option ${option.disabled ? 'opacity-45 cursor-not-allowed' : ''}`}
+                disabled={option.disabled}
+                title={option.disabledReason}
+                onClick={() => {
+                  if (option.disabled) return;
+                  sendCommand(option.command, option.text);
+                }}
               >
                 <span>{option.index}</span>
-                <b>{option.text}</b>
+                <b>{option.disabledReason ? `${option.text}（鎖定）` : option.text}</b>
+                {option.disabledReason && <small>{option.disabledReason}</small>}
               </button>
             ))}
           </div>

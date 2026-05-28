@@ -284,6 +284,11 @@ export function handleCommand(session: WsSession, input: string, aliasDepth = 0)
         if (npc) {
           if (numChoice >= 1 && numChoice <= active.options.length) {
             const chosen = active.options[numChoice - 1];
+            const lock = getDialogueOptionLockReason(npc, chosen, char);
+            if (lock) {
+              sendError(session.sessionId, `「${chosen.text}」目前無法選擇：${lock}`);
+              return;
+            }
             showDialogueNode(session, npc, chosen.nextId);
             questMgr.updateProgress(char.id, 'talk', npc.id);
             return;
@@ -4127,10 +4132,21 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
   }
 
   const options = buildDialogueOptions(npc, node, char);
+  const optionPayloads = options.map((option, index) => {
+    const lock = getDialogueOptionLockReason(npc, option, char);
+    return {
+      index: index + 1,
+      text: option.text,
+      command: `talk ${npc.id} ${index + 1}`,
+      disabled: Boolean(lock),
+      disabledReason: lock,
+    };
+  });
   let dialogueText = `【${npc.name}】：${node.text}`;
   if (options.length > 0) {
     for (let i = 0; i < options.length; i++) {
-      dialogueText += `\n  ${i + 1}. ${options[i].text}`;
+      const lock = optionPayloads[i]?.disabledReason;
+      dialogueText += `\n  ${i + 1}. ${options[i].text}${lock ? `（鎖定：${lock}）` : ''}`;
     }
     // 記錄對話狀態
     activeDialogues.set(session.sessionId, { npcId: npc.id, nodeId, options });
@@ -4148,14 +4164,27 @@ function showDialogueNode(session: WsSession, npc: NpcDef, nodeId: string): void
     npcType: npc.type,
     nodeId: node.id,
     text: node.text,
-    options: options.map((option, index) => ({
-      index: index + 1,
-      text: option.text,
-      command: `talk ${npc.id} ${index + 1}`,
-    })),
+    options: optionPayloads,
     shopItems: node.action?.type === 'shop' && char ? buildNpcShopItems(char, npc) : undefined,
   });
   sendNarrative(session.sessionId, dialogueText, 'npc');
+}
+
+function getDialogueOptionLockReason(npc: NpcDef, option: DialogueOption, char: Character | null): string | undefined {
+  if (!char) return undefined;
+  const nextNode = resolveDialogueNode(npc, option.nextId);
+  if (nextNode?.action?.type !== 'instance_entry') return undefined;
+  const entryId = nextNode.action.data?.entryId as string | undefined;
+  if (!entryId) return '此對話選項缺少副本入口資料。下一步：補上 dialogue action 的 entryId。';
+  const entry = buildInstanceEntryDefs(ZONES).find(candidate => candidate.id === entryId);
+  if (!entry) return `副本入口「${entryId}」不存在。下一步：補上 InstanceEntryDef 後再對話。`;
+  if (entry.npcId && entry.npcId !== npc.id) return `此入口綁定 NPC「${entry.npcId}」，不是目前 NPC。下一步：尋找正確 NPC。`;
+  if (entry.roomId !== char.roomId) {
+    const requiredRoomName = getRoom(entry.roomId)?.name ?? entry.roomId;
+    return `需要在「${requiredRoomName}」啟動。下一步：前往指定入口房間後再對話。`;
+  }
+  const availability = getInstanceEntryAvailability(char, entry);
+  return availability.ok ? undefined : availability.message;
 }
 
 /** shop <NPC> — 直接開啟商人 NPC 的商店（跳到 shop 對話節點） */
@@ -4383,6 +4412,11 @@ function cmdTalk(session: WsSession, npcName: string): void {
       if (npc && npc.id === active.npcId) {
         if (choiceNum >= 1 && choiceNum <= active.options.length) {
           const chosen = active.options[choiceNum - 1];
+          const lock = getDialogueOptionLockReason(npc, chosen, char);
+          if (lock) {
+            sendError(session.sessionId, `「${chosen.text}」目前無法選擇：${lock}`);
+            return;
+          }
           showDialogueNode(session, npc, chosen.nextId);
           questMgr.updateProgress(char.id, 'talk', npc.id);
           return;
