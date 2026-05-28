@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T17:20:16.101Z",
+  "generatedAt": "2026-05-28T17:28:49.114Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -42,7 +42,15 @@
     },
     "npc": {
       "descriptionMinCjkChars": 45,
-      "dialogueNodeMinCjkChars": 45
+      "roleSummaryMinCjkChars": 35,
+      "functionalRoleSummaryMinCjkChars": 45,
+      "dialogueNodeMinCjkChars": 45,
+      "instanceEntryNpcMinNodes": 3,
+      "requiredDialogueParts": [
+        "NPC 立場或職責",
+        "具體目標 / 威脅 / 線索",
+        "玩家下一步"
+      ]
     },
     "quest": {
       "mainDescriptionMinCjkChars": 80,
@@ -193,6 +201,10 @@
     "monsterRooms": 1092,
     "instanceEntryRooms": 26,
     "npcs": 217,
+    "functionalNpcs": 194,
+    "instanceEntryNpcs": 3,
+    "npcDialogueNodes": 1023,
+    "npcDialogueOptions": 1844,
     "quests": 614,
     "dungeons": 29,
     "monsters": 521,

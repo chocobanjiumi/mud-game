@@ -26,6 +26,7 @@ type TextKind =
   | 'room.description'
   | 'exit.description'
   | 'npc.description'
+  | 'npc.roleSummary'
   | 'npc.dialogue.text'
   | 'npc.dialogue.option'
   | 'quest.description'
@@ -205,8 +206,11 @@ for (const family of [...monsterFamilies].sort()) {
 
 for (const npc of Object.values(NPCS)) {
   checkText(npc.id, 'npc.description', 'description', npc.description, 45, 'NPC 描述需有外觀、位置或職能線索');
+  checkText(`${npc.id}/roleSummary`, 'npc.roleSummary', 'roleSummary', formatNpcRoleSummaryAuditText(npc), npcRoleSummaryMinimum(npc), 'NPC roleSummary 需包含玩法用途、服務限制與玩家下一步');
+  auditNpcDialogueSet(npc);
   for (const node of npc.dialogue) {
-    checkText(`${npc.id}/${node.id}`, 'npc.dialogue.text', 'text', node.text, 45, 'NPC dialogue node 文字不足');
+    checkText(`${npc.id}/${node.id}`, 'npc.dialogue.text', 'text', node.text, npcDialogueMinimum(npc, node), 'NPC dialogue node 文字不足');
+    auditNpcDialogueNode(npc, node);
     for (const [index, option] of (node.options ?? []).entries()) {
       const optionText = option.text ?? '';
       const trimmed = optionText.trim();
@@ -499,7 +503,11 @@ const report = {
     },
     npc: {
       descriptionMinCjkChars: 45,
+      roleSummaryMinCjkChars: 35,
+      functionalRoleSummaryMinCjkChars: 45,
       dialogueNodeMinCjkChars: 45,
+      instanceEntryNpcMinNodes: 3,
+      requiredDialogueParts: ['NPC 立場或職責', '具體目標 / 威脅 / 線索', '玩家下一步'],
     },
     quest: {
       mainDescriptionMinCjkChars: 80,
@@ -619,6 +627,10 @@ const report = {
     monsterRooms: Object.values(ROOMS).filter(room => (room.monsters?.length ?? 0) > 0).length,
     instanceEntryRooms: instanceEntryRoomIds.size,
     npcs: Object.keys(NPCS).length,
+    functionalNpcs: Object.values(NPCS).filter(npc => isFunctionalNpc(npc)).length,
+    instanceEntryNpcs: Object.values(NPCS).filter(npc => isInstanceEntryNpc(npc)).length,
+    npcDialogueNodes: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.length, 0),
+    npcDialogueOptions: Object.values(NPCS).reduce((count, npc) => count + npc.dialogue.reduce((sum, node) => sum + (node.options?.length ?? 0), 0), 0),
     quests: Object.keys(questDefs).length,
     dungeons: Object.keys(DUNGEON_DEFS).length,
     monsters: Object.keys(MONSTERS).length,
@@ -745,6 +757,82 @@ function hasMonsterRoomCue(room: typeof ROOMS[string], text: string): boolean {
     if (!monster) return false;
     return text.includes(monster.name) || text.includes(monster.alias);
   });
+}
+
+function npcRoleSummaryMinimum(npc: typeof NPCS[string]): number {
+  return isFunctionalNpc(npc) ? 45 : 35;
+}
+
+function formatNpcRoleSummaryAuditText(npc: typeof NPCS[string]): string {
+  const room = getRoom(npc.roomId);
+  const typeLabel = {
+    merchant: '商人',
+    class_trainer: '職業導師',
+    quest: '任務引導者',
+    innkeeper: '旅店照看者',
+    general: '居民',
+  }[npc.type] ?? npc.type;
+  const services = [
+    npc.shopItems?.length ? `買賣 ${npc.shopItems.length} 種商品並受背包、金幣與出售規則限制` : '',
+    npc.classToTeach ? `提供 ${npc.classToTeach} 相關訓練或轉職確認` : '',
+    npc.dialogue.some(node => node.action?.type === 'heal') ? '提供治療或休息服務並需要玩家確認狀態' : '',
+    npc.dialogue.some(node => node.action?.type === 'quest_start' || node.action?.type === 'quest_complete') ? '核對任務接取、交付證物與回報獎勵' : '',
+    isInstanceEntryNpc(npc) ? '守著副本入口並確認等級、道具、隊伍或冷卻條件' : '',
+    npc.dialogue.some(node => node.action?.type === 'teleport') ? '說明傳送目的地、費用或解鎖條件' : '',
+  ].filter(Boolean).join('；') || '提供地點情報、區域威脅與下一步詢問方向';
+  const nextStep = npc.dialogue.find(node => node.options?.length)?.options?.[0]?.text ?? '詢問目前可處理的事件';
+  return `NPC「${npc.name}」位於${room?.name ?? npc.roomId}，擔任${typeLabel}。此角色負責${services}。玩家下一步應先選擇「${nextStep}」，並依對話確認限制、目標或回報方向。`;
+}
+
+function isFunctionalNpc(npc: typeof NPCS[string]): boolean {
+  return npc.type !== 'general'
+    || !!npc.shopItems?.length
+    || !!npc.classToTeach
+    || npc.dialogue.some(node => !!node.action);
+}
+
+function isInstanceEntryNpc(npc: typeof NPCS[string]): boolean {
+  return npc.dialogue.some(node => node.action?.type === 'instance_entry');
+}
+
+function npcDialogueMinimum(npc: typeof NPCS[string], node: typeof NPCS[string]['dialogue'][number]): number {
+  if (node.action?.type === 'instance_entry') return 45;
+  return 45;
+}
+
+function auditNpcDialogueSet(npc: typeof NPCS[string]) {
+  if (!isInstanceEntryNpc(npc)) return;
+  if (npc.dialogue.length < 3) {
+    addMeasuredIssue(npc.id, 'npc.dialogue.text', 'dialogue', '', npc.dialogue.length, 3, '副本入口 NPC 至少需要介紹、條件確認、進入確認三段對話');
+  }
+  const fullText = npc.dialogue.map(node => node.text).join(' ');
+  for (const [label, pattern] of [
+    ['副本名稱或入口名', /副本|入口|裂隙|墓窟|遺跡|神殿|礦坑|洞窟|王都|戰場|深淵|天界|龍谷/u],
+    ['入口原因或威脅', /威脅|危險|侵蝕|封印|怪物|首領|亡靈|惡魔|深淵|火焰|水位|陷阱|崩塌/u],
+    ['玩家下一步', /進入|確認|準備|檢查|隊伍|等級|道具|回報|先/u],
+  ] as const) {
+    if (!pattern.test(fullText)) {
+      addIssue(npc.id, 'npc.dialogue.text', 'dialogue', fullText, 70, `副本入口 NPC 對話缺少${label}`);
+    }
+  }
+}
+
+function auditNpcDialogueNode(npc: typeof NPCS[string], node: typeof NPCS[string]['dialogue'][number]) {
+  const id = `${npc.id}/${node.id}`;
+  const minimum = npcDialogueMinimum(npc, node);
+  const text = node.text;
+
+  if (isInstanceEntryNpc(npc) || node.action?.type === 'instance_entry') {
+    requireNpcTextPart(id, text, minimum, /副本|入口|進入|隊伍|等級|道具|條件|冷卻|威脅|首領|危險|確認|準備|洞口|礦道|巢|水晶|退路|封蠟|深層/u, '副本相關 NPC 對話必須提到副本威脅、目標、入口或隊伍條件');
+  }
+  if (node.action?.type === 'quest_start' || node.action?.type === 'quest_complete') {
+    requireNpcTextPart(id, text, minimum, /任務|委託|目標|地點|回報|獎勵|證物|完成|下一步|調查/u, '任務 NPC 對話必須提示目標地點、任務動機、獎勵或回報方向');
+  }
+}
+
+function requireNpcTextPart(id: string, text: string, minimumLength: number, pattern: RegExp, reason: string) {
+  if (pattern.test(text)) return;
+  addIssue(id, 'npc.dialogue.text', 'text', text, minimumLength, reason);
 }
 
 function checkText(id: string, kind: TextKind, field: string, text: string, minimumLength: number, reason: string) {
@@ -897,6 +985,7 @@ function recordText(id: string, kind: TextKind, field: string, text: string) {
 function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'room.description') return `zone:${id.split('/')[0]}`;
   if (kind === 'exit.description') return `exit:${id.split('/')[0]}`;
+  if (kind === 'npc.roleSummary') return 'npc.roleSummary';
   if (kind === 'npc.dialogue.text' || kind === 'npc.dialogue.option') return `npc:${id.split('/')[0]}`;
   if (kind === 'quest.description' || kind === 'quest.dialogueStart' || kind === 'quest.dialogueComplete' || kind === 'quest.objective') return `quest:${id.split('/')[0]}`;
   if (kind === 'dungeon.room.description') return `dungeon:${id.split('/')[0]}`;
@@ -1694,6 +1783,7 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
+    || batchKey === 'npc.roleSummary'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -1730,6 +1820,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'roomAction.tooltip'
     || batchKey === 'wiki.article.summary'
     || batchKey === 'wiki.table.rowNote'
+    || batchKey === 'npc.roleSummary'
     || batchKey === 'imagePrompt.characterNpc'
     || batchKey === 'imagePrompt.itemIcon'
     || batchKey === 'imagePrompt.iconAtlas'
@@ -1741,6 +1832,7 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
 function checkUnresolvedReferences(records: TextRecord[]) {
   const referencePattern = /\b[a-z][a-z0-9]+_[a-z0-9_]+\b/g;
   for (const record of records) {
+    if (record.kind === 'npc.roleSummary') continue;
     if (record.kind === 'imagePrompt.characterNpc' || record.kind === 'imagePrompt.itemIcon' || record.kind === 'imagePrompt.iconAtlas') continue;
     const references = record.text.match(referencePattern) ?? [];
     for (const reference of references) {
