@@ -3867,7 +3867,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '熔岩蟲在岩漿河中自在穿行，火蜥蜴則在河岸捕食。西面回熔岩小徑，南側黑色洞口通往黑曜石洞，東面有閃亮晶簇噴氣口；玩家可採集冷卻岩漿外殼。',
     exits: [
       { direction: 'west', targetRoomId: 'lava_trail', description: '回到熔岩小徑' },
-      { direction: 'south', targetRoomId: 'obsidian_cave', description: '河岸邊有一個漆黑的洞口' },
+      { direction: 'south', targetRoomId: 'obsidian_cave', description: '南側岩漿河沿冷卻黑石河岸下切，穿過熱浪裂階與漆黑洞口抵達黑曜石洞', edgeKind: 'long_path', edgeNote: '岩漿河到黑曜石洞需沿冷卻河岸與熱浪裂階下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '晶簇噴氣口在東側發亮' },
     ],
     monsters: [
@@ -3895,7 +3895,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '洞內的溫度意外地比外面低一些，但空氣中仍帶著焦灼的味道。' +
       '岩石巨人和熔岩蟲在這裡守護著地底的礦脈。北面回岩漿河，南方火光指向神殿入口，東側採場可取得高品質黑曜石。',
     exits: [
-      { direction: 'north', targetRoomId: 'magma_river', description: '回到岩漿河' },
+      { direction: 'north', targetRoomId: 'magma_river', description: '北側黑曜石洞沿漆黑洞口回穿，越過熱浪裂階與冷卻黑石河岸回到岩漿河', edgeKind: 'long_path', edgeNote: '黑曜石洞回岩漿河需沿洞口與冷卻河岸回穿，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'fire_temple_entrance', description: '深處有微弱的火光' },
       { direction: 'east', targetRoomId: 'volcano_obsidian_quarry', description: '採石聲來自東側黑曜石採場' },
     ],
@@ -3963,7 +3963,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。東側可聽見蒸汽升降梯齒輪聲，但實際需從下層採場或熔岩橋維修階繞行。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_base', description: '回到火山山腳' },
-      { direction: 'south', targetRoomId: 'forge_hall', description: '礦道深處通往鍛造大廳' },
+      { direction: 'south', targetRoomId: 'forge_hall', description: '南側矮人礦坑沿礦車軌道下行，穿過支撐木架與熱風升井抵達鍛造大廳', edgeKind: 'long_path', edgeNote: '矮人礦坑到鍛造大廳需沿礦車軌道與熱風升井下行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
@@ -3991,8 +3991,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '空氣中充斥著灼熱的金屬氣味和淬火時蒸騰的白色蒸汽，令人彷彿置身於火焰的心臟。' +
       '一位肌肉虯結的矮人鐵匠正揮舞著比他手臂還粗的戰錘鍛打一塊通紅的鋼胚，他的技藝堪稱傳奇。北面回矮人礦坑，東側庫房堆滿礦錠；玩家可 craft、修理或接鍛造委託，inspect 熔爐風口可發現火元素異常。牆上的訂單板列出武器、護甲和飾品需求，提示玩家把採礦、分解與重鑄材料帶回此處處理。',
     exits: [
-      { direction: 'north', targetRoomId: 'dwarf_mine', description: '回到礦坑' },
-      { direction: 'east', targetRoomId: 'volcano_forge_storage', description: '庫房門後堆著礦錠' },
+      { direction: 'north', targetRoomId: 'dwarf_mine', description: '北側鍛造大廳沿熱風升井上行，穿過支撐木架與礦車軌道回到矮人礦坑', edgeKind: 'long_path', edgeNote: '鍛造大廳回矮人礦坑需沿熱風升井與礦車軌道上行，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'volcano_forge_storage', description: '東側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房', edgeKind: 'long_path', edgeNote: '鍛造大廳到鍛造庫房需沿服務長廊與黑鐵庫門轉入，避免與星隕坑入口座標重疊，屬於長路徑。' },
     ],
     npcs: ['dwarf_blacksmith'],
     monsters: [
@@ -4151,7 +4151,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'west', targetRoomId: 'dwarf_mine', description: '走廊回到矮人礦坑' },
+      { direction: 'west', targetRoomId: 'dwarf_mine', description: '西側餘燼兵房沿黑鐵巡邏走廊折返，穿過封閉玄武岩牆與礦坑側門回到矮人礦坑', edgeKind: 'long_path', edgeNote: '餘燼兵房回矮人礦坑需沿黑鐵巡邏走廊與礦坑側門折返，實際路程長於相鄰一格。' },
       {
         direction: 'south',
         targetRoomId: 'volcano_forge_storage',
@@ -4259,7 +4259,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '鍛造大廳東側的庫房堆滿鐵錠、黑曜石板與標記清楚的工具箱，冷卻架上還冒著白煙，牆角傳來低沉爐鳴。西面回鍛造大廳，北側貨道接餘燼兵房。玩家可 search 鎖箱取得材料樣本，inspect 出庫牌追蹤鍛造任務需求，也要處理從通風口竄出的火元素。這裡是火山資源線的城鎮服務延伸點，貨架按武器、護甲、飾品和消耗品分區，方便玩家確認缺少哪種礦材。牆上封蠟記錄還標示哪些箱子屬於公會訂單，錯拿會觸發守衛盤查。地上的紅色箭頭指向熔爐、礦坑與兵房三個出口，讓滿載材料的玩家能快速選擇加工、補給或撤退方向。',
     exits: [
-      { direction: 'west', targetRoomId: 'forge_hall', description: '庫房門回鍛造大廳' },
+      { direction: 'west', targetRoomId: 'forge_hall', description: '西側鍛造庫房穿過黑鐵庫門折返，沿礦錠推車與冷卻架服務長廊回到鍛造大廳', edgeKind: 'long_path', edgeNote: '鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。' },
       {
         direction: 'north',
         targetRoomId: 'volcano_ember_barracks',
