@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T16:46:52.100Z",
+  "generatedAt": "2026-05-28T16:49:50.091Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -107,6 +107,16 @@
       "gatedDescriptionMinCjkChars": 55,
       "tooltipMinCjkChars": 24
     },
+    "mapAndRoomAction": {
+      "mapMarkerTooltipMinCjkChars": 24,
+      "roomActionTooltipMinCjkChars": 24,
+      "requiredParts": [
+        "名稱",
+        "互動方式",
+        "目的地或效果",
+        "鎖定原因或未鎖定狀態"
+      ]
+    },
     "bannedGenericPhrases": [
       "這裡很危險",
       "你感到不安",
@@ -145,6 +155,8 @@
     "skillUpgradePreviews": 112,
     "imagePrompts": 1203,
     "instanceEntries": 37,
+    "mapMarkerTooltips": 1203,
+    "roomActionTooltips": 3122,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
     "issues": 0

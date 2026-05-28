@@ -57,6 +57,8 @@ type TextKind =
   | 'skill.description'
   | 'skill.tooltip'
   | 'skill.upgradePreview'
+  | 'mapMarker.tooltip'
+  | 'roomAction.tooltip'
   | 'imagePrompt'
   | 'batch.repeatedOpening'
   | 'batch.repeatedCoreTerm'
@@ -395,6 +397,27 @@ for (const entry of instanceEntries) {
   checkText(`${entry.id}/tooltip`, 'instanceEntry.tooltip', 'tooltip', formatInstanceEntryTooltipAuditText(entry), 24, 'instance entry tooltip 需列出副本名稱、建議等級、人數、需求、冷卻與鎖定資訊');
 }
 
+for (const room of Object.values(ROOMS)) {
+  checkText(
+    `${room.id}/marker`,
+    'mapMarker.tooltip',
+    'tooltip',
+    formatMapMarkerTooltipAuditText(room),
+    24,
+    'map marker tooltip 需包含房間或入口名稱、互動方式、目的地或效果、鎖定原因',
+  );
+  for (const exit of room.exits) {
+    checkText(
+      `${room.id}/${exit.direction}`,
+      'roomAction.tooltip',
+      'tooltip',
+      formatRoomActionTooltipAuditText(room, exit),
+      24,
+      'room action tooltip 需包含目前房間、方向互動、目的地或效果、鎖定原因',
+    );
+  }
+}
+
 checkRepeatedOpenings(textRecords);
 checkRepeatedCoreTerms(textRecords);
 checkUnresolvedReferences(textRecords);
@@ -509,6 +532,11 @@ const report = {
       gatedDescriptionMinCjkChars: 55,
       tooltipMinCjkChars: 24,
     },
+    mapAndRoomAction: {
+      mapMarkerTooltipMinCjkChars: 24,
+      roomActionTooltipMinCjkChars: 24,
+      requiredParts: ['名稱', '互動方式', '目的地或效果', '鎖定原因或未鎖定狀態'],
+    },
     bannedGenericPhrases,
   },
   counts: {
@@ -536,6 +564,8 @@ const report = {
     skillUpgradePreviews: Object.values(SKILL_DEFS).reduce((count, skill) => count + Math.max(0, (getSkillUpgradeRule(skill.id)?.maxLevel ?? 1) - 1), 0),
     imagePrompts: Object.values(ROOMS).filter(room => !!room.imagePrompt).length,
     instanceEntries: instanceEntries.length,
+    mapMarkerTooltips: Object.keys(ROOMS).length,
+    roomActionTooltips: Object.values(ROOMS).reduce((count, room) => count + room.exits.length, 0),
     instanceEntryItems: WORLD_MAP2_INSTANCE_ENTRY_ITEMS.length,
     checkedDungeonItems: Object.values(ITEM_DEFS).filter(item => isDungeonEntryItem(item.id, item.name, item.description)).length,
     issues: issues.length,
@@ -654,6 +684,8 @@ function getBatchKey(id: string, kind: TextKind): string {
   if (kind === 'skill.tooltip' || kind === 'skill.upgradePreview') return kind;
   if (kind === 'item.tooltip') return 'item.tooltip';
   if (kind === 'gatheringMaterial.description') return 'materials';
+  if (kind === 'mapMarker.tooltip') return 'mapMarker.tooltip';
+  if (kind === 'roomAction.tooltip') return 'roomAction.tooltip';
   if (kind === 'imagePrompt') return `imagePrompt:${id.split('/')[0]}`;
   return kind;
 }
@@ -913,6 +945,69 @@ function formatInstanceEntryTooltipAuditText(entry: InstanceEntryForAudit): stri
   return `入口「${entry.name}」可進入${dungeonName}，建議等級 Lv.${entry.minLevel}，人數 1-${entry.maxPartySize}，需求 ${requirementText}，${cooldownText}；若鎖定需依任務、道具或隊伍條件處理。`;
 }
 
+function formatMapMarkerTooltipAuditText(room: typeof ROOMS[string]): string {
+  const zone = ZONES[room.zone];
+  const entry = instanceEntries.find(entryDef => entryDef.roomId === room.id);
+  if (entry) {
+    const dungeon = entry.dungeonId ? DUNGEON_DEFS[entry.dungeonId] : undefined;
+    const lockText = formatInstanceEntryLockText(entry);
+    return `地圖標記「${room.name}」位於${zone?.name ?? room.zone}，點擊可查看房間詳情並操作入口「${entry.name}」。效果是進入${dungeon?.name ?? entry.instanceTemplateId}，${lockText}。`;
+  }
+  const exitText = room.exits.length > 0
+    ? `可查看 ${room.exits.length} 個出口並選擇移動方向`
+    : '目前沒有可走出口，只能查看房間資訊或返回上一層介面';
+  return `地圖標記「${room.name}」位於${zone?.name ?? room.zone}，點擊可查看房間詳情、怪物、NPC 與採集資訊；${exitText}，此標記本身未鎖定。`;
+}
+
+function formatRoomActionTooltipAuditText(room: typeof ROOMS[string], exit: typeof ROOMS[string]['exits'][number]): string {
+  const targetRoom = getRoom(exit.targetRoomId);
+  const targetZone = exit.targetZoneId ? ZONES[exit.targetZoneId] : targetRoom ? ZONES[targetRoom.zone] : undefined;
+  const targetName = targetRoom?.name ?? exit.targetZoneName ?? exit.targetRoomId;
+  const edgeText = formatExitEdgeKindLabel(exit.edgeKind);
+  const lockText = exit.locked
+    ? `目前鎖定，${exit.keyItemId ? `需要 ${ITEM_DEFS[exit.keyItemId]?.name ?? exit.keyItemId}` : '需要滿足任務、道具或入口條件'}後才能前往`
+    : '目前未鎖定，可直接嘗試移動';
+  const effectText = exit.edgeKind === 'instance_entry'
+    ? `效果是進入${targetZone?.name ?? '副本區域'}入口`
+    : `目的地是${targetZone?.name ? `${targetZone.name}的` : ''}${targetName}`;
+  return `從「${room.name}」往${formatDirectionLabel(exit.direction)}移動，互動方式是點擊房間方向按鈕；${effectText}，路徑類型為${edgeText}，${lockText}。`;
+}
+
+function formatInstanceEntryLockText(entry: InstanceEntryForAudit): string {
+  const requiredItem = entry.requiredItemId ? ITEM_DEFS[entry.requiredItemId] : undefined;
+  const parts: string[] = [];
+  if (entry.minLevel) parts.push(`建議或需求等級 Lv.${entry.minLevel}`);
+  if (requiredItem) parts.push(`需要${requiredItem.name}${entry.consumeItem ? '且使用後消耗' : '但不消耗'}`);
+  if (entry.requiredQuestId) parts.push(`需要任務 ${entry.requiredQuestId} 狀態 ${entry.requiredQuestState ?? '符合條件'}`);
+  if (entry.cooldownSeconds) parts.push(`入口冷卻 ${entry.cooldownSeconds} 秒`);
+  if (parts.length === 0) return '入口未鎖定，玩家可直接互動';
+  return `鎖定或限制原因包含${parts.join('、')}`;
+}
+
+function formatDirectionLabel(direction: string): string {
+  const labels: Record<string, string> = {
+    north: '北',
+    south: '南',
+    east: '東',
+    west: '西',
+  };
+  return labels[direction] ?? direction;
+}
+
+function formatExitEdgeKindLabel(edgeKind: string | undefined): string {
+  const labels: Record<string, string> = {
+    normal: '一般道路',
+    wrap: '世界邊界環繞路徑',
+    bridge: '跨區橋接道路',
+    long_path: '長距離道路',
+    portal: '傳送或特殊通路',
+    one_way: '單向通路',
+    instance_entry: '副本入口',
+    instance_exit: '副本出口',
+  };
+  return labels[edgeKind ?? 'normal'] ?? (edgeKind ?? '一般道路');
+}
+
 function formatClassSummaryAuditText(classDef: typeof CLASS_DEFS[keyof typeof CLASS_DEFS]): string {
   const parent = classDef.parentClass ? CLASS_DEFS[classDef.parentClass]?.name : undefined;
   const advanced = (classDef.advancedClasses ?? []).map(classId => CLASS_DEFS[classId]?.name ?? classId);
@@ -1062,6 +1157,8 @@ function shouldSkipBatchRepetitionCheck(batchKey: string): boolean {
     || batchKey === 'item.tooltip'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
+    || batchKey === 'mapMarker.tooltip'
+    || batchKey === 'roomAction.tooltip'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip';
 }
@@ -1089,6 +1186,8 @@ function shouldSkipCoreTermCheck(batchKey: string): boolean {
     || batchKey === 'skills'
     || batchKey === 'skill.tooltip'
     || batchKey === 'skill.upgradePreview'
+    || batchKey === 'mapMarker.tooltip'
+    || batchKey === 'roomAction.tooltip'
     || batchKey === 'instanceEntry.name'
     || batchKey === 'instanceEntry.tooltip'
     || batchKey === 'instanceEntry.description';
