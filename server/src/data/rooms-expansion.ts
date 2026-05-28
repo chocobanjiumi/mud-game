@@ -17287,7 +17287,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_firefly_pool', description: '靜柳叢回到螢火池' },
       { direction: 'east', targetRoomId: 'moonlit_fen_glimmer_ford', description: '微光淺灘在東側' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_silver_mire', description: '柳根路落向銀泥沼' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_silver_mire', description: '南側靜柳叢沿露出水面的柳根路斜落，穿過銀霧水洼與倒影草線抵達銀泥沼', edgeKind: 'long_path', edgeNote: '靜柳叢到銀泥沼需沿柳根路與倒影草線斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'willow_whisper_root', maxCount: 2, respawnSeconds: 100 },
@@ -17313,7 +17313,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '銀泥沼位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_moonflower_bank', description: '銀泥沼回到月花岸' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '柳根路回到靜柳叢' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢', edgeKind: 'long_path', edgeNote: '銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_frog_choir', description: '蛙鳴洲在東側' },
     ],
     monsters: [
@@ -17393,7 +17393,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_silver_mire', description: '蛙鳴洲回到銀泥沼' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lantern_moss', description: '燈苔坡在東側' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_mosquito_haze', description: '濕草道落向蚊霧溝' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_mosquito_haze', description: '南側蛙鳴洲沿濕草道斜落，穿過蛙卵淺灣、月影水痕與銀蚊霧帶抵達蚊霧溝', edgeKind: 'long_path', edgeNote: '蛙鳴洲到蚊霧溝需沿濕草道與銀蚊霧帶斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blackwater_leech_bloom', maxCount: 2, respawnSeconds: 110 },
@@ -17419,7 +17419,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '蚊霧溝位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fishing_cut', description: '蚊霧溝回到釣水缺口' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '濕草道回到蛙鳴洲' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '北側蚊霧溝沿銀蚊霧帶回穿，踏過月影水痕、蛙卵淺灣與濕草道回到蛙鳴洲', edgeKind: 'long_path', edgeNote: '蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_blackwater_run', description: '黑水流在東側' },
     ],
     monsters: [
@@ -17604,7 +17604,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '月井位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fae_ring', description: '月井回到妖光環' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '井邊路落向白蘆迷道' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '南側月井沿井邊濕石路斜落，穿過月影水紋與白蘆迴圈入口抵達白蘆迷道', edgeKind: 'long_path', edgeNote: '月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'fae_ring_trickster', maxCount: 1, respawnSeconds: 240 },
@@ -17630,7 +17630,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '白蘆迷道位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '白蘆迷道回到半月池' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '井邊路回到月井' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '北側白蘆迷道沿白蘆迴圈折返，穿過月影水紋與井邊濕石路回到月井', edgeKind: 'long_path', edgeNote: '白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '月沼祭壇在東側' },
     ],
     monsters: [
@@ -17657,7 +17657,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊舟營位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_sunken_log_bridge', description: '舊舟營回到沉木橋' },
-      { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '舟痕通往月沼祭壇' },
+      { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '東側舊舟營沿半沉舟痕橫渡，繞過黑水倒影與白蘆暗汊抵達月沼祭壇', edgeKind: 'long_path', edgeNote: '舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'white_reed_stalker', maxCount: 1, respawnSeconds: 260 },
