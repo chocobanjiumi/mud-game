@@ -5040,8 +5040,81 @@ function ensureZoneExplorationAnchors(): void {
   }
 }
 
+function enrichRoomImagePrompts(): void {
+  for (const room of Object.values(ROOMS)) {
+    if (!room.imagePrompt || room.imagePrompt.includes('safe crop margins for mobile and desktop UI')) continue;
+    const zone = ZONES[room.zone];
+    const routeCue = describePromptRoutes(room);
+    const encounterCue = describePromptEncounters(room);
+    const serviceCue = describePromptServices(room, zone);
+    const terrainCue = extractPromptMarker(room.imagePrompt, /terrain ([^,]+)/i) ?? 'local terrain';
+    const roleCue = extractPromptMarker(room.imagePrompt, /room function ([^,]+)/i) ?? 'exploration';
+    const detailCue = getPromptDetailCue(room);
+
+    room.imagePrompt = `${room.imagePrompt}, cinematic environment concept art with a slightly elevated three quarter camera at adventurer eye level, clear foreground walking space, readable midground landmark, deep background silhouette, ${routeCue}, room role ${roleCue}, terrain focus ${terrainCue}, ${encounterCue}, ${serviceCue}, ${detailCue}, layered key light, rim light, soft bounce light, atmospheric haze, worn floor edges, weathered stone, timber, cloth, metal, soil, water, crystal, smoke, dust, vertical composition, safe crop margins for mobile and desktop UI, leave empty side space for interface panels, no readable letters, no signage, no subtitles, no watermark, no inventory icons, no character portrait`;
+  }
+}
+
+function describePromptRoutes(room: RoomDef): string {
+  const directions = room.exits.map(exit => PROMPT_DIRECTION_LABELS[exit.direction]).filter(Boolean);
+  if (directions.length === 0) return 'contained chamber with a single focused central landmark';
+  if (directions.length === 1) return `one visible route leading ${directions[0]} with strong floor perspective`;
+  return `visible route cues leading ${directions.slice(0, 4).join(', ')} with distinct path silhouettes`;
+}
+
+function describePromptEncounters(room: RoomDef): string {
+  const monsterCount = room.monsters?.length ?? 0;
+  if (monsterCount >= 3) return 'active monster territory shown through tracks, broken cover, claw marks, scattered bones, and guarded sightlines';
+  if (monsterCount > 0) return 'light encounter pressure shown through footprints, disturbed props, warning shadows, and a cautious approach path';
+  return 'quiet exploration mood with environmental storytelling, usable negative space, and no foreground combatants';
+}
+
+function describePromptServices(room: RoomDef, zone: ZoneDef | undefined): string {
+  const npcCount = room.npcs?.length ?? 0;
+  const gatheringCount = room.items?.length ?? 0;
+  const groundItemCount = room.groundItems?.length ?? 0;
+  const zoneType = (zone?.type ?? 'wilds').replace(/_/g, ' ');
+  const cues: string[] = [`zone category ${zoneType}`];
+  if (npcCount > 0) cues.push('small staffed area with clear standing space for non player characters');
+  if (gatheringCount > 0 || groundItemCount > 0) cues.push('collectible resource props integrated into the floor and wall materials');
+  if (room.exits.some(exit => exit.edgeKind && exit.edgeKind !== 'normal')) cues.push('special travel edge shown as a longer path, bridge, portal, or distant landmark');
+  return cues.join(', ');
+}
+
+function getPromptDetailCue(room: RoomDef): string {
+  const seed = Math.abs(hashPromptSeed(room.id));
+  const cues = [
+    'include tiny practical props, broken tools, ropes, sacks, lantern hooks, and believable scale references',
+    'include surface variation, puddles, chipped corners, moss, soot, scratches, footprints, and layered debris',
+    'include strong silhouette separation between entrance, landmark, hazard, and safe walking lane',
+    'include weather influence, drifting particles, damp surfaces, fabric movement, and distant environmental depth',
+    'include foreground texture, midground interactable shapes, background navigation hint, and grounded material contrast',
+  ];
+  return cues[seed % cues.length];
+}
+
+function extractPromptMarker(prompt: string, pattern: RegExp): string | undefined {
+  return prompt.match(pattern)?.[1]?.trim();
+}
+
+function hashPromptSeed(text: string): number {
+  let hash = 0;
+  for (const char of text) {
+    hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
+  }
+  return hash;
+}
+
+const PROMPT_DIRECTION_LABELS: Record<RoomDef['exits'][number]['direction'], string> = {
+  north: 'north',
+  south: 'south',
+  east: 'east',
+  west: 'west',
+};
+
 ensureNonTownRoomRoleTemplates();
 ensureZoneExplorationAnchors();
+enrichRoomImagePrompts();
 
 /** 取得房間定義 */
 export function getRoom(roomId: string): RoomDef | undefined {
