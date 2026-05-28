@@ -1,6 +1,7 @@
 // NPC 定義 - 所有 NPC 與對話樹
 
 import type { NpcDef } from '@game/shared';
+import { ROOMS } from './rooms.js';
 
 export const NPCS: Record<string, NpcDef> = {
 
@@ -11707,6 +11708,55 @@ export const NPCS: Record<string, NpcDef> = {
     },
   },
 };
+
+const NPC_TYPE_LABELS: Record<NpcDef['type'], string> = {
+  merchant: '商人',
+  class_trainer: '職業導師',
+  quest: '任務引導者',
+  innkeeper: '旅店照看者',
+  general: '居民',
+};
+
+enrichNpcDescriptions();
+
+function enrichNpcDescriptions(): void {
+  for (const npc of Object.values(NPCS)) {
+    if (countCjkChars(npc.description) >= 45) continue;
+    const description = npc.description.trim();
+    const suffix = buildNpcDescriptionSupplement(npc);
+    npc.description = `${description}${description.endsWith('。') ? '' : '。'}${suffix}`;
+  }
+}
+
+function buildNpcDescriptionSupplement(npc: NpcDef): string {
+  const roomName = ROOMS[npc.roomId]?.name ?? '所在房間';
+  const roleText = NPC_TYPE_LABELS[npc.type] ?? '居民';
+  const behaviorText = describeNpcBehavior(npc);
+  const nextStep = describeNpcNextStep(npc);
+  return `這名角色在「${roomName}」維持${roleText}職責，正${behaviorText}；玩家靠近時可從站位、隨身道具與第一句話判斷要先${nextStep}。`;
+}
+
+function describeNpcBehavior(npc: NpcDef): string {
+  if (npc.shopItems?.length) return '整理可交易的補給、裝備或任務物資';
+  if (npc.classToTeach) return '觀察訓練動作並準備說明轉職條件';
+  if (npc.dialogue.some(node => node.action?.type === 'instance_entry')) return '守著副本入口線索並核對隊伍狀態';
+  if (npc.dialogue.some(node => node.action?.type === 'quest_start' || node.action?.type === 'quest_complete')) return '核對任務進度與交付證物';
+  if (npc.dialogue.some(node => node.action?.type === 'heal')) return '確認傷勢、床位與可提供的恢復服務';
+  return '留意附近動靜並準備回應冒險者詢問';
+}
+
+function describeNpcNextStep(npc: NpcDef): string {
+  const firstOption = npc.dialogue.find(node => node.options?.length)?.options?.[0]?.text?.trim();
+  if (firstOption && countCjkChars(firstOption) >= 4) return firstOption.replace(/[。！？!?]$/u, '');
+  if (npc.shopItems?.length) return '查看可購買或可出售的物品';
+  if (npc.classToTeach) return '確認訓練或轉職需求';
+  if (npc.dialogue.some(node => node.action?.type === 'instance_entry')) return '確認副本入口條件';
+  return '詢問目前可處理的事件';
+}
+
+function countCjkChars(value: string): number {
+  return [...value].filter(char => /\p{Script=Han}/u.test(char)).length;
+}
 
 /** 取得 NPC 定義 */
 export function getNpc(npcId: string): NpcDef | undefined {
