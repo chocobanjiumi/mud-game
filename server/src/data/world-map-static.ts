@@ -746,7 +746,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "dark_forest_fill_n4_17",
     "name": "南腐葉封溝",
     "zone": "dark_forest",
-    "description": "南腐葉封溝積滿黑水與腐葉，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝底只有藥草採集痕跡，沒有穩固踏點，這格是封閉 blocker。",
+    "description": "南腐葉封溝是一條積滿黑水與腐葉的林下溝道，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝邊斷木橋只剩兩根濕滑木梁，梁下有藥草採集痕跡，但沒有穩固踏點，這格是封閉 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,

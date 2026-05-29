@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:50:52.304Z",
+  "generatedAt": "2026-05-29T21:52:18.448Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,24 +366,15 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 17
+    "issues": 15
   },
   "issuesByKind": {
-    "exit.description": 8,
-    "room.description": 9
+    "exit.description": 7,
+    "room.description": 8
   },
   "issues": [
     {
       "id": "plains/plains_moonlit_copse:west->starter_village_fill_6_3",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "dark_forest/firefly_trail:north->whispering_valley_fill_n7_11",
       "kind": "exit.description",
       "field": "description",
       "currentLength": 0,
@@ -453,15 +444,6 @@
       "minimumLength": 55,
       "text": "猩紅潮池東鏽崖壓在潮池東側，西面血色池水拍打礁壁，南方走私者海灣藏在低霧裡。崖邊棧道鏽斷成數截，是 blocker 地形，阻止玩家從潮池直接滑入海灣背路。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "dark_forest/dark_forest_fill_n4_17",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 55,
-      "minimumLength": 55,
-      "text": "南腐葉封溝積滿黑水與腐葉，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝底只有藥草採集痕跡，沒有穩固踏點，這格是封閉 blocker。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
     },
     {
       "id": "frozen_wastes/frozen_wastes_fill_n25_n23",

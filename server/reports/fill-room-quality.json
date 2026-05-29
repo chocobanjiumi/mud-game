@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:51:05.830Z",
+  "generatedAt": "2026-05-29T21:52:32.208Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
@@ -16,7 +16,7 @@
     },
     "byPurpose": {
       "blocker": 236,
-      "border": 284,
+      "border": 285,
       "gathering": 165,
       "monster": 30,
       "npc_or_quest": 22,
@@ -2128,6 +2128,7 @@
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -4,
@@ -2150,7 +2151,7 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 55,
+          "descriptionLength": 76,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,

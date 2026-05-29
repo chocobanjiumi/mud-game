@@ -5398,6 +5398,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'sapphire_lake_entry_claim:west': '西側沿入口宣示石與湖霧白石路回行，接往巡禮古道舊墓園轉角',
   'sapphire_lake_lantern_dock:west': '西側穿過碼頭燈籠與潮濕湖岸棧道，接往巡禮古道藍寶湖西燈標',
   'sapphire_lake_pebble_weir:west': '西側沿鵝卵石水堰與濕草坡回行，接往巡禮古道終點聖碑',
+  'firefly_trail:north': '北側沿螢光林徑與潮濕藤根上行，接往低語溪谷南緣溪霧小路',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
