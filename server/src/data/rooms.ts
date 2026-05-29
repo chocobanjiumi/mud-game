@@ -2057,7 +2057,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'forest_entrance.png',
     imagePrompt: '森林入口 in dark_forest, entrance room with giant oak archway, wet roots, dim green light and warning shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示玩家進入後會遭遇暗影狼伏擊。',
+      '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域，寒風石碑明確標出高階危險。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示玩家進入後會遭遇暗影狼伏擊。',
     exits: [
       {
         direction: 'north',
@@ -2150,7 +2150,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ancient_treehouse.png',
     imagePrompt: '古老樹屋 in dark_forest, exploration room with elven treehouse, spiral stairs, ancient books, shafts of green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精低鳴，提示玩家可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精怪物低鳴，提示玩家可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
       {
@@ -3148,7 +3148,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。' +
       '海浪一波又一波地拍打著海岸，留下白色的泡沫和五彩斑斕的貝殼。' +
-      '幾隻巨大的海蟹揮舞著螯鉗在沙灘上橫行，牠們警覺地注視著四周的動靜。' +
+      '幾隻巨大的海蟹怪物揮舞著螯鉗在沙灘上橫行，牠們警覺地注視著四周的動靜。' +
       '遠處的水面偶爾有魚群躍出水面，在陽光下閃過銀色的弧線。',
     exits: [
       { direction: 'north', targetRoomId: 'coastal_boardwalk', description: '回到棧道' },
@@ -3177,7 +3177,7 @@ export const ROOMS: Record<string, RoomDef> = {
     imagePrompt: '潮間帶 in eastern_coast, resource combat tidepool room with wet rocks, kelp, barnacles, jellyfish pools and silver tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
       '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，' +
-      '半透明的水母在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。北面回沙灘，南側黑洞通往海蝕洞，東面水道連到珊瑚淺灘；玩家可採集貝殼和半寶石，也要看潮位避開水母群。',
+      '半透明的水母怪物在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。北面回沙灘，南側黑洞通往海蝕洞，東面水道連到珊瑚淺灘；玩家可採集貝殼和半寶石，也要看潮位避開水母群。',
     exits: [
       { direction: 'north', targetRoomId: 'sandy_beach', description: '回到沙灘' },
       { direction: 'south', targetRoomId: 'sea_cave', description: '岩壁上有一個黑暗的洞口' },
@@ -3395,7 +3395,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。' +
       '海風在這裡格外強勁，呼嘯著穿過岩石的縫隙發出尖銳的嘯聲，站不穩就有被吹落懸崖的危險。' +
-      '崖壁上密佈著大大小小的洞穴，巨蟹在洞口揮舞著螯鉗威嚇經過的行人。' +
+      '崖壁上密佈著大大小小的洞穴，巨蟹怪物在洞口揮舞著螯鉗威嚇經過的行人。' +
       '往下望去，白色的浪花在礁石上炸開，濺起的水霧瀰漫在半空中。',
     exits: [
       { direction: 'west', targetRoomId: 'lighthouse', description: '西側海風石徑回到燈塔' },

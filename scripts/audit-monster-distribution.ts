@@ -133,6 +133,11 @@ const ZONE_TERRAIN_OVERRIDES: Record<string, Set<MonsterDef['family']>> = {
   old_farmland: new Set(['beast', 'humanoid', 'plant', 'ooze', 'insect', 'undead', 'construct']),
   whispering_valley: new Set(['aquatic', 'beast', 'plant', 'insect', 'ooze', 'elemental', 'aberration']),
   arena_quarter: new Set(['humanoid', 'beast', 'construct']),
+  amber_forest: new Set(['beast', 'construct', 'insect', 'plant']),
+  sapphire_lake: new Set(['aquatic', 'beast', 'construct', 'elemental', 'humanoid', 'ooze', 'plant']),
+  moonlit_fen: new Set(['aquatic', 'beast', 'elemental', 'humanoid', 'insect', 'plant', 'undead']),
+  saltwind_flats: new Set(['aquatic', 'beast', 'elemental', 'humanoid', 'insect', 'undead']),
+  eastern_coast: new Set(['aquatic', 'beast', 'elemental', 'humanoid', 'ooze', 'undead']),
 };
 
 const coordIndex = new Map<string, RoomDef>();

@@ -613,7 +613,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側毒霧沼澤在低處翻泡' },
     ],
     monsters: [
-      { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 40 },
+      { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 60 },
       { monsterId: 'shadow_wolf', maxCount: 1, respawnSeconds: 55 },
     ],
     mapSymbol: '[r]',
@@ -726,7 +726,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     ],
     monsters: [
       { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 75 },
-      { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 40 },
+      { monsterId: 'forest_spider', maxCount: 1, respawnSeconds: 60 },
     ],
     mapSymbol: '[H]',
     mapX: 4,
