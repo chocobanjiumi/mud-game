@@ -1,35 +1,35 @@
 {
-  "generatedAt": "2026-05-29T21:05:05.706Z",
+  "generatedAt": "2026-05-29T21:06:23.407Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 46,
-    "errors": 42,
+    "issues": 37,
+    "errors": 33,
     "warnings": 4,
     "byGrade": {
       "A_main_transition": 31,
       "B_connector": 17,
-      "C_empty_filler": 75,
-      "D_upgrade_candidate": 220
+      "C_empty_filler": 73,
+      "D_upgrade_candidate": 222
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 277,
-      "gathering": 158,
+      "border": 278,
+      "gathering": 159,
       "monster": 30,
       "npc_or_quest": 19,
       "portal": 16,
       "route": 69,
-      "service": 72
+      "service": 73
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
-      "description.direction": 13,
-      "description.length": 18,
+      "description.direction": 9,
+      "description.length": 14,
       "description.purpose": 3,
-      "description.terrain": 3,
+      "description.terrain": 2,
       "exit.description.length": 4,
       "exit.description.missing": 4
     }
@@ -11528,7 +11528,7 @@
       "zoneId": "storm_highlands",
       "zoneName": "風暴高原",
       "fillRooms": 8,
-      "issues": 9,
+      "issues": 0,
       "records": [
         {
           "id": "storm_highlands_cloud_bridge",
@@ -11574,7 +11574,7 @@
         {
           "id": "storm_highlands_fill_n10_n14",
           "zone": "storm_highlands",
-          "name": "高原風道",
+          "name": "獅鷲王峰東雷崖封",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -11600,47 +11600,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "storm_highlands_fill_n10_n14",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 65,
-              "text": "高原上的暴風通道，天空中電光不時閃爍。"
-            },
-            {
-              "id": "storm_highlands_fill_n10_n14",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 17,
-              "minimum": 65,
-              "text": "高原上的暴風通道，天空中電光不時閃爍。"
-            },
-            {
-              "id": "storm_highlands_fill_n10_n14",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 65,
-              "text": "高原上的暴風通道，天空中電光不時閃爍。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "storm_highlands_fill_n11_n13",
           "zone": "storm_highlands",
-          "name": "斷崖通道",
+          "name": "天石堆東斷崖封",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -11666,40 +11635,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "storm_highlands_fill_n11_n13",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 55,
-              "text": "斷崖邊的碎石路，遠處雷聲隆隆不斷。"
-            },
-            {
-              "id": "storm_highlands_fill_n11_n13",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 15,
-              "minimum": 55,
-              "text": "斷崖邊的碎石路，遠處雷聲隆隆不斷。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "storm_highlands_fill_n11_n15",
           "zone": "storm_highlands",
-          "name": "高原風道",
-          "grade": "C_empty_filler",
+          "name": "風暴玻礦東封脊",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "gathering"
           ],
           "worldX": -11,
           "worldY": -15,
@@ -11716,45 +11665,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 63,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "storm_highlands_fill_n11_n15",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-            },
-            {
-              "id": "storm_highlands_fill_n11_n15",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "storm_highlands_fill_n17_n15",
           "zone": "storm_highlands",
-          "name": "斷崖通道",
-          "grade": "C_empty_filler",
+          "name": "避風村南斷崖徑",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": -17,
           "worldY": -15,
@@ -11775,34 +11705,13 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "storm_highlands_fill_n17_n15",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-            },
-            {
-              "id": "storm_highlands_fill_n17_n15",
-              "zone": "storm_highlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "storm_highlands_windrest_lane",
@@ -13872,96 +13781,6 @@
       "message": "exit east->plains_moonlit_copse 缺 description",
       "current": 0,
       "minimum": 20
-    },
-    {
-      "id": "storm_highlands_fill_n10_n14",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 65,
-      "text": "高原上的暴風通道，天空中電光不時閃爍。"
-    },
-    {
-      "id": "storm_highlands_fill_n10_n14",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 17,
-      "minimum": 65,
-      "text": "高原上的暴風通道，天空中電光不時閃爍。"
-    },
-    {
-      "id": "storm_highlands_fill_n10_n14",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 65,
-      "text": "高原上的暴風通道，天空中電光不時閃爍。"
-    },
-    {
-      "id": "storm_highlands_fill_n11_n13",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 55,
-      "text": "斷崖邊的碎石路，遠處雷聲隆隆不斷。"
-    },
-    {
-      "id": "storm_highlands_fill_n11_n13",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 15,
-      "minimum": 55,
-      "text": "斷崖邊的碎石路，遠處雷聲隆隆不斷。"
-    },
-    {
-      "id": "storm_highlands_fill_n11_n15",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-    },
-    {
-      "id": "storm_highlands_fill_n11_n15",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-    },
-    {
-      "id": "storm_highlands_fill_n17_n15",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
-    },
-    {
-      "id": "storm_highlands_fill_n17_n15",
-      "zone": "storm_highlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
     },
     {
       "id": "underground_city_lantern_bridge",
