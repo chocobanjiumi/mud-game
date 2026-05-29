@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:23:22.048Z",
+  "generatedAt": "2026-05-29T21:24:53.342Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,94 +366,13 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 108
+    "issues": 99
   },
   "issuesByKind": {
-    "exit.description": 65,
+    "exit.description": 56,
     "room.description": 43
   },
   "issues": [
-    {
-      "id": "starter_village/adventurer_guild:north->starter_village_ext_fill_2_n1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_inn:north->starter_village_ext_fill_1_n1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_storehouse:west->old_farmland_fill_n1_1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_chapel:north->starter_village_ext_fill_4_n1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_well_path:west->old_farmland_fill_n1_2",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_old_library:north->starter_village_ext_fill_3_n1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_river_stairs:west->old_farmland_fill_n1_3",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "starter_village/starter_village_hidden_cellar:north->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "starter_village/starter_village_hidden_cellar:west->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
     {
       "id": "eastern_coast/eastern_coast_tidepool_grotto:west->",
       "kind": "exit.description",

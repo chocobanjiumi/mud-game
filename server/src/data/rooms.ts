@@ -5348,6 +5348,13 @@ for (const [roomId, append] of Object.entries(DESCRIPTION_APPENDS)) {
 const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'kingsroad_market_portal_plaza:west': '西側平整石板離開傳送廣場，接往王道西市石路與西口貨車動線',
   'kingsroad_market_guard_post:west': '西側檢查桌旁窄石巷離開守衛哨，接往王道西哨巷',
+  'adventurer_guild:north': '北側公會後門離開村內木屋區，接往村外墓園西側炭草界',
+  'starter_village_inn:north': '北側旅店後門穿過木柵與田埂，接往新手村外旅店北田埂',
+  'starter_village_storehouse:west': '西側倉庫破門離開村內石牆，接往舊農田殘破穀道',
+  'starter_village_chapel:north': '北側禮拜堂後門越過柳樹祠邊，接往村外溪邊便道',
+  'starter_village_well_path:west': '西側井邊泥路離開村內水井，接往舊農田廢棄農道',
+  'starter_village_old_library:north': '北側書庫後門穿過草牆缺口，接往村外公會北後勤路',
+  'starter_village_river_stairs:west': '西側溪畔石階沿水聲出村，接往舊農田荒田小路',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
@@ -5425,6 +5432,16 @@ for (const [roomId, dir] of BLOCKED_PASSAGES) {
   if (!room.exits.some(e => e.direction === dir)) {
     room.exits.push({ direction: dir, targetRoomId: '', locked: true });
   }
+}
+
+const BLOCKED_EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  'starter_village_hidden_cellar:north': '北側地窖頂板被村屋地基壓住，不能直接鑽回戶外',
+  'starter_village_hidden_cellar:west': '西側土牆潮濕坍陷，不能從地窖硬挖通往村外',
+};
+for (const [key, description] of Object.entries(BLOCKED_EXIT_DESCRIPTION_OVERRIDES)) {
+  const [roomId, direction] = key.split(':') as [string, Direction];
+  const exit = ROOMS[roomId]?.exits.find(exit => exit.direction === direction);
+  if (exit) exit.description = description;
 }
 
 // ============================================================
