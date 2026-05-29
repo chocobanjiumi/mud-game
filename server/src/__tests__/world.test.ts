@@ -99,12 +99,12 @@ describe('WorldManager respawn policy', () => {
   });
 
   it('moves cross-room targets into approaching state and arrives after ticks', () => {
-    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    const slime = world.findMonsterInRoom('plains_entrance', 'slime');
     expect(slime).toBeDefined();
 
     const approaching = world.moveMonsterToApproaching(
+      'plains_entrance',
       'village_gate',
-      'village_square',
       'south',
       slime!.instanceId,
       2,
@@ -117,52 +117,52 @@ describe('WorldManager respawn policy', () => {
       arrivalTicks: 2,
       targetPlayerId: 'p1',
     });
-    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
-    expect(world.getApproachingMonsters('village_square')[0].arrivalTicks).toBe(2);
+    expect(world.getAliveMonsters('plains_entrance').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getApproachingMonsters('village_gate')[0].arrivalTicks).toBe(2);
 
-    expect(world.tickApproaching('village_square')).toEqual([]);
-    expect(world.getApproachingMonsters('village_square')[0].arrivalTicks).toBe(1);
-    const arrived = world.tickApproaching('village_square');
+    expect(world.tickApproaching('village_gate')).toEqual([]);
+    expect(world.getApproachingMonsters('village_gate')[0].arrivalTicks).toBe(1);
+    const arrived = world.tickApproaching('village_gate');
 
     expect(arrived[0].instanceId).toBe(slime!.instanceId);
-    expect(world.getApproachingMonsters('village_square')).toEqual([]);
-    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
-    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getApproachingMonsters('village_gate')).toEqual([]);
+    expect(world.getAliveMonsters('plains_entrance').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
   });
 
   it('respawns pulled monsters in their original spawn room', () => {
-    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    const slime = world.findMonsterInRoom('plains_entrance', 'slime');
     expect(slime).toBeDefined();
 
     const approaching = world.moveMonsterToApproaching(
+      'plains_entrance',
       'village_gate',
-      'village_square',
       'south',
       slime!.instanceId,
       0,
       'p1',
     );
     expect(approaching).toBeDefined();
-    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
 
-    world.killMonster('village_square', slime!.instanceId);
+    world.killMonster('village_gate', slime!.instanceId);
 
-    expect(world.getMonsterInstance('village_square', slime!.instanceId)).toBeUndefined();
-    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.isDead).toBe(true);
+    expect(world.getMonsterInstance('village_gate', slime!.instanceId)).toBeUndefined();
+    expect(world.getMonsterInstance('plains_entrance', slime!.instanceId)?.isDead).toBe(true);
 
     vi.advanceTimersByTime(30_000);
 
-    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
-    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getAliveMonsters('plains_entrance').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
   });
 
   it('returns surviving pulled monsters to their origin room at full health after combat', () => {
-    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    const slime = world.findMonsterInRoom('plains_entrance', 'slime');
     expect(slime).toBeDefined();
 
     world.moveMonsterToApproaching(
+      'plains_entrance',
       'village_gate',
-      'village_square',
       'south',
       slime!.instanceId,
       0,
@@ -173,18 +173,18 @@ describe('WorldManager respawn policy', () => {
     const reset = world.resetSurvivingMonsterToOrigin(slime!.instanceId);
 
     expect(reset).toBe(true);
-    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
-    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.hp).toBe(slime!.maxHp);
-    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getMonsterInstance('plains_entrance', slime!.instanceId)?.hp).toBe(slime!.maxHp);
+    expect(world.getAliveMonsters('plains_entrance').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
   });
 
   it('removes pending approaching state when a surviving monster disengages', () => {
-    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    const slime = world.findMonsterInRoom('plains_entrance', 'slime');
     expect(slime).toBeDefined();
 
     world.moveMonsterToApproaching(
+      'plains_entrance',
       'village_gate',
-      'village_square',
       'south',
       slime!.instanceId,
       2,
@@ -195,8 +195,8 @@ describe('WorldManager respawn policy', () => {
     const reset = world.resetSurvivingMonsterToOrigin(slime!.instanceId);
 
     expect(reset).toBe(true);
-    expect(world.getApproachingMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
-    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.hp).toBe(slime!.maxHp);
+    expect(world.getApproachingMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getMonsterInstance('plains_entrance', slime!.instanceId)?.hp).toBe(slime!.maxHp);
   });
 });
 

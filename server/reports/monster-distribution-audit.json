@@ -1,24 +1,24 @@
 {
-  "generatedAt": "2026-05-29T22:05:50.764Z",
+  "generatedAt": "2026-05-29T22:08:47.967Z",
   "summary": {
     "rooms": 992,
     "zones": 34,
-    "roomsWithMonsters": 591,
-    "monsterSpawns": 1911,
+    "roomsWithMonsters": 590,
+    "monsterSpawns": 1908,
     "fillRoomsWithMonsters": 0,
-    "safeRoomsWithMonsters": 8,
+    "safeRoomsWithMonsters": 7,
     "lowZoneHighMonsterIssues": 0,
-    "adjacentLevelSpikeIssues": 7,
+    "adjacentLevelSpikeIssues": 6,
     "terrainFamilyMismatchIssues": 186,
-    "issues": 252,
-    "errors": 8,
-    "warnings": 244,
+    "issues": 249,
+    "errors": 7,
+    "warnings": 242,
     "accepted": 0,
     "byIssueKind": {
-      "safe_room.has_monsters": 8,
-      "monster_cue.missing": 48,
+      "safe_room.has_monsters": 7,
+      "monster_cue.missing": 47,
       "zone_level.out_of_range": 3,
-      "adjacent.level_spike": 7,
+      "adjacent.level_spike": 6,
       "terrain_family.mismatch": 186
     }
   },
@@ -555,15 +555,15 @@
       "fillRoomsWithMonsters": 0,
       "minMonsterLevel": 1,
       "maxMonsterLevel": 12,
-      "averageMonsterLevel": 4.9,
-      "eliteCount": 2,
+      "averageMonsterLevel": 4.7,
+      "eliteCount": 1,
       "bossCount": 0,
       "monsterFamilies": [
         "beast",
         "humanoid",
         "ooze"
       ],
-      "issueCount": 6,
+      "issueCount": 5,
       "highSeverityIssueCount": 0
     },
     {
@@ -737,21 +737,21 @@
         5
       ],
       "roomCount": 24,
-      "roomsWithMonsters": 2,
-      "roomsWithoutMonsters": 22,
+      "roomsWithMonsters": 1,
+      "roomsWithoutMonsters": 23,
       "fillRooms": 4,
       "fillRoomsWithMonsters": 0,
       "minMonsterLevel": 1,
       "maxMonsterLevel": 2,
-      "averageMonsterLevel": 1.3,
+      "averageMonsterLevel": 1.5,
       "eliteCount": 0,
       "bossCount": 0,
       "monsterFamilies": [
         "beast",
         "ooze"
       ],
-      "issueCount": 2,
-      "highSeverityIssueCount": 1
+      "issueCount": 0,
+      "highSeverityIssueCount": 0
     },
     {
       "zoneId": "starter_village_ext",
@@ -4955,14 +4955,10 @@
       "worldX": 2,
       "worldY": 2,
       "policy": "safe",
-      "minMonsterLevel": 1,
-      "maxMonsterLevel": 1,
-      "monsterIds": [
-        "slime"
-      ],
-      "issueKinds": [
-        "safe_room.has_monsters"
-      ]
+      "minMonsterLevel": null,
+      "maxMonsterLevel": null,
+      "monsterIds": [],
+      "issueKinds": []
     },
     {
       "roomId": "training_ground",
@@ -4976,9 +4972,7 @@
         "slime",
         "small_bat"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "starter_village_crafting_shed",
@@ -5534,17 +5528,14 @@
       "zoneId": "plains",
       "worldX": 9,
       "worldY": 3,
-      "policy": "elite_pocket",
+      "policy": "resource_guarded",
       "minMonsterLevel": 3,
-      "maxMonsterLevel": 12,
+      "maxMonsterLevel": 6,
       "monsterIds": [
         "wild_rabbit",
-        "wild_wolf",
-        "wolf_king"
+        "wild_wolf"
       ],
-      "issueKinds": [
-        "adjacent.level_spike"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "plains_herb_slope",
@@ -38038,14 +38029,13 @@
         10
       ],
       "zoneType": "wilds",
-      "policy": "elite_pocket",
+      "policy": "resource_guarded",
       "isFillRoom": false,
       "hasGathering": true,
-      "monsterCount": 5,
+      "monsterCount": 4,
       "monsterIds": [
         "wild_rabbit",
-        "wild_wolf",
-        "wolf_king"
+        "wild_wolf"
       ],
       "monsters": [
         {
@@ -38065,28 +38055,18 @@
           "element": "none",
           "isElite": false,
           "isBoss": false
-        },
-        {
-          "id": "wolf_king",
-          "name": "狼王",
-          "level": 12,
-          "family": "beast",
-          "element": "none",
-          "isElite": true,
-          "isBoss": false
         }
       ],
       "monsterLevels": [
         3,
-        6,
-        12
+        6
       ],
       "minMonsterLevel": 3,
-      "maxMonsterLevel": 12,
+      "maxMonsterLevel": 6,
       "monsterFamilies": [
         "beast"
       ],
-      "hasElite": true,
+      "hasElite": false,
       "hasBoss": false,
       "descriptionHasMonsterCue": true
     },
@@ -47265,7 +47245,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "village_gate",
@@ -47281,29 +47261,11 @@
       "policy": "safe",
       "isFillRoom": false,
       "hasGathering": false,
-      "monsterCount": 2,
-      "monsterIds": [
-        "slime"
-      ],
-      "monsters": [
-        {
-          "id": "slime",
-          "name": "史萊姆",
-          "level": 1,
-          "family": "ooze",
-          "element": "none",
-          "isElite": false,
-          "isBoss": false
-        }
-      ],
-      "monsterLevels": [
-        1
-      ],
-      "minMonsterLevel": 1,
-      "maxMonsterLevel": 1,
-      "monsterFamilies": [
-        "ooze"
-      ],
+      "monsterCount": 0,
+      "monsterIds": [],
+      "monsters": [],
+      "monsterLevels": [],
+      "monsterFamilies": [],
       "hasElite": false,
       "hasBoss": false,
       "descriptionHasMonsterCue": true
@@ -55373,33 +55335,6 @@
       }
     },
     {
-      "id": "starter_village/training_ground/monster_cue.missing",
-      "zoneId": "starter_village",
-      "roomId": "training_ground",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "slime",
-          "small_bat"
-        ]
-      }
-    },
-    {
-      "id": "starter_village/village_gate/safe_room.has_monsters",
-      "zoneId": "starter_village",
-      "roomId": "village_gate",
-      "severity": "error",
-      "kind": "safe_room.has_monsters",
-      "message": "safe / town / service 房間仍配置怪物",
-      "details": {
-        "monsterIds": [
-          "slime"
-        ]
-      }
-    },
-    {
       "id": "starter_village_ext/starter_ext_frog_pond/monster_cue.missing",
       "zoneId": "starter_village_ext",
       "roomId": "starter_ext_frog_pond",
@@ -55712,21 +55647,6 @@
         "toRoomId": "snowfield_entrance",
         "toMaxLevel": 22,
         "diff": 10
-      }
-    },
-    {
-      "id": "plains/grass_path/adjacent.level_spike",
-      "zoneId": "plains",
-      "roomId": "grass_path",
-      "severity": "warning",
-      "kind": "adjacent.level_spike",
-      "message": "相鄰可達房間怪物等級差距過大且缺少 warning / blocker 線索",
-      "details": {
-        "fromRoomId": "grass_path",
-        "fromMaxLevel": 12,
-        "toRoomId": "plains_entrance",
-        "toMaxLevel": 3,
-        "diff": 9
       }
     },
     {

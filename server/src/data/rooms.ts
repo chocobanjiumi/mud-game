@@ -1586,7 +1586,7 @@ export const ROOMS: Record<string, RoomDef> = {
     imagePrompt: '村口 in starter_village, town gate and safe exit with wooden palisade, torchlight, road to plains, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
       '村口的木柵欄沿著低矮土坡展開，尖木樁上繫著避獸鈴，微風吹過時發出細碎聲響。南方通往傳送祠堂，遠處可見翠綠平原的方向；北面回到廣場，東側訓練場傳來木劍撞擊聲，西側小路繞往外圍。守衛火把照亮路標與警告牌，提醒初學者先檢查裝備、藥水與任務，再離開安全區進入可能遭遇史萊姆的道路。' +
-      '柵門下方有新鮮黏液和被拖曳的草束，說明怪物偶爾會靠近安全區邊緣。木梯通往上方哨所，可俯看撤退路線；路標同時標出平原入口與村外小徑，讓玩家能清楚判斷南、北、東、西與上方出口。',
+      '柵門下方有舊黏液和被拖曳的草束，說明怪物偶爾會靠近安全區邊緣，但守衛已把常駐威脅擋在柵外。木梯通往上方哨所，可俯看撤退路線；路標同時標出平原入口與村外小徑，讓玩家能清楚判斷南、北、東、西與上方出口。',
     exits: [
       { direction: 'north', targetRoomId: 'village_square', description: '回到廣場' },
       { direction: 'east', targetRoomId: 'training_ground', description: '訓練場在東邊' },
@@ -1604,9 +1604,6 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'distant_route',
         edgeNote: '村口到村外小路需要繞過木柵牆與野花坡，實際路程長於相鄰一格。',
       },
-    ],
-    monsters: [
-      { monsterId: 'slime', maxCount: 2, respawnSeconds: 30 },
     ],
     mapSymbol: '[=]',
     mapX: 2,
@@ -1628,7 +1625,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '一片被夯實的空地上擺放著稻草人和木製練習靶，幾位新手冒險者正揮汗如雨地練習著基本的劈砍動作。' +
       '場邊的武器架上放著各種練習用的鈍器，木劍碰撞聲和教官的喝斥聲此起彼落。' +
       '地面上散落著被劈爛的稻草和斷裂的練習箭矢，空氣中瀰漫著汗水和泥土的氣味。' +
-      '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。',
+      '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。教官把受控怪物、史萊姆和夜間捕來的小蝙蝠關在繩欄內，讓新人只在可撤退的訓練範圍內練習 attack 與 loot corpse。',
     exits: [
       { direction: 'west', targetRoomId: 'village_gate', description: '回到村口' },
       { direction: 'north', targetRoomId: 'starter_village_rooftop_walk', description: '北側木梯沿訓練場牆邊上行，繞過稻草靶與繩索護欄抵達屋頂棧道', edgeKind: 'distant_route', edgeNote: '訓練場到屋頂棧道需要爬木梯並繞過訓練器具，實際路程長於相鄰一格。' },
@@ -1935,7 +1932,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'grass_path.png',
     imagePrompt: '草原小徑 in plains, main route room through tall grass and wildflowers, visible wolf tracks, angled afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '蜿蜒小徑穿過齊膝草叢，兩側野花吸引蝴蝶盤旋，花粉與乾草味在風裡混成微甜氣息。北面能看見村口方向的路標，南方道路下沉通向十字路口，草葉間還有幾枚狼爪印與被咬斷的兔毛。這裡是新手最常練習戰鬥的主路，玩家若聽見連續沙沙聲，就該準備 attack 或觀察是否有狼群靠近。',
+      '蜿蜒小徑穿過齊膝草叢，兩側野花吸引蝴蝶盤旋，花粉與乾草味在風裡混成微甜氣息。北面能看見村口方向的路標，南方道路下沉通向十字路口，草葉間還有幾枚普通狼爪印與被咬斷的兔毛。這裡是新手最常練習戰鬥的主路，玩家若聽見連續沙沙聲，就該準備 attack 或觀察是否有狼群靠近；真正的狼王巢穴在支線深處，不會堵住主路。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_entrance', description: '回到平原入口' },
       { direction: 'south', targetRoomId: 'crossroads', description: '通往十字路口' },
@@ -1943,13 +1940,12 @@ export const ROOMS: Record<string, RoomDef> = {
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 25 },
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
-      { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 1800 },
     ],
     mapSymbol: ' . ',
     mapX: 2,
     mapY: 5,
     guardianHints: {
-      creature: '草叢中有狼的腳印，數量不止一組……其中一組異常巨大，狼王就在附近。',
+      creature: '草叢中有狼的腳印，數量不止一組，但最大那組腳印朝南方支線延伸，主路只會遇到普通狼群。',
       treasure: '小徑旁的野花叢中，有一株罕見的藥草在微微發光。',
       spirit: '這條小徑曾是商隊的必經之路，殘留著他們歡笑的回音。',
     },
