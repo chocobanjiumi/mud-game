@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:24:53.342Z",
+  "generatedAt": "2026-05-29T21:28:06.255Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 99
+    "issues": 90
   },
   "issuesByKind": {
-    "exit.description": 56,
-    "room.description": 43
+    "exit.description": 55,
+    "room.description": 35
   },
   "issues": [
     {
@@ -579,15 +579,6 @@
       "minimumLength": 20,
       "text": "",
       "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_old_canoe_camp:north->moonlit_fen_fill_19_13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
     },
     {
       "id": "pilgrim_road/pilgrim_road_smuggler_cache:north->plains_fill_11_5",
@@ -1047,78 +1038,6 @@
       "minimumLength": 80,
       "text": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。木樁只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。",
       "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_14_14",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 55,
-      "text": "西北黑水封汊位於月光濕地外緣，南側蘆葦低伏，東面水面被銀霧遮成一片黑鏡。泥岸下方沒有穩固踏點，這裡是封閉 blocker，只保留濕地邊界與水草採集痕跡。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_14_17",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 63,
-      "minimumLength": 55,
-      "text": "西蘆霧欄被成排白蘆和低霧擋住，北側水聲貼著岸邊回響，東面才是較安全的濕地路線。蘆根下全是深泥，這格標示不可通行邊界，不安排怪物或任務目標。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_14_18",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 55,
-      "text": "西側泥泡岸靠近月光濕地邊緣，北面白蘆遮住舊水線，東側遠處有螢火落在較乾的草墩上。腳下泥泡不停翻開，表示這裡是封閉 blocker，玩家應回到內側蘆葦路。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_14_20",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 65,
-      "minimumLength": 55,
-      "text": "西南月影深水貼著月光濕地南緣，北側銀霧溝仍能聽見水泡聲，東面水面忽然變暗。這格是 border blocker，深水下有水草採集痕跡，但沒有安全木樁可通行，也不接入南側新路。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_20_14",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 65,
-      "minimumLength": 55,
-      "text": "月光水道夾在舊舟北營與白蘆濕地之間，北側破舟痕能指回乾泥岸，南面黑水被月光照成細長亮線。這裡是採集邊界與短路線節點，只允許沿北側安全岸回返。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_20_16",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 64,
-      "minimumLength": 55,
-      "text": "中央鏡水封潭位於濕地腹地，北側白蘆倒影連成一片，東面水面看似平靜卻沒有露出的草墩。潭邊只有採集留下的水草痕，這格作為封閉 blocker，避免玩家誤入深水。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_23_15",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 70,
-      "minimumLength": 80,
-      "text": "東界夢水灘位於月光濕地與鏡沼交界，西側夢水核心的微光映在泥面上，東面鏡沼水氣開始變冷。這格是封閉 border blocker，標示兩區濕地邊界銜接但不提供直接出口，也沒有安全木樁。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "moonlit_fen/moonlit_fen_fill_23_17",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 65,
-      "minimumLength": 55,
-      "text": "泥鏡交界水道貼著月光濕地東南緣，西側白蘆仍有螢火，東面泥水已變成鏡沼的暗色反光。這裡是 border 採集邊界，玩家只能沿東側水痕進入鏡沼泥洲，不能向南離開。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
     },
     {
       "id": "old_farmland/old_farmland_fill_n1_3",

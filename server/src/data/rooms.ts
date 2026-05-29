@@ -5355,6 +5355,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'starter_village_well_path:west': '西側井邊泥路離開村內水井，接往舊農田廢棄農道',
   'starter_village_old_library:north': '北側書庫後門穿過草牆缺口，接往村外公會北後勤路',
   'starter_village_river_stairs:west': '西側溪畔石階沿水聲出村，接往舊農田荒田小路',
+  'moonlit_fen_old_canoe_camp:north': '北側沿舊舟拖痕踏上沉木北橋，接往濕地北緣採集邊界',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
