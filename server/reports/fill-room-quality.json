@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T19:56:32.412Z",
+  "generatedAt": "2026-05-29T19:59:37.369Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 755,
-    "errors": 518,
-    "warnings": 237,
+    "issues": 711,
+    "errors": 491,
+    "warnings": 220,
     "byGrade": {
       "A_main_transition": 49,
       "B_connector": 19,
@@ -16,23 +16,23 @@
     },
     "byPurpose": {
       "blocker": 221,
-      "border": 205,
+      "border": 210,
       "gathering": 135,
       "monster": 30,
       "npc_or_quest": 15,
-      "portal": 7,
+      "portal": 8,
       "route": 71,
       "service": 28
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 24,
-      "description.direction": 159,
-      "description.length": 237,
-      "description.purpose": 60,
-      "description.repeated_opening": 153,
+      "description.direction": 150,
+      "description.length": 224,
+      "description.purpose": 55,
+      "description.repeated_opening": 141,
       "description.terrain": 22,
       "exit.description.length": 42,
-      "exit.description.missing": 58
+      "exit.description.missing": 53
     }
   },
   "zones": [
@@ -2397,16 +2397,17 @@
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
       "fillRooms": 14,
-      "issues": 44,
+      "issues": 0,
       "records": [
         {
           "id": "dark_forest_fill_n1_13",
           "zone": "dark_forest",
-          "name": "苔蘚石路",
+          "name": "鐵木影門苔徑",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
-            "gathering"
+            "gathering",
+            "portal"
           ],
           "worldX": -1,
           "worldY": 13,
@@ -2428,55 +2429,18 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 66,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n1_13",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n1_13",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 65,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n1_13",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ironwood_fort_portal_yard 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "dark_forest_fill_n1_13",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n1_14",
           "zone": "dark_forest",
-          "name": "幽暗樹徑",
+          "name": "軍需陰根道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -2506,53 +2470,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 66,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n1_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n1_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n1_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ironwood_fort_quartermaster_row 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "dark_forest_fill_n1_14",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n1_15",
           "zone": "dark_forest",
-          "name": "林間小路",
+          "name": "熔爐煙苔路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -2581,53 +2508,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 24,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n1_15",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 65,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n1_15",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 24,
-              "minimum": 65,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n1_15",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ironwood_fort_forge_works 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "dark_forest_fill_n1_15",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n1_16",
           "zone": "dark_forest",
-          "name": "暗林通道",
+          "name": "鐵木根牆徑",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -2655,53 +2545,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 67,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n1_16",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n1_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 65,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n1_16",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ironwood_fort_ironwood_grove 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "dark_forest_fill_n1_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n2_14",
           "zone": "dark_forest",
-          "name": "林間小路",
+          "name": "北苔根封口",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -2727,47 +2580,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n2_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n2_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n2_14",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n3_14",
           "zone": "dark_forest",
-          "name": "暗林通道",
+          "name": "中段腐根欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -3,
@@ -2790,47 +2616,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n3_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n3_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n3_14",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n4_12",
           "zone": "dark_forest",
-          "name": "林間小路",
+          "name": "北影苔石坪",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -4,
@@ -2853,47 +2652,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 24,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n4_12",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 55,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n4_12",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 24,
-              "minimum": 55,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n4_12",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n4_14",
           "zone": "dark_forest",
-          "name": "苔蘚石路",
+          "name": "內林苔階封口",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -4,
@@ -2918,47 +2690,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n4_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n4_14",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n4_14",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n4_16",
           "zone": "dark_forest",
-          "name": "林間小路",
+          "name": "南影根幕",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -4,
@@ -2982,44 +2727,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n4_16",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n4_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n4_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n4_17",
           "zone": "dark_forest",
-          "name": "暗林通道",
+          "name": "南腐葉封溝",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -3045,44 +2762,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 55,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n4_17",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n4_17",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-            },
-            {
-              "id": "dark_forest_fill_n4_17",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n4_18",
           "zone": "dark_forest",
-          "name": "苔蘚石路",
+          "name": "南界苔石斷階",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -3111,56 +2800,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": true,
-          "descriptionLength": 24,
+          "descriptionLength": 69,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n4_18",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 65,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n4_18",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 24,
-              "minimum": 65,
-              "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-            },
-            {
-              "id": "dark_forest_fill_n4_18",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south-> 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "dark_forest_fill_n4_18",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "dark_forest_fill_n7_16",
           "zone": "dark_forest",
-          "name": "幽暗樹徑",
+          "name": "西側黑藤欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -7,
@@ -3183,39 +2836,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "dark_forest_fill_n7_16",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n7_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-            },
-            {
-              "id": "dark_forest_fill_n7_16",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "dark_forest_root_bridge",
@@ -3292,42 +2917,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 60,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "darkwood_border_trail",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 60,
-              "minimum": 65,
-              "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-            },
-            {
-              "id": "darkwood_border_trail",
-              "zone": "dark_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 60,
-              "minimum": 65,
-              "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-            },
-            {
-              "id": "darkwood_border_trail",
-              "zone": "dark_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 60,
-              "minimum": 65,
-              "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -20624,321 +20218,6 @@
       "text": "骨橋籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。"
     },
     {
-      "id": "dark_forest_fill_n1_13",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n1_13",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 65,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n1_13",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ironwood_fort_portal_yard 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "dark_forest_fill_n1_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n1_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n1_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ironwood_fort_quartermaster_row 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "dark_forest_fill_n1_15",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 65,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n1_15",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 24,
-      "minimum": 65,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n1_15",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ironwood_fort_forge_works 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "dark_forest_fill_n1_16",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n1_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 65,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n1_16",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ironwood_fort_ironwood_grove 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "dark_forest_fill_n2_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n2_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n3_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n3_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n4_12",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 55,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n4_12",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 24,
-      "minimum": 55,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n4_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n4_14",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n4_16",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n4_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n4_17",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n4_17",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。"
-    },
-    {
-      "id": "dark_forest_fill_n4_18",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 65,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n4_18",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 24,
-      "minimum": 65,
-      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。"
-    },
-    {
-      "id": "dark_forest_fill_n4_18",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south-> 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "dark_forest_fill_n7_16",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "dark_forest_fill_n7_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。"
-    },
-    {
-      "id": "darkwood_border_trail",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 60,
-      "minimum": 65,
-      "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-    },
-    {
-      "id": "darkwood_border_trail",
-      "zone": "dark_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 60,
-      "minimum": 65,
-      "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-    },
-    {
-      "id": "darkwood_border_trail",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 60,
-      "minimum": 65,
-      "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。"
-    },
-    {
       "id": "deepsea_temple_whalebone_bridge",
       "zone": "deepsea_temple",
       "severity": "error",
@@ -26136,90 +25415,6 @@
     {
       "id": "bloodsalt_coast_fill_45_9",
       "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n1_13",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n1_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n4_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n7_16",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n1_14",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n2_14",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n3_14",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n4_14",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n4_17",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n1_15",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n4_12",
-      "zone": "dark_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "dark_forest_fill_n4_18",
-      "zone": "dark_forest",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"

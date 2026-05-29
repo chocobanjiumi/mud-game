@@ -610,13 +610,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n1_13": {
     "id": "dark_forest_fill_n1_13",
-    "name": "苔蘚石路",
+    "name": "鐵木影門苔徑",
     "zone": "dark_forest",
-    "description": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+    "description": "鐵木影門苔徑貼著暗影森林東緣，西側樹根覆住黑苔石，東面能看見鐵木要塞傳送院的冷光。這裡是跨區 border 路線與採集邊界，苔蘚裡有濕木藥草痕跡，腳下石縫很窄。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ironwood_fort_portal_yard"
+        "targetRoomId": "ironwood_fort_portal_yard",
+        "description": "東側穿過苔石影門與冷光樹縫，接向鐵木要塞傳送院"
       }
     ],
     "mapSymbol": "[·]",
@@ -627,13 +628,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n1_14": {
     "id": "dark_forest_fill_n1_14",
-    "name": "幽暗樹徑",
+    "name": "軍需陰根道",
     "zone": "dark_forest",
-    "description": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+    "description": "軍需陰根道被粗樹根壓成窄徑，西側黑葉遮住回頭路，東面要塞軍需排屋的木牆從枝縫露出。這裡是暗林與鐵木要塞的 border 路線，樹根旁留有採集痕跡與舊巡邏刻痕。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ironwood_fort_quartermaster_row"
+        "targetRoomId": "ironwood_fort_quartermaster_row",
+        "description": "東側沿盤根陰影穿出森林，抵達鐵木要塞軍需排屋"
       }
     ],
     "mapSymbol": "[·]",
@@ -644,13 +646,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n1_15": {
     "id": "dark_forest_fill_n1_15",
-    "name": "林間小路",
+    "name": "熔爐煙苔路",
     "zone": "dark_forest",
-    "description": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+    "description": "熔爐煙苔路藏在黑樹與濕苔之間，西側暗林仍有冷霧，東面鐵木要塞鍛造區的煙味穿過枝葉。這裡是跨區 border 通道，苔石上可見被熱灰壓暗的草藥痕與焦黑足印，路面狹窄。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ironwood_fort_forge_works"
+        "targetRoomId": "ironwood_fort_forge_works",
+        "description": "東側循煙味穿過苔石路，接向鐵木要塞鍛造工坊"
       }
     ],
     "mapSymbol": "[·]",
@@ -661,13 +664,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n1_16": {
     "id": "dark_forest_fill_n1_16",
-    "name": "暗林通道",
+    "name": "鐵木根牆徑",
     "zone": "dark_forest",
-    "description": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+    "description": "鐵木根牆徑沿著暗林東側延伸，西面黑樹根纏成牆，東側鐵木要塞林苑透出樹脂火光。這裡是 border 路線與採集邊界，玩家需沿東側根牆出口進入要塞林苑，不可往南硬穿。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ironwood_fort_ironwood_grove"
+        "targetRoomId": "ironwood_fort_ironwood_grove",
+        "description": "東側穿過鐵木根牆缺口，接向要塞內的鐵木林苑"
       }
     ],
     "mapSymbol": "[·]",
@@ -678,9 +682,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n2_14": {
     "id": "dark_forest_fill_n2_14",
-    "name": "林間小路",
+    "name": "北苔根封口",
     "zone": "dark_forest",
-    "description": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+    "description": "北苔根封口被古樹根盤成低牆，東側能聽見軍需陰根道的枝葉摩擦，南面暗林更深。苔根旁有採集痕跡，但根牆完全封住路線，這格是封閉 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -690,9 +694,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n3_14": {
     "id": "dark_forest_fill_n3_14",
-    "name": "暗林通道",
+    "name": "中段腐根欄",
     "zone": "dark_forest",
-    "description": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+    "description": "中段腐根欄位於暗影森林腹地，東側北苔根封口仍可望見，西面枯枝把地面壓得鬆軟。腐根縫裡有黑苔和小菌株，這裡是採集邊界，不提供穿越路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -702,9 +706,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n4_12": {
     "id": "dark_forest_fill_n4_12",
-    "name": "林間小路",
+    "name": "北影苔石坪",
     "zone": "dark_forest",
-    "description": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+    "description": "北影苔石坪位在暗林北側高處，南面可聽見盤根橋附近的濕木聲，東側苔石被黑葉覆住。這裡只有苔蘚與草藥採集痕跡，是封閉 blocker，不接出北側新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -714,9 +718,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n4_14": {
     "id": "dark_forest_fill_n4_14",
-    "name": "苔蘚石路",
+    "name": "內林苔階封口",
     "zone": "dark_forest",
-    "description": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+    "description": "內林苔階封口由幾塊濕滑石階堆成，北側腐根欄壓住舊路，南面暗林霧氣更重。石階縫裡能採到黑苔，但前方根牆坍住，這格只作封閉 blocker 邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -726,9 +730,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n4_16": {
     "id": "dark_forest_fill_n4_16",
-    "name": "林間小路",
+    "name": "南影根幕",
     "zone": "dark_forest",
-    "description": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+    "description": "南影根幕垂滿黑色細根，北面內林苔階封口仍有微弱反光，東側鐵木根牆徑被枝影遮住。根幕下有採集痕跡，但無法通行，是暗林內圈 blocker 邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -738,9 +742,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n4_17": {
     "id": "dark_forest_fill_n4_17",
-    "name": "暗林通道",
+    "name": "南腐葉封溝",
     "zone": "dark_forest",
-    "description": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+    "description": "南腐葉封溝積滿黑水與腐葉，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝底只有藥草採集痕跡，沒有穩固踏點，這格是封閉 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -750,14 +754,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n4_18": {
     "id": "dark_forest_fill_n4_18",
-    "name": "苔蘚石路",
+    "name": "南界苔石斷階",
     "zone": "dark_forest",
-    "description": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+    "description": "南界苔石斷階位於暗影森林南緣，北側腐葉封溝逐漸收窄，南面石階被坍根和黑苔覆住。這裡是 border blocker，保留採集痕跡但禁止往南硬穿，斷階下沒有落腳點或路標，只能折回北側。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側苔石斷階被坍根封死，無法離開暗影森林"
       }
     ],
     "mapSymbol": "[·]",
@@ -768,9 +773,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "dark_forest_fill_n7_16": {
     "id": "dark_forest_fill_n7_16",
-    "name": "幽暗樹徑",
+    "name": "西側黑藤欄",
     "zone": "dark_forest",
-    "description": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+    "description": "西側黑藤欄靠近暗林與黑木林邊界，東面能回望腐葉封溝的霧氣，西側藤牆下有濕亮草葉。這裡是採集邊界與封閉 blocker，藤牆後方沒有安全路標。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4476,7 +4481,7 @@ export const STATIC_WORLD_BRIDGE_ROOMS: Record<string, RoomDef> = {
     "id": "darkwood_border_trail",
     "name": "暗林邊徑",
     "zone": "dark_forest",
-    "description": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。",
+    "description": "暗林邊徑幾乎被落葉掩埋，東側能聽見暗影森林深處的濕木低響，西側則貼近黑木林幽暗腹地。腐葉與苔蘚氣味壓在樹冠下，這裡是封閉 border blocker，只標示兩片黑林的邊界。",
     "exits": [],
     "mapSymbol": "[徑]",
     "mapX": 0,
