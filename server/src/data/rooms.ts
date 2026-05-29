@@ -5381,6 +5381,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'pilgrim_road_bandit_watch:north': '北側越過盜匪哨位破旗與乾草丘，接往平原南側警戒草線',
   'pilgrim_road_old_cemetery_turn:east': '東側沿舊墓園白石路轉入湖霧，接往藍寶湖入口宣示石',
   'pilgrim_road_final_marker:east': '東側穿過終點聖碑旁碎石路與濕草坡，接往藍寶湖鵝卵石堰',
+  'saltwind_flats_blue_mud_shelf:north': '北側沿藍泥潮棚與鹽草淺溝上行，接往東方海岸南側濕沙邊界',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
@@ -5464,6 +5465,8 @@ const BLOCKED_EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'starter_village_hidden_cellar:north': '北側地窖頂板被村屋地基壓住，不能直接鑽回戶外',
   'starter_village_hidden_cellar:west': '西側土牆潮濕坍陷，不能從地窖硬挖通往村外',
   'ember_march_firegrass_flat:north': '北側火草平地被熱風與濕地黑水斷層隔開，不能直接越級北上月光濕地',
+  'saltwind_flats_tide_gate:west': '西側潮門背後是競技城區石牆與鹽水落差，不能從灘地硬穿回城',
+  'saltwind_flats_mist_marker:west': '西側霧標後方被競技城區外牆與濃霧封住，不能離開鹽風灘',
 };
 for (const [key, description] of Object.entries(BLOCKED_EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

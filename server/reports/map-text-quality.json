@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:37:36.756Z",
+  "generatedAt": "2026-05-29T21:39:04.036Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 49
+    "issues": 44
   },
   "issuesByKind": {
-    "exit.description": 29,
-    "room.description": 20
+    "exit.description": 26,
+    "room.description": 18
   },
   "issues": [
     {
@@ -581,33 +581,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "saltwind_flats/saltwind_flats_tide_gate:west->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "saltwind_flats/saltwind_flats_mist_marker:west->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "saltwind_flats/saltwind_flats_blue_mud_shelf:north->eastern_coast_fill_34_6",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
       "id": "sapphire_lake/sapphire_lake_entry_claim:west->pilgrim_road_old_cemetery_turn",
       "kind": "exit.description",
       "field": "description",
@@ -758,24 +731,6 @@
       "currentLength": 71,
       "minimumLength": 55,
       "text": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "saltwind_flats/saltwind_flats_fill_36_10",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 56,
-      "minimumLength": 55,
-      "text": "鹵眼西鹽晶採封位在低潮堤道南面，北側堤道石樁露出白鹽，東邊深鹵眼冒著藍黑氣泡。鹽晶路可採集硬鹽片與鹵砂，但晶殼斷裂成坑，是 gathering blocker。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "saltwind_flats/saltwind_flats_fill_37_8",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 60,
-      "minimumLength": 55,
-      "text": "潮望遺跡北熱沙封位在潮望遺跡北側，南面斷牆被鹽霧磨白，西邊海蛇軌跡壓出長長凹線。熱氣從濕沙下蒸騰，這裡是純 blocker，阻止玩家從遺跡背面繞行。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
     },
     {
