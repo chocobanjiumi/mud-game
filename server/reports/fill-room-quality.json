@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T20:41:03.699Z",
+  "generatedAt": "2026-05-29T20:43:48.155Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 208,
-    "errors": 154,
-    "warnings": 54,
+    "issues": 183,
+    "errors": 133,
+    "warnings": 50,
     "byGrade": {
       "A_main_transition": 36,
       "B_connector": 17,
@@ -16,7 +16,7 @@
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 258,
+      "border": 257,
       "gathering": 151,
       "monster": 30,
       "npc_or_quest": 21,
@@ -26,13 +26,13 @@
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 6,
-      "description.direction": 45,
-      "description.length": 77,
+      "description.direction": 39,
+      "description.length": 69,
       "description.purpose": 16,
-      "description.repeated_opening": 32,
+      "description.repeated_opening": 28,
       "description.terrain": 5,
-      "exit.description.length": 10,
-      "exit.description.missing": 17
+      "exit.description.length": 6,
+      "exit.description.missing": 14
     }
   },
   "zones": [
@@ -10492,12 +10492,12 @@
       "zoneId": "sapphire_lake",
       "zoneName": "藍寶湖",
       "fillRooms": 8,
-      "issues": 25,
+      "issues": 0,
       "records": [
         {
           "id": "sapphire_lake_fill_14_10",
           "zone": "sapphire_lake",
-          "name": "湖畔小路",
+          "name": "沉遺入口東湖草封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -10525,44 +10525,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_14_10",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_14_10",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_14_10",
-              "zone": "sapphire_lake",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_17_9",
           "zone": "sapphire_lake",
-          "name": "湖畔小路",
+          "name": "藍蘆玻魚湖岸路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "gathering",
@@ -10593,61 +10565,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 60,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_17_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-            },
-            {
-              "id": "sapphire_lake_fill_17_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-            },
-            {
-              "id": "sapphire_lake_fill_17_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->sapphire_lake_blue_reed_bed description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "湖畔小路西返藍蘆葦帶"
-            },
-            {
-              "id": "sapphire_lake_fill_17_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->sapphire_lake_glassfish_cove description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "湖畔小路東接玻魚灣"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_19_10",
           "zone": "sapphire_lake",
-          "name": "湖邊草地",
+          "name": "深脈東側水草封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border",
             "gathering"
           ],
           "worldX": 19,
@@ -10670,44 +10600,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_19_10",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_19_10",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 55,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_19_10",
-              "zone": "sapphire_lake",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_20_7",
           "zone": "sapphire_lake",
-          "name": "湖邊草地",
+          "name": "隱渠東側礦草界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -10735,44 +10637,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_20_7",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_20_7",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_20_7",
-              "zone": "sapphire_lake",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_21_8",
           "zone": "sapphire_lake",
-          "name": "湖邊草地",
+          "name": "礦脈睡蓮湖岸路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -10803,47 +10677,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 69,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_21_8",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 55,
-              "text": "沿著湖岸延伸的通道，水面波光粼粼。"
-            },
-            {
-              "id": "sapphire_lake_fill_21_8",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->sapphire_lake_sapphire_lode description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "湖邊草地西返藍寶礦脈"
-            },
-            {
-              "id": "sapphire_lake_fill_21_8",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit north->sapphire_lake_lily_cache description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "湖邊草地北接睡蓮藏點"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_22_7",
           "zone": "sapphire_lake",
-          "name": "水岸通道",
+          "name": "競技大門西湖草界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -10872,53 +10715,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 76,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_22_7",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_22_7",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 65,
-              "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-            },
-            {
-              "id": "sapphire_lake_fill_22_7",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->arena_quarter_grand_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "sapphire_lake_fill_22_7",
-              "zone": "sapphire_lake",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_22_8",
           "zone": "sapphire_lake",
-          "name": "棧橋",
+          "name": "冠軍牆西湖棧橋",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -10948,36 +10754,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 80,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_22_8",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 65,
-              "text": "沿著湖岸延伸的通道，水面波光粼粼。"
-            },
-            {
-              "id": "sapphire_lake_fill_22_8",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->arena_quarter_champion_wall 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "sapphire_lake_fill_22_9",
           "zone": "sapphire_lake",
-          "name": "湖邊草地",
+          "name": "勝利拱西湖草灘",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -11005,41 +10791,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 71,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "sapphire_lake_fill_22_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-            },
-            {
-              "id": "sapphire_lake_fill_22_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-            },
-            {
-              "id": "sapphire_lake_fill_22_9",
-              "zone": "sapphire_lake",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->arena_quarter_victory_arch 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -16072,213 +15828,6 @@
       "text": "穿過鹽風灘的通道，熱氣從地面蒸騰而上。"
     },
     {
-      "id": "sapphire_lake_fill_14_10",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_14_10",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_17_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-    },
-    {
-      "id": "sapphire_lake_fill_17_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-    },
-    {
-      "id": "sapphire_lake_fill_17_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->sapphire_lake_blue_reed_bed description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "湖畔小路西返藍蘆葦帶"
-    },
-    {
-      "id": "sapphire_lake_fill_17_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->sapphire_lake_glassfish_cove description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "湖畔小路東接玻魚灣"
-    },
-    {
-      "id": "sapphire_lake_fill_19_10",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_19_10",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 55,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_20_7",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_20_7",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_21_8",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 55,
-      "text": "沿著湖岸延伸的通道，水面波光粼粼。"
-    },
-    {
-      "id": "sapphire_lake_fill_21_8",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->sapphire_lake_sapphire_lode description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "湖邊草地西返藍寶礦脈"
-    },
-    {
-      "id": "sapphire_lake_fill_21_8",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit north->sapphire_lake_lily_cache description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "湖邊草地北接睡蓮藏點"
-    },
-    {
-      "id": "sapphire_lake_fill_22_7",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_22_7",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 65,
-      "text": "湖邊的草地小路，微風帶來清涼的水氣。"
-    },
-    {
-      "id": "sapphire_lake_fill_22_7",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->arena_quarter_grand_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "sapphire_lake_fill_22_8",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 65,
-      "text": "沿著湖岸延伸的通道，水面波光粼粼。"
-    },
-    {
-      "id": "sapphire_lake_fill_22_8",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->arena_quarter_champion_wall 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "sapphire_lake_fill_22_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-    },
-    {
-      "id": "sapphire_lake_fill_22_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。"
-    },
-    {
-      "id": "sapphire_lake_fill_22_9",
-      "zone": "sapphire_lake",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->arena_quarter_victory_arch 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "starter_village_fill_1_3",
       "zone": "starter_village",
       "severity": "error",
@@ -16971,34 +16520,6 @@
     {
       "id": "saltwind_flats_fill_36_10",
       "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "sapphire_lake_fill_14_10",
-      "zone": "sapphire_lake",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "sapphire_lake_fill_19_10",
-      "zone": "sapphire_lake",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "sapphire_lake_fill_20_7",
-      "zone": "sapphire_lake",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "sapphire_lake_fill_22_7",
-      "zone": "sapphire_lake",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"

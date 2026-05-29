@@ -3343,9 +3343,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_14_10": {
     "id": "sapphire_lake_fill_14_10",
-    "name": "湖畔小路",
+    "name": "沉遺入口東湖草封",
     "zone": "sapphire_lake",
-    "description": "湖邊的草地小路，微風帶來清涼的水氣。",
+    "description": "沉遺入口東湖草封位在藍寶石湖北西側，西面古遺跡沉入口的黑石在水下發亮，北側燈籠碼頭映著暖光，東邊礦泉水聲清亮。這裡是 border gathering blocker，湖草可採，但水下石階封住遺跡側路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3355,19 +3355,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_17_9": {
     "id": "sapphire_lake_fill_17_9",
-    "name": "湖畔小路",
+    "name": "藍蘆玻魚湖岸路",
     "zone": "sapphire_lake",
-    "description": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+    "description": "藍蘆玻魚湖岸路是藍蘆葦帶與玻魚灣之間的採集 route，北面水囊窪地有氣泡上浮，南側靈鏡水面倒映遠山。湖岸碎石穩定，路旁可採藍蘆芯與細水晶砂。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "sapphire_lake_blue_reed_bed",
-        "description": "湖畔小路西返藍蘆葦帶"
+        "description": "沿藍蘆水痕繞過濕石，西返藍蘆葦帶。"
       },
       {
         "direction": "east",
         "targetRoomId": "sapphire_lake_glassfish_cove",
-        "description": "湖畔小路東接玻魚灣"
+        "description": "順透明魚影東行，接入玻魚灣。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3402,9 +3402,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_19_10": {
     "id": "sapphire_lake_fill_19_10",
-    "name": "湖邊草地",
+    "name": "深脈東側水草封",
     "zone": "sapphire_lake",
-    "description": "湖邊的草地小路，微風帶來清涼的水氣。",
+    "description": "深脈東側水草封貼著深脈窗口東面，西側藍光從水下礦脈透出，北面沉沒石階沒入淺水。湖草與礦砂堆成濕滑斜坡，是採集 blocker，可採藍砂苔與碎晶，不作通路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -3456,9 +3456,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_20_7": {
     "id": "sapphire_lake_fill_20_7",
-    "name": "湖邊草地",
+    "name": "隱渠東側礦草界",
     "zone": "sapphire_lake",
-    "description": "湖邊的草地小路，微風帶來清涼的水氣。",
+    "description": "隱渠東側礦草界位在湖濱鎮隱渠東面，西側暗渠水聲被石蓋壓低，南方藍寶礦脈閃出冷光，東邊睡蓮藏點浮著大片葉影。這裡是邊界採集 blocker，礦草可採，但不開回鎮內暗渠路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -3468,19 +3468,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_21_8": {
     "id": "sapphire_lake_fill_21_8",
-    "name": "湖邊草地",
+    "name": "礦脈睡蓮湖岸路",
     "zone": "sapphire_lake",
-    "description": "沿著湖岸延伸的通道，水面波光粼粼。",
+    "description": "礦脈睡蓮湖岸路位在湖東側內灣，西面藍寶礦脈露出濕石，北方睡蓮藏點浮著白花，東邊可望見競技城牆水影。這裡是採集 route，連接礦脈與睡蓮藏點，湖岸邊可採晶砂與蓮莖。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "sapphire_lake_sapphire_lode",
-        "description": "湖邊草地西返藍寶礦脈"
+        "description": "沿藍光濕石繞過湖草，西返藍寶礦脈。"
       },
       {
         "direction": "north",
         "targetRoomId": "sapphire_lake_lily_cache",
-        "description": "湖邊草地北接睡蓮藏點"
+        "description": "踩過浮葉邊緣北接睡蓮藏點。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3491,13 +3491,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_22_7": {
     "id": "sapphire_lake_fill_22_7",
-    "name": "水岸通道",
+    "name": "競技大門西湖草界",
     "zone": "sapphire_lake",
-    "description": "湖邊的草地小路，微風帶來清涼的水氣。",
+    "description": "競技大門西湖草界位在藍寶石湖東北緣，西面睡蓮藏點仍有白花香，南側湖岸轉向競技城牆，東邊可見競技區大門石階。這裡是跨區邊界採集路線，湖草可採，主要銜接湖岸與競技場入口。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "arena_quarter_grand_gate"
+        "targetRoomId": "arena_quarter_grand_gate",
+        "description": "沿湖草與石階東行，穿過水岸旗標後抵達競技區大門。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3508,13 +3509,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_22_8": {
     "id": "sapphire_lake_fill_22_8",
-    "name": "棧橋",
+    "name": "冠軍牆西湖棧橋",
     "zone": "sapphire_lake",
-    "description": "沿著湖岸延伸的通道，水面波光粼粼。",
+    "description": "冠軍牆西湖棧橋架在藍寶石湖東岸，北面競技大門水草界可作地標，南面勝利拱湖草灘延伸，東側冠軍牆倒映在水面。這裡是跨區邊界採集路線，棧橋邊有晶化水藻可採，專門銜接湖岸與牆下步道。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "arena_quarter_champion_wall"
+        "targetRoomId": "arena_quarter_champion_wall",
+        "description": "踏過湖棧橋向東，沿冠軍旗影抵達競技區冠軍牆。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3525,13 +3527,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "sapphire_lake_fill_22_9": {
     "id": "sapphire_lake_fill_22_9",
-    "name": "湖邊草地",
+    "name": "勝利拱西湖草灘",
     "zone": "sapphire_lake",
-    "description": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+    "description": "勝利拱西湖草灘位在競技區西側水岸，北面冠軍牆湖棧橋仍有水光，東邊勝利拱門的石影壓在草灘上。這裡是跨區邊界採集路線，湖草與晶砂可採，專門銜接湖岸與競技拱門。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "arena_quarter_victory_arch"
+        "targetRoomId": "arena_quarter_victory_arch",
+        "description": "沿勝利拱倒影與湖岸白石東行，進入競技區勝利拱門。"
       }
     ],
     "mapSymbol": "[·]",
