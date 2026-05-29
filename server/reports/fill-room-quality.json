@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T19:59:37.369Z",
+  "generatedAt": "2026-05-29T20:03:15.801Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 711,
-    "errors": 491,
-    "warnings": 220,
+    "issues": 668,
+    "errors": 465,
+    "warnings": 203,
     "byGrade": {
-      "A_main_transition": 49,
+      "A_main_transition": 47,
       "B_connector": 19,
-      "C_empty_filler": 105,
-      "D_upgrade_candidate": 170
+      "C_empty_filler": 103,
+      "D_upgrade_candidate": 174
     },
     "byPurpose": {
-      "blocker": 221,
+      "blocker": 225,
       "border": 210,
-      "gathering": 135,
+      "gathering": 139,
       "monster": 30,
-      "npc_or_quest": 15,
+      "npc_or_quest": 16,
       "portal": 8,
       "route": 71,
       "service": 28
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 24,
-      "description.direction": 150,
-      "description.length": 224,
-      "description.purpose": 55,
-      "description.repeated_opening": 141,
-      "description.terrain": 22,
+      "dead_end.no_gameplay": 20,
+      "description.direction": 141,
+      "description.length": 212,
+      "description.purpose": 51,
+      "description.repeated_opening": 132,
+      "description.terrain": 21,
       "exit.description.length": 42,
-      "exit.description.missing": 53
+      "exit.description.missing": 49
     }
   },
   "zones": [
@@ -6695,16 +6695,17 @@
       "zoneId": "kingdom_frontier",
       "zoneName": "王國邊境",
       "fillRooms": 12,
-      "issues": 43,
+      "issues": 0,
       "records": [
         {
           "id": "kingdom_frontier_fill_n10_n3",
           "zone": "kingdom_frontier",
-          "name": "關卡通道",
-          "grade": "C_empty_filler",
+          "name": "南哨界碑封口",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -10,
           "worldY": -3,
@@ -6721,52 +6722,27 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n10_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n3",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n10_n4",
           "zone": "kingdom_frontier",
-          "name": "邊牆走道",
-          "grade": "A_main_transition",
+          "name": "舊橡獵牆門",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "gathering",
+            "npc_or_quest"
           ],
           "worldX": -10,
           "worldY": -4,
@@ -6774,7 +6750,8 @@
           "mapY": 3,
           "neighbors": {
             "byExit": {
-              "east": "royal_hunting_grounds_old_oak_stand"
+              "east": "royal_hunting_grounds_old_oak_stand",
+              "west": ""
             },
             "byCoordinate": {
               "north": "kingdom_frontier_fill_n10_n5",
@@ -6783,80 +6760,27 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
-          "hasQuestCue": false,
+          "hasQuestCue": true,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 20,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 65,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->royal_hunting_grounds_old_oak_stand 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n10_n5",
           "zone": "kingdom_frontier",
-          "name": "前線小路",
+          "name": "銀徑軍界口",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": -10,
@@ -6865,7 +6789,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "east": "royal_hunting_grounds_silver_trail"
+              "east": "royal_hunting_grounds_silver_trail",
+              "west": ""
             },
             "byCoordinate": {
               "north": "kingdom_frontier_fill_n10_n6",
@@ -6881,49 +6806,12 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n10_n5",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n5",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n5",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n5",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->royal_hunting_grounds_silver_trail 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n10_n6",
@@ -6931,6 +6819,7 @@
           "name": "邊境巡邏路",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": -10,
@@ -6939,7 +6828,8 @@
           "mapY": 1,
           "neighbors": {
             "byExit": {
-              "east": "royal_hunting_grounds_deer_run"
+              "east": "royal_hunting_grounds_deer_run",
+              "west": ""
             },
             "byCoordinate": {
               "north": "kingdom_frontier_fill_n10_n7",
@@ -6955,47 +6845,22 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 29,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n10_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 29,
-              "minimum": 65,
-              "text": "邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n6",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->royal_hunting_grounds_deer_run 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n10_n7",
           "zone": "kingdom_frontier",
-          "name": "關卡通道",
-          "grade": "A_main_transition",
+          "name": "號角獵門口",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": -10,
           "worldY": -7,
@@ -7003,7 +6868,8 @@
           "mapY": 0,
           "neighbors": {
             "byExit": {
-              "east": "royal_hunting_grounds_horn_gate"
+              "east": "royal_hunting_grounds_horn_gate",
+              "west": ""
             },
             "byCoordinate": {
               "north": "abandoned_mines_entry_claim",
@@ -7012,51 +6878,24 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 31,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n10_n7",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 31,
-              "minimum": 65,
-              "text": "邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n7",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingdom_frontier_fill_n10_n7",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->royal_hunting_grounds_horn_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 68,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n11_n3",
           "zone": "kingdom_frontier",
-          "name": "邊境巡邏路",
+          "name": "南側殘哨臺",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7082,44 +6921,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n11_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n11_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n11_n3",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n13_n4",
           "zone": "kingdom_frontier",
-          "name": "前線小路",
+          "name": "中段旗繩封路",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7145,54 +6956,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n13_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n13_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n13_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n13_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n14_n6",
           "zone": "kingdom_frontier",
-          "name": "邊境巡邏路",
+          "name": "鹿徑西拒馬",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7218,44 +6991,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n14_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n14_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n14_n6",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n15_n7",
           "zone": "kingdom_frontier",
-          "name": "邊境巡邏路",
+          "name": "北角軍旗欄",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7279,56 +7024,18 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n15_n7",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n15_n7",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n15_n7",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n15_n7",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n17_n3",
           "zone": "kingdom_frontier",
-          "name": "邊牆走道",
+          "name": "西段舊牆哨",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7354,44 +7061,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n17_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n17_n3",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n17_n3",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n18_n4",
           "zone": "kingdom_frontier",
-          "name": "邊牆走道",
+          "name": "西北敵影牆",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7417,58 +7096,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n18_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n18_n4",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n18_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n18_n4",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingdom_frontier_fill_n18_n6",
           "zone": "kingdom_frontier",
-          "name": "邊境巡邏路",
-          "grade": "C_empty_filler",
+          "name": "西北荒草哨",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -18,
           "worldY": -6,
@@ -7486,44 +7128,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 55,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingdom_frontier_fill_n18_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n18_n6",
-              "zone": "kingdom_frontier",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-            },
-            {
-              "id": "kingdom_frontier_fill_n18_n6",
-              "zone": "kingdom_frontier",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -21054,330 +20668,6 @@
       "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
     },
     {
-      "id": "kingdom_frontier_fill_n10_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 65,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->royal_hunting_grounds_old_oak_stand 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n5",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n5",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n5",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n5",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->royal_hunting_grounds_silver_trail 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 29,
-      "minimum": 65,
-      "text": "邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n6",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->royal_hunting_grounds_deer_run 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n7",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 31,
-      "minimum": 65,
-      "text": "邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n7",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n7",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->royal_hunting_grounds_horn_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "kingdom_frontier_fill_n11_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n11_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n13_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n13_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n13_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n14_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n14_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n15_n7",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n15_n7",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n15_n7",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n17_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n17_n3",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n4",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n6",
-      "zone": "kingdom_frontier",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。"
-    },
-    {
       "id": "kingsroad_market_fill_22_0",
       "zone": "kingsroad_market",
       "severity": "error",
@@ -25551,69 +24841,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n3",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n11_n3",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n14_n6",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n17_n3",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n6",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n10_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n13_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n15_n7",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingdom_frontier_fill_n18_n4",
-      "zone": "kingdom_frontier",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "kingsroad_market_fill_23_2",

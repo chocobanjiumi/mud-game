@@ -5286,8 +5286,8 @@ for (const [roomAId, dir, roomBId] of CROSS_ZONE_CONNECTIONS) {
 // ============================================================
 
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
-  kingdom_frontier_fill_n10_n7: '邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。',
-  kingdom_frontier_fill_n10_n6: '邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。',
+  kingdom_frontier_fill_n10_n7: '號角獵門口穿過王室獵場西側界碑，西面邊境巡邏路仍有軍靴印，東側獵場號角門掛著舊銅環。磨損石墩標出獵場與軍管區分界，是明確跨區通路，兩側都有巡邏繩標。',
+  kingdom_frontier_fill_n10_n6: '邊境巡邏路在獵場鹿徑西側延伸，西面是軍方哨旗與低牆，東側草叢裡可見王室與軍方的雙重界標。這是通往王家獵場鹿徑的 border route，路面仍受巡邏管制，界碑旁有警告牌。',
   eastern_coast_fill_39_2: '海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。',
   bloodsalt_coast_fill_47_9: '棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。',
   serpent_delta_fill_33_20: '蛇河三角洲的泥濘通道，南面岩壁上有矮人開鑿的坑口，鐵鏽味從其中飄出。',

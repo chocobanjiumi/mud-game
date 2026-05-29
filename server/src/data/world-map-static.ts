@@ -1685,9 +1685,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n10_n3": {
     "id": "kingdom_frontier_fill_n10_n3",
-    "name": "關卡通道",
+    "name": "南哨界碑封口",
     "zone": "kingdom_frontier",
-    "description": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+    "description": "南哨界碑封口位於王國邊境西南角，北側巡邏路被草叢遮住，東面遠處可見獵場木柵。磨損界碑旁堆著拒馬，這格是封閉 border blocker，不開放穿越，只能折回內側。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 8,
@@ -1697,13 +1697,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n10_n4": {
     "id": "kingdom_frontier_fill_n10_n4",
-    "name": "邊牆走道",
+    "name": "舊橡獵牆門",
     "zone": "kingdom_frontier",
-    "description": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+    "description": "舊橡獵牆門貼著王國邊境的東側矮牆，西面軍方界碑排成直線，東面能看見王家獵場老橡樹的樹冠。這裡是跨區 border 路線，只沿東側獵牆缺口通往獵場，牆下有巡邏告示。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "royal_hunting_grounds_old_oak_stand"
+        "targetRoomId": "royal_hunting_grounds_old_oak_stand",
+        "description": "東側穿過獵牆缺口與落葉界碑，接向王家獵場老橡樹地"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側軍方拒馬封住邊牆走道，不能離開巡邏線"
       }
     ],
     "mapSymbol": "[·]",
@@ -1714,13 +1721,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n10_n5": {
     "id": "kingdom_frontier_fill_n10_n5",
-    "name": "前線小路",
+    "name": "銀徑軍界口",
     "zone": "kingdom_frontier",
-    "description": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。",
+    "description": "銀徑軍界口夾在邊境哨旗與王家獵場銀色小徑之間，西側關卡木牌寫著軍管警示，東側獵場銀葉在風裡閃動。這是跨區 border route，不是普通前線支路，兩側都有界樁與巡邏繩。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "royal_hunting_grounds_silver_trail"
+        "targetRoomId": "royal_hunting_grounds_silver_trail",
+        "description": "東側沿銀葉路標離開軍界，接入王家獵場銀色小徑"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側關卡柵門落下，軍管前線禁止通行"
       }
     ],
     "mapSymbol": "[·]",
@@ -1733,11 +1747,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingdom_frontier_fill_n10_n6",
     "name": "邊境巡邏路",
     "zone": "kingdom_frontier",
-    "description": "邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。",
+    "description": "邊境巡邏路在獵場鹿徑西側延伸，西面是軍方哨旗與低牆，東側草叢裡可見王室與軍方的雙重界標。這是通往王家獵場鹿徑的 border route，路面仍受巡邏管制，界碑旁有警告牌。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "royal_hunting_grounds_deer_run"
+        "targetRoomId": "royal_hunting_grounds_deer_run",
+        "description": "東側穿過雙重界標與矮草巡邏線，接向王家獵場鹿徑"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側軍方低牆封住巡邏路，不能進入邊境腹地"
       }
     ],
     "mapSymbol": "[·]",
@@ -1748,13 +1769,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n10_n7": {
     "id": "kingdom_frontier_fill_n10_n7",
-    "name": "關卡通道",
+    "name": "號角獵門口",
     "zone": "kingdom_frontier",
-    "description": "邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。",
+    "description": "號角獵門口穿過王室獵場西側界碑，西面邊境巡邏路仍有軍靴印，東側獵場號角門掛著舊銅環。磨損石墩標出獵場與軍管區分界，是明確跨區通路，兩側都有巡邏繩標。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "royal_hunting_grounds_horn_gate"
+        "targetRoomId": "royal_hunting_grounds_horn_gate",
+        "description": "東側越過王室界碑與銅環門柱，抵達王家獵場號角門"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側巡邏拒馬封住回穿路線，需改走正式邊境道路"
       }
     ],
     "mapSymbol": "[·]",
@@ -1765,9 +1793,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n11_n3": {
     "id": "kingdom_frontier_fill_n11_n3",
-    "name": "邊境巡邏路",
+    "name": "南側殘哨臺",
     "zone": "kingdom_frontier",
-    "description": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+    "description": "南側殘哨臺立在低矮土坡上，西側有崩落崗哨木樁，東面能望見舊橡獵牆門。磨損界碑把巡邏線截斷，這格是封閉 blocker，只作邊境輪廓提示與風向標記。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -1777,9 +1805,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n13_n4": {
     "id": "kingdom_frontier_fill_n13_n4",
-    "name": "前線小路",
+    "name": "中段旗繩封路",
     "zone": "kingdom_frontier",
-    "description": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+    "description": "中段旗繩封路在邊牆下方拉起斑駁軍旗，北側舊橡獵牆門的樹影仍可見，東面前線草地被巡邏繩封住。這是封閉 border blocker，不接玩家主路或獵場小徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1789,9 +1817,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n14_n6": {
     "id": "kingdom_frontier_fill_n14_n6",
-    "name": "邊境巡邏路",
+    "name": "鹿徑西拒馬",
     "zone": "kingdom_frontier",
-    "description": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+    "description": "鹿徑西拒馬靠近王家獵場西側，北面可望見銀徑軍界口，東側鹿徑被木拒馬隔在外。界碑旁只有巡邏腳印，這格是封閉 blocker，提示不要硬穿草叢。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -1801,9 +1829,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n15_n7": {
     "id": "kingdom_frontier_fill_n15_n7",
-    "name": "邊境巡邏路",
+    "name": "北角軍旗欄",
     "zone": "kingdom_frontier",
-    "description": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+    "description": "北角軍旗欄位於邊境高處，南側鹿徑西拒馬的木刺仍可看見，東面獵場樹影被旗欄隔開。此處是封閉 border blocker，沒有安全出口或服務點，只作警戒邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -1813,9 +1841,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n17_n3": {
     "id": "kingdom_frontier_fill_n17_n3",
-    "name": "邊牆走道",
+    "name": "西段舊牆哨",
     "zone": "kingdom_frontier",
-    "description": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+    "description": "西段舊牆哨貼著殘破邊牆，東側遠處可見南側殘哨臺，北面風把軍旗聲吹得斷續。牆基塌陷封住巡邏線，這格是封閉 blocker，只保留邊境地貌與哨臺殘影。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -1825,9 +1853,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n18_n4": {
     "id": "kingdom_frontier_fill_n18_n4",
-    "name": "邊牆走道",
+    "name": "西北敵影牆",
     "zone": "kingdom_frontier",
-    "description": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+    "description": "西北敵影牆在邊境最外側形成死角，東側舊牆哨的石影被荒草遮住，北面遠處可見敵國輪廓。這裡是封閉 border blocker，牆下沒有可通行門洞或巡邏缺口。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1837,9 +1865,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "kingdom_frontier_fill_n18_n6": {
     "id": "kingdom_frontier_fill_n18_n6",
-    "name": "邊境巡邏路",
+    "name": "西北荒草哨",
     "zone": "kingdom_frontier",
-    "description": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+    "description": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰，這格是封閉 blocker，不接出新道路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
