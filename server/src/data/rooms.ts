@@ -5375,6 +5375,8 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'thundersteppe_rolling_gate:west': '西側穿過滾雷門銅鈴與帶電草根，接往雷草西緣',
   'thundersteppe_thunder_pool:west': '西側沿雷池水洼外的濕亮草徑，接往雷雨草徑',
   'thundersteppe_wind_shrine:west': '西側順著祭旗風聲下到晶砂草坡，接往風祭草坡',
+  'storm_highlands_cliff_gate:west': '西側穿過峭壁門碎石階與冰風缺口，接往霜咬隘口南側雪岩路',
+  'storm_highlands_rain_shelf:west': '西側沿雨棚岩臺與濕滑雲階下行，接往霜咬隘口北側冰雨坡',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

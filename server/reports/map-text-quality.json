@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:34:16.045Z",
+  "generatedAt": "2026-05-29T21:36:28.554Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 58
+    "issues": 53
   },
   "issuesByKind": {
-    "exit.description": 35,
-    "room.description": 23
+    "exit.description": 33,
+    "room.description": 20
   },
   "issues": [
     {
@@ -516,24 +516,6 @@
       "minimumLength": 12,
       "text": "",
       "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "storm_highlands/storm_highlands_cliff_gate:west->frostbite_pass_fill_n19_n14",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "storm_highlands/storm_highlands_rain_shelf:west->frostbite_pass_fill_n19_n13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
       "id": "blackwood/blackwood_wolf_den:north->amber_forest_fill_n13_11",
@@ -849,33 +831,6 @@
       "minimumLength": 55,
       "text": "西南松徑補給欄位於獵場北界雪柵上方，南側雪柵標示邊界，東面松圃南封坡旁有舊補給繩樁。欄內放著採集用麻袋，但道路被雪樁擋住，是 service gathering blocker。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "storm_highlands/storm_highlands_fill_n10_n14",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "獅鷲王峰東雷崖封位在風暴高原東緣，西側可望見獅鷲王峰的黑影與狂風眼，南面雷雲沿斷崖翻滾，東方只剩碎裂岩柱。這裡是 border blocker，雷擊岩臺封住外側路線，不提供通行。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "storm_highlands/storm_highlands_fill_n11_n13",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 59,
-      "minimumLength": 80,
-      "text": "天石堆東斷崖封貼著高原北側碎崖，西面天石堆的石 cairn 被雨水磨亮，南側獅鷲王峰傳來長鳴。碎石路在東邊斷成空谷，雷風會把人推離岩臺，是封路 blocker。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "storm_highlands/storm_highlands_fill_n11_n15",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 63,
-      "minimumLength": 80,
-      "text": "風暴玻礦東封脊位在高原南北風線交會處，西面風暴玻礦脈閃著藍白裂光，南側獅鷲王峰被雲牆遮住。岩脊上有可採碎玻礦屑，但東北風切成危險斷口，是 blocker。",
-      "reason": "room 描述字數不足或過於泛用"
     },
     {
       "id": "wildgrass_hills/wildgrass_hills_fill_5_n8",
