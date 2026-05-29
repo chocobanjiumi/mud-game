@@ -915,9 +915,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_22_21": {
     "id": "ember_march_fill_22_21",
-    "name": "火痕石道",
+    "name": "星坑東燼封道",
     "zone": "ember_march",
-    "description": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+    "description": "星坑東燼封道位於餘燼邊境西北角，西面星落 crater 邊緣的暗光被灰風吞沒，南側焦炭路還有車轍，東面火草平地冒出紅芽。焦黑石道被熔渣封住，是 border blocker，不開跨區捷徑，只作邊界提示。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -927,9 +927,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_22_24": {
     "id": "ember_march_fill_22_24",
-    "name": "灰燼邊道",
+    "name": "南燼臺北封灰道",
     "zone": "ember_march",
-    "description": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+    "description": "南燼臺北封灰道貼著南燼傳送石臺北側，北面焦黑里程碑半埋在灰裡，南面傳送符文忽明忽暗，西側玻灰原吹來細碎燼沙。這裡是 border blocker，標示傳送點外圍但不開放直穿。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -941,19 +941,22 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "ember_march_south_portal",
     "name": "南燼傳送石臺",
     "zone": "ember_march",
-    "description": "黑色玄武岩砌成的傳送石臺立在焦灰南坡，符文被餘燼照得忽明忽暗。",
+    "description": "南燼傳送石臺以黑色玄武岩砌在焦灰南坡，北側封灰道隔開熱風，東面補給棚掛著耐火布，南面避風亭擋住熔灰。這裡是 portal service route，提供餘燼邊境南部傳送與補給動線。",
     "exits": [
       {
         "direction": "north",
-        "targetRoomId": "ember_march_fill_22_24"
+        "targetRoomId": "ember_march_fill_22_24",
+        "description": "北側沿冷卻灰階回到南燼臺北封灰道"
       },
       {
         "direction": "east",
-        "targetRoomId": "ember_march_south_supply"
+        "targetRoomId": "ember_march_south_supply",
+        "description": "東側穿過耐火布棚口前往焦土補給棚"
       },
       {
         "direction": "south",
-        "targetRoomId": "ember_march_south_shelter"
+        "targetRoomId": "ember_march_south_shelter",
+        "description": "南側走下玄武岩臺階抵達熔灰避風亭"
       }
     ],
     "mapSymbol": "[T]",
@@ -966,11 +969,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "ember_march_south_supply",
     "name": "焦土補給棚",
     "zone": "ember_march",
-    "description": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。",
+    "description": "焦土補給棚半埋在灰堆裡，西側可回到南燼傳送石臺，棚內耐火布擋住熱風，水桶、冷卻藥劑與備用繃帶沿牆排開。這裡是 service room，只提供南部據點補給提示，不放敵人。",
     "exits": [
       {
         "direction": "west",
-        "targetRoomId": "ember_march_south_portal"
+        "targetRoomId": "ember_march_south_portal",
+        "description": "西側掀開耐火布簾，回到南燼傳送石臺"
       }
     ],
     "mapSymbol": "[·]",
@@ -983,11 +987,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "ember_march_south_shelter",
     "name": "熔灰避風亭",
     "zone": "ember_march",
-    "description": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。",
+    "description": "熔灰避風亭以低矮石牆圍住南側熱風，北面玄武岩臺階通回傳送石臺，亭外能看見火山前緣紅光。亭內有水缸、灰斗與臨時坐凳，是 service room，讓玩家辨認南部安全歇腳點。",
     "exits": [
       {
         "direction": "north",
-        "targetRoomId": "ember_march_south_portal"
+        "targetRoomId": "ember_march_south_portal",
+        "description": "北側沿玄武岩臺階回到南燼傳送石臺"
       }
     ],
     "mapSymbol": "[·]",
@@ -998,9 +1003,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_26_21": {
     "id": "ember_march_fill_26_21",
-    "name": "火痕石道",
+    "name": "骨窯北封火痕",
     "zone": "ember_march",
-    "description": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+    "description": "骨窯北封火痕位於骨窯隘道北側，南面窯口傳來乾骨裂響，西側焦灼綠洲的黑水氣味被熱風推來。石道上的火痕斷成數截，熔灰覆住踏點，是 border blocker，不提供穿越。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1010,9 +1015,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_28_22": {
     "id": "ember_march_fill_28_22",
-    "name": "灰燼邊道",
+    "name": "龍印東封灰脊",
     "zone": "ember_march",
-    "description": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。",
+    "description": "龍印東封灰脊位於龍印山脊東面，西側巨大爪痕仍壓在焦土裡，南面邊境要塞殼露出黑石牆角。灰脊盡頭被熱風削成斷坡，這裡是 border blocker，只標示火山前緣方向。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -1022,13 +1027,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_30_21": {
     "id": "ember_march_fill_30_21",
-    "name": "火痕石道",
+    "name": "火山灰田西界",
     "zone": "ember_march",
-    "description": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+    "description": "火山灰田西界位於餘燼邊境東北角，東面火山灰田的黑灰被熱風捲起，西側燼地石道已被熔渣封住。這裡是跨區 border route，只允許向東進入火山地帶，內側灰坡不可回切。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "volcano_ash_field"
+        "targetRoomId": "volcano_ash_field",
+        "description": "東側穿過熱灰風與黑色火山砂，銜接火山地帶灰燼原"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側熔渣封住舊石道，不能回切餘燼內圈"
       }
     ],
     "mapSymbol": "[·]",
@@ -1039,13 +1051,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_30_23": {
     "id": "ember_march_fill_30_23",
-    "name": "餘燼通道",
+    "name": "硫泉西界燼路",
     "zone": "ember_march",
-    "description": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。",
+    "description": "硫泉西界燼路貼著心火裂口東側，西面餘燼仍有紅光，南側灰燼邊道沉入熱泥，東面火山硫磺泉噴出刺鼻白霧。這裡是跨區 border route，只導向火山溫泉前緣，不開旁支道路。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "volcano_sulfur_springs"
+        "targetRoomId": "volcano_sulfur_springs",
+        "description": "東側穿過硫磺白霧與發熱礫石，抵達火山地帶硫磺泉"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側心火裂縫噴出熱浪，不能從邊界路回切"
       }
     ],
     "mapSymbol": "[·]",
@@ -1056,13 +1075,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ember_march_fill_30_24": {
     "id": "ember_march_fill_30_24",
-    "name": "灰燼邊道",
+    "name": "熔橋西界灰道",
     "zone": "ember_march",
-    "description": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+    "description": "熔橋西界灰道位於餘燼邊境東南口，北側硫泉西界仍有白霧，東面火山熔岩橋發出紅光。灰道路基被熱浪切開，這裡是跨區 border route，只讓玩家向東接上熔岩橋，不開南側灰坡。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "volcano_lava_bridge"
+        "targetRoomId": "volcano_lava_bridge",
+        "description": "東側踏過焦黑灰道與灼熱岩脊，接上火山地帶熔岩橋"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側灰道路基塌陷，不能回切餘燼邊境內部"
       }
     ],
     "mapSymbol": "[·]",

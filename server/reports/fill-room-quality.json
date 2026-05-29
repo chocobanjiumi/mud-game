@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:21:29.546Z",
+  "generatedAt": "2026-05-29T20:24:14.949Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 424,
-    "errors": 301,
-    "warnings": 123,
+    "issues": 388,
+    "errors": 275,
+    "warnings": 113,
     "byGrade": {
-      "A_main_transition": 41,
+      "A_main_transition": 40,
       "B_connector": 18,
-      "C_empty_filler": 93,
-      "D_upgrade_candidate": 191
+      "C_empty_filler": 92,
+      "D_upgrade_candidate": 193
     },
     "byPurpose": {
-      "blocker": 232,
-      "border": 229,
-      "gathering": 146,
+      "blocker": 235,
+      "border": 230,
+      "gathering": 147,
       "monster": 30,
       "npc_or_quest": 21,
-      "portal": 10,
+      "portal": 13,
       "route": 70,
-      "service": 41
+      "service": 42
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 13,
-      "description.direction": 99,
-      "description.length": 143,
-      "description.purpose": 33,
-      "description.repeated_opening": 77,
-      "description.terrain": 6,
+      "dead_end.no_gameplay": 10,
+      "description.direction": 92,
+      "description.length": 133,
+      "description.purpose": 31,
+      "description.repeated_opening": 72,
+      "description.terrain": 5,
       "exit.description.length": 20,
-      "exit.description.missing": 33
+      "exit.description.missing": 25
     }
   },
   "zones": [
@@ -3675,12 +3675,12 @@
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
       "fillRooms": 11,
-      "issues": 36,
+      "issues": 0,
       "records": [
         {
           "id": "ember_march_fill_22_21",
           "zone": "ember_march",
-          "name": "火痕石道",
+          "name": "星坑東燼封道",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -3707,48 +3707,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ember_march_fill_22_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_22_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_22_21",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ember_march_fill_22_24",
           "zone": "ember_march",
-          "name": "灰燼邊道",
-          "grade": "C_empty_filler",
+          "name": "南燼臺北封灰道",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "portal"
           ],
           "worldX": 22,
           "worldY": 24,
@@ -3769,46 +3742,18 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ember_march_fill_22_24",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_22_24",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_22_24",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ember_march_fill_26_21",
           "zone": "ember_march",
-          "name": "火痕石道",
+          "name": "骨窯北封火痕",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -3834,44 +3779,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ember_march_fill_26_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_26_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_26_21",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ember_march_fill_28_22",
           "zone": "ember_march",
-          "name": "灰燼邊道",
+          "name": "龍印東封灰脊",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -3897,49 +3814,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ember_march_fill_28_22",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-            },
-            {
-              "id": "ember_march_fill_28_22",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-            },
-            {
-              "id": "ember_march_fill_28_22",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ember_march_fill_30_21",
           "zone": "ember_march",
-          "name": "火痕石道",
+          "name": "火山灰田西界",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 30,
@@ -3948,7 +3835,8 @@
           "mapY": 0,
           "neighbors": {
             "byExit": {
-              "east": "volcano_ash_field"
+              "east": "volcano_ash_field",
+              "west": ""
             },
             "byCoordinate": {
               "east": "volcano_ash_field"
@@ -3962,64 +3850,22 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 19,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ember_march_fill_30_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_30_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_30_21",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "ember_march_fill_30_21",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->volcano_ash_field 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "ember_march_fill_30_21",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 65,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ember_march_fill_30_23",
           "zone": "ember_march",
-          "name": "餘燼通道",
-          "grade": "A_main_transition",
+          "name": "硫泉西界燼路",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 30,
           "worldY": 23,
@@ -4027,7 +3873,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "east": "volcano_sulfur_springs"
+              "east": "volcano_sulfur_springs",
+              "west": ""
             },
             "byCoordinate": {
               "south": "ember_march_fill_30_24",
@@ -4036,63 +3883,27 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ember_march_fill_30_23",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。"
-            },
-            {
-              "id": "ember_march_fill_30_23",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。"
-            },
-            {
-              "id": "ember_march_fill_30_23",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "ember_march_fill_30_23",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->volcano_sulfur_springs 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 65,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ember_march_fill_30_24",
           "zone": "ember_march",
-          "name": "灰燼邊道",
+          "name": "熔橋西界灰道",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 30,
@@ -4101,7 +3912,8 @@
           "mapY": 3,
           "neighbors": {
             "byExit": {
-              "east": "volcano_lava_bridge"
+              "east": "volcano_lava_bridge",
+              "west": ""
             },
             "byCoordinate": {
               "north": "ember_march_fill_30_23",
@@ -4116,56 +3928,12 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 19,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ember_march_fill_30_24",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_30_24",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-            },
-            {
-              "id": "ember_march_fill_30_24",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "ember_march_fill_30_24",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->volcano_lava_bridge 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "ember_march_fill_30_24",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ember_march_slag_bridge",
@@ -4215,8 +3983,10 @@
           "name": "南燼傳送石臺",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
             "portal",
-            "route"
+            "route",
+            "service"
           ],
           "worldX": 22,
           "worldY": 25,
@@ -4243,49 +4013,11 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 29,
+          "descriptionLength": 64,
           "exitCount": 3,
-          "missingExitDescriptions": 3,
-          "shortExitDescriptions": 3,
-          "issues": [
-            {
-              "id": "ember_march_south_portal",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 29,
-              "minimum": 55,
-              "text": "黑色玄武岩砌成的傳送石臺立在焦灰南坡，符文被餘燼照得忽明忽暗。"
-            },
-            {
-              "id": "ember_march_south_portal",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit north->ember_march_fill_22_24 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "ember_march_south_portal",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ember_march_south_supply 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "ember_march_south_portal",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->ember_march_south_shelter 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ember_march_south_shelter",
@@ -4293,6 +4025,7 @@
           "name": "熔灰避風亭",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "portal",
             "service"
           ],
           "worldX": 22,
@@ -4316,41 +4049,11 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 65,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ember_march_south_shelter",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 55,
-              "text": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。"
-            },
-            {
-              "id": "ember_march_south_shelter",
-              "zone": "ember_march",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 55,
-              "text": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。"
-            },
-            {
-              "id": "ember_march_south_shelter",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit north->ember_march_south_portal 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ember_march_south_supply",
@@ -4358,6 +4061,7 @@
           "name": "焦土補給棚",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "portal",
             "service"
           ],
           "worldX": 23,
@@ -4381,41 +4085,11 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 29,
+          "descriptionLength": 64,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ember_march_south_supply",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 29,
-              "minimum": 55,
-              "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。"
-            },
-            {
-              "id": "ember_march_south_supply",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 29,
-              "minimum": 55,
-              "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。"
-            },
-            {
-              "id": "ember_march_south_supply",
-              "zone": "ember_march",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit west->ember_march_south_portal 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -17816,299 +17490,6 @@
       "minimum": 20
     },
     {
-      "id": "ember_march_fill_22_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_22_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_22_24",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_22_24",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_26_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_26_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_28_22",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-    },
-    {
-      "id": "ember_march_fill_28_22",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-    },
-    {
-      "id": "ember_march_fill_28_22",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。"
-    },
-    {
-      "id": "ember_march_fill_30_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_30_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_30_21",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "ember_march_fill_30_21",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->volcano_ash_field 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "ember_march_fill_30_23",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。"
-    },
-    {
-      "id": "ember_march_fill_30_23",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。"
-    },
-    {
-      "id": "ember_march_fill_30_23",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "ember_march_fill_30_23",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->volcano_sulfur_springs 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "ember_march_fill_30_24",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_30_24",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。"
-    },
-    {
-      "id": "ember_march_fill_30_24",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "ember_march_fill_30_24",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->volcano_lava_bridge 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "ember_march_south_portal",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 29,
-      "minimum": 55,
-      "text": "黑色玄武岩砌成的傳送石臺立在焦灰南坡，符文被餘燼照得忽明忽暗。"
-    },
-    {
-      "id": "ember_march_south_portal",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit north->ember_march_fill_22_24 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "ember_march_south_portal",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ember_march_south_supply 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "ember_march_south_portal",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->ember_march_south_shelter 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "ember_march_south_shelter",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 55,
-      "text": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。"
-    },
-    {
-      "id": "ember_march_south_shelter",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 55,
-      "text": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。"
-    },
-    {
-      "id": "ember_march_south_shelter",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit north->ember_march_south_portal 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "ember_march_south_supply",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 29,
-      "minimum": 55,
-      "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。"
-    },
-    {
-      "id": "ember_march_south_supply",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 29,
-      "minimum": 55,
-      "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。"
-    },
-    {
-      "id": "ember_march_south_supply",
-      "zone": "ember_march",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit west->ember_march_south_portal 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
       "id": "frostbite_frozen_divide",
       "zone": "frostbite_pass",
       "severity": "error",
@@ -20663,41 +20044,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ember_march_fill_22_21",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ember_march_fill_22_24",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ember_march_fill_26_21",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ember_march_fill_30_21",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ember_march_fill_30_24",
-      "zone": "ember_march",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "frostbite_pass_fill_n19_n12",
