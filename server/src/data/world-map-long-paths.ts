@@ -106,24 +106,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "amber_forest_sapfall_gully"
   ],
   [
-    "arena_quarter_center_arena",
-    "south",
-    "arena_quarter_duel_ring_east"
-  ],
-  [
     "arena_quarter_champion_wall",
     "south",
     "arena_quarter_grand_gate"
-  ],
-  [
-    "arena_quarter_duel_ring_east",
-    "north",
-    "arena_quarter_center_arena"
-  ],
-  [
-    "arena_quarter_duel_ring_east",
-    "south",
-    "arena_quarter_warmup_sand"
   ],
   [
     "arena_quarter_duel_ring_west",
@@ -174,11 +159,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "arena_quarter_upper_stands",
     "west",
     "arena_quarter_private_boxes"
-  ],
-  [
-    "arena_quarter_warmup_sand",
-    "north",
-    "arena_quarter_duel_ring_east"
   ],
   [
     "arena_quarter_weapon_check",

@@ -23310,7 +23310,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '熱身沙地位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_betting_house', description: '回到下注所' },
-      { direction: 'north', targetRoomId: 'arena_quarter_duel_ring_east', description: '東決鬥圈在北側' },
+      { direction: 'south', targetRoomId: 'arena_quarter_duel_ring_east', description: '南側決鬥邊線通往東決鬥圈' },
       { direction: 'east', targetRoomId: 'arena_quarter_healer_bench', description: '醫護長椅在東側' },
     ],
     monsters: [
@@ -23336,7 +23336,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '東決鬥圈位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_warmup_sand', description: '回到熱身沙地' },
+      { direction: 'north', targetRoomId: 'arena_quarter_warmup_sand', description: '北側回到熱身沙地' },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_duel_ring_west',
@@ -23344,7 +23344,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '東西決鬥圈之間隔著裁判線與觀戰欄，不是相鄰平面一格。',
       },
-      { direction: 'north', targetRoomId: 'arena_quarter_center_arena', description: '中央競技場在北側' },
+      { direction: 'south', targetRoomId: 'arena_quarter_referee_box', description: '南側裁判線通往裁判席' },
     ],
     monsters: [
       { monsterId: 'arena_blade_duelist', maxCount: 1, respawnSeconds: 300 },
@@ -23693,19 +23693,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '裁判席位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       {
-        direction: 'south',
+        direction: 'north',
         targetRoomId: 'arena_quarter_duel_ring_west',
-        description: '南側沿裁判席階梯與判定旗繞下去，才會回到西決鬥圈，裁判哨聲會標示入口',
+        description: '北側沿裁判席階梯與判定旗繞下去，才會回到西決鬥圈，裁判哨聲會標示入口',
         edgeKind: 'long_path',
-        edgeNote: '裁判席南返西決鬥圈需沿階梯與裁判旗區繞行，屬於長路徑。',
+        edgeNote: '裁判席北返西決鬥圈需沿階梯與裁判旗區繞行，屬於長路徑。',
       },
       { direction: 'west', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在西側' },
       {
-        direction: 'east',
-        targetRoomId: 'arena_quarter_center_arena',
-        description: '東側需穿過裁判席側門、記分板與場門緩衝區，才進入中央競技場，出入口有衛兵管制',
-        edgeKind: 'long_path',
-        edgeNote: '裁判席到中央競技場被記分板與側門隔開，不是相鄰格。',
+        direction: 'south',
+        targetRoomId: 'arena_quarter_private_boxes',
+        description: '南側內側階梯通往貴賓包廂',
       },
     ],
     monsters: [
@@ -23762,12 +23760,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台' },
       {
-        direction: 'south',
+        direction: 'north',
         targetRoomId: 'arena_quarter_referee_box',
-        description: '南側需穿過包廂簾幕、貴賓護欄與內側階梯後，才會抵達裁判席，守衛會檢查席票',
-        edgeKind: 'long_path',
-        edgeNote: '貴賓包廂到裁判席需要走內側階梯與護欄通道，距離較長。',
+        description: '北側內側階梯回到裁判席',
       },
+      { direction: 'south', targetRoomId: 'arena_quarter_center_arena', description: '南側包廂階梯進入中央競技場' },
     ],
     monsters: [
       { monsterId: 'arena_masked_challenger', maxCount: 1, respawnSeconds: 450 },
@@ -23827,7 +23824,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '中央競技場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_duel_ring_east', description: '回到東決鬥圈' },
+      { direction: 'north', targetRoomId: 'arena_quarter_private_boxes', description: '北側包廂階梯回到貴賓包廂' },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_referee_box',
