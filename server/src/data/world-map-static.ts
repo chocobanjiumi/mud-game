@@ -2183,7 +2183,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "鏡沼通道",
     "zone": "marsh_of_mirrors",
     "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "marsh_of_mirrors_moonlit_causeway",
+        "description": "鏡沼通道西返月光堤道"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "marsh_of_mirrors_hag_lantern",
+        "description": "鏡沼通道東抵巫燈處"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 3,
     "mapY": 6,

@@ -921,11 +921,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "marsh_of_mirrors_spider_reeds"
   ],
   [
-    "marsh_of_mirrors_hag_lantern",
-    "west",
-    "marsh_of_mirrors_moonlit_causeway"
-  ],
-  [
     "marsh_of_mirrors_lost_cairn",
     "south",
     "marsh_of_mirrors_serpent_channel"
@@ -934,11 +929,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "marsh_of_mirrors_mist_blind",
     "south",
     "marsh_of_mirrors_silver_pool"
-  ],
-  [
-    "marsh_of_mirrors_moonlit_causeway",
-    "east",
-    "marsh_of_mirrors_hag_lantern"
   ],
   [
     "marsh_of_mirrors_moonlit_causeway",

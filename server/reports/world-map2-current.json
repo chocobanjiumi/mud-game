@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:15:01.652Z",
+  "generatedAt": "2026-05-29T19:16:55.240Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2603,13 +2603,11 @@
     "marsh_of_mirrors_echo_fen:east->marsh_of_mirrors_dark_treant_grove (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_echo_fen:north->marsh_of_mirrors_moonlit_causeway (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_moonlit_causeway:south->marsh_of_mirrors_echo_fen (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "marsh_of_mirrors_moonlit_causeway:east->marsh_of_mirrors_hag_lantern (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_moonlit_causeway:west->marsh_of_mirrors_sinking_shrine (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_moonlit_causeway:north->marsh_of_mirrors_glasswater_core (long_path) 月光堤道到玻璃水核心需沿反折石路穿過黑蘆外圈，不是相鄰格。",
     "marsh_of_mirrors_sinking_shrine:west->marsh_of_mirrors_serpent_channel (long_path) 沉沒小祠西返蛇行水道需繞過祠堂外牆與旋渦，屬於長路徑。",
     "marsh_of_mirrors_sinking_shrine:east->marsh_of_mirrors_moonlit_causeway (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_sinking_shrine:north->marsh_of_mirrors_hag_lantern (long_path) 沉沒小祠到巫燈處需穿過低霧與倒影木桿，距離長於相鄰格。",
-    "marsh_of_mirrors_hag_lantern:west->marsh_of_mirrors_moonlit_causeway (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "marsh_of_mirrors_hag_lantern:south->marsh_of_mirrors_sinking_shrine (long_path) 巫燈處南返沉沒小祠需沿倒影木桿與低霧路回繞，屬於長路徑。",
     "marsh_of_mirrors_hag_lantern:north->marsh_of_mirrors_glasswater_core (long_path) 巫燈處到玻璃水核心需等待雙色燈影重疊並繞過黑蘆外圈，不是相鄰格。",
     "marsh_of_mirrors_glasswater_core:south->marsh_of_mirrors_moonlit_causeway (long_path) 玻璃水核心南返月光堤道需沿黑蘆外圈與反折石路回行，屬於長路徑。",

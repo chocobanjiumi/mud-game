@@ -7967,7 +7967,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '回聲濕地北面浮出一條由白石鋪成的窄堤，石面像被月光浸過，即使陰天也會發出微亮光澤。堤道兩側水面倒映著不存在的滿月，讓石路看起來像懸在夜空上。這裡是通往鏡沼深處的交通節點，玩家可藉由白石排列判斷前往沉沒小祠、巫燈處與玻璃水核心的路線。月光堤道上的敵人不多，但一旦戰鬥，任何後退都可能踏進倒影而非真路。若玩家帶著鏡池樣本，白石會短暫顯示安全順序。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_hag_lantern', description: '遠處巫燈在東側閃爍' },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '東側鏡沼通道接向巫燈處' },
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '白石支路通向沉沒小祠' },
       {
         direction: 'north',
@@ -8040,7 +8040,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '月光堤道東側懸著一盞孤燈，燈不是掛在樹上，而是被三根歪木桿支在水面中央。燈火呈暗綠色，倒影卻是深紫色，兩種光在霧中互相拉扯。周圍掛滿骨牌、草繩、破鏡片和不知名的藥包。這裡是精英事件與任務交涉房，玩家可追查操控假燈的巫術來源，破解鏡沼迷路現象，或取得進入玻璃水核心前需要的最後警示。雖然沒有真正的女巫站在燈下，但每次玩家靠近，燈影裡都會多出一個彎腰身影。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石路回到月光堤道' },
+      { direction: 'west', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '西側鏡沼通道回到月光堤道' },
       {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_sinking_shrine',
