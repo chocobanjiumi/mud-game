@@ -1,23 +1,22 @@
 {
-  "generatedAt": "2026-05-29T22:22:20.280Z",
+  "generatedAt": "2026-05-29T22:27:27.103Z",
   "summary": {
     "rooms": 992,
     "zones": 34,
     "roomsWithMonsters": 589,
-    "monsterSpawns": 1903,
+    "monsterSpawns": 1905,
     "fillRoomsWithMonsters": 0,
     "safeRoomsWithMonsters": 0,
     "lowZoneHighMonsterIssues": 0,
     "adjacentLevelSpikeIssues": 0,
-    "terrainFamilyMismatchIssues": 4,
-    "issues": 9,
+    "safeDescriptionMisleadingIssues": 0,
+    "terrainFamilyMismatchIssues": 0,
+    "missingKillTargetSpawnIssues": 0,
+    "issues": 0,
     "errors": 0,
-    "warnings": 9,
+    "warnings": 0,
     "accepted": 0,
-    "byIssueKind": {
-      "monster_cue.missing": 5,
-      "terrain_family.mismatch": 4
-    }
+    "byIssueKind": {}
   },
   "zones": [
     {
@@ -138,7 +137,7 @@
       "fillRoomsWithMonsters": 0,
       "minMonsterLevel": 8,
       "maxMonsterLevel": 20,
-      "averageMonsterLevel": 14.1,
+      "averageMonsterLevel": 14,
       "eliteCount": 4,
       "bossCount": 2,
       "monsterFamilies": [
@@ -721,7 +720,7 @@
         "elemental",
         "plant"
       ],
-      "issueCount": 4,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -907,7 +906,7 @@
         "elemental",
         "humanoid"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     }
   ],
@@ -1700,9 +1699,7 @@
         "frost_herb_witch",
         "silver_sap_treant"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "silverpine_range_fill_n4_n14",
@@ -1959,9 +1956,7 @@
         "frost_herb_witch",
         "silver_sap_treant"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "silverpine_range_water_pocket",
@@ -2120,9 +2115,7 @@
         "silverpine_snowstalker",
         "silver_sap_treant"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "silverpine_range_moonneedle_pines",
@@ -2264,9 +2257,7 @@
         "stormtusk_boar",
         "stormgrass_serpent"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "wildgrass_hills_fill_4_n12",
@@ -2425,9 +2416,7 @@
         "stormtusk_boar",
         "grassblade_raider"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "wildgrass_hills_goblin_blind",
@@ -2455,9 +2444,7 @@
         "silver_sap_treant",
         "frost_herb_witch"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "silverpine_range_fill_n6_n10",
@@ -2585,9 +2572,7 @@
         "stormbanner_champion",
         "windscar_hawk"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "silverpine_range_fill_n8_n9",
@@ -2652,9 +2637,7 @@
         "stormgrass_serpent",
         "stormtusk_boar"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "wildgrass_hills_stone_ring",
@@ -2682,9 +2665,7 @@
         "windscar_hawk",
         "thunder_mound_shaman"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "wildgrass_hills_chief_ridge",
@@ -9502,6 +9483,7 @@
       "minMonsterLevel": 8,
       "maxMonsterLevel": 14,
       "monsterIds": [
+        "poison_toad",
         "poison_snake",
         "giant_spider"
       ],
@@ -19545,12 +19527,22 @@
       "policy": "wilds",
       "isFillRoom": false,
       "hasGathering": false,
-      "monsterCount": 5,
+      "monsterCount": 7,
       "monsterIds": [
+        "poison_toad",
         "poison_snake",
         "giant_spider"
       ],
       "monsters": [
+        {
+          "id": "poison_toad",
+          "name": "毒蛙",
+          "level": 14,
+          "family": "beast",
+          "element": "nature",
+          "isElite": false,
+          "isBoss": false
+        },
         {
           "id": "poison_snake",
           "name": "毒蛇",
@@ -19571,6 +19563,7 @@
         }
       ],
       "monsterLevels": [
+        14,
         8,
         14
       ],
@@ -53726,7 +53719,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "wildgrass_hills_scout_ledge",
@@ -53831,7 +53824,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "wildgrass_hills_stone_ring",
@@ -54000,7 +53993,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "wildgrass_hills_tallgrass_lane",
@@ -54106,7 +54099,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "wildgrass_hills_watchfire_camp",
@@ -54264,175 +54257,3768 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     }
   ],
-  "issues": [
+  "questKillTargets": [
     {
-      "id": "wildgrass_hills/wildgrass_hills_orchard_ruin/monster_cue.missing",
-      "zoneId": "wildgrass_hills",
-      "roomId": "wildgrass_hills_orchard_ruin",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "stormtusk_boar",
-          "grassblade_raider"
-        ]
-      }
+      "questId": "beginner_first_steps",
+      "questName": "初出茅廬",
+      "objectiveType": "kill",
+      "monsterId": "slime",
+      "monsterName": "史萊姆討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "training_ground",
+        "plains_entrance"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "wildgrass_hills/wildgrass_hills_seed_gully/monster_cue.missing",
-      "zoneId": "wildgrass_hills",
-      "roomId": "wildgrass_hills_seed_gully",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "stormgrass_serpent",
-          "stormtusk_boar"
-        ]
-      }
+      "questId": "forest_shadow_source",
+      "questName": "暗影之源",
+      "objectiveType": "kill",
+      "monsterId": "shadow_wolf_alpha",
+      "monsterName": "暗影狼王討伐目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "deep_forest",
+        "dark_forest_elder_grove"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "wildgrass_hills/wildgrass_hills_stream_cut/monster_cue.missing",
-      "zoneId": "wildgrass_hills",
-      "roomId": "wildgrass_hills_stream_cut",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "stormtusk_boar",
-          "stormgrass_serpent"
-        ]
-      }
+      "questId": "main_02_first_battle",
+      "questName": "初戰主線",
+      "objectiveType": "kill",
+      "monsterId": "green_slime",
+      "monsterName": "綠色史萊姆討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_creek",
+        "village_outskirts",
+        "starter_ext_frog_pond",
+        "starter_ext_ruined_bridge",
+        "old_farmland_well",
+        "old_farmland_irrigation_channel",
+        "old_farmland_cart_shortcut"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "wildgrass_hills/wildgrass_hills_thunder_mound/monster_cue.missing",
-      "zoneId": "wildgrass_hills",
-      "roomId": "wildgrass_hills_thunder_mound",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "windscar_hawk",
-          "thunder_mound_shaman"
-        ]
-      }
+      "questId": "main_03_forest_threat",
+      "questName": "森林之威脅",
+      "objectiveType": "kill",
+      "monsterId": "shadow_wolf",
+      "monsterName": "暗影狼討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "forest_entrance",
+        "dense_trail",
+        "deep_forest",
+        "firefly_trail",
+        "elf_altar",
+        "withered_forest",
+        "dark_forest_raven_perch",
+        "dark_forest_root_bridge",
+        "dark_forest_moonwell",
+        "dark_forest_shadow_clearing"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "wildgrass_hills/wildgrass_hills_windmill_shell/monster_cue.missing",
-      "zoneId": "wildgrass_hills",
-      "roomId": "wildgrass_hills_windmill_shell",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "stormbanner_champion",
-          "windscar_hawk"
-        ]
-      }
+      "questId": "main_05_pirate_lord",
+      "questName": "海盜禍患",
+      "objectiveType": "kill",
+      "monsterId": "pirate",
+      "monsterName": "海盜討伐目標，需在目標出沒區域依任務追蹤推進到8次並回報",
+      "worldRooms": [
+        "shipwreck",
+        "pirate_camp",
+        "eastern_coast_smugglers_cove",
+        "eastern_coast_pirate_cache"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "silverpine_range/silverpine_range_frost_herb_ledge/terrain_family.mismatch",
-      "zoneId": "silverpine_range",
-      "roomId": "silverpine_range_frost_herb_ledge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
+      "questId": "main_05_pirate_lord",
+      "questName": "海盜禍患",
+      "objectiveType": "kill",
+      "monsterId": "pirate_captain",
+      "monsterName": "海盜船長討伐目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "pirate_camp",
+        "eastern_coast_pirate_cache"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "silverpine_range/silverpine_range_herb_shelf/terrain_family.mismatch",
-      "zoneId": "silverpine_range",
-      "roomId": "silverpine_range_herb_shelf",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
+      "questId": "main_06_volcano_seal",
+      "questName": "火山覺醒",
+      "objectiveType": "kill",
+      "monsterId": "fire_salamander",
+      "monsterName": "火蜥蜴討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "volcano_base",
+        "lava_trail",
+        "magma_river",
+        "volcano_ash_field",
+        "volcano_crystal_vent"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "silverpine_range/silverpine_range_silver_sap_grove/terrain_family.mismatch",
-      "zoneId": "silverpine_range",
-      "roomId": "silverpine_range_silver_sap_grove",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
+      "questId": "main_08_demon_invasion",
+      "questName": "魔族入侵",
+      "objectiveType": "kill",
+      "monsterId": "demon_soldier",
+      "monsterName": "魔族士兵討伐目標，需在目標出沒區域依任務追蹤推進到10次並回報",
+      "worldRooms": [
+        "demon_border",
+        "demon_village",
+        "dark_fortress_gate",
+        "torture_chamber",
+        "demon_barracks",
+        "demon_treasury",
+        "demon_ash_watch",
+        "demon_shadow_market",
+        "demon_chain_yard",
+        "demon_war_forge",
+        "demon_hellhound_kennel"
+      ],
+      "dungeonRooms": []
     },
     {
-      "id": "silverpine_range/silverpine_range_snowline_gate/terrain_family.mismatch",
-      "zoneId": "silverpine_range",
-      "roomId": "silverpine_range_snowline_gate",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
+      "questId": "main_09_dragon_alliance",
+      "questName": "龍之聯盟",
+      "objectiveType": "kill",
+      "monsterId": "dragon_knight",
+      "monsterName": "龍騎士討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "dragon_nest_path",
+        "wyvern_cliff",
+        "ancient_dragon_lair",
+        "dragon_hoard",
+        "dragon_scale_spring",
+        "dragon_claw_pass",
+        "dragon_oracle_perch",
+        "dragon_scale_forge",
+        "dragon_skywarden_camp"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "main_09_dragon_alliance",
+      "questName": "龍之聯盟",
+      "objectiveType": "kill",
+      "monsterId": "wyvern",
+      "monsterName": "飛龍討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "wyvern_cliff",
+        "sky_bridge",
+        "storm_peak",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_claw_pass",
+        "dragon_thunder_nest",
+        "dragon_skywarden_camp"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "main_10_final_battle",
+      "questName": "最終之戰",
+      "objectiveType": "kill",
+      "monsterId": "god_of_war",
+      "monsterName": "戰神討伐目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "god_chamber",
+        "celestial_final_seal"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "plains_wolf_threat",
+      "questName": "狼群威脅",
+      "objectiveType": "kill",
+      "monsterId": "wild_wolf",
+      "monsterName": "野狼討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "grass_path",
+        "crossroads",
+        "plains_wolf_tracks",
+        "plains_shepherd_camp",
+        "plains_broken_bridge",
+        "plains_alpha_den",
+        "old_farmland_collapsed_barn",
+        "old_farmland_moonlit_pasture",
+        "old_farmland_stone_marker",
+        "whispering_valley_wolf_den"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_abyss_02",
+      "questName": "噩夢淨化",
+      "objectiveType": "kill",
+      "monsterId": "nightmare",
+      "monsterName": "噩夢討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "shadow_realm",
+        "nightmare_garden",
+        "abyss_core",
+        "void_mirror_lake",
+        "nightmare_orchard",
+        "memory_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_abyss_02",
+      "questName": "噩夢淨化",
+      "objectiveType": "kill",
+      "monsterId": "shadow_demon",
+      "monsterName": "暗影惡魔討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "abyss_entrance",
+        "void_corridor",
+        "shadow_realm",
+        "nightmare_garden",
+        "abyss_anchor_steps",
+        "void_mirror_lake",
+        "shadow_archive",
+        "nightmare_orchard",
+        "gravity_well",
+        "echo_court"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_abyss_02",
+      "questName": "噩夢淨化",
+      "objectiveType": "kill",
+      "monsterId": "void_walker",
+      "monsterName": "虛空行者討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "abyss_entrance",
+        "void_corridor",
+        "chaos_bridge",
+        "time_distortion",
+        "abyss_anchor_steps",
+        "shadow_archive",
+        "chaos_observatory",
+        "time_splinter_vault",
+        "memory_maze",
+        "rift_forge",
+        "echo_court"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_celestial_01",
+      "questName": "天使的試煉",
+      "objectiveType": "kill",
+      "monsterId": "celestial_guardian",
+      "monsterName": "天界守護者討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "celestial_gate",
+        "starlight_path",
+        "angel_garden",
+        "judgment_hall",
+        "celestial_starfall_plaza",
+        "celestial_broken_colonnade",
+        "celestial_lumen_archive",
+        "celestial_fountain_of_oaths",
+        "celestial_sundial_court",
+        "celestial_armory_of_dawn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_celestial_02",
+      "questName": "神之圖書館",
+      "objectiveType": "kill",
+      "monsterId": "fallen_angel",
+      "monsterName": "墮天使討伐目標，需在目標出沒區域依任務追蹤推進到2次並回報",
+      "worldRooms": [
+        "celestial_gate",
+        "starlight_path",
+        "eternal_sanctuary",
+        "celestial_starfall_plaza",
+        "celestial_broken_colonnade",
+        "celestial_seraph_roost",
+        "celestial_penitent_steps",
+        "celestial_reliquary"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_coast_01",
+      "questName": "漁夫的煩惱",
+      "objectiveType": "kill",
+      "monsterId": "sea_crab",
+      "monsterName": "海蟹討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "sandy_beach",
+        "tidal_zone",
+        "lighthouse",
+        "cliff_path",
+        "eastern_coast_tidepool_grotto",
+        "eastern_coast_seaweed_flats",
+        "eastern_coast_broken_pier"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_coast_03",
+      "questName": "海蛇退治",
+      "objectiveType": "kill",
+      "monsterId": "sea_serpent",
+      "monsterName": "海蛇討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "sea_cave",
+        "coral_shallows",
+        "dark_reef",
+        "eastern_coast_pearl_bed",
+        "eastern_coast_serpent_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_coast_04",
+      "questName": "燈塔守護",
+      "objectiveType": "kill",
+      "monsterId": "deep_fishman",
+      "monsterName": "深海魚人討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "shipwreck",
+        "dark_reef",
+        "underwater_cave",
+        "eastern_coast_serpent_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_crystal_01",
+      "questName": "水晶研究",
+      "objectiveType": "kill",
+      "monsterId": "crystal_golem",
+      "monsterName": "水晶魔像討伐目標，需在目標出沒區域依任務追蹤推進到2次並回報",
+      "worldRooms": [],
+      "dungeonRooms": [
+        "crystal_temple/crystal_temple_entrance",
+        "crystal_temple/crystal_temple_corridor",
+        "crystal_temple/crystal_temple_golem_hall",
+        "crystal_temple/crystal_temple_boss"
+      ]
+    },
+    {
+      "questId": "side_crystal_01",
+      "questName": "水晶研究",
+      "objectiveType": "kill",
+      "monsterId": "crystal_lizard",
+      "monsterName": "水晶蜥蜴討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "luminous_tunnel",
+        "underground_river",
+        "mine_depths",
+        "amethyst_corridor",
+        "jade_pool",
+        "underground_waterfall",
+        "crystal_cave_miner_camp",
+        "crystal_cave_singing_crystals",
+        "crystal_cave_glass_bridge",
+        "crystal_cave_lizard_nest",
+        "crystal_cave_mirror_maze",
+        "crystal_cave_submerged_vault",
+        "ancient_ruins_cracked_obelisk",
+        "ancient_ruins_sun_dial_patio"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_demon_02",
+      "questName": "惡魔獵殺",
+      "objectiveType": "kill",
+      "monsterId": "demon_soldier",
+      "monsterName": "魔族士兵討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "demon_border",
+        "demon_village",
+        "dark_fortress_gate",
+        "torture_chamber",
+        "demon_barracks",
+        "demon_treasury",
+        "demon_ash_watch",
+        "demon_shadow_market",
+        "demon_chain_yard",
+        "demon_war_forge",
+        "demon_hellhound_kennel"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_demon_02",
+      "questName": "惡魔獵殺",
+      "objectiveType": "kill",
+      "monsterId": "hellhound",
+      "monsterName": "地獄犬討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "scorched_plains",
+        "blood_river",
+        "demon_barracks",
+        "demon_bone_pits",
+        "demon_lava_sewer",
+        "demon_hellhound_kennel"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_demon_02",
+      "questName": "惡魔獵殺",
+      "objectiveType": "kill",
+      "monsterId": "imp",
+      "monsterName": "小惡魔討伐目標，需在目標出沒區域依任務追蹤推進到10次並回報",
+      "worldRooms": [
+        "demon_border",
+        "scorched_plains",
+        "demon_village",
+        "demon_ash_watch",
+        "demon_bone_pits",
+        "demon_lava_sewer"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_demon_03",
+      "questName": "暗黑要塞突破",
+      "objectiveType": "kill",
+      "monsterId": "demon_general",
+      "monsterName": "魔族將軍討伐目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "dark_fortress_gate",
+        "summoning_circle",
+        "demon_throne",
+        "demon_sigil_tower",
+        "demon_war_forge",
+        "demon_cursed_shrine",
+        "demon_lord_antechamber"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_dragon_01",
+      "questName": "龍蛋守護",
+      "objectiveType": "kill",
+      "monsterId": "young_dragon",
+      "monsterName": "幼龍討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "dragon_nest_path",
+        "dragon_bone_field",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_scale_spring",
+        "dragon_fireglass_terrace",
+        "dragon_molten_aerie"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_dragon_02",
+      "questName": "飛龍退治",
+      "objectiveType": "kill",
+      "monsterId": "wyvern",
+      "monsterName": "飛龍討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "wyvern_cliff",
+        "sky_bridge",
+        "storm_peak",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_claw_pass",
+        "dragon_thunder_nest",
+        "dragon_skywarden_camp"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_dragon_03",
+      "questName": "龍骨收集",
+      "objectiveType": "kill",
+      "monsterId": "ancient_wyrm",
+      "monsterName": "古代蛟龍討伐目標，需在目標出沒區域依任務追蹤推進到2次並回報",
+      "worldRooms": [
+        "dragon_bone_field",
+        "ancient_dragon_lair",
+        "dragon_scale_forge",
+        "dragon_starfall_crater"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_forest_01",
+      "questName": "巡林者的委託",
+      "objectiveType": "kill",
+      "monsterId": "shadow_wolf",
+      "monsterName": "暗影狼討伐目標，需在目標出沒區域依任務追蹤推進到10次並回報",
+      "worldRooms": [
+        "forest_entrance",
+        "dense_trail",
+        "deep_forest",
+        "firefly_trail",
+        "elf_altar",
+        "withered_forest",
+        "dark_forest_raven_perch",
+        "dark_forest_root_bridge",
+        "dark_forest_moonwell",
+        "dark_forest_shadow_clearing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_forest_03",
+      "questName": "毒霧調查",
+      "objectiveType": "kill",
+      "monsterId": "poison_toad",
+      "monsterName": "毒蟾蜍討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "deep_poison_swamp"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_plains_01",
+      "questName": "狼群危機",
+      "objectiveType": "kill",
+      "monsterId": "wild_wolf",
+      "monsterName": "野狼討伐目標，需在目標出沒區域依任務追蹤推進到8次並回報",
+      "worldRooms": [
+        "grass_path",
+        "crossroads",
+        "plains_wolf_tracks",
+        "plains_shepherd_camp",
+        "plains_broken_bridge",
+        "plains_alpha_den",
+        "old_farmland_collapsed_barn",
+        "old_farmland_moonlit_pasture",
+        "old_farmland_stone_marker",
+        "whispering_valley_wolf_den"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_snow_01",
+      "questName": "雪狼退治",
+      "objectiveType": "kill",
+      "monsterId": "snow_wolf",
+      "monsterName": "雪狼討伐目標，需在目標出沒區域依任務追蹤推進到10次並回報",
+      "worldRooms": [
+        "snowfield_entrance",
+        "blizzard_path",
+        "glacier",
+        "wolf_den",
+        "frozen_wastes_snowdrift_pass",
+        "frozen_wastes_frostpine_grove",
+        "frozen_wastes_abandoned_sledge",
+        "frozen_wastes_yeti_cairn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_snow_02",
+      "questName": "毛皮採集",
+      "objectiveType": "kill",
+      "monsterId": "ice_elemental",
+      "monsterName": "冰元素討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "glacier",
+        "frozen_lake",
+        "crystal_ice_cave",
+        "frozen_wastes_ice_fishing_hole",
+        "frozen_wastes_glacier_crevasse",
+        "frozen_wastes_runestone_circle",
+        "frozen_wastes_crystal_spire"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_snow_02",
+      "questName": "毛皮採集",
+      "objectiveType": "kill",
+      "monsterId": "snow_wolf",
+      "monsterName": "雪狼討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "snowfield_entrance",
+        "blizzard_path",
+        "glacier",
+        "wolf_den",
+        "frozen_wastes_snowdrift_pass",
+        "frozen_wastes_frostpine_grove",
+        "frozen_wastes_abandoned_sledge",
+        "frozen_wastes_yeti_cairn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_village_01",
+      "questName": "村莊的鼠患",
+      "objectiveType": "kill",
+      "monsterId": "field_rat",
+      "monsterName": "田鼠討伐目標，需在目標出沒區域依任務追蹤推進到10次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_farmland",
+        "village_orchard",
+        "village_outskirts",
+        "starter_ext_old_mill_path",
+        "starter_ext_beehive_grove",
+        "starter_ext_herb_garden",
+        "starter_ext_training_clearing",
+        "starter_ext_root_cellar",
+        "starter_ext_charcoal_kiln",
+        "starter_ext_hollow_stump",
+        "sunflower_field",
+        "abandoned_minecart",
+        "riverside_fishing",
+        "windmill_interior",
+        "plains_hare_burrows",
+        "old_farmland_crossroads"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_village_02",
+      "questName": "墓地的不安",
+      "objectiveType": "kill",
+      "monsterId": "skeleton_soldier",
+      "monsterName": "骷髏兵討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "graveyard_entrance",
+        "graveyard_depths",
+        "watchtower"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_volcano_01",
+      "questName": "礦工的求救",
+      "objectiveType": "kill",
+      "monsterId": "rock_giant",
+      "monsterName": "岩石巨人討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "obsidian_cave",
+        "volcano_summit",
+        "volcano_obsidian_quarry",
+        "volcano_basalt_steps",
+        "volcano_colossus_arena"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_volcano_02",
+      "questName": "火焰結晶",
+      "objectiveType": "kill",
+      "monsterId": "flame_spirit",
+      "monsterName": "火焰精靈討伐目標，需在目標出沒區域依任務追蹤推進到5次並回報",
+      "worldRooms": [
+        "volcano_crater",
+        "fire_temple_entrance",
+        "forge_hall",
+        "volcano_summit",
+        "volcano_lava_bridge",
+        "volcano_crystal_vent",
+        "volcano_basalt_steps",
+        "volcano_forge_storage",
+        "volcano_colossus_arena",
+        "redrock_badlands_cinder_spring",
+        "redrock_badlands_burnt_wagon",
+        "redrock_badlands_flame_spirit_basin",
+        "redrock_badlands_lava_worm_sink",
+        "redrock_badlands_scarlet_crater"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "side_volcano_03",
+      "questName": "鍛造師的挑戰",
+      "objectiveType": "kill",
+      "monsterId": "lava_worm",
+      "monsterName": "熔岩蟲討伐目標，需在目標出沒區域依任務追蹤推進到3次並回報",
+      "worldRooms": [
+        "sulfur_valley",
+        "magma_river",
+        "obsidian_cave",
+        "volcano_steam_lift",
+        "volcano_sulfur_springs",
+        "volcano_obsidian_quarry",
+        "redrock_badlands_cinder_spring",
+        "redrock_badlands_viper_flats",
+        "redrock_badlands_flame_spirit_basin",
+        "redrock_badlands_lava_worm_sink",
+        "redrock_badlands_scarlet_crater"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_abandoned_mines_boss",
+      "questName": "廢棄礦坑精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "dustwing_bat",
+      "monsterName": "廢棄礦坑精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abandoned_mines_entry_claim",
+        "abandoned_mines_vein_path",
+        "abandoned_mines_herb_shelf",
+        "abandoned_mines_lift_station",
+        "abandoned_mines_echo_shaft",
+        "abandoned_mines_bat_roost",
+        "abandoned_mines_flooded_crosscut",
+        "abandoned_mines_gargoyle_niche",
+        "abandoned_mines_escape_adit"
+      ],
+      "dungeonRooms": [
+        "abandoned_mines_template/abandoned_mines_template_room_1",
+        "abandoned_mines_template/abandoned_mines_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_abandoned_mines_daily_2",
+      "questName": "廢棄礦坑每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "dustwing_bat",
+      "monsterName": "廢棄礦坑巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abandoned_mines_entry_claim",
+        "abandoned_mines_vein_path",
+        "abandoned_mines_herb_shelf",
+        "abandoned_mines_lift_station",
+        "abandoned_mines_echo_shaft",
+        "abandoned_mines_bat_roost",
+        "abandoned_mines_flooded_crosscut",
+        "abandoned_mines_gargoyle_niche",
+        "abandoned_mines_escape_adit"
+      ],
+      "dungeonRooms": [
+        "abandoned_mines_template/abandoned_mines_template_room_1",
+        "abandoned_mines_template/abandoned_mines_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_abandoned_mines_side_1",
+      "questName": "廢棄礦坑支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "dustwing_bat",
+      "monsterName": "廢棄礦坑威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abandoned_mines_entry_claim",
+        "abandoned_mines_vein_path",
+        "abandoned_mines_herb_shelf",
+        "abandoned_mines_lift_station",
+        "abandoned_mines_echo_shaft",
+        "abandoned_mines_bat_roost",
+        "abandoned_mines_flooded_crosscut",
+        "abandoned_mines_gargoyle_niche",
+        "abandoned_mines_escape_adit"
+      ],
+      "dungeonRooms": [
+        "abandoned_mines_template/abandoned_mines_template_room_1",
+        "abandoned_mines_template/abandoned_mines_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_abyss_rift_boss",
+      "questName": "深淵裂隙精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "void_walker",
+      "monsterName": "深淵裂隙精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abyss_entrance",
+        "void_corridor",
+        "chaos_bridge",
+        "time_distortion",
+        "abyss_anchor_steps",
+        "shadow_archive",
+        "chaos_observatory",
+        "time_splinter_vault",
+        "memory_maze",
+        "rift_forge",
+        "echo_court"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_abyss_rift_daily_2",
+      "questName": "深淵裂隙每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "void_walker",
+      "monsterName": "深淵裂隙巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abyss_entrance",
+        "void_corridor",
+        "chaos_bridge",
+        "time_distortion",
+        "abyss_anchor_steps",
+        "shadow_archive",
+        "chaos_observatory",
+        "time_splinter_vault",
+        "memory_maze",
+        "rift_forge",
+        "echo_court"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_abyss_rift_side_1",
+      "questName": "深淵裂隙支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "void_walker",
+      "monsterName": "深淵裂隙威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "abyss_entrance",
+        "void_corridor",
+        "chaos_bridge",
+        "time_distortion",
+        "abyss_anchor_steps",
+        "shadow_archive",
+        "chaos_observatory",
+        "time_splinter_vault",
+        "memory_maze",
+        "rift_forge",
+        "echo_court"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_amber_forest_boss",
+      "questName": "琥珀森林精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "amber_sapling_lurker",
+      "monsterName": "琥珀森林精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "amber_forest_entry_claim",
+        "amber_forest_vein_path",
+        "amber_forest_resin_gate",
+        "amber_forest_smoke_mycology"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_amber_forest_daily_2",
+      "questName": "琥珀森林每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "amber_sapling_lurker",
+      "monsterName": "琥珀森林巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "amber_forest_entry_claim",
+        "amber_forest_vein_path",
+        "amber_forest_resin_gate",
+        "amber_forest_smoke_mycology"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_amber_forest_side_1",
+      "questName": "琥珀森林支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "amber_sapling_lurker",
+      "monsterName": "琥珀森林威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "amber_forest_entry_claim",
+        "amber_forest_vein_path",
+        "amber_forest_resin_gate",
+        "amber_forest_smoke_mycology"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ancient_ruins_boss",
+      "questName": "古代遺跡精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "ruin_scarab_swarm",
+      "monsterName": "古代遺跡精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ancient_ruins_sunken_entrance",
+        "ancient_ruins_broken_causeway",
+        "ancient_ruins_mosaic_hall",
+        "ancient_ruins_trap_corridor",
+        "ancient_ruins_dust_archive",
+        "ancient_ruins_relic_cache",
+        "ancient_ruins_vine_choked_cloister",
+        "ancient_ruins_survey_camp"
+      ],
+      "dungeonRooms": [
+        "ancient_ruins_template/ancient_ruins_template_room_1",
+        "ancient_ruins_template/ancient_ruins_template_room_3",
+        "ancient_ruins_template/ancient_ruins_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_ancient_ruins_daily_2",
+      "questName": "古代遺跡每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "ruin_scarab_swarm",
+      "monsterName": "古代遺跡巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ancient_ruins_sunken_entrance",
+        "ancient_ruins_broken_causeway",
+        "ancient_ruins_mosaic_hall",
+        "ancient_ruins_trap_corridor",
+        "ancient_ruins_dust_archive",
+        "ancient_ruins_relic_cache",
+        "ancient_ruins_vine_choked_cloister",
+        "ancient_ruins_survey_camp"
+      ],
+      "dungeonRooms": [
+        "ancient_ruins_template/ancient_ruins_template_room_1",
+        "ancient_ruins_template/ancient_ruins_template_room_3",
+        "ancient_ruins_template/ancient_ruins_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_ancient_ruins_side_1",
+      "questName": "古代遺跡支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "ruin_scarab_swarm",
+      "monsterName": "古代遺跡威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ancient_ruins_sunken_entrance",
+        "ancient_ruins_broken_causeway",
+        "ancient_ruins_mosaic_hall",
+        "ancient_ruins_trap_corridor",
+        "ancient_ruins_dust_archive",
+        "ancient_ruins_relic_cache",
+        "ancient_ruins_vine_choked_cloister",
+        "ancient_ruins_survey_camp"
+      ],
+      "dungeonRooms": [
+        "ancient_ruins_template/ancient_ruins_template_room_1",
+        "ancient_ruins_template/ancient_ruins_template_room_3",
+        "ancient_ruins_template/ancient_ruins_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_arena_quarter_boss",
+      "questName": "競技城區精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "arena_training_dummy",
+      "monsterName": "競技城區精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "arena_quarter_warmup_sand",
+        "arena_quarter_training_yard"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_arena_quarter_daily_2",
+      "questName": "競技城區每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "arena_training_dummy",
+      "monsterName": "競技城區巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "arena_quarter_warmup_sand",
+        "arena_quarter_training_yard"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_arena_quarter_side_1",
+      "questName": "競技城區支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "arena_training_dummy",
+      "monsterName": "競技城區威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "arena_quarter_warmup_sand",
+        "arena_quarter_training_yard"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ashfall_monastery_boss",
+      "questName": "灰落修道院精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "ashfall_ash_novice",
+      "monsterName": "灰落修道院精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ashfall_monastery_ash_gate",
+        "ashfall_monastery_bell_court",
+        "ashfall_monastery_scorched_cloister",
+        "ashfall_monastery_broken_font",
+        "ashfall_monastery_penitent_cells",
+        "ashfall_monastery_ash_scriptorium"
+      ],
+      "dungeonRooms": [
+        "ashfall_monastery_template/ashfall_monastery_template_room_1",
+        "ashfall_monastery_template/ashfall_monastery_template_room_2",
+        "ashfall_monastery_template/ashfall_monastery_template_room_4",
+        "ashfall_monastery_template/ashfall_monastery_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_ashfall_monastery_daily_2",
+      "questName": "灰落修道院每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "ashfall_ash_novice",
+      "monsterName": "灰落修道院巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ashfall_monastery_ash_gate",
+        "ashfall_monastery_bell_court",
+        "ashfall_monastery_scorched_cloister",
+        "ashfall_monastery_broken_font",
+        "ashfall_monastery_penitent_cells",
+        "ashfall_monastery_ash_scriptorium"
+      ],
+      "dungeonRooms": [
+        "ashfall_monastery_template/ashfall_monastery_template_room_1",
+        "ashfall_monastery_template/ashfall_monastery_template_room_2",
+        "ashfall_monastery_template/ashfall_monastery_template_room_4",
+        "ashfall_monastery_template/ashfall_monastery_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_ashfall_monastery_side_1",
+      "questName": "灰落修道院支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "ashfall_ash_novice",
+      "monsterName": "灰落修道院威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ashfall_monastery_ash_gate",
+        "ashfall_monastery_bell_court",
+        "ashfall_monastery_scorched_cloister",
+        "ashfall_monastery_broken_font",
+        "ashfall_monastery_penitent_cells",
+        "ashfall_monastery_ash_scriptorium"
+      ],
+      "dungeonRooms": [
+        "ashfall_monastery_template/ashfall_monastery_template_room_1",
+        "ashfall_monastery_template/ashfall_monastery_template_room_2",
+        "ashfall_monastery_template/ashfall_monastery_template_room_4",
+        "ashfall_monastery_template/ashfall_monastery_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_astral_wastes_boss",
+      "questName": "星界荒原精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "reality_edge_stalker",
+      "monsterName": "星界荒原精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "astral_wastes_reality_gate",
+        "astral_wastes_starsand_track",
+        "astral_wastes_anchor_stone",
+        "astral_wastes_bent_horizon",
+        "astral_wastes_lightless_dune"
+      ],
+      "dungeonRooms": [
+        "astral_wastes_template/astral_wastes_template_room_1",
+        "astral_wastes_template/astral_wastes_template_room_2",
+        "astral_wastes_template/astral_wastes_template_room_4",
+        "astral_wastes_template/astral_wastes_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_astral_wastes_daily_2",
+      "questName": "星界荒原每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "reality_edge_stalker",
+      "monsterName": "星界荒原巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "astral_wastes_reality_gate",
+        "astral_wastes_starsand_track",
+        "astral_wastes_anchor_stone",
+        "astral_wastes_bent_horizon",
+        "astral_wastes_lightless_dune"
+      ],
+      "dungeonRooms": [
+        "astral_wastes_template/astral_wastes_template_room_1",
+        "astral_wastes_template/astral_wastes_template_room_2",
+        "astral_wastes_template/astral_wastes_template_room_4",
+        "astral_wastes_template/astral_wastes_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_astral_wastes_side_1",
+      "questName": "星界荒原支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "reality_edge_stalker",
+      "monsterName": "星界荒原威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "astral_wastes_reality_gate",
+        "astral_wastes_starsand_track",
+        "astral_wastes_anchor_stone",
+        "astral_wastes_bent_horizon",
+        "astral_wastes_lightless_dune"
+      ],
+      "dungeonRooms": [
+        "astral_wastes_template/astral_wastes_template_room_1",
+        "astral_wastes_template/astral_wastes_template_room_2",
+        "astral_wastes_template/astral_wastes_template_room_4",
+        "astral_wastes_template/astral_wastes_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_blackwood_boss",
+      "questName": "黑木林精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "charcoal_bark_wolf",
+      "monsterName": "黑木林精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "blackwood_charcoal_gate",
+        "blackwood_ash_path",
+        "blackwood_hunter_marker",
+        "blackwood_moving_copse",
+        "blackwood_black_moss_bed",
+        "blackwood_moonless_glade",
+        "blackwood_wolf_den"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_blackwood_daily_2",
+      "questName": "黑木林每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "charcoal_bark_wolf",
+      "monsterName": "黑木林巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "blackwood_charcoal_gate",
+        "blackwood_ash_path",
+        "blackwood_hunter_marker",
+        "blackwood_moving_copse",
+        "blackwood_black_moss_bed",
+        "blackwood_moonless_glade",
+        "blackwood_wolf_den"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_blackwood_side_1",
+      "questName": "黑木林支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "charcoal_bark_wolf",
+      "monsterName": "黑木林威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "blackwood_charcoal_gate",
+        "blackwood_ash_path",
+        "blackwood_hunter_marker",
+        "blackwood_moving_copse",
+        "blackwood_black_moss_bed",
+        "blackwood_moonless_glade",
+        "blackwood_wolf_den"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_bloodsalt_coast_boss",
+      "questName": "血鹽海岸精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "bloodsalt_red_salt_reaver",
+      "monsterName": "血鹽海岸精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "bloodsalt_coast_entrance_tidegate",
+        "bloodsalt_coast_red_salt_flats",
+        "bloodsalt_coast_wreckers_marker",
+        "bloodsalt_coast_pirate_beacon",
+        "bloodsalt_coast_smuggler_cove",
+        "bloodsalt_coast_sharktooth_pass"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_bloodsalt_coast_daily_2",
+      "questName": "血鹽海岸每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "bloodsalt_red_salt_reaver",
+      "monsterName": "血鹽海岸巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "bloodsalt_coast_entrance_tidegate",
+        "bloodsalt_coast_red_salt_flats",
+        "bloodsalt_coast_wreckers_marker",
+        "bloodsalt_coast_pirate_beacon",
+        "bloodsalt_coast_smuggler_cove",
+        "bloodsalt_coast_sharktooth_pass"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_bloodsalt_coast_side_1",
+      "questName": "血鹽海岸支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "bloodsalt_red_salt_reaver",
+      "monsterName": "血鹽海岸威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "bloodsalt_coast_entrance_tidegate",
+        "bloodsalt_coast_red_salt_flats",
+        "bloodsalt_coast_wreckers_marker",
+        "bloodsalt_coast_pirate_beacon",
+        "bloodsalt_coast_smuggler_cove",
+        "bloodsalt_coast_sharktooth_pass"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_celestial_ruins_boss",
+      "questName": "天界遺跡精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "fallen_angel",
+      "monsterName": "天界遺跡精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "celestial_gate",
+        "starlight_path",
+        "eternal_sanctuary",
+        "celestial_starfall_plaza",
+        "celestial_broken_colonnade",
+        "celestial_seraph_roost",
+        "celestial_penitent_steps",
+        "celestial_reliquary"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_celestial_ruins_daily_2",
+      "questName": "天界遺跡每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "fallen_angel",
+      "monsterName": "天界遺跡巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "celestial_gate",
+        "starlight_path",
+        "eternal_sanctuary",
+        "celestial_starfall_plaza",
+        "celestial_broken_colonnade",
+        "celestial_seraph_roost",
+        "celestial_penitent_steps",
+        "celestial_reliquary"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_celestial_ruins_side_1",
+      "questName": "天界遺跡支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "fallen_angel",
+      "monsterName": "天界遺跡威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "celestial_gate",
+        "starlight_path",
+        "eternal_sanctuary",
+        "celestial_starfall_plaza",
+        "celestial_broken_colonnade",
+        "celestial_seraph_roost",
+        "celestial_penitent_steps",
+        "celestial_reliquary"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_crystal_cave_boss",
+      "questName": "水晶洞窟精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "cave_bat",
+      "monsterName": "水晶洞窟精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cave_entrance",
+        "luminous_tunnel",
+        "jade_pool",
+        "crystal_cave_echo_chasm",
+        "crystal_cave_singing_crystals",
+        "crystal_cave_lizard_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_crystal_cave_daily_2",
+      "questName": "水晶洞窟每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "cave_bat",
+      "monsterName": "水晶洞窟巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cave_entrance",
+        "luminous_tunnel",
+        "jade_pool",
+        "crystal_cave_echo_chasm",
+        "crystal_cave_singing_crystals",
+        "crystal_cave_lizard_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_crystal_cave_side_1",
+      "questName": "水晶洞窟支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "cave_bat",
+      "monsterName": "水晶洞窟威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cave_entrance",
+        "luminous_tunnel",
+        "jade_pool",
+        "crystal_cave_echo_chasm",
+        "crystal_cave_singing_crystals",
+        "crystal_cave_lizard_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_cursed_graveyard_boss",
+      "questName": "詛咒墓園精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "grave_bell_skeleton",
+      "monsterName": "詛咒墓園精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cursed_graveyard_iron_gate",
+        "cursed_graveyard_crow_path",
+        "cursed_graveyard_bell_tower",
+        "cursed_graveyard_sunken_graves",
+        "cursed_graveyard_ossuary_wall",
+        "cursed_graveyard_gravedigger_shack",
+        "cursed_graveyard_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "cursed_graveyard_template/cursed_graveyard_template_room_1",
+        "cursed_graveyard_template/cursed_graveyard_template_room_2",
+        "cursed_graveyard_template/cursed_graveyard_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_cursed_graveyard_daily_2",
+      "questName": "詛咒墓園每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "grave_bell_skeleton",
+      "monsterName": "詛咒墓園巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cursed_graveyard_iron_gate",
+        "cursed_graveyard_crow_path",
+        "cursed_graveyard_bell_tower",
+        "cursed_graveyard_sunken_graves",
+        "cursed_graveyard_ossuary_wall",
+        "cursed_graveyard_gravedigger_shack",
+        "cursed_graveyard_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "cursed_graveyard_template/cursed_graveyard_template_room_1",
+        "cursed_graveyard_template/cursed_graveyard_template_room_2",
+        "cursed_graveyard_template/cursed_graveyard_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_cursed_graveyard_side_1",
+      "questName": "詛咒墓園支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "grave_bell_skeleton",
+      "monsterName": "詛咒墓園威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "cursed_graveyard_iron_gate",
+        "cursed_graveyard_crow_path",
+        "cursed_graveyard_bell_tower",
+        "cursed_graveyard_sunken_graves",
+        "cursed_graveyard_ossuary_wall",
+        "cursed_graveyard_gravedigger_shack",
+        "cursed_graveyard_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "cursed_graveyard_template/cursed_graveyard_template_room_1",
+        "cursed_graveyard_template/cursed_graveyard_template_room_2",
+        "cursed_graveyard_template/cursed_graveyard_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_dark_forest_boss",
+      "questName": "暗影森林精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "shadow_wolf",
+      "monsterName": "暗影森林精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "forest_entrance",
+        "dense_trail",
+        "deep_forest",
+        "firefly_trail",
+        "elf_altar",
+        "withered_forest",
+        "dark_forest_raven_perch",
+        "dark_forest_root_bridge",
+        "dark_forest_moonwell",
+        "dark_forest_shadow_clearing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_dark_forest_daily_2",
+      "questName": "暗影森林每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "shadow_wolf",
+      "monsterName": "暗影森林巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "forest_entrance",
+        "dense_trail",
+        "deep_forest",
+        "firefly_trail",
+        "elf_altar",
+        "withered_forest",
+        "dark_forest_raven_perch",
+        "dark_forest_root_bridge",
+        "dark_forest_moonwell",
+        "dark_forest_shadow_clearing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_dark_forest_side_1",
+      "questName": "暗影森林支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "shadow_wolf",
+      "monsterName": "暗影森林威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "forest_entrance",
+        "dense_trail",
+        "deep_forest",
+        "firefly_trail",
+        "elf_altar",
+        "withered_forest",
+        "dark_forest_raven_perch",
+        "dark_forest_root_bridge",
+        "dark_forest_moonwell",
+        "dark_forest_shadow_clearing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_deepsea_temple_boss",
+      "questName": "深海神殿精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "bluefire_murloc_guard",
+      "monsterName": "深海神殿精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "deepsea_temple_tide_gate",
+        "deepsea_temple_bluefire_hall",
+        "deepsea_temple_coral_watch",
+        "deepsea_temple_shell_court",
+        "deepsea_temple_moonpool_nave",
+        "deepsea_temple_darkcurrent_canal"
+      ],
+      "dungeonRooms": [
+        "deepsea_temple_template/deepsea_temple_template_room_1",
+        "deepsea_temple_template/deepsea_temple_template_room_2",
+        "deepsea_temple_template/deepsea_temple_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_deepsea_temple_daily_2",
+      "questName": "深海神殿每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "bluefire_murloc_guard",
+      "monsterName": "深海神殿巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "deepsea_temple_tide_gate",
+        "deepsea_temple_bluefire_hall",
+        "deepsea_temple_coral_watch",
+        "deepsea_temple_shell_court",
+        "deepsea_temple_moonpool_nave",
+        "deepsea_temple_darkcurrent_canal"
+      ],
+      "dungeonRooms": [
+        "deepsea_temple_template/deepsea_temple_template_room_1",
+        "deepsea_temple_template/deepsea_temple_template_room_2",
+        "deepsea_temple_template/deepsea_temple_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_deepsea_temple_side_1",
+      "questName": "深海神殿支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "bluefire_murloc_guard",
+      "monsterName": "深海神殿威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "deepsea_temple_tide_gate",
+        "deepsea_temple_bluefire_hall",
+        "deepsea_temple_coral_watch",
+        "deepsea_temple_shell_court",
+        "deepsea_temple_moonpool_nave",
+        "deepsea_temple_darkcurrent_canal"
+      ],
+      "dungeonRooms": [
+        "deepsea_temple_template/deepsea_temple_template_room_1",
+        "deepsea_temple_template/deepsea_temple_template_room_2",
+        "deepsea_temple_template/deepsea_temple_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_demon_territory_boss",
+      "questName": "魔族領地精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "imp",
+      "monsterName": "魔族領地精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "demon_border",
+        "scorched_plains",
+        "demon_village",
+        "demon_ash_watch",
+        "demon_bone_pits",
+        "demon_lava_sewer"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_demon_territory_daily_2",
+      "questName": "魔族領地每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "imp",
+      "monsterName": "魔族領地巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "demon_border",
+        "scorched_plains",
+        "demon_village",
+        "demon_ash_watch",
+        "demon_bone_pits",
+        "demon_lava_sewer"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_demon_territory_side_1",
+      "questName": "魔族領地支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "imp",
+      "monsterName": "魔族領地威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "demon_border",
+        "scorched_plains",
+        "demon_village",
+        "demon_ash_watch",
+        "demon_bone_pits",
+        "demon_lava_sewer"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_dragon_valley_boss",
+      "questName": "龍谷精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "young_dragon",
+      "monsterName": "龍谷精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "dragon_nest_path",
+        "dragon_bone_field",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_scale_spring",
+        "dragon_fireglass_terrace",
+        "dragon_molten_aerie"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_dragon_valley_daily_2",
+      "questName": "龍谷每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "young_dragon",
+      "monsterName": "龍谷巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "dragon_nest_path",
+        "dragon_bone_field",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_scale_spring",
+        "dragon_fireglass_terrace",
+        "dragon_molten_aerie"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_dragon_valley_side_1",
+      "questName": "龍谷支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "young_dragon",
+      "monsterName": "龍谷威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "dragon_valley_entrance",
+        "dragon_nest_path",
+        "dragon_bone_field",
+        "dragon_egg_chamber",
+        "dragon_wind_roost",
+        "dragon_scale_spring",
+        "dragon_fireglass_terrace",
+        "dragon_molten_aerie"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_eastern_coast_boss",
+      "questName": "東方海岸精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "sea_crab",
+      "monsterName": "東方海岸精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sandy_beach",
+        "tidal_zone",
+        "lighthouse",
+        "cliff_path",
+        "eastern_coast_tidepool_grotto",
+        "eastern_coast_seaweed_flats",
+        "eastern_coast_broken_pier"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_eastern_coast_daily_2",
+      "questName": "東方海岸每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "sea_crab",
+      "monsterName": "東方海岸巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sandy_beach",
+        "tidal_zone",
+        "lighthouse",
+        "cliff_path",
+        "eastern_coast_tidepool_grotto",
+        "eastern_coast_seaweed_flats",
+        "eastern_coast_broken_pier"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_eastern_coast_side_1",
+      "questName": "東方海岸支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "sea_crab",
+      "monsterName": "東方海岸威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sandy_beach",
+        "tidal_zone",
+        "lighthouse",
+        "cliff_path",
+        "eastern_coast_tidepool_grotto",
+        "eastern_coast_seaweed_flats",
+        "eastern_coast_broken_pier"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ember_march_boss",
+      "questName": "餘燼邊境精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "ashroad_sparkling",
+      "monsterName": "餘燼邊境精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ember_march_ash_gate",
+        "ember_march_cinder_road",
+        "ember_march_charred_milestone",
+        "ember_march_burnt_watchpost",
+        "ember_march_glass_ash_field",
+        "ember_march_slag_bridge",
+        "ember_march_firegrass_flat"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ember_march_daily_2",
+      "questName": "餘燼邊境每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "ashroad_sparkling",
+      "monsterName": "餘燼邊境巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ember_march_ash_gate",
+        "ember_march_cinder_road",
+        "ember_march_charred_milestone",
+        "ember_march_burnt_watchpost",
+        "ember_march_glass_ash_field",
+        "ember_march_slag_bridge",
+        "ember_march_firegrass_flat"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ember_march_side_1",
+      "questName": "餘燼邊境支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "ashroad_sparkling",
+      "monsterName": "餘燼邊境威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ember_march_ash_gate",
+        "ember_march_cinder_road",
+        "ember_march_charred_milestone",
+        "ember_march_burnt_watchpost",
+        "ember_march_glass_ash_field",
+        "ember_march_slag_bridge",
+        "ember_march_firegrass_flat"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_emerald_canopy_boss",
+      "questName": "翡翠樹冠精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "emerald_canopy_vine_scout",
+      "monsterName": "翡翠樹冠精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "emerald_canopy_entrance_root_lift",
+        "emerald_canopy_vine_bridge_low",
+        "emerald_canopy_moss_rope_walk",
+        "emerald_canopy_firefly_bower",
+        "emerald_canopy_sapfall_gully"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_emerald_canopy_daily_2",
+      "questName": "翡翠樹冠每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "emerald_canopy_vine_scout",
+      "monsterName": "翡翠樹冠巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "emerald_canopy_entrance_root_lift",
+        "emerald_canopy_vine_bridge_low",
+        "emerald_canopy_moss_rope_walk",
+        "emerald_canopy_firefly_bower",
+        "emerald_canopy_sapfall_gully"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_emerald_canopy_side_1",
+      "questName": "翡翠樹冠支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "emerald_canopy_vine_scout",
+      "monsterName": "翡翠樹冠威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "emerald_canopy_entrance_root_lift",
+        "emerald_canopy_vine_bridge_low",
+        "emerald_canopy_moss_rope_walk",
+        "emerald_canopy_firefly_bower",
+        "emerald_canopy_sapfall_gully"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_final_battleground_boss",
+      "questName": "終焉戰場精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "war_gate_bannerman",
+      "monsterName": "終焉戰場精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "final_battleground_war_gate",
+        "final_battleground_broken_banner_field",
+        "final_battleground_siege_trench",
+        "final_battleground_last_command_post"
+      ],
+      "dungeonRooms": [
+        "final_battleground_template/final_battleground_template_room_1",
+        "final_battleground_template/final_battleground_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_final_battleground_daily_2",
+      "questName": "終焉戰場每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "war_gate_bannerman",
+      "monsterName": "終焉戰場巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "final_battleground_war_gate",
+        "final_battleground_broken_banner_field",
+        "final_battleground_siege_trench",
+        "final_battleground_last_command_post"
+      ],
+      "dungeonRooms": [
+        "final_battleground_template/final_battleground_template_room_1",
+        "final_battleground_template/final_battleground_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_final_battleground_side_1",
+      "questName": "終焉戰場支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "war_gate_bannerman",
+      "monsterName": "終焉戰場威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "final_battleground_war_gate",
+        "final_battleground_broken_banner_field",
+        "final_battleground_siege_trench",
+        "final_battleground_last_command_post"
+      ],
+      "dungeonRooms": [
+        "final_battleground_template/final_battleground_template_room_1",
+        "final_battleground_template/final_battleground_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_frostbite_pass_boss",
+      "questName": "霜咬隘口精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "frostbite_whiteout_wolf_pack",
+      "monsterName": "霜咬隘口精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "frostbite_pass_snow_gate",
+        "frostbite_pass_caravan_marker",
+        "frostbite_pass_icewind_cut",
+        "frostbite_pass_frozen_switchback",
+        "frostbite_pass_yeti_scrape",
+        "frostbite_pass_whiteout_basin",
+        "frostbite_pass_bone_sled_path"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_frostbite_pass_daily_2",
+      "questName": "霜咬隘口每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "frostbite_whiteout_wolf_pack",
+      "monsterName": "霜咬隘口巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "frostbite_pass_snow_gate",
+        "frostbite_pass_caravan_marker",
+        "frostbite_pass_icewind_cut",
+        "frostbite_pass_frozen_switchback",
+        "frostbite_pass_yeti_scrape",
+        "frostbite_pass_whiteout_basin",
+        "frostbite_pass_bone_sled_path"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_frostbite_pass_side_1",
+      "questName": "霜咬隘口支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "frostbite_whiteout_wolf_pack",
+      "monsterName": "霜咬隘口威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "frostbite_pass_snow_gate",
+        "frostbite_pass_caravan_marker",
+        "frostbite_pass_icewind_cut",
+        "frostbite_pass_frozen_switchback",
+        "frostbite_pass_yeti_scrape",
+        "frostbite_pass_whiteout_basin",
+        "frostbite_pass_bone_sled_path"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_frozen_wastes_boss",
+      "questName": "冰封雪原精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "snow_wolf",
+      "monsterName": "冰封雪原精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "snowfield_entrance",
+        "blizzard_path",
+        "glacier",
+        "wolf_den",
+        "frozen_wastes_snowdrift_pass",
+        "frozen_wastes_frostpine_grove",
+        "frozen_wastes_abandoned_sledge",
+        "frozen_wastes_yeti_cairn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_frozen_wastes_daily_2",
+      "questName": "冰封雪原每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "snow_wolf",
+      "monsterName": "冰封雪原巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "snowfield_entrance",
+        "blizzard_path",
+        "glacier",
+        "wolf_den",
+        "frozen_wastes_snowdrift_pass",
+        "frozen_wastes_frostpine_grove",
+        "frozen_wastes_abandoned_sledge",
+        "frozen_wastes_yeti_cairn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_frozen_wastes_side_1",
+      "questName": "冰封雪原支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "snow_wolf",
+      "monsterName": "冰封雪原威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "snowfield_entrance",
+        "blizzard_path",
+        "glacier",
+        "wolf_den",
+        "frozen_wastes_snowdrift_pass",
+        "frozen_wastes_frostpine_grove",
+        "frozen_wastes_abandoned_sledge",
+        "frozen_wastes_yeti_cairn"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_glass_dunes_boss",
+      "questName": "琉璃沙丘精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "glass_sand_skink",
+      "monsterName": "琉璃沙丘精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "glass_dunes_sun_gate",
+        "glass_dunes_mirror_slope",
+        "glass_dunes_buried_caravan",
+        "glass_dunes_herb_shelf",
+        "glass_dunes_water_pocket",
+        "glass_dunes_beast_scrape",
+        "glass_dunes_glassstorm_basin"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_glass_dunes_daily_2",
+      "questName": "琉璃沙丘每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "glass_sand_skink",
+      "monsterName": "琉璃沙丘巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "glass_dunes_sun_gate",
+        "glass_dunes_mirror_slope",
+        "glass_dunes_buried_caravan",
+        "glass_dunes_herb_shelf",
+        "glass_dunes_water_pocket",
+        "glass_dunes_beast_scrape",
+        "glass_dunes_glassstorm_basin"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_glass_dunes_side_1",
+      "questName": "琉璃沙丘支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "glass_sand_skink",
+      "monsterName": "琉璃沙丘威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "glass_dunes_sun_gate",
+        "glass_dunes_mirror_slope",
+        "glass_dunes_buried_caravan",
+        "glass_dunes_herb_shelf",
+        "glass_dunes_water_pocket",
+        "glass_dunes_beast_scrape",
+        "glass_dunes_glassstorm_basin"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_hollow_mountain_boss",
+      "questName": "空心山精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "hollow_mountain_wind_gate_sentinel",
+      "monsterName": "空心山精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "hollow_mountain_entrance_wind_gate",
+        "hollow_mountain_spiral_mine_ramp",
+        "hollow_mountain_echo_market",
+        "hollow_mountain_thunder_ore_bridge",
+        "hollow_mountain_quarry_lift"
+      ],
+      "dungeonRooms": [
+        "hollow_mountain_template/hollow_mountain_template_room_1",
+        "hollow_mountain_template/hollow_mountain_template_room_2",
+        "hollow_mountain_template/hollow_mountain_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_hollow_mountain_daily_2",
+      "questName": "空心山每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "hollow_mountain_wind_gate_sentinel",
+      "monsterName": "空心山巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "hollow_mountain_entrance_wind_gate",
+        "hollow_mountain_spiral_mine_ramp",
+        "hollow_mountain_echo_market",
+        "hollow_mountain_thunder_ore_bridge",
+        "hollow_mountain_quarry_lift"
+      ],
+      "dungeonRooms": [
+        "hollow_mountain_template/hollow_mountain_template_room_1",
+        "hollow_mountain_template/hollow_mountain_template_room_2",
+        "hollow_mountain_template/hollow_mountain_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_hollow_mountain_side_1",
+      "questName": "空心山支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "hollow_mountain_wind_gate_sentinel",
+      "monsterName": "空心山威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "hollow_mountain_entrance_wind_gate",
+        "hollow_mountain_spiral_mine_ramp",
+        "hollow_mountain_echo_market",
+        "hollow_mountain_thunder_ore_bridge",
+        "hollow_mountain_quarry_lift"
+      ],
+      "dungeonRooms": [
+        "hollow_mountain_template/hollow_mountain_template_room_1",
+        "hollow_mountain_template/hollow_mountain_template_room_2",
+        "hollow_mountain_template/hollow_mountain_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_ironwood_fort_boss",
+      "questName": "鐵木要塞精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "ironwood_gate_sentinel",
+      "monsterName": "鐵木要塞精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ironwood_fort_portal_yard",
+        "ironwood_fort_outer_gate",
+        "ironwood_fort_muster_square",
+        "ironwood_fort_quartermaster_row",
+        "ironwood_fort_west_bastion",
+        "ironwood_fort_barracks_hall"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ironwood_fort_daily_2",
+      "questName": "鐵木要塞每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "ironwood_gate_sentinel",
+      "monsterName": "鐵木要塞巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ironwood_fort_portal_yard",
+        "ironwood_fort_outer_gate",
+        "ironwood_fort_muster_square",
+        "ironwood_fort_quartermaster_row",
+        "ironwood_fort_west_bastion",
+        "ironwood_fort_barracks_hall"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_ironwood_fort_side_1",
+      "questName": "鐵木要塞支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "ironwood_gate_sentinel",
+      "monsterName": "鐵木要塞威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "ironwood_fort_portal_yard",
+        "ironwood_fort_outer_gate",
+        "ironwood_fort_muster_square",
+        "ironwood_fort_quartermaster_row",
+        "ironwood_fort_west_bastion",
+        "ironwood_fort_barracks_hall"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_kingdom_frontier_boss",
+      "questName": "王國邊境精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "kingdom_frontier_border_levy",
+      "monsterName": "王國邊境精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "kingdom_frontier_portal_muster",
+        "kingdom_frontier_border_road",
+        "kingdom_frontier_watchtower_west",
+        "kingdom_frontier_supply_camp",
+        "kingdom_frontier_battlefield_crossing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_kingdom_frontier_daily_2",
+      "questName": "王國邊境每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "kingdom_frontier_border_levy",
+      "monsterName": "王國邊境巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "kingdom_frontier_portal_muster",
+        "kingdom_frontier_border_road",
+        "kingdom_frontier_watchtower_west",
+        "kingdom_frontier_supply_camp",
+        "kingdom_frontier_battlefield_crossing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_kingdom_frontier_side_1",
+      "questName": "王國邊境支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "kingdom_frontier_border_levy",
+      "monsterName": "王國邊境威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "kingdom_frontier_portal_muster",
+        "kingdom_frontier_border_road",
+        "kingdom_frontier_watchtower_west",
+        "kingdom_frontier_supply_camp",
+        "kingdom_frontier_battlefield_crossing"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_lost_capital_boss",
+      "questName": "失落王都精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "silent_avenue_guard",
+      "monsterName": "失落王都精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "lost_capital_outer_gate",
+        "lost_capital_silent_avenue",
+        "lost_capital_clock_square",
+        "lost_capital_frozen_market",
+        "lost_capital_broken_fountain",
+        "lost_capital_civic_archive",
+        "lost_capital_ashen_barracks",
+        "lost_capital_throne_anteroom"
+      ],
+      "dungeonRooms": [
+        "lost_capital_template/lost_capital_template_room_1",
+        "lost_capital_template/lost_capital_template_room_3",
+        "lost_capital_template/lost_capital_template_room_4",
+        "lost_capital_template/lost_capital_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_lost_capital_daily_2",
+      "questName": "失落王都每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "silent_avenue_guard",
+      "monsterName": "失落王都巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "lost_capital_outer_gate",
+        "lost_capital_silent_avenue",
+        "lost_capital_clock_square",
+        "lost_capital_frozen_market",
+        "lost_capital_broken_fountain",
+        "lost_capital_civic_archive",
+        "lost_capital_ashen_barracks",
+        "lost_capital_throne_anteroom"
+      ],
+      "dungeonRooms": [
+        "lost_capital_template/lost_capital_template_room_1",
+        "lost_capital_template/lost_capital_template_room_3",
+        "lost_capital_template/lost_capital_template_room_4",
+        "lost_capital_template/lost_capital_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_lost_capital_side_1",
+      "questName": "失落王都支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "silent_avenue_guard",
+      "monsterName": "失落王都威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "lost_capital_outer_gate",
+        "lost_capital_silent_avenue",
+        "lost_capital_clock_square",
+        "lost_capital_frozen_market",
+        "lost_capital_broken_fountain",
+        "lost_capital_civic_archive",
+        "lost_capital_ashen_barracks",
+        "lost_capital_throne_anteroom"
+      ],
+      "dungeonRooms": [
+        "lost_capital_template/lost_capital_template_room_1",
+        "lost_capital_template/lost_capital_template_room_3",
+        "lost_capital_template/lost_capital_template_room_4",
+        "lost_capital_template/lost_capital_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_machine_graveyard_boss",
+      "questName": "機械墳場精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "machine_scrap_claw_drone",
+      "monsterName": "機械墳場精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "machine_graveyard_entrance_crane",
+        "machine_graveyard_rusted_turnstile",
+        "machine_graveyard_scrap_canyon",
+        "machine_graveyard_sparking_rail",
+        "machine_graveyard_broken_foundry",
+        "machine_graveyard_gearbone_pit",
+        "machine_graveyard_clockwork_nest",
+        "machine_graveyard_servo_bone_yard"
+      ],
+      "dungeonRooms": [
+        "machine_graveyard_template/machine_graveyard_template_room_1",
+        "machine_graveyard_template/machine_graveyard_template_room_2",
+        "machine_graveyard_template/machine_graveyard_template_room_3",
+        "machine_graveyard_template/machine_graveyard_template_room_4",
+        "machine_graveyard_template/machine_graveyard_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_machine_graveyard_daily_2",
+      "questName": "機械墳場每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "machine_scrap_claw_drone",
+      "monsterName": "機械墳場巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "machine_graveyard_entrance_crane",
+        "machine_graveyard_rusted_turnstile",
+        "machine_graveyard_scrap_canyon",
+        "machine_graveyard_sparking_rail",
+        "machine_graveyard_broken_foundry",
+        "machine_graveyard_gearbone_pit",
+        "machine_graveyard_clockwork_nest",
+        "machine_graveyard_servo_bone_yard"
+      ],
+      "dungeonRooms": [
+        "machine_graveyard_template/machine_graveyard_template_room_1",
+        "machine_graveyard_template/machine_graveyard_template_room_2",
+        "machine_graveyard_template/machine_graveyard_template_room_3",
+        "machine_graveyard_template/machine_graveyard_template_room_4",
+        "machine_graveyard_template/machine_graveyard_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_machine_graveyard_side_1",
+      "questName": "機械墳場支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "machine_scrap_claw_drone",
+      "monsterName": "機械墳場威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "machine_graveyard_entrance_crane",
+        "machine_graveyard_rusted_turnstile",
+        "machine_graveyard_scrap_canyon",
+        "machine_graveyard_sparking_rail",
+        "machine_graveyard_broken_foundry",
+        "machine_graveyard_gearbone_pit",
+        "machine_graveyard_clockwork_nest",
+        "machine_graveyard_servo_bone_yard"
+      ],
+      "dungeonRooms": [
+        "machine_graveyard_template/machine_graveyard_template_room_1",
+        "machine_graveyard_template/machine_graveyard_template_room_2",
+        "machine_graveyard_template/machine_graveyard_template_room_3",
+        "machine_graveyard_template/machine_graveyard_template_room_4",
+        "machine_graveyard_template/machine_graveyard_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_marsh_of_mirrors_boss",
+      "questName": "鏡沼精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "mirror_mire_toad",
+      "monsterName": "鏡沼精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "marsh_of_mirrors_reed_gate",
+        "marsh_of_mirrors_blackwater_path",
+        "marsh_of_mirrors_silver_pool",
+        "marsh_of_mirrors_frog_mire",
+        "marsh_of_mirrors_poison_bloom_bed",
+        "marsh_of_mirrors_spider_reeds",
+        "marsh_of_mirrors_serpent_channel",
+        "marsh_of_mirrors_echo_fen",
+        "marsh_of_mirrors_sinking_shrine"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_marsh_of_mirrors_daily_2",
+      "questName": "鏡沼每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "mirror_mire_toad",
+      "monsterName": "鏡沼巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "marsh_of_mirrors_reed_gate",
+        "marsh_of_mirrors_blackwater_path",
+        "marsh_of_mirrors_silver_pool",
+        "marsh_of_mirrors_frog_mire",
+        "marsh_of_mirrors_poison_bloom_bed",
+        "marsh_of_mirrors_spider_reeds",
+        "marsh_of_mirrors_serpent_channel",
+        "marsh_of_mirrors_echo_fen",
+        "marsh_of_mirrors_sinking_shrine"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_marsh_of_mirrors_side_1",
+      "questName": "鏡沼支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "mirror_mire_toad",
+      "monsterName": "鏡沼威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "marsh_of_mirrors_reed_gate",
+        "marsh_of_mirrors_blackwater_path",
+        "marsh_of_mirrors_silver_pool",
+        "marsh_of_mirrors_frog_mire",
+        "marsh_of_mirrors_poison_bloom_bed",
+        "marsh_of_mirrors_spider_reeds",
+        "marsh_of_mirrors_serpent_channel",
+        "marsh_of_mirrors_echo_fen",
+        "marsh_of_mirrors_sinking_shrine"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_moonlit_fen_boss",
+      "questName": "月光濕地精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "moonlit_reed_sprite",
+      "monsterName": "月光濕地精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonlit_fen_reed_gate",
+        "moonlit_fen_moonflower_bank",
+        "moonlit_fen_firefly_pool",
+        "moonlit_fen_willow_hush",
+        "moonlit_fen_white_reed_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_moonlit_fen_daily_2",
+      "questName": "月光濕地每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "moonlit_reed_sprite",
+      "monsterName": "月光濕地巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonlit_fen_reed_gate",
+        "moonlit_fen_moonflower_bank",
+        "moonlit_fen_firefly_pool",
+        "moonlit_fen_willow_hush",
+        "moonlit_fen_white_reed_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_moonlit_fen_side_1",
+      "questName": "月光濕地支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "moonlit_reed_sprite",
+      "monsterName": "月光濕地威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonlit_fen_reed_gate",
+        "moonlit_fen_moonflower_bank",
+        "moonlit_fen_firefly_pool",
+        "moonlit_fen_willow_hush",
+        "moonlit_fen_white_reed_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_moonshadow_court_boss",
+      "questName": "月影庭精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "moonshadow_moonlit_page",
+      "monsterName": "月影庭精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonshadow_court_moonlit_gate",
+        "moonshadow_court_dreamglass_foyer",
+        "moonshadow_court_silver_bramble_path",
+        "moonshadow_court_twilight_fountain",
+        "moonshadow_court_fae_archive",
+        "moonshadow_court_queen_silence_chapel"
+      ],
+      "dungeonRooms": [
+        "moonshadow_court_template/moonshadow_court_template_room_1",
+        "moonshadow_court_template/moonshadow_court_template_room_2",
+        "moonshadow_court_template/moonshadow_court_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_moonshadow_court_daily_2",
+      "questName": "月影庭每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "moonshadow_moonlit_page",
+      "monsterName": "月影庭巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonshadow_court_moonlit_gate",
+        "moonshadow_court_dreamglass_foyer",
+        "moonshadow_court_silver_bramble_path",
+        "moonshadow_court_twilight_fountain",
+        "moonshadow_court_fae_archive",
+        "moonshadow_court_queen_silence_chapel"
+      ],
+      "dungeonRooms": [
+        "moonshadow_court_template/moonshadow_court_template_room_1",
+        "moonshadow_court_template/moonshadow_court_template_room_2",
+        "moonshadow_court_template/moonshadow_court_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_moonshadow_court_side_1",
+      "questName": "月影庭支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "moonshadow_moonlit_page",
+      "monsterName": "月影庭威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "moonshadow_court_moonlit_gate",
+        "moonshadow_court_dreamglass_foyer",
+        "moonshadow_court_silver_bramble_path",
+        "moonshadow_court_twilight_fountain",
+        "moonshadow_court_fae_archive",
+        "moonshadow_court_queen_silence_chapel"
+      ],
+      "dungeonRooms": [
+        "moonshadow_court_template/moonshadow_court_template_room_1",
+        "moonshadow_court_template/moonshadow_court_template_room_2",
+        "moonshadow_court_template/moonshadow_court_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_necropolis_gate_boss",
+      "questName": "死都外門精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "necropolis_black_gate_wight",
+      "monsterName": "死都外門精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "necropolis_gate_black_approach",
+        "necropolis_gate_half_open_gate",
+        "necropolis_gate_silent_muster",
+        "necropolis_gate_iron_ossuary",
+        "necropolis_gate_mourner_steps",
+        "necropolis_gate_crypt_market",
+        "necropolis_gate_wight_barracks"
+      ],
+      "dungeonRooms": [
+        "necropolis_gate_template/necropolis_gate_template_room_1",
+        "necropolis_gate_template/necropolis_gate_template_room_3",
+        "necropolis_gate_template/necropolis_gate_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_necropolis_gate_daily_2",
+      "questName": "死都外門每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "necropolis_black_gate_wight",
+      "monsterName": "死都外門巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "necropolis_gate_black_approach",
+        "necropolis_gate_half_open_gate",
+        "necropolis_gate_silent_muster",
+        "necropolis_gate_iron_ossuary",
+        "necropolis_gate_mourner_steps",
+        "necropolis_gate_crypt_market",
+        "necropolis_gate_wight_barracks"
+      ],
+      "dungeonRooms": [
+        "necropolis_gate_template/necropolis_gate_template_room_1",
+        "necropolis_gate_template/necropolis_gate_template_room_3",
+        "necropolis_gate_template/necropolis_gate_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_necropolis_gate_side_1",
+      "questName": "死都外門支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "necropolis_black_gate_wight",
+      "monsterName": "死都外門威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "necropolis_gate_black_approach",
+        "necropolis_gate_half_open_gate",
+        "necropolis_gate_silent_muster",
+        "necropolis_gate_iron_ossuary",
+        "necropolis_gate_mourner_steps",
+        "necropolis_gate_crypt_market",
+        "necropolis_gate_wight_barracks"
+      ],
+      "dungeonRooms": [
+        "necropolis_gate_template/necropolis_gate_template_room_1",
+        "necropolis_gate_template/necropolis_gate_template_room_3",
+        "necropolis_gate_template/necropolis_gate_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_obsidian_depths_boss",
+      "questName": "黑曜深層精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "obsidian_shard_crawler",
+      "monsterName": "黑曜深層精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "obsidian_depths_mine_lift",
+        "obsidian_depths_glass_vein",
+        "obsidian_depths_shard_claim"
+      ],
+      "dungeonRooms": [
+        "obsidian_depths_template/obsidian_depths_template_room_1",
+        "obsidian_depths_template/obsidian_depths_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_obsidian_depths_daily_2",
+      "questName": "黑曜深層每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "obsidian_shard_crawler",
+      "monsterName": "黑曜深層巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "obsidian_depths_mine_lift",
+        "obsidian_depths_glass_vein",
+        "obsidian_depths_shard_claim"
+      ],
+      "dungeonRooms": [
+        "obsidian_depths_template/obsidian_depths_template_room_1",
+        "obsidian_depths_template/obsidian_depths_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_obsidian_depths_side_1",
+      "questName": "黑曜深層支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "obsidian_shard_crawler",
+      "monsterName": "黑曜深層威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "obsidian_depths_mine_lift",
+        "obsidian_depths_glass_vein",
+        "obsidian_depths_shard_claim"
+      ],
+      "dungeonRooms": [
+        "obsidian_depths_template/obsidian_depths_template_room_1",
+        "obsidian_depths_template/obsidian_depths_template_room_2"
+      ]
+    },
+    {
+      "questId": "zone_old_farmland_boss",
+      "questName": "老舊農場精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "field_rat",
+      "monsterName": "老舊農場精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_farmland",
+        "village_orchard",
+        "village_outskirts",
+        "starter_ext_old_mill_path",
+        "starter_ext_beehive_grove",
+        "starter_ext_herb_garden",
+        "starter_ext_training_clearing",
+        "starter_ext_root_cellar",
+        "starter_ext_charcoal_kiln",
+        "starter_ext_hollow_stump",
+        "sunflower_field",
+        "abandoned_minecart",
+        "riverside_fishing",
+        "windmill_interior",
+        "plains_hare_burrows",
+        "old_farmland_crossroads"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_old_farmland_daily_2",
+      "questName": "老舊農場每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "field_rat",
+      "monsterName": "老舊農場巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_farmland",
+        "village_orchard",
+        "village_outskirts",
+        "starter_ext_old_mill_path",
+        "starter_ext_beehive_grove",
+        "starter_ext_herb_garden",
+        "starter_ext_training_clearing",
+        "starter_ext_root_cellar",
+        "starter_ext_charcoal_kiln",
+        "starter_ext_hollow_stump",
+        "sunflower_field",
+        "abandoned_minecart",
+        "riverside_fishing",
+        "windmill_interior",
+        "plains_hare_burrows",
+        "old_farmland_crossroads"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_old_farmland_side_1",
+      "questName": "老舊農場支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "field_rat",
+      "monsterName": "老舊農場威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_farmland",
+        "village_orchard",
+        "village_outskirts",
+        "starter_ext_old_mill_path",
+        "starter_ext_beehive_grove",
+        "starter_ext_herb_garden",
+        "starter_ext_training_clearing",
+        "starter_ext_root_cellar",
+        "starter_ext_charcoal_kiln",
+        "starter_ext_hollow_stump",
+        "sunflower_field",
+        "abandoned_minecart",
+        "riverside_fishing",
+        "windmill_interior",
+        "plains_hare_burrows",
+        "old_farmland_crossroads"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_pilgrim_road_boss",
+      "questName": "朝聖古道精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "road_dust_stray",
+      "monsterName": "朝聖古道精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "pilgrim_road_waygate",
+        "pilgrim_road_worn_flags",
+        "pilgrim_road_milestone_cairn",
+        "pilgrim_road_caravan_rut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_pilgrim_road_daily_2",
+      "questName": "朝聖古道每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "road_dust_stray",
+      "monsterName": "朝聖古道巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "pilgrim_road_waygate",
+        "pilgrim_road_worn_flags",
+        "pilgrim_road_milestone_cairn",
+        "pilgrim_road_caravan_rut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_pilgrim_road_side_1",
+      "questName": "朝聖古道支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "road_dust_stray",
+      "monsterName": "朝聖古道威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "pilgrim_road_waygate",
+        "pilgrim_road_worn_flags",
+        "pilgrim_road_milestone_cairn",
+        "pilgrim_road_caravan_rut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_plains_boss",
+      "questName": "翠綠平原精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "wild_rabbit",
+      "monsterName": "翠綠平原精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "plains_entrance",
+        "grass_path",
+        "riverside_fishing",
+        "plains_hare_burrows",
+        "plains_wolf_tracks",
+        "plains_herb_slope"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_plains_daily_2",
+      "questName": "翠綠平原每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "wild_rabbit",
+      "monsterName": "翠綠平原巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "plains_entrance",
+        "grass_path",
+        "riverside_fishing",
+        "plains_hare_burrows",
+        "plains_wolf_tracks",
+        "plains_herb_slope"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_plains_side_1",
+      "questName": "翠綠平原支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "wild_rabbit",
+      "monsterName": "翠綠平原威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "plains_entrance",
+        "grass_path",
+        "riverside_fishing",
+        "plains_hare_burrows",
+        "plains_wolf_tracks",
+        "plains_herb_slope"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_redrock_badlands_boss",
+      "questName": "赤岩荒地精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "dust_road_raider",
+      "monsterName": "赤岩荒地精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "redrock_badlands_dust_gate",
+        "redrock_badlands_rustwash_pass",
+        "redrock_badlands_splinter_ridge",
+        "redrock_badlands_bandit_watch",
+        "redrock_badlands_dry_gulch",
+        "redrock_badlands_outlaw_camp",
+        "redrock_badlands_bone_marker",
+        "redrock_badlands_red_ore_cut",
+        "redrock_badlands_burnt_wagon",
+        "redrock_badlands_echo_arch",
+        "redrock_badlands_exile_den",
+        "redrock_badlands_ambush_canyon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_redrock_badlands_daily_2",
+      "questName": "赤岩荒地每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "dust_road_raider",
+      "monsterName": "赤岩荒地巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "redrock_badlands_dust_gate",
+        "redrock_badlands_rustwash_pass",
+        "redrock_badlands_splinter_ridge",
+        "redrock_badlands_bandit_watch",
+        "redrock_badlands_dry_gulch",
+        "redrock_badlands_outlaw_camp",
+        "redrock_badlands_bone_marker",
+        "redrock_badlands_red_ore_cut",
+        "redrock_badlands_burnt_wagon",
+        "redrock_badlands_echo_arch",
+        "redrock_badlands_exile_den",
+        "redrock_badlands_ambush_canyon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_redrock_badlands_side_1",
+      "questName": "赤岩荒地支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "dust_road_raider",
+      "monsterName": "赤岩荒地威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "redrock_badlands_dust_gate",
+        "redrock_badlands_rustwash_pass",
+        "redrock_badlands_splinter_ridge",
+        "redrock_badlands_bandit_watch",
+        "redrock_badlands_dry_gulch",
+        "redrock_badlands_outlaw_camp",
+        "redrock_badlands_bone_marker",
+        "redrock_badlands_red_ore_cut",
+        "redrock_badlands_burnt_wagon",
+        "redrock_badlands_echo_arch",
+        "redrock_badlands_exile_den",
+        "redrock_badlands_ambush_canyon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_reef_of_bones_boss",
+      "questName": "白骨礁精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "rib_shoal_skeleton",
+      "monsterName": "白骨礁精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "reef_of_bones_tide_gate",
+        "reef_of_bones_rib_shoal",
+        "reef_of_bones_wreck_bow",
+        "reef_of_bones_skull_marker",
+        "reef_of_bones_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "reef_of_bones_template/reef_of_bones_template_room_1",
+        "reef_of_bones_template/reef_of_bones_template_room_2",
+        "reef_of_bones_template/reef_of_bones_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_reef_of_bones_daily_2",
+      "questName": "白骨礁每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "rib_shoal_skeleton",
+      "monsterName": "白骨礁巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "reef_of_bones_tide_gate",
+        "reef_of_bones_rib_shoal",
+        "reef_of_bones_wreck_bow",
+        "reef_of_bones_skull_marker",
+        "reef_of_bones_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "reef_of_bones_template/reef_of_bones_template_room_1",
+        "reef_of_bones_template/reef_of_bones_template_room_2",
+        "reef_of_bones_template/reef_of_bones_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_reef_of_bones_side_1",
+      "questName": "白骨礁支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "rib_shoal_skeleton",
+      "monsterName": "白骨礁威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "reef_of_bones_tide_gate",
+        "reef_of_bones_rib_shoal",
+        "reef_of_bones_wreck_bow",
+        "reef_of_bones_skull_marker",
+        "reef_of_bones_bone_bridge"
+      ],
+      "dungeonRooms": [
+        "reef_of_bones_template/reef_of_bones_template_room_1",
+        "reef_of_bones_template/reef_of_bones_template_room_2",
+        "reef_of_bones_template/reef_of_bones_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_royal_hunting_grounds_boss",
+      "questName": "王家獵場精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "royal_hunt_hound_pack",
+      "monsterName": "王家獵場精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "royal_hunting_grounds_horn_gate",
+        "royal_hunting_grounds_permit_lodge",
+        "royal_hunting_grounds_deer_run",
+        "royal_hunting_grounds_hounds_yard",
+        "royal_hunting_grounds_gamekeeper_camp",
+        "royal_hunting_grounds_wolf_cut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_royal_hunting_grounds_daily_2",
+      "questName": "王家獵場每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "royal_hunt_hound_pack",
+      "monsterName": "王家獵場巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "royal_hunting_grounds_horn_gate",
+        "royal_hunting_grounds_permit_lodge",
+        "royal_hunting_grounds_deer_run",
+        "royal_hunting_grounds_hounds_yard",
+        "royal_hunting_grounds_gamekeeper_camp",
+        "royal_hunting_grounds_wolf_cut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_royal_hunting_grounds_side_1",
+      "questName": "王家獵場支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "royal_hunt_hound_pack",
+      "monsterName": "王家獵場威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "royal_hunting_grounds_horn_gate",
+        "royal_hunting_grounds_permit_lodge",
+        "royal_hunting_grounds_deer_run",
+        "royal_hunting_grounds_hounds_yard",
+        "royal_hunting_grounds_gamekeeper_camp",
+        "royal_hunting_grounds_wolf_cut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_saltwind_flats_boss",
+      "questName": "鹽風灘精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "saltflat_crystal_scuttler",
+      "monsterName": "鹽風灘精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "saltwind_flats_tide_gate",
+        "saltwind_flats_white_ripple",
+        "saltwind_flats_glass_salt_field",
+        "saltwind_flats_salt_crystal_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_saltwind_flats_daily_2",
+      "questName": "鹽風灘每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "saltflat_crystal_scuttler",
+      "monsterName": "鹽風灘巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "saltwind_flats_tide_gate",
+        "saltwind_flats_white_ripple",
+        "saltwind_flats_glass_salt_field",
+        "saltwind_flats_salt_crystal_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_saltwind_flats_side_1",
+      "questName": "鹽風灘支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "saltflat_crystal_scuttler",
+      "monsterName": "鹽風灘威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "saltwind_flats_tide_gate",
+        "saltwind_flats_white_ripple",
+        "saltwind_flats_glass_salt_field",
+        "saltwind_flats_salt_crystal_nest"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_sapphire_lake_boss",
+      "questName": "藍寶湖精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "blue_silt_toad",
+      "monsterName": "藍寶湖精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sapphire_lake_entry_claim",
+        "sapphire_lake_vein_path",
+        "sapphire_lake_herb_shelf",
+        "sapphire_lake_lantern_dock",
+        "sapphire_lake_blue_reed_bed"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_sapphire_lake_daily_2",
+      "questName": "藍寶湖每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "blue_silt_toad",
+      "monsterName": "藍寶湖巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sapphire_lake_entry_claim",
+        "sapphire_lake_vein_path",
+        "sapphire_lake_herb_shelf",
+        "sapphire_lake_lantern_dock",
+        "sapphire_lake_blue_reed_bed"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_sapphire_lake_side_1",
+      "questName": "藍寶湖支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "blue_silt_toad",
+      "monsterName": "藍寶湖威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sapphire_lake_entry_claim",
+        "sapphire_lake_vein_path",
+        "sapphire_lake_herb_shelf",
+        "sapphire_lake_lantern_dock",
+        "sapphire_lake_blue_reed_bed"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_serpent_delta_boss",
+      "questName": "蛇河三角洲精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "serpent_delta_reed_constrictor",
+      "monsterName": "蛇河三角洲精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "serpent_delta_entrance_ferry",
+        "serpent_delta_split_reed_bank",
+        "serpent_delta_mudfish_pool",
+        "serpent_delta_stilt_hamlet",
+        "serpent_delta_heron_marker",
+        "serpent_delta_mangrove_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_serpent_delta_daily_2",
+      "questName": "蛇河三角洲每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "serpent_delta_reed_constrictor",
+      "monsterName": "蛇河三角洲巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "serpent_delta_entrance_ferry",
+        "serpent_delta_split_reed_bank",
+        "serpent_delta_mudfish_pool",
+        "serpent_delta_stilt_hamlet",
+        "serpent_delta_heron_marker",
+        "serpent_delta_mangrove_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_serpent_delta_side_1",
+      "questName": "蛇河三角洲支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "serpent_delta_reed_constrictor",
+      "monsterName": "蛇河三角洲威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "serpent_delta_entrance_ferry",
+        "serpent_delta_split_reed_bank",
+        "serpent_delta_mudfish_pool",
+        "serpent_delta_stilt_hamlet",
+        "serpent_delta_heron_marker",
+        "serpent_delta_mangrove_maze"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_silverpine_range_boss",
+      "questName": "銀松山脈精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "silverpine_snowstalker",
+      "monsterName": "銀松山脈精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "silverpine_range_entry_claim",
+        "silverpine_range_vein_path",
+        "silverpine_range_beast_scrape",
+        "silverpine_range_snowline_gate",
+        "silverpine_range_moonneedle_pines"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_silverpine_range_daily_2",
+      "questName": "銀松山脈每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "silverpine_snowstalker",
+      "monsterName": "銀松山脈巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "silverpine_range_entry_claim",
+        "silverpine_range_vein_path",
+        "silverpine_range_beast_scrape",
+        "silverpine_range_snowline_gate",
+        "silverpine_range_moonneedle_pines"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_silverpine_range_side_1",
+      "questName": "銀松山脈支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "silverpine_snowstalker",
+      "monsterName": "銀松山脈威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "silverpine_range_entry_claim",
+        "silverpine_range_vein_path",
+        "silverpine_range_beast_scrape",
+        "silverpine_range_snowline_gate",
+        "silverpine_range_moonneedle_pines"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_sky_isles_boss",
+      "questName": "浮空群島精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "cloudsilver_kite",
+      "monsterName": "浮空群島精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sky_isles_lift_dock",
+        "sky_isles_chain_bridge",
+        "sky_isles_cloudwatch_post",
+        "sky_isles_gale_meadow",
+        "sky_isles_rune_anchor",
+        "sky_isles_fallen_span",
+        "sky_isles_thunder_nest",
+        "sky_isles_sky_market_ruin"
+      ],
+      "dungeonRooms": [
+        "sky_isles_template/sky_isles_template_room_1",
+        "sky_isles_template/sky_isles_template_room_2",
+        "sky_isles_template/sky_isles_template_room_3",
+        "sky_isles_template/sky_isles_template_room_4",
+        "sky_isles_template/sky_isles_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_sky_isles_daily_2",
+      "questName": "浮空群島每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "cloudsilver_kite",
+      "monsterName": "浮空群島巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sky_isles_lift_dock",
+        "sky_isles_chain_bridge",
+        "sky_isles_cloudwatch_post",
+        "sky_isles_gale_meadow",
+        "sky_isles_rune_anchor",
+        "sky_isles_fallen_span",
+        "sky_isles_thunder_nest",
+        "sky_isles_sky_market_ruin"
+      ],
+      "dungeonRooms": [
+        "sky_isles_template/sky_isles_template_room_1",
+        "sky_isles_template/sky_isles_template_room_2",
+        "sky_isles_template/sky_isles_template_room_3",
+        "sky_isles_template/sky_isles_template_room_4",
+        "sky_isles_template/sky_isles_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_sky_isles_side_1",
+      "questName": "浮空群島支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "cloudsilver_kite",
+      "monsterName": "浮空群島威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sky_isles_lift_dock",
+        "sky_isles_chain_bridge",
+        "sky_isles_cloudwatch_post",
+        "sky_isles_gale_meadow",
+        "sky_isles_rune_anchor",
+        "sky_isles_fallen_span",
+        "sky_isles_thunder_nest",
+        "sky_isles_sky_market_ruin"
+      ],
+      "dungeonRooms": [
+        "sky_isles_template/sky_isles_template_room_1",
+        "sky_isles_template/sky_isles_template_room_2",
+        "sky_isles_template/sky_isles_template_room_3",
+        "sky_isles_template/sky_isles_template_room_4",
+        "sky_isles_template/sky_isles_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_starfall_crater_boss",
+      "questName": "星隕坑精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "starglass_sentinel",
+      "monsterName": "星隕坑精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "starfall_crater_rim_gate",
+        "starfall_crater_glass_slope",
+        "starfall_crater_survey_camp",
+        "starfall_crater_stariron_field",
+        "starfall_crater_burning_scree",
+        "starfall_crater_radiant_pool"
+      ],
+      "dungeonRooms": [
+        "starfall_crater_template/starfall_crater_template_room_1",
+        "starfall_crater_template/starfall_crater_template_room_2",
+        "starfall_crater_template/starfall_crater_template_room_4",
+        "starfall_crater_template/starfall_crater_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_starfall_crater_daily_2",
+      "questName": "星隕坑每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "starglass_sentinel",
+      "monsterName": "星隕坑巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "starfall_crater_rim_gate",
+        "starfall_crater_glass_slope",
+        "starfall_crater_survey_camp",
+        "starfall_crater_stariron_field",
+        "starfall_crater_burning_scree",
+        "starfall_crater_radiant_pool"
+      ],
+      "dungeonRooms": [
+        "starfall_crater_template/starfall_crater_template_room_1",
+        "starfall_crater_template/starfall_crater_template_room_2",
+        "starfall_crater_template/starfall_crater_template_room_4",
+        "starfall_crater_template/starfall_crater_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_starfall_crater_side_1",
+      "questName": "星隕坑支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "starglass_sentinel",
+      "monsterName": "星隕坑威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "starfall_crater_rim_gate",
+        "starfall_crater_glass_slope",
+        "starfall_crater_survey_camp",
+        "starfall_crater_stariron_field",
+        "starfall_crater_burning_scree",
+        "starfall_crater_radiant_pool"
+      ],
+      "dungeonRooms": [
+        "starfall_crater_template/starfall_crater_template_room_1",
+        "starfall_crater_template/starfall_crater_template_room_2",
+        "starfall_crater_template/starfall_crater_template_room_4",
+        "starfall_crater_template/starfall_crater_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_starter_village_boss",
+      "questName": "新手村精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "slime",
+      "monsterName": "新手村精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "training_ground",
+        "plains_entrance"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_starter_village_daily_2",
+      "questName": "新手村每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "slime",
+      "monsterName": "新手村巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "training_ground",
+        "plains_entrance"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_starter_village_ext_boss",
+      "questName": "新手村外圍精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "green_slime",
+      "monsterName": "新手村外圍精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_creek",
+        "village_outskirts",
+        "starter_ext_frog_pond",
+        "starter_ext_ruined_bridge",
+        "old_farmland_well",
+        "old_farmland_irrigation_channel",
+        "old_farmland_cart_shortcut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_starter_village_ext_daily_2",
+      "questName": "新手村外圍每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "green_slime",
+      "monsterName": "新手村外圍巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_creek",
+        "village_outskirts",
+        "starter_ext_frog_pond",
+        "starter_ext_ruined_bridge",
+        "old_farmland_well",
+        "old_farmland_irrigation_channel",
+        "old_farmland_cart_shortcut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_starter_village_ext_side_1",
+      "questName": "新手村外圍支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "green_slime",
+      "monsterName": "新手村外圍威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "village_backhill",
+        "village_creek",
+        "village_outskirts",
+        "starter_ext_frog_pond",
+        "starter_ext_ruined_bridge",
+        "old_farmland_well",
+        "old_farmland_irrigation_channel",
+        "old_farmland_cart_shortcut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_starter_village_side_1",
+      "questName": "新手村支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "slime",
+      "monsterName": "新手村威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "training_ground",
+        "plains_entrance"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_storm_highlands_boss",
+      "questName": "風暴高原精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "windcut_kestrel",
+      "monsterName": "風暴高原精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "storm_highlands_cliff_gate",
+        "storm_highlands_windcut_path",
+        "storm_highlands_rain_shelf",
+        "storm_highlands_goat_ledge",
+        "storm_highlands_eagle_scarp",
+        "storm_highlands_old_windmill",
+        "storm_highlands_broken_beacon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_storm_highlands_daily_2",
+      "questName": "風暴高原每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "windcut_kestrel",
+      "monsterName": "風暴高原巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "storm_highlands_cliff_gate",
+        "storm_highlands_windcut_path",
+        "storm_highlands_rain_shelf",
+        "storm_highlands_goat_ledge",
+        "storm_highlands_eagle_scarp",
+        "storm_highlands_old_windmill",
+        "storm_highlands_broken_beacon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_storm_highlands_side_1",
+      "questName": "風暴高原支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "windcut_kestrel",
+      "monsterName": "風暴高原威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "storm_highlands_cliff_gate",
+        "storm_highlands_windcut_path",
+        "storm_highlands_rain_shelf",
+        "storm_highlands_goat_ledge",
+        "storm_highlands_eagle_scarp",
+        "storm_highlands_old_windmill",
+        "storm_highlands_broken_beacon"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_sunken_catacombs_boss",
+      "questName": "沉沒墓窟精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "tide_sodden_skeleton",
+      "monsterName": "沉沒墓窟精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunken_catacombs_tide_stair",
+        "sunken_catacombs_flooded_narthex",
+        "sunken_catacombs_ossuary_walk",
+        "sunken_catacombs_floating_coffins",
+        "sunken_catacombs_mourner_crypt",
+        "sunken_catacombs_bone_silt_basin",
+        "sunken_catacombs_lantern_niche",
+        "sunken_catacombs_drowned_altar"
+      ],
+      "dungeonRooms": [
+        "sunken_catacombs_template/sunken_catacombs_template_room_1",
+        "sunken_catacombs_template/sunken_catacombs_template_room_2",
+        "sunken_catacombs_template/sunken_catacombs_template_room_4",
+        "sunken_catacombs_template/sunken_catacombs_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_sunken_catacombs_daily_2",
+      "questName": "沉沒墓窟每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "tide_sodden_skeleton",
+      "monsterName": "沉沒墓窟巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunken_catacombs_tide_stair",
+        "sunken_catacombs_flooded_narthex",
+        "sunken_catacombs_ossuary_walk",
+        "sunken_catacombs_floating_coffins",
+        "sunken_catacombs_mourner_crypt",
+        "sunken_catacombs_bone_silt_basin",
+        "sunken_catacombs_lantern_niche",
+        "sunken_catacombs_drowned_altar"
+      ],
+      "dungeonRooms": [
+        "sunken_catacombs_template/sunken_catacombs_template_room_1",
+        "sunken_catacombs_template/sunken_catacombs_template_room_2",
+        "sunken_catacombs_template/sunken_catacombs_template_room_4",
+        "sunken_catacombs_template/sunken_catacombs_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_sunken_catacombs_side_1",
+      "questName": "沉沒墓窟支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "tide_sodden_skeleton",
+      "monsterName": "沉沒墓窟威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunken_catacombs_tide_stair",
+        "sunken_catacombs_flooded_narthex",
+        "sunken_catacombs_ossuary_walk",
+        "sunken_catacombs_floating_coffins",
+        "sunken_catacombs_mourner_crypt",
+        "sunken_catacombs_bone_silt_basin",
+        "sunken_catacombs_lantern_niche",
+        "sunken_catacombs_drowned_altar"
+      ],
+      "dungeonRooms": [
+        "sunken_catacombs_template/sunken_catacombs_template_room_1",
+        "sunken_catacombs_template/sunken_catacombs_template_room_2",
+        "sunken_catacombs_template/sunken_catacombs_template_room_4",
+        "sunken_catacombs_template/sunken_catacombs_template_room_5"
+      ]
+    },
+    {
+      "questId": "zone_sunspire_boss",
+      "questName": "日耀尖塔精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "sunspire_white_stone_acolyte",
+      "monsterName": "日耀尖塔精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunspire_white_stone_gate",
+        "sunspire_sunlit_stair",
+        "sunspire_mirror_plinth",
+        "sunspire_radiant_lift",
+        "sunspire_hymn_gallery",
+        "sunspire_celestial_guard_hall",
+        "sunspire_trial_of_dawn"
+      ],
+      "dungeonRooms": [
+        "sunspire_template/sunspire_template_room_1",
+        "sunspire_template/sunspire_template_room_2",
+        "sunspire_template/sunspire_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_sunspire_daily_2",
+      "questName": "日耀尖塔每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "sunspire_white_stone_acolyte",
+      "monsterName": "日耀尖塔巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunspire_white_stone_gate",
+        "sunspire_sunlit_stair",
+        "sunspire_mirror_plinth",
+        "sunspire_radiant_lift",
+        "sunspire_hymn_gallery",
+        "sunspire_celestial_guard_hall",
+        "sunspire_trial_of_dawn"
+      ],
+      "dungeonRooms": [
+        "sunspire_template/sunspire_template_room_1",
+        "sunspire_template/sunspire_template_room_2",
+        "sunspire_template/sunspire_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_sunspire_side_1",
+      "questName": "日耀尖塔支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "sunspire_white_stone_acolyte",
+      "monsterName": "日耀尖塔威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "sunspire_white_stone_gate",
+        "sunspire_sunlit_stair",
+        "sunspire_mirror_plinth",
+        "sunspire_radiant_lift",
+        "sunspire_hymn_gallery",
+        "sunspire_celestial_guard_hall",
+        "sunspire_trial_of_dawn"
+      ],
+      "dungeonRooms": [
+        "sunspire_template/sunspire_template_room_1",
+        "sunspire_template/sunspire_template_room_2",
+        "sunspire_template/sunspire_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_thornmaze_boss",
+      "questName": "荊棘迷宮精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "redthorn_briarling",
+      "monsterName": "荊棘迷宮精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thornmaze_gate_arch",
+        "thornmaze_outer_briar_lane",
+        "thornmaze_threefold_fork",
+        "thornmaze_redthorn_wall",
+        "thornmaze_poison_bloom_bed",
+        "thornmaze_turning_courtyard"
+      ],
+      "dungeonRooms": [
+        "thornmaze_template/thornmaze_template_room_1",
+        "thornmaze_template/thornmaze_template_room_2",
+        "thornmaze_template/thornmaze_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_thornmaze_daily_2",
+      "questName": "荊棘迷宮每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "redthorn_briarling",
+      "monsterName": "荊棘迷宮巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thornmaze_gate_arch",
+        "thornmaze_outer_briar_lane",
+        "thornmaze_threefold_fork",
+        "thornmaze_redthorn_wall",
+        "thornmaze_poison_bloom_bed",
+        "thornmaze_turning_courtyard"
+      ],
+      "dungeonRooms": [
+        "thornmaze_template/thornmaze_template_room_1",
+        "thornmaze_template/thornmaze_template_room_2",
+        "thornmaze_template/thornmaze_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_thornmaze_side_1",
+      "questName": "荊棘迷宮支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "redthorn_briarling",
+      "monsterName": "荊棘迷宮威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thornmaze_gate_arch",
+        "thornmaze_outer_briar_lane",
+        "thornmaze_threefold_fork",
+        "thornmaze_redthorn_wall",
+        "thornmaze_poison_bloom_bed",
+        "thornmaze_turning_courtyard"
+      ],
+      "dungeonRooms": [
+        "thornmaze_template/thornmaze_template_room_1",
+        "thornmaze_template/thornmaze_template_room_2",
+        "thornmaze_template/thornmaze_template_room_3"
+      ]
+    },
+    {
+      "questId": "zone_thundersteppe_boss",
+      "questName": "雷鳴草原精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "stormgrass_strider",
+      "monsterName": "雷鳴草原精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thundersteppe_rolling_gate",
+        "thundersteppe_stormgrass_track",
+        "thundersteppe_herd_plain",
+        "thundersteppe_thunder_pool"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_thundersteppe_daily_2",
+      "questName": "雷鳴草原每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "stormgrass_strider",
+      "monsterName": "雷鳴草原巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thundersteppe_rolling_gate",
+        "thundersteppe_stormgrass_track",
+        "thundersteppe_herd_plain",
+        "thundersteppe_thunder_pool"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_thundersteppe_side_1",
+      "questName": "雷鳴草原支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "stormgrass_strider",
+      "monsterName": "雷鳴草原威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "thundersteppe_rolling_gate",
+        "thundersteppe_stormgrass_track",
+        "thundersteppe_herd_plain",
+        "thundersteppe_thunder_pool"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_time_ruins_boss",
+      "questName": "時間廢墟精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "epoch_gate_warden",
+      "monsterName": "時間廢墟精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "time_ruins_epoch_gate",
+        "time_ruins_broken_clockway",
+        "time_ruins_hourglass_square",
+        "time_ruins_lightning_record"
+      ],
+      "dungeonRooms": [
+        "time_ruins_template/time_ruins_template_room_1",
+        "time_ruins_template/time_ruins_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_time_ruins_daily_2",
+      "questName": "時間廢墟每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "epoch_gate_warden",
+      "monsterName": "時間廢墟巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "time_ruins_epoch_gate",
+        "time_ruins_broken_clockway",
+        "time_ruins_hourglass_square",
+        "time_ruins_lightning_record"
+      ],
+      "dungeonRooms": [
+        "time_ruins_template/time_ruins_template_room_1",
+        "time_ruins_template/time_ruins_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_time_ruins_side_1",
+      "questName": "時間廢墟支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "epoch_gate_warden",
+      "monsterName": "時間廢墟威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "time_ruins_epoch_gate",
+        "time_ruins_broken_clockway",
+        "time_ruins_hourglass_square",
+        "time_ruins_lightning_record"
+      ],
+      "dungeonRooms": [
+        "time_ruins_template/time_ruins_template_room_1",
+        "time_ruins_template/time_ruins_template_room_4"
+      ]
+    },
+    {
+      "questId": "zone_volcano_zone_boss",
+      "questName": "火山地帶精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "fire_salamander",
+      "monsterName": "火山地帶精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "volcano_base",
+        "lava_trail",
+        "magma_river",
+        "volcano_ash_field",
+        "volcano_crystal_vent"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_volcano_zone_daily_2",
+      "questName": "火山地帶每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "fire_salamander",
+      "monsterName": "火山地帶巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "volcano_base",
+        "lava_trail",
+        "magma_river",
+        "volcano_ash_field",
+        "volcano_crystal_vent"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_volcano_zone_side_1",
+      "questName": "火山地帶支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "fire_salamander",
+      "monsterName": "火山地帶威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "volcano_base",
+        "lava_trail",
+        "magma_river",
+        "volcano_ash_field",
+        "volcano_crystal_vent"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_whispering_valley_boss",
+      "questName": "低語溪谷精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "clearwater_slime",
+      "monsterName": "低語溪谷精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "whispering_valley_entrance",
+        "whispering_valley_reed_bank",
+        "whispering_valley_clear_stream",
+        "whispering_valley_mossy_footbridge",
+        "whispering_valley_fishing_bend",
+        "whispering_valley_cold_spring",
+        "whispering_valley_spider_grotto",
+        "whispering_valley_fallen_log",
+        "whispering_valley_mist_pool",
+        "whispering_valley_ice_fern_patch",
+        "whispering_valley_waterfall_base",
+        "whispering_valley_stone_weir"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_whispering_valley_daily_2",
+      "questName": "低語溪谷每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "clearwater_slime",
+      "monsterName": "低語溪谷巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "whispering_valley_entrance",
+        "whispering_valley_reed_bank",
+        "whispering_valley_clear_stream",
+        "whispering_valley_mossy_footbridge",
+        "whispering_valley_fishing_bend",
+        "whispering_valley_cold_spring",
+        "whispering_valley_spider_grotto",
+        "whispering_valley_fallen_log",
+        "whispering_valley_mist_pool",
+        "whispering_valley_ice_fern_patch",
+        "whispering_valley_waterfall_base",
+        "whispering_valley_stone_weir"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_whispering_valley_side_1",
+      "questName": "低語溪谷支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "clearwater_slime",
+      "monsterName": "低語溪谷威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "whispering_valley_entrance",
+        "whispering_valley_reed_bank",
+        "whispering_valley_clear_stream",
+        "whispering_valley_mossy_footbridge",
+        "whispering_valley_fishing_bend",
+        "whispering_valley_cold_spring",
+        "whispering_valley_spider_grotto",
+        "whispering_valley_fallen_log",
+        "whispering_valley_mist_pool",
+        "whispering_valley_ice_fern_patch",
+        "whispering_valley_waterfall_base",
+        "whispering_valley_stone_weir"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_wildgrass_hills_boss",
+      "questName": "荒草丘陵精英討伐",
+      "objectiveType": "defeat_boss",
+      "monsterId": "grassblade_raider",
+      "monsterName": "荒草丘陵精英威脅擊敗目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "wildgrass_hills_windbreak_gate",
+        "wildgrass_hills_lower_slope",
+        "wildgrass_hills_tallgrass_lane",
+        "wildgrass_hills_boar_wallow",
+        "wildgrass_hills_scout_ledge",
+        "wildgrass_hills_bent_oak",
+        "wildgrass_hills_hawk_perch",
+        "wildgrass_hills_orchard_ruin",
+        "wildgrass_hills_goblin_blind",
+        "wildgrass_hills_watchfire_camp",
+        "wildgrass_hills_chief_ridge",
+        "wildgrass_hills_old_road_cut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_wildgrass_hills_daily_2",
+      "questName": "荒草丘陵每日 2",
+      "objectiveType": "kill_monster",
+      "monsterId": "grassblade_raider",
+      "monsterName": "荒草丘陵巡邏威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "wildgrass_hills_windbreak_gate",
+        "wildgrass_hills_lower_slope",
+        "wildgrass_hills_tallgrass_lane",
+        "wildgrass_hills_boar_wallow",
+        "wildgrass_hills_scout_ledge",
+        "wildgrass_hills_bent_oak",
+        "wildgrass_hills_hawk_perch",
+        "wildgrass_hills_orchard_ruin",
+        "wildgrass_hills_goblin_blind",
+        "wildgrass_hills_watchfire_camp",
+        "wildgrass_hills_chief_ridge",
+        "wildgrass_hills_old_road_cut"
+      ],
+      "dungeonRooms": []
+    },
+    {
+      "questId": "zone_wildgrass_hills_side_1",
+      "questName": "荒草丘陵支線 1",
+      "objectiveType": "kill_monster",
+      "monsterId": "grassblade_raider",
+      "monsterName": "荒草丘陵威脅清除目標，需在目標出沒區域依任務追蹤推進到1次並回報",
+      "worldRooms": [
+        "wildgrass_hills_windbreak_gate",
+        "wildgrass_hills_lower_slope",
+        "wildgrass_hills_tallgrass_lane",
+        "wildgrass_hills_boar_wallow",
+        "wildgrass_hills_scout_ledge",
+        "wildgrass_hills_bent_oak",
+        "wildgrass_hills_hawk_perch",
+        "wildgrass_hills_orchard_ruin",
+        "wildgrass_hills_goblin_blind",
+        "wildgrass_hills_watchfire_camp",
+        "wildgrass_hills_chief_ridge",
+        "wildgrass_hills_old_road_cut"
+      ],
+      "dungeonRooms": []
     }
-  ]
+  ],
+  "issues": []
 }

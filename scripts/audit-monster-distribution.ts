@@ -1,9 +1,12 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import type { Direction, MonsterDef, RoomDef, ZoneDef } from '@game/shared';
+import { DUNGEON_DEFS, DUNGEON_MONSTERS } from '../server/src/data/dungeons.js';
 import { ROOMS, ZONES } from '../server/src/data/rooms.js';
 import { MONSTERS } from '../server/src/data/monsters.js';
 import { getRoomGatheringTags } from '../server/src/game/gathering.js';
+import { QUEST_DEFS } from '../server/src/game/quest.js';
+import { EXPANDED_QUEST_DEFS } from '../server/src/game/quest-system.js';
 
 type EncounterPolicy = 'safe' | 'road' | 'wilds' | 'resource_guarded' | 'elite_pocket' | 'boss_lair' | 'instance_entrance';
 type IssueSeverity = 'error' | 'warning' | 'accepted';
@@ -53,7 +56,10 @@ interface MonsterDistributionIssue {
     | 'fill_room.monster_policy'
     | 'boss_on_road'
     | 'monster_cue.missing'
-    | 'terrain_family.mismatch';
+    | 'safe_description.misleading_monster_cue'
+    | 'terrain_family.mismatch'
+    | 'quest.kill_target_missing_monster'
+    | 'quest.kill_target_missing_spawn';
   message: string;
   details?: Record<string, unknown>;
 }
@@ -134,6 +140,7 @@ const ZONE_TERRAIN_OVERRIDES: Record<string, Set<MonsterDef['family']>> = {
   whispering_valley: new Set(['aquatic', 'beast', 'plant', 'insect', 'ooze', 'elemental', 'aberration']),
   arena_quarter: new Set(['humanoid', 'beast', 'construct']),
   amber_forest: new Set(['beast', 'construct', 'insect', 'plant']),
+  silverpine_range: new Set(['beast', 'construct', 'dragon', 'elemental', 'humanoid', 'plant', 'undead']),
   sapphire_lake: new Set(['aquatic', 'beast', 'construct', 'elemental', 'humanoid', 'ooze', 'plant']),
   moonlit_fen: new Set(['aquatic', 'beast', 'elemental', 'humanoid', 'insect', 'plant', 'undead']),
   saltwind_flats: new Set(['aquatic', 'beast', 'elemental', 'humanoid', 'insect', 'undead']),
@@ -169,6 +176,7 @@ for (const record of records) {
 }
 auditAdjacentLevelSpikes(records);
 auditTerrainFamilies(records);
+const questKillTargets = auditQuestKillTargets();
 
 const zones = [...new Set(records.map(record => record.zoneId))]
   .sort()
@@ -185,7 +193,9 @@ const report = {
     safeRoomsWithMonsters: issues.filter(issue => issue.kind === 'safe_room.has_monsters').length,
     lowZoneHighMonsterIssues: issues.filter(issue => issue.kind === 'low_zone.high_monster').length,
     adjacentLevelSpikeIssues: issues.filter(issue => issue.kind === 'adjacent.level_spike').length,
+    safeDescriptionMisleadingIssues: issues.filter(issue => issue.kind === 'safe_description.misleading_monster_cue').length,
     terrainFamilyMismatchIssues: issues.filter(issue => issue.kind === 'terrain_family.mismatch').length,
+    missingKillTargetSpawnIssues: issues.filter(issue => issue.kind === 'quest.kill_target_missing_spawn').length,
     issues: issues.length,
     errors: issues.filter(issue => issue.severity === 'error').length,
     warnings: issues.filter(issue => issue.severity === 'warning').length,
@@ -210,6 +220,7 @@ const report = {
     }))
     .sort((a, b) => (a.worldY - b.worldY) || (a.worldX - b.worldX) || a.roomId.localeCompare(b.roomId)),
   records,
+  questKillTargets,
   issues,
 };
 
@@ -297,6 +308,16 @@ function auditRoom(record: MonsterRoomRecord): void {
       addIssue('monster.reference.missing', record, 'error', `房間引用不存在的怪物 ${monsterId}`, { monsterId });
     }
   }
+  if (
+    record.monsterCount === 0
+    && record.policy === 'safe'
+    && /伏擊|巢穴|敵人/u.test(room.description)
+  ) {
+    addIssue('safe_description.misleading_monster_cue', record, 'warning', '無怪 safe room description 暗示有伏擊、巢穴或敵人，可能誤導玩家', {
+      policy: record.policy,
+    });
+  }
+
   if (record.monsterCount === 0) return;
 
   if (record.policy === 'safe') {
@@ -394,6 +415,74 @@ function auditTerrainFamilies(allRecords: MonsterRoomRecord[]): void {
   }
 }
 
+function auditQuestKillTargets() {
+  const worldSpawnRooms = new Map<string, string[]>();
+  for (const room of Object.values(ROOMS)) {
+    for (const spawn of room.monsters ?? []) {
+      const rooms = worldSpawnRooms.get(spawn.monsterId) ?? [];
+      rooms.push(room.id);
+      worldSpawnRooms.set(spawn.monsterId, rooms);
+    }
+  }
+
+  const dungeonSpawnRooms = new Map<string, string[]>();
+  for (const dungeon of Object.values(DUNGEON_DEFS)) {
+    for (const room of dungeon.rooms) {
+      for (const spawn of room.monsters) {
+        const rooms = dungeonSpawnRooms.get(spawn.monsterId) ?? [];
+        rooms.push(`${dungeon.id}/${room.id}`);
+        dungeonSpawnRooms.set(spawn.monsterId, rooms);
+      }
+    }
+  }
+
+  const quests = { ...QUEST_DEFS, ...EXPANDED_QUEST_DEFS };
+  const targets: {
+    questId: string;
+    questName: string;
+    objectiveType: string;
+    monsterId: string;
+    monsterName: string;
+    worldRooms: string[];
+    dungeonRooms: string[];
+  }[] = [];
+  const seen = new Set<string>();
+
+  for (const quest of Object.values(quests)) {
+    for (const objective of quest.objectives) {
+      if (!['kill', 'kill_monster', 'defeat_boss'].includes(objective.type)) continue;
+      const monsterId = objective.targetId;
+      if (monsterId.includes('*') || ['boss', 'pvp_win'].includes(monsterId)) continue;
+      const key = `${quest.id}:${objective.type}:${monsterId}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+
+      const worldRooms = worldSpawnRooms.get(monsterId) ?? [];
+      const dungeonRooms = dungeonSpawnRooms.get(monsterId) ?? [];
+      const target = {
+        questId: quest.id,
+        questName: quest.name,
+        objectiveType: objective.type,
+        monsterId,
+        monsterName: objective.targetName,
+        worldRooms,
+        dungeonRooms,
+      };
+      targets.push(target);
+
+      if (!MONSTERS[monsterId] && !DUNGEON_MONSTERS[monsterId]) {
+        addQuestIssue('quest.kill_target_missing_monster', 'error', `任務 ${quest.id} 擊殺目標不存在：${monsterId}`, target);
+        continue;
+      }
+      if (worldRooms.length === 0 && dungeonRooms.length === 0) {
+        addQuestIssue('quest.kill_target_missing_spawn', 'error', `任務 ${quest.id} 擊殺目標沒有 world 或 dungeon spawn：${monsterId}`, target);
+      }
+    }
+  }
+
+  return targets.sort((a, b) => a.questId.localeCompare(b.questId) || a.monsterId.localeCompare(b.monsterId));
+}
+
 function allowedFamiliesForZone(zone: ZoneDef | undefined): Set<MonsterDef['family']> | undefined {
   if (!zone) return undefined;
   const override = ZONE_TERRAIN_OVERRIDES[zone.id];
@@ -440,6 +529,17 @@ function addIssue(kind: MonsterDistributionIssue['kind'], record: MonsterRoomRec
     id: `${record.zoneId}/${record.roomId}/${kind}`,
     zoneId: record.zoneId,
     roomId: record.roomId,
+    severity,
+    kind,
+    message,
+    details,
+  });
+}
+
+function addQuestIssue(kind: MonsterDistributionIssue['kind'], severity: IssueSeverity, message: string, details: Record<string, unknown>): void {
+  issues.push({
+    id: `quest/${details.questId}/${details.monsterId}/${kind}`,
+    zoneId: 'quest',
     severity,
     kind,
     message,

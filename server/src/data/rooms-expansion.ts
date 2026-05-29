@@ -466,8 +466,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
     ],
     monsters: [
+      { monsterId: 'poison_toad', maxCount: 3, respawnSeconds: 60 },
       { monsterId: 'poison_snake', maxCount: 3, respawnSeconds: 40 },
-      { monsterId: 'giant_spider', maxCount: 2, respawnSeconds: 50 },
+      { monsterId: 'giant_spider', maxCount: 1, respawnSeconds: 50 },
     ],
     mapSymbol: '[!]',
     mapX: 0,
@@ -5902,7 +5903,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_stream_cut.png',
     imagePrompt: '溪切溝 in wildgrass_hills, narrow stream cut through grass hill, eroded banks, stepping stones, reeds and wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，玩家可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕和哥布林挖出的藏物洞，代表這條溪同時是生存水源與偷運路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '高草徑南側突然裂出一道被溪水切開的溝谷，清水沿著褐色土壁流下，露出草根、碎石和被沖出的舊陶片。溪岸比草地低，能暫時避開遠處斥候視線，但水聲也會掩蓋靠近的腳步。這裡是資源與探索房，玩家可採集水草、沖洗泥塊，或沿濕滑踏石前往隱泉與舊路切口。溝壁上有野豬磨牙痕、風暴蛇爬痕和哥布林挖出的藏物洞，代表這條溪同時是敵群水源與偷運路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       {
         direction: 'north',
@@ -5994,7 +5995,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_orchard_ruin.png',
     imagePrompt: '果園廢址 in wildgrass_hills, abandoned hill orchard, dead fruit trees, broken fence, yellow grass and goblin tracks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '泥窪東面仍能看見一片舊果園的輪廓，矮牆倒塌，乾枯果樹被高草吞沒，只剩幾顆酸澀野果掛在扭曲枝頭。樹幹上刻著農戶撤離前留下的數字，旁邊卻被哥布林加上粗糙塗鴉，標記可藏箭、可埋伏和可燒毀的位置。這裡是資源與敘事房，玩家能採集野果、乾木與舊農具，也能追查荒草丘陵從農地變成戰場的過程。果園視線被樹影切碎，野豬會從破籬後衝出，哥布林則躲在倒木後投石。',
+      '泥窪東面仍能看見一片舊果園的輪廓，矮牆倒塌，乾枯果樹被高草吞沒，只剩幾顆酸澀野果掛在扭曲枝頭。樹幹上刻著農戶撤離前留下的數字，旁邊卻被哥布林加上粗糙塗鴉，標記可藏箭、可埋伏和可燒毀的位置。這裡是資源與敘事房，玩家能採集野果、乾木與舊農具，也能追查荒草丘陵從農地變成戰場的過程。果園視線被樹影切碎，野豬敵群會從破籬後衝出，哥布林盜匪則躲在倒木後投石。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥路回到野豬泥窪' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_goblin_blind', description: '樹後有哥布林伏棚' },
@@ -6053,7 +6054,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_thunder_mound.png',
     imagePrompt: '雷擊丘 in wildgrass_hills, storm-struck mound, blackened grass, cracked stones, lightning scars and windy sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sky, clear lantern light',
     description:
-      '風刻石環東側隆起一座焦黑小丘，草根像被雷火燒成細炭，石縫仍殘留淡淡藍光。每逢雲影掠過，丘頂便傳來低沉轟鳴，讓金屬裝備微微發麻。哥布林把這裡當成試膽地點，會把俘虜綁在焦木旁等待風暴裁決。這裡是大型事件前置房，玩家可收集雷痕石、調查祭儀殘留，並理解荒草丘陵的風暴力量為何逐漸失控。若在雷鳴時戰鬥，風之鷹與哥布林會變得更躁動，整個戰場也更難掌控。',
+      '風刻石環東側隆起一座焦黑小丘，草根像被雷火燒成細炭，石縫仍殘留淡淡藍光。每逢雲影掠過，丘頂便傳來低沉轟鳴，讓金屬裝備微微發麻。哥布林把這裡當成試膽地點，會把俘虜綁在焦木旁等待風暴裁決。這裡是大型事件前置房，玩家可收集雷痕石、調查祭儀殘留，並理解荒草丘陵的風暴力量為何逐漸失控。若在雷鳴時戰鬥，風之鷹怪群與雷丘祭司敵人會變得更躁動，整個戰場也更難掌控。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_stone_ring', description: '焦草路回到石環' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_chief_ridge', description: '雷痕延向酋長脊' },
@@ -6086,7 +6087,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_seed_gully.png',
     imagePrompt: '種籽溝 in wildgrass_hills, sheltered gully full of grass seeds, seed heads, bent oak roots and warm wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物與野豬都會來翻找食物，也吸引哥布林收集乾籽製作引火包。玩家可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用。',
+      '彎橡樹東側的淺溝聚滿被風吹落的草籽，金黃籽穗堆在石縫、樹根和小水窪邊，像一條細碎河流。這裡比主坡安靜，許多小動物、野豬敵群與風暴蛇都會來翻找食物，也吸引哥布林收集乾籽製作引火包。玩家可採集草籽、草藥根與乾燥纖維，完成補給或製作任務。溝底有幾處被刻意鋪平，像是舊農人曾經用來晾種的地方。若仔細尋找，還能找到通往石環的古老腳印，證明此地曾被祭儀使用。',
     exits: [
       {
         direction: 'west',
@@ -6153,7 +6154,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'wildgrass_hills_windmill_shell.png',
     imagePrompt: '風車空殼 in wildgrass_hills, ruined hill windmill shell, broken sails, gears, dry grass and goblin marks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，玩家能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林戰士會利用樓梯轉角逼近，風之鷹則從破窗撲入。',
+      '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，玩家能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林首領敵人會利用樓梯轉角逼近，風之鷹怪群則從破窗撲入。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火營在西側' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
