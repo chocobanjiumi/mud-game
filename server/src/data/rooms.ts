@@ -5387,6 +5387,10 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'volcano_ash_field:west': '西側穿過黑灰丘與熱風灰線，接往餘燼邊境火山灰田西界',
   'volcano_sulfur_springs:west': '西側越過硫磺白霧與發熱礫石，接往餘燼邊境硫泉西界燼路',
   'lakeside_tailor:south': '南側從裁縫坊湖窗旁石階下行，穿過卵石水氣接往藍寶湖鵝卵石堰',
+  'ironwood_fort_portal_yard:west': '西側穿過鐵木要塞傳送庭外牆與陰林斷枝，接往暗影森林東界軍路',
+  'ironwood_fort_quartermaster_row:west': '西側沿軍需棚後門與鐵木柵欄外行，接往暗影森林東界補給林徑',
+  'ironwood_fort_forge_works:west': '西側越過鍛爐排煙口與焦黑鐵木根，接往暗影森林東界炭火林道',
+  'ironwood_fort_ironwood_grove:west': '西側穿過鐵木林護欄與陰影樹根，接往暗影森林東界古木路',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

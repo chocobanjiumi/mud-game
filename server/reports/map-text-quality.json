@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:42:22.865Z",
+  "generatedAt": "2026-05-29T21:43:40.417Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,10 +366,10 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 36
+    "issues": 32
   },
   "issuesByKind": {
-    "exit.description": 21,
+    "exit.description": 17,
     "room.description": 15
   },
   "issues": [
@@ -483,42 +483,6 @@
     },
     {
       "id": "deepsea_temple/deepsea_temple_tide_gate:west->bloodsalt_coast_fill_47_9",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_portal_yard:west->dark_forest_fill_n1_13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_quartermaster_row:west->dark_forest_fill_n1_14",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_forge_works:west->dark_forest_fill_n1_15",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_ironwood_grove:west->dark_forest_fill_n1_16",
       "kind": "exit.description",
       "field": "description",
       "currentLength": 0,
