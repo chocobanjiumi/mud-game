@@ -5356,6 +5356,9 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'starter_village_old_library:north': '北側書庫後門穿過草牆缺口，接往村外公會北後勤路',
   'starter_village_river_stairs:west': '西側溪畔石階沿水聲出村，接往舊農田荒田小路',
   'moonlit_fen_old_canoe_camp:north': '北側沿舊舟拖痕踏上沉木北橋，接往濕地北緣採集邊界',
+  'ember_march_ash_gate:west': '西側穿過灰燼門柱與焦黑火草坡，接往雷鳴草原南緣焦草界',
+  'ember_march_burnt_watchpost:west': '西側越過燒毀哨塔木樁與風化灰坡，接往雷鳴草原南界雷草路',
+  'ember_march_glass_ash_field:west': '西側沿玻灰原碎晶與焦草分界前行，接往雷鳴草原南緣雷痕地',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
@@ -5438,6 +5441,7 @@ for (const [roomId, dir] of BLOCKED_PASSAGES) {
 const BLOCKED_EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'starter_village_hidden_cellar:north': '北側地窖頂板被村屋地基壓住，不能直接鑽回戶外',
   'starter_village_hidden_cellar:west': '西側土牆潮濕坍陷，不能從地窖硬挖通往村外',
+  'ember_march_firegrass_flat:north': '北側火草平地被熱風與濕地黑水斷層隔開，不能直接越級北上月光濕地',
 };
 for (const [key, description] of Object.entries(BLOCKED_EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

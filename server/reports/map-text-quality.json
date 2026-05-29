@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:28:06.255Z",
+  "generatedAt": "2026-05-29T21:29:29.063Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 90
+    "issues": 82
   },
   "issuesByKind": {
-    "exit.description": 55,
-    "room.description": 35
+    "exit.description": 51,
+    "room.description": 31
   },
   "issues": [
     {
@@ -689,42 +689,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "ember_march/ember_march_ash_gate:west->thundersteppe_fill_20_22",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ember_march/ember_march_burnt_watchpost:west->thundersteppe_fill_20_23",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ember_march/ember_march_glass_ash_field:west->thundersteppe_fill_20_24",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "ember_march/ember_march_firegrass_flat:north->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
       "id": "sapphire_lake/sapphire_lake_entry_claim:west->pilgrim_road_old_cemetery_turn",
       "kind": "exit.description",
       "field": "description",
@@ -939,42 +903,6 @@
       "minimumLength": 80,
       "text": "王道東側潮封位在王道市集東界外，西面可回望市集石路的旗桿，北側潮池洞窟滲出鹹水，東邊海蝕洞口被浪花遮住。這裡是 border blocker，用濕滑礁面標示市集與東海岸分界，不作跨區捷徑。",
       "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "ember_march/ember_march_fill_22_21",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 70,
-      "minimumLength": 55,
-      "text": "星坑東燼封道位於餘燼邊境西北角，西面星落 crater 邊緣的暗光被灰風吞沒，南側焦炭路還有車轍，東面火草平地冒出紅芽。焦黑石道被熔渣封住，是 border blocker，不開跨區捷徑，只作邊界提示。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "ember_march/ember_march_fill_22_24",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 66,
-      "minimumLength": 55,
-      "text": "南燼臺北封灰道貼著南燼傳送石臺北側，北面焦黑里程碑半埋在灰裡，南面傳送符文忽明忽暗，西側玻灰原吹來細碎燼沙。這裡是 border blocker，標示傳送點外圍但不開放直穿。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "ember_march/ember_march_fill_26_21",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 55,
-      "text": "骨窯北封火痕位於骨窯隘道北側，南面窯口傳來乾骨裂響，西側焦灼綠洲的黑水氣味被熱風推來。石道上的火痕斷成數截，熔灰覆住踏點，是 border blocker，不提供穿越。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "ember_march/ember_march_fill_30_23",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 65,
-      "minimumLength": 55,
-      "text": "硫泉西界燼路貼著心火裂口東側，西面餘燼仍有紅光，南側灰燼邊道沉入熱泥，東面火山硫磺泉噴出刺鼻白霧。這裡是跨區 border route，只導向火山溫泉前緣，不開旁支道路。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
     },
     {
       "id": "frozen_wastes/frozen_wastes_fill_n25_n23",
