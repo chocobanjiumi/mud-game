@@ -2011,10 +2011,21 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_18_6": {
     "id": "lakeside_town_fill_18_6",
-    "name": "城鎮街道",
+    "name": "湖畔青石街",
     "zone": "lakeside_town",
-    "description": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
-    "exits": [],
+    "description": "湖畔青石街夾在月紋裁縫坊與湖鮮魚市之間，潮濕石板上有布料推車、水桶與魚販腳印。西側可回裁縫坊，東側通往魚市攤棚，玩家能從路標判斷市場與湖岸服務區的分流。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "lakeside_tailor",
+        "description": "西側青石短街回到月紋裁縫坊"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "lakeside_fish_market",
+        "description": "東側濕石街面通往湖鮮魚市"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 3,
     "mapY": 6,

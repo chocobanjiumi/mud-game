@@ -906,29 +906,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "kingsroad_market_crossroad_stalls"
   ],
   [
-    "lakeside_fish_market",
-    "west",
-    "lakeside_tailor"
-  ],
-  [
     "lakeside_inn",
     "east",
     "lakeside_temple"
-  ],
-  [
-    "lakeside_portal_square",
-    "north",
-    "lakeside_temple"
-  ],
-  [
-    "lakeside_tailor",
-    "east",
-    "lakeside_fish_market"
-  ],
-  [
-    "lakeside_temple",
-    "south",
-    "lakeside_portal_square"
   ],
   [
     "lakeside_temple",
@@ -944,11 +924,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "lakeside_town_fill_15_6",
     "south",
     "pilgrim_road_sanctuary_gate"
-  ],
-  [
-    "lakeside_warehouse",
-    "south",
-    "lakeside_hidden_canal"
   ],
   [
     "marsh_of_mirrors_blackwater_path",

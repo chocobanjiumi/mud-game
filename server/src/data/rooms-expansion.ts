@@ -1212,11 +1212,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '推開吱呀作響的木門，啤酒花、烤肉與濕木柴的香氣迎面湧來。酒館內燈火通明，冒險者圍坐長桌交換地下城情報，牆上任務板貼著湖岸委託。南面回商業街，北側後門通向拍賣場；玩家可與酒保交談、接取傳聞任務，或 inspect 角落吟遊詩人的歌詞尋找龍族寶藏線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
+      { direction: 'north', targetRoomId: 'lakeside_inn', description: '北側短廊回到湖景旅店' },
       { direction: 'south', targetRoomId: 'market_street', description: '回到商業街' },
       {
-        direction: 'north',
+        direction: 'east',
         targetRoomId: 'auction_house',
-        description: '北側後門要穿過酒桶儲藏間與狹窄服務廊，繞過帳房後才到拍賣場側門',
+        description: '東側後門要穿過酒桶儲藏間與狹窄服務廊，繞過帳房後才到拍賣場側門',
         edgeKind: 'long_path',
         edgeNote: '酒館到拍賣場需走後勤服務廊與帳房側門，屬於長路徑。',
       },
@@ -1272,6 +1273,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '宏偉建築的大門懸著交叉長劍與月桂冠徽章，冷色天窗照在中央圓桌與歷代精英畫像上。魔法公告板即時更新公會排名、建設需求與王國戰備，長老席旁堆放著待審的公會申請。西側通往轉職大廳，東面連城鎮圖書館，北側小門接法院走廊；玩家可查公會目標、接社交任務，並 inspect 畫像背後的獎杯牆。圓桌旁的地圖用旗針標出可支援的王國戰線與公會建設點，讓隊伍能在出城前分配採集、戰鬥與運輸任務。牆上的鐘會提醒每日與每週目標刷新時間，任務牌也標出推薦隊伍規模與獎勵分類及聲望需求。',
     exits: [
       { direction: 'east', targetRoomId: 'town_library', description: '走廊連接著城鎮圖書館' },
+      { direction: 'north', targetRoomId: 'lakeside_temple', description: '北側證物走廊通往湖光神殿' },
       { direction: 'west', targetRoomId: 'class_change_hall', description: '走廊通往轉職大廳' },
     ],
     monsters: [],
@@ -1341,21 +1343,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '湖景旅店坐在商業街北端，開闊窗戶面向靜藍湖面，白色床單帶著薰衣草與乾木香。接待櫃檯掛著房牌、失物袋與冒險者留言，樓梯旁有通往酒館的短廊。南面回商業街，東側小門接神殿巷；玩家可在此休息、整理重生點與查看失物，也能 inspect 旅客留言找到湖岸支線線索。',
     exits: [
-      {
-        direction: 'south',
-        targetRoomId: 'market_street',
-        description: '南側旅店門口要穿過湖景巷與一段石階，繞回攤販燈籠下的商業街',
-        edgeKind: 'long_path',
-        edgeNote: '湖景旅店回商業街需要穿過湖景巷與石階，屬於長路徑。',
-      },
+      { direction: 'south', targetRoomId: 'tavern', description: '南側短廊通往酒館暖光門口' },
       { direction: 'east', targetRoomId: 'lakeside_temple', description: '安靜小巷通往神殿' },
-      {
-        direction: 'north',
-        targetRoomId: 'tavern',
-        description: '北側短廊其實繞過旅店樓梯與柴房，最後才接到酒館後側暖光門口',
-        edgeKind: 'long_path',
-        edgeNote: '湖景旅店到酒館後側需要繞過樓梯與柴房，屬於長路徑。',
-      },
     ],
     monsters: [],
     mapSymbol: '[I]',
@@ -1397,7 +1386,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '湖光神殿以白石拱柱圍著淺水池，藍色彩窗把晨光折成柔和波紋，空氣裡有清水與香草味。祭壇旁擺著祈願牌、治療記錄與迷途者名冊。西側小巷回旅店，南面階梯下到傳送廣場；玩家可祈福、確認復活服務，或 inspect 水池倒影取得失蹤旅人任務提示。神官會說明死亡懲罰、復活位置與安全撤離規則，池邊蠟燭數量也暗示最近湖岸危險事件是否增加。牆面聖徽會記錄已啟用的安全點，讓玩家出城前確認死亡回程位置與治療補給是否足夠，並查看最近安全入口與復活費用，避免長途失誤和任務中斷。',
     exits: [
       { direction: 'west', targetRoomId: 'lakeside_inn', description: '小巷回到湖景旅店' },
-      { direction: 'south', targetRoomId: 'lakeside_portal_square', description: '石階通往傳送廣場' },
+      { direction: 'north', targetRoomId: 'lakeside_courthouse', description: '北側證物走廊通往湖畔裁判所' },
+      { direction: 'south', targetRoomId: 'guild_hall', description: '南側白石外廊通往公會大廳' },
+      { direction: 'east', targetRoomId: 'lakeside_portal_square', description: '東側石階通往傳送廣場' },
     ],
     monsters: [],
     mapSymbol: '[T]',
@@ -1414,11 +1405,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '湖畔傳送廣場鋪著環形符文石，黃銅導柱圍住穩定的藍色傳送光，湖霧從欄杆外飄入法陣邊緣。交通告示牌標明已解鎖節點、費用與冷卻規則，守衛會檢查戰鬥狀態與危險物資。北面通神殿，西側拱門回城鎮廣場，若要前往魚市需先回市場街區再沿湖岸小巷前進；玩家可 activate portal、travel 或 recall，並 inspect 導柱查看深處捷徑線索。地面刻有不同網路的顏色環，提醒玩家公共傳送、區域入口與危險撤離點的限制並不相同。法陣邊緣的灰色插槽會顯示尚未解鎖的區域，作為後續任務目標與費用提示，也標明冷卻剩餘時間與可用出口及回程路線與安全標記。',
     exits: [
-      { direction: 'north', targetRoomId: 'lakeside_temple', description: '階梯回到湖光神殿' },
+      { direction: 'west', targetRoomId: 'lakeside_temple', description: '西側石階回到湖光神殿' },
       {
-        direction: 'west',
+        direction: 'south',
         targetRoomId: 'town_plaza',
-        description: '西側拱門要沿傳送符文外圈與湖霧石階繞行，穿過守衛檢查點才到廣場',
+        description: '南側拱門要沿傳送符文外圈與湖霧石階繞行，穿過守衛檢查點才到廣場',
         edgeKind: 'long_path',
         edgeNote: '湖畔傳送廣場回城鎮廣場需要繞過符文外圈與守衛檢查點，屬於長路徑。',
       },
@@ -1475,7 +1466,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '月紋裁縫坊回湖鐵鍛坊需要沿防雨木棚繞行，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'lakeside_fish_market', description: '短街通往魚市' },
+      { direction: 'east', targetRoomId: 'lakeside_town_fill_18_6', description: '東側青石短街通往湖畔街道' },
     ],
     monsters: [],
     mapSymbol: '[S]',
@@ -1500,7 +1491,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '湖港倉庫到拍賣場需要穿過倉庫貨巷與拍品交接口，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'lakeside_hidden_canal', description: '排水門後傳來潮聲' },
+      { direction: 'south', targetRoomId: 'lakeside_fish_market', description: '南側貨箱巷通往湖鮮魚市' },
     ],
     monsters: [],
     mapSymbol: '[W]',
@@ -1517,14 +1508,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '湖鮮魚市鋪著潮濕青石，銀鱗魚、蟹籠和藍色水草堆在攤位上，鹽味與湖泥味混著吆喝聲。碼頭方向有漁船鈴聲，攤販桌下藏著今日捕獲記錄。西面短街回裁縫坊，若要前往傳送廣場需先回市場街區，南側木棧橋連到隱藏水道入口；玩家可買材料、接釣魚委託，或 inspect 魚鰓找出受污染湖域線索。魚販會把異常魚鱗、湖底碎片與每日行情放在不同木盤上，讓採集與烹飪路線有清楚材料來源。潮汐牌也會提示前往東方海岸與釣魚點的最佳時間，旁邊水桶可檢查稀有魚影與採集等級需求，並指向碼頭與水道入口標記處。',
     exits: [
-      { direction: 'west', targetRoomId: 'lakeside_tailor', description: '短街回裁縫坊' },
-      {
-        direction: 'south',
-        targetRoomId: 'lakeside_hidden_canal',
-        description: '南側要從魚市濕滑棧橋鑽下木梯，穿過潮濕橋墩後才找到隱蔽水門',
-        edgeKind: 'long_path',
-        edgeNote: '湖鮮魚市到隱藏水道需要下棧橋木梯並穿過橋墩，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'lakeside_town_fill_18_6', description: '西側青石短街回到湖畔街道' },
+      { direction: 'north', targetRoomId: 'lakeside_warehouse', description: '北側貨箱巷回到湖港倉庫' },
+      { direction: 'south', targetRoomId: 'lakeside_hidden_canal', description: '南側木梯下到隱藏水道' },
     ],
     monsters: [],
     mapSymbol: '[f]',
@@ -1541,13 +1527,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '湖畔裁判所以白色大理石長椅、封蠟證物架與高窗冷光構成嚴肅空間，法槌聲似乎仍在牆面回響。公告板列出通緝犯、走私案與公會糾紛，側門通向公會大廳，地下卷宗梯通監獄。南面連公會大廳，東側下行到監獄；玩家可接通緝與證物任務，search 旁聽席能找到被落下的證詞碎片。證物架上的編號對應監獄牢房與水道暗號，讓玩家能把城市探索、審判紀錄和追捕任務串成同一條線。書記桌上還標明哪些案件需要屍體物品或現場調查，並提示交回證物的位置與期限，方便核對任務紀錄與證物袋。',
     exits: [
-      {
-        direction: 'south',
-        targetRoomId: 'guild_hall',
-        description: '南側側門要穿過證物走廊與兩排旁聽席後，才回到公會大廳外廊入口',
-        edgeKind: 'long_path',
-        edgeNote: '湖畔裁判所回公會大廳需要穿過證物走廊與外廊，屬於長路徑。',
-      },
+      { direction: 'south', targetRoomId: 'lakeside_temple', description: '南側證物走廊通往湖光神殿' },
       {
         direction: 'east',
         targetRoomId: 'prison',
@@ -1571,13 +1551,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '隱藏水道位於倉庫與魚市下方，苔痕覆滿拱形磚牆，黑水反射狹窄提燈光，牆角刻著走私者留下的潮汐記號。北面木梯通往魚市棧橋，倉庫排水門可從上方落入此處，西側狹洞連監獄牢房後方。這是城鎮少見的探索房，玩家可 search 破箱取得一次性藏物，inspect 潮汐記號找出海岸走私路線，但也要注意濕滑地面和暗處的警鈴線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。東側水道盡頭有一道被水草與碎石半堵的裂口，透過浸水的岩縫可以看見湖岸的天光，似乎能通往藍寶湖的晶砂洲。',
     exits: [
-      {
-        direction: 'north',
-        targetRoomId: 'lakeside_fish_market',
-        description: '北側木梯要沿潮濕橋墩爬上魚市棧橋，穿過網籃堆後才回到攤位區',
-        edgeKind: 'long_path',
-        edgeNote: '隱藏水道回湖鮮魚市需要沿橋墩木梯上行，屬於長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'lakeside_fish_market', description: '北側木梯回到湖鮮魚市' },
       {
         direction: 'west',
         targetRoomId: 'prison',
