@@ -18929,7 +18929,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
       { direction: 'east', targetRoomId: 'amber_forest_relic_pit', description: '遺物坑在東側' },
-      { direction: 'south', targetRoomId: 'amber_forest_hunter_blind', description: '林間小徑通往獵棚' },
+      { direction: 'north', targetRoomId: 'amber_forest_charcoal_stand', description: '北側焦木灰坡回到焦木林列' },
+      { direction: 'south', targetRoomId: 'amber_forest_ember_beetle_mound', description: '南側熱樹脂裂口接往燼甲蟲丘' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
@@ -19137,10 +19138,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       },
       {
         direction: 'east',
-        targetRoomId: 'amber_forest_hunter_blind',
-        description: '東側獵棚需沿樹冠繩標繞行，避開封蠟蜂巢外圈後才爬上隱棚平台入口',
-        edgeKind: 'long_path',
-        edgeNote: '日陷空地到樹上獵棚需要走樹冠繩標與蜂巢外緣，屬於長路徑。',
+        targetRoomId: 'amber_forest_ember_beetle_mound',
+        description: '東側焦黑灰線通往燼甲蟲丘',
       },
     ],
     monsters: [
@@ -19212,11 +19211,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeNote: '焦木林列回日陷空地需要穿越焦木樹樁與琥珀斜坡，屬於長路徑。',
       },
       {
-        direction: 'east',
-        targetRoomId: 'amber_forest_ember_beetle_mound',
-        description: '東側蟲丘要沿焦木灰線繞過熱樹脂裂口，避開甲蟲巡路後才會抵達',
-        edgeKind: 'long_path',
-        edgeNote: '焦木林列到燼甲蟲丘需要繞過熱樹脂裂口與甲蟲巡路，屬於長路徑。',
+        direction: 'south',
+        targetRoomId: 'amber_forest_beast_scrape',
+        description: '南側焦木灰坡通往獸痕樹皮',
       },
     ],
     monsters: [
@@ -19271,24 +19268,18 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       {
         direction: 'west',
-        targetRoomId: 'amber_forest_charcoal_stand',
-        description: '西側回焦木林列要繞過熱樹脂裂口，沿甲蟲外殼碎片鋪成的灰線前進',
-        edgeKind: 'long_path',
-        edgeNote: '燼甲蟲丘回焦木林列需要繞過熱樹脂裂口，屬於長路徑。',
+        targetRoomId: 'amber_forest_suntrap_clearing',
+        description: '西側焦黑灰線回到日陷空地',
       },
       {
         direction: 'north',
-        targetRoomId: 'amber_forest_hunter_blind',
-        description: '北側獵棚要沿甲蟲丘背後的樹根梯爬升，再穿過樹冠繩橋才能抵達',
-        edgeKind: 'long_path',
-        edgeNote: '燼甲蟲丘到樹上獵棚存在樹根梯與樹冠繩橋落差，屬於長路徑。',
+        targetRoomId: 'amber_forest_beast_scrape',
+        description: '北側熱樹脂裂口回到獸痕樹皮',
       },
       {
         direction: 'east',
-        targetRoomId: 'amber_forest_petrified_bloom',
-        description: '東側石化花圃隔著封存花根與琥珀尖刺，需要沿安全標記繞行才能進入',
-        edgeKind: 'long_path',
-        edgeNote: '燼甲蟲丘到石化花圃需要繞過封存花根與琥珀尖刺，屬於長路徑。',
+        targetRoomId: 'amber_forest_hunter_blind',
+        description: '東側樹冠繩標接到樹上獵棚',
       },
     ],
     monsters: [
@@ -19316,26 +19307,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       {
         direction: 'west',
-        targetRoomId: 'amber_forest_suntrap_clearing',
-        description: '西側回日陷空地需沿樹冠繩標下降，繞過封蠟蜂巢外緣後才到開闊空地',
-        edgeKind: 'long_path',
-        edgeNote: '樹上獵棚回日陷空地需要走樹冠繩標與蜂巢外緣，屬於長路徑。',
-      },
-      {
-        direction: 'south',
         targetRoomId: 'amber_forest_ember_beetle_mound',
-        description: '南側落向燼甲蟲丘要先下樹根梯，再穿過甲蟲挖出的空殼隧道出口',
-        edgeKind: 'long_path',
-        edgeNote: '樹上獵棚到燼甲蟲丘有垂直落差與甲蟲隧道，屬於長路徑。',
+        description: '西側樹冠繩標回到燼甲蟲丘',
       },
       {
         direction: 'east',
         targetRoomId: 'amber_forest_petrified_bloom',
-        description: '東側花圃需沿獵棚高枝繞過石化藤蔓，從樹冠裂口下到封存花徑入口',
-        edgeKind: 'long_path',
-        edgeNote: '樹上獵棚到石化花圃需要沿高枝與石化藤蔓繞行，屬於長路徑。',
+        description: '東側高枝通往石化花圃',
       },
-      { direction: 'north', targetRoomId: 'amber_forest_beast_scrape', description: '林間小徑回到獸痕樹皮' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 2, respawnSeconds: 150 },
@@ -19363,9 +19342,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       {
         direction: 'west',
         targetRoomId: 'amber_forest_hunter_blind',
-        description: '西側回獵棚要沿石化藤蔓爬上高枝，穿過樹冠裂口後才回到隱棚平台',
-        edgeKind: 'long_path',
-        edgeNote: '石化花圃回樹上獵棚需要沿石化藤蔓爬升，屬於長路徑。',
+        description: '西側石化藤蔓高枝回到樹上獵棚',
       },
       { direction: 'south', targetRoomId: 'amber_forest_relic_pit', description: '回到封存遺物坑' },
       {

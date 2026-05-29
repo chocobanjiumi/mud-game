@@ -6,11 +6,6 @@ import type { Direction } from '@game/shared';
 export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction, targetRoomId: string][] = 
 [
   [
-    "amber_forest_beast_scrape",
-    "south",
-    "amber_forest_hunter_blind"
-  ],
-  [
     "amber_forest_deep_amber_core",
     "west",
     "amber_forest_elder_resin_tree"
@@ -74,11 +69,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "amber_forest_herb_shelf",
     "north",
     "amber_forest_wasp_nests"
-  ],
-  [
-    "amber_forest_hunter_blind",
-    "north",
-    "amber_forest_beast_scrape"
   ],
   [
     "amber_forest_petrified_bloom",
