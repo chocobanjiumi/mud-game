@@ -3462,7 +3462,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "碎石山道",
     "zone": "silverpine_range",
     "description": "山腰上的崎嶇通道，放眼望去是連綿的山巒。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "silverpine_range_fill_n5_n10",
+        "description": "銀脂雪道西返松圃"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "silverpine_range_starwatch_ridge",
+        "description": "銀脂雪道東接觀星脊"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 4,
     "mapY": 4,
@@ -3481,12 +3492,69 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "worldX": -4,
     "worldY": -14
   },
+  "silverpine_range_fill_n5_n10": {
+    "id": "silverpine_range_fill_n5_n10",
+    "name": "銀脂雪道",
+    "zone": "silverpine_range",
+    "description": "銀脂松圃東側的雪道，松脂在冷光裡泛著淡銀色。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "silverpine_range_fill_n6_n10",
+        "description": "銀脂雪道西返松圃"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "silverpine_range_fill_n4_n10",
+        "description": "銀脂雪道東往觀星脊"
+      }
+    ],
+    "mapSymbol": "[·]",
+    "mapX": 3,
+    "mapY": 4,
+    "worldX": -5,
+    "worldY": -10
+  },
+  "silverpine_range_fill_n6_n10": {
+    "id": "silverpine_range_fill_n6_n10",
+    "name": "銀脂雪道",
+    "zone": "silverpine_range",
+    "description": "風切木橋南側的銀松雪道，樹根間滲出冰冷而發亮的松脂。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "silverpine_range_silver_sap_grove",
+        "description": "銀脂雪道西接銀脂松圃"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "silverpine_range_fill_n5_n10",
+        "description": "銀脂雪道東往觀星脊"
+      }
+    ],
+    "mapSymbol": "[·]",
+    "mapX": 2,
+    "mapY": 4,
+    "worldX": -6,
+    "worldY": -10
+  },
   "silverpine_range_fill_n6_n11": {
     "id": "silverpine_range_fill_n6_n11",
     "name": "松林小路",
     "zone": "silverpine_range",
     "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "silverpine_range_windcut_bridge",
+        "description": "風削石階西返風切木橋"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "silverpine_range_iceglass_cavern",
+        "description": "風削石階東接冰玻洞"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 2,
     "mapY": 3,

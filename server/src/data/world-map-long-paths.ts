@@ -1681,11 +1681,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "silverpine_range_goat_track"
   ],
   [
-    "silverpine_range_crystal_scree",
-    "south",
-    "silverpine_range_relic_pit"
-  ],
-  [
     "silverpine_range_entry_claim",
     "north",
     "silverpine_range_snowline_gate"
@@ -1696,16 +1691,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "silverpine_range_avalanche_bowl"
   ],
   [
-    "silverpine_range_frost_herb_ledge",
-    "north",
-    "silverpine_range_water_pocket"
-  ],
-  [
-    "silverpine_range_frost_herb_ledge",
-    "west",
-    "silverpine_range_iceglass_cavern"
-  ],
-  [
     "silverpine_range_goat_track",
     "south",
     "silverpine_range_beast_scrape"
@@ -1714,11 +1699,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "silverpine_range_herb_shelf",
     "north",
     "silverpine_range_mica_switchback"
-  ],
-  [
-    "silverpine_range_high_mine_core",
-    "south",
-    "silverpine_range_starwatch_ridge"
   ],
   [
     "silverpine_range_mica_switchback",
@@ -1736,53 +1716,13 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "silverpine_range_vein_path"
   ],
   [
-    "silverpine_range_relic_pit",
-    "north",
-    "silverpine_range_crystal_scree"
-  ],
-  [
-    "silverpine_range_silver_sap_grove",
-    "east",
-    "silverpine_range_starwatch_ridge"
-  ],
-  [
-    "silverpine_range_silver_sap_grove",
-    "south",
-    "silverpine_range_windcut_bridge"
-  ],
-  [
     "silverpine_range_snowline_gate",
     "south",
     "silverpine_range_entry_claim"
   ],
   [
-    "silverpine_range_starwatch_ridge",
-    "north",
-    "silverpine_range_high_mine_core"
-  ],
-  [
-    "silverpine_range_starwatch_ridge",
-    "west",
-    "silverpine_range_silver_sap_grove"
-  ],
-  [
     "silverpine_range_vein_path",
     "north",
-    "silverpine_range_moonneedle_pines"
-  ],
-  [
-    "silverpine_range_water_pocket",
-    "south",
-    "silverpine_range_frost_herb_ledge"
-  ],
-  [
-    "silverpine_range_windcut_bridge",
-    "north",
-    "silverpine_range_silver_sap_grove"
-  ],
-  [
-    "silverpine_range_windcut_bridge",
-    "south",
     "silverpine_range_moonneedle_pines"
   ],
   [

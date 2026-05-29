@@ -19387,7 +19387,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層' },
       { direction: 'east', targetRoomId: 'silverpine_range_beast_scrape', description: '獸痕雪坡在東側' },
-      { direction: 'south', targetRoomId: 'silverpine_range_frost_herb_ledge', description: '霜草岩棚在南側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_frost_herb_ledge', description: '霜草岩棚在北側' },
     ],
     monsters: [
       { monsterId: 'frost_herb_witch', maxCount: 1, respawnSeconds: 180 },
@@ -19440,7 +19440,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '古礦遺坑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡' },
-      { direction: 'north', targetRoomId: 'silverpine_range_crystal_scree', description: '晶石碎坡在北側' },
+      { direction: 'south', targetRoomId: 'silverpine_range_crystal_scree', description: '晶石碎坡在南側' },
     ],
     monsters: [
       { monsterId: 'iceglass_golem', maxCount: 1, respawnSeconds: 320 },
@@ -19546,9 +19546,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '霜草岩棚位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'north', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
+      { direction: 'south', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
       { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側' },
-      { direction: 'west', targetRoomId: 'silverpine_range_iceglass_cavern', description: '冰玻洞在西側' },
     ],
     monsters: [
       { monsterId: 'frost_herb_witch', maxCount: 2, respawnSeconds: 180 },
@@ -19606,15 +19605,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '晶石碎坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_relic_pit', description: '回到古礦遺坑' },
+      { direction: 'north', targetRoomId: 'silverpine_range_relic_pit', description: '回到古礦遺坑' },
       { direction: 'west', targetRoomId: 'silverpine_range_goat_track', description: '山徑回到山羊窄徑' },
-      {
-        direction: 'north',
-        targetRoomId: 'silverpine_range_starwatch_ridge',
-        description: '北側晶石碎坡要沿鬆動礦屑上攀，繞過反光冰片與雪標石後才接到觀星脊',
-        edgeKind: 'long_path',
-        edgeNote: '晶石碎坡到觀星脊需要攀過鬆動礦屑、反光冰片與高脊風口，屬於銀松山脈長路徑。',
-      },
+      { direction: 'south', targetRoomId: 'silverpine_range_eagle_spire', description: '南側晶石碎坡接往鷹巢尖峰' },
     ],
     monsters: [
       { monsterId: 'iceglass_golem', maxCount: 1, respawnSeconds: 320 },
@@ -19639,15 +19632,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '風切木橋位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
-      {
-        direction: 'east',
-        targetRoomId: 'silverpine_range_old_miner_camp',
-        description: '東側風切木橋要先穿過斷索橋面，再沿被風削出的石階繞到舊礦工營',
-        edgeKind: 'long_path',
-        edgeNote: '風切木橋到舊礦工營需要穿過斷索橋面、風削石階與營地外坡，屬於銀松山脈長路徑。',
-      },
-      { direction: 'north', targetRoomId: 'silverpine_range_silver_sap_grove', description: '銀脂松圃在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
+      { direction: 'east', targetRoomId: 'silverpine_range_fill_n6_n11', description: '風削石階通往冰玻洞側裂縫' },
+      { direction: 'south', targetRoomId: 'silverpine_range_silver_sap_grove', description: '銀脂松圃在南側' },
     ],
     monsters: [
       { monsterId: 'windcut_eagle', maxCount: 2, respawnSeconds: 220 },
@@ -19674,13 +19661,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_mica_switchback', description: '回到雲母折道' },
       { direction: 'east', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在東側' },
-      {
-        direction: 'north',
-        targetRoomId: 'silverpine_range_iceglass_cavern',
-        description: '北側要從舊礦工營後方穿過廢軌坡與冰霧礦口，沿冷風裂縫才進入冰玻洞',
-        edgeKind: 'long_path',
-        edgeNote: '舊礦工營到冰玻洞需要穿過廢軌坡、冰霧礦口與寒光洞壁，屬於銀松山脈長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'silverpine_range_water_pocket', description: '北側雪水路回到融雪水窪' },
+      { direction: 'south', targetRoomId: 'silverpine_range_iceglass_cavern', description: '南側廢軌坡進入冰玻洞' },
     ],
     monsters: [
       { monsterId: 'mica_cliff_lizard', maxCount: 2, respawnSeconds: 130 },
@@ -19705,27 +19687,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冰玻洞位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      {
-        direction: 'south',
-        targetRoomId: 'silverpine_range_old_miner_camp',
-        description: '南側回舊礦工營要離開冰玻洞，穿過冰霧礦口與廢軌坡才回到營火邊',
-        edgeKind: 'long_path',
-        edgeNote: '冰玻洞回舊礦工營需要穿過冰霧礦口、廢軌坡與營地外坡，屬於銀松山脈長路徑。',
-      },
-      {
-        direction: 'west',
-        targetRoomId: 'silverpine_range_windcut_bridge',
-        description: '西側要穿過冰玻洞側裂縫，沿風削石階與斷索橋面才回到風切木橋',
-        edgeKind: 'long_path',
-        edgeNote: '冰玻洞到風切木橋需要穿過側裂縫、風削石階與斷索橋面，屬於銀松山脈長路徑。',
-      },
-      {
-        direction: 'east',
-        targetRoomId: 'silverpine_range_avalanche_bowl',
-        description: '東側要穿過冰玻洞深處的滑冰斜廊，避開落雪聲與碎冰滑坡後才到雪崩凹地',
-        edgeKind: 'long_path',
-        edgeNote: '冰玻洞到雪崩凹地需要穿過滑冰斜廊、落雪聲帶與雪坡邊緣，屬於銀松山脈長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'silverpine_range_old_miner_camp', description: '北側廢軌坡回到舊礦工營' },
+      { direction: 'west', targetRoomId: 'silverpine_range_fill_n6_n11', description: '西側側裂縫通往風切木橋' },
+      { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '東側滑冰斜廊通往雪崩凹地' },
     ],
     monsters: [
       { monsterId: 'iceglass_golem', maxCount: 2, respawnSeconds: 320 },
@@ -19757,13 +19721,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '鷹巢尖峰回山羊窄徑需要沿結冰岩脊、高處風口與碎石壁撤回，屬於銀松山脈長路徑。',
       },
-      {
-        direction: 'north',
-        targetRoomId: 'silverpine_range_starwatch_ridge',
-        description: '北側要從鷹巢尖峰後方攀上雪脊，穿過強風與星標石才抵達觀星脊',
-        edgeKind: 'long_path',
-        edgeNote: '鷹巢尖峰到觀星脊需要攀過雪脊、強風口與星標石，屬於銀松山脈長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'silverpine_range_crystal_scree', description: '北側晶石碎坡回到採集線' },
+      { direction: 'south', targetRoomId: 'silverpine_range_starwatch_ridge', description: '南側雪脊通往觀星脊' },
     ],
     monsters: [
       { monsterId: 'windcut_eagle', maxCount: 2, respawnSeconds: 220 },
@@ -19788,8 +19747,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '銀脂松圃位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_windcut_bridge', description: '回到風切木橋' },
-      { direction: 'east', targetRoomId: 'silverpine_range_starwatch_ridge', description: '觀星脊在東側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_windcut_bridge', description: '回到風切木橋' },
+      { direction: 'east', targetRoomId: 'silverpine_range_fill_n6_n10', description: '東側銀脂雪道通往觀星脊' },
     ],
     monsters: [
       { monsterId: 'silver_sap_treant', maxCount: 2, respawnSeconds: 240 },
@@ -19853,14 +19812,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '觀星脊位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       {
-        direction: 'south',
+        direction: 'north',
         targetRoomId: 'silverpine_range_eagle_spire',
-        description: '南側回鷹巢尖峰要從觀星脊下攀雪脊，穿過星標石與強風口才回到鳥巢岩台',
-        edgeKind: 'long_path',
-        edgeNote: '觀星脊回鷹巢尖峰需要下攀雪脊、穿過星標石與強風口，屬於銀松山脈長路徑。',
+        description: '北側雪脊回到鷹巢尖峰',
       },
-      { direction: 'west', targetRoomId: 'silverpine_range_silver_sap_grove', description: '回到銀脂松圃' },
-      { direction: 'north', targetRoomId: 'silverpine_range_high_mine_core', description: '高山礦核在北側' },
+      { direction: 'west', targetRoomId: 'silverpine_range_fill_n4_n10', description: '西側銀脂雪道回到松圃' },
+      { direction: 'south', targetRoomId: 'silverpine_range_high_mine_core', description: '高山礦核在南側' },
     ],
     monsters: [
       { monsterId: 'starwatch_frost_giant', maxCount: 1, respawnSeconds: 520 },
@@ -19885,7 +19842,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '高山礦核位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_starwatch_ridge', description: '回到觀星脊' },
+      { direction: 'north', targetRoomId: 'silverpine_range_starwatch_ridge', description: '回到觀星脊' },
     ],
     monsters: [
       { monsterId: 'high_mine_crystal_wyrm', maxCount: 1, respawnSeconds: 1800 },
