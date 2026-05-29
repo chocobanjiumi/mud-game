@@ -5291,7 +5291,7 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
   eastern_coast_fill_39_2: '海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。',
   bloodsalt_coast_fill_47_9: '棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。',
   serpent_delta_fill_33_20: '蛇河三角洲的泥濘通道，南面岩壁上有矮人開鑿的坑口，鐵鏽味從其中飄出。',
-  silverpine_range_fill_0_n12: '舊路盡頭攀上銀松坡道，松針鋪滿破碎石階，空氣比丘陵冷了幾度。',
+  silverpine_range_fill_0_n12: '舊路銀松折口位於銀松山脈東緣，東側野草丘陵的舊路在這裡抬升成碎石階，南面洞口風聲從岩縫傳來。坡邊有可採的銀松針與冷露苔，這裡是 border gathering route，連接丘陵與山徑。',
   thundersteppe_fill_10_23: '玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。',
   frostbite_pass_fill_n19_n14: '隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。',
   frostbite_pass_fill_n19_n13: '凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。',

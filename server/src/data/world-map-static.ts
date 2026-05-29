@@ -3624,13 +3624,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_0_n12": {
     "id": "silverpine_range_fill_0_n12",
-    "name": "山徑",
+    "name": "舊路銀松折口",
     "zone": "silverpine_range",
-    "description": "舊路盡頭攀上銀松坡道，松針鋪滿破碎石階，空氣比丘陵冷了幾度。",
+    "description": "舊路銀松折口位於銀松山脈東緣，東側野草丘陵的舊路在這裡抬升成碎石階，南面洞口風聲從岩縫傳來。坡邊有可採的銀松針與冷露苔，這裡是 border gathering route，連接丘陵與山徑。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "wildgrass_hills_old_road_cut"
+        "targetRoomId": "wildgrass_hills_old_road_cut",
+        "description": "東側沿碎石階下坡，從銀松冷霧回到野草丘陵舊路切口"
       }
     ],
     "mapSymbol": "[·]",
@@ -3641,9 +3642,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n1_n12": {
     "id": "silverpine_range_fill_n1_n12",
-    "name": "銀松坡道",
+    "name": "東坡冷露封道",
     "zone": "silverpine_range",
-    "description": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+    "description": "東坡冷露封道夾在東側舊路折口與西側碎石山道之間，銀松針覆住斷裂階面，冷露苔沿石縫發亮。這裡有採集痕跡但沒有安全踏點，是封閉 blocker，提醒玩家回到正式山徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -3653,9 +3654,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n2_n12": {
     "id": "silverpine_range_fill_n2_n12",
-    "name": "碎石山道",
+    "name": "晶礫東封坡",
     "zone": "silverpine_range",
-    "description": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+    "description": "晶礫東封坡位於水晶碎坡東面，西側可見尖亮晶礫嵌在雪土裡，東側冷露封道已被松針蓋住。坡面可採少量銀礦碎屑，但碎石會滑落，這格是採集邊界與 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -3665,19 +3666,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n4_n10": {
     "id": "silverpine_range_fill_n4_n10",
-    "name": "碎石山道",
+    "name": "觀星脊西雪道",
     "zone": "silverpine_range",
-    "description": "山腰上的崎嶇通道，放眼望去是連綿的山巒。",
+    "description": "觀星脊西雪道位於雪線上方的山腰，北側雪崩盆地有碎冰堆，西面銀脂雪道繼續穿過松根，東側觀星脊露出高處石台。這裡是 gathering route，雪縫旁能看見少量冷苔採集痕。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "silverpine_range_fill_n5_n10",
-        "description": "銀脂雪道西返松圃"
+        "description": "西側沿松根雪痕返回銀脂雪道中段"
       },
       {
         "direction": "east",
         "targetRoomId": "silverpine_range_starwatch_ridge",
-        "description": "銀脂雪道東接觀星脊"
+        "description": "東側踏過亮晶碎石，登上觀星脊石台"
       }
     ],
     "mapSymbol": "[·]",
@@ -3688,9 +3689,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n4_n14": {
     "id": "silverpine_range_fill_n4_n14",
-    "name": "碎石山道",
+    "name": "霜草崖東封坡",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "霜草崖東封坡靠近霜草岩架，西側草葉結成白霜，南面獸痕刮過淺雪。坡頂有可採的霜草與銀松枝，但東側碎石崖鬆動，這裡是採集 blocker，不接出新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -3700,19 +3701,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n5_n10": {
     "id": "silverpine_range_fill_n5_n10",
-    "name": "銀脂雪道",
+    "name": "銀脂中段雪道",
     "zone": "silverpine_range",
-    "description": "銀脂松圃東側的雪道，松脂在冷光裡泛著淡銀色。",
+    "description": "銀脂中段雪道夾在西側銀脂林與東側觀星脊西雪道之間，北面冰玻洞冷光透過松枝照到雪面。樹根旁滲出銀脂與冰苔，這裡是正式採集 route，讓玩家沿雪道逐格前進。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "silverpine_range_fill_n6_n10",
-        "description": "銀脂雪道西返松圃"
+        "description": "西側順著銀脂松根走回雪道西段"
       },
       {
         "direction": "east",
         "targetRoomId": "silverpine_range_fill_n4_n10",
-        "description": "銀脂雪道東往觀星脊"
+        "description": "東側越過冷光雪面前往觀星脊西雪道"
       }
     ],
     "mapSymbol": "[·]",
@@ -3723,19 +3724,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n6_n10": {
     "id": "silverpine_range_fill_n6_n10",
-    "name": "銀脂雪道",
+    "name": "銀脂西段松根",
     "zone": "silverpine_range",
-    "description": "風切木橋南側的銀松雪道，樹根間滲出冰冷而發亮的松脂。",
+    "description": "銀脂西段松根位於風切木橋南側，西面銀脂松圃樹皮泛白，北側短坡可望見通往冰玻洞的石階，東面雪道延向觀星脊。這裡是 border 採集 route，樹根間有銀脂與雪松針採集點。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "silverpine_range_silver_sap_grove",
-        "description": "銀脂雪道西接銀脂松圃"
+        "description": "西側沿發亮松根進入銀脂松圃"
       },
       {
         "direction": "east",
         "targetRoomId": "silverpine_range_fill_n5_n10",
-        "description": "銀脂雪道東往觀星脊"
+        "description": "東側踏過壓實雪痕前往銀脂中段雪道"
       }
     ],
     "mapSymbol": "[·]",
@@ -3746,19 +3747,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n6_n11": {
     "id": "silverpine_range_fill_n6_n11",
-    "name": "松林小路",
+    "name": "風削冰洞石階",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "風削冰洞石階橫在風切木橋與冰玻洞之間，北側雲母折坡灑下碎光，南面銀脂雪道有松根露出。石階邊能採到冰苔與銀屑，這裡是 gathering route，承接橋面到洞口的正式通道。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "silverpine_range_windcut_bridge",
-        "description": "風削石階西返風切木橋"
+        "description": "西側沿風削石階返回風切木橋"
       },
       {
         "direction": "east",
         "targetRoomId": "silverpine_range_iceglass_cavern",
-        "description": "風削石階東接冰玻洞"
+        "description": "東側順著冰光岩壁進入冰玻洞口"
       }
     ],
     "mapSymbol": "[·]",
@@ -3769,9 +3770,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n6_n14": {
     "id": "silverpine_range_fill_n6_n14",
-    "name": "山徑",
+    "name": "草架西封雪坡",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "草架西封雪坡在草藥岩架西側形成斷面，南面可見藥草棚的木釘，東面霜草岩架覆著白霜。坡上有可採的霜葉與松針，但雪層下方空洞，這裡是採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -3781,9 +3782,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n7_n9": {
     "id": "silverpine_range_fill_n7_n9",
-    "name": "碎石山道",
+    "name": "松圃南補給封坡",
     "zone": "silverpine_range",
-    "description": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+    "description": "松圃南補給封坡位於銀脂松圃南面，北側能聞到樹脂香，西面松林小路旁有舊補給繩樁。坡下散落可採松脂與冷露苔，但碎石不穩，這格是 service gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -3793,9 +3794,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n8_n11": {
     "id": "silverpine_range_fill_n8_n11",
-    "name": "銀松坡道",
+    "name": "雪線門東封坡",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "雪線門東封坡貼著銀松山脈西側，北面雪線門的木牌被冰霜覆住，東側風切木橋在霧中搖晃。坡上有少量冰苔可採，但石面被霜裂切斷，是封閉 gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3805,9 +3806,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n8_n14": {
     "id": "silverpine_range_fill_n8_n14",
-    "name": "碎石山道",
+    "name": "入山礦權封坡",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "入山礦權封坡位於銀松西北角，南側入山礦權木樁半埋在雪裡，西面風嘯山口傳來高原風。坡面有銀礦碎屑可採，但礦道被落石封死，這裡是採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3817,9 +3818,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n8_n8": {
     "id": "silverpine_range_fill_n8_n8",
-    "name": "山徑",
+    "name": "獵場北界雪柵",
     "zone": "silverpine_range",
-    "description": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+    "description": "獵場北界雪柵位於銀松山脈西南緣，北側松林小路被雪霧包住，南面可望見王家獵場許可木屋的屋頂。雪柵後有冷露苔採集痕，這裡是 border gathering blocker，只標示獵場邊界，不提供跨區通行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3829,9 +3830,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "silverpine_range_fill_n8_n9": {
     "id": "silverpine_range_fill_n8_n9",
-    "name": "松林小路",
+    "name": "西南松徑補給欄",
     "zone": "silverpine_range",
-    "description": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+    "description": "西南松徑補給欄位於獵場北界雪柵上方，南側雪柵標示邊界，東面松圃南封坡旁有舊補給繩樁。欄內放著採集用麻袋，但道路被雪樁擋住，是 service gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
