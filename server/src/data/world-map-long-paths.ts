@@ -1376,24 +1376,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "plains_alpha_den"
   ],
   [
-    "redrock_badlands_ambush_canyon",
-    "north",
-    "redrock_badlands_outlaw_camp"
-  ],
-  [
-    "redrock_badlands_ambush_canyon",
-    "south",
-    "redrock_badlands_exile_den"
-  ],
-  [
     "redrock_badlands_blackflag_lookout",
     "south",
     "redrock_badlands_echo_arch"
-  ],
-  [
-    "redrock_badlands_bone_marker",
-    "east",
-    "redrock_badlands_duel_stones"
   ],
   [
     "redrock_badlands_burnt_wagon",
@@ -1404,11 +1389,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "redrock_badlands_dry_gulch",
     "north",
     "redrock_badlands_rustwash_pass"
-  ],
-  [
-    "redrock_badlands_duel_stones",
-    "west",
-    "redrock_badlands_bone_marker"
   ],
   [
     "redrock_badlands_dust_gate",
@@ -1424,11 +1404,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "redrock_badlands_flame_spirit_basin",
     "north",
     "redrock_badlands_red_ore_cut"
-  ],
-  [
-    "redrock_badlands_outlaw_camp",
-    "south",
-    "redrock_badlands_ambush_canyon"
   ],
   [
     "redrock_badlands_red_ore_cut",
@@ -1449,11 +1424,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "redrock_badlands_splinter_ridge",
     "south",
     "redrock_badlands_red_ore_cut"
-  ],
-  [
-    "redrock_badlands_viper_flats",
-    "south",
-    "redrock_badlands_lava_worm_sink"
   ],
   [
     "riverside_fishing",

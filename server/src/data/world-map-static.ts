@@ -2820,7 +2820,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "紅岩邊道",
     "zone": "redrock_badlands",
     "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "redrock_badlands_scarlet_crater",
+        "description": "熱裂邊道北上猩紅火口"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "redrock_badlands_exile_den",
+        "description": "熱裂邊道南返流放者洞穴"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 5,
     "mapY": 1,
@@ -2832,7 +2843,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "紅岩邊道",
     "zone": "redrock_badlands",
     "description": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "redrock_badlands_fill_n5_19",
+        "description": "赤色裂光路西返熔岩蟲陷坑"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "redrock_badlands_scarlet_crater",
+        "description": "赤色裂光路東接猩紅火口"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 4,
     "mapY": 0,
@@ -2844,7 +2866,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "紅岩邊道",
     "zone": "redrock_badlands",
     "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "redrock_badlands_fill_n5_23",
+        "description": "刻痕路西行通往回聲拱岩"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "redrock_badlands_duel_stones",
+        "description": "刻痕路東返決鬥石圈"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 4,
     "mapY": 4,
@@ -2856,7 +2889,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "赤岩小路",
     "zone": "redrock_badlands",
     "description": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "redrock_badlands_lava_worm_sink",
+        "description": "地下熱道西返熔岩蟲陷坑"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "redrock_badlands_fill_n4_19",
+        "description": "地下熱道東接猩紅火口外緣"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 3,
     "mapY": 0,
@@ -2875,12 +2919,46 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "worldX": -6,
     "worldY": 21
   },
+  "redrock_badlands_fill_n5_23": {
+    "id": "redrock_badlands_fill_n5_23",
+    "name": "決鬥刻痕路",
+    "zone": "redrock_badlands",
+    "description": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "redrock_badlands_fill_n6_23",
+        "description": "刻痕路西行靠近回聲拱岩"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "redrock_badlands_fill_n4_23",
+        "description": "刻痕路東返決鬥石圈"
+      }
+    ],
+    "mapSymbol": "[·]",
+    "mapX": 3,
+    "mapY": 4,
+    "worldX": -5,
+    "worldY": 23
+  },
   "redrock_badlands_fill_n6_23": {
     "id": "redrock_badlands_fill_n6_23",
     "name": "荒地通道",
     "zone": "redrock_badlands",
     "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "redrock_badlands_echo_arch",
+        "description": "刻痕路西抵回聲拱岩"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "redrock_badlands_fill_n5_23",
+        "description": "刻痕路東返決鬥石圈"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 2,
     "mapY": 4,
