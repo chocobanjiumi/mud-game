@@ -2854,9 +2854,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_10_5": {
     "id": "plains_fill_10_5",
-    "name": "麥田邊道",
+    "name": "斷橋南麥田邊界",
     "zone": "plains",
-    "description": "平原上的泥土小路，遠處能看見風車的剪影。",
+    "description": "斷橋南麥田邊界位在平原南緣，北面斷橋的木樁露出草叢，南側朝聖古道荊棘切口逼近泥土路，東西兩側仍是麥田邊道。這裡是 border blocker，只標示平原與古道交界，不開南北捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2866,9 +2866,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_11_0": {
     "id": "plains_fill_11_0",
-    "name": "平原小路",
+    "name": "風車東牧草封地",
     "zone": "plains",
-    "description": "翠綠的草地一望無際，微風拂過時金色麥浪翻滾。",
+    "description": "風車東牧草封地貼著風車內部東側，西面風車影子掃過草坡，南方牧羊營帳冒著淡煙。牧草被木樁與繩欄圈住，是純 blocker，避免玩家從風車背面直接切進牧營。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -2878,9 +2878,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_11_4": {
     "id": "plains_fill_11_4",
-    "name": "平原小路",
+    "name": "盜匪藏處南草封",
     "zone": "plains",
-    "description": "穿過草原的小徑，野花在路旁搖曳。",
+    "description": "盜匪藏處南草封位在盜匪藏處南側，北面破布棚與腳印藏在高草後，西側斷橋小路仍可見舊木樁，南面銜接朝聖古道邊界。這裡是 blocker，用高草與倒木封住藏處背路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -2890,13 +2890,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_11_5": {
     "id": "plains_fill_11_5",
-    "name": "風吹草徑",
+    "name": "走私藏點北風草界",
     "zone": "plains",
-    "description": "平原上的泥土小路，遠處能看見風車的剪影。",
+    "description": "走私藏點北風草界位在平原與朝聖古道交接處，北面盜匪藏處南草封壓著高草，西側斷橋南麥田邊界延伸，東邊古道邊界接向盜匪哨。這裡是 border gathering route，風草可採，主要銜接南方走私藏點。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "pilgrim_road_smuggler_cache"
+        "targetRoomId": "pilgrim_road_smuggler_cache",
+        "description": "沿風草與舊車轍穿過南界草坡，抵達朝聖古道走私藏點。"
       }
     ],
     "mapSymbol": "[·]",
@@ -2907,13 +2908,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_12_5": {
     "id": "plains_fill_12_5",
-    "name": "平原小路",
+    "name": "盜匪哨北路牌亭界",
     "zone": "plains",
-    "description": "平原上的泥土小路，遠處能看見風車的剪影。",
+    "description": "盜匪哨北路牌亭界位在平原東南角，西面走私藏點北風草界仍有車轍，南方朝聖古道盜匪哨的木牌半歪在路旁。路牌亭標示這裡是跨區邊界路線端點，專門銜接平原與古道警戒線，不放怪物或採集。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "pilgrim_road_bandit_watch"
+        "targetRoomId": "pilgrim_road_bandit_watch",
+        "description": "沿歪斜路牌與乾草車轍南行，抵達朝聖古道盜匪哨。"
       }
     ],
     "mapSymbol": "[·]",
@@ -2924,9 +2926,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_7_2": {
     "id": "plains_fill_7_2",
-    "name": "麥田邊道",
+    "name": "月林北麥田封坡",
     "zone": "plains",
-    "description": "平原上的泥土小路，遠處能看見風車的剪影。",
+    "description": "月林北麥田封坡靠在月光小林北側，南面樹影落進草地，東邊野兔洞穴周圍有翻土痕。麥田坡被舊籬笆切斷，是 border blocker，用來封住小林與兔洞之間的外側空地。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2936,9 +2938,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_8_1": {
     "id": "plains_fill_8_1",
-    "name": "平原小路",
+    "name": "兔洞北向日草封",
     "zone": "plains",
-    "description": "穿過草原的小徑，野花在路旁搖曳。",
+    "description": "兔洞北向日草封位在野兔洞穴北側，南面小洞口散著碎草，東邊向日葵田的黃花沿風搖動。草坡被兔穴塌陷與花田籬笆截住，是純 blocker，不提供通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -2948,9 +2950,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "plains_fill_9_5": {
     "id": "plains_fill_9_5",
-    "name": "草地",
+    "name": "十字路南草井界",
     "zone": "plains",
-    "description": "平原上的泥土小路，遠處能看見風車的剪影。",
+    "description": "十字路南草井界位在十字路口南面，北側路牌仍指向村道，南方朝聖古道乾井露出灰石圈，西邊守望土丘看得見低旗。這裡是 border gathering blocker，草井邊可採乾草籽，但不開南向捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
