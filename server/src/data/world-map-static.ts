@@ -4424,9 +4424,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_1_n10": {
     "id": "wildgrass_hills_fill_1_n10",
-    "name": "野草坡地",
+    "name": "西界隱泉草封坡",
     "zone": "wildgrass_hills",
-    "description": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+    "description": "西界隱泉草封坡卡在防風柵門南側，乾草與碎石堆成低牆，北望能見風柵木影，南面接回隱泉濕草，東側則貼著彎橡坡。這裡只保留採集風乾草籽的窄面，沒有可繼續通行的正式道路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4436,9 +4436,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_1_n8": {
     "id": "wildgrass_hills_fill_1_n8",
-    "name": "丘陵小路",
+    "name": "斷圖騰西封徑",
     "zone": "wildgrass_hills",
-    "description": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+    "description": "斷圖騰西封徑是一段被高草吞沒的短坡，北側回到隱泉邊緣，東面隔著風磨碎石可看見斷圖騰的陰影。坡脊被倒伏草根封住，適合標記野草丘陵邊界，不作為主要通道使用。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4448,19 +4448,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_2_n12": {
     "id": "wildgrass_hills_fill_2_n12",
-    "name": "風口通道",
+    "name": "舊路溪切風口",
     "zone": "wildgrass_hills",
-    "description": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+    "description": "舊路溪切風口是野草丘陵北線的正式 route，西邊的舊路切口在草浪中露出硬土，東邊溪切溝傳來碎水聲，南側低坡可作方位參照。強風穿過凹口，把往返舊路與溪溝的腳印吹得斷續卻仍可辨認。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "wildgrass_hills_old_road_cut",
-        "description": "風口通道西返舊路切口"
+        "description": "沿硬土風痕西行，回到舊路切口。"
       },
       {
         "direction": "east",
         "targetRoomId": "wildgrass_hills_stream_cut",
-        "description": "風口通道東接溪切溝"
+        "description": "順碎石水聲東走，接上溪切溝。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4471,9 +4471,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_2_n7": {
     "id": "wildgrass_hills_fill_2_n7",
-    "name": "丘陵小路",
+    "name": "村溪北界草欄",
     "zone": "wildgrass_hills",
-    "description": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+    "description": "村溪北界草欄立在野草丘陵與村溪之間，北側高坡通向斷圖騰附近，南面可聽見村溪水聲但被草欄與警示樁隔開。這裡是邊界 blocker，用來阻止丘陵路線誤接回新手村後側。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4483,19 +4483,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_3_n8": {
     "id": "wildgrass_hills_fill_3_n8",
-    "name": "野草坡地",
+    "name": "圖騰東採草坡",
     "zone": "wildgrass_hills",
-    "description": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+    "description": "圖騰東採草坡承接斷圖騰東側的草路，北邊石環露出半圈灰白石尖，東面坡線續往斷旗中央，草叢中混著可採的硬莖風草。這段同時是往風暴草冠的 route，也提供低風險採集點。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "wildgrass_hills_broken_totem",
-        "description": "野草坡地西返斷圖騰"
+        "description": "循倒伏草痕穿過西坡，西返斷圖騰。"
       },
       {
         "direction": "east",
         "targetRoomId": "wildgrass_hills_fill_4_n8",
-        "description": "野草坡地東往風暴草冠"
+        "description": "沿斷旗影子東行，前往中央坡道。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4506,9 +4506,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_4_n12": {
     "id": "wildgrass_hills_fill_4_n12",
-    "name": "草丘斜坡",
+    "name": "溪切東側豬泥坡",
     "zone": "wildgrass_hills",
-    "description": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+    "description": "溪切東側豬泥坡夾在溪切溝與野豬泥潭之間，西側濕石帶著溪水青苔，南面泥地被野豬踏出深坑。坡上長著可採的苦葉草，但泥坑與亂石封住外緣，只能作採集 blocker 與地形邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4518,19 +4518,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_4_n8": {
     "id": "wildgrass_hills_fill_4_n8",
-    "name": "斷旗坡道",
+    "name": "斷旗中央坡道",
     "zone": "wildgrass_hills",
-    "description": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。",
+    "description": "斷旗中央坡道是圖騰草坡與風暴草冠之間的純路線 route，北側雷丘高起，破旗桿在風裡發出空響。坡面被踩出穩定土階，西行能回到圖騰東採草坡，東行則接向風冠西坡小徑。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "wildgrass_hills_fill_3_n8",
-        "description": "斷旗坡道西返斷圖騰"
+        "description": "沿破旗桿影子穿過土階，西返採草坡。"
       },
       {
         "direction": "east",
         "targetRoomId": "wildgrass_hills_fill_5_n8",
-        "description": "斷旗坡道東往風暴草冠"
+        "description": "踏過穩定土階東往風冠西坡。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4541,19 +4541,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_5_n8": {
     "id": "wildgrass_hills_fill_5_n8",
-    "name": "丘陵小路",
+    "name": "風冠西坡小徑",
     "zone": "wildgrass_hills",
-    "description": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+    "description": "風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "wildgrass_hills_fill_4_n8",
-        "description": "丘陵小路西返斷圖騰"
+        "description": "沿低草土階西返斷旗中央坡道。"
       },
       {
         "direction": "east",
         "targetRoomId": "wildgrass_hills_stormgrass_crown",
-        "description": "丘陵小路東抵風暴草冠"
+        "description": "穿過風翻草浪東抵風暴草冠。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4564,9 +4564,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "wildgrass_hills_fill_6_n9": {
     "id": "wildgrass_hills_fill_6_n9",
-    "name": "野草坡地",
+    "name": "風車南採草坡",
     "zone": "wildgrass_hills",
-    "description": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+    "description": "風車南採草坡位在破風車殼下方，北面能看見殘葉輪，南側接近風暴草冠，西邊則有首領脊線作為明顯地標。坡上散著可採的風鳴草與乾籽穗，但草根糾結封住外側，只作採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,

@@ -1,37 +1,37 @@
 {
-  "generatedAt": "2026-05-29T20:24:14.949Z",
+  "generatedAt": "2026-05-29T20:28:00.914Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 388,
-    "errors": 275,
-    "warnings": 113,
+    "issues": 352,
+    "errors": 249,
+    "warnings": 103,
     "byGrade": {
-      "A_main_transition": 40,
-      "B_connector": 18,
+      "A_main_transition": 39,
+      "B_connector": 17,
       "C_empty_filler": 92,
-      "D_upgrade_candidate": 193
+      "D_upgrade_candidate": 195
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 230,
-      "gathering": 147,
+      "border": 236,
+      "gathering": 149,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 13,
       "route": 70,
-      "service": 42
+      "service": 43
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 10,
-      "description.direction": 92,
-      "description.length": 133,
-      "description.purpose": 31,
-      "description.repeated_opening": 72,
+      "description.direction": 83,
+      "description.length": 124,
+      "description.purpose": 27,
+      "description.repeated_opening": 66,
       "description.terrain": 5,
-      "exit.description.length": 20,
+      "exit.description.length": 12,
       "exit.description.missing": 25
     }
   },
@@ -16085,12 +16085,12 @@
       "zoneId": "wildgrass_hills",
       "zoneName": "荒草丘陵",
       "fillRooms": 9,
-      "issues": 36,
+      "issues": 0,
       "records": [
         {
           "id": "wildgrass_hills_fill_1_n10",
           "zone": "wildgrass_hills",
-          "name": "野草坡地",
+          "name": "西界隱泉草封坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -16118,40 +16118,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 74,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_1_n10",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-            },
-            {
-              "id": "wildgrass_hills_fill_1_n10",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_1_n8",
           "zone": "wildgrass_hills",
-          "name": "丘陵小路",
+          "name": "斷圖騰西封徑",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 1,
           "worldY": -8,
@@ -16173,46 +16153,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_1_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_1_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_1_n8",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_2_n12",
           "zone": "wildgrass_hills",
-          "name": "風口通道",
-          "grade": "B_connector",
+          "name": "舊路溪切風口",
+          "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
+            "gathering",
             "route"
           ],
           "worldX": 2,
@@ -16234,83 +16188,27 @@
           "mainRoute": true,
           "deadEnd": false,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 77,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->wildgrass_hills_old_road_cut description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "風口通道西返舊路切口"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->wildgrass_hills_stream_cut description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "風口通道東接溪切溝"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n12",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_2_n7",
           "zone": "wildgrass_hills",
-          "name": "丘陵小路",
-          "grade": "A_main_transition",
+          "name": "村溪北界草欄",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": 2,
           "worldY": -7,
@@ -16324,47 +16222,27 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_2_n7",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 65,
-              "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-            },
-            {
-              "id": "wildgrass_hills_fill_2_n7",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 65,
-              "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_3_n8",
           "zone": "wildgrass_hills",
-          "name": "野草坡地",
+          "name": "圖騰東採草坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
             "gathering",
             "route"
           ],
@@ -16392,67 +16270,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 70,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_3_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_3_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_3_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->wildgrass_hills_broken_totem description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "野草坡地西返斷圖騰"
-            },
-            {
-              "id": "wildgrass_hills_fill_3_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->wildgrass_hills_fill_4_n8 description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "野草坡地東往風暴草冠"
-            },
-            {
-              "id": "wildgrass_hills_fill_3_n8",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_4_n12",
           "zone": "wildgrass_hills",
-          "name": "草丘斜坡",
+          "name": "溪切東側豬泥坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": 4,
@@ -16475,54 +16306,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_4_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n12",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n12",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n12",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_4_n8",
           "zone": "wildgrass_hills",
-          "name": "斷旗坡道",
+          "name": "斷旗中央坡道",
           "grade": "B_connector",
           "purposes": [
             "route"
@@ -16551,69 +16344,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 30,
+          "descriptionLength": 69,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_4_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 30,
-              "minimum": 55,
-              "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 30,
-              "minimum": 55,
-              "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n8",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 30,
-              "minimum": 55,
-              "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->wildgrass_hills_fill_3_n8 description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "斷旗坡道西返斷圖騰"
-            },
-            {
-              "id": "wildgrass_hills_fill_4_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->wildgrass_hills_fill_5_n8 description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "斷旗坡道東往風暴草冠"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_5_n8",
           "zone": "wildgrass_hills",
-          "name": "丘陵小路",
+          "name": "風冠西坡小徑",
           "grade": "B_connector",
           "purposes": [
+            "border",
             "route"
           ],
           "worldX": 5,
@@ -16640,67 +16383,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 69,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_5_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_5_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 55,
-              "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-            },
-            {
-              "id": "wildgrass_hills_fill_5_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->wildgrass_hills_fill_4_n8 description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "丘陵小路西返斷圖騰"
-            },
-            {
-              "id": "wildgrass_hills_fill_5_n8",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->wildgrass_hills_stormgrass_crown description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "丘陵小路東抵風暴草冠"
-            },
-            {
-              "id": "wildgrass_hills_fill_5_n8",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "wildgrass_hills_fill_6_n9",
           "zone": "wildgrass_hills",
-          "name": "野草坡地",
+          "name": "風車南採草坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": 6,
@@ -16724,49 +16420,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "wildgrass_hills_fill_6_n9",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_6_n9",
-              "zone": "wildgrass_hills",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_6_n9",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-            },
-            {
-              "id": "wildgrass_hills_fill_6_n9",
-              "zone": "wildgrass_hills",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     }
@@ -19578,306 +19236,6 @@
       "text": "南側蘆葦石路通往石堰"
     },
     {
-      "id": "wildgrass_hills_fill_1_n10",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-    },
-    {
-      "id": "wildgrass_hills_fill_1_n10",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-    },
-    {
-      "id": "wildgrass_hills_fill_1_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_1_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->wildgrass_hills_old_road_cut description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "風口通道西返舊路切口"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->wildgrass_hills_stream_cut description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "風口通道東接溪切溝"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n7",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 65,
-      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n7",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 65,
-      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。"
-    },
-    {
-      "id": "wildgrass_hills_fill_3_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_3_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_3_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->wildgrass_hills_broken_totem description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "野草坡地西返斷圖騰"
-    },
-    {
-      "id": "wildgrass_hills_fill_3_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->wildgrass_hills_fill_4_n8 description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "野草坡地東往風暴草冠"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n12",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n12",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 30,
-      "minimum": 55,
-      "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 30,
-      "minimum": 55,
-      "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n8",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 30,
-      "minimum": 55,
-      "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->wildgrass_hills_fill_3_n8 description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "斷旗坡道西返斷圖騰"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->wildgrass_hills_fill_5_n8 description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "斷旗坡道東往風暴草冠"
-    },
-    {
-      "id": "wildgrass_hills_fill_5_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_5_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 55,
-      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。"
-    },
-    {
-      "id": "wildgrass_hills_fill_5_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->wildgrass_hills_fill_4_n8 description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "丘陵小路西返斷圖騰"
-    },
-    {
-      "id": "wildgrass_hills_fill_5_n8",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->wildgrass_hills_stormgrass_crown description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "丘陵小路東抵風暴草冠"
-    },
-    {
-      "id": "wildgrass_hills_fill_6_n9",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_6_n9",
-      "zone": "wildgrass_hills",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
-      "id": "wildgrass_hills_fill_6_n9",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。"
-    },
-    {
       "id": "amber_forest_fill_n11_8",
       "zone": "amber_forest",
       "severity": "warning",
@@ -20335,48 +19693,6 @@
     {
       "id": "whispering_valley_fill_n7_11",
       "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_1_n8",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_3_n8",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_5_n8",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_2_n12",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_4_n12",
-      "zone": "wildgrass_hills",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "wildgrass_hills_fill_6_n9",
-      "zone": "wildgrass_hills",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
