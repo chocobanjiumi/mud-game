@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:46:28.925Z",
+  "generatedAt": "2026-05-29T20:49:29.885Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 160,
-    "errors": 117,
-    "warnings": 43,
+    "issues": 138,
+    "errors": 100,
+    "warnings": 38,
     "byGrade": {
-      "A_main_transition": 35,
+      "A_main_transition": 33,
       "B_connector": 17,
-      "C_empty_filler": 83,
-      "D_upgrade_candidate": 208
+      "C_empty_filler": 80,
+      "D_upgrade_candidate": 213
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 259,
+      "border": 263,
       "gathering": 155,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 14,
       "route": 69,
-      "service": 53
+      "service": 58
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 5,
-      "description.direction": 33,
-      "description.length": 61,
+      "dead_end.no_gameplay": 3,
+      "description.direction": 28,
+      "description.length": 53,
       "description.purpose": 15,
-      "description.repeated_opening": 23,
-      "description.terrain": 5,
+      "description.repeated_opening": 20,
+      "description.terrain": 3,
       "exit.description.length": 6,
-      "exit.description.missing": 12
+      "exit.description.missing": 10
     }
   },
   "zones": [
@@ -3823,7 +3823,7 @@
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
       "fillRooms": 9,
-      "issues": 22,
+      "issues": 0,
       "records": [
         {
           "id": "frostbite_frozen_divide",
@@ -3855,22 +3855,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 57,
+          "descriptionLength": 74,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_frozen_divide",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 57,
-              "minimum": 65,
-              "text": "隘口在此陡然下沉，腳下的藍冰裂出深不見底的紋路，冷風從裂縫中嗚咽而出。北方是隘口的冰橋，南方則是冰封雪原一望無際的凍土荒野。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "frostbite_pass_blue_ice_bridge",
@@ -3918,10 +3907,12 @@
         {
           "id": "frostbite_pass_fill_n19_n12",
           "zone": "frostbite_pass",
-          "name": "隘口通道",
-          "grade": "C_empty_filler",
+          "name": "雨棚西南冰封坡",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": -19,
           "worldY": -12,
@@ -3941,49 +3932,22 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n19_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n12",
-              "zone": "frostbite_pass",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n19_n13",
           "zone": "frostbite_pass",
-          "name": "凍石小路",
-          "grade": "A_main_transition",
+          "name": "雨棚西界凍石路牌",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": -19,
           "worldY": -13,
@@ -4000,54 +3964,28 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 44,
+          "descriptionLength": 75,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n19_n13",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 44,
-              "minimum": 65,
-              "text": "凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n13",
-              "zone": "frostbite_pass",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n13",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->storm_highlands_rain_shelf 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n19_n14",
           "zone": "frostbite_pass",
-          "name": "霜咬窄道",
-          "grade": "A_main_transition",
+          "name": "高原崖門西凍路牌",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": -19,
           "worldY": -14,
@@ -4064,54 +4002,29 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 45,
+          "descriptionLength": 77,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n19_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 45,
-              "minimum": 65,
-              "text": "隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n14",
-              "zone": "frostbite_pass",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "frostbite_pass_fill_n19_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->storm_highlands_cliff_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n20_n12",
           "zone": "frostbite_pass",
-          "name": "冰封山道",
-          "grade": "C_empty_filler",
+          "name": "東段冰封橫道",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": -20,
           "worldY": -12,
@@ -4131,49 +4044,22 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n20_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n20_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n20_n12",
-              "zone": "frostbite_pass",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n21_n12",
           "zone": "frostbite_pass",
-          "name": "霜咬窄道",
+          "name": "極封門南霜脊",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": -21,
           "worldY": -12,
@@ -4196,47 +4082,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 23,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n21_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n21_n12",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 23,
-              "minimum": 55,
-              "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-            },
-            {
-              "id": "frostbite_pass_fill_n21_n12",
-              "zone": "frostbite_pass",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n22_n14",
           "zone": "frostbite_pass",
-          "name": "冰封山道",
-          "grade": "C_empty_filler",
+          "name": "龍息台東冰裂牆",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": -22,
           "worldY": -14,
@@ -4256,49 +4116,18 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n22_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            },
-            {
-              "id": "frostbite_pass_fill_n22_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 19,
-              "minimum": 55,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            },
-            {
-              "id": "frostbite_pass_fill_n22_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "frostbite_pass_fill_n27_n14",
           "zone": "frostbite_pass",
-          "name": "霜咬窄道",
+          "name": "空山風門東霜牆",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -4325,42 +4154,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "frostbite_pass_fill_n27_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            },
-            {
-              "id": "frostbite_pass_fill_n27_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 19,
-              "minimum": 65,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            },
-            {
-              "id": "frostbite_pass_fill_n27_n14",
-              "zone": "frostbite_pass",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -14744,188 +14542,6 @@
       "text": "鯨骨橋位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。"
     },
     {
-      "id": "frostbite_frozen_divide",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 57,
-      "minimum": 65,
-      "text": "隘口在此陡然下沉，腳下的藍冰裂出深不見底的紋路，冷風從裂縫中嗚咽而出。北方是隘口的冰橋，南方則是冰封雪原一望無際的凍土荒野。"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n13",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 44,
-      "minimum": 65,
-      "text": "凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n13",
-      "zone": "frostbite_pass",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n13",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->storm_highlands_rain_shelf 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 45,
-      "minimum": 65,
-      "text": "隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n14",
-      "zone": "frostbite_pass",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->storm_highlands_cliff_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "frostbite_pass_fill_n20_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n20_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n21_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n21_n12",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 23,
-      "minimum": 55,
-      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。"
-    },
-    {
-      "id": "frostbite_pass_fill_n22_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
-      "id": "frostbite_pass_fill_n22_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 19,
-      "minimum": 55,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
-      "id": "frostbite_pass_fill_n22_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
-      "id": "frostbite_pass_fill_n27_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
-      "id": "frostbite_pass_fill_n27_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 19,
-      "minimum": 65,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
-      "id": "frostbite_pass_fill_n27_n14",
-      "zone": "frostbite_pass",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。"
-    },
-    {
       "id": "frozen_wastes_fill_n24_n17",
       "zone": "frozen_wastes",
       "severity": "error",
@@ -16003,27 +15619,6 @@
     {
       "id": "blackwood_fill_n17_13",
       "zone": "blackwood",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "frostbite_pass_fill_n19_n12",
-      "zone": "frostbite_pass",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "frostbite_pass_fill_n20_n12",
-      "zone": "frostbite_pass",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "frostbite_pass_fill_n21_n12",
-      "zone": "frostbite_pass",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"

@@ -1241,9 +1241,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n19_n12": {
     "id": "frostbite_pass_fill_n19_n12",
-    "name": "隘口通道",
+    "name": "雨棚西南冰封坡",
     "zone": "frostbite_pass",
-    "description": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+    "description": "雨棚西南冰封坡位在風暴高原雨棚西南側，北面東界凍石小路滴著冰水，西側冰封橫道被硬雪堵住。坡面結成薄冰，是純 blocker，避免高原邊界向南外擴。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 8,
@@ -1253,13 +1253,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n19_n13": {
     "id": "frostbite_pass_fill_n19_n13",
-    "name": "凍石小路",
+    "name": "雨棚西界凍石路牌",
     "zone": "frostbite_pass",
-    "description": "凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。",
+    "description": "雨棚西界凍石路牌位在霜咬隘口東側，北面崖門西界繼續抬升，南側薄冰坡被冷雨封住，東邊風暴高原雨棚有濕暖氣流。路牌標示這裡是跨區邊界路線端點，專門銜接隘口與高原雨棚。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "storm_highlands_rain_shelf"
+        "targetRoomId": "storm_highlands_rain_shelf",
+        "description": "沿結冰雨痕與濕石路牌東行，穿過邊界進入風暴高原雨棚。"
       }
     ],
     "mapSymbol": "[·]",
@@ -1270,13 +1271,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n19_n14": {
     "id": "frostbite_pass_fill_n19_n14",
-    "name": "霜咬窄道",
+    "name": "高原崖門西凍路牌",
     "zone": "frostbite_pass",
-    "description": "隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。",
+    "description": "高原崖門西凍路牌位在霜咬隘口東北界，北面惡魔邊境冷影壓在山脊上，南側雨棚西界凍石路繼續下滑，東邊風暴高原崖門透出濕暖風。這裡是跨區邊界路線端點，只銜接隘口與高原崖門。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "storm_highlands_cliff_gate"
+        "targetRoomId": "storm_highlands_cliff_gate",
+        "description": "踩過碎冰砂石與風削路牌向東，進入風暴高原崖門。"
       }
     ],
     "mapSymbol": "[·]",
@@ -1287,9 +1289,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n20_n12": {
     "id": "frostbite_pass_fill_n20_n12",
-    "name": "冰封山道",
+    "name": "東段冰封橫道",
     "zone": "frostbite_pass",
-    "description": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+    "description": "東段冰封橫道夾在雨棚西南冰封坡與極封門南側之間，東面薄冰坡反光刺眼，西面霜咬窄道被硬雪壓低。冰面裂縫密集，是純 blocker，不作正式通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -1299,9 +1301,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n21_n12": {
     "id": "frostbite_pass_fill_n21_n12",
-    "name": "霜咬窄道",
+    "name": "極封門南霜脊",
     "zone": "frostbite_pass",
-    "description": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+    "description": "極封門南霜脊位在極封門南面，北側門柱覆滿藍霜，西邊北行山脊露出風削石階，東側冰封橫道反著白光。這裡是 blocker，用霜脊與倒冰柱封住極封門背面的外側空地。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -1311,9 +1313,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n22_n14": {
     "id": "frostbite_pass_fill_n22_n14",
-    "name": "冰封山道",
+    "name": "龍息台東冰裂牆",
     "zone": "frostbite_pass",
-    "description": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+    "description": "龍息台東冰裂牆位在龍息岩棚北側偏東，南面岩棚有焦黑霜痕，西邊雨雪哨的旗索在風裡繃緊。冰牆裂縫灌出刺骨冷風，是純 blocker，封住岩棚外側不穩定斜面。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1323,9 +1325,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "frostbite_pass_fill_n27_n14": {
     "id": "frostbite_pass_fill_n27_n14",
-    "name": "霜咬窄道",
+    "name": "空山風門東霜牆",
     "zone": "frostbite_pass",
-    "description": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+    "description": "空山風門東霜牆位在霜咬隘口西北界，西面空山入口風門發出低鳴，北側雪門路牌被冰霜覆住，東邊凍折返道消失在白霧裡。這裡是 border blocker，霜牆標示空山與隘口分界，不開跨區路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4618,7 +4620,7 @@ export const STATIC_WORLD_BRIDGE_ROOMS: Record<string, RoomDef> = {
     "id": "frostbite_frozen_divide",
     "name": "霜裂分界",
     "zone": "frostbite_pass",
-    "description": "隘口在此陡然下沉，腳下的藍冰裂出深不見底的紋路，冷風從裂縫中嗚咽而出。北方是隘口的冰橋，南方則是冰封雪原一望無際的凍土荒野。",
+    "description": "霜裂分界位在霜咬隘口與冰封雪原之間，南面藍冰橋仍懸在裂縫上方，北側凍土荒野展開成白色平面。腳下藍冰裂出深不見底的紋路，這裡是跨區 border blocker，只標示雪原邊界，不提供直接穿越。",
     "exits": [],
     "mapSymbol": "[裂]",
     "mapX": 0,
