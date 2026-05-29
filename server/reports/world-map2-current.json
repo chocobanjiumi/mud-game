@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:03:31.605Z",
+  "generatedAt": "2026-05-29T19:07:00.107Z",
   "counts": {
     "zones": 60,
     "rooms": 1514,
@@ -2934,16 +2934,13 @@
     "sapphire_lake_mirror_shallows:south->sapphire_lake_vein_path (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_mirror_shallows:north->sapphire_lake_mineral_spring (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_blue_reed_bed:south->sapphire_lake_herb_shelf (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "sapphire_lake_blue_reed_bed:east->sapphire_lake_glassfish_cove (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_pebble_weir:north->sapphire_lake_water_pocket (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "sapphire_lake_glassfish_cove:west->sapphire_lake_blue_reed_bed (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_glassfish_cove:south->sapphire_lake_beast_scrape (long_path) 玻魚灣回湖獸擦痕需沿水下繩標穿過逆流與沙脊，實際路程長於相鄰一格。",
     "sapphire_lake_glassfish_cove:east->sapphire_lake_lily_cache (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_sunken_step:south->sapphire_lake_relic_pit (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sapphire_lake_sunken_step:west->sapphire_lake_glassfish_cove (long_path) 沉階西側到玻魚灣需繞過塌階與魚群，實際路程長於相鄰一格。",
     "sapphire_lake_sunken_step:north->sapphire_lake_deep_vein_window (long_path) 沉階北側到深脈窗是下探礦光石階與冷水暗流，實際路程長於相鄰一格。",
     "sapphire_lake_mineral_spring:south->sapphire_lake_mirror_shallows (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "sapphire_lake_crystal_sandbar:north->sapphire_lake_lily_cache (long_path) 晶砂洲北側到睡蓮藏點需繞過砂脊與蓮根，實際路程長於相鄰一格。",
     "sapphire_lake_lily_cache:east->sapphire_lake_sapphire_lode (long_path) 睡蓮藏點東側到藍寶礦脈需穿過蓮根與礦砂繩標，實際路程長於相鄰一格。",
     "sapphire_lake_spirit_mirror:east->sapphire_lake_deep_vein_window (long_path) 水靈鏡到深脈窗需沿倒影水道與光紋淺坡折行，實際路程長於相鄰一格。",
     "sapphire_lake_deep_vein_window:west->sapphire_lake_spirit_mirror (long_path) 深脈窗西側回水靈鏡需沿倒影水道與光紋淺坡，實際路程長於相鄰一格。",

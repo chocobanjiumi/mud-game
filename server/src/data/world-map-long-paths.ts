@@ -1562,11 +1562,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "sapphire_lake_blue_reed_bed",
-    "east",
-    "sapphire_lake_glassfish_cove"
-  ],
-  [
-    "sapphire_lake_blue_reed_bed",
     "south",
     "sapphire_lake_herb_shelf"
   ],
@@ -1584,11 +1579,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "sapphire_lake_glassfish_cove",
     "east",
     "sapphire_lake_lily_cache"
-  ],
-  [
-    "sapphire_lake_glassfish_cove",
-    "west",
-    "sapphire_lake_blue_reed_bed"
   ],
   [
     "sapphire_lake_herb_shelf",

@@ -3164,7 +3164,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "湖畔小路",
     "zone": "sapphire_lake",
     "description": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "sapphire_lake_blue_reed_bed",
+        "description": "湖畔小路西返藍蘆葦帶"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "sapphire_lake_glassfish_cove",
+        "description": "湖畔小路東接玻魚灣"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 3,
     "mapY": 2,
@@ -3251,7 +3262,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "湖邊草地",
     "zone": "sapphire_lake",
     "description": "沿著湖岸延伸的通道，水面波光粼粼。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "sapphire_lake_sapphire_lode",
+        "description": "湖邊草地西返藍寶礦脈"
+      },
+      {
+        "direction": "north",
+        "targetRoomId": "sapphire_lake_lily_cache",
+        "description": "湖邊草地北接睡蓮藏點"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 7,
     "mapY": 1,
