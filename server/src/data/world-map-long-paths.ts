@@ -981,11 +981,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "lakeside_hidden_canal"
   ],
   [
-    "magma_river",
-    "east",
-    "volcano_crystal_vent"
-  ],
-  [
     "marsh_of_mirrors_blackwater_path",
     "north",
     "marsh_of_mirrors_crooked_boardwalk"
@@ -2204,41 +2199,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "village_outskirts",
     "west",
     "village_backhill"
-  ],
-  [
-    "volcano_ash_field",
-    "south",
-    "volcano_lava_bridge"
-  ],
-  [
-    "volcano_basalt_steps",
-    "north",
-    "volcano_sulfur_springs"
-  ],
-  [
-    "volcano_basalt_steps",
-    "south",
-    "volcano_colossus_arena"
-  ],
-  [
-    "volcano_colossus_arena",
-    "north",
-    "volcano_basalt_steps"
-  ],
-  [
-    "volcano_crystal_vent",
-    "west",
-    "magma_river"
-  ],
-  [
-    "volcano_lava_bridge",
-    "north",
-    "volcano_ash_field"
-  ],
-  [
-    "volcano_sulfur_springs",
-    "south",
-    "volcano_basalt_steps"
   ],
   [
     "weapon_shop",

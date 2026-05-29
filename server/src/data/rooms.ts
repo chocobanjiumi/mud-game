@@ -3957,7 +3957,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'lava_trail', description: '回到熔岩小徑' },
       { direction: 'south', targetRoomId: 'obsidian_cave', description: '南側岩漿河沿冷卻黑石河岸下切，穿過熱浪裂階與漆黑洞口抵達黑曜石洞', edgeKind: 'long_path', edgeNote: '岩漿河到黑曜石洞需沿冷卻河岸與熱浪裂階下切，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '晶簇噴氣口在東側發亮' },
+      { direction: 'east', targetRoomId: 'volcano_steam_lift', description: '東側蒸汽管線通往升降梯' },
     ],
     monsters: [
       { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 45 },
@@ -4052,7 +4052,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。東側可聽見蒸汽升降梯齒輪聲，但實際需從下層採場或熔岩橋維修階繞行。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_base', description: '回到火山山腳' },
-      { direction: 'south', targetRoomId: 'forge_hall', description: '南側矮人礦坑沿礦車軌道下行，穿過支撐木架與熱風升井抵達鍛造大廳', edgeKind: 'long_path', edgeNote: '矮人礦坑到鍛造大廳需沿礦車軌道與熱風升井下行，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'forge_hall', description: '東側礦車軌道接往鍛造大廳' },
     ],
     monsters: [
       { monsterId: 'dwarf_guard', maxCount: 3, respawnSeconds: 55 },
@@ -4080,8 +4080,9 @@ export const ROOMS: Record<string, RoomDef> = {
       '空氣中充斥著灼熱的金屬氣味和淬火時蒸騰的白色蒸汽，令人彷彿置身於火焰的心臟。' +
       '一位肌肉虯結的矮人鐵匠正揮舞著比他手臂還粗的戰錘鍛打一塊通紅的鋼胚，他的技藝堪稱傳奇。北面回矮人礦坑，東側庫房堆滿礦錠；玩家可 craft、修理或接鍛造委託，inspect 熔爐風口可發現火元素異常。牆上的訂單板列出武器、護甲和飾品需求，提示玩家把採礦、分解與重鑄材料帶回此處處理。',
     exits: [
-      { direction: 'north', targetRoomId: 'dwarf_mine', description: '北側鍛造大廳沿熱風升井上行，穿過支撐木架與礦車軌道回到矮人礦坑', edgeKind: 'long_path', edgeNote: '鍛造大廳回矮人礦坑需沿熱風升井與礦車軌道上行，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'volcano_forge_storage', description: '東側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房', edgeKind: 'long_path', edgeNote: '鍛造大廳到鍛造庫房需沿服務長廊與黑鐵庫門轉入，避免與星隕坑入口座標重疊，屬於長路徑。' },
+      { direction: 'west', targetRoomId: 'dwarf_mine', description: '西側礦車軌道回到矮人礦坑' },
+      { direction: 'east', targetRoomId: 'volcano_ember_barracks', description: '東側黑鐵巡邏走廊通往餘燼兵房' },
+      { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '南側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房', edgeKind: 'long_path', edgeNote: '鍛造大廳到鍛造庫房需沿服務長廊與黑鐵庫門轉入，避免與星隕坑入口座標重疊，屬於長路徑。' },
     ],
     npcs: ['dwarf_blacksmith'],
     monsters: [
@@ -4113,13 +4114,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '岩石巨人如同山峰的延伸般矗立不動，火焰精靈則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
     exits: [
       { direction: 'north', targetRoomId: 'fire_temple_entrance', description: '回到火焰神殿入口' },
-      {
-        direction: 'east',
-        targetRoomId: 'volcano_colossus_arena',
-        description: '東側必須沿山巔封印鏈外圈繞行，穿過震動裂縫後才到熔岩巨像競技台',
-        edgeKind: 'long_path',
-        edgeNote: '火山頂到熔岩巨像競技台需要繞過山巔封印鏈與裂縫，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'volcano_zone_fill_32_25', description: '西側火山石路回到玄武岩階方向' },
+      { direction: 'east', targetRoomId: 'volcano_colossus_arena', description: '東側封印鏈石台通往熔岩巨像競技台' },
     ],
     monsters: [
       { monsterId: 'rock_giant', maxCount: 2, respawnSeconds: 65 },
@@ -4146,7 +4142,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方灰原延伸向更深的火山地帶，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'volcano_base', description: '灰路回到火山山腳' },
-      { direction: 'south', targetRoomId: 'volcano_lava_bridge', description: '灼熱風指向熔岩橋' },
+      { direction: 'south', targetRoomId: 'volcano_zone_fill_31_22', description: '南側灰燼邊道通往火山邊道' },
     ],
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 3, respawnSeconds: 35 },
@@ -4166,7 +4162,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連硫磺熱泉，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'volcano_ash_field', description: '回到火山灰原' },
+      { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '北側熱泉石路回到硫磺熱泉' },
       {
         direction: 'east',
         targetRoomId: 'volcano_crater',
@@ -4174,6 +4170,7 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '熔岩橋到火山口需要沿岩漿湖外圈上升，屬於長路徑。',
       },
+      { direction: 'south', targetRoomId: 'volcano_basalt_steps', description: '南側熔岩橋尾接到玄武岩階' },
     ],
     monsters: [
       { monsterId: 'flame_spirit', maxCount: 2, respawnSeconds: 45 },
@@ -4193,6 +4190,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西側管線通往熔岩橋但維修階已坍塌，東側能聽見礦坑敲擊聲但門軌卡死，南方通向黑曜石採場。玩家可 inspect 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。',
     exits: [
+      { direction: 'west', targetRoomId: 'magma_river', description: '西側蒸汽管線回到岩漿河' },
+      { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '東側紅色晶簇接往火晶噴氣口' },
       {
         direction: 'south',
         targetRoomId: 'volcano_obsidian_quarry',
@@ -4220,7 +4219,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '硫磺谷西側的熱泉池不斷冒泡，黃色結晶沿池緣生長，毒霧把遠處岩壁染成暗綠。東面回硫磺谷，南側可攀上玄武岩階。玩家可 gather 硫磺與熱泉礦泥，inspect 蒸汽節奏避開噴發，也要注意熔岩蟲會從沸騰池底突然鑽出。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'sulfur_valley', description: '熱霧散處回硫磺谷' },
-      { direction: 'south', targetRoomId: 'volcano_basalt_steps', description: '黑色石階通往高處' },
+      { direction: 'north', targetRoomId: 'volcano_zone_fill_31_22', description: '北側硫磺熱霧回到火山邊道' },
+      { direction: 'south', targetRoomId: 'volcano_lava_bridge', description: '南側黑色石路通往熔岩橋' },
     ],
     monsters: [
       { monsterId: 'lava_worm', maxCount: 2, respawnSeconds: 50 },
@@ -4240,13 +4240,11 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'west', targetRoomId: 'dwarf_mine', description: '西側餘燼兵房沿黑鐵巡邏走廊折返，穿過封閉玄武岩牆與礦坑側門回到矮人礦坑', edgeKind: 'long_path', edgeNote: '餘燼兵房回矮人礦坑需沿黑鐵巡邏走廊與礦坑側門折返，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'forge_hall', description: '西側黑鐵巡邏走廊回到鍛造大廳' },
       {
         direction: 'south',
-        targetRoomId: 'volcano_forge_storage',
-        description: '南側貨道穿過兩道黑鐵閘門與熱風管線，繞下兵房後方才到鍛造庫房',
-        edgeKind: 'long_path',
-        edgeNote: '餘燼兵房到鍛造庫房需要穿越後勤貨道與熱風管線，屬於長路徑。',
+        targetRoomId: 'volcano_crystal_vent',
+        description: '南側晶光裂道下到火晶噴氣口',
       },
     ],
     monsters: [
@@ -4266,7 +4264,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側能聽見餘燼兵房的鐵門聲但岩壁封死，南邊黑石路只留下通往採場的舊標記，實際需從黑曜石洞或升降梯繞行。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'magma_river', description: '裂縫回到岩漿河' },
+      { direction: 'west', targetRoomId: 'volcano_steam_lift', description: '西側蒸汽管線回到蒸汽升降梯' },
+      { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '北側晶光裂道回到餘燼兵房' },
+      { direction: 'south', targetRoomId: 'volcano_forge_storage', description: '南側冷卻貨道接往鍛造庫房' },
     ],
     monsters: [
       { monsterId: 'fire_salamander', maxCount: 2, respawnSeconds: 35 },
@@ -4319,15 +4319,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回熔岩橋，東面岩壁通道延伸向深處，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '石階下方是硫磺熱泉' },
-      {
-        direction: 'east',
-        targetRoomId: 'fire_temple_entrance',
-        description: '東側玄武岩階沿內壁折返上升，穿過落灰刻痕與火盆外廊後才接回神殿入口',
-        edgeKind: 'long_path',
-        edgeNote: '玄武岩階到火焰神殿入口需要沿內壁外廊折返，屬於長路徑。',
-      },
-      { direction: 'south', targetRoomId: 'volcano_colossus_arena', description: '高台通往巨像競技台' },
+      { direction: 'north', targetRoomId: 'volcano_lava_bridge', description: '北側黑色石階下到熔岩橋' },
+      { direction: 'east', targetRoomId: 'volcano_zone_fill_32_25', description: '東側玄武岩台階接往火山石路' },
     ],
     monsters: [
       { monsterId: 'basalt_ward_sentinel', maxCount: 1, respawnSeconds: 1200 },
@@ -4351,10 +4344,8 @@ export const ROOMS: Record<string, RoomDef> = {
       { direction: 'west', targetRoomId: 'forge_hall', description: '西側鍛造庫房穿過黑鐵庫門折返，沿礦錠推車與冷卻架服務長廊回到鍛造大廳', edgeKind: 'long_path', edgeNote: '鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。' },
       {
         direction: 'north',
-        targetRoomId: 'volcano_ember_barracks',
-        description: '北側貨道沿熱風管線持續上行，穿過兩道黑鐵閘門後才接回餘燼兵房後門',
-        edgeKind: 'long_path',
-        edgeNote: '鍛造庫房到餘燼兵房需要穿越後勤貨道與黑鐵閘門，屬於長路徑。',
+        targetRoomId: 'volcano_crystal_vent',
+        description: '北側冷卻貨道回到火晶噴氣口',
       },
     ],
     monsters: [
@@ -4378,14 +4369,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，玩家可 inspect 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。',
     exits: [
-      {
-        direction: 'west',
-        targetRoomId: 'volcano_summit',
-        description: '西側退路沿封印鏈外圈繞過裂縫與噴火孔，最後才回到火山頂的安全岩脊',
-        edgeKind: 'long_path',
-        edgeNote: '熔岩巨像競技台回火山頂需要沿封印鏈外圈繞行，屬於長路徑。',
-      },
-      { direction: 'north', targetRoomId: 'volcano_basalt_steps', description: '封印台邊緣接玄武岩階' },
+      { direction: 'west', targetRoomId: 'volcano_summit', description: '西側封印鏈石台回到火山頂' },
     ],
     monsters: [
       { monsterId: 'lava_colossus', maxCount: 1, respawnSeconds: 1800 },

@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-05-29T18:23:09.125Z",
+  "generatedAt": "2026-05-29T18:27:06.803Z",
   "counts": {
-    "totalLongPathRecords": 992,
-    "staticWorldLongPathEntries": 484,
-    "runtimeLongPathExits": 992,
+    "totalLongPathRecords": 976,
+    "staticWorldLongPathEntries": 476,
+    "runtimeLongPathExits": 976,
     "staticOnlyEntries": 0,
-    "roomEdgeOnlyEntries": 508,
+    "roomEdgeOnlyEntries": 500,
     "missingSourceRooms": 0,
     "missingTargetRooms": 0,
-    "sameZone": 955,
+    "sameZone": 939,
     "crossZone": 37,
     "hasExistingIntermediateFillerOrStaticRoomToConnect": 25,
     "classifications": {
       "A_coordinate_error_candidate": 0,
-      "B_missing_static_corridor": 93,
-      "C_special_route": 899
+      "B_missing_static_corridor": 82,
+      "C_special_route": 894
     }
   },
   "records": [
@@ -7844,54 +7844,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "dwarf_mine:south->forge_hall",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dwarf_mine",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 21
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "forge_hall",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 21
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 33,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": 1,
-        "dy": 0,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "南側矮人礦坑沿礦車軌道下行，穿過支撐木架與熱風升井抵達鍛造大廳",
-      "edgeNote": "矮人礦坑到鍛造大廳需沿礦車軌道與熱風升井下行，實際路程長於相鄰一格。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "eastern_coast_broken_pier:north->fishing_dock",
       "sources": [
         "room-edge-kind"
@@ -10229,7 +10181,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "forge_hall:east->volcano_forge_storage",
+      "key": "forge_hall:south->volcano_forge_storage",
       "sources": [
         "room-edge-kind"
       ],
@@ -10239,7 +10191,7 @@
         "worldX": 34,
         "worldY": 21
       },
-      "direction": "east",
+      "direction": "south",
       "target": {
         "roomId": "volcano_forge_storage",
         "zone": "volcano_zone",
@@ -10247,8 +10199,8 @@
         "worldY": 23
       },
       "expectedAdjacentCoordinate": {
-        "worldX": 35,
-        "worldY": 21
+        "worldX": 34,
+        "worldY": 22
       },
       "actualDelta": {
         "dx": 1,
@@ -10265,56 +10217,8 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "東側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房",
+      "description": "南側鍛造大廳沿服務長廊轉入，穿過冷卻架、礦錠推車與黑鐵庫門抵達鍛造庫房",
       "edgeNote": "鍛造大廳到鍛造庫房需沿服務長廊與黑鐵庫門轉入，避免與星隕坑入口座標重疊，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "forge_hall:north->dwarf_mine",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "forge_hall",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 21
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "dwarf_mine",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 21
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 20
-      },
-      "actualDelta": {
-        "dx": -1,
-        "dy": 0,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "北側鍛造大廳沿熱風升井上行，穿過支撐木架與礦車軌道回到矮人礦坑",
-      "edgeNote": "鍛造大廳回矮人礦坑需沿熱風升井與礦車軌道上行，實際路程長於相鄰一格。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
@@ -19765,63 +19669,6 @@
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "magma_river:east->volcano_crystal_vent",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "magma_river",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 22
-      },
-      "direction": "east",
-      "target": {
-        "roomId": "volcano_crystal_vent",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 22
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": 2,
-        "dy": 0,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 34,
-            "worldY": 22,
-            "roomId": "volcano_steam_lift",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「火晶噴氣口」就在東側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
@@ -44010,239 +43857,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "volcano_ash_field:south->volcano_lava_bridge",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_ash_field",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 21
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "volcano_lava_bridge",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 24
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 31,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": 31,
-            "worldY": 22,
-            "roomId": "volcano_zone_fill_31_22",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": true
-          },
-          {
-            "worldX": 31,
-            "worldY": 23,
-            "roomId": "volcano_sulfur_springs",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「熔岩橋」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_basalt_steps:east->fire_temple_entrance",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_basalt_steps",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 25
-      },
-      "direction": "east",
-      "target": {
-        "roomId": "fire_temple_entrance",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 24
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 32,
-        "worldY": 25
-      },
-      "actualDelta": {
-        "dx": 2,
-        "dy": -1,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "not-same-axis",
-        "distance": 3,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "東側玄武岩階沿內壁折返上升，穿過落灰刻痕與火盆外廊後才接回神殿入口",
-      "edgeNote": "玄武岩階到火焰神殿入口需要沿內壁外廊折返，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_basalt_steps:north->volcano_sulfur_springs",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_basalt_steps",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 25
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "volcano_sulfur_springs",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 23
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 31,
-        "worldY": 24
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 31,
-            "worldY": 24,
-            "roomId": "volcano_lava_bridge",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「硫磺熱泉」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_basalt_steps:south->volcano_colossus_arena",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_basalt_steps",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 25
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "volcano_colossus_arena",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 25
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 31,
-        "worldY": 26
-      },
-      "actualDelta": {
-        "dx": 3,
-        "dy": 0,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": 32,
-            "worldY": 25,
-            "roomId": "volcano_zone_fill_32_25",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": true
-          },
-          {
-            "worldX": 33,
-            "worldY": 25,
-            "roomId": "volcano_summit",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「熔岩巨像競技台」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "volcano_base:north->elf_ruins",
       "sources": [
         "room-edge-kind"
@@ -44285,118 +43899,6 @@
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
         "rationale": "跨 zone 或需要區域邊界敘事，不能單靠同 zone 直線補格處理。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_colossus_arena:north->volcano_basalt_steps",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_colossus_arena",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 25
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "volcano_basalt_steps",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 25
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 24
-      },
-      "actualDelta": {
-        "dx": -3,
-        "dy": 0,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": 33,
-            "worldY": 25,
-            "roomId": "volcano_summit",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": 32,
-            "worldY": 25,
-            "roomId": "volcano_zone_fill_32_25",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": true
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「玄武岩階」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_colossus_arena:west->volcano_summit",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_colossus_arena",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 25
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "volcano_summit",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 25
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 33,
-        "worldY": 25
-      },
-      "actualDelta": {
-        "dx": -1,
-        "dy": 0,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "西側退路沿封印鏈外圈繞過裂縫與噴火孔，最後才回到火山頂的安全岩脊",
-      "edgeNote": "熔岩巨像競技台回火山頂需要沿封印鏈外圈繞行，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
       },
       "missingSourceRoom": false,
@@ -44499,231 +44001,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "volcano_crystal_vent:west->magma_river",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_crystal_vent",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 22
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "magma_river",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 22
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": -2,
-        "dy": 0,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 34,
-            "worldY": 22,
-            "roomId": "volcano_steam_lift",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「岩漿河」就在西側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_ember_barracks:south->volcano_forge_storage",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_ember_barracks",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 21
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "volcano_forge_storage",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 23
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 35,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 35,
-            "worldY": 22,
-            "roomId": "volcano_crystal_vent",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "南側貨道穿過兩道黑鐵閘門與熱風管線，繞下兵房後方才到鍛造庫房",
-      "edgeNote": "餘燼兵房到鍛造庫房需要穿越後勤貨道與熱風管線，屬於長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_ember_barracks:west->dwarf_mine",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_ember_barracks",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 21
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "dwarf_mine",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 21
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 21
-      },
-      "actualDelta": {
-        "dx": -2,
-        "dy": 0,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 34,
-            "worldY": 21,
-            "roomId": "forge_hall",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "西側餘燼兵房沿黑鐵巡邏走廊折返，穿過封閉玄武岩牆與礦坑側門回到矮人礦坑",
-      "edgeNote": "餘燼兵房回矮人礦坑需沿黑鐵巡邏走廊與礦坑側門折返，實際路程長於相鄰一格。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_forge_storage:north->volcano_ember_barracks",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_forge_storage",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 23
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "volcano_ember_barracks",
-        "zone": "volcano_zone",
-        "worldX": 35,
-        "worldY": 21
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 35,
-        "worldY": 22
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 35,
-            "worldY": 22,
-            "roomId": "volcano_crystal_vent",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "北側貨道沿熱風管線持續上行，穿過兩道黑鐵閘門後才接回餘燼兵房後門",
-      "edgeNote": "鍛造庫房到餘燼兵房需要穿越後勤貨道與黑鐵閘門，屬於長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "volcano_forge_storage:west->forge_hall",
       "sources": [
         "room-edge-kind"
@@ -44820,70 +44097,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "volcano_lava_bridge:north->volcano_ash_field",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_lava_bridge",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 24
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "volcano_ash_field",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 21
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 31,
-        "worldY": 23
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": 31,
-            "worldY": 23,
-            "roomId": "volcano_sulfur_springs",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": 31,
-            "worldY": 22,
-            "roomId": "volcano_zone_fill_31_22",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": true
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「火山灰原」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "volcano_obsidian_quarry:north->volcano_steam_lift",
       "sources": [
         "room-edge-kind"
@@ -44970,111 +44183,6 @@
       },
       "description": "南側下層軌道先繞過蒸汽管與斷裂升降架，下降兩層後才抵達黑曜石採場",
       "edgeNote": "蒸汽升降梯到黑曜石採場存在高度差與繞行軌道，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_sulfur_springs:south->volcano_basalt_steps",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_sulfur_springs",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 23
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "volcano_basalt_steps",
-        "zone": "volcano_zone",
-        "worldX": 31,
-        "worldY": 25
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 31,
-        "worldY": 24
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 31,
-            "worldY": 24,
-            "roomId": "volcano_lava_bridge",
-            "zone": "volcano_zone",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「玄武岩階」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "volcano_summit:east->volcano_colossus_arena",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "volcano_summit",
-        "zone": "volcano_zone",
-        "worldX": 33,
-        "worldY": 25
-      },
-      "direction": "east",
-      "target": {
-        "roomId": "volcano_colossus_arena",
-        "zone": "volcano_zone",
-        "worldX": 34,
-        "worldY": 25
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 34,
-        "worldY": 25
-      },
-      "actualDelta": {
-        "dx": 1,
-        "dy": 0,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "東側必須沿山巔封印鏈外圈繞行，穿過震動裂縫後才到熔岩巨像競技台",
-      "edgeNote": "火山頂到熔岩巨像競技台需要繞過山巔封印鏈與裂縫，屬於長路徑。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",

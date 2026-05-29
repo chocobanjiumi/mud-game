@@ -3809,8 +3809,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "volcano_zone_fill_31_22",
     "name": "火山邊道",
     "zone": "volcano_zone",
-    "description": "火山邊緣的小路，噴氣孔不時噴出刺鼻的蒸汽。",
-    "exits": [],
+    "description": "火山灰原南側的灰燼邊道夾在黑色灰丘與硫磺熱霧之間，腳下可見被熱風燒裂的玄武岩。北面回火山灰原，南側熱氣逐漸變黃並接往硫磺熱泉，路旁噴氣孔會提醒玩家放慢腳步觀察噴發節奏。",
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "volcano_ash_field",
+        "description": "北側灰燼邊道回到火山灰原"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "volcano_sulfur_springs",
+        "description": "南側硫磺熱霧接往硫磺熱泉"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 0,
     "mapY": 1,
@@ -3821,8 +3832,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "volcano_zone_fill_32_25",
     "name": "火山石路",
     "zone": "volcano_zone",
-    "description": "火山邊緣的小路，噴氣孔不時噴出刺鼻的蒸汽。",
-    "exits": [],
+    "description": "玄武岩階東側的火山石路沿著山巔封印鏈外圈延伸，黑石地面被熔岩光照成暗紅。西面回玄武岩階，東側能看到火山頂的開闊岩脊，路旁裂縫會噴出短促熱風，適合玩家先判斷落腳點再推進。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "volcano_basalt_steps",
+        "description": "西側玄武岩台階回到玄武岩階"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "volcano_summit",
+        "description": "東側封印鏈石路通往火山頂"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 1,
     "mapY": 4,
