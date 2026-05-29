@@ -65,8 +65,16 @@ type LongPathAuditRecord = {
   intermediateScan: IntermediateScan;
   description: string | null;
   edgeNote: string | null;
+  classification: LongPathClassification;
   missingSourceRoom: boolean;
   missingTargetRoom: boolean;
+};
+
+type LongPathClassification = {
+  code: 'A_coordinate_error_candidate' | 'B_missing_static_corridor' | 'C_special_route';
+  label: string;
+  rationale: string;
+  recommendedAction: string;
 };
 
 const CARDINAL_DELTAS: Record<Direction, { dx: number; dy: number }> = {
@@ -104,6 +112,7 @@ const staticOnly = records.filter(record =>
 const edgeOnly = records.filter(record =>
   record.sources.includes('room-edge-kind') && !record.sources.includes('static-world-long-paths'),
 );
+const classificationCounts = countClassifications(records);
 
 const report = {
   generatedAt: new Date().toISOString(),
@@ -120,6 +129,7 @@ const report = {
     hasExistingIntermediateFillerOrStaticRoomToConnect: records.filter(record =>
       record.hasExistingIntermediateFillerOrStaticRoomToConnect,
     ).length,
+    classifications: classificationCounts,
   },
   records,
 };
@@ -141,6 +151,9 @@ console.log(`Missing target rooms: ${report.counts.missingTargetRooms}`);
 console.log(`Same-zone: ${report.counts.sameZone}`);
 console.log(`Cross-zone: ${report.counts.crossZone}`);
 console.log(`Existing intermediate static/filler route candidates: ${report.counts.hasExistingIntermediateFillerOrStaticRoomToConnect}`);
+console.log(`A coordinate-error candidates: ${report.counts.classifications.A_coordinate_error_candidate}`);
+console.log(`B missing-static-corridor candidates: ${report.counts.classifications.B_missing_static_corridor}`);
+console.log(`C special-route candidates: ${report.counts.classifications.C_special_route}`);
 if (write) console.log(`Snapshot written: ${outPath}`);
 
 function upsertRecord(
@@ -178,6 +191,9 @@ function upsertRecord(
     : { dx: null, dy: null, manhattan: null };
   const intermediateScan = scanIntermediateRooms(sourceCoord, targetCoord);
 
+  const description = exit?.description ?? null;
+  const edgeNote = exit?.edgeNote ?? null;
+
   recordsByKey.set(key, {
     key,
     sources: [source],
@@ -200,10 +216,80 @@ function upsertRecord(
     crossZone: room && target ? room.zone !== target.zone : null,
     hasExistingIntermediateFillerOrStaticRoomToConnect: intermediateScan.hasCompleteIntermediateRoute,
     intermediateScan,
-    description: exit?.description ?? null,
-    edgeNote: exit?.edgeNote ?? null,
+    description,
+    edgeNote,
+    classification: classifyLongPath({
+      direction,
+      room,
+      target,
+      actualDelta,
+      intermediateScan,
+      description,
+      edgeNote,
+    }),
     missingSourceRoom: !room,
     missingTargetRoom: !target,
+  });
+}
+
+function classifyLongPath(input: {
+  direction: Direction;
+  room: RoomDef | undefined;
+  target: RoomDef | undefined;
+  actualDelta: LongPathAuditRecord['actualDelta'];
+  intermediateScan: IntermediateScan;
+  description: string | null;
+  edgeNote: string | null;
+}): LongPathClassification {
+  const text = `${input.description ?? ''} ${input.edgeNote ?? ''}`;
+  const explicitlyLongRoute = /長於相鄰一格|實際路程|繞|折返|穿過|越過|沿|渡|船|橋|階|坡|洞|門|入口|傳送/u.test(text);
+  const crossZone = Boolean(input.room && input.target && input.room.zone !== input.target.zone);
+
+  if (
+    input.intermediateScan.mode === 'same-axis' &&
+    input.intermediateScan.distance > 1 &&
+    !crossZone &&
+    !explicitlyLongRoute
+  ) {
+    return {
+      code: 'A_coordinate_error_candidate',
+      label: 'A 類：座標錯誤候選',
+      rationale: '同 zone、同軸且沒有足夠長路徑敘事，可能只是普通出口座標未排成相鄰格。',
+      recommendedAction: '人工確認語意；若只是普通相鄰出口，直接改房間座標並移除 long_path。',
+    };
+  }
+
+  if (
+    input.intermediateScan.mode === 'same-axis' &&
+    input.intermediateScan.distance > 1 &&
+    !crossZone
+  ) {
+    return {
+      code: 'B_missing_static_corridor',
+      label: 'B 類：缺少中間通道候選',
+      rationale: 'source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。',
+      recommendedAction: '補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。',
+    };
+  }
+
+  return {
+    code: 'C_special_route',
+    label: 'C 類：真正特殊路徑候選',
+    rationale: crossZone
+      ? '跨 zone 或需要區域邊界敘事，不能單靠同 zone 直線補格處理。'
+      : '路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。',
+    recommendedAction: '人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。',
+  };
+}
+
+function countClassifications(records: LongPathAuditRecord[]): Record<LongPathClassification['code'], number> {
+  return records.reduce<Record<LongPathClassification['code'], number>>((counts, record) => {
+    counts[record.classification.code] += 1;
+    return counts;
+  }, {
+    A_coordinate_error_candidate: 0,
+    B_missing_static_corridor: 0,
+    C_special_route: 0,
   });
 }
 
