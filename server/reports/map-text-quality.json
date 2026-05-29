@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:54:30.899Z",
+  "generatedAt": "2026-05-29T21:55:55.616Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,10 +366,10 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 13
+    "issues": 11
   },
   "issuesByKind": {
-    "exit.description": 5,
+    "exit.description": 3,
     "room.description": 8
   },
   "issues": [
@@ -381,24 +381,6 @@
       "minimumLength": 20,
       "text": "",
       "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "glass_dunes/glass_dunes_sun_gate:west->glass_dunes_fill_0_21",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "glass_dunes/glass_dunes_buried_caravan:west->glass_dunes_fill_0_20",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
     },
     {
       "id": "blackwood/blackwood_wolf_den:north->amber_forest_fill_n13_11",

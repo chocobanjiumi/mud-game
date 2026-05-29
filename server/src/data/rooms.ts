@@ -5400,6 +5400,8 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'sapphire_lake_pebble_weir:west': '西側沿鵝卵石水堰與濕草坡回行，接往巡禮古道終點聖碑',
   'firefly_trail:north': '北側沿螢光林徑與潮濕藤根上行，接往低語溪谷南緣溪霧小路',
   'mist_harbor_fog_gate:west': '西側穿過霧港城門拱影與潮濕路牌亭，接往東方海岸最東端礁水潮徑',
+  'glass_dunes_sun_gate:west': '西側沿日門玻砂脊下行，接往西側玻沙採集界坡',
+  'glass_dunes_buried_caravan:west': '西側繞過半埋車隊殘輪與玻砂堆，接往西側沙脊殘道',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
