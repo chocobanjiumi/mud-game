@@ -4265,13 +4265,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '蜂箱行列回霉斑果園需要穿過蜂道與低枝果樹，屬於長路徑。',
       },
-      {
-        direction: 'south',
-        targetRoomId: 'old_farmland_chicken_coop',
-        description: '南側雞舍在蜂箱盡頭後方，必須沿破籬笆繞過幾排傾倒木箱才能抵達',
-        edgeKind: 'long_path',
-        edgeNote: '蜂箱行列到破雞舍需要沿破籬笆與傾倒蜂箱繞行，屬於長路徑。',
-      },
+      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '東側破籬笆通往雞舍' },
       { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹' },
     ],
     monsters: [
@@ -4298,7 +4292,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_granary', description: '回到小糧倉' },
-      { direction: 'north', targetRoomId: 'old_farmland_chicken_coop', description: '工具棚後方是雞舍' },
+      { direction: 'south', targetRoomId: 'old_farmland_fill_n4_1', description: '南側廢棄農道通往破雞舍' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
@@ -4381,14 +4375,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
-      { direction: 'south', targetRoomId: 'old_farmland_toolshed', description: '破網通往工具棚' },
-      {
-        direction: 'north',
-        targetRoomId: 'old_farmland_beehive_rows',
-        description: '北側蜂箱行列要沿雞舍破籬笆繞行，穿過倒塌木箱與蜂群巡路才到',
-        edgeKind: 'long_path',
-        edgeNote: '破雞舍到蜂箱行列需要沿破籬笆與蜂群巡路繞行，屬於長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'old_farmland_fill_n4_1', description: '北側廢棄農道回到工具棚' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 2, respawnSeconds: 30 },

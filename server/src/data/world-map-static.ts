@@ -2601,7 +2601,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "廢棄農道",
     "zone": "old_farmland",
     "description": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "old_farmland_toolshed",
+        "description": "廢棄農道北返破工具棚"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "old_farmland_chicken_coop",
+        "description": "廢棄農道南接破雞舍"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 4,
     "mapY": 2,

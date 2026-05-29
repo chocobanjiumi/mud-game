@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:16:55.240Z",
+  "generatedAt": "2026-05-29T19:19:28.577Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2460,14 +2460,10 @@
     "old_farmland_abandoned_farmhouse:west->old_farmland_root_cellar (long_path) 荒廢農舍到地下根窖需要穿過低矮根道與塌陷地板，屬於長路徑。",
     "old_farmland_abandoned_farmhouse:east->old_farmland_chicken_coop (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "old_farmland_beehive_rows:west->old_farmland_mildew_orchard (long_path) 蜂箱行列回霉斑果園需要穿過蜂道與低枝果樹，屬於長路徑。",
-    "old_farmland_beehive_rows:south->old_farmland_chicken_coop (long_path) 蜂箱行列到破雞舍需要沿破籬笆與傾倒蜂箱繞行，屬於長路徑。",
     "old_farmland_beehive_rows:north->old_farmland_windbreak_trees (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "old_farmland_toolshed:north->old_farmland_chicken_coop (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "old_farmland_root_cellar:east->old_farmland_abandoned_farmhouse (long_path) 地下根窖回荒廢農舍需要穿過潮濕根道與塌陷地板，屬於長路徑。",
     "old_farmland_root_cellar:south->old_farmland_pumpkin_patch (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "old_farmland_chicken_coop:west->old_farmland_abandoned_farmhouse (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "old_farmland_chicken_coop:south->old_farmland_toolshed (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "old_farmland_chicken_coop:north->old_farmland_beehive_rows (long_path) 破雞舍到蜂箱行列需要沿破籬笆與蜂群巡路繞行，屬於長路徑。",
     "old_farmland_windbreak_trees:south->old_farmland_beehive_rows (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "old_farmland_windbreak_trees:north->old_farmland_stone_marker (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "old_farmland_stone_marker:south->old_farmland_windbreak_trees (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",

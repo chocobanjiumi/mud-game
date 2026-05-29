@@ -1137,11 +1137,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "old_farmland_chicken_coop",
-    "south",
-    "old_farmland_toolshed"
-  ],
-  [
-    "old_farmland_chicken_coop",
     "west",
     "old_farmland_abandoned_farmhouse"
   ],
@@ -1214,11 +1209,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "old_farmland_stone_marker",
     "south",
     "old_farmland_windbreak_trees"
-  ],
-  [
-    "old_farmland_toolshed",
-    "north",
-    "old_farmland_chicken_coop"
   ],
   [
     "old_farmland_windbreak_trees",
