@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
-import MonsterDetailModal from './MonsterDetailModal';
 
 function sendCommand(command: string, echo?: string) {
   window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
@@ -20,22 +19,20 @@ export default function RoomImage() {
   const setSelectedEntity = useGameStore((s) => s.setSelectedEntity);
   const [useFallback, setUseFallback] = useState(false);
   const [hideImage, setHideImage] = useState(false);
-  const [openMonsterId, setOpenMonsterId] = useState<string | null>(null);
-  const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
+  const [openGatheringId, setOpenGatheringId] = useState<string | null>(null);
 
   useEffect(() => {
     setUseFallback(false);
     setHideImage(false);
-    setOpenMonsterId(null);
-    setDetailMonster(null);
+    setOpenGatheringId(null);
   }, [room?.id]);
 
   useEffect(() => {
-    if (!openMonsterId) return;
-    const close = () => setOpenMonsterId(null);
+    if (!openGatheringId) return;
+    const close = () => setOpenGatheringId(null);
     window.addEventListener('click', close);
     return () => window.removeEventListener('click', close);
-  }, [openMonsterId]);
+  }, [openGatheringId]);
 
   if (!room) return null;
 
@@ -44,8 +41,8 @@ export default function RoomImage() {
   const imagePath = useFallback
     ? `/mud/images/zones/${zoneImage}`
     : `/mud/images/rooms/${roomImage}`;
-  const monsterEntities = getMonsterEntities(room);
-  const openMonster = monsterEntities.find((monster) => monster.id === openMonsterId);
+  const gatheringEntities = getGatheringEntities(room);
+  const openGathering = gatheringEntities.find((node) => node.id === openGatheringId);
 
   return (
     <div className="room-image-panel bg-bg-secondary">
@@ -68,64 +65,56 @@ export default function RoomImage() {
         />
       )}
 
-      {monsterEntities.length > 0 && (
+      {gatheringEntities.length > 0 && (
         <div className="scene-monster-strip">
           <div className="scene-monster-strip-head">
-            <span>怪物</span>
-            <span>{monsterEntities.length}</span>
+            <span>採集點</span>
+            <span>{gatheringEntities.length}</span>
           </div>
           <div className="scene-monster-list">
-            {monsterEntities.map((monster) => {
-              const image = getEntityImagePath(monster);
-              const active = monster.id === openMonsterId;
+            {gatheringEntities.map((node) => {
+              const image = getEntityImagePath(node);
+              const active = node.id === openGatheringId;
               return (
                 <button
-                  key={monster.id}
+                  key={node.id}
                   type="button"
                   className={`scene-monster-avatar ${active ? 'scene-monster-avatar-active' : ''}`}
-                  title={monster.label}
+                  title={node.label}
                   onClick={(event) => {
                     event.stopPropagation();
-                    setSelectedEntity(monster);
-                    setOpenMonsterId(active ? null : monster.id);
+                    setSelectedEntity(node);
+                    setOpenGatheringId(active ? null : node.id);
                   }}
                 >
                   {image ? (
                     <img src={image} alt="" loading="lazy" />
                   ) : (
-                    <span>{monster.label.slice(0, 1)}</span>
-                  )}
-                  {typeof monster.hp === 'number' && typeof monster.maxHp === 'number' && (
-                    <b style={{ width: `${Math.max(0, Math.min(100, (monster.hp / Math.max(1, monster.maxHp)) * 100))}%` }} />
+                    <span>{node.label.slice(0, 1)}</span>
                   )}
                 </button>
               );
             })}
           </div>
 
-          {openMonster && (
+          {openGathering && (
             <div className="scene-monster-menu" onClick={(event) => event.stopPropagation()}>
               <div className="scene-monster-menu-title">
-                <span className="truncate">{openMonster.label}</span>
-                {openMonster.subtitle && <small>{openMonster.subtitle}</small>}
+                <span className="truncate">{openGathering.label}</span>
+                {openGathering.subtitle && <small>{openGathering.subtitle}</small>}
               </div>
               <div className="scene-monster-menu-actions">
-                {openMonster.actions.map((action) => (
+                {openGathering.actions.map((action) => (
                   <button
-                    key={`${openMonster.id}-${action.label}-${action.command}`}
+                    key={`${openGathering.id}-${action.label}-${action.command}`}
                     type="button"
                     className={actionClass(action)}
                     disabled={action.disabled}
                     title={action.reason}
                     onClick={() => {
                       if (action.disabled) return;
-                      if (action.label === '查看') {
-                        setDetailMonster(openMonster);
-                        setOpenMonsterId(null);
-                        return;
-                      }
-                      sendCommand(action.command, `${action.label} ${openMonster.label}`);
-                      setOpenMonsterId(null);
+                      sendCommand(action.command, `${action.label} ${openGathering.label}`);
+                      setOpenGatheringId(null);
                     }}
                   >
                     {action.label}
@@ -136,26 +125,19 @@ export default function RoomImage() {
           )}
         </div>
       )}
-      {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
     </div>
   );
 }
 
-function getMonsterEntities(room: NonNullable<ReturnType<typeof useGameStore.getState>['room']>): RoomEntity[] {
-  const entities = room.entities?.filter((entity) => entity.type === 'monster') ?? [];
+function getGatheringEntities(room: NonNullable<ReturnType<typeof useGameStore.getState>['room']>): RoomEntity[] {
+  const entities = room.entities?.filter((entity) => entity.type === 'gathering') ?? [];
   if (entities.length > 0) return entities;
 
-  return room.monsters.map((monster) => ({
-    id: monster.id,
-    type: 'monster',
-    label: monster.label ?? monster.name,
-    subtitle: `Lv.${monster.level}`,
-    hp: monster.hp,
-    maxHp: monster.maxHp,
-    monsterDetails: monster.monsterDetails,
-    actions: [
-      { label: '查看', command: `look ${monster.id}` },
-      { label: '攻擊', command: `attack ${monster.id}`, tone: 'danger' },
-    ],
+  return (room.gatheringNodes ?? []).map((node) => ({
+    id: node.id,
+    type: 'gathering',
+    label: node.name,
+    subtitle: `${node.skill} Lv.${node.levelMin}`,
+    actions: [{ label: '採集', command: `gather ${node.id}`, tone: 'primary' }],
   }));
 }

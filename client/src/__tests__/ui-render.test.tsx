@@ -1,9 +1,12 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import type { Character, CombatantState, RoomEntity } from '@game/shared';
+import { createEmptyEquipmentSlots, type Character, type CombatantState, type RoomEntity } from '@game/shared';
 import CreateCharacterScreen from '../components/CreateCharacterScreen';
 import { CharacterSelectScreenView } from '../components/CharacterSelectScreen';
 import SkillTablePage from '../components/SkillTablePage';
+import WikiPage from '../components/WikiPage';
+import SuffixPage, { SLOT_AFFIX_DRAFTS } from '../components/SuffixPage';
+import MonsterPage from '../components/MonsterPage';
 import UniqueItemPage from '../components/UniqueItemPage';
 import { UNIQUE_EQUIPMENT_SLOTS, UNIQUE_ITEM_DRAFTS, UNIQUE_WEAPON_TYPES, getUniqueCoverageSummary } from '../content/uniqueItemDrafts';
 import TalentTreePage from '../components/TalentTreePage';
@@ -17,6 +20,8 @@ import { CombatPanelView } from '../components/CombatPanel';
 import { ApproachingPanelView } from '../components/ApproachingPanel';
 import { CrossRoomCombatPanelView } from '../components/CrossRoomCombatPanel';
 import MonsterDetailModal from '../components/MonsterDetailModal';
+import PlayerDetailModal from '../components/PlayerDetailModal';
+import { PartyPanelView } from '../components/PartyPanel';
 import { InventoryView } from '../components/Inventory';
 import { CharacterSheetView } from '../components/CharacterSheet';
 import { SkillBarView } from '../components/SkillBar';
@@ -42,6 +47,7 @@ const slimeEntity: RoomEntity = {
     mp: 0,
     maxMp: 0,
     element: 'none',
+    family: 'ooze',
     aiType: 'passive',
     isBoss: false,
     expReward: 5,
@@ -126,6 +132,10 @@ describe('key UI component rendering', () => {
     expect(html).toContain('建立角色');
     expect(html).toContain('初始職業');
     expect(html).toContain('角色預覽');
+    expect(html).toContain('/mud/images/ui/characters/classes/swordsman-male-human.png');
+    expect(html).toContain('/mud/images/wiki/origins/race_human_icon.png');
+    expect(html).toContain('/mud/images/wiki/origins/class_swordsman_icon.png');
+    expect(html).toContain('/mud/images/wiki/faiths/faith_aelora_heraldry.png');
   });
 
   it('renders character selection slots', () => {
@@ -137,7 +147,7 @@ describe('key UI component rendering', () => {
           level: 7,
           classId: 'swordsman',
           raceId: 'human',
-          genderId: 'undisclosed',
+          genderId: 'male',
           faithId: 'aelora',
           hp: 88,
           maxHp: 100,
@@ -161,40 +171,51 @@ describe('key UI component rendering', () => {
 
   it('renders the skill acquisition table', () => {
     const html = renderToStaticMarkup(<SkillTablePage />);
-    expect(html).toContain('初始職業技能草案');
-    expect(html).toContain('戰士');
-    expect(html).toContain('暴風雪');
+    expect(html).toContain('技能取得表');
+    expect(html).toContain('全部職業');
+    expect(html).toContain('戰士技能');
+    expect(html).not.toContain('冒險者技能');
     expect(html).toContain('極限怒吼');
     expect(html).toContain('破甲重擊');
-    expect(html).toContain('魔力回流');
-    expect(html).toContain('多重射擊');
-    expect(html).toContain('群體治癒');
-    expect(html).toContain('Lv12 與 Lv16');
-    expect(html).toContain('消耗 70 怒氣');
-    expect(html).toContain('信仰 -25');
-    expect(html).toContain('arrivalTicks');
+    expect(html).toContain('血性復甦');
+    expect(html).toContain('強襲');
+    expect(html).toContain('懺悔');
+    expect(html).toContain('-35 專注');
+    expect(html).toContain('CD 3 tick');
+    expect(html).toContain('single_target');
     expect(html).toContain('/mud/images/skills/icons/warrior_slash.png');
     expect(html).toContain('/mud/images/skills/icons/heal.png');
-    expect(html).toContain('Lv20 二轉職業草案');
-    expect(html).toContain('Lv40');
-    expect(html).toContain('盾衛');
-    expect(html).toContain('狂斧');
-    expect(html).toContain('槍騎');
-    expect(html).toContain('神射手');
-    expect(html).toContain('影刃');
-    expect(html).toContain('獵陷師');
-    expect(html).toContain('元素師');
-    expect(html).toContain('奧術師');
-    expect(html).toContain('時術師');
-    expect(html).toContain('主教');
-    expect(html).toContain('審判者');
-    expect(html).toContain('德魯伊');
-    expect(html).toContain('二轉技能 / 消耗');
-    expect(html).toContain('Lv28 鐵壁嘲諷');
-    expect(html).toContain('Lv20/22/24/26/28');
-    expect(html).toContain('消耗 70 MP');
-    expect(html).toContain('信仰 +40');
-    expect(html).toContain('消耗 50 專注');
+  });
+
+  it('renders the game wiki from current code data', () => {
+    const html = renderToStaticMarkup(<WikiPage />);
+    expect(html).toContain('MUD Wiki');
+    expect(html).toContain('技能');
+    expect(html).toContain('職業列表');
+    expect(html).toContain('種族列表');
+    expect(html).toContain('信仰列表');
+    expect(html).toContain('裝備列表');
+    expect(html).toContain('詞綴列表');
+    expect(html).toContain('詞綴初版');
+    expect(html).toContain('怪物資料');
+    expect(html).toContain('區域列表');
+    expect(html).toContain('破甲重擊');
+  });
+
+  it('renders the suffix draft page with complete prefix and suffix pools per slot', () => {
+    const html = renderToStaticMarkup(<SuffixPage />);
+    expect(html).toContain('詞綴系統初版');
+    expect(html).toContain('武器前綴');
+    expect(html).toContain('武器後綴');
+    expect(html).toContain('全部部位檢查');
+    expect(html).toContain('殘暴');
+    expect(html).toContain('破甲');
+    expect(html).toContain('通用飾品');
+    expect(SLOT_AFFIX_DRAFTS).toHaveLength(10);
+    for (const slot of SLOT_AFFIX_DRAFTS) {
+      expect(slot.prefixes.length).toBeGreaterThanOrEqual(5);
+      expect(slot.suffixes.length).toBeGreaterThanOrEqual(5);
+    }
   });
 
   it('renders the unique item candidate page with benchmark drafts', () => {
@@ -225,24 +246,30 @@ describe('key UI component rendering', () => {
     }
   });
 
-
-  it('renders the talent tree draft page with complete branch and node planning', () => {
+  it('renders the first job talent page with complete foundation planning', () => {
     const html = renderToStaticMarkup(<TalentTreePage />);
     const summary = getTalentDraftSummary();
-    expect(html).toContain('天賦樹文案規劃');
-    expect(html).toContain('此頁為文案規劃，不是正式成長系統');
-    expect(html).toContain('戰士系列');
-    expect(html).toContain('守衛 / 格擋 / 反擊');
+    expect(html).toContain('一轉天賦熟練度');
+    expect(html).toContain('一轉天賦只處理職業共通底盤');
+    expect(html).toContain('同路線必須先點滿上一個 Tier');
+    expect(html).toContain('戰士一轉');
+    expect(html).toContain('資源熟練');
+    expect(html).toContain('Lv20 點數');
+    expect(html).toContain('需前置點滿');
     expect(summary.families).toBe(4);
     expect(summary.branches).toBe(12);
-    expect(summary.nodes).toBe(96);
+    expect(summary.nodes).toBe(60);
     expect(summary.keystones).toBe(12);
+    expect(summary.pointsBeforeSecondJob).toBe(19);
+    expect(summary.pointsPerLine).toBe(13);
     for (const family of TALENT_FAMILY_DRAFTS) {
       expect(family.branches).toHaveLength(3);
       for (const branch of family.branches) {
         const branchNodes = family.nodes.filter((nodeDef) => nodeDef.branch === branch.id);
-        expect(branchNodes).toHaveLength(8);
-        expect(branchNodes.some((nodeDef) => nodeDef.keystone)).toBe(true);
+        expect(branchNodes).toHaveLength(5);
+        expect(branchNodes.map((nodeDef) => nodeDef.maxRank)).toEqual([5, 1, 3, 3, 1]);
+        expect(branchNodes.filter((nodeDef) => nodeDef.tier === 5)).toHaveLength(1);
+        expect(branchNodes.filter((nodeDef) => nodeDef.keystone)).toHaveLength(1);
       }
       for (const nodeDef of family.nodes) {
         expect(nodeDef.id).toMatch(/^[a-z0-9_]+$/);
@@ -251,6 +278,20 @@ describe('key UI component rendering', () => {
         expect(nodeDef.balanceNote.length).toBeGreaterThanOrEqual(10);
       }
     }
+  });
+
+  it('renders the monster data page from current monster definitions', () => {
+    const html = renderToStaticMarkup(<MonsterPage />);
+    expect(html).toContain('怪物資料整理');
+    expect(html).toContain('Normal');
+    expect(html).toContain('Elite');
+    expect(html).toContain('Boss');
+    expect(html).toContain('族群');
+    expect(html).toContain('軟泥');
+    expect(html).toContain('史萊姆');
+    expect(html).toContain('slime');
+    expect(html).toContain('EXP');
+    expect(html).toContain('Gold');
   });
 
   it('renders skill learned modal details', () => {
@@ -301,13 +342,71 @@ describe('key UI component rendering', () => {
 
   it('renders room entities and selected target actions without showing internal ids as labels', () => {
     const state = useGameStore.getState();
+    const playerEntity: RoomEntity = {
+      id: 'player-2',
+      type: 'player',
+      label: '測試法師',
+      subtitle: 'Lv.3 mage',
+      hp: 44,
+      maxHp: 50,
+      playerDetails: {
+        id: 'player-2',
+        name: '測試法師',
+        level: 3,
+        classId: 'mage',
+        raceId: 'elf',
+        genderId: 'female',
+        faithId: 'aelora',
+        hp: 44,
+        maxHp: 50,
+        mp: 31,
+        maxMp: 40,
+        resource: 31,
+        maxResource: 40,
+        resourceType: 'mp',
+        stats: { str: 2, int: 12, dex: 5, vit: 4, luk: 3 },
+        equipment: {
+          ...createEmptyEquipmentSlots(),
+          meleeMainHand: 'small_blade',
+          rangedMainHand: 'willow_witch_wand',
+          rangedOffHand: 'chalkcircle_focus',
+        },
+      },
+      actions: [
+        { label: '查看', command: 'look 測試法師' },
+        { label: '組隊', command: 'party invite 測試法師' },
+        { label: '決鬥', command: 'duel 測試法師', tone: 'danger' },
+        { label: '交易', command: 'trade 測試法師' },
+      ],
+    };
     const roomHtml = renderToStaticMarkup(
-      <RoomPanelView room={state.room!} selectedEntity={null} setSelectedEntity={() => undefined} />,
+      <RoomPanelView room={{ ...state.room!, entities: [...(state.room!.entities ?? []), playerEntity] }} selectedEntity={null} setSelectedEntity={() => undefined} />,
     );
     expect(roomHtml).toContain('附近物件');
     expect(roomHtml).toContain('史萊姆#1');
+    expect(roomHtml).toContain('測試法師');
+    expect(roomHtml).toContain('/mud/images/wiki/origins/class_mage_icon.png');
+    expect(roomHtml).toContain('room-player-grid');
     expect(roomHtml).toContain('搜刮');
+    expect(roomHtml).not.toContain('party invite 測試法師');
     expect(roomHtml).not.toContain('monster_green_slime_a</span>');
+
+    const selectedPlayerHtml = renderToStaticMarkup(
+      <RoomPanelView room={{ ...state.room!, entities: [...(state.room!.entities ?? []), playerEntity] }} selectedEntity={playerEntity} setSelectedEntity={() => undefined} />,
+    );
+    expect(selectedPlayerHtml).toContain('查看');
+    expect(selectedPlayerHtml).toContain('組隊');
+    expect(selectedPlayerHtml).toContain('決鬥');
+    expect(selectedPlayerHtml).toContain('交易');
+
+    const playerDetailHtml = renderToStaticMarkup(
+      <PlayerDetailModal player={playerEntity} onClose={() => undefined} />,
+    );
+    expect(playerDetailHtml).toContain('測試法師');
+    expect(playerDetailHtml).toContain('職業');
+    expect(playerDetailHtml).toContain('法師');
+    expect(playerDetailHtml).toContain('遠程/施法主手');
+    expect(playerDetailHtml).toContain('柳巫細魔杖');
 
     const targetHtml = renderToStaticMarkup(
       <SelectedTargetPanelView entity={slimeEntity} setSelectedEntity={() => undefined} />,
@@ -315,6 +414,49 @@ describe('key UI component rendering', () => {
     expect(targetHtml).toContain('怪物');
     expect(targetHtml).toContain('HP');
     expect(targetHtml).toContain('攻擊');
+  });
+
+  it('renders party members persistently with ally skills from class avatars', () => {
+    const html = renderToStaticMarkup(
+      <PartyPanelView
+        party={[
+          { id: 'priest-1', name: '祭司', classId: 'priest', level: 5, hp: 42, maxHp: 50 },
+          { id: 'fighter-1', name: '戰士', classId: 'swordsman', level: 5, hp: 20, maxHp: 60 },
+        ]}
+        partyLeaderId="priest-1"
+        skills={[{ skillId: 'heal', level: 1, currentCooldown: 0 }]}
+        character={{ id: 'priest-1', name: '祭司', resource: 50, maxResource: 100 } as Character}
+        inCombat={false}
+        expandedMemberId="fighter-1"
+        setExpandedMemberId={() => undefined}
+        onCommand={() => undefined}
+        compact
+      />,
+    );
+
+    expect(html).toContain('戰士');
+    expect(html).toContain('/mud/images/wiki/origins/class_swordsman_icon.png');
+    expect(html).toContain('跟隨');
+    expect(html).toContain('治癒');
+    expect(html).toContain('/mud/images/skills/icons/heal.png');
+
+    const selfHtml = renderToStaticMarkup(
+      <PartyPanelView
+        party={[
+          { id: 'priest-1', name: '祭司', classId: 'priest', level: 5, hp: 42, maxHp: 50 },
+          { id: 'fighter-1', name: '戰士', classId: 'swordsman', level: 5, hp: 20, maxHp: 60 },
+        ]}
+        partyLeaderId="priest-1"
+        skills={[]}
+        character={{ id: 'priest-1', name: '祭司', resource: 50, maxResource: 100 } as Character}
+        inCombat={false}
+        expandedMemberId="priest-1"
+        setExpandedMemberId={() => undefined}
+        onCommand={() => undefined}
+        compact
+      />,
+    );
+    expect(selfHtml).toContain('離開隊伍');
   });
 
   it('renders cross-room combat targeting lanes', () => {
@@ -596,7 +738,10 @@ describe('key UI component rendering', () => {
         name: '測試者',
         level: 2,
         exp: 0,
-        classId: 'adventurer',
+        classId: 'ranger',
+        raceId: 'elf',
+        genderId: 'female',
+        faithId: 'aelora',
         hp: 40,
         mp: 20,
         maxHp: 40,
@@ -627,6 +772,17 @@ describe('key UI component rendering', () => {
     expect(html).toContain('未分配點數: 5');
     expect(html).toContain('+1');
     expect(html).toContain('+5');
+    expect(html).toContain('charsheet-mannequin');
+    expect(html).toContain('/mud/images/ui/characters/classes/ranger-female-elf.png');
+    expect(html).toContain('頭部');
+    expect(html).toContain('身體');
+    expect(html).toContain('腰部');
+    expect(html).toContain('手套');
+    expect(html).toContain('鞋子');
+    expect(html).toContain('項鍊');
+    expect(html).toContain('耳環');
+    expect(html).toContain('左戒指');
+    expect(html).toContain('右戒指');
   });
 
   it('renders objective suggestions from current room actions', () => {
@@ -761,6 +917,38 @@ describe('key UI component rendering', () => {
     expect(html).toContain('不消耗怒氣、魔力、專注或信仰');
   });
 
+  it('does not hide later learned combat skills behind the first five active skills', () => {
+    const skills = [
+      { skillId: 'warrior_slash', level: 1, currentCooldown: 0 },
+      { skillId: 'iron_wall', level: 1, currentCooldown: 0 },
+      { skillId: 'taunt', level: 1, currentCooldown: 0 },
+      { skillId: 'blade_aura', level: 1, currentCooldown: 0 },
+      { skillId: 'war_cry', level: 1, currentCooldown: 0 },
+      { skillId: 'power_strike', level: 1, currentCooldown: 0 },
+    ];
+
+    const html = renderToStaticMarkup(
+      <CombatPanelView
+        combat={{
+          combatId: 'combat-1',
+          round: 2,
+          playerTeam: [],
+          enemyTeam: [enemy()],
+          turnTimer: 30,
+          log: [],
+        }}
+        inCombat={true}
+        selectedTargetId={null}
+        setSelectedTargetId={() => undefined}
+        skills={skills}
+        character={{ resource: 100, resourceType: 'rage' } as Character}
+        inventory={[]}
+      />,
+    );
+
+    expect(html).toContain('破甲重擊');
+  });
+
   it('separates approaching enemies from arrived combat targets', () => {
     const approachingEnemy = enemy({
       id: 'enemy-approaching',
@@ -811,6 +999,43 @@ describe('key UI component rendering', () => {
     expect(combatHtml).toContain('戰鬥');
     expect(combatHtml).toContain('抵達史萊姆');
     expect(combatHtml).not.toContain('逼近史萊姆');
+  });
+
+  it('shows mounted intercept action for approaching enemies', () => {
+    const approachingEnemy = enemy({
+      id: 'enemy-approaching',
+      name: '逼近史萊姆',
+      isApproaching: true,
+      arrivalTicksRemaining: 2,
+    });
+    const combat = {
+      combatId: 'combat-1',
+      round: 2,
+      playerTeam: [],
+      enemyTeam: [approachingEnemy],
+      turnTimer: 30,
+      log: [],
+    };
+
+    const html = renderToStaticMarkup(
+      <ApproachingPanelView
+        combat={combat}
+        inCombat={true}
+        selectedTargetId={null}
+        setSelectedTargetId={() => undefined}
+        skills={[]}
+        character={{
+          activeMountId: 'knight_warhorse',
+          mounted: true,
+          resource: 100,
+          resourceType: 'rage',
+        } as Character}
+      />,
+    );
+
+    expect(html).toContain('攔截');
+    expect(html).toContain('延後它抵達本房戰鬥');
+    expect(html).toContain('不消耗職業資源');
   });
 
   it('renders skill bar target modes and pending target prompt', () => {

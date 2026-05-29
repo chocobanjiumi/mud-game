@@ -8,7 +8,7 @@ function sendCommand(command: string, echo?: string) {
 export default function MiniMap() {
   const mapData = useGameStore((s) => s.mapData);
   const room = useGameStore((s) => s.room);
-  const zoneLabel = mapData?.zoneName ?? mapData?.zone;
+  const zoneLabel = room?.zoneName ?? mapData?.zoneName ?? room?.zone ?? mapData?.zone;
   const localMap = room?.localMap ?? mapData?.localMap;
 
   return (
@@ -33,7 +33,7 @@ export default function MiniMap() {
       )}
 
       {localMap ? (
-        <LocalGridMap map={localMap} exits={room?.exits ?? []} roomName={room?.name} />
+        <LocalGridMap map={localMap} exits={room?.exits ?? []} roomName={room?.name} currentZone={room?.zone} />
       ) : mapData?.ascii ? (
         <>
           <pre className="text-[10px] leading-tight text-text-terminal font-mono whitespace-pre select-none">
@@ -53,7 +53,7 @@ export default function MiniMap() {
         </>
       ) : room ? (
         <div className="text-center py-2 space-y-1">
-          <FallbackGridMap exits={room.exits} roomName={room.name} />
+          <FallbackGridMap exits={room.exits} roomName={room.name} currentZone={room.zone} />
           <div className="text-[10px] text-text-dim mt-1">{room.name}</div>
         </div>
       ) : (
@@ -65,9 +65,9 @@ export default function MiniMap() {
   );
 }
 
-function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: RoomExit[]; roomName?: string }) {
+function LocalGridMap({ map, exits, roomName, currentZone }: { map: LocalMapPayload; exits: RoomExit[]; roomName?: string; currentZone?: string }) {
   const current = map.rooms.find((candidate) => candidate.id === map.currentRoom);
-  if (!current) return <FallbackGridMap exits={exits} roomName={roomName} />;
+  if (!current) return <FallbackGridMap exits={exits} roomName={roomName} currentZone={currentZone} />;
 
   const roomsByCoord = new Map(map.rooms.map((candidate) => [`${candidate.x}:${candidate.y}`, candidate]));
   const roomsById = new Map(map.rooms.map((candidate) => [candidate.id, candidate]));
@@ -84,9 +84,12 @@ function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: R
     if (!offset) continue;
     const row = 2 + offset.dy;
     const col = 2 + offset.dx;
+    const targetZoneName = exit.targetZoneName;
     grid[row][col] = roomsById.get(exit.targetRoomId) ?? {
       id: exit.targetRoomId,
       name: exit.description ?? `${directionLabel(exit.direction)}側房間`,
+      zone: exit.targetZoneId ?? current.zone,
+      ...(targetZoneName ? { zoneName: targetZoneName } : {}),
       x: current.x + offset.dx,
       y: current.y + offset.dy,
       explored: false,
@@ -100,6 +103,8 @@ function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: R
         {grid.flatMap((row, rowIndex) => row.map((cell, colIndex) => {
           const isCurrent = cell?.id === map.currentRoom;
           const exit = cell ? exitByTarget.get(cell.id) : undefined;
+          const zoneChange = exit && currentZone ? getZoneChangeLabel(exit, currentZone) : null;
+          const connectors = getCellConnectors(cell, rowIndex, colIndex, grid, roomsById);
           const className = [
             'minimap-cell',
             cell ? 'minimap-room' : 'minimap-wall',
@@ -107,7 +112,7 @@ function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: R
             isCurrent ? 'minimap-current' : '',
             exit && !isCurrent ? 'minimap-clickable' : '',
           ].filter(Boolean).join(' ');
-          const label = cell ? `${cell.name}${isCurrent ? '，目前位置' : cell.explored ? '' : '，未探索'}` : '牆';
+          const label = cell ? `${cell.name}${zoneChange ? `，進入${zoneChange}` : ''}${isCurrent ? '，目前位置' : cell.explored ? '' : '，未探索'}` : '牆';
 
           if (exit && !isCurrent) {
             return (
@@ -115,16 +120,23 @@ function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: R
                 key={`${rowIndex}-${colIndex}-${cell.id}`}
                 type="button"
                 className={className}
-                title={`${directionLabel(exit.direction)}：${cell.name}`}
-                aria-label={`前往${directionLabel(exit.direction)}，${cell.name}`}
+                title={`${directionLabel(exit.direction)}：${cell.name}${zoneChange ? `，進入${zoneChange}` : ''}`}
+                aria-label={`前往${directionLabel(exit.direction)}，${cell.name}${zoneChange ? `，進入${zoneChange}` : ''}`}
                 onClick={() => sendCommand(`go ${exit.direction}`, `前往${directionLabel(exit.direction)}`)}
               >
-                {isCurrent ? <span /> : null}
+                <MinimapConnectors directions={connectors} />
+                {zoneChange ? <span className="minimap-zone-change">{zoneChange.slice(0, 1)}</span> : null}
+                {isCurrent ? <span className="minimap-current-dot" /> : null}
               </button>
             );
           }
 
-          return <div key={`${rowIndex}-${colIndex}-${cell?.id ?? 'wall'}`} className={className} title={label} aria-label={label}>{isCurrent ? <span /> : null}</div>;
+          return (
+            <div key={`${rowIndex}-${colIndex}-${cell?.id ?? 'wall'}`} className={className} title={label} aria-label={label}>
+              <MinimapConnectors directions={connectors} />
+              {isCurrent ? <span className="minimap-current-dot" /> : null}
+            </div>
+          );
         }))}
       </div>
       <MapDetails exits={exits} roomName={roomName} />
@@ -132,7 +144,7 @@ function LocalGridMap({ map, exits, roomName }: { map: LocalMapPayload; exits: R
   );
 }
 
-function FallbackGridMap({ exits, roomName }: { exits: RoomExit[]; roomName?: string }) {
+function FallbackGridMap({ exits, roomName, currentZone }: { exits: RoomExit[]; roomName?: string; currentZone?: string }) {
   const exitByDirection = new Map(exits.map((exit) => [exit.direction, exit]));
   const cells = Array.from({ length: 25 }, (_, index) => {
     const row = Math.floor(index / 5);
@@ -140,14 +152,18 @@ function FallbackGridMap({ exits, roomName }: { exits: RoomExit[]; roomName?: st
     const dir = directionFromOffset(col - 2, row - 2);
     const exit = dir ? exitByDirection.get(dir) : undefined;
     const isCurrent = row === 2 && col === 2;
+    const connectors = isCurrent
+      ? exits.map((candidate) => candidate.direction)
+      : exit ? [oppositeDirection(exit.direction)] : [];
+    const zoneChange = exit ? getZoneChangeLabel(exit, currentZone) : null;
 
-    return { index, exit, isCurrent };
+    return { index, exit, isCurrent, connectors, zoneChange };
   });
 
   return (
     <div className="space-y-2">
       <div className="minimap-grid" aria-label="5x5 小地圖">
-        {cells.map(({ index, exit, isCurrent }) => {
+        {cells.map(({ index, exit, isCurrent, connectors, zoneChange }) => {
           const className = [
             'minimap-cell',
             exit || isCurrent ? 'minimap-room' : 'minimap-wall',
@@ -161,14 +177,22 @@ function FallbackGridMap({ exits, roomName }: { exits: RoomExit[]; roomName?: st
                 key={index}
                 type="button"
                 className={className}
-                title={`${directionLabel(exit.direction)}出口`}
-                aria-label={`前往${directionLabel(exit.direction)}`}
+                title={`${directionLabel(exit.direction)}出口${zoneChange ? `，進入${zoneChange}` : ''}`}
+                aria-label={`前往${directionLabel(exit.direction)}${zoneChange ? `，進入${zoneChange}` : ''}`}
                 onClick={() => sendCommand(`go ${exit.direction}`, `前往${directionLabel(exit.direction)}`)}
-              />
+              >
+                <MinimapConnectors directions={connectors} />
+                {zoneChange ? <span className="minimap-zone-change">{zoneChange.slice(0, 1)}</span> : null}
+              </button>
             );
           }
 
-          return <div key={index} className={className} title={isCurrent ? '目前位置' : '牆'}>{isCurrent ? <span /> : null}</div>;
+          return (
+            <div key={index} className={className} title={isCurrent ? '目前位置' : '牆'}>
+              <MinimapConnectors directions={connectors} />
+              {isCurrent ? <span className="minimap-current-dot" /> : null}
+            </div>
+          );
         })}
       </div>
       <MapDetails exits={exits} roomName={roomName} />
@@ -203,6 +227,47 @@ function MapDetails({ exits, roomName }: { exits: RoomExit[]; roomName?: string 
   );
 }
 
+function MinimapConnectors({ directions }: { directions: Direction[] }) {
+  return (
+    <>
+      {directions.map((direction) => (
+        <span key={direction} aria-hidden="true" className={`minimap-connector minimap-connector-${direction}`} />
+      ))}
+    </>
+  );
+}
+
+function getZoneChangeLabel(exit: RoomExit, currentZone?: string): string | null {
+  if (!exit.targetZoneId) return null;
+  if (currentZone && exit.targetZoneId === currentZone) return null;
+  return exit.targetZoneName ?? exit.targetZoneId;
+}
+
+function getCellConnectors(
+  cell: LocalMapPayload['rooms'][number] | null,
+  rowIndex: number,
+  colIndex: number,
+  grid: Array<Array<LocalMapPayload['rooms'][number] | null>>,
+  roomsById: Map<string, LocalMapPayload['rooms'][number]>,
+): Direction[] {
+  if (!cell) return [];
+
+  return cell.exits
+    .map((exit) => {
+      const offset = directionOffset(exit.direction);
+      const target = roomsById.get(exit.targetRoomId);
+      if (!offset || !target) return null;
+
+      const row = rowIndex + offset.dy;
+      const col = colIndex + offset.dx;
+      if (row < 0 || row >= grid.length || col < 0 || col >= grid[row].length) return null;
+      if (grid[row][col]?.id !== target.id) return null;
+
+      return exit.direction;
+    })
+    .filter((direction): direction is Direction => Boolean(direction));
+}
+
 function directionFromOffset(dx: number, dy: number): Direction | null {
   if (dx === 0 && dy === -1) return 'north';
   if (dx === 0 && dy === 1) return 'south';
@@ -217,6 +282,13 @@ function directionOffset(direction: Direction): { dx: number; dy: number } | nul
   if (direction === 'east') return { dx: 1, dy: 0 };
   if (direction === 'west') return { dx: -1, dy: 0 };
   return null;
+}
+
+function oppositeDirection(direction: Direction): Direction {
+  if (direction === 'north') return 'south';
+  if (direction === 'south') return 'north';
+  if (direction === 'east') return 'west';
+  return 'east';
 }
 
 function directionLabel(direction: Direction): string {

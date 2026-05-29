@@ -35,7 +35,7 @@ const STEPS: CreationStep[] = ['name', 'race', 'gender', 'class', 'faith', 'conf
 const STEP_LABEL: Record<CreationStep, string> = {
   name: '名稱',
   race: '種族',
-  gender: '稱謂',
+  gender: '性別',
   class: '職業',
   faith: '信仰',
   confirm: '確認',
@@ -50,6 +50,22 @@ const resourceLabels = {
   faith: '信仰',
 };
 
+function getCharacterArtPath(classId: InitialClassId, genderId: GenderId, raceId: RaceId): string {
+  return `/mud/images/ui/characters/classes/${classId}-${genderId}-${raceId}.png`;
+}
+
+function getFaithSigilPath(faithId: FaithId): string {
+  return `/mud/images/wiki/faiths/faith_${faithId}_heraldry.png`;
+}
+
+function getRaceIconPath(raceId: RaceId): string {
+  return `/mud/images/wiki/origins/race_${raceId}_icon.png`;
+}
+
+function getClassIconPath(classId: InitialClassId): string {
+  return `/mud/images/wiki/origins/class_${classId}_icon.png`;
+}
+
 export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: CreateCharacterScreenProps) {
   const [name, setName] = useState('');
   const [raceId, setRaceId] = useState<RaceId>(DEFAULT_RACE_ID);
@@ -62,6 +78,7 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
   const race = RACE_DEFS[raceId];
   const faith = FAITH_DEFS[faithId];
   const classDef = CLASS_DEFS[classId];
+  const characterArtPath = getCharacterArtPath(classId, genderId, raceId);
   const stats = useMemo(() => {
     const next = getInitialStatsForRace(raceId);
     next.str += classDef.baseStatBonus.str;
@@ -165,11 +182,21 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
                         : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
                     }`}
                   >
-                    <div className="mb-1 flex items-center justify-between gap-2">
-                      <span className="font-bold text-text-bright">{option.name}</span>
-                      <span className="text-xs text-text-amber">{formatStatMods(option.statMods)}</span>
+                    <div className="mb-3 flex items-start gap-3">
+                      <img
+                        src={getRaceIconPath(option.id)}
+                        alt=""
+                        className="h-14 w-14 shrink-0 rounded border border-border-dim bg-bg-secondary object-cover"
+                        loading="lazy"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-1 flex items-center justify-between gap-2">
+                          <span className="font-bold text-text-bright">{option.name}</span>
+                          <span className="text-xs text-text-amber">{formatStatMods(option.statMods)}</span>
+                        </div>
+                        <p className="text-xs leading-5">{option.description}</p>
+                      </div>
                     </div>
-                    <p className="mb-2 text-xs leading-5">{option.description}</p>
                     <div className="text-xs text-text-terminal">{option.passiveName}</div>
                     <p className="text-xs leading-5 text-text-dim">{option.passiveDescription}</p>
                   </button>
@@ -180,21 +207,33 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
             {step === 'gender' && <section className="space-y-3">
               <h2 className="text-sm font-bold text-text-terminal">性別</h2>
               <p className="text-xs text-text-dim">只影響稱謂與敘事，不改變 stats、掉落、傷害或技能。</p>
-              <div className="grid gap-2 sm:grid-cols-4">
-                {Object.values(GENDER_DEFS).map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    onClick={() => setGenderId(option.id)}
-                    className={`rounded-md border px-3 py-3 text-left text-sm transition-colors ${
-                      genderId === option.id
-                        ? 'border-text-terminal bg-bg-secondary text-text-bright'
-                        : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
-                    }`}
-                  >
-                    {option.name}
-                  </button>
-                ))}
+              <div className="grid gap-3 sm:grid-cols-2">
+                {Object.values(GENDER_DEFS).map((option) => {
+                  const artPath = getCharacterArtPath(classId, option.id, raceId);
+                  return (
+                    <button
+                      key={option.id}
+                      type="button"
+                      onClick={() => setGenderId(option.id)}
+                      className={`rounded-md border p-3 text-left text-sm transition-colors ${
+                        genderId === option.id
+                          ? 'border-text-terminal bg-bg-secondary text-text-bright'
+                          : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
+                      }`}
+                    >
+                      <div className="mb-3 aspect-[10/16] max-h-[420px] overflow-hidden rounded border border-border-dim bg-bg-primary">
+                        <img
+                          src={artPath}
+                          alt={`${race.name}${option.name}角色預覽`}
+                          className="h-full w-full object-cover object-top"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="font-bold text-text-bright">{option.name}</div>
+                      <div className="mt-1 text-xs leading-5 text-text-dim">{option.description}</div>
+                    </button>
+                  );
+                })}
               </div>
             </section>}
 
@@ -212,11 +251,21 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
                         : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
                     }`}
                   >
-                    <div className="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                      <span className="font-bold text-text-bright">{option.name}</span>
-                      <span className="text-xs text-text-amber">{option.title}</span>
+                    <div className="mb-3 flex items-start gap-3">
+                      <img
+                        src={getFaithSigilPath(option.id)}
+                        alt=""
+                        className="h-16 w-16 shrink-0 rounded border border-border-dim bg-bg-secondary object-cover"
+                        loading="lazy"
+                      />
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                          <span className="font-bold text-text-bright">{option.name}</span>
+                          <span className="text-xs text-text-amber">{option.title}</span>
+                        </div>
+                        <p className="mt-1 text-xs leading-5">{option.description}</p>
+                      </div>
                     </div>
-                    <p className="mb-2 text-xs leading-5">{option.description}</p>
                     <div className="text-xs text-text-terminal">{option.passiveName}</div>
                     <p className="text-xs leading-5 text-text-dim">{option.passiveDescription}</p>
                   </button>
@@ -229,6 +278,7 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
               <div className="grid gap-2 md:grid-cols-2">
                 {INITIAL_CLASS_IDS.map((optionId) => {
                   const option = CLASS_DEFS[optionId];
+                  const artPath = getCharacterArtPath(option.id as InitialClassId, genderId, raceId);
                   return (
                     <button
                       key={option.id}
@@ -237,15 +287,33 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
                       className={`min-h-32 rounded-md border p-3 text-left transition-colors ${
                         classId === option.id
                           ? 'border-text-terminal bg-bg-secondary text-text-bright'
-                          : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
+                        : 'border-border-dim bg-bg-primary text-text-dim hover:border-border-glow hover:text-text-bright'
                       }`}
                     >
-                      <div className="mb-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                        <span className="font-bold text-text-bright">{option.name}</span>
-                        <span className="text-xs text-text-amber">{resourceLabels[option.resourceType]}</span>
+                      <div className="mb-3 aspect-[10/16] max-h-[320px] overflow-hidden rounded border border-border-dim bg-bg-primary">
+                        <img
+                          src={artPath}
+                          alt={`${race.name}${GENDER_DEFS[genderId].name}${option.name}角色預覽`}
+                          className="h-full w-full object-cover object-top"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="mb-2 flex items-center gap-3">
+                        <img
+                          src={getClassIconPath(option.id as InitialClassId)}
+                          alt=""
+                          className="h-12 w-12 shrink-0 rounded border border-border-dim bg-bg-secondary object-cover"
+                          loading="lazy"
+                        />
+                        <div className="min-w-0">
+                          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                            <span className="font-bold text-text-bright">{option.name}</span>
+                            <span className="text-xs text-text-amber">{resourceLabels[option.resourceType]}</span>
+                          </div>
+                          <div className="mt-1 text-xs text-text-terminal">{formatStatMods(option.baseStatBonus)}</div>
+                        </div>
                       </div>
                       <p className="text-xs leading-5">{option.description}</p>
-                      <div className="mt-2 text-xs text-text-terminal">{formatStatMods(option.baseStatBonus)}</div>
                     </button>
                   );
                 })}
@@ -300,6 +368,14 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
             <div className="rounded-md border border-border-dim bg-bg-secondary p-4">
               <div className="mb-3 text-sm font-bold text-text-terminal">角色預覽</div>
               <div className="mb-4 text-xl font-bold text-text-bright">{name.trim() || '未命名冒險者'}</div>
+              <div className="mb-4 aspect-[10/16] max-h-[360px] overflow-hidden rounded-md border border-border-dim bg-bg-primary">
+                <img
+                  src={characterArtPath}
+                  alt={`${race.name}${GENDER_DEFS[genderId].name}角色預覽`}
+                  className="h-full w-full object-cover object-top"
+                  loading="lazy"
+                />
+              </div>
 
               <div className="mb-4 grid grid-cols-5 gap-2">
                 {Object.entries(stats).map(([key, value]) => (
@@ -311,10 +387,34 @@ export default function CreateCharacterScreen({ onCreate, onBackToCharacters }: 
               </div>
 
               <div className="space-y-3 text-sm">
-                <SummaryBlock label="初始職業" title={`${classDef.name}・${resourceLabels[classDef.resourceType]}`} text="Lv.1 直接以此職業進入世界，Lv.20 開始二轉職業路線。" />
-                <SummaryBlock label="種族" title={race.name} text={race.passiveDescription} />
+                <div className="flex items-start gap-3 rounded border border-border-dim bg-bg-primary p-2">
+                  <img
+                    src={getClassIconPath(classId)}
+                    alt=""
+                    className="h-14 w-14 shrink-0 rounded border border-border-dim object-cover"
+                    loading="lazy"
+                  />
+                  <SummaryBlock label="初始職業" title={`${classDef.name}・${resourceLabels[classDef.resourceType]}`} text="Lv.1 直接以此職業進入世界，Lv.20 開始二轉職業路線。" />
+                </div>
+                <div className="flex items-start gap-3 rounded border border-border-dim bg-bg-primary p-2">
+                  <img
+                    src={getRaceIconPath(race.id)}
+                    alt=""
+                    className="h-14 w-14 shrink-0 rounded border border-border-dim object-cover"
+                    loading="lazy"
+                  />
+                  <SummaryBlock label="種族" title={race.name} text={race.passiveDescription} />
+                </div>
                 <SummaryBlock label="性別" title={GENDER_DEFS[genderId].name} text={GENDER_DEFS[genderId].description} />
-                <SummaryBlock label="信仰" title={`${faith.name}・${faith.title}`} text={faith.passiveDescription} />
+                <div className="flex items-start gap-3 rounded border border-border-dim bg-bg-primary p-2">
+                  <img
+                    src={getFaithSigilPath(faith.id)}
+                    alt=""
+                    className="h-14 w-14 shrink-0 rounded border border-border-dim object-cover"
+                    loading="lazy"
+                  />
+                  <SummaryBlock label="信仰" title={`${faith.name}・${faith.title}`} text={faith.passiveDescription} />
+                </div>
                 <SummaryBlock label="祈禱" title={faith.prayerName} text={faith.prayerDescription} />
               </div>
 

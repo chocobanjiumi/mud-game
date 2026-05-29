@@ -16,7 +16,11 @@ export default function TalentTreePage() {
 
   const updateNode = (nodeDef: TalentNodeDraft, delta: number) => {
     setPlannedPoints((current) => {
-      const nextValue = Math.max(0, Math.min(nodeDef.maxRank, (current[nodeDef.id] ?? 0) + delta));
+      const currentValue = current[nodeDef.id] ?? 0;
+      const activeTotal = activeFamily.nodes.reduce((sum, currentNode) => sum + (current[currentNode.id] ?? 0), 0);
+      if (delta > 0 && (activeTotal >= summary.pointsBeforeSecondJob || !isNodeUnlocked(nodeDef, current))) return current;
+      if (delta < 0 && !canRemovePoint(activeFamily, nodeDef, current)) return current;
+      const nextValue = Math.max(0, Math.min(nodeDef.maxRank, currentValue + delta));
       return { ...current, [nodeDef.id]: nextValue };
     });
   };
@@ -34,19 +38,19 @@ export default function TalentTreePage() {
     <div className="h-full overflow-y-auto bg-bg-primary text-text-primary">
       <div className="mx-auto max-w-[1500px] space-y-4 px-4 py-4">
         <header className="rounded-md border border-border-dim bg-bg-secondary p-4">
-          <div className="text-xs uppercase text-text-dim">Talent Draft</div>
-          <h1 className="mt-1 text-2xl font-bold text-text-bright">天賦樹文案規劃</h1>
+          <div className="text-xs uppercase text-text-dim">First Job Talent</div>
+          <h1 className="mt-1 text-2xl font-bold text-text-bright">一轉天賦熟練度</h1>
           <p className="mt-2 max-w-5xl text-sm leading-6 text-text-dim">
-            此頁為文案規劃，不是正式成長系統。天賦採每級 1 點、Diablo 2 式清楚分支，
-            並刻意避開直接強化既有技能傷害、冷卻或治療量，只描述 build 規則與戰術取捨。
+            一轉天賦只處理職業共通底盤：資源、生存與戰鬥節奏。Lv2-Lv20 每級 1 點，共 19 點。
+            同路線必須先點滿上一個 Tier 才能解鎖下一個 Tier，不再使用等級門檻。
           </p>
         </header>
 
         <section className="grid gap-3 md:grid-cols-4">
-          <Metric label="職業系列" value={summary.families} />
-          <Metric label="分支" value={summary.branches} />
-          <Metric label="Node" value={summary.nodes} />
-          <Metric label="Keystone" value={summary.keystones} />
+          <Metric label="一轉職業" value={summary.families} />
+          <Metric label="路線" value={summary.branches} />
+          <Metric label="單線點滿" value={summary.pointsPerLine} />
+          <Metric label="Lv20 點數" value={summary.pointsBeforeSecondJob} />
         </section>
 
         <nav className="sticky top-0 z-20 flex gap-2 overflow-x-auto border-b border-border-dim bg-bg-primary/95 py-3 backdrop-blur">
@@ -66,36 +70,69 @@ export default function TalentTreePage() {
           ))}
         </nav>
 
-        <FamilyHeader family={activeFamily} activePoints={activePoints} onCopyBuild={copyBuild} />
+        <FamilyHeader
+          family={activeFamily}
+          activePoints={activePoints}
+          maxPoints={summary.pointsBeforeSecondJob}
+          onCopyBuild={copyBuild}
+        />
 
         <section className="grid gap-4 xl:grid-cols-3">
-          {activeFamily.branches.map((branch) => (
+          {activeFamily.branches.map((branch) => {
+            const branchNodes = getTalentNodesByBranch(activeFamily, branch.id);
+            const branchPoints = branchNodes.reduce((sum, nodeDef) => sum + (plannedPoints[nodeDef.id] ?? 0), 0);
+            return (
             <article key={branch.id} className="rounded-md border border-border-dim bg-bg-secondary p-4">
               <div className="mb-3">
-                <h2 className="text-lg font-bold text-text-terminal">{branch.name}</h2>
+                <div className="flex items-start justify-between gap-3">
+                  <h2 className="text-lg font-bold text-text-terminal">{branch.name}</h2>
+                  <span className="rounded border border-border-dim bg-bg-primary px-2 py-1 text-xs text-text-dim">
+                    {branchPoints}/{summary.pointsPerLine}
+                  </span>
+                </div>
                 <p className="mt-1 text-xs leading-5 text-text-dim">{branch.identity}</p>
                 <p className="mt-2 text-xs text-text-amber">{branch.buildIntent}</p>
               </div>
               <div className="space-y-3">
-                {getTalentNodesByBranch(activeFamily, branch.id).map((nodeDef) => (
-                  <TalentNodeCard
-                    key={nodeDef.id}
-                    nodeDef={nodeDef}
-                    value={plannedPoints[nodeDef.id] ?? 0}
-                    onIncrement={() => updateNode(nodeDef, 1)}
-                    onDecrement={() => updateNode(nodeDef, -1)}
-                  />
-                ))}
+                {branchNodes.map((nodeDef) => {
+                  const unlocked = isNodeUnlocked(nodeDef, plannedPoints);
+                  const value = plannedPoints[nodeDef.id] ?? 0;
+                  const canAdd = unlocked && value < nodeDef.maxRank && activePoints < summary.pointsBeforeSecondJob;
+                  const canRemove = value > 0 && canRemovePoint(activeFamily, nodeDef, plannedPoints);
+                  return (
+                    <TalentNodeCard
+                      key={nodeDef.id}
+                      nodeDef={nodeDef}
+                      value={value}
+                      unlocked={unlocked}
+                      canAdd={canAdd}
+                      canRemove={canRemove}
+                      onIncrement={() => updateNode(nodeDef, 1)}
+                      onDecrement={() => updateNode(nodeDef, -1)}
+                    />
+                  );
+                })}
               </div>
             </article>
-          ))}
+            );
+          })}
         </section>
       </div>
     </div>
   );
 }
 
-function FamilyHeader({ family, activePoints, onCopyBuild }: { family: TalentFamilyDraft; activePoints: number; onCopyBuild: () => void }) {
+function FamilyHeader({
+  family,
+  activePoints,
+  maxPoints,
+  onCopyBuild,
+}: {
+  family: TalentFamilyDraft;
+  activePoints: number;
+  maxPoints: number;
+  onCopyBuild: () => void;
+}) {
   return (
     <section className="rounded-md border border-border-dim bg-bg-secondary p-4">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
@@ -106,7 +143,7 @@ function FamilyHeader({ family, activePoints, onCopyBuild }: { family: TalentFam
         </div>
         <div className="flex shrink-0 items-center gap-2">
           <div className="rounded border border-border-dim bg-bg-primary px-3 py-2 text-sm text-text-dim">
-            已投入 <span className="font-bold text-text-bright">{activePoints}</span> 點
+            已投入 <span className="font-bold text-text-bright">{activePoints}</span> / {maxPoints} 點
           </div>
           <button
             type="button"
@@ -124,11 +161,17 @@ function FamilyHeader({ family, activePoints, onCopyBuild }: { family: TalentFam
 function TalentNodeCard({
   nodeDef,
   value,
+  unlocked,
+  canAdd,
+  canRemove,
   onIncrement,
   onDecrement,
 }: {
   nodeDef: TalentNodeDraft;
   value: number;
+  unlocked: boolean;
+  canAdd: boolean;
+  canRemove: boolean;
   onIncrement: () => void;
   onDecrement: () => void;
 }) {
@@ -139,14 +182,15 @@ function TalentNodeCard({
   };
 
   return (
-    <div className={`rounded border bg-bg-primary p-3 ${nodeDef.keystone ? 'border-text-amber/70' : 'border-border-dim'}`}>
+    <div className={`rounded border bg-bg-primary p-3 ${nodeDef.keystone ? 'border-text-amber/70' : unlocked ? 'border-border-dim' : 'border-border-dim opacity-60'}`}>
       <div className="flex items-start justify-between gap-2">
         <div>
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="font-bold text-text-bright">{nodeDef.name}</h3>
-            {nodeDef.keystone && <Badge tone="amber">Keystone</Badge>}
+            {nodeDef.keystone && <Badge tone="amber">核心</Badge>}
             <Badge>Tier {nodeDef.tier}</Badge>
-            <Badge>Lv.{nodeDef.requiredLevel}</Badge>
+            <Badge>{nodeDef.maxRank} 點</Badge>
+            {!unlocked && <Badge>需前置點滿</Badge>}
           </div>
           <div className="mt-1 text-[11px] text-text-dim">{nodeDef.id}</div>
         </div>
@@ -154,7 +198,8 @@ function TalentNodeCard({
           <button
             type="button"
             onClick={onDecrement}
-            className="h-7 w-7 rounded border border-border-dim text-text-dim hover:text-text-bright"
+            disabled={!canRemove}
+            className="h-7 w-7 rounded border border-border-dim text-text-dim hover:text-text-bright disabled:cursor-not-allowed disabled:opacity-40"
             aria-label={`${nodeDef.name} 減少點數`}
           >
             -
@@ -163,7 +208,8 @@ function TalentNodeCard({
           <button
             type="button"
             onClick={onIncrement}
-            className="h-7 w-7 rounded border border-border-dim text-text-dim hover:text-text-bright"
+            disabled={!canAdd}
+            className="h-7 w-7 rounded border border-border-dim text-text-dim hover:text-text-bright disabled:cursor-not-allowed disabled:opacity-40"
             aria-label={`${nodeDef.name} 增加點數`}
           >
             +
@@ -184,6 +230,26 @@ function TalentNodeCard({
       </div>
     </div>
   );
+}
+
+function isNodeUnlocked(nodeDef: TalentNodeDraft, plannedPoints: Record<string, number>) {
+  return nodeDef.prerequisites.every((prerequisiteId) => {
+    const prerequisiteValue = plannedPoints[prerequisiteId] ?? 0;
+    return prerequisiteValue >= getPrerequisiteRank(nodeDef, prerequisiteId);
+  });
+}
+
+function getPrerequisiteRank(nodeDef: TalentNodeDraft, prerequisiteId: string) {
+  const family = TALENT_FAMILY_DRAFTS.find((candidate) => candidate.id === nodeDef.family);
+  const prerequisiteNode = family?.nodes.find((candidate) => candidate.id === prerequisiteId);
+  return prerequisiteNode?.maxRank ?? 1;
+}
+
+function canRemovePoint(family: TalentFamilyDraft, nodeDef: TalentNodeDraft, plannedPoints: Record<string, number>) {
+  return !family.nodes.some((candidate) => {
+    if (!candidate.prerequisites.includes(nodeDef.id)) return false;
+    return (plannedPoints[candidate.id] ?? 0) > 0;
+  });
 }
 
 function Info({ title, text }: { title: string; text: string }) {

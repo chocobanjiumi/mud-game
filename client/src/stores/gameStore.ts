@@ -4,6 +4,7 @@ import type {
   EquipmentSlots,
   InventoryItem,
   CombatantState,
+  CombatAttackMode,
   LearnedSkill,
   ActiveStatusEffect,
   RoomExit,
@@ -29,6 +30,7 @@ import type {
   CharacterListItemPayload,
   CardinalDirection,
   SkillPointSummary,
+  PartyInvitePayload,
 } from '@game/shared';
 
 import { loadAudioSettings } from '../audio/AudioManager';
@@ -70,6 +72,8 @@ export interface PartyMember {
   activeMountId?: string | null;
   mounted?: boolean;
 }
+
+export type PartyInvite = Extract<PartyInvitePayload, { status: 'pending' }>;
 
 // --- Chat message ---
 
@@ -165,12 +169,13 @@ export type DeathNotice = DeathNoticePayload;
 export interface RoomInfo {
   id: string;
   zone: string;
+  zoneName?: string;
   name: string;
   description: string;
   image?: string;
   localMap?: LocalMapPayload;
   exits: RoomExit[];
-  players: { id: string; name: string; classId: string; level: number }[];
+  players: NonNullable<RoomEntity['playerDetails']>[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number; monsterDetails?: RoomEntity['monsterDetails'] }[];
@@ -212,13 +217,17 @@ export interface CombatInfo {
   turnTimer: number;
   log: string[];
   result?: 'victory' | 'defeat' | 'fled';
+  preferredAttackModes?: Record<string, CombatAttackMode>;
 }
 
 // --- Derived stats ---
 
 export interface DerivedStats {
   atk: number;
+  meleeAtk: number;
+  rangedAtk: number;
   matk: number;
+  spellPower: number;
   def: number;
   mdef: number;
   hitRate: number;
@@ -331,6 +340,8 @@ export interface GameState {
   setParty: (members: PartyMember[]) => void;
   partyLeaderId: string | null;
   setPartyLeaderId: (id: string | null) => void;
+  pendingPartyInvite: PartyInvite | null;
+  setPendingPartyInvite: (invite: PartyInvite | null) => void;
 
   // Chat
   chatMessages: ChatMessage[];
@@ -479,6 +490,7 @@ export const useGameStore = create<GameState>((set) => ({
       aliases: {},
       party: [],
       partyLeaderId: null,
+      pendingPartyInvite: null,
       mapData: null,
       showInventory: false,
       showParty: false,
@@ -566,6 +578,8 @@ export const useGameStore = create<GameState>((set) => ({
   setParty: (party) => set({ party }),
   partyLeaderId: null,
   setPartyLeaderId: (partyLeaderId) => set({ partyLeaderId }),
+  pendingPartyInvite: null,
+  setPendingPartyInvite: (pendingPartyInvite) => set({ pendingPartyInvite }),
 
   // Chat
   chatMessages: [],

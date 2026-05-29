@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   CLASS_DEFS,
   FAITH_DEFS,
@@ -9,6 +10,7 @@ import { useGameStore } from '../stores/gameStore';
 interface CharacterSelectScreenProps {
   onSelect: (characterId: string) => void;
   onCreate: () => void;
+  onDelete: (characterId: string, confirmName: string) => void;
 }
 
 const MAX_VISIBLE_SLOTS = 6;
@@ -26,20 +28,18 @@ function formatLastLogin(timestamp: number): string {
 function CharacterSlot({
   character,
   onSelect,
+  onRequestDelete,
 }: {
   character: CharacterListItemPayload;
   onSelect: (characterId: string) => void;
+  onRequestDelete: (character: CharacterListItemPayload) => void;
 }) {
   const className = CLASS_DEFS[character.classId]?.name ?? character.classId;
   const raceName = character.raceId ? RACE_DEFS[character.raceId]?.name : undefined;
   const faithName = character.faithId ? FAITH_DEFS[character.faithId]?.name : undefined;
 
   return (
-    <button
-      type="button"
-      onClick={() => onSelect(character.id)}
-      className="group min-h-40 rounded-md border border-border-dim bg-bg-secondary p-4 text-left transition-colors hover:border-border-glow hover:bg-bg-tertiary"
-    >
+    <div className="group min-h-40 rounded-md border border-border-dim bg-bg-secondary p-4 text-left transition-colors hover:border-border-glow hover:bg-bg-tertiary">
       <div className="mb-3 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="truncate text-lg font-bold text-text-bright group-hover:text-text-terminal">
@@ -49,9 +49,13 @@ function CharacterSlot({
             Lv.{character.level} {className}
           </div>
         </div>
-        <div className="shrink-0 rounded border border-border-dim px-2 py-1 text-xs text-text-amber">
+        <button
+          type="button"
+          className="shrink-0 rounded border border-border-dim px-2 py-1 text-xs text-text-amber hover:border-border-glow hover:bg-bg-primary"
+          onClick={() => onSelect(character.id)}
+        >
           進入
-        </div>
+        </button>
       </div>
 
       <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-xs">
@@ -76,7 +80,19 @@ function CharacterSlot({
       <div className="mt-3 border-t border-border-dim pt-2 text-xs text-text-dim">
         最後登入：{formatLastLogin(character.lastLogin)}
       </div>
-    </button>
+      <div className="mt-3 flex justify-end border-t border-border-dim pt-3">
+        <button
+          type="button"
+          className="rounded border border-combat-damage/40 px-3 py-1 text-xs text-combat-damage transition-colors hover:bg-combat-damage/10"
+          onClick={(event) => {
+            event.stopPropagation();
+            onRequestDelete(character);
+          }}
+        >
+          刪除角色
+        </button>
+      </div>
+    </div>
   );
 }
 
@@ -85,12 +101,21 @@ export function CharacterSelectScreenView({
   connection,
   onSelect,
   onCreate,
+  onDelete,
 }: CharacterSelectScreenProps & {
   characters: CharacterListItemPayload[];
   connection: string;
 }) {
+  const [deleteTarget, setDeleteTarget] = useState<CharacterListItemPayload | null>(null);
+  const [confirmName, setConfirmName] = useState('');
   const visibleSlots = Math.max(MAX_VISIBLE_SLOTS, characters.length + 1);
   const emptySlots = Math.max(0, visibleSlots - characters.length - 1);
+  const canConfirmDelete = deleteTarget !== null && confirmName === deleteTarget.name;
+
+  const closeDeleteModal = () => {
+    setDeleteTarget(null);
+    setConfirmName('');
+  };
 
   return (
     <div className="h-full overflow-y-auto bg-bg-primary scanline text-text-bright">
@@ -102,7 +127,15 @@ export function CharacterSelectScreenView({
 
         <main className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
           {characters.map((character) => (
-            <CharacterSlot key={character.id} character={character} onSelect={onSelect} />
+            <CharacterSlot
+              key={character.id}
+              character={character}
+              onSelect={onSelect}
+              onRequestDelete={(target) => {
+                setDeleteTarget(target);
+                setConfirmName('');
+              }}
+            />
           ))}
 
           <button
@@ -126,11 +159,50 @@ export function CharacterSelectScreenView({
           ))}
         </main>
       </div>
+      {deleteTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4">
+          <section className="w-full max-w-md rounded-md border border-combat-damage bg-bg-secondary p-5 shadow-2xl shadow-black/60">
+            <div className="text-xs uppercase tracking-wide text-combat-damage">Delete Character</div>
+            <h2 className="mt-1 text-xl font-bold text-combat-damage">刪除角色</h2>
+            <p className="mt-2 text-sm leading-6 text-text-dim">
+              這會永久刪除「<span className="font-bold text-text-bright">{deleteTarget.name}</span>」與其背包、技能、任務等角色資料。請輸入角色名稱確認。
+            </p>
+            <input
+              autoFocus
+              value={confirmName}
+              onChange={(event) => setConfirmName(event.target.value)}
+              className="mt-4 w-full rounded border border-border-dim bg-bg-primary px-3 py-2 text-text-bright outline-none focus:border-combat-damage"
+              placeholder={deleteTarget.name}
+            />
+            <div className="mt-5 flex justify-end gap-2 border-t border-border-dim pt-4">
+              <button
+                type="button"
+                className="rounded border border-border-dim px-4 py-2 text-sm text-text-dim hover:text-text-bright"
+                onClick={closeDeleteModal}
+              >
+                取消
+              </button>
+              <button
+                type="button"
+                disabled={!canConfirmDelete}
+                className="rounded bg-combat-damage px-4 py-2 text-sm font-bold text-bg-primary transition-colors hover:bg-text-bright disabled:cursor-not-allowed disabled:opacity-40"
+                onClick={() => {
+                  if (!deleteTarget || !canConfirmDelete) return;
+                  onDelete(deleteTarget.id, confirmName);
+                  closeDeleteModal();
+                }}
+              >
+                確認刪除
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
     </div>
   );
 }
 
-export default function CharacterSelectScreen({ onSelect, onCreate }: CharacterSelectScreenProps) {
+export default function CharacterSelectScreen({ onSelect, onCreate, onDelete }: CharacterSelectScreenProps) {
   const characters = useGameStore((s) => s.characterList);
   const connection = useGameStore((s) => s.connection);
 
@@ -140,6 +212,7 @@ export default function CharacterSelectScreen({ onSelect, onCreate }: CharacterS
       connection={connection}
       onSelect={onSelect}
       onCreate={onCreate}
+      onDelete={onDelete}
     />
   );
 }

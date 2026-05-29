@@ -24,6 +24,7 @@ import NpcDialogueModal from './NpcDialogueModal';
 import SkillLearnedModal from './SkillLearnedModal';
 import DeathNoticeModal from './DeathNoticeModal';
 import SkillModal from './SkillModal';
+import PartyInviteModal from './PartyInviteModal';
 
 interface GameScreenProps {
   onCommand: (command: string, friendlyEcho?: string) => void;
@@ -171,9 +172,6 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
   return (
     <div className="h-full flex flex-col bg-bg-primary scanline">
-      {/* Top: Status bar */}
-      <StatusBar />
-
       {/* Middle: A/B/C/D workspace */}
       <div className="game-main flex-1 min-h-0">
         {/* A: quick actions */}
@@ -239,6 +237,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
             <SelectedTargetPanel />
             <ChatPanel onSendChat={onSendChat} />
           </div>
+          <StatusBar compact />
         </div>
 
         {/* D: text area */}
@@ -250,7 +249,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
 
       {/* Modals / Overlays */}
       <Inventory />
-      <PartyPanel />
+      <PartyPanel onCommand={onCommand} />
       <ShopModal onPurchase={onPurchase} onGetTransactions={onGetTransactions} />
       <QuestLog />
       <CharacterSheet />
@@ -266,6 +265,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
       />
       <SkillLearnedModal />
       <DeathNoticeModal />
+      <PartyInviteModal onCommand={onCommand} />
       <ItemTooltip />
     </div>
   );

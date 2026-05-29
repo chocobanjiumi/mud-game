@@ -1,16 +1,21 @@
-import { useCallback } from 'react';
+import { Suspense, lazy, useCallback, useEffect } from 'react';
 import { Arinova } from '@arinova-ai/spaces-sdk';
 import { useGameStore } from './stores/gameStore';
 import { useWebSocket } from './hooks/useWebSocket';
+import AudioManager from './audio/AudioManager';
 import LoginScreen from './components/LoginScreen';
 import CharacterSelectScreen from './components/CharacterSelectScreen';
 import CreateCharacterScreen from './components/CreateCharacterScreen';
 import GameScreen from './components/GameScreen';
 import SkillTablePage from './components/SkillTablePage';
-import UniqueItemPage from './components/UniqueItemPage';
-import TalentTreePage from './components/TalentTreePage';
-import MapPlanningPage from './components/MapPlanningPage';
 import type { CreateCharacterPayload } from '@game/shared';
+
+const WikiPage = lazy(() => import('./components/WikiPage'));
+const SuffixPage = lazy(() => import('./components/SuffixPage'));
+const MonsterPage = lazy(() => import('./components/MonsterPage'));
+const UniqueItemPage = lazy(() => import('./components/UniqueItemPage'));
+const TalentTreePage = lazy(() => import('./components/TalentTreePage'));
+const MapPlanningPage = lazy(() => import('./components/MapPlanningPage'));
 
 // Initialize Arinova SDK on app load (v0.1.3 constructor pattern)
 const ARINOVA_APP_ID = import.meta.env.VITE_ARINOVA_APP_ID || 'mud-game-671a1dd6';
@@ -24,21 +29,70 @@ export const arinova = new Arinova({
 
 export default function App() {
   const path = window.location.pathname.replace(/\/+$/, '');
+  if (path === '/mud/wiki') {
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading wiki...</div>}>
+        <WikiPage />
+      </Suspense>
+    );
+  }
+  if (path === '/mud/suffix') {
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading suffix...</div>}>
+        <SuffixPage />
+      </Suspense>
+    );
+  }
+  if (path === '/mud/monster') {
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading monsters...</div>}>
+        <MonsterPage />
+      </Suspense>
+    );
+  }
   if (path === '/mud/unique') {
-    return <UniqueItemPage />;
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading unique drafts...</div>}>
+        <UniqueItemPage />
+      </Suspense>
+    );
   }
   if (path === '/mud/talent') {
-    return <TalentTreePage />;
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading talent drafts...</div>}>
+        <TalentTreePage />
+      </Suspense>
+    );
   }
   if (path === '/mud/map') {
-    return <MapPlanningPage />;
+    return (
+      <Suspense fallback={<div className="h-full overflow-y-auto bg-bg-primary p-4 text-text-primary">Loading world map...</div>}>
+        <MapPlanningPage />
+      </Suspense>
+    );
   }
   if (path === '/mud/skill') {
     return <SkillTablePage />;
   }
 
   const screen = useGameStore((s) => s.screen);
-  const { sendCommand, login, selectCharacter, listCharacters, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
+  const { sendCommand, login, selectCharacter, listCharacters, createCharacter, deleteCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
+
+  useEffect(() => {
+    AudioManager.getInstance().play(screen === 'game' ? 'bgm_town' : 'bgm_temple');
+  }, [screen]);
+
+  useEffect(() => {
+    const unlockAudio = () => AudioManager.getInstance().unlock();
+    window.addEventListener('pointerdown', unlockAudio, { capture: true });
+    window.addEventListener('keydown', unlockAudio, { capture: true });
+    window.addEventListener('touchend', unlockAudio, { capture: true });
+    return () => {
+      window.removeEventListener('pointerdown', unlockAudio, { capture: true });
+      window.removeEventListener('keydown', unlockAudio, { capture: true });
+      window.removeEventListener('touchend', unlockAudio, { capture: true });
+    };
+  }, []);
 
   const handleLogin = useCallback(
     (userId: string, accessToken?: string) => {
@@ -112,6 +166,7 @@ export default function App() {
       <CharacterSelectScreen
         onSelect={selectCharacter}
         onCreate={() => useGameStore.getState().setScreen('create')}
+        onDelete={deleteCharacter}
       />
     );
   }

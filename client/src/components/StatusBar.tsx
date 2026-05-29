@@ -137,7 +137,7 @@ function ArinovaTokenBadge() {
   );
 }
 
-export default function StatusBar() {
+export default function StatusBar({ compact = false }: { compact?: boolean }) {
   const character = useGameStore((s) => s.character);
   const expToNext = useGameStore((s) => s.expToNext);
   const activeEffects = useGameStore((s) => s.activeEffects);
@@ -145,6 +145,74 @@ export default function StatusBar() {
   if (!character) return null;
 
   const className = CLASS_NAMES[character.classId] ?? character.classId;
+
+  if (compact) {
+    return (
+      <div className="compact-status-bar">
+        <div className="compact-status-head">
+          <div className="min-w-0">
+            <div className="truncate text-xs font-bold text-text-terminal">{character.name}</div>
+            <div className="truncate text-[10px] text-text-dim">{className} Lv.{character.level}</div>
+          </div>
+          <div className="flex shrink-0 items-center gap-1">
+            {character.mounted && (
+              <span className="rounded border border-text-amber/40 px-1 py-0.5 text-[10px] text-text-amber">
+                騎乘
+              </span>
+            )}
+            <AudioSettingsButton />
+            <ArinovaTokenBadge />
+          </div>
+        </div>
+
+        <div className="space-y-1">
+          <ProgressBar
+            current={character.hp}
+            max={character.maxHp}
+            barColor="bg-hp-bar"
+            bgColor="bg-hp-bg"
+            label="HP"
+          />
+          <ResourceBar
+            current={character.resource}
+            max={character.maxResource}
+            resourceType={character.resourceType}
+          />
+          <ProgressBar
+            current={character.exp}
+            max={expToNext}
+            barColor="bg-exp-bar"
+            bgColor="bg-exp-bg"
+            label="EXP"
+          />
+        </div>
+
+        {activeEffects.length > 0 && (
+          <div className="compact-status-effects">
+            {activeEffects.slice(0, 4).map((effect, i) => {
+              const def = getStatusEffectDef(effect.type);
+              const isBuff = def.polarity === 'positive';
+              return (
+                <span
+                  key={`${effect.type}-${i}`}
+                  className={`compact-status-effect ${
+                    isBuff ? 'bg-combat-buff/20 text-combat-buff' : 'bg-combat-debuff/20 text-combat-debuff'
+                  }`}
+                  title={`${def.name} (${effect.remainingDuration}回合) · ${def.description}`}
+                >
+                  {def.icon && <i aria-hidden="true" style={getAtlasBackgroundStyle(def.icon, 12)} />}
+                  <span className="truncate">{def.name}</span>
+                </span>
+              );
+            })}
+            {activeEffects.length > 4 && (
+              <span className="rounded bg-bg-primary/60 px-1 text-[10px] text-text-dim">+{activeEffects.length - 4}</span>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="bg-bg-secondary border-b border-border-dim px-3 py-2 space-y-1">

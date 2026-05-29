@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
 import MonsterDetailModal from './MonsterDetailModal';
+import PlayerDetailModal from './PlayerDetailModal';
 import { CrossRoomCombatPanelView } from './CrossRoomCombatPanel';
 import CombatPanel from './CombatPanel';
 import ApproachingPanel from './ApproachingPanel';
@@ -61,11 +62,13 @@ function EntityRow({
   selectedEntity,
   setSelectedEntity,
   onInspectMonster,
+  onInspectPlayer,
 }: {
   entity: RoomEntity;
   selectedEntity: RoomEntity | null;
   setSelectedEntity: (entity: RoomEntity | null) => void;
   onInspectMonster: (entity: RoomEntity) => void;
+  onInspectPlayer: (entity: RoomEntity) => void;
 }) {
   const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
   const imagePath = getEntityImagePath(entity);
@@ -99,6 +102,10 @@ function EntityRow({
                 onInspectMonster(entity);
                 return;
               }
+              if (entity.type === 'player' && action.label === '查看') {
+                onInspectPlayer(entity);
+                return;
+              }
               sendCommand(action.command, `${action.label} ${entity.label}`);
             }}
           >
@@ -106,6 +113,59 @@ function EntityRow({
           </button>
         ))}
       </div>
+    </div>
+  );
+}
+
+function PlayerTile({
+  entity,
+  selectedEntity,
+  setSelectedEntity,
+  onInspectPlayer,
+}: {
+  entity: RoomEntity;
+  selectedEntity: RoomEntity | null;
+  setSelectedEntity: (entity: RoomEntity | null) => void;
+  onInspectPlayer: (entity: RoomEntity) => void;
+}) {
+  const selected = selectedEntity?.id === entity.id && selectedEntity.type === entity.type;
+  const imagePath = getEntityImagePath(entity);
+  return (
+    <div className={`room-player-tile ${selected ? 'room-player-tile-selected' : ''}`}>
+      <button
+        type="button"
+        className="room-player-button"
+        onClick={() => setSelectedEntity(selected ? null : entity)}
+      >
+        {imagePath ? (
+          <img src={imagePath} alt="" className="room-player-avatar" loading="lazy" />
+        ) : (
+          <span className="room-player-avatar room-player-avatar-fallback">{entity.label.slice(0, 1)}</span>
+        )}
+        <span className="room-player-name">{entity.label}</span>
+      </button>
+      {selected && (
+        <div className="room-player-actions">
+          {entity.actions.map((action) => (
+            <button
+              key={`${entity.id}-${action.label}-${action.command}`}
+              className={actionClass(action)}
+              disabled={action.disabled}
+              title={action.reason}
+              onClick={() => {
+                if (action.disabled) return;
+                if (action.label === '查看') {
+                  onInspectPlayer(entity);
+                  return;
+                }
+                sendCommand(action.command, `${action.label} ${entity.label}`);
+              }}
+            >
+              {action.label}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -128,6 +188,7 @@ export function RoomPanelView({
   learnedSkills?: ReturnType<typeof useGameStore.getState>['skills'];
 }) {
   const [detailMonster, setDetailMonster] = useState<RoomEntity | null>(null);
+  const [detailPlayer, setDetailPlayer] = useState<RoomEntity | null>(null);
   const hints = room.inspectHints ?? [];
   const entities = room.entities ?? [];
   const corpses = room.corpses ?? [];
@@ -204,17 +265,32 @@ export function RoomPanelView({
             return (
               <section key={type} className="space-y-1">
                 <div className="text-[10px] text-text-dim">{SECTION_LABEL[type]}</div>
-                <div className="grid grid-cols-1 gap-1">
-                  {sectionEntities.map((entity) => (
-                    <EntityRow
-                      key={`${entity.type}-${entity.id}`}
-                      entity={entity}
-                      selectedEntity={selectedEntity}
-                      setSelectedEntity={setSelectedEntity}
-                      onInspectMonster={setDetailMonster}
-                    />
-                  ))}
-                </div>
+                {type === 'player' ? (
+                  <div className="room-player-grid">
+                    {sectionEntities.map((entity) => (
+                      <PlayerTile
+                        key={`${entity.type}-${entity.id}`}
+                        entity={entity}
+                        selectedEntity={selectedEntity}
+                        setSelectedEntity={setSelectedEntity}
+                        onInspectPlayer={setDetailPlayer}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-1">
+                    {sectionEntities.map((entity) => (
+                      <EntityRow
+                        key={`${entity.type}-${entity.id}`}
+                        entity={entity}
+                        selectedEntity={selectedEntity}
+                        setSelectedEntity={setSelectedEntity}
+                        onInspectMonster={setDetailMonster}
+                        onInspectPlayer={setDetailPlayer}
+                      />
+                    ))}
+                  </div>
+                )}
               </section>
             );
           })}
@@ -241,6 +317,7 @@ export function RoomPanelView({
         <div className="text-xs text-text-dim">目前沒有明確互動物。</div>
       )}
       {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}
+      {detailPlayer && <PlayerDetailModal player={detailPlayer} onClose={() => setDetailPlayer(null)} />}
     </div>
   );
 }
@@ -295,7 +372,6 @@ function formatInstanceEntryAction(entry: NonNullable<RoomInfo['instanceEntries'
   if (entry.type === 'item_use') return '使用';
   return '進入';
 }
-
 
 function formatQuestState(state: NonNullable<RoomInfo['instanceEntries']>[number]['requiredQuestState']): string {
   switch (state) {

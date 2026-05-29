@@ -13,6 +13,7 @@ import type {
   DeathNoticePayload,
   InventoryPayload,
   PartyPayload,
+  PartyInvitePayload,
   ChatPayload,
   MapPayload,
   NpcDialoguePayload,
@@ -49,6 +50,27 @@ function ordinalLabels<T extends { name: string }>(items: T[], keyOf: (item: T) 
     seen.set(key, next);
     return (totals.get(key) ?? 0) > 1 ? `${item.name}#${next}` : item.name;
   });
+}
+
+function bgmForRoom(room: RoomPayload): string {
+  const zone = room.zone.toLowerCase();
+  const id = room.id.toLowerCase();
+  if (zone.includes('town') || zone.includes('market') || id.includes('village') || id.includes('town') || id.includes('market')) {
+    return 'bgm_town';
+  }
+  return 'bgm_wilderness';
+}
+
+function hasCurrentPlayerBasicAttackHit(lines: string[], characterName?: string): boolean {
+  if (!characterName) return false;
+  return lines.some((line) =>
+    line.startsWith(characterName)
+    && !line.includes('使用了')
+    && line.includes('造成 ')
+    && line.includes('點傷害')
+    && !line.includes('未能命中')
+    && !line.includes('被閃避')
+  );
 }
 
 export function useWebSocket() {
@@ -148,12 +170,7 @@ export function useWebSocket() {
         }
         // Audio: zone-based BGM (only when not in combat)
         if (!s.inCombat) {
-          const rid = room.id;
-          if (rid.startsWith('dungeon') || rid.includes('cave') || rid.includes('mine')) {
-            AudioManager.getInstance().play('bgm_dungeon');
-          } else {
-            AudioManager.getInstance().play('bgm_village');
-          }
+          AudioManager.getInstance().play(bgmForRoom(room));
         }
         break;
       }
@@ -166,6 +183,7 @@ export function useWebSocket() {
         s.setExpToNext(status.expToNext);
         s.setActiveEffects(status.effects);
         if (status.skills) s.setSkills(status.skills);
+        s.setSkillPoints(status.skillPoints ?? null);
         if (status.aliases) s.setAliases(status.aliases);
         break;
       }
@@ -213,6 +231,7 @@ export function useWebSocket() {
           enemyTeam: data.enemyTeam,
           turnTimer: data.turnTimer,
           log: [],
+          preferredAttackModes: data.preferredAttackModes,
         });
         s.addTerminalLine('');
         s.addTerminalLine('═══ 戰鬥開始！ ═══', 'combat');
@@ -226,7 +245,7 @@ export function useWebSocket() {
             s.addTerminalLine(`${enemy.name} 預兆：${enemy.pendingTelegraph.skillId}`, 'combat');
           }
         }
-        AudioManager.getInstance().play('bgm_combat');
+        AudioManager.getInstance().play('bgm_combat_normal');
         break;
       }
 
@@ -254,6 +273,7 @@ export function useWebSocket() {
             playerTeam: data.playerTeam,
             enemyTeam: data.enemyTeam,
             log: [...combat.log, ...data.log],
+            preferredAttackModes: data.preferredAttackModes ?? combat.preferredAttackModes,
           });
         }
         for (const [index, line] of data.log.entries()) {
@@ -267,12 +287,9 @@ export function useWebSocket() {
             s.addTerminalLine(`${enemy.name} 預兆：${enemy.pendingTelegraph.skillId}`, 'combat');
           }
         }
-        // Audio: detect hit/miss/crit from log text
-        const audio = AudioManager.getInstance();
-        const logText = data.log.join(' ');
-        if (logText.includes('暴擊')) audio.play('critical_hit');
-        else if (logText.includes('閃避') || logText.includes('未命中')) audio.play('attack_miss');
-        else if (logText.includes('造成') || logText.includes('傷害')) audio.play('attack_hit');
+        if (hasCurrentPlayerBasicAttackHit(data.log, current?.name)) {
+          AudioManager.getInstance().play('attack_hit');
+        }
         break;
       }
 
@@ -292,11 +309,8 @@ export function useWebSocket() {
           if (data.loot.exp > 0) s.addTerminalLine(`獲得經驗: ${data.loot.exp}`, 'exp');
           if (data.loot.gold > 0) s.addTerminalLine(`獲得金幣: ${data.loot.gold}`, 'gold');
         }
-        // Audio: victory = monster_die, defeat = player_hurt
-        if (data.result === 'victory') AudioManager.getInstance().play('monster_die');
-        else if (data.result === 'defeat') AudioManager.getInstance().play('player_hurt');
-        // Resume village BGM after combat
-        AudioManager.getInstance().play('bgm_village');
+        // Resume room BGM after combat.
+        AudioManager.getInstance().play(s.room ? bgmForRoom(s.room) : 'bgm_town');
         // Clear combat state after a short delay
         setTimeout(() => store.getState().setCombat(null), 3000);
         break;
@@ -322,6 +336,13 @@ export function useWebSocket() {
         const data = p as unknown as PartyPayload;
         s.setParty(data.members);
         s.setPartyLeaderId(data.leaderId);
+        s.setPendingPartyInvite(null);
+        break;
+      }
+
+      case 'party_invite': {
+        const data = p as unknown as PartyInvitePayload;
+        s.setPendingPartyInvite(data.status === 'pending' ? data : null);
         break;
       }
 
@@ -623,6 +644,13 @@ export function useWebSocket() {
     [send],
   );
 
+  const deleteCharacter = useCallback(
+    (characterId: string, confirmName: string) => {
+      send({ type: 'delete_character', payload: { characterId, confirmName } });
+    },
+    [send],
+  );
+
   const sendShopOpen = useCallback(() => {
     send({ type: 'open_shop' });
   }, [send]);
@@ -692,5 +720,5 @@ export function useWebSocket() {
     return () => window.removeEventListener('leaderboard-request', handler);
   }, [sendLeaderboardRequest]);
 
-  return { send, sendCommand, connect, disconnect, login, selectCharacter, listCharacters, createCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
+  return { send, sendCommand, connect, disconnect, login, selectCharacter, listCharacters, createCharacter, deleteCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
 }

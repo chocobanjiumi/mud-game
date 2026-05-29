@@ -23,6 +23,25 @@ function labelForElement(element: string): string {
   return labels[element] ?? element;
 }
 
+function labelForFamily(family: string): string {
+  const labels: Record<string, string> = {
+    ooze: '軟泥',
+    beast: '野獸',
+    humanoid: '人型',
+    undead: '不死',
+    demon: '惡魔',
+    dragon: '龍族',
+    construct: '構裝',
+    elemental: '元素',
+    plant: '植物',
+    insect: '蟲類',
+    aquatic: '水生',
+    celestial: '天界',
+    aberration: '異怪',
+  };
+  return labels[family] ?? family;
+}
+
 export default function MonsterDetailModal({
   monster,
   onClose,
@@ -81,6 +100,7 @@ export default function MonsterDetailModal({
                 <div className="monster-detail-grid">
                   <Info label="分類" value={details.isBoss ? 'Boss' : details.isElite ? '菁英' : '一般'} />
                   <Info label="屬性" value={labelForElement(details.element)} />
+                  <Info label="族群" value={labelForFamily(details.family)} />
                   <Info label="AI" value={details.aiType} />
                   <Info label="行為" value={details.behaviorType ?? '-'} />
                   <Info label="MP" value={`${details.mp}/${details.maxMp}`} />
