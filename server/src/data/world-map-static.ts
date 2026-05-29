@@ -2027,9 +2027,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_15_3": {
     "id": "lakeside_town_fill_15_3",
-    "name": "城鎮街道",
+    "name": "城門北側酒館貨欄",
     "zone": "lakeside_town",
-    "description": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+    "description": "城門北側酒館貨欄位在城鎮大門北面，南側門洞有守衛腳步聲，東邊酒館後牆飄出麥酒香。木桶與補給箱封住石板角落，這裡是 service blocker，只標示城門與酒館後勤邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2039,9 +2039,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_15_5": {
     "id": "lakeside_town_fill_15_5",
-    "name": "石板大路",
+    "name": "鐵匠鋪西補給石路",
     "zone": "lakeside_town",
-    "description": "通往湖濱的石板路，遠處湖面波光粼粼。",
+    "description": "鐵匠鋪西補給石路位在城門南側，北面仍可回望鎮門旗桿，東邊鐵匠鋪傳來敲砧聲，南側朝聖古道邊界開始變窄。這裡是 service blocker，補給推車停滿石板路，不開額外街巷。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2051,21 +2051,21 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_15_6": {
     "id": "lakeside_town_fill_15_6",
-    "name": "商店旁巷",
+    "name": "聖門北側商巷界",
     "zone": "lakeside_town",
-    "description": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+    "description": "聖門北側商巷界位在湖畔城鎮南緣，北面鐵匠鋪西補給石路堆著貨車，南方朝聖古道聖門露出白石，東側能望見安靜眺臺的高處欄杆。這裡是跨區 border service route，專門銜接城鎮與朝聖古道。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "pilgrim_road_sanctuary_gate",
-        "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
+        "description": "沿南緣商巷與白石路標前行，穿過長距離邊界路線抵達朝聖古道聖門。",
         "edgeKind": "distant_route",
         "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
       },
       {
         "direction": "east",
         "targetRoomId": "pilgrim_road_quiet_overlook",
-        "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
+        "description": "沿湖鎮南緣貨道向東繞行，穿過長距離邊界路線抵達朝聖古道安靜眺臺。",
         "edgeKind": "distant_route",
         "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
       }
@@ -2078,9 +2078,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_16_1": {
     "id": "lakeside_town_fill_16_1",
-    "name": "湖濱通道",
+    "name": "旅店北側神殿巷欄",
     "zone": "lakeside_town",
-    "description": "城鎮裡的寬闊通道，兩旁商鋪林立。",
+    "description": "旅店北側神殿巷欄位在湖濱旅店北面，南側客房窗燈映在青石上，東邊小神殿鐘聲穿過窄巷。低欄與供水桶封住巷口，這裡是 service blocker，保留補給區邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -2090,9 +2090,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_18_0": {
     "id": "lakeside_town_fill_18_0",
-    "name": "石板大路",
+    "name": "法院東傳送補給坪",
     "zone": "lakeside_town",
-    "description": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+    "description": "法院東傳送補給坪位在湖畔法院東側，西面石階通向審判廳，南方傳送廣場的符光在地面閃爍。這裡是 service blocker，補給欄與護欄限制人流，不作一般通行街道。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2102,9 +2102,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_18_5": {
     "id": "lakeside_town_fill_18_5",
-    "name": "商店旁巷",
+    "name": "拍賣行南倉庫貨巷",
     "zone": "lakeside_town",
-    "description": "通往湖濱的石板路，遠處湖面波光粼粼。",
+    "description": "拍賣行南倉庫貨巷夾在拍賣行與湖濱倉庫之間，北面拍賣鐘聲沉悶，東側倉庫門堆滿封箱，西邊競技入口旗影晃動。這裡是 service blocker，貨巷只供後勤堆放，不開新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2137,9 +2137,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "lakeside_town_fill_19_3": {
     "id": "lakeside_town_fill_19_3",
-    "name": "城鎮街道",
+    "name": "銀行北側監獄牆巷",
     "zone": "lakeside_town",
-    "description": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+    "description": "銀行北側監獄牆巷位在湖畔銀行北面，南側銅門反射湖光，西邊監獄高牆投下陰影。石欄與巡邏繩封住牆根，是 service blocker，用來標示金融區與監獄區邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,

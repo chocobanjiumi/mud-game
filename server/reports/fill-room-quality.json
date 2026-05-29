@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T20:52:11.580Z",
+  "generatedAt": "2026-05-29T20:54:41.642Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 117,
-    "errors": 85,
-    "warnings": 32,
+    "issues": 98,
+    "errors": 74,
+    "warnings": 24,
     "byGrade": {
       "A_main_transition": 32,
       "B_connector": 17,
@@ -16,20 +16,20 @@
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 264,
+      "border": 269,
       "gathering": 159,
       "monster": 30,
-      "npc_or_quest": 21,
-      "portal": 14,
+      "npc_or_quest": 22,
+      "portal": 15,
       "route": 69,
-      "service": 58
+      "service": 63
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 2,
-      "description.direction": 23,
-      "description.length": 46,
-      "description.purpose": 13,
-      "description.repeated_opening": 17,
+      "description.direction": 19,
+      "description.length": 39,
+      "description.purpose": 9,
+      "description.repeated_opening": 13,
       "description.terrain": 3,
       "exit.description.length": 4,
       "exit.description.missing": 9
@@ -6225,16 +6225,19 @@
       "zoneId": "lakeside_town",
       "zoneName": "湖畔城鎮",
       "fillRooms": 8,
-      "issues": 19,
+      "issues": 0,
       "records": [
         {
           "id": "lakeside_town_fill_15_3",
           "zone": "lakeside_town",
-          "name": "城鎮街道",
+          "name": "城門北側酒館貨欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "npc_or_quest",
+            "service"
           ],
           "worldX": 15,
           "worldY": 3,
@@ -6256,58 +6259,22 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_15_3",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_3",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_3",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_3",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_15_5",
           "zone": "lakeside_town",
-          "name": "石板大路",
+          "name": "鐵匠鋪西補給石路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": 15,
           "worldY": 5,
@@ -6328,34 +6295,24 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_15_5",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "通往湖濱的石板路，遠處湖面波光粼粼。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_15_6",
           "zone": "lakeside_town",
-          "name": "商店旁巷",
+          "name": "聖門北側商巷界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
             "gathering",
-            "route"
+            "route",
+            "service"
           ],
           "worldX": 15,
           "worldY": 6,
@@ -6381,58 +6338,22 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 71,
           "exitCount": 2,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_15_6",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_6",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_6",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 65,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_15_6",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_16_1",
           "zone": "lakeside_town",
-          "name": "湖濱通道",
+          "name": "旅店北側神殿巷欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": 16,
           "worldY": 1,
@@ -6454,31 +6375,22 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 14,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_16_1",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 14,
-              "minimum": 55,
-              "text": "城鎮裡的寬闊通道，兩旁商鋪林立。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_18_0",
           "zone": "lakeside_town",
-          "name": "石板大路",
+          "name": "法院東傳送補給坪",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "gathering",
+            "portal",
+            "service"
           ],
           "worldX": 18,
           "worldY": 0,
@@ -6500,57 +6412,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_18_0",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_18_0",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_18_0",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_18_0",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_18_5",
           "zone": "lakeside_town",
-          "name": "商店旁巷",
+          "name": "拍賣行南倉庫貨巷",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": 18,
@@ -6575,22 +6450,11 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_18_5",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "通往湖濱的石板路，遠處湖面波光粼粼。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "lakeside_town_fill_18_6",
@@ -6637,10 +6501,11 @@
         {
           "id": "lakeside_town_fill_19_3",
           "zone": "lakeside_town",
-          "name": "城鎮街道",
+          "name": "銀行北側監獄牆巷",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": 19,
@@ -6661,51 +6526,13 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "lakeside_town_fill_19_3",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_19_3",
-              "zone": "lakeside_town",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_19_3",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-            },
-            {
-              "id": "lakeside_town_fill_19_3",
-              "zone": "lakeside_town",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -14470,156 +14297,6 @@
       "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
     },
     {
-      "id": "lakeside_town_fill_15_3",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_15_3",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_15_3",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_15_5",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "通往湖濱的石板路，遠處湖面波光粼粼。"
-    },
-    {
-      "id": "lakeside_town_fill_15_6",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_15_6",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_15_6",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 65,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_16_1",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 14,
-      "minimum": 55,
-      "text": "城鎮裡的寬闊通道，兩旁商鋪林立。"
-    },
-    {
-      "id": "lakeside_town_fill_18_0",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_18_0",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_18_0",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_18_5",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "通往湖濱的石板路，遠處湖面波光粼粼。"
-    },
-    {
-      "id": "lakeside_town_fill_19_3",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_19_3",
-      "zone": "lakeside_town",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
-      "id": "lakeside_town_fill_19_3",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
-    },
-    {
       "id": "obsidian_depths_black_glass_bridge",
       "zone": "obsidian_depths",
       "severity": "error",
@@ -15266,34 +14943,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "lakeside_town_fill_15_3",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "lakeside_town_fill_15_6",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "lakeside_town_fill_18_0",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "lakeside_town_fill_19_3",
-      "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "saltwind_flats_fill_31_10",
