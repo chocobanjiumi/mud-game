@@ -20190,13 +20190,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '海蛇痕位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_shallow_cut', description: '回到淺水裂道' },
-      {
-        direction: 'north',
-        targetRoomId: 'saltwind_flats_lowtide_causeway',
-        description: '北側要沿海蛇拖痕反向穿過潮水淺槽與鹽霧石脊，才爬上退潮石道',
-        edgeKind: 'long_path',
-        edgeNote: '海蛇痕到退潮石道需要沿拖痕、潮水淺槽與鹽霧石脊上行，屬於鹽風灘長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'saltwind_flats_fog_bell', description: '北側霧鐘聲標出回程方向' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_lowtide_causeway', description: '南側海蛇拖痕接上退潮石道' },
     ],
     monsters: [
       { monsterId: 'lowtide_serpent', maxCount: 2, respawnSeconds: 280 },
@@ -20319,13 +20314,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '退潮石道回漁夫藏點需要穿過碎石鹽脊、乾網繩與藏箱陰影，屬於鹽風灘長路徑。',
       },
-      {
-        direction: 'south',
-        targetRoomId: 'saltwind_flats_sea_serpent_track',
-        description: '南側要從退潮石道滑下鹽霧石脊，沿潮水淺槽走到海蛇拖痕中央泥線',
-        edgeKind: 'long_path',
-        edgeNote: '退潮石道到海蛇痕需要沿鹽霧石脊、潮水淺槽與拖痕下行，屬於鹽風灘長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '北側海蛇拖痕回到霧鐘方向' },
       {
         direction: 'east',
         targetRoomId: 'saltwind_flats_tidewatch_ruin',
@@ -20364,13 +20353,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '霧鐘桿回破舟灘需要穿過纜繩殘段、積鹽水坑與破船木影，屬於鹽風灘長路徑。',
       },
-      {
-        direction: 'north',
-        targetRoomId: 'saltwind_flats_lowtide_causeway',
-        description: '北側要沿霧鐘桿後方鹽坡上行，穿過潮霧與斷續石梁才接上退潮石道',
-        edgeKind: 'long_path',
-        edgeNote: '霧鐘桿到退潮石道需要沿鹽坡、潮霧與斷續石梁上行，屬於鹽風灘長路徑。',
-      },
+      { direction: 'south', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '南側海蛇拖痕通往退潮石道' },
     ],
     monsters: [
       { monsterId: 'glasssalt_elemental', maxCount: 1, respawnSeconds: 260 },
