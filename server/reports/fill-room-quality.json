@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:06:49.285Z",
+  "generatedAt": "2026-05-29T20:09:57.285Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 626,
-    "errors": 442,
-    "warnings": 184,
+    "issues": 585,
+    "errors": 412,
+    "warnings": 173,
     "byGrade": {
-      "A_main_transition": 46,
+      "A_main_transition": 44,
       "B_connector": 19,
-      "C_empty_filler": 101,
-      "D_upgrade_candidate": 177
+      "C_empty_filler": 95,
+      "D_upgrade_candidate": 185
     },
     "byPurpose": {
-      "blocker": 227,
-      "border": 210,
-      "gathering": 141,
+      "blocker": 230,
+      "border": 215,
+      "gathering": 142,
       "monster": 30,
-      "npc_or_quest": 17,
-      "portal": 8,
-      "route": 71,
-      "service": 28
+      "npc_or_quest": 21,
+      "portal": 10,
+      "route": 70,
+      "service": 34
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 18,
-      "description.direction": 134,
-      "description.length": 200,
+      "dead_end.no_gameplay": 15,
+      "description.direction": 126,
+      "description.length": 190,
       "description.purpose": 46,
-      "description.repeated_opening": 120,
-      "description.terrain": 21,
+      "description.repeated_opening": 112,
+      "description.terrain": 13,
       "exit.description.length": 40,
-      "exit.description.missing": 47
+      "exit.description.missing": 43
     }
   },
   "zones": [
@@ -7145,15 +7145,18 @@
       "zoneId": "kingsroad_market",
       "zoneName": "王道市集",
       "fillRooms": 10,
-      "issues": 41,
+      "issues": 0,
       "records": [
         {
           "id": "kingsroad_market_fill_22_0",
           "zone": "kingsroad_market",
           "name": "王道西市石路",
-          "grade": "C_empty_filler",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "route"
+            "blocker",
+            "border",
+            "npc_or_quest",
+            "portal"
           ],
           "worldX": 22,
           "worldY": 0,
@@ -7161,7 +7164,8 @@
           "mapY": 0,
           "neighbors": {
             "byExit": {
-              "east": "kingsroad_market_portal_plaza"
+              "east": "kingsroad_market_portal_plaza",
+              "south": ""
             },
             "byCoordinate": {
               "south": "kingsroad_market_fill_22_1",
@@ -7169,46 +7173,19 @@
             }
           },
           "crossZoneBoundary": false,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 23,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_22_0",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 23,
-              "minimum": 55,
-              "text": "王道市集西側的石板路，貨車從湖畔城鎮方向轉入市集。"
-            },
-            {
-              "id": "kingsroad_market_fill_22_0",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingsroad_market_fill_22_0",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->kingsroad_market_portal_plaza 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasServiceCue": true,
+          "hasLockedExit": true,
+          "descriptionLength": 68,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_22_1",
@@ -7216,6 +7193,8 @@
           "name": "王道西哨巷",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "blocker",
+            "border",
             "npc_or_quest"
           ],
           "worldX": 22,
@@ -7224,7 +7203,8 @@
           "mapY": 1,
           "neighbors": {
             "byExit": {
-              "east": "kingsroad_market_guard_post"
+              "east": "kingsroad_market_guard_post",
+              "north": ""
             },
             "byCoordinate": {
               "north": "kingsroad_market_fill_22_0",
@@ -7239,47 +7219,23 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 25,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_22_1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 25,
-              "minimum": 55,
-              "text": "靠近市集守衛哨的西側巷道，石牆上掛著往湖畔城鎮的路牌。"
-            },
-            {
-              "id": "kingsroad_market_fill_22_1",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingsroad_market_fill_22_1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->kingsroad_market_guard_post 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 66,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_23_2",
           "zone": "kingsroad_market",
-          "name": "市集大路",
-          "grade": "C_empty_filler",
+          "name": "草藥棚北封街",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "gathering",
+            "npc_or_quest",
+            "service"
           ],
           "worldX": 23,
           "worldY": 2,
@@ -7296,62 +7252,27 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
-          "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasQuestCue": true,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_23_2",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_2",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_2",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_2",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_23_n1",
           "zone": "kingsroad_market",
-          "name": "商路",
-          "grade": "C_empty_filler",
+          "name": "西北貨棚封巷",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "portal",
+            "service"
           ],
           "worldX": 23,
           "worldY": -1,
@@ -7373,57 +7294,22 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_23_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_23_n1",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_25_5",
           "zone": "kingsroad_market",
-          "name": "商路",
-          "grade": "A_main_transition",
+          "name": "南市競技門廊",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "npc_or_quest",
+            "service"
           ],
           "worldX": 25,
           "worldY": 5,
@@ -7431,88 +7317,36 @@
           "mapY": 6,
           "neighbors": {
             "byExit": {
-              "south": "arena_quarter_prize_counter"
+              "south": "arena_quarter_prize_counter",
+              "north": ""
             },
             "byCoordinate": {
               "south": "arena_quarter_prize_counter"
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 65,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 65,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->arena_quarter_prize_counter 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "kingsroad_market_fill_25_5",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 66,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_26_3",
           "zone": "kingsroad_market",
-          "name": "驛道",
-          "grade": "C_empty_filler",
+          "name": "拍賣棚下封道",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "service"
           ],
           "worldX": 26,
           "worldY": 3,
@@ -7534,57 +7368,21 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_26_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_3",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_26_n1",
           "zone": "kingsroad_market",
-          "name": "驛道",
-          "grade": "C_empty_filler",
+          "name": "鐵匠北貨欄",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": 26,
           "worldY": -1,
@@ -7604,59 +7402,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 63,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_26_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_n1",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-            },
-            {
-              "id": "kingsroad_market_fill_26_n1",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_28_3",
           "zone": "kingsroad_market",
-          "name": "市集大路",
-          "grade": "C_empty_filler",
+          "name": "高陽台西封街",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": 28,
           "worldY": 3,
@@ -7679,54 +7441,16 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_28_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_28_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_28_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_28_3",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_29_3",
           "zone": "kingsroad_market",
-          "name": "攤位通道",
+          "name": "東市攤幕封口",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -7749,60 +7473,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_29_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_29_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_29_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_29_3",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "kingsroad_market_fill_30_3",
           "zone": "kingsroad_market",
-          "name": "驛道",
-          "grade": "A_main_transition",
+          "name": "東門海風封驛",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "npc_or_quest"
           ],
           "worldX": 30,
           "worldY": 3,
@@ -7818,66 +7505,19 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": true,
-          "descriptionLength": 18,
+          "descriptionLength": 73,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "kingsroad_market_fill_30_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 65,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_30_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 18,
-              "minimum": 65,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_30_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 65,
-              "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-            },
-            {
-              "id": "kingsroad_market_fill_30_3",
-              "zone": "kingsroad_market",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east-> 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "kingsroad_market_fill_30_3",
-              "zone": "kingsroad_market",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -20287,323 +19927,6 @@
       "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
     },
     {
-      "id": "kingsroad_market_fill_22_0",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 23,
-      "minimum": 55,
-      "text": "王道市集西側的石板路，貨車從湖畔城鎮方向轉入市集。"
-    },
-    {
-      "id": "kingsroad_market_fill_22_0",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingsroad_market_fill_22_0",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->kingsroad_market_portal_plaza 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "kingsroad_market_fill_22_1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 25,
-      "minimum": 55,
-      "text": "靠近市集守衛哨的西側巷道，石牆上掛著往湖畔城鎮的路牌。"
-    },
-    {
-      "id": "kingsroad_market_fill_22_1",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingsroad_market_fill_22_1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->kingsroad_market_guard_post 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "kingsroad_market_fill_23_2",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_23_2",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_23_2",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_23_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_23_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_23_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 65,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 65,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->arena_quarter_prize_counter 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "kingsroad_market_fill_26_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_26_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_26_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_26_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_26_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_26_n1",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。"
-    },
-    {
-      "id": "kingsroad_market_fill_28_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_28_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_28_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_29_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_29_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_29_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_30_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 65,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_30_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 18,
-      "minimum": 65,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_30_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 65,
-      "text": "王道市集的主要商路，馬車和行商絡繹不絕。"
-    },
-    {
-      "id": "kingsroad_market_fill_30_3",
-      "zone": "kingsroad_market",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east-> 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
       "id": "lakeside_town_fill_15_3",
       "zone": "lakeside_town",
       "severity": "error",
@@ -24168,62 +23491,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_23_2",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_23_n1",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_25_5",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_26_n1",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_26_3",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_28_3",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_29_3",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "kingsroad_market_fill_30_3",
-      "zone": "kingsroad_market",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "lakeside_town_fill_15_3",
