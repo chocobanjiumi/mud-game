@@ -2176,21 +2176,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "whispering_valley_mist_pool"
   ],
   [
-    "whispering_valley_ice_fern_patch",
-    "north",
-    "whispering_valley_hidden_cascade"
-  ],
-  [
-    "whispering_valley_old_shrine",
-    "south",
-    "whispering_valley_willow_camp"
-  ],
-  [
-    "whispering_valley_ranger_post",
-    "north",
-    "whispering_valley_stone_weir"
-  ],
-  [
     "whispering_valley_reed_bank",
     "north",
     "whispering_valley_clear_stream"
@@ -2199,16 +2184,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "whispering_valley_reed_bank",
     "south",
     "whispering_valley_entrance"
-  ],
-  [
-    "whispering_valley_stone_weir",
-    "south",
-    "whispering_valley_ranger_post"
-  ],
-  [
-    "whispering_valley_willow_camp",
-    "north",
-    "whispering_valley_old_shrine"
   ],
   [
     "wildgrass_hills_bent_oak",

@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-05-29T18:32:42.177Z",
+  "generatedAt": "2026-05-29T18:36:35.661Z",
   "counts": {
-    "totalLongPathRecords": 955,
-    "staticWorldLongPathEntries": 465,
-    "runtimeLongPathExits": 955,
+    "totalLongPathRecords": 943,
+    "staticWorldLongPathEntries": 460,
+    "runtimeLongPathExits": 943,
     "staticOnlyEntries": 0,
-    "roomEdgeOnlyEntries": 490,
+    "roomEdgeOnlyEntries": 483,
     "missingSourceRooms": 0,
     "missingTargetRooms": 0,
-    "sameZone": 918,
+    "sameZone": 906,
     "crossZone": 37,
-    "hasExistingIntermediateFillerOrStaticRoomToConnect": 21,
+    "hasExistingIntermediateFillerOrStaticRoomToConnect": 19,
     "classifications": {
       "A_coordinate_error_candidate": 0,
-      "B_missing_static_corridor": 70,
-      "C_special_route": 885
+      "B_missing_static_corridor": 61,
+      "C_special_route": 882
     }
   },
   "records": [
@@ -43563,62 +43563,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_fallen_log:south->whispering_valley_fishing_bend",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_fallen_log",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 8
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "whispering_valley_fishing_bend",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 6
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 9
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 7,
-            "roomId": "whispering_valley_herb_slope",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "沿上游水線退回釣魚灣，途中需繞過濕石與倒木根部，水位變化會影響通行",
-      "edgeNote": "倒木淺橋南側需沿上游水線退回釣魚灣，並非直接相鄰的短路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "whispering_valley_fallen_log:west->whispering_valley_echo_rocks",
       "sources": [
         "room-edge-kind"
@@ -43711,174 +43655,6 @@
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_fishing_bend:north->whispering_valley_fallen_log",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_fishing_bend",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 6
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_fallen_log",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 8
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 5
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 7,
-            "roomId": "whispering_valley_herb_slope",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "順著溪流上游繞過濕石與淺灘後，才能抵達倒木淺橋，水聲會遮住怪物動靜",
-      "edgeNote": "釣魚灣北側需沿溪流上游繞過濕石與淺灘，才會抵達倒木淺橋。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_herb_slope:north->whispering_valley_ice_fern_patch",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_herb_slope",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 7
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_ice_fern_patch",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 9
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 6
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 8,
-            "roomId": "whispering_valley_fallen_log",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "朝冷霧深處穿過多段採集坡面後才抵達冰蕨叢，路線較長且容易驚動蜘蛛",
-      "edgeNote": "草藥坡北側會穿過多段冷霧與採集坡面後抵達冰蕨叢，屬於長坡路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_herb_slope:south->whispering_valley_mossy_footbridge",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_herb_slope",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 7
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "whispering_valley_mossy_footbridge",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 5
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 8
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 6,
-            "roomId": "whispering_valley_fishing_bend",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "往橋面的回程順著濕滑斜坡折下苔石橋，並非平面相鄰短路，腳下青苔會拖慢步伐",
-      "edgeNote": "草藥坡南側需沿濕滑坡道折回橋頭，路線有高度差而非平面相鄰。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
@@ -43980,9 +43756,8 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_ice_fern_patch:north->whispering_valley_hidden_cascade",
+      "key": "whispering_valley_ice_fern_patch:east->whispering_valley_hidden_cascade",
       "sources": [
-        "static-world-long-paths",
         "room-edge-kind"
       ],
       "source": {
@@ -43991,7 +43766,7 @@
         "worldX": -5,
         "worldY": 9
       },
-      "direction": "north",
+      "direction": "east",
       "target": {
         "roomId": "whispering_valley_hidden_cascade",
         "zone": "whispering_valley",
@@ -43999,8 +43774,8 @@
         "worldY": 10
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 8
+        "worldX": -4,
+        "worldY": 9
       },
       "actualDelta": {
         "dx": 0,
@@ -44017,69 +43792,13 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "「隱瀑石室」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
+      "description": "東側長路先離開「冰蕨叢」，繞過低語溪谷外圍地標後抵達「隱瀑石室」，路程明顯長於相鄰房間。",
+      "edgeNote": "冰蕨叢東側需穿過霜霧與濕岩，才會抵達隱瀑。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_ice_fern_patch:south->whispering_valley_herb_slope",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_ice_fern_patch",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 9
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "whispering_valley_herb_slope",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 7
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 10
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 8,
-            "roomId": "whispering_valley_fallen_log",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "穿過冷霧坡面與濕草帶後才回到較溫暖的草藥坡，霜珠消退代表接近下坡",
-      "edgeNote": "冰蕨叢南側需穿過冷霧坡面回到草藥坡，路線帶有明顯高度差。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
@@ -44229,63 +43948,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_mossy_footbridge:north->whispering_valley_herb_slope",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_mossy_footbridge",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 5
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_herb_slope",
-        "zone": "whispering_valley",
-        "worldX": -5,
-        "worldY": 7
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -5,
-        "worldY": 4
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 6,
-            "roomId": "whispering_valley_fishing_bend",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "橋頭小徑沿溪岸斜坡繞上草藥坡，中途有濕石、高度落差與採集岔路需要辨認",
-      "edgeNote": "苔石小橋北側小徑會沿溪岸斜坡繞上草藥坡，實際路程長於相鄰一格。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_old_shrine:north->whispering_valley_waterfall_base",
+      "key": "whispering_valley_old_shrine:east->whispering_valley_waterfall_base",
       "sources": [
         "room-edge-kind"
       ],
@@ -44295,7 +43958,7 @@
         "worldX": -3,
         "worldY": 7
       },
-      "direction": "north",
+      "direction": "east",
       "target": {
         "roomId": "whispering_valley_waterfall_base",
         "zone": "whispering_valley",
@@ -44303,8 +43966,8 @@
         "worldY": 9
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 6
+        "worldX": -2,
+        "worldY": 7
       },
       "actualDelta": {
         "dx": -3,
@@ -44321,126 +43984,13 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "沿溪畔刻痕與水霧往上游前進，瀑布聲會逐漸變大，石龕鈴聲會在背後變弱",
-      "edgeNote": "舊神龕北側需沿溪畔刻痕與水霧繞到瀑布底部，並非直接相鄰格。",
+      "description": "東側溪畔刻痕與水霧往上游前進，瀑布聲會逐漸變大，石龕鈴聲會在背後變弱",
+      "edgeNote": "舊神龕東側需沿溪畔刻痕與水霧繞到瀑布底部，並非直接相鄰格。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_old_shrine:south->whispering_valley_willow_camp",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_old_shrine",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 7
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "whispering_valley_willow_camp",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 6
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 8
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「柳樹營地」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_ranger_post:north->whispering_valley_stone_weir",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_ranger_post",
-        "zone": "whispering_valley",
-        "worldX": -7,
-        "worldY": 5
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_stone_weir",
-        "zone": "whispering_valley",
-        "worldX": -7,
-        "worldY": 8
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -7,
-        "worldY": 4
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": true,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": -7,
-            "worldY": 6,
-            "roomId": "whispering_valley_fill_n7_6",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": true
-          },
-          {
-            "worldX": -7,
-            "worldY": 7,
-            "roomId": "whispering_valley_fill_n7_7",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": true
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": true
-      },
-      "description": "「石堰」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
@@ -44544,7 +44094,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_spider_grotto:north->whispering_valley_old_shrine",
+      "key": "whispering_valley_spider_grotto:east->whispering_valley_mist_pool",
       "sources": [
         "room-edge-kind"
       ],
@@ -44554,63 +44104,7 @@
         "worldX": -3,
         "worldY": 5
       },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_old_shrine",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 7
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 4
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": -3,
-            "worldY": 6,
-            "roomId": "whispering_valley_willow_camp",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "蛛網後的狹小洞道穿過舊刻痕才通往溪畔舊神龕，低矮岩縫會迫使玩家繞行",
-      "edgeNote": "蛛網岩洞北側需穿過蛛絲遮蔽的狹縫與舊刻痕，才會抵達溪畔神龕。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_spider_grotto:south->whispering_valley_mist_pool",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_spider_grotto",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 5
-      },
-      "direction": "south",
+      "direction": "east",
       "target": {
         "roomId": "whispering_valley_mist_pool",
         "zone": "whispering_valley",
@@ -44618,8 +44112,8 @@
         "worldY": 8
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 6
+        "worldX": -2,
+        "worldY": 5
       },
       "actualDelta": {
         "dx": -1,
@@ -44636,8 +44130,8 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "潮濕坡道先繞過塌岸與蛛絲，最後落到霧潭邊緣，滑落聲可能引來潛伏怪物",
-      "edgeNote": "蛛網岩洞南側坡道濕滑且曲折，會先繞過塌岸再落到霧潭邊。",
+      "description": "東側潮濕坡道先繞過塌岸與蛛絲，最後落到霧潭邊緣，滑落聲可能引來潛伏怪物",
+      "edgeNote": "蛛網岩洞東側坡道濕滑且曲折，會先繞過塌岸再落到霧潭邊。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
@@ -44696,7 +44190,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_stone_weir:north->whispering_valley_whispering_rift",
+      "key": "whispering_valley_stone_weir:west->whispering_valley_whispering_rift",
       "sources": [
         "room-edge-kind"
       ],
@@ -44706,7 +44200,7 @@
         "worldX": -7,
         "worldY": 8
       },
-      "direction": "north",
+      "direction": "west",
       "target": {
         "roomId": "whispering_valley_whispering_rift",
         "zone": "whispering_valley",
@@ -44714,8 +44208,8 @@
         "worldY": 11
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -7,
-        "worldY": 7
+        "worldX": -8,
+        "worldY": 8
       },
       "actualDelta": {
         "dx": 1,
@@ -44732,77 +44226,13 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "循水流聲與水位線穿過裂石暗道，才會抵達低語裂縫，石堰符號可確認路線",
-      "edgeNote": "石堰北側需循水位線與裂石暗道前進，才會抵達低語裂縫。",
+      "description": "西側循水流聲與水位線穿過裂石暗道，才會抵達低語裂縫，石堰符號可確認路線",
+      "edgeNote": "石堰西側需循水位線與裂石暗道前進，才會抵達低語裂縫。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_stone_weir:south->whispering_valley_ranger_post",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_stone_weir",
-        "zone": "whispering_valley",
-        "worldX": -7,
-        "worldY": 8
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "whispering_valley_ranger_post",
-        "zone": "whispering_valley",
-        "worldX": -7,
-        "worldY": 5
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -7,
-        "worldY": 9
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": true,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": -7,
-            "worldY": 7,
-            "roomId": "whispering_valley_fill_n7_7",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": true
-          },
-          {
-            "worldX": -7,
-            "worldY": 6,
-            "roomId": "whispering_valley_fill_n7_6",
-            "zone": "whispering_valley",
-            "isStaticFillerOrBridge": true
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": true
-      },
-      "description": "「巡林哨站」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
@@ -45000,7 +44430,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "whispering_valley_willow_camp:east->whispering_valley_spider_grotto",
+      "key": "whispering_valley_willow_camp:west->whispering_valley_cold_spring",
       "sources": [
         "room-edge-kind"
       ],
@@ -45010,104 +44440,7 @@
         "worldX": -3,
         "worldY": 6
       },
-      "direction": "east",
-      "target": {
-        "roomId": "whispering_valley_spider_grotto",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 5
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -2,
-        "worldY": 6
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "沿拖痕穿過灌木與岩縫，曲折延向蛛網岩洞入口，路上可見被蛛絲纏住的布片",
-      "edgeNote": "柳樹營地東側拖痕穿過多段灌木與岩縫，抵達蛛網岩洞需一段曲折路程。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_willow_camp:north->whispering_valley_old_shrine",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_willow_camp",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 6
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "whispering_valley_old_shrine",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 7
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 5
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「溪畔舊神龕」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "whispering_valley_willow_camp:south->whispering_valley_cold_spring",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "whispering_valley_willow_camp",
-        "zone": "whispering_valley",
-        "worldX": -3,
-        "worldY": 6
-      },
-      "direction": "south",
+      "direction": "west",
       "target": {
         "roomId": "whispering_valley_cold_spring",
         "zone": "whispering_valley",
@@ -45115,8 +44448,8 @@
         "worldY": 5
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -3,
-        "worldY": 7
+        "worldX": -4,
+        "worldY": 6
       },
       "actualDelta": {
         "dx": -1,
@@ -45133,8 +44466,8 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "柳枝小路繞過垂枝與冷泉外圍後才回到泉邊，濕土與拖痕會顯示這是長路",
-      "edgeNote": "柳樹營地南側小路會繞過低垂柳枝與冷泉外圍，實際距離長於一格。",
+      "description": "西側柳枝小路繞過垂枝與冷泉外圍後才回到泉邊，濕土與拖痕會顯示這是長路",
+      "edgeNote": "柳樹營地西側小路會繞過低垂柳枝與冷泉外圍，實際距離長於一格。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",

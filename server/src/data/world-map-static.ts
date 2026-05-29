@@ -3978,8 +3978,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "whispering_valley_fill_n7_6",
     "name": "谷底通道",
     "zone": "whispering_valley",
-    "description": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
-    "exits": [],
+    "description": "谷底通道位在巡林哨站南側，濕滑石板沿溪谷低處延伸，牆上還留著巡林人用炭筆補上的箭頭。北面回哨站，南面接蘆葦路，玩家可依水聲和舊路標判斷石堰方向。",
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "whispering_valley_ranger_post",
+        "description": "北側濕石板路回到巡林哨站"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "whispering_valley_fill_n7_7",
+        "description": "南側低谷小徑接往蘆葦路"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 0,
     "mapY": 1,
@@ -3990,8 +4001,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "whispering_valley_fill_n7_7",
     "name": "蘆葦路",
     "zone": "whispering_valley",
-    "description": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
-    "exits": [],
+    "description": "蘆葦路夾在谷底通道與石堰之間，兩側水草被溪風吹得貼向石板，像有人在耳邊低語。北面回谷底通道，南側可抵石堰，玩家可從蘆葦倒伏方向辨認水流與狼群足跡。",
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "whispering_valley_fill_n7_6",
+        "description": "北側低谷小徑回到谷底通道"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "whispering_valley_stone_weir",
+        "description": "南側蘆葦石路通往石堰"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 0,
     "mapY": 2,
