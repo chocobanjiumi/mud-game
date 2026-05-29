@@ -7,9 +7,9 @@ import {
   sendToSession, sendError, sendSystem, updatePing,
   bindCharacter, unbindCharacter, getSession,
 } from './handler.js';
-import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions } from '../db/queries.js';
+import { createCharacter, getCharacterById, getCharacterByName, getCharactersByUserId, addInventoryItem, hasUserEntitlement, addUserEntitlement, getTransactions, deleteCharacter } from '../db/queries.js';
 import { handleCommand } from '../game/commands.js';
-import { world } from '../game/state.js';
+import { partyMgr, world } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
 import { CLASS_DEFS, FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
@@ -141,6 +141,10 @@ export function handleMessage(session: WsSession, raw: string): void {
       handleCreateCharacter(session, message.payload);
       break;
 
+    case 'delete_character':
+      handleDeleteCharacter(session, message.payload);
+      break;
+
     case 'command':
       handlePlayerCommand(session, message.payload);
       break;
@@ -259,6 +263,7 @@ async function handleLogin(
     // 自動 look
     handleCommand(session, 'look');
     handleCommand(session, 'status');
+    partyMgr.syncCharacterParty(character.id);
     return;
   }
 
@@ -277,6 +282,7 @@ async function handleLogin(
       });
       handleCommand(session, 'look');
       handleCommand(session, 'status');
+      partyMgr.syncCharacterParty(charByName.id);
       return;
     }
   }
@@ -365,7 +371,7 @@ function handleCreateCharacter(
     world.placePlayer(character.id, character.roomId);
 
     const race = RACE_DEFS[character.raceId ?? 'human'];
-    const gender = GENDER_DEFS[character.genderId ?? 'undisclosed'];
+    const gender = GENDER_DEFS[character.genderId ?? 'male'];
     const faith = FAITH_DEFS[character.faithId ?? 'aelora'];
     const classDef = CLASS_DEFS[character.classId];
 
@@ -379,6 +385,7 @@ function handleCreateCharacter(
     // 自動 look
     handleCommand(session, 'look');
     handleCommand(session, 'status');
+    partyMgr.syncCharacterParty(character.id);
   } catch (err) {
     const errMsg = err instanceof Error ? err.message : '建立角色失敗';
     if (errMsg.includes('UNIQUE')) {
@@ -391,6 +398,43 @@ function handleCreateCharacter(
 
 function isInitialClassId(classId: unknown): classId is CreateCharacterPayload['classId'] {
   return classId === 'swordsman' || classId === 'mage' || classId === 'ranger' || classId === 'priest';
+}
+
+function handleDeleteCharacter(
+  session: WsSession,
+  payload: { characterId?: string; confirmName?: string },
+): void {
+  const userId = session.userId;
+  if (!userId) {
+    sendError(session.sessionId, '請先登入後再刪除角色。');
+    return;
+  }
+
+  const characterId = payload.characterId?.trim();
+  const confirmName = payload.confirmName?.trim();
+  if (!characterId || !confirmName) {
+    sendError(session.sessionId, '刪除角色需要角色 ID 與角色名稱確認。');
+    return;
+  }
+
+  const character = getCharacterById(characterId);
+  if (!character || character.userId !== userId) {
+    sendError(session.sessionId, '找不到可刪除的角色。');
+    return;
+  }
+  if (confirmName !== character.name) {
+    sendError(session.sessionId, '角色名稱不一致，未刪除角色。');
+    return;
+  }
+
+  if (session.characterId === character.id) {
+    unbindCharacter(session.sessionId);
+    world.removePlayer(character.id);
+  }
+
+  deleteCharacter(character.id);
+  sendSystem(session.sessionId, `角色「${character.name}」已刪除。`);
+  sendCharacterList(session, userId);
 }
 
 /** 處理玩家指令 */

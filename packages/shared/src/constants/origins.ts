@@ -78,8 +78,6 @@ export const RACE_DEFS: Record<RaceDef['id'], RaceDef> = {
 export const GENDER_DEFS: Record<GenderDef['id'], GenderDef> = {
   male: { id: 'male', name: '男性', description: '只影響稱謂與敘事，不影響能力。' },
   female: { id: 'female', name: '女性', description: '只影響稱謂與敘事，不影響能力。' },
-  nonbinary: { id: 'nonbinary', name: '非二元', description: '只影響稱謂與敘事，不影響能力。' },
-  undisclosed: { id: 'undisclosed', name: '不透露', description: '只影響稱謂與敘事，不影響能力。' },
 };
 
 export const FAITH_DEFS: Record<FaithDef['id'], FaithDef> = {
@@ -236,7 +234,7 @@ export const FAITH_DEFS: Record<FaithDef['id'], FaithDef> = {
 };
 
 export const DEFAULT_RACE_ID = 'human';
-export const DEFAULT_GENDER_ID = 'undisclosed';
+export const DEFAULT_GENDER_ID = 'male';
 export const DEFAULT_FAITH_ID = 'aelora';
 
 export const DEFAULT_CHARACTER_ORIGIN: CharacterOriginSelection = {
@@ -251,6 +249,10 @@ export function isRaceId(value: unknown): value is RaceDef['id'] {
 
 export function isGenderId(value: unknown): value is GenderDef['id'] {
   return typeof value === 'string' && value in GENDER_DEFS;
+}
+
+export function normalizeGenderId(value: unknown): GenderDef['id'] {
+  return isGenderId(value) ? value : DEFAULT_GENDER_ID;
 }
 
 export function isFaithId(value: unknown): value is FaithDef['id'] {

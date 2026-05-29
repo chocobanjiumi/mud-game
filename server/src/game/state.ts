@@ -110,11 +110,12 @@ export const dailyRewardMgr = new DailyRewardManager();
 
 export function initGameSystems(): void {
   // WorldManager
-  world.setBroadcastFunction((roomId, message) => {
+  world.setBroadcastFunction((roomId, message, excludePlayerId) => {
     const msg = message as { type?: string; payload?: Record<string, unknown> };
     if (!msg.type || !msg.payload) return;
     for (const session of getAllSessions()) {
       if (!session.characterId) continue;
+      if (session.characterId === excludePlayerId) continue;
       const char = getCharacterById(session.characterId);
       if (char?.roomId === roomId) {
         sendToSession(session.sessionId, msg.type as any, msg.payload);

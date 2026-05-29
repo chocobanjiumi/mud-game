@@ -238,7 +238,7 @@ export const QUEST_DEFS: Record<string, QuestDef> = {
     rewards: {
       exp: 300,
       gold: 200,
-      items: [{ itemId: 'wooden_wand', quantity: 1 }],
+      items: [{ itemId: 'wooden_scepter', quantity: 1 }],
     },
     dialogueStart: '你心中充滿善意，很適合走祭司之路。前往轉職大廳接受聖光的洗禮吧。',
     dialogueComplete: '願聖光與你同在。你已是一名正式的祭司了。',

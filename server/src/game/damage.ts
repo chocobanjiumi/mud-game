@@ -4,7 +4,7 @@ import type {
   BaseStats, DerivedStats, DamageType, ElementType, DamageResult, StatusEffect,
   Character, ItemRarity,
 } from '@game/shared';
-import { ITEM_DEFS, calculateSetBonuses } from '@game/shared';
+import { ITEM_DEFS, calculateSetBonuses, resolveEquipSlotForItem } from '@game/shared';
 import { getEquippedItems } from '../db/queries.js';
 import { getEnhancementLevel, getEnhancedStats } from './upgrade.js';
 
@@ -15,7 +15,10 @@ import { getEnhancementLevel, getEnhancedStats } from './upgrade.js';
 export interface CombatStats extends BaseStats {
   level: number;
   weaponAtk: number;
+  meleeWeaponAtk: number;
+  rangedWeaponAtk: number;
   weaponMatk: number;
+  spellWeaponMatk: number;
   armorDef: number;
   armorMdef: number;
   /** 裝備/技能加成 */
@@ -27,9 +30,18 @@ export interface CombatStats extends BaseStats {
 
 /** 計算衍生戰鬥屬性 */
 export function calculateDerived(s: CombatStats): DerivedStats {
+  const meleeWeaponAtk = s.meleeWeaponAtk ?? s.weaponAtk ?? 0;
+  const rangedWeaponAtk = s.rangedWeaponAtk ?? 0;
+  const spellWeaponMatk = s.spellWeaponMatk ?? s.weaponMatk ?? 0;
+  const meleeAtk = s.str * 2 + meleeWeaponAtk;
+  const rangedAtk = s.dex * 2 + rangedWeaponAtk;
+  const spellPower = s.int * 2 + spellWeaponMatk;
   return {
-    atk: s.str * 2 + s.weaponAtk,
-    matk: s.int * 2 + s.weaponMatk,
+    atk: meleeAtk,
+    meleeAtk,
+    rangedAtk,
+    matk: spellPower,
+    spellPower,
     def: Math.floor(s.vit * 1.5) + s.armorDef,
     mdef: Math.floor(s.int * 0.5 + s.vit * 0.5) + s.armorMdef,
     critRate: s.dex * 0.3 + s.luk * 0.2 + s.bonusCritRate,
@@ -233,7 +245,10 @@ export interface EquipmentBonusStats {
   vit: number;
   luk: number;
   weaponAtk: number;
+  meleeWeaponAtk: number;
+  rangedWeaponAtk: number;
   weaponMatk: number;
+  spellWeaponMatk: number;
   armorDef: number;
   armorMdef: number;
   bonusCritRate: number;
@@ -254,7 +269,8 @@ export interface EquipmentBonusStats {
 export function getEquipmentStats(character: Character): EquipmentBonusStats {
   const result: EquipmentBonusStats = {
     str: 0, int: 0, dex: 0, vit: 0, luk: 0,
-    weaponAtk: 0, weaponMatk: 0, armorDef: 0, armorMdef: 0,
+    weaponAtk: 0, meleeWeaponAtk: 0, rangedWeaponAtk: 0,
+    weaponMatk: 0, spellWeaponMatk: 0, armorDef: 0, armorMdef: 0,
     bonusCritRate: 0, bonusCritDamage: 0, bonusDodgeRate: 0, bonusHitRate: 0,
     bonusHp: 0, bonusMp: 0,
     setBonusPct: {},
@@ -286,11 +302,22 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
     // Accumulate stats
     if (baseStats.atk) {
       const total = baseStats.atk + (enhBonus.atk ?? 0);
-      result.weaponAtk += isWeapon ? Math.floor(total * rarityMult) : total;
+      const value = isWeapon ? Math.floor(total * rarityMult) : total;
+      result.weaponAtk += value;
+      if (isWeapon) {
+        const slot = resolveEquipSlotForItem(def);
+        if (slot === 'rangedMainHand' || slot === 'rangedOffHand') result.rangedWeaponAtk += value;
+        else result.meleeWeaponAtk += value;
+      } else {
+        result.meleeWeaponAtk += value;
+        result.rangedWeaponAtk += value;
+      }
     }
     if (baseStats.matk) {
       const total = baseStats.matk + (enhBonus.matk ?? 0);
-      result.weaponMatk += isWeapon ? Math.floor(total * rarityMult) : total;
+      const value = isWeapon ? Math.floor(total * rarityMult) : total;
+      result.weaponMatk += value;
+      result.spellWeaponMatk += value;
     }
     if (baseStats.def) {
       result.armorDef += baseStats.def + (enhBonus.def ?? 0);
@@ -327,7 +354,14 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
     if (setResult.bonusStats.vit) result.vit += setResult.bonusStats.vit;
     if (setResult.bonusStats.luk) result.luk += setResult.bonusStats.luk;
     if (setResult.bonusStats.atk) result.weaponAtk += setResult.bonusStats.atk;
-    if (setResult.bonusStats.matk) result.weaponMatk += setResult.bonusStats.matk;
+    if (setResult.bonusStats.atk) {
+      result.meleeWeaponAtk += setResult.bonusStats.atk;
+      result.rangedWeaponAtk += setResult.bonusStats.atk;
+    }
+    if (setResult.bonusStats.matk) {
+      result.weaponMatk += setResult.bonusStats.matk;
+      result.spellWeaponMatk += setResult.bonusStats.matk;
+    }
     if (setResult.bonusStats.def) result.armorDef += setResult.bonusStats.def;
     if (setResult.bonusStats.mdef) result.armorMdef += setResult.bonusStats.mdef;
     if (setResult.bonusStats.critRate) result.bonusCritRate += setResult.bonusStats.critRate;
@@ -340,8 +374,15 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
 }
 
 function applyFlatEquipmentStats(result: EquipmentBonusStats, stats: NonNullable<import('@game/shared').ItemStats>): void {
-  if (stats.atk) result.weaponAtk += stats.atk;
-  if (stats.matk) result.weaponMatk += stats.matk;
+  if (stats.atk) {
+    result.weaponAtk += stats.atk;
+    result.meleeWeaponAtk += stats.atk;
+    result.rangedWeaponAtk += stats.atk;
+  }
+  if (stats.matk) {
+    result.weaponMatk += stats.matk;
+    result.spellWeaponMatk += stats.matk;
+  }
   if (stats.def) result.armorDef += stats.def;
   if (stats.mdef) result.armorMdef += stats.mdef;
   if (stats.str) result.str += stats.str;
@@ -368,12 +409,16 @@ export function baseStatsToCombat(
   weaponMatk = 0,
   armorDef = 0,
   armorMdef = 0,
+  splitWeaponStats: Partial<Pick<CombatStats, 'meleeWeaponAtk' | 'rangedWeaponAtk' | 'spellWeaponMatk'>> = {},
 ): CombatStats {
   return {
     ...stats,
     level,
     weaponAtk,
+    meleeWeaponAtk: splitWeaponStats.meleeWeaponAtk ?? weaponAtk,
+    rangedWeaponAtk: splitWeaponStats.rangedWeaponAtk ?? 0,
     weaponMatk,
+    spellWeaponMatk: splitWeaponStats.spellWeaponMatk ?? weaponMatk,
     armorDef,
     armorMdef,
     bonusCritRate: 0,

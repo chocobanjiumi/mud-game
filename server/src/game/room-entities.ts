@@ -11,6 +11,7 @@ type RoomEntityMonsterDetails = {
   mp: number;
   maxMp: number;
   element: string;
+  family: string;
   aiType: string;
   behaviorType?: string;
   isBoss: boolean;
@@ -31,12 +32,7 @@ export interface RoomEntityNpc {
   type: string;
 }
 
-export interface RoomEntityPlayer {
-  id: string;
-  name: string;
-  classId: string;
-  level: number;
-}
+export type RoomEntityPlayer = NonNullable<RoomEntity['playerDetails']>;
 
 export interface RoomEntityMonster {
   id: string;
@@ -188,6 +184,9 @@ export function buildRoomEntities(input: {
       type: 'player' as const,
       label: player.name,
       subtitle: `Lv.${player.level} ${player.classId}`,
+      hp: player.hp,
+      maxHp: player.maxHp,
+      playerDetails: player,
       actions: [
         { label: '查看', command: `look ${player.name}` },
         { label: '組隊', command: `party invite ${player.name}` },

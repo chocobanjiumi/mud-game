@@ -52,7 +52,7 @@ function makeCharacter(overrides: Partial<Character> = {}): Character {
     gold: 500,
     roomId: 'plains',
     isAi: false,
-    equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
+    equipment: { weapon: null, offhand: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
     createdAt: Date.now(),
     lastLogin: Date.now(),
     ...overrides,
@@ -387,20 +387,17 @@ describe('LootCalculator', () => {
       expect(highExp).toBeLessThan(normalExp);
     });
 
-    it('should apply level gap bonus (monster much higher than player)', () => {
+    it('should not reduce exp when monster is much higher than player', () => {
       const lowLevelPlayer = makeCharacter({ level: 1 });
       const party = [lowLevelPlayer];
 
       const dist = loot.distributeExp(party, 100, 10);
 
-      // levelDiff = 1 - 10 = -9 < -5
-      // bonus = min(1.5, 1 + abs(-9 + 5) * 0.05) = min(1.5, 1 + 4*0.05) = min(1.5, 1.2) = 1.2
       const exp = dist.get(lowLevelPlayer.id)!;
 
       // partyBonus = 1.1
       // base = floor((100/1) * 1.1) = 110
-      // with level bonus: floor(110 * 1.2) = 132
-      expect(exp).toBe(132);
+      expect(exp).toBe(110);
     });
 
     it('should give at least 1 exp', () => {
@@ -487,9 +484,9 @@ describe('LootCalculator', () => {
 
 describe('getLootAnnouncementScope', () => {
   it('announces rare equipment to room, epic to zone, and legendary or above to world', () => {
-    expect(getLootAnnouncementScope('spear_steel')).toBe('room');
-    expect(getLootAnnouncementScope('spear_mithril')).toBe('zone');
-    expect(getLootAnnouncementScope('spear_dragon')).toBe('world');
+    expect(getLootAnnouncementScope('steel_spear')).toBe('room');
+    expect(getLootAnnouncementScope('mithril_spear')).toBe('zone');
+    expect(getLootAnnouncementScope('dragon_fang_spear')).toBe('world');
     expect(getLootAnnouncementScope('abyss_eye_staff')).toBe('world');
   });
 

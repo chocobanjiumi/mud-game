@@ -55,7 +55,7 @@ import { PET_DEFS } from './pet.js';
 import { WORLD_BOSS_DEFS } from './world-event.js';
 import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
-import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES } from '../data/rooms.js';
+import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES, getRoomByWorldCoord, getRoomWorldCoord } from '../data/rooms.js';
 import { buildInstanceEntryDefs, type InstanceEntryDef, type InstanceEntryQuestState } from '../data/world-map2-plan.js';
 import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
@@ -758,6 +758,34 @@ function buildRoomPlayerDetails(char: Character): RoomEntityPlayer {
 }
 
 function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPayload {
+  const currentCoord = getRoomWorldCoord(currentRoom.id);
+
+  if (currentCoord) {
+    const nearbyRooms: LocalMapPayload['rooms'] = [];
+    for (let dy = -2; dy <= 2; dy++) {
+      for (let dx = -2; dx <= 2; dx++) {
+        const room = getRoomByWorldCoord(currentCoord.worldX + dx, currentCoord.worldY + dy);
+        if (!room) continue;
+        const explored = room.id === currentRoom.id || hasDiscovery(char.id, 'visit_room', room.id);
+        const adjacent = isWorldAdjacent(currentCoord.worldX, currentCoord.worldY, currentCoord.worldX + dx, currentCoord.worldY + dy)
+          || currentRoom.exits.some(exit => exit.targetRoomId === room.id);
+        if (!explored && !adjacent) continue;
+        const zoneName = getZone(room.zone)?.name;
+        nearbyRooms.push({
+          id: room.id,
+          name: room.name,
+          zone: room.zone,
+          ...(zoneName ? { zoneName } : {}),
+          x: currentCoord.worldX + dx,
+          y: currentCoord.worldY + dy,
+          explored,
+          exits: enrichRoomExits(room),
+        });
+      }
+    }
+    return { size: 5, currentRoom: currentRoom.id, rooms: nearbyRooms };
+  }
+
   const zoneRooms = getRoomsByZone(currentRoom.zone);
   const planarRoomIds = getPlanarRoomIds(currentRoom, zoneRooms);
   const rooms = zoneRooms
@@ -781,11 +809,11 @@ function buildLocalMapPayload(char: Character, currentRoom: RoomDef): LocalMapPa
     })
     .filter((room): room is LocalMapPayload['rooms'][number] => Boolean(room));
 
-  return {
-    size: 5,
-    currentRoom: currentRoom.id,
-    rooms,
-  };
+  return { size: 5, currentRoom: currentRoom.id, rooms };
+}
+
+function isWorldAdjacent(x1: number, y1: number, x2: number, y2: number): boolean {
+  return Math.abs(x1 - x2) + Math.abs(y1 - y2) === 1;
 }
 
 function getPlanarRoomIds(currentRoom: RoomDef, zoneRooms: RoomDef[]): Set<string> {
@@ -821,6 +849,34 @@ function getPlanarRoomIds(currentRoom: RoomDef, zoneRooms: RoomDef[]): Set<strin
 }
 
 function enrichRoomExits(room: RoomDef): RoomExit[] {
+  const COORD_DELTAS: { dir: Direction; dx: number; dy: number }[] = [
+    { dir: 'north', dx: 0, dy: -1 },
+    { dir: 'south', dx: 0, dy: 1 },
+    { dir: 'east', dx: 1, dy: 0 },
+    { dir: 'west', dx: -1, dy: 0 },
+  ];
+
+  const coord = getRoomWorldCoord(room.id);
+  if (coord) {
+    const lockedDirs = new Set(room.exits.filter(e => e.locked).map(e => e.direction));
+    const enriched: RoomExit[] = [];
+    for (const { dir, dx, dy } of COORD_DELTAS) {
+      if (lockedDirs.has(dir)) continue;
+      const neighbor = getRoomByWorldCoord(coord.worldX + dx, coord.worldY + dy);
+      if (!neighbor) continue;
+      const neighborZone = getZone(neighbor.zone);
+      const explicit = room.exits.find(e => e.direction === dir);
+      enriched.push({
+        direction: dir,
+        targetRoomId: neighbor.id,
+        targetZoneId: neighbor.zone,
+        targetZoneName: neighborZone?.name,
+        description: explicit?.description,
+      });
+    }
+    return enriched;
+  }
+
   return room.exits.map(exit => {
     const targetRoom = getRoom(exit.targetRoomId);
     const targetZone = targetRoom ? getZone(targetRoom.zone) : undefined;
@@ -1164,9 +1220,8 @@ function prepareMoveThroughExit(session: WsSession, char: Character, direction: 
   if (!currentRoom) return true;
 
   const exit = currentRoom.exits.find(e => e.direction === direction);
-  if (!exit) return true;
 
-  if (exit.locked) {
+  if (exit?.locked) {
     if (!exit.keyItemId) {
       sendError(session.sessionId, '這個出口上鎖，暫時無法通過。');
       return false;
@@ -1188,7 +1243,17 @@ function prepareMoveThroughExit(session: WsSession, char: Character, direction: 
     }
   }
 
-  const targetRoom = getRoom(exit.targetRoomId);
+  let targetRoom: ReturnType<typeof getRoom>;
+  if (exit) {
+    targetRoom = getRoom(exit.targetRoomId);
+  } else {
+    const coord = getRoomWorldCoord(char.roomId);
+    const delta = { north: { dx: 0, dy: -1 }, south: { dx: 0, dy: 1 }, east: { dx: 1, dy: 0 }, west: { dx: -1, dy: 0 } }[direction];
+    if (coord && delta) {
+      targetRoom = getRoomByWorldCoord(coord.worldX + delta.dx, coord.worldY + delta.dy);
+    }
+  }
+
   if (targetRoom && targetRoom.zone !== currentRoom.zone) {
     const access = canAccessZone(char, targetRoom.zone);
     if (!access.ok) {
@@ -1311,8 +1376,29 @@ function cmdDebug(session: WsSession, args: string[]): void {
   if (!char) return;
 
   const sub = args[0]?.toLowerCase();
+
+  if (sub === 'tp') {
+    const targetRoomId = args[1];
+    if (!targetRoomId) {
+      sendError(session.sessionId, 'debug tp <roomId>');
+      return;
+    }
+    const destination = getRoom(targetRoomId);
+    if (!destination) {
+      sendError(session.sessionId, `找不到房間：${targetRoomId}`);
+      return;
+    }
+    const prev = char.roomId;
+    char.roomId = destination.id;
+    world.placePlayer(char.id, destination.id);
+    saveCharacter(char);
+    sendSystem(session.sessionId, `傳送：${prev} → ${destination.id}（${destination.name}）`);
+    cmdLook(session);
+    return;
+  }
+
   if (sub !== 'levelup') {
-    sendError(session.sessionId, 'Debug 指令：debug levelup');
+    sendError(session.sessionId, 'Debug 指令：debug levelup | debug tp <roomId>');
     return;
   }
 

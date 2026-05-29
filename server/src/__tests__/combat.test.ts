@@ -1,6 +1,7 @@
 // Combat engine integration tests
 import { describe, it, expect, vi, beforeEach, afterEach, beforeAll, afterAll } from 'vitest';
 import { CombatEngine } from '../game/combat.js';
+import { SKILL_DEFS } from '@game/shared';
 import type { Character, MonsterDef, CombatAction } from '@game/shared';
 import type { MonsterInstance } from '../game/world.js';
 import { getDb, initDb, closeDb } from '../db/schema.js';
@@ -27,7 +28,7 @@ function makeCharacter(overrides: Partial<Character> = {}): Character {
     gold: 500,
     roomId: 'plains',
     isAi: false,
-    equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
+    equipment: { weapon: null, offhand: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
     createdAt: Date.now(),
     lastLogin: Date.now(),
     ...overrides,
@@ -482,14 +483,12 @@ describe('CombatEngine', () => {
       const combatId = engine.startCombat([player], [m1, m2]);
       const state = engine.getCombatState(combatId)!;
 
-      engine.submitAction(combatId, {
-        actorId: player.id,
-        type: 'skill',
-        skillId: 'blade_aura',
-      });
+      const result1 = engine.executeInstantSkillDamage(combatId, player.id, m1.instanceId, SKILL_DEFS.blade_aura);
+      const result2 = engine.executeInstantSkillDamage(combatId, player.id, m2.instanceId, SKILL_DEFS.blade_aura);
 
-      expect(state.enemyTeam[0].hp).toBe(999);
-      advanceCombatTick();
+      expect(result1.handled).toBe(true);
+      expect(result2.handled).toBe(true);
+      expect(state.round).toBe(1);
       expect(state.enemyTeam[0].hp).toBeLessThan(999);
       expect(state.enemyTeam[1].hp).toBeLessThan(999);
       vi.restoreAllMocks();
@@ -727,8 +726,7 @@ describe('CombatEngine', () => {
       vi.restoreAllMocks();
     });
 
-    it('consumes ranger quick step as a next-shot damage bonus', () => {
-      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+    it('executes ranger assault instantly and can stun the target', () => {
       const ranger = makeCharacter({
         classId: 'ranger',
         resource: 100,
@@ -737,30 +735,26 @@ describe('CombatEngine', () => {
         stats: { str: 20, int: 5, dex: 100, vit: 10, luk: 5 },
       });
       const monster = makeMonsterInstance({ hp: 500, str: 1, dex: 1, vit: 10 });
+      const randomSpy = vi.spyOn(Math, 'random');
+      randomSpy
+        .mockReturnValueOnce(0.5)
+        .mockReturnValueOnce(0.99)
+        .mockReturnValueOnce(0.99)
+        .mockReturnValueOnce(0.5)
+        .mockReturnValueOnce(0.2);
       const combatId = engine.startCombat([ranger], [monster]);
-
-      engine.submitAction(combatId, {
-        actorId: ranger.id,
-        type: 'skill',
-        skillId: 'quick_step',
-        targetId: ranger.id,
-      });
       const state = engine.getCombatState(combatId)!;
-      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(false);
-      advanceCombatTick();
-      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(true);
+      const beforeHp = state.enemyTeam[0].hp;
 
-      engine.submitAction(combatId, {
-        actorId: ranger.id,
-        type: 'skill',
-        skillId: 'precise_shot',
-        targetId: monster.instanceId,
-      });
+      const result = engine.executeInstantSkillDamage(combatId, ranger.id, monster.instanceId, SKILL_DEFS.quick_step);
 
-      advanceCombatTick();
-      expect(state.playerTeam[0].activeEffects.some(effect => effect.type === 'next_shot_damage')).toBe(false);
-      expect(state.actionLog.some(line => line.includes('蓄勢射擊'))).toBe(true);
-      vi.restoreAllMocks();
+      expect(result.handled).toBe(true);
+      expect(result.hit).toBe(true);
+      expect(state.round).toBe(1);
+      expect(state.enemyTeam[0].hp).toBeLessThan(beforeHp);
+      expect(state.enemyTeam[0].activeEffects.some(effect => effect.type === 'stun')).toBe(true);
+      expect(state.actionLog.some(line => line.includes('強襲'))).toBe(true);
+      randomSpy.mockRestore();
     });
 
     it('lets meditation restore extra MP when hitting approaching monsters', () => {
@@ -953,7 +947,7 @@ describe('CombatEngine', () => {
           name: '反擊',
           pool: 'behavior',
           tier: 'T4',
-          appliesTo: ['hands'],
+          appliesTo: ['offhand'],
           behavior: 'counter_on_block',
           trigger: 'on_block',
           resourceModifiers: { rageGain: 3 },
@@ -1111,6 +1105,34 @@ describe('CombatEngine', () => {
   // ── Turn resolution order ──
 
   describe('turn resolution', () => {
+    it('keeps approaching monsters targetable but unable to attack before arrival', () => {
+      vi.spyOn(Math, 'random').mockReturnValue(0.5);
+      const player = makeCharacter({
+        hp: 200,
+        maxHp: 200,
+        stats: { str: 10, int: 5, dex: 100, vit: 10, luk: 5 },
+      });
+      const monster = makeMonsterInstance({ hp: 500, str: 50, dex: 1, vit: 10 });
+      const combatId = engine.startCombat([player], [monster]);
+      engine.addMonsterToCombat(combatId, monster, player.id, {
+        isApproaching: true,
+        arrivalTicksRemaining: 2,
+      });
+
+      engine.submitAction(combatId, {
+        actorId: player.id,
+        type: 'attack',
+        targetId: monster.instanceId,
+      });
+      advanceCombatTick();
+
+      const state = engine.getCombatState(combatId)!;
+      expect(state.enemyTeam[0].hp).toBeLessThan(500);
+      expect(state.playerTeam[0].hp).toBe(200);
+
+      vi.restoreAllMocks();
+    });
+
     it('should resolve actions by DEX (higher DEX goes first)', () => {
       // This is implicitly tested by combat resolution order
       // We verify that the combat engine uses DEX for sorting

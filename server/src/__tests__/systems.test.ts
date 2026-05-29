@@ -29,7 +29,7 @@ describe('PartyManager logic', () => {
       gold: 0,
       roomId: 'plains',
       isAi: false,
-      equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
+      equipment: { weapon: null, offhand: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
       createdAt: Date.now(),
       lastLogin: Date.now(),
     },
@@ -49,7 +49,7 @@ describe('PartyManager logic', () => {
       gold: 0,
       roomId: 'plains',
       isAi: false,
-      equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
+      equipment: { weapon: null, offhand: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
       createdAt: Date.now(),
       lastLogin: Date.now(),
     },
@@ -64,6 +64,20 @@ describe('PartyManager logic', () => {
 
   afterEach(() => {
     partyMgr.destroy();
+  });
+
+  it('tracks party follow targets and clears them on leave', () => {
+    const follow = partyMgr.followMember('member', 'leader');
+    expect(follow.success).toBe(true);
+    expect(partyMgr.getFollowersOf('leader')).toEqual(['member']);
+
+    const unfollow = partyMgr.unfollowMember('member');
+    expect(unfollow.success).toBe(true);
+    expect(partyMgr.getFollowersOf('leader')).toEqual([]);
+
+    partyMgr.followMember('member', 'leader');
+    partyMgr.leaveParty('member');
+    expect(partyMgr.getFollowersOf('leader')).toEqual([]);
   });
 
   it('returns actionable party invite messages with player and party state', () => {

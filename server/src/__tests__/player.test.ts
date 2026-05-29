@@ -4,7 +4,7 @@ import { SKILL_DEFS } from '@game/shared';
 import { PlayerManager, expRequiredForLevel, expToNextLevel, getHighLevelReviveFee } from '../game/player.js';
 import { addExperienceToCharacter, getLevelExpProgress } from '../game/leveling.js';
 import { initDb, closeDb, getDb } from '../db/schema.js';
-import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, learnSkill, removeInventoryItem, setEquipped } from '../db/queries.js';
+import { addInventoryItem, createCharacter as createDbCharacter, getCharacterById, getEquippedItems, getInventory, getLearnedSkills, getStoredItemInstance, learnSkill, removeInventoryItem, setEquipped, upgradeSkill } from '../db/queries.js';
 import { grantLearnableSkills } from '../game/skill-learning.js';
 import { applyFieldSkillEffect } from '../game/field-skill-effects.js';
 import {
@@ -62,40 +62,47 @@ import {
 // ============================================================
 
 describe('expRequiredForLevel', () => {
+  it('starts level 1 at zero cumulative exp', () => {
+    expect(expRequiredForLevel(1)).toBe(0);
+  });
+
   it('should return correct exp for level 2', () => {
-    // level * 100 + (level - 1) * 50
-    // 2 * 100 + 1 * 50 = 250
-    expect(expRequiredForLevel(2)).toBe(250);
+    expect(expRequiredForLevel(2)).toBe(100);
   });
 
   it('should return correct exp for level 10', () => {
-    // 10 * 100 + 9 * 50 = 1000 + 450 = 1450
-    expect(expRequiredForLevel(10)).toBe(1450);
+    expect(expRequiredForLevel(10)).toBe(2700);
   });
 
   it('should return 0 for level 0', () => {
-    // 0 * 100 + (-1) * 50 = -50
-    expect(expRequiredForLevel(0)).toBe(-50);
+    expect(expRequiredForLevel(0)).toBe(0);
   });
 });
 
 describe('expToNextLevel', () => {
   it('should return the difference between consecutive levels', () => {
     const toNext = expToNextLevel(1);
-    // expRequired(2) - expRequired(1)
-    // 250 - 150 = 100 ... wait
-    // level 1: 1*100 + 0*50 = 100
-    // level 2: 2*100 + 1*50 = 250
-    // difference = 150
-    expect(toNext).toBe(150);
+    expect(toNext).toBe(100);
+  });
+
+  it('should increase the required exp for later levels', () => {
+    expect(expToNextLevel(2)).toBe(150);
+    expect(expToNextLevel(3)).toBe(200);
   });
 });
 
 describe('getLevelExpProgress', () => {
   it('converts cumulative exp into current level progress', () => {
     expect(getLevelExpProgress({ level: 2, exp: 322 } as any)).toEqual({
-      current: 72,
+      current: 222,
       required: 150,
+    });
+  });
+
+  it('shows level 1 exp progress immediately', () => {
+    expect(getLevelExpProgress({ level: 1, exp: 10 } as any)).toEqual({
+      current: 10,
+      required: 100,
     });
   });
 });
@@ -104,7 +111,7 @@ describe('addExperienceToCharacter', () => {
   it('does not fully heal hp or mp on level up', () => {
     const char = {
       level: 1,
-      exp: 240,
+      exp: 90,
       freePoints: 0,
       hp: 45,
       maxHp: 100,
@@ -249,8 +256,7 @@ describe('PlayerManager', () => {
 
     it('should level up when exp threshold is reached', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      // expRequiredForLevel(2) = 250
-      const levelsGained = pm.addExp(char.id, 250);
+      const levelsGained = pm.addExp(char.id, 100);
 
       expect(levelsGained).toBe(1);
       expect(char.level).toBe(2);
@@ -258,7 +264,7 @@ describe('PlayerManager', () => {
 
     it('should grant 5 free stat points per level', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       expect(char.freePoints).toBe(5);
     });
@@ -266,7 +272,7 @@ describe('PlayerManager', () => {
     it('should increase maxHp on level up (10 + VIT*2)', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
       const beforeMaxHp = char.maxHp; // 100
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       // hpGrowth = 10 + 5*2 = 20
       expect(char.maxHp).toBe(beforeMaxHp + 20);
@@ -275,7 +281,7 @@ describe('PlayerManager', () => {
     it('should increase maxMp on level up (5 + INT*1.5)', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
       const beforeMaxMp = char.maxMp; // 30
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       // mpGrowth = floor(5 + 5*1.5) = floor(12.5) = 12
       expect(char.maxMp).toBe(beforeMaxMp + 12);
@@ -290,7 +296,7 @@ describe('PlayerManager', () => {
       expect(char.hp).toBe(50);
       expect(char.mp).toBe(20);
 
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       expect(char.maxHp).toBeGreaterThan(100);
       expect(char.maxMp).toBeGreaterThan(30);
@@ -314,7 +320,7 @@ describe('PlayerManager', () => {
   describe('allocateStats', () => {
     it('should allocate stats when points are available', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.addExp(char.id, 250); // Level 2, 5 free points
+      pm.addExp(char.id, 100); // Level 2, 5 free points
 
       const result = pm.allocateStats(char.id, { str: 3, dex: 2 });
 
@@ -335,7 +341,7 @@ describe('PlayerManager', () => {
 
     it('should fail for negative allocation', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       const result = pm.allocateStats(char.id, { str: -1 });
 
@@ -344,7 +350,7 @@ describe('PlayerManager', () => {
 
     it('should fail for zero allocation', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.addExp(char.id, 250);
+      pm.addExp(char.id, 100);
 
       const result = pm.allocateStats(char.id, {});
 
@@ -353,7 +359,7 @@ describe('PlayerManager', () => {
 
     it('should recalculate maxHp/maxMp after allocation', () => {
       const char = pm.createCharacter('TestHero', 'user-1');
-      pm.addExp(char.id, 250); // Level 2, 5 points
+      pm.addExp(char.id, 100); // Level 2, 5 points
       const hpBefore = char.maxHp;
 
       pm.allocateStats(char.id, { vit: 5 });
@@ -436,6 +442,7 @@ describe('PlayerManager', () => {
       const skills = pm.getLearnedSkills(char.id);
       expect(skills.map(skill => skill.skillId)).toEqual(expect.arrayContaining(['slash', 'guard']));
     });
+
   });
 
   // ── Skill cooldowns ──
@@ -639,6 +646,66 @@ describe('PlayerManager', () => {
   });
 });
 
+describe('class starter equipment', () => {
+  beforeAll(() => {
+    initDb();
+  });
+
+  afterAll(() => {
+    closeDb();
+  });
+
+  it('equips class-specific melee and ranged loadouts on character creation', () => {
+    const suffix = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+    const cases = [
+      {
+        classId: 'swordsman' as const,
+        expected: {
+          meleeMainHand: 'wooden_sword',
+          meleeOffHand: 'wooden_shield',
+          rangedMainHand: 'wooden_spear',
+          rangedOffHand: null,
+        },
+      },
+      {
+        classId: 'mage' as const,
+        expected: {
+          meleeMainHand: 'small_blade',
+          meleeOffHand: null,
+          rangedMainHand: 'willow_witch_wand',
+          rangedOffHand: 'chalkcircle_focus',
+        },
+      },
+      {
+        classId: 'ranger' as const,
+        expected: {
+          meleeMainHand: 'small_blade',
+          meleeOffHand: null,
+          rangedMainHand: 'short_bow',
+          rangedOffHand: null,
+        },
+      },
+      {
+        classId: 'priest' as const,
+        expected: {
+          meleeMainHand: 'fieldstone_carpenter_hammer',
+          meleeOffHand: null,
+          rangedMainHand: 'wooden_scepter',
+          rangedOffHand: 'chalkcircle_focus',
+        },
+      },
+    ];
+
+    for (const row of cases) {
+      const created = createDbCharacter(`starter-${row.classId}-${suffix}`, `Starter${row.classId}${suffix}`, false, undefined, {
+        classId: row.classId,
+      });
+      const loaded = getCharacterById(created.id);
+      expect(loaded?.equipment).toMatchObject(row.expected);
+    }
+  });
+});
+
 describe('inventory item instances', () => {
   beforeAll(() => {
     initDb();
@@ -654,9 +721,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance', 'InstanceHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_1',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [{
         id: 'numeric_str_t1',
@@ -672,7 +739,7 @@ describe('inventory item instances', () => {
     const inventory = getInventory(characterId);
     expect(inventory).toEqual(expect.arrayContaining([
       expect.objectContaining({
-        itemId: 'spear_steel',
+        itemId: 'steel_spear',
         itemInstanceId: 'inst_spear_steel_1',
         quality: 'rare',
         fixedEffects: ['rare_test_effect'],
@@ -687,17 +754,17 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-equip', 'InstanceEquipHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_equip',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'fine',
       affixes: [],
       fixedEffects: [],
     });
 
-    expect(setEquipped(characterId, 'spear_steel', true, 'inst_spear_steel_equip')).toBe(true);
+    expect(setEquipped(characterId, 'steel_spear', true, 'inst_spear_steel_equip')).toBe(true);
     expect(getEquippedItems(characterId)).toEqual([
-      expect.objectContaining({ itemId: 'spear_steel', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 }),
+      expect.objectContaining({ itemId: 'steel_spear', itemInstanceId: 'inst_spear_steel_equip', quantity: 1 }),
     ]);
   });
 
@@ -711,18 +778,18 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
     ).run(char.id, 'user-instance-reward', 'RewardInstanceHero', char.classId);
 
-    const entries = addRewardItemToInventory(char, 'spear_steel', 1, ['monster_drop']);
+    const entries = addRewardItemToInventory(char, 'steel_spear', 1, ['monster_drop']);
 
     expect(entries[0].itemInstanceId).toBeDefined();
     const rewarded = getInventory(char.id).find(item => item.itemInstanceId === entries[0].itemInstanceId);
     expect(rewarded).toEqual(expect.objectContaining({
-      itemId: 'spear_steel',
+      itemId: 'steel_spear',
       itemInstanceId: entries[0].itemInstanceId,
       quantity: 1,
       quality: expect.any(String),
     }));
     expect(getStoredItemInstance(entries[0].itemInstanceId!)).toEqual(expect.objectContaining({
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: rewarded?.quality,
     }));
   });
@@ -733,9 +800,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-affix-stats', 'AffixStatsHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_affix_stats',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [
         {
@@ -759,13 +826,13 @@ describe('inventory item instances', () => {
     });
 
     const before = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
-    expect(setEquipped(characterId, 'spear_steel', true, 'inst_spear_steel_affix_stats')).toBe(true);
+    expect(setEquipped(characterId, 'steel_spear', true, 'inst_spear_steel_affix_stats')).toBe(true);
     const after = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
 
     expect(after.str - before.str).toBe(1);
     expect(after.weaponAtk - before.weaponAtk).toBeGreaterThanOrEqual(3);
 
-    expect(setEquipped(characterId, 'spear_steel', false, 'inst_spear_steel_affix_stats')).toBe(true);
+    expect(setEquipped(characterId, 'steel_spear', false, 'inst_spear_steel_affix_stats')).toBe(true);
     const unequipped = getEquipmentStats({ id: characterId } as Parameters<typeof getEquipmentStats>[0]);
     expect(unequipped.str).toBe(before.str);
     expect(unequipped.weaponAtk).toBe(before.weaponAtk);
@@ -777,9 +844,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-skill-affix', 'SkillAffixHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, true, {
+    addInventoryItem(characterId, 'steel_spear', 1, true, {
       itemInstanceId: 'inst_spear_steel_skill_affix',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [
         {
@@ -816,9 +883,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-conditional-affix', 'ConditionalAffixHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, true, {
+    addInventoryItem(characterId, 'steel_spear', 1, true, {
       itemInstanceId: 'inst_spear_steel_conditional_affix',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'legendary',
       affixes: [
         {
@@ -856,9 +923,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-runtime-affix', 'RuntimeAffixHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, true, {
+    addInventoryItem(characterId, 'steel_spear', 1, true, {
       itemInstanceId: 'inst_spear_steel_runtime_affix',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'legendary',
       affixes: [
         {
@@ -900,9 +967,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-trigger-affix', 'TriggerAffixHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, true, {
+    addInventoryItem(characterId, 'steel_spear', 1, true, {
       itemInstanceId: 'inst_spear_steel_trigger_affix',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'legendary',
       affixes: [
         {
@@ -971,9 +1038,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name) VALUES (?, ?, ?)',
     ).run(characterId, 'user-instance-trigger-cooldown-affix', 'CooldownAffixHero');
 
-    addInventoryItem(characterId, 'spear_steel', 1, true, {
+    addInventoryItem(characterId, 'steel_spear', 1, true, {
       itemInstanceId: 'inst_spear_steel_trigger_cooldown_affix',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'legendary',
       affixes: [
         {
@@ -1019,9 +1086,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
     ).run(characterId, 'user-instance-reroll', 'InstanceRerollHero', 'swordsman');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_reroll',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [{
         id: 'numeric_str_t1',
@@ -1055,9 +1122,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
     ).run(characterId, 'user-instance-lock', 'InstanceLockHero', 'swordsman');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_lock',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [{
         id: 'numeric_str_t1',
@@ -1090,9 +1157,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id, luk) VALUES (?, ?, ?, ?, ?)',
     ).run(characterId, 'user-instance-reforge', 'InstanceReforgeHero', 'swordsman', 999);
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_reforge',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       lockedAffixIndexes: [0],
       affixes: [{
@@ -1127,9 +1194,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id, gold) VALUES (?, ?, ?, ?, ?)',
     ).run(characterId, 'user-instance-high-reforge', 'InstanceHighReforgeHero', 'swordsman', 500);
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_high_reforge',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'epic',
       affixes: [],
     });
@@ -1149,9 +1216,9 @@ describe('inventory item instances', () => {
       'INSERT OR REPLACE INTO characters (id, user_id, name, class_id) VALUES (?, ?, ?, ?)',
     ).run(characterId, 'user-instance-disassemble', 'InstanceDisassembleHero', 'swordsman');
 
-    addInventoryItem(characterId, 'spear_steel', 1, false, {
+    addInventoryItem(characterId, 'steel_spear', 1, false, {
       itemInstanceId: 'inst_spear_steel_disassemble',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [{
         id: 'numeric_str_t1',
@@ -1193,9 +1260,9 @@ describe('item instances in player economies', () => {
   it('preserves item instance id through auction buyout', () => {
     insertTestCharacter('auction-instance-seller', 'AuctionSeller', 100);
     insertTestCharacter('auction-instance-buyer', 'AuctionBuyer', 1000);
-    addInventoryItem('auction-instance-seller', 'spear_steel', 1, false, {
+    addInventoryItem('auction-instance-seller', 'steel_spear', 1, false, {
       itemInstanceId: 'inst_auction_spear',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'epic',
       affixes: [{
         id: 'numeric_dex_t2',
@@ -1209,7 +1276,7 @@ describe('item instances in player economies', () => {
 
     const auction = new AuctionManager();
     auction.init();
-    const listed = auction.listItem('auction-instance-seller', 'spear_steel', 1, 10, 25, 12, 'inst_auction_spear');
+    const listed = auction.listItem('auction-instance-seller', 'steel_spear', 1, 10, 25, 12, 'inst_auction_spear');
     expect(listed.ok).toBe(true);
     const row = getDb().prepare("SELECT id, item_instance_id FROM auctions WHERE seller_id = ? AND status = 'active'")
       .get('auction-instance-seller') as { id: string; item_instance_id: string };
@@ -1226,9 +1293,9 @@ describe('item instances in player economies', () => {
   it('preserves item instance id through market sell orders', () => {
     insertTestCharacter('market-instance-seller', 'MarketSeller', 100);
     insertTestCharacter('market-instance-buyer', 'MarketBuyer', 1000);
-    addInventoryItem('market-instance-seller', 'spear_steel', 1, false, {
+    addInventoryItem('market-instance-seller', 'steel_spear', 1, false, {
       itemInstanceId: 'inst_market_spear',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [{
         id: 'combat_crit_t1',
@@ -1242,7 +1309,7 @@ describe('item instances in player economies', () => {
 
     const market = new MarketManager();
     market.ensureTables();
-    const listed = market.placeSellOrder('market-instance-seller', 'spear_steel', 1, 30, 'inst_market_spear');
+    const listed = market.placeSellOrder('market-instance-seller', 'steel_spear', 1, 30, 'inst_market_spear');
     expect(listed.success).toBe(true);
     const row = getDb().prepare("SELECT item_instance_id FROM market_orders WHERE id = ?")
       .get(listed.orderId) as { item_instance_id: string };
@@ -1257,9 +1324,9 @@ describe('item instances in player economies', () => {
   it('preserves item instance id through direct player trades', () => {
     insertTestCharacter('trade-instance-from', 'TradeFrom', 100);
     insertTestCharacter('trade-instance-to', 'TradeTo', 100);
-    addInventoryItem('trade-instance-from', 'spear_steel', 1, false, {
+    addInventoryItem('trade-instance-from', 'steel_spear', 1, false, {
       itemInstanceId: 'inst_trade_spear',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'fine',
       affixes: [{
         id: 'numeric_str_t1',
@@ -1331,9 +1398,9 @@ describe('economy statistics', () => {
   it('reports average player gold and high-quality equipment circulation', () => {
     insertTestCharacter('economy-average-a', 'EconomyAverageA', 100);
     insertTestCharacter('economy-average-b', 'EconomyAverageB', 300);
-    addInventoryItem('economy-average-a', 'spear_steel', 1, false, {
+    addInventoryItem('economy-average-a', 'steel_spear', 1, false, {
       itemInstanceId: 'inst_economy_rare_spear',
-      baseItemId: 'spear_steel',
+      baseItemId: 'steel_spear',
       quality: 'rare',
       affixes: [],
     });
@@ -1466,6 +1533,17 @@ describe('skill learning grants', () => {
     expect(getLearnedSkills(char.id).some(skill => skill.skillId === 'guard')).toBe(true);
   });
 
+  it('upgrades a learned skill level in storage', () => {
+    const char = createDbCharacter(`upgrade-skill-user-${Date.now()}`, `UpgradeSkill${Date.now()}`);
+    learnSkill(char.id, 'slash');
+
+    const upgraded = upgradeSkill(char.id, 'slash');
+    const skills = getLearnedSkills(char.id);
+
+    expect(upgraded).toBe(true);
+    expect(skills.find(skill => skill.skillId === 'slash')?.level).toBe(2);
+  });
+
   it('grants every starter-class skill unlocked across multiple levels at once', () => {
     const char = createDbCharacter(`multi-skill-user-${Date.now()}`, `MultiSkill${Date.now()}`, false, undefined, { classId: 'swordsman' });
     char.classId = 'swordsman';
@@ -1482,6 +1560,9 @@ describe('skill learning grants', () => {
     for (const skillId of ['warrior_slash', 'iron_wall', 'taunt', 'blade_aura', 'war_cry', 'power_strike', 'counter_stance']) {
       expect(storedIds.has(skillId)).toBe(true);
     }
+
+    expect(storedIds.has('guard')).toBe(false);
+    expect(storedIds.has('first_aid')).toBe(false);
   });
 });
 
@@ -1531,11 +1612,57 @@ describe('field skill effects', () => {
   it('keeps combat buffs and group heals out of field usage until field persistence exists', () => {
     expect(SKILL_DEFS.heal.usageContext).toBe('both');
     expect(SKILL_DEFS.first_aid.usageContext).toBe('both');
+    expect(SKILL_DEFS.taunt.name).toBe('血性復甦');
+    expect(SKILL_DEFS.taunt.usageContext).toBe('both');
+    expect(SKILL_DEFS.taunt.resourceCost).toBe(20);
+    expect(SKILL_DEFS.taunt.cooldown).toBe(3);
+    expect(SKILL_DEFS.taunt.special?.healPercent).toBe(10);
+    expect(SKILL_DEFS.taunt.special?.instant).toBe(true);
+    expect(SKILL_DEFS.blade_aura.cooldown).toBe(0);
+    expect(SKILL_DEFS.blade_aura.special?.instant).toBe(true);
+    expect(SKILL_DEFS.blade_aura.special?.resourceGainPerHit).toBeUndefined();
+    expect(SKILL_DEFS.fireball.special?.blindCrossRoomRandomTarget).toBe(true);
     expect(SKILL_DEFS.inspect.usageContext).toBe('field');
+    expect(SKILL_DEFS.blessing.name).toBe('懺悔');
     expect(SKILL_DEFS.blessing.usageContext).toBe('both');
+    expect(SKILL_DEFS.blessing.cooldown).toBe(10);
+    expect(SKILL_DEFS.blessing.special?.faithInvert).toBe(true);
+    expect(SKILL_DEFS.blessing.special?.instant).toBe(true);
     expect(SKILL_DEFS.war_cry.usageContext).toBe('combat');
     expect(SKILL_DEFS.mass_heal.usageContext).toBe('combat');
     expect(SKILL_DEFS.purify.usageContext).toBe('both');
+  });
+
+  it('applies blood resolve as percent healing outside combat', () => {
+    const pm = new PlayerManager();
+    const char = pm.createCharacter('BloodResolveWarrior', 'user-5');
+    char.maxHp = 200;
+    char.hp = 100;
+
+    const result = applyFieldSkillEffect(char, SKILL_DEFS.taunt);
+
+    expect(result.handled).toBe(true);
+    expect(result.consumeResource).toBe(true);
+    expect(result.message).toContain('20 HP');
+    expect(char.hp).toBe(120);
+  });
+
+  it('applies contrition as faith inversion outside combat', () => {
+    const pm = new PlayerManager();
+    const char = pm.createCharacter('ContritionPriest', 'user-6');
+    char.resourceType = 'faith';
+    char.maxResource = 100;
+
+    char.resource = 0;
+    let result = applyFieldSkillEffect(char, SKILL_DEFS.blessing);
+    expect(result.handled).toBe(true);
+    expect(result.consumeResource).toBe(true);
+    expect(char.resource).toBe(100);
+
+    char.resource = 90;
+    result = applyFieldSkillEffect(char, SKILL_DEFS.blessing);
+    expect(result.handled).toBe(true);
+    expect(char.resource).toBe(10);
   });
 });
 

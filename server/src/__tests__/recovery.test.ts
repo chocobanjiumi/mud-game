@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import type { Character, CombatantState } from '@game/shared';
-import { applyHpRecovery, applyResourceRecovery, getNaturalMountFatigueDelta } from '../game/recovery.js';
+import {
+  applyHpRecovery,
+  applyResourceRecovery,
+  getNaturalMountFatigueDelta,
+  getNaturalResourceDelta,
+} from '../game/recovery.js';
 
 function makeCharacter(overrides: Partial<Character> = {}): Character {
   return {
@@ -95,6 +100,20 @@ describe('recovery helpers', () => {
     expect(recovered).toBe(0);
     expect(combatant.resource).toBe(15);
     expect(char.resource).toBe(15);
+  });
+
+  it('decays rage naturally outside combat without going below zero', () => {
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'rage', resource: 15, maxResource: 100 }))).toBe(-5);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'rage', resource: 3, maxResource: 100 }))).toBe(-3);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'rage', resource: 0, maxResource: 100 }))).toBe(0);
+  });
+
+  it('moves faith naturally toward 50 without overshooting', () => {
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'faith', resource: 40, maxResource: 100 }))).toBe(2);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'faith', resource: 49, maxResource: 100 }))).toBe(1);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'faith', resource: 50, maxResource: 100 }))).toBe(0);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'faith', resource: 51, maxResource: 100 }))).toBe(-1);
+    expect(getNaturalResourceDelta(makeCharacter({ resourceType: 'faith', resource: 80, maxResource: 100 }))).toBe(-2);
   });
 
   it('recovers mount fatigue outside combat using derived mount recovery', () => {

@@ -47,6 +47,8 @@ export class PartyManager {
   private characterPartyMap: Map<string, string> = new Map();
   /** targetCharacterId -> PartyInvite */
   private pendingInvites: Map<string, PartyInvite> = new Map();
+  /** followerCharacterId -> followedCharacterId */
+  private followTargets: Map<string, string> = new Map();
   /** 取得角色資料的回呼 */
   private getCharacterFn: ((id: string) => Character | undefined) | null = null;
 
@@ -97,6 +99,16 @@ export class PartyManager {
     return { success: true, message: '隊伍已建立！你是隊長。', partyId };
   }
 
+  /** 重新同步單一角色的隊伍狀態；登入/重連時使用。 */
+  syncCharacterParty(characterId: string): void {
+    const party = this.getParty(characterId);
+    if (!party) {
+      this.sendEmptyParty(characterId);
+      return;
+    }
+    this.sendPartyUpdateToCharacter(characterId, party);
+  }
+
   // ──────────────────────────────────────────────────────────
   //  邀請
   // ──────────────────────────────────────────────────────────
@@ -142,15 +154,22 @@ export class PartyManager {
     }
 
     // 建立邀請（若邀請者尚無隊伍，接受時再建立）
-    this.pendingInvites.set(targetId, {
+    const invite = {
       partyId,
       inviterId,
       inviterName,
       targetId,
       expiresAt: Date.now() + 30_000, // 30 秒過期
-    });
+    };
+    this.pendingInvites.set(targetId, invite);
 
     // 通知目標
+    sendToCharacter(targetId, 'party_invite', {
+      status: 'pending',
+      inviterId,
+      inviterName,
+      expiresAt: invite.expiresAt,
+    });
     sendToCharacter(targetId, 'system', {
       text: `${inviterName} 邀請你加入隊伍；目前隊伍將在你接受後建立或加入既有隊伍，30 秒內輸入 "party accept" 接受，或輸入 "party decline" 拒絕。`,
     });
@@ -175,6 +194,7 @@ export class PartyManager {
     }
 
     this.pendingInvites.delete(targetId);
+    this.clearPartyInviteModal(targetId);
 
     // 若邀請者還沒有隊伍，先幫他建立
     let partyId = invite.partyId;
@@ -222,6 +242,7 @@ export class PartyManager {
     }
 
     this.pendingInvites.delete(targetId);
+    this.clearPartyInviteModal(targetId);
 
     sendToCharacter(invite.inviterId, 'system', {
       text: `${this.getCharacterFn?.(targetId)?.name ?? '目標玩家'} 拒絕了你的組隊邀請；目前隊伍狀態不變，下一步可邀請其他玩家或稍後再試。`,
@@ -238,6 +259,7 @@ export class PartyManager {
   leaveParty(characterId: string): { success: boolean; message: string } {
     const partyId = this.characterPartyMap.get(characterId);
     if (!partyId) {
+      this.sendEmptyParty(characterId);
       return { success: false, message: '你不在任何隊伍中。' };
     }
 
@@ -252,6 +274,8 @@ export class PartyManager {
     // 移除成員
     party.memberIds = party.memberIds.filter(id => id !== characterId);
     this.characterPartyMap.delete(characterId);
+    this.clearFollowLinks(characterId);
+    this.sendEmptyParty(characterId);
 
     // 如果只剩 1 人或 0 人，解散隊伍
     if (party.memberIds.length <= 1) {
@@ -261,6 +285,8 @@ export class PartyManager {
           text: `${charName} 離開了隊伍，隊伍已解散。`,
         });
         this.characterPartyMap.delete(memberId);
+        this.clearFollowLinks(memberId);
+        this.sendEmptyParty(memberId);
       }
       this.parties.delete(partyId);
       return { success: true, message: '你離開了隊伍，隊伍已解散。' };
@@ -322,6 +348,8 @@ export class PartyManager {
     // 移除
     party.memberIds = party.memberIds.filter(id => id !== targetId);
     this.characterPartyMap.delete(targetId);
+    this.clearFollowLinks(targetId);
+    this.sendEmptyParty(targetId);
 
     // 通知被踢出的人
     sendToCharacter(targetId, 'system', {
@@ -335,6 +363,8 @@ export class PartyManager {
           text: `${targetName} 已被踢出，隊伍已解散。`,
         });
         this.characterPartyMap.delete(memberId);
+        this.clearFollowLinks(memberId);
+        this.sendEmptyParty(memberId);
       }
       this.parties.delete(partyId);
       return { success: true, message: `已將 ${targetName} 踢出隊伍，隊伍已解散。` };
@@ -518,15 +548,68 @@ export class PartyManager {
     return party?.leaderId === characterId;
   }
 
+  followMember(followerId: string, targetId: string): { success: boolean; message: string } {
+    if (followerId === targetId) {
+      return { success: false, message: '不能跟隨自己。' };
+    }
+
+    const party = this.getParty(followerId);
+    if (!party || !party.memberIds.includes(targetId)) {
+      return { success: false, message: '只能跟隨同隊伍成員。' };
+    }
+
+    this.followTargets.set(followerId, targetId);
+    const targetName = this.getCharacterFn?.(targetId)?.name ?? '隊友';
+    const followerName = this.getCharacterFn?.(followerId)?.name ?? '隊友';
+    sendToCharacter(targetId, 'system', {
+      text: `${followerName} 開始跟隨你。`,
+    });
+    return { success: true, message: `你開始跟隨 ${targetName}。` };
+  }
+
+  unfollowMember(followerId: string): { success: boolean; message: string } {
+    if (!this.followTargets.has(followerId)) {
+      return { success: false, message: '你目前沒有跟隨任何隊友。' };
+    }
+    const targetId = this.followTargets.get(followerId);
+    this.followTargets.delete(followerId);
+    if (targetId) {
+      const followerName = this.getCharacterFn?.(followerId)?.name ?? '隊友';
+      sendToCharacter(targetId, 'system', {
+        text: `${followerName} 停止跟隨你。`,
+      });
+    }
+    return { success: true, message: '你停止跟隨隊友。' };
+  }
+
+  getFollowersOf(targetId: string): string[] {
+    const party = this.getParty(targetId);
+    if (!party) return [];
+    return party.memberIds.filter(memberId => this.followTargets.get(memberId) === targetId);
+  }
+
   // ──────────────────────────────────────────────────────────
   //  內部輔助
   // ──────────────────────────────────────────────────────────
+
+  private clearFollowLinks(characterId: string): void {
+    this.followTargets.delete(characterId);
+    for (const [followerId, targetId] of this.followTargets) {
+      if (targetId === characterId) this.followTargets.delete(followerId);
+    }
+  }
 
   /** 廣播隊伍狀態更新給所有成員 */
   private broadcastPartyUpdate(partyId: string): void {
     const party = this.parties.get(partyId);
     if (!party) return;
 
+    for (const memberId of party.memberIds) {
+      this.sendPartyUpdateToCharacter(memberId, party);
+    }
+  }
+
+  private sendPartyUpdateToCharacter(characterId: string, party: Party): void {
     const members = party.memberIds.map(id => {
       const char = this.getCharacterFn?.(id);
       return {
@@ -541,13 +624,19 @@ export class PartyManager {
       };
     });
 
-    for (const memberId of party.memberIds) {
-      sendToCharacter(memberId, 'party', {
-        id: party.id,
-        leaderId: party.leaderId,
-        members,
-      });
-    }
+    sendToCharacter(characterId, 'party', {
+      id: party.id,
+      leaderId: party.leaderId,
+      members,
+    });
+  }
+
+  private sendEmptyParty(characterId: string): void {
+    sendToCharacter(characterId, 'party', {
+      id: '',
+      leaderId: null,
+      members: [],
+    });
   }
 
   private distributeNeedGreedLoot(
@@ -592,7 +681,12 @@ export class PartyManager {
     for (const [key, invite] of this.pendingInvites) {
       if (now > invite.expiresAt) {
         this.pendingInvites.delete(key);
+        this.clearPartyInviteModal(invite.targetId);
       }
     }
+  }
+
+  private clearPartyInviteModal(targetId: string): void {
+    sendToCharacter(targetId, 'party_invite', { status: 'cleared' });
   }
 }

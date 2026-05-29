@@ -29,7 +29,7 @@ function character(): Character {
     gold: 0,
     roomId: 'arena',
     isAi: false,
-    equipment: { weapon: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
+    equipment: { weapon: null, offhand: null, head: null, body: null, hands: null, feet: null, ring: null, earring: null, belt: null, necklace: null, accessory: null },
     createdAt: Date.now(),
     lastLogin: Date.now(),
   };

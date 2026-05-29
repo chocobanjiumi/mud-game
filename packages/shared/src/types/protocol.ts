@@ -2,7 +2,7 @@
 
 import type { Character, ClassId, EquipmentSlots } from './player.js';
 import type { LearnedSkill } from './skill.js';
-import type { CombatantState, CombatLoot, DamageResult } from './combat.js';
+import type { CombatAttackMode, CombatantState, CombatLoot, DamageResult } from './combat.js';
 import type { SkillPointSummary } from '../systems/skill-upgrades.js';
 import type { InventoryItem } from './item.js';
 import type { DeathPenalty, PvpMode, RoomExit, ZoneType } from './world.js';
@@ -30,7 +30,7 @@ export type ClientMessage =
 // Server → Client
 export type ServerMessageType =
   | 'narrative' | 'combat' | 'system' | 'chat' | 'status'
-  | 'room' | 'inventory' | 'party' | 'error' | 'pong'
+  | 'room' | 'inventory' | 'party' | 'party_invite' | 'error' | 'pong'
   | 'login_success' | 'character_list' | 'combat_start'
   | 'combat_action' | 'combat_end' | 'level_up'
   | 'death_notice'
@@ -120,6 +120,7 @@ export interface RoomEntityMonsterDetails {
   mp: number;
   maxMp: number;
   element: string;
+  family: string;
   aiType: string;
   behaviorType?: string;
   isBoss: boolean;
@@ -138,6 +139,25 @@ export interface RoomEntityMonsterDetails {
   description: string;
 }
 
+export interface RoomEntityPlayerDetails {
+  id: string;
+  name: string;
+  level: number;
+  classId: ClassId | string;
+  raceId?: Character['raceId'];
+  genderId?: Character['genderId'];
+  faithId?: Character['faithId'];
+  hp: number;
+  maxHp: number;
+  mp: number;
+  maxMp: number;
+  resource: number;
+  maxResource: number;
+  resourceType: Character['resourceType'];
+  stats: Character['stats'];
+  equipment: EquipmentSlots;
+}
+
 export interface RoomEntity {
   id: string;
   type: RoomEntityType;
@@ -146,6 +166,7 @@ export interface RoomEntity {
   hp?: number;
   maxHp?: number;
   monsterDetails?: RoomEntityMonsterDetails;
+  playerDetails?: RoomEntityPlayerDetails;
   actions: RoomEntityAction[];
 }
 
@@ -205,13 +226,14 @@ export interface NearbyCombatPayload {
 export interface RoomPayload {
   id: string;
   zone: string;
+  zoneName?: string;
   name: string;
   description: string;
   silent?: boolean;
   localMap?: LocalMapPayload;
   image?: string;
   exits: RoomExit[];
-  players: { id: string; name: string; classId: string; level: number }[];
+  players: RoomEntityPlayerDetails[];
   npcs: { id: string; name: string; alias: string; title: string; type: string }[];
   items: { id: string; name: string }[];
   monsters: { id: string; name: string; alias: string; label?: string; level: number; hp: number; maxHp: number; monsterDetails?: RoomEntityMonsterDetails }[];
@@ -246,6 +268,8 @@ export interface RoomPayload {
 export interface LocalMapRoom {
   id: string;
   name: string;
+  zone: string;
+  zoneName?: string;
   x: number;
   y: number;
   explored: boolean;
@@ -283,6 +307,7 @@ export interface CombatStartPayload {
   enemyTeam: CombatantState[];
   round: number;
   turnTimer: number;
+  preferredAttackModes?: Record<string, CombatAttackMode>;
 }
 
 export interface CombatActionPayload {
@@ -292,6 +317,7 @@ export interface CombatActionPayload {
   logEntities?: InlineEntityPayload[][];
   playerTeam: CombatantState[];
   enemyTeam: CombatantState[];
+  preferredAttackModes?: Record<string, CombatAttackMode>;
 }
 
 export interface CombatEndPayload {
@@ -330,7 +356,7 @@ export interface InventoryPayload {
 
 export interface PartyPayload {
   id: string;
-  leaderId: string;
+  leaderId: string | null;
   members: {
     id: string;
     name: string;
@@ -342,6 +368,17 @@ export interface PartyPayload {
     mounted?: boolean;
   }[];
 }
+
+export type PartyInvitePayload =
+  | {
+    status: 'pending';
+    inviterId: string;
+    inviterName: string;
+    expiresAt: number;
+  }
+  | {
+    status: 'cleared';
+  };
 
 export interface ChatPayload {
   senderId: string;

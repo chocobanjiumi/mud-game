@@ -485,7 +485,7 @@ export const NPCS: Record<string, NpcDef> = {
     type: 'merchant',
     shopItems: [
       'wooden_sword', 'bronze_sword', 'iron_sword',
-      'wooden_wand', 'apprentice_staff',
+      'wooden_scepter', 'apprentice_staff',
       'short_bow', 'long_bow',
       'wooden_shield', 'iron_shield',
     ],

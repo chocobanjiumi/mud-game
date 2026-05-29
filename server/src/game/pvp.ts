@@ -321,6 +321,7 @@ export class PvPManager {
       vit: player2Char.stats.vit,
       luk: player2Char.stats.luk,
       element: 'none',
+      family: 'humanoid',
       skills: ['basic_attack'],
       expReward: 0,
       goldReward: [0, 0],

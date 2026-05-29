@@ -50,11 +50,11 @@ const WEAPON_ATTACK_DESCRIPTIONS: Partial<Record<WeaponType, AttackDescriptions>
     miss: '{attacker}的刀鋒從{defender}身旁掠過',
     kill: '{attacker}收刀入鞘的瞬間，{defender}應聲倒下！',
   },
-  elemental_staff: {
-    normal: '{attacker}揮動元素杖釋放一道魔力衝擊{defender}！',
-    critical: '{attacker}的元素杖爆發出耀眼的元素風暴！暴擊！',
+  staff: {
+    normal: '{attacker}揮動法杖釋放一道魔力衝擊{defender}！',
+    critical: '{attacker}的法杖爆發出耀眼的魔力風暴！暴擊！',
     miss: '{attacker}的魔力射線偏離了目標',
-    kill: '{attacker}的元素之力將{defender}徹底瓦解！',
+    kill: '{attacker}的魔力將{defender}徹底瓦解！',
   },
   grimoire: {
     normal: '{attacker}翻開魔典吟誦咒語，暗影射向{defender}！',
@@ -62,17 +62,17 @@ const WEAPON_ATTACK_DESCRIPTIONS: Partial<Record<WeaponType, AttackDescriptions>
     miss: '{attacker}的咒語被{defender}閃避開來',
     kill: '{attacker}的魔典發出幽光，{defender}被黑暗吞噬！',
   },
-  hourglass_staff: {
-    normal: '{attacker}轉動沙漏杖，扭曲的時間之力打向{defender}！',
-    critical: '{attacker}凍結了時間的洪流，對{defender}施加致命一擊！暴擊！',
-    miss: '{attacker}的時間魔法在{defender}面前消散',
-    kill: '{attacker}加速了{defender}的時間，使其在瞬間衰老崩解！',
-  },
   crossbow: {
     normal: '{attacker}扣下扳機，弩箭射向{defender}！',
     critical: '{attacker}精準瞄準要害射出一箭！暴擊！',
     miss: '{attacker}的弩箭從{defender}耳邊飛過',
     kill: '{attacker}的弩箭正中{defender}要害，一擊斃命！',
+  },
+  blade: {
+    normal: '{attacker}揮出短刃斬向{defender}！',
+    critical: '{attacker}的短刃沿著破綻切入！暴擊！',
+    miss: '{attacker}的刃光從{defender}身側掠過',
+    kill: '{attacker}收刃後退，{defender}隨即倒下！',
   },
   dagger: {
     normal: '{attacker}閃身突進，匕首刺向{defender}！',
@@ -91,12 +91,6 @@ const WEAPON_ATTACK_DESCRIPTIONS: Partial<Record<WeaponType, AttackDescriptions>
     critical: '{attacker}的聖典綻放神聖審判之光！暴擊！',
     miss: '{attacker}的聖光被{defender}的暗影抵擋',
     kill: '{attacker}的聖光淨化了{defender}，使其歸於塵土！',
-  },
-  nature_staff: {
-    normal: '{attacker}揮動自然杖，藤蔓與荊棘纏向{defender}！',
-    critical: '{attacker}召喚大自然的憤怒，狂暴的植物攻擊{defender}！暴擊！',
-    miss: '{attacker}召喚的藤蔓未能觸及{defender}',
-    kill: '{attacker}的自然之力將{defender}吞沒在荊棘叢中！',
   },
   warhammer: {
     normal: '{attacker}揮動戰錘重擊{defender}！',

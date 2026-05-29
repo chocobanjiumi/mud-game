@@ -8,13 +8,14 @@ export type SkillUsageContext = 'combat' | 'field' | 'both';
 export type SkillImplementationStatus = 'implemented' | 'draft' | 'deprecated';
 export type DamageType = 'physical' | 'magical' | 'pure';
 export type ElementType = 'fire' | 'ice' | 'lightning' | 'light' | 'dark' | 'nature' | 'none';
+export type SkillAttackSource = 'melee' | 'ranged_physical' | 'ranged_magical' | 'none';
 export type SkillTag =
   | 'damage' | 'aoe' | 'single_target' | 'heal' | 'support' | 'defense'
   | 'control' | 'interrupt' | 'dispel' | 'buff' | 'debuff' | 'mobility'
   | 'summon' | 'burst' | 'resource' | 'passive' | 'cross_room'
   | DamageType
   | ElementType;
-export type SkillScalingStat = 'atk' | 'matk' | 'def' | 'mdef' | 'hp' | 'resource' | 'none';
+export type SkillScalingStat = 'atk' | 'meleeAtk' | 'rangedAtk' | 'matk' | 'spellPower' | 'def' | 'mdef' | 'hp' | 'resource' | 'none';
 
 export type StatusEffectType =
   | 'poison' | 'burn' | 'slow' | 'stun' | 'fear'
@@ -48,6 +49,7 @@ export interface SkillDef {
   resourceCost: number;
   cooldown: number;
   damageType: DamageType;
+  attackSource: SkillAttackSource;
   element: ElementType;
   multiplier: number; // 技能倍率
   tags: SkillTag[];

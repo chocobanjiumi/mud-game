@@ -18,6 +18,8 @@ export type RoomExitEdgeKind =
 export interface RoomExit {
   direction: Direction;
   targetRoomId: string;
+  targetZoneId?: string;
+  targetZoneName?: string;
   description?: string;
   edgeKind?: RoomExitEdgeKind;
   edgeNote?: string;

@@ -1,7 +1,7 @@
 // 世界管理器 - 房間、玩家位置、怪物重生
 
 import type { RoomDef, Direction, MonsterDef, SpawnPoint, ApproachingMonsterPayload } from '@game/shared';
-import { ROOMS, ZONES, getRoom, getRoomsByZone } from '../data/rooms.js';
+import { ROOMS, ZONES, getRoom, getRoomsByZone, getRoomByWorldCoord, getRoomWorldCoord } from '../data/rooms.js';
 import { getMonster } from '../data/monsters.js';
 import { getNpcsByRoom } from '../data/npcs.js';
 
@@ -34,18 +34,12 @@ function parseOrdinalTarget(query: string): { name: string; ordinal?: number } {
   return { name: match[1].trim(), ordinal };
 }
 
-function reverseDirection(direction: Direction): Direction {
-  if (direction === 'north') return 'south';
-  if (direction === 'south') return 'north';
-  if (direction === 'east') return 'west';
-  return 'east';
-}
-
-interface MoveHistoryEntry {
-  fromRoomId: string;
-  toRoomId: string;
-  reverseDirection: Direction;
-}
+const DIRECTION_DELTAS: Record<Direction, { dx: number; dy: number }> = {
+  north: { dx: 0, dy: -1 },
+  south: { dx: 0, dy: 1 },
+  east: { dx: 1, dy: 0 },
+  west: { dx: -1, dy: 0 },
+};
 
 export interface ApproachingMonsterState extends ApproachingMonsterPayload {
   originRoomId?: string;
@@ -60,8 +54,6 @@ export class WorldManager {
   private playerPositions: Map<string, Set<string>> = new Map();
   /** playerId -> roomId */
   private playerRoomMap: Map<string, string> = new Map();
-  /** playerId -> stack of room moves, used to make immediate reverse paths stable */
-  private playerMoveHistory: Map<string, MoveHistoryEntry[]> = new Map();
   /** roomId -> MonsterInstance[] */
   private roomMonsters: Map<string, MonsterInstance[]> = new Map();
   /** destination roomId -> approaching monsters */
@@ -71,7 +63,7 @@ export class WorldManager {
   /** Respawn timer handle */
   private respawnTimer: ReturnType<typeof setInterval> | null = null;
   /** Callback for broadcasting messages to a room */
-  private broadcastFn: ((roomId: string, message: unknown) => void) | null = null;
+  private broadcastFn: ((roomId: string, message: unknown, excludePlayerId?: string) => void) | null = null;
   /** Callback when room entity state changes */
   private roomStateChangeFn: ((roomId: string) => void) | null = null;
 
@@ -106,7 +98,7 @@ export class WorldManager {
   }
 
   /** 註冊廣播函式 */
-  setBroadcastFunction(fn: (roomId: string, message: unknown) => void): void {
+  setBroadcastFunction(fn: (roomId: string, message: unknown, excludePlayerId?: string) => void): void {
     this.broadcastFn = fn;
   }
 
@@ -132,7 +124,9 @@ export class WorldManager {
     }
     this.playerPositions.get(roomId)!.add(playerId);
     this.playerRoomMap.set(playerId, roomId);
-    this.playerMoveHistory.delete(playerId);
+
+    if (oldRoom && oldRoom !== roomId) this.roomStateChangeFn?.(oldRoom);
+    this.roomStateChangeFn?.(roomId);
   }
 
   /** 移除玩家（離線時呼叫） */
@@ -141,7 +135,7 @@ export class WorldManager {
     if (roomId) {
       this.playerPositions.get(roomId)?.delete(playerId);
       this.playerRoomMap.delete(playerId);
-      this.playerMoveHistory.delete(playerId);
+      this.roomStateChangeFn?.(roomId);
     }
   }
 
@@ -170,41 +164,26 @@ export class WorldManager {
     const currentRoom = getRoom(currentRoomId);
     if (!currentRoom) return null;
 
-    const history = this.playerMoveHistory.get(playerId) ?? [];
-    const previousMove = history[history.length - 1];
-    if (
-      previousMove
-      && previousMove.toRoomId === currentRoomId
-      && previousMove.reverseDirection === direction
-      && getRoom(previousMove.fromRoomId)
-    ) {
-      history.pop();
-      if (history.length > 0) {
-        this.playerMoveHistory.set(playerId, history);
-      } else {
-        this.playerMoveHistory.delete(playerId);
-      }
+    const targetRoomId = this.resolveMove(currentRoom, direction);
+    if (!targetRoomId) return null;
 
-      return this.movePlayerToRoom(playerId, currentRoomId, previousMove.fromRoomId, direction);
+    return this.movePlayerToRoom(playerId, currentRoomId, targetRoomId, direction);
+  }
+
+  private resolveMove(currentRoom: RoomDef, direction: Direction): string | null {
+    const exit = currentRoom.exits.find(e => e.direction === direction);
+    if (exit?.locked) return null;
+
+    const coord = getRoomWorldCoord(currentRoom.id);
+    if (coord) {
+      const delta = DIRECTION_DELTAS[direction];
+      const target = getRoomByWorldCoord(coord.worldX + delta.dx, coord.worldY + delta.dy);
+      if (target) return target.id;
     }
 
-    const exit = currentRoom.exits.find(e => e.direction === direction);
-    if (!exit) return null;
+    if (exit) return getRoom(exit.targetRoomId) ? exit.targetRoomId : null;
 
-    // 檢查是否上鎖
-    if (exit.locked) return null;
-
-    const targetRoom = getRoom(exit.targetRoomId);
-    if (!targetRoom) return null;
-
-    history.push({
-      fromRoomId: currentRoomId,
-      toRoomId: exit.targetRoomId,
-      reverseDirection: reverseDirection(direction),
-    });
-    this.playerMoveHistory.set(playerId, history);
-
-    return this.movePlayerToRoom(playerId, currentRoomId, exit.targetRoomId, direction);
+    return null;
   }
 
   private movePlayerToRoom(
@@ -625,7 +604,7 @@ export class WorldManager {
 
     // 讓外部（ws handler）決定怎麼送訊息
     // 這裡只呼叫註冊的函式
-    this.broadcastFn(roomId, message);
+    this.broadcastFn(roomId, message, excludePlayerId);
   }
 
   // ──────────────────────────────────────────────────────────

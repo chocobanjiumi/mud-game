@@ -4,7 +4,7 @@ import type {
   Character, BaseStats, DerivedStats, ClassId, LearnedSkill,
   EquipmentSlots, SkillDef, RaceId, GenderId, FaithId,
 } from '@game/shared';
-import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_GENDER_ID, DEFAULT_RACE_ID, FAITH_DEFS, RACE_DEFS, createEmptyEquipmentSlots, getInitialStatsForRace, getLearnableSkills } from '@game/shared';
+import { CLASS_DEFS, DEFAULT_FAITH_ID, DEFAULT_RACE_ID, FAITH_DEFS, RACE_DEFS, createEmptyEquipmentSlots, getInitialStatsForRace, getLearnableSkills, normalizeGenderId } from '@game/shared';
 import { randomUUID } from 'crypto';
 import { getEquipmentStats as _getEquipmentStats, baseStatsToCombat as _baseStatsToCombat, calculateDerived as _calculateDerived } from './damage.js';
 import { getPveRespawnRoomId } from './death-respawn.js';
@@ -84,7 +84,7 @@ export class PlayerManager {
     const now = Date.now();
 
     const raceId = options.raceId ?? DEFAULT_RACE_ID;
-    const genderId = options.genderId ?? DEFAULT_GENDER_ID;
+    const genderId = normalizeGenderId(options.genderId);
     const faithId = options.faithId ?? DEFAULT_FAITH_ID;
     const classDef = getInitialClassDef(options.classId);
     const stats = getInitialStatsForRace(raceId);
@@ -303,7 +303,7 @@ export class PlayerManager {
   calculateDerivedStats(characterId: string): DerivedStats {
     const char = this.characters.get(characterId);
     if (!char) {
-      return { atk: 0, matk: 0, def: 0, mdef: 0, hitRate: 0, dodgeRate: 0, critRate: 0, critDamage: 0 };
+      return { atk: 0, meleeAtk: 0, rangedAtk: 0, matk: 0, spellPower: 0, def: 0, mdef: 0, hitRate: 0, dodgeRate: 0, critRate: 0, critDamage: 0 };
     }
 
     const getEquipmentStats = _getEquipmentStats;
@@ -326,6 +326,11 @@ export class PlayerManager {
       eqStats.weaponMatk,
       eqStats.armorDef,
       eqStats.armorMdef,
+      {
+        meleeWeaponAtk: eqStats.meleeWeaponAtk,
+        rangedWeaponAtk: eqStats.rangedWeaponAtk,
+        spellWeaponMatk: eqStats.spellWeaponMatk,
+      },
     );
     cs.bonusCritRate = eqStats.bonusCritRate;
     cs.bonusCritDamage = eqStats.bonusCritDamage;
@@ -336,8 +341,15 @@ export class PlayerManager {
 
     // Apply set bonus percentage modifiers
     const pct = eqStats.setBonusPct;
-    if (pct.atk) derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
-    if (pct.int) derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+    if (pct.atk) {
+      derived.atk = Math.floor(derived.atk * (1 + pct.atk / 100));
+      derived.meleeAtk = Math.floor(derived.meleeAtk * (1 + pct.atk / 100));
+      derived.rangedAtk = Math.floor(derived.rangedAtk * (1 + pct.atk / 100));
+    }
+    if (pct.int) {
+      derived.matk = Math.floor(derived.matk * (1 + pct.int / 100));
+      derived.spellPower = Math.floor(derived.spellPower * (1 + pct.int / 100));
+    }
     if (pct.dex) {
       derived.dodgeRate = Math.floor(derived.dodgeRate * (1 + pct.dex / 100));
       derived.hitRate = Math.floor(derived.hitRate * (1 + pct.dex / 100));
@@ -345,7 +357,10 @@ export class PlayerManager {
     if (pct.critRate) derived.critRate += pct.critRate;
     if (pct.critDamage) derived.critDamage += pct.critDamage;
     if (pct.dodgeRate) derived.dodgeRate += pct.dodgeRate;
-    if (pct.spellPower) derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+    if (pct.spellPower) {
+      derived.matk = Math.floor(derived.matk * (1 + pct.spellPower / 100));
+      derived.spellPower = Math.floor(derived.spellPower * (1 + pct.spellPower / 100));
+    }
 
     return derived;
   }

@@ -5,7 +5,7 @@ import type {
   NearbyCombatPayload,
   RoomDef,
 } from '@game/shared';
-import { getRoom } from '../data/rooms.js';
+import { getRoom, getRoomByWorldCoord, getRoomWorldCoord } from '../data/rooms.js';
 import { buildOrdinalLabels } from './room-entities.js';
 import type { MonsterInstance } from './world.js';
 
@@ -37,9 +37,16 @@ export function buildNearbyCombatPayload(input: BuildNearbyCombatPayloadInput): 
       monsters: currentMonsters.map((monster, index) => monsterToPayload(monster, currentLabels[index])),
     },
     neighbors: CARDINAL_DIRECTIONS.map((direction) => {
-      const exit = input.currentRoom.exits.find(candidate => candidate.direction === direction && !candidate.locked);
-      const targetRoom = exit ? getRoom(exit.targetRoomId) : undefined;
-      const passable = !!exit && !!targetRoom;
+      const lockedExit = input.currentRoom.exits.find(e => e.direction === direction && e.locked);
+      let targetRoom: RoomDef | undefined;
+      if (!lockedExit) {
+        const coord = getRoomWorldCoord(input.currentRoom.id);
+        if (coord) {
+          const delta = { north: { dx: 0, dy: -1 }, south: { dx: 0, dy: 1 }, east: { dx: 1, dy: 0 }, west: { dx: -1, dy: 0 } }[direction];
+          targetRoom = getRoomByWorldCoord(coord.worldX + delta.dx, coord.worldY + delta.dy);
+        }
+      }
+      const passable = !!targetRoom;
       const monsters = targetRoom
         ? input.getAliveMonsters(targetRoom.id).filter(monster => !approachingIdsBySourceRoom.get(targetRoom.id)?.has(monster.instanceId))
         : [];
@@ -75,6 +82,7 @@ function monsterToPayload(monster: MonsterInstance, label?: string): NearbyComba
       monster.def.isBoss ? 'boss' : null,
       monster.def.isElite ? 'elite' : null,
       monster.def.aiType !== 'passive' ? monster.def.aiType : null,
+      monster.def.family,
       monster.def.element !== 'none' ? monster.def.element : null,
     ].filter((tag): tag is string => !!tag),
   };

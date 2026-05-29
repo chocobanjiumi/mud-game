@@ -1,7 +1,7 @@
 import type { BaseStats } from './player.js';
 
 export type RaceId = 'human' | 'elf' | 'dwarf' | 'orc' | 'halfling' | 'dragonborn' | 'shadowkin';
-export type GenderId = 'male' | 'female' | 'nonbinary' | 'undisclosed';
+export type GenderId = 'male' | 'female';
 export type FaithId =
   | 'aelora'
   | 'karvos'
