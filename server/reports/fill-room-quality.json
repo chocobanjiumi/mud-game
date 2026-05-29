@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T21:03:41.230Z",
+  "generatedAt": "2026-05-29T21:05:05.706Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 57,
-    "errors": 50,
-    "warnings": 7,
+    "issues": 46,
+    "errors": 42,
+    "warnings": 4,
     "byGrade": {
       "A_main_transition": 31,
       "B_connector": 17,
@@ -16,23 +16,22 @@
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 274,
+      "border": 277,
       "gathering": 158,
       "monster": 30,
-      "npc_or_quest": 22,
-      "portal": 15,
+      "npc_or_quest": 19,
+      "portal": 16,
       "route": 69,
-      "service": 68
+      "service": 72
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
-      "description.direction": 16,
-      "description.length": 22,
+      "description.direction": 13,
+      "description.length": 18,
       "description.purpose": 3,
-      "description.repeated_opening": 3,
       "description.terrain": 3,
       "exit.description.length": 4,
-      "exit.description.missing": 5
+      "exit.description.missing": 4
     }
   },
   "zones": [
@@ -5034,17 +5033,19 @@
       "zoneId": "ironwood_fort",
       "zoneName": "鐵木要塞",
       "fillRooms": 4,
-      "issues": 11,
+      "issues": 0,
       "records": [
         {
           "id": "ironwood_fort_fill_0_12",
           "zone": "ironwood_fort",
-          "name": "城牆走道",
+          "name": "傳送庭北牆根封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering",
-            "npc_or_quest"
+            "portal",
+            "service"
           ],
           "worldX": 0,
           "worldY": 12,
@@ -5064,50 +5065,24 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ironwood_fort_fill_0_12",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_0_12",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_0_12",
-              "zone": "ironwood_fort",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ironwood_fort_fill_0_17",
           "zone": "ironwood_fort",
-          "name": "要塞通道",
+          "name": "鐵木林南補給封道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": 0,
           "worldY": 17,
@@ -5127,35 +5102,24 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ironwood_fort_fill_0_17",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "要塞內部的通道，兩旁是高聳的石牆和瞭望塔。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "ironwood_fort_fill_0_18",
           "zone": "ironwood_fort",
-          "name": "兵營通路",
+          "name": "南牆兵營玻砂界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
             "border",
             "gathering",
-            "npc_or_quest"
+            "service"
           ],
           "worldX": 0,
           "worldY": 18,
@@ -5177,60 +5141,24 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": true,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "ironwood_fort_fill_0_18",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_0_18",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_0_18",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south-> 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "ironwood_fort_fill_0_18",
-              "zone": "ironwood_fort",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "ironwood_fort_fill_4_15",
           "zone": "ironwood_fort",
-          "name": "軍道",
+          "name": "高堡西軍械封道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering",
-            "npc_or_quest"
+            "service"
           ],
           "worldX": 4,
           "worldY": 15,
@@ -5250,41 +5178,13 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 73,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "ironwood_fort_fill_4_15",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_4_15",
-              "zone": "ironwood_fort",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-            },
-            {
-              "id": "ironwood_fort_fill_4_15",
-              "zone": "ironwood_fort",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -13756,85 +13656,6 @@
       "text": "冰封荒原上的凍結通道，刺骨的寒風能凍裂鎧甲。"
     },
     {
-      "id": "ironwood_fort_fill_0_12",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_12",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_17",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "要塞內部的通道，兩旁是高聳的石牆和瞭望塔。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_18",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_18",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_18",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south-> 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "ironwood_fort_fill_4_15",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
-      "id": "ironwood_fort_fill_4_15",
-      "zone": "ironwood_fort",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。"
-    },
-    {
       "id": "obsidian_depths_black_glass_bridge",
       "zone": "obsidian_depths",
       "severity": "error",
@@ -14216,27 +14037,6 @@
       "current": 20,
       "minimum": 55,
       "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
-    },
-    {
-      "id": "ironwood_fort_fill_0_12",
-      "zone": "ironwood_fort",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ironwood_fort_fill_0_18",
-      "zone": "ironwood_fort",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "ironwood_fort_fill_4_15",
-      "zone": "ironwood_fort",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     }
   ]
 }

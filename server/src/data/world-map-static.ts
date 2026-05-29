@@ -1594,9 +1594,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ironwood_fort_fill_0_12": {
     "id": "ironwood_fort_fill_0_12",
-    "name": "城牆走道",
+    "name": "傳送庭北牆根封",
     "zone": "ironwood_fort",
-    "description": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+    "description": "傳送庭北牆根封位在鐵木要塞西北牆腳，南側可望見傳送陣庭的藍光，東邊舊蓄水池傳來濕冷水聲。牆根堆著可回收的鐵木碎板與補給牌，但北面垛口封死，是城牆 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1606,9 +1606,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ironwood_fort_fill_0_17": {
     "id": "ironwood_fort_fill_0_17",
-    "name": "要塞通道",
+    "name": "鐵木林南補給封道",
     "zone": "ironwood_fort",
-    "description": "要塞內部的通道，兩旁是高聳的石牆和瞭望塔。",
+    "description": "鐵木林南補給封道貼著要塞西牆延伸，北側鐵木林根系鑽入石縫，南面兵營通路被拒馬截斷，東邊監牢外牆只露出鐵窗。這裡可搜集零散補給牌，但主要作為 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1618,14 +1618,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ironwood_fort_fill_0_18": {
     "id": "ironwood_fort_fill_0_18",
-    "name": "兵營通路",
+    "name": "南牆兵營玻砂界",
     "zone": "ironwood_fort",
-    "description": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+    "description": "南牆兵營玻砂界位在鐵木要塞最南牆腳，北面補給封道仍有軍靴刮痕，東側琉璃沙丘北緣的晶砂已堆到牆根。這裡是 border blocker，可撿到破損軍牌，但南方牆外被坍塌拒馬鎖住。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側坍塌拒馬與玻砂堆封住牆外通路，不能從兵營牆腳硬穿出去"
       }
     ],
     "mapSymbol": "[·]",
@@ -1672,9 +1673,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "ironwood_fort_fill_4_15": {
     "id": "ironwood_fort_fill_4_15",
-    "name": "軍道",
+    "name": "高堡西軍械封道",
     "zone": "ironwood_fort",
-    "description": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+    "description": "高堡西軍械封道位在高堡西側牆道，西面指揮步道仍有紅旗號令，南側高堡門影壓在石階上，北邊信號塔火盆忽明忽暗。鐵木拒馬堆成臨時軍械欄，可搜補給碎片，但封住東側岔路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
