@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:17:01.916Z",
+  "generatedAt": "2026-05-29T22:20:28.102Z",
   "summary": {
     "rooms": 992,
     "zones": 34,
@@ -9,14 +9,14 @@
     "safeRoomsWithMonsters": 0,
     "lowZoneHighMonsterIssues": 0,
     "adjacentLevelSpikeIssues": 0,
-    "terrainFamilyMismatchIssues": 106,
-    "issues": 119,
+    "terrainFamilyMismatchIssues": 77,
+    "issues": 83,
     "errors": 0,
-    "warnings": 119,
+    "warnings": 83,
     "accepted": 0,
     "byIssueKind": {
-      "monster_cue.missing": 13,
-      "terrain_family.mismatch": 106
+      "monster_cue.missing": 6,
+      "terrain_family.mismatch": 77
     }
   },
   "zones": [
@@ -202,7 +202,7 @@
         "insect",
         "undead"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -313,7 +313,7 @@
         "insect",
         "undead"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -586,7 +586,7 @@
         "insect",
         "plant"
       ],
-      "issueCount": 13,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -801,7 +801,7 @@
         "elemental",
         "humanoid"
       ],
-      "issueCount": 1,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -827,7 +827,7 @@
         "dragon",
         "elemental"
       ],
-      "issueCount": 1,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -854,7 +854,7 @@
         "humanoid",
         "insect"
       ],
-      "issueCount": 11,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -1614,9 +1614,7 @@
         "thunderpool_eel",
         "cloudbridge_raider"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "storm_highlands_old_windmill",
@@ -11741,9 +11739,7 @@
         "lava_worm",
         "flame_spirit"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_fill_n5_19",
@@ -11781,9 +11777,7 @@
         "flame_spirit",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_fill_1_19",
@@ -11808,9 +11802,7 @@
         "mirrorsand_stalker",
         "shardback_scarab"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_fill_3_19",
@@ -11936,9 +11928,7 @@
         "lava_worm",
         "cinder_wolf"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_viper_flats",
@@ -11952,9 +11942,7 @@
         "redscale_viper",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_flame_spirit_basin",
@@ -11968,9 +11956,7 @@
         "flame_spirit",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_ambush_canyon",
@@ -11985,9 +11971,7 @@
         "blackflag_marksman",
         "exile_duelist"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_fill_n3_20",
@@ -12065,9 +12049,7 @@
         "shardback_scarab",
         "mirage_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_mirage_bazaar",
@@ -12203,9 +12185,7 @@
         "red_ore_golem",
         "redscale_viper"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_exile_den",
@@ -12270,9 +12250,7 @@
       "monsterIds": [
         "shardback_scarab"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_vein_gallery",
@@ -12286,9 +12264,7 @@
         "shardback_scarab",
         "prism_golem_warden"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_obsidian_well",
@@ -12406,9 +12382,7 @@
         "ember_crack_worm",
         "cinder_trench_stalker"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_scorched_oasis",
@@ -12553,9 +12527,7 @@
         "redscale_viper",
         "blackflag_marksman"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_bandit_watch",
@@ -12569,9 +12541,7 @@
         "blackflag_marksman",
         "dust_road_raider"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_outlaw_camp",
@@ -12586,9 +12556,7 @@
         "blackflag_marksman",
         "cinder_wolf"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_bone_marker",
@@ -12669,9 +12637,7 @@
         "prism_golem_warden",
         "shardback_scarab"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_solar_forge",
@@ -12829,9 +12795,7 @@
         "ashroad_sparkling",
         "ember_crack_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_smoke_trench",
@@ -12845,9 +12809,7 @@
         "cinder_trench_stalker",
         "ember_crack_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_lava_crack",
@@ -12861,9 +12823,7 @@
         "ember_crack_worm",
         "slagplate_colossus"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_black_sand_basin",
@@ -12891,9 +12851,7 @@
         "bonekiln_ashguard",
         "ember_crack_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_dragonprint_ridge",
@@ -12943,9 +12901,7 @@
         "fire_salamander",
         "ash_cinder_imp"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "magma_river",
@@ -12959,9 +12915,7 @@
         "lava_worm",
         "fire_salamander"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_steam_lift",
@@ -12975,9 +12929,7 @@
         "lava_worm",
         "dwarf_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_crystal_vent",
@@ -13021,9 +12973,7 @@
         "blackflag_marksman",
         "dust_road_raider"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_fill_n6_23",
@@ -13070,9 +13020,7 @@
         "exile_duelist",
         "blackflag_marksman"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_fill_2_23",
@@ -13412,9 +13360,7 @@
         "lava_worm",
         "sulfur_steam_crawler"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "sulfur_valley",
@@ -13428,9 +13374,7 @@
         "sulfur_steam_crawler",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "obsidian_cave",
@@ -13444,9 +13388,7 @@
         "rock_giant",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_obsidian_quarry",
@@ -13461,9 +13403,7 @@
         "basalt_ward_sentinel",
         "lava_worm"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_forge_storage",
@@ -13502,9 +13442,7 @@
         "blackflag_marksman",
         "red_ore_golem"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glass_dunes_fill_4_24",
@@ -13540,9 +13478,7 @@
         "stormwing_eagle",
         "stormgrass_strider"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "thundersteppe_eagle_roost",
@@ -13670,9 +13606,7 @@
         "flame_spirit",
         "ash_cinder_imp"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "fire_temple_entrance",
@@ -13686,9 +13620,7 @@
         "flame_spirit",
         "basalt_ward_sentinel"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_zone_fill_34_24",
@@ -13822,9 +13754,7 @@
         "flame_spirit",
         "lava_colossus"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "volcano_colossus_arena",
@@ -13839,9 +13769,7 @@
         "rock_giant",
         "flame_spirit"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ember_march_south_shelter",
@@ -39936,7 +39864,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "redrock_badlands_rustwash_pass",
@@ -50520,7 +50448,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "thundersteppe_thunderhoof_crossing",
@@ -50836,7 +50764,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "forge_hall",
@@ -50930,7 +50858,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "magma_river",
@@ -51312,7 +51240,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "volcano_crater",
@@ -51365,7 +51293,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "volcano_crystal_vent",
@@ -51811,7 +51739,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "volcano_zone_fill_31_20",
@@ -54502,106 +54430,6 @@
       }
     },
     {
-      "id": "redrock_badlands/redrock_badlands_rock_giant_perch/monster_cue.missing",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_rock_giant_perch",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "red_ore_golem",
-          "redscale_viper"
-        ]
-      }
-    },
-    {
-      "id": "thundersteppe/thundersteppe_thunder_pool/monster_cue.missing",
-      "zoneId": "thundersteppe",
-      "roomId": "thundersteppe_thunder_pool",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "stormwing_eagle",
-          "stormgrass_strider"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/fire_temple_entrance/monster_cue.missing",
-      "zoneId": "volcano_zone",
-      "roomId": "fire_temple_entrance",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "flame_spirit",
-          "basalt_ward_sentinel"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/lava_trail/monster_cue.missing",
-      "zoneId": "volcano_zone",
-      "roomId": "lava_trail",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "fire_salamander",
-          "ash_cinder_imp"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_colossus_arena/monster_cue.missing",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_colossus_arena",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "lava_colossus",
-          "rock_giant",
-          "flame_spirit"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_crater/monster_cue.missing",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_crater",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "flame_spirit",
-          "ash_cinder_imp"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_summit/monster_cue.missing",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_summit",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "rock_giant",
-          "flame_spirit",
-          "lava_colossus"
-        ]
-      }
-    },
-    {
       "id": "wildgrass_hills/wildgrass_hills_orchard_ruin/monster_cue.missing",
       "zoneId": "wildgrass_hills",
       "roomId": "wildgrass_hills_orchard_ruin",
@@ -55082,131 +54910,6 @@
       }
     },
     {
-      "id": "ember_march/ember_march_bonekiln_pass/terrain_family.mismatch",
-      "zoneId": "ember_march",
-      "roomId": "ember_march_bonekiln_pass",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "insect",
-          "undead"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "ember_march/ember_march_cinder_road/terrain_family.mismatch",
-      "zoneId": "ember_march",
-      "roomId": "ember_march_cinder_road",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "ember_march/ember_march_lava_crack/terrain_family.mismatch",
-      "zoneId": "ember_march",
-      "roomId": "ember_march_lava_crack",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "ember_march/ember_march_smoke_trench/terrain_family.mismatch",
-      "zoneId": "ember_march",
-      "roomId": "ember_march_smoke_trench",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "ember_march/ember_march_worm_burrow/terrain_family.mismatch",
-      "zoneId": "ember_march",
-      "roomId": "ember_march_worm_burrow",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
       "id": "frozen_wastes/aurora_field/terrain_family.mismatch",
       "zoneId": "frozen_wastes",
       "roomId": "aurora_field",
@@ -55545,130 +55248,6 @@
         ],
         "mismatches": [
           "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "glass_dunes/glass_dunes_crystal_golem_yard/terrain_family.mismatch",
-      "zoneId": "glass_dunes",
-      "roomId": "glass_dunes_crystal_golem_yard",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "glass_dunes/glass_dunes_relic_pit/terrain_family.mismatch",
-      "zoneId": "glass_dunes",
-      "roomId": "glass_dunes_relic_pit",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "insect",
-          "undead"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "glass_dunes/glass_dunes_saltwind_cut/terrain_family.mismatch",
-      "zoneId": "glass_dunes",
-      "roomId": "glass_dunes_saltwind_cut",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "glass_dunes/glass_dunes_shard_claim/terrain_family.mismatch",
-      "zoneId": "glass_dunes",
-      "roomId": "glass_dunes_shard_claim",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "glass_dunes/glass_dunes_vein_gallery/terrain_family.mismatch",
-      "zoneId": "glass_dunes",
-      "roomId": "glass_dunes_vein_gallery",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
         ]
       }
     },
@@ -56270,311 +55849,6 @@
       }
     },
     {
-      "id": "redrock_badlands/redrock_badlands_ambush_canyon/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_ambush_canyon",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_bandit_watch/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_bandit_watch",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_blackflag_lookout/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_blackflag_lookout",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_cinder_spring/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_cinder_spring",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "elemental",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_duel_stones/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_duel_stones",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_echo_arch/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_echo_arch",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_flame_spirit_basin/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_flame_spirit_basin",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_lava_worm_sink/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_lava_worm_sink",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_outlaw_camp/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_outlaw_camp",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_scarlet_crater/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_scarlet_crater",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_splinter_ridge/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_splinter_ridge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "redrock_badlands/redrock_badlands_viper_flats/terrain_family.mismatch",
-      "zoneId": "redrock_badlands",
-      "roomId": "redrock_badlands_viper_flats",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
       "id": "serpent_delta/serpent_delta_blue_lotus_marsh/terrain_family.mismatch",
       "zoneId": "serpent_delta",
       "roomId": "serpent_delta_blue_lotus_marsh",
@@ -57099,179 +56373,6 @@
         ],
         "mismatches": [
           "plant"
-        ]
-      }
-    },
-    {
-      "id": "storm_highlands/storm_highlands_thunder_pool/terrain_family.mismatch",
-      "zoneId": "storm_highlands",
-      "roomId": "storm_highlands_thunder_pool",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "humanoid"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/magma_river/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "magma_river",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/obsidian_cave/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "obsidian_cave",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/sulfur_valley/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "sulfur_valley",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_obsidian_quarry/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_obsidian_quarry",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "construct",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_steam_lift/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_steam_lift",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "volcano_zone/volcano_sulfur_springs/terrain_family.mismatch",
-      "zoneId": "volcano_zone",
-      "roomId": "volcano_sulfur_springs",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
         ]
       }
     }

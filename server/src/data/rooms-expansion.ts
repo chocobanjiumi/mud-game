@@ -8563,7 +8563,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'redrock_badlands_rock_giant_perch.png',
     imagePrompt: '岩巨人棲臺 in redrock_badlands, high red rock perch with giant footprints, boulders, ore veins and dust storm sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain sky, clear lantern light',
     description:
-      '紅礦切口上方是一片寬闊岩臺，地面留著巨大腳印，邊緣堆著被徒手掰碎的礦石與半埋巨石。岩石巨人會在這裡休眠，身體與紅岩幾乎融為一體，只有胸口裂縫偶爾透出暗色光。南側熱岩坡可看見火靈盆地，但巨人踩塌了下坡路，需由盆地熱岩坡上來。這裡是精英戰鬥與資源守門房，玩家可挑戰岩巨人、取得高品質石心與赤礦，也能從高處觀察火靈盆地和猩紅火口。戰鬥時要小心落石與其他玩家干擾，因為岩臺沒有太多遮蔽。若巨人被激怒，牠會把礦石投向下方切口，改變路線安全性。',
+      '紅礦切口上方是一片寬闊岩臺，地面留著巨大腳印，邊緣堆著被徒手掰碎的礦石與半埋巨石。岩石巨人會在這裡休眠，紅鱗蛇敵群也盤在溫熱礦縫旁，身體與紅岩幾乎融為一體，只有胸口裂縫偶爾透出暗色光。南側熱岩坡可看見火靈盆地，但巨人踩塌了下坡路，需由盆地熱岩坡上來。這裡是精英戰鬥與資源守門房，玩家可挑戰岩巨人、取得高品質石心與赤礦，也能從高處觀察火靈盆地和猩紅火口。戰鬥時要小心落石與其他玩家干擾，因為岩臺沒有太多遮蔽。若巨人被激怒，牠會把礦石投向下方切口，改變路線安全性。',
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_red_ore_cut', description: '礦脈下到紅礦切口' },
       { direction: 'north', targetRoomId: 'redrock_badlands_ambush_canyon', description: '北側岩臺路下切至伏擊峽谷' },
@@ -9392,7 +9392,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'thundersteppe_thunder_pool.png',
     imagePrompt: '雷雨水洼 in thundersteppe, shallow rain pools sparking with lightning, bent reeds, storm reflections and muddy prairie banks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '雷雨水洼沿著入口北側低地展開，許多淺池被暴雨連成銀色碎帶，雷光落在水面時會沿著泥岸跳躍。池邊蘆草彎得很低，葉片上掛滿細小水珠，任何重靴踩入都會驚起一圈藍白火花。這裡適合收集雨水、洗去草原塵土，也適合觀察天空倒影裡的風暴裂縫；但濕地會放大聲音，遠處雷鷹能準確聽見金屬碰撞。若有人在水洼中央看見不屬於隊伍的影子，通常代表雷暴中的舊魂正在提醒來者改變路線。',
+      '雷雨水洼沿著入口北側低地展開，許多淺池被暴雨連成銀色碎帶，雷光落在水面時會沿著泥岸跳躍。池邊蘆草彎得很低，葉片上掛滿細小水珠，任何重靴踩入都會驚起一圈藍白火花。這裡適合收集雨水、洗去草原塵土，也適合觀察天空倒影裡的風暴裂縫；但濕地會放大聲音，遠處雷鷹與風暴野獸能準確聽見金屬碰撞。若有人在水洼中央看見不屬於隊伍的影子，通常代表雷暴中的舊魂正在提醒來者改變路線。',
     exits: [
       { direction: 'south', targetRoomId: 'thundersteppe_rolling_gate', description: '濕坡回到雷原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'thundersteppe_eagle_roost', description: '水邊斜路通往雷鷹棲柱' },

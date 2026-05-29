@@ -3818,7 +3818,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條蜿蜒在凝固熔岩上的狹窄小路，兩側的岩石仍散發著灼熱的紅光。' +
       '空氣因高溫而扭曲，每一步都要小心避開仍在流動的岩漿細流。' +
-      '火蜥蜴在溫暖的岩石上悠然自得。北面下山回火山山腳，南方硫磺谷蒸汽翻湧，東面傳來岩漿河的低沉聲；玩家可 search 冷卻裂縫採集火成玻璃。',
+      '火蜥蜴與餘燼魔物在溫暖的岩石上巡邏。北面下山回火山山腳，南方硫磺谷蒸汽翻湧，東面傳來岩漿河的低沉聲；玩家可 search 冷卻裂縫採集火成玻璃。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_base', description: '下山回到山腳' },
       { direction: 'south', targetRoomId: 'sulfur_valley', description: '小徑延伸向硫磺谷' },
@@ -3875,7 +3875,7 @@ export const ROOMS: Record<string, RoomDef> = {
     imagePrompt: '火山口 in volcano_zone, landmark combat crater with churning lava lake, flame spirits, black rim stones and blinding orange heat, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain lava, clear lantern light',
     description:
       '攀登至火山口的邊緣，腳下是翻騰的岩漿湖。灼熱的氣浪撲面而來，' +
-      '火焰精靈在岩漿上方翩翩起舞，牠們的身影在熱浪中若隱若現。' +
+      '火焰精靈敵群在岩漿上方翩翩起舞，牠們的身影在熱浪中若隱若現。' +
       '這裡的溫度高得驚人，普通人無法久留。北面退回硫磺谷，東側岩壁石門通往火焰神殿，西邊有橫跨岩漿的危險橋；玩家可 inspect 岩漿小島尋找炎之心線索。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
       '牆角或地面標記也會指出下一個安全出口。',
@@ -3980,7 +3980,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '巨大的石門上雕刻著火焰的紋飾，門框兩側的火盆燃燒著永不熄滅的火焰。' +
       '門上的古代文字似乎是矮人語，記載著神殿的歷史和警告。' +
-      '門內傳來低沉的轟鳴聲和熱氣。西面回火山口，北面黑曜石洞反射著火光，南側內部通道通往火山頂；玩家可 inspect 矮人符文找寶庫密碼。',
+      '門內傳來低沉的轟鳴聲和熱氣，玄武岩守衛與火焰魔物守在門縫兩側。西面回火山口，北面黑曜石洞反射著火光，南側內部通道通往火山頂；玩家可 inspect 矮人符文找寶庫密碼。',
     exits: [
       {
         direction: 'west',
@@ -4080,7 +4080,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '火山的最高點，腳下是翻騰的岩漿和蒸騰而起的灼熱氣浪，空氣中瀰漫著濃烈的硫磺味。' +
       '強風在裸露的山巔呼嘯而過，卻無法冷卻這裡灼人的溫度。登頂後視野無比開闘——' +
       '從冰封雪原到暗影森林，整個大陸的輪廓盡收眼底。' +
-      '岩石巨人如同山峰的延伸般矗立不動，火焰精靈則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
+      '岩石巨人如同山峰的延伸般矗立不動，火焰精靈與熔岩首領則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
     exits: [
       { direction: 'north', targetRoomId: 'fire_temple_entrance', description: '回到火焰神殿入口' },
       { direction: 'west', targetRoomId: 'volcano_zone_fill_32_25', description: '西側火山石路回到玄武岩階方向' },
@@ -4341,7 +4341,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_colossus_arena.png',
     imagePrompt: '熔岩巨像競技台 in volcano_zone, boss event arena with circular basalt platform, lava colossus silhouette, chains and erupting firelight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain lava, clear lantern light',
     description:
-      '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，玩家可 inspect 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。',
+      '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像首領輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，玩家可 inspect 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_summit', description: '西側封印鏈石台回到火山頂' },
     ],
