@@ -6477,7 +6477,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_tide_plaza', description: '叫賣聲回到廣場' },
       { direction: 'east', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆布棚連向帆匠街' },
-      { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '濕滑窄巷通往走私巷' },
+      { direction: 'north', targetRoomId: 'mist_harbor_warehouse_nine', description: '倉庫濕巷回到九號倉' },
     ],
     mapSymbol: '[魚]',
     mapX: 2,
@@ -6500,7 +6500,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_fish_market', description: '帆布棚回到魚市' },
       { direction: 'east', targetRoomId: 'mist_harbor_shipwright_yard', description: '木槌聲來自船匠塢' },
-      { direction: 'south', targetRoomId: 'mist_harbor_guild_quay', description: '繩梯下到公會碼頭' },
+      { direction: 'north', targetRoomId: 'mist_harbor_guild_quay', description: '繩梯下到公會碼頭' },
+      { direction: 'south', targetRoomId: 'mist_harbor_clinic_of_salt', description: '藥箱路回到鹽診所' },
     ],
     mapSymbol: '[帆]',
     mapX: 3,
@@ -6592,17 +6593,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '鹽診所西返沉錨旅店需穿過後廊與服務區，屬於長路徑。',
       },
+      { direction: 'north', targetRoomId: 'mist_harbor_sailmakers_row', description: '北側藥箱路通往帆匠街' },
       {
         direction: 'east',
-        targetRoomId: 'mist_harbor_guild_quay',
-        description: '東側藥箱路穿過診所側門、傷員棚與棧道轉角後，才會抵達冒險者碼頭',
-        edgeKind: 'long_path',
-        edgeNote: '鹽診所到冒險者碼頭需穿過傷員棚與棧道轉角，距離長於相鄰格。',
-      },
-      {
-        direction: 'north',
         targetRoomId: 'mist_harbor_chart_archive',
-        description: '北側窄梯沿診所後牆盤上二樓，穿過潮濕書架門後才會到海圖檔案室',
+        description: '東側窄梯沿診所後牆盤上二樓，穿過潮濕書架門後才會到海圖檔案室',
         edgeKind: 'long_path',
         edgeNote: '鹽診所到海圖檔案室有窄梯高差與書架門，不是相鄰平面一格。',
       },
@@ -6626,12 +6621,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冒險者碼頭是一段專供委託船停靠的木棧道，柱子上綁滿任務牌、失物畫像、海怪懸賞與臨時招募紙。公會書記坐在防潮棚下登記隊伍，旁邊小船隨霧潮起伏，船頭掛著不同顏色的任務燈。西側可見沉錨旅店的木階，但潮濕人潮堵住回程，需從旅店方向下到碼頭。這裡是霧港最重要的任務服務房，玩家可接取外海副本、護航、搜救、釣魚與走私調查委託，也能組隊前往渡船棧橋。碼頭下方有水聲敲擊空木箱，偶爾會浮出不屬於任何登記船隻的繩結，暗示有人借公會名義私下出海。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_sailmakers_row', description: '繩梯回到帆匠街' },
+      { direction: 'south', targetRoomId: 'mist_harbor_sailmakers_row', description: '南側繩梯回到帆匠街' },
       { direction: 'east', targetRoomId: 'mist_harbor_ferry_pier', description: '棧道連向渡船棧橋' },
       {
-        direction: 'south',
+        direction: 'north',
         targetRoomId: 'mist_harbor_smugglers_alley',
-        description: '南側陰影小路沿碼頭樁影、濕滑木板與貨箱背面下滑，才會接到走私巷',
+        description: '北側陰影小路沿碼頭樁影、濕滑木板與貨箱背面下滑，才會接到走私巷',
         edgeKind: 'long_path',
         edgeNote: '冒險者碼頭到走私巷需沿棧道背面與貨箱陰影繞行，屬於長路徑。',
       },
@@ -6655,14 +6650,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '魚市後方的走私巷狹窄潮濕，兩側堆滿標籤被刮掉的木箱、破網和空酒桶。霧在屋檐下盤旋，讓每扇半掩的門都像藏著耳朵。西側碼頭燈影若隱若現，但暗巷出口被臨檢木欄封住，只能從公會碼頭陰影小路進巷。這裡不是公開服務點，卻是許多任務線的灰色交會處，玩家可追查假港印、打聽黑市船票、尋找失蹤貨物，也可能遇到不願在廣場露面的 NPC。巷底水溝連到九號倉，退潮時能看見刻在石壁上的暗號。雖然城內禁止械鬥，走私者仍會用價格、情報與沉默威脅旅人。若帶著海關封條進巷，幾盞窗燈會同時熄滅。牆面潮痕旁還刻著只有夜航人看得懂的數字，暗門後傳來壓低的笑聲。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_fish_market', description: '魚腥路回到魚市' },
-      {
-        direction: 'east',
-        targetRoomId: 'mist_harbor_warehouse_nine',
-        description: '東側暗號水溝要沿走私巷牆根、排水口與倉庫後門繞行，才會通向九號倉',
-        edgeKind: 'long_path',
-        edgeNote: '走私巷到九號倉需經排水口與倉庫後門，距離長於相鄰格。',
-      },
+      { direction: 'north', targetRoomId: 'mist_harbor_sea_gate', description: '北側濕石坡回到舊海門' },
+      { direction: 'south', targetRoomId: 'mist_harbor_warehouse_nine', description: '南側暗號水溝通往九號倉' },
     ],
     mapSymbol: '[私]',
     mapX: 2,
@@ -6790,6 +6779,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '九號倉西返海關廳需穿過貨物檢查區與內廊，屬於長路徑。',
       },
+      { direction: 'north', targetRoomId: 'mist_harbor_smugglers_alley', description: '北側暗號水溝回到走私巷' },
+      { direction: 'south', targetRoomId: 'mist_harbor_fish_market', description: '南側倉庫濕巷通往魚市' },
     ],
     mapSymbol: '[倉]',
     mapX: 2,
@@ -6866,17 +6857,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊海門是內港最老的防潮門，兩扇厚木閘板被鐵鏈吊著，表面滿是潮痕、貝殼和修補鐵片。漲潮時門外海水會拍上石階，退潮時則露出通往潮池與防波堤的濕滑岩路。西側港務坡道通向船長辦公室，但舊門這端閘鏈橫倒，需從辦公室下坡抵達。這裡是交通與港務房，玩家可協助升降閘門、護送貨車通過、查看近海潮位，也能追查某些貨物為何不經海關而從舊門進城。門洞上方掛著一排退役船鈴，只在濃霧中無風自響。若鈴聲與潮鐘不一致，代表外海有船正在使用錯誤航道靠近。守門員會把此事記在潮濕小冊裡，等待有人願意查下去。閘鏈深處還卡著新鮮黑帆纖維與碎木。',
     exits: [
       { direction: 'north', targetRoomId: 'mist_harbor_fog_gate', description: '坡道回到霧港城門' },
+      { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '南側濕石坡通往走私巷' },
       {
-        direction: 'east',
-        targetRoomId: 'mist_harbor_warehouse_nine',
-        description: '東側貨道沿舊海門牆根、鐵鏈閘旁與倉庫側坡前進，才會通往九號倉',
-        edgeKind: 'long_path',
-        edgeNote: '舊海門到九號倉需沿牆根貨道與側坡繞行，距離長於相鄰格。',
-      },
-      {
-        direction: 'south',
+        direction: 'west',
         targetRoomId: 'mist_harbor_tidepool_shrine',
-        description: '南側石階沿鹽蝕護欄下到潮池邊緣，繞過小供桌後才抵達潮池小祠',
+        description: '西側石階沿鹽蝕護欄下到潮池邊緣，繞過小供桌後才抵達潮池小祠',
         edgeKind: 'long_path',
         edgeNote: '舊海門到潮池小祠需下行潮池石階，屬於長路徑。',
       },

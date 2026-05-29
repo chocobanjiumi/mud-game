@@ -1056,11 +1056,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "mist_harbor_shipwright_yard"
   ],
   [
-    "mist_harbor_fish_market",
-    "south",
-    "mist_harbor_smugglers_alley"
-  ],
-  [
     "mist_harbor_fog_gate",
     "south",
     "mist_harbor_sea_gate"
@@ -1069,11 +1064,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "mist_harbor_fogwatch_lantern",
     "west",
     "mist_harbor_lighthouse_stairs"
-  ],
-  [
-    "mist_harbor_guild_quay",
-    "north",
-    "mist_harbor_sailmakers_row"
   ],
   [
     "mist_harbor_lighthouse_stairs",
@@ -1101,11 +1091,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "mist_harbor_tide_plaza"
   ],
   [
-    "mist_harbor_sailmakers_row",
-    "south",
-    "mist_harbor_guild_quay"
-  ],
-  [
     "mist_harbor_sea_gate",
     "north",
     "mist_harbor_fog_gate"
@@ -1119,11 +1104,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "mist_harbor_shipwright_yard",
     "south",
     "mist_harbor_ferry_pier"
-  ],
-  [
-    "mist_harbor_smugglers_alley",
-    "north",
-    "mist_harbor_fish_market"
   ],
   [
     "mist_harbor_tide_plaza",
