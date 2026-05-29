@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-05-29T18:51:20.767Z",
+  "generatedAt": "2026-05-29T18:55:36.096Z",
   "counts": {
-    "totalLongPathRecords": 897,
-    "staticWorldLongPathEntries": 434,
-    "runtimeLongPathExits": 897,
+    "totalLongPathRecords": 889,
+    "staticWorldLongPathEntries": 430,
+    "runtimeLongPathExits": 889,
     "staticOnlyEntries": 0,
-    "roomEdgeOnlyEntries": 463,
+    "roomEdgeOnlyEntries": 459,
     "missingSourceRooms": 0,
     "missingTargetRooms": 0,
-    "sameZone": 860,
+    "sameZone": 852,
     "crossZone": 37,
     "hasExistingIntermediateFillerOrStaticRoomToConnect": 16,
     "classifications": {
       "A_coordinate_error_candidate": 0,
-      "B_missing_static_corridor": 40,
-      "C_special_route": 857
+      "B_missing_static_corridor": 36,
+      "C_special_route": 853
     }
   },
   "records": [
@@ -6280,77 +6280,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "dark_forest_bramble_maze:north->dark_forest_moonwell",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_bramble_maze",
-        "zone": "dark_forest",
-        "worldX": -4,
-        "worldY": 15
-      },
-      "direction": "north",
-      "target": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -4,
-        "worldY": 14
-      },
-      "actualDelta": {
-        "dx": -4,
-        "dy": 0,
-        "manhattan": 4
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 4,
-        "intermediateRooms": [
-          {
-            "worldX": -5,
-            "worldY": 15,
-            "roomId": "dark_forest_root_bridge",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -6,
-            "worldY": 15,
-            "roomId": "elf_ruins",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -7,
-            "worldY": 15,
-            "roomId": "dark_treehollow",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「月影井」就在北側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "dark_forest_elder_grove:east->elf_ruins",
       "sources": [
         "room-edge-kind"
@@ -6640,189 +6569,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "dark_forest_moonwell:east->dark_forest_raven_perch",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "direction": "east",
-      "target": {
-        "roomId": "dark_forest_raven_perch",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 12
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -7,
-        "worldY": 15
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": -8,
-            "worldY": 14,
-            "roomId": "dark_forest_witch_hut",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -8,
-            "worldY": 13,
-            "roomId": "deep_poison_swamp",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "東側要沿銀苔小徑穿過低霧樹根，跟著黑鴉羽毛標記爬回高枝平台",
-      "edgeNote": "月影井到黑鴉棲枝需要沿銀苔小徑與低霧樹根繞行，屬於長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "dark_forest_moonwell:south->dark_forest_bramble_maze",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "dark_forest_bramble_maze",
-        "zone": "dark_forest",
-        "worldX": -4,
-        "worldY": 15
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -8,
-        "worldY": 16
-      },
-      "actualDelta": {
-        "dx": 4,
-        "dy": 0,
-        "manhattan": 4
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 4,
-        "intermediateRooms": [
-          {
-            "worldX": -7,
-            "worldY": 15,
-            "roomId": "dark_treehollow",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -6,
-            "worldY": 15,
-            "roomId": "elf_ruins",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -5,
-            "worldY": 15,
-            "roomId": "dark_forest_root_bridge",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「荊棘迷宮」就在南側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "dark_forest_moonwell:west->dark_forest_witch_hut",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "dark_forest_witch_hut",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 14
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -9,
-        "worldY": 15
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「森林女巫小屋」就在西側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "dark_forest_raven_perch:east->firefly_trail",
       "sources": [
         "room-edge-kind"
@@ -6861,165 +6607,6 @@
       },
       "description": "東側螢火光隔著枯枝平台閃動，需要沿黑鴉標記的枝路繞下才接到螢火小徑",
       "edgeNote": "黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "dark_forest_raven_perch:south->deep_poison_swamp",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_raven_perch",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 12
-      },
-      "direction": "south",
-      "target": {
-        "roomId": "deep_poison_swamp",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 13
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -8,
-        "worldY": 13
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "南側毒霧沼澤在低處翻泡，必須沿枯木根梯下行並避開紫色泡泉才抵達",
-      "edgeNote": "黑鴉棲枝到劇毒沼澤存在高枝到沼地的落差，屬於長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "dark_forest_raven_perch:west->dark_forest_moonwell",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_raven_perch",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 12
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -9,
-        "worldY": 12
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 3,
-        "manhattan": 3
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 3,
-        "intermediateRooms": [
-          {
-            "worldX": -8,
-            "worldY": 13,
-            "roomId": "deep_poison_swamp",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          },
-          {
-            "worldX": -8,
-            "worldY": 14,
-            "roomId": "dark_forest_witch_hut",
-            "zone": "dark_forest",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "西側月井冷光被銀苔小徑遮住，需要跟著黑鴉羽毛繞過低霧樹根才抵達",
-      "edgeNote": "黑鴉棲枝到月影井需要繞過低霧樹根與銀苔小徑，屬於長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "dark_forest_root_bridge:west->deep_forest",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_root_bridge",
-        "zone": "dark_forest",
-        "worldX": -5,
-        "worldY": 15
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "deep_forest",
-        "zone": "dark_forest",
-        "worldX": -6,
-        "worldY": 14
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -6,
-        "worldY": 15
-      },
-      "actualDelta": {
-        "dx": -1,
-        "dy": -1,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "not-same-axis",
-        "distance": 2,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "西側粗根先沿黑水溪繞行，穿過濕滑根橋與狼爪痕後才回到森林深處",
-      "edgeNote": "盤根橋回森林深處需要沿黑水溪根路繞行，屬於長路徑。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
@@ -7176,55 +6763,6 @@
       "missingTargetRoom": false
     },
     {
-      "key": "dark_forest_witch_hut:east->dark_forest_moonwell",
-      "sources": [
-        "static-world-long-paths",
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "dark_forest_witch_hut",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 14
-      },
-      "direction": "east",
-      "target": {
-        "roomId": "dark_forest_moonwell",
-        "zone": "dark_forest",
-        "worldX": -8,
-        "worldY": 15
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": -7,
-        "worldY": 14
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": 1,
-        "manhattan": 1
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 1,
-        "intermediateRooms": [],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "「月影井」就在東側石路盡頭方向",
-      "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-      "classification": {
-        "code": "C_special_route",
-        "label": "C 類：真正特殊路徑候選",
-        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
-        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
       "key": "dark_forest_witch_hut:west->withered_forest",
       "sources": [
         "room-edge-kind"
@@ -7369,7 +6907,7 @@
       "missingTargetRoom": false
     },
     {
-      "key": "deep_poison_swamp:north->firefly_trail",
+      "key": "deep_poison_swamp:west->firefly_trail",
       "sources": [
         "room-edge-kind"
       ],
@@ -7379,7 +6917,7 @@
         "worldX": -8,
         "worldY": 13
       },
-      "direction": "north",
+      "direction": "west",
       "target": {
         "roomId": "firefly_trail",
         "zone": "dark_forest",
@@ -7387,8 +6925,8 @@
         "worldY": 12
       },
       "expectedAdjacentCoordinate": {
-        "worldX": -8,
-        "worldY": 12
+        "worldX": -9,
+        "worldY": 13
       },
       "actualDelta": {
         "dx": 1,
@@ -7405,7 +6943,7 @@
         "missingCoordinates": [],
         "hasCompleteIntermediateRoute": false
       },
-      "description": "北側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑",
+      "description": "西側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑",
       "edgeNote": "毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。",
       "classification": {
         "code": "C_special_route",

@@ -2218,6 +2218,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '石柱旁有被暗影侵蝕的箭孔和精靈守衛殘甲，說明這裡曾經爆發過長期防衛戰。水晶光芒會指向暗影空地與古樹心庭，玩家若完成森林線索，可在此回收證物、觸發下一段區域推進或判斷通往火山的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'deep_forest', description: '返回森林深處' },
+      { direction: 'west', targetRoomId: 'dark_treehollow', description: '西側樹根路通往黑暗樹洞' },
+      { direction: 'east', targetRoomId: 'dark_forest_root_bridge', description: '東側盤根橋接往荊棘迷宮' },
       {
         direction: 'south',
         targetRoomId: 'volcano_base',

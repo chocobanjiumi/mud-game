@@ -331,24 +331,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "dark_forest_shadow_clearing"
   ],
   [
-    "dark_forest_bramble_maze",
-    "north",
-    "dark_forest_moonwell"
-  ],
-  [
     "dark_forest_elder_grove",
     "north",
     "dark_forest_shadow_clearing"
-  ],
-  [
-    "dark_forest_moonwell",
-    "south",
-    "dark_forest_bramble_maze"
-  ],
-  [
-    "dark_forest_moonwell",
-    "west",
-    "dark_forest_witch_hut"
   ],
   [
     "dark_forest_shadow_clearing",
@@ -359,11 +344,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "dark_forest_shadow_clearing",
     "west",
     "dark_forest_bramble_maze"
-  ],
-  [
-    "dark_forest_witch_hut",
-    "east",
-    "dark_forest_moonwell"
   ],
   [
     "dense_trail",

@@ -459,7 +459,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '四處傳來此起彼伏的咕嚕聲和蛙鳴——這裡的一切都帶著毒性。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'firefly_trail', description: '北側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'long_path', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'firefly_trail', description: '西側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'long_path', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'dark_forest_raven_perch', description: '北側黑鴉羽毛標出高枝平台' },
+      { direction: 'south', targetRoomId: 'dark_forest_witch_hut', description: '南側銀苔小徑回到女巫小屋' },
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
     ],
     monsters: [
@@ -546,6 +548,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'withered_forest', description: '爬出樹洞回到枯萎之林' },
+      { direction: 'west', targetRoomId: 'dark_forest_moonwell', description: '西側樹洞出口通往月影井' },
+      { direction: 'east', targetRoomId: 'elf_ruins', description: '東側樹根路回到精靈遺跡' },
     ],
     monsters: [
       { monsterId: 'shadow_treant', maxCount: 1, respawnSeconds: 900 },
@@ -605,20 +609,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。',
       },
-      {
-        direction: 'south',
-        targetRoomId: 'deep_poison_swamp',
-        description: '南側毒霧沼澤在低處翻泡，必須沿枯木根梯下行並避開紫色泡泉才抵達',
-        edgeKind: 'long_path',
-        edgeNote: '黑鴉棲枝到劇毒沼澤存在高枝到沼地的落差，屬於長路徑。',
-      },
-      {
-        direction: 'west',
-        targetRoomId: 'dark_forest_moonwell',
-        description: '西側月井冷光被銀苔小徑遮住，需要跟著黑鴉羽毛繞過低霧樹根才抵達',
-        edgeKind: 'long_path',
-        edgeNote: '黑鴉棲枝到月影井需要繞過低霧樹根與銀苔小徑，屬於長路徑。',
-      },
+      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側毒霧沼澤在低處翻泡' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 40 },
@@ -639,13 +630,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '數條巨大樹根橫跨黑水溪，形成濕滑窄橋，溪底反射出不屬於天空的綠色微光。北面蛛網密室懸著白絲，西側可回精靈遺跡，南方暗影空地被低霧包圍。根橋兩側沒有護欄，木質表面有狼爪與樹精刻痕，提示玩家這是繞行與撤退的重要路線，但戰鬥中被逼到邊緣會非常危險。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_spider_web', description: '蛛網掛滿北側枝條' },
-      {
-        direction: 'west',
-        targetRoomId: 'deep_forest',
-        description: '西側粗根先沿黑水溪繞行，穿過濕滑根橋與狼爪痕後才回到森林深處',
-        edgeKind: 'long_path',
-        edgeNote: '盤根橋回森林深處需要沿黑水溪根路繞行，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'elf_ruins', description: '西側盤根橋接回精靈遺跡' },
+      { direction: 'east', targetRoomId: 'dark_forest_bramble_maze', description: '東側根橋通向荊棘迷宮' },
       { direction: 'south', targetRoomId: 'dark_forest_shadow_clearing', description: '南方空地被黑霧籠罩' },
     ],
     monsters: [
@@ -666,7 +652,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '歪斜小屋架在樹根與石塊之間，乾草藥、骨鈴和發光蘑菇掛滿屋簷，綠色坩堝光從門縫溢出。東邊枯萎之林透出灰白枝影，通往荊棘迷宮的根痕會先繞到月井南側，屋後暗門通向更深的密林。桌上有被撕開的森林地圖和未完成咒文，提示玩家這裡是任務與精英遭遇點，可調查女巫如何操縱森林詛咒。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'east', targetRoomId: 'dark_forest_moonwell', description: '月井冷光在東方閃爍' },
+      { direction: 'north', targetRoomId: 'deep_poison_swamp', description: '北側銀苔小徑通往毒霧沼澤邊緣' },
+      { direction: 'south', targetRoomId: 'dark_forest_moonwell', description: '月井冷光在南方閃爍' },
       {
         direction: 'west',
         targetRoomId: 'withered_forest',
@@ -693,15 +680,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '圓形石井藏在銀苔覆蓋的小空地中，井水不映樹冠，只映出一輪蒼白月亮，周圍空氣帶著清冷礦物味。東邊黑暗樹洞隱約透出幽光，南面荊棘迷宮堵住去路。井沿有精靈刻痕與水滴形凹槽，提示玩家可採集月井水、解讀符文，或取得解除毒霧與暗影詛咒的材料。',
     exits: [
-      {
-        direction: 'east',
-        targetRoomId: 'dark_forest_raven_perch',
-        description: '東側要沿銀苔小徑穿過低霧樹根，跟著黑鴉羽毛標記爬回高枝平台',
-        edgeKind: 'long_path',
-        edgeNote: '月影井到黑鴉棲枝需要沿銀苔小徑與低霧樹根繞行，屬於長路徑。',
-      },
-      { direction: 'west', targetRoomId: 'dark_forest_witch_hut', description: '女巫小屋隱在西側樹根後' },
-      { direction: 'south', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮在南方纏結' },
+      { direction: 'east', targetRoomId: 'dark_treehollow', description: '東側枯木洞通往黑暗樹洞' },
+      { direction: 'north', targetRoomId: 'dark_forest_witch_hut', description: '北側銀苔小徑回到女巫小屋' },
     ],
     monsters: [
       { monsterId: 'dark_elf_archer', maxCount: 1, respawnSeconds: 80 },
@@ -761,7 +741,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '活著般的荊棘牆在月井南面交錯移動，黑刺上掛著撕裂布條、暗紅樹液和被纏住的獸骨。北邊是更深的林間通道，東側林間小路蜿蜒前行，往女巫小屋的根痕需繞行更遠。道路會被枝條短暫封閉，提示玩家需要觀察方向、避開纏繞伏擊，並在戰鬥中利用迷宮作為撤退或繞行路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'dark_forest_moonwell', description: '月井冷光指引北方出口' },
+      { direction: 'west', targetRoomId: 'dark_forest_root_bridge', description: '西側盤根路通向月井方向' },
       { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地' },
     ],
     monsters: [
