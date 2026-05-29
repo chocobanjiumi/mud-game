@@ -2842,8 +2842,7 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '舊磨坊小徑回農田需要沿水車溝渠與磨坊木架繞行，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'starter_ext_frog_pond', description: '溪聲通往蛙鳴池' },
-      { direction: 'south', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰煙來自南邊炭窯' },
+      { direction: 'south', targetRoomId: 'starter_ext_frog_pond', description: '溪聲通往蛙鳴池' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
@@ -2890,13 +2889,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，玩家可 gather 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_beehive_grove', description: '回到蜂巢樹叢' },
-      {
-        direction: 'south',
-        targetRoomId: 'village_outskirts',
-        description: '南側小籬門後要沿藥草畦外圍與濕滑泥坡下行，穿過一段木樁標示的小徑後才接回村外小路入口',
-        edgeKind: 'long_path',
-        edgeNote: '藥草圃到村外小路需要沿藥草畦外圍與泥坡下行，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '西側木樁小徑接往練習空地' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 30 },
@@ -2916,15 +2909,10 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。玩家可釣魚、採集濕地材料，或 inspect 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。',
     exits: [
-      { direction: 'west', targetRoomId: 'starter_ext_old_mill_path', description: '泥徑回到舊磨坊' },
-      {
-        direction: 'north',
-        targetRoomId: 'village_creek',
-        description: '北側溪線要沿蘆葦水邊逆流而上，繞過滑石與睡蓮後才回到小溪邊',
-        edgeKind: 'long_path',
-        edgeNote: '蛙鳴池回小溪邊需要沿蘆葦溪線逆流繞行，屬於長路徑。',
-      },
-      { direction: 'south', targetRoomId: 'starter_ext_ruined_bridge', description: '水面下可見斷橋木樁' },
+      { direction: 'east', targetRoomId: 'village_outskirts', description: '東側木樁小徑回到村外小路' },
+      { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '北側泥徑回到舊磨坊小徑' },
+      { direction: 'south', targetRoomId: 'starter_ext_charcoal_kiln', description: '南側灰煙來自炭窯' },
+      { direction: 'west', targetRoomId: 'starter_ext_ruined_bridge', description: '西側水面下可見斷橋木樁' },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 3, respawnSeconds: 25 },
@@ -2944,13 +2932,6 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '村外林線前有一塊被踩平的練習空地，草地中央立著稻草靶與舊木盾，旁邊武器架上掛著鈍劍和練習弓。北面可回村口，西側小路接村外小路，東邊有可疑腳印通往盜匪踩出的支線。玩家可在此安全練習攻擊節奏、inspect 靶心箭痕，也能追蹤偷走補給的田鼠。',
     exits: [
-      {
-        direction: 'north',
-        targetRoomId: 'village_gate',
-        description: '北側回村口要穿過練習靶場與守衛哨線，沿踩平草路繞到木柵門前',
-        edgeKind: 'long_path',
-        edgeNote: '練習空地回村口需要穿過靶場與守衛哨線，實際路程長於相鄰一格。',
-      },
       {
         direction: 'west',
         targetRoomId: 'village_outskirts',
@@ -3060,7 +3041,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。玩家可採集木炭材料、inspect 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '回到舊磨坊小徑' },
+      { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '北側灰路回到蛙鳴池' },
       { direction: 'east', targetRoomId: 'starter_ext_ruined_bridge', description: '灰路通向斷橋' },
       {
         direction: 'south',
@@ -3088,15 +3069,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，玩家可 inspect 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '水聲通回蛙鳴池' },
+      { direction: 'east', targetRoomId: 'starter_ext_frog_pond', description: '東側水聲通回蛙鳴池' },
       { direction: 'west', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰路回到炭窯' },
-      {
-        direction: 'east',
-        targetRoomId: 'village_outskirts',
-        description: '東側必須沿斷橋下方淺溝繞行，穿過苔木橋樁後才回到村外小路入口',
-        edgeKind: 'long_path',
-        edgeNote: '斷橋回村外小路需要沿淺溝與苔木橋樁繞行，屬於長路徑。',
-      },
     ],
     monsters: [
       { monsterId: 'green_slime', maxCount: 2, respawnSeconds: 30 },

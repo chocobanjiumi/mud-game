@@ -1726,39 +1726,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "starter_ext_ruined_bridge"
   ],
   [
-    "starter_ext_charcoal_kiln",
-    "north",
-    "starter_ext_old_mill_path"
-  ],
-  [
-    "starter_ext_frog_pond",
-    "south",
-    "starter_ext_ruined_bridge"
-  ],
-  [
-    "starter_ext_frog_pond",
-    "west",
-    "starter_ext_old_mill_path"
-  ],
-  [
     "starter_ext_hollow_stump",
     "north",
     "starter_ext_bandit_footpath"
-  ],
-  [
-    "starter_ext_old_mill_path",
-    "east",
-    "starter_ext_frog_pond"
-  ],
-  [
-    "starter_ext_old_mill_path",
-    "south",
-    "starter_ext_charcoal_kiln"
-  ],
-  [
-    "starter_ext_ruined_bridge",
-    "north",
-    "starter_ext_frog_pond"
   ],
   [
     "starter_ext_ruined_bridge",
