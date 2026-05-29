@@ -4836,10 +4836,10 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_glacier_crevasse.png',
     imagePrompt: '冰河裂縫 in frozen_wastes, hidden combat crevasse with blue ice walls, rope ladder, frozen fossils and deep shadow light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain ice, clear lantern light',
     description:
-      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側能聽見冰釣洞水聲但裂壁不可通行，南面能通往積雪隘口暗道。玩家可 inspect 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。',
+      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側裂壁暗道先接到半埋雪坡下的廢棄雪橇，再沿雪坡回到積雪隘口。玩家可 inspect 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。',
     exits: [
       { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
-      { direction: 'south', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '南側冰河裂縫暗道沿結霜繩梯折降，穿過藍冰窄縫與雪牆暗口回到積雪隘口', edgeKind: 'long_path', edgeNote: '冰河裂縫到積雪隘口需沿繩梯與藍冰窄縫折返，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '北側結霜繩梯沿藍冰窄縫上行，先抵達半埋雪坡下的廢棄雪橇' },
     ],
     monsters: [
       { monsterId: 'ice_elemental', maxCount: 3, respawnSeconds: 50 },

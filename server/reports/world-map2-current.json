@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T18:09:28.757Z",
+  "generatedAt": "2026-05-29T18:11:38.359Z",
   "counts": {
     "zones": 60,
     "rooms": 1511,
@@ -2415,7 +2415,6 @@
     "frozen_wastes_frostpine_grove:north->frozen_wastes_runestone_circle (long_path) 霜松林到符石環需沿斷枝標記穿過極光雪坡，實際路程長於相鄰一格。",
     "frozen_wastes_abandoned_sledge:east->mountain_camp (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frozen_wastes_abandoned_sledge:south->frozen_wastes_yeti_cairn (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "frozen_wastes_glacier_crevasse:south->frozen_wastes_snowdrift_pass (long_path) 冰河裂縫到積雪隘口需沿繩梯與藍冰窄縫折返，實際路程長於相鄰一格。",
     "frozen_wastes_runestone_circle:south->frozen_wastes_frostpine_grove (long_path) 符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。",
     "frozen_wastes_runestone_circle:north->frozen_wastes_frozen_watchpost (long_path) 符石環到結冰哨塔需穿過巡邏標記與斷冰橋陰影，實際路程長於相鄰一格。",
     "frozen_wastes_yeti_cairn:north->frozen_wastes_abandoned_sledge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
