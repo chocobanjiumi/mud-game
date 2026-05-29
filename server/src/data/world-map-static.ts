@@ -1068,13 +1068,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n18_7": {
     "id": "emerald_canopy_fill_n18_7",
-    "name": "翠綠樹道",
+    "name": "琥珀接枝平台",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "琥珀接枝平台架在翡翠樹冠東緣，西側是高枝走道的綠蔭，東面樹脂光線銜接琥珀森林樹門。這裡是跨區過渡路線，枝幹上有可採集的嫩葉與樹脂痕，提醒玩家已離開單純樹冠區。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "amber_forest_resin_gate"
+        "targetRoomId": "amber_forest_resin_gate",
+        "description": "東側樹脂枝橋穿過金色黏光，接向琥珀森林凝脂樹門"
       }
     ],
     "mapSymbol": "[·]",
@@ -1085,9 +1086,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n19_7": {
     "id": "emerald_canopy_fill_n19_7",
-    "name": "高枝走道",
+    "name": "北冠斷枝欄",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "北冠斷枝欄位於高空枝道邊緣，東側能看見琥珀接枝平台，南面厚葉遮住下層樹影。幾根斷枝被藤索綁成封閉 blocker，枝縫間有露珠草葉可採，但不能離開正式樹冠路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -1097,9 +1098,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n20_7": {
     "id": "emerald_canopy_fill_n20_7",
-    "name": "翡翠林小路",
+    "name": "霧葉封索道",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "霧葉封索道被濕藤與寬葉覆住，東側連著北冠斷枝欄，西面樹冠逐漸抬高。藤索上掛著採集標記，表示這裡只作為資源邊界與封閉 blocker，玩家需要折回主枝道。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -1109,9 +1110,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n21_10": {
     "id": "emerald_canopy_fill_n21_10",
-    "name": "翡翠林小路",
+    "name": "南露藤欄",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "南露藤欄懸在樹冠南側，北面有雨水順著粗枝滴落，西側可望見更高的綠心枝影。欄外只剩潮濕空隙與垂藤，這格標示不可通行邊界，同時保留少量露葉採集線索。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1121,9 +1122,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n21_7": {
     "id": "emerald_canopy_fill_n21_7",
-    "name": "樹冠通道",
+    "name": "北風枝籬",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "北風枝籬沿著樹冠北緣延伸，東側是霧葉封索道，南面可聽見鳥民棲枝的回聲。交錯樹枝形成封閉 blocker，枝葉間仍有藥草與花粉痕，但沒有可走的下層路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1133,9 +1134,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n22_7": {
     "id": "emerald_canopy_fill_n22_7",
-    "name": "翠綠樹道",
+    "name": "翡翠苔枝口",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "翡翠苔枝口鋪滿厚苔與亮葉，東側可回北風枝籬，西面枝幹被鳥巢與藤蔓封住。這裡是資源採集邊界，不放正式出口，玩家只能沿主樹冠路線尋找安全通行點。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -1145,9 +1146,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n22_8": {
     "id": "emerald_canopy_fill_n22_8",
-    "name": "高枝走道",
+    "name": "中層葉棚封口",
     "zone": "emerald_canopy",
-    "description": "翠綠光線穿透樹冠灑在林間小路上。",
+    "description": "中層葉棚封口位於北冠下方，北側枝影透出翠綠光線，東面有細藤垂到不可攀的深谷。這格是高低差 blocker，葉棚上可看見採集痕跡，但不提供通往下層的路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -1157,9 +1158,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n23_7": {
     "id": "emerald_canopy_fill_n23_7",
-    "name": "高枝走道",
+    "name": "西冠鳥巢欄",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "西冠鳥巢欄靠近樹冠西緣，東側接著翡翠苔枝口，南面傳來高枝鳥鳴。鳥巢與護藤把外側完全封住，這裡只作為採集與邊界提示，不能穿出翡翠樹冠。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -1169,9 +1170,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n25_11": {
     "id": "emerald_canopy_fill_n25_11",
-    "name": "樹冠通道",
+    "name": "西南空枝臺",
     "zone": "emerald_canopy",
-    "description": "翠綠光線穿透樹冠灑在林間小路上。",
+    "description": "西南空枝臺伸向樹冠邊界，北側高枝逐漸稀疏，東面可望見雨水落入下層葉海。外側沒有棧板，藤索也被收起，這格是封閉 border blocker，只保留採集葉痕與高度警示，不安排路線出口。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -1181,9 +1182,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n26_10": {
     "id": "emerald_canopy_fill_n26_10",
-    "name": "樹冠通道",
+    "name": "西界風孔枝",
     "zone": "emerald_canopy",
-    "description": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+    "description": "西界風孔枝貼著翡翠樹冠最外圈，南側風洞把葉片吹得翻白，東面能看見安全主枝道。這裡是西側封閉邊界，枝面濕滑且只留下採集標記，不應作為通行路線，也沒有下層踏點。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1193,9 +1194,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "emerald_canopy_fill_n26_8": {
     "id": "emerald_canopy_fill_n26_8",
-    "name": "高枝走道",
+    "name": "西北葉幕欄",
     "zone": "emerald_canopy",
-    "description": "翠綠光線穿透樹冠灑在林間小路上。",
+    "description": "西北葉幕欄被大片亮葉遮成綠色牆面，南側可望見西界風孔枝，東面高處傳來鳥民哨音。葉幕後方是空落枝縫，這格作為封閉 border blocker，提醒玩家回到內側路線，避免誤入斷枝。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,

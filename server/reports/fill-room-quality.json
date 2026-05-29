@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T19:46:51.276Z",
+  "generatedAt": "2026-05-29T19:48:43.360Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 901,
-    "errors": 608,
-    "warnings": 293,
+    "issues": 851,
+    "errors": 577,
+    "warnings": 274,
     "byGrade": {
       "A_main_transition": 50,
       "B_connector": 19,
@@ -16,23 +16,23 @@
     },
     "byPurpose": {
       "blocker": 216,
-      "border": 192,
+      "border": 197,
       "gathering": 131,
       "monster": 30,
       "npc_or_quest": 14,
       "portal": 7,
       "route": 73,
-      "service": 27
+      "service": 28
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 29,
-      "description.direction": 182,
-      "description.length": 282,
-      "description.purpose": 80,
-      "description.repeated_opening": 184,
-      "description.terrain": 34,
+      "description.direction": 171,
+      "description.length": 271,
+      "description.purpose": 72,
+      "description.repeated_opening": 173,
+      "description.terrain": 26,
       "exit.description.length": 42,
-      "exit.description.missing": 68
+      "exit.description.missing": 67
     }
   },
   "zones": [
@@ -4829,7 +4829,7 @@
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
       "fillRooms": 12,
-      "issues": 50,
+      "issues": 0,
       "records": [
         {
           "id": "emerald_canopy_cloudroot_bridge",
@@ -4877,7 +4877,7 @@
         {
           "id": "emerald_canopy_fill_n18_7",
           "zone": "emerald_canopy",
-          "name": "翠綠樹道",
+          "name": "琥珀接枝平台",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -4905,76 +4905,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 73,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->amber_forest_resin_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "emerald_canopy_fill_n18_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n19_7",
           "zone": "emerald_canopy",
-          "name": "高枝走道",
+          "name": "北冠斷枝欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -19,
@@ -4997,67 +4941,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n19_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n19_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n19_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n19_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n19_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n20_7",
           "zone": "emerald_canopy",
-          "name": "翡翠林小路",
+          "name": "霧葉封索道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -20,
@@ -5080,67 +4977,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n20_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n20_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n20_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n20_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n20_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n21_10",
           "zone": "emerald_canopy",
-          "name": "翡翠林小路",
+          "name": "南露藤欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -21,
@@ -5163,64 +5013,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n21_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_10",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_10",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n21_7",
           "zone": "emerald_canopy",
-          "name": "樹冠通道",
+          "name": "北風枝籬",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -5246,67 +5048,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n21_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n21_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n22_7",
           "zone": "emerald_canopy",
-          "name": "翠綠樹道",
+          "name": "翡翠苔枝口",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -22,
@@ -5328,70 +5083,23 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n22_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n22_8",
           "zone": "emerald_canopy",
-          "name": "高枝走道",
+          "name": "中層葉棚封口",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "gathering",
+            "service"
           ],
           "worldX": -22,
           "worldY": 8,
@@ -5412,49 +5120,22 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n22_8",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 55,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_8",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 15,
-              "minimum": 55,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n22_8",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n23_7",
           "zone": "emerald_canopy",
-          "name": "高枝走道",
+          "name": "西冠鳥巢欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -23,
@@ -5478,64 +5159,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n23_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n23_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n23_7",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n23_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n23_7",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n25_11",
           "zone": "emerald_canopy",
-          "name": "樹冠通道",
+          "name": "西南空枝臺",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -5563,44 +5196,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n25_11",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 65,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n25_11",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 15,
-              "minimum": 65,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n25_11",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n26_10",
           "zone": "emerald_canopy",
-          "name": "樹冠通道",
+          "name": "西界風孔枝",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -5629,64 +5234,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n26_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_10",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_10",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 65,
-              "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_10",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "emerald_canopy_fill_n26_8",
           "zone": "emerald_canopy",
-          "name": "高枝走道",
+          "name": "西北葉幕欄",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -5715,39 +5272,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "emerald_canopy_fill_n26_8",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 65,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_8",
-              "zone": "emerald_canopy",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 15,
-              "minimum": 65,
-              "text": "翠綠光線穿透樹冠灑在林間小路上。"
-            },
-            {
-              "id": "emerald_canopy_fill_n26_8",
-              "zone": "emerald_canopy",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -22825,395 +22354,6 @@
       "minimum": 12
     },
     {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->amber_forest_resin_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "emerald_canopy_fill_n19_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n19_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n19_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n19_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n20_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n20_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n20_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n20_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_10",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_8",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 55,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_8",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 15,
-      "minimum": 55,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
-      "id": "emerald_canopy_fill_n23_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n23_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n23_7",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n23_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n25_11",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 65,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
-      "id": "emerald_canopy_fill_n25_11",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 15,
-      "minimum": 65,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_10",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_10",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 65,
-      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_8",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 65,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_8",
-      "zone": "emerald_canopy",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 15,
-      "minimum": 65,
-      "text": "翠綠光線穿透樹冠灑在林間小路上。"
-    },
-    {
       "id": "frostbite_frozen_divide",
       "zone": "frostbite_pass",
       "severity": "error",
@@ -28800,83 +27940,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n18_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n19_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n20_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_10",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n21_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n23_7",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_10",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 8 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n22_8",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n25_11",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "emerald_canopy_fill_n26_8",
-      "zone": "emerald_canopy",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "frostbite_pass_fill_n19_n12",
