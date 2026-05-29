@@ -5377,6 +5377,10 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'thundersteppe_wind_shrine:west': '西側順著祭旗風聲下到晶砂草坡，接往風祭草坡',
   'storm_highlands_cliff_gate:west': '西側穿過峭壁門碎石階與冰風缺口，接往霜咬隘口南側雪岩路',
   'storm_highlands_rain_shelf:west': '西側沿雨棚岩臺與濕滑雲階下行，接往霜咬隘口北側冰雨坡',
+  'pilgrim_road_smuggler_cache:north': '北側穿過走私者藏貨石縫與草坡車轍，接往平原南緣舊車道',
+  'pilgrim_road_bandit_watch:north': '北側越過盜匪哨位破旗與乾草丘，接往平原南側警戒草線',
+  'pilgrim_road_old_cemetery_turn:east': '東側沿舊墓園白石路轉入湖霧，接往藍寶湖入口宣示石',
+  'pilgrim_road_final_marker:east': '東側穿過終點聖碑旁碎石路與濕草坡，接往藍寶湖鵝卵石堰',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

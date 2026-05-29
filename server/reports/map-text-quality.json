@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:36:28.554Z",
+  "generatedAt": "2026-05-29T21:37:36.756Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,10 +366,10 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 53
+    "issues": 49
   },
   "issuesByKind": {
-    "exit.description": 33,
+    "exit.description": 29,
     "room.description": 20
   },
   "issues": [
@@ -528,42 +528,6 @@
     },
     {
       "id": "deepsea_temple/deepsea_temple_tide_gate:west->bloodsalt_coast_fill_47_9",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_smuggler_cache:north->plains_fill_11_5",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_bandit_watch:north->plains_fill_12_5",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_old_cemetery_turn:east->sapphire_lake_entry_claim",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_final_marker:east->sapphire_lake_pebble_weir",
       "kind": "exit.description",
       "field": "description",
       "currentLength": 0,

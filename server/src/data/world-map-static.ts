@@ -2830,7 +2830,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "pilgrim_road_fill_13_9",
     "name": "藍寶湖西燈標古道",
     "zone": "pilgrim_road",
-    "description": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
+    "description": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著乾糧包、破水囊與白石灰粉袋，可採少量旅人補給；往東會從乾石路轉入湖岸棧道。",
     "exits": [
       {
         "direction": "east",
