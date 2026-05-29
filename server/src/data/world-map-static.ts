@@ -3667,7 +3667,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "serpent_delta_fill_36_17",
     "name": "月釣東側斷棧",
     "zone": "serpent_delta",
-    "description": "月釣東側斷棧位在月光釣棚東邊，西面魚燈仍映在水面，南側多口匯流處傳來水流碰撞聲。棧板在這裡被洪水扯斷，只作純 blocker 與地形邊界，提醒玩家不要把釣棚路線誤認為可向東延伸。",
+    "description": "月釣東側斷棧橋位在月光釣棚東邊，西面魚燈仍映在水面，南側多口匯流處傳來水流碰撞聲。木棧橋在這裡被洪水扯斷，只作純 blocker 與地形邊界，提醒玩家不要把釣棚路線誤認為可向東延伸。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,

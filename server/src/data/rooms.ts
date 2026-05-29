@@ -5367,6 +5367,11 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'royal_hunting_grounds_deer_run:west': '西側沿鹿徑草坡與巡邏繩標下行，接往王國邊境巡邏路',
   'royal_hunting_grounds_silver_trail:west': '西側踏過銀草獵徑與邊牆陰影，接往王國邊境前線小路',
   'royal_hunting_grounds_old_oak_stand:west': '西側繞過老橡樹根與獵場木牌，接往王國邊境邊牆走道',
+  'serpent_delta_entrance_ferry:north': '北側沿渡船索樁踏上鹽霧泥灘，接往北河鹽霧渡口',
+  'serpent_delta_entrance_ferry:west': '西側穿過入口渡口舊木樁與黑水蘆影，接往鏡沼東側泥水邊界',
+  'serpent_delta_split_reed_bank:north': '北側沿分流蘆根泥徑上行，接往北分流草蘆岸',
+  'serpent_delta_mudfish_pool:north': '北側踩過泥魚翻出的淺灘泥脊，接往北泥魚淺灘',
+  'serpent_delta_heron_marker:west': '西側越過鷺鳥木牌與冷色蘆門水痕，接往鏡沼東南泥炭水道',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

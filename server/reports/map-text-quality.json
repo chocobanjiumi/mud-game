@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:31:39.050Z",
+  "generatedAt": "2026-05-29T21:33:05.608Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 69
+    "issues": 63
   },
   "issuesByKind": {
-    "exit.description": 43,
-    "room.description": 26
+    "exit.description": 38,
+    "room.description": 25
   },
   "issues": [
     {
@@ -716,51 +716,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "serpent_delta/serpent_delta_entrance_ferry:north->serpent_delta_fill_31_13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "serpent_delta/serpent_delta_entrance_ferry:west->marsh_of_mirrors_fill_30_14",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "serpent_delta/serpent_delta_split_reed_bank:north->serpent_delta_fill_32_13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "serpent_delta/serpent_delta_mudfish_pool:north->serpent_delta_fill_33_13",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "serpent_delta/serpent_delta_heron_marker:west->marsh_of_mirrors_fill_30_16",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
       "id": "amber_forest/amber_forest_fill_n11_8",
       "kind": "room.description",
       "field": "description",
@@ -903,15 +858,6 @@
       "minimumLength": 55,
       "text": "潮望遺跡北熱沙封位在潮望遺跡北側，南面斷牆被鹽霧磨白，西邊海蛇軌跡壓出長長凹線。熱氣從濕沙下蒸騰，這裡是純 blocker，阻止玩家從遺跡背面繞行。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "serpent_delta/serpent_delta_fill_36_17",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 74,
-      "minimumLength": 55,
-      "text": "月釣東側斷棧位在月光釣棚東邊，西面魚燈仍映在水面，南側多口匯流處傳來水流碰撞聲。棧板在這裡被洪水扯斷，只作純 blocker 與地形邊界，提醒玩家不要把釣棚路線誤認為可向東延伸。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
     },
     {
       "id": "silverpine_range/silverpine_range_fill_n8_n8",
