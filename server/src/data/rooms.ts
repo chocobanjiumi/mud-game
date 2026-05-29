@@ -1965,7 +1965,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '高大風車立在金黃麥田中央，木葉片推動齒輪發出低沉咔嗒聲，麥穗在夕光裡像潮水一樣搖晃。西路回到平原入口，南門通向風車內部，東邊生鏽礦車道消失在草丘後。柵欄旁有被撬開的穀倉鎖與凌亂腳印，農夫低聲抱怨盜賊夜裡出沒，提示這裡兼具補給、資源與小規模戰鬥事件。',
     exits: [
       { direction: 'west', targetRoomId: 'plains_entrance', description: '回到平原入口' },
-      { direction: 'south', targetRoomId: 'windmill_interior', description: '走進風車內部' },
+      { direction: 'north', targetRoomId: 'hunter_lodge', description: '北側獵人小屋通往風車內部' },
       { direction: 'east', targetRoomId: 'abandoned_minecart', description: '農場東邊有廢棄的礦車道' },
     ],
     monsters: [

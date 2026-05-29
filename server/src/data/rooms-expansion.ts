@@ -47,7 +47,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '原木小屋立在向日葵田北緣，門口掛著風乾獸皮、鹿角與狼牙串，壁爐橙光從窗縫灑到門廊。南方回到花田，西側隱蔽小路能通往森林高處，木牆上釘著野狼腳印拓片與箭矢記號。老獵人坐在階梯上擦拭弓弦，獵犬偶爾朝草叢低吼，提示這裡可接狩獵任務、購買補給或詢問狼群線索。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'south', targetRoomId: 'sunflower_field', description: '回到向日葵田' },
+      { direction: 'north', targetRoomId: 'windmill_interior', description: '北側風車側門進入風車內部' },
+      { direction: 'south', targetRoomId: 'windmill_farm', description: '南側麥田小路回到風車農場' },
       {
         direction: 'west',
         targetRoomId: 'ancient_treehouse',
@@ -137,7 +138,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝。',
     exits: [
       { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'long_path', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'windmill_farm', description: '從側門走向風車農場' },
+      { direction: 'south', targetRoomId: 'hunter_lodge', description: '南側獵人小屋通往風車農場' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },

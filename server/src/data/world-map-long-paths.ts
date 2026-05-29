@@ -626,11 +626,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "class_change_hall"
   ],
   [
-    "hunter_lodge",
-    "south",
-    "sunflower_field"
-  ],
-  [
     "ice_castle_gate",
     "north",
     "ice_throne"
@@ -2004,16 +1999,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "wildgrass_hills_windmill_shell",
     "south",
     "wildgrass_hills_goblin_blind"
-  ],
-  [
-    "windmill_farm",
-    "south",
-    "windmill_interior"
-  ],
-  [
-    "windmill_interior",
-    "north",
-    "windmill_farm"
   ],
   [
     "wolf_den",

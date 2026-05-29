@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:23:30.205Z",
+  "generatedAt": "2026-05-29T19:25:22.115Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2269,7 +2269,6 @@
     "starter_village_rooftop_walk:north->starter_village_stable_yard (long_path) 屋頂棧道到馬廄院需沿木階穿過車輪架與乾草棚，實際路程長於相鄰一格。",
     "plains_entrance:north->village_gate (long_path) 平原入口回村口需穿過草坡泥路與安全哨線，實際路程長於相鄰一格。",
     "plains_entrance:west->sunflower_field (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "windmill_farm:south->windmill_interior (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "crossroads:south->forest_entrance (long_path) 十字路口到暗影森林入口跨越平原邊界與陰影樹門，實際路程長於相鄰一格。",
     "crossroads:east->town_gate (long_path) 十字路口到湖畔城門跨越城外道路與外牆緩坡，實際路程長於相鄰一格。",
     "old_well:west->cave_entrance (long_path) 古井旁到洞窟入口需沿井壁裂縫垂降並穿過藍晶岩縫，實際路程長於相鄰一格。",
@@ -2379,13 +2378,11 @@
     "sunflower_field:east->plains_entrance (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sunflower_field:north->hunter_lodge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "sunflower_field:south->riverside_fishing (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "hunter_lodge:south->sunflower_field (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "hunter_lodge:west->ancient_treehouse (long_path) 獵人小屋到古老樹屋需穿過林緣獵徑並攀上樹冠繩橋，實際路程長於相鄰一格。",
     "abandoned_minecart:south->cave_entrance (long_path) 廢棄礦車道到洞窟入口需沿礦車斜井與塌方彎道下降，實際路程長於相鄰一格。",
     "riverside_fishing:north->sunflower_field (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "riverside_fishing:east->windmill_interior (long_path) 河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。",
     "windmill_interior:west->riverside_fishing (long_path) 風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。",
-    "windmill_interior:north->windmill_farm (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "plains_hare_burrows:east->plains_entrance (long_path) 野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。",
     "plains_wolf_tracks:east->grass_path (long_path) 狼跡草坡到草原小徑需要沿狼爪印、倒伏高草與破木欄繞行，屬於平原內長路徑。",
     "plains_bandit_hideout:north->abandoned_minecart (long_path) 盜賊藏身處到廢棄礦車道需要沿矮丘、車轍斜坡與碎石軌道繞行，屬於平原內長路徑。",
