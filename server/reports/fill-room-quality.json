@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T19:52:55.447Z",
+  "generatedAt": "2026-05-29T19:56:32.412Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 802,
-    "errors": 544,
-    "warnings": 258,
+    "issues": 755,
+    "errors": 518,
+    "warnings": 237,
     "byGrade": {
       "A_main_transition": 49,
       "B_connector": 19,
@@ -15,24 +15,24 @@
       "D_upgrade_candidate": 170
     },
     "byPurpose": {
-      "blocker": 219,
-      "border": 206,
+      "blocker": 221,
+      "border": 205,
       "gathering": 135,
       "monster": 30,
       "npc_or_quest": 15,
       "portal": 7,
-      "route": 72,
+      "route": 71,
       "service": 28
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 26,
-      "description.direction": 164,
-      "description.length": 256,
-      "description.purpose": 69,
-      "description.repeated_opening": 163,
+      "dead_end.no_gameplay": 24,
+      "description.direction": 159,
+      "description.length": 237,
+      "description.purpose": 60,
+      "description.repeated_opening": 153,
       "description.terrain": 22,
       "exit.description.length": 42,
-      "exit.description.missing": 60
+      "exit.description.missing": 58
     }
   },
   "zones": [
@@ -6072,7 +6072,7 @@
       "zoneId": "glass_dunes",
       "zoneName": "琉璃沙丘",
       "fillRooms": 20,
-      "issues": 47,
+      "issues": 0,
       "records": [
         {
           "id": "glass_dunes_fill_0_20",
@@ -6080,7 +6080,7 @@
           "name": "西緣砂路",
           "grade": "C_empty_filler",
           "purposes": [
-            "route"
+            "blocker"
           ],
           "worldX": 0,
           "worldY": 20,
@@ -6088,7 +6088,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "east": "glass_dunes_buried_caravan"
+              "east": "glass_dunes_buried_caravan",
+              "west": ""
             },
             "byCoordinate": {
               "south": "glass_dunes_fill_0_21",
@@ -6096,46 +6097,19 @@
             }
           },
           "crossZoneBoundary": false,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
-          "hasLockedExit": false,
-          "descriptionLength": 45,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_0_20",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 45,
-              "minimum": 55,
-              "text": "西緣砂路夾在紅岩乾谷與琉璃沙丘之間，赤色石粉逐漸被透明砂粒取代，東側半埋商隊的旗桿在熱浪中晃動。"
-            },
-            {
-              "id": "glass_dunes_fill_0_20",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "glass_dunes_fill_0_20",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->glass_dunes_buried_caravan 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 66,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_0_21",
@@ -6143,6 +6117,7 @@
           "name": "日照西門",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 0,
@@ -6151,7 +6126,8 @@
           "mapY": 3,
           "neighbors": {
             "byExit": {
-              "east": "glass_dunes_sun_gate"
+              "east": "glass_dunes_sun_gate",
+              "west": ""
             },
             "byCoordinate": {
               "north": "glass_dunes_fill_0_20",
@@ -6167,39 +6143,12 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 42,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_0_21",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 42,
-              "minimum": 65,
-              "text": "日照西門是一段被玻砂覆住的邊界路，西側仍有紅岩荒地的乾熱氣味，東側日照玻門反射出刺眼白光。"
-            },
-            {
-              "id": "glass_dunes_fill_0_21",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "glass_dunes_fill_0_21",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->glass_dunes_sun_gate 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 69,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_1_18",
@@ -6232,37 +6181,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 47,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_1_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 47,
-              "minimum": 65,
-              "text": "琉璃沙丘北緣的晶砂貼著要塞南方展開，碎玻砂在風裡發亮，南面可接入更深沙丘，北側仍能看見鐵木要塞的牆影。"
-            },
-            {
-              "id": "glass_dunes_fill_1_18",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 47,
-              "minimum": 65,
-              "text": "琉璃沙丘北緣的晶砂貼著要塞南方展開，碎玻砂在風裡發亮，南面可接入更深沙丘，北側仍能看見鐵木要塞的牆影。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_1_19",
           "zone": "glass_dunes",
-          "name": "沙海邊緣",
+          "name": "西北凝砂封坡",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -6289,54 +6217,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_1_19",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_19",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_19",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_19",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_1_22",
           "zone": "glass_dunes",
-          "name": "玻璃砂路",
+          "name": "西南玻浪牆",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -6363,49 +6253,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_1_22",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_22",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_22",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 65,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_1_22",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_2_18",
@@ -6436,41 +6288,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 43,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_2_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 43,
-              "minimum": 55,
-              "text": "玻砂北徑沿著乾熱風線延伸，腳下砂粒像碎鏡一樣磨響，南側沙丘開始升高，北面要塞石牆只剩低沉輪廓。"
-            },
-            {
-              "id": "glass_dunes_fill_2_18",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 43,
-              "minimum": 55,
-              "text": "玻砂北徑沿著乾熱風線延伸，腳下砂粒像碎鏡一樣磨響，南側沙丘開始升高，北面要塞石牆只剩低沉輪廓。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_2_23",
           "zone": "glass_dunes",
-          "name": "玻璃砂路",
+          "name": "西南砂殼封口",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker",
-            "border"
+            "blocker"
           ],
           "worldX": 2,
           "worldY": 23,
@@ -6492,29 +6322,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_2_23",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_2_23",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_3_18",
@@ -6545,32 +6357,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 41,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_3_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 41,
-              "minimum": 55,
-              "text": "熱風砂脊把北方硬土切成透明砂線，東西兩側都有晶砂起伏，往南能看見琉璃沙丘內部的白亮反光。"
-            },
-            {
-              "id": "glass_dunes_fill_3_18",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 41,
-              "minimum": 55,
-              "text": "熱風砂脊把北方硬土切成透明砂線，東西兩側都有晶砂起伏，往南能看見琉璃沙丘內部的白亮反光。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_3_19",
@@ -6614,7 +6405,7 @@
         {
           "id": "glass_dunes_fill_3_23",
           "zone": "glass_dunes",
-          "name": "沙丘通道",
+          "name": "南風沙脊欄",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -6641,29 +6432,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_3_23",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_3_23",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_4_18",
@@ -6671,7 +6444,8 @@
           "name": "折光砂道",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 4,
           "worldY": 18,
@@ -6694,41 +6468,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 43,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_4_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 43,
-              "minimum": 55,
-              "text": "折光砂道在北緣形成一排低矮玻丘，陽光被砂面切成細碎白線，南側沙海更亮，北方要塞聲音被熱浪吞沒。"
-            },
-            {
-              "id": "glass_dunes_fill_4_18",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 43,
-              "minimum": 55,
-              "text": "折光砂道在北緣形成一排低矮玻丘，陽光被砂面切成細碎白線，南側沙海更亮，北方要塞聲音被熱浪吞沒。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_4_23",
           "zone": "glass_dunes",
-          "name": "晶砂小徑",
+          "name": "南晶砂採痕",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border",
             "gathering"
           ],
           "worldX": 4,
@@ -6753,34 +6505,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_4_23",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_4_23",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_4_24",
           "zone": "glass_dunes",
-          "name": "沙丘通道",
+          "name": "南側七彩砂壁",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -6804,32 +6538,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 27,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_4_24",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 27,
-              "minimum": 55,
-              "text": "琉璃沙丘間的通道，腳下的玻璃化砂粒在陽光下折射出七彩光芒。"
-            },
-            {
-              "id": "glass_dunes_fill_4_24",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 27,
-              "minimum": 55,
-              "text": "琉璃沙丘間的通道，腳下的玻璃化砂粒在陽光下折射出七彩光芒。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_5_18",
@@ -6861,41 +6574,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 42,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_5_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 42,
-              "minimum": 55,
-              "text": "鏡砂邊坡貼著沙丘北側展開，玻化砂殼在靴下碎裂，往南能接入高熱沙脊，東西兩側都有稀薄的折射光。"
-            },
-            {
-              "id": "glass_dunes_fill_5_18",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 42,
-              "minimum": 55,
-              "text": "鏡砂邊坡貼著沙丘北側展開，玻化砂殼在靴下碎裂，往南能接入高熱沙脊，東西兩側都有稀薄的折射光。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_5_19",
           "zone": "glass_dunes",
-          "name": "沙海邊緣",
+          "name": "北中玻砂封坡",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker",
-            "border"
+            "blocker"
           ],
           "worldX": 5,
           "worldY": 19,
@@ -6918,54 +6609,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_5_19",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_5_19",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_5_19",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_5_19",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_5_23",
           "zone": "glass_dunes",
-          "name": "沙海邊緣",
+          "name": "南緣碎浪坡",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -6992,29 +6645,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_5_23",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_5_23",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_6_18",
@@ -7044,27 +6679,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 41,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_6_18",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 41,
-              "minimum": 55,
-              "text": "北砂亮線在琉璃沙丘邊界拉出一道白色反光，南面沙丘像凝固浪脊，西側仍有要塞邊地的灰塵殘留。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_6_23",
           "zone": "glass_dunes",
-          "name": "玻璃砂路",
+          "name": "東南玻砂欄",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7090,34 +6714,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_6_23",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_6_23",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_7_20",
           "zone": "glass_dunes",
-          "name": "玻璃砂路",
+          "name": "東側日焰封線",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -7143,37 +6749,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_7_20",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-            },
-            {
-              "id": "glass_dunes_fill_7_20",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "glass_dunes_fill_7_22",
           "zone": "glass_dunes",
-          "name": "晶砂小徑",
+          "name": "東南晶裂採坑",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": 7,
@@ -7196,49 +6785,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "glass_dunes_fill_7_22",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_7_22",
-              "zone": "glass_dunes",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_7_22",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 55,
-              "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-            },
-            {
-              "id": "glass_dunes_fill_7_22",
-              "zone": "glass_dunes",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -22145,368 +21696,6 @@
       "text": "冰封荒原上的凍結通道，刺骨的寒風能凍裂鎧甲。"
     },
     {
-      "id": "glass_dunes_fill_0_20",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 45,
-      "minimum": 55,
-      "text": "西緣砂路夾在紅岩乾谷與琉璃沙丘之間，赤色石粉逐漸被透明砂粒取代，東側半埋商隊的旗桿在熱浪中晃動。"
-    },
-    {
-      "id": "glass_dunes_fill_0_20",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "glass_dunes_fill_0_20",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->glass_dunes_buried_caravan 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "glass_dunes_fill_0_21",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 42,
-      "minimum": 65,
-      "text": "日照西門是一段被玻砂覆住的邊界路，西側仍有紅岩荒地的乾熱氣味，東側日照玻門反射出刺眼白光。"
-    },
-    {
-      "id": "glass_dunes_fill_0_21",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "glass_dunes_fill_0_21",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->glass_dunes_sun_gate 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "glass_dunes_fill_1_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 47,
-      "minimum": 65,
-      "text": "琉璃沙丘北緣的晶砂貼著要塞南方展開，碎玻砂在風裡發亮，南面可接入更深沙丘，北側仍能看見鐵木要塞的牆影。"
-    },
-    {
-      "id": "glass_dunes_fill_1_18",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 47,
-      "minimum": 65,
-      "text": "琉璃沙丘北緣的晶砂貼著要塞南方展開，碎玻砂在風裡發亮，南面可接入更深沙丘，北側仍能看見鐵木要塞的牆影。"
-    },
-    {
-      "id": "glass_dunes_fill_1_19",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_1_19",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_1_19",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_1_22",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_1_22",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_1_22",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 65,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_2_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 43,
-      "minimum": 55,
-      "text": "玻砂北徑沿著乾熱風線延伸，腳下砂粒像碎鏡一樣磨響，南側沙丘開始升高，北面要塞石牆只剩低沉輪廓。"
-    },
-    {
-      "id": "glass_dunes_fill_2_18",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 43,
-      "minimum": 55,
-      "text": "玻砂北徑沿著乾熱風線延伸，腳下砂粒像碎鏡一樣磨響，南側沙丘開始升高，北面要塞石牆只剩低沉輪廓。"
-    },
-    {
-      "id": "glass_dunes_fill_2_23",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_3_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 41,
-      "minimum": 55,
-      "text": "熱風砂脊把北方硬土切成透明砂線，東西兩側都有晶砂起伏，往南能看見琉璃沙丘內部的白亮反光。"
-    },
-    {
-      "id": "glass_dunes_fill_3_18",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 41,
-      "minimum": 55,
-      "text": "熱風砂脊把北方硬土切成透明砂線，東西兩側都有晶砂起伏，往南能看見琉璃沙丘內部的白亮反光。"
-    },
-    {
-      "id": "glass_dunes_fill_3_23",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_4_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 43,
-      "minimum": 55,
-      "text": "折光砂道在北緣形成一排低矮玻丘，陽光被砂面切成細碎白線，南側沙海更亮，北方要塞聲音被熱浪吞沒。"
-    },
-    {
-      "id": "glass_dunes_fill_4_18",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 43,
-      "minimum": 55,
-      "text": "折光砂道在北緣形成一排低矮玻丘，陽光被砂面切成細碎白線，南側沙海更亮，北方要塞聲音被熱浪吞沒。"
-    },
-    {
-      "id": "glass_dunes_fill_4_23",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_4_24",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 27,
-      "minimum": 55,
-      "text": "琉璃沙丘間的通道，腳下的玻璃化砂粒在陽光下折射出七彩光芒。"
-    },
-    {
-      "id": "glass_dunes_fill_4_24",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 27,
-      "minimum": 55,
-      "text": "琉璃沙丘間的通道，腳下的玻璃化砂粒在陽光下折射出七彩光芒。"
-    },
-    {
-      "id": "glass_dunes_fill_5_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 42,
-      "minimum": 55,
-      "text": "鏡砂邊坡貼著沙丘北側展開，玻化砂殼在靴下碎裂，往南能接入高熱沙脊，東西兩側都有稀薄的折射光。"
-    },
-    {
-      "id": "glass_dunes_fill_5_18",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 42,
-      "minimum": 55,
-      "text": "鏡砂邊坡貼著沙丘北側展開，玻化砂殼在靴下碎裂，往南能接入高熱沙脊，東西兩側都有稀薄的折射光。"
-    },
-    {
-      "id": "glass_dunes_fill_5_19",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_5_19",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_5_19",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_5_23",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_6_18",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 41,
-      "minimum": 55,
-      "text": "北砂亮線在琉璃沙丘邊界拉出一道白色反光，南面沙丘像凝固浪脊，西側仍有要塞邊地的灰塵殘留。"
-    },
-    {
-      "id": "glass_dunes_fill_6_23",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_7_20",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。"
-    },
-    {
-      "id": "glass_dunes_fill_7_22",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_7_22",
-      "zone": "glass_dunes",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
-      "id": "glass_dunes_fill_7_22",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 55,
-      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。"
-    },
-    {
       "id": "ironwood_fort_fill_0_12",
       "zone": "ironwood_fort",
       "severity": "error",
@@ -27146,76 +26335,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_1_19",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_1_22",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_5_19",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_7_22",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_2_23",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_3_23",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_4_23",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_5_23",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_6_23",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "glass_dunes_fill_7_20",
-      "zone": "glass_dunes",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "ironwood_fort_fill_0_12",
