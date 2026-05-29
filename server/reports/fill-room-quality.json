@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:45:18.356Z",
+  "generatedAt": "2026-05-29T21:46:47.187Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
@@ -13078,7 +13078,7 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 69,
+          "descriptionLength": 84,
           "exitCount": 2,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
@@ -13115,7 +13115,7 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 71,
+          "descriptionLength": 85,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,

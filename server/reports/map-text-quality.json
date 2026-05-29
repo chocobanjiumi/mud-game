@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:45:06.490Z",
+  "generatedAt": "2026-05-29T21:46:34.265Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 29
+    "issues": 26
   },
   "issuesByKind": {
-    "exit.description": 15,
-    "room.description": 14
+    "exit.description": 14,
+    "room.description": 12
   },
   "issues": [
     {
@@ -384,15 +384,6 @@
     },
     {
       "id": "dark_forest/firefly_trail:north->whispering_valley_fill_n7_11",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "wildgrass_hills/wildgrass_hills_old_road_cut:west->silverpine_range_fill_0_n12",
       "kind": "exit.description",
       "field": "description",
       "currentLength": 0,
@@ -615,24 +606,6 @@
       "minimumLength": 55,
       "text": "西南松徑補給欄位於獵場北界雪柵上方，南側雪柵標示邊界，東面松圃南封坡旁有舊補給繩樁。欄內放著採集用麻袋，但道路被雪樁擋住，是 service gathering blocker。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "wildgrass_hills/wildgrass_hills_fill_5_n8",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 80,
-      "text": "風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "wildgrass_hills/wildgrass_hills_fill_6_n9",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 71,
-      "minimumLength": 80,
-      "text": "風車南採草坡位在破風車殼下方，北面能看見殘葉輪，南側接近風暴草冠，西邊則有首領脊線作為明顯地標。坡上散著可採的風鳴草與乾籽穗，但草根糾結封住外側，只作採集 blocker。",
-      "reason": "room 描述字數不足或過於泛用"
     }
   ]
 }

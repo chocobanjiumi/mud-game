@@ -4573,7 +4573,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "wildgrass_hills_fill_5_n8",
     "name": "風冠西坡小徑",
     "zone": "wildgrass_hills",
-    "description": "風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。",
+    "description": "風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。低草土階與倒旗石牌標出安全路面，這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。",
     "exits": [
       {
         "direction": "west",
@@ -4596,7 +4596,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "wildgrass_hills_fill_6_n9",
     "name": "風車南採草坡",
     "zone": "wildgrass_hills",
-    "description": "風車南採草坡位在破風車殼下方，北面能看見殘葉輪，南側接近風暴草冠，西邊則有首領脊線作為明顯地標。坡上散著可採的風鳴草與乾籽穗，但草根糾結封住外側，只作採集 blocker。",
+    "description": "風車南採草坡位在破風車殼下方，北面能看見殘葉輪，南側接近風暴草冠，西邊則有首領脊線作為明顯地標。坡上散著可採的風鳴草、乾籽穗與斷裂草繩，採集點集中在木樁旁；外側草根糾結封住坡線，只作採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
