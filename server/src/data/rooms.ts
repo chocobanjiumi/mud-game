@@ -5386,6 +5386,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'volcano_ash_field:north': '北側沿白色蒸氣與硬殼熱灰坡上行，接往北灰坡路線端',
   'volcano_ash_field:west': '西側穿過黑灰丘與熱風灰線，接往餘燼邊境火山灰田西界',
   'volcano_sulfur_springs:west': '西側越過硫磺白霧與發熱礫石，接往餘燼邊境硫泉西界燼路',
+  'lakeside_tailor:south': '南側從裁縫坊湖窗旁石階下行，穿過卵石水氣接往藍寶湖鵝卵石堰',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
