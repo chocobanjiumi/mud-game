@@ -4304,9 +4304,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n3_8": {
     "id": "whispering_valley_fill_n3_8",
-    "name": "低語小徑",
+    "name": "舊祠南霧池封徑",
     "zone": "whispering_valley",
-    "description": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+    "description": "舊祠南霧池封徑位在舊祠南側，北面祠柱被苔痕覆住，西邊霧池白氣沿蘆葦根滑來。濕泥把石板吞成斷面，是 border blocker，用來封住舊祠與霧池之間的外側谷底。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -4316,9 +4316,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n4_6": {
     "id": "whispering_valley_fill_n4_6",
-    "name": "蘆葦路",
+    "name": "冷泉南石板封",
     "zone": "whispering_valley",
-    "description": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+    "description": "冷泉南石板封位在冷泉南側，北面泉水沿石縫結成薄霜，東邊柳樹營地掛著低垂布條，西側釣彎水聲貼著谷壁迴盪。這裡是純 blocker，濕滑石板被倒柳根截斷。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4328,9 +4328,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n4_7": {
     "id": "whispering_valley_fill_n4_7",
-    "name": "低語小徑",
+    "name": "霧池北蘆根封地",
     "zone": "whispering_valley",
-    "description": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
+    "description": "霧池北蘆根封地夾在冷泉南石板封與霧池之間，東側舊祠低牆露出青苔，西邊藥草坡有採集繩樁。蘆根糾結成濕泥牆，是 blocker 邊界，提醒玩家沿正式谷道繞行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4340,9 +4340,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n4_9": {
     "id": "whispering_valley_fill_n4_9",
-    "name": "谷底通道",
+    "name": "霧池南冰蕨封石",
     "zone": "whispering_valley",
-    "description": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+    "description": "霧池南冰蕨封石位在霧池南側，北面霧水不斷漫上石板，西側冰蕨叢發出冷白光。谷底石路在這裡被濕滑苔面截斷，是純 blocker，不作南向通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4352,9 +4352,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n5_11": {
     "id": "whispering_valley_fill_n5_11",
-    "name": "溪谷小路",
+    "name": "古樹屋北瀑蘆界",
     "zone": "whispering_valley",
-    "description": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+    "description": "古樹屋北瀑蘆界位在低語溪谷南緣，北面隱瀑水聲落進霧裡，南方古樹屋的樹根探入谷底，西側低語裂隙傳來空洞回音。這裡是邊界採集 blocker，蘆根可採集，但不開往樹屋捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -4364,9 +4364,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n6_10": {
     "id": "whispering_valley_fill_n6_10",
-    "name": "溪谷小路",
+    "name": "裂隙北瀑霧封",
     "zone": "whispering_valley",
-    "description": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
+    "description": "裂隙北瀑霧封位在低語裂隙北側，北面瀑布底部水聲壓過風語，東側隱瀑白霧沿石壁滑下。這裡是採集 blocker，濕石邊可採霧苔與冷蕨，但裂縫阻止繼續穿越。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4376,13 +4376,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "whispering_valley_fill_n7_11": {
     "id": "whispering_valley_fill_n7_11",
-    "name": "蘆葦路",
+    "name": "螢火小徑北蘆草界",
     "zone": "whispering_valley",
-    "description": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+    "description": "螢火小徑北蘆草界位在低語溪谷西南緣，東面低語裂隙仍有回聲，南方螢火小徑閃著細小綠光。蘆葦草根把谷底泥道收成單線，這裡是跨區邊界採集路線端點，專門銜接溪谷與螢火路。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "firefly_trail"
+        "targetRoomId": "firefly_trail",
+        "description": "沿螢光與蘆葦草倒伏痕穿過南緣泥道，進入螢火小徑。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4405,7 +4406,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
       {
         "direction": "south",
         "targetRoomId": "whispering_valley_fill_n7_7",
-        "description": "南側低谷小徑接往蘆葦路"
+        "description": "南側沿低谷濕石小徑接往蘆葦路。"
       }
     ],
     "mapSymbol": "[·]",
@@ -4428,7 +4429,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
       {
         "direction": "south",
         "targetRoomId": "whispering_valley_stone_weir",
-        "description": "南側蘆葦石路通往石堰"
+        "description": "南側穿過倒伏蘆葦石路通往石堰。"
       }
     ],
     "mapSymbol": "[·]",

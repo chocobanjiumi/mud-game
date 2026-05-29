@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-29T20:49:29.885Z",
+  "generatedAt": "2026-05-29T20:52:11.580Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 138,
-    "errors": 100,
-    "warnings": 38,
+    "issues": 117,
+    "errors": 85,
+    "warnings": 32,
     "byGrade": {
-      "A_main_transition": 33,
+      "A_main_transition": 32,
       "B_connector": 17,
-      "C_empty_filler": 80,
-      "D_upgrade_candidate": 213
+      "C_empty_filler": 77,
+      "D_upgrade_candidate": 217
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 263,
-      "gathering": 155,
+      "border": 264,
+      "gathering": 159,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 14,
@@ -25,14 +25,14 @@
       "service": 58
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 3,
-      "description.direction": 28,
-      "description.length": 53,
-      "description.purpose": 15,
-      "description.repeated_opening": 20,
+      "dead_end.no_gameplay": 2,
+      "description.direction": 23,
+      "description.length": 46,
+      "description.purpose": 13,
+      "description.repeated_opening": 17,
       "description.terrain": 3,
-      "exit.description.length": 6,
-      "exit.description.missing": 10
+      "exit.description.length": 4,
+      "exit.description.missing": 9
     }
   },
   "zones": [
@@ -13553,16 +13553,17 @@
       "zoneId": "whispering_valley",
       "zoneName": "低語溪谷",
       "fillRooms": 9,
-      "issues": 21,
+      "issues": 0,
       "records": [
         {
           "id": "whispering_valley_fill_n3_8",
           "zone": "whispering_valley",
-          "name": "低語小徑",
-          "grade": "C_empty_filler",
+          "name": "舊祠南霧池封徑",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -3,
           "worldY": 8,
@@ -13579,52 +13580,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n3_8",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n3_8",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n3_8",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n4_6",
           "zone": "whispering_valley",
-          "name": "蘆葦路",
-          "grade": "C_empty_filler",
+          "name": "冷泉南石板封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": -4,
           "worldY": 6,
@@ -13643,46 +13618,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n4_6",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-            },
-            {
-              "id": "whispering_valley_fill_n4_6",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n4_7",
           "zone": "whispering_valley",
-          "name": "低語小徑",
-          "grade": "C_empty_filler",
+          "name": "霧池北蘆根封地",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -4,
           "worldY": 7,
@@ -13701,45 +13656,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n4_7",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-            },
-            {
-              "id": "whispering_valley_fill_n4_7",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n4_9",
           "zone": "whispering_valley",
-          "name": "谷底通道",
-          "grade": "C_empty_filler",
+          "name": "霧池南冰蕨封石",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "gathering"
           ],
           "worldX": -4,
           "worldY": 9,
@@ -13756,42 +13691,21 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 57,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n4_9",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-            },
-            {
-              "id": "whispering_valley_fill_n4_9",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 55,
-              "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n5_11",
           "zone": "whispering_valley",
-          "name": "溪谷小路",
+          "name": "古樹屋北瀑蘆界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -13819,49 +13733,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n5_11",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 65,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n5_11",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 65,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n5_11",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n6_10",
           "zone": "whispering_valley",
-          "name": "溪谷小路",
-          "grade": "D_upgrade_candidate",
+          "name": "裂隙北瀑霧封",
+          "grade": "C_empty_filler",
           "purposes": [
             "blocker",
-            "border",
-            "gathering"
+            "border"
           ],
           "worldX": -6,
           "worldY": 10,
@@ -13879,45 +13764,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n6_10",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-            },
-            {
-              "id": "whispering_valley_fill_n6_10",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n7_11",
           "zone": "whispering_valley",
-          "name": "蘆葦路",
-          "grade": "A_main_transition",
+          "name": "螢火小徑北蘆草界",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -7,
           "worldY": 11,
@@ -13933,63 +13798,19 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 75,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n7_11",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 65,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n7_11",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 18,
-              "minimum": 65,
-              "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-            },
-            {
-              "id": "whispering_valley_fill_n7_11",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "whispering_valley_fill_n7_11",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->firefly_trail 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "whispering_valley_fill_n7_11",
-              "zone": "whispering_valley",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n7_6",
@@ -14026,19 +13847,8 @@
           "descriptionLength": 66,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n7_6",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit south->whispering_valley_fill_n7_7 description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "南側低谷小徑接往蘆葦路"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "whispering_valley_fill_n7_7",
@@ -14076,19 +13886,8 @@
           "descriptionLength": 67,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "whispering_valley_fill_n7_7",
-              "zone": "whispering_valley",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit south->whispering_valley_stone_weir description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "南側蘆葦石路通往石堰"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -15427,182 +15226,6 @@
       "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
     },
     {
-      "id": "whispering_valley_fill_n3_8",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n3_8",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_6",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_6",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_7",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_7",
-      "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_9",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-    },
-    {
-      "id": "whispering_valley_fill_n4_9",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 55,
-      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。"
-    },
-    {
-      "id": "whispering_valley_fill_n5_11",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 65,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n5_11",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 65,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n6_10",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-    },
-    {
-      "id": "whispering_valley_fill_n6_10",
-      "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。"
-    },
-    {
-      "id": "whispering_valley_fill_n7_11",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 65,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n7_11",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 18,
-      "minimum": 65,
-      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。"
-    },
-    {
-      "id": "whispering_valley_fill_n7_11",
-      "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "whispering_valley_fill_n7_11",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->firefly_trail 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "whispering_valley_fill_n7_6",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit south->whispering_valley_fill_n7_7 description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "南側低谷小徑接往蘆葦路"
-    },
-    {
-      "id": "whispering_valley_fill_n7_7",
-      "zone": "whispering_valley",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit south->whispering_valley_stone_weir description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "南側蘆葦石路通往石堰"
-    },
-    {
       "id": "blackwood_fill_n12_13",
       "zone": "blackwood",
       "severity": "warning",
@@ -15717,27 +15340,6 @@
     {
       "id": "starter_village_ext_fill_3_n1",
       "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "whispering_valley_fill_n3_8",
-      "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "whispering_valley_fill_n5_11",
-      "zone": "whispering_valley",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "whispering_valley_fill_n7_11",
-      "zone": "whispering_valley",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
