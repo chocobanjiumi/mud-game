@@ -23718,13 +23718,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'arena_quarter_private_boxes', description: '北側包廂階梯回到貴賓包廂' },
       {
-        direction: 'west',
-        targetRoomId: 'arena_quarter_referee_box',
-        description: '西側需穿過場門緩衝區、記分板與裁判側門後，才會抵達裁判席，場門開合受賽程限制',
-        edgeKind: 'long_path',
-        edgeNote: '中央競技場西返裁判席需要穿過場門與記分板區，屬於長路徑。',
-      },
-      {
         direction: 'east',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '東側需穿過場門、觀戰欄杆與下層通道後，才會進入下層看台，觀眾席通道較擁擠',

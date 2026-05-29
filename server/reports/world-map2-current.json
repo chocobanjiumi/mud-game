@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:10:29.994Z",
+  "generatedAt": "2026-05-29T19:12:24.190Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -3017,7 +3017,6 @@
     "arena_quarter_private_boxes:east->arena_quarter_upper_stands (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "arena_quarter_victory_arch:south->arena_quarter_champion_wall (long_path) 勝利拱南返冠軍牆有紀念階與前廊，屬於長路徑。",
     "arena_quarter_victory_arch:east->arena_quarter_private_boxes (long_path) 勝利拱到貴賓包廂需要沿內廊與護欄繞行，距離長於相鄰格。",
-    "arena_quarter_center_arena:west->arena_quarter_referee_box (long_path) 中央競技場西返裁判席需要穿過場門與記分板區，屬於長路徑。",
     "arena_quarter_center_arena:east->arena_quarter_lower_stands (long_path) 中央競技場到下層看台被場門與觀眾欄杆隔開，不是相鄰格。",
     "royal_hunting_grounds_horn_gate:north->royal_hunting_grounds_deer_run (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "royal_hunting_grounds_deer_run:south->royal_hunting_grounds_horn_gate (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",

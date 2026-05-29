@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-05-29T19:10:29.920Z",
+  "generatedAt": "2026-05-29T19:12:24.029Z",
   "counts": {
-    "totalLongPathRecords": 862,
+    "totalLongPathRecords": 861,
     "staticWorldLongPathEntries": 413,
-    "runtimeLongPathExits": 862,
+    "runtimeLongPathExits": 861,
     "staticOnlyEntries": 0,
-    "roomEdgeOnlyEntries": 449,
+    "roomEdgeOnlyEntries": 448,
     "missingSourceRooms": 0,
     "missingTargetRooms": 0,
-    "sameZone": 826,
+    "sameZone": 825,
     "crossZone": 36,
     "hasExistingIntermediateFillerOrStaticRoomToConnect": 8,
     "classifications": {
       "A_coordinate_error_candidate": 0,
-      "B_missing_static_corridor": 18,
+      "B_missing_static_corridor": 17,
       "C_special_route": 844
     }
   },
@@ -1618,62 +1618,6 @@
         "label": "C 類：真正特殊路徑候選",
         "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
         "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
-      },
-      "missingSourceRoom": false,
-      "missingTargetRoom": false
-    },
-    {
-      "key": "arena_quarter_center_arena:west->arena_quarter_referee_box",
-      "sources": [
-        "room-edge-kind"
-      ],
-      "source": {
-        "roomId": "arena_quarter_center_arena",
-        "zone": "arena_quarter",
-        "worldX": 26,
-        "worldY": 11
-      },
-      "direction": "west",
-      "target": {
-        "roomId": "arena_quarter_referee_box",
-        "zone": "arena_quarter",
-        "worldX": 26,
-        "worldY": 9
-      },
-      "expectedAdjacentCoordinate": {
-        "worldX": 25,
-        "worldY": 11
-      },
-      "actualDelta": {
-        "dx": 0,
-        "dy": -2,
-        "manhattan": 2
-      },
-      "sameZone": true,
-      "crossZone": false,
-      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
-      "intermediateScan": {
-        "mode": "same-axis",
-        "distance": 2,
-        "intermediateRooms": [
-          {
-            "worldX": 26,
-            "worldY": 10,
-            "roomId": "arena_quarter_private_boxes",
-            "zone": "arena_quarter",
-            "isStaticFillerOrBridge": false
-          }
-        ],
-        "missingCoordinates": [],
-        "hasCompleteIntermediateRoute": false
-      },
-      "description": "西側需穿過場門緩衝區、記分板與裁判側門後，才會抵達裁判席，場門開合受賽程限制",
-      "edgeNote": "中央競技場西返裁判席需要穿過場門與記分板區，屬於長路徑。",
-      "classification": {
-        "code": "B_missing_static_corridor",
-        "label": "B 類：缺少中間通道候選",
-        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
-        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
