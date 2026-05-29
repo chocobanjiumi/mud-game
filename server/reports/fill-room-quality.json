@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T21:01:02.934Z",
+  "generatedAt": "2026-05-29T21:03:41.230Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 68,
-    "errors": 58,
-    "warnings": 10,
+    "issues": 57,
+    "errors": 50,
+    "warnings": 7,
     "byGrade": {
       "A_main_transition": 31,
       "B_connector": 17,
@@ -16,20 +16,20 @@
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 271,
+      "border": 274,
       "gathering": 158,
       "monster": 30,
       "npc_or_quest": 22,
       "portal": 15,
       "route": 69,
-      "service": 67
+      "service": 68
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
-      "description.direction": 19,
-      "description.length": 27,
+      "description.direction": 16,
+      "description.length": 22,
       "description.purpose": 3,
-      "description.repeated_opening": 6,
+      "description.repeated_opening": 3,
       "description.terrain": 3,
       "exit.description.length": 4,
       "exit.description.missing": 5
@@ -1213,12 +1213,12 @@
       "zoneId": "blackwood",
       "zoneName": "黑木林",
       "fillRooms": 6,
-      "issues": 11,
+      "issues": 0,
       "records": [
         {
           "id": "blackwood_fill_n11_15",
           "zone": "blackwood",
-          "name": "枯枝通道",
+          "name": "空心木橋東枯枝封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -1247,41 +1247,22 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 24,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_fill_n11_15",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 65,
-              "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-            },
-            {
-              "id": "blackwood_fill_n11_15",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 24,
-              "minimum": 65,
-              "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "blackwood_fill_n12_13",
           "zone": "blackwood",
-          "name": "暗林深處",
+          "name": "倒祠北苔根採封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": -12,
           "worldY": 13,
@@ -1302,39 +1283,22 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 25,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_fill_n12_13",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 25,
-              "minimum": 55,
-              "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-            },
-            {
-              "id": "blackwood_fill_n12_13",
-              "zone": "blackwood",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "blackwood_fill_n13_13",
           "zone": "blackwood",
-          "name": "枯枝通道",
+          "name": "骨鈴東枯根採封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -13,
@@ -1359,34 +1323,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 25,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_fill_n13_13",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 25,
-              "minimum": 55,
-              "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-            },
-            {
-              "id": "blackwood_fill_n13_13",
-              "zone": "blackwood",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "blackwood_fill_n15_12",
           "zone": "blackwood",
-          "name": "黑木樹道",
+          "name": "女巫樹洞北炭根封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -1413,40 +1359,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 24,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_fill_n15_12",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 55,
-              "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-            },
-            {
-              "id": "blackwood_fill_n15_12",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 24,
-              "minimum": 55,
-              "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "blackwood_fill_n17_13",
           "zone": "blackwood",
-          "name": "枯枝通道",
+          "name": "炭門北黑苔封徑",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -17,
@@ -1469,29 +1395,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 25,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_fill_n17_13",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 25,
-              "minimum": 55,
-              "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-            },
-            {
-              "id": "blackwood_fill_n17_13",
-              "zone": "blackwood",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "blackwood_hollow_log_bridge",
@@ -1529,22 +1437,11 @@
           "hasQuestCue": true,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 201,
+          "descriptionLength": 238,
           "exitCount": 2,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "blackwood_hollow_log_bridge",
-              "zone": "blackwood",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 201,
-              "minimum": 55,
-              "text": "空心木橋位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -13789,86 +13686,6 @@
   ],
   "issues": [
     {
-      "id": "blackwood_fill_n11_15",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 65,
-      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-    },
-    {
-      "id": "blackwood_fill_n11_15",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 24,
-      "minimum": 65,
-      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-    },
-    {
-      "id": "blackwood_fill_n12_13",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 25,
-      "minimum": 55,
-      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-    },
-    {
-      "id": "blackwood_fill_n13_13",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 25,
-      "minimum": 55,
-      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-    },
-    {
-      "id": "blackwood_fill_n15_12",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 55,
-      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-    },
-    {
-      "id": "blackwood_fill_n15_12",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 24,
-      "minimum": 55,
-      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。"
-    },
-    {
-      "id": "blackwood_fill_n17_13",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 25,
-      "minimum": 55,
-      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。"
-    },
-    {
-      "id": "blackwood_hollow_log_bridge",
-      "zone": "blackwood",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 201,
-      "minimum": 55,
-      "text": "空心木橋位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。"
-    },
-    {
       "id": "cursed_graveyard_bone_bridge",
       "zone": "cursed_graveyard",
       "severity": "error",
@@ -14399,27 +14216,6 @@
       "current": 20,
       "minimum": 55,
       "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
-    },
-    {
-      "id": "blackwood_fill_n12_13",
-      "zone": "blackwood",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "blackwood_fill_n13_13",
-      "zone": "blackwood",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "blackwood_fill_n17_13",
-      "zone": "blackwood",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "ironwood_fort_fill_0_12",
