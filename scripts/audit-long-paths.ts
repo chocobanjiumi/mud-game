@@ -242,7 +242,7 @@ function classifyLongPath(input: {
   edgeNote: string | null;
 }): LongPathClassification {
   const text = `${input.description ?? ''} ${input.edgeNote ?? ''}`;
-  const explicitlyLongRoute = /長於相鄰一格|實際路程|繞|折返|穿過|越過|沿|渡|船|橋|階|坡|洞|門|入口|傳送/u.test(text);
+  const explicitlyLongRoute = /長於相鄰一格|實際路程|長路徑|高低差|曲折|攀|下切|繞|折返|穿過|越過|沿|渡|船|橋|階|坡|洞|門|入口|傳送/u.test(text);
   const crossZone = Boolean(input.room && input.target && input.room.zone !== input.target.zone);
 
   if (

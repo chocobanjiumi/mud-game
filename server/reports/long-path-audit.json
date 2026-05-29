@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T18:08:10.619Z",
+  "generatedAt": "2026-05-29T18:09:28.693Z",
   "counts": {
     "totalLongPathRecords": 1022,
     "staticWorldLongPathEntries": 496,
@@ -12,8 +12,8 @@
     "crossZone": 37,
     "hasExistingIntermediateFillerOrStaticRoomToConnect": 25,
     "classifications": {
-      "A_coordinate_error_candidate": 1,
-      "B_missing_static_corridor": 108,
+      "A_coordinate_error_candidate": 0,
+      "B_missing_static_corridor": 109,
       "C_special_route": 913
     }
   },
@@ -29447,10 +29447,10 @@
       "description": "北側步道需要攀上海崖岩台與強風窄路，才能離開營地回到海崖，撤退時很難奔跑",
       "edgeNote": "海盜營地北側到海崖步道有高低差與曲折路線，屬於長路徑。",
       "classification": {
-        "code": "A_coordinate_error_candidate",
-        "label": "A 類：座標錯誤候選",
-        "rationale": "同 zone、同軸且沒有足夠長路徑敘事，可能只是普通出口座標未排成相鄰格。",
-        "recommendedAction": "人工確認語意；若只是普通相鄰出口，直接改房間座標並移除 long_path。"
+        "code": "B_missing_static_corridor",
+        "label": "B 類：缺少中間通道候選",
+        "rationale": "source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。",
+        "recommendedAction": "補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。"
       },
       "missingSourceRoom": false,
       "missingTargetRoom": false
