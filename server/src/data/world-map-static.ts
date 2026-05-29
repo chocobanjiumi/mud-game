@@ -195,9 +195,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_24_10": {
     "id": "arena_quarter_fill_24_10",
-    "name": "訓練場邊道",
+    "name": "西南器械欄",
     "zone": "arena_quarter",
-    "description": "訓練場旁的邊道，能聽見兵器碰撞的清脆聲響。",
+    "description": "西南器械欄貼著訓練沙地外側，北面能看見木槍架與沙袋，東側被裁判繩圈隔開。這裡只是競技場平面上的封閉邊角，用來標出訓練場邊界，玩家不能從此穿入看台或後勤區。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -207,9 +207,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_24_6": {
     "id": "arena_quarter_fill_24_6",
-    "name": "訓練場邊道",
+    "name": "北側檢查欄",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "北側檢查欄位於武器寄放線外，南面連著競技區主路的喧鬧聲，東西兩側堆著封存木箱與鎖鏈。守衛把這段欄位作為不可通行邊界，提醒玩家改走正式入口與票券柱廊。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -219,9 +219,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_25_11": {
     "id": "arena_quarter_fill_25_11",
-    "name": "訓練場邊道",
+    "name": "南看台封階",
     "zone": "arena_quarter",
-    "description": "通往各看台的通道，牆上掛著歷屆冠軍的畫像。",
+    "description": "南看台封階停在一排鐵柵前，北側可望見下注牌與沙地邊線，南面階梯被維修木板完全擋住。這格保留為看台高度差的地圖 blocker，不提供路線或隱藏互動。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -231,14 +231,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_25_12": {
     "id": "arena_quarter_fill_25_12",
-    "name": "競技場巷弄",
+    "name": "南牆旗影巷",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "南牆旗影巷靠近競技場外牆，北側旗桿影子落在石地上，南面是封死的維修門與堆疊護欄。這裡只標示看台背後的封閉邊界，旅人必須折回北側正式通道，不會通往新區域。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側維修門被鐵鏈與護欄封住，不能離開競技城區"
       }
     ],
     "mapSymbol": "[·]",
@@ -249,14 +250,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_26_12": {
     "id": "arena_quarter_fill_26_12",
-    "name": "訓練場邊道",
+    "name": "南練兵封欄",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "南練兵封欄貼著訓練沙坑最外圈，北面傳來木劍敲擊聲，南側落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，描述提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側拒馬擋住沙坑落差，必須回北側訓練場路線"
       }
     ],
     "mapSymbol": "[·]",
@@ -267,9 +269,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_26_6": {
     "id": "arena_quarter_fill_26_6",
-    "name": "競技區走道",
+    "name": "北側沙欄角",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "北側沙欄角位在決鬥圈外緣，南面能看到裁判旗架，西側是武器檢查人流。粗繩把觀眾與選手路線分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -279,9 +281,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_27_10": {
     "id": "arena_quarter_fill_27_10",
-    "name": "競技場巷弄",
+    "name": "西看台陰廊",
     "zone": "arena_quarter",
-    "description": "訓練場旁的邊道，能聽見兵器碰撞的清脆聲響。",
+    "description": "西看台陰廊夾在下層座席與訓練沙地之間，北面可聽見看台呼喊，東側有沙地護欄。廊口被臨時布幕封住，只保留為地圖上的看台邊界與視覺過渡。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -291,14 +293,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_27_12": {
     "id": "arena_quarter_fill_27_12",
-    "name": "看台通道",
+    "name": "南看台鎖門",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "南看台鎖門位於座席背面，北側可回望階梯與下注牌，南側厚門掛著暫停通行的銅牌。這裡是看台外圈的封閉 blocker，讓地圖保留建築輪廓但不開放玩家穿越，也沒有服務用途。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側厚門被銅鎖封住，觀眾只能折回北側看台通道"
       }
     ],
     "mapSymbol": "[·]",
@@ -309,14 +312,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_28_12": {
     "id": "arena_quarter_fill_28_12",
-    "name": "競技區走道",
+    "name": "南環拒馬道",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "南環拒馬道沿著競技場外圈延伸，北面有選手休息棚的燈火，南側一整排拒馬封住維修坡。這格不是主路，而是用來阻斷南側空白區的安全邊界。",
     "exits": [
       {
         "direction": "south",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "南側維修坡被拒馬封死，必須回北側競技區走道"
       }
     ],
     "mapSymbol": "[·]",
@@ -327,9 +331,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_28_8": {
     "id": "arena_quarter_fill_28_8",
-    "name": "競技區走道",
+    "name": "中層看台欄",
     "zone": "arena_quarter",
-    "description": "通往各看台的通道，牆上掛著歷屆冠軍的畫像。",
+    "description": "中層看台欄位於座席轉角，西側通向觀眾席輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄落差與維修架，這裡標示封閉看台，不提供通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -339,9 +343,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_29_8": {
     "id": "arena_quarter_fill_29_8",
-    "name": "競技場巷弄",
+    "name": "東看台轉角",
     "zone": "arena_quarter",
-    "description": "通往各看台的通道，牆上掛著歷屆冠軍的畫像。",
+    "description": "東看台轉角被冠軍畫像與繩欄包圍，西側是觀眾席的回聲，北面能聽見票券柱廊的人潮。後方維修梯已收起，因此這格只作為看台外輪廓與不可通行邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -351,14 +355,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_30_10": {
     "id": "arena_quarter_fill_30_10",
-    "name": "競技區走道",
+    "name": "東門封鎖線",
     "zone": "arena_quarter",
-    "description": "訓練場旁的邊道，能聽見兵器碰撞的清脆聲響。",
+    "description": "東門封鎖線位於競技城區外緣，西側能回望沙地與裁判席，東面大門被修繕木架擋住。這裡是東側地圖封閉 blocker，讓玩家明確知道要回主場內側尋路，避免誤入城外空格。",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "東側大門正在修繕，木架封住外出路線"
       }
     ],
     "mapSymbol": "[·]",
@@ -369,14 +374,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_30_11": {
     "id": "arena_quarter_fill_30_11",
-    "name": "看台通道",
+    "name": "東側石階封口",
     "zone": "arena_quarter",
-    "description": "通往各看台的通道，牆上掛著歷屆冠軍的畫像。",
+    "description": "東側石階封口貼著看台背牆，西面可見座席階梯，東側石階被崩落碎塊堵住。它保留建築高度差與邊界感，不放服務或怪物，玩家需要折回西側通道。",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "東側石階被碎塊堵住，只能折回西側看台"
       }
     ],
     "mapSymbol": "[·]",
@@ -387,14 +393,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_30_7": {
     "id": "arena_quarter_fill_30_7",
-    "name": "看台通道",
+    "name": "北東旗欄",
     "zone": "arena_quarter",
-    "description": "訓練場旁的邊道，能聽見兵器碰撞的清脆聲響。",
+    "description": "北東旗欄插滿決鬥旗幟，西側接近武器檢查線，南面能看見觀眾入口的石階。東側外牆沒有開門，這格作為北東角封閉 blocker，避免地圖誤導玩家走出場區。",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "東側外牆沒有開門，旗欄後方禁止通行"
       }
     ],
     "mapSymbol": "[·]",
@@ -405,14 +412,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_30_8": {
     "id": "arena_quarter_fill_30_8",
-    "name": "訓練場邊道",
+    "name": "東看台欄門",
     "zone": "arena_quarter",
-    "description": "通往各看台的通道，牆上掛著歷屆冠軍的畫像。",
+    "description": "東看台欄門面向上層座席，西側通往觀眾席輪廓，東面欄門被鎖鏈固定。這裡是看台外圈的封閉 blocker 節點，只提供地圖輪廓與路線警示，不是服務房，也不放任務目標。",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "東側欄門被鎖鏈固定，觀眾須回西側階梯"
       }
     ],
     "mapSymbol": "[·]",
@@ -423,14 +431,15 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "arena_quarter_fill_30_9": {
     "id": "arena_quarter_fill_30_9",
-    "name": "競技場巷弄",
+    "name": "東外牆窄巷",
     "zone": "arena_quarter",
-    "description": "競技場區的寬闊走道，遠處傳來觀眾的歡呼聲。",
+    "description": "東外牆窄巷沿競技場石牆排列，西側能聽見場內歡呼，東側牆根堆滿封存拒馬與破旗架。這裡作為不可通行的封閉邊界，玩家只能回到西側正式競技區路線，不會接出新通道。",
     "exits": [
       {
         "direction": "east",
         "targetRoomId": "",
-        "locked": true
+        "locked": true,
+        "description": "東側石牆與拒馬堵住窄巷，不能穿出競技城區"
       }
     ],
     "mapSymbol": "[·]",

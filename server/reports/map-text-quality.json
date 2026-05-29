@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-28T18:46:12.303Z",
+  "generatedAt": "2026-05-29T19:45:59.636Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -308,9 +308,9 @@
     ]
   },
   "counts": {
-    "rooms": 1203,
-    "townServiceRooms": 49,
-    "gatheringTaggedRooms": 539,
+    "rooms": 1515,
+    "townServiceRooms": 64,
+    "gatheringTaggedRooms": 658,
     "npcRooms": 33,
     "monsterRooms": 1092,
     "instanceEntryRooms": 26,
@@ -343,7 +343,7 @@
     "talentNodes": 60,
     "talentTier5Nodes": 12,
     "statusEffects": 33,
-    "skills": 206,
+    "skills": 230,
     "skillUpgradePreviews": 112,
     "combatActionLabels": 10,
     "combatActionTooltips": 10,
@@ -360,14 +360,6247 @@
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,
     "instanceEntries": 37,
-    "mapMarkerTooltips": 1203,
-    "roomActionTooltips": 3122,
+    "mapMarkerTooltips": 1515,
+    "roomActionTooltips": 3383,
     "wikiArticleSummaries": 10,
-    "wikiTableRowNotes": 1857,
+    "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 0
+    "issues": 692
   },
-  "issuesByKind": {},
-  "issues": []
+  "issuesByKind": {
+    "exit.description": 177,
+    "room.description": 501,
+    "batch.repeatedOpening": 14
+  },
+  "issues": [
+    {
+      "id": "starter_village/adventurer_guild:north->starter_village_ext_fill_2_n1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_inn:north->starter_village_ext_fill_1_n1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_storehouse:west->old_farmland_fill_n1_1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_chapel:north->starter_village_ext_fill_4_n1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_well_path:west->old_farmland_fill_n1_2",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_old_library:north->starter_village_ext_fill_3_n1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_river_stairs:west->old_farmland_fill_n1_3",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_hidden_cellar:north->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "starter_village/starter_village_hidden_cellar:west->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_tidepool_grotto:west->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_seaweed_flats:west->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "volcano_zone/dwarf_mine:north->serpent_delta_fill_33_20",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "volcano_zone/volcano_ash_field:north->volcano_zone_fill_31_20",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "volcano_zone/volcano_ash_field:west->ember_march_fill_30_21",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "volcano_zone/volcano_lava_bridge:west->ember_march_fill_30_24",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "volcano_zone/volcano_sulfur_springs:west->ember_march_fill_30_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "plains/plains_moonlit_copse:west->starter_village_fill_6_3",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/firefly_trail:north->whispering_valley_fill_n7_11",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "lakeside_town/lakeside_tailor:south->sapphire_lake_pebble_weir",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_old_road_cut:west->silverpine_range_fill_0_n12",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fog_gate:west->eastern_coast_fill_39_2",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fogwatch_lantern:south->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_reed_gate:west->moonlit_fen_fill_23_16",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_peat_islet:west->moonlit_fen_fill_23_17",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_rolling_gate:west->thundersteppe_fill_10_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_thunder_pool:west->thundersteppe_fill_10_24",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_wind_shrine:west->thundersteppe_fill_10_25",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_sun_gate:west->glass_dunes_fill_0_21",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_buried_caravan:west->glass_dunes_fill_0_20",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_cliff_gate:west->frostbite_pass_fill_n19_n14",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_rain_shelf:west->frostbite_pass_fill_n19_n13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "blackwood/blackwood_wolf_den:north->amber_forest_fill_n13_11",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "deepsea_temple/deepsea_temple_tide_gate:west->bloodsalt_coast_fill_47_9",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_sunken_log_bridge:north->moonlit_fen_fill_18_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_old_canoe_camp:north->moonlit_fen_fill_19_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_smuggler_cache:north->plains_fill_11_5",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_bandit_watch:north->plains_fill_12_5",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_old_cemetery_turn:east->sapphire_lake_entry_claim",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_final_marker:east->sapphire_lake_pebble_weir",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_portal_yard:west->dark_forest_fill_n1_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_quartermaster_row:west->dark_forest_fill_n1_14",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_forge_works:west->dark_forest_fill_n1_15",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_ironwood_grove:west->dark_forest_fill_n1_16",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "amber_forest/amber_forest_resin_gate:west->emerald_canopy_fill_n18_7",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_tide_gate:west->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_mist_marker:west->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_blue_mud_shelf:north->eastern_coast_fill_34_6",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_ash_gate:west->thundersteppe_fill_20_22",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_burnt_watchpost:west->thundersteppe_fill_20_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_glass_ash_field:west->thundersteppe_fill_20_24",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_firegrass_flat:north->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_entry_claim:west->pilgrim_road_old_cemetery_turn",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_lantern_dock:west->pilgrim_road_fill_13_9",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_pebble_weir:west->pilgrim_road_final_marker",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_portal_plaza:west->kingsroad_market_fill_22_0",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_guard_post:west->kingsroad_market_fill_22_1",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_grand_gate:west->sapphire_lake_fill_22_7",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_champion_wall:west->sapphire_lake_fill_22_8",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_prize_counter:north->kingsroad_market_fill_25_5",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_victory_arch:west->sapphire_lake_fill_22_9",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_horn_gate:west->kingdom_frontier_fill_n10_n7",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_deer_run:west->kingdom_frontier_fill_n10_n6",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_silver_trail:west->kingdom_frontier_fill_n10_n5",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_old_oak_stand:west->kingdom_frontier_fill_n10_n4",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_entrance_ferry:north->serpent_delta_fill_31_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_entrance_ferry:west->marsh_of_mirrors_fill_30_14",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_split_reed_bank:north->serpent_delta_fill_32_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_mudfish_pool:north->serpent_delta_fill_33_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_heron_marker:west->marsh_of_mirrors_fill_30_16",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n11_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n11_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n11_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n12_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n12_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_11:south->blackwood_wolf_den",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n13_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n15_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n15_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n16_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n16_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n17_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "amber_forest/amber_forest_fill_n17_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_fill_26_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 71,
+      "minimumLength": 55,
+      "text": "南練兵封欄貼著訓練沙坑最外圈，北面傳來木劍敲擊聲，南側落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，描述提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_fill_26_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 63,
+      "minimumLength": 55,
+      "text": "北側沙欄角位在決鬥圈外緣，南面能看到裁判旗架，西側是武器檢查人流。粗繩把觀眾與選手路線分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "arena_quarter/arena_quarter_fill_28_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 58,
+      "minimumLength": 55,
+      "text": "中層看台欄位於座席轉角，西側通向觀眾席輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄落差與維修架，這裡標示封閉看台，不提供通行路線。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n11_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n11_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n12_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n12_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n13_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n13_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n15_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n15_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "黑木林深處的幽暗小路，枯枝在頭頂形成密不透光的棚架。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n17_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "blackwood/blackwood_fill_n17_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 55,
+      "text": "穿過黑木林的石板路，陰冷的空氣讓人不自覺地打了個寒顫。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_40_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_40_7:north->bloodsalt_coast_entrance_tidegate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "赤色海崖北返潮門入口",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_40_7:south->bloodsalt_coast_brine_cut_path",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "赤色海崖南下鹵蝕小徑",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_40_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_40_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_41_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_43_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_43_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_44_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_45_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_45_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_47_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 38,
+      "minimumLength": 55,
+      "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "bloodsalt_coast/bloodsalt_coast_fill_47_9:east->deepsea_temple_tide_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_13:east->ironwood_fort_portal_yard",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_14:east->ironwood_fort_quartermaster_row",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_15:east->ironwood_fort_forge_works",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n1_16:east->ironwood_fort_ironwood_grove",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n2_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n3_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "古老大樹之間的陰暗通道，樹根盤結在地面上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "暗影森林中幾乎不見天日的小路，苔蘚覆蓋了每一寸石頭。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n4_18:south->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n7_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n7_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "dark_forest/dark_forest_fill_n7_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "穿過森林的狹窄小徑，四周傳來不明的窸窣聲。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_31_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_31_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_34_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_34_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_34_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_34_6:south->saltwind_flats_blue_mud_shelf",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_35_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_36_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_37_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_38_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_39_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 30,
+      "minimumLength": 55,
+      "text": "海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "eastern_coast/eastern_coast_fill_39_2:east->mist_harbor_fog_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_fill_22_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_22_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_south_portal",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 29,
+      "minimumLength": 55,
+      "text": "黑色玄武岩砌成的傳送石臺立在焦灰南坡，符文被餘燼照得忽明忽暗。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_south_portal:north->ember_march_fill_22_24",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "ember_march/ember_march_south_portal:east->ember_march_south_supply",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "ember_march/ember_march_south_portal:south->ember_march_south_shelter",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "ember_march/ember_march_south_supply",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 29,
+      "minimumLength": 55,
+      "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_south_supply",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 29,
+      "minimumLength": 55,
+      "text": "半埋在灰堆裡的補給棚用耐火布遮住熱風，水桶和冷卻藥劑沿牆排開。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "ember_march/ember_march_south_supply:west->ember_march_south_portal",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "ember_march/ember_march_south_shelter",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "低矮石亭擋住南面吹來的熔灰風，亭外能看見火山前緣的紅光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_south_shelter:north->ember_march_south_portal",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "ember_march/ember_march_fill_26_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_28_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "灰燼覆蓋的邊道，遠處火山的紅光映照著天際。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_21:east->volcano_ash_field",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "穿過餘燼地帶的通道，空氣中瀰漫著硫磺的刺鼻氣味。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_23:east->volcano_sulfur_springs",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "餘燼邊境的焦土小路，腳下的灰燼還帶著餘溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_24:east->volcano_lava_bridge",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n18_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n18_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n18_7:east->amber_forest_resin_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n19_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n19_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n20_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n20_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n21_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n21_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n21_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n21_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n22_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n22_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n22_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "翠綠光線穿透樹冠灑在林間小路上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n23_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n23_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n25_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "翠綠光線穿透樹冠灑在林間小路上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n26_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n26_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "emerald_canopy/emerald_canopy_fill_n26_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "翠綠光線穿透樹冠灑在林間小路上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 55,
+      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 44,
+      "minimumLength": 55,
+      "text": "凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n13:east->storm_highlands_rain_shelf",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 45,
+      "minimumLength": 55,
+      "text": "隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n14:east->storm_highlands_cliff_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n20_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 55,
+      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n21_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 55,
+      "text": "霜咬隘口中的冰封山道，每一步都需要小心腳下的冰層。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n22_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n22_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n27_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n27_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "隘口間的狹窄通道，刺骨的寒風從裂縫中灌入。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "frozen_wastes/frozen_wastes_fill_n25_n23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "凍土上的小路，腳下的冰面發出令人不安的嘎吱聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frozen_wastes/frozen_wastes_fill_n26_n18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "冰封荒原上的凍結通道，刺骨的寒風能凍裂鎧甲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "frozen_wastes/frozen_wastes_fill_n26_n18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "冰封荒原上的凍結通道，刺骨的寒風能凍裂鎧甲。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_1_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_1_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 33,
+      "minimumLength": 55,
+      "text": "玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 33,
+      "minimumLength": 55,
+      "text": "玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_23:east->thundersteppe_rolling_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 46,
+      "minimumLength": 55,
+      "text": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_24:east->thundersteppe_thunder_pool",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 47,
+      "minimumLength": 55,
+      "text": "草坡邊還殘留幾片晶化砂殼，越往東風聲越像祭旗震動，西面回到琉璃沙丘邊界，東面則接近風祭小祠外的雷草帶。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_10_25:east->thundersteppe_wind_shrine",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_2_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_3_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_4_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_4_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_4_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 27,
+      "minimumLength": 55,
+      "text": "琉璃沙丘間的通道，腳下的玻璃化砂粒在陽光下折射出七彩光芒。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_5_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_5_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_6_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_7_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_7_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_7_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_0_12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_0_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "要塞內部的通道，兩旁是高聳的石牆和瞭望塔。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_0_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "要塞內部的通道，兩旁是高聳的石牆和瞭望塔。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_0_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_0_18:south->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_1_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 47,
+      "minimumLength": 55,
+      "text": "琉璃沙丘北緣的晶砂貼著要塞南方展開，碎玻砂在風裡發亮，南面可接入更深沙丘，北側仍能看見鐵木要塞的牆影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_2_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 43,
+      "minimumLength": 55,
+      "text": "玻砂北徑沿著乾熱風線延伸，腳下砂粒像碎鏡一樣磨響，南側沙丘開始升高，北面要塞石牆只剩低沉輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_3_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 41,
+      "minimumLength": 55,
+      "text": "熱風砂脊把北方硬土切成透明砂線，東西兩側都有晶砂起伏，往南能看見琉璃沙丘內部的白亮反光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "ironwood_fort/ironwood_fort_fill_4_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鐵木要塞的城牆走道，守衛的腳步聲在石板上迴盪。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_4_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 43,
+      "minimumLength": 55,
+      "text": "折光砂道在北緣形成一排低矮玻丘，陽光被砂面切成細碎白線，南側沙海更亮，北方要塞聲音被熱浪吞沒。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_5_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 42,
+      "minimumLength": 55,
+      "text": "鏡砂邊坡貼著沙丘北側展開，玻化砂殼在靴下碎裂，往南能接入高熱沙脊，東西兩側都有稀薄的折射光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_6_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 41,
+      "minimumLength": 55,
+      "text": "北砂亮線在琉璃沙丘邊界拉出一道白色反光，南面沙丘像凝固浪脊，西側仍有要塞邊地的灰塵殘留。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 80,
+      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n4:east->royal_hunting_grounds_old_oak_stand",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "穿過關卡的通道，戒備森嚴的氣氛讓人不敢大聲說話。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n5:east->royal_hunting_grounds_silver_trail",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 29,
+      "minimumLength": 80,
+      "text": "邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n6:east->royal_hunting_grounds_deer_run",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 31,
+      "minimumLength": 80,
+      "text": "邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n7:east->royal_hunting_grounds_horn_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n11_n3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n13_n4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 80,
+      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n14_n6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n15_n7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 80,
+      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n17_n3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n18_n4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 80,
+      "text": "邊境城牆下的走道，遠處能看見敵國領地的輪廓。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingdom_frontier/kingdom_frontier_fill_n18_n6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王國邊境的巡邏道路，沿途可見磨損的界碑和崗哨遺跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_23_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_25_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_25_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_25_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_25_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_25_5:south->arena_quarter_prize_counter",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_26_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_28_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_28_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_28_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_28_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_29_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_29_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_29_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_29_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 80,
+      "text": "王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3:east->",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 50,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_15_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_16_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 50,
+      "text": "城鎮裡的寬闊通道，兩旁商鋪林立。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_16_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 55,
+      "text": "城鎮裡的寬闊通道，兩旁商鋪林立。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 50,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 50,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往湖濱的石板路，遠處湖面波光粼粼。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_19_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_19_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_19_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_19_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王道市集西側的石板路，貨車從湖畔城鎮方向轉入市集。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 80,
+      "text": "王道市集西側的石板路，貨車從湖畔城鎮方向轉入市集。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_0:east->kingsroad_market_portal_plaza",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 80,
+      "text": "靠近市集守衛哨的西側巷道，石牆上掛著往湖畔城鎮的路牌。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 25,
+      "minimumLength": 80,
+      "text": "靠近市集守衛哨的西側巷道，石牆上掛著往湖畔城鎮的路牌。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_1:east->kingsroad_market_guard_post",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_25_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_25_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_25_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_26_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_26_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_19:west->marsh_of_mirrors_moonlit_causeway",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "鏡沼通道西返月光堤道",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_27_19:east->marsh_of_mirrors_hag_lantern",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "鏡沼通道東抵巫燈處",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_28_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_28_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_29_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_14:east->serpent_delta_entrance_ferry",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 26,
+      "minimumLength": 55,
+      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_30_16:east->serpent_delta_heron_marker",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 50,
+      "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_40_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_41_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_41_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_42_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_42_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_42_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_43_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_43_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_43_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 50,
+      "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_44_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_44_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_44_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。",
+      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_45_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "mist_harbor/mist_harbor_fill_45_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 50,
+      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_14_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_14:north->moonlit_fen_fill_20_13",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_21_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_21_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_21_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_16",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_16:east->marsh_of_mirrors_reed_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_17:east->marsh_of_mirrors_peat_islet",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 40,
+      "minimumLength": 55,
+      "text": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_1:east->starter_village_storehouse",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 32,
+      "minimumLength": 55,
+      "text": "踩踏得光滑的土路從廢棄田埂延伸至村莊水井方向，車轍裡積著鏽色的雨水。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_2:east->starter_village_well_path",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n1_3:east->starter_village_river_stairs",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n2_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n2_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n3_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n3_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n4_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n4_1:north->old_farmland_toolshed",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "廢棄農道北返破工具棚",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n4_1:south->old_farmland_chicken_coop",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "廢棄農道南接破雞舍",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n4_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n4_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n6_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n6_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n6_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n6_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n8_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "old_farmland/old_farmland_fill_n8_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 28,
+      "minimumLength": 55,
+      "text": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 28,
+      "minimumLength": 55,
+      "text": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 28,
+      "minimumLength": 55,
+      "text": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_9:east->sapphire_lake_lantern_dock",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_8_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_8_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "plains/plains_fill_10_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_11_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "翠綠的草地一望無際，微風拂過時金色麥浪翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_11_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "翠綠的草地一望無際，微風拂過時金色麥浪翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "plains/plains_fill_11_0",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "翠綠的草地一望無際，微風拂過時金色麥浪翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "plains/plains_fill_11_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 55,
+      "text": "穿過草原的小徑，野花在路旁搖曳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_11_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 55,
+      "text": "穿過草原的小徑，野花在路旁搖曳。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "plains/plains_fill_11_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_11_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "plains/plains_fill_11_5:south->pilgrim_road_smuggler_cache",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "plains/plains_fill_12_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_12_5:south->pilgrim_road_bandit_watch",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "plains/plains_fill_7_2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_8_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 55,
+      "text": "穿過草原的小徑，野花在路旁搖曳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_8_1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 14,
+      "minimumLength": 55,
+      "text": "穿過草原的小徑，野花在路旁搖曳。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "plains/plains_fill_9_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "plains/plains_fill_9_5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_0_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 45,
+      "minimumLength": 55,
+      "text": "西緣砂路夾在紅岩乾谷與琉璃沙丘之間，赤色石粉逐漸被透明砂粒取代，東側半埋商隊的旗桿在熱浪中晃動。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_0_20:east->glass_dunes_buried_caravan",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_0_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 42,
+      "minimumLength": 55,
+      "text": "日照西門是一段被玻砂覆住的邊界路，西側仍有紅岩荒地的乾熱氣味，東側日照玻門反射出刺眼白光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "glass_dunes/glass_dunes_fill_0_21:east->glass_dunes_sun_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n3_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n3_20:north->redrock_badlands_scarlet_crater",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "熱裂邊道北上猩紅火口",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n3_20:south->redrock_badlands_exile_den",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "熱裂邊道南返流放者洞穴",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_19:east->redrock_badlands_scarlet_crater",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "赤色裂光路東接猩紅火口",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_23:west->redrock_badlands_fill_n5_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "刻痕路西行通往回聲拱岩",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n4_23:east->redrock_badlands_duel_stones",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "刻痕路東返決鬥石圈",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_19:west->redrock_badlands_lava_worm_sink",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "地下熱道西返熔岩蟲陷坑",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n6_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n6_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_23:west->redrock_badlands_fill_n6_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "刻痕路西行靠近回聲拱岩",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n5_23:east->redrock_badlands_fill_n4_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "刻痕路東返決鬥石圈",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n6_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n6_23:west->redrock_badlands_echo_arch",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "刻痕路西抵回聲拱岩",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n6_23:east->redrock_badlands_fill_n5_23",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "刻痕路東返決鬥石圈",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n7_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n7_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n7_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n7_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n8_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "redrock_badlands/redrock_badlands_fill_n8_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 55,
+      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n5_n5",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n6_n4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 80,
+      "text": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n6_n4:west->royal_hunting_grounds_moonlit_clearing",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "月光草線西返月光空地",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n6_n4:east->royal_hunting_grounds_white_stag_grove",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "月光草線東接白鹿林",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_fill_31_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蛇河三角洲北緣的渡口，鹹風與濕泥味在河面上交纏。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "蛇河三角洲北緣的渡口，鹹風與濕泥味在河面上交纏。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_13:south->serpent_delta_entrance_ferry",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_32_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 23,
+      "minimumLength": 55,
+      "text": "低矮蘆葦沿著分流河道搖晃，泥濘小徑往南深入三角洲。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_32_13:south->serpent_delta_split_reed_bank",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_fill_32_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_fill_33_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "淺水灘裡有泥魚翻動的痕跡，河口水氣取代了北面的鹽霧。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "淺水灘裡有泥魚翻動的痕跡，河口水氣取代了北面的鹽霧。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_13:south->serpent_delta_mudfish_pool",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_fill_36_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "saltwind_flats/saltwind_flats_fill_37_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "穿過鹽風灘的通道，熱氣從地面蒸騰而上。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_14_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "湖邊的草地小路，微風帶來清涼的水氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9:west->sapphire_lake_blue_reed_bed",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "湖畔小路西返藍蘆葦帶",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_17_9:east->sapphire_lake_glassfish_cove",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "湖畔小路東接玻魚灣",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_18_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_18_13:south->moonlit_fen_sunken_log_bridge",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_19_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "湖邊的草地小路，微風帶來清涼的水氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_19_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_19_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_19_13:south->moonlit_fen_old_canoe_camp",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_13:south->moonlit_fen_fill_20_14",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_20_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "湖邊的草地小路，微風帶來清涼的水氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_21_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "沿著湖岸延伸的通道，水面波光粼粼。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_21_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "沿著湖岸延伸的通道，水面波光粼粼。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_21_8:west->sapphire_lake_sapphire_lode",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "湖邊草地西返藍寶礦脈",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_21_8:north->sapphire_lake_lily_cache",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "湖邊草地北接睡蓮藏點",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "湖邊的草地小路，微風帶來清涼的水氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_7:east->arena_quarter_grand_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "沿著湖岸延伸的通道，水面波光粼粼。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "沿著湖岸延伸的通道，水面波光粼粼。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_8:east->arena_quarter_champion_wall",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "藍寶石湖畔的小路，清澈的湖水倒映著天空和遠山。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9:east->arena_quarter_victory_arch",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_31_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "三角洲上的搖晃棧道，下方是混濁的河水。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_31_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 33,
+      "minimumLength": 55,
+      "text": "三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_31_20:south->volcano_ash_field",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 12,
+      "text": "",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_32_18",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_19",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "河汊之間的狹窄通道，空氣悶熱潮溼。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_20",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 31,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，南面岩壁上有矮人開鑿的坑口，鐵鏽味從其中飄出。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_33_20:south->dwarf_mine",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_34_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "三角洲上的搖晃棧道，下方是混濁的河水。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_34_14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "三角洲上的搖晃棧道，下方是混濁的河水。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_35_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_35_15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "serpent_delta/serpent_delta_fill_36_17",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "三角洲上的搖晃棧道，下方是混濁的河水。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_0_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 27,
+      "minimumLength": 55,
+      "text": "舊路盡頭攀上銀松坡道，松針鋪滿破碎石階，空氣比丘陵冷了幾度。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_0_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 27,
+      "minimumLength": 55,
+      "text": "舊路盡頭攀上銀松坡道，松針鋪滿破碎石階，空氣比丘陵冷了幾度。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_0_n12:east->wildgrass_hills_old_road_cut",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n1_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n1_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n1_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n1_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "山腰上的崎嶇通道，放眼望去是連綿的山巒。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "山腰上的崎嶇通道，放眼望去是連綿的山巒。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n10:west->silverpine_range_fill_n5_n10",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 8,
+      "minimumLength": 12,
+      "text": "銀脂雪道西返松圃",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n10:east->silverpine_range_starwatch_ridge",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "銀脂雪道東接觀星脊",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n4_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n5_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "銀脂松圃東側的雪道，松脂在冷光裡泛著淡銀色。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n5_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "銀脂松圃東側的雪道，松脂在冷光裡泛著淡銀色。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n5_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "銀脂松圃東側的雪道，松脂在冷光裡泛著淡銀色。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n5_n10:west->silverpine_range_fill_n6_n10",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 8,
+      "minimumLength": 12,
+      "text": "銀脂雪道西返松圃",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n5_n10:east->silverpine_range_fill_n4_n10",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "銀脂雪道東往觀星脊",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 24,
+      "minimumLength": 55,
+      "text": "風切木橋南側的銀松雪道，樹根間滲出冰冷而發亮的松脂。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n10:west->silverpine_range_silver_sap_grove",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "銀脂雪道西接銀脂松圃",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n10:east->silverpine_range_fill_n5_n10",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "銀脂雪道東往觀星脊",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n11:west->silverpine_range_windcut_bridge",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "風削石階西返風切木橋",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n11:east->silverpine_range_iceglass_cavern",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "風削石階東接冰玻洞",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n6_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n7_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n7_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n7_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n7_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "silverpine_range/silverpine_range_fill_n8_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "銀松山脈中的碎石山徑，松針鋪滿了路面。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_0_n3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "村莊外圍的泥土小路，兩旁長滿野草。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_1_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往後山和溪流的小路，偶有野兔竄過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_1_n1:south->starter_village_inn",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_1_n2",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_2_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往後山和溪流的小路，偶有野兔竄過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_2_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往後山和溪流的小路，偶有野兔竄過。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_2_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往後山和溪流的小路，偶有野兔竄過。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_2_n1:south->adventurer_guild",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_3_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "通往後山和溪流的小路，偶有野兔竄過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_3_n1:south->starter_village_old_library",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_3_n6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "村莊外圍的泥土小路，兩旁長滿野草。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_4_n1",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 22,
+      "minimumLength": 55,
+      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_4_n1:south->starter_village_chapel",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "starter_village/starter_village_fill_1_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village/starter_village_fill_1_3:west->starter_village_river_stairs",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "低地小徑西返溪畔石階",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "starter_village/starter_village_fill_1_3:east->starter_village_portal_shrine",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "低地小徑東接傳送祠堂",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "starter_village/starter_village_fill_3_4",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 50,
+      "text": "通往村莊各處的平坦道路，偶有村民走過。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village/starter_village_fill_5_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 19,
+      "minimumLength": 50,
+      "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village/starter_village_fill_6_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 40,
+      "minimumLength": 50,
+      "text": "青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "starter_village/starter_village_fill_6_3",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 40,
+      "minimumLength": 50,
+      "text": "青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "starter_village/starter_village_fill_6_3:east->plains_moonlit_copse",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n10_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "高原上的暴風通道，天空中電光不時閃爍。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n10_n14",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "高原上的暴風通道，天空中電光不時閃爍。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n11_n13",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 15,
+      "minimumLength": 55,
+      "text": "斷崖邊的碎石路，遠處雷聲隆隆不斷。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n11_n15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n17_n15",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_11_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_11_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_11_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_12_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_14_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_14_21",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_14_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_14_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_14_25",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_15_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_15_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_17_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_17_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_17_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_17_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_22",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 16,
+      "minimumLength": 55,
+      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_22:east->ember_march_ash_gate",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_23",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_23:east->ember_march_burnt_watchpost",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 21,
+      "minimumLength": 55,
+      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "thundersteppe/thundersteppe_fill_20_24:east->ember_march_glass_ash_field",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_34_24",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 20,
+      "minimumLength": 55,
+      "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n3_8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_6",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "溪谷中濕滑的石板路，流水聲迴盪在谷壁間。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n5_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n5_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n6_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n6_10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "穿過低語溪谷的小徑，風聲像是在耳邊私語。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_11",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "谷底蘆葦叢中的狹窄通道，霧氣在腳邊繚繞。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_11:south->firefly_trail",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 0,
+      "minimumLength": 20,
+      "text": "",
+      "reason": "跨 zone exit 描述需說明地貌銜接"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_6:south->whispering_valley_fill_n7_7",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 11,
+      "minimumLength": 12,
+      "text": "南側低谷小徑接往蘆葦路",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_7:south->whispering_valley_stone_weir",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "南側蘆葦石路通往石堰",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_1_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_1_n10",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_1_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_1_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n12:west->wildgrass_hills_old_road_cut",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "風口通道西返舊路切口",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n12:east->wildgrass_hills_stream_cut",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "風口通道東接溪切溝",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_2_n7",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "風口處的通道，枯草被風壓成一邊倒的弧形。",
+      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_3_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_3_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_3_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "有採集點的 room.description 必須自然提到資源外觀"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_3_n8:west->wildgrass_hills_broken_totem",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "野草坡地西返斷圖騰",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_3_n8:east->wildgrass_hills_fill_4_n8",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "野草坡地東往風暴草冠",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_4_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_4_n12",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_4_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 30,
+      "minimumLength": 55,
+      "text": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_4_n8:west->wildgrass_hills_fill_3_n8",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "斷旗坡道西返斷圖騰",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_4_n8:east->wildgrass_hills_fill_5_n8",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "斷旗坡道東往風暴草冠",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_5_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_5_n8",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 17,
+      "minimumLength": 55,
+      "text": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_5_n8:west->wildgrass_hills_fill_4_n8",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 9,
+      "minimumLength": 12,
+      "text": "丘陵小路西返斷圖騰",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_5_n8:east->wildgrass_hills_stormgrass_crown",
+      "kind": "exit.description",
+      "field": "description",
+      "currentLength": 10,
+      "minimumLength": 12,
+      "text": "丘陵小路東抵風暴草冠",
+      "reason": "exit 描述字數不足"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_6_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room 描述字數不足或過於泛用"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_6_n9",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 18,
+      "minimumLength": 55,
+      "text": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
+      "reason": "room.description 缺少方位或路徑線索，至少要提到方向詞、入口出口、通往或沿著哪條路"
+    },
+    {
+      "id": "dark_forest/darkwood_border_trail",
+      "kind": "room.description",
+      "field": "description",
+      "currentLength": 60,
+      "minimumLength": 55,
+      "text": "一條幾乎被落葉掩埋的小徑，連接著黑暗森林的深處與黑木林的幽暗腹地。空氣中瀰漫著腐葉與苔蘚的氣味，頭頂的樹冠交織成密不透光的穹頂。",
+      "reason": "有採集點的 room.description 必須說明採集位置或採集動作"
+    },
+    {
+      "id": "zone:plains/opening:23",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "plains/plains_fill_11_5: 平原上的泥土小路，遠處能看見風車的剪影。\nplains/plains_fill_12_5: 平原上的泥土小路，遠處能看見風車的剪影。\nplains/plains_fill_7_2: 平原上的泥土小路，遠處能看見風車的剪影。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「平原上的泥土小路」"
+    },
+    {
+      "id": "zone:eastern_coast/opening:26",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "eastern_coast/eastern_coast_fill_36_2: 礁石間的濕滑通道，潮水退去後留下一灘灘水窪。\neastern_coast/eastern_coast_fill_37_2: 礁石間的濕滑通道，潮水退去後留下一灘灘水窪。\neastern_coast/eastern_coast_fill_38_2: 礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「礁石間的濕滑通道」"
+    },
+    {
+      "id": "zone:mist_harbor/opening:22",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "mist_harbor/mist_harbor_fill_40_5: 港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。\nmist_harbor/mist_harbor_fill_41_n1: 港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。\nmist_harbor/mist_harbor_fill_42_5: 港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「港口裡的石板通道」"
+    },
+    {
+      "id": "zone:glass_dunes/opening:28",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "glass_dunes/glass_dunes_fill_5_23: 沙海邊緣的小路，沙丘的形狀隨風不斷變化。\nglass_dunes/glass_dunes_fill_6_23: 沙海邊緣的小路，沙丘的形狀隨風不斷變化。\nglass_dunes/glass_dunes_fill_7_20: 沙海邊緣的小路，沙丘的形狀隨風不斷變化。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「沙海邊緣的小路沙」"
+    },
+    {
+      "id": "zone:amber_forest/opening:30",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "amber_forest/amber_forest_fill_n15_8: 被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。\namber_forest/amber_forest_fill_n16_5: 被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。\namber_forest/amber_forest_fill_n17_8: 被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「被琥珀色樹脂覆蓋」"
+    },
+    {
+      "id": "zone:silverpine_range/opening:30",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "silverpine_range/silverpine_range_fill_n8_n11: 穿過銀色松林的小路，冷風從山間呼嘯而過。\nsilverpine_range/silverpine_range_fill_n8_n14: 穿過銀色松林的小路，冷風從山間呼嘯而過。\nsilverpine_range/silverpine_range_fill_n8_n8: 穿過銀色松林的小路，冷風從山間呼嘯而過。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「穿過銀色松林的小」"
+    },
+    {
+      "id": "zone:saltwind_flats/opening:20",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "saltwind_flats/saltwind_flats_fill_31_10: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。\nsaltwind_flats/saltwind_flats_fill_32_7: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。\nsaltwind_flats/saltwind_flats_fill_33_10: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「鹽結晶覆蓋的灘地」"
+    },
+    {
+      "id": "zone:saltwind_flats/opening:21",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "saltwind_flats/saltwind_flats_fill_32_7: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。\nsaltwind_flats/saltwind_flats_fill_33_10: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。\nsaltwind_flats/saltwind_flats_fill_36_10: 鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「鹽結晶覆蓋的灘地」"
+    },
+    {
+      "id": "zone:kingsroad_market/opening:20",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "kingsroad_market/kingsroad_market_fill_23_2: 連接各處攤位的通道，空氣中飄著香料和皮革的味道。\nkingsroad_market/kingsroad_market_fill_23_n1: 連接各處攤位的通道，空氣中飄著香料和皮革的味道。\nkingsroad_market/kingsroad_market_fill_25_5: 連接各處攤位的通道，空氣中飄著香料和皮革的味道。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「連接各處攤位的通」"
+    },
+    {
+      "id": "zone:kingsroad_market/opening:25",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "kingsroad_market/kingsroad_market_fill_28_3: 王道市集的主要商路，馬車和行商絡繹不絕。\nkingsroad_market/kingsroad_market_fill_29_3: 王道市集的主要商路，馬車和行商絡繹不絕。\nkingsroad_market/kingsroad_market_fill_30_3: 王道市集的主要商路，馬車和行商絡繹不絕。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「王道市集的主要商」"
+    },
+    {
+      "id": "zone:emerald_canopy/opening:20",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "emerald_canopy/emerald_canopy_fill_n18_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n19_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n20_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「在巨木枝幹間搭建」"
+    },
+    {
+      "id": "zone:emerald_canopy/opening:21",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "emerald_canopy/emerald_canopy_fill_n19_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n20_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n21_10: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「在巨木枝幹間搭建」"
+    },
+    {
+      "id": "zone:emerald_canopy/opening:22",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "emerald_canopy/emerald_canopy_fill_n20_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n21_10: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n21_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「在巨木枝幹間搭建」"
+    },
+    {
+      "id": "zone:emerald_canopy/opening:23",
+      "kind": "batch.repeatedOpening",
+      "field": "text",
+      "currentLength": 3,
+      "minimumLength": 1,
+      "text": "emerald_canopy/emerald_canopy_fill_n21_10: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n21_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。\nemerald_canopy/emerald_canopy_fill_n22_7: 在巨木枝幹間搭建的走道，遠處傳來鳥鳴和風聲。",
+      "reason": "同批生成內容連續 3 筆使用相同開頭「在巨木枝幹間搭建」"
+    }
+  ]
 }
