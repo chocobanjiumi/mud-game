@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:48:50.602Z",
+  "generatedAt": "2026-05-29T19:53:03.896Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2755,6 +2755,7 @@
     "moonlit_fen_mosquito_haze:north->moonlit_fen_frog_choir (distant_route) 蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。",
     "moonlit_fen_lantern_moss:north->moonlit_fen_fae_ring (distant_route) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。",
     "moonlit_fen_fae_ring:south->moonlit_fen_lantern_moss (distant_route) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。",
+    "moonlit_fen_sunken_log_bridge:north->moonlit_fen_fill_18_13 (distant_route) 沉木橋北返月沼北汊需沿半沉木支脈繞過黑水汊道，實際路程長於相鄰一格。",
     "moonlit_fen_moonwell:south->moonlit_fen_white_reed_maze (distant_route) 月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。",
     "moonlit_fen_white_reed_maze:north->moonlit_fen_moonwell (distant_route) 白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。",
     "moonlit_fen_old_canoe_camp:east->moonlit_fen_lunar_altar (distant_route) 舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。",

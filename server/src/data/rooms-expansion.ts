@@ -17427,8 +17427,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'moonlit_fen_sunken_log_bridge.png',
     imagePrompt: '沉木橋 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '沉木橋位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '沉木橋位於月光濕地的銀色水道與夜花叢之間，北側半沉木支脈連向黑水汊道，東側舊舟營仍有微弱槳影。水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
+      { direction: 'north', targetRoomId: 'moonlit_fen_fill_18_13', description: '北側沉木支脈沿黑水汊道上行，回到月沼北汊', edgeKind: 'distant_route', edgeNote: '沉木橋北返月沼北汊需沿半沉木支脈繞過黑水汊道，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'moonlit_fen_blackwater_run', description: '沉木橋回到黑水流' },
       { direction: 'east', targetRoomId: 'moonlit_fen_old_canoe_camp', description: '舊舟營在東側' },
     ],

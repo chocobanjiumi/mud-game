@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T19:48:43.360Z",
+  "generatedAt": "2026-05-29T19:52:55.447Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 851,
-    "errors": 577,
-    "warnings": 274,
+    "issues": 802,
+    "errors": 544,
+    "warnings": 258,
     "byGrade": {
-      "A_main_transition": 50,
+      "A_main_transition": 49,
       "B_connector": 19,
-      "C_empty_filler": 109,
-      "D_upgrade_candidate": 165
+      "C_empty_filler": 105,
+      "D_upgrade_candidate": 170
     },
     "byPurpose": {
-      "blocker": 216,
-      "border": 197,
-      "gathering": 131,
+      "blocker": 219,
+      "border": 206,
+      "gathering": 135,
       "monster": 30,
-      "npc_or_quest": 14,
+      "npc_or_quest": 15,
       "portal": 7,
-      "route": 73,
+      "route": 72,
       "service": 28
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 29,
-      "description.direction": 171,
-      "description.length": 271,
-      "description.purpose": 72,
-      "description.repeated_opening": 173,
-      "description.terrain": 26,
+      "dead_end.no_gameplay": 26,
+      "description.direction": 164,
+      "description.length": 256,
+      "description.purpose": 69,
+      "description.repeated_opening": 163,
+      "description.terrain": 22,
       "exit.description.length": 42,
-      "exit.description.missing": 67
+      "exit.description.missing": 60
     }
   },
   "zones": [
@@ -11009,15 +11009,17 @@
       "zoneId": "moonlit_fen",
       "zoneName": "月光濕地",
       "fillRooms": 16,
-      "issues": 49,
+      "issues": 0,
       "records": [
         {
           "id": "moonlit_fen_fill_14_14",
           "zone": "moonlit_fen",
-          "name": "濕地小路",
-          "grade": "C_empty_filler",
+          "name": "西北黑水封汊",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 14,
           "worldY": 14,
@@ -11034,42 +11036,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_14_14",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_14",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_14_17",
           "zone": "moonlit_fen",
-          "name": "蘆葦濕徑",
-          "grade": "C_empty_filler",
+          "name": "西蘆霧欄",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "npc_or_quest"
           ],
           "worldX": 14,
           "worldY": 17,
@@ -11088,40 +11074,23 @@
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
-          "hasQuestCue": false,
+          "hasQuestCue": true,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 63,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_14_17",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_17",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_14_18",
           "zone": "moonlit_fen",
-          "name": "濕地小路",
+          "name": "西側泥泡岸",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 14,
           "worldY": 18,
@@ -11143,40 +11112,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_14_18",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_18",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_14_19",
           "zone": "moonlit_fen",
-          "name": "沼澤通道",
+          "name": "西南銀霧溝",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 14,
           "worldY": 19,
@@ -11198,54 +11147,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_14_19",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_19",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_19",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_19",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_14_20",
           "zone": "moonlit_fen",
-          "name": "月光水道",
+          "name": "西南月影深水",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -11272,29 +11183,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_14_20",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_14_20",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_18_13",
@@ -11302,7 +11195,8 @@
           "name": "月沼北汊",
           "grade": "C_empty_filler",
           "purposes": [
-            "route"
+            "blocker",
+            "border"
           ],
           "worldX": 18,
           "worldY": 13,
@@ -11310,7 +11204,8 @@
           "mapY": 6,
           "neighbors": {
             "byExit": {
-              "south": "moonlit_fen_sunken_log_bridge"
+              "south": "moonlit_fen_sunken_log_bridge",
+              "north": ""
             },
             "byCoordinate": {
               "south": "moonlit_fen_sunken_log_bridge",
@@ -11318,56 +11213,19 @@
             }
           },
           "crossZoneBoundary": false,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 24,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_18_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 55,
-              "text": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。"
-            },
-            {
-              "id": "moonlit_fen_fill_18_13",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 24,
-              "minimum": 55,
-              "text": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。"
-            },
-            {
-              "id": "moonlit_fen_fill_18_13",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "moonlit_fen_fill_18_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->moonlit_fen_sunken_log_bridge 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 68,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_19_13",
@@ -11401,41 +11259,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 66,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_19_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。"
-            },
-            {
-              "id": "moonlit_fen_fill_19_13",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。"
-            },
-            {
-              "id": "moonlit_fen_fill_19_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->moonlit_fen_old_canoe_camp 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_20_13",
@@ -11443,6 +11271,7 @@
           "name": "舊舟北營",
           "grade": "C_empty_filler",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 20,
@@ -11451,7 +11280,8 @@
           "mapY": 6,
           "neighbors": {
             "byExit": {
-              "south": "moonlit_fen_fill_20_14"
+              "south": "moonlit_fen_fill_20_14",
+              "north": ""
             },
             "byCoordinate": {
               "south": "moonlit_fen_fill_20_14",
@@ -11466,49 +11296,12 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_20_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_13",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_13",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "moonlit_fen_fill_20_13",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->moonlit_fen_fill_20_14 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 68,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_20_14",
@@ -11516,6 +11309,7 @@
           "name": "月光水道",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
             "gathering"
           ],
           "worldX": 20,
@@ -11542,46 +11336,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 65,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_20_14",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_14",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit north->moonlit_fen_fill_20_13 缺 description",
-              "current": 0,
-              "minimum": 12
-            },
-            {
-              "id": "moonlit_fen_fill_20_14",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_20_16",
           "zone": "moonlit_fen",
-          "name": "濕地小路",
-          "grade": "C_empty_filler",
+          "name": "中央鏡水封潭",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 20,
           "worldY": 16,
@@ -11599,62 +11368,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_20_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_20_16",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_21_14",
           "zone": "moonlit_fen",
-          "name": "沼澤通道",
+          "name": "北月蘆根封口",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 21,
           "worldY": 14,
@@ -11676,37 +11408,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_21_14",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_21_14",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_21_16",
           "zone": "moonlit_fen",
-          "name": "蘆葦濕徑",
-          "grade": "C_empty_filler",
+          "name": "東蘆暗水欄",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 21,
           "worldY": 16,
@@ -11723,63 +11439,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_21_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_21_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_21_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_21_16",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_23_15",
           "zone": "moonlit_fen",
-          "name": "濕地小路",
-          "grade": "A_main_transition",
+          "name": "東界夢水灘",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": 23,
           "worldY": 15,
@@ -11794,47 +11473,27 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_23_15",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 65,
-              "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-            },
-            {
-              "id": "moonlit_fen_fill_23_15",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 65,
-              "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_23_16",
           "zone": "moonlit_fen",
-          "name": "沼澤通道",
+          "name": "鏡沼蘆門汊",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 23,
@@ -11843,7 +11502,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "east": "marsh_of_mirrors_reed_gate"
+              "east": "marsh_of_mirrors_reed_gate",
+              "west": ""
             },
             "byCoordinate": {
               "north": "moonlit_fen_fill_23_15",
@@ -11859,71 +11519,17 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 65,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 65,
-              "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-            },
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->marsh_of_mirrors_reed_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "moonlit_fen_fill_23_16",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 70,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_fill_23_17",
           "zone": "moonlit_fen",
-          "name": "月光水道",
+          "name": "泥鏡交界水道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -11951,38 +11557,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 65,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_fill_23_17",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-            },
-            {
-              "id": "moonlit_fen_fill_23_17",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->marsh_of_mirrors_peat_islet 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "moonlit_fen_fill_23_17",
-              "zone": "moonlit_fen",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "moonlit_fen_sunken_log_bridge",
@@ -12001,9 +11580,9 @@
           "mapY": -1,
           "neighbors": {
             "byExit": {
+              "north": "moonlit_fen_fill_18_13",
               "west": "moonlit_fen_blackwater_run",
-              "east": "moonlit_fen_old_canoe_camp",
-              "north": "moonlit_fen_fill_18_13"
+              "east": "moonlit_fen_old_canoe_camp"
             },
             "byCoordinate": {
               "north": "moonlit_fen_fill_18_13",
@@ -12021,31 +11600,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 202,
+          "descriptionLength": 226,
           "exitCount": 3,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "moonlit_fen_sunken_log_bridge",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 202,
-              "minimum": 55,
-              "text": "沉木橋位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。"
-            },
-            {
-              "id": "moonlit_fen_sunken_log_bridge",
-              "zone": "moonlit_fen",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit north->moonlit_fen_fill_18_13 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -24300,380 +23859,6 @@
       "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
     },
     {
-      "id": "moonlit_fen_fill_14_14",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_17",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_18",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_18",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_19",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_19",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_19",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_14_20",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_18_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 55,
-      "text": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。"
-    },
-    {
-      "id": "moonlit_fen_fill_18_13",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 24,
-      "minimum": 55,
-      "text": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。"
-    },
-    {
-      "id": "moonlit_fen_fill_18_13",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "moonlit_fen_fill_18_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->moonlit_fen_sunken_log_bridge 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "moonlit_fen_fill_19_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。"
-    },
-    {
-      "id": "moonlit_fen_fill_19_13",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。"
-    },
-    {
-      "id": "moonlit_fen_fill_19_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->moonlit_fen_old_canoe_camp 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "moonlit_fen_fill_20_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。"
-    },
-    {
-      "id": "moonlit_fen_fill_20_13",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。"
-    },
-    {
-      "id": "moonlit_fen_fill_20_13",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "moonlit_fen_fill_20_13",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->moonlit_fen_fill_20_14 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "moonlit_fen_fill_20_14",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_20_14",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit north->moonlit_fen_fill_20_13 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "moonlit_fen_fill_20_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_20_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_20_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_21_14",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_21_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_21_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_21_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_15",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 65,
-      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_15",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 65,
-      "text": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 65,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 65,
-      "text": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->marsh_of_mirrors_reed_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "moonlit_fen_fill_23_17",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "穿過沼澤的危險通道，毒霧在低處繚繞。"
-    },
-    {
-      "id": "moonlit_fen_fill_23_17",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->marsh_of_mirrors_peat_islet 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "moonlit_fen_sunken_log_bridge",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 202,
-      "minimum": 55,
-      "text": "沉木橋位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。"
-    },
-    {
-      "id": "moonlit_fen_sunken_log_bridge",
-      "zone": "moonlit_fen",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit north->moonlit_fen_fill_18_13 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
       "id": "obsidian_depths_black_glass_bridge",
       "zone": "obsidian_depths",
       "severity": "error",
@@ -28329,76 +27514,6 @@
     {
       "id": "mist_harbor_fill_45_2",
       "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_14_14",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_14_17",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_14_20",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_20_14",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_21_14",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_23_17",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 6 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_14_19",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_20_16",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_21_16",
-      "zone": "moonlit_fen",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "moonlit_fen_fill_23_16",
-      "zone": "moonlit_fen",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"

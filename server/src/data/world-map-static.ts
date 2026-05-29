@@ -2388,9 +2388,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_14_14": {
     "id": "moonlit_fen_fill_14_14",
-    "name": "濕地小路",
+    "name": "西北黑水封汊",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+    "description": "西北黑水封汊位於月光濕地外緣，南側蘆葦低伏，東面水面被銀霧遮成一片黑鏡。泥岸下方沒有穩固踏點，這裡是封閉 blocker，只保留濕地邊界與水草採集痕跡。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2400,9 +2400,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_14_17": {
     "id": "moonlit_fen_fill_14_17",
-    "name": "蘆葦濕徑",
+    "name": "西蘆霧欄",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+    "description": "西蘆霧欄被成排白蘆和低霧擋住，北側水聲貼著岸邊回響，東面才是較安全的濕地路線。蘆根下全是深泥，這格標示不可通行邊界，不安排怪物或任務目標。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2412,9 +2412,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_14_18": {
     "id": "moonlit_fen_fill_14_18",
-    "name": "濕地小路",
+    "name": "西側泥泡岸",
     "zone": "moonlit_fen",
-    "description": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。",
+    "description": "西側泥泡岸靠近月光濕地邊緣，北面白蘆遮住舊水線，東側遠處有螢火落在較乾的草墩上。腳下泥泡不停翻開，表示這裡是封閉 blocker，玩家應回到內側蘆葦路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2424,9 +2424,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_14_19": {
     "id": "moonlit_fen_fill_14_19",
-    "name": "沼澤通道",
+    "name": "西南銀霧溝",
     "zone": "moonlit_fen",
-    "description": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+    "description": "西南銀霧溝陷在兩片蘆葦之間，北側泥泡岸逐漸沒入黑水，東面月光水道才有可辨認的草墩。這裡沒有連續踏點，只作為濕地封閉邊界與危險水深提示。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2436,9 +2436,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_14_20": {
     "id": "moonlit_fen_fill_14_20",
-    "name": "月光水道",
+    "name": "西南月影深水",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+    "description": "西南月影深水貼著月光濕地南緣，北側銀霧溝仍能聽見水泡聲，東面水面忽然變暗。這格是 border blocker，深水下有水草採集痕跡，但沒有安全木樁可通行，也不接入南側新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2450,8 +2450,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_20_14",
     "name": "月光水道",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
-    "exits": [],
+    "description": "月光水道夾在舊舟北營與白蘆濕地之間，北側破舟痕能指回乾泥岸，南面黑水被月光照成細長亮線。這裡是採集邊界與短路線節點，只允許沿北側安全岸回返。",
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "moonlit_fen_fill_20_13",
+        "description": "北側沿破舟拖痕踏上乾泥岸，回到舊舟北營"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 6,
     "mapY": 0,
@@ -2460,9 +2466,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_20_16": {
     "id": "moonlit_fen_fill_20_16",
-    "name": "濕地小路",
+    "name": "中央鏡水封潭",
     "zone": "moonlit_fen",
-    "description": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+    "description": "中央鏡水封潭位於濕地腹地，北側白蘆倒影連成一片，東面水面看似平靜卻沒有露出的草墩。潭邊只有採集留下的水草痕，這格作為封閉 blocker，避免玩家誤入深水。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -2472,9 +2478,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_21_14": {
     "id": "moonlit_fen_fill_21_14",
-    "name": "沼澤通道",
+    "name": "北月蘆根封口",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+    "description": "北月蘆根封口被粗蘆根和倒木卡住，西側可望見月光水道，南面通往較暗的沼澤內圈。這裡是封閉 blocker，水邊有濕地藥草痕跡，但沒有可供玩家穿越的棧板。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -2484,9 +2490,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_21_16": {
     "id": "moonlit_fen_fill_21_16",
-    "name": "蘆葦濕徑",
+    "name": "東蘆暗水欄",
     "zone": "moonlit_fen",
-    "description": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+    "description": "東蘆暗水欄貼近鏡沼方向，北側蘆根封口擋住乾路，東面黑水下可見細小螢光。這格是封閉濕地邊界，只留下蘆葦與水草採集線索，不接玩家主路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -2496,9 +2502,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_23_15": {
     "id": "moonlit_fen_fill_23_15",
-    "name": "濕地小路",
+    "name": "東界夢水灘",
     "zone": "moonlit_fen",
-    "description": "月光濕地中的泥濘小路，腳下不時發出咕嘰聲。",
+    "description": "東界夢水灘位於月光濕地與鏡沼交界，西側夢水核心的微光映在泥面上，東面鏡沼水氣開始變冷。這格是封閉 border blocker，標示兩區濕地邊界銜接但不提供直接出口，也沒有安全木樁。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 9,
@@ -2508,13 +2514,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_23_16": {
     "id": "moonlit_fen_fill_23_16",
-    "name": "沼澤通道",
+    "name": "鏡沼蘆門汊",
     "zone": "moonlit_fen",
-    "description": "蘆葦叢中的濕滑小徑，月光在水面上留下銀色的痕跡。",
+    "description": "鏡沼蘆門汊在月光濕地東側收束成窄水口，西面仍是銀色蘆影，東面已能看見鏡沼的冷水倒光。這裡是跨區過渡節點，路線只沿東側蘆門進入鏡沼邊緣，西側深泥不可回穿。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "marsh_of_mirrors_reed_gate"
+        "targetRoomId": "marsh_of_mirrors_reed_gate",
+        "description": "東側蘆門穿過冷水倒影與白蘆窄口，接向鏡沼的蘆葦門"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側深泥吞沒舊蘆徑，無法回穿濕地內圈"
       }
     ],
     "mapSymbol": "[·]",
@@ -2525,13 +2538,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "moonlit_fen_fill_23_17": {
     "id": "moonlit_fen_fill_23_17",
-    "name": "月光水道",
+    "name": "泥鏡交界水道",
     "zone": "moonlit_fen",
-    "description": "穿過沼澤的危險通道，毒霧在低處繚繞。",
+    "description": "泥鏡交界水道貼著月光濕地東南緣，西側白蘆仍有螢火，東面泥水已變成鏡沼的暗色反光。這裡是 border 採集邊界，玩家只能沿東側水痕進入鏡沼泥洲，不能向南離開。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "marsh_of_mirrors_peat_islet"
+        "targetRoomId": "marsh_of_mirrors_peat_islet",
+        "description": "東側踏過泥水反光與蘆根淺灘，抵達鏡沼邊緣的泥炭小洲"
       }
     ],
     "mapSymbol": "[·]",
@@ -3238,11 +3252,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_18_13",
     "name": "月沼北汊",
     "zone": "moonlit_fen",
-    "description": "月光濕地北緣的黑水汊道貼著湖岸，草叢間滲出淡淡霧氣。",
+    "description": "月沼北汊貼著月光濕地北緣，北側湖岸被黑水切斷，南面沉木橋露出一排濕滑木脊。草叢間有霧氣與水草採集痕跡，這裡是北側短路線端點，必須沿南側木脊回到主路。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "moonlit_fen_sunken_log_bridge"
+        "targetRoomId": "moonlit_fen_sunken_log_bridge",
+        "description": "南側沿濕滑沉木木脊下行，回到沉木橋主路"
+      },
+      {
+        "direction": "north",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "北側黑水切斷湖岸，沒有能站穩的踏點"
       }
     ],
     "mapSymbol": "[·]",
@@ -3267,11 +3288,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_19_13",
     "name": "沉木北橋",
     "zone": "moonlit_fen",
-    "description": "沉木架成的濕滑小橋橫過淺水，南面能聽見濕地蟲鳴。",
+    "description": "沉木北橋用三根半沉木橫過淺水，北側黑水汊道被霧氣封住，南面舊舟營傳來蟲鳴與槳影。木縫間長著濕地草藥，這裡是北側路線與採集邊界，不是寬闊安全橋面。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "moonlit_fen_old_canoe_camp"
+        "targetRoomId": "moonlit_fen_old_canoe_camp",
+        "description": "南側踏過半沉木橋，接向舊舟營的乾泥岸"
       }
     ],
     "mapSymbol": "[·]",
@@ -3284,11 +3306,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "moonlit_fen_fill_20_13",
     "name": "舊舟北營",
     "zone": "moonlit_fen",
-    "description": "破舊獨木舟拖在泥岸旁，這裡已經是月光濕地的北界。",
+    "description": "舊舟北營把破獨木舟拖在泥岸旁，北側黑水和蘆葦圍住退路，南面月光水道仍有可辨認的草墩。這裡是北界路線端點，玩家可沿南側水道返回，不應把北岸當成新通路。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "moonlit_fen_fill_20_14"
+        "targetRoomId": "moonlit_fen_fill_20_14",
+        "description": "南側循破舟拖痕下到月光水道的安全草墩"
+      },
+      {
+        "direction": "north",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "北側黑水與蘆葦封住泥岸，獨木舟已不能下水"
       }
     ],
     "mapSymbol": "[·]",

@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-29T19:37:09.771Z",
+  "generatedAt": "2026-05-29T19:53:03.707Z",
   "counts": {
-    "totalSpecialRouteRecords": 838,
+    "totalSpecialRouteRecords": 839,
     "longPathEdgeKindEntries": 0,
-    "runtimeSpecialEdgeExits": 838,
+    "runtimeSpecialEdgeExits": 839,
     "staticOnlyEntries": 0,
-    "roomEdgeOnlyEntries": 838,
+    "roomEdgeOnlyEntries": 839,
     "missingSourceRooms": 0,
     "missingTargetRooms": 0,
-    "sameZone": 802,
+    "sameZone": 803,
     "crossZone": 36,
     "hasExistingIntermediateFillerOrStaticRoomToConnect": 2,
     "classifications": {
       "A_coordinate_error_candidate": 0,
       "B_missing_static_corridor": 0,
-      "C_special_route": 838
+      "C_special_route": 839
     },
     "edgeKinds": {
-      "distant_route": 838
+      "distant_route": 839
     }
   },
   "records": [
@@ -21665,6 +21665,55 @@
       },
       "description": "北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢",
       "edgeNote": "銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。",
+      "classification": {
+        "code": "C_special_route",
+        "label": "C 類：真正特殊路徑候選",
+        "rationale": "路徑不是同軸直線，或描述/edgeNote 已明確表示需要繞行、折返、渡口、入口或其他長路徑語意。",
+        "recommendedAction": "人工審查是否改成更明確的 special edge kind；保留時必須有 description 與 edgeNote 說明。"
+      },
+      "missingSourceRoom": false,
+      "missingTargetRoom": false
+    },
+    {
+      "key": "moonlit_fen_sunken_log_bridge:north->moonlit_fen_fill_18_13",
+      "sources": [
+        "room-edge-kind"
+      ],
+      "edgeKind": "distant_route",
+      "source": {
+        "roomId": "moonlit_fen_sunken_log_bridge",
+        "zone": "moonlit_fen",
+        "worldX": 18,
+        "worldY": 14
+      },
+      "direction": "north",
+      "target": {
+        "roomId": "moonlit_fen_fill_18_13",
+        "zone": "moonlit_fen",
+        "worldX": 18,
+        "worldY": 13
+      },
+      "expectedAdjacentCoordinate": {
+        "worldX": 18,
+        "worldY": 13
+      },
+      "actualDelta": {
+        "dx": 0,
+        "dy": -1,
+        "manhattan": 1
+      },
+      "sameZone": true,
+      "crossZone": false,
+      "hasExistingIntermediateFillerOrStaticRoomToConnect": false,
+      "intermediateScan": {
+        "mode": "same-axis",
+        "distance": 1,
+        "intermediateRooms": [],
+        "missingCoordinates": [],
+        "hasCompleteIntermediateRoute": false
+      },
+      "description": "北側長路先離開「沉木橋」，繞過遠處區域外圍地標後抵達「前方房間」，路程明顯長於相鄰房間。",
+      "edgeNote": "沉木橋北返月沼北汊需沿半沉木支脈繞過黑水汊道，實際路程長於相鄰一格。",
       "classification": {
         "code": "C_special_route",
         "label": "C 類：真正特殊路徑候選",
