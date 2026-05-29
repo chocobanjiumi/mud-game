@@ -1,35 +1,35 @@
 {
-  "generatedAt": "2026-05-29T20:36:18.157Z",
+  "generatedAt": "2026-05-29T20:38:24.759Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 259,
-    "errors": 187,
-    "warnings": 72,
+    "issues": 233,
+    "errors": 171,
+    "warnings": 62,
     "byGrade": {
       "A_main_transition": 37,
       "B_connector": 17,
-      "C_empty_filler": 90,
-      "D_upgrade_candidate": 199
+      "C_empty_filler": 88,
+      "D_upgrade_candidate": 201
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 248,
+      "border": 253,
       "gathering": 150,
       "monster": 30,
       "npc_or_quest": 21,
-      "portal": 13,
+      "portal": 14,
       "route": 69,
-      "service": 48
+      "service": 49
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 7,
-      "description.direction": 59,
-      "description.length": 93,
-      "description.purpose": 20,
-      "description.repeated_opening": 45,
+      "description.direction": 52,
+      "description.length": 84,
+      "description.purpose": 17,
+      "description.repeated_opening": 38,
       "description.terrain": 5,
       "exit.description.length": 12,
       "exit.description.missing": 18
@@ -7589,15 +7589,16 @@
       "zoneId": "mist_harbor",
       "zoneName": "霧港",
       "fillRooms": 9,
-      "issues": 26,
+      "issues": 0,
       "records": [
         {
           "id": "mist_harbor_fill_40_1",
           "zone": "mist_harbor",
-          "name": "港口通道",
+          "name": "霧門北貨箱封道",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 40,
           "worldY": 1,
@@ -7617,32 +7618,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_40_1",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_40_3",
           "zone": "mist_harbor",
-          "name": "倉庫旁道",
-          "grade": "C_empty_filler",
+          "name": "傳送燈西側霧棧封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "portal"
           ],
           "worldX": 40,
           "worldY": 3,
@@ -7664,54 +7656,16 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 70,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_40_3",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_40_3",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_40_3",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_40_3",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_40_5",
           "zone": "mist_harbor",
-          "name": "港口通道",
+          "name": "血鹽北界焦油封路",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -7737,47 +7691,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_40_5",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_40_5",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_40_5",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_41_n1",
           "zone": "mist_harbor",
-          "name": "霧中棧道",
+          "name": "船長室北霧石封",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 41,
           "worldY": -1,
@@ -7799,44 +7726,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_41_n1",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_41_n1",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_41_n1",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_42_5",
           "zone": "mist_harbor",
-          "name": "倉庫旁道",
+          "name": "破船標北界石板",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -7861,49 +7760,22 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_42_5",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_42_5",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_42_5",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_43_0",
           "zone": "mist_harbor",
-          "name": "港口通道",
+          "name": "走私巷東霧樁",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 43,
           "worldY": 0,
@@ -7926,57 +7798,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_43_0",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_43_0",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_43_0",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_43_0",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_43_4",
           "zone": "mist_harbor",
-          "name": "港口通道",
-          "grade": "C_empty_filler",
+          "name": "鹽診所南貨棚封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": 43,
           "worldY": 4,
@@ -7998,27 +7834,16 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_43_4",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_44_3",
           "zone": "mist_harbor",
-          "name": "倉庫旁道",
+          "name": "船匠院南霧棧",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -8041,56 +7866,18 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": true,
+          "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_44_3",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_44_3",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_44_3",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-            },
-            {
-              "id": "mist_harbor_fill_44_3",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "mist_harbor_fill_45_2",
           "zone": "mist_harbor",
-          "name": "港口通道",
+          "name": "白石門西霧堤",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -8117,39 +7904,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "mist_harbor_fill_45_2",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_45_2",
-              "zone": "mist_harbor",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-            },
-            {
-              "id": "mist_harbor_fill_45_2",
-              "zone": "mist_harbor",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -16313,196 +16072,6 @@
       "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
     },
     {
-      "id": "mist_harbor_fill_40_1",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。"
-    },
-    {
-      "id": "mist_harbor_fill_40_3",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_40_3",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_40_3",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_40_5",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_40_5",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_41_n1",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_41_n1",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_42_5",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_42_5",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_43_0",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_43_0",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_43_0",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_43_4",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "穿過倉庫區的狹窄通道，堆疊的貨箱擋住了視線。"
-    },
-    {
-      "id": "mist_harbor_fill_44_3",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_44_3",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_44_3",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "霧港的木製棧道，霧氣中船隻的輪廓若隱若現。"
-    },
-    {
-      "id": "mist_harbor_fill_45_2",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
-      "id": "mist_harbor_fill_45_2",
-      "zone": "mist_harbor",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "港口裡的石板通道，空氣裡滿是魚腥和焦油的味道。"
-    },
-    {
       "id": "obsidian_depths_black_glass_bridge",
       "zone": "obsidian_depths",
       "severity": "error",
@@ -17795,55 +17364,6 @@
     {
       "id": "lakeside_town_fill_19_3",
       "zone": "lakeside_town",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_40_3",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_43_0",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_44_3",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_40_5",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_41_n1",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_42_5",
-      "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "mist_harbor_fill_45_2",
-      "zone": "mist_harbor",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
