@@ -260,6 +260,13 @@ export interface RoomPayload {
     requiredQuestState?: 'available' | 'active' | 'ready' | 'completed';
     difficultyOptions?: string[];
   }[];
+  faithAltar?: {
+    faithId: string;
+    faithName: string;
+    faithTitle: string;
+    locationHint: string;
+    actionCommand: string;
+  };
   inspectHints?: { label: string; command: string }[];
   entities?: RoomEntity[];
   nearbyCombat?: NearbyCombatPayload;
@@ -443,6 +450,11 @@ export interface WorldMapRoomPayload {
     targetMapLayerName?: string;
     locked?: boolean;
   }[];
+  faithAltar?: {
+    faithId: string;
+    faithName: string;
+    faithTitle: string;
+  };
 }
 
 // Shop-related payloads

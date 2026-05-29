@@ -14,6 +14,7 @@
     "audit:map-text": "pnpm --filter server exec tsx ../scripts/audit-map-text-quality.ts --write",
     "audit:fill-rooms": "pnpm --filter server exec tsx ../scripts/audit-fill-room-quality.ts --write",
     "audit:monster-distribution": "pnpm --filter server exec tsx ../scripts/audit-monster-distribution.ts --write",
+    "audit:faith-altars": "pnpm --filter server exec tsx ../scripts/audit-faith-altars.ts --write",
     "audit:quality-specs": "pnpm --filter server exec tsx ../scripts/audit-quality-specs.ts",
     "prepare:room-images": "pnpm --filter server exec tsx ../scripts/prepare-room-image-jobs.ts",
     "test": "vitest run",

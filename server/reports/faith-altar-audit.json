@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-05-29T22:39:50.461Z",
+  "summary": {
+    "faiths": 10,
+    "altars": 10,
+    "issues": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "altars": [
+    {
+      "faithId": "aelora",
+      "faithName": "艾洛拉",
+      "faithTitle": "黎明女神",
+      "roomId": "starter_village_chapel",
+      "roomName": "晨光禮拜堂",
+      "zoneId": "starter_village",
+      "zoneName": "新手村",
+      "worldX": 4,
+      "worldY": 0,
+      "locationHint": "晨光禮拜堂",
+      "dangerNote": "安全的新手核心節點。"
+    },
+    {
+      "faithId": "brokk",
+      "faithName": "布洛克",
+      "faithTitle": "鍛火神",
+      "roomId": "forge_hall",
+      "roomName": "鍛造大廳",
+      "zoneId": "volcano_zone",
+      "zoneName": "火山地帶",
+      "worldX": 34,
+      "worldY": 21,
+      "locationHint": "鍛造大廳",
+      "dangerNote": "火山鍛造節點，需注意火元素騷動。"
+    },
+    {
+      "faithId": "ithern",
+      "faithName": "伊瑟恩",
+      "faithTitle": "知識神",
+      "roomId": "glass_dunes_lost_dynasty_altar",
+      "roomName": "失朝祭壇",
+      "zoneId": "glass_dunes",
+      "zoneName": "琉璃沙丘",
+      "worldX": 6,
+      "worldY": 20,
+      "locationHint": "失朝祭壇",
+      "dangerNote": "高階遺跡路線，建議沿沙丘主路推進。"
+    },
+    {
+      "faithId": "karvos",
+      "faithName": "卡爾沃",
+      "faithTitle": "戰爭之主",
+      "roomId": "arena_quarter_center_arena",
+      "roomName": "中央競技場",
+      "zoneId": "arena_quarter",
+      "zoneName": "競技城區",
+      "worldX": 26,
+      "worldY": 11,
+      "locationHint": "中央競技場",
+      "dangerNote": "受控競技戰鬥點，建議確認等級與補給。"
+    },
+    {
+      "faithId": "mirak",
+      "faithName": "米拉克",
+      "faithTitle": "財富與旅途之神",
+      "roomId": "kingsroad_market_shrine_of_routes",
+      "roomName": "路神小祠",
+      "zoneId": "kingsroad_market",
+      "zoneName": "王道市集",
+      "worldX": 28,
+      "worldY": 1,
+      "locationHint": "路神小祠",
+      "dangerNote": "安全交通節點。"
+    },
+    {
+      "faithId": "nesha",
+      "faithName": "奈薩",
+      "faithTitle": "虛空之眼",
+      "roomId": "marsh_of_mirrors_shattered_reflection",
+      "roomName": "破碎倒影",
+      "zoneId": "marsh_of_mirrors",
+      "zoneName": "鏡沼",
+      "worldX": 27,
+      "worldY": 15,
+      "locationHint": "破碎倒影",
+      "dangerNote": "禁忌倒影與混沌水路，建議熟悉鏡沼後前往。"
+    },
+    {
+      "faithId": "oser",
+      "faithName": "奧瑟",
+      "faithTitle": "冥河守門者",
+      "roomId": "bloodsalt_coast_blood_altar_ledge",
+      "roomName": "血壇岩棚",
+      "zoneId": "bloodsalt_coast",
+      "zoneName": "血鹽海岸",
+      "worldX": 43,
+      "worldY": 8,
+      "locationHint": "血壇岩棚",
+      "dangerNote": "亡靈與血潮活動區，建議高等隊伍前往。"
+    },
+    {
+      "faithId": "shalan",
+      "faithName": "莎蘭",
+      "faithTitle": "月影女神",
+      "roomId": "moonlit_fen_lunar_altar",
+      "roomName": "月沼祭壇",
+      "zoneId": "moonlit_fen",
+      "zoneName": "月光濕地",
+      "worldX": 21,
+      "worldY": 15,
+      "locationHint": "月沼祭壇",
+      "dangerNote": "濕地深處祭壇，建議熟悉水路後前往。"
+    },
+    {
+      "faithId": "talorn",
+      "faithName": "塔洛恩",
+      "faithTitle": "海潮與風暴之神",
+      "roomId": "storm_highlands_storm_altar",
+      "roomName": "風神祭壇",
+      "zoneId": "storm_highlands",
+      "zoneName": "風暴高原",
+      "worldX": -13,
+      "worldY": -14,
+      "locationHint": "風神祭壇",
+      "dangerNote": "高原雷暴危險區，建議備妥抗性與撤退路線。"
+    },
+    {
+      "faithId": "virdan",
+      "faithName": "薇爾丹",
+      "faithTitle": "森林母神",
+      "roomId": "elf_altar",
+      "roomName": "精靈祭壇",
+      "zoneId": "dark_forest",
+      "zoneName": "暗影森林",
+      "worldX": -5,
+      "worldY": 13,
+      "locationHint": "精靈祭壇",
+      "dangerNote": "森林支線聖地，周邊有暗影生物活動。"
+    }
+  ],
+  "issues": []
+}

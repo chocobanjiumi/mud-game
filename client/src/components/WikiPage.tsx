@@ -17,6 +17,7 @@ import {
   type WeaponType,
 } from '@game/shared';
 import { ROOMS, ZONES } from '../../../server/src/data/rooms';
+import { FAITH_ALTARS } from '../../../server/src/data/faith-altars';
 import { MonsterWikiContent } from './MonsterPage';
 import { SkillWikiSection } from './SkillTablePage';
 import { SuffixWikiContent } from './SuffixPage';
@@ -311,7 +312,7 @@ function RacesPage() {
 function FaithsPage() {
   return (
     <WikiSection id="faiths" title="信仰列表">
-      <DataTable minWidth="1120px" headers={['紋章', '信仰', '領域', '被動', '祈禱', '禁忌', '說明']}>
+      <DataTable minWidth="1240px" headers={['紋章', '信仰', '領域', '祭壇位置', '被動', '祈禱', '禁忌', '說明']}>
         {Object.values(FAITH_DEFS).map((faith) => (
           <tr key={faith.id} className="border-t border-border-dim align-top">
             <Td>
@@ -324,6 +325,7 @@ function FaithsPage() {
             </Td>
             <Td><NameId name={`${faith.name}・${faith.title}`} id={faith.id} /></Td>
             <Td>{faith.domains.join('、')}</Td>
+            <Td>{formatFaithAltarLocation(faith.id)}</Td>
             <Td><NameId name={faith.passiveName} id={faith.passiveSkillId} muted />{faith.passiveDescription}</Td>
             <Td><NameId name={faith.prayerName} id={faith.prayerBlessingId} muted />{faith.prayerDescription}</Td>
             <Td>{faith.taboos.join('、')}</Td>
@@ -333,6 +335,13 @@ function FaithsPage() {
       </DataTable>
     </WikiSection>
   );
+}
+
+function formatFaithAltarLocation(faithId: keyof typeof FAITH_ALTARS) {
+  const altar = FAITH_ALTARS[faithId];
+  const room = ROOMS[altar.roomId];
+  const zone = room ? ZONES[room.zone] : undefined;
+  return `${zone?.name ?? altar.zoneHint} / ${room?.name ?? altar.locationHint}`;
 }
 
 function getFaithHeraldryPath(faithId: string) {

@@ -7778,7 +7778,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'marsh_of_mirrors_shattered_reflection.png',
     imagePrompt: '破碎倒影 in marsh_of_mirrors, cracked mirror-like water surface, shards of reflected sky, black reeds and eerie fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '鏡池北側的水面像被看不見的力量敲碎，分成無數不連續的倒影碎片。每一片都映出不同天色、不同隊伍位置，甚至不同時間的自己。這裡是大型事件前置房，玩家可研究倒影裂紋、收集鏡片水膜，並找到通往玻璃水核心的第一組路徑規則。破碎倒影會讓怪物行動看似瞬移，毒蛙與湖蛇會從不該相連的水面突然躍出。若玩家能找出哪一片倒影沒有延遲，就能避開錯誤路線；若判斷失敗，隊伍會被送往蛇道或迷霧更深處。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
+      '鏡池北側的水面像被看不見的力量敲碎，分成無數不連續的倒影碎片。每一片都映出不同天色、不同隊伍位置，甚至不同時間的自己，中央黑玻祭壇刻著奈薩虛空之眼的禁忌紋。這裡是大型事件前置房，玩家可研究倒影裂紋、收集鏡片水膜，並找到通往玻璃水核心的第一組路徑規則。破碎倒影會讓怪物行動看似瞬移，毒蛙與湖蛇會從不該相連的水面突然躍出。若玩家能找出哪一片倒影沒有延遲，就能避開錯誤路線；若判斷失敗，隊伍會被送往蛇道或迷霧更深處。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。',
     exits: [
       { direction: 'south', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '裂紋水面回到鏡池' },
       {
@@ -17534,7 +17534,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'moonlit_fen_lunar_altar.png',
     imagePrompt: '月沼祭壇 in moonlit_fen, silver moonlit wetland with reeds, glowing night flowers, fireflies, shallow black water, moss and fae lights, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain water, clear lantern light',
     description:
-      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。南側舟痕被月沼水面吞成倒影，真正路徑只能從舊舟營划入祭壇。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
+      '月沼祭壇位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔；莎蘭月影女神的夜晚、秘密與夢境徽記刻在濕冷石面上。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。南側舟痕被月沼水面吞成倒影，真正路徑只能從舊舟營划入祭壇。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_white_reed_maze', description: '月沼祭壇回到白蘆迷道' },
       { direction: 'east', targetRoomId: 'moonlit_fen_dreamwater_core', description: '夢水核心在東側' },
@@ -23015,7 +23015,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'kingsroad_market_shrine_of_routes.png',
     imagePrompt: '路神小祠 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '路神小祠位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '路神小祠位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序；米拉克財富與旅途之神的契約銅牌掛在小祠檐下。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '回到馱獸圈', edgeKind: 'distant_route', edgeNote: '路神小祠南側要繞過祈願石與馱獸欄門，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '路神小祠西側沿商隊祈路繞回兌換所，實際路程長於相鄰一格。' },
@@ -23709,7 +23709,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'arena_quarter_center_arena.png',
     imagePrompt: '中央競技場 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '中央競技場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '中央競技場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序，卡爾沃戰爭之主的榮耀戰旗懸在場心。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'north', targetRoomId: 'arena_quarter_private_boxes', description: '北側包廂階梯回到貴賓包廂' },
       {
@@ -27831,7 +27831,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'bloodsalt_coast_blood_altar_ledge.png',
     imagePrompt: '血壇岩棚 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
+      '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上；奧瑟冥河守門者的亡者安息刻文壓在祭壇血槽邊。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'distant_route', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },

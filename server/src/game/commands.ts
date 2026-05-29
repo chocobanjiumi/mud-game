@@ -7,7 +7,7 @@ import {
 } from '../ws/handler.js';
 import {
   getCharacterById, getCharacterByName, saveCharacter,
-  getInventory, getLearnedSkills, upgradeSkill,
+  getInventory, getLearnedSkills, learnSkill, forgetSkill, upgradeSkill,
   addInventoryItem, removeInventoryItem, setEquipped,
   getEquippedItems,
   getUnlockedPortals, isPortalUnlocked, isQuestCompleted,
@@ -57,6 +57,7 @@ import { GUARDIAN_DEFS } from './guardian.js';
 import { findNpcByName, getNpcsByRoom } from '../data/npcs.js';
 import { getRoom, getRoomsByZone, getZone, ROOMS, ZONES, getRoomByWorldCoord, getRoomWorldCoord } from '../data/rooms.js';
 import { buildInstanceEntryDefs, type InstanceEntryDef, type InstanceEntryQuestState } from '../data/world-map2-plan.js';
+import { canFollowFaithAtRoom, getFaithAltar, getFaithAltarByRoomId } from '../data/faith-altars.js';
 import { MONSTERS } from '../data/monsters.js';
 import { getTravelNodes } from '../data/travel.js';
 import { RANK_NAMES } from './kingdom.js';
@@ -152,7 +153,18 @@ const fieldApproachingTimers = new Map<string, ReturnType<typeof setTimeout>>();
 const activeScoutRooms = new Set<string>();
 const pendingHunterMarks = new Map<string, PendingHunterMark>();
 
-type RoomStatePayload = RoomPayload & { zoneName?: string; silent?: boolean; localMap?: LocalMapPayload };
+type RoomStatePayload = RoomPayload & {
+  zoneName?: string;
+  silent?: boolean;
+  localMap?: LocalMapPayload;
+  faithAltar?: {
+    faithId: string;
+    faithName: string;
+    faithTitle: string;
+    locationHint: string;
+    actionCommand: string;
+  };
+};
 const travelCooldowns = new Map<string, number>();
 const instanceEntryCooldowns = new Map<string, number>();
 const FIELD_SKILL_COOLDOWN_TICK_MS = 5_000;
@@ -682,6 +694,7 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
   const instanceEntries = buildInstanceEntryDefs(ZONES)
     .filter(entry => entry.roomId === char.roomId)
     .map(entry => buildInstanceEntryPayload(char, entry));
+  const faithAltar = getFaithAltarByRoomId(roomInfo.room.id);
   const groundItems = getAvailableGroundItems(char.roomId);
   const roomItems = groundItems.map(groundItem => ({
     id: groundItem.itemId,
@@ -724,6 +737,13 @@ function buildRoomPayload(char: Character, silent = false): RoomStatePayload | n
     gatheringNodes,
     travelNodes: roomTravelNodes,
     instanceEntries,
+    faithAltar: faithAltar ? {
+      faithId: faithAltar.faithId,
+      faithName: FAITH_DEFS[faithAltar.faithId].name,
+      faithTitle: FAITH_DEFS[faithAltar.faithId].title,
+      locationHint: faithAltar.locationHint,
+      actionCommand: `faith follow ${faithAltar.faithId}`,
+    } : undefined,
     inspectHints,
     entities,
     nearbyCombat: buildNearbyCombatPayload({
@@ -1049,6 +1069,8 @@ function buildRoomInspectHints(
   if (hasCorpses) hints.push({ label: '搜尋屍體', command: 'search corpse' });
   if (hasGatheringNodes) hints.push({ label: '採集資源', command: 'gather' });
   if (hasTravelNodes) hints.push({ label: '啟用交通點', command: 'activate portal' });
+  const altar = getFaithAltarByRoomId(room.id);
+  if (altar) hints.push({ label: '改信祭壇', command: `faith follow ${altar.faithId}` });
   return hints;
 }
 
@@ -1431,9 +1453,12 @@ function cmdFaith(session: WsSession, args: string[]): void {
   if (sub === 'list') {
     sendSystem(session.sessionId, '── 可信仰神祗 ──');
     for (const faith of Object.values(FAITH_DEFS)) {
-      sendSystem(session.sessionId, `  ${faith.id.padEnd(8)} ${faith.name}・${faith.title} - ${faith.passiveName}`);
+      const altar = getFaithAltar(faith.id);
+      const discovered = hasDiscovery(char.id, 'visit_room', altar.roomId) || char.roomId === altar.roomId;
+      const location = discovered ? `${altar.zoneHint}「${altar.locationHint}」` : `${altar.zoneHint}一帶`;
+      sendSystem(session.sessionId, `  ${faith.id.padEnd(8)} ${faith.name}・${faith.title} - ${faith.passiveName}；祭壇：${location}`);
     }
-    sendSystem(session.sessionId, '使用 faith follow <神祗ID或名稱> 改信。改信會清空恩寵並進入祈禱冷卻。');
+    sendSystem(session.sessionId, '使用 faith follow <神祗ID或名稱> 可在對應祭壇改信。改信會清空恩寵並進入祈禱冷卻。');
     return;
   }
 
@@ -1489,6 +1514,8 @@ function sendFaithInfo(session: WsSession, char: Character): void {
   sendSystem(session.sessionId, `被動：${faith.passiveName}：${faith.passiveDescription}`);
   sendSystem(session.sessionId, `祈禱：${faith.prayerName}：${faith.prayerDescription}`);
   sendSystem(session.sessionId, `恩寵：${char.faithFavor ?? 0}/100${cooldown > 0 ? `；祈禱冷卻 ${formatDuration(cooldown)}` : ''}`);
+  const altar = getFaithAltar(faith.id);
+  sendSystem(session.sessionId, `改信：需前往對應祭壇；目前信仰祭壇位置為 ${faith.name}・${faith.title}：${altar.zoneHint}「${altar.locationHint}」。`);
 }
 
 function prayToFaith(session: WsSession, char: Character): void {
@@ -1526,12 +1553,25 @@ function changeFaith(session: WsSession, char: Character, faithId: FaithId): voi
   }
 
   const next = FAITH_DEFS[faithId];
+  if (!canFollowFaithAtRoom(char.roomId, faithId)) {
+    const currentFaith = FAITH_DEFS[current];
+    const altar = getFaithAltar(faithId);
+    sendError(
+      session.sessionId,
+      `改信必須在對應祭壇完成。你目前信仰是${currentFaith.name}・${currentFaith.title}，若要改信${next.name}・${next.title}，請前往${altar.zoneHint}「${altar.locationHint}」。${altar.dangerNote}`,
+    );
+    return;
+  }
+
+  forgetSkill(char.id, FAITH_DEFS[current].passiveSkillId);
+  learnSkill(char.id, next.passiveSkillId);
   char.faithId = faithId;
   char.faithFavor = 0;
   char.faithCooldownUntil = Date.now() + 60 * 60 * 1000;
   saveCharacter(char);
 
-  sendSystem(session.sessionId, `你改信${next.name}・${next.title}。既有恩寵歸零，祈禱進入 1 小時冷卻。`);
+  const altar = getFaithAltar(faithId);
+  sendSystem(session.sessionId, `你在${altar.locationHint}改信${next.name}・${next.title}。既有恩寵歸零，祈禱進入 1 小時冷卻。`);
   sendSystem(session.sessionId, `新的被動：${next.passiveName}：${next.passiveDescription}`);
   cmdStatus(session);
 }
@@ -1574,6 +1614,8 @@ function cmdRenounce(session: WsSession, args: string[]): void {
 
 function renounceFaith(session: WsSession, char: Character): void {
   const faith = FAITH_DEFS[char.faithId ?? DEFAULT_FAITH_ID];
+  forgetSkill(char.id, faith.passiveSkillId);
+  learnSkill(char.id, FAITH_DEFS[DEFAULT_FAITH_ID].passiveSkillId);
   char.faithId = DEFAULT_FAITH_ID;
   char.faithFavor = 0;
   char.faithCooldownUntil = Date.now() + 60 * 60 * 1000;
@@ -4668,6 +4710,11 @@ function buildWorldMapPayload(char: Character): {
         targetMapLayerName?: string;
         locked?: boolean;
       }[];
+      faithAltar?: {
+        faithId: string;
+        faithName: string;
+        faithTitle: string;
+      };
     }[];
   }[];
   connections: { fromZoneId: string; toZoneId: string }[];
@@ -4679,6 +4726,7 @@ function buildWorldMapPayload(char: Character): {
       .filter((candidate): candidate is RoomDef => Boolean(candidate))
       .map(room => {
         const layer = roomLayers.get(room.id) ?? { mapLayer: inferMapLayerFromCoordinates(room) };
+        const faithAltar = getFaithAltarByRoomId(room.id);
         return {
           id: room.id,
           name: room.name,
@@ -4701,6 +4749,11 @@ function buildWorldMapPayload(char: Character): {
               locked: exit.locked,
             };
           }),
+          faithAltar: faithAltar ? {
+            faithId: faithAltar.faithId,
+            faithName: FAITH_DEFS[faithAltar.faithId].name,
+            faithTitle: FAITH_DEFS[faithAltar.faithId].title,
+          } : undefined,
         };
       });
 
