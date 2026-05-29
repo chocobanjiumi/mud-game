@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:31:11.381Z",
+  "generatedAt": "2026-05-29T20:33:43.745Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 318,
-    "errors": 227,
-    "warnings": 91,
+    "issues": 287,
+    "errors": 207,
+    "warnings": 80,
     "byGrade": {
-      "A_main_transition": 39,
+      "A_main_transition": 37,
       "B_connector": 17,
-      "C_empty_filler": 92,
-      "D_upgrade_candidate": 195
+      "C_empty_filler": 90,
+      "D_upgrade_candidate": 199
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 241,
-      "gathering": 149,
+      "border": 242,
+      "gathering": 150,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 13,
       "route": 69,
-      "service": 44
+      "service": 47
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 9,
-      "description.direction": 76,
-      "description.length": 113,
-      "description.purpose": 22,
-      "description.repeated_opening": 60,
+      "dead_end.no_gameplay": 7,
+      "description.direction": 68,
+      "description.length": 103,
+      "description.purpose": 21,
+      "description.repeated_opening": 52,
       "description.terrain": 5,
       "exit.description.length": 12,
-      "exit.description.missing": 21
+      "exit.description.missing": 19
     }
   },
   "zones": [
@@ -3026,12 +3026,12 @@
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
       "fillRooms": 10,
-      "issues": 31,
+      "issues": 0,
       "records": [
         {
           "id": "eastern_coast_fill_31_0",
           "zone": "eastern_coast",
-          "name": "礁石通道",
+          "name": "北吊機礁封路",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -3058,44 +3058,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 73,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_31_0",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_31_0",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_31_0",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_31_3",
           "zone": "eastern_coast",
-          "name": "海岸小路",
+          "name": "王道東側潮封",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -3122,44 +3094,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 72,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_31_3",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_31_3",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_31_3",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_34_4",
           "zone": "eastern_coast",
-          "name": "沙灘邊緣",
+          "name": "海盜營南沙封",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -3186,40 +3130,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_34_4",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。"
-            },
-            {
-              "id": "eastern_coast_fill_34_4",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 19,
-              "minimum": 55,
-              "text": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_34_5",
           "zone": "eastern_coast",
-          "name": "潮間帶",
-          "grade": "C_empty_filler",
+          "name": "藍泥北側潮溝",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "service"
           ],
           "worldX": 34,
           "worldY": 5,
@@ -3239,49 +3163,22 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_34_5",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_34_5",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_34_5",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_34_6",
           "zone": "eastern_coast",
-          "name": "海岸小路",
-          "grade": "A_main_transition",
+          "name": "鹽風藍泥北界",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": 34,
           "worldY": 6,
@@ -3297,68 +3194,24 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 66,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_34_6",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_34_6",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 65,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_34_6",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "eastern_coast_fill_34_6",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->saltwind_flats_blue_mud_shelf 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "eastern_coast_fill_34_6",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_35_0",
           "zone": "eastern_coast",
-          "name": "礁石通道",
+          "name": "斷碼頭東礁封",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -3384,48 +3237,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_35_0",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_35_0",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 17,
-              "minimum": 55,
-              "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-            },
-            {
-              "id": "eastern_coast_fill_35_0",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_36_2",
           "zone": "eastern_coast",
-          "name": "沙灘邊緣",
-          "grade": "C_empty_filler",
+          "name": "蛇巢東側浪封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": 36,
           "worldY": 2,
@@ -3443,49 +3269,21 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_36_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_36_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_36_2",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_37_2",
           "zone": "eastern_coast",
-          "name": "礁石通道",
+          "name": "中段碎礁阻帶",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -3510,47 +3308,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_37_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_37_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_37_2",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_38_2",
           "zone": "eastern_coast",
-          "name": "海岸小路",
+          "name": "霧港西潮前帶",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 38,
           "worldY": 2,
@@ -3572,47 +3343,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_38_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_38_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-            },
-            {
-              "id": "eastern_coast_fill_38_2",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "eastern_coast_fill_39_2",
           "zone": "eastern_coast",
-          "name": "潮間帶",
-          "grade": "A_main_transition",
+          "name": "霧港西門路牌潮徑",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": 39,
           "worldY": 2,
@@ -3628,46 +3372,19 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 30,
+          "descriptionLength": 80,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "eastern_coast_fill_39_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 30,
-              "minimum": 65,
-              "text": "海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。"
-            },
-            {
-              "id": "eastern_coast_fill_39_2",
-              "zone": "eastern_coast",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "eastern_coast_fill_39_2",
-              "zone": "eastern_coast",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->mist_harbor_fog_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -16605,228 +16322,6 @@
       "text": "鯨骨橋位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。"
     },
     {
-      "id": "eastern_coast_fill_31_0",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_31_0",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_31_3",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_31_3",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_34_4",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。"
-    },
-    {
-      "id": "eastern_coast_fill_34_4",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 19,
-      "minimum": 55,
-      "text": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。"
-    },
-    {
-      "id": "eastern_coast_fill_34_5",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_34_5",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_34_6",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_34_6",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 65,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_34_6",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "eastern_coast_fill_34_6",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->saltwind_flats_blue_mud_shelf 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "eastern_coast_fill_35_0",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_35_0",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 17,
-      "minimum": 55,
-      "text": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。"
-    },
-    {
-      "id": "eastern_coast_fill_36_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_36_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_37_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_37_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_38_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_38_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。"
-    },
-    {
-      "id": "eastern_coast_fill_39_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 30,
-      "minimum": 65,
-      "text": "海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。"
-    },
-    {
-      "id": "eastern_coast_fill_39_2",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "eastern_coast_fill_39_2",
-      "zone": "eastern_coast",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->mist_harbor_fog_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "frostbite_frozen_divide",
       "zone": "frostbite_pass",
       "severity": "error",
@@ -18752,62 +18247,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_31_0",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_31_3",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_34_6",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_35_0",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_34_5",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_36_2",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_37_2",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "eastern_coast_fill_38_2",
-      "zone": "eastern_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "frostbite_pass_fill_n19_n12",

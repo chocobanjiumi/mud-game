@@ -785,9 +785,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_31_0": {
     "id": "eastern_coast_fill_31_0",
-    "name": "礁石通道",
+    "name": "北吊機礁封路",
     "zone": "eastern_coast",
-    "description": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+    "description": "北吊機礁封路貼著東海岸北端，北面能望見機械墳場入口吊機的黑影，南側海藻灘在潮聲中展開，東邊木棧道只剩遠處欄杆。這裡是 border blocker，亂礁與廢纜封住機械區方向，不提供正式通行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -797,9 +797,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_31_3": {
     "id": "eastern_coast_fill_31_3",
-    "name": "海岸小路",
+    "name": "王道東側潮封",
     "zone": "eastern_coast",
-    "description": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+    "description": "王道東側潮封位在王道市集東界外，西面可回望市集石路的旗桿，北側潮池洞窟滲出鹹水，東邊海蝕洞口被浪花遮住。這裡是 border blocker，用濕滑礁面標示市集與東海岸分界，不作跨區捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -809,9 +809,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_34_4": {
     "id": "eastern_coast_fill_34_4",
-    "name": "沙灘邊緣",
+    "name": "海盜營南沙封",
     "zone": "eastern_coast",
-    "description": "沙灘與礁岩交界的邊緣地帶，海浪聲不絕於耳。",
+    "description": "海盜營南沙封位在海盜營地南側，北面破帆與煙灰仍可辨認，西側暗礁貼著退潮線，南面潮間帶積著碎貝。這裡是 blocker 邊界，鬆沙下埋著木樁與斷索，只用來阻止玩家繞過營地路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -821,9 +821,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_34_5": {
     "id": "eastern_coast_fill_34_5",
-    "name": "潮間帶",
+    "name": "藍泥北側潮溝",
     "zone": "eastern_coast",
-    "description": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+    "description": "藍泥北側潮溝夾在海盜營南沙封與鹽風灘藍泥棚之間，北面乾沙逐漸變成礁石，南側藍黑色濕泥開始滲出鹽霧。潮溝水深不穩，是純 blocker 與過渡地形提示，不安排採集或戰鬥。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -833,13 +833,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_34_6": {
     "id": "eastern_coast_fill_34_6",
-    "name": "海岸小路",
+    "name": "鹽風藍泥北界",
     "zone": "eastern_coast",
-    "description": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+    "description": "鹽風藍泥北界位在東海岸南緣，北面潮溝仍有海浪回聲，南側鹽風灘藍泥棚泛著藍黑濕光。這裡是跨區 border route 端點，標示海岸沙礁轉入鹽風灘濕泥，不放怪物或採集玩法。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "saltwind_flats_blue_mud_shelf"
+        "targetRoomId": "saltwind_flats_blue_mud_shelf",
+        "description": "沿藍黑濕泥與鹽霧木標南下，進入鹽風灘藍泥棚。"
       }
     ],
     "mapSymbol": "[·]",
@@ -850,9 +851,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_35_0": {
     "id": "eastern_coast_fill_35_0",
-    "name": "礁石通道",
+    "name": "斷碼頭東礁封",
     "zone": "eastern_coast",
-    "description": "海岸邊的崎嶇小路，鹹溼的海風撲面而來。",
+    "description": "斷碼頭東礁封位在破碼頭東側，西面木樁被浪打得歪斜，南方走私者海灣藏在礁影後。礁石裂縫被海水灌滿，這裡是 border blocker，阻止碼頭線直接切入海灣背面。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -862,9 +863,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_36_2": {
     "id": "eastern_coast_fill_36_2",
-    "name": "沙灘邊緣",
+    "name": "蛇巢東側浪封",
     "zone": "eastern_coast",
-    "description": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+    "description": "蛇巢東側浪封貼著海蛇巢穴東面，西側礁洞裡有蛇鱗刮痕，北方風暴瞭望崖被浪霧遮住，東邊低礁延伸成一串斷點。這裡是 blocker 邊界，濕滑浪溝阻止巢穴路線向東亂接。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -874,9 +875,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_37_2": {
     "id": "eastern_coast_fill_37_2",
-    "name": "礁石通道",
+    "name": "中段碎礁阻帶",
     "zone": "eastern_coast",
-    "description": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+    "description": "中段碎礁阻帶位在蛇巢東側浪封與霧港西潮帶之間，西面浪溝仍可聽見蛇巢回聲，東側礁脊逐漸被海霧吞沒。這裡是純 blocker，碎礁只提供地形連續感，不是可通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -886,9 +887,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_38_2": {
     "id": "eastern_coast_fill_38_2",
-    "name": "海岸小路",
+    "name": "霧港西潮前帶",
     "zone": "eastern_coast",
-    "description": "礁石間的濕滑通道，潮水退去後留下一灘灘水窪。",
+    "description": "霧港西潮前帶承接中段碎礁阻帶，西面是低矮礁脊，東面濃霧裡已能聽見霧港銅鐘。潮水在腳下留下連續水窪，這裡是純 blocker 與邊界預告，不安排額外玩法。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -898,13 +899,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "eastern_coast_fill_39_2": {
     "id": "eastern_coast_fill_39_2",
-    "name": "潮間帶",
+    "name": "霧港西門路牌潮徑",
     "zone": "eastern_coast",
-    "description": "海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。",
+    "description": "霧港西門路牌潮徑位在東海岸最東端，西面霧港西潮前帶仍有礁水聲，東面濃霧中露出霧港城門拱影與銅鐘輪廓。路牌亭標示這裡是跨區 border route 端點，專門銜接東海岸與霧港入口，不放怪物或採集玩法。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "mist_harbor_fog_gate"
+        "targetRoomId": "mist_harbor_fog_gate",
+        "description": "沿銅鐘聲與路牌亭燈火穿過濃霧東行，抵達霧港霧門。"
       }
     ],
     "mapSymbol": "[·]",

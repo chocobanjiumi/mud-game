@@ -5288,7 +5288,7 @@ for (const [roomAId, dir, roomBId] of CROSS_ZONE_CONNECTIONS) {
 const DESCRIPTION_OVERRIDES: Record<string, string> = {
   kingdom_frontier_fill_n10_n7: '號角獵門口穿過王室獵場西側界碑，西面邊境巡邏路仍有軍靴印，東側獵場號角門掛著舊銅環。磨損石墩標出獵場與軍管區分界，是明確跨區通路，兩側都有巡邏繩標。',
   kingdom_frontier_fill_n10_n6: '邊境巡邏路在獵場鹿徑西側延伸，西面是軍方哨旗與低牆，東側草叢裡可見王室與軍方的雙重界標。這是通往王家獵場鹿徑的 border route，路面仍受巡邏管制，界碑旁有警告牌。',
-  eastern_coast_fill_39_2: '海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。',
+  eastern_coast_fill_39_2: '霧港西門路牌潮徑位在東海岸最東端，西面霧港西潮前帶仍有礁水聲，東面濃霧中露出霧港城門拱影與銅鐘輪廓。路牌亭標示這裡是跨區 border route 端點，專門銜接東海岸與霧港入口，不放怪物或採集玩法。',
   bloodsalt_coast_fill_47_9: '棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。',
   serpent_delta_fill_33_20: '矮礦北口泥岸位在蛇河三角洲南緣，北面接舊堤南窄泥道，南面火山岩壁開著矮人礦坑入口，鐵鏽味與濕泥味混在一起。這裡是跨區 border gathering 點，泥岸上可採含鐵水苔，但主要功能是標示前往矮人礦坑的邊界。',
   silverpine_range_fill_0_n12: '舊路銀松折口位於銀松山脈東緣，東側野草丘陵的舊路在這裡抬升成碎石階，南面洞口風聲從岩縫傳來。坡邊有可採的銀松針與冷露苔，這裡是 border gathering route，連接丘陵與山徑。',
