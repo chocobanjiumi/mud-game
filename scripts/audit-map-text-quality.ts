@@ -2421,7 +2421,7 @@ function getOpeningSignature(text: string): string {
 
 function extractCoreTerms(text: string): Set<string> {
   const termLength = 4;
-  const normalized = text.replace(/[，。；、：「」『』（）()【】\s\dA-Za-z_-]/g, '');
+  const normalized = [...text].filter(char => /[\u3400-\u9fff]/u.test(char)).join('');
   const stopTerms = new Set([
     '一名', '一個', '這裡', '這片', '玩家', '冒險', '房間', '入口', '地方', '可以',
     '需要', '使用', '任務', '副本', '道具', '怪物', '描述', '進入', '方向', '地面',
