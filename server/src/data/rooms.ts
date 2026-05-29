@@ -5395,6 +5395,9 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'marsh_of_mirrors_reed_gate:west': '西側穿過鏡沼蘆門與冷水倒影，接往月光濕地東側鏡沼蘆門汊',
   'marsh_of_mirrors_peat_islet:west': '西側踏過泥炭小洲與暗色反光水痕，接往月光濕地泥鏡交界水道',
   'amber_forest_resin_gate:west': '西側穿過金色樹脂門與翠綠苔蘚高根，接往翡翠林冠東緣巨木坡',
+  'sapphire_lake_entry_claim:west': '西側沿入口宣示石與湖霧白石路回行，接往巡禮古道舊墓園轉角',
+  'sapphire_lake_lantern_dock:west': '西側穿過碼頭燈籠與潮濕湖岸棧道，接往巡禮古道藍寶湖西燈標',
+  'sapphire_lake_pebble_weir:west': '西側沿鵝卵石水堰與濕草坡回行，接往巡禮古道終點聖碑',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
