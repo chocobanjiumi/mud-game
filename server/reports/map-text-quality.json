@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:12:19.771Z",
+  "generatedAt": "2026-05-29T22:14:54.394Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -312,7 +312,7 @@
     "townServiceRooms": 66,
     "gatheringTaggedRooms": 692,
     "npcRooms": 33,
-    "monsterRooms": 1091,
+    "monsterRooms": 1090,
     "instanceEntryRooms": 26,
     "npcs": 217,
     "functionalNpcs": 194,

@@ -132,6 +132,7 @@ const ZONE_TERRAIN_OVERRIDES: Record<string, Set<MonsterDef['family']>> = {
   plains: new Set(['beast', 'humanoid', 'plant', 'ooze', 'insect']),
   old_farmland: new Set(['beast', 'humanoid', 'plant', 'ooze', 'insect', 'undead', 'construct']),
   whispering_valley: new Set(['aquatic', 'beast', 'plant', 'insect', 'ooze', 'elemental', 'aberration']),
+  arena_quarter: new Set(['humanoid', 'beast', 'construct']),
 };
 
 const coordIndex = new Map<string, RoomDef>();
@@ -261,7 +262,11 @@ function inferPolicy(room: RoomDef, zone: ZoneDef | undefined, monsters: Monster
   if (zone?.type === 'town' || zone?.tags.includes('safe')) {
     if (!SAFE_COMBAT_EXCEPTION_PATTERN.test(`${room.name}${room.description}`)) return 'safe';
   }
-  if ((zone?.type === 'town' || zone?.tags.includes('safe')) && SAFE_SERVICE_PATTERN.test(`${room.name}${room.description}`)) return 'safe';
+  if (
+    (zone?.type === 'town' || zone?.tags.includes('safe'))
+    && SAFE_SERVICE_PATTERN.test(`${room.name}${room.description}`)
+    && !SAFE_COMBAT_EXCEPTION_PATTERN.test(`${room.name}${room.description}`)
+  ) return 'safe';
   if (ROAD_PATTERN.test(`${room.name}${room.description}`) || room.id.includes('_fill_')) return 'road';
   return 'wilds';
 }

@@ -2509,12 +2509,9 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'arena_entrance.png',
     imagePrompt: '競技場入口 in lakeside_town, town service combat training room with circular arena gate, challenge board, torchlight and cheering crowd, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內訓練用魔像會重置成不同姿態；玩家可在此測試技能、完成戰鬥教學，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全訓練區，失敗時可退回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前練習，並熟悉屍體搜刮流程與裝備耐久消耗。',
+      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內通往正式競技城區；玩家可在此報名、查看賽程、完成戰鬥教學登記，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全入口，失敗者會從醫護通道返回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前閱讀規則，並熟悉屍體搜刮流程與裝備耐久消耗。',
     exits: [
       { direction: 'north', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
-    ],
-    monsters: [
-      { monsterId: 'training_dummy', maxCount: 3, respawnSeconds: 25 },
     ],
     mapSymbol: '[A]',
     mapX: 5,
