@@ -2816,9 +2816,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "pilgrim_road_fill_13_6": {
     "id": "pilgrim_road_fill_13_6",
-    "name": "石板朝聖路",
+    "name": "斷石道北白石封",
     "zone": "pilgrim_road",
-    "description": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+    "description": "斷石道北白石封位在巡禮古道東段北側，南面斷石道殘橋露出白石橋基，西邊盜匪望臺仍有乾草腳印。磨光石板被倒塌路碑壓住，這裡是 blocker，只提醒玩家回到主路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -2828,13 +2828,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "pilgrim_road_fill_13_9": {
     "id": "pilgrim_road_fill_13_9",
-    "name": "古道",
+    "name": "藍寶湖西燈標古道",
     "zone": "pilgrim_road",
-    "description": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。",
+    "description": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "sapphire_lake_lantern_dock"
+        "targetRoomId": "sapphire_lake_lantern_dock",
+        "description": "東側白石路逐漸變成潮濕湖岸棧道，沿碼頭燈籠可接入藍寶湖"
       }
     ],
     "mapSymbol": "[·]",
@@ -2845,9 +2846,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "pilgrim_road_fill_8_6": {
     "id": "pilgrim_road_fill_8_6",
-    "name": "信仰通道",
+    "name": "古道起點西信標封",
     "zone": "pilgrim_road",
-    "description": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。",
+    "description": "古道起點西信標封守在巡禮古道西端，東側古道起點的舊拱門能看見褪色旗布，南面乾井旁草徑已被荒草吞沒。白石信標倒在碎石坡上，是 border blocker，避免從平原外緣誤切古道。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,

@@ -1,37 +1,36 @@
 {
-  "generatedAt": "2026-05-29T21:06:23.407Z",
+  "generatedAt": "2026-05-29T21:08:19.661Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 37,
-    "errors": 33,
+    "issues": 29,
+    "errors": 25,
     "warnings": 4,
     "byGrade": {
-      "A_main_transition": 31,
+      "A_main_transition": 30,
       "B_connector": 17,
       "C_empty_filler": 73,
-      "D_upgrade_candidate": 222
+      "D_upgrade_candidate": 223
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 278,
-      "gathering": 159,
+      "border": 279,
+      "gathering": 160,
       "monster": 30,
       "npc_or_quest": 19,
       "portal": 16,
       "route": 69,
-      "service": 73
+      "service": 74
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
-      "description.direction": 9,
-      "description.length": 14,
+      "description.direction": 7,
+      "description.length": 11,
       "description.purpose": 3,
-      "description.terrain": 2,
       "exit.description.length": 4,
-      "exit.description.missing": 4
+      "exit.description.missing": 3
     }
   },
   "zones": [
@@ -8238,15 +8237,16 @@
       "zoneId": "pilgrim_road",
       "zoneName": "朝聖古道",
       "fillRooms": 4,
-      "issues": 8,
+      "issues": 0,
       "records": [
         {
           "id": "pilgrim_road_fill_13_6",
           "zone": "pilgrim_road",
-          "name": "石板朝聖路",
+          "name": "斷石道北白石封",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 13,
           "worldY": 6,
@@ -8268,51 +8268,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "pilgrim_road_fill_13_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            },
-            {
-              "id": "pilgrim_road_fill_13_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 55,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            },
-            {
-              "id": "pilgrim_road_fill_13_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "pilgrim_road_fill_13_9",
           "zone": "pilgrim_road",
-          "name": "古道",
+          "name": "藍寶湖西燈標古道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
-            "gathering"
+            "gathering",
+            "service"
           ],
           "worldX": 13,
           "worldY": 9,
@@ -8335,42 +8305,23 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 28,
+          "descriptionLength": 71,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "pilgrim_road_fill_13_9",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 28,
-              "minimum": 65,
-              "text": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。"
-            },
-            {
-              "id": "pilgrim_road_fill_13_9",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->sapphire_lake_lantern_dock 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "pilgrim_road_fill_8_6",
           "zone": "pilgrim_road",
-          "name": "信仰通道",
-          "grade": "A_main_transition",
+          "name": "古道起點西信標封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": 8,
           "worldY": 6,
@@ -8385,50 +8336,19 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "pilgrim_road_fill_8_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            },
-            {
-              "id": "pilgrim_road_fill_8_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 22,
-              "minimum": 65,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            },
-            {
-              "id": "pilgrim_road_fill_8_6",
-              "zone": "pilgrim_road",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 65,
-              "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "pilgrim_road_saint_bridge",
@@ -13573,85 +13493,6 @@
       "current": 200,
       "minimum": 55,
       "text": "黑玻橋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。"
-    },
-    {
-      "id": "pilgrim_road_fill_13_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-    },
-    {
-      "id": "pilgrim_road_fill_13_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 55,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-    },
-    {
-      "id": "pilgrim_road_fill_13_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-    },
-    {
-      "id": "pilgrim_road_fill_13_9",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 28,
-      "minimum": 65,
-      "text": "古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。"
-    },
-    {
-      "id": "pilgrim_road_fill_13_9",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->sapphire_lake_lantern_dock 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "pilgrim_road_fill_8_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-    },
-    {
-      "id": "pilgrim_road_fill_8_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 22,
-      "minimum": 65,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
-    },
-    {
-      "id": "pilgrim_road_fill_8_6",
-      "zone": "pilgrim_road",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 65,
-      "text": "朝聖古道上磨光的石板路，無數信徒在此留下了足跡。"
     },
     {
       "id": "royal_hunting_grounds_fill_n5_n5",
