@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:55:55.616Z",
+  "generatedAt": "2026-05-29T21:57:25.213Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 11
+    "issues": 9
   },
   "issuesByKind": {
     "exit.description": 3,
-    "room.description": 8
+    "room.description": 6
   },
   "issues": [
     {
@@ -452,24 +452,6 @@
       "currentLength": 71,
       "minimumLength": 55,
       "text": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "silverpine_range/silverpine_range_fill_n8_n8",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 80,
-      "text": "獵場北界雪柵位於銀松山脈西南緣，北側松林小路被雪霧包住，南面可望見王家獵場許可木屋的屋頂。雪柵後有冷露苔採集痕，這裡是 border gathering blocker，只標示獵場邊界，不提供跨區通行。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "silverpine_range/silverpine_range_fill_n8_n9",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 57,
-      "minimumLength": 55,
-      "text": "西南松徑補給欄位於獵場北界雪柵上方，南側雪柵標示邊界，東面松圃南封坡旁有舊補給繩樁。欄內放著採集用麻袋，但道路被雪樁擋住，是 service gathering blocker。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
     }
   ]
