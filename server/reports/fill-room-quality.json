@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:09:57.285Z",
+  "generatedAt": "2026-05-29T20:12:58.817Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 585,
-    "errors": 412,
-    "warnings": 173,
+    "issues": 544,
+    "errors": 385,
+    "warnings": 159,
     "byGrade": {
-      "A_main_transition": 44,
-      "B_connector": 19,
-      "C_empty_filler": 95,
-      "D_upgrade_candidate": 185
+      "A_main_transition": 42,
+      "B_connector": 18,
+      "C_empty_filler": 92,
+      "D_upgrade_candidate": 191
     },
     "byPurpose": {
-      "blocker": 230,
-      "border": 215,
-      "gathering": 142,
+      "blocker": 231,
+      "border": 219,
+      "gathering": 146,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 10,
       "route": 70,
-      "service": 34
+      "service": 38
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 15,
-      "description.direction": 126,
-      "description.length": 190,
-      "description.purpose": 46,
-      "description.repeated_opening": 112,
-      "description.terrain": 13,
-      "exit.description.length": 40,
-      "exit.description.missing": 43
+      "dead_end.no_gameplay": 14,
+      "description.direction": 118,
+      "description.length": 180,
+      "description.purpose": 40,
+      "description.repeated_opening": 105,
+      "description.terrain": 9,
+      "exit.description.length": 38,
+      "exit.description.missing": 40
     }
   },
   "zones": [
@@ -9771,12 +9771,12 @@
       "zoneId": "old_farmland",
       "zoneName": "老舊農場",
       "fillRooms": 10,
-      "issues": 41,
+      "issues": 0,
       "records": [
         {
           "id": "old_farmland_fill_n1_1",
           "zone": "old_farmland",
-          "name": "殘破穀道",
+          "name": "倉庫後穀車道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -9805,49 +9805,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 40,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n1_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 40,
-              "minimum": 65,
-              "text": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。"
-            },
-            {
-              "id": "old_farmland_fill_n1_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 40,
-              "minimum": 65,
-              "text": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。"
-            },
-            {
-              "id": "old_farmland_fill_n1_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->starter_village_storehouse 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n1_2",
           "zone": "old_farmland",
-          "name": "廢棄農道",
+          "name": "水井旁廢農道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
+            "gathering",
             "service"
           ],
           "worldX": -1,
@@ -9868,44 +9839,27 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 32,
+          "descriptionLength": 71,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n1_2",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 32,
-              "minimum": 65,
-              "text": "踩踏得光滑的土路從廢棄田埂延伸至村莊水井方向，車轍裡積著鏽色的雨水。"
-            },
-            {
-              "id": "old_farmland_fill_n1_2",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->starter_village_well_path 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n1_3",
           "zone": "old_farmland",
-          "name": "荒田小路",
-          "grade": "A_main_transition",
+          "name": "河階荒田邊門",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": -1,
           "worldY": 3,
@@ -9913,7 +9867,8 @@
           "mapY": 4,
           "neighbors": {
             "byExit": {
-              "east": "starter_village_river_stairs"
+              "east": "starter_village_river_stairs",
+              "west": ""
             },
             "byCoordinate": {
               "north": "old_farmland_fill_n1_2",
@@ -9921,71 +9876,28 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 20,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n1_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n1_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n1_3",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "old_farmland_fill_n1_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->starter_village_river_stairs 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "old_farmland_fill_n1_3",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasServiceCue": true,
+          "hasLockedExit": true,
+          "descriptionLength": 74,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n2_1",
           "zone": "old_farmland",
-          "name": "田埂",
-          "grade": "C_empty_filler",
+          "name": "東田碎犁封埂",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "service"
           ],
           "worldX": -2,
           "worldY": 1,
@@ -10005,69 +9917,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n2_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n2_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n2_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n2_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n2_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n3_1",
           "zone": "old_farmland",
-          "name": "荒田小路",
-          "grade": "C_empty_filler",
+          "name": "破車轍西封田",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "service"
           ],
           "worldX": -3,
           "worldY": 1,
@@ -10087,69 +9953,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n3_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n3_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n3_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n3_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 55,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n3_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n4_1",
           "zone": "old_farmland",
-          "name": "廢棄農道",
-          "grade": "B_connector",
+          "name": "工具棚雞舍農道",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "route"
+            "border",
+            "route",
+            "service"
           ],
           "worldX": -4,
           "worldY": 1,
@@ -10174,73 +9994,23 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 68,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n4_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-            },
-            {
-              "id": "old_farmland_fill_n4_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-            },
-            {
-              "id": "old_farmland_fill_n4_1",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 55,
-              "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-            },
-            {
-              "id": "old_farmland_fill_n4_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit north->old_farmland_toolshed description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "廢棄農道北返破工具棚"
-            },
-            {
-              "id": "old_farmland_fill_n4_1",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit south->old_farmland_chicken_coop description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "廢棄農道南接破雞舍"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n4_4",
           "zone": "old_farmland",
-          "name": "荒田小路",
-          "grade": "A_main_transition",
+          "name": "月牧冷泉封界",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -4,
           "worldY": 4,
@@ -10255,75 +10025,28 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n4_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n4_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n4_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n4_4",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n4_4",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n6_3",
           "zone": "old_farmland",
-          "name": "廢棄農道",
+          "name": "霉果園南封埂",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": -6,
           "worldY": 3,
@@ -10347,44 +10070,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n6_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n6_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n6_3",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n6_4",
           "zone": "old_farmland",
-          "name": "殘破穀道",
+          "name": "低谷入口封穀道",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -10412,67 +10107,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n6_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n6_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n6_4",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n6_4",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 20,
-              "minimum": 65,
-              "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-            },
-            {
-              "id": "old_farmland_fill_n6_4",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "old_farmland_fill_n8_3",
           "zone": "old_farmland",
-          "name": "田埂",
-          "grade": "C_empty_filler",
+          "name": "稻草人西封埂",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": -8,
           "worldY": 3,
@@ -10489,44 +10138,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "old_farmland_fill_n8_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n8_3",
-              "zone": "old_farmland",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-            },
-            {
-              "id": "old_farmland_fill_n8_3",
-              "zone": "old_farmland",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -20277,340 +19898,6 @@
       "text": "黑玻橋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。"
     },
     {
-      "id": "old_farmland_fill_n1_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 40,
-      "minimum": 65,
-      "text": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。"
-    },
-    {
-      "id": "old_farmland_fill_n1_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 40,
-      "minimum": 65,
-      "text": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。"
-    },
-    {
-      "id": "old_farmland_fill_n1_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->starter_village_storehouse 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "old_farmland_fill_n1_2",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 32,
-      "minimum": 65,
-      "text": "踩踏得光滑的土路從廢棄田埂延伸至村莊水井方向，車轍裡積著鏽色的雨水。"
-    },
-    {
-      "id": "old_farmland_fill_n1_2",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->starter_village_well_path 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "old_farmland_fill_n1_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
-      "id": "old_farmland_fill_n1_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
-      "id": "old_farmland_fill_n1_3",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "old_farmland_fill_n1_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->starter_village_river_stairs 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "old_farmland_fill_n2_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n2_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n2_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n2_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n3_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n3_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n3_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n3_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 55,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n4_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-    },
-    {
-      "id": "old_farmland_fill_n4_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-    },
-    {
-      "id": "old_farmland_fill_n4_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 55,
-      "text": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。"
-    },
-    {
-      "id": "old_farmland_fill_n4_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit north->old_farmland_toolshed description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "廢棄農道北返破工具棚"
-    },
-    {
-      "id": "old_farmland_fill_n4_1",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit south->old_farmland_chicken_coop description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "廢棄農道南接破雞舍"
-    },
-    {
-      "id": "old_farmland_fill_n4_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n4_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n4_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n4_4",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n6_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
-      "id": "old_farmland_fill_n6_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
-      "id": "old_farmland_fill_n6_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n6_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n6_4",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n6_4",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 20,
-      "minimum": 65,
-      "text": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。"
-    },
-    {
-      "id": "old_farmland_fill_n8_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
-      "id": "old_farmland_fill_n8_3",
-      "zone": "old_farmland",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。"
-    },
-    {
       "id": "pilgrim_road_fill_13_6",
       "zone": "pilgrim_road",
       "severity": "error",
@@ -23565,55 +22852,6 @@
     {
       "id": "mist_harbor_fill_45_2",
       "zone": "mist_harbor",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n1_3",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n6_3",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n8_3",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n2_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n3_1",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n4_4",
-      "zone": "old_farmland",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "old_farmland_fill_n6_4",
-      "zone": "old_farmland",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"

@@ -2625,13 +2625,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n1_1": {
     "id": "old_farmland_fill_n1_1",
-    "name": "殘破穀道",
+    "name": "倉庫後穀車道",
     "zone": "old_farmland",
-    "description": "曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。",
+    "description": "倉庫後穀車道貼著舊農田東界，東側是新手村倉庫斑駁後門，西面田埂上還留著壓碎的穀車轍。這裡是 border service route，標示農田補給與村莊倉儲的銜接，只供後勤往來，不放怪物遭遇。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "starter_village_storehouse"
+        "targetRoomId": "starter_village_storehouse",
+        "description": "東側沿穀車轍穿過斑駁後門，進入新手村倉庫補給區"
       }
     ],
     "mapSymbol": "[·]",
@@ -2642,13 +2643,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n1_2": {
     "id": "old_farmland_fill_n1_2",
-    "name": "廢棄農道",
+    "name": "水井旁廢農道",
     "zone": "old_farmland",
-    "description": "踩踏得光滑的土路從廢棄田埂延伸至村莊水井方向，車轍裡積著鏽色的雨水。",
+    "description": "水井旁廢農道位於舊農田東側，北面可回望倉庫後穀車道，南面雜草沒入河階方向，東側村莊水井旁有石圈與木桶。這裡是 border service route，作為農田取水與補給服務邊界，只連接村內取水點。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "starter_village_well_path"
+        "targetRoomId": "starter_village_well_path",
+        "description": "東側踏過濕土車轍與木桶旁泥階，接到新手村水井石徑"
       }
     ],
     "mapSymbol": "[·]",
@@ -2659,13 +2661,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n1_3": {
     "id": "old_farmland_fill_n1_3",
-    "name": "荒田小路",
+    "name": "河階荒田邊門",
     "zone": "old_farmland",
-    "description": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+    "description": "河階荒田邊門在舊農田東南角收束成窄土路，北面水井廢農道仍有濕車轍，東側石階通向新手村河邊。這裡是跨區 border route，西側荒田柵欄已倒塌但被繩索封住，守住村莊與農田的低地邊界。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "starter_village_river_stairs"
+        "targetRoomId": "starter_village_river_stairs",
+        "description": "東側沿碎石河階穿過籬門，接到新手村河邊石階"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側荒田深溝被舊繩索封住，不能回切農田內圈"
       }
     ],
     "mapSymbol": "[·]",
@@ -2676,9 +2685,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n2_1": {
     "id": "old_farmland_fill_n2_1",
-    "name": "田埂",
+    "name": "東田碎犁封埂",
     "zone": "old_farmland",
-    "description": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+    "description": "東田碎犁封埂夾在倉庫後穀車道西側與更深荒田之間，東面能看見村牆，西面只剩斷裂犁片插在泥裡。乾裂田埂沒有連續踏點，這格是封閉 blocker，不提供路線或採集互動。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -2688,9 +2697,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n3_1": {
     "id": "old_farmland_fill_n3_1",
-    "name": "荒田小路",
+    "name": "破車轍西封田",
     "zone": "old_farmland",
-    "description": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+    "description": "破車轍西封田位於工具棚南側路線東邊，西面可接近雞舍支路的舊農道，東側碎犁封埂已被雜草蓋住。車轍中積著黑水與鏽釘，這裡是 blocker，提示玩家改走正式農道。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -2700,19 +2709,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n4_1": {
     "id": "old_farmland_fill_n4_1",
-    "name": "廢棄農道",
+    "name": "工具棚雞舍農道",
     "zone": "old_farmland",
-    "description": "走在乾裂的田埂上，遠處廢棄穀倉的輪廓若隱若現。",
+    "description": "工具棚雞舍農道是一段南北向乾裂田埂，北側工具棚的鐵鉤還掛在門框上，南面破雞舍傳來空木板聲。這裡是正式 route，補齊工具棚到雞舍的路線，不安排怪物或額外採集。",
     "exits": [
       {
         "direction": "north",
         "targetRoomId": "old_farmland_toolshed",
-        "description": "廢棄農道北返破工具棚"
+        "description": "北側沿乾裂田埂回到破工具棚門前"
       },
       {
         "direction": "south",
         "targetRoomId": "old_farmland_chicken_coop",
-        "description": "廢棄農道南接破雞舍"
+        "description": "南側順著木籬殘影走向破雞舍旁土路"
       }
     ],
     "mapSymbol": "[·]",
@@ -2723,9 +2732,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n4_4": {
     "id": "old_farmland_fill_n4_4",
-    "name": "荒田小路",
+    "name": "月牧冷泉封界",
     "zone": "old_farmland",
-    "description": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+    "description": "月牧冷泉封界位於舊農田南緣，北側月光牧地的草色轉暗，西面石標仍露出半截，南面能聽見低谷冷泉水聲。田埂在邊界處塌成泥坡，這裡是 border blocker，只標示溪谷方向，不開放通往溪谷。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -2735,9 +2744,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n6_3": {
     "id": "old_farmland_fill_n6_3",
-    "name": "廢棄農道",
+    "name": "霉果園南封埂",
     "zone": "old_farmland",
-    "description": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+    "description": "霉果園南封埂夾在北側霉斑果園與南側邊界穀道之間，東面防風樹列擋住視線，西面根窖土門半埋。殘破柵欄橫倒在田埂上，這格是 blocker，阻止玩家誤走荒田內部。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -2747,9 +2756,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n6_4": {
     "id": "old_farmland_fill_n6_4",
-    "name": "殘破穀道",
+    "name": "低谷入口封穀道",
     "zone": "old_farmland",
-    "description": "被遺棄的農道，泥土裡偶爾翻出生鏽的農具碎片。",
+    "description": "低谷入口封穀道在舊農田西南邊界轉入濕冷坡面，北側霉果園封埂仍有爛果味，東面石標指向農田內圈，南側可見低谷入口霧氣。這裡是 border blocker，穀道坍塌不提供跨區通行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -2759,9 +2768,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "old_farmland_fill_n8_3": {
     "id": "old_farmland_fill_n8_3",
-    "name": "田埂",
+    "name": "稻草人西封埂",
     "zone": "old_farmland",
-    "description": "雜草叢生的荒田間小路，殘破的柵欄歪斜地立著。",
+    "description": "稻草人西封埂位於舊農田最西側，北面稻草人看守的旗布在風裡抽動，東側根窖土門半掩在雜草後。田埂向西碎成乾泥溝，這裡是封閉 blocker，沒有路線、怪物或採集配置。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
