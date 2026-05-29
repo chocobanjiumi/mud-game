@@ -22842,7 +22842,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '魚販石階位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_herbal_square', description: '回到草藥方場' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在東側' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_auction_tent', description: '東側拍賣帳棚通往文書角' },
       { direction: 'south', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷', edgeKind: 'long_path', edgeNote: '魚販石階南側要沿濕石階折返布棚巷口，實際路程長於相鄰一格。' },
     ],
     monsters: [],
@@ -22865,7 +22865,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '文書角位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'west', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '回到魚販石階' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_auction_tent', description: '西側拍賣帳棚回到魚販石階' },
       { direction: 'south', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'long_path', edgeNote: '文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在東側', edgeKind: 'long_path', edgeNote: '文書角東側通往後巷帳本處需穿過窄門與帳棚背面，實際路程長於相鄰一格。' },
     ],
@@ -22936,7 +22936,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '拍賣帳棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在東側', edgeKind: 'long_path', edgeNote: '拍賣帳棚東側需穿過競價人潮與封箱區，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '西側魚販石階回到市場水渠邊' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在東側' },
       { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側' },
     ],
     monsters: [],

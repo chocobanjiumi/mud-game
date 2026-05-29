@@ -801,11 +801,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "kingsroad_market_well_court"
   ],
   [
-    "kingsroad_market_fishmonger_steps",
-    "east",
-    "kingsroad_market_scribe_corner"
-  ],
-  [
     "kingsroad_market_grain_arcade",
     "north",
     "kingsroad_market_cloth_lane"
@@ -824,11 +819,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "kingsroad_market_portal_plaza",
     "north",
     "kingsroad_market_guard_post"
-  ],
-  [
-    "kingsroad_market_scribe_corner",
-    "west",
-    "kingsroad_market_fishmonger_steps"
   ],
   [
     "kingsroad_market_spice_awning",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:21:03.031Z",
+  "generatedAt": "2026-05-29T19:22:17.671Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2950,16 +2950,13 @@
     "kingsroad_market_coin_exchange:south->kingsroad_market_caravan_yard (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_coin_exchange:north->kingsroad_market_scribe_corner (long_path) 錢幣兌換所北側要沿帳棚外緣繞到文書桌，實際路程長於相鄰一格。",
     "kingsroad_market_herbal_square:south->kingsroad_market_spice_awning (long_path) 草藥方場南側需繞過藥籃、秤桌與棚柱，實際路程長於相鄰一格。",
-    "kingsroad_market_fishmonger_steps:east->kingsroad_market_scribe_corner (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_fishmonger_steps:south->kingsroad_market_cloth_lane (long_path) 魚販石階南側要沿濕石階折返布棚巷口，實際路程長於相鄰一格。",
-    "kingsroad_market_scribe_corner:west->kingsroad_market_fishmonger_steps (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_scribe_corner:south->kingsroad_market_coin_exchange (long_path) 文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。",
     "kingsroad_market_scribe_corner:east->kingsroad_market_back_alley_ledgers (long_path) 文書角東側通往後巷帳本處需穿過窄門與帳棚背面，實際路程長於相鄰一格。",
     "kingsroad_market_guard_post:south->kingsroad_market_portal_plaza (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_guard_post:east->kingsroad_market_herbal_square (long_path) 衛兵亭東側巡邏線會繞過貨車與攤棚，實際路程長於相鄰一格。",
     "kingsroad_market_well_court:north->kingsroad_market_crossroad_stalls (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_auction_tent:south->kingsroad_market_adventurer_board (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "kingsroad_market_auction_tent:east->kingsroad_market_scribe_corner (long_path) 拍賣帳棚東側需穿過競價人潮與封箱區，實際路程長於相鄰一格。",
     "kingsroad_market_auction_tent:north->kingsroad_market_high_balcony (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_tavern_front:east->kingsroad_market_pack_animal_ring (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "kingsroad_market_pack_animal_ring:west->kingsroad_market_caravan_yard (long_path) 馱獸圈西側要繞過欄門與車轍回到商隊院，實際路程長於相鄰一格。",
