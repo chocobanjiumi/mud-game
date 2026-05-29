@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:29:29.063Z",
+  "generatedAt": "2026-05-29T21:30:37.164Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 82
+    "issues": 75
   },
   "issuesByKind": {
-    "exit.description": 51,
-    "room.description": 31
+    "exit.description": 47,
+    "room.description": 28
   },
   "issues": [
     {
@@ -716,42 +716,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "arena_quarter/arena_quarter_grand_gate:west->sapphire_lake_fill_22_7",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_champion_wall:west->sapphire_lake_fill_22_8",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_prize_counter:north->kingsroad_market_fill_25_5",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_victory_arch:west->sapphire_lake_fill_22_9",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
       "id": "royal_hunting_grounds/royal_hunting_grounds_horn_gate:west->kingdom_frontier_fill_n10_n7",
       "kind": "exit.description",
       "field": "description",
@@ -849,33 +813,6 @@
       "minimumLength": 80,
       "text": "甲蟲丘南金葉草坡位在餘燼甲蟲丘南面，北側土丘散著焦熱樹脂，東面深琥珀核心反射黏稠金光，南側接向樹脂小徑。這裡是採集 blocker，草坡可採焦香琥珀草，外緣被蟲洞與硬根封住。",
       "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_fill_26_12",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 71,
-      "minimumLength": 55,
-      "text": "南練兵封欄貼著訓練沙坑最外圈，北面傳來木劍敲擊聲，南側落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，描述提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_fill_26_6",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 63,
-      "minimumLength": 55,
-      "text": "北側沙欄角位在決鬥圈外緣，南面能看到裁判旗架，西側是武器檢查人流。粗繩把觀眾與選手路線分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "arena_quarter/arena_quarter_fill_28_8",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 58,
-      "minimumLength": 55,
-      "text": "中層看台欄位於座席轉角，西側通向觀眾席輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄落差與維修架，這裡標示封閉看台，不提供通行路線。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
     },
     {
       "id": "bloodsalt_coast/bloodsalt_coast_fill_44_7",

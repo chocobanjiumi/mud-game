@@ -253,7 +253,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "arena_quarter_fill_26_12",
     "name": "南練兵封欄",
     "zone": "arena_quarter",
-    "description": "南練兵封欄貼著訓練沙坑最外圈，北面傳來木劍敲擊聲，南側落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，描述提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
+    "description": "南練兵封欄貼著訓練場沙坑最外圈，北面傳來木劍敲擊聲，南側維修道路落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
     "exits": [
       {
         "direction": "south",
@@ -272,7 +272,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "arena_quarter_fill_26_6",
     "name": "北側沙欄角",
     "zone": "arena_quarter",
-    "description": "北側沙欄角位在決鬥圈外緣，南面能看到裁判旗架，西側是武器檢查人流。粗繩把觀眾與選手路線分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
+    "description": "北側沙欄角位在決鬥場外緣，南面能看到裁判旗架，西側是武器檢查走廊人流。粗繩把觀眾與選手道路分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -334,7 +334,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "arena_quarter_fill_28_8",
     "name": "中層看台欄",
     "zone": "arena_quarter",
-    "description": "中層看台欄位於座席轉角，西側通向觀眾席輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄落差與維修架，這裡標示封閉看台，不提供通行路線。",
+    "description": "中層看台欄位於座席轉角，西側通向觀眾席走廊輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄階梯落差與維修架，這裡標示封閉看台，不提供通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,

@@ -5359,6 +5359,10 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'ember_march_ash_gate:west': '西側穿過灰燼門柱與焦黑火草坡，接往雷鳴草原南緣焦草界',
   'ember_march_burnt_watchpost:west': '西側越過燒毀哨塔木樁與風化灰坡，接往雷鳴草原南界雷草路',
   'ember_march_glass_ash_field:west': '西側沿玻灰原碎晶與焦草分界前行，接往雷鳴草原南緣雷痕地',
+  'arena_quarter_grand_gate:west': '西側穿過競技場正門石階與臨湖拱道，接往藍寶湖東岸觀賽長廊',
+  'arena_quarter_champion_wall:west': '西側沿冠軍牆浮雕與湖風石廊前行，接往藍寶湖東岸碑牆邊道',
+  'arena_quarter_prize_counter:north': '北側越過獎品櫃台後方貨門與市集石路，接往王道市集南緣領獎巷',
+  'arena_quarter_victory_arch:west': '西側穿過勝利拱門陰影與湖岸石階，接往藍寶湖東岸觀景步道',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
