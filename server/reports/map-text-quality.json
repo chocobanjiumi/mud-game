@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:30:37.164Z",
+  "generatedAt": "2026-05-29T21:31:39.050Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 75
+    "issues": 69
   },
   "issuesByKind": {
-    "exit.description": 47,
-    "room.description": 28
+    "exit.description": 43,
+    "room.description": 26
   },
   "issues": [
     {
@@ -716,42 +716,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_horn_gate:west->kingdom_frontier_fill_n10_n7",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_deer_run:west->kingdom_frontier_fill_n10_n6",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_silver_trail:west->kingdom_frontier_fill_n10_n5",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_old_oak_stand:west->kingdom_frontier_fill_n10_n4",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
       "id": "serpent_delta/serpent_delta_entrance_ferry:north->serpent_delta_fill_31_13",
       "kind": "exit.description",
       "field": "description",
@@ -921,24 +885,6 @@
       "minimumLength": 55,
       "text": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n5_n5",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 80,
-      "text": "白鹿林南灌木採封位在王室獵場南側林線，北面白鹿林傳來枝葉摩擦聲，西側月光空地的銀色草線若隱若現。灌木叢可採獵場藥草與獸徑羽毛，但獵場繩標封住通路，是 gathering blocker。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "royal_hunting_grounds/royal_hunting_grounds_fill_n6_n4",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 65,
-      "minimumLength": 80,
-      "text": "月光白鹿草線穿過王家林地的低草坡，西側月光空地照出銀白足跡，東面白鹿林的樹幹掛著王室繩標。這裡是安全 route，讓玩家沿鹿徑在兩個正式獵場地標間移動。",
-      "reason": "room 描述字數不足或過於泛用"
     },
     {
       "id": "saltwind_flats/saltwind_flats_fill_36_10",

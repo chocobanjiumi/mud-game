@@ -5363,6 +5363,10 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'arena_quarter_champion_wall:west': '西側沿冠軍牆浮雕與湖風石廊前行，接往藍寶湖東岸碑牆邊道',
   'arena_quarter_prize_counter:north': '北側越過獎品櫃台後方貨門與市集石路，接往王道市集南緣領獎巷',
   'arena_quarter_victory_arch:west': '西側穿過勝利拱門陰影與湖岸石階，接往藍寶湖東岸觀景步道',
+  'royal_hunting_grounds_horn_gate:west': '西側穿過獵角門木柵與王室界樁，接往王國邊境關卡通道',
+  'royal_hunting_grounds_deer_run:west': '西側沿鹿徑草坡與巡邏繩標下行，接往王國邊境巡邏路',
+  'royal_hunting_grounds_silver_trail:west': '西側踏過銀草獵徑與邊牆陰影，接往王國邊境前線小路',
+  'royal_hunting_grounds_old_oak_stand:west': '西側繞過老橡樹根與獵場木牌，接往王國邊境邊牆走道',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

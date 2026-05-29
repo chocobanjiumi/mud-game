@@ -3202,7 +3202,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "royal_hunting_grounds_fill_n5_n5",
     "name": "白鹿林南灌木採封",
     "zone": "royal_hunting_grounds",
-    "description": "白鹿林南灌木採封位在王室獵場南側林線，北面白鹿林傳來枝葉摩擦聲，西側月光空地的銀色草線若隱若現。灌木叢可採獵場藥草與獸徑羽毛，但獵場繩標封住通路，是 gathering blocker。",
+    "description": "白鹿林南灌木採封位在王室獵場南側林線，北面白鹿林傳來枝葉摩擦聲，西側月光空地的銀色草線若隱若現。灌木叢下露出獵場藥草、白羽與鹿蹄刮痕，玩家只能沿繩標旁採集，不能穿過封住的灌木牆，是 gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -3214,7 +3214,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "royal_hunting_grounds_fill_n6_n4",
     "name": "月光白鹿草線",
     "zone": "royal_hunting_grounds",
-    "description": "月光白鹿草線穿過王家林地的低草坡，西側月光空地照出銀白足跡，東面白鹿林的樹幹掛著王室繩標。這裡是安全 route，讓玩家沿鹿徑在兩個正式獵場地標間移動。",
+    "description": "月光白鹿草線穿過王家林地的低草坡，西側月光空地照出銀白足跡，東面白鹿林的樹幹掛著王室繩標。草坡中央有被鹿蹄踩出的窄小鹿徑與觀察木牌，玩家沿鹿徑在兩個正式獵場地標間移動，不會誤入南側灌木封線。",
     "exits": [
       {
         "direction": "west",
