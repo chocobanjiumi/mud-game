@@ -3886,9 +3886,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_0_n3": {
     "id": "starter_village_ext_fill_0_n3",
-    "name": "溪邊便道",
+    "name": "斷橋南溪草封",
     "zone": "starter_village_ext",
-    "description": "村莊外圍的泥土小路，兩旁長滿野草。",
+    "description": "斷橋南溪草封位在村外斷橋南側，北面破橋木樁倒在溪水裡，東邊炭窯煙灰落在草叢上。泥土小路被溪草與碎木堵住，是 service gathering blocker，只保留採集乾草與檢查橋況的空地。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3898,13 +3898,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_1_n1": {
     "id": "starter_village_ext_fill_1_n1",
-    "name": "田野通道",
+    "name": "旅店北田埂路牌",
     "zone": "starter_village_ext",
-    "description": "通往後山和溪流的小路，偶有野兔竄過。",
+    "description": "旅店北田埂路牌位在新手村旅店北面，北側村外草徑延向炭窯與墓園邊界，東邊鄉間草路接向冒險者公會後方。路牌標示這裡是回村 border service route，只連接旅店後門與村外田埂。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "starter_village_inn"
+        "targetRoomId": "starter_village_inn",
+        "description": "沿田埂路牌與旅店後牆南行，回到新手村旅店後門。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3915,9 +3916,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_1_n2": {
     "id": "starter_village_ext_fill_1_n2",
-    "name": "溪邊便道",
+    "name": "墓園西側炭草界",
     "zone": "starter_village_ext",
-    "description": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。",
+    "description": "墓園西側炭草界位在炭窯南面與墓園深處西側，北面炭窯煙灰落在泥土上，南側旅店北田埂路牌仍可看見木牌。這裡是 border gathering blocker，可採焦草與乾柴，但不開往墓園捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -3927,13 +3928,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_2_n1": {
     "id": "starter_village_ext_fill_2_n1",
-    "name": "鄉間草徑",
+    "name": "公會北鄉間路標",
     "zone": "starter_village_ext",
-    "description": "通往後山和溪流的小路，偶有野兔竄過。",
+    "description": "公會北鄉間路標位在冒險者公會北面，北側墓園深處陰氣壓著草坡，西面旅店北田埂路牌可作回村指引，東側通往舊圖書館後方。這裡是 border gathering route，草徑可採野草籽，主要銜接公會後門。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "adventurer_guild"
+        "targetRoomId": "adventurer_guild",
+        "description": "沿公會木牌與踩實草徑穿過後院，南行回到冒險者公會。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3944,13 +3946,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_3_n1": {
     "id": "starter_village_ext_fill_3_n1",
-    "name": "村外小路",
+    "name": "舊圖書館北後勤路",
     "zone": "starter_village_ext",
-    "description": "通往後山和溪流的小路，偶有野兔竄過。",
+    "description": "舊圖書館北後勤路位在舊圖書館北側，北面空心樹樁旁有落葉堆，西側公會北路標連著村外草徑，東邊柳祠北路逐漸變濕。這裡是 border service route，標示圖書館後門補給線與村外邊界。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "starter_village_old_library"
+        "targetRoomId": "starter_village_old_library",
+        "description": "沿後勤木牌與舊書箱車轍南行，回到新手村舊圖書館。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3961,9 +3964,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_3_n6": {
     "id": "starter_village_ext_fill_3_n6",
-    "name": "鄉間草徑",
+    "name": "果園北溪草補給坡",
     "zone": "starter_village_ext",
-    "description": "村莊外圍的泥土小路，兩旁長滿野草。",
+    "description": "果園北溪草補給坡位在村溪東側與果園北邊，南面果樹枝葉越過籬笆，西側溪水帶來濕泥氣味。坡上堆著採果籃與草繩，是 service gathering blocker，可採野草與補給繩，不作道路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -3973,13 +3976,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_ext_fill_4_n1": {
     "id": "starter_village_ext_fill_4_n1",
-    "name": "溪邊便道",
+    "name": "禮拜堂北柳祠路界",
     "zone": "starter_village_ext",
-    "description": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。",
+    "description": "禮拜堂北柳祠路界位在新手村禮拜堂北面，北側柳樹小祠垂著濕枝，西面舊圖書館後勤路仍有木牌。這裡是 border gathering route，溪邊草與柳葉可採，主要銜接禮拜堂後門與村外濕草邊界。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "starter_village_chapel"
+        "targetRoomId": "starter_village_chapel",
+        "description": "沿柳枝與石板小徑穿過後院南行，回到新手村禮拜堂。"
       }
     ],
     "mapSymbol": "[·]",

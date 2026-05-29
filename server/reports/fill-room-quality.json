@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:54:41.642Z",
+  "generatedAt": "2026-05-29T20:57:51.782Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 98,
-    "errors": 74,
-    "warnings": 24,
+    "issues": 81,
+    "errors": 63,
+    "warnings": 18,
     "byGrade": {
-      "A_main_transition": 32,
+      "A_main_transition": 31,
       "B_connector": 17,
       "C_empty_filler": 77,
-      "D_upgrade_candidate": 217
+      "D_upgrade_candidate": 218
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 269,
-      "gathering": 159,
+      "border": 270,
+      "gathering": 157,
       "monster": 30,
       "npc_or_quest": 22,
       "portal": 15,
       "route": 69,
-      "service": 63
+      "service": 66
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 2,
+      "dead_end.no_gameplay": 1,
       "description.direction": 19,
-      "description.length": 39,
-      "description.purpose": 9,
-      "description.repeated_opening": 13,
+      "description.length": 32,
+      "description.purpose": 7,
+      "description.repeated_opening": 10,
       "description.terrain": 3,
       "exit.description.length": 4,
-      "exit.description.missing": 9
+      "exit.description.missing": 5
     }
   },
   "zones": [
@@ -11536,7 +11536,7 @@
       "zoneId": "starter_village_ext",
       "zoneName": "新手村外圍",
       "fillRooms": 8,
-      "issues": 17,
+      "issues": 0,
       "records": [
         {
           "id": "starter_ext_ruined_bridge",
@@ -11583,7 +11583,7 @@
         {
           "id": "starter_village_ext_fill_0_n3",
           "zone": "starter_village_ext",
-          "name": "溪邊便道",
+          "name": "斷橋南溪草封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -11611,30 +11611,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_0_n3",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 55,
-              "text": "村莊外圍的泥土小路，兩旁長滿野草。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_1_n1",
           "zone": "starter_village_ext",
-          "name": "田野通道",
-          "grade": "A_main_transition",
+          "name": "旅店北田埂路牌",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": 1,
           "worldY": -1,
@@ -11651,58 +11641,24 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 67,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_1_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "通往後山和溪流的小路，偶有野兔竄過。"
-            },
-            {
-              "id": "starter_village_ext_fill_1_n1",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "starter_village_ext_fill_1_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->starter_village_inn 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "starter_village_ext_fill_1_n1",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_1_n2",
           "zone": "starter_village_ext",
-          "name": "溪邊便道",
+          "name": "墓園西側炭草界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -11728,43 +11684,22 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_1_n2",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-            },
-            {
-              "id": "starter_village_ext_fill_1_n2",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_2_n1",
           "zone": "starter_village_ext",
-          "name": "鄉間草徑",
+          "name": "公會北鄉間路標",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
-            "gathering"
+            "service"
           ],
           "worldX": 2,
           "worldY": -1,
@@ -11785,48 +11720,21 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 71,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_2_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "通往後山和溪流的小路，偶有野兔竄過。"
-            },
-            {
-              "id": "starter_village_ext_fill_2_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->adventurer_guild 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "starter_village_ext_fill_2_n1",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_3_n1",
           "zone": "starter_village_ext",
-          "name": "村外小路",
+          "name": "舊圖書館北後勤路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -11856,46 +11764,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_3_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "通往後山和溪流的小路，偶有野兔竄過。"
-            },
-            {
-              "id": "starter_village_ext_fill_3_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->starter_village_old_library 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "starter_village_ext_fill_3_n1",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_3_n6",
           "zone": "starter_village_ext",
-          "name": "鄉間草徑",
+          "name": "果園北溪草補給坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering",
             "service"
           ],
@@ -11919,31 +11801,20 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 15,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_3_n6",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 15,
-              "minimum": 55,
-              "text": "村莊外圍的泥土小路，兩旁長滿野草。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "starter_village_ext_fill_4_n1",
           "zone": "starter_village_ext",
-          "name": "溪邊便道",
+          "name": "禮拜堂北柳祠路界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
-            "gathering"
+            "service"
           ],
           "worldX": 4,
           "worldY": -1,
@@ -11963,46 +11834,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "starter_village_ext_fill_4_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-            },
-            {
-              "id": "starter_village_ext_fill_4_n1",
-              "zone": "starter_village_ext",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 65,
-              "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-            },
-            {
-              "id": "starter_village_ext_fill_4_n1",
-              "zone": "starter_village_ext",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->starter_village_chapel 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -14605,139 +14446,6 @@
       "minimum": 20
     },
     {
-      "id": "starter_village_ext_fill_0_n3",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 55,
-      "text": "村莊外圍的泥土小路，兩旁長滿野草。"
-    },
-    {
-      "id": "starter_village_ext_fill_1_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "通往後山和溪流的小路，偶有野兔竄過。"
-    },
-    {
-      "id": "starter_village_ext_fill_1_n1",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "starter_village_ext_fill_1_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->starter_village_inn 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "starter_village_ext_fill_1_n2",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-    },
-    {
-      "id": "starter_village_ext_fill_1_n2",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-    },
-    {
-      "id": "starter_village_ext_fill_2_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "通往後山和溪流的小路，偶有野兔竄過。"
-    },
-    {
-      "id": "starter_village_ext_fill_2_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->adventurer_guild 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "starter_village_ext_fill_3_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "通往後山和溪流的小路，偶有野兔竄過。"
-    },
-    {
-      "id": "starter_village_ext_fill_3_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->starter_village_old_library 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "starter_village_ext_fill_3_n6",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 15,
-      "minimum": 55,
-      "text": "村莊外圍的泥土小路，兩旁長滿野草。"
-    },
-    {
-      "id": "starter_village_ext_fill_4_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-    },
-    {
-      "id": "starter_village_ext_fill_4_n1",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 65,
-      "text": "穿過農田和果園的鄉間便道，空氣中帶著泥土的氣息。"
-    },
-    {
-      "id": "starter_village_ext_fill_4_n1",
-      "zone": "starter_village_ext",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->starter_village_chapel 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "storm_highlands_fill_n10_n14",
       "zone": "storm_highlands",
       "severity": "error",
@@ -14971,27 +14679,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "starter_village_ext_fill_1_n1",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "starter_village_ext_fill_2_n1",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "starter_village_ext_fill_3_n1",
-      "zone": "starter_village_ext",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     }
   ]
 }
