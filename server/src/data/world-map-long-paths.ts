@@ -1436,19 +1436,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "royal_hunting_grounds_royal_marker"
   ],
   [
-    "royal_hunting_grounds_noble_blind",
-    "south",
-    "royal_hunting_grounds_permit_lodge"
-  ],
-  [
     "royal_hunting_grounds_old_oak_stand",
     "south",
     "royal_hunting_grounds_silver_trail"
-  ],
-  [
-    "royal_hunting_grounds_permit_lodge",
-    "north",
-    "royal_hunting_grounds_noble_blind"
   ],
   [
     "royal_hunting_grounds_royal_marker",

@@ -23782,7 +23782,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '獵犬院在東側' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '貴族隱棚在北側' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '野豬泥塘在南側' },
     ],
     monsters: [
       { monsterId: 'royal_hunt_hound_pack', maxCount: 1, respawnSeconds: 120 },
@@ -23853,14 +23853,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '野豬泥塘西返鹿徑需繞過深泥與樹根障礙，屬於長路徑。',
       },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '北側泥塘邊路回到狩獵許可屋' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_noble_blind', description: '南側泥塘邊路通往貴族隱棚' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_falcon_perch', description: '獵鷹棲臺在東側' },
-      {
-        direction: 'south',
-        targetRoomId: 'royal_hunting_grounds_hounds_yard',
-        description: '南側要穿過泥塘邊的犬嗅訓練樁與圍欄缺口，才會抵達獵犬院，犬吠聲會越來越近',
-        edgeKind: 'long_path',
-        edgeNote: '野豬泥塘到獵犬院需經過訓練樁與圍欄缺口，距離長於相鄰格。',
-      },
     ],
     monsters: [
       { monsterId: 'mudtusk_boar', maxCount: 3, respawnSeconds: 140 },
@@ -23923,7 +23918,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '貴族隱棚位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '回到狩獵許可屋' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_boar_wallows', description: '北側泥塘邊路回到野豬泥塘' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_stag_mirror', description: '鹿影水鏡在東側' },
     ],
     monsters: [
@@ -24291,13 +24286,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeNote: '月光空地西返偷獵者小徑需沿暗徑與陷阱路回繞，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '回到王室界碑' },
-      {
-        direction: 'east',
-        targetRoomId: 'royal_hunting_grounds_white_stag_grove',
-        description: '東側月光草線穿過銀白鹿蹄印、低霧與古樹拱枝後，才會抵達白鹿林',
-        edgeKind: 'long_path',
-        edgeNote: '月光空地到白鹿林需穿過低霧與古樹拱枝，距離長於相鄰格。',
-      },
+      { direction: 'east', targetRoomId: 'royal_hunting_grounds_fill_n6_n4', description: '東側月光草線通往白鹿林' },
     ],
     monsters: [
       { monsterId: 'silvertrail_stag', maxCount: 2, respawnSeconds: 160 },
@@ -24381,13 +24370,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      {
-        direction: 'west',
-        targetRoomId: 'royal_hunting_grounds_moonlit_clearing',
-        description: '西返時白鹿林的古樹拱枝與低霧會逐漸退開，沿銀白蹄印才會回到月光空地',
-        edgeKind: 'long_path',
-        edgeNote: '白鹿林西返月光空地需沿低霧與蹄印路回繞，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'royal_hunting_grounds_fill_n6_n4', description: '西側月光草線回到月光空地' },
       { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭' },
     ],
     monsters: [

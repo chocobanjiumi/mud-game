@@ -3018,7 +3018,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "鹿徑",
     "zone": "royal_hunting_grounds",
     "description": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "royal_hunting_grounds_moonlit_clearing",
+        "description": "月光草線西返月光空地"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "royal_hunting_grounds_white_stag_grove",
+        "description": "月光草線東接白鹿林"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 3,
     "mapY": 3,
