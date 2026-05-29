@@ -481,11 +481,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "frostbite_pass_sleet_watch"
   ],
   [
-    "frostbite_pass_ice_cairn_field",
-    "south",
-    "frostbite_pass_wind_howl_arch"
-  ],
-  [
     "frostbite_pass_lost_merchant_cache",
     "south",
     "frostbite_pass_bone_sled_path"
@@ -504,11 +499,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "frostbite_pass_snow_gate",
     "north",
     "frostbite_pass_frozen_switchback"
-  ],
-  [
-    "frostbite_pass_wind_howl_arch",
-    "north",
-    "frostbite_pass_ice_cairn_field"
   ],
   [
     "frozen_lake",

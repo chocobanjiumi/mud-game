@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:25:22.115Z",
+  "generatedAt": "2026-05-29T19:26:52.363Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -3046,15 +3046,10 @@
     "frostbite_pass_bone_sled_path:north->frostbite_pass_lost_merchant_cache (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_crystal_fir_grove:west->frostbite_pass_bone_sled_path (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_crystal_fir_grove:south->frostbite_pass_coldfire_camp (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "frostbite_pass_wind_howl_arch:east->frostbite_pass_lost_merchant_cache (long_path) 風嚎拱到失商藏點需穿過呼嘯石門與骨橇印，實際路程長於相鄰一格。",
-    "frostbite_pass_wind_howl_arch:north->frostbite_pass_ice_cairn_field (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "frostbite_pass_lost_merchant_cache:west->frostbite_pass_wind_howl_arch (long_path) 失商藏點回風嚎拱需沿雪盲路標穿過骨橇印，實際路程長於相鄰一格。",
     "frostbite_pass_lost_merchant_cache:south->frostbite_pass_bone_sled_path (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "frostbite_pass_lost_merchant_cache:east->frostbite_pass_frost_giant_steps (long_path) 失商藏點到霜巨人足跡需穿過貨箱與巨大腳印溝，實際路程長於相鄰一格。",
     "frostbite_pass_frost_giant_steps:west->frostbite_pass_lost_merchant_cache (long_path) 霜巨人足跡回失商藏點需沿冰裂坡與腳印溝折返，實際路程長於相鄰一格。",
     "frostbite_pass_frost_giant_steps:south->frostbite_pass_sleet_watch (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_frost_giant_steps:north->frostbite_pass_northbound_ridge (long_path) 霜巨人足跡到北行山脊需沿腳印溝與風切稜線爬升，實際路程長於相鄰一格。",
-    "frostbite_pass_ice_cairn_field:south->frostbite_pass_wind_howl_arch (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_northbound_ridge:south->frostbite_pass_frost_giant_steps (long_path) 北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。",
     "frostbite_pass_northbound_ridge:east->frostbite_pass_dragon_breath_shelf (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_dragon_breath_shelf:west->frostbite_pass_northbound_ridge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
