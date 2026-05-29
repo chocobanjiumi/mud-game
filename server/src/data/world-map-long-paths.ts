@@ -406,16 +406,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "ember_march_lava_crack"
   ],
   [
-    "ember_march_smoke_trench",
-    "south",
-    "ember_march_worm_burrow"
-  ],
-  [
-    "ember_march_worm_burrow",
-    "north",
-    "ember_march_smoke_trench"
-  ],
-  [
     "firefly_trail",
     "east",
     "elf_altar"

@@ -21070,7 +21070,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路' },
       { direction: 'east', targetRoomId: 'ember_march_lava_crack', description: '熔裂縫在東側' },
-      { direction: 'south', targetRoomId: 'ember_march_worm_burrow', description: '熔岩蟲道在南側' },
+      { direction: 'north', targetRoomId: 'ember_march_firegrass_flat', description: '北側火草坪接回焦黑補給道' },
+      { direction: 'south', targetRoomId: 'ember_march_war_camp_ruin', description: '南側塌旗營牆通往戰營殘址' },
     ],
     monsters: [
       { monsterId: 'cinder_trench_stalker', maxCount: 2, respawnSeconds: 220 },
@@ -21203,7 +21204,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'long_path', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'long_path', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'ember_march_firegrass_flat', description: '南側戰營殘址穿過塌旗營牆與冒火草溝，沿焦黑補給道下到火草坪', edgeKind: 'long_path', edgeNote: '戰營殘址到火草坪需穿過塌旗營牆與冒火草溝，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_smoke_trench', description: '北側塌旗營牆回到煙溝' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 2, respawnSeconds: 260 },
@@ -21255,7 +21256,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '火草坪位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'ember_march_war_camp_ruin', description: '北側火草坪沿焦黑補給道上行，穿過冒火草溝與塌旗營牆回到戰營殘址', edgeKind: 'long_path', edgeNote: '火草坪回戰營殘址需沿補給道穿過冒火草溝與營牆，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_smoke_trench', description: '南側焦黑補給道下到煙溝' },
       { direction: 'east', targetRoomId: 'ember_march_worm_burrow', description: '熔岩蟲道在東側' },
     ],
     monsters: [
@@ -21282,7 +21283,6 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '熔岩蟲道位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_firegrass_flat', description: '回到火草坪' },
-      { direction: 'north', targetRoomId: 'ember_march_smoke_trench', description: '回到煙溝' },
       { direction: 'east', targetRoomId: 'ember_march_scorched_oasis', description: '焦泉在東側' },
     ],
     monsters: [

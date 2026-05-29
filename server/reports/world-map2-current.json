@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:13:41.938Z",
+  "generatedAt": "2026-05-29T19:15:01.652Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -2895,7 +2895,6 @@
     "saltwind_flats_deep_brine_eye:south->saltwind_flats_tidewatch_ruin (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_ash_gate:north->ember_march_burnt_watchpost (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_cinder_road:north->ember_march_charred_milestone (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "ember_march_smoke_trench:south->ember_march_worm_burrow (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_charred_milestone:south->ember_march_cinder_road (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_charred_milestone:east->ember_march_war_camp_ruin (long_path) 焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。",
     "ember_march_burnt_watchpost:south->ember_march_ash_gate (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
@@ -2905,11 +2904,8 @@
     "ember_march_glass_ash_field:east->ember_march_war_camp_ruin (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_war_camp_ruin:west->ember_march_charred_milestone (long_path) 戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。",
     "ember_march_war_camp_ruin:east->ember_march_slag_bridge (long_path) 戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。",
-    "ember_march_war_camp_ruin:south->ember_march_firegrass_flat (long_path) 戰營殘址到火草坪需穿過塌旗營牆與冒火草溝，實際路程長於相鄰一格。",
     "ember_march_slag_bridge:west->ember_march_war_camp_ruin (long_path) 渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。",
     "ember_march_slag_bridge:south->ember_march_lava_crack (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "ember_march_firegrass_flat:north->ember_march_war_camp_ruin (long_path) 火草坪回戰營殘址需沿補給道穿過冒火草溝與營牆，實際路程長於相鄰一格。",
-    "ember_march_worm_burrow:north->ember_march_smoke_trench (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_black_sand_basin:north->ember_march_ember_forge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "ember_march_black_sand_basin:east->ember_march_bonekiln_pass (long_path) 黑砂盆地到骨窯隘口需沿蒸汽乾渠繞過骨窯熱流，實際路程長於相鄰一格。",
     "ember_march_ember_forge:south->ember_march_black_sand_basin (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
