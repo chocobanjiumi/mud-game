@@ -3237,13 +3237,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_31_13": {
     "id": "serpent_delta_fill_31_13",
-    "name": "北河渡口",
+    "name": "北河鹽霧渡口",
     "zone": "serpent_delta",
-    "description": "蛇河三角洲北緣的渡口，鹹風與濕泥味在河面上交纏。",
+    "description": "北河鹽霧渡口位在蛇河三角洲北緣，北面鹽風仍貼著河面吹來，南側渡船索樁通往入口渡口，東邊可見分流蘆岸的低草。這裡是邊界採集點，泥灘上散著可採集的鹽蘆芽與濕泥貝殼。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "serpent_delta_entrance_ferry"
+        "targetRoomId": "serpent_delta_entrance_ferry",
+        "description": "沿渡船索樁南行，回到三角洲入口渡口。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3254,13 +3255,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_32_13": {
     "id": "serpent_delta_fill_32_13",
-    "name": "分流蘆岸",
+    "name": "北分流草蘆岸",
     "zone": "serpent_delta",
-    "description": "低矮蘆葦沿著分流河道搖晃，泥濘小徑往南深入三角洲。",
+    "description": "北分流草蘆岸貼著三角洲北側分流水道，西面接北河鹽霧渡口，東面望見泥魚淺灘，南側泥濘小徑深入分流蘆岸。這裡是路線端點兼採集點，低蘆根旁有可採集的淡水蘆芯。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "serpent_delta_split_reed_bank"
+        "targetRoomId": "serpent_delta_split_reed_bank",
+        "description": "沿低蘆泥徑南下，進入分流蘆岸。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3295,13 +3297,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_33_13": {
     "id": "serpent_delta_fill_33_13",
-    "name": "泥魚淺灘",
+    "name": "北泥魚淺灘",
     "zone": "serpent_delta",
-    "description": "淺水灘裡有泥魚翻動的痕跡，河口水氣取代了北面的鹽霧。",
+    "description": "北泥魚淺灘承接北分流蘆岸東端，西側蘆影貼著水面，南面泥魚池不時冒出氣泡，北方鹽霧在這裡被河口水氣沖淡。這裡是採集淺灘，可採集濕滑泥藻與泥魚翻出的細貝。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "serpent_delta_mudfish_pool"
+        "targetRoomId": "serpent_delta_mudfish_pool",
+        "description": "踩著淺灘泥脊南行，抵達泥魚池。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3535,9 +3538,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_31_15": {
     "id": "serpent_delta_fill_31_15",
-    "name": "河汊通道",
+    "name": "渡口南側封汊",
     "zone": "serpent_delta",
-    "description": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+    "description": "渡口南側封汊位在入口渡口與白鷺標記之間，北面可聽見渡船木板聲，南側泥線轉向白鷺標記，東邊是高腳聚落外圍。分岔水流把道路切碎，這裡只作 border gathering blocker，濕泥上可採少量蛇紋蘆根。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3547,9 +3550,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_31_17": {
     "id": "serpent_delta_fill_31_17",
-    "name": "泥灘棧道",
+    "name": "白鷺南封棧",
     "zone": "serpent_delta",
-    "description": "三角洲上的搖晃棧道，下方是混濁的河水。",
+    "description": "白鷺南封棧靠在白鷺標記南側，北面仍能看見羽形木牌，東側紅樹迷宮的根鬚壓進泥灘。棧板向外斷成半截，下方混水太深，這裡是純 blocker 與邊界標記，不提供可通行路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -3576,9 +3579,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_32_18": {
     "id": "serpent_delta_fill_32_18",
-    "name": "泥灘棧道",
+    "name": "紅樹南緣泥封",
     "zone": "serpent_delta",
-    "description": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+    "description": "紅樹南緣泥封貼著紅樹迷宮南側，北面根牆密集，東邊舊堤道的石基從水草間露出。泥灘被潮水沖成軟陷坑，標示三角洲內路的 blocker 邊界，沒有安全棧道可繼續穿越。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -3588,9 +3591,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_33_19": {
     "id": "serpent_delta_fill_33_19",
-    "name": "泥灘棧道",
+    "name": "舊堤南窄泥道",
     "zone": "serpent_delta",
-    "description": "河汊之間的狹窄通道，空氣悶熱潮溼。",
+    "description": "舊堤南窄泥道位在舊堤道南面，北側石基仍可作定位，南方蛇河邊道逐漸靠近火山岩壁。這裡是邊界 blocker，河汊把泥道擠得只剩巡視用腳點，不安排怪物或採集玩法。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -3600,13 +3603,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_33_20": {
     "id": "serpent_delta_fill_33_20",
-    "name": "蛇河邊道",
+    "name": "矮礦北口泥岸",
     "zone": "serpent_delta",
-    "description": "蛇河三角洲的泥濘通道，南面岩壁上有矮人開鑿的坑口，鐵鏽味從其中飄出。",
+    "description": "矮礦北口泥岸位在蛇河三角洲南緣，北面接舊堤南窄泥道，南面火山岩壁開著矮人礦坑入口，鐵鏽味與濕泥味混在一起。這裡是跨區 border gathering 點，泥岸上可採含鐵水苔，但主要功能是標示前往矮人礦坑的邊界。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "dwarf_mine"
+        "targetRoomId": "dwarf_mine",
+        "description": "沿含鐵水苔覆蓋的泥岸南行，進入矮人礦坑北口。"
       }
     ],
     "mapSymbol": "[·]",
@@ -3617,9 +3621,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_34_14": {
     "id": "serpent_delta_fill_34_14",
-    "name": "河汊通道",
+    "name": "鱗網北側汊口",
     "zone": "serpent_delta",
-    "description": "三角洲上的搖晃棧道，下方是混濁的河水。",
+    "description": "鱗網北側汊口位在泥魚池與鱗網場之間，南面能看見曬網木架，西邊淺水灘有泥魚翻動痕。潮水在此分成幾條短汊，這裡只作採集 blocker，水邊可採破網纏住的河藻與魚鱗碎片。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -3629,9 +3633,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_35_15": {
     "id": "serpent_delta_fill_35_15",
-    "name": "河汊通道",
+    "name": "穀倉北濕泥界",
     "zone": "serpent_delta",
-    "description": "蛇河三角洲的泥濘通道，河水在腳邊分岔又匯合。",
+    "description": "穀倉北濕泥界壓在淹水穀倉北側，南面腐木牆與穀袋殘片半沉在水裡，西側鱗網場仍有細繩晃動。這裡是 border gathering blocker，濕泥裡能採到發芽穀粒與水苔，但道路被倒塌木梁截斷。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -3641,9 +3645,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "serpent_delta_fill_36_17": {
     "id": "serpent_delta_fill_36_17",
-    "name": "三角洲小路",
+    "name": "月釣東側斷棧",
     "zone": "serpent_delta",
-    "description": "三角洲上的搖晃棧道，下方是混濁的河水。",
+    "description": "月釣東側斷棧位在月光釣棚東邊，西面魚燈仍映在水面，南側多口匯流處傳來水流碰撞聲。棧板在這裡被洪水扯斷，只作純 blocker 與地形邊界，提醒玩家不要把釣棚路線誤認為可向東延伸。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
