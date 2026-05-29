@@ -3200,9 +3200,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "royal_hunting_grounds_fill_n5_n5": {
     "id": "royal_hunting_grounds_fill_n5_n5",
-    "name": "獵場小路",
+    "name": "白鹿林南灌木採封",
     "zone": "royal_hunting_grounds",
-    "description": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。",
+    "description": "白鹿林南灌木採封位在王室獵場南側林線，北面白鹿林傳來枝葉摩擦聲，西側月光空地的銀色草線若隱若現。灌木叢可採獵場藥草與獸徑羽毛，但獵場繩標封住通路，是 gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -3212,19 +3212,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "royal_hunting_grounds_fill_n6_n4": {
     "id": "royal_hunting_grounds_fill_n6_n4",
-    "name": "鹿徑",
+    "name": "月光白鹿草線",
     "zone": "royal_hunting_grounds",
-    "description": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。",
+    "description": "月光白鹿草線穿過王家林地的低草坡，西側月光空地照出銀白足跡，東面白鹿林的樹幹掛著王室繩標。這裡是安全 route，讓玩家沿鹿徑在兩個正式獵場地標間移動。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "royal_hunting_grounds_moonlit_clearing",
-        "description": "月光草線西返月光空地"
+        "description": "沿月光照亮的低草線向西，可回到開闊的月光空地"
       },
       {
         "direction": "east",
         "targetRoomId": "royal_hunting_grounds_white_stag_grove",
-        "description": "月光草線東接白鹿林"
+        "description": "沿王室繩標與鹿蹄印向東，可接到白鹿林深處"
       }
     ],
     "mapSymbol": "[·]",

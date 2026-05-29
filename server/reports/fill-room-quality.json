@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-29T21:11:45.054Z",
+  "generatedAt": "2026-05-29T21:13:10.867Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 15,
-    "errors": 13,
-    "warnings": 2,
+    "issues": 9,
+    "errors": 9,
+    "warnings": 0,
     "byGrade": {
       "A_main_transition": 30,
-      "B_connector": 16,
+      "B_connector": 15,
       "C_empty_filler": 71,
-      "D_upgrade_candidate": 226
+      "D_upgrade_candidate": 227
     },
     "byPurpose": {
       "blocker": 236,
       "border": 283,
-      "gathering": 164,
+      "gathering": 165,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 17,
@@ -26,9 +26,7 @@
     },
     "byIssueKind": {
       "description.direction": 6,
-      "description.length": 5,
-      "description.purpose": 2,
-      "exit.description.length": 2
+      "description.length": 3
     }
   },
   "zones": [
@@ -9172,12 +9170,12 @@
       "zoneId": "royal_hunting_grounds",
       "zoneName": "王家獵場",
       "fillRooms": 2,
-      "issues": 6,
+      "issues": 0,
       "records": [
         {
           "id": "royal_hunting_grounds_fill_n5_n5",
           "zone": "royal_hunting_grounds",
-          "name": "獵場小路",
+          "name": "白鹿林南灌木採封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -9204,39 +9202,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "royal_hunting_grounds_fill_n5_n5",
-              "zone": "royal_hunting_grounds",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。"
-            },
-            {
-              "id": "royal_hunting_grounds_fill_n5_n5",
-              "zone": "royal_hunting_grounds",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "royal_hunting_grounds_fill_n6_n4",
           "zone": "royal_hunting_grounds",
-          "name": "鹿徑",
-          "grade": "B_connector",
+          "name": "月光白鹿草線",
+          "grade": "D_upgrade_candidate",
           "purposes": [
+            "gathering",
             "route"
           ],
           "worldX": -6,
@@ -9258,57 +9236,16 @@
           "mainRoute": true,
           "deadEnd": false,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "royal_hunting_grounds_fill_n6_n4",
-              "zone": "royal_hunting_grounds",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。"
-            },
-            {
-              "id": "royal_hunting_grounds_fill_n6_n4",
-              "zone": "royal_hunting_grounds",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。"
-            },
-            {
-              "id": "royal_hunting_grounds_fill_n6_n4",
-              "zone": "royal_hunting_grounds",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->royal_hunting_grounds_moonlit_clearing description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "月光草線西返月光空地"
-            },
-            {
-              "id": "royal_hunting_grounds_fill_n6_n4",
-              "zone": "royal_hunting_grounds",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->royal_hunting_grounds_white_stag_grove description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "月光草線東接白鹿林"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -13364,66 +13301,6 @@
       "current": 200,
       "minimum": 55,
       "text": "黑玻橋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n5_n5",
-      "zone": "royal_hunting_grounds",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n5_n5",
-      "zone": "royal_hunting_grounds",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "林間的獵道，兩旁的灌木叢偶爾傳來動物奔跑的聲音。"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n6_n4",
-      "zone": "royal_hunting_grounds",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n6_n4",
-      "zone": "royal_hunting_grounds",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "穿過王家林地的鹿徑，空氣中帶著松木和野花的香氣。"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n6_n4",
-      "zone": "royal_hunting_grounds",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->royal_hunting_grounds_moonlit_clearing description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "月光草線西返月光空地"
-    },
-    {
-      "id": "royal_hunting_grounds_fill_n6_n4",
-      "zone": "royal_hunting_grounds",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->royal_hunting_grounds_white_stag_grove description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "月光草線東接白鹿林"
     },
     {
       "id": "underground_city_lantern_bridge",
