@@ -9708,13 +9708,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '狼群崖坡西返帶電骨原需繞過洞穴與斜草線，屬於長路徑。',
       },
-      {
-        direction: 'east',
-        targetRoomId: 'thundersteppe_thunderhoof_crossing',
-        description: '東側崖頂草線要繞過塌坡與狼穴外緣後，才會下到雷蹄渡口，溪水電光可作遠方路標',
-        edgeKind: 'long_path',
-        edgeNote: '狼群崖坡到雷蹄渡口被塌坡與狼穴外緣隔開，距離長於相鄰格。',
-      },
+      { direction: 'east', targetRoomId: 'thundersteppe_drum_circle', description: '東側低聲鼓點通往雷鼓石圈' },
     ],
     monsters: [
       { monsterId: 'stormpack_wolf', maxCount: 4, respawnSeconds: 110 },
@@ -9773,7 +9767,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '雷鼓石圈北返游牧營地需穿過祭旗路與低草坡，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'thundersteppe_stormglass_outcrop', description: '回聲引向風暴玻岩' },
+      { direction: 'west', targetRoomId: 'thundersteppe_wolf_scarp', description: '西側草線回到狼群崖坡' },
+      { direction: 'east', targetRoomId: 'thundersteppe_thunderhoof_crossing', description: '東側溪岸草路通往雷蹄渡口' },
+      {
+        direction: 'south',
+        targetRoomId: 'thundersteppe_stormglass_outcrop',
+        description: '南側鼓聲沿低草坡與黑玻反光繞向風暴玻岩',
+        edgeKind: 'long_path',
+        edgeNote: '雷鼓石圈到風暴玻岩需沿鼓聲與黑玻反光繞行，屬於草原內特殊長路徑。',
+      },
     ],
     monsters: [
       { monsterId: 'rodfield_stormcaller', maxCount: 1, respawnSeconds: 180 },
@@ -9876,13 +9878,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '雷蹄渡口北返引雷柱林需沿濕根雷弧上行，屬於長路徑。',
       },
-      {
-        direction: 'west',
-        targetRoomId: 'thundersteppe_wolf_scarp',
-        description: '西側崖頂草線要逆著溪岸風繞過塌坡，才會回到狼群崖坡，狼穴回聲會逐漸清晰',
-        edgeKind: 'long_path',
-        edgeNote: '雷蹄渡口西返狼群崖坡需繞過溪岸塌坡，不是相鄰格。',
-      },
+      { direction: 'west', targetRoomId: 'thundersteppe_drum_circle', description: '西側溪岸草路回到雷鼓石圈' },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_dragonstorm_eye',

@@ -1792,7 +1792,7 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "thundersteppe_drum_circle",
-    "east",
+    "south",
     "thundersteppe_stormglass_outcrop"
   ],
   [
