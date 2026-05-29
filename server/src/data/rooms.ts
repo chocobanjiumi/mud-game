@@ -3184,7 +3184,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'coastal_boardwalk', description: '回到棧道' },
       { direction: 'south', targetRoomId: 'tidal_zone', description: '沿海岸往潮間帶走' },
-      { direction: 'east', targetRoomId: 'cliff_path', description: '一條小路通往海崖' },
+      { direction: 'east', targetRoomId: 'lighthouse', description: '東側白石路通往燈塔塔基' },
     ],
     monsters: [
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 30 },
@@ -3320,6 +3320,8 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '燈塔北側回碼頭是沿岸長路徑，不是直接相鄰格。',
       },
+      { direction: 'west', targetRoomId: 'sandy_beach', description: '西側白石路回到沙灘' },
+      { direction: 'east', targetRoomId: 'cliff_path', description: '東側海風石徑通往海崖步道' },
       { direction: 'south', targetRoomId: 'coral_shallows', description: '沿海岸走向珊瑚淺灘' },
     ],
     monsters: [
@@ -3349,6 +3351,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '珊瑚散發出微弱的螢光，為這片海底花園披上了一層夢幻的色彩。',
     exits: [
       { direction: 'north', targetRoomId: 'lighthouse', description: '回到燈塔' },
+      { direction: 'east', targetRoomId: 'eastern_coast_pearl_bed', description: '東側淺水沙床接往珍珠床' },
       {
         direction: 'west',
         targetRoomId: 'tidal_zone',
@@ -3394,9 +3397,7 @@ export const ROOMS: Record<string, RoomDef> = {
       {
         direction: 'east',
         targetRoomId: 'pirate_camp',
-        description: '東側需穿過擱淺船板、貨箱陰影與礁石缺口，才會抵達海盜營地，巡邏火光可作路標',
-        edgeKind: 'long_path',
-        edgeNote: '沉船殘骸到海盜營地是岸邊繞行路線，不是相鄰格。',
+        description: '東側擱淺船板接往海盜營地',
       },
     ],
     monsters: [
@@ -3428,14 +3429,9 @@ export const ROOMS: Record<string, RoomDef> = {
       '崖壁上密佈著大大小小的洞穴，巨蟹在洞口揮舞著螯鉗威嚇經過的行人。' +
       '往下望去，白色的浪花在礁石上炸開，濺起的水霧瀰漫在半空中。',
     exits: [
-      { direction: 'west', targetRoomId: 'sandy_beach', description: '下崖回到沙灘' },
-      {
-        direction: 'south',
-        targetRoomId: 'pirate_camp',
-        description: '步道南端沿海崖曲折下切，繞過強風岩台後才通往海盜營地，落石聲會暴露行蹤',
-        edgeKind: 'long_path',
-        edgeNote: '海崖步道到海盜營地有明顯高低落差，屬於長路徑。',
-      },
+      { direction: 'west', targetRoomId: 'lighthouse', description: '西側海風石徑回到燈塔' },
+      { direction: 'north', targetRoomId: 'eastern_coast_broken_pier', description: '北側斷木棧道通往斷裂棧橋' },
+      { direction: 'south', targetRoomId: 'eastern_coast_pearl_bed', description: '南側潮溝石階下到珍珠床' },
     ],
     monsters: [
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
@@ -3467,17 +3463,10 @@ export const ROOMS: Record<string, RoomDef> = {
       {
         direction: 'west',
         targetRoomId: 'shipwreck',
-        description: '往西需穿過貨箱陰影與礁石缺口，沿擱淺船板回到沉船殘骸，岸邊守衛可能追擊',
-        edgeKind: 'long_path',
-        edgeNote: '海盜營地西返沉船殘骸需要繞過海岸營地與船骸，距離較長。',
+        description: '西側擱淺船板回到沉船殘骸',
       },
-      {
-        direction: 'north',
-        targetRoomId: 'cliff_path',
-        description: '北側步道需要攀上海崖岩台與強風窄路，才能離開營地回到海崖，撤退時很難奔跑',
-        edgeKind: 'long_path',
-        edgeNote: '海盜營地北側到海崖步道有高低差與曲折路線，屬於長路徑。',
-      },
+      { direction: 'north', targetRoomId: 'eastern_coast_pearl_bed', description: '北側潮溝石階回到珍珠床' },
+      { direction: 'east', targetRoomId: 'eastern_coast_pirate_cache', description: '東側岩縫通往海盜藏貨處' },
     ],
     monsters: [
       { monsterId: 'pirate', maxCount: 3, respawnSeconds: 45 },
@@ -3663,7 +3652,7 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '走私者海灣西返海崖步道需要沿崖壁繞行，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'eastern_coast_pirate_cache', description: '貨箱痕跡通往藏貨處' },
+      { direction: 'south', targetRoomId: 'eastern_coast_serpent_nest', description: '南側暗流水線通往海蛇巢' },
       { direction: 'east', targetRoomId: 'eastern_coast_stormwatch_ledge', description: '小徑攀向瞭望崖' },
     ],
     monsters: [
@@ -3690,14 +3679,14 @@ export const ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '斷裂棧橋北返碼頭要繞過破損木樁，距離長於相鄰格。',
       },
+      { direction: 'south', targetRoomId: 'cliff_path', description: '南側斷木棧道接上海崖步道' },
       {
-        direction: 'south',
+        direction: 'west',
         targetRoomId: 'lighthouse',
-        description: '南側沿岸穿過鬆動木板與潮濕岩面後，才會抵達燈塔塔基，海蟹常躲在木樁下',
+        description: '西側沿岸穿過鬆動木板與潮濕岩面後，才會抵達燈塔塔基，海蟹常躲在木樁下',
         edgeKind: 'long_path',
-        edgeNote: '斷裂棧橋到燈塔是沿岸長路徑，不是直接相鄰房間。',
+        edgeNote: '斷裂棧橋到燈塔是沿岸斜向長路徑，不是直接相鄰房間。',
       },
-      { direction: 'east', targetRoomId: 'eastern_coast_pearl_bed', description: '潮溝通往珍珠床' },
     ],
     monsters: [
       { monsterId: 'sea_crab', maxCount: 3, respawnSeconds: 35 },
@@ -3742,14 +3731,9 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。玩家可 gather 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'eastern_coast_broken_pier', description: '潮溝回斷裂棧橋' },
-      {
-        direction: 'south',
-        targetRoomId: 'coral_shallows',
-        description: '南側水色逐漸變深，需穿過蚌殼沙床與水母漂流帶才到珊瑚淺灘，採集路線較長',
-        edgeKind: 'long_path',
-        edgeNote: '珍珠床到珊瑚淺灘需要沿淺水沙床繞行，距離長於相鄰格。',
-      },
+      { direction: 'north', targetRoomId: 'cliff_path', description: '北側潮溝石階回到海崖步道' },
+      { direction: 'west', targetRoomId: 'coral_shallows', description: '西側淺水沙床回到珊瑚淺灘' },
+      { direction: 'south', targetRoomId: 'pirate_camp', description: '南側潮溝石階通往海盜營地' },
       { direction: 'east', targetRoomId: 'eastern_coast_serpent_nest', description: '暗流通向海蛇巢' },
     ],
     monsters: [
@@ -3774,21 +3758,8 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '海盜營地後方的岩縫裡藏著半埋貨箱，破黑旗蓋住火藥桶與酒桶，紅色營火把濕石照得像血。北面通走私者海灣，西側可回海盜營地，南面有窄路接沉船殘骸。這裡是精英藏寶點，玩家可 search 貨箱取得一次性寶物或任務證物，inspect 酒桶標記確認海盜船長補給線，但會引來強化巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'north', targetRoomId: 'eastern_coast_smugglers_cove', description: '貨痕回到走私者海灣' },
-      {
-        direction: 'west',
-        targetRoomId: 'pirate_camp',
-        description: '西側岩縫穿過破旗、火藥桶與濕石遮蔽後，才回到海盜營地，營火煙味會變濃',
-        edgeKind: 'long_path',
-        edgeNote: '海盜藏貨處西返營地需要穿過岩縫與貨箱區，屬於長路徑。',
-      },
-      {
-        direction: 'south',
-        targetRoomId: 'shipwreck',
-        description: '南側窄路沿半埋貨箱與濕礁下切，最後接回沉船殘骸，腐木氣味會逐漸明顯',
-        edgeKind: 'long_path',
-        edgeNote: '海盜藏貨處到沉船殘骸是藏貨岩縫長路徑，不是相鄰格。',
-      },
+      { direction: 'north', targetRoomId: 'eastern_coast_serpent_nest', description: '北側暗流水線回到海蛇巢' },
+      { direction: 'west', targetRoomId: 'pirate_camp', description: '西側岩縫回到海盜營地' },
     ],
     monsters: [
       { monsterId: 'pirate', maxCount: 3, respawnSeconds: 50 },
@@ -3812,12 +3783,14 @@ export const ROOMS: Record<string, RoomDef> = {
       '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側水面能看見觀潮斷崖但沒有可攀爬路線，南面可潛入暗礁深處。這裡是大型事件鉤子，玩家可 inspect 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_pearl_bed', description: '暗流回珍珠床' },
+      { direction: 'north', targetRoomId: 'eastern_coast_smugglers_cove', description: '北側暗流水線回到走私者海灣' },
+      { direction: 'south', targetRoomId: 'eastern_coast_pirate_cache', description: '南側暗流水線通往海盜藏貨處' },
       {
-        direction: 'south',
+        direction: 'east',
         targetRoomId: 'dark_reef',
-        description: '南側裂谷沿鋸齒礁壁深入急流，最後才會接到暗礁區，海蛇鱗痕會標示路線',
+        description: '東側裂谷沿鋸齒礁壁深入急流，最後才會接到暗礁區，海蛇鱗痕會標示路線',
         edgeKind: 'long_path',
-        edgeNote: '海蛇巢南側到暗礁需要沿水下裂谷前進，屬於長路徑。',
+        edgeNote: '海蛇巢到暗礁需要沿水下裂谷斜向前進，屬於長路徑。',
       },
     ],
     monsters: [

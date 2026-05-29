@@ -336,11 +336,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "guild_hall"
   ],
   [
-    "cliff_path",
-    "west",
-    "sandy_beach"
-  ],
-  [
     "crystal_ice_cave",
     "east",
     "frozen_wastes_crystal_spire"
@@ -394,26 +389,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "dense_trail",
     "east",
     "firefly_trail"
-  ],
-  [
-    "eastern_coast_broken_pier",
-    "east",
-    "eastern_coast_pearl_bed"
-  ],
-  [
-    "eastern_coast_pearl_bed",
-    "west",
-    "eastern_coast_broken_pier"
-  ],
-  [
-    "eastern_coast_pirate_cache",
-    "north",
-    "eastern_coast_smugglers_cove"
-  ],
-  [
-    "eastern_coast_smugglers_cove",
-    "south",
-    "eastern_coast_pirate_cache"
   ],
   [
     "elf_altar",
@@ -1744,11 +1719,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "saltwind_flats_white_ripple",
     "north",
     "saltwind_flats_saltgrass_strip"
-  ],
-  [
-    "sandy_beach",
-    "east",
-    "cliff_path"
   ],
   [
     "sapphire_lake_blue_reed_bed",
