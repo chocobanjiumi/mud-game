@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:17:30.309Z",
+  "generatedAt": "2026-05-29T21:19:53.630Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 134
+    "issues": 119
   },
   "issuesByKind": {
-    "exit.description": 67,
-    "room.description": 67
+    "exit.description": 65,
+    "room.description": 54
   },
   "issues": [
     {
@@ -842,24 +842,6 @@
       "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
-      "id": "kingsroad_market/kingsroad_market_portal_plaza:west->kingsroad_market_fill_22_0",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_guard_post:west->kingsroad_market_fill_22_1",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
       "id": "arena_quarter/arena_quarter_grand_gate:west->sapphire_lake_fill_22_7",
       "kind": "exit.description",
       "field": "description",
@@ -1202,103 +1184,13 @@
       "reason": "room 描述字數不足或過於泛用"
     },
     {
-      "id": "kingsroad_market/kingsroad_market_fill_23_2",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 68,
-      "minimumLength": 80,
-      "text": "草藥棚北封街夾在北側守衛哨與東側草藥廣場之間，石板路面被臨時木架和藥草箱堵住。這裡是市集內部 blocker，標示攤棚後勤區不開放通行，也沒有商店互動或任務入口。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_23_n1",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 64,
-      "minimumLength": 80,
-      "text": "西北貨棚封巷位在傳送廣場北面，南側可聽見旅人經過石階，東側井庭旁堆著水桶與布包。貨棚帳繩橫過路口，這格是服務區邊緣 blocker，只作市集邊界與動線提示。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_25_5",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 66,
-      "minimumLength": 80,
-      "text": "南市競技門廊位於王道市集南緣，北面攤棚聲逐漸被石牆擋住，南側階梯直接接向競技城區的獎品櫃台。這裡是跨區 border route，守衛只放行往南的觀賽人流，側門全部封閉。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_26_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 66,
-      "minimumLength": 80,
-      "text": "拍賣棚下封道位於拍賣帳篷南側，北面帆布遮住木槌聲，東側高陽台的石階被繩欄隔開。地上有車轍與搬運板痕，但這裡是市集後勤 blocker，不提供玩家穿越或商店服務。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
       "id": "kingsroad_market/kingsroad_market_fill_26_n1",
       "kind": "room.description",
       "field": "description",
-      "currentLength": 63,
+      "currentLength": 78,
       "minimumLength": 80,
-      "text": "鐵匠北貨欄貼著黑smith row 北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱鎖住通道，這格是封閉 blocker，提示服務區邊界而非可互動店面。",
+      "text": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面。",
       "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_28_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "高陽台西封街在市集東半部收窄，西側高陽台的石欄投下陰影，北面帳冊後巷傳來紙頁聲，東側攤棚通道被布幕遮住。這格是市集 blocker，只保留建築邊界與服務動線提示。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_28_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "高陽台西封街在市集東半部收窄，西側高陽台的石欄投下陰影，北面帳冊後巷傳來紙頁聲，東側攤棚通道被布幕遮住。這格是市集 blocker，只保留建築邊界與服務動線提示。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_29_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 80,
-      "text": "東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕和貨箱擋住直行路線，這格是 blocker，表示攤位後場不可穿越。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_29_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 80,
-      "text": "東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕和貨箱擋住直行路線，這格是 blocker，表示攤位後場不可穿越。",
-      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_30_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 73,
-      "minimumLength": 80,
-      "text": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往 eastern coast 的舊驛牌，但守衛封鎖門閂，這裡只作 border blocker，暫不開放跨區通行。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_30_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 73,
-      "minimumLength": 80,
-      "text": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往 eastern coast 的舊驛牌，但守衛封鎖門閂，這裡只作 border blocker，暫不開放跨區通行。",
-      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
     },
     {
       "id": "lakeside_town/lakeside_town_fill_16_1",
@@ -1326,33 +1218,6 @@
       "minimumLength": 55,
       "text": "拍賣行南倉庫貨巷夾在拍賣行與湖濱倉庫之間，北面拍賣鐘聲沉悶，東側倉庫門堆滿封箱，西邊競技入口旗影晃動。這裡是 service blocker，貨巷只供後勤堆放，不開新路。",
       "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_22_0",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 68,
-      "minimumLength": 80,
-      "text": "王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄標示這裡是單向 route 與西側動線節點。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_22_1",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 66,
-      "minimumLength": 80,
-      "text": "王道西哨巷靠近市集守衛哨，東側可見檢查桌與銅鈴，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，但此處只作守衛問訊與巡邏邊界，不開放旁路穿越。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_22_1",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 66,
-      "minimumLength": 80,
-      "text": "王道西哨巷靠近市集守衛哨，東側可見檢查桌與銅鈴，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，但此處只作守衛問訊與巡邏邊界，不開放旁路穿越。",
-      "reason": "城鎮服務房間必須寫出服務功能、設施位置與玩家可做的互動"
     },
     {
       "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_15",

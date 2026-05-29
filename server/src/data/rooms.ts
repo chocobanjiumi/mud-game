@@ -5344,6 +5344,16 @@ for (const [roomId, append] of Object.entries(DESCRIPTION_APPENDS)) {
   const room = ROOMS[roomId];
   if (room) room.description += append;
 }
+
+const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  'kingsroad_market_portal_plaza:west': '西側平整石板離開傳送廣場，接往王道西市石路與西口貨車動線',
+  'kingsroad_market_guard_post:west': '西側檢查桌旁窄石巷離開守衛哨，接往王道西哨巷',
+};
+for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
+  const [roomId, direction] = key.split(':') as [string, Direction];
+  const exit = ROOMS[roomId]?.exits.find(exit => exit.direction === direction);
+  if (exit) exit.description = description;
+}
 const _inn = ROOMS['starter_village_inn'];
 if (_inn) {
   _inn.description = _inn.description.replace(

@@ -1915,7 +1915,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_23_2",
     "name": "草藥棚北封街",
     "zone": "kingsroad_market",
-    "description": "草藥棚北封街夾在北側守衛哨與東側草藥廣場之間，石板路面被臨時木架和藥草箱堵住。這裡是市集內部 blocker，標示攤棚後勤區不開放通行，也沒有商店互動或任務入口。",
+    "description": "草藥棚北封街夾在北側守衛哨與東側草藥廣場之間，石板路面被臨時木架、藥草箱和帆布雨棚堵住。這裡是市集內部 blocker，標示攤棚後勤區不開放通行；玩家只能看見藥草分類牌與搬貨路線，不能在此交易、接任務或穿越攤棚。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1927,7 +1927,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_23_n1",
     "name": "西北貨棚封巷",
     "zone": "kingsroad_market",
-    "description": "西北貨棚封巷位在傳送廣場北面，南側可聽見旅人經過石階，東側井庭旁堆著水桶與布包。貨棚帳繩橫過路口，這格是服務區邊緣 blocker，只作市集邊界與動線提示。",
+    "description": "西北貨棚封巷位在傳送廣場北面，南側可聽見旅人經過石階，東側井庭旁堆著水桶、布包和卸貨木架。貨棚帳繩橫過路口，這格是服務區邊緣 blocker，只作市集邊界與動線提示；玩家可辨認補給棚位置，但不能進入貨棚後場。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1939,7 +1939,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_25_5",
     "name": "南市競技門廊",
     "zone": "kingsroad_market",
-    "description": "南市競技門廊位於王道市集南緣，北面攤棚聲逐漸被石牆擋住，南側階梯直接接向競技城區的獎品櫃台。這裡是跨區 border route，守衛只放行往南的觀賽人流，側門全部封閉。",
+    "description": "南市競技門廊位於王道市集南緣，北面攤棚聲逐漸被石牆擋住，南側階梯直接接向競技城區的獎品櫃台。這裡是跨區 border route，守衛只放行往南的觀賽人流；門廊旁票亭可確認入場方向，但側門、貨車門和回切小巷全部封閉。",
     "exits": [
       {
         "direction": "south",
@@ -1963,7 +1963,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_26_3",
     "name": "拍賣棚下封道",
     "zone": "kingsroad_market",
-    "description": "拍賣棚下封道位於拍賣帳篷南側，北面帆布遮住木槌聲，東側高陽台的石階被繩欄隔開。地上有車轍與搬運板痕，但這裡是市集後勤 blocker，不提供玩家穿越或商店服務。",
+    "description": "拍賣棚下封道位於拍賣帳篷南側，北面帆布遮住木槌聲，東側高陽台的石階被繩欄隔開。地上有車轍、搬運板痕與貨單木牌，但這裡是市集後勤 blocker；玩家可看出拍賣貨物流向，不能穿越、競標或使用商店服務。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -1975,7 +1975,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_26_n1",
     "name": "鐵匠北貨欄",
     "zone": "kingsroad_market",
-    "description": "鐵匠北貨欄貼著黑smith row 北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱鎖住通道，這格是封閉 blocker，提示服務區邊界而非可互動店面。",
+    "description": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -1987,7 +1987,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_28_3",
     "name": "高陽台西封街",
     "zone": "kingsroad_market",
-    "description": "高陽台西封街在市集東半部收窄，西側高陽台的石欄投下陰影，北面帳冊後巷傳來紙頁聲，東側攤棚通道被布幕遮住。這格是市集 blocker，只保留建築邊界與服務動線提示。",
+    "description": "高陽台西封街在市集東半部收窄，西側高陽台的石欄與拱柱投下陰影，北面帳冊後巷傳來紙頁聲，東側攤棚通道被布幕遮住。這格是市集 blocker，只保留石街、陽台建築邊界與服務動線提示；玩家不能從後巷繞入櫃台。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1999,7 +1999,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_29_3",
     "name": "東市攤幕封口",
     "zone": "kingsroad_market",
-    "description": "東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕和貨箱擋住直行路線，這格是 blocker，表示攤位後場不可穿越。",
+    "description": "東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕、貨箱和攤位標價木牌擋住直行路線，這格是服務區 blocker；玩家只能辨認攤位後場與取貨窗口，不可穿越或交易。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -2011,7 +2011,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_30_3",
     "name": "東門海風封驛",
     "zone": "kingsroad_market",
-    "description": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往 eastern coast 的舊驛牌，但守衛封鎖門閂，這裡只作 border blocker，暫不開放跨區通行。",
+    "description": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往東海岸的舊驛牌與守衛告示，玩家可確認東門服務位置，但門閂封鎖，這裡只作 border blocker，暫不開放跨區通行。",
     "exits": [
       {
         "direction": "east",
@@ -2152,7 +2152,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_22_0",
     "name": "王道西市石路",
     "zone": "kingsroad_market",
-    "description": "王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄標示這裡是單向 route 與西側動線節點。",
+    "description": "王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄、車轍和行李牌標示這裡是單向 route 與西側動線節點；玩家可辨認回廣場路線，不能下切哨巷。",
     "exits": [
       {
         "direction": "east",
@@ -2176,7 +2176,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_22_1",
     "name": "王道西哨巷",
     "zone": "kingsroad_market",
-    "description": "王道西哨巷靠近市集守衛哨，東側可見檢查桌與銅鈴，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，但此處只作守衛問訊與巡邏邊界，不開放旁路穿越。",
+    "description": "王道西哨巷靠近市集守衛哨，東側可見檢查桌、銅鈴和通行牌，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，此處只作守衛問訊與巡邏邊界；玩家能確認哨所服務位置，但不能從旁路穿越。",
     "exits": [
       {
         "direction": "east",
