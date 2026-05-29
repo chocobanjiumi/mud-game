@@ -11105,7 +11105,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'underground_city_lantern_bridge.png',
     imagePrompt: '鑲燈橋 in underground_city, broad subterranean bridge set with lantern gems over dark river, forge glow, tiered stone streets and carved city arches, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '鑲燈橋橫跨暗河上方，橋欄嵌著一排排發光礦石，光線被水面反射成綠藍色波紋，照亮對岸守備營、寶石交易所與更深處的工坊街。這裡是地下城邦重要的交通節點，也是城鎮居民判斷河水水位、蒸汽壓力和市場人潮的觀察點。玩家可以在橋上整理路線、尋找交易消息、確認守備巡邏方向，或 inspect 橋欄刻字得知哪些舊礦道已封閉。雖然城邦內屬於安全區域，橋下暗流仍提醒旅人不要把這座城市只當成商店集合；它有自己的秩序、歷史與持續運作的地下脈搏。',
+      '鑲燈橋橫跨暗河上方，北側階梯回寶石交易所，西側石盾路接守備營，橋欄嵌著一排排發光礦石。光線被水面反射成綠藍色波紋，照亮對岸守備營、寶石交易所與更深處的工坊街。這裡是地下城邦重要的交通節點，也是城鎮居民判斷河水水位、蒸汽壓力和市場人潮的觀察點。玩家可以在橋上整理路線、尋找交易消息、確認守備巡邏方向，或 inspect 橋欄刻字得知哪些舊礦道已封閉。雖然城邦內屬於安全區域，橋下暗流仍提醒旅人不要把這座城市只當成商店集合；它有自己的秩序、歷史與持續運作的地下脈搏。',
     exits: [
       { direction: 'north', targetRoomId: 'underground_city_gem_exchange', description: '鑲燈階梯回到寶石交易所' },
       { direction: 'west', targetRoomId: 'underground_city_guard_barracks', description: '石盾路回到守備營' },
@@ -11634,7 +11634,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'cursed_graveyard_bone_bridge.png',
     imagePrompt: '骨橋 in cursed_graveyard, haunted cemetery under cold moonlight, black mist, broken tombstones, dead trees, candles and gothic ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '骨橋籠罩在詛咒墓園的黑霧與冷月之下，濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
+      '骨橋籠罩在詛咒墓園的黑霧與冷月之下，西側地下橋回守墓人地窖，北側祭壇階接悼詞祭壇，東端通往巫妖陵寢。濕土、碎碑、白骨與早已熄滅的葬燭把道路切成一段段危險陰影。這裡不是單純的墓地背景，而是亡者巡邏、詛咒擴散與舊教會儀式交錯的節點。玩家可以 inspect 墓誌、鐘聲、燭淚與地面拖痕來判斷敵人巡行方向，也能 search 破棺、骨龕與祭器殘片尋找任務線索。若隊伍忽略霧中回音或走散，骷髏、亡靈騎士、石像鬼與巫妖僕從會從多個方向合圍；若穩定推進，則能逐步追出詛咒源頭與巫妖陵寢之間的關係，並確認撤退路線仍未被黑霧封死，隊伍火把也還足夠支撐下一段搜索。',
     exits: [
       { direction: 'west', targetRoomId: 'cursed_graveyard_gravekeeper_vault', description: '地下橋回到守墓人地窖' },
       { direction: 'north', targetRoomId: 'cursed_graveyard_litany_altar', description: '祭壇階回到悼詞祭壇' },
@@ -14256,7 +14256,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'deepsea_temple_whalebone_bridge.png',
     imagePrompt: '鯨骨橋 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '鯨骨橋位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
+      '鯨骨橋位於沉入海底的深海神殿中，西側回骨錨臺，東側觸手門通向禁忌祭壇前路，藍色聖火在水下燃燒。破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，玩家可以 inspect 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 search 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_bone_anchor', description: '鯨骨橋回到骨錨臺' },
       { direction: 'east', targetRoomId: 'deepsea_temple_tentacle_gate', description: '觸手門在前方' },
@@ -14705,7 +14705,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'obsidian_depths_black_glass_bridge.png',
     imagePrompt: '黑玻橋 in obsidian_depths, volcanic underground obsidian mine with mirror black rock, lava glow, ancient forge machinery, sulfur steam and dark fire, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑玻橋位於火山下方的黑曜深層，鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
+      '黑玻橋位於火山下方的黑曜深層，西側回鎖鏈長廊，東側接深層小祠，南面橋下坡落向棄市礦棚。鏡面岩壁反射岩漿紅光，採礦繩標、古代熔爐符文、硫磺氣孔與黑玻裂縫交錯成高危資源路線。這裡是終局採礦與戰鬥混合節點，玩家可以 gather 黑曜、火晶、硫磺與熔爐殘片，也能 inspect 礦脈折光、鎖鏈刻痕和熔流方向來判斷下一段是否安全。若隊伍忽略地熱、毒氣與鏡面錯覺，火蜥蜴、岩漿蟲、火元素、熔岩巨像和惡魔守衛會把退路切斷；若穩定標記採集點，則能逐步靠近世界熔爐核心，並在每次採集後確認熱壓、毒氣與回程路標仍可辨認，且採礦工具沒有被黑曜反光誤導。',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_depths_chain_gallery', description: '黑玻橋回到鎖鏈長廊' },
       { direction: 'east', targetRoomId: 'obsidian_depths_depths_shrine', description: '深層小祠在東側' },
