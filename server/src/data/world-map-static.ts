@@ -1414,10 +1414,21 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "glass_dunes_fill_3_19": {
     "id": "glass_dunes_fill_3_19",
-    "name": "沙丘通道",
+    "name": "碎玻窄脊",
     "zone": "glass_dunes",
-    "description": "被玻璃砂覆蓋的小徑，遠處的沙丘像是凝固的海浪。",
-    "exits": [],
+    "description": "碎玻窄脊位在鹽風切谷與玻暴盆地之間，白色鹽霧從西側刮來，東側盆地外緣則翻起細小玻砂。玩家可沿繩標辨認安全落腳點，也要留意風暴把舊腳印刮散。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "glass_dunes_saltwind_cut",
+        "description": "西側白色鹽霧回到鹽風切谷"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "glass_dunes_glassstorm_basin",
+        "description": "東側盆地外緣接往玻暴盆地"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 2,
     "mapY": 0,

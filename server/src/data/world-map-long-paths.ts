@@ -631,16 +631,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "glass_dunes_saltwind_cut"
   ],
   [
-    "glass_dunes_crystal_golem_yard",
-    "east",
-    "glass_dunes_buried_palace_door"
-  ],
-  [
-    "glass_dunes_crystal_golem_yard",
-    "west",
-    "glass_dunes_vein_gallery"
-  ],
-  [
     "glass_dunes_glassstorm_basin",
     "east",
     "glass_dunes_lost_dynasty_altar"
@@ -661,16 +651,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "glass_dunes_singing_ridge"
   ],
   [
-    "glass_dunes_prism_arch",
-    "east",
-    "glass_dunes_solar_forge"
-  ],
-  [
-    "glass_dunes_prism_arch",
-    "west",
-    "glass_dunes_singing_ridge"
-  ],
-  [
     "glass_dunes_relic_pit",
     "north",
     "glass_dunes_shard_claim"
@@ -687,18 +667,8 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "glass_dunes_singing_ridge",
-    "east",
-    "glass_dunes_prism_arch"
-  ],
-  [
-    "glass_dunes_singing_ridge",
     "south",
     "glass_dunes_mirror_slope"
-  ],
-  [
-    "glass_dunes_solar_forge",
-    "west",
-    "glass_dunes_prism_arch"
   ],
   [
     "glass_dunes_sun_gate",
