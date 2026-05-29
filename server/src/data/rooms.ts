@@ -5399,6 +5399,7 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'sapphire_lake_lantern_dock:west': '西側穿過碼頭燈籠與潮濕湖岸棧道，接往巡禮古道藍寶湖西燈標',
   'sapphire_lake_pebble_weir:west': '西側沿鵝卵石水堰與濕草坡回行，接往巡禮古道終點聖碑',
   'firefly_trail:north': '北側沿螢光林徑與潮濕藤根上行，接往低語溪谷南緣溪霧小路',
+  'mist_harbor_fog_gate:west': '西側穿過霧港城門拱影與潮濕路牌亭，接往東方海岸最東端礁水潮徑',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
@@ -5486,6 +5487,7 @@ const BLOCKED_EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'saltwind_flats_mist_marker:west': '西側霧標後方被競技城區外牆與濃霧封住，不能離開鹽風灘',
   'eastern_coast_tidepool_grotto:west': '西側潮池岩穴被王道市集外牆與濕滑礁縫隔開，不能從洞內硬穿回市集',
   'eastern_coast_seaweed_flats:west': '西側海藻灘盡頭是王道市集石牆與深潮落差，不能從灘面直接穿回城內',
+  'mist_harbor_fogwatch_lantern:south': '南側燈室外只有垂直燈塔牆與海霧落差，不能從塔頂直接回到紅鹽灘地面',
 };
 for (const [key, description] of Object.entries(BLOCKED_EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
