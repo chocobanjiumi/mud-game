@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:19:53.630Z",
+  "generatedAt": "2026-05-29T21:23:22.048Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 119
+    "issues": 108
   },
   "issuesByKind": {
     "exit.description": 65,
-    "room.description": 54
+    "room.description": 43
   },
   "issues": [
     {
@@ -1076,111 +1076,12 @@
       "reason": "room 描述字數不足或過於泛用"
     },
     {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 60,
-      "minimumLength": 80,
-      "text": "南哨界碑封口位於王國邊境西南角，北側巡邏路被草叢遮住，東面遠處可見獵場木柵。磨損界碑旁堆著拒馬，這格是封閉 border blocker，不開放穿越，只能折回內側。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n4",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "舊橡獵牆門貼著王國邊境的東側矮牆，西面軍方界碑排成直線，東面能看見王家獵場老橡樹的樹冠。這裡是跨區 border 路線，只沿東側獵牆缺口通往獵場，牆下有巡邏告示。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n5",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "銀徑軍界口夾在邊境哨旗與王家獵場銀色小徑之間，西側關卡木牌寫著軍管警示，東側獵場銀葉在風裡閃動。這是跨區 border route，不是普通前線支路，兩側都有界樁與巡邏繩。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n6",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 67,
-      "minimumLength": 80,
-      "text": "邊境巡邏路在獵場鹿徑西側延伸，西面是軍方哨旗與低牆，東側草叢裡可見王室與軍方的雙重界標。這是通往王家獵場鹿徑的 border route，路面仍受巡邏管制，界碑旁有警告牌。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n10_n7",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 68,
-      "minimumLength": 80,
-      "text": "號角獵門口穿過王室獵場西側界碑，西面邊境巡邏路仍有軍靴印，東側獵場號角門掛著舊銅環。磨損石墩標出獵場與軍管區分界，是明確跨區通路，兩側都有巡邏繩標。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n11_n3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 59,
-      "minimumLength": 80,
-      "text": "南側殘哨臺立在低矮土坡上，西側有崩落崗哨木樁，東面能望見舊橡獵牆門。磨損界碑把巡邏線截斷，這格是封閉 blocker，只作邊境輪廓提示與風向標記。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n13_n4",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 57,
-      "minimumLength": 80,
-      "text": "中段旗繩封路在邊牆下方拉起斑駁軍旗，北側舊橡獵牆門的樹影仍可見，東面前線草地被巡邏繩封住。這是封閉 border blocker，不接玩家主路或獵場小徑。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n14_n6",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 56,
-      "minimumLength": 80,
-      "text": "鹿徑西拒馬靠近王家獵場西側，北面可望見銀徑軍界口，東側鹿徑被木拒馬隔在外。界碑旁只有巡邏腳印，這格是封閉 blocker，提示不要硬穿草叢。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n15_n7",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 57,
-      "minimumLength": 80,
-      "text": "北角軍旗欄位於邊境高處，南側鹿徑西拒馬的木刺仍可看見，東面獵場樹影被旗欄隔開。此處是封閉 border blocker，沒有安全出口或服務點，只作警戒邊界。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n17_n3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 59,
-      "minimumLength": 80,
-      "text": "西段舊牆哨貼著殘破邊牆，東側遠處可見南側殘哨臺，北面風把軍旗聲吹得斷續。牆基塌陷封住巡邏線，這格是封閉 blocker，只保留邊境地貌與哨臺殘影。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n18_n4",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 57,
-      "minimumLength": 80,
-      "text": "西北敵影牆在邊境最外側形成死角，東側舊牆哨的石影被荒草遮住，北面遠處可見敵國輪廓。這裡是封閉 border blocker，牆下沒有可通行門洞或巡邏缺口。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
       "id": "kingdom_frontier/kingdom_frontier_fill_n18_n6",
       "kind": "room.description",
       "field": "description",
-      "currentLength": 55,
+      "currentLength": 78,
       "minimumLength": 80,
-      "text": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰，這格是封閉 blocker，不接出新道路。",
+      "text": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰、斷箭與塌旗座，這格是封閉 blocker，不接出新道路，只提示邊境外側危險。草中藏著失效警鈴。",
       "reason": "room 描述字數不足或過於泛用"
     },
     {
