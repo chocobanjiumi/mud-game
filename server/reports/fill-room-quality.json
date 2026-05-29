@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:38:24.759Z",
+  "generatedAt": "2026-05-29T20:41:03.699Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 233,
-    "errors": 171,
-    "warnings": 62,
+    "issues": 208,
+    "errors": 154,
+    "warnings": 54,
     "byGrade": {
-      "A_main_transition": 37,
+      "A_main_transition": 36,
       "B_connector": 17,
-      "C_empty_filler": 88,
-      "D_upgrade_candidate": 201
+      "C_empty_filler": 87,
+      "D_upgrade_candidate": 203
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 253,
-      "gathering": 150,
+      "border": 258,
+      "gathering": 151,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 14,
       "route": 69,
-      "service": 49
+      "service": 50
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 7,
-      "description.direction": 52,
-      "description.length": 84,
-      "description.purpose": 17,
-      "description.repeated_opening": 38,
+      "dead_end.no_gameplay": 6,
+      "description.direction": 45,
+      "description.length": 77,
+      "description.purpose": 16,
+      "description.repeated_opening": 32,
       "description.terrain": 5,
-      "exit.description.length": 12,
-      "exit.description.missing": 18
+      "exit.description.length": 10,
+      "exit.description.missing": 17
     }
   },
   "zones": [
@@ -1552,14 +1552,15 @@
       "zoneId": "bloodsalt_coast",
       "zoneName": "血鹽海岸",
       "fillRooms": 7,
-      "issues": 25,
+      "issues": 0,
       "records": [
         {
           "id": "bloodsalt_coast_fill_40_7",
           "zone": "bloodsalt_coast",
-          "name": "赤色海崖",
+          "name": "潮門南赤崖棧道",
           "grade": "B_connector",
           "purposes": [
+            "border",
             "route"
           ],
           "worldX": 40,
@@ -1586,67 +1587,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 69,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_40_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit north->bloodsalt_coast_entrance_tidegate description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "赤色海崖北返潮門入口"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit south->bloodsalt_coast_brine_cut_path description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "赤色海崖南下鹵蝕小徑"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_7",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_40_9",
           "zone": "bloodsalt_coast",
-          "name": "紅潮岸路",
+          "name": "鹵蝕南側紅鹽封礁",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 40,
           "worldY": 9,
@@ -1668,47 +1622,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_40_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_40_9",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_41_10",
           "zone": "bloodsalt_coast",
-          "name": "紅潮岸路",
+          "name": "淹塔南鏽棧封",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 41,
           "worldY": 10,
@@ -1730,44 +1657,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_41_10",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_41_10",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_41_10",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_43_6",
           "zone": "bloodsalt_coast",
-          "name": "赤色海崖",
+          "name": "破船標東赤鹽崖",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -1792,47 +1691,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_43_6",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_43_6",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_43_6",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_44_7",
           "zone": "bloodsalt_coast",
-          "name": "赤色海崖",
-          "grade": "C_empty_filler",
+          "name": "猩紅潮池東鏽崖",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 44,
           "worldY": 7,
@@ -1849,52 +1722,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_44_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_44_7",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_44_7",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_45_9",
           "zone": "bloodsalt_coast",
-          "name": "血鹽礁道",
+          "name": "血稅碼頭北礁封",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 45,
           "worldY": 9,
@@ -1916,47 +1762,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_45_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_45_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_45_9",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "bloodsalt_coast_fill_47_9",
           "zone": "bloodsalt_coast",
-          "name": "鏽蝕棧道",
-          "grade": "A_main_transition",
+          "name": "深海神殿西沉門路牌亭",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "border",
+            "service"
           ],
           "worldX": 47,
           "worldY": 9,
@@ -1971,66 +1790,19 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 38,
+          "descriptionLength": 84,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "bloodsalt_coast_fill_47_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 38,
-              "minimum": 65,
-              "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_47_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 38,
-              "minimum": 65,
-              "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_47_9",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 38,
-              "minimum": 65,
-              "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-            },
-            {
-              "id": "bloodsalt_coast_fill_47_9",
-              "zone": "bloodsalt_coast",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "bloodsalt_coast_fill_47_9",
-              "zone": "bloodsalt_coast",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->deepsea_temple_tide_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -15405,192 +15177,6 @@
       "text": "空心木橋位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。"
     },
     {
-      "id": "bloodsalt_coast_fill_40_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit north->bloodsalt_coast_entrance_tidegate description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "赤色海崖北返潮門入口"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit south->bloodsalt_coast_brine_cut_path description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "赤色海崖南下鹵蝕小徑"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_41_10",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_41_10",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_43_6",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_43_6",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_44_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_44_7",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_45_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_45_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_47_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 38,
-      "minimum": 65,
-      "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_47_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 38,
-      "minimum": 65,
-      "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_47_9",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 38,
-      "minimum": 65,
-      "text": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。"
-    },
-    {
-      "id": "bloodsalt_coast_fill_47_9",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "bloodsalt_coast_fill_47_9",
-      "zone": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->deepsea_temple_tide_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "cursed_graveyard_bone_bridge",
       "zone": "cursed_graveyard",
       "severity": "error",
@@ -17252,48 +16838,6 @@
     {
       "id": "blackwood_fill_n17_13",
       "zone": "blackwood",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_7",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_41_10",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_44_7",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_40_9",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_43_6",
-      "zone": "bloodsalt_coast",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "bloodsalt_coast_fill_45_9",
-      "zone": "bloodsalt_coast",
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"

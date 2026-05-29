@@ -511,19 +511,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_40_7": {
     "id": "bloodsalt_coast_fill_40_7",
-    "name": "赤色海崖",
+    "name": "潮門南赤崖棧道",
     "zone": "bloodsalt_coast",
-    "description": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+    "description": "潮門南赤崖棧道是血鹽海岸北段的正式路線 route，北面潮門入口仍有霧港鹽霧，南側鹵蝕小徑切進紅色海崖，東邊骨網淺灘掛著破魚骨。鏽木板雖晃動，但仍標出南北通行線。",
     "exits": [
       {
         "direction": "north",
         "targetRoomId": "bloodsalt_coast_entrance_tidegate",
-        "description": "赤色海崖北返潮門入口"
+        "description": "沿鏽木板與鹽霧繩標北返潮門入口。"
       },
       {
         "direction": "south",
         "targetRoomId": "bloodsalt_coast_brine_cut_path",
-        "description": "赤色海崖南下鹵蝕小徑"
+        "description": "順紅鹽崖邊的棧板南下鹵蝕小徑。"
       }
     ],
     "mapSymbol": "[·]",
@@ -534,9 +534,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_40_9": {
     "id": "bloodsalt_coast_fill_40_9",
-    "name": "紅潮岸路",
+    "name": "鹵蝕南側紅鹽封礁",
     "zone": "bloodsalt_coast",
-    "description": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+    "description": "鹵蝕南側紅鹽封礁位在鹵蝕小徑南面，北側切痕仍積著血紅鹽水，東邊淹沒瞭望塔露出斷梁。紅鹽晶把礁石黏成尖刺，是純 blocker，阻止玩家從小徑背面切向瞭望塔。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -546,9 +546,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_41_10": {
     "id": "bloodsalt_coast_fill_41_10",
-    "name": "紅潮岸路",
+    "name": "淹塔南鏽棧封",
     "zone": "bloodsalt_coast",
-    "description": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+    "description": "淹塔南鏽棧封貼在淹沒瞭望塔南側，北面塔腳浸在紅潮裡，東側戰旗沙丘的破布在鹽風中甩動。棧道被腐蝕鐵釘與斷板封住，是 blocker 邊界，不開通往沙丘背面的捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -558,9 +558,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_43_6": {
     "id": "bloodsalt_coast_fill_43_6",
-    "name": "赤色海崖",
+    "name": "破船標東赤鹽崖",
     "zone": "bloodsalt_coast",
-    "description": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+    "description": "破船標東赤鹽崖位在破船標東面，西側殘骸木牌被紅鹽包住，南方猩紅潮池不斷冒泡。礁崖覆滿鋒利鹽晶，是純 blocker，用來封住破船標與潮池之間的危險斜面。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -570,9 +570,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_44_7": {
     "id": "bloodsalt_coast_fill_44_7",
-    "name": "赤色海崖",
+    "name": "猩紅潮池東鏽崖",
     "zone": "bloodsalt_coast",
-    "description": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
+    "description": "猩紅潮池東鏽崖壓在潮池東側，西面血色池水拍打礁壁，南方走私者海灣藏在低霧裡。崖邊棧道鏽斷成數截，是 blocker 地形，阻止玩家從潮池直接滑入海灣背路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -582,9 +582,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_45_9": {
     "id": "bloodsalt_coast_fill_45_9",
-    "name": "血鹽礁道",
+    "name": "血稅碼頭北礁封",
     "zone": "bloodsalt_coast",
-    "description": "被紅色鹽晶覆蓋的礁石通道，空氣中有金屬的腥味。",
+    "description": "血稅碼頭北礁封位在血稅碼頭北面，南側木樁掛著暗紅繩結，西邊冰暗湧潮把黑水推上礁面。紅鹽晶與碎骨網封住通道，是純 blocker，標示碼頭北側不可繞行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -594,13 +594,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "bloodsalt_coast_fill_47_9": {
     "id": "bloodsalt_coast_fill_47_9",
-    "name": "鏽蝕棧道",
+    "name": "深海神殿西沉門路牌亭",
     "zone": "bloodsalt_coast",
-    "description": "棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。",
+    "description": "深海神殿西沉門路牌亭位在血鹽海岸最東端，西面斷棧只剩鹽蝕木樁，東側半沉石門刻滿古文，門後透出藍色火光。路牌亭標示這裡是跨區邊界路線端點，專門銜接血鹽海岸與深海神殿潮門，不放一般遭遇。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "deepsea_temple_tide_gate"
+        "targetRoomId": "deepsea_temple_tide_gate",
+        "description": "沿半沉石門與藍火刻痕東行，進入深海神殿潮門。"
       }
     ],
     "mapSymbol": "[·]",
