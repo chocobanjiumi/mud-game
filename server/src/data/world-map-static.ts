@@ -4130,7 +4130,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_12_21",
     "name": "雨影西北焦痕",
     "zone": "thundersteppe",
-    "description": "雨影西北焦痕貼著野豬奔道北側，南面草叢被踩成泥線，東側雨影溝的乾風切過草面。焦土裡有雷擊草灰採集點，但裂縫太密，這裡是 gathering blocker，不能繼續穿越。",
+    "description": "雨影西北焦痕貼著野豬奔道北側，南面草叢道路被踩成泥線，東側雨影溝的乾風切過草面。焦土裡有雷擊草灰採集點，但裂縫太密，這裡是 gathering blocker，不能繼續穿越。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4244,7 +4244,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_20_24",
     "name": "玻灰東界草地",
     "zone": "thundersteppe",
-    "description": "玻灰東界草地位於雷鳴草原東南界，北面燒哨雷路有焦旗煙，東側餘燼邊境的玻灰原反射紅光。草地裡有雷草與玻灰碎片採集點，這裡是 border gathering route，標示兩區地貌交界與採集邊界。",
+    "description": "玻灰東界草地位於雷鳴草原東南界，北面燒哨雷路有焦旗煙，東側餘燼邊境的玻灰原反射紅光。草坡裡有雷草與玻灰碎片採集點，這裡是 border gathering route，標示兩區地貌交界與採集邊界。",
     "exits": [
       {
         "direction": "east",

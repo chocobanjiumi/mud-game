@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:33:05.608Z",
+  "generatedAt": "2026-05-29T21:34:16.045Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 63
+    "issues": 58
   },
   "issuesByKind": {
-    "exit.description": 38,
-    "room.description": 25
+    "exit.description": 35,
+    "room.description": 23
   },
   "issues": [
     {
@@ -498,33 +498,6 @@
       "minimumLength": 20,
       "text": "",
       "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "thundersteppe/thundersteppe_rolling_gate:west->thundersteppe_fill_10_23",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "thundersteppe/thundersteppe_thunder_pool:west->thundersteppe_fill_10_24",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "thundersteppe/thundersteppe_wind_shrine:west->thundersteppe_fill_10_25",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
     },
     {
       "id": "glass_dunes/glass_dunes_sun_gate:west->glass_dunes_fill_0_21",
@@ -903,24 +876,6 @@
       "minimumLength": 80,
       "text": "風暴玻礦東封脊位在高原南北風線交會處，西面風暴玻礦脈閃著藍白裂光，南側獅鷲王峰被雲牆遮住。岩脊上有可採碎玻礦屑，但東北風切成危險斷口，是 blocker。",
       "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "thundersteppe/thundersteppe_fill_12_21",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 60,
-      "minimumLength": 55,
-      "text": "雨影西北焦痕貼著野豬奔道北側，南面草叢被踩成泥線，東側雨影溝的乾風切過草面。焦土裡有雷擊草灰採集點，但裂縫太密，這裡是 gathering blocker，不能繼續穿越。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "thundersteppe/thundersteppe_fill_20_24",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 55,
-      "text": "玻灰東界草地位於雷鳴草原東南界，北面燒哨雷路有焦旗煙，東側餘燼邊境的玻灰原反射紅光。草地裡有雷草與玻灰碎片採集點，這裡是 border gathering route，標示兩區地貌交界與採集邊界。",
-      "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
     },
     {
       "id": "wildgrass_hills/wildgrass_hills_fill_5_n8",

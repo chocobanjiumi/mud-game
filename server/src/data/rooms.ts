@@ -5372,6 +5372,9 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'serpent_delta_split_reed_bank:north': '北側沿分流蘆根泥徑上行，接往北分流草蘆岸',
   'serpent_delta_mudfish_pool:north': '北側踩過泥魚翻出的淺灘泥脊，接往北泥魚淺灘',
   'serpent_delta_heron_marker:west': '西側越過鷺鳥木牌與冷色蘆門水痕，接往鏡沼東南泥炭水道',
+  'thundersteppe_rolling_gate:west': '西側穿過滾雷門銅鈴與帶電草根，接往雷草西緣',
+  'thundersteppe_thunder_pool:west': '西側沿雷池水洼外的濕亮草徑，接往雷雨草徑',
+  'thundersteppe_wind_shrine:west': '西側順著祭旗風聲下到晶砂草坡，接往風祭草坡',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
