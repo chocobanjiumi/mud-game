@@ -2140,9 +2140,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_24_15": {
     "id": "marsh_of_mirrors_fill_24_15",
-    "name": "鏡面棧道",
+    "name": "夢水鏡面棧道",
     "zone": "marsh_of_mirrors",
-    "description": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+    "description": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。木樁只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。",
     "exits": [
       {
         "direction": "west",
@@ -2150,6 +2150,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
         "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
         "edgeKind": "distant_route",
         "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "東側鏡面深潭沒有木樁，冷水倒影封住通往沼心的直路"
       }
     ],
     "mapSymbol": "[·]",
@@ -2160,9 +2166,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_24_18": {
     "id": "marsh_of_mirrors_fill_24_18",
-    "name": "水鏡邊路",
+    "name": "西界水草鏡岸",
     "zone": "marsh_of_mirrors",
-    "description": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+    "description": "西界水草鏡岸靠近泥炭小洲南側，北面仍能看見蘆根浮在黑水上，東側回聲沼的水面反光更深。岸邊留有採集水草與銀泥的割痕，但木板在此中斷，是封閉 blocker 與濕地邊界。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -2172,9 +2178,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_25_13": {
     "id": "marsh_of_mirrors_fill_25_13",
-    "name": "鏡沼通道",
+    "name": "北界毒蘆封口",
     "zone": "marsh_of_mirrors",
-    "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+    "description": "北界毒蘆封口貼著競技場南緣與鏡沼北岸，南側蜘蛛蘆叢的黑絲掛在木樁上，東面蛇形水道仍有濕滑泥線。這裡是 border blocker，毒蘆和深泥封住北面，不安排通行或怪物遭遇。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -2184,9 +2190,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_25_19": {
     "id": "marsh_of_mirrors_fill_25_19",
-    "name": "水鏡邊路",
+    "name": "南鏡水草灘",
     "zone": "marsh_of_mirrors",
-    "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+    "description": "南鏡水草灘位於回聲沼南面，北側水聲被濃霧折回，東側月光堤道的木樁只露出尖端。灘邊有水草與毒囊採集痕跡，但南面軟泥會吞沒靴底，這格只作採集邊界與封閉 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -2196,9 +2202,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_26_18": {
     "id": "marsh_of_mirrors_fill_26_18",
-    "name": "鏡沼通道",
+    "name": "中沼倒影封汊",
     "zone": "marsh_of_mirrors",
-    "description": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+    "description": "中沼倒影封汊夾在北側霧盲灘與南側月光堤道之間，西面回聲沼的水泡不斷冒起。三邊看似有路，其實木樁都沉入黑水，這裡標示不可通行 blocker，提醒玩家改走穩固棧道。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -2208,9 +2214,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_27_14": {
     "id": "marsh_of_mirrors_fill_27_14",
-    "name": "鏡面棧道",
+    "name": "沉祠西南封棧",
     "zone": "marsh_of_mirrors",
-    "description": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+    "description": "沉祠西南封棧靠近北側下沉神龕，南面破碎倒影灘的裂水閃著白光，西側失落石堆被黑泥半埋。棧板在三處都已塌陷，只留下警示木牌，是封閉 blocker，沒有採集點或任務入口。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2220,9 +2226,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_27_17": {
     "id": "marsh_of_mirrors_fill_27_17",
-    "name": "水鏡邊路",
+    "name": "霧盲採草水坎",
     "zone": "marsh_of_mirrors",
-    "description": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+    "description": "霧盲採草水坎在鏡池南側形成濕滑邊坡，西面霧盲灘還有殘破布旗，東側暗樹人林的根影壓到水面。坡下長著可採的沼草與銀泥斑，但深水封住通行，是採集邊界與 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2232,19 +2238,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_27_19": {
     "id": "marsh_of_mirrors_fill_27_19",
-    "name": "鏡沼通道",
+    "name": "巫燈月堤接道",
     "zone": "marsh_of_mirrors",
-    "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+    "description": "巫燈月堤接道是一段架在南側黑水上的窄木棧，西面月光堤道的銀色樁影逐漸變暗，東側巫婆燈籠在霧裡晃動。這裡是正式 route，讓玩家沿鏡沼南緣連續通行，不放怪物或採集互動。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "marsh_of_mirrors_moonlit_causeway",
-        "description": "鏡沼通道西返月光堤道"
+        "description": "西側沿銀色木樁踏回月光堤道的穩固棧面"
       },
       {
         "direction": "east",
         "targetRoomId": "marsh_of_mirrors_hag_lantern",
-        "description": "鏡沼通道東抵巫燈處"
+        "description": "東側順著晃動燈影走向巫婆燈籠旁的霧岸"
       }
     ],
     "mapSymbol": "[·]",
@@ -2255,9 +2261,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_28_15": {
     "id": "marsh_of_mirrors_fill_28_15",
-    "name": "鏡面棧道",
+    "name": "碎影柳根封口",
     "zone": "marsh_of_mirrors",
-    "description": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。",
+    "description": "碎影柳根封口位於破碎倒影灘東側，西面裂水仍映出斷裂月光，南側沉柳根鬚垂入黑水。柳根下沒有可站立的泥台，棧道被倒木壓斷，這格只作封閉 blocker 與沼心危險提示。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -2267,9 +2273,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_29_16": {
     "id": "marsh_of_mirrors_fill_29_16",
-    "name": "鏡面棧道",
+    "name": "東沼邊界黑水",
     "zone": "marsh_of_mirrors",
-    "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+    "description": "東沼邊界黑水貼近沉柳東側，西面柳根像爪子伸進泥面，東側能望見通往蛇河三角洲的水鏡邊路。這裡沒有鋪設棧板，只用浮標標出不可通行的 border blocker，避免玩家誤闖深水。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -2279,13 +2285,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_30_14": {
     "id": "marsh_of_mirrors_fill_30_14",
-    "name": "鏡沼通道",
+    "name": "蛇渡鏡沼碼頭",
     "zone": "marsh_of_mirrors",
-    "description": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。",
+    "description": "蛇渡鏡沼碼頭位於鏡沼東緣，東側窄渡口把冷黑水接到蛇河三角洲的入口渡船，西面則被無底泥潭截斷。這裡是跨區 border route，只保留向東登船的通路，碼頭內側以木柵封閉。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "serpent_delta_entrance_ferry"
+        "targetRoomId": "serpent_delta_entrance_ferry",
+        "description": "東側踏上窄渡板，從鏡沼黑水轉入蛇河三角洲入口渡船"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西面無底泥潭吞掉舊棧板，不能從碼頭內側回切沼心"
       }
     ],
     "mapSymbol": "[·]",
@@ -2296,13 +2309,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "marsh_of_mirrors_fill_30_16": {
     "id": "marsh_of_mirrors_fill_30_16",
-    "name": "水鏡邊路",
+    "name": "鷺標水草渡坎",
     "zone": "marsh_of_mirrors",
-    "description": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。",
+    "description": "鷺標水草渡坎貼著鏡沼東南水線，西側黑水邊界浮著採集過的水草束，東面白鷺標竿引向蛇河三角洲。這裡是 border 採集點與短渡口，玩家只能順著東側水痕跨區，南北都是深泥。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "serpent_delta_heron_marker"
+        "targetRoomId": "serpent_delta_heron_marker",
+        "description": "東側沿白鷺標竿與淺水泥脊，銜接蛇河三角洲濕灘"
       }
     ],
     "mapSymbol": "[·]",

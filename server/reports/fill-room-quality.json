@@ -1,38 +1,38 @@
 {
-  "generatedAt": "2026-05-29T20:03:15.801Z",
+  "generatedAt": "2026-05-29T20:06:49.285Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 668,
-    "errors": 465,
-    "warnings": 203,
+    "issues": 626,
+    "errors": 442,
+    "warnings": 184,
     "byGrade": {
-      "A_main_transition": 47,
+      "A_main_transition": 46,
       "B_connector": 19,
-      "C_empty_filler": 103,
-      "D_upgrade_candidate": 174
+      "C_empty_filler": 101,
+      "D_upgrade_candidate": 177
     },
     "byPurpose": {
-      "blocker": 225,
+      "blocker": 227,
       "border": 210,
-      "gathering": 139,
+      "gathering": 141,
       "monster": 30,
-      "npc_or_quest": 16,
+      "npc_or_quest": 17,
       "portal": 8,
       "route": 71,
       "service": 28
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 20,
-      "description.direction": 141,
-      "description.length": 212,
-      "description.purpose": 51,
-      "description.repeated_opening": 132,
+      "dead_end.no_gameplay": 18,
+      "description.direction": 134,
+      "description.length": 200,
+      "description.purpose": 46,
+      "description.repeated_opening": 120,
       "description.terrain": 21,
-      "exit.description.length": 42,
-      "exit.description.missing": 49
+      "exit.description.length": 40,
+      "exit.description.missing": 47
     }
   },
   "zones": [
@@ -8373,15 +8373,17 @@
       "zoneId": "marsh_of_mirrors",
       "zoneName": "鏡沼",
       "fillRooms": 12,
-      "issues": 42,
+      "issues": 0,
       "records": [
         {
           "id": "marsh_of_mirrors_fill_24_15",
           "zone": "marsh_of_mirrors",
-          "name": "鏡面棧道",
-          "grade": "A_main_transition",
+          "name": "夢水鏡面棧道",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "border"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 24,
           "worldY": 15,
@@ -8389,7 +8391,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "west": "moonlit_fen_dreamwater_core"
+              "west": "moonlit_fen_dreamwater_core",
+              "east": ""
             },
             "byCoordinate": {
               "south": "marsh_of_mirrors_reed_gate",
@@ -8398,59 +8401,24 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 21,
-          "exitCount": 1,
+          "hasLockedExit": true,
+          "descriptionLength": 73,
+          "exitCount": 2,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_24_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_24_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_24_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_24_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_24_18",
           "zone": "marsh_of_mirrors",
-          "name": "水鏡邊路",
+          "name": "西界水草鏡岸",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -8477,44 +8445,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_24_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_24_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_24_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_25_13",
           "zone": "marsh_of_mirrors",
-          "name": "鏡沼通道",
+          "name": "北界毒蘆封口",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -8541,44 +8481,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_25_13",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 65,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_25_13",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 65,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_25_13",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_25_19",
           "zone": "marsh_of_mirrors",
-          "name": "水鏡邊路",
+          "name": "南鏡水草灘",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -8605,47 +8517,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_25_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_25_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_25_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_26_18",
           "zone": "marsh_of_mirrors",
-          "name": "鏡沼通道",
+          "name": "中沼倒影封汊",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": 26,
           "worldY": 18,
@@ -8668,47 +8553,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_26_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_26_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_26_18",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_27_14",
           "zone": "marsh_of_mirrors",
-          "name": "鏡面棧道",
-          "grade": "C_empty_filler",
+          "name": "沉祠西南封棧",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "npc_or_quest"
           ],
           "worldX": 27,
           "worldY": 14,
@@ -8728,47 +8586,19 @@
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
-          "hasQuestCue": false,
+          "hasQuestCue": true,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_27_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_27_17",
           "zone": "marsh_of_mirrors",
-          "name": "水鏡邊路",
+          "name": "霧盲採草水坎",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -8796,47 +8626,18 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_27_17",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_17",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_17",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_27_19",
           "zone": "marsh_of_mirrors",
-          "name": "鏡沼通道",
+          "name": "巫燈月堤接道",
           "grade": "B_connector",
           "purposes": [
-            "border",
             "route"
           ],
           "worldX": 27,
@@ -8862,64 +8663,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 72,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_27_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->marsh_of_mirrors_moonlit_causeway description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "鏡沼通道西返月光堤道"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->marsh_of_mirrors_hag_lantern description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "鏡沼通道東抵巫燈處"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_27_19",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_28_15",
           "zone": "marsh_of_mirrors",
-          "name": "鏡面棧道",
+          "name": "碎影柳根封口",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker"
@@ -8944,48 +8697,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_28_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_28_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_28_15",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_29_16",
           "zone": "marsh_of_mirrors",
-          "name": "鏡面棧道",
-          "grade": "C_empty_filler",
+          "name": "東沼邊界黑水",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": 29,
           "worldY": 16,
@@ -9002,51 +8728,24 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_29_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_29_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 55,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_29_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_30_14",
           "zone": "marsh_of_mirrors",
-          "name": "鏡沼通道",
+          "name": "蛇渡鏡沼碼頭",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 30,
@@ -9055,7 +8754,8 @@
           "mapY": 1,
           "neighbors": {
             "byExit": {
-              "east": "serpent_delta_entrance_ferry"
+              "east": "serpent_delta_entrance_ferry",
+              "west": ""
             },
             "byCoordinate": {
               "east": "serpent_delta_entrance_ferry"
@@ -9069,61 +8769,17 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 22,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_30_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 65,
-              "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->serpent_delta_entrance_ferry 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_14",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "marsh_of_mirrors_fill_30_16",
           "zone": "marsh_of_mirrors",
-          "name": "水鏡邊路",
+          "name": "鷺標水草渡坎",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -9151,48 +8807,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 26,
+          "descriptionLength": 70,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "marsh_of_mirrors_fill_30_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 26,
-              "minimum": 65,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 26,
-              "minimum": 65,
-              "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->serpent_delta_heron_marker 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "marsh_of_mirrors_fill_30_16",
-              "zone": "marsh_of_mirrors",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -21135,298 +20754,6 @@
       "text": "湖畔城鎮的繁忙街道，商人和冒險者來來往往。"
     },
     {
-      "id": "marsh_of_mirrors_fill_24_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_13",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 65,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_13",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 65,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_26_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_26_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_17",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_17",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->marsh_of_mirrors_moonlit_causeway description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "鏡沼通道西返月光堤道"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->marsh_of_mirrors_hag_lantern description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "鏡沼通道東抵巫燈處"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_28_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_28_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "鏡沼中的危險通道，水面如鏡般倒映著扭曲的景象。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_29_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_29_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 55,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 65,
-      "text": "迷霧籠罩的小路，每一步都可能踏入深不見底的沼澤。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->serpent_delta_entrance_ferry 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 26,
-      "minimum": 65,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 26,
-      "minimum": 65,
-      "text": "沿著鏡沼邊緣搭建的棧道，水面反射出不屬於這個世界的光影。"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->serpent_delta_heron_marker 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "mist_harbor_fill_40_1",
       "zone": "mist_harbor",
       "severity": "error",
@@ -24925,90 +24252,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_24_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_26_18",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_28_15",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_13",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_25_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_19",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_29_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_16",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_27_17",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "marsh_of_mirrors_fill_30_14",
-      "zone": "marsh_of_mirrors",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "mist_harbor_fill_40_3",
