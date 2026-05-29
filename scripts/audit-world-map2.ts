@@ -176,9 +176,10 @@ for (const room of rooms) {
     }
     seenDirections.add(exit.direction);
 
-    const target = getRoom(exit.targetRoomId);
+    const isLockedWorldBlocker = exit.locked && !exit.targetRoomId;
+    const target = isLockedWorldBlocker ? undefined : getRoom(exit.targetRoomId);
     if (!target) {
-      missingTargets.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
+      if (!isLockedWorldBlocker) missingTargets.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
       continue;
     }
     if (target.id === room.id) {

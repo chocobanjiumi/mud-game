@@ -384,9 +384,10 @@ function buildPlanningDiagnostics(zonePlans: ReturnType<typeof buildZoneMapPlans
       }
       seenDirections.add(exit.direction);
 
-      const targetRoom = getRoom(exit.targetRoomId);
+      const isLockedWorldBlocker = exit.locked && !exit.targetRoomId;
+      const targetRoom = isLockedWorldBlocker ? undefined : getRoom(exit.targetRoomId);
       if (!targetRoom) {
-        missingTargets.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
+        if (!isLockedWorldBlocker) missingTargets.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
         continue;
       }
       if (targetRoom.id === room.id) {

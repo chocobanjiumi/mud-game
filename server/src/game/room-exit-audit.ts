@@ -109,7 +109,7 @@ export function buildRoomExitAuditReport(
         directSelfLoops.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
       }
 
-      if (!rooms[exit.targetRoomId]) {
+      if (!exit.locked && !rooms[exit.targetRoomId]) {
         missingTargetRooms.push(`${room.id}:${exit.direction}->${exit.targetRoomId}`);
       }
     }

@@ -1,6 +1,6 @@
 // 房間定義 - 所有區域與房間資料
 
-import type { RoomDef, ZoneDef } from '@game/shared';
+import type { Direction, RoomDef, ZoneDef } from '@game/shared';
 
 const RESOURCE_NODE_ROOM_COUNT = 6;
 const RESOURCE_NODE_ROOM_SUFFIXES = [
@@ -619,13 +619,12 @@ export const ZONES: Record<string, ZoneDef> = {
     levelRange: [30, 42],
     type: 'town',
     region: 'underground',
-    tags: ['safe', 'trade_hub', 'crafting_hub', 'portal_hub', 'quest_hub'],
+    tags: ['safe', 'trade_hub', 'crafting_hub', 'quest_hub'],
     pvpMode: 'safe',
     deathPenalty: 'none',
     dangerLevel: 0,
     recommendedPartySize: [1, 1],
     primaryElements: ['none', 'fire'],
-    portal: { id: 'portal_underground_city', name: '地下城邦傳送陣', cost: 70, network: 'public' },
     rooms: [
       'underground_city_gate_lift', 'underground_city_arrival_plaza',
       'underground_city_portal_hall', 'underground_city_council_chamber',
@@ -674,13 +673,15 @@ export const ZONES: Record<string, ZoneDef> = {
     levelRange: [32, 42],
     type: 'wilds',
     region: 'north',
-    tags: ['elite_patrols', 'world_boss', 'party'],
+    tags: ['elite_patrols', 'world_boss', 'party', 'portal_hub'],
     pvpMode: 'duel_only',
     deathPenalty: 'durability',
     dangerLevel: 7,
     recommendedPartySize: [2, 4],
     primaryElements: ['lightning', 'none'],
+    portal: { id: 'portal_storm_highlands', name: '風暴高原傳送陣', cost: 75, network: 'public' },
     rooms: [
+      'storm_highlands_windrest_portal', 'storm_highlands_windrest_lane', 'storm_highlands_windrest_lodge',
       'storm_highlands_cliff_gate', 'storm_highlands_windcut_path',
       'storm_highlands_rain_shelf', 'storm_highlands_cloud_bridge',
       'storm_highlands_goat_ledge', 'storm_highlands_griffin_watch',
@@ -1004,13 +1005,15 @@ export const ZONES: Record<string, ZoneDef> = {
     levelRange: [20, 32],
     type: 'resource',
     region: 'west',
-    tags: ['gathering', 'elite_patrols'],
+    tags: ['gathering', 'elite_patrols', 'portal_hub'],
     pvpMode: 'duel_only',
     deathPenalty: 'durability',
     dangerLevel: 5,
     recommendedPartySize: [2, 4],
     primaryElements: ['nature', 'fire'],
+    portal: { id: 'portal_amber_forest', name: '琥珀森林傳送陣', cost: 60, network: 'public' },
     rooms: [
+      'amber_forest_north_portal', 'amber_forest_resin_supply', 'amber_forest_north_bridge',
       'amber_forest_entry_claim', 'amber_forest_vein_path', 'amber_forest_herb_shelf', 'amber_forest_water_pocket', 'amber_forest_beast_scrape', 'amber_forest_relic_pit', 'amber_forest_resin_gate', 'amber_forest_golden_canopy', 'amber_forest_wasp_nests', 'amber_forest_sapfall_gully', 'amber_forest_glassroot_bridge', 'amber_forest_suntrap_clearing', 'amber_forest_smoke_mycology', 'amber_forest_charcoal_stand', 'amber_forest_glowing_hollow', 'amber_forest_ember_beetle_mound', 'amber_forest_hunter_blind', 'amber_forest_petrified_bloom', 'amber_forest_elder_resin_tree', 'amber_forest_deep_amber_core'
     ],
   },
@@ -1072,13 +1075,15 @@ export const ZONES: Record<string, ZoneDef> = {
     levelRange: [22, 34],
     type: 'wilds',
     region: 'south',
-    tags: ['high_density_spawns', 'elite_patrols'],
+    tags: ['high_density_spawns', 'elite_patrols', 'portal_hub'],
+    portal: { id: 'portal_ember_march', name: '餘燼邊境傳送陣', cost: 80, network: 'public' },
     pvpMode: 'open',
     deathPenalty: 'gold',
     dangerLevel: 6,
     recommendedPartySize: [2, 4],
     primaryElements: ['fire', 'none'],
     rooms: [
+      'ember_march_south_portal', 'ember_march_south_supply', 'ember_march_south_shelter',
       'ember_march_ash_gate', 'ember_march_cinder_road', 'ember_march_smoke_trench', 'ember_march_charred_milestone', 'ember_march_burnt_watchpost', 'ember_march_lava_crack', 'ember_march_glass_ash_field', 'ember_march_war_camp_ruin', 'ember_march_slag_bridge', 'ember_march_firegrass_flat', 'ember_march_worm_burrow', 'ember_march_black_sand_basin', 'ember_march_ember_forge', 'ember_march_fallen_banner', 'ember_march_scorched_oasis', 'ember_march_bonekiln_pass', 'ember_march_molten_toll', 'ember_march_dragonprint_ridge', 'ember_march_border_keep_shell', 'ember_march_heartfire_breach'
     ],
   },
@@ -1385,7 +1390,7 @@ const ZONE_DESCRIPTION_QUALITY_OVERRIDES: Record<string, string> = {
   glass_dunes: '琉璃沙丘是二十八到四十二級的沙海與古王朝遺跡區，透明沙脊、黑曜井、稜鏡拱、失朝祭壇與埋宮門反射烈日。沙蜥、玻砂獸、晶魔像與海市幻影帶來火光與折射壓力，資源包含熔融玻砂、鏡砂甲片、黑曜井鹽與稜鏡透核；北側接紅岩荒地，西側接火山過渡地。',
   underground_city: '地下城邦是三十到四十五級的地底服務與黑市區，市場露臺、升降門、暗河碼頭、熔爐廣場與黑市暗巷在巨大洞頂下運作。此區有商人、工匠、暗河渡口與少量治安戰鬥，敵人以走私者、地底獸與失控機械為主，產出菌燈油、交易牌與熔爐券；礦坑、水晶洞與黑曜深層都可接入。',
   cursed_graveyard: '詛咒墓園是三十二到四十八級的亡靈野外區，無人鐘樓、沉墓地、黑霧池、破聖像與巫妖陵寢在黑霧裡串連。骸兵、怨靈、墓園守衛與巫妖僕從帶暗屬、恐懼與復甦壓力，掉落墓鐘舌片、骨片、黑霧殘渣與悼詞頁；道路連沉沒墓窟、死都門與聖光區域。',
-  storm_highlands: '風暴高原是三十六到五十二級的高空山脊，斷烽臺、山羊岩階、風神祭壇、風暴玻礦脈與獅鷲王峰被暴風切割。獅鷲、風暴鳥、山羊巨獸與雷風元素會推拉玩家節奏，資源包含高原風暴羽、暴風山羊角、風暴玻礦與風壇殘鈴；西側接雷鳴草原，北側可通天空群島。',
+  storm_highlands: '風暴高原是三十六到五十二級的高空山脊，斷烽臺、山羊岩階、風神祭壇、風暴玻礦脈與獅鷲王峰被暴風切割。高原北緣新增避風小村作為補給與傳送節點，讓玩家不必從遠方城鎮反覆穿越整片山路。獅鷲、風暴鳥、山羊巨獸與雷風元素會推拉玩家節奏，資源包含高原風暴羽、暴風山羊角、風暴玻礦與風壇殘鈴；西側接雷鳴草原，北側可通天空群島。',
   blackwood: '黑木林是三十八到五十四級的暗色森林，炭樹、織網岔口、毒蕨林、獵人刻痕與黑心木核讓火光都被樹皮吸走。黑木獵人、幽影蜘蛛、夜蕨毒物與樹影怪帶暗屬和毒性控制，產出黑木炭皮、幽影蛛絲、夜蕨毒液與獵人符；外圍接暗影森林，深處通往妖精與夢境相關區。',
   lost_capital: '失落王都是四十到五十八級的時間停滯城區，停鐘廣場、市政檔案館、雕像庭園、加冕階與空王座保留崩壞前一刻。石像鬼、王都守衛、時間殘影與議政怨靈使用光暗與時間壓力，產出時砂玻、白石像鬼眼、議政蠟版與加冕封印；道路接王國邊境與時間廢墟入口。',
   sky_isles: '浮空群島是四十二到六十級的天空探索區，符文錨臺、斷方尖碑、雲上草甸、雷鷹巢島與雲神殿由破碎雲橋相連。雷鷹、浮空守衛、天界構裝與高空元素擅長雷光和位移壓迫，資源包含浮空符文片、雲銀長羽、光環稜核與天空聖物；下方連風暴高原，上層接天界遺跡。',
@@ -1398,11 +1403,11 @@ const ZONE_DESCRIPTION_QUALITY_OVERRIDES: Record<string, string> = {
   moonlit_fen: '月光濕地是十六到三十級的夜花沼地，銀色水面、妖精浮橋、夜花池、毒蟲巢與半夢祭盤都在月光下保持潮濕。妖精、毒蟲、水靈與沼澤獸以毒、幻象和自然控制干擾玩家，資源包含夜花、月露、毒囊與濕地草藥；道路連暗影森林、鏡沼與湖畔周邊。',
   pilgrim_road: '巡禮古道是十四到二十二級的聖地道路，白石路標、聖徒橋、斷石階、路邊小祠與終點聖碑串起商隊和信徒足跡。伏擊者、流浪信徒、光影殘響與道路野獸是主要敵人，資源包含白石灰粉、日路乾糧、聖地門印與旅人補給；西側接平原，東側通向日耀尖塔與聖地入口。',
   ironwood_fort: '鐵木要塞是十八到三十級的邊境軍事區，鐵木城牆、軍需行列、信號塔、補給隧道與高堡核心控制交通要道。王國斥候、傭兵、叛兵與失控構裝在城牆間衝突，資源包含鐵木板材、補給牌、斥候信管與鍛坊燼油；道路連王國邊境、市集與荒草丘陵。',
-  amber_forest: '琥珀森林是二十到三十二級的金色樹脂林，琥珀脈徑、玻璃根橋、封蠟蜂巢、煙菌坡與深琥珀核心充滿昆蟲聲。封蠟蟲、樹脂獸、自然守衛與煙菌怪以毒霧和纏繞牽制玩家，產出金脂塊、琥珀脈晶、封蠟蟲甲與煙脂孢子；外圍連黑木林、平原與銀松山麓。',
+  amber_forest: '琥珀森林是二十到三十二級的金色樹脂林，北緣新闢傳送樹庭與樹脂補給棚，作為深入西側森林前的安全集結點。琥珀脈徑、玻璃根橋、封蠟蜂巢、煙菌坡與深琥珀核心充滿昆蟲聲。封蠟蟲、樹脂獸、自然守衛與煙菌怪以毒霧和纏繞牽制玩家，產出金脂塊、琥珀脈晶、封蠟蟲甲與煙脂孢子；外圍連黑木林、平原與銀松山麓。',
   silverpine_range: '銀松山脈是二十四到三十六級的寒冷礦山區，銀葉松林、霜草岩棚、冰玻洞、觀星脊與高山礦核沿山路升高。雪地野獸、冰元素、礦脈守衛與山賊會阻擋採集，資源包含銀松雲母、霜草束、冰玻礦、觀星銀礦與高山鎬頭；南側接平原與湖區，北側通霜咬隘口。',
   saltwind_flats: '鹽風灘是十四到二十四級的潮間帶，白色鹽灘、潮溝、鹽晶巢、薄霧哨站與半埋船架會隨潮汐改變可走路線。鹽晶獸、海盜哨兵、魚人與潮霧生物提供水與物理混合壓力，資源包含鹽晶、潮玻璃、海草與船骸材料；西側接霧港，東側連東部海岸與白骨礁。',
   thornmaze: '荊棘迷宮是二十八到四十二級的活體植物區，會閉合的刺牆、藤門、毒花圃、德魯伊祭壇與迷路空地使路線不穩。藤蔓怪、毒花、德魯伊殘影與林中野獸擅長纏繞、流血和自然毒霧，掉落藤刺、花粉、活木與祭壇符片；入口連琥珀森林與黑木林。',
-  ember_march: '餘燼邊境是三十到四十四級的火山與荒地過渡帶，火山灰原、焦黑壕溝、餘燼地縫、巡邏營與冷卻熔石橋連接紅岩與火山。火蜥蜴、灰燼盜匪、熔石元素與火山斥候在此徘徊，產出灰燼礦、耐熱藥材與熔火線索；北側接紅岩荒地，西南通火山核心。',
+  ember_march: '餘燼邊境是三十到四十四級的火山與荒地過渡帶，南側新闢傳送石臺與補給棚，作為深入焦土與火山前緣前的集結點。火山灰原、焦黑壕溝、餘燼地縫、巡邏營與冷卻熔石橋連接紅岩與火山。火蜥蜴、灰燼盜匪、熔石元素與火山斥候在此徘徊，產出灰燼礦、耐熱藥材與熔火線索；北側接紅岩荒地，西南通火山核心。',
   reef_of_bones: '白骨礁是二十六到四十級的船骸礁區，巨獸肋骨、沉船甲板、退潮沙道、海盜墓標與骨礁燈塔在潮水間露出。亡靈海盜、魚人、礁蟹與海獸殘魂守著沉船財寶，資源包含骨片、珍珠、船材、血鹽與海盜信物；水路連霧港、東部海岸與深海神殿入口。',
   sapphire_lake: '藍寶石湖是二十二到三十四級的湖岸採集區，清澈深湖、藍光礦脈、湖底洞口、木棧橋與水精靈傳說吸引採集者。水靈、湖獸、盜採者與魚人斥候在岸邊活動，資源包含湖晶、藍寶石砂、淡水魚、藥草與水系飾材；西側靠湖畔城鎮，北側接銀松山脈。',
   kingsroad_market: '王道市集是十到三十級的交通與交易節點，王國大道、露天棚架、傭兵公告牆、旅商倉車與馬廄把多條野外路線接在一起。此區以商人、修理、補給、委託與少量盜賊事件為主，資源多來自交易貨物與情報；西接平原，東往鐵木要塞，北通獵場與湖畔城鎮。',
@@ -1580,7 +1585,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_gate.png',
     imagePrompt: '村口 in starter_village, town gate and safe exit with wooden palisade, torchlight, road to plains, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '村口的木柵欄沿著低矮土坡展開，尖木樁上繫著避獸鈴，微風吹過時發出細碎聲響。南方泥路通往翠綠平原，遠處能看見草浪和野獸踩出的暗色小徑；北面回到廣場，東側訓練場傳來木劍撞擊聲，西側小路繞往外圍。守衛火把照亮路標與警告牌，提醒初學者先檢查裝備、藥水與任務，再離開安全區進入可能遭遇史萊姆的道路。' +
+      '村口的木柵欄沿著低矮土坡展開，尖木樁上繫著避獸鈴，微風吹過時發出細碎聲響。南方通往傳送祠堂，遠處可見翠綠平原的方向；北面回到廣場，東側訓練場傳來木劍撞擊聲，西側小路繞往外圍。守衛火把照亮路標與警告牌，提醒初學者先檢查裝備、藥水與任務，再離開安全區進入可能遭遇史萊姆的道路。' +
       '柵門下方有新鮮黏液和被拖曳的草束，說明怪物偶爾會靠近安全區邊緣。木梯通往上方哨所，可俯看撤退路線；路標同時標出平原入口與村外小徑，讓玩家能清楚判斷南、北、東、西與上方出口。',
     exits: [
       { direction: 'north', targetRoomId: 'village_square', description: '回到廣場' },
@@ -1700,7 +1705,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_portal_shrine.png',
     imagePrompt: '新手村傳送祠堂 in starter_village, town service portal room with runestone circle, blue lantern light, safe travel node, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村莊廣場，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
+      '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村口，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_river_stairs', description: '低地小徑回到溪畔石階' },
       { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方' },
@@ -1823,7 +1828,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_guard_post.png',
     imagePrompt: '守衛哨所 in starter_village, town service guard post above gate, watch lantern, road signs and palisade, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。下方可回村口，西側窄廊連到傳送祠堂，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
+      '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。北側可回傳送祠堂，西側窄廊亦可繞往祠堂方向，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂' },
       { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '東側哨所窄廊沿木柵上緣延伸，越過火把平台後接上屋頂棧道入口', edgeKind: 'long_path', edgeNote: '守衛哨所到屋頂棧道需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
@@ -4165,7 +4170,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ash_field.png',
     imagePrompt: '火山灰原 in volcano_zone, entrance combat ash field with black dunes, ember sparks, buried ore and smoky red horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方可接熔岩橋外側，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方灰原延伸向更深的火山地帶，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'east', targetRoomId: 'volcano_base', description: '灰路回到火山山腳' },
       { direction: 'south', targetRoomId: 'volcano_lava_bridge', description: '灼熱風指向熔岩橋' },
@@ -4186,7 +4191,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_lava_bridge.png',
     imagePrompt: '熔岩橋 in volcano_zone, dangerous route room with narrow basalt bridge over lava lake, heat shimmer and falling sparks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連火山灰原，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連硫磺熱泉，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_ash_field', description: '回到火山灰原' },
       {
@@ -4339,7 +4344,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_basalt_steps.png',
     imagePrompt: '玄武岩階 in volcano_zone, main route combat basalt stairs with carved dwarf markers, lava glow below and falling ash, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain lava, clear lantern light',
     description:
-      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回硫磺熱泉，東面接火焰神殿入口，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回熔岩橋，東面岩壁通道延伸向深處，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '石階下方是硫磺熱泉' },
       {
@@ -4784,7 +4789,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frostpine_grove.png',
     imagePrompt: '霜松林 in frozen_wastes, resource combat grove with snow-bent pines, blue needles, wolf tracks and green aurora light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain snow, clear lantern light',
     description:
-      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面回雪山營地，東側接雪狼巢穴，北面能通向符石環。玩家可 gather 霜松木與樹脂，inspect 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若玩家沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源。',
+      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面通向雪人石堆，西側接雪狼巢穴，北面能聽到風雪深處的回聲。玩家可 gather 霜松木與樹脂，inspect 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若玩家沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源。',
     exits: [
       { direction: 'south', targetRoomId: 'mountain_camp', description: '南側霜松林雪坡繞過倒木與狼爪痕，沿獵人風鈴與營火煙線折回雪山營地', edgeKind: 'long_path', edgeNote: '霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '東側霜松根道穿過密林陰影與獵物拖痕，沿狼嚎方向抵達雪狼巢穴', edgeKind: 'long_path', edgeNote: '霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。' },
@@ -4879,7 +4884,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_yeti_cairn.png',
     imagePrompt: '雪人石堆 in frozen_wastes, elite combat room with giant cairns, broken bones, huge footprints and aurora snow haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain snow, clear lantern light',
     description:
-      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通廢棄雪橇，東側窄洞可聽見雪狼巢穴回聲但冰壁坍塌，西面可繞回霜松林。這裡是精英事件房，玩家可 inspect 石堆判斷雪人祭祀路線，search 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡。',
+      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通霜松林，東側窄洞可聽見雪狼巢穴回聲但冰壁坍塌，西面可繞回冰晶洞穴。這裡是精英事件房，玩家可 inspect 石堆判斷雪人祭祀路線，search 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡。',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '巨大腳印回到廢棄雪橇' },
       { direction: 'west', targetRoomId: 'frozen_wastes_frostpine_grove', description: '雪坡繞回霜松林' },
@@ -4900,7 +4905,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frozen_watchpost.png',
     imagePrompt: '結冰哨塔 in frozen_wastes, elite route watchpost with frozen battlements, cracked horn, frost giant tracks and cold castle light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通符石環，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。玩家可 inspect 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助玩家選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因。',
+      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通冰晶尖塔，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。玩家可 inspect 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助玩家選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
       { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '南側結冰哨塔雪坡沿斷冰橋陰影折返，穿過王朝巡邏標記回到符石環', edgeKind: 'long_path', edgeNote: '結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。' },
@@ -4924,7 +4929,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_crystal_spire.png',
     imagePrompt: '冰晶尖塔 in frozen_wastes, resource elite spire with towering blue crystals, prism stairs, frost mist and bright cold light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰晶洞穴，北側能望見結冰哨塔但冰橋已斷，東面裂谷中傳來冰龍呼吸卻需從王座裂縫繞行。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰封王座，北側能望見結冰哨塔但冰橋已斷，東面裂谷中傳來冰龍呼吸卻需從王座裂縫繞行。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴' },
     ],
@@ -4945,7 +4950,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_dragon_breath_rift.png',
     imagePrompt: '龍息裂谷 in frozen_wastes, boss event rift with frozen breath clouds, blue fissure, dragon claw marks and royal ice light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ice, clear lantern light',
     description:
-      '冰封王座東側裂開一道深谷，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面回冰封王座，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，玩家可 inspect 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口。',
+      '裂谷兩側冰壁高聳，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面是凍結的荒原通道，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，玩家可 inspect 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座' },
       {
@@ -5186,4 +5191,337 @@ export function getRoomsByZone(zoneId: string): RoomDef[] {
 /** 取得所有房間 ID */
 export function getAllRoomIds(): string[] {
   return Object.keys(ROOMS);
+}
+
+// ============================================================
+//  靜態世界地圖座標與通道房間
+// ============================================================
+
+import {
+  STATIC_WORLD_BRIDGE_ROOMS,
+  STATIC_WORLD_FILLER_ROOMS,
+  STATIC_WORLD_ROOM_COORDINATES,
+  STATIC_WORLD_ZONE_ROOM_IDS,
+} from './world-map-static.js';
+import { STATIC_WORLD_LONG_PATH_EXITS } from './world-map-long-paths.js';
+
+function applyStaticWorldMap(): void {
+  Object.assign(ROOMS, STATIC_WORLD_FILLER_ROOMS, STATIC_WORLD_BRIDGE_ROOMS);
+
+  for (const [zoneId, roomIds] of Object.entries(STATIC_WORLD_ZONE_ROOM_IDS)) {
+    const zone = ZONES[zoneId];
+    if (!zone) continue;
+    for (const roomId of roomIds) {
+      if (!zone.rooms.includes(roomId)) zone.rooms.push(roomId);
+    }
+  }
+
+  for (const [roomId, coord] of Object.entries(STATIC_WORLD_ROOM_COORDINATES)) {
+    const room = ROOMS[roomId];
+    if (!room) continue;
+    room.worldX = coord.worldX;
+    room.worldY = coord.worldY;
+  }
+}
+
+applyStaticWorldMap();
+
+function applyStaticWorldLongPaths(): void {
+  for (const [roomId, direction, targetRoomId] of STATIC_WORLD_LONG_PATH_EXITS) {
+    const exit = ROOMS[roomId]?.exits.find(candidate =>
+      candidate.direction === direction && candidate.targetRoomId === targetRoomId,
+    );
+    if (!exit) continue;
+    exit.edgeKind = 'long_path';
+    exit.description ??= '這條路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。';
+    exit.edgeNote ??= '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。';
+  }
+}
+
+applyStaticWorldLongPaths();
+
+// ============================================================
+//  跨區顯式出口 — 經敘事審查的跨區域步行連接
+// ============================================================
+
+const OPPOSITE_DIR: Record<string, Direction> = {
+  north: 'south', south: 'north', east: 'west', west: 'east',
+};
+
+const CROSS_ZONE_CONNECTIONS: [string, Direction, string][] = [
+  // starter_village ↔ starter_village_ext
+  ['adventurer_guild', 'north', 'starter_village_ext_fill_2_n1'],
+  ['starter_village_inn', 'north', 'starter_village_ext_fill_1_n1'],
+  ['starter_village_old_library', 'north', 'starter_village_ext_fill_3_n1'],
+  ['starter_village_chapel', 'north', 'starter_village_ext_fill_4_n1'],
+  // starter_village ↔ old_farmland
+  ['starter_village_storehouse', 'west', 'old_farmland_fill_n1_1'],
+  ['starter_village_well_path', 'west', 'old_farmland_fill_n1_2'],
+  ['starter_village_river_stairs', 'west', 'old_farmland_fill_n1_3'],
+  // kingsroad_market ↔ lakeside_town
+  ['kingsroad_market_portal_plaza', 'west', 'kingsroad_market_fill_22_0'],
+  ['kingsroad_market_guard_post', 'west', 'kingsroad_market_fill_22_1'],
+  // arena_quarter ↔ sapphire_lake
+  ['arena_quarter_grand_gate', 'west', 'sapphire_lake_fill_22_7'],
+  ['arena_quarter_champion_wall', 'west', 'sapphire_lake_fill_22_8'],
+  ['arena_quarter_victory_arch', 'west', 'sapphire_lake_fill_22_9'],
+  // arena_quarter ↔ kingsroad_market
+  ['arena_quarter_prize_counter', 'north', 'kingsroad_market_fill_25_5'],
+  // pilgrim_road ↔ plains
+  ['pilgrim_road_smuggler_cache', 'north', 'plains_fill_11_5'],
+  ['pilgrim_road_bandit_watch', 'north', 'plains_fill_12_5'],
+  // pilgrim_road ↔ sapphire_lake
+  ['pilgrim_road_old_cemetery_turn', 'east', 'sapphire_lake_entry_claim'],
+  ['pilgrim_road_sunset_camp', 'south', 'sapphire_lake_entry_claim'],
+  ['pilgrim_road_sanctuary_gate', 'south', 'sapphire_lake_vein_path'],
+  ['pilgrim_road_final_marker', 'east', 'sapphire_lake_pebble_weir'],
+  // pilgrim_road ↔ lakeside_town
+  ['pilgrim_road_sanctuary_gate', 'north', 'lakeside_town_fill_15_6'],
+  ['pilgrim_road_quiet_overlook', 'east', 'lakeside_tailor'],
+  ['pilgrim_road_quiet_overlook', 'west', 'lakeside_town_fill_15_6'],
+  // ironwood_fort ↔ dark_forest
+  ['ironwood_fort_portal_yard', 'west', 'dark_forest_fill_n1_13'],
+  ['ironwood_fort_quartermaster_row', 'west', 'dark_forest_fill_n1_14'],
+  ['ironwood_fort_forge_works', 'west', 'dark_forest_fill_n1_15'],
+  ['ironwood_fort_ironwood_grove', 'west', 'dark_forest_fill_n1_16'],
+  // dark_forest ↔ whispering_valley
+  ['firefly_trail', 'north', 'whispering_valley_fill_n7_11'],
+  // plains ↔ starter_village
+  ['plains_moonlit_copse', 'west', 'starter_village_fill_6_3'],
+  // royal_hunting_grounds ↔ kingdom_frontier
+  ['royal_hunting_grounds_horn_gate', 'west', 'kingdom_frontier_fill_n10_n7'],
+  ['royal_hunting_grounds_deer_run', 'west', 'kingdom_frontier_fill_n10_n6'],
+  ['royal_hunting_grounds_silver_trail', 'west', 'kingdom_frontier_fill_n10_n5'],
+  ['royal_hunting_grounds_old_oak_stand', 'west', 'kingdom_frontier_fill_n10_n4'],
+  // eastern_coast ↔ mist_harbor
+  ['eastern_coast_fill_39_2', 'east', 'mist_harbor_fog_gate'],
+  // moonlit_fen ↔ sapphire_lake
+  ['moonlit_fen_sunken_log_bridge', 'north', 'moonlit_fen_fill_18_13'],
+  ['moonlit_fen_old_canoe_camp', 'north', 'moonlit_fen_fill_19_13'],
+  ['moonlit_fen_fill_20_14', 'north', 'moonlit_fen_fill_20_13'],
+  // moonlit_fen ↔ marsh_of_mirrors
+  ['moonlit_fen_dreamwater_core', 'east', 'marsh_of_mirrors_fill_24_15'],
+  // sapphire_lake ↔ pilgrim_road
+  ['sapphire_lake_lantern_dock', 'west', 'pilgrim_road_fill_13_9'],
+  // lakeside_town ↔ sapphire_lake
+  ['lakeside_tailor', 'south', 'sapphire_lake_pebble_weir'],
+  // saltwind_flats ↔ eastern_coast
+  ['saltwind_flats_blue_mud_shelf', 'north', 'eastern_coast_fill_34_6'],
+  // deepsea_temple ↔ bloodsalt_coast
+  ['deepsea_temple_tide_gate', 'west', 'bloodsalt_coast_fill_47_9'],
+  // volcano_zone ↔ serpent_delta
+  ['dwarf_mine', 'north', 'serpent_delta_fill_33_20'],
+  ['volcano_ash_field', 'north', 'volcano_zone_fill_31_20'],
+  // volcano_zone ↔ ember_march
+  ['volcano_ash_field', 'west', 'ember_march_fill_30_21'],
+  ['volcano_sulfur_springs', 'west', 'ember_march_fill_30_23'],
+  ['volcano_lava_bridge', 'west', 'ember_march_fill_30_24'],
+  // marsh_of_mirrors ↔ moonlit_fen
+  ['marsh_of_mirrors_reed_gate', 'west', 'moonlit_fen_fill_23_16'],
+  ['marsh_of_mirrors_peat_islet', 'west', 'moonlit_fen_fill_23_17'],
+  // serpent_delta ↔ saltwind_flats
+  ['serpent_delta_entrance_ferry', 'north', 'serpent_delta_fill_31_13'],
+  ['serpent_delta_split_reed_bank', 'north', 'serpent_delta_fill_32_13'],
+  ['serpent_delta_mudfish_pool', 'north', 'serpent_delta_fill_33_13'],
+  // serpent_delta ↔ marsh_of_mirrors
+  ['serpent_delta_entrance_ferry', 'west', 'marsh_of_mirrors_fill_30_14'],
+  ['serpent_delta_heron_marker', 'west', 'marsh_of_mirrors_fill_30_16'],
+  // ember_march ↔ thundersteppe
+  ['ember_march_ash_gate', 'west', 'thundersteppe_fill_20_22'],
+  ['ember_march_burnt_watchpost', 'west', 'thundersteppe_fill_20_23'],
+  ['ember_march_glass_ash_field', 'west', 'thundersteppe_fill_20_24'],
+  // glass_dunes ↔ redrock_badlands
+  ['glass_dunes_sun_gate', 'west', 'glass_dunes_fill_0_21'],
+  ['glass_dunes_buried_caravan', 'west', 'glass_dunes_fill_0_20'],
+  // wildgrass_hills ↔ silverpine_range
+  ['wildgrass_hills_old_road_cut', 'west', 'silverpine_range_fill_0_n12'],
+  // amber_forest ↔ emerald_canopy
+  ['amber_forest_resin_gate', 'west', 'emerald_canopy_fill_n18_7'],
+  // thundersteppe ↔ glass_dunes
+  ['thundersteppe_rolling_gate', 'west', 'thundersteppe_fill_10_23'],
+  ['thundersteppe_thunder_pool', 'west', 'thundersteppe_fill_10_24'],
+  ['thundersteppe_wind_shrine', 'west', 'thundersteppe_fill_10_25'],
+  // blackwood ↔ amber_forest
+  ['blackwood_wolf_den', 'north', 'amber_forest_fill_n13_11'],
+  // storm_highlands ↔ frostbite_pass
+  ['storm_highlands_cliff_gate', 'west', 'frostbite_pass_fill_n19_n14'],
+  ['storm_highlands_rain_shelf', 'west', 'frostbite_pass_fill_n19_n13'],
+  // sunken_catacombs ↔ bloodsalt_coast
+  ['sunken_catacombs_tide_stair', 'west', 'bloodsalt_coast_saltglass_cave'],
+];
+
+for (const [roomAId, dir, roomBId] of CROSS_ZONE_CONNECTIONS) {
+  const roomA = ROOMS[roomAId];
+  const roomB = ROOMS[roomBId];
+  if (!roomA || !roomB) continue;
+  if (!roomA.exits.some(e => e.direction === dir)) {
+    roomA.exits.push({ direction: dir, targetRoomId: roomBId });
+  }
+  const opp = OPPOSITE_DIR[dir];
+  if (opp && !roomB.exits.some(e => e.direction === opp)) {
+    roomB.exits.push({ direction: opp, targetRoomId: roomAId });
+  }
+}
+
+applyStaticWorldLongPaths();
+
+// ============================================================
+//  跨區邊界描述補丁 — 為跨區步行過渡提供敘事銜接
+// ============================================================
+
+const DESCRIPTION_OVERRIDES: Record<string, string> = {
+  kingdom_frontier_fill_n10_n7: '邊境巡邏路穿過王室獵場西側界碑，磨損的石墩標出獵場與軍管區的分界。',
+  kingdom_frontier_fill_n10_n6: '邊境巡邏路在獵場鹿徑西側延伸，草叢裡可見王室與軍方的雙重界標。',
+  eastern_coast_fill_39_2: '海岸盡頭的濕滑通道，東面濃霧中隱約可見霧港城門的拱影與銅鐘輪廓。',
+  bloodsalt_coast_fill_47_9: '棧道盡頭的木板在海水中斷裂，一道刻滿古文的石門半沉在紅潮海面下，隱約可見藍色火光。',
+  serpent_delta_fill_33_20: '蛇河三角洲的泥濘通道，南面岩壁上有矮人開鑿的坑口，鐵鏽味從其中飄出。',
+  silverpine_range_fill_0_n12: '舊路盡頭攀上銀松坡道，松針鋪滿破碎石階，空氣比丘陵冷了幾度。',
+  thundersteppe_fill_10_23: '玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。',
+  frostbite_pass_fill_n19_n14: '隘口東端的凍石小路被風暴高原吹來的暖風切出裂縫，碎冰與砂石混雜，標誌著霜咬隘口與風暴高原的交界。',
+  frostbite_pass_fill_n19_n13: '凍石小路南段在風暴高原雨幕與霜咬冷風的交界處變得濕滑，碎冰從兩側岩壁剝落，雨水在地面結成薄冰。',
+  pilgrim_road_fill_13_9: '古道在此處能看見東方藍寶湖的碼頭燈籠，白石路標指向兩個方向。',
+  // 新手村東緣 → 平原過渡
+  starter_village_fill_6_3: '青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。',
+  starter_village_fill_6_4: '最後幾戶民宅擠在柵欄內側，牆縫裡長滿青苔。透過歪斜的籬笆，東邊可見幾塊蒼老巨石佇立在霧氣之中。',
+  starter_village_fill_6_5: '加固的木柵上釘著褪色的警告牌，鐵絲纏繞的欄杆外是無人看管的荒野。遠處偶爾傳來低沉的狼嚎。',
+  // 舊農田東緣 → 村莊過渡
+  old_farmland_fill_n1_0: '雜草掩沒的農路盡頭抵著村莊的石砌地基牆，牆根處可見一塊鏽蝕的鐵柵地窖蓋，被枯藤與泥土半封。',
+  old_farmland_fill_n1_1: '曾經運送穀物的舊道在此轉入村莊後方，前方是倉庫斑駁的後門，門板上殘留著霉爛的穀穗印記。',
+  old_farmland_fill_n1_2: '踩踏得光滑的土路從廢棄田埂延伸至村莊水井方向，車轍裡積著鏽色的雨水。',
+  // 新手村外圍（地窖附近）
+  starter_village_ext_fill_0_n1: '鄉間草徑經過幾處坍塌的舊屋地基，雜草間隱約可見一扇被泥土與蔓藤覆蓋的活板門。',
+  // 翡翠林冠東緣 → 黑木地面過渡
+  emerald_canopy_fill_n18_12: '林冠棧道在此向下傾斜，平台漸漸被繩梯與朽木階梯取代，腳下透過板隙能看見遠處幽暗的林地。',
+  emerald_canopy_fill_n18_13: '一座繞著古樹主幹盤旋而下的螺旋木梯，從明亮的翠色樹冠漸入鄰近暗林的陰翳灌木層。',
+  // 蛇河三角洲南緣 → 火山過渡
+  volcano_zone_fill_31_20: '三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。',
+  serpent_delta_fill_34_20: '架在水道上的三角洲棧道延伸至南方熔爐區，空氣中瀰漫著鐵鏽與硫磺的氣味，熱浪撲面而來。',
+  serpent_delta_fill_35_20: '河防哨站設在三角洲邊界，河衛兵在此盤查往來熾燼營地的人員，南方隱約可見軍旗。',
+  // 其他跨區邊界
+  ironwood_fort_fill_7_12: '要塞東側的狹窄突門，厚重鐵皮門扇半開，門外是通往朝聖古道的碎石坡。',
+  redrock_badlands_fill_n8_19: '紅色岩層在此逐漸被鏽蝕的鐵圍欄取代，西邊飄來不自然的寒氣，空氣中帶著腐土與枯骨的味道。',
+  redrock_badlands_fill_0_19: '荒地地形抵達要塞南牆腳下，抬頭可見高處的崗樓與巡邏兵的火把光。',
+  arena_quarter_fill_23_12: '競技場區西側的臨湖長廊，觀眾倚著木欄杆眺望碧藍湖面，歡呼聲與水波聲交織。',
+};
+
+const DESCRIPTION_APPENDS: Record<string, string> = {
+  adventurer_guild: '北門後方有一條小徑通往村莊外圍的鄉間草地。',
+  starter_village_old_library: '北側有一扇被書架半遮的小門，通往村莊外圍的小路。',
+  starter_village_chapel: '北側後門通往溪邊的戶外便道。',
+  starter_village_storehouse: '西牆有一道被板條封住的破舊後門，似乎通往村莊外的舊農場方向。',
+  lakeside_tailor: '南面窗外可見湖岸的卵石水堰，水氣偶爾飄入坊內讓布料帶上淡淡湖味。',
+  amber_forest_resin_gate: '西側樹冠逐漸升高，金色樹脂被翠綠苔蘚取代，隱約可見翡翠林冠的巨木輪廓。',
+  sunken_catacombs_tide_stair: '西側石壁裂縫透出鹹風與鹽晶反光，似乎通向海岸方向的另一處洞穴。',
+  bloodsalt_coast_saltglass_cave: '洞穴深處的東側裂縫流出黑水，帶著陳年腐朽氣味，像是通往某處更古老的地下空間。',
+};
+
+for (const [roomId, desc] of Object.entries(DESCRIPTION_OVERRIDES)) {
+  const room = ROOMS[roomId];
+  if (room) room.description = desc;
+}
+for (const [roomId, append] of Object.entries(DESCRIPTION_APPENDS)) {
+  const room = ROOMS[roomId];
+  if (room) room.description += append;
+}
+const _inn = ROOMS['starter_village_inn'];
+if (_inn) {
+  _inn.description = _inn.description.replace(
+    '北窗能看見公會屋簷',
+    '北窗能看見公會屋簷，窗旁暗門通往村外的田野通道',
+  );
+}
+
+// ============================================================
+//  座標移動阻擋 — 阻止地形差異過大的相鄰房間通行
+// ============================================================
+
+const BLOCKED_PASSAGES: [string, Direction][] = [
+  // 隱蔽地窖（地下）不應直通戶外
+  ['starter_village_hidden_cellar', 'north'],
+  ['starter_village_hidden_cellar', 'west'],
+  // 暗影森林南緣 → 赤岩荒地（森林→熔岩）
+  ['dark_forest_fill_n4_18', 'south'],
+  ['dark_forest_fill_n1_18', 'south'],
+  // 赤岩荒地北緣 → 暗影森林（熔岩→森林，雙向阻擋）
+  ['redrock_badlands_lava_worm_sink', 'north'],
+  ['redrock_badlands_scarlet_crater', 'north'],
+  // 鐵木要塞南緣 → 琉璃沙丘/赤岩荒地（要塞→沙漠/荒地）
+  ['ironwood_fort_fill_0_18', 'south'],
+  ['ironwood_fort_fill_7_18', 'south'],
+  // 琉璃沙丘北緣 → 鐵木要塞（沙漠→要塞，雙向阻擋）
+  ['glass_dunes_saltwind_cut', 'north'],
+  ['glass_dunes_glassstorm_basin', 'north'],
+  // 王道市集東緣 → 東方海岸（市集→海灘）
+  ['kingsroad_market_fill_30_3', 'east'],
+  ['kingsroad_market_fill_30_5', 'east'],
+  // 東方海岸西緣 → 王道市集（海灘→市集，雙向阻擋）
+  ['eastern_coast_seaweed_flats', 'west'],
+  ['eastern_coast_tidepool_grotto', 'west'],
+  // 競技城區東緣 → 鹽風灘/東方海岸
+  ['arena_quarter_fill_30_6', 'east'],
+  ['arena_quarter_fill_30_7', 'east'],
+  ['arena_quarter_fill_30_8', 'east'],
+  ['arena_quarter_fill_30_9', 'east'],
+  ['arena_quarter_fill_30_10', 'east'],
+  ['arena_quarter_fill_30_11', 'east'],
+  ['arena_quarter_fill_30_12', 'east'],
+  // 鹽風灘西緣 → 競技城區（雙向阻擋）
+  ['saltwind_flats_tide_gate', 'west'],
+  ['saltwind_flats_mist_marker', 'west'],
+  // 競技城區南緣 → 鏡沼
+  ['arena_quarter_fill_24_12', 'south'],
+  ['arena_quarter_fill_25_12', 'south'],
+  ['arena_quarter_fill_26_12', 'south'],
+  ['arena_quarter_fill_27_12', 'south'],
+  ['arena_quarter_fill_28_12', 'south'],
+  ['arena_quarter_fill_29_12', 'south'],
+  ['arena_quarter_fill_30_12', 'south'],
+  // 鏡沼北緣 → 競技城區（雙向阻擋）
+  ['marsh_of_mirrors_serpent_channel', 'north'],
+  ['marsh_of_mirrors_sinking_shrine', 'north'],
+  // 鏡沼南緣 → 月影庭（等級跨度）
+  ['marsh_of_mirrors_hag_lantern', 'south'],
+  // 餘燼邊境北緣 → 月光濕地（等級跨度）
+  ['ember_march_firegrass_flat', 'north'],
+  // 霧望燈室（燈塔頂）↔ 紅鹽灘（地面）
+  ['mist_harbor_fogwatch_lantern', 'south'],
+  ['bloodsalt_coast_red_salt_flats', 'north'],
+];
+
+for (const [roomId, dir] of BLOCKED_PASSAGES) {
+  const room = ROOMS[roomId];
+  if (!room) continue;
+  if (!room.exits.some(e => e.direction === dir)) {
+    room.exits.push({ direction: dir, targetRoomId: '', locked: true });
+  }
+}
+
+// ============================================================
+//  世界座標索引 — 路線 B 座標化移動基礎
+// ============================================================
+
+const _worldGrid = new Map<string, string>();
+
+for (const room of Object.values(ROOMS)) {
+  if (typeof room.worldX !== 'number' || typeof room.worldY !== 'number') continue;
+
+  const key = `${room.worldX},${room.worldY}`;
+  const existingRoomId = _worldGrid.get(key);
+  if (existingRoomId && existingRoomId !== room.id) {
+    throw new Error(`World coordinate collision at ${key}: ${existingRoomId} and ${room.id}`);
+  }
+  _worldGrid.set(key, room.id);
+}
+
+/** 用世界座標查詢房間 */
+export function getRoomByWorldCoord(wx: number, wy: number): RoomDef | undefined {
+  const roomId = _worldGrid.get(`${wx},${wy}`);
+  return roomId ? ROOMS[roomId] : undefined;
+}
+
+/** 取得房間的世界座標（已在啟動時烘焙到 RoomDef） */
+export function getRoomWorldCoord(roomId: string): { worldX: number; worldY: number } | undefined {
+  const room = ROOMS[roomId];
+  if (!room || typeof room.worldX !== 'number' || typeof room.worldY !== 'number') return undefined;
+  return { worldX: room.worldX, worldY: room.worldY };
 }

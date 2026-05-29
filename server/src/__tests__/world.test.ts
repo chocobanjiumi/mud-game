@@ -75,26 +75,26 @@ describe('WorldManager respawn policy', () => {
     expect(bandit!.respawnAt! - now.getTime()).toBe(39_000);
   });
 
-  it('prioritizes exact reverse movement back to the previous room', () => {
+  it('moves to coordinate neighbor regardless of explicit exits', () => {
     world.placePlayer('p1', 'weapon_shop');
 
-    expect(world.handleMove('p1', 'east')?.room.id).toBe('starter_village_crafting_shed');
+    expect(world.handleMove('p1', 'east')?.room.id).toBe('starter_village_market_lane');
     expect(world.handleMove('p1', 'west')?.room.id).toBe('weapon_shop');
   });
 
-  it('can unwind a multi-step movement path with inverse directions', () => {
-    world.placePlayer('p1', 'training_ground');
+  it('coordinate movement is always reversible', () => {
+    world.placePlayer('p1', 'adventurer_guild');
 
-    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_rooftop_walk');
-    expect(world.handleMove('p1', 'north')?.room.id).toBe('starter_village_stable_yard');
-    expect(world.handleMove('p1', 'south')?.room.id).toBe('starter_village_rooftop_walk');
-    expect(world.handleMove('p1', 'south')?.room.id).toBe('training_ground');
+    expect(world.handleMove('p1', 'south')?.room.id).toBe('village_square');
+    expect(world.handleMove('p1', 'south')?.room.id).toBe('village_gate');
+    expect(world.handleMove('p1', 'north')?.room.id).toBe('village_square');
+    expect(world.handleMove('p1', 'north')?.room.id).toBe('adventurer_guild');
   });
 
-  it('keeps world movement working through instance entrance rooms', () => {
+  it('uses coordinate neighbor even for cross-zone movement', () => {
     world.placePlayer('p1', 'old_well');
 
-    expect(world.handleMove('p1', 'west')?.room.id).toBe('cave_entrance');
+    expect(world.handleMove('p1', 'west')?.room.id).toBe('plains_stone_circle');
     expect(world.handleMove('p1', 'east')?.room.id).toBe('old_well');
   });
 
@@ -117,7 +117,7 @@ describe('WorldManager respawn policy', () => {
       arrivalTicks: 2,
       targetPlayerId: 'p1',
     });
-    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
     expect(world.getApproachingMonsters('village_square')[0].arrivalTicks).toBe(2);
 
     expect(world.tickApproaching('village_square')).toEqual([]);
@@ -126,6 +126,7 @@ describe('WorldManager respawn policy', () => {
 
     expect(arrived[0].instanceId).toBe(slime!.instanceId);
     expect(world.getApproachingMonsters('village_square')).toEqual([]);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
     expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
   });
 
@@ -153,6 +154,49 @@ describe('WorldManager respawn policy', () => {
 
     expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
     expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+  });
+
+  it('returns surviving pulled monsters to their origin room at full health after combat', () => {
+    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    expect(slime).toBeDefined();
+
+    world.moveMonsterToApproaching(
+      'village_gate',
+      'village_square',
+      'south',
+      slime!.instanceId,
+      0,
+      'p1',
+    );
+    slime!.hp = 1;
+
+    const reset = world.resetSurvivingMonsterToOrigin(slime!.instanceId);
+
+    expect(reset).toBe(true);
+    expect(world.getAliveMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.hp).toBe(slime!.maxHp);
+    expect(world.getAliveMonsters('village_gate').some(monster => monster.instanceId === slime!.instanceId)).toBe(true);
+  });
+
+  it('removes pending approaching state when a surviving monster disengages', () => {
+    const slime = world.findMonsterInRoom('village_gate', 'slime');
+    expect(slime).toBeDefined();
+
+    world.moveMonsterToApproaching(
+      'village_gate',
+      'village_square',
+      'south',
+      slime!.instanceId,
+      2,
+      'p1',
+    );
+    slime!.hp = 1;
+
+    const reset = world.resetSurvivingMonsterToOrigin(slime!.instanceId);
+
+    expect(reset).toBe(true);
+    expect(world.getApproachingMonsters('village_square').some(monster => monster.instanceId === slime!.instanceId)).toBe(false);
+    expect(world.getMonsterInstance('village_gate', slime!.instanceId)?.hp).toBe(slime!.maxHp);
   });
 });
 
@@ -197,31 +241,20 @@ describe('room exit topology', () => {
       .toBe('time_splinter_vault');
   });
 
-  it('keeps normal world exits aligned with planned global coordinates', () => {
+  it('keeps special-edge exits reachable across world coordinates', () => {
     const plannedCoordinates = buildPlannedWorldCoordinateMap(ZONES, getRoom);
-    const mismatches = Object.values(ROOMS).flatMap(room => {
+    const brokenSpecials = Object.values(ROOMS).flatMap(room => {
       const from = plannedCoordinates.get(room.id);
       if (!from) return [];
 
       return room.exits.flatMap(exit => {
-        if (exit.edgeKind && exit.edgeKind !== 'normal') return [];
-
-        const to = plannedCoordinates.get(exit.targetRoomId);
-        if (!to) return [];
-
-        const expected = {
-          north: { worldX: from.worldX, worldY: from.worldY - 1 },
-          south: { worldX: from.worldX, worldY: from.worldY + 1 },
-          east: { worldX: from.worldX + 1, worldY: from.worldY },
-          west: { worldX: from.worldX - 1, worldY: from.worldY },
-        }[exit.direction];
-
-        return expected.worldX === to.worldX && expected.worldY === to.worldY
-          ? []
-          : [`${room.id}(${from.worldX},${from.worldY}) ${exit.direction}->${exit.targetRoomId}(${to.worldX},${to.worldY})`];
+        if (!exit.edgeKind || exit.edgeKind === 'normal') return [];
+        if (exit.locked && !exit.targetRoomId) return [];
+        if (!getRoom(exit.targetRoomId)) return [`${room.id} ${exit.direction}->${exit.targetRoomId} (target room missing)`];
+        return [];
       });
     });
 
-    expect(mismatches).toEqual([]);
+    expect(brokenSpecials).toEqual([]);
   });
 });

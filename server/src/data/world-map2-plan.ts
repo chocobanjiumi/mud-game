@@ -172,12 +172,12 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '草丘與風口，作為新手外圍往山區、高地的等級過渡。',
   },
   lakeside_town: {
-    minX: 15, maxX: 22, minY: 0, maxY: 6,
+    minX: 15, maxX: 21, minY: 0, maxY: 6,
     anchor: '東側湖畔交通節點',
     terrainRole: '中繼城鎮與服務中心，連接市場、湖泊與東方海岸。',
   },
   kingsroad_market: {
-    minX: 23, maxX: 30, minY: -1, maxY: 5,
+    minX: 22, maxX: 30, minY: -1, maxY: 5,
     anchor: '王道商貿節點',
     terrainRole: '市場、驛路與補給線，放在湖畔城鎮與東岸之間。',
   },
@@ -197,7 +197,7 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '船塢、霧燈與海運節點，作為海岸交通終端與副本入口集散地。',
   },
   saltwind_flats: {
-    minX: 31, maxX: 39, minY: 7, maxY: 13,
+    minX: 31, maxX: 39, minY: 7, maxY: 12,
     anchor: '東南鹽灘',
     terrainRole: '鹽灘與濕熱平地，銜接血鹽海岸、蛇河三角洲與東岸。',
   },
@@ -207,17 +207,17 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '高危海岸與紅潮地形，作為鹽風灘往高等海域的延伸。',
   },
   sapphire_lake: {
-    minX: 14, maxX: 22, minY: 7, maxY: 13,
+    minX: 14, maxX: 22, minY: 7, maxY: 12,
     anchor: '中央東南湖泊',
     terrainRole: '湖面、棧橋與水路，銜接湖畔城鎮、月光濕地與朝聖古道。',
   },
   moonlit_fen: {
-    minX: 15, maxX: 23, minY: 14, maxY: 20,
+    minX: 14, maxX: 23, minY: 13, maxY: 20,
     anchor: '南方濕地',
     terrainRole: '濕地、月光水道與毒霧，作為湖泊往蛇河三角洲的自然過渡。',
   },
   serpent_delta: {
-    minX: 31, maxX: 39, minY: 14, maxY: 20,
+    minX: 31, maxX: 39, minY: 13, maxY: 20,
     anchor: '東南河口',
     terrainRole: '河汊與三角洲，連接鹽灘、血鹽海岸與南方濕地。',
   },
@@ -232,9 +232,9 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '更高危的陰暗林帶，作為暗影森林與翡翠樹冠的中段。',
   },
   amber_forest: {
-    minX: -17, maxX: -10, minY: 5, maxY: 11,
+    minX: -17, maxX: -10, minY: 4, maxY: 11,
     anchor: '西側溫暖森林',
-    terrainRole: '琥珀林與樹脂採集帶，銜接舊農場、西側山路與黑木林。',
+    terrainRole: '琥珀林與樹脂採集帶，北緣有傳送樹庭，銜接舊農場、西側山路與黑木林。',
   },
   emerald_canopy: {
     minX: -26, maxX: -18, minY: 7, maxY: 13,
@@ -247,9 +247,9 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '松林山坡與冷風通道，承接新手外圍、王家獵場與風暴高原。',
   },
   storm_highlands: {
-    minX: -18, maxX: -10, minY: -15, maxY: -9,
+    minX: -18, maxX: -10, minY: -17, maxY: -9,
     anchor: '西北高原',
-    terrainRole: '風暴高地與危險山路，銜接銀松山脈與霜咬隘口。',
+    terrainRole: '風暴高地與危險山路，北緣有避風小村與傳送節點，銜接銀松山脈與霜咬隘口。',
   },
   frostbite_pass: {
     minX: -27, maxX: -19, minY: -15, maxY: -9,
@@ -257,24 +257,24 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '雪線隘口與冰封雪原前置緩衝，避免沙漠、火山直接貼雪原。',
   },
   redrock_badlands: {
-    minX: -8, maxX: 0, minY: 19, maxY: 25,
+    minX: -8, maxX: -1, minY: 19, maxY: 25,
     anchor: '南西荒地',
     terrainRole: '赤岩乾谷，從森林南緣過渡到琉璃沙丘。',
   },
   glass_dunes: {
-    minX: 1, maxX: 10, minY: 19, maxY: 25,
+    minX: 0, maxX: 9, minY: 18, maxY: 25,
     anchor: '南方沙丘',
     terrainRole: '沙漠與玻璃化地形，放在荒地與雷鳴草原之間。',
   },
   thundersteppe: {
-    minX: 11, maxX: 20, minY: 21, maxY: 27,
+    minX: 10, maxX: 20, minY: 21, maxY: 27,
     anchor: '南方草原高危帶',
     terrainRole: '雷暴草原，作為沙漠、餘燼邊境與濕地南緣的過渡。',
   },
   ember_march: {
     minX: 21, maxX: 30, minY: 21, maxY: 27,
     anchor: '東南餘燼邊境',
-    terrainRole: '焦土與火山前緣，將雷鳴草原自然過渡到火山地帶。',
+    terrainRole: '焦土與火山前緣，南側設傳送石臺作為深入火山帶前的集結點，將雷鳴草原自然過渡到火山地帶。',
   },
   volcano_zone: {
     minX: 31, maxX: 39, minY: 21, maxY: 27,
@@ -282,7 +282,7 @@ export const WORLD_MAP2_ZONE_GLOBAL_BOUNDS: Record<string, ZoneGlobalBounds> = {
     terrainRole: '火山與熔岩地形，作為主世界東南高等邊界。',
   },
   ironwood_fort: {
-    minX: 0, maxX: 7, minY: 12, maxY: 18,
+    minX: 0, maxX: 7, minY: 12, maxY: 17,
     anchor: '中央南方要塞',
     terrainRole: '要塞與軍道，控制低語溪谷、暗影森林與南方荒地的交界。',
   },
@@ -343,32 +343,32 @@ export const WORLD_MAP2_INSTANCE_ZONE_DUNGEON_IDS: Record<string, string> = {
 };
 
 export const WORLD_MAP2_INSTANCE_ENTRANCE_COORDINATES: Record<string, { worldX: number; worldY: number }> = {
-  crystal_cave: { worldX: 9, worldY: -6 },
-  abandoned_mines: { worldX: -9, worldY: -8 },
-  sunken_catacombs: { worldX: 42, worldY: 8 },
-  underground_city: { worldX: -19, worldY: 0 },
-  cursed_graveyard: { worldX: -9, worldY: 19 },
-  ancient_ruins: { worldX: 12, worldY: 14 },
+  crystal_cave: { worldX: 0, worldY: -11 },
+  abandoned_mines: { worldX: -10, worldY: -8 },
+  sunken_catacombs: { worldX: 38, worldY: 10 },
+  underground_city: { worldX: -19, worldY: -5 },
+  cursed_graveyard: { worldX: -8, worldY: 19 },
+  ancient_ruins: { worldX: 13, worldY: 10 },
   deepsea_temple: { worldX: 48, worldY: 9 },
-  obsidian_depths: { worldX: 40, worldY: 24 },
-  hollow_mountain: { worldX: -28, worldY: -10 },
-  machine_graveyard: { worldX: 31, worldY: -6 },
-  ashfall_monastery: { worldX: 28, worldY: 28 },
-  thornmaze: { worldX: -27, worldY: 14 },
-  reef_of_bones: { worldX: 48, worldY: 13 },
-  necropolis_gate: { worldX: -18, worldY: 20 },
-  lost_capital: { worldX: -22, worldY: 2 },
-  sunspire: { worldX: 48, worldY: -3 },
-  moonshadow_court: { worldX: 28, worldY: 20 },
-  dragon_valley: { worldX: 40, worldY: -7 },
-  sky_isles: { worldX: 23, worldY: -7 },
-  starfall_crater: { worldX: 42, worldY: 21 },
-  time_ruins: { worldX: -29, worldY: -17 },
-  abyss_rift: { worldX: 49, worldY: 24 },
-  astral_wastes: { worldX: 50, worldY: -8 },
-  celestial_ruins: { worldX: 50, worldY: -2 },
-  demon_territory: { worldX: 49, worldY: 18 },
-  final_battleground: { worldX: 51, worldY: 21 },
+  obsidian_depths: { worldX: 36, worldY: 23 },
+  hollow_mountain: { worldX: -28, worldY: -14 },
+  machine_graveyard: { worldX: 31, worldY: -1 },
+  ashfall_monastery: { worldX: 33, worldY: 26 },
+  thornmaze: { worldX: -27, worldY: 10 },
+  reef_of_bones: { worldX: 38, worldY: 18 },
+  necropolis_gate: { worldX: -11, worldY: 16 },
+  lost_capital: { worldX: -27, worldY: 8 },
+  sunspire: { worldX: 46, worldY: 2 },
+  moonshadow_court: { worldX: 24, worldY: 20 },
+  dragon_valley: { worldX: -26, worldY: 11 },
+  sky_isles: { worldX: 7, worldY: -8 },
+  starfall_crater: { worldX: 21, worldY: 21 },
+  time_ruins: { worldX: -27, worldY: -16 },
+  abyss_rift: { worldX: 0, worldY: 22 },
+  astral_wastes: { worldX: -25, worldY: -24 },
+  celestial_ruins: { worldX: 46, worldY: 1 },
+  demon_territory: { worldX: -19, worldY: -15 },
+  final_battleground: { worldX: 31, worldY: 26 },
 };
 
 const WORLD_MAP2_ENDGAME_DIFFICULTY_OPTIONS = ['normal', 'hard', 'nightmare'];
@@ -548,22 +548,13 @@ export function buildZoneLocalBounds(
 export function plannedWorldCoordinateForRoom(
   room: RoomDef,
   zonePlan: ZoneMapPlan | undefined,
-  zoneLocalBounds: Map<string, ZoneLocalBounds>,
+  _zoneLocalBounds: Map<string, ZoneLocalBounds>,
 ): PlannedWorldCoordinate | undefined {
   if (plannedMapScopeForRoom(room, zonePlan) !== 'world') return undefined;
   if (typeof room.worldX === 'number' && typeof room.worldY === 'number') {
     return { worldX: room.worldX, worldY: room.worldY, source: 'explicit' };
   }
-
-  const globalBounds = zonePlan?.globalBounds;
-  const localBounds = zoneLocalBounds.get(room.zone);
-  if (!globalBounds || !localBounds) return undefined;
-
-  return {
-    worldX: globalBounds.minX + (room.mapX - localBounds.minX),
-    worldY: globalBounds.minY + (room.mapY - localBounds.minY),
-    source: 'derived',
-  };
+  return undefined;
 }
 
 export function buildPlannedWorldCoordinateMap(
@@ -572,7 +563,6 @@ export function buildPlannedWorldCoordinateMap(
   zonePlans = buildZoneMapPlans(zones),
 ): Map<string, PlannedWorldCoordinate> {
   const coordinates = new Map<string, PlannedWorldCoordinate>();
-  const occupied = new Set<string>();
 
   for (const zone of Object.values(zones)) {
     const plan = zonePlans.get(zone.id);
@@ -585,65 +575,7 @@ export function buildPlannedWorldCoordinateMap(
       if (typeof room.worldX === 'number' && typeof room.worldY === 'number') {
         const coordinate = { worldX: room.worldX, worldY: room.worldY, source: 'explicit' as const };
         coordinates.set(room.id, coordinate);
-        occupied.add(coordinateKey({ x: coordinate.worldX, y: coordinate.worldY }));
       }
-    }
-
-    if (plan?.decision === 'instance' && plan.entranceRoomId) {
-      const entranceCoordinate = WORLD_MAP2_INSTANCE_ENTRANCE_COORDINATES[zone.id];
-      const entranceRoom = worldRooms.find(room => room.id === plan.entranceRoomId);
-      if (entranceCoordinate && entranceRoom && !coordinates.has(entranceRoom.id)) {
-        const coordinate = {
-          worldX: entranceCoordinate.worldX,
-          worldY: entranceCoordinate.worldY,
-          source: 'instance-entry' as const,
-        };
-        coordinates.set(entranceRoom.id, coordinate);
-        occupied.add(coordinateKey({ x: coordinate.worldX, y: coordinate.worldY }));
-      }
-      continue;
-    }
-
-    if (!plan?.globalBounds) continue;
-
-    const derivedRooms = worldRooms.filter(room => !coordinates.has(room.id));
-    if (derivedRooms.length === 0) continue;
-
-    const roomById = new Map(derivedRooms.map(room => [room.id, room]));
-    const relativeByRoom = buildExitGraphRelativeCoordinates(derivedRooms, roomById);
-    const minX = Math.min(...[...relativeByRoom.values()].map(coord => coord.x));
-    const minY = Math.min(...[...relativeByRoom.values()].map(coord => coord.y));
-
-    const plannedCoordinates = derivedRooms
-      .map(room => {
-        const relative = relativeByRoom.get(room.id);
-        if (!relative) return null;
-        return {
-          room,
-          coordinate: {
-            x: plan.globalBounds!.minX + relative.x - minX,
-            y: plan.globalBounds!.minY + relative.y - minY,
-          },
-        };
-      })
-      .filter((entry): entry is { room: RoomDef; coordinate: RelativeCoordinate } => Boolean(entry));
-    const offset = findAvailableGroupOffset(
-      plannedCoordinates.map(entry => entry.coordinate),
-      occupied,
-      zones[zone.id].rooms.length + 48,
-    );
-
-    for (const entry of plannedCoordinates) {
-      const coordinate = {
-        x: entry.coordinate.x + offset.x,
-        y: entry.coordinate.y + offset.y,
-      };
-      occupied.add(coordinateKey(coordinate));
-      coordinates.set(entry.room.id, {
-        worldX: coordinate.x,
-        worldY: coordinate.y,
-        source: 'derived',
-      });
     }
   }
 

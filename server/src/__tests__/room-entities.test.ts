@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Character, MonsterDef, RoomDef } from '@game/shared';
+import { createEmptyEquipmentSlots, type Character, type MonsterDef, type RoomDef } from '@game/shared';
 import { buildOrdinalLabels, buildRoomEntities } from '../game/room-entities.js';
 import { buildNearbyCombatPayload } from '../game/nearby-combat.js';
 import { getRoom } from '../data/rooms.js';
@@ -85,6 +85,52 @@ describe('room entity builder', () => {
     }
   });
 
+  it('keeps public player details on player room entities', () => {
+    const entities = buildRoomEntities({
+      char: character,
+      room,
+      npcs: [],
+      players: [{
+        id: 'player-2',
+        name: '測試法師',
+        level: 3,
+        classId: 'mage',
+        raceId: 'elf',
+        genderId: 'female',
+        faithId: 'aelora',
+        hp: 44,
+        maxHp: 50,
+        mp: 31,
+        maxMp: 40,
+        resource: 31,
+        maxResource: 40,
+        resourceType: 'mp',
+        stats: { str: 2, int: 12, dex: 5, vit: 4, luk: 3 },
+        equipment: {
+          ...createEmptyEquipmentSlots(),
+          meleeMainHand: 'small_blade',
+          rangedMainHand: 'willow_witch_wand',
+          rangedOffHand: 'chalkcircle_focus',
+        },
+      }],
+      monsters: [],
+      corpses: [],
+      gatheringNodes: [],
+      travelNodes: [],
+      groundItems: [],
+    });
+
+    const player = entities.find(entity => entity.type === 'player');
+    expect(player?.label).toBe('測試法師');
+    expect(player?.hp).toBe(44);
+    expect(player?.playerDetails).toMatchObject({
+      classId: 'mage',
+      raceId: 'elf',
+      genderId: 'female',
+    });
+    expect(player?.playerDetails?.equipment.rangedMainHand).toBe('willow_witch_wand');
+  });
+
   it('shows corpse protection countdown in the entity subtitle', () => {
     const protectedUntil = Date.now() + 30_000;
     const entities = buildRoomEntities({
@@ -110,17 +156,18 @@ describe('room entity builder', () => {
     const currentRoom = getRoom('village_square')!;
     const slime = makeMonster('green_slime_1', 'green_slime', '史萊姆');
     const wolf = makeMonster('wolf_1', 'wolf', '野狼', { isElite: true, aiType: 'aggressive' });
+    const approachingWolf = makeMonster('wolf_2', 'wolf', '野狼', { isElite: true, aiType: 'aggressive' });
     const payload = buildNearbyCombatPayload({
       characterId: 'player-1',
       currentRoom,
       getAliveMonsters: roomId => {
         if (roomId === 'village_square') return [slime];
-        if (roomId === 'village_gate') return [wolf];
+        if (roomId === 'village_gate') return [wolf, approachingWolf];
         return [];
       },
       getApproachingMonsters: roomId => roomId === 'village_square'
         ? [{
-          instanceId: 'wolf_approaching_1',
+          instanceId: 'wolf_2',
           monsterId: 'wolf',
           name: '野狼',
           alias: 'wolf',
@@ -141,6 +188,7 @@ describe('room entity builder', () => {
     expect(south.scouted).toBe(true);
     expect(south.monsterCount).toBe(1);
     expect(south.monsters?.[0]).toMatchObject({ id: 'wolf_1', threatTags: expect.arrayContaining(['elite', 'aggressive']) });
+    expect(south.monsters?.some(monster => monster.id === 'wolf_2')).toBe(false);
     const north = payload.neighbors.find(neighbor => neighbor.direction === 'north')!;
     expect(north.scouted).toBe(false);
     expect(north.monsters).toBeUndefined();

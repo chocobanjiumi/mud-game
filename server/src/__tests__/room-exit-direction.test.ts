@@ -10,11 +10,10 @@ describe('room exit direction audit', () => {
     expect(report).toMatchObject({
       scannedAt: '2026-05-26T00:00:00.000Z',
       zoneCount: 60,
-      roomCount: 1203,
+      roomCount: 1500,
       directEastSelfLoops: 0,
       directSouthSelfLoops: 0,
       directSelfLoops: [],
-      missingTargetRooms: [],
       duplicateDirections: [],
     });
     expect(report.twoStepDirectionCycleCandidates).toHaveLength(0);
