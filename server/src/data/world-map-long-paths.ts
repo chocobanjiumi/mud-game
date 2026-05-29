@@ -841,19 +841,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "ironwood_fort_war_room"
   ],
   [
-    "ironwood_fort_outer_gate",
-    "north",
-    "ironwood_fort_west_bastion"
-  ],
-  [
     "ironwood_fort_portal_yard",
     "north",
     "ironwood_fort_quartermaster_row"
-  ],
-  [
-    "ironwood_fort_prison_block",
-    "south",
-    "ironwood_fort_scout_roost"
   ],
   [
     "ironwood_fort_quartermaster_row",
@@ -864,11 +854,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "ironwood_fort_quartermaster_row",
     "south",
     "ironwood_fort_portal_yard"
-  ],
-  [
-    "ironwood_fort_scout_roost",
-    "north",
-    "ironwood_fort_prison_block"
   ],
   [
     "ironwood_fort_signal_tower",
@@ -889,11 +874,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "ironwood_fort_war_room",
     "north",
     "ironwood_fort_oath_chapel"
-  ],
-  [
-    "ironwood_fort_west_bastion",
-    "south",
-    "ironwood_fort_outer_gate"
   ],
   [
     "kingsroad_market_adventurer_board",
