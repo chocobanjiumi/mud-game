@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:57:25.213Z",
+  "generatedAt": "2026-05-29T22:00:45.642Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,93 +366,8 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 9
+    "issues": 0
   },
-  "issuesByKind": {
-    "exit.description": 3,
-    "room.description": 6
-  },
-  "issues": [
-    {
-      "id": "plains/plains_moonlit_copse:west->starter_village_fill_6_3",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "blackwood/blackwood_wolf_den:north->amber_forest_fill_n13_11",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "deepsea_temple/deepsea_temple_tide_gate:west->bloodsalt_coast_fill_47_9",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_fill_44_7",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 62,
-      "minimumLength": 55,
-      "text": "猩紅潮池東鏽崖壓在潮池東側，西面血色池水拍打礁壁，南方走私者海灣藏在低霧裡。崖邊棧道鏽斷成數截，是 blocker 地形，阻止玩家從潮池直接滑入海灣背路。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_fill_n25_n23",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 69,
-      "minimumLength": 80,
-      "text": "北境王座南雪封位在冰封雪原最北側，南面廢棄雪橇的車轍被風雪掩住，西側冰封王座的藍光隔著白霧閃動。凍土小路在冰面裂聲中斷開，是 border blocker，不讓玩家硬穿城堡外冰原。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingdom_frontier/kingdom_frontier_fill_n18_n6",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 78,
-      "minimumLength": 80,
-      "text": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰、斷箭與塌旗座，這格是封閉 blocker，不接出新道路，只提示邊境外側危險。草中藏著失效警鈴。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "kingsroad_market/kingsroad_market_fill_26_n1",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 78,
-      "minimumLength": 80,
-      "text": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "old_farmland/old_farmland_fill_n1_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 74,
-      "minimumLength": 55,
-      "text": "河階荒田邊門在舊農田東南角收束成窄土路，北面水井廢農道仍有濕車轍，東側石階通向新手村河邊。這裡是跨區 border route，西側荒田柵欄已倒塌但被繩索封住，守住村莊與農田的低地邊界。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_fill_13_9",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 71,
-      "minimumLength": 55,
-      "text": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。",
-      "reason": "有採集點的 room.description 必須自然提到資源外觀"
-    }
-  ]
+  "issuesByKind": {},
+  "issues": []
 }

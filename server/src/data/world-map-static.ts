@@ -572,7 +572,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "bloodsalt_coast_fill_44_7",
     "name": "猩紅潮池東鏽崖",
     "zone": "bloodsalt_coast",
-    "description": "猩紅潮池東鏽崖壓在潮池東側，西面血色池水拍打礁壁，南方走私者海灣藏在低霧裡。崖邊棧道鏽斷成數截，是 blocker 地形，阻止玩家從潮池直接滑入海灣背路。",
+    "description": "猩紅潮池東鏽崖壓在潮池東側，西面血色池水拍打礁壁，南方走私者海灣藏在低霧裡。崖邊棧道鏽斷成數截，裂縫裡凝著暗紅鹽晶與潮池血苔，是 blocker 地形，阻止玩家從潮池直接滑入海灣背路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -1339,7 +1339,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "frozen_wastes_fill_n25_n23",
     "name": "北境王座南雪封",
     "zone": "frozen_wastes",
-    "description": "北境王座南雪封位在冰封雪原最北側，南面廢棄雪橇的車轍被風雪掩住，西側冰封王座的藍光隔著白霧閃動。凍土小路在冰面裂聲中斷開，是 border blocker，不讓玩家硬穿城堡外冰原。",
+    "description": "北境王座南雪封位在冰封雪原最北側，南面廢棄雪橇的車轍被風雪掩住，西側冰封王座的藍光隔著白霧閃動。凍土小路在冰面裂聲中斷開，雪面插著碎冰旗與裂縫警樁，是 border blocker，不讓玩家硬穿城堡外冰原。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -1903,7 +1903,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingdom_frontier_fill_n18_n6",
     "name": "西北荒草哨",
     "zone": "kingdom_frontier",
-    "description": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰、斷箭與塌旗座，這格是封閉 blocker，不接出新道路，只提示邊境外側危險。草中藏著失效警鈴。",
+    "description": "西北荒草哨被高草包圍，南側西北敵影牆仍露出石角，東面巡邏路標被泥土埋住。磨損界碑旁只有舊哨火灰、斷箭與塌旗座，這格是封閉 blocker，不接出新道路，只提示邊境外側危險。草中藏著失效警鈴與半截警戒木牌。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -1975,7 +1975,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_26_n1",
     "name": "鐵匠北貨欄",
     "zone": "kingsroad_market",
-    "description": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面。",
+    "description": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面，也不接市集後街。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -2699,7 +2699,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "old_farmland_fill_n1_3",
     "name": "河階荒田邊門",
     "zone": "old_farmland",
-    "description": "河階荒田邊門在舊農田東南角收束成窄土路，北面水井廢農道仍有濕車轍，東側石階通向新手村河邊。這裡是跨區 border route，西側荒田柵欄已倒塌但被繩索封住，守住村莊與農田的低地邊界。",
+    "description": "河階荒田邊門在舊農田東南角收束成窄土路，北面水井廢農道仍有濕車轍，東側石階通向新手村河邊。門旁雜草間有野蔥、潮濕穀粒與破麻袋可作少量補給；這裡是跨區 border route，西側荒田柵欄已倒塌但被繩索封住，守住村莊與農田的低地邊界。",
     "exits": [
       {
         "direction": "east",
@@ -2830,7 +2830,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "pilgrim_road_fill_13_9",
     "name": "藍寶湖西燈標古道",
     "zone": "pilgrim_road",
-    "description": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著乾糧包、破水囊與白石灰粉袋，可採少量旅人補給；往東會從乾石路轉入湖岸棧道。",
+    "description": "藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著旅人物資箱、乾糧包、破水囊與白石灰粉袋，可採少量補給；往東會從乾石路轉入湖岸棧道。",
     "exits": [
       {
         "direction": "east",

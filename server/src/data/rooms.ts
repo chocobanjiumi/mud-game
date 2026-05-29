@@ -5300,7 +5300,7 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
   thundersteppe_fill_10_23: '雷草西緣位於琉璃沙丘與雷鳴草原交界，西側玻璃砂逐漸被濕草根壓住，東面滾雷門的銅鈴在風裡晃動。草葉間有雷露草採集痕，這裡是西側 gathering route，讓玩家從沙地踏入草原。',
   frostbite_pass_fill_n19_n14: '高原崖門西凍路牌位在霜咬隘口東北界，北面惡魔邊境冷影壓在山脊上，南側雨棚西界凍石路繼續下滑，東邊風暴高原崖門透出濕暖風。這裡是跨區邊界路線端點，只銜接隘口與高原崖門。',
   frostbite_pass_fill_n19_n13: '雨棚西界凍石路牌位在霜咬隘口東側，北面崖門西界繼續抬升，南側薄冰坡被冷雨封住，東邊風暴高原雨棚有濕暖氣流。路牌標示這裡是跨區邊界路線端點，專門銜接隘口與高原雨棚。',
-  pilgrim_road_fill_13_9: '藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標指出這是 border route，可採少量旅人補給，往東會從乾石路轉入湖岸棧道。',
+  pilgrim_road_fill_13_9: '藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著旅人物資箱、乾糧包、破水囊與白石灰粉袋，可採少量補給；往東會從乾石路轉入湖岸棧道。',
   // 新手村東緣 → 平原過渡
   starter_village_fill_6_3: '東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月光小林貼著草坡展開。這裡是 border route，青石路轉為野草，提醒新手離開安全區。',
   starter_village_fill_6_4: '最後幾戶民宅擠在柵欄內側，牆縫裡長滿青苔。透過歪斜的籬笆，東邊可見幾塊蒼老巨石佇立在霧氣之中。',
@@ -5402,6 +5402,9 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'mist_harbor_fog_gate:west': '西側穿過霧港城門拱影與潮濕路牌亭，接往東方海岸最東端礁水潮徑',
   'glass_dunes_sun_gate:west': '西側沿日門玻砂脊下行，接往西側玻沙採集界坡',
   'glass_dunes_buried_caravan:west': '西側繞過半埋車隊殘輪與玻砂堆，接往西側沙脊殘道',
+  'plains_moonlit_copse:west': '西側穿過月光小林草坡與新手村東柵木門，接回村內青石安全路',
+  'blackwood_wolf_den:north': '北側沿影狼爪痕與樹脂根脈上行，接往琥珀森林南緣金葉林界',
+  'deepsea_temple_tide_gate:west': '西側穿過半沉潮門與鹽蝕斷棧，接回血鹽海岸東端路牌亭',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
