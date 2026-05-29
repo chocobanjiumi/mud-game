@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:46:47.187Z",
+  "generatedAt": "2026-05-29T21:48:14.898Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
@@ -6292,7 +6292,7 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": true,
-          "descriptionLength": 73,
+          "descriptionLength": 82,
           "exitCount": 2,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,

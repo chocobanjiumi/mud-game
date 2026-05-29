@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:46:34.265Z",
+  "generatedAt": "2026-05-29T21:48:02.127Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 26
+    "issues": 23
   },
   "issuesByKind": {
-    "exit.description": 14,
-    "room.description": 12
+    "exit.description": 12,
+    "room.description": 11
   },
   "issues": [
     {
@@ -408,24 +408,6 @@
       "minimumLength": 12,
       "text": "",
       "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_reed_gate:west->moonlit_fen_fill_23_16",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_peat_islet:west->moonlit_fen_fill_23_17",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
       "id": "glass_dunes/glass_dunes_sun_gate:west->glass_dunes_fill_0_21",
@@ -560,15 +542,6 @@
       "currentLength": 78,
       "minimumLength": 80,
       "text": "鐵匠北貨欄貼著鐵匠鋪列北面，南側爐火熱氣從石縫竄出，西面酒館前的招牌在棚影裡晃動。整排鐵料箱、冷卻水桶和未領貨牌鎖住通道，這格是封閉 blocker，只提示鍛造服務區邊界，不是可互動店面。",
-      "reason": "room 描述字數不足或過於泛用"
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_fill_24_15",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 73,
-      "minimumLength": 80,
-      "text": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。木樁只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。",
       "reason": "room 描述字數不足或過於泛用"
     },
     {

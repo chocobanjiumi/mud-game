@@ -2200,7 +2200,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "marsh_of_mirrors_fill_24_15",
     "name": "夢水鏡面棧道",
     "zone": "marsh_of_mirrors",
-    "description": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。木樁只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。",
+    "description": "夢水鏡面棧道位於月光濕地與鏡沼交界，西側水霧仍帶著銀色蘆光，東面倒影忽然變冷。半沉木樁、繩標與鏡水踏板只保留往西穿回夢水核心的特殊水路，東側鏡面深潭被繩標封住，是明確 border route 與封路提示。",
     "exits": [
       {
         "direction": "west",

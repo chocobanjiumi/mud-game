@@ -5392,6 +5392,8 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'ironwood_fort_forge_works:west': '西側越過鍛爐排煙口與焦黑鐵木根，接往暗影森林東界炭火林道',
   'ironwood_fort_ironwood_grove:west': '西側穿過鐵木林護欄與陰影樹根，接往暗影森林東界古木路',
   'wildgrass_hills_old_road_cut:west': '西側沿舊路碎石階與銀松針坡上行，接往銀松山脈東緣舊路折口',
+  'marsh_of_mirrors_reed_gate:west': '西側穿過鏡沼蘆門與冷水倒影，接往月光濕地東側鏡沼蘆門汊',
+  'marsh_of_mirrors_peat_islet:west': '西側踏過泥炭小洲與暗色反光水痕，接往月光濕地泥鏡交界水道',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];
