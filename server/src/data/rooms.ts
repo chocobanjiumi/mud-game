@@ -4553,7 +4553,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。' +
       '雪地被極光映照得如夢似幻，空氣中充滿了微弱的魔力波動。' +
-      '巨大的雪人在極光下遊蕩，似乎被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
+      '巨大的雪人在極光下遊蕩，冰河骨亡靈也被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
     exits: [
       { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ice_castle_gate', description: '東側極光之地沿彩光雪脊斜行，穿過冰晶風口與城堡外坡抵達冰封城堡大門', edgeKind: 'distant_route', edgeNote: '極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。' },

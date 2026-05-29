@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:20:28.102Z",
+  "generatedAt": "2026-05-29T22:22:20.280Z",
   "summary": {
     "rooms": 992,
     "zones": 34,
@@ -9,14 +9,14 @@
     "safeRoomsWithMonsters": 0,
     "lowZoneHighMonsterIssues": 0,
     "adjacentLevelSpikeIssues": 0,
-    "terrainFamilyMismatchIssues": 77,
-    "issues": 83,
+    "terrainFamilyMismatchIssues": 4,
+    "issues": 9,
     "errors": 0,
-    "warnings": 83,
+    "warnings": 9,
     "accepted": 0,
     "byIssueKind": {
-      "monster_cue.missing": 6,
-      "terrain_family.mismatch": 77
+      "monster_cue.missing": 5,
+      "terrain_family.mismatch": 4
     }
   },
   "zones": [
@@ -121,7 +121,7 @@
         "humanoid",
         "undead"
       ],
-      "issueCount": 17,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -285,7 +285,7 @@
         "plant",
         "undead"
       ],
-      "issueCount": 15,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -339,7 +339,7 @@
         "humanoid",
         "plant"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -432,7 +432,7 @@
         "ooze",
         "plant"
       ],
-      "issueCount": 14,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -533,7 +533,7 @@
         "plant",
         "undead"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -694,7 +694,7 @@
         "insect",
         "plant"
       ],
-      "issueCount": 18,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -975,9 +975,7 @@
         "snow_wolf",
         "yeti"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "blizzard_path",
@@ -1033,9 +1031,7 @@
         "ice_elemental",
         "glacier_bone_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "glacier",
@@ -1049,9 +1045,7 @@
         "snow_wolf",
         "ice_elemental"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "crystal_ice_cave",
@@ -1065,9 +1059,7 @@
         "ice_elemental",
         "frost_giant"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_yeti_cairn",
@@ -1081,9 +1073,7 @@
         "yeti",
         "snow_wolf"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_ice_fishing_hole",
@@ -1097,9 +1087,7 @@
         "ice_elemental",
         "glacier_bone_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_lake",
@@ -1113,9 +1101,7 @@
         "ice_elemental",
         "glacier_bone_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ice_castle_gate",
@@ -1129,9 +1115,7 @@
         "frost_giant",
         "royal_frost_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_frozen_watchpost",
@@ -1145,9 +1129,7 @@
         "frost_giant",
         "royal_frost_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_runestone_circle",
@@ -1162,9 +1144,7 @@
         "ice_elemental",
         "royal_frost_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "aurora_field",
@@ -1178,10 +1158,7 @@
         "yeti",
         "glacier_bone_wraith"
       ],
-      "issueKinds": [
-        "monster_cue.missing",
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ice_throne",
@@ -1196,9 +1173,7 @@
         "frost_giant_king",
         "royal_frost_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_crystal_spire",
@@ -1213,9 +1188,7 @@
         "ice_elemental",
         "glacier_bone_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_fill_n26_n18",
@@ -1241,9 +1214,7 @@
         "frost_giant_king",
         "royal_frost_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "frozen_wastes_fill_n24_n18",
@@ -6716,9 +6687,7 @@
         "bloodsalt_red_salt_reaver",
         "bloodsalt_bone_net_murloc"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_red_salt_flats",
@@ -6732,9 +6701,7 @@
         "bloodsalt_red_salt_reaver",
         "bloodsalt_razor_clam_colony"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_wreckers_marker",
@@ -6748,9 +6715,7 @@
         "bloodsalt_red_salt_reaver",
         "bloodsalt_smuggler_cutthroat"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_fill_43_6",
@@ -7416,9 +7381,7 @@
         "bloodsalt_warflag_privateer",
         "bloodsalt_red_salt_reaver"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_crimson_tide_pool",
@@ -7432,9 +7395,7 @@
         "bloodsalt_crimson_tide_oracle",
         "bloodsalt_bone_net_murloc"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_fill_44_7",
@@ -7678,9 +7639,7 @@
         "shrine_bell_wraith",
         "milestone_crow_herald"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "pilgrim_road_prayer_steps",
@@ -7694,9 +7653,7 @@
         "shrine_bell_wraith",
         "milestone_crow_herald"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "pilgrim_road_saint_bridge",
@@ -7710,9 +7667,7 @@
         "saint_bridge_penitent",
         "shrine_bell_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "pilgrim_road_white_marker",
@@ -7726,9 +7681,7 @@
         "saint_bridge_penitent",
         "milestone_crow_herald"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "pilgrim_road_old_cemetery_turn",
@@ -7742,9 +7695,7 @@
         "saint_bridge_penitent",
         "shrine_bell_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "sapphire_lake_entry_claim",
@@ -8073,9 +8024,7 @@
         "bloodsalt_smuggler_cutthroat",
         "bloodsalt_bone_net_murloc"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_saltglass_cave",
@@ -8089,9 +8038,7 @@
         "bloodsalt_ghost_keel_wraith",
         "bloodsalt_smuggler_cutthroat"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_reef_fishing_post",
@@ -8119,9 +8066,7 @@
         "bloodsalt_crimson_tide_oracle",
         "bloodsalt_warflag_privateer"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_smuggler_cove",
@@ -8135,9 +8080,7 @@
         "bloodsalt_smuggler_cutthroat",
         "bloodsalt_red_salt_reaver"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "emerald_canopy_firefly_bower",
@@ -8604,9 +8547,7 @@
         "bloodsalt_ghost_keel_wraith",
         "bloodsalt_crimson_tide_oracle"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_razor_clam_beds",
@@ -8634,9 +8575,7 @@
         "bloodsalt_warflag_privateer",
         "bloodsalt_red_salt_reaver"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_ice_dark_surge",
@@ -8650,9 +8589,7 @@
         "bloodsalt_ghost_keel_wraith",
         "bloodsalt_crimson_tide_oracle"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_fill_45_9",
@@ -9027,9 +8964,7 @@
         "bloodsalt_warflag_privateer",
         "bloodsalt_smuggler_cutthroat"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_ghost_keel_grave",
@@ -9043,9 +8978,7 @@
         "bloodsalt_ghost_keel_wraith",
         "bloodsalt_smuggler_cutthroat"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_red_coral_labyrinth",
@@ -9059,9 +8992,7 @@
         "bloodsalt_red_coral_hydra",
         "bloodsalt_razor_clam_colony"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_tithe_of_blood_pier",
@@ -9075,9 +9006,7 @@
         "bloodsalt_warflag_privateer",
         "bloodsalt_crimson_tide_oracle"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "bloodsalt_coast_ritual_reef_core",
@@ -9092,9 +9021,7 @@
         "bloodsalt_red_coral_hydra",
         "bloodsalt_ghost_keel_wraith"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "emerald_canopy_fill_n25_11",
@@ -9417,9 +9344,7 @@
         "prison_chain_jailer",
         "ironwood_rootwarden"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ironwood_fort_supply_tunnel",
@@ -10075,9 +10000,7 @@
         "ironwood_gate_sentinel",
         "prison_chain_jailer"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ironwood_fort_signal_tower",
@@ -10222,9 +10145,7 @@
         "reedshade_stalker",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_fill_27_14",
@@ -10260,9 +10181,7 @@
         "serpent_delta_reed_constrictor",
         "serpent_delta_mudfish_ambusher"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_split_reed_bank",
@@ -10276,9 +10195,7 @@
         "serpent_delta_reed_constrictor",
         "serpent_delta_mudfish_ambusher"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_mudfish_pool",
@@ -10292,9 +10209,7 @@
         "serpent_delta_mudfish_ambusher",
         "serpent_delta_reed_constrictor"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_34_14",
@@ -10496,9 +10411,7 @@
         "forge_cinder_guard",
         "ironwood_rootwarden"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ironwood_fort_scout_roost",
@@ -10713,9 +10626,7 @@
         "mirror_mire_toad",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_poison_bloom_bed",
@@ -10729,9 +10640,7 @@
         "black_reed_slime",
         "mirror_mire_toad"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_shattered_reflection",
@@ -10746,9 +10655,7 @@
         "hag_lantern_echo",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_fill_28_15",
@@ -10784,9 +10691,7 @@
         "serpent_delta_stilt_scaleguard",
         "serpent_delta_reed_constrictor"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_cold_bend",
@@ -10800,9 +10705,7 @@
         "serpent_delta_coldmist_eel",
         "serpent_delta_mudfish_ambusher"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_scale_net_yard",
@@ -10816,9 +10719,7 @@
         "serpent_delta_stilt_scaleguard",
         "serpent_delta_moon_net_slinger"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_35_15",
@@ -10904,9 +10805,7 @@
         "ironwood_rootwarden",
         "forge_cinder_guard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ironwood_fort_prison_block",
@@ -10920,9 +10819,7 @@
         "prison_chain_jailer",
         "command_tablet_construct"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "ironwood_fort_oath_chapel",
@@ -11096,9 +10993,7 @@
         "mirror_mire_toad",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_blackwater_path",
@@ -11113,9 +11008,7 @@
         "black_reed_slime",
         "lake_serpent"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_silver_pool",
@@ -11130,9 +11023,7 @@
         "lake_serpent",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_mirror_pond",
@@ -11147,9 +11038,7 @@
         "black_reed_slime",
         "reedshade_stalker"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_sunken_willow",
@@ -11164,9 +11053,7 @@
         "drowned_willow_treant",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_fill_29_16",
@@ -11202,9 +11089,7 @@
         "serpent_delta_reed_constrictor",
         "serpent_delta_mangrove_rootbinder"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_green_herb_islet",
@@ -11218,9 +11103,7 @@
         "serpent_delta_mangrove_rootbinder",
         "serpent_delta_shrine_mask_acolyte"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_sunken_pirogue",
@@ -11234,9 +11117,7 @@
         "serpent_delta_coldmist_eel",
         "serpent_delta_moon_net_slinger"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_serpent_shrine_steps",
@@ -11250,9 +11131,7 @@
         "serpent_delta_shrine_mask_acolyte",
         "serpent_delta_stilt_scaleguard"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_flooded_granary",
@@ -11266,9 +11145,7 @@
         "serpent_delta_mudfish_ambusher",
         "serpent_delta_moon_net_slinger"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "dark_forest_fill_n4_17",
@@ -11326,9 +11203,7 @@
         "lake_serpent",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_crooked_boardwalk",
@@ -11382,9 +11257,7 @@
         "drowned_willow_treant",
         "reedshade_stalker"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_31_17",
@@ -11409,9 +11282,7 @@
         "serpent_delta_mangrove_rootbinder",
         "serpent_delta_reed_constrictor"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_ice_mist_channel",
@@ -11425,9 +11296,7 @@
         "serpent_delta_coldmist_eel",
         "serpent_delta_blue_lotus_oracle"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_egg_mound",
@@ -11441,9 +11310,7 @@
         "serpent_delta_egg_mound_broodmother",
         "serpent_delta_shrine_mask_acolyte"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_moonlit_fishing_post",
@@ -11457,9 +11324,7 @@
         "serpent_delta_moon_net_slinger",
         "serpent_delta_coldmist_eel"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_36_17",
@@ -11595,9 +11460,7 @@
         "mirror_mire_toad",
         "black_reed_slime"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "marsh_of_mirrors_fill_26_18",
@@ -11624,9 +11487,7 @@
         "drowned_willow_treant",
         "lake_serpent"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_32_18",
@@ -11651,9 +11512,7 @@
         "serpent_delta_stilt_scaleguard",
         "serpent_delta_egg_mound_broodmother"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_priest_mask_hut",
@@ -11681,9 +11540,7 @@
         "serpent_delta_blue_lotus_oracle",
         "serpent_delta_coldmist_eel"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_manymouth_confluence",
@@ -11712,9 +11569,7 @@
         "serpent_delta_egg_mound_broodmother",
         "serpent_delta_blue_lotus_oracle"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "redrock_badlands_fill_n7_19",
@@ -11900,9 +11755,7 @@
         "drowned_willow_treant",
         "reedshade_stalker"
       ],
-      "issueKinds": [
-        "terrain_family.mismatch"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "serpent_delta_fill_33_19",
@@ -25200,7 +25053,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "blizzard_path",
@@ -54416,20 +54269,6 @@
   ],
   "issues": [
     {
-      "id": "frozen_wastes/aurora_field/monster_cue.missing",
-      "zoneId": "frozen_wastes",
-      "roomId": "aurora_field",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "yeti",
-          "glacier_bone_wraith"
-        ]
-      }
-    },
-    {
       "id": "wildgrass_hills/wildgrass_hills_orchard_ruin/monster_cue.missing",
       "zoneId": "wildgrass_hills",
       "roomId": "wildgrass_hills_orchard_ruin",
@@ -54496,1787 +54335,6 @@
         "monsterIds": [
           "stormbanner_champion",
           "windscar_hawk"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_blood_altar_ledge/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_blood_altar_ledge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_brine_cut_path/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_brine_cut_path",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "undead"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_crimson_tide_pool/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_crimson_tide_pool",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_drowned_watchtower/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_drowned_watchtower",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_entrance_tidegate/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_entrance_tidegate",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_ghost_keel_grave/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_ghost_keel_grave",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "undead"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_ice_dark_surge/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_ice_dark_surge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_pirate_beacon/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_pirate_beacon",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_red_coral_labyrinth/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_red_coral_labyrinth",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_red_salt_flats/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_red_salt_flats",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_ritual_reef_core/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_ritual_reef_core",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_saltglass_cave/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_saltglass_cave",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "undead"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_sharktooth_pass/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_sharktooth_pass",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_smuggler_cove/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_smuggler_cove",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "humanoid"
-        ],
-        "mismatches": [
-          "aquatic",
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_tithe_of_blood_pier/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_tithe_of_blood_pier",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_warflag_dune/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_warflag_dune",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "bloodsalt_coast/bloodsalt_coast_wreckers_marker/terrain_family.mismatch",
-      "zoneId": "bloodsalt_coast",
-      "roomId": "bloodsalt_coast_wreckers_marker",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "humanoid"
-        ],
-        "mismatches": [
-          "aquatic",
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/aurora_field/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "aurora_field",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "plant",
-          "undead"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/crystal_ice_cave/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "crystal_ice_cave",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "elemental"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_lake/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_lake",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_abandoned_sledge/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_abandoned_sledge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_crystal_spire/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_crystal_spire",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "elemental",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_dragon_breath_rift/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_dragon_breath_rift",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "dragon",
-          "elemental",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_frozen_watchpost/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_frozen_watchpost",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_glacier_crevasse/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_glacier_crevasse",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_ice_fishing_hole/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_ice_fishing_hole",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "undead"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_runestone_circle/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_runestone_circle",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "aquatic",
-          "humanoid",
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/frozen_wastes_yeti_cairn/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "frozen_wastes_yeti_cairn",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/glacier/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "glacier",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/ice_castle_gate/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "ice_castle_gate",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "elemental",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "frozen_wastes/ice_throne/terrain_family.mismatch",
-      "zoneId": "frozen_wastes",
-      "roomId": "ice_throne",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "dragon",
-          "elemental",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_barracks_hall/terrain_family.mismatch",
-      "zoneId": "ironwood_fort",
-      "roomId": "ironwood_fort_barracks_hall",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_forge_works/terrain_family.mismatch",
-      "zoneId": "ironwood_fort",
-      "roomId": "ironwood_fort_forge_works",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_ironwood_grove/terrain_family.mismatch",
-      "zoneId": "ironwood_fort",
-      "roomId": "ironwood_fort_ironwood_grove",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_old_cistern/terrain_family.mismatch",
-      "zoneId": "ironwood_fort",
-      "roomId": "ironwood_fort_old_cistern",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "ironwood_fort/ironwood_fort_prison_block/terrain_family.mismatch",
-      "zoneId": "ironwood_fort",
-      "roomId": "ironwood_fort_prison_block",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "humanoid",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "construct",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_blackwater_path/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_blackwater_path",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_dark_treant_grove/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_dark_treant_grove",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "aquatic",
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_echo_fen/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_echo_fen",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_frog_mire/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_frog_mire",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_glasswater_core/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_glasswater_core",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_hag_lantern/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_hag_lantern",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_lost_cairn/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_lost_cairn",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_mirror_pond/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_mirror_pond",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_peat_islet/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_peat_islet",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_poison_bloom_bed/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_poison_bloom_bed",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_reed_gate/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_reed_gate",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_shattered_reflection/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_shattered_reflection",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_silver_pool/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_silver_pool",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "ooze"
-        ],
-        "mismatches": [
-          "ooze"
-        ]
-      }
-    },
-    {
-      "id": "marsh_of_mirrors/marsh_of_mirrors_sunken_willow/terrain_family.mismatch",
-      "zoneId": "marsh_of_mirrors",
-      "roomId": "marsh_of_mirrors_sunken_willow",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "elemental",
-          "humanoid",
-          "insect",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "ooze",
-          "plant"
-        ],
-        "mismatches": [
-          "aquatic",
-          "ooze",
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_bell_shrine/terrain_family.mismatch",
-      "zoneId": "pilgrim_road",
-      "roomId": "pilgrim_road_bell_shrine",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "humanoid",
-          "insect",
-          "ooze",
-          "plant"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "undead"
-        ],
-        "mismatches": [
-          "undead"
-        ]
-      }
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_old_cemetery_turn/terrain_family.mismatch",
-      "zoneId": "pilgrim_road",
-      "roomId": "pilgrim_road_old_cemetery_turn",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "humanoid",
-          "insect",
-          "ooze",
-          "plant"
-        ],
-        "monsterFamilies": [
-          "undead"
-        ],
-        "mismatches": [
-          "undead"
-        ]
-      }
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_prayer_steps/terrain_family.mismatch",
-      "zoneId": "pilgrim_road",
-      "roomId": "pilgrim_road_prayer_steps",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "humanoid",
-          "insect",
-          "ooze",
-          "plant"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "undead"
-        ],
-        "mismatches": [
-          "undead"
-        ]
-      }
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_saint_bridge/terrain_family.mismatch",
-      "zoneId": "pilgrim_road",
-      "roomId": "pilgrim_road_saint_bridge",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "humanoid",
-          "insect",
-          "ooze",
-          "plant"
-        ],
-        "monsterFamilies": [
-          "undead"
-        ],
-        "mismatches": [
-          "undead"
-        ]
-      }
-    },
-    {
-      "id": "pilgrim_road/pilgrim_road_white_marker/terrain_family.mismatch",
-      "zoneId": "pilgrim_road",
-      "roomId": "pilgrim_road_white_marker",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "humanoid",
-          "insect",
-          "ooze",
-          "plant"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "undead"
-        ],
-        "mismatches": [
-          "undead"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_blue_lotus_marsh/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_blue_lotus_marsh",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_cold_bend/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_cold_bend",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_egg_mound/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_egg_mound",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_entrance_ferry/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_entrance_ferry",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_flooded_granary/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_flooded_granary",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_green_herb_islet/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_green_herb_islet",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_heron_marker/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_heron_marker",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_ice_mist_channel/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_ice_mist_channel",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_mangrove_maze/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_mangrove_maze",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "plant"
-        ],
-        "mismatches": [
-          "plant"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_moonlit_fishing_post/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_moonlit_fishing_post",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_mudfish_pool/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_mudfish_pool",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_old_levy_causeway/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_old_levy_causeway",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "humanoid",
-          "insect"
-        ],
-        "mismatches": [
-          "humanoid",
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_scale_net_yard/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_scale_net_yard",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_serpent_god_backwater/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_serpent_god_backwater",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "insect"
-        ],
-        "mismatches": [
-          "insect"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_serpent_shrine_steps/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_serpent_shrine_steps",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_split_reed_bank/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_split_reed_bank",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_stilt_hamlet/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_stilt_hamlet",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "beast",
-          "humanoid"
-        ],
-        "mismatches": [
-          "humanoid"
-        ]
-      }
-    },
-    {
-      "id": "serpent_delta/serpent_delta_sunken_pirogue/terrain_family.mismatch",
-      "zoneId": "serpent_delta",
-      "roomId": "serpent_delta_sunken_pirogue",
-      "severity": "warning",
-      "kind": "terrain_family.mismatch",
-      "message": "怪物 family 與 zone 地貌標籤不一致，需人工確認或調整",
-      "details": {
-        "allowedFamilies": [
-          "beast",
-          "construct",
-          "dragon",
-          "elemental",
-          "undead"
-        ],
-        "monsterFamilies": [
-          "aquatic",
-          "beast"
-        ],
-        "mismatches": [
-          "aquatic"
         ]
       }
     },
