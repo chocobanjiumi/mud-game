@@ -1,36 +1,36 @@
 {
-  "generatedAt": "2026-05-29T21:08:19.661Z",
+  "generatedAt": "2026-05-29T21:09:51.053Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 29,
-    "errors": 25,
+    "issues": 22,
+    "errors": 18,
     "warnings": 4,
     "byGrade": {
       "A_main_transition": 30,
-      "B_connector": 17,
-      "C_empty_filler": 73,
-      "D_upgrade_candidate": 223
+      "B_connector": 16,
+      "C_empty_filler": 72,
+      "D_upgrade_candidate": 225
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 279,
-      "gathering": 160,
+      "border": 281,
+      "gathering": 163,
       "monster": 30,
-      "npc_or_quest": 19,
-      "portal": 16,
+      "npc_or_quest": 21,
+      "portal": 17,
       "route": 69,
-      "service": 74
+      "service": 76
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
       "description.direction": 7,
-      "description.length": 11,
+      "description.length": 7,
       "description.purpose": 3,
-      "exit.description.length": 4,
-      "exit.description.missing": 3
+      "exit.description.length": 2,
+      "exit.description.missing": 2
     }
   },
   "zones": [
@@ -10907,15 +10907,19 @@
       "zoneId": "starter_village",
       "zoneName": "新手村",
       "fillRooms": 4,
-      "issues": 7,
+      "issues": 0,
       "records": [
         {
           "id": "starter_village_fill_1_3",
           "zone": "starter_village",
-          "name": "民宅通道",
-          "grade": "B_connector",
+          "name": "溪階傳送低地小徑",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "route"
+            "border",
+            "gathering",
+            "portal",
+            "route",
+            "service"
           ],
           "worldX": 1,
           "worldY": 3,
@@ -10936,52 +10940,21 @@
           "mainRoute": true,
           "deadEnd": false,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 64,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "starter_village_fill_1_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。"
-            },
-            {
-              "id": "starter_village_fill_1_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->starter_village_river_stairs description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "低地小徑西返溪畔石階"
-            },
-            {
-              "id": "starter_village_fill_1_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->starter_village_portal_shrine description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "低地小徑東接傳送祠堂"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "starter_village_fill_3_4",
           "zone": "starter_village",
-          "name": "青石巷弄",
+          "name": "市場北後勤青石巷",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -11008,30 +10981,23 @@
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "starter_village_fill_3_4",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "通往村莊各處的平坦道路，偶有村民走過。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "starter_village_fill_5_3",
           "zone": "starter_village",
-          "name": "民宅通道",
-          "grade": "C_empty_filler",
+          "name": "守衛哨西民宅木柵",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering",
+            "npc_or_quest",
+            "service"
           ],
           "worldX": 5,
           "worldY": 3,
@@ -11048,35 +11014,26 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 64,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "starter_village_fill_5_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "starter_village_fill_6_3",
           "zone": "starter_village",
-          "name": "青石巷弄",
+          "name": "東柵月林青石界",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
+            "gathering",
+            "npc_or_quest",
             "service"
           ],
           "worldX": 6,
@@ -11096,36 +11053,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 40,
+          "descriptionLength": 65,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "starter_village_fill_6_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 40,
-              "minimum": 65,
-              "text": "青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。"
-            },
-            {
-              "id": "starter_village_fill_6_3",
-              "zone": "starter_village",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->plains_moonlit_copse 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -13553,75 +13490,6 @@
       "current": 9,
       "minimum": 12,
       "text": "月光草線東接白鹿林"
-    },
-    {
-      "id": "starter_village_fill_1_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。"
-    },
-    {
-      "id": "starter_village_fill_1_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->starter_village_river_stairs description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "低地小徑西返溪畔石階"
-    },
-    {
-      "id": "starter_village_fill_1_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->starter_village_portal_shrine description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "低地小徑東接傳送祠堂"
-    },
-    {
-      "id": "starter_village_fill_3_4",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "通往村莊各處的平坦道路，偶有村民走過。"
-    },
-    {
-      "id": "starter_village_fill_5_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。"
-    },
-    {
-      "id": "starter_village_fill_6_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 40,
-      "minimum": 65,
-      "text": "青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。"
-    },
-    {
-      "id": "starter_village_fill_6_3",
-      "zone": "starter_village",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->plains_moonlit_copse 缺 description",
-      "current": 0,
-      "minimum": 20
     },
     {
       "id": "underground_city_lantern_bridge",

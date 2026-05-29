@@ -3996,19 +3996,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_fill_1_3": {
     "id": "starter_village_fill_1_3",
-    "name": "民宅通道",
+    "name": "溪階傳送低地小徑",
     "zone": "starter_village",
-    "description": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。",
+    "description": "溪階傳送低地小徑鋪著潮濕青石板，西面溪畔石階能聽見水聲，東側傳送祠堂透出藍光，兩旁低木柵隔開民宅菜圃。這裡是安全 route，專門銜接新手村低地服務點。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "starter_village_river_stairs",
-        "description": "低地小徑西返溪畔石階"
+        "description": "沿低地青石小徑向西，可回到靠溪水聲的溪畔石階"
       },
       {
         "direction": "east",
         "targetRoomId": "starter_village_portal_shrine",
-        "description": "低地小徑東接傳送祠堂"
+        "description": "沿低地青石小徑向東，可接到藍光明顯的新手村傳送祠堂"
       }
     ],
     "mapSymbol": "[·]",
@@ -4019,9 +4019,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_fill_3_4": {
     "id": "starter_village_fill_3_4",
-    "name": "青石巷弄",
+    "name": "市場北後勤青石巷",
     "zone": "starter_village",
-    "description": "通往村莊各處的平坦道路，偶有村民走過。",
+    "description": "市場北後勤青石巷位在村莊服務區後方，北面公告角落與水井小路人聲清楚，南側市場小巷飄來麵包與藥草味。平坦石路只留給村民搬貨，是安全 service blocker，不開新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4031,9 +4031,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_fill_5_3": {
     "id": "starter_village_fill_5_3",
-    "name": "民宅通道",
+    "name": "守衛哨西民宅木柵",
     "zone": "starter_village",
-    "description": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。",
+    "description": "守衛哨西民宅木柵位在新手村東側民宅旁，西面馬廄院的木門半掩，北邊守衛哨所可見火把。青石板到此被低矮木柵截斷，只作村內 blocker，避免玩家穿進住戶院落。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -4043,13 +4043,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "starter_village_fill_6_3": {
     "id": "starter_village_fill_6_3",
-    "name": "青石巷弄",
+    "name": "東柵月林青石界",
     "zone": "starter_village",
-    "description": "青石路面在此盡頭化為野草，一道低矮的木柵欄標記著村莊東界，柵外是月光下銀白的荒野草地。",
+    "description": "東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月光小林貼著草坡展開。這裡是 border route，青石路轉為野草，提醒新手離開安全區。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "plains_moonlit_copse"
+        "targetRoomId": "plains_moonlit_copse",
+        "description": "東側青石路越過木柵後變成野草坡，接往翠綠平原的月光小林"
       }
     ],
     "mapSymbol": "[·]",
