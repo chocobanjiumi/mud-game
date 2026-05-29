@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-29T20:16:02.151Z",
+  "generatedAt": "2026-05-29T20:18:53.984Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 503,
-    "errors": 356,
-    "warnings": 147,
+    "issues": 462,
+    "errors": 327,
+    "warnings": 135,
     "byGrade": {
       "A_main_transition": 42,
       "B_connector": 18,
-      "C_empty_filler": 92,
-      "D_upgrade_candidate": 191
+      "C_empty_filler": 93,
+      "D_upgrade_candidate": 190
     },
     "byPurpose": {
-      "blocker": 231,
-      "border": 223,
-      "gathering": 146,
+      "blocker": 232,
+      "border": 228,
+      "gathering": 145,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 10,
@@ -25,14 +25,14 @@
       "service": 41
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 14,
-      "description.direction": 112,
-      "description.length": 166,
-      "description.purpose": 38,
-      "description.repeated_opening": 95,
+      "dead_end.no_gameplay": 13,
+      "description.direction": 102,
+      "description.length": 153,
+      "description.purpose": 36,
+      "description.repeated_opening": 86,
       "description.terrain": 9,
       "exit.description.length": 30,
-      "exit.description.missing": 39
+      "exit.description.missing": 33
     }
   },
   "zones": [
@@ -15388,7 +15388,7 @@
       "zoneId": "thundersteppe",
       "zoneName": "雷鳴草原",
       "fillRooms": 13,
-      "issues": 41,
+      "issues": 0,
       "records": [
         {
           "id": "thundersteppe_fill_10_23",
@@ -15396,6 +15396,7 @@
           "name": "雷草西緣",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
             "gathering"
           ],
           "worldX": 10,
@@ -15420,31 +15421,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 33,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_10_23",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 33,
-              "minimum": 55,
-              "text": "玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。"
-            },
-            {
-              "id": "thundersteppe_fill_10_23",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->thundersteppe_rolling_gate 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_10_24",
@@ -15452,6 +15433,7 @@
           "name": "雷雨草徑",
           "grade": "D_upgrade_candidate",
           "purposes": [
+            "border",
             "gathering"
           ],
           "worldX": 10,
@@ -15477,41 +15459,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 46,
+          "descriptionLength": 68,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_10_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 46,
-              "minimum": 55,
-              "text": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。"
-            },
-            {
-              "id": "thundersteppe_fill_10_24",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 46,
-              "minimum": 55,
-              "text": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。"
-            },
-            {
-              "id": "thundersteppe_fill_10_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->thundersteppe_thunder_pool 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_10_25",
@@ -15544,39 +15496,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 47,
+          "descriptionLength": 67,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_10_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 47,
-              "minimum": 55,
-              "text": "草坡邊還殘留幾片晶化砂殼，越往東風聲越像祭旗震動，西面回到琉璃沙丘邊界，東面則接近風祭小祠外的雷草帶。"
-            },
-            {
-              "id": "thundersteppe_fill_10_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->thundersteppe_wind_shrine 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_11_22",
           "zone": "thundersteppe",
-          "name": "雷暴通道",
-          "grade": "C_empty_filler",
+          "name": "滾雷門北封草",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 11,
           "worldY": 22,
@@ -15593,53 +15527,24 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_11_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_11_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_11_22",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_12_21",
           "zone": "thundersteppe",
-          "name": "焦痕草徑",
-          "grade": "D_upgrade_candidate",
+          "name": "雨影西北焦痕",
+          "grade": "C_empty_filler",
           "purposes": [
-            "blocker",
-            "gathering"
+            "blocker"
           ],
           "worldX": 12,
           "worldY": 21,
@@ -15656,49 +15561,21 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_12_21",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_12_21",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_12_21",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_12_25",
           "zone": "thundersteppe",
-          "name": "焦痕草徑",
+          "name": "風祠北崖焦草",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -15724,44 +15601,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 58,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_12_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_12_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_12_25",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_14_21",
           "zone": "thundersteppe",
-          "name": "雷暴通道",
+          "name": "月沼南雷封界",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -15788,47 +15637,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_14_21",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_14_21",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_14_21",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_14_25",
           "zone": "thundersteppe",
-          "name": "雷暴通道",
-          "grade": "C_empty_filler",
+          "name": "雷針南封草場",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "gathering"
           ],
           "worldX": 14,
           "worldY": 25,
@@ -15845,53 +15667,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 62,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_14_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_14_25",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_14_25",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_15_24",
           "zone": "thundersteppe",
-          "name": "焦痕草徑",
-          "grade": "D_upgrade_candidate",
+          "name": "天火台西南焦坡",
+          "grade": "C_empty_filler",
           "purposes": [
             "blocker",
-            "gathering"
+            "border"
           ],
           "worldX": 15,
           "worldY": 24,
@@ -15909,53 +15703,25 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_15_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 55,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_15_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 55,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_15_24",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_17_22",
           "zone": "thundersteppe",
-          "name": "焦痕草徑",
-          "grade": "D_upgrade_candidate",
+          "name": "龍 storm 眼西封痕",
+          "grade": "C_empty_filler",
           "purposes": [
             "blocker",
-            "gathering"
+            "border"
           ],
           "worldX": 17,
           "worldY": 22,
@@ -15972,49 +15738,21 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": true,
+          "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_17_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_17_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 55,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_17_22",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_20_22",
           "zone": "thundersteppe",
-          "name": "雷鳴草坡",
+          "name": "灰門西雷草坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -16042,55 +15780,19 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 16,
+          "descriptionLength": 65,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_20_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 16,
-              "minimum": 65,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_20_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 16,
-              "minimum": 65,
-              "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-            },
-            {
-              "id": "thundersteppe_fill_20_22",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ember_march_ash_gate 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "thundersteppe_fill_20_22",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_20_23",
           "zone": "thundersteppe",
-          "name": "雷暴通道",
+          "name": "東界燒哨雷路",
           "grade": "A_main_transition",
           "purposes": [
+            "blocker",
             "border"
           ],
           "worldX": 20,
@@ -16099,7 +15801,8 @@
           "mapY": 2,
           "neighbors": {
             "byExit": {
-              "east": "ember_march_burnt_watchpost"
+              "east": "ember_march_burnt_watchpost",
+              "west": ""
             },
             "byCoordinate": {
               "north": "thundersteppe_fill_20_22",
@@ -16115,64 +15818,17 @@
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 21,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_20_23",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-            },
-            {
-              "id": "thundersteppe_fill_20_23",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-            },
-            {
-              "id": "thundersteppe_fill_20_23",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 21,
-              "minimum": 65,
-              "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-            },
-            {
-              "id": "thundersteppe_fill_20_23",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "thundersteppe_fill_20_23",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ember_march_burnt_watchpost 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 66,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "thundersteppe_fill_20_24",
           "zone": "thundersteppe",
-          "name": "雷原草地",
+          "name": "玻灰東界草地",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -16200,48 +15856,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 21,
+          "descriptionLength": 69,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "thundersteppe_fill_20_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 21,
-              "minimum": 65,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_20_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 21,
-              "minimum": 65,
-              "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-            },
-            {
-              "id": "thundersteppe_fill_20_24",
-              "zone": "thundersteppe",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit east->ember_march_glass_ash_field 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "thundersteppe_fill_20_24",
-              "zone": "thundersteppe",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         }
       ]
     },
@@ -20978,317 +20597,6 @@
       "text": "風暴高原上的危險小路，狂風幾乎能把人吹下懸崖。"
     },
     {
-      "id": "thundersteppe_fill_10_23",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 33,
-      "minimum": 55,
-      "text": "玻璃砂路東端的沙丘逐漸變矮，草葉從砂面冒出，遠處可聽見雷鳴草原的銅鈴聲。"
-    },
-    {
-      "id": "thundersteppe_fill_10_23",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->thundersteppe_rolling_gate 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "thundersteppe_fill_10_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 46,
-      "minimum": 55,
-      "text": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。"
-    },
-    {
-      "id": "thundersteppe_fill_10_24",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 46,
-      "minimum": 55,
-      "text": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。"
-    },
-    {
-      "id": "thundersteppe_fill_10_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->thundersteppe_thunder_pool 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "thundersteppe_fill_10_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 47,
-      "minimum": 55,
-      "text": "草坡邊還殘留幾片晶化砂殼，越往東風聲越像祭旗震動，西面回到琉璃沙丘邊界，東面則接近風祭小祠外的雷草帶。"
-    },
-    {
-      "id": "thundersteppe_fill_10_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->thundersteppe_wind_shrine 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "thundersteppe_fill_11_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_11_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_12_21",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_12_21",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_12_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_12_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_14_21",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_14_21",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_14_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_14_25",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_15_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 55,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_15_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 55,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_17_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_17_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 55,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_20_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 16,
-      "minimum": 65,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_20_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 16,
-      "minimum": 65,
-      "text": "雷暴草原的開闊通道，烏雲在頭頂翻滾。"
-    },
-    {
-      "id": "thundersteppe_fill_20_22",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ember_march_ash_gate 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "thundersteppe_fill_20_23",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-    },
-    {
-      "id": "thundersteppe_fill_20_23",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-    },
-    {
-      "id": "thundersteppe_fill_20_23",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 21,
-      "minimum": 65,
-      "text": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。"
-    },
-    {
-      "id": "thundersteppe_fill_20_23",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "thundersteppe_fill_20_23",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ember_march_burnt_watchpost 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "thundersteppe_fill_20_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 21,
-      "minimum": 65,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_20_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 21,
-      "minimum": 65,
-      "text": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。"
-    },
-    {
-      "id": "thundersteppe_fill_20_24",
-      "zone": "thundersteppe",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit east->ember_march_glass_ash_field 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
       "id": "underground_city_lantern_bridge",
       "zone": "underground_city",
       "severity": "error",
@@ -22377,69 +21685,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_11_22",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_12_25",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_14_25",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_17_22",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_20_22",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_12_21",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_14_21",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_15_24",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "thundersteppe_fill_20_24",
-      "zone": "thundersteppe",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "whispering_valley_fill_n3_8",

@@ -1379,11 +1379,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_10_23",
     "name": "雷草西緣",
     "zone": "thundersteppe",
-    "description": "雷鳴草原西緣的草葉從玻璃砂縫裡冒出，腳下泥土帶著微弱電光，西側仍能看見琉璃沙丘，東側銅鈴聲引向雷原入口。",
+    "description": "雷草西緣位於琉璃沙丘與雷鳴草原交界，西側玻璃砂逐漸被濕草根壓住，東面滾雷門的銅鈴在風裡晃動。草葉間有雷露草採集痕，這裡是西側 gathering route，讓玩家從沙地踏入草原。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "thundersteppe_rolling_gate"
+        "targetRoomId": "thundersteppe_rolling_gate",
+        "description": "東側沿帶電草根前往滾雷門入口"
       }
     ],
     "mapSymbol": "[·]",
@@ -1396,11 +1397,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_10_24",
     "name": "雷雨草徑",
     "zone": "thundersteppe",
-    "description": "低草徑被雷雨打得濕亮，殘留玻璃砂在草根間閃光，西側乾熱沙風逐漸退去，東側水洼上方聚著雷鳴草原的烏雲。",
+    "description": "雷雨草徑被短暴雨打得濕亮，北面雷草西緣還殘留玻璃砂，南面風祭草坡有祭旗聲，東側雷池水洼冒著藍白火花。草根旁可採雷露草與帶電泥粒，這裡是正式採集邊界。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "thundersteppe_thunder_pool"
+        "targetRoomId": "thundersteppe_thunder_pool",
+        "description": "東側踩過濕亮草徑，抵達雷池水洼"
       }
     ],
     "mapSymbol": "[·]",
@@ -1413,11 +1415,12 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "thundersteppe_fill_10_25",
     "name": "風祭草坡",
     "zone": "thundersteppe",
-    "description": "草坡邊還殘留幾片晶化砂殼，越往東風聲越像祭旗震動，西面回到琉璃沙丘邊界，東面則接近風祭小祠外的雷草帶。",
+    "description": "風祭草坡位於雷鳴草原西南側，北面雷雨草徑積著淺水，東面風祭小祠的旗繩拍打木柱。坡腳仍有晶化砂殼與雷草種子採集點，這裡是 border gathering route，標示沙丘與草原的南端交界。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "thundersteppe_wind_shrine"
+        "targetRoomId": "thundersteppe_wind_shrine",
+        "description": "東側順著祭旗風聲走向風祭小祠"
       }
     ],
     "mapSymbol": "[·]",
@@ -4058,9 +4061,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_11_22": {
     "id": "thundersteppe_fill_11_22",
-    "name": "雷暴通道",
+    "name": "滾雷門北封草",
     "zone": "thundersteppe",
-    "description": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+    "description": "滾雷門北封草在草原西北側隆起，南面滾雷門的木樁仍有焦黑痕，東面野豬奔道被長草遮住。雷雲壓低後草尖放電，這裡是封閉 blocker，不提供通行或採集互動。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4070,9 +4073,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_12_21": {
     "id": "thundersteppe_fill_12_21",
-    "name": "焦痕草徑",
+    "name": "雨影西北焦痕",
     "zone": "thundersteppe",
-    "description": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+    "description": "雨影西北焦痕貼著野豬奔道北側，南面草叢被踩成泥線，東側雨影溝的乾風切過草面。焦土裡有雷擊草灰採集點，但裂縫太密，這裡是 gathering blocker，不能繼續穿越。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4082,9 +4085,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_12_25": {
     "id": "thundersteppe_fill_12_25",
-    "name": "焦痕草徑",
+    "name": "風祠北崖焦草",
     "zone": "thundersteppe",
-    "description": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+    "description": "風祠北崖焦草在風祭小祠西北方抬高，北側鷹巢棲木露出崖影，西面小祠旗繩仍能聽見。焦草根部有可採雷種與羽片，但崖面斷裂，這裡是採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4094,9 +4097,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_14_21": {
     "id": "thundersteppe_fill_14_21",
-    "name": "雷暴通道",
+    "name": "月沼南雷封界",
     "zone": "thundersteppe",
-    "description": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+    "description": "月沼南雷封界位於雷鳴草原北緣，北面月光濕地的深水霧氣被雷風推回，南側狼崖草線變得焦黑，西面雨影溝聲音低沉。這裡是 border blocker，雷溝斷開濕地與草原，不開新路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4106,9 +4109,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_14_25": {
     "id": "thundersteppe_fill_14_25",
-    "name": "雷暴通道",
+    "name": "雷針南封草場",
     "zone": "thundersteppe",
-    "description": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+    "description": "雷針南封草場在避雷針田南側展開，北面鐵針尖端仍有藍火跳動，東面鷹巢峰的岩影壓到草坡。草場中央被雷擊成黑圈，這格是封閉 blocker，不安排採集或戰鬥。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4118,9 +4121,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_15_24": {
     "id": "thundersteppe_fill_15_24",
-    "name": "焦痕草徑",
+    "name": "天火台西南焦坡",
     "zone": "thundersteppe",
-    "description": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+    "description": "天火台西南焦坡位於天火台南側，北面石台仍冒著熱氣，西側避雷針田的鐵影排列成線，南面鷹巢峰草坡更陡。焦土邊有雷擊草灰採集點，這裡是 gathering blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -4130,9 +4133,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_17_22": {
     "id": "thundersteppe_fill_17_22",
-    "name": "焦痕草徑",
+    "name": "龍 storm 眼西封痕",
     "zone": "thundersteppe",
-    "description": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+    "description": "龍 storm 眼西封痕貼近雷龍風眼北側，南面草面被旋風壓成圓環，西側雷蹄渡口的泥線斷在焦土前。黑草根能採到少量雷灰，但風壓阻斷道路，這裡是採集 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -4142,13 +4145,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_20_22": {
     "id": "thundersteppe_fill_20_22",
-    "name": "雷鳴草坡",
+    "name": "灰門西雷草坡",
     "zone": "thundersteppe",
-    "description": "雷暴草原的開闊通道，烏雲在頭頂翻滾。",
+    "description": "灰門西雷草坡位於雷鳴草原東北界，南側東界雷路通往燒焦哨站，東面餘燼邊境灰門冒出熱風。草坡上有雷草與灰燼種子採集點，這裡是 border gathering route，銜接草原與焦土邊界。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ember_march_ash_gate"
+        "targetRoomId": "ember_march_ash_gate",
+        "description": "東側穿過帶電草坡與熱灰風，抵達餘燼邊境灰門"
       }
     ],
     "mapSymbol": "[·]",
@@ -4159,13 +4163,20 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_20_23": {
     "id": "thundersteppe_fill_20_23",
-    "name": "雷暴通道",
+    "name": "東界燒哨雷路",
     "zone": "thundersteppe",
-    "description": "草原上被雷擊焦黑的小徑，空氣中帶著臭氧的味道。",
+    "description": "東界燒哨雷路是雷鳴草原通往餘燼邊境的主邊界，北側灰門草坡仍有雷草，南面玻灰草地泛著紅光，東側燒焦哨站旗杆冒煙。這裡是 border route，西側雷溝封住回切草原內圈。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ember_march_burnt_watchpost"
+        "targetRoomId": "ember_march_burnt_watchpost",
+        "description": "東側穿過臭氧與熱灰交界，抵達餘燼邊境燒焦哨站"
+      },
+      {
+        "direction": "west",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "西側雷溝連續放電，不能從邊界路回切草原內圈"
       }
     ],
     "mapSymbol": "[·]",
@@ -4176,13 +4187,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "thundersteppe_fill_20_24": {
     "id": "thundersteppe_fill_20_24",
-    "name": "雷原草地",
+    "name": "玻灰東界草地",
     "zone": "thundersteppe",
-    "description": "雷鳴草原上的焦黑草地，閃電留下的痕跡遍布四周。",
+    "description": "玻灰東界草地位於雷鳴草原東南界，北面燒哨雷路有焦旗煙，東側餘燼邊境的玻灰原反射紅光。草地裡有雷草與玻灰碎片採集點，這裡是 border gathering route，標示兩區地貌交界與採集邊界。",
     "exits": [
       {
         "direction": "east",
-        "targetRoomId": "ember_march_glass_ash_field"
+        "targetRoomId": "ember_march_glass_ash_field",
+        "description": "東側穿過帶電草根與紅色灰風，接上餘燼邊境玻灰原"
       }
     ],
     "mapSymbol": "[·]",
