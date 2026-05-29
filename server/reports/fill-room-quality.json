@@ -1,35 +1,35 @@
 {
-  "generatedAt": "2026-05-29T20:57:51.782Z",
+  "generatedAt": "2026-05-29T21:01:02.934Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 81,
-    "errors": 63,
-    "warnings": 18,
+    "issues": 68,
+    "errors": 58,
+    "warnings": 10,
     "byGrade": {
       "A_main_transition": 31,
       "B_connector": 17,
-      "C_empty_filler": 77,
-      "D_upgrade_candidate": 218
+      "C_empty_filler": 75,
+      "D_upgrade_candidate": 220
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 270,
-      "gathering": 157,
+      "border": 271,
+      "gathering": 158,
       "monster": 30,
       "npc_or_quest": 22,
       "portal": 15,
       "route": 69,
-      "service": 66
+      "service": 67
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 1,
       "description.direction": 19,
-      "description.length": 32,
-      "description.purpose": 7,
-      "description.repeated_opening": 10,
+      "description.length": 27,
+      "description.purpose": 3,
+      "description.repeated_opening": 6,
       "description.terrain": 3,
       "exit.description.length": 4,
       "exit.description.missing": 5
@@ -9601,12 +9601,12 @@
       "zoneId": "saltwind_flats",
       "zoneName": "鹽風灘",
       "fillRooms": 5,
-      "issues": 13,
+      "issues": 0,
       "records": [
         {
           "id": "saltwind_flats_fill_31_10",
           "zone": "saltwind_flats",
-          "name": "濕熱沙道",
+          "name": "競技長廊東鹽封灘",
           "grade": "A_main_transition",
           "purposes": [
             "blocker",
@@ -9633,44 +9633,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "saltwind_flats_fill_31_10",
-              "zone": "saltwind_flats",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_31_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 65,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_31_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "saltwind_flats_fill_32_7",
           "zone": "saltwind_flats",
-          "name": "濕熱沙道",
+          "name": "白紋灘北蟹痕封",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -9696,48 +9668,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 59,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "saltwind_flats_fill_32_7",
-              "zone": "saltwind_flats",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_32_7",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_32_7",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "saltwind_flats_fill_33_10",
           "zone": "saltwind_flats",
-          "name": "灘地通道",
-          "grade": "C_empty_filler",
+          "name": "海盜盲點西玻鹽封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "service"
           ],
           "worldX": 33,
           "worldY": 10,
@@ -9757,46 +9702,18 @@
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "saltwind_flats_fill_33_10",
-              "zone": "saltwind_flats",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_33_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_33_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "saltwind_flats_fill_36_10",
           "zone": "saltwind_flats",
-          "name": "鹽結晶路",
+          "name": "鹵眼西鹽晶採封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -9823,47 +9740,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 56,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "saltwind_flats_fill_36_10",
-              "zone": "saltwind_flats",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_36_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 22,
-              "minimum": 55,
-              "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-            },
-            {
-              "id": "saltwind_flats_fill_36_10",
-              "zone": "saltwind_flats",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "saltwind_flats_fill_37_8",
           "zone": "saltwind_flats",
-          "name": "濕熱沙道",
-          "grade": "C_empty_filler",
+          "name": "潮望遺跡北熱沙封",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 37,
           "worldY": 8,
@@ -9880,27 +9771,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 60,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "saltwind_flats_fill_37_8",
-              "zone": "saltwind_flats",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過鹽風灘的通道，熱氣從地面蒸騰而上。"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -14287,96 +14167,6 @@
       "text": "月光草線東接白鹿林"
     },
     {
-      "id": "saltwind_flats_fill_31_10",
-      "zone": "saltwind_flats",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_31_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 65,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_32_7",
-      "zone": "saltwind_flats",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_32_7",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_33_10",
-      "zone": "saltwind_flats",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_33_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_36_10",
-      "zone": "saltwind_flats",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_36_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 22,
-      "minimum": 55,
-      "text": "鹽結晶覆蓋的灘地邊緣，遠處海面泛著不自然的白光。"
-    },
-    {
-      "id": "saltwind_flats_fill_37_8",
-      "zone": "saltwind_flats",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過鹽風灘的通道，熱氣從地面蒸騰而上。"
-    },
-    {
       "id": "starter_village_fill_1_3",
       "zone": "starter_village",
       "severity": "error",
@@ -14651,34 +14441,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "saltwind_flats_fill_31_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "saltwind_flats_fill_32_7",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "saltwind_flats_fill_33_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "saltwind_flats_fill_36_10",
-      "zone": "saltwind_flats",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 4 個 fill room 使用相同描述開頭，需避免模板句"
     }
   ]
 }
