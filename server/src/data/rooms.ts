@@ -5382,6 +5382,10 @@ const EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'pilgrim_road_old_cemetery_turn:east': '東側沿舊墓園白石路轉入湖霧，接往藍寶湖入口宣示石',
   'pilgrim_road_final_marker:east': '東側穿過終點聖碑旁碎石路與濕草坡，接往藍寶湖鵝卵石堰',
   'saltwind_flats_blue_mud_shelf:north': '北側沿藍泥潮棚與鹽草淺溝上行，接往東方海岸南側濕沙邊界',
+  'dwarf_mine:north': '北側穿過礦坑排水口與火山岩壁裂縫，接往蛇河三角洲矮礦北口泥岸',
+  'volcano_ash_field:north': '北側沿白色蒸氣與硬殼熱灰坡上行，接往北灰坡路線端',
+  'volcano_ash_field:west': '西側穿過黑灰丘與熱風灰線，接往餘燼邊境火山灰田西界',
+  'volcano_sulfur_springs:west': '西側越過硫磺白霧與發熱礫石，接往餘燼邊境硫泉西界燼路',
 };
 for (const [key, description] of Object.entries(EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

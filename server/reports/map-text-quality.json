@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:39:04.036Z",
+  "generatedAt": "2026-05-29T21:40:28.841Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,10 +366,10 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 44
+    "issues": 40
   },
   "issuesByKind": {
-    "exit.description": 26,
+    "exit.description": 22,
     "room.description": 18
   },
   "issues": [
@@ -390,42 +390,6 @@
       "minimumLength": 12,
       "text": "",
       "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "volcano_zone/dwarf_mine:north->serpent_delta_fill_33_20",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "volcano_zone/volcano_ash_field:north->volcano_zone_fill_31_20",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "volcano_zone/volcano_ash_field:west->ember_march_fill_30_21",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
-    },
-    {
-      "id": "volcano_zone/volcano_sulfur_springs:west->ember_march_fill_30_23",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 20,
-      "text": "",
-      "reason": "跨 zone exit 描述需說明地貌銜接"
     },
     {
       "id": "plains/plains_moonlit_copse:west->starter_village_fill_6_3",
