@@ -1958,7 +1958,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'windmill_farm.png',
     imagePrompt: '風車農場 in plains, resource farm room with windmill, wheat field, fences, golden light and bandit shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '高大風車立在金黃麥田中央，木葉片推動齒輪發出低沉咔嗒聲，麥穗在夕光裡像潮水一樣搖晃。西路回到平原入口，南門通向風車內部，東邊生鏽礦車道消失在草丘後。柵欄旁有被撬開的穀倉鎖與凌亂腳印，農夫低聲抱怨盜賊夜裡出沒，提示這裡兼具補給、資源與小規模戰鬥事件。',
+      '高大風車立在金黃麥田中央，木葉片推動齒輪發出低沉咔嗒聲，麥穗在夕光裡像潮水一樣搖晃。西路回到平原入口，南門通向風車內部，東邊生鏽礦車道消失在草丘後。柵欄旁有被撬開的穀倉鎖、凌亂腳印與敵人巡邏痕跡，農夫低聲抱怨盜賊夜裡出沒，提示這裡兼具補給、資源與小規模戰鬥事件。',
     exits: [
       { direction: 'west', targetRoomId: 'plains_entrance', description: '回到平原入口' },
       { direction: 'north', targetRoomId: 'hunter_lodge', description: '北側獵人小屋通往風車內部', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2566,7 +2566,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響，陽光在水面碎成萬千金色的碎片。' +
       '溪邊的鵝卵石被水流打磨得光滑圓潤，水草在溪底輕輕搖擺，魚苗在石縫間穿梭。' +
-      '幾隻綠史萊姆在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
+      '幾隻綠史萊姆怪物在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
       '微風送來泥土和青草的清新氣息，偶爾傳來村婦在上游洗衣的捶打聲。',
     exits: [
       { direction: 'north', targetRoomId: 'village_backhill', description: '沿小路回到後山', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2761,7 +2761,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '一條蜿蜒的泥土小路連接著村莊和外圍區域，路旁的野花隨風搖曳。' +
       '路面上有大小不一的腳印，看得出來常有野生動物經過。' +
-      '這裡是前往墓地和瞭望台的必經之路。北面回農田，南方鐵門通向墓地，東邊可回村口；玩家可 inspect 大樹下的石堆，追蹤田鼠、烏鴉與可疑腳印。',
+      '這裡是前往墓地和瞭望台的必經之路。北面回農田，南方鐵門通向墓地，東邊可回村口；玩家可 inspect 大樹下的石堆，追蹤田鼠怪物、烏鴉伏擊與可疑腳印。',
     exits: [
       {
         direction: 'north',
@@ -2829,7 +2829,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_old_mill_path.png',
     imagePrompt: '舊磨坊小徑 in starter_village_ext, main route room with abandoned mill wheel, muddy track, grain sacks and slanting morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一條泥濘小徑沿著農田灌渠延伸到舊磨坊，半塌的水車仍被溪水推得吱呀作響，空氣裡有潮木和舊麥粉味。西側回農田，東面可到蛙鳴池，南邊灰煙指向炭窯。路旁散落破麻袋與田鼠腳印，玩家可 search 水車底部尋找丟失麥袋，也可能驚動躲在糧袋裡的田鼠。',
+      '一條泥濘小徑沿著農田灌渠延伸到舊磨坊，半塌的水車仍被溪水推得吱呀作響，空氣裡有潮木和舊麥粉味。西側回農田，東面可到蛙鳴池，南邊灰煙指向炭窯。路旁散落破麻袋與田鼠怪物腳印，玩家可 search 水車底部尋找丟失麥袋，也可能驚動躲在糧袋裡的鼠群。',
     exits: [
       {
         direction: 'west',
@@ -2903,7 +2903,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_frog_pond.png',
     imagePrompt: '蛙鳴池 in starter_village_ext, resource combat pond with reeds, lily pads, slime bubbles and cool blue reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。玩家可釣魚、採集濕地材料，或 inspect 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。',
+      '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆怪物留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。玩家可釣魚、採集濕地材料，或 inspect 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。',
     exits: [
       { direction: 'east', targetRoomId: 'village_outskirts', description: '東側木樁小徑回到村外小路' },
       { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '北側泥徑回到舊磨坊小徑' },

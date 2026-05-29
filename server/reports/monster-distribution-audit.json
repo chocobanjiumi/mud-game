@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T22:08:47.967Z",
+  "generatedAt": "2026-05-29T22:12:18.308Z",
   "summary": {
     "rooms": 992,
     "zones": 34,
@@ -10,13 +10,13 @@
     "lowZoneHighMonsterIssues": 0,
     "adjacentLevelSpikeIssues": 6,
     "terrainFamilyMismatchIssues": 186,
-    "issues": 249,
+    "issues": 231,
     "errors": 7,
-    "warnings": 242,
+    "warnings": 224,
     "accepted": 0,
     "byIssueKind": {
       "safe_room.has_monsters": 7,
-      "monster_cue.missing": 47,
+      "monster_cue.missing": 29,
       "zone_level.out_of_range": 3,
       "adjacent.level_spike": 6,
       "terrain_family.mismatch": 186
@@ -512,7 +512,7 @@
         "plant",
         "undead"
       ],
-      "issueCount": 8,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -563,7 +563,7 @@
         "humanoid",
         "ooze"
       ],
-      "issueCount": 5,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -778,7 +778,7 @@
         "plant",
         "undead"
       ],
-      "issueCount": 4,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -887,7 +887,7 @@
         "insect",
         "ooze"
       ],
-      "issueCount": 1,
+      "issueCount": 0,
       "highSeverityIssueCount": 0
     },
     {
@@ -3188,9 +3188,7 @@
         "green_slime",
         "creek_mossling_slime"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "starter_village_ext_fill_3_n6",
@@ -3376,9 +3374,7 @@
       "monsterIds": [
         "field_rat"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "village_farmland",
@@ -3604,9 +3600,7 @@
         "green_slime",
         "creek_mossling_slime"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "village_outskirts",
@@ -3620,9 +3614,7 @@
         "green_slime",
         "field_rat"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "starter_ext_training_clearing",
@@ -4050,9 +4042,7 @@
         "ditch_sludge",
         "green_slime"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_granary",
@@ -4079,9 +4069,7 @@
         "barn_rat_swarm",
         "ditch_sludge"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "starter_village_hidden_cellar",
@@ -4150,9 +4138,7 @@
         "wild_rabbit",
         "field_rat"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "windmill_interior",
@@ -4166,9 +4152,7 @@
         "field_rat",
         "dark_crow"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "plains_fill_11_0",
@@ -4383,9 +4367,7 @@
         "mildew_harvestling",
         "dark_crow"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_collapsed_barn",
@@ -4427,9 +4409,7 @@
         "barn_rat_swarm",
         "ditch_sludge"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_fill_n4_1",
@@ -4856,9 +4836,7 @@
         "straw_watchman",
         "dark_crow"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_pumpkin_patch",
@@ -5035,9 +5013,7 @@
       "monsterIds": [
         "bandit"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "abandoned_minecart",
@@ -5364,9 +5340,7 @@
         "ditch_sludge",
         "barn_rat_swarm"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_fill_n6_3",
@@ -5563,9 +5537,7 @@
         "bandit",
         "goblin_scout"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "lakeside_town_fill_15_3",
@@ -5837,9 +5809,7 @@
         "straw_watchman",
         "dark_crow"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_fill_n6_4",
@@ -5864,9 +5834,7 @@
         "wild_wolf",
         "straw_watchman"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "old_farmland_fill_n4_4",
@@ -5954,9 +5922,7 @@
         "wild_wolf",
         "prairie_boar"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "plains_fill_11_4",
@@ -6602,9 +6568,7 @@
         "forest_spider",
         "ice_fern_weaver"
       ],
-      "issueKinds": [
-        "monster_cue.missing"
-      ]
+      "issueKinds": []
     },
     {
       "roomId": "pilgrim_road_fill_8_6",
@@ -35547,7 +35511,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_beehive_rows",
@@ -36145,7 +36109,7 @@
       ],
       "hasElite": true,
       "hasBoss": true,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_irrigation_channel",
@@ -36197,7 +36161,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_mildew_orchard",
@@ -36367,7 +36331,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_pumpkin_patch",
@@ -36526,7 +36490,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_scarecrow_watch",
@@ -36579,7 +36543,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_stone_marker",
@@ -36632,7 +36596,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_toolshed",
@@ -36685,7 +36649,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "old_farmland_well",
@@ -38236,7 +38200,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "plains_broken_bridge",
@@ -38288,7 +38252,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "plains_entrance",
@@ -38912,7 +38876,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "sunflower_field",
@@ -39005,7 +38969,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "windmill_interior",
@@ -39057,7 +39021,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "redrock_badlands_ambush_canyon",
@@ -47668,7 +47632,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "starter_ext_herb_garden",
@@ -47814,7 +47778,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "starter_ext_root_cellar",
@@ -48268,7 +48232,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "village_farmland",
@@ -48414,7 +48378,7 @@
       ],
       "hasElite": false,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "watchtower",
@@ -53417,7 +53381,7 @@
       ],
       "hasElite": true,
       "hasBoss": false,
-      "descriptionHasMonsterCue": false
+      "descriptionHasMonsterCue": true
     },
     {
       "roomId": "whispering_valley_wolf_den",
@@ -55138,189 +55102,6 @@
       }
     },
     {
-      "id": "old_farmland/old_farmland_abandoned_farmhouse/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_abandoned_farmhouse",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "barn_rat_swarm",
-          "ditch_sludge"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_harvest_circle/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_harvest_circle",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "harvest_wight",
-          "straw_watchman",
-          "dark_crow"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_irrigation_channel/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_irrigation_channel",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "ditch_sludge",
-          "green_slime"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_overgrown_field/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_overgrown_field",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "barn_rat_swarm",
-          "mildew_harvestling",
-          "dark_crow"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_root_cellar/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_root_cellar",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "ditch_sludge",
-          "barn_rat_swarm"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_scarecrow_watch/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_scarecrow_watch",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "straw_watchman",
-          "dark_crow"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_stone_marker/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_stone_marker",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "wild_wolf",
-          "straw_watchman"
-        ]
-      }
-    },
-    {
-      "id": "old_farmland/old_farmland_toolshed/monster_cue.missing",
-      "zoneId": "old_farmland",
-      "roomId": "old_farmland_toolshed",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "barn_rat_swarm",
-          "ditch_sludge"
-        ]
-      }
-    },
-    {
-      "id": "plains/plains_bandit_hideout/monster_cue.missing",
-      "zoneId": "plains",
-      "roomId": "plains_bandit_hideout",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "bandit",
-          "goblin_scout"
-        ]
-      }
-    },
-    {
-      "id": "plains/plains_broken_bridge/monster_cue.missing",
-      "zoneId": "plains",
-      "roomId": "plains_broken_bridge",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "wild_wolf",
-          "prairie_boar"
-        ]
-      }
-    },
-    {
-      "id": "plains/riverside_fishing/monster_cue.missing",
-      "zoneId": "plains",
-      "roomId": "riverside_fishing",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "wild_rabbit",
-          "field_rat"
-        ]
-      }
-    },
-    {
-      "id": "plains/windmill_farm/monster_cue.missing",
-      "zoneId": "plains",
-      "roomId": "windmill_farm",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "bandit"
-        ]
-      }
-    },
-    {
-      "id": "plains/windmill_interior/monster_cue.missing",
-      "zoneId": "plains",
-      "roomId": "windmill_interior",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "field_rat",
-          "dark_crow"
-        ]
-      }
-    },
-    {
       "id": "redrock_badlands/redrock_badlands_rock_giant_perch/monster_cue.missing",
       "zoneId": "redrock_badlands",
       "roomId": "redrock_badlands_rock_giant_perch",
@@ -55331,61 +55112,6 @@
         "monsterIds": [
           "red_ore_golem",
           "redscale_viper"
-        ]
-      }
-    },
-    {
-      "id": "starter_village_ext/starter_ext_frog_pond/monster_cue.missing",
-      "zoneId": "starter_village_ext",
-      "roomId": "starter_ext_frog_pond",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "green_slime",
-          "creek_mossling_slime"
-        ]
-      }
-    },
-    {
-      "id": "starter_village_ext/starter_ext_old_mill_path/monster_cue.missing",
-      "zoneId": "starter_village_ext",
-      "roomId": "starter_ext_old_mill_path",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "field_rat"
-        ]
-      }
-    },
-    {
-      "id": "starter_village_ext/village_creek/monster_cue.missing",
-      "zoneId": "starter_village_ext",
-      "roomId": "village_creek",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "green_slime",
-          "creek_mossling_slime"
-        ]
-      }
-    },
-    {
-      "id": "starter_village_ext/village_outskirts/monster_cue.missing",
-      "zoneId": "starter_village_ext",
-      "roomId": "village_outskirts",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "green_slime",
-          "field_rat"
         ]
       }
     },
@@ -55472,20 +55198,6 @@
           "rock_giant",
           "flame_spirit",
           "lava_colossus"
-        ]
-      }
-    },
-    {
-      "id": "whispering_valley/whispering_valley_willow_camp/monster_cue.missing",
-      "zoneId": "whispering_valley",
-      "roomId": "whispering_valley_willow_camp",
-      "severity": "warning",
-      "kind": "monster_cue.missing",
-      "message": "有怪房 description 缺少怪物痕跡或遭遇提示",
-      "details": {
-        "monsterIds": [
-          "forest_spider",
-          "ice_fern_weaver"
         ]
       }
     },

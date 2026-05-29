@@ -109,7 +109,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'riverside_fishing.png',
     imagePrompt: '河邊釣場 in plains, resource fishing room with clear stream, willow trees, flat stones, cool reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示玩家能採集、釣魚或追蹤被沖來的旅人遺物。',
+      '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠怪物拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示玩家能採集、釣魚或追蹤被沖來的旅人遺物。',
     exits: [
       { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'windmill_interior', description: '東側河邊釣場沿濕滑河岸繞過水車溝渠，穿過石板小徑才進入風車內部', edgeKind: 'distant_route', edgeNote: '河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。' },
@@ -135,7 +135,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'windmill_interior.png',
     imagePrompt: '風車內部 in plains, resource interior room with gears, millstone, flour dust, narrow sunbeams, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝。',
+      '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠怪物拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝伏擊。',
     exits: [
       { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'distant_route', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'hunter_lodge', description: '南側獵人小屋通往風車農場' },
@@ -216,7 +216,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'plains_bandit_hideout.png',
     imagePrompt: '盜賊藏身處 in plains, elite combat room with canvas lean-to, stolen crates, campfire smoke, dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain plains, clear lantern light',
     description:
-      '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，往斷橋的撤退腳印也先折回藥草坡再下行。箱子上刻著農場印記，提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
+      '幾頂破帆布棚藏在麥田南側的矮丘後，煙灰、酒瓶和偷來的穀袋散落一地，濕木柴冒出刺鼻黑煙。北方可回廢棄礦車道，西邊通往風車農場背後的藥草坡，往斷橋的撤退腳印也先折回藥草坡再下行。箱子上刻著農場印記，敵人巡邏痕跡提示玩家這裡與風車農場失竊事件相關，戰鬥後可仔細搜查贓物與盜賊留下的線索。',
     exits: [
       {
         direction: 'north',
@@ -325,7 +325,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'plains_broken_bridge.png',
     imagePrompt: '斷木橋 in plains, main route event room with collapsed bridge, creek, muddy tracks and stormy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain plains, clear lantern light',
     description:
-      '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬蹄印和拖行箱子的痕跡。北邊是藥草斜坡，西邊十字路口的路標露出半截，往盜賊藏身處的腳印會先回到北側斜坡再轉東。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
+      '小溪上的木橋斷成兩截，濕木板卡在水流中發出沉悶撞擊聲，橋頭泥地滿是盜賊靴印、野豬怪物蹄印和拖行箱子的痕跡。北邊是藥草斜坡，西邊十字路口的路標露出半截，往盜賊藏身處的腳印會先回到北側斜坡再轉東。斷橋雖阻路，旁邊倒木形成可繞行的危險捷徑，提示玩家可調查事件、判斷路線或在戰鬥中撤回較安全道路。',
     exits: [
       { direction: 'north', targetRoomId: 'plains_herb_slope', description: '回到藥草斜坡' },
       {
@@ -3914,7 +3914,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_overgrown_field.png',
     imagePrompt: '荒草麥田 in old_farmland, overgrown wheat rows, tall weeds, rat holes, broken irrigation stakes and grey morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，玩家能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。',
+      '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠怪物洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，玩家能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -3969,7 +3969,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_scarecrow_watch.png',
     imagePrompt: '稻草人看守地 in old_farmland, eerie scarecrow in tall wheat, crow feathers, patched coat, dusk field and hidden rat holes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain field, clear lantern light',
     description:
-      '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人腳下有許多被啄開的田鼠洞和亮晶晶的小物，玩家若搜索可找到作物種子，也可能驚動盤旋的黑鴉群。',
+      '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人怪物腳下有許多被啄開的田鼠洞和亮晶晶的小物，玩家若搜索可找到作物種子，也可能驚動盤旋的黑鴉群。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4191,7 +4191,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_irrigation_channel.png',
     imagePrompt: '乾涸灌溉渠 in old_farmland, cracked irrigation channel with weeds, slime puddles, wooden sluice and muddy banks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的拖痕，表示史萊姆和田鼠都把這裡當成安全通道。玩家若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。',
+      '灌溉渠原本把井水送往整片農場，如今大半乾涸，只剩幾處綠色水窪和裂開木閘。渠底的泥土留下不同方向的怪物拖痕，表示史萊姆和田鼠都把這裡當成安全通道。玩家若修好木閘，可以讓水流重新接到南瓜地與果園，也可能把躲在水窪中的史萊姆一起沖出來。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_rat_ditch', description: '水溝堵塞處在西邊' },
       {
@@ -4224,7 +4224,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_abandoned_farmhouse.png',
     imagePrompt: '荒廢農舍 in old_farmland, abandoned farmhouse with sagging porch, dusty table, broken windows and creeping vines, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
+      '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠怪物咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -4290,7 +4290,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_toolshed.png',
     imagePrompt: '破工具棚 in old_farmland, broken toolshed with rusty hoes, saws, seed boxes, cracked lantern and dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '小糧倉東側的工具棚門板只剩一半，裡面掛著生鏽鋤頭、木柄鐮刀、破鋸和幾只標著年份的種子盒。棚頂漏雨，雨水把地面沖出小溝，卻也讓某些舊種子重新發芽。東側可看見舊車道車輪印，但木車堵住棚外岔口，需從舊農路口南側進入車道。這裡適合放置修理、採集與任務道具，工具箱旁有史萊姆怪物黏痕與鼠群咬印，玩家若能找齊工具，也許能重開灌溉渠或修復農場捷徑。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_granary', description: '回到小糧倉' },
       { direction: 'south', targetRoomId: 'old_farmland_fill_n4_1', description: '南側廢棄農道通往破雞舍' },
@@ -4341,7 +4341,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_root_cellar.png',
     imagePrompt: '地下根窖 in old_farmland, underground root cellar with shelves, turnips, creeping roots, damp lantern light and slime puddles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain root, clear lantern light',
     description:
-      '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
+      '農舍地板下的根窖陰冷潮濕，木架上擺著乾癟蘿蔔、馬鈴薯和幾罐封蠟食物。根鬚從牆縫鑽入，把架子纏成歪斜牢籠，地面水窪裡漂著綠色黏液與怪物滑行痕。根窖深處有通往南瓜地的低矮土洞，也藏著農夫一家離開前留下的密封箱。這裡兼具探索、資源與小型危險事件。',
     exits: [
       {
         direction: 'east',
@@ -4426,7 +4426,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_stone_marker.png',
     imagePrompt: '舊石界碑 in old_farmland, ancient boundary stone wrapped in roots, faded harvest runes, pasture wind and crow shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
-      '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。東側能望見月光牧草地，北側倒伏草痕指向收成圓陣，但界碑周圍根鬚封住兩條舊路，需從防風樹列或稻草人看守地繞行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
+      '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。東側能望見月光牧草地，北側倒伏草痕與野狼怪物足跡指向收成圓陣，但界碑周圍根鬚封住兩條舊路，需從防風樹列或稻草人看守地繞行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -4451,7 +4451,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'old_farmland_harvest_circle.png',
     imagePrompt: '收成圓陣 in old_farmland, eerie crop circle of wheat and pumpkins, old harvest runes, scarecrow shadows and moonlit soil, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
+      '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣，亡靈怪物的冷霧貼著麥穗流動。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
     exits: [
       { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -4719,7 +4719,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     image: 'whispering_valley_willow_camp.png',
     imagePrompt: '柳樹營地 in whispering_valley, small camp under willow trees, cold fire pit, bedroll, ranger supplies and creek mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain camp, clear lantern light',
     description:
-      '冷泉北側有一處臨時營地，幾棵柳樹把枝條垂成天然簾幕，冷掉的火坑旁放著巡林人的舊背包和簡易草藥架。營地看似安全，卻有被匆忙翻找過的痕跡，地上留下朝蜘蛛洞方向的拖痕。玩家可在此取得任務線索、補給或休息資訊，也能通往山谷東側支線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '冷泉北側有一處臨時營地，幾棵柳樹把枝條垂成天然簾幕，冷掉的火坑旁放著巡林人的舊背包和簡易草藥架。營地看似安全，卻有被匆忙翻找過的痕跡，地上留下朝蜘蛛洞方向的怪物拖痕。玩家可在此取得任務線索、補給或休息資訊，也能通往山谷東側支線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       {
         direction: 'west',
