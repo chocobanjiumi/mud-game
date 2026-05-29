@@ -1747,11 +1747,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "starter_village_crafting_shed",
-    "east",
-    "starter_village_stable_yard"
-  ],
-  [
-    "starter_village_crafting_shed",
     "west",
     "weapon_shop"
   ],
@@ -1761,29 +1756,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "starter_village_portal_shrine"
   ],
   [
-    "starter_village_market_lane",
-    "south",
-    "starter_village_stable_yard"
-  ],
-  [
     "starter_village_portal_shrine",
     "east",
     "starter_village_guard_post"
-  ],
-  [
-    "starter_village_portal_shrine",
-    "west",
-    "starter_village_river_stairs"
-  ],
-  [
-    "starter_village_river_stairs",
-    "east",
-    "starter_village_portal_shrine"
-  ],
-  [
-    "starter_village_stable_yard",
-    "north",
-    "starter_village_market_lane"
   ],
   [
     "starter_village_stable_yard",

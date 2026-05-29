@@ -1707,7 +1707,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村口，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
     exits: [
-      { direction: 'west', targetRoomId: 'starter_village_river_stairs', description: '低地小徑回到溪畔石階' },
+      { direction: 'west', targetRoomId: 'starter_village_fill_1_3', description: '低地小徑通往溪畔石階' },
       { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方' },
     ],
     mapSymbol: '[O]',
@@ -1726,7 +1726,7 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'weapon_shop', description: '西側市場石路穿過攤棚與木箱堆，繞過鐵匠煤煙後抵達武器店前門', edgeKind: 'long_path', edgeNote: '市場小巷到武器店需穿過攤棚與貨箱，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'starter_village_chapel', description: '北側市場雨棚沿祈願紙與石階上行，避開攤販燈火回到晨光禮拜堂', edgeKind: 'long_path', edgeNote: '市場小巷北側回禮拜堂要穿過雨棚與石階，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'starter_village_stable_yard', description: '馬廄院在南邊' },
+      { direction: 'south', targetRoomId: 'starter_village_crafting_shed', description: '南側修補工棚通往馬廄院' },
     ],
     mapSymbol: '[M]',
     mapX: 4,
@@ -1743,8 +1743,8 @@ export const ROOMS: Record<string, RoomDef> = {
       '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示玩家能從掉落材料、採集資源和工匠服務逐步改善初期裝備。',
     exits: [
       { direction: 'west', targetRoomId: 'weapon_shop', description: '回到武器店前廳' },
-      { direction: 'south', targetRoomId: 'training_ground', description: '南側工棚後門穿過木屑、磨刀架與短牆缺口，繞到訓練場北邊空地邊緣', edgeKind: 'long_path', edgeNote: '修補工棚到訓練場需穿過後門與短牆缺口，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'starter_village_stable_yard', description: '小門外是馬廄院' },
+      { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '北側攤棚燈火回到市場小巷' },
+      { direction: 'south', targetRoomId: 'starter_village_stable_yard', description: '南側小門外是馬廄院' },
     ],
     mapSymbol: '[F]',
     mapX: 4,
@@ -1814,7 +1814,7 @@ export const ROOMS: Record<string, RoomDef> = {
       '溪畔石階沿著村內小溪下降，濕石上長著細苔，蘆葦在水邊沙沙作響，遠處橋下偶爾閃過銀色魚影。北邊回到古井小路，東方可通往傳送祠堂附近的低地。水聲遮住村內喧鬧，地上有小型足跡和被沖來的破布，提示玩家這裡可能藏著採集、釣魚或追蹤任務的早期線索。石階末端有半沉的小木箱與斷裂魚線，暗示死路也可能有可調查物；溪流方向清楚指向東側低地，讓玩家能用水聲辨認通往祠堂的繞路，並注意濕滑石面上的新鮮痕跡。水面倒影也能看見上方古井的輪廓，階梯旁還刻著提醒慢行的舊字。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_well_path', description: '石階上方是古井小路' },
-      { direction: 'east', targetRoomId: 'starter_village_portal_shrine', description: '沿低地小徑可繞到傳送祠堂' },
+      { direction: 'east', targetRoomId: 'starter_village_fill_1_3', description: '沿低地小徑可繞到傳送祠堂' },
     ],
     mapSymbol: '[R]',
     mapX: 0,
@@ -1847,7 +1847,7 @@ export const ROOMS: Record<string, RoomDef> = {
     description:
       '馬廄院裡堆著乾草、木桶與尚未修好的車輪，泥地被馬蹄踩出深淺不一的水坑，油燈掛在橫梁下緩慢晃動。北方連到市場小巷，西側是修補工棚，南邊屋頂棧道投下細長陰影。牆上釘著運送路線與村外風險標記，暗示交通、背包負重和區域解鎖會影響玩家能否安全移動。',
     exits: [
-      { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '市場小巷在北側' },
+      { direction: 'north', targetRoomId: 'starter_village_crafting_shed', description: '北側修補工棚接回市場小巷' },
       { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊' },
       { direction: 'south', targetRoomId: 'starter_village_rooftop_walk', description: '南側馬廄木階穿過乾草棚與車輪架，沿屋簷陰影接上屋頂棧道入口', edgeKind: 'long_path', edgeNote: '馬廄院到屋頂棧道需穿過乾草棚與車輪架，實際路程長於相鄰一格。' },
     ],

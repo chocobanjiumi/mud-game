@@ -3753,7 +3753,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "民宅通道",
     "zone": "starter_village",
     "description": "鋪著青石板的安靜小路，兩旁是低矮的木柵欄。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "starter_village_river_stairs",
+        "description": "低地小徑西返溪畔石階"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "starter_village_portal_shrine",
+        "description": "低地小徑東接傳送祠堂"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 1,
     "mapY": 3,
