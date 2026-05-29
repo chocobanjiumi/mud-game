@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-29T20:18:53.984Z",
+  "generatedAt": "2026-05-29T20:21:29.546Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 462,
-    "errors": 327,
-    "warnings": 135,
+    "issues": 424,
+    "errors": 301,
+    "warnings": 123,
     "byGrade": {
-      "A_main_transition": 42,
+      "A_main_transition": 41,
       "B_connector": 18,
       "C_empty_filler": 93,
-      "D_upgrade_candidate": 190
+      "D_upgrade_candidate": 191
     },
     "byPurpose": {
       "blocker": 232,
-      "border": 228,
-      "gathering": 145,
+      "border": 229,
+      "gathering": 146,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 10,
@@ -26,12 +26,12 @@
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 13,
-      "description.direction": 102,
-      "description.length": 153,
-      "description.purpose": 36,
-      "description.repeated_opening": 86,
-      "description.terrain": 9,
-      "exit.description.length": 30,
+      "description.direction": 99,
+      "description.length": 143,
+      "description.purpose": 33,
+      "description.repeated_opening": 77,
+      "description.terrain": 6,
+      "exit.description.length": 20,
       "exit.description.missing": 33
     }
   },
@@ -10951,12 +10951,12 @@
       "zoneId": "redrock_badlands",
       "zoneName": "赤岩荒地",
       "fillRooms": 10,
-      "issues": 38,
+      "issues": 0,
       "records": [
         {
           "id": "redrock_badlands_fill_n3_20",
           "zone": "redrock_badlands",
-          "name": "紅岩邊道",
+          "name": "火口流亡熱裂道",
           "grade": "B_connector",
           "purposes": [
             "border",
@@ -10986,64 +10986,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 63,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n3_20",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n3_20",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n3_20",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit north->redrock_badlands_scarlet_crater description 中文字數不足",
-              "current": 10,
-              "minimum": 12,
-              "text": "熱裂邊道北上猩紅火口"
-            },
-            {
-              "id": "redrock_badlands_fill_n3_20",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit south->redrock_badlands_exile_den description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "熱裂邊道南返流放者洞穴"
-            },
-            {
-              "id": "redrock_badlands_fill_n3_20",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n4_19",
           "zone": "redrock_badlands",
-          "name": "紅岩邊道",
+          "name": "猩紅裂光西路",
           "grade": "A_main_transition",
           "purposes": [
             "border",
@@ -11074,54 +11026,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 73,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n4_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->redrock_badlands_scarlet_crater description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "赤色裂光路東接猩紅火口"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_19",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n4_23",
           "zone": "redrock_badlands",
-          "name": "紅岩邊道",
+          "name": "決鬥東刻痕路",
           "grade": "B_connector",
           "purposes": [
             "border",
@@ -11151,64 +11065,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 63,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n4_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_23",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->redrock_badlands_fill_n5_23 description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "刻痕路西行通往回聲拱岩"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->redrock_badlands_duel_stones description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "刻痕路東返決鬥石圈"
-            },
-            {
-              "id": "redrock_badlands_fill_n4_23",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n5_19",
           "zone": "redrock_badlands",
-          "name": "赤岩小路",
+          "name": "熔蟲東熱裂道",
           "grade": "B_connector",
           "purposes": [
             "border",
@@ -11238,49 +11104,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 63,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n5_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n5_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 55,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n5_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->redrock_badlands_lava_worm_sink description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "地下熱道西返熔岩蟲陷坑"
-            },
-            {
-              "id": "redrock_badlands_fill_n5_19",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n5_23",
@@ -11314,47 +11142,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 24,
+          "descriptionLength": 62,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n5_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 24,
-              "minimum": 55,
-              "text": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。"
-            },
-            {
-              "id": "redrock_badlands_fill_n5_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->redrock_badlands_fill_n6_23 description 中文字數不足",
-              "current": 11,
-              "minimum": 12,
-              "text": "刻痕路西行靠近回聲拱岩"
-            },
-            {
-              "id": "redrock_badlands_fill_n5_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->redrock_badlands_fill_n4_23 description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "刻痕路東返決鬥石圈"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n6_21",
           "zone": "redrock_badlands",
-          "name": "紅岩邊道",
+          "name": "乾谷中央封裂",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -11382,44 +11179,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n6_21",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_21",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_21",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n6_23",
           "zone": "redrock_badlands",
-          "name": "荒地通道",
+          "name": "回聲拱東乾谷",
           "grade": "B_connector",
           "purposes": [
             "route"
@@ -11449,68 +11218,21 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 17,
+          "descriptionLength": 61,
           "exitCount": 2,
           "missingExitDescriptions": 0,
-          "shortExitDescriptions": 2,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n6_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_23",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 17,
-              "minimum": 55,
-              "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit west->redrock_badlands_echo_arch description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "刻痕路西抵回聲拱岩"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_23",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "exit.description.length",
-              "message": "exit east->redrock_badlands_fill_n5_23 description 中文字數不足",
-              "current": 9,
-              "minimum": 12,
-              "text": "刻痕路東返決鬥石圈"
-            },
-            {
-              "id": "redrock_badlands_fill_n6_23",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n7_19",
           "zone": "redrock_badlands",
-          "name": "乾谷石道",
-          "grade": "A_main_transition",
+          "name": "墓門東側斷谷",
+          "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "border"
+            "border",
+            "gathering"
           ],
           "worldX": -7,
           "worldY": 19,
@@ -11525,52 +11247,24 @@
             }
           },
           "crossZoneBoundary": true,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 68,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n7_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 65,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n7_19",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.terrain",
-              "message": "description 缺少明確地形或建築主體",
-              "current": 20,
-              "minimum": 65,
-              "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-            },
-            {
-              "id": "redrock_badlands_fill_n7_19",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n7_24",
           "zone": "redrock_badlands",
-          "name": "紅岩邊道",
+          "name": "回聲南封紅壁",
           "grade": "C_empty_filler",
           "purposes": [
             "blocker",
@@ -11596,47 +11290,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 61,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n7_24",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n7_24",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n7_24",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "redrock_badlands_fill_n8_21",
           "zone": "redrock_badlands",
-          "name": "荒地通道",
+          "name": "沙門北封溝",
           "grade": "C_empty_filler",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border"
           ],
           "worldX": -8,
           "worldY": 21,
@@ -11658,39 +11325,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 63,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "redrock_badlands_fill_n8_21",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n8_21",
-              "zone": "redrock_badlands",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-            },
-            {
-              "id": "redrock_badlands_fill_n8_21",
-              "zone": "redrock_badlands",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -19385,296 +19024,6 @@
       "text": "平原上的泥土小路，遠處能看見風車的剪影。"
     },
     {
-      "id": "redrock_badlands_fill_n3_20",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n3_20",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n3_20",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit north->redrock_badlands_scarlet_crater description 中文字數不足",
-      "current": 10,
-      "minimum": 12,
-      "text": "熱裂邊道北上猩紅火口"
-    },
-    {
-      "id": "redrock_badlands_fill_n3_20",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit south->redrock_badlands_exile_den description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "熱裂邊道南返流放者洞穴"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->redrock_badlands_scarlet_crater description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "赤色裂光路東接猩紅火口"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_23",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->redrock_badlands_fill_n5_23 description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "刻痕路西行通往回聲拱岩"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->redrock_badlands_duel_stones description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "刻痕路東返決鬥石圈"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 55,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->redrock_badlands_lava_worm_sink description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "地下熱道西返熔岩蟲陷坑"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 24,
-      "minimum": 55,
-      "text": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->redrock_badlands_fill_n6_23 description 中文字數不足",
-      "current": 11,
-      "minimum": 12,
-      "text": "刻痕路西行靠近回聲拱岩"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->redrock_badlands_fill_n4_23 description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "刻痕路東返決鬥石圈"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_21",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_21",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_23",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 17,
-      "minimum": 55,
-      "text": "穿過乾谷的石道，烈日炙烤著每一塊岩石。"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit west->redrock_badlands_echo_arch description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "刻痕路西抵回聲拱岩"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_23",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "exit.description.length",
-      "message": "exit east->redrock_badlands_fill_n5_23 description 中文字數不足",
-      "current": 9,
-      "minimum": 12,
-      "text": "刻痕路東返決鬥石圈"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 65,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_19",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.terrain",
-      "message": "description 缺少明確地形或建築主體",
-      "current": 20,
-      "minimum": 65,
-      "text": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_24",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_24",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
-      "id": "redrock_badlands_fill_n8_21",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
-      "id": "redrock_badlands_fill_n8_21",
-      "zone": "redrock_badlands",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。"
-    },
-    {
       "id": "royal_hunting_grounds_fill_n5_n5",
       "zone": "royal_hunting_grounds",
       "severity": "error",
@@ -21503,69 +20852,6 @@
       "severity": "warning",
       "kind": "description.repeated_opening",
       "message": "同 zone 有 5 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n3_20",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_23",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_23",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n4_19",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n5_19",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_19",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n6_21",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n7_24",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "redrock_badlands_fill_n8_21",
-      "zone": "redrock_badlands",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 3 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "saltwind_flats_fill_31_10",

@@ -2978,19 +2978,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n3_20": {
     "id": "redrock_badlands_fill_n3_20",
-    "name": "紅岩邊道",
+    "name": "火口流亡熱裂道",
     "zone": "redrock_badlands",
-    "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+    "description": "火口流亡熱裂道位於猩紅火口南側，北面赤紅 crater 邊緣冒著熱霧，南面流亡者洞穴的陰影貼著乾谷。這裡是正式 border route，用來串接火口與流亡洞，不放怪物或採集互動。",
     "exits": [
       {
         "direction": "north",
         "targetRoomId": "redrock_badlands_scarlet_crater",
-        "description": "熱裂邊道北上猩紅火口"
+        "description": "北側沿發熱裂縫爬上猩紅火口外圈"
       },
       {
         "direction": "south",
         "targetRoomId": "redrock_badlands_exile_den",
-        "description": "熱裂邊道南返流放者洞穴"
+        "description": "南側順著乾谷陰影回到流亡者洞穴"
       }
     ],
     "mapSymbol": "[·]",
@@ -3001,19 +3001,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n4_19": {
     "id": "redrock_badlands_fill_n4_19",
-    "name": "紅岩邊道",
+    "name": "猩紅裂光西路",
     "zone": "redrock_badlands",
-    "description": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+    "description": "猩紅裂光西路位於紅岩荒地北緣，北面暗林邊界的陰影被熱浪推開，南側伏擊峽谷有砂塵盤旋，東面猩紅火口照亮裂石。這裡是 border route，串接熔岩蟲陷坑與火口外緣，不提供北側跨林捷徑。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "redrock_badlands_fill_n5_19",
-        "description": "赤色裂光路西返熔岩蟲陷坑"
+        "description": "西側沿赤色裂光石道返回熔岩蟲陷坑"
       },
       {
         "direction": "east",
         "targetRoomId": "redrock_badlands_scarlet_crater",
-        "description": "赤色裂光路東接猩紅火口"
+        "description": "東側踩過冒熱氣的裂石接上猩紅火口"
       }
     ],
     "mapSymbol": "[·]",
@@ -3024,19 +3024,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n4_23": {
     "id": "redrock_badlands_fill_n4_23",
-    "name": "紅岩邊道",
+    "name": "決鬥東刻痕路",
     "zone": "redrock_badlands",
-    "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+    "description": "決鬥東刻痕路貼著決鬥石圈西側，北面盜匪營地旗布在熱風裡拍打，西面刻痕路繼續通往回聲拱岩。這裡是正式 border route，用紅岩刻線引導玩家在兩處地標間移動。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "redrock_badlands_fill_n5_23",
-        "description": "刻痕路西行通往回聲拱岩"
+        "description": "西側沿白色刻痕路走向回聲拱岩方向"
       },
       {
         "direction": "east",
         "targetRoomId": "redrock_badlands_duel_stones",
-        "description": "刻痕路東返決鬥石圈"
+        "description": "東側踏過紅岩碎石返回決鬥石圈"
       }
     ],
     "mapSymbol": "[·]",
@@ -3047,19 +3047,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n5_19": {
     "id": "redrock_badlands_fill_n5_19",
-    "name": "赤岩小路",
+    "name": "熔蟲東熱裂道",
     "zone": "redrock_badlands",
-    "description": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+    "description": "熔蟲東熱裂道位於熔岩蟲陷坑東側，西面坑壁有焦黑鑽痕，南側火靈盆地吹來硫味，東面裂光路接向猩紅火口。這裡是 border route，路面穩定但不安排額外採集或敵人。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "redrock_badlands_lava_worm_sink",
-        "description": "地下熱道西返熔岩蟲陷坑"
+        "description": "西側沿地下熱氣回到熔岩蟲陷坑"
       },
       {
         "direction": "east",
         "targetRoomId": "redrock_badlands_fill_n4_19",
-        "description": "地下熱道東接猩紅火口外緣"
+        "description": "東側穿過赤岩裂縫接往猩紅火口外緣"
       }
     ],
     "mapSymbol": "[·]",
@@ -3070,9 +3070,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n6_21": {
     "id": "redrock_badlands_fill_n6_21",
-    "name": "紅岩邊道",
+    "name": "乾谷中央封裂",
     "zone": "redrock_badlands",
-    "description": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+    "description": "乾谷中央封裂位於紅岩荒地腹地，北側毒蛇平地的草皮被熱風吹焦，南面碎脊岩線斷成尖刺，東側紅礦切口泛著鐵鏽光。裂縫深處沒有踏點，這裡是 border blocker，不提供通行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -3084,17 +3084,17 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "redrock_badlands_fill_n5_23",
     "name": "決鬥刻痕路",
     "zone": "redrock_badlands",
-    "description": "決鬥石圈西側的紅岩刻痕路，風沙在石面上留下細長白線。",
+    "description": "決鬥刻痕路位於盜匪瞭望點南側，東面紅岩刻線指回決鬥石圈，西面乾谷石路逐漸靠近回聲拱岩。這是正式 route，路面只有風沙和刻痕，不放採集或額外遭遇。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "redrock_badlands_fill_n6_23",
-        "description": "刻痕路西行靠近回聲拱岩"
+        "description": "西側沿被風磨白的刻痕靠近回聲拱岩"
       },
       {
         "direction": "east",
         "targetRoomId": "redrock_badlands_fill_n4_23",
-        "description": "刻痕路東返決鬥石圈"
+        "description": "東側循紅岩刻線返回決鬥石圈方向"
       }
     ],
     "mapSymbol": "[·]",
@@ -3105,19 +3105,19 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n6_23": {
     "id": "redrock_badlands_fill_n6_23",
-    "name": "荒地通道",
+    "name": "回聲拱東乾谷",
     "zone": "redrock_badlands",
-    "description": "穿過乾谷的石道，烈日炙烤著每一塊岩石。",
+    "description": "回聲拱東乾谷位於回聲拱岩東側，北面碎脊坡有落石聲，南面黑旗瞭望台的旗影在熱風裡扭曲。這裡是正式 route，把回聲拱岩與決鬥刻痕路連成逐格通道。",
     "exits": [
       {
         "direction": "west",
         "targetRoomId": "redrock_badlands_echo_arch",
-        "description": "刻痕路西抵回聲拱岩"
+        "description": "西側沿乾谷回音走到回聲拱岩下"
       },
       {
         "direction": "east",
         "targetRoomId": "redrock_badlands_fill_n5_23",
-        "description": "刻痕路東返決鬥石圈"
+        "description": "東側穿過紅砂窄道返回決鬥刻痕路"
       }
     ],
     "mapSymbol": "[·]",
@@ -3128,9 +3128,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n7_19": {
     "id": "redrock_badlands_fill_n7_19",
-    "name": "乾谷石道",
+    "name": "墓門東側斷谷",
     "zone": "redrock_badlands",
-    "description": "荒地邊緣的碎石通道，地面裂開的縫隙冒出熱氣。",
+    "description": "墓門東側斷谷位於紅岩荒地西北邊界，西面詛咒墓園鐵門透出腐土冷氣，東側熔岩蟲陷坑的熱風把碎石吹紅，南面餘燼泉泛著暗光。斷谷落差過深，是 border blocker，只標示墓園方向。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -3140,9 +3140,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n7_24": {
     "id": "redrock_badlands_fill_n7_24",
-    "name": "紅岩邊道",
+    "name": "回聲南封紅壁",
     "zone": "redrock_badlands",
-    "description": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+    "description": "回聲南封紅壁位於回聲拱岩南側，北面仍能聽見拱洞回音，東側黑旗瞭望台的木架露出尖角。紅壁下方全是鬆散砂石與斷層，這裡是 border blocker，不提供南側繞路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -3152,9 +3152,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "redrock_badlands_fill_n8_21": {
     "id": "redrock_badlands_fill_n8_21",
-    "name": "荒地通道",
+    "name": "沙門北封溝",
     "zone": "redrock_badlands",
-    "description": "赤岩荒地中的乾燥小路，紅色的砂塵隨風飛揚。",
+    "description": "沙門北封溝貼著紅岩荒地西側，南面塵沙門的木框半埋在紅砂裡，東側乾谷風帶著鐵鏽味吹來。溝底被落石堵死，這裡是封閉 blocker，提醒玩家改走正式乾谷路線。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
