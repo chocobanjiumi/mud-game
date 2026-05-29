@@ -4239,7 +4239,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "風口通道",
     "zone": "wildgrass_hills",
     "description": "荒草覆蓋的丘陵斜坡，強風吹得人站不穩腳。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "wildgrass_hills_old_road_cut",
+        "description": "風口通道西返舊路切口"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "wildgrass_hills_stream_cut",
+        "description": "風口通道東接溪切溝"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 1,
     "mapY": 0,
@@ -4263,7 +4274,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "野草坡地",
     "zone": "wildgrass_hills",
     "description": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "wildgrass_hills_broken_totem",
+        "description": "野草坡地西返斷圖騰"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "wildgrass_hills_fill_4_n8",
+        "description": "野草坡地東往風暴草冠"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 2,
     "mapY": 4,
@@ -4282,12 +4304,46 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "worldX": 4,
     "worldY": -12
   },
+  "wildgrass_hills_fill_4_n8": {
+    "id": "wildgrass_hills_fill_4_n8",
+    "name": "斷旗坡道",
+    "zone": "wildgrass_hills",
+    "description": "斷旗坡道夾在圖騰丘與風暴草冠之間，乾草被高處強風吹成一層層波紋。",
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "wildgrass_hills_fill_3_n8",
+        "description": "斷旗坡道西返斷圖騰"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "wildgrass_hills_fill_5_n8",
+        "description": "斷旗坡道東往風暴草冠"
+      }
+    ],
+    "mapSymbol": "[·]",
+    "mapX": 3,
+    "mapY": 4,
+    "worldX": 4,
+    "worldY": -8
+  },
   "wildgrass_hills_fill_5_n8": {
     "id": "wildgrass_hills_fill_5_n8",
     "name": "丘陵小路",
     "zone": "wildgrass_hills",
     "description": "丘陵間的碎石小路，視野開闊但無處遮蔽。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "west",
+        "targetRoomId": "wildgrass_hills_fill_4_n8",
+        "description": "丘陵小路西返斷圖騰"
+      },
+      {
+        "direction": "east",
+        "targetRoomId": "wildgrass_hills_stormgrass_crown",
+        "description": "丘陵小路東抵風暴草冠"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 4,
     "mapY": 4,

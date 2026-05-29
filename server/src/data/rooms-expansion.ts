@@ -5923,7 +5923,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         edgeKind: 'long_path',
         edgeNote: '溪切溝回高草徑需要沿踏石爬坡並穿過高草走廊，屬於丘陵內長路徑。',
       },
-      { direction: 'west', targetRoomId: 'wildgrass_hills_old_road_cut', description: '溪溝轉向舊路切口' },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_fill_2_n12', description: '溪溝沿風口通道轉向舊路切口' },
       {
         direction: 'east',
         targetRoomId: 'wildgrass_hills_hidden_spring',
@@ -6241,6 +6241,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉' },
       { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_fill_3_n8', description: '東側斷旗坡道通往風暴草冠' },
     ],
     monsters: [
       { monsterId: 'stormbanner_champion', maxCount: 1, respawnSeconds: 120 },
@@ -6299,14 +6300,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '酋長脊東端升到荒草丘陵最高處，整片草冠被狂風壓成巨大旋渦，像一頂不停轉動的金色王冠。中央立著幾塊古老界石，石縫間有雷痕、草籽和被綁住的部落旗。當雲層低垂時，風會在草冠中心形成肉眼可見的漏斗，將聲音、灰燼與羽毛全捲向天空。界石底部還有被草根纏住的舊祭盤，盤面刻著安撫風暴的步驟，只是關鍵符號被哥布林刀痕刮壞。這裡是荒草丘陵的大型事件鉤子與最終地標，玩家可用守風誓詞安撫風暴，也可擊敗首領後拆除旗幟，讓丘陵巡邏失去統一指揮。若選擇強行採集雷草，整片草冠會引來猛禽與殘餘戰士。',
     exits: [
-      { direction: 'west', targetRoomId: 'wildgrass_hills_chief_ridge', description: '山脊回到酋長營地' },
       {
-        direction: 'south',
-        targetRoomId: 'wildgrass_hills_broken_totem',
-        description: '南側草脊要穿過旋風草冠邊緣、界石陰影與斷旗坡道，才折回斷圖騰',
+        direction: 'north',
+        targetRoomId: 'wildgrass_hills_chief_ridge',
+        description: '北側山脊沿旗索與斜坡繞回酋長營地',
         edgeKind: 'long_path',
-        edgeNote: '風暴草冠到斷圖騰需要穿過旋風草冠邊緣、界石與斷旗坡道，屬於丘陵內長路徑。',
+        edgeNote: '風暴草冠回酋長脊需沿斜向山脊與旗索坡道繞行，屬於丘陵內長路徑。',
       },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_fill_5_n8', description: '西側草脊穿過界石陰影回往斷圖騰' },
     ],
     monsters: [
       { monsterId: 'thunder_mound_shaman', maxCount: 1, respawnSeconds: 150 },
@@ -6333,7 +6334,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '防風柵門南側有一段被溪水和車輪切出的舊路，路面低於草坡，兩側土壁露出層層壓實的輪轍。半倒里程碑標著通往西境村落的方向，旁邊還有商隊臨時修車留下的鐵釘與木楔。這裡是荒草丘陵的撤離與捷徑交通房，玩家可從溪切溝繞回入口，也能在完成酋長脊事件後護送旅人離開。雖然比主坡安全，舊路仍會被流竄野獸利用；若忽視土壁上的新爪痕，回程也可能遭遇伏擊。',
     exits: [
       { direction: 'north', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '坡上是防風柵門' },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_stream_cut', description: '溪溝連向高草徑下方' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_fill_2_n12', description: '東側風口通道連向溪切溝' },
     ],
     monsters: [
       { monsterId: 'stormgrass_serpent', maxCount: 1, respawnSeconds: 75 },

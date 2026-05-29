@@ -2002,11 +2002,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "wildgrass_hills_old_road_cut",
-    "east",
-    "wildgrass_hills_stream_cut"
-  ],
-  [
-    "wildgrass_hills_old_road_cut",
     "north",
     "wildgrass_hills_windbreak_gate"
   ],
@@ -2037,13 +2032,8 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
   ],
   [
     "wildgrass_hills_stormgrass_crown",
-    "west",
+    "north",
     "wildgrass_hills_chief_ridge"
-  ],
-  [
-    "wildgrass_hills_stream_cut",
-    "west",
-    "wildgrass_hills_old_road_cut"
   ],
   [
     "wildgrass_hills_tallgrass_lane",

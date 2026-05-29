@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-05-29T19:07:00.107Z",
+  "generatedAt": "2026-05-29T19:10:29.994Z",
   "counts": {
     "zones": 60,
-    "rooms": 1514,
+    "rooms": 1515,
     "crossZoneConnections": 37,
     "crossZoneExits": 133,
     "worldZones": 31,
@@ -319,7 +319,7 @@
         "anchor": "北側丘陵",
         "terrainRole": "草丘與風口，作為新手外圍往山區、高地的等級過渡。"
       },
-      "roomCount": 28,
+      "roomCount": 29,
       "bounds": {
         "minX": 0,
         "maxX": 5,
@@ -2515,7 +2515,6 @@
     "wildgrass_hills_bent_oak:east->wildgrass_hills_seed_gully (long_path) 彎橡樹到種籽溝需要繞過根盤與避風草溝，屬於丘陵內長路徑。",
     "wildgrass_hills_bent_oak:north->wildgrass_hills_hidden_spring (long_path) 彎橡樹到隱泉需要沿濕草暗渠與碎石遮蔽繞行，屬於丘陵內長路徑。",
     "wildgrass_hills_stream_cut:north->wildgrass_hills_tallgrass_lane (long_path) 溪切溝回高草徑需要沿踏石爬坡並穿過高草走廊，屬於丘陵內長路徑。",
-    "wildgrass_hills_stream_cut:west->wildgrass_hills_old_road_cut (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "wildgrass_hills_stream_cut:east->wildgrass_hills_hidden_spring (long_path) 溪切溝到隱泉需要逆流穿過蘆葦、滑石與暗溝，屬於丘陵內長路徑。",
     "wildgrass_hills_hawk_perch:south->wildgrass_hills_boar_wallow (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "wildgrass_hills_stone_ring:south->wildgrass_hills_scout_ledge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
@@ -2535,10 +2534,8 @@
     "wildgrass_hills_broken_totem:south->wildgrass_hills_seed_gully (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "wildgrass_hills_chief_ridge:south->wildgrass_hills_windmill_shell (long_path) 酋長脊回風車空殼需要沿暴露山脊下行並攀回塔後繩梯，屬於丘陵內長路徑。",
     "wildgrass_hills_chief_ridge:east->wildgrass_hills_stormgrass_crown (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "wildgrass_hills_stormgrass_crown:west->wildgrass_hills_chief_ridge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "wildgrass_hills_stormgrass_crown:south->wildgrass_hills_broken_totem (long_path) 風暴草冠到斷圖騰需要穿過旋風草冠邊緣、界石與斷旗坡道，屬於丘陵內長路徑。",
+    "wildgrass_hills_stormgrass_crown:north->wildgrass_hills_chief_ridge (long_path) 風暴草冠回酋長脊需沿斜向山脊與旗索坡道繞行，屬於丘陵內長路徑。",
     "wildgrass_hills_old_road_cut:north->wildgrass_hills_windbreak_gate (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "wildgrass_hills_old_road_cut:east->wildgrass_hills_stream_cut (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "mist_harbor_fog_gate:south->mist_harbor_sea_gate (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "mist_harbor_tide_plaza:north->mist_harbor_portal_lantern (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "mist_harbor_tide_plaza:south->mist_harbor_customs_house (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
