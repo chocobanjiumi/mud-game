@@ -1271,11 +1271,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "mist_harbor_customs_house"
   ],
   [
-    "moonlit_fen_blackwater_run",
-    "north",
-    "sapphire_lake_fill_18_13"
-  ],
-  [
     "moonlit_fen_dreamwater_core",
     "east",
     "marsh_of_mirrors_fill_24_15"
@@ -1306,19 +1301,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "moonlit_fen_fishing_cut"
   ],
   [
-    "moonlit_fen_old_canoe_camp",
-    "north",
-    "sapphire_lake_fill_20_13"
-  ],
-  [
     "moonlit_fen_reed_gate",
     "north",
     "moonlit_fen_firefly_pool"
-  ],
-  [
-    "moonlit_fen_sunken_log_bridge",
-    "north",
-    "sapphire_lake_fill_19_13"
   ],
   [
     "mountain_camp",
@@ -1814,21 +1799,6 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "sapphire_lake_entry_claim",
     "north",
     "sapphire_lake_lantern_dock"
-  ],
-  [
-    "sapphire_lake_fill_18_13",
-    "south",
-    "moonlit_fen_blackwater_run"
-  ],
-  [
-    "sapphire_lake_fill_19_13",
-    "south",
-    "moonlit_fen_sunken_log_bridge"
-  ],
-  [
-    "sapphire_lake_fill_20_13",
-    "south",
-    "moonlit_fen_old_canoe_camp"
   ],
   [
     "sapphire_lake_glassfish_cove",

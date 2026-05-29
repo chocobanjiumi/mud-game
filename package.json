@@ -9,6 +9,7 @@
     "validate:content": "pnpm --filter server exec tsx ../scripts/validate-content.ts",
     "validate:mud5": "pnpm --filter server exec tsx ../scripts/validate-mud5.ts",
     "audit:room-exits": "pnpm --filter server exec tsx ../scripts/audit-room-exits.ts",
+    "audit:long-paths": "pnpm --filter server exec tsx ../scripts/audit-long-paths.ts --write",
     "audit:world-map2": "pnpm --filter server exec tsx ../scripts/audit-world-map2.ts --write",
     "audit:map-text": "pnpm --filter server exec tsx ../scripts/audit-map-text-quality.ts --write",
     "audit:quality-specs": "pnpm --filter server exec tsx ../scripts/audit-quality-specs.ts",
