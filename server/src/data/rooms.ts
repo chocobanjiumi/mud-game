@@ -4140,6 +4140,11 @@ export const ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '北側熱泉石路回到硫磺熱泉' },
       {
+        direction: 'west',
+        targetRoomId: 'ember_march_fill_30_24',
+        description: '西側熔岩橋頭越過焦黑灰道與灼熱岩脊，銜接餘燼邊境東南口',
+      },
+      {
         direction: 'east',
         targetRoomId: 'volcano_crater',
         description: '橋尾先貼著岩漿湖外圈緩慢上升，越過碎裂橋墩後才接回火山口邊緣安全處',
@@ -5310,7 +5315,7 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
   emerald_canopy_fill_n18_12: '林冠棧道在此向下傾斜，平台漸漸被繩梯與朽木階梯取代，腳下透過板隙能看見遠處幽暗的林地。',
   emerald_canopy_fill_n18_13: '一座繞著古樹主幹盤旋而下的螺旋木梯，從明亮的翠色樹冠漸入鄰近暗林的陰翳灌木層。',
   // 蛇河三角洲南緣 → 火山過渡
-  volcano_zone_fill_31_20: '三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。',
+  volcano_zone_fill_31_20: '北灰坡路線端位在火山地帶北緣，北面蛇河三角洲的濕泥被熱灰烤成硬殼，南側火山灰原冒出白色蒸氣。這裡是 route 端點，提醒玩家從濕地邊界正式踏入高熱火山路線。',
   serpent_delta_fill_34_20: '架在水道上的三角洲棧道延伸至南方熔爐區，空氣中瀰漫著鐵鏽與硫磺的氣味，熱浪撲面而來。',
   serpent_delta_fill_35_20: '河防哨站設在三角洲邊界，河衛兵在此盤查往來熾燼營地的人員，南方隱約可見軍旗。',
   // 其他跨區邊界

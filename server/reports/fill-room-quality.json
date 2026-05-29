@@ -1,36 +1,34 @@
 {
-  "generatedAt": "2026-05-29T21:09:51.053Z",
+  "generatedAt": "2026-05-29T21:11:45.054Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 22,
-    "errors": 18,
-    "warnings": 4,
+    "issues": 15,
+    "errors": 13,
+    "warnings": 2,
     "byGrade": {
       "A_main_transition": 30,
       "B_connector": 16,
-      "C_empty_filler": 72,
-      "D_upgrade_candidate": 225
+      "C_empty_filler": 71,
+      "D_upgrade_candidate": 226
     },
     "byPurpose": {
-      "blocker": 235,
-      "border": 281,
-      "gathering": 163,
+      "blocker": 236,
+      "border": 283,
+      "gathering": 164,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 17,
-      "route": 69,
+      "route": 68,
       "service": 76
     },
     "byIssueKind": {
-      "dead_end.no_gameplay": 1,
-      "description.direction": 7,
-      "description.length": 7,
-      "description.purpose": 3,
-      "exit.description.length": 2,
-      "exit.description.missing": 2
+      "description.direction": 6,
+      "description.length": 5,
+      "description.purpose": 2,
+      "exit.description.length": 2
     }
   },
   "zones": [
@@ -12398,7 +12396,7 @@
       "zoneId": "volcano_zone",
       "zoneName": "火山地帶",
       "fillRooms": 5,
-      "issues": 7,
+      "issues": 0,
       "records": [
         {
           "id": "volcano_lava_bridge",
@@ -12417,9 +12415,9 @@
           "neighbors": {
             "byExit": {
               "north": "volcano_sulfur_springs",
+              "west": "ember_march_fill_30_24",
               "east": "volcano_crater",
-              "south": "volcano_basalt_steps",
-              "west": "ember_march_fill_30_24"
+              "south": "volcano_basalt_steps"
             },
             "byCoordinate": {
               "north": "volcano_sulfur_springs",
@@ -12439,19 +12437,9 @@
           "hasLockedExit": false,
           "descriptionLength": 141,
           "exitCount": 4,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "volcano_lava_bridge",
-              "zone": "volcano_zone",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit west->ember_march_fill_30_24 缺 description",
-              "current": 0,
-              "minimum": 20
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "volcano_zone_fill_31_20",
@@ -12459,7 +12447,8 @@
           "name": "火山北灰坡",
           "grade": "C_empty_filler",
           "purposes": [
-            "route"
+            "blocker",
+            "border"
           ],
           "worldX": 31,
           "worldY": 20,
@@ -12467,63 +12456,27 @@
           "mapY": 6,
           "neighbors": {
             "byExit": {
-              "south": "volcano_ash_field"
+              "south": "volcano_ash_field",
+              "north": ""
             },
             "byCoordinate": {
               "south": "volcano_ash_field"
             }
           },
           "crossZoneBoundary": false,
-          "mainRoute": true,
+          "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
           "hasGathering": false,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
-          "hasLockedExit": false,
-          "descriptionLength": 33,
-          "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "volcano_zone_fill_31_20",
-              "zone": "volcano_zone",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 33,
-              "minimum": 55,
-              "text": "三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。"
-            },
-            {
-              "id": "volcano_zone_fill_31_20",
-              "zone": "volcano_zone",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 33,
-              "minimum": 55,
-              "text": "三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。"
-            },
-            {
-              "id": "volcano_zone_fill_31_20",
-              "zone": "volcano_zone",
-              "severity": "warning",
-              "kind": "dead_end.no_gameplay",
-              "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-            },
-            {
-              "id": "volcano_zone_fill_31_20",
-              "zone": "volcano_zone",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->volcano_ash_field 缺 description",
-              "current": 0,
-              "minimum": 12
-            }
-          ]
+          "hasLockedExit": true,
+          "descriptionLength": 67,
+          "exitCount": 2,
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "volcano_zone_fill_31_22",
@@ -12605,10 +12558,12 @@
         {
           "id": "volcano_zone_fill_34_24",
           "zone": "volcano_zone",
-          "name": "噴氣口道",
-          "grade": "C_empty_filler",
+          "name": "火晶噴口西封岩",
+          "grade": "D_upgrade_candidate",
           "purposes": [
-            "blocker"
+            "blocker",
+            "border",
+            "gathering"
           ],
           "worldX": 34,
           "worldY": 24,
@@ -12626,37 +12581,16 @@
           "mainRoute": false,
           "deadEnd": true,
           "hasMonsters": false,
-          "hasGathering": false,
+          "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 20,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "volcano_zone_fill_34_24",
-              "zone": "volcano_zone",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 20,
-              "minimum": 55,
-              "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
-            },
-            {
-              "id": "volcano_zone_fill_34_24",
-              "zone": "volcano_zone",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 20,
-              "minimum": 55,
-              "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
-            }
-          ]
+          "issues": []
         }
       ]
     },
@@ -13500,71 +13434,6 @@
       "current": 185,
       "minimum": 55,
       "text": "鑲燈橋橫跨暗河上方，橋欄嵌著一排排發光礦石，光線被水面反射成綠藍色波紋，照亮對岸守備營、寶石交易所與更深處的工坊街。這裡是地下城邦重要的交通節點，也是城鎮居民判斷河水水位、蒸汽壓力和市場人潮的觀察點。玩家可以在橋上整理路線、尋找交易消息、確認守備巡邏方向，或 inspect 橋欄刻字得知哪些舊礦道已封閉。雖然城邦內屬於安全區域，橋下暗流仍提醒旅人不要把這座城市只當成商店集合；它有自己的秩序、歷史與持續運作的地下脈搏。"
-    },
-    {
-      "id": "volcano_lava_bridge",
-      "zone": "volcano_zone",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit west->ember_march_fill_30_24 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "volcano_zone_fill_31_20",
-      "zone": "volcano_zone",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 33,
-      "minimum": 55,
-      "text": "三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。"
-    },
-    {
-      "id": "volcano_zone_fill_31_20",
-      "zone": "volcano_zone",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 33,
-      "minimum": 55,
-      "text": "三角洲最南端的泥水與火山灰混為灰褐色漿泥，加熱的地面不斷冒出白色蒸氣。"
-    },
-    {
-      "id": "volcano_zone_fill_31_20",
-      "zone": "volcano_zone",
-      "severity": "warning",
-      "kind": "dead_end.no_gameplay",
-      "message": "只有一個可通行出口且沒有玩法用途，應刪除、block、升級或明確標為路線端點"
-    },
-    {
-      "id": "volcano_zone_fill_31_20",
-      "zone": "volcano_zone",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->volcano_ash_field 缺 description",
-      "current": 0,
-      "minimum": 12
-    },
-    {
-      "id": "volcano_zone_fill_34_24",
-      "zone": "volcano_zone",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 20,
-      "minimum": 55,
-      "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
-    },
-    {
-      "id": "volcano_zone_fill_34_24",
-      "zone": "volcano_zone",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 20,
-      "minimum": 55,
-      "text": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。"
     }
   ]
 }

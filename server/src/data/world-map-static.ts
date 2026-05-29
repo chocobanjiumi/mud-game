@@ -3577,11 +3577,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "volcano_zone_fill_31_20",
     "name": "火山北灰坡",
     "zone": "volcano_zone",
-    "description": "火山地帶北緣的灰坡接住三角洲流下的濕泥，熱地面不斷冒出白色蒸氣。",
+    "description": "北灰坡路線端位在火山地帶北緣，北面蛇河三角洲的濕泥被熱灰烤成硬殼，南側火山灰原冒出白色蒸氣。這裡是 route 端點，提醒玩家從濕地邊界正式踏入高熱火山路線。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "volcano_ash_field"
+        "targetRoomId": "volcano_ash_field",
+        "description": "南側灰坡升溫並轉成黑色火山灰路，接往火山灰原"
+      },
+      {
+        "direction": "north",
+        "targetRoomId": "",
+        "locked": true,
+        "description": "北側濕泥被熱灰烤成脆殼並冒出毒汽，不能從火山北緣回切三角洲"
       }
     ],
     "mapSymbol": "[·]",
@@ -4299,9 +4306,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "volcano_zone_fill_34_24": {
     "id": "volcano_zone_fill_34_24",
-    "name": "噴氣口道",
+    "name": "火晶噴口西封岩",
     "zone": "volcano_zone",
-    "description": "火山地帶的石路，腳下的岩石散發著灼熱的高溫。",
+    "description": "火晶噴口西封岩位在火晶噴氣口西側，西面熔岩橋熱光斷續閃爍，南側玄武岩階通往火山石路。腳下岩縫定時噴出高溫白汽，這裡是 blocker，封住通往噴口背面的不穩石路。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
