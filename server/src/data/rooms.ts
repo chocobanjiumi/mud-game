@@ -5476,6 +5476,8 @@ const BLOCKED_EXIT_DESCRIPTION_OVERRIDES: Record<string, string> = {
   'ember_march_firegrass_flat:north': '北側火草平地被熱風與濕地黑水斷層隔開，不能直接越級北上月光濕地',
   'saltwind_flats_tide_gate:west': '西側潮門背後是競技城區石牆與鹽水落差，不能從灘地硬穿回城',
   'saltwind_flats_mist_marker:west': '西側霧標後方被競技城區外牆與濃霧封住，不能離開鹽風灘',
+  'eastern_coast_tidepool_grotto:west': '西側潮池岩穴被王道市集外牆與濕滑礁縫隔開，不能從洞內硬穿回市集',
+  'eastern_coast_seaweed_flats:west': '西側海藻灘盡頭是王道市集石牆與深潮落差，不能從灘面直接穿回城內',
 };
 for (const [key, description] of Object.entries(BLOCKED_EXIT_DESCRIPTION_OVERRIDES)) {
   const [roomId, direction] = key.split(':') as [string, Direction];

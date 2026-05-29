@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T21:43:40.417Z",
+  "generatedAt": "2026-05-29T21:45:06.490Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,31 +366,13 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 32
+    "issues": 29
   },
   "issuesByKind": {
-    "exit.description": 17,
-    "room.description": 15
+    "exit.description": 15,
+    "room.description": 14
   },
   "issues": [
-    {
-      "id": "eastern_coast/eastern_coast_tidepool_grotto:west->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
-    {
-      "id": "eastern_coast/eastern_coast_seaweed_flats:west->",
-      "kind": "exit.description",
-      "field": "description",
-      "currentLength": 0,
-      "minimumLength": 12,
-      "text": "",
-      "reason": "exit 描述字數不足"
-    },
     {
       "id": "plains/plains_moonlit_copse:west->starter_village_fill_6_3",
       "kind": "exit.description",
@@ -561,15 +543,6 @@
       "minimumLength": 55,
       "text": "南腐葉封溝積滿黑水與腐葉，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝底只有藥草採集痕跡，沒有穩固踏點，這格是封閉 blocker。",
       "reason": "room.description 缺少地形或建築主體，必須讓實作者知道畫面要放橋、坡、門、井、祭壇、碼頭、礦道、林徑等明確場景"
-    },
-    {
-      "id": "eastern_coast/eastern_coast_fill_31_3",
-      "kind": "room.description",
-      "field": "description",
-      "currentLength": 72,
-      "minimumLength": 80,
-      "text": "王道東側潮封位在王道市集東界外，西面可回望市集石路的旗桿，北側潮池洞窟滲出鹹水，東邊海蝕洞口被浪花遮住。這裡是 border blocker，用濕滑礁面標示市集與東海岸分界，不作跨區捷徑。",
-      "reason": "room 描述字數不足或過於泛用"
     },
     {
       "id": "frozen_wastes/frozen_wastes_fill_n25_n23",

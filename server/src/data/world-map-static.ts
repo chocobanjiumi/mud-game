@@ -801,7 +801,7 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "id": "eastern_coast_fill_31_3",
     "name": "王道東側潮封",
     "zone": "eastern_coast",
-    "description": "王道東側潮封位在王道市集東界外，西面可回望市集石路的旗桿，北側潮池洞窟滲出鹹水，東邊海蝕洞口被浪花遮住。這裡是 border blocker，用濕滑礁面標示市集與東海岸分界，不作跨區捷徑。",
+    "description": "王道東側潮封位在王道市集東界外，西面可回望市集石路的旗桿，北側潮池洞窟滲出鹹水，東邊海蝕洞口被浪花遮住。濕滑礁面上立著潮門木牌、破繩欄與白色浪痕，明確標示市集與東海岸分界；這裡是 border blocker，不作跨區捷徑。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
