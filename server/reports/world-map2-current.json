@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-29T19:12:24.190Z",
+  "generatedAt": "2026-05-29T19:13:41.938Z",
   "counts": {
     "zones": 60,
     "rooms": 1515,
@@ -3079,7 +3079,6 @@
     "frostbite_pass_northbound_ridge:south->frostbite_pass_frost_giant_steps (long_path) 北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。",
     "frostbite_pass_northbound_ridge:east->frostbite_pass_dragon_breath_shelf (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "frostbite_pass_dragon_breath_shelf:west->frostbite_pass_northbound_ridge (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
-    "bloodsalt_coast_entrance_tidegate:north->bloodsalt_coast_brine_cut_path (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "bloodsalt_coast_red_salt_flats:north->bloodsalt_coast_bone_net_shoal (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "bloodsalt_coast_wreckers_marker:north->bloodsalt_coast_pirate_beacon (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "bloodsalt_coast_bone_net_shoal:south->bloodsalt_coast_red_salt_flats (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
@@ -3087,7 +3086,6 @@
     "bloodsalt_coast_pirate_beacon:south->bloodsalt_coast_wreckers_marker (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "bloodsalt_coast_pirate_beacon:north->bloodsalt_coast_reef_fishing_post (long_path) 海盜烽燈到礁釣哨需沿濕滑礁階與斷旗繩索上行，實際路程長於相鄰一格。",
     "bloodsalt_coast_crimson_tide_pool:north->bloodsalt_coast_blood_altar_ledge (long_path) 赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。",
-    "bloodsalt_coast_brine_cut_path:south->bloodsalt_coast_entrance_tidegate (long_path) 此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確長路徑。",
     "bloodsalt_coast_brine_cut_path:east->bloodsalt_coast_saltglass_cave (long_path) 鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。",
     "bloodsalt_coast_saltglass_cave:west->bloodsalt_coast_brine_cut_path (long_path) 鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。",
     "bloodsalt_coast_saltglass_cave:south->bloodsalt_coast_bone_net_shoal (long_path) 鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。",

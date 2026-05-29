@@ -504,7 +504,18 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "赤色海崖",
     "zone": "bloodsalt_coast",
     "description": "鏽蝕的木製棧道在危險的紅潮海岸上搖搖欲墜。",
-    "exits": [],
+    "exits": [
+      {
+        "direction": "north",
+        "targetRoomId": "bloodsalt_coast_entrance_tidegate",
+        "description": "赤色海崖北返潮門入口"
+      },
+      {
+        "direction": "south",
+        "targetRoomId": "bloodsalt_coast_brine_cut_path",
+        "description": "赤色海崖南下鹵蝕小徑"
+      }
+    ],
     "mapSymbol": "[·]",
     "mapX": 0,
     "mapY": 1,

@@ -27598,7 +27598,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '潮門入口位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'east', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '紅鹽灘在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '鹵蝕小徑在北側' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '南側赤色海崖通往鹵蝕小徑' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_red_salt_reaver', maxCount: 2, respawnSeconds: 260 },
@@ -27757,7 +27757,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '北側赤色海崖回到潮門入口' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'long_path', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [

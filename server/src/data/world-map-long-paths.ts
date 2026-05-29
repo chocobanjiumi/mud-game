@@ -221,19 +221,9 @@ export const STATIC_WORLD_LONG_PATH_EXITS: [roomId: string, direction: Direction
     "bloodsalt_coast_red_salt_flats"
   ],
   [
-    "bloodsalt_coast_brine_cut_path",
-    "south",
-    "bloodsalt_coast_entrance_tidegate"
-  ],
-  [
     "bloodsalt_coast_drowned_watchtower",
     "south",
     "bloodsalt_coast_saltglass_cave"
-  ],
-  [
-    "bloodsalt_coast_entrance_tidegate",
-    "north",
-    "bloodsalt_coast_brine_cut_path"
   ],
   [
     "bloodsalt_coast_ghost_keel_grave",
