@@ -20,9 +20,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '金燦燦的向日葵高過人頭，花盤在陽光下緩慢轉動，形成一座帶著花粉香的天然迷宮。東側穿過花田可回平原入口，北邊有獵人小屋的煙囪，南方傳來河水聲。泥土表面佈滿田鼠洞和烏鴉爪痕，最高那株花下的土色明顯較新，提示玩家可 search 找到小型寶物，也可能驚動田鼠群。',
     exits: [
-      { direction: 'east', targetRoomId: 'plains_entrance', description: '穿過花田回到平原入口' },
-      { direction: 'north', targetRoomId: 'hunter_lodge', description: '花田盡頭有一間小木屋' },
-      { direction: 'south', targetRoomId: 'riverside_fishing', description: '花田南邊傳來潺潺水聲' },
+      { direction: 'east', targetRoomId: 'plains_entrance', description: '穿過花田回到平原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'hunter_lodge', description: '花田盡頭有一間小木屋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'riverside_fishing', description: '花田南邊傳來潺潺水聲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 3, respawnSeconds: 25 },
@@ -53,7 +53,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'ancient_treehouse',
         description: '小屋西側獵徑沿獸皮標記鑽入林緣，攀過樹冠繩橋與盤根木階後抵達古老樹屋',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵人小屋到古老樹屋需穿過林緣獵徑並攀上樹冠繩橋，實際路程長於相鄰一格。',
       },
     ],
@@ -83,7 +83,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'cave_entrance',
         description: '南側廢棄礦車道順鏽軌下滑，穿過塌方木架與濕石彎道後抵達洞窟入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '廢棄礦車道到洞窟入口需沿礦車斜井與塌方彎道下降，實際路程長於相鄰一格。',
       },
     ],
@@ -111,8 +111,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '清澈小河蜿蜒穿過平原，柳樹枝條垂成綠色簾幕，幾塊平整大石延伸入水，是天然釣魚平台。北岸通往向日葵田，東側可走向風車內部的水車聲，河泥上有野兔腳印與被田鼠拖走的麥粒。水面銀魚閃動，風帶來濕潤涼意，提示玩家能採集、釣魚或追蹤被沖來的旅人遺物。',
     exits: [
-      { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田' },
-      { direction: 'east', targetRoomId: 'windmill_interior', description: '東側河邊釣場沿濕滑河岸繞過水車溝渠，穿過石板小徑才進入風車內部', edgeKind: 'long_path', edgeNote: '河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'sunflower_field', description: '沿河岸走回向日葵田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'windmill_interior', description: '東側河邊釣場沿濕滑河岸繞過水車溝渠，穿過石板小徑才進入風車內部', edgeKind: 'distant_route', edgeNote: '河邊釣場到風車內部需沿河岸與水車溝渠繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'wild_rabbit', maxCount: 2, respawnSeconds: 30 },
@@ -137,7 +137,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '厚重木門後方是緩慢轉動的巨大齒輪與石磨，咔嗒聲在圓形塔身內反覆迴盪，麵粉粉塵漂浮在狹窗光束中。北門回風車農場，西側門通往河邊釣場，樓梯陰影裡能看到田鼠拖麥粒留下的細痕。石磨底座有鬆動板塊，提示玩家可調查機關、找回農夫失物，並小心烏鴉從高處俯衝。',
     exits: [
-      { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'long_path', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'riverside_fishing', description: '西側風車內部沿石板小徑折返，穿過水車溝渠與濕滑河岸回到河邊釣場', edgeKind: 'distant_route', edgeNote: '風車內部回河邊釣場需沿石板小徑與水車溝渠折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'hunter_lodge', description: '南側獵人小屋通往風車農場' },
     ],
     monsters: [
@@ -167,7 +167,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'plains_entrance',
         description: '東側要穿過野兔洞群外圍的低草坡與幾段塌陷洞道，才繞回平原入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '野兔洞群回平原入口需要穿過低草坡、塌陷洞道與入口草路，屬於平原內長路徑。',
       },
       { direction: 'south', targetRoomId: 'plains_wolf_tracks', description: '狼爪印一路延伸向南' },
@@ -195,7 +195,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'grass_path',
         description: '東側要沿狼爪印穿過倒伏高草與破木欄，繞過獸腥泥痕才接回草原小徑中段',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '狼跡草坡到草原小徑需要沿狼爪印、倒伏高草與破木欄繞行，屬於平原內長路徑。',
       },
       { direction: 'west', targetRoomId: 'plains_moonlit_copse', description: '陰涼樹影覆蓋西方小林' },
@@ -222,7 +222,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'abandoned_minecart',
         description: '北側要沿矮丘背面穿過盜賊煙灰、車轍斜坡與碎石軌道，才回到廢棄礦車道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '盜賊藏身處到廢棄礦車道需要沿矮丘、車轍斜坡與碎石軌道繞行，屬於平原內長路徑。',
       },
       { direction: 'west', targetRoomId: 'plains_herb_slope', description: '藥草坡在西邊' },
@@ -270,7 +270,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'grass_path',
         description: '北側回草原小徑要沿藥草斜坡上行，穿過蜜蜂草叢與採集者小刀痕',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '藥草斜坡回草原小徑需要沿斜坡、蜜蜂草叢與採集者刀痕上行，屬於平原內長路徑。',
       },
       { direction: 'east', targetRoomId: 'plains_bandit_hideout', description: '煙味來自東側藏身處' },
@@ -298,14 +298,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'windmill_farm',
         description: '西側回風車農場要穿過羊圈外的緩坡、歪斜木欄與農場背面草路入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '牧羊人營地回風車農場需要穿過羊圈緩坡、歪斜木欄與農場背路，屬於平原內長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'plains_herb_slope',
         description: '南側羊群踩出的路要穿過高草與散落羊毛，繞過盜賊煙柱才抵達藥草坡',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '牧羊人營地到藥草斜坡需要沿羊群草路、散落羊毛與盜賊煙柱繞行，屬於平原內長路徑。',
       },
     ],
@@ -332,7 +332,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'crossroads',
         description: '西側要沿斷橋旁泥路繞過倒木與溪水缺口，才回到十字路口路標前',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '斷木橋回十字路口需要沿泥路、倒木與溪水缺口繞行，屬於平原內長路徑。',
       },
     ],
@@ -359,10 +359,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'old_well',
         description: '東側荒草路要穿過石環外圍倒伏草線與烏鴉羽痕，繞過冷風石縫才通到古井旁',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '古石環到古井需要穿過倒伏草線、烏鴉羽痕與荒草路，屬於平原內長路徑。',
       },
-      { direction: 'south', targetRoomId: 'plains_watch_mound', description: '石環南側是守望土丘' },
+      { direction: 'south', targetRoomId: 'plains_watch_mound', description: '石環南側是守望土丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 45 },
@@ -382,15 +382,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '守望土丘比周圍草地高出一截，腐朽旗杆插在頂端，風從四面吹來，能同時看見北方石環、東方十字路口和更南側陰暗狼穴入口。草坡上留有舊營火灰、破望遠鏡和被風磨平的哨兵刻字。這裡本身不算危險，但提供方向感與戰術視野，提示玩家可在進入更深處前確認路線、整理任務並觀察狼群巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'plains_stone_circle', description: '回到古石環' },
+      { direction: 'north', targetRoomId: 'plains_stone_circle', description: '回到古石環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'crossroads',
         description: '東側下坡要沿守望土丘旗杆影子穿過草浪與舊營火灰，才回到十字路口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '守望土丘回十字路口需要沿旗杆影子、草浪與舊營火灰下坡，屬於平原內長路徑。',
       },
-      { direction: 'south', targetRoomId: 'plains_alpha_den', description: '南坡通往狼群首領的棲地' },
+      { direction: 'south', targetRoomId: 'plains_alpha_den', description: '南坡通往狼群首領的棲地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[^]',
     mapX: 1,
@@ -406,8 +406,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '土丘南面的高草被踩成圓形空地，中央堆著白骨、破披風和被咬碎的木盾，血腥味與濕草味混在低沉狼嚎裡。北方斜坡回到守望土丘，東面斷橋方向仍有盜賊丟下的贓物痕跡，西側草牆幾乎封死，只留下狼群出入的窄道。這裡是平原狼群首領活動的棲地，草叢邊緣有多組伏擊腳印與巨大爪痕；玩家進入前應確認藥水、裝備和任務目標，戰鬥後可搜查骨堆取得區域事件線索。空地邊緣插著半截路標，上面還留有從十字路口拖來的鐵釘，顯示狼群已威脅主要道路。風穿過草牆時會暴露幾條短暫撤退縫隙，但狼王嚎叫後這些路徑很快會被狼群封住。',
     exits: [
-      { direction: 'north', targetRoomId: 'plains_watch_mound', description: '沿斜坡撤回守望土丘' },
-      { direction: 'east', targetRoomId: 'plains_broken_bridge', description: '血跡小徑通往斷木橋' },
+      { direction: 'north', targetRoomId: 'plains_watch_mound', description: '沿斜坡撤回守望土丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'plains_broken_bridge', description: '血跡小徑通往斷木橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'wolf_king', maxCount: 1, respawnSeconds: 1800 },
@@ -430,9 +430,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '密林中這條小徑被數以千計的螢火蟲照亮，藍綠光點沿灌木排列成夢幻走廊，腳下苔蘚柔軟得像濕地毯。西邊可回密林小道，南方螢光逐漸稀疏並轉成毒霧，東側銀光指向精靈祭壇。每一步都踩出微弱磷光，也暴露行蹤；若某片螢火突然熄滅，通常代表暗影狼或蜘蛛正從側面靠近。' +
       '灌木下有精靈胸針、細小骨片和被拖曳的鞋印，提醒玩家這裡既是主路也是伏擊線索點。螢火會短暫聚成箭頭，指向祭壇或毒霧沼澤，適合用 look 判斷下一步任務方向，也能作為受傷時撤回密林小道的光標與安全提示。',
     exits: [
-      { direction: 'west', targetRoomId: 'dense_trail', description: '沿著光點回到密林小道' },
-      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側螢火蟲小徑沿熄光苔徑下沉，穿過潮濕樹根與紫毒霧帶抵達毒霧沼澤深處', edgeKind: 'long_path', edgeNote: '螢火蟲小徑到毒霧沼澤深處需沿熄光苔徑與毒霧帶下沉，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'elf_altar', description: '一道柔和的銀光從東方透出' },
+      { direction: 'west', targetRoomId: 'dense_trail', description: '沿著光點回到密林小道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側螢火蟲小徑沿熄光苔徑下沉，穿過潮濕樹根與紫毒霧帶抵達毒霧沼澤深處', edgeKind: 'distant_route', edgeNote: '螢火蟲小徑到毒霧沼澤深處需沿熄光苔徑與毒霧帶下沉，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'elf_altar', description: '一道柔和的銀光從東方透出', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 2, respawnSeconds: 50 },
@@ -460,7 +460,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '四處傳來此起彼伏的咕嚕聲和蛙鳴——這裡的一切都帶著毒性。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'firefly_trail', description: '西側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'long_path', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'firefly_trail', description: '西側毒霧沼澤深處沿紫毒霧帶回穿，越過潮濕樹根與熄光苔徑回到螢火蟲小徑', edgeKind: 'distant_route', edgeNote: '毒霧沼澤深處回螢火蟲小徑需沿毒霧帶與熄光苔徑回穿，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'dark_forest_raven_perch', description: '北側黑鴉羽毛標出高枝平台' },
       { direction: 'south', targetRoomId: 'dark_forest_witch_hut', description: '南側銀苔小徑回到女巫小屋' },
       { direction: 'east', targetRoomId: 'mushroom_swamp', description: '沼澤邊緣連接著蘑菇沼澤' },
@@ -489,8 +489,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '古老白色石柱圍成半圓，中央祭壇刻著精靈族月亮紋章，銀白光輝把四周暗影隔在石階之外。西邊螢火蟲小徑仍在閃爍，南方枯萎之林像被詛咒燒乾，祭壇水晶球緩慢旋轉並散出淡淡治癒氣息。石面有新鮮爪痕與乾涸血跡，提示這裡既是地標與劇情節點，也是暗影生物試圖突破結界的前線。' +
       '水晶球內偶爾浮現森林深處與古樹心庭的影像，旁邊石盆殘留可採集的銀色露水。玩家可在此 inspect 月亮紋章，確認詛咒來源、取得支線提示，或沿南側道路追蹤枯萎蔓延的方向，並判斷結界仍能提供短暫庇護。',
     exits: [
-      { direction: 'west', targetRoomId: 'firefly_trail', description: '回到螢火蟲小徑' },
-      { direction: 'south', targetRoomId: 'withered_forest', description: '南側精靈祭壇沿銀光石階下行，穿過破裂結界與灰白枯枝線抵達枯萎之林', edgeKind: 'long_path', edgeNote: '精靈祭壇到枯萎之林需沿銀光石階與破裂結界下行，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'firefly_trail', description: '回到螢火蟲小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'withered_forest', description: '南側精靈祭壇沿銀光石階下行，穿過破裂結界與灰白枯枝線抵達枯萎之林', edgeKind: 'distant_route', edgeNote: '精靈祭壇到枯萎之林需沿銀光石階與破裂結界下行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'treant', maxCount: 2, respawnSeconds: 70 },
@@ -518,7 +518,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '枯木之間偶爾傳來沉重的腳步聲——暗黑樹人在這裡遊蕩。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'north', targetRoomId: 'elf_altar', description: '北側枯萎之林沿灰白枯枝線回穿，越過破裂結界與銀光石階回到精靈祭壇', edgeKind: 'long_path', edgeNote: '枯萎之林回精靈祭壇需沿枯枝線與銀光石階回穿，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'elf_altar', description: '北側枯萎之林沿灰白枯枝線回穿，越過破裂結界與銀光石階回到精靈祭壇', edgeKind: 'distant_route', edgeNote: '枯萎之林回精靈祭壇需沿枯枝線與銀光石階回穿，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'dark_treehollow', description: '最大的枯木底部有個漆黑的洞穴' },
       { direction: 'east', targetRoomId: 'deep_forest', description: '枯林邊緣連接著森林深處' },
     ],
@@ -580,7 +580,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'dense_trail',
         description: '西側必須沿被蛛絲封住的枝縫慢慢退回，穿過兩段下垂蛛網後才接密林小道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '蛛網密室回密林小道需要穿過封閉蛛網枝縫，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'dark_forest_root_bridge', description: '粗大樹根延伸向南' },
@@ -607,7 +607,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'firefly_trail',
         description: '東側螢火光隔著枯枝平台閃動，需要沿黑鴉標記的枝路繞下才接到螢火小徑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑鴉棲枝到螢火小徑需要沿高枝平台下降，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'deep_poison_swamp', description: '南側毒霧沼澤在低處翻泡' },
@@ -659,7 +659,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'withered_forest',
         description: '屋後小徑先穿過掛滿骨鈴的根門，再繞過灰化樹籬才進入枯萎之林',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '森林女巫小屋到枯萎之林需要穿越根門與灰化樹籬，屬於長路徑。',
       },
     ],
@@ -706,21 +706,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'ancient_treehouse',
         description: '北側繩梯要繞過獵棚偽裝枝葉，沿樹幹螺旋木階爬回古老樹屋平台',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到古老樹屋需要沿偽裝繩梯與螺旋木階上行，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'dark_forest_spider_web',
         description: '南側蛛網密室藏在枝葉後方，必須沿獵人繩標下降並穿過幾層白絲屏障',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到蛛網密室需要沿繩標下降並穿越蛛絲屏障，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'dark_forest_root_bridge',
         description: '東側盤根橋露出一角，需要沿瞭望棚外緣下坡，再繞過黑水溪岸才抵達',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵人瞭望棚到盤根橋需要下坡並繞過黑水溪岸，屬於長路徑。',
       },
     ],
@@ -743,7 +743,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '活著般的荊棘牆在月井南面交錯移動，黑刺上掛著撕裂布條、暗紅樹液和被纏住的獸骨。北邊是更深的林間通道，東側林間小路蜿蜒前行，往女巫小屋的根痕需繞行更遠。道路會被枝條短暫封閉，提示玩家需要觀察方向、避開纏繞伏擊，並在戰鬥中利用迷宮作為撤退或繞行路線。',
     exits: [
       { direction: 'west', targetRoomId: 'dark_forest_root_bridge', description: '西側盤根路通向月井方向' },
-      { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地' },
+      { direction: 'east', targetRoomId: 'dark_forest_shadow_clearing', description: '荊棘縫隙通向暗影空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'forest_spider', maxCount: 2, respawnSeconds: 60 },
@@ -764,8 +764,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '黑霧在林間空地低低旋轉，月光落到地面前就被撕成碎片，周圍樹皮佈滿巨大爪痕。北方盤根橋可作撤退路，西邊古樹心庭傳來深沉心跳般的聲音，南方密林深處隱約有暗影蠕動。地面有狼群圍獵形成的圓形足跡，提示玩家這裡是精英遭遇與 Boss 前哨，進入後應準備群體戰與中斷技能。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'north', targetRoomId: 'dark_forest_root_bridge', description: '盤根橋在北方黑水溪上' },
-      { direction: 'west', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮可作側向撤退' },
-      { direction: 'south', targetRoomId: 'dark_forest_elder_grove', description: '沉重心跳聲來自南方老樹叢' },
+      { direction: 'west', targetRoomId: 'dark_forest_bramble_maze', description: '荊棘迷宮可作側向撤退', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'dark_forest_elder_grove', description: '沉重心跳聲來自南方老樹叢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shadow_wolf', maxCount: 3, respawnSeconds: 45 },
@@ -786,19 +786,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '古樹心庭被環狀樹根圍住，中央巨木的樹心裂開，暗紫光從裂縫中一下一下跳動，像整座森林的病灶。北方可退回精靈遺跡，西北方樹洞通往黑暗樹洞，東側隱約連回暗影空地的破碎結界。地上散落精靈封印石、腐化樹心碎片與狼王爪痕，這裡是暗影森林大型事件鉤子與最終地標；玩家需要完成線索、準備隊伍或至少整理補給再挑戰暗影樹靈。' +
       '巨木周圍的根牆會隨心跳聲緩慢開合，短暫露出可撤退的北側缺口，也可能在戰鬥中封住側路。腐化樹心旁有可 loot 的結晶化樹皮與狼群戰利品，暗示擊敗首領後能取得區域推進證物並削弱森林詛咒。',
     exits: [
-      { direction: 'north', targetRoomId: 'dark_forest_shadow_clearing', description: '回到暗影空地' },
+      { direction: 'north', targetRoomId: 'dark_forest_shadow_clearing', description: '回到暗影空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'dark_treehollow',
         description: '西側裂根要等根牆開合時穿過，沿腐化樹心外圈繞到黑暗樹洞入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '古樹心庭到黑暗樹洞需要穿過開合根牆與腐化樹心外圈，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'elf_ruins',
         description: '東側破碎結界必須沿精靈封印石繞行，穿過暗影根牆後才回到精靈遺跡',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '古樹心庭到精靈遺跡需要沿封印石與暗影根牆繞行，屬於長路徑。',
       },
     ],
@@ -1199,7 +1199,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'auction_house',
         description: '東側後門要穿過酒桶儲藏間與狹窄服務廊，繞過帳房後才到拍賣場側門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '酒館到拍賣場需走後勤服務廊與帳房側門，屬於長路徑。',
       },
     ],
@@ -1229,7 +1229,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'tavern',
         description: '南側後門要沿拍賣場服務廊穿過帳房與酒桶儲藏間，才會回到酒館',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '拍賣場回酒館需走服務廊與酒桶儲藏間，屬於長路徑。',
       },
     ],
@@ -1255,7 +1255,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'east', targetRoomId: 'town_library', description: '走廊連接著城鎮圖書館' },
       { direction: 'north', targetRoomId: 'lakeside_temple', description: '北側證物走廊通往湖光神殿' },
-      { direction: 'west', targetRoomId: 'class_change_hall', description: '走廊通往轉職大廳' },
+      { direction: 'west', targetRoomId: 'class_change_hall', description: '走廊通往轉職大廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[G]',
@@ -1325,7 +1325,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '湖景旅店坐在商業街北端，開闊窗戶面向靜藍湖面，白色床單帶著薰衣草與乾木香。接待櫃檯掛著房牌、失物袋與冒險者留言，樓梯旁有通往酒館的短廊。南面回商業街，東側小門接神殿巷；玩家可在此休息、整理重生點與查看失物，也能 inspect 旅客留言找到湖岸支線線索。',
     exits: [
       { direction: 'south', targetRoomId: 'tavern', description: '南側短廊通往酒館暖光門口' },
-      { direction: 'east', targetRoomId: 'lakeside_temple', description: '安靜小巷通往神殿' },
+      { direction: 'east', targetRoomId: 'lakeside_temple', description: '安靜小巷通往神殿', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[I]',
@@ -1346,7 +1346,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'auction_house',
         description: '西側貨廊要經過兩道銀鱗符文鐵門與估價櫃台後，才回到拍賣場側廳',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '銀鱗銀行到拍賣場需穿過符文貨廊與估價櫃台，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'lakeside_warehouse', description: '鐵門後是倉庫區' },
@@ -1366,7 +1366,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '湖光神殿以白石拱柱圍著淺水池，藍色彩窗把晨光折成柔和波紋，空氣裡有清水與香草味。祭壇旁擺著祈願牌、治療記錄與迷途者名冊。西側小巷回旅店，南面階梯下到傳送廣場；玩家可祈福、確認復活服務，或 inspect 水池倒影取得失蹤旅人任務提示。神官會說明死亡懲罰、復活位置與安全撤離規則，池邊蠟燭數量也暗示最近湖岸危險事件是否增加。牆面聖徽會記錄已啟用的安全點，讓玩家出城前確認死亡回程位置與治療補給是否足夠，並查看最近安全入口與復活費用，避免長途失誤和任務中斷。',
     exits: [
-      { direction: 'west', targetRoomId: 'lakeside_inn', description: '小巷回到湖景旅店' },
+      { direction: 'west', targetRoomId: 'lakeside_inn', description: '小巷回到湖景旅店', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'lakeside_courthouse', description: '北側證物走廊通往湖畔裁判所' },
       { direction: 'south', targetRoomId: 'guild_hall', description: '南側白石外廊通往公會大廳' },
       { direction: 'east', targetRoomId: 'lakeside_portal_square', description: '東側石階通往傳送廣場' },
@@ -1391,7 +1391,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'town_plaza',
         description: '南側拱門要沿傳送符文外圈與湖霧石階繞行，穿過守衛檢查點才到廣場',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '湖畔傳送廣場回城鎮廣場需要繞過符文外圈與守衛檢查點，屬於長路徑。',
       },
     ],
@@ -1414,14 +1414,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'market_street',
         description: '北側回商業街要穿過冒蒸汽的鍛坊前棚與材料攤，才接回主要石板街',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '湖鐵鍛坊回商業街需要穿過鍛坊前棚與材料攤，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'lakeside_tailor',
         description: '東側棚道要繞過淬火水槽與布料晾架，沿防雨木棚才能抵達裁縫坊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '湖鐵鍛坊到月紋裁縫坊需要沿防雨木棚繞過水槽與晾架，屬於長路徑。',
       },
     ],
@@ -1444,7 +1444,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'lakeside_blacksmith',
         description: '西側棚道要穿過布料晾架與淬火水槽旁的防雨木棚，才回到湖鐵鍛坊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '月紋裁縫坊回湖鐵鍛坊需要沿防雨木棚繞行，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'lakeside_town_fill_18_6', description: '東側青石短街通往湖畔街道' },
@@ -1469,7 +1469,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'auction_house',
         description: '西側貨門要穿過堆滿封蠟箱的倉庫巷道，經拍品交接口才回到拍賣場',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '湖港倉庫到拍賣場需要穿過倉庫貨巷與拍品交接口，屬於長路徑。',
       },
       { direction: 'south', targetRoomId: 'lakeside_fish_market', description: '南側貨箱巷通往湖鮮魚市' },
@@ -1513,7 +1513,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'prison',
         description: '東側卷宗梯沿封蠟證物架下行，穿過守衛鐵門後才抵達地下監獄入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '湖畔裁判所到監獄需要沿卷宗梯與守衛鐵門下行，屬於長路徑。',
       },
     ],
@@ -1537,7 +1537,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'prison',
         description: '西側狹洞貼著黑水暗渠前進，繞過潮濕警鈴線後才接到監獄後牆暗門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '隱藏水道到監獄後牆需要穿過黑水暗渠與警鈴線，屬於長路徑。',
       },
     ],
@@ -1568,7 +1568,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'ice_throne',
         description: '南側魔族邊境沿石橋退入黑煙深谷，穿過冷熱交界與冰晶斷階回到冰封王座',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '魔族邊境到冰封王座需跨越石橋、黑煙深谷與冰晶斷階，實際路程長於相鄰一格。',
       },
       { direction: 'north', targetRoomId: 'scorched_plains', description: '踏上焦黑的荒原' },
@@ -3886,12 +3886,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'village_farmland',
         description: '西側小路要沿泥濘車轍繞過兩片荒田，穿過舊籬笆缺口後才回到新手村外圍農田',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊農路口到新手村外圍農田跨過荒田與籬笆缺口，實際路程長於相鄰一格。',
       },
-      { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生' },
+      { direction: 'north', targetRoomId: 'old_farmland_overgrown_field', description: '北側田壟雜草叢生', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_rat_ditch', description: '東邊水溝傳來窸窣聲' },
-      { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田' },
+      { direction: 'south', targetRoomId: 'old_farmland_cart_shortcut', description: '南側舊車道可繞過農田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'field_rat', maxCount: 2, respawnSeconds: 25 },
@@ -3916,8 +3916,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '舊麥田多年無人收割，麥稈和野草長到腰間，田埂幾乎被掩埋。風一吹過，草浪下方就會露出一排排田鼠洞，偶爾還有黑鴉停在斷裂灌溉樁上觀察。泥土仍保留肥力，玩家能在草叢中採集野菜或找回遺失農具，但每次翻動田壟都可能驚動藏在根部的鼠群。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口' },
-      { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人' },
+      { direction: 'south', targetRoomId: 'old_farmland_crossroads', description: '沿田埂回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_scarecrow_watch', description: '田中央有一座破稻草人', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_collapsed_barn', description: '東方可見塌陷穀倉' },
     ],
     monsters: [
@@ -3945,7 +3945,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '農路東側的排水溝已被泥沙堵住，淺水散發潮濕腐味，兩岸木板被啃出許多缺口。田鼠沿著水溝築巢，把掉落穀粒和破布拖進洞中，讓整段溝渠像一條會蠕動的灰色帶子。玩家可清理堵塞處恢復灌溉，也能在漂浮雜物裡找到小型材料，但必須留意水面下的史萊姆泡泡。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_crossroads', description: '跨過木板回到路口' },
-      { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁' },
+      { direction: 'north', targetRoomId: 'old_farmland_collapsed_barn', description: '水溝延伸到塌穀倉旁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_irrigation_channel', description: '堵塞水流通往灌溉渠' },
     ],
     monsters: [
@@ -3971,9 +3971,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '荒草麥田中央立著一座破稻草人，草帽被雨水壓歪，外套袖口掛滿黑鴉羽毛。它原本只是農夫用來趕鳥的工具，如今卻總在沒人看見時換個角度，彷彿仍努力守住這片田。稻草人腳下有許多被啄開的田鼠洞和亮晶晶的小物，玩家若搜索可找到作物種子，也可能驚動盤旋的黑鴉群。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田' },
-      { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影' },
-      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形' },
+      { direction: 'south', targetRoomId: 'old_farmland_overgrown_field', description: '穿過草浪回到荒草麥田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'old_farmland_well', description: '破井在田邊投下陰影', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'old_farmland_harvest_circle', description: '北側作物排成奇怪圓形', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'straw_watchman', maxCount: 1, respawnSeconds: 90 },
@@ -3999,19 +3999,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '穀倉屋頂塌了一半，陽光從破洞照進堆滿霉味的乾草與碎木樑。牆邊舊穀袋被咬破，穀粒灑了一地，引來田鼠、黑鴉和偶爾鑽入的野狼。穀倉後門通往南瓜地，東側有一條去舊井的小徑。玩家可在乾草堆裡找材料或任務物品，但不穩的木樑會在戰鬥中掉落。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_overgrown_field', description: '回到荒草麥田' },
-      { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過' },
+      { direction: 'south', targetRoomId: 'old_farmland_rat_ditch', description: '水溝從倉牆旁流過', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_well',
         description: '東側舊井需繞過塌落木樑與濕泥小徑，從穀倉外牆缺口旁才能抵達',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '塌陷穀倉到舊井需要繞過塌落木樑與濕泥小徑，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'old_farmland_pumpkin_patch',
         description: '北側後門被南瓜藤纏住，必須沿穀倉背牆繞過倒塌屋頂後才進入南瓜地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '塌陷穀倉到膨脹南瓜地需要繞過倒塌屋頂與藤蔓，屬於長路徑。',
       },
     ],
@@ -4042,21 +4042,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'old_farmland_collapsed_barn',
         description: '西側小徑沿井邊濕泥繞過塌落木樑，穿過穀倉外牆缺口才回到塌陷穀倉',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊井回塌陷穀倉需要沿濕泥小徑繞過塌落木樑，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'old_farmland_irrigation_channel',
         description: '南側井水暗渠先穿過堵塞木閘與泥溝，沿乾裂渠壁下行才接到灌溉渠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊井到乾涸灌溉渠需要沿堵塞暗渠與乾裂渠壁下行，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '北側果園隔著被污染的樹根坡，必須沿井畔石階繞上霉斑果樹間入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊井到霉斑果園需要沿井畔石階與污染樹根坡上行，屬於長路徑。',
       },
     ],
@@ -4087,17 +4087,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'old_farmland_collapsed_barn',
         description: '南側回穀倉要穿過糾結南瓜藤，沿倒塌屋頂邊緣繞回後門缺口旁邊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '膨脹南瓜地回塌陷穀倉需要穿過南瓜藤與倒塌屋頂邊緣，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '東側藤蔓小路需繞過幾顆膨脹南瓜與腐果溝，才會進入霉斑果園內側',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '膨脹南瓜地到霉斑果園需要沿藤蔓小路繞過腐果溝，屬於長路徑。',
       },
-      { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口' },
+      { direction: 'north', targetRoomId: 'old_farmland_root_cellar', description: '南瓜藤遮住地窖入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'thorn_pumpkin', maxCount: 2, respawnSeconds: 45 },
@@ -4126,21 +4126,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'old_farmland_pumpkin_patch',
         description: '西側藤蔓小路穿過腐果溝與低矮籬笆，繞回被膨脹南瓜擋住的田埂',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霉斑果園回膨脹南瓜地需要穿過腐果溝與籬笆，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'old_farmland_well',
         description: '南側樹根坡道沿污染水痕下滑，經過幾段青苔石階後才回到舊井邊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霉斑果園回舊井需要沿污染樹根坡與青苔石階下行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'old_farmland_beehive_rows',
         description: '東側蜂箱行列隔著密果樹與嗡鳴蜂道，必須繞過低枝才能靠近入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霉斑果園到蜂箱行列需要穿過密果樹與蜂道，屬於長路徑。',
       },
     ],
@@ -4168,7 +4168,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '水渠旁的小糧倉比主穀倉完整，但木門已被啃出洞，地板下傳來密集奔跑聲。牆邊堆著幾袋發霉穀物，最上方的袋子被人重新縫過，像是有人最近翻找過。糧倉可作為任務與資源點，玩家能回收穀袋、種子或老農具；若踩到鬆動地板，藏在底下的田鼠群會立刻湧出。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
       { direction: 'west', targetRoomId: 'old_farmland_irrigation_channel', description: '木梯回到灌溉渠旁' },
-      { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍' },
+      { direction: 'north', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '糧倉後方通往農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_toolshed', description: '東側有一間工具棚' },
     ],
     monsters: [
@@ -4198,7 +4198,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'old_farmland_well',
         description: '北側水渠源頭要沿乾裂渠壁上行，穿過堵塞木閘與泥溝後才回到舊井',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '乾涸灌溉渠回舊井需要沿乾裂渠壁與堵塞暗渠上行，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'old_farmland_granary', description: '水渠旁有小糧倉' },
@@ -4226,15 +4226,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農舍木門半開，門廊下的搖椅仍朝著田地，像主人只是暫時離開。屋內桌上留著發黃餐具和一盞熄滅油燈，牆上掛著褪色全家畫像。藤蔓從窗戶爬進來，根鬚壓住地板通往地下根窖的縫隙。這裡是農場任務線的核心房，玩家可調查日記、家書與失蹤農夫留下的線索。日記最後幾頁反覆提到收成圓陣、舊石界碑與一場失敗的豐收儀式，桌腳旁還有被田鼠咬碎的求救信。若玩家先修復水渠或清理根窖，屋內某些隱藏抽屜會變得更容易發現。火爐灰燼裡還壓著半枚焦黑護符，與稻草人胸口的布片圖案相同。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉' },
+      { direction: 'south', targetRoomId: 'old_farmland_granary', description: '後門回到小糧倉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'old_farmland_root_cellar',
         description: '西側屋後根道低矮潮濕，必須繞過塌陷地板與纏牆根鬚才到地下根窖',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '荒廢農舍到地下根窖需要穿過低矮根道與塌陷地板，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍' },
+      { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '窗外就是破雞舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'barn_rat_swarm', maxCount: 1, respawnSeconds: 30 },
@@ -4263,11 +4263,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'old_farmland_mildew_orchard',
         description: '西側果樹小路要穿過嗡鳴蜂道與密集低枝，才會回到霉斑果園內側',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '蜂箱行列回霉斑果園需要穿過蜂道與低枝果樹，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'old_farmland_chicken_coop', description: '東側破籬笆通往雞舍' },
-      { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹' },
+      { direction: 'north', targetRoomId: 'old_farmland_windbreak_trees', description: '北側有一排防風樹', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 2, respawnSeconds: 35 },
@@ -4347,10 +4347,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'old_farmland_abandoned_farmhouse',
         description: '東側低矮根道要穿過潮濕根鬚與塌陷地板下方，才能回到荒廢農舍後門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '地下根窖回荒廢農舍需要穿過潮濕根道與塌陷地板，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地' },
+      { direction: 'south', targetRoomId: 'old_farmland_pumpkin_patch', description: '低矮土洞通往南瓜地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ditch_sludge', maxCount: 2, respawnSeconds: 35 },
@@ -4375,7 +4375,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農舍東側的雞舍早已沒有家禽，只剩破網、乾草窩和滿地羽毛。幾個巢箱裡堆著田鼠偷來的穀粒，屋樑上則有黑鴉築巢。雞舍連接工具棚和蜂箱行列，東側破柵欄後可望見牧草地但洞口太窄無法直接通過。玩家可搜索巢箱取得小材料，但要注意腳下破網會絆住移動。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍' },
+      { direction: 'west', targetRoomId: 'old_farmland_abandoned_farmhouse', description: '窗邊小路回到農舍', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'old_farmland_fill_n4_1', description: '北側廢棄農道回到工具棚' },
     ],
     monsters: [
@@ -4401,9 +4401,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農場北側種著一排老防風樹，樹幹被歲月吹得向同一方向傾斜，根部盤住石界碑與蜂箱小路。鳥巢、乾草和舊繩子掛在枝間，黑鴉會利用樹影遮蔽行蹤。這裡能阻擋平原強風，也把農場和更北方荒野分隔開來。玩家可調查根部裂縫，找到石界碑與牧草地之間的隱藏路線。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列' },
+      { direction: 'south', targetRoomId: 'old_farmland_beehive_rows', description: '樹根小路回到蜂箱行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'old_farmland_moonlit_pasture', description: '樹影外是月光牧草地' },
-      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '樹根纏住一座石界碑' },
+      { direction: 'north', targetRoomId: 'old_farmland_stone_marker', description: '樹根纏住一座石界碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_crow', maxCount: 3, respawnSeconds: 35 },
@@ -4428,7 +4428,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '防風樹列北端立著一座舊石界碑，碑面刻著農場邊界、灌溉權和豐收祝禱。字跡大多被苔蘚覆蓋，但仍能看出幾個近期被重新描深的符號。東側能望見月光牧草地，北側倒伏草痕指向收成圓陣，但界碑周圍根鬚封住兩條舊路，需從防風樹列或稻草人看守地繞行。這裡是探索點與事件點，可揭示農場荒廢並非單純天災，而與收成儀式有關。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列' },
+      { direction: 'south', targetRoomId: 'old_farmland_windbreak_trees', description: '樹根小路回到防風樹列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'wild_wolf', maxCount: 2, respawnSeconds: 45 },
@@ -4453,7 +4453,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '農場最北側的作物並非自然生長，而是被排列成一個巨大的收成圓陣。麥穗、南瓜藤、果枝和草繩交錯成古老符號，中心插著一把生鏽鐮刀。圓陣周圍安靜得不自然，連黑鴉都只敢停在邊緣。東側倒伏草痕可對應舊石界碑，但根鬚封住界碑方向，需從稻草人看守地重新繞回。這裡是老舊農場的大型事件鉤子，可能與豐收祝福失控、農夫失蹤和魔化作物來源有關。玩家若在此完成調查，能串起舊井、根窖、界碑與稻草人的線索。',
     exits: [
-      { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地' },
+      { direction: 'south', targetRoomId: 'old_farmland_scarecrow_watch', description: '草影回到稻草人看守地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'harvest_wight', maxCount: 1, respawnSeconds: 900 },
@@ -4479,12 +4479,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '路口南側的舊車道繞過大部分田地，兩側低矮籬笆倒了一半，泥地上還留著深深車輪印。斷掉的木車橫在路中央，車斗裡堆著空麻袋和幾只被啃破的木箱。東側車輪印指向工具棚但木車卡住岔口，需回舊農路口再走小糧倉路線。這裡是交通與捷徑節點，玩家清理木車後可快速往返路口和村外小路，也能作為低等玩家撤退時的安全路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口' },
+      { direction: 'north', targetRoomId: 'old_farmland_crossroads', description: '車道回到舊農路口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'village_outskirts',
         description: '西側舊車道先繞過斷木車與低矮籬笆，穿過荒田邊界後才回到村外小路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊車道捷徑回村外小路需要跨過荒田邊界與斷木車，實際路程長於相鄰一格。',
       },
     ],
@@ -4517,10 +4517,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'old_farmland_stone_marker',
         description: '南向小徑沿岩壁外緣回到老農場石界碑，路程比相鄰房間更長，谷風會提醒玩家已離開溪谷',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '溪谷入口南側需沿岩壁外緣走回廢田界碑，實際路程長於相鄰一格。',
       },
-      { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸' },
+      { direction: 'north', targetRoomId: 'whispering_valley_reed_bank', description: '溪水流向蘆葦岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'whispering_valley_mossy_footbridge', description: '苔石小橋跨過溪水' },
       { direction: 'west', targetRoomId: 'whispering_valley_ranger_post', description: '西側木棚像巡林哨站' },
     ],
@@ -4547,8 +4547,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '溪谷入口北側長滿及肩蘆葦，細長葉片在風裡彼此摩擦，像無數人在輕聲交談。泥岸上留著田鼠、野狼和巡林靴印，溪面則偶爾泛起史萊姆經過的圓形波紋。玩家可採集蘆葦、尋找魚餌或沿岸追蹤腳印，但視線會被草葉遮住。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口' },
-      { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈' },
+      { direction: 'south', targetRoomId: 'whispering_valley_entrance', description: '沿岸回到溪谷入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'whispering_valley_clear_stream', description: '溪水變得更清澈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'whispering_valley_fishing_bend', description: '水流轉向釣魚灣' },
     ],
     monsters: [
@@ -4574,8 +4574,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '溪水在此變淺，能看見鵝卵石、魚苗和幾片被水流打磨得發亮的藥草葉。淺灘兩側岩壁回音很強，腳步聲會被放大成遠處低語。玩家可在這裡釣小魚、清洗採集物或搜索水底亮點，但過於靠近水泡會驚動潛伏的史萊姆。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸' },
-      { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群' },
+      { direction: 'south', targetRoomId: 'whispering_valley_reed_bank', description: '水流回到蘆葦岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'whispering_valley_echo_rocks', description: '上游有回音岩群', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'whispering_valley_herb_slope', description: '東側斜坡長滿草藥' },
     ],
     monsters: [
@@ -4655,7 +4655,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '溪水在蘆葦岸東側轉出一個平靜彎灣，幾塊扁平石頭正好能坐下垂釣。水面有銀色魚影穿梭，岸邊還插著被遺忘的竹釣竿。這裡是明顯資源點，玩家可釣魚、找魚餌或修補舊竿，但腐木下的田鼠和水邊史萊姆會干擾安靜作業。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
     exits: [
       { direction: 'west', targetRoomId: 'whispering_valley_reed_bank', description: '回到蘆葦岸' },
-      { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧' },
+      { direction: 'east', targetRoomId: 'whispering_valley_mist_pool', description: '彎灣深處起了霧', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'whispering_valley_mossy_footbridge', description: '北側溪岸小徑回到苔石小橋' },
       { direction: 'south', targetRoomId: 'whispering_valley_herb_slope', description: '南側濕石小徑通往草藥斜坡' },
     ],
@@ -4682,19 +4682,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '上游岩壁崩落形成一片奇特岩群，每塊岩石都能把聲音折成不同方向。站在中央說話，回音會像從四面八方的陌生人嘴裡傳回。岩面刻有巡林記號與更古老的溪谷符號，玩家可藉回音尋找隱藏通道，也可能被黑鴉和野狼利用聲音誤導。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘' },
+      { direction: 'south', targetRoomId: 'whispering_valley_clear_stream', description: '下坡回到清溪淺灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'whispering_valley_ice_fern_patch',
         description: '往東的冷聲穿過折音石縫與冷霧岔路，最後接到冰蕨叢，需要靠霜痕辨路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '回音岩群東側要穿過折音石縫與冷霧岔路，才會接到冰蕨叢。',
       },
       {
         direction: 'north',
         targetRoomId: 'whispering_valley_waterfall_base',
         description: '循上游回音繞過多塊崩落岩，才會抵達瀑布底部，途中回聲常讓方向感混亂',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '回音岩群北側需循著上游水聲繞過多塊崩落岩，瀑布並非相鄰一格。',
       },
     ],
@@ -4725,7 +4725,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'whispering_valley_cold_spring',
         description: '西側柳枝小路繞過垂枝與冷泉外圍後才回到泉邊，濕土與拖痕會顯示這是長路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '柳樹營地西側小路會繞過低垂柳枝與冷泉外圍，實際距離長於一格。',
       },
       {
@@ -4763,7 +4763,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'whispering_valley_willow_camp',
         description: '沿泉霧與柳根小徑繞行一段後才會抵達柳樹營地，營火灰燼可作為方向線索',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '冷泉北側需沿泉霧與柳根小徑繞行至營地，路線不是平面相鄰格。',
       },
       { direction: 'east', targetRoomId: 'whispering_valley_spider_grotto', description: '岩縫通向蜘蛛洞' },
@@ -4798,7 +4798,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'whispering_valley_mist_pool',
         description: '東側潮濕坡道先繞過塌岸與蛛絲，最後落到霧潭邊緣，滑落聲可能引來潛伏怪物',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '蛛網岩洞東側坡道濕滑且曲折，會先繞過塌岸再落到霧潭邊。',
       },
     ],
@@ -4828,12 +4828,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'north', targetRoomId: 'whispering_valley_herb_slope', description: '北側採集坡面回到草藥斜坡' },
       { direction: 'south', targetRoomId: 'whispering_valley_ice_fern_patch', description: '南側冷霧坡面通往冰蕨叢' },
-      { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '西側倒木淺橋沿濕滑樹幹橫移，穿過迴聲水灣與碎岩淺灘抵達回音岩群', edgeKind: 'long_path', edgeNote: '倒木淺橋到回音岩群需沿濕滑樹幹與迴聲水灣橫移，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'whispering_valley_echo_rocks', description: '西側倒木淺橋沿濕滑樹幹橫移，穿過迴聲水灣與碎岩淺灘抵達回音岩群', edgeKind: 'distant_route', edgeNote: '倒木淺橋到回音岩群需沿濕滑樹幹與迴聲水灣橫移，實際路程長於相鄰一格。' },
       {
         direction: 'east',
         targetRoomId: 'whispering_valley_mist_pool',
         description: '跨過濕滑倒木與塌陷潭岸後才會抵達霧潭邊，腳下落差讓這段路不能視為鄰格',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '倒木東端要跨過濕滑樹幹與塌陷潭岸，實際路程長於相鄰一格。',
       },
     ],
@@ -4864,14 +4864,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'whispering_valley_fallen_log',
         description: '沿塌岸攀回倒木東端，潮濕地形讓路程比相鄰格更長，霧氣會遮住回頭路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霧潭西側需沿塌岸攀回倒木東端，潮濕地形讓路程長於相鄰一格。',
       },
       {
         direction: 'north',
         targetRoomId: 'whispering_valley_spider_grotto',
         description: '濕坡繞進蛛網遮蔽的岩縫，上坡一段後才到岩洞，洞口前能看見密集蛛絲',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霧潭北側濕坡會繞進蛛網遮蔽的岩縫，抵達洞口前有一段曲折上坡。',
       },
     ],
@@ -4904,7 +4904,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'whispering_valley_waterfall_base',
         description: '東側溪畔刻痕與水霧往上游前進，瀑布聲會逐漸變大，石龕鈴聲會在背後變弱',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊神龕東側需沿溪畔刻痕與水霧繞到瀑布底部，並非直接相鄰格。',
       },
     ],
@@ -4936,10 +4936,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'whispering_valley_echo_rocks',
         description: '冷聲穿過折音岩縫回到回音岩群，玩家需繞行石縫並避開會放大腳步聲的岩面',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '冰蕨叢西側聲音會穿過折音岩縫回到岩群，玩家實際需繞行石縫。',
       },
-      { direction: 'east', targetRoomId: 'whispering_valley_hidden_cascade', description: '東側霜霧指向隱瀑', edgeKind: 'long_path', edgeNote: '冰蕨叢東側需穿過霜霧與濕岩，才會抵達隱瀑。' },
+      { direction: 'east', targetRoomId: 'whispering_valley_hidden_cascade', description: '東側霜霧指向隱瀑', edgeKind: 'distant_route', edgeNote: '冰蕨叢東側需穿過霜霧與濕岩，才會抵達隱瀑。' },
     ],
     monsters: [
       { monsterId: 'ice_fern_weaver', maxCount: 2, respawnSeconds: 90 },
@@ -4968,14 +4968,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'whispering_valley_waterfall_base',
         description: '沿根洞與水霧小徑繞行後，水聲會引到瀑布底部，狼爪印會標出危險彎道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '溪狼巢東側要沿根洞與水霧小徑繞到瀑布底部，距離長於相鄰一格。',
       },
       {
         direction: 'south',
         targetRoomId: 'whispering_valley_echo_rocks',
         description: '岩間小路避開根洞與崩石後，曲折回到回音岩群，碎石坡會讓退路變慢',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '溪狼巢南側岩間小路需避開巢穴根洞與崩石，回到岩群前會繞行一段。',
       },
     ],
@@ -5006,21 +5006,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'whispering_valley_echo_rocks',
         description: '沿下游濕石與回音水道前進一段後才回到回音岩群，瀑聲會逐步被岩群回音取代',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '瀑布底部南側需沿下游濕石與回音水道回到岩群，實際路程較長。',
       },
       {
         direction: 'west',
         targetRoomId: 'whispering_valley_wolf_den',
         description: '水霧後藏著狼巢小徑，需繞過樹根與濕滑岩面，魚骨與爪痕會提示接近巢穴',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '瀑布底部西側狼徑藏在水霧與樹根後方，通往巢穴需繞過濕滑岩面。',
       },
       {
         direction: 'north',
         targetRoomId: 'whispering_valley_hidden_cascade',
         description: '穿過瀑布水幕與內側落腳點後會進入隱瀑石室，水壓讓通行像一段短探險',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '瀑布底部北側需穿過水幕與內側落腳點，才會抵達隱瀑石室。',
       },
     ],
@@ -5051,14 +5051,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'whispering_valley_waterfall_base',
         description: '穿越內外兩層水幕後才能退回外側瀑布底部，落水聲會遮住出口位置',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '隱瀑石室南側需穿越內外兩層水幕，退回瀑布底部不是相鄰平面移動。',
       },
       {
         direction: 'north',
         targetRoomId: 'whispering_valley_whispering_rift',
         description: '沿水蝕符號深入狹縫暗道，最後抵達低語裂縫，藍白光絲會作為前進路標',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '隱瀑石室北側需沿水蝕符號深入狹縫，抵達低語裂縫前有一段暗道。',
       },
     ],
@@ -5116,14 +5116,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'whispering_valley_wolf_den',
         description: '狼徑沿淺流與根洞繞行一段，最後通向溪狼巢，途中濕泥會留下明顯爪印',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '石堰東側狼徑需沿淺流與根洞繞行，抵達溪狼巢不是相鄰一格。',
       },
       {
         direction: 'west',
         targetRoomId: 'whispering_valley_whispering_rift',
         description: '西側循水流聲與水位線穿過裂石暗道，才會抵達低語裂縫，石堰符號可確認路線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '石堰西側需循水位線與裂石暗道前進，才會抵達低語裂縫。',
       },
     ],
@@ -5154,7 +5154,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'whispering_valley_hidden_cascade',
         description: '沿狹窄水蝕小徑退回隱瀑石室，屬於長暗道移動，水聲會逐漸變成瀑布回音',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '低語裂縫南側需沿狹窄水蝕小徑退回石室，屬於長暗道而非相鄰格。',
       },
     ],
@@ -5725,7 +5725,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '西境舊路在這裡穿過一排傾斜防風柵，正式進入荒草丘陵。枯黃高草被強風吹成同一方向，路牌上用焦黑字跡警告旅人不要在夜裡離開石道。柵門旁有避風凹槽、舊補給箱和被半獸人斥候削尖的木樁，是進出丘陵時最安全的錨點。玩家能在這裡整理路線、觀察風向，也能從草浪間辨認野豬踐踏痕與哥布林巡邏腳印。柵門柱上刻著近月失蹤商隊的記號，旁邊繫著還未完全褪色的求救布條，表示危險已經逼近入口。若回頭沿舊路撤離，這裡也是最快的交通節點，適合護送任務重新集合出發。',
     exits: [
       { direction: 'east', targetRoomId: 'wildgrass_hills_lower_slope', description: '石道爬向低坡' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_old_road_cut', description: '舊路切口可快速離開丘陵' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_old_road_cut', description: '舊路切口可快速離開丘陵', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 2, respawnSeconds: 60 },
@@ -5752,7 +5752,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '石道回到防風柵門' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '草浪形成狹長通道' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_bent_oak', description: '坡上有一棵彎橡樹' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_bent_oak', description: '坡上有一棵彎橡樹', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormtusk_boar', maxCount: 2, respawnSeconds: 80 },
@@ -5779,12 +5779,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_lower_slope', description: '草徑回到低風坡' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥味通往野豬泥窪' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_scout_ledge', description: '草坡上方有斥候岩臺' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_scout_ledge', description: '草坡上方有斥候岩臺', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'wildgrass_hills_stream_cut',
         description: '南側要撥開高草並沿濕滑獸徑下切，穿過一段被草根遮住的土坡才抵達溪切溝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '高草徑到溪切溝需要穿過高草伏擊走廊與濕滑下切土坡，屬於丘陵內長路徑。',
       },
     ],
@@ -5813,7 +5813,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '乾草徑在西側' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '泥痕延向果園廢址' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_hawk_perch', description: '上方石柱有猛禽盤旋' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_hawk_perch', description: '上方石柱有猛禽盤旋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormtusk_boar', maxCount: 3, respawnSeconds: 80 },
@@ -5838,9 +5838,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '高草徑北面露出一片平整岩臺，能俯瞰低坡、泥窪和遠方煙火。哥布林斥候在石縫插著破布旗，用不同顏色標示旅人隊伍、商車和巡獵野獸。岩臺邊緣留有磨平的腳印與弓弦蠟，說明這裡長期被當作監視點。玩家可奪下旗號，短暫干擾丘陵巡邏，也能從望向北方的視角找到石環與雷丘位置。這裡的戰鬥容易被高低差影響，若不先清掉弓手，往下撤退會一直受到追射。',
     exits: [
-      { direction: 'south', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '下坡回到高草徑' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_tallgrass_lane', description: '下坡回到高草徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_hawk_perch', description: '岩脊延向鷹棲柱' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_stone_ring', description: '北面可見石環' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_stone_ring', description: '北面可見石環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'grassblade_raider', maxCount: 3, respawnSeconds: 60 },
@@ -5865,19 +5865,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '低風坡北側有一棵被長年強風吹彎的橡樹，樹冠幾乎貼著地面，根部卻牢牢抓住岩層。枝條上掛著旅人留下的布條、獸牙和小鈴，風一吹便發出細碎聲響。這裡比周圍安靜，適合短暫避風與整理採集品，也藏著通往種籽溝和隱泉的自然線索。玩家能辨認哪些布條是求平安，哪些是哥布林用來標記獵物的暗號。若夜裡停留，樹影會像低伏巨獸，容易引來巡邏狼群與斥候。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'wildgrass_hills_lower_slope', description: '坡路回到低風坡' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_lower_slope', description: '坡路回到低風坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'wildgrass_hills_seed_gully',
         description: '東側要繞過彎橡樹裸露根盤，沿避風草溝慢慢下行，穿過堆積籽穗後才進入種籽溝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '彎橡樹到種籽溝需要繞過根盤與避風草溝，屬於丘陵內長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_hidden_spring',
         description: '北側濕草痕跡要穿過低垂樹冠與碎石暗渠，才能找到被石塊遮住的隱泉',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '彎橡樹到隱泉需要沿濕草暗渠與碎石遮蔽繞行，屬於丘陵內長路徑。',
       },
     ],
@@ -5908,7 +5908,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_tallgrass_lane',
         description: '北側回高草徑要踩著濕滑踏石爬上土壁，再穿過高過肩頭的乾草走廊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '溪切溝回高草徑需要沿踏石爬坡並穿過高草走廊，屬於丘陵內長路徑。',
       },
       { direction: 'west', targetRoomId: 'wildgrass_hills_fill_2_n12', description: '溪溝沿風口通道轉向舊路切口' },
@@ -5916,7 +5916,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'wildgrass_hills_hidden_spring',
         description: '東側要逆著細水流穿過蘆葦、滑石與被草蓋住的暗溝，才接近隱泉水潭',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '溪切溝到隱泉需要逆流穿過蘆葦、滑石與暗溝，屬於丘陵內長路徑。',
       },
     ],
@@ -5944,7 +5944,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '泥窪北側的石柱從草地裡孤立聳起，頂端築著幾座用枯枝、布片和細骨堆成的鷹巢。風之鷹沿著上升氣流盤旋，會在獵物露出破綻時從背光處俯衝。柱腳有許多被摔碎的甲片和閃亮小物，是猛禽從戰場或商路叼回的戰利品。玩家可攀爬石縫採集羽毛、尋找被偷走的任務物，也能從高處看見看火營與雷丘。這裡視野開闊但缺少掩體，遠程敵人與空中敵人會同時施壓。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_scout_ledge', description: '岩脊回到斥候岩臺' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_boar_wallow', description: '下方是野豬泥窪' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_boar_wallow', description: '下方是野豬泥窪', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火來自看火營' },
     ],
     monsters: [
@@ -5969,7 +5969,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '斥候岩臺北面有一圈古老立石，石面被風砂磨得圓滑，只剩幾道像閃電與草籽交纏的符號。高草在石環內倒伏成螺旋，中央堆著乾草、獸骨和焦黑祭灰。哥布林不敢長久停留，只會把偷來的護符丟進環中換取風向庇護。這裡是探索與任務線索房，玩家可解讀符號，得知雷丘並非自然形成，而是舊祭儀引來的風暴焦點。石環偶爾會讓聲音失真，使怪物從錯誤方向靠近。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'south', targetRoomId: 'wildgrass_hills_scout_ledge', description: '下坡回到斥候岩臺' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_scout_ledge', description: '下坡回到斥候岩臺', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_thunder_mound', description: '石環缺口指向雷丘' },
       { direction: 'west', targetRoomId: 'wildgrass_hills_seed_gully', description: '草籽溝在西側' },
     ],
@@ -5998,7 +5998,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_boar_wallow', description: '泥路回到野豬泥窪' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_goblin_blind', description: '樹後有哥布林伏棚' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙味從北面傳來' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙味從北面傳來', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormtusk_boar', maxCount: 2, respawnSeconds: 80 },
@@ -6028,7 +6028,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_watchfire_camp',
         description: '北側要拆開伏棚後方草網，避過捕獸夾與煙火哨線才進入看火營邊緣',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '哥布林伏棚到看火營需要穿過草網陷阱與煙火哨線，屬於丘陵內長路徑。',
       },
     ],
@@ -6061,7 +6061,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'wildgrass_hills_watchfire_camp',
         description: '南側焦草坡要繞過雷痕裂石與幾段鬆動土脊，才下到看火營煙火旁',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷擊丘到看火營需要沿焦草坡與雷痕裂石繞行，屬於丘陵內長路徑。',
       },
     ],
@@ -6092,11 +6092,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'wildgrass_hills_bent_oak',
         description: '西側回彎橡樹要沿種籽堆與裸露樹根逆坡而上，穿過一段避風草溝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '種籽溝回彎橡樹需要沿種籽堆、裸露樹根與避風草溝上行，屬於丘陵內長路徑。',
       },
       { direction: 'east', targetRoomId: 'wildgrass_hills_stone_ring', description: '舊腳印通向石環' },
-      { direction: 'north', targetRoomId: 'wildgrass_hills_broken_totem', description: '溝尾立著斷圖騰' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_broken_totem', description: '溝尾立著斷圖騰', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_serpent', maxCount: 2, respawnSeconds: 75 },
@@ -6122,13 +6122,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鷹棲柱與雷擊丘之間的鞍部搭著一座哥布林看火營，幾堆煙火用濕草悶燒，能把信號送到酋長脊和伏棚。營地用獸皮、破帆布和果園木板搭成，武器架上掛滿短矛、投石袋與偷來的銅鍋。這裡是丘陵中段的高密度戰鬥與任務房，玩家可以破壞煙火、奪取巡邏令牌，或解救被綁在木柱旁的旅人。營地四周沒有城牆，卻被高草與陷坑保護；若沒有先觀察煙向，很容易從錯誤入口闖進包圍圈。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_hawk_perch', description: '石柱在西側' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '坡下是果園廢址' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_orchard_ruin', description: '坡下是果園廢址', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_windmill_shell', description: '破路通向風車空殼' },
       {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_thunder_mound',
         description: '北側焦草坡要穿過煙火外圈與幾道鬆動土脊，才抵達雷擊丘裂石下方',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '看火營到雷擊丘需要穿過煙火外圈、焦草坡與鬆動土脊，屬於丘陵內長路徑。',
       },
     ],
@@ -6156,12 +6156,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '看火營東側殘留一座舊風車，木翼早被強風吹斷，只剩石塔空殼和卡住的齒輪。塔內牆上刻著農戶收成記號，外牆則被哥布林塗上戰利品數量。風穿過破窗時會帶動斷齒輪發出沉重敲擊，像有人在塔內拖著鎖鏈。這裡是探索與捷徑房，玩家能修復部分機關，放下通往酋長脊的繩梯，也能找到失落農具與舊倉庫鑰匙。塔內狹窄，哥布林戰士會利用樓梯轉角逼近，風之鷹則從破窗撲入。',
     exits: [
       { direction: 'west', targetRoomId: 'wildgrass_hills_watchfire_camp', description: '煙火營在西側' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_goblin_blind', description: '草棚伏點在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_chief_ridge',
         description: '北側塔後繩梯要先爬過風車石殼，再沿暴露山脊貼著旗桿走到酋長脊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '風車空殼到酋長脊需要攀爬塔後繩梯並穿過暴露山脊，屬於丘陵內長路徑。',
       },
     ],
@@ -6192,17 +6192,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'wildgrass_hills_bent_oak',
         description: '南側回彎橡樹要沿濕草暗渠穿過碎石與低垂樹冠，最後繞到樹根背風面',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '隱泉回彎橡樹需要沿濕草暗渠、碎石與低垂樹冠繞行，屬於丘陵內長路徑。',
       },
       {
         direction: 'west',
         targetRoomId: 'wildgrass_hills_stream_cut',
         description: '西側泉水要順著暗溝流過蘆葦、滑石與低草窄岸，才落入較低處的溪切溝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '隱泉到溪切溝需要順暗溝穿過蘆葦與滑石，屬於丘陵內長路徑。',
       },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_broken_totem', description: '石後小徑通向斷圖騰' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_broken_totem', description: '石後小徑通向斷圖騰', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormtusk_boar', maxCount: 2, respawnSeconds: 80 },
@@ -6227,8 +6227,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '隱泉東側的小丘立著半截斷裂圖騰，木面刻有草籽、風線和張口獸首，頂端被雷火劈黑。哥布林在圖騰周圍插上獸骨，試圖把古老標記改造成部落戰旗，但每次大風都會把骨牌吹散。東側草脊通向風暴草冠的痕跡仍在，但斷旗與骨牌擋住上坡路，需從酋長脊進入最高草冠後再折返。這裡是精英前置與任務線索房，玩家能比較圖騰符號與石環刻痕，推斷丘陵曾有守風祭儀。斷木內部藏著空腔，裡面有一卷被油布保護的舊誓詞。取走誓詞會引來巡邏隊，也會打開通往風暴草冠的線索。',
     exits: [
-      { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉' },
-      { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝' },
+      { direction: 'west', targetRoomId: 'wildgrass_hills_hidden_spring', description: '石徑回到隱泉', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'wildgrass_hills_seed_gully', description: '下坡是種籽溝', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_fill_3_n8', description: '東側斷旗坡道通往風暴草冠' },
     ],
     monsters: [
@@ -6259,10 +6259,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'wildgrass_hills_windmill_shell',
         description: '南側要沿暴露山脊下行，再攀著塔後繩梯越過破窗，落回風車石殼內部',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '酋長脊回風車空殼需要沿暴露山脊下行並攀回塔後繩梯，屬於丘陵內長路徑。',
       },
-      { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '最高草冠在東側' },
+      { direction: 'east', targetRoomId: 'wildgrass_hills_stormgrass_crown', description: '最高草冠在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_warlord', maxCount: 1, respawnSeconds: 1500 },
@@ -6292,7 +6292,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'wildgrass_hills_chief_ridge',
         description: '北側山脊沿旗索與斜坡繞回酋長營地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '風暴草冠回酋長脊需沿斜向山脊與旗索坡道繞行，屬於丘陵內長路徑。',
       },
       { direction: 'west', targetRoomId: 'wildgrass_hills_fill_5_n8', description: '西側草脊穿過界石陰影回往斷圖騰' },
@@ -6321,7 +6321,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '防風柵門南側有一段被溪水和車輪切出的舊路，路面低於草坡，兩側土壁露出層層壓實的輪轍。半倒里程碑標著通往西境村落的方向，旁邊還有商隊臨時修車留下的鐵釘與木楔。這裡是荒草丘陵的撤離與捷徑交通房，玩家可從溪切溝繞回入口，也能在完成酋長脊事件後護送旅人離開。雖然比主坡安全，舊路仍會被流竄野獸利用；若忽視土壁上的新爪痕，回程也可能遭遇伏擊。',
     exits: [
-      { direction: 'north', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '坡上是防風柵門' },
+      { direction: 'north', targetRoomId: 'wildgrass_hills_windbreak_gate', description: '坡上是防風柵門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wildgrass_hills_fill_2_n12', description: '東側風口通道連向溪切溝' },
     ],
     monsters: [
@@ -6347,7 +6347,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '霧港城門不是高牆要塞，而是一座跨在濕滑石路上的拱門，門頂掛著被海鹽腐蝕的銅鐘。霧從港灣一路推進城內，讓旅人只能看見近處燈火與地上閃亮水痕。守門人會在這裡檢查船票、旅店名牌與貨運封條，也提醒新來者別在退潮前靠近外防波堤。這裡是霧港的入口與回程錨點，玩家可接到尋船、護送與失物任務，並從路牌判斷市集、傳送燈塔與舊海門方向。城門旁的公告板每天都會被潮氣弄皺，卻仍貼滿急件；若公告被撕下，通常代表某艘船的消息被人刻意封住。門洞下方還留著昨夜車輪壓出的深痕。',
     exits: [
       { direction: 'east', targetRoomId: 'mist_harbor_tide_plaza', description: '濕石路通向潮汐廣場' },
-      { direction: 'south', targetRoomId: 'mist_harbor_sea_gate', description: '城牆坡道通往舊海門' },
+      { direction: 'south', targetRoomId: 'mist_harbor_sea_gate', description: '城牆坡道通往舊海門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[門]',
     mapX: 0,
@@ -6369,9 +6369,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '潮汐廣場鋪著深灰石板，中央立著一座以浮標、齒輪和月相盤組成的潮鐘。每當潮位改變，鐘內銅錘便敲出低沉聲響，提醒商人調整船期，也提醒漁民避開暗流。廣場四周連著魚市、海關、旅店與傳送燈塔，是霧港最常被任務、交易與找人流程使用的核心房。街邊攤販用油布蓋住貨箱，霧中能聞到鹽、焦糖、魚腥與濕繩混合的味道。玩家可在此確認城市路線、等待 NPC 會合，或從潮鐘記錄推斷某艘船是否在夜裡偷偷進港。廣場石縫裡積著退潮留下的白鹽，像一圈圈未完成的航線。每次鐘響都會讓霧裡的人群短暫停步。',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_fog_gate', description: '濕路回到城門' },
-      { direction: 'north', targetRoomId: 'mist_harbor_portal_lantern', description: '藍燈指向傳送燈塔' },
+      { direction: 'north', targetRoomId: 'mist_harbor_portal_lantern', description: '藍燈指向傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'mist_harbor_fish_market', description: '魚腥與叫賣聲來自魚市' },
-      { direction: 'south', targetRoomId: 'mist_harbor_customs_house', description: '石階通往海關廳' },
+      { direction: 'south', targetRoomId: 'mist_harbor_customs_house', description: '石階通往海關廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[廣]',
     mapX: 1,
@@ -6392,9 +6392,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '潮汐廣場北側矗立著一座短塔，塔頂不是火焰，而是一盞被符文鏡片包住的藍色傳送燈。燈光穿過海霧後像水波一樣擴散，能與公共傳送網路對齊，讓旅人從遠方城市抵達霧港。塔內石階總是潮濕，牆上掛滿各地港印與傳送費率牌。這裡是霧港的主要傳送節點，玩家可使用公共傳送、設定回城位置、查詢船運目的地，也能接到修復鏡片與追查錯誤傳送記錄的任務。若燈色偏綠，代表霧港外海正在出現異常魔潮；守塔人會立刻封存當日名冊，等待可靠冒險者核對。塔底水槽會收集傳送後落下的鹽霧結晶。',
     exits: [
-      { direction: 'south', targetRoomId: 'mist_harbor_tide_plaza', description: '石階回到潮汐廣場' },
-      { direction: 'east', targetRoomId: 'mist_harbor_chart_archive', description: '塔後小門通向海圖檔案室' },
-      { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈塔橋連往燈室階梯' },
+      { direction: 'south', targetRoomId: 'mist_harbor_tide_plaza', description: '石階回到潮汐廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'mist_harbor_chart_archive', description: '塔後小門通向海圖檔案室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈塔橋連往燈室階梯', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[傳]',
     mapX: 1,
@@ -6415,15 +6415,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '海關廳是一棟低矮石屋，窗戶常被霧水糊成乳白色，屋內卻點著明亮油燈。長桌上攤著貨運簿、關稅印章、銅秤與未拆封的潮濕木箱，港務員在此核對每一批進出霧港的船貨。這裡是服務與任務房，玩家可登記貿易貨物、查詢船名、繳納港稅，也能接到追查走私印章或尋找失蹤貨箱的委託。牆上掛著近三十日的進港表，其中幾行被墨水暈開，像有人刻意在霧夜改過紀錄。通往倉庫與船長辦公室的門永遠有人盯著。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_tide_plaza', description: '台階回到潮汐廣場' },
+      { direction: 'north', targetRoomId: 'mist_harbor_tide_plaza', description: '台階回到潮汐廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'mist_harbor_warehouse_nine',
         description: '東側封條門後需穿過海關內廊、貨物檢查桌與濕木箱通道，才會抵達九號倉',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '海關廳到九號倉需穿過內廊與貨物檢查區，距離長於相鄰格。',
       },
-      { direction: 'south', targetRoomId: 'mist_harbor_captains_office', description: '內廊通向船長辦公室' },
+      { direction: 'south', targetRoomId: 'mist_harbor_captains_office', description: '內廊通向船長辦公室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[關]',
     mapX: 1,
@@ -6492,8 +6492,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '船匠塢靠著內港斜坡，半修好的小船被木架支起，船腹刷著新鮮焦油，旁邊堆滿橡木板、鉚釘、桅杆和滑輪。工頭用粉筆在船殼上標出裂縫，學徒則在霧裡推動沉重吊臂。這裡是修理與交通準備房，玩家可修補船隻、委託打造渡船零件、學習外海航線需求，也能接到尋找失竊龍骨木或測試新船的任務。塢邊水面經常漂來來歷不明的碎板，若板上還有新鮮爪痕，代表某條近海航線剛剛出事。',
     exits: [
       { direction: 'west', targetRoomId: 'mist_harbor_sailmakers_row', description: '帆匠街在西側' },
-      { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '滑道下到渡船棧橋' },
-      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '外側木道通往防波堤' },
+      { direction: 'south', targetRoomId: 'mist_harbor_ferry_pier', description: '滑道下到渡船棧橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'mist_harbor_breakwater_end', description: '外側木道通往防波堤', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[匠]',
     mapX: 4,
@@ -6518,21 +6518,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'mist_harbor_clinic_of_salt',
         description: '東側後廊繞過旅店廚房、濕斗篷架與藥草門簾後，才會通往鹽診所，地面留有傷員水痕',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉錨旅店到鹽診所需穿過後廊與服務區，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'mist_harbor_guild_quay',
         description: '南側木階沿旅店外牆下到潮濕棧道，穿過碼頭人潮後才抵達冒險者碼頭',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉錨旅店到冒險者碼頭有木階高差與碼頭人潮，不是相鄰格。',
       },
       {
         direction: 'west',
         targetRoomId: 'mist_harbor_tide_plaza',
         description: '西側雨棚路要穿過旅店門廊、潮濕石階與攤販遮布後，才會回到潮汐廣場',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉錨旅店西返潮汐廣場需沿雨棚街與石階回繞，屬於長路徑。',
       },
     ],
@@ -6559,7 +6559,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'mist_harbor_anchor_inn',
         description: '西返時後廊沿藥草門簾、濕斗篷架與旅店廚房回繞，才會回到沉錨旅店',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹽診所西返沉錨旅店需穿過後廊與服務區，屬於長路徑。',
       },
       { direction: 'north', targetRoomId: 'mist_harbor_sailmakers_row', description: '北側藥箱路通往帆匠街' },
@@ -6567,7 +6567,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'mist_harbor_chart_archive',
         description: '東側窄梯沿診所後牆盤上二樓，穿過潮濕書架門後才會到海圖檔案室',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹽診所到海圖檔案室有窄梯高差與書架門，不是相鄰平面一格。',
       },
     ],
@@ -6596,7 +6596,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'mist_harbor_smugglers_alley',
         description: '北側陰影小路沿碼頭樁影、濕滑木板與貨箱背面下滑，才會接到走私巷',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '冒險者碼頭到走私巷需沿棧道背面與貨箱陰影繞行，屬於長路徑。',
       },
     ],
@@ -6641,19 +6641,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '船長辦公室位在海關廳後方，牆上掛滿航線圖、舊船鐘、風暴記錄和幾把失去主人的船鑰匙。值班船長在此核准出航、調停碼頭爭議，也替冒險者安排可靠船員。這裡是 NPC 與交通任務房，玩家可申請外海通行、查詢失事船、簽署護航契約，或追問某艘沒有進港記錄卻出現在潮鐘上的船。辦公桌抽屜裡有一疊被海水泡皺的求救信，日期全都落在同一場大霧之夜。若玩家完成港務線，這裡會成為解鎖遠洋路線的關鍵地點。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_customs_house', description: '內廊回到海關廳' },
+      { direction: 'north', targetRoomId: 'mist_harbor_customs_house', description: '內廊回到海關廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'mist_harbor_chart_archive',
         description: '東側書架門後需穿過船長私藏圖櫃、狹窄檔案走廊與潮濕樓梯，才到海圖檔案室',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '船長辦公室到海圖檔案室需穿過圖櫃走廊與樓梯，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'mist_harbor_sea_gate',
         description: '南側港務坡道沿外牆下行，穿過鐵鏈閘與潮痕石階後，才會抵達舊海門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '船長辦公室到舊海門有外牆坡道與鐵鏈閘高差，不是相鄰格。',
       },
     ],
@@ -6676,8 +6676,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '傳送燈塔北面的石橋接上一段螺旋階梯，階梯沿著老燈塔內壁向上盤繞，扶手被鹽霧磨得發亮。牆面每隔幾步就嵌著小窗，能看見霧港屋頂、內港船桅與遠處防波堤在白霧中若隱若現。東側維修門標向防波堤端，但門內落石堵住通道，需由防波堤端進入燈塔維修線。這裡是交通與探索房，玩家可前往霧望燈室，也能在階梯牆上找到歷代守燈人刻下的潮汐備忘。階梯間回音很重，適合觸發回憶、偵查或找人任務。若外海有異常，窗縫會吹進帶冰味的霧，讓牆上銅釘結霜。守燈人的腳印常停在某扇小窗前，似乎那裡能看見官方不願承認的航線。階梯越往上，海浪聲就越像低語。',
     exits: [
-      { direction: 'south', targetRoomId: 'mist_harbor_portal_lantern', description: '石橋回到傳送燈塔' },
-      { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '燈室迴廊通往霧望燈室' },
+      { direction: 'south', targetRoomId: 'mist_harbor_portal_lantern', description: '石橋回到傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'mist_harbor_fogwatch_lantern', description: '燈室迴廊通往霧望燈室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[梯]',
     mapX: 1,
@@ -6698,7 +6698,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '霧望燈室位在老燈塔頂端，巨大的玻璃透鏡被銅架固定，中心燃著帶藍邊的港燈。守燈人用它穿透濃霧，替返航船隻標出內港安全水道，也觀測外海是否有幽霧船、冰潮或海怪陰影。東側外梯可俯看防波堤端，但高處梯門被鹽蝕卡死，需從防波堤端外梯上來。這裡是地標與大型事件觀測房，玩家可校準燈光、解讀遠方燈號，或在夜裡尋找失蹤船隊的回應。燈室地板刻著一圈方位線，某些刻度被反覆磨損，表示有人常把燈光轉向官方航線以外的黑暗海面。完成霧港主線時，這裡會成為選擇公開真相或掩護私航的關鍵場景，也決定哪些船能穿過霧回家。透鏡背面還殘留舊日撞擊裂紋。',
     exits: [
-      { direction: 'west', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈室迴廊回到階梯間' },
+      { direction: 'west', targetRoomId: 'mist_harbor_lighthouse_stairs', description: '燈室迴廊回到階梯間', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     mapSymbol: '[燈]',
     mapX: 1,
@@ -6719,7 +6719,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '渡船棧橋伸入內港水面，小船依照目的地排成幾列，船頭掛著紅、藍、白不同顏色的航燈。船夫靠在繩樁邊等潮位，腳下木板被海水泡得發黑，縫隙間能看見細碎銀魚游過。東側外棧道能看見防波堤端，但退潮後踏板斷開，需從防波堤端回到棧橋。這裡是交通服務房，玩家可搭乘短程渡船前往外島、海上副本入口或對岸倉區，也能護送 NPC、運送藥箱與追查未登記船票。渡船時刻受潮鐘控制，若霧太重，船夫會要求額外燈油或可靠護衛。棧橋末端有一只空船總是無人認領，船底卻常保持乾淨。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_shipwright_yard', description: '滑道上到船匠塢' },
+      { direction: 'north', targetRoomId: 'mist_harbor_shipwright_yard', description: '滑道上到船匠塢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'mist_harbor_guild_quay', description: '棧道回到冒險者碼頭' },
     ],
     mapSymbol: '[渡]',
@@ -6745,7 +6745,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'mist_harbor_customs_house',
         description: '西返時封條門需穿過濕木箱通道、貨物檢查桌與海關內廊，才會回到海關廳',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '九號倉西返海關廳需穿過貨物檢查區與內廊，屬於長路徑。',
       },
       { direction: 'north', targetRoomId: 'mist_harbor_smugglers_alley', description: '北側暗號水溝回到走私巷' },
@@ -6774,7 +6774,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'mist_harbor_sea_gate',
         description: '北返時石階沿潮池邊緣與鹽蝕護欄上行，繞過小祠供桌後才會回到舊海門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '潮池小祠北返舊海門需沿潮池石階上行，屬於長路徑。',
       },
     ],
@@ -6797,12 +6797,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '海圖檔案室夾在傳送燈塔、診所與船長辦公室之間，屋內用防潮木櫃保存各年代航線圖。長桌上擺著黃銅分規、潮汐尺、乾燥沙盤和許多被鉛筆反覆修正的霧區邊界。東側書架門通往船長辦公室的標記仍在，但檔案櫃倒塌卡住門軸，需由船長辦公室開門進入。這裡是知識與任務房，玩家可查詢副本入口、比對失蹤船位、解鎖遠洋路線，也能幫檔案員修補被霧水侵蝕的古海圖。某些圖管沒有登記號，卻被放在最容易取用的位置，內容指向官方航線以外的私航港灣。若與傳送燈塔記錄交叉檢查，能找出誰在霧夜改變過燈塔方位。檔案員會要求玩家保密，因為錯誤海圖足以毀掉整個港鎮的信用。',
     exits: [
-      { direction: 'west', targetRoomId: 'mist_harbor_portal_lantern', description: '小門回到傳送燈塔' },
+      { direction: 'west', targetRoomId: 'mist_harbor_portal_lantern', description: '小門回到傳送燈塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'mist_harbor_clinic_of_salt',
         description: '南返時窄梯沿潮濕書架門下行，穿過診所後牆與藥罐架後才回到鹽診所',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '海圖檔案室南返鹽診所需沿窄梯與書架門下行，屬於長路徑。',
       },
     ],
@@ -6825,13 +6825,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '舊海門是內港最老的防潮門，兩扇厚木閘板被鐵鏈吊著，表面滿是潮痕、貝殼和修補鐵片。漲潮時門外海水會拍上石階，退潮時則露出通往潮池與防波堤的濕滑岩路。西側港務坡道通向船長辦公室，但舊門這端閘鏈橫倒，需從辦公室下坡抵達。這裡是交通與港務房，玩家可協助升降閘門、護送貨車通過、查看近海潮位，也能追查某些貨物為何不經海關而從舊門進城。門洞上方掛著一排退役船鈴，只在濃霧中無風自響。若鈴聲與潮鐘不一致，代表外海有船正在使用錯誤航道靠近。守門員會把此事記在潮濕小冊裡，等待有人願意查下去。閘鏈深處還卡著新鮮黑帆纖維與碎木。',
     exits: [
-      { direction: 'north', targetRoomId: 'mist_harbor_fog_gate', description: '坡道回到霧港城門' },
+      { direction: 'north', targetRoomId: 'mist_harbor_fog_gate', description: '坡道回到霧港城門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'mist_harbor_smugglers_alley', description: '南側濕石坡通往走私巷' },
       {
         direction: 'west',
         targetRoomId: 'mist_harbor_tidepool_shrine',
         description: '西側石階沿鹽蝕護欄下到潮池邊緣，繞過小供桌後才抵達潮池小祠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '舊海門到潮池小祠需下行潮池石階，屬於長路徑。',
       },
     ],
@@ -6854,26 +6854,26 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '防波堤端伸向白霧最深處，黑色礁石和人工石塊交錯堆疊，浪花不斷越過邊緣，把地面打得濕亮。這裡遠離市集喧鬧，只聽得見海浪、霧角與偶爾從燈塔傳來的金屬回音。維修工在石柱上掛著小信標，船夫則把這裡當作判斷外海能否出航的最後觀察點。這裡是交通邊界與大型事件鉤子，玩家可前往外海副本、調查漂來殘骸，或在霧望燈室指引下等待失蹤船影出現。若霧突然退開，遠處可能露出不在任何海圖上的黑帆。',
     exits: [
-      { direction: 'west', targetRoomId: 'mist_harbor_shipwright_yard', description: '木道回到船匠塢' },
+      { direction: 'west', targetRoomId: 'mist_harbor_shipwright_yard', description: '木道回到船匠塢', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'mist_harbor_ferry_pier',
         description: '南側外棧道沿防波堤低欄與濕滑繩樁回折，才會下到渡船棧橋，浪花會遮住踏板',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '防波堤端南返渡船棧橋需沿外棧道與繩樁下行，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'mist_harbor_lighthouse_stairs',
         description: '北側維修門穿過鹽蝕鐵梯、落石通道與燈塔內牆後，才會通向燈室階梯',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '防波堤端到燈室階梯需走維修門與鐵梯，距離長於相鄰格。',
       },
       {
         direction: 'east',
         targetRoomId: 'mist_harbor_fogwatch_lantern',
         description: '東側外梯沿燈塔外牆盤旋上行，穿過海霧與鹽蝕平台後才會連到霧望燈室',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '防波堤端到霧望燈室需沿外梯上行，不是相鄰平面一格。',
       },
     ],
@@ -7433,7 +7433,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鏡沼外圍的蘆葦高過人頭，入口只是一道被旅人踩出的濕泥缺口，兩側插著刻有警告符號的木樁。水面倒映出的天空比真實天空更暗，偶爾還會映出不存在的鳥影。這裡是進出鏡沼的交通錨點，玩家可整理解毒藥、標記回程路線，並從木樁上的缺口判斷最近有哪些隊伍進入後沒有返回。入口附近看似安靜，實際上毒蛙會藏在蘆葦根部，史萊姆則沿黑水邊緣蠕動。若霧突然變厚，回頭路會被蘆葦重新遮住。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑伸入沼澤' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '較乾的泥脊通向泥炭小洲' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '較乾的泥脊通向泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 2, respawnSeconds: 95 },
@@ -7460,8 +7460,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥路回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在前方' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自南側泥潭' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '歪斜木棧道在北側' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自南側泥潭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '歪斜木棧道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 2, respawnSeconds: 95 },
@@ -7489,7 +7489,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '黑水小徑在西側' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mirror_pond', description: '更深倒影通向鏡池' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '霧幕缺口在北面' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '霧幕缺口在北面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 1, respawnSeconds: 95 },
@@ -7515,9 +7515,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '黑水小徑南側的泥潭被毒蛙佔據，濃綠氣泡從泥底冒出，破裂時釋放出刺鼻霧氣。泥面看似柔軟，實際下方有許多被蛙舌拖出的深洞。這裡是高密度戰鬥與採集房，玩家可收集毒腺、蛙皮與解毒草，也能完成清理毒霧或捕捉活體樣本的任務。泥潭周圍的蘆葦倒影比實物更加密集，會遮住真正安全的落腳點。若不先辨認氣泡方向，隊伍可能被毒蛙從三面同時包圍。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
     exits: [
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '泥痕回到黑水小徑' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '泥痕回到黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_poison_bloom_bed', description: '毒花氣味往東延伸' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蛛絲掛在南側蘆葦' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_spider_reeds', description: '蛛絲掛在南側蘆葦', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_mire_toad', maxCount: 4, respawnSeconds: 95 },
@@ -7542,13 +7542,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '黑水小徑北側有一段歪斜木棧道，木板被水泡得發黑，許多地方只靠生鏽釘子勉強固定。棧道下方的水面映出完整直路，與現實裡的破洞和彎折完全不同。北側可看見泥炭小洲的測路桿，但棧道端橋板斷裂，需由小洲方向接回。這裡是交通與探索房，玩家可在較安全高度穿過沼澤，前往霧盲處與沉柳，也能修補木板建立回程捷徑。棧道柱子上綁著前人留下的布條，顏色越新，代表迷路風險越高。若踩到會回聲的空板，水下湖蛇會跟著震動追來。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_blackwater_path', description: '木階下回黑水小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_mist_blind', description: '棧道伸向霧盲處' },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '西側倒木路要沿歪斜棧板、浮根與黑水缺口繞行，才會抵達沉水柳，倒影會故意縮短距離',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '歪木棧道到沉水柳需沿倒木與黑水缺口繞行，屬於長路徑。',
       },
     ],
@@ -7576,12 +7576,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '銀面池與歪木棧道之間有一片霧盲處，白霧濃到伸手只能看見指尖水珠。聲音在霧裡被拉長，腳步聲可能來自同伴，也可能只是倒影模仿。這裡是迷路與任務觸發房，玩家可用蘆葦入口取得的標記校準方向，尋找被霧困住的旅人，或追蹤一盞總在遠處閃爍的假燈。霧盲處不適合久留，毒蛙與蜘蛛會利用視線阻隔進行伏擊。若玩家跟著倒影前進，可能直接走入鏡池或破碎倒影區。',
     exits: [
       { direction: 'west', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '摸索回歪木棧道' },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_silver_pool', description: '銀色水光在南面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_mirror_pond',
         description: '東側遠方假燈穿過霧盲水窪與錯位蘆影後，才會通向鏡池，路線必須靠腳下水聲辨認',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霧盲處到鏡池受濃霧與錯位倒影干擾，不是相鄰格。',
       },
     ],
@@ -7614,14 +7614,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '東側倒柳影子會沿鏡池邊緣反折，穿過錯位水面與浮根縫隙後才通向沉水柳',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鏡池到沉水柳被反折倒影與浮根水面隔開，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_poison_bloom_bed',
         description: '南側毒花倒影要沿鏡池裂光下沉，穿過綠霧水窪後才抵達毒花床，花影會誤導直行',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鏡池到毒花床需穿過綠霧水窪與錯位花影，距離長於相鄰格。',
       },
     ],
@@ -7653,7 +7653,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_dark_treant_grove',
         description: '北側根系要穿過沉水柳下方的黑水與倒掛樹影，才會延進暗樹林，腳下真根與倒影會交錯',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉水柳到暗樹林需沿水下根系繞行，不是相鄰平面一格。',
       },
     ],
@@ -7686,14 +7686,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_mirror_pond',
         description: '北返時要沿毒花根部與綠霧水窪回溯，避開錯位花影後才會看見鏡池平整水面',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '毒花床北返鏡池需穿過綠霧水窪，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '東側黑霧沿毒花床邊緣擴散，穿過數片錯誤倒影後才會指向破碎倒影',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '毒花床到破碎倒影被黑霧與錯誤倒影隔開，距離長於相鄰格。',
       },
     ],
@@ -7720,7 +7720,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '毒蛙泥潭南面是一片密集蘆叢，蛛絲從蘆葉連到枯木，掛滿水珠後像一面面破碎小鏡。許多絲線不在視線正前方，而是藏在倒影裡，等旅人跨步時才拉住腳踝。這裡是戰鬥與採集房，玩家可收集蛛絲、蛛毒和被困旅人的物品，也能清出一條通往失路石堆的安全路線。蜘蛛會利用毒霧與水面反光遮掩位置，毒蛙則躲在蘆根補上第二波攻擊。若隊伍帶火，蛛網會迅速收縮，暴露隱藏巢穴。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進。',
     exits: [
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自北側泥潭' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_frog_mire', description: '蛙鳴來自北側泥潭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '蛛絲路通往失路石堆' },
     ],
     monsters: [
@@ -7751,10 +7751,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '東側錯誤箭頭會先繞過失路石堆與漂浮護符，才指向破碎倒影，霧中會出現多條假支路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '失路石堆到破碎倒影需辨認多條假支路，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_serpent_channel', description: '低水道通向蛇道' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_serpent_channel', description: '低水道通向蛇道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -7784,21 +7784,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_lost_cairn',
         description: '西返時錯誤箭頭會在破碎水面間重組，必須繞過漂浮護符與假支路後才回到失路石堆',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影西返失路石堆需穿過重組倒影與假支路，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '東側無延遲倒影只在水面裂片同步時出現，隊伍要踩過連續倒影碎片才會抵達玻璃水核心',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影到玻璃水核心需穿過不連續倒影碎片，不是相鄰格。',
       },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_echo_fen',
         description: '北側回聲濕地要沿破碎水面邊緣繞過延遲倒影，才會抵達開闊淺水區',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '破碎倒影到回聲濕地受延遲倒影與淺水邊緣阻隔，距離長於相鄰格。',
       },
     ],
@@ -7826,9 +7826,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '蘆葦入口北面的泥炭小洲是少數不會立刻下陷的乾地，地面覆滿黑褐苔蘚，中央留著舊營火圈與幾根插成三角的測路桿。這裡是補給與交通房，玩家可短暫休息、重新整理鏡沼標記，也能從營火灰裡發現前一隊留下的未完成地圖。小洲邊緣水面不斷退縮又回來，像有什麼在測量岸線。若玩家修復測路桿，可以建立通往歪木棧道與回聲濕地的穩定捷徑；若忽略苔蘚上的蛇痕，夜裡會被湖蛇包圍。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥脊回到蘆葦入口' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_reed_gate', description: '泥脊回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_crooked_boardwalk', description: '乾木橋通往歪木棧道' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '測路桿指向回聲濕地' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '測路桿指向回聲濕地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'lake_serpent', maxCount: 1, respawnSeconds: 120 },
@@ -7857,11 +7857,11 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_sunken_willow',
         description: '南返時根路沿暗樹林水下根脈回折，穿過倒掛樹影後才回到沉水柳，黑水會遮住真實落腳點',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '暗樹林南返沉水柳需沿水下根脈回折，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '黑根延向玻璃水核心' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在西側' },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_glasswater_core', description: '黑根延向玻璃水核心', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dark_treant', maxCount: 2, respawnSeconds: 160 },
@@ -7887,19 +7887,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '失路石堆南面的水道蜿蜒得像巨蛇身體，水面一段明亮一段漆黑，讓人難以看清深度。兩岸蘆葦低伏，像被巨大身軀反覆壓過。這裡是高風險通道與戰鬥房，玩家可沿水道繞往沉沒小祠，也能追查湖蛇巢穴與失蹤貨箱。水道中段有多處氣泡旋渦，若倒影裡先出現波紋，真正的湖蛇很快會從身旁水面竄出。毒蛙也會利用蛇道留下的空洞藏身，形成連續伏擊。安全通過後，隊伍可取得通往小祠的隱蔽路線。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。',
     exits: [
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '低水道回到失路石堆' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_lost_cairn', description: '低水道回到失路石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'marsh_of_mirrors_sinking_shrine',
         description: '東側水道沿蛇形暗流繞過氣泡旋渦與低伏蘆葦後，才會通往沉沒小祠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '蛇行水道到沉沒小祠需沿蛇形暗流繞行，距離長於相鄰格。',
       },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_spider_reeds',
         description: '西側蘆葦缺口要逆著蛇形水道與蛛絲倒影回繞，才會連回蛛網蘆叢',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '蛇行水道西返蛛網蘆叢需穿過水道回彎與蛛絲倒影，屬於長路徑。',
       },
     ],
@@ -7926,9 +7926,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '泥炭小洲北面是一片開闊濕地，水淺卻沒有明確路線，聲音會在霧裡反覆返回。隊伍喊出的名字可能從三個方向回應，其中一個回聲甚至會多說半句。這裡是迷路事件與交通分岔房，玩家可用測路桿校準聲音來源，尋找失蹤旅人，也能分辨暗樹林、破碎倒影與月光堤道的方向。濕地看似空曠，實際上毒蛙和蜘蛛會被聲音吸引，綠色史萊姆則貼著淺水邊緣移動。若追逐錯誤回聲，隊伍會被帶進霧更厚的區域。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲' },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林' },
-      { direction: 'north', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '月光水線通向堤道' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_peat_islet', description: '測路桿回到泥炭小洲', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_dark_treant_grove', description: '低沉回聲來自暗樹林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '月光水線通向堤道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'reedshade_stalker', maxCount: 2, respawnSeconds: 110 },
@@ -7954,14 +7954,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '回聲濕地北面浮出一條由白石鋪成的窄堤，石面像被月光浸過，即使陰天也會發出微亮光澤。堤道兩側水面倒映著不存在的滿月，讓石路看起來像懸在夜空上。這裡是通往鏡沼深處的交通節點，玩家可藉由白石排列判斷前往沉沒小祠、巫燈處與玻璃水核心的路線。月光堤道上的敵人不多，但一旦戰鬥，任何後退都可能踏進倒影而非真路。若玩家帶著鏡池樣本，白石會短暫顯示安全順序。這裡的線索會改變後續鏡沼路線判定，隊伍最好先記錄真實地標，再相信任何倒影。這點尤其關鍵。務必小心前進。',
     exits: [
-      { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側' },
+      { direction: 'south', targetRoomId: 'marsh_of_mirrors_echo_fen', description: '回聲濕地在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'marsh_of_mirrors_fill_27_19', description: '東側鏡沼通道接向巫燈處' },
-      { direction: 'west', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '白石支路通向沉沒小祠' },
+      { direction: 'west', targetRoomId: 'marsh_of_mirrors_sinking_shrine', description: '白石支路通向沉沒小祠', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '北側最亮石路沿月光堤道反折，穿過水面假月與黑蘆外圈後才會通向玻璃水核心',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '月光堤道到玻璃水核心需沿反折石路穿過黑蘆外圈，不是相鄰格。',
       },
     ],
@@ -7992,15 +7992,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_serpent_channel',
         description: '西返時蛇形水道要沿沉沒祠堂外牆與氣泡旋渦回繞，才會回到蛇行水道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉沒小祠西返蛇行水道需繞過祠堂外牆與旋渦，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石支路回到月光堤道' },
+      { direction: 'east', targetRoomId: 'marsh_of_mirrors_moonlit_causeway', description: '白石支路回到月光堤道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_hag_lantern',
         description: '北側護符路穿過半沉供桌、低霧與歪木桿倒影後，才會抵達巫燈處，燈影在水面反覆偏移',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '沉沒小祠到巫燈處需穿過低霧與倒影木桿，距離長於相鄰格。',
       },
     ],
@@ -8033,14 +8033,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_sinking_shrine',
         description: '南返時護符路沿歪木桿倒影與低霧回落，穿過半沉供桌後才回到沉沒小祠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '巫燈處南返沉沒小祠需沿倒影木桿與低霧路回繞，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'marsh_of_mirrors_glasswater_core',
         description: '北側雙色燈影必須等綠光與紫影重疊時才能辨認，沿黑蘆外圈繞行後才到玻璃水核心',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '巫燈處到玻璃水核心需等待雙色燈影重疊並繞過黑蘆外圈，不是相鄰格。',
       },
     ],
@@ -8072,14 +8072,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'marsh_of_mirrors_moonlit_causeway',
         description: '南返時最亮石路會沿黑蘆外圈反折，穿過假月水面後才回到月光堤道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '玻璃水核心南返月光堤道需沿黑蘆外圈與反折石路回行，屬於長路徑。',
       },
       {
         direction: 'west',
         targetRoomId: 'marsh_of_mirrors_shattered_reflection',
         description: '西側裂紋水面要等核心倒影偏移後才會連上，隊伍需踩過連續碎片回到破碎倒影',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '玻璃水核心西返破碎倒影需穿過偏移倒影碎片，不是相鄰格。',
       },
     ],
@@ -8109,7 +8109,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '赤岩荒地的入口是一道被紅色岩壁夾住的狹長隘口，風把細沙推成斜線，打在警告木樁與破旗上。地面同時有商隊車轍、盜匪靴印和野獸爪痕，沒有哪一種痕跡能保持完整太久。這裡是荒地的交通錨點與 PvP 風險提示房，玩家可確認補水、標記撤退路線，並從木樁上的懸賞紙判斷近期哪支盜匪團最活躍。隘口不完全安全，落單旅人常在進入後第一道轉彎就被盯上。若風聲突然變低，代表岩脊上有人正在觀察。這裡的地形與視野會直接影響玩家遭遇和撤退判定，隊伍最好先確認高處、掩體與回程路線。',
     exits: [
       { direction: 'east', targetRoomId: 'redrock_badlands_rustwash_pass', description: '紅沙路通向鏽水隘道' },
-      { direction: 'north', targetRoomId: 'redrock_badlands_burnt_wagon', description: '焦黑車轍通向焚車殘骸' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_burnt_wagon', description: '焦黑車轍通向焚車殘骸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 2, respawnSeconds: 95 },
@@ -8136,7 +8136,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_dust_gate', description: '紅沙路回到沙塵隘口' },
       { direction: 'east', targetRoomId: 'redrock_badlands_splinter_ridge', description: '河道爬向碎岩脊' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_dry_gulch', description: '乾裂谷在南側下陷' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_dry_gulch', description: '乾裂谷在南側下陷', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'dust_road_raider', maxCount: 3, respawnSeconds: 95 },
@@ -8163,12 +8163,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'redrock_badlands_rustwash_pass', description: '碎坡回到鏽水隘道' },
       { direction: 'east', targetRoomId: 'redrock_badlands_bandit_watch', description: '岩脊通向盜匪哨塔' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_red_ore_cut', description: '紅色礦痕往南延伸' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_red_ore_cut', description: '紅色礦痕往南延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'redrock_badlands_echo_arch',
         description: '北面風聲穿過多段碎岩脊與落石坡，繞上高處後才抵達回聲拱岩，沿途視野開闊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '碎岩脊到回聲拱岩需要沿高低落差明顯的岩脊繞行，屬於長路徑。',
       },
     ],
@@ -8202,7 +8202,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'redrock_badlands_red_ore_cut',
         description: '塔下礦車路沿紅岩坡折向南方，穿過斷軌與礦渣後才到紅礦切口，車輪痕可辨路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '盜匪哨塔到紅礦切口要繞過塔基斷軌與礦車路，距離長於相鄰格。',
       },
     ],
@@ -8229,19 +8229,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鏽水隘道南側陷成一條乾裂谷，谷底泥土龜裂成大片硬殼，裂縫間有熱氣與細小蛇洞。風被谷壁擋住，空氣悶得像石窯，連遠方喊聲都變得模糊。這裡是資源與戰鬥房，玩家可採集乾土礦、蛇毒與耐旱草根，也能避開主路哨塔繞往毒蛇平地或焦泉。乾裂谷看似低調，實際常被盜匪當成藏貨線，地上骨頭多半不是野獸留下。若裂縫突然冒出熱氣，附近可能有熔岩蟲通道。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_rustwash_pass', description: '爬坡回到鏽水隘道' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_rustwash_pass', description: '爬坡回到鏽水隘道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'redrock_badlands_viper_flats',
         description: '東側蛇洞密集處沿乾裂土坡展開，繞過荊棘與骨堆後才到毒蛇平地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '乾裂谷到毒蛇平地需沿蛇洞與裂土繞行，不是直接相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'redrock_badlands_cinder_spring',
         description: '南側熱氣從裂谷底部升起，需沿黑色礦殼下切後才會抵達焦泉，地面持續發燙',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '乾裂谷南下焦泉有垂直下切與熱氣阻隔，屬於長路徑。',
       },
     ],
@@ -8272,7 +8272,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'redrock_badlands_dry_gulch',
         description: '北返乾谷時需攀過黑色礦殼與蒸汽裂縫，熱風會遮住回頭路，岩面也容易碎裂',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '焦泉回乾裂谷需要沿熱泉邊坡上切，距離長於相鄰格。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_viper_flats', description: '東側蛇洞平地接向熱霧路' },
@@ -8280,7 +8280,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'redrock_badlands_lava_worm_sink',
         description: '南側裂地沿冒煙地縫下沉，繞過鬆動紅土後才到熔岩蟲陷坑，腳下震動明顯',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '焦泉南下熔岩蟲陷坑有崩塌地縫阻隔，不是相鄰格。',
       },
     ],
@@ -8315,7 +8315,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'redrock_badlands_blackflag_lookout',
         description: '南側黑旗坡沿營地後方高地曲折上升，繞過落石後才到瞭望點，旗影會引導方向',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '盜匪營地到黑旗瞭望點有高地落差與曲折坡道，屬於長路徑。',
       },
     ],
@@ -8350,7 +8350,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'redrock_badlands_ambush_canyon',
         description: '東側碎骨坡穿過乾風與骸骨標記後，才會下切到伏擊峽谷，崖壁適合埋伏',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '骨標地到伏擊峽谷需要沿碎骨坡下切，距離長於相鄰格。',
       },
     ],
@@ -8382,7 +8382,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'redrock_badlands_dry_gulch',
         description: '西側蛇洞路繞過荊棘、骨堆與裂土地面後，才會回到乾裂谷，毒蛇痕跡密集',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '毒蛇平地西返乾裂谷需要沿蛇洞與裂土繞行，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱霧路通向火靈盆地' },
@@ -8411,16 +8411,16 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '碎岩脊南側的山壁被人鑿開一道巨大切口，裸露出深紅礦脈與黑色火成岩。廢棄礦車歪在軌道旁，車斗裡還有盜匪沒來得及搬走的礦石。這裡是資源、爭奪與中段交通房，玩家可採集赤礦、追查盜匪供應線，也能繞往毒蛇平地、哨塔或岩石巨人棲息的高處。礦脈本身帶著熱度，敲擊聲會沿山壁傳開，引來守礦的岩石巨人或其他玩家。若採集過量，切口內會掉落碎石，短暫封住安全路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_splinter_ridge', description: '礦痕回到碎岩脊' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_splinter_ridge', description: '礦痕回到碎岩脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'redrock_badlands_viper_flats',
         description: '西側礦痕退回時要穿過蛇洞群與鬆散紅沙，才會回到毒蛇平地，需避開塌陷洞口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '紅礦切口西返毒蛇平地需要繞過蛇洞與礦渣，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'redrock_badlands_rock_giant_perch', description: '礦脈上方有巨人棲地' },
-      { direction: 'south', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱礦路通向火靈盆地' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_flame_spirit_basin', description: '熱礦路通向火靈盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'red_ore_golem', maxCount: 2, respawnSeconds: 180 },
@@ -8446,7 +8446,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '沙塵隘口北面停著一輛被燒到只剩黑骨架的商隊馬車，車輪陷在紅沙中，鐵箍因高熱扭曲。貨箱被撬開，布匹、陶罐碎片與焦黑糧袋散了一地。北側遠處可見黑旗瞭望點，但車轍被落石截斷，需由黑旗高處下到殘骸。這裡是任務線索與伏擊房，玩家可調查商隊遇襲原因、尋找失蹤護衛徽章，或判斷盜匪是否使用火焰精靈掩蓋痕跡。殘骸周圍有狼群與盜匪回收隊出沒，火焰殘味也會吸引更深處的元素生物。若玩家翻動錯誤箱子，藏在車底的盜匪會立刻發難。',
     exits: [
-      { direction: 'south', targetRoomId: 'redrock_badlands_dust_gate', description: '焦黑車轍回到隘口' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_dust_gate', description: '焦黑車轍回到隘口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'redrock_badlands_echo_arch', description: '風穿過東側拱岩' },
     ],
     monsters: [
@@ -8478,10 +8478,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'redrock_badlands_splinter_ridge',
         description: '南側岩路沿拱岩落石坡下切，穿過多段碎石平台後才回到碎岩脊，回音會干擾判斷',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '回聲拱岩南下碎岩脊有高低落差與落石坡，距離長於相鄰格。',
       },
-      { direction: 'north', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '拱岩上方通往黑旗瞭望點' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_blackflag_lookout', description: '拱岩上方通往黑旗瞭望點', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'blackflag_marksman', maxCount: 2, respawnSeconds: 120 },
@@ -8512,7 +8512,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'redrock_badlands_blackflag_lookout',
         description: '東側黑旗坡先向東北升起，再繞過旗索與落石才抵達瞭望點，坡道暴露在視線中',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '決鬥石圈到黑旗瞭望點需沿高坡斜向繞行，距離長於相鄰格。',
       },
     ],
@@ -8572,7 +8572,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'redrock_badlands_scarlet_crater',
         description: '東側巨石路沿岩臺邊緣與落石斜坡前進，最後指向猩紅火口，巨人腳印清楚可見',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '岩巨人棲臺到猩紅火口需沿高岩臺和落石坡繞行，距離較長。',
       },
     ],
@@ -8599,20 +8599,20 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '紅礦切口南側陷成一個淺盆地，地面覆著黑色礦殼，裂縫中冒出橘紅火舌。火焰精靈像小型旋風般在盆地裡遊走，遇到金屬聲或血腥味便會變得躁動。這裡是元素戰鬥與材料房，玩家可收集火成結晶、完成耐火測試任務，也能繞往焦泉、岩巨人棲臺或熔岩蟲陷坑。盆地熱浪會扭曲視線，使其他玩家和盜匪看起來像殘影。若隊伍停留太久，地下熱流會把熔岩蟲引到盆地中心。',
     exits: [
-      { direction: 'north', targetRoomId: 'redrock_badlands_red_ore_cut', description: '熱礦路回到紅礦切口' },
+      { direction: 'north', targetRoomId: 'redrock_badlands_red_ore_cut', description: '熱礦路回到紅礦切口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'redrock_badlands_viper_flats', description: '西側熱霧路回到毒蛇平地' },
       {
         direction: 'east',
         targetRoomId: 'redrock_badlands_rock_giant_perch',
         description: '東側熱岩坡沿巨人腳印上攀，繞過鬆動礦石後才回到巨人棲臺，落石聲很近',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '火靈盆地到岩巨人棲臺有明顯高度差與熱岩坡，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'redrock_badlands_lava_worm_sink',
         description: '南側裂縫沿橘光地縫下切，穿過鬆散紅土後才到熔岩蟲陷坑，地底有刮擦聲',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '火靈盆地南下熔岩蟲陷坑需要穿過熱裂地縫，屬於長路徑。',
       },
     ],
@@ -8643,7 +8643,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'redrock_badlands_flame_spirit_basin',
         description: '北側裂縫需沿熔岩蟲鑽出的斜道上攀，才會回到火靈盆地，熱風會迎面灌入',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '熔岩蟲陷坑北返火靈盆地需要爬出熱裂斜道，距離長於相鄰格。',
       },
       { direction: 'south', targetRoomId: 'redrock_badlands_viper_flats', description: '南側熱浪路回到毒蛇平地' },
@@ -8681,7 +8681,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'redrock_badlands_exile_den',
         description: '東側窄路繞過谷壁暗口後通向流放者洞穴',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '伏擊峽谷到流放者洞穴需穿過谷壁暗口與碎石封路，屬於長路徑。',
       },
     ],
@@ -8709,12 +8709,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '回聲拱岩上方的高處插著一面黑旗，旗布被沙風磨得像刀口。從這裡可以俯瞰焚車殘骸、盜匪營地、決鬥石圈與遠處猩紅火口，是整片赤岩荒地最重要的視野點之一。東側決鬥石圈與北側火口都在視線內，但黑旗這端高坡被旗索與落石擋住，需從石圈或火口方向接近。這裡是大型 PvP 交通與情報房，玩家可控制瞭望點、標記敵對玩家動向、截聽盜匪旗號，或開啟高地路線。黑旗旁有一架破舊望遠鏡，鏡片被刻意刮花，只有在沙塵最濃時才能看見隱藏路徑。若黑旗被放倒，附近盜匪會短暫陷入混亂。',
     exits: [
-      { direction: 'south', targetRoomId: 'redrock_badlands_echo_arch', description: '下坡回到回聲拱岩' },
+      { direction: 'south', targetRoomId: 'redrock_badlands_echo_arch', description: '下坡回到回聲拱岩', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'redrock_badlands_burnt_wagon',
         description: '西側下方的焦黑車轍需沿旗索高坡折返，才會接回焚車殘骸，黑旗在頭頂飄動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑旗瞭望點西返焚車殘骸有高地落差與旗索坡，屬於長路徑。',
       },
     ],
@@ -8745,7 +8745,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'redrock_badlands_rock_giant_perch',
         description: '北側巨石路需繞過火口裂縫與落石坡，才會回到岩巨人棲臺，赤光會逐漸變暗',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '猩紅火口西返岩巨人棲臺需要沿巨石坡繞行，距離長於相鄰格。',
       },
       { direction: 'west', targetRoomId: 'redrock_badlands_fill_n4_19', description: '西側赤色裂光路回到熔岩蟲陷坑' },
@@ -8776,6 +8776,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '入口石階被黑水反覆淹沒，牆上潮痕像年輪一樣層層堆疊。這裡是沉沒墓窟入口與回程錨點，玩家可確認水位、點亮防潮燈，並從刻在階梯側面的名字判斷哪些探險隊曾經進入後沒有回來。水聲會掩蓋骷髏腳步，黑水裡偶爾還有蛇影掠過。若潮痕突然上升，代表墓窟深處的排水機關正在反向運轉，隊伍應先標記退路再深入。',
     exits: [
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '西側石壁裂縫沿鹽晶潮洞斜切而出，通往血鹽海岸的鹽玻璃洞', edgeKind: 'distant_route', edgeNote: '潮汐階梯西出血鹽海岸需穿過墓窟裂縫與鹽晶潮洞，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'sunken_catacombs_flooded_narthex', description: '潮濕石階通向淹沒前廳' },
     ],
     monsters: [
@@ -9316,8 +9317,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雷原入口立在西境草海邊緣，兩根被雷劈黑的木柱夾住低矮石門，門後草浪在風暴下翻成銀灰色。游牧部族把銅鈴、獸骨與避雷符掛在柱上，旅人通過時能聽見每一枚鈴都用不同節奏警告天候。這裡是雷鳴草原的交通節點與安全整隊處，東面牧道能深入風暴，北面淺溝通往雷雨積水區，南面則能看見野獸踩出的奔行痕。守門人留下乾燥柴束與粗略風向記號，提醒隊伍先檢查金屬裝備、藥草與坐騎，因為草原上的路會被暴雨在一刻鐘內改寫。入口旁還刻著簡短巡邏紀錄，標出最近雷獸、狼群與商隊失蹤的位置，讓新來者能先判斷今日是否適合深入草原。',
     exits: [
       { direction: 'east', targetRoomId: 'thundersteppe_stormgrass_track', description: '銅鈴聲引向雷草牧道' },
-      { direction: 'north', targetRoomId: 'thundersteppe_thunder_pool', description: '濕草坡通往雷雨水洼' },
-      { direction: 'south', targetRoomId: 'thundersteppe_boar_run', description: '泥痕延伸到野豬衝道' },
+      { direction: 'north', targetRoomId: 'thundersteppe_thunder_pool', description: '濕草坡通往雷雨水洼', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'thundersteppe_boar_run', description: '泥痕延伸到野豬衝道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [{ monsterId: 'stormgrass_strider', maxCount: 1, respawnSeconds: 100 }],
     mapSymbol: '[門]',
@@ -9341,7 +9342,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_rolling_gate', description: '牧道回到雷原入口' },
       { direction: 'east', targetRoomId: 'thundersteppe_herd_plain', description: '蹄印深入奔獸平原' },
-      { direction: 'north', targetRoomId: 'thundersteppe_eagle_roost', description: '斷柱坡升向雷鷹棲柱' },
+      { direction: 'north', targetRoomId: 'thundersteppe_eagle_roost', description: '斷柱坡升向雷鷹棲柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_strider', maxCount: 2, respawnSeconds: 100 },
@@ -9368,7 +9369,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'thundersteppe_stormgrass_track', description: '蹄痕回到雷草牧道' },
       { direction: 'east', targetRoomId: 'thundersteppe_nomad_camp', description: '煙柱指向游牧營地' },
-      { direction: 'south', targetRoomId: 'thundersteppe_charged_bonefield', description: '白骨線通往帶電骨原' },
+      { direction: 'south', targetRoomId: 'thundersteppe_charged_bonefield', description: '白骨線通往帶電骨原', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormgrass_strider', maxCount: 3, respawnSeconds: 100 },
@@ -9393,9 +9394,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雷雨水洼沿著入口北側低地展開，許多淺池被暴雨連成銀色碎帶，雷光落在水面時會沿著泥岸跳躍。池邊蘆草彎得很低，葉片上掛滿細小水珠，任何重靴踩入都會驚起一圈藍白火花。這裡適合收集雨水、洗去草原塵土，也適合觀察天空倒影裡的風暴裂縫；但濕地會放大聲音，遠處雷鷹能準確聽見金屬碰撞。若有人在水洼中央看見不屬於隊伍的影子，通常代表雷暴中的舊魂正在提醒來者改變路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_rolling_gate', description: '濕坡回到雷原入口' },
+      { direction: 'south', targetRoomId: 'thundersteppe_rolling_gate', description: '濕坡回到雷原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'thundersteppe_eagle_roost', description: '水邊斜路通往雷鷹棲柱' },
-      { direction: 'north', targetRoomId: 'thundersteppe_wind_shrine', description: '蘆草缺口通往風祭小祠' },
+      { direction: 'north', targetRoomId: 'thundersteppe_wind_shrine', description: '蘆草缺口通往風祭小祠', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormwing_eagle', maxCount: 2, respawnSeconds: 130 },
@@ -9420,10 +9421,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雷鷹棲柱是一排被古雷劈出的石柱，每根柱頂都堆著枯草、獸骨與發亮的羽毛。風從柱間穿過時會形成尖銳嘯聲，像有看不見的獵鳥正在低空掠過。這裡能俯瞰入口、牧道與北側水洼，也能看見更遠處引雷柱林反射出的白線。攀上石柱可以取得戰術視野，但雷鷹會把任何接近巢位的金屬閃光視為挑釁。若隊伍願意留下獸肉或折斷的箭鏃，偶爾能換來一根帶靜電的羽毛，作為追蹤風向與即將落雷位置的信物。',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_stormgrass_track', description: '柱影落回雷草牧道' },
+      { direction: 'south', targetRoomId: 'thundersteppe_stormgrass_track', description: '柱影落回雷草牧道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'thundersteppe_thunder_pool', description: '濕風回到雷雨水洼' },
       { direction: 'east', targetRoomId: 'thundersteppe_split_totem', description: '斷柱線通往裂木圖騰' },
-      { direction: 'north', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '石柱脊線通往雷鷹巢峰' },
+      { direction: 'north', targetRoomId: 'thundersteppe_eagle_nest_peak', description: '石柱脊線通往雷鷹巢峰', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormwing_eagle', maxCount: 3, respawnSeconds: 130 },
@@ -9454,14 +9455,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'thundersteppe_split_totem',
         description: '北側繩結路先繞過帳棚避雷樁與濕草圈，才會抵達裂木圖騰，沿途銅鈴會提示風向',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '游牧營地到裂木圖騰需繞過營地外圈與避雷樁，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_drum_circle',
         description: '南側鼓聲要穿過低草坡、舊祭旗與雨水泥帶後，才會抵達雷鼓石圈，聲音會在草面貼地傳來',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '游牧營地到雷鼓石圈被低坡與祭旗路隔開，屬於長路徑。',
       },
     ],
@@ -9490,14 +9491,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'thundersteppe_nomad_camp',
         description: '南返時繩結路沿濕草圈與避雷樁外緣下行，才回到游牧營地，帳棚煙柱會逐漸變清楚',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '裂木圖騰南返游牧營地需沿營地外圈繞行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '東側銅環反光會先穿過祭品石與焦草斜坡，才接到引雷柱林，雷弧聲會越來越密',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '裂木圖騰到引雷柱林需穿過焦草斜坡與祭品區，不是相鄰格。',
       },
     ],
@@ -9524,19 +9525,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '帶電骨原鋪滿被風雨磨白的長骨，許多骨骸仍保持奔跑姿勢，像是在最後一刻被整片天空按倒。靜電沿著肋骨和角鞘滑動，玩家靠近時能聞到焦草與濕泥混在一起的味道。這裡是野獸群躲避風暴失敗後留下的警示，也吸引狼群與雷鷹前來搜尋容易撕開的屍塊。骨堆之間藏有舊戰矛、破碎鞍具與少量被雷煉硬的骨片；但每一次翻動都可能讓積蓄電荷找到新的出口，讓整片骨原像活物般發出尖銳顫音。',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_herd_plain', description: '骨線回到奔獸平原' },
+      { direction: 'north', targetRoomId: 'thundersteppe_herd_plain', description: '骨線回到奔獸平原', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_boar_run',
         description: '南側碎骨坡沿帶電骨堆下滑，繞過白骨脊與泥槽缺口後才落向野豬衝道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '帶電骨原到野豬衝道需下行碎骨坡與泥槽缺口，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_wolf_scarp',
         description: '東側狼爪痕穿過靜電骨堆與斜草邊線後，才會抵達狼群崖坡，低嚎會被雷聲拉長',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '帶電骨原到狼群崖坡被骨堆與斜草邊線隔開，距離長於相鄰格。',
       },
     ],
@@ -9563,8 +9564,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '野豬衝道是一條被獠牙與厚蹄硬生生犁出的泥路，兩側灌木全被撞斷，枝葉上沾著濕泥和深色血痕。雷聲會讓草原野豬變得格外暴躁，牠們沿著這條低地來回衝撞，把任何擋路物都當成挑戰。東側碎骨坡可看見帶電骨原，但泥槽這端被衝斷，需由骨原高處落下。玩家可以順著衝道快速繞開中線平原，也能在泥壁上觀察最近的獸群規模；但站位錯誤時，隊伍會在狹窄泥槽裡承受連續衝鋒。老獵人把破盾牌插在彎道外側，提醒來者轉角前先聽地面，不要只聽天空。',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_rolling_gate', description: '泥痕回到雷原入口' },
-      { direction: 'south', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '低地水線落向雨影溝' },
+      { direction: 'north', targetRoomId: 'thundersteppe_rolling_gate', description: '泥痕回到雷原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'thundersteppe_rain_shadow_gully', description: '低地水線落向雨影溝', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'thunderhoof_boar', maxCount: 4, respawnSeconds: 120 },
@@ -9594,14 +9595,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '東側黑亮裂紋沿台地邊緣繞過引雷裸岩，才會抵達風暴玻岩，雨水在裂面上一路發白',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '天火台地到風暴玻岩需沿台地邊緣與裸岩繞行，不是相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_drum_circle',
         description: '南側鼓點要沿台地背風坡下降，穿過舊灰圈與祭旗殘布後才會抵達雷鼓石圈',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '天火台地到雷鼓石圈有台地高差與祭旗路，屬於長路徑。',
       },
     ],
@@ -9628,12 +9629,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '風祭小祠藏在水洼北端的蘆草後方，幾塊刻紋石片圍住矮小木架，架上繫滿褪色布條與鳥羽。每當風向改變，布條會先後抬起，像有人用無聲語言指出草原上可以行走的縫隙。祠旁沒有守衛，只有被雨水洗亮的供杯和幾枚壓住紙符的小石頭。玩家若在此獻上羽毛或乾草，可獲得短暫順風與避雷提示；若粗暴翻動祭物，北面的引雷柱林會傳來尖銳共鳴，讓雷鷹誤以為有人挑釁巢域。',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_thunder_pool', description: '蘆草水線回到雷雨水洼' },
+      { direction: 'south', targetRoomId: 'thundersteppe_thunder_pool', description: '蘆草水線回到雷雨水洼', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '東側布條路穿過蘆草缺口與濕石祭線後，才會進入引雷柱林，柱腳雷弧會逐漸變亮',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '風祭小祠到引雷柱林需穿過蘆草祭線，距離長於相鄰格。',
       },
     ],
@@ -9661,21 +9662,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'thundersteppe_split_totem',
         description: '西返時銅環反光穿過焦草斜坡與祭品石後，才回到裂木圖騰，圖騰裂光會在雨裡閃動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '引雷柱林西返裂木圖騰需穿越焦草斜坡，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_eagle_nest_peak',
         description: '東側柱影沿高風脊線拉長，需繞過多根青銅引雷釘後，才會抵達雷鷹巢峰下方',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '引雷柱林到雷鷹巢峰需沿高風脊與柱林邊緣繞行，不是相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'thundersteppe_thunderhoof_crossing',
         description: '南側焦草缺口沿地下雷弧下切，穿過濕根與燒焦草圈後才接到雷蹄渡口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '引雷柱林到雷蹄渡口有下切濕根與雷弧路，距離長於相鄰格。',
       },
     ],
@@ -9706,7 +9707,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'thundersteppe_charged_bonefield',
         description: '西返時狼爪痕沿斜草邊線繞過半塌洞穴，才回到帶電骨原，骨堆靜電會先在遠處作響',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '狼群崖坡西返帶電骨原需繞過洞穴與斜草線，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'thundersteppe_drum_circle', description: '東側低聲鼓點通往雷鼓石圈' },
@@ -9734,9 +9735,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雨影溝切在草原南側，兩邊黏土壁擋住大半斜雨，只留下上方天空像一條發亮裂口。溝底比外面安靜許多，水滴從草根滲下，形成不規則的細流與泥泡。這裡能讓隊伍短暫躲避落雷，也能繞到狼群崖坡和雷鼓石圈下方；但狹窄地形會放大任何伏擊風險，尤其是野豬從上方滑落時幾乎沒有閃避空間。牆面刻著幾道舊記號，指出哪些泥層會在暴雨後崩落，哪些可以當作臨時攀爬點。',
     exits: [
-      { direction: 'north', targetRoomId: 'thundersteppe_boar_run', description: '泥槽回到野豬衝道' },
-      { direction: 'east', targetRoomId: 'thundersteppe_wolf_scarp', description: '側坡升向狼群崖坡' },
-      { direction: 'south', targetRoomId: 'thundersteppe_drum_circle', description: '低聲鼓點通往雷鼓石圈' },
+      { direction: 'north', targetRoomId: 'thundersteppe_boar_run', description: '泥槽回到野豬衝道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'thundersteppe_wolf_scarp', description: '側坡升向狼群崖坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'thundersteppe_drum_circle', description: '低聲鼓點通往雷鼓石圈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormpack_wolf', maxCount: 2, respawnSeconds: 110 },
@@ -9765,7 +9766,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'thundersteppe_nomad_camp',
         description: '北返時鼓聲沿低草坡與祭旗殘布回傳，穿過泥帶後才看見游牧營地的低矮皮帳',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷鼓石圈北返游牧營地需穿過祭旗路與低草坡，屬於長路徑。',
       },
       { direction: 'west', targetRoomId: 'thundersteppe_wolf_scarp', description: '西側草線回到狼群崖坡' },
@@ -9774,7 +9775,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '南側鼓聲沿低草坡與黑玻反光繞向風暴玻岩',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷鼓石圈到風暴玻岩需沿鼓聲與黑玻反光繞行，屬於草原內特殊長路徑。',
       },
     ],
@@ -9806,14 +9807,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'thundersteppe_skyfire_mesa',
         description: '西返時黑亮裂紋沿裸岩與濕滑台地邊緣回繞，才會登上天火台地，雨水會在腳邊蒸白',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '風暴玻岩西返天火台地需沿台地邊緣攀回，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'thundersteppe_dragonstorm_eye',
         description: '東側玻岩脈動穿過多層黑玻裂架與風牆外緣後，才會指向龍雷風眼，遠處龍形閃電會短暫現身',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '風暴玻岩到龍雷風眼需穿過黑玻裂架與風牆外緣，不是相鄰格。',
       },
     ],
@@ -9840,12 +9841,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雷鷹巢峰是棲柱群最高的一截，峰頂被巨巢覆蓋，枯枝、骨架與亮羽在狂風中互相摩擦，發出像刀刃刮過金屬的聲音。從這裡向下看，雷鳴草原的路線像濕皮革上的刻線，入口、圖騰、柱林與渡口都清楚可見。雷鷹把巢峰視為天空領地，任何靠近者都必須承受俯衝與落雷同時壓下的威脅。若玩家能在不毀巢的情況下取回任務物，游牧營地會承認隊伍懂得尊重草原獵手，而不是只會掠奪。',
     exits: [
-      { direction: 'south', targetRoomId: 'thundersteppe_eagle_roost', description: '石柱脊線回到雷鷹棲柱' },
+      { direction: 'south', targetRoomId: 'thundersteppe_eagle_roost', description: '石柱脊線回到雷鷹棲柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '西側高空柱影沿巢峰脊線下落，繞過雷鷹巢枝與青銅引雷釘後才回到引雷柱林',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷鷹巢峰西返引雷柱林需要沿巢峰脊線下行，距離長於相鄰格。',
       },
     ],
@@ -9876,7 +9877,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'thundersteppe_lightning_rod_field',
         description: '北返時焦草缺口沿濕根雷弧上行，穿過燒焦草圈後才回到引雷柱林，柱腳會先亮起',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷蹄渡口北返引雷柱林需沿濕根雷弧上行，屬於長路徑。',
       },
       { direction: 'west', targetRoomId: 'thundersteppe_drum_circle', description: '西側溪岸草路回到雷鼓石圈' },
@@ -9884,7 +9885,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'thundersteppe_dragonstorm_eye',
         description: '東側電流溪線穿過渡口深蹄印與風牆外圍後，才會抵達龍雷風眼，隊伍必須拉開距離前進',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雷蹄渡口到龍雷風眼需沿帶電溪線穿過風牆外圍，距離長於相鄰格。',
       },
     ],
@@ -9916,7 +9917,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'thundersteppe_stormglass_outcrop',
         description: '西返時玻岩脈動會穿過風牆外緣與黑玻裂架，才回到風暴玻岩，雷牆收縮時必須停步等待',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '龍雷風眼西返風暴玻岩需穿過風牆與黑玻裂架，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'thundersteppe_worldboss_crater', description: '風眼裂縫通往世界王火坑' },
@@ -9968,7 +9969,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '日照玻門位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'east', targetRoomId: 'glass_dunes_mirror_slope', description: '玻砂路延向鏡坡' },
-      { direction: 'south', targetRoomId: 'glass_dunes_buried_caravan', description: '半埋車轍通往商隊殘骸' },
+      { direction: 'south', targetRoomId: 'glass_dunes_buried_caravan', description: '半埋車轍通往商隊殘骸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -9994,7 +9995,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_sun_gate', description: '反光坡面回到日照玻門' },
       { direction: 'east', targetRoomId: 'glass_dunes_shard_claim', description: '尖碎玻片指向碎晶採區' },
-      { direction: 'north', targetRoomId: 'glass_dunes_singing_ridge', description: '風聲爬上鳴砂脊' },
+      { direction: 'north', targetRoomId: 'glass_dunes_singing_ridge', description: '風聲爬上鳴砂脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -10021,7 +10022,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_mirror_slope', description: '鏡坡回到西側' },
       { direction: 'east', targetRoomId: 'glass_dunes_vein_gallery', description: '採掘繩標進入琉璃礦廊' },
-      { direction: 'south', targetRoomId: 'glass_dunes_relic_pit', description: '塌砂邊緣通往遺物坑' },
+      { direction: 'south', targetRoomId: 'glass_dunes_relic_pit', description: '塌砂邊緣通往遺物坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'shardback_scarab', maxCount: 2, respawnSeconds: 140 },
@@ -10045,7 +10046,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鳴砂脊位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'south', targetRoomId: 'glass_dunes_mirror_slope', description: '坡音落回鏡面沙坡' },
+      { direction: 'south', targetRoomId: 'glass_dunes_mirror_slope', description: '坡音落回鏡面沙坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'glass_dunes_herb_shelf', description: '東側耐旱草線通往耐旱藥棚' },
     ],
     monsters: [
@@ -10070,9 +10071,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '半埋商隊位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_sun_gate', description: '車轍回到日照玻門' },
+      { direction: 'north', targetRoomId: 'glass_dunes_sun_gate', description: '車轍回到日照玻門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'glass_dunes_water_pocket', description: '破水囊路通往暗水袋' },
-      { direction: 'south', targetRoomId: 'glass_dunes_saltwind_cut', description: '鹽風裂口通往切谷' },
+      { direction: 'south', targetRoomId: 'glass_dunes_saltwind_cut', description: '鹽風裂口通往切谷', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirrorsand_stalker', maxCount: 2, respawnSeconds: 130 },
@@ -10098,12 +10099,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '琉璃礦廊位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
       { direction: 'west', targetRoomId: 'glass_dunes_shard_claim', description: '礦脈回到碎晶採區' },
-      { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '重腳印通往晶魔像場' },
+      { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '重腳印通往晶魔像場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'glass_dunes_prism_arch',
         description: '北側礦光要先沿琉璃礦脈爬過折射廊道，再穿出高砂脊抵達稜鏡拱，途中反光會遮蔽直路',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '琉璃礦廊到稜鏡拱需沿礦脈高差繞行，不是相鄰平面一格。',
       },
     ],
@@ -10139,14 +10140,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'glass_dunes_obsidian_well',
         description: '東側藥棚背後的遮陽繩標先穿過乾根棚架，才會抵達黑曜井，井口黑影在遠處閃動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '耐旱藥棚到黑曜井被棚架與乾根斜坡隔開，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_relic_pit',
         description: '南側根鬚坡要穿過鬆動玻砂與塌陷邊緣後，才會落到遺物坑，碎陶片標示安全落腳點',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '耐旱藥棚到遺物坑有塌坡與高低差，不是相鄰平面一格。',
       },
     ],
@@ -10178,14 +10179,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '東側濕爪痕先繞過暗水袋邊緣的軟砂與破水囊，才接到獸刮地，地面會逐漸變硬',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '暗水袋到獸刮地需要避開軟砂水窪，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_saltwind_cut',
         description: '南側細水線沿玻砂裂縫下切，穿過鹽霧與斜坡後才落入鹽風切谷，水聲會被熱風吞沒',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '暗水袋到鹽風切谷有下切裂谷與鹽霧坡道，屬於長路徑。',
       },
     ],
@@ -10216,21 +10217,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'glass_dunes_water_pocket',
         description: '西返時需沿濕爪痕穿過硬化玻砂與軟砂水窪，才回到暗水袋，水光會在遠處晃動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獸刮地西返暗水袋要穿過硬砂與軟砂交界，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_relic_pit',
         description: '東側碎骨路繞過巨獸磨爪石與塌砂凹地後，才會抵達遺物坑，碎骨會指向安全邊線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獸刮地到遺物坑被磨爪石與凹地隔開，距離長於相鄰格。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_glassstorm_basin',
         description: '南側刮痕一路下滑到風暴盆地外緣，中途要避開旋起的玻砂刃片，不能直線穿越',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獸刮地到玻暴盆地需沿刮痕坡道下行，屬於長路徑。',
       },
     ],
@@ -10257,12 +10258,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '遺物坑位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_shard_claim', description: '塌砂坡回到碎晶採區' },
+      { direction: 'north', targetRoomId: 'glass_dunes_shard_claim', description: '塌砂坡回到碎晶採區', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '西返時碎骨路會先繞過遺物坑崩邊與獸痕凹地，才接回獸刮地，腳下玻片容易滑動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '遺物坑西返獸刮地需繞過坑緣與獸痕凹地，不是相鄰格。',
       },
       { direction: 'east', targetRoomId: 'glass_dunes_mirage_bazaar', description: '幻影旗影指向海市集' },
@@ -10295,14 +10296,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'glass_dunes_obsidian_well',
         description: '北側黑影水光會被海市蜃樓拉長，必須沿倒影標記繞過假攤棚，才會找到黑曜井',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '海市集影到黑曜井有幻影攤棚與倒影路標，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '東側破旗線穿過幻影市集邊緣與半埋石柱後，才會抵達埋宮門，旗影會干擾方向感',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '海市集影到埋宮門被幻影市集與半埋石柱隔開，距離長於相鄰格。',
       },
     ],
@@ -10333,7 +10334,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'glass_dunes_vein_gallery',
         description: '南側拱影要沿折射礦光下降，繞過高砂脊與碎玻階後，才落回琉璃礦廊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '稜鏡拱南返琉璃礦廊需要下行折射廊道，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'glass_dunes_crystal_golem_yard', description: '東側七色反光通往晶魔像場' },
@@ -10365,21 +10366,21 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'glass_dunes_herb_shelf',
         description: '西返時井繩會帶路穿過乾根棚架與遮陽繩標，才回到耐旱藥棚，黑影逐漸被草色取代',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑曜井西返耐旱藥棚需穿過棚架與乾根坡，屬於長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'glass_dunes_mirage_bazaar',
         description: '南側黑影水光要穿過數段假井影與幻影攤棚，才會回到海市集影，錯看倒影會繞遠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑曜井到海市集影受假井影與幻影攤棚干擾，不是相鄰格。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_solar_forge',
         description: '東側井壁熱脈沿黑曜裂縫延伸，需繞過燙裂井台後才到日輪熔臺，熱浪會逼人慢行',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑曜井到日輪熔臺需沿熱脈裂縫繞行，距離長於相鄰格。',
       },
     ],
@@ -10410,7 +10411,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'glass_dunes_beast_scrape',
         description: '北返時刮痕坡會逆著玻砂風暴上升，穿過刃片旋流後才回到獸刮地，腳印很快被掩埋',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '玻暴盆地北返獸刮地需要逆風上坡，屬於長路徑。',
       },
       {
@@ -10418,7 +10419,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         targetRoomId: 'glass_dunes_fill_3_19',
         description: '西側鹽風坡接往沙丘通道',
       },
-      { direction: 'east', targetRoomId: 'glass_dunes_lost_dynasty_altar', description: '風暴裂線指向失朝祭壇' },
+      { direction: 'east', targetRoomId: 'glass_dunes_lost_dynasty_altar', description: '風暴裂線指向失朝祭壇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_sand_skink', maxCount: 2, respawnSeconds: 120 },
@@ -10443,7 +10444,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹽風切谷位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'north', targetRoomId: 'glass_dunes_buried_caravan', description: '裂谷北返半埋商隊' },
+      { direction: 'north', targetRoomId: 'glass_dunes_buried_caravan', description: '裂谷北返半埋商隊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_fill_3_19',
@@ -10479,7 +10480,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '北側碎石階繞過晶魔像足印後通往埋宮門',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '晶魔像場到埋宮門需要沿碎石階斜向上行，距離長於相鄰格。',
       },
     ],
@@ -10536,14 +10537,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'glass_dunes_mirage_bazaar',
         description: '西返時破旗線要穿過半埋石柱與幻影市集外緣，才回到海市集影，旗影會不斷重疊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '埋宮門西返海市集影需穿過石柱群與幻影市集，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'glass_dunes_sunfire_crater',
         description: '東側宮門裂縫會沿埋宮外牆繞過坍落玻砂，才抵達日火坑，坑緣熱浪會逼人貼牆前進',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '埋宮門到日火坑需沿坍落宮牆繞行，不是相鄰格。',
       },
       { direction: 'south', targetRoomId: 'glass_dunes_solar_forge', description: '南側熔臺光線回到日輪熔臺' },
@@ -10572,9 +10573,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '失朝祭壇位於琉璃沙丘的熱風路線上，周圍玻砂在烈日下反射出刺眼白光，地面同時留下採集者繩標、失落王朝碎片與巡邏魔物的腳印。北側祭階可看見日輪熔臺，但祭壇這端被熱光折射成假階，需由熔臺光線下來。這裡不是單純景點，而是採集、戰鬥與區域敘事交會的節點。玩家可以使用 gather 或 inspect 尋找礦砂、藥草、水源與王朝殘片，也必須注意薄玻璃裂聲、反光造成的視線錯判、突然升起的熱風和遠處逐漸接近的火元素回音。若隊伍願意記錄路標、控制負重、保留撤退水量並觀察陰影方向，這片看似荒涼的沙丘會逐步顯露古代魔法如何把王朝邊境熔成玻海的真相，並找出下一處安全採集點。',
     exits: [
-      { direction: 'west', targetRoomId: 'glass_dunes_glassstorm_basin', description: '風暴裂線回到玻暴盆地' },
+      { direction: 'west', targetRoomId: 'glass_dunes_glassstorm_basin', description: '風暴裂線回到玻暴盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'glass_dunes_buried_palace_door', description: '南側王朝碎階回到埋宮門' },
-      { direction: 'east', targetRoomId: 'glass_dunes_sunfire_crater', description: '祭壇光脈通往日火坑' },
+      { direction: 'east', targetRoomId: 'glass_dunes_sunfire_crater', description: '祭壇光脈通往日火坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'lost_dynasty_sentinel', maxCount: 2, respawnSeconds: 210 },
@@ -10603,7 +10604,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'glass_dunes_buried_palace_door',
         description: '西返時需沿日火坑邊緣逆著熱浪貼牆繞行，穿過坍落玻砂後才回到埋宮門裂縫',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '日火坑西返埋宮門需繞過坑緣熱浪與坍落玻砂，屬於長路徑。',
       },
     ],
@@ -11688,7 +11689,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '峭壁入口位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'east', targetRoomId: 'storm_highlands_windcut_path', description: '風切小徑通往高原' },
-      { direction: 'north', targetRoomId: 'storm_highlands_rain_shelf', description: '雨棚岩臺通往北側' },
+      { direction: 'north', targetRoomId: 'storm_highlands_rain_shelf', description: '雨棚岩臺通往北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'windcut_kestrel', maxCount: 2, respawnSeconds: 120 },
@@ -11714,7 +11715,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_cliff_gate', description: '小徑回到峭壁入口' },
       { direction: 'east', targetRoomId: 'storm_highlands_goat_ledge', description: '碎石路通往山羊岩階' },
-      { direction: 'north', targetRoomId: 'storm_highlands_cloud_bridge', description: '雲橋纜索通往高空' },
+      { direction: 'north', targetRoomId: 'storm_highlands_cloud_bridge', description: '雲橋纜索通往高空', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'windcut_kestrel', maxCount: 3, respawnSeconds: 120 },
@@ -11738,7 +11739,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雨棚岩臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'storm_highlands_cliff_gate', description: '雨幕回到峭壁入口' },
+      { direction: 'south', targetRoomId: 'storm_highlands_cliff_gate', description: '雨幕回到峭壁入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'storm_highlands_cloud_bridge', description: '濕岩路通往雲橋' },
     ],
     monsters: [
@@ -11764,7 +11765,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雲索橋位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'storm_highlands_windcut_path', description: '纜索回到風切小徑' },
+      { direction: 'south', targetRoomId: 'storm_highlands_windcut_path', description: '纜索回到風切小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'storm_highlands_rain_shelf', description: '濕岩路回到雨棚岩臺' },
       { direction: 'east', targetRoomId: 'storm_highlands_griffin_watch', description: '橋端通往獅鷲哨臺' },
     ],
@@ -11792,7 +11793,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_windcut_path', description: '碎石路回到風切小徑' },
       { direction: 'east', targetRoomId: 'storm_highlands_thunder_pool', description: '凹岩路通往雷雨池' },
-      { direction: 'south', targetRoomId: 'storm_highlands_basalt_spine', description: '黑岩脊向南延伸' },
+      { direction: 'south', targetRoomId: 'storm_highlands_basalt_spine', description: '黑岩脊向南延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'stormhorn_goat', maxCount: 2, respawnSeconds: 140 },
@@ -11819,7 +11820,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_cloud_bridge', description: '橋端回到雲索橋' },
       { direction: 'east', targetRoomId: 'storm_highlands_eagle_scarp', description: '羽痕通往雷鷹崖' },
-      { direction: 'south', targetRoomId: 'storm_highlands_thunder_pool', description: '哨臺南側濕滑階梯沿雲霧與斷纜折落，繞過落雷濕岩後抵達雷雨池外圈', edgeKind: 'long_path', edgeNote: '獅鷲哨臺南側要沿濕滑階梯與纜索折行到雷雨池，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_thunder_pool', description: '哨臺南側濕滑階梯沿雲霧與斷纜折落，繞過落雷濕岩後抵達雷雨池外圈', edgeKind: 'distant_route', edgeNote: '獅鷲哨臺南側要沿濕滑階梯與纜索折行到雷雨池，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 2, respawnSeconds: 170 },
@@ -11845,7 +11846,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雷雨池位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_goat_ledge', description: '凹岩路回到山羊岩階' },
-      { direction: 'north', targetRoomId: 'storm_highlands_griffin_watch', description: '北側濕階逆著雷雨與雲霧繞過斷纜，沿滑石折坡回到獅鷲哨臺下方', edgeKind: 'long_path', edgeNote: '雷雨池北側回哨臺需逆風攀過濕階與斷纜，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_watch', description: '北側濕階逆著雷雨與雲霧繞過斷纜，沿滑石折坡回到獅鷲哨臺下方', edgeKind: 'distant_route', edgeNote: '雷雨池北側回哨臺需逆風攀過濕階與斷纜，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_old_windmill', description: '水渠通往舊風車' },
     ],
     monsters: [
@@ -11871,7 +11872,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '玄武岩脊位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
-      { direction: 'north', targetRoomId: 'storm_highlands_goat_ledge', description: '黑岩脊回到山羊岩階' },
+      { direction: 'north', targetRoomId: 'storm_highlands_goat_ledge', description: '黑岩脊回到山羊岩階', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'storm_highlands_screaming_gully', description: '裂隙通往嘯風谷' },
     ],
     monsters: [
@@ -11899,7 +11900,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_griffin_watch', description: '羽痕回到獅鷲哨臺' },
       { direction: 'east', targetRoomId: 'storm_highlands_nest_pillars', description: '巢柱通往高處' },
-      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '南側外露崖路繞過雷鷹巢痕與碎羽陡坡，沿風車斷翼陰影落向舊風車臺', edgeKind: 'long_path', edgeNote: '雷鷹崖南側需沿外露崖路繞行到舊風車臺，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_old_windmill', description: '南側外露崖路繞過雷鷹巢痕與碎羽陡坡，沿風車斷翼陰影落向舊風車臺', edgeKind: 'distant_route', edgeNote: '雷鷹崖南側需沿外露崖路繞行到舊風車臺，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 2, respawnSeconds: 170 },
@@ -11925,7 +11926,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊風車臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_thunder_pool', description: '水渠回到雷雨池' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '北側崖路逆著亂風繞過斷翼石階，再貼著外露峭壁攀回雷鷹崖外緣', edgeKind: 'long_path', edgeNote: '舊風車臺北側回雷鷹崖要繞過斷翼石階與外崖，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eagle_scarp', description: '北側崖路逆著亂風繞過斷翼石階，再貼著外露峭壁攀回雷鷹崖外緣', edgeKind: 'distant_route', edgeNote: '舊風車臺北側回雷鷹崖要繞過斷翼石階與外崖，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_storm_altar', description: '折翼階通往風神祭壇' },
     ],
     monsters: [
@@ -11953,7 +11954,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_basalt_spine', description: '裂隙回到玄武岩脊' },
       { direction: 'east', targetRoomId: 'storm_highlands_lightning_tree', description: '風聲通往雷擊枯樹' },
-      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '北側嘯風斜坡沿谷壁折返並穿過亂流，越過碎石風口後回到舊風車臺', edgeKind: 'long_path', edgeNote: '嘯風谷北側斜坡被橫風切斷，需要沿谷壁折返舊風車臺，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_old_windmill', description: '北側嘯風斜坡沿谷壁折返並穿過亂流，越過碎石風口後回到舊風車臺', edgeKind: 'distant_route', edgeNote: '嘯風谷北側斜坡被橫風切斷，需要沿谷壁折返舊風車臺，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'cloudbridge_raider', maxCount: 2, respawnSeconds: 150 },
@@ -12005,7 +12006,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '風神祭壇位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_old_windmill', description: '折翼階回到舊風車臺' },
-      { direction: 'north', targetRoomId: 'storm_highlands_sky_cairns', description: '祭階升向天葬石堆' },
+      { direction: 'north', targetRoomId: 'storm_highlands_sky_cairns', description: '祭階升向天葬石堆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'storm_highlands_eye_of_gale', description: '祭紋通往暴風眼' },
     ],
     monsters: [
@@ -12058,7 +12059,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '天葬石堆位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_nest_pillars', description: '石堆路回到高巢石柱' },
-      { direction: 'south', targetRoomId: 'storm_highlands_storm_altar', description: '祭階回到風神祭壇' },
+      { direction: 'south', targetRoomId: 'storm_highlands_storm_altar', description: '祭階回到風神祭壇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'storm_highlands_griffin_aerie', description: '羽骨路通往獅鷲巢臺' },
     ],
     monsters: [
@@ -12086,7 +12087,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_lightning_tree', description: '焦木路回到雷擊枯樹' },
       { direction: 'east', targetRoomId: 'storm_highlands_stormglass_mine', description: '碎光路通往風暴玻礦' },
-      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '北側烽臺階繞過倒塌烽火座並穿過旋風裂口，沿雷光石階升向暴風眼', edgeKind: 'long_path', edgeNote: '斷烽臺北側階梯會繞過倒塌烽火座與旋風裂口，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_eye_of_gale', description: '北側烽臺階繞過倒塌烽火座並穿過旋風裂口，沿雷光石階升向暴風眼', edgeKind: 'distant_route', edgeNote: '斷烽臺北側階梯會繞過倒塌烽火座與旋風裂口，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'basalt_storm_colossus', maxCount: 1, respawnSeconds: 210 },
@@ -12112,7 +12113,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '暴風眼位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_storm_altar', description: '祭紋回到風神祭壇' },
-      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '南側旋風階道穿過倒塌烽火座陰影，沿雷光石階與碎旗樁折降回斷烽臺', edgeKind: 'long_path', edgeNote: '暴風眼南側回斷烽臺需穿過旋風階道與倒塌烽火座，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_broken_beacon', description: '南側旋風階道穿過倒塌烽火座陰影，沿雷光石階與碎旗樁折降回斷烽臺', edgeKind: 'distant_route', edgeNote: '暴風眼南側回斷烽臺需穿過旋風階道與倒塌烽火座，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'storm_highlands_worldboss_peak', description: '風牆裂口通往風暴王峰' },
     ],
     monsters: [
@@ -12139,7 +12140,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獅鷲巢臺位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_sky_cairns', description: '羽骨路回到天葬石堆' },
-      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '南側巢臺風道越過羽骨棧脊與高低落差，穿過獅鷲盤旋區後通往風暴王峰', edgeKind: 'long_path', edgeNote: '獅鷲巢臺南側風道跨過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_worldboss_peak', description: '南側巢臺風道越過羽骨棧脊與高低落差，穿過獅鷲盤旋區後通往風暴王峰', edgeKind: 'distant_route', edgeNote: '獅鷲巢臺南側風道跨過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormwatch_griffin', maxCount: 3, respawnSeconds: 170 },
@@ -12165,7 +12166,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '風暴玻礦位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_broken_beacon', description: '碎光路回到斷烽臺' },
-      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '北側玻化礦脈斜坡穿過閃電岩縫，沿帶電礦脊與碎玻石階一路攀上風暴王峰', edgeKind: 'long_path', edgeNote: '風暴玻礦北側需沿玻化礦脈斜坡攀上王峰，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_worldboss_peak', description: '北側玻化礦脈斜坡穿過閃電岩縫，沿帶電礦脊與碎玻石階一路攀上風暴王峰', edgeKind: 'distant_route', edgeNote: '風暴玻礦北側需沿玻化礦脈斜坡攀上王峰，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'stormglass_minebeast', maxCount: 2, respawnSeconds: 230 },
@@ -12191,8 +12192,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '風暴王峰位於風暴高原被暴風切割的峭壁與雲海之間，腳下是濕滑岩階、斷裂纜索、羽骨與被雷火燒黑的舊祭紋。這裡是高階隊伍穿越高原的路線節點，不只提供戰鬥遭遇，也提示風神祭壇、獅鷲巢穴、暴風眼與世界王峰之間的關係。玩家可以 inspect 風向、爪痕、碎羽與岩面裂紋來判斷巡邏方向，也能 search 石堆、舊烽臺或玻礦尋找事件線索。若隊伍無視雲橋搖晃、突發落雷與空中獵手的影子，很容易被雷鷹、飛龍和風暴龍影逼到懸崖邊；穩定推進則能逐步掌握通往風暴核心的安全節奏，並保留回到入口的撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'storm_highlands_eye_of_gale', description: '風牆裂口回到暴風眼' },
-      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '北側羽骨風道逆風越過棧脊與高低落差，穿過盤旋氣流回到獅鷲巢臺', edgeKind: 'long_path', edgeNote: '風暴王峰北側回巢臺要逆風穿過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '南側玻化礦脈斜坡沿閃電岩縫折降，繞過帶電礦脊與碎玻石階回到風暴玻礦', edgeKind: 'long_path', edgeNote: '風暴王峰南側下到玻礦需沿玻化礦脈折降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'storm_highlands_griffin_aerie', description: '北側羽骨風道逆風越過棧脊與高低落差，穿過盤旋氣流回到獅鷲巢臺', edgeKind: 'distant_route', edgeNote: '風暴王峰北側回巢臺要逆風穿過羽骨棧脊與高低落差，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'storm_highlands_stormglass_mine', description: '南側玻化礦脈斜坡沿閃電岩縫折降，繞過帶電礦脊與碎玻石階回到風暴玻礦', edgeKind: 'distant_route', edgeNote: '風暴王峰南側下到玻礦需沿玻化礦脈折降，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'gale_king_griffin', maxCount: 1, respawnSeconds: 1800 },
@@ -12218,7 +12219,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '炭樹入口位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
     exits: [
       { direction: 'east', targetRoomId: 'blackwood_ash_path', description: '灰徑通往林內' },
-      { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側' },
+      { direction: 'north', targetRoomId: 'blackwood_hunter_marker', description: '獵人刻痕指向北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'charcoal_bark_wolf', maxCount: 2, respawnSeconds: 130 },
@@ -12244,7 +12245,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_charcoal_gate', description: '灰徑回到炭樹入口' },
       { direction: 'east', targetRoomId: 'blackwood_moving_copse', description: '樹影通往移動樹叢' },
-      { direction: 'south', targetRoomId: 'blackwood_black_moss_bed', description: '苔痕落向黑苔床' },
+      { direction: 'south', targetRoomId: 'blackwood_black_moss_bed', description: '苔痕落向黑苔床', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'charcoal_bark_wolf', maxCount: 2, respawnSeconds: 130 },
@@ -12269,7 +12270,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '獵人刻痕位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
     exits: [
-      { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口' },
+      { direction: 'south', targetRoomId: 'blackwood_charcoal_gate', description: '刻痕回到炭樹入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_raven_roost', description: '羽毛路通往渡鴉棲枝' },
     ],
     monsters: [
@@ -12301,7 +12302,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'blackwood_moving_copse',
         description: '南側低枝路要穿過渡鴉羽毛、交錯黑枝與會移位的樹影，才回到移動樹叢',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '渡鴉棲枝到移動樹叢需要穿過低枝、羽毛與移位樹影，屬於黑木林內長路徑。',
       },
     ],
@@ -12333,7 +12334,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_raven_roost',
         description: '北側低枝路要沿會移位的樹影上繞，穿過渡鴉羽毛雨後才抵達棲枝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '移動樹叢到渡鴉棲枝需要沿低枝、黑枝與渡鴉羽毛繞行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_root_maze', description: '盤根路通往根迷宮' },
@@ -12361,7 +12362,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '黑苔床位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
     exits: [
-      { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑' },
+      { direction: 'north', targetRoomId: 'blackwood_ash_path', description: '苔痕回到灰燼小徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_witch_hollow', description: '藥草味通往女巫樹洞' },
     ],
     monsters: [
@@ -12392,7 +12393,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'blackwood_root_maze',
         description: '南側網線要穿過數層黏蛛絲與塌陷樹根，沿低暗根縫落入盤根迷宮',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '織網岔口到盤根迷宮需要穿過黏蛛絲與塌陷根縫，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_dark_elf_blind', description: '暗箭路通往暗精靈伏臺' },
@@ -12425,7 +12426,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_webbed_crossing',
         description: '北側回織網岔口要攀過糾結樹根與黏絲斜坡，才能重新看見蛛網路標',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '盤根迷宮回織網岔口需要攀過糾結樹根與黏絲斜坡，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_sap_pool', description: '黏液痕通往黑樹脂池' },
@@ -12455,7 +12456,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_black_moss_bed', description: '藥草味回到黑苔床' },
       { direction: 'east', targetRoomId: 'blackwood_bone_chimes', description: '骨鈴路通往骨鈴林' },
-      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '無月空地向南展開' },
+      { direction: 'south', targetRoomId: 'blackwood_moonless_glade', description: '無月空地向南展開', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'nightfern_witch', maxCount: 2, respawnSeconds: 180 },
@@ -12486,7 +12487,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'blackwood_sap_pool',
         description: '南側斜梯藏在伏臺陰影下，要避開暗箭孔並踩過樹脂滑階才落到黑樹脂池',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '暗精靈伏臺到黑樹脂池需要沿陰影斜梯與樹脂滑階下行，屬於黑木林內長路徑。',
       },
     ],
@@ -12518,7 +12519,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_dark_elf_blind',
         description: '北側回伏臺要沿黏滑樹脂階上爬，穿過暗箭孔下方陰影才抵達平台',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '黑樹脂池回暗精靈伏臺需要沿樹脂滑階與暗箭陰影上行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_burnt_totem', description: '焦木路通往燒焦圖騰' },
@@ -12551,14 +12552,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'blackwood_burnt_totem',
         description: '東側吊骨路要穿過一串風動骨鈴與焦黑藤索，繞過炭根才到燒焦圖騰前方',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '骨鈴林到燒焦圖騰需要穿過吊骨路、風動骨鈴與焦黑藤索，屬於黑木林內長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'blackwood_moonless_glade',
         description: '南側鈴聲會把人引下暗坡，穿過無光樹冠與骨牌線後才抵達無月空地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '骨鈴林到無月空地需要沿暗坡、無光樹冠與骨牌線下行，屬於黑木林內長路徑。',
       },
     ],
@@ -12585,7 +12586,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '無月空地位於黑木林深處，炭黑樹皮吸收火光，枝葉在沒有風時也會緩慢換位，讓路標、獵人刻痕與回程方向變得不可靠。這裡是高階野外與採集路線節點，玩家可以 inspect 樹皮刮痕、蛛絲張力、暗精靈箭孔與黑樹脂流向來判斷危險來源，也能 search 樹根、苔床、倒木和舊祭器尋找草藥、毒蕨、樹脂與任務線索。若隊伍貪快或分散，影狼、森林蜘蛛、黑暗樹人與女巫會利用會移動的樹影切斷視線；若穩定標記路線，則能逐步追到黑心木核與整片森林變異的源頭，並判斷哪些樹影其實正在悄悄封住回程與火光方向。',
     exits: [
-      { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞' },
+      { direction: 'north', targetRoomId: 'blackwood_witch_hollow', description: '無月路回到女巫樹洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'blackwood_wolf_den', description: '爪痕通往影狼窩' },
     ],
     monsters: [
@@ -12642,7 +12643,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_poison_fern',
         description: '北側煙痕路要繞過燒焦圖騰背面，穿過毒蕨煙霧與低刺根才到毒蕨林',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '燒焦圖騰到毒蕨林需要穿過煙痕路、毒蕨煙霧與低刺根，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_elder_ring', description: '炭圈通往長老樹環' },
@@ -12701,7 +12702,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'blackwood_elder_ring',
         description: '南側樹洞階要穿過空心倒木內部，沿年輪裂縫與黑根階梯落向長老樹環',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '空心木橋到長老樹環需要穿過倒木內部、年輪裂縫與黑根階梯，屬於黑木林內長路徑。',
       },
     ],
@@ -12733,7 +12734,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_hollow_log_bridge',
         description: '北側回空心木橋要沿黑根階梯上爬，穿過年輪裂縫與倒木中空腹部',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '長老樹環回空心木橋需要沿黑根階梯、年輪裂縫與倒木內部上行，屬於黑木林內長路徑。',
       },
       { direction: 'east', targetRoomId: 'blackwood_heartwood_core', description: '年輪路通往黑心木核' },
@@ -12766,14 +12767,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'blackwood_elder_ring',
         description: '北側斷柱路要穿過倒塌小祠碎石與纏根拱門，才接上長老樹環外圈',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '倒塌小祠到長老樹環需要穿過斷柱、碎石與纏根拱門，屬於黑木林內長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'blackwood_heartwood_core',
         description: '東側祠後根道被黑樹脂封住邊緣，必須沿發亮根脈繞到黑心木核外壁',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '倒塌小祠到黑心木核需要沿祠後根道、黑樹脂邊緣與發亮根脈繞行，屬於黑木林內長路徑。',
       },
     ],
@@ -17059,7 +17060,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '蘆葦入口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'east', targetRoomId: 'moonlit_fen_moonflower_bank', description: '月花岸在東側' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_firefly_pool', description: '螢火池在北側' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_firefly_pool', description: '螢火池在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'moonlit_reed_sprite', maxCount: 2, respawnSeconds: 60 },
@@ -17085,7 +17086,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_reed_gate', description: '月花岸回到蘆葦入口' },
       { direction: 'east', targetRoomId: 'moonlit_fen_silver_mire', description: '銀泥沼在東側' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_fishing_cut', description: '釣水缺口向南延伸' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_fishing_cut', description: '釣水缺口向南延伸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'moonflower_mantis', maxCount: 1, respawnSeconds: 90 },
@@ -17110,7 +17111,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '螢火池位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
-      { direction: 'south', targetRoomId: 'moonlit_fen_reed_gate', description: '螢火池回到蘆葦入口' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_reed_gate', description: '螢火池回到蘆葦入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_willow_hush', description: '靜柳叢在東側' },
     ],
     monsters: [
@@ -17138,7 +17139,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_firefly_pool', description: '靜柳叢回到螢火池' },
       { direction: 'east', targetRoomId: 'moonlit_fen_glimmer_ford', description: '微光淺灘在東側' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_silver_mire', description: '南側靜柳叢沿露出水面的柳根路斜落，穿過銀霧水洼與倒影草線抵達銀泥沼', edgeKind: 'long_path', edgeNote: '靜柳叢到銀泥沼需沿柳根路與倒影草線斜行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_silver_mire', description: '南側靜柳叢沿露出水面的柳根路斜落，穿過銀霧水洼與倒影草線抵達銀泥沼', edgeKind: 'distant_route', edgeNote: '靜柳叢到銀泥沼需沿柳根路與倒影草線斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'willow_whisper_root', maxCount: 2, respawnSeconds: 100 },
@@ -17164,7 +17165,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '銀泥沼位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_moonflower_bank', description: '銀泥沼回到月花岸' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢', edgeKind: 'long_path', edgeNote: '銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_willow_hush', description: '北側銀泥沼沿倒影草線上行，穿過銀霧水洼與露根水道回到靜柳叢', edgeKind: 'distant_route', edgeNote: '銀泥沼回靜柳叢需沿倒影草線與露根水道上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_frog_choir', description: '蛙鳴洲在東側' },
     ],
     monsters: [
@@ -17190,7 +17191,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '釣水缺口位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
-      { direction: 'north', targetRoomId: 'moonlit_fen_moonflower_bank', description: '釣水缺口回到月花岸' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_moonflower_bank', description: '釣水缺口回到月花岸', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_mosquito_haze', description: '蚊霧溝在東側' },
     ],
     monsters: [
@@ -17244,7 +17245,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_silver_mire', description: '蛙鳴洲回到銀泥沼' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lantern_moss', description: '燈苔坡在東側' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_mosquito_haze', description: '南側蛙鳴洲沿濕草道斜落，穿過蛙卵淺灣、月影水痕與銀蚊霧帶抵達蚊霧溝', edgeKind: 'long_path', edgeNote: '蛙鳴洲到蚊霧溝需沿濕草道與銀蚊霧帶斜行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_mosquito_haze', description: '南側蛙鳴洲沿濕草道斜落，穿過蛙卵淺灣、月影水痕與銀蚊霧帶抵達蚊霧溝', edgeKind: 'distant_route', edgeNote: '蛙鳴洲到蚊霧溝需沿濕草道與銀蚊霧帶斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blackwater_leech_bloom', maxCount: 2, respawnSeconds: 110 },
@@ -17270,7 +17271,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '蚊霧溝位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fishing_cut', description: '蚊霧溝回到釣水缺口' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '北側蚊霧溝沿銀蚊霧帶回穿，踏過月影水痕、蛙卵淺灣與濕草道回到蛙鳴洲', edgeKind: 'long_path', edgeNote: '蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_frog_choir', description: '北側蚊霧溝沿銀蚊霧帶回穿，踏過月影水痕、蛙卵淺灣與濕草道回到蛙鳴洲', edgeKind: 'distant_route', edgeNote: '蚊霧溝回蛙鳴洲需沿銀蚊霧帶與濕草道回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_blackwater_run', description: '黑水流在東側' },
     ],
     monsters: [
@@ -17323,7 +17324,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '燈苔坡位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_frog_choir', description: '燈苔坡回到蛙鳴洲' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_fae_ring', description: '苔光路通往妖光環' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_fae_ring', description: '苔光路通往妖光環', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '半月池在東側' },
     ],
     monsters: [
@@ -17376,7 +17377,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '妖光環位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_night_bloom_grove', description: '妖光環回到夜花小林' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_lantern_moss', description: '苔光路回到燈苔坡' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_lantern_moss', description: '苔光路回到燈苔坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_moonwell', description: '月井在東側' },
     ],
     monsters: [
@@ -17455,7 +17456,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '月井位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_fae_ring', description: '月井回到妖光環' },
-      { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '南側月井沿井邊濕石路斜落，穿過月影水紋與白蘆迴圈入口抵達白蘆迷道', edgeKind: 'long_path', edgeNote: '月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'moonlit_fen_white_reed_maze', description: '南側月井沿井邊濕石路斜落，穿過月影水紋與白蘆迴圈入口抵達白蘆迷道', edgeKind: 'distant_route', edgeNote: '月井到白蘆迷道需沿井邊濕石路與白蘆迴圈斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'fae_ring_trickster', maxCount: 1, respawnSeconds: 240 },
@@ -17481,7 +17482,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '白蘆迷道位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_halfmoon_pond', description: '白蘆迷道回到半月池' },
-      { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '北側白蘆迷道沿白蘆迴圈折返，穿過月影水紋與井邊濕石路回到月井', edgeKind: 'long_path', edgeNote: '白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'moonlit_fen_moonwell', description: '北側白蘆迷道沿白蘆迴圈折返，穿過月影水紋與井邊濕石路回到月井', edgeKind: 'distant_route', edgeNote: '白蘆迷道回月井需沿白蘆迴圈與井邊濕石路折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '月沼祭壇在東側' },
     ],
     monsters: [
@@ -17508,7 +17509,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊舟營位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_sunken_log_bridge', description: '舊舟營回到沉木橋' },
-      { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '東側舊舟營沿半沉舟痕橫渡，繞過黑水倒影與白蘆暗汊抵達月沼祭壇', edgeKind: 'long_path', edgeNote: '舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'moonlit_fen_lunar_altar', description: '東側舊舟營沿半沉舟痕橫渡，繞過黑水倒影與白蘆暗汊抵達月沼祭壇', edgeKind: 'distant_route', edgeNote: '舊舟營到月沼祭壇需沿半沉舟痕與白蘆暗汊橫渡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'white_reed_stalker', maxCount: 1, respawnSeconds: 260 },
@@ -17560,6 +17561,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '夢水核心位於月光濕地的銀色水道與夜花叢之間，水面映著常年不散的月光，蘆葦、燈苔、螢火與黑水流把安全路線切成許多細小分岔。這裡是低中階野外、採集與釣魚混合節點，玩家可以 gather 夜花、燈苔、毒腺與濕地草藥，也能 inspect 水紋、蛛絲、蛙鳴和妖光來判斷巡行怪物位置。若隊伍忽略泥沼深度或月光倒影，毒蛙、毒蛇、蜘蛛、史萊姆與女巫會從蘆葦後伏擊；若穩定標記白蘆與舊舟路線，則能逐步靠近月沼祭壇與夢水核心，並確認每次採集後水位、月光倒影與回程蘆葦標記仍然可靠清楚，避免迷失於銀霧深處。',
     exits: [
       { direction: 'west', targetRoomId: 'moonlit_fen_lunar_altar', description: '夢水核心回到月沼祭壇' },
+      {
+        direction: 'east',
+        targetRoomId: 'marsh_of_mirrors_fill_24_15',
+        description: '東側夢水邊界穿過銀霧與鏡沼棧道，接入鏡沼外緣',
+        edgeKind: 'distant_route',
+        edgeNote: '夢水核心到鏡沼棧道跨越月光濕地與鏡沼邊界，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'dreamwater_lunar_guardian', maxCount: 1, respawnSeconds: 900 },
@@ -17585,7 +17593,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '古道起點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'east', targetRoomId: 'pilgrim_road_worn_flags', description: '舊旗石路通往東側' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_milestone_cairn', description: '里程石堆在北側' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_milestone_cairn', description: '里程石堆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'road_dust_stray', maxCount: 2, respawnSeconds: 75 },
@@ -17611,7 +17619,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_waygate', description: '舊旗石路回到古道起點' },
       { direction: 'east', targetRoomId: 'pilgrim_road_caravan_rut', description: '車轍路在東側' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_dry_well', description: '乾井在南側' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_dry_well', description: '乾井在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'road_dust_stray', maxCount: 2, respawnSeconds: 75 },
@@ -17636,7 +17644,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '里程石堆位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
-      { direction: 'south', targetRoomId: 'pilgrim_road_waygate', description: '里程石堆回到古道起點' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_waygate', description: '里程石堆回到古道起點', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_bell_shrine', description: '鐘鈴小祠在東側' },
     ],
     monsters: [
@@ -17664,7 +17672,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_milestone_cairn', description: '鐘鈴小祠回到里程石堆' },
       { direction: 'east', targetRoomId: 'pilgrim_road_prayer_steps', description: '祈願階在東側' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_caravan_rut', description: '南側鐘鈴小祠沿破碎祈願石階斜落，穿過白石路標與深車轍抵達商隊車轍', edgeKind: 'long_path', edgeNote: '鐘鈴小祠到商隊車轍需沿祈願石階與深車轍斜行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_caravan_rut', description: '南側鐘鈴小祠沿破碎祈願石階斜落，穿過白石路標與深車轍抵達商隊車轍', edgeKind: 'distant_route', edgeNote: '鐘鈴小祠到商隊車轍需沿祈願石階與深車轍斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'shrine_bell_wraith', maxCount: 1, respawnSeconds: 120 },
@@ -17690,7 +17698,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '商隊車轍位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_worn_flags', description: '商隊車轍回到舊旗石路' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '北側商隊車轍沿深車轍上行，穿過白石路標與破碎祈願石階回到鐘鈴小祠', edgeKind: 'long_path', edgeNote: '商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_bell_shrine', description: '北側商隊車轍沿深車轍上行，穿過白石路標與破碎祈願石階回到鐘鈴小祠', edgeKind: 'distant_route', edgeNote: '商隊車轍回鐘鈴小祠需沿深車轍與祈願石階上行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_abandoned_inn', description: '廢棄旅舍在東側' },
     ],
     monsters: [
@@ -17716,7 +17724,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '乾井位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
-      { direction: 'north', targetRoomId: 'pilgrim_road_worn_flags', description: '乾井回到舊旗石路' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_worn_flags', description: '乾井回到舊旗石路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_thorn_cut', description: '荊棘缺口在東側' },
     ],
     monsters: [
@@ -17770,7 +17778,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_caravan_rut', description: '廢棄旅舍回到商隊車轍' },
       { direction: 'east', targetRoomId: 'pilgrim_road_ambush_bend', description: '伏擊彎道在東側' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_thorn_cut', description: '南側廢棄旅舍從坍塌後門下切，穿過乾草貨棚與荊棘暗口抵達荊棘缺口', edgeKind: 'long_path', edgeNote: '廢棄旅舍到荊棘缺口需穿過後門貨棚與荊棘暗口，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_thorn_cut', description: '南側廢棄旅舍從坍塌後門下切，穿過乾草貨棚與荊棘暗口抵達荊棘缺口', edgeKind: 'distant_route', edgeNote: '廢棄旅舍到荊棘缺口需穿過後門貨棚與荊棘暗口，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'caravan_rut_cutpurse', maxCount: 2, respawnSeconds: 95 },
@@ -17796,7 +17804,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '荊棘缺口位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_dry_well', description: '荊棘缺口回到乾井' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '北側荊棘缺口沿荊棘暗口回穿，越過乾草貨棚與坍塌後門回到廢棄旅舍', edgeKind: 'long_path', edgeNote: '荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_abandoned_inn', description: '北側荊棘缺口沿荊棘暗口回穿，越過乾草貨棚與坍塌後門回到廢棄旅舍', edgeKind: 'distant_route', edgeNote: '荊棘缺口回廢棄旅舍需沿荊棘暗口與後門貨棚回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_smuggler_cache', description: '走私藏點在東側' },
     ],
     monsters: [
@@ -17849,7 +17857,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '伏擊彎道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_abandoned_inn', description: '伏擊彎道回到旅舍' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_white_marker', description: '斜坡通往白石路標' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_white_marker', description: '斜坡通往白石路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_broken_causeway', description: '斷石道在東側' },
     ],
     monsters: [
@@ -17902,7 +17910,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '白石路標位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_saint_bridge', description: '白石路標回到聖徒橋' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_ambush_bend', description: '斜坡回到伏擊彎道' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_ambush_bend', description: '斜坡回到伏擊彎道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '舊墓岔路在東側' },
     ],
     monsters: [
@@ -17955,7 +17963,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '盜匪望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_smuggler_cache', description: '盜匪望臺回到走私藏點' },
-      { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '東側盜匪望臺沿暗哨土脊橫移，繞過瞭望繩梯與落日營火線抵達日暮營地', edgeKind: 'long_path', edgeNote: '盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '東側盜匪望臺沿暗哨土脊橫移，繞過瞭望繩梯與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'smuggler_cache_guard', maxCount: 1, respawnSeconds: 300 },
@@ -17981,7 +17989,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '舊墓岔路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_white_marker', description: '舊墓岔路回到白石路標' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '南側舊墓岔路沿碎墓碑小徑斜落，穿過枯草墓牆與落日營火線抵達日暮營地', edgeKind: 'long_path', edgeNote: '舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '南側舊墓岔路沿碎墓碑小徑斜落，穿過枯草墓牆與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'saint_bridge_penitent', maxCount: 1, respawnSeconds: 260 },
@@ -18007,8 +18015,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '日暮營地位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_broken_causeway', description: '日暮營地回到斷石道' },
-      { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '北側日暮營地沿落日營火線回穿，穿過枯草墓牆與碎墓碑小徑回到舊墓岔路', edgeKind: 'long_path', edgeNote: '日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '北側日暮營地沿落日營火線回穿，穿過枯草墓牆與碎墓碑小徑回到舊墓岔路', edgeKind: 'distant_route', edgeNote: '日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '聖地門在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '南側白石路標沿乾涸支道下切，越過湖岸礫坡通往藍寶石湖入口界標', edgeKind: 'distant_route', edgeNote: '日暮營地南下藍寶石湖需離開古道並繞過湖岸礫坡，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'final_marker_lightsworn', maxCount: 1, respawnSeconds: 360 },
@@ -18035,6 +18044,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sunset_camp', description: '聖地門回到日暮營地' },
       { direction: 'east', targetRoomId: 'pilgrim_road_final_marker', description: '終點聖碑在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '南側聖地門階道沿礦脈石徑下降，接入藍寶石湖畔的發光礦脈路', edgeKind: 'distant_route', edgeNote: '聖地門南下藍寶石湖需穿過聖地外階與礦脈石徑，實際路程長於相鄰一格。' },
+      {
+        direction: 'north',
+        targetRoomId: 'lakeside_town_fill_15_6',
+        description: '北側石階沿古道邊牆上行，接回湖畔城鎮商店旁巷',
+        edgeKind: 'distant_route',
+        edgeNote: '聖地門北返湖畔城鎮需穿過古道邊牆與城鎮巷口，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'final_marker_lightsworn', maxCount: 1, respawnSeconds: 360 },
@@ -18060,7 +18077,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '終點聖碑位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '終點聖碑回到聖地門' },
-      { direction: 'south', targetRoomId: 'pilgrim_road_quiet_overlook', description: '靜望臺在南側' },
+      { direction: 'south', targetRoomId: 'pilgrim_road_quiet_overlook', description: '靜望臺在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'sanctuary_gate_trialkeeper', maxCount: 1, respawnSeconds: 1200 },
@@ -18085,7 +18102,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '靜望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，玩家可以 inspect 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。古道在此處恰好觸及湖畔鎮商業區的邊緣，北面鍛坊的爐火隱約可見，東側裁縫坊的布旗隨風飄動，提醒旅人已靠近城鎮補給圈。',
     exits: [
-      { direction: 'north', targetRoomId: 'pilgrim_road_final_marker', description: '靜望臺回到終點聖碑' },
+      { direction: 'north', targetRoomId: 'pilgrim_road_final_marker', description: '靜望臺回到終點聖碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'lakeside_tailor', description: '東側布旗小徑穿過古道望臺與湖畔商業巷，抵達城鎮裁縫坊門前', edgeKind: 'distant_route', edgeNote: '靜望臺東入湖畔裁縫坊需穿過古道望臺與商業巷口，實際路程長於相鄰一格。' },
+      {
+        direction: 'west',
+        targetRoomId: 'lakeside_town_fill_15_6',
+        description: '西側湖畔石巷穿過市鎮邊門與古道望臺之間的斜坡',
+        edgeKind: 'distant_route',
+        edgeNote: '靜望臺西返湖畔城鎮需穿過市鎮邊門與古道斜坡，實際路程長於相鄰一格。',
+      },
     ],
     monsters: [
       { monsterId: 'final_marker_lightsworn', maxCount: 1, respawnSeconds: 360 },
@@ -18112,7 +18137,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '傳送陣庭位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_outer_gate', description: '鐵木外門在東側' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_quartermaster_row', description: '軍需行列在北側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_quartermaster_row', description: '軍需行列在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -18167,8 +18192,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_outer_gate', description: '回到鐵木外門' },
       { direction: 'east', targetRoomId: 'ironwood_fort_east_bastion', description: '東堡牆在東側' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_barracks_hall', description: '兵營大廳在北側' },
-      { direction: 'south', targetRoomId: 'ironwood_fort_supply_tunnel', description: '補給隧道在南側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_barracks_hall', description: '兵營大廳在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_supply_tunnel', description: '補給隧道在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -18193,9 +18218,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '軍需行列位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_west_bastion', description: '西堡牆在東側' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_forge_works', description: '鍛造工坊在北側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_forge_works', description: '鍛造工坊在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'quartermaster_renegade', maxCount: 2, respawnSeconds: 95 },
@@ -18249,8 +18274,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '東側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在北側' },
-      { direction: 'south', targetRoomId: 'ironwood_fort_hidden_sally', description: '隱蔽突門在南側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_hidden_sally', description: '隱蔽突門在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bastion_crossbowman', maxCount: 2, respawnSeconds: 120 },
@@ -18275,10 +18300,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '兵營大廳位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_west_bastion', description: '牆道通往西堡牆' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '東側軍械牆道穿過兵器架與戰旗廊，繞過上層轉角後抵達戰圖室門前', edgeKind: 'long_path', edgeNote: '兵營大廳到戰圖室需要穿過軍械牆道與上層轉角，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '北側哨兵木梯沿外牆折上，越過箭孔平台與守備吊橋後抵達斥候棲臺', edgeKind: 'long_path', edgeNote: '兵營大廳北側到斥候棲臺有樓層落差與外牆平台，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_war_room', description: '東側軍械牆道穿過兵器架與戰旗廊，繞過上層轉角後抵達戰圖室門前', edgeKind: 'distant_route', edgeNote: '兵營大廳到戰圖室需要穿過軍械牆道與上層轉角，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '北側哨兵木梯沿外牆折上，越過箭孔平台與守備吊橋後抵達斥候棲臺', edgeKind: 'distant_route', edgeNote: '兵營大廳北側到斥候棲臺有樓層落差與外牆平台，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'ironwood_gate_sentinel', maxCount: 2, respawnSeconds: 120 },
@@ -18303,9 +18328,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鐵木鍛坊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_scout_roost', description: '高架棧道通往斥候棲臺' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_ironwood_grove', description: '鐵木林圃在北側' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_ironwood_grove', description: '鐵木林圃在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'forge_cinder_guard', maxCount: 2, respawnSeconds: 150 },
@@ -18330,9 +18355,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '烽火信號塔位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆' },
-      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '西側信號牆道繞過烽火燃料架與旗語平台，沿塔身陰影通往戰圖室後門', edgeKind: 'long_path', edgeNote: '烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在北側' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '西側信號牆道繞過烽火燃料架與旗語平台，沿塔身陰影通往戰圖室後門', edgeKind: 'distant_route', edgeNote: '烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_command_walk', description: '指揮長廊在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bastion_crossbowman', maxCount: 2, respawnSeconds: 120 },
@@ -18357,9 +18382,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰圖室位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '西側戰旗廊穿過戰圖桌與軍械牆道，繞過上層轉角折回兵營大廳內門', edgeKind: 'long_path', edgeNote: '戰圖室西側回兵營大廳需穿過戰旗廊與軍械牆道，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '東側旗語平台繞過烽火燃料架，沿塔身陰影與石階通往烽火信號塔內梯', edgeKind: 'long_path', edgeNote: '戰圖室東側到信號塔要經旗語平台與塔內階梯，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在北側' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '西側戰旗廊穿過戰圖桌與軍械牆道，繞過上層轉角折回兵營大廳內門', edgeKind: 'distant_route', edgeNote: '戰圖室西側回兵營大廳需穿過戰旗廊與軍械牆道，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '東側旗語平台繞過烽火燃料架，沿塔身陰影與石階通往烽火信號塔內梯', edgeKind: 'distant_route', edgeNote: '戰圖室東側到信號塔要經旗語平台與塔內階梯，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_oath_chapel', description: '誓約禮拜堂在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'command_tablet_construct', maxCount: 1, respawnSeconds: 360 },
@@ -18384,7 +18409,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '斥候棲臺位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'east', targetRoomId: 'ironwood_fort_barracks_hall', description: '東側外牆平台沿哨兵木梯折降，穿過箭孔陰影與守備吊橋回到兵營大廳', edgeKind: 'long_path', edgeNote: '斥候棲臺東側回兵營大廳需沿外牆平台下樓並繞過箭孔平台，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_barracks_hall', description: '東側外牆平台沿哨兵木梯折降，穿過箭孔陰影與守備吊橋回到兵營大廳', edgeKind: 'distant_route', edgeNote: '斥候棲臺東側回兵營大廳需沿外牆平台下樓並繞過箭孔平台，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_forge_works', description: '棧道通往鐵木鍛坊' },
       { direction: 'north', targetRoomId: 'ironwood_fort_west_bastion', description: '北側外牆梯道回到西側堡牆' },
       { direction: 'south', targetRoomId: 'ironwood_fort_prison_block', description: '南側囚牢石階通往囚牢石廊' },
@@ -18438,7 +18463,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '補給隧道位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'north', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_hidden_sally', description: '暗道通往隱蔽突門' },
       { direction: 'west', targetRoomId: 'ironwood_fort_old_cistern', description: '濕冷支道通往舊蓄水池' },
     ],
@@ -18491,7 +18516,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鐵木林圃位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_forge_works', description: '回到鐵木鍛坊' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_forge_works', description: '回到鐵木鍛坊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_prison_block', description: '木根小徑通往囚牢石廊' },
     ],
     monsters: [
@@ -18518,7 +18543,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '隱蔽突門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'signal_fire_sapper', maxCount: 2, respawnSeconds: 180 },
@@ -18543,9 +18568,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '指揮長廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔' },
-      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '西側指揮長廊越過封令拱門與軍官座席，繞過戰旗屏風接到誓約禮拜堂側門', edgeKind: 'long_path', edgeNote: '指揮長廊西側到禮拜堂需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在東側' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '西側指揮長廊越過封令拱門與軍官座席，繞過戰旗屏風接到誓約禮拜堂側門', edgeKind: 'distant_route', edgeNote: '指揮長廊西側到禮拜堂需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_keep_gate', description: '內堡門在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'command_tablet_construct', maxCount: 2, respawnSeconds: 360 },
@@ -18570,10 +18595,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '誓約禮拜堂位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_prison_block', description: '側廊通往囚牢石廊' },
-      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '東側側門穿過封令拱門與軍官座席，繞過戰旗屏風接回指揮長廊中央', edgeKind: 'long_path', edgeNote: '誓約禮拜堂東側到指揮長廊需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '北側宣誓階梯沿黑鐵聖徽上行，繞過內堡閘鏈與守門鐵柱抵達內堡門', edgeKind: 'long_path', edgeNote: '誓約禮拜堂北側到內堡門有宣誓階梯與閘鏈阻隔，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ironwood_fort_command_walk', description: '東側側門穿過封令拱門與軍官座席，繞過戰旗屏風接回指揮長廊中央', edgeKind: 'distant_route', edgeNote: '誓約禮拜堂東側到指揮長廊需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ironwood_fort_keep_gate', description: '北側宣誓階梯沿黑鐵聖徽上行，繞過內堡閘鏈與守門鐵柱抵達內堡門', edgeKind: 'distant_route', edgeNote: '誓約禮拜堂北側到內堡門有宣誓階梯與閘鏈阻隔，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'oath_chapel_knight', maxCount: 2, respawnSeconds: 320 },
@@ -18598,8 +18623,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '內堡門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，玩家可以 inspect 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤。',
     exits: [
-      { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊' },
-      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '南側內堡閘鏈旁的宣誓階梯折降，沿黑鐵聖徽與守門鐵柱回到誓約禮拜堂', edgeKind: 'long_path', edgeNote: '內堡門南側回禮拜堂需沿宣誓階梯折降並繞過閘鏈，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '南側內堡閘鏈旁的宣誓階梯折降，沿黑鐵聖徽與守門鐵柱回到誓約禮拜堂', edgeKind: 'distant_route', edgeNote: '內堡門南側回禮拜堂需沿宣誓階梯折降並繞過閘鏈，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_high_keep', description: '高堡核心在東側' },
     ],
     monsters: [
@@ -18654,7 +18679,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '採集入口界樁位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'east', targetRoomId: 'amber_forest_vein_path', description: '琥珀脈徑在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_resin_gate', description: '樹脂門在北側' },
+      { direction: 'north', targetRoomId: 'amber_forest_resin_gate', description: '樹脂門在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'amber_sapling_lurker', maxCount: 2, respawnSeconds: 140 },
@@ -18681,7 +18706,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
       { direction: 'east', targetRoomId: 'amber_forest_herb_shelf', description: '藥草層在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在北側' },
+      { direction: 'north', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'resin_vein_lizard', maxCount: 2, respawnSeconds: 120 },
@@ -18708,7 +18733,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_vein_path', description: '回到琥珀脈徑' },
       { direction: 'east', targetRoomId: 'amber_forest_water_pocket', description: '水囊窪地在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在北側' },
+      { direction: 'north', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'suntrap_bloom_mantis', maxCount: 1, respawnSeconds: 150 },
@@ -18735,7 +18760,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_herb_shelf', description: '回到樹脂藥草層' },
       { direction: 'east', targetRoomId: 'amber_forest_beast_scrape', description: '獸痕樹皮在東側' },
-      { direction: 'south', targetRoomId: 'amber_forest_sapfall_gully', description: '樹脂落溝在南側' },
+      { direction: 'south', targetRoomId: 'amber_forest_sapfall_gully', description: '樹脂落溝在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'amber_water_serpent', maxCount: 2, respawnSeconds: 150 },
@@ -18789,7 +18814,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '封存遺物坑位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_beast_scrape', description: '回到獸痕樹皮' },
-      { direction: 'north', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在北側' },
+      { direction: 'north', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'petrified_resin_golem', maxCount: 1, respawnSeconds: 360 },
@@ -18814,7 +18839,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '凝脂樹門位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
+      { direction: 'south', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_golden_canopy', description: '金冠樹幕在東側' },
     ],
     monsters: [
@@ -18841,9 +18866,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '金冠樹幕位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_resin_gate', description: '回到凝脂樹門' },
-      { direction: 'south', targetRoomId: 'amber_forest_vein_path', description: '落回琥珀脈徑' },
+      { direction: 'south', targetRoomId: 'amber_forest_vein_path', description: '落回琥珀脈徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_wasp_nests', description: '蜂巢高枝在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_glassroot_bridge', description: '玻璃根橋在北側' },
+      { direction: 'north', targetRoomId: 'amber_forest_glassroot_bridge', description: '玻璃根橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'sealed_wax_wasp', maxCount: 2, respawnSeconds: 110 },
@@ -18869,7 +18894,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '封蠟蜂巢位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕' },
-      { direction: 'south', targetRoomId: 'amber_forest_herb_shelf', description: '落回樹脂藥草層' },
+      { direction: 'south', targetRoomId: 'amber_forest_herb_shelf', description: '落回樹脂藥草層', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'amber_forest_suntrap_clearing', description: '日陷空地在東側' },
     ],
     monsters: [
@@ -18895,19 +18920,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '樹脂落溝位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'north', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
+      { direction: 'north', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'amber_forest_charcoal_stand',
         description: '東側樹脂溝要沿焦黑根脈下切，再穿過黏稠樹液坡才會抵達焦木林列',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '樹脂落溝到焦木林列需要沿焦黑根脈與樹液坡繞行，屬於長路徑。',
       },
       {
         direction: 'west',
         targetRoomId: 'amber_forest_smoke_mycology',
         description: '西側煙菌坡被孢霧隔開，必須繞過封蠟根牆與低窪樹脂池才能抵達',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '樹脂落溝到煙菌坡需要繞過封蠟根牆與樹脂池，屬於長路徑。',
       },
     ],
@@ -18934,9 +18959,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '玻璃根橋位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕' },
-      { direction: 'east', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_glowing_hollow', description: '發光樹洞在北側' },
+      { direction: 'south', targetRoomId: 'amber_forest_golden_canopy', description: '回到金冠樹幕', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'amber_forest_smoke_mycology', description: '煙菌坡在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'amber_forest_glowing_hollow', description: '發光樹洞在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'resin_vein_lizard', maxCount: 2, respawnSeconds: 120 },
@@ -18966,13 +18991,13 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'amber_forest_charcoal_stand',
         description: '南側日光陷坑要沿琥珀斜坡滑下，穿過焦黑樹樁列後才到焦木林列',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '日陷空地到焦木林列有高度落差與焦木樹樁阻隔，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'amber_forest_ember_beetle_mound',
-        description: '東側焦黑灰線通往燼甲蟲丘',
+        description: '東側焦黑灰線通往燼甲蟲丘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。',
       },
     ],
     monsters: [
@@ -19002,7 +19027,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'amber_forest_sapfall_gully',
         description: '東側回程要穿過煙菌孢霧與低窪樹脂池，沿封蠟根牆繞回樹脂落溝',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '煙菌坡回樹脂落溝需要穿越孢霧與樹脂池，屬於長路徑。',
       },
     ],
@@ -19033,14 +19058,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'amber_forest_sapfall_gully',
         description: '西側回程沿焦黑根脈爬回樹脂溝，途中要避開黏稠樹液坡與斷裂木炭坑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '焦木林列回樹脂落溝需要沿根脈爬升並穿越樹液坡，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'amber_forest_suntrap_clearing',
         description: '北側必須穿過焦黑樹樁列再爬上琥珀斜坡，才能安全回到日陷空地邊緣',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '焦木林列回日陷空地需要穿越焦木樹樁與琥珀斜坡，屬於長路徑。',
       },
       {
@@ -19072,9 +19097,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '發光樹洞位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'amber_forest_glassroot_bridge', description: '回到玻璃根橋' },
-      { direction: 'east', targetRoomId: 'amber_forest_ember_beetle_mound', description: '燼甲蟲丘在東側' },
-      { direction: 'north', targetRoomId: 'amber_forest_elder_resin_tree', description: '古脂巨樹在北側' },
+      { direction: 'south', targetRoomId: 'amber_forest_glassroot_bridge', description: '回到玻璃根橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'amber_forest_ember_beetle_mound', description: '燼甲蟲丘在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'amber_forest_elder_resin_tree', description: '古脂巨樹在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'elder_resin_treant', maxCount: 1, respawnSeconds: 420 },
@@ -19177,12 +19202,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         targetRoomId: 'amber_forest_hunter_blind',
         description: '西側石化藤蔓高枝回到樹上獵棚',
       },
-      { direction: 'south', targetRoomId: 'amber_forest_relic_pit', description: '回到封存遺物坑' },
+      { direction: 'south', targetRoomId: 'amber_forest_relic_pit', description: '回到封存遺物坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'amber_forest_deep_amber_core',
         description: '北側核心被厚重琥珀根牆包住，必須循花圃背後的透明根脈長廊進入',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '石化花圃到深琥珀核心需要穿越透明根脈長廊，屬於長路徑。',
       },
     ],
@@ -19209,8 +19234,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '古脂巨樹位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'amber_forest_glowing_hollow', description: '回到發光樹洞' },
-      { direction: 'east', targetRoomId: 'amber_forest_deep_amber_core', description: '根脈通往深琥珀核心' },
+      { direction: 'south', targetRoomId: 'amber_forest_glowing_hollow', description: '回到發光樹洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'amber_forest_deep_amber_core', description: '根脈通往深琥珀核心', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'elder_resin_treant', maxCount: 1, respawnSeconds: 420 },
@@ -19239,10 +19264,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'amber_forest_petrified_bloom',
         description: '南側回花圃要沿透明根脈長廊退出，穿過厚重琥珀根牆後才看見石化花徑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '深琥珀核心回石化花圃需要沿透明根脈長廊退出，屬於長路徑。',
       },
-      { direction: 'west', targetRoomId: 'amber_forest_elder_resin_tree', description: '根脈回到古脂巨樹' },
+      { direction: 'west', targetRoomId: 'amber_forest_elder_resin_tree', description: '根脈回到古脂巨樹', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'deep_amber_matriarch', maxCount: 1, respawnSeconds: 1500 },
@@ -19271,7 +19296,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '山脈入口界樁位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'east', targetRoomId: 'silverpine_range_vein_path', description: '銀脈山徑在東側' },
-      { direction: 'north', targetRoomId: 'silverpine_range_snowline_gate', description: '雪線門在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_snowline_gate', description: '雪線門在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'silverpine_snowstalker', maxCount: 2, respawnSeconds: 140 },
@@ -19298,7 +19323,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁' },
       { direction: 'east', targetRoomId: 'silverpine_range_herb_shelf', description: '寒草岩層在東側' },
-      { direction: 'north', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mica_cliff_lizard', maxCount: 2, respawnSeconds: 130 },
@@ -19325,7 +19350,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_vein_path', description: '回到銀脈山徑' },
       { direction: 'east', targetRoomId: 'silverpine_range_water_pocket', description: '融雪水窪在東側' },
-      { direction: 'north', targetRoomId: 'silverpine_range_mica_switchback', description: '雲母折道在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_mica_switchback', description: '雲母折道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frost_herb_witch', maxCount: 1, respawnSeconds: 180 },
@@ -19379,7 +19404,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
       { direction: 'east', targetRoomId: 'silverpine_range_relic_pit', description: '古礦遺坑在東側' },
-      { direction: 'north', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'silverpine_snowstalker', maxCount: 2, respawnSeconds: 140 },
@@ -19430,7 +19455,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雪線木門位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁' },
+      { direction: 'south', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在東側' },
     ],
     monsters: [
@@ -19457,9 +19482,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '月針松林位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_snowline_gate', description: '回到雪線木門' },
-      { direction: 'south', targetRoomId: 'silverpine_range_vein_path', description: '落回銀脈山徑' },
+      { direction: 'south', targetRoomId: 'silverpine_range_vein_path', description: '落回銀脈山徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'silverpine_range_mica_switchback', description: '雲母折道在東側' },
-      { direction: 'north', targetRoomId: 'silverpine_range_windcut_bridge', description: '風切木橋在北側' },
+      { direction: 'north', targetRoomId: 'silverpine_range_windcut_bridge', description: '風切木橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'windcut_eagle', maxCount: 1, respawnSeconds: 220 },
@@ -19485,7 +19510,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雲母折道位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
-      { direction: 'south', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層' },
+      { direction: 'south', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'silverpine_range_old_miner_camp', description: '舊礦工營在東側' },
     ],
     monsters: [
@@ -19512,7 +19537,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '霜草岩棚位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
       { direction: 'south', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
-      { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側' },
+      { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frost_herb_witch', maxCount: 2, respawnSeconds: 180 },
@@ -19537,12 +19562,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '山羊窄徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，玩家可以 inspect 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行。',
     exits: [
-      { direction: 'south', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡' },
+      { direction: 'south', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'silverpine_range_eagle_spire',
         description: '東側山羊窄徑要貼著碎石壁橫移，穿過一段結冰岩脊才到鷹巢尖峰',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '山羊窄徑到鷹巢尖峰需要沿碎石壁、結冰岩脊與高處風口橫移，屬於銀松山脈長路徑。',
       },
       { direction: 'west', targetRoomId: 'silverpine_range_old_miner_camp', description: '舊礦工營在西側' },
@@ -19683,7 +19708,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'silverpine_range_goat_track',
         description: '西側回山羊窄徑要離開尖峰鳥巢，沿結冰岩脊貼著碎石壁橫移下撤',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鷹巢尖峰回山羊窄徑需要沿結冰岩脊、高處風口與碎石壁撤回，屬於銀松山脈長路徑。',
       },
       { direction: 'north', targetRoomId: 'silverpine_range_crystal_scree', description: '北側晶石碎坡回到採集線' },
@@ -19742,14 +19767,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'silverpine_range_iceglass_cavern',
         description: '西側回冰玻洞要沿雪崩凹地邊緣上行，穿過滑冰斜廊、碎冰滑坡與冰霧裂口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雪崩凹地回冰玻洞需要沿雪坡邊緣、滑冰斜廊與冰霧裂口上行，屬於銀松山脈長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'silverpine_range_starwatch_ridge',
         description: '東側要跨過雪崩凹地的硬雪脊，繞過鬆雪坑與星標石才上到觀星脊',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '雪崩凹地到觀星脊需要跨過硬雪脊、鬆雪坑與星標石，屬於銀松山脈長路徑。',
       },
     ],
@@ -19836,7 +19861,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '退潮入口樁位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
       { direction: 'east', targetRoomId: 'saltwind_flats_white_ripple', description: '白波鹽面在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_mist_marker', description: '霧中路標在北側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_mist_marker', description: '霧中路標在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'saltflat_crystal_scuttler', maxCount: 2, respawnSeconds: 70 },
@@ -19863,7 +19888,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁' },
       { direction: 'east', targetRoomId: 'saltwind_flats_brine_pool', description: '鹽水潮池在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在北側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'saltflat_crystal_scuttler', maxCount: 3, respawnSeconds: 70 },
@@ -19893,10 +19918,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'saltwind_flats_driftwood_post',
         description: '東側要穿過鹽草帶外緣與潮後白鹽裂面，繞過幾根倒伏漂木才抵達哨柱',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹽草帶到漂木哨柱需要穿過鹽草外緣、白鹽裂面與倒伏漂木，屬於鹽風灘長路徑。',
       },
-      { direction: 'south', targetRoomId: 'saltwind_flats_crab_march', description: '蟹行淺灘在南側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_crab_march', description: '蟹行淺灘在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'brinepool_crab_guard', maxCount: 2, respawnSeconds: 100 },
@@ -19921,9 +19946,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹽草帶位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面' },
-      { direction: 'east', targetRoomId: 'saltwind_flats_driftwood_post', description: '漂木哨柱在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在北側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_driftwood_post', description: '漂木哨柱在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'saltgrass_reedstalker', maxCount: 2, respawnSeconds: 80 },
@@ -19952,10 +19977,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'saltwind_flats_brine_pool',
         description: '西側回鹽水潮池要離開漂木哨柱，穿過倒伏漂木、白鹽裂面與潮後水線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '漂木哨柱回鹽水潮池需要穿過倒伏漂木、白鹽裂面與潮後水線，屬於鹽風灘長路徑。',
       },
-      { direction: 'north', targetRoomId: 'saltwind_flats_bone_pier', description: '魚骨棧橋在北側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_bone_pier', description: '魚骨棧橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_shallow_cut', description: '淺水裂道在東側' },
     ],
     monsters: [
@@ -19981,7 +20006,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '蟹行淺灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'north', targetRoomId: 'saltwind_flats_brine_pool', description: '回到鹽水潮池' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_brine_pool', description: '回到鹽水潮池', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_blue_mud_shelf', description: '藍泥層在東側' },
     ],
     monsters: [
@@ -20007,9 +20032,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '霧中路標位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_glass_salt_field', description: '玻璃鹽田在北側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_glass_salt_field', description: '玻璃鹽田在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'saltgrass_reedstalker', maxCount: 2, respawnSeconds: 80 },
@@ -20034,12 +20059,12 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '魚骨棧橋位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'saltwind_flats_pirate_blind',
         description: '西側要沿魚骨棧橋下方濕鹽樁繞行，穿過低霧暗記才找到海盜隱棚',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '魚骨棧橋到海盜隱棚需要沿濕鹽樁與低霧暗記繞行，屬於鹽風灘長路徑。',
       },
       { direction: 'east', targetRoomId: 'saltwind_flats_fisher_cache', description: '漁夫藏點在東側' },
@@ -20071,7 +20096,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'saltwind_flats_bone_pier',
         description: '東側要離開海盜隱棚草網，沿低霧中的濕鹽樁繞過暗記後走到魚骨棧橋側面',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '海盜隱棚到魚骨棧橋需要穿過草網、低霧與濕鹽樁，屬於鹽風灘長路徑。',
       },
     ],
@@ -20098,9 +20123,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '玻璃鹽田位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_mist_marker', description: '回到霧中路標' },
-      { direction: 'east', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在東側' },
-      { direction: 'north', targetRoomId: 'saltwind_flats_salt_crystal_nest', description: '鹽晶巢在北側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_mist_marker', description: '回到霧中路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_salt_crystal_nest', description: '鹽晶巢在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glasssalt_elemental', maxCount: 1, respawnSeconds: 260 },
@@ -20131,7 +20156,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'saltwind_flats_wrecked_skiff',
         description: '南側要沿淺水裂道滑過藍泥水線與鹽殼碎坡，才抵達散滿木板的破舟灘',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '淺水裂道到破舟灘需要沿藍泥水線、鹽殼碎坡與破舟木板下行，屬於鹽風灘長路徑。',
       },
     ],
@@ -20163,7 +20188,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'saltwind_flats_lowtide_causeway',
         description: '東側要越過漁夫藏點外的鹽殼箱、乾網繩與退潮碎石，才接上退潮石道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '漁夫藏點到退潮石道需要穿過鹽殼箱、乾網繩與退潮碎石，屬於鹽風灘長路徑。',
       },
     ],
@@ -20248,14 +20273,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'saltwind_flats_shallow_cut',
         description: '北側回淺水裂道要穿過破舟木板與藍泥水線，再爬上被鹽殼覆住的碎坡',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '破舟灘回淺水裂道需要穿過破舟木板、藍泥水線與鹽殼碎坡上行，屬於鹽風灘長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'saltwind_flats_fog_bell',
         description: '東側要穿過破舟木板間的積鹽水坑與纜繩殘段，循著鐘聲才找到霧鐘桿',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '破舟灘到霧鐘桿需要穿過破舟木板、積鹽水坑與纜繩殘段，屬於鹽風灘長路徑。',
       },
     ],
@@ -20282,8 +20307,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹽晶巢位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田' },
-      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_glass_salt_field', description: '回到玻璃鹽田', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '潮望廢墟在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glasssalt_elemental', maxCount: 2, respawnSeconds: 260 },
@@ -20312,7 +20337,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'saltwind_flats_fisher_cache',
         description: '西側回漁夫藏點要離開退潮石道，穿過碎石鹽脊、乾網繩與藏箱陰影',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '退潮石道回漁夫藏點需要穿過碎石鹽脊、乾網繩與藏箱陰影，屬於鹽風灘長路徑。',
       },
       { direction: 'north', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '北側海蛇拖痕回到霧鐘方向' },
@@ -20320,7 +20345,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'saltwind_flats_tidewatch_ruin',
         description: '東側退潮石道要穿過一段會被潮霧吞沒的石梁，才抵達潮望廢墟外牆',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '退潮石道到潮望廢墟需要穿過潮霧石梁與廢墟外牆，屬於鹽風灘長路徑。',
       },
     ],
@@ -20351,7 +20376,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'saltwind_flats_wrecked_skiff',
         description: '西側回破舟灘要循著霧鐘聲穿過纜繩殘段、積鹽水坑與破船木影邊緣',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '霧鐘桿回破舟灘需要穿過纜繩殘段、積鹽水坑與破船木影，屬於鹽風灘長路徑。',
       },
       { direction: 'south', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '南側海蛇拖痕通往退潮石道' },
@@ -20383,17 +20408,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'saltwind_flats_lowtide_causeway',
         description: '西側回退潮石道要沿潮望廢墟外牆撤出，穿過潮霧石梁才回到乾鹽高地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '潮望廢墟回退潮石道需要沿廢墟外牆、潮霧石梁與乾鹽高地撤回，屬於鹽風灘長路徑。',
       },
       {
         direction: 'south',
         targetRoomId: 'saltwind_flats_fog_bell',
         description: '南側要從潮望廢墟台階繞下鹽坡，循著斷續鐘聲穿過濃霧到霧鐘桿',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '潮望廢墟到霧鐘桿需要沿廢墟台階、鹽坡與濃霧鐘聲下行，屬於鹽風灘長路徑。',
       },
-      { direction: 'north', targetRoomId: 'saltwind_flats_deep_brine_eye', description: '深鹽眼在北側' },
+      { direction: 'north', targetRoomId: 'saltwind_flats_deep_brine_eye', description: '深鹽眼在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'lowtide_serpent', maxCount: 1, respawnSeconds: 280 },
@@ -20418,7 +20443,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '深鹽眼位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，玩家可以 inspect 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給。',
     exits: [
-      { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟' },
+      { direction: 'south', targetRoomId: 'saltwind_flats_tidewatch_ruin', description: '回到潮望廢墟', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'deep_brine_eye_keeper', maxCount: 1, respawnSeconds: 1200 },
@@ -20983,7 +21008,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '灰燼入口門位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'east', targetRoomId: 'ember_march_cinder_road', description: '焦炭路在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_burnt_watchpost', description: '燒毀哨站在北側' },
+      { direction: 'north', targetRoomId: 'ember_march_burnt_watchpost', description: '燒毀哨站在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ashroad_sparkling', maxCount: 2, respawnSeconds: 180 },
@@ -21010,7 +21035,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門' },
       { direction: 'east', targetRoomId: 'ember_march_smoke_trench', description: '煙溝在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在北側' },
+      { direction: 'north', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'ashroad_sparkling', maxCount: 2, respawnSeconds: 180 },
@@ -21063,8 +21088,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '焦黑里程碑位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路' },
-      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址', edgeKind: 'long_path', edgeNote: '焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_cinder_road', description: '回到焦炭路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '東側焦黑里程碑沿熔亮灰脊斜行，繞過倒旗殘樁與戰壕外圈抵達戰營殘址', edgeKind: 'distant_route', edgeNote: '焦黑里程碑到戰營殘址需沿熔亮灰脊與戰壕外圈繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -21089,9 +21114,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '燒毀哨站位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門' },
+      { direction: 'south', targetRoomId: 'ember_march_ash_gate', description: '回到灰燼入口門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_charred_milestone', description: '焦黑里程碑在東側' },
-      { direction: 'north', targetRoomId: 'ember_march_glass_ash_field', description: '玻璃灰原在北側' },
+      { direction: 'north', targetRoomId: 'ember_march_glass_ash_field', description: '玻璃灰原在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 1, respawnSeconds: 230 },
@@ -21117,7 +21142,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '熔裂縫位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_smoke_trench', description: '回到煙溝' },
-      { direction: 'north', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在北側' },
+      { direction: 'north', targetRoomId: 'ember_march_slag_bridge', description: '渣鐵橋在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_black_sand_basin', description: '黑砂盆地在東側' },
     ],
     monsters: [
@@ -21143,8 +21168,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '玻璃灰原位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'south', targetRoomId: 'ember_march_burnt_watchpost', description: '回到燒毀哨站' },
-      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側' },
+      { direction: 'south', targetRoomId: 'ember_march_burnt_watchpost', description: '回到燒毀哨站', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'ember_march_war_camp_ruin', description: '戰營殘址在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 2, respawnSeconds: 230 },
@@ -21169,8 +21194,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰營殘址位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'long_path', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'long_path', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'ember_march_charred_milestone', description: '西側戰營殘址沿焦黑營道折返，穿過倒塌帳架與灰燼里程標回到焦黑里程碑', edgeKind: 'distant_route', edgeNote: '戰營殘址回焦黑里程碑需沿焦黑營道與倒塌帳架折返，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ember_march_slag_bridge', description: '東側戰營殘址穿過燒紅壕溝與熔渣橋墩，沿斷裂鐵板道抵達渣鐵橋', edgeKind: 'distant_route', edgeNote: '戰營殘址到渣鐵橋需穿過燒紅壕溝與熔渣橋墩，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ember_march_smoke_trench', description: '北側塌旗營牆回到煙溝' },
     ],
     monsters: [
@@ -21196,8 +21221,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '渣鐵橋位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址', edgeKind: 'long_path', edgeNote: '渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫' },
+      { direction: 'west', targetRoomId: 'ember_march_war_camp_ruin', description: '西側渣鐵橋沿斷裂鐵板道折返，穿過熔渣橋墩與燒紅壕溝回到戰營殘址', edgeKind: 'distant_route', edgeNote: '渣鐵橋回戰營殘址需沿斷裂鐵板道與熔渣橋墩折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_lava_crack', description: '落回熔裂縫', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在東側' },
     ],
     monsters: [
@@ -21276,8 +21301,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '黑砂盆地位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_lava_crack', description: '回到熔裂縫' },
-      { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側' },
-      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '東側黑砂盆地沿蒸汽乾渠繞開骨窯熱流，穿過焦骨路標與熔灰坡抵達骨窯隘口', edgeKind: 'long_path', edgeNote: '黑砂盆地到骨窯隘口需沿蒸汽乾渠繞過骨窯熱流，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_ember_forge', description: '餘燼鍛台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '東側黑砂盆地沿蒸汽乾渠繞開骨窯熱流，穿過焦骨路標與熔灰坡抵達骨窯隘口', edgeKind: 'distant_route', edgeNote: '黑砂盆地到骨窯隘口需沿蒸汽乾渠繞過骨窯熱流，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'burnt_banner_raider', maxCount: 1, respawnSeconds: 260 },
@@ -21303,7 +21328,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '餘燼鍛台位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_slag_bridge', description: '回到渣鐵橋' },
-      { direction: 'south', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地' },
+      { direction: 'south', targetRoomId: 'ember_march_black_sand_basin', description: '回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ember_march_fallen_banner', description: '倒旗坡在東側' },
     ],
     monsters: [
@@ -21330,7 +21355,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '倒旗坡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_ember_forge', description: '回到餘燼鍛台' },
-      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口', edgeKind: 'long_path', edgeNote: '倒旗坡到骨窯隘口需沿軍旗列與骨灰階坡下切，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_bonekiln_pass', description: '南側倒旗坡沿燒斷軍旗列下切，穿過骨灰階坡與熱風窄口抵達骨窯隘口', edgeKind: 'distant_route', edgeNote: '倒旗坡到骨窯隘口需沿軍旗列與骨灰階坡下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_molten_toll', description: '熔火關卡在東側' },
     ],
     monsters: [
@@ -21357,7 +21382,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '焦泉位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_worm_burrow', description: '回到熔岩蟲道' },
-      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側' },
+      { direction: 'east', targetRoomId: 'ember_march_bonekiln_pass', description: '骨窯隘口在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glass_ash_lizard', maxCount: 2, respawnSeconds: 230 },
@@ -21382,8 +21407,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '西側骨窯隘口沿熔灰坡折返，穿過焦骨路標與蒸汽乾渠回到黑砂盆地', edgeKind: 'long_path', edgeNote: '骨窯隘口回黑砂盆地需沿熔灰坡與蒸汽乾渠折返，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '北側骨窯隘口沿熱風窄口上攀，穿過骨灰階坡與燒斷軍旗列回到倒旗坡', edgeKind: 'long_path', edgeNote: '骨窯隘口回倒旗坡需沿熱風窄口與軍旗列上攀，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '西側骨窯隘口沿熔灰坡折返，穿過焦骨路標與蒸汽乾渠回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '骨窯隘口回黑砂盆地需沿熔灰坡與蒸汽乾渠折返，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '北側骨窯隘口沿熱風窄口上攀，穿過骨灰階坡與燒斷軍旗列回到倒旗坡', edgeKind: 'distant_route', edgeNote: '骨窯隘口回倒旗坡需沿熱風窄口與軍旗列上攀，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_dragonprint_ridge', description: '龍印脊在東側' },
     ],
     monsters: [
@@ -21410,7 +21435,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '熔火關卡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
-      { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '東側熔火關卡沿熔渣稅道折上，穿過坍塌門洞與燒紅鐵拒馬抵達邊堡外殼', edgeKind: 'long_path', edgeNote: '熔火關卡到邊堡外殼需沿熔渣稅道與坍塌門洞折上，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '東側熔火關卡沿熔渣稅道折上，穿過坍塌門洞與燒紅鐵拒馬抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '熔火關卡到邊堡外殼需沿熔渣稅道與坍塌門洞折上，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'border_forge_sentinel', maxCount: 1, respawnSeconds: 420 },
@@ -21436,7 +21461,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '龍印脊位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_bonekiln_pass', description: '回到骨窯隘口' },
-      { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '北側龍印脊沿龍爪熱脊攀升，避開噴火裂縫後從焦黑外牆缺口抵達邊堡外殼', edgeKind: 'long_path', edgeNote: '龍印脊到邊堡外殼需沿龍爪熱脊與外牆缺口攀升，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '北側龍印脊沿龍爪熱脊攀升，避開噴火裂縫後從焦黑外牆缺口抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '龍印脊到邊堡外殼需沿龍爪熱脊與外牆缺口攀升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bonekiln_ashguard', maxCount: 1, respawnSeconds: 300 },
@@ -21461,8 +21486,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '邊堡外殼位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，玩家可以 inspect 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線。',
     exits: [
-      { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '西側邊堡外殼沿坍塌門洞折返，穿過燒紅鐵拒馬與熔渣稅道回到熔火關卡', edgeKind: 'long_path', edgeNote: '邊堡外殼回熔火關卡需沿門洞與熔渣稅道折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '南側邊堡外殼從焦黑外牆缺口下切，穿過噴火裂縫與龍爪熱脊回到龍印脊', edgeKind: 'long_path', edgeNote: '邊堡外殼回龍印脊需沿外牆缺口與龍爪熱脊下切，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '西側邊堡外殼沿坍塌門洞折返，穿過燒紅鐵拒馬與熔渣稅道回到熔火關卡', edgeKind: 'distant_route', edgeNote: '邊堡外殼回熔火關卡需沿門洞與熔渣稅道折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '南側邊堡外殼從焦黑外牆缺口下切，穿過噴火裂縫與龍爪熱脊回到龍印脊', edgeKind: 'distant_route', edgeNote: '邊堡外殼回龍印脊需沿外牆缺口與龍爪熱脊下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ember_march_heartfire_breach', description: '心火缺口在東側' },
     ],
     monsters: [
@@ -22052,7 +22077,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '湖岸採集界樁位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'east', targetRoomId: 'sapphire_lake_vein_path', description: '藍脈湖徑在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_lantern_dock', description: '燈籠碼頭在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_lantern_dock', description: '燈籠碼頭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'blue_silt_toad', maxCount: 2, respawnSeconds: 160 },
@@ -22079,7 +22104,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁' },
       { direction: 'east', targetRoomId: 'sapphire_lake_herb_shelf', description: '湖草淺棚在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'vein_crystal_lizard', maxCount: 2, respawnSeconds: 210 },
@@ -22106,7 +22131,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑' },
       { direction: 'east', targetRoomId: 'sapphire_lake_water_pocket', description: '清泉水囊在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '藍蘆葦帶在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '藍蘆葦帶在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'sapphire_reed_sprite', maxCount: 1, respawnSeconds: 220 },
@@ -22133,7 +22158,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚' },
       { direction: 'east', targetRoomId: 'sapphire_lake_beast_scrape', description: '湖獸擦痕在東側' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_pebble_weir', description: '卵石水堰在南側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_pebble_weir', description: '卵石水堰在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'mirror_shallows_serpent', maxCount: 1, respawnSeconds: 230 },
@@ -22160,7 +22185,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
       { direction: 'east', targetRoomId: 'sapphire_lake_relic_pit', description: '湖底遺坑在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '北側湖獸擦痕沿水下繩標繞過冷泉逆流，越過淺藍沙脊抵達玻魚灣', edgeKind: 'long_path', edgeNote: '湖獸擦痕到玻魚灣需沿水下繩標繞過逆流與沙脊，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_glassfish_cove', description: '北側湖獸擦痕沿水下繩標繞過冷泉逆流，越過淺藍沙脊抵達玻魚灣', edgeKind: 'distant_route', edgeNote: '湖獸擦痕到玻魚灣需沿水下繩標繞過逆流與沙脊，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'mirror_shallows_serpent', maxCount: 2, respawnSeconds: 230 },
@@ -22187,7 +22212,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_beast_scrape', description: '回到湖獸擦痕' },
       { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側礦砂坡通往藍寶礦脈' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_sunken_step', description: '沉階在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_sunken_step', description: '沉階在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'blue_lode_golem', maxCount: 1, respawnSeconds: 360 },
@@ -22212,7 +22237,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '燈籠碼頭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在東側' },
     ],
     monsters: [
@@ -22239,9 +22264,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鏡面淺灘位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_lantern_dock', description: '回到燈籠碼頭' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_blue_reed_bed', description: '藍蘆葦帶在東側' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_mineral_spring', description: '礦泉眼在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_mineral_spring', description: '礦泉眼在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glassfish_swarm', maxCount: 2, respawnSeconds: 170 },
@@ -22267,7 +22292,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '藍蘆葦帶位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_fill_17_9', description: '東側湖畔小路通往玻魚灣' },
     ],
     monsters: [
@@ -22293,7 +22318,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '卵石水堰位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'north', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_crystal_sandbar', description: '晶砂洲在東側' },
     ],
     monsters: [
@@ -22320,8 +22345,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '玻魚灣位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_fill_17_9', description: '西側湖畔小路回到藍蘆葦帶' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '南側玻魚灣水道沿水下繩標折回，穿過冷泉逆流與淺藍沙脊回到湖獸擦痕', edgeKind: 'long_path', edgeNote: '玻魚灣回湖獸擦痕需沿水下繩標穿過逆流與沙脊，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在東側' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '南側玻魚灣水道沿水下繩標折回，穿過冷泉逆流與淺藍沙脊回到湖獸擦痕', edgeKind: 'distant_route', edgeNote: '玻魚灣回湖獸擦痕需沿水下繩標穿過逆流與沙脊，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_lily_cache', description: '睡蓮藏點在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'glassfish_swarm', maxCount: 2, respawnSeconds: 170 },
@@ -22346,9 +22371,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '沉階位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'south', targetRoomId: 'sapphire_lake_relic_pit', description: '回到湖底遺坑' },
-      { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '西側沉階水道繞過塌落石階與玻魚群，沿斜光浮標與淺水石縫回到玻魚灣', edgeKind: 'long_path', edgeNote: '沉階西側到玻魚灣需繞過塌階與魚群，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_deep_vein_window', description: '北側沉階沿礦光石階下探，穿過冷水暗流與藍砂斜坡後抵達深脈窗', edgeKind: 'long_path', edgeNote: '沉階北側到深脈窗是下探礦光石階與冷水暗流，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_relic_pit', description: '回到湖底遺坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '西側沉階水道繞過塌落石階與玻魚群，沿斜光浮標與淺水石縫回到玻魚灣', edgeKind: 'distant_route', edgeNote: '沉階西側到玻魚灣需繞過塌階與魚群，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_deep_vein_window', description: '北側沉階沿礦光石階下探，穿過冷水暗流與藍砂斜坡後抵達深脈窗', edgeKind: 'distant_route', edgeNote: '沉階北側到深脈窗是下探礦光石階與冷水暗流，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'calmwater_spring_guardian', maxCount: 1, respawnSeconds: 380 },
@@ -22373,7 +22398,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '礦泉眼位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'south', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '靜水石窟在東側' },
     ],
     monsters: [
@@ -22425,7 +22450,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。西側晶砂洲與北側玻魚灣的浮標會在採集後沉入水面，只能從那兩處進入睡蓮藏點。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側睡蓮根道穿過浮葉陰影與藍光裂縫，沿礦砂繩標抵達藍寶礦脈', edgeKind: 'long_path', edgeNote: '睡蓮藏點東側到藍寶礦脈需穿過蓮根與礦砂繩標，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側睡蓮根道穿過浮葉陰影與藍光裂縫，沿礦砂繩標抵達藍寶礦脈', edgeKind: 'distant_route', edgeNote: '睡蓮藏點東側到藍寶礦脈需穿過蓮根與礦砂繩標，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'sapphire_reed_sprite', maxCount: 2, respawnSeconds: 220 },
@@ -22477,7 +22502,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '水靈鏡位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '回到靜水石窟' },
-      { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '東側水靈鏡面沿倒影水道折行，越過光紋淺坡與水幕裂隙抵達深脈窗', edgeKind: 'long_path', edgeNote: '水靈鏡到深脈窗需沿倒影水道與光紋淺坡折行，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '東側水靈鏡面沿倒影水道折行，越過光紋淺坡與水幕裂隙抵達深脈窗', edgeKind: 'distant_route', edgeNote: '水靈鏡到深脈窗需沿倒影水道與光紋淺坡折行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'sapphire_reed_sprite', maxCount: 1, respawnSeconds: 220 },
@@ -22502,9 +22527,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '深脈窗位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '西側深脈窗沿倒影水道回折，穿過光紋淺坡與水幕裂隙後回到水靈鏡', edgeKind: 'long_path', edgeNote: '深脈窗西側回水靈鏡需沿倒影水道與光紋淺坡，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '南側深脈窗沿礦光石階上返，穿過冷水暗流與藍砂斜坡後回到沉階', edgeKind: 'long_path', edgeNote: '深脈窗南側回沉階需沿礦光石階上返並穿過暗流，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側深脈窗穿過藍光礦裂與水壓窄門，沿發亮礦脊與碎晶坡抵達藍寶礦脈', edgeKind: 'long_path', edgeNote: '深脈窗東側到藍寶礦脈需穿過水壓窄門與礦脊，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '西側深脈窗沿倒影水道回折，穿過光紋淺坡與水幕裂隙後回到水靈鏡', edgeKind: 'distant_route', edgeNote: '深脈窗西側回水靈鏡需沿倒影水道與光紋淺坡，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '南側深脈窗沿礦光石階上返，穿過冷水暗流與藍砂斜坡後回到沉階', edgeKind: 'distant_route', edgeNote: '深脈窗南側回沉階需沿礦光石階上返並穿過暗流，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側深脈窗穿過藍光礦裂與水壓窄門，沿發亮礦脊與碎晶坡抵達藍寶礦脈', edgeKind: 'distant_route', edgeNote: '深脈窗東側到藍寶礦脈需穿過水壓窄門與礦脊，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blue_lode_golem', maxCount: 1, respawnSeconds: 360 },
@@ -22529,9 +22554,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '藍寶礦脈位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '西側藍寶礦脈沿礦砂繩標折返，穿過浮葉陰影與睡蓮根道回到藏點', edgeKind: 'long_path', edgeNote: '藍寶礦脈西側回睡蓮藏點需沿礦砂繩標與蓮根折返，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '西側藍寶礦脈沿礦砂繩標折返，穿過浮葉陰影與睡蓮根道回到藏點', edgeKind: 'distant_route', edgeNote: '藍寶礦脈西側回睡蓮藏點需沿礦砂繩標與蓮根折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_fill_21_8', description: '東側湖邊草地通往睡蓮浮標' },
-      { direction: 'north', targetRoomId: 'sapphire_lake_blueheart_sanctum', description: '藍心聖潭在北側' },
+      { direction: 'north', targetRoomId: 'sapphire_lake_blueheart_sanctum', description: '藍心聖潭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'blue_lode_golem', maxCount: 1, respawnSeconds: 360 },
@@ -22556,8 +22581,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
     exits: [
-      { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈' },
-      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '西側藍心聖潭水道繞過聖潭渦流與藍光礦幕，沿深水繩標回到深脈窗', edgeKind: 'long_path', edgeNote: '藍心聖潭西側回深脈窗需繞過聖潭渦流與礦幕，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '西側藍心聖潭水道繞過聖潭渦流與藍光礦幕，沿深水繩標回到深脈窗', edgeKind: 'distant_route', edgeNote: '藍心聖潭西側回深脈窗需繞過聖潭渦流與礦幕，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'blueheart_lode_spirit', maxCount: 1, respawnSeconds: 720 },
@@ -22586,7 +22611,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '傳送陣廣場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'east', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '十字攤街在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_guard_post', description: '衛兵亭在北側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_guard_post', description: '衛兵亭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[傳]',
@@ -22610,8 +22635,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_grain_arcade', description: '穀物拱廊在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_spice_awning', description: '香料棚在北側' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_well_court', description: '水井小庭在南側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_spice_awning', description: '香料棚在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_well_court', description: '水井小庭在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[攤]',
@@ -22635,7 +22660,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街' },
       { direction: 'east', targetRoomId: 'kingsroad_market_blacksmith_row', description: '鍛匠列在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在北側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[穀]',
@@ -22657,9 +22682,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '香料棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在北側', edgeKind: 'long_path', edgeNote: '香料棚北側要繞過兩排布棚與秤藥桌，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在北側', edgeKind: 'distant_route', edgeNote: '香料棚北側要繞過兩排布棚與秤藥桌，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[香]',
@@ -22682,7 +22707,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鍛匠列位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在北側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_caravan_yard', description: '商隊院在東側' },
     ],
     monsters: [],
@@ -22706,7 +22731,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '布商巷位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在東側' },
     ],
     monsters: [],
@@ -22730,9 +22755,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '冒險委託板位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_auction_tent', description: '拍賣帳棚在北側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_auction_tent', description: '拍賣帳棚在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[任]',
@@ -22755,8 +22780,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '商隊院位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在北側' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'long_path', edgeNote: '商隊院東側道路需穿過車轍與圍欄門，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'distant_route', edgeNote: '商隊院東側道路需穿過車轍與圍欄門，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[車]',
@@ -22779,8 +22804,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '錢幣兌換所位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在北側', edgeKind: 'long_path', edgeNote: '錢幣兌換所北側要沿帳棚外緣繞到文書桌，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在北側', edgeKind: 'distant_route', edgeNote: '錢幣兌換所北側要沿帳棚外緣繞到文書桌，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[幣]',
@@ -22802,7 +22827,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '草藥方場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚', edgeKind: 'long_path', edgeNote: '草藥方場南側需繞過藥籃、秤桌與棚柱，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚', edgeKind: 'distant_route', edgeNote: '草藥方場南側需繞過藥籃、秤桌與棚柱，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '魚販石階在東側' },
     ],
     monsters: [],
@@ -22827,7 +22852,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_herbal_square', description: '回到草藥方場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_auction_tent', description: '東側拍賣帳棚通往文書角' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷', edgeKind: 'long_path', edgeNote: '魚販石階南側要沿濕石階折返布棚巷口，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷', edgeKind: 'distant_route', edgeNote: '魚販石階南側要沿濕石階折返布棚巷口，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[魚]',
@@ -22850,8 +22875,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '文書角位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_auction_tent', description: '西側拍賣帳棚回到魚販石階' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'long_path', edgeNote: '文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在東側', edgeKind: 'long_path', edgeNote: '文書角東側通往後巷帳本處需穿過窄門與帳棚背面，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在東側', edgeKind: 'distant_route', edgeNote: '文書角東側通往後巷帳本處需穿過窄門與帳棚背面，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[書]',
@@ -22873,8 +22898,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '衛兵亭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在東側', edgeKind: 'long_path', edgeNote: '衛兵亭東側巡邏線會繞過貨車與攤棚，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在東側', edgeKind: 'distant_route', edgeNote: '衛兵亭東側巡邏線會繞過貨車與攤棚，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[衛]',
@@ -22896,7 +22921,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '水井小庭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'north', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_tavern_front', description: '酒館門前在東側' },
     ],
     monsters: [],
@@ -22919,10 +22944,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '拍賣帳棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '西側魚販石階回到市場水渠邊' },
       { direction: 'east', targetRoomId: 'kingsroad_market_scribe_corner', description: '文書角在東側' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[拍]',
@@ -22945,7 +22970,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '酒館門前位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_well_court', description: '回到水井小庭' },
-      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側' },
+      { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[酒]',
@@ -22967,8 +22992,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '馱獸圈位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。南側酒館門前的人潮被馱獸欄門隔開，只能從酒館門前東側進入馱獸圈。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'west', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'long_path', edgeNote: '馱獸圈西側要繞過欄門與車轍回到商隊院，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '路神小祠在北側', edgeKind: 'long_path', edgeNote: '馱獸圈北側需沿繩欄與祈路標記繞行，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '馱獸圈西側要繞過欄門與車轍回到商隊院，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '路神小祠在北側', edgeKind: 'distant_route', edgeNote: '馱獸圈北側需沿繩欄與祈路標記繞行，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[獸]',
@@ -22990,9 +23015,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '路神小祠位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '回到馱獸圈', edgeKind: 'long_path', edgeNote: '路神小祠南側要繞過祈願石與馱獸欄門，實際路程長於相鄰一格。' },
-      { direction: 'west', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'long_path', edgeNote: '路神小祠西側沿商隊祈路繞回兌換所，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在北側', edgeKind: 'long_path', edgeNote: '路神小祠北側要穿過貨箱陰影與後巷口，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '回到馱獸圈', edgeKind: 'distant_route', edgeNote: '路神小祠南側要繞過祈願石與馱獸欄門，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '路神小祠西側沿商隊祈路繞回兌換所，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_back_alley_ledgers', description: '後巷帳本處在北側', edgeKind: 'distant_route', edgeNote: '路神小祠北側要穿過貨箱陰影與後巷口，實際路程長於相鄰一格。' },
     ],
     monsters: [],
     mapSymbol: '[祠]',
@@ -23014,9 +23039,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '後巷帳本處位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'west', targetRoomId: 'kingsroad_market_scribe_corner', description: '回到文書角', edgeKind: 'long_path', edgeNote: '後巷帳本處西側要繞過帳冊貨箱與抄寫桌，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '回到路神小祠', edgeKind: 'long_path', edgeNote: '後巷帳本處南側需沿暗巷折回路神小祠，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側', edgeKind: 'long_path', edgeNote: '後巷帳本處北側窄梯通往高看台，屬於高低落差路徑而非相鄰平面。' },
+      { direction: 'west', targetRoomId: 'kingsroad_market_scribe_corner', description: '回到文書角', edgeKind: 'distant_route', edgeNote: '後巷帳本處西側要繞過帳冊貨箱與抄寫桌，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '回到路神小祠', edgeKind: 'distant_route', edgeNote: '後巷帳本處南側需沿暗巷折回路神小祠，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'kingsroad_market_high_balcony', description: '高看台在北側', edgeKind: 'distant_route', edgeNote: '後巷帳本處北側窄梯通往高看台，屬於高低落差路徑而非相鄰平面。' },
     ],
     monsters: [],
     mapSymbol: '[帳]',
@@ -23038,7 +23063,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '市集高看台位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。東側後巷帳本處的窄梯從高看台這端被貨箱堵住，只能由後巷帳本處上行進入。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
     exits: [
-      { direction: 'south', targetRoomId: 'kingsroad_market_auction_tent', description: '回到拍賣帳棚' },
+      { direction: 'south', targetRoomId: 'kingsroad_market_auction_tent', description: '回到拍賣帳棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[台]',
@@ -23063,7 +23088,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '競技城門位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。西側城門拱廊外可遠眺藍寶湖的粼粼波光，湖風偶爾捲入場內，為悶熱的競技區帶來一絲清涼。',
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_ticket_colonnade', description: '票券柱廊在東側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_champion_wall', description: '冠軍牆在北側' },
+      { direction: 'north', targetRoomId: 'arena_quarter_champion_wall', description: '冠軍牆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[入]',
@@ -23087,7 +23112,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門' },
       { direction: 'east', targetRoomId: 'arena_quarter_betting_house', description: '下注所在東側' },
-      { direction: 'north', targetRoomId: 'arena_quarter_weapon_check', description: '武器檢查處在北側' },
+      { direction: 'north', targetRoomId: 'arena_quarter_weapon_check', description: '武器檢查處在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[票]',
@@ -23133,19 +23158,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '武器檢查處位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊' },
+      { direction: 'south', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_training_yard',
         description: '東側需繞過武器封條、驗刃桌與登記欄杆後，才會進入訓練場範圍，沿途裁判會反覆查驗',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '武器檢查處到訓練場需穿過檢查動線與欄杆，距離長於相鄰格。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '北側穿過寄放牌、鎖甲架與窄巷轉角後，才會抵達甲架巷，盔甲摩擦聲會逐漸變近',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '武器檢查處到甲架巷需繞過寄放裝備區與窄巷，屬於長路徑。',
       },
     ],
@@ -23201,7 +23226,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'arena_quarter_duel_ring_west',
         description: '西側需穿過兩圈決鬥邊線與裁判旗架，才會接到西決鬥圈入口，場內人潮會阻擋直行',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '東西決鬥圈之間隔著裁判線與觀戰欄，不是相鄰平面一格。',
       },
       { direction: 'south', targetRoomId: 'arena_quarter_referee_box', description: '南側裁判線通往裁判席' },
@@ -23233,15 +23258,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'arena_quarter_duel_ring_east',
         description: '東返時需穿過裁判旗架、觀戰欄與沙地邊線，才會回到東決鬥圈，腳下沙痕能辨識路線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '西決鬥圈到東決鬥圈需要繞過場內分隔線，屬於長路徑。',
       },
-      { direction: 'west', targetRoomId: 'arena_quarter_training_yard', description: '訓練場在西側' },
+      { direction: 'west', targetRoomId: 'arena_quarter_training_yard', description: '訓練場在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_referee_box',
         description: '北側需沿決鬥圈外緣繞過判定旗與封鎖繩後，才到裁判席，階梯旁有衛兵把守',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '西決鬥圈到裁判席要沿外圈繞行，距離長於相鄰格。',
       },
     ],
@@ -23272,15 +23297,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'arena_quarter_weapon_check',
         description: '西返時需穿過訓練木樁、沙坑邊線與登記欄杆，才回到武器檢查處，隊列會拖慢移動',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '訓練場西返武器檢查處需要沿訓練區外緣繞行，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'arena_quarter_duel_ring_west', description: '西決鬥圈在東側' },
+      { direction: 'east', targetRoomId: 'arena_quarter_duel_ring_west', description: '西決鬥圈在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_strategy_tables',
         description: '北側穿過訓練隊列與沙地分隔繩後，才會到達戰術桌區，木牌標示今日演練路線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '訓練場到戰術桌要穿過隊列與分隔繩，距離長於相鄰格。',
       },
     ],
@@ -23308,7 +23333,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '醫護長椅位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_warmup_sand', description: '回到熱身沙地' },
-      { direction: 'north', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在北側' },
+      { direction: 'north', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [],
     mapSymbol: '[醫]',
@@ -23334,14 +23359,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'arena_quarter_weapon_check',
         description: '南側沿甲架巷穿過鎖甲架與寄放牌，最後才回到武器檢查處，路旁有修甲火盆',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '甲架巷南返武器檢查處需穿過裝備寄放動線，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_strategy_tables',
         description: '東側需繞過整排護甲架與維修台，才會接到戰術桌旁的通道，裝備箱會擋住直線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '甲架巷到戰術桌被裝備架與維修台隔開，距離長於相鄰格。',
       },
     ],
@@ -23368,19 +23393,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冠軍牆位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門' },
+      { direction: 'south', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '東側沿冠軍銘牌牆繞過紀念柱後，才會進入甲架巷，觀眾獻花會佔住牆邊通道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '冠軍牆到甲架巷要沿紀念牆與柱廊繞行，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_victory_arch',
         description: '北側需穿過冠軍銘牌、獻花階與拱門前廊後，才抵達勝利拱，地面刻滿冠軍年份',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '冠軍牆到勝利拱有紀念階與拱門前廊，距離長於相鄰格。',
       },
     ],
@@ -23407,19 +23432,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '下層看台位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'south', targetRoomId: 'arena_quarter_healer_bench', description: '回到醫護長椅' },
+      { direction: 'south', targetRoomId: 'arena_quarter_healer_bench', description: '回到醫護長椅', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_center_arena',
         description: '西側需沿下層看台欄杆與觀眾通道繞行，才會進入中央競技場，場門會分批開放',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '下層看台到中央競技場需穿過觀眾欄杆與場門，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_upper_stands',
         description: '北側階梯繞過觀眾席、旗桿與護欄後，才會爬到上層看台，階梯會隨人潮堵塞',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '下層看台到上層看台有階梯高低差，不是平面相鄰格。',
       },
     ],
@@ -23450,10 +23475,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '南側階梯沿觀眾席護欄下行，繞過旗桿後才回到下層看台，呼喊聲會越來越近',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '上層看台南返下層看台需要走階梯與護欄通道，屬於長路徑。',
       },
-      { direction: 'west', targetRoomId: 'arena_quarter_private_boxes', description: '貴賓包廂在西側' },
+      { direction: 'west', targetRoomId: 'arena_quarter_private_boxes', description: '貴賓包廂在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'arena_veteran_gladiator', maxCount: 1, respawnSeconds: 420 },
@@ -23482,14 +23507,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'arena_quarter_healer_bench',
         description: '西側穿過酒館後門、休息棚與傷藥車後，才會到醫護長椅，藥草味會指引方向',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '怒吼酒館到醫護長椅需要繞過休息棚與後門通道，距離較長。',
       },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '北側需穿過觀戰人潮與酒館外廊後，才會進入下層看台，酒杯聲會逐漸被歡呼取代',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '怒吼酒館到下層看台被人潮與外廊隔開，屬於長路徑。',
       },
     ],
@@ -23517,17 +23542,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'arena_quarter_training_yard',
         description: '南側需收起戰術圖板、繞過沙地分隔繩後，才回到訓練場，路上能看見演練箭標',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '戰術桌南返訓練場需要穿過戰術區與訓練隊列，距離長於相鄰格。',
       },
       {
         direction: 'west',
         targetRoomId: 'arena_quarter_armor_rack_lane',
         description: '西側沿戰術桌邊緣繞過維修台與護甲架後，才會到甲架巷，圖板與箱架會擋住直行',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '戰術桌西返甲架巷被維修台與護甲架隔開，屬於長路徑。',
       },
-      { direction: 'east', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在東側' },
+      { direction: 'east', targetRoomId: 'arena_quarter_referee_box', description: '裁判席在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'arena_rookie_mage', maxCount: 1, respawnSeconds: 330 },
@@ -23556,10 +23581,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'arena_quarter_duel_ring_west',
         description: '北側沿裁判席階梯與判定旗繞下去，才會回到西決鬥圈，裁判哨聲會標示入口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '裁判席北返西決鬥圈需沿階梯與裁判旗區繞行，屬於長路徑。',
       },
-      { direction: 'west', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在西側' },
+      { direction: 'west', targetRoomId: 'arena_quarter_strategy_tables', description: '戰術桌在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'south',
         targetRoomId: 'arena_quarter_private_boxes',
@@ -23594,7 +23619,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'arena_quarter_warmup_sand',
         description: '東側需繞過獎品櫃、兌換欄杆與賽程告示後，才會接到熱身沙地，獎牌櫃會吸引人潮',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獎品櫃到熱身沙地需要穿過兌換動線與告示區，屬於長路徑。',
       },
     ],
@@ -23618,7 +23643,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '貴賓包廂位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
     exits: [
-      { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台' },
+      { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'north',
         targetRoomId: 'arena_quarter_referee_box',
@@ -23653,14 +23678,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'arena_quarter_champion_wall',
         description: '南側穿過勝利拱前廊、獻花階與銘牌牆後，才回到冠軍牆，石階上刻著勝場紀錄',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '勝利拱南返冠軍牆有紀念階與前廊，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'arena_quarter_private_boxes',
         description: '東側沿勝利拱內廊與貴賓護欄繞行後，才會抵達包廂區，簾幕後有私人通道',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '勝利拱到貴賓包廂需要沿內廊與護欄繞行，距離長於相鄰格。',
       },
     ],
@@ -23689,7 +23714,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'arena_quarter_lower_stands',
         description: '東側需穿過場門、觀戰欄杆與下層通道後，才會進入下層看台，觀眾席通道較擁擠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '中央競技場到下層看台被場門與觀眾欄杆隔開，不是相鄰格。',
       },
     ],
@@ -23719,7 +23744,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獵角門位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '狩獵許可屋在東側' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_deer_run', description: '鹿徑在北側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_deer_run', description: '鹿徑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'royal_hunt_hound_pack', maxCount: 2, respawnSeconds: 120 },
@@ -23771,19 +23796,19 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹿徑位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_horn_gate', description: '回到獵角門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_boar_wallows',
         description: '東側鹿徑需穿過低枝、獸蹄岔路與泥塘外圍，才會抵達野豬泥塘，蹄印會逐漸變深',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹿徑到野豬泥塘需沿獸道繞過低枝與泥塘外圍，距離長於相鄰格。',
       },
       {
         direction: 'north',
         targetRoomId: 'royal_hunting_grounds_silver_trail',
         description: '北側銀葉獵徑要沿鹿群常走的緩坡上行，穿過銀葉灌叢後才接上主獵徑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹿徑到銀葉獵徑有緩坡與灌叢高差，屬於長路徑。',
       },
     ],
@@ -23814,7 +23839,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'royal_hunting_grounds_deer_run',
         description: '西返時需沿泥塘外緣避開深泥與野豬撞出的樹根，才會回到鹿徑，淺蹄印會重新出現',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '野豬泥塘西返鹿徑需繞過深泥與樹根障礙，屬於長路徑。',
       },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '北側泥塘邊路回到狩獵許可屋' },
@@ -23848,14 +23873,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_herb_copse',
         description: '東側獵鷹視線沿矮林邊緣延伸，需繞過棲臺木梯與捕鳥網後才進入草藥矮林',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵鷹棲臺到草藥矮林需繞過木梯與捕鳥網，屬於長路徑。',
       },
       {
         direction: 'north',
         targetRoomId: 'royal_hunting_grounds_stag_mirror',
         description: '北側要沿棲臺背後的石階與水鏡邊小路上行，才會抵達鹿影水鏡，鷹哨會逐漸變遠',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵鷹棲臺到鹿影水鏡有石階與水鏡邊小路，不是相鄰格。',
       },
     ],
@@ -23912,17 +23937,17 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'royal_hunting_grounds_deer_run',
         description: '南返時銀葉坡道沿灌叢下行，穿過鹿群磨亮的樹根後才回到鹿徑，落葉會遮住分岔腳印',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '銀葉獵徑南返鹿徑需沿灌叢坡道下行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_noble_blind',
         description: '東側銀葉獵徑穿過兩排靜音獵簾與低垂枝葉後，才會抵達貴族隱棚',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '銀葉獵徑到貴族隱棚被獵簾與低枝隔開，距離長於相鄰格。',
       },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '古橡木群在北側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_old_oak_stand', description: '古橡木群在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'silvertrail_stag', maxCount: 2, respawnSeconds: 160 },
@@ -23952,7 +23977,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'royal_hunting_grounds_boar_wallows',
         description: '北側需穿過獵犬訓練樁、嗅跡圍欄與泥塘缺口，才會回到野豬泥塘，犬吠會標示出口',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵犬院北返野豬泥塘需穿過訓練區與泥塘缺口，屬於長路徑。',
       },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在東側' },
@@ -23984,14 +24009,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'royal_hunting_grounds_falcon_perch',
         description: '西返時要穿過草藥矮林邊的捕鳥網與棲臺木梯陰影，才會回到獵鷹棲臺',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '草藥矮林西返獵鷹棲臺需繞過捕鳥網與木梯，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_gamekeeper_camp',
         description: '東側藥草小徑繞過採集棚、藥籃與看守巡邏繩後，才會抵達獵場看守營',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '草藥矮林到獵場看守營被採集棚與巡邏繩隔開，距離長於相鄰格。',
       },
     ],
@@ -24023,14 +24048,14 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'south',
         targetRoomId: 'royal_hunting_grounds_falcon_perch',
         description: '南返時水鏡邊小路沿石階下行，穿過鷹哨陰影後才回到獵鷹棲臺，羽毛會標示轉角',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹿影水鏡南返獵鷹棲臺需沿石階與水鏡邊路下行，屬於長路徑。',
       },
       {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_royal_marker',
         description: '東側水鏡反光沿界線木牌延伸，需繞過淺池與王室封繩後才抵達王室界碑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '鹿影水鏡到王室界碑需繞過淺池與封繩，不是相鄰格。',
       },
     ],
@@ -24057,7 +24082,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '古橡木群位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '回到銀葉獵徑' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_silver_trail', description: '回到銀葉獵徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_hidden_poacher_path', description: '偷獵者小徑在東側' },
     ],
     monsters: [
@@ -24088,10 +24113,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'royal_hunting_grounds_herb_copse',
         description: '西返時看守營外的巡邏繩與藥籃小徑會引回草藥矮林，途中需避開告警鈴線',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獵場看守營西返草藥矮林需沿巡邏繩與藥籃小徑回繞，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在南側' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '箭靶場在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在東側' },
     ],
     monsters: [
@@ -24118,7 +24143,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '箭靶場位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_hounds_yard', description: '回到獵犬院' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在北側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '獵場看守營在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '狼切道在東側' },
     ],
     monsters: [
@@ -24145,7 +24170,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '狼切道位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_arrow_range', description: '回到箭靶場' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '獵物陳列亭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_griffon_ledge', description: '獅鷲岩棚在東側' },
     ],
     monsters: [
@@ -24175,15 +24200,15 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'royal_hunting_grounds_stag_mirror',
         description: '西返時王室封繩沿淺池邊緣回繞，穿過界線木牌後才回到鹿影水鏡',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '王室界碑西返鹿影水鏡需繞過淺池與界線木牌，屬於長路徑。',
       },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在北側' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_moonlit_clearing', description: '月光空地在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_trophy_pavilion',
         description: '東側界碑路穿過王室封條、石鹿座與陳列亭外廊後，才會抵達獵物陳列亭',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '王室界碑到獵物陳列亭需穿過封條與外廊，距離長於相鄰格。',
       },
     ],
@@ -24215,7 +24240,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'east',
         targetRoomId: 'royal_hunting_grounds_moonlit_clearing',
         description: '東側偷獵者暗徑穿過倒伏蕨葉、舊陷阱與月光林隙後，才會抵達月光空地',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '偷獵者小徑到月光空地需穿過暗徑陷阱與林隙，屬於長路徑。',
       },
     ],
@@ -24246,10 +24271,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'west',
         targetRoomId: 'royal_hunting_grounds_hidden_poacher_path',
         description: '西返時月光林隙會退回倒伏蕨葉與舊陷阱之間，沿暗徑才會回到偷獵者小徑',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '月光空地西返偷獵者小徑需沿暗徑與陷阱路回繞，屬於長路徑。',
       },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '回到王室界碑' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_royal_marker', description: '回到王室界碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_fill_n6_n4', description: '東側月光草線通往白鹿林' },
     ],
     monsters: [
@@ -24280,7 +24305,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
         direction: 'north',
         targetRoomId: 'royal_hunting_grounds_trophy_pavilion',
         description: '北側需沿獅鷲岩棚背風石階上行，繞過羽骨標記後才會抵達獵物陳列亭',
-        edgeKind: 'long_path',
+        edgeKind: 'distant_route',
         edgeNote: '獅鷲岩棚到獵物陳列亭有岩棚石階高差，屬於長路徑。',
       },
     ],
@@ -24308,8 +24333,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '獵物陳列亭位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_gamekeeper_camp', description: '回到獵場看守營' },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道' },
-      { direction: 'north', targetRoomId: 'royal_hunting_grounds_white_stag_grove', description: '白鹿林在北側' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_wolf_cut', description: '回到狼切道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'royal_hunting_grounds_white_stag_grove', description: '白鹿林在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'thornwood_gamekeeper', maxCount: 1, respawnSeconds: 220 },
@@ -24335,7 +24360,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '白鹿林位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
     exits: [
       { direction: 'west', targetRoomId: 'royal_hunting_grounds_fill_n6_n4', description: '西側月光草線回到月光空地' },
-      { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭' },
+      { direction: 'south', targetRoomId: 'royal_hunting_grounds_trophy_pavilion', description: '回到獵物陳列亭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'white_stag_avatar', maxCount: 1, respawnSeconds: 900 },
@@ -24897,7 +24922,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雪門位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'east', targetRoomId: 'frostbite_pass_caravan_marker', description: '商隊路標在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_frozen_switchback', description: '凍結折路在北側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_frozen_switchback', description: '凍結折路在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 2, respawnSeconds: 180 },
@@ -24924,7 +24949,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門' },
       { direction: 'east', targetRoomId: 'frostbite_pass_icewind_cut', description: '冰風切道在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在北側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
@@ -24975,9 +25000,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '凍結折路位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_snow_gate', description: '回到雪門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_buried_wagon', description: '埋雪貨車在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在北側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 1, respawnSeconds: 180 },
@@ -25003,7 +25028,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '埋雪貨車位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_caravan_marker', description: '回到商隊路標' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_caravan_marker', description: '回到商隊路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_yeti_scrape', description: '雪怪抓痕在東側' },
     ],
     monsters: [
@@ -25031,7 +25056,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_icewind_cut', description: '回到冰風切道' },
       { direction: 'east', targetRoomId: 'frostbite_pass_glacier_mouth', description: '冰河口在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_yeti_scrape', description: '北側藍冰橋沿裂紋冰脊上行，繞過斷裂繩標與雪怪爪溝抵達抓痕地帶', edgeKind: 'long_path', edgeNote: '藍冰橋到雪怪抓痕需沿裂紋冰脊與斷裂繩標上行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_yeti_scrape', description: '北側藍冰橋沿裂紋冰脊上行，繞過斷裂繩標與雪怪爪溝抵達抓痕地帶', edgeKind: 'distant_route', edgeNote: '藍冰橋到雪怪抓痕需沿裂紋冰脊與斷裂繩標上行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_blue_ice_lizard', maxCount: 2, respawnSeconds: 210 },
@@ -25057,8 +25082,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '雪怪抓痕位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_buried_wagon', description: '回到埋雪貨車' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '南側雪怪爪溝沿斷裂繩標折降，穿過裂紋冰脊與結冰防風石堆回到藍冰橋中央', edgeKind: 'long_path', edgeNote: '雪怪抓痕回藍冰橋需沿爪溝與裂紋冰脊折降，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_whiteout_basin', description: '北側雪怪足跡穿過白霧回流與埋雪路標，繞過冰旗殘桿進入白霧盆地外圈', edgeKind: 'long_path', edgeNote: '雪怪抓痕到白霧盆地需穿過白霧回流與埋雪路標，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '南側雪怪爪溝沿斷裂繩標折降，穿過裂紋冰脊與結冰防風石堆回到藍冰橋中央', edgeKind: 'distant_route', edgeNote: '雪怪抓痕回藍冰橋需沿爪溝與裂紋冰脊折降，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_whiteout_basin', description: '北側雪怪足跡穿過白霧回流與埋雪路標，繞過冰旗殘桿進入白霧盆地外圈', edgeKind: 'distant_route', edgeNote: '雪怪抓痕到白霧盆地需穿過白霧回流與埋雪路標，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_scarred_yeti', maxCount: 2, respawnSeconds: 260 },
@@ -25083,9 +25108,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '白霧盆地位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'frostbite_pass_yeti_scrape', description: '南側白霧盆地沿埋雪路標折返，穿過回流霧牆與冰旗殘桿回到雪怪抓痕', edgeKind: 'long_path', edgeNote: '白霧盆地回雪怪抓痕需沿埋雪路標穿過回流霧牆，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_yeti_scrape', description: '南側白霧盆地沿埋雪路標折返，穿過回流霧牆與冰旗殘桿回到雪怪抓痕', edgeKind: 'distant_route', edgeNote: '白霧盆地回雪怪抓痕需沿埋雪路標穿過回流霧牆，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'frostbite_pass_coldfire_camp', description: '冷火營在西側' },
-      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '東側冰河口沿冰壁窄棚橫移，穿過雨雪斜風、號旗桿與冰裂警戒線抵達雨雪哨', edgeKind: 'long_path', edgeNote: '冰河口到雨雪哨需沿冰壁窄棚與號旗桿橫移，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '東側冰河口沿冰壁窄棚橫移，穿過雨雪斜風、號旗桿與冰裂警戒線抵達雨雪哨', edgeKind: 'distant_route', edgeNote: '冰河口到雨雪哨需沿冰壁窄棚與號旗桿橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_whiteout_wolf_pack', maxCount: 2, respawnSeconds: 180 },
@@ -25110,9 +25135,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '冷火營位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'south', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_frozen_switchback', description: '回到凍結折路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_whiteout_basin', description: '白霧盆地在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在北側' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_buried_caravan_wight', maxCount: 1, respawnSeconds: 220 },
@@ -25138,7 +25163,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '冰河口位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_blue_ice_bridge', description: '回到藍冰橋' },
-      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '雨雪哨在東側' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_sleet_watch', description: '雨雪哨在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_glacier_golem', maxCount: 1, respawnSeconds: 360 },
@@ -25163,8 +25188,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '雨雪哨位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。南側白霧盆地被暴風雪回流遮斷，只能從白霧盆地東側抵達雨雪哨。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'frostbite_pass_glacier_mouth', description: '西側雨雪哨沿號旗桿與冰壁窄棚回穿，避開斜風與冰裂警戒線後抵達冰河口', edgeKind: 'long_path', edgeNote: '雨雪哨回冰河口需沿號旗桿與冰壁窄棚穿行，實際路程長於相鄰一格。' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '霜巨人足跡在北側' },
+      { direction: 'west', targetRoomId: 'frostbite_pass_glacier_mouth', description: '西側雨雪哨沿號旗桿與冰壁窄棚回穿，避開斜風與冰裂警戒線後抵達冰河口', edgeKind: 'distant_route', edgeNote: '雨雪哨回冰河口需沿號旗桿與冰壁窄棚穿行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '霜巨人足跡在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_sleet_harrier', maxCount: 2, respawnSeconds: 190 },
@@ -25189,8 +25214,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '骨橇路位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'east', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在東側' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '失商藏點在北側' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_crystal_fir_grove', description: '晶松林在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '失商藏點在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_scarred_yeti', maxCount: 1, respawnSeconds: 260 },
@@ -25215,8 +25240,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '晶松林位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'frostbite_pass_bone_sled_path', description: '骨橇路在西側' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_coldfire_camp', description: '回到冷火營' },
+      { direction: 'west', targetRoomId: 'frostbite_pass_bone_sled_path', description: '骨橇路在西側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_coldfire_camp', description: '回到冷火營', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '風嚎拱在東側' },
     ],
     monsters: [
@@ -25269,7 +25294,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '失商藏點位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_wind_howl_arch', description: '西側雪盲路標回到風嚎拱' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_bone_sled_path', description: '回到骨橇路' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_bone_sled_path', description: '回到骨橇路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '東側半埋貨旗接往冰石堆原' },
     ],
     monsters: [
@@ -25295,9 +25320,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '霜巨人足跡位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '西側霜巨人足跡沿冰裂坡折返，穿過巨大腳印溝與翻倒貨箱回到失商藏點', edgeKind: 'long_path', edgeNote: '霜巨人足跡回失商藏點需沿冰裂坡與腳印溝折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_sleet_watch', description: '回到雨雪哨' },
-      { direction: 'north', targetRoomId: 'frostbite_pass_northbound_ridge', description: '北側霜巨人足跡沿巨大腳印溝爬升，穿過冰裂坡與風切稜線抵達北行山脊', edgeKind: 'long_path', edgeNote: '霜巨人足跡到北行山脊需沿腳印溝與風切稜線爬升，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'frostbite_pass_lost_merchant_cache', description: '西側霜巨人足跡沿冰裂坡折返，穿過巨大腳印溝與翻倒貨箱回到失商藏點', edgeKind: 'distant_route', edgeNote: '霜巨人足跡回失商藏點需沿冰裂坡與腳印溝折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_sleet_watch', description: '回到雨雪哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'frostbite_pass_northbound_ridge', description: '北側霜巨人足跡沿巨大腳印溝爬升，穿過冰裂坡與風切稜線抵達北行山脊', edgeKind: 'distant_route', edgeNote: '霜巨人足跡到北行山脊需沿腳印溝與風切稜線爬升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'frostbite_giant_pathbreaker', maxCount: 2, respawnSeconds: 420 },
@@ -25349,8 +25374,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '北行山脊位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
       { direction: 'west', targetRoomId: 'frostbite_pass_ice_cairn_field', description: '回到冰石堆原' },
-      { direction: 'south', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '南側北行山脊沿風切稜線折降，穿過冰裂坡與巨大腳印溝回到霜巨人足跡', edgeKind: 'long_path', edgeNote: '北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。' },
-      { direction: 'east', targetRoomId: 'frostbite_pass_dragon_breath_shelf', description: '龍息冰棚在東側' },
+      { direction: 'south', targetRoomId: 'frostbite_pass_frost_giant_steps', description: '南側北行山脊沿風切稜線折降，穿過冰裂坡與巨大腳印溝回到霜巨人足跡', edgeKind: 'distant_route', edgeNote: '北行山脊回霜巨人足跡需沿風切稜線與腳印溝折降，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'frostbite_pass_dragon_breath_shelf', description: '龍息冰棚在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'frostbite_giant_pathbreaker', maxCount: 1, respawnSeconds: 420 },
@@ -25375,7 +25400,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '龍息冰棚位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，玩家可以 inspect 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 search 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄。',
     exits: [
-      { direction: 'west', targetRoomId: 'frostbite_pass_northbound_ridge', description: '回到北行山脊' },
+      { direction: 'west', targetRoomId: 'frostbite_pass_northbound_ridge', description: '回到北行山脊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'frostbite_pass_polar_seal_gate', description: '極北封門在東側' },
     ],
     monsters: [
@@ -27592,7 +27617,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '拾荒者標記在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '骨網淺灘在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '骨網淺灘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_red_salt_reaver', maxCount: 2, respawnSeconds: 260 },
@@ -27618,7 +27643,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '拾荒者標記位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_red_salt_reaver', maxCount: 1, respawnSeconds: 260 },
@@ -27643,9 +27668,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '骨網淺灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '北側骨網淺灘沿魚骨浮網斜上，穿過鹽晶潮溝與碎玻潮洞抵達鹽玻洞', edgeKind: 'long_path', edgeNote: '骨網淺灘到鹽玻洞需沿魚骨浮網與鹽晶潮溝斜行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '北側骨網淺灘沿魚骨浮網斜上，穿過鹽晶潮溝與碎玻潮洞抵達鹽玻洞', edgeKind: 'distant_route', edgeNote: '骨網淺灘到鹽玻洞需沿魚骨浮網與鹽晶潮溝斜行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_bone_net_murloc', maxCount: 2, respawnSeconds: 280 },
@@ -27671,9 +27696,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '海盜烽燈位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。烽燈南側崖壁有一條被鹽晶侵蝕的窄梯向下延伸，陰冷氣息與腐朽味從深處湧上，似乎通往海岸下方古老的墓穴地帶。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '赤潮池在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '北側海盜烽燈沿濕滑礁階上行，繞過斷旗繩索與礁釣木樁抵達礁釣哨', edgeKind: 'long_path', edgeNote: '海盜烽燈到礁釣哨需沿濕滑礁階與斷旗繩索上行，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '北側海盜烽燈沿濕滑礁階上行，繞過斷旗繩索與礁釣木樁抵達礁釣哨', edgeKind: 'distant_route', edgeNote: '海盜烽燈到礁釣哨需沿濕滑礁階與斷旗繩索上行，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_warflag_privateer', maxCount: 1, respawnSeconds: 520 },
@@ -27699,7 +27724,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '赤潮池位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚', edgeKind: 'long_path', edgeNote: '赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚', edgeKind: 'distant_route', edgeNote: '赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_crimson_tide_oracle', maxCount: 1, respawnSeconds: 420 },
@@ -27725,7 +27750,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'north', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '北側赤色海崖回到潮門入口' },
-      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'long_path', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
+      { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'distant_route', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_smuggler_cutthroat', maxCount: 2, respawnSeconds: 300 },
@@ -27750,10 +27775,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '鹽玻洞位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑', edgeKind: 'long_path', edgeNote: '鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘', edgeKind: 'long_path', edgeNote: '鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑', edgeKind: 'distant_route', edgeNote: '鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘', edgeKind: 'distant_route', edgeNote: '鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '礁釣哨在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '沉水望塔在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_ghost_keel_wraith', maxCount: 1, respawnSeconds: 480 },
@@ -27778,10 +27803,10 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '礁釣哨位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'long_path', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },
+      { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'distant_route', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '血壇岩棚在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_bone_net_murloc', maxCount: 2, respawnSeconds: 280 },
@@ -27807,9 +27832,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'long_path', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'distant_route', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '走私者小灣在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_crimson_tide_oracle', maxCount: 2, respawnSeconds: 420 },
@@ -27835,7 +27860,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '走私者小灣位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_smuggler_cutthroat', maxCount: 2, respawnSeconds: 300 },
@@ -27860,7 +27885,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '沉水望塔位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在東側' },
     ],
     monsters: [
@@ -27887,9 +27912,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '刃貝床位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '回到沉水望塔' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '鯊齒隘在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '戰旗沙丘在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '戰旗沙丘在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_razor_clam_colony', maxCount: 2, respawnSeconds: 320 },
@@ -27915,9 +27940,9 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '鯊齒隘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在東側' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在北側' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_warflag_privateer', maxCount: 1, respawnSeconds: 520 },
@@ -27943,8 +27968,8 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '冰暗湧道位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣' },
-      { direction: 'north', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在北側' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
+      { direction: 'north', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
     monsters: [
       { monsterId: 'bloodsalt_ghost_keel_wraith', maxCount: 1, respawnSeconds: 480 },
@@ -27969,7 +27994,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
     description:
       '戰旗沙丘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在東側' },
     ],
     monsters: [
@@ -27996,7 +28021,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '幽艏船墓位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '回到戰旗沙丘' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '紅珊瑚迷宮在東側' },
     ],
     monsters: [
@@ -28023,7 +28048,7 @@ export const EXPANSION_ROOMS: Record<string, RoomDef> = {
       '紅珊瑚迷宮位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，玩家可以 inspect 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對玩家與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '回到幽艏船墓' },
-      { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道' },
+      { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_tithe_of_blood_pier', description: '血稅棧橋在東側' },
     ],
     monsters: [

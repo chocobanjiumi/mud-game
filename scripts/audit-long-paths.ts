@@ -2,14 +2,13 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Direction, RoomDef } from '@game/shared';
 import { ROOMS, getRoom, getRoomByWorldCoord } from '../server/src/data/rooms.js';
-import { STATIC_WORLD_LONG_PATH_EXITS } from '../server/src/data/world-map-long-paths.js';
 import {
   STATIC_WORLD_BRIDGE_ROOMS,
   STATIC_WORLD_FILLER_ROOMS,
 } from '../server/src/data/world-map-static.js';
 
 type Coord = { worldX: number; worldY: number };
-type LongPathSource = 'static-world-long-paths' | 'room-edge-kind';
+type SpecialRouteSource = 'room-edge-kind';
 type IntermediateScan =
   | {
       mode: 'same-axis';
@@ -43,7 +42,8 @@ type IntermediateRoomRecord = {
 
 type LongPathAuditRecord = {
   key: string;
-  sources: LongPathSource[];
+  sources: SpecialRouteSource[];
+  edgeKind: NonNullable<RoomDef['exits'][number]['edgeKind']>;
   source: {
     roomId: string;
     zone: string | null;
@@ -94,34 +94,25 @@ const staticRoomIds = new Set([
 
 const recordsByKey = new Map<string, LongPathAuditRecord>();
 
-for (const [roomId, direction, targetRoomId] of STATIC_WORLD_LONG_PATH_EXITS) {
-  upsertRecord(roomId, direction, targetRoomId, 'static-world-long-paths');
-}
-
 for (const room of Object.values(ROOMS)) {
   for (const exit of room.exits) {
-    if (exit.edgeKind !== 'long_path') continue;
-    upsertRecord(room.id, exit.direction, exit.targetRoomId, 'room-edge-kind');
+    if (!exit.edgeKind || exit.edgeKind === 'normal') continue;
+    upsertRecord(room.id, exit.direction, exit.targetRoomId, exit.edgeKind, 'room-edge-kind');
   }
 }
 
 const records = [...recordsByKey.values()].sort((a, b) => a.key.localeCompare(b.key));
-const staticOnly = records.filter(record =>
-  record.sources.includes('static-world-long-paths') && !record.sources.includes('room-edge-kind'),
-);
-const edgeOnly = records.filter(record =>
-  record.sources.includes('room-edge-kind') && !record.sources.includes('static-world-long-paths'),
-);
 const classificationCounts = countClassifications(records);
+const edgeKindCounts = countEdgeKinds(records);
 
 const report = {
   generatedAt: new Date().toISOString(),
   counts: {
-    totalLongPathRecords: records.length,
-    staticWorldLongPathEntries: STATIC_WORLD_LONG_PATH_EXITS.length,
-    runtimeLongPathExits: records.filter(record => record.sources.includes('room-edge-kind')).length,
-    staticOnlyEntries: staticOnly.length,
-    roomEdgeOnlyEntries: edgeOnly.length,
+    totalSpecialRouteRecords: records.length,
+    longPathEdgeKindEntries: records.filter(record => record.edgeKind === 'long_path').length,
+    runtimeSpecialEdgeExits: records.filter(record => record.sources.includes('room-edge-kind')).length,
+    staticOnlyEntries: 0,
+    roomEdgeOnlyEntries: records.length,
     missingSourceRooms: records.filter(record => record.missingSourceRoom).length,
     missingTargetRooms: records.filter(record => record.missingTargetRoom).length,
     sameZone: records.filter(record => record.sameZone).length,
@@ -130,6 +121,7 @@ const report = {
       record.hasExistingIntermediateFillerOrStaticRoomToConnect,
     ).length,
     classifications: classificationCounts,
+    edgeKinds: edgeKindCounts,
   },
   records,
 };
@@ -139,11 +131,11 @@ if (write) {
   writeFileSync(outPath, `${JSON.stringify(report, null, 2)}\n`);
 }
 
-console.log('# Long Path Audit');
+console.log('# Special Route Audit');
 console.log(`Generated: ${report.generatedAt}`);
-console.log(`Total long_path records: ${report.counts.totalLongPathRecords}`);
-console.log(`Static entries: ${report.counts.staticWorldLongPathEntries}`);
-console.log(`Runtime edgeKind entries: ${report.counts.runtimeLongPathExits}`);
+console.log(`Total special route records: ${report.counts.totalSpecialRouteRecords}`);
+console.log(`long_path edgeKind entries: ${report.counts.longPathEdgeKindEntries}`);
+console.log(`Runtime special edgeKind entries: ${report.counts.runtimeSpecialEdgeExits}`);
 console.log(`Static-only entries: ${report.counts.staticOnlyEntries}`);
 console.log(`Room-edge-only entries: ${report.counts.roomEdgeOnlyEntries}`);
 console.log(`Missing source rooms: ${report.counts.missingSourceRooms}`);
@@ -160,7 +152,8 @@ function upsertRecord(
   roomId: string,
   direction: Direction,
   targetRoomId: string,
-  source: LongPathSource,
+  edgeKind: NonNullable<RoomDef['exits'][number]['edgeKind']>,
+  source: SpecialRouteSource,
 ): void {
   const key = `${roomId}:${direction}->${targetRoomId}`;
   const existing = recordsByKey.get(key);
@@ -197,6 +190,7 @@ function upsertRecord(
   recordsByKey.set(key, {
     key,
     sources: [source],
+    edgeKind,
     source: {
       roomId,
       zone: room?.zone ?? null,
@@ -255,7 +249,7 @@ function classifyLongPath(input: {
       code: 'A_coordinate_error_candidate',
       label: 'A 類：座標錯誤候選',
       rationale: '同 zone、同軸且沒有足夠長路徑敘事，可能只是普通出口座標未排成相鄰格。',
-      recommendedAction: '人工確認語意；若只是普通相鄰出口，直接改房間座標並移除 long_path。',
+      recommendedAction: '人工確認語意；若只是普通相鄰出口，直接改房間座標並移除 special edge。',
     };
   }
 
@@ -268,7 +262,7 @@ function classifyLongPath(input: {
       code: 'B_missing_static_corridor',
       label: 'B 類：缺少中間通道候選',
       rationale: 'source 與 target 在同一世界座標軸上，中間可用固定座標通道格拆成逐格路徑。',
-      recommendedAction: '補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 long_path。',
+      recommendedAction: '補或串接靜態通道房間，讓普通出口恢復一格一格相鄰；完成後移除 special edge。',
     };
   }
 
@@ -291,6 +285,13 @@ function countClassifications(records: LongPathAuditRecord[]): Record<LongPathCl
     B_missing_static_corridor: 0,
     C_special_route: 0,
   });
+}
+
+function countEdgeKinds(records: LongPathAuditRecord[]): Record<string, number> {
+  return records.reduce<Record<string, number>>((counts, record) => {
+    counts[record.edgeKind] = (counts[record.edgeKind] ?? 0) + 1;
+    return counts;
+  }, {});
 }
 
 function coordOf(room: RoomDef | undefined): Coord | null {

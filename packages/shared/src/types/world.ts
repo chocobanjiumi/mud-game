@@ -10,6 +10,7 @@ export type RoomExitEdgeKind =
   | 'wrap'
   | 'bridge'
   | 'long_path'
+  | 'distant_route'
   | 'portal'
   | 'one_way'
   | 'instance_entry'

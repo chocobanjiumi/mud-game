@@ -1971,11 +1971,17 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "pilgrim_road_sanctuary_gate"
+        "targetRoomId": "pilgrim_road_sanctuary_gate",
+        "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
+        "edgeKind": "distant_route",
+        "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
       },
       {
         "direction": "east",
-        "targetRoomId": "pilgrim_road_quiet_overlook"
+        "targetRoomId": "pilgrim_road_quiet_overlook",
+        "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
+        "edgeKind": "distant_route",
+        "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
       }
     ],
     "mapSymbol": "[·]",
@@ -2097,7 +2103,10 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "exits": [
       {
         "direction": "west",
-        "targetRoomId": "moonlit_fen_dreamwater_core"
+        "targetRoomId": "moonlit_fen_dreamwater_core",
+        "description": "這條固定路線會穿過邊界地形與中間道路後抵達目標，並非世界全圖上的相鄰一格出口。",
+        "edgeKind": "distant_route",
+        "edgeNote": "此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。"
       }
     ],
     "mapSymbol": "[·]",

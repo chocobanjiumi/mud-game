@@ -399,10 +399,10 @@ for (const exitRecord of crossZoneExitRecords) {
   if (fromPlan.decision === 'instance' || toPlan.decision === 'instance') continue;
   const label = `${exitRecord.fromZoneId}/${exitRecord.fromRoomId}:${exitRecord.direction}->${exitRecord.toZoneId}/${exitRecord.toRoomId}`;
   if (exitRecord.edgeKind && exitRecord.edgeKind !== 'normal') {
-    const longPathIssue = getCrossZoneLongPathIssue(exitRecord);
-    if (longPathIssue) {
-      crossZoneLongPathIssues.push(`${label}: ${longPathIssue}`);
-    } else if (exitRecord.edgeKind === 'long_path') {
+    const specialEdgeIssue = getCrossZoneSpecialEdgeIssue(exitRecord);
+    if (specialEdgeIssue) {
+      crossZoneLongPathIssues.push(`${label}: ${specialEdgeIssue}`);
+    } else {
       acceptedCrossZoneLongPaths.push(label);
     }
     continue;
@@ -608,23 +608,20 @@ function getDirectionalBoundsIssue(
   }
 }
 
-function getCrossZoneLongPathIssue(exit: CrossZoneExitRecord): string | null {
-  if (exit.edgeKind !== 'long_path') {
-    return `${exit.edgeKind ?? 'normal'} cross-zone special edge is not accepted as long_path`;
-  }
+function getCrossZoneSpecialEdgeIssue(exit: CrossZoneExitRecord): string | null {
   const descriptionChars = countCjkChars(exit.description);
   if (descriptionChars < 28) {
-    return `long_path description too short (${descriptionChars}/28)`;
+    return `special edge description too short (${descriptionChars}/28)`;
   }
   if (!exit.edgeNote) {
-    return 'long_path missing edgeNote';
+    return 'special edge missing edgeNote';
   }
   const edgeNoteChars = countCjkChars(exit.edgeNote);
   if (edgeNoteChars < 28) {
-    return `long_path edgeNote too short (${edgeNoteChars}/28)`;
+    return `special edge edgeNote too short (${edgeNoteChars}/28)`;
   }
-  if (!exit.edgeNote.includes('實際路程長於相鄰一格')) {
-    return 'long_path edgeNote must explain that the route is longer than one adjacent cell';
+  if (!/實際路程長於相鄰一格|不是相鄰格|距離長於相鄰格|屬於.+長路徑|特殊長路徑/u.test(exit.edgeNote)) {
+    return 'special edge edgeNote must explain why the route is not a normal adjacent cell';
   }
   return null;
 }

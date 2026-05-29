@@ -10,7 +10,7 @@ describe('room exit direction audit', () => {
     expect(report).toMatchObject({
       scannedAt: '2026-05-26T00:00:00.000Z',
       zoneCount: 60,
-      roomCount: 1500,
+      roomCount: 1515,
       directEastSelfLoops: 0,
       directSouthSelfLoops: 0,
       directSelfLoops: [],

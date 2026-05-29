@@ -155,7 +155,7 @@ export const CONTENT_QUALITY_SPECS: ContentQualitySpec[] = [
     bannedPatterns: ['只寫往北或往南', '只寫通往下一區', '與座標方向矛盾'],
     auditRule: 'pnpm audit:map-text 檢查短句；pnpm audit:world-map2 檢查 special edge 與 cardinal mismatch。',
     ...STANDARD_REVIEW_POLICY,
-    appliesTo: '所有 room exits；跨 zone 至少 20 中文字，long_path / special edge 至少 28 中文字。',
+    appliesTo: '所有 room exits；跨 zone 至少 20 中文字，distant_route / special edge 至少 28 中文字。',
   },
   {
     id: 'instance-entry-description',

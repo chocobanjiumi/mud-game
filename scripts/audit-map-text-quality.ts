@@ -1726,6 +1726,7 @@ function formatExitEdgeKindLabel(edgeKind: string | undefined): string {
     wrap: '世界邊界環繞路徑',
     bridge: '跨區橋接道路',
     long_path: '長距離道路',
+    distant_route: '遠距離固定路線',
     portal: '傳送或特殊通路',
     one_way: '單向通路',
     instance_entry: '副本入口',

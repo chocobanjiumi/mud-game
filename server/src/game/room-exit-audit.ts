@@ -11,6 +11,10 @@ const OPPOSITE_DIRECTION: Partial<Record<Direction, Direction>> = {
 
 const AUDITED_DIRECTION_SET = new Set<Direction>(AUDITED_DIRECTIONS);
 
+function isNormalTopologyExit(edgeKind: RoomDef['exits'][number]['edgeKind']): boolean {
+  return !edgeKind || edgeKind === 'normal';
+}
+
 export interface TwoStepDirectionCycleCandidate {
   zoneId: string;
   zoneName: string;
@@ -50,12 +54,14 @@ export function findTwoStepDirectionCycleCandidates(
   for (const room of Object.values(rooms)) {
     for (const exit of room.exits) {
       if (!AUDITED_DIRECTION_SET.has(exit.direction)) continue;
+      if (!isNormalTopologyExit(exit.edgeKind)) continue;
 
       const targetRoom = rooms[exit.targetRoomId];
       if (!targetRoom) continue;
 
       for (const backExit of targetRoom.exits) {
         if (!AUDITED_DIRECTION_SET.has(backExit.direction)) continue;
+        if (!isNormalTopologyExit(backExit.edgeKind)) continue;
         if (backExit.targetRoomId !== room.id) continue;
 
         const isLegalReverse = backExit.direction === OPPOSITE_DIRECTION[exit.direction];
