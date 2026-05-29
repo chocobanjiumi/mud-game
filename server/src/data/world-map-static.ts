@@ -70,9 +70,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n11_6": {
     "id": "amber_forest_fill_n11_6",
-    "name": "金葉通道",
+    "name": "石花東側金葉草封",
     "zone": "amber_forest",
-    "description": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。",
+    "description": "石花東側金葉草封貼著石化花圃北側，南面能看見結晶花瓣，西側遺物坑的碎碑半埋在落葉下。金葉草與硬化樹脂把坡面封住，這裡是採集 blocker，可採少量琥珀草籽與樹脂片。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -82,9 +82,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n11_8": {
     "id": "amber_forest_fill_n11_8",
-    "name": "琥珀樹道",
+    "name": "深核東側樹脂封",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "深核東側樹脂封位在深琥珀核心東面，北側石化花圃透出金光，西邊核心樹根被厚樹脂包住。地面凝成透明硬殼，只保留採集樹脂滴的窄面，是不能繼續穿越的 blocker。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -94,9 +94,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n12_5": {
     "id": "amber_forest_fill_n12_5",
-    "name": "琥珀樹道",
+    "name": "炭林東側琥珀苔坡",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "炭林東側琥珀苔坡靠在木炭林立木東面，南側遺物坑露出灰黑石圈，樹根間覆著黏稠金苔。這裡是採集 blocker，玩家能在苔坡邊採琥珀苔與焦木樹脂，但不能越過倒木。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -106,9 +106,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n13_10": {
     "id": "amber_forest_fill_n13_10",
-    "name": "琥珀樹道",
+    "name": "黑木北緣金葉草道",
     "zone": "amber_forest",
-    "description": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。",
+    "description": "黑木北緣金葉草道位在琥珀林南側縱線，北面樹脂小徑仍有金葉光，南面黑木邊界開始傳來陰冷氣味。這裡是採集 blocker 與邊界預告，落葉下可採金葉草根，但樹根牆阻止直接穿行。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -118,13 +118,14 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n13_11": {
     "id": "amber_forest_fill_n13_11",
-    "name": "琥珀林小路",
+    "name": "黑木狼巢北界林路",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "黑木狼巢北界林路位在琥珀森林南緣，北面金葉草道仍有溫暖樹脂光，南面黑木狼巢的陰影與爪痕壓進林地。這裡是跨區 border gathering route，路旁可採硬化樹脂，但主要功能是銜接琥珀林與黑木地帶。",
     "exits": [
       {
         "direction": "south",
-        "targetRoomId": "blackwood_wolf_den"
+        "targetRoomId": "blackwood_wolf_den",
+        "description": "沿爪痕與暗色樹根穿過南緣林路，進入黑木狼巢北側。"
       }
     ],
     "mapSymbol": "[·]",
@@ -135,9 +136,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n13_8": {
     "id": "amber_forest_fill_n13_8",
-    "name": "金葉通道",
+    "name": "甲蟲丘南金葉草坡",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "甲蟲丘南金葉草坡位在餘燼甲蟲丘南面，北側土丘散著焦熱樹脂，東面深琥珀核心反射黏稠金光，南側接向樹脂小徑。這裡是採集 blocker，草坡可採焦香琥珀草，外緣被蟲洞與硬根封住。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -147,9 +148,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n13_9": {
     "id": "amber_forest_fill_n13_9",
-    "name": "樹脂小徑",
+    "name": "中央樹脂草徑",
     "zone": "amber_forest",
-    "description": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。",
+    "description": "中央樹脂草徑夾在甲蟲丘南坡與黑木北緣金葉草道之間，北面可聞到焦熱樹脂味，南側落葉顏色逐漸轉暗。這裡是採集 blocker，草徑旁有琥珀草與樹脂珠，但根網封住兩側。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -159,9 +160,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n15_8": {
     "id": "amber_forest_fill_n15_8",
-    "name": "金葉通道",
+    "name": "蜂巢南金葉樹封",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "蜂巢南金葉樹封位在黃蜂巢南側，北面嗡鳴聲沿樹洞傳來，西邊玻璃根橋的透明根脈在光下發亮。金葉樹根形成半圓屏障，這裡是採集 blocker，可採蜂蠟樹脂與金葉碎片。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -171,9 +172,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n16_5": {
     "id": "amber_forest_fill_n16_5",
-    "name": "琥珀樹道",
+    "name": "補給南側樹脂草坪",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "補給南側樹脂草坪位於樹脂補給點南面，北側麻袋與採集刀架仍可辨認，南面樹脂脈道發出淡金光，東西兩側分別接煙菌地與北橋方向。這裡是採集 blocker，草坪能採樹脂苔，但路線被補給繩欄收束。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -183,9 +184,9 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
   },
   "amber_forest_fill_n17_8": {
     "id": "amber_forest_fill_n17_8",
-    "name": "琥珀樹道",
+    "name": "樹脂門南林封",
     "zone": "amber_forest",
-    "description": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。",
+    "description": "樹脂門南林封貼著樹脂門南側，北面門柱被琥珀包成厚殼，東側玻璃根橋映出斑駁金光。林地被硬化樹根與樹脂瀑布截斷，是採集 blocker，只留下樹脂滴與金葉草可採。",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,

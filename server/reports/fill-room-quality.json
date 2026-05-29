@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-05-29T20:33:43.745Z",
+  "generatedAt": "2026-05-29T20:36:18.157Z",
   "summary": {
     "fillRooms": 343,
     "zones": 51,
     "staticFillerRooms": 306,
     "staticBridgeRooms": 6,
-    "issues": 287,
-    "errors": 207,
-    "warnings": 80,
+    "issues": 259,
+    "errors": 187,
+    "warnings": 72,
     "byGrade": {
       "A_main_transition": 37,
       "B_connector": 17,
@@ -16,23 +16,23 @@
     },
     "byPurpose": {
       "blocker": 235,
-      "border": 242,
+      "border": 248,
       "gathering": 150,
       "monster": 30,
       "npc_or_quest": 21,
       "portal": 13,
       "route": 69,
-      "service": 47
+      "service": 48
     },
     "byIssueKind": {
       "dead_end.no_gameplay": 7,
-      "description.direction": 68,
-      "description.length": 103,
-      "description.purpose": 21,
-      "description.repeated_opening": 52,
+      "description.direction": 59,
+      "description.length": 93,
+      "description.purpose": 20,
+      "description.repeated_opening": 45,
       "description.terrain": 5,
       "exit.description.length": 12,
-      "exit.description.missing": 19
+      "exit.description.missing": 18
     }
   },
   "zones": [
@@ -84,12 +84,12 @@
       "zoneId": "amber_forest",
       "zoneName": "琥珀森林",
       "fillRooms": 14,
-      "issues": 28,
+      "issues": 0,
       "records": [
         {
           "id": "amber_forest_fill_n11_6",
           "zone": "amber_forest",
-          "name": "金葉通道",
+          "name": "石花東側金葉草封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -115,40 +115,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 69,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n11_6",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-            },
-            {
-              "id": "amber_forest_fill_n11_6",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n11_8",
           "zone": "amber_forest",
-          "name": "琥珀樹道",
+          "name": "深核東側樹脂封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -11,
@@ -171,47 +151,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n11_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n11_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n11_8",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n12_5",
           "zone": "amber_forest",
-          "name": "琥珀樹道",
+          "name": "炭林東側琥珀苔坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -12,
@@ -234,47 +187,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n12_5",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n12_5",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n12_5",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n13_10",
           "zone": "amber_forest",
-          "name": "琥珀樹道",
+          "name": "黑木北緣金葉草道",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -13,
@@ -297,37 +223,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 18,
+          "descriptionLength": 71,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n13_10",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。"
-            },
-            {
-              "id": "amber_forest_fill_n13_10",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.purpose",
-              "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-              "current": 18,
-              "minimum": 55,
-              "text": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n13_11",
           "zone": "amber_forest",
-          "name": "琥珀林小路",
+          "name": "黑木狼巢北界林路",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "border",
@@ -355,53 +260,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 74,
           "exitCount": 1,
-          "missingExitDescriptions": 1,
-          "shortExitDescriptions": 1,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n13_11",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 65,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n13_11",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 65,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n13_11",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "exit.description.missing",
-              "message": "exit south->blackwood_wolf_den 缺 description",
-              "current": 0,
-              "minimum": 20
-            },
-            {
-              "id": "amber_forest_fill_n13_11",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "missingExitDescriptions": 0,
+          "shortExitDescriptions": 0,
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n13_8",
           "zone": "amber_forest",
-          "name": "金葉通道",
+          "name": "甲蟲丘南金葉草坡",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -428,44 +296,16 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 72,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n13_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n13_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n13_8",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n13_9",
           "zone": "amber_forest",
-          "name": "樹脂小徑",
+          "name": "中央樹脂草徑",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
@@ -491,40 +331,20 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 19,
+          "descriptionLength": 67,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n13_9",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 19,
-              "minimum": 55,
-              "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-            },
-            {
-              "id": "amber_forest_fill_n13_9",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 19,
-              "minimum": 55,
-              "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n15_8",
           "zone": "amber_forest",
-          "name": "金葉通道",
+          "name": "蜂巢南金葉樹封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -15,
@@ -547,48 +367,22 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 66,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n15_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n15_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n15_8",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n16_5",
           "zone": "amber_forest",
-          "name": "琥珀樹道",
+          "name": "補給南側樹脂草坪",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
-            "gathering"
+            "border",
+            "gathering",
+            "service"
           ],
           "worldX": -16,
           "worldY": 5,
@@ -610,49 +404,22 @@
           "hasGathering": true,
           "hasNpcs": false,
           "hasQuestCue": false,
-          "hasServiceCue": false,
+          "hasServiceCue": true,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 78,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n16_5",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n16_5",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n16_5",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_fill_n17_8",
           "zone": "amber_forest",
-          "name": "琥珀樹道",
+          "name": "樹脂門南林封",
           "grade": "D_upgrade_candidate",
           "purposes": [
             "blocker",
+            "border",
             "gathering"
           ],
           "worldX": -17,
@@ -675,39 +442,11 @@
           "hasQuestCue": false,
           "hasServiceCue": false,
           "hasLockedExit": false,
-          "descriptionLength": 22,
+          "descriptionLength": 65,
           "exitCount": 0,
           "missingExitDescriptions": 0,
           "shortExitDescriptions": 0,
-          "issues": [
-            {
-              "id": "amber_forest_fill_n17_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.length",
-              "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n17_8",
-              "zone": "amber_forest",
-              "severity": "error",
-              "kind": "description.direction",
-              "message": "description 缺少方向或路徑線索",
-              "current": 22,
-              "minimum": 55,
-              "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-            },
-            {
-              "id": "amber_forest_fill_n17_8",
-              "zone": "amber_forest",
-              "severity": "warning",
-              "kind": "description.repeated_opening",
-              "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-            }
-          ]
+          "issues": []
         },
         {
           "id": "amber_forest_glassroot_bridge",
@@ -15827,215 +15566,6 @@
   ],
   "issues": [
     {
-      "id": "amber_forest_fill_n11_6",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-    },
-    {
-      "id": "amber_forest_fill_n11_6",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-    },
-    {
-      "id": "amber_forest_fill_n11_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n11_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n12_5",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n12_5",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n13_10",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。"
-    },
-    {
-      "id": "amber_forest_fill_n13_10",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.purpose",
-      "message": "description 沒有說清楚這個 fill room 是純路線、border、blocker 或玩法房",
-      "current": 18,
-      "minimum": 55,
-      "text": "穿過金黃樹林的小徑，腳下踩著鬆軟的落葉。"
-    },
-    {
-      "id": "amber_forest_fill_n13_11",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，border fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 65,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n13_11",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 65,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n13_11",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "exit.description.missing",
-      "message": "exit south->blackwood_wolf_den 缺 description",
-      "current": 0,
-      "minimum": 20
-    },
-    {
-      "id": "amber_forest_fill_n13_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n13_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n13_9",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 19,
-      "minimum": 55,
-      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-    },
-    {
-      "id": "amber_forest_fill_n13_9",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 19,
-      "minimum": 55,
-      "text": "琥珀森林中的小路，金色的樹葉在陽光下閃耀。"
-    },
-    {
-      "id": "amber_forest_fill_n15_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n15_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n16_5",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n16_5",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n17_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.length",
-      "message": "description 中文字數不足，fill room 需要更具體的地貌與路線用途",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
-      "id": "amber_forest_fill_n17_8",
-      "zone": "amber_forest",
-      "severity": "error",
-      "kind": "description.direction",
-      "message": "description 缺少方向或路徑線索",
-      "current": 22,
-      "minimum": 55,
-      "text": "被琥珀色樹脂覆蓋的通道，空氣中瀰漫著甜蜜的松香。"
-    },
-    {
       "id": "blackwood_fill_n11_15",
       "zone": "blackwood",
       "severity": "error",
@@ -18135,55 +17665,6 @@
       "current": 10,
       "minimum": 12,
       "text": "南側蘆葦石路通往石堰"
-    },
-    {
-      "id": "amber_forest_fill_n11_8",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n12_5",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n13_11",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n13_8",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n15_8",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n16_5",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
-    },
-    {
-      "id": "amber_forest_fill_n17_8",
-      "zone": "amber_forest",
-      "severity": "warning",
-      "kind": "description.repeated_opening",
-      "message": "同 zone 有 7 個 fill room 使用相同描述開頭，需避免模板句"
     },
     {
       "id": "blackwood_fill_n12_13",
