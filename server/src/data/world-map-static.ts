@@ -4174,6 +4174,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "溪階傳送低地小徑",
     "zone": "starter_village",
     "description": "溪階傳送低地小徑鋪著潮濕青石板，西面溪畔石階能聽見水聲，東側傳送祠堂透出藍光，兩旁低木柵隔開民宅菜圃。這裡是安全 route，專門銜接新手村低地服務點。",
+    "image": "starter_village_fill_1_3.png",
+    "imagePrompt": "溪階傳送低地小徑 starter_village_fill_1_3 in starter_village 新手村, room function connector, wet bluestone path between west creek stone steps and east blue-glowing portal shrine, low cottage fences, vegetable plots, creek mist and village lantern light, clear east west route cue, safe lowland service connector, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4197,6 +4199,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "市場北後勤青石巷",
     "zone": "starter_village",
     "description": "市場北後勤青石巷位在村莊服務區後方，北面公告角落與水井小路人聲清楚，南側市場小巷飄來麵包與藥草味。平坦石路只留給村民搬貨，是安全 service blocker，不開新路。",
+    "image": "starter_village_fill_3_4.png",
+    "imagePrompt": "市場北後勤青石巷 starter_village_fill_3_4 in starter_village 新手村, room function town service, contained bluestone market back alley north of notice corner and well path, south market lane smell of bread and herbs, crates, low service rail and closed village lane blocker, warm lantern light, clear north south path cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4209,6 +4213,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "守衛哨西民宅木柵",
     "zone": "starter_village",
     "description": "守衛哨西民宅木柵位在新手村東側民宅旁，西面馬廄院的木門半掩，北邊守衛哨所可見火把。青石板到此被低矮木柵截斷，只作村內 blocker，避免玩家穿進住戶院落。",
+    "image": "starter_village_fill_5_3.png",
+    "imagePrompt": "守衛哨西民宅木柵 starter_village_fill_5_3 in starter_village 新手村, room function town service, residential bluestone lane cut off by low wooden fence, west stable yard gate half open, north guard post torch visible, cottages and private garden boundary, clear west north landmark cue, safe village blocker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -4221,6 +4227,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東柵月林青石界",
     "zone": "starter_village",
     "description": "東柵月林青石界位在新手村東界，西側守衛哨所與民宅木柵仍有燈火，東面翠綠平原的月光小林貼著草坡展開。這裡是 border route，青石路轉為野草，提醒新手離開安全區。",
+    "image": "starter_village_fill_6_3.png",
+    "imagePrompt": "東柵月林青石界 starter_village_fill_6_3 in starter_village 新手村, room function border road, east village fence where bluestone road turns into grassy slope toward plains moonlit copse, west guard post lamps and cottage fence still visible, clear east west transition cue, low saturation night lantern and moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
