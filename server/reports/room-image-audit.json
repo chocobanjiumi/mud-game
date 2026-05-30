@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-30T04:17:00.653Z",
+  "generatedAt": "2026-05-30T05:50:27.470Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
     "phase5Targets": 271,
-    "missingPrompt": 238,
-    "missingImageField": 238,
+    "missingPrompt": 227,
+    "missingImageField": 227,
     "missingAsset": 271,
     "issues": 2007,
     "errors": 811,
@@ -14,10 +14,10 @@
     "byIssueKind": {
       "prompt.room_id": 1196,
       "asset.missing": 271,
-      "prompt.function": 30,
-      "prompt.style": 20,
-      "image.missing": 238,
-      "prompt.missing": 238,
+      "prompt.function": 41,
+      "prompt.style": 31,
+      "image.missing": 227,
+      "prompt.missing": 227,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -205,8 +205,8 @@
       "emerald_canopy": {
         "zoneName": "翡翠樹冠",
         "rooms": 31,
-        "missingPrompt": 11,
-        "missingImageField": 11,
+        "missingPrompt": 0,
+        "missingImageField": 0,
         "missingAsset": 11,
         "phase5Targets": 11,
         "errors": 33,
@@ -1640,33 +1640,32 @@
       "roomName": "琥珀接枝平台",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n18_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n18_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n18_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n18_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n18_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n18_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n18_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1675,33 +1674,32 @@
       "roomName": "北冠斷枝欄",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n19_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n19_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n19_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n19_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n19_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n19_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n19_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1710,33 +1708,32 @@
       "roomName": "霧葉封索道",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n20_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n20_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n20_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n20_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n20_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n20_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n20_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1745,33 +1742,32 @@
       "roomName": "南露藤欄",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_10.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n21_10",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_10.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_10.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png"
         },
         {
           "roomId": "emerald_canopy_fill_n21_10",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n21_10",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1780,33 +1776,32 @@
       "roomName": "北風枝籬",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n21_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n21_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n21_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n21_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1815,33 +1810,32 @@
       "roomName": "翡翠苔枝口",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n22_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n22_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n22_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1850,33 +1844,32 @@
       "roomName": "中層葉棚封口",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_8.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n22_8",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_8.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n22_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_8.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png"
         },
         {
           "roomId": "emerald_canopy_fill_n22_8",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n22_8",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1885,33 +1878,32 @@
       "roomName": "西冠鳥巢欄",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n23_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n23_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n23_7.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n23_7",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n23_7.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png"
         },
         {
           "roomId": "emerald_canopy_fill_n23_7",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n23_7",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1920,33 +1912,32 @@
       "roomName": "西南空枝臺",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n25_11.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n25_11",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n25_11.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n25_11",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n25_11.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png"
         },
         {
           "roomId": "emerald_canopy_fill_n25_11",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n25_11",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1955,33 +1946,32 @@
       "roomName": "西界風孔枝",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_10.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n26_10",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_10.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_10",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_10.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png"
         },
         {
           "roomId": "emerald_canopy_fill_n26_10",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n26_10",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1990,33 +1980,32 @@
       "roomName": "西北葉幕欄",
       "zoneId": "emerald_canopy",
       "zoneName": "翡翠樹冠",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_8.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "emerald_canopy_fill_n26_8",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_8.png"
-        },
-        {
-          "roomId": "emerald_canopy_fill_n26_8",
-          "zoneId": "emerald_canopy",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_8.png"
+          "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png"
         },
         {
           "roomId": "emerald_canopy_fill_n26_8",
           "zoneId": "emerald_canopy",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "emerald_canopy_fill_n26_8",
+          "zoneId": "emerald_canopy",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -13134,32 +13123,23 @@
       "roomId": "emerald_canopy_fill_n18_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n18_7.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n18_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n18_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n18_7.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "emerald_canopy_fill_n18_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n19_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n19_7.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n19_7",
@@ -13167,22 +13147,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n19_7.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n19_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n19_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n20_7",
+      "roomId": "emerald_canopy_fill_n19_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n20_7.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n20_7",
@@ -13190,22 +13169,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n20_7.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n20_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n20_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n21_10",
+      "roomId": "emerald_canopy_fill_n20_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_10.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n21_10",
@@ -13213,22 +13191,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_10.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_10.png"
     },
     {
       "roomId": "emerald_canopy_fill_n21_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n21_7",
+      "roomId": "emerald_canopy_fill_n21_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_7.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n21_7",
@@ -13236,22 +13213,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n21_7.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n21_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n21_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n22_7",
+      "roomId": "emerald_canopy_fill_n21_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_7.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n22_7",
@@ -13259,22 +13235,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_7.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n22_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n22_8",
+      "roomId": "emerald_canopy_fill_n22_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_8.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n22_8",
@@ -13282,22 +13257,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n22_8.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n22_8.png"
     },
     {
       "roomId": "emerald_canopy_fill_n22_8",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n23_7",
+      "roomId": "emerald_canopy_fill_n22_8",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n23_7.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n23_7",
@@ -13305,22 +13279,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n23_7.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n23_7.png"
     },
     {
       "roomId": "emerald_canopy_fill_n23_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n25_11",
+      "roomId": "emerald_canopy_fill_n23_7",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n25_11.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n25_11",
@@ -13328,22 +13301,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n25_11.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n25_11.png"
     },
     {
       "roomId": "emerald_canopy_fill_n25_11",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n26_10",
+      "roomId": "emerald_canopy_fill_n25_11",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_10.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n26_10",
@@ -13351,22 +13323,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_10.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_10.png"
     },
     {
       "roomId": "emerald_canopy_fill_n26_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "emerald_canopy_fill_n26_8",
+      "roomId": "emerald_canopy_fill_n26_10",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_8.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_fill_n26_8",
@@ -13374,14 +13345,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/emerald_canopy_fill_n26_8.png"
+      "assetPath": "client/public/images/rooms/images/rooms/emerald_canopy_fill_n26_8.png"
     },
     {
       "roomId": "emerald_canopy_fill_n26_8",
       "zoneId": "emerald_canopy",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "emerald_canopy_fill_n26_8",
+      "zoneId": "emerald_canopy",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_firefly_bower",
