@@ -1160,7 +1160,7 @@ ashfall_monastery_ashen_sanctum: {
     image: 'frostbite_pass_snow_gate.png',
     imagePrompt: '雪門 in frostbite_pass, frozen mountain pass with blizzard, blue ice bridge, buried caravan wagons, snow gate, glacier cliffs and polar wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
     description:
-      '雪門位於通往極北且長年結冰的霜咬隘口，雪門、商隊路標、藍冰橋、白霧盆地、冰河口與失蹤貨車共同標出危險的高寒通道。這裡是高密度野外遭遇與精英巡邏區，旅人可以 觀察 雪面足跡、斷裂繩標、冰橋裂紋和風向旗來判斷暴風雪間隙，也能 搜索 埋雪貨車、冷火營、失商藏點與冰石堆原尋找商隊線索。若隊伍忽略白霧回流、雪怪抓痕與冰龍吐息，雪狼、雪人、霜巨人與冰元素會在窄路包抄；若穩定沿路標、骨橇道與北行山脊推進，則能抵達極北封門並帶回失蹤商隊記錄、冰橋測量與避風路線標記與雪盲防護記錄',
+      '雪門立在霜咬隘口南端，兩根覆霜石柱被冰風削成白色刀面，門縫間能看見東側商隊路標的黑影。北面凍結折路沿山壁折上，積雪把舊階梯壓成斷續白線。門下散著斷繩、凍裂木牌和被雪半埋的鐵釘，風從柱間穿過時發出低鳴；這裡不像普通山口，更像暖地最後一處被寒意咬住的邊界。近旁霜粉不斷堆積在石縫與繩結上，讓最近的方向線索仍能從白茫茫風雪中分辨出來。',
     exits: [
       { direction: 'east', targetRoomId: 'frostbite_pass_caravan_marker', description: '商隊路標在東側' },
       { direction: 'north', targetRoomId: 'frostbite_pass_frozen_switchback', description: '凍結折路在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },

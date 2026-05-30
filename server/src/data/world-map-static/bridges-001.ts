@@ -35,7 +35,7 @@ export const STATIC_WORLD_BRIDGE_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "frostbite_frozen_divide",
     "name": "霜裂分界",
     "zone": "frostbite_pass",
-    "description": "霜裂分界位在霜咬隘口與冰封雪原之間，南面藍冰橋仍懸在裂縫上方，北側凍土荒野展開成白色平面。腳下藍冰裂出深不見底的紋路，這裡是跨區 邊界封閉點，只標示雪原邊界，不提供直接穿越。霜裂分界周邊的地面材質、相鄰地貌、邊界標記與回程方向需要清楚呈現，讓隊伍能從北南東西的路徑線索判斷此處是通行、採集、服務、封閉或跨區銜接點。",
+    "description": "霜裂分界位在霜咬隘口與冰封雪原之間，南面藍冰橋仍懸在裂縫上方，北側凍土荒野展開成白色平面。腳下藍冰裂出深不見底的紋路，裂縫裡只有冷藍反光和黑暗深影，雪殼在邊緣碎成尖片。近處冰面厚重透明，遠方雪原被白光壓平，寒風捲起霜粉不斷越過裂口；這裡像兩片極寒地貌被一道無聲深縫切開。",
     "image": "frostbite_frozen_divide.png",
     "imagePrompt": "霜裂分界 frostbite_frozen_divide in frostbite_pass Frostbite Pass, room function border road, divide between Frostbite Pass and Frozen Wastes, south blue ice bridge suspended above a crevasse, north tundra wasteland opens into a white plain, terrain deep blue ice cracks, snow crust, abyss shadow, windblown frost and pale arctic light，霜裂分界位在隘口與冰封雪原之間，南面藍冰橋懸在裂縫上方，北側凍土荒野展開成白色平面。腳下藍冰裂出深不見底的紋路，裂縫裡只有冷藍反光與黑暗深影，雪殼在邊緣碎裂；畫面要像邊界標示而非可直接穿越的道路，清楚呈現跨區 border blocker。遠方雪原在白光中平展，近景裂縫邊緣鋒利斷開，冰面材質厚重透明，寒風捲起霜粉營造空曠孤絕氣氛。, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
