@@ -4,6 +4,28 @@ import { getDb } from './schema.js';
 import { nanoid } from 'nanoid';
 import type { AffixDef, Character, ClassId, EquipmentSlots, InventoryItem, ItemQuality, RaceId, GenderId, FaithId } from '@game/shared';
 import { calculateMaxHp, calculateMaxMp, ITEM_DEFS, createEmptyEquipmentSlots, DEFAULT_RACE_ID, DEFAULT_GENDER_ID, DEFAULT_FAITH_ID, getInitialStatsForRace, RACE_DEFS, FAITH_DEFS, CLASS_DEFS, getLearnableSkills, normalizeGenderId, getStarterItemsForClass, resolveEquipSlotForItem } from '@game/shared';
+import {
+  type CharacterAliasRow,
+  type CharacterRow,
+  type CountRow,
+  type GroundItemPickupRow,
+  type InventoryItemRow,
+  type InventoryStackRow,
+  type KingdomBountyRow,
+  type KingdomDiplomacyRow,
+  type KingdomMemberRow,
+  type KingdomRoomRow,
+  type KingdomRow,
+  type KingdomWarRow,
+  type LearnedSkillRow,
+  type PortalUnlockRow,
+  type QuestProgressRow,
+  type StoredItemInstanceRow,
+  type TransactionRow,
+  type TreasuryRecordRow,
+  type ZoneUnlockRow,
+  parseJsonArray,
+} from './rows.js';
 
 // ─── Character CRUD ───
 
@@ -78,7 +100,7 @@ function getInitialClassDef(classId: ClassId | undefined) {
 /** 根據 ID 取得角色 */
 export function getCharacterById(id: string): Character | null {
   const db = getDb();
-  const row = db.prepare('SELECT * FROM characters WHERE id = ?').get(id) as Record<string, unknown> | undefined;
+  const row = db.prepare('SELECT * FROM characters WHERE id = ?').get(id) as CharacterRow | undefined;
   if (!row) return null;
   return rowToCharacter(row);
 }
@@ -86,7 +108,7 @@ export function getCharacterById(id: string): Character | null {
 /** 根據名字取得角色 */
 export function getCharacterByName(name: string): Character | null {
   const db = getDb();
-  const row = db.prepare('SELECT * FROM characters WHERE name = ?').get(name) as Record<string, unknown> | undefined;
+  const row = db.prepare('SELECT * FROM characters WHERE name = ?').get(name) as CharacterRow | undefined;
   if (!row) return null;
   return rowToCharacter(row);
 }
@@ -94,7 +116,7 @@ export function getCharacterByName(name: string): Character | null {
 /** 根據 userId 取得所有角色 */
 export function getCharactersByUserId(userId: string): Character[] {
   const db = getDb();
-  const rows = db.prepare('SELECT * FROM characters WHERE user_id = ?').all(userId) as Record<string, unknown>[];
+  const rows = db.prepare('SELECT * FROM characters WHERE user_id = ?').all(userId) as CharacterRow[];
   return rows.map(rowToCharacter);
 }
 
@@ -145,7 +167,7 @@ export function deleteCharacter(id: string): void {
 export function getCharacterAliases(characterId: string): Record<string, string> {
   const rows = getDb().prepare(
     'SELECT alias, command FROM character_aliases WHERE character_id = ? ORDER BY alias ASC',
-  ).all(characterId) as { alias: string; command: string }[];
+  ).all(characterId) as CharacterAliasRow[];
 
   return Object.fromEntries(rows.map(row => [row.alias, row.command]));
 }
@@ -207,7 +229,7 @@ export function addInventoryItem(
   // 檢查是否已有此物品（可堆疊）
   const existing = db.prepare(
     'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0 AND item_instance_id IS NULL',
-  ).get(characterId, itemId) as { id: number; quantity: number } | undefined;
+  ).get(characterId, itemId) as InventoryStackRow | undefined;
 
   if (existing) {
     db.prepare('UPDATE inventory SET quantity = quantity + ? WHERE id = ?').run(quantity, existing.id);
@@ -225,7 +247,7 @@ export function removeInventoryItem(characterId: string, itemId: string, quantit
     itemInstanceId
       ? 'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND item_instance_id = ? AND equipped = 0'
       : 'SELECT id, quantity FROM inventory WHERE character_id = ? AND item_id = ? AND equipped = 0 AND item_instance_id IS NULL',
-  ).get(...(itemInstanceId ? [characterId, itemId, itemInstanceId] : [characterId, itemId])) as { id: number; quantity: number } | undefined;
+  ).get(...(itemInstanceId ? [characterId, itemId, itemInstanceId] : [characterId, itemId])) as InventoryStackRow | undefined;
 
   if (!existing || existing.quantity < quantity) return false;
 
@@ -247,20 +269,7 @@ export function getInventory(characterId: string): InventoryItem[] {
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ?`,
-  ).all(characterId) as {
-    item_id: string;
-    item_instance_id: string | null;
-    quantity: number;
-    equipped: number;
-    quality: ItemQuality | null;
-    item_level: number | null;
-    dropped_by: string | null;
-    dropped_in_zone: string | null;
-    source_tags_json: string | null;
-    affixes_json: string | null;
-    locked_affixes_json: string | null;
-    fixed_effects_json: string | null;
-  }[];
+  ).all(characterId) as InventoryItemRow[];
 
   return rows.map((r) => ({
     itemId: r.item_id,
@@ -299,19 +308,7 @@ export function getEquippedItems(characterId: string): Pick<InventoryItem, 'item
      FROM inventory i
      LEFT JOIN item_instances inst ON inst.id = i.item_instance_id
      WHERE i.character_id = ? AND i.equipped = 1`,
-  ).all(characterId) as {
-    item_id: string;
-    item_instance_id: string | null;
-    quantity: number;
-    quality: ItemQuality | null;
-    item_level: number | null;
-    dropped_by: string | null;
-    dropped_in_zone: string | null;
-    source_tags_json: string | null;
-    affixes_json: string | null;
-    locked_affixes_json: string | null;
-    fixed_effects_json: string | null;
-  }[];
+  ).all(characterId) as InventoryItemRow[];
 
   return rows.map((r) => ({
     itemId: r.item_id,
@@ -350,18 +347,7 @@ export function upsertItemInstance(instance: StoredItemInstance): void {
 export function getStoredItemInstance(itemInstanceId: string): StoredItemInstance | undefined {
   const row = getDb().prepare(
     'SELECT id, base_item_id, quality, item_level, dropped_by, dropped_in_zone, source_tags_json, affixes_json, locked_affixes_json, fixed_effects_json FROM item_instances WHERE id = ?',
-  ).get(itemInstanceId) as {
-    id: string;
-    base_item_id: string;
-    quality: ItemQuality;
-    item_level: number | null;
-    dropped_by: string | null;
-    dropped_in_zone: string | null;
-    source_tags_json: string | null;
-    affixes_json: string | null;
-    locked_affixes_json: string | null;
-    fixed_effects_json: string | null;
-  } | undefined;
+  ).get(itemInstanceId) as StoredItemInstanceRow | undefined;
 
   if (!row) return undefined;
   return {
@@ -383,16 +369,6 @@ function normalizeLockedAffixes(indexes: number[] | undefined): number[] {
   return [...new Set(indexes)]
     .filter(index => Number.isInteger(index) && index >= 0)
     .sort((a, b) => a - b);
-}
-
-function parseJsonArray<T>(value: string | null): T[] | undefined {
-  if (!value) return undefined;
-  try {
-    const parsed = JSON.parse(value);
-    return Array.isArray(parsed) && parsed.length > 0 ? parsed as T[] : undefined;
-  } catch {
-    return undefined;
-  }
 }
 
 // ─── Skills CRUD ───
@@ -417,7 +393,7 @@ export function getLearnedSkills(characterId: string): { skillId: string; level:
   const db = getDb();
   const rows = db.prepare(
     'SELECT skill_id, level FROM learned_skills WHERE character_id = ?',
-  ).all(characterId) as { skill_id: string; level: number }[];
+  ).all(characterId) as LearnedSkillRow[];
 
   return rows.map((r) => ({ skillId: r.skill_id, level: r.level }));
 }
@@ -450,7 +426,7 @@ export function isZoneUnlocked(characterId: string, zoneId: string): boolean {
 export function getUnlockedZones(characterId: string): string[] {
   const rows = getDb().prepare(
     'SELECT zone_id FROM character_zone_unlocks WHERE character_id = ? ORDER BY unlocked_at ASC',
-  ).all(characterId) as { zone_id: string }[];
+  ).all(characterId) as ZoneUnlockRow[];
   return rows.map(row => row.zone_id);
 }
 
@@ -471,7 +447,7 @@ export function isPortalUnlocked(characterId: string, portalId: string): boolean
 export function getUnlockedPortals(characterId: string): { portalId: string; zoneId: string }[] {
   const rows = getDb().prepare(
     'SELECT portal_id, zone_id FROM character_portal_unlocks WHERE character_id = ? ORDER BY unlocked_at ASC',
-  ).all(characterId) as { portal_id: string; zone_id: string }[];
+  ).all(characterId) as PortalUnlockRow[];
   return rows.map(row => ({ portalId: row.portal_id, zoneId: row.zone_id }));
 }
 
@@ -485,7 +461,7 @@ export function isQuestCompleted(characterId: string, questId: string): boolean 
 export function getCompletedQuestIds(characterId: string): string[] {
   const rows = getDb().prepare(
     "SELECT quest_id FROM quest_progress WHERE character_id = ? AND status = 'completed'",
-  ).all(characterId) as { quest_id: string }[];
+  ).all(characterId) as QuestProgressRow[];
   return rows.map(row => row.quest_id);
 }
 
@@ -509,7 +485,7 @@ export function getDiscoveryCount(characterId: string, zoneId: string, discovery
       SELECT COUNT(*) AS count
       FROM character_discoveries
       WHERE character_id = ? AND zone_id = ? AND discovery_type = ?
-    `).get(characterId, zoneId, discoveryType) as { count: number };
+    `).get(characterId, zoneId, discoveryType) as CountRow;
     return row.count;
   }
 
@@ -517,7 +493,7 @@ export function getDiscoveryCount(characterId: string, zoneId: string, discovery
     SELECT COUNT(*) AS count
     FROM character_discoveries
     WHERE character_id = ? AND zone_id = ?
-  `).get(characterId, zoneId) as { count: number };
+  `).get(characterId, zoneId) as CountRow;
   return row.count;
 }
 
@@ -527,7 +503,7 @@ export function getDiscoveryTotalCount(characterId: string, discoveryType?: stri
       SELECT COUNT(*) AS count
       FROM character_discoveries
       WHERE character_id = ? AND discovery_type = ?
-    `).get(characterId, discoveryType) as { count: number };
+    `).get(characterId, discoveryType) as CountRow;
     return row.count;
   }
 
@@ -535,7 +511,7 @@ export function getDiscoveryTotalCount(characterId: string, discoveryType?: stri
     SELECT COUNT(*) AS count
     FROM character_discoveries
     WHERE character_id = ?
-  `).get(characterId) as { count: number };
+  `).get(characterId) as CountRow;
   return row.count;
 }
 
@@ -551,7 +527,7 @@ export const PERMANENT_GROUND_ITEM_PICKUP = -1;
 export function getGroundItemRespawnAt(roomId: string, itemId: string): number | null {
   const row = getDb().prepare(
     'SELECT respawn_at_ms FROM ground_item_pickups WHERE room_id = ? AND item_id = ?',
-  ).get(roomId, itemId) as { respawn_at_ms: number } | undefined;
+  ).get(roomId, itemId) as GroundItemPickupRow | undefined;
   return row?.respawn_at_ms ?? null;
 }
 
@@ -574,9 +550,9 @@ export function clearGroundItemPickup(roomId: string, itemId: string): void {
 // ─── Helpers ───
 
 /** 將資料庫列轉為 Character 物件 */
-function rowToCharacter(row: Record<string, unknown>): Character {
+function rowToCharacter(row: CharacterRow): Character {
   // 取得裝備
-  const equipped = getEquippedItems(row.id as string);
+  const equipped = getEquippedItems(row.id);
   const equipment: EquipmentSlots = createEmptyEquipmentSlots();
 
   for (const item of equipped) {
@@ -590,44 +566,44 @@ function rowToCharacter(row: Record<string, unknown>): Character {
   }
 
   return {
-    id: row.id as string,
-    userId: row.user_id as string,
-    name: row.name as string,
-    level: row.level as number,
-    exp: row.exp as number,
-    classId: row.class_id as ClassId,
-    raceId: (row.race_id as import('@game/shared').RaceId) ?? DEFAULT_RACE_ID,
+    id: row.id,
+    userId: row.user_id,
+    name: row.name,
+    level: row.level,
+    exp: row.exp,
+    classId: row.class_id,
+    raceId: row.race_id ?? DEFAULT_RACE_ID,
     genderId: normalizeGenderId(row.gender_id),
-    faithId: (row.faith_id as import('@game/shared').FaithId) ?? DEFAULT_FAITH_ID,
-    faithFavor: (row.faith_favor as number) ?? 0,
-    faithCooldownUntil: (row.faith_cooldown_until as number) ?? undefined,
-    hp: row.hp as number,
-    mp: row.mp as number,
-    maxHp: row.max_hp as number,
-    maxMp: row.max_mp as number,
-    resource: (row.resource as number) ?? 30,
-    maxResource: (row.max_resource as number) ?? 30,
+    faithId: row.faith_id ?? DEFAULT_FAITH_ID,
+    faithFavor: row.faith_favor ?? 0,
+    faithCooldownUntil: row.faith_cooldown_until ?? undefined,
+    hp: row.hp,
+    mp: row.mp,
+    maxHp: row.max_hp,
+    maxMp: row.max_mp,
+    resource: row.resource ?? 30,
+    maxResource: row.max_resource ?? 30,
     resourceType: normalizeResourceType(row.resource_type),
     stats: {
-      str: row.str as number,
-      int: row.int_ as number,
-      dex: row.dex as number,
-      vit: row.vit as number,
-      luk: row.luk as number,
+      str: row.str,
+      int: row.int_,
+      dex: row.dex,
+      vit: row.vit,
+      luk: row.luk,
     },
-    freePoints: row.free_points as number,
-    gold: row.gold as number,
-    roomId: row.room_id as string,
-    isAi: (row.is_ai as number) === 1,
-    agentId: row.agent_id as string | undefined,
-    markedLocation: (row.marked_location as string) ?? undefined,
-    activeMountId: (row.active_mount_id as string | null | undefined) ?? (row.class_id === 'knight' ? 'knight_warhorse' : null),
-    mounted: (row.mounted as number | undefined) === 1,
-    mountFatigue: Math.max(0, (row.mount_fatigue as number | undefined) ?? 0),
-    mountCooldownUntil: (row.mount_cooldown_until as number | undefined) ?? undefined,
+    freePoints: row.free_points,
+    gold: row.gold,
+    roomId: row.room_id,
+    isAi: row.is_ai === 1,
+    agentId: row.agent_id ?? undefined,
+    markedLocation: row.marked_location ?? undefined,
+    activeMountId: row.active_mount_id ?? (row.class_id === 'knight' ? 'knight_warhorse' : null),
+    mounted: row.mounted === 1,
+    mountFatigue: Math.max(0, row.mount_fatigue ?? 0),
+    mountCooldownUntil: row.mount_cooldown_until ?? undefined,
     equipment,
-    createdAt: row.created_at as number,
-    lastLogin: row.last_login as number,
+    createdAt: row.created_at,
+    lastLogin: row.last_login,
   };
 }
 
@@ -659,7 +635,7 @@ export function getTransactions(
 ): { transaction_id: string; user_id: string; amount: number; type: string; description: string; timestamp: number }[] {
   return getDb().prepare(
     'SELECT transaction_id, user_id, amount, type, description, timestamp FROM transactions WHERE user_id = ? ORDER BY timestamp DESC LIMIT ?',
-  ).all(userId, limit) as { transaction_id: string; user_id: string; amount: number; type: string; description: string; timestamp: number }[];
+  ).all(userId, limit) as TransactionRow[];
 }
 
 // ─── User Entitlements CRUD ───
@@ -694,7 +670,7 @@ export function getKingdomById(id: string): {
   id: string; name: string; description: string; king_id: string;
   created_at: number; treasury_gold: number; tax_rate: number; motto: string;
 } | undefined {
-  return getDb().prepare('SELECT * FROM kingdoms WHERE id = ?').get(id) as any;
+  return getDb().prepare('SELECT * FROM kingdoms WHERE id = ?').get(id) as KingdomRow | undefined;
 }
 
 /** 根據名稱取得王國 */
@@ -702,7 +678,7 @@ export function getKingdomByName(name: string): {
   id: string; name: string; description: string; king_id: string;
   created_at: number; treasury_gold: number; tax_rate: number; motto: string;
 } | undefined {
-  return getDb().prepare('SELECT * FROM kingdoms WHERE name = ?').get(name) as any;
+  return getDb().prepare('SELECT * FROM kingdoms WHERE name = ?').get(name) as KingdomRow | undefined;
 }
 
 /** 取得所有王國列表 */
@@ -710,7 +686,7 @@ export function getAllKingdoms(): {
   id: string; name: string; description: string; king_id: string;
   created_at: number; treasury_gold: number; tax_rate: number; motto: string;
 }[] {
-  return getDb().prepare('SELECT * FROM kingdoms ORDER BY created_at DESC').all() as any[];
+  return getDb().prepare('SELECT * FROM kingdoms ORDER BY created_at DESC').all() as KingdomRow[];
 }
 
 /** 更新王國資訊 */
@@ -758,14 +734,14 @@ export function updateKingdomMemberRank(kingdomId: string, characterId: string, 
 export function getKingdomMembers(kingdomId: string): {
   kingdom_id: string; character_id: string; rank: string; joined_at: number;
 }[] {
-  return getDb().prepare('SELECT * FROM kingdom_members WHERE kingdom_id = ?').all(kingdomId) as any[];
+  return getDb().prepare('SELECT * FROM kingdom_members WHERE kingdom_id = ?').all(kingdomId) as KingdomMemberRow[];
 }
 
 /** 取得角色所屬王國 */
 export function getMemberKingdom(characterId: string): {
   kingdom_id: string; character_id: string; rank: string; joined_at: number;
 } | undefined {
-  return getDb().prepare('SELECT * FROM kingdom_members WHERE character_id = ?').get(characterId) as any;
+  return getDb().prepare('SELECT * FROM kingdom_members WHERE character_id = ?').get(characterId) as KingdomMemberRow | undefined;
 }
 
 /** 取得王國成員的官職 */
@@ -800,14 +776,14 @@ export function updateKingdomRoomType(kingdomId: string, roomId: string, roomTyp
 export function getKingdomRooms(kingdomId: string): {
   kingdom_id: string; room_id: string; room_type: string; built_by: string; built_at: number;
 }[] {
-  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE kingdom_id = ?').all(kingdomId) as any[];
+  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE kingdom_id = ?').all(kingdomId) as KingdomRoomRow[];
 }
 
 /** 取得房間所屬的王國 */
 export function getKingdomByRoomId(roomId: string): {
   kingdom_id: string; room_id: string; room_type: string; built_by: string; built_at: number;
 } | undefined {
-  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE room_id = ?').get(roomId) as any;
+  return getDb().prepare('SELECT * FROM kingdom_rooms WHERE room_id = ?').get(roomId) as KingdomRoomRow | undefined;
 }
 
 // ─── Kingdom Treasury CRUD ───
@@ -827,7 +803,7 @@ export function getTreasuryRecords(kingdomId: string, limit: number = 20): {
 }[] {
   return getDb().prepare(
     'SELECT * FROM kingdom_treasury WHERE kingdom_id = ? ORDER BY created_at DESC LIMIT ?'
-  ).all(kingdomId, limit) as any[];
+  ).all(kingdomId, limit) as TreasuryRecordRow[];
 }
 
 // ─── Kingdom Bounties CRUD ───
@@ -848,7 +824,7 @@ export function getKingdomBounties(kingdomId: string, status: string = 'active')
 }[] {
   return getDb().prepare(
     'SELECT * FROM kingdom_bounties WHERE kingdom_id = ? AND status = ? ORDER BY created_at DESC'
-  ).all(kingdomId, status) as any[];
+  ).all(kingdomId, status) as KingdomBountyRow[];
 }
 
 /** 更新懸賞狀態 */
@@ -875,7 +851,7 @@ export function getActiveWars(kingdomId: string): {
 }[] {
   return getDb().prepare(
     "SELECT * FROM kingdom_wars WHERE (attacker_id = ? OR defender_id = ?) AND status = 'active'"
-  ).all(kingdomId, kingdomId) as any[];
+  ).all(kingdomId, kingdomId) as KingdomWarRow[];
 }
 
 /** 更新戰爭狀態 */
@@ -910,7 +886,7 @@ export function getDiplomacy(kingdomAId: string, kingdomBId: string): {
 } | undefined {
   return getDb().prepare(
     'SELECT * FROM kingdom_diplomacy WHERE (kingdom_a_id = ? AND kingdom_b_id = ?) OR (kingdom_a_id = ? AND kingdom_b_id = ?)'
-  ).get(kingdomAId, kingdomBId, kingdomBId, kingdomAId) as any;
+  ).get(kingdomAId, kingdomBId, kingdomBId, kingdomAId) as KingdomDiplomacyRow | undefined;
 }
 
 /** 取得王國的所有外交關係 */
@@ -920,7 +896,7 @@ export function getKingdomDiplomacies(kingdomId: string): {
 }[] {
   return getDb().prepare(
     'SELECT * FROM kingdom_diplomacy WHERE kingdom_a_id = ? OR kingdom_b_id = ?'
-  ).all(kingdomId, kingdomId) as any[];
+  ).all(kingdomId, kingdomId) as KingdomDiplomacyRow[];
 }
 
 // ─── Leaderboard / PvP Records ───
