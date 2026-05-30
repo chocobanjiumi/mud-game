@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T10:40:00.303Z",
+  "generatedAt": "2026-05-30T13:30:18.386Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -355,7 +355,7 @@
     "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
-    "imagePrompts": 1478,
+    "imagePrompts": 1499,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,
@@ -366,11 +366,11 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 59
+    "issues": 62
   },
   "issuesByKind": {
     "imagePrompt": 50,
-    "batch.repeatedCoreTerm": 9
+    "batch.repeatedCoreTerm": 12
   },
   "issues": [
     {
@@ -881,10 +881,37 @@
       "id": "imagePrompt:redrock_badlands/term:紅岩荒地",
       "kind": "batch.repeatedCoreTerm",
       "field": "text",
-      "currentLength": 44,
+      "currentLength": 40,
       "minimumLength": 30,
       "text": "redrock_badlands/redrock_badlands_fill_n4_19, redrock_badlands/redrock_badlands_fill_n6_21, redrock_badlands/redrock_badlands_fill_n7_19, redrock_badlands/redrock_badlands_fill_n8_21",
-      "reason": "同批生成內容核心詞「紅岩荒地」出現於 4/9 筆，超過 30% 門檻"
+      "reason": "同批生成內容核心詞「紅岩荒地」出現於 4/10 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:glass_dunes/term:畫面要反",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "glass_dunes/glass_dunes_fill_1_19, glass_dunes/glass_dunes_fill_1_22, glass_dunes/glass_dunes_fill_2_23, glass_dunes/glass_dunes_fill_3_19, glass_dunes/glass_dunes_fill_3_23, glass_dunes/glass_dunes_fill_4_23, glass_dunes/glass_dunes_fill_4_24, glass_dunes/glass_dunes_fill_5_19, glass_dunes/glass_dunes_fill_5_23, glass_dunes/glass_dunes_fill_6_23, glass_dunes/glass_dunes_fill_7_20, glass_dunes/glass_dunes_fill_7_22",
+      "reason": "同批生成內容核心詞「畫面要反」出現於 20/20 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:glass_dunes/term:面要反映",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "glass_dunes/glass_dunes_fill_1_19, glass_dunes/glass_dunes_fill_1_22, glass_dunes/glass_dunes_fill_2_23, glass_dunes/glass_dunes_fill_3_19, glass_dunes/glass_dunes_fill_3_23, glass_dunes/glass_dunes_fill_4_23, glass_dunes/glass_dunes_fill_4_24, glass_dunes/glass_dunes_fill_5_19, glass_dunes/glass_dunes_fill_5_23, glass_dunes/glass_dunes_fill_6_23, glass_dunes/glass_dunes_fill_7_20, glass_dunes/glass_dunes_fill_7_22",
+      "reason": "同批生成內容核心詞「面要反映」出現於 20/20 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:glass_dunes/term:要反映實",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "glass_dunes/glass_dunes_fill_1_19, glass_dunes/glass_dunes_fill_1_22, glass_dunes/glass_dunes_fill_2_23, glass_dunes/glass_dunes_fill_3_19, glass_dunes/glass_dunes_fill_3_23, glass_dunes/glass_dunes_fill_4_23, glass_dunes/glass_dunes_fill_4_24, glass_dunes/glass_dunes_fill_5_19, glass_dunes/glass_dunes_fill_5_23, glass_dunes/glass_dunes_fill_6_23, glass_dunes/glass_dunes_fill_7_20, glass_dunes/glass_dunes_fill_7_22",
+      "reason": "同批生成內容核心詞「要反映實」出現於 20/20 筆，超過 30% 門檻"
     },
     {
       "id": "imagePrompt:moonlit_fen/term:光濕地西",
