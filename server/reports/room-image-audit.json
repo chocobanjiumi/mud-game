@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-30T02:35:10.015Z",
+  "generatedAt": "2026-05-30T03:07:14.226Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
     "phase5Targets": 271,
-    "missingPrompt": 258,
-    "missingImageField": 258,
+    "missingPrompt": 248,
+    "missingImageField": 248,
     "missingAsset": 271,
     "issues": 2009,
     "errors": 813,
@@ -14,9 +14,10 @@
     "byIssueKind": {
       "prompt.room_id": 1196,
       "asset.missing": 271,
-      "prompt.function": 12,
-      "image.missing": 258,
-      "prompt.missing": 258,
+      "prompt.function": 22,
+      "prompt.style": 10,
+      "image.missing": 248,
+      "prompt.missing": 248,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -184,8 +185,8 @@
       "eastern_coast": {
         "zoneName": "東方海岸",
         "rooms": 30,
-        "missingPrompt": 10,
-        "missingImageField": 10,
+        "missingPrompt": 0,
+        "missingImageField": 0,
         "missingAsset": 10,
         "phase5Targets": 10,
         "errors": 30,
@@ -973,33 +974,32 @@
       "roomName": "北吊機礁封路",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_0.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_31_0",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_31_0.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_31_0.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png"
         },
         {
           "roomId": "eastern_coast_fill_31_0",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_31_0",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1008,33 +1008,32 @@
       "roomName": "王道東側潮封",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_3.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_31_3",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_31_3.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_31_3",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_31_3.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png"
         },
         {
           "roomId": "eastern_coast_fill_31_3",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_31_3",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1043,33 +1042,32 @@
       "roomName": "海盜營南沙封",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_4.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_34_4",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_4.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_4",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_4.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png"
         },
         {
           "roomId": "eastern_coast_fill_34_4",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_34_4",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1078,33 +1076,32 @@
       "roomName": "藍泥北側潮溝",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_5.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_34_5",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_5.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_5",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_5.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png"
         },
         {
           "roomId": "eastern_coast_fill_34_5",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_34_5",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1113,33 +1110,32 @@
       "roomName": "鹽風藍泥北界",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_6.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_34_6",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_6.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_34_6",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_34_6.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png"
         },
         {
           "roomId": "eastern_coast_fill_34_6",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_34_6",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1148,33 +1144,32 @@
       "roomName": "斷碼頭東礁封",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_35_0.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_35_0",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_35_0.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_35_0",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_35_0.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png"
         },
         {
           "roomId": "eastern_coast_fill_35_0",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_35_0",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1183,33 +1178,32 @@
       "roomName": "蛇巢東側浪封",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_36_2.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_36_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_36_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_36_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_36_2.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png"
         },
         {
           "roomId": "eastern_coast_fill_36_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_36_2",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1218,33 +1212,32 @@
       "roomName": "中段碎礁阻帶",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_37_2.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_37_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_37_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_37_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_37_2.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png"
         },
         {
           "roomId": "eastern_coast_fill_37_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_37_2",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1253,33 +1246,32 @@
       "roomName": "霧港西潮前帶",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_38_2.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_38_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_38_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_38_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_38_2.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png"
         },
         {
           "roomId": "eastern_coast_fill_38_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_38_2",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1288,33 +1280,32 @@
       "roomName": "霧港西門路牌潮徑",
       "zoneId": "eastern_coast",
       "zoneName": "東方海岸",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_39_2.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "eastern_coast_fill_39_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_39_2.png"
-        },
-        {
-          "roomId": "eastern_coast_fill_39_2",
-          "zoneId": "eastern_coast",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/eastern_coast_fill_39_2.png"
+          "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png"
         },
         {
           "roomId": "eastern_coast_fill_39_2",
           "zoneId": "eastern_coast",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "eastern_coast_fill_39_2",
+          "zoneId": "eastern_coast",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -12475,32 +12466,23 @@
       "roomId": "eastern_coast_fill_31_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_0.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_0.png"
     },
     {
       "roomId": "eastern_coast_fill_31_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_0.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "eastern_coast_fill_31_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_3",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_3.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_31_3",
@@ -12508,22 +12490,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_31_3.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_31_3.png"
     },
     {
       "roomId": "eastern_coast_fill_31_3",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_34_4",
+      "roomId": "eastern_coast_fill_31_3",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_4.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_34_4",
@@ -12531,22 +12512,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_4.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_4.png"
     },
     {
       "roomId": "eastern_coast_fill_34_4",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_34_5",
+      "roomId": "eastern_coast_fill_34_4",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_5.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_34_5",
@@ -12554,22 +12534,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_5.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_5.png"
     },
     {
       "roomId": "eastern_coast_fill_34_5",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_34_6",
+      "roomId": "eastern_coast_fill_34_5",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_6.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_34_6",
@@ -12577,22 +12556,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_34_6.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_34_6.png"
     },
     {
       "roomId": "eastern_coast_fill_34_6",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_35_0",
+      "roomId": "eastern_coast_fill_34_6",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_35_0.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_35_0",
@@ -12600,22 +12578,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_35_0.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_35_0.png"
     },
     {
       "roomId": "eastern_coast_fill_35_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_36_2",
+      "roomId": "eastern_coast_fill_35_0",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_36_2.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_36_2",
@@ -12623,22 +12600,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_36_2.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_36_2.png"
     },
     {
       "roomId": "eastern_coast_fill_36_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_37_2",
+      "roomId": "eastern_coast_fill_36_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_37_2.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_37_2",
@@ -12646,22 +12622,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_37_2.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_37_2.png"
     },
     {
       "roomId": "eastern_coast_fill_37_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_38_2",
+      "roomId": "eastern_coast_fill_37_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_38_2.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_38_2",
@@ -12669,22 +12644,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_38_2.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_38_2.png"
     },
     {
       "roomId": "eastern_coast_fill_38_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "eastern_coast_fill_39_2",
+      "roomId": "eastern_coast_fill_38_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_39_2.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_fill_39_2",
@@ -12692,14 +12666,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/eastern_coast_fill_39_2.png"
+      "assetPath": "client/public/images/rooms/images/rooms/eastern_coast_fill_39_2.png"
     },
     {
       "roomId": "eastern_coast_fill_39_2",
       "zoneId": "eastern_coast",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "eastern_coast_fill_39_2",
+      "zoneId": "eastern_coast",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "eastern_coast_pearl_bed",
