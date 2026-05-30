@@ -20,10 +20,11 @@ export function getNaturalResourceDelta(char: Pick<Character, 'resource' | 'maxR
 }
 
 export function getNaturalMountFatigueDelta(
-  char: Pick<Character, 'activeMountId' | 'mountFatigue' | 'equipment'>,
+  char: Pick<Character, 'activeMountId' | 'mountFatigue' | 'equipment' | 'mounted'>,
 ): number {
   const current = Math.max(0, char.mountFatigue ?? 0);
   if (!char.activeMountId || current <= 0) return 0;
+  if (char.mounted) return 0;
 
   const mount = getMountDef(char.activeMountId);
   const saddleId = char.equipment.saddle ?? null;
@@ -34,16 +35,14 @@ export function getNaturalMountFatigueDelta(
 }
 
 export function applyHpRecovery(char: Character, amount: number, combatant?: CombatantState): number {
-  const currentHp = combatant?.hp ?? char.hp;
-  const maxHp = combatant?.maxHp ?? char.maxHp;
-  const healed = Math.min(amount, Math.max(0, maxHp - currentHp));
-  const nextHp = Math.min(maxHp, currentHp + amount);
-
   if (combatant) {
-    combatant.hp = nextHp;
+    const combatHealed = Math.min(amount, Math.max(0, combatant.maxHp - combatant.hp));
+    combatant.hp = Math.min(combatant.maxHp, combatant.hp + amount);
+    char.hp = Math.min(char.maxHp, combatant.hp);
+    return combatHealed;
   }
-  char.hp = Math.min(char.maxHp, nextHp);
-
+  const healed = Math.min(amount, Math.max(0, char.maxHp - char.hp));
+  char.hp = Math.min(char.maxHp, char.hp + amount);
   return healed;
 }
 

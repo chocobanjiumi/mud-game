@@ -79,13 +79,9 @@ export function getElementModifier(attackElement: ElementType, defenseElement: E
   // 反向（被剋）
   if (triangle[defenseElement] === attackElement) return 0.7;
 
-  // 光 ←→ 暗
-  if (
-    (attackElement === 'light' && defenseElement === 'dark') ||
-    (attackElement === 'dark' && defenseElement === 'light')
-  ) {
-    return 1.25;
-  }
+  // 光 ←→ 暗（互相剋制，無抗性方向 — 設計意圖：雙方都因屬性對立獲得加成）
+  if (attackElement === 'light' && defenseElement === 'dark') return 1.25;
+  if (attackElement === 'dark' && defenseElement === 'light') return 1.25;
 
   return 1.0;
 }
@@ -164,7 +160,8 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
 
   // ── 治療技能特殊處理 ─────────────────────────────────
   if (isHealing) {
-    const baseHeal = attacker.matk * multiplier;
+    const safeMultiplier = Math.max(0, multiplier);
+    const baseHeal = attacker.matk * safeMultiplier;
     result.healing = Math.max(1, Math.floor(baseHeal));
     result.effects = [...effects];
     return result;
@@ -200,18 +197,21 @@ export function calculateDamage(input: DamageCalcInput): DamageResult {
 
   baseDmg = Math.max(1, baseDmg); // 最少 1 點傷害
 
-  // ── 暴擊判定 ──────────────────────────────────────────
-  const baseCritRate = calcCritRate(attacker.dex, attacker.luk);
-  const critRate = Math.max(0, Math.min(80, baseCritRate + (attacker.critRate - baseCritRate)));
-  if (rollChance(critRate)) {
-    result.isCrit = true;
-    baseDmg = baseDmg * (attacker.critDamage / 100);
-  }
+  // pure damage 不吃暴擊和屬性加成 (L-4)
+  if (damageType !== 'pure') {
+    // ── 暴擊判定 ──────────────────────────────────────────
+    const baseCritRate = calcCritRate(attacker.dex, attacker.luk);
+    const critRate = Math.max(0, Math.min(80, baseCritRate + (attacker.critRate - baseCritRate)));
+    if (rollChance(critRate)) {
+      result.isCrit = true;
+      baseDmg = baseDmg * (attacker.critDamage / 100);
+    }
 
-  // ── 屬性相剋 ─────────────────────────────────────────
-  const elemMod = getElementModifier(element, targetElement);
-  result.elementBonus = elemMod - 1.0; // 記錄額外倍率
-  baseDmg *= elemMod;
+    // ── 屬性相剋 ─────────────────────────────────────────
+    const elemMod = getElementModifier(element, targetElement);
+    result.elementBonus = elemMod - 1.0;
+    baseDmg *= elemMod;
+  }
 
   // ── 隨機浮動 (±5%) ───────────────────────────────────
   const variance = 0.95 + Math.random() * 0.1;
@@ -301,8 +301,7 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
 
     // Accumulate stats
     if (baseStats.atk) {
-      const total = baseStats.atk + (enhBonus.atk ?? 0);
-      const value = isWeapon ? Math.floor(total * rarityMult) : total;
+      const value = isWeapon ? Math.floor(baseStats.atk * rarityMult) + (enhBonus.atk ?? 0) : baseStats.atk + (enhBonus.atk ?? 0);
       result.weaponAtk += value;
       if (isWeapon) {
         const slot = resolveEquipSlotForItem(def);
@@ -314,8 +313,7 @@ export function getEquipmentStats(character: Character): EquipmentBonusStats {
       }
     }
     if (baseStats.matk) {
-      const total = baseStats.matk + (enhBonus.matk ?? 0);
-      const value = isWeapon ? Math.floor(total * rarityMult) : total;
+      const value = isWeapon ? Math.floor(baseStats.matk * rarityMult) + (enhBonus.matk ?? 0) : baseStats.matk + (enhBonus.matk ?? 0);
       result.weaponMatk += value;
       result.spellWeaponMatk += value;
     }

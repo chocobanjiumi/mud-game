@@ -616,8 +616,14 @@ export class CombatEngine {
           this.executeMountedGuard(session, action, actor, roundLog);
           break;
         case 'formation': {
+          const formCdKey = `${actor.id}:__formation`;
+          if ((session.skillCooldowns.get(formCdKey) ?? 0) > 0) {
+            roundLog.push(`${actor.name}的陣型切換冷卻中，無法移動。`);
+            break;
+          }
           const newRow = actor.formation === 'front' ? 'back' : 'front';
           actor.formation = newRow;
+          session.skillCooldowns.set(formCdKey, 1);
           roundLog.push(`${actor.name}移動到${newRow === 'front' ? '前排' : '後排'}！`);
           break;
         }
@@ -769,7 +775,7 @@ export class CombatEngine {
     const skillDef = baseSkillDef ? applySkillUpgradeRule(baseSkillDef, action.skillLevel ?? 1) : null;
     if (skillDef && action.skillId && this.getSkillCooldownRemaining(session.id, actor.id, action.skillId) > 0) {
       const remaining = this.getSkillCooldownRemaining(session.id, actor.id, action.skillId);
-      log.push(`${actor.name}的「${skillDef.name}」冷卻中，還需 ${remaining} tick，改為普通攻擊！`);
+      log.push(`${actor.name}的「${skillDef.name}」冷卻中，還需 ${remaining} 回合，改為普通攻擊！`);
       this.executeAttack(session, { ...action, type: 'attack' }, actor, log, results);
       return;
     }
@@ -953,6 +959,7 @@ export class CombatEngine {
           this.consumeNextShotDamageBonus(actor, skillDef, log);
           this.triggerMonsterPhases(session, target, log);
           this.applySkillHitResourceEffects(actor, target, skillDef, log);
+          this.gainResourceOnHit(target, log);
           this.triggerAffixEvents(session, actor, 'on_hit', log, {
             targetHpPercent,
             isFirstHit: session.state.round === 1,
@@ -1453,15 +1460,21 @@ export class CombatEngine {
         action.targetId = this.selectTargetForSkill(session, enemy, preferredSkillId)?.id;
       }
 
-      // Healer 型 AI：隊友 HP 低時優先治療
+      // Healer 型 AI：隊友 HP 低時優先治療 (L-16: 從 def.skills 找治療技能)
       if (instance.def.aiType === 'healer') {
         const injuredAlly = session.state.enemyTeam.find(
           e => !e.isDead && e.hp < e.maxHp * 0.5 && e.id !== enemy.id,
         );
         if (injuredAlly) {
-          action.type = 'skill';
-          action.targetId = injuredAlly.id;
-          action.skillId = 'heal'; // 簡化
+          const healSkillId = instance.def.skills.find(s => {
+            const sd = SKILL_DEFS[s];
+            return sd && (sd.targetType === 'single_ally' || sd.targetType === 'all_allies');
+          }) ?? (SKILL_DEFS['heal'] ? 'heal' : undefined);
+          if (healSkillId) {
+            action.type = 'skill';
+            action.targetId = injuredAlly.id;
+            action.skillId = healSkillId;
+          }
         }
       }
 
@@ -2310,7 +2323,7 @@ export class CombatEngine {
   }
 
   private selectRandomAlive(team: CombatantState[]): CombatantState | undefined {
-    const alive = team.filter(c => !c.isDead);
+    const alive = team.filter(c => !c.isDead && !this.isWaitingToArrive(c));
     if (alive.length === 0) return undefined;
     return alive[Math.floor(Math.random() * alive.length)];
   }
@@ -2379,6 +2392,13 @@ export class CombatEngine {
       damage = Math.max(1, Math.floor(damage * (1 - reduction / 100)));
     }
 
+    // mana_shield 預估 (L-1)
+    const manaShieldPct = this.effectEngine.getEffectValue(target.activeEffects, 'mana_shield');
+    if (manaShieldPct > 0 && target.resourceType === 'mp' && target.resource > 0) {
+      const redirect = Math.min(target.resource, Math.floor(damage * Math.min(80, manaShieldPct) / 100));
+      damage = Math.max(0, damage - redirect);
+    }
+
     // 粗略估計護盾吸收（只讀取護盾總值，不修改）
     let totalShield = 0;
     for (const eff of target.activeEffects) {
@@ -2387,6 +2407,11 @@ export class CombatEngine {
       }
     }
     damage = Math.max(0, damage - totalShield);
+
+    // unyielding 會阻止致死 (L-1)
+    if (this.effectEngine.getEffectValue(target.activeEffects, 'unyielding') > 0) {
+      return false;
+    }
 
     return target.hp - damage <= 0;
   }
@@ -2480,6 +2505,7 @@ export class CombatEngine {
         derived.critDamage += stb.critDamageBonus;
       }
 
+      derived.critDamage = Math.min(400, derived.critDamage);
       derived.dodgeRate += getSurvivalDodgeBonus(combatant.id, combatant.hp, combatant.maxHp);
 
       applyActiveEffectStatModifiers(derived, combatant.activeEffects);

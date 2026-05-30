@@ -126,8 +126,9 @@ export class PvPManager {
       return '你正在發起決鬥，但目標是自己；決鬥未建立，下一步請指定同房間或可見的其他玩家。';
     }
 
-    if (this.pendingDuels.has(targetId)) {
-      return `你正在向 ${targetName} 發起決鬥，但對方已有待處理請求；決鬥未建立，下一步請等待對方接受、拒絕或逾時。`;
+    const existingRequest = this.pendingDuels.get(targetId);
+    if (existingRequest && existingRequest.challengerId === challengerId) {
+      return `你已經向 ${targetName} 發起過決鬥請求，請等待對方回應。`;
     }
 
     const request: DuelRequest = {
