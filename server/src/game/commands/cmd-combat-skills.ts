@@ -24,9 +24,10 @@ import {
   recordLocalScout, resolveCombatTargetId, setPendingHunterMark, normalizeCommandTarget,
 } from './cmd-helpers.js';
 import {
-  cmdAttack, handlePveDefeatForPlayers, processCombatApproachingRound, resetSurvivingCombatMonsters,
+  cmdAttack, processCombatApproachingRound, resetSurvivingCombatMonsters,
   startApproachingCombat, isApproachingToRoom,
 } from './cmd-combat.js';
+import { handlePveDefeatForPlayers } from './cmd-combat-defeat.js';
 
 export function cmdSkillUpgrade(session: WsSession, args: string[]): void {
   const char = getChar(session);
