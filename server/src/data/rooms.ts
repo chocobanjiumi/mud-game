@@ -3108,10 +3108,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'coastal_boardwalk.png',
     imagePrompt: '海邊棧道 in eastern_coast, entrance route room with salt-worn wooden boardwalk, fishing nets, gulls and bright sea wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain sea, clear lantern light',
     description:
-      '木製棧道沿著海岸線延伸，腳下被鹽分侵蝕的木板在每一步踩踏下吱嘎作響。海邊棧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '鹹濕的海風撲面而來夾帶著海藻和魚腥的氣味，遠處的海面波光粼粼，海鷗在浪尖上低掠而過。' +
-      '棧道入口立著一塊被風雨侵蝕的告示牌，上面的紅字警告冒險者注意潮汐變化和近海的海盜活動。' +
-      '棧道欄杆上掛著漁網和曬乾的海星，為這條通往未知海域的道路增添了幾分冒險的氣息。',
+      '海邊棧道沿著海岸線延伸，鹽蝕木板在腳下吱嘎作響，欄杆上掛著漁網、曬乾海星與被風磨白的繩結。北側道路回到城門口，南面木階落向沙灘，東側碼頭燈影引到漁村碼頭。鹹濕海風夾著海藻與魚腥味撲面而來，遠處海面波光破碎，海鷗低掠浪尖。入口告示牌早被風雨沖淡，只剩潮痕與抓痕，讓這條通往東海岸的木道帶著不穩定的海潮警告。',
     exits: [
       {
         direction: 'north',
@@ -3141,10 +3138,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'sandy_beach.png',
     imagePrompt: '沙灘 in eastern_coast, combat beach room with white sand, crab holes, shells, surf foam and hard noon sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain sand, clear lantern light',
     description:
-      '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。沙灘周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '海浪一波又一波地拍打著海岸，留下白色的泡沫和五彩斑斕的貝殼。' +
-      '幾隻巨大的海蟹怪物揮舞著螯鉗在沙灘上橫行，牠們警覺地注視著四周的動靜。' +
-      '遠處的水面偶爾有魚群躍出水面，在陽光下閃過銀色的弧線。',
+      '沙灘鋪著細軟白沙，陽光落下時像碎銀般閃動，海浪一波波推上岸，留下泡沫、彩貝與被沖散的海藻。北面木階接回海邊棧道，南側濕滑岩帶進入潮間帶，東邊白色燈塔立在礁石上。幾隻巨大海蟹橫行沙面，螯鉗在光裡泛著硬殼反光，遠處魚群偶爾躍出水面。沙地上有漁民舊腳印與被拖走的魚簍痕，使這片明亮海岸也藏著潮水退去後的危險。',
     exits: [
       { direction: 'north', targetRoomId: 'coastal_boardwalk', description: '回到棧道' },
       { direction: 'south', targetRoomId: 'tidal_zone', description: '沿海岸往潮間帶走' },
@@ -3171,8 +3165,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'tidal_zone.png',
     imagePrompt: '潮間帶 in eastern_coast, resource combat tidepool room with wet rocks, kelp, barnacles, jellyfish pools and silver tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，。潮間帶周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '半透明的水母怪物在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。北面回沙灘，南側黑洞通往海蝕洞，東面水道連到珊瑚淺灘；玩家可採集貝殼和半寶石，也要看潮位避開水母群。',
+      '潮間帶佈滿濕滑岩石、海藻、藤壺與大小水窪，退潮後的淺池裡漂著半透明水母和細小銀魚。北面可回沙灘，南側黑暗洞口通向海蝕洞，東面水道接到珊瑚淺灘。岩面被潮水磨得發亮，腳邊可見被浪推來的貝殼、半寶石與斷裂魚鉤。潮位在石縫間緩慢回升，水窪彼此連成細線，使這片地帶像海與陸之間短暫露出的呼吸縫。',
     exits: [
       { direction: 'north', targetRoomId: 'sandy_beach', description: '回到沙灘' },
       { direction: 'south', targetRoomId: 'sea_cave', description: '岩壁上有一個黑暗的洞口' },
@@ -3205,9 +3198,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'sea_cave.png',
     imagePrompt: '海蝕洞 in eastern_coast, combat cave room with glowing seaweed, echoing surf, tide pool entrance and blue-green cavern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain cave, clear lantern light',
     description:
-      '海浪長年侵蝕形成的巨大洞穴，洞壁上附著發光的海藻。海蝕洞周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '海水在洞內迴蕩，發出空洞的轟鳴聲。深處的水池中有蛇形的影子在游動。' +
-      '漲潮時洞口會被海水淹沒，需要把握時機。北面退回潮間帶，水池下方可潛入海底洞穴；玩家可 inspect 潮痕判斷安全時間，也能 search 發光海藻根部。',
+      '海蝕洞由長年浪擊掏空而成，洞壁附著發光海藻，藍綠光在濕石上流動，潮聲在深處轟然迴盪。北側洞口回到潮間帶，東面水池下方的暗道連向海底洞穴。洞頂垂下鹽霜和細小貝殼，地面潮痕層層重疊，顯示漲潮時海水會封住低處入口。深池裡偶爾滑過蛇形黑影，發光海藻根部則纏著碎骨與古幣，使洞穴同時像避風處與通往海底的門。',
     exits: [
       { direction: 'north', targetRoomId: 'tidal_zone', description: '回到潮間帶' },
       {
@@ -3240,10 +3231,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'fishing_dock.png',
     imagePrompt: '漁村碼頭 in eastern_coast, town service fishing dock with moored boats, drying nets, tar barrels and gull-filled sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '簡樸的木製碼頭延伸入蔚藍的海面，幾艘漁船停泊在岸邊隨波搖晃，桅杆上的風向標嘎嘎轉動。漁村碼頭周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '漁網曬在木架上散發著陽光和海鹽的氣味，空氣中瀰漫著濃郁的魚腥味和焦油的刺鼻氣息。' +
-      '幾位飽經風霜的漁民蹲在碼頭邊修補漁網，粗糙的手指在繩結間靈活穿梭。' +
-      '海鷗在碼頭上空盤旋鳴叫，偶爾俯衝搶奪漁簍中的小魚。',
+      '漁村碼頭由簡樸木樁伸入蔚藍海面，幾艘漁船停在岸邊隨波搖晃，桅杆風向標嘎嘎轉動。西側棧道回到海邊棧道，南面沿岸石路通往燈塔。曬網木架散著陽光、海鹽和焦油味，漁民修補繩結的動作在海風裡顯得沉穩。碼頭邊堆著魚簍、浮標與被海蟹咬破的舊網，雲影掠過水面時，木板縫下會傳來細碎刮擦聲，像潮水裡還藏著別的動靜。',
     exits: [
       { direction: 'west', targetRoomId: 'coastal_boardwalk', description: '回到海邊棧道' },
       {
@@ -3272,10 +3260,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'lighthouse.png',
     imagePrompt: '燈塔 in eastern_coast, landmark combat lighthouse with white tower, rusted spiral stair, crow nests and sweeping beacon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain tower, clear lantern light',
     description:
-      '矗立在海角的白色燈塔高聳入雲，塔身被數十年的海風侵蝕得斑駁蒼老，卻依然屹立不搖。燈塔周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '塔頂的燈火在夜晚劃破海上的黑暗，為遠方的航行者指引歸途。' +
-      '生鏽的螺旋樓梯沿著塔壁盤旋而上，每一階都發出令人不安的吱嘎聲。' +
-      '烏鴉群在塔頂的殘破圍欄上築巢棲息，海蟹則佔據了塔基周圍被潮水沖刷的礁石。',
+      '燈塔矗立在海角礁石上，白色塔身被多年海風侵蝕出灰斑，仍以塔頂燈火切開海霧。北側沿岸可回漁村碼頭，西面沙路落向沙灘，東側海風石徑接到海崖步道，南方礁階通往珊瑚淺灘。生鏽螺旋樓梯貼著塔壁盤旋，烏鴉在殘破圍欄築巢，塔基周圍則有海蟹鑽過濕石縫。潮聲和燈火一明一暗，使這裡像海岸上仍在堅守的舊眼睛。',
     exits: [
       {
         direction: 'north',
@@ -3309,10 +3294,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'coral_shallows.png',
     imagePrompt: '珊瑚淺灘 in eastern_coast, resource combat shallows with colorful coral, clear water, drifting jellyfish and rippled sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底，陽光在水底投射出流動的光網。珊瑚淺灘周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '各種色彩斑斕的海洋生物在珊瑚叢中穿梭嬉戲，半透明的水母拖著長長的觸手優雅地漂浮。' +
-      '更深的水域中能看到蛇形的影子游動，偶爾掀起一陣令人不安的水流。' +
-      '珊瑚散發出微弱的螢光，為這片海底花園披上了一層夢幻的色彩。',
+      '珊瑚淺灘水色清澈，陽光在水底投成搖晃光網，紅、紫、金色珊瑚在淺流間層層展開。北方礁階回到燈塔，東側沙床連向珍珠床，西面水道退回潮間帶，南方暗流通往沉船殘骸。水母拖著透明觸鬚漂過珊瑚叢，較深處偶爾浮現蛇形陰影，帶起不自然水流。珊瑚枝端散出微弱螢光，讓這片海底花園在美麗之外保有清楚的危險層次。',
     exits: [
       { direction: 'north', targetRoomId: 'lighthouse', description: '回到燈塔' },
       { direction: 'east', targetRoomId: 'eastern_coast_pearl_bed', description: '東側淺水沙床接往珍珠床' },
@@ -3346,9 +3328,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'shipwreck.png',
     imagePrompt: '沉船殘骸 in eastern_coast, elite combat shipwreck room with tilted hull, broken mast, barnacles, pirate shadows and stormy sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain sea, clear lantern light',
     description:
-      '一艘巨大的帆船擱淺在暗礁上，船身傾斜，桅杆斷裂。沉船殘骸周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '船體佈滿了藤壺和海藻，甲板上散落著腐爛的繩索和碎木板。' +
-      '海盜和深海魚人將這裡當作據點，在殘骸間出沒。北面可游回珊瑚淺灘，南側是暗礁，東面有海盜營火；玩家可 search 船艙保險箱和甲板貨箱。',
+      '沉船殘骸斜卡在暗礁邊，船身佈滿藤壺和海藻，斷裂桅杆指向陰沉海面。北側水道回到珊瑚淺灘，南面暗礁浪聲更急，東邊海盜營火在破船板後閃動。甲板散落腐爛繩索、碎木箱與鏽蝕鉤具，船艙裂口裡傳出魚人濕重腳步和海盜低語。船長室的鏽鎖仍掛在門上，殘存航海圖碎片貼在積水裡，使整艘船像一段被海岸反覆啃咬的失敗航程。',
     exits: [
       { direction: 'north', targetRoomId: 'coral_shallows', description: '游回珊瑚淺灘' },
       {
@@ -3388,10 +3368,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'cliff_path.png',
     imagePrompt: '海崖步道 in eastern_coast, dangerous route cliff path with mossy rock wall, crab holes, strong wind and crashing waves below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain wall, clear lantern light',
     description:
-      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。海崖步道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '海風在這裡格外強勁，呼嘯著穿過岩石的縫隙發出尖銳的嘯聲，站不穩就有被吹落懸崖的危險。' +
-      '崖壁上密佈著大大小小的洞穴，巨蟹怪物在洞口揮舞著螯鉗威嚇經過的行人。' +
-      '往下望去，白色的浪花在礁石上炸開，濺起的水霧瀰漫在半空中。',
+      '海崖步道沿陡峭海壁蜿蜒而上，窄石路一側貼著佈滿苔蘚的岩壁，另一側直接落向浪花爆裂的深崖。西側海風石徑回到燈塔，北面斷木棧道通往斷裂棧橋，南側潮溝石階下到珍珠床。強風穿過岩縫發出尖銳嘯聲，崖壁洞穴裡有海蟹伸出螯鉗，白色水霧不時被浪頭拋上半空。石面舊繩樁與濕滑苔痕清楚標出步道邊界，讓每一步都帶著貼崖前行的緊張感。',
     exits: [
       { direction: 'west', targetRoomId: 'lighthouse', description: '西側海風石徑回到燈塔' },
       { direction: 'north', targetRoomId: 'eastern_coast_broken_pier', description: '北側斷木棧道通往斷裂棧橋' },
@@ -3418,11 +3395,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'pirate_camp.png',
     imagePrompt: '海盜營地 in eastern_coast, boss combat pirate camp with tents, campfire, stolen crates, black flag and red dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain camp, clear lantern light',
     description:
-      '隱蔽在海灣中的海盜營地，帳篷和篝火散落在岩石之間。海盜營地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '到處堆放著搶來的貨物和空酒桶，海盜旗在風中獵獵作響。' +
-      '武裝的海盜在營地中巡邏，對入侵者毫不留情。西面回沉船殘骸，北側步道通海崖；玩家可 inspect 大帳篷和酒桶，找到海盜船長的藏寶線索。' +
-      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
-      '牆角或地面標記也會指出下一個安全出口。',
+      '海盜營地隱在岩石環抱的海灣中，破帆帳篷、篝火和空酒桶散在濕石之間，黑旗被海風拉得獵獵作響。西側擱淺船板回到沉船殘骸，北面潮溝石階接向珍珠床，東側岩縫藏著海盜藏貨處。搶來的貨箱堆在大帳篷旁，酒桶上刻著補給暗號，武裝海盜在火光外緣巡走。營地地面有新鮮靴印、魚骨和火藥灰，像一處隨時能拔營又隨時能設伏的海岸據點。',
     exits: [
       {
         direction: 'west',
@@ -3453,11 +3426,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'dark_reef.png',
     imagePrompt: '暗礁 in eastern_coast, elite combat reef room with black blade rocks, whirlpools, green fishman eyes and violent foam light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '危險的暗礁區域，尖銳如刀刃的黑色岩石在海面下若隱若現，浪花拍打其上碎成白色的泡沫。暗礁周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '海流在這裡變得湍急而詭譎，漩渦在岩石之間不斷形成又消散，無數船隻在此粉身碎骨。' +
-      '深海魚人和海蛇將這片死亡水域作為狩獵場，牠們在暗礁的陰影中耐心等待著獵物。' +
-      '水下不時閃過詭異的綠色光芒——那是魚人眼睛反射的光。' +
-      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '暗礁區的黑色岩石像刀刃般在海面下若隱若現，浪花拍上去立刻碎成白沫，急流在礁縫間反覆拉扯。北側危險水道回到沉船殘骸，南面水下通道通往海底洞穴。漩渦在岩石間形成又消散，破船鐵片和碎槳卡在礁牙上，深海魚人與海蛇的影子在綠光下游移。水下偶爾閃出魚眼反光，使這片水域像一張由礁石、暗流和伏擊共同張開的網。',
     exits: [
       {
         direction: 'north',
@@ -3495,10 +3464,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'underwater_cave.png',
     imagePrompt: '海底洞穴 in eastern_coast, boss event underwater cave with magic air bubble, blue coral, fishman bone altars and deep ocean glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain cave, clear lantern light',
     description:
-      '深入海底的神秘洞穴，一層閃爍的魔法氣泡包裹著整個空間，維持著勉強可以呼吸的空氣。海底洞穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '洞壁上鑲嵌著發出幽藍光芒的深海珊瑚，將這片海底領域映照得如同異世界的殿堂。' +
-      '四處散落著魚人用骨頭和貝殼堆砌的祭壇和圖騰，散發著令人不安的腥臭氣味。' +
-      '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。上方通回海蝕洞，北面水道接暗礁區；玩家可 inspect 祭壇符號判斷召喚階段，search 貝殼圖騰取得深海寶珠線索，也要確認撤退路。氣泡邊緣偶爾震動，提醒玩家戰鬥拖太久可能失去安全呼吸空間。',
+      '海底洞穴被一層閃爍魔法氣泡包住，內部保留稀薄空氣，洞壁深海珊瑚散出幽藍光芒，把濕石照得像異界殿堂。西側潮池暗道可回海蝕洞，北面急流水道連向暗礁。四周散落魚人以骨頭、貝殼和珊瑚枝堆出的祭壇，腥鹹氣味在氣泡內久久不散。洞穴深處傳來低沉吟唱，氣泡邊緣偶爾震動，像海底壓力正在測試這處短暫安全空間的極限。',
     exits: [
       {
         direction: 'west',
