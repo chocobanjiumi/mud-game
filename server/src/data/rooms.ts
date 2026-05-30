@@ -4325,9 +4325,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'snowfield_entrance.png',
     imagePrompt: '雪原入口 in frozen_wastes, entrance combat snowfield room with frost-covered stone marker, white plain, knife wind and pale blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '踏入北方的那一刻，溫度驟然下降。皚皚白雪覆蓋著一切，寒風如刀割般刺骨。雪原入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
-      '入口處立著一塊石碑，上面的文字被冰霜覆蓋。東面可回暗影森林，北方風雪路徑更深，南邊營火指向雪山營地；玩家可 inspect 石碑霜字確認安全路線。',
+      '雪原入口是北方寒地的第一道白色坡口，溫度在此驟降，皚皚雪面一直鋪到天際。東面暗影森林逐漸退入樹影，北方暴風雪路被白霧遮住，南邊雪山營地有橘色火光，西側積雪隘口被岩壁夾住。入口石碑覆滿冰霜，只露出幾道舊刻痕，周圍有雪狼遠足印、斷旗和被風磨平的車轍。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       {
         direction: 'east',
@@ -4361,11 +4359,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'blizzard_path.png',
     imagePrompt: '暴風雪路 in frozen_wastes, main route combat room with whiteout blizzard, buried stakes, wolf tracks and cold gray light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '呼嘯的暴風雪讓視線降到幾乎為零，每走一步都像是在與風暴搏鬥。暴風雪路周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '冰雪打在臉上如同針刺，體溫在急速流失。' +
-      '隱約能聽到狼群的嚎叫聲在風中迴盪。南面可退回雪原入口，北方冰河裂縫若隱若現，西側雪牆後有冰釣洞標記但風雪封路，需由凍湖進入；玩家可 search 旗桿找補給標記。' +
-      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
-      '牆角或地面標記也會指出下一個安全出口。',
+      '暴風雪路夾在雪原入口與冰河之間，風雪像白牆般橫掃山路，近處旗桿只剩黑色短影。南面雪原入口的石碑很快被雪幕吞沒，北方冰河裂縫在風中忽隱忽現。道路兩側積著被吹歪的木樁、破布旗和凍硬補給箱，雪粒貼著地面疾走，將狼爪與靴印切成斷續線段；風聲一陣高過一陣，讓每個方向都顯得搖晃。',
     exits: [
       { direction: 'south', targetRoomId: 'snowfield_entrance', description: '退回雪原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'glacier', description: '風暴的另一端是冰河', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4391,9 +4385,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'glacier.png',
     imagePrompt: '冰河 in frozen_wastes, resource combat glacier room with blue ice crevasses, frozen fossils, wolf tracks and sharp arctic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '巨大的冰河緩慢地向低處移動，冰面上裂開了深不見底的冰縫。冰河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '冰層中封凍著古代的植物和動物殘骸，宛如天然的博物館。' +
-      '雪狼和冰元素在冰河上遊蕩，對入侵者虎視眈眈。南面回暴風雪路，北方冰面延伸到凍湖，東側冰壁洞口通向冰晶洞穴；玩家可 inspect 冰縫避開薄冰。',
+      '冰河像一條緩慢凝固的藍色巨流，表面裂開深不見底的冰縫，冰層中封著古代植物和獸骨。南面暴風雪路被白幕切開，北方冰面延伸到凍湖，東側冰壁洞口通向冰晶洞穴，西面裂縫落向冰河裂縫。冰面上有雪狼爪痕、冰元素滑過的光帶和被霜封住的舊標桿；遠處冰層擠壓聲低沉，像整條河仍在地下前進。',
     exits: [
       { direction: 'south', targetRoomId: 'blizzard_path', description: '回到暴風雪路', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'frozen_lake', description: '冰河延伸至凍湖', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4421,11 +4413,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_lake.png',
     imagePrompt: '凍湖 in frozen_wastes, resource combat frozen lake room with mirror ice, fish shadows, drifting frost mist and moon-blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '一片廣闊的湖泊被厚厚的冰層封凍，冰面如鏡子般平滑。凍湖周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '冰下隱約可見魚群游動的影子，湖面上飄蕩著冰霧。' +
-      '冰元素在湖面上緩緩遊蕩，守護著這片凍結的領域。南面接冰河，北岸有極光之地，西側冰孔可供採集與釣魚；玩家可 search 冰面裂紋找湖底遺跡線索。' +
-      '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
-      '牆角或地面標記也會指出下一個安全出口。',
+      '凍湖是一片廣闊鏡面，厚冰下隱約有魚群與暗影游動，湖面漂著低低冰霧。南側冰河推來深藍裂紋，北岸極光之地把彩光灑在冰上，西面冰釣洞的木架在霧裡露出輪廓。冰面有細裂、被霜封住的舊漁線和冰元素留下的圓形滑痕，遠處偶爾傳來冰層收縮的悶響；整座湖看似平整，卻處處藏著深水與薄冰。',
     exits: [
       { direction: 'south', targetRoomId: 'glacier', description: '回到冰河', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'aurora_field', description: '湖的北岸有奇異的光芒', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4452,10 +4440,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'mountain_camp.png',
     imagePrompt: '雪山營地 in frozen_wastes, safe service camp with hide tents, orange fire, supply crates, rock shelter and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain camp, clear lantern light',
     description:
-      '一個被巨大岩壁遮擋的避風處，前人在此搭建了由獸皮和木樁構成的簡易營地。雪山營地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '篝火仍在燃燒，噼啪作響的火焰散發出溫暖的橘光，驅散了四周徹骨的寒意。' +
-      '營地裡的木箱中存放著乾肉、藥草和取暖用的毛皮毯子，是雪原中難得的庇護所。' +
-      '岩壁上刻著前人留下的警告和路線標記，記錄著通往雪原深處的危險與機遇。',
+      '雪山營地躲在巨大岩壁背風處，獸皮帳與木樁圍著橘色篝火，火光把雪地照成溫暖小圈。北面雪原入口冷風直灌，東側雪狼巢穴有低沉獸吼，西面廢棄雪橇的斷繩在風裡搖晃。木箱裡放著乾肉、藥草與毛皮毯，岩壁刻著前人留下的路線與警告；營火外幾步便是徹骨寒意，讓這裡成為雪原中少見的庇護點。',
     exits: [
       { direction: 'north', targetRoomId: 'snowfield_entrance', description: '回到雪原入口', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '營地東方傳來狼嚎', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4482,10 +4467,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'crystal_ice_cave.png',
     imagePrompt: '冰晶洞穴 in frozen_wastes, resource combat ice cave with rainbow ice crystals, frozen breath, giant shadows and cold prism light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。冰晶洞穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '洞穴深處的溫度極低，呼出的氣息瞬間凝結成冰霜。' +
-      '冰元素和霜巨人守護著這處天然的冰晶寶庫。西面回冰河，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫可通往高聳冰晶尖塔。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '冰晶洞穴的洞壁由透明晶柱組成，微光在稜面間折射成彩虹碎片，連呼出的白霧都會被染上淡色。西面冰河的冷風灌入洞口，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫延往冰晶尖塔。地上有冰元素滑過的光痕、霜巨人踩碎的晶片和沉在冰層中的古老植物，洞內每次回聲都像從多面晶壁同時傳回。',
     exits: [
       { direction: 'west', targetRoomId: 'glacier', description: '回到冰河' },
       { direction: 'north', targetRoomId: 'ice_castle_gate', description: '洞穴深處通向一座冰封城堡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4512,9 +4494,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'aurora_field.png',
     imagePrompt: '極光之地 in frozen_wastes, landmark combat aurora field with green purple lights, glittering snow, magic waves and yeti silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain field, clear lantern light',
     description:
-      '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。極光之地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '雪地被極光映照得如夢似幻，空氣中充滿了微弱的魔力波動。' +
-      '巨大的雪人在極光下遊蕩，冰河骨亡靈也被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
+      '極光之地鋪展在凍湖北岸，雪面被綠、紫、藍三色光幕反覆照亮，像結了一層會流動的薄晶。南面凍湖的冰霧沿低坡漫來，東方彩光雪脊斜向冰封城堡大門，西側符石環在光幕下逐一發亮。雪地裡散著極光石、雪人深足印與冰河骨亡靈拖出的細痕，空氣有微弱靜電聲；每次光幕垂落，遠處輪廓都會短暫變成幻象。',
     exits: [
       { direction: 'south', targetRoomId: 'frozen_lake', description: '回到凍湖', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ice_castle_gate', description: '東側極光之地沿彩光雪脊斜行，穿過冰晶風口與城堡外坡抵達冰封城堡大門', edgeKind: 'distant_route', edgeNote: '極光之地到冰封城堡大門需沿彩光雪脊與城堡外坡斜行，實際路程長於相鄰一格。' },
@@ -4544,9 +4524,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'wolf_den.png',
     imagePrompt: '雪狼巢穴 in frozen_wastes, elite combat wolf den with bone piles, green eyes, frosted cave mouth and cold blue darkness, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain bone, clear lantern light',
     description:
-      '一個被雪狼群佔據的巨大岩洞，洞口散落著獵物的殘骸和啃碎的骨頭。雪狼巢穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '空氣中瀰漫著野獸的腥臭味，多隻雪狼在洞內警覺地注視著入侵者。' +
-      '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。西面可逃回雪山營地，北側窄洞能聽見雪人石堆回聲但已被冰塊堵住，東面有被拖入深處的獵物痕跡。這裡是低溫區域的精英戰鬥房，玩家可 inspect 骨堆判斷狼群首領位置，search 旅人背包取得一次性補給，但若沒有先清理入口雪狼，撤退路會被堵住。洞頂冰柱會把腳步聲放大，讓狼群更快包圍入侵者；牆邊抓痕也提示可以用火光逼退部分雪狼，爭取重整隊伍的時間。',
+      '雪狼巢穴是一個被狼群占據的岩洞，洞口散落獵物殘骸、啃碎骨頭和帶血皮毛，腥味被冷風壓在低處。西面雪山營地的火光被岩壁遮住，北側窄洞通向雪人石堆的回聲但已被冰塊堵住，東面只剩被拖入深處的獵物痕跡。洞頂冰柱會放大腳步聲，牆邊抓痕和焦黑火把痕顯出狼群曾被火光逼退。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'west', targetRoomId: 'mountain_camp', description: '逃回雪山營地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -4571,9 +4549,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ice_castle_gate.png',
     imagePrompt: '冰封城堡大門 in frozen_wastes, landmark combat ice castle gate with dragon carvings, frost giant statues, blue door light and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ice, clear lantern light',
     description:
-      '一座宏偉的冰封城堡聳立在風雪之中，巨大的冰門上雕刻著龍的紋飾。冰封城堡大門周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '城門前的石階被冰雪覆蓋，兩尊霜巨人雕像守在門口。' +
-      '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。南面退回冰晶洞穴，西側極光之地提供繞行視野，北面鎖住的大門通往冰封王座。玩家可 inspect 龍紋確認開門條件，search 石階找到霜巨人巡邏痕跡，也要小心雕像突然甦醒。這裡是通往 Boss 區的地標門檻，描述清楚提示鑰匙、隊伍與寒冷準備。城牆上的冰燈會依守衛警戒改變亮度，哨塔方向也提供撤退或繞行路線，避免隊伍直接卡在封門前。',
+      '冰封城堡大門聳立在風雪中，巨大冰門刻著龍紋，門縫透出冷冽藍光與低沉龍息。南面冰晶洞穴的晶光退入雪霧，西側彩光雪脊折回極光之地，北面冰門後是王座大廳，東面城牆旁連著結冰哨塔。門前石階被冰雪覆蓋，兩尊霜巨人雕像守在左右，階縫裡有巡邏重靴痕、凍住鑰匙孔和亮度變化的冰燈。',
     exits: [
       { direction: 'south', targetRoomId: 'crystal_ice_cave', description: '退回冰晶洞穴', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'aurora_field', description: '西側冰封城堡大門沿城堡外坡折返，穿過冰晶風口與彩光雪脊回到極光之地', edgeKind: 'distant_route', edgeNote: '冰封城堡大門回極光之地需沿城堡外坡與彩光雪脊折返，實際路程長於相鄰一格。' },
@@ -4602,10 +4578,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ice_throne.png',
     imagePrompt: '冰封王座 in frozen_wastes, boss room with towering ice throne, sleeping ice dragon whelp, crystal walls and royal blue frost light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ice, clear lantern light',
     description:
-      '城堡的最深處是一座宏偉的王座大廳，穹頂高聳入雲。冰封王座周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '冰之王座上沉睡著一隻幼年冰龍，牠的呼吸在空氣中凝結成冰霜。' +
-      '大廳四壁鑲嵌著無數冰晶，映照出冰龍威嚴的身影。' +
-      '這裡是冰封雪原的終極挑戰。南面退回城堡大門，北側王座背後的裂縫通向燃燒荒地，東側冰霧中可感到龍息裂谷震動。玩家可 inspect 王座符文確認冰龍階段，search 霜巨人王的戰旗尋找王冠密室線索，也要準備面對 Boss 與守衛的連續戰鬥。大廳地面有會逐步蔓延的霜紋，提示戰鬥拖延會壓縮站位；牆上冰晶反射出的龍影則能預告下一次吐息方向。',
+      '冰封王座位於城堡最深處，穹頂高聳，四壁冰晶映出巨大龍影，中央王座覆著層層霜紋。南面冰封城堡大門仍有藍光回照，北側王座背後裂縫通向魔族邊境，東方冰霧裡能感到龍息裂谷震動。王座上沉睡的幼年冰龍呼吸成霜，地面霜紋沿階梯緩慢蔓延；牆上碎晶會提前折出下一道吐息方向。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'south', targetRoomId: 'ice_castle_gate', description: '退回城堡大門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -4639,7 +4612,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_snowdrift_pass.png',
     imagePrompt: '積雪隘口 in frozen_wastes, main route combat pass with high snowdrifts, buried trail stakes, wolf tracks and cold overcast light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain trail, clear lantern light',
     description:
-      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。旅人可 觀察 路標判斷安全路線，搜索 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '積雪隘口位於雪原入口西側，高高積雪把岩壁擠成狹長通道，半埋路標只露出冰冷鐵環。東面回到雪原入口，北側可接暴風雪路外緣，南面雪坡通往廢棄雪橇。雪粒打在岩壁上發出沙沙聲，雪堆裡露出被埋補給箱、斷木杖和雪狼追擊留下的爪痕；窄道越往內越暗，像被風雪慢慢壓低。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '北側積雪隘口沿半埋路標上行，穿過雪牆缺口與狼蹄痕抵達暴風雪路外緣', edgeKind: 'distant_route', edgeNote: '積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。' },
@@ -4661,7 +4634,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_ice_fishing_hole.png',
     imagePrompt: '冰釣洞 in frozen_wastes, resource room with cut ice hole, fishing line, frost buckets, fish shadows and blue lake light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可聽見暴風雪路的風聲但雪牆封路，西側冰面裂縫只能看見冰河深處藍光，需從冰河入口繞行。旅人可 採集 魚材或 搜索 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '冰釣洞鑿在凍湖西側，圓形冰口邊架著木架、骨針和幾條凍硬釣線，幽藍水光從洞中透出。東面凍湖冰面開闊，南方暴風雪路的風聲隔著雪牆傳來，西側冰面裂縫映著冰河深處藍光。魚簍、破木牌和凍住手套散在洞旁，水下魚影緩慢游動，偶爾有冰元素的輪廓在深處凝聚。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'frozen_lake', description: '回到凍湖冰面' },
     ],
@@ -4681,7 +4654,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frostpine_grove.png',
     imagePrompt: '霜松林 in frozen_wastes, resource combat grove with snow-bent pines, blue needles, wolf tracks and green aurora light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain snow, clear lantern light',
     description:
-      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面通向雪人石堆，西側接雪狼巢穴，北面能聽到風雪深處的回聲。旅人可 採集 霜松木與樹脂，觀察 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若旅人沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源',
+      '霜松林位於雪山營地東北方，霜壓彎的松枝掛著藍綠針葉，極光照過時樹冠會泛出微亮冷色。南面雪山營地有橘色營火，東側雪狼巢穴的腥味從林影裡傳來，北面符石環的光柱在樹隙間閃動。樹根旁滿是狼爪、拖痕、乾枝與霜松樹脂，幾個獵人風鈴被凍在枝上，鈴聲忽遠忽近。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'south', targetRoomId: 'mountain_camp', description: '南側霜松林雪坡繞過倒木與狼爪痕，沿獵人風鈴與營火煙線折回雪山營地', edgeKind: 'distant_route', edgeNote: '霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '東側霜松根道穿過密林陰影與獵物拖痕，沿狼嚎方向抵達雪狼巢穴', edgeKind: 'distant_route', edgeNote: '霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。' },
@@ -4703,7 +4676,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_abandoned_sledge.png',
     imagePrompt: '廢棄雪橇 in frozen_wastes, hidden exploration wrecked sledge with broken runners, scattered crates, frozen blood and low campfire light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。旅人可 搜索 箱子找一次性補給，觀察 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '廢棄雪橇半埋在雪坡下，斷裂滑木從雪裡翹出，翻倒箱子旁凝著黑色凍血。北面積雪隘口被高雪牆夾住，東側雪山營地的岩壁較為避風，南邊坡道連向雪人石堆。雪橇繩索被寒風拉得細響，箱內露出凍硬乾肉、破毛毯和被啃過的皮帶；血痕在雪面上斷斷續續，像襲擊者把貨物拖向更深風雪。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪坡回到積雪隘口' },
       { direction: 'east', targetRoomId: 'mountain_camp', description: '營火光在東側閃動', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4728,7 +4701,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_glacier_crevasse.png',
     imagePrompt: '冰河裂縫 in frozen_wastes, hidden combat crevasse with blue ice walls, rope ladder, frozen fossils and deep shadow light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain ice, clear lantern light',
     description:
-      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側裂壁暗道先接到半埋雪坡下的廢棄雪橇，再沿雪坡回到積雪隘口。旅人可 觀察 冰壁化石找考古線索，搜索 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。冰河裂縫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路',
+      '冰河裂縫從冰河西側撕開，深藍冰壁垂直落下，繩梯被厚霜封在裂縫邊。東面可攀回冰河，北側裂壁暗道通向半埋雪坡與廢棄雪橇。冰壁中封著古代獸骨、破碎器具和暗色植物，裂縫底部傳來空洞回聲；雪粉沿繩梯落入深處，很久都聽不見落地。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
       { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '北側結霜繩梯沿藍冰窄縫上行，先抵達半埋雪坡下的廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4749,7 +4722,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_runestone_circle.png',
     imagePrompt: '符石環 in frozen_wastes, landmark exploration room with ancient rune stones, aurora beams, snow altar and blue violet magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain snow, clear lantern light',
     description:
-      '極光之地西側立著一圈古老符石，冰雪祭壇位於中央，綠紫光柱在符文間緩慢移動，空氣中有細小靜電聲。東面回極光之地，南側霜松林可作撤退路，北面雪坡通向結冰哨塔。旅人可 觀察 符文順序解讀冰之王朝歷史，搜索 祭壇底座取得任務線索，也會吸引雪人和冰元素靠近。每塊符石都刻著不同方向記號，能把凍湖、城堡與哨塔路線串起來；若旅人在極光最亮時調查，還能看到王朝滅亡前的幻象片段。祭壇旁的凍裂刻痕提示需要冰晶材料啟動，適合作為探索任務與傳送解鎖線索和支線入口處之一',
+      '符石環立在極光之地西側，古老石柱圍住中央冰雪祭壇，綠紫光柱在符文間緩慢移動。東面極光雪原開闊，南側霜松林的樹影貼著坡下，北面結冰哨塔露出冰封塔身。每塊符石都刻著不同方向記號，底座有凍裂刻痕、霜封祭灰和微弱靜電聲；極光最亮時，石影會短暫映出王朝覆滅前的行列。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'east', targetRoomId: 'aurora_field', description: '極光路回到極光之地' },
       { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '南側符石環雪坡沿極光刻痕下降，穿過冰霜林隙與斷枝路標回到霜松林深處', edgeKind: 'distant_route', edgeNote: '符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。' },
@@ -4776,7 +4749,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_yeti_cairn.png',
     imagePrompt: '雪人石堆 in frozen_wastes, elite combat room with giant cairns, broken bones, huge footprints and aurora snow haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain snow, clear lantern light',
     description:
-      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通霜松林，東側窄洞可聽見雪狼巢穴回聲但冰壁坍塌，西面可繞回冰晶洞穴。這裡是精英事件房，旅人可 觀察 石堆判斷雪人祭祀路線，搜索 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡',
+      '雪人石堆立在雪坡上，幾座巨石被霜雪黏成粗糙祭堆，石縫裡插著破矛、獸骨和凍住鈴鐺。北面廢棄雪橇的坡道回到車轍，西面霜松林有狼爪與松影，東側窄洞傳來雪狼巢穴的回聲但已被冰塊堵住。巨大足印圍著石堆繞行，陰影裡散著霜骨碎片和破布條，低沉咆哮在風中反覆滾動。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '巨大腳印回到廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_frostpine_grove', description: '雪坡繞回霜松林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4797,7 +4770,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frozen_watchpost.png',
     imagePrompt: '結冰哨塔 in frozen_wastes, elite route watchpost with frozen battlements, cracked horn, frost giant tracks and cold castle light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通冰晶尖塔，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。旅人可 觀察 號角判斷守衛警戒狀態，搜索 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助旅人選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因',
+      '結冰哨塔立在冰封城堡東側，塔身被厚冰包住，城垛上的破裂號角覆滿霜刺。西面城堡大門的藍光沿牆根滲來，南面符石環雪坡上有王朝巡邏標記，遠處冰晶尖塔反射冷光。塔門前留著霜巨人腳印，內部兵器架和結冰地圖半埋在雪下；塔頂視野能同時看見冰堡、極光與龍息裂谷。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
       { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '南側結冰哨塔雪坡沿斷冰橋陰影折返，穿過王朝巡邏標記回到符石環', edgeKind: 'distant_route', edgeNote: '結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。' },
@@ -4821,7 +4794,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_crystal_spire.png',
     imagePrompt: '冰晶尖塔 in frozen_wastes, resource elite spire with towering blue crystals, prism stairs, frost mist and bright cold light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰封王座，北側能望見結冰哨塔但冰橋已斷，東面裂谷中傳來冰龍呼吸卻需從王座裂縫繞行。旅人可 採集 高純冰晶、觀察 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
+      '冰晶尖塔從冰晶洞穴東側升起，藍色晶柱像螺旋階梯般環繞上升，尖端把寒霧切成刺眼白光。西面晶洞入口反射彩虹光，北側遠遠能望見結冰哨塔的殘影，東方裂谷方向傳來低沉龍息。塔身晶面封著氣泡、冰草和細小獸骨，底部散落高純冰晶碎片；當極光掃過時，整座尖塔會把雪原照成短暫的藍色鐘樓。',
     exits: [
       { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -4842,7 +4815,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_dragon_breath_rift.png',
     imagePrompt: '龍息裂谷 in frozen_wastes, boss event rift with frozen breath clouds, blue fissure, dragon claw marks and royal ice light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ice, clear lantern light',
     description:
-      '裂谷兩側冰壁高聳，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面是凍結的荒原通道，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，旅人可 觀察 爪痕判斷冰龍活動階段，搜索 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口',
+      '龍息裂谷劈開冰封王座東側的荒原，兩側冰壁高聳，藍白寒流在裂縫底部翻滾。西面王座方向有黑藍冰霧滲出，北面寒霧裂口通向魔族邊境，南側只能遠望冰晶尖塔折射出的光。裂谷壁布滿巨大爪痕、斷裂鎖鏈與被凍住的鱗片，寒流週期性噴上岩棚，把新雪瞬間凍成硬殼；遠處黑煙預示著下一片土地的惡意。',
     exits: [
       { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {

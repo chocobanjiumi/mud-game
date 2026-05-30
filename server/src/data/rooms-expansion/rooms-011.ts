@@ -808,7 +808,7 @@ blackwood_wolf_den: {
     image: 'blackwood_wolf_den.png',
     imagePrompt: '影狼窩 in blackwood, dark charcoal forest with moving black trees, shadowy undergrowth, hunter marks, spider webs, witch lights and ancient roots, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '影狼窩藏在無月空地東側的黑根坳裡，洞口低矮而濕冷，周圍堆著被啃白的獸骨、焦葉和帶樹脂味的狼毛。西面爪痕可回無月空地，東側獸道通往倒塌小祠，北邊界林路被密根與黑影壓得狹窄。洞壁留下成排爪印，深處偶爾傳來壓低的喘息，連附近骨鈴聲都被吞成悶響；這裡標示著狼群真正的領地，也把西側空地和東側小祠隔成兩種不同危險。',
+      '雪狼巢穴是一個被狼群占據的岩洞，洞口散落獵物殘骸、啃碎骨頭和帶血皮毛，腥味被冷風壓在低處。西面雪山營地的火光被岩壁遮住，北側窄洞通向雪人石堆的回聲但已被冰塊堵住，東面只剩被拖入深處的獵物痕跡。洞頂冰柱會放大腳步聲，牆邊抓痕和焦黑火把痕顯出狼群曾被火光逼退。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       { direction: 'west', targetRoomId: 'blackwood_moonless_glade', description: '爪痕回到無月空地' },
       { direction: 'east', targetRoomId: 'blackwood_fallen_shrine', description: '獸道通往倒塌小祠' },

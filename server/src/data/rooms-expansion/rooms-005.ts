@@ -214,7 +214,7 @@ whispering_valley_wolf_den: {
     image: 'whispering_valley_wolf_den.png',
     imagePrompt: '溪狼巢 in whispering_valley, shallow wolf den under roots beside creek, bones, wet fur tracks and dim green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '瀑布西側的樹根下有一個低矮狼巢，入口堆著魚骨、黑鴉羽毛和濕泥腳印。溪谷野狼比平原狼更安靜，牠們會利用水聲掩蓋接近的腳步。北側狼徑氣味指向石堰，但巢後根洞塌陷，旅人需從巡林哨站小徑抵達石堰。這裡是低等精英戰鬥房，旅人若要安全前往瀑布或隱瀑，最好先處理狼巢，否則牠們會沿溪追擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
+      '雪狼巢穴是一個被狼群占據的岩洞，洞口散落獵物殘骸、啃碎骨頭和帶血皮毛，腥味被冷風壓在低處。西面雪山營地的火光被岩壁遮住，北側窄洞通向雪人石堆的回聲但已被冰塊堵住，東面只剩被拖入深處的獵物痕跡。洞頂冰柱會放大腳步聲，牆邊抓痕和焦黑火把痕顯出狼群曾被火光逼退。近旁霜粉、斷枝與被風磨亮的冰痕持續標出回程方向，也讓周圍危險在白茫茫雪光中保留清楚輪廓。',
     exits: [
       {
         direction: 'east',
