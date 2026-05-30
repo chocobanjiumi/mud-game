@@ -20,7 +20,7 @@ export const STATIC_WORLD_BRIDGE_ROOMS_PART_001: Record<string, RoomDef> = {
     "id": "darkwood_border_trail",
     "name": "暗林邊徑",
     "zone": "dark_forest",
-    "description": "暗林邊徑幾乎被落葉掩埋，東側能聽見暗影森林深處的濕木低響，西側則貼近黑木林幽暗腹地。腐葉與苔蘚氣味壓在樹冠下，這裡是封閉 邊界封閉點，只標示兩片黑林的邊界。暗林邊徑周邊的地面材質、相鄰地貌、邊界標記與回程方向需要清楚呈現，讓隊伍能從北南東西的路徑線索判斷此處是通行、採集、服務、封閉或跨區銜接點。",
+    "description": "暗林邊徑幾乎被厚落葉掩埋，短短苔石邊線在腐葉下若隱若現。東側傳來暗影森林深處的濕木低響，西側黑木林冷樹幹貼得很近，兩邊樹冠在頭頂交疊成灰暗拱面。地面沒有成形道路，只剩被根脊截斷的舊痕、潮濕苔味與腐葉霧。這裡更像兩片黑林互相壓合的縫隙，能辨認邊界，卻看不見可安心穿越的方向。",
     "image": "darkwood_border_trail.png",
     "imagePrompt": "暗林邊徑 darkwood_border_trail in dark_forest 暗影森林, room function border road, buried leaf trail between dark forest and blackwood, east deep dark forest wet wood resonance, west blackwood interior pressing close with colder trunks, terrain fallen leaves, moss smell, overlapping root ridges and sealed two-forest boundary，葉層低處幾乎埋掉小徑，只露出短短苔石邊線，中段東側傳來暗林濕木低響，西側黑木林冷樹幹貼近形成壓迫牆，兩邊都沒有安全路標或正式出口。落葉層要厚到遮住腳印，苔石邊線很快被交疊根脊切斷，樹冠下的冷灰光讓兩片黑林互相壓合，邊界空氣要有潮濕腐葉霧，構圖只標示兩片黑林邊界並呈現封閉 border blocker, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
