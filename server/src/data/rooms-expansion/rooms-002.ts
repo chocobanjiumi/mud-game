@@ -932,9 +932,7 @@ demon_lord_antechamber: {
     image: 'dragon_valley_entrance.png',
     imagePrompt: '龍谷入口 in dragon_valley, secret passage opening into misty dragon valley between winglike mountains, ancient draconic runes, warm wind and distant wings, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain valley, clear lantern light',
     description:
-      '穿過魔王殿背後的秘密通道，眼前豁然開朗。兩座巍峨的山峰如同巨龍的翅膀展開，。龍谷入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '中間的峽谷被雲霧繚繞，空氣中瀰漫著古老而神秘的氣息。' +
-      '入口處的岩壁上刻著龍族的古老文字，警告著所有膽敢踏入的生命。石縫中吹出的熱風帶著硫磺與雨水氣味，和魔王殿的陰冷截然不同。遠處山脊有巨大的影子滑過雲層，地面則散落著新鮮龍鱗與被火焰熔化的黑鐵碎片，說明魔族也曾試圖闖入卻被擊退。這裡是龍谷的安全錨點，也是判斷天候、龍群活動與前進路線的第一處觀察點。岩刻旁還有古老供台，提醒來者必須以敬意通行。',
+      '龍谷入口從魔王殿背後的秘密通道豁然展開，兩座山峰像巨龍雙翼夾住雲霧峽谷，暖風混著硫磺、雨水與鱗片氣味迎面湧來。南側暗道回到魔王殿，北面雲霧小徑進入龍巢小徑，東邊白骨荒原鋪向龍骨原野，西側岩棚傳來拍翼聲。入口岩壁刻著古老龍文，供台上有燒熔黑鐵與新鮮龍鱗，像在宣告魔族曾試圖闖入，卻被山谷自身逐回。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_throne', description: '退回魔王殿' },
       { direction: 'north', targetRoomId: 'dragon_nest_path', description: '踏入雲霧繚繞的峽谷' },
@@ -964,9 +962,7 @@ dragon_nest_path: {
     image: 'dragon_nest_path.png',
     imagePrompt: '龍巢小徑 in dragon_valley, narrow cliff trail with deep dragon claw marks, huge scales, misty walls and flying shadows overhead, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain trail, clear lantern light',
     description:
-      '一條蜿蜒在峭壁之間的狹窄小徑，兩側的岩壁上佈滿了龍爪留下的深深抓痕。龍巢小徑周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '不時有巨大的影子掠過頭頂——那是在天空中盤旋的飛龍。' +
-      '小徑上散落著巨大的鱗片，每一片都比人的手掌還大。岩壁縫隙裡有幼龍磨爪留下的粉末，風吹過時會像金色霧氣一樣飄起。道路時寬時窄，有些地方只能貼著岩面前進，若沒有留意頭頂的影子，很容易被巡弋的龍騎士堵在轉角。',
+      '龍巢小徑蜿蜒在峭壁之間，岩壁上滿是深深龍爪痕，爪溝裡沉著金色石粉，風吹過便像霧一樣飄起。南側小徑退回龍谷入口，北面高崖通向飛龍崖，西側隱蔽洞口連到龍蛋室，東邊石階落向鱗光泉。狹路時寬時窄，有些轉角只能貼著岩面通過，頭頂巨大影子掠過時，散落鱗片與碎石會一同震動，使整條路帶著護巢領地的警戒感。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_valley_entrance', description: '退回龍谷入口' },
       { direction: 'north', targetRoomId: 'wyvern_cliff', description: '小徑通向一處懸崖' },
@@ -995,9 +991,7 @@ wyvern_cliff: {
     image: 'wyvern_cliff.png',
     imagePrompt: '飛龍崖 in dragon_valley, high cliff platform with wyvern nests, rolling clouds below, fierce wind, eggshells and watchful winged beasts, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一處突出於山壁的巨大平台，三面臨崖，下方是萬丈深淵。飛龍崖周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '強勁的山風在崖頂呼嘯，雲層就在腳下翻湧。數隻飛龍在崖邊的巢穴中棲息，' +
-      '牠們銳利的目光警惕地注視著每一個靠近的生物。崖面上有被爪子固定的舊旗幟與破碎鞍具，顯示龍騎士會在此訓練坐騎起降。風勢會突然改變方向，把細石與蛋殼碎片捲向空中；玩家若想通往天空之橋，必須抓準飛龍換巢與風向短暫平穩的時機。平台邊緣刻有龍族風向符，符文閃白時代表即將出現下沉氣流，任何站位錯誤都可能被迫退回小徑。崖底回聲也會暴露行蹤。',
+      '飛龍崖是一處突出山壁的巨大平台，三面臨空，雲層在腳下翻湧，強風把蛋殼碎片和舊旗布捲向高處。南面窄徑回到龍巢小徑，北側風線牽向天空之橋，西邊崖壁裂縫通往龍爪隘口。崖邊巢穴裡停著銳眼飛龍，平台上散落破碎鞍具、龍騎長槍與風向符刻。每陣風向改變都會使崖底回聲翻上來，像整座山崖正在提醒外來腳步已被天空注意。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_nest_path', description: '退回龍巢小徑' },
       { direction: 'north', targetRoomId: 'sky_bridge', description: '崖邊有一座雲中石橋' },
@@ -1025,10 +1019,7 @@ dragon_bone_field: {
     image: 'dragon_bone_field.png',
     imagePrompt: '龍骨原野 in dragon_valley, vast field of colossal dragon skeletons, rib arches, green venom seepage, mist and ancient spirits, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain field, clear lantern light',
     description:
-      '一片被巨大龍骨散佈的荒野，有些骨骸的肋骨如同拱門般高聳，頭骨比房屋還要巨大。龍骨原野周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '這裡是遠古巨龍的安息之地，空氣中殘留著龍族亡魂的低語。' +
-      '腐朽的骨骼中滲出暗綠色的毒液——古龍蛇在骨海中遊蕩。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '龍骨原野鋪滿巨大骨骸，肋骨如拱門高聳，頭骨半埋在霧與碎石中，比屋舍還要龐大。西側骨路回到龍谷入口，北方最大的龍骨指向古龍巢穴。骨縫裡滲出暗綠毒液，風穿過空洞胸腔時發出低語般回音，枯草上還留著幼龍爪印和鱗片碎光。這片原野像遠古巨龍的安息地，也像進入山谷核心前必須穿過的白骨記憶。',
     exits: [
       { direction: 'west', targetRoomId: 'dragon_valley_entrance', description: '回到龍谷入口' },
       { direction: 'north', targetRoomId: 'ancient_dragon_lair', description: '最大的龍骨指向一個洞穴' },
@@ -1057,9 +1048,7 @@ ancient_dragon_lair: {
     image: 'ancient_dragon_lair.png',
     imagePrompt: '古龍巢穴 in dragon_valley, enormous cavern for an ancient dragon, scale crystals on walls, cracked eggshells, dragon teeth and sleeping power, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一個巨大的天然洞穴，穹頂高達數十公尺，足以容納一條成年巨龍。古龍巢穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '洞壁上覆蓋著閃爍的龍鱗結晶，地面散佈著碎裂的蛋殼和龍牙。' +
-      '洞穴深處傳來沉重的呼吸聲，一股令人顫慄的古老力量在此沉睡。洞穴中央的石台被無數爪痕磨得光滑，四周堆著來自不同年代的獻禮：風化的王冠、破裂的魔法盾與刻著龍語誓約的石板。每次呼吸聲響起，牆上的鱗晶便會依序亮起，像是在回應巢穴主人的夢境。巢穴後壁有新近破開的裂痕，露出通往鍛台的龍牙階梯，也暗示古龍並未完全封閉自己的聖域。洞頂還滴落溫熱霧珠。',
+      '古龍巢穴是一座穹頂高達數十公尺的天然巨洞，洞壁覆滿閃爍龍鱗結晶，溫熱霧珠從高處滴落。南面洞口退回龍骨原野，東側封印通道通往龍之寶庫，北方新裂開的龍牙石階升向龍鱗鍛台。地面散著碎蛋殼、古龍牙與刻有龍語誓約的石板，中央石台被無數爪痕磨得光滑。深處沉重呼吸每響一次，牆上鱗晶便依序亮起，像巢穴仍在回應古龍夢境。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_bone_field', description: '退回龍骨原野' },
       { direction: 'east', targetRoomId: 'dragon_hoard', description: '洞穴側面有一條通道', locked: true, keyItemId: 'gold_key' },
@@ -1086,9 +1075,7 @@ dragon_hoard: {
     image: 'dragon_hoard.png',
     imagePrompt: '龍之寶庫 in dragon_valley, mountain of gold coins, gems, crowns and magic weapons under dragon marked wards, dazzling guarded cavern, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain mountain, clear lantern light',
     description:
-      '令人窒息的財富堆積如山——金幣、寶石、魔法武器、王冠和聖物混雜在一起，。龍之寶庫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '形成一座閃閃發光的小丘。這是龍族數千年來從各個王國掠奪並收藏的寶藏。' +
-      '然而，每一枚金幣都被龍的魔力所標記，拿走任何東西都會被追蹤。寶庫頂端並非單純堆放財物，而是依照年代與王國紋章分層排列，像一座由戰利品寫成的歷史塔。牆面有風暴巨龍留下的焦黑爪痕，地板則埋著感應重量的龍語符文，只要光線折射角度改變，守衛就會立刻察覺。寶山後方的石門散發鍛火藍光，但龍語封印已經閉合，需回古龍巢穴走龍牙石階前往鍛台。',
+      '龍之寶庫的財富堆成刺眼山丘，金幣、寶石、王冠、聖物與魔法武器依年代和王國紋章分層堆疊。西側封印門回到古龍巢穴，除此之外只有金光、龍語符文與風暴巨龍留下的焦黑爪痕。寶山表面看似鬆散，地板卻埋著感應重量的細密刻紋，光線一旦偏移便會沿牆面折出警戒藍光。這裡不像普通藏寶室，而像用戰利品寫成的龍族史書。',
     exits: [
       { direction: 'west', targetRoomId: 'ancient_dragon_lair', description: '回到古龍巢穴' },
     ],
@@ -1113,9 +1100,7 @@ sky_bridge: {
     image: 'sky_bridge.png',
     imagePrompt: '天空之橋 in dragon_valley, translucent cloudstone bridge between peaks over abyss, violent winds, storm light in distance, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一座由雲霧凝結而成的半透明石橋，橫跨在兩座山峰之間。天空之橋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '橋下是萬丈深淵，橋面上不時有強風呼嘯而過。' +
-      '遠方的山巔上閃爍著風暴的雷光，那是龍谷最高峰——風暴之巔。橋身內部流動著白銀色氣旋，腳步落下時會浮現短暫的龍語符號，彷彿橋本身正在判斷來者是否有資格通行。左右兩側各有殘破護欄與龍騎士的舊哨位，任何戰鬥都可能被強風推向危險邊緣。',
+      '天空之橋由雲霧凝成半透明雲石，橫跨兩座山峰之間，橋下是無底深淵與翻湧白雲。南側橋根回到飛龍崖，北方雷光引向風暴之巔，東邊火玻璃台泛著紅亮反光，西側雷巢傳來低沉轟鳴。橋身內部流動白銀氣旋，腳步落下時會浮現短暫龍語符號。殘破護欄與舊哨位被強風磨亮，使這座橋像龍谷用來審視通行者的高空脊骨。',
     exits: [
       { direction: 'south', targetRoomId: 'wyvern_cliff', description: '退回飛龍崖' },
       { direction: 'north', targetRoomId: 'storm_peak', description: '穿越風暴前往山巔' },
@@ -1144,9 +1129,7 @@ storm_peak: {
     image: 'storm_peak.png',
     imagePrompt: '風暴之巔 in dragon_valley, highest mountain summit under thunderclouds, ancient dragon altar, spinning lightning orb and storm dragons, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain mountain, clear lantern light',
     description:
-      '龍谷最高的山峰，終年被雷暴雲層籠罩。閃電不斷在雲間穿梭，。風暴之巔周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '雷鳴聲震耳欲聾。山頂的平台上矗立著一座古老的龍族祭壇，' +
-      '祭壇上的雷球不停地旋轉閃爍，散發著令人敬畏的力量。山頂岩面被雷擊燒成黑色玻璃，雨水還未落地就被上升熱流蒸乾。龍族祭司曾在此觀測天空，平台邊緣仍保留著星盤刻度與風向柱。每當雷球轉到北方，通往古龍聖殿的門便會短暫顯形。東西兩側分別能看見觀星棲台與熔火高巢，火光、雷光與星光在峰頂交會，使此處成為龍谷元素力量的核心。錯過時機便只能等待下一輪雷暴。',
+      '風暴之巔終年籠罩雷暴雲，黑色玻璃岩面被反覆雷擊燒得光滑，雨水未落地便被上升熱流蒸乾。南側天空之橋懸在雲下，北面祭壇後方通往古龍聖殿，東側星光階連向龍諭棲台，西邊熱風口指向熔火高巢。峰頂古老龍族祭壇上，雷球不停旋轉，星盤刻度與風向柱在電光中忽明忽暗。雷光、火光與星光在此交會，使山巔成為龍谷元素力量的核心。',
     exits: [
       { direction: 'south', targetRoomId: 'sky_bridge', description: '退回天空之橋' },
       { direction: 'north', targetRoomId: 'elder_dragon_sanctum', description: '祭壇背後有一道通往聖殿的門' },
