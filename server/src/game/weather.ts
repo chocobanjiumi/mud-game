@@ -1,6 +1,9 @@
 // 天氣與日夜循環系統
 
 import type { ElementType } from '@game/shared';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Weather');
 
 // ============================================================
 //  天氣類型
@@ -98,7 +101,7 @@ export class WeatherManager {
       this.advanceTime();
     }, TIME_INTERVAL_MS);
 
-    console.log(`[Weather] 初始化完成 - 天氣: ${WEATHER_NAMES[this.currentWeather]}, 時段: ${TIME_NAMES[this.currentTime]}`);
+    logger.info(`[Weather] 初始化完成 - 天氣: ${WEATHER_NAMES[this.currentWeather]}, 時段: ${TIME_NAMES[this.currentTime]}`);
   }
 
   /** 關閉計時器 */
@@ -301,14 +304,14 @@ export class WeatherManager {
     // 隨機選擇新天氣（可能與當前相同）
     this.currentWeather = WEATHER_TYPES[Math.floor(Math.random() * WEATHER_TYPES.length)];
     if (prev !== this.currentWeather) {
-      console.log(`[Weather] 天氣變化：${WEATHER_NAMES[prev]} → ${WEATHER_NAMES[this.currentWeather]}`);
+      logger.info(`[Weather] 天氣變化：${WEATHER_NAMES[prev]} → ${WEATHER_NAMES[this.currentWeather]}`);
     }
   }
 
   private advanceTime(): void {
     const idx = TIME_CYCLE.indexOf(this.currentTime);
     this.currentTime = TIME_CYCLE[(idx + 1) % TIME_CYCLE.length];
-    console.log(`[Weather] 時段變化：${TIME_NAMES[this.currentTime]}`);
+    logger.info(`[Weather] 時段變化：${TIME_NAMES[this.currentTime]}`);
   }
 
   private elementChinese(elem: ElementType): string {

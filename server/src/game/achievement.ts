@@ -2,6 +2,9 @@
 // 50 個成就，分為 5 大類別：戰鬥、探索、社交、收集、製作
 
 import { getDb } from '../db/schema.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Achievement');
 
 // ============================================================
 //  型別定義
@@ -290,7 +293,7 @@ export class AchievementManager {
     const colNames = new Set(cols.map(c => c.name));
     if (!colNames.has('equipped_title')) {
       db.exec(`ALTER TABLE characters ADD COLUMN equipped_title TEXT`);
-      console.log('[Achievement] Migration: 已新增 equipped_title 欄位');
+      logger.info('[Achievement] Migration: 已新增 equipped_title 欄位');
     }
   }
 

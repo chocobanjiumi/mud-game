@@ -1,6 +1,7 @@
 // 中央遊戲狀態 — 所有子系統的單例管理
 // 提供便利的全域存取函式供 commands.ts / protocol.ts / agent.ts 使用
 
+import { createModuleLogger } from '../logger.js';
 import { CombatEngine } from './combat.js';
 import { WorldManager } from './world.js';
 import { ClassChangeManager } from './class-change.js';
@@ -61,6 +62,7 @@ import { applyHpRecovery, getNaturalMountFatigueDelta, getNaturalResourceDelta }
 import { applyInventoryHandlingBonus } from './passive-skill-effects.js';
 import { addRewardItemToInventory, formatRewardEntry } from './item-instance-rewards.js';
 
+const logger = createModuleLogger('Game');
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
 const NATURAL_RECOVERY_RATE = 0.02;
@@ -414,7 +416,7 @@ export function initGameSystems(): void {
     },
   });
 
-  console.log('[Game] 所有遊戲子系統初始化完成');
+  logger.info('[Game] 所有遊戲子系統初始化完成');
 }
 
 // ============================================================

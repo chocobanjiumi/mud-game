@@ -4,6 +4,9 @@ import { randomUUID } from 'crypto';
 import { getDb } from '../db/schema.js';
 import { sendToCharacter } from '../ws/handler.js';
 import type { KingdomRank, DiplomacyRelation, KingdomDiplomacy } from '@game/shared';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('DiplomacyManager');
 
 // ============================================================
 //  常數（可配置）
@@ -52,7 +55,7 @@ export class DiplomacyManager {
 
   init(): void {
     ensureDiplomacyTables();
-    console.log('[DiplomacyManager] 外交系統初始化完成');
+    logger.info('[DiplomacyManager] 外交系統初始化完成');
   }
 
   // ──────────────────────────────────────────────────────────

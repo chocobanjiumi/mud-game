@@ -4,6 +4,9 @@ import Database from 'better-sqlite3';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('DB');
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, '..', '..', 'data', 'game.db');
@@ -436,7 +439,7 @@ export function initDb(): Database.Database {
     const invColumnNames = new Set(invColumns.map(c => c.name));
     if (!invColumnNames.has('enhancement_level')) {
       db.exec(`ALTER TABLE inventory ADD COLUMN enhancement_level INTEGER DEFAULT 0`);
-      console.log('[DB] Migration: 已新增 enhancement_level 欄位至 inventory 表');
+      logger.info('[DB] Migration: 已新增 enhancement_level 欄位至 inventory 表');
     }
   }
 
@@ -479,7 +482,7 @@ export function initDb(): Database.Database {
       WHERE class_id = 'adventurer';
     `);
 
-    console.log('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
+    logger.info('[DB] Migration: 已新增 resource, max_resource, resource_type 欄位，並依職業設定初始值');
   }
 
   db.exec(`
@@ -509,7 +512,7 @@ export function initDb(): Database.Database {
     const charColumnNames = new Set(charColumns.map(c => c.name));
     if (!charColumnNames.has('marked_location')) {
       db.exec(`ALTER TABLE characters ADD COLUMN marked_location TEXT`);
-      console.log('[DB] Migration: 已新增 marked_location 欄位至 characters 表');
+      logger.info('[DB] Migration: 已新增 marked_location 欄位至 characters 表');
     }
   }
 
@@ -534,7 +537,7 @@ export function initDb(): Database.Database {
     const invColumnNames = new Set(invColumns.map(c => c.name));
     if (!invColumnNames.has('item_instance_id')) {
       db.exec(`ALTER TABLE inventory ADD COLUMN item_instance_id TEXT`);
-      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 inventory 表');
+      logger.info('[DB] Migration: 已新增 item_instance_id 欄位至 inventory 表');
     }
     db.exec(`
       CREATE TABLE IF NOT EXISTS item_instances (
@@ -555,24 +558,24 @@ export function initDb(): Database.Database {
     const instanceColumns = db.prepare("PRAGMA table_info(item_instances)").all() as { name: string }[];
     if (!new Set(instanceColumns.map(c => c.name)).has('locked_affixes_json')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN locked_affixes_json TEXT DEFAULT '[]'`);
-      console.log('[DB] Migration: 已新增 locked_affixes_json 欄位至 item_instances 表');
+      logger.info('[DB] Migration: 已新增 locked_affixes_json 欄位至 item_instances 表');
     }
     const instanceColumnNames = new Set((db.prepare("PRAGMA table_info(item_instances)").all() as { name: string }[]).map(c => c.name));
     if (!instanceColumnNames.has('item_level')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN item_level INTEGER DEFAULT 1`);
-      console.log('[DB] Migration: 已新增 item_level 欄位至 item_instances 表');
+      logger.info('[DB] Migration: 已新增 item_level 欄位至 item_instances 表');
     }
     if (!instanceColumnNames.has('dropped_by')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN dropped_by TEXT`);
-      console.log('[DB] Migration: 已新增 dropped_by 欄位至 item_instances 表');
+      logger.info('[DB] Migration: 已新增 dropped_by 欄位至 item_instances 表');
     }
     if (!instanceColumnNames.has('dropped_in_zone')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN dropped_in_zone TEXT`);
-      console.log('[DB] Migration: 已新增 dropped_in_zone 欄位至 item_instances 表');
+      logger.info('[DB] Migration: 已新增 dropped_in_zone 欄位至 item_instances 表');
     }
     if (!instanceColumnNames.has('source_tags_json')) {
       db.exec(`ALTER TABLE item_instances ADD COLUMN source_tags_json TEXT DEFAULT '[]'`);
-      console.log('[DB] Migration: 已新增 source_tags_json 欄位至 item_instances 表');
+      logger.info('[DB] Migration: 已新增 source_tags_json 欄位至 item_instances 表');
     }
   }
 
@@ -581,17 +584,17 @@ export function initDb(): Database.Database {
     const auctionColumns = db.prepare("PRAGMA table_info(auctions)").all() as { name: string }[];
     if (auctionColumns.length > 0 && !new Set(auctionColumns.map(c => c.name)).has('item_instance_id')) {
       db.exec(`ALTER TABLE auctions ADD COLUMN item_instance_id TEXT`);
-      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 auctions 表');
+      logger.info('[DB] Migration: 已新增 item_instance_id 欄位至 auctions 表');
     }
 
     const marketColumns = db.prepare("PRAGMA table_info(market_orders)").all() as { name: string }[];
     if (marketColumns.length > 0 && !new Set(marketColumns.map(c => c.name)).has('item_instance_id')) {
       db.exec(`ALTER TABLE market_orders ADD COLUMN item_instance_id TEXT`);
-      console.log('[DB] Migration: 已新增 item_instance_id 欄位至 market_orders 表');
+      logger.info('[DB] Migration: 已新增 item_instance_id 欄位至 market_orders 表');
     }
   }
 
-  console.log('[DB] 資料庫初始化完成:', DB_PATH);
+  logger.info('[DB] 資料庫初始化完成:', DB_PATH);
   return db;
 }
 

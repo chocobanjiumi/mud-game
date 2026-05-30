@@ -7,6 +7,9 @@ import { getCharacterById, saveCharacter } from '../db/queries.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
 import { addRewardItemToInventory } from './item-instance-rewards.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('WorldEvent');
 
 // ============================================================
 //  型別定義
@@ -203,7 +206,7 @@ export class WorldEventManager {
     }, delay);
 
     const nextTime = new Date(nextSpawn).toLocaleTimeString('zh-TW');
-    console.log(`[WorldEvent] 下一個世界 BOSS「${WORLD_BOSS_DEFS[bossId].name}」將在 ${nextTime} 刷新`);
+    logger.info(`[WorldEvent] 下一個世界 BOSS「${WORLD_BOSS_DEFS[bossId].name}」將在 ${nextTime} 刷新`);
   }
 
   // ──────────────────────────────────────────────────────────
@@ -245,7 +248,7 @@ export class WorldEventManager {
       );
     }
 
-    console.log(`[WorldEvent] 世界 BOSS「${def.name}」已刷新在 ${def.spawnRoom}`);
+    logger.info(`[WorldEvent] 世界 BOSS「${def.name}」已刷新在 ${def.spawnRoom}`);
 
     // 排程下一次
     this.scheduleNextEvent();

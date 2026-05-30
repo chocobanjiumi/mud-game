@@ -13,6 +13,9 @@ import { combat, partyMgr, world, getPlayerCombatId } from '../game/state.js';
 import { validateToken, getAuthSession, getCachedToken } from '../auth/arinova.js';
 import { CurrencyManager, PREMIUM_ITEMS } from '../economy/currency.js';
 import { CLASS_DEFS, FAITH_DEFS, GENDER_DEFS, ITEM_DEFS, RACE_DEFS, isFaithId, isGenderId, isRaceId } from '@game/shared';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Auth');
 
 /** Shared CurrencyManager instance */
 const currencyManager = new CurrencyManager();
@@ -128,7 +131,7 @@ export function handleMessage(session: WsSession, raw: string): void {
 
     case 'login':
       handleLogin(session, message.payload).catch((err) => {
-        console.error(`[WS] 登入處理錯誤 (${session.sessionId}):`, err);
+        logger.error(`[WS] 登入處理錯誤 (${session.sessionId}):`, err);
         sendError(session.sessionId, '登入處理失敗，請稍後再試。');
       });
       break;
@@ -151,14 +154,14 @@ export function handleMessage(session: WsSession, raw: string): void {
 
     case 'open_shop':
       handleOpenShop(session).catch((err) => {
-        console.error(`[WS] 開啟商店錯誤 (${session.sessionId}):`, err);
+        logger.error(`[WS] 開啟商店錯誤 (${session.sessionId}):`, err);
         sendError(session.sessionId, '無法開啟商店。');
       });
       break;
 
     case 'purchase':
       handlePurchase(session, message.payload).catch((err) => {
-        console.error(`[WS] 購買錯誤 (${session.sessionId}):`, err);
+        logger.error(`[WS] 購買錯誤 (${session.sessionId}):`, err);
         sendToSession(session.sessionId, 'purchase_result', {
           success: false,
           message: '購買處理失敗，請稍後再試。',
@@ -204,7 +207,7 @@ async function handleLogin(
 
     verifiedUserId = arinovaUser.id;
     session.userId = verifiedUserId;
-    console.log(`[Auth] Token 驗證成功: ${arinovaUser.name} (${arinovaUser.id})`);
+    logger.info(`[Auth] Token 驗證成功: ${arinovaUser.name} (${arinovaUser.id})`);
 
     // Send token balance to client if available
     try {
@@ -235,7 +238,7 @@ async function handleLogin(
 
     verifiedUserId = `local:${normalizedUserId}`;
     session.userId = verifiedUserId;
-    console.log(`[Auth] 本地測試登入: ${rawUserId} -> ${verifiedUserId}`);
+    logger.info(`[Auth] 本地測試登入: ${rawUserId} -> ${verifiedUserId}`);
   }
 
   // 如果指定了角色 ID，直接載入

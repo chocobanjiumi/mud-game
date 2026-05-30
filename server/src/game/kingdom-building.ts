@@ -11,6 +11,9 @@ import {
   getMemberKingdom, getAllKingdoms,
 } from '../db/queries.js';
 import { KingdomManager } from './kingdom.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('BuildingManager');
 
 // ============================================================
 //  常數
@@ -634,6 +637,6 @@ export class BuildingManager {
         }
       }
     }
-    console.log(`[BuildingManager] 已從資料庫載入 ${this.dynamicRooms.size} 個王國房間。`);
+    logger.info(`[BuildingManager] 已從資料庫載入 ${this.dynamicRooms.size} 個王國房間。`);
   }
 }

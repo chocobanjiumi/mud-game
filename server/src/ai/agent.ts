@@ -5,6 +5,9 @@ import type { Character, CombatantState, CombatState } from '@game/shared';
 import { buildExplorePrompt, buildCombatPrompt, buildGuardianSystemPrompt } from './prompt.js';
 import { parseAiResponse } from './parser.js';
 import { guardianMgr } from '../game/state.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('AI');
 
 // ============================================================
 //  型別
@@ -92,7 +95,7 @@ export class AgentController {
 
     this.apiEndpoint = baseUrl || 'https://api.chat-staging.arinova.ai';
     this.sdkInitialized = true;
-    console.log('[AI] Arinova Agent API 初始化完成');
+    logger.info('[AI] Arinova Agent API 初始化完成');
   }
 
   private apiEndpoint = 'https://api.chat-staging.arinova.ai';
@@ -126,7 +129,7 @@ export class AgentController {
     this.agents.set(characterId, entry);
 
     const char = this.deps?.getCharacter(characterId);
-    console.log(`[AI] Agent 註冊: ${char?.name ?? characterId} (agentId: ${agentId})`);
+    logger.info(`[AI] Agent 註冊: ${char?.name ?? characterId} (agentId: ${agentId})`);
   }
 
   /** 移除 Agent */
@@ -135,7 +138,7 @@ export class AgentController {
     if (entry) {
       entry.isActive = false;
       this.agents.delete(characterId);
-      console.log(`[AI] Agent 移除: ${characterId}`);
+      logger.info(`[AI] Agent 移除: ${characterId}`);
     }
   }
 
@@ -147,7 +150,7 @@ export class AgentController {
     entry.accessToken = newAccessToken;
     entry.isActive = true;
     entry.errorCount = 0;
-    console.log(`[AI] Agent 重新連線: ${characterId}`);
+    logger.info(`[AI] Agent 重新連線: ${characterId}`);
     return true;
   }
 
@@ -161,11 +164,11 @@ export class AgentController {
 
     this.loopTimer = setInterval(() => {
       this.tick().catch(err => {
-        console.error('[AI] Agent 主循環錯誤:', err);
+        logger.error('[AI] Agent 主循環錯誤:', err);
       });
     }, TICK_INTERVAL);
 
-    console.log('[AI] Agent 主循環已啟動');
+    logger.info('[AI] Agent 主循環已啟動');
   }
 
   /** 停止主循環 */
@@ -173,7 +176,7 @@ export class AgentController {
     if (this.loopTimer) {
       clearInterval(this.loopTimer);
       this.loopTimer = null;
-      console.log('[AI] Agent 主循環已停止');
+      logger.info('[AI] Agent 主循環已停止');
     }
   }
 
@@ -205,12 +208,12 @@ export class AgentController {
         }
       } catch (err) {
         agent.errorCount++;
-        console.error(`[AI] Agent 行動錯誤 (${characterId}, 第 ${agent.errorCount} 次):`, err);
+        logger.error(`[AI] Agent 行動錯誤 (${characterId}, 第 ${agent.errorCount} 次):`, err);
 
         // 超過錯誤上限，暫停 Agent
         if (agent.errorCount >= MAX_ERROR_COUNT) {
           agent.isActive = false;
-          console.warn(`[AI] Agent 因連續錯誤暫停: ${characterId}`);
+          logger.warn(`[AI] Agent 因連續錯誤暫停: ${characterId}`);
         }
 
         // Fallback 行為
@@ -336,7 +339,7 @@ export class AgentController {
       const data = await res.json() as { response: string };
       return data.response;
     } catch (err) {
-      console.error(`[AI] Arinova API 呼叫失敗 (${agent.characterId}):`, err);
+      logger.error(`[AI] Arinova API 呼叫失敗 (${agent.characterId}):`, err);
       throw err;
     }
   }

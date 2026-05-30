@@ -14,6 +14,9 @@ import { expRequiredForLevel } from './player.js';
 import { cancelPvpDangerEvacCasts } from './pvp-evac-cast.js';
 import { recordRecentPvpDamageForCombat } from './pvp-travel-lock.js';
 import { questMgr, classQuest2Mgr, world } from './state.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('PvP');
 
 // ============================================================
 //  型別定義
@@ -458,7 +461,7 @@ export class PvPManager {
       updateLeaderboard(winnerId, 'pvp', this.getElo(winnerId));
       updateLeaderboard(loserId, 'pvp', this.getElo(loserId));
     } catch (e) {
-      console.error('[PvP] DB record/leaderboard write failed:', e);
+      logger.error('[PvP] DB record/leaderboard write failed:', e);
     }
 
     // 任務進度：PvP 勝利

@@ -9,6 +9,9 @@ import type {
   KingdomRank, WarStatus, BountyStatus, KingdomWar,
   KingdomBounty, KingdomMember,
 } from '@game/shared';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('WarManager');
 
 // ============================================================
 //  常數（可配置）
@@ -87,7 +90,7 @@ export class WarManager {
 
   init(): void {
     ensureWarTables();
-    console.log('[WarManager] 戰爭系統初始化完成');
+    logger.info('[WarManager] 戰爭系統初始化完成');
   }
 
   // ──────────────────────────────────────────────────────────

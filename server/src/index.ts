@@ -20,6 +20,9 @@ import {
   type ZoneMapScopeDecision,
 } from './data/world-map2-plan.js';
 import type { Direction } from '@game/shared';
+import { createModuleLogger } from './logger.js';
+
+const logger = createModuleLogger('Server');
 
 const PORT = parseInt(process.env.PORT ?? '3701', 10);
 const HOST = process.env.HOST ?? '0.0.0.0';
@@ -29,11 +32,11 @@ const agentController = new AgentController();
 
 async function main(): Promise<void> {
   // 初始化資料庫
-  console.log('[Server] 正在初始化資料庫...');
+  logger.info('[Server] 正在初始化資料庫...');
   initDb();
 
   // 初始化遊戲子系統
-  console.log('[Server] 正在初始化遊戲子系統...');
+  logger.info('[Server] 正在初始化遊戲子系統...');
   initGameSystems();
 
   // 設定技能樹管理器
@@ -112,7 +115,7 @@ async function main(): Promise<void> {
   if (arinovaAppId) {
     agentController.initSdk(arinovaAppId, process.env.ARINOVA_BASE_URL);
     agentController.startLoop();
-    console.log('[Server] AI Agent 系統已啟動');
+    logger.info('[Server] AI Agent 系統已啟動');
   }
 
   // 建立 Fastify 伺服器
@@ -159,7 +162,7 @@ async function main(): Promise<void> {
           const data = raw.toString('utf-8');
           handleMessage(session, data);
         } catch (err) {
-          console.error(`[WS] 訊息處理錯誤 (${session.sessionId}):`, err);
+          logger.error(`[WS] 訊息處理錯誤 (${session.sessionId}):`, err);
         }
       });
 
@@ -180,7 +183,7 @@ async function main(): Promise<void> {
       });
 
       socket.on('error', (err) => {
-        console.error(`[WS] 連線錯誤 (${session.sessionId}):`, err);
+        logger.error(`[WS] 連線錯誤 (${session.sessionId}):`, err);
         if (session.characterId) {
           autoBattleMgr.cleanup(session.characterId);
           dungeonMatchMgr.leaveQueue(session.characterId);
@@ -199,23 +202,23 @@ async function main(): Promise<void> {
   // 啟動伺服器
   try {
     await app.listen({ port: PORT, host: HOST });
-    console.log(`[Server] 遊戲伺服器啟動於 http://${HOST}:${PORT}`);
-    console.log(`[Server] WebSocket 端點: ws://${HOST}:${PORT}/ws`);
-    console.log(`[Server] 健康檢查: http://${HOST}:${PORT}/health`);
+    logger.info(`[Server] 遊戲伺服器啟動於 http://${HOST}:${PORT}`);
+    logger.info(`[Server] WebSocket 端點: ws://${HOST}:${PORT}/ws`);
+    logger.info(`[Server] 健康檢查: http://${HOST}:${PORT}/health`);
   } catch (err) {
-    console.error('[Server] 啟動失敗:', err);
+    logger.error('[Server] 啟動失敗:', err);
     process.exit(1);
   }
 
   // 優雅關閉
   const shutdown = async (): Promise<void> => {
-    console.log('\n[Server] 正在關閉伺服器...');
+    logger.info('\n[Server] 正在關閉伺服器...');
     clearInterval(cleanupInterval);
     agentController.destroy();
     shutdownGameSystems();
     await app.close();
     closeDb();
-    console.log('[Server] 伺服器已關閉。');
+    logger.info('[Server] 伺服器已關閉。');
     process.exit(0);
   };
 
@@ -224,7 +227,7 @@ async function main(): Promise<void> {
 }
 
 main().catch((err) => {
-  console.error('[Server] 致命錯誤:', err);
+  logger.error('[Server] 致命錯誤:', err);
   process.exit(1);
 });
 

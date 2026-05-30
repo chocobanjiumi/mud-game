@@ -4,6 +4,9 @@ import { getDb } from '../db/schema.js';
 import { getCharacterById, saveCharacter } from '../db/queries.js';
 import { sendToCharacter } from '../ws/handler.js';
 import type { KingdomRank, TreasuryTransactionType, KingdomTreasuryRecord } from '@game/shared';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Treasury');
 
 // ============================================================
 //  常數（可配置）
@@ -64,7 +67,7 @@ export class TreasuryManager {
 
   init(): void {
     ensureTreasuryTables();
-    console.log('[TreasuryManager] 國庫系統初始化完成');
+    logger.info('[TreasuryManager] 國庫系統初始化完成');
   }
 
   // ──────────────────────────────────────────────────────────

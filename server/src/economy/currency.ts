@@ -5,6 +5,9 @@
 import { isGuestUser, getCachedToken } from '../auth/arinova.js';
 import { sendToCharacter } from '../ws/handler.js';
 import { insertTransaction } from '../db/queries.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Economy');
 
 // ============================================================
 //  型別
@@ -157,14 +160,14 @@ export class CurrencyManager {
       try {
         insertTransaction(result.transactionId, userId, amount, 'charge', description);
       } catch (dbErr) {
-        console.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
+        logger.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
       }
 
-      console.log(`[Economy] 扣款成功: ${userId} -${amount} (${description})`);
+      logger.info(`[Economy] 扣款成功: ${userId} -${amount} (${description})`);
       return { success: true, newBalance: result.newBalance };
     } catch (err) {
       const message = err instanceof Error ? err.message : '扣款失敗';
-      console.error(`[Economy] 扣款失敗 (${userId}):`, message);
+      logger.error(`[Economy] 扣款失敗 (${userId}):`, message);
       return { success: false, error: message };
     }
   }
@@ -200,14 +203,14 @@ export class CurrencyManager {
       try {
         insertTransaction(result.transactionId, userId, amount, 'award', description);
       } catch (dbErr) {
-        console.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
+        logger.error('[Economy] 交易紀錄寫入 DB 失敗:', dbErr);
       }
 
-      console.log(`[Economy] 獎勵成功: ${userId} +${amount} (${description})`);
+      logger.info(`[Economy] 獎勵成功: ${userId} +${amount} (${description})`);
       return { success: true, newBalance: result.newBalance };
     } catch (err) {
       const message = err instanceof Error ? err.message : '獎勵失敗';
-      console.error(`[Economy] 獎勵失敗 (${userId}):`, message);
+      logger.error(`[Economy] 獎勵失敗 (${userId}):`, message);
       return { success: false, error: message };
     }
   }
@@ -224,7 +227,7 @@ export class CurrencyManager {
       );
       return data.balance;
     } catch (err) {
-      console.error('[Economy] 查詢餘額失敗:', err);
+      logger.error('[Economy] 查詢餘額失敗:', err);
       return null;
     }
   }
@@ -270,7 +273,7 @@ export class CurrencyManager {
       text: `成功購買「${item.name}」！剩餘 Arinova 代幣：${chargeResult.newBalance}`,
     });
 
-    console.log(`[Economy] Premium 購買: ${userId} → ${item.name}`);
+    logger.info(`[Economy] Premium 購買: ${userId} → ${item.name}`);
     return { success: true, message: `成功購買「${item.name}」`, item };
   }
 

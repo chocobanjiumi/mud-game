@@ -2,6 +2,9 @@
 // v0.1.3: 使用直接 REST API 呼叫，不依賴 SDK
 
 import { randomUUID } from 'crypto';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Auth');
 
 // ============================================================
 //  型別
@@ -83,7 +86,7 @@ async function apiPost<T>(path: string, body: Record<string, unknown>): Promise<
 /** 初始化 Auth 配置（v0.1.3: 不再呼叫 Arinova.init） */
 export function initArinovaAuth(config: ArinovaAuthConfig): void {
   authConfig = config;
-  console.log('[Auth] Arinova Auth 已初始化（REST mode）');
+  logger.info('[Auth] Arinova Auth 已初始化（REST mode）');
 }
 
 /** 取得 auth 配置（供其他模組使用） */
@@ -154,7 +157,7 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
     try {
       agents = await apiGet<AgentInfo[]>('/api/v1/user/agents', accessToken);
     } catch (err) {
-      console.error('[Auth] 取得 Agent 列表失敗:', err);
+      logger.error('[Auth] 取得 Agent 列表失敗:', err);
     }
 
     const session: AuthSession = {
@@ -167,12 +170,12 @@ export async function handleOAuthCallback(code: string, state: string): Promise<
     };
 
     sessions.set(user.id, session);
-    console.log(`[Auth] OAuth 登入成功: ${user.name} (${user.id})`);
+    logger.info(`[Auth] OAuth 登入成功: ${user.name} (${user.id})`);
 
     return { success: true, session };
   } catch (err) {
     const message = err instanceof Error ? err.message : '未知錯誤';
-    console.error('[Auth] OAuth 回呼失敗:', message);
+    logger.error('[Auth] OAuth 回呼失敗:', message);
     return { success: false, error: message };
   }
 }
@@ -218,7 +221,7 @@ export function updateAccessToken(userId: string, newToken: string): boolean {
 
 export function removeAuthSession(userId: string): void {
   sessions.delete(userId);
-  console.log(`[Auth] Session 移除: ${userId}`);
+  logger.info(`[Auth] Session 移除: ${userId}`);
 }
 
 export function clearTokenCache(userId: string): void {
@@ -272,10 +275,10 @@ export async function validateToken(accessToken: string): Promise<ArinovaUser | 
       }
     }
   } catch (err) {
-    console.error(`[Auth] Session bearer error:`, err instanceof Error ? err.message : err);
+    logger.error(`[Auth] Session bearer error:`, err instanceof Error ? err.message : err);
   }
 
-  console.error(`[Auth] All validateToken methods FAILED`);
+  logger.error(`[Auth] All validateToken methods FAILED`);
   return null;
 }
 

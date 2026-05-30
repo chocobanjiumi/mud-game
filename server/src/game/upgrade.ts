@@ -9,6 +9,9 @@ import {
 import { ITEM_DEFS } from '@game/shared';
 import type { Character, EquipSlot } from '@game/shared';
 import { recordEnhanceMaterialConsumed, recordGoldSpent } from './economy-stats.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('Upgrade');
 
 // ============================================================
 //  常數
@@ -42,7 +45,7 @@ export function ensureEnhancementColumn(): void {
 
   if (!columnNames.has('enhancement_level')) {
     db.exec(`ALTER TABLE inventory ADD COLUMN enhancement_level INTEGER DEFAULT 0`);
-    console.log('[DB] Migration: 已新增 enhancement_level 欄位至 inventory 表');
+    logger.info('[DB] Migration: 已新增 enhancement_level 欄位至 inventory 表');
   }
 }
 

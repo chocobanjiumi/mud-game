@@ -3,6 +3,9 @@
 import type { WebSocket } from 'ws';
 import type { ServerMessage, ServerMessageType } from '@game/shared';
 import { formatSystemErrorMessage } from '../game/system-messages.js';
+import { createModuleLogger } from '../logger.js';
+
+const logger = createModuleLogger('WS');
 
 /** 玩家 WebSocket 連線資訊 */
 export interface WsSession {
@@ -35,7 +38,7 @@ export function createSession(ws: WebSocket): WsSession {
   };
 
   sessions.set(sessionId, session);
-  console.log(`[WS] 新連線: ${sessionId} (目前連線數: ${sessions.size})`);
+  logger.info(`[WS] 新連線: ${sessionId} (目前連線數: ${sessions.size})`);
   return session;
 }
 
@@ -52,7 +55,7 @@ export function bindCharacter(sessionId: string, characterId: string, userId: st
   session.characterId = characterId;
   session.userId = userId;
   characterSessions.set(characterId, sessionId);
-  console.log(`[WS] 角色綁定: ${sessionId} → ${characterId}`);
+  logger.info(`[WS] 角色綁定: ${sessionId} → ${characterId}`);
 }
 
 /** 解除連線目前綁定的角色，保留已驗證的使用者身分 */
@@ -63,7 +66,7 @@ export function unbindCharacter(sessionId: string): string | null {
   const characterId = session.characterId;
   characterSessions.delete(characterId);
   session.characterId = null;
-  console.log(`[WS] 角色解除綁定: ${sessionId} → ${characterId}`);
+  logger.info(`[WS] 角色解除綁定: ${sessionId} → ${characterId}`);
   return characterId;
 }
 
@@ -77,7 +80,7 @@ export function removeSession(sessionId: string): void {
   }
 
   sessions.delete(sessionId);
-  console.log(`[WS] 連線斷開: ${sessionId} (剩餘連線數: ${sessions.size})`);
+  logger.info(`[WS] 連線斷開: ${sessionId} (剩餘連線數: ${sessions.size})`);
 }
 
 /** 根據 sessionId 取得連線 */
@@ -118,7 +121,7 @@ export function sendToSession(sessionId: string, type: ServerMessageType, payloa
   try {
     session.ws.send(JSON.stringify(message));
   } catch (err) {
-    console.error(`[WS] 傳送訊息失敗 (${sessionId}):`, err);
+    logger.error(`[WS] 傳送訊息失敗 (${sessionId}):`, err);
   }
 }
 
@@ -197,7 +200,7 @@ export function cleanupStale(timeoutMs = 30000): void {
   const now = Date.now();
   for (const [sessionId, session] of sessions) {
     if (now - session.lastPing > timeoutMs) {
-      console.log(`[WS] 清理超時連線: ${sessionId}`);
+      logger.info(`[WS] 清理超時連線: ${sessionId}`);
       try {
         session.ws.close();
       } catch {
