@@ -360,7 +360,7 @@ describe('EffectEngine', () => {
     it('should return Chinese name for known effects', () => {
       expect(engine.effectName('poison')).toBe('中毒');
       expect(engine.effectName('shield')).toBe('護盾');
-      expect(engine.effectName('atk_up')).toBe('攻擊上升');
+      expect(engine.effectName('atk_up')).toBe('攻擊提升');
     });
   });
 

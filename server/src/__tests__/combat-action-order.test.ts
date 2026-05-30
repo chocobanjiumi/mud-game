@@ -91,7 +91,7 @@ describe('combat action order', () => {
     });
 
     const log = engine.getCombatState(combatId)?.actionLog.join('\n') ?? '';
-    const guardIndex = log.indexOf('守備者使用了防禦架勢');
+    const guardIndex = log.indexOf('守備者使用防禦架勢支援守備者');
     const attackIndex = log.indexOf('暗影狼');
 
     expect(guardIndex).toBeGreaterThanOrEqual(0);
