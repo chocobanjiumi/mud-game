@@ -9,9 +9,7 @@ import {
 } from '../data/dungeons.js';
 import { getMonster } from '../data/monsters.js';
 import { sendToCharacter } from '../ws/handler.js';
-import {
-  updateLeaderboard,
-} from '../db/database.js';
+import { updateLeaderboard } from '../db/queries.js';
 import { getDb } from '../db/schema.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';

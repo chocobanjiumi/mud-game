@@ -1,7 +1,7 @@
 // 新手教學系統 — TutorialManager
 
 import { getDb } from '../db/schema.js';
-import { addItemToInventory } from '../db/database.js';
+import { addInventoryItem } from '../db/queries.js';
 import { sendToCharacter } from '../ws/handler.js';
 
 // ============================================================
@@ -194,7 +194,7 @@ export class TutorialManager {
 
       // 發放新手禮包
       for (const item of STARTER_PACK.items) {
-        addItemToInventory(characterId, item.itemId, item.quantity);
+        addInventoryItem(characterId, item.itemId, item.quantity);
       }
 
       // 加金幣和經驗（直接更新 DB）

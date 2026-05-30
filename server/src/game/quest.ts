@@ -3,9 +3,8 @@
 import type { Character, SkillTag } from '@game/shared';
 import { sendToCharacter } from '../ws/handler.js';
 import { getDb } from '../db/schema.js';
-import { addItemToInventory } from '../db/database.js';
 import { ITEM_DEFS } from '@game/shared';
-import { unlockPortal, unlockZone } from '../db/queries.js';
+import { addInventoryItem, unlockPortal, unlockZone } from '../db/queries.js';
 import { EXPANDED_QUEST_DEFS, getMainQuestPrerequisite } from './quest-system.js';
 import { addExperienceToCharacter } from './leveling.js';
 import { grantAndNotifyLearnableSkills } from './skill-learning.js';
@@ -676,7 +675,7 @@ export class QuestManager {
 
     if (def.rewards.items) {
       for (const item of def.rewards.items) {
-        addItemToInventory(characterId, item.itemId, item.quantity);
+        addInventoryItem(characterId, item.itemId, item.quantity);
       }
     }
 

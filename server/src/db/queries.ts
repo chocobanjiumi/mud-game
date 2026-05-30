@@ -923,6 +923,22 @@ export function getKingdomDiplomacies(kingdomId: string): {
   ).all(kingdomId, kingdomId) as any[];
 }
 
+// ─── Leaderboard / PvP Records ───
+
+export function updateLeaderboard(characterId: string, type: string, score: number): void {
+  getDb().prepare(`
+    INSERT INTO leaderboard (character_id, type, score, updated_at)
+    VALUES (?, ?, ?, unixepoch())
+    ON CONFLICT(character_id, type) DO UPDATE SET score = ?, updated_at = unixepoch()
+  `).run(characterId, type, score, score);
+}
+
+export function recordPvp(winnerId: string, loserId: string, arenaType: string = 'duel'): void {
+  getDb().prepare(
+    'INSERT INTO pvp_records (winner_id, loser_id, arena_type) VALUES (?, ?, ?)',
+  ).run(winnerId, loserId, arenaType);
+}
+
 // ─── Helpers ───
 
 /** 簡易推斷裝備欄位（根據物品 ID 中的關鍵字，或查 ITEM_DEFS） */
