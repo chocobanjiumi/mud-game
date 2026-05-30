@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-30T03:07:14.226Z",
+  "generatedAt": "2026-05-30T04:17:00.653Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
     "phase5Targets": 271,
-    "missingPrompt": 248,
-    "missingImageField": 248,
+    "missingPrompt": 238,
+    "missingImageField": 238,
     "missingAsset": 271,
-    "issues": 2009,
-    "errors": 813,
+    "issues": 2007,
+    "errors": 811,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
       "asset.missing": 271,
-      "prompt.function": 22,
-      "prompt.style": 10,
-      "image.missing": 248,
-      "prompt.missing": 248,
+      "prompt.function": 30,
+      "prompt.style": 20,
+      "image.missing": 238,
+      "prompt.missing": 238,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -195,11 +195,11 @@
       "ember_march": {
         "zoneName": "餘燼邊境",
         "rooms": 30,
-        "missingPrompt": 10,
-        "missingImageField": 10,
+        "missingPrompt": 0,
+        "missingImageField": 0,
         "missingAsset": 10,
         "phase5Targets": 10,
-        "errors": 30,
+        "errors": 28,
         "warnings": 20
       },
       "emerald_canopy": {
@@ -1314,33 +1314,32 @@
       "roomName": "星坑東燼封道",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_21.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_22_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_22_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_22_21",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_22_21.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png"
         },
         {
           "roomId": "ember_march_fill_22_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_22_21",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1349,33 +1348,25 @@
       "roomName": "南燼臺北封灰道",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_24.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_22_24",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_22_24.png"
-        },
-        {
-          "roomId": "ember_march_fill_22_24",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_22_24.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png"
         },
         {
           "roomId": "ember_march_fill_22_24",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1384,33 +1375,32 @@
       "roomName": "骨窯北封火痕",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_26_21.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_26_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_26_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_26_21",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_26_21.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png"
         },
         {
           "roomId": "ember_march_fill_26_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_26_21",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1419,33 +1409,32 @@
       "roomName": "龍印東封灰脊",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_28_22.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_28_22",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_28_22.png"
-        },
-        {
-          "roomId": "ember_march_fill_28_22",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_28_22.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png"
         },
         {
           "roomId": "ember_march_fill_28_22",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_28_22",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1454,33 +1443,32 @@
       "roomName": "火山灰田西界",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_21.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_30_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_21.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_21",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_21.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png"
         },
         {
           "roomId": "ember_march_fill_30_21",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_30_21",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1489,33 +1477,32 @@
       "roomName": "硫泉西界燼路",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_23.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_30_23",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_23.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_23",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_23.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png"
         },
         {
           "roomId": "ember_march_fill_30_23",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_30_23",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1524,33 +1511,32 @@
       "roomName": "熔橋西界灰道",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_24.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_fill_30_24",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_24.png"
-        },
-        {
-          "roomId": "ember_march_fill_30_24",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_fill_30_24.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png"
         },
         {
           "roomId": "ember_march_fill_30_24",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_fill_30_24",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1559,33 +1545,25 @@
       "roomName": "南燼傳送石臺",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_south_portal.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_south_portal",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_south_portal.png"
-        },
-        {
-          "roomId": "ember_march_south_portal",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_south_portal.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png"
         },
         {
           "roomId": "ember_march_south_portal",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1594,33 +1572,32 @@
       "roomName": "熔灰避風亭",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_south_shelter.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_south_shelter",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_south_shelter.png"
-        },
-        {
-          "roomId": "ember_march_south_shelter",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_south_shelter.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png"
         },
         {
           "roomId": "ember_march_south_shelter",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_south_shelter",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -1629,33 +1606,32 @@
       "roomName": "焦土補給棚",
       "zoneId": "ember_march",
       "zoneName": "餘燼邊境",
-      "assetPath": "client/public/images/rooms/ember_march_south_supply.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "ember_march_south_supply",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ember_march_south_supply.png"
-        },
-        {
-          "roomId": "ember_march_south_supply",
-          "zoneId": "ember_march",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ember_march_south_supply.png"
+          "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png"
         },
         {
           "roomId": "ember_march_south_supply",
           "zoneId": "ember_march",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "ember_march_south_supply",
+          "zoneId": "ember_march",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -12847,32 +12823,23 @@
       "roomId": "ember_march_fill_22_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_21.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_21.png"
     },
     {
       "roomId": "ember_march_fill_22_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_21.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "ember_march_fill_22_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ember_march_fill_22_24",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_24.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_22_24",
@@ -12880,22 +12847,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_22_24.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_22_24.png"
     },
     {
       "roomId": "ember_march_fill_22_24",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ember_march_fill_26_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_26_21.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_26_21",
@@ -12903,22 +12862,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_26_21.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_26_21.png"
     },
     {
       "roomId": "ember_march_fill_26_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "ember_march_fill_28_22",
+      "roomId": "ember_march_fill_26_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_28_22.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_28_22",
@@ -12926,22 +12884,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_28_22.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_28_22.png"
     },
     {
       "roomId": "ember_march_fill_28_22",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "ember_march_fill_30_21",
+      "roomId": "ember_march_fill_28_22",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_21.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_30_21",
@@ -12949,22 +12906,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_21.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_21.png"
     },
     {
       "roomId": "ember_march_fill_30_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "ember_march_fill_30_23",
+      "roomId": "ember_march_fill_30_21",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_23.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_30_23",
@@ -12972,22 +12928,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_23.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_23.png"
     },
     {
       "roomId": "ember_march_fill_30_23",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "ember_march_fill_30_24",
+      "roomId": "ember_march_fill_30_23",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_24.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_fill_30_24",
@@ -12995,14 +12950,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_fill_30_24.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_fill_30_24.png"
     },
     {
       "roomId": "ember_march_fill_30_24",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "ember_march_fill_30_24",
+      "zoneId": "ember_march",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_firegrass_flat",
@@ -13064,32 +13026,16 @@
       "roomId": "ember_march_south_portal",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_south_portal.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_portal.png"
     },
     {
       "roomId": "ember_march_south_portal",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_south_portal.png"
-    },
-    {
-      "roomId": "ember_march_south_portal",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ember_march_south_shelter",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_south_shelter.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_south_shelter",
@@ -13097,22 +13043,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_south_shelter.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_shelter.png"
     },
     {
       "roomId": "ember_march_south_shelter",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "ember_march_south_supply",
+      "roomId": "ember_march_south_shelter",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ember_march_south_supply.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_south_supply",
@@ -13120,14 +13065,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ember_march_south_supply.png"
+      "assetPath": "client/public/images/rooms/images/rooms/ember_march_south_supply.png"
     },
     {
       "roomId": "ember_march_south_supply",
       "zoneId": "ember_march",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "ember_march_south_supply",
+      "zoneId": "ember_march",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "ember_march_war_camp_ruin",

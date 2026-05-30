@@ -1048,6 +1048,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "星坑東燼封道",
     "zone": "ember_march",
     "description": "星坑東燼封道位於餘燼邊境西北角，西面星落 crater 邊緣的暗光被灰風吞沒，南側焦炭道路還有車轍，東面火草平地冒出紅芽。焦黑道路被熔渣封住，是 border blocker，不開跨區捷徑，只作邊界提示。",
+    "image": "/images/rooms/ember_march_fill_22_21.png",
+    "imagePrompt": "星坑東燼封道 ember_march_fill_22_21 in ember_march Ember March, room function northwest border blocker, charred basalt road sealed by slag beside a fallen star crater edge, west dim crater glow swallowed by ash wind, south wagon ruts on cinder road, east red firegrass sprouts on burnt flats, terrain black slag, ember cracks, ash drifts and heat haze，焦黑石道在畫面下端被熔渣厚牆截斷，西面星落坑邊只剩暗紅餘光被灰風吞沒，南側焦炭車轍斜斜消失，東面火草平地冒出紅芽作方向線索。熔渣表面要有冷卻裂紋、橘紅暗光、灰沙堆積與玄武岩碎片，整體明確表示這是餘燼邊境西北角 border blocker，不開星坑捷徑，只保留危險邊界提示, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -1060,6 +1062,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南燼臺北封灰道",
     "zone": "ember_march",
     "description": "南燼臺北封灰道貼著南燼傳送石臺北側，北面焦黑里程碑半埋在玄武岩道路旁，南面傳送符文忽明忽暗，西側玻灰原吹來細碎燼沙。這裡是 border blocker，標示傳送點外圍但不開放直穿。",
+    "image": "/images/rooms/ember_march_fill_22_24.png",
+    "imagePrompt": "南燼臺北封灰道 ember_march_fill_22_24 in ember_march Ember March, room function portal outer border blocker, ash road north of the south ember portal platform, north charred milestone half buried beside basalt road, south portal runes flicker beyond heat shimmer, west glass ash field blows cinder sand, terrain gray ash seal, basalt shards, ember dust and rune glow，灰道貼著南側符文臺北緣被低矮灰封線阻斷，北面焦黑里程碑半埋在玄武岩路旁，南面傳送符紋隔著熱浪忽明忽暗，西側玻灰原吹來細碎燼沙。地面要有灰燼波紋、玄武岩破片、暗紅火縫與被風吹出的弧形砂線，灰封線上還覆著細小火星和焦黑碎旗纖維，構圖要像傳送點外圍安全邊界，不是能直接穿越的道路, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -1072,6 +1076,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南燼傳送石臺",
     "zone": "ember_march",
     "description": "南燼傳送石臺以黑色玄武岩砌在焦灰南坡，北側封灰道隔開熱風，東面補給棚掛著耐火布，南面避風亭擋住熔灰。這裡是 portal service route，提供餘燼邊境南部傳送與補給動線。",
+    "image": "/images/rooms/ember_march_south_portal.png",
+    "imagePrompt": "南燼傳送石臺 ember_march_south_portal in ember_march Ember March, room function portal service route, black basalt portal platform on a scorched southern ash slope, north sealed ash road, east supply shed with fireproof cloth, south low shelter wall against molten ash wind, terrain carved basalt steps, ember runes, ash bowls, red backlight and safe travel landmark，黑色玄武岩石臺置於焦灰南坡中央，圓形傳送符文發出穩定暗紅光，北側封灰道隔開熱風，東面補給棚的耐火布在熱浪裡抖動，南面避風亭低牆擋住熔灰。石階要清楚分出北東南三個動線，近端保留可站立的乾灰平臺，符文不可有可讀文字，只用幾何火痕表現傳送服務地標與安全回程點, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly volcanic service outpost illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "north",
@@ -1100,6 +1106,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "焦土補給棚",
     "zone": "ember_march",
     "description": "焦土補給棚半埋在灰堆裡，西側可回到南燼傳送石臺，棚內耐火布擋住熱風，水桶、冷卻藥劑與備用繃帶沿牆排開。這裡是 service room，只提供南部據點補給提示，不放敵人。",
+    "image": "/images/rooms/ember_march_south_supply.png",
+    "imagePrompt": "焦土補給棚 ember_march_south_supply in ember_march Ember March, room function service supply room, half-buried ash supply shed east of the south ember portal, west basalt portal glow through a fireproof cloth curtain, inside water buckets, cooling vials and spare bandages lined against soot walls, terrain ash piles, charred timber, fireproof canvas and warm lantern light，補給棚半埋在灰堆裡，耐火布簾把西側符文臺紅光切成柔亮邊線，棚內水桶、冷卻藥劑與備用繃帶沿焦黑牆面排開。地面要有踩實灰土、木箱、陶瓶水痕與布料燒邊，外側熱風只吹動棚角不造成戰鬥感，整體呈現南部據點的補給提示與短暫安全感，不出現敵人或商店 UI, slightly elevated adventurer eye view, clear foreground service space, readable midground landmark, dark fantasy painterly volcanic service outpost illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -1118,6 +1126,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "熔灰避風亭",
     "zone": "ember_march",
     "description": "熔灰避風亭以低矮石牆圍住南側熱風，北面玄武岩臺階通回傳送石臺，亭外能看見火山前緣紅光。亭內有水缸、灰斗與臨時坐凳，是 service room，讓玩家辨認南部安全歇腳點。",
+    "image": "/images/rooms/ember_march_south_shelter.png",
+    "imagePrompt": "熔灰避風亭 ember_march_south_shelter in ember_march Ember March, room function safe shelter service room, low stone wind shelter south of the portal platform, north basalt steps returning to the portal, outside volcanic front red glow, inside water jar, ash scoop and temporary bench, terrain low basalt wall, ash drift, ember wind and dim protected lantern，低矮玄武岩石牆圍住避風亭，北面臺階回到南燼符文臺，亭外火山前緣泛出深紅亮光，亭內水缸、灰斗與臨時坐凳排在受保護的陰影裡。畫面要讓熱風和熔灰在牆外翻卷，牆內保持較穩定的暖燈與乾灰地面，材質包括焦石、陶缸、水痕、灰斗金屬邊和被火星打黑的長凳，這是安全歇腳點而非戰鬥房, slightly elevated adventurer eye view, clear foreground shelter space, readable midground landmark, dark fantasy painterly volcanic service outpost illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "north",
@@ -1136,6 +1146,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "骨窯北封火痕",
     "zone": "ember_march",
     "description": "骨窯北封火痕位於骨窯隘道北側，南面窯口傳來乾骨裂響，西側焦灼綠洲的黑水氣味被熱風推來。玄武岩道路上的火痕斷成數截，熔灰覆住踏點，是 border blocker，不提供穿越。",
+    "image": "/images/rooms/ember_march_fill_26_21.png",
+    "imagePrompt": "骨窯北封火痕 ember_march_fill_26_21 in ember_march Ember March, room function northern bonekiln border blocker, basalt road north of bonekiln pass where fire scars break into segments, south kiln mouth with dry bone cracking sound, west scorched oasis black-water smell carried by hot wind, terrain broken flame marks, molten ash, bone dust, black basalt and wavering heat，玄武岩道路上的火痕斷成數截，熔灰覆住所有踏點，南面骨窯口只露出暗紅裂光和骨粉煙，西側焦灼綠洲以黑水氣味與低霧提示方向。地面要有白灰骨粉、黑石裂縫、斷裂火線與熱浪扭曲，不能畫成通往窯口的路；這是骨窯北側 border blocker，危險壓迫但不提供穿越, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -1148,6 +1160,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "龍印東封灰脊",
     "zone": "ember_march",
     "description": "龍印東封灰脊位於龍印山脊東面，西側巨大爪痕仍壓在焦土裡，南面邊境要塞殼露出黑石牆角。灰脊盡頭被熱風削成斷坡，這裡是 border blocker，只標示火山前緣方向。",
+    "image": "/images/rooms/ember_march_fill_28_22.png",
+    "imagePrompt": "龍印東封灰脊 ember_march_fill_28_22 in ember_march Ember March, room function eastern ash ridge blocker, ash ridge east of dragonprint ridge, west huge claw marks pressed into scorched ground, south border keep shell with black stone wall corner, ridge end cut into a broken slope by hot wind, terrain gray cinder spine, dragon claw grooves, basalt corner and red volcanic haze，灰脊從畫面下方抬升後突然被熱風削成斷坡，西側巨大龍爪痕壓在焦土裡，南面邊境要塞殼只露出黑石牆角，遠處火山前緣被紅霧染亮。斷坡邊要有鬆動灰砂、裸露玄武岩、焦黑骨刺狀石片與細火星，構圖只標示火山前緣方向，不讓玩家讀成可爬下去的路, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 7,
@@ -1160,6 +1174,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "火山灰田西界",
     "zone": "ember_march",
     "description": "火山灰田西界位於餘燼邊境東北角，東面火山灰田的黑灰被熱風捲起，西側燼地石道已被熔渣封住。這裡是跨區 border route，只允許向東進入火山地帶，內側灰坡不可回切。",
+    "image": "/images/rooms/ember_march_fill_30_21.png",
+    "imagePrompt": "火山灰田西界 ember_march_fill_30_21 in ember_march Ember March, room function northeast cross-zone border route, edge where Ember March meets volcano ash field, east black volcanic ash lifted by hot wind, west old cinder stone road sealed by slag, terrain ash slope, black sand, molten slag lock, orange fissures and violent heat haze，東側黑色火山灰田被熱風捲成低旋，西側舊燼地石道被熔渣鎖死，灰坡只允許向東跨入火山地帶。畫面需要清楚分出可前進的東向黑砂口與不可回切的西側熔渣封線，灰田裡有橘紅裂縫、飛灰、玄武岩碎片和熱浪扭曲，東面黑砂被風吹成斜紋，路口邊緣插著燒裂石柱與焦灰堆，構圖是跨區 border route 而不是普通灰原房, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -1184,6 +1200,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "硫泉西界燼路",
     "zone": "ember_march",
     "description": "硫泉西界燼路貼著心火裂口東側，西面餘燼仍有紅光，南側灰燼邊道沉入熱泥，東面火山硫磺泉噴出刺鼻白霧。路邊硫磺晶簇和灰燼礦露在熱泥旁，可沿石縫採集；這裡只導向火山溫泉前緣，不開旁支道路。",
+    "image": "/images/rooms/ember_march_fill_30_23.png",
+    "imagePrompt": "硫泉西界燼路 ember_march_fill_30_23 in ember_march Ember March, room function sulfur spring border route with resource edge, cinder road east of heartfire breach, west red ember glow blocked by heat fissure, south ash path sinking into hot mud, east volcano sulfur springs venting white steam, terrain sulfur crystal clusters, ash ore seams, hot mud, yellow-white vapor and red stone cracks，燼路貼著心火裂口東側，西面紅光被熱浪與裂縫擋住，南側灰燼邊道沉入熱泥，東方硫磺泉噴出刺鼻白霧。路邊硫磺晶簇與灰燼礦露在熱泥旁，石縫採集點要清楚但不能變成旁支道路；白霧、黃晶、紅裂石與熱泥反光共同指向東側火山硫泉前緣，構圖呈現單一路線端點, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -1208,6 +1226,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "熔橋西界灰道",
     "zone": "ember_march",
     "description": "熔橋西界灰道位於餘燼邊境東南口，北側硫泉西界仍有白霧，東面火山熔岩橋發出紅光。灰道路基被熱浪切開，這裡是跨區 border route，只讓玩家向東接上熔岩橋，不開南側灰坡。",
+    "image": "/images/rooms/ember_march_fill_30_24.png",
+    "imagePrompt": "熔橋西界灰道 ember_march_fill_30_24 in ember_march Ember March, room function southeast cross-zone border route, gray ash road at the southeast exit, north lingering sulfur white fog, east volcano lava bridge glowing red, west old road collapsed and locked by heat, south ash slope cut off, terrain cracked ash roadbed, basalt ribs, lava glow, hot wind and falling cinders，灰道路基被熱浪切開，只留下向東接上火山熔岩橋的灼熱岩脊，北側硫泉西界白霧仍在漂，西側舊路塌陷封死，南側灰坡沒有落腳點。畫面要讓東面熔岩橋紅光成為唯一明確出口，近端灰路有裂縫、玄武岩肋、落燼和熱風扭曲，構圖是東南跨區 border route，不開南側灰坡或回切路線, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly volcanic border illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
