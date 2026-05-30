@@ -5,7 +5,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_29_3",
     "name": "東市攤幕封口",
     "zone": "kingsroad_market",
-    "description": "東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕、貨箱和攤位標價木牌擋住直行路線，這格是服務區 封閉點；玩家只能辨認攤位後場與取貨窗口，不可穿越或交易。東市攤幕封口周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "東市攤幕封口位於高看台東側，西面仍看得到石階欄杆，東面接近市集外牆與關閉驛道。成排布幕、貨箱和攤位標價木牌擋住直行路線，布幕後傳來整理貨物的細碎聲。石板上有拖箱痕、油燈灰和幾枚掉落銅扣，攤幕邊緣被海風微微掀起。這裡保留東市後場的取貨窗口與外牆氣息，卻沒有主路的開闊流動。",
     "image": "kingsroad_market_fill_29_3.png",
     "imagePrompt": "東市攤幕封口 kingsroad_market_fill_29_3 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: north south east west nearby landmarks implied by sealed boundary and adjacent map roads, source room details: 東市攤幕封口位於高陽台東側，西面仍看得到石階欄杆，東面接近市集外牆與封閉驛道。成排布幕、貨箱和攤位標價木牌擋住直行路線，這格是服務區 blocker；玩家只能辨認攤位後場與取貨窗口，不可穿越或交易。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
@@ -20,7 +20,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_30_3",
     "name": "東門海風封驛",
     "zone": "kingsroad_market",
-    "description": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往東海岸的舊驛牌與守衛告示，玩家可確認東門服務位置，但門閂封鎖，這裡只作 邊界封閉點，暫不開放跨區通行。東門海風封驛周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸、麻袋與空貨籠，東面能聞到海岸潮氣，卻被關閉城門與厚門閂擋住。門柱上掛著往東海岸的舊驛牌，牌下油漆已被鹽風咬開。石地留著驛車停靠的半圓車轍，旁邊散著斷繩和褪色票牌。這處驛口像一扇暫時沉默的海風門，把市集東緣的方向感保留下來。",
     "image": "kingsroad_market_fill_30_3.png",
     "imagePrompt": "東門海風封驛 kingsroad_market_fill_30_3 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward locked boundary, source room details: 東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往東海岸的舊驛牌與守衛告示，玩家可確認東門服務位置，但門閂封鎖，這裡只作 border blocker，暫不開放跨區通行。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -188,7 +188,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_22_0",
     "name": "王道西市石路",
     "zone": "kingsroad_market",
-    "description": "王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄、車轍和行李牌標示這裡是單向 路線 與西側動線節點；玩家可辨認回廣場路線，不能下切哨巷。王道西市石路周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "王道西市石路是市集西口的短石階，東側傳送陣廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車轍印集中在東向石板上，旁邊堆著行李牌、破繩和等待搬運的空籃。西口外的王道塵土在此被市場濕石接住，形成一道明顯材質轉換。木欄後方雖能聽見哨亭銅鈴，石階本身仍把視線引回廣場，像市集把外來車流收進主街前的第一段緩衝。",
     "image": "kingsroad_market_fill_22_0.png",
     "imagePrompt": "王道西市石路 kingsroad_market_fill_22_0 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward 傳送陣廣場, south toward locked boundary, source room details: 王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄、車轍和行李牌標示這裡是單向 route 與西側動線節點；玩家可辨認回廣場路線，不能下切哨巷。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
@@ -215,7 +215,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "kingsroad_market_fill_22_1",
     "name": "王道西哨巷",
     "zone": "kingsroad_market",
-    "description": "王道西哨巷靠近市集守衛哨，東側可見檢查桌、銅鈴和通行牌，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，此處只作守衛問訊與巡邏邊界；玩家能確認哨所服務位置，但不能從旁路穿越。王道西哨巷周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "王道西哨巷靠近市集守衛哨，東側檢查桌、銅鈴和通行牌在窄巷口排成一線，北面貨車石路則被分流木欄隔住。牆上掛著湖畔方向舊路牌，牌面被雨水洗得發白。地面比主街更窄，只有巡邏靴印與幾道拖箱痕跡留下。木欄後堆著封存貨袋和空水桶，使這條巷子保留問訊與巡市邊界的功能，卻沒有主街那種可穿越的人流。",
     "image": "kingsroad_market_fill_22_1.png",
     "imagePrompt": "王道西哨巷 kingsroad_market_fill_22_1 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward 衛兵亭, north toward locked boundary, source room details: 王道西哨巷靠近市集守衛哨，東側可見檢查桌、銅鈴和通行牌，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，此處只作守衛問訊與巡邏邊界；玩家能確認哨所服務位置，但不能從旁路穿越。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
