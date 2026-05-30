@@ -478,10 +478,7 @@ blood_river: {
     image: 'blood_river.png',
     imagePrompt: '血河 in demon_territory, crimson lava river steaming through scorched earth, corroded bones and twisted metal on banks, infernal red mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain lava, clear lantern light',
     description:
-      '一條殷紅如血的河流在焦土中蜿蜒流淌，河面冒著騰騰的熱氣。血河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '河水並非真正的血液，而是被地底深處的魔力礦脈污染的熔岩水。' +
-      '河岸邊散落著被腐蝕的骨骸和扭曲的金屬殘片。每當熱浪翻湧，河底便浮出暗紅色符文，彷彿整條河仍在向要塞輸送魔力。' +
-      '此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
+      '血河在焦土中蜿蜒流淌，河面殷紅如熔化鐵鏽，熱氣裹著硫磺味一層層翻上岸邊。西側焦黑河岸可回到焦土平原，南方上游被黑暗要塞大門的城牆陰影壓住，東面破裂排水渠吐出暗紅泡沫，通向熔岩下水道。河水並非真正血液，而是被地底魔力礦脈污染的熔岩水；岸邊散落被腐蝕的骨骸、扭曲金屬與燒裂軍械。每當熱浪翻湧，河底符文會短暫浮現，彷彿整條河仍在替要塞輸送魔力。',
     exits: [
       { direction: 'west', targetRoomId: 'scorched_plains', description: '沿河岸回到焦土平原' },
       { direction: 'south', targetRoomId: 'dark_fortress_gate', description: '河流上游通往要塞' },
