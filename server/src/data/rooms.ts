@@ -3501,7 +3501,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_tidepool_grotto.png',
     imagePrompt: '潮池岩穴 in eastern_coast, hidden exploration tidepool grotto with mirror pools, shell marks, blue cave light and crab shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain cave, clear lantern light',
     description:
-      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。旅人可 搜索 潮池底部找半寶石和古幣，也能 觀察 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '潮池岩穴藏在潮間帶西側礁石後，鏡面潮池映出洞頂貝殼紋，藍色反光讓濕石像玻璃一樣發亮。東側濕滑石路繞回潮間帶，南面低矮裂縫下切到海蝕洞，西側被礁牆與回潮水窪封住。池底可見半寶石、古幣和海蟹掀起的細沙，貝殼排列出潮水曾經抵達的高度。當回潮聲從裂縫深處傳來，整座小岩穴會像一只正在蓄水的貝殼。',
     exits: [
       {
         direction: 'east',
@@ -3533,7 +3533,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_seaweed_flats.png',
     imagePrompt: '海藻灘 in eastern_coast, resource combat flats with thick kelp mats, driftwood, jellyfish pools and pale green tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。旅人可 採集 海藻材料、搜索 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '海藻灘在退潮後露出大片平灘，厚海藻覆住濕沙、漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面乾沙帶回沙灘，東側水線穿過淺池通往珊瑚淺灘，南邊礁石背面可找到潮池岩穴，西側水路在海藻帶外緣被潮汐切斷。濕滑葉片下藏著漁鉤、碎貝和水母影子，漂木被海流推成歪斜路障，使整片平灘像低潮短暫交出的綠色迷網。',
     exits: [
       {
         direction: 'north',
@@ -3573,7 +3573,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_smugglers_cove.png',
     imagePrompt: '走私者海灣 in eastern_coast, hidden combat cove with narrow inlet, covered crates, lantern signals and purple dusk surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。旅人可 觀察 提燈節奏找走私暗號，搜索 貨箱取得任務證物，但會引來海盜巡邏。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
+      '走私者海灣藏在海崖背風處，狹窄水口被礁石遮住，黑布貨箱堆在暗處，提燈以固定節奏閃爍。西側崖壁繞回海崖步道，南面暗流水線通往海蛇巢，東邊小徑攀向觀潮斷崖。浪聲掩蓋低聲交談，箱縫裡露出鹽封蠟、短刀和異地酒瓶，礫石坡上則有來回拖貨留下的平行痕跡。這處海灣像整條海岸暗流交易的喉嚨，隱密卻不平靜。',
     exits: [
       {
         direction: 'west',
@@ -3600,7 +3600,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_broken_pier.png',
     imagePrompt: '斷裂棧橋 in eastern_coast, event route room with shattered pier posts, loose planks, crab nests and cloudy harbor light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。旅人可 觀察 斷樁判斷是否被海盜破壞，搜索 漁網找修橋材料，也要處理爬上木板的海蟹。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '斷裂棧橋位在漁村碼頭南側，木樁被風浪撞得歪斜，鬆動木板下傳來海蟹刮擦聲，焦油水面映著陰雲。北側需沿斷裂木樁繞回漁村碼頭，南面斷木棧道接上海崖步道，西側濕岩路通往燈塔塔基。棧橋邊掛著破漁網、斷繩與被潮水咬爛的浮標，部分木板留下新鮮斧痕，像有人曾刻意破壞通路。海風吹過樁洞時發出空響，使這段碼頭充滿不可靠的搖晃感。',
     exits: [
       {
         direction: 'north',
@@ -3633,7 +3633,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_stormwatch_ledge.png',
     imagePrompt: '觀潮斷崖 in eastern_coast, elite exploration cliff ledge with storm clouds, warning cairns, gull bones and lightning sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain sea, clear lantern light',
     description:
-      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡只能望見遠處海蛇巢，實際需從珍珠床或暗礁水路接近。旅人可 觀察 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '觀潮斷崖突出在海崖盡頭，正對外海，暴風雲在遠處堆疊，警示石堆與海鳥骨散在濕冷岩面上。西側小徑回走私者海灣，南面陡坡俯衝到海盜營地外圍。崖邊石堆以不同高度記錄風暴潮線，碎岩上還能看見海盜巡邏留下的靴印。強風把烏鴉羽毛和鹽霧一同捲起，岩台下方浪聲巨大，使這裡像觀測風暴與營地動靜的危險哨位。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_smugglers_cove', description: '小徑回走私者海灣' },
       {
@@ -3659,7 +3659,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_pearl_bed.png',
     imagePrompt: '珍珠床 in eastern_coast, resource underwater shallows with oyster beds, pale pearls, filtered sunlight and jellyfish drift, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。旅人可 採集 珍珠與貝殼材料，搜索 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
+      '珍珠床鋪在燈塔外側的淺水沙地上，蚌殼密密散布，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。北側潮溝石階回到海崖步道，西面沙床接向珊瑚淺灘，南方潮溝通往海盜營地，東側暗流拉向海蛇巢。半開蚌殼、撬痕與水母漂影交錯在淺水中，盜採留下的碎殼帶著尖銳邊緣，使這片漂亮沙床顯得格外脆弱。',
     exits: [
       { direction: 'north', targetRoomId: 'cliff_path', description: '北側潮溝石階回到海崖步道' },
       { direction: 'west', targetRoomId: 'coral_shallows', description: '西側淺水沙床回到珊瑚淺灘' },
@@ -3686,7 +3686,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_pirate_cache.png',
     imagePrompt: '海盜藏貨處 in eastern_coast, hidden elite cache with buried crates, torn black flag, rum barrels and red campfire glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '海盜營地後方的岩縫裡藏著半埋貨箱，破黑旗蓋住火藥桶與酒桶，紅色營火把濕石照得像血。北面通走私者海灣，西側可回海盜營地，南面有窄路接沉船殘骸。這裡是精英藏寶點，旅人可 搜索 貨箱取得一次性寶物或任務證物，觀察 酒桶標記確認海盜船長補給線，但會引來強化巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
+      '海盜藏貨處藏在營地後方岩縫裡，半埋貨箱被破黑旗遮住，火藥桶、酒桶與濕繩堆在紅色營火旁。北側暗流水線連向海蛇巢，西面岩縫可回海盜營地。貨箱上刻著船長補給暗號，酒桶邊散著硬幣、濕火藥和被撬開的鎖片。岩壁滴水把營火照得像血色，藏貨處雖狹窄，卻能看出海盜把補給、戰利品與撤離路線都壓在這道背風裂縫裡。',
     exits: [
       { direction: 'north', targetRoomId: 'eastern_coast_serpent_nest', description: '北側暗流水線回到海蛇巢' },
       { direction: 'west', targetRoomId: 'pirate_camp', description: '西側岩縫回到海盜營地' },
@@ -3710,7 +3710,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_serpent_nest.png',
     imagePrompt: '海蛇巢 in eastern_coast, boss event sea serpent nest with coiled bones, green water light, egg clutches and jagged reef walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain sea, clear lantern light',
     description:
-      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側水面能看見觀潮斷崖但沒有可攀爬路線，南面可潛入暗礁深處。這裡是大型事件鉤子，旅人可 觀察 卵囊判斷海蛇活動週期，搜索 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援',
+      '海蛇巢位於暗礁外緣裂谷中，魚骨、破船板與黏滑卵囊堆在鋸齒礁壁間，綠色水光一閃一閃。西側暗流接回珍珠床，北面水線通向走私者海灣，南方暗流繞到海盜藏貨處，東側礁縫下潛可進入暗礁。巢壁滿是蛇鱗刮痕和拖行黏液，低沉嘶聲會沿水下裂縫震動。卵囊在水流中輕輕收縮，讓這片礁谷像一個正等待孵化的危險肺腔。',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_pearl_bed', description: '暗流回珍珠床' },
       { direction: 'north', targetRoomId: 'eastern_coast_smugglers_cove', description: '北側暗流水線回到走私者海灣' },
