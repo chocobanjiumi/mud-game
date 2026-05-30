@@ -2392,8 +2392,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'town_gate.png',
     imagePrompt: '城門口 in lakeside_town, entrance town service room with stone gate, lake wind, shield crest, guards and warm torch light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '高大的湖石城牆圍繞著城鎮，城門上方刻著盾牌與交叉長劍徽記，濕潤湖風吹過吊橋與銅釘木門。身著鎧甲的衛兵守在門口，商隊與冒險者沿西側道路排隊入城，東面可看見商業街的燈火。告示牌提示入城補給、登記任務與啟用傳送陣，門洞旁的暗格也可被 觀察 搜出走私線索。城門口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
-      '這裡是安全錨點與外部路線交會處，玩家可從西側返回十字路口，向東進入市場，或往南接上海岸棧道。城門上方的鐘聲會標示宵禁與警報，衛兵隊長也會提醒新來者先確認復活點、倉庫與傳送廣場位置，避免帶著任務貨物走錯危險路線。',
+      '城門口立在湖畔城鎮西緣，厚木門與石塔夾住通往十字路口的舊道，東面商業街的招牌與燈火從門洞裡延伸出來，南側海邊棧道傳來潮聲。門柱上掛著入城稅牌、失物告示與被雨水洗淡的巡邏名單。地面從外路黃土轉成平整青石，車轍在門檻處變淺，顯出城內外秩序的分界。守門火盆長年不滅，讓返城、出城與港邊動線都在此收束。',
     exits: [
       {
         direction: 'west',
@@ -2428,7 +2427,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'market_street.png',
     imagePrompt: '商業街 in lakeside_town, town service market street with weapon stalls, spice smoke, hanging lanterns and lake reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '熙熙攘攘的石板商業街沿湖岸展開，武器鋪、防具店、藥材行與雜貨舖掛著不同顏色的燈籠。烤肉煙、香料味與湖水潮氣混在一起，攤販叫賣聲壓過馬車輪聲。西側通回城門，東面通往廣場，北邊酒館門縫飄出酒香；旅人可在此補給、比價、接商人委託，也能 搜索 貨箱找到異常標記。街角公告牌列出每日採購清單與缺貨材料，南側鍛坊傳來敲鐵聲，提醒旅人可以把剛取得的裝備立刻修理、分解或換成旅途消耗品，也可比較拍賣場與商店價格再決定出售。路邊巡邏會提示可疑商販位置與安全出口，攤位後方還留有通往倉庫的小路',
+      '商業街從城門口向東伸入城鎮，兩側木樓掛滿價牌、布篷與油燈，東面城鎮廣場的人聲在街尾變得開闊，北側酒館的暖光從招牌下漏出。石路上有菜籃、陶罐、鞋印與馬車壓出的淺痕，攤位後方則藏著短短貨巷。街道氣味混著烤麵包、濕木和銅幣味，讓這段路不像單純通道，更像湖畔城日常交易的主脈。',
     exits: [
       { direction: 'west', targetRoomId: 'town_gate', description: '回到城門口' },
       { direction: 'east', targetRoomId: 'town_plaza', description: '前往城鎮廣場' },
@@ -2451,8 +2450,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'town_plaza.png',
     imagePrompt: '城鎮廣場 in lakeside_town, town core plaza with hero fountain, lake sunlight, job hall banners and arena arch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '寬闊的湖畔廣場是城鎮中心，英雄雕像矗立在噴泉中央，水霧映著碧藍湖面與白石地磚。四周環繞轉職大廳、競技場、拍賣場與通往神殿的拱廊，公告欄貼滿進階任務與地下城招募。西側回商業街，北面通向導師所在的大廳，南側傳來競技場歡呼，東邊是拍賣場正門。城鎮廣場周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
-      '雕像底座有可調查的符文順序，噴泉旁也標示傳送陣方向，是玩家整理任務、查看城市服務與選擇下一條路線的核心節點。廣場巡邏路線清楚避開人潮，玩家可藉此判斷哪條街通往安全服務，哪條路會帶到訓練、交易或交通功能。',
+      '城鎮廣場位於湖畔城的中心，噴泉、公告柱與四向石路把人流自然分開。西側商業街帶來商販叫賣，北面轉職大廳的高柱投下長影，南側競技場入口傳來歡呼，東面拍賣場掛著醒目的紅布棚。廣場石板被長年腳步磨得發亮，水渠邊放著花籃和舊節慶旗座。城鎮節奏在此最為穩定，所有遠行、訓練、交易與休息都能在聲音中找到方向。',
     exits: [
       { direction: 'west', targetRoomId: 'market_street', description: '回到商業街' },
       { direction: 'north', targetRoomId: 'class_change_hall', description: '轉職大廳的宏偉大門' },
@@ -2476,7 +2474,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'class_change_hall.png',
     imagePrompt: '轉職大廳 in lakeside_town, town service class hall with four profession pillars, ritual circle, mentor alcoves and soft magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著盾斧、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；旅人可在此詢問二轉、檢查技能路線，或 觀察 柱腳找到各職業試煉提示。牆邊展示初始職業與二轉武具樣本，地面箭紋標出各導師區域，讓旅人能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免旅人未準備好就前往高危區域，也方便回頭確認未完成職業任務',
+      '轉職大廳位於城鎮廣場北側，四根高柱支起穹頂，柱面刻著劍、杖、弓與聖徽，南面廣場水聲從開門處傳入，東側走廊連向公會大廳。大廳中央有圓形石紋，燈火沿符線緩慢流動，四周擺放導師座椅、訓練木牌與舊誓詞。地面被許多靴印磨成暗亮環形，像不同道路在此短暫交會後重新分開。整個空間安靜而莊重，帶著選擇前的重量。',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
       { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2504,7 +2502,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'arena_entrance.png',
     imagePrompt: '競技場入口 in lakeside_town, town service combat training room with circular arena gate, challenge board, torchlight and cheering crowd, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內通往正式競技城區；旅人可在此報名、查看賽程、完成戰鬥教學登記，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全入口，失敗者會從醫護通道返回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前閱讀規則，並熟悉屍體搜刮流程與裝備耐久消耗',
+      '競技場入口聳立在城鎮廣場南側，圓形銅門鑲著磨亮的勝場徽記，門後傳出觀眾席歡呼、木劍碰撞和沙地鼓聲。北面廣場噴泉可回望，門前告示板貼著賽程、報名名冊與安全條例，旁邊有傷藥架和洗砂水桶。火把照亮排隊欄杆與被踩硬的石階，地上散著斷木劍碎屑。此處仍屬城鎮安全邊緣，卻已能感到正式競技區的熱度。',
     exits: [
       { direction: 'north', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
     ],
