@@ -112,9 +112,12 @@ import type { LootDistributionMode } from './party.js';
 import type { MonsterInstance } from './world.js';
 import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, GroundItem } from '@game/shared';
 import {
-  cmdAttack, cmdSkill, cmdSkillUpgrade, cmdDefend, cmdEscape,
-  cmdMount, cmdMountedCharge, cmdMounted, cmdMountedIntercept,
+  cmdAttack, cmdSkill,
 } from './commands/cmd-combat.js';
+import { cmdSkillUpgrade } from './commands/cmd-combat-skills.js';
+import {
+  cmdDefend, cmdEscape, cmdMount, cmdMounted, cmdMountedCharge, cmdMountedIntercept,
+} from './commands/cmd-combat-actions.js';
 import { cmdInspect } from './commands/cmd-inspect.js';
 import {
   cmdAchievement, cmdAppearance, cmdCodex, cmdLeaderboard,
