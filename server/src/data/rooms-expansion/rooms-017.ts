@@ -280,7 +280,7 @@ amber_forest_deep_amber_core: {
     image: 'silverpine_range_entry_claim.png',
     imagePrompt: '山脈入口界樁 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
     description:
-      '山脈入口界樁位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '山脈入口界樁位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'east', targetRoomId: 'silverpine_range_vein_path', description: '銀脈山徑在東側' },
       { direction: 'north', targetRoomId: 'silverpine_range_snowline_gate', description: '雪線門在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -306,7 +306,7 @@ silverpine_range_vein_path: {
     image: 'silverpine_range_vein_path.png',
     imagePrompt: '銀脈山徑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '銀脈山徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '銀脈山徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁' },
       { direction: 'east', targetRoomId: 'silverpine_range_herb_shelf', description: '寒草岩層在東側' },
@@ -333,7 +333,7 @@ silverpine_range_herb_shelf: {
     image: 'silverpine_range_herb_shelf.png',
     imagePrompt: '寒草岩層 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '寒草岩層位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '寒草岩層位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_vein_path', description: '回到銀脈山徑' },
       { direction: 'east', targetRoomId: 'silverpine_range_water_pocket', description: '融雪水窪在東側' },
@@ -360,7 +360,7 @@ silverpine_range_water_pocket: {
     image: 'silverpine_range_water_pocket.png',
     imagePrompt: '融雪水窪 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '融雪水窪位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '融雪水窪位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層' },
       { direction: 'east', targetRoomId: 'silverpine_range_beast_scrape', description: '獸痕雪坡在東側' },
@@ -387,7 +387,7 @@ silverpine_range_beast_scrape: {
     image: 'silverpine_range_beast_scrape.png',
     imagePrompt: '獸痕雪坡 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '獸痕雪坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '獸痕雪坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
       { direction: 'east', targetRoomId: 'silverpine_range_relic_pit', description: '古礦遺坑在東側' },
@@ -414,7 +414,7 @@ silverpine_range_relic_pit: {
     image: 'silverpine_range_relic_pit.png',
     imagePrompt: '古礦遺坑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '古礦遺坑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '古礦遺坑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡' },
       { direction: 'south', targetRoomId: 'silverpine_range_crystal_scree', description: '晶石碎坡在南側' },
@@ -440,7 +440,7 @@ silverpine_range_snowline_gate: {
     image: 'silverpine_range_snowline_gate.png',
     imagePrompt: '雪線木門 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '雪線木門位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '雪線木門位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'south', targetRoomId: 'silverpine_range_entry_claim', description: '回到山脈入口界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'silverpine_range_moonneedle_pines', description: '月針松林在東側' },
@@ -466,7 +466,7 @@ silverpine_range_moonneedle_pines: {
     image: 'silverpine_range_moonneedle_pines.png',
     imagePrompt: '月針松林 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '月針松林位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '月針松林位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_snowline_gate', description: '回到雪線木門' },
       { direction: 'south', targetRoomId: 'silverpine_range_vein_path', description: '落回銀脈山徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -494,7 +494,7 @@ silverpine_range_mica_switchback: {
     image: 'silverpine_range_mica_switchback.png',
     imagePrompt: '雲母折道 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '雲母折道位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '雲母折道位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
       { direction: 'south', targetRoomId: 'silverpine_range_herb_shelf', description: '回到寒草岩層', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -521,7 +521,7 @@ silverpine_range_frost_herb_ledge: {
     image: 'silverpine_range_frost_herb_ledge.png',
     imagePrompt: '霜草岩棚 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '霜草岩棚位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '霜草岩棚位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'south', targetRoomId: 'silverpine_range_water_pocket', description: '回到融雪水窪' },
       { direction: 'east', targetRoomId: 'silverpine_range_avalanche_bowl', description: '雪崩凹地在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -547,7 +547,7 @@ silverpine_range_goat_track: {
     image: 'silverpine_range_goat_track.png',
     imagePrompt: '山羊窄徑 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '山羊窄徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '山羊窄徑位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'south', targetRoomId: 'silverpine_range_beast_scrape', description: '回到獸痕雪坡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -580,7 +580,7 @@ silverpine_range_crystal_scree: {
     image: 'silverpine_range_crystal_scree.png',
     imagePrompt: '晶石碎坡 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '晶石碎坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '晶石碎坡位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'north', targetRoomId: 'silverpine_range_relic_pit', description: '回到古礦遺坑' },
       { direction: 'west', targetRoomId: 'silverpine_range_goat_track', description: '山徑回到山羊窄徑' },
@@ -607,7 +607,7 @@ silverpine_range_windcut_bridge: {
     image: 'silverpine_range_windcut_bridge.png',
     imagePrompt: '風切木橋 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '風切木橋位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '風切木橋位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'north', targetRoomId: 'silverpine_range_moonneedle_pines', description: '回到月針松林' },
       { direction: 'east', targetRoomId: 'silverpine_range_fill_n6_n11', description: '風削石階通往冰玻洞側裂縫' },
@@ -634,7 +634,7 @@ silverpine_range_old_miner_camp: {
     image: 'silverpine_range_old_miner_camp.png',
     imagePrompt: '舊礦工營 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '舊礦工營位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '舊礦工營位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'west', targetRoomId: 'silverpine_range_mica_switchback', description: '回到雲母折道' },
       { direction: 'east', targetRoomId: 'silverpine_range_goat_track', description: '山羊窄徑在東側' },
@@ -662,7 +662,7 @@ silverpine_range_iceglass_cavern: {
     image: 'silverpine_range_iceglass_cavern.png',
     imagePrompt: '冰玻洞 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '冰玻洞位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '冰玻洞位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'north', targetRoomId: 'silverpine_range_old_miner_camp', description: '北側廢軌坡回到舊礦工營' },
       { direction: 'west', targetRoomId: 'silverpine_range_fill_n6_n11', description: '西側側裂縫通往風切木橋' },
@@ -689,7 +689,7 @@ silverpine_range_eagle_spire: {
     image: 'silverpine_range_eagle_spire.png',
     imagePrompt: '鷹巢尖峰 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '鷹巢尖峰位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '鷹巢尖峰位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       {
         direction: 'west',
@@ -722,7 +722,7 @@ silverpine_range_silver_sap_grove: {
     image: 'silverpine_range_silver_sap_grove.png',
     imagePrompt: '銀脂松圃 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '銀脂松圃位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '銀脂松圃位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'north', targetRoomId: 'silverpine_range_windcut_bridge', description: '回到風切木橋' },
       { direction: 'east', targetRoomId: 'silverpine_range_fill_n6_n10', description: '東側銀脂雪道通往觀星脊' },
@@ -748,7 +748,7 @@ silverpine_range_avalanche_bowl: {
     image: 'silverpine_range_avalanche_bowl.png',
     imagePrompt: '雪崩凹地 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '雪崩凹地位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。南側霜草岩棚被新雪崩掩住，只能從霜草岩棚東側踏入凹地。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '雪崩凹地位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。南側霜草岩棚被新雪崩掩住，只能從霜草岩棚東側踏入凹地。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       {
         direction: 'west',
@@ -786,7 +786,7 @@ silverpine_range_starwatch_ridge: {
     image: 'silverpine_range_starwatch_ridge.png',
     imagePrompt: '觀星脊 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '觀星脊位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '觀星脊位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       {
         direction: 'north',
@@ -817,7 +817,7 @@ silverpine_range_high_mine_core: {
     image: 'silverpine_range_high_mine_core.png',
     imagePrompt: '高山礦核 in silverpine_range, silver pine mountain range with moonlit pines, mica cliffs, snow paths, rare ore veins, frost herbs, old miner camp, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '高山礦核位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 search 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
+      '高山礦核位於銀松山脈的高寒資源線上，銀葉松、雲母岩層、融雪水痕、礦車殘軌與夜裡反光的星霜共同標出崎嶇採集路線。這裡是高階採礦與藥草區，旅人可以 觀察 雪面足跡、礦脈裂縫、松脂結晶和風向旗來判斷路況，也能 搜索 石棚、舊礦工營、冰玻洞與觀星脊尋找稀有礦石和寒地草藥。若隊伍忽略雪崩聲、鷹巢陰影與冰霜元素凝結，雪狼、霜巨人、晶化守衛與冰龍幼崽會封鎖窄徑；若穩定維持繩標、火把與採集負重，則能抵達高山礦核並帶回銀松礦樣、霜草束、冰晶標本與完整巡山記錄，並確認回程繩橋仍可通行',
     exits: [
       { direction: 'north', targetRoomId: 'silverpine_range_starwatch_ridge', description: '回到觀星脊' },
     ],
@@ -845,7 +845,7 @@ silverpine_range_high_mine_core: {
     image: 'saltwind_flats_tide_gate.png',
     imagePrompt: '退潮入口樁 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain coast, clear lantern light',
     description:
-      '退潮入口樁位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '退潮入口樁位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'east', targetRoomId: 'saltwind_flats_white_ripple', description: '白波鹽面在東側' },
       { direction: 'north', targetRoomId: 'saltwind_flats_mist_marker', description: '霧中路標在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -871,7 +871,7 @@ saltwind_flats_white_ripple: {
     image: 'saltwind_flats_white_ripple.png',
     imagePrompt: '白波鹽面 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '白波鹽面位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '白波鹽面位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁' },
       { direction: 'east', targetRoomId: 'saltwind_flats_brine_pool', description: '鹽水潮池在東側' },
@@ -898,7 +898,7 @@ saltwind_flats_brine_pool: {
     image: 'saltwind_flats_brine_pool.png',
     imagePrompt: '鹽水潮池 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '鹽水潮池位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '鹽水潮池位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面' },
       {
@@ -931,7 +931,7 @@ saltwind_flats_saltgrass_strip: {
     image: 'saltwind_flats_saltgrass_strip.png',
     imagePrompt: '鹽草帶 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '鹽草帶位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '鹽草帶位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_white_ripple', description: '回到白波鹽面', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_driftwood_post', description: '漂木哨柱在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -958,7 +958,7 @@ saltwind_flats_driftwood_post: {
     image: 'saltwind_flats_driftwood_post.png',
     imagePrompt: '漂木哨柱 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '漂木哨柱位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '漂木哨柱位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       {
         direction: 'west',
@@ -991,7 +991,7 @@ saltwind_flats_crab_march: {
     image: 'saltwind_flats_crab_march.png',
     imagePrompt: '蟹行淺灘 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '蟹行淺灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '蟹行淺灘位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'north', targetRoomId: 'saltwind_flats_brine_pool', description: '回到鹽水潮池', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_blue_mud_shelf', description: '藍泥層在東側' },
@@ -1017,7 +1017,7 @@ saltwind_flats_mist_marker: {
     image: 'saltwind_flats_mist_marker.png',
     imagePrompt: '霧中路標 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '霧中路標位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '霧中路標位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_tide_gate', description: '回到退潮入口樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_saltgrass_strip', description: '鹽草帶在東側' },
@@ -1044,7 +1044,7 @@ saltwind_flats_bone_pier: {
     image: 'saltwind_flats_bone_pier.png',
     imagePrompt: '魚骨棧橋 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '魚骨棧橋位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '魚骨棧橋位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -1077,7 +1077,7 @@ saltwind_flats_pirate_blind: {
     image: 'saltwind_flats_pirate_blind.png',
     imagePrompt: '海盜隱棚 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain coast, clear lantern light',
     description:
-      '海盜隱棚位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。西側鹽草帶與北側玻璃鹽田都被潮霧遮成單向入口，必須從鹽草帶或玻璃鹽田進入隱棚。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '海盜隱棚位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。西側鹽草帶與北側玻璃鹽田都被潮霧遮成單向入口，必須從鹽草帶或玻璃鹽田進入隱棚。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       {
         direction: 'east',
@@ -1108,7 +1108,7 @@ saltwind_flats_glass_salt_field: {
     image: 'saltwind_flats_glass_salt_field.png',
     imagePrompt: '玻璃鹽田 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '玻璃鹽田位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '玻璃鹽田位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'south', targetRoomId: 'saltwind_flats_mist_marker', description: '回到霧中路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'saltwind_flats_pirate_blind', description: '海盜隱棚在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1135,7 +1135,7 @@ saltwind_flats_shallow_cut: {
     image: 'saltwind_flats_shallow_cut.png',
     imagePrompt: '淺水裂道 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain coast, clear lantern light',
     description:
-      '淺水裂道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '淺水裂道位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_driftwood_post', description: '回到漂木哨柱' },
       { direction: 'east', targetRoomId: 'saltwind_flats_sea_serpent_track', description: '海蛇痕在東側' },
@@ -1168,7 +1168,7 @@ saltwind_flats_fisher_cache: {
     image: 'saltwind_flats_fisher_cache.png',
     imagePrompt: '漁夫藏點 in saltwind_flats, salt flats coast after low tide with white salt crust, brine pools, driftwood posts, fishbone pier, sea mist, pirate watch shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain coast, clear lantern light',
     description:
-      '漁夫藏點位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 search 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
+      '漁夫藏點位於鹽風灘退潮後露出的白色鹽灘上，薄霧、鹽晶裂紋、魚骨棧橋、漂木哨柱與潮水留下的藍泥共同標出危險但開闊的海岸路線。這裡是低中階野外遭遇與捕魚採集點，旅人可以 觀察 鹽面波紋、海盜暗記、蟹行痕與霧鐘方向來判斷潮汐，也能 搜索 破舟、漁夫藏點、玻璃鹽田和潮望廢墟尋找補給線索。若隊伍忽略退潮時間、海蛇拖痕與霧中哨兵，海盜、深海魚人、海蛇與冰霧元素會從潮池兩側包抄；若穩定沿路標、鐘聲與乾鹽高地推進，則能抵達深鹽眼並安全返回入口樁，同時帶回潮汐紀錄與乾鹽補給',
     exits: [
       { direction: 'west', targetRoomId: 'saltwind_flats_bone_pier', description: '回到魚骨棧橋' },
       {

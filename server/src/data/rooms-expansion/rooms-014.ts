@@ -33,7 +33,7 @@ time_ruins_epoch_gate: {
     image: 'time_ruins_epoch_gate.png',
     imagePrompt: '紀元入口 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '紀元入口位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '紀元入口位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'east', targetRoomId: 'time_ruins_broken_clockway', description: '碎鐘路通往廢墟' },
       { direction: 'north', targetRoomId: 'time_ruins_reverse_riverbank', description: '倒流河岸在北側' },
@@ -59,7 +59,7 @@ time_ruins_broken_clockway: {
     image: 'time_ruins_broken_clockway.png',
     imagePrompt: '碎鐘路 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '碎鐘路位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '碎鐘路位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_epoch_gate', description: '碎鐘路回到紀元入口' },
       { direction: 'east', targetRoomId: 'time_ruins_hourglass_square', description: '沙漏廣場在前方' },
@@ -86,7 +86,7 @@ time_ruins_reverse_riverbank: {
     image: 'time_ruins_reverse_riverbank.png',
     imagePrompt: '倒流河岸 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '倒流河岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '倒流河岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'south', targetRoomId: 'time_ruins_epoch_gate', description: '倒流河岸回到紀元入口' },
       { direction: 'east', targetRoomId: 'time_ruins_memory_reef', description: '記憶礁岸在東側' },
@@ -112,7 +112,7 @@ time_ruins_memory_reef: {
     image: 'time_ruins_memory_reef.png',
     imagePrompt: '記憶礁岸 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '記憶礁岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '記憶礁岸位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_reverse_riverbank', description: '記憶礁岸回到倒流河' },
       { direction: 'east', targetRoomId: 'time_ruins_past_market', description: '舊日市集殘影在東側' },
@@ -139,7 +139,7 @@ time_ruins_hourglass_square: {
     image: 'time_ruins_hourglass_square.png',
     imagePrompt: '沙漏廣場 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '沙漏廣場位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '沙漏廣場位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_broken_clockway', description: '沙漏廣場回到碎鐘路' },
       { direction: 'north', targetRoomId: 'time_ruins_memory_reef', description: '記憶坡回到礁岸' },
@@ -166,7 +166,7 @@ time_ruins_future_ash: {
     image: 'time_ruins_future_ash.png',
     imagePrompt: '未來灰燼 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '未來灰燼位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '未來灰燼位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'north', targetRoomId: 'time_ruins_broken_clockway', description: '未來灰燼回到碎鐘路' },
       { direction: 'east', targetRoomId: 'time_ruins_ruined_observatory', description: '毀壞觀測臺在東側' },
@@ -192,7 +192,7 @@ time_ruins_past_market: {
     image: 'time_ruins_past_market.png',
     imagePrompt: '舊日市集 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '舊日市集位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '舊日市集位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_memory_reef', description: '市集殘影回到記憶礁岸' },
       { direction: 'east', targetRoomId: 'time_ruins_sundial_court', description: '日晷庭在東側' },
@@ -218,7 +218,7 @@ time_ruins_stalled_bell_tower: {
     image: 'time_ruins_stalled_bell_tower.png',
     imagePrompt: '停擺鐘塔 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '停擺鐘塔位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '停擺鐘塔位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_hourglass_square', description: '停擺鐘塔回到沙漏廣場' },
       { direction: 'east', targetRoomId: 'time_ruins_paradox_cloister', description: '悖論迴廊在東側' },
@@ -245,7 +245,7 @@ time_ruins_ruined_observatory: {
     image: 'time_ruins_ruined_observatory.png',
     imagePrompt: '毀壞觀測臺 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '毀壞觀測臺位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '毀壞觀測臺位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_future_ash', description: '觀測臺回到未來灰燼' },
       { direction: 'north', targetRoomId: 'time_ruins_stalled_bell_tower', description: '鐘塔階回到停擺鐘塔' },
@@ -272,7 +272,7 @@ time_ruins_sundial_court: {
     image: 'time_ruins_sundial_court.png',
     imagePrompt: '日晷庭 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '日晷庭位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '日晷庭位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_past_market', description: '日晷庭回到舊日市集' },
       { direction: 'east', targetRoomId: 'time_ruins_split_statue', description: '分裂雕像在東側' },
@@ -298,7 +298,7 @@ time_ruins_paradox_cloister: {
     image: 'time_ruins_paradox_cloister.png',
     imagePrompt: '悖論迴廊 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '悖論迴廊位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '悖論迴廊位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_stalled_bell_tower', description: '悖論迴廊回到停擺鐘塔' },
       { direction: 'north', targetRoomId: 'time_ruins_split_statue', description: '錯位階通往分裂雕像' },
@@ -325,7 +325,7 @@ time_ruins_lightning_record: {
     image: 'time_ruins_lightning_record.png',
     imagePrompt: '雷刻紀錄室 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '雷刻紀錄室位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '雷刻紀錄室位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_ruined_observatory', description: '雷刻室回到觀測臺' },
       { direction: 'east', targetRoomId: 'time_ruins_looping_bridge', description: '電弧路通往循環橋' },
@@ -351,7 +351,7 @@ time_ruins_split_statue: {
     image: 'time_ruins_split_statue.png',
     imagePrompt: '分裂雕像 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '分裂雕像位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '分裂雕像位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_sundial_court', description: '分裂雕像回到日晷庭' },
       { direction: 'south', targetRoomId: 'time_ruins_paradox_cloister', description: '錯位階回到悖論迴廊' },
@@ -378,7 +378,7 @@ time_ruins_looping_bridge: {
     image: 'time_ruins_looping_bridge.png',
     imagePrompt: '循環橋 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '循環橋位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側電弧路在循環橋上只會把影子送回雷刻室，本體必須由雷刻紀錄室進入循環橋。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '循環橋位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側電弧路在循環橋上只會把影子送回雷刻室，本體必須由雷刻紀錄室進入循環橋。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_paradox_cloister', description: '循環橋回到悖論迴廊' },
       { direction: 'east', targetRoomId: 'time_ruins_timeline_archive', description: '時間線檔案館在東側' },
@@ -404,7 +404,7 @@ time_ruins_agefall_steps: {
     image: 'time_ruins_agefall_steps.png',
     imagePrompt: '歲落階 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '歲落階位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '歲落階位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_split_statue', description: '歲落階回到分裂雕像' },
       { direction: 'east', targetRoomId: 'time_ruins_clockheart_gate', description: '鐘心門在東側' },
@@ -430,7 +430,7 @@ time_ruins_timeline_archive: {
     image: 'time_ruins_timeline_archive.png',
     imagePrompt: '時間線檔案館 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '時間線檔案館位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '時間線檔案館位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_looping_bridge', description: '檔案館回到循環橋' },
       { direction: 'north', targetRoomId: 'time_ruins_clockheart_gate', description: '索引階通往鐘心門' },
@@ -457,7 +457,7 @@ time_ruins_clockheart_gate: {
     image: 'time_ruins_clockheart_gate.png',
     imagePrompt: '鐘心門 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '鐘心門位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '鐘心門位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_agefall_steps', description: '鐘心門回到歲落階' },
       { direction: 'south', targetRoomId: 'time_ruins_timeline_archive', description: '索引階回到檔案館' },
@@ -484,7 +484,7 @@ time_ruins_causality_well: {
     image: 'time_ruins_causality_well.png',
     imagePrompt: '因果井 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '因果井位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '因果井位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_timeline_archive', description: '因果井回到時間線檔案館' },
       { direction: 'east', targetRoomId: 'time_ruins_worldboss_minute_zero', description: '因果裂縫通往零分核心' },
@@ -510,7 +510,7 @@ time_ruins_worldboss_minute_zero: {
     image: 'time_ruins_worldboss_minute_zero.png',
     imagePrompt: '零分核心 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '零分核心位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側因果裂縫在零分核心旁閉合成單向時間疤，只能從因果井抵達核心。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '零分核心位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。南側因果裂縫在零分核心旁閉合成單向時間疤，只能從因果井抵達核心。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_clockheart_gate', description: '零分核心回到鐘心門' },
       { direction: 'east', targetRoomId: 'time_ruins_afterimage_void', description: '餘影虛空在核心後方' },
@@ -537,7 +537,7 @@ time_ruins_afterimage_void: {
     image: 'time_ruins_afterimage_void.png',
     imagePrompt: '餘影虛空 in time_ruins, shattered clock towers, reversed rivers, fractured timelines, glowing hourglasses, paradox ruins and storm-dark magic, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '餘影虛空位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 search 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
+      '餘影虛空位於時間廢墟的破碎年代層中，倒流河、停擺鐘塔、未來灰燼與舊日市集同時存在，讓每條路都可能通向不同時間殘影。這裡是終局高階路線節點，旅人可以 觀察 鐘面裂縫、沙漏流向、雷刻紀錄與因果井波紋來判斷下一段時間是否穩定，也能 搜索 檔案、雕像、日晷和觀測臺尋找世界王核心線索。若隊伍忽略循環橋、悖論迴廊和錯位影子，混沌生物、巫妖殘影、暗影惡魔與古龍時間影會把隊伍拆散；若穩定標記時間錨，則能逐步靠近零分核心，並確認隊伍攜帶的時間錨仍能指向原本入口與撤退年代',
     exits: [
       { direction: 'west', targetRoomId: 'time_ruins_worldboss_minute_zero', description: '餘影虛空回到零分核心' },
     ],
@@ -562,7 +562,7 @@ astral_wastes_reality_gate: {
     image: 'astral_wastes_reality_gate.png',
     imagePrompt: '現實邊門 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '現實邊門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '現實邊門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'east', targetRoomId: 'astral_wastes_starsand_track', description: '星砂路通往荒原' },
       { direction: 'north', targetRoomId: 'astral_wastes_anchor_stone', description: '錨石丘在北側' },
@@ -588,7 +588,7 @@ astral_wastes_starsand_track: {
     image: 'astral_wastes_starsand_track.png',
     imagePrompt: '星砂路 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星砂路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星砂路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_reality_gate', description: '星砂路回到現實邊門' },
       { direction: 'east', targetRoomId: 'astral_wastes_bent_horizon', description: '彎曲地平線在前方' },
@@ -615,7 +615,7 @@ astral_wastes_anchor_stone: {
     image: 'astral_wastes_anchor_stone.png',
     imagePrompt: '錨石丘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '錨石丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '錨石丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'south', targetRoomId: 'astral_wastes_reality_gate', description: '錨石丘回到現實邊門' },
       { direction: 'east', targetRoomId: 'astral_wastes_comet_bones', description: '彗骨灘在東側' },
@@ -641,7 +641,7 @@ astral_wastes_comet_bones: {
     image: 'astral_wastes_comet_bones.png',
     imagePrompt: '彗骨灘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '彗骨灘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '彗骨灘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_anchor_stone', description: '彗骨灘回到錨石丘' },
       { direction: 'east', targetRoomId: 'astral_wastes_mirror_void', description: '鏡面虛空在東側' },
@@ -668,7 +668,7 @@ astral_wastes_bent_horizon: {
     image: 'astral_wastes_bent_horizon.png',
     imagePrompt: '彎曲地平線 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '彎曲地平線位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '彎曲地平線位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_starsand_track', description: '地平線回到星砂路' },
       { direction: 'north', targetRoomId: 'astral_wastes_comet_bones', description: '骨砂坡回到彗骨灘' },
@@ -695,7 +695,7 @@ astral_wastes_lightless_dune: {
     image: 'astral_wastes_lightless_dune.png',
     imagePrompt: '無光沙丘 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '無光沙丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '無光沙丘位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'north', targetRoomId: 'astral_wastes_starsand_track', description: '無光沙丘回到星砂路' },
       { direction: 'east', targetRoomId: 'astral_wastes_echo_crater', description: '回音坑在東側' },
@@ -721,7 +721,7 @@ astral_wastes_mirror_void: {
     image: 'astral_wastes_mirror_void.png',
     imagePrompt: '鏡面虛空 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '鏡面虛空位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '鏡面虛空位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_comet_bones', description: '鏡面虛空回到彗骨灘' },
       { direction: 'east', targetRoomId: 'astral_wastes_pale_shrine', description: '蒼白小祠在東側' },
@@ -747,7 +747,7 @@ astral_wastes_floating_obelisk: {
     image: 'astral_wastes_floating_obelisk.png',
     imagePrompt: '漂浮方尖碑 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '漂浮方尖碑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '漂浮方尖碑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_bent_horizon', description: '方尖碑回到彎曲地平線' },
       { direction: 'east', targetRoomId: 'astral_wastes_gravity_sink', description: '重力沉井在東側' },
@@ -774,7 +774,7 @@ astral_wastes_echo_crater: {
     image: 'astral_wastes_echo_crater.png',
     imagePrompt: '回音坑 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '回音坑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '回音坑位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_lightless_dune', description: '回音坑回到無光沙丘' },
       { direction: 'north', targetRoomId: 'astral_wastes_floating_obelisk', description: '碑影坡回到方尖碑' },
@@ -801,7 +801,7 @@ astral_wastes_pale_shrine: {
     image: 'astral_wastes_pale_shrine.png',
     imagePrompt: '蒼白小祠 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '蒼白小祠位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '蒼白小祠位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_mirror_void', description: '蒼白小祠回到鏡面虛空' },
       { direction: 'east', targetRoomId: 'astral_wastes_astral_lake', description: '星界湖在東側' },
@@ -827,7 +827,7 @@ astral_wastes_gravity_sink: {
     image: 'astral_wastes_gravity_sink.png',
     imagePrompt: '重力沉井 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '重力沉井位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '重力沉井位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_floating_obelisk', description: '重力沉井回到方尖碑' },
       { direction: 'north', targetRoomId: 'astral_wastes_astral_lake', description: '反重力坡通往星界湖' },
@@ -854,7 +854,7 @@ astral_wastes_shattered_moonroad: {
     image: 'astral_wastes_shattered_moonroad.png',
     imagePrompt: '碎月路 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '碎月路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '碎月路位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_echo_crater', description: '碎月路回到回音坑' },
       { direction: 'east', targetRoomId: 'astral_wastes_star_silt_basin', description: '星泥盆地在東側' },
@@ -880,7 +880,7 @@ astral_wastes_astral_lake: {
     image: 'astral_wastes_astral_lake.png',
     imagePrompt: '星界湖 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星界湖位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星界湖位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_pale_shrine', description: '星界湖回到蒼白小祠' },
       { direction: 'south', targetRoomId: 'astral_wastes_gravity_sink', description: '反重力坡回到沉井' },
@@ -907,7 +907,7 @@ astral_wastes_void_rift: {
     image: 'astral_wastes_void_rift.png',
     imagePrompt: '虛空裂縫 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '虛空裂縫位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '虛空裂縫位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_gravity_sink', description: '虛空裂縫回到重力沉井' },
       { direction: 'east', targetRoomId: 'astral_wastes_black_star_gate', description: '黑星門在東側' },
@@ -934,7 +934,7 @@ astral_wastes_star_silt_basin: {
     image: 'astral_wastes_star_silt_basin.png',
     imagePrompt: '星泥盆地 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星泥盆地位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星泥盆地位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_shattered_moonroad', description: '星泥盆地回到碎月路' },
       { direction: 'north', targetRoomId: 'astral_wastes_void_rift', description: '裂光坡回到虛空裂縫' },
@@ -961,7 +961,7 @@ astral_wastes_lost_constellation: {
     image: 'astral_wastes_lost_constellation.png',
     imagePrompt: '失落星座 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '失落星座位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '失落星座位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_astral_lake', description: '失落星座回到星界湖' },
       { direction: 'south', targetRoomId: 'astral_wastes_black_star_gate', description: '星線落向黑星門' },
@@ -987,7 +987,7 @@ astral_wastes_black_star_gate: {
     image: 'astral_wastes_black_star_gate.png',
     imagePrompt: '黑星門 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '黑星門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '黑星門位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_void_rift', description: '黑星門回到虛空裂縫' },
       { direction: 'north', targetRoomId: 'astral_wastes_lost_constellation', description: '星線回到失落星座' },
@@ -1014,7 +1014,7 @@ astral_wastes_levitating_ruins: {
     image: 'astral_wastes_levitating_ruins.png',
     imagePrompt: '懸浮遺跡 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '懸浮遺跡位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '懸浮遺跡位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_star_silt_basin', description: '懸浮遺跡回到星泥盆地' },
       { direction: 'east', targetRoomId: 'astral_wastes_worldcore_waste', description: '浮石橋通往荒原核心' },
@@ -1040,7 +1040,7 @@ astral_wastes_worldcore_waste: {
     image: 'astral_wastes_worldcore_waste.png',
     imagePrompt: '星界荒原核心 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '星界荒原核心位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。南側浮石橋在核心重力下只剩漂浮殘影，只能由懸浮遺跡踏入荒原核心。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '星界荒原核心位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。南側浮石橋在核心重力下只剩漂浮殘影，只能由懸浮遺跡踏入荒原核心。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_black_star_gate', description: '荒原核心回到黑星門' },
       { direction: 'east', targetRoomId: 'astral_wastes_outer_dark', description: '外層黑域在核心外側' },
@@ -1067,7 +1067,7 @@ astral_wastes_outer_dark: {
     image: 'astral_wastes_outer_dark.png',
     imagePrompt: '外層黑域 in astral_wastes, surreal astral wasteland at the edge of reality, star sand, floating rocks, void rifts, black stars and alien light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain sand, clear lantern light',
     description:
-      '外層黑域位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 search 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
+      '外層黑域位於星界荒原沒有固定地平線的邊界地帶，星砂、漂浮岩塊、虛空裂縫與失落星座在同一片荒原上互相重疊，讓方向感變得極不可靠。這裡是終局高階路線節點，旅人可以 觀察 星砂流向、黑星門紋、重力沉井與虛空裂縫來判斷現實錨是否仍然穩定，也能 搜索 彗骨、星泥、懸浮遺跡和蒼白小祠尋找異界線索。若隊伍忽略重力翻轉、外層黑域和鏡面虛空，虛空行者、混沌生物、暗影惡魔與古龍星影會撕開隊形；若穩定標記現實錨，則能逐步接近星界荒原核心，並確認現實錨沒有被外層黑域拖離原本座標',
     exits: [
       { direction: 'west', targetRoomId: 'astral_wastes_worldcore_waste', description: '外層黑域回到星界荒原核心' },
     ],
@@ -1093,7 +1093,7 @@ final_battleground_war_gate: {
     image: 'final_battleground_war_gate.png',
     imagePrompt: '終戰入口 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '終戰入口位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '終戰入口位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'east', targetRoomId: 'final_battleground_broken_banner_field', description: '破旗原在前方' },
       { direction: 'north', targetRoomId: 'final_battleground_king_cairn', description: '王骨石堆在北側' },
@@ -1119,7 +1119,7 @@ final_battleground_broken_banner_field: {
     image: 'final_battleground_broken_banner_field.png',
     imagePrompt: '破旗原 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '破旗原位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '破旗原位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_war_gate', description: '破旗原回到終戰入口' },
       { direction: 'east', targetRoomId: 'final_battleground_siege_trench', description: '攻城壕溝在東側' },
@@ -1146,7 +1146,7 @@ final_battleground_king_cairn: {
     image: 'final_battleground_king_cairn.png',
     imagePrompt: '王骨石堆 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '王骨石堆位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '王骨石堆位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'south', targetRoomId: 'final_battleground_war_gate', description: '王骨石堆回到終戰入口' },
       { direction: 'east', targetRoomId: 'final_battleground_oath_circle', description: '誓約石圈在東側' },
@@ -1172,7 +1172,7 @@ final_battleground_oath_circle: {
     image: 'final_battleground_oath_circle.png',
     imagePrompt: '誓約石圈 in final_battleground, apocalyptic battlefield of kings and demon gods, broken banners, black fire, angelic light, siege wrecks and cracked earth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain battlefield, clear lantern light',
     description:
-      '誓約石圈位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 search 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
+      '誓約石圈位於終焉戰場的殘破荒原上，諸王軍旗、魔神爪痕、墜天白光與黑焰前線仍停在最後交戰的一刻，空氣中沒有風卻能聽見戰鼓回音。這裡是終局戰場與王國戰爭高危節點，旅人可以 觀察 旗幟、血雨、攻城殘骸與神傷裂縫來判斷敵軍推進方向，也能 搜索 王骨、軍令、破甲和祭火尋找世界王線索。若隊伍忽略側翼、裂世縫與黑焰壓力，惡魔將軍、墮天使、巫妖殘影和混沌生物會把戰線切斷；若穩定整隊推進，則能逐步抵達終末軍旗與戰後寂地，並確認撤退路線沒有被新一輪黑焰與軍魂封鎖整條戰場線',
     exits: [
       { direction: 'west', targetRoomId: 'final_battleground_king_cairn', description: '誓約石圈回到王骨石堆' },
       { direction: 'east', targetRoomId: 'final_battleground_sunless_chapel', description: '無日禮拜堂在東側' },

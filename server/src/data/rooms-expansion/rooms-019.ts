@@ -8,7 +8,7 @@ ember_march_bonekiln_pass: {
     image: 'ember_march_bonekiln_pass.png',
     imagePrompt: '骨窯隘口 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '骨窯隘口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。南側焦泉被骨窯熱流截斷，只能從焦泉東側推進到隘口。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_black_sand_basin', description: '西側骨窯隘口沿熔灰坡折返，穿過焦骨路標與蒸汽乾渠回到黑砂盆地', edgeKind: 'distant_route', edgeNote: '骨窯隘口回黑砂盆地需沿熔灰坡與蒸汽乾渠折返，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'ember_march_fallen_banner', description: '北側骨窯隘口沿熱風窄口上攀，穿過骨灰階坡與燒斷軍旗列回到倒旗坡', edgeKind: 'distant_route', edgeNote: '骨窯隘口回倒旗坡需沿熱風窄口與軍旗列上攀，實際路程長於相鄰一格。' },
@@ -35,7 +35,7 @@ ember_march_molten_toll: {
     image: 'ember_march_molten_toll.png',
     imagePrompt: '熔火關卡 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '熔火關卡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '熔火關卡位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_fallen_banner', description: '回到倒旗坡' },
       { direction: 'east', targetRoomId: 'ember_march_border_keep_shell', description: '東側熔火關卡沿熔渣稅道折上，穿過坍塌門洞與燒紅鐵拒馬抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '熔火關卡到邊堡外殼需沿熔渣稅道與坍塌門洞折上，實際路程長於相鄰一格。' },
@@ -61,7 +61,7 @@ ember_march_dragonprint_ridge: {
     image: 'ember_march_dragonprint_ridge.png',
     imagePrompt: '龍印脊 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '龍印脊位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '龍印脊位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_bonekiln_pass', description: '回到骨窯隘口' },
       { direction: 'north', targetRoomId: 'ember_march_border_keep_shell', description: '北側龍印脊沿龍爪熱脊攀升，避開噴火裂縫後從焦黑外牆缺口抵達邊堡外殼', edgeKind: 'distant_route', edgeNote: '龍印脊到邊堡外殼需沿龍爪熱脊與外牆缺口攀升，實際路程長於相鄰一格。' },
@@ -87,7 +87,7 @@ ember_march_border_keep_shell: {
     image: 'ember_march_border_keep_shell.png',
     imagePrompt: '邊堡外殼 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '邊堡外殼位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '邊堡外殼位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_molten_toll', description: '西側邊堡外殼沿坍塌門洞折返，穿過燒紅鐵拒馬與熔渣稅道回到熔火關卡', edgeKind: 'distant_route', edgeNote: '邊堡外殼回熔火關卡需沿門洞與熔渣稅道折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'ember_march_dragonprint_ridge', description: '南側邊堡外殼從焦黑外牆缺口下切，穿過噴火裂縫與龍爪熱脊回到龍印脊', edgeKind: 'distant_route', edgeNote: '邊堡外殼回龍印脊需沿外牆缺口與龍爪熱脊下切，實際路程長於相鄰一格。' },
@@ -114,7 +114,7 @@ ember_march_heartfire_breach: {
     image: 'ember_march_heartfire_breach.png',
     imagePrompt: '心火缺口 in ember_march, volcanic ash borderland with ember cracks, cinder roads, burned watchposts, slag bridge, war camp ruins, molten breach, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain ash, clear lantern light',
     description:
-      '心火缺口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 search 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
+      '心火缺口位於餘燼邊境火山灰覆蓋的過渡地帶，焦炭路、煙溝、熔裂縫、倒旗坡與被燒空的邊境堡壘共同標出危險的火線路線。這裡是高密度野外遭遇與開放衝突區，旅人可以 觀察 灰面足跡、軍旗殘布、熔岩溫度和哨站刻痕來判斷敵情，也能 搜索 戰營殘址、骨窯隘口、餘燼鍛台與邊堡外殼尋找補給線索。若隊伍忽略地縫火光、煙溝伏擊與龍印脊熱風，熔岩蟲、火元素、魔族士兵與炎龍騎士會封住通道；若穩定沿焦黑路標、灰堆高地與熔火關卡推進，則能抵達心火缺口並安全帶回邊境戰況記錄、熔渣樣本與撤退路線',
     exits: [
       { direction: 'west', targetRoomId: 'ember_march_border_keep_shell', description: '回到邊堡外殼' },
     ],
@@ -142,7 +142,7 @@ ember_march_heartfire_breach: {
     image: 'reef_of_bones_tide_gate.png',
     imagePrompt: '白骨潮門 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '白骨潮門位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '白骨潮門位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'east', targetRoomId: 'reef_of_bones_rib_shoal', description: '肋骨淺灘在東側' },
       { direction: 'north', targetRoomId: 'reef_of_bones_skull_marker', description: '骷髏航標在北側' },
@@ -168,7 +168,7 @@ reef_of_bones_rib_shoal: {
     image: 'reef_of_bones_rib_shoal.png',
     imagePrompt: '肋骨淺灘 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '肋骨淺灘位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '肋骨淺灘位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_tide_gate', description: '回到白骨潮門' },
       { direction: 'east', targetRoomId: 'reef_of_bones_wreck_bow', description: '沉船船首在東側' },
@@ -195,7 +195,7 @@ reef_of_bones_wreck_bow: {
     image: 'reef_of_bones_wreck_bow.png',
     imagePrompt: '沉船船首 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '沉船船首位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '沉船船首位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_rib_shoal', description: '回到肋骨淺灘' },
       { direction: 'east', targetRoomId: 'reef_of_bones_splinter_deck', description: '裂木甲板在東側' },
@@ -222,7 +222,7 @@ reef_of_bones_skull_marker: {
     image: 'reef_of_bones_skull_marker.png',
     imagePrompt: '骷髏航標 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '骷髏航標位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '骷髏航標位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'south', targetRoomId: 'reef_of_bones_tide_gate', description: '回到白骨潮門' },
       { direction: 'east', targetRoomId: 'reef_of_bones_cold_tide_pool', description: '冷潮池在東側' },
@@ -249,7 +249,7 @@ reef_of_bones_splinter_deck: {
     image: 'reef_of_bones_splinter_deck.png',
     imagePrompt: '裂木甲板 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '裂木甲板位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '裂木甲板位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_wreck_bow', description: '回到沉船船首' },
       { direction: 'north', targetRoomId: 'reef_of_bones_sunken_cabin', description: '沉沒船艙在北側' },
@@ -276,7 +276,7 @@ reef_of_bones_cold_tide_pool: {
     image: 'reef_of_bones_cold_tide_pool.png',
     imagePrompt: '冷潮池 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '冷潮池位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '冷潮池位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_skull_marker', description: '回到骷髏航標' },
       { direction: 'south', targetRoomId: 'reef_of_bones_rib_shoal', description: '回到肋骨淺灘' },
@@ -303,7 +303,7 @@ reef_of_bones_bone_bridge: {
     image: 'reef_of_bones_bone_bridge.png',
     imagePrompt: '白骨橋 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '白骨橋位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '白骨橋位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'north', targetRoomId: 'reef_of_bones_wreck_bow', description: '回到沉船船首' },
       { direction: 'east', targetRoomId: 'reef_of_bones_black_coral_cut', description: '黑珊瑚切口在東側' },
@@ -329,7 +329,7 @@ reef_of_bones_ghost_anchor: {
     image: 'reef_of_bones_ghost_anchor.png',
     imagePrompt: '幽靈錨 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '幽靈錨位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '幽靈錨位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'south', targetRoomId: 'reef_of_bones_skull_marker', description: '回到骷髏航標' },
       { direction: 'east', targetRoomId: 'reef_of_bones_whalebone_arch', description: '鯨骨拱在東側' },
@@ -355,7 +355,7 @@ reef_of_bones_sunken_cabin: {
     image: 'reef_of_bones_sunken_cabin.png',
     imagePrompt: '沉沒船艙 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '沉沒船艙位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '沉沒船艙位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'south', targetRoomId: 'reef_of_bones_splinter_deck', description: '回到裂木甲板' },
       { direction: 'east', targetRoomId: 'reef_of_bones_reefbell_post', description: '礁鐘柱在東側' },
@@ -381,7 +381,7 @@ reef_of_bones_icekelp_tangle: {
     image: 'reef_of_bones_icekelp_tangle.png',
     imagePrompt: '冰藻纏灘 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '冰藻纏灘位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '冰藻纏灘位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_cold_tide_pool', description: '回到冷潮池' },
       { direction: 'east', targetRoomId: 'reef_of_bones_sunken_cabin', description: '沉沒船艙在東側' },
@@ -408,7 +408,7 @@ reef_of_bones_drowned_hold: {
     image: 'reef_of_bones_drowned_hold.png',
     imagePrompt: '溺亡貨艙 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '溺亡貨艙位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '溺亡貨艙位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_splinter_deck', description: '回到裂木甲板' },
       { direction: 'north', targetRoomId: 'reef_of_bones_captain_grave', description: '船長墓在北側' },
@@ -435,7 +435,7 @@ reef_of_bones_whalebone_arch: {
     image: 'reef_of_bones_whalebone_arch.png',
     imagePrompt: '鯨骨拱 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '鯨骨拱位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '鯨骨拱位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_ghost_anchor', description: '回到幽靈錨' },
       { direction: 'south', targetRoomId: 'reef_of_bones_icekelp_tangle', description: '回到冰藻纏灘' },
@@ -462,7 +462,7 @@ reef_of_bones_black_coral_cut: {
     image: 'reef_of_bones_black_coral_cut.png',
     imagePrompt: '黑珊瑚切口 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '黑珊瑚切口位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '黑珊瑚切口位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_bone_bridge', description: '回到白骨橋' },
       { direction: 'north', targetRoomId: 'reef_of_bones_drowned_hold', description: '回到溺亡貨艙' },
@@ -489,7 +489,7 @@ reef_of_bones_reefbell_post: {
     image: 'reef_of_bones_reefbell_post.png',
     imagePrompt: '礁鐘柱 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '礁鐘柱位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '礁鐘柱位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_sunken_cabin', description: '回到沉沒船艙' },
       { direction: 'east', targetRoomId: 'reef_of_bones_captain_grave', description: '船長墓在東側' },
@@ -515,7 +515,7 @@ reef_of_bones_captain_grave: {
     image: 'reef_of_bones_captain_grave.png',
     imagePrompt: '船長墓 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '船長墓位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '船長墓位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_reefbell_post', description: '回到礁鐘柱' },
       { direction: 'south', targetRoomId: 'reef_of_bones_drowned_hold', description: '回到溺亡貨艙' },
@@ -543,7 +543,7 @@ reef_of_bones_frostwake_cave: {
     image: 'reef_of_bones_frostwake_cave.png',
     imagePrompt: '霜浪洞 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '霜浪洞位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '霜浪洞位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_whalebone_arch', description: '回到鯨骨拱' },
       { direction: 'east', targetRoomId: 'reef_of_bones_lichlight_reef', description: '巫光礁在東側' },
@@ -569,7 +569,7 @@ reef_of_bones_shattered_mast: {
     image: 'reef_of_bones_shattered_mast.png',
     imagePrompt: '斷桅林 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '斷桅林位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '斷桅林位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_drowned_hold', description: '回到溺亡貨艙' },
       { direction: 'north', targetRoomId: 'reef_of_bones_captain_grave', description: '船長墓在北側' },
@@ -596,7 +596,7 @@ reef_of_bones_treasure_keel: {
     image: 'reef_of_bones_treasure_keel.png',
     imagePrompt: '寶藏龍骨 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain bone, clear lantern light',
     description:
-      '寶藏龍骨位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '寶藏龍骨位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_black_coral_cut', description: '回到黑珊瑚切口' },
       { direction: 'east', targetRoomId: 'reef_of_bones_drowned_vault', description: '溺亡寶庫在東側' },
@@ -622,7 +622,7 @@ reef_of_bones_lichlight_reef: {
     image: 'reef_of_bones_lichlight_reef.png',
     imagePrompt: '巫光礁 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '巫光礁位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '巫光礁位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_captain_grave', description: '回到船長墓' },
       { direction: 'south', targetRoomId: 'reef_of_bones_shattered_mast', description: '回到斷桅林' },
@@ -649,7 +649,7 @@ reef_of_bones_drowned_vault: {
     image: 'reef_of_bones_drowned_vault.png',
     imagePrompt: '溺亡寶庫 in reef_of_bones, bone reef dungeon entrance with shipwreck ribs, giant skeletons, icy tide pools, black coral, ghost anchor, drowned pirate treasure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain bone, clear lantern light',
     description:
-      '溺亡寶庫位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 search 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。南北兩側的寶藏龍骨與巫光礁在寶庫開啟後會被冷潮封住，只能從兩側礁路進入寶庫。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
+      '溺亡寶庫位於白骨礁退潮時露出海面的船骸與巨獸骨架之間，肋骨淺灘、沉船甲板、冰藻潮池、黑珊瑚與幽靈航標共同標出通往沉船寶庫的危險路線。這裡是高階隊伍入口與開放衝突區，旅人可以 觀察 骨橋裂縫、船名銅牌、礁鐘方向和冷潮痕跡來判斷潮水，也能 搜索 船艙、船長墓、寶藏龍骨與巫光礁尋找沉船財寶線索。南北兩側的寶藏龍骨與巫光礁在寶庫開啟後會被冷潮封住，只能從兩側礁路進入寶庫。若隊伍忽略退潮時限、亡靈巡邏與冰潮倒灌，不死騎士、幽靈騎士、詛咒祭司與巫妖會封鎖船骸通道；若穩定沿白骨航標、礁鐘聲與乾露骨脊推進，則能抵達溺亡寶庫並安全帶回寶藏清單',
     exits: [
       { direction: 'west', targetRoomId: 'reef_of_bones_shattered_mast', description: '回到斷桅林' },
     ],
@@ -677,7 +677,7 @@ reef_of_bones_drowned_vault: {
     image: 'sapphire_lake_entry_claim.png',
     imagePrompt: '湖岸採集界樁 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '湖岸採集界樁位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '湖岸採集界樁位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'east', targetRoomId: 'sapphire_lake_vein_path', description: '藍脈湖徑在東側' },
       { direction: 'north', targetRoomId: 'sapphire_lake_lantern_dock', description: '燈籠碼頭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -703,7 +703,7 @@ sapphire_lake_vein_path: {
     image: 'sapphire_lake_vein_path.png',
     imagePrompt: '藍脈湖徑 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '藍脈湖徑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '藍脈湖徑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁' },
       { direction: 'east', targetRoomId: 'sapphire_lake_herb_shelf', description: '湖草淺棚在東側' },
@@ -730,7 +730,7 @@ sapphire_lake_herb_shelf: {
     image: 'sapphire_lake_herb_shelf.png',
     imagePrompt: '湖草淺棚 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '湖草淺棚位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '湖草淺棚位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑' },
       { direction: 'east', targetRoomId: 'sapphire_lake_water_pocket', description: '清泉水囊在東側' },
@@ -757,7 +757,7 @@ sapphire_lake_water_pocket: {
     image: 'sapphire_lake_water_pocket.png',
     imagePrompt: '清泉水囊 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '清泉水囊位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '清泉水囊位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚' },
       { direction: 'east', targetRoomId: 'sapphire_lake_beast_scrape', description: '湖獸擦痕在東側' },
@@ -784,7 +784,7 @@ sapphire_lake_beast_scrape: {
     image: 'sapphire_lake_beast_scrape.png',
     imagePrompt: '湖獸擦痕 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '湖獸擦痕位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '湖獸擦痕位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊' },
       { direction: 'east', targetRoomId: 'sapphire_lake_relic_pit', description: '湖底遺坑在東側' },
@@ -811,7 +811,7 @@ sapphire_lake_relic_pit: {
     image: 'sapphire_lake_relic_pit.png',
     imagePrompt: '湖底遺坑 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '湖底遺坑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '湖底遺坑位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_beast_scrape', description: '回到湖獸擦痕' },
       { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側礦砂坡通往藍寶礦脈' },
@@ -838,7 +838,7 @@ sapphire_lake_lantern_dock: {
     image: 'sapphire_lake_lantern_dock.png',
     imagePrompt: '燈籠碼頭 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain lake, clear lantern light',
     description:
-      '燈籠碼頭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '燈籠碼頭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_entry_claim', description: '回到湖岸採集界樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_mirror_shallows', description: '鏡面淺灘在東側' },
@@ -864,7 +864,7 @@ sapphire_lake_mirror_shallows: {
     image: 'sapphire_lake_mirror_shallows.png',
     imagePrompt: '鏡面淺灘 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '鏡面淺灘位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '鏡面淺灘位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_lantern_dock', description: '回到燈籠碼頭' },
       { direction: 'south', targetRoomId: 'sapphire_lake_vein_path', description: '回到藍脈湖徑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -892,7 +892,7 @@ sapphire_lake_blue_reed_bed: {
     image: 'sapphire_lake_blue_reed_bed.png',
     imagePrompt: '藍蘆葦帶 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '藍蘆葦帶位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '藍蘆葦帶位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘' },
       { direction: 'south', targetRoomId: 'sapphire_lake_herb_shelf', description: '回到湖草淺棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -919,7 +919,7 @@ sapphire_lake_pebble_weir: {
     image: 'sapphire_lake_pebble_weir.png',
     imagePrompt: '卵石水堰 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '卵石水堰位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '卵石水堰位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'north', targetRoomId: 'sapphire_lake_water_pocket', description: '回到清泉水囊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_crystal_sandbar', description: '晶砂洲在東側' },
@@ -945,7 +945,7 @@ sapphire_lake_glassfish_cove: {
     image: 'sapphire_lake_glassfish_cove.png',
     imagePrompt: '玻魚灣 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '玻魚灣位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '玻魚灣位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_fill_17_9', description: '西側湖畔小路回到藍蘆葦帶' },
       { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '南側玻魚灣水道沿水下繩標折回，穿過冷泉逆流與淺藍沙脊回到湖獸擦痕', edgeKind: 'distant_route', edgeNote: '玻魚灣回湖獸擦痕需沿水下繩標穿過逆流與沙脊，實際路程長於相鄰一格。' },
@@ -972,7 +972,7 @@ sapphire_lake_sunken_step: {
     image: 'sapphire_lake_sunken_step.png',
     imagePrompt: '沉階 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '沉階位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '沉階位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_relic_pit', description: '回到湖底遺坑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'sapphire_lake_glassfish_cove', description: '西側沉階水道繞過塌落石階與玻魚群，沿斜光浮標與淺水石縫回到玻魚灣', edgeKind: 'distant_route', edgeNote: '沉階西側到玻魚灣需繞過塌階與魚群，實際路程長於相鄰一格。' },
@@ -999,7 +999,7 @@ sapphire_lake_mineral_spring: {
     image: 'sapphire_lake_mineral_spring.png',
     imagePrompt: '礦泉眼 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '礦泉眼位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '礦泉眼位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_mirror_shallows', description: '回到鏡面淺灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '靜水石窟在東側' },
@@ -1025,7 +1025,7 @@ sapphire_lake_crystal_sandbar: {
     image: 'sapphire_lake_crystal_sandbar.png',
     imagePrompt: '晶砂洲 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '晶砂洲位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。東側湖岸岩壁間有一道被水草遮掩的裂口，潮濕暗風從中吹出，似乎通往城鎮下方的隱藏水道',
+      '晶砂洲位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。東側湖岸岩壁間有一道被水草遮掩的裂口，潮濕暗風從中吹出，似乎通往城鎮下方的隱藏水道',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_pebble_weir', description: '回到卵石水堰' },
       { direction: 'south', targetRoomId: 'sapphire_lake_beast_scrape', description: '南側晶砂淺灘接往湖獸擦痕' },
@@ -1051,7 +1051,7 @@ sapphire_lake_lily_cache: {
     image: 'sapphire_lake_lily_cache.png',
     imagePrompt: '睡蓮藏點 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain lake, clear lantern light',
     description:
-      '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。西側晶砂洲與北側玻魚灣的浮標會在採集後沉入水面，只能從那兩處進入睡蓮藏點。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '睡蓮藏點位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。西側晶砂洲與北側玻魚灣的浮標會在採集後沉入水面，只能從那兩處進入睡蓮藏點。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'east', targetRoomId: 'sapphire_lake_sapphire_lode', description: '東側睡蓮根道穿過浮葉陰影與藍光裂縫，沿礦砂繩標抵達藍寶礦脈', edgeKind: 'distant_route', edgeNote: '睡蓮藏點東側到藍寶礦脈需穿過蓮根與礦砂繩標，實際路程長於相鄰一格。' },
     ],
@@ -1076,7 +1076,7 @@ sapphire_lake_calmwater_grotto: {
     image: 'sapphire_lake_calmwater_grotto.png',
     imagePrompt: '靜水石窟 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '靜水石窟位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '靜水石窟位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_mineral_spring', description: '回到礦泉眼' },
       { direction: 'east', targetRoomId: 'sapphire_lake_spirit_mirror', description: '水靈鏡在東側' },
@@ -1102,7 +1102,7 @@ sapphire_lake_spirit_mirror: {
     image: 'sapphire_lake_spirit_mirror.png',
     imagePrompt: '水靈鏡 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '水靈鏡位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '水靈鏡位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_calmwater_grotto', description: '回到靜水石窟' },
       { direction: 'east', targetRoomId: 'sapphire_lake_deep_vein_window', description: '東側水靈鏡面沿倒影水道折行，越過光紋淺坡與水幕裂隙抵達深脈窗', edgeKind: 'distant_route', edgeNote: '水靈鏡到深脈窗需沿倒影水道與光紋淺坡折行，實際路程長於相鄰一格。' },
@@ -1128,7 +1128,7 @@ sapphire_lake_deep_vein_window: {
     image: 'sapphire_lake_deep_vein_window.png',
     imagePrompt: '深脈窗 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '深脈窗位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '深脈窗位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_spirit_mirror', description: '西側深脈窗沿倒影水道回折，穿過光紋淺坡與水幕裂隙後回到水靈鏡', edgeKind: 'distant_route', edgeNote: '深脈窗西側回水靈鏡需沿倒影水道與光紋淺坡，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'sapphire_lake_sunken_step', description: '南側深脈窗沿礦光石階上返，穿過冷水暗流與藍砂斜坡後回到沉階', edgeKind: 'distant_route', edgeNote: '深脈窗南側回沉階需沿礦光石階上返並穿過暗流，實際路程長於相鄰一格。' },
@@ -1155,7 +1155,7 @@ sapphire_lake_sapphire_lode: {
     image: 'sapphire_lake_sapphire_lode.png',
     imagePrompt: '藍寶礦脈 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '藍寶礦脈位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
+      '藍寶礦脈位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'west', targetRoomId: 'sapphire_lake_lily_cache', description: '西側藍寶礦脈沿礦砂繩標折返，穿過浮葉陰影與睡蓮根道回到藏點', edgeKind: 'distant_route', edgeNote: '藍寶礦脈西側回睡蓮藏點需沿礦砂繩標與蓮根折返，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'sapphire_lake_fill_21_8', description: '東側湖邊草地通往睡蓮浮標' },

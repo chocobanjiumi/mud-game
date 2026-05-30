@@ -8,7 +8,7 @@ pilgrim_road_saint_bridge: {
     image: 'pilgrim_road_saint_bridge.png',
     imagePrompt: '聖徒橋 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '聖徒橋位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '聖徒橋位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_prayer_steps', description: '聖徒橋回到祈願階' },
       { direction: 'east', targetRoomId: 'pilgrim_road_white_marker', description: '白石路標在東側' },
@@ -34,7 +34,7 @@ pilgrim_road_ambush_bend: {
     image: 'pilgrim_road_ambush_bend.png',
     imagePrompt: '伏擊彎道 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '伏擊彎道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '伏擊彎道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_abandoned_inn', description: '伏擊彎道回到旅舍' },
       { direction: 'north', targetRoomId: 'pilgrim_road_white_marker', description: '斜坡通往白石路標', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -61,7 +61,7 @@ pilgrim_road_smuggler_cache: {
     image: 'pilgrim_road_smuggler_cache.png',
     imagePrompt: '走私藏點 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain road, clear lantern light',
     description:
-      '走私藏點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '走私藏點位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_thorn_cut', description: '走私藏點回到荊棘缺口' },
       { direction: 'east', targetRoomId: 'pilgrim_road_bandit_watch', description: '盜匪望臺在東側' },
@@ -87,7 +87,7 @@ pilgrim_road_white_marker: {
     image: 'pilgrim_road_white_marker.png',
     imagePrompt: '白石路標 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '白石路標位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '白石路標位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_saint_bridge', description: '白石路標回到聖徒橋' },
       { direction: 'south', targetRoomId: 'pilgrim_road_ambush_bend', description: '斜坡回到伏擊彎道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -114,7 +114,7 @@ pilgrim_road_broken_causeway: {
     image: 'pilgrim_road_broken_causeway.png',
     imagePrompt: '斷石道 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '斷石道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '斷石道位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_ambush_bend', description: '斷石道回到伏擊彎道' },
       { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '日暮營地在東側' },
@@ -140,7 +140,7 @@ pilgrim_road_bandit_watch: {
     image: 'pilgrim_road_bandit_watch.png',
     imagePrompt: '盜匪望臺 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '盜匪望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '盜匪望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_smuggler_cache', description: '盜匪望臺回到走私藏點' },
       { direction: 'east', targetRoomId: 'pilgrim_road_sunset_camp', description: '東側盜匪望臺沿暗哨土脊橫移，繞過瞭望繩梯與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '盜匪望臺到日暮營地需沿暗哨土脊與瞭望繩梯橫移，實際路程長於相鄰一格。' },
@@ -166,7 +166,7 @@ pilgrim_road_old_cemetery_turn: {
     image: 'pilgrim_road_old_cemetery_turn.png',
     imagePrompt: '舊墓岔路 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '舊墓岔路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '舊墓岔路位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_white_marker', description: '舊墓岔路回到白石路標' },
       { direction: 'south', targetRoomId: 'pilgrim_road_sunset_camp', description: '南側舊墓岔路沿碎墓碑小徑斜落，穿過枯草墓牆與落日營火線抵達日暮營地', edgeKind: 'distant_route', edgeNote: '舊墓岔路到日暮營地需沿碎墓碑小徑與墓牆斜行，實際路程長於相鄰一格。' },
@@ -192,7 +192,7 @@ pilgrim_road_sunset_camp: {
     image: 'pilgrim_road_sunset_camp.png',
     imagePrompt: '日暮營地 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '日暮營地位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '日暮營地位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_broken_causeway', description: '日暮營地回到斷石道' },
       { direction: 'north', targetRoomId: 'pilgrim_road_old_cemetery_turn', description: '北側日暮營地沿落日營火線回穿，穿過枯草墓牆與碎墓碑小徑回到舊墓岔路', edgeKind: 'distant_route', edgeNote: '日暮營地回舊墓岔路需沿營火線與碎墓碑小徑回穿，實際路程長於相鄰一格。' },
@@ -220,7 +220,7 @@ pilgrim_road_sanctuary_gate: {
     image: 'pilgrim_road_sanctuary_gate.png',
     imagePrompt: '聖地門 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '聖地門位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '聖地門位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sunset_camp', description: '聖地門回到日暮營地' },
       { direction: 'east', targetRoomId: 'pilgrim_road_final_marker', description: '終點聖碑在東側' },
@@ -254,7 +254,7 @@ pilgrim_road_final_marker: {
     image: 'pilgrim_road_final_marker.png',
     imagePrompt: '終點聖碑 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '終點聖碑位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
+      '終點聖碑位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞',
     exits: [
       { direction: 'west', targetRoomId: 'pilgrim_road_sanctuary_gate', description: '終點聖碑回到聖地門' },
       { direction: 'south', targetRoomId: 'pilgrim_road_quiet_overlook', description: '靜望臺在南側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -280,7 +280,7 @@ pilgrim_road_quiet_overlook: {
     image: 'pilgrim_road_quiet_overlook.png',
     imagePrompt: '靜望臺 in pilgrim_road, ancient pilgrimage road with broken stone slabs, roadside shrines, caravan tracks, dry grass, white markers and ambush shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain road, clear lantern light',
     description:
-      '靜望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 search 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。古道在此處恰好觸及湖畔鎮商業區的邊緣，北面鍛坊的爐火隱約可見，東側裁縫坊的布旗隨風飄動，提醒旅人已靠近城鎮補給圈',
+      '靜望臺位於朝聖古道斷續延伸的石板路上，白石路標、鐘鈴小祠、商隊車轍與荒草裡的伏擊痕跡共同標出通往古老聖地的方向。這裡是低中階任務路線與野外遭遇節點，旅人可以 觀察 路標、香灰、車轍和暗哨刻痕來判斷朝聖者與盜匪的行蹤，也能 搜索 乾井、舊營地、廢棄旅舍和聖碑旁尋找委託線索。若隊伍忽略彎道視線、墓地岔路與商隊殘貨，盜匪、哥布林、狼群與骷髏會從路旁包抄；若穩定沿白石標記推進，則能抵達聖地門與終點聖碑，並確認回程路標、補給水袋、隊伍位置與夜間守望仍然安全可靠無虞。古道在此處恰好觸及湖畔鎮商業區的邊緣，北面鍛坊的爐火隱約可見，東側裁縫坊的布旗隨風飄動，提醒旅人已靠近城鎮補給圈',
     exits: [
       { direction: 'north', targetRoomId: 'pilgrim_road_final_marker', description: '靜望臺回到終點聖碑', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'lakeside_tailor', description: '東側布旗小徑穿過古道望臺與湖畔商業巷，抵達城鎮裁縫坊門前', edgeKind: 'distant_route', edgeNote: '靜望臺東入湖畔裁縫坊需穿過古道望臺與商業巷口，實際路程長於相鄰一格。' },
@@ -315,7 +315,7 @@ pilgrim_road_quiet_overlook: {
     image: 'ironwood_fort_portal_yard.png',
     imagePrompt: '傳送陣庭 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '傳送陣庭位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '傳送陣庭位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_outer_gate', description: '鐵木外門在東側' },
       { direction: 'north', targetRoomId: 'ironwood_fort_quartermaster_row', description: '軍需行列在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -341,7 +341,7 @@ ironwood_fort_outer_gate: {
     image: 'ironwood_fort_outer_gate.png',
     imagePrompt: '鐵木外門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '鐵木外門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '鐵木外門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭' },
       { direction: 'east', targetRoomId: 'ironwood_fort_muster_square', description: '點兵廣場在東側' },
@@ -369,7 +369,7 @@ ironwood_fort_muster_square: {
     image: 'ironwood_fort_muster_square.png',
     imagePrompt: '點兵廣場 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '點兵廣場位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '點兵廣場位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_outer_gate', description: '回到鐵木外門' },
       { direction: 'east', targetRoomId: 'ironwood_fort_east_bastion', description: '東堡牆在東側' },
@@ -397,7 +397,7 @@ ironwood_fort_quartermaster_row: {
     image: 'ironwood_fort_quartermaster_row.png',
     imagePrompt: '軍需行列 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '軍需行列位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '軍需行列位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_portal_yard', description: '回到傳送陣庭', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_west_bastion', description: '西堡牆在東側' },
@@ -424,7 +424,7 @@ ironwood_fort_west_bastion: {
     image: 'ironwood_fort_west_bastion.png',
     imagePrompt: '西側堡牆 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '西側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '西側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列' },
       { direction: 'north', targetRoomId: 'ironwood_fort_outer_gate', description: '北側城牆石階回到鐵木外門' },
@@ -452,7 +452,7 @@ ironwood_fort_east_bastion: {
     image: 'ironwood_fort_east_bastion.png',
     imagePrompt: '東側堡牆 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '東側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '東側堡牆位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場' },
       { direction: 'north', targetRoomId: 'ironwood_fort_signal_tower', description: '信號塔在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -479,7 +479,7 @@ ironwood_fort_barracks_hall: {
     image: 'ironwood_fort_barracks_hall.png',
     imagePrompt: '兵營大廳 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '兵營大廳位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '兵營大廳位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_west_bastion', description: '牆道通往西堡牆' },
@@ -507,7 +507,7 @@ ironwood_fort_forge_works: {
     image: 'ironwood_fort_forge_works.png',
     imagePrompt: '鐵木鍛坊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '鐵木鍛坊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '鐵木鍛坊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_quartermaster_row', description: '回到軍需行列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_scout_roost', description: '高架棧道通往斥候棲臺' },
@@ -534,7 +534,7 @@ ironwood_fort_signal_tower: {
     image: 'ironwood_fort_signal_tower.png',
     imagePrompt: '烽火信號塔 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '烽火信號塔位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '烽火信號塔位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_war_room', description: '西側信號牆道繞過烽火燃料架與旗語平台，沿塔身陰影通往戰圖室後門', edgeKind: 'distant_route', edgeNote: '烽火信號塔西側到戰圖室需經旗語平台與燃料架，實際路程長於相鄰一格。' },
@@ -561,7 +561,7 @@ ironwood_fort_war_room: {
     image: 'ironwood_fort_war_room.png',
     imagePrompt: '戰圖室 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '戰圖室位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '戰圖室位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_barracks_hall', description: '西側戰旗廊穿過戰圖桌與軍械牆道，繞過上層轉角折回兵營大廳內門', edgeKind: 'distant_route', edgeNote: '戰圖室西側回兵營大廳需穿過戰旗廊與軍械牆道，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_signal_tower', description: '東側旗語平台繞過烽火燃料架，沿塔身陰影與石階通往烽火信號塔內梯', edgeKind: 'distant_route', edgeNote: '戰圖室東側到信號塔要經旗語平台與塔內階梯，實際路程長於相鄰一格。' },
@@ -588,7 +588,7 @@ ironwood_fort_scout_roost: {
     image: 'ironwood_fort_scout_roost.png',
     imagePrompt: '斥候棲臺 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '斥候棲臺位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '斥候棲臺位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_barracks_hall', description: '東側外牆平台沿哨兵木梯折降，穿過箭孔陰影與守備吊橋回到兵營大廳', edgeKind: 'distant_route', edgeNote: '斥候棲臺東側回兵營大廳需沿外牆平台下樓並繞過箭孔平台，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_forge_works', description: '棧道通往鐵木鍛坊' },
@@ -616,7 +616,7 @@ ironwood_fort_prison_block: {
     image: 'ironwood_fort_prison_block.png',
     imagePrompt: '囚牢石廊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '囚牢石廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。西側舊蓄水池水門從囚牢這端被鐵閘鎖死，只能從舊蓄水池石階進入囚牢石廊。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '囚牢石廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。西側舊蓄水池水門從囚牢這端被鐵閘鎖死，只能從舊蓄水池石階進入囚牢石廊。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'north', targetRoomId: 'ironwood_fort_scout_roost', description: '北側囚牢石階回到斥候棲臺' },
       { direction: 'east', targetRoomId: 'ironwood_fort_oath_chapel', description: '禮拜堂側門在東側' },
@@ -642,7 +642,7 @@ ironwood_fort_supply_tunnel: {
     image: 'ironwood_fort_supply_tunnel.png',
     imagePrompt: '補給隧道 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '補給隧道位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '補給隧道位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'north', targetRoomId: 'ironwood_fort_muster_square', description: '回到點兵廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_hidden_sally', description: '暗道通往隱蔽突門' },
@@ -669,7 +669,7 @@ ironwood_fort_old_cistern: {
     image: 'ironwood_fort_old_cistern.png',
     imagePrompt: '舊蓄水池 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '舊蓄水池位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。南側潮濕石階先接鐵木外門，再沿西側堡牆與斥候棲臺通往囚牢石廊。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '舊蓄水池位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。南側潮濕石階先接鐵木外門，再沿西側堡牆與斥候棲臺通往囚牢石廊。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'east', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
       { direction: 'south', targetRoomId: 'ironwood_fort_outer_gate', description: '南側潮濕石階沿舊水門坡道接到鐵木外門' },
@@ -695,7 +695,7 @@ ironwood_fort_ironwood_grove: {
     image: 'ironwood_fort_ironwood_grove.png',
     imagePrompt: '鐵木林圃 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '鐵木林圃位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '鐵木林圃位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_forge_works', description: '回到鐵木鍛坊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'ironwood_fort_prison_block', description: '木根小徑通往囚牢石廊' },
@@ -721,7 +721,7 @@ ironwood_fort_hidden_sally: {
     image: 'ironwood_fort_hidden_sally.png',
     imagePrompt: '隱蔽突門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fortress, clear lantern light',
     description:
-      '隱蔽突門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '隱蔽突門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_supply_tunnel', description: '回到補給隧道' },
       { direction: 'north', targetRoomId: 'ironwood_fort_east_bastion', description: '回到東側堡牆', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -747,7 +747,7 @@ ironwood_fort_command_walk: {
     image: 'ironwood_fort_command_walk.png',
     imagePrompt: '指揮長廊 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '指揮長廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '指揮長廊位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_signal_tower', description: '回到烽火信號塔', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_oath_chapel', description: '西側指揮長廊越過封令拱門與軍官座席，繞過戰旗屏風接到誓約禮拜堂側門', edgeKind: 'distant_route', edgeNote: '指揮長廊西側到禮拜堂需穿過封令拱門與座席區，實際路程長於相鄰一格。' },
@@ -774,7 +774,7 @@ ironwood_fort_oath_chapel: {
     image: 'ironwood_fort_oath_chapel.png',
     imagePrompt: '誓約禮拜堂 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '誓約禮拜堂位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '誓約禮拜堂位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'south', targetRoomId: 'ironwood_fort_war_room', description: '回到戰圖室', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'ironwood_fort_prison_block', description: '側廊通往囚牢石廊' },
@@ -802,7 +802,7 @@ ironwood_fort_keep_gate: {
     image: 'ironwood_fort_keep_gate.png',
     imagePrompt: '內堡門 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '內堡門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '內堡門位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_command_walk', description: '回到指揮長廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'ironwood_fort_oath_chapel', description: '南側內堡閘鏈旁的宣誓階梯折降，沿黑鐵聖徽與守門鐵柱回到誓約禮拜堂', edgeKind: 'distant_route', edgeNote: '內堡門南側回禮拜堂需沿宣誓階梯折降並繞過閘鏈，實際路程長於相鄰一格。' },
@@ -829,7 +829,7 @@ ironwood_fort_high_keep: {
     image: 'ironwood_fort_high_keep.png',
     imagePrompt: '高堡核心 in ironwood_fort, ironwood border fortress with black ironwood beams, battlements, war banners, forge glow, military supply crates, portal light and siege shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '高堡核心位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 search 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
+      '高堡核心位於鐵木要塞的邊境防線內，黑鐵鉚釘、厚重鐵木梁、戰旗、軍械箱與傳送陣餘光交錯成緊張的戰備景象。這裡是王國戰與任務集結區，旅人可以 觀察 牆面箭痕、軍令牌、補給封條和暗哨記號來判斷前線動向，也能 搜索 兵器架、囚牢石縫、蓄水池邊和內堡門柱尋找軍需線索。若隊伍忽略城牆視線、地下補給道與烽火塔信號，傭兵、石像鬼、亡靈騎士與暗黑施法者會從多層通道夾擊；若穩定控制門庭、堡牆與指揮長廊，則能推進到高堡核心並守住回程傳送路線，同時保全軍令、傷員撤離與補給清點無誤',
     exits: [
       { direction: 'west', targetRoomId: 'ironwood_fort_keep_gate', description: '回到內堡門' },
     ],
