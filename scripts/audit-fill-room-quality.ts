@@ -269,7 +269,7 @@ function inferGrade(room: RoomDef, purposes: FillRoomPurpose[], crossZoneBoundar
 }
 
 function auditFillRoom(record: FillRoomRecord, room: RoomDef): void {
-  const minimumDescription = record.crossZoneBoundary ? 65 : record.grade === 'A_main_transition' ? 70 : 55;
+  const minimumDescription = 120;
   if (record.descriptionLength < minimumDescription) {
     addIssue(record, 'error', 'description.length', `description 中文字數不足，${record.crossZoneBoundary ? 'border fill room' : 'fill room'} 需要更具體的地貌與路線用途`, record.descriptionLength, minimumDescription, room.description);
   }
