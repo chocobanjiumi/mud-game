@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T05:44:41.991Z",
+  "generatedAt": "2026-05-30T06:52:39.128Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -355,7 +355,7 @@
     "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
-    "imagePrompts": 1288,
+    "imagePrompts": 1314,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,
@@ -366,8 +366,173 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 0
+    "issues": 18
   },
-  "issuesByKind": {},
-  "issues": []
+  "issuesByKind": {
+    "imagePrompt": 18
+  },
+  "issues": [
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_0_n3",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 56,
+      "minimumLength": 80,
+      "text": "斷橋南溪草封 starter_village_ext_fill_0_n3 in starter_village_ext 新手村外圍, room function resource path, muddy creek grass clearing south of broken bridge, north collapsed bridge posts in water, east charcoal kiln ash on grass, splintered wood blocks the dirt path, clear north east terrain cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_1_n1",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "旅店北田埂路牌 starter_village_ext_fill_1_n1 in starter_village_ext 新手村外圍, room function border road, field ridge sign north of village inn, south inn rear door, north grass track toward charcoal kiln and graveyard, east countryside path to guild back area, clear south north east path cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_1_n2",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "墓園西側炭草界 starter_village_ext_fill_1_n2 in starter_village_ext 新手村外圍, room function resource path, charred grass boundary west of graveyard and south of charcoal kiln, north kiln ash on dirt, south field-ridge sign visible, east graveyard gloom blocked by burnt grass, clear north south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_2_n1",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 60,
+      "minimumLength": 80,
+      "text": "公會北鄉間路標 starter_village_ext_fill_2_n1 in starter_village_ext 新手村外圍, room function border road, countryside signpost north of adventurer guild, south guild rear yard, north graveyard mist slope, west inn field sign, east grass path toward old library, wild grass seed gathering edge, clear north south east west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_3_n1",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "舊圖書館北後勤路 starter_village_ext_fill_3_n1 in starter_village_ext 新手村外圍, room function border road, service route north of old village library, south library rear supply door and book crates, north hollow stump with leaf piles, west guild marker, east damp willow shrine path, clear direction cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_3_n6",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 56,
+      "minimumLength": 80,
+      "text": "果園北溪草補給坡 starter_village_ext_fill_3_n6 in starter_village_ext 新手村外圍, room function resource path, supply slope north of orchard and east of village creek, south fruit trees over fence, west creek mud, baskets and grass ropes on blocked grassy slope, clear south west terrain cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village_ext/starter_village_ext_fill_4_n1",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 59,
+      "minimumLength": 80,
+      "text": "禮拜堂北柳祠路界 starter_village_ext_fill_4_n1 in starter_village_ext 新手村外圍, room function border road, willow shrine boundary north of village chapel, south chapel rear stones, north small willow shrine with wet branches, west old library service marker, damp creek grass and willow leaves, clear north south west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village/starter_village_fill_1_3",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 54,
+      "minimumLength": 80,
+      "text": "溪階傳送低地小徑 starter_village_fill_1_3 in starter_village 新手村, room function connector, wet bluestone path between west creek stone steps and east blue-glowing portal shrine, low cottage fences, vegetable plots, creek mist and village lantern light, clear east west route cue, safe lowland service connector, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village/starter_village_fill_3_4",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 59,
+      "minimumLength": 80,
+      "text": "市場北後勤青石巷 starter_village_fill_3_4 in starter_village 新手村, room function town service, contained bluestone market back alley north of notice corner and well path, south market lane smell of bread and herbs, crates, low service rail and closed village lane blocker, warm lantern light, clear north south path cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village/starter_village_fill_5_3",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 55,
+      "minimumLength": 80,
+      "text": "守衛哨西民宅木柵 starter_village_fill_5_3 in starter_village 新手村, room function town service, residential bluestone lane cut off by low wooden fence, west stable yard gate half open, north guard post torch visible, cottages and private garden boundary, clear west north landmark cue, safe village blocker, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "starter_village/starter_village_fill_6_3",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 56,
+      "minimumLength": 80,
+      "text": "東柵月林青石界 starter_village_fill_6_3 in starter_village 新手村, room function border road, east village fence where bluestone road turns into grassy slope toward plains moonlit copse, west guard post lamps and cottage fence still visible, clear east west transition cue, low saturation night lantern and moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n10_n14",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 54,
+      "minimumLength": 80,
+      "text": "獅鷲王峰東雷崖封 storm_highlands_fill_n10_n14 in storm_highlands 風暴高原, room function border road, eastern thunder cliff blocker, west Griffin King Peak shadow and storm eye, south thundercloud cliff, east shattered rock pillars, charred stone path and storm feathers, clear west south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n11_n13",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "天石堆東斷崖封 storm_highlands_fill_n11_n13 in storm_highlands 風暴高原, room function border road, broken northern highland cliff beside sky-stone cairns, west rain-polished cairn field, south distant griffin peak, east gravel road falls into empty valley, warning stones and broken wind flag, clear west south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n11_n15",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 61,
+      "minimumLength": 80,
+      "text": "風暴玻礦東封脊 storm_highlands_fill_n11_n15 in storm_highlands 風暴高原, room function resource path, terrain stone ridge and storm-glass mine vein where highland wind lines collide, west blue-white mineral vein, south cloud wall over griffin peak, northeast gust-carved broken 岩 ridge, glass ore chips on stone path, clear west south northeast cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_fill_n17_n15",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 55,
+      "minimumLength": 80,
+      "text": "避風村南斷崖徑 storm_highlands_fill_n17_n15 in storm_highlands 風暴高原, room function border road, southern cliff path descending from Windrest village supply shed, north canvas shelter above, south windcut gravel path and misty cliff entrance, east basalt ridge blocks crosswind, clear north south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_windrest_portal",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 58,
+      "minimumLength": 80,
+      "text": "避風村傳送石庭 storm_highlands_windrest_portal in storm_highlands 風暴高原, room function portal, lee hollow stone court with rough pillars around blue-white teleport circle, ropes and lightning copper bells fixed in cracks, east grass path to supply shed, south gravel slope to highland wind road, clear east south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_windrest_lane",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 60,
+      "minimumLength": 80,
+      "text": "避風村補給棚 storm_highlands_windrest_lane in storm_highlands 風暴高原, room function town service, thick canvas and highland pine supply shed, dry food crates, lightning oilcloth, repair ropes and low stone wall, west portal blue glow, north lodge door, south gravel slope to dangerous highland route, clear west north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "storm_highlands/storm_highlands_windrest_lodge",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 59,
+      "minimumLength": 80,
+      "text": "避風屋 storm_highlands_windrest_lodge in storm_highlands 風暴高原, room function town service, terrain rock lodge room embedded in cliff alcove, thick wooden shutters against sideways thunder rain, brazier fire, wet cloaks and simple map board, south wooden doorway back to supply shed, storm peaks outside, clear south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    }
+  ]
 }
