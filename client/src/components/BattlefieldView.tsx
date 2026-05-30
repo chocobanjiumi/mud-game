@@ -4,6 +4,10 @@ import { useGameStore } from '../stores/gameStore';
 import type { CombatantState, ActiveStatusEffect, CardinalDirection, ApproachingMonsterPayload, NearbyCombatNeighborPayload } from '@game/shared';
 import { getMonsterImagePath, getClassIconPath } from '../utils/assetImages';
 
+function sendCommand(command: string, echo?: string) {
+  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+}
+
 const DIR_LABEL: Record<string, string> = { north: '北', south: '南', east: '東', west: '西' };
 const DIR_ARROW: Record<string, string> = { north: '↓', south: '↑', east: '←', west: '→' };
 const RES_SHORT: Record<string, string> = { rage: '怒', mp: '魔', focus: '專', faith: '信' };
@@ -27,6 +31,12 @@ export default function BattlefieldView() {
     const sel = combat.enemyTeam.find(e => e.id === selectedId);
     return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel };
   }, [combat, selectedId]);
+
+  const idleMonsters = useMemo(() => {
+    if (!room?.monsters || !combat) return [];
+    const combatIds = new Set(combat.enemyTeam.map(e => e.id));
+    return room.monsters.filter(m => !combatIds.has(m.id));
+  }, [room?.monsters, combat]);
 
   const neighborMap = useMemo(() => {
     const map: Partial<Record<CardinalDirection, NearbyCombatNeighborPayload>> = {};
@@ -71,7 +81,7 @@ export default function BattlefieldView() {
             <div className="text-center py-px">
               <span className="text-[8px] font-bold text-text-terminal">{room?.name || '本房'}</span>
             </div>
-            {/* 敵方 */}
+            {/* 戰鬥中敵方 */}
             <div className="flex-1 flex items-center justify-center gap-1.5 px-1 flex-wrap">
               {aliveEnemies.map(e => (
                 <MonIcon key={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
@@ -79,6 +89,18 @@ export default function BattlefieldView() {
                   onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40} />
               ))}
             </div>
+            {/* 房間內未參戰怪物 */}
+            {idleMonsters.length > 0 && (
+              <div className="px-1 py-0.5 border-t border-border-dim/30 mx-1">
+                <div className="text-[7px] text-text-amber text-center mb-0.5">未參戰</div>
+                <div className="flex items-center justify-center gap-1 flex-wrap">
+                  {idleMonsters.map(m => (
+                    <MonIcon key={m.id} name={m.label ?? m.name} img={getMonsterImagePath(m.id.replace(/_\d+$/, ''))} hp={m.maxHp > 0 ? (m.hp / m.maxHp) * 100 : 100}
+                      size={28} onClick={() => sendCommand(`attack ${m.id}`, `攻擊 ${m.label ?? m.name}`)} idle />
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="border-t border-border-dim mx-1" />
             {/* 我方 */}
             <div className="flex-1 flex flex-col justify-center px-1 gap-px">
@@ -271,20 +293,20 @@ function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeigh
 }
 
 /* ═══ Monster Icon ═══ */
-function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36 }: {
-  name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number;
+function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle }: {
+  name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number; idle?: boolean;
 }) {
   const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#ff6666';
   return (
-    <div className="flex flex-col items-center gap-px cursor-pointer group" title={`${name} HP:${Math.round(hp)}%`} onClick={onClick}>
+    <div className={`flex flex-col items-center gap-px cursor-pointer group ${idle ? 'opacity-60 hover:opacity-100' : ''}`} title={`${name} HP:${Math.round(hp)}%${idle ? ' (點擊攻擊)' : ''}`} onClick={onClick}>
       {cast && <span className="text-[6px] text-red-400 animate-pulse leading-none">⏳{cast}</span>}
       <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: size - 4, height: 2 }}>
         <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
       </div>
-      <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-text-terminal shadow-[0_0_6px_rgba(0,255,136,0.3)]' : boss ? 'border-red-500/60' : 'border-border-dim group-hover:border-text-terminal/40'}`} style={{ width: size, height: size }}>
+      <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-text-terminal shadow-[0_0_6px_rgba(0,255,136,0.3)]' : idle ? 'border-text-amber/40 group-hover:border-text-amber' : boss ? 'border-red-500/60' : 'border-border-dim group-hover:border-text-terminal/40'}`} style={{ width: size, height: size }}>
         {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary flex items-center justify-center text-[8px] text-text-dim">{name[0]}</div>}
       </div>
-      <span className={`text-[7px] leading-none ${boss ? 'text-red-300 font-bold' : 'text-text-dim'}`}>{name.length > 4 ? name.slice(0, 3) + '..' : name}</span>
+      <span className={`text-[7px] leading-none ${idle ? 'text-text-amber' : boss ? 'text-red-300 font-bold' : 'text-text-dim'}`}>{name.length > 4 ? name.slice(0, 3) + '..' : name}</span>
     </div>
   );
 }
