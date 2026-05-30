@@ -66,6 +66,19 @@ const logger = createModuleLogger('Game');
 const lootCalc = new LootCalculator();
 const NATURAL_RECOVERY_INTERVAL_MS = 10_000;
 const NATURAL_RECOVERY_RATE = 0.02;
+const runtimeIntervals: ReturnType<typeof setInterval>[] = [];
+let gameSystemsStarted = false;
+
+function registerRuntimeInterval(callback: () => void, delayMs: number): void {
+  runtimeIntervals.push(setInterval(callback, delayMs));
+}
+
+function clearRuntimeIntervals(): void {
+  while (runtimeIntervals.length > 0) {
+    const handle = runtimeIntervals.pop();
+    if (handle) clearInterval(handle);
+  }
+}
 
 // ============================================================
 //  子系統單例
@@ -111,6 +124,12 @@ export const dailyRewardMgr = new DailyRewardManager();
 // ============================================================
 
 export function initGameSystems(): void {
+  if (gameSystemsStarted) {
+    logger.warn('[Game] initGameSystems called while systems are already running; skipping duplicate initialization');
+    return;
+  }
+  gameSystemsStarted = true;
+
   // WorldManager
   world.setBroadcastFunction((roomId, message, excludePlayerId) => {
     const msg = message as { type?: string; payload?: Record<string, unknown> };
@@ -265,17 +284,17 @@ export function initGameSystems(): void {
   dungeonMatchMgr.init();
 
   // 拍賣過期處理（每 60 秒）
-  setInterval(() => {
+  registerRuntimeInterval(() => {
     auctionMgr.processExpiredAuctions();
   }, 60_000);
 
   // 寵物幸福度衰減（每小時）
-  setInterval(() => {
+  registerRuntimeInterval(() => {
     petMgr.decayHappiness();
   }, 3_600_000);
 
   // 在線角色自然恢復：非戰鬥時少量回復 HP / 資源。
-  setInterval(() => {
+  registerRuntimeInterval(() => {
     tickNaturalRecovery();
   }, NATURAL_RECOVERY_INTERVAL_MS);
 
@@ -497,6 +516,7 @@ export function findCharacterByName(name: string): Character | null {
 // ============================================================
 
 export function shutdownGameSystems(): void {
+  clearRuntimeIntervals();
   world.shutdown();
   pvpMgr.shutdown();
   partyMgr.destroy();
@@ -505,4 +525,5 @@ export function shutdownGameSystems(): void {
   dungeonMatchMgr.shutdown();
   worldEventMgr.shutdown();
   weatherMgr.shutdown();
+  gameSystemsStarted = false;
 }
