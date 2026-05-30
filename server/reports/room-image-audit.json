@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-05-30T16:11:16.927Z",
+  "generatedAt": "2026-05-30T18:28:50.188Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 24,
+    "phase5Targets": 12,
     "missingPrompt": 12,
     "missingImageField": 12,
-    "missingAsset": 24,
-    "issues": 1346,
-    "errors": 150,
+    "missingAsset": 12,
+    "issues": 1334,
+    "errors": 138,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
       "prompt.function": 48,
       "prompt.style": 39,
       "image.missing": 12,
-      "asset.missing": 24,
+      "asset.missing": 12,
       "prompt.missing": 12,
       "asset.ratio": 14,
       "asset.too_small": 1
@@ -327,9 +327,9 @@
         "rooms": 32,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 12,
-        "phase5Targets": 12,
-        "errors": 12,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "mist_harbor": {
@@ -1042,246 +1042,6 @@
           "severity": "error",
           "kind": "prompt.missing",
           "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_24_15",
-      "roomName": "夢水鏡面棧道",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_15.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_24_15",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_15.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_24_18",
-      "roomName": "西界水草鏡岸",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_18.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_24_18",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_18.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_25_13",
-      "roomName": "北界毒蘆封口",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_13.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_25_13",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_13.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_25_19",
-      "roomName": "南鏡水草灘",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_19.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_25_19",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_19.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_26_18",
-      "roomName": "中沼倒影封汊",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_26_18.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_26_18",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_26_18.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_14",
-      "roomName": "沉祠西南封棧",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_27_14",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_14.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_17",
-      "roomName": "霧盲採草水坎",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_17.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_27_17",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_17.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_19",
-      "roomName": "巫燈月堤接道",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_19.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_27_19",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_19.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_28_15",
-      "roomName": "碎影柳根封口",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_28_15.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_28_15",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_28_15.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_29_16",
-      "roomName": "東沼邊界黑水",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_29_16.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_29_16",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_29_16.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_30_14",
-      "roomName": "蛇渡鏡沼碼頭",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_14.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_30_14",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_14.png"
-        }
-      ]
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_30_16",
-      "roomName": "鷺標水草渡坎",
-      "zoneId": "marsh_of_mirrors",
-      "zoneName": "鏡沼",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_16.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "marsh_of_mirrors_fill_30_16",
-          "zoneId": "marsh_of_mirrors",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_16.png"
         }
       ]
     }
@@ -6372,102 +6132,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_24_15",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_15.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_24_18",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_24_18.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_25_13",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_13.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_25_19",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_25_19.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_26_18",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_26_18.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_14",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_14.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_17",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_17.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_27_19",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_27_19.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_28_15",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_28_15.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_29_16",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_29_16.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_30_14",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_14.png"
-    },
-    {
-      "roomId": "marsh_of_mirrors_fill_30_16",
-      "zoneId": "marsh_of_mirrors",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/marsh_of_mirrors_fill_30_16.png"
     },
     {
       "roomId": "marsh_of_mirrors_frog_mire",
