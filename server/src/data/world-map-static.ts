@@ -225,6 +225,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "西南器械欄",
     "zone": "arena_quarter",
     "description": "西南器械欄貼著訓練沙地外側，北面能看見木槍架與沙袋，東側被裁判繩圈隔開。這裡只是競技場平面上的封閉邊角，用來標出訓練場邊界，玩家不能從此穿入看台或後勤區。",
+    "image": "arena_quarter_fill_24_10.png",
+    "imagePrompt": "西南器械欄 arena_quarter_fill_24_10 in arena_quarter, room function danger pocket, training yard boundary with wooden spear racks and sandbags to the north, referee rope circle to the east, closed equipment fence and trampled sand as main terrain, southwest arena corner blocked by rails, dusty torchlight, worn timber, iron rings and tense tournament noise，低角度微俯視訓練場邊界，前景是沙地腳印與木槍架，中景繩圈明確阻斷東側路線，北面沙袋形成地標，不能通往後勤區, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -237,6 +239,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "北側檢查欄",
     "zone": "arena_quarter",
     "description": "北側檢查欄位於武器寄放線外，南面連著競技區主路的喧鬧聲，東西兩側堆著封存木箱與鎖鏈。守衛把這段欄位作為不可通行邊界，提醒玩家改走正式入口與票券柱廊。",
+    "image": "arena_quarter_fill_24_6.png",
+    "imagePrompt": "北側檢查欄 arena_quarter_fill_24_6 in arena_quarter, room function border road, weapon check barrier north of the combat lanes, south route filled with crowd noise, east and west sealed crates and chains, iron checkpoint rail as main architecture, dusty stone floor, torchlit guard line, dark tournament atmosphere，畫面前景保留石地與鎖鏈木箱，中景是不可跨越的檢查欄，南面燈火和人聲暗示正式入口，東西兩側堆物封住錯路, slightly elevated adventurer eye view, readable midground landmark, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -249,6 +253,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南看台封階",
     "zone": "arena_quarter",
     "description": "南看台封階停在一排鐵柵前，北側可望見下注牌與沙地邊線，南面階梯被維修木板完全擋住。這格保留為看台高度差的地圖 blocker，不提供路線或隱藏互動。",
+    "image": "arena_quarter_fill_25_11.png",
+    "imagePrompt": "南看台封階 arena_quarter_fill_25_11 in arena_quarter, room function connector, sealed spectator stairs with iron bars, betting board silhouette and sand boundary to the north, maintenance planks blocking the south steps, tiered stone seating terrain, muted brazier light, dusty banners and height difference marker，前景是被木板封死的階梯，中景鐵柵與座席落差清楚，北面沙地邊線和下注牌只作遠景地標，南側不開路, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 2,
@@ -261,6 +267,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南牆旗影巷",
     "zone": "arena_quarter",
     "description": "南牆旗影巷靠近競技場外牆，北側旗桿影子落在石地上，南面是封死的維修門與堆疊護欄。這裡只標示看台背後的封閉邊界，旅人必須折回北側正式通道，不會通往新區域。",
+    "image": "arena_quarter_fill_25_12.png",
+    "imagePrompt": "南牆旗影巷 arena_quarter_fill_25_12 in arena_quarter, room function border road, narrow wall alley behind spectator tiers, flagpole shadows falling from the north, sealed maintenance door and stacked barricades to the south, stone wall terrain, torn banners, cold side light and arena dust，畫面以狹長石巷為主體，北側旗影指回正式通道，南面維修門被護欄封死，牆根陰影讓玩家讀出這是封閉外輪廓, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -280,6 +288,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南練兵封欄",
     "zone": "arena_quarter",
     "description": "南練兵封欄貼著訓練場沙坑最外圈，北面傳來木劍敲擊聲，南側維修道路落差被粗繩和拒馬隔斷。這格是訓練區封閉邊界 blocker，提醒玩家不要把它當成可通行主路，也不安排怪物或補給。",
+    "image": "arena_quarter_fill_26_12.png",
+    "imagePrompt": "南練兵封欄 arena_quarter_fill_26_12 in arena_quarter, room function danger pocket, outer training pit barrier with practice sand to the north, rope and wooden chevaux de frise blocking the southern service drop, scuffed sand terrain, battered practice shields, torch haze and controlled arena danger，前景粗繩與拒馬切斷維修落差，中景沙坑和木劍聲暗示北側練兵路線，南面黑暗低坡不可通行, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -299,6 +309,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "北側沙欄角",
     "zone": "arena_quarter",
     "description": "北側沙欄角位在決鬥場外緣，南面能看到裁判旗架，西側是武器檢查走廊人流。粗繩把觀眾與選手道路分開，這裡作為不可通行的安全緩衝格，不放怪物或服務。",
+    "image": "arena_quarter_fill_26_6.png",
+    "imagePrompt": "北側沙欄角 arena_quarter_fill_26_6 in arena_quarter, room function border road, sandy corner outside duel field, judge flag rack visible to the south, weapon inspection corridor crowd to the west, thick ropes separating spectator and fighter paths, sand rail terrain, brass hooks and torch smoke，畫面中央是粗繩沙欄與裁判旗架，西側人流只作遠景輪廓，南面沙地亮起，路線被欄角清楚切斷, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -311,6 +323,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "西看台陰廊",
     "zone": "arena_quarter",
     "description": "西看台陰廊夾在下層座席與訓練沙地之間，北面可聽見看台呼喊，東側有沙地護欄。廊口被臨時布幕封住，只保留為地圖上的看台邊界與視覺過渡。",
+    "image": "arena_quarter_fill_27_10.png",
+    "imagePrompt": "西看台陰廊 arena_quarter_fill_27_10 in arena_quarter, room function connector, shadowed corridor between lower seats and training sand, spectator shouts from the north, sand guardrail to the east, temporary cloth curtain sealing the passage, stone corridor terrain, hanging banners and dim oil lamps，前景陰廊石板潮暗，中景布幕封口阻斷通行，東側護欄露出沙地光，北面看台人聲用遠景階梯暗示, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -323,6 +337,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南看台鎖門",
     "zone": "arena_quarter",
     "description": "南看台鎖門位於座席背面，北側可回望階梯與下注牌，南側厚門掛著暫停通行的銅牌。這裡是看台外圈的封閉 blocker，讓地圖保留建築輪廓但不開放玩家穿越，也沒有服務用途。",
+    "image": "arena_quarter_fill_27_12.png",
+    "imagePrompt": "南看台鎖門 arena_quarter_fill_27_12 in arena_quarter, room function border road, locked heavy door behind spectator seats, stairs and betting board shape to the north, sealed bronze lock on the south gate, outer stand architecture, stone steps, iron hinges, dim torchlight and closed service boundary，前景厚門與銅鎖是主體，北側階梯回望看台輪廓，南面沒有出口，牆面和鐵鉸鏈強化封閉感, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -342,6 +358,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南環拒馬道",
     "zone": "arena_quarter",
     "description": "南環拒馬道沿著競技場外圈延伸，北面有選手休息棚的燈火，南側一整排拒馬封住維修坡。這格不是主路，而是用來阻斷南側空白區的安全邊界。",
+    "image": "arena_quarter_fill_28_12.png",
+    "imagePrompt": "南環拒馬道 arena_quarter_fill_28_12 in arena_quarter, room function border road, outer ring path with fighter rest shed lights to the north, long row of wooden barricades blocking the southern maintenance slope, compact dirt and stone terrain, spiked frames, rope knots and smoky arena glow，畫面以前景一整排拒馬阻住南坡，中景北側休息棚燈火作方向線索，外圈道路狹窄但不通向主路, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -361,6 +379,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "中層看台欄",
     "zone": "arena_quarter",
     "description": "中層看台欄位於座席轉角，西側通向觀眾席走廊輪廓，南面能俯看決鬥沙地。欄杆後方只剩狹窄階梯落差與維修架，這裡標示封閉看台，不提供通行路線。",
+    "image": "arena_quarter_fill_28_8.png",
+    "imagePrompt": "中層看台欄 arena_quarter_fill_28_8 in arena_quarter, room function connector, middle spectator railing at a seating corner, west corridor outline, duel sand visible below to the south, narrow stair drop and maintenance scaffold behind the rail, tiered stone seating terrain, brass rail and angled torchlight，畫面以中層欄杆和座席轉角為主，南側能俯看沙地，西邊走廊只留輪廓，後方維修架封住路線, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -373,6 +393,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東看台轉角",
     "zone": "arena_quarter",
     "description": "東看台轉角被冠軍畫像與繩欄包圍，西側是觀眾席的回聲，北面能聽見票券柱廊的人潮。後方維修梯已收起，因此這格只作為看台外輪廓與不可通行邊界。",
+    "image": "arena_quarter_fill_29_8.png",
+    "imagePrompt": "東看台轉角 arena_quarter_fill_29_8 in arena_quarter, room function border road, eastern spectator corner wrapped by champion portrait frames and rope rails, west echoes of seating rows, ticket colonnade crowd to the north, removed maintenance ladder behind the wall, stone corner terrain, faded banners and torch dust，前景繩欄包住轉角，北側柱廊人潮只是遠景光點，西側座席回聲用階梯剪影呈現，後方沒有可走樓梯, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -385,6 +407,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東門封鎖線",
     "zone": "arena_quarter",
     "description": "東門封鎖線位於競技城區外緣，西側能回望沙地與裁判席，東面大門被修繕木架擋住。這裡是東側地圖封閉 blocker，讓玩家明確知道要回主場內側尋路，避免誤入城外空格。",
+    "image": "arena_quarter_fill_30_10.png",
+    "imagePrompt": "東門封鎖線 arena_quarter_fill_30_10 in arena_quarter, room function border road, east gate blockade on the arena edge, west view back toward sand field and judge platform, eastern gate covered by repair scaffolding, heavy wooden frame terrain, chains, dust beams and forbidden exit mood，前景修繕木架封住東門，中景西側露出沙地與裁判席方向，地面石粉和鎖鏈標示這不是出城路線, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -404,6 +428,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東側石階封口",
     "zone": "arena_quarter",
     "description": "東側石階封口貼著看台背牆，西面可見座席階梯，東側石階被崩落碎塊堵住。它保留建築高度差與邊界感，不放服務或怪物，玩家需要折回西側通道。",
+    "image": "arena_quarter_fill_30_11.png",
+    "imagePrompt": "東側石階封口 arena_quarter_fill_30_11 in arena_quarter, room function connector, blocked eastern stone stairs behind spectator wall, seating steps visible to the west, collapsed rubble sealing the east side, broken stair terrain, cracked masonry, iron rail fragments and cold torch shadow，前景碎石堵住石階出口，西面座席階梯提供返回方向，背牆高度差明顯，畫面重點是不能繼續往東走, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -423,6 +449,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "北東旗欄",
     "zone": "arena_quarter",
     "description": "北東旗欄插滿決鬥旗幟，西側接近武器檢查線，南面能看見觀眾入口的石階。東側外牆沒有開門，這格作為北東角封閉 blocker，避免地圖誤導玩家走出場區。",
+    "image": "arena_quarter_fill_30_7.png",
+    "imagePrompt": "北東旗欄 arena_quarter_fill_30_7 in arena_quarter, room function border road, northeast flag barrier filled with duel banners, weapon inspection line to the west, spectator entrance stairs to the south, blank east wall with no gate, flagpole and rope terrain, fluttering cloth, torchlit dust and closed corner mood，前景決鬥旗幟和繩欄形成北東角邊界，西側檢查線與南面入口石階只作方向提示，東牆完全無門, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -442,6 +470,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東看台欄門",
     "zone": "arena_quarter",
     "description": "東看台欄門面向上層座席，西側通往觀眾席輪廓，東面欄門被鎖鏈固定。這裡是看台外圈的封閉 blocker 節點，只提供地圖輪廓與路線警示，不是服務房，也不放任務目標。",
+    "image": "arena_quarter_fill_30_8.png",
+    "imagePrompt": "東看台欄門 arena_quarter_fill_30_8 in arena_quarter, room function border road, eastern stand rail gate facing upper seats, west outline of spectator corridor, chained gate fixed on the east side, iron rail architecture, stone landing, worn red banners and dim lamp glow，畫面主體是被鎖鏈固定的欄門，西側觀眾席通道只留下輪廓，東側欄外沒有路，地面石臺狹窄封閉, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -461,6 +491,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "東外牆窄巷",
     "zone": "arena_quarter",
     "description": "東外牆窄巷沿競技場石牆排列，西側能聽見場內歡呼，東側牆根堆滿封存拒馬與破旗架。這裡作為不可通行的封閉邊界，玩家只能回到西側正式競技區路線，不會接出新通道。",
+    "image": "arena_quarter_fill_30_9.png",
+    "imagePrompt": "東外牆窄巷 arena_quarter_fill_30_9 in arena_quarter, room function border road, narrow alley along the eastern arena stone wall, west muffled cheers from inside, east wall base crowded with stored barricades and broken flag racks, tight stone passage terrain, dust, iron spikes and claustrophobic torchlight，前景狹巷被拒馬和破旗架擠滿，西側牆內歡呼只以光縫暗示，東側高牆沒有門，玩家必須折回正式路線, slightly elevated adventurer eye view, terrain stone corridor, readable arena architecture, blocked-route composition, clear north south east west path cues, layered torch key light, dusty rim light, worn stone, rope, iron, timber, cloth banner and sand textures, practical dark fantasy arena boundary mood, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",

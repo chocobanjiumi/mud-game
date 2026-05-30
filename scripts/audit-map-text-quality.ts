@@ -2455,6 +2455,8 @@ function extractBatchIgnoredCoreTerms(batchKey: string): Set<string> {
     ? batchKey.slice('zone:'.length)
     : batchKey.startsWith('exit:')
       ? batchKey.slice('exit:'.length)
+      : batchKey.startsWith('imagePrompt:')
+        ? batchKey.slice('imagePrompt:'.length)
       : undefined;
   if (zoneId) {
     addCoreTermFragments(ignored, ZONES[zoneId]?.name ?? '');
