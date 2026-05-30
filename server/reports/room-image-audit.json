@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-30T06:29:12.851Z",
+  "generatedAt": "2026-05-30T06:48:30.401Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 260,
-    "missingPrompt": 216,
-    "missingImageField": 216,
-    "missingAsset": 260,
-    "issues": 1974,
-    "errors": 778,
+    "phase5Targets": 253,
+    "missingPrompt": 201,
+    "missingImageField": 201,
+    "missingAsset": 253,
+    "issues": 1953,
+    "errors": 757,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "asset.missing": 260,
-      "prompt.function": 41,
-      "prompt.style": 31,
-      "image.missing": 216,
-      "prompt.missing": 216,
+      "asset.missing": 253,
+      "prompt.function": 49,
+      "prompt.style": 39,
+      "image.missing": 201,
+      "prompt.missing": 201,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -225,8 +225,8 @@
       "frostbite_pass": {
         "zoneName": "霜咬隘口",
         "rooms": 28,
-        "missingPrompt": 8,
-        "missingImageField": 8,
+        "missingPrompt": 0,
+        "missingImageField": 0,
         "missingAsset": 8,
         "phase5Targets": 8,
         "errors": 24,
@@ -525,11 +525,11 @@
       "storm_highlands": {
         "zoneName": "風暴高原",
         "rooms": 27,
-        "missingPrompt": 7,
-        "missingImageField": 7,
-        "missingAsset": 7,
-        "phase5Targets": 7,
-        "errors": 21,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "sunken_catacombs": {
@@ -2014,33 +2014,32 @@
       "roomName": "霜裂分界",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_frozen_divide.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_frozen_divide",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_frozen_divide.png"
-        },
-        {
-          "roomId": "frostbite_frozen_divide",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_frozen_divide.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png"
         },
         {
           "roomId": "frostbite_frozen_divide",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_frozen_divide",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2049,33 +2048,32 @@
       "roomName": "雨棚西南冰封坡",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n19_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n12.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png"
         },
         {
           "roomId": "frostbite_pass_fill_n19_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n19_n12",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2084,33 +2082,32 @@
       "roomName": "雨棚西界凍石路牌",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n19_n13",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n13.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n13",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n13.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png"
         },
         {
           "roomId": "frostbite_pass_fill_n19_n13",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n19_n13",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2119,33 +2116,32 @@
       "roomName": "高原崖門西凍路牌",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n19_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n19_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png"
         },
         {
           "roomId": "frostbite_pass_fill_n19_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n19_n14",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2154,33 +2150,32 @@
       "roomName": "東段冰封橫道",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n20_n12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n20_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n20_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n20_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n20_n12.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png"
         },
         {
           "roomId": "frostbite_pass_fill_n20_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n20_n12",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2189,33 +2184,32 @@
       "roomName": "極封門南霜脊",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n21_n12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n21_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n21_n12.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n21_n12",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n21_n12.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png"
         },
         {
           "roomId": "frostbite_pass_fill_n21_n12",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n21_n12",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2224,33 +2218,32 @@
       "roomName": "龍息台東冰裂牆",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n22_n14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n22_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n22_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n22_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n22_n14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png"
         },
         {
           "roomId": "frostbite_pass_fill_n22_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n22_n14",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -2259,33 +2252,32 @@
       "roomName": "空山風門東霜牆",
       "zoneId": "frostbite_pass",
       "zoneName": "霜咬隘口",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n27_n14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "frostbite_pass_fill_n27_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n27_n14.png"
-        },
-        {
-          "roomId": "frostbite_pass_fill_n27_n14",
-          "zoneId": "frostbite_pass",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/frostbite_pass_fill_n27_n14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png"
         },
         {
           "roomId": "frostbite_pass_fill_n27_n14",
           "zoneId": "frostbite_pass",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
+        },
+        {
+          "roomId": "frostbite_pass_fill_n27_n14",
+          "zoneId": "frostbite_pass",
+          "severity": "error",
+          "kind": "prompt.style",
+          "message": "imagePrompt missing required style phrase"
         }
       ]
     },
@@ -8100,251 +8092,6 @@
       ]
     },
     {
-      "roomId": "storm_highlands_fill_n10_n14",
-      "roomName": "獅鷲王峰東雷崖封",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n10_n14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_fill_n10_n14",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n10_n14.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n10_n14",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n10_n14.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n10_n14",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n13",
-      "roomName": "天石堆東斷崖封",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_fill_n11_n13",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n13.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n11_n13",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n13.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n11_n13",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n15",
-      "roomName": "風暴玻礦東封脊",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n15.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_fill_n11_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n15.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n11_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n15.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n11_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_fill_n17_n15",
-      "roomName": "避風村南斷崖徑",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n17_n15.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_fill_n17_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n17_n15.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n17_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_fill_n17_n15.png"
-        },
-        {
-          "roomId": "storm_highlands_fill_n17_n15",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_windrest_lane",
-      "roomName": "避風村補給棚",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lane.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_windrest_lane",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_lane.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_lane",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_lane.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_lane",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_windrest_lodge",
-      "roomName": "避風屋",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lodge.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_windrest_lodge",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_lodge.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_lodge",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_lodge.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_lodge",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "storm_highlands_windrest_portal",
-      "roomName": "避風村傳送石庭",
-      "zoneId": "storm_highlands",
-      "zoneName": "風暴高原",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_portal.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "storm_highlands_windrest_portal",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_portal.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_portal",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/storm_highlands_windrest_portal.png"
-        },
-        {
-          "roomId": "storm_highlands_windrest_portal",
-          "zoneId": "storm_highlands",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
       "roomId": "thundersteppe_fill_10_23",
       "roomName": "雷草西緣",
       "zoneId": "thundersteppe",
@@ -13225,24 +12972,23 @@
       "roomId": "frostbite_frozen_divide",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_frozen_divide.png"
-    },
-    {
-      "roomId": "frostbite_frozen_divide",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_frozen_divide.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_frozen_divide.png"
     },
     {
       "roomId": "frostbite_frozen_divide",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "frostbite_frozen_divide",
+      "zoneId": "frostbite_pass",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_blue_ice_bridge",
@@ -13297,32 +13043,23 @@
       "roomId": "frostbite_pass_fill_n19_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n12.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n12.png"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n12.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n13",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n13.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n13",
@@ -13330,22 +13067,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n13.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n13.png"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n13",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "frostbite_pass_fill_n19_n14",
+      "roomId": "frostbite_pass_fill_n19_n13",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n14.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n14",
@@ -13353,22 +13089,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n19_n14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n19_n14.png"
     },
     {
       "roomId": "frostbite_pass_fill_n19_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "frostbite_pass_fill_n20_n12",
+      "roomId": "frostbite_pass_fill_n19_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n20_n12.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n20_n12",
@@ -13376,22 +13111,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n20_n12.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n20_n12.png"
     },
     {
       "roomId": "frostbite_pass_fill_n20_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "frostbite_pass_fill_n21_n12",
+      "roomId": "frostbite_pass_fill_n20_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n21_n12.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n21_n12",
@@ -13399,22 +13133,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n21_n12.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n21_n12.png"
     },
     {
       "roomId": "frostbite_pass_fill_n21_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "frostbite_pass_fill_n22_n14",
+      "roomId": "frostbite_pass_fill_n21_n12",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n22_n14.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n22_n14",
@@ -13422,22 +13155,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n22_n14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n22_n14.png"
     },
     {
       "roomId": "frostbite_pass_fill_n22_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
-      "roomId": "frostbite_pass_fill_n27_n14",
+      "roomId": "frostbite_pass_fill_n22_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n27_n14.png"
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_fill_n27_n14",
@@ -13445,14 +13177,21 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/frostbite_pass_fill_n27_n14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/frostbite_pass_fill_n27_n14.png"
     },
     {
       "roomId": "frostbite_pass_fill_n27_n14",
       "zoneId": "frostbite_pass",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
+    },
+    {
+      "roomId": "frostbite_pass_fill_n27_n14",
+      "zoneId": "frostbite_pass",
+      "severity": "error",
+      "kind": "prompt.style",
+      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_frost_giant_steps",
@@ -21519,98 +21258,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "storm_highlands_fill_n10_n14",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n10_n14.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n10_n14",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n10_n14.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n10_n14",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n13",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n13.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n13",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n13.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n13",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n15.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n11_n15.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n11_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "storm_highlands_fill_n17_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n17_n15.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n17_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_fill_n17_n15.png"
-    },
-    {
-      "roomId": "storm_highlands_fill_n17_n15",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
       "roomId": "storm_highlands_goat_ledge",
       "zoneId": "storm_highlands",
       "severity": "warning",
@@ -21700,75 +21347,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lane",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lane.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lane",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lane.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lane",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lodge",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lodge.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lodge",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_lodge.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_lodge",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "storm_highlands_windrest_portal",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_portal.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_portal",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/storm_highlands_windrest_portal.png"
-    },
-    {
-      "roomId": "storm_highlands_windrest_portal",
-      "zoneId": "storm_highlands",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
     },
     {
       "roomId": "storm_highlands_worldboss_peak",
