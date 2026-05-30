@@ -147,6 +147,8 @@ export class CombatEngine {
       level: m.def.level,
       classId: 'monster',
       activeEffects: [],
+      formation: 'front',
+      threat: 0,
       isDead: false,
       monsterBehavior: this.getMonsterBehaviorType(m.def),
       monsterPhases: this.getMonsterPhaseRules(m.def),
@@ -175,6 +177,7 @@ export class CombatEngine {
     const combatId = randomUUID();
 
     // 建立玩家 CombatantState
+    const BACK_ROW_CLASSES = new Set(['mage', 'archmage', 'warlock', 'chronomancer', 'priest', 'high_priest', 'druid', 'inquisitor', 'marksman']);
     const playerTeam: CombatantState[] = players.map(p => ({
       id: p.id,
       name: p.name,
@@ -192,6 +195,8 @@ export class CombatEngine {
       raceId: p.raceId,
       faithId: p.faithId,
       activeEffects: [],
+      formation: BACK_ROW_CLASSES.has(p.classId) ? 'back' as const : 'front' as const,
+      threat: 0,
       activeMountId: p.activeMountId ?? null,
       mounted: p.mounted ?? false,
       mountFatigue: Math.max(0, p.mountFatigue ?? 0),
@@ -613,6 +618,12 @@ export class CombatEngine {
         case 'mounted_guard':
           this.executeMountedGuard(session, action, actor, roundLog);
           break;
+        case 'formation': {
+          const newRow = actor.formation === 'front' ? 'back' : 'front';
+          actor.formation = newRow;
+          roundLog.push(`${actor.name}移動到${newRow === 'front' ? '前排' : '後排'}！`);
+          break;
+        }
       }
 
       // 檢查戰鬥是否結束
@@ -898,6 +909,10 @@ export class CombatEngine {
         const actual = target.hp - before;
         log.push(`${actor.name}使用${skillName}治療${target.name}，實際回復 ${actual} HP，目標生命值由 ${before} 變為 ${target.hp}。`);
         if (actual > 0) {
+          // 仇恨值：治療產生 0.5 倍仇恨
+          if (actor.isPlayer) {
+            actor.threat += Math.floor(actual * 0.5);
+          }
           this.triggerAffixEvents(session, actor, 'on_heal', log, {
             targetHpPercent: this.getHpPercent(target),
             isFirstHit: session.state.round === 1,
@@ -1226,6 +1241,11 @@ export class CombatEngine {
     this.applyDamageToTarget(session, target, result.damage, log);
     this.triggerMonsterPhases(session, target, log);
 
+    // 仇恨值：玩家對怪物造成傷害時累積仇恨
+    if (actor.isPlayer && !target.isPlayer && result.damage > 0) {
+      actor.threat += result.damage;
+    }
+
     // 資源系統：戰士系被擊中獲得怒氣
     this.gainResourceOnHit(target, log);
 
@@ -1418,15 +1438,26 @@ export class CombatEngine {
     const alivePlayers = session.state.playerTeam.filter(p => !p.isDead);
     if (alivePlayers.length === 0) return undefined;
 
-    // 挑釁效果套在怪物身上，source 指向吸引仇恨的玩家。
+    // 1. 挑釁效果最優先
     const taunt = enemy.activeEffects.find(effect => effect.type === 'taunt' && effect.source);
     const tauntTarget = taunt
       ? alivePlayers.find(player => player.id === taunt.source)
       : undefined;
     if (tauntTarget) return tauntTarget;
 
-    // 隨機目標
-    return alivePlayers[Math.floor(Math.random() * alivePlayers.length)];
+    // 2. 前後排篩選：近戰怪物只能打前排（前排全滅時打後排）
+    const isMeleeMonster = !enemy.monsterBehavior || enemy.monsterBehavior === 'basic' || enemy.monsterBehavior === 'ambusher' || enemy.monsterBehavior === 'guardian';
+    const frontRow = alivePlayers.filter(p => p.formation === 'front');
+    const candidates = isMeleeMonster && frontRow.length > 0 ? frontRow : alivePlayers;
+
+    // 3. 仇恨值目標選擇：70% 機率打最高仇恨、30% 隨機（避免完全可預測）
+    const maxThreat = Math.max(...candidates.map(p => p.threat));
+    if (maxThreat > 0 && Math.random() < 0.7) {
+      const highThreatPlayers = candidates.filter(p => p.threat === maxThreat);
+      return highThreatPlayers[Math.floor(Math.random() * highThreatPlayers.length)];
+    }
+
+    return candidates[Math.floor(Math.random() * candidates.length)];
   }
 
   private selectTargetForSkill(

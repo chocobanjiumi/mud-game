@@ -5,8 +5,9 @@ import type { GuardianHints, ResourceType } from './player.js';
 import type { FaithId, RaceId } from './origin.js';
 
 export type CombatPhase = 'encounter' | 'action_select' | 'resolve' | 'end';
-export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item' | 'mount_ride' | 'mount_charge' | 'mounted_guard';
+export type CombatActionType = 'attack' | 'skill' | 'defend' | 'flee' | 'item' | 'mount_ride' | 'mount_charge' | 'mounted_guard' | 'formation';
 export type CombatAttackMode = 'melee' | 'ranged';
+export type FormationRow = 'front' | 'back';
 export type CombatResult = 'victory' | 'defeat' | 'fled' | 'ongoing';
 
 export interface CombatAction {
@@ -54,6 +55,8 @@ export interface CombatantState {
   mounted?: boolean;
   mountFatigue?: number;
   mountCooldownUntil?: number;
+  formation: FormationRow;
+  threat: number;
   isDead: boolean;
   monsterBehavior?: MonsterBehaviorType;
   monsterPhases?: MonsterPhaseRule[];
