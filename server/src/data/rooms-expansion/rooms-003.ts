@@ -350,9 +350,8 @@ dragon_starfall_crater: {
     imagePrompt: '深淵入口 in abyss_rift, cracked stairway descending from elder dragon sanctum into purple black void, impossible geometry, dimensional hum, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
       '古龍聖殿地板上的裂縫延伸成一道深不見底的階梯，向下通往一片紫黑色的虛空。' +
-      '空間在此處開始扭曲，牆壁上的岩石呈現出不可能的幾何形狀。' +
-      '耳邊傳來低沉的嗡鳴聲，那是維度壁壘被侵蝕的聲音。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '空間在此處開始扭曲，牆壁岩石折成不可能的幾何形狀，裂縫邊緣還凝著微亮的時空碎片。' +
+      '耳邊傳來低沉嗡鳴，像維度壁壘正被緩慢磨穿；南側仍能感到墜星坑的熱度，北方虛空迴廊吞著星光，東面花園幽香與西側錨鏈震動同時從黑暗裡傳來。',
     exits: [
       { direction: 'south', targetRoomId: 'dragon_starfall_crater', description: '裂隙邊緣回到龍谷墜星坑' },
       { direction: 'north', targetRoomId: 'void_corridor', description: '踏入扭曲的虛空' },
@@ -383,9 +382,8 @@ void_corridor: {
     imagePrompt: '虛空迴廊 in abyss_rift, floating stone corridor over endless purple void, transparent floor with star abyss below, crawling shadow shapes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain stone, clear lantern light',
     description:
       '一條漂浮在虛空中的石質走廊，兩側是無盡的紫黑色虛無。' +
-      '走廊的地板時而凝固時而透明，能透過腳下看到星辰般閃爍的深淵。' +
-      '偶爾有扭曲的光芒從虛空中射出，照亮走廊上蠕動的暗影生物。牆面缺口會傳來其他時間線的低語。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '走廊地板時而凝固時而透明，腳下能看見星辰般閃爍的深淵，邊緣則有暗影生物像墨水般貼著石縫蠕動。' +
+      '偶爾有扭曲光芒從虛空中射出，照亮牆面缺口，也帶來其他時間線的低語。南端入口仍有裂階輪廓，北方暗影領域吸走光線，東側時間裂縫和西側鏡湖冷光把走廊拉成四條不穩的方向。',
     exits: [
       { direction: 'south', targetRoomId: 'abyss_entrance', description: '退回深淵入口' },
       { direction: 'north', targetRoomId: 'shadow_realm', description: '走廊延伸入更深的黑暗' },
@@ -415,9 +413,8 @@ shadow_realm: {
     imagePrompt: '暗影領域 in abyss_rift, realm swallowed by pure shadow, black rippling floor, ghost eyes and fading body silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
       '一片被純粹暗影能量籠罩的空間，所有光源在這裡都會被吞噬。' +
-      '只有暗影生物的眼睛在黑暗中如同幽靈般閃爍。地面是一層流動的暗影，' +
-      '每一步都會激起漣漪般的黑色波紋。南側回廊仍有微弱輪廓，北方混沌橋像一道裂光。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '只有暗影生物的眼睛在黑暗中如幽靈般閃爍，流動地面每受壓一次，就激起漣漪般的黑色波紋。' +
+      '南側虛空迴廊還保留一截透明石板輪廓，北方混沌之橋像裂開的彩色傷口，西邊暗影檔案館的書架影子則一排排浮現。黑暗不只是遮蔽視線，更像正在試探每一個能被吞掉的記憶。',
     exits: [
       { direction: 'south', targetRoomId: 'void_corridor', description: '退回虛空迴廊' },
       { direction: 'north', targetRoomId: 'chaos_bridge', description: '黑暗中有一道混沌的光芒' },
@@ -444,10 +441,9 @@ chaos_bridge: {
     image: 'chaos_bridge.png',
     imagePrompt: '混沌之橋 in abyss_rift, bridge of shifting chaos matter changing between stone crystal and void, elemental colors along both sides, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而是虛無。' +
-      '橋的兩側翻湧著不同顏色的能量——火、冰、雷、光、暗交替閃爍。' +
-      '踏上橋面的瞬間，現實的法則就不再適用。橋面邊緣還會短暫浮現其他隊伍失敗時留下的腳印。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一座由不斷變換形態的混沌物質構成的橋樑，橋面時而是石頭，時而是水晶，時而又像被挖空的虛無。' +
+      '橋的兩側翻湧著不同顏色的能量，火、冰、雷、光與暗交替閃爍，讓每一步都踩在不同法則上。' +
+      '橋面邊緣會短暫浮現先前失敗者留下的腳印，又很快被混沌抹平。南方暗影領域沉得像墨，北端深淵核心一下一下發光，西側引力井與東側記憶迷宮把橋身拉得微微扭曲。',
     exits: [
       { direction: 'south', targetRoomId: 'shadow_realm', description: '退回暗影領域' },
       { direction: 'north', targetRoomId: 'abyss_core', description: '橋的盡頭是深淵的核心' },
@@ -475,10 +471,8 @@ nightmare_garden: {
     image: 'nightmare_garden.png',
     imagePrompt: '噩夢花園 in abyss_rift, floating garden of nightmare crystal flowers, silent blooming and withering, twisted human silhouettes in purple mist, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain crystal, clear lantern light',
     description:
-      '一座詭異的花園漂浮在虛空之中，花朵是由凝固的噩夢結晶而成。' +
-      '每一朵花都在無聲地綻放與凋零，散發著令人昏沉的幽香。' +
-      '花叢中偶爾能看到扭曲的人影——那是被噩夢吞噬的冒險者殘留的意識。西側仍能退回入口，北方花徑通向扭曲時間。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一座詭異花園漂浮在虛空之中，花朵由凝固的噩夢結晶長成，每一朵都在無聲綻放與凋零，散發令人昏沉的幽香。' +
+      '花叢裡偶爾浮現扭曲人影，像被夢境吞噬後殘留的意識仍在尋找出口。西側深淵入口的裂階輪廓在霧中忽明忽暗，北方花徑被扭曲時間切成斷續光帶，東面更深的果園則垂著半透明黑果。花粉落到地面時會形成短暫夢境，映出不屬於此地的天空。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_entrance', description: '回到深淵入口' },
       { direction: 'north', targetRoomId: 'time_distortion', description: '花園邊緣的空間在扭曲' },
@@ -507,7 +501,7 @@ abyss_core: {
     description:
       '裂隙的最深處，一顆巨大的暗紫色球體懸浮在虛空中央，不斷脈動著。' +
       '這是深淵的核心——所有混沌和暗影力量的源頭。' +
-      '核心周圍的空間已經完全崩壞，重力、時間、光線都失去了意義。碎裂石台像衛星般繞著核心旋轉，每一次脈動都會把遠處的迴廊、花園與時空區短暫拉近。核心表面浮現無數陌生眼睛，又在下一瞬間變成古代術式，說明它既是入侵錨點，也是被封印失敗後扭曲的魔法裝置。若玩家站在脈動間隙，能聽見古代術士留下的警告，提醒任何攻擊核心的行動都會同時震動整條裂隙。西側熔爐正把剝落碎片重新鑄成武器。',
+      '核心周圍的空間已經完全崩壞，重力、時間、光線都失去了意義。碎裂石台像衛星般繞著核心旋轉，每一次脈動都會把遠處的迴廊、花園與時空區短暫拉近。核心表面浮現無數陌生眼睛，又在下一瞬間變成古代術式，說明它既是入侵錨點，也是封印失敗後扭曲的魔法裝置。脈動間隙裡能聽見古代術士留下的警告，任何對核心的衝擊都會同時震動整條裂隙。西側熔爐正把剝落碎片重新鑄成武器。',
     exits: [
       { direction: 'south', targetRoomId: 'chaos_bridge', description: '退回混沌之橋' },
       { direction: 'east', targetRoomId: 'abyss_lord_chamber', description: '核心背後是深淵領主的居所' },
@@ -534,10 +528,8 @@ time_distortion: {
     image: 'time_distortion.png',
     imagePrompt: '時空扭曲區 in abyss_rift, overlapping past present future ruins, branching time streams, broken clocks and dimensional light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起。' +
-      '你能同時看到這個地方千年前的繁華和千年後的廢墟。' +
-      '時間之流在此分岔又匯合，一步之差可能跨越百年。西側殘影指回虛空迴廊，北方斷裂光帶通往更深裂隙。地面裂縫裡還卡著不同年代的武器殘影。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '空間在此處嚴重扭曲，過去、現在和未來的景象交疊在一起；同一面斷牆上一半還保持千年前的繁華，一半已化為千年後的廢墟。' +
+      '時間之流在腳邊分岔又匯合，一步之差就會踩過百年灰塵。西側殘影指回虛空迴廊，南面噩夢花園的花粉被倒流成種子，北方斷裂光帶通往領主之間，東側晶格門後則漂著時間碎片。地面裂縫裡卡著不同年代的武器殘影。',
     exits: [
       { direction: 'west', targetRoomId: 'void_corridor', description: '回到虛空迴廊' },
       { direction: 'south', targetRoomId: 'nightmare_garden', description: '回到噩夢花園' },
@@ -568,7 +560,7 @@ abyss_lord_chamber: {
     description:
       '一個懸浮在虛空中心的巨大平台，由凝固的混沌能量構成。' +
       '平台中央矗立著一座由暗影和虛空編織而成的王座，深淵領主端坐其上，' +
-      '多隻眼睛同時注視著來訪者。牠的存在本身就在扭曲周圍的現實，空間在牠身邊不停裂開又癒合。王座後方懸著破碎的天界門影，腳下則能看見深淵核心的脈動倒影。每當領主抬手，平台邊緣的時鐘、鏡面與暗影柱便會重新排列，像是在為下一次維度入侵校準座標。王座側面的信標持續向外發出黑紫脈衝，北方尖塔則把這些座標刺入天界裂口。這裡同時是 Boss 戰場、區域出口與深淵陰謀的中心。',
+      '多隻眼睛同時注視著來訪者。牠的存在本身就在扭曲周圍的現實，空間在牠身邊不停裂開又癒合。王座後方懸著破碎的天界門影，腳下則能看見深淵核心的脈動倒影。每當領主抬手，平台邊緣的時鐘、鏡面與暗影柱便會重新排列，像是在為下一次維度入侵校準座標。王座側面的信標持續向外發出黑紫脈衝，北方尖塔則把這些座標刺入天界裂口；西南兩側仍殘留核心與時空區撕出的裂光。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_core', description: '退回深淵核心' },
       { direction: 'south', targetRoomId: 'time_distortion', description: '退回時空扭曲區' },
@@ -596,7 +588,7 @@ abyss_anchor_steps: {
     image: 'abyss_anchor_steps.png',
     imagePrompt: '封印錨階 in abyss_rift, broken descending steps wrapped in giant sealing chains, purple void below, dragon and mage runes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵入口西側的階梯被數條巨大錨鏈纏住，鏈環一半刻著龍語，一半刻著古代術士的封印符。每走下一層，腳下石板都會出現不同年代的裂痕，彷彿這段階梯曾被反覆修補又反覆撕開。錨鏈末端沒入紫黑虛空，偶爾傳來沉重拖拽聲，表示某種力量正試圖把整個入口拉向更深處。',
+      '深淵入口西側的階梯被數條巨大錨鏈纏住，鏈環一半刻著龍語，一半刻著古代術士的封印符。每下一層，腳下石板都會浮出不同年代的裂痕，彷彿這段階梯曾被反覆修補又反覆撕開。錨鏈末端沒入紫黑虛空，偶爾傳來沉重拖拽聲，像某種力量正試圖把整個入口拉向更深處。東面裂階仍連著入口，北端鏡湖冷光沿鏈環反射下來，使封印符忽明忽暗。',
     exits: [
       { direction: 'east', targetRoomId: 'abyss_entrance', description: '沿錨鏈回到深淵入口' },
       { direction: 'north', targetRoomId: 'void_mirror_lake', description: '階梯盡頭映著鏡湖冷光' },
@@ -623,7 +615,7 @@ void_mirror_lake: {
     image: 'void_mirror_lake.png',
     imagePrompt: '虛空鏡湖 in abyss_rift, still black mirror lake floating in void, reflections showing impossible other selves, purple stars beneath surface, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain lake, clear lantern light',
     description:
-      '虛空迴廊西側沒有真正的湖水，而是一片平滑到毫無波紋的黑色鏡面。鏡中倒影不會模仿動作，而是展示可能發生過的其他選擇：倒下的同伴、未開啟的寶箱、或從未踏入深淵的自己。湖面中央偶爾浮起星辰般的氣泡，破裂時會放出其他維度的低語。這裡是探索與精神考驗點，也會吸引追逐記憶的暗影惡魔。',
+      '虛空迴廊西側沒有真正的湖水，而是一片平滑到毫無波紋的黑色鏡面。鏡中倒影不會模仿動作，而是展示可能發生過的其他選擇：倒下的同伴、未開啟的寶箱、或從未踏入深淵的自己。湖面中央偶爾浮起星辰般的氣泡，破裂時會放出其他維度的低語。東側走廊倒影被拉得很長，南面錨階的鏈影沉入鏡底，北方暗影檔案館的書架則像從水下浮出。',
     exits: [
       { direction: 'east', targetRoomId: 'void_corridor', description: '鏡湖邊緣回到虛空迴廊' },
       { direction: 'south', targetRoomId: 'abyss_anchor_steps', description: '鏡面下方連著封印錨階' },
@@ -705,7 +697,7 @@ nightmare_orchard: {
     image: 'nightmare_orchard.png',
     imagePrompt: '噩夢果園 in abyss_rift, orchard of black crystal trees bearing glowing nightmare fruit, sleeping silhouettes under roots, purple fog, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain crystal, clear lantern light',
     description:
-      '噩夢花園東側的樹木長得像黑色水晶，每根枝條都掛著一顆半透明果實，果實裡浮現沉睡者的臉。果園地面柔軟得像夢境邊界，踩下去會聽見不屬於自己的回憶。部分果實已經裂開，流出銀紫色汁液並形成小型幻境。這裡可作為資源與事件點，但任何採集都可能喚醒被困在果實中的噩夢意識。',
+      '噩夢花園東側的樹木長得像黑色水晶，每根枝條都掛著一顆半透明果實，果實裡浮現沉睡者的臉。果園地面柔軟得像夢境邊界，踩下去會聽見不屬於自己的回憶。部分果實已經裂開，流出銀紫色汁液並形成小型幻境，裂口周圍還有暗影抓痕。西側花霧仍能看見噩夢花園的結晶花，北方時間碎片庫的銀光則照在果皮上，使每顆果實都像封著一段被偷走的睡眠。',
     exits: [
       { direction: 'west', targetRoomId: 'nightmare_garden', description: '穿過花霧回到噩夢花園' },
       { direction: 'north', targetRoomId: 'time_splinter_vault', description: '果園北側有碎時封存室' },
@@ -731,7 +723,7 @@ time_splinter_vault: {
     image: 'time_splinter_vault.png',
     imagePrompt: '時間碎片庫 in abyss_rift, vault of floating clock shards and frozen moments, silver purple time splinters in glass cells, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '時空扭曲區東側是一間漂浮封存室，無數鐘面碎片被關在透明晶格裡，指針指向完全不同的年代。某些晶格中封著一秒鐘的火焰、一次未完成的攻擊、或一個即將說出口的名字。封存室中央的裂鐘每敲一次，玩家都會感覺自己剛剛做過的選擇被重新排列。北側回聲可聽見迴響庭，但時間線已被剪斷，需經記憶迷宮才能抵達。這裡能提供時空任務素材，也能解釋深淵領主如何撕開通往天界的路。晶格後方有多條被剪斷的時間線，末端全都指向領主王座，表示牠曾反覆嘗試尋找勝利的未來。若打開錯誤晶格，房間會倒退到剛進門的一刻，只有被封存的傷痕仍然保留。',
+      '時空扭曲區東側是一間漂浮封存室，無數鐘面碎片被關在透明晶格裡，指針指向完全不同的年代。某些晶格中封著一秒鐘的火焰、一次未完成的攻擊，或一個即將說出口的名字。封存室中央的裂鐘每敲一次，剛剛發生的選擇都像被重新排列。北側觀測廊道連向混沌觀測台，南方銀光流入噩夢果園，西側晶格廊道則回到時空扭曲區。晶格後方有多條被剪斷的時間線，末端全都指向領主王座，表示牠曾反覆尋找勝利的未來。',
     exits: [
       { direction: 'west', targetRoomId: 'time_distortion', description: '晶格廊道回到時空扭曲區' },
       { direction: 'north', targetRoomId: 'chaos_observatory', description: '觀測廊道通往混沌觀測台' },
@@ -759,7 +751,7 @@ gravity_well: {
     image: 'gravity_well.png',
     imagePrompt: '倒重引力井 in abyss_rift, inverted gravity well with stones falling upward, black spiral pit, broken chains and purple force rings, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '混沌之橋西側的虛空向內塌陷成倒重引力井，碎石、影子與破裂鎖鏈不是落下，而是緩慢向上墜入黑色螺旋。井壁刻滿失敗封印的記號，每一道符號都被拉長成扭曲弧線。靠近井口時，裝備重量會忽然變輕，下一秒又像整座山壓在肩上。這裡是精英戰鬥點，能用引力變化製造高風險走位。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '混沌之橋西側的虛空向內塌陷成倒重引力井，碎石、影子與破裂鎖鏈不是落下，而是緩慢向上墜入黑色螺旋。井壁刻滿失敗封印的記號，每一道符號都被拉長成扭曲弧線。靠近井口時，裝備重量會忽然變輕，下一秒又像整座山壓在肩上。東側橋面被井力扯出弧度，南面暗影檔案館的書頁不斷倒飛進裂縫，北方上升碎石則被黑紫火線牽往裂隙熔爐。井心凝成的重力石在螺旋深處一明一滅。',
     exits: [
       { direction: 'east', targetRoomId: 'chaos_bridge', description: '抓住石樁回到混沌之橋' },
       { direction: 'south', targetRoomId: 'shadow_archive', description: '井壁裂縫通往暗影檔案館' },
@@ -787,7 +779,7 @@ memory_maze: {
     image: 'memory_maze.png',
     imagePrompt: '記憶迷宮 in abyss_rift, maze walls made of fading memories, translucent scenes, purple fog corridors and shadow hunters, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '混沌之橋東側的迷宮沒有固定牆壁，通道由來訪者的記憶片段拼成：熟悉的村口、失敗的戰鬥、未完成的承諾，全都像薄幕一樣攔在前方。每次選錯路，迷宮就會拿走一段細節，使人忘記自己為何前進。地面上的銀色線條偶爾會指向深淵核心，但也可能故意把玩家引向噩夢。這裡適合承接調查與救援任務。迷宮牆上還嵌著被困冒險者留下的名字，只要讀出正確順序，某些記憶薄幕會短暫打開，露出通往迴響庭的道路。若玩家停留太久，自己的名字也會逐漸浮現在牆上，提示記憶正在被迷宮吸收。',
+      '混沌之橋東側的迷宮沒有固定牆壁，通道由來訪者的記憶片段拼成：熟悉的村口、失敗的戰鬥、未完成的承諾，全都像薄幕一樣攔在前方。每次選錯路，迷宮就會拿走一段細節，使人忘記自己為何前進。地面上的銀色線條偶爾會指向深淵核心，也可能故意轉向噩夢果園。牆上嵌著被困冒險者留下的名字，正確順序會讓某些薄幕短暫打開，露出北方迴響庭的聲光；南側則有時間碎片庫的晶格影子在記憶間閃爍。',
     exits: [
       { direction: 'west', targetRoomId: 'chaos_bridge', description: '沿銀線回到混沌之橋' },
       { direction: 'north', targetRoomId: 'echo_court', description: '迷宮盡頭傳來迴響' },
@@ -814,7 +806,7 @@ rift_forge: {
     image: 'rift_forge.png',
     imagePrompt: '裂隙熔爐 in abyss_rift, forge fed by abyss core fragments, black purple flames, floating anvils and broken dimensional metal, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵核心西側落下的碎片匯聚成裂隙熔爐，黑紫火焰不燃燒燃料，而是燃燒失敗的現實可能性。漂浮砧台周圍旋轉著破碎維度金屬，每一塊都在不同物質形態間閃爍。深淵生物會把核心碎屑投入爐中，鍛造成能割開空間的刃片。這裡是高階資源與精英戰鬥點，也是理解領主軍備來源的重要場所。熔爐外圈堆著被切開的封印錨鏈與龍骨碎片，說明深淵軍勢正在把防線殘骸反過來變成攻城工具。砧台旁還有未完成的裂界刃，刀身每次成形都會割出一條小型傳送縫。爐壁刻著供料清單與守衛編號。',
+      '深淵核心西側落下的碎片匯聚成裂隙熔爐，黑紫火焰不燃燒燃料，而是燃燒失敗的現實可能性。漂浮砧台周圍旋轉著破碎維度金屬，每一塊都在不同物質形態間閃爍。熔爐外圈堆著被切開的封印錨鏈與龍骨碎片，說明深淵軍勢正在把防線殘骸反過來變成攻城工具。砧台旁還有未完成的裂界刃，刀身每次成形都會割出一條小型傳送縫。東面火線牽回深淵核心，南側碎片流下墜入倒重引力井，爐壁則刻著供料清單與守衛編號。',
     exits: [
       { direction: 'east', targetRoomId: 'abyss_core', description: '熔爐火線回到深淵核心' },
       { direction: 'south', targetRoomId: 'gravity_well', description: '碎片流下墜入引力井' },
@@ -842,7 +834,7 @@ echo_court: {
     image: 'echo_court.png',
     imagePrompt: '迴響庭 in abyss_rift, court of floating stone benches and repeating sound waves, purple echoes of past battles, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演冒險者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。西側裂鐘聲能對應時間碎片庫，但聲橋不穩，必須回記憶迷宮再下到碎片庫。迴響庭可以承接調查、審判與救援任務，但過多噪音會召來追逐聲音的虛空行者。若能讓正確回聲重疊，庭院會顯示被抹去隊伍的最後路線，並開啟通往深淵信標的短暫聲橋。審判台後方刻著許多未被聽見的辯詞，暗示深淵連死亡後的聲音也會收割。鐘架仍在等待判決。',
+      '記憶迷宮北端是一座浮空庭院，石椅、審判台與破碎鐘架圍成半圓，每一句話都會被複製成數十個不同情緒的回聲。庭院中央漂著過去戰鬥的殘響，有些影像會重演冒險者被深淵吞噬的瞬間，有些則像證詞一樣指向領主之間。西側裂鐘聲能對應時間碎片庫，但聲橋不穩，只在回音重疊時短暫浮現。南面記憶迷宮送來破碎姓名，北方深淵信標把最響亮的聲音收成座標。審判台後方刻著許多未被聽見的辯詞，暗示深淵連死亡後的聲音也會收割。',
     exits: [
       { direction: 'south', targetRoomId: 'memory_maze', description: '回聲廊道回到記憶迷宮' },
       { direction: 'north', targetRoomId: 'abyssal_beacon', description: '最響亮的回聲指向深淵信標' },
@@ -870,7 +862,7 @@ abyssal_beacon: {
     image: 'abyssal_beacon.png',
     imagePrompt: '深淵信標 in abyss_rift, tall beacon of black violet light broadcasting dimensional coordinates, rings of eyes and broken antennas, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵領主之間東側矗立著一座黑紫光柱，外層由眼狀符文與破碎天線環繞，像在向遙遠維度發送座標。信標每次閃爍，周圍空間就會浮現其他世界的輪廓：陌生城市、倒置海洋、被黑雪覆蓋的戰場。北側光柱指向破封尖塔，但能量纜線不可攀行，需回領主之間再從塔基上去。這裡是裂隙入侵的通訊核心，如果不關閉它，即使擊敗領主也可能只暫時延緩下一波深淵增援。玩家可以 inspect 眼狀符文、天線殘片、光柱節奏與地面焦痕來判斷召喚週期，也能 search 基座暗槽尋找跨區傳送任務材料。若隊伍忽略信標脈衝，混沌之子會沿著座標裂縫反覆湧入；若先破壞外層符文再處理核心，就能取得穩定樣本並記錄下一波入侵方向。',
+      '深淵領主之間東側矗立著一座黑紫光柱，外層由眼狀符文與破碎天線環繞，像在向遙遠維度發送座標。信標每次閃爍，周圍空間就會浮現其他世界的輪廓：陌生城市、倒置海洋、被黑雪覆蓋的戰場。北側光柱指向破封尖塔，但能量纜線會切碎接近者，實際仍需回到領主之間再從塔基上去。眼狀符文的開闔節奏、天線殘片的焦痕和基座暗槽裡的穩定樣本，都顯示下一波深淵增援正在被校準。西面王座陰影壓在光柱底部，南側迴響庭的聲波則被信標收束成座標脈衝。',
     exits: [
       { direction: 'west', targetRoomId: 'abyss_lord_chamber', description: '光柱基座回到領主之間' },
       { direction: 'south', targetRoomId: 'echo_court', description: '信標回聲落向迴響庭' },
@@ -897,7 +889,7 @@ sealbreak_spire: {
     image: 'sealbreak_spire.png',
     imagePrompt: '破封尖塔 in abyss_rift, jagged spire piercing void ceiling, shattered seals, black lightning, doorway toward celestial light above, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '深淵領主王座北方有一座尖塔倒插進虛空穹頂，塔身掛滿被撕開的封印布與斷裂聖釘。黑色閃電沿塔面向上爬升，最頂端透出一線刺眼白光，那正是通往天界遺跡的裂口。東側信標光纜纏向塔身但會切碎接近者，實際仍需從領主之間進出塔基。塔內每一層都刻著領主嘗試破封的紀錄，從粗糙咒文到精密維度公式逐步演變。這裡是深淵裂隙的大型事件鉤子，也是本區通往下一大區的敘事銜接。尖塔外壁仍殘留天界防衛反擊造成的白色灼痕，玩家可以從中看出上方並非安全出口，而是另一場戰爭的邊界。塔心還懸著半枚破碎聖印，正在被信標脈衝一點點染黑。',
+      '深淵領主王座北方有一座尖塔倒插進虛空穹頂，塔身掛滿被撕開的封印布與斷裂聖釘。黑色閃電沿塔面向上爬升，最頂端透出一線刺眼白光，那正是通往天界遺跡的裂口。東側信標光纜纏向塔身但會切碎接近者，實際仍需從領主之間進出塔基。塔內每一層都刻著領主嘗試破封的紀錄，從粗糙咒文到精密維度公式逐步演變。尖塔外壁仍殘留天界防衛反擊造成的白色灼痕，顯示上方並非安全出口，而是另一場戰爭的邊界。塔心還懸著半枚破碎聖印，正在被信標脈衝一點點染黑。',
     exits: [
       { direction: 'south', targetRoomId: 'abyss_lord_chamber', description: '沿塔基回到領主之間' },
       { direction: 'north', targetRoomId: 'celestial_gate', description: '破封裂光路通向天界之門' },
