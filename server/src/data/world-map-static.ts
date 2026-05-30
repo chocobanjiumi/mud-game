@@ -4767,6 +4767,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "西界隱泉草封坡",
     "zone": "wildgrass_hills",
     "description": "西界隱泉草封坡卡在防風柵門南側，乾草與碎石堆成低牆，北望能見風柵木影，南面接回隱泉濕草，東側則貼著彎橡坡。這裡只保留採集風乾草籽的窄面，沒有可繼續通行的正式道路。",
+    "image": "wildgrass_hills_fill_1_n10.png",
+    "imagePrompt": "西界隱泉草封坡 wildgrass_hills_fill_1_n10 in wildgrass_hills 荒草丘陵, room function resource path, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，西界隱泉草封坡卡在防風柵門南側，乾草與碎石堆成低牆，北望能見風柵木影，南面接回隱泉濕草，東側則貼著彎橡坡。這裡只保留採集風乾草籽的窄面，沒有可繼續通行的正式道路。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4779,6 +4781,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "斷圖騰西封徑",
     "zone": "wildgrass_hills",
     "description": "斷圖騰西封徑是一段被高草吞沒的短坡，北側回到隱泉邊緣，東面隔著風磨碎石可看見斷圖騰的陰影。坡脊被倒伏草根封住，適合標記野草丘陵邊界，不作為主要通道使用。",
+    "image": "wildgrass_hills_fill_1_n8.png",
+    "imagePrompt": "斷圖騰西封徑 wildgrass_hills_fill_1_n8 in wildgrass_hills 荒草丘陵, room function danger pocket, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，斷圖騰西封徑是一段被高草吞沒的短坡，北側回到隱泉邊緣，東面隔著風磨碎石可看見斷圖騰的陰影。坡脊被倒伏草根封住，適合標記野草丘陵邊界，不作為主要通道使用。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4791,6 +4795,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "舊路溪切風口",
     "zone": "wildgrass_hills",
     "description": "舊路溪切風口是野草丘陵北線的正式 route，西邊的舊路切口在草浪中露出硬土，東邊溪切溝傳來碎水聲，南側低坡可作方位參照。強風穿過凹口，把往返舊路與溪溝的腳印吹得斷續卻仍可辨認。",
+    "image": "wildgrass_hills_fill_2_n12.png",
+    "imagePrompt": "舊路溪切風口 wildgrass_hills_fill_2_n12 in wildgrass_hills 荒草丘陵, room function connector, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，舊路溪切風口是野草丘陵北線的正式 route，西邊的舊路切口在草浪中露出硬土，東邊溪切溝傳來碎水聲，南側低坡可作方位參照。強風穿過凹口，把往返舊路與溪溝的腳印吹得斷續卻仍可辨認。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4814,6 +4820,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "村溪北界草欄",
     "zone": "wildgrass_hills",
     "description": "村溪北界草欄立在野草丘陵與村溪之間，北側高坡通向斷圖騰附近，南面可聽見村溪水聲但被草欄與警示樁隔開。這裡是邊界 blocker，用來阻止丘陵路線誤接回新手村後側。",
+    "image": "wildgrass_hills_fill_2_n7.png",
+    "imagePrompt": "村溪北界草欄 wildgrass_hills_fill_2_n7 in wildgrass_hills 荒草丘陵, room function danger pocket, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，村溪北界草欄立在野草丘陵與村溪之間，北側高坡通向斷圖騰附近，南面可聽見村溪水聲但被草欄與警示樁隔開。這裡是邊界 blocker，用來阻止丘陵路線誤接回新手村後側。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4826,6 +4834,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "圖騰東採草坡",
     "zone": "wildgrass_hills",
     "description": "圖騰東採草坡承接斷圖騰東側的草路，北邊石環露出半圈灰白石尖，東面坡線續往斷旗中央，草叢中混著可採的硬莖風草。這段同時是往風暴草冠的 route，也提供低風險採集點。",
+    "image": "wildgrass_hills_fill_3_n8.png",
+    "imagePrompt": "圖騰東採草坡 wildgrass_hills_fill_3_n8 in wildgrass_hills 荒草丘陵, room function connector, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，圖騰東採草坡承接斷圖騰東側的草路，北邊石環露出半圈灰白石尖，東面坡線續往斷旗中央，草叢中混著可採的硬莖風草。這段同時是往風暴草冠的 route，也提供低風險採集點。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4849,6 +4859,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "溪切東側豬泥坡",
     "zone": "wildgrass_hills",
     "description": "溪切東側豬泥坡夾在溪切溝與野豬泥潭之間，西側濕石帶著溪水青苔，南面泥地被野豬踏出深坑。坡上長著可採的苦葉草，但泥坑與亂石封住外緣，只能作採集 blocker 與地形邊界。",
+    "image": "wildgrass_hills_fill_4_n12.png",
+    "imagePrompt": "溪切東側豬泥坡 wildgrass_hills_fill_4_n12 in wildgrass_hills 荒草丘陵, room function resource path, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，溪切東側豬泥坡夾在溪切溝與野豬泥潭之間，西側濕石帶著溪水青苔，南面泥地被野豬踏出深坑。坡上長著可採的苦葉草，但泥坑與亂石封住外緣，只能作採集 blocker 與地形邊界。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4861,6 +4873,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "斷旗中央坡道",
     "zone": "wildgrass_hills",
     "description": "斷旗中央坡道是圖騰草坡與風暴草冠之間的純路線 route，北側雷丘高起，破旗桿在風裡發出空響。坡面被踩出穩定土階，西行能回到圖騰東採草坡，東行則接向風冠西坡小徑。",
+    "image": "wildgrass_hills_fill_4_n8.png",
+    "imagePrompt": "斷旗中央坡道 wildgrass_hills_fill_4_n8 in wildgrass_hills 荒草丘陵, room function connector, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，斷旗中央坡道是圖騰草坡與風暴草冠之間的純路線 route，北側雷丘高起，破旗桿在風裡發出空響。坡面被踩出穩定土階，西行能回到圖騰東採草坡，東行則接向風冠西坡小徑。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4884,6 +4898,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "風冠西坡小徑",
     "zone": "wildgrass_hills",
     "description": "風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。低草土階與倒旗石牌標出安全路面，這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。",
+    "image": "wildgrass_hills_fill_5_n8.png",
+    "imagePrompt": "風冠西坡小徑 wildgrass_hills_fill_5_n8 in wildgrass_hills 荒草丘陵, room function connector, terrain wind-scoured wildgrass hills, dry grass slope, broken stones, muddy footmarks, bent seed heads, low hill ridges and gray-green storm light，風冠西坡小徑沿著風暴草冠西側展開，北方首領脊線像黑齒般壓在天邊，東面草冠在風中翻起銀綠色浪脊。低草土階與倒旗石牌標出安全路面，這裡是純路線 route，負責把斷旗中央坡道穩定接入風暴草冠核心。 畫面要忠實呈現相鄰地標與方向線索，材質包含乾草、碎石、土階、草根、濕泥與風切木影；光線使用陰天冷光與草浪反光，氣氛荒涼但可辨識路線或封閉邊界。若是通路要保留清楚前景行走空間，若是 blocker 要以倒伏草根、低牆或泥坑封住外緣。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "west",
@@ -4907,6 +4923,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "風車南採草坡",
     "zone": "wildgrass_hills",
     "description": "風車南採草坡位在破風車殼下方，北面能看見殘葉輪，南側接近風暴草冠，西邊則有首領脊線作為明顯地標。坡上散著可採的風鳴草、乾籽穗與斷裂草繩，採集點集中在木樁旁；外側草根糾結封住坡線，只作採集 blocker。",
+    "image": "wildgrass_hills_fill_6_n9.png",
+    "imagePrompt": "風車南採草坡 wildgrass_hills_fill_6_n9 in wildgrass_hills 荒草丘陵, room function resource path, terrain gathering grass slope below broken windmill shell, north broken rotor blades, south stormgrass crown edge, west chief ridge landmark, wind-singing grass, dry seed heads and broken grass ropes around wooden stake, clear north south west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
