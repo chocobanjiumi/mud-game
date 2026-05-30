@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { CombatantState, ActiveStatusEffect, CardinalDirection, ApproachingMonsterPayload, NearbyCombatNeighborPayload } from '@game/shared';
@@ -337,14 +337,39 @@ function ApproachDot({ dir, index, total, img, name, ticks }: {
 }) {
   const arrow = DIR_ARROW[dir] ?? '?';
   const offset = total > 1 ? (index - (total - 1) / 2) * 34 : 0;
-  const style: React.CSSProperties = { position: 'absolute' };
-  if (dir === 'north') { style.top = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
-  if (dir === 'south') { style.bottom = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
-  if (dir === 'east') { style.right = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
-  if (dir === 'west') { style.left = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
+  const [entered, setEntered] = useState(false);
+  const mountedRef = useRef(false);
+
+  useEffect(() => {
+    if (mountedRef.current) return;
+    mountedRef.current = true;
+    requestAnimationFrame(() => setEntered(true));
+  }, []);
+
+  const dest: React.CSSProperties = { position: 'absolute', transition: entered ? 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none' };
+  const origin: React.CSSProperties = { ...dest };
+
+  if (dir === 'north') {
+    dest.top = 'calc(33.33% - 16px)'; dest.left = `calc(50% + ${offset}px)`; dest.transform = 'translateX(-50%)';
+    origin.top = 'calc(16.67% - 16px)'; origin.left = dest.left; origin.transform = dest.transform;
+  }
+  if (dir === 'south') {
+    dest.bottom = 'calc(33.33% - 16px)'; dest.left = `calc(50% + ${offset}px)`; dest.transform = 'translateX(-50%)';
+    origin.bottom = 'calc(16.67% - 16px)'; origin.left = dest.left; origin.transform = dest.transform;
+  }
+  if (dir === 'east') {
+    dest.right = 'calc(33.33% - 16px)'; dest.top = `calc(50% + ${offset}px)`; dest.transform = 'translateY(-50%)';
+    origin.right = 'calc(16.67% - 16px)'; origin.top = dest.top; origin.transform = dest.transform;
+  }
+  if (dir === 'west') {
+    dest.left = 'calc(33.33% - 16px)'; dest.top = `calc(50% + ${offset}px)`; dest.transform = 'translateY(-50%)';
+    origin.left = 'calc(16.67% - 16px)'; origin.top = dest.top; origin.transform = dest.transform;
+  }
+
+  const style = entered ? dest : origin;
 
   return (
-    <div className="flex flex-col items-center animate-pulse z-10" style={style} title={`${name} ${ticks}t`}>
+    <div className={`flex flex-col items-center z-10 ${entered ? 'animate-pulse' : ''}`} style={style} title={`${name} ${ticks}t`}>
       <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
         {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
       </div>
