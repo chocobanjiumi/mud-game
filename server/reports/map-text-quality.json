@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T00:40:50.086Z",
+  "generatedAt": "2026-05-30T01:47:33.082Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -355,7 +355,7 @@
     "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
-    "imagePrompts": 1237,
+    "imagePrompts": 1244,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,

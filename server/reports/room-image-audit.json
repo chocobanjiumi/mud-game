@@ -1,21 +1,21 @@
 {
-  "generatedAt": "2026-05-30T00:40:48.602Z",
+  "generatedAt": "2026-05-30T01:47:31.623Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 278,
-    "missingPrompt": 278,
-    "missingImageField": 278,
-    "missingAsset": 278,
-    "issues": 2044,
-    "errors": 848,
+    "phase5Targets": 271,
+    "missingPrompt": 271,
+    "missingImageField": 271,
+    "missingAsset": 271,
+    "issues": 2023,
+    "errors": 827,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "image.missing": 278,
-      "asset.missing": 278,
-      "prompt.missing": 278,
+      "image.missing": 271,
+      "asset.missing": 271,
+      "prompt.missing": 271,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -103,11 +103,11 @@
       "bloodsalt_coast": {
         "zoneName": "血鹽海岸",
         "rooms": 27,
-        "missingPrompt": 7,
-        "missingImageField": 7,
-        "missingAsset": 7,
-        "phase5Targets": 7,
-        "errors": 21,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "celestial_ruins": {
@@ -623,251 +623,6 @@
     }
   },
   "phase5Targets": [
-    {
-      "roomId": "bloodsalt_coast_fill_40_7",
-      "roomName": "潮門南赤崖棧道",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_40_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_7.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_40_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_7.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_40_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_9",
-      "roomName": "鹵蝕南側紅鹽封礁",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_9.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_40_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_40_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_40_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_41_10",
-      "roomName": "淹塔南鏽棧封",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_41_10.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_41_10",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_41_10.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_41_10",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_41_10.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_41_10",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_43_6",
-      "roomName": "破船標東赤鹽崖",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_43_6.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_43_6",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_43_6.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_43_6",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_43_6.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_43_6",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_44_7",
-      "roomName": "猩紅潮池東鏽崖",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_44_7.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_44_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_44_7.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_44_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_44_7.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_44_7",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_45_9",
-      "roomName": "血稅碼頭北礁封",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_45_9.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_45_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_45_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_45_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_45_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_45_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_47_9",
-      "roomName": "深海神殿西沉門路牌亭",
-      "zoneId": "bloodsalt_coast",
-      "zoneName": "血鹽海岸",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_47_9.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "bloodsalt_coast_fill_47_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_47_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_47_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_47_9.png"
-        },
-        {
-          "roomId": "bloodsalt_coast_fill_47_9",
-          "zoneId": "bloodsalt_coast",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
     {
       "roomId": "dark_forest_fill_n1_13",
       "roomName": "鐵木影門苔徑",
@@ -11517,167 +11272,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_7.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_7.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_40_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_40_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_41_10",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_41_10.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_41_10",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_41_10.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_41_10",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_43_6",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_43_6.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_43_6",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_43_6.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_43_6",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_44_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_44_7.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_44_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_44_7.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_44_7",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_45_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_45_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_45_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_45_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_45_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_47_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_47_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_47_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/bloodsalt_coast_fill_47_9.png"
-    },
-    {
-      "roomId": "bloodsalt_coast_fill_47_9",
-      "zoneId": "bloodsalt_coast",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
     },
     {
       "roomId": "bloodsalt_coast_ghost_keel_grave",
