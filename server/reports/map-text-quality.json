@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T07:44:39.582Z",
+  "generatedAt": "2026-05-30T10:40:00.303Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -355,7 +355,7 @@
     "systemErrorMessages": 23,
     "systemSuccessMessages": 5,
     "combatLogs": 6,
-    "imagePrompts": 1327,
+    "imagePrompts": 1478,
     "characterNpcImagePrompts": 714,
     "itemIconImagePrompts": 1161,
     "iconAtlasPrompts": 6,
@@ -366,12 +366,31 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 21
+    "issues": 59
   },
   "issuesByKind": {
-    "imagePrompt": 21
+    "imagePrompt": 50,
+    "batch.repeatedCoreTerm": 9
   },
   "issues": [
+    {
+      "id": "frozen_wastes/frozen_wastes_fill_n25_n23",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 117,
+      "minimumLength": 80,
+      "text": "北境王座南雪封 frozen_wastes_fill_n25_n23 in frozen_wastes Frozen Wastes, room function border road, snow seal south of the Frozen Throne, south abandoned sledge tracks buried by blizzard, west blue throne glow flickering through white fog, terrain broken tundra path, cracked ice, shattered ice flags, warning stakes, wind-carved snow and pale blue frost light，北境王座南雪封位在冰封雪原最北側，南面廢棄雪橇車轍被風雪掩住，西側冰封王座藍光隔著白霧閃動。凍土小路在冰面裂聲中斷開，雪面插著碎冰旗與裂縫警樁，前景用深裂冰縫、硬雪壘與風削雪脊封住道路；構圖必須讀成 border blocker，不讓玩家硬穿城堡外冰原，無人物、無 UI、無文字。, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "frozen_wastes/frozen_wastes_fill_n24_n18",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 111,
+      "minimumLength": 80,
+      "text": "裂谷雪徑 frozen_wastes_fill_n24_n18 in frozen_wastes Frozen Wastes, room function connector, frozen mist-covered path beside Dragon Breath Rift, west view back to the rift blue glow, north route climbs toward a higher snow ridge, terrain compacted snow trail, broken ice edge, drifting frost fog, pale sky light and dark crevasse shadow，裂谷旁的雪徑被凍霧覆住，西側能回望龍息裂谷的藍色霜光，北側接上更高雪脊。畫面中央必須保留可通行的緊實雪徑，路邊有斷冰、雪粉、霜霧與深色裂谷陰影，讓玩家看出這是一段連接冰封雪原東側區域的正式通路；不可畫成死路或完全封閉 blocker，無人物、無 UI、無文字。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
     {
       "id": "thundersteppe/thundersteppe_fill_10_23",
       "kind": "imagePrompt",
@@ -379,6 +398,132 @@
       "currentLength": 108,
       "minimumLength": 80,
       "text": "雷草西緣 thundersteppe_fill_10_23 in thundersteppe Thunder Steppe, room function resource path, border between Glass Dunes and Thunder Steppe, west glass sand shards slowly pressed under wet grass roots, east rolling thunder gate with copper bells swinging in wind, terrain wet mud track, charged grass, glassy sand fragments, storm clouds and blue-white lightning，畫面左側保留琉璃沙丘的玻璃砂與透明尖片，右側轉成濕亮雷草與泥徑，東面銅鈴門架是中景地標且不可有可讀文字。草葉間有雷露草採集痕與細小電光，冷白閃電照亮草根，雨後泥面反光，氣氛要像玩家從乾燥沙地踏入帶電草原的正式西側採集路線。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_30_3",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 100,
+      "minimumLength": 80,
+      "text": "東門海風封驛 kingsroad_market_fill_30_3 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward locked boundary, source room details: 東門海風封驛貼著王道市集東牆，西側攤幕後場堆滿車軸與麻袋，東面能聞到海岸潮氣卻被關閉城門擋住。門柱上掛著往東海岸的舊驛牌與守衛告示，玩家可確認東門服務位置，但門閂封鎖，這裡只作 border blocker，暫不開放跨區通行。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "lakeside_town/lakeside_town_fill_18_6",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 88,
+      "minimumLength": 80,
+      "text": "湖畔青石街 lakeside_town_fill_18_6 in lakeside_town 湖畔城鎮, room function resource path, terrain wet bluestone town street, lakeside service walls, barrels, shop awnings, warm window light and lake reflections, visible path cues: west toward 月紋裁縫坊, east toward 湖鮮魚市, source room details: 湖畔青石街夾在月紋裁縫坊與湖鮮魚市之間，潮濕石板上有布料推車、水桶與魚販腳印。西側可回裁縫坊，東側通往魚市攤棚，玩家能從路標判斷市場與湖岸服務區的分流。, quiet lakeside town service boundary, clean civic mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_0",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 105,
+      "minimumLength": 80,
+      "text": "王道西市石路 kingsroad_market_fill_22_0 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward 傳送陣廣場, south toward locked boundary, source room details: 王道西市石路是市集西口的短石階，東側傳送廣場立著藍色路標，南面守衛哨巷被木欄隔開。貨車只能沿東側石路入市，旁邊的封欄、車轍和行李牌標示這裡是單向 route 與西側動線節點；玩家可辨認回廣場路線，不能下切哨巷。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "kingsroad_market/kingsroad_market_fill_22_1",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 92,
+      "minimumLength": 80,
+      "text": "王道西哨巷 kingsroad_market_fill_22_1 in kingsroad_market 王道市集, room function danger pocket, terrain stone market road, canvas awnings, guard rails, wagon ruts, lanterns and blue portal glow, visible path cues: east toward 衛兵亭, north toward locked boundary, source room details: 王道西哨巷靠近市集守衛哨，東側可見檢查桌、銅鈴和通行牌，北面貨車石路被分流木欄隔住。牆上掛著湖畔方向路牌，此處只作守衛問訊與巡邏邊界；玩家能確認哨所服務位置，但不能從旁路穿越。, busy but grounded market boundary, practical town service mood, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_20_14",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 86,
+      "minimumLength": 80,
+      "text": "月光水道 moonlit_fen_fill_20_14 in moonlit_fen 月光濕地, room function resource path, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: north toward 舊舟北營, source room details: 月光水道夾在舊舟北營與白蘆濕地之間，北側破舟拖痕能指回乾泥岸，南面黑水被月光照成細長亮線。水道邊長著銀蘆纖維、水草與濕地草藥，可沿木樁旁採集後循北側安全岸回返。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_23_17",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 90,
+      "minimumLength": 80,
+      "text": "泥鏡交界水道 moonlit_fen_fill_23_17 in moonlit_fen 月光濕地, room function resource path, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: east toward 泥炭小洲, source room details: 泥鏡交界水道貼著月光濕地東南緣，西側白蘆仍有螢火，東面泥水已變成鏡沼的暗色反光。水道石縫長著銀蘆纖維與夢水露浮葉，玩家可沿東側水痕採集並進入鏡沼泥洲，不能向南離開。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "pilgrim_road/pilgrim_road_fill_13_9",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 101,
+      "minimumLength": 80,
+      "text": "藍寶湖西燈標古道 pilgrim_road_fill_13_9 in pilgrim_road 朝聖古道, room function resource path, terrain old pilgrimage stone road, worn slabs, prayer flags, shrine markers, hill wind and pale sacred light, visible path cues: east toward 燈籠碼頭, source room details: 藍寶湖西燈標古道位在巡禮古道與藍寶湖交界，北面舊墓園轉角仍有白石灰粉，東方碼頭燈籠映在湖霧裡。路標下散著旅人物資箱、乾糧包、破水囊與白石灰粉袋，可採少量補給；往東會從乾石路轉入湖岸棧道。, solemn old road crossing, worn faith markers and safe but lonely travel, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "plains/plains_fill_11_5",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 88,
+      "minimumLength": 80,
+      "text": "走私藏點北風草界 plains_fill_11_5 in plains 翠綠平原, room function resource path, terrain open grassy plain path, wheat edges, wind-bent grass, low fences, clear sky breaks and warm field light, visible path cues: south toward 走私藏點, source room details: 走私藏點北風草界位在平原與朝聖古道交接處，北面盜匪藏處南草封壓著高草，西側斷橋南麥田邊界延伸，東邊古道邊界接向盜匪哨。這裡是 border gathering route，風草可採，主要銜接南方走私藏點。, low wilds connector, open grass and readable travel direction, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "plains/plains_fill_12_5",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 97,
+      "minimumLength": 80,
+      "text": "盜匪哨北路牌亭界 plains_fill_12_5 in plains 翠綠平原, room function town service, terrain open grassy plain path, wheat edges, wind-bent grass, low fences, clear sky breaks and warm field light, visible path cues: south toward 盜匪望臺, source room details: 盜匪哨北路牌亭界位在平原東南角，西面走私藏點北風草界仍有車轍，南方朝聖古道盜匪哨的木牌半歪在路旁。路牌亭標示這裡是跨區邊界路線端點，專門銜接平原與古道警戒線，不放怪物或採集。, low wilds connector, open grass and readable travel direction, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "moonlit_fen/moonlit_fen_fill_19_13",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 77,
+      "minimumLength": 80,
+      "text": "沉木北橋 moonlit_fen_fill_19_13 in moonlit_fen 月光濕地, room function connector, terrain moonlit wetland path, reeds, black water channels, drowned logs, silver water light and soft marsh haze, visible path cues: south toward 舊舟營, source room details: 沉木北橋用三根半沉木橫過淺水，北側黑水汊道被霧氣封住，南面舊舟營傳來蟲鳴與槳影。木縫間長著濕地草藥，這裡是北側路線與採集邊界，不是寬闊安全橋面。, soft moonlit fen danger, wet ground and hidden water channels, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_7",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 91,
+      "minimumLength": 80,
+      "text": "競技大門西湖草界 sapphire_lake_fill_22_7 in sapphire_lake 藍寶湖, room function resource path, terrain sapphire lake shore, grass bank, clear blue water, reeds, small jetty planks and reflected lake light, visible path cues: east toward 競技城門, source room details: 競技大門西湖草界位在藍寶石湖東北緣，西面睡蓮藏點仍有白花香，南側湖岸轉向競技城牆，東邊可見競技區大門石階。這裡是跨區邊界採集路線，湖草可採，主要銜接湖岸與競技場入口。, clear lakeshore connector, calm water edge with resource path readability, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_8",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 93,
+      "minimumLength": 80,
+      "text": "冠軍牆西湖棧橋 sapphire_lake_fill_22_8 in sapphire_lake 藍寶湖, room function resource path, terrain sapphire lake shore, grass bank, clear blue water, reeds, small jetty planks and reflected lake light, visible path cues: east toward 冠軍牆, source room details: 冠軍牆西湖棧橋架在藍寶石湖東岸，北面競技大門水草界可作地標，南面勝利拱湖草灘延伸，東側冠軍牆倒映在水面。這裡是跨區邊界採集路線，棧橋邊有晶化水藻可採，專門銜接湖岸與牆下步道。, clear lakeshore connector, calm water edge with resource path readability, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "sapphire_lake/sapphire_lake_fill_22_9",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 84,
+      "minimumLength": 80,
+      "text": "勝利拱西湖草灘 sapphire_lake_fill_22_9 in sapphire_lake 藍寶湖, room function resource path, terrain sapphire lake shore, grass bank, clear blue water, reeds, small jetty planks and reflected lake light, visible path cues: east toward 勝利拱, source room details: 勝利拱西湖草灘位在競技區西側水岸，北面冠軍牆湖棧橋仍有水光，東邊勝利拱門的石影壓在草灘上。這裡是跨區邊界採集路線，湖草與晶砂可採，專門銜接湖岸與競技拱門。, clear lakeshore connector, calm water edge with resource path readability, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_31_20",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "火山北灰坡 volcano_zone_fill_31_20 in volcano_zone 火山地帶, room function border road, terrain northern volcanic ash slope at wetland boundary, north serpent delta mud baked into cracked crust with toxic steam, south black ash field venting white vapor, basalt gravel and heat haze, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
       "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
     },
     {
@@ -535,6 +680,123 @@
       "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
     },
     {
+      "id": "volcano_zone/volcano_zone_fill_31_22",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 54,
+      "minimumLength": 80,
+      "text": "火山邊道 volcano_zone_fill_31_22 in volcano_zone 火山地帶, room function connector, terrain ash road between black ash hills and yellow sulfur mist, north volcanic ash field, south sulfur springs heat haze, cracked basalt underfoot and small steam vents beside path, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_32_25",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "火山石路 volcano_zone_fill_32_25 in volcano_zone 火山地帶, room function connector, terrain volcanic stone road around summit sealing chains, west basalt steps, east open rocky ridge toward volcano summit, cracked black stone glowing dark red from lava light, heat jets from side fissures, clear west east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "volcano_zone/volcano_zone_fill_34_24",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 55,
+      "minimumLength": 80,
+      "text": "火晶噴口西封岩 volcano_zone_fill_34_24 in volcano_zone 火山地帶, room function danger pocket, terrain sealed basalt rock west of fire-crystal vent, west lava bridge glow, south basalt steps toward volcanic stone road, cracked ground blasting hot white steam, unstable back path blocked, clear west south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n3_8",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 55,
+      "minimumLength": 80,
+      "text": "舊祠南霧池封徑 whispering_valley_fill_n3_8 in whispering_valley 低語溪谷, room function border road, terrain sealed muddy path south of old shrine, north moss-covered shrine pillars, west mist pool vapor sliding along reed roots, swallowed stone slabs and wet valley floor edge, clear north west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_6",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 59,
+      "minimumLength": 80,
+      "text": "冷泉南石板封 whispering_valley_fill_n4_6 in whispering_valley 低語溪谷, room function danger pocket, terrain wet stone slabs south of cold spring, north blue spring water freezing in cracks, east willow camp cloth strips, west fishing bend water echo, fallen willow roots block slick path, clear north east west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_7",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 57,
+      "minimumLength": 80,
+      "text": "霧池北蘆根封地 whispering_valley_fill_n4_7 in whispering_valley 低語溪谷, room function danger pocket, terrain reed-root mud wall north of mist pool, east mossy old shrine low wall, west herb slope rope stakes, south white mist pool vapor, tangled wet roots block route, clear east west south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n4_9",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 56,
+      "minimumLength": 80,
+      "text": "霧池南冰蕨封石 whispering_valley_fill_n4_9 in whispering_valley 低語溪谷, room function danger pocket, terrain icy fern stones south of mist pool, north white pool vapor washing over slabs, west cold glowing fern clump, south slick moss stone blocks valley floor route, clear north west south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n5_11",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 59,
+      "minimumLength": 80,
+      "text": "古樹屋北瀑蘆界 whispering_valley_fill_n5_11 in whispering_valley 低語溪谷, room function resource path, terrain reed boundary north of ancient tree house near waterfall, north hidden waterfall mist, south huge tree roots and wooden dwelling silhouette, west whispering rift echo, slick reed roots gathering edge, clear north south west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n6_10",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 62,
+      "minimumLength": 80,
+      "text": "裂隙北瀑霧封 whispering_valley_fill_n6_10 in whispering_valley 低語溪谷, room function resource path, terrain waterfall mist seal north of whispering rift, south dark rift crack with cold air, north waterfall base spray, east hidden waterfall white fog on stone wall, wet moss and cold fern gathering edge, clear south north east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_11",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 52,
+      "minimumLength": 80,
+      "text": "螢火小徑北蘆草界 whispering_valley_fill_n7_11 in whispering_valley 低語溪谷, room function border road, terrain northern reed-grass boundary of firefly trail, south blue-green fireflies along narrow path, east whispering rift echo, north reeds thicken into wet grass wall, clear south east north cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_6",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 55,
+      "minimumLength": 80,
+      "text": "谷底通道 whispering_valley_fill_n7_6 in whispering_valley 低語溪谷, room function connector, terrain passable valley-floor corridor with damp stone path between reeds, north ranger post trail marker, south reed road and water sound toward stone weir, old charcoal arrows on wall, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "whispering_valley/whispering_valley_fill_n7_7",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 52,
+      "minimumLength": 80,
+      "text": "蘆葦路 whispering_valley_fill_n7_7 in whispering_valley 低語溪谷, room function connector, terrain passable reed road between valley-bottom corridor and stone weir, north wet stone path, south stone weir waterline, tall reeds on both sides and plank-stones underfoot, clear north south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "wildgrass_hills/wildgrass_hills_fill_6_n9",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 60,
+      "minimumLength": 80,
+      "text": "風車南採草坡 wildgrass_hills_fill_6_n9 in wildgrass_hills 荒草丘陵, room function resource path, terrain gathering grass slope below broken windmill shell, north broken rotor blades, south stormgrass crown edge, west chief ridge landmark, wind-singing grass, dry seed heads and broken grass ropes around wooden stake, clear north south west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
       "id": "storm_highlands/storm_highlands_windrest_portal",
       "kind": "imagePrompt",
       "field": "imagePrompt",
@@ -560,6 +822,87 @@
       "minimumLength": 80,
       "text": "避風屋 storm_highlands_windrest_lodge in storm_highlands 風暴高原, room function town service, terrain rock lodge room embedded in cliff alcove, thick wooden shutters against sideways thunder rain, brazier fire, wet cloaks and simple map board, south wooden doorway back to supply shed, storm peaks outside, clear south cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
       "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "imagePrompt:plains/term:朝聖古道",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 63,
+      "minimumLength": 30,
+      "text": "plains/plains_fill_10_5, plains/plains_fill_11_4, plains/plains_fill_11_5, plains/plains_fill_12_5, plains/plains_fill_9_5",
+      "reason": "同批生成內容核心詞「朝聖古道」出現於 5/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:plains/term:界翠綠平",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 50,
+      "minimumLength": 30,
+      "text": "plains/plains_fill_10_5, plains/plains_fill_11_5, plains/plains_fill_12_5, plains/plains_fill_9_5",
+      "reason": "同批生成內容核心詞「界翠綠平」出現於 4/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:old_farmland/term:道老舊農",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 40,
+      "minimumLength": 30,
+      "text": "old_farmland/old_farmland_fill_n1_1, old_farmland/old_farmland_fill_n1_2, old_farmland/old_farmland_fill_n4_1, old_farmland/old_farmland_fill_n6_4",
+      "reason": "同批生成內容核心詞「道老舊農」出現於 4/10 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:wildgrass_hills/term:畫面要忠",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "wildgrass_hills/wildgrass_hills_fill_1_n10, wildgrass_hills/wildgrass_hills_fill_1_n8, wildgrass_hills/wildgrass_hills_fill_2_n12, wildgrass_hills/wildgrass_hills_fill_2_n7, wildgrass_hills/wildgrass_hills_fill_3_n8, wildgrass_hills/wildgrass_hills_fill_4_n12, wildgrass_hills/wildgrass_hills_fill_4_n8, wildgrass_hills/wildgrass_hills_fill_5_n8",
+      "reason": "同批生成內容核心詞「畫面要忠」出現於 8/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:wildgrass_hills/term:面要忠實",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "wildgrass_hills/wildgrass_hills_fill_1_n10, wildgrass_hills/wildgrass_hills_fill_1_n8, wildgrass_hills/wildgrass_hills_fill_2_n12, wildgrass_hills/wildgrass_hills_fill_2_n7, wildgrass_hills/wildgrass_hills_fill_3_n8, wildgrass_hills/wildgrass_hills_fill_4_n12, wildgrass_hills/wildgrass_hills_fill_4_n8, wildgrass_hills/wildgrass_hills_fill_5_n8",
+      "reason": "同批生成內容核心詞「面要忠實」出現於 8/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:wildgrass_hills/term:要忠實呈",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 100,
+      "minimumLength": 30,
+      "text": "wildgrass_hills/wildgrass_hills_fill_1_n10, wildgrass_hills/wildgrass_hills_fill_1_n8, wildgrass_hills/wildgrass_hills_fill_2_n12, wildgrass_hills/wildgrass_hills_fill_2_n7, wildgrass_hills/wildgrass_hills_fill_3_n8, wildgrass_hills/wildgrass_hills_fill_4_n12, wildgrass_hills/wildgrass_hills_fill_4_n8, wildgrass_hills/wildgrass_hills_fill_5_n8",
+      "reason": "同批生成內容核心詞「要忠實呈」出現於 8/8 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:redrock_badlands/term:紅岩荒地",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 44,
+      "minimumLength": 30,
+      "text": "redrock_badlands/redrock_badlands_fill_n4_19, redrock_badlands/redrock_badlands_fill_n6_21, redrock_badlands/redrock_badlands_fill_n7_19, redrock_badlands/redrock_badlands_fill_n8_21",
+      "reason": "同批生成內容核心詞「紅岩荒地」出現於 4/9 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:moonlit_fen/term:光濕地西",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 33,
+      "minimumLength": 30,
+      "text": "moonlit_fen/moonlit_fen_fill_14_14, moonlit_fen/moonlit_fen_fill_14_17, moonlit_fen/moonlit_fen_fill_14_18, moonlit_fen/moonlit_fen_fill_14_19, moonlit_fen/moonlit_fen_fill_14_20",
+      "reason": "同批生成內容核心詞「光濕地西」出現於 5/15 筆，超過 30% 門檻"
+    },
+    {
+      "id": "imagePrompt:sapphire_lake/term:邊界採集",
+      "kind": "batch.repeatedCoreTerm",
+      "field": "text",
+      "currentLength": 50,
+      "minimumLength": 30,
+      "text": "sapphire_lake/sapphire_lake_fill_20_7, sapphire_lake/sapphire_lake_fill_22_7, sapphire_lake/sapphire_lake_fill_22_8, sapphire_lake/sapphire_lake_fill_22_9",
+      "reason": "同批生成內容核心詞「邊界採集」出現於 4/8 筆，超過 30% 門檻"
     }
   ]
 }
