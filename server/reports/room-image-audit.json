@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-30T06:14:30.107Z",
+  "generatedAt": "2026-05-30T06:29:12.851Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 267,
-    "missingPrompt": 223,
-    "missingImageField": 223,
-    "missingAsset": 267,
-    "issues": 1995,
-    "errors": 799,
+    "phase5Targets": 260,
+    "missingPrompt": 216,
+    "missingImageField": 216,
+    "missingAsset": 260,
+    "issues": 1974,
+    "errors": 778,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "asset.missing": 267,
+      "asset.missing": 260,
       "prompt.function": 41,
       "prompt.style": 31,
-      "image.missing": 223,
-      "prompt.missing": 223,
+      "image.missing": 216,
+      "prompt.missing": 216,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -515,11 +515,11 @@
       "starter_village_ext": {
         "zoneName": "新手村外圍",
         "rooms": 27,
-        "missingPrompt": 7,
-        "missingImageField": 7,
-        "missingAsset": 7,
-        "phase5Targets": 7,
-        "errors": 21,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 19
       },
       "storm_highlands": {
@@ -8093,251 +8093,6 @@
         {
           "roomId": "silverpine_storm_pass",
           "zoneId": "silverpine_range",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_0_n3",
-      "roomName": "斷橋南溪草封",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_0_n3.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_0_n3",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_0_n3.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_0_n3",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_0_n3.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_0_n3",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n1",
-      "roomName": "旅店北田埂路牌",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n1.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_1_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_1_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_1_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n2",
-      "roomName": "墓園西側炭草界",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n2.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_1_n2",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n2.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_1_n2",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n2.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_1_n2",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_2_n1",
-      "roomName": "公會北鄉間路標",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_2_n1.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_2_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_2_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_2_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_2_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_2_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n1",
-      "roomName": "舊圖書館北後勤路",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n1.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_3_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_3_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_3_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n6",
-      "roomName": "果園北溪草補給坡",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n6.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_3_n6",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n6.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_3_n6",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n6.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_3_n6",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "starter_village_ext_fill_4_n1",
-      "roomName": "禮拜堂北柳祠路界",
-      "zoneId": "starter_village_ext",
-      "zoneName": "新手村外圍",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_4_n1.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "starter_village_ext_fill_4_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_4_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_4_n1",
-          "zoneId": "starter_village_ext",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/starter_village_ext_fill_4_n1.png"
-        },
-        {
-          "roomId": "starter_village_ext_fill_4_n1",
-          "zoneId": "starter_village_ext",
           "severity": "error",
           "kind": "prompt.missing",
           "message": "world room is missing imagePrompt"
@@ -21685,167 +21440,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "starter_village_ext_fill_0_n3",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_0_n3.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_0_n3",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_0_n3.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_0_n3",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n2",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n2.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n2",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_1_n2.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_1_n2",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_2_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_2_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_2_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_2_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_2_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n6",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n6.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n6",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_3_n6.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_3_n6",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "starter_village_ext_fill_4_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_4_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_4_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/starter_village_ext_fill_4_n1.png"
-    },
-    {
-      "roomId": "starter_village_ext_fill_4_n1",
-      "zoneId": "starter_village_ext",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
     },
     {
       "roomId": "village_backhill",

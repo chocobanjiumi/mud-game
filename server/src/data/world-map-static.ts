@@ -4066,6 +4066,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "斷橋南溪草封",
     "zone": "starter_village_ext",
     "description": "斷橋南溪草封位在村外斷橋南側，北面破橋木樁倒在溪水裡，東邊炭窯煙灰落在草叢上。泥土小路被溪草與碎木堵住，是 service gathering blocker，只保留採集乾草與檢查橋況的空地。",
+    "image": "starter_village_ext_fill_0_n3.png",
+    "imagePrompt": "斷橋南溪草封 starter_village_ext_fill_0_n3 in starter_village_ext 新手村外圍, room function resource path, muddy creek grass clearing south of broken bridge, north collapsed bridge posts in water, east charcoal kiln ash on grass, splintered wood blocks the dirt path, clear north east terrain cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 0,
@@ -4078,6 +4080,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "旅店北田埂路牌",
     "zone": "starter_village_ext",
     "description": "旅店北田埂路牌位在新手村旅店北面，北側村外草徑延向炭窯與墓園邊界，東邊鄉間草路接向冒險者公會後方。路牌標示這裡是回村 border service route，只連接旅店後門與村外田埂。",
+    "image": "starter_village_ext_fill_1_n1.png",
+    "imagePrompt": "旅店北田埂路牌 starter_village_ext_fill_1_n1 in starter_village_ext 新手村外圍, room function border road, field ridge sign north of village inn, south inn rear door, north grass track toward charcoal kiln and graveyard, east countryside path to guild back area, clear south north east path cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -4096,6 +4100,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "墓園西側炭草界",
     "zone": "starter_village_ext",
     "description": "墓園西側炭草界位在炭窯南面與墓園深處西側，北面炭窯煙灰落在泥土上，南側旅店北田埂路牌仍可看見木牌。這裡是 border gathering blocker，可採焦草與乾柴，但不開往墓園捷徑。",
+    "image": "starter_village_ext_fill_1_n2.png",
+    "imagePrompt": "墓園西側炭草界 starter_village_ext_fill_1_n2 in starter_village_ext 新手村外圍, room function resource path, charred grass boundary west of graveyard and south of charcoal kiln, north kiln ash on dirt, south field-ridge sign visible, east graveyard gloom blocked by burnt grass, clear north south east cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4108,6 +4114,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "公會北鄉間路標",
     "zone": "starter_village_ext",
     "description": "公會北鄉間路標位在冒險者公會北面，北側墓園深處陰氣壓著草坡，西面旅店北田埂路牌可作回村指引，東側通往舊圖書館後方。這裡是 border gathering route，草徑可採野草籽，主要銜接公會後門。",
+    "image": "starter_village_ext_fill_2_n1.png",
+    "imagePrompt": "公會北鄉間路標 starter_village_ext_fill_2_n1 in starter_village_ext 新手村外圍, room function border road, countryside signpost north of adventurer guild, south guild rear yard, north graveyard mist slope, west inn field sign, east grass path toward old library, wild grass seed gathering edge, clear north south east west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -4126,6 +4134,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "舊圖書館北後勤路",
     "zone": "starter_village_ext",
     "description": "舊圖書館北後勤路位在舊圖書館北側，北面空心樹樁旁有落葉堆，西側公會北路標連著村外草徑，東邊柳祠北路逐漸變濕。這裡是 border service route，標示圖書館後門補給線與村外邊界。",
+    "image": "starter_village_ext_fill_3_n1.png",
+    "imagePrompt": "舊圖書館北後勤路 starter_village_ext_fill_3_n1 in starter_village_ext 新手村外圍, room function border road, service route north of old village library, south library rear supply door and book crates, north hollow stump with leaf piles, west guild marker, east damp willow shrine path, clear direction cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -4144,6 +4154,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "果園北溪草補給坡",
     "zone": "starter_village_ext",
     "description": "果園北溪草補給坡位在村溪東側與果園北邊，南面果樹枝葉越過籬笆，西側溪水帶來濕泥氣味。坡上堆著採果籃與草繩，是 service gathering blocker，可採野草與補給繩，不作道路。",
+    "image": "starter_village_ext_fill_3_n6.png",
+    "imagePrompt": "果園北溪草補給坡 starter_village_ext_fill_3_n6 in starter_village_ext 新手村外圍, room function resource path, supply slope north of orchard and east of village creek, south fruit trees over fence, west creek mud, baskets and grass ropes on blocked grassy slope, clear south west terrain cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 3,
@@ -4156,6 +4168,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "禮拜堂北柳祠路界",
     "zone": "starter_village_ext",
     "description": "禮拜堂北柳祠路界位在新手村禮拜堂北面，北側柳樹小祠垂著濕枝，西面舊圖書館後勤路仍有木牌。這裡是 border gathering route，溪邊草與柳葉可採，主要銜接禮拜堂後門與村外濕草邊界。",
+    "image": "starter_village_ext_fill_4_n1.png",
+    "imagePrompt": "禮拜堂北柳祠路界 starter_village_ext_fill_4_n1 in starter_village_ext 新手村外圍, room function border road, willow shrine boundary north of village chapel, south chapel rear stones, north small willow shrine with wet branches, west old library service marker, damp creek grass and willow leaves, clear north south west cue, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
