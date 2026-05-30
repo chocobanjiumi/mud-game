@@ -1537,7 +1537,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'weapon_shop.png',
     imagePrompt: '武器店 in starter_village, town service weapon shop with forge, weapon racks, orange firelight and smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '武器店的石牆被爐火烤得微微發紅，長劍、短弓、權杖與練習盾按等級掛在不同架位上，金屬油與煤煙的味道混在一起。鐵砧旁的地面刻著安全線，提醒新人不要靠近噴濺的火星；西門可回廣場，東側半開的木門連到修補裝備的小工棚。架上每件武器都掛著用途牌，暗示玩家可以比較欄位、等級與職業需求再裝備。' +
+      '武器店的石牆被爐火烤得微微發紅，長劍、短弓、權杖與練習盾按等級掛在不同架位上，金屬油與煤煙的味道混在一起。鐵砧旁的地面刻著安全線，提醒新人不要靠近噴濺的火星；西門可回廣場，東側半開的木門連到修補裝備的小工棚。架上每件武器都掛著用途牌，暗示旅人可以比較欄位、等級與職業需求再裝備' +
       '爐邊水槽不斷冒出白霧，敲打聲會隨鐵匠動作在屋樑間回響。櫃檯下方擺著待鑑定的舊短劍和木箱，牆上的箭頭牌標示修補工棚方向，提醒玩家戰鬥前檢查武器、耐久和背包空位。',
     exits: [
       { direction: 'west', targetRoomId: 'village_square', description: '回到廣場' },
@@ -1561,7 +1561,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'potion_shop.png',
     imagePrompt: '藥水店 in starter_village, town service apothecary with herb shelves, glowing bottles, green window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain town, clear lantern light',
     description:
-      '藥水店裡的木架從地面堆到天花板，紅藍藥水在玻璃瓶中閃著柔光，乾燥薰衣草、薄荷與苦艾草垂掛在窗邊。櫃檯後方的藥典翻到治療創傷的頁面，旁邊標著低等冒險者常用補給；東門通回廣場，西側後門通往儲藏屋。地上細碎藥粉形成一條淡綠痕跡，提示仔細調查或補給後再前往戰鬥區。' +
+      '藥水店裡的木架從地面堆到天花板，紅藍藥水在玻璃瓶中閃著柔光，乾燥薰衣草、薄荷與苦艾草垂掛在窗邊。櫃檯後方的藥典翻到治療創傷的頁面，旁邊標著低等冒險者常用補給；東門通回廣場，西側後門通往儲藏屋。地上細碎藥粉形成一條淡綠痕跡，提示仔細調查或補給後再前往戰鬥區。藥水店周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
       '屋內能聽見研磨棒碰撞石臼的細響，藥師把不同尺寸的瓶子依照用途排列，讓人一眼看出恢復生命、魔力和解除異常的差別。後方門縫吹來倉庫冷氣，暗示補給箱、隱藏地窖和簡單搜尋任務都與這間店相連。',
     exits: [
       { direction: 'east', targetRoomId: 'village_square', description: '回到廣場' },
@@ -1622,7 +1622,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'training_ground.png',
     imagePrompt: '訓練場 in starter_village, town training yard with straw dummies, weapon rack, sunset dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '一片被夯實的空地上擺放著稻草人和木製練習靶，幾位新手冒險者正揮汗如雨地練習著基本的劈砍動作。' +
+      '一片被夯實的空地上擺放著稻草人和木製練習靶，幾位新手冒險者正揮汗如雨地練習著基本的劈砍動作。訓練場周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '場邊的武器架上放著各種練習用的鈍器，木劍碰撞聲和教官的喝斥聲此起彼落。' +
       '地面上散落著被劈爛的稻草和斷裂的練習箭矢，空氣中瀰漫著汗水和泥土的氣味。' +
       '夕陽的餘暉將練習場映成金色，新手們的影子在地上拉得長長的。教官把受控怪物、史萊姆和夜間捕來的小蝙蝠關在繩欄內，讓新人只在可撤退的訓練範圍內練習 attack 與 loot corpse。',
@@ -1651,7 +1651,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_inn.png',
     imagePrompt: '旅人小屋 in starter_village, town service inn with hearth, bunks, rain-dark timber, warm firelight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '旅人小屋裡燃著穩定的壁爐，濕斗篷掛在門邊滴水，粗木長凳被來往新手磨得發亮。北窗能看見公會屋簷，南側窄門通向藥水店附近的小巷，東邊則是人聲嘈雜的冒險者公會。櫃檯旁放著簡易床位牌與醒酒茶，提示受傷或補給不足時可以先回到安全服務區整理狀態。',
+      '旅人小屋裡燃著穩定的壁爐，濕斗篷掛在門邊滴水，粗木長凳被來往新手磨得發亮。北窗能看見公會屋簷，南側窄門通向藥水店附近的小巷，東邊則是人聲嘈雜的冒險者公會。櫃檯旁放著簡易床位牌與醒酒茶，提示受傷或補給不足時可以先回到安全服務區整理狀態。旅人小屋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'adventurer_guild', description: '公會大廳就在隔壁' },
       { direction: 'south', targetRoomId: 'potion_shop', description: '草藥香從南側門縫飄來' },
@@ -1668,7 +1668,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_storehouse.png',
     imagePrompt: '補給倉庫 in starter_village, town service storehouse with crates, herb bundles, shaft of dust light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain town, clear lantern light',
     description:
-      '補給倉庫堆滿標著公會印記的木箱，乾草、繃帶、空瓶與低階採集工具分門別類放在架上，屋頂破洞灑下一束帶塵光線。東門通往藥水店櫃檯，地板下方傳出空洞回聲，暗示某個可調查的地窖入口。牆上的清單提醒新人出門前確認負重與消耗品，避免在野外無法拾取戰利品。',
+      '補給倉庫堆滿標著公會印記的木箱，乾草、繃帶、空瓶與低階採集工具分門別類放在架上，屋頂破洞灑下一束帶塵光線。東門通往藥水店櫃檯，地板下方傳出空洞回聲，暗示某個可調查的地窖入口。牆上的清單提醒新人出門前確認負重與消耗品，避免在野外無法拾取戰利品。補給倉庫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'potion_shop', description: '回到藥水店' },
       { direction: 'north', targetRoomId: 'starter_village_hidden_cellar', description: '倉庫北側暗門通往隱蔽地窖' },
@@ -1685,7 +1685,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_chapel.png',
     imagePrompt: '晨光禮拜堂 in starter_village, town service chapel with simple altar, colored window light, quiet stone floor, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain town, clear lantern light',
     description:
-      '晨光禮拜堂由白石和舊木梁搭成，彩色玻璃把清晨光線切成淡金與淺藍的碎片，灑在簡樸祭壇前。南門連到市場小巷，西側通向舊書庫，祭壇旁的祈願簿記著許多失敗又重新出發的冒險者姓名。這裡沒有怪物，卻提示玩家死亡後安全點、治療服務與祭司職業相關任務的方向。長椅間能聞到蠟油和雨濕木頭的味道，祭壇背後掛著村內安全路線圖，標明廣場、傳送祠堂和村口哨所的位置。幾張祈禱紙提到復活、護送與治療委託，暗示玩家可從 NPC 對話或任務看板取得支援型目標，也能辨認安靜側廊的出口。',
+      '晨光禮拜堂由白石和舊木梁搭成，彩色玻璃把清晨光線切成淡金與淺藍的碎片，灑在簡樸祭壇前。南門連到市場小巷，西側通向舊書庫，祭壇旁的祈願簿記著許多失敗又重新出發的冒險者姓名。這裡沒有怪物，卻提示旅人死亡後安全點、治療服務與祭司職業相關任務的方向。長椅間能聞到蠟油和雨濕木頭的味道，祭壇背後掛著村內安全路線圖，標明廣場、傳送祠堂和村口哨所的位置。幾張祈禱紙提到復活、護送與治療委託，暗示旅人可從 NPC 對話或任務看板取得支援型目標，也能辨認安靜側廊的出口',
     exits: [
       { direction: 'south', targetRoomId: 'starter_village_market_lane', description: '南側禮拜堂石階穿過雨棚與祈願紙，繞到攤販燈火旁的市場小巷入口', edgeKind: 'distant_route', edgeNote: '禮拜堂到市場小巷需下石階並穿過雨棚與攤位，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_old_library', description: '側廊通往舊書庫' },
@@ -1702,7 +1702,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_portal_shrine.png',
     imagePrompt: '新手村傳送祠堂 in starter_village, town service portal room with runestone circle, blue lantern light, safe travel node, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村口，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免玩家在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌。',
+      '傳送祠堂藏在廣場噴泉後方的半地下石室，圓形地面刻滿被腳步磨亮的古代符文，藍白光線從符文縫隙緩緩升起。北側石階回到村口，東側窄廊能通向守衛哨所下方，牆面掛著交通網路、解鎖條件與傳送費用的木牌。祠堂中央的傳送陣被公會封印穩定住，適合新手學習 activate portal，也提醒背包過重或攜帶特殊資源時可能無法使用一般傳送。石壁上的裂紋會隨魔力脈衝發亮，低沉嗡鳴提示傳送節點已解鎖；地面箭頭刻痕清楚指回廣場與哨所，避免旅人在地下空間迷路或錯過啟用提示。石柱旁還有記錄啟用者姓名的小銅牌',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_fill_1_3', description: '低地小徑通往溪畔石階' },
       { direction: 'east', targetRoomId: 'starter_village_guard_post', description: '窄廊通向守衛哨所下方', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1719,7 +1719,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_market_lane.png',
     imagePrompt: '市場小巷 in starter_village, town social market lane with stalls, canvas awnings, lantern glow after rain, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '市場小巷夾在武器店、禮拜堂與馬廄之間，濕潤石路上反射著攤棚燈火，水果籃、皮革包和破舊地圖擺得略顯凌亂。西邊能回到武器店，北側是安靜禮拜堂，南方傳來馬匹噴鼻聲。攤販低聲談論平原怪物與缺貨材料，提示玩家可從交易、對話和支線委託取得下一個探索方向。',
+      '市場小巷夾在武器店、禮拜堂與馬廄之間，濕潤石路上反射著攤棚燈火，水果籃、皮革包和破舊地圖擺得略顯凌亂。西邊能回到武器店，北側是安靜禮拜堂，南方傳來馬匹噴鼻聲。攤販低聲談論平原怪物與缺貨材料，提示旅人可從交易、對話和支線委託取得下一個探索方向。市場小巷周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'weapon_shop', description: '西側市場石路穿過攤棚與木箱堆，繞過鐵匠煤煙後抵達武器店前門', edgeKind: 'distant_route', edgeNote: '市場小巷到武器店需穿過攤棚與貨箱，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'starter_village_chapel', description: '北側市場雨棚沿祈願紙與石階上行，避開攤販燈火回到晨光禮拜堂', edgeKind: 'distant_route', edgeNote: '市場小巷北側回禮拜堂要穿過雨棚與石階，實際路程長於相鄰一格。' },
@@ -1737,7 +1737,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_crafting_shed.png',
     imagePrompt: '修補工棚 in starter_village, town service crafting shed with workbench, whetstone, coals and side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示玩家能從掉落材料、採集資源和工匠服務逐步改善初期裝備。',
+      '修補工棚半倚在武器店後牆，木桌上擺著磨刀石、皮革碎片、釘槌和幾把等待修復的短劍。南面通往訓練場，西側回到武器店，東側有小門通向馬廄院。牆上掛著裝備耐久與基礎製作步驟的圖板，暗示旅人能從掉落材料、採集資源和工匠服務逐步改善初期裝備。修補工棚周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'weapon_shop', description: '回到武器店前廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'north', targetRoomId: 'starter_village_market_lane', description: '北側攤棚燈火回到市場小巷' },
@@ -1755,7 +1755,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_notice_corner.png',
     imagePrompt: '告示角落 in starter_village, town quest notice corner with wooden boards, pinned maps, side alley lamplight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '告示角落位在廣場南西側的轉角，數塊木板被雨水泡得發黑，仍釘著尋物、採集、巡邏和協助新人的短委託。北邊是藥水店，東方可到村口，西側狹路延伸到古井。紙張邊緣有被撕下的痕跡，提示玩家查看 quest、追蹤任務目標，並留意有些委託需要 search 或 inspect 才能找到線索。木板下方散落舊蠟封與泥腳印，表示有人匆忙撕走其中一張任務單；旁邊的箭頭牌標示藥水店、古井與村口方向，使玩家能根據任務文字快速規劃路線，還能發現被雨水暈開的暗號。角落油燈下壓著一張缺角地圖，標出村內可調查處與回報路線。',
+      '告示角落位在廣場南西側的轉角，數塊木板被雨水泡得發黑，仍釘著尋物、採集、巡邏和協助新人的短委託。北邊是藥水店，東方可到村口，西側狹路延伸到古井。紙張邊緣有被撕下的痕跡，提示旅人查看 quest、追蹤任務目標，並留意有些委託需要 search 或 觀察 才能找到線索。木板下方散落舊蠟封與泥腳印，表示有人匆忙撕走其中一張任務單；旁邊的箭頭牌標示藥水店、古井與村口方向，使旅人能根據任務文字快速規劃路線，還能發現被雨水暈開的暗號。角落油燈下壓著一張缺角地圖，標出村內可調查處與回報路線',
     exits: [
       { direction: 'north', targetRoomId: 'potion_shop', description: '北側告示板後巷穿過雨棚與藥草木箱，沿淡綠藥粉痕跡繞回藥水店門口', edgeKind: 'distant_route', edgeNote: '告示角落到藥水店需穿過後巷雨棚與藥草箱，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'village_gate', description: '東側告示角落沿濕石路穿過任務牌與守衛火把，繞到村口柵門內側', edgeKind: 'distant_route', edgeNote: '告示角落到村口需沿濕石路穿過任務牌與火把區，實際路程長於相鄰一格。' },
@@ -1773,7 +1773,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_well_path.png',
     imagePrompt: '古井小路 in starter_village, town exploration path with old well, mossy stones, pale moonlit water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '古井小路被青苔石牆夾住，井口掛著生鏽滑輪，井水在微光下泛出不自然的銀色漣漪。東邊回到告示角落，南側階梯下到河岸，北面能看見補給倉庫背牆。井沿刻著被磨損的符號，旁邊散落幾枚濕硬幣，提示這裡適合調查、聽聲音或尋找被村民遺忘的小型寶物。',
+      '古井小路被青苔石牆夾住，井口掛著生鏽滑輪，井水在微光下泛出不自然的銀色漣漪。東邊回到告示角落，南側階梯下到河岸，北面能看見補給倉庫背牆。井沿刻著被磨損的符號，旁邊散落幾枚濕硬幣，提示這裡適合調查、聽聲音或尋找被村民遺忘的小型寶物。古井小路周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'starter_village_notice_corner', description: '告示板在東側轉角' },
       { direction: 'south', targetRoomId: 'starter_village_river_stairs', description: '石階下方有水聲' },
@@ -1790,7 +1790,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_old_library.png',
     imagePrompt: '舊書庫 in starter_village, town quest library with dusty shelves, tutorial manuals, narrow amber window light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '舊書庫藏在公會與禮拜堂之間，低矮書架塞滿泛黃手冊、怪物素描和初級地圖，灰塵在狹窗透進的琥珀色光束中漂浮。西門回到公會，東側通向禮拜堂，南側可繞回武器店附近。書桌上攤著一本標註 look、go、attack、equip 的教本，提示玩家能從文字線索學會基本指令與區域知識。',
+      '舊書庫藏在公會與禮拜堂之間，低矮書架塞滿泛黃手冊、怪物素描和初級地圖，灰塵在狹窗透進的琥珀色光束中漂浮。西門回到公會，東側通向禮拜堂，南側可繞回武器店附近。書桌上攤著一本標註 look、go、attack、equip 的教本，提示旅人能從文字線索學會基本指令與區域知識。舊書庫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'adventurer_guild', description: '回到公會大廳' },
       { direction: 'east', targetRoomId: 'starter_village_chapel', description: '側廊通往禮拜堂' },
@@ -1808,7 +1808,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_river_stairs.png',
     imagePrompt: '溪畔石階 in starter_village, town exploration river stairs with reeds, wet stones, reflected lantern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '溪畔石階沿著村內小溪下降，濕石上長著細苔，蘆葦在水邊沙沙作響，遠處橋下偶爾閃過銀色魚影。北邊回到古井小路，東方可通往傳送祠堂附近的低地。水聲遮住村內喧鬧，地上有小型足跡和被沖來的破布，提示玩家這裡可能藏著採集、釣魚或追蹤任務的早期線索。石階末端有半沉的小木箱與斷裂魚線，暗示死路也可能有可調查物；溪流方向清楚指向東側低地，讓玩家能用水聲辨認通往祠堂的繞路，並注意濕滑石面上的新鮮痕跡。水面倒影也能看見上方古井的輪廓，階梯旁還刻著提醒慢行的舊字。',
+      '溪畔石階沿著村內小溪下降，濕石上長著細苔，蘆葦在水邊沙沙作響，遠處橋下偶爾閃過銀色魚影。北邊回到古井小路，東方可通往傳送祠堂附近的低地。水聲遮住村內喧鬧，地上有小型足跡和被沖來的破布，提示旅人這裡可能藏著採集、釣魚或追蹤任務的早期線索。石階末端有半沉的小木箱與斷裂魚線，暗示死路也可能有可調查物；溪流方向清楚指向東側低地，讓旅人能用水聲辨認通往祠堂的繞路，並注意濕滑石面上的新鮮痕跡。水面倒影也能看見上方古井的輪廓，階梯旁還刻著提醒慢行的舊字',
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_well_path', description: '石階上方是古井小路' },
       { direction: 'east', targetRoomId: 'starter_village_fill_1_3', description: '沿低地小徑可繞到傳送祠堂' },
@@ -1825,7 +1825,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_guard_post.png',
     imagePrompt: '守衛哨所 in starter_village, town service guard post above gate, watch lantern, road signs and palisade, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。北側可回傳送祠堂，西側窄廊亦可繞往祠堂方向，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示玩家離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音。',
+      '守衛哨所架在村門上方，窄木板因長年雨水而發黑，瞭望燈籠把南方平原道路照成一條淡黃線。北側可回傳送祠堂，西側窄廊亦可繞往祠堂方向，東面屋頂棧道能俯看訓練場。桌上放著巡邏表、怪物出沒圖與撤退信號旗，提示旅人離村後遇到危險可尋找安全點或回程路線。哨窗旁的風鈴會根據南方草原風勢改變聲音，守衛用粉筆標出最近一次史萊姆靠近的位置，讓新人理解安全區與野外遭遇區的界線，也看懂撤退方向。旗架上還綁著回城信號的顏色說明，牆角備有給新人辨識路線的木牌與哨音',
     exits: [
       { direction: 'west', targetRoomId: 'starter_village_portal_shrine', description: '窄廊通往傳送祠堂', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'starter_village_rooftop_walk', description: '東側哨所窄廊沿木柵上緣延伸，越過火把平台後接上屋頂棧道入口', edgeKind: 'distant_route', edgeNote: '守衛哨所到屋頂棧道需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
@@ -1842,7 +1842,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_stable_yard.png',
     imagePrompt: '馬廄院 in starter_village, town service stable yard with hay, wagon wheels, muddy lantern-lit ground, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '馬廄院裡堆著乾草、木桶與尚未修好的車輪，泥地被馬蹄踩出深淺不一的水坑，油燈掛在橫梁下緩慢晃動。北方連到市場小巷，西側是修補工棚，南邊屋頂棧道投下細長陰影。牆上釘著運送路線與村外風險標記，暗示交通、背包負重和區域解鎖會影響玩家能否安全移動。',
+      '馬廄院裡堆著乾草、木桶與尚未修好的車輪，泥地被馬蹄踩出深淺不一的水坑，油燈掛在橫梁下緩慢晃動。北方連到市場小巷，西側是修補工棚，南邊屋頂棧道投下細長陰影。牆上釘著運送路線與村外風險標記，暗示交通、背包負重和區域解鎖會影響旅人能否安全移動。馬廄院周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'north', targetRoomId: 'starter_village_crafting_shed', description: '北側修補工棚接回市場小巷' },
       { direction: 'west', targetRoomId: 'starter_village_crafting_shed', description: '修補工棚在西邊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -1878,7 +1878,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_village_rooftop_walk.png',
     imagePrompt: '屋頂棧道 in starter_village, town exploration rooftop walkway over training yard, ropes, dusk sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示玩家從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。',
+      '屋頂棧道由繩索和窄木板固定在訓練場與馬廄之間，腳下能看見新手揮舞木劍，遠方村門火把像小星點般閃爍。下方梯子回到訓練場，西面連向守衛哨所，東邊可沿木階下到馬廄院。棧道扶手綁著風向布條與觀戰標記，提示旅人從高處判讀道路方向，也能避開地面擁擠路線快速回到服務區。屋頂棧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'south', targetRoomId: 'training_ground', description: '南側棧道木梯沿繩索護欄折降，繞過稻草靶後回到訓練場北側空地', edgeKind: 'distant_route', edgeNote: '屋頂棧道回訓練場需下木梯並繞過訓練器具，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'starter_village_guard_post', description: '西側屋頂棧道沿木柵上緣回走，越過火把平台與窄廊抵達守衛哨所', edgeKind: 'distant_route', edgeNote: '屋頂棧道到守衛哨所需沿木柵上緣與火把平台繞行，實際路程長於相鄰一格。' },
@@ -1932,7 +1932,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'grass_path.png',
     imagePrompt: '草原小徑 in plains, main route room through tall grass and wildflowers, visible wolf tracks, angled afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '蜿蜒小徑穿過齊膝草叢，兩側野花吸引蝴蝶盤旋，花粉與乾草味在風裡混成微甜氣息。北面能看見村口方向的路標，南方道路下沉通向十字路口，草葉間還有幾枚普通狼爪印與被咬斷的兔毛。這裡是新手最常練習戰鬥的主路，玩家若聽見連續沙沙聲，就該準備 attack 或觀察是否有狼群靠近；真正的狼王巢穴在支線深處，不會堵住主路。',
+      '蜿蜒小徑穿過齊膝草叢，兩側野花吸引蝴蝶盤旋，花粉與乾草味在風裡混成微甜氣息。北面能看見村口方向的路標，南方道路下沉通向十字路口，草葉間還有幾枚普通狼爪印與被咬斷的兔毛。這裡是新手最常練習戰鬥的主路，旅人若聽見連續沙沙聲，就該準備 attack 或觀察是否有狼群靠近；真正的狼王巢穴在支線深處，不會堵住主路',
     exits: [
       { direction: 'north', targetRoomId: 'plains_entrance', description: '回到平原入口' },
       { direction: 'south', targetRoomId: 'crossroads', description: '通往十字路口' },
@@ -1984,7 +1984,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'crossroads.png',
     imagePrompt: '十字路口 in plains, main route crossroads with old signpost, well, roads to forest and town, overcast directional light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain plains, clear lantern light',
     description:
-      '兩條舊道路在此交會，中央路標被風雨磨白，仍能辨認北往新手村、南入暗影森林、東至湖畔城鎮，西側古井半掩在荒草中。車轍、狼爪與蛇行痕跡互相交錯，讓這裡既是交通節點也是遭遇點。路標底座有可疑縫隙，旁邊倒著破盾與乾枯血跡，提示玩家選路前應查看任務方向並注意毒蛇或野狼伏擊。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '兩條舊道路在此交會，中央路標被風雨磨白，仍能辨認北往新手村、南入暗影森林、東至湖畔城鎮，西側古井半掩在荒草中。車轍、狼爪與蛇行痕跡互相交錯，讓這裡既是交通節點也是遭遇點。路標底座有可疑縫隙，旁邊倒著破盾與乾枯血跡，提示旅人選路前應查看任務方向並注意毒蛇或野狼伏擊。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'north', targetRoomId: 'grass_path', description: '沿小徑返回' },
       {
@@ -2024,7 +2024,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'old_well.png',
     imagePrompt: '古井旁 in plains, hidden exploration room with mossy old well, carved stones, cold blue glow from depth, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain plains, clear lantern light',
     description:
-      '苔蘚覆蓋的古井孤立在荒草深處，井壁石塊刻著幾乎磨平的符文，潮冷氣息從黑暗井底往上湧。東邊路口仍能看見路標，井內垂下的舊繩索通往洞窟入口，周圍草叢裡有毒蛇蛻皮與碎骨。井底微光像是在引誘旅人靠近，提示玩家可下探、調查符文或準備面對地底怪物。',
+      '苔蘚覆蓋的古井孤立在荒草深處，井壁石塊刻著幾乎磨平的符文，潮冷氣息從黑暗井底往上湧。東邊路口仍能看見路標，井內垂下的舊繩索通往洞窟入口，周圍草叢裡有毒蛇蛻皮與碎骨。井底微光像是在引誘旅人靠近，提示旅人可下探、調查符文或準備面對地底怪物。古井旁周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'crossroads', description: '回到十字路口' },
       {
@@ -2057,7 +2057,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'forest_entrance.png',
     imagePrompt: '森林入口 in dark_forest, entrance room with giant oak archway, wet roots, dim green light and warning shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fantasy terrain, clear lantern light',
     description:
-      '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域，寒風石碑明確標出高階危險。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示玩家進入後會遭遇暗影狼伏擊。',
+      '兩株巨大橡樹像門衛般立在暗影森林入口，交錯枝椏形成天然拱門，濕冷樹根從泥土裡隆起。北方道路退回平原十字路口，南側密林小道吞沒光線，東邊樹屋階梯纏滿藤蔓，西側霜雪小路通往更冷的區域，寒風石碑明確標出高階危險。鳥鳴從樹冠四面傳來卻看不到鳥影，地面狼毛與新鮮爪痕提示旅人進入後會遭遇暗影狼伏擊',
     exits: [
       {
         direction: 'north',
@@ -2096,7 +2096,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'dense_trail.png',
     imagePrompt: '密林小道 in dark_forest, main route room choked by vines, spider silk, leaf carpet and dim filtered light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '越往深處走，樹木越高，藤蔓和荊棘幾乎把道路擠成窄縫，厚落葉吸走腳步聲，只剩遠處不自然的枝條摩擦聲。北面可退回森林入口，西邊飄來沼澤腐甜氣味，南方深林更暗，東側螢光若隱若現。臉上偶爾黏到冰冷蛛絲，提示巨型蜘蛛可能在頭頂結網，玩家應留意方向與伏擊。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '越往深處走，樹木越高，藤蔓和荊棘幾乎把道路擠成窄縫，厚落葉吸走腳步聲，只剩遠處不自然的枝條摩擦聲。北面可退回森林入口，西邊飄來沼澤腐甜氣味，南方深林更暗，東側螢光若隱若現。臉上偶爾黏到冰冷蛛絲，提示巨型蜘蛛可能在頭頂結網，旅人應留意方向與伏擊。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'north', targetRoomId: 'forest_entrance', description: '退回森林入口' },
       { direction: 'west', targetRoomId: 'mushroom_swamp', description: '空氣中飄來沼澤的氣味' },
@@ -2124,7 +2124,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'mushroom_swamp.png',
     imagePrompt: '蘑菇沼澤 in dark_forest, resource combat swamp room with giant glowing mushrooms, bubbling mud, sickly green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain swamp, clear lantern light',
     description:
-      '泥地在腳下慢慢下陷，紫黑水泡從沼澤表面鼓起又破裂，巨大螢光蘑菇照出病態綠光，有些菌傘高過人頭。東面回到密林小道，西方毒霧更濃，泥水裡可見蛛腿般的細長倒影。腐敗甜味和潮濕木屑味混在一起，最大的蘑菇根部埋著發光材料，提示玩家可採集但也可能驚動蜘蛛與樹精。',
+      '泥地在腳下慢慢下陷，紫黑水泡從沼澤表面鼓起又破裂，巨大螢光蘑菇照出病態綠光，有些菌傘高過人頭。東面回到密林小道，西方毒霧更濃，泥水裡可見蛛腿般的細長倒影。腐敗甜味和潮濕木屑味混在一起，最大的蘑菇根部埋著發光材料，提示旅人可採集但也可能驚動蜘蛛與樹精。蘑菇沼澤周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'dense_trail', description: '回到密林小道' },
       { direction: 'west', targetRoomId: 'deep_poison_swamp', description: '沼澤向西延伸，毒霧越來越濃' },
@@ -2150,7 +2150,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ancient_treehouse.png',
     imagePrompt: '古老樹屋 in dark_forest, exploration room with elven treehouse, spiral stairs, ancient books, shafts of green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精怪物低鳴，提示玩家可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '千年巨木枝幹間架著被遺忘的精靈樹屋，螺旋木階沿樹身盤旋，欄杆雖腐朽仍能看出優雅紋路。西面能回森林入口，東側隱蔽小路通往獵人小屋，樹冠上有幾條通向更高處的斷橋。屋內殘留古書、碎水晶和魔法工具，木板下傳來樹精怪物低鳴，提示旅人可調查精靈歷史或遭遇守護樹靈。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'forest_entrance', description: '回到森林入口' },
       {
@@ -2181,7 +2181,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'deep_forest.png',
     imagePrompt: '森林深處 in dark_forest, boss route room with huge roots, green watching eyes, oppressive darkness and wolf territory, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '森林深處幾乎吞掉所有光線，古老樹根盤踞在地面上，像沉睡巨蛇繞過腐葉和黑水坑。北方可退回密林小道，南方精靈遺跡透出微弱藍光，西側枯萎之林散出灰燼味。幽暗裡一雙雙綠眼保持距離跟隨，地上有巨大狼爪與被拖走獵物的痕跡；這裡是暗影狼王與暗影樹靈的活動邊界，玩家進入前應確認藥水、裝備和任務目標。' +
+      '森林深處幾乎吞掉所有光線，古老樹根盤踞在地面上，像沉睡巨蛇繞過腐葉和黑水坑。北方可退回密林小道，南方精靈遺跡透出微弱藍光，西側枯萎之林散出灰燼味。幽暗裡一雙雙綠眼保持距離跟隨，地上有巨大狼爪與被拖走獵物的痕跡；這裡是暗影狼王與暗影樹靈的活動邊界，旅人進入前應確認藥水、裝備和任務目標' +
       '粗根間散落舊箭矢、破披風和被咬碎的骨片，風穿過樹洞時像低聲警告。若沿著狼爪向南追蹤，會接近遺跡與更深事件；若往西撤退，則進入枯萎之林的詛咒路線，路線選擇會影響後續遭遇。',
     exits: [
       { direction: 'north', targetRoomId: 'dense_trail', description: '退回密林小道' },
@@ -2210,7 +2210,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'elf_ruins.png',
     imagePrompt: '精靈遺跡 in dark_forest, landmark room with broken elven pillars, faded magic circle, blue crystal altar light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain crystal, clear lantern light',
     description:
-      '穿過重重樹幕後，開闊遺跡像被森林吞下的廣場般出現，斷裂白石柱刻滿精靈文字，地面魔法陣雖黯淡仍有藍光沿刻痕流動。北面回到森林深處，南方空氣逐漸灼熱通往火山地帶，東側老樹叢深處傳來低沉脈動。祭壇中央的水晶映出破碎記憶與任務線索，是地標、劇情與 Boss 事件的核心節點，玩家可 inspect 符文確認暗影來源。' +
+      '穿過重重樹幕後，開闊遺跡像被森林吞下的廣場般出現，斷裂白石柱刻滿精靈文字，地面魔法陣雖黯淡仍有藍光沿刻痕流動。北面回到森林深處，南方空氣逐漸灼熱通往火山地帶，東側老樹叢深處傳來低沉脈動。祭壇中央的水晶映出破碎記憶與任務線索，是地標、劇情與 Boss 事件的核心節點，旅人可 觀察 符文確認暗影來源' +
       '石柱旁有被暗影侵蝕的箭孔和精靈守衛殘甲，說明這裡曾經爆發過長期防衛戰。水晶光芒會指向暗影空地與古樹心庭，玩家若完成森林線索，可在此回收證物、觸發下一段區域推進或判斷通往火山的安全路線。',
     exits: [
       { direction: 'north', targetRoomId: 'deep_forest', description: '返回森林深處' },
@@ -2247,7 +2247,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'cave_entrance.png',
     imagePrompt: '洞窟入口 in crystal_cave, entrance room below old well with blue crystals, damp stone, cave bats and mineral wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '古井井壁後藏著狹窄通道，盡頭是一處天然洞窟入口，岩壁鑲著零星幽藍水晶，涼風帶出潮濕礦物味。上方繩索可攀回古井，南方螢光隧道像星河般延伸，北側廢棄礦車道通向地面。洞頂倒掛蝙蝠，入口岩縫裡有水晶原石，提示玩家這裡是進入洞窟前的安全錨點與第一個戰鬥遭遇。',
+      '古井井壁後藏著狹窄通道，盡頭是一處天然洞窟入口，岩壁鑲著零星幽藍水晶，涼風帶出潮濕礦物味。上方繩索可攀回古井，南方螢光隧道像星河般延伸，北側廢棄礦車道通向地面。洞頂倒掛蝙蝠，入口岩縫裡有水晶原石，提示旅人這裡是進入洞窟前的安全錨點與第一個戰鬥遭遇。洞窟入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       {
         direction: 'east',
@@ -2285,7 +2285,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'luminous_tunnel.png',
     imagePrompt: '螢光隧道 in crystal_cave, main route tunnel lined with multicolor crystals, polished wet floor and refracted light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain tunnel, clear lantern light',
     description:
-      '隧道兩壁嵌滿大小不一的水晶，彩光在黑暗中層層折射，讓濕滑地面像鏡子般映出星河。北面回洞窟入口，南方水晶大廳透出耀眼光芒，東邊地下河水聲清晰，西側紫色通道帶來眩暈感。水晶閃爍裡有蜥蜴偽裝的影子，提示玩家需觀察異常反光，並小心在光滑地面戰鬥時被逼退。' +
+      '隧道兩壁嵌滿大小不一的水晶，彩光在黑暗中層層折射，讓濕滑地面像鏡子般映出星河。北面回洞窟入口，南方水晶大廳透出耀眼光芒，東邊地下河水聲清晰，西側紫色通道帶來眩暈感。水晶閃爍裡有蜥蜴偽裝的影子，提示旅人需觀察異常反光，並小心在光滑地面戰鬥時被逼退。螢光隧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
       '隧道頂端偶爾滴下冰冷礦水，落點會在地面形成細小回音，能幫助判斷蝙蝠群的位置。牆面有礦工刻下的方向箭頭和危險標記，指出大廳、地下河與紫水晶走廊各自的風險，也標明哪條路較適合撤退或採集與休整。',
     exits: [
       { direction: 'north', targetRoomId: 'cave_entrance', description: '回到洞窟入口' },
@@ -2314,7 +2314,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'crystal_hall.png',
     imagePrompt: '水晶大廳 in crystal_cave, landmark room with giant crystal pillars, rune platform, cathedral cavern ceiling and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain crystal, clear lantern light',
     description:
-      '宏偉天然大廳在隧道盡頭展開，穹頂高得像地底教堂，巨型水晶柱從地面直插天頂，把光折成萬千色彩。北側回螢光隧道，南方礦脈深處傳來沉重震動，中央符文石台被環形階梯包圍。石像鬼雕塑排列在柱間，其中幾尊姿態過於僵硬，提示這裡是地標、Boss 前哨與解謎核心；玩家可 inspect 石台符文開啟後續路線。' +
+      '宏偉天然大廳在隧道盡頭展開，穹頂高得像地底教堂，巨型水晶柱從地面直插天頂，把光折成萬千色彩。北側回螢光隧道，南方礦脈深處傳來沉重震動，中央符文石台被環形階梯包圍。石像鬼雕塑排列在柱間，其中幾尊姿態過於僵硬，提示這裡是地標、Boss 前哨與解謎核心；旅人可 觀察 石台符文開啟後續路線' +
       '石台四周刻著地底王國的巡禮圖，標出古代祭壇、棱鏡門與水晶龍棲台的相對方位。大廳聲音會被穹頂放大，任何戰鬥都可能驚醒更多守衛，因此路線選擇與補給檢查都很重要，最好先確認北側退路。',
     exits: [
       { direction: 'north', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
@@ -2342,7 +2342,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'underground_river.png',
     imagePrompt: '地下河 in crystal_cave, resource river room with clear underground water, glowing crystal fragments, mossy banks and green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain river, clear lantern light',
     description:
-      '寬闊地下河在洞窟暗處蜿蜒流動，清澈河水能看見河床上的發光水晶碎片，岸邊螢光苔蘚散出柔綠光。西面回螢光隧道，東方瀑布轟鳴越來越響，水面偶爾泛起不自然漣漪。河泥上有蜥蜴爪印與被沖來的礦石袋，提示玩家可採集、追蹤水流或準備水邊伏擊戰。',
+      '寬闊地下河在洞窟暗處蜿蜒流動，清澈河水能看見河床上的發光水晶碎片，岸邊螢光苔蘚散出柔綠光。西面回螢光隧道，東方瀑布轟鳴越來越響，水面偶爾泛起不自然漣漪。河泥上有蜥蜴爪印與被沖來的礦石袋，提示旅人可採集、追蹤水流或準備水邊伏擊戰。地下河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
       { direction: 'east', targetRoomId: 'underground_waterfall', description: '河水向東方流去，傳來瀑布的轟鳴' },
@@ -2367,7 +2367,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'mine_depths.png',
     imagePrompt: '礦脈深處 in crystal_cave, resource combat room with exposed ore veins, hot crystals, heavy pressure and mining scars, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '裸露礦脈在岩壁上閃著金屬光澤，巨型水晶像熔爐般散出熱能，讓空氣沉重而壓抑。北面回水晶大廳，東側階梯通往古代祭壇，西邊能聽見礦工營地殘破滑輪聲。地面有新舊鑿痕、晶粉和守衛石像的碎片，提示玩家可採礦、尋找古代機關，也會遭遇石像鬼與水晶蜥蜴巡守。' +
+      '裸露礦脈在岩壁上閃著金屬光澤，巨型水晶像熔爐般散出熱能，讓空氣沉重而壓抑。北面回水晶大廳，東側階梯通往古代祭壇，西邊能聽見礦工營地殘破滑輪聲。地面有新舊鑿痕、晶粉和守衛石像的碎片，提示旅人可採礦、尋找古代機關，也會遭遇石像鬼與水晶蜥蜴巡守。礦脈深處周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
       '深處礦脈偶爾爆出細小火花，照亮牆上被劃掉的警告文字。若沿著礦車軌痕前進，能找到廢礦工營地與失蹤記錄；若直接走向祭壇，則會更快接觸高階守衛，並可能觸發古代封印事件與警戒。熱風方向也能判斷哪條礦道仍然通暢。',
     exits: [
       { direction: 'north', targetRoomId: 'crystal_hall', description: '返回水晶大廳' },
@@ -2397,7 +2397,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'town_gate.png',
     imagePrompt: '城門口 in lakeside_town, entrance town service room with stone gate, lake wind, shield crest, guards and warm torch light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '高大的湖石城牆圍繞著城鎮，城門上方刻著盾牌與交叉長劍徽記，濕潤湖風吹過吊橋與銅釘木門。身著鎧甲的衛兵守在門口，商隊與冒險者沿西側道路排隊入城，東面可看見商業街的燈火。告示牌提示入城補給、登記任務與啟用傳送陣，門洞旁的暗格也可被 inspect 搜出走私線索。' +
+      '高大的湖石城牆圍繞著城鎮，城門上方刻著盾牌與交叉長劍徽記，濕潤湖風吹過吊橋與銅釘木門。身著鎧甲的衛兵守在門口，商隊與冒險者沿西側道路排隊入城，東面可看見商業街的燈火。告示牌提示入城補給、登記任務與啟用傳送陣，門洞旁的暗格也可被 觀察 搜出走私線索。城門口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
       '這裡是安全錨點與外部路線交會處，玩家可從西側返回十字路口，向東進入市場，或往南接上海岸棧道。城門上方的鐘聲會標示宵禁與警報，衛兵隊長也會提醒新來者先確認復活點、倉庫與傳送廣場位置，避免帶著任務貨物走錯危險路線。',
     exits: [
       {
@@ -2433,7 +2433,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'market_street.png',
     imagePrompt: '商業街 in lakeside_town, town service market street with weapon stalls, spice smoke, hanging lanterns and lake reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '熙熙攘攘的石板商業街沿湖岸展開，武器鋪、防具店、藥材行與雜貨舖掛著不同顏色的燈籠。烤肉煙、香料味與湖水潮氣混在一起，攤販叫賣聲壓過馬車輪聲。西側通回城門，東面通往廣場，北邊酒館門縫飄出酒香；玩家可在此補給、比價、接商人委託，也能 search 貨箱找到異常標記。街角公告牌列出每日採購清單與缺貨材料，南側鍛坊傳來敲鐵聲，提醒玩家可以把剛取得的裝備立刻修理、分解或換成旅途消耗品，也可比較拍賣場與商店價格再決定出售。路邊巡邏會提示可疑商販位置與安全出口，攤位後方還留有通往倉庫的小路。',
+      '熙熙攘攘的石板商業街沿湖岸展開，武器鋪、防具店、藥材行與雜貨舖掛著不同顏色的燈籠。烤肉煙、香料味與湖水潮氣混在一起，攤販叫賣聲壓過馬車輪聲。西側通回城門，東面通往廣場，北邊酒館門縫飄出酒香；旅人可在此補給、比價、接商人委託，也能 search 貨箱找到異常標記。街角公告牌列出每日採購清單與缺貨材料，南側鍛坊傳來敲鐵聲，提醒旅人可以把剛取得的裝備立刻修理、分解或換成旅途消耗品，也可比較拍賣場與商店價格再決定出售。路邊巡邏會提示可疑商販位置與安全出口，攤位後方還留有通往倉庫的小路',
     exits: [
       { direction: 'west', targetRoomId: 'town_gate', description: '回到城門口' },
       { direction: 'east', targetRoomId: 'town_plaza', description: '前往城鎮廣場' },
@@ -2456,7 +2456,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'town_plaza.png',
     imagePrompt: '城鎮廣場 in lakeside_town, town core plaza with hero fountain, lake sunlight, job hall banners and arena arch, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '寬闊的湖畔廣場是城鎮中心，英雄雕像矗立在噴泉中央，水霧映著碧藍湖面與白石地磚。四周環繞轉職大廳、競技場、拍賣場與通往神殿的拱廊，公告欄貼滿進階任務與地下城招募。西側回商業街，北面通向導師所在的大廳，南側傳來競技場歡呼，東邊是拍賣場正門。' +
+      '寬闊的湖畔廣場是城鎮中心，英雄雕像矗立在噴泉中央，水霧映著碧藍湖面與白石地磚。四周環繞轉職大廳、競技場、拍賣場與通往神殿的拱廊，公告欄貼滿進階任務與地下城招募。西側回商業街，北面通向導師所在的大廳，南側傳來競技場歡呼，東邊是拍賣場正門。城鎮廣場周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
       '雕像底座有可調查的符文順序，噴泉旁也標示傳送陣方向，是玩家整理任務、查看城市服務與選擇下一條路線的核心節點。廣場巡邏路線清楚避開人潮，玩家可藉此判斷哪條街通往安全服務，哪條路會帶到訓練、交易或交通功能。',
     exits: [
       { direction: 'west', targetRoomId: 'market_street', description: '回到商業街' },
@@ -2481,7 +2481,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'class_change_hall.png',
     imagePrompt: '轉職大廳 in lakeside_town, town service class hall with four profession pillars, ritual circle, mentor alcoves and soft magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著盾斧、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；玩家可在此詢問二轉、檢查技能路線，或 inspect 柱腳找到各職業試煉提示。牆邊展示初始職業與二轉武具樣本，地面箭紋標出各導師區域，讓玩家能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免玩家未準備好就前往高危區域，也方便回頭確認未完成職業任務。',
+      '宏偉大廳由四根刻紋巨柱支撐，柱面分別雕著盾斧、魔法書、弓箭與聖杖。柔和魔法光從中央轉職法陣升起，照亮四位導師的席位與牆上的試煉徽章。南面回廣場，東側走廊通往公會大廳；旅人可在此詢問二轉、檢查技能路線，或 觀察 柱腳找到各職業試煉提示。牆邊展示初始職業與二轉武具樣本，地面箭紋標出各導師區域，讓旅人能依職業資源、爆發節奏與防禦需求選擇下一步。導師旁的任務卷軸會列出推薦等級、需求技能與試煉地點，避免旅人未準備好就前往高危區域，也方便回頭確認未完成職業任務',
     exits: [
       { direction: 'south', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
       { direction: 'east', targetRoomId: 'guild_hall', description: '東邊走廊通往公會大廳', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2509,7 +2509,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'arena_entrance.png',
     imagePrompt: '競技場入口 in lakeside_town, town service combat training room with circular arena gate, challenge board, torchlight and cheering crowd, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內通往正式競技城區；玩家可在此報名、查看賽程、完成戰鬥教學登記，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全入口，失敗者會從醫護通道返回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前閱讀規則，並熟悉屍體搜刮流程與裝備耐久消耗。',
+      '巨大的圓形競技場聳立在廣場南側，銅門後傳出觀眾席的歡呼與木劍碰撞聲。入口告示板寫著今日挑戰、訓練獎勵與安全規則，火把照亮排隊報名的冒險者。北面回城鎮廣場，門內通往正式競技城區；旅人可在此報名、查看賽程、完成戰鬥教學登記，並從告示板背面找出隱藏兌換密碼。旁邊的傷藥架和觀戰席出口提示這裡仍屬安全入口，失敗者會從醫護通道返回廣場重新整理裝備。賽程牌還會標示怪物預兆、打斷時機與戰利品規則，適合在進入真正地下城前閱讀規則，並熟悉屍體搜刮流程與裝備耐久消耗',
     exits: [
       { direction: 'north', targetRoomId: 'town_plaza', description: '回到城鎮廣場' },
     ],
@@ -2532,7 +2532,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_backhill.png',
     imagePrompt: '村莊後山 in starter_village_ext, entrance combat hillside room with mossy boulders, wild grass, village view and morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain village, clear lantern light',
     description:
-      '村莊背後的小山丘，長滿了野草和灌木。山坡上散落著幾塊長滿苔蘚的巨石，' +
+      '村莊背後的小山丘，長滿了野草和灌木。山坡上散落著幾塊長滿苔蘚的巨石，。村莊後山周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '偶爾能看到綠色的半透明生物在草叢間蠕動。' +
       '從山頂可以俯瞰整個新手村，視野開闊。下坡能回村莊廣場，東側小路通往溪邊，西側則有破舊木屋；玩家可在巨石下 search 找到先祖符印或驚動史萊姆。山風會把村口鐘聲和溪水聲一起送上坡頂，讓新手能判斷安全退路與下一個練級方向。草叢裡的腳印分成田鼠與史萊姆拖痕，提示玩家先清理小怪再調查石縫寶物。坡頂木牌還標出村莊、溪流、磨坊與墓地方向，是外圍區域的第一個導航點與任務提示點。',
     exits: [
@@ -2561,7 +2561,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_creek.png',
     imagePrompt: '小溪邊 in starter_village_ext, resource combat creek room with clear water, smooth stones, reeds, slime bubbles and golden sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響，陽光在水面碎成萬千金色的碎片。' +
+      '一條清澈的小溪從後山蜿蜒流下，溪水潺潺作響，陽光在水面碎成萬千金色的碎片。小溪邊周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '溪邊的鵝卵石被水流打磨得光滑圓潤，水草在溪底輕輕搖擺，魚苗在石縫間穿梭。' +
       '幾隻綠史萊姆怪物在溪邊吸收水氣，半透明的身軀在陽光下閃爍著果凍般的光澤。' +
       '微風送來泥土和青草的清新氣息，偶爾傳來村婦在上游洗衣的捶打聲。',
@@ -2590,7 +2590,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_farmland.png',
     imagePrompt: '農田 in starter_village_ext, resource combat farmland room with wheat rows, vegetable beds, rat holes and warm wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '整齊的田壟間種滿了小麥和蔬菜，金黃的穗子在微風中搖曳。' +
+      '整齊的田壟間種滿了小麥和蔬菜，金黃的穗子在微風中搖曳。農田周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '農夫們抱怨田鼠猖獗，辛苦種下的作物經常被啃食殆盡。' +
       '田埂上偶爾能看到灰色的小影子飛速竄過。北面溪水灌入水渠，東側果園飄來甜香，南方小路通往墓地前的村外；玩家可堵住田鼠洞、採集作物或調查工具棚。',
     exits: [
@@ -2625,7 +2625,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_orchard.png',
     imagePrompt: '果園 in starter_village_ext, combat resource orchard with apple trees, fallen fruit, crow nests and dappled afternoon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子，空氣中瀰漫著成熟水果的甜香。' +
+      '果樹成排排列，枝頭掛滿了紅彤彤的蘋果和金黃的梨子，空氣中瀰漫著成熟水果的甜香。果園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '烏鴉群經常光顧這裡偷食果實，牠們刺耳的嘎嘎叫聲迴盪在樹梢間，令果農不勝其煩。' +
       '地面上散落著被啄食過的果核和半腐爛的落果，田鼠在果樹根部的落葉堆中窸窣竄動。' +
       '陽光透過茂密的枝葉灑下斑駁的光影，這片果園雖然豐饒，卻也是小型害獸的樂園。',
@@ -2653,7 +2653,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'graveyard_entrance.png',
     imagePrompt: '墓地入口 in starter_village_ext, elite combat graveyard gate with rusted iron, crooked tombstones, dead flowers and cold moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain gate, clear lantern light',
     description:
-      '一道鏽蝕的鐵門半開著，門後是一片荒涼的墓地。歪斜的墓碑在月光下投射出長長的陰影，' +
+      '一道鏽蝕的鐵門半開著，門後是一片荒涼的墓地。歪斜的墓碑在月光下投射出長長的陰影，。墓地入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '地面上散落著枯萎的花束。空氣中瀰漫著陰冷的氣息，' +
       '隱約可以聽到骨頭碰撞的聲響。北面可退回村外小路，東側瞭望台仍有微光，南方鎖住的鐵門提示需要鑰匙。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
@@ -2692,7 +2692,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'graveyard_depths.png',
     imagePrompt: '墓地深處 in starter_village_ext, boss event graveyard room with ancient sarcophagus, broken bones, glowing seals and oppressive blue moonlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fantasy terrain, clear lantern light',
     description:
-      '穿過鏽蝕的鐵門，你來到了墓地最深處。這裡的墓碑更加古老，刻著早已被遺忘的文字。' +
+      '穿過鏽蝕的鐵門，你來到了墓地最深處。這裡的墓碑更加古老，刻著早已被遺忘的文字。墓地深處周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '地面上散落著碎裂的骨骸和褪色的花環，空氣中彌漫著死亡的氣息。' +
       '一座巨大的石棺矗立在中央，封印的符文依然微微發光。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
@@ -2726,7 +2726,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'abandoned_cottage.png',
     imagePrompt: '廢棄小屋 in starter_village_ext, hidden exploration cottage with collapsed roof, vines, broken window and dusty lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '一間被藤蔓纏繞的破舊木屋，屋頂塌了一半，窗戶早已破碎。' +
+      '一間被藤蔓纏繞的破舊木屋，屋頂塌了一半，窗戶早已破碎。廢棄小屋周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '屋內堆滿了落葉和碎木，角落裡有動物築巢的痕跡。' +
       '據村民說，這裡曾住著一位古怪的老巫師。東面回後山，南側地板裂縫下似乎藏著地窖入口；玩家可 search 壁爐暗格取得藥水，也要小心屋樑上的烏鴉群。',
     exits: [
@@ -2756,7 +2756,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'village_outskirts.png',
     imagePrompt: '村外小路 in starter_village_ext, main route combat room with dirt road, wildflowers, animal tracks and soft cloudy light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain road, clear lantern light',
     description:
-      '一條蜿蜒的泥土小路連接著村莊和外圍區域，路旁的野花隨風搖曳。' +
+      '一條蜿蜒的泥土小路連接著村莊和外圍區域，路旁的野花隨風搖曳。村外小路周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '路面上有大小不一的腳印，看得出來常有野生動物經過。' +
       '這裡是前往墓地和瞭望台的必經之路。北面回農田，南方鐵門通向墓地，東邊可回村口；玩家可 inspect 大樹下的石堆，追蹤田鼠怪物、烏鴉伏擊與可疑腳印。',
     exits: [
@@ -2798,7 +2798,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'watchtower.png',
     imagePrompt: '瞭望台 in starter_village_ext, elite exploration watchtower with broken stone stairs, torn banner, crow perches and pale dawn horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain stone, clear lantern light',
     description:
-      '一座半廢棄的石造瞭望台聳立在小丘上，登頂可以遠眺四方。' +
+      '一座半廢棄的石造瞭望台聳立在小丘上，登頂可以遠眺四方。瞭望台周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '塔頂的旗幟早已破爛不堪，但殘存的守衛設施顯示這裡曾是重要的防禦據點。' +
       '烏鴉和骷髏兵出沒其間，讓這裡充滿危險。西側下坡回墓地入口，玩家可 inspect 破旗和警鐘，判斷亡者從哪條路靠近村莊。',
     exits: [
@@ -2826,7 +2826,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_old_mill_path.png',
     imagePrompt: '舊磨坊小徑 in starter_village_ext, main route room with abandoned mill wheel, muddy track, grain sacks and slanting morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一條泥濘小徑沿著農田灌渠延伸到舊磨坊，半塌的水車仍被溪水推得吱呀作響，空氣裡有潮木和舊麥粉味。西側回農田，東面可到蛙鳴池，南邊灰煙指向炭窯。路旁散落破麻袋與田鼠怪物腳印，玩家可 search 水車底部尋找丟失麥袋，也可能驚動躲在糧袋裡的鼠群。',
+      '一條泥濘小徑沿著農田灌渠延伸到舊磨坊，半塌的水車仍被溪水推得吱呀作響，空氣裡有潮木和舊麥粉味。西側回農田，東面可到蛙鳴池，南邊灰煙指向炭窯。路旁散落破麻袋與田鼠怪物腳印，旅人可 search 水車底部尋找丟失麥袋，也可能驚動躲在糧袋裡的鼠群。舊磨坊小徑周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       {
         direction: 'west',
@@ -2852,7 +2852,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_beehive_grove.png',
     imagePrompt: '蜂巢樹叢 in starter_village_ext, resource exploration grove with hanging beehives, wildflowers, buzzing insects and warm amber light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '果園東側的低矮樹叢掛著數個野蜂巢，金色蜂蠟在枝葉間發亮，花香與蜂鳴讓空氣微微震動。西邊回果園，南側有一片整理過的藥草圃。落果和蜂蜜吸引田鼠與烏鴉徘徊，玩家可採集蜂蠟、inspect 樹幹抓痕判斷害獸路線，也要避開搖晃蜂巢造成的額外危險。',
+      '果園東側的低矮樹叢掛著數個野蜂巢，金色蜂蠟在枝葉間發亮，花香與蜂鳴讓空氣微微震動。西邊回果園，南側有一片整理過的藥草圃。落果和蜂蜜吸引田鼠與烏鴉徘徊，旅人可採集蜂蠟、觀察 樹幹抓痕判斷害獸路線，也要避開搖晃蜂巢造成的額外危險。蜂巢樹叢周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       {
         direction: 'west',
@@ -2879,7 +2879,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_herb_garden.png',
     imagePrompt: '藥草圃 in starter_village_ext, resource room with raised herb beds, dew, clay markers and soft green morning light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，玩家可 gather 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '村醫照看的藥草圃被矮籬圍住，薄荷、止血草與紫葉草分成整齊小畦，露水在葉尖閃著柔綠光。北面是蜂巢樹叢，西南可繞回村外小路。泥土裡有被啃咬的根莖和小腳印，旅人可 採集 藥草、search 破陶牌找配方線索，也能追查田鼠是否把草根拖向墓地。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_beehive_grove', description: '回到蜂巢樹叢' },
       { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '西側木樁小徑接往練習空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2900,7 +2900,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_frog_pond.png',
     imagePrompt: '蛙鳴池 in starter_village_ext, resource combat pond with reeds, lily pads, slime bubbles and cool blue reflected light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆怪物留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。玩家可釣魚、採集濕地材料，或 inspect 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。',
+      '磨坊旁的小池被蘆葦和睡蓮包圍，蛙鳴在水面迴盪，藍綠水光照出史萊姆怪物留下的黏液泡。西側回舊磨坊小徑，南面是斷裂木橋，北方溪線可接回小溪邊。旅人可釣魚、採集濕地材料，或 觀察 泥岸腳印尋找被拖走的農具；靠近深水時容易驚動吸水的綠史萊姆。蛙鳴池周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'village_outskirts', description: '東側木樁小徑回到村外小路' },
       { direction: 'north', targetRoomId: 'starter_ext_old_mill_path', description: '北側泥徑回到舊磨坊小徑' },
@@ -2923,7 +2923,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_training_clearing.png',
     imagePrompt: '練習空地 in starter_village_ext, combat training clearing with straw dummies, trampled grass, weapon rack and clear daylight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain fantasy terrain, clear lantern light',
     description:
-      '村外林線前有一塊被踩平的練習空地，草地中央立著稻草靶與舊木盾，旁邊武器架上掛著鈍劍和練習弓。北面可回村口，西側小路接村外小路，東邊有可疑腳印通往盜匪踩出的支線。玩家可在此安全練習攻擊節奏、inspect 靶心箭痕，也能追蹤偷走補給的田鼠。',
+      '村外林線前有一塊被踩平的練習空地，草地中央立著稻草靶與舊木盾，旁邊武器架上掛著鈍劍和練習弓。北面可回村口，西側小路接村外小路，東邊有可疑腳印通往盜匪踩出的支線。旅人可在此安全練習攻擊節奏、觀察 靶心箭痕，也能追蹤偷走補給的田鼠。練習空地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       {
         direction: 'west',
@@ -2950,7 +2950,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_bandit_footpath.png',
     imagePrompt: '盜匪足跡 in starter_village_ext, hidden combat footpath with snapped twigs, boot prints, thorn shadows and muted dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '一條被硬靴踩出的窄路藏在荊棘後，斷枝、布條和偷來的麻繩沿路散落，夕光被樹影切得很碎。西面回練習空地，南側通往空心樹樁，東面隱約能看見柳樹神龕。這裡提示村外已不只有小怪，玩家可 search 足跡找盜匪藏物，也要準備面對落單盜賊或被驚動的烏鴉。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '一條被硬靴踩出的窄路藏在荊棘後，斷枝、布條和偷來的麻繩沿路散落，夕光被樹影切得很碎。西面回練習空地，南側通往空心樹樁，東面隱約能看見柳樹神龕。這裡提示村外已不只有小怪，旅人可 search 足跡找盜匪藏物，也要準備面對落單盜賊或被驚動的烏鴉。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'west', targetRoomId: 'starter_ext_training_clearing', description: '回到練習空地', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'starter_ext_hollow_stump', description: '足跡繞向空心樹樁', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -2972,7 +2972,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_willow_shrine.png',
     imagePrompt: '柳樹神龕 in starter_village_ext, landmark exploration shrine under willow tree, hanging charms, small stone altar and silver dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain shrine, clear lantern light',
     description:
-      '古老柳樹垂下長長枝條，枝間掛著村民祈願木牌，石製小神龕被銀色暮光照亮，空氣裡有濕葉與香灰味。西側藏著盜匪足跡，南邊坡道通往墓地入口，東面有繞回瞭望台的窄路。神龕前的供盤被移動過，玩家可 inspect 木牌找出失蹤孩童的願望，也能 search 祭壇底座取得一次性祝福或任務線索。柳枝上有烏鴉羽毛與被扯斷的紅線，暗示盜匪曾在這裡觀察村民動向。若玩家先清理周圍小怪，再調查供盤灰痕，就能把墓地、瞭望台與村外支線串在一起。神龕背面刻著舊巡邏記號，提示安全返回村口的路線標示。',
+      '古老柳樹垂下長長枝條，枝間掛著村民祈願木牌，石製小神龕被銀色暮光照亮，空氣裡有濕葉與香灰味。西側藏著盜匪足跡，南邊坡道通往墓地入口，東面有繞回瞭望台的窄路。神龕前的供盤被移動過，旅人可 觀察 木牌找出失蹤孩童的願望，也能 search 祭壇底座取得一次性祝福或任務線索。柳枝上有烏鴉羽毛與被扯斷的紅線，暗示盜匪曾在這裡觀察村民動向。若旅人先清理周圍小怪，再調查供盤灰痕，就能把墓地、瞭望台與村外支線串在一起。神龕背面刻著舊巡邏記號，提示安全返回村口的路線標示',
     exits: [
       { direction: 'west', targetRoomId: 'starter_ext_bandit_footpath', description: '荊棘路回到盜匪足跡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -3009,7 +3009,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_root_cellar.png',
     imagePrompt: '根窖 in starter_village_ext, hidden resource cellar with root shelves, clay jars, dangling herbs and single lantern beam, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain root, clear lantern light',
     description:
-      '廢棄小屋地板下藏著低矮根窖，粗樹根穿過土牆，陶罐、乾草藥與破布袋散發潮土氣味，唯一的提燈把木架影子拉長。北側梯子回小屋，深處根鬚指向更遠的空心樹樁，但需要從盜匪足跡繞路接近。玩家可 search 陶罐取得補給或配方碎片，也可能撞見偷藏糧食的田鼠，是早期資源與隱藏探索節點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '廢棄小屋地板下藏著低矮根窖，粗樹根穿過土牆，陶罐、乾草藥與破布袋散發潮土氣味，唯一的提燈把木架影子拉長。北側梯子回小屋，深處根鬚指向更遠的空心樹樁，但需要從盜匪足跡繞路接近。旅人可 search 陶罐取得補給或配方碎片，也可能撞見偷藏糧食的田鼠，是早期資源與隱藏探索節點。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'north', targetRoomId: 'abandoned_cottage', description: '木梯回到廢棄小屋' },
     ],
@@ -3032,7 +3032,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_charcoal_kiln.png',
     imagePrompt: '炭窯 in starter_village_ext, resource combat kiln room with smoking charcoal mound, chopped logs, ash footprints and orange ember light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ash, clear lantern light',
     description:
-      '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。玩家可採集木炭材料、inspect 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '舊炭窯靠在林邊土坡下，黑色木炭堆仍冒著微煙，斧痕木柴和灰色腳印散在泥地上，空氣充滿焦木味。北面回舊磨坊小徑，東側灰路連到斷橋，南邊可繞向墓地入口。旅人可採集木炭材料、觀察 灰腳印追蹤盜匪，也要留意被煙味吸引來的烏鴉和田鼠。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_frog_pond', description: '北側灰路回到蛙鳴池' },
       { direction: 'east', targetRoomId: 'starter_ext_ruined_bridge', description: '灰路通向斷橋', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -3060,7 +3060,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_ruined_bridge.png',
     imagePrompt: '斷橋 in starter_village_ext, event route room with broken wooden bridge, shallow ravine, mossy posts and cloudy side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain bridge, clear lantern light',
     description:
-      '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，玩家可 inspect 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一座老木橋斷在淺溝上方，腐朽木板垂進水裡，橋樁長滿苔蘚，陰雲讓溝底水面顯得發冷。北面通蛙鳴池，西側灰路回炭窯，東邊可接村外小路。這裡是路線事件點，旅人可 觀察 斷木判斷是否被人破壞，search 橋下取回掉落貨物，也可能被史萊姆從水溝邊偷襲。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'east', targetRoomId: 'starter_ext_frog_pond', description: '東側水聲通回蛙鳴池' },
       { direction: 'west', targetRoomId: 'starter_ext_charcoal_kiln', description: '灰路回到炭窯', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -3080,7 +3080,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'starter_ext_hollow_stump.png',
     imagePrompt: '空心樹樁 in starter_village_ext, hidden elite event room with giant hollow stump, root tunnels, stolen trinkets and green shaft light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain root, clear lantern light',
     description:
-      '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊根痕指向遠處根窖但無法直接通行，南面小坡可回墓地深處外牆。玩家可 search 樹洞取得一次性藏物，inspect 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若先調查根窖線索，再從盜匪足跡繞進來，可以避開部分迷路風險並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處。',
+      '一截巨大的空心樹樁倒在灌木深處，內部被挖出根道，偷來的鈕扣、麥粒和小銅幣塞在樹洞裡，綠色光束從裂縫照入。北側是盜匪足跡，西邊根痕指向遠處根窖但無法直接通行，南面小坡可回墓地深處外牆。旅人可 search 樹洞取得一次性藏物，觀察 根道確認小怪巢穴，也要準備面對較密集的田鼠群與烏鴉騷擾。樹洞底部有新鮮爪痕和被咬破的任務布袋，提示這裡是低等區域的小型精英事件點；若先調查根窖線索，再從盜匪足跡繞進來，可以避開部分迷路風險並保留撤退路。樹皮刻痕還指向墓地外牆，暗示盜匪與亡者活動可能相互牽連，需要追查來源處',
     exits: [
       { direction: 'north', targetRoomId: 'starter_ext_bandit_footpath', description: '回到盜匪足跡', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -3113,7 +3113,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'coastal_boardwalk.png',
     imagePrompt: '海邊棧道 in eastern_coast, entrance route room with salt-worn wooden boardwalk, fishing nets, gulls and bright sea wind light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain sea, clear lantern light',
     description:
-      '木製棧道沿著海岸線延伸，腳下被鹽分侵蝕的木板在每一步踩踏下吱嘎作響。' +
+      '木製棧道沿著海岸線延伸，腳下被鹽分侵蝕的木板在每一步踩踏下吱嘎作響。海邊棧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '鹹濕的海風撲面而來夾帶著海藻和魚腥的氣味，遠處的海面波光粼粼，海鷗在浪尖上低掠而過。' +
       '棧道入口立著一塊被風雨侵蝕的告示牌，上面的紅字警告冒險者注意潮汐變化和近海的海盜活動。' +
       '棧道欄杆上掛著漁網和曬乾的海星，為這條通往未知海域的道路增添了幾分冒險的氣息。',
@@ -3146,7 +3146,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'sandy_beach.png',
     imagePrompt: '沙灘 in eastern_coast, combat beach room with white sand, crab holes, shells, surf foam and hard noon sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain sand, clear lantern light',
     description:
-      '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。' +
+      '細軟的白沙在陽光下閃耀如碎銀，溫熱的沙粒在赤腳下輕柔地流動。沙灘周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '海浪一波又一波地拍打著海岸，留下白色的泡沫和五彩斑斕的貝殼。' +
       '幾隻巨大的海蟹怪物揮舞著螯鉗在沙灘上橫行，牠們警覺地注視著四周的動靜。' +
       '遠處的水面偶爾有魚群躍出水面，在陽光下閃過銀色的弧線。',
@@ -3176,7 +3176,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'tidal_zone.png',
     imagePrompt: '潮間帶 in eastern_coast, resource combat tidepool room with wet rocks, kelp, barnacles, jellyfish pools and silver tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，' +
+      '漲退潮之間的岩石地帶，佈滿了海藻和藤壺。水窪中棲息著各種海洋生物，。潮間帶周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '半透明的水母怪物在淺水中漂浮。腳下的岩石濕滑無比，行走需要格外小心。北面回沙灘，南側黑洞通往海蝕洞，東面水道連到珊瑚淺灘；玩家可採集貝殼和半寶石，也要看潮位避開水母群。',
     exits: [
       { direction: 'north', targetRoomId: 'sandy_beach', description: '回到沙灘' },
@@ -3210,7 +3210,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'sea_cave.png',
     imagePrompt: '海蝕洞 in eastern_coast, combat cave room with glowing seaweed, echoing surf, tide pool entrance and blue-green cavern light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain cave, clear lantern light',
     description:
-      '海浪長年侵蝕形成的巨大洞穴，洞壁上附著發光的海藻。' +
+      '海浪長年侵蝕形成的巨大洞穴，洞壁上附著發光的海藻。海蝕洞周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '海水在洞內迴蕩，發出空洞的轟鳴聲。深處的水池中有蛇形的影子在游動。' +
       '漲潮時洞口會被海水淹沒，需要把握時機。北面退回潮間帶，水池下方可潛入海底洞穴；玩家可 inspect 潮痕判斷安全時間，也能 search 發光海藻根部。',
     exits: [
@@ -3245,7 +3245,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'fishing_dock.png',
     imagePrompt: '漁村碼頭 in eastern_coast, town service fishing dock with moored boats, drying nets, tar barrels and gull-filled sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain town, clear lantern light',
     description:
-      '簡樸的木製碼頭延伸入蔚藍的海面，幾艘漁船停泊在岸邊隨波搖晃，桅杆上的風向標嘎嘎轉動。' +
+      '簡樸的木製碼頭延伸入蔚藍的海面，幾艘漁船停泊在岸邊隨波搖晃，桅杆上的風向標嘎嘎轉動。漁村碼頭周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '漁網曬在木架上散發著陽光和海鹽的氣味，空氣中瀰漫著濃郁的魚腥味和焦油的刺鼻氣息。' +
       '幾位飽經風霜的漁民蹲在碼頭邊修補漁網，粗糙的手指在繩結間靈活穿梭。' +
       '海鷗在碼頭上空盤旋鳴叫，偶爾俯衝搶奪漁簍中的小魚。',
@@ -3277,7 +3277,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'lighthouse.png',
     imagePrompt: '燈塔 in eastern_coast, landmark combat lighthouse with white tower, rusted spiral stair, crow nests and sweeping beacon light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain tower, clear lantern light',
     description:
-      '矗立在海角的白色燈塔高聳入雲，塔身被數十年的海風侵蝕得斑駁蒼老，卻依然屹立不搖。' +
+      '矗立在海角的白色燈塔高聳入雲，塔身被數十年的海風侵蝕得斑駁蒼老，卻依然屹立不搖。燈塔周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '塔頂的燈火在夜晚劃破海上的黑暗，為遠方的航行者指引歸途。' +
       '生鏽的螺旋樓梯沿著塔壁盤旋而上，每一階都發出令人不安的吱嘎聲。' +
       '烏鴉群在塔頂的殘破圍欄上築巢棲息，海蟹則佔據了塔基周圍被潮水沖刷的礁石。',
@@ -3314,7 +3314,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'coral_shallows.png',
     imagePrompt: '珊瑚淺灘 in eastern_coast, resource combat shallows with colorful coral, clear water, drifting jellyfish and rippled sunlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain water, clear lantern light',
     description:
-      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底，陽光在水底投射出流動的光網。' +
+      '淺海區域生長著五彩繽紛的珊瑚，海水清澈見底，陽光在水底投射出流動的光網。珊瑚淺灘周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '各種色彩斑斕的海洋生物在珊瑚叢中穿梭嬉戲，半透明的水母拖著長長的觸手優雅地漂浮。' +
       '更深的水域中能看到蛇形的影子游動，偶爾掀起一陣令人不安的水流。' +
       '珊瑚散發出微弱的螢光，為這片海底花園披上了一層夢幻的色彩。',
@@ -3351,7 +3351,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'shipwreck.png',
     imagePrompt: '沉船殘骸 in eastern_coast, elite combat shipwreck room with tilted hull, broken mast, barnacles, pirate shadows and stormy sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain sea, clear lantern light',
     description:
-      '一艘巨大的帆船擱淺在暗礁上，船身傾斜，桅杆斷裂。' +
+      '一艘巨大的帆船擱淺在暗礁上，船身傾斜，桅杆斷裂。沉船殘骸周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '船體佈滿了藤壺和海藻，甲板上散落著腐爛的繩索和碎木板。' +
       '海盜和深海魚人將這裡當作據點，在殘骸間出沒。北面可游回珊瑚淺灘，南側是暗礁，東面有海盜營火；玩家可 search 船艙保險箱和甲板貨箱。',
     exits: [
@@ -3393,7 +3393,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'cliff_path.png',
     imagePrompt: '海崖步道 in eastern_coast, dangerous route cliff path with mossy rock wall, crab holes, strong wind and crashing waves below, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain wall, clear lantern light',
     description:
-      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。' +
+      '一條狹窄的石頭步道沿著海崖蜿蜒而上，一側是佈滿苔蘚的陡峭崖壁，另一側是令人眩暈的萬丈深淵。海崖步道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '海風在這裡格外強勁，呼嘯著穿過岩石的縫隙發出尖銳的嘯聲，站不穩就有被吹落懸崖的危險。' +
       '崖壁上密佈著大大小小的洞穴，巨蟹怪物在洞口揮舞著螯鉗威嚇經過的行人。' +
       '往下望去，白色的浪花在礁石上炸開，濺起的水霧瀰漫在半空中。',
@@ -3423,7 +3423,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'pirate_camp.png',
     imagePrompt: '海盜營地 in eastern_coast, boss combat pirate camp with tents, campfire, stolen crates, black flag and red dusk light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain camp, clear lantern light',
     description:
-      '隱蔽在海灣中的海盜營地，帳篷和篝火散落在岩石之間。' +
+      '隱蔽在海灣中的海盜營地，帳篷和篝火散落在岩石之間。海盜營地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '到處堆放著搶來的貨物和空酒桶，海盜旗在風中獵獵作響。' +
       '武裝的海盜在營地中巡邏，對入侵者毫不留情。西面回沉船殘骸，北側步道通海崖；玩家可 inspect 大帳篷和酒桶，找到海盜船長的藏寶線索。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
@@ -3458,7 +3458,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'dark_reef.png',
     imagePrompt: '暗礁 in eastern_coast, elite combat reef room with black blade rocks, whirlpools, green fishman eyes and violent foam light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '危險的暗礁區域，尖銳如刀刃的黑色岩石在海面下若隱若現，浪花拍打其上碎成白色的泡沫。' +
+      '危險的暗礁區域，尖銳如刀刃的黑色岩石在海面下若隱若現，浪花拍打其上碎成白色的泡沫。暗礁周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '海流在這裡變得湍急而詭譎，漩渦在岩石之間不斷形成又消散，無數船隻在此粉身碎骨。' +
       '深海魚人和海蛇將這片死亡水域作為狩獵場，牠們在暗礁的陰影中耐心等待著獵物。' +
       '水下不時閃過詭異的綠色光芒——那是魚人眼睛反射的光。' +
@@ -3500,7 +3500,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'underwater_cave.png',
     imagePrompt: '海底洞穴 in eastern_coast, boss event underwater cave with magic air bubble, blue coral, fishman bone altars and deep ocean glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain cave, clear lantern light',
     description:
-      '深入海底的神秘洞穴，一層閃爍的魔法氣泡包裹著整個空間，維持著勉強可以呼吸的空氣。' +
+      '深入海底的神秘洞穴，一層閃爍的魔法氣泡包裹著整個空間，維持著勉強可以呼吸的空氣。海底洞穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '洞壁上鑲嵌著發出幽藍光芒的深海珊瑚，將這片海底領域映照得如同異世界的殿堂。' +
       '四處散落著魚人用骨頭和貝殼堆砌的祭壇和圖騰，散發著令人不安的腥臭氣味。' +
       '洞穴深處傳來低沉的吟唱聲——那是魚人首領在召喚深海的力量。上方通回海蝕洞，北面水道接暗礁區；玩家可 inspect 祭壇符號判斷召喚階段，search 貝殼圖騰取得深海寶珠線索，也要確認撤退路。氣泡邊緣偶爾震動，提醒玩家戰鬥拖太久可能失去安全呼吸空間。',
@@ -3540,7 +3540,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_tidepool_grotto.png',
     imagePrompt: '潮池岩穴 in eastern_coast, hidden exploration tidepool grotto with mirror pools, shell marks, blue cave light and crab shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain cave, clear lantern light',
     description:
-      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。玩家可 search 潮池底部找半寶石和古幣，也能 inspect 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '潮間帶西側有一處被礁石遮住的小岩穴，鏡面般的潮池映出洞頂貝殼紋，藍色反光讓石壁像濕玻璃。東面回潮間帶，南側裂縫連到海蝕洞。旅人可 search 潮池底部找半寶石和古幣，也能 觀察 貝殼排列判斷下一次退潮時間；海蟹會躲在淺池邊伏擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'east',
@@ -3572,7 +3572,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_seaweed_flats.png',
     imagePrompt: '海藻灘 in eastern_coast, resource combat flats with thick kelp mats, driftwood, jellyfish pools and pale green tide light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。玩家可 gather 海藻材料、search 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '大片海藻覆蓋退潮後的平灘，濕滑葉片纏住漂木與破網，空氣裡滿是鹽味和腐藻氣息。北面回沙灘，東側水線通到珊瑚淺灘，南邊可繞向潮池岩穴。旅人可 採集 海藻材料、search 破網找漁民遺失的鉤具，也要避開藏在淺水中的水母。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'north',
@@ -3612,7 +3612,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_smugglers_cove.png',
     imagePrompt: '走私者海灣 in eastern_coast, hidden combat cove with narrow inlet, covered crates, lantern signals and purple dusk surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。玩家可 inspect 提燈節奏找走私暗號，search 貨箱取得任務證物，但會引來海盜巡邏。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '海崖背風處藏著狹窄海灣，黑布蓋住的貨箱堆在礁石後，暗色提燈按固定節奏閃爍，浪聲掩蓋了低聲交談。西面回海崖步道，南側可繞到海盜藏貨處，東邊小徑通往風暴瞭望崖。旅人可 觀察 提燈節奏找走私暗號，search 貨箱取得任務證物，但會引來海盜巡邏。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       {
         direction: 'west',
@@ -3639,7 +3639,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_broken_pier.png',
     imagePrompt: '斷裂棧橋 in eastern_coast, event route room with shattered pier posts, loose planks, crab nests and cloudy harbor light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain harbor, clear lantern light',
     description:
-      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。玩家可 inspect 斷樁判斷是否被海盜破壞，search 漁網找修橋材料，也要處理爬上木板的海蟹。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '漁村碼頭南側有一段斷裂棧橋，木樁被風浪撞歪，鬆動木板下傳來海蟹刮擦聲，雲光在焦油水面上晃動。北面回漁村碼頭，南面可接燈塔，東側潮溝通往珍珠床。旅人可 觀察 斷樁判斷是否被海盜破壞，search 漁網找修橋材料，也要處理爬上木板的海蟹。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       {
         direction: 'north',
@@ -3672,7 +3672,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_stormwatch_ledge.png',
     imagePrompt: '觀潮斷崖 in eastern_coast, elite exploration cliff ledge with storm clouds, warning cairns, gull bones and lightning sea light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain sea, clear lantern light',
     description:
-      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡只能望見遠處海蛇巢，實際需從珍珠床或暗礁水路接近。玩家可 inspect 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '海崖盡頭的突出岩台正對外海，暴風雲在遠處堆疊，警示石堆和海鳥骨散在濕冷地面上。西側回走私者海灣，南面能俯瞰海盜營地，東側碎石坡只能望見遠處海蛇巢，實際需從珍珠床或暗礁水路接近。旅人可 觀察 石堆記錄風暴週期，觀察海盜巡邏路線，也要防備烏鴉群和強風造成的撤退壓力。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_smugglers_cove', description: '小徑回走私者海灣' },
       {
@@ -3698,7 +3698,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_pearl_bed.png',
     imagePrompt: '珍珠床 in eastern_coast, resource underwater shallows with oyster beds, pale pearls, filtered sunlight and jellyfish drift, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。玩家可 gather 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '燈塔外側的淺水沙床布滿蚌殼，細沙間偶爾閃出乳白珍珠光，陽光穿過水面形成搖晃光網。西面接斷裂棧橋，南面通珊瑚淺灘，東側水流暗暗指向海蛇巢。旅人可 採集 珍珠與貝殼材料，search 被撬開的蚌殼找盜採線索，也要小心水母漂入採集路線。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'cliff_path', description: '北側潮溝石階回到海崖步道' },
       { direction: 'west', targetRoomId: 'coral_shallows', description: '西側淺水沙床回到珊瑚淺灘' },
@@ -3725,7 +3725,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_pirate_cache.png',
     imagePrompt: '海盜藏貨處 in eastern_coast, hidden elite cache with buried crates, torn black flag, rum barrels and red campfire glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '海盜營地後方的岩縫裡藏著半埋貨箱，破黑旗蓋住火藥桶與酒桶，紅色營火把濕石照得像血。北面通走私者海灣，西側可回海盜營地，南面有窄路接沉船殘骸。這裡是精英藏寶點，玩家可 search 貨箱取得一次性寶物或任務證物，inspect 酒桶標記確認海盜船長補給線，但會引來強化巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口。',
+      '海盜營地後方的岩縫裡藏著半埋貨箱，破黑旗蓋住火藥桶與酒桶，紅色營火把濕石照得像血。北面通走私者海灣，西側可回海盜營地，南面有窄路接沉船殘骸。這裡是精英藏寶點，旅人可 search 貨箱取得一次性寶物或任務證物，觀察 酒桶標記確認海盜船長補給線，但會引來強化巡邏。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。牆角或地面標記也會指出下一個安全出口',
     exits: [
       { direction: 'north', targetRoomId: 'eastern_coast_serpent_nest', description: '北側暗流水線回到海蛇巢' },
       { direction: 'west', targetRoomId: 'pirate_camp', description: '西側岩縫回到海盜營地' },
@@ -3749,7 +3749,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'eastern_coast_serpent_nest.png',
     imagePrompt: '海蛇巢 in eastern_coast, boss event sea serpent nest with coiled bones, green water light, egg clutches and jagged reef walls, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain sea, clear lantern light',
     description:
-      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側水面能看見觀潮斷崖但沒有可攀爬路線，南面可潛入暗礁深處。這裡是大型事件鉤子，玩家可 inspect 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援。',
+      '暗礁外緣的裂谷裡堆滿魚骨、破船板與黏滑卵囊，綠色水光從鋸齒狀礁壁間閃爍，低沉嘶聲在水下震動。西面暗流接珍珠床，北側水面能看見觀潮斷崖但沒有可攀爬路線，南面可潛入暗礁深處。這裡是大型事件鉤子，旅人可 觀察 卵囊判斷海蛇活動週期，search 骨堆找到沉船線索，也要準備面對成群海蛇和魚人支援',
     exits: [
       { direction: 'west', targetRoomId: 'eastern_coast_pearl_bed', description: '暗流回珍珠床' },
       { direction: 'north', targetRoomId: 'eastern_coast_smugglers_cove', description: '北側暗流水線回到走私者海灣' },
@@ -3781,7 +3781,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_base.png',
     imagePrompt: '火山山腳 in volcano_zone, entrance combat volcanic foothill with black ash, sulfur smoke, cracked ground and red crater glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '火山的山腳下，地面覆蓋著一層黑色的火山灰。空氣中瀰漫著硫磺的刺鼻氣味，' +
+      '火山的山腳下，地面覆蓋著一層黑色的火山灰。空氣中瀰漫著硫磺的刺鼻氣味，。火山山腳周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '遠處的火山口冒著縷縷白煙。地面的溫度比平常高出許多，' +
       '偶爾能感受到腳下輕微的震動。北面可退回精靈遺跡，南側熔岩小徑通往高處，東邊礦坑入口有矮人守衛；玩家可 inspect 火山灰爪印判斷火蜥蜴巡邏方向。',
     exits: [
@@ -3816,7 +3816,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'lava_trail.png',
     imagePrompt: '熔岩小徑 in volcano_zone, main route combat path over cooled lava, red cracks, heat shimmer and salamander shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain lava, clear lantern light',
     description:
-      '一條蜿蜒在凝固熔岩上的狹窄小路，兩側的岩石仍散發著灼熱的紅光。' +
+      '一條蜿蜒在凝固熔岩上的狹窄小路，兩側的岩石仍散發著灼熱的紅光。熔岩小徑周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '空氣因高溫而扭曲，每一步都要小心避開仍在流動的岩漿細流。' +
       '火蜥蜴與餘燼魔物在溫暖的岩石上巡邏。北面下山回火山山腳，南方硫磺谷蒸汽翻湧，東面傳來岩漿河的低沉聲；玩家可 search 冷卻裂縫採集火成玻璃。',
     exits: [
@@ -3845,7 +3845,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'sulfur_valley.png',
     imagePrompt: '硫磺谷 in volcano_zone, resource combat sulfur valley with yellow crystals, boiling vents, toxic steam and harsh green-yellow light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain valley, clear lantern light',
     description:
-      '濃烈的硫磺氣味充斥著整個山谷，地面上冒著滾燙的蒸汽。' +
+      '濃烈的硫磺氣味充斥著整個山谷，地面上冒著滾燙的蒸汽。硫磺谷周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '黃色的硫磺結晶覆蓋在岩石表面，熱泉在低窪處沸騰冒泡。' +
       '火蜥蜴和熔岩蟲在這種極端環境中如魚得水。北面回熔岩小徑，南方坡道直指火山口，西側熱霧後有硫磺泉；玩家可 gather 硫磺結晶，也要避開突然噴出的蒸汽柱。',
     exits: [
@@ -3874,7 +3874,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_crater.png',
     imagePrompt: '火山口 in volcano_zone, landmark combat crater with churning lava lake, flame spirits, black rim stones and blinding orange heat, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain lava, clear lantern light',
     description:
-      '攀登至火山口的邊緣，腳下是翻騰的岩漿湖。灼熱的氣浪撲面而來，' +
+      '攀登至火山口的邊緣，腳下是翻騰的岩漿湖。灼熱的氣浪撲面而來，。火山口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '火焰精靈敵群在岩漿上方翩翩起舞，牠們的身影在熱浪中若隱若現。' +
       '這裡的溫度高得驚人，普通人無法久留。北面退回硫磺谷，東側岩壁石門通往火焰神殿，西邊有橫跨岩漿的危險橋；玩家可 inspect 岩漿小島尋找炎之心線索。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
@@ -3920,7 +3920,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'magma_river.png',
     imagePrompt: '岩漿河 in volcano_zone, resource combat magma river with orange flow, red-hot banks, lava worms and warped heat light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain river, clear lantern light',
     description:
-      '一條滾燙的岩漿河從火山側面流出，橘紅色的岩漿緩慢而致命地流淌。' +
+      '一條滾燙的岩漿河從火山側面流出，橘紅色的岩漿緩慢而致命地流淌。岩漿河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '河岸的岩石被高溫炙烤得通紅，空氣中的熱浪扭曲了視線。' +
       '熔岩蟲在岩漿河中自在穿行，火蜥蜴則在河岸捕食。西面回熔岩小徑，南側黑色洞口通往黑曜石洞，東面有閃亮晶簇噴氣口；玩家可採集冷卻岩漿外殼。',
     exits: [
@@ -3949,7 +3949,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'obsidian_cave.png',
     imagePrompt: '黑曜石洞 in volcano_zone, resource combat obsidian cave with mirror black walls, distorted reflections, red mineral seams and dim heat glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain cave, clear lantern light',
     description:
-      '洞壁由純黑的黑曜石構成，表面如鏡子般光滑，映照出扭曲的倒影。' +
+      '洞壁由純黑的黑曜石構成，表面如鏡子般光滑，映照出扭曲的倒影。黑曜石洞周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '洞內的溫度意外地比外面低一些，但空氣中仍帶著焦灼的味道。' +
       '岩石巨人和熔岩蟲在這裡守護著地底的礦脈。北面回岩漿河，南方火光指向神殿入口，東側採場可取得高品質黑曜石。',
     exits: [
@@ -3978,7 +3978,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'fire_temple_entrance.png',
     imagePrompt: '火焰神殿入口 in volcano_zone, landmark combat temple gate with eternal braziers, dwarf runes, carved stone door and roaring red light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain temple, clear lantern light',
     description:
-      '巨大的石門上雕刻著火焰的紋飾，門框兩側的火盆燃燒著永不熄滅的火焰。' +
+      '巨大的石門上雕刻著火焰的紋飾，門框兩側的火盆燃燒著永不熄滅的火焰。火焰神殿入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '門上的古代文字似乎是矮人語，記載著神殿的歷史和警告。' +
       '門內傳來低沉的轟鳴聲和熱氣，玄武岩守衛與火焰魔物守在門縫兩側。西面回火山口，北面黑曜石洞反射著火光，南側內部通道通往火山頂；玩家可 inspect 矮人符文找寶庫密碼。',
     exits: [
@@ -4014,7 +4014,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'dwarf_mine.png',
     imagePrompt: '矮人礦坑 in volcano_zone, resource combat dwarf mine with minecart rails, timber braces, ore veins and torch-lit mineral dust, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '寬闊的礦坑中迴盪著鐵錘敲擊岩石的沉悶聲響，火把的光芒在粗糙的岩壁上跳動。' +
+      '寬闊的礦坑中迴盪著鐵錘敲擊岩石的沉悶聲響，火把的光芒在粗糙的岩壁上跳動。矮人礦坑周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '礦車軌道沿著支撐木架延伸向黑暗的深處，空氣中混雜著鐵鏽、汗水和地底礦物的氣味。' +
       '身材矮壯的矮人守衛全副武裝地巡邏著，鏽鐵色的鬍鬚上沾著礦粉，銳利的眼神審視著每一個闖入者。' +
       '礦壁上閃爍著銀、銅和秘銀的光澤，這些珍貴的礦脈是矮人一族賴以生存的根基。' +
@@ -4044,7 +4044,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'forge_hall.png',
     imagePrompt: '鍛造大廳 in volcano_zone, town service crafting forge hall with giant furnace, anvils, dwarf tools, sparks and orange molten light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain town, clear lantern light',
     description:
-      '宏偉的鍛造大廳中央矗立著一座巨大的熔爐，赤紅的火焰熊熊燃燒，將整個大廳映照成橘紅色。' +
+      '宏偉的鍛造大廳中央矗立著一座巨大的熔爐，赤紅的火焰熊熊燃燒，將整個大廳映照成橘紅色。鍛造大廳周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '四周的工作台上擺滿了鐵錘、鉗子和各種鍛造工具，金屬碰撞的鏗鏘聲不絕於耳。' +
       '空氣中充斥著灼熱的金屬氣味和淬火時蒸騰的白色蒸汽，令人彷彿置身於火焰的心臟。' +
       '一位肌肉虯結的矮人鐵匠正揮舞著比他手臂還粗的戰錘鍛打一塊通紅的鋼胚，他的技藝堪稱傳奇。北面回矮人礦坑，東側庫房堆滿礦錠；玩家可 craft、修理或接鍛造委託，inspect 熔爐風口可發現火元素異常。牆上的訂單板列出武器、護甲和飾品需求，提示玩家把採礦、分解與重鑄材料帶回此處處理。',
@@ -4077,7 +4077,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_summit.png',
     imagePrompt: '火山頂 in volcano_zone, boss landmark summit with open crater wind, lava cracks, rock giants, flame spirits and vast horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain lava, clear lantern light',
     description:
-      '火山的最高點，腳下是翻騰的岩漿和蒸騰而起的灼熱氣浪，空氣中瀰漫著濃烈的硫磺味。' +
+      '火山的最高點，腳下是翻騰的岩漿和蒸騰而起的灼熱氣浪，空氣中瀰漫著濃烈的硫磺味。火山頂周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '強風在裸露的山巔呼嘯而過，卻無法冷卻這裡灼人的溫度。登頂後視野無比開闘——' +
       '從冰封雪原到暗影森林，整個大陸的輪廓盡收眼底。' +
       '岩石巨人如同山峰的延伸般矗立不動，火焰精靈與熔岩首領則在岩漿裂縫間翩翩起舞，守護著火山深處的原始之力。',
@@ -4108,7 +4108,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ash_field.png',
     imagePrompt: '火山灰原 in volcano_zone, entrance combat ash field with black dunes, ember sparks, buried ore and smoky red horizon, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方灰原延伸向更深的火山地帶，灰層下露出被噴發帶出的礦石。玩家可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '火山山腳西側是一片厚重灰原，黑色灰丘被熱風吹成波紋，偶爾有暗紅火星從裂縫中飄起。東面回火山山腳，南方灰原延伸向更深的火山地帶，灰層下露出被噴發帶出的礦石。旅人可 search 灰丘找火成礦與舊行囊，也要留意火蜥蜴在灰下留下的爪痕。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'east', targetRoomId: 'volcano_base', description: '灰路回到火山山腳' },
       { direction: 'south', targetRoomId: 'volcano_zone_fill_31_22', description: '南側灰燼邊道通往火山邊道' },
@@ -4129,7 +4129,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_lava_bridge.png',
     imagePrompt: '熔岩橋 in volcano_zone, dangerous route room with narrow basalt bridge over lava lake, heat shimmer and falling sparks, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連硫磺熱泉，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，玩家可 inspect 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一條窄窄玄武岩橋跨過岩漿湖外緣，橋面裂縫透出橘紅光，火星像雨點般落在粗糙石面。北面連硫磺熱泉，東側接火山口，南端能看見蒸汽升降梯管線但維修階已坍塌，需從採場下層繞行。這是高風險捷徑，旅人可 觀察 裂縫判斷橋面穩定度，也要避免被火焰精靈逼到橋中央。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_sulfur_springs', description: '北側熱泉石路回到硫磺熱泉' },
       {
@@ -4162,7 +4162,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_steam_lift.png',
     imagePrompt: '蒸汽升降梯 in volcano_zone, traffic resource room with dwarf lift platform, brass gears, steam pipes and red mine light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西側管線通往熔岩橋但維修階已坍塌，東側能聽見礦坑敲擊聲但門軌卡死，南方通向黑曜石採場。玩家可 inspect 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。',
+      '矮人建造的升降梯卡在礦坑與火山外壁之間，黃銅齒輪、鐵鏈和蒸汽管道不停震動，白霧帶著金屬味噴向岩壁。西側管線通往熔岩橋但維修階已坍塌，東側能聽見礦坑敲擊聲但門軌卡死，南方通向黑曜石採場。旅人可 觀察 控制桿啟用捷徑，search 工具箱找維修材料，也要提防從管道裡鑽出的熔岩蟲。蒸汽升降梯周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'magma_river', description: '西側蒸汽管線回到岩漿河' },
       { direction: 'east', targetRoomId: 'volcano_crystal_vent', description: '東側紅色晶簇接往火晶噴氣口' },
@@ -4190,7 +4190,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_sulfur_springs.png',
     imagePrompt: '硫磺熱泉 in volcano_zone, resource combat hot springs with yellow pools, boiling vents, sulfur crystals and poisonous steam light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '硫磺谷西側的熱泉池不斷冒泡，黃色結晶沿池緣生長，毒霧把遠處岩壁染成暗綠。東面回硫磺谷，南側可攀上玄武岩階。玩家可 gather 硫磺與熱泉礦泥，inspect 蒸汽節奏避開噴發，也要注意熔岩蟲會從沸騰池底突然鑽出。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '硫磺谷西側的熱泉池不斷冒泡，黃色結晶沿池緣生長，毒霧把遠處岩壁染成暗綠。東面回硫磺谷，南側可攀上玄武岩階。旅人可 採集 硫磺與熱泉礦泥，觀察 蒸汽節奏避開噴發，也要注意熔岩蟲會從沸騰池底突然鑽出。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。硫磺熱泉周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'sulfur_valley', description: '熱霧散處回硫磺谷' },
       { direction: 'north', targetRoomId: 'volcano_zone_fill_31_22', description: '北側硫磺熱霧回到火山邊道' },
@@ -4212,7 +4212,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_ember_barracks.png',
     imagePrompt: '餘燼兵房 in volcano_zone, elite combat dwarf barracks with iron bunks, ember braziers, weapon racks and smoky red light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。玩家可 inspect 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '礦坑東側的兵房由黑鐵和玄武岩砌成，鐵床旁堆著盾牌、戰斧與尚未冷卻的煤盆，煙味混著汗水和礦粉。西面回矮人礦坑，南方走廊接鍛造庫房，東側晶光來自噴氣口但隔著封死的玄武岩牆。旅人可 觀察 值勤表觀察守衛換班，search 武器架找任務證物，但會引來矮人守衛盤查。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'west', targetRoomId: 'forge_hall', description: '西側黑鐵巡邏走廊回到鍛造大廳' },
       {
@@ -4236,7 +4236,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_crystal_vent.png',
     imagePrompt: '火晶噴氣口 in volcano_zone, resource combat vent with red crystals, steam jets, magma river glow and fractured basalt, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain river, clear lantern light',
     description:
-      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側能聽見餘燼兵房的鐵門聲但岩壁封死，南邊黑石路只留下通往採場的舊標記，實際需從黑曜石洞或升降梯繞行。玩家可 gather 火晶碎片、inspect 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '岩漿河東側的裂縫長滿紅色火晶，蒸汽從晶簇間噴出，讓整片玄武岩像在呼吸。西面回岩漿河，北側能聽見餘燼兵房的鐵門聲但岩壁封死，南邊黑石路只留下通往採場的舊標記，實際需從黑曜石洞或升降梯繞行。旅人可 採集 火晶碎片、觀察 噴氣節奏避開灼傷，也會遇到被晶光吸引的火蜥蜴與火焰精靈。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_steam_lift', description: '西側蒸汽管線回到蒸汽升降梯' },
       { direction: 'north', targetRoomId: 'volcano_ember_barracks', description: '北側晶光裂道回到餘燼兵房' },
@@ -4263,7 +4263,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_obsidian_quarry.png',
     imagePrompt: '黑曜石採場 in volcano_zone, resource combat quarry with black glass terraces, mine carts, red seams and golem silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mine, clear lantern light',
     description:
-      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴但採場邊坡已崩落。玩家可 gather 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '黑曜石洞東側被開鑿成階梯採場，黑玻璃般的石面反射紅色礦脈，礦車軌道在平台間彎曲。西面回黑曜石洞，北側接蒸汽升降梯，東北方火晶噴氣口仍在轟鳴但採場邊坡已崩落。旅人可 採集 黑曜石、search 廢礦車找稀有礦樣，也要防備岩石巨人從倒影中逼近。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'west', targetRoomId: 'obsidian_cave', description: '採場入口回黑曜石洞' },
       {
@@ -4291,7 +4291,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_basalt_steps.png',
     imagePrompt: '玄武岩階 in volcano_zone, main route combat basalt stairs with carved dwarf markers, lava glow below and falling ash, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain lava, clear lantern light',
     description:
-      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回熔岩橋，東面岩壁通道延伸向深處，南方高台通往熔岩巨像競技台。玩家可 inspect 刻痕判斷安全路線，也要小心岩石巨人把玩家逼下窄階。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一段黑色玄武岩階沿火山內壁向上折返，矮人方向刻痕被落灰半掩，階下岩漿光把每個邊角照成暗紅。北面回熔岩橋，東面岩壁通道延伸向深處，南方高台通往熔岩巨像競技台。旅人可 觀察 刻痕判斷安全路線，也要小心岩石巨人把旅人逼下窄階。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'volcano_lava_bridge', description: '北側黑色石階下到熔岩橋' },
       { direction: 'east', targetRoomId: 'volcano_zone_fill_32_25', description: '東側玄武岩台階接往火山石路' },
@@ -4313,7 +4313,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_forge_storage.png',
     imagePrompt: '鍛造庫房 in volcano_zone, resource service storage with ore ingots, locked crates, cooling racks and furnace side light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '鍛造大廳東側的庫房堆滿鐵錠、黑曜石板與標記清楚的工具箱，冷卻架上還冒著白煙，牆角傳來低沉爐鳴。西面回鍛造大廳，北側貨道接餘燼兵房。玩家可 search 鎖箱取得材料樣本，inspect 出庫牌追蹤鍛造任務需求，也要處理從通風口竄出的火元素。這裡是火山資源線的城鎮服務延伸點，貨架按武器、護甲、飾品和消耗品分區，方便玩家確認缺少哪種礦材。牆上封蠟記錄還標示哪些箱子屬於公會訂單，錯拿會觸發守衛盤查。地上的紅色箭頭指向熔爐、礦坑與兵房三個出口，讓滿載材料的玩家能快速選擇加工、補給或撤退方向。',
+      '鍛造大廳東側的庫房堆滿鐵錠、黑曜石板與標記清楚的工具箱，冷卻架上還冒著白煙，牆角傳來低沉爐鳴。西面回鍛造大廳，北側貨道接餘燼兵房。旅人可 search 鎖箱取得材料樣本，觀察 出庫牌追蹤鍛造任務需求，也要處理從通風口竄出的火元素。這裡是火山資源線的城鎮服務延伸點，貨架按武器、護甲、飾品和消耗品分區，方便旅人確認缺少哪種礦材。牆上封蠟記錄還標示哪些箱子屬於公會訂單，錯拿會觸發守衛盤查。地上的紅色箭頭指向熔爐、礦坑與兵房三個出口，讓滿載材料的旅人能快速選擇加工、補給或撤退方向',
     exits: [
       { direction: 'west', targetRoomId: 'forge_hall', description: '西側鍛造庫房穿過黑鐵庫門折返，沿礦錠推車與冷卻架服務長廊回到鍛造大廳', edgeKind: 'distant_route', edgeNote: '鍛造庫房回鍛造大廳需沿黑鐵庫門與服務長廊折返，避免與星隕坑入口座標重疊，屬於長路徑。' },
       {
@@ -4341,7 +4341,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'volcano_colossus_arena.png',
     imagePrompt: '熔岩巨像競技台 in volcano_zone, boss event arena with circular basalt platform, lava colossus silhouette, chains and erupting firelight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain lava, clear lantern light',
     description:
-      '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像首領輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，玩家可 inspect 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。',
+      '火山頂東側的圓形競技台懸在岩漿湖上方，玄武岩地面刻著矮人封印鏈，中央巨大的熔岩巨像首領輪廓在火光裡慢慢抬頭。西面可退回火山頂，北側玄武岩階提供繞行撤退路。這裡是 Boss 事件鉤子，旅人可 觀察 封印鏈確認巨像階段，search 斷裂鎖扣找召喚材料，也要準備火焰精靈與岩石巨人的支援。熔岩巨像競技台周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'west', targetRoomId: 'volcano_summit', description: '西側封印鏈石台回到火山頂' },
     ],
@@ -4364,7 +4364,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'snowfield_entrance.png',
     imagePrompt: '雪原入口 in frozen_wastes, entrance combat snowfield room with frost-covered stone marker, white plain, knife wind and pale blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '踏入北方的那一刻，溫度驟然下降。皚皚白雪覆蓋著一切，寒風如刀割般刺骨。' +
+      '踏入北方的那一刻，溫度驟然下降。皚皚白雪覆蓋著一切，寒風如刀割般刺骨。雪原入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '前方是一片一望無際的雪原，天地間只剩下白茫茫的一片。' +
       '入口處立著一塊石碑，上面的文字被冰霜覆蓋。東面可回暗影森林，北方風雪路徑更深，南邊營火指向雪山營地；玩家可 inspect 石碑霜字確認安全路線。',
     exits: [
@@ -4400,7 +4400,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'blizzard_path.png',
     imagePrompt: '暴風雪路 in frozen_wastes, main route combat room with whiteout blizzard, buried stakes, wolf tracks and cold gray light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '呼嘯的暴風雪讓視線降到幾乎為零，每走一步都像是在與風暴搏鬥。' +
+      '呼嘯的暴風雪讓視線降到幾乎為零，每走一步都像是在與風暴搏鬥。暴風雪路周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '冰雪打在臉上如同針刺，體溫在急速流失。' +
       '隱約能聽到狼群的嚎叫聲在風中迴盪。南面可退回雪原入口，北方冰河裂縫若隱若現，西側雪牆後有冰釣洞標記但風雪封路，需由凍湖進入；玩家可 search 旗桿找補給標記。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
@@ -4430,7 +4430,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'glacier.png',
     imagePrompt: '冰河 in frozen_wastes, resource combat glacier room with blue ice crevasses, frozen fossils, wolf tracks and sharp arctic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '巨大的冰河緩慢地向低處移動，冰面上裂開了深不見底的冰縫。' +
+      '巨大的冰河緩慢地向低處移動，冰面上裂開了深不見底的冰縫。冰河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '冰層中封凍著古代的植物和動物殘骸，宛如天然的博物館。' +
       '雪狼和冰元素在冰河上遊蕩，對入侵者虎視眈眈。南面回暴風雪路，北方冰面延伸到凍湖，東側冰壁洞口通向冰晶洞穴；玩家可 inspect 冰縫避開薄冰。',
     exits: [
@@ -4460,7 +4460,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_lake.png',
     imagePrompt: '凍湖 in frozen_wastes, resource combat frozen lake room with mirror ice, fish shadows, drifting frost mist and moon-blue light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '一片廣闊的湖泊被厚厚的冰層封凍，冰面如鏡子般平滑。' +
+      '一片廣闊的湖泊被厚厚的冰層封凍，冰面如鏡子般平滑。凍湖周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '冰下隱約可見魚群游動的影子，湖面上飄蕩著冰霧。' +
       '冰元素在湖面上緩緩遊蕩，守護著這片凍結的領域。南面接冰河，北岸有極光之地，西側冰孔可供採集與釣魚；玩家可 search 冰面裂紋找湖底遺跡線索。' +
       '此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。' +
@@ -4491,7 +4491,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'mountain_camp.png',
     imagePrompt: '雪山營地 in frozen_wastes, safe service camp with hide tents, orange fire, supply crates, rock shelter and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain camp, clear lantern light',
     description:
-      '一個被巨大岩壁遮擋的避風處，前人在此搭建了由獸皮和木樁構成的簡易營地。' +
+      '一個被巨大岩壁遮擋的避風處，前人在此搭建了由獸皮和木樁構成的簡易營地。雪山營地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '篝火仍在燃燒，噼啪作響的火焰散發出溫暖的橘光，驅散了四周徹骨的寒意。' +
       '營地裡的木箱中存放著乾肉、藥草和取暖用的毛皮毯子，是雪原中難得的庇護所。' +
       '岩壁上刻著前人留下的警告和路線標記，記錄著通往雪原深處的危險與機遇。',
@@ -4521,7 +4521,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'crystal_ice_cave.png',
     imagePrompt: '冰晶洞穴 in frozen_wastes, resource combat ice cave with rainbow ice crystals, frozen breath, giant shadows and cold prism light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。' +
+      '洞壁由純淨的冰晶構成，在微光下折射出璀璨的彩虹。冰晶洞穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '洞穴深處的溫度極低，呼出的氣息瞬間凝結成冰霜。' +
       '冰元素和霜巨人守護著這處天然的冰晶寶庫。西面回冰河，北方洞穴深處通向冰封城堡大門，東側晶柱裂縫可通往高聳冰晶尖塔。' +
       '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
@@ -4551,7 +4551,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'aurora_field.png',
     imagePrompt: '極光之地 in frozen_wastes, landmark combat aurora field with green purple lights, glittering snow, magic waves and yeti silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain field, clear lantern light',
     description:
-      '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。' +
+      '天空中飄蕩著壯麗的極光，綠色、紫色和藍色的光幕在夜空中舞動。極光之地周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '雪地被極光映照得如夢似幻，空氣中充滿了微弱的魔力波動。' +
       '巨大的雪人在極光下遊蕩，冰河骨亡靈也被這裡的魔力吸引。南面回凍湖，東方極光指向冰封城堡，西側有古老符石環；玩家可 gather 極光石或 inspect 光幕幻象。',
     exits: [
@@ -4583,7 +4583,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'wolf_den.png',
     imagePrompt: '雪狼巢穴 in frozen_wastes, elite combat wolf den with bone piles, green eyes, frosted cave mouth and cold blue darkness, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain bone, clear lantern light',
     description:
-      '一個被雪狼群佔據的巨大岩洞，洞口散落著獵物的殘骸和啃碎的骨頭。' +
+      '一個被雪狼群佔據的巨大岩洞，洞口散落著獵物的殘骸和啃碎的骨頭。雪狼巢穴周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '空氣中瀰漫著野獸的腥臭味，多隻雪狼在洞內警覺地注視著入侵者。' +
       '洞穴深處隱約可以看到更多綠色的眼睛在黑暗中閃爍。西面可逃回雪山營地，北側窄洞能聽見雪人石堆回聲但已被冰塊堵住，東面有被拖入深處的獵物痕跡。這裡是低溫區域的精英戰鬥房，玩家可 inspect 骨堆判斷狼群首領位置，search 旅人背包取得一次性補給，但若沒有先清理入口雪狼，撤退路會被堵住。洞頂冰柱會把腳步聲放大，讓狼群更快包圍入侵者；牆邊抓痕也提示可以用火光逼退部分雪狼，爭取重整隊伍的時間。',
     exits: [
@@ -4610,7 +4610,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ice_castle_gate.png',
     imagePrompt: '冰封城堡大門 in frozen_wastes, landmark combat ice castle gate with dragon carvings, frost giant statues, blue door light and blowing snow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ice, clear lantern light',
     description:
-      '一座宏偉的冰封城堡聳立在風雪之中，巨大的冰門上雕刻著龍的紋飾。' +
+      '一座宏偉的冰封城堡聳立在風雪之中，巨大的冰門上雕刻著龍的紋飾。冰封城堡大門周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '城門前的石階被冰雪覆蓋，兩尊霜巨人雕像守在門口。' +
       '門縫中透出冷冽的藍光，伴隨著低沉的龍息聲。南面退回冰晶洞穴，西側極光之地提供繞行視野，北面鎖住的大門通往冰封王座。玩家可 inspect 龍紋確認開門條件，search 石階找到霜巨人巡邏痕跡，也要小心雕像突然甦醒。這裡是通往 Boss 區的地標門檻，描述清楚提示鑰匙、隊伍與寒冷準備。城牆上的冰燈會依守衛警戒改變亮度，哨塔方向也提供撤退或繞行路線，避免隊伍直接卡在封門前。',
     exits: [
@@ -4641,7 +4641,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'ice_throne.png',
     imagePrompt: '冰封王座 in frozen_wastes, boss room with towering ice throne, sleeping ice dragon whelp, crystal walls and royal blue frost light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ice, clear lantern light',
     description:
-      '城堡的最深處是一座宏偉的王座大廳，穹頂高聳入雲。' +
+      '城堡的最深處是一座宏偉的王座大廳，穹頂高聳入雲。冰封王座周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
       '冰之王座上沉睡著一隻幼年冰龍，牠的呼吸在空氣中凝結成冰霜。' +
       '大廳四壁鑲嵌著無數冰晶，映照出冰龍威嚴的身影。' +
       '這裡是冰封雪原的終極挑戰。南面退回城堡大門，北側王座背後的裂縫通向燃燒荒地，東側冰霧中可感到龍息裂谷震動。玩家可 inspect 王座符文確認冰龍階段，search 霜巨人王的戰旗尋找王冠密室線索，也要準備面對 Boss 與守衛的連續戰鬥。大廳地面有會逐步蔓延的霜紋，提示戰鬥拖延會壓縮站位；牆上冰晶反射出的龍影則能預告下一次吐息方向。',
@@ -4678,7 +4678,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_snowdrift_pass.png',
     imagePrompt: '積雪隘口 in frozen_wastes, main route combat pass with high snowdrifts, buried trail stakes, wolf tracks and cold overcast light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain trail, clear lantern light',
     description:
-      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。玩家可 inspect 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '雪原入口西側的隘口被高高積雪擠成狹長通道，半埋路標只露出鐵環，風把雪粒打在岩壁上發出沙沙聲。東面回雪原入口，北側可接暴風雪路外緣，南面通往廢棄雪橇。旅人可 觀察 路標判斷安全路線，search 雪堆找被埋補給，也要防備雪狼沿著隘口追擊。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'east', targetRoomId: 'snowfield_entrance', description: '回到雪原入口' },
       { direction: 'north', targetRoomId: 'blizzard_path', description: '北側積雪隘口沿半埋路標上行，穿過雪牆缺口與狼蹄痕抵達暴風雪路外緣', edgeKind: 'distant_route', edgeNote: '積雪隘口到暴風雪路需穿過雪牆缺口與路標區，實際路程長於相鄰一格。' },
@@ -4700,7 +4700,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_ice_fishing_hole.png',
     imagePrompt: '冰釣洞 in frozen_wastes, resource room with cut ice hole, fishing line, frost buckets, fish shadows and blue lake light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain ice, clear lantern light',
     description:
-      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可聽見暴風雪路的風聲但雪牆封路，西側冰面裂縫只能看見冰河深處藍光，需從冰河入口繞行。玩家可 gather 魚材或 search 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '凍湖西側被人鑿出圓形冰洞，釣線和骨針掛在木架上，冰下魚影在幽藍水光裡緩慢游動。東面回凍湖，南方可聽見暴風雪路的風聲但雪牆封路，西側冰面裂縫只能看見冰河深處藍光，需從冰河入口繞行。旅人可 採集 魚材或 search 魚簍找失蹤漁人的牌子，也要注意冰元素從水下凝聚。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'east', targetRoomId: 'frozen_lake', description: '回到凍湖冰面' },
     ],
@@ -4720,7 +4720,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frostpine_grove.png',
     imagePrompt: '霜松林 in frozen_wastes, resource combat grove with snow-bent pines, blue needles, wolf tracks and green aurora light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain snow, clear lantern light',
     description:
-      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面通向雪人石堆，西側接雪狼巢穴，北面能聽到風雪深處的回聲。玩家可 gather 霜松木與樹脂，inspect 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若玩家沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源。',
+      '雪山營地東北方有一片被霜壓彎的松林，藍綠針葉在極光下微亮，樹根間滿是狼爪和被拖行的痕跡。南面通向雪人石堆，西側接雪狼巢穴，北面能聽到風雪深處的回聲。旅人可 採集 霜松木與樹脂，觀察 樹皮抓痕判斷狼群方向，也要小心雪狼從樹影裡包抄。林中幾棵老松掛著獵人留下的風鈴，鈴聲忽遠忽近時代表狼群正在繞路。雪下還埋著可作篝火材料的乾枝，能支援營地補給與寒冷抗性任務。若旅人沿著斷枝標記前進，可找到通往符石環的安全路，也能避開巢穴入口的伏擊與雪坡陷坑，保存補給與火種來源',
     exits: [
       { direction: 'south', targetRoomId: 'mountain_camp', description: '南側霜松林雪坡繞過倒木與狼爪痕，沿獵人風鈴與營火煙線折回雪山營地', edgeKind: 'distant_route', edgeNote: '霜松林到雪山營地需繞過倒木與狼爪痕雪坡，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'wolf_den', description: '東側霜松根道穿過密林陰影與獵物拖痕，沿狼嚎方向抵達雪狼巢穴', edgeKind: 'distant_route', edgeNote: '霜松林到雪狼巢穴需穿過密林根道與拖痕區，實際路程長於相鄰一格。' },
@@ -4742,7 +4742,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_abandoned_sledge.png',
     imagePrompt: '廢棄雪橇 in frozen_wastes, hidden exploration wrecked sledge with broken runners, scattered crates, frozen blood and low campfire light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain fantasy terrain, clear lantern light',
     description:
-      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。玩家可 search 箱子找一次性補給，inspect 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '一輛破裂雪橇半埋在雪坡下，斷裂滑木、翻倒箱子和凍成黑色的血痕指向風雪深處，寒風穿過繩索發出細響。北面回積雪隘口，東側可回雪山營地，南邊坡道接雪人石堆。旅人可 search 箱子找一次性補給，觀察 血跡追蹤襲擊者，也要防備被氣味吸引來的雪狼。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_snowdrift_pass', description: '雪坡回到積雪隘口' },
       { direction: 'east', targetRoomId: 'mountain_camp', description: '營火光在東側閃動', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4767,7 +4767,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_glacier_crevasse.png',
     imagePrompt: '冰河裂縫 in frozen_wastes, hidden combat crevasse with blue ice walls, rope ladder, frozen fossils and deep shadow light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain ice, clear lantern light',
     description:
-      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側裂壁暗道先接到半埋雪坡下的廢棄雪橇，再沿雪坡回到積雪隘口。玩家可 inspect 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。',
+      '冰河西側裂開一道深藍裂縫，繩梯結滿冰霜，冰壁中封著古代獸骨和破碎器具，深處傳來空洞回聲。東面攀回冰河，北側裂壁暗道先接到半埋雪坡下的廢棄雪橇，再沿雪坡回到積雪隘口。旅人可 觀察 冰壁化石找考古線索，search 凍住的包裹取得材料，也要注意冰元素從裂縫裡浮出。冰河裂縫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
     exits: [
       { direction: 'east', targetRoomId: 'glacier', description: '攀回冰河表面' },
       { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '北側結霜繩梯沿藍冰窄縫上行，先抵達半埋雪坡下的廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4788,7 +4788,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_runestone_circle.png',
     imagePrompt: '符石環 in frozen_wastes, landmark exploration room with ancient rune stones, aurora beams, snow altar and blue violet magic light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain snow, clear lantern light',
     description:
-      '極光之地西側立著一圈古老符石，冰雪祭壇位於中央，綠紫光柱在符文間緩慢移動，空氣中有細小靜電聲。東面回極光之地，南側霜松林可作撤退路，北面雪坡通向結冰哨塔。玩家可 inspect 符文順序解讀冰之王朝歷史，search 祭壇底座取得任務線索，也會吸引雪人和冰元素靠近。每塊符石都刻著不同方向記號，能把凍湖、城堡與哨塔路線串起來；若玩家在極光最亮時調查，還能看到王朝滅亡前的幻象片段。祭壇旁的凍裂刻痕提示需要冰晶材料啟動，適合作為探索任務與傳送解鎖線索和支線入口處之一。',
+      '極光之地西側立著一圈古老符石，冰雪祭壇位於中央，綠紫光柱在符文間緩慢移動，空氣中有細小靜電聲。東面回極光之地，南側霜松林可作撤退路，北面雪坡通向結冰哨塔。旅人可 觀察 符文順序解讀冰之王朝歷史，search 祭壇底座取得任務線索，也會吸引雪人和冰元素靠近。每塊符石都刻著不同方向記號，能把凍湖、城堡與哨塔路線串起來；若旅人在極光最亮時調查，還能看到王朝滅亡前的幻象片段。祭壇旁的凍裂刻痕提示需要冰晶材料啟動，適合作為探索任務與傳送解鎖線索和支線入口處之一',
     exits: [
       { direction: 'east', targetRoomId: 'aurora_field', description: '極光路回到極光之地' },
       { direction: 'south', targetRoomId: 'frozen_wastes_frostpine_grove', description: '南側符石環雪坡沿極光刻痕下降，穿過冰霜林隙與斷枝路標回到霜松林深處', edgeKind: 'distant_route', edgeNote: '符石環到霜松林需沿極光刻痕與林隙雪坡下降，實際路程長於相鄰一格。' },
@@ -4815,7 +4815,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_yeti_cairn.png',
     imagePrompt: '雪人石堆 in frozen_wastes, elite combat room with giant cairns, broken bones, huge footprints and aurora snow haze, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain snow, clear lantern light',
     description:
-      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通霜松林，東側窄洞可聽見雪狼巢穴回聲但冰壁坍塌，西面可繞回冰晶洞穴。這裡是精英事件房，玩家可 inspect 石堆判斷雪人祭祀路線，search 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡。',
+      '幾座巨石堆立在雪坡上，石縫中插著破矛和獸骨，周圍巨大腳印深深陷入冰雪，低沉咆哮在風中迴盪。北面通霜松林，東側窄洞可聽見雪狼巢穴回聲但冰壁坍塌，西面可繞回冰晶洞穴。這裡是精英事件房，旅人可 觀察 石堆判斷雪人祭祀路線，search 骨堆找失蹤旅人證物，也要準備面對雪人與狼群同時出現。石堆頂端掛著被凍住的鈴鐺，搖動後會引來更強巡邏；但若先破壞狼群嗅跡，隊伍可安全撤回松林。雪坡上的巨大足印還指向城堡外牆，提示雪人可能受冰堡力量驅使。石堆陰影裡另有可採集的霜骨碎片與任務布條痕跡',
     exits: [
       { direction: 'north', targetRoomId: 'frozen_wastes_abandoned_sledge', description: '巨大腳印回到廢棄雪橇', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'frozen_wastes_frostpine_grove', description: '雪坡繞回霜松林', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -4836,7 +4836,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_frozen_watchpost.png',
     imagePrompt: '結冰哨塔 in frozen_wastes, elite route watchpost with frozen battlements, cracked horn, frost giant tracks and cold castle light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通冰晶尖塔，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。玩家可 inspect 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助玩家選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因。',
+      '冰封城堡東側的哨塔被厚冰包住，破裂號角掛在城垛上，霜巨人腳印從塔門一路延伸到雪坡。西面回城堡大門，南方可通冰晶尖塔，東側冰晶尖塔在藍光裡閃爍但冰橋已斷。旅人可 觀察 號角判斷守衛警戒狀態，search 兵器架找舊王朝徽章，也要提防霜巨人從塔內甦醒。塔頂視野能看到冰堡、極光和龍息裂谷三條路線，適合作為隊伍進攻前的觀察點；但號角聲會提升整片城牆的警戒。哨塔內的結冰地圖標出巡邏間隔，能協助旅人選擇先走大門還是尖塔側路，並記錄安全撤退信號。牆角火盆已熄滅，可調查燃料缺口與守衛失蹤原因',
     exits: [
       { direction: 'west', targetRoomId: 'ice_castle_gate', description: '城牆路回冰封城堡大門' },
       { direction: 'south', targetRoomId: 'frozen_wastes_runestone_circle', description: '南側結冰哨塔雪坡沿斷冰橋陰影折返，穿過王朝巡邏標記回到符石環', edgeKind: 'distant_route', edgeNote: '結冰哨塔到符石環需沿斷冰橋陰影與巡邏標記折返，實際路程長於相鄰一格。' },
@@ -4860,7 +4860,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_crystal_spire.png',
     imagePrompt: '冰晶尖塔 in frozen_wastes, resource elite spire with towering blue crystals, prism stairs, frost mist and bright cold light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function elite, terrain fantasy terrain, clear lantern light',
     description:
-      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰封王座，北側能望見結冰哨塔但冰橋已斷，東面裂谷中傳來冰龍呼吸卻需從王座裂縫繞行。玩家可 gather 高純冰晶、inspect 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進。',
+      '冰晶洞穴東側升起一座天然尖塔，藍色晶柱像階梯般環繞上升，寒霧在尖端折射出刺眼白光。西面回冰封王座，北側能望見結冰哨塔但冰橋已斷，東面裂谷中傳來冰龍呼吸卻需從王座裂縫繞行。旅人可 採集 高純冰晶、觀察 晶面倒影尋找隱藏門，也要面對霜巨人和冰元素守護。此處的足跡、聲響或資源痕跡會提示旅人放慢腳步，先觀察危險再採集或開戰。此處還留著可追蹤的任務痕跡、隱蔽標記與危險預兆，適合先仔細調查再推進',
     exits: [
       { direction: 'west', targetRoomId: 'crystal_ice_cave', description: '晶柱階梯回冰晶洞穴', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -4881,7 +4881,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'frozen_wastes_dragon_breath_rift.png',
     imagePrompt: '龍息裂谷 in frozen_wastes, boss event rift with frozen breath clouds, blue fissure, dragon claw marks and royal ice light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain ice, clear lantern light',
     description:
-      '裂谷兩側冰壁高聳，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面是凍結的荒原通道，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，玩家可 inspect 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口。',
+      '裂谷兩側冰壁高聳，藍白龍息在裂縫中翻滾，岩壁布滿巨大爪痕和被凍住的鎖鏈碎片。西面是凍結的荒原通道，南側晶光可看見冰晶尖塔但裂谷無法直接攀降，北面寒霧可通向魔族邊境裂口。這裡是大型 Boss 事件鉤子，旅人可 觀察 爪痕判斷冰龍活動階段，search 鎖鏈碎片找封印材料，也要準備面對冰龍幼崽的突然甦醒。裂谷底部每隔一段時間會噴出寒流，提示隊伍注意站位與撤退方向；遠處黑煙也預告下一區魔族領地的銜接。若帶著城堡鑰匙調查裂縫邊緣，能看到通往王座密室的冰階輪廓與寶箱線索標記，以及裂谷出口',
     exits: [
       { direction: 'west', targetRoomId: 'ice_throne', description: '裂谷回到冰封王座', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
