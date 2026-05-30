@@ -76,6 +76,7 @@ export interface SkillQuestUnlock {
 
 export interface SkillSpecial {
   [key: string]: unknown;
+  castTime?: number;
   interrupt?: boolean;
   dispelShield?: boolean;
   isHeal?: boolean;

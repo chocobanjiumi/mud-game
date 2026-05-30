@@ -47,8 +47,10 @@ const ELEMENT_LABELS: Record<string, string> = {
 };
 
 const TIER1_CLASS_IDS = ['swordsman', 'mage', 'ranger', 'priest'] as const satisfies readonly ClassId[];
-const SKILL_FILTER_ALL = 'all';
-type SkillFilterId = typeof SKILL_FILTER_ALL | ClassId;
+const TIER1_LABELS: Record<string, string> = { swordsman: '戰士系', mage: '法師系', ranger: '遊俠系', priest: '祭司系' };
+type TierFilter = 'tier1' | 'tier2';
+type FamilyFilter = 'all' | typeof TIER1_CLASS_IDS[number];
+type ClassFilter = 'all' | ClassId;
 
 function skillSort(a: SkillDef, b: SkillDef) {
   if (a.learnLevel !== b.learnLevel) return a.learnLevel - b.learnLevel;
@@ -62,16 +64,26 @@ function skillsForClass(classId: string) {
     .sort(skillSort);
 }
 
-function getSkillClassRows(): { classDef: ClassDef; skills: SkillDef[] }[] {
-  const rows = [
-    ...TIER1_CLASS_IDS.map((classId) => CLASS_DEFS[classId]),
-    ...TIER1_CLASS_IDS.flatMap((classId) => (CLASS_DEFS[classId].advancedClasses ?? []).map((advancedClassId) => CLASS_DEFS[advancedClassId])),
-  ];
+interface ClassRow { classDef: ClassDef; skills: SkillDef[] }
+interface ClassFamily { familyId: string; label: string; tier1: ClassRow; tier2: ClassRow[] }
 
-  return rows
-    .filter((classDef): classDef is ClassDef => Boolean(classDef) && classDef.id !== 'adventurer' && classDef.id !== 'monster')
-    .map((classDef) => ({ classDef, skills: skillsForClass(classDef.id) }))
-    .filter((entry) => entry.skills.length > 0);
+function getClassFamilies(): ClassFamily[] {
+  return TIER1_CLASS_IDS.map((familyId) => {
+    const t1 = CLASS_DEFS[familyId];
+    const t2Classes = (t1.advancedClasses ?? [])
+      .map((id) => CLASS_DEFS[id])
+      .filter((c): c is ClassDef => Boolean(c));
+    return {
+      familyId,
+      label: TIER1_LABELS[familyId] ?? familyId,
+      tier1: { classDef: t1, skills: skillsForClass(familyId) },
+      tier2: t2Classes.map((c) => ({ classDef: c, skills: skillsForClass(c.id) })).filter((r) => r.skills.length > 0),
+    };
+  });
+}
+
+function getSkillClassRows(): ClassRow[] {
+  return getClassFamilies().flatMap((f) => [f.tier1, ...f.tier2]).filter((r) => r.skills.length > 0);
 }
 
 function formatResource(skill: SkillDef) {
@@ -93,6 +105,12 @@ function formatResource(skill: SkillDef) {
     parts.push(`+${rageGain} ${resourceLabel}`);
   }
   return parts.join(' / ');
+}
+
+function formatCastTime(skill: SkillDef) {
+  const ct = (skill.special as Record<string, unknown> | undefined)?.castTime;
+  if (typeof ct !== 'number' || ct <= 0) return null;
+  return <div className="mt-1 text-xs font-bold text-red-400">施法 {ct} tick</div>;
 }
 
 function SkillBadges({ special }: { special: SkillDef['special'] }) {
@@ -160,39 +178,62 @@ function formatValue(value: unknown): string {
 }
 
 export function SkillWikiSection({ compact = false }: { compact?: boolean }) {
-  const classRows = useMemo(() => getSkillClassRows(), []);
-  const [activeClassId, setActiveClassId] = useState<SkillFilterId>(SKILL_FILTER_ALL);
-  const visibleRows = activeClassId === SKILL_FILTER_ALL
-    ? classRows
-    : classRows.filter(({ classDef }) => classDef.id === activeClassId);
+  const families = useMemo(() => getClassFamilies(), []);
+  const [tierFilter, setTierFilter] = useState<TierFilter>('tier1');
+  const [familyFilter, setFamilyFilter] = useState<FamilyFilter>('all');
+  const [classFilter, setClassFilter] = useState<ClassFilter>('all');
+
+  const visibleRows: ClassRow[] = useMemo(() => {
+    if (tierFilter === 'tier1') {
+      if (familyFilter === 'all') return families.map((f) => f.tier1).filter((r) => r.skills.length > 0);
+      const fam = families.find((f) => f.familyId === familyFilter);
+      return fam ? [fam.tier1].filter((r) => r.skills.length > 0) : [];
+    }
+    const t2Families = familyFilter === 'all' ? families : families.filter((f) => f.familyId === familyFilter);
+    const rows = t2Families.flatMap((f) => f.tier2);
+    if (classFilter !== 'all') return rows.filter((r) => r.classDef.id === classFilter);
+    return rows;
+  }, [families, tierFilter, familyFilter, classFilter]);
+
   const totalSkillCount = visibleRows.reduce((count, row) => count + row.skills.length, 0);
+
+  const availableT2Classes = useMemo(() => {
+    const t2Families = familyFilter === 'all' ? families : families.filter((f) => f.familyId === familyFilter);
+    return t2Families.flatMap((f) => f.tier2);
+  }, [families, familyFilter]);
 
   return (
     <section className={compact ? '' : 'rounded-md border border-border-dim bg-bg-primary p-4'}>
       <div className="mb-4">
         <h1 className="text-2xl font-bold text-text-bright">技能取得表</h1>
         <p className="mt-2 text-sm leading-6 text-text-dim">
-          內容由目前程式碼的 SKILL_DEFS 與 CLASS_DEFS 產生，名稱、消耗、冷卻、目標與效果會跟實作定義同步。共 {totalSkillCount} 個技能。
+          內容由目前程式碼的 SKILL_DEFS 與 CLASS_DEFS 產生。共 {totalSkillCount} 個技能。
         </p>
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
-        <SkillFilterButton
-          active={activeClassId === SKILL_FILTER_ALL}
-          label="全部職業"
-          count={classRows.reduce((count, row) => count + row.skills.length, 0)}
-          onClick={() => setActiveClassId(SKILL_FILTER_ALL)}
-        />
-        {classRows.map(({ classDef, skills }) => (
-          <SkillFilterButton
-            key={classDef.id}
-            active={activeClassId === classDef.id}
-            label={classDef.name}
-            count={skills.length}
-            onClick={() => setActiveClassId(classDef.id)}
-          />
+      {/* 一轉 / 二轉 切換 */}
+      <div className="mb-3 flex gap-2">
+        <SkillFilterButton active={tierFilter === 'tier1'} label="一轉職業" count={families.reduce((n, f) => n + f.tier1.skills.length, 0)} onClick={() => { setTierFilter('tier1'); setClassFilter('all'); }} />
+        <SkillFilterButton active={tierFilter === 'tier2'} label="二轉職業" count={families.reduce((n, f) => n + f.tier2.reduce((m, r) => m + r.skills.length, 0), 0)} onClick={() => { setTierFilter('tier2'); setClassFilter('all'); }} />
+      </div>
+
+      {/* 系列篩選（戰士系 / 法師系 / ...） */}
+      <div className="mb-3 flex flex-wrap gap-2 border-l-2 border-border-dim pl-3">
+        <SkillFilterButton active={familyFilter === 'all'} label="全部系列" count={0} onClick={() => { setFamilyFilter('all'); setClassFilter('all'); }} />
+        {families.map((f) => (
+          <SkillFilterButton key={f.familyId} active={familyFilter === f.familyId} label={f.label} count={0} onClick={() => { setFamilyFilter(f.familyId as FamilyFilter); setClassFilter('all'); }} />
         ))}
       </div>
+
+      {/* 二轉時：個別職業篩選 */}
+      {tierFilter === 'tier2' && availableT2Classes.length > 1 && (
+        <div className="mb-3 flex flex-wrap gap-2 border-l-2 border-text-terminal/30 pl-3">
+          <SkillFilterButton active={classFilter === 'all'} label="全部職業" count={availableT2Classes.reduce((n, r) => n + r.skills.length, 0)} onClick={() => setClassFilter('all')} />
+          {availableT2Classes.map(({ classDef, skills }) => (
+            <SkillFilterButton key={classDef.id} active={classFilter === classDef.id} label={classDef.name} count={skills.length} onClick={() => setClassFilter(classDef.id)} />
+          ))}
+        </div>
+      )}
 
       <div className="space-y-5">
         {visibleRows.map(({ classDef, skills }) => (
@@ -268,6 +309,7 @@ function SkillClassBlock({ title, subtitle, skills, nested = false }: { title: s
                 <Td>
                   <div className="font-bold text-text-amber">{formatResource(skill)}</div>
                   <div className="mt-1 text-xs text-text-dim">CD {skill.cooldown} tick</div>
+                  {formatCastTime(skill)}
                   <SkillBadges special={skill.special} />
                   {skill.scaling && (
                     <div className="mt-1 text-xs text-text-dim">係數 {skill.scaling.stat} x {skill.scaling.coefficient}</div>

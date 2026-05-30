@@ -24,6 +24,7 @@ import { SuffixWikiContent } from './SuffixPage';
 import { getItemImagePath } from '../utils/assetImages';
 
 const NAV_ITEMS = [
+  { id: 'combat-guide', label: '戰鬥指南' },
   { id: 'skills', label: '技能' },
   { id: 'monsters', label: '怪物資料' },
   { id: 'classes', label: '職業列表' },
@@ -225,6 +226,8 @@ function getInitialWikiPage(): WikiPageId {
 
 function renderWikiContent(activePage: WikiPageId) {
   switch (activePage) {
+    case 'combat-guide':
+      return <CombatGuidePage />;
     case 'skills':
       return <SkillsPage />;
     case 'monsters':
@@ -244,6 +247,178 @@ function renderWikiContent(activePage: WikiPageId) {
     case 'zones':
       return <ZonesPage />;
   }
+}
+
+function CombatGuidePage() {
+  return (
+    <WikiSection id="combat-guide" title="戰鬥指南">
+      <div className="space-y-6 text-sm leading-7 text-text-dim">
+
+        <GuideSection title="Tick 制戰鬥">
+          <p>戰鬥以 <Term>tick</Term>（回合）為單位運作，每個 tick 為 5 秒。每 tick 所有參戰者同時選擇行動，然後統一結算。</p>
+          <TermTable terms={[
+            ['tick', '一個戰鬥回合，約 5 秒。所有行動在同一 tick 內結算。'],
+            ['行動類型', 'attack（普攻）、skill（技能）、defend（防禦）、flee（逃跑）、item（道具）、mount 系列（騎乘動作）'],
+            ['先制 (priority)', '部分技能擁有先制屬性，在同一 tick 中最先發動。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="施法時間 (Cast Time)">
+          <p>強力技能需要 <Term>castTime</Term>（施法時間）。選擇施放後不會立刻生效，而是經過指定 tick 數後才發動。施法期間被打斷（stun/fear/freeze/interrupt）會取消施法。</p>
+          <TermTable terms={[
+            ['瞬發 (castTime 0)', '大多數技能。選擇後在當前 tick 立刻生效。'],
+            ['施法 1 tick', '高倍率單體技能（2.5×+）、中型 AoE。選擇後下一個 tick 才生效。施法期間可被打斷。'],
+            ['施法 2 tick', '終極技能、全場 AoE。需要 2 個 tick 才生效，風險更高但威力極大。'],
+            ['打斷施法', '帶有 interrupt 屬性的技能或 CC 效果（暈眩/恐懼/凍結）可打斷正在施法的目標，取消其技能並浪費該回合。'],
+            ['施法與冷卻', '施法時間不影響冷卻。冷卻從技能實際生效後開始計算。被打斷時冷卻減半。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="跨房戰鬥與 Approaching 系統">
+          <p>本遊戲的核心特色之一：怪物從相鄰房間接近時不會立刻進入戰鬥，而是經歷 <Term>approaching</Term> 階段。</p>
+          <TermTable terms={[
+            ['approaching', '怪物從相鄰房間接近中的狀態。approaching 期間怪物尚未進入本房，但可被部分技能攻擊。'],
+            ['arrivalTicks', '怪物抵達本房所需的剩餘 tick 數。每 tick 減 1，歸零時怪物進入本房開始戰鬥。'],
+            ['cross-room（跨房攻擊）', '部分技能可攻擊相鄰房間的敵人，或影響 approaching 中的怪物。'],
+            ['scout（偵查）', '偵查相鄰房間，揭露該方向的怪物資訊。某些跨房技能需要先偵查才能精確瞄準。'],
+            ['trap（出口陷阱）', '放置在房間出口的陷阱。approaching 怪物通過時觸發效果（傷害、arrivalTicks+N 等）。'],
+            ['arrivalTicksDelta', '技能或陷阱對 approaching 怪物的延遲效果。例如 +2 代表怪物多花 2 tick 才到達。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="傷害計算">
+          <TermTable terms={[
+            ['傷害類型 (damageType)', 'physical（物理，受 DEF 減免）、magical（魔法，受 MDEF 減免）、pure（純粹，無視防禦）。'],
+            ['屬性 (element)', 'fire / ice / lightning / light / dark / nature / none。存在屬性剋制關係。'],
+            ['屬性剋制', '火→冰→雷→火（+30% 傷害）。光↔暗（+25%）。逆剋制 -30%/-25%。nature 和 none 為中性。'],
+            ['multiplier（倍率）', '技能的基礎傷害倍率。100% = 1.0× 基礎攻擊力。'],
+            ['暴擊 (crit)', '基礎暴擊傷害 150%。暴擊率受 DEX 和 LUK 影響，上限 80%。'],
+            ['命中 / 閃避', '命中率 = 95% 基礎 + DEX 差值修正。閃避率受 DEX 和 LUK 影響，上限 80%。'],
+            ['overkill', '超過目標剩餘 HP 的溢出傷害量。'],
+            ['defPiercing（穿甲）', '無視目標一定比例的防禦值。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="屬性與資源">
+          <TermTable terms={[
+            ['STR（力量）', '影響物理攻擊力。近戰 ATK = STR × 2 + 武器攻擊。'],
+            ['INT（智力）', '影響魔法攻擊力和魔防。Spell Power = INT × 2 + 法器魔攻。'],
+            ['DEX（敏捷）', '影響命中、閃避、暴擊率。遠程 ATK = DEX × 2 + 遠程武器攻擊。'],
+            ['VIT（體質）', '影響 HP 和物理防禦。DEF = VIT × 1.5 + 護甲。'],
+            ['LUK（幸運）', '影響暴擊率和閃避率（小幅度）。'],
+            ['rage（怒氣）', '戰士系資源。初始 0，透過攻擊和被擊產生。上限 100。'],
+            ['mp（魔力）', '法師系資源。初始 50-80，施法消耗。'],
+            ['focus（專注）', '遊俠系資源。初始 100，使用技能消耗。'],
+            ['faith（信仰）', '祭司系資源。初始 50，上限 100。有些技能消耗信仰，有些累積信仰。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="狀態效果">
+          <TermTable terms={[
+            ['DoT（持續傷害）', 'poison（中毒）、burn（灼燒）、bleed（流血）。不同來源可疊加，相同來源刷新持續時間。'],
+            ['HoT（持續回復）', 'regen（生命回復）、mana_regen（魔力回復）。'],
+            ['CC（控制效果）', 'stun（暈眩）、fear（恐懼）、freeze（凍結）。被控制時無法行動。新 CC 覆蓋舊 CC。'],
+            ['silence（沉默）', '無法使用技能，只能普攻。'],
+            ['shield（護盾）', '吸收傷害的臨時屏障。可被 dispelShield 技能驅散。'],
+            ['taunt（嘲諷）', '強制敵人攻擊嘲諷者。'],
+            ['counter（反擊）', '受到攻擊時自動反擊。'],
+            ['stealth（潛行）', '隱身狀態，無法被選為目標。被 AoE 命中或主動攻擊時解除。'],
+            ['thorns（荊棘）', '反射部分近戰傷害給攻擊者。'],
+            ['mark（標記）', '增加被標記者受到的傷害。'],
+            ['damage_reduction（減傷）', '百分比減少受到的傷害。'],
+            ['heal_reduction（治療削減）', '百分比減少受到的治療量。'],
+            ['invincible（無敵）', '完全免疫所有傷害。'],
+            ['unyielding（不屈）', 'HP 不會降到 0 以下。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="坐騎系統（騎士專屬）">
+          <TermTable terms={[
+            ['mount / unmount', '上馬 / 下馬指令。騎乘中可使用騎乘限定技能。'],
+            ['fatigue（疲勞）', '坐騎體力值。騎乘動作消耗疲勞，疲勞耗盡被迫下馬。'],
+            ['fatigueMax', '疲勞上限，受馬鞍裝備影響。'],
+            ['fatigueRecovery', '每 tick 疲勞回復量。'],
+            ['chargePower（衝鋒力）', '影響衝鋒系技能的額外傷害。'],
+            ['stability（穩定性）', '影響防禦系技能的減傷效果和攔截評分。'],
+            ['guardPower（守護力）', '影響護盾和守護系技能的效果。'],
+            ['intercept（攔截）', '騎乘時攔截 approaching 怪物，延遲其到達時間。評分 = stability + interceptBonus + DEX + STR。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="Boss 機制">
+          <TermTable terms={[
+            ['phase（階段）', 'Boss 在特定 HP 門檻進入新階段，傷害倍率提升。預設：70% HP 進入第 2 階段（+15%），35% HP 進入第 3 階段（+30%）。'],
+            ['telegraph（預告）', 'Boss 大招前 1 tick 的預告警示。玩家可在預告 tick 使用打斷技能阻止。'],
+            ['interrupt（打斷）', '帶有 interrupt 屬性的技能可打斷 Boss 的 telegraph 預告。CC 效果（暈眩/恐懼/凍結）也可打斷。'],
+            ['dispelShield（驅散護盾）', '帶有此屬性的技能可移除敵人的 shield 狀態效果。'],
+            ['控制免疫', 'Boss 被 CC 命中後獲得短暫免疫期，防止被永久控住。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="副本與難度">
+          <TermTable terms={[
+            ['dungeon（副本）', '線性房間序列的戰鬥挑戰。需要組隊完成。'],
+            ['difficulty', 'normal（1.0× 怪物數值/獎勵）、hard（1.35× HP/1.2× 數值/1.25× 獎勵）、nightmare（1.8× HP/1.45× 數值/1.6× 獎勵）。'],
+            ['first clear（首次通關）', '首次完成副本獲得額外獎勵。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="組隊與戰利品">
+          <TermTable terms={[
+            ['party（隊伍）', '玩家組隊系統。有隊長可踢人/解散。'],
+            ['lootMode（戰利品分配）', 'free（自由拾取）、round_robin（輪流）、need_greed（需求/貪婪）、leader（隊長分配）。'],
+            ['follow（跟隨）', '隊員可自動跟隨隊長移動。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="PvP 系統">
+          <TermTable terms={[
+            ['duel（決鬥）', '向其他玩家發起 1v1 決鬥，30 秒內接受。'],
+            ['ELO', '競技積分，基礎 1000。勝者漲分，敗者扣分。'],
+            ['PvP 傳送鎖定', '近期受到 PvP 傷害的玩家無法使用快速傳送。'],
+          ]} />
+        </GuideSection>
+
+        <GuideSection title="裝備詞綴">
+          <TermTable terms={[
+            ['affix（詞綴）', '裝備上附加的特殊效果。有觸發條件和效果。'],
+            ['觸發條件', 'on_hit（命中時）、on_block（格擋時）、on_dodge（閃避時）、on_kill（擊殺時）、on_cast（施法時）、on_heal（治療時）。'],
+            ['affix cooldown', '詞綴觸發後的內部冷卻，防止同一回合多次觸發。'],
+            ['firstHit', '戰鬥第 1 回合命中時的特殊詞綴觸發條件。'],
+          ]} />
+        </GuideSection>
+
+      </div>
+    </WikiSection>
+  );
+}
+
+function GuideSection({ title, children }: { title: string; children: ReactNode }) {
+  return (
+    <div className="rounded border border-border-dim bg-bg-primary p-4">
+      <h3 className="mb-3 text-base font-bold text-text-bright">{title}</h3>
+      <div className="space-y-2">{children}</div>
+    </div>
+  );
+}
+
+function Term({ children }: { children: ReactNode }) {
+  return <code className="rounded bg-bg-secondary px-1.5 py-0.5 text-xs font-bold text-text-terminal">{children}</code>;
+}
+
+function TermTable({ terms }: { terms: [string, string][] }) {
+  return (
+    <table className="mt-2 w-full border-collapse text-sm">
+      <tbody>
+        {terms.map(([term, desc]) => (
+          <tr key={term} className="border-t border-border-dim">
+            <td className="whitespace-nowrap px-3 py-2 align-top font-bold text-text-terminal">{term}</td>
+            <td className="px-3 py-2 text-text-dim">{desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 function SkillsPage() {

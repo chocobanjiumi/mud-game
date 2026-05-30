@@ -696,7 +696,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     fullDescription: '消耗 35 怒氣，冷卻 8。騎乘限定，使用後自動下馬。對單體造成 300% 物理+光傷害 + chargePower × 5，暈眩 2 tick，驅散所有 buff。若目標 HP < 30%：傷害額外 ×1.5（處刑加成）。',
     effects: [{ type: 'stun', value: 1, duration: 2 }],
     tags: ['damage', 'single_target', 'burst', 'interrupt', 'dispel', 'light', 'physical'],
-    special: { mountRequired: true, autoDismount: true, mountStatScaling: { chargePower: 5 }, dispelAllBuffs: true, executeThreshold: 0.3, executeDamageMultiplier: 1.5 },
+    special: { castTime: 1, mountRequired: true, autoDismount: true, mountStatScaling: { chargePower: 5 }, dispelAllBuffs: true, executeThreshold: 0.3, executeDamageMultiplier: 1.5 },
   },
 
   // ════════════════════════════════════════════
@@ -782,7 +782,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '消耗 30 怒氣 + 15% HP。單體 250% 物理。狂血（≤60%）必暴；修羅（≤30%）傷害 ×1.5。',
     fullDescription: '消耗 30 怒氣 + 15% 最大 HP，冷卻 5。對單體造成 250% 物理傷害。狂血刻度（HP ≤ 60%）必定暴擊；修羅刻度（HP ≤ 30%）傷害額外 ×1.5。',
     tags: ['damage', 'single_target', 'burst', 'physical'],
-    special: { hpCostPercent: 15, hpThresholdEnhanced: { 60: { guaranteedCrit: true }, 30: { damageMultiplier: 1.5 } } },
+    special: { castTime: 1, hpCostPercent: 15, hpThresholdEnhanced: { 60: { guaranteedCrit: true }, 30: { damageMultiplier: 1.5 } } },
   },
   pain_anchor: {
     id: 'pain_anchor', name: '痛覺錨定', englishName: 'Pain Anchor',
@@ -917,7 +917,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '→攻勢。260% 物理。技勢中使用：無視 30% 防禦。劍流 combo（守→攻）：傷害+40%、無視 50% 防禦。',
     fullDescription: '消耗 30 怒氣，冷卻 6。→攻勢。對單體造成 260% 物理傷害。若在技勢中使用：無視 30% 防禦。劍流 combo（從守勢→攻勢）：傷害額外 +40%，無視 50% 防禦。',
     tags: ['damage', 'single_target', 'burst', 'physical'],
-    special: { stanceTransition: 'attack', techniqueStanceBonus: { armorPenetration: 30 }, comboFrom: 'defense', comboBonus: { damageBonus: 40, armorPenetration: 50 } },
+    special: { castTime: 1, stanceTransition: 'attack', techniqueStanceBonus: { armorPenetration: 30 }, comboFrom: 'defense', comboBonus: { damageBonus: 40, armorPenetration: 50 } },
   },
   mind_cut: {
     id: 'mind_cut', name: '心斬', englishName: 'Mind Cut',
@@ -1024,7 +1024,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '本 tick 放入 3 個元素。🔥+🧊+⚡ = 元素風暴（全體 300% 三屬傷害）。',
     fullDescription: '消耗 30 MP，冷卻 8。本 tick 鑄造框可放入 3 個元素。🔥+🧊+⚡ = 元素風暴，對全體造成 300% 三屬性魔法傷害。',
     tags: ['damage', 'aoe', 'burst', 'magical'],
-    special: { tripleForge: true },
+    special: { castTime: 1, tripleForge: true },
   },
   elemental_return: {
     id: 'elemental_return', name: '元素回流', englishName: 'Elemental Return',
@@ -1058,7 +1058,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '60 MP。放入 3 個同元素：🔥🔥🔥=隕石（AoE 燃燒）/ 🧊🧊🧊=絕對零度（全體凍結）/ ⚡⚡⚡=雷神（全體麻痺+連鎖）。',
     fullDescription: '消耗 60 MP，冷卻 12。鑄造框放入 3 個同元素觸發終極反應：🔥🔥🔥=隕石降臨（400% 火傷+燃燒3tick）、🧊🧊🧊=絕對零度（400% 冰傷+凍結2tick）、⚡⚡⚡=雷神降臨（400% 雷傷+麻痺+全體連鎖）。',
     tags: ['damage', 'aoe', 'burst', 'magical'],
-    special: { apocalypseForge: true, tripleForge: true },
+    special: { castTime: 2, apocalypseForge: true, tripleForge: true },
   },
 
   // ════════════════════════════════════════════
@@ -1162,7 +1162,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '引爆魔偶，AoE 250% 魔傷 + 打斷（魔偶HP越高傷害越大）。魔偶銷毀。',
     fullDescription: '消耗 15 MP，冷卻 8。引爆魔偶核心造成 AoE 250% 魔法傷害 + 打斷施法。魔偶剩餘 HP 百分比越高，傷害越大（滿血=×1.5）。魔偶銷毀。',
     tags: ['damage', 'aoe', 'burst', 'interrupt', 'magical'],
-    special: { golemDetonate: true, hpScaling: true, interrupt: true },
+    special: { castTime: 1, golemDetonate: true, hpScaling: true, interrupt: true },
   },
   ultimate_golem: {
     id: 'ultimate_golem', name: '終極魔偶', englishName: 'Ultimate Golem',
@@ -1290,7 +1290,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     shortDescription: '引爆次元門。門每存在 1 tick = +50% 傷害。對兩端房間所有敵人造成巨額 AoE。',
     fullDescription: '消耗 35 MP，冷卻 12。關閉次元門並引爆。基礎 300% 魔法傷害，門每存在 1 tick 額外 +50% 傷害。對門兩端房間的所有敵人造成 AoE。門引爆後需重新開啟。',
     tags: ['damage', 'aoe', 'burst', 'magical'],
-    special: { gateDetonate: true, tickScaling: 50, dualRoomAoE: true },
+    special: { castTime: 2, gateDetonate: true, tickScaling: 50, dualRoomAoE: true },
   },
 
   // ════════════════════════════════════════════
@@ -1632,7 +1632,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
     fullDescription: '消耗 25 Focus，冷卻 8。你和寵物同時對本房所有敵人造成 150% 物理傷害 + 恐懼 1 tick + 打斷施法 + 驅散護盾。需要寵物存活。',
     effects: [{ type: 'fear', value: 1, duration: 1 }],
     tags: ['damage', 'aoe', 'control', 'interrupt', 'physical'],
-    special: { petAction: true, interrupt: true, dispelShield: true },
+    special: { castTime: 1, petAction: true, interrupt: true, dispelShield: true },
   },
   beast_fusion: {
     id: 'beast_fusion', name: '野獸融合', englishName: 'Beast Fusion',
@@ -1674,7 +1674,7 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   cross_heal: { id: 'cross_heal', name: '跨界治療', englishName: 'Cross-world Heal', classId: 'druid', learnLevel: 29, type: 'active', targetType: 'single_ally', resourceCost: 20, cooldown: 4, damageType: 'pure', element: 'light', multiplier: 0, description: '突破靈界與物質世界的隔閡，在靈界中對物質世界的友方施放治療（效果-30%）。', shortDescription: '靈界中可治療物質世界友方（效果-30%）。', fullDescription: '消耗20信仰，冷卻4。靈界中使用。對物質世界友方治療20%最大HP（跨界減益30%=實際14%）。', tags: ['heal', 'support', 'light'], special: { spiritWorldRequired: true, isHeal: true, crossWorldPenalty: 0.3 } },
   spirit_banish: { id: 'spirit_banish', name: '靈界放逐', englishName: 'Spirit Banish', classId: 'druid', learnLevel: 33, type: 'active', targetType: 'single_enemy', resourceCost: 25, cooldown: 6, damageType: 'magical', element: 'light', multiplier: 0.5, description: '不用進靈界。直接將一個敵人推入靈界3tick。敵人回來時受到光傷。', shortDescription: '直接推敵人進靈界3tick（不用自己進去）。回來時受光傷。', fullDescription: '消耗25信仰，冷卻6。不需要在靈界中。直接將一個敵人推入靈界消失3tick。敵人回來時受50%光傷。', tags: ['control', 'light'], special: { banishDuration: 3 } },
   spirit_link: { id: 'spirit_link', name: '靈魂鏈接', englishName: 'Spirit Link', classId: 'druid', learnLevel: 37, type: 'active', targetType: 'single_ally', resourceCost: 20, cooldown: 6, damageType: 'pure', element: 'none', multiplier: 0, description: '在靈界中連結自己和一名友方。3tick共享HP，傷害平分，治療共享。', shortDescription: '靈界中：3tick與友方共享HP（傷害平分、治療共享）。', fullDescription: '消耗20信仰，冷卻6。靈界中使用。3tick內與一名友方共享HP池：傷害平分承受，治療雙方共享。', tags: ['defense', 'support'], special: { spiritWorldRequired: true, hpShare: true, duration: 3 } },
-  mass_revival: { id: 'mass_revival', name: '集體牽引', englishName: 'Mass Revival', classId: 'druid', learnLevel: 45, type: 'active', targetType: 'all_allies', resourceCost: 40, cooldown: 10, damageType: 'magical', element: 'light', multiplier: 1.5, description: '靈界中同時拉回所有死去隊友的靈魂。AoE復活+打斷周圍敵人+驅散護盾。', shortDescription: '靈界中：AoE復活所有死者HP30%。打斷+驅散周圍敵人。', fullDescription: '消耗40信仰，冷卻10。靈界限定。同時復活所有死去隊友（HP30%）+對周圍敵人150%光傷+打斷+驅散。', effects: [{ type: 'stun', value: 1, duration: 1 }], tags: ['heal', 'aoe', 'interrupt', 'light'], special: { spiritWorldRequired: true, massRevive: true, interrupt: true, dispelShield: true } },
+  mass_revival: { id: 'mass_revival', name: '集體牽引', englishName: 'Mass Revival', classId: 'druid', learnLevel: 45, type: 'active', targetType: 'all_allies', resourceCost: 40, cooldown: 10, damageType: 'magical', element: 'light', multiplier: 1.5, description: '靈界中同時拉回所有死去隊友的靈魂。AoE復活+打斷周圍敵人+驅散護盾。', shortDescription: '靈界中：AoE復活所有死者HP30%。打斷+驅散周圍敵人。', fullDescription: '消耗40信仰，冷卻10。靈界限定。同時復活所有死去隊友（HP30%）+對周圍敵人150%光傷+打斷+驅散。', effects: [{ type: 'stun', value: 1, duration: 1 }], tags: ['heal', 'aoe', 'interrupt', 'light'], special: { castTime: 1, spiritWorldRequired: true, massRevive: true, interrupt: true, dispelShield: true } },
   spirit_unity: { id: 'spirit_unity', name: '靈肉合一', englishName: 'Spirit Unity', classId: 'druid', learnLevel: 50, type: 'active', targetType: 'self', resourceCost: 40, cooldown: 12, damageType: 'pure', element: 'light', multiplier: 0, description: '終極奧義：8tick同時存在於物質世界和靈界。可對兩界目標施法，免疫物理，魔傷無加倍。', shortDescription: '8tick同時存在兩界。可對所有目標施法，免疫物理，魔傷無加倍。', fullDescription: '消耗40信仰，冷卻12。8tick同時存在於物質世界和靈界。可對兩界所有目標施法。免疫物理攻擊，魔法傷害不加倍。', tags: ['buff', 'burst', 'support'], special: { spiritUnity: true, duration: 8, physicalImmune: true, magicVulnerability: 1.0 } },
 
   // ════════════════════════════════════════════
@@ -1689,8 +1689,8 @@ const RAW_SKILL_DEFS: Record<string, RawSkillDef> = {
   condemn: { id: 'condemn', name: '宣判', englishName: 'Condemn', classId: 'inquisitor', learnLevel: 29, type: 'active', targetType: 'single_enemy', resourceCost: 20, cooldown: 5, damageType: 'pure', element: 'light', multiplier: 0, description: '對罪業深重者宣判懲罰。消耗5點罪業：沉默2tick+受傷增加20%。不清空全部罪業。', shortDescription: '需5+罪。消耗5罪：沉默2tick+受傷+20%。不清空全部。', fullDescription: '消耗20信仰，冷卻5。需目標5+罪業。消耗5點罪業：沉默2tick+受到傷害增加20%持續3tick。', effects: [{ type: 'silence', value: 1, duration: 2 }], tags: ['control', 'debuff', 'light'], special: { sinConsume: true, sinMinRequired: 5, sinCost: 5 } },
   mass_gaze: { id: 'mass_gaze', name: '群體注視', englishName: 'Mass Gaze', classId: 'inquisitor', learnLevel: 33, type: 'active', targetType: 'all_enemies', resourceCost: 25, cooldown: 6, damageType: 'pure', element: 'none', multiplier: 0, description: '以審判之眼掃視全場，本房所有敵人的罪業累積翻倍3tick。', shortDescription: 'AoE版罪業注視。全體罪業累積翻倍3tick。', fullDescription: '消耗25信仰，冷卻6。本房所有敵人罪業累積翻倍3tick。', tags: ['debuff', 'aoe', 'control'], special: { sinGaze: true, sinMultiplier: 2, duration: 3, aoe: true } },
   atonement: { id: 'atonement', name: '贖罪', englishName: 'Atonement', classId: 'inquisitor', learnLevel: 37, type: 'active', targetType: 'single_enemy', resourceCost: 0, cooldown: 5, damageType: 'pure', element: 'none', multiplier: 0, description: '讀取目標的罪業，每點罪業為你回復2%HP+5%信仰。不消耗罪業。自我續航技。', shortDescription: '每點罪業=你回復2%HP+5%信仰。不消耗罪業。', fullDescription: '消耗0信仰，冷卻5。讀取目標罪業，每點=你回復2%最大HP+5%信仰。不消耗目標的罪業。', tags: ['heal', 'resource', 'support', 'defense'], special: { sinRead: true, hpPerSin: 2, faithPerSin: 5 } },
-  divine_punishment: { id: 'divine_punishment', name: '天罰', englishName: 'Divine Punishment', classId: 'inquisitor', learnLevel: 45, type: 'active', targetType: 'single_enemy', resourceCost: 30, cooldown: 8, damageType: 'magical', element: 'light', multiplier: 5.0, description: '對罪業滿溢者降下天罰。需10罪。500%光傷+打斷+驅散。非Boss可直接斬殺。', shortDescription: '需10罪滿。500%光傷+打斷+驅散。非Boss斬殺。', fullDescription: '消耗30信仰，冷卻8。需10罪業。消耗所有罪業造成500%光傷+打斷施法+驅散護盾。非Boss目標可直接斬殺。', effects: [{ type: 'stun', value: 1, duration: 2 }], tags: ['damage', 'single_target', 'burst', 'interrupt', 'light'], special: { sinConsume: true, sinMinRequired: 10, interrupt: true, dispelShield: true, executeNonBoss: true } },
-  final_judgment: { id: 'final_judgment', name: '末日審判', englishName: 'Final Judgment', classId: 'inquisitor', learnLevel: 50, type: 'active', targetType: 'all_enemies', resourceCost: 40, cooldown: 12, damageType: 'magical', element: 'light', multiplier: 1.0, description: '終極裁決。AoE消耗所有敵人的罪業，每點=100%光傷。全場清算，罪無可逃。', shortDescription: 'AoE消耗全體敵人罪業。每點罪=100%光傷。全場清算。', fullDescription: '消耗40信仰，冷卻12。對本房所有敵人消耗其全部罪業，每點罪業=100%光屬性魔法傷害。全場清算。', tags: ['damage', 'aoe', 'burst', 'light'], special: { sinConsume: true, damagePerSin: 100, aoe: true } },
+  divine_punishment: { id: 'divine_punishment', name: '天罰', englishName: 'Divine Punishment', classId: 'inquisitor', learnLevel: 45, type: 'active', targetType: 'single_enemy', resourceCost: 30, cooldown: 8, damageType: 'magical', element: 'light', multiplier: 5.0, description: '對罪業滿溢者降下天罰。需10罪。500%光傷+打斷+驅散。非Boss可直接斬殺。', shortDescription: '需10罪滿。500%光傷+打斷+驅散。非Boss斬殺。', fullDescription: '消耗30信仰，冷卻8。需10罪業。消耗所有罪業造成500%光傷+打斷施法+驅散護盾。非Boss目標可直接斬殺。', effects: [{ type: 'stun', value: 1, duration: 2 }], tags: ['damage', 'single_target', 'burst', 'interrupt', 'light'], special: { castTime: 1, sinConsume: true, sinMinRequired: 10, interrupt: true, dispelShield: true, executeNonBoss: true } },
+  final_judgment: { id: 'final_judgment', name: '末日審判', englishName: 'Final Judgment', classId: 'inquisitor', learnLevel: 50, type: 'active', targetType: 'all_enemies', resourceCost: 40, cooldown: 12, damageType: 'magical', element: 'light', multiplier: 1.0, description: '終極裁決。AoE消耗所有敵人的罪業，每點=100%光傷。全場清算，罪無可逃。', shortDescription: 'AoE消耗全體敵人罪業。每點罪=100%光傷。全場清算。', fullDescription: '消耗40信仰，冷卻12。對本房所有敵人消耗其全部罪業，每點罪業=100%光屬性魔法傷害。全場清算。', tags: ['damage', 'aoe', 'burst', 'light'], special: { castTime: 2, sinConsume: true, damagePerSin: 100, aoe: true } },
 
   ...createSecondJobSkillExpansionDefs(),
 
