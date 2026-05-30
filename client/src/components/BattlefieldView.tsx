@@ -1,150 +1,337 @@
+import { useMemo } from 'react';
+import type { ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
-import type { CombatantState } from '@game/shared';
+import type { CombatantState, ActiveStatusEffect, CardinalDirection, ApproachingMonsterPayload, NearbyCombatNeighborPayload } from '@game/shared';
+import { getMonsterImagePath, getClassIconPath } from '../utils/assetImages';
 
-function HpBar({ current, max, color = 'bg-combat-heal' }: { current: number; max: number; color?: string }) {
-  const pct = max > 0 ? Math.max(0, Math.min(100, (current / max) * 100)) : 0;
-  return (
-    <div className="h-2 w-full rounded-sm bg-bg-primary/60">
-      <div className={`h-full rounded-sm transition-all ${color}`} style={{ width: `${pct}%` }} />
-    </div>
-  );
-}
-
-function ThreatIndicator({ threat, maxThreat }: { threat: number; maxThreat: number }) {
-  if (maxThreat <= 0) return null;
-  const pct = Math.min(100, (threat / maxThreat) * 100);
-  return (
-    <div className="h-1 w-full rounded-sm bg-bg-primary/40">
-      <div className="h-full rounded-sm bg-text-amber transition-all" style={{ width: `${pct}%` }} />
-    </div>
-  );
-}
-
-function PlayerCard({ c, maxThreat }: { c: CombatantState; maxThreat: number }) {
-  return (
-    <div className={`flex-1 min-w-0 rounded border px-2 py-1.5 ${c.isDead ? 'border-red-500/40 bg-red-500/5 opacity-50' : 'border-border-dim bg-bg-primary/40'}`}>
-      <div className="flex items-center justify-between gap-1">
-        <span className="truncate text-xs font-bold text-text-bright">{c.name}</span>
-        <span className="shrink-0 text-[10px] text-text-dim">Lv{c.level}</span>
-      </div>
-      <HpBar current={c.hp} max={c.maxHp} />
-      <ThreatIndicator threat={c.threat} maxThreat={maxThreat} />
-      <div className="mt-0.5 flex items-center justify-between text-[10px] text-text-dim">
-        <span>{c.hp}/{c.maxHp}</span>
-        {c.mounted && <span className="text-text-amber">🐴</span>}
-      </div>
-    </div>
-  );
-}
-
-function EnemyCard({ c, isSelected, onClick }: { c: CombatantState; isSelected: boolean; onClick: () => void }) {
-  const isApproaching = c.isApproaching && (c.arrivalTicksRemaining ?? 0) > 0;
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`w-full rounded border px-3 py-2 text-left transition ${
-        isSelected
-          ? 'border-text-terminal bg-text-terminal/10'
-          : c.isDead
-            ? 'border-red-500/30 bg-red-500/5 opacity-40'
-            : 'border-border-dim bg-bg-primary/40 hover:border-text-terminal/50'
-      }`}
-    >
-      <div className="flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="truncate text-xs font-bold text-text-bright">{c.name}</span>
-          <span className="shrink-0 text-[10px] text-text-dim">Lv{c.level}</span>
-        </div>
-        <div className="flex items-center gap-1.5 shrink-0">
-          {isApproaching && (
-            <span className="rounded bg-text-amber/20 px-1.5 py-0.5 text-[10px] font-bold text-text-amber">
-              接近中 {c.arrivalTicksRemaining}t
-            </span>
-          )}
-          {c.pendingTelegraph && (
-            <span className="rounded bg-red-500/20 px-1.5 py-0.5 text-[10px] font-bold text-red-400 animate-pulse">
-              施法中
-            </span>
-          )}
-        </div>
-      </div>
-      <HpBar current={c.hp} max={c.maxHp} color={c.isDead ? 'bg-red-500/50' : 'bg-combat-damage'} />
-      <div className="mt-0.5 flex items-center justify-between text-[10px] text-text-dim">
-        <span>{c.hp}/{c.maxHp}</span>
-        {c.activeEffects.length > 0 && (
-          <span className="truncate max-w-[120px]">
-            {c.activeEffects.slice(0, 3).map(e => e.type).join(' ')}
-          </span>
-        )}
-      </div>
-    </button>
-  );
-}
+const DIR_LABEL: Record<string, string> = { north: '北', south: '南', east: '東', west: '西' };
+const DIR_ARROW: Record<string, string> = { north: '↓', south: '↑', east: '←', west: '→' };
+const RES_SHORT: Record<string, string> = { rage: '怒', mp: '魔', focus: '專', faith: '信' };
 
 export default function BattlefieldView() {
   const combat = useGameStore(s => s.combat);
-  const selectedCombatTargetId = useGameStore(s => s.selectedCombatTargetId);
-  const setSelectedCombatTargetId = useGameStore(s => s.setSelectedCombatTargetId);
+  const room = useGameStore(s => s.room);
+  const character = useGameStore(s => s.character);
+  const selectedId = useGameStore(s => s.selectedCombatTargetId);
+  const setSelectedId = useGameStore(s => s.setSelectedCombatTargetId);
+
+  const nearby = room?.nearbyCombat;
+
+  const { frontRow, backRow, aliveEnemies, approachingEnemies, maxThreat, selectedEnemy } = useMemo(() => {
+    if (!combat) return { frontRow: [], backRow: [], aliveEnemies: [], approachingEnemies: [], maxThreat: 1, selectedEnemy: undefined };
+    const fr = combat.playerTeam.filter(p => p.formation === 'front');
+    const br = combat.playerTeam.filter(p => p.formation === 'back');
+    const alive = combat.enemyTeam.filter(e => !e.isDead && !e.isApproaching);
+    const approaching = combat.enemyTeam.filter(e => !e.isDead && e.isApproaching);
+    const mt = Math.max(1, ...combat.playerTeam.map(p => p.threat));
+    const sel = combat.enemyTeam.find(e => e.id === selectedId);
+    return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel };
+  }, [combat, selectedId]);
+
+  const neighborMap = useMemo(() => {
+    const map: Partial<Record<CardinalDirection, NearbyCombatNeighborPayload>> = {};
+    nearby?.neighbors?.forEach(n => { map[n.direction] = n; });
+    return map;
+  }, [nearby]);
+
+  const approachByDir = useMemo(() => {
+    const map: Partial<Record<CardinalDirection, ApproachingMonsterPayload[]>> = {};
+    nearby?.approaching?.forEach(a => {
+      (map[a.sourceDirection] ??= []).push(a);
+    });
+    return map;
+  }, [nearby]);
 
   if (!combat) return null;
 
-  const { playerTeam, enemyTeam, round } = combat;
-  const frontRow = playerTeam.filter(p => p.formation === 'front');
-  const backRow = playerTeam.filter(p => p.formation === 'back');
-  const maxThreat = Math.max(1, ...playerTeam.map(p => p.threat));
-  const aliveEnemies = enemyTeam.filter(e => !e.isDead);
-  const deadEnemies = enemyTeam.filter(e => e.isDead);
-
   return (
-    <div className="border-b border-border-dim bg-bg-secondary p-3">
-      {/* Round indicator */}
-      <div className="mb-2 flex items-center justify-between">
-        <span className="text-xs font-bold text-text-terminal">戰場 — 第 {round} 回合</span>
-        <span className="text-[10px] text-text-dim">{aliveEnemies.length} 個敵人存活</span>
-      </div>
+    <div className="border-b border-border-dim bg-bg-secondary flex flex-col">
+      {/* ── 3x3 戰場地圖 ── */}
+      <div className="flex-1 min-h-[45vh] p-1.5 relative">
+        <div className="h-full grid grid-cols-3 grid-rows-3 gap-px">
 
-      {/* Allied formation */}
-      <div className="mb-2 space-y-1">
-        {frontRow.length > 0 && (
-          <div>
-            <div className="mb-1 text-[10px] font-bold text-red-400">前排</div>
-            <div className="flex gap-1.5">
-              {frontRow.map(c => <PlayerCard key={c.id} c={c} maxThreat={maxThreat} />)}
+          {/* Row 1: 左上(隊伍) | 北房 | 右上(目標) */}
+          <CornerPanel title="隊伍狀態" color="text-[#88ccff]">
+            {combat.playerTeam.map(p => (
+              <PartyRow key={p.id} c={p} me={p.id === character?.id} />
+            ))}
+          </CornerPanel>
+
+          <RoomCell dir="北" neighbor={neighborMap.north} />
+
+          <CornerPanel title="選取目標" color="text-red-400">
+            {selectedEnemy ? <TargetDetail c={selectedEnemy} /> : <div className="text-[9px] text-text-dim text-center">點擊敵人選取</div>}
+          </CornerPanel>
+
+          {/* Row 2: 西房 | 本房 | 東房 */}
+          <RoomCell dir="西" neighbor={neighborMap.west} />
+
+          {/* 本房 */}
+          <div className="relative border border-text-terminal/40 bg-text-terminal/5 rounded flex flex-col overflow-hidden">
+            <div className="text-center py-px">
+              <span className="text-[8px] font-bold text-text-terminal">{room?.name || '本房'}</span>
+            </div>
+            {/* 敵方 */}
+            <div className="flex-1 flex items-center justify-center gap-1.5 px-1 flex-wrap">
+              {aliveEnemies.map(e => (
+                <MonIcon key={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
+                  boss={!!e.monsterPhases?.length} selected={e.id === selectedId} cast={e.pendingTelegraph ? `${(e.pendingTelegraph as { skillName?: string }).skillName ?? '施法'}` : undefined}
+                  onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40} />
+              ))}
+            </div>
+            <div className="border-t border-border-dim mx-1" />
+            {/* 我方 */}
+            <div className="flex-1 flex flex-col justify-center px-1 gap-px">
+              {frontRow.length > 0 && (
+                <div className="flex items-center gap-0.5">
+                  <span className="text-[7px] text-red-400 w-3 shrink-0">前</span>
+                  <div className="flex gap-1.5">{frontRow.map(p => <AllyIcon key={p.id} c={p} me={p.id === character?.id} />)}</div>
+                </div>
+              )}
+              {backRow.length > 0 && (
+                <div className="flex items-center gap-0.5">
+                  <span className="text-[7px] text-text-terminal w-3 shrink-0">後</span>
+                  <div className="flex gap-1.5">{backRow.map(p => <AllyIcon key={p.id} c={p} me={p.id === character?.id} />)}</div>
+                </div>
+              )}
             </div>
           </div>
-        )}
-        {backRow.length > 0 && (
-          <div>
-            <div className="mb-1 text-[10px] font-bold text-text-terminal">後排</div>
-            <div className="flex gap-1.5">
-              {backRow.map(c => <PlayerCard key={c.id} c={c} maxThreat={maxThreat} />)}
-            </div>
-          </div>
-        )}
-      </div>
 
-      {/* VS separator */}
-      <div className="my-2 flex items-center gap-2">
-        <div className="flex-1 border-t border-border-dim" />
-        <span className="text-xs font-bold text-text-dim">VS</span>
-        <div className="flex-1 border-t border-border-dim" />
-      </div>
+          <RoomCell dir="東" neighbor={neighborMap.east} />
 
-      {/* Enemies */}
-      <div className="space-y-1.5">
-        {aliveEnemies.map(e => (
-          <EnemyCard
-            key={e.id}
-            c={e}
-            isSelected={selectedCombatTargetId === e.id}
-            onClick={() => setSelectedCombatTargetId(e.id)}
-          />
-        ))}
-        {deadEnemies.length > 0 && (
-          <div className="text-[10px] text-text-dim">{deadEnemies.length} 個敵人已被擊敗</div>
-        )}
+          {/* Row 3: 左下(回合) | 南房 | 右下(仇恨) */}
+          <CornerPanel title="回合資訊" color="text-text-terminal">
+            <RoundInfo round={combat.round} timer={combat.turnTimer} />
+          </CornerPanel>
+
+          <RoomCell dir="南" neighbor={neighborMap.south} />
+
+          <CornerPanel title="仇恨排行" color="text-text-amber">
+            {selectedEnemy ? (
+              combat.playerTeam.filter(p => !p.isDead).sort((a, b) => b.threat - a.threat).map(p => (
+                <ThreatRow key={p.id} name={p.name} pct={maxThreat > 0 ? (p.threat / maxThreat) * 100 : 0} />
+              ))
+            ) : <div className="text-[9px] text-text-dim text-center">選取目標查看</div>}
+          </CornerPanel>
+        </div>
+
+        {/* Approaching dots between rooms */}
+        {(['north', 'south', 'east', 'west'] as CardinalDirection[]).map(dir => {
+          const monsters = approachByDir[dir] ?? approachingEnemies.filter(e => {
+            const ap = nearby?.approaching?.find(a => a.instanceId === e.id);
+            return ap?.sourceDirection === dir;
+          });
+          if (monsters.length === 0 && !(approachByDir[dir]?.length)) return null;
+          const items = approachByDir[dir] ?? [];
+          if (items.length === 0) return null;
+          return items.map((a, i) => (
+            <ApproachDot key={a.instanceId} dir={dir} index={i} total={items.length}
+              img={a.image ? `/mud/images/monsters/${a.image}` : getMonsterImagePath(a.monsterId)}
+              name={a.name} ticks={a.arrivalTicks} />
+          ));
+        })}
       </div>
     </div>
   );
+
+  function setSelectedCombatTargetId(id: string) {
+    setSelectedId(id);
+  }
+}
+
+/* ═══ Corner Panel ═══ */
+function CornerPanel({ title, color, children }: { title: string; color: string; children: ReactNode }) {
+  return (
+    <div className="rounded border border-border-dim bg-bg-primary/60 p-1 flex flex-col overflow-hidden">
+      <div className={`text-[8px] font-bold ${color} mb-0.5`}>{title}</div>
+      <div className="flex-1 flex flex-col justify-center gap-0.5 overflow-y-auto min-h-0">{children}</div>
+    </div>
+  );
+}
+
+/* ═══ Party Row (左上) ═══ */
+function PartyRow({ c, me }: { c: CombatantState; me: boolean }) {
+  const hpPct = c.maxHp > 0 ? (c.hp / c.maxHp) * 100 : 0;
+  const resPct = c.maxResource > 0 ? (c.resource / c.maxResource) * 100 : 0;
+  const hpColor = hpPct < 30 ? 'bg-red-500' : hpPct < 60 ? 'bg-text-amber' : 'bg-text-terminal';
+  return (
+    <div className={`flex items-center gap-1 rounded px-0.5 py-px ${me ? 'bg-text-terminal/5' : c.isDead ? 'opacity-40' : ''}`}>
+      <img src={getClassIconPath(c.classId)} alt="" className="w-4 h-4 rounded border border-border-dim object-cover shrink-0" />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-center gap-0.5">
+          <span className={`text-[8px] font-bold truncate ${me ? 'text-text-terminal' : 'text-text-bright'}`}>{c.name}</span>
+          {c.mounted && <span className="text-[7px]">🐴</span>}
+          {c.activeEffects.slice(0, 2).map((e, i) => <EffectTag key={i} e={e} />)}
+        </div>
+        <div className="flex items-center gap-0.5">
+          <div className="flex-1 h-1 rounded bg-bg-primary/60"><div className={`h-full rounded ${hpColor}`} style={{ width: `${hpPct}%` }} /></div>
+          <div className="w-5 h-1 rounded bg-bg-primary/60"><div className="h-full rounded bg-text-amber/50" style={{ width: `${resPct}%` }} /></div>
+          <span className="text-[6px] text-text-dim">{RES_SHORT[c.resourceType] ?? ''}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ═══ Target Detail (右上) ═══ */
+function TargetDetail({ c }: { c: CombatantState }) {
+  const hpPct = c.maxHp > 0 ? (c.hp / c.maxHp) * 100 : 0;
+  const isBoss = !!c.monsterPhases?.length;
+  return (
+    <>
+      <div className="flex items-center gap-1 mb-0.5">
+        <div className="w-8 h-8 rounded border-2 border-red-500/60 overflow-hidden shrink-0">
+          <img src={getMonsterImagePath(c.id.replace(/_\d+$/, '')) ?? ''} alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="min-w-0">
+          <div className="flex items-center gap-0.5">
+            {isBoss && <span className="text-[6px] rounded bg-red-500/20 border border-red-500/30 px-0.5 text-red-400 font-bold">BOSS</span>}
+            <span className="text-[9px] font-bold text-text-bright truncate">{c.name}</span>
+          </div>
+          <span className="text-[7px] text-text-dim">Lv{c.level}{c.currentMonsterPhase && c.currentMonsterPhase > 1 ? ` · 階段${c.currentMonsterPhase}` : ''}</span>
+        </div>
+      </div>
+      <div className="flex items-center gap-0.5 mb-0.5">
+        <span className="text-[7px] text-text-dim w-3">HP</span>
+        <div className="flex-1 h-1.5 rounded bg-bg-primary/60"><div className="h-full rounded bg-combat-damage" style={{ width: `${hpPct}%` }} /></div>
+        <span className="text-[7px] text-text-bright shrink-0">{c.hp.toLocaleString()}/{c.maxHp.toLocaleString()}</span>
+      </div>
+      {c.pendingTelegraph && (
+        <div className="flex items-center gap-0.5 mb-0.5">
+          <span className="text-[7px] text-red-400 animate-pulse">⏳ {(c.pendingTelegraph as { skillName?: string }).skillName ?? '施法中'}</span>
+        </div>
+      )}
+      {c.activeEffects.length > 0 && (
+        <div className="flex flex-wrap gap-0.5">{c.activeEffects.map((e, i) => <EffectTag key={i} e={e} />)}</div>
+      )}
+    </>
+  );
+}
+
+/* ═══ Round Info (左下) ═══ */
+function RoundInfo({ round, timer }: { round: number; timer: number }) {
+  const pct = Math.max(0, Math.min(100, (timer / 5) * 100));
+  return (
+    <>
+      <div className="text-center">
+        <div className="text-lg font-bold text-text-terminal">{round}</div>
+        <div className="text-[7px] text-text-dim">第 {round} 回合</div>
+      </div>
+      <div>
+        <div className="flex items-center justify-between text-[7px] mb-px">
+          <span className="text-text-dim">行動倒數</span>
+          <span className="text-text-amber font-bold">{timer.toFixed(1)}s</span>
+        </div>
+        <div className="h-1.5 rounded bg-bg-primary/60">
+          <div className="h-full rounded bg-text-amber/70 transition-all" style={{ width: `${pct}%` }} />
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ═══ Threat Row (右下) ═══ */
+function ThreatRow({ name, pct }: { name: string; pct: number }) {
+  const color = pct >= 90 ? 'bg-red-400' : pct >= 50 ? 'bg-text-amber' : 'bg-text-dim';
+  return (
+    <div className="flex items-center gap-0.5">
+      <span className="text-[7px] text-text-bright w-12 truncate">{name}</span>
+      <div className="flex-1 h-1 rounded bg-bg-primary/40"><div className={`h-full rounded ${color}`} style={{ width: `${pct}%` }} /></div>
+      <span className="text-[6px] text-text-dim w-5 text-right">{Math.round(pct)}%</span>
+    </div>
+  );
+}
+
+/* ═══ Room Cell (東西南北) ═══ */
+function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeighborPayload }) {
+  const d = dir as 'north' | 'south' | 'east' | 'west';
+  const label = DIR_LABEL[d as string] ?? dir;
+  const hasMonsters = neighbor && neighbor.monsterCount > 0;
+  return (
+    <div className={`rounded border p-0.5 flex flex-col ${hasMonsters ? 'border-border-dim bg-bg-primary/80' : 'border-border-dim/30 bg-bg-primary/20'}`}>
+      <div className="text-[7px] text-text-dim text-center">{label}方{neighbor?.roomName ? ` · ${neighbor.roomName}` : ''}</div>
+      {hasMonsters ? (
+        <div className="flex-1 flex items-center justify-center gap-1 flex-wrap">
+          {neighbor?.scouted && neighbor.monsters ? (
+            neighbor.monsters.map(m => (
+              <MonIcon key={m.id} name={m.name} img={m.image ? `/mud/images/monsters/${m.image}` : getMonsterImagePath(m.monsterId)} hp={m.maxHp > 0 ? (m.hp / m.maxHp) * 100 : 100} size={28} />
+            ))
+          ) : (
+            <span className="text-[9px] text-red-400">怪×{neighbor?.monsterCount}</span>
+          )}
+          {neighbor?.scouted && <div className="text-[7px] text-text-terminal">✓偵查</div>}
+        </div>
+      ) : (
+        <div className="flex-1 flex items-center justify-center text-[8px] text-text-dim/30">
+          {neighbor?.passable === false ? '牆' : '—'}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ═══ Monster Icon ═══ */
+function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36 }: {
+  name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number;
+}) {
+  const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#ff6666';
+  return (
+    <div className="flex flex-col items-center gap-px cursor-pointer group" title={`${name} HP:${Math.round(hp)}%`} onClick={onClick}>
+      {cast && <span className="text-[6px] text-red-400 animate-pulse leading-none">⏳{cast}</span>}
+      <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: size - 4, height: 2 }}>
+        <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
+      </div>
+      <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-text-terminal shadow-[0_0_6px_rgba(0,255,136,0.3)]' : boss ? 'border-red-500/60' : 'border-border-dim group-hover:border-text-terminal/40'}`} style={{ width: size, height: size }}>
+        {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary flex items-center justify-center text-[8px] text-text-dim">{name[0]}</div>}
+      </div>
+      <span className={`text-[7px] leading-none ${boss ? 'text-red-300 font-bold' : 'text-text-dim'}`}>{name.length > 4 ? name.slice(0, 3) + '..' : name}</span>
+    </div>
+  );
+}
+
+/* ═══ Ally Icon ═══ */
+function AllyIcon({ c, me }: { c: CombatantState; me: boolean }) {
+  const hpPct = c.maxHp > 0 ? (c.hp / c.maxHp) * 100 : 0;
+  const hpColor = hpPct < 30 ? '#ff4444' : hpPct < 60 ? '#ffb800' : '#00ff88';
+  return (
+    <div className={`flex flex-col items-center gap-px ${c.isDead ? 'opacity-30' : ''}`} title={`${c.name} HP:${Math.round(hpPct)}%`}>
+      <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: 26, height: 2 }}>
+        <div className="h-full rounded-full" style={{ width: `${hpPct}%`, backgroundColor: hpColor }} />
+      </div>
+      <div className={`rounded-lg border-2 overflow-hidden ${me ? 'border-text-terminal/60' : hpPct < 30 ? 'border-red-500/40' : 'border-border-dim'}`} style={{ width: 28, height: 28 }}>
+        <img src={getClassIconPath(c.classId)} alt="" className="w-full h-full object-cover" />
+      </div>
+      <div className="flex items-center gap-px">
+        {c.mounted && <span className="text-[6px]">🐴</span>}
+        <span className={`text-[7px] leading-none ${me ? 'text-text-terminal' : 'text-text-dim'}`}>{c.name.length > 3 ? c.name.slice(0, 2) + '..' : c.name}</span>
+      </div>
+    </div>
+  );
+}
+
+/* ═══ Approaching Dot ═══ */
+function ApproachDot({ dir, index, total, img, name, ticks }: {
+  dir: CardinalDirection; index: number; total: number; img?: string; name: string; ticks: number;
+}) {
+  const arrow = DIR_ARROW[dir] ?? '?';
+  const offset = total > 1 ? (index - (total - 1) / 2) * 34 : 0;
+  const style: React.CSSProperties = { position: 'absolute' };
+  if (dir === 'north') { style.top = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
+  if (dir === 'south') { style.bottom = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
+  if (dir === 'east') { style.right = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
+  if (dir === 'west') { style.left = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
+
+  return (
+    <div className="flex flex-col items-center animate-pulse z-10" style={style} title={`${name} ${ticks}t`}>
+      <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
+        {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
+      </div>
+      <span className="text-[6px] text-text-amber font-bold leading-none">{arrow}{ticks}t</span>
+    </div>
+  );
+}
+
+/* ═══ Effect Tag ═══ */
+function EffectTag({ e }: { e: ActiveStatusEffect }) {
+  return <span className="text-[6px] rounded bg-combat-buff/10 px-0.5 text-combat-buff">{e.type.replace(/_/g, '')}{e.remainingDuration > 0 ? e.remainingDuration : ''}</span>;
 }
