@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef, useState } from 'react';
+import { useMemo, useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { CombatantState, ActiveStatusEffect, CardinalDirection, ApproachingMonsterPayload, NearbyCombatNeighborPayload } from '@game/shared';
@@ -100,7 +100,7 @@ export default function BattlefieldView() {
             {/* 戰鬥中敵方 */}
             <div className="flex-1 flex items-center justify-center gap-1.5 px-1 flex-wrap">
               {aliveEnemies.map(e => (
-                <MonIcon key={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
+                <MonIcon key={e.id} enemyId={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
                   boss={!!e.monsterPhases?.length} selected={e.id === selectedId} cast={e.pendingTelegraph ? `${(e.pendingTelegraph as { skillName?: string }).skillName ?? '施法'}` : undefined}
                   onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40}
                   slideFrom={justArrived.get(e.id)} />
@@ -310,45 +310,37 @@ function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeigh
 }
 
 /* ═══ Monster Icon ═══ */
-const SLIDE_OFFSET: Record<CardinalDirection, { x: number; y: number }> = {
-  north: { x: 0, y: -80 },
-  south: { x: 0, y: 80 },
-  east: { x: 80, y: 0 },
-  west: { x: -80, y: 0 },
-};
+const monArrivalTimestamps = new Map<string, number>();
 
-function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle, slideFrom }: {
+function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle, slideFrom, enemyId }: {
   name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number; idle?: boolean;
-  slideFrom?: CardinalDirection;
+  slideFrom?: CardinalDirection; enemyId?: string;
 }) {
   const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#ff6666';
-  const [slid, setSlid] = useState(!slideFrom);
-  const slidMountRef = useRef(false);
 
-  useEffect(() => {
-    if (!slideFrom || slidMountRef.current) return;
-    slidMountRef.current = true;
-    const t = setTimeout(() => setSlid(true), 50);
-    return () => clearTimeout(t);
-  }, [slideFrom]);
-
-  const offset = slideFrom ? SLIDE_OFFSET[slideFrom] : undefined;
-  const slideStyle: React.CSSProperties = offset && !slid
-    ? { transform: `translate(${offset.x}px, ${offset.y}px)`, opacity: 0.6, transition: 'none' }
-    : offset
-      ? { transform: 'translate(0, 0)', opacity: 1, transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease-out' }
-      : {};
+  let animClass = '';
+  if (slideFrom && enemyId) {
+    if (!monArrivalTimestamps.has(enemyId)) {
+      monArrivalTimestamps.set(enemyId, Date.now());
+    }
+    const age = Date.now() - monArrivalTimestamps.get(enemyId)!;
+    if (age < 2000) {
+      animClass = `mon-arrive-${slideFrom}`;
+    }
+  }
 
   return (
-    <div className={`flex flex-col items-center gap-px cursor-pointer group ${idle ? 'opacity-60 hover:opacity-100' : ''}`} title={`${name} HP:${Math.round(hp)}%${idle ? ' (點擊攻擊)' : ''}`} onClick={onClick} style={slideStyle}>
-      {cast && <span className="text-[6px] text-red-400 animate-pulse leading-none">⏳{cast}</span>}
-      <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: size - 4, height: 2 }}>
-        <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
+    <div className={`flex flex-col items-center gap-px cursor-pointer group ${idle ? 'opacity-60 hover:opacity-100' : ''}`} title={`${name} HP:${Math.round(hp)}%${idle ? ' (點擊攻擊)' : ''}`} onClick={onClick}>
+      <div className={animClass}>
+        {cast && <span className="text-[6px] text-red-400 animate-pulse leading-none">⏳{cast}</span>}
+        <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: size - 4, height: 2 }}>
+          <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
+        </div>
+        <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-text-terminal shadow-[0_0_6px_rgba(0,255,136,0.3)]' : idle ? 'border-text-amber/40 group-hover:border-text-amber' : boss ? 'border-red-500/60' : 'border-border-dim group-hover:border-text-terminal/40'}`} style={{ width: size, height: size }}>
+          {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary flex items-center justify-center text-[8px] text-text-dim">{name[0]}</div>}
+        </div>
+        <span className={`text-[7px] leading-none ${idle ? 'text-text-amber' : boss ? 'text-red-300 font-bold' : 'text-text-dim'}`}>{name.length > 4 ? name.slice(0, 3) + '..' : name}</span>
       </div>
-      <div className={`rounded-lg border-2 overflow-hidden transition ${selected ? 'border-text-terminal shadow-[0_0_6px_rgba(0,255,136,0.3)]' : idle ? 'border-text-amber/40 group-hover:border-text-amber' : boss ? 'border-red-500/60' : 'border-border-dim group-hover:border-text-terminal/40'}`} style={{ width: size, height: size }}>
-        {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary flex items-center justify-center text-[8px] text-text-dim">{name[0]}</div>}
-      </div>
-      <span className={`text-[7px] leading-none ${idle ? 'text-text-amber' : boss ? 'text-red-300 font-bold' : 'text-text-dim'}`}>{name.length > 4 ? name.slice(0, 3) + '..' : name}</span>
     </div>
   );
 }

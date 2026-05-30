@@ -169,6 +169,38 @@ body {
   100%    { transform: translateX(0); opacity: 1; }
 }
 
+/* === Monster arrive into combat from approaching === */
+
+.mon-arrive-north {
+  animation: mon-from-north 1s ease-out both;
+}
+.mon-arrive-south {
+  animation: mon-from-south 1s ease-out both;
+}
+.mon-arrive-east {
+  animation: mon-from-east 1s ease-out both;
+}
+.mon-arrive-west {
+  animation: mon-from-west 1s ease-out both;
+}
+
+@keyframes mon-from-north {
+  0%   { transform: translateY(-60px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes mon-from-south {
+  0%   { transform: translateY(60px); opacity: 0.3; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes mon-from-east {
+  0%   { transform: translateX(60px); opacity: 0.3; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes mon-from-west {
+  0%   { transform: translateX(-60px); opacity: 0.3; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
 /* === Panel slide transitions === */
 
 .panel-enter {
