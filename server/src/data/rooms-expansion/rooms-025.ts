@@ -8,7 +8,7 @@ emerald_canopy_lightning_bark_shrine: {
     image: 'emerald_canopy_lightning_bark_shrine.png',
     imagePrompt: '雷皮小祠 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雷皮小祠位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雷皮小祠位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_greenheart_span', description: '綠心跨枝在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_cloudroot_bridge', description: '雲根橋在南側' },
@@ -35,7 +35,7 @@ emerald_canopy_hollow_trunk_market: {
     image: 'emerald_canopy_hollow_trunk_market.png',
     imagePrompt: '空樹市集 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '空樹市集位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '空樹市集位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在北側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在東側' },
@@ -61,7 +61,7 @@ emerald_canopy_ancient_bee_hive: {
     image: 'emerald_canopy_ancient_bee_hive.png',
     imagePrompt: '古蜂巢 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '古蜂巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '古蜂巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_elite_patrol_perch', description: '精英巡梢棲木在北側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_hollow_trunk_market', description: '空樹市集在西側' },
@@ -88,7 +88,7 @@ emerald_canopy_cloudroot_bridge: {
     image: 'emerald_canopy_cloudroot_bridge.png',
     imagePrompt: '雲根橋 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雲根橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雲根橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_lightning_bark_shrine', description: '雷皮小祠在北側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在西側' },
@@ -115,7 +115,7 @@ emerald_canopy_stag_crown_clearing: {
     image: 'emerald_canopy_stag_crown_clearing.png',
     imagePrompt: '鹿冠空地 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鹿冠空地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鹿冠空地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'west', targetRoomId: 'emerald_canopy_cloudroot_bridge', description: '雲根橋在西側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_high_green_court', description: '高綠庭在東側' },
@@ -141,7 +141,7 @@ emerald_canopy_high_green_court: {
     image: 'emerald_canopy_high_green_court.png',
     imagePrompt: '高綠庭 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '高綠庭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '高綠庭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'west', targetRoomId: 'emerald_canopy_stag_crown_clearing', description: '鹿冠空地在西側' },
     ],
@@ -169,7 +169,7 @@ emerald_canopy_high_green_court: {
     image: 'hollow_mountain_entrance_wind_gate.png',
     imagePrompt: '風門入口 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain mountain, clear lantern light',
     description:
-      '風門入口位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '風門入口位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'east', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在東側' },
     ],
@@ -194,7 +194,7 @@ hollow_mountain_spiral_mine_ramp: {
     image: 'hollow_mountain_spiral_mine_ramp.png',
     imagePrompt: '螺旋礦坡 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '螺旋礦坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '螺旋礦坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'south', targetRoomId: 'hollow_mountain_frost_vein_wall', description: '霜脈壁在南側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_entrance_wind_gate', description: '風門入口在西側' },
@@ -221,7 +221,7 @@ hollow_mountain_echo_market: {
     image: 'hollow_mountain_echo_market.png',
     imagePrompt: '回音市集 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '回音市集位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '回音市集位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'south', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在南側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在西側' },
@@ -247,7 +247,7 @@ hollow_mountain_frost_vein_wall: {
     image: 'hollow_mountain_frost_vein_wall.png',
     imagePrompt: '霜脈壁 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '霜脈壁位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '霜脈壁位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_spiral_mine_ramp', description: '螺旋礦坡在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在南側' },
@@ -274,7 +274,7 @@ hollow_mountain_thunder_ore_bridge: {
     image: 'hollow_mountain_thunder_ore_bridge.png',
     imagePrompt: '雷礦橋 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '雷礦橋位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '雷礦橋位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_echo_market', description: '回音市集在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在南側' },
@@ -302,7 +302,7 @@ hollow_mountain_hollow_bell_chamber: {
     image: 'hollow_mountain_hollow_bell_chamber.png',
     imagePrompt: '空鐘室 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '空鐘室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '空鐘室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'south', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在南側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在西側' },
@@ -328,7 +328,7 @@ hollow_mountain_quarry_lift: {
     image: 'hollow_mountain_quarry_lift.png',
     imagePrompt: '採石升降臺 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '採石升降臺位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '採石升降臺位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'east', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在東側' },
     ],
@@ -353,7 +353,7 @@ hollow_mountain_black_granite_cut: {
     image: 'hollow_mountain_black_granite_cut.png',
     imagePrompt: '黑花崗切場 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '黑花崗切場位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '黑花崗切場位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_frost_vein_wall', description: '霜脈壁在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_deep_mushroom_shelf', description: '深菇棚在南側' },
@@ -381,7 +381,7 @@ hollow_mountain_windpipe_tunnel: {
     image: 'hollow_mountain_windpipe_tunnel.png',
     imagePrompt: '風管隧道 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '風管隧道位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '風管隧道位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_thunder_ore_bridge', description: '雷礦橋在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在南側' },
@@ -409,7 +409,7 @@ hollow_mountain_crystal_scree: {
     image: 'hollow_mountain_crystal_scree.png',
     imagePrompt: '晶石碎坡 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '晶石碎坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '晶石碎坡位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_hollow_bell_chamber', description: '空鐘室在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在南側' },
@@ -437,7 +437,7 @@ hollow_mountain_dungeon_hub_cavern: {
     image: 'hollow_mountain_dungeon_hub_cavern.png',
     imagePrompt: '洞城樞紐 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '洞城樞紐位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '洞城樞紐位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'south', targetRoomId: 'hollow_mountain_storm_capacitor', description: '風暴蓄能室在南側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在西側' },
@@ -463,7 +463,7 @@ hollow_mountain_deep_mushroom_shelf: {
     image: 'hollow_mountain_deep_mushroom_shelf.png',
     imagePrompt: '深菇棚 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '深菇棚位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '深菇棚位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_black_granite_cut', description: '黑花崗切場在北側' },
       { direction: 'east', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在東側' },
@@ -489,7 +489,7 @@ hollow_mountain_ice_chain_gallery: {
     image: 'hollow_mountain_ice_chain_gallery.png',
     imagePrompt: '冰鏈廊 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '冰鏈廊位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '冰鏈廊位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_windpipe_tunnel', description: '風管隧道在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_old_drill_nest', description: '舊鑽巢在南側' },
@@ -517,7 +517,7 @@ hollow_mountain_miner_oath_post: {
     image: 'hollow_mountain_miner_oath_post.png',
     imagePrompt: '礦誓柱 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '礦誓柱位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '礦誓柱位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_crystal_scree', description: '晶石碎坡在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在南側' },
@@ -545,7 +545,7 @@ hollow_mountain_storm_capacitor: {
     image: 'hollow_mountain_storm_capacitor.png',
     imagePrompt: '風暴蓄能室 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '風暴蓄能室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '風暴蓄能室位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_dungeon_hub_cavern', description: '洞城樞紐在北側' },
       { direction: 'south', targetRoomId: 'hollow_mountain_ancient_cart_maze', description: '古礦車迷宮在南側' },
@@ -572,7 +572,7 @@ hollow_mountain_old_drill_nest: {
     image: 'hollow_mountain_old_drill_nest.png',
     imagePrompt: '舊鑽巢 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '舊鑽巢位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '舊鑽巢位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_ice_chain_gallery', description: '冰鏈廊在北側' },
       { direction: 'east', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在東側' },
@@ -598,7 +598,7 @@ hollow_mountain_silver_breath_well: {
     image: 'hollow_mountain_silver_breath_well.png',
     imagePrompt: '銀息井 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '銀息井位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '銀息井位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_miner_oath_post', description: '礦誓柱在北側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_old_drill_nest', description: '舊鑽巢在西側' },
@@ -625,7 +625,7 @@ hollow_mountain_ancient_cart_maze: {
     image: 'hollow_mountain_ancient_cart_maze.png',
     imagePrompt: '古礦車迷宮 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '古礦車迷宮位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '古礦車迷宮位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'north', targetRoomId: 'hollow_mountain_storm_capacitor', description: '風暴蓄能室在北側' },
       { direction: 'west', targetRoomId: 'hollow_mountain_silver_breath_well', description: '銀息井在西側' },
@@ -652,7 +652,7 @@ hollow_mountain_high_vault_stairs: {
     image: 'hollow_mountain_high_vault_stairs.png',
     imagePrompt: '高穹階 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '高穹階位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '高穹階位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'west', targetRoomId: 'hollow_mountain_ancient_cart_maze', description: '古礦車迷宮在西側' },
       { direction: 'east', targetRoomId: 'hollow_mountain_mountain_heart_core', description: '山心核心在東側' },
@@ -679,7 +679,7 @@ hollow_mountain_mountain_heart_core: {
     image: 'hollow_mountain_mountain_heart_core.png',
     imagePrompt: '山心核心 in hollow_mountain, vast hollow mountain interior with spiral mine ramps, echo caverns, frost veins, thunder ore bridge, quarry lifts and wind tunnels, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain mountain, clear lantern light',
     description:
-      '山心核心位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 search 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
+      '山心核心位於整座山腹被挖空的空心山內，螺旋礦坡、回音市集、霜脈壁、雷礦橋與洞城樞紐沿著巨大中空穹頂層層下沉。這裡是高階採礦、隊伍推進與地下城中轉區，旅人可以 觀察 風向刻痕、礦車軌距、冰鏈張力和雷礦脈衝來判斷可採層位，也能 搜索 黑花崗切場、深菇棚、古礦車迷宮與山心核心尋找稀有礦、舊鑽頭和洞城路牌。若隊伍忽略穿山風暴、升降臺斷索與風管隧道的回聲假象，惡魔礦兵、龍騎士、古龍與虛空行者會把退路封進山壁；若穩定沿風門入口、高穹階與銀息井推進，則能帶回完整採礦圖、山腹風壓讀數、雷礦樣本與安全返程標記',
     exits: [
       { direction: 'west', targetRoomId: 'hollow_mountain_high_vault_stairs', description: '高穹階在西側' },
     ],
@@ -707,7 +707,7 @@ hollow_mountain_mountain_heart_core: {
     image: 'serpent_delta_entrance_ferry.png',
     imagePrompt: '渡口入口 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '渡口入口位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '渡口入口位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'east', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在東側' },
     ],
@@ -732,7 +732,7 @@ serpent_delta_split_reed_bank: {
     image: 'serpent_delta_split_reed_bank.png',
     imagePrompt: '分流水蘆岸 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '分流水蘆岸位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '分流水蘆岸位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'south', targetRoomId: 'serpent_delta_stilt_hamlet', description: '吊腳村在南側' },
       { direction: 'west', targetRoomId: 'serpent_delta_entrance_ferry', description: '渡口入口在西側' },
@@ -759,7 +759,7 @@ serpent_delta_mudfish_pool: {
     image: 'serpent_delta_mudfish_pool.png',
     imagePrompt: '泥魚潭 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '泥魚潭位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '泥魚潭位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'south', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在南側' },
       { direction: 'west', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在西側' },
@@ -785,7 +785,7 @@ serpent_delta_stilt_hamlet: {
     image: 'serpent_delta_stilt_hamlet.png',
     imagePrompt: '吊腳村 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '吊腳村位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '吊腳村位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_split_reed_bank', description: '分流水蘆岸在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在南側' },
@@ -812,7 +812,7 @@ serpent_delta_cold_bend: {
     image: 'serpent_delta_cold_bend.png',
     imagePrompt: '冷水彎 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '冷水彎位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '冷水彎位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_mudfish_pool', description: '泥魚潭在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在南側' },
@@ -840,7 +840,7 @@ serpent_delta_scale_net_yard: {
     image: 'serpent_delta_scale_net_yard.png',
     imagePrompt: '鱗網場 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '鱗網場位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '鱗網場位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'south', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在南側' },
       { direction: 'west', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在西側' },
@@ -866,7 +866,7 @@ serpent_delta_heron_marker: {
     image: 'serpent_delta_heron_marker.png',
     imagePrompt: '鷺標洲 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '鷺標洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '鷺標洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'east', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在東側' },
     ],
@@ -891,7 +891,7 @@ serpent_delta_green_herb_islet: {
     image: 'serpent_delta_green_herb_islet.png',
     imagePrompt: '青藥小洲 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '青藥小洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '青藥小洲位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_stilt_hamlet', description: '吊腳村在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_mangrove_maze', description: '紅樹迷道在南側' },
@@ -919,7 +919,7 @@ serpent_delta_sunken_pirogue: {
     image: 'serpent_delta_sunken_pirogue.png',
     imagePrompt: '沉獨木舟 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '沉獨木舟位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '沉獨木舟位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_cold_bend', description: '冷水彎在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在南側' },
@@ -947,7 +947,7 @@ serpent_delta_serpent_shrine_steps: {
     image: 'serpent_delta_serpent_shrine_steps.png',
     imagePrompt: '蛇祠階 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '蛇祠階位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '蛇祠階位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_scale_net_yard', description: '鱗網場在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在南側' },
@@ -975,7 +975,7 @@ serpent_delta_flooded_granary: {
     image: 'serpent_delta_flooded_granary.png',
     imagePrompt: '淹穀倉 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '淹穀倉位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '淹穀倉位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'south', targetRoomId: 'serpent_delta_moonlit_fishing_post', description: '月釣哨在南側' },
       { direction: 'west', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在西側' },
@@ -1001,7 +1001,7 @@ serpent_delta_mangrove_maze: {
     image: 'serpent_delta_mangrove_maze.png',
     imagePrompt: '紅樹迷道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '紅樹迷道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '紅樹迷道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_green_herb_islet', description: '青藥小洲在北側' },
       { direction: 'east', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在東側' },
@@ -1027,7 +1027,7 @@ serpent_delta_ice_mist_channel: {
     image: 'serpent_delta_ice_mist_channel.png',
     imagePrompt: '冰霧水道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '冰霧水道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '冰霧水道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_sunken_pirogue', description: '沉獨木舟在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_old_levy_causeway', description: '舊堤道在南側' },
@@ -1055,7 +1055,7 @@ serpent_delta_egg_mound: {
     image: 'serpent_delta_egg_mound.png',
     imagePrompt: '蛇卵丘 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '蛇卵丘位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '蛇卵丘位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_serpent_shrine_steps', description: '蛇祠階在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在南側' },
@@ -1083,7 +1083,7 @@ serpent_delta_moonlit_fishing_post: {
     image: 'serpent_delta_moonlit_fishing_post.png',
     imagePrompt: '月釣哨 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '月釣哨位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '月釣哨位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_flooded_granary', description: '淹穀倉在北側' },
       { direction: 'south', targetRoomId: 'serpent_delta_blue_lotus_marsh', description: '藍蓮沼在南側' },
@@ -1110,7 +1110,7 @@ serpent_delta_old_levy_causeway: {
     image: 'serpent_delta_old_levy_causeway.png',
     imagePrompt: '舊堤道 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '舊堤道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '舊堤道位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_ice_mist_channel', description: '冰霧水道在北側' },
       { direction: 'east', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在東側' },
@@ -1136,7 +1136,7 @@ serpent_delta_priest_mask_hut: {
     image: 'serpent_delta_priest_mask_hut.png',
     imagePrompt: '祭司面具屋 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '祭司面具屋位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '祭司面具屋位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_egg_mound', description: '蛇卵丘在北側' },
       { direction: 'west', targetRoomId: 'serpent_delta_old_levy_causeway', description: '舊堤道在西側' },
@@ -1163,7 +1163,7 @@ serpent_delta_blue_lotus_marsh: {
     image: 'serpent_delta_blue_lotus_marsh.png',
     imagePrompt: '藍蓮沼 in serpent_delta, winding river delta with reed banks, stilt hamlet, serpent shrine, mangrove channels, fishing posts, blue lotus marsh and cold mist water, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain river, clear lantern light',
     description:
-      '藍蓮沼位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 search 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
+      '藍蓮沼位於蜿蜒河道分裂成無數支流的蛇河三角洲，渡口、蘆岸、吊腳村、冷水彎與蛇祠階沿著水位變化互相連接。這裡是釣魚、採集與高密度遭遇區，旅人可以 觀察 水痕、鱗網結、鷺鳥標記和祭壇蛇紋來判斷潮位與怪群路線，也能 搜索 青藥小洲、藍蓮沼、泥魚潭與淹穀倉尋找藥草、魚骨、冰霧水和村落供品。若隊伍忽略分流倒灌、紅樹迷道與蛇卵丘的震動，湖蛇、暗法師、詛咒祭司與沼地獵手會把小船逼入死水；若穩定沿渡口入口、舊堤道與百口合流推進，則能抵達蛇神背水並帶回釣點記錄、採集路線與安全返航水標',
     exits: [
       { direction: 'north', targetRoomId: 'serpent_delta_moonlit_fishing_post', description: '月釣哨在北側' },
       { direction: 'west', targetRoomId: 'serpent_delta_priest_mask_hut', description: '祭司面具屋在西側' },

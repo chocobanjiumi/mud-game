@@ -8,7 +8,7 @@ machine_graveyard_core_wake_hall: {
     image: 'machine_graveyard_core_wake_hall.png',
     imagePrompt: '核心甦醒廳 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '核心甦醒廳位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '核心甦醒廳位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_magnet_tower_base', description: '回到磁塔基座' },
       { direction: 'north', targetRoomId: 'machine_graveyard_piston_shrine', description: '活塞祠在北側' },
@@ -34,7 +34,7 @@ machine_graveyard_wireweed_garden: {
     image: 'machine_graveyard_wireweed_garden.png',
     imagePrompt: '線草園 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '線草園位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '線草園位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_oil_black_cistern', description: '回到黑油蓄池' },
       { direction: 'east', targetRoomId: 'machine_graveyard_battery_catacomb', description: '電池墓窖在東側' },
@@ -60,7 +60,7 @@ machine_graveyard_battery_catacomb: {
     image: 'machine_graveyard_battery_catacomb.png',
     imagePrompt: '電池墓窖 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '電池墓窖位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '電池墓窖位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_wireweed_garden', description: '回到線草園' },
       { direction: 'south', targetRoomId: 'machine_graveyard_clockwork_nest', description: '回到鐘械巢' },
@@ -88,7 +88,7 @@ machine_graveyard_servo_bone_yard: {
     image: 'machine_graveyard_servo_bone_yard.png',
     imagePrompt: '伺服骨場 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '伺服骨場位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '伺服骨場位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_battery_catacomb', description: '回到電池墓窖' },
       { direction: 'south', targetRoomId: 'machine_graveyard_magnet_tower_base', description: '回到磁塔基座' },
@@ -116,7 +116,7 @@ machine_graveyard_piston_shrine: {
     image: 'machine_graveyard_piston_shrine.png',
     imagePrompt: '活塞祠 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '活塞祠位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '活塞祠位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_servo_bone_yard', description: '回到伺服骨場' },
       { direction: 'south', targetRoomId: 'machine_graveyard_core_wake_hall', description: '回到核心甦醒廳' },
@@ -143,7 +143,7 @@ machine_graveyard_signal_dish: {
     image: 'machine_graveyard_signal_dish.png',
     imagePrompt: '訊號碟 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '訊號碟位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '訊號碟位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'south', targetRoomId: 'machine_graveyard_battery_catacomb', description: '回到電池墓窖' },
       { direction: 'east', targetRoomId: 'machine_graveyard_deep_bore_lift', description: '深鑽升降井在東側' },
@@ -169,7 +169,7 @@ machine_graveyard_deep_bore_lift: {
     image: 'machine_graveyard_deep_bore_lift.png',
     imagePrompt: '深鑽升降井 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '深鑽升降井位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '深鑽升降井位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_signal_dish', description: '回到訊號碟' },
       { direction: 'south', targetRoomId: 'machine_graveyard_servo_bone_yard', description: '回到伺服骨場' },
@@ -196,7 +196,7 @@ machine_graveyard_ancient_cpu_vault: {
     image: 'machine_graveyard_ancient_cpu_vault.png',
     imagePrompt: '古算核庫 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '古算核庫位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '古算核庫位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_deep_bore_lift', description: '回到深鑽升降井' },
       { direction: 'south', targetRoomId: 'machine_graveyard_piston_shrine', description: '回到活塞祠' },
@@ -223,7 +223,7 @@ machine_graveyard_runaway_guard_line: {
     image: 'machine_graveyard_runaway_guard_line.png',
     imagePrompt: '失控守衛列 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '失控守衛列位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '失控守衛列位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_ancient_cpu_vault', description: '回到古算核庫' },
       { direction: 'east', targetRoomId: 'machine_graveyard_prime_reactor_shell', description: '主反應殼在東側' },
@@ -249,7 +249,7 @@ machine_graveyard_prime_reactor_shell: {
     image: 'machine_graveyard_prime_reactor_shell.png',
     imagePrompt: '主反應殼 in machine_graveyard, underground ancient machine graveyard with rusted cranes, broken gears, sparking rails, oil cisterns, magnet tower, dormant reactor core, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain tower, clear lantern light',
     description:
-      '主反應殼位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 search 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
+      '主反應殼位於古代機械殘骸堆成山脈的機械墳場內，斷裂吊臂、鏽轉閘、火花軌、黑油蓄池與半醒核心把地下採集區變成危險迷宮。這裡是高階採礦與隊伍探索區，旅人可以 觀察 齒輪磨痕、電池銘牌、磁塔偏角和訊號碟雜訊來判斷機械甦醒程度，也能 搜索 銅脈棚、線草園、古算核庫與主反應殼尋找稀有零件、導電礦與失落藍圖。若隊伍貪採黑油、誤觸活塞祠或忽略失控守衛列的紅燈，惡魔傭兵、龍騎士、古龍與被喚醒的深層巡邏會封住升降井；若穩定沿標記纜線、深鑽升降井與核心甦醒廳推進，則能帶回完整機械樣本、採集路線、反應殼讀數與安全撤離座標',
     exits: [
       { direction: 'west', targetRoomId: 'machine_graveyard_runaway_guard_line', description: '回到失控守衛列' },
     ],
@@ -277,7 +277,7 @@ machine_graveyard_prime_reactor_shell: {
     image: 'bloodsalt_coast_entrance_tidegate.png',
     imagePrompt: '潮門入口 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain coast, clear lantern light',
     description:
-      '潮門入口位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '潮門入口位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'east', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '紅鹽灘在東側' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '南側赤色海崖通往鹵蝕小徑' },
@@ -303,7 +303,7 @@ bloodsalt_coast_red_salt_flats: {
     image: 'bloodsalt_coast_red_salt_flats.png',
     imagePrompt: '紅鹽灘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '紅鹽灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '紅鹽灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_entrance_tidegate', description: '回到潮門入口' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '拾荒者標記在東側' },
@@ -330,7 +330,7 @@ bloodsalt_coast_wreckers_marker: {
     image: 'bloodsalt_coast_wreckers_marker.png',
     imagePrompt: '拾荒者標記 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '拾荒者標記位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '拾荒者標記位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -356,7 +356,7 @@ bloodsalt_coast_bone_net_shoal: {
     image: 'bloodsalt_coast_bone_net_shoal.png',
     imagePrompt: '骨網淺灘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '骨網淺灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '骨網淺灘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'south', targetRoomId: 'bloodsalt_coast_red_salt_flats', description: '回到紅鹽灘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '海盜烽燈在東側' },
@@ -383,7 +383,7 @@ bloodsalt_coast_pirate_beacon: {
     image: 'bloodsalt_coast_pirate_beacon.png',
     imagePrompt: '海盜烽燈 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '海盜烽燈位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。烽燈南側崖壁有一條被鹽晶侵蝕的窄梯向下延伸，陰冷氣息與腐朽味從深處湧上，似乎通往海岸下方古老的墓穴地帶',
+      '海盜烽燈位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表。烽燈南側崖壁有一條被鹽晶侵蝕的窄梯向下延伸，陰冷氣息與腐朽味從深處湧上，似乎通往海岸下方古老的墓穴地帶',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '回到骨網淺灘' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_wreckers_marker', description: '回到拾荒者標記', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -411,7 +411,7 @@ bloodsalt_coast_crimson_tide_pool: {
     image: 'bloodsalt_coast_crimson_tide_pool.png',
     imagePrompt: '赤潮池 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '赤潮池位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '赤潮池位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '回到海盜烽燈' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '北側赤潮池沿紅潮石脊攀升，穿過祭血水槽與珊瑚裂階抵達血壇岩棚', edgeKind: 'distant_route', edgeNote: '赤潮池到血壇岩棚需沿紅潮石脊與祭血水槽攀升，實際路程長於相鄰一格。' },
@@ -437,7 +437,7 @@ bloodsalt_coast_brine_cut_path: {
     image: 'bloodsalt_coast_brine_cut_path.png',
     imagePrompt: '鹵蝕小徑 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '鹵蝕小徑位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'north', targetRoomId: 'bloodsalt_coast_fill_40_7', description: '北側赤色海崖回到潮門入口' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '東側鹵蝕小徑沿鹽風切溝橫移，穿過白鹵水洼與碎玻潮洞抵達鹽玻洞', edgeKind: 'distant_route', edgeNote: '鹵蝕小徑到鹽玻洞需沿鹽風切溝與白鹵水洼橫移，實際路程長於相鄰一格。' },
@@ -463,7 +463,7 @@ bloodsalt_coast_saltglass_cave: {
     image: 'bloodsalt_coast_saltglass_cave.png',
     imagePrompt: '鹽玻洞 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '鹽玻洞位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '鹽玻洞位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_brine_cut_path', description: '西側鹽玻洞沿碎玻潮洞折返，穿過白鹵水洼與鹽風切溝回到鹵蝕小徑', edgeKind: 'distant_route', edgeNote: '鹽玻洞回鹵蝕小徑需沿碎玻潮洞與鹽風切溝折返，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_bone_net_shoal', description: '南側鹽玻洞沿碎玻潮洞下切，穿過鹽晶潮溝與魚骨浮網回到骨網淺灘', edgeKind: 'distant_route', edgeNote: '鹽玻洞回骨網淺灘需沿碎玻潮洞與魚骨浮網下切，實際路程長於相鄰一格。' },
@@ -491,7 +491,7 @@ bloodsalt_coast_reef_fishing_post: {
     image: 'bloodsalt_coast_reef_fishing_post.png',
     imagePrompt: '礁釣哨 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '礁釣哨位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '礁釣哨位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_pirate_beacon', description: '南側礁釣哨沿礁釣木樁下行，穿過斷旗繩索與濕滑礁階回到海盜烽燈', edgeKind: 'distant_route', edgeNote: '礁釣哨回海盜烽燈需沿礁釣木樁與濕滑礁階下行，實際路程長於相鄰一格。' },
@@ -519,7 +519,7 @@ bloodsalt_coast_blood_altar_ledge: {
     image: 'bloodsalt_coast_blood_altar_ledge.png',
     imagePrompt: '血壇岩棚 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上；奧瑟冥河守門者的亡者安息刻文壓在祭壇血槽邊。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '血壇岩棚位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上；奧瑟冥河守門者的亡者安息刻文壓在祭壇血槽邊。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_crimson_tide_pool', description: '南側血壇岩棚沿珊瑚裂階下切，穿過祭血水槽與紅潮石脊回到赤潮池', edgeKind: 'distant_route', edgeNote: '血壇岩棚回赤潮池需沿珊瑚裂階與紅潮石脊下切，實際路程長於相鄰一格。' },
@@ -547,7 +547,7 @@ bloodsalt_coast_smuggler_cove: {
     image: 'bloodsalt_coast_smuggler_cove.png',
     imagePrompt: '走私者小灣 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '走私者小灣位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '走私者小灣位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚' },
       { direction: 'north', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '冰暗湧道在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -573,7 +573,7 @@ bloodsalt_coast_drowned_watchtower: {
     image: 'bloodsalt_coast_drowned_watchtower.png',
     imagePrompt: '沉水望塔 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '沉水望塔位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '沉水望塔位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'south', targetRoomId: 'bloodsalt_coast_saltglass_cave', description: '回到鹽玻洞', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '刃貝床在東側' },
@@ -599,7 +599,7 @@ bloodsalt_coast_razor_clam_beds: {
     image: 'bloodsalt_coast_razor_clam_beds.png',
     imagePrompt: '刃貝床 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '刃貝床位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '刃貝床位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_drowned_watchtower', description: '回到沉水望塔' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_reef_fishing_post', description: '回到礁釣哨', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -627,7 +627,7 @@ bloodsalt_coast_sharktooth_pass: {
     image: 'bloodsalt_coast_sharktooth_pass.png',
     imagePrompt: '鯊齒隘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '鯊齒隘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '鯊齒隘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_blood_altar_ledge', description: '回到血壇岩棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -655,7 +655,7 @@ bloodsalt_coast_ice_dark_surge: {
     image: 'bloodsalt_coast_ice_dark_surge.png',
     imagePrompt: '冰暗湧道 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '冰暗湧道位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '冰暗湧道位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_smuggler_cove', description: '回到走私者小灣', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -682,7 +682,7 @@ bloodsalt_coast_warflag_dune: {
     image: 'bloodsalt_coast_warflag_dune.png',
     imagePrompt: '戰旗沙丘 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '戰旗沙丘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '戰旗沙丘位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'south', targetRoomId: 'bloodsalt_coast_razor_clam_beds', description: '回到刃貝床', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '幽艏船墓在東側' },
@@ -708,7 +708,7 @@ bloodsalt_coast_ghost_keel_grave: {
     image: 'bloodsalt_coast_ghost_keel_grave.png',
     imagePrompt: '幽艏船墓 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '幽艏船墓位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '幽艏船墓位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_warflag_dune', description: '回到戰旗沙丘' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_sharktooth_pass', description: '回到鯊齒隘', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -735,7 +735,7 @@ bloodsalt_coast_red_coral_labyrinth: {
     image: 'bloodsalt_coast_red_coral_labyrinth.png',
     imagePrompt: '紅珊瑚迷宮 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '紅珊瑚迷宮位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '紅珊瑚迷宮位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_ghost_keel_grave', description: '回到幽艏船墓' },
       { direction: 'south', targetRoomId: 'bloodsalt_coast_ice_dark_surge', description: '回到冰暗湧道', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -762,7 +762,7 @@ bloodsalt_coast_tithe_of_blood_pier: {
     image: 'bloodsalt_coast_tithe_of_blood_pier.png',
     imagePrompt: '血稅棧橋 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '血稅棧橋位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '血稅棧橋位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_red_coral_labyrinth', description: '回到紅珊瑚迷宮' },
       { direction: 'east', targetRoomId: 'bloodsalt_coast_ritual_reef_core', description: '儀式礁心在東側' },
@@ -788,7 +788,7 @@ bloodsalt_coast_ritual_reef_core: {
     image: 'bloodsalt_coast_ritual_reef_core.png',
     imagePrompt: '儀式礁心 in bloodsalt_coast, red blood salt coast with crimson tide, salt crystal flats, pirate beacon, bone nets, reef altar, wrecked ships and icy dark surf, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain coast, clear lantern light',
     description:
-      '儀式礁心位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 search 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
+      '儀式礁心位於被紅色海潮染透的血鹽海岸，鹽晶灘、骨網淺灘、海盜烽燈、血壇岩棚與紅珊瑚迷宮把漁獲、資源戰和開放衝突綁在同一條潮線上。這裡適合隊伍爭奪釣點、鹽晶與走私補給，旅人可以 觀察 潮痕、戰旗、骨網結扣和祭壇血槽來判斷敵對旅人與巡邏路線，也能 搜索 鹽玻洞、刃貝床、幽艏船墓與血稅棧橋尋找罕見魚骨、冷鹽晶和海盜密貨。若隊伍忽略赤潮升落、鯊齒隘伏擊與月黑時的血祭號角，惡魔盟友、龍騎士、飛龍與海岸掠奪者會切斷退路；若穩定沿潮門入口、戰旗沙丘與儀式礁心推進，則能帶回資源戰記錄、釣點標記、血鹽樣本與安全撤離潮汐表',
     exits: [
       { direction: 'west', targetRoomId: 'bloodsalt_coast_tithe_of_blood_pier', description: '回到血稅棧橋' },
     ],
@@ -816,7 +816,7 @@ bloodsalt_coast_ritual_reef_core: {
     image: 'emerald_canopy_entrance_root_lift.png',
     imagePrompt: '根升入口 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain forest, clear lantern light',
     description:
-      '根升入口位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '根升入口位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'east', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在東側' },
     ],
@@ -841,7 +841,7 @@ emerald_canopy_vine_bridge_low: {
     image: 'emerald_canopy_vine_bridge_low.png',
     imagePrompt: '低藤橋 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '低藤橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '低藤橋位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_raincatch_basin', description: '接雨盆地在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_entrance_root_lift', description: '根升入口在西側' },
@@ -868,7 +868,7 @@ emerald_canopy_moss_rope_walk: {
     image: 'emerald_canopy_moss_rope_walk.png',
     imagePrompt: '苔繩步道 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '苔繩步道位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '苔繩步道位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在西側' },
@@ -894,7 +894,7 @@ emerald_canopy_raincatch_basin: {
     image: 'emerald_canopy_raincatch_basin.png',
     imagePrompt: '接雨盆地 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '接雨盆地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '接雨盆地位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_vine_bridge_low', description: '低藤橋在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在南側' },
@@ -921,7 +921,7 @@ emerald_canopy_birdfolk_roost: {
     image: 'emerald_canopy_birdfolk_roost.png',
     imagePrompt: '鳥巢村臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鳥巢村臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鳥巢村臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_moss_rope_walk', description: '苔繩步道在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_sapfall_gully', description: '樹脂瀑溝在南側' },
@@ -949,7 +949,7 @@ emerald_canopy_storm_bough: {
     image: 'emerald_canopy_storm_bough.png',
     imagePrompt: '雷枝臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '雷枝臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '雷枝臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在西側' },
@@ -975,7 +975,7 @@ emerald_canopy_firefly_bower: {
     image: 'emerald_canopy_firefly_bower.png',
     imagePrompt: '螢光涼亭 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '螢光涼亭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '螢光涼亭位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'east', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在東側' },
     ],
@@ -1000,7 +1000,7 @@ emerald_canopy_orchid_cache: {
     image: 'emerald_canopy_orchid_cache.png',
     imagePrompt: '蘭花藏層 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function hidden, terrain forest, clear lantern light',
     description:
-      '蘭花藏層位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '蘭花藏層位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_raincatch_basin', description: '接雨盆地在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_thorn_silk_nest', description: '棘絲巢在南側' },
@@ -1028,7 +1028,7 @@ emerald_canopy_sapfall_gully: {
     image: 'emerald_canopy_sapfall_gully.png',
     imagePrompt: '樹脂瀑溝 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '樹脂瀑溝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '樹脂瀑溝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_birdfolk_roost', description: '鳥巢村臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在南側' },
@@ -1056,7 +1056,7 @@ emerald_canopy_hawk_watch: {
     image: 'emerald_canopy_hawk_watch.png',
     imagePrompt: '鷹望臺 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '鷹望臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '鷹望臺位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_storm_bough', description: '雷枝臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_elite_patrol_perch', description: '精英巡梢棲木在南側' },
@@ -1084,7 +1084,7 @@ emerald_canopy_greenheart_span: {
     image: 'emerald_canopy_greenheart_span.png',
     imagePrompt: '綠心跨枝 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '綠心跨枝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '綠心跨枝位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'south', targetRoomId: 'emerald_canopy_lightning_bark_shrine', description: '雷皮小祠在南側' },
       { direction: 'west', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在西側' },
@@ -1110,7 +1110,7 @@ emerald_canopy_thorn_silk_nest: {
     image: 'emerald_canopy_thorn_silk_nest.png',
     imagePrompt: '棘絲巢 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '棘絲巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '棘絲巢位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_orchid_cache', description: '蘭花藏層在北側' },
       { direction: 'east', targetRoomId: 'emerald_canopy_sunleaf_garden', description: '日葉園在東側' },
@@ -1135,7 +1135,7 @@ emerald_canopy_sunleaf_garden: {
     image: 'emerald_canopy_sunleaf_garden.png',
     imagePrompt: '日葉園 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '日葉園位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '日葉園位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_sapfall_gully', description: '樹脂瀑溝在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_hollow_trunk_market', description: '空樹市集在南側' },
@@ -1163,7 +1163,7 @@ emerald_canopy_elite_patrol_perch: {
     image: 'emerald_canopy_elite_patrol_perch.png',
     imagePrompt: '精英巡梢棲木 in emerald_canopy, high ancient forest canopy with vine bridges, bird roost platforms, rain basins, storm branches, glowing orchids and suspended paths, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '精英巡梢棲木位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 search 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
+      '精英巡梢棲木位於高聳古木交疊成海的翡翠樹冠上，根升藤梯、低藤橋、接雨盆地、鳥巢村臺與雷枝臺把半空森林分成多層路線。這裡是採集、隊伍探索與精英巡梢區，旅人可以 觀察 藤結磨損、雷皮焦痕、鳥巢羽標和樹脂流向來判斷安全落腳點，也能 搜索 蘭花藏層、日葉園、古蜂巢與空樹市集尋找藥材、蜜蠟、輕木與樹冠信物。若隊伍忽略暴雨重量、棘絲巢拉扯與巡梢棲木上的號角，樹人、雷鳥、暗影獵手與高階野獸會把藤橋切斷；若穩定沿根升入口、雲根橋與鹿冠空地推進，則能抵達高綠庭並帶回樹冠採集路線、精英巡邏記錄與安全下降標記',
     exits: [
       { direction: 'north', targetRoomId: 'emerald_canopy_hawk_watch', description: '鷹望臺在北側' },
       { direction: 'south', targetRoomId: 'emerald_canopy_ancient_bee_hive', description: '古蜂巢在南側' },

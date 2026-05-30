@@ -8,7 +8,7 @@ sapphire_lake_blueheart_sanctum: {
     image: 'sapphire_lake_blueheart_sanctum.png',
     imagePrompt: '藍心聖潭 in sapphire_lake, sapphire lake safe resource zone with clear blue water, lakebed ore veins, crystal sandbars, reeds, spirit mirror, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain lake, clear lantern light',
     description:
-      '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，玩家可以 inspect 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 search 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認。',
+      '藍心聖潭位於藍寶湖清澈湖水與湖底藍光礦脈之間，鏡面淺灘、湖草層、礦泉眼、晶砂洲與水靈傳說共同標出安全但仍需謹慎的採集路線。這裡是低中階採礦、採草與釣魚區，旅人可以 觀察 水面波紋、藍寶裂紋、睡蓮根系和繩標浮標來判斷採集點，也能 搜索 湖底遺坑、靜水石窟、深脈窗與藍心聖潭尋找礦脈線索。若隊伍忽略湖獸擦痕、冷泉逆流與晶砂鬆動，湖蛇、冰元素、晶蜥與水邊毒蛙會干擾採集；若穩定沿浮標、淺灘與礦光推進，則能抵達藍寶礦脈並安全帶回湖底樣本、礦砂紀錄、水草束與回程浮標確認',
     exits: [
       { direction: 'south', targetRoomId: 'sapphire_lake_sapphire_lode', description: '回到藍寶礦脈', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'sapphire_lake_deep_vein_window', description: '西側藍心聖潭水道繞過聖潭渦流與藍光礦幕，沿深水繩標回到深脈窗', edgeKind: 'distant_route', edgeNote: '藍心聖潭西側回深脈窗需繞過聖潭渦流與礦幕，實際路程長於相鄰一格。' },
@@ -37,7 +37,7 @@ sapphire_lake_blueheart_sanctum: {
     image: 'kingsroad_market_portal_plaza.png',
     imagePrompt: '傳送陣廣場 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '傳送陣廣場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '傳送陣廣場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'east', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '十字攤街在東側' },
       { direction: 'north', targetRoomId: 'kingsroad_market_guard_post', description: '衛兵亭在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -60,7 +60,7 @@ kingsroad_market_crossroad_stalls: {
     image: 'kingsroad_market_crossroad_stalls.png',
     imagePrompt: '十字攤街 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '十字攤街位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '十字攤街位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_grain_arcade', description: '穀物拱廊在東側' },
@@ -85,7 +85,7 @@ kingsroad_market_grain_arcade: {
     image: 'kingsroad_market_grain_arcade.png',
     imagePrompt: '穀物拱廊 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '穀物拱廊位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '穀物拱廊位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街' },
       { direction: 'east', targetRoomId: 'kingsroad_market_blacksmith_row', description: '鍛匠列在東側' },
@@ -109,7 +109,7 @@ kingsroad_market_spice_awning: {
     image: 'kingsroad_market_spice_awning.png',
     imagePrompt: '香料棚 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '香料棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '香料棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_cloth_lane', description: '布商巷在東側' },
@@ -133,7 +133,7 @@ kingsroad_market_blacksmith_row: {
     image: 'kingsroad_market_blacksmith_row.png',
     imagePrompt: '鍛匠列 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '鍛匠列位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '鍛匠列位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊' },
       { direction: 'north', targetRoomId: 'kingsroad_market_adventurer_board', description: '冒險委託板在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -157,7 +157,7 @@ kingsroad_market_cloth_lane: {
     image: 'kingsroad_market_cloth_lane.png',
     imagePrompt: '布商巷 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '布商巷位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '布商巷位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚' },
       { direction: 'south', targetRoomId: 'kingsroad_market_grain_arcade', description: '回到穀物拱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -181,7 +181,7 @@ kingsroad_market_adventurer_board: {
     image: 'kingsroad_market_adventurer_board.png',
     imagePrompt: '冒險委託板 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '冒險委託板位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '冒險委託板位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_cloth_lane', description: '回到布商巷' },
       { direction: 'south', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -206,7 +206,7 @@ kingsroad_market_caravan_yard: {
     image: 'kingsroad_market_caravan_yard.png',
     imagePrompt: '商隊院 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '商隊院位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '商隊院位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_blacksmith_row', description: '回到鍛匠列' },
       { direction: 'north', targetRoomId: 'kingsroad_market_coin_exchange', description: '錢幣兌換所在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -230,7 +230,7 @@ kingsroad_market_coin_exchange: {
     image: 'kingsroad_market_coin_exchange.png',
     imagePrompt: '錢幣兌換所 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '錢幣兌換所位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '錢幣兌換所位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板' },
       { direction: 'south', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -254,7 +254,7 @@ kingsroad_market_herbal_square: {
     image: 'kingsroad_market_herbal_square.png',
     imagePrompt: '草藥方場 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '草藥方場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '草藥方場位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_spice_awning', description: '回到香料棚', edgeKind: 'distant_route', edgeNote: '草藥方場南側需繞過藥籃、秤桌與棚柱，實際路程長於相鄰一格。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '魚販石階在東側' },
@@ -277,7 +277,7 @@ kingsroad_market_fishmonger_steps: {
     image: 'kingsroad_market_fishmonger_steps.png',
     imagePrompt: '魚販石階 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '魚販石階位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '魚販石階位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_herbal_square', description: '回到草藥方場' },
       { direction: 'east', targetRoomId: 'kingsroad_market_auction_tent', description: '東側拍賣帳棚通往文書角' },
@@ -301,7 +301,7 @@ kingsroad_market_scribe_corner: {
     image: 'kingsroad_market_scribe_corner.png',
     imagePrompt: '文書角 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '文書角位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '文書角位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_auction_tent', description: '西側拍賣帳棚回到魚販石階' },
       { direction: 'south', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '文書角南側需繞過抄寫桌與封蠟欄杆，實際路程長於相鄰一格。' },
@@ -325,7 +325,7 @@ kingsroad_market_guard_post: {
     image: 'kingsroad_market_guard_post.png',
     imagePrompt: '衛兵亭 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '衛兵亭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '衛兵亭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_portal_plaza', description: '回到傳送陣廣場', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_herbal_square', description: '草藥方場在東側', edgeKind: 'distant_route', edgeNote: '衛兵亭東側巡邏線會繞過貨車與攤棚，實際路程長於相鄰一格。' },
@@ -348,7 +348,7 @@ kingsroad_market_well_court: {
     image: 'kingsroad_market_well_court.png',
     imagePrompt: '水井小庭 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '水井小庭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '水井小庭位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'north', targetRoomId: 'kingsroad_market_crossroad_stalls', description: '回到十字攤街', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'east', targetRoomId: 'kingsroad_market_tavern_front', description: '酒館門前在東側' },
@@ -371,7 +371,7 @@ kingsroad_market_auction_tent: {
     image: 'kingsroad_market_auction_tent.png',
     imagePrompt: '拍賣帳棚 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '拍賣帳棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '拍賣帳棚位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_adventurer_board', description: '回到冒險委託板', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       { direction: 'west', targetRoomId: 'kingsroad_market_fishmonger_steps', description: '西側魚販石階回到市場水渠邊' },
@@ -396,7 +396,7 @@ kingsroad_market_tavern_front: {
     image: 'kingsroad_market_tavern_front.png',
     imagePrompt: '酒館門前 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '酒館門前位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '酒館門前位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_well_court', description: '回到水井小庭' },
       { direction: 'east', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '馱獸圈在東側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -419,7 +419,7 @@ kingsroad_market_pack_animal_ring: {
     image: 'kingsroad_market_pack_animal_ring.png',
     imagePrompt: '馱獸圈 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '馱獸圈位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。南側酒館門前的人潮被馱獸欄門隔開，只能從酒館門前東側進入馱獸圈。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '馱獸圈位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。南側酒館門前的人潮被馱獸欄門隔開，只能從酒館門前東側進入馱獸圈。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_caravan_yard', description: '回到商隊院', edgeKind: 'distant_route', edgeNote: '馱獸圈西側要繞過欄門與車轍回到商隊院，實際路程長於相鄰一格。' },
       { direction: 'north', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '路神小祠在北側', edgeKind: 'distant_route', edgeNote: '馱獸圈北側需沿繩欄與祈路標記繞行，實際路程長於相鄰一格。' },
@@ -442,7 +442,7 @@ kingsroad_market_shrine_of_routes: {
     image: 'kingsroad_market_shrine_of_routes.png',
     imagePrompt: '路神小祠 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '路神小祠位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序；米拉克財富與旅途之神的契約銅牌掛在小祠檐下。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '路神小祠位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序；米拉克財富與旅途之神的契約銅牌掛在小祠檐下。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_pack_animal_ring', description: '回到馱獸圈', edgeKind: 'distant_route', edgeNote: '路神小祠南側要繞過祈願石與馱獸欄門，實際路程長於相鄰一格。' },
       { direction: 'west', targetRoomId: 'kingsroad_market_coin_exchange', description: '回到錢幣兌換所', edgeKind: 'distant_route', edgeNote: '路神小祠西側沿商隊祈路繞回兌換所，實際路程長於相鄰一格。' },
@@ -466,7 +466,7 @@ kingsroad_market_back_alley_ledgers: {
     image: 'kingsroad_market_back_alley_ledgers.png',
     imagePrompt: '後巷帳本處 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '後巷帳本處位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '後巷帳本處位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'west', targetRoomId: 'kingsroad_market_scribe_corner', description: '回到文書角', edgeKind: 'distant_route', edgeNote: '後巷帳本處西側要繞過帳冊貨箱與抄寫桌，實際路程長於相鄰一格。' },
       { direction: 'south', targetRoomId: 'kingsroad_market_shrine_of_routes', description: '回到路神小祠', edgeKind: 'distant_route', edgeNote: '後巷帳本處南側需沿暗巷折回路神小祠，實際路程長於相鄰一格。' },
@@ -490,7 +490,7 @@ kingsroad_market_high_balcony: {
     image: 'kingsroad_market_high_balcony.png',
     imagePrompt: '市集高看台 in kingsroad_market, busy kingsroad market town hub with portal plaza, canvas stalls, caravan yard, merchant signs, guild board, guards and warm lanterns, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain market, clear lantern light',
     description:
-      '市集高看台位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，玩家可以 inspect 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 search 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。東側後巷帳本處的窄梯從高看台這端被貨箱堵住，只能由後巷帳本處上行進入。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置。',
+      '市集高看台位於王國大道交會形成的大型露天市集之中，傳送陣光、商隊車轍、布棚旗幟、攤販叫賣與衛兵巡邏共同維持安全而繁忙的交易秩序。這裡是安全城鎮、交易樞紐與任務集散點，旅人可以 觀察 價牌、公告板、帳本封條和商隊路牌來判斷貨物流向，也能 搜索 攤棚角落、文書桌、拍賣箱與後巷帳本尋找市集委託線索。東側後巷帳本處的窄梯從高看台這端被貨箱堵住，只能由後巷帳本處上行進入。若旅人需要補給、兌換、委託、住宿或確認傳送路線，都能沿著廣場、拱廊、商隊院與高看台完成；市場衛兵會維持秩序，因此此處適合作為長線冒險的安全整備據點，並能快速確認價格、路線、庫存與隊伍集合位置',
     exits: [
       { direction: 'south', targetRoomId: 'kingsroad_market_auction_tent', description: '回到拍賣帳棚', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
     ],
@@ -1170,7 +1170,7 @@ arena_quarter_center_arena: {
     image: 'royal_hunting_grounds_horn_gate.png',
     imagePrompt: '獵角門 in royal_hunting_grounds, royal hunting grounds with horn gate, noble blinds, deer trails, hound yard, old oaks, trophy pavilion and moonlit stag grove, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '獵角門位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，玩家可以 inspect 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 search 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章。',
+      '獵角門位於王室圈定的廣大獵場之中，獵角門、鹿徑、貴族隱棚、獵犬院、界碑與密林水鏡共同構成有許可限制的高階狩獵路線。這裡是野外遭遇、採集與精英巡邏區，旅人可以 觀察 獸蹄印、箭羽、王室封條和獵犬氣味來判斷獵物動向，也能 搜索 草藥矮林、偷獵者小徑、獵物陳列亭與白鹿林尋找委託線索。若隊伍忽略獵場規矩、狼群回聲與貴族暗哨，狼王、樹精、獵場守衛與偷獵者會從側徑包抄；若穩定沿界碑、獵徑與看守營推進，則能追蹤稀有獵物並安全帶回狩獵記錄、草藥樣本與貴族委託證據與回程許可章',
     exits: [
       { direction: 'east', targetRoomId: 'royal_hunting_grounds_permit_lodge', description: '狩獵許可屋在東側' },
       { direction: 'north', targetRoomId: 'royal_hunting_grounds_deer_run', description: '鹿徑在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
