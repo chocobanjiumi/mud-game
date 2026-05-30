@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { WorldMapPayload, WorldMapRoomPayload, WorldMapZonePayload } from '@game/shared';
+import { runCommand } from '../utils/gameActions';
 
 type MapMode = 'world' | 'dungeon';
 
@@ -151,7 +152,7 @@ type DungeonAtlas = {
 };
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 export default function WorldMap() {

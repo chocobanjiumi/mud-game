@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import { ITEM_DEFS, WORLD_MAP2_INSTANCE_ENTRY_ITEM_BY_ID, type EquipmentSlots, type InventoryItem, type ItemType } from '@game/shared';
 import { getItemImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 const EQUIP_SLOT_LABELS: Record<string, string> = {
   meleeMainHand: '近主',
@@ -35,7 +36,7 @@ const INVENTORY_FILTERS: { id: InventoryFilter; label: string }[] = [
 ];
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 export default function Inventory() {

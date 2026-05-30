@@ -2,11 +2,12 @@ import { SKILL_DEFS, type Character, type LearnedSkill, type SkillDef } from '@g
 import { useGameStore } from '../stores/gameStore';
 import type { CombatInfo } from '../stores/gameStore';
 import { getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 import { CombatActionButton } from './CombatPanel';
 import MonsterHoverCard from './MonsterHoverCard';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function ordinalEnemyLabels(enemies: { id: string; name: string }[]): Map<string, string> {

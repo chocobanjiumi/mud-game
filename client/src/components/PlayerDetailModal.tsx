@@ -10,9 +10,10 @@ import {
   RACE_DEFS,
 } from '@game/shared';
 import { getBaseClassId } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 const resourceLabels: Record<string, string> = {

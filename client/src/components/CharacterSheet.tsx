@@ -15,11 +15,12 @@ import {
   type InventoryItem,
   type RaceId,
 } from '@game/shared';
+import { runCommand } from '../utils/gameActions';
 import type { DerivedStats, TooltipItemData } from '../stores/gameStore';
 import { getItemImagePath } from '../utils/assetImages';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 const CLASS_NAMES: Record<string, string> = {

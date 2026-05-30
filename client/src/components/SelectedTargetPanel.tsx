@@ -1,9 +1,10 @@
 import type { RoomEntity, RoomEntityAction, RoomEntityType } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 const TYPE_LABEL: Record<RoomEntityType, string> = {

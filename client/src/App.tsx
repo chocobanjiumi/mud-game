@@ -84,7 +84,7 @@ export default function App() {
   }
 
   const screen = useGameStore((s) => s.screen);
-  const { sendCommand, login, selectCharacter, listCharacters, createCharacter, deleteCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat } = useWebSocket();
+  const { sendCommand, login, selectCharacter, listCharacters, createCharacter, deleteCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendChat, sendLeaderboardRequest } = useWebSocket();
 
   useEffect(() => {
     AudioManager.getInstance().play(screen === 'game' ? 'bgm_town' : 'bgm_temple');
@@ -159,6 +159,19 @@ export default function App() {
     },
     [sendCommand],
   );
+
+  useEffect(() => {
+    const store = useGameStore.getState();
+    store.setCommandHandler(handleCommand);
+    store.setOpenShopHandler(sendShopOpen);
+    store.setLeaderboardHandler(sendLeaderboardRequest);
+    return () => {
+      const current = useGameStore.getState();
+      current.setCommandHandler(null);
+      current.setOpenShopHandler(null);
+      current.setLeaderboardHandler(null);
+    };
+  }, [handleCommand, sendShopOpen, sendLeaderboardRequest]);
 
   const handleReturnToCharacters = useCallback(() => {
     useGameStore.getState().clearGameSessionForCharacterSelect();

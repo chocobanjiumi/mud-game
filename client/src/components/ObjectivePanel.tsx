@@ -1,8 +1,9 @@
 import { SKILL_DEFS, type RoomEntity, type RoomEntityAction } from '@game/shared';
 import { useGameStore, type CombatInfo, type Quest, type RoomInfo } from '../stores/gameStore';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 export interface ObjectiveSuggestion {

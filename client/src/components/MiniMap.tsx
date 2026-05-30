@@ -1,8 +1,9 @@
 import { useGameStore } from '../stores/gameStore';
 import type { Direction, LocalMapPayload, RoomExit } from '@game/shared';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 export default function MiniMap() {

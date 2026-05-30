@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import type { RoomEntity, RoomEntityAction } from '@game/shared';
 import { useGameStore } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function actionClass(action: RoomEntityAction): string {

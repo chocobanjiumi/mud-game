@@ -708,17 +708,5 @@ export function useWebSocket() {
     };
   }, [connect, disconnect]);
 
-  // Listen for leaderboard request events from LeaderboardPanel
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent).detail as { category: string } | undefined;
-      if (detail?.category) {
-        sendLeaderboardRequest(detail.category);
-      }
-    };
-    window.addEventListener('leaderboard-request', handler);
-    return () => window.removeEventListener('leaderboard-request', handler);
-  }, [sendLeaderboardRequest]);
-
   return { send, sendCommand, connect, disconnect, login, selectCharacter, listCharacters, createCharacter, deleteCharacter, sendShopOpen, sendPurchase, sendGetTransactions, sendQuestList, sendChat, sendLeaderboardRequest };
 }

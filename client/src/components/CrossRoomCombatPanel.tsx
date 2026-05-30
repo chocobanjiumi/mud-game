@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SKILL_DEFS, type CardinalDirection, type CombatantState, type LearnedSkill, type NearbyCombatMonsterPayload, type NearbyCombatNeighborPayload, type RoomEntity, type RoomExit, type SkillDef } from '@game/shared';
 import { useGameStore, type CombatInfo, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath, getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 import SkillHoverCard from './SkillHoverCard';
 import MonsterHoverCard from './MonsterHoverCard';
 
@@ -17,7 +18,7 @@ const DIRECTION_LABEL: Record<CardinalDirection, string> = {
 };
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function getRoomMonsters(room: RoomInfo): RoomEntity[] {

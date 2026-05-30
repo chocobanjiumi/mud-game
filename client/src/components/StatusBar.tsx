@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useGameStore } from '../stores/gameStore';
+import { requestOpenShop } from '../utils/gameActions';
 import { getAtlasBackgroundStyle, getStatusEffectDef } from '@game/shared';
 import type { ResourceType } from '@game/shared';
 
@@ -204,10 +205,7 @@ function ArinovaTokenBadge() {
   return (
     <button
       type="button"
-      onClick={() => {
-        // Dispatch a custom event to trigger shop open via WebSocket
-        window.dispatchEvent(new CustomEvent('open-shop'));
-      }}
+      onClick={requestOpenShop}
       className="flex items-center gap-1 px-2 py-0.5 rounded border border-yellow-600/40 bg-yellow-900/20 hover:bg-yellow-900/40 transition-colors cursor-pointer"
       title="Arinova Tokens - 點擊開啟商店 (B)"
     >

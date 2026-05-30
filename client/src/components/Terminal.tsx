@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback, type ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { TerminalEntity, TerminalLine as TLine } from '../stores/gameStore';
+import { runCommand } from '../utils/gameActions';
 
 /** Color class mapping for terminal line categories */
 const colorClassMap: Record<string, string> = {
@@ -76,7 +77,7 @@ function getActionsForEntity(entity: TerminalEntity): { label: string; command: 
 }
 
 function sendTerminalCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function commandTargetId(command?: string): string | null {

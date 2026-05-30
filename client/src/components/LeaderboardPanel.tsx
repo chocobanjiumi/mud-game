@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { LeaderboardTab } from '../stores/gameStore';
+import { requestLeaderboard } from '../utils/gameActions';
 
 const TAB_CONFIG: { key: LeaderboardTab; label: string }[] = [
   { key: 'level', label: '等級' },
@@ -39,14 +40,13 @@ export default function LeaderboardPanel() {
   const handleTabChange = useCallback(
     (tab: LeaderboardTab) => {
       setLeaderboardTab(tab);
-      // Dispatch event for useWebSocket to handle
-      window.dispatchEvent(new CustomEvent('leaderboard-request', { detail: { category: tab } }));
+      requestLeaderboard(tab);
     },
     [setLeaderboardTab],
   );
 
   const handleRefresh = useCallback(() => {
-    window.dispatchEvent(new CustomEvent('leaderboard-request', { detail: { category: leaderboardTab } }));
+    requestLeaderboard(leaderboardTab);
   }, [leaderboardTab]);
 
   if (!leaderboardOpen) return null;

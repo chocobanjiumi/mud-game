@@ -81,7 +81,7 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
     setSkillModalOpen(true);
   }, []);
 
-  // Keyboard shortcut: 'B' to open shop + custom event from StatusBar badge
+  // Keyboard shortcut: 'B' to open shop
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Don't trigger when typing in inputs
@@ -112,24 +112,9 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         openWorldMap();
       }
     };
-    const handleOpenShopEvent = () => {
-      if (!shopOpen) onOpenShop();
-    };
-    const handleTerminalCommand = (e: Event) => {
-      const detail = (e as CustomEvent).detail as string | { command: string; echo?: string };
-      if (typeof detail === 'string') {
-        if (detail) onCommand(detail);
-        return;
-      }
-      if (detail?.command) onCommand(detail.command, detail.echo);
-    };
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('open-shop', handleOpenShopEvent);
-    window.addEventListener('terminal-command', handleTerminalCommand);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('open-shop', handleOpenShopEvent);
-      window.removeEventListener('terminal-command', handleTerminalCommand);
     };
   }, [shopOpen, onOpenShop, onCommand, toggleQuestLog, toggleCharacterSheet, toggleLeaderboard, openWorldMap]);
 

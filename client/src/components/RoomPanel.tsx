@@ -2,6 +2,7 @@ import { ITEM_DEFS, type RoomEntity, type RoomEntityAction, type RoomEntityType 
 import { useState } from 'react';
 import { useGameStore, type RoomInfo } from '../stores/gameStore';
 import { getEntityImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 import MonsterDetailModal from './MonsterDetailModal';
 import PlayerDetailModal from './PlayerDetailModal';
 import { CrossRoomCombatPanelView } from './CrossRoomCombatPanel';
@@ -9,7 +10,7 @@ import CombatPanel from './CombatPanel';
 import ApproachingPanel from './ApproachingPanel';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function ordinalLabels<T extends { monsterName: string }>(items: T[]): string[] {

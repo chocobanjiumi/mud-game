@@ -3,9 +3,10 @@ import type { ReactNode } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import type { CombatantState, ActiveStatusEffect, CardinalDirection, ApproachingMonsterPayload, NearbyCombatNeighborPayload } from '@game/shared';
 import { getMonsterImagePath, getClassIconPath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 const DIR_LABEL: Record<string, string> = { north: '北', south: '南', east: '東', west: '西' };

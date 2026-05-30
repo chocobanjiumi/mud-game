@@ -265,6 +265,10 @@ export type ConnectionState = 'disconnected' | 'connecting' | 'connected';
 
 export type Screen = 'login' | 'characters' | 'create' | 'game';
 
+type CommandHandler = (command: string, friendlyEcho?: string) => void;
+type OpenShopHandler = () => void;
+type LeaderboardHandler = (category: LeaderboardTab) => void;
+
 // --- Main store ---
 
 let _lineIdCounter = 0;
@@ -361,6 +365,17 @@ export interface GameState {
   toggleInventory: () => void;
   showParty: boolean;
   toggleParty: () => void;
+
+  // UI action bridge
+  commandHandler: CommandHandler | null;
+  setCommandHandler: (handler: CommandHandler | null) => void;
+  runCommand: (command: string, friendlyEcho?: string) => void;
+  openShopHandler: OpenShopHandler | null;
+  setOpenShopHandler: (handler: OpenShopHandler | null) => void;
+  requestOpenShop: () => void;
+  leaderboardHandler: LeaderboardHandler | null;
+  setLeaderboardHandler: (handler: LeaderboardHandler | null) => void;
+  requestLeaderboard: (category: LeaderboardTab) => void;
 
   // Arinova
   arinovaUser: { id: string; name: string } | null;
@@ -616,6 +631,23 @@ export const useGameStore = create<GameState>((set) => ({
   toggleInventory: () => set((state) => ({ showInventory: !state.showInventory })),
   showParty: false,
   toggleParty: () => set((state) => ({ showParty: !state.showParty })),
+
+  // UI action bridge
+  commandHandler: null,
+  setCommandHandler: (commandHandler) => set({ commandHandler }),
+  runCommand: (command, friendlyEcho) => {
+    useGameStore.getState().commandHandler?.(command, friendlyEcho);
+  },
+  openShopHandler: null,
+  setOpenShopHandler: (openShopHandler) => set({ openShopHandler }),
+  requestOpenShop: () => {
+    useGameStore.getState().openShopHandler?.();
+  },
+  leaderboardHandler: null,
+  setLeaderboardHandler: (leaderboardHandler) => set({ leaderboardHandler }),
+  requestLeaderboard: (category) => {
+    useGameStore.getState().leaderboardHandler?.(category);
+  },
 
   // Arinova
   arinovaUser: null,

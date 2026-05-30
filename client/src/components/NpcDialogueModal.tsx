@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import { ITEM_DEFS, type InventoryItem, type NpcDialoguePayload } from '@game/shared';
 import { getItemImagePath, getNpcImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 const MERCHANT_BUY_HELP_TEXT = '購買頁會列出商人目前願意販售的商品、價格與等級需求；確認金幣足夠後按購買，物品會直接放入背包。';

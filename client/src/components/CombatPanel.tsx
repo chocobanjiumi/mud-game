@@ -3,11 +3,12 @@ import { ITEM_DEFS, SKILL_DEFS, getAtlasBackgroundStyle, getCombatActionIconRect
 import type { CombatInfo } from '../stores/gameStore';
 import type { CSSProperties } from 'react';
 import { getItemImagePath, getMonsterImagePath, getPublicAssetPath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 import SkillHoverCard from './SkillHoverCard';
 import MonsterHoverCard from './MonsterHoverCard';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function ordinalEnemyLabels(enemies: { id: string; name: string }[]): Map<string, string> {

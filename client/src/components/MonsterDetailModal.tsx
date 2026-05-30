@@ -1,9 +1,10 @@
 import type { RoomEntity } from '@game/shared';
 import { ITEM_DEFS, SKILL_DEFS } from '@game/shared';
 import { getEntityImagePath } from '../utils/assetImages';
+import { runCommand } from '../utils/gameActions';
 
 function sendCommand(command: string, echo?: string) {
-  window.dispatchEvent(new CustomEvent('terminal-command', { detail: { command, echo } }));
+  runCommand(command, echo);
 }
 
 function pct(value: number): string {
