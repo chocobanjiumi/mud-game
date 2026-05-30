@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T18:50:16.189Z",
+  "generatedAt": "2026-05-30T18:54:31.624Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
@@ -8,15 +8,11 @@
     "missingPrompt": 0,
     "missingImageField": 0,
     "missingAsset": 0,
-    "issues": 1298,
-    "errors": 102,
+    "issues": 1196,
+    "errors": 0,
     "warnings": 1196,
     "byIssueKind": {
-      "prompt.room_id": 1196,
-      "prompt.function": 48,
-      "prompt.style": 39,
-      "asset.ratio": 14,
-      "asset.too_small": 1
+      "prompt.room_id": 1196
     },
     "byZone": {
       "abandoned_mines": {
@@ -146,7 +142,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 12,
+        "errors": 0,
         "warnings": 20
       },
       "deepsea_temple": {
@@ -186,7 +182,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 19,
+        "errors": 0,
         "warnings": 18
       },
       "ember_march": {
@@ -196,7 +192,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 18,
+        "errors": 0,
         "warnings": 20
       },
       "emerald_canopy": {
@@ -206,7 +202,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 22,
+        "errors": 0,
         "warnings": 20
       },
       "final_battleground": {
@@ -226,7 +222,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 16,
+        "errors": 0,
         "warnings": 20
       },
       "frozen_wastes": {
@@ -336,7 +332,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 1,
+        "errors": 0,
         "warnings": 20
       },
       "moonlit_fen": {
@@ -426,7 +422,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 7,
+        "errors": 0,
         "warnings": 20
       },
       "royal_hunting_grounds": {
@@ -456,7 +452,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 4,
+        "errors": 0,
         "warnings": 20
       },
       "serpent_delta": {
@@ -556,7 +552,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 1,
+        "errors": 0,
         "warnings": 20
       },
       "thundersteppe": {
@@ -576,7 +572,7 @@
         "missingImageField": 0,
         "missingAsset": 0,
         "phase5Targets": 0,
-        "errors": 2,
+        "errors": 0,
         "warnings": 20
       },
       "underground_city": {
@@ -2333,83 +2329,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "dark_forest_fill_n1_13",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_15",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n2_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_12",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_17",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_18",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "dark_forest_fill_n7_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
       "roomId": "dark_forest_hunter_blind",
       "zoneId": "dark_forest",
       "severity": "warning",
@@ -2464,13 +2383,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "darkwood_border_trail",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "deep_forest",
@@ -2991,139 +2903,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "eastern_coast_fill_31_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_3",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_31_3",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_4",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_4",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_5",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_5",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_6",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_34_6",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_35_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_35_0",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_36_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_36_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_37_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_37_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_38_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_38_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "eastern_coast_fill_39_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "eastern_coast_fill_39_2",
-      "zoneId": "eastern_coast",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
       "roomId": "eastern_coast_pearl_bed",
       "zoneId": "eastern_coast",
       "severity": "warning",
@@ -3285,97 +3064,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "ember_march_fill_22_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_22_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_22_24",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_26_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_26_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_28_22",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_28_22",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_30_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_30_21",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_30_23",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_30_23",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_fill_30_24",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_fill_30_24",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
       "roomId": "ember_march_firegrass_flat",
       "zoneId": "ember_march",
       "severity": "warning",
@@ -3432,41 +3120,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "ember_march_south_portal",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_south_shelter",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_south_shelter",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "ember_march_south_supply",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "ember_march_south_supply",
-      "zoneId": "ember_march",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
       "roomId": "ember_march_war_camp_ruin",
       "zoneId": "ember_march",
       "severity": "warning",
@@ -3514,160 +3167,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n18_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n18_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n19_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n19_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n20_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n20_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n21_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n22_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n23_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n23_7",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n25_11",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n25_11",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_10",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "emerald_canopy_fill_n26_8",
-      "zoneId": "emerald_canopy",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "emerald_canopy_firefly_bower",
@@ -3915,20 +3414,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "frostbite_frozen_divide",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_frozen_divide",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
       "roomId": "frostbite_pass_blue_ice_bridge",
       "zoneId": "frostbite_pass",
       "severity": "warning",
@@ -3976,104 +3461,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n13",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n13",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n19_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n20_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n20_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n21_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n21_n12",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n22_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n22_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n27_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.function",
-      "message": "imagePrompt must include room function"
-    },
-    {
-      "roomId": "frostbite_pass_fill_n27_n14",
-      "zoneId": "frostbite_pass",
-      "severity": "error",
-      "kind": "prompt.style",
-      "message": "imagePrompt missing required style phrase"
     },
     {
       "roomId": "frostbite_pass_frost_giant_steps",
@@ -5595,14 +4982,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "mist_harbor_fill_43_4",
-      "zoneId": "mist_harbor",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 971x1619",
-      "assetPath": "client/public/images/rooms/mist_harbor_fill_43_4.png"
-    },
-    {
       "roomId": "mist_harbor_fish_market",
       "zoneId": "mist_harbor",
       "severity": "warning",
@@ -6809,14 +6188,6 @@
     {
       "roomId": "reef_of_bones_black_coral_cut",
       "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_black_coral_cut.png"
-    },
-    {
-      "roomId": "reef_of_bones_black_coral_cut",
-      "zoneId": "reef_of_bones",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -6831,14 +6202,6 @@
     {
       "roomId": "reef_of_bones_captain_grave",
       "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_captain_grave.png"
-    },
-    {
-      "roomId": "reef_of_bones_captain_grave",
-      "zoneId": "reef_of_bones",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -6846,25 +6209,9 @@
     {
       "roomId": "reef_of_bones_cold_tide_pool",
       "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 966x1629",
-      "assetPath": "client/public/images/rooms/reef_of_bones_cold_tide_pool.png"
-    },
-    {
-      "roomId": "reef_of_bones_cold_tide_pool",
-      "zoneId": "reef_of_bones",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "reef_of_bones_drowned_hold",
-      "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_drowned_hold.png"
     },
     {
       "roomId": "reef_of_bones_drowned_hold",
@@ -6897,14 +6244,6 @@
     {
       "roomId": "reef_of_bones_icekelp_tangle",
       "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_icekelp_tangle.png"
-    },
-    {
-      "roomId": "reef_of_bones_icekelp_tangle",
-      "zoneId": "reef_of_bones",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -6929,14 +6268,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "reef_of_bones_shattered_mast",
-      "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_shattered_mast.png"
     },
     {
       "roomId": "reef_of_bones_shattered_mast",
@@ -6972,14 +6303,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "reef_of_bones_treasure_keel",
-      "zoneId": "reef_of_bones",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/reef_of_bones_treasure_keel.png"
     },
     {
       "roomId": "reef_of_bones_treasure_keel",
@@ -7348,14 +6671,6 @@
     {
       "roomId": "sapphire_lake_lantern_dock",
       "zoneId": "sapphire_lake",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/sapphire_lake_lantern_dock.png"
-    },
-    {
-      "roomId": "sapphire_lake_lantern_dock",
-      "zoneId": "sapphire_lake",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -7377,14 +6692,6 @@
     {
       "roomId": "sapphire_lake_mirror_shallows",
       "zoneId": "sapphire_lake",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/sapphire_lake_mirror_shallows.png"
-    },
-    {
-      "roomId": "sapphire_lake_mirror_shallows",
-      "zoneId": "sapphire_lake",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -7395,14 +6702,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "sapphire_lake_relic_pit",
-      "zoneId": "sapphire_lake",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/sapphire_lake_relic_pit.png"
     },
     {
       "roomId": "sapphire_lake_relic_pit",
@@ -7438,14 +6737,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "sapphire_lake_water_pocket",
-      "zoneId": "sapphire_lake",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/sapphire_lake_water_pocket.png"
     },
     {
       "roomId": "sapphire_lake_water_pocket",
@@ -8843,14 +8134,6 @@
     {
       "roomId": "thornmaze_wildrose_snare",
       "zoneId": "thornmaze",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 972x1619",
-      "assetPath": "client/public/images/rooms/thornmaze_wildrose_snare.png"
-    },
-    {
-      "roomId": "thornmaze_wildrose_snare",
-      "zoneId": "thornmaze",
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
@@ -8994,22 +8277,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "time_ruins_afterimage_void",
-      "zoneId": "time_ruins",
-      "severity": "error",
-      "kind": "asset.too_small",
-      "message": "room image should be at least 960x1536, found 941x1672",
-      "assetPath": "client/public/images/rooms/time_ruins_afterimage_void.png"
-    },
-    {
-      "roomId": "time_ruins_afterimage_void",
-      "zoneId": "time_ruins",
-      "severity": "error",
-      "kind": "asset.ratio",
-      "message": "room image ratio must be close to 10:16, found 941x1672",
-      "assetPath": "client/public/images/rooms/time_ruins_afterimage_void.png"
     },
     {
       "roomId": "time_ruins_afterimage_void",

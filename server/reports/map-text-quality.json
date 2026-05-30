@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-30T18:50:17.660Z",
+  "generatedAt": "2026-05-30T18:55:05.565Z",
   "rules": {
     "room": {
       "worldRoomMinCjkChars": 55,
@@ -366,13 +366,76 @@
     "wikiTableRowNotes": 1881,
     "instanceEntryItems": 8,
     "checkedDungeonItems": 192,
-    "issues": 63
+    "issues": 70
   },
   "issuesByKind": {
-    "imagePrompt": 50,
+    "imagePrompt": 57,
     "batch.repeatedCoreTerm": 13
   },
   "issues": [
+    {
+      "id": "ember_march/ember_march_fill_22_21",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 118,
+      "minimumLength": 80,
+      "text": "星坑東燼封道 ember_march_fill_22_21 in ember_march Ember March, room function border road, charred basalt road sealed by slag beside a fallen star crater edge, west dim crater glow swallowed by ash wind, south wagon ruts on cinder road, east red firegrass sprouts on burnt flats, terrain black slag, ember cracks, ash drifts and heat haze，焦黑石道在畫面下端被熔渣厚牆截斷，西面星落坑邊只剩暗紅餘光被灰風吞沒，南側焦炭車轍斜斜消失，東面火草平地冒出紅芽作方向線索。熔渣表面要有冷卻裂紋、橘紅暗光、灰沙堆積與玄武岩碎片，整體明確表示這是餘燼邊境西北角 border blocker，不開星坑捷徑，只保留危險邊界提示, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "ember_march/ember_march_south_supply",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 113,
+      "minimumLength": 80,
+      "text": "焦土補給棚 ember_march_south_supply in ember_march Ember March, room function portal, half-buried ash supply shed east of the south ember portal, west basalt portal glow through a fireproof cloth curtain, inside water buckets, cooling vials and spare bandages lined against soot walls, terrain ash piles, charred timber, fireproof canvas and warm lantern light，補給棚半埋在灰堆裡，耐火布簾把西側符文臺紅光切成柔亮邊線，棚內水桶、冷卻藥劑與備用繃帶沿焦黑牆面排開。地面要有踩實灰土、木箱、陶瓶水痕與布料燒邊，外側熱風只吹動棚角不造成戰鬥感，整體呈現南部據點的補給提示與短暫安全感，不出現敵人或商店 UI, slightly elevated adventurer eye view, clear foreground service space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "ember_march/ember_march_fill_26_21",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 108,
+      "minimumLength": 80,
+      "text": "骨窯北封火痕 ember_march_fill_26_21 in ember_march Ember March, room function border road, basalt road north of bonekiln pass where fire scars break into segments, south kiln mouth with dry bone cracking sound, west scorched oasis black-water smell carried by hot wind, terrain broken flame marks, molten ash, bone dust, black basalt and wavering heat，玄武岩道路上的火痕斷成數截，熔灰覆住所有踏點，南面骨窯口只露出暗紅裂光和骨粉煙，西側焦灼綠洲以黑水氣味與低霧提示方向。地面要有白灰骨粉、黑石裂縫、斷裂火線與熱浪扭曲，不能畫成通往窯口的路；這是骨窯北側 border blocker，危險壓迫但不提供穿越, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "ember_march/ember_march_fill_30_23",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 115,
+      "minimumLength": 80,
+      "text": "硫泉西界燼路 ember_march_fill_30_23 in ember_march Ember March, room function border road, cinder road east of heartfire breach, west red ember glow blocked by heat fissure, south ash path sinking into hot mud, east volcano sulfur springs venting white steam, terrain sulfur crystal clusters, ash ore seams, hot mud, yellow-white vapor and red stone cracks，燼路貼著心火裂口東側，西面紅光被熱浪與裂縫擋住，南側灰燼邊道沉入熱泥，東方硫磺泉噴出刺鼻白霧。路邊硫磺晶簇與灰燼礦露在熱泥旁，石縫採集點要清楚但不能變成旁支道路；白霧、黃晶、紅裂石與熱泥反光共同指向東側火山硫泉前緣，構圖呈現單一路線端點, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n19_n14",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 113,
+      "minimumLength": 80,
+      "text": "高原崖門西凍路牌 frostbite_pass_fill_n19_n14 in frostbite_pass Frostbite Pass, room function border road, frozen marker west of Storm Highlands cliff gate, north demon frontier cold shadow over ridge, south rain shelf boundary road descending, east moist warm wind from cliff gate, terrain shattered ice gravel, blank signpost, wind-cut stone and sleet haze，凍路牌站在霜咬隘口東北界，牌面無字，只以冰霜覆蓋的木石結構標示端點。北面惡魔邊境冷影壓在山脊上，南側雨棚西界凍石路下滑，東邊崖門吹來濕暖風；畫面要保留向東進入高原崖門的碎冰砂石路，西北冷影與東側濕霧形成對比，不能畫成多方向叉路, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n20_n12",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 97,
+      "minimumLength": 80,
+      "text": "東段冰封橫道 frostbite_pass_fill_n20_n12 in frostbite_pass Frostbite Pass, room function border road, frozen transverse path between rain-shelf ice slope and polar seal gate south side, east glare from thin ice slope, west narrow pass pressed low by hard snow, terrain dense ice cracks, blue-black fissures, wind-packed snow and cold reflected light，冰封橫道被密集裂縫切碎，東面薄冰坡反光刺眼，西面霜咬窄道被硬雪壓低。冰面要有藍黑裂縫、白霜邊、被風壓實的雪層與刺眼冷光，每個看似踏點的冰片都被裂痕隔開；構圖要明確是純 blocker，不是正式通行路線或可越過的冰橋, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
+    {
+      "id": "frostbite_pass/frostbite_pass_fill_n27_n14",
+      "kind": "imagePrompt",
+      "field": "imagePrompt",
+      "currentLength": 103,
+      "minimumLength": 80,
+      "text": "空山風門東霜牆 frostbite_pass_fill_n27_n14 in frostbite_pass Frostbite Pass, room function border road, frost wall east of hollow mountain wind gate, west low humming wind gate entrance, north snow gate marker buried in frost, east frozen switchback fading into white fog, terrain rime wall, wind-carved ice, buried blank marker, snow dust and gray mountain shadow，霜牆立在霜咬隘口西北界，西面空山入口風門只傳出低鳴，北側雪門路牌被冰霜覆住且不可有可讀文字，東邊凍折返道消失在白霧裡。霜牆要有風削冰紋、灰山陰影、雪塵和硬霜層，清楚標示空山與隘口分界，不開跨區路也沒有可攀裂縫, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
+      "reason": "room image prompt 需包含場景主體、視角、光線、材質、氣氛與地標"
+    },
     {
       "id": "frozen_wastes/frozen_wastes_fill_n25_n23",
       "kind": "imagePrompt",
