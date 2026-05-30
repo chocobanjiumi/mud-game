@@ -2247,7 +2247,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'cave_entrance.png',
     imagePrompt: '洞窟入口 in crystal_cave, entrance room below old well with blue crystals, damp stone, cave bats and mineral wind, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '古井井壁後藏著狹窄通道，盡頭是一處天然洞窟入口，岩壁鑲著零星幽藍水晶，涼風帶出潮濕礦物味。上方繩索可攀回古井，南方螢光隧道像星河般延伸，北側廢棄礦車道通向地面。洞頂倒掛蝙蝠，入口岩縫裡有水晶原石，提示旅人這裡是進入洞窟前的安全錨點與第一個戰鬥遭遇。洞窟入口周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '洞窟入口藏在古井井壁後方，狹窄通道盡頭忽然展開成潮濕石室，零星幽藍水晶嵌在岩面裡，冷風帶著礦物與蝙蝠糞味。東側濕滑繩索可攀回古井旁，南面螢光隧道像星河般延伸，北方鏽軌斜井通向廢棄礦車道。洞頂倒掛蝙蝠，地面散著水晶原石、舊鑿痕和斷裂礦燈，讓此處同時像入口、回程錨點與水晶洞窟的第一道警戒線。',
     exits: [
       {
         direction: 'east',
@@ -2285,8 +2285,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'luminous_tunnel.png',
     imagePrompt: '螢光隧道 in crystal_cave, main route tunnel lined with multicolor crystals, polished wet floor and refracted light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain tunnel, clear lantern light',
     description:
-      '隧道兩壁嵌滿大小不一的水晶，彩光在黑暗中層層折射，讓濕滑地面像鏡子般映出星河。北面回洞窟入口，南方水晶大廳透出耀眼光芒，東邊地下河水聲清晰，西側紫色通道帶來眩暈感。水晶閃爍裡有蜥蜴偽裝的影子，提示旅人需觀察異常反光，並小心在光滑地面戰鬥時被逼退。螢光隧道周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
-      '隧道頂端偶爾滴下冰冷礦水，落點會在地面形成細小回音，能幫助判斷蝙蝠群的位置。牆面有礦工刻下的方向箭頭和危險標記，指出大廳、地下河與紫水晶走廊各自的風險，也標明哪條路較適合撤退或採集與休整。',
+      '螢光隧道兩壁嵌滿大小不一的水晶，彩光在黑暗中層層折射，濕滑地面像鏡面般映出倒置星河。北面退回洞窟入口，南方水晶大廳透出耀眼白光，東邊地下河水聲清晰，西側紫水晶走廊帶來淡淡眩暈感。牆面有礦工刻下的方向箭頭與危險記號，晶光中偶爾閃過蜥蜴偽裝的影子，頂端礦水滴落聲也會暴露蝙蝠群的移動位置。',
     exits: [
       { direction: 'north', targetRoomId: 'cave_entrance', description: '回到洞窟入口' },
       { direction: 'south', targetRoomId: 'crystal_hall', description: '隧道盡頭透出耀眼的光芒' },
@@ -2314,8 +2313,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'crystal_hall.png',
     imagePrompt: '水晶大廳 in crystal_cave, landmark room with giant crystal pillars, rune platform, cathedral cavern ceiling and radiant light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain crystal, clear lantern light',
     description:
-      '宏偉天然大廳在隧道盡頭展開，穹頂高得像地底教堂，巨型水晶柱從地面直插天頂，把光折成萬千色彩。北側回螢光隧道，南方礦脈深處傳來沉重震動，中央符文石台被環形階梯包圍。石像鬼雕塑排列在柱間，其中幾尊姿態過於僵硬，提示這裡是地標、Boss 前哨與解謎核心；旅人可 觀察 石台符文開啟後續路線' +
-      '石台四周刻著地底王國的巡禮圖，標出古代祭壇、棱鏡門與水晶龍棲台的相對方位。大廳聲音會被穹頂放大，任何戰鬥都可能驚醒更多守衛，因此路線選擇與補給檢查都很重要，最好先確認北側退路。',
+      '水晶大廳在螢光隧道南端展開，穹頂高得像地底教堂，巨型晶柱從地面直插天頂，把光折成萬千色彩。北側回螢光隧道，南方礦脈深處傳來沉重震動，中央符文石台被環形階梯包圍。石像鬼雕塑排列在柱間，其中幾尊姿態僵硬得過分；石台四周刻著地底王國巡禮圖，標出古代祭壇、棱鏡門與水晶龍棲台的相對方位。',
     exits: [
       { direction: 'north', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
       { direction: 'south', targetRoomId: 'mine_depths', description: '通往更深處的礦脈' },
@@ -2342,7 +2340,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'underground_river.png',
     imagePrompt: '地下河 in crystal_cave, resource river room with clear underground water, glowing crystal fragments, mossy banks and green light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain river, clear lantern light',
     description:
-      '寬闊地下河在洞窟暗處蜿蜒流動，清澈河水能看見河床上的發光水晶碎片，岸邊螢光苔蘚散出柔綠光。西面回螢光隧道，東方瀑布轟鳴越來越響，水面偶爾泛起不自然漣漪。河泥上有蜥蜴爪印與被沖來的礦石袋，提示旅人可採集、追蹤水流或準備水邊伏擊戰。地下河周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '地下河在洞窟暗處蜿蜒流動，清澈河水能看見河床上的發光水晶碎片，岸邊螢光苔蘚散出柔綠光。西面回螢光隧道，東方地底瀑布的轟鳴越來越近，水面偶爾泛起不自然漣漪。河泥上留著水晶蜥蜴爪印、被沖來的礦石袋和磨圓的晶核碎片，岸壁潮痕則指出水位曾突然上漲，讓這條河既是採集水線，也是伏擊容易發生的低光通道。',
     exits: [
       { direction: 'west', targetRoomId: 'luminous_tunnel', description: '回到螢光隧道' },
       { direction: 'east', targetRoomId: 'underground_waterfall', description: '河水向東方流去，傳來瀑布的轟鳴' },
@@ -2367,8 +2365,7 @@ export const ROOMS: Record<string, RoomDef> = {
     image: 'mine_depths.png',
     imagePrompt: '礦脈深處 in crystal_cave, resource combat room with exposed ore veins, hot crystals, heavy pressure and mining scars, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain fantasy terrain, clear lantern light',
     description:
-      '裸露礦脈在岩壁上閃著金屬光澤，巨型水晶像熔爐般散出熱能，讓空氣沉重而壓抑。北面回水晶大廳，東側階梯通往古代祭壇，西邊能聽見礦工營地殘破滑輪聲。地面有新舊鑿痕、晶粉和守衛石像的碎片，提示旅人可採礦、尋找古代機關，也會遭遇石像鬼與水晶蜥蜴巡守。礦脈深處周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。' +
-      '深處礦脈偶爾爆出細小火花，照亮牆上被劃掉的警告文字。若沿著礦車軌痕前進，能找到廢礦工營地與失蹤記錄；若直接走向祭壇，則會更快接觸高階守衛，並可能觸發古代封印事件與警戒。熱風方向也能判斷哪條礦道仍然通暢。',
+      '礦脈深處的岩壁裸露出金屬光澤，巨型水晶像熔爐般散出熱能，使空氣沉重而壓抑。北面回水晶大廳，東側階梯通往古代祭壇，西邊廢礦工營地傳來殘破滑輪的空響。地面有新舊鑿痕、晶粉和守衛石像碎片，礦車軌痕在熱風裡若隱若現；沿軌可找到營地事故記錄，直接走向祭壇則會更早接觸高階守衛與封印能量。',
     exits: [
       { direction: 'north', targetRoomId: 'crystal_hall', description: '返回水晶大廳' },
       { direction: 'east', targetRoomId: 'ancient_altar', description: '礦脈深處有通往古代祭壇的階梯' },
