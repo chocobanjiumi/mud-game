@@ -1,23 +1,23 @@
 {
-  "generatedAt": "2026-05-30T13:30:16.914Z",
+  "generatedAt": "2026-05-30T14:34:23.840Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
-    "phase5Targets": 65,
-    "missingPrompt": 16,
-    "missingImageField": 16,
-    "missingAsset": 65,
-    "issues": 1394,
-    "errors": 198,
+    "phase5Targets": 48,
+    "missingPrompt": 12,
+    "missingImageField": 12,
+    "missingAsset": 48,
+    "issues": 1369,
+    "errors": 173,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
       "prompt.function": 48,
       "prompt.style": 39,
-      "image.missing": 16,
-      "asset.missing": 65,
-      "prompt.missing": 16,
+      "image.missing": 12,
+      "asset.missing": 48,
+      "prompt.missing": 12,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -265,11 +265,11 @@
       "ironwood_fort": {
         "zoneName": "鐵木要塞",
         "rooms": 24,
-        "missingPrompt": 4,
-        "missingImageField": 4,
-        "missingAsset": 4,
-        "phase5Targets": 4,
-        "errors": 12,
+        "missingPrompt": 0,
+        "missingImageField": 0,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "kingdom_frontier": {
@@ -387,9 +387,9 @@
         "rooms": 30,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 10,
-        "phase5Targets": 10,
-        "errors": 10,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "pilgrim_road": {
@@ -397,9 +397,9 @@
         "rooms": 23,
         "missingPrompt": 0,
         "missingImageField": 0,
-        "missingAsset": 3,
-        "phase5Targets": 3,
-        "errors": 3,
+        "missingAsset": 0,
+        "phase5Targets": 0,
+        "errors": 0,
         "warnings": 20
       },
       "plains": {
@@ -625,146 +625,6 @@
     }
   },
   "phase5Targets": [
-    {
-      "roomId": "ironwood_fort_fill_0_12",
-      "roomName": "傳送庭北牆根封",
-      "zoneId": "ironwood_fort",
-      "zoneName": "鐵木要塞",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ironwood_fort_fill_0_12",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_12.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_12",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_12.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_12",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_17",
-      "roomName": "鐵木林南補給封道",
-      "zoneId": "ironwood_fort",
-      "zoneName": "鐵木要塞",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_17.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ironwood_fort_fill_0_17",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_17.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_17",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_17.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_17",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_18",
-      "roomName": "南牆兵營玻砂界",
-      "zoneId": "ironwood_fort",
-      "zoneName": "鐵木要塞",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_18.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ironwood_fort_fill_0_18",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_18.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_18",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_18.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_0_18",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
-    {
-      "roomId": "ironwood_fort_fill_4_15",
-      "roomName": "高堡西軍械封道",
-      "zoneId": "ironwood_fort",
-      "zoneName": "鐵木要塞",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_4_15.png",
-      "missingPrompt": true,
-      "missingImageField": true,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "ironwood_fort_fill_4_15",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_4_15.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_4_15",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/ironwood_fort_fill_4_15.png"
-        },
-        {
-          "roomId": "ironwood_fort_fill_4_15",
-          "zoneId": "ironwood_fort",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
-        }
-      ]
-    },
     {
       "roomId": "kingdom_frontier_fill_n10_n3",
       "roomName": "南哨界碑封口",
@@ -1902,266 +1762,6 @@
           "kind": "asset.missing",
           "message": "world room image asset is missing",
           "assetPath": "client/public/images/rooms/moonlit_fen_fill_23_17.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n1_1",
-      "roomName": "倉庫後穀車道",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_1.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n1_1",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n1_1.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n1_2",
-      "roomName": "水井旁廢農道",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_2.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n1_2",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n1_2.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n1_3",
-      "roomName": "河階荒田邊門",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_3.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n1_3",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n1_3.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n2_1",
-      "roomName": "東田碎犁封埂",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n2_1.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n2_1",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n2_1.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n3_1",
-      "roomName": "破車轍西封田",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n3_1.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n3_1",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n3_1.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n4_1",
-      "roomName": "工具棚雞舍農道",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n4_1.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n4_1",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n4_1.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n4_4",
-      "roomName": "月牧冷泉封界",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n4_4.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n4_4",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n4_4.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n6_3",
-      "roomName": "霉果園南封埂",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n6_3.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n6_3",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n6_3.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n6_4",
-      "roomName": "低谷入口封穀道",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n6_4.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n6_4",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n6_4.png"
-        }
-      ]
-    },
-    {
-      "roomId": "old_farmland_fill_n8_3",
-      "roomName": "稻草人西封埂",
-      "zoneId": "old_farmland",
-      "zoneName": "老舊農場",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n8_3.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "old_farmland_fill_n8_3",
-          "zoneId": "old_farmland",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/old_farmland_fill_n8_3.png"
-        }
-      ]
-    },
-    {
-      "roomId": "pilgrim_road_fill_13_6",
-      "roomName": "斷石道北白石封",
-      "zoneId": "pilgrim_road",
-      "zoneName": "朝聖古道",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_6.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "pilgrim_road_fill_13_6",
-          "zoneId": "pilgrim_road",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_6.png"
-        }
-      ]
-    },
-    {
-      "roomId": "pilgrim_road_fill_13_9",
-      "roomName": "藍寶湖西燈標古道",
-      "zoneId": "pilgrim_road",
-      "zoneName": "朝聖古道",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_9.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "pilgrim_road_fill_13_9",
-          "zoneId": "pilgrim_road",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_9.png"
-        }
-      ]
-    },
-    {
-      "roomId": "pilgrim_road_fill_8_6",
-      "roomName": "古道起點西信標封",
-      "zoneId": "pilgrim_road",
-      "zoneName": "朝聖古道",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_8_6.png",
-      "missingPrompt": false,
-      "missingImageField": false,
-      "missingAsset": true,
-      "issues": [
-        {
-          "roomId": "pilgrim_road_fill_8_6",
-          "zoneId": "pilgrim_road",
-          "severity": "error",
-          "kind": "asset.missing",
-          "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/pilgrim_road_fill_8_6.png"
         }
       ]
     }
@@ -6145,98 +5745,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "ironwood_fort_fill_0_12",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_12.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_12",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_12.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_12",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_17",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_17.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_17",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_17.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_17",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_18",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_18.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_18",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_0_18.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_0_18",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "ironwood_fort_fill_4_15",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_4_15.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_4_15",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/ironwood_fort_fill_4_15.png"
-    },
-    {
-      "roomId": "ironwood_fort_fill_4_15",
-      "zoneId": "ironwood_fort",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
       "roomId": "ironwood_fort_forge_works",
       "zoneId": "ironwood_fort",
       "severity": "warning",
@@ -8488,86 +7996,6 @@
       "message": "Phase 5 target prompts should include room id"
     },
     {
-      "roomId": "old_farmland_fill_n1_1",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_1.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n1_2",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_2.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n1_3",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n1_3.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n2_1",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n2_1.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n3_1",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n3_1.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n4_1",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n4_1.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n4_4",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n4_4.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n6_3",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n6_3.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n6_4",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n6_4.png"
-    },
-    {
-      "roomId": "old_farmland_fill_n8_3",
-      "zoneId": "old_farmland",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/old_farmland_fill_n8_3.png"
-    },
-    {
       "roomId": "old_farmland_granary",
       "zoneId": "old_farmland",
       "severity": "warning",
@@ -8713,30 +8141,6 @@
       "severity": "warning",
       "kind": "prompt.room_id",
       "message": "Phase 5 target prompts should include room id"
-    },
-    {
-      "roomId": "pilgrim_road_fill_13_6",
-      "zoneId": "pilgrim_road",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_6.png"
-    },
-    {
-      "roomId": "pilgrim_road_fill_13_9",
-      "zoneId": "pilgrim_road",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_13_9.png"
-    },
-    {
-      "roomId": "pilgrim_road_fill_8_6",
-      "zoneId": "pilgrim_road",
-      "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/pilgrim_road_fill_8_6.png"
     },
     {
       "roomId": "pilgrim_road_final_marker",
