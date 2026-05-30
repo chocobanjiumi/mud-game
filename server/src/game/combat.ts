@@ -957,6 +957,13 @@ export class CombatEngine {
             targetHpPercent,
             isFirstHit: session.state.round === 1,
           });
+          // M-22: hitCount / multiHit 多段攻擊
+          const hitCount = skillDef ? (this.getNumericSpecial(skillDef, 'hitCount') ?? this.getNumericSpecial(skillDef, 'multiHit') ?? this.getNumericSpecial(skillDef, 'multiShot') ?? 1) : 1;
+          for (let hitIdx = 1; hitIdx < hitCount && !target.isDead; hitIdx++) {
+            const extraDmg = Math.max(1, Math.floor(dmgResult.damage * 0.7));
+            log.push(`  ${actor.name}第 ${hitIdx + 1} 擊命中${target.name}，造成 ${extraDmg} 點傷害。`);
+            this.applyDamageToTarget(session, target, extraDmg, log, actor);
+          }
         }
       }
 
