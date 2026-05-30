@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useGameStore } from '../stores/gameStore';
 import { getAtlasBackgroundStyle, getStatusEffectDef } from '@game/shared';
 import type { ResourceType } from '@game/shared';
@@ -35,21 +36,58 @@ function ProgressBar({
   max,
   barColor,
   bgColor,
+  trailColor,
   label,
 }: {
   current: number;
   max: number;
   barColor: string;
   bgColor: string;
+  trailColor?: string;
   label: string;
 }) {
   const pct = max > 0 ? Math.max(0, Math.min(100, (current / max) * 100)) : 0;
+  const trailElRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
+  const prevPctRef = useRef(pct);
+
+  useEffect(() => {
+    const prev = prevPctRef.current;
+    prevPctRef.current = pct;
+    if (!trailElRef.current) return;
+
+    if (pct >= prev) {
+      trailElRef.current.style.width = `${pct}%`;
+      return;
+    }
+    const el = trailElRef.current;
+    const start = prev;
+    const diff = start - pct;
+    const duration = Math.min(600, 200 + diff * 8);
+    const t0 = performance.now();
+    el.style.width = `${start}%`;
+    const animate = (now: number) => {
+      const elapsed = now - t0;
+      if (elapsed >= duration) {
+        el.style.width = `${pct}%`;
+        return;
+      }
+      el.style.width = `${start - diff * (elapsed / duration)}%`;
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [pct]);
+
   return (
     <div className="flex items-center gap-2 text-xs">
       <span className="w-8 text-right text-text-dim shrink-0">{label}</span>
-      <div className={`flex-1 h-3 rounded-sm overflow-hidden ${bgColor}`}>
+      <div className={`flex-1 h-3 rounded-sm overflow-hidden relative ${bgColor}`}>
+        {trailColor && (
+          <div ref={trailElRef} className={`h-full rounded-sm absolute inset-0 ${trailColor}`} />
+        )}
         <div
-          className={`h-full bar-transition rounded-sm ${barColor}`}
+          className={`h-full rounded-sm absolute inset-0 bar-snap ${barColor}`}
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -60,7 +98,13 @@ function ProgressBar({
   );
 }
 
-/** 資源條 - 使用 inline style 顏色以支援職業特定色彩 */
+const RESOURCE_TRAIL_COLORS: Record<ResourceType, string> = {
+  mp: 'rgba(68, 136, 255, 0.45)',
+  rage: 'rgba(255, 68, 68, 0.45)',
+  focus: 'rgba(255, 204, 0, 0.45)',
+  faith: 'rgba(204, 221, 255, 0.45)',
+};
+
 function ResourceBar({
   current,
   max,
@@ -72,6 +116,39 @@ function ResourceBar({
 }) {
   const config = RESOURCE_CONFIG[resourceType] ?? RESOURCE_CONFIG.mp;
   const pct = max > 0 ? Math.max(0, Math.min(100, (current / max) * 100)) : 0;
+  const trailElRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
+  const prevPctRef = useRef(pct);
+
+  useEffect(() => {
+    const prev = prevPctRef.current;
+    prevPctRef.current = pct;
+    if (!trailElRef.current) return;
+
+    if (pct >= prev) {
+      trailElRef.current.style.width = `${pct}%`;
+      return;
+    }
+    const el = trailElRef.current;
+    const start = prev;
+    const diff = start - pct;
+    const duration = Math.min(600, 200 + diff * 8);
+    const t0 = performance.now();
+    el.style.width = `${start}%`;
+    const animate = (now: number) => {
+      const elapsed = now - t0;
+      if (elapsed >= duration) {
+        el.style.width = `${pct}%`;
+        return;
+      }
+      el.style.width = `${start - diff * (elapsed / duration)}%`;
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [pct]);
+
+  const trailColor = RESOURCE_TRAIL_COLORS[resourceType] ?? RESOURCE_TRAIL_COLORS.mp;
 
   return (
     <div className="flex items-center gap-2 text-xs">
@@ -82,11 +159,16 @@ function ResourceBar({
         {config.label}
       </span>
       <div
-        className="flex-1 h-3 rounded-sm overflow-hidden"
+        className="flex-1 h-3 rounded-sm overflow-hidden relative"
         style={{ backgroundColor: config.bgColor }}
       >
         <div
-          className="h-full bar-transition rounded-sm"
+          ref={trailElRef}
+          className="h-full rounded-sm absolute inset-0"
+          style={{ backgroundColor: trailColor }}
+        />
+        <div
+          className="h-full bar-snap rounded-sm absolute inset-0"
           style={{ width: `${pct}%`, backgroundColor: config.color }}
         />
       </div>
@@ -171,6 +253,7 @@ export default function StatusBar({ compact = false }: { compact?: boolean }) {
             max={character.maxHp}
             barColor="bg-hp-bar"
             bgColor="bg-hp-bg"
+            trailColor="bg-hp-trail"
             label="HP"
           />
           <ResourceBar
@@ -269,6 +352,7 @@ export default function StatusBar({ compact = false }: { compact?: boolean }) {
         max={character.maxHp}
         barColor="bg-hp-bar"
         bgColor="bg-hp-bg"
+        trailColor="bg-hp-trail"
         label="HP"
       />
       <ResourceBar

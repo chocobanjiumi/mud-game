@@ -17,6 +17,7 @@
   --color-text-white: #ffffff;
 
   --color-hp-bar: #ff4444;
+  --color-hp-trail: #991111;
   --color-hp-bg: #441111;
   --color-mp-bar: #4488ff;
   --color-mp-bg: #112244;
@@ -130,6 +131,10 @@ body {
 
 .bar-transition {
   transition: width 0.3s ease-out;
+}
+
+.bar-snap {
+  transition: width 0.12s ease-out;
 }
 
 /* === Panel slide transitions === */
