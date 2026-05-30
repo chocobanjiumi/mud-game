@@ -374,34 +374,41 @@ function AllyIcon({ c, me }: { c: CombatantState; me: boolean }) {
 }
 
 /* ═══ Approaching Dot ═══ */
-const seenApproachIds = new Set<string>();
+const approachTimestamps = new Map<string, number>();
 
 function ApproachDot({ dir, index, total, img, name, ticks, instanceId }: {
   dir: CardinalDirection; index: number; total: number; img?: string; name: string; ticks: number; instanceId: string;
 }) {
   const arrow = DIR_ARROW[dir] ?? '?';
   const offset = total > 1 ? (index - (total - 1) / 2) * 34 : 0;
-  const isNew = !seenApproachIds.has(instanceId);
+
+  if (!approachTimestamps.has(instanceId)) {
+    approachTimestamps.set(instanceId, Date.now());
+  }
+  const age = Date.now() - approachTimestamps.get(instanceId)!;
+  const shouldAnimate = age < 2500;
 
   useEffect(() => {
-    seenApproachIds.add(instanceId);
-    return () => { seenApproachIds.delete(instanceId); };
+    return () => { approachTimestamps.delete(instanceId); };
   }, [instanceId]);
 
-  const style: React.CSSProperties = { position: 'absolute' };
-  if (dir === 'north') { style.top = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
-  if (dir === 'south') { style.bottom = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
-  if (dir === 'east') { style.right = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
-  if (dir === 'west') { style.left = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
-
-  const animClass = isNew ? `approach-slide-${dir}` : '';
+  const posStyle: React.CSSProperties = { position: 'absolute' };
+  if (dir === 'north') { posStyle.top = 'calc(33.33% - 16px)'; posStyle.left = `calc(50% + ${offset}px)`; posStyle.transform = 'translateX(-50%)'; }
+  if (dir === 'south') { posStyle.bottom = 'calc(33.33% - 16px)'; posStyle.left = `calc(50% + ${offset}px)`; posStyle.transform = 'translateX(-50%)'; }
+  if (dir === 'east') { posStyle.right = 'calc(33.33% - 16px)'; posStyle.top = `calc(50% + ${offset}px)`; posStyle.transform = 'translateY(-50%)'; }
+  if (dir === 'west') { posStyle.left = 'calc(33.33% - 16px)'; posStyle.top = `calc(50% + ${offset}px)`; posStyle.transform = 'translateY(-50%)'; }
 
   return (
-    <div className={`flex flex-col items-center z-10 ${animClass}`} style={style} title={`${name} ${ticks}t`}>
-      <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
-        {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
+    <div style={posStyle} className="z-10">
+      <div
+        className={`flex flex-col items-center ${shouldAnimate ? `approach-slide-${dir}` : 'animate-pulse'}`}
+        title={`${name} ${ticks}t`}
+      >
+        <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
+          {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
+        </div>
+        <span className="text-[6px] text-text-amber font-bold leading-none">{arrow}{ticks}t</span>
       </div>
-      <span className="text-[6px] text-text-amber font-bold leading-none">{arrow}{ticks}t</span>
     </div>
   );
 }

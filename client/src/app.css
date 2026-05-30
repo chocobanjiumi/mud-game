@@ -140,33 +140,33 @@ body {
 /* === Approaching monster slide-in animations === */
 
 .approach-slide-north {
-  animation: slide-from-north 1.8s ease-out both;
+  animation: slide-from-north 2s ease-out both;
 }
 .approach-slide-south {
-  animation: slide-from-south 1.8s ease-out both;
+  animation: slide-from-south 2s ease-out both;
 }
 .approach-slide-east {
-  animation: slide-from-east 1.8s ease-out both;
+  animation: slide-from-east 2s ease-out both;
 }
 .approach-slide-west {
-  animation: slide-from-west 1.8s ease-out both;
+  animation: slide-from-west 2s ease-out both;
 }
 
 @keyframes slide-from-north {
-  0%, 33% { translate: 0 -60px; opacity: 0.5; }
-  100%    { translate: 0 0; opacity: 1; }
+  0%, 30% { transform: translateY(-70px); opacity: 0.4; }
+  100%    { transform: translateY(0); opacity: 1; }
 }
 @keyframes slide-from-south {
-  0%, 33% { translate: 0 60px; opacity: 0.5; }
-  100%    { translate: 0 0; opacity: 1; }
+  0%, 30% { transform: translateY(70px); opacity: 0.4; }
+  100%    { transform: translateY(0); opacity: 1; }
 }
 @keyframes slide-from-east {
-  0%, 33% { translate: 60px 0; opacity: 0.5; }
-  100%    { translate: 0 0; opacity: 1; }
+  0%, 30% { transform: translateX(70px); opacity: 0.4; }
+  100%    { transform: translateX(0); opacity: 1; }
 }
 @keyframes slide-from-west {
-  0%, 33% { translate: -60px 0; opacity: 0.5; }
-  100%    { translate: 0 0; opacity: 1; }
+  0%, 30% { transform: translateX(-70px); opacity: 0.4; }
+  100%    { transform: translateX(0); opacity: 1; }
 }
 
 /* === Panel slide transitions === */
