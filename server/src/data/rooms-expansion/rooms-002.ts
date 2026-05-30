@@ -378,10 +378,7 @@ lakeside_hidden_canal: {
     image: 'demon_border.png',
     imagePrompt: '魔族邊境 in demon_territory, cracked chasm bridge from frozen wasteland into burning black plains, sulfur haze, red firelit sky, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bridge, clear lantern light',
     description:
-      '冰封雪原的盡頭，大地突然斷裂成一道巨大的裂谷。裂谷對面是一片焦黑的荒原，。魔族邊境周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '空氣中瀰漫著硫磺的刺鼻氣味，遠方的天空被永恆的紅色火焰映照。' +
-      '一座搖搖欲墜的石橋橫跨裂谷，這是通往魔族領地的唯一通路。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '魔族邊境位在冰封雪原盡頭，大地突然裂成巨谷，對岸焦黑荒原在紅色天光下冒著硫磺煙。南側冰封王座方向仍殘留寒氣，北面搖晃石橋通向焦土平原，西側灰燼哨塔貼著裂谷邊緣監視通路。橋面由粗繩與黑石板勉強固定，裂縫下方翻出熱風，吹得殘旗和雪霜同時碎裂。冰寒與魔火在邊界上互相撕扯，每一步都能感到兩種地貌在腳下相撞。',
     exits: [
       {
         direction: 'south',
@@ -416,10 +413,7 @@ scorched_plains: {
     image: 'scorched_plains.png',
     imagePrompt: '焦土平原 in demon_territory, endless cracked black plain with red flames in fissures, dead trees like bone frames, war drum smoke, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain bone, clear lantern light',
     description:
-      '一望無際的焦黑平原，大地龜裂如蛛網，裂縫中不時竄出赤紅色的火焰。焦土平原周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '枯萎的樹木如同黑色的骨架矗立其間，天空永遠籠罩在灰紅色的煙塵之下。' +
-      '遠處傳來低沉的戰鼓聲，那是魔族巡邏隊的信號。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '焦土平原一望無際，龜裂大地像黑色蛛網延伸到灰紅天幕下，裂縫中不時竄出短促火舌。南方裂谷橋通往魔族邊境，北面戰鼓聲引向魔族村落，東側熱浪沿河岸推向血河，西邊白骨坑地在煙塵裡泛白。枯樹如黑色骨架立在風中，地上散著熔渣、舊矛尖和巡邏隊踩出的深印。遠處低沉鼓點規律響起，讓這片平原像魔族領地向外展開的燒焦前庭。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_border', description: '退回邊境裂谷' },
       { direction: 'north', targetRoomId: 'demon_village', description: '隱約可見魔族的營帳' },
@@ -447,10 +441,7 @@ demon_village: {
     image: 'demon_village.png',
     imagePrompt: '魔族村落 in demon_territory, black stone and bone tents, forge glow, patrol shadows, trophy pole with broken adventurer gear, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '由黑色岩石和獸骨搭建的簡陋村落，低矮的帳篷和骨架棚屋散佈其間。魔族村落周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '魔族士兵在村中巡邏，鍛造爐裡的火焰徹夜不熄，空氣中充斥著金屬和鮮血的氣味。' +
-      '村落中央的圖騰柱上掛滿了冒險者的裝備殘骸，作為對入侵者的警告。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '魔族村落由黑色岩石、獸骨和破皮帳篷搭成，低矮棚屋沿熔爐火光錯落分布，地面滿是煤灰、蹄印和拖行軍械的痕跡。南側焦土路回到焦土平原，北方黑暗要塞大門壓在煙幕後，東邊影市黑布棚下傳來低聲交易，西側上鎖石屋通往魔族寶庫。村中央圖騰柱掛滿破碎裝備和骨牌，鍛造爐徹夜不熄，巡邏士兵在火光間穿行，使這裡帶著臨戰前的粗暴秩序。',
     exits: [
       { direction: 'south', targetRoomId: 'scorched_plains', description: '回到焦土平原' },
       { direction: 'north', targetRoomId: 'dark_fortress_gate', description: '村落北方矗立著黑暗要塞' },
@@ -506,9 +497,7 @@ dark_fortress_gate: {
     image: 'dark_fortress_gate.png',
     imagePrompt: '黑暗要塞大門 in demon_territory, towering black fortress wall, iron gates, cursed runes, demon general drilling soldiers in red smoky plaza, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain fortress, clear lantern light',
     description:
-      '高聳入雲的黑色城牆擋在前方，由巨大的暗黑岩石砌成，表面刻滿了魔族的詛咒符文。黑暗要塞大門周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '城門由兩扇十公尺高的鑄鐵大門構成，門上釘著巨大的惡魔頭顱裝飾。' +
-      '門前的廣場上，魔族將軍正在操練一隊魔族士兵。廣場四角各立著一根燃燒的黑曜石柱，柱頂火焰會隨守軍口令忽明忽暗。城牆縫隙中傳來機關齒輪的沉重轉聲，說明這裡不只是入口，也是整座要塞的防禦樞紐。玩家若停留觀察，能看出巡邏隊每隔數分鐘才會短暫分散。門縫下方還有新鮮車轍，表示軍械正由西側熔爐送入城內，守軍補給仍然頻繁。',
+      '黑暗要塞大門由巨大的暗黑岩石砌成，高牆直插灰紅煙幕，牆面刻滿詛咒符文與燒黑的軍團印記。南側道路退回魔族村落，北面沿血河岸邊可撤到殷紅上游，東側鑄鐵門後連著拷問室，西邊符印塔在煙中閃爍暗光。門前廣場四角立著燃燒的黑曜石柱，魔族將軍操練士兵的口令與城牆齒輪聲交疊，地上新鮮車轍顯示軍械仍不斷被送入要塞。',
     exits: [
       { direction: 'south', targetRoomId: 'demon_village', description: '退回魔族村落' },
       { direction: 'north', targetRoomId: 'blood_river', description: '沿著血河撤退' },
@@ -536,10 +525,7 @@ torture_chamber: {
     image: 'torture_chamber.png',
     imagePrompt: '拷問室 in demon_territory, damp fortress stone chamber with rusted chains, broken cages, red furnace light, restrained dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fortress, clear lantern light',
     description:
-      '要塞內部陰暗潮濕的石室，牆壁上掛滿了生鏽的鐵鏈和刑具。拷問室周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '空氣中瀰漫著令人作嘔的血腥氣味，角落裡堆放著破碎的籠子和骨骸。' +
-      '偶爾能聽到從更深處傳來的淒厲慘叫聲。地面排水溝裡流著被稀釋的紅黑色污水，牆角卻放著幾只尚未熄滅的治療藥瓶，暗示曾有俘虜在此反抗。石門內側刻著潦草的逃生記號，有些箭頭指向兵營，有些則指向南方的鎖鏈庭院，讓這裡成為要塞內部路線的危險節點。若仔細聆聽，東側牆後還會傳來召喚陣低沉脈動，南側鐵門則不斷滲出冷風與鐵鏽味，顯示另有押送路線尚未封閉。' +
-      '此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
+      '拷問室是要塞內部潮濕石室，牆上掛滿生鏽鐵鏈、刑具和斷裂鎖環，地面排水溝流著稀薄紅黑污水。西側門後是黑暗要塞大門，北面石廊通往魔族兵營，東側牆後傳來召喚陣低沉脈動，南方鐵門滲出鎖鏈庭院的冷風與鏽味。角落堆著破碎籠子、骨骸和幾只未熄的治療藥瓶，牆上潦草箭痕指向不同逃路，讓這裡成為要塞內部路線交會的殘酷節點。',
     exits: [
       { direction: 'west', targetRoomId: 'dark_fortress_gate', description: '退回要塞大門' },
       { direction: 'north', targetRoomId: 'demon_barracks', description: '通道通往魔族兵營' },
@@ -568,10 +554,7 @@ demon_barracks: {
     image: 'demon_barracks.png',
     imagePrompt: '魔族兵營 in demon_territory, underground barracks with bone bunks, weapon racks, war maps, red lantern smoke and armored demon patrols, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain bone, clear lantern light',
     description:
-      '寬闊的地下營房中排列著數百張由獸骨和獸皮製成的簡陋床鋪。魔族兵營周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '武器架上陳列著各式各樣的魔族武器，牆壁上掛著作戰地圖和戰旗。' +
-      '空氣中充斥著魔族特有的刺鼻體味，偶爾能聽到士兵們的粗獷笑聲。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '魔族兵營是一座寬闊地下營房，數百張獸骨與獸皮床鋪排成粗糙方陣，空氣裡混著汗臭、鐵鏽和熔爐灰。南側石廊回到拷問室，西面通往召喚陣的符文門泛著暗紅光，東側地獄犬欄傳來鐵鍊碰撞與低吼。武器架上掛滿缺口彎刀、黑鐵槍和染血戰旗，牆上的作戰地圖被匕首釘住。營房深處偶爾爆出粗獷笑聲，使每排空床都像隨時會被巡邏士兵重新填滿。',
     exits: [
       { direction: 'south', targetRoomId: 'torture_chamber', description: '回到拷問室' },
       { direction: 'west', targetRoomId: 'summoning_circle', description: '兵營深處有一道暗紅的門' },
@@ -599,9 +582,7 @@ summoning_circle: {
     image: 'summoning_circle.png',
     imagePrompt: '召喚陣 in demon_territory, vast circular stone chamber with pulsing red magic circle, four black pillars with ghostfire, abyss portal glow, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain stone, clear lantern light',
     description:
-      '一間圓形的巨大石室，地面刻著複雜的魔法陣，暗紅色的能量脈動從符文中湧出。召喚陣周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '空氣中充滿了灼熱的魔力，呼吸都變得困難。四根黑色石柱上燃燒著不滅的鬼火，' +
-      '將整個空間映照成地獄般的景象。這裡是魔王從深淵召喚惡魔的場所。石室穹頂吊著數十枚倒置的金屬鈴，當符文脈動時會發出低沉共鳴，使玩家的方向感逐漸混亂。地面外圈有新近刻下的副陣，能把兵營與詛咒神龕的力量匯入主陣，若不破壞這些節點，守軍會源源不絕地回防。北側石門上的符號與魔王殿王座完全相同，暗示兩者共享同一個深淵核心。',
+      '召喚陣是一間圓形巨石室，地面複雜魔法陣以暗紅能量脈動，四根黑石柱上的鬼火把水汽和煙塵照成地獄般的色澤。西側石門回到拷問室，東面營房通道傳來士兵喧聲，北側符號與魔王殿王座相同，南面詛咒神龕散出冷暗氣息。穹頂倒吊數十枚金屬鈴，符文每次亮起便發出低沉共鳴。外圈副陣刻痕仍很新，像兵營與神龕的力量正在被抽入主陣。',
     exits: [
       { direction: 'west', targetRoomId: 'torture_chamber', description: '退回拷問室' },
       { direction: 'east', targetRoomId: 'demon_barracks', description: '退回兵營' },
@@ -629,10 +610,7 @@ demon_throne: {
     image: 'demon_throne.png',
     imagePrompt: '魔王殿 in demon_territory, deepest fortress throne hall with bone throne, burning red crystals, demon lord silhouette, oppressive infernal light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain fortress, clear lantern light',
     description:
-      '黑暗要塞的最深處，一座由無數骨骸堆砌而成的王座矗立在大殿中央。魔王殿周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '魔王端坐其上，渾身散發著令人窒息的威壓。殿堂四壁鑲嵌著燃燒的魔力結晶，' +
-      '映照出魔王那雙如烈焰般的瞳孔。這裡是魔族領地的心臟，也是最危險的戰場。大殿地面鋪著破碎王國的旗幟，四周高台上站著沉默的親衛與祭司，等待魔王一個手勢便會啟動防禦結界。王座後方並非單純牆面，而是一面被黑鐵封住的巨大門扉，門縫裡吹出龍谷的乾燥熱風，提示魔族正在監視更古老的力量。側廳的親衛也隨時準備支援，王座陰影中還藏著多道未啟動的黑色鎖鏈。' +
-      '此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對玩家與伏擊路線。',
+      '魔王殿位於黑暗要塞最深處，無數骨骸堆砌成高聳王座，燃燒魔力結晶嵌在四壁，映出王座上烈焰般的瞳孔。南側階道回到召喚陣，北面黑鐵巨門吹入龍谷乾熱風，東側魔王親衛前廳傳來甲片摩擦聲。殿堂地面鋪著破碎王國旗幟，四周高台站滿沉默親衛與祭司，黑色鎖鏈半埋在王座陰影裡。這裡像整片魔族領地的心臟，威壓隨每一次火光跳動向外擴散。',
     exits: [
       { direction: 'south', targetRoomId: 'summoning_circle', description: '退回召喚陣' },
       { direction: 'north', targetRoomId: 'dragon_valley_entrance', description: '魔王殿背後的秘密通道通向一片未知的山谷' },
@@ -659,10 +637,7 @@ demon_treasury: {
     image: 'demon_treasury.png',
     imagePrompt: '魔族寶庫 in demon_territory, warded black stone treasury with red gems, piles of coins and cursed relics, trap runes glowing, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain stone, clear lantern light',
     description:
-      '一間由魔法結界守護的石室，四壁鑲嵌著發光的紅色寶石。魔族寶庫周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '室內堆放著從各地掠奪來的金幣、寶石和魔法物品，散發著誘人的光芒。' +
-      '但寶庫中設有多重陷阱，貿然觸碰任何東西都可能觸發毀滅性的詛咒。' +
-      '南側貨梯可聽見影市叫賣聲，但結界已鎖死，只能從村落或白骨坑地重新繞路接近。此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '魔族寶庫是一間被紅色結界籠罩的黑石室，四壁鑲滿發光寶石，光芒在金幣、武器和掠奪來的聖器上反覆折射。東側石門接回魔族村落，門框上的銀鎖痕與焦黑手印顯示此處長年被嚴密封存。室內寶堆之間埋著細小壓板、詛咒針孔與斷裂骸骨，南側貨梯的鐵鏈雖仍微微晃動，卻被結界鎖死在牆內。誘惑的光與陷阱的寒意同時佔據房間，使每件財物都像帶著牙齒。',
     exits: [
       { direction: 'east', targetRoomId: 'demon_village', description: '回到魔族村落' },
     ],
@@ -717,7 +692,7 @@ demon_bone_pits: {
     image: 'demon_bone_pits.png',
     imagePrompt: '白骨坑地 in demon_territory, scorched lowland with bone piles, ash dunes, cracked shields, red fissure light, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain bone, clear lantern light',
     description:
-      '焦土平原西側陷落成一片灰白色坑地，碎骨、破盾與凝固熔渣層層堆疊，踩下去會發出乾脆的碎裂聲。坑壁有許多粗糙的拖痕，通往更深處的黑暗洞穴，偶爾還能聽見地獄犬在遠方嗅聞。這裡是魔族處理戰場殘骸的地方，也是拾荒者冒死尋找遺物的危險區域。此處屬於開放 PvP 高風險地帶，死亡可能損失金幣，撤退前必須留意敵對旅人與伏擊路線',
+      '白骨坑地陷在焦土平原西側，灰白碎骨、破盾、熔渣與燒裂頭盔層層堆疊，踩下去會發出乾脆碎響。東面焦土平原的裂火仍在遠處閃動，南側灰燼哨塔矗立在煙霧裡，北方黑石坡接向魔族寶庫。坑壁滿是粗糙拖痕與爪印，地獄犬嗅聞聲偶爾從深處傳來。這裡像魔族戰場殘骸的傾倒處，腐蝕骨堆裡仍露出少量未被熔渣吞沒的金屬光。',
     exits: [
       { direction: 'east', targetRoomId: 'scorched_plains', description: '爬上斜坡回到焦土平原' },
       { direction: 'south', targetRoomId: 'demon_ash_watch', description: '灰燼小徑回到哨塔' },
