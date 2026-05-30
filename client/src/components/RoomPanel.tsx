@@ -197,6 +197,7 @@ export function RoomPanelView({
   const travelNodes = room.travelNodes ?? [];
   const instanceEntries = room.instanceEntries ?? [];
   const hasEntityPayload = entities.length > 0;
+  const showCrossRoomCombat = Boolean(room.nearbyCombat);
 
   return (
     <div className="room-panel border-b border-border-dim bg-bg-secondary px-3 py-2 space-y-2">
@@ -244,7 +245,7 @@ export function RoomPanelView({
         </section>
       )}
 
-      {hasEntityPayload ? (
+      {showCrossRoomCombat && (
         <div className="space-y-2 text-xs">
           <CrossRoomCombatPanelView
             room={room}
@@ -257,6 +258,11 @@ export function RoomPanelView({
           />
           <ApproachingPanel />
           <CombatPanel />
+        </div>
+      )}
+
+      {hasEntityPayload ? (
+        <div className="space-y-2 text-xs">
           {SECTION_ORDER.map((type) => {
             if (type === 'exit') return null;
             if (type === 'monster') return null;
@@ -314,7 +320,7 @@ export function RoomPanelView({
         </div>
       )}
 
-      {!hasEntityPayload && corpses.length === 0 && travelNodes.length === 0 && instanceEntries.length === 0 && hints.length === 0 && (
+      {!showCrossRoomCombat && !hasEntityPayload && corpses.length === 0 && travelNodes.length === 0 && instanceEntries.length === 0 && hints.length === 0 && (
         <div className="text-xs text-text-dim">目前沒有明確互動物。</div>
       )}
       {detailMonster && <MonsterDetailModal monster={detailMonster} onClose={() => setDetailMonster(null)} />}

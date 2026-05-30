@@ -416,6 +416,44 @@ describe('key UI component rendering', () => {
     expect(targetHtml).toContain('攻擊');
   });
 
+  it('renders nearby combat panel in empty rooms', () => {
+    const state = useGameStore.getState();
+    const room = {
+      ...state.room!,
+      entities: [],
+      monsters: [],
+      corpses: [],
+      gatheringNodes: [],
+      travelNodes: [],
+      instanceEntries: [],
+      inspectHints: [],
+      exits: [],
+      nearbyCombat: {
+        current: {
+          roomId: 'starter_village_fill_3_4',
+          roomName: '市場北後勤青石巷',
+          monsters: [],
+        },
+        neighbors: [
+          { direction: 'north' as const, passable: true, roomId: 'starter_village_rooftop_walk', roomName: '屋脊步道', scouted: false, monsterCount: 0 },
+          { direction: 'east' as const, passable: false, scouted: false, monsterCount: 0 },
+          { direction: 'south' as const, passable: false, scouted: false, monsterCount: 0 },
+          { direction: 'west' as const, passable: true, roomId: 'starter_village_guard_post', roomName: '守衛哨', scouted: false, monsterCount: 0 },
+        ],
+        approaching: [],
+      },
+    };
+
+    const html = renderToStaticMarkup(
+      <RoomPanelView room={room} selectedEntity={null} setSelectedEntity={() => undefined} />,
+    );
+
+    expect(html).toContain('周邊戰鬥');
+    expect(html).toContain('屋脊步道');
+    expect(html).toContain('守衛哨');
+    expect(html).not.toContain('目前沒有明確互動物');
+  });
+
   it('renders party members persistently with ally skills from class avatars', () => {
     const html = renderToStaticMarkup(
       <PartyPanelView
