@@ -918,9 +918,7 @@ sealbreak_spire: {
     image: 'celestial_gate.png',
     imagePrompt: '天界之門 in celestial_ruins, vast white light arch above void, sacred lost glyphs, starstone floor, golden celestial ruins in distance, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一道由純白光芒構成的巨大拱門矗立在虛空之上，門框上刻著失傳已久的神聖文字。天界之門周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '穿過光門的瞬間，世界從混沌的深淵轉變為金色的光輝。' +
-      '腳下是由凝固的星光構成的地面，遠方的天際線上浮現著壯麗的天界廢墟。門後仍能看見深淵裂口的黑紫殘影，像一道尚未癒合的傷口貼在純白光幕上。破碎聖階兩側倒伏著天界守衛的旗杆與被燒焦的羽翼印記，提示深淵曾經衝擊到這裡。玩家踏入此處時，門框文字會逐行亮起，判斷來者是入侵者、朝聖者，還是被迫接受最終試煉的挑戰者。門前光塵會記錄第一次踏入者的名字。',
+      '天界之門由純白光幕凝成，巨大拱門懸在虛空石階上，門框神聖文字一明一滅，像仍在辨認深淵裂口留下的黑紫殘影。南側破封尖塔的冷影還壓在階下，北面星光走廊鋪開成亮銀道路，東側神之圖書館透出書頁光，西邊墜星廣場散著破碎星屑。倒伏旗杆、焦黑羽印與門前光塵共同標出入境痕跡，也暗示這座門既是朝聖入口，也是天界最初的防線。',
     exits: [
       { direction: 'south', targetRoomId: 'sealbreak_spire', description: '破封尖塔的裂光路回到深淵邊境' },
       { direction: 'north', targetRoomId: 'starlight_path', description: '沿著星光之路前進' },
@@ -950,10 +948,7 @@ starlight_path: {
     image: 'starlight_path.png',
     imagePrompt: '星光走廊 in celestial_ruins, corridor paved with solid star fragments, broken celestial halls, holy dust and guardian silhouettes, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一條由凝固的星辰碎片鋪成的走廊，每一步都踩在閃爍的星光之上。星光走廊周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '走廊兩側是破碎的天界建築殘骸，曾經宏偉的殿堂如今只剩下斷壁殘垣。' +
-      '但即便是廢墟，這裡的每一塊石頭都散發著令人敬畏的神聖之力。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '星光走廊由凝固星辰碎片鋪成，腳下每塊石板都映著細小星河，兩側斷牆仍保留天界殿堂的金白輪廓。南端退回天界之門，北面花香與聖水光引向天使花園，東側審判大廳傳來天秤低鳴，西邊破碎柱廊只剩半截光柱。走廊縫隙裡有守衛巡行留下的光塵、破羽和深淵灼痕，星光越亮的地方越接近主線，陰影越重的地方則藏著舊戰場裂口。',
     exits: [
       { direction: 'south', targetRoomId: 'celestial_gate', description: '退回天界之門' },
       { direction: 'north', targetRoomId: 'angel_garden', description: '前方出現一片翠綠的花園' },
@@ -982,10 +977,7 @@ angel_garden: {
     image: 'angel_garden.png',
     imagePrompt: '天使花園 in celestial_ruins, miraculous golden white garden amid ruins, glowing holy fountain, seraph patrols and eternal blossoms, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一片在天界廢墟中奇蹟般存活的花園，金色和白色的花朵永不凋零地綻放。天使花園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '花園中央的噴泉仍在流淌著發光的聖水，空氣中充滿了治癒和安寧的氣息。' +
-      '幾位熾天使在花園中巡遊，牠們的翅膀散發出溫暖的金色光芒。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '天使花園在廢墟中央奇蹟般盛放，金白花朵沿著碎石花圃延伸，中央聖水噴泉把柔光灑向四面。南側星光走廊仍有星屑鋪路，北方天界王座的威壓壓過花香，東面泉水支流連向誓約之泉，西側白石拱門通往永恆聖所。熾天使巡遊時羽光會掠過花瓣，幾處被深淵黑痕碰過的枝葉卻仍在凋萎，讓這片安寧帶著即將破裂的緊張。',
     exits: [
       { direction: 'south', targetRoomId: 'starlight_path', description: '退回星光走廊' },
       { direction: 'north', targetRoomId: 'celestial_throne_room', description: '花園盡頭是天界王座' },
@@ -1014,10 +1006,7 @@ divine_library: {
     image: 'divine_library.png',
     imagePrompt: '神之圖書館 in celestial_ruins, enormous divine library with shelves of light, glowing books, automaton guardians and endless height, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain fantasy terrain, clear lantern light',
     description:
-      '一座超越凡人想像的巨大圖書館，書架延伸到視線無法觸及的高度。神之圖書館周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '書冊由光線構成，翻開後會直接將知識灌入閱讀者的意識中。' +
-      '圖書館中漫步著由神造兵器守護的自動機械，確保知識不被褻瀆。西側光門回到天界之門，北方書架後藏著抄寫室。' +
-      '此處的足跡、聲響或資源痕跡會提示玩家放慢腳步，先觀察危險再採集或開戰。',
+      '神之圖書館高得看不見頂，書架由白金柱與光頁構成，翻動時會把無聲文字投在空氣裡。西側光門回到天界之門，北方書架後藏著聖文抄寫室，東面光頁階梯通向流明檔案庫。地面有神造兵器巡邏留下的細小刻線，幾冊半毀光書記錄深淵入侵時被封存的知識。書架深處並不安靜，紙頁聲、齒輪聲和遠處審判鐘聲交疊，像整座圖書館仍在自行審核所有來訪目光。',
     exits: [
       { direction: 'west', targetRoomId: 'celestial_gate', description: '回到天界之門' },
       { direction: 'north', targetRoomId: 'celestial_scriptorium', description: '書架後方是抄寫室' },
@@ -1045,9 +1034,7 @@ judgment_hall: {
     image: 'judgment_hall.png',
     imagePrompt: '審判大廳 in celestial_ruins, solemn hall with divine judgment murals, glowing scales, angel juror silhouettes and white gold pillars, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function main route, terrain hall, clear lantern light',
     description:
-      '一座莊嚴肅穆的大廳，穹頂上繪著諸神審判的壁畫。審判大廳周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '大廳中央的天秤仍在緩慢擺動，衡量著每一個進入者的善惡。' +
-      '兩排由光線構成的陪審席上坐著沉默的天使虛影，注視著到來的冒險者。每當武器出鞘，穹頂壁畫就會改變內容，把進入者過去的選擇投射成金白與黑灰兩色。大廳地面刻著數百條審判法則，其中有些已被深淵裂痕污染，導致神聖裁決不再完全公正。玩家若想通往天界王座，必須理解天秤偏移的原因，而不是單純擊倒守衛。審判席後方還有通往懺悔階的窄門，只有承認錯誤的人才會看見門縫中的白光。',
+      '審判大廳穹頂覆滿諸神裁決壁畫，中央天秤緩慢擺動，兩側陪審席由光影天使排成沉默弧線。西面星光走廊把星屑帶入門口，東側白金階通往天界王座，北面審判席後露出懺悔階的窄門。地板刻著數百條審判法則，其中幾道已被深淵裂痕染黑；武器聲、腳步聲與謊言都會讓壁畫改變內容，把過往選擇投成金白與黑灰兩種倒影。',
     exits: [
       { direction: 'west', targetRoomId: 'starlight_path', description: '退回星光走廊' },
       { direction: 'east', targetRoomId: 'celestial_throne_room', description: '大廳盡頭通往天界王座' },
@@ -1076,9 +1063,7 @@ celestial_throne_room: {
     image: 'celestial_throne_room.png',
     imagePrompt: '天界王座 in celestial_ruins, grand celestial throne hall of pure light, white platinum throne, rotating stars in ceiling, divine pressure, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function boss, terrain hall, clear lantern light',
     description:
-      '天界最宏偉的殿堂，穹頂由純淨的光線構成，無數星辰在其中旋轉。天界王座周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '一座由永恆白金鑄造的王座矗立在殿堂最高處，王座上空無一人，' +
-      '但王座本身散發的神聖威壓足以讓凡人跪地臣服。通往最終之間的道路就在王座背後。王座階梯兩側排列著破碎冠冕與戰旗，記錄曾經挑戰神權的王國與英雄。深淵裂隙造成的黑色細紋已爬上白金扶手，讓空置王座看起來像正在等待新的審判者。只有理解審判、聖所與軍械庫留下的線索，才能判斷最終光門究竟是祝福還是試煉。王座側面的黎明武庫仍傳來機械啟動聲，表示最終防線尚未完全沉默。',
+      '天界王座殿堂由純淨光線撐起穹頂，星辰在上方緩慢旋轉，永恆白金王座空置在最高階上。南面花園光霧仍從門縫滲入，西側審判大廳的天秤聲低低回響，東側黎明武庫傳來兵器核心啟動聲，北方王座背後的光門通往神之間。階梯旁排列破碎冠冕與舊戰旗，扶手上爬著深淵造成的細黑裂紋，使整座殿堂像在等待新的裁決而非單純迎接統治者。',
     exits: [
       { direction: 'south', targetRoomId: 'angel_garden', description: '退回天使花園' },
       { direction: 'west', targetRoomId: 'judgment_hall', description: '回到審判大廳' },
@@ -1109,9 +1094,7 @@ eternal_sanctuary: {
     image: 'eternal_sanctuary.png',
     imagePrompt: '永恆聖所 in celestial_ruins, small forgotten chapel with creation mural, eternal fire, warm holy light and fallen angel shadows, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain fantasy terrain, clear lantern light',
     description:
-      '一座被時間遺忘的小型聖堂，穹頂上的壁畫描繪著世界創生的場景。永恆聖所周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '聖堂中央的永恆之火仍在燃燒，散發出溫暖而安詳的光芒。' +
-      '這裡是天界最後的寧靜之地，據說在此祈禱可以恢復所有傷勢。聖堂長椅上覆著薄薄星塵，幾件破裂羽甲整齊擺放，像守衛臨走前仍保持儀式。永恆之火的外焰呈金色，內焰卻帶著微弱黑影，暗示深淵污染已經觸碰到最神聖的地方。玩家可在此獲得喘息，也可能面對曾守護聖所的墮天使試煉。聖火後方的暗門通往聖物庫，裡面保存著淨化污染與修復封印所需的關鍵材料。',
+      '永恆聖所是一座被星塵覆住的小型聖堂，穹頂創世壁畫在永恆之火照耀下仍保有暖金色。東側白石門回到天使花園，北面聖火後的暗門通向天界聖物庫，南側側門落回破碎柱廊。長椅上擺著破裂羽甲與未燃盡的祈禱帶，聖火外焰純金，內焰卻浮著微弱黑影。這裡保存天界最後的寧靜，也顯示深淵污染已經觸碰到最神聖的核心。',
     exits: [
       { direction: 'east', targetRoomId: 'angel_garden', description: '回到天使花園' },
       { direction: 'north', targetRoomId: 'celestial_reliquary', description: '聖火後方藏著聖物庫' },
@@ -1138,10 +1121,7 @@ god_chamber: {
     image: 'god_chamber.png',
     imagePrompt: '神之間 in celestial_ruins, perfect circular chamber of pure light, sleeping war god in golden armor floating at center, final trial, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function combat, terrain chamber, clear lantern light',
     description:
-      '天界遺跡的最深處，一個完美的圓形空間。牆壁、地面和天頂都由純粹的光構成。神之間周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。周圍還有舊標記、腳印與地形變化補強方向判讀。周圍還有舊標記、腳印與地形變化補強方向判讀。' +
-      '空間正中央懸浮著一位身著金色戰甲的神祇——戰神，沉睡中的他仍散發著毀天滅地的威壓。' +
-      '當冒險者踏入這片領域的瞬間，戰神的雙眼猛然睜開，億萬年的寂靜在此刻被打破。' +
-      '這是這個世界最強大的存在，也是最終的挑戰。圓形空間外圍漂浮著十二面戰旗，每一面都記錄一場曾由戰神親自終結的遠古戰爭。旗影在地面形成不同武器圖案，預告戰神甦醒後可能切換的攻擊姿態。西側星軌門與東側封印裂縫同時發光，表示這場戰鬥不只決定勝負，也會決定天界遺跡是否繼續封鎖深淵。',
+      '神之間是天界遺跡深處的圓形光室，牆壁、地面與天頂都像由同一束純光打磨而成。南側退回天界王座，西面星軌門連到天象觀測所，東側光裂縫指向最終封印。中央懸浮著身披金甲的戰神，周圍十二面戰旗記錄遠古戰爭，旗影落在地面形成不同武器圖案。神祇沉睡時仍散出毀滅壓力，西東兩門同時發亮，說明此地的勝負將牽動觀測所星軌與封印命運。',
     exits: [
       { direction: 'south', targetRoomId: 'celestial_throne_room', description: '退回天界王座' },
       { direction: 'east', targetRoomId: 'celestial_final_seal', description: '神光裂縫通向最終封印' },
@@ -1168,7 +1148,7 @@ celestial_starfall_plaza: {
     image: 'celestial_starfall_plaza.png',
     imagePrompt: '墜星廣場 in celestial_ruins, white gold plaza covered in fallen star shards, broken angel statues, abyss scar at gate edge, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain gate, clear lantern light',
     description:
-      '天界之門西側是一片廣場，地面由白金石板鋪成，卻被無數墜星碎片砸出細密裂坑。破碎天使像倒在四周，石翼仍反射著微弱星光。廣場中央有一圈尚未熄滅的防禦法陣，陣線一端連著天界之門，另一端指向破碎柱廊。這裡曾是抵禦深淵入侵的第一道防線，現在則成為旅人辨認天界戰況與收集星辰材料的入口支線。若修復法陣缺口，廣場會短暫投影出深淵攻城時的路線，揭露哪些守衛在戰前失蹤。廣場外緣還有幾座半毀傳送台，台面符號與凡間多處遺跡相同，暗示天界曾直接監看世界各地',
+      '墜星廣場位於天界之門西側，白金石板被無數星辰碎片砸出裂坑，破碎天使像倒在四周，石翼仍反射微弱銀光。東邊可回天界之門，北側裂痕道路通往破碎柱廊。廣場中央尚未熄滅的防禦法陣一端連著門階，另一端指向柱廊殘柱；外緣半毀傳送台刻著與凡間遺跡相似的符號。星屑、焦羽與深淵灼痕共同留下第一道防線崩毀的樣貌。',
     exits: [
       { direction: 'east', targetRoomId: 'celestial_gate', description: '回到天界之門' },
       { direction: 'north', targetRoomId: 'celestial_broken_colonnade', description: '裂痕道路通向破碎柱廊' },
