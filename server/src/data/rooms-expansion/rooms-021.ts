@@ -707,7 +707,7 @@ ashfall_monastery_cinder_garden: {
     image: 'ashfall_monastery_cinder_garden.png',
     imagePrompt: '餘燼庭園 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '餘燼庭園曾種滿白花，如今只剩灰色花莖從燒焦土壤裡伸出，花蕊深處仍有微紅火點。西側鐘聲從鐘庭傳來，北面小徑穿過倒塌花架後抵達餘火小禮拜堂。庭園四角的石盆全被灰填滿，盆沿刻著淨化祈文，卻被黑手印逐行覆蓋；若風掀起花灰，地面會短暫露出被拖向禮拜堂的膝行痕跡。餘燼庭園周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '餘燼庭園曾種滿白花，如今只剩灰色花莖從燒焦土壤裡伸出，花蕊深處仍有微紅火點。西側鐘聲從鐘庭傳來，北面小徑穿過倒塌花架後抵達餘火小禮拜堂。庭園四角的石盆全被灰填滿，盆沿刻著淨化祈文，卻被黑手印逐行覆蓋；若風掀起花灰，地面會短暫露出被拖向禮拜堂的膝行痕跡與焦黑花籽。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_bell_court', description: '回到鐘庭' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_ember_chapel', description: '餘火小禮拜堂在北側' },
@@ -813,7 +813,7 @@ ashfall_monastery_ember_chapel: {
     image: 'ashfall_monastery_ember_chapel.png',
     imagePrompt: '餘火小禮拜堂 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '餘火小禮拜堂裡的長椅全被推向兩側，中間只剩一條通往焦黑祭台的灰路。南側花灰小徑回到餘燼庭園，西面被煙燻的書架門連著燻黑書庫，北側破碎彩窗下通向聖者碎像。祭台上有一盞不燃木油燈，燈芯卻保持橘紅，照出牆面上剝落的聖徒臉孔；每當鐘聲停頓，長椅底下會傳來整齊的低語。餘火小禮拜堂周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '餘火小禮拜堂裡的長椅全被推向兩側，中間只剩一條通往焦黑祭台的灰路。南側花灰小徑回到餘燼庭園，西面被煙燻的書架門連著燻黑書庫，北側破碎彩窗下通向聖者碎像。祭台上有一盞不燃木油燈，燈芯卻保持橘紅，照出牆面上剝落的聖徒臉孔；每當鐘聲停頓，長椅底下會傳來整齊的低語與木板輕震。',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_cinder_garden', description: '回到餘燼庭園' },
       { direction: 'west', targetRoomId: 'ashfall_monastery_blackened_library', description: '燻黑書庫在西側' },
@@ -921,7 +921,7 @@ ashfall_monastery_crypt_stairs: {
     image: 'ashfall_monastery_crypt_stairs.png',
     imagePrompt: '地下墓階 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '地下墓階從煙霧步廊北側向下折入冷暗處，階面窄而濕，扶手覆著一層像骨粉般細的灰。南側煙流仍能帶回步廊，東面低拱門通向骨灰藏室。每隔七級就有一枚小聖徽嵌在牆上，越往下越被黑煙侵蝕；階底傳來陶罐輕碰聲，像有看不見的手在整理亡者遺灰，冷風也會把上方鐘聲拉長成哀鳴。地下墓階周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '地下墓階從煙霧步廊北側向下折入冷暗處，階面窄而濕，扶手覆著一層像骨粉般細的灰。南側煙流仍能帶回步廊，東面低拱門通向骨灰藏室。每隔七級就有一枚小聖徽嵌在牆上，越往下越被黑煙侵蝕；階底傳來陶罐輕碰聲，像有看不見的手在整理亡者遺灰，冷風也會把上方鐘聲拉長成哀鳴與回音。',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '骨灰藏室在東側' },
@@ -973,7 +973,7 @@ ashfall_monastery_censer_hall: {
     image: 'ashfall_monastery_censer_hall.png',
     imagePrompt: '香爐廳 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '香爐廳高而空曠，數十只銅香爐用黑鏈吊在穹頂下，煙線垂落如灰色簾幕。西側煙霧步廊的分層煙流回到廳外，南側長桌陰影通向墮落食堂，北面冷灰氣息上接骨灰藏室。香爐表面刻著不同聖徒名，卻被新刻符號覆住一半；只要某只香爐自行擺動，整間廳的煙就會短暫拼成跪拜人影。香爐廳周邊的地貌、入口、出口與危險痕跡需要清楚呈現，讓隊伍能從相鄰房間、地面材質與回程標記判斷探索方向、採集位置、任務線索與安全退路。',
+      '香爐廳高而空曠，數十只銅香爐用黑鏈吊在穹頂下，煙線垂落如灰色簾幕。西側煙霧步廊的分層煙流回到廳外，南側長桌陰影通向墮落食堂，北面冷灰氣息上接骨灰藏室。香爐表面刻著不同聖徒名，卻被新刻符號覆住一半；只要某只香爐自行擺動，整間廳的煙就會短暫拼成跪拜人影與灰色光環。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_smoke_ambulatory', description: '回到煙霧步廊' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_fallen_refectory', description: '回到墮落食堂' },
