@@ -633,6 +633,9 @@ export class CombatEngine {
       if (this.checkBattleEnd(session)) break;
     }
 
+    // 回合結束：approaching 怪物抵達倒數
+    this.processApproachingArrivals(session, roundLog);
+
     // 回合結束：處理狀態效果 tick
     this.processEffectTicks(session, roundLog);
 
@@ -1403,6 +1406,7 @@ export class CombatEngine {
   private generateMonsterActions(session: CombatSession): void {
     for (const enemy of session.state.enemyTeam) {
       if (enemy.isDead) continue;
+      if (this.isWaitingToArrive(enemy)) continue;
       if (session.state.pendingActions.has(enemy.id)) continue;
 
       const instance = session.monsterInstances.get(enemy.id);
@@ -2262,6 +2266,20 @@ export class CombatEngine {
       const next = rounds - 1;
       if (next <= 0) session.skillCooldowns.delete(key);
       else session.skillCooldowns.set(key, next);
+    }
+  }
+
+  private processApproachingArrivals(session: CombatSession, log: string[]): void {
+    for (const enemy of session.state.enemyTeam) {
+      if (enemy.isDead || !enemy.isApproaching) continue;
+      const remaining = (enemy.arrivalTicksRemaining ?? 0) - 1;
+      if (remaining <= 0) {
+        enemy.isApproaching = false;
+        enemy.arrivalTicksRemaining = 0;
+        log.push(`${enemy.name}抵達戰場，加入戰鬥！`);
+      } else {
+        enemy.arrivalTicksRemaining = remaining;
+      }
     }
   }
 
