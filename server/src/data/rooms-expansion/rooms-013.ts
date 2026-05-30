@@ -8,7 +8,7 @@ deepsea_temple_whalebone_bridge: {
     image: 'deepsea_temple_whalebone_bridge.png',
     imagePrompt: '鯨骨橋 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '鯨骨橋位於沉入海底的深海神殿中，西側回骨錨臺，東側觸手門通向禁忌祭壇前路，藍色聖火在水下燃燒。破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '鯨骨橋以巨大鯨肋和黑鐵釘架在深水裂谷上，骨面被藍火照得像濕冷象牙，橋下只有無底暗流。西側橋根回到骨錨臺，東端觸手門在黑水中緩慢開合。橋欄掛著斷裂祭帶與貝殼鈴，水流穿過肋骨間隙時發出低鳴，像遠古巨獸仍在呼吸。每根骨梁都刻著潮汐符文和鹽蝕裂痕，使這座橋不像通道，更像通往禁忌祭壇前最後一段獻祭骨架。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_bone_anchor', description: '鯨骨橋回到骨錨臺' },
       { direction: 'east', targetRoomId: 'deepsea_temple_tentacle_gate', description: '觸手門在前方' },
@@ -34,7 +34,7 @@ deepsea_temple_forbidden_altar: {
     image: 'deepsea_temple_forbidden_altar.png',
     imagePrompt: '禁忌祭壇 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '禁忌祭壇位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '禁忌祭壇立在黑石臺中央，周圍珊瑚柱被削成尖刺，藍火在水下繞著祭桌旋轉。西側黑石階回到神像裂溝，南面祭壇水階沉向沉睡神諭室，東邊低語室門口有暗光脈動。祭桌上刻滿被磨平又重新劃開的祭文，裂縫裡滲出像墨汁般的深水。四周沒有普通神殿的莊嚴，只剩被反覆使用過的寒意，彷彿每一道潮聲都在要求新的名字被交出去。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_statue_trench', description: '禁忌祭壇回到神像裂溝' },
       { direction: 'south', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '祭壇水階通往神諭室' },
@@ -61,7 +61,7 @@ deepsea_temple_sleeping_oracle: {
     image: 'deepsea_temple_sleeping_oracle.png',
     imagePrompt: '沉睡神諭室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '沉睡神諭室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '沉睡神諭室被半透明帷幕狀海草包圍，中央石榻上躺著覆滿珍珠灰的古老神諭像，雙眼被貝殼封住。西側花園水道回到深淵花園，北面祭壇水階通往禁忌祭壇，東側深暗廊道直指潮汐王座。室內水流極慢，聲音像被厚布包住，只有神諭像胸前的水晶偶爾亮起。牆上刻著未完成的預言，字跡在水波裡變形，像睡夢仍在向王座傳遞命令。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_abyssal_garden', description: '神諭室回到深淵花園' },
       { direction: 'north', targetRoomId: 'deepsea_temple_forbidden_altar', description: '祭壇水階回到禁忌祭壇' },
@@ -88,7 +88,7 @@ deepsea_temple_tentacle_gate: {
     image: 'deepsea_temple_tentacle_gate.png',
     imagePrompt: '觸手門 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '觸手門位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '觸手門由黑石門框與活物般的粗大觸腕交纏而成，觸腕表面佈滿藍色符痕，隨水流緩慢收縮。西側鯨骨橋的白骨光仍可回望，東面黑水廊通向潮汐王座。門下堆著碎甲、斷矛與被吸乾色澤的貝殼，暗流每次穿過門縫都會帶出低沉咕噥。這道門不像機關，更像神殿深處的生物器官，將外側祭路與王座壓力分隔開來。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_whalebone_bridge', description: '觸手門回到鯨骨橋' },
       { direction: 'east', targetRoomId: 'deepsea_temple_tidal_throne', description: '黑水廊通往潮汐王座' },
@@ -114,7 +114,7 @@ deepsea_temple_godwhisper_chamber: {
     image: 'deepsea_temple_godwhisper_chamber.png',
     imagePrompt: '古神低語室 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '古神低語室位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '古神低語室牆面覆滿螺旋狀浮雕，浮雕縫裡滲出黑色細流，細流在水中凝成斷續低語。西側門廊回到禁忌祭壇，南面低語階下沉到潮汐王座。室內沒有明顯聲源，卻能看見貝殼、骨片與祭司面罩隨每次低語輕輕震動。藍火在這裡變得昏暗，照出的影子比物體本身更深，彷彿整間石室都在替某個海底古神保存夢話。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_forbidden_altar', description: '低語室回到禁忌祭壇' },
       { direction: 'south', targetRoomId: 'deepsea_temple_tidal_throne', description: '低語階通往潮汐王座' },
@@ -140,7 +140,7 @@ deepsea_temple_tidal_throne: {
     image: 'deepsea_temple_tidal_throne.png',
     imagePrompt: '潮汐王座 in deepsea_temple, submerged ancient ocean temple, blue sacred fire underwater, coral pillars, dark abyss, sea creatures and forbidden altar ruins, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain temple, clear lantern light',
     description:
-      '潮汐王座位於沉入海底的深海神殿中，藍色聖火在水下燃燒，破碎貝殼、珊瑚石柱、古老潮鐘與禁忌祭文共同指向更深處的潮汐王座。這裡是終局區域的高階路線節點，旅人可以 觀察 水流方向、祭壇刻痕、貝殼回音與神像裂縫來判斷暗流與怪物巡行，也能 搜索 書庫、骨錨、月池和花園尋找古神線索。南側黑水廊被潮汐王座的壓力壓成單向暗流，只能從觸手門進入王座。若隊伍忽略水壓、黑暗低語與暗流牽引，魚人、海蛇、水母與九頭蛇會把隊形撕開；若穩定推進，則能逐步掌握禁忌祭壇和潮汐王座的開啟順序，並確認隊伍仍有足夠氣泡護符抵抗下一段深水壓力與黑暗低語迴聲',
+      '潮汐王座坐落在神殿最深處，黑石王座背後展開扇形珊瑚骨翼，周圍水壓沉重得讓藍火貼著地面燃燒。西側通回沉睡神諭室，北方低語階連向古神低語室，王座四周則被高牆、暗流和觸手陰影包圍。階前石板刻著潮汐王名與被劃掉的祭司名，水流像看不見的臣民繞座旋轉。這裡不是普通終點，而是整座深海神殿所有暗流、祭文與低語最後匯聚的核心。',
     exits: [
       { direction: 'west', targetRoomId: 'deepsea_temple_sleeping_oracle', description: '潮汐王座回到沉睡神諭室' },
       { direction: 'north', targetRoomId: 'deepsea_temple_godwhisper_chamber', description: '低語階回到古神低語室' },
