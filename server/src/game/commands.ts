@@ -2471,6 +2471,10 @@ function cmdSkill(session: WsSession, args: string[]): void {
     }
     spendSkillResource(char, skillDef, resourceCheck.effectiveCost);
     startFieldSkillCooldown(char.id, skillDef.id, skillRuntime.cooldown);
+    if (fieldEffect.target && fieldEffect.target !== char && fieldEffect.target.id === char.id) {
+      char.hp = fieldEffect.target.hp;
+      char.mp = fieldEffect.target.mp;
+    }
     saveCharacter(char);
     if (fieldEffect.target && fieldEffect.target.id !== char.id) {
       saveCharacter(fieldEffect.target);
