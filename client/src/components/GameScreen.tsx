@@ -8,6 +8,7 @@ import StatusBar from './StatusBar';
 import MiniMap from './MiniMap';
 import RoomImage from './RoomImage';
 import BattlefieldView from './BattlefieldView';
+import CombatPanel from './CombatPanel';
 import RoomPanel from './RoomPanel';
 import SelectedTargetPanel from './SelectedTargetPanel';
 import Inventory from './Inventory';
@@ -226,11 +227,11 @@ export default function GameScreen({ onCommand, onOpenShop, onPurchase, onGetTra
         </div>
 
         {inCombat ? (
-          /* BC: merged combat area — BattlefieldView 已包含敵人/隊友/目標/approaching */
+          /* BC: merged combat area — BattlefieldView (地圖) + CombatPanel (技能/動作) */
           <div className="game-actions flex flex-col bg-bg-secondary border-r border-border-dim min-h-0">
             <div className="game-actions-scroll flex-1 min-h-0 overflow-y-auto">
               <BattlefieldView />
-              <SkillBar onUseSkill={handleUseSkill} pendingTargetSkillId={pendingTargetSkillId} />
+              <CombatPanel />
             </div>
             <StatusBar compact />
           </div>
