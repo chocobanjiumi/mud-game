@@ -514,7 +514,7 @@ kingsroad_market_high_balcony: {
     image: 'arena_quarter_grand_gate.png',
     imagePrompt: '競技城門 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '競技城門位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。西側城門拱廊外可遠眺藍寶湖的粼粼波光，湖風偶爾捲入場內，為悶熱的競技區帶來一絲清涼。',
+      '競技城門以厚重石拱撐起整片城區入口，拱頂掛著被煙火燻黑的勝場旗，門洞下方鋪滿被靴跟磨亮的石階。東側人潮流入票券柱廊，北面高牆浮雕指向冠軍牆，西側拱廊外則能遠眺藍寶湖的粼粼波光。城門兩旁立著裁判銅鐘、賽程木牌與封蠟通行箱，湖風吹進門內時會把沙塵、酒味和觀眾歡呼一起捲起，像把整座競技場的秩序先壓在入口前。',
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_ticket_colonnade', description: '票券柱廊在東側' },
       { direction: 'north', targetRoomId: 'arena_quarter_champion_wall', description: '冠軍牆在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -537,7 +537,7 @@ arena_quarter_ticket_colonnade: {
     image: 'arena_quarter_ticket_colonnade.png',
     imagePrompt: '票券柱廊 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '票券柱廊位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '票券柱廊由兩排方柱撐起，柱面貼滿不同顏色的入場券、約戰牌與延期告示，火盆煙灰把拱頂染成暗金色。西側石路回到競技城門，東側櫃台旁的人流通往下注所，北面檢查欄杆後能看見武器檢查處的驗刃桌。地面刻著觀眾與鬥士分流線，磨損最深的線條通向今日主賽場；幾張被撕半截的票根夾在柱縫裡，暗示有人臨場換過對戰名單。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門' },
       { direction: 'east', targetRoomId: 'arena_quarter_betting_house', description: '下注所在東側' },
@@ -561,7 +561,7 @@ arena_quarter_betting_house: {
     image: 'arena_quarter_betting_house.png',
     imagePrompt: '下注所 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '下注所位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '下注所低矮而擁擠，牆上黑板用粉筆列著賠率、傷退名單與臨時改期，櫃台後的鐵籠裡堆著封蠟籌碼。西側柱影回到票券柱廊，東面沙粒從熱身沙地一路被帶進門檻，北側窄梯通向獎品櫃。櫃台下方的舊血痕被反覆擦洗，仍在燈下泛暗；若某行賠率被紅線劃掉，通常代表裁判席已經收到不尋常的挑戰申請。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊' },
       { direction: 'east', targetRoomId: 'arena_quarter_warmup_sand', description: '熱身沙地在東側' },
@@ -585,7 +585,7 @@ arena_quarter_weapon_check: {
     image: 'arena_quarter_weapon_check.png',
     imagePrompt: '武器檢查處 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '武器檢查處位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '武器檢查處擺滿長桌、驗刃石和掛著號牌的寄放架，桌面留下無數刀尖刮出的細白痕。南側欄杆回到票券柱廊，東側繞過封條與登記牌後進入訓練場，北面鎖甲聲沿窄巷傳向甲架巷。裁判把不同武器的允許長度刻在銅尺上，旁邊還有被沒收的倒鉤、毒針與破裂護腕；若銅鐘連響三次，代表某件兵器需要送往裁判席重新判定。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_ticket_colonnade', description: '回到票券柱廊', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -621,7 +621,7 @@ arena_quarter_warmup_sand: {
     image: 'arena_quarter_warmup_sand.png',
     imagePrompt: '熱身沙地 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '熱身沙地位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '熱身沙地被木欄分成數個小圈，沙面滿是拖步、翻滾與盾牌落地留下的凹痕。西側櫃台喧聲來自下注所，南面裁判線通向東決鬥圈，東側藥草味則引向醫護長椅。幾具訓練木人被打得傾斜，胸口還釘著昨日的戰術箭標；沙坑邊掛著水袋、備用護膝與破裂練習劍，任何太接近正式邊線的動作都會引來裁判哨聲。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_betting_house', description: '回到下注所' },
       { direction: 'south', targetRoomId: 'arena_quarter_duel_ring_east', description: '南側決鬥邊線通往東決鬥圈' },
@@ -648,7 +648,7 @@ arena_quarter_duel_ring_east: {
     image: 'arena_quarter_duel_ring_east.png',
     imagePrompt: '東決鬥圈 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '東決鬥圈位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '東決鬥圈以白灰畫出圓形邊線，邊線外插著紅色裁判旗，旗尖在熱風裡不停顫動。北側沙痕回到熱身沙地，西面需穿過兩圈判定線才會接到西決鬥圈，南側短階通往裁判席。沙地中央比外圈更暗，混著汗水、鐵鏽和舊血；看台聲音在此變得格外集中，每一次拔劍都會被周圍石牆放大成正式開場的前奏。',
     exits: [
       { direction: 'north', targetRoomId: 'arena_quarter_warmup_sand', description: '北側回到熱身沙地' },
       {
@@ -681,7 +681,7 @@ arena_quarter_duel_ring_west: {
     image: 'arena_quarter_duel_ring_west.png',
     imagePrompt: '西決鬥圈 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '西決鬥圈位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '西決鬥圈靠近訓練場一側，圓線外的木樁綁著厚麻繩，防止熱身者誤闖正式判定區。東側繞過裁判旗架能抵達東決鬥圈，西面沙坑通往訓練場，北側沿外圈階梯上到裁判席。此處沙面較粗，常留著盾牌邊緣刮出的半月痕；牆上懸著幾面破盾，盾背寫有失敗者的姓氏，提醒每場練習都可能變成公開試煉。',
     exits: [
       {
         direction: 'east',
@@ -720,7 +720,7 @@ arena_quarter_training_yard: {
     image: 'arena_quarter_training_yard.png',
     imagePrompt: '訓練場 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '訓練場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '訓練場比熱身沙地更寬，木樁、沙袋、盾靶和移動橫木排成多條演練路線，地面被反覆踩成硬實黃沙。西側登記欄杆通回武器檢查處，東面正式邊線連著西決鬥圈，北側戰術箭標指向戰術桌。牆邊掛著不同顏色的隊列牌，紅牌代表重武器演練，藍牌代表術法躲避；若某組木靶忽然同時轉向，表示裁判正在測試新的進場規則。',
     exits: [
       {
         direction: 'west',
@@ -759,7 +759,7 @@ arena_quarter_healer_bench: {
     image: 'arena_quarter_healer_bench.png',
     imagePrompt: '醫護長椅 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '醫護長椅位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '醫護長椅排在熱身沙地東側，白布棚下擺著鹽水盆、縫針、冰袋與沾滿藥草汁的繃帶。西側沙地仍有練習木劍敲擊聲，北面階梯繞向下層看台，旁邊的傷者名牌按嚴重程度倒掛在木板上。長椅腿部被磨出深痕，顯示無數鬥士曾在此等待判定；棚柱後還藏著一排染血盾牌，只有確認無法再戰時才會被送往武器檢查處封存。',
     exits: [
       { direction: 'west', targetRoomId: 'arena_quarter_warmup_sand', description: '回到熱身沙地' },
       { direction: 'north', targetRoomId: 'arena_quarter_lower_stands', description: '下層看台在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -782,7 +782,7 @@ arena_quarter_armor_rack_lane: {
     image: 'arena_quarter_armor_rack_lane.png',
     imagePrompt: '甲架巷 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '甲架巷位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '甲架巷狹長而沉重，兩側木架掛滿鎖甲、護肩、破盾和正在冷卻的鉚釘，空氣裡有油脂與熱金屬味。南側沿寄放牌可回到武器檢查處，東側繞過維修台後接向戰術桌。巷底的修甲火盆映出一排排空盔，像有人正低頭等待登場；幾件護甲內側刻著舊賽號，刮痕方向能看出它們曾在冠軍牆附近接受過公開展示。',
     exits: [
       {
         direction: 'south',
@@ -820,7 +820,7 @@ arena_quarter_champion_wall: {
     image: 'arena_quarter_champion_wall.png',
     imagePrompt: '冠軍牆 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '冠軍牆位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '冠軍牆是一面長而微彎的黑石浮雕牆，牆上刻著勝者姓名、武器輪廓與最後一擊的姿態，許多字槽被獻花灰燼染成銀白。南側紀念階回到競技城門，東面銘牌牆繞向甲架巷，北側獻花階通往勝利拱，西側湖風從藍寶湖方向灌入。牆根散著乾花、斷劍穗與未寄出的挑戰書，某些新刻名字仍帶著石粉，像剛從裁判席送來。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_grand_gate', description: '回到競技城門', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -859,7 +859,7 @@ arena_quarter_lower_stands: {
     image: 'arena_quarter_lower_stands.png',
     imagePrompt: '下層看台 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '下層看台位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '下層看台貼近場邊，石座被觀眾磨得發亮，欄杆上纏著用來分隔押注席與普通席的紅繩。南側階梯下到醫護長椅，西側場門通入中央競技場，北側座席階梯爬向上層看台。此處能清楚聞到沙地血鐵味，也能聽見裁判席的哨聲；座位底下塞著舊票根、碎陶杯與短鉛筆，顯示每一排看台都在記錄自己的勝負偏見。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_healer_bench', description: '回到醫護長椅', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -898,7 +898,7 @@ arena_quarter_upper_stands: {
     image: 'arena_quarter_upper_stands.png',
     imagePrompt: '上層看台 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '上層看台位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '上層看台沿著競技場內壁抬升，風從高處穿過旗桿，使每一面隊色旗都像在替下方決鬥計時。南側階梯回到下層看台，西面有護欄與簾幕通往貴賓包廂。從這裡能看見中央競技場完整圓形，也能辨認熱身沙地、裁判席與酒館燈火的位置；座椅背後刻著密密麻麻的私下注記，有些已被衛兵用黑漆塗掉。',
     exits: [
       {
         direction: 'south',
@@ -930,7 +930,7 @@ arena_quarter_roar_tavern: {
     image: 'arena_quarter_roar_tavern.png',
     imagePrompt: '怒吼酒館 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '怒吼酒館位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '怒吼酒館嵌在看台外側，門牌是一面被劈開的圓盾，屋內長桌因拍桌叫好而佈滿裂痕。西側後門繞過休息棚可到醫護長椅，北側外廊穿過觀戰人潮後接往下層看台。牆上掛著失敗者請客留下的酒杯，吧台旁的小黑板寫滿非正式外號與場邊傳聞；每當中央競技場爆出歡呼，屋頂灰塵就會跟著震落在麥酒泡沫上。',
     exits: [
       {
         direction: 'west',
@@ -965,7 +965,7 @@ arena_quarter_strategy_tables: {
     image: 'arena_quarter_strategy_tables.png',
     imagePrompt: '戰術桌 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '戰術桌位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '戰術桌區擺著數張沉重木桌，桌面用炭筆畫出決鬥圈、看台門、醫護路線與裁判旗的位置，旁邊壓著沙漏和染色石子。南側分隔繩回到訓練場，西面護甲架延向甲架巷，東側通道接到裁判席。幾張圖板上還留著未擦乾淨的失敗路線，紅石子集中在東決鬥圈與中央競技場之間，說明今日的主要風險不是力量，而是入場角度與退場時機。',
     exits: [
       {
         direction: 'south',
@@ -1004,7 +1004,7 @@ arena_quarter_referee_box: {
     image: 'arena_quarter_referee_box.png',
     imagePrompt: '裁判席 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '裁判席位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '裁判席築在決鬥圈與包廂之間的高台上，桌前排列黑白判定旗、銅哨、沙漏與封存裁決的木匣。北側階梯繞回西決鬥圈，西面戰術圖板連著戰術桌，南側內階下到貴賓包廂。高台地板被靴跟踩出一排固定站位，視線能同時看見兩個決鬥圈和中央競技場入口；若木匣上的紅封條被揭開，全場鐘聲會立刻壓過觀眾喧鬧。',
     exits: [
       {
         direction: 'north',
@@ -1041,7 +1041,7 @@ arena_quarter_prize_counter: {
     image: 'arena_quarter_prize_counter.png',
     imagePrompt: '獎品櫃 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '獎品櫃位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '獎品櫃用厚玻璃和鐵欄圍住，櫃中陳列獎牌、刻名護符、磨亮的訓練徽章與幾件只在冠軍戰後開放的武器。南側窄梯回到下注所，東側兌換欄杆繞向熱身沙地，北面貨門可接到王道市集南緣。櫃台後方有一本皮面名冊，頁角被翻得發黑；某些獎品底座留著空位，旁邊只有一張寫著待裁判確認的銅牌。',
     exits: [
       { direction: 'south', targetRoomId: 'arena_quarter_betting_house', description: '回到下注所' },
       {
@@ -1070,7 +1070,7 @@ arena_quarter_private_boxes: {
     image: 'arena_quarter_private_boxes.png',
     imagePrompt: '貴賓包廂 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '貴賓包廂位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '貴賓包廂被深紅簾幕與銅欄隔開，桌上擺著銀杯、私下注冊、印有家徽的座牌和能直接看見場心的單筒鏡。東側護欄接回上層看台，北側內階上到裁判席，南側包廂階梯通入中央競技場。簾幕後方有數條狹窄服務道，牆上掛著靜音鈴繩；當鈴繩被拉動，附近侍從會先看向裁判席，再決定是否放下包廂前的遮簾。',
     exits: [
       { direction: 'east', targetRoomId: 'arena_quarter_upper_stands', description: '回到上層看台', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
       {
@@ -1101,7 +1101,7 @@ arena_quarter_victory_arch: {
     image: 'arena_quarter_victory_arch.png',
     imagePrompt: '勝利拱 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '勝利拱位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '勝利拱高過周圍看台，拱面嵌著舊獎牌、斷刃和褪色花環，日光從上方裂縫落下時會照亮拱心的勝者銘文。南側獻花階回到冠軍牆，東側內廊沿貴賓護欄通往貴賓包廂，西側可望見藍寶湖邊的草灘。拱腳堆著未燃盡的慶典火盆和被踩碎的月桂葉，冷卻後仍散出苦味；每次中央競技場鐘響，銘文縫裡都會落下細石粉。',
     exits: [
       {
         direction: 'south',
@@ -1136,7 +1136,7 @@ arena_quarter_center_arena: {
     image: 'arena_quarter_center_arena.png',
     imagePrompt: '中央競技場 in arena_quarter, arena quarter pvp city district with colonnades, betting house, training sand, duel rings, grand stands, banners and torchlight, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function town service, terrain city, clear lantern light',
     description:
-      '中央競技場位於大型競技場周圍日夜喧鬧的城區內，票券柱廊、下注牌、武器檢查桌、訓練沙地與環形看台共同維持決鬥秩序，卡爾沃戰爭之主的榮耀戰旗懸在場心。這裡是安全的 duel-only PVP 與交易支援區，玩家可以 inspect 敵人對戰名單、裁判旗、下注封條和裝備架來判斷當日賽程，也能 search 戰術桌、冠軍牆、獎品櫃與貴賓包廂尋找競技委託線索。若冒險者需要熱身、觀戰、下注、治療或安排約戰，都能沿著城門、決鬥圈、看台與中央競技場完成；衛兵與裁判會維持秩序，並以危險分級牌標示高階對手，使此處適合準備正式對決、追蹤戰績、安排隊伍位置並安全離場，同時確認賽程、賭注、治療窗口與裝備寄放狀態。',
+      '中央競技場是一片被高牆包住的圓形沙地，場心懸著卡爾沃戰爭之主的榮耀戰旗，旗影正好落在最深的劍痕上。北側包廂階梯回到貴賓包廂，東側場門穿過觀戰欄杆後通向下層看台。四周看台聲浪像石牆一樣壓下來，沙面卻異常平整，只在中央留著一圈被反覆清掃仍無法抹去的暗色痕跡；當旗影轉到場門位置，裁判席會準備敲響主賽銅鐘。',
     exits: [
       { direction: 'north', targetRoomId: 'arena_quarter_private_boxes', description: '北側包廂階梯回到貴賓包廂' },
       {
