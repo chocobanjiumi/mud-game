@@ -21,16 +21,32 @@ export default function BattlefieldView() {
 
   const nearby = room?.nearbyCombat;
 
-  const { frontRow, backRow, aliveEnemies, approachingEnemies, maxThreat, selectedEnemy } = useMemo(() => {
-    if (!combat) return { frontRow: [], backRow: [], aliveEnemies: [], approachingEnemies: [], maxThreat: 1, selectedEnemy: undefined };
+  const prevApproachingRef = useRef<Map<string, CardinalDirection>>(new Map());
+
+  const { frontRow, backRow, aliveEnemies, approachingEnemies, maxThreat, selectedEnemy, justArrived } = useMemo(() => {
+    if (!combat) return { frontRow: [], backRow: [], aliveEnemies: [], approachingEnemies: [], maxThreat: 1, selectedEnemy: undefined, justArrived: new Map<string, CardinalDirection>() };
     const fr = combat.playerTeam.filter(p => p.formation === 'front');
     const br = combat.playerTeam.filter(p => p.formation === 'back');
     const alive = combat.enemyTeam.filter(e => !e.isDead && !e.isApproaching);
     const approaching = combat.enemyTeam.filter(e => !e.isDead && e.isApproaching);
     const mt = Math.max(1, ...combat.playerTeam.map(p => p.threat));
     const sel = combat.enemyTeam.find(e => e.id === selectedId);
-    return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel };
-  }, [combat, selectedId]);
+
+    const arrived = new Map<string, CardinalDirection>();
+    const prev = prevApproachingRef.current;
+    for (const e of alive) {
+      if (prev.has(e.id)) arrived.set(e.id, prev.get(e.id)!);
+    }
+
+    const nextApproaching = new Map<string, CardinalDirection>();
+    for (const e of approaching) {
+      const ap = nearby?.approaching?.find(a => a.instanceId === e.id);
+      nextApproaching.set(e.id, ap?.sourceDirection ?? prev.get(e.id) ?? 'north');
+    }
+    prevApproachingRef.current = nextApproaching;
+
+    return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel, justArrived: arrived };
+  }, [combat, selectedId, nearby]);
 
   const idleMonsters = useMemo(() => {
     if (!room?.monsters || !combat) return [];
@@ -86,7 +102,8 @@ export default function BattlefieldView() {
               {aliveEnemies.map(e => (
                 <MonIcon key={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
                   boss={!!e.monsterPhases?.length} selected={e.id === selectedId} cast={e.pendingTelegraph ? `${(e.pendingTelegraph as { skillName?: string }).skillName ?? '施法'}` : undefined}
-                  onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40} />
+                  onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40}
+                  slideFrom={justArrived.get(e.id)} />
               ))}
             </div>
             {/* 房間內未參戰怪物 */}
@@ -293,12 +310,37 @@ function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeigh
 }
 
 /* ═══ Monster Icon ═══ */
-function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle }: {
+const SLIDE_OFFSET: Record<CardinalDirection, { x: number; y: number }> = {
+  north: { x: 0, y: -80 },
+  south: { x: 0, y: 80 },
+  east: { x: 80, y: 0 },
+  west: { x: -80, y: 0 },
+};
+
+function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle, slideFrom }: {
   name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number; idle?: boolean;
+  slideFrom?: CardinalDirection;
 }) {
   const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#ff6666';
+  const [slid, setSlid] = useState(!slideFrom);
+  const slidMountRef = useRef(false);
+
+  useEffect(() => {
+    if (!slideFrom || slidMountRef.current) return;
+    slidMountRef.current = true;
+    const t = setTimeout(() => setSlid(true), 50);
+    return () => clearTimeout(t);
+  }, [slideFrom]);
+
+  const offset = slideFrom ? SLIDE_OFFSET[slideFrom] : undefined;
+  const slideStyle: React.CSSProperties = offset && !slid
+    ? { transform: `translate(${offset.x}px, ${offset.y}px)`, opacity: 0.6, transition: 'none' }
+    : offset
+      ? { transform: 'translate(0, 0)', opacity: 1, transition: 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease-out' }
+      : {};
+
   return (
-    <div className={`flex flex-col items-center gap-px cursor-pointer group ${idle ? 'opacity-60 hover:opacity-100' : ''}`} title={`${name} HP:${Math.round(hp)}%${idle ? ' (點擊攻擊)' : ''}`} onClick={onClick}>
+    <div className={`flex flex-col items-center gap-px cursor-pointer group ${idle ? 'opacity-60 hover:opacity-100' : ''}`} title={`${name} HP:${Math.round(hp)}%${idle ? ' (點擊攻擊)' : ''}`} onClick={onClick} style={slideStyle}>
       {cast && <span className="text-[6px] text-red-400 animate-pulse leading-none">⏳{cast}</span>}
       <div className="rounded-full overflow-hidden bg-bg-primary/60" style={{ width: size - 4, height: 2 }}>
         <div className="h-full rounded-full" style={{ width: `${hp}%`, backgroundColor: hpColor }} />
