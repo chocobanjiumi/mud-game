@@ -1000,7 +1000,7 @@ ashfall_monastery_saint_mosaic: {
     image: 'ashfall_monastery_saint_mosaic.png',
     imagePrompt: '聖者碎像 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '聖者碎像位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '聖者碎像原是一整面彩石聖徒壁畫，如今只剩散落地面的臉、手與光環碎片，仍在灰暗中反射微弱金光。南側破窗回到餘火小禮拜堂，東面陰影階梯通向暗影鐘樓。碎片排列並非自然崩落，幾塊掌心石被人刻意翻面，露出背後的舊銘文；若遠處鐘聲落下，缺失的聖徒眼睛會在地面灰粉裡短暫浮出輪廓。',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_ember_chapel', description: '回到餘火小禮拜堂' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_shadow_belfry', description: '暗影鐘樓在東側' },
@@ -1026,7 +1026,7 @@ ashfall_monastery_firelit_apocrypha: {
     image: 'ashfall_monastery_firelit_apocrypha.png',
     imagePrompt: '火照外典室 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '火照外典室位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '火照外典室被一圈低矮火盆照亮，火光不是向上燃燒，而是貼著桌面舔過被鎖鏈固定的外典書。南側焦書氣回到燻黑書庫，東側石門後便是雙相祭壇。牆上架著多只封蠟卷軸，蠟印一半是聖徽，一半被灼成不明角形；書頁邊緣不斷滲出細灰，落在地上組成斷續禱文，像某場儀式被刻意停在最後一句之前。',
     exits: [
       { direction: 'south', targetRoomId: 'ashfall_monastery_blackened_library', description: '回到燻黑書庫' },
       { direction: 'east', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在東側' },
@@ -1052,7 +1052,7 @@ ashfall_monastery_shadow_belfry: {
     image: 'ashfall_monastery_shadow_belfry.png',
     imagePrompt: '暗影鐘樓 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '暗影鐘樓位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '暗影鐘樓的樓梯沿牆盤旋，外側窗洞被黑灰封住，只有鐘繩從看不見的高處垂到地面。西側碎石廊回到聖者碎像，北側陰影階梯接向雙相祭壇。鐘樓內沒有大鐘，牆面卻會在固定節奏下震動，讓灰粉從每一道磚縫落下；繩索末端綁著數枚聖物碎片，碰撞時不發聲，只在地面投出像翅膀般張開的影子。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_saint_mosaic', description: '回到聖者碎像' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
@@ -1078,7 +1078,7 @@ ashfall_monastery_reliquary_vault: {
     image: 'ashfall_monastery_reliquary_vault.png',
     imagePrompt: '聖物庫 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '聖物庫位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '聖物庫以厚石門和鐵格分隔，架上陳列破聖杯、鐘舌、焦黑經匣與被灰布包住的手骨聖匣。西側骨灰藏室的冷氣從門縫鑽入，北側狹梯通往雙相祭壇。每件聖物下方都有舊標籤，近年新增的黑色註記卻蓋住原本祝禱；庫中央留著一圈未被灰覆蓋的空位，像某件最重要的聖物剛被移走，守衛構裝仍對著空位站立。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_bone_ossuary', description: '回到骨灰藏室' },
       { direction: 'north', targetRoomId: 'ashfall_monastery_dual_altar', description: '雙相祭壇在北側' },
@@ -1104,7 +1104,7 @@ ashfall_monastery_dual_altar: {
     image: 'ashfall_monastery_dual_altar.png',
     imagePrompt: '雙相祭壇 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '雙相祭壇位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '雙相祭壇由白石與黑玄武岩各佔一半拼成，中央裂縫裡有細小金火與暗影同時升起，互不吞沒。西側火光門連回火照外典室，南側聖物階下到聖物庫，東面灰白門縫通向灰燼聖所。祭壇兩側各擺一只空碗，一只盛著冷灰，一只盛著未凝的亮液；牆上鐘影會在此分成兩道，像修道院最後的裁決被迫同時承認救贖與墮落。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_firelit_apocrypha', description: '回到火照外典室' },
       { direction: 'south', targetRoomId: 'ashfall_monastery_reliquary_vault', description: '回到聖物庫' },
@@ -1132,7 +1132,7 @@ ashfall_monastery_ashen_sanctum: {
     image: 'ashfall_monastery_ashen_sanctum.png',
     imagePrompt: '灰燼聖所 in ashfall_monastery, ash covered monastery dungeon entrance with burned cloisters, broken holy font, ember chapel, blackened library, crypt stairs and fallen saints, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain ash, clear lantern light',
     description:
-      '灰燼聖所位於火山灰覆蓋卻仍有鐘聲迴盪的灰落修道院內，焦黑迴廊、破聖水盤、餘火禮拜堂、燻黑書庫與地下骨灰室共同構成光暗交錯的危險入口。這裡是高階隊伍地下城入口與精英巡邏區，旅人可以 觀察 鐘繩灰痕、聖像裂紋、香爐煙向和外典封條來判斷墮落儀式，也能 搜索 懺悔小室、抄經室、聖物庫與雙相祭壇尋找修道院線索。若隊伍忽略鐘聲節奏、灰燼火線與暗影修士伏擊，詛咒祭司、巫妖、魔族戰士與大惡魔會切斷退路；若穩定沿鐘庭、墓階與聖物庫推進，則能抵達灰燼聖所並帶回聖光殘響記錄與灰燼封印',
+      '灰燼聖所位在修道院最深處，圓形殿堂被厚灰覆蓋，中央聖火井只剩一束白金色微光從灰層下透出。西側灰白門回到雙相祭壇，除此之外沒有其他出口。四周跪著石化修士與破碎審判構裝，所有臉都朝向聖火井，像在等待某個遲到的赦免。井沿刻著最後封印文，文字一半被聖光照亮，一半被暗影吞沒；當遠處裂鐘停下，整座聖所會短暫安靜到能聽見灰落下的聲音。',
     exits: [
       { direction: 'west', targetRoomId: 'ashfall_monastery_dual_altar', description: '回到雙相祭壇' },
     ],
