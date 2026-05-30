@@ -21,10 +21,8 @@ export default function BattlefieldView() {
 
   const nearby = room?.nearbyCombat;
 
-  const prevApproachingRef = useRef<Map<string, CardinalDirection>>(new Map());
-
-  const { frontRow, backRow, aliveEnemies, approachingEnemies, maxThreat, selectedEnemy, justArrived } = useMemo(() => {
-    if (!combat) return { frontRow: [], backRow: [], aliveEnemies: [], approachingEnemies: [], maxThreat: 1, selectedEnemy: undefined, justArrived: new Map<string, CardinalDirection>() };
+  const { frontRow, backRow, aliveEnemies, approachingEnemies, maxThreat, selectedEnemy } = useMemo(() => {
+    if (!combat) return { frontRow: [], backRow: [], aliveEnemies: [], approachingEnemies: [], maxThreat: 1, selectedEnemy: undefined };
     const fr = combat.playerTeam.filter(p => p.formation === 'front');
     const br = combat.playerTeam.filter(p => p.formation === 'back');
     const alive = combat.enemyTeam.filter(e => !e.isDead && !e.isApproaching);
@@ -32,20 +30,20 @@ export default function BattlefieldView() {
     const mt = Math.max(1, ...combat.playerTeam.map(p => p.threat));
     const sel = combat.enemyTeam.find(e => e.id === selectedId);
 
-    const arrived = new Map<string, CardinalDirection>();
-    const prev = prevApproachingRef.current;
-    for (const e of alive) {
-      if (prev.has(e.id)) arrived.set(e.id, prev.get(e.id)!);
-    }
-
-    const nextApproaching = new Map<string, CardinalDirection>();
     for (const e of approaching) {
       const ap = nearby?.approaching?.find(a => a.instanceId === e.id);
-      nextApproaching.set(e.id, ap?.sourceDirection ?? prev.get(e.id) ?? 'north');
+      if (ap?.sourceDirection && !approachDirCache.has(e.id)) {
+        approachDirCache.set(e.id, ap.sourceDirection);
+      }
     }
-    prevApproachingRef.current = nextApproaching;
 
-    return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel, justArrived: arrived };
+    for (const e of alive) {
+      if (approachDirCache.has(e.id) && !monArrivalTimestamps.has(e.id)) {
+        monArrivalTimestamps.set(e.id, Date.now());
+      }
+    }
+
+    return { frontRow: fr, backRow: br, aliveEnemies: alive, approachingEnemies: approaching, maxThreat: mt, selectedEnemy: sel };
   }, [combat, selectedId, nearby]);
 
   const idleMonsters = useMemo(() => {
@@ -102,8 +100,7 @@ export default function BattlefieldView() {
               {aliveEnemies.map(e => (
                 <MonIcon key={e.id} enemyId={e.id} name={e.name} img={getMonsterImagePath(e.id.replace(/_\d+$/, ''))} hp={e.maxHp > 0 ? (e.hp / e.maxHp) * 100 : 0}
                   boss={!!e.monsterPhases?.length} selected={e.id === selectedId} cast={e.pendingTelegraph ? `${(e.pendingTelegraph as { skillName?: string }).skillName ?? '施法'}` : undefined}
-                  onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40}
-                  slideFrom={justArrived.get(e.id)} />
+                  onClick={() => setSelectedCombatTargetId(e.id)} size={aliveEnemies.length > 4 ? 32 : 40} />
               ))}
             </div>
             {/* 房間內未參戰怪物 */}
@@ -310,22 +307,21 @@ function RoomCell({ dir, neighbor }: { dir: string; neighbor?: NearbyCombatNeigh
 }
 
 /* ═══ Monster Icon ═══ */
+const approachDirCache = new Map<string, CardinalDirection>();
 const monArrivalTimestamps = new Map<string, number>();
 
-function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle, slideFrom, enemyId }: {
+function MonIcon({ name, img, hp, boss, selected, cast, onClick, size = 36, idle, enemyId }: {
   name: string; img?: string; hp: number; boss?: boolean; selected?: boolean; cast?: string; onClick?: () => void; size?: number; idle?: boolean;
-  slideFrom?: CardinalDirection; enemyId?: string;
+  enemyId?: string;
 }) {
   const hpColor = hp < 30 ? '#ff4444' : hp < 60 ? '#ffb800' : '#ff6666';
 
   let animClass = '';
-  if (slideFrom && enemyId) {
-    if (!monArrivalTimestamps.has(enemyId)) {
-      monArrivalTimestamps.set(enemyId, Date.now());
-    }
+  if (enemyId && monArrivalTimestamps.has(enemyId)) {
     const age = Date.now() - monArrivalTimestamps.get(enemyId)!;
-    if (age < 2000) {
-      animClass = `mon-arrive-${slideFrom}`;
+    const dir = approachDirCache.get(enemyId);
+    if (age < 2000 && dir) {
+      animClass = `mon-arrive-${dir}`;
     }
   }
 

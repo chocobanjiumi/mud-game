@@ -76,33 +76,31 @@ export function CombatPanelView({
       </div>
 
       <div className="combat-enemy-row">
-        {livingEnemies.map((enemy) => {
-          const selected = enemy.id === targetId;
-          const hpPct = Math.max(0, Math.min(100, (enemy.hp / Math.max(1, enemy.maxHp)) * 100));
-          const imagePath = getMonsterImagePath(enemy.id);
+        {(() => {
+          const target = livingEnemies.find((enemy) => enemy.id === targetId) ?? livingEnemies[0];
+          if (!target) return null;
+          const hpPct = Math.max(0, Math.min(100, (target.hp / Math.max(1, target.maxHp)) * 100));
+          const imagePath = getMonsterImagePath(target.id);
           return (
-            <MonsterHoverCard key={enemy.id} monster={enemy} displayName={enemyLabels.get(enemy.id) ?? enemy.name}>
-              <button
-                className={`combat-enemy ${selected ? 'combat-enemy-selected' : ''}`}
-                onClick={() => setSelectedTargetId(enemy.id)}
-              >
-                <div className="combat-enemy-hp" title={`HP ${enemy.hp}/${enemy.maxHp}`}>
+            <MonsterHoverCard monster={target} displayName={enemyLabels.get(target.id) ?? target.name}>
+              <button className="combat-enemy combat-enemy-selected">
+                <div className="combat-enemy-hp" title={`HP ${target.hp}/${target.maxHp}`}>
                   <span style={{ width: `${hpPct}%` }} />
                 </div>
                 <div className="combat-enemy-avatar">
-                  {imagePath ? <img src={imagePath} alt="" loading="lazy" /> : <span>{enemy.name.slice(0, 1)}</span>}
+                  {imagePath ? <img src={imagePath} alt="" loading="lazy" /> : <span>{target.name.slice(0, 1)}</span>}
                 </div>
-                <div className="combat-enemy-name">{enemyLabels.get(enemy.id) ?? enemy.name}</div>
+                <div className="combat-enemy-name">{enemyLabels.get(target.id) ?? target.name}</div>
                 <div className="combat-enemy-meta">
-                  <span>Lv.{enemy.level}</span>
-                  <span>{enemy.hp}/{enemy.maxHp}</span>
+                  <span>Lv.{target.level}</span>
+                  <span>{target.hp}/{target.maxHp}</span>
                 </div>
-                {enemy.pendingTelegraph && <div className="combat-enemy-telegraph">預兆</div>}
-                {enemy.activeEffects.length > 0 && (
+                {target.pendingTelegraph && <div className="combat-enemy-telegraph">預兆</div>}
+                {target.activeEffects.length > 0 && (
                   <div className="combat-enemy-effects">
-                    {enemy.activeEffects.slice(0, 4).map((effect, index) => (
+                    {target.activeEffects.slice(0, 4).map((effect, index) => (
                       <span
-                        key={`${enemy.id}-${effect.type}-${index}`}
+                        key={`${target.id}-${effect.type}-${index}`}
                         title={`${getStatusEffectDef(effect.type).name} ${effect.remainingDuration}回合`}
                         className={`combat-effect-${getStatusEffectDef(effect.type).category}`}
                       >
@@ -116,7 +114,10 @@ export function CombatPanelView({
               </button>
             </MonsterHoverCard>
           );
-        })}
+        })()}
+        {livingEnemies.length > 1 && (
+          <span className="text-[10px] text-text-dim self-center ml-1">+{livingEnemies.length - 1}</span>
+        )}
       </div>
 
       <div className="combat-action-row">
