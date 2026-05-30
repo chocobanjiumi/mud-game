@@ -81,15 +81,7 @@ import {
   setPendingHunterMark,
   normalizeCommandTarget,
 } from './cmd-helpers.js';
-
-// ─── Late-binding dependency for cmdInspect ───
-// cmdInspect lives in commands.ts; to avoid circular imports,
-// the main module registers it at startup via setCmdInspect().
-let _cmdInspect: ((session: WsSession, target: string) => void) | null = null;
-
-export function setCmdInspect(fn: (session: WsSession, target: string) => void): void {
-  _cmdInspect = fn;
-}
+import { cmdInspect } from './cmd-inspect.js';
 
 // ─── Quest support skill helper (local, not in cmd-helpers) ───
 
@@ -749,9 +741,7 @@ export function cmdSkill(session: WsSession, args: string[]): void {
     saveCharacter(char);
     sendCharacterStatus(session.sessionId, char);
     sendSystem(session.sessionId, `你使用了「${skillDef.name}」。`);
-    if (_cmdInspect) {
-      _cmdInspect(session, target);
-    }
+    cmdInspect(session, target);
     classQuestMgr.onSkillUse(char.id, matchedSkill.skillId, char.roomId, false);
     if (isQuestSupportSkill(skillDef)) {
       questMgr.updateProgress(char.id, 'use_support_skill', matchedSkill.skillId);

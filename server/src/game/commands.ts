@@ -112,13 +112,12 @@ import type { KingdomRank, BuildingType, KingdomNpcType, Direction, EquipSlot, G
 import {
   cmdAttack, cmdSkill, cmdSkillUpgrade, cmdDefend, cmdEscape,
   cmdMount, cmdMountedCharge, cmdMounted, cmdMountedIntercept,
-  setCmdInspect,
 } from './commands/cmd-combat.js';
+import { cmdInspect } from './commands/cmd-inspect.js';
 
 world.setRoomStateChangeFunction((roomId) => {
   broadcastRoomState(roomId);
 });
-setCmdInspect((session: WsSession, target: string) => cmdInspect(session, target));
 
 // ─── 地上物品撿取追蹤 ───
 
@@ -1094,59 +1093,6 @@ function updateExplorationAchievements(characterId: string, zoneId: string, room
   } catch {
     // 探索成就失敗不影響房間顯示
   }
-}
-
-function cmdInspect(session: WsSession, target: string): void {
-  const char = getChar(session);
-  if (!char) return;
-  if (!target) {
-    sendError(session.sessionId, '用法：inspect <目標>');
-    return;
-  }
-
-  const room = getRoom(char.roomId);
-  if (!room) {
-    sendError(session.sessionId, '你身處未知地點，無法檢查目標。');
-    return;
-  }
-
-  recordDiscovery(char.id, room.zone, room.id, 'inspect', `${room.id}:${normalizeCommandTarget(target)}`);
-  questMgr.updateProgress(char.id, 'inspect_object', normalizeCommandTarget(target));
-
-  const ground = findGroundItem(room.id, target);
-  if (ground) {
-    const def = ITEM_DEFS[ground.itemId];
-    sendSystem(session.sessionId, `── ${def?.name ?? ground.itemId} ──`);
-    sendNarrative(session.sessionId, def?.description ?? ground.description, 'item');
-    sendSystem(session.sessionId, `位置線索：${ground.description}`);
-    if (def?.useEffect?.type.startsWith('open_chest_')) {
-      sendSystem(session.sessionId, `這是可開啟的寶箱。先 take ${def.name}，再 open ${def.name}。`);
-    }
-    return;
-  }
-
-  const exit = findExit(room, target);
-  if (exit) {
-    sendSystem(session.sessionId, `── ${directionChinese(exit.direction)}側出口 ──`);
-    sendNarrative(session.sessionId, exit.description ?? '這條通路連往另一處房間，地面留下近期通行的痕跡。');
-    sendSystem(session.sessionId, `狀態：${exit.locked ? '上鎖' : '可通行'}；目標房間：${exit.targetRoomId}`);
-    return;
-  }
-
-  const lower = normalizeCommandTarget(target);
-  const inventoryItem = getInventory(char.id).find(item => {
-    const def = ITEM_DEFS[item.itemId];
-    return item.itemId === lower || def?.name === target || !!def?.name.toLowerCase().includes(lower);
-  });
-  if (inventoryItem) {
-    const def = ITEM_DEFS[inventoryItem.itemId];
-    sendSystem(session.sessionId, `── ${def?.name ?? inventoryItem.itemId} ──`);
-    sendNarrative(session.sessionId, def?.description ?? '背包中的物品。', 'item');
-    sendSystem(session.sessionId, `數量：${inventoryItem.quantity}；類型：${def?.type ?? 'unknown'}`);
-    return;
-  }
-
-  cmdLook(session, target);
 }
 
 function cmdOpen(session: WsSession, target: string): void {
