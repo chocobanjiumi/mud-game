@@ -1172,7 +1172,7 @@ export const STATIC_WORLD_FILLER_ROOMS_PART_003: Record<string, RoomDef> = {
     "id": "glass_dunes_fill_0_20",
     "name": "西緣砂路",
     "zone": "glass_dunes",
-    "description": "西緣砂路夾在紅岩乾谷與琉璃沙丘之間，赤色石粉逐漸被透明砂粒取代，東側半埋商隊的旗桿在熱浪中晃動。這裡是西側短路線端點，需沿東側旗桿進入主沙道。西緣砂路周邊的路面、植被、舊標記與相鄰地貌都需要被看清，北南東西的可行方向、封閉邊線與回程線索會在場景中自然呈現，讓隊伍能判斷是否採集、折返或接回主路。",
+    "description": "西緣砂路位在紅岩乾谷轉入琉璃沙丘的交界，赤色石粉逐步被透明砂粒覆蓋，腳下顏色由赭紅變成刺眼白金。東側半埋商隊的旗桿在熱浪中晃動，西面舊路只剩被流砂啃斷的車轍與塌陷石標。幾串褪色繩結埋在路邊，標出曾經能承重的砂脊，旁邊散著紅岩碎片與玻砂混成的硬殼。這段路讓外圍乾谷的粗糙地貌慢慢退場，沙丘深處的亮面危險也從此開始。",
     "image": "glass_dunes_fill_0_20.png",
     "imagePrompt": "西緣砂路 glass_dunes_fill_0_20 in glass_dunes 琉璃沙丘, room function border road, terrain glass dunes with transparent sand, mirror-like glass shards, heat shimmer, rope markers, wind-carved crystal sand ridges and white sun glare，西緣砂路夾在紅岩乾谷與琉璃沙丘之間，赤色石粉逐漸被透明砂粒取代，東側半埋商隊的旗桿在熱浪中晃動。這裡是西側短路線端點，需沿東側旗桿進入主沙道。 畫面要反映實際座標邊界與相鄰地貌：玻砂、透明砂殼、碎晶、流砂、熱風白線與遠處沙丘主路或邊界地標。clear route endpoint with one visible safe direction and the locked unsafe side blocked by drift sand；材質需有割裂玻砂、乾熱風、虹光折射與危險坡面，氣氛乾燥刺眼但路徑或封閉意圖清楚。, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, deep background silhouette, tactile terrain and architecture materials, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
