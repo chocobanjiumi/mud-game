@@ -697,6 +697,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "鐵木影門苔徑",
     "zone": "dark_forest",
     "description": "鐵木影門苔徑貼著暗影森林東緣，西側樹根覆住黑苔石，東面能看見鐵木要塞傳送院的冷光。這裡是跨區 border 路線與採集邊界，苔蘚裡有濕木藥草痕跡，腳下石縫很窄。",
+    "image": "/images/rooms/dark_forest_fill_n1_13.png",
+    "imagePrompt": "鐵木影門苔徑 dark_forest_fill_n1_13 in dark_forest 暗影森林, room function cross zone border road, mossy stone threshold on the eastern edge of the dark forest, west black roots covering wet stones, east cold blue portal-yard light from Ironwood Fort glimpsed through branch slits, terrain slick moss slabs, damp herb traces, ironwood bark and narrow stone cracks，入口端是可踏但狹窄的黑苔石縫，中段根牆形成影門，東側冷光像要塞傳送院入口從樹縫透出，西側暗林壓回濕黑樹根，讓玩家一眼讀出這是暗林到鐵木要塞的東向邊界路線而不是普通空地。石面要有被靴底磨亮的濕痕，苔縫散著藥草斷莖，根牆上垂著冷霧水珠，遠端冷光被枝條切成細線，石縫邊還有細小藍白菌光，整體材質需有濕苔、硬根、冷霧、石縫藥草與遠處冷光層次, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -715,6 +717,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "軍需陰根道",
     "zone": "dark_forest",
     "description": "軍需陰根道被粗樹根壓成窄徑，西側黑葉遮住回頭路，東面要塞軍需排屋的木牆從枝縫露出。這裡是暗林與鐵木要塞的 border 路線，樹根旁留有採集痕跡與舊巡邏刻痕。",
+    "image": "/images/rooms/dark_forest_fill_n1_14.png",
+    "imagePrompt": "軍需陰根道 dark_forest_fill_n1_14 in dark_forest 暗影森林, room function cross zone border road, thick root corridor squeezed between dark leaves and the Ironwood Fort quartermaster row, west black foliage hides the return trail, east rough wooden military storehouse wall visible beyond branches, terrain tangled roots, patrol knife marks, wet leaves and gathered herb scraps，粗根把小路壓成一條陰暗通道，東側枝縫露出要塞軍需排屋木牆與冷燈，西側黑葉像幕布壓住暗林回頭路，地面刻痕與採集痕跡要清楚。近處落葉被巡邏靴踩成泥痕，根節上有短刀刮出的舊標記，軍需棚方向只露出木板縫與微弱燈點，林內則以墨綠陰影封住退路，構圖需讓東向跨區出口可辨但不畫成開闊村道, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -733,6 +737,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "熔爐煙苔路",
     "zone": "dark_forest",
     "description": "熔爐煙苔路藏在黑樹與濕苔之間，西側暗林仍有冷霧，東面鐵木要塞鍛造區的煙味穿過枝葉。這裡是跨區 border 通道，苔石上可見被熱灰壓暗的草藥痕與焦黑足印，路面狹窄。",
+    "image": "/images/rooms/dark_forest_fill_n1_15.png",
+    "imagePrompt": "熔爐煙苔路 dark_forest_fill_n1_15 in dark_forest 暗影森林, room function cross zone border road, narrow moss path between black trees and forge smoke, west cold forest mist, east orange-gray smoke from Ironwood Fort forge works filtering through leaves, terrain wet moss stones, hot ash stains, charred footprints and low root rails，近處苔石被灰燼壓暗並留下焦黑腳印，中段黑樹夾出狹路，東側暖灰熔爐煙穿過枝葉標示鍛造區方向，西側仍是冷霧暗林。石縫裡的草藥被熱灰燙成褐邊，低矮根欄把步線收得很窄，煙光與霧光在半空交疊，畫面要呈現冷暗森林與要塞熔爐氣味交會的邊界，不可像完整道路廣場, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -751,6 +757,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "鐵木根牆徑",
     "zone": "dark_forest",
     "description": "鐵木根牆徑沿著暗林東側延伸，西面黑樹根纏成牆，東側鐵木要塞林苑透出樹脂火光。這裡是 border 路線與採集邊界，玩家需沿東側根牆出口進入要塞林苑，不可往南硬穿。",
+    "image": "/images/rooms/dark_forest_fill_n1_16.png",
+    "imagePrompt": "鐵木根牆徑 dark_forest_fill_n1_16 in dark_forest 暗影森林, room function cross zone border road, ironwood root wall path on the eastern forest edge, west black root wall braided shut, east resin firelight from Ironwood Fort grove, south path blocked by tangled roots, terrain hard roots, resin sparks, damp moss and shadowed bark，畫面下緣狹窄根牆徑沿東側伸展，東方樹脂火光穿過鐵木缺口，西側黑根牆完全封住，南端要以坍根與暗霧表明不可硬穿。硬根表面有樹脂焦點與濕苔反光，草藥割口停在根牆邊緣，南側黑霧吞掉任何踏點，樹脂火星貼著根節浮動，畫面重點是東向進入要塞林苑的邊界節點與採集邊界, slightly elevated adventurer eye view, clear foreground walking space, readable midground landmark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "east",
@@ -769,6 +777,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "北苔根封口",
     "zone": "dark_forest",
     "description": "北苔根封口被古樹根盤成低牆，東側能聽見軍需陰根道的枝葉摩擦，南面暗林更深。苔根旁有採集痕跡，但根牆完全封住路線，這格是封閉 blocker。",
+    "image": "/images/rooms/dark_forest_fill_n2_14.png",
+    "imagePrompt": "北苔根封口 dark_forest_fill_n2_14 in dark_forest 暗影森林, room function sealed blocker, ancient low root wall covered in black moss west of the quartermaster border trail, east branches rub toward the military root road, south dark forest deepens behind fog, terrain moss roots, herb gathering scratches, damp soil and closed root lattice，低位視線裡黑苔古根盤成低牆並完全封住路線，東側只用枝葉摩擦與微光提示軍需陰根道方向，南面霧氣變深但沒有可行出口。根牆腳下有被採過的草梗、濕土指痕與碎菌傘，枝條交叉得像天然柵欄，冷綠光只停在牆面上，潮氣沿根縫凝成細珠，構圖需明確是封閉 blocker 而非隱藏小徑, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 6,
@@ -781,6 +791,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "中段腐根欄",
     "zone": "dark_forest",
     "description": "中段腐根欄位於暗影森林腹地，東側北苔根封口仍可望見，西面枯枝把地面壓得鬆軟。腐根縫裡有黑苔和小菌株，這裡是採集邊界，不提供穿越路線。",
+    "image": "/images/rooms/dark_forest_fill_n3_14.png",
+    "imagePrompt": "中段腐根欄 dark_forest_fill_n3_14 in dark_forest 暗影森林, room function resource blocker, rotted root fence in the inner dark forest, east moss-root seal visible through trunks, west dead branches pressing the soft ground, terrain decayed roots, black moss, tiny fungi clusters, wet leaf mold and sunless green-gray gloom，腐根像欄杆般倒在中段，東側可望見北苔根封口的低牆輪廓，西面枯枝壓出鬆軟腐土，黑苔和小菌株集中在根縫作採集點。腳邊葉泥有潮水般的黑亮反光，菌傘旁散著斷根纖維，遠層樹幹彼此重疊沒有開口，腐木表皮要呈現被水泡爛的層次，畫面要封住穿越感，只保留短距離採集邊界與陰濕腹地氣氛, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 5,
@@ -793,6 +805,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "北影苔石坪",
     "zone": "dark_forest",
     "description": "北影苔石坪位在暗林北側高處，南面可聽見盤根橋附近的濕木聲，東側苔石被黑葉覆住。這裡只有苔蘚與草藥採集痕跡，是封閉 blocker，不接出北側新路。",
+    "image": "/images/rooms/dark_forest_fill_n4_12.png",
+    "imagePrompt": "北影苔石坪 dark_forest_fill_n4_12 in dark_forest 暗影森林, room function northern sealed blocker, raised moss stone flat on the northern dark forest edge, south distant wet wood creak from root bridge area, east stones buried under black leaves, north no outlet beyond low shadow bank, terrain slick moss slabs, medicinal grass traces and cold overhead shade，下緣是高處濕滑苔石坪，南側遠處用盤根橋濕木聲和根影暗示正式路線，東側黑葉蓋住石面，北面低暗坡沒有出口。石坪邊緣要有水珠、刮痕與少量可採藥草，冷白光從樹冠縫隙斜落卻照不出新路，外圈陰影像牆面收束，苔面高低差要清楚，石縫間露出灰白礦脈，整體需表現北側封閉 blocker 不接新路, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -805,6 +819,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "內林苔階封口",
     "zone": "dark_forest",
     "description": "內林苔階封口由幾塊濕滑石階堆成，北側腐根欄壓住舊路，南面暗林霧氣更重。石階縫裡能採到黑苔，但前方根牆坍住，這格只作封閉 blocker 邊界。",
+    "image": "/images/rooms/dark_forest_fill_n4_14.png",
+    "imagePrompt": "內林苔階封口 dark_forest_fill_n4_14 in dark_forest 暗影森林, room function sealed blocker, slick mossy stone steps collapsed inside the forest, north rotted root fence pressing an old path, south heavier dark mist, terrain wet stone stair fragments, black moss harvest seams, fallen root wall and leaf-shadow pools，幾塊濕滑苔階在鏡頭下方歪斜堆疊，中段坍根牆堵死前路，北側腐根欄壓住舊徑，南面霧更重但不可畫出通道。階面要有黑苔採集縫、葉影水窪與碎石粉，坍根下方不能留出縫隙，微弱綠光只描出石階邊緣，碎石粉貼著水窪沉積，斷階旁殘留細小根鬚，畫面需明確是內林封口而不是樓梯入口, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -817,6 +833,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南影根幕",
     "zone": "dark_forest",
     "description": "南影根幕垂滿黑色細根，北面內林苔階封口仍有微弱反光，東側鐵木根牆徑被枝影遮住。根幕下有採集痕跡，但無法通行，是暗林內圈 blocker 邊界。",
+    "image": "/images/rooms/dark_forest_fill_n4_16.png",
+    "imagePrompt": "南影根幕 dark_forest_fill_n4_16 in dark_forest 暗影森林, room function inner ring blocker, curtain of black hanging roots in the southern shadow, north faint reflection from mossy stone step seal, east ironwood root wall path obscured by branch shadows, terrain dangling root threads, wet moss, gathered herb cuts and opaque forest dark，黑色細根像厚簾垂滿畫面中段，地表可見草藥割痕與潮濕苔土，北側只留下苔階封口的微弱反光，東側鐵木根牆徑被枝影遮成方向暗示。根絲要密到看不見後方踏點，水珠沿根鬚排列成冷亮細線，地表藥草被壓在陰影邊，根幕底部泛著墨綠濕光，樹皮紋理要粗糙清楚，需呈現暗林內圈 blocker 邊界, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -829,6 +847,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南腐葉封溝",
     "zone": "dark_forest",
     "description": "南腐葉封溝是一條積滿黑水與腐葉的林下溝道，北側南影根幕擋住視線，東面能聞到濕木與要塞煙味。溝邊斷木橋只剩兩根濕滑木梁，梁下有藥草採集痕跡，但沒有穩固踏點，這格是封閉 blocker。",
+    "image": "/images/rooms/dark_forest_fill_n4_17.png",
+    "imagePrompt": "南腐葉封溝 dark_forest_fill_n4_17 in dark_forest 暗影森林, room function sealed blocker, forest ditch filled with black water and rotting leaves, north hanging root curtain blocks sight, east faint wet wood and fortress smoke scent, terrain broken two-beam footbridge, slick logs, herb traces below the beam and stagnant dark water，溝口黑水腐葉阻斷腳步，斷木橋只剩兩根濕滑木梁斜跨但不可踏，北側根幕像黑簾遮住來路，東方只用煙味與淡灰光提示要塞方向。水面漂著腐葉泡沫與藥草碎根，木梁端頭已腐爛下沉，溝岸泥痕顯示無法站穩，梁下草梗刮痕清楚但沒有穩固踏點，整張圖必須像封死的林下溝道, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 4,
@@ -841,6 +861,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "南界苔石斷階",
     "zone": "dark_forest",
     "description": "南界苔石斷階位於暗影森林南緣，北側腐葉封溝逐漸收窄，南面石階被坍根和黑苔覆住。這裡是 border blocker，保留採集痕跡但禁止往南硬穿，斷階下沒有落腳點或路標，只能折回北側。",
+    "image": "/images/rooms/dark_forest_fill_n4_18.png",
+    "imagePrompt": "南界苔石斷階 dark_forest_fill_n4_18 in dark_forest 暗影森林, room function southern border blocker, broken moss stone steps on the south edge of the forest, north rotting leaf ditch narrowing behind, south collapsed roots and black moss cover the stair drop, terrain fractured stone slabs, no foothold below, gathered moss marks and heavy border shadow，石階起點是斷裂苔石階的缺口，南側坍根與黑苔覆住下落處且沒有落腳點或路標，北側腐葉封溝收窄回暗林，苔面刮取印只能停在斷階上方。斷面要有濕石剝落、根鬚抓住石縫與深色落差陰影，南方不出現任何亮點或道路標記，坍根下方只見黑霧，構圖需清楚告訴玩家南界封死只能折回北側, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [
       {
         "direction": "south",
@@ -860,6 +882,8 @@ export const STATIC_WORLD_FILLER_ROOMS: Record<string, RoomDef> = {
     "name": "西側黑藤欄",
     "zone": "dark_forest",
     "description": "西側黑藤欄靠近暗林與黑木林邊界，東面能回望腐葉封溝的霧氣，西側藤牆下有濕亮草葉。這裡是採集邊界與封閉 blocker，藤牆後方沒有安全路標。",
+    "image": "/images/rooms/dark_forest_fill_n7_16.png",
+    "imagePrompt": "西側黑藤欄 dark_forest_fill_n7_16 in dark_forest 暗影森林, room function western border blocker, black vine fence near the dark forest and blackwood boundary, east fog from rotting leaf ditch visible between trunks, west vine wall with wet glossy grass below, terrain thorny black vines, damp leaves, herbal gathering patch and no safe trail marker，藤牆下方濕亮草葉和割取印貼在黑藤牆下，中段藤蔓交錯成不可穿越的欄，東側樹幹間回望腐葉封溝霧氣，西側完全沒有安全路標，只保留黑木林方向的壓迫陰影。藤刺上掛著水珠與碎葉，草葉被踩彎但很快被藤根截斷，冷綠側光勾出封閉邊線，畫面要是邊界採集 blocker 而非通往黑木林的路, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[·]",
     "mapX": 1,
@@ -4706,6 +4730,8 @@ export const STATIC_WORLD_BRIDGE_ROOMS: Record<string, RoomDef> = {
     "name": "暗林邊徑",
     "zone": "dark_forest",
     "description": "暗林邊徑幾乎被落葉掩埋，東側能聽見暗影森林深處的濕木低響，西側則貼近黑木林幽暗腹地。腐葉與苔蘚氣味壓在樹冠下，這裡是封閉 border blocker，只標示兩片黑林的邊界。",
+    "image": "/images/rooms/darkwood_border_trail.png",
+    "imagePrompt": "暗林邊徑 darkwood_border_trail in dark_forest 暗影森林, room function closed border blocker, buried leaf trail between dark forest and blackwood, east deep dark forest wet wood resonance, west blackwood interior pressing close with colder trunks, terrain fallen leaves, moss smell, overlapping root ridges and sealed two-forest boundary，葉層低處幾乎埋掉小徑，只露出短短苔石邊線，中段東側傳來暗林濕木低響，西側黑木林冷樹幹貼近形成壓迫牆，兩邊都沒有安全路標或正式出口。落葉層要厚到遮住腳印，苔石邊線很快被交疊根脊切斷，樹冠下的冷灰光讓兩片黑林互相壓合，邊界空氣要有潮濕腐葉霧，構圖只標示兩片黑林邊界並呈現封閉 border blocker, slightly elevated adventurer eye view, readable midground landmark, blocked-route composition, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text",
     "exits": [],
     "mapSymbol": "[徑]",
     "mapX": 0,

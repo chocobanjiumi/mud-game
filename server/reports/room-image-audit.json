@@ -1,21 +1,22 @@
 {
-  "generatedAt": "2026-05-30T01:47:31.623Z",
+  "generatedAt": "2026-05-30T02:35:10.015Z",
   "summary": {
     "rooms": 1515,
     "worldRooms": 1515,
     "instanceOnlyRooms": 0,
     "phase5Targets": 271,
-    "missingPrompt": 271,
-    "missingImageField": 271,
+    "missingPrompt": 258,
+    "missingImageField": 258,
     "missingAsset": 271,
-    "issues": 2023,
-    "errors": 827,
+    "issues": 2009,
+    "errors": 813,
     "warnings": 1196,
     "byIssueKind": {
       "prompt.room_id": 1196,
-      "image.missing": 271,
       "asset.missing": 271,
-      "prompt.missing": 271,
+      "prompt.function": 12,
+      "image.missing": 258,
+      "prompt.missing": 258,
       "asset.ratio": 13,
       "asset.too_small": 1
     },
@@ -143,11 +144,11 @@
       "dark_forest": {
         "zoneName": "暗影森林",
         "rooms": 33,
-        "missingPrompt": 13,
-        "missingImageField": 13,
+        "missingPrompt": 0,
+        "missingImageField": 0,
         "missingAsset": 13,
         "phase5Targets": 13,
-        "errors": 39,
+        "errors": 25,
         "warnings": 20
       },
       "deepsea_temple": {
@@ -628,33 +629,25 @@
       "roomName": "鐵木影門苔徑",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_13.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n1_13",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_13.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_13",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_13.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png"
         },
         {
           "roomId": "dark_forest_fill_n1_13",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -663,33 +656,25 @@
       "roomName": "軍需陰根道",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n1_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png"
         },
         {
           "roomId": "dark_forest_fill_n1_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -698,33 +683,25 @@
       "roomName": "熔爐煙苔路",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_15.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n1_15",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_15.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_15",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_15.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png"
         },
         {
           "roomId": "dark_forest_fill_n1_15",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -733,33 +710,25 @@
       "roomName": "鐵木根牆徑",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_16.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n1_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n1_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n1_16.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png"
         },
         {
           "roomId": "dark_forest_fill_n1_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -768,33 +737,25 @@
       "roomName": "北苔根封口",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n2_14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n2_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n2_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n2_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n2_14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png"
         },
         {
           "roomId": "dark_forest_fill_n2_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -803,33 +764,18 @@
       "roomName": "中段腐根欄",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n3_14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n3_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n3_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n3_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n3_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n3_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png"
         }
       ]
     },
@@ -838,33 +784,25 @@
       "roomName": "北影苔石坪",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_12.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n4_12",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_12.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_12",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_12.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png"
         },
         {
           "roomId": "dark_forest_fill_n4_12",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -873,33 +811,25 @@
       "roomName": "內林苔階封口",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_14.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n4_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_14.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_14",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_14.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png"
         },
         {
           "roomId": "dark_forest_fill_n4_14",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -908,33 +838,25 @@
       "roomName": "南影根幕",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_16.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n4_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_16.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png"
         },
         {
           "roomId": "dark_forest_fill_n4_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -943,33 +865,25 @@
       "roomName": "南腐葉封溝",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_17.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n4_17",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_17.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_17",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_17.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png"
         },
         {
           "roomId": "dark_forest_fill_n4_17",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -978,33 +892,25 @@
       "roomName": "南界苔石斷階",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_18.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n4_18",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_18.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n4_18",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n4_18.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png"
         },
         {
           "roomId": "dark_forest_fill_n4_18",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -1013,33 +919,25 @@
       "roomName": "西側黑藤欄",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n7_16.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "dark_forest_fill_n7_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n7_16.png"
-        },
-        {
-          "roomId": "dark_forest_fill_n7_16",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/dark_forest_fill_n7_16.png"
+          "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png"
         },
         {
           "roomId": "dark_forest_fill_n7_16",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -1048,33 +946,25 @@
       "roomName": "暗林邊徑",
       "zoneId": "dark_forest",
       "zoneName": "暗影森林",
-      "assetPath": "client/public/images/rooms/darkwood_border_trail.png",
-      "missingPrompt": true,
-      "missingImageField": true,
+      "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png",
+      "missingPrompt": false,
+      "missingImageField": false,
       "missingAsset": true,
       "issues": [
         {
           "roomId": "darkwood_border_trail",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "image.missing",
-          "message": "world room is missing image field",
-          "assetPath": "client/public/images/rooms/darkwood_border_trail.png"
-        },
-        {
-          "roomId": "darkwood_border_trail",
-          "zoneId": "dark_forest",
-          "severity": "error",
           "kind": "asset.missing",
           "message": "world room image asset is missing",
-          "assetPath": "client/public/images/rooms/darkwood_border_trail.png"
+          "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png"
         },
         {
           "roomId": "darkwood_border_trail",
           "zoneId": "dark_forest",
           "severity": "error",
-          "kind": "prompt.missing",
-          "message": "world room is missing imagePrompt"
+          "kind": "prompt.function",
+          "message": "imagePrompt must include room function"
         }
       ]
     },
@@ -11823,32 +11713,16 @@
       "roomId": "dark_forest_fill_n1_13",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_13.png"
+      "kind": "asset.missing",
+      "message": "world room image asset is missing",
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_13.png"
     },
     {
       "roomId": "dark_forest_fill_n1_13",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "asset.missing",
-      "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_13.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_13",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_14.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n1_14",
@@ -11856,22 +11730,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_14.png"
     },
     {
       "roomId": "dark_forest_fill_n1_14",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_15",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_15.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n1_15",
@@ -11879,22 +11745,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_15.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_15.png"
     },
     {
       "roomId": "dark_forest_fill_n1_15",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n1_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_16.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n1_16",
@@ -11902,22 +11760,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n1_16.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n1_16.png"
     },
     {
       "roomId": "dark_forest_fill_n1_16",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n2_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n2_14.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n2_14",
@@ -11925,22 +11775,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n2_14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n2_14.png"
     },
     {
       "roomId": "dark_forest_fill_n2_14",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n3_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n3_14.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n3_14",
@@ -11948,22 +11790,7 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n3_14.png"
-    },
-    {
-      "roomId": "dark_forest_fill_n3_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_12",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_12.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n3_14.png"
     },
     {
       "roomId": "dark_forest_fill_n4_12",
@@ -11971,22 +11798,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_12.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_12.png"
     },
     {
       "roomId": "dark_forest_fill_n4_12",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_14",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_14.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n4_14",
@@ -11994,22 +11813,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_14.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_14.png"
     },
     {
       "roomId": "dark_forest_fill_n4_14",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_16.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n4_16",
@@ -12017,22 +11828,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_16.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_16.png"
     },
     {
       "roomId": "dark_forest_fill_n4_16",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_17",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_17.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n4_17",
@@ -12040,22 +11843,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_17.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_17.png"
     },
     {
       "roomId": "dark_forest_fill_n4_17",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n4_18",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_18.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n4_18",
@@ -12063,22 +11858,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n4_18.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n4_18.png"
     },
     {
       "roomId": "dark_forest_fill_n4_18",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
-    },
-    {
-      "roomId": "dark_forest_fill_n7_16",
-      "zoneId": "dark_forest",
-      "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n7_16.png"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_fill_n7_16",
@@ -12086,14 +11873,14 @@
       "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/dark_forest_fill_n7_16.png"
+      "assetPath": "client/public/images/rooms/images/rooms/dark_forest_fill_n7_16.png"
     },
     {
       "roomId": "dark_forest_fill_n7_16",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "dark_forest_hunter_blind",
@@ -12155,24 +11942,16 @@
       "roomId": "darkwood_border_trail",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "image.missing",
-      "message": "world room is missing image field",
-      "assetPath": "client/public/images/rooms/darkwood_border_trail.png"
-    },
-    {
-      "roomId": "darkwood_border_trail",
-      "zoneId": "dark_forest",
-      "severity": "error",
       "kind": "asset.missing",
       "message": "world room image asset is missing",
-      "assetPath": "client/public/images/rooms/darkwood_border_trail.png"
+      "assetPath": "client/public/images/rooms/images/rooms/darkwood_border_trail.png"
     },
     {
       "roomId": "darkwood_border_trail",
       "zoneId": "dark_forest",
       "severity": "error",
-      "kind": "prompt.missing",
-      "message": "world room is missing imagePrompt"
+      "kind": "prompt.function",
+      "message": "imagePrompt must include room function"
     },
     {
       "roomId": "deep_forest",
