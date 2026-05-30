@@ -857,7 +857,7 @@ ironwood_fort_high_keep: {
     image: 'amber_forest_entry_claim.png',
     imagePrompt: '採集入口界樁 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function entrance, terrain forest, clear lantern light',
     description:
-      '採集入口界樁位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '採集入口界樁立在琥珀森林外緣，金色樹脂從樹幹裂口緩慢淌下，把舊繩標、蟲翼和半透明根脈封在同一層光裡。界樁上刻著採集隊留下的短線記號，新的刮痕則沿根系往北伸向凝脂樹門。東側琥珀脈徑有淡亮礦脂在土面流動，北方樹門散出蜂蠟氣味，兩條路都帶著材料光澤，也都藏著被巡行獸群踩亂的落葉。',
     exits: [
       { direction: 'east', targetRoomId: 'amber_forest_vein_path', description: '琥珀脈徑在東側' },
       { direction: 'north', targetRoomId: 'amber_forest_resin_gate', description: '樹脂門在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
@@ -883,7 +883,7 @@ amber_forest_vein_path: {
     image: 'amber_forest_vein_path.png',
     imagePrompt: '琥珀脈徑 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '琥珀脈徑位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '琥珀脈徑沿著半露的樹脂礦脈向森林深處延伸，金黃脈線像凝固溪流一樣嵌在泥土和根鬚之間。西側仍能看見入口界樁的繩標，東面樹脂藥草層滲出潮濕草香，北方高處的金冠樹幕把陽光篩成碎片。脈徑兩旁封著發光昆蟲與斷裂採集刀，某些裂縫裡還有新鮮爪印，表示樹脂蜥與幼樹伏擊者會沿著溫熱根脈巡行。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_entry_claim', description: '回到採集入口界樁' },
       { direction: 'east', targetRoomId: 'amber_forest_herb_shelf', description: '藥草層在東側' },
@@ -910,7 +910,7 @@ amber_forest_herb_shelf: {
     image: 'amber_forest_herb_shelf.png',
     imagePrompt: '樹脂藥草層 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '樹脂藥草層位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '樹脂藥草層是一片被透明根脈托起的低矮平台，耐熱藥草從金色樹液邊緣鑽出，葉背沾著細小琥珀粉。西側琥珀脈徑的亮線在根下消失，東面琥珀水囊傳來悶悶水聲，北方封蠟蜂巢則有翅音從高枝間落下。平台上散著乾掉的包紮布和燒焦剪刀，草叢邊的蛛絲與螳螂足痕顯示採草時不能只看地面。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_vein_path', description: '回到琥珀脈徑' },
       { direction: 'east', targetRoomId: 'amber_forest_water_pocket', description: '水囊窪地在東側' },
@@ -937,7 +937,7 @@ amber_forest_water_pocket: {
     image: 'amber_forest_water_pocket.png',
     imagePrompt: '琥珀水囊 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '琥珀水囊位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '琥珀水囊藏在數條透明樹根交會處，根膜包住一池淡金色水，水面下封著細小氣泡與古老葉片。西側樹脂藥草層的草香被潮氣壓低，東面獸痕樹皮傳來粗糙刮擦聲，南方樹脂落溝則讓水囊邊緣不斷滴下黏稠樹液。水中偶爾掠過細長陰影，岸邊採水罐被咬出半月缺口，說明這片安靜水光也屬於潛伏生物的獵場。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_herb_shelf', description: '回到樹脂藥草層' },
       { direction: 'east', targetRoomId: 'amber_forest_beast_scrape', description: '獸痕樹皮在東側' },
@@ -964,7 +964,7 @@ amber_forest_beast_scrape: {
     image: 'amber_forest_beast_scrape.png',
     imagePrompt: '獸痕樹皮 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '獸痕樹皮位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '獸痕樹皮所在的巨木被抓出數道深槽，樹脂從傷口湧出又凝成鋒利琥珀牙，像森林把攻擊者的爪印保存下來。西側琥珀水囊仍帶著潮濕氣味，東面封存遺物坑有金屬碰撞聲，北方焦木林列飄來灰燼，南側燼甲蟲丘則透出熱樹脂的紅光。樹根間散落斷裂獸角與被撕開的採集袋，新舊足印交疊，顯示此處成為獸群穿越森林的常用刮痕道。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_water_pocket', description: '回到琥珀水囊' },
       { direction: 'east', targetRoomId: 'amber_forest_relic_pit', description: '遺物坑在東側' },
@@ -992,7 +992,7 @@ amber_forest_relic_pit: {
     image: 'amber_forest_relic_pit.png',
     imagePrompt: '封存遺物坑 in amber_forest, amber forest resource zone with golden resin, translucent tree roots, glowing insects trapped in amber, herb shelves, smoky bark, dark fantasy painterly environment illustration, vertical 10:16, consistent style, no UI, no text, room function resource, terrain forest, clear lantern light',
     description:
-      '封存遺物坑位於琥珀森林的金色樹脂帶中，凝固樹液、透明根脈、發光昆蟲、藥草層與焦黑樹皮共同標出可採集也極危險的深林路線。這裡是中高階資源區與精英巡邏地，玩家可以 inspect 樹脂裂紋、蜂巢封蠟、獸爪痕和採集繩標來判斷安全路徑，也能 search 樹洞、遺物坑、水囊窪地與古脂巨樹根部尋找材料線索。若隊伍貪採過深或忽略火光、毒霧與樹冠動靜，樹精、森林女巫、火焰精靈與晶化獸群會沿根脈包圍；若穩定記錄回程繩標、採集節點與巡邏間隔，則能抵達深琥珀核心並安全帶回封存材料、藥草樣本與巡林記錄。',
+      '封存遺物坑塌在獸痕樹皮東側，坑底堆著被琥珀包住的採集刀、舊徽章、破燈和幾段不知年代的根骨。西側刮痕道的獸腥味沿坡滑下，北方石化花圃的冷白花光隔著樹影閃爍。坑壁樹脂像蜂蠟一樣層層封住遺物，某些物件卻有剛被翻動過的痕跡；坑邊還殘留重物拖曳出的溝槽，暗示晶化守衛會把闖入者也變成下一層封存品。',
     exits: [
       { direction: 'west', targetRoomId: 'amber_forest_beast_scrape', description: '回到獸痕樹皮' },
       { direction: 'north', targetRoomId: 'amber_forest_petrified_bloom', description: '石化花圃在北側', edgeKind: 'distant_route', edgeNote: '此出口依世界全圖座標不是相鄰一格，實際路程長於相鄰一格，保留為明確特殊路線。' },
