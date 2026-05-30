@@ -164,7 +164,7 @@ export default function BattlefieldView() {
           const items = approachByDir[dir] ?? [];
           if (items.length === 0) return null;
           return items.map((a, i) => (
-            <ApproachDot key={a.instanceId} dir={dir} index={i} total={items.length}
+            <ApproachDot key={a.instanceId} instanceId={a.instanceId} dir={dir} index={i} total={items.length}
               img={a.image ? `/mud/images/monsters/${a.image}` : getMonsterImagePath(a.monsterId)}
               name={a.name} ticks={a.arrivalTicks} />
           ));
@@ -374,46 +374,30 @@ function AllyIcon({ c, me }: { c: CombatantState; me: boolean }) {
 }
 
 /* ═══ Approaching Dot ═══ */
-function ApproachDot({ dir, index, total, img, name, ticks }: {
-  dir: CardinalDirection; index: number; total: number; img?: string; name: string; ticks: number;
+const seenApproachIds = new Set<string>();
+
+function ApproachDot({ dir, index, total, img, name, ticks, instanceId }: {
+  dir: CardinalDirection; index: number; total: number; img?: string; name: string; ticks: number; instanceId: string;
 }) {
   const arrow = DIR_ARROW[dir] ?? '?';
   const offset = total > 1 ? (index - (total - 1) / 2) * 34 : 0;
-  const [phase, setPhase] = useState<'origin' | 'moving' | 'arrived'>('origin');
-  const mountedRef = useRef(false);
+  const isNew = !seenApproachIds.has(instanceId);
 
   useEffect(() => {
-    if (mountedRef.current) return;
-    mountedRef.current = true;
-    const t1 = setTimeout(() => setPhase('moving'), 600);
-    const t2 = setTimeout(() => setPhase('arrived'), 1800);
-    return () => { clearTimeout(t1); clearTimeout(t2); };
-  }, []);
+    seenApproachIds.add(instanceId);
+    return () => { seenApproachIds.delete(instanceId); };
+  }, [instanceId]);
 
-  const dest: React.CSSProperties = { position: 'absolute', transition: phase === 'moving' ? 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none' };
-  const origin: React.CSSProperties = { ...dest };
+  const style: React.CSSProperties = { position: 'absolute' };
+  if (dir === 'north') { style.top = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
+  if (dir === 'south') { style.bottom = 'calc(33.33% - 16px)'; style.left = `calc(50% + ${offset}px)`; style.transform = 'translateX(-50%)'; }
+  if (dir === 'east') { style.right = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
+  if (dir === 'west') { style.left = 'calc(33.33% - 16px)'; style.top = `calc(50% + ${offset}px)`; style.transform = 'translateY(-50%)'; }
 
-  if (dir === 'north') {
-    dest.top = 'calc(33.33% - 16px)'; dest.left = `calc(50% + ${offset}px)`; dest.transform = 'translateX(-50%)';
-    origin.top = 'calc(16.67% - 16px)'; origin.left = dest.left; origin.transform = dest.transform;
-  }
-  if (dir === 'south') {
-    dest.bottom = 'calc(33.33% - 16px)'; dest.left = `calc(50% + ${offset}px)`; dest.transform = 'translateX(-50%)';
-    origin.bottom = 'calc(16.67% - 16px)'; origin.left = dest.left; origin.transform = dest.transform;
-  }
-  if (dir === 'east') {
-    dest.right = 'calc(33.33% - 16px)'; dest.top = `calc(50% + ${offset}px)`; dest.transform = 'translateY(-50%)';
-    origin.right = 'calc(16.67% - 16px)'; origin.top = dest.top; origin.transform = dest.transform;
-  }
-  if (dir === 'west') {
-    dest.left = 'calc(33.33% - 16px)'; dest.top = `calc(50% + ${offset}px)`; dest.transform = 'translateY(-50%)';
-    origin.left = 'calc(16.67% - 16px)'; origin.top = dest.top; origin.transform = dest.transform;
-  }
-
-  const style = phase === 'origin' ? origin : dest;
+  const animClass = isNew ? `approach-slide-${dir}` : '';
 
   return (
-    <div className={`flex flex-col items-center z-10 ${phase === 'arrived' ? 'animate-pulse' : ''}`} style={style} title={`${name} ${ticks}t`}>
+    <div className={`flex flex-col items-center z-10 ${animClass}`} style={style} title={`${name} ${ticks}t`}>
       <div className="rounded-full border-2 border-text-amber/60 overflow-hidden" style={{ width: 24, height: 24 }}>
         {img ? <img src={img} alt={name} className="w-full h-full object-cover" /> : <div className="w-full h-full bg-bg-secondary" />}
       </div>

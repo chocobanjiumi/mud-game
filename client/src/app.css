@@ -137,6 +137,38 @@ body {
   transition: width 0.12s ease-out;
 }
 
+/* === Approaching monster slide-in animations === */
+
+.approach-slide-north {
+  animation: slide-from-north 1.8s ease-out both;
+}
+.approach-slide-south {
+  animation: slide-from-south 1.8s ease-out both;
+}
+.approach-slide-east {
+  animation: slide-from-east 1.8s ease-out both;
+}
+.approach-slide-west {
+  animation: slide-from-west 1.8s ease-out both;
+}
+
+@keyframes slide-from-north {
+  0%, 33% { translate: 0 -60px; opacity: 0.5; }
+  100%    { translate: 0 0; opacity: 1; }
+}
+@keyframes slide-from-south {
+  0%, 33% { translate: 0 60px; opacity: 0.5; }
+  100%    { translate: 0 0; opacity: 1; }
+}
+@keyframes slide-from-east {
+  0%, 33% { translate: 60px 0; opacity: 0.5; }
+  100%    { translate: 0 0; opacity: 1; }
+}
+@keyframes slide-from-west {
+  0%, 33% { translate: -60px 0; opacity: 0.5; }
+  100%    { translate: 0 0; opacity: 1; }
+}
+
 /* === Panel slide transitions === */
 
 .panel-enter {
